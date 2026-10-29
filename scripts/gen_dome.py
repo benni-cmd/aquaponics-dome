@@ -20,7 +20,7 @@ def add(c, **p):
 COLORS = [  # (Namenspraefix, Farbe, Deckkraft) - Schicht 1
     ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85),
     ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
-    ("T10_Zulaufrohr", "#5fa8e0", 1), ("T10_Schlauch", "#8cc8f0", 1), ("T11_", "#8b9096", 1)]
+    ("T10_Zulaufrohr", "#5fa8e0", 1), ("T10_Schlauch", "#8cc8f0", 1), ("T11_", "#8b9096", 1), ("T12_", "#4c9a3c", 1)]
 
 def colors():
     left = list(names)
@@ -121,6 +121,11 @@ def t5_t7(fz):
         add("solid.cylinder", radius=25, height=round(L, 1), base=[round(sx, 1), round(sy, 1), sz], axis=[round(q/L, 6) for q in d], operation="new", name=f"T10_Schlauch_{i}", body_name=f"T10_Schlauch_{i}")
         tank(f"T7_Fasstank_{i}", x, y, fz, "t7_d", "t7_h", "wall", stand=P["t7_stand"])
 
+plants = [0]
+def plant(x, y, z, r=90):
+    plants[0] += 1
+    add("solid.sphere", radius=r, center=[x, y, z], operation="new", name=f"T12_Salat_{plants[0]:03d}", body_name=f"T12_Salat_{plants[0]:03d}")
+
 def t8_t9(fz):
     n = P["bed_n"]
     for i in range(n):
@@ -142,10 +147,16 @@ def t8_t9(fz):
             for c in range(nc):
                 lx, ly = rot((c-(nc-1)/2)*330 + (r % 2)*165 - 82, (r-1)*270, a)   # gestaffelte Reihen
                 add("solid.cylinder", diameter=70, height=70, base=[round(cx+lx, 1), round(cy+ly, 1), fz+P["bed_h"]-65], operation="cut", targets=[nm], name=f"{nm}_Loch{r*6+c+1}")
+                plant(round(cx+lx, 1), round(cy+ly, 1), fz + P["bed_h"] + 92)
     # T9: vier Substratwannen unter Bett 7 (Azimut 270? -> hier Azimut 234 und 342)
     for k, az in enumerate((126, 198, 234, 342), 1):
         cx, cy = pol(P["bed_r"], az)
         rect_body(f"T9_Substratbeet_{k}", round(cx, 1), round(cy, 1), fz, az+90, P["tub_len"], P["tub_w"], P["tub_h"])
+        ta = math.radians(az+90)
+        for r_ in range(2):
+            for c_ in range(5):
+                lx, ly = rot((c_-2)*380, (r_-0.5)*250, ta)
+                plant(round(cx+lx, 1), round(cy+ly, 1), fz + P["tub_h"] + 112, 110)
 
 def t10_t11(fz):
     A = (-6577, 2394, 4400); B = (-1344, 1794, fz+1400)

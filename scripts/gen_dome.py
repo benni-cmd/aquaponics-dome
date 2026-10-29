@@ -6,9 +6,9 @@ from geo import build
 P = dict(  # Parameter-Tabelle (siehe docs/packages/dome-build.md)
     dome_base_d=7000, freq=3, sock_h=400, sock_w=300, strut_r=20,
     door_w=900, door_h=2000, door_az=-54,
-    t5_d=2600, t5_h=900, t6_d=1400, t6_h=700, t7_d=700, t7_h=1000, t7_stand=400,
-    bed_n=10, bed_len=1500, bed_w=700, bed_h=900, bed_r=2500,
-    tub_len=1500, tub_w=600, tub_h=400,
+    t5_d=2400, t5_h=900, t6_d=1200, t6_h=700, t7_d=700, t7_h=1000, t7_stand=400,
+    bed_n=10, bed_len=1500, bed_w=700, bed_h=900, bed_r=2850,
+    tub_len=1500, tub_w=560, tub_h=400,
     pipe_d=200, cab_x=500, cab_y=300, cab_z=800, wall=80)
 
 cmds = []
@@ -89,9 +89,9 @@ def tank(name, cx, cy, z0, d, h, wall_expr, stand=0):
         add("solid.cylinder", radius=20, height=stand, base=[round(lx, 1), round(ly, 1), z0], operation="join", targets=[name], name=f"{name}_Fuss{i+1}")
 
 def t5_t7(fz):
-    tank("T5_Zentraltank", 0, 350, fz, "t5_d", "t5_h", "wall")
-    tank("T6_Mitteltank", 650, -850, fz, "t6_d", "t6_h", "wall")
-    pos = [(-2000, 150), (-1350, -350), (1250, -1900), (1900, 900), (1550, 1450), (-300, -1950)]
+    tank("T5_Zentraltank", 0, 300, fz, "t5_d", "t5_h", "wall")
+    tank("T6_Mitteltank", 300, -1550, fz, "t6_d", "t6_h", "wall")
+    pos = [(-1900, 200), (-1500, -700), (1900, 300), (1600, 1100), (-900, -1700), (1500, -1350)]
     for i, (x, y) in enumerate(pos, 1):
         tank(f"T7_Fasstank_{i}", x, y, fz, "t7_d", "t7_h", "wall", stand=P["t7_stand"])
 
@@ -118,7 +118,7 @@ def t8_t9(fz):
         rect_body(f"T9_Substratbeet_{k}", round(cx, 1), round(cy, 1), fz, az+90, P["tub_len"], P["tub_w"], P["tub_h"])
 
 def t10_t11(fz):
-    A = (2900, 2900, fz+1500); B = (919, 1269, fz+950)
+    A = (-4078, 429, 2200); B = (-849, 1149, fz+1050)
     d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [round(x/L, 6) for x in d]
     add("solid.cylinder", diameter="pipe_d", height=round(L, 1), base=list(A), axis=u, operation="new", name="T10_Zulaufrohr", body_name="T10_Zulaufrohr")
     az = -18; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))

@@ -1,22 +1,100 @@
 {
-  "klasse": "netztopf",
-  "teilenummer": "T10",
-  "beschreibung": "Netztopf (Net Cup) fuer NFT-Rinne, konisch mit Kragen und Schlitzen",
-  "quelle_masse": "docs/components.md: 50 x 64 x 63 mm aus dem OBJ (Pflanztopf, 2160 Stueck); Innenprofil [A]",
-  "parameter": {
-    "cup_h":        {"wert": 63,  "einheit": "mm",  "herkunft": "OBJ: 63 Hoehe (docs/components.md)"},
-    "flange_d":     {"wert": 64,  "einheit": "mm",  "herkunft": "OBJ: 64 groesste Breite = Kragen"},
-    "flange_t":     {"wert": 3.5, "einheit": "mm",  "herkunft": "[A] Kragen-Dicke"},
-    "rim_d":        {"wert": 50,  "einheit": "mm",  "herkunft": "OBJ: 50 = Korpus-Durchmesser oben unter dem Kragen"},
-    "base_d":       {"wert": 34,  "einheit": "mm",  "herkunft": "[A] Aussen-Durchmesser am Boden (Konus)"},
-    "wall":         {"wert": 1.5, "einheit": "mm",  "herkunft": "[A] Wandstaerke PP Spritzguss 1,2-1,6"},
-    "floor_t":      {"wert": 1.5, "einheit": "mm",  "herkunft": "[A] Bodenstaerke"},
-    "slot_count":   {"wert": 8,   "einheit": "",    "herkunft": "[A] Schlitze am Umfang"},
-    "slot_w":       {"wert": 3,   "einheit": "mm",  "herkunft": "[A] Schlitzbreite (Wurzeldurchtritt)"},
-    "slot_h":       {"wert": 38,  "einheit": "mm",  "herkunft": "[A] Schlitzhoehe"},
-    "slot_z0":      {"wert": 8,   "einheit": "mm",  "herkunft": "[A] Schlitzbeginn ab Boden"}
+ "klasse": "netztopf",
+ "teilenummer": "T10",
+ "beschreibung": "Netztopf (Net Cup) fuer NFT-Rinne, konisch mit Kragen und Schlitzen",
+ "quelle_masse": "docs/components.md: 50 x 64 x 63 mm aus dem OBJ (Pflanztopf, 2160 Stueck); Innenprofil [A]",
+ "parameter": {
+  "cup_h": {
+   "wert": 63,
+   "einheit": "mm",
+   "herkunft": "OBJ: 63 Hoehe (docs/components.md)"
   },
-  "werkstoff": {"name": "PP (Polypropylen)", "dichte_g_cm3": 0.91, "farbe": "#2b2b2b", "herkunft": "[E] Standardwerkstoff Netztopf; Farbe schwarz wie ref-6 (dunkle Toepfe unter dem Kopf nicht sichtbar) [A]"},
-  "anzahl": {"soll": 2160, "quelle": "data/layout.json (OBJ potplant_dxf)"},
-  "bezugspunkt": "Mitte Boden (Z=0), Achse Z; Kragenoberkante bei Z=cup_h"
+  "flange_d": {
+   "wert": 64,
+   "einheit": "mm",
+   "herkunft": "OBJ: 64 groesste Breite = Kragen"
+  },
+  "flange_t": {
+   "wert": 3.5,
+   "einheit": "mm",
+   "herkunft": "[A] Kragen-Dicke"
+  },
+  "rim_d": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "OBJ: 50 = Korpus-Durchmesser oben unter dem Kragen"
+  },
+  "base_d": {
+   "wert": 34,
+   "einheit": "mm",
+   "herkunft": "[A] Aussen-Durchmesser am Boden (Konus)"
+  },
+  "wall": {
+   "wert": 1.5,
+   "einheit": "mm",
+   "herkunft": "[A] Wandstaerke PP Spritzguss 1,2-1,6"
+  },
+  "floor_t": {
+   "wert": 1.5,
+   "einheit": "mm",
+   "herkunft": "[A] Bodenstaerke"
+  },
+  "slot_count": {
+   "wert": 8,
+   "einheit": "",
+   "herkunft": "[A] Schlitze am Umfang"
+  },
+  "slot_w": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Schlitzbreite (Wurzeldurchtritt)"
+  },
+  "slot_h": {
+   "wert": 38,
+   "einheit": "mm",
+   "herkunft": "[A] Schlitzhoehe"
+  },
+  "slot_z0": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A] Schlitzbeginn ab Boden"
+  }
+ },
+ "werkstoff": {
+  "name": "PP (Polypropylen)",
+  "dichte_g_cm3": 0.91,
+  "farbe": "#2b2b2b",
+  "herkunft": "[E] Standardwerkstoff Netztopf; Farbe schwarz wie ref-6 (dunkle Toepfe unter dem Kopf nicht sichtbar) [A]"
+ },
+ "anzahl": {
+  "soll": 2160,
+  "quelle": "data/layout.json (OBJ potplant_dxf)"
+ },
+ "bezugspunkt": "Mitte Boden (Z=0), Achse Z; Kragenoberkante bei Z=cup_h",
+ "blatt": {
+  "funktion": "Haelt die Pflanze im Beet (Kies/Blaehton, 288 je Aussenbeet) und in den NFT-Rinnen; Wurzeln wachsen durch die Schlitze.",
+  "querschnitt": "Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Boden 1,5 mm mit Loch D10, Kragen D64 x 3,5 mm; 8 Schlitze 3 x 38 mm ab 8 mm ueber dem Boden.",
+  "toleranzen": "Topfloch der NFT-Rinne D52 (Korpus 50 + 2 mm Spiel); Kragen D64 liegt auf der Deckelflaeche auf.",
+  "ports": [],
+  "verbindungen": [
+   "Steckt lose im Topfloch der NFT-Rinne (Kragen liegt auf) bzw. im Medium des IBC-Beets; keine Schrauben."
+  ],
+  "abweichung": "OBJ-Box 50 x 64 x 63: Modell Korpus 50, Kragen 64, Hoehe 63 (Abweichung 0 mm); Innenprofil und Schlitze sind Annahmen.",
+  "montage": [
+   "Topf in das Loch der Rinne bzw. in die Kiesschicht druecken, bis der Kragen aufliegt",
+   "Setzling mit Mineralwolle/Blaehton-Substrat in den Topf setzen"
+  ],
+  "werkzeug": "keines",
+  "stueckliste": [
+   "T10 Netztopf 50/64 x 63, PP schwarz, Menge laut layout.json: 2160 (Beete) plus Rinnen (3 Typen, siehe NFT-Rinne)"
+  ],
+  "lokal": "Netztoepfe 50 mm sind Massenware (Gartenbedarf/Hydroponik, ca. 0,05-0,10 EUR/Stueck, [A] nicht recherchiert).",
+  "pruefung": [
+   "Masse und Volumen aus `solidcraft-cli eval`; Schnittbild `renders/components/nft_rinne/nft_rinne-06-schnitt-zulauf.png` zeigt den Topf im Topfloch"
+  ],
+  "offen": [
+   "Farbe schwarz oder weiss (nicht sichtbar in ref-6)",
+   "Topfhoehe 63 laut OBJ; Standardware ist oft 50 mm"
+  ]
+ }
 }

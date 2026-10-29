@@ -40,12 +40,41 @@ def build():
         b.add("material.assign", bodies=["Kappe" + tag], material="PVC-U weiss")
         b.add("appearance.assign", bodies=["Kappe" + tag], color="#d6d8dc")
     b.add("component.activate", component="T20_NFT_Rinne")
+    b.add("config.configure", params=["len_l", "n_holes"])      # Laengen-Varianten: L aussen, M Mitte, K innen
+    b.add("config.row", name="L")
+    b.add("config.row", name="M", **{"from": "L"}, values={"param:len_l": "1983 mm", "param:n_holes": "9"})
+    b.add("config.row", name="K", **{"from": "L"}, values={"param:len_l": "1304 mm", "param:n_holes": "6"})
+    b.add("config.activate", row="L")
     for nm, pn, ds in (("T20_NFT_Rinne", "T20", d["beschreibung"]), ("T20a_Profil", "T20a", "Rinnenprofil 130x100x2,5 mit Rippen und Topfoeffnungen"),
                        ("T20b_Endkappe_Zulauf", "T20b", "Endkappe Zulauf mit Tuelle 16 mm"), ("T20c_Endkappe_Ablauf", "T20c", "Endkappe Ablauf mit Stutzen DN32")):
         b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
     return b
 
-if __name__ == "__main__":
+def render(out, p):
+    """Testaufbau (nur Render): Rinne + 3 Netztoepfe + 3 Salatkoepfe in den ersten Topfloechern; Kameras fuellen das Bild."""
+    items = [("component.create", {"name": "Test", "grounded": True}),
+             ("component.insert_design", {"path": "designs/components/nft_rinne.sc", "name": "R1"})]
+    x0 = -(p["n_holes"] - 1) * p["pitch"] / 2
+    zp = p["ch_h"] - p["rib_h"] - 59.5
+    for nm, path, dz in (("P", "netztopf", 0), ("S", "salatkopf", 63)):
+        items.append(("component.insert_design", {"path": f"designs/components/{path}.sc", "name": f"{nm}1", "translate": [x0, 0, zp + dz]}))
+        for k in (1, 2):
+            items.append(("occurrence.copy", {"component": f"{nm}1", "translate": [k * p["pitch"], 0, 0]}))
+    b = sc.Build()
+    for c, q in items:
+        b.add(c, **q)
+    tmp = os.path.join(sc.TMP, "nft_rinne_test.sc")
+    sc.run(b.write("nft_rinne_test"), tmp)
+    r = os.path.join(sc.ROOT, "renders", "components", "nft_rinne")
+    L = p["len_l"]
+    views = {"02-zulauf-ende": ([-L/2 + 150, 0, 60], 0.9, 0.45, 750), "03-ablauf-ende": ([L/2 - 150, 0, 60], -2.3, 0.45, 750),
+             "04-oberseite-toepfe": ([x0 + p["pitch"], 0, 95], 0.35, 1.0, 650), "05-ueberblick": ([0, 0, 50], 0.7, 0.3, 4300)}
+    for n, (t, yaw, pitch, dist) in views.items():
+        sc.snapshot(tmp, os.path.join(r, f"nft_rinne-{n}.png"), t, yaw, pitch, dist, w=1000, h=650)
+    sc.snapshot(tmp, os.path.join(r, "nft_rinne-06-schnitt-zulauf.png"), [-L/2 + 200, 0, 55], 3.14159, 0.0, 520, w=1000, h=520, section="XZ")
+    sc.snapshot(tmp, os.path.join(r, "nft_rinne-07-querschnitt.png"), [x0 + p["pitch"], 0, 50], 1.5708, 0.0, 420, w=800, h=600, section="YZ,flip")
+
+if __name__ == "__main__" and "--render-only" not in sys.argv:
     b = build()
     script = b.write("nft_rinne")
     out = os.path.join(sc.ROOT, "designs", "components", "nft_rinne.sc")
@@ -54,4 +83,6 @@ if __name__ == "__main__":
     for x in ev["bodies"]:
         print(x["name"], round(x["volume_mm3"], 1), "mm3", round(x["mass_g"], 1), "g", x["faces"], "F", [round(v, 1) for v in x["bbox"]["min"]], [round(v, 1) for v in x["bbox"]["max"]])
     if "--render" in sys.argv:
-        sc.snapshot(out, os.path.join(sc.ROOT, "renders", "components", "nft_rinne", "nft_rinne-01.png"), [0, 0, 50], 0.7, 0.45, 5200, w=1000, h=500)
+        render(out, sc.load_params("nft_rinne")[0])
+if __name__ == "__main__" and "--render-only" in sys.argv:
+    render(os.path.join(sc.ROOT, "designs", "components", "nft_rinne.sc"), sc.load_params("nft_rinne")[0])

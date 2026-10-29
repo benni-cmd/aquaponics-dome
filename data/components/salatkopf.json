@@ -1,19 +1,144 @@
 {
-  "klasse": "salatkopf",
-  "teilenummer": "T12",
-  "beschreibung": "Salatkopf (Lollo-/Kopfsalat-Naeherung) aus wenigen ueberlappenden Kugeln, Groessen S/M/L ueber Parameter head_d",
-  "quelle_masse": "ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm); Hoehe ca. 0,7 x Breite [A]",
-  "parameter": {
-    "head_d":    {"wert": 100, "einheit": "mm", "herkunft": "[A] Standard M; S = 70, L = 130 (Konfigurationszeilen S/M/L)"},
-    "core_r_f":  {"wert": 0.34, "einheit": "",  "herkunft": "[A] Kernradius / head_d"},
-    "ring1_r_f": {"wert": 0.26, "einheit": "",  "herkunft": "[A] Blattring 1 Radius / head_d (6 Stueck)"},
-    "ring1_d_f": {"wert": 0.27, "einheit": "",  "herkunft": "[A] Blattring 1 Abstand von der Achse / head_d"},
-    "ring2_r_f": {"wert": 0.19, "einheit": "",  "herkunft": "[A] Blattring 2 Radius / head_d (6 Stueck, um 30 Grad versetzt)"},
-    "ring2_d_f": {"wert": 0.40, "einheit": "",  "herkunft": "[A] Blattring 2 Abstand / head_d"},
-    "neck_d":    {"wert": 24,  "einheit": "mm", "herkunft": "[A] Wurzelhals-Durchmesser, steckt im Netztopf (Innen-D oben 47)"},
-    "neck_len":  {"wert": 25,  "einheit": "mm", "herkunft": "[A] Wurzelhals unter Z=0 im Topf"}
+ "klasse": "salatkopf",
+ "teilenummer": "T12",
+ "beschreibung": "Salatkopf als Blattrosette aus geneigten Scheiben (4 Blattgruppen) um einen Kern, Groessen S/M/L ueber head_d",
+ "quelle_masse": "ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm); Hoehe ca. 0,7 x Breite [A]",
+ "parameter": {
+  "head_d": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Standard M (Rosettenbreite ca. 1,05 x head_d, Hoehe ca. 0,7 x head_d); S = 70, L = 130"
   },
-  "werkstoff": {"name": "Pflanze (Kopfsalat)", "dichte_g_cm3": 0.4, "farbe": "#4c9a3c", "herkunft": "[A] Bulk-Dichte Naeherung, nur fuer Gewichtsangabe grob; Gewicht eines Kopfes real 150-250 g"},
-  "anzahl": {"soll": "Aussenbeete 2160 Toepfe, Besatz laut Integrator", "quelle": "data/layout.json"},
-  "bezugspunkt": "Z=0 = Kragenoberkante des Netztopfs (Mitte Topfoeffnung); Kopf waechst nach +Z, Hals nach -Z in den Topf"
+  "leaf_t_f": {
+   "wert": 0.035,
+   "einheit": "",
+   "herkunft": "[A] Blattdicke / head_d (Scheibe)"
+  },
+  "core_r_f": {
+   "wert": 0.14,
+   "einheit": "",
+   "herkunft": "[A] Kernkugel Radius / head_d"
+  },
+  "core_h_f": {
+   "wert": 0.35,
+   "einheit": "",
+   "herkunft": "[A] Kernkugel Hoehe / head_d"
+  },
+  "neck_d": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] Wurzelhals-Durchmesser, steckt im Netztopf (Innen-D oben 47)"
+  },
+  "neck_len": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Wurzelhals unter Z=0 im Topf"
+  }
+ },
+ "werkstoff": {
+  "name": "Pflanze (Kopfsalat)",
+  "dichte_g_cm3": 0.4,
+  "farbe": "#58a63f",
+  "herkunft": "[A] Bulk-Dichte Naeherung, nur fuer Gewichtsangabe grob; Gewicht eines Kopfes real 150-250 g"
+ },
+ "anzahl": {
+  "soll": "Aussenbeete 2160 Toepfe, Besatz laut Integrator",
+  "quelle": "data/layout.json"
+ },
+ "bezugspunkt": "Z=0 = Kragenoberkante des Netztopfs (Mitte Topfoeffnung); Kopf waechst nach +Z, Hals nach -Z in den Topf",
+ "blatt_gruppen": {
+  "herkunft": "[A] nach Kritiker Runde 1 (flachere Rosette, gezackte Kontur): je Gruppe Anzahl, Phase (Grad), Abstand rho, Hoehe h, Radius rad (alle / head_d), Neigung alpha (Grad ueber der Waagerechten, nach aussen ansteigend)",
+  "gruppen": [
+   {
+    "name": "Saum",
+    "n": 6,
+    "phase": 0,
+    "rho": 0.3,
+    "h": 0.1,
+    "rad": 0.21,
+    "alpha": 8
+   },
+   {
+    "name": "AussenA",
+    "n": 5,
+    "phase": 36,
+    "rho": 0.27,
+    "h": 0.17,
+    "rad": 0.21,
+    "alpha": 18
+   },
+   {
+    "name": "AussenB",
+    "n": 5,
+    "phase": 10,
+    "rho": 0.25,
+    "h": 0.24,
+    "rad": 0.2,
+    "alpha": 28
+   },
+   {
+    "name": "MitteA",
+    "n": 5,
+    "phase": 24,
+    "rho": 0.19,
+    "h": 0.32,
+    "rad": 0.19,
+    "alpha": 40
+   },
+   {
+    "name": "MitteB",
+    "n": 5,
+    "phase": 48,
+    "rho": 0.15,
+    "h": 0.37,
+    "rad": 0.18,
+    "alpha": 48
+   },
+   {
+    "name": "Herz",
+    "n": 4,
+    "phase": 5,
+    "rho": 0.08,
+    "h": 0.42,
+    "rad": 0.17,
+    "alpha": 58
+   },
+   {
+    "name": "Herz2",
+    "n": 3,
+    "phase": 30,
+    "rho": 0.04,
+    "h": 0.46,
+    "rad": 0.16,
+    "alpha": 68
+   }
+  ],
+  "ueberlappung": "Blaetter ueberlappen sich gewollt (Rosette); Vereinigung flacher Scheiben scheitert im Kernel, daher je Gruppe eigene Koerper"
+ },
+ "blatt": {
+  "funktion": "Visuelles Pflanzenbauteil (Kopfsalat) fuer Rinnen und Beete; nur Darstellung, keine Funktion im Wasserkreislauf.",
+  "querschnitt": "Rosette aus 33 geneigten Blattscheiben (7 Gruppen, Neigung 8 bis 68 Grad, Blattdicke 3,5 mm) um eine Kernkugel; Wurzelhals D16 x 25 mm nach unten in den Netztopf. Blattscheiben ueberlappen sich gewollt (Pflanze).",
+  "toleranzen": "Hals D16 in Netztopf-Innen-D 47 (oben).",
+  "ports": [],
+  "verbindungen": [
+   "Hals steckt im Netztopf; Instanz wird mit Ursprung auf die Kragenoberkante des Netztopfs gesetzt (Topf-Ursprung + 63 mm)."
+  ],
+  "abweichung": "keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse M: Breite ca. 115 mm, Hoehe 61 mm.",
+  "montage": [
+   "Instanz auf den Topf setzen (Pattern oder `occurrence.copy`)",
+   "Groesse ueber Konfiguration S (70) / M (100) / L (130) waehlen"
+  ],
+  "werkzeug": "keines",
+  "stueckliste": [
+   "T12 Salatkopf, Konfigurationen S/M/L, nur Darstellung (keine Beschaffung)"
+  ],
+  "pruefung": [
+   "Konfigurationszeilen S/M/L angelegt (`config.table`), Rosette je Konfiguration ueber head_d skaliert"
+  ],
+  "kritiker": "Runde 1 und 2: Referenz gewaehlt (A), grosse Luecken Silhouette/Blattstruktur; nach Umbau auf Blattrosette Runde 3 offen",
+  "offen": [
+   "Blattraender kreisrund (Ellipsen/Zacken fehlen)",
+   "Konfiguration S/L als Zeile vorhanden, Wirkung auf verknuepfte Instanz im Dom vom Integrator zu pruefen"
+  ]
+ }
 }

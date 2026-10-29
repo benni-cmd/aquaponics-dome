@@ -1,34 +1,180 @@
 {
-  "klasse": "nft_rinne",
-  "teilenummer": "T20",
-  "beschreibung": "NFT-Rinne 130 x 100 mm, geschlossenes Kunststoffprofil mit gerippter Oberseite, Topfoeffnungen im Raster, Endkappen mit Zulauf-Tuelle und Ablaufstutzen",
-  "quelle_masse": "docs/components.md und data/layout.json hydro_tables: Breite 130, Hoehe 100, Laengen 1304 / 1983 / 3232; ref-6: weisse Rinnen mit Rippen",
-  "parameter": {
-    "len_l":     {"wert": 3232, "einheit": "mm", "herkunft": "layout.json: Laenge Aussentisch; Konfigurationen K 1304 (innen), M 1983 (Mitte), L 3232 (aussen)"},
-    "ch_w":      {"wert": 130,  "einheit": "mm", "herkunft": "OBJ: 129-130"},
-    "ch_h":      {"wert": 100,  "einheit": "mm", "herkunft": "OBJ: 102-103 (Hoehe inkl. Rippen); Normmass 100"},
-    "wall":      {"wert": 2.5,  "einheit": "mm", "herkunft": "[A] Strangpress-/Extrusionsprofil PVC-U oder PP, 2-3 mm"},
-    "rib_h":     {"wert": 5,    "einheit": "mm", "herkunft": "[A] Rippenhoehe, ref-6"},
-    "rib_w":     {"wert": 8,    "einheit": "mm", "herkunft": "[A]"},
-    "rib_y":     {"wert": 40,   "einheit": "mm", "herkunft": "[A] Rippen-Mittellinie von der Rinnenmitte; innen 36 mm > Netztopf-Kragenradius 32"},
-    "hole_d":    {"wert": 52,   "einheit": "mm", "herkunft": "[E] Netztopf-Korpus 50 + 2 mm Spiel; Kragen 64 liegt auf"},
-    "pitch":     {"wert": 200,  "einheit": "mm", "herkunft": "[A] Pflanzabstand Blattsalat im NFT 150-250 mm (FarmHub 2.4 allgemein)"},
-    "margin":    {"wert": 110,  "einheit": "mm", "herkunft": "[A] Abstand erstes Loch vom Rinnenende"},
-    "n_holes":   {"wert": 15,   "einheit": "",   "herkunft": "[E] = floor((len_l - 2 margin)/pitch) + 1; K 6, M 9, L 15"},
-    "cap_t":     {"wert": 4,    "einheit": "mm", "herkunft": "[A] Endkappe Plattenstaerke"},
-    "plug_len":  {"wert": 14,   "einheit": "mm", "herkunft": "[A] Steckzapfen-Tiefe"},
-    "fit":       {"wert": 0.5,  "einheit": "mm", "herkunft": "[A] Spiel je Seite Zapfen/Profil"},
-    "inlet_od":  {"wert": 16,   "einheit": "mm", "herkunft": "[A] Zulauf-Tuelle fuer 16-mm-Schlauch (PE-Verteilerrohr)"},
-    "inlet_id":  {"wert": 12,   "einheit": "mm", "herkunft": "[A]"},
-    "inlet_len": {"wert": 25,   "einheit": "mm", "herkunft": "[A]"},
-    "inlet_z":   {"wert": 70,   "einheit": "mm", "herkunft": "[A] Hoehe Zulaufachse ueber Rinnenboden"},
-    "drain_od":  {"wert": 32,   "einheit": "mm", "herkunft": "[A] Ablaufstutzen DN32 (Aussen 32, PVC-Klebemuffe 32)"},
-    "drain_id":  {"wert": 28,   "einheit": "mm", "herkunft": "[A]"},
-    "drain_len": {"wert": 30,   "einheit": "mm", "herkunft": "[A]"},
-    "drain_z":   {"wert": 25,   "einheit": "mm", "herkunft": "[A] Hoehe Ablaufachse ueber Rinnenboden"},
-    "slope_pct": {"wert": 1.0,  "einheit": "",   "herkunft": "docs/hydraulics.md 2.5: Vorschlag 1 % = 1 cm/m (FarmHub 2.4); im Tisch durch Neigung der Rinne um atan(0,01) = 0,573 Grad umgesetzt"}
+ "klasse": "nft_rinne",
+ "teilenummer": "T20",
+ "beschreibung": "NFT-Rinne 130 x 100 mm, geschlossenes Kunststoffprofil mit gerippter Oberseite, Topfoeffnungen im Raster, Endkappen mit Zulauf-Tuelle und Ablaufstutzen",
+ "quelle_masse": "docs/components.md und data/layout.json hydro_tables: Breite 130, Hoehe 100, Laengen 1304 / 1983 / 3232; ref-6: weisse Rinnen mit Rippen",
+ "parameter": {
+  "len_l": {
+   "wert": 3232,
+   "einheit": "mm",
+   "herkunft": "layout.json: Laenge Aussentisch; Konfigurationen K 1304 (innen), M 1983 (Mitte), L 3232 (aussen)"
   },
-  "werkstoff": {"name": "PVC-U weiss, UV-stabilisiert (alternativ PP)", "dichte_g_cm3": 1.4, "farbe": "#f2f2ee", "herkunft": "[A] ref-6 weisse Rinne"},
-  "anzahl": {"soll": "Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 2-3 (docs/components.md)", "quelle": "data/layout.json hydro_tables"},
-  "bezugspunkt": "Mitte der Rinnenlaenge, Mitte Breite, Rinnenboden Z=0; Zulaufende bei -X (hoeheres Ende), Ablaufende bei +X; Rinne selbst gerade, Gefaelle entsteht im Tisch"
+  "ch_w": {
+   "wert": 130,
+   "einheit": "mm",
+   "herkunft": "OBJ: 129-130"
+  },
+  "ch_h": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "OBJ: 102-103 (Hoehe inkl. Rippen); Normmass 100"
+  },
+  "wall": {
+   "wert": 2.5,
+   "einheit": "mm",
+   "herkunft": "[A] Strangpress-/Extrusionsprofil PVC-U oder PP, 2-3 mm"
+  },
+  "rib_h": {
+   "wert": 5,
+   "einheit": "mm",
+   "herkunft": "[A] Rippenhoehe, ref-6"
+  },
+  "rib_w": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "rib_y": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Rippen-Mittellinie von der Rinnenmitte; innen 36 mm > Netztopf-Kragenradius 32"
+  },
+  "hole_d": {
+   "wert": 52,
+   "einheit": "mm",
+   "herkunft": "[E] Netztopf-Korpus 50 + 2 mm Spiel; Kragen 64 liegt auf"
+  },
+  "pitch": {
+   "wert": 200,
+   "einheit": "mm",
+   "herkunft": "[A] Pflanzabstand Blattsalat im NFT 150-250 mm (FarmHub 2.4 allgemein)"
+  },
+  "margin": {
+   "wert": 110,
+   "einheit": "mm",
+   "herkunft": "[A] Abstand erstes Loch vom Rinnenende"
+  },
+  "n_holes": {
+   "wert": 15,
+   "einheit": "",
+   "herkunft": "[E] = floor((len_l - 2 margin)/pitch) + 1; K 6, M 9, L 15"
+  },
+  "cap_t": {
+   "wert": 4,
+   "einheit": "mm",
+   "herkunft": "[A] Endkappe Plattenstaerke"
+  },
+  "plug_len": {
+   "wert": 14,
+   "einheit": "mm",
+   "herkunft": "[A] Steckzapfen-Tiefe"
+  },
+  "fit": {
+   "wert": 0.5,
+   "einheit": "mm",
+   "herkunft": "[A] Spiel je Seite Zapfen/Profil"
+  },
+  "inlet_od": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] Zulauf-Tuelle fuer 16-mm-Schlauch (PE-Verteilerrohr)"
+  },
+  "inlet_id": {
+   "wert": 12,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "inlet_len": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "inlet_z": {
+   "wert": 70,
+   "einheit": "mm",
+   "herkunft": "[A] Hoehe Zulaufachse ueber Rinnenboden"
+  },
+  "drain_od": {
+   "wert": 32,
+   "einheit": "mm",
+   "herkunft": "[A] Ablaufstutzen DN32 (Aussen 32, PVC-Klebemuffe 32)"
+  },
+  "drain_id": {
+   "wert": 28,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "drain_len": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "drain_z": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Hoehe Ablaufachse ueber Rinnenboden"
+  },
+  "slope_pct": {
+   "wert": 1.0,
+   "einheit": "",
+   "herkunft": "docs/hydraulics.md 2.5: Vorschlag 1 % = 1 cm/m (FarmHub 2.4); im Tisch durch Neigung der Rinne um atan(0,01) = 0,573 Grad umgesetzt"
+  }
+ },
+ "werkstoff": {
+  "name": "PVC-U weiss, UV-stabilisiert (alternativ PP)",
+  "dichte_g_cm3": 1.4,
+  "farbe": "#f2f2ee",
+  "herkunft": "[A] ref-6 weisse Rinne"
+ },
+ "anzahl": {
+  "soll": "Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 2-3 (docs/components.md)",
+  "quelle": "data/layout.json hydro_tables"
+ },
+ "bezugspunkt": "Mitte der Rinnenlaenge, Mitte Breite, Rinnenboden Z=0; Zulaufende bei -X (hoeheres Ende), Ablaufende bei +X; Rinne selbst gerade, Gefaelle entsteht im Tisch",
+ "blatt": {
+  "funktion": "Fuehrt den Naehrloesungsfilm an den Wurzeln der Pflanzen vorbei (NFT); Zulauf am hoeheren Ende (-X), Ablauf am tieferen Ende (+X).",
+  "querschnitt": "Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, plus zwei Rippen 8 x 5 mm auf der Oberseite (y = +-40): Gesamthoehe 100; Topfloecher D52, Raster 200 mm, erstes Loch 110 mm vom Ende (K 6, M 9, L 15 Loecher).",
+  "toleranzen": "Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90; Topfloch +2 mm zum Topf.",
+  "ports": [
+   [
+    "Zulauf",
+    "Tuelle D16 (innen 12) fuer 16-mm-Schlauch",
+    "x = -len_l/2 - 29, y 0, z 70",
+    "in, Richtung -X"
+   ],
+   [
+    "Ablauf",
+    "Stutzen D32 (innen 28), 30 mm lang, PVC-Klebemuffe DN32",
+    "x = +len_l/2 + 34, y 0, z 25",
+    "aus, Richtung +X"
+   ]
+  ],
+  "verbindungen": [
+   "Endkappen als Stopfen 14 mm tief in das Profil gesteckt, 4 mm Plattenstaerke (Verklebung/Silikon, Schrauben nicht modelliert)",
+   "Auflage auf den Querholmen des NFT-Tischs (Halteclips: im Tisch)"
+  ],
+  "abweichung": "OBJ-Rinnen 129/130 x 102/103 mm, Laenge 1304/1983/3232: Modell Breite 130, Hoehe 100, Laenge ueber len_l (Abweichung <= 3 %). Die OBJ-Hoehe 102-103 enthaelt vermutlich Plattenreste/Rippen [A].",
+  "montage": [
+   "Profil auf Laenge sagen (len_l)",
+   "Endkappen mit PVC-Kleber/Silikon einsetzen",
+   "Rinne auf Tisch-Querholme legen, mit Clips fixieren, Gefaelle 1 % einstellen (Zulaufende hoeher)",
+   "Zulaufschlauch D16 auf die Tuelle, Ablauf DN32 an Sammelrohr"
+  ],
+  "werkzeug": "Gehrungs-/Kappsaege, Silikonpistole, Bohrer-Dosensaege D52 fuer Topfloecher (falls kein Extrusionsprofil mit Loechern)",
+  "stueckliste": [
+   "T20a Rinnenprofil 130x95x2,5 + Rippen, PVC-U weiss, Laenge len_l (1304 / 1983 / 3232)",
+   "T20b Endkappe Zulauf mit Tuelle D16",
+   "T20c Endkappe Ablauf mit Stutzen DN32"
+  ],
+  "lokal": "Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne aus dem Gewaechshausbedarf; Loecher mit Dosensaege D52, Endkappen aus 4-mm-PVC-Platte plus Dichtleiste.",
+  "pruefung": [
+   "`solidcraft-cli eval`: Boxen und Massen; Schnitt `nft_rinne-06-schnitt-zulauf.png`, Querschnitt `nft_rinne-07-querschnitt.png`",
+   "Gefaelle: wird im Tisch gebaut (Neigung 0,573 Grad)"
+  ],
+  "offen": [
+   "Rippenprofil und Wandstaerke sind Annahmen [A]",
+   "Topfzahl je Rinne ist unsere Auslegung (Raster 200 mm)",
+   "Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)"
+  ]
+ }
 }

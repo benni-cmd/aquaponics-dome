@@ -13,3 +13,4 @@
 ## Checkpoint (Limit ~91 %): Loop v2
 - Photoreal-Versuch 1 (`renders/photoreal-01.png`, denoise 0,45) ist schwach (img2img verformt Details); ComfyUI beendet. Schlussschritt wird nach Loop v2 wiederholt.
 - **Jetzt kommt:** Loop v2 Schritt 1: `scripts/check_latte.py` (messbare Latte, `renders/score.json`). Dann Kameras cam_ref4/5/1, `scripts/compare.py`, Rundenablauf v2.
+- **Loop v2 Schritt 1 fertig:** `scripts/check_latte.py` laeuft (Score Runde 9: 22/23 = 96 %, FAIL: 32 Kollisionen). **Jetzt kommt:** Kollisionen auflisten und die groesste beheben; dann cam_ref4/5/1 + `compare.py`.

@@ -233,3 +233,14 @@ Runde-3-Punkte per Messung bestaetigt (Konsole z 24..64 Winkel, Kopf 1 mm Luft, 
 | 3 | klein: Standwinkel-Befestigung an der Tafel fehlt, waagerechter Schenkel 80 mm nicht im Blatt | **gueltig** | M6x16 Winkel/Tafel, Bodenschrauben, Masse 50x100x5 / 50x80x5 in Stueckliste und Herkunft |
 | 4 | klein, vermutet: Pumpenbefestigung auf dem Sockel offen, M6x30 ohne Herkunftszeile | **gueltig** | Fuss/Spannband als offene Frage, Herkunftszeile E |
 | H | Template zeigt Box/Volumen nur der ersten Variante unbeschriftet | **gueltig (eigenes Skript)** | partsheet.py beschriftet "Variante pumpe_klein" |
+
+### nft_tisch (W16), Bild-Kritiker Runde 1 (FAIL) 29.10. ~17:50
+Bilder: Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innentisch oben, Aussentisch iso (Erstfassung, Y radial nach aussen gedacht).
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Verteiler und Sammelrohr kreuzen sich an der Ecke (V in der Draufsicht) | **gueltig (Modell/Konvention)** | Ursache: Tisch-KS Y war radial AUSSEN gedacht, die Platzierung mit yaw = az + 90 (= OBJ-yaw) ergibt aber Y radial INNEN (Y = Z x X); das Pruefskript rechnete mit gespiegelter Abbildung. Konvention umgedreht (Y innen), Reihenlaengen/Rohrschraege/Ausleger/check_nft_fit angepasst; Bild nach Korrektur: Rohre parallel zur Sektorgrenze, Abstand gleichmaessig 171-190 mm |
+| 2 | gross, vermutet: Schraegstellung/Rinnenlaengen passen nicht zur Sektorform (gespiegelt) | **gueltig** | dieselbe Ursache wie 1 |
+| 3 | mittel, vermutet: Fussplatten schweben ueber der Beet-Unterkante | **falsch gelesen** | Beete liegen laut layout.json 162 mm unter dem Boden (Erdtaschen, z0 -162), Fusspunkte z 0 = Gelaende |
+| 4 | mittel, vermutet: Verteiler/Sammelrohr ohne Halterung, Innen-Ausleger ohne Kippsicherung/Diagonalen | **gueltig, als Annahme dokumentiert** | Rohrschellen und Statik sind im Blatt unter Offene Fragen; kein weiteres Bauteil (Platzhalter A) |
+| 5 | klein, vermutet: Laengsaussteifung nur unterer Riegel, nur einseitige Diagonale | **gueltig** | Laengsdiagonalen 25x3 je Beinseite (portal 2, innen 1) eingebaut, Pruefzeile |
+| H | Beet innen leer, Ablaufoeffnung unter dem Rinnen-Eckbereich, Pflanzen fehlen | **andere Klasse** | Beet/Pflanzen |

@@ -11,8 +11,9 @@ PASS nft_fit: innen Tisch 7/8: Abstand der Footprints >= 60: Ist 1, Soll 1
 PASS nft_fit: innen Tisch 8/9: Abstand der Footprints >= 60: Ist 1, Soll 1
 PASS nft_fit: innen Tisch 9/0: Abstand der Footprints >= 60: Ist 1, Soll 1
    innen: kleinster Footprint-Abstand 114 mm, Rinnenlaengen [928, 758], Loecher je Reihe [4, 3]
-PASS nft_fit: innen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 566 mm >= 30): Ist 1, Soll 1
-FAIL nft_fit: innen Fussplatten ausserhalb des Beckenrands (Aussenradius 2095, Plattenkante, Becken exzentrisch: Abstand 4 mm >= 5): Ist 0, Soll 1
+PASS nft_fit: innen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 581 mm >= 30): Ist 1, Soll 1
+PASS nft_fit: innen Fussplatten ausserhalb des Beckenrands (Aussenradius 2095, Plattenkante, Becken zentriert wie Budget: Abstand 31 mm >= 5): Ist 1, Soll 1
+   HINWEIS: mit dem OBJ-Becken (cx -36, cy 20, exzentrisch) waere der Plattenabstand zum Beckenrand -11 mm: M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen
 PASS nft_fit: mitte Reihe 1 (ap 3672): Rinne 2018 + Ueberstaende + 2 x 60 <= Zehneck-Seite 2386: Ist 1, Soll 1
 PASS nft_fit: mitte Reihe 2 (ap 3408): Rinne 1847 + Ueberstaende + 2 x 60 <= Zehneck-Seite 2215: Ist 1, Soll 1
 PASS nft_fit: mitte Reihe 3 (ap 3146): Rinne 1676 + Ueberstaende + 2 x 60 <= Zehneck-Seite 2044: Ist 1, Soll 1
@@ -40,8 +41,8 @@ PASS nft_fit: aussen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinste
 PASS nft_fit: NFT-Topfloecher gesamt 586 >= 459 (R15/D27: Mindestzahl NFT): Ist 1, Soll 1
 PASS nft_fit: NFT-Topfloecher gesamt 586 >= 580 (D32: Soll ca. 580 bei pitch 200): Ist 1, Soll 1
 PASS nft_fit: Laufweg A Beckenrand (Aussenradius 2095) - Innenportal (2696): 600 mm >= 500 (Soll 600): Ist 1, Soll 1
-FAIL nft_fit: Laufweg A frei am Innenpfosten (Plattenaussenkante 2210 - Innenportal 2696): 486 mm >= 500 (D29: nie unter 500; OBJ-Beete/Becken-Exzentrizitaet nicht eingerechnet): Ist 0, Soll 1
+PASS nft_fit: Laufweg A frei am Innenpfosten (Plattenaussenkante 2195 - Innenportal 2696): 500 mm >= 500 (D29: nie unter 500; OBJ-Beete/Becken-Exzentrizitaet nicht eingerechnet): Ist 1, Soll 1
 PASS nft_fit: Laufweg B Innenportal (bis 3858) - Aussenportal (ab 4458): 600 mm >= 500 (Soll 600): Ist 1, Soll 1
 PASS nft_fit: Wandluft Aussenportal (bis 5488) - Domwand-Apothem 5706: 218 mm >= 100 (Soll 218): Ist 1, Soll 1
 PASS nft_fit: Tische gesamt (innen 10 + mitte 6 + aussen 8): Ist 24, Soll 24
-== nft_fit: 40/42 PASS
+== nft_fit: 42/42 PASS

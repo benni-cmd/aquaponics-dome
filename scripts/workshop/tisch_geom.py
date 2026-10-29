@@ -60,7 +60,7 @@ def geometry(typ, p, T, pitch=None):
         yl = bw / 2.0 + p["leg_clearance"] + p["foot_plate"] / 2.0          # Abstand bis zur Fussplattenkante
         G.update(art="portal", legs=[(x, s * yl) for x in xb for s in (-1, 1)], yl=yl)
     else:       # innen: Ausleger ueber den Pool, Pfosten ausserhalb des Beckenrands
-        ap_leg = pool_outer_r() + p["leg_clearance"] + p["foot_plate"] / 2.0
+        ap_leg = pool_outer_r() + p.get("leg_clearance_innen", p["leg_clearance"]) + p["foot_plate"] / 2.0
         yl = apc - ap_leg                                      # negativ: Pfosten ausserhalb (radial aussen = -Y)
         G.update(art="ausleger", legs=[(x, yl) for x in xb], yl=yl, ap_leg=ap_leg)
     return G

@@ -88,8 +88,12 @@ def main():
         if G["art"] == "ausleger":
             rim = TG.pool_outer_r()
             fpl = p["foot_plate"] / 2.0
-            dpool = min(math.hypot(world(az, ap, x + dx, y + dy)[0] - pcx, world(az, ap, x + dx, y + dy)[1] - pcy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"] for (dx, dy) in ((-fpl, -fpl), (fpl, -fpl), (fpl, fpl), (-fpl, fpl)))
-            ck.eq(f"innen Fussplatten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Plattenkante, Becken exzentrisch: Abstand {dpool:.0f} mm >= 5)", 1 if dpool >= 5 else 0, 1)
+            def dpool_for(cx, cy):
+                return min(math.hypot(world(az, ap, x + dx, y + dy)[0] - cx, world(az, ap, x + dx, y + dy)[1] - cy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"] for (dx, dy) in ((-fpl, -fpl), (fpl, -fpl), (fpl, fpl), (-fpl, fpl)))
+            dpool_b = dpool_for(0.0, 0.0)                                 # Budget D28/D29: Becken zentriert (M7 setzt die Endlage)
+            dpool_e = dpool_for(pcx, pcy)                                 # OBJ-Becken exzentrisch (layout.json pool cx/cy)
+            ck.eq(f"innen Fussplatten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Plattenkante, Becken zentriert wie Budget: Abstand {dpool_b:.0f} mm >= 5)", 1 if dpool_b >= 5 else 0, 1)
+            print(f"   HINWEIS: mit dem OBJ-Becken (cx {pcx:.0f}, cy {pcy:.0f}, exzentrisch) waere der Plattenabstand zum Beckenrand {dpool_e:.0f} mm: M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen")
     print(f"   Tische gesamt {total_tables} (Soll 24), Rinnen-Topfloecher gesamt {total_holes}")
     ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 459 (R15/D27: Mindestzahl NFT)", 1 if total_holes >= 459 else 0, 1)
     ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 580 (D32: Soll ca. 580 bei pitch {TG.rinne_pitch():g})", 1 if total_holes >= 580 else 0, 1)

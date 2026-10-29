@@ -140,6 +140,11 @@
    "wert": 45,
    "einheit": "mm",
    "herkunft": "[A] W17/D29: Abstand Fussplattenkante zur Beet-Aussenkante 45 mm (vorher 60; gemessen kleinster Abstand zu den OBJ-Beeten >= 30 mm); Portalrand = 45 + 70 = 115 mm ausserhalb des Beets (Radialbudget D28/D29)"
+  },
+  "leg_clearance_innen": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] W17-Nachtrag (Pruefer W17/W18, Laufweg A): Abstand Fussplattenkante der Innen-Pfosten zum Beckenrand 30 mm (sonst 45): Plattenaussenkante bei Beckenrand + 30 + 70 = 2195, Laufweg A frei am Pfosten 500 mm gegen Innenportal 2695,5 (D29 nie unter 500); gilt fuer ein zentriertes Becken (Budget D28/D29); beim OBJ-Becken (cx -36, cy 20, 41 mm exzentrisch) wuerde die Platte den Beckenrand beruehren: M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen"
   }
  },
  "werkstoff": {

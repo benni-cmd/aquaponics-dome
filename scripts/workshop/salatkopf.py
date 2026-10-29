@@ -11,20 +11,28 @@ def build():
     b.add("component.create", name="T12_Salatkopf", grounded=True)
     D = "head_d"
     b.add("solid.sphere", radius=f"{D}*core_r_f", center=[0, 0, f"{D}*core_h_f"], operation="new", name="Kern", body_name="Salatkopf")
+    jt = d["blatt_gruppen"]["jitter"]
+    rnd = lambda i: (math.sin(i * 12.9898) * 43758.5453) % 1.0 - 0.5        # deterministisch in [-0.5, 0.5)
+    leaf_names = []
+    cnt = 0
     for g in d["blatt_gruppen"]["gruppen"]:
-        ph, al = math.radians(g["phase"]), math.radians(g["alpha"])
-        n = (-math.sin(al)*math.cos(ph), -math.sin(al)*math.sin(ph), math.cos(al))      # Blattnormale
-        cx, cy = g["rho"]*math.cos(ph), g["rho"]*math.sin(ph)
-        # Scheibe: Mittelpunkt (rho, h) skaliert mit head_d, Basis = Mitte - Normale * Dicke/2
-        base = [f"{D}*({cx:.5f}) - {n[0]:.5f}*{D}*leaf_t_f/2", f"{D}*({cy:.5f}) - {n[1]:.5f}*{D}*leaf_t_f/2", f"{D}*{g['h']} - {n[2]:.5f}*{D}*leaf_t_f/2"]
-        b.add("solid.cylinder", radius=f"{D}*{g['rad']}", height=f"{D}*leaf_t_f", base=base, axis=[round(v, 5) for v in n], operation="new", name="Blatt" + g["name"], body_name="Blatt" + g["name"])
-        b.add("solid.pattern.circular", bodies=["Blatt" + g["name"]], axis="Z", count=g["n"])
+        for k in range(g["n"]):
+            cnt += 1
+            ph = math.radians(g["phase"] + k * 360.0 / g["n"] + jt["az"] * rnd(cnt * 5 + 1))
+            al = math.radians(g["alpha"] + jt["alpha"] * rnd(cnt * 5 + 2))
+            rho = g["rho"] * (1 + jt["rho"] * 2 * rnd(cnt * 5 + 3))
+            rad = g["rad"] * (1 + jt["rad"] * rnd(cnt * 5 + 4))
+            hh = g["h"] + jt["h"] * rnd(cnt * 5 + 5)
+            n = (-math.sin(al) * math.cos(ph), -math.sin(al) * math.sin(ph), math.cos(al))      # Blattnormale
+            cx, cy = rho * math.cos(ph), rho * math.sin(ph)
+            base = [f"{D}*({cx:.5f}) - {n[0]:.5f}*{D}*leaf_t_f/2", f"{D}*({cy:.5f}) - {n[1]:.5f}*{D}*leaf_t_f/2", f"{D}*{hh:.5f} - {n[2]:.5f}*{D}*leaf_t_f/2"]
+            nm = f"Blatt{g['name']}_{k + 1}"
+            b.add("solid.cylinder", radius=f"{D}*{rad:.5f}", height=f"{D}*leaf_t_f", base=base, axis=[round(v, 5) for v in n], operation="new", name=nm, body_name=nm)
+            leaf_names.append(nm)
     b.add("solid.box", length=f"{D}*3", width=f"{D}*3", height=f"{D}", center=[0, 0, f"-{D}/2"], operation="cut", targets=["Salatkopf"], name="Boden")
     b.add("solid.cylinder", diameter="neck_d", height="neck_len + 5", base=[0, 0, "-neck_len"], operation="join", targets=["Salatkopf"], name="Hals")
     b.add("material.create", name="Salat", density_g_cm3=d["werkstoff"]["dichte_g_cm3"], color=d["werkstoff"]["farbe"])
-    leaves = ["Salatkopf"]
-    for g in d["blatt_gruppen"]["gruppen"]:
-        leaves += ["Blatt" + g["name"]] + [f'Blatt{g["name"]} ({k})' for k in range(2, g["n"] + 1)]
+    leaves = ["Salatkopf"] + leaf_names
     b.add("material.assign", bodies=leaves, material="Salat")
     b.add("appearance.assign", bodies=leaves, color=d["werkstoff"]["farbe"])
     b.add("config.configure", params=["head_d"])

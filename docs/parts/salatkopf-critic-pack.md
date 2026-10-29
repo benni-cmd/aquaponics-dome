@@ -13,7 +13,7 @@ Geodaetische Aquaponik-Kuppel (12 m). Salatkoepfe sitzen in Netztoepfen in den T
 - `critic/k4-modell-im-eltern-kontext-rinne.png`: drei Koepfe in einer Rinne (zeigt den Sitz im Topfloch, der Topf ist unter dem Kopf verdeckt).
 
 ## 4. Messwerte (`scripts/workshop/check_pflanze.py`, `renders/components/netztopf/check.txt`: 14/14 PASS)
-33 Blattscheiben + Kuppelkoerper + Hals, jeder Koerper < 8 Flaechen, Breite M ca. 110 mm, Hoehe ca. 54 mm ueber dem Topfrand (Verhaeltnis 0,49), Hals D16 x 25 im Topf, Konfigurationen S/M/L.
+36 Blattscheiben (einzeln, mit Zufallsversatz fester Seed) + Kuppelkoerper + Hals, jeder Koerper < 8 Flaechen, Breite M ca. 108 mm, Hoehe ca. 55 mm ueber dem Topfrand (Verhaeltnis 0,51), Hals D16 x 25 im Topf, Konfigurationen S/M/L.
 
 ## 5. Soll
 Keine OBJ-Vorgabe. ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite, Breite ca. 1,5-2 x Topfkragen (64 mm).

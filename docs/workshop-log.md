@@ -131,3 +131,13 @@ Standrohr `standpipe_over` = media_depth - 35 = 265 (FarmHub 220 als Variante ve
 | 4 | klein: Gewicht/Foerderdaten (Mischdichte, gefuellt, "Foerderstrom offen" gegen hydraulics 12/30 l/min) | **gueltig** | Dichten ausgewiesen, Foerderstrom 12/30 l/min [E] aus hydraulics.md 2.3 |
 | 5 | klein: Kleinigkeiten (foot_h, Kabelport x, "0 mm", yaw, Stueckliste, +Y-Ausrichtung) | **gueltig** | alle korrigiert (Steckerende x, <= 1 mm, yaw 0/45/90/135, Schrauben/Dichtung in der Stueckliste, +Y vom Tank weg) |
 | H | Durchdringung Kassette/Plattform, Rohrnetz Pumpe A/B, Elektrik | **andere Klasse** | im Blatt als offen |
+
+### salatkopf, Bild-Kritiker Runde 3 (Kontextpaket) 29.10. ~09:00: Urteil "Referenz"
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, sicher: Silhouette aus regelmaessigen glatten Scallops, Referenz fransig/unregelmaessig | **gueltig** | 36 Blaetter einzeln mit deterministischem Zufallsversatz (Azimut +-8 Grad, Radius +-14 %, Neigung +-4,5 Grad, Hoehe), Gruppen ohne Muster |
+| 2 | gross, vermutet: glatter Kuppelkern, Referenz buschiger Huegel | **gueltig** | Kern 0,27 statt 0,32, Herzblaetter ueberdecken |
+| 3 | gross, vermutet: Blaetter als horizontal gestapelte Teller | **gueltig** | Neigungen gestreut, Saum haengt nach unten |
+| 4 | klein, sicher: Randblaetter in der Referenz haengen nach unten | **gueltig** | Saum alpha -14 Grad |
+| 5 | klein, vermutet: Hals sichtbar | **unklar** | Hals steckt im Topf (Z<0); Saum reicht bis 7 mm ueber den Topfkragen |
+| Hinweis | Instanzen gleich gedreht/gross | **andere Klasse** (Layout/Tisch) | an Integrator: Instanzen mit variierender Drehung/Konfiguration setzen |

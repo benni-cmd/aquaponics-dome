@@ -1,4 +1,4 @@
-"""Blatt nft_tisch Rev. B (W16, D18, 29.10. ~17:40): Rinnenlaenge je Reihe, Portal-/Auslegerbock, schraege Rohre; Ports, Stueckliste, Herkunft, Abweichung, offene Fragen aus tisch_geom.py berechnet.
+"""NICHT ERNEUT AUSFUEHREN ohne danach fix_tisch_blatt4.py (haengt Herkunftszeilen an). Blatt nft_tisch Rev. B (W16, D18, 29.10. ~17:40): Rinnenlaenge je Reihe, Portal-/Auslegerbock, schraege Rohre; Ports, Stueckliste, Herkunft, Abweichung, offene Fragen aus tisch_geom.py berechnet.
 Aufruf: python scripts/workshop/fix_tisch_blatt3.py <check_tisch-PASS> <check_fit-PASS>; danach partsheet.py nft_tisch."""
 import json, math, os, sys
 sys.path.insert(0, os.path.dirname(__file__))

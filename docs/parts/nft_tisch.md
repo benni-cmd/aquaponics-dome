@@ -1,8 +1,8 @@
 # Bauteilblatt T22 nft_tisch (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/nft_tisch.json` und `designs/components/nft_tisch.sc`, nicht von Hand aendern)
 
-**Funktion:** Traegt n NFT-Rinnen mit 1,5 % Gefaelle (Zulauf hoch bei -X), verteilt Wasser ueber Zulaufverteiler und Schlaeuche (ein Schlauch je Rinne) und sammelt den Ablauf im Sammelrohr; Zickzack der Pflanzen durch Phase A/B benachbarter Rinnen (pitch/2). Rev. B (W16/D18): jede Reihe hat ihre eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap minus Ueberstaende), Verteiler und Sammelrohr laufen schraeg entlang der Sektorgrenze, die Beine stehen ausserhalb der Beete (Portalbock) bzw. ausserhalb des Pools (Auslegerbock innen). Rev. B (W16/D18): jede Reihe hat ihre eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap minus Ueberstaende), Verteiler und Sammelrohr laufen schraeg entlang der Sektorgrenze, die Beine stehen ausserhalb der Beete (Portalbock) bzw. ausserhalb des Pools (Auslegerbock innen).
+**Funktion:** Traegt n NFT-Rinnen mit 1,5 % Gefaelle (Zulauf hoch bei -X), verteilt Wasser ueber Zulaufverteiler und Schlaeuche (ein Schlauch je Rinne) und sammelt den Ablauf im Sammelrohr; Zickzack der Pflanzen durch Phase A/B benachbarter Rinnen (pitch/2). Rev. B (W16/D18): jede Reihe hat ihre eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap minus Ueberstaende), Verteiler und Sammelrohr laufen schraeg entlang der Sektorgrenze, die Beine stehen ausserhalb der Beete (Portalbock) bzw. ausserhalb des Pools (Auslegerbock innen).
 
-**Datei:** `designs/components/nft_tisch.sc` · **Teilenummer:** T22 · **Revision:** A · **Bezugspunkt:** Mitte der Standflaeche (Z=0 Boden), X Laengsachse (Zulauf bei -X), Y quer
+**Datei:** `designs/components/nft_tisch.sc` · **Teilenummer:** T22 · **Revision:** B · **Bezugspunkt:** Mitte der Standflaeche (Z=0 Boden), X Laengsachse (Zulauf bei -X), Y quer
 
 **Anzahl (Instanzen):** innen 10, Mitte 6, aussen 8 (Quelle: docs/scope-cards.md nft_tisch, data/layout.json hydro_tables)
 
@@ -15,10 +15,9 @@
 | `leg_wall` | 3 | mm | [A] Wand Beine/Holm 3 mm |
 | `holm_w` | 40 | mm | [A] Querholm Breite in X (Auflage der Rinnenhalter 40 mm) |
 | `holm_h` | 60 | mm | [A] Querholm Hoehe 60 mm: Rechteckrohr 60 x 40 x 3 ueber ca. 1,2 m Spannweite (Portal) bzw. 0,6 m Kragarm (innen); Biegung 50 kg mittig 1,2 m = 150 Nm, W ca. 10 cm3 -> ca. 15 N/mm2 gegen S235 235 N/mm2 [E] |
-| `holm_overhang` | 30 | mm | [A] Holm steht je Seite 30 mm ueber die Beine |
+| `holm_overhang` | 30 | mm | [A] Kragarm (nur innen) ragt 30 mm ueber die innerste Rinne hinaus; der Portalholm endet buendig an der Beinaussenseite |
 | `bock_inset` | 250 | mm | [A] Abstand Bock zur Stirn der KUERZESTEN Reihe (250 mm) |
-| `leg_inset` | 25 | mm | [A] Beinmitte um 25 mm nach innen von der Holmkante |
-| `strut_z` | 800 | mm | [A] Querstrebe/Laengsstreben/Diagonalen UEBER den Pflanzen (Beet-Oberkante Z 475, Pflanzen bis ca. Z 560), Portal ausserhalb der Beete; innen Laengsstrebe auf Z 400 (Ausleger ausserhalb des Beckenrands); innen Laengsstrebe auf Z 400 (Ausleger ausserhalb des Beckenrands) |
+| `strut_z` | 800 | mm | [A] Querstrebe/Laengsstreben/Diagonalen UEBER den Pflanzen (Beet-Oberkante Z 475, Pflanzen bis ca. Z 560), Portal ausserhalb der Beete; innen Laengsstrebe auf Z 400 (Ausleger ausserhalb des Beckenrands) |
 | `foot_plate` | 100 | mm | [A] Fussplatte 100 x 100 x 5, 2 Schrauben M8 (Beine tragen Kippmoment der Ausleger) |
 | `foot_t` | 5 | mm | [A] |
 | `foot_hole` | 9 | mm | [E] Durchgangsloch fuer M8 (ISO 273 mittel 9) |
@@ -30,8 +29,8 @@
 | `hose_gap` | 70 | mm | [A] freier Abstand zwischen Tuelle und Verteilerstutzen |
 | `col_od` | 50 | mm | [A] Sammelrohr d50 (Aussen 50, Wand 3; entspricht etwa DN40, Muffen d40/d32) |
 | `col_wall` | 3 | mm | [A] |
-| `corner_gap` | 100 | mm | [Orchestrator D18] Abstand von der Zehneck-Ecke (Sektorgrenze) zum Rinnen-/Verteilerende je Seite; der Abstand zwischen zwei Tischen ist 2 x corner_gap x cos 18 Grad = 190 mm |
-| `leg_clearance` | 60 | mm | [Orchestrator D18] Luft zwischen Beet-Aussenbreite (ibc_beet.json) und Bein |
+| `corner_gap` | 100 | mm | [A] Vorgabe Orchestrator, docs/decisions.md D18: Abstand von der Zehneck-Ecke (Sektorgrenze) zum Rinnen-/Verteilerende je Seite; Abstand zwischen zwei Tischen 2 x corner_gap x cos 18 Grad = 190 mm |
+| `leg_clearance` | 60 | mm | [A] Vorgabe Orchestrator, docs/decisions.md D18: Luft zwischen Beet-Aussenbreite (ibc_beet.json) und Fussplattenkante |
 
 | Typ | n | rinnen_abstand | rinne | z_rinne_mitte | laenge | herkunft | ap_c | ap_c_herkunft |
 |---|---|---|---|---|---|---|---|---|
@@ -96,16 +95,6 @@ Mitte/aussen: Portalbock aus Rechteckrohr verzinkt: Beine 40x40x3, Querholm 40 x
 | Lochraster je Reihe mit Phase 0 / pitch/2, n = floor(L/250) | Phase 0 / 125 | Bild + E | ref-6 Zickzack; Versatz je Reihe aus hole_plan() (tisch_geom.py), Loecher >= 46 mm vom Rinnenende | mittel |
 | Tischmitte auf der Beetmitte: ap_c aussen 5209, Mitte 3343, innen 1864 | mm | E + A | Mittel der Beetradien (ibc_beds r) bzw. Mittel der OBJ-Reihen innen; Abweichung zum OBJ 33-38 mm | mittel |
 | Tischzahl je Sektor: innen 10, Mitte 6 (Sektoren 0-2, 7-9), aussen 8 (0-3, 6-9) | 24 | OBJ | Beet-Azimute in layout.json ibc_beds (5,3 + 36 Grad x i) | mittel |
-| Rinnenlaenge je Reihe 678/848 (innen), 1468-1981 (Mitte), 2750-3124 (aussen) | je Reihe | E | Zehneck-Seite 2 x ap x tan 18 Grad (ap aus ap_c +- Reihenabstand) - 2 x corner_gap 100 - Ueberstaende 169 + 79 (Orchestrator D18, docs/jobs/W16-nft-tisch-passung.md); OBJ-Reihen nur als Beispiel | hoch |
-| Beine ausserhalb der Beet-Aussenbreite (Portal): y = +-(bed_outer_w/2 + 60 + 50) | y +-587 (aussen), +-557 (Mitte) | E + A | bed_outer_w aus ibc_beet.json (993 / 933), leg_clearance 60 (D18), Fussplatte 100: Plattenkante 60 mm vom Beet | mittel |
-| Auslegerbock innen: Pfosten bei ap = Pool-Aussenradius 2095 + 60 + 50 | ap 2205 | E + A | layout.json pool.d/2 1945 + params.json wall 150 (A) + leg_clearance + Fussplatte/2; Kragarm 40x60x3 ueber das Wasser, Statik nicht nachgewiesen | niedrig |
-| Querholm/Kragarm Rechteckrohr 40 x 60 x 3, Beine 40x40x3 | 40x60x3; 40x40x3 | A + E | Biegung 50 kg mittig auf 1,2 m = 150 Nm, W ca. 10 cm3 -> ca. 15 N/mm2 gegen S235 235 N/mm2 | niedrig |
-| Querstrebe/Laengsstreben/Diagonalen auf Z 800 (innen Z 400) | Z 800 | A | ueber den Pflanzen (Beet-Oberkante Z 475, Pflanzen bis ca. 560); Portal steht ausserhalb der Beete | niedrig |
-| Verteiler und Sammelrohr schraeg entlang der Sektorgrenze (18 Grad) | dx/dy = +-tan 18 | E | jede Reihe hat anderen Abstand zur Ecke; schraeges Rohr haelt Ueberstand und corner_gap fuer alle Reihen gleich | mittel |
-| Rinnenmitte um +45 mm nach +X versetzt | +45 mm | E | (Ueberstand Zulaufseite 169 - Ablaufseite 79)/2 | hoch |
-| Lochraster je Reihe mit Phase 0 / pitch/2, n = floor(L/250) | Phase 0 / 125 | Bild + E | ref-6 Zickzack; Versatz je Reihe aus hole_plan() (tisch_geom.py), Loecher >= 46 mm vom Rinnenende | mittel |
-| Tischmitte auf der Beetmitte: ap_c aussen 5209, Mitte 3343, innen 1864 | mm | E + A | Mittel der Beetradien (ibc_beds r) bzw. Mittel der OBJ-Reihen innen; Abweichung zum OBJ 33-38 mm | mittel |
-| Tischzahl je Sektor: innen 10, Mitte 6 (Sektoren 0-2, 7-9), aussen 8 (0-3, 6-9) | 24 | OBJ | Beet-Azimute in layout.json ibc_beds (5,3 + 36 Grad x i) | mittel |
 | Rinnenzahl 2 / 4 / 3 | 2/4/3 | OBJ + Ben + A | layout.json hydro_tables (2 innen, 4 Mitte, 2 aussen im OBJ/Bild); aussen 3: Ben (Bild/OBJ zeigen nur 2, oasis-obj-analysis) + A Anzahl nach Beetbreite 933-993 | mittel |
 | Rinnenabstand 262 / 263 / 288 | 262 / 263 / 288 mm | OBJ | layout.json hydro_tables (Abstand der Rinnen) | hoch |
 | Hoehe Rinnenunterkante (Boden) bei x=0: Z 840 / 1300 / 1300 | 840 / 1300 / 1300 | OBJ | layout.json hydro_tables Z (Unterkanten 819-858, 1280-1330, 1291-1325), Mittel 838,5 / 1307 / 1308 gerundet (Abweichung <= 8 mm) | mittel |
@@ -117,20 +106,24 @@ Mitte/aussen: Portalbock aus Rechteckrohr verzinkt: Beine 40x40x3, Querholm 40 x
 | Sammelrohr d50 mit Muffen | d50, Muffen d40/d32 | A | Scope-Card: Sammelablauf; Mass A (keine Quelle) | niedrig |
 | Durchfluss je Rinne 0,5 l/min | 0,5 l/min je Rinne | R06 | docs/research/R06.md | mittel |
 | Anzahl Tische 10 / 6 / 8 | 10 / 6 / 8 | OBJ + Ben | components.md NFT-Ringe (Sektoren je Ring) | mittel |
-| Diagonalenschrauben M6x40 mit Mutter | M6x40 | A + Normteil | SolidCraft parts.insert hex_bolt/hex_nut M6 | mittel |
+| Diagonalenschrauben M6x40 mit Mutter | M6x40 | A | SolidCraft parts.insert hex_bolt/hex_nut M6 | mittel |
 | Fussplatten 100x100x5, M8 | 100x100x5 | A | Kippmoment der Ausleger und Plattenkante-Abstand 60 mm zum Beet | niedrig |
 | Zulaufverteiler: Achse auf Hoehe der Tuellenachse (+70 mm), freier Schlauchabschnitt 70 mm (hose_gap) | 70 / 70 | E + A | Rinne: Tuelle z 70 (nft_rinne.json); hose_gap Annahme | niedrig |
 | Sammelrohr: Achse auf Hoehe der Ablaufachse der Rinne (+20 mm ueber dem tiefen Rinnenende) | 20 | E | Rinne: Ablaufstutzen z 20 (nft_rinne.json) | mittel |
-| Holmueberstand 30 mm, Beineinzug 25 mm | 30 / 25 | A | Konstruktionspraxis (Holm ragt je Seite 30 mm ueber die Beine) | niedrig |
 | Laengsdiagonalen 25x3 je Beinseite zwischen den Boecken | 1 / 2 je Tisch | A | Bild-Kritiker W16: Gestell in Laengsrichtung weich, nur unterer Laengsriegel | niedrig |
-| Zwei Boecke je Tisch (4 Beine Portal, 2 Pfosten innen), Abstand zur Stirn der kuerzesten Reihe 250 | 2 Boecke | Scope-Card + A | docs/scope-cards.md nft_tisch (4 Beine mit Querstreben, Diagonalen); innen 2 Pfosten wegen Pool (D18) | mittel |
-| Fussplatten 100x100x5, M8 | 100x100x5 | A | Kippmoment der Ausleger und Plattenkante-Abstand 60 mm zum Beet | niedrig |
+| Zwei Boecke je Tisch (4 Beine Portal, 2 Pfosten innen), Abstand zur Stirn der kuerzesten Reihe 250 | 2 Boecke | A | docs/scope-cards.md nft_tisch (4 Beine mit Querstreben, Diagonalen); innen 2 Pfosten wegen Pool (D18) | mittel |
+| corner_gap 100 mm je Seite der Sektorgrenze | 100 mm (Abstand zwischen zwei Tischen 190 mm) | A | Vorgabe des Orchestrators, docs/decisions.md D18 (Auftrag W16); Abstand = 2 x 100 x cos 18 Grad | mittel |
+| leg_clearance 60 mm zwischen Beet-Aussenbreite und Fussplattenkante | 60 mm | A | Vorgabe des Orchestrators, docs/decisions.md D18; Beet-Aussenbreite aus ibc_beet.json | mittel |
+| Beckenrand Z 650: Kragarm liegt 130 mm darueber (Unterkante 780) | Z 650 | Ben | data/params.json pool_rim (Ben: Rand ca. Z 650, am Bild ref-4 zu pruefen); Kragarm-Unterkante = Rinnenhoehe 840 - holm_h | mittel |
+| Durchgangsloch D9 in der Fussplatte fuer M8 | D9 | E | ISO 273 mittel fuer M8 (9 mm) | hoch |
+| Kragarm-Ueberstand 30 mm ueber die innerste Rinne (nur innen) | 30 mm | A | Konstruktionspraxis; Portalholm endet buendig an der Beinaussenseite (kein Ueberstand) | niedrig |
+| Tisch-KS und Platzierung: X tangential CCW, Y radial nach innen, yaw = Azimut + 90 Grad (volle 360 Grad) | yaw az + 90 | E | Y = Z x X bei dieser Drehung; layout.json hydro_tables speichert yaw nur modulo 180 (aussen Sektor 3, 6-9 und Mitte/innen 7-9 haben dort az - 90): wer den OBJ-Wert woertlich nimmt, setzt den Tisch um 180 Grad gedreht | hoch |
 
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-6-grow-tables-detail.jpg (Tisch: Platte aus Rinnen auf Boecken, Schlaeuche am Tischende hellblau); reference/ref-4 und ref-5 (Ringanordnung)
 - Quelle der Masse: data/layout.json hydro_tables, ibc_beds, pool; Rinnenlaenge je Reihe aus der Zehneck-Seite (D18, docs/jobs/W16-nft-tisch-passung.md); Beetbreite aus data/components/ibc_beet.json
-- Abweichung zum OBJ: layout.json hydro_tables liefert je Ring nur ein Beispiel (Reihen ap 1733/1995 innen, 2987-3775 Mitte, 4888/5176 aussen) mit gleicher Rinnenlaenge 1304/1983/3232; diese Laengen sind groesser als die Zehneck-Seite 2 x ap x tan 18 Grad der Reihe (innen 1126/1296, Mitte 1916-2429, aussen 3198-3572) und kollidierten an den Ecken (Ben-Fund 29.10.). Rev. B folgt D18: Rinnenlaenge je Reihe = Zehneck-Seite - 2 x corner_gap (100) - Ueberstaende (Zulaufseite 169, Ablaufseite 79); Ergebnis innen 678/848, Mitte 1468/1639/1810/1981, aussen 2750/2937/3124 mm. Folge: Topfloecher je Tisch innen 5 statt 10, Mitte 24 statt 28, aussen 34 statt 36; gesamt 466 statt 556 (check_nft_fit.py). Tischmitte liegt auf der Beetmitte (Mittel der Beetradien: aussen 5209, innen-Beet 3343) und weicht von den OBJ-Reihen um 33-38 mm ab (Annahme A, Layout/Integrator). Die Tisch-Beine des OBJ stehen nicht im Layout (Platten ohne Beine). Die Z-Hoehen bleiben (innen 840, Mitte/aussen 1300). Ausrichtung: X tangential gegen den Uhrzeigersinn (+X Sammelrohr/tiefes Ende), Y radial nach INNEN; die Instanz wird mit yaw = Azimut + 90 Grad (= yaw der OBJ-Tische in layout.json hydro_tables) auf die Sektorachse bei ap_c gesetzt, aussen liegt dann -Y. Mit yaw = Azimut - 90 Grad waere die Konvention gespiegelt (Fehler des ersten Kritiker-Bildes, W16).
+- Abweichung zum OBJ: layout.json hydro_tables liefert je Ring nur ein Beispiel (Reihen ap 1733/1995 innen, 2987-3775 Mitte, 4888/5176 aussen) mit gleicher Rinnenlaenge 1304/1983/3232; diese Laengen sind groesser als die Zehneck-Seite 2 x ap x tan 18 Grad der Reihe (innen 1126/1296, Mitte 1916-2429, aussen 3198-3572) und kollidierten an den Ecken (Ben-Fund 29.10.). Rev. B folgt D18: Rinnenlaenge je Reihe = Zehneck-Seite - 2 x corner_gap (100) - Ueberstaende (Zulaufseite 169, Ablaufseite 79); Ergebnis innen 678/848, Mitte 1468/1639/1810/1981, aussen 2750/2937/3124 mm. Folge: Topfloecher je Tisch innen 5 statt 10, Mitte 24 statt 28, aussen 34 statt 36; gesamt 466 statt 556 (check_nft_fit.py). Tischmitte liegt auf der Beetmitte (Mittel der Beetradien: aussen 5209, innen-Beet 3343) und weicht von den OBJ-Reihen um 33-38 mm ab (Annahme A, Layout/Integrator). Die Tisch-Beine des OBJ stehen nicht im Layout (Platten ohne Beine). Die Z-Hoehen bleiben (innen 840, Mitte/aussen 1300). Ausrichtung: X tangential gegen den Uhrzeigersinn (+X Sammelrohr/tiefes Ende), Y radial nach INNEN; die Instanz wird mit yaw = Azimut + 90 Grad (volle 360 Grad; layout.json hydro_tables speichert yaw nur modulo 180: aussen Sektoren 3 und 6-9 sowie Mitte/innen 7-9 haben dort az - 90, den Tisch dann um 180 Grad gedreht setzen) auf die Sektorachse bei ap_c gesetzt, aussen liegt dann -Y. Mit yaw = Azimut - 90 Grad waere die Konvention gespiegelt (Fehler des ersten Kritiker-Bildes, W16).
 
 ## Montage (L4)
 
@@ -189,7 +182,7 @@ Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Sys
 ## Offene Fragen
 
 - Statik der Portal-/Auslegerboecke nicht nachgewiesen (Querholm 40x60x3 ueber ca. 1,2 m: Biegung 50 kg mittig ca. 150 Nm, ca. 15 N/mm2 [E]; Kragarm innen ca. 165 Nm am Pfosten, Fussplatte/Verbundanker nachzurechnen)
-- Tischmitte = Beetmitte ist Annahme (OBJ-Reihen weichen um 33-38 mm ab); die Instanz-Platzierung gehoert dem Integrator (yaw = Azimut + 90 Grad wie OBJ, Y radial INNEN)
+- Tischmitte = Beetmitte ist Annahme (OBJ-Reihen weichen um 33-38 mm ab); die Instanz-Platzierung gehoert dem Integrator (yaw = Azimut + 90 Grad in vollen 360 Grad, OBJ-yaw nur modulo 180; Y radial INNEN)
 - Rinnenlaenge je Reihe ist die Folge von D18; weniger Topfloecher (466 statt 556) beim Orchestrator/Ben bestaetigen
 - Aufhaengung des Verteilers an den Boecken (Rohrschellen) nicht modelliert; Verteiler/Sammelrohr laufen frei schraeg
 - aussen 3 Rinnen (OBJ 2) bleibt Annahme; die aeusserste (3.) Reihe liegt auf ap 5497 (Beetmitte 5209 + 288), die inneren auf 5209 und 4921

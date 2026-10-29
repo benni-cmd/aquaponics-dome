@@ -244,3 +244,14 @@ Bilder: Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innentisch oben, Aussentis
 | 4 | mittel, vermutet: Verteiler/Sammelrohr ohne Halterung, Innen-Ausleger ohne Kippsicherung/Diagonalen | **gueltig, als Annahme dokumentiert** | Rohrschellen und Statik sind im Blatt unter Offene Fragen; kein weiteres Bauteil (Platzhalter A) |
 | 5 | klein, vermutet: Laengsaussteifung nur unterer Riegel, nur einseitige Diagonale | **gueltig** | Laengsdiagonalen 25x3 je Beinseite (portal 2, innen 1) eingebaut, Pruefzeile |
 | H | Beet innen leer, Ablaufoeffnung unter dem Rinnen-Eckbereich, Pflanzen fehlen | **andere Klasse** | Beet/Pflanzen |
+
+### nft_tisch (W16), Bild-Kritiker Runde 2 (PASS) + Spec-Pruefer (FAIL) 29.10. ~18:45
+Teil A (Bild): PASS; Ecke parallel, Luft ca. 190 mm, Beine ausserhalb der Beete (Luecken nur klein: Beetbreite im Bild 933 gegen 993 gerechnet, Luft nicht im Bild lesbar, Gehweg offen = schon im Blatt). Teil B (Spec): Nachrechnung (Rinnenlaengen, Beinabstand, Pfosten ap 2205, 466 Topfloecher, Lochphasen, Ports, Holm 16 N/mm2) ohne Abweichung; 5 Befunde:
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Herkunftstabelle doppelt (fix_tisch_blatt3 lief zweimal), veraltete Beinlage 587/557 gegen 606/576, doppelte Saetze in funktion/strut_z | **gueltig** | fix_tisch_blatt4.py (idempotent): Duplikate entfernt (40 -> 34 Zeilen), erste/aktuelle Fassung behalten; blatt3 mit Warnung versehen |
+| 2 | mittel: leg_inset und "Holm 30 mm ueber die Beine" ohne Wirkung im Portalbock | **gueltig** | leg_inset gestrichen, holm_overhang nur als Kragarm-Ueberstand innen, Zeile "Holmueberstand/Beineinzug" ersetzt |
+| 3 | mittel: "yaw = az + 90 = OBJ-yaw" gilt nur modulo 180 (layout.json yaw 0-180, aussen Sektor 3/6-9 az - 90) | **gueltig** | Blatt: yaw = az + 90 in vollen 360 Grad; OBJ-yaw woertlich = Tisch um 180 Grad gedreht (genau der Spiegelfehler von Runde 1); Hinweis an Integrator in der Fertigmeldung |
+| 4 | klein: Marken "[Orchestrator D18]", "Scope-Card + A", "A + Normteil"; Herkunftszeilen fehlen (corner_gap, leg_clearance, Beckenrand Z 650, foot_hole) | **gueltig** | Marken auf A (mit Bezug D18/Scope-Card), 6 Zeilen ergaenzt |
+| 5 | klein: Kopf "Revision A" bei Rev. B | **gueltig (eigenes Skript)** | partsheet.py liest revision aus dem JSON (B) |
+| H | Wasserfuellung/Topfloecher-Summe/Lochplanung liegen im Tisch statt Rinne; Beet-Tropfrohr im Bild; Fundament fuer 10 Auslegerpfosten (Boden = Erde); Pool-Wand 150 ist Platzhalter | **andere Klasse / Hinweis** | Integrator/Beet/Pool/Orchestrator |

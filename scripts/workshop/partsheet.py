@@ -21,7 +21,7 @@ def main(name):
     L = []
     L.append(f"# Bauteilblatt {d['teilenummer']} {name} (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/{name}.json` und `designs/components/{name}.sc`, nicht von Hand aendern)\n")
     L.append(f"**Funktion:** {bl.get('funktion', d['beschreibung'])}\n")
-    L.append(f"**Datei:** `designs/components/{name}.sc` · **Teilenummer:** {d['teilenummer']} · **Revision:** A · **Bezugspunkt:** {d['bezugspunkt']}\n")
+    L.append(f"**Datei:** `designs/components/{name}.sc` · **Teilenummer:** {d['teilenummer']} · **Revision:** {d.get("revision", "A")} · **Bezugspunkt:** {d['bezugspunkt']}\n")
     L.append(f"**Anzahl (Instanzen):** {d['anzahl']['soll']} (Quelle: {d['anzahl']['quelle']})\n")
     L.append("## Masse und Parameter\n")
     L.append("| Parameter | Wert | Einheit | Herkunft |\n|---|---|---|---|")

@@ -188,5 +188,105 @@
    "Klebefuge der Endkappen nicht als Koerper modelliert",
    "Zickzack (Phase A/B) wird im Tisch gebaut, Varianten nft_rinne_<l|m|k>_<a|b>.sc"
   ]
- }
+ },
+ "herkunft_tabelle": [
+  [
+   "Profil Breite 130",
+   "130 mm",
+   "OBJ",
+   "layout.json hydro_tables (Breite 129/130)",
+   "hoch"
+  ],
+  [
+   "Profil Hoehe 100 (inkl. Rippen)",
+   "100 mm",
+   "OBJ",
+   "layout.json hydro_tables (Hoehe 102/103, gerundet auf Normmass)",
+   "mittel"
+  ],
+  [
+   "Laenge 1304 / 1983 / 3232",
+   "3 Varianten",
+   "OBJ",
+   "layout.json hydro_tables (Laenge je Ring); passt auf Zehneck-Seite (components.md)",
+   "hoch"
+  ],
+  [
+   "Wandstaerke 2,5 mm",
+   "2,5 mm",
+   "A",
+   "OBJ hat Plattenkoerper ohne Wand; Extrusionsprofil PVC-U 2-3 mm typisch",
+   "niedrig"
+  ],
+  [
+   "geschlossenes Rechteckprofil (Hohlkammer)",
+   "-",
+   "Bild + A",
+   "ref-6: Rinnen wirken als weisse geschlossene Platten mit Loechern; Hohlkammer aus NFT-Praxis (FarmHub 2.4)",
+   "mittel"
+  ],
+  [
+   "vier Rippen 5 x 5 mm auf der Oberseite",
+   "y +-38, +-52",
+   "Bild + A",
+   "ref-6 mittlerer Tisch: laengs verlaufende Ruecken auf der Oberseite; Mass geschaetzt",
+   "niedrig"
+  ],
+  [
+   "EINE Lochreihe in der Mittellinie",
+   "1 Reihe",
+   "Bild",
+   "ref-6 mittlerer Tisch (je Rinne eine Reihe, Zickzack zwischen Nachbarrinnen); Scope-Card nft_rinne",
+   "hoch"
+  ],
+  [
+   "Lochabstand 250 mm, 12/7/5 Loecher",
+   "250 mm",
+   "A",
+   "ref-6 zeigt Raster ohne Mass (ca. 2 Topfbreiten); Blattsalat NFT 150-250 mm (FarmHub 2.4, hydraulics.md 2.5)",
+   "niedrig"
+  ],
+  [
+   "Loch D52",
+   "52 mm",
+   "E",
+   "Netztopf-Korpus 50 (OBJ potplant_dxf 50 x 64 x 63) + 2 mm Spiel",
+   "mittel"
+  ],
+  [
+   "Endkappen mit Stopfen 14 mm, Spiel 0,5",
+   "-",
+   "A",
+   "Konstruktionspraxis fuer Steckkappen; ref-6 zeigt Kappen am Tischende nur angedeutet",
+   "niedrig"
+  ],
+  [
+   "Zulauf-Tuelle D16 (Wand 3), z 70",
+   "16 mm",
+   "Bild + A",
+   "ref-6: hellblaue Schlaeuche am Tischende, ein Schlauch je Rinne; 16-mm-PE-Rohr ist Standard der Tropfbewaesserung",
+   "mittel"
+  ],
+  [
+   "Ablaufstutzen DN32, z 20, mittig unten",
+   "32 mm",
+   "A",
+   "Scope-Card: Ablauf mittig unten; DN32 Standard-PVC-Klebemuffe; Hoehe so, dass 3,5 mm Restfilm bleiben",
+   "niedrig"
+  ],
+  [
+   "Gefaelle 1 cm/m",
+   "1 %",
+   "R / hydraulics.md",
+   "FarmHub 2.4 (1 cm/m) bis Greenhouse Mgmt 1,2-3 %; Quellen widersprechen sich; im Tisch gebaut",
+   "mittel"
+  ],
+  [
+   "Werkstoff PVC-U weiss",
+   "1,4 g/cm3",
+   "Bild + A",
+   "ref-6 weisse Oberflaeche; Werkstoff ungeprueft",
+   "niedrig"
+  ]
+ ]
 }

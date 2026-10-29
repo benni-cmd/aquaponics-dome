@@ -10,15 +10,12 @@
 
 | Parameter | Wert | Einheit | Herkunft |
 |---|---|---|---|
-| `len_l` | 3232 | mm | layout.json: Laenge Aussentisch; Konfigurationen K 1304 (innen), M 1983 (Mitte), L 3232 (aussen) |
+| `len_l` | 3232 | mm | layout.json: Laenge Aussentisch; Konfigurationszeilen L 3232 (aussen), M 1983 (Mitte), K 1304 (innen), je Phase A/B |
 | `ch_w` | 130 | mm | OBJ: 129-130 |
 | `ch_h` | 100 | mm | OBJ: 102-103 (Hoehe inkl. Rippen); Normmass 100 |
 | `wall` | 2.5 | mm | [A] Strangpress-/Extrusionsprofil PVC-U oder PP, 2-3 mm |
 | `rib_h` | 5 | mm | [A] Rippenhoehe, ref-6 |
-| `rib_w` | 4 | mm | [A] eine Mittelrippe; Kritiker Runde 1: Rippen durchgehend wie ref-6 |
 | `hole_d` | 52 | mm | [E] Netztopf-Korpus 50 + 2 mm Spiel; Kragen 64 liegt auf |
-| `pitch` | 250 | mm | [A] Pflanzabstand je Reihe 250, Versatz der Reihen pitch/2 -> Diagonalabstand 136 (Blattsalat NFT 150-250 mm, FarmHub 2.4) |
-| `margin` | 120 | mm | [A] Abstand erstes Loch vom Rinnenende (Kritiker: >= 100) |
 | `cap_t` | 4 | mm | [A] Endkappe Plattenstaerke |
 | `plug_len` | 14 | mm | [A] Steckzapfen-Tiefe |
 | `fit` | 0.5 | mm | [A] Spiel je Seite Zapfen/Profil |
@@ -31,22 +28,26 @@
 | `drain_len` | 30 | mm | [A] |
 | `drain_z` | 20 | mm | [A] Ablaufachse 20 mm ueber Rinnenboden: Unterkante Bohrung 6 mm, Restfilm 3,5 mm ueber Innenboden (Kritiker: 16 mm ueber Innenboden) |
 | `slope_pct` | 1.0 |  | docs/hydraulics.md 2.5: Vorschlag 1 % = 1 cm/m (FarmHub 2.4); im Tisch durch Neigung der Rinne um atan(0,01) = 0,573 Grad umgesetzt |
-| `row_y` | 30 | mm | [A] Abstand der zwei Lochreihen von der Rinnenmitte (Kritiker Runde 1: zwei versetzte Reihen wie ref-6); Topfkragen R32 -> 2 mm Luft zur Mittelrippe, Lochrand 56 < 62,5 Innenwand |
-| `n_row` | 12 |  | [E] = floor((len_l - 2 margin - pitch/2)/pitch) + 1 je Reihe; L 12, M 7, K 4 (zwei Reihen: 24 / 14 / 8 Loecher) |
-| `rib_end` | 20 | mm | [A] Rippe endet 20 mm vor der Endkappe |
+| `rib_w` | 5 | mm | [A] Rippenbreite (ref-6: gerippte Oberseite) |
+| `rib_y1` | 38 | mm | [A] innere Rippen bei y = +-38: innen 35,5 > Netztopf-Kragenradius 32 |
+| `rib_y2` | 52 | mm | [A] aeussere Rippen bei y = +-52 |
+| `rib_end` | 20 | mm | [A] Rippen enden 20 mm vor der Endkappe |
+| `pitch` | 250 | mm | [A] Lochabstand EINER Reihe in der Mittellinie (Scope-Card nft_rinne); Blattsalat NFT 150-250 mm (FarmHub 2.4 allgemein); Zickzack zu Nachbarrinnen = pitch/2 im Tisch |
+| `n_holes` | 12 |  | [E] = floor(len_l / pitch): L 12, M 7, K 5 (Pruefzahl Scope-Card: Lochzahl = Laenge/pitch abgerundet; Lochreihen = 1) |
+| `shift` | -62.5 | mm | [E] Phase der Lochreihe: Variante A -pitch/4, Variante B +pitch/4 -> benachbarte Rinnen im Tisch um pitch/2 versetzt (Zickzack) |
 
 Gesamt-Box (Messung): X -1645.0 bis 1650.0, Y -65.0 bis 65.0, Z 0.0 bis 100.0 mm; Koerper: 3.
 
-**Toleranzen / Spiel:** Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90 (Klebespalt, Fuge mit PVC-Kleber/Silikon 2 mm Kehlnaht, nicht als Koerper modelliert); Topfloch +2 mm zum Topf; Kragen liegt 2 mm neben der Mittelrippe.
+**Toleranzen / Spiel:** Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90 (Klebespalt, Fuge mit PVC-Kleber/Silikon 2 mm Kehlnaht, nicht als Koerper modelliert); Topfloch +2 mm zum Topf; Kragen R32 laesst 3,5 mm bis zur inneren Rippe.
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: PVC-U weiss, UV-stabilisiert (alternativ PP), Dichte 1.4 g/cm3, Farbe #f2f2ee ([A] ref-6 weisse Rinne)
-- Volumen (Messung, `solidcraft-cli eval`): 3647.6 cm3 · Masse leer: 5107 g (5.11 kg)
+- Volumen (Messung, `solidcraft-cli eval`): 3966.7 cm3 · Masse leer: 5553 g (5.55 kg)
 
 ## Querschnitt / Profil
 
-Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, Mittelrippe 4 x 5 mm (endet 20 mm vor den Kappen): Gesamthoehe 100; zwei versetzte Reihen Topfloecher D52 bei y = +-30, Teilung 250 je Reihe, Versatz 125 (L 24, M 14, K 8 Loecher), erstes Loch 120 mm vom Ende.
+Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf der Oberseite (y = +-38 und +-52, enden 20 mm vor den Kappen): Gesamthoehe 100; EINE Reihe Topfloecher D52 in der Mittellinie, Teilung 250 (L 12, M 7, K 5 Loecher), Reihe um shift = +-62,5 verschoben (Phase A/B fuer den Zickzack im Tisch).
 
 ## Ports (Anschluesse)
 
@@ -64,7 +65,7 @@ Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, Mittelrippe 4 x 5 mm (end
 
 - Referenzbild: reference/ref-6-grow-tables-detail.jpg
 - Quelle der Masse: docs/components.md und data/layout.json hydro_tables: Breite 130, Hoehe 100, Laengen 1304 / 1983 / 3232; ref-6: weisse Rinnen mit Rippen
-- Abweichung zum OBJ: OBJ-Rinnen 129/130 x 102/103 mm, Laenge 1304/1983/3232: Modell Breite 130, Hoehe 100, Laenge ueber len_l (Abweichung <= 3 %). Die OBJ-Hoehe 102-103 enthaelt vermutlich Plattenreste/Rippen [A].
+- Abweichung zum OBJ: OBJ-Rinnen 129/130 x 102/103 mm, Laenge 1304/1983/3232: Modell Breite 130, Hoehe 100, Laenge ueber len_l (Abweichung <= 3 %). Die OBJ zeigt keine Topfloecher in den Rinnen (Platten mit Loechern, Hidrtoponia): Lochreihe nach ref-6 und Scope-Card.
 
 ## Montage (L4)
 
@@ -96,13 +97,14 @@ Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne
 
 ## Pruefung
 
-- Gauntlet-Urteil: Runde 1: Referenz gewaehlt (A), grosse Luecken: zwei versetzte Lochreihen (behoben), Endkappe/Spalt, Ablauf/Zulauf (behoben); Runde 2 offen
-- `solidcraft-cli eval`: Boxen und Massen; Schnitt `nft_rinne-06-schnitt-zulauf.png`, Querschnitt `nft_rinne-07-querschnitt.png`
-- Gefaelle: wird im Tisch gebaut (Neigung 0,573 Grad)
+- Gauntlet-Urteil: offen
+- Scope-Card nft_rinne: Lochreihen je Rinne = 1, Loecher = floor(Laenge/pitch) (L 12, M 7, K 5), Breite 130
+- Triage der Kritiker-Luecken Runde 1 und 2 in `docs/workshop-log.md`
 
 ## Offene Fragen
 
-- Rippenprofil und Wandstaerke sind Annahmen [A]
-- Topfzahl und -raster je Rinne sind unsere Auslegung (zwei Reihen, Teilung 250)
+- Rippenprofil (vier Rippen 5x5) und Wandstaerke sind Annahmen [A]
+- Lochabstand 250 ist unsere Auslegung, ref-6 gibt kein Mass
 - Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)
 - Klebefuge der Endkappen nicht als Koerper modelliert
+- Zickzack (Phase A/B) wird im Tisch gebaut, Varianten nft_rinne_<l|m|k>_<a|b>.sc

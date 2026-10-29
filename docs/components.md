@@ -30,3 +30,16 @@ Der Sockel ist ein Zehneck: 10 Sektoren zu je 36 Grad, Mitte der Aussenbeete bei
 3. `scripts/check_fidelity.py` vergleicht das Modell je Klasse mit `layout.json` (Anzahl, mittlere Positionsabweichung nach `layout_rot`).
 4. Kegelboeden der Tanks beachten: Zylinder oberhalb der Plattform, Kegel darunter bis zur Fitting-Spitze. Fittings sind die Anschluss-Ports fuer den Wasserkreislauf (`data/system.json`).
 5. NFT-Rinnen mit leichtem Gefaelle (Wasser soll laufen); Hoehe und Gefaelle in `docs/hydraulics.md` festlegen. Die Z-Werte im OBJ sind Unterkanten der ganzen Rinne.
+
+## NFT-Ringe: drei Zehneck-Ringe (Auswertung 29.10.2026, nach Bens Hinweis auf den inneren Ring ueber dem Pool)
+
+Das OBJ zeigt je Ring nur EIN Beispiel (Azimut ca. 78 bzw. 113 Grad). Die Rinnenlaengen passen exakt auf regelmaessige Zehnecke (Seite = 2 x Apothem x tan 18 Grad), also sind es durchgehende Ringe mit je einem Tisch je 36-Grad-Sektor, gleiche Sektor-Azimute wie die Beete (5,3 + 36 k im OBJ-Koordinatensystem, im Modell um `layout_rot` gedreht):
+
+| Ring | Apothem der Rinnen (mm) | Rinnen je Tisch | Rinnenlaenge | Pruefung (2 x Apothem x tan 18) | Z (Unterkante) | Tische |
+|---|---|---|---|---|---|---|
+| Innen, ueber dem Pool | 1733 und 1995 (Abstand 262) | 2 | 1304 | 2 x 1995 x 0,3249 = 1296 | 819 und 858 | 10 (voller Ring; Tuerseite pruefen) |
+| Mitte, ueber den Innenbeeten | 2987, 3248, 3514, 3775 (Abstand ca. 263) | 4 | 1983 | Seite bei Apothem 3,4 m = 2210, Tisch kuerzer, also einzelne Tische mit Luecke | 1280-1330 | 6 (Sektoren der Innenbeete) |
+| Aussen, ueber den Aussenbeeten | 4888 und 5176 (Abstand 288) | 2 (im OBJ; je Beet nach Beetbreite 3) | 3232 | 2 x 5000 x 0,3249 = 3249 | 1291-1325 | 8 (Sektoren der Aussenbeete) |
+
+Der innere Ring haengt ueber dem Pool: Pool-Wasserradius 1945 mm, Beckenrand Z ca. 650, Rinnen auf Z 819-858 darueber, also etwa 170-210 mm ueber dem Rand. Die innere Rinne (Apothem 1733) ist als Zehneck mit Seite 1126 mm kuerzer als die Rinnenlaenge 1304: Gehrung/Ueberlappung an den Ecken klaeren oder Rinnen entsprechend kuerzen. Das zweite Becken liegt bei Azimut 166, r 3017, Radius 873: sein inneres Ende bei r 2144 liegt knapp ausserhalb der aeusseren inneren Rinne (1995 plus halbe Rinnenbreite 65 = 2060). Aufhaengung/Stuetzen des inneren Rings (ausserhalb des Pools auf Beinen oder Ausleger vom Beckenrand) aus dem Bild ref-4 und der OBJ-Geometrie ableiten und im Bauteilblatt festhalten.
+Dome-Pruefung: Basis-Zehneck mit Umkreisradius 6000 hat Seitenlaenge 2 x 6000 x sin 18 = 3708 mm = Strebe B; Apothem 5706 mm. Die aeussere Rinne (Apothem 5176 + 65) liegt damit gut 0,4 m innerhalb der Kuppelwand.

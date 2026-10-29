@@ -8,3 +8,4 @@
 - R10: check_latte.py 23/23 PASS: Strebenlift 75 mm, Bettbeine/Wannen entzerrt (Kollisionen 0).
 - R11 (Schicht 1): Farben je Teil per appearance.assign (Tanks salbeigruen, Tische weiss, Rohr/Schlaeuche blau, Streben silber, Wasser blau); check 23/23.
 - R12 (Schicht 2): Salatkoepfe (Kugeln) auf Tischen und in Wannen (T12_Salat_nnn); check 23/23.
+- R13 (Komponenten): Bauteil Pflanztisch als eigenes Design  (Rippen, 3 gestaffelte Reihen, Winkelstuetzen); Einbau ins Dom-Modell noch offen.

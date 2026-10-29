@@ -35,6 +35,12 @@
   .cat > .node { font-weight:600; }
   .kids { display:none; } .open > .kids { display:block; }
   #sel { min-height:18px; color:var(--sel); font-size:12px; margin:4px 0; }
+  #info { background:#101a24; border:1px solid var(--line); border-radius:6px; padding:8px 10px; margin:6px 0; font-size:12px; line-height:1.45; }
+  #info h3 { margin:0 0 4px; font-size:13px; color:var(--text); }
+  #info .k { color:var(--muted); font-weight:600; margin-top:5px; }
+  #info ul { margin:2px 0 0; padding-left:16px; }
+  #info .note { color:#d9c35b; margin-top:5px; }
+  #info .ph { color:var(--muted); }
 </style>
 <script type="importmap">
 { "imports": { "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -57,6 +63,7 @@
   <h2>Bauteile (Hover leuchtet, Klick waehlt)</h2>
   <div class="row"><button id="expandAll">Alle auf</button><button id="collapseAll">Alle zu</button><button id="showAll">Alle zeigen</button><button id="clearSel">Auswahl weg</button></div>
   <div id="sel"></div>
+  <div id="info"><span class="ph">Zeige auf ein Bauteil in der Liste oder klicke es im Modell an: hier steht, was es ist, wie es funktioniert und was modelliert ist.</span></div>
   <div id="tree"></div>
   <div id="perf" style="color:var(--muted);font-size:11px;margin-top:6px"></div>
   <h2>Bauteil-Stand (Board)</h2>
@@ -184,8 +191,28 @@ function rebuildHighlight() {
   add(selected ? [selected] : null, hlMat.sel);
   add(hover, hlMat.hover);
 }
-function setHover(items, node) {
+function setHover(items, node, o) {
   hover = items; document.querySelectorAll('.node.hov').forEach(n => n.classList.remove('hov')); if (node) node.classList.add('hov'); rebuildHighlight();
+  if (node && o) showInfo(o); else showInfo(selected ? { kind: 'inst', stem: selected.stem } : null);
+}
+
+// ---- Beschreibungen (data/descriptions.json) --------------------------------------------------------------------
+let DESC = { kategorien: {}, bauteile: [] };
+fetch('/descriptions.json?v=' + Date.now()).then(r => r.json()).then(d => { DESC = d; }).catch(() => {});
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+function descOf(stem) { return DESC.bauteile.find(b => new RegExp(b.match).test(stem)); }
+function showInfo(o) {
+  const box = document.getElementById('info');
+  if (!o) { box.innerHTML = '<span class="ph">Zeige auf ein Bauteil in der Liste oder klicke es im Modell an: hier steht, was es ist, wie es funktioniert und was modelliert ist.</span>'; return; }
+  if (o.kind === 'cat') { box.innerHTML = `<h3>${esc(o.key)}</h3><div>${esc(DESC.kategorien[o.key] || '')}</div>`; return; }
+  const stem = o.kind === 'leaf' ? leaves.get(o.key).stems[0] : o.stem, d = descOf(stem);
+  if (!d) { box.innerHTML = `<h3>${esc(stem)}</h3><span class="ph">Noch keine Beschreibung hinterlegt (data/descriptions.json).</span>`; return; }
+  const list = a => a && a.length ? `<ul>${a.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '';
+  box.innerHTML = `<h3>${esc(d.titel)}</h3><div>${esc(d.was)}</div>` +
+    `<div class="k">So funktioniert es</div><div>${esc(d.funktion)}</div>` +
+    (d.modelliert ? `<div class="k">Im Modell enthalten</div>${list(d.modelliert)}` : '') +
+    (d.kennzahlen ? `<div class="k">Kennzahlen</div>${list(d.kennzahlen)}` : '') +
+    (d.hinweis ? `<div class="note">Hinweis: ${esc(d.hinweis)}</div>` : '');
 }
 
 // ---- Baum aufbauen ----------------------------------------------------------------------------------------------
@@ -229,8 +256,8 @@ function nodeRow(o) {
     (o.color ? `<span class="sw" style="background:${o.color}"></span>` : '') +
     `<span class="name" title="${o.label}">${o.label}</span><span class="cnt">${o.count === '' ? '' : '(' + o.count + ')'}</span>`;
   const items = () => o.kind === 'inst' ? [{ stem: o.stem, idx: o.idx }] : itemsOf(o.kind, o.key);
-  n.addEventListener('mouseenter', () => setHover(items(), n));
-  n.addEventListener('mouseleave', () => setHover(null, null));
+  n.addEventListener('mouseenter', () => setHover(items(), n, o));
+  n.addEventListener('mouseleave', () => setHover(null, null, null));
   n.querySelector('.chev').addEventListener('click', e => {
     const p = n.parentElement; p.classList.toggle('open'); const id = p.dataset.key;
     p.classList.contains('open') ? openNodes.add(id) : openNodes.delete(id); e.stopPropagation();
@@ -269,7 +296,7 @@ function markSelection() {
   row = row || find('leaf:' + lk);
   if (row) { row.classList.add('sel'); row.scrollIntoView({ block: 'nearest' }); }
 }
-function select(s, fromModel) { selected = s; markSelection(); rebuildHighlight(); }
+function select(s, fromModel) { selected = s; markSelection(); rebuildHighlight(); showInfo(s ? { kind: 'inst', stem: s.stem } : null); }
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2(); let down = null;
 renderer.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
 renderer.domElement.addEventListener('pointerup', e => {

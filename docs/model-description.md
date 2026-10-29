@@ -70,6 +70,7 @@ Wiederkehrende Teile als Komponenten (D12) · Zickzack-Pflanzmuster (Phase A/B d
 Tuer komplett (M3) · Rohrnetz aus dem Wasserweg-Graphen (M4, M5) · Laufwege-Umbau (M7, W17) · Haut/Paneele (R11) · vollstaendige Kollisionspruefung · Pflanzenartmodelle (7 Arten laut Tabelle, bewusst hinten) · Fragen an Ben: Innenring 6 oder 10 Tische, Zuchtbecken gleich zweites Becken, 2 oder 4 Pumpen, 2 oder 3 Rinnen je Aussentisch.
 
 ## 10. Verlauf (neueste zuerst)
+- 30.10. 00:05 Viewer: Beschreibungskarte zu jedem Bauteil (Was ist es, so funktioniert es, im Modell enthalten, Kennzahlen, Hinweise) aus `data/descriptions.json`; 21 Bauteilgruppen beschrieben, Kategorien erklaert.
 - 30.10. 00:00 Werkstatt W19: Kuppelhaut als Komponenten (40 Dreiecke, 2 Typen, Randprofil), Recherche R11; Becken wird zentriert, Zickzack bleibt (D35).
 - 29.10. 23:55 Werkstatt: gemeinsamer Pruefer W17+W18, Laufweg A am Innenpfosten von 486 auf >= 500 mm (Parameter `leg_clearance_innen`), check_nft_fit 42/42.
 - 29.10. 22:40 Werkstatt W18: Lochabstand der NFT-Rinnen 250 auf 200 mm (Recherche R16), Rinnenpflanzen 462 auf 586, Gesamt 2746 Pflanzen-Toepfe; check_nft_fit 40/40.

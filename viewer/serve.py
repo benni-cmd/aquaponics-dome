@@ -66,6 +66,8 @@ class H(http.server.SimpleHTTPRequestHandler):
     def translate_path(self, path):
         # /history/... liefert den Bildverlauf (renders/history), alles andere kommt aus viewer/
         p = path.split('?', 1)[0]
+        if p == '/descriptions.json':
+            return os.path.join(ROOT, 'data', 'descriptions.json')
         if p == '/history' or p.startswith('/history/'):
             rel = p[len('/history'):].lstrip('/') or 'index.html'
             full = os.path.abspath(os.path.join(ROOT, 'renders', 'history', rel))

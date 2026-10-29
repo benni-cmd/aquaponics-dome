@@ -62,3 +62,16 @@ Offen: Schritte 1-7; echte Masse (DEINE ENTSCHEIDUNG, falls bekannt)
 11. Sockel flach, Zehneck, kaum Ueberstand — erfuellt (0,4 m hoch, 0,25 m Ueberstand)
 12. Pflanztische wie ref-6 — weitgehend erfuellt (Runde 8): 10 Tische, 3 gestaffelte Reihen x 6 Loecher, 4 Substratwannen, 6 Schlaeuche (T10_Schlauch_n) von Fasstanks zum Zentraltank; offen: Neigung, gerippte Oberseite, Winkelstuetzen, Schlaeuche zwischen Tischen, 10-12 Tische bleibt bei 10 (Tuer)
 13. Tanks wie ref-5 — weitgehend erfuellt (Runde 8): Wand 160 mm, Wasserscheibe T5_Wasser, 6 Fasstanks + Mitteltank; offen: gerundeter Rand, Farben (SolidCraft-Aussehen nicht gesetzt)
+
+## Bauteil-Katalog (wiederkehrend, Anzahl) — Komponenten-Umbau
+Wahl: echte Instanzen via `component.insert_design` (+ `occurrence.move`), Bauteile in `designs/components/<name>.sc`. Reihenfolge: Pflanztisch (ref-6) -> Salatkopf -> Fasstank (ref-5) -> Zentralpool + Mitteltank -> Substratwanne -> Strebe/Knoten -> Tuer -> Schlauch/Rohr -> Haut T2.
+| Bauteil | Anzahl | Referenz |
+|---|---|---|
+| Strebe | 63 | ref-5 |
+| Pflanztisch T8 | 10 | ref-6 |
+| Fasstank T7 | 6 | ref-5 |
+| Zentralpool T5 / Mitteltank T6 | 1 / 1 | ref-5 |
+| Substratwanne T9 | 4 | ref-6 |
+| Salatkopf | 210 | ref-6 |
+| Schlauch T10 | 6 | ref-6 |
+| Tuer T4 / Rohr T10 / Schaltschrank T11 | 1 / 1 / 1 | ref-5 |

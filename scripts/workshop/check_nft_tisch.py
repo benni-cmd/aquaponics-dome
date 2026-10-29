@@ -9,6 +9,38 @@ import tisch_geom as TG
 def hole_xs(fs):
     return sorted({round(f["cylinder"]["origin"][0], 1) for f in fs if f.get("cylinder") and abs(f["cylinder"]["radius"] - 26) < 0.1 and abs(abs(f["cylinder"]["axis"][2]) - 1) < 0.02})
 
+def interference(path, group, ignore):
+    """inspect.interference der ganzen Datei; liefert (a, b, volumen) fuer Paare, in denen genau ein Teil zur Gruppe gehoert und das andere nicht zu den ignorierten Namen."""
+    import json, subprocess
+    script = os.path.join(sc.TMP, "ws-interf.json")
+    out = os.path.join(sc.TMP, "ws-interf-out.json")
+    json.dump({"commands": [{"command": "inspect.interference", "params": {"budget_s": 200}}]}, open(script, "w"))
+    r = subprocess.run([sc.CLI, "run", script, "--in", path, "--results", "--json-out", out], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER interference: " + r.stderr.strip())
+    d = json.load(open(out, encoding="utf-8"))
+    def find(o):
+        if isinstance(o, dict):
+            if "interferences" in o:
+                return o["interferences"]
+            for v in o.values():
+                x = find(v)
+                if x is not None:
+                    return x
+        elif isinstance(o, list):
+            for v in o:
+                x = find(v)
+                if x is not None:
+                    return x
+    res = []
+    for i in find(d) or []:
+        a, b_ = i["a"], i["b"]
+        for x, y in ((a, b_), (b_, a)):
+            if x.startswith(group) and not y.startswith(ignore):
+                res.append((x, y, i.get("volume_mm3", 0)))
+                break
+    return res
+
 def main(typs):
     p, d = sc.load_params("nft_tisch")
     pitch = sc.load_params("nft_rinne")[0]["pitch"]
@@ -58,6 +90,32 @@ def main(typs):
         ck.eq(f"{typ} Schlaeuche", len([k for k in B if k.startswith("Schlauch_")]), n)
         for (lx, ly), b in zip(sorted(G["legs"]), beine):
             ck.eq(f"{typ} Bein bei x={lx:.0f} Lage y (ausserhalb Beet/Pool)", (b["bbox"]["min"][1] + b["bbox"]["max"][1]) / 2, ly, 0.6)
+        wk = [b for k, b in B.items() if k.startswith("Winkel")]
+        ck.eq(f"{typ} Winkelhalter (je Bein einer)", len(wk), len(G["legs"]))
+        ck.eq(f"{typ} Winkelhalter-Normteile (2 x M6x16, 2 x M6x55, 2 Muttern je Winkel)", len([k for k in B if k.startswith("winkelhalter")]), 6 * len(G["legs"]))
+        holme = [b for k, b in B.items() if k.startswith(("Holm_", "Kragarm_"))]
+        for (lx, ly), bein in zip(sorted(G["legs"]), beine):
+            sg = 1 if ly < 0 else -1
+            yface = (bein["bbox"]["max"][1] if sg > 0 else bein["bbox"]["min"][1])             # Beininnenflaeche aus der Bein-bbox (nicht aus der Platzierungsformel)
+            cand = [w for w in wk if abs((w["bbox"]["min"][0] + w["bbox"]["max"][0]) / 2 - lx) < 1.0]
+            w = min(cand, key=lambda w: abs((w["bbox"]["min"][1] if sg > 0 else w["bbox"]["max"][1]) - yface), default=None)
+            if w is None:
+                ck.eq(f"{typ} Winkelhalter am Bein x={lx:.0f}, y={ly:.0f} vorhanden", 0, 1)
+                continue
+            ck.eq(f"{typ} Winkelhalter x={lx:.0f}, y={ly:.0f}: Anlage Beininnenflaeche (y)", w["bbox"]["min"][1] if sg > 0 else w["bbox"]["max"][1], yface, 0.3)
+            hb = min(holme, key=lambda h: abs((h["bbox"]["min"][0] + h["bbox"]["max"][0]) / 2 - lx))
+            ck.eq(f"{typ} Winkelhalter x={lx:.0f}, y={ly:.0f}: Oberkante = Unterkante Holm/Kragarm (z)", w["bbox"]["max"][2], hb["bbox"]["min"][2], 0.3)
+            ck.eq(f"{typ} Winkelhalter x={lx:.0f}, y={ly:.0f}: Oberkante = Beinoberkante (z)", w["bbox"]["max"][2], bein["bbox"]["max"][2], 0.3)
+            bb = w["bbox"]
+            ck.eq(f"{typ} Winkelhalter x={lx:.0f}, y={ly:.0f}: Breite", bb["max"][0] - bb["min"][0], 36, 0.3)
+            ck.eq(f"{typ} Winkelhalter x={lx:.0f}, y={ly:.0f}: senkrechter Schenkel", bb["max"][2] - bb["min"][2], 60, 0.3)
+            ck.eq(f"{typ} Winkelhalter x={lx:.0f}, y={ly:.0f}: waagerechter Schenkel", bb["max"][1] - bb["min"][1], 60, 0.3)
+        ck.eq(f"{typ} Winkelhalter Dichte Stahl (Masse 126,8 g je Winkel)", min(w["mass_g"] for w in wk) if wk else 0, 126.8, 1.0)
+        # Interferenz: Winkelhalter und deren Normteile gegen alles ausser Bein/Holm/Kragarm (Rohrwaende ohne Loecher: vereinfacht) und gegeneinander
+        cross = interference(path, ("Winkel", "winkelhalter"), ("Bein_", "Holm_", "Kragarm_", "Winkel", "winkelhalter"))
+        ck.eq(f"{typ} Winkelhalter-Interferenzen mit anderen Teilen (Schrauben, Diagonalen, Rinnenhalter)", len(cross), 0)
+        for a, b_, v in cross[:6]:
+            print("   Interferenz", a, b_, round(v, 1), "mm3")
         if G["art"] == "portal":
             ck.eq(f"{typ} Querholme", len([k for k in B if k.startswith("Holm_")]), nb)
             ck.eq(f"{typ} Querstreben", len([k for k in B if k.startswith("Querstrebe_")]), nb)

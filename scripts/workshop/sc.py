@@ -92,11 +92,11 @@ def faces_multi(sc_path, bodies):
         sys.exit("FEHLER faces_multi: " + r.stderr.strip())
     return {x["body"]: x["faces"] for x in json.loads(r.stdout)}
 
-def assign_part_materials(sc_path, material):
+def assign_part_materials(sc_path, material, pattern=r"Body\d+"):
     """Normteile aus parts.insert heissen 'Body<n>' und tragen die Standarddichte 1,29: Material nachtraeglich zuweisen (speichert die Datei neu)."""
     import re
     ev = evaluate(sc_path)
-    names = [b["name"] for b in ev["bodies"] if re.fullmatch(r"Body\d+", b["name"])]
+    names = [b["name"] for b in ev["bodies"] if re.fullmatch(pattern, b["name"])]
     if not names:
         return 0
     script = os.path.join(TMP, "ws-partmat.json")

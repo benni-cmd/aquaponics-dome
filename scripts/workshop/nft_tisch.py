@@ -75,6 +75,14 @@ def build(typ):
             b.add("material.assign", bodies=[f"Fussplatte_{i}{tag}"], material="Stahl verzinkt")
             for hx, hy in ((-fp / 2 + 15, -fp / 2 + 15), (fp / 2 - 15, fp / 2 - 15)):
                 b.add("parts.insert", family="hex_bolt", size="M8", length=30, point=[lx + hx, ly + hy, p["foot_t"]], direction=[0, 0, 1], name=f"Schraube_{i}{tag}{int(hx)}")
+            # Winkelhalter T23 (W11): Eckwinkel zwischen Beininnenflaeche (zum Holm hin) und Holmunterkante; Bein mit ly < 0 -> Winkel nach +Y, sonst um 180 Grad gedreht
+            sgn = 1 if ly < 0 else -1
+            wn = f"Winkelhalter_{i}{tag}"
+            fy = round(ly + sgn * leg_w / 2, 3)
+            b.add("component.insert_design", path="designs/components/winkelhalter.sc", name=wn)
+            b.add("occurrence.move", occurrence=f"{wn}:1", translate=[lx, fy, round(zb, 3)], move_grounded=True)
+            if sgn < 0:
+                b.add("occurrence.move", occurrence=f"{wn}:1", axis=[0, 0, 1], angle="180 deg", origin=[lx, fy, round(zb, 3)], space="world", move_grounded=True)
         if G["art"] == "portal":
             yl = G["yl"]
             hlen = 2 * yl + leg_w
@@ -198,6 +206,7 @@ if __name__ == "__main__":
         b, G = build(typ)
         out = os.path.join(sc.ROOT, "designs", "components", f"nft_tisch_{typ}.sc")
         sc.run(b.write(f"nft_tisch_{typ}"), out)
+        sc.assign_part_materials(out, "Stahl verzinkt", r"Body\d+|Winkel( \(\d+\))?|winkelhalter( \(\d+\))?")      # Normteile und Winkelhalter-Instanzen tragen sonst Default 1,29 g/cm3
         ev = sc.evaluate(out)
         mass = sum(x["mass_g"] for x in ev["bodies"])
         mn, mx = sc.bbox_all(ev)

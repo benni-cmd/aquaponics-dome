@@ -1,6 +1,6 @@
 # Bauteilblatt T22 nft_tisch (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/nft_tisch.json` und `designs/components/nft_tisch.sc`, nicht von Hand aendern)
 
-**Funktion:** Traegt n NFT-Rinnen mit 1,5 % Gefaelle (Zulauf hoch bei -X), verteilt Wasser ueber Zulaufverteiler und Schlaeuche (ein Schlauch je Rinne) und sammelt den Ablauf im Sammelrohr; Zickzack der Pflanzen durch Phase A/B benachbarter Rinnen (pitch/2). Rev. B (W16/D18): jede Reihe hat ihre eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap minus Ueberstaende), Verteiler und Sammelrohr laufen schraeg entlang der Sektorgrenze, die Beine stehen ausserhalb der Beete (Portalbock) bzw. ausserhalb des Pools (Auslegerbock innen).
+**Funktion:** Traegt n NFT-Rinnen mit 1,5 % Gefaelle (Zulauf hoch bei -X), verteilt Wasser ueber Zulaufverteiler und Schlaeuche (ein Schlauch je Rinne) und sammelt den Ablauf im Sammelrohr; Zickzack der Pflanzen durch Phase A/B benachbarter Rinnen (pitch/2). Rev. B (W16/D18): jede Reihe hat ihre eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap minus Ueberstaende), Verteiler und Sammelrohr laufen schraeg entlang der Sektorgrenze, die Beine stehen ausserhalb der Beete (Portalbock) bzw. ausserhalb des Pools (Auslegerbock innen). Rev. B + W11: je Bein ein Winkelhalter T23 (Eckwinkel 36 x 60 x 60 x 4) zwischen Beininnenflaeche und Holmunterkante.
 
 **Datei:** `designs/components/nft_tisch.sc` · **Teilenummer:** T22 · **Revision:** B · **Bezugspunkt:** Mitte der Standflaeche (Z=0 Boden), X Laengsachse (Zulauf bei -X), Y quer
 
@@ -38,17 +38,17 @@
 | mitte | 4 | 263 | m | 1300 | 1981 / 1810 / 1639 / 1468 (je Reihe) | layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 3343 mm ([E]) | 3343 | [E] Mittel der Beetradien innen (layout.json ibc_beds r 3311-3408): Tischmitte liegt auf der Beetmitte; OBJ-Reihen ap 2987-3775 (Mittel 3381, Abweichung 38 mm) |
 | innen | 2 | 262 | k | 840 | 848 / 678 (je Reihe) | layout.json hydro_tables r 1733/1995, Rinnen-Unterkante Z 819-858 (Mittel 838,5, gerundet 840 = +1,5 mm), Abstand 262 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 1864 mm ([E]) | 1864 | [E] Mittel der OBJ-Reihen ap 1733/1995 (layout.json hydro_tables); Pool Wasserradius 1945 |
 
-Gesamt-Box (Messung, Variante nft_tisch_aussen): X -1725.4 bis 1724.2, Y -656.5 bis 656.5, Z -25.0 bis 1423.5 mm; Koerper: 84.
+Gesamt-Box (Messung, Variante nft_tisch_aussen): X -1725.4 bis 1724.2, Y -656.5 bis 656.5, Z -25.0 bis 1423.5 mm; Koerper: 112.
 
 **Toleranzen / Spiel:** Rinnenunterkante = Holm-/Kragarm-Oberkante an jedem Bock (Pruefung +-1 mm); Gefaelle 1,5 % +-0,05 %; Rinnenhoehe Z +-1,5 mm; Lochlage je Rinne +-1,5 mm zur Rechnung; Abstand zwischen benachbarten Tischen an der Ecke >= corner_gap (100 mm; gemessen 171-190 mm); Beine/Fussplatten >= 30 mm von jedem Beet-Rechteck (leg_clearance 60 mm sollwert). Gewichte: Summe je Koerper nach Werkstoff (Stahl 7,85, PVC 1,4 g/cm3; die Messung am .sc enthaelt auch die verknuepften Rinnen).
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: Stahl verzinkt (Boecke), PVC/PE (Rohre, Schlaeuche), Dichte 7.85 g/cm3, Farbe #aeb4b8 (ref-6: graue/verzinkte Beine mit Halterungen)
-- Volumen (Messung, Variante nft_tisch_aussen, `solidcraft-cli eval`): 18799.6 cm3 · Masse leer: 71842 g (71.84 kg)
-- Variante `nft_tisch_aussen`: 71.84 kg leer
-- Variante `nft_tisch_mitte`: 58.52 kg leer
-- Variante `nft_tisch_innen`: 15.10 kg leer
+- Volumen (Messung, Variante nft_tisch_aussen, `solidcraft-cli eval`): 18887.1 cm3 · Masse leer: 71955 g (71.96 kg)
+- Variante `nft_tisch_aussen`: 71.96 kg leer
+- Variante `nft_tisch_mitte`: 58.63 kg leer
+- Variante `nft_tisch_innen`: 15.16 kg leer
 - Gefuellt/in Betrieb: Wasserfuellung der Rinnen (Film 10 mm, 1 l = 1 kg): aussen 3 x 4,0 = 12 kg, Mitte 4 x 2,5 = 10 kg, innen 2 x 1,6 = 3,2 kg [E]; Verteiler d25 und Sammelrohr d50 gefuellt je ca. 0,3-1,6 kg [E]
 
 ## Querschnitt / Profil
@@ -79,6 +79,7 @@ Mitte/aussen: Portalbock aus Rechteckrohr verzinkt: Beine 40x40x3, Querholm 40 x
 - Diagonalen (nur Portal): je Ende Schraube M6x40 mit Mutter durch das Bein
 - Rinnenhalter: L-Blech 3 mm, 25 x 25 x 25, je Rinnenseite und Bock, Schraube M5x12
 - Verteiler: schraeges Rohr d25 mit Stutzen D16 (Verklebung/Schweissen), Schlaeuche ID 16 auf Tuelle und Stutzen; Sammelrohr d50 schraeg mit Muffen d40/d32 auf den Ablaufstutzen
+- Winkelhalter T23 (W11): je Bein ein Eckwinkel 36 x 60 x 60 x 4 an der Beininnenflaeche (2 x M6x50 mit Mutter durch das Bein) und unter Holm/Kragarm (2 x M6x16 in Blindnietmuttern M6, nicht modelliert); Schenkel am Bein 60 mm (z -60..0), unter dem Holm 60 mm (y 0..60); Bein mit y < 0 nach +Y, Bein mit y > 0 um 180 Grad gedreht
 
 ## Herkunft (docs/provenance.md)
 
@@ -118,6 +119,7 @@ Mitte/aussen: Portalbock aus Rechteckrohr verzinkt: Beine 40x40x3, Querholm 40 x
 | Durchgangsloch D9 in der Fussplatte fuer M8 | D9 | E | ISO 273 mittel fuer M8 (9 mm) | hoch |
 | Kragarm-Ueberstand 30 mm ueber die innerste Rinne (nur innen) | 30 mm | A | Konstruktionspraxis; Portalholm endet buendig an der Beinaussenseite (kein Ueberstand) | niedrig |
 | Tisch-KS und Platzierung: X tangential CCW, Y radial nach innen, yaw = Azimut + 90 Grad (volle 360 Grad) | yaw az + 90 | E | Y = Z x X bei dieser Drehung; layout.json hydro_tables speichert yaw nur modulo 180 (aussen Sektor 3, 6-9 und Mitte/innen 7-9 haben dort az - 90): wer den OBJ-Wert woertlich nimmt, setzt den Tisch um 180 Grad gedreht | hoch |
+| Winkelhalter T23 je Bein (Eckwinkel am Beinkopf) | 76 gesamt | A + E | Job W11 / Scope-Card winkelhalter; Beinzahl 2/4/4 je Tisch aus tisch_geom.py, Tischzahl 10/6/8 aus layout.json; Ausfuehrung Annahme A | niedrig |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -128,10 +130,11 @@ Mitte/aussen: Portalbock aus Rechteckrohr verzinkt: Beine 40x40x3, Querholm 40 x
 ## Montage (L4)
 
 1. Bock am Boden ausrichten: Portal ausserhalb der Beete bzw. Pfosten ausserhalb des Pools, Fussplatten mit M8 / Verbundankern verschrauben
-2. Querstrebe und Laengsstreben einsetzen, Diagonalen verschrauben (Portal)
-3. Rinnen auf die Querholme/Kragarme legen (Zulaufende hoeher), Halteclips M5 setzen
-4. Zulaufverteiler schraeg entlang der Sektorgrenze haengen, Schlaeuche ID 16 auf Stutzen und Tuellen
-5. Sammelrohr mit Muffen auf die Ablaufstutzen stecken, Gefaelle kontrollieren (1,5 %)
+2. Winkelhalter T23 je Bein an die Holmunterkante schrauben (Blindnietmuttern M6) und am Bein verschrauben (M6x50, Winkel nach innen zum Holm hin), vor dem Auflegen der Rinnen
+3. Querstrebe und Laengsstreben einsetzen, Diagonalen verschrauben (Portal)
+4. Rinnen auf die Querholme/Kragarme legen (Zulaufende hoeher), Halteclips M5 setzen
+5. Zulaufverteiler schraeg entlang der Sektorgrenze haengen, Schlaeuche ID 16 auf Stutzen und Tuellen
+6. Sammelrohr mit Muffen auf die Ablaufstutzen stecken, Gefaelle kontrollieren (1,5 %)
 
 **Werkzeug:** Wasserwaage/Gefaellelatte, Akkuschrauber, Schluessel M5/M6/M8, Bohrmaschine, Schweissgeraet (oder Winkelverbinder)
 
@@ -146,6 +149,7 @@ Mitte/aussen: Portalbock aus Rechteckrohr verzinkt: Beine 40x40x3, Querholm 40 x
 -      Rinnen (2): 848 mm / 3 Loecher, 678 mm / 2 Loecher; Verteiler d25 schraeg: Laenge 538; Sammelrohr d50 schraeg: Laenge 538
 - Je Bock (Portal): 2 Beine, 1 Holm, 1 Querstrebe, 2 Diagonalen, 2 Fussplatten, 4 Schrauben M8x30, 4 Schrauben M6x40 + 4 Muttern M6, 2 Rinnenhalter je Rinne mit Schraube M5x12; Bock-Anzahl 2 je Tisch. Je Bock (Ausleger): 1 Pfosten, 1 Kragarm, 1 Fussplatte, 2 Schrauben M8x30, 2 Rinnenhalter je Rinne.
 - Dabei: 4 Duebel/Anker M8 je Bock (Boden; innen Verbundanker), je 1 Endstopfen d25 und d50 je Tisch (-Y-Rohrende)
+- Je Bein ein Winkelhalter T23 (36 x 60 x 60 x 4, S235 verzinkt, 2 x M6x50 + Mutter, 2 x M6x16): innen 2, mitte 4, aussen 4 je Tisch; gesamt 76 (innen 10 x 2, mitte 6 x 4, aussen 8 x 4), Blatt docs/parts/winkelhalter.md
 
 ## Alternative lokale Fertigung
 
@@ -175,9 +179,9 @@ Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Sys
 ## Pruefung
 
 - Gauntlet-Urteil: offen
-- scripts/workshop/check_nft_tisch.py (124/124 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze
 - scripts/workshop/check_nft_fit.py (36/36 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische: Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite, Footprint-Abstand benachbarter Tische >= 100 (gemessen 171-190), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, Pfosten ausserhalb des Pools
 - Bild-Kritiker (Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innen/Aussen) und Spec-Pruefer: Runden siehe docs/workshop-log.md (W16)
+- scripts/workshop/check_nft_tisch.py (160/160 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze, Winkelhalter (Zahl = Beinzahl, Anlage Beininnenflaeche, Oberkante = Holmunterkante, Schenkel 60, 6 Normteile je Winkel)
 
 ## Offene Fragen
 
@@ -188,6 +192,6 @@ Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Sys
 - aussen 3 Rinnen (OBJ 2) bleibt Annahme; die aeusserste (3.) Reihe liegt auf ap 5497 (Beetmitte 5209 + 288), die inneren auf 5209 und 4921
 - Beine ausserhalb der Beete stehen im Gehweg: Durchgangsbreite zwischen den Beeten und Tischen vom Integrator zu pruefen (Beinabstand y aussen 1213, Mitte 1153)
 - Rinnenabstand 262-288 (OBJ) bei Rinnenbreite 130 laesst 132-158 mm Luecken; ref-6 zeigt fast buendige Rinnen: Widerspruch OBJ/Bild, OBJ gilt (provenance)
-- Schlaeuche gerade statt gebogen; Kopfplatten/Winkelhalter an den Beinkoepfen (W11) nicht modelliert
-- Innen: Pfosten stehen ausserhalb des Beckenrands (Wasserradius 1945 + Wand 150 + 60 + 50); der Kragarm ueberspannt Rand Z 650 mit 130 mm Luft; ein Stuetzwinkel am Pfosten ist wegen der Beckenwand nicht moeglich (Annahme A)
+- Schlaeuche gerade statt gebogen
+- Innen: Pfosten stehen ausserhalb des Beckenrands (Wasserradius 1945 + Wand 150 + 60 + 50); der Kragarm ueberspannt Rand Z 650 mit 130 mm Luft; ein tiefer Stuetzwinkel am Pfosten ist wegen der Beckenwand nicht moeglich (Annahme A); der Winkelhalter T23 sitzt am Pfostenkopf (Z 721-781) ueber dem Beckenrand Z 650
 - Gefaelle: detail-standard.md und Scope-Card nennen noch 1 cm/m, gebaut 1,5 % nach R06 (Orchestrator-Vorgabe)

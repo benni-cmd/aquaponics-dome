@@ -77,3 +77,11 @@ Wiederanlauf: eine geleerte Sitzung ist ein leerer Prozess und fuer Sitzungspost
 ## Wecken geleerter Sitzungen (Ben, 29.10. 13:30 — ausdruecklich erlaubt, Hook-Ausnahme noch offen)
 Ben erlaubt dem Orchestrator, eine nach Regel geleerte Sitzung per Nachricht neu anzustossen (statt neue Sitzungen zu starten). Ablauf: (1) `list_sessions`: Zielsitzung hat `isRunning=false` und ListAgents zeigt sie nicht als busy; (2) Zustandsdatei der Zielsitzung enthaelt die Zeile WIEDERANLAUF und ist committed; (3) Nachricht beginnt mit `WIEDERANLAUF aquaponics-dome:`, hoechstens 300 Zeichen, nur Verweis auf resume.md, Zustandsdatei und Schritt-ID.
 STAND 29.10. 13:45: Ausnahme ist in `.claude/sessionpost-guard.js` eingebaut (Commit 90f3967 im Workspace-Repo, getestet: Praefix durch, andere und zu lange Nachrichten bleiben gesperrt). Ob eine geleerte Sitzung die Nachricht annimmt, ist noch ungetestet: beim ersten echten Leeren pruefen und Ergebnis in docs/orchestrator-state.md eintragen.
+
+## REGEL Wochenlimit (Ben, 29.10. 20:20) — ab 95 % nichts Neues, sauber abschliessen
+Sobald das Wochenlimit (get_usage, Fenster "Weekly") 95 % erreicht:
+1. Orchestrator stoesst NICHTS neu an (keine Nachricht, kein Weckruf, kein neuer Auftrag, keine Recherche, kein Plan-Auffuellen).
+2. Laufende Sitzungen und Unter-Agenten werden NICHT unterbrochen, sie beenden den laufenden Schritt; sie beginnen keinen neuen Schritt, speichern (Zustandsdatei), committen mit Pfad und pushen.
+3. Orchestrator wartet, bis beide Sitzungen idle sind, pruefte dann `git status` (nichts Eigenes ungesichert), laesst den Viewer-Export neu laufen (Server Port 4410, /api/state, Modell neu bauen lassen) und meldet Ben EINE Zeile mit dem Stand.
+4. Kleinere Arbeiten macht Ben danach manuell mit dem Restlimit.
+Die Sitzungen pruefen ihr Limit selbst: nach jedem Schritt `get_usage` (Fenster "Weekly"); ab 95 % keinen neuen Schritt beginnen.

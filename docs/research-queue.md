@@ -11,7 +11,7 @@ Format je Auftrag: **R-ID** | Prioritaet (H = blockiert den Bau, M, N) | Frage |
 | R03 | H | Kiestiefe im Substratbeet, Flutzyklus, Glockensiphon-Auslegung (Quelle zu Medientiefe fehlt) | Beet-Modell und Gewicht | `media_depth`, `siphon_*` | erledigt 29.10. (`docs/research/R03.md`, Konfidenz mittel) |
 | R04 | M | Fischart nach Klima (Tilapia warm, Forelle kalt): Temperatur, Sauerstoff, Besatzdichte, Futter | Biologie-Bilanz | `fish_species`, `stocking_density` | offen |
 | R05 | M | Pool-Wassertiefe aus OBJ ableiten oder Standard; Volumen | Besatz, Umlauf | `pool_depth` | offen |
-| R06 | M | NFT: Rinnenzahl je Beet, Gefaelle, Durchfluss, Topfabstand fuer Salat (zwei Quellen) | Rinnen im Modell, Hydraulik | `nft_channels_per_bed`, `nft_slope`, `nft_flow` | teilweise (hydraulics.md) |
+| R06 | M | NFT: Rinnenzahl je Beet, Gefaelle, Durchfluss, Topfabstand fuer Salat (zwei Quellen) | Rinnen im Modell, Hydraulik | `nft_channels_per_bed`, `nft_slope`, `nft_flow` | erledigt 29.10. (`docs/research/R06.md`, Konfidenz mittel) |
 | R07 | M | Pumpenauswahl: Foerderstrom und Hoehe je Linie, Leistung, Notbetrieb | Elektrik, Pumpen im Modell | `pump_flow`, `pump_head`, `pump_power` | offen |
 | R08 | M | Elektrik: Solar-Inselanlage fuer Pumpen und Luft, Schutzvorschriften Nassbereich | Elektrikdokument | `solar_kwp`, `battery_kwh` | offen |
 | R09 | M | Vortex- und Radialstrom-Absetzer: Auslegung an unseren Tankmassen (Zulauf tangential, Kegelwinkel) | Tanks mit Kegel und Ports | `vortex_*` | teilweise |

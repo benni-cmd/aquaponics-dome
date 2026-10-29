@@ -4,7 +4,7 @@
 
 **Datei:** `designs/components/netztopf.sc` · **Teilenummer:** T10 · **Revision:** A · **Bezugspunkt:** Mitte Boden (Z=0), Achse Z; Kragenoberkante bei Z=cup_h
 
-**Anzahl (Instanzen):** 2160 (Quelle: data/layout.json (OBJ potplant_dxf))
+**Anzahl (Instanzen):** Beete 2160 (OBJ) + Rinnen 556 (E) = 2716 (Quelle: data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_rinne.md (20 Rinnen x 5 + 24 x 7 + 24 x 12 Loecher))
 
 ## Masse und Parameter
 
@@ -51,6 +51,10 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 | 8 Schlitze 3 x 38 mm | 8 | A | Netztoepfe haben Schlitze fuer Wurzeln; Zahl geschaetzt | niedrig |
 | Werkstoff PP schwarz | 0,91 g/cm3 | A | Standard; ref-6 zeigt den Topf nicht (vom Salat verdeckt) | niedrig |
 | Anzahl 2160 | 2160 | OBJ | layout.json pots.total (7 Beete x 288 + 144); Topfzahl der Rinnen kommt aus dem Tisch | hoch |
+| Schlitze 3 x 38 mm, 8 Stueck, ab 8 mm ueber dem Boden | 3 x 38 mm, 8 St. | A | Netztoepfe haben Schlitze fuer den Wurzeldurchtritt; Mass geschaetzt | niedrig |
+| Bodenloch D10 | D10 | A | Standard-Netztopf; OBJ hat nur eine Box | niedrig |
+| Konischer Korpus 34 -> 50 mm, Innenwand parallel | D34 / D50 | A | Standard-Netztopf konisch; Aussen-D oben 50 = OBJ | niedrig |
+| Gesamtzahl 2716 = 2160 (Beete) + 556 (Rinnen) | 2716 | OBJ + E | layout.json pots.total + Rinnen-Blatt (Loecher 5/7/12 je Rinne) | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -67,7 +71,7 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 
 ## Stueckliste-Zeile
 
-- T10 Netztopf 50/64 x 63, PP schwarz, Menge laut layout.json: 2160 (Beete) plus Rinnen (3 Typen, siehe NFT-Rinne)
+- T10 Netztopf 50/64 x 63, PP schwarz: Beete 2160 (OBJ: 7 Aussenbeete x 288 + 144 im Beet bei Azimut 113) + Rinnen 556 (20 Rinnen K x 5 Loecher + 24 Rinnen M x 7 + 24 Rinnen L x 12; Auslegung E) = 2716 gesamt; Ob Rinnen UND Beete bepflanzt werden (Tische stehen ueber den Beeten, decisions D04), entscheidet der Orchestrator/Integrator
 
 ## Alternative lokale Fertigung
 
@@ -75,14 +79,21 @@ Netztoepfe 50 mm sind Massenware (Gartenbedarf/Hydroponik, ca. 0,05-0,10 EUR/Stu
 
 ## Renders
 
-- `renders/components/netztopf/netztopf-01.png`
+- `renders/components/netztopf/netztopf-01-iso.png`
+- `renders/components/netztopf/netztopf-02-schnitt.png`
+- `renders/components/netztopf/netztopf-03-seite.png`
 
 ## Pruefung
 
-- Gauntlet-Urteil: offen
-- Masse und Volumen aus `solidcraft-cli eval`; Schnittbild `renders/components/nft_rinne/nft_rinne-06-schnitt-zulauf.png` zeigt den Topf im Topfloch
+- Gauntlet-Urteil: Bild-Kritiker (Salatkopf): vier Runden, Referenz; Spec-Pruefer: Netztopf FAIL behoben, Salatkopf PASS mit Hinweisen
+- scripts/workshop/check_pflanze.py (14/14 PASS): Masse 50 x 64 x 63 (OBJ), Kragen D64, Bezugspunkt Z=0, 8 Schlitze, Material PP
+- Schnitt `renders/components/netztopf/netztopf-02-schnitt.png` zeigt Wand, Kragen, Schlitze und Bodenloch; Sitz im Topfloch: `renders/components/nft_rinne/nft_rinne-06-schnitt-zulauf.png`
+- Kein Bild-Kritiker: der Netztopf ist in keiner Referenz sichtbar (vom Salat bzw. der Erde verdeckt); Spec-Pruefer (Runde 1: FAIL -> behoben)
 
 ## Offene Fragen
 
 - Farbe schwarz oder weiss (nicht sichtbar in ref-6)
 - Topfhoehe 63 laut OBJ; Standardware ist oft 50 mm
+- Scope-Card netztopf/salatkopf ist nur eine Zeile (ohne Format nach review-protocol 1): Orchestrator ergaenzen (Anzahl je Eltern, Referenz, Pruefzahlen)
+- Anzahl gesamt 2716 gegen Board 'Salatkopf ca. 240+': Orchestrator klaeren
+- Beet-Raster 288 je Beet (24 x 12) gegen layout.json distinct_along 64 / distinct_across 39: Integrator

@@ -1,0 +1,94 @@
+{
+ "klasse": "knoten",
+ "teilenummer": "T60",
+ "beschreibung": "Kuppelknoten (Hub) 4-, 5- und 6-wertig: Knotenkugel D100 mit Steckarmen (Rechteckrohr 23,6 x 23,6) in den Strebenrichtungen aus den Knotenvektoren, Querbolzen M10 je Strebe; Basisknoten mit Ankerlasche. ABWEICHUNG von der Scope-Card (Platten): siehe Blatt",
+ "quelle_masse": "data/layout.json dome.nodes_list (26 Knoten, Wertigkeit, Position; Nachbarn ueber Strebenlaengen 3279/3708 mm), docs/research/R02.md (Bauart Platte/Huelse), docs/scope-cards.md knoten_4/5/6",
+ "parameter": {
+  "spigot_w": {
+   "wert": 23.6,
+   "einheit": "mm",
+   "herkunft": "[E] Steckarm passt in die Strebe 30 x 30 x 3 (Innenmass 24) mit 0,2 mm Spiel je Seite; Strebe 30 x 30 aus oasis-obj-analysis, Wand 3 [A]"
+  },
+  "spigot_wall": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Steckarm Rechteckrohr 3 mm Wand"
+  },
+  "strut_end_offset": {
+   "wert": 120,
+   "einheit": "mm",
+   "herkunft": "Scope-Card: strut_end_offset 120 mm (Annahme A): Strebenende liegt 120 mm von der Knotenmitte"
+  },
+  "hub_insert": {
+   "wert": 80,
+   "einheit": "mm",
+   "herkunft": "Scope-Card/R02: Stecklaenge hub_insert 80 mm in die Strebe (A)"
+  },
+  "bolt_hole": {
+   "wert": 11,
+   "einheit": "mm",
+   "herkunft": "[E] Durchgangsloch fuer M10 (ISO 273 mittel 11)"
+  },
+  "bolt_len": {
+   "wert": 55,
+   "einheit": "mm",
+   "herkunft": "[E] M10x55 ISO 4017: Strebe 30 + 2 Scheiben 4 + Mutter 8 + Gewindeueberstand 5 + Kopf-Aufmass"
+  },
+  "washer_t": {
+   "wert": 2,
+   "einheit": "mm",
+   "herkunft": "[E] Scheibe M10 ISO 7089 ca. 2 mm (Bibliothek parts.insert)"
+  },
+  "lug_w": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[A] Ankerlasche Breite (Basisknoten)"
+  },
+  "lug_t": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "[A] Ankerlasche Dicke"
+  },
+  "lug_l": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[A] Ankerlasche Laenge nach unten"
+  },
+  "lug_hole": {
+   "wert": 14,
+   "einheit": "mm",
+   "herkunft": "[E] Loch fuer M12 an der Ankerlasche (Anschluss Fundamentanker)"
+  },
+  "neighbor_tol": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[E] Toleranz Knotenabstand gegen Strebenlaenge 3279/3708 (Nachbarerkennung)"
+  },
+  "ball_d": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Knotenkugel D100 (Stahl): ersetzt die zwei Knotenplatten der Scope-Card, weil die Strebenrichtungen um ca. 15 Grad gegen die Plattenebene (Tangentialebene) geneigt sind (Sehnenwinkel 2V, L/2R = 0,27); flache Platten wuerden die Arme durchdringen (Befund Werkstatt 29.10.); R02 kennt Huelsen-/Sternnaben"
+  },
+  "arm_root": {
+   "wert": 4,
+   "einheit": "mm",
+   "herkunft": "[A] Arme beginnen 4 mm in der Kugel (Schweissverbindung, gewollte Ueberlappung)"
+  },
+  "bolt_dist": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "[E] Querbolzen 50 mm hinter dem Strebenende (Strebenende bei strut_end_offset): Bolzen durch Strebe (2 x 3 mm Wand) und Steckarm"
+  }
+ },
+ "werkstoff": {
+  "name": "Stahl S235 feuerverzinkt",
+  "dichte_g_cm3": 7.85,
+  "farbe": "#aeb4b8",
+  "herkunft": "ref-4/ref-5: helle Metallknoten; Werkstoff Annahme"
+ },
+ "anzahl": {
+  "soll": "10 vierwertig, 6 fuenfwertig, 10 sechswertig (26 Knoten)",
+  "quelle": "data/layout.json dome.node_valence"
+ },
+ "bezugspunkt": "Knotenmitte (Koordinatenursprung des Bauteils); Armrichtungen im Koordinatensystem von layout.json (OBJ-Frame, Z oben), die Montage dreht wie die Streben um Z (layout_rot) und setzt die Instanz an die Knotenposition"
+}

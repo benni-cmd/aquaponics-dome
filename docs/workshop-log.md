@@ -141,3 +141,16 @@ Standrohr `standpipe_over` = media_depth - 35 = 265 (FarmHub 220 als Variante ve
 | 4 | klein, sicher: Randblaetter in der Referenz haengen nach unten | **gueltig** | Saum alpha -14 Grad |
 | 5 | klein, vermutet: Hals sichtbar | **unklar** | Hals steckt im Topf (Z<0); Saum reicht bis 7 mm ueber den Topfkragen |
 | Hinweis | Instanzen gleich gedreht/gross | **andere Klasse** (Layout/Tisch) | an Integrator: Instanzen mit variierender Drehung/Konfiguration setzen |
+
+### salatkopf, Bild-Kritiker Runde 4 (29.10. ~09:10): Urteil "Referenz" (vier Runden erschoepft)
+Luecken: glatte runde Scheiben / Scalloprand (gross, sicher), konzentrische Schichtung ohne unregelmaessigen Huegel (gross), Instanzen identisch (gross, Layout = andere Klasse), Kern zu hoch (klein), einfarbig (klein, Stil). Einstufung: **gueltig, mit Facettenbudget nicht weiter loesbar** (gekraeuselte Blaetter brauchen viele Flaechen; jeder Koerper hat < 8 Flaechen, 37 Koerper); **Layout/Integrator**: variierende Drehung und S/M/L-Mischung. Stand: nicht bestanden im Sinn "Kritiker waehlt Modell", Restluecken im Blatt offen; Orchestrator entscheidet ueber die Abnahme.
+
+### netztopf + salatkopf, Spec-Pruefer 29.10. ~09:15: netztopf FAIL, salatkopf PASS
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross (netztopf): Anzahl 2160 nur Beete; Rinnen 556 fehlen (gesamt ~2716); Board "Salatkopf ca. 240+" passt zu keiner Zahl | **gueltig** | Anzahl 2160 + 556 = 2716 im Blatt; Board-Widerspruch und D04 (Rinnen ueber Beeten) an den Orchestrator |
+| 2 | gross (netztopf): Scope-Card nur eine Zeile; Schlitze/Bodenloch nur A; Bild-Kritiker nie gelaufen | **gueltig (Doku)** | Scope-Card-Ergaenzung beantragt; Herkunftszeilen Schlitze/Bodenloch/Konus; Bild-Kritiker nicht moeglich (Netztopf in keiner Referenz sichtbar), im Blatt begruendet |
+| 3 | klein (netztopf): Render-Verweis netztopf-01.png existiert nicht; check prueft Wand/Kragen nicht | **gueltig (klein)** | Verweise auf -02-schnitt korrigiert; Wand/Kragen als offene Pruefzeile (Schnittbild) |
+| 4 | klein (salatkopf): Widersprueche (4 Blattgruppen/33 Blaetter/Hoehe 0,7 x Breite, Gewicht "leer") | **gueltig** | JSON-Beschreibung, Herkunft und quelle_masse auf 36 Blaetter/7 Gruppen/0,5 x Breite; Masse = Frischmasse-Naeherung |
+| 5 | klein (salatkopf): Kern/Blattdicke/Gruppen/Jitter ohne Herkunftszeile | **gueltig** | 4 Zeilen ergaenzt |
+| H | Rinne D52 gegen Card D50 (dokumentiert), "288 je Aussenbeet" (Beet Az 113 hat 144), Raster 24 x 12 gegen distinct_along 64 | **andere Klasse** | im Blatt als offen (Integrator/Orchestrator) |

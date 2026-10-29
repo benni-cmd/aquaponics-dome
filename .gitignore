@@ -7,3 +7,5 @@ scripts/dome-script.json
 renders/volumes.json
 renders/score.json
 viewer/model.obj
+viewer/defs/
+viewer/instances.json

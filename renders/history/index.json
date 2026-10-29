@@ -1558,5 +1558,15 @@
   "note": "W12 Runde 4: Schraubenstummel entfernt, Endstand",
   "commit": "9def5df",
   "source": "renders/components/pumpe_gross/pumpe_gross-04-seite.png"
+ },
+ {
+  "file": "20261029-144113_montage_viewer_viewer-nachher.jpg",
+  "sha": "977fc46c4f773ae0",
+  "time": "2026-10-29 14:41:13",
+  "role": "montage",
+  "subject": "viewer",
+  "note": "M6 Viewer nachher 31 MB (Definitionen einmal + Matrizen); vorher model.obj 320 MB",
+  "commit": "3fdbc63",
+  "source": "C:\\Users\\benkn\\AppData\\Local\\Temp\\claude\\C--Users-benkn-Claude-keel-harness-user-projects-aquaponics-dome\\5590442a-d511-42ff-9cb6-9bb8ca9bed59\\scratchpad\\viewer-nachher.jpg"
  }
 ]

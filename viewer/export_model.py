@@ -1,75 +1,75 @@
-"""Exportiert designs/dome.sc fuer den 3D-Viewer: viewer/model.obj (+ .mtl-freie Geometrie je Koerper) und viewer/extras.json.
+"""Exportiert designs/dome.sc fuer den 3D-Viewer: je Komponentendefinition EINMAL viewer/defs/<datei>.obj plus viewer/instances.json (Instanz -> Definition + 3x4-Matrix) und viewer/extras.json.
 
-Warum zwei Teile: Die Exportgenauigkeit von SolidCraft richtet sich nach der Groesse jedes Koerpers. Kleine gekruemmte
-Koerper (Salatkoepfe, Kugeln) wuerden Hunderte MB erzeugen (Test: 240 Kugeln = 1,25 GB). Sie werden deshalb NICHT
-exportiert, sondern als Position/Radius in extras.json an den Viewer gegeben, der sie als einfache Kugeln zeichnet.
-Aufruf: python viewer/export_model.py   (liest scripts/dome-script.json fuer Namen/Positionen, designs/dome.sc fuer die Geometrie)
+Warum so: Ein Gesamt-OBJ expandiert jede Instanz voll (14 Tische + 4 Tanks + 14 Beete = 320 MB). Definitionen einmal + Matrizen (three.js InstancedMesh) halten den Viewer klein.
+Kleinteile (Koerper mit Bounding-Box-Diagonale < MIN_DIAG mm: Schrauben, Kappen, Lochkanten) kommen nicht in die Definition-OBJ; sie treiben die Dreieckszahl (Tesselierung richtet sich nach der Koerpergroesse). Das Modell selbst (dome.sc) bleibt unveraendert.
+Definitionen werden zwischengespeichert (viewer/defs/.cache.json: Aenderungszeit der .sc + MIN_DIAG).
+Aufruf: python viewer/export_model.py   (liest scripts/dome-script.json fuer Einbau und Matrizen, designs/components/*.sc fuer die Geometrie)
 """
-import json, os, re, subprocess, sys, time
+import json, math, os, re, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
 CLI = r'C:\Program Files\SolidCraft\solidcraft-cli.exe'
 SCRIPT = os.path.join(ROOT, 'scripts', 'dome-script.json')
-DESIGN = os.path.join(ROOT, 'designs', 'dome.sc')
-OUT = os.path.join(HERE, 'model.obj')
-EXTRAS = os.path.join(HERE, 'extras.json')
-SMALL = re.compile(r'(_Salat_|_Pflanze_|_Topf_)')   # kleine gekruemmte Koerper: als Extras zeichnen
+DEFS = os.path.join(HERE, 'defs')
+MIN_DIAG = 150   # mm
+fw = lambda p: os.path.abspath(p).replace(chr(92), '/')
+
+def find(o, key):
+    if isinstance(o, dict):
+        if key in o and isinstance(o[key], list): return o[key]
+        for v in o.values():
+            r = find(v, key)
+            if r is not None: return r
+    elif isinstance(o, list):
+        for v in o:
+            r = find(v, key)
+            if r is not None: return r
 
 cmds = json.load(open(SCRIPT, encoding='utf-8'))
 cmds = cmds['commands'] if isinstance(cmds, dict) else cmds
-bodies, extras, colors = [], [], {}
+colors, ins, copies, moves = {}, {}, {}, {}
 for c in cmds:
     p = c.get('params', {})
     if c['command'] == 'appearance.assign':
-        for b in p.get('bodies', []):
-            colors[b] = [p.get('color', '#b0b0b0'), p.get('opacity', 1)]
-        continue
-    n = p.get('body_name') or p.get('name')
-    if not (c['command'].startswith('solid.') and n):
-        continue
-    if p.get('operation', 'new') != 'new':
-        continue
-    if SMALL.search(n):
-        if c['command'] == 'solid.sphere':
-            extras.append({'n': n, 'c': p.get('center'), 'r': p.get('radius')})
-    else:
-        bodies.append(n)
+        for b in p.get('bodies', []): colors[b] = [p.get('color', '#b0b0b0'), p.get('opacity', 1)]
+    elif c['command'] == 'component.insert_design': ins[p['name']] = p['path']
+    elif c['command'] == 'occurrence.copy': copies[p['component']] = copies.get(p['component'], 0) + 1
+    elif c['command'] == 'occurrence.move': moves[p['occurrence']] = p['matrix']
 
-# Koerper aus dem Modell selbst lesen (Komponenten!), nicht aus dem Baukript: Das Skript kennt Instanz-Koerper nicht.
-LISTJOB = os.path.join(HERE, '.list-job.json')
-OUTLIST = os.path.join(HERE, '.list-out.json')
-json.dump({'commands': [
-    {'command': 'doc.open', 'params': {'path': DESIGN.replace('\\', '/'), 'read_only': True}},
-    {'command': 'component.list', 'params': {'compact': True, 'bodies': True}},
-]}, open(LISTJOB, 'w'))
-rl = subprocess.run([CLI, 'run', LISTJOB, '--results', '--json-out', OUTLIST, '--quiet'], capture_output=True, text=True)
-try:
-    comps = json.load(open(OUTLIST, encoding='utf-8'))[1]['components']
-    found = [b for c in comps for b in c.get('bodies', [])]
-    if found:
-        bodies = [b for b in found if not SMALL.search(b) and 'Netztopf' not in b and 'Salatkopf' not in b]
-except Exception as e:
-    print('Komponentenliste nicht lesbar, nutze Skriptnamen:', e)
-for f in (LISTJOB, OUTLIST):
-    if os.path.exists(f): os.remove(f)
+os.makedirs(DEFS, exist_ok=True)
+cache_p = os.path.join(DEFS, '.cache.json')
+cache = json.load(open(cache_p)) if os.path.exists(cache_p) else {}
+t0 = time.time(); defs = {}; exported = 0; tmp = os.path.join(DEFS, '_job.json')
+for cls, path in ins.items():
+    stem = os.path.splitext(os.path.basename(path))[0]
+    if stem in defs: continue
+    key = f'{os.path.getmtime(path)}|{MIN_DIAG}'; out = os.path.join(DEFS, stem + '.obj')
+    if cache.get(stem) != key or not os.path.exists(out):
+        json.dump({'commands': [{'command': 'doc.open', 'params': {'path': fw(path), 'read_only': True}}]}, open(tmp, 'w'))
+        o = os.path.join(DEFS, '_ev.json')
+        subprocess.run([CLI, 'eval', fw(path), '--json-out', o], capture_output=True)
+        bodies = find(json.load(open(o, encoding='utf-8')), 'bodies') or []; os.remove(o)
+        keep = [b['name'] for b in bodies if math.dist(b['bbox']['min'], b['bbox']['max']) >= MIN_DIAG]
+        json.dump({'commands': [{'command': 'doc.open', 'params': {'path': fw(path), 'read_only': True}},
+                                {'command': 'file.export', 'params': {'path': fw(out + '.tmp'), 'format': 'obj', 'bodies': keep}}]}, open(tmp, 'w'))
+        r = subprocess.run([CLI, 'run', tmp, '--quiet'], capture_output=True, text=True)
+        if r.returncode or not os.path.exists(out + '.tmp'):
+            print('Export fehlgeschlagen:', stem, (r.stdout + r.stderr)[-300:]); sys.exit(1)
+        os.replace(out + '.tmp', out); cache[stem] = key; exported += 1
+    defs[stem] = {'cls': cls, 'kb': round(os.path.getsize(out) / 1024)}
+if os.path.exists(tmp): os.remove(tmp)
+json.dump(cache, open(cache_p, 'w'))
 
-small = [b for b in found if SMALL.search(b) or 'Netztopf' in b or 'Salatkopf' in b] if 'found' in globals() and found else []
-cmds_job = [{'command': 'doc.open', 'params': {'path': DESIGN.replace(chr(92), '/'), 'read_only': True}}]
-if small:
-    cmds_job.append({'command': 'solid.remove', 'params': {'bodies': small}})   # nur im geladenen Modell, wird nicht gespeichert
-OUT_TMP = os.path.join(HERE, 'model.building.obj')   # erst daneben schreiben, dann atomar ersetzen: der Viewer sieht nie eine halbe Datei
-cmds_job.append({'command': 'file.export', 'params': {'path': OUT_TMP.replace(chr(92), '/'), 'format': 'obj', 'quality': 'standard'}})
-job = {'commands': cmds_job}
-tmp = os.path.join(HERE, '.export-job.json')
-json.dump(job, open(tmp, 'w'))
-t = time.time()
-r = subprocess.run([CLI, 'run', tmp, '--quiet'], capture_output=True, text=True)
-os.remove(tmp)
-if r.returncode == 0 and os.path.exists(OUT_TMP):
-    os.replace(OUT_TMP, OUT)
-elif os.path.exists(OUT_TMP):
-    os.remove(OUT_TMP)
-json.dump({'plants': extras, 'colors': colors, 'built': time.strftime('%Y-%m-%d %H:%M:%S'), 'bodies': len(bodies)}, open(EXTRAS, 'w'))
-size = os.path.getsize(OUT) / 1e6 if os.path.exists(OUT) else -1
-print(f'export rc={r.returncode} {time.time()-t:.0f}s model.obj={size:.1f} MB bodies={len(bodies)} plants={len(extras)}')
-sys.exit(r.returncode)
+IDENT = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]
+insts = []
+for cls, path in ins.items():
+    stem = os.path.splitext(os.path.basename(path))[0]
+    for i in range(1, copies.get(cls, 0) + 2):
+        insts.append({'d': stem, 'n': f'{cls}:{i}', 'm': moves.get(f'{cls}:{i}', IDENT)})
+built = time.strftime('%Y-%m-%d %H:%M:%S')
+for f in os.listdir(HERE):   # Altlast: das fruehere Gesamt-OBJ
+    if f.startswith('model') and f.endswith('.obj'): os.remove(os.path.join(HERE, f))
+json.dump({'built': built, 'min_diag': MIN_DIAG, 'defs': defs, 'instances': insts}, open(os.path.join(HERE, 'instances.json'), 'w'))
+json.dump({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, open(os.path.join(HERE, 'extras.json'), 'w'))
+size = sum(d['kb'] for d in defs.values()) / 1024
+print(f'export {time.time()-t0:.0f}s defs={len(defs)} (neu {exported}) = {size:.1f} MB, instanzen={len(insts)}')

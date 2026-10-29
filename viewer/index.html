@@ -42,6 +42,7 @@
   <input type="range" id="clip" min="0" max="7000" value="7000">
   <h2>Bauteil-Stand (Board)</h2>
   <div id="board" style="font-size:12px"></div>
+  <div id="perf" style="color:var(--muted);font-size:11px;margin-top:6px"></div>
   <h2>Gruppen</h2>
   <div id="groups"></div>
 </div>
@@ -85,14 +86,14 @@ function matFor(color, opacity) {
   return mats.get(key);
 }
 
-let model = null, plants = null, extras = {}, groupsOn = {}, version = -1;
+let model = null, extras = {}, groupsOn = {}, version = -1;
 const loader = new OBJLoader();
-const plantGeo = new THREE.SphereGeometry(1, 10, 8);
-const plantMat = new THREE.MeshStandardMaterial({ color: 0x3f9a3a, flatShading: true, roughness: 0.8, clippingPlanes: [clipPlane] });
+const defCache = new Map();                                 // Definitionsname -> {text, built}: unveraenderte Definitionen werden nicht neu geladen
 
-const baseName = n => n.replace(/ \(.*$/, '');            // Instanznamen: "T1_Strebe_A (03_Kuppel:1/Strebe_A:2)"
-function groupKey(name) { return baseName(name).replace(/_\d+$/, '').replace(/\d+$/, ''); }
-function colorFor(name) {
+const baseName = n => n.replace(/ \(.*$/, '');            // Koerpernamen: "T1_Strebe_A", "Wanne (2)"
+function groupKey(name) { return baseName(name).replace(/_\d+[A-Z]?$/, '').replace(/ ?\d+$/, ''); }
+const DEFCOL = [[/^tank_/, '#93b49a'], [/^pumpe_/, '#2a5da8'], [/^ibc_beet/, '#c9ccc4'], [/^nft_tisch/, '#9aa6b2'], [/^strebe/, '#b9c0c8']];
+function colorFor(name, def) {
   const base = baseName(name);
   const c = extras.colors && (extras.colors[base] || extras.colors[Object.keys(extras.colors).find(k => k.replace(/_\d+$/, '') === base.replace(/_\d+$/, ''))]);
   if (c) return matFor(c[0], c[1]);
@@ -100,37 +101,52 @@ function colorFor(name) {
              [/^T4_/, '#1c1c1c', 1], [/^T5_|^T6_|^T7_/, '#93b49a', 1], [/^T8_/, '#f3f3f1', 1], [/^T9_/, '#ffffff', 1],
              [/^T10_/, '#5fa8e0', 1], [/^T11_/, '#8b9096', 1], [/^T12_/, '#4c9a3c', 1]];
   const hit = P.find(p => p[0].test(base));
-  return hit ? matFor(hit[1], hit[2]) : matFor('#b0b8c0', 1);
+  if (hit) return matFor(hit[1], hit[2]);
+  const d = DEFCOL.find(p => p[0].test(def));
+  if (/Wasser|Medium/.test(base)) return matFor(/Wasser/.test(base) ? '#3c8ed0' : '#8a6f4d', /Wasser/.test(base) ? 0.85 : 1);
+  return matFor(d ? d[1] : '#b0b8c0', 1);
 }
 function buildGroups() {
   const keys = new Map();
-  model.traverse(o => { if (o.isMesh) { const k = groupKey(o.name || o.parent.name); (keys.get(k) || keys.set(k, []).get(k)).push(o); } });
+  model.traverse(o => { if (o.isMesh) { const k = o.userData.group; (keys.get(k) || keys.set(k, []).get(k)).push(o); } });
   const box = document.getElementById('groups'); box.innerHTML = '';
   [...keys.keys()].sort().forEach(k => {
-    const c = extras.colors && extras.colors[baseName(keys.get(k)[0].name)];
+    const first = keys.get(k)[0], c = first.material.color.getStyle();
+    const n = keys.get(k).reduce((s, o) => s + o.count, 0);
     const lab = document.createElement('label');
-    lab.innerHTML = `<input type="checkbox" checked><span class="sw" style="background:${c ? c[0] : '#b0b8c0'}"></span>${k} (${keys.get(k).length})`;
+    lab.innerHTML = `<input type="checkbox" checked><span class="sw" style="background:${c}"></span>${k} (${n})`;
     lab.querySelector('input').addEventListener('change', e => { groupsOn[k] = e.target.checked; keys.get(k).forEach(o => o.visible = e.target.checked); });
     if (k in groupsOn) { lab.querySelector('input').checked = groupsOn[k]; keys.get(k).forEach(o => o.visible = groupsOn[k]); }
     box.appendChild(lab);
   });
 }
 async function load() {
-  const [obj, ex] = await Promise.all([fetch('model.obj?v=' + Date.now()).then(r => r.text()), fetch('extras.json?v=' + Date.now()).then(r => r.json())]);
+  const v = Date.now();
+  const [inst, ex] = await Promise.all([fetch('instances.json?v=' + v).then(r => r.json()), fetch('extras.json?v=' + v).then(r => r.json())]);
   extras = ex;
-  const m = loader.parse(obj);
-  m.traverse(o => { if (o.isMesh) { o.material = colorFor(o.name || o.parent.name); o.name = o.name || o.parent.name; } });
-  if (model) { scene.remove(model); model.traverse(o => o.geometry && o.geometry.dispose()); }
+  const m = new THREE.Group(); const t0 = performance.now();
+  await Promise.all(Object.entries(inst.defs).map(async ([stem, d]) => {
+    const key = stem + '|' + d.kb;                          // Groesse als Versionsmerkmal der Definition
+    if (!defCache.has(key)) defCache.set(key, await fetch(`defs/${stem}.obj?k=${d.kb}`).then(r => r.text()));
+  }));
+  const byDef = {}; inst.instances.forEach(i => (byDef[i.d] || (byDef[i.d] = [])).push(i));
+  for (const [stem, list] of Object.entries(byDef)) {
+    const g = loader.parse(defCache.get(stem + '|' + inst.defs[stem].kb));
+    const mats = list.map(i => new THREE.Matrix4().set(...i.m, 0, 0, 0, 1));
+    g.traverse(o => {
+      if (!o.isMesh) return;
+      const name = o.name || o.parent.name;
+      const im = new THREE.InstancedMesh(o.geometry, colorFor(name, stem), list.length);
+      mats.forEach((mx, i) => im.setMatrixAt(i, mx));
+      im.frustumCulled = false; im.name = name; im.userData.group = groupKey(name); m.add(im);
+    });
+  }
+  if (model) { scene.remove(model); model.traverse(o => o.geometry && !o.isInstancedMesh && o.geometry.dispose()); }
   model = m; scene.add(model);
-  if (plants) scene.remove(plants);
-  const P = ex.plants || [];
-  plants = new THREE.InstancedMesh(plantGeo, plantMat, P.length);
-  const d = new THREE.Object3D();
-  P.forEach((p, i) => { d.position.set(...p.c); d.scale.setScalar(p.r); d.updateMatrix(); plants.setMatrixAt(i, d.matrix); });
-  scene.add(plants);
+  document.getElementById('perf').textContent = `${inst.instances.length} Instanzen, ${Object.keys(inst.defs).length} Definitionen, ${(Object.values(inst.defs).reduce((s, d) => s + d.kb, 0) / 1024).toFixed(1)} MB, Aufbau ${((performance.now() - t0) / 1000).toFixed(1)} s, Kleinteile < ${inst.min_diag} mm ausgeblendet`;
   buildGroups(); applyWire();
 }
-function applyWire() { const w = document.getElementById('wire').checked; mats.forEach(m => m.wireframe = w); plantMat.wireframe = w; }
+function applyWire() { const w = document.getElementById('wire').checked; mats.forEach(m => m.wireframe = w); }
 document.getElementById('wire').addEventListener('change', applyWire);
 document.getElementById('clip').addEventListener('input', e => { clipPlane.constant = +e.target.value; });
 document.querySelectorAll('[data-cam]').forEach(b => b.addEventListener('click', () => setCam(b.dataset.cam)));
@@ -142,7 +158,7 @@ async function poll() {
     const auto = document.getElementById('auto').checked;
     st.innerHTML = `Modell gespeichert <b>${s.design_saved || '-'}</b> · Viewer <b>${s.built || '-'}</b>` +
       (s.busy ? ' · <b>exportiert ...</b>' : '') + (s.error ? '<br>Fehler: ' + s.error.replace(/</g, '&lt;') : '') +
-      (extras.bodies ? `<br>${extras.bodies} Koerper, ${(extras.plants || []).length} Pflanzen` : '');
+      (extras.bodies ? `<br>${extras.bodies} Instanzen` : '');
     if (auto && s.version !== version && s.version > 0) { version = s.version; await load(); }
   } catch (e) { st.textContent = 'Server nicht erreichbar'; }
 }

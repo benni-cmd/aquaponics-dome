@@ -35,10 +35,30 @@ for c in cmds:
     else:
         bodies.append(n)
 
-job = {'commands': [
+# Koerper aus dem Modell selbst lesen (Komponenten!), nicht aus dem Baukript: Das Skript kennt Instanz-Koerper nicht.
+LISTJOB = os.path.join(HERE, '.list-job.json')
+OUTLIST = os.path.join(HERE, '.list-out.json')
+json.dump({'commands': [
     {'command': 'doc.open', 'params': {'path': DESIGN.replace('\\', '/'), 'read_only': True}},
-    {'command': 'file.export', 'params': {'path': OUT.replace('\\', '/'), 'format': 'obj', 'quality': 'standard', 'bodies': bodies}},
-]}
+    {'command': 'component.list', 'params': {'compact': True, 'bodies': True}},
+]}, open(LISTJOB, 'w'))
+rl = subprocess.run([CLI, 'run', LISTJOB, '--results', '--json-out', OUTLIST, '--quiet'], capture_output=True, text=True)
+try:
+    comps = json.load(open(OUTLIST, encoding='utf-8'))[1]['components']
+    found = [b for c in comps for b in c.get('bodies', [])]
+    if found:
+        bodies = [b for b in found if not SMALL.search(b) and 'Netztopf' not in b and 'Salatkopf' not in b]
+except Exception as e:
+    print('Komponentenliste nicht lesbar, nutze Skriptnamen:', e)
+for f in (LISTJOB, OUTLIST):
+    if os.path.exists(f): os.remove(f)
+
+small = [b for b in found if SMALL.search(b) or 'Netztopf' in b or 'Salatkopf' in b] if 'found' in globals() and found else []
+cmds_job = [{'command': 'doc.open', 'params': {'path': DESIGN.replace(chr(92), '/'), 'read_only': True}}]
+if small:
+    cmds_job.append({'command': 'solid.remove', 'params': {'bodies': small}})   # nur im geladenen Modell, wird nicht gespeichert
+cmds_job.append({'command': 'file.export', 'params': {'path': OUT.replace(chr(92), '/'), 'format': 'obj', 'quality': 'standard'}})
+job = {'commands': cmds_job}
 tmp = os.path.join(HERE, '.export-job.json')
 json.dump(job, open(tmp, 'w'))
 t = time.time()

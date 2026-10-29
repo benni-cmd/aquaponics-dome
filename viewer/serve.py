@@ -37,11 +37,27 @@ def watch():
                 do_export(); last = m
         time.sleep(1)
 
+def board():
+    rows = []
+    try:
+        for l in open(os.path.join(ROOT, 'docs', 'integration-board.md'), encoding='utf-8'):
+            if l.startswith('|') and not l.startswith('|---'):
+                c = [x.strip() for x in l.strip().strip('|').split('|')]
+                if len(c) >= 5 and c[0] != 'Klasse':
+                    rows.append({'klasse': c[0], 'n': c[1], 'wer': c[2], 'status': c[3], 'meldung': c[5] if len(c) > 5 else ''})
+    except OSError:
+        pass
+    return rows
+
 class H(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **k): super().__init__(*a, directory=HERE, **k)
     def end_headers(self):
         self.send_header('Cache-Control', 'no-store'); super().end_headers()
     def do_GET(self):
+        if self.path.startswith('/api/board'):
+            b = json.dumps(board()).encode()
+            self.send_response(200); self.send_header('Content-Type', 'application/json'); self.send_header('Content-Length', str(len(b)))
+            self.end_headers(); self.wfile.write(b); return
         if self.path.startswith('/api/state'):
             b = json.dumps(state).encode()
             self.send_response(200); self.send_header('Content-Type', 'application/json'); self.send_header('Content-Length', str(len(b)))

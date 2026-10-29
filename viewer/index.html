@@ -40,6 +40,8 @@
   <label><input type="checkbox" id="auto" checked> Auto-Update</label>
   <h2>Schnitt (Hoehe)</h2>
   <input type="range" id="clip" min="0" max="7000" value="7000">
+  <h2>Bauteil-Stand (Board)</h2>
+  <div id="board" style="font-size:12px"></div>
   <h2>Gruppen</h2>
   <div id="groups"></div>
 </div>
@@ -88,17 +90,24 @@ const loader = new OBJLoader();
 const plantGeo = new THREE.SphereGeometry(1, 10, 8);
 const plantMat = new THREE.MeshStandardMaterial({ color: 0x3f9a3a, flatShading: true, roughness: 0.8, clippingPlanes: [clipPlane] });
 
-function groupKey(name) { return name.replace(/_\d+$/, '').replace(/\d+$/, ''); }
+const baseName = n => n.replace(/ \(.*$/, '');            // Instanznamen: "T1_Strebe_A (03_Kuppel:1/Strebe_A:2)"
+function groupKey(name) { return baseName(name).replace(/_\d+$/, '').replace(/\d+$/, ''); }
 function colorFor(name) {
-  const c = extras.colors && extras.colors[name];
-  return c ? matFor(c[0], c[1]) : matFor('#b0b8c0', 1);
+  const base = baseName(name);
+  const c = extras.colors && (extras.colors[base] || extras.colors[Object.keys(extras.colors).find(k => k.replace(/_\d+$/, '') === base.replace(/_\d+$/, ''))]);
+  if (c) return matFor(c[0], c[1]);
+  const P = [[/^T5_Wasser|^T6_Wasser/, '#3c8ed0', 0.85], [/^T13_/, '#8a6f4d', 1], [/^T1_/, '#b9c0c8', 1], [/^T3_/, '#cfcfca', 1],
+             [/^T4_/, '#1c1c1c', 1], [/^T5_|^T6_|^T7_/, '#93b49a', 1], [/^T8_/, '#f3f3f1', 1], [/^T9_/, '#ffffff', 1],
+             [/^T10_/, '#5fa8e0', 1], [/^T11_/, '#8b9096', 1], [/^T12_/, '#4c9a3c', 1]];
+  const hit = P.find(p => p[0].test(base));
+  return hit ? matFor(hit[1], hit[2]) : matFor('#b0b8c0', 1);
 }
 function buildGroups() {
   const keys = new Map();
   model.traverse(o => { if (o.isMesh) { const k = groupKey(o.name || o.parent.name); (keys.get(k) || keys.set(k, []).get(k)).push(o); } });
   const box = document.getElementById('groups'); box.innerHTML = '';
   [...keys.keys()].sort().forEach(k => {
-    const c = extras.colors && extras.colors[keys.get(k)[0].name];
+    const c = extras.colors && extras.colors[baseName(keys.get(k)[0].name)];
     const lab = document.createElement('label');
     lab.innerHTML = `<input type="checkbox" checked><span class="sw" style="background:${c ? c[0] : '#b0b8c0'}"></span>${k} (${keys.get(k).length})`;
     lab.querySelector('input').addEventListener('change', e => { groupsOn[k] = e.target.checked; keys.get(k).forEach(o => o.visible = e.target.checked); });
@@ -137,7 +146,17 @@ async function poll() {
     if (auto && s.version !== version && s.version > 0) { version = s.version; await load(); }
   } catch (e) { st.textContent = 'Server nicht erreichbar'; }
 }
-setInterval(poll, 2000); poll();
+async function pollBoard() {
+  try {
+    const rows = await fetch('/api/board?t=' + Date.now()).then(r => r.json());
+    const col = s => /eingebaut/.test(s) ? '#4cc38a' : /abgenommen/.test(s) ? '#7fd3a8' : /L3|L4/.test(s) ? '#d9c35b' : /Arbeit|L2/.test(s) ? '#e0954a' : '#7a8896';
+    document.getElementById('board').innerHTML = rows.map(r =>
+      `<div style="display:flex;gap:6px;align-items:baseline;padding:1px 0"><span class="sw" style="background:${col(r.status)}"></span>` +
+      `<span style="flex:1">${r.klasse.replace(/</g, '&lt;')} <span style="color:var(--muted)">(${r.n}, ${r.wer})</span></span></div>` +
+      `<div style="color:var(--muted);margin:0 0 3px 16px">${r.status.replace(/</g, '&lt;')}</div>`).join('');
+  } catch (e) {}
+}
+setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard();
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
 (function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
 </script>

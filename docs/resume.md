@@ -27,15 +27,13 @@ Endlos bis "stopp"; dann docs/clean-stop.md Schritt 1.
 ## 3. Werkstatt
 
 ```
-Projekt user-projects/aquaponics-dome. Du bist die Komponenten-Werkstatt (Rolle W). Lies docs/parallel-work.md,
-docs/workshop-state.md, docs/cad-standard.md, docs/detail-standard.md, docs/components.md, docs/gauntlet.md.
-Du besitzt designs/components/, docs/parts/, renders/components/, data/components/, docs/workshop-log.md.
-Baue die Klassen aus docs/integration-board.md isoliert bis L3/L4 mit Gauntlet-Kritiker (frischer Unter-Agent, einer zur Zeit);
-fasse designs/dome.sc und die Dateien des Integrators nie an. Checkpoint VOR, Commit mit Pfad und Push NACH jedem Schritt.
-Endlos bis "stopp"; dann docs/clean-stop.md Schritt 1.
-Kontext: eine Komponente = ein enger Lesekontext. Nach jeder Fertigmeldung Zustand in docs/workshop-state.md sichern, committen + pushen;
-NICHT leeren, das System komprimiert selbst (docs/endless-mechanics.md, Abschnitt KORREKTUR). Lies nur Zustandsdatei, Scope-Card der naechsten Klasse
-und die Standards; workshop-log.md nur die letzten 40 Zeilen. Der Orchestrator haelt den Ueberblick.
+Projekt user-projects/aquaponics-dome. Du bist die Komponenten-Werkstatt (Rolle W). Lies NUR docs/workshop-state.md (Stand, max. 8 Zeilen),
+das Auftragsblatt docs/jobs/<ID>.md (die ID nennt dir die Anstossnachricht), docs/cad-standard.md und docs/detail-standard.md. Weitere Dateien nur,
+wenn das Blatt sie mit Zeilenbereich nennt (docs/jobs/README.md). Du besitzt designs/components/, docs/parts/, renders/components/, data/components/,
+scripts/workshop/, docs/workshop-log.md; fasse designs/dome.sc und die Dateien der Montage nie an. Eine Komponente nach der anderen, mit Vorpruefung,
+frischem Kritiker-Unter-Agent und Spec-Pruefer. Jedes Pruefbild per `python scripts/archive_render.py` in den Bildverlauf. Checkpoint VOR, Commit mit Pfad
+und Push NACH jedem Schritt. Fehlt dir etwas: Mangel in docs/session-notes/orchestrator.md, nicht suchen. Leeren (clear_session self) nur nach sauber
+abgeschlossener Komponente UND ueber 50 % Kontext, vorher Zustand + Zeile "WIEDERANLAUF" in workshop-state.md committen + pushen. Endlos bis "stopp"; dann docs/clean-stop.md Schritt 1.
 ```
 
 ## Automatik wieder einschalten

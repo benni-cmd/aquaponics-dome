@@ -261,10 +261,22 @@ def nft(fz):
     groups = {"aussen": [], "mitte": []}
     for b in LAYOUT["ibc_beds"]:
         v = "aussen" if "plants" in b else "mitte"
-        x, y = LXY(b["cx"], b["cy"]); r = math.hypot(x, y); rc = NFT_RC[v] - (P["outer_bed_inset"] if v == "aussen" else 0)
+        x, y = LXY(b["cx"], b["cy"]); r = math.hypot(x, y); rc = NFT_RC[v] - (P["nft_outer_inset"] if v == "aussen" else 0)   # D24
         groups[v].append((round(x/r*rc, 1), round(y/r*rc, 1), fz, b["yaw"] + ROT))
     for v, items in groups.items():
         place_instances("Tisch_" + v, os.path.join(ROOT, "designs", "components", f"nft_tisch_{v}.sc"), items, "06_NFT")
+
+# T10/T12: Netztoepfe und Salatkoepfe in den 8 Aussenbeeten als Instanzen (Positionen je Topf aus data/pots.json = OBJ, Beet-Koordinaten); Netztopf-Ursprung Mitte Boden, Salatkopf-Ursprung Kragenoberkante (Boden + 63)
+PLANTS = json.load(open(os.path.join(ROOT, "data", "pots.json")))
+def pots(fz, with_heads):
+    pots_, heads = [], []
+    for k, b in enumerate(LAYOUT["ibc_beds"]):
+        cx, cy = bed_xy(b); yaw = b["yaw"] + ROT; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
+        for u, v, z in PLANTS["per_bed"][k]:
+            x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1); zb = round(fz + z - 31.5, 1)
+            pots_.append((x, y, zb, 0)); heads.append((x, y, zb + 63, 0))
+    place_instances("Netztopf", os.path.join(ROOT, "designs", "components", "netztopf.sc"), pots_, "10_Pflanzen")
+    if with_heads: place_instances("Salatkopf", os.path.join(ROOT, "designs", "components", "salatkopf.sc"), heads[:int(P["salat_n"])], "10_Pflanzen")
 
 plants = [0]
 def plant(x, y, z, r=90):
@@ -300,6 +312,7 @@ if __name__ == "__main__":
     n, dropped = t1_t3_t4(P["sock_h"])
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
+    if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
     if stage >= 4: t10_t11(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)

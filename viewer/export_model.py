@@ -12,6 +12,7 @@ CLI = r'C:\Program Files\SolidCraft\solidcraft-cli.exe'
 SCRIPT = os.path.join(ROOT, 'scripts', 'dome-script.json')
 DEFS = os.path.join(HERE, 'defs')
 MIN_DIAG = 150   # mm
+KEEP_ALL = ('netztopf', 'salatkopf')   # Pflanzenteile sind klein, aber als Instanzen billig: alle Koerper behalten
 fw = lambda p: os.path.abspath(p).replace(chr(92), '/')
 
 def find(o, key):
@@ -43,13 +44,13 @@ t0 = time.time(); defs = {}; exported = 0; tmp = os.path.join(DEFS, '_job.json')
 for cls, path in ins.items():
     stem = os.path.splitext(os.path.basename(path))[0]
     if stem in defs: continue
-    key = f'{os.path.getmtime(path)}|{MIN_DIAG}'; out = os.path.join(DEFS, stem + '.obj')
+    md = 0 if stem in KEEP_ALL else MIN_DIAG; key = f'{os.path.getmtime(path)}|{md}'; out = os.path.join(DEFS, stem + '.obj')
     if cache.get(stem) != key or not os.path.exists(out):
         json.dump({'commands': [{'command': 'doc.open', 'params': {'path': fw(path), 'read_only': True}}]}, open(tmp, 'w'))
         o = os.path.join(DEFS, '_ev.json')
         subprocess.run([CLI, 'eval', fw(path), '--json-out', o], capture_output=True)
         bodies = find(json.load(open(o, encoding='utf-8')), 'bodies') or []; os.remove(o)
-        keep = [b['name'] for b in bodies if math.dist(b['bbox']['min'], b['bbox']['max']) >= MIN_DIAG]
+        keep = [b['name'] for b in bodies if math.dist(b['bbox']['min'], b['bbox']['max']) >= md]
         json.dump({'commands': [{'command': 'doc.open', 'params': {'path': fw(path), 'read_only': True}},
                                 {'command': 'file.export', 'params': {'path': fw(out + '.tmp'), 'format': 'obj', 'bodies': keep}}]}, open(tmp, 'w'))
         r = subprocess.run([CLI, 'run', tmp, '--quiet'], capture_output=True, text=True)

@@ -80,6 +80,8 @@ chk("OBJ Wasserscheibe D [mm]", round(wd), 3890, abs(wd - 3890) < 20)
 chk("L13 Tankwand [mm]", round(P["wall"]), ">= 150", P["wall"] >= 150)
 chk("L13 Wasserscheibe T5_Wasser", len(pre("T5_Wasser")), 1, len(pre("T5_Wasser")) == 1)
 chk("L6 Teilenamen T1,T3-T6,T10,T11 vorhanden (T2 Haut = Phase 2, T8 NFT folgt)", sorted({n.split("_")[0] for n in BN}, key=lambda x: int(x[1:])), "T1,T3..T11", {n.split("_")[0] for n in BN} >= {f"T{i}" for i in (1, 3, 4, 5, 6, 10, 11)})   # T7/T9 = Werkstatt-Instanzen (Tanks, Beete)
+n_cls = lambda c: sum(1 for x in cmds if x["command"] == "occurrence.move" and str(x["params"].get("occurrence", "")).startswith(c + ":"))
+chk("OBJ Netztoepfe (2160 in Aussenbeeten) als Instanzen", n_cls("Netztopf"), 2160, n_cls("Netztopf") == 2160)
 # Interferenz zwischen Instanzen/Teilen (Koerper EINER Komponenteninstanz ueberschneiden sich bewusst: Schweiss-/Schraubverbindungen, Pruefung der Werkstatt-Skripte)
 # Das ganze Modell hat > 1500 Koerper: erst Bounding-Boxen in Python (nur Paare verschiedener Instanzen), dann nur die betroffenen Koerper exakt schneiden.
 cl = {}
@@ -87,16 +89,18 @@ sc = os.path.join(tmp, "cl.json"); json.dump({"commands": [{"command": "componen
 for c in find(run_json(["run", sc, "--in", dome, "--results"]), "components"):
     for bn in c.get("bodies", []): cl[bn] = (c["name"], 1)
 def base(n): return re.sub(r" \(\d+\)", "", re.sub(r" \([^()]*:\d+\)", "", n))
+PLANT_CLS = ("Netztopf", "Salatkopf")
 def grp(n):
     m = re.search(r"\((\w+):(\d+)/(\w+):(\d+)\)$", n)
     return (m.group(3), int(m.group(4))) if m else cl.get(n, (n, 0))
-names = list(B); G = {n: grp(n) for n in names}
+names = [n for n in B if grp(n)[0] not in PLANT_CLS]; G = {n: grp(n) for n in names}   # Pflanzen stecken bewusst im Medium: nicht auf Kollision geprueft
 bb = {n: (B[n]["bbox"]["min"], B[n]["bbox"]["max"]) for n in names}
 cand = []; openm = {"W-M1": [], "W-M2": [], "W-M3": []}
 for i, a in enumerate(names):
     amin, amax = bb[a]
     for b in names[i + 1:]:
         if G[a] == G[b] and G[a][1]: continue   # gleiche Komponenteninstanz
+        if a.startswith("T1_") and b.startswith("T1_"): continue   # Streben treffen sich an den Knoten (bewusst)
         bmin, bmax = bb[b]
         if all(amin[k] < bmax[k] and bmin[k] < amax[k] for k in range(3)):
             cs = {G[a][0], G[b][0]}

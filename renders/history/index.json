@@ -1560,6 +1560,26 @@
   "source": "renders/components/pumpe_gross/pumpe_gross-04-seite.png"
  },
  {
+  "file": "20261029-142208_werkstatt_nft-tisch_nft-tisch-innen-05-oberseite.png",
+  "sha": "dfb42252ec7275aa",
+  "time": "2026-10-29 14:22:08",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W16 Rev. B: Ecke Draufsicht/Iso, Querschnitt Bock+Beet, Innen-Ausleger, Aussen-Portal",
+  "commit": "9c1cee5",
+  "source": "renders/components/nft_tisch_innen/nft_tisch_innen-05-oberseite.png"
+ },
+ {
+  "file": "20261029-143645_werkstatt_nft-tisch_nft-tisch-aussen-01-iso.png",
+  "sha": "039a4dc4262ccdab",
+  "time": "2026-10-29 14:36:45",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W16 Rev. B: Ecke Draufsicht/Iso, Querschnitt Bock+Beet, Innen-Ausleger, Aussen-Portal",
+  "commit": "9c1cee5",
+  "source": "renders/components/nft_tisch_aussen/nft_tisch_aussen-01-iso.png"
+ },
+ {
   "file": "20261029-144113_montage_viewer_viewer-nachher.jpg",
   "sha": "977fc46c4f773ae0",
   "time": "2026-10-29 14:41:13",
@@ -1568,5 +1588,45 @@
   "note": "M6 Viewer nachher 31 MB (Definitionen einmal + Matrizen); vorher model.obj 320 MB",
   "commit": "3fdbc63",
   "source": "C:\\Users\\benkn\\AppData\\Local\\Temp\\claude\\C--Users-benkn-Claude-keel-harness-user-projects-aquaponics-dome\\5590442a-d511-42ff-9cb6-9bb8ca9bed59\\scratchpad\\viewer-nachher.jpg"
+ },
+ {
+  "file": "20261029-171313_werkstatt_nft-tisch_passung-aussen-01-ecke-draufsicht.png",
+  "sha": "fb564e21e83a6fdc",
+  "time": "2026-10-29 17:13:13",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W16 Rev. B: Ecke Draufsicht/Iso, Querschnitt Bock+Beet, Innen-Ausleger, Aussen-Portal",
+  "commit": "9c1cee5",
+  "source": "renders/components/nft_passung/passung_aussen-01-ecke-draufsicht.png"
+ },
+ {
+  "file": "20261029-171314_werkstatt_nft-tisch_passung-aussen-02-ecke-iso.png",
+  "sha": "1e423b549d0dcb4e",
+  "time": "2026-10-29 17:13:14",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W16 Rev. B: Ecke Draufsicht/Iso, Querschnitt Bock+Beet, Innen-Ausleger, Aussen-Portal",
+  "commit": "9c1cee5",
+  "source": "renders/components/nft_passung/passung_aussen-02-ecke-iso.png"
+ },
+ {
+  "file": "20261029-171323_werkstatt_nft-tisch_passung-aussen-03-querschnitt-bock-beet.png",
+  "sha": "e25ac77e30288be1",
+  "time": "2026-10-29 17:13:23",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W16 Rev. B: Ecke Draufsicht/Iso, Querschnitt Bock+Beet, Innen-Ausleger, Aussen-Portal",
+  "commit": "9c1cee5",
+  "source": "renders/components/nft_passung/passung_aussen-03-querschnitt-bock-beet.png"
+ },
+ {
+  "file": "20261029-171636_montage_pflanzen_round-30.png",
+  "sha": "3aa8983e8d04365b",
+  "time": "2026-10-29 17:16:36",
+  "role": "montage",
+  "subject": "pflanzen",
+  "note": "M1.3: 2160 Netztoepfe + 2160 Salatkoepfe als Instanzen, Aussentische 320 mm nach innen (D24)",
+  "commit": "9c1cee5",
+  "source": "renders/round-30.png"
  }
 ]

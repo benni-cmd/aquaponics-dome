@@ -174,9 +174,10 @@
   ],
   "lokal": "Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne aus dem Gewaechshausbedarf; Loecher mit Dosensaege D52, Endkappen aus 4-mm-PVC-Platte plus Dichtleiste.",
   "pruefung": [
-   "Scope-Card nft_rinne: Lochreihen je Rinne = 1, Loecher = floor(Laenge/pitch) (L 12, M 7, K 5), Breite 130, Hoehe 100 (check_nft_rinne.py, check.txt)",
+   "Scope-Card nft_rinne: Lochreihen je Rinne = 1, Loecher = floor(Laenge/pitch) (Master L 16, M 9, K 6 bei pitch 200), Breite 130, Hoehe 100 (check_nft_rinne.py 93/93 PASS, check.txt; Phase +-pitch/4, Zickzack pitch/2 = 100)",
    "Bild-Kritiker Runde 3 (Kontextpaket): Modell gewaehlt, keine grosse Luecke; Spec-Pruefer: FAIL (Herkunft im Blatt, Eltern-Merkmale) -> behoben in Runde 4",
-   "Triage in `docs/workshop-log.md`"
+   "Triage in `docs/workshop-log.md`",
+   "W18 (D32): pitch 200, Rinnenvarianten je Tischreihe neu (Randabstand 64), Tische neu gebaut; Topfloecher gesamt 586; kein Spec-/Bild-Pruefer-Lauf (Wochenlimit)"
   ],
   "offen": [
    "Rippenprofil (vier Rippen 5x5) und Wandstaerke sind Annahmen [A]",

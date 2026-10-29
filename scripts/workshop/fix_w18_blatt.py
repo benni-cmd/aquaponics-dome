@@ -26,3 +26,21 @@ cg = d["parameter"]["corner_gap"]
 cg["herkunft"] = f"[A] W17: Abstand Rinnenende/Rohr zur Sektorgrenze 60 mm (vorher 100, D18); mit Lochabstand {pt:g} (W18/D32) ergibt das 586 Topfloecher (Soll ca. 580; mit 100 nur 542); Entscheidung beim Orchestrator/Ben"
 json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("W18-Blatt-Parameter gepflegt, pitch", pt)
+
+# --- Netztopf: Gesamtzahl der Rinnen-Toepfe (W18: 586 statt 556)
+cnt = {"innen": 10, "mitte": 6, "aussen": 8}
+pj, dj = load("nft_tisch")
+Pj = {k: v["wert"] for k, v in dj["parameter"].items()}
+per = {t: sum(r["n_holes"] for r in TG.geometry(t, Pj, dj["typen"][t])["rows"]) for t in cnt}
+nft = sum(per[t] * cnt[t] for t in cnt)
+pn, dn = load("netztopf")
+txt = json.dumps(dn, ensure_ascii=False)
+new_r = f"Rinnen {nft} (Tische innen 10 x {per['innen']}, Mitte 6 x {per['mitte']}, aussen 8 x {per['aussen']}; pitch {pt:g}, W18)"
+for old in ("Rinnen 556 (20 Rinnen K x 5 Loecher + 24 Rinnen M x 7 + 24 Rinnen L x 12; Auslegung E)", "Rinnen 556 (E)", "Rinnen (556)", "Rinnen 556"):
+    if old in txt:
+        txt = txt.replace(old, new_r if old.endswith("Auslegung E)") else (f"Rinnen {nft} (E)" if old == "Rinnen 556 (E)" else f"Rinnen {nft}"))
+txt = txt.replace("2160 (Beete) + 556 (Rinnen)", f"2160 (Beete) + {nft} (Rinnen)").replace("= 2716", f"= {2160 + nft}").replace("2716", str(2160 + nft)).replace("556", str(nft))
+dn = json.loads(txt)
+dn["blatt"]["offen"] = [x for x in dn["blatt"]["offen"] if not x.startswith("W18:")] + [f"W18: Rinnen-Topfloecher {nft} laut docs/parts/nft_tisch.md (pitch {pt:g}, corner_gap 60); Beete 2160 nur bis zur Umstellung auf aussen_800 (Raster Aussenbeet 800 x 2640: Layout/Integrator)"]
+json.dump(dn, open(pn, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+print("netztopf.json: Rinnen", nft, "gesamt", 2160 + nft)

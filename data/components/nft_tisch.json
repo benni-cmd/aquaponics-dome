@@ -239,7 +239,7 @@
    "Verteiler: schraeges Rohr d25 mit Stutzen D16 (Verklebung/Schweissen), Schlaeuche ID 16 auf Tuelle und Stutzen; Sammelrohr d50 schraeg mit Muffen d40/d32 auf den Ablaufstutzen",
    "Winkelhalter T23 (W11): je Bein ein Eckwinkel 36 x 60 x 60 x 4 an der Beininnenflaeche (2 x M6x55 mit Mutter durch das Bein, Loecher z -10 / -26) und unter Holm/Kragarm (2 x M6x16 in Blindnietmuttern M6, nicht modelliert); Schenkel am Bein 60 mm (z -60..0), unter dem Holm 60 mm (y 0..60); Bein mit y < 0 nach +Y, Bein mit y > 0 um 180 Grad gedreht; Bohrungen vor dem Feuerverzinken, Normteile durchdringen die Rohrwaende (Loecher nicht modelliert)"
   ],
-  "abweichung": "layout.json hydro_tables liefert je Ring nur ein Beispiel (Reihen ap 1733/1995 innen, 2987-3775 Mitte, 4888/5176 aussen) mit gleicher Rinnenlaenge 1304/1983/3232; diese Laengen sind groesser als die Zehneck-Seite 2 x ap x tan 18 Grad der Reihe (innen 1126/1296, Mitte 1916-2429, aussen 3198-3572) und kollidierten an den Ecken (Ben-Fund 29.10.). Rev. B folgt D18, Stand W17 (D28/D29/D30, Radialbudget): Rinnenlaenge je Reihe = Zehneck-Seite - 2 x corner_gap (60) - Ueberstaende (Zulaufseite 169, Ablaufseite 79); Ergebnis innen 758/928, Mitte 1505/1676/1847/2018, aussen 2676/2864/3051 mm. Topfloecher je Tisch innen 5, Mitte 26, aussen 32; gesamt 462 (Mindestzahl NFT 459, R15/D27; mit corner_gap 100 waeren es nur 442). Tischmitte = Beetmitte nach der radialen Verschiebung (Aussen 4973, Innenbeet 3277; OBJ-Beete weichen einzeln um bis ca. 70 mm ab, Layout/Integrator). Die Tisch-Beine des OBJ stehen nicht im Layout (Platten ohne Beine). Die Z-Hoehen bleiben (innen 840, Mitte/aussen 1300). Ausrichtung: X tangential gegen den Uhrzeigersinn (+X Sammelrohr/tiefes Ende), Y radial nach INNEN; die Instanz wird mit yaw = Azimut + 90 Grad (volle 360 Grad; layout.json hydro_tables speichert yaw nur modulo 180: aussen Sektoren 3 und 6-9 sowie Mitte/innen 7-9 haben dort az - 90, den Tisch dann um 180 Grad gedreht setzen) auf die Sektorachse bei ap_c gesetzt, aussen liegt dann -Y. Mit yaw = Azimut - 90 Grad waere die Konvention gespiegelt (Fehler des ersten Kritiker-Bildes, W16).",
+  "abweichung": "layout.json hydro_tables liefert je Ring nur ein Beispiel (Reihen ap 1733/1995 innen, 2987-3775 Mitte, 4888/5176 aussen) mit gleicher Rinnenlaenge 1304/1983/3232; diese Laengen sind groesser als die Zehneck-Seite 2 x ap x tan 18 Grad der Reihe (innen 1126/1296, Mitte 1916-2429, aussen 3198-3572) und kollidierten an den Ecken (Ben-Fund 29.10.). Rev. B folgt D18, Stand W17 (D28/D29/D30, Radialbudget): Rinnenlaenge je Reihe = Zehneck-Seite - 2 x corner_gap (60) - Ueberstaende (Zulaufseite 169, Ablaufseite 79); Ergebnis innen 758/928, Mitte 1505/1676/1847/2018, aussen 2676/2864/3051 mm. Topfloecher je Tisch innen 7, Mitte 30, aussen 42; gesamt 586 (Mindestzahl NFT 459, R15/D27; Lochabstand 200, W18/D32; mit corner_gap 100 waeren es 542). Tischmitte = Beetmitte nach der radialen Verschiebung (Aussen 4973, Innenbeet 3277; OBJ-Beete weichen einzeln um bis ca. 70 mm ab, Layout/Integrator). Die Tisch-Beine des OBJ stehen nicht im Layout (Platten ohne Beine). Die Z-Hoehen bleiben (innen 840, Mitte/aussen 1300). Ausrichtung: X tangential gegen den Uhrzeigersinn (+X Sammelrohr/tiefes Ende), Y radial nach INNEN; die Instanz wird mit yaw = Azimut + 90 Grad (volle 360 Grad; layout.json hydro_tables speichert yaw nur modulo 180: aussen Sektoren 3 und 6-9 sowie Mitte/innen 7-9 haben dort az - 90, den Tisch dann um 180 Grad gedreht setzen) auf die Sektorachse bei ap_c gesetzt, aussen liegt dann -Y. Mit yaw = Azimut - 90 Grad waere die Konvention gespiegelt (Fehler des ersten Kritiker-Bildes, W16).",
   "montage": [
    "Bock am Boden ausrichten: Portal ausserhalb der Beete bzw. Pfosten ausserhalb des Pools, Fussplatten mit M8 / Verbundankern verschrauben",
    "Winkelhalter T23 je Bein an die Holmunterkante schrauben (Blindnietmuttern M6) und am Bein verschrauben (M6x55, Winkel nach innen zum Holm hin), vor dem Auflegen der Rinnen",
@@ -252,11 +252,11 @@
   "stueckliste": [
    "Pro Tisch je Typ (Laengen in mm, Stand W17):",
    "  aussen: Beine 4 x 40x40x3: Laenge 1251 / 1219, Beinabstand y 960; Querholm 40x60x3 x 2: Laenge 1000; Querstrebe 40x40x3 x 2: Laenge 920; Laengsstreben 40x40x3 x 2: Laenge 2136; Diagonalen 25x3 x 4; Laengsdiagonalen 25x3 x 2; Fussplatten 70x70x5 x 4",
-   "     Rinnen (3): 3051 mm / 11 Loecher, 2864 mm / 11 Loecher, 2676 mm / 10 Loecher; Verteiler d25 schraeg: Laenge 869; Sammelrohr d50 schraeg: Laenge 869",
+   "     Rinnen (3): 3051 mm / 15 Loecher, 2864 mm / 14 Loecher, 2676 mm / 13 Loecher; Verteiler d25 schraeg: Laenge 869; Sammelrohr d50 schraeg: Laenge 869",
    "  mitte: Beine 4 x 40x40x3: Laenge 1243 / 1227, Beinabstand y 1093; Querholm 40x60x3 x 2: Laenge 1133; Querstrebe 40x40x3 x 2: Laenge 1053; Laengsstreben 40x40x3 x 2: Laenge 965; Diagonalen 25x3 x 4; Laengsdiagonalen 25x3 x 2; Fussplatten 70x70x5 x 4",
-   "     Rinnen (4): 2018 mm / 7 Loecher, 1847 mm / 7 Loecher, 1676 mm / 6 Loecher, 1505 mm / 6 Loecher; Verteiler d25 schraeg: Laenge 1092; Sammelrohr d50 schraeg: Laenge 1092",
+   "     Rinnen (4): 2018 mm / 9 Loecher, 1847 mm / 8 Loecher, 1676 mm / 7 Loecher, 1505 mm / 6 Loecher; Verteiler d25 schraeg: Laenge 1092; Sammelrohr d50 schraeg: Laenge 1092",
    "  innen: Pfosten 2 x 40x40x3: Laenge 777 / 773; Kragarm 40x60x3 x 2: Laenge 557; Laengsstrebe 40x40x3 x 1: Laenge 218 (Z 400); Laengsdiagonale 25x3 x 1; Fussplatten 70x70x5 x 2",
-   "     Rinnen (2): 928 mm / 3 Loecher, 758 mm / 2 Loecher; Verteiler d25 schraeg: Laenge 538; Sammelrohr d50 schraeg: Laenge 538",
+   "     Rinnen (2): 928 mm / 4 Loecher, 758 mm / 3 Loecher; Verteiler d25 schraeg: Laenge 538; Sammelrohr d50 schraeg: Laenge 538",
    "Je Bock (Portal): 2 Beine, 1 Holm, 1 Querstrebe, 2 Diagonalen, 2 Fussplatten, 4 Schrauben M8x30, 4 Schrauben M6x40 + 4 Muttern M6, 2 Rinnenhalter je Rinne mit Schraube M5x12; Bock-Anzahl 2 je Tisch. Je Bock (Ausleger): 1 Pfosten, 1 Kragarm, 1 Fussplatte, 2 Schrauben M8x30, 2 Rinnenhalter je Rinne.",
    "Dabei: 4 Duebel/Anker M8 je Bock (Boden; innen Verbundanker), je 1 Endstopfen d25 und d50 je Tisch (-Y-Rohrende)",
    "Je Bein ein Winkelhalter T23 (36 x 60 x 60 x 4, S235 verzinkt, 2 x M6x55 + Mutter, 2 x M6x16): innen 2, mitte 4, aussen 4 je Tisch; gesamt 76 (innen 10 x 2, mitte 6 x 4, aussen 8 x 4), Blatt docs/parts/winkelhalter.md"
@@ -271,8 +271,8 @@
   "gewicht_gefuellt": "Wasserfuellung der Rinnen (Film 10 mm, 1 l = 1 kg): aussen 3 x 4,0 = 12 kg, Mitte 4 x 2,5 = 10 kg, innen 2 x 1,6 = 3,2 kg [E]; Verteiler d25 und Sammelrohr d50 gefuellt je ca. 0,3-1,6 kg [E]",
   "pruefung": [
    "Bild-Kritiker (Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innen/Aussen) und Spec-Pruefer: Runden siehe docs/workshop-log.md (W16)",
-   "scripts/workshop/check_nft_tisch.py (196/196 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze; Winkelhalter (Zahl, Lage, Masse, inspect.interference ohne Treffer)",
-   "scripts/workshop/check_nft_fit.py (40/40 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische mit den verschobenen OBJ-Beeten (Aussen 800 x 2640): Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite, Footprint-Abstand benachbarter Tische >= corner_gap (gemessen 95-114), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, Pfosten ausserhalb des Pools, NFT-Topfloecher >= 459 (462), Laufwege A/B >= 500 und Wandluft >= 100"
+   "scripts/workshop/check_nft_tisch.py (196/196 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage (pitch 200), Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze; Winkelhalter (Zahl, Lage, Masse, inspect.interference ohne Treffer)",
+   "scripts/workshop/check_nft_fit.py (40/40 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische mit den verschobenen OBJ-Beeten (Aussen 800 x 2640): Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite, Footprint-Abstand benachbarter Tische >= corner_gap (gemessen 95-114), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, Pfosten ausserhalb des Pools, NFT-Topfloecher >= 459 (586), Laufwege A/B >= 500 und Wandluft >= 100"
   ],
   "offen": [
    "Statik der Portal-/Auslegerboecke nicht nachgewiesen (Querholm 40x60x3 ueber ca. 1,2 m: Biegung 50 kg mittig ca. 150 Nm, ca. 15 N/mm2 [E]; Kragarm innen ca. 165 Nm am Pfosten, Fussplatte/Verbundanker nachzurechnen)",
@@ -281,7 +281,7 @@
    "Schlaeuche gerade statt gebogen",
    "Gefaelle: detail-standard.md und Scope-Card nennen noch 1 cm/m, gebaut 1,5 % nach R06 (Orchestrator-Vorgabe)",
    "Innen: Pfosten stehen ausserhalb des Beckenrands (Wasserradius 1945 + Wand 150 + 60 + 50); der Kragarm ueberspannt Rand Z 650 mit 130 mm Luft; ein tiefer Stuetzwinkel am Pfosten ist wegen der Beckenwand nicht moeglich (Annahme A); der Winkelhalter T23 sitzt am Pfostenkopf (Z 719-781) ueber dem Beckenrand Z 650",
-   "W17: corner_gap von 100 auf 60 mm gesenkt (Annahme A), damit die NFT-Mindestzahl 459 erreicht wird (462); Alternative: Lochabstand 230 statt 250 (nft_rinne, 492) -- Entscheidung Orchestrator/Ben",
+   "W17/W18: corner_gap von 100 auf 60 mm gesenkt (Annahme A, W17); mit Lochabstand 200 (W18/D32) ergibt das 586 Topfloecher (Mindestzahl 459, Soll ca. 580); mit corner_gap 100 waeren es nur 542",
    "W17: Portalrand = Beet-Aussenkante + 115 mm (Fussplatte 70, leg_clearance 45); Laufwege nach check_nft_fit: A (Beckenrand-Innenportal) 600 mm, B (Innen-Aussenportal) 600 mm, Wandluft 218 mm; Aussenkante Tisch in 1,3 m Hoehe gegen Strebenabstand: Montage rechnet nach (D29)",
    "W17: aussen 3 Rinnen (OBJ 2) bleibt Annahme; Reihen auf ap 4685, 4973, 5261 (Mitte 4973 +- 288)",
    "W17: Tischmitte folgt den Beeten nach Verschiebung (outer_bed_shift 236 / inner_bed_shift 66, M7); die OBJ-Beete liegen einzeln bis ca. 70 mm daneben, daher Beine-Beet-Abstand im Check ab 30 mm"
@@ -488,7 +488,7 @@
    "corner_gap 60 mm je Seite der Sektorgrenze",
    "60 mm",
    "A",
-   "W17: vorher 100 (D18); 60 noetig fuer die NFT-Mindestzahl 459 (R15) bei verschobenen Aussentischen; Abstand zwischen zwei Tischen ca. 95-114 mm (check_nft_fit)",
+   "W17: vorher 100 (D18); 60 gewaehlt fuer die NFT-Mindestzahl 459 (R15, W17) und das Soll ca. 580 (W18/D32); Abstand zwischen zwei Tischen ca. 95-114 mm (check_nft_fit)",
    "niedrig"
   ],
   [
@@ -541,10 +541,17 @@
    "mittel"
   ],
   [
-   "NFT-Topfloecher gesamt 462 (Mindestzahl 459)",
-   "462",
+   "NFT-Topfloecher gesamt 586 (Mindestzahl 459, Soll ca. 580)",
+   "586",
    "OBJ + R15 + E",
-   "R15/D27: NFT >= 459; Summe 10 x innen + 6 x Mitte + 8 x aussen aus hole_plan",
+   "R15/D27: NFT >= 459; D32: Lochabstand 200; Summe 10 x innen + 6 x Mitte + 8 x aussen aus hole_plan (Randabstand 64)",
+   "mittel"
+  ],
+  [
+   "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",
+   "mm",
+   "E + A",
+   "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
    "mittel"
   ]
  ],

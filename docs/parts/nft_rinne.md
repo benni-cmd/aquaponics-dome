@@ -31,9 +31,9 @@
 | `rib_y1` | 38 | mm | [A] innere Rippen bei y = +-38: innen 35,5 > Netztopf-Kragenradius 32 |
 | `rib_y2` | 52 | mm | [A] aeussere Rippen bei y = +-52 |
 | `rib_end` | 20 | mm | [A] Rippen enden 20 mm vor der Endkappe |
-| `pitch` | 250 | mm | [A] Lochabstand EINER Reihe in der Mittellinie (Scope-Card nft_rinne); ref-6: Abstand der Pflanzen je Reihe ca. 3-4 Kragenbreiten = 200-250 mm geschaetzt; Blattsalat NFT 150-250 mm (FarmHub 2.4); Zickzack zu Nachbarrinnen = pitch/2 im Tisch |
-| `n_holes` | 12 |  | [E] = floor(len_l / pitch): L 12, M 7, K 5 (Pruefzahl Scope-Card: Lochzahl = Laenge/pitch abgerundet; Lochreihen = 1) |
-| `shift` | -62.5 | mm | [E] Phase der Lochreihe: Variante A -pitch/4, Variante B +pitch/4 -> benachbarte Rinnen im Tisch um pitch/2 versetzt (Zickzack) |
+| `pitch` | 200 | mm | [A] W18/D32 (Ben 29.10.): Lochabstand EINER Reihe 200 mm (vorher 250); Q: Iowa State 8 Zoll = 203 mm, HortTechnology 15 cm, FarmHub 150-250 (R16); einstellbar 150..250, Zickzack zu Nachbarrinnen = pitch/2 im Tisch (Rinnenabstand 262: kollisionsfrei bis 150) |
+| `n_holes` | 16 |  | [E] = floor(len_l / pitch): Master L 16, M 9, K 6 (Pruefzahl Scope-Card: Lochzahl = Laenge/pitch abgerundet; Lochreihen = 1); die Tischreihen bekommen je Reihe eigene Zahl aus tisch_geom.hole_plan (Randabstand 64) |
+| `shift` | -50.0 | mm | [E] Phase der Lochreihe: Variante A -pitch/4 = -50, Variante B +pitch/4 -> benachbarte Rinnen im Tisch um pitch/2 = 100 versetzt (Zickzack) |
 
 Gesamt-Box (Messung): X -1645.0 bis 1650.0, Y -65.0 bis 65.0, Z 0.0 bis 100.0 mm; Koerper: 3.
 
@@ -42,18 +42,18 @@ Gesamt-Box (Messung): X -1645.0 bis 1650.0, Y -65.0 bis 65.0, Z 0.0 bis 100.0 mm
 ## Werkstoff und Gewicht
 
 - Werkstoff: PVC-U weiss, UV-stabilisiert (alternativ PP), Dichte 1.4 g/cm3, Farbe #f2f2ee ([A] ref-6 weisse Rinne)
-- Volumen (Messung, `solidcraft-cli eval`): 3966.7 cm3 · Masse leer: 5553 g (5.55 kg)
-- Variante `nft_rinne_l_a`: 5.55 kg leer
-- Variante `nft_rinne_l_b`: 5.55 kg leer
-- Variante `nft_rinne_m_a`: 3.49 kg leer
-- Variante `nft_rinne_m_b`: 3.49 kg leer
-- Variante `nft_rinne_k_a`: 2.37 kg leer
-- Variante `nft_rinne_k_b`: 2.37 kg leer
+- Volumen (Messung, `solidcraft-cli eval`): 3945.4 cm3 · Masse leer: 5524 g (5.52 kg)
+- Variante `nft_rinne_l_a`: 5.52 kg leer
+- Variante `nft_rinne_l_b`: 5.52 kg leer
+- Variante `nft_rinne_m_a`: 3.48 kg leer
+- Variante `nft_rinne_m_b`: 3.48 kg leer
+- Variante `nft_rinne_k_a`: 2.36 kg leer
+- Variante `nft_rinne_k_b`: 2.36 kg leer
 - Gefuellt/in Betrieb: Betriebsfuellung Naehrloesungsfilm 10 mm Tiefe x 125 mm Innenbreite x Laenge: L 4,0 l, M 2,5 l, K 1,6 l [E]; Betrieb ca. +4,0 / +2,5 / +1,6 kg zum Leergewicht der Variante
 
 ## Querschnitt / Profil
 
-Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf der Oberseite (y = +-38 und +-52, enden 20 mm vor den Kappen): Gesamthoehe 100; EINE Reihe Topfloecher D52 in der Mittellinie, Teilung 250 (L 12, M 7, K 5 Loecher), Reihe um shift = +-62,5 verschoben (Phase A/B fuer den Zickzack im Tisch).
+Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf der Oberseite (y = +-38 und +-52, enden 20 mm vor den Kappen): Gesamthoehe 100; EINE Reihe Topfloecher D52 in der Mittellinie, Teilung 200 (Master L 16, M 9, K 6 Loecher), Reihe um shift = +-50 verschoben (Phase A/B fuer den Zickzack im Tisch).
 
 ## Ports (Anschluesse)
 
@@ -129,14 +129,15 @@ Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne
 ## Pruefung
 
 - Gauntlet-Urteil: offen
-- Scope-Card nft_rinne: Lochreihen je Rinne = 1, Loecher = floor(Laenge/pitch) (L 12, M 7, K 5), Breite 130, Hoehe 100 (check_nft_rinne.py, check.txt)
+- Scope-Card nft_rinne: Lochreihen je Rinne = 1, Loecher = floor(Laenge/pitch) (Master L 16, M 9, K 6 bei pitch 200), Breite 130, Hoehe 100 (check_nft_rinne.py 93/93 PASS, check.txt; Phase +-pitch/4, Zickzack pitch/2 = 100)
 - Bild-Kritiker Runde 3 (Kontextpaket): Modell gewaehlt, keine grosse Luecke; Spec-Pruefer: FAIL (Herkunft im Blatt, Eltern-Merkmale) -> behoben in Runde 4
 - Triage in `docs/workshop-log.md`
+- W18 (D32): pitch 200, Rinnenvarianten je Tischreihe neu (Randabstand 64), Tische neu gebaut; Topfloecher gesamt 586; kein Spec-/Bild-Pruefer-Lauf (Wochenlimit)
 
 ## Offene Fragen
 
 - Rippenprofil (vier Rippen 5x5) und Wandstaerke sind Annahmen [A]
-- Lochabstand 250 ist unsere Auslegung, ref-6 gibt kein Mass
+- Lochabstand 200 (D32, Ben 29.10.) gestuetzt auf Iowa State 8 Zoll = 203 mm und HortTechnology 15 cm (R16); einstellbar 150..250; ref-6 gibt kein Mass
 - Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)
 - Klebefuge der Endkappen nicht als Koerper modelliert
 - Zickzack = Versatz benachbarter Rinnen im Tisch; die Rinne liefert nur die Lochphase A/B (Konfiguration shift +-pitch/4, Dateien nft_rinne_<l|m|k>_<a|b>.sc) - Scope-Card nft_rinne vom Orchestrator zu ergaenzen

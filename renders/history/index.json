@@ -1818,5 +1818,25 @@
   "note": "Gruppenliste, Klick waehlt Tank, Auswahl leuchtet cyan",
   "commit": "583ed39",
   "source": "renders/viewer-gruppenliste-auswahl.jpg"
+ },
+ {
+  "file": "20261029-223327_werkstatt_nft-rinne_nft-rinne-04-oberseite-toepfe.png",
+  "sha": "21d8b6b032ed1445",
+  "time": "2026-10-29 22:33:27",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "W18 pitch 200, Draufsicht Rinne mit Toepfen",
+  "commit": "8e5bd87",
+  "source": "renders/components/nft_rinne/nft_rinne-04-oberseite-toepfe.png"
+ },
+ {
+  "file": "20261029-223327_werkstatt_nft-rinne_nft-rinne-05-ueberblick.png",
+  "sha": "8b05f2ef35b24bc9",
+  "time": "2026-10-29 22:33:27",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "W18 pitch 200, Draufsicht Rinne mit Toepfen",
+  "commit": "8e5bd87",
+  "source": "renders/components/nft_rinne/nft_rinne-05-ueberblick.png"
  }
 ]

@@ -4,7 +4,7 @@
 
 **Datei:** `designs/components/netztopf.sc` · **Teilenummer:** T10 · **Revision:** A · **Bezugspunkt:** Mitte Boden (Z=0), Achse Z; Kragenoberkante bei Z=cup_h
 
-**Anzahl (Instanzen):** Beete 2160 (OBJ) + Rinnen 556 (E) = 2716 (Quelle: data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_rinne.md (20 Rinnen x 5 + 24 x 7 + 24 x 12 Loecher))
+**Anzahl (Instanzen):** Beete 2160 (OBJ) + Rinnen 586 (E) = 2746 (Quelle: data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_rinne.md (20 Rinnen x 5 + 24 x 7 + 24 x 12 Loecher))
 
 ## Masse und Parameter
 
@@ -54,7 +54,7 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 | Schlitze 3 x 38 mm, 8 Stueck, ab 8 mm ueber dem Boden | 3 x 38 mm, 8 St. | A | Netztoepfe haben Schlitze fuer den Wurzeldurchtritt; Mass geschaetzt | niedrig |
 | Bodenloch D10 | D10 | A | Standard-Netztopf; OBJ hat nur eine Box | niedrig |
 | Konischer Korpus 34 -> 50 mm, Innenwand parallel | D34 / D50 | A | Standard-Netztopf konisch; Aussen-D oben 50 = OBJ | niedrig |
-| Gesamtzahl 2716 = 2160 (Beete) + 556 (Rinnen) | 2716 | OBJ + E | layout.json pots.total + Rinnen-Blatt (Loecher 5/7/12 je Rinne) | mittel |
+| Gesamtzahl 2746 = 2160 (Beete) + 586 (Rinnen) | 2746 | OBJ + E | layout.json pots.total + Rinnen-Blatt (Loecher 5/7/12 je Rinne) | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -71,7 +71,7 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 
 ## Stueckliste-Zeile
 
-- T10 Netztopf 50/64 x 63, PP schwarz: Beete 2160 (OBJ: 7 Aussenbeete x 288 + 144 im Beet bei Azimut 113) + Rinnen 556 (20 Rinnen K x 5 Loecher + 24 Rinnen M x 7 + 24 Rinnen L x 12; Auslegung E) = 2716 gesamt (Besatz Rinnen und Beete laut decisions D17)
+- T10 Netztopf 50/64 x 63, PP schwarz: Beete 2160 (OBJ: 7 Aussenbeete x 288 + 144 im Beet bei Azimut 113) + Rinnen 586 (Tische innen 10 x 7, Mitte 6 x 30, aussen 8 x 42; pitch 200, W18) = 2746 gesamt (Besatz Rinnen und Beete laut decisions D17)
 
 ## Alternative lokale Fertigung
 
@@ -85,7 +85,7 @@ Netztoepfe 50 mm sind Massenware (Gartenbedarf/Hydroponik, ca. 0,05-0,10 EUR/Stu
 
 ## Pruefung
 
-- Gauntlet-Urteil: Spec-Pruefer Runde 2 FAIL -> behoben (kein Bild-Kritiker)
+- Gauntlet-Urteil: Spec-Pruefer Runde 1 und 2 (siehe workshop-log); W18 Zahlen nachgefuehrt
 - scripts/workshop/check_pflanze.py (18/18 PASS, davon 9 Netztopf): Masse 50 x 64 x 63 (liest die Konstante aus layout.json, kein unabhaengiger OBJ-Beleg), Kragen D64, Bezugspunkt Z=0, 8 Schlitze, Material PP, Masse 14-20 g, Spiel im Rinnen-Topfloch D52 = 2 mm
 - Schnitt `renders/components/netztopf/netztopf-02-schnitt.png` zeigt Wand, Kragen, Schlitze und Bodenloch; Sitz im Topfloch: `renders/components/nft_rinne/nft_rinne-06-schnitt-zulauf.png`
 - Kein Bild-Kritiker: der Netztopf ist in keiner Referenz sichtbar (vom Salat bzw. der Erde verdeckt); Spec-Pruefer: Runde 1 FAIL -> behoben, Runde 2 (29.10. W07) FAIL (Herkunft/Altlasten) -> behoben, siehe workshop-log
@@ -96,3 +96,4 @@ Netztoepfe 50 mm sind Massenware (Gartenbedarf/Hydroponik, ca. 0,05-0,10 EUR/Stu
 - Topfhoehe 63 laut OBJ-Box; Standardware ist oft 50 mm; Achszuordnung der OBJ-Box (Hoehe 60-64 laut oasis-obj-analysis) offen
 - Beet-Raster 288 je Beet (24 x 12) gegen layout.json distinct_along 64 / distinct_across 39: Integrator
 - Topfboden und Naehrloesungsfilm in der Rinne (Topf ragt ca. 59,5 mm unter die Deckelflaeche, Schlitze 8-46 mm ueber dem Boden): Rinne/Tisch pruefen
+- W18: Rinnen-Topfloecher 586 laut docs/parts/nft_tisch.md (pitch 200, corner_gap 60); Beete 2160 nur bis zur Umstellung auf aussen_800 (Raster Aussenbeet 800 x 2640: Layout/Integrator)

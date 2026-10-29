@@ -6,4 +6,4 @@
 ## Naechste Teilschritte M1
 2. Tanks (4: klein 2, gross 2 inkl. tank_gross_t3?) + Pumpen als Instanzen (07_Tanks, 09_Technik). 3. NFT-Tische (24 aus Ringen, nft_tisch_*). 4. Netztopf/Salatkopf (2716). 5. Knoten/Anker (M2).
 ## Regeln vom Orchestrator
-- Ein Schritt = ein Kontext; nach jedem Schritt Zustand sichern, clear_session self. Render zusaetzlich mit scripts/archive_render.py ablegen (renders/history mit committen).
+- Ein Schritt = ein enger Lesekontext; nach jedem Schritt Zustand sichern, NICHT leeren (System komprimiert, docs/endless-mechanics.md KORREKTUR). Render zusaetzlich mit scripts/archive_render.py ablegen (renders/history mit committen).

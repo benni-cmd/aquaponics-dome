@@ -58,3 +58,13 @@ Beginn 29.10.2026 ~03:50. Befunde zu SolidCraft v0.25.1 (Headless, `solidcraft-c
 | S3 | Gewicht nur leer, Varianten, Stueckliste ohne Mengen, Kleber ohne Norm (sicher) | **gueltig** | Varianten-Gewichte, Fuellung, Mengen (68 Rinnen), Kleber DIN EN 14814 |
 | S4 | Tuelle D16 vs. PE-Rohr 16; DN32 vs. d32 (vermutet) | **gueltig** | Schlauch ID 16 (5/8 Zoll), "Muffe d32 (etwa DN25)" |
 | S5 | Lochabstand-Herkunft "2 Topfbreiten" falsch; Anzahl aussen 2/3 nicht als A | **gueltig** | Text korrigiert (3-4 Kragenbreiten = 200-250), 2/3 als A |
+
+### nft_tisch, Bild-Kritiker (Kontextpaket) 29.10. ~05:30: Urteil "Referenz"
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, vermutet: 3 Boecke/lange Beine/Bodenrahmen, Referenz zwei Endboecke | **gueltig (Scope-Card)**: Card sagt 4 Beine | Boecke auf 2 (4 Beine) umgestellt; Laengsstreben als statische Aussteifung (A) beibehalten, in ref-6 durch Beete verdeckt |
+| 2 | gross, vermutet: Rinnen schliessen fast buendig zu einer Platte, Modell mit Spalten | **unklar / Widerspruch OBJ-Bild**: OBJ hydro_tables Rinnenabstand 262-288 bei Breite 130; ref-6 zeigt Platte | Rangfolge provenance: OBJ vor Bild -> bleibt; Frage an Orchestrator/Ben |
+| 3 | klein, sicher: Halter am Beinkopf breite Winkel statt Klammern | **gueltig, offen** | Kopfplatten/Winkelhalter nicht modelliert (L4), im Blatt "offen" |
+| 4 | klein, sicher: Schlaeuche weich gebogen, Modell gerade starr | **gueltig, Zwischenbauteil** (Montage-Sitzung baut Schlaeuche/Verteiler nach Scope-Teilung) | gerade Stutzen bleiben als Platzhalter |
+| 5 | klein, vermutet: Beine flache Profile statt Rechteckrohr | **unklar** | ref-6 verdeckt; Rechteckrohr 30x30 aus OBJ-Analyse (Tanks) bleibt (A) |
+| Hinweis | Rinnenprofil flach/gerillt vs. hohes Kasten; Verteiler ueber Tischende hinaus, Schlaeuche zu Nachbartischen | **andere Klasse** (Rinne; Rohrnetz Integrator) | Rinne abgenommen; Verteiler als Platzhalter |

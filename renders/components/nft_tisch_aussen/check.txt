@@ -62,19 +62,18 @@ PASS nft_tisch: aussen Rinne 3 Hoehe Boden bei x=0: Ist 1300, Soll 1300 (+-1.5)
 PASS nft_tisch: aussen Loecher je Rinne (erste): Ist 12, Soll 12
 PASS nft_tisch: aussen Zickzack-Versatz 1/2: Ist 125, Soll 125 (+-1)
 PASS nft_tisch: aussen Zickzack-Versatz 2/3: Ist 125, Soll 125 (+-1)
-PASS nft_tisch: aussen Beine: Ist 6, Soll 6
-PASS nft_tisch: aussen Querholme: Ist 3, Soll 3
-PASS nft_tisch: aussen Querstreben: Ist 3, Soll 3
-PASS nft_tisch: aussen Laengsstreben: Ist 4, Soll 4
-PASS nft_tisch: aussen Diagonalen: Ist 6, Soll 6
-PASS nft_tisch: aussen Fussplatten: Ist 6, Soll 6
-PASS nft_tisch: aussen Rinnenhalter: Ist 18, Soll 18
+PASS nft_tisch: aussen Beine: Ist 4, Soll 4
+PASS nft_tisch: aussen Querholme: Ist 2, Soll 2
+PASS nft_tisch: aussen Querstreben: Ist 2, Soll 2
+PASS nft_tisch: aussen Laengsstreben: Ist 2, Soll 2
+PASS nft_tisch: aussen Diagonalen: Ist 4, Soll 4
+PASS nft_tisch: aussen Fussplatten: Ist 4, Soll 4
+PASS nft_tisch: aussen Rinnenhalter: Ist 12, Soll 12
 PASS nft_tisch: aussen Schlaeuche: Ist 3, Soll 3
 PASS nft_tisch: aussen Auflage Holm bei x=-1366: Ist 1320.49, Soll 1320.49 (+-1)
-PASS nft_tisch: aussen Auflage Holm bei x=-0: Ist 1300, Soll 1300 (+-1)
 PASS nft_tisch: aussen Auflage Holm bei x=1366: Ist 1279.51, Soll 1279.51 (+-1)
 PASS nft_tisch: aussen Verteiler-Stutzen: Ist 3, Soll 3
 PASS nft_tisch: aussen Sammelrohr-Muffen: Ist 3, Soll 3
 PASS nft_tisch: aussen Muffenachse z: Ist 1295.8, Soll 1295.76 (+-1)
 PASS nft_tisch: aussen Verteiler-Stutzenachse z: Ist 1394.2, Soll 1394.24 (+-1)
-== nft_tisch: 79/79 PASS
+== nft_tisch: 78/78 PASS

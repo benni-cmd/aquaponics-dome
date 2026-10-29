@@ -94,13 +94,16 @@ def build(typ):
     b.add("solid.cylinder", diameter=p["bell_d"], height=p["bell_wall"], base=[x_sp, 0, z_m0 + p["bell_h"] - p["bell_wall"]], operation="join", targets=["Glocke"], name="Glockendeckel")
     for sg, nm in ((1, "SchlitzA"), (-1, "SchlitzB")):
         b.add("solid.box", length=p["bell_wall"] + 8, width=p["bell_slot_w"], height=p["bell_slot_h"], center=[x_sp + sg * (p["bell_d"] / 2 - p["bell_wall"] / 2), 0, z_m0 + p["bell_slot_z"] + p["bell_slot_h"] / 2], operation="cut", targets=["Glocke"], name=nm)
-    b.add("solid.cylinder", diameter=p["air_hole"], height=p["bell_d"] + 4, base=[x_sp, -p["bell_d"] / 2 - 2, z_m0 + 50], axis=[0, 1, 0], operation="cut", targets=["Glocke"], name="Luftloch")
+    b.add("solid.box", length=p["air_hole"], width=p["bell_wall"] + 6, height=p["air_hole"], center=[x_sp, -(p["bell_d"] / 2 - p["bell_wall"] / 2), z_m0 + 50], operation="cut", targets=["Glocke"], name="Luftloch")
     b.add("material.assign", bodies=["Glocke"], material="PVC grau Beet")
     # Medienschutz: Rohr D110, Seitenloecher in zwei Ringen
     tube(b, "Medienschutz", p["guard_d"], p["guard_wall"], [x_sp, 0, z_m0], [0, 0, 1], p["guard_h"])
-    for zr, nm in ((40, "Ring1"), (130, "Ring2")):
-        b.add("solid.cylinder", diameter=p["guard_hole"], height=p["guard_d"] + 4, base=[x_sp - p["guard_d"] / 2 - 2, 0, z_m0 + zr], axis=[1, 0, 0], operation="cut", targets=["Medienschutz"], name="Schutzloch_" + nm)
-        b.add("solid.pattern.circular", features=["Schutzloch_" + nm], axis={"origin": [x_sp, 0, 0], "dir": [0, 0, 1]}, count=8)
+    # Seitenloecher als quadratische Durchbrueche (Box gegen Zylinder: schnell; Zylinder-Zylinder-Schnitte kosten >1 min je Loch)
+    gh = p["guard_hole"]
+    for zr in (40, 120, 200):
+        for k, (dx, dy) in enumerate(((1, 0), (-1, 0), (0, 1), (0, -1))):
+            b.add("solid.box", length=(gh if dx == 0 else p["guard_wall"] + 6), width=(gh if dy == 0 else p["guard_wall"] + 6), height=gh,
+                  center=[x_sp + dx * (p["guard_d"] / 2 - p["guard_wall"] / 2), dy * (p["guard_d"] / 2 - p["guard_wall"] / 2), z_m0 + zr], operation="cut", targets=["Medienschutz"], name=f"Schutzloch_{zr}_{k}")
     b.add("material.assign", bodies=["Medienschutz"], material="PVC grau Beet")
     # --- Zulaufrohr (Tropfrohr) laengs, durch die Stirnwand
     b.add("component.activate", component=root)
@@ -108,8 +111,9 @@ def build(typ):
     x0, x1 = -L / 2 - 60, L / 2 - 400
     tube(b, "Tropfrohr", p["inflow_d"], p["inflow_wall"], [x0, y_in, z_in], [1, 0, 0], x1 - x0)
     n_dr = int((x1 - (-L / 2 + 150)) // p["inflow_pitch"]) + 1
-    b.add("solid.cylinder", diameter=p["inflow_hole"], height=p["inflow_d"] / 2 + 2, base=[-L / 2 + 150, y_in, z_in + 1], axis=[0, 0, -1], operation="cut", targets=["Tropfrohr"], name="Tropfloch1")
-    b.add("solid.pattern.rectangular", features=["Tropfloch1"], dir1=[1, 0, 0], count1=n_dr, spacing1=p["inflow_pitch"])
+    ih = p["inflow_hole"]
+    for k in range(n_dr):                           # Tropfloecher als Boxen durch die untere Rohrwand
+        b.add("solid.box", length=ih, width=ih, height=p["inflow_wall"] + 4, center=[-L / 2 + 150 + k * p["inflow_pitch"], y_in, z_in - p["inflow_d"] / 2 + p["inflow_wall"] / 2], operation="cut", targets=["Tropfrohr"], name=f"Tropfloch_{k}")
     b.add("solid.cylinder", diameter=p["inflow_d"] - 2 * p["inflow_wall"] - 0.4, height=20, base=[x1 - 18, y_in, z_in], axis=[1, 0, 0], operation="new", name="Stopfen", body_name="Endstopfen_Zulauf")
     b.add("material.assign", bodies=["Tropfrohr", "Endstopfen_Zulauf"], material="PVC grau Beet")
     b.add("component.activate", component=root)

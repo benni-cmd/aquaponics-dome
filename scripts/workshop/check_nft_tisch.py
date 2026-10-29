@@ -39,7 +39,7 @@ def main(typs):
             off = (xs[i + 1][0] - xs[i][0])
             ck.eq(f"{typ} Zickzack-Versatz {i+1}/{i+2}", abs(off), rp_pitch / 2, 1.0)
         # Boecke
-        xb = 3 if L > 2500 else 2
+        xb = 2                                      # 4 Beine (Scope-Card)
         ck.eq(f"{typ} Beine", len([k for k in B if k.startswith("Bein_")]), 2 * xb)
         ck.eq(f"{typ} Querholme", len([k for k in B if k.startswith("Holm_")]), xb)
         ck.eq(f"{typ} Querstreben", len([k for k in B if k.startswith("Querstrebe_")]), xb)

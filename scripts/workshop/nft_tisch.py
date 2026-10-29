@@ -26,7 +26,7 @@ def build(typ):
     Wt = (n - 1) * rp + 130                                   # Tischbreite = Rinnenbreite + Abstaende
     yl = Wt / 2 - p["holm_overhang"] - p["leg_inset"]          # Beine bei +-yl
     holm_len = Wt + 2 * p["holm_overhang"]
-    xb = [-(L / 2 - p["bock_inset"])] + ([0.0] if L > 2500 else []) + [L / 2 - p["bock_inset"]]
+    xb = [-(L / 2 - p["bock_inset"]), L / 2 - p["bock_inset"]]          # zwei Boecke = 4 Beine (Scope-Card nft_tisch)
     b = sc.Build()
     b.add("parameters.add", name="slope_pct", expression=str(p["slope_pct"]), unit="")
     for k in ("leg_w", "leg_wall", "holm_w", "holm_h", "strut_z"):

@@ -1,7 +1,7 @@
 {
  "klasse": "nft_tisch",
  "teilenummer": "T22",
- "beschreibung": "NFT-Tisch: n NFT-Rinnen parallel mit Zickzack-Versatz (pitch/2), Boecke aus Rechteckrohr mit Querholm, Querstrebe und gekreuzten Diagonalen, Laengsstreben, Fussplatten (M8), Rinnenhalter (M5), Zulaufverteiler mit n Schlauchanschluessen, Sammelablauf, Gefaelle 1,5 %",
+ "beschreibung": "NFT-Tisch: n NFT-Rinnen parallel mit Zickzack-Versatz (pitch/2), 2 Boecke aus Rechteckrohr mit Querholm, Querstrebe und gekreuzten Diagonalen, Laengsstreben, Fussplatten (M8), Rinnenhalter (M5), Zulaufverteiler mit n Schlauchanschluessen, Sammelablauf, Gefaelle 1,5 %",
  "quelle_masse": "docs/components.md und data/layout.json hydro_tables (Hoehe Z, Rinnenabstand, Laenge); ref-6: weisse Platte aus Rinnen auf Boecken, Verteilerschlaeuche hellblau am Tischende",
  "typen": {
   "aussen": {
@@ -242,7 +242,7 @@
    "T22c Laengsstreben 30x30x2: 2 je Bockabstand",
    "T22d Zulaufverteiler d25 mit n Stutzen und n Schlaeuchen ID 16 / AD 20",
    "T22e Sammelrohr d50 mit n Muffen",
-   "Bocke je Tisch: innen 2, Mitte 2, aussen 3; Tische gesamt 10 / 6 / 8"
+   "Boecke je Tisch: 2 (4 Beine); Tische gesamt 10 / 6 / 8 (Bocke gesamt 48)"
   ],
   "lokal": "Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Systemprofil mit Winkelverbindern; Rinnenhalter aus Streifen 25x3 selbst gebogen.",
   "referenz": "reference/ref-6-grow-tables-detail.jpg (Tisch: Platte aus Rinnen auf Boecken, Schlaeuche am Tischende hellblau); reference/ref-4 und ref-5 (Ringanordnung)",
@@ -254,13 +254,16 @@
   "gewicht_gefuellt": "Wasserfuellung der Rinnen (Film 10 mm): aussen 3 x 4,0 l, Mitte 4 x 2,5 l, innen 2 x 1,6 l [E]",
   "pruefung": [
    "scripts/workshop/check_nft_tisch.py (Ergebnis renders/components/nft_tisch_aussen/check.txt): Rinnenzahl, Abstand, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Verteiler/Sammelrohr",
-   "Triage in docs/workshop-log.md"
+   "Triage in docs/workshop-log.md",
+   "Bild-Kritiker (Kontextpaket): Referenz; grosse Luecken vermutet (Bockzahl, Rinnenbreite) -> Triage im Log; Bockzahl auf Scope-Card (4 Beine) umgestellt"
   ],
   "offen": [
    "Aufhaengung des Verteilers an den Boecken (Rohrschellen) nicht modelliert",
    "Eckengehrung/Zehneck-Lage und Azimut vom Integrator (Ring)",
    "Halteclips und Verteiler sind Annahmen [A]; Statik des Tisches nicht nachgewiesen",
-   "Aussen 3 Rinnen (OBJ 2) als Annahme"
+   "Aussen 3 Rinnen (OBJ 2) als Annahme",
+   "Rinnenabstand 262-288 (OBJ) bei Rinnenbreite 130 laesst 132-158 mm Luecken; ref-6 zeigt fast buendige Rinnen: Widerspruch OBJ/Bild, OBJ gilt (provenance), beim Orchestrator/Ben nachfragen",
+   "Schlaeuche gerade statt gebogen (Zwischenbauteil, Montage-Sitzung), Kopfplatten/Winkelhalter an den Beinkoepfen nicht modelliert"
   ]
  },
  "herkunft_tabelle": [
@@ -307,11 +310,11 @@
    "mittel"
   ],
   [
-   "Boecke 2 (3 bei Laenge > 2,5 m), Abstand zur Stirn 250",
-   "-",
-   "A",
-   "Konstruktionspraxis; ref-6 zeigt Beinpaare am Tischende",
-   "niedrig"
+   "Zwei Boecke = 4 Beine, Abstand zur Rinnenstirn 250",
+   "2",
+   "Scope-Card + A",
+   "docs/scope-cards.md nft_tisch: 4 Beine mit Querstreben, Diagonalen; ref-6: zwei Beinpaare je Tisch (Bild-Kritiker: keine Mittelbeine); Abstand 250 geschaetzt",
+   "mittel"
   ],
   [
    "Rechteckrohr 30x30x2 / 40x30x2",
@@ -368,6 +371,13 @@
    "OBJ + Ben",
    "components.md NFT-Ringe (Sektoren je Ring)",
    "mittel"
+  ],
+  [
+   "Laengsstreben 30x30x2 auf Hoehe 250 (Bodenrahmen)",
+   "-",
+   "A",
+   "statisch noetig (Aussteifung der zwei Boecke); in ref-6 durch Beete verdeckt (Bild-Kritiker vermutet: nicht sichtbar)",
+   "niedrig"
   ]
  ]
 }

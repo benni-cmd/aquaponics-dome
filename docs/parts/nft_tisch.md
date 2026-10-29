@@ -37,15 +37,15 @@
 | mitte | 4 | 263 | m | 1300 | 1983 | layout.json hydro_tables r 2987-3775, Z 1280-1330, Abstand 263 |
 | innen | 2 | 262 | k | 840 | 1304 | layout.json hydro_tables r 1733/1995, Z 819-858, Abstand 262 |
 
-Gesamt-Box (Messung): X -1785.0 bis 1695.0, Y -413.0 bis 413.0, Z -25.0 bis 1424.3 mm; Koerper: 116.
+Gesamt-Box (Messung): X -1785.0 bis 1695.0, Y -413.0 bis 413.0, Z -25.0 bis 1424.3 mm; Koerper: 82.
 
 **Toleranzen / Spiel:** Rinnenunterkante = Holmoberkante an jedem Bock (Pruefung +-1 mm); Gefaelle 1,5 % +-0,03 %; Rinnenhoehe Z +-1,5 mm.
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: Stahl verzinkt (Boecke), PVC/PE (Rohre, Schlaeuche), Dichte 7.85 g/cm3, Farbe #aeb4b8 (ref-6: graue/verzinkte Beine mit Halterungen)
-- Volumen (Messung, `solidcraft-cli eval`): 17076.7 cm3 · Masse leer: 51450 g (51.45 kg)
-- Variante `nft_tisch_aussen`: 51.45 kg leer
+- Volumen (Messung, `solidcraft-cli eval`): 15969.3 cm3 · Masse leer: 42880 g (42.88 kg)
+- Variante `nft_tisch_aussen`: 42.88 kg leer
 - Variante `nft_tisch_mitte`: 38.32 kg leer
 - Variante `nft_tisch_innen`: 18.22 kg leer
 - Gefuellt/in Betrieb: Wasserfuellung der Rinnen (Film 10 mm): aussen 3 x 4,0 l, Mitte 4 x 2,5 l, innen 2 x 1,6 l [E]
@@ -89,7 +89,7 @@ Boecke: Beine, Querholm, Querstrebe aus Rechteckrohr verzinkt 30x30x2 bzw. 40x30
 | Hoehe Rinnenmitte Z 840 / 1300 / 1300 | mm | OBJ | layout.json hydro_tables Z (819-858, 1280-1330, 1291-1325) gemittelt | mittel |
 | Zickzack Versatz pitch/2 = 125 | 125 | Bild | ref-6 mittlerer Tisch (zwei versetzte Reihen zwischen Nachbarrinnen); Scope-Card nft_tisch | hoch |
 | Gefaelle 1,5 % (0,86 Grad) | 1,5 % | R06 | docs/research/R06.md: 1,3-3 % (Morgan, Greenhouse Mgmt), FarmHub 1 % | mittel |
-| Boecke 2 (3 bei Laenge > 2,5 m), Abstand zur Stirn 250 | - | A | Konstruktionspraxis; ref-6 zeigt Beinpaare am Tischende | niedrig |
+| Zwei Boecke = 4 Beine, Abstand zur Rinnenstirn 250 | 2 | Scope-Card + A | docs/scope-cards.md nft_tisch: 4 Beine mit Querstreben, Diagonalen; ref-6: zwei Beinpaare je Tisch (Bild-Kritiker: keine Mittelbeine); Abstand 250 geschaetzt | mittel |
 | Rechteckrohr 30x30x2 / 40x30x2 | mm | A + OBJ | Beine 30x30 aus OBJ-Analyse (Tank); ref-6 zeigt flache Beine/Winkel mit Halterungen | niedrig |
 | Gekreuzte Diagonalen Flachstahl 25x3 | - | Bild + A | ref-6: schraege Stuetzen an den Beinen; Scope-Card verlangt Diagonalen | mittel |
 | Fussplatten 80x80x5, M8 | - | A | Standard-Fusspaltte; ref-6 zeigt Winkelfuesse | niedrig |
@@ -98,6 +98,7 @@ Boecke: Beine, Querholm, Querstrebe aus Rechteckrohr verzinkt 30x30x2 bzw. 40x30
 | Sammelrohr d50 mit Muffen | - | A | Scope-Card: Sammelablauf; Mass A (keine Quelle) | niedrig |
 | Durchfluss je Rinne 0,5 l/min | 0,5 | R06 | docs/research/R06.md | mittel |
 | Anzahl Tische 10 / 6 / 8 | 24 | OBJ + Ben | components.md NFT-Ringe (Sektoren je Ring) | mittel |
+| Laengsstreben 30x30x2 auf Hoehe 250 (Bodenrahmen) | - | A | statisch noetig (Aussteifung der zwei Boecke); in ref-6 durch Beete verdeckt (Bild-Kritiker vermutet: nicht sichtbar) | niedrig |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -122,7 +123,7 @@ Boecke: Beine, Querholm, Querstrebe aus Rechteckrohr verzinkt 30x30x2 bzw. 40x30
 - T22c Laengsstreben 30x30x2: 2 je Bockabstand
 - T22d Zulaufverteiler d25 mit n Stutzen und n Schlaeuchen ID 16 / AD 20
 - T22e Sammelrohr d50 mit n Muffen
-- Bocke je Tisch: innen 2, Mitte 2, aussen 3; Tische gesamt 10 / 6 / 8
+- Boecke je Tisch: 2 (4 Beine); Tische gesamt 10 / 6 / 8 (Bocke gesamt 48)
 
 ## Alternative lokale Fertigung
 
@@ -133,9 +134,10 @@ Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Sys
 
 ## Pruefung
 
-- Gauntlet-Urteil: Bild-Kritiker und Spec-Pruefer laufen (siehe workshop-log)
+- Gauntlet-Urteil: Bild-Kritiker: Referenz, Luecken trianguliert (siehe workshop-log); Spec-Pruefer offen
 - scripts/workshop/check_nft_tisch.py (Ergebnis renders/components/nft_tisch_aussen/check.txt): Rinnenzahl, Abstand, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Verteiler/Sammelrohr
 - Triage in docs/workshop-log.md
+- Bild-Kritiker (Kontextpaket): Referenz; grosse Luecken vermutet (Bockzahl, Rinnenbreite) -> Triage im Log; Bockzahl auf Scope-Card (4 Beine) umgestellt
 
 ## Offene Fragen
 
@@ -143,3 +145,5 @@ Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Sys
 - Eckengehrung/Zehneck-Lage und Azimut vom Integrator (Ring)
 - Halteclips und Verteiler sind Annahmen [A]; Statik des Tisches nicht nachgewiesen
 - Aussen 3 Rinnen (OBJ 2) als Annahme
+- Rinnenabstand 262-288 (OBJ) bei Rinnenbreite 130 laesst 132-158 mm Luecken; ref-6 zeigt fast buendige Rinnen: Widerspruch OBJ/Bild, OBJ gilt (provenance), beim Orchestrator/Ben nachfragen
+- Schlaeuche gerade statt gebogen (Zwischenbauteil, Montage-Sitzung), Kopfplatten/Winkelhalter an den Beinkoepfen nicht modelliert

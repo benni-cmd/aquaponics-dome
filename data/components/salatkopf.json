@@ -1,28 +1,13 @@
 {
  "klasse": "salatkopf",
  "teilenummer": "T12",
- "beschreibung": "Salatkopf als buschige Blattrosette aus 36 einzelnen, geneigten Blattscheiben (7 Gruppen, deterministischer Zufallsversatz) um einen Kuppelkoerper, Groessen S/M/L ueber head_d",
- "quelle_masse": "ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm) breit, flacher Huegel (Hoehe ca. 0,5 x Breite) [A]",
+ "beschreibung": "Salatkopf als buschige Blattrosette aus 96 kleinen polygonalen Blaettern (12-Eck, unregelmaessig, Fibonacci-Verteilung auf einem Halbellipsoid-Huegel, deterministischer Zufallsversatz) um ein Herz-Prisma, Groessen S/M/L per Skalierung des ganzen Kopfes (head_d)",
+ "quelle_masse": "ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm) breit, flacher dichter Huegel (Hoehe ca. 0,5 x Breite) [A]",
  "parameter": {
   "head_d": {
    "wert": 100,
    "einheit": "mm",
-   "herkunft": "[A] Standard M: Breite ca. 1,15 x head_d, Hoehe ca. 0,5 x head_d (ref-6: flacher, breiter Hügel, Hoehe etwa halbe Breite); S = 70, L = 130"
-  },
-  "leaf_t_f": {
-   "wert": 0.045,
-   "einheit": "",
-   "herkunft": "[A] Blattdicke / head_d (Scheibe)"
-  },
-  "core_r_f": {
-   "wert": 0.27,
-   "einheit": "",
-   "herkunft": "[A] Kuppelkoerper Radius / head_d (klein gehalten, damit die Blattmasse das Bild bestimmt; Kritiker R3: Kern zu glatt)"
-  },
-  "core_h_f": {
-   "wert": 0.2,
-   "einheit": "",
-   "herkunft": "[A] Kernkugel Hoehe / head_d"
+   "herkunft": "[A] Standard M: Breite ca. 1,05 x head_d, Hoehe ca. 0,55 x head_d (ref-6: flacher, breiter Huegel, Hoehe etwa halbe Breite); S = 70, L = 130; wirkt als solid.scale-Faktor head_d/100 auf alle Blaetter und das Herz (Hals bleibt D16)"
   },
   "neck_d": {
    "wert": 16,
@@ -47,9 +32,9 @@
  },
  "bezugspunkt": "Z=0 = Kragenoberkante des Netztopfs (Mitte Topfoeffnung); Kopf waechst nach +Z, Hals nach -Z in den Topf",
  "blatt_gruppen": {
-  "herkunft": "[A] Rev. B 29.10. 15:40 (W07, Kritiker R4: gestapelte glatte Scheiben, ref-6 zeigt dichte krause Huegel): 72 kleine polygonale Blaetter (12-Eck, unregelmaessig) auf einem Halbellipsoid (a 34, b 32 mm bei head_d 100), Fibonacci-Verteilung ueber die Huegelflaeche, je Blatt Azimut, Anstellwinkel (pitch ueber der Waagerechten, steigt mit der Hoehe) und Roll zufaellig mit festem Seed; alle Zahlen in mm fuer head_d 100, solid.scale mit head_d/100 liefert S/L",
+  "herkunft": "[A] Rev. B 29.10. 15:40 (W07, Kritiker R4: gestapelte glatte Scheiben, ref-6 zeigt dichte krause Huegel): 72 kleine polygonale Blaetter (12-Eck, unregelmaessig) auf einem Halbellipsoid (a 34, b 32 mm bei head_d 100), Fibonacci-Verteilung ueber die Huegelflaeche, je Blatt Azimut, Anstellwinkel (pitch ueber der Waagerechten, steigt mit der Hoehe) und Roll zufaellig mit festem Seed; alle Zahlen in mm fuer head_d 100, solid.scale mit head_d/100 liefert S/L | Rev. B2 29.10. 20:00 (Bild-Kritiker Runde 5, Urteil Referenz): 96 kleinere Blaetter (18 x 15,5), Anstellwinkel 16 Grad + 0,5 x Hoehenwinkel +-13 Grad, weniger Streuung bei Laenge/Breite",
   "a": 34.0,
-  "b": 32.0,
+  "b": 34.0,
   "dicke": 2.0,
   "umriss": [
    [
@@ -117,28 +102,28 @@
    "#3f8a35"
   ],
   "verteilung": {
-   "n": 72,
+   "n": 96,
    "theta_min": 8,
-   "L": 21,
-   "w": 18,
-   "L_streu": 0.22,
-   "w_streu": 0.18,
-   "pitch0": 15,
-   "pitch_pro_theta": 0.55,
-   "pitch_streu": 42,
-   "az_streu": 55,
-   "roll_streu": 65
+   "L": 19,
+   "w": 15.5,
+   "L_streu": 0.14,
+   "w_streu": 0.12,
+   "pitch0": 16,
+   "pitch_pro_theta": 0.5,
+   "pitch_streu": 26,
+   "az_streu": 50,
+   "roll_streu": 50
   }
  },
  "blatt": {
   "funktion": "Visuelles Pflanzenbauteil (Kopfsalat) fuer Rinnen und Beete; nur Darstellung, keine Funktion im Wasserkreislauf.",
-  "querschnitt": "Blattrosette: Kuppelkoerper (Kugel) mit 36 geneigten Blattscheiben in 7 Gruppen (Neigung -14 bis 64 Grad, Blattdicke 4,5 mm), Wurzelhals D16 x 25 mm nach unten in den Netztopf; Groesse M: Breite 109 mm, Hoehe 55 mm ueber dem Topfrand. Blattscheiben ueberlappen sich gewollt (Pflanze); Vereinigung flacher Scheiben scheitert im Kernel, daher je Gruppe eigene Koerper.",
+  "querschnitt": "Blattrosette: 96 kleine, ebene Polygonblaetter (12-Eck, unregelmaessiger Umriss, 2 mm dick, je Blatt eigener Koerper, <= 14 Flaechen) auf einem Halbellipsoid (a 34, b 34 mm bei head_d 100), Anstellwinkel steigt von flach am Saum bis steil im Herzen, Azimut, Roll, Laenge und Breite zufaellig (fester Seed); Herz = niedriges Achteck-Prisma, Wurzelhals D16 x 25 mm nach unten in den Netztopf. Groesse M: Breite 102 mm, Hoehe 52 mm ueber dem Topfrand; S/L entstehen durch Skalierung (0,7 / 1,3). Blaetter ueberlappen sich gewollt; die Vereinigung flacher Koerper scheitert im Kernel, daher keine Booleans.",
   "toleranzen": "Hals D16 in Netztopf-Innen-D 47 (oben).",
   "ports": [],
   "verbindungen": [
    "Hals steckt im Netztopf; Instanz wird mit Ursprung auf die Kragenoberkante des Netztopfs gesetzt (Topf-Ursprung + 63 mm)."
   ],
-  "abweichung": "keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse M: Breite 109 mm, Hoehe 55 mm (Verhaeltnis 0.51; ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite).",
+  "abweichung": "keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse M: Breite 102 mm, Hoehe 52 mm (Verhaeltnis 0.51; ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite).",
   "montage": [
    "Instanz auf den Topf setzen (Pattern oder `occurrence.copy`)",
    "Groesse ueber Konfiguration S (70) / M (100) / L (130) waehlen"
@@ -148,32 +133,17 @@
    "T12 Salatkopf, Konfigurationen S/M/L, nur Darstellung (keine Beschaffung)"
   ],
   "pruefung": [
-   "Konfigurationszeilen S/M/L angelegt (`config.table`), Rosette je Konfiguration ueber head_d skaliert"
+   "scripts/workshop/check_pflanze.py (18/18 PASS, davon 9 Salatkopf): 96 Blaetter, Breite M 95-125, Hoehe 50-70, Hals im Topf, Flaechenbudget, Konfigurationen S/M/L, Breite S/L = 0,7/1,3 x M",
+   "Facetten: 98 Koerper, 1357 Flaechen gesamt, OBJ-Export 8756 Dreiecke (solidcraft-cli run salatkopf.sc --out x.obj; vorher 69 k)"
   ],
-  "kritiker": "Runde 1/2: Referenz gewaehlt (Kugelhaufen, Rose), Runde 3 (Kontextpaket): siehe workshop-log",
+  "kritiker": "Bild-Kritiker Runde 5 (Rev. B, 29.10.): Urteil Referenz; Luecken in Sache umgesetzt (Rev. B2, mehr/kleinere Blaetter, flacherer Herzwinkel), kein zweiter Lauf (Pruefer-Budget)",
   "offen": [
-   "Blattraender kreisrund (Ellipsen/Zacken fehlen)",
-   "Konfiguration S/L als Zeile vorhanden, Wirkung auf verknuepfte Instanz im Dom vom Integrator zu pruefen",
+   "Blattraender eben und kantig (keine Kraeuselung): gekraeuselte Blaetter brauchen viele Flaechen, Budget bei 2716 Instanzen",
    "Konfigurationen S/L wirken auf verknuepfte Instanzen im Dom: Integrator pruefen",
-   "Instanzvariation (zufaellige Drehung um Z, S/M/L gemischt) ist Sache des Layouts/Tisches (Kritiker R3/R4 Hinweis)",
-   "Bild-Kritiker: vier Runden, Referenz gewaehlt (Stilunterschied CAD gegen Raytracing; gekraeuselte Blaetter mit < 8 Flaechen je Koerper nicht erreichbar); Restluecken: Blattraender kreisrund, glatte Scheiben"
+   "Instanzvariation (zufaellige Drehung um Z, S/M/L gemischt) ist Sache des Layouts/Tisches"
   ]
  },
  "herkunft_tabelle": [
-  [
-   "Salat als buschige Blattrosette (33 Blaetter, 7 Gruppen, Kuppelkoerper)",
-   "-",
-   "Bild",
-   "ref-6 mittlerer Tisch: buschige Kopfsalat-Koepfe; Rosette aus Scheiben ist unsere Vereinfachung (Kritiker R1/R2)",
-   "mittel"
-  ],
-  [
-   "Breite M ca. 109 mm, Hoehe 55 mm",
-   "109 / 55 mm",
-   "Bild + A",
-   "ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite; Kopf ca. 1,5-2 x Topfkragen (64 mm)",
-   "niedrig"
-  ],
   [
    "Groessen S 70 / M 100 / L 130 (head_d)",
    "3",
@@ -203,32 +173,54 @@
    "mittel"
   ],
   [
-   "Kuppelkoerper Radius 0,27 x head_d, Hoehe 0,20 x head_d",
-   "0,27 / 0,20 x head_d",
-   "A",
-   "Kritiker R3: Kern klein halten, Blattmasse bestimmt das Bild",
+   "Salat als buschige Blattrosette (96 Polygonblaetter auf Halbellipsoid)",
+   "-",
+   "Bild",
+   "ref-6 mittlerer Tisch: buschige, dichte Kopfsalat-Koepfe; Polygonblaetter sind unsere Vereinfachung (Kritiker R1-R4)",
+   "mittel"
+  ],
+  [
+   "Breite M ca. 102 mm, Hoehe 52 mm",
+   "102 / 52 mm",
+   "Bild + A",
+   "ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite; Kopf ca. 1,5-2 x Topfkragen (64 mm)",
    "niedrig"
   ],
   [
-   "Blattdicke 0,045 x head_d (4,5 mm bei M)",
-   "0,045 x head_d",
+   "Huegel Halbellipsoid a 34 / b 34 mm, Fibonacci-Verteilung der Blaetter",
+   "34 / 34 mm",
    "A",
-   "Scheibenblatt; Mindestdicke fuer stabile Geometrie",
+   "gleichmaessige Flaechenbelegung ohne Muster (Kritiker R4: gestapelte Scheiben)",
    "niedrig"
   ],
   [
-   "7 Blattgruppen (Saum haengt -14 Grad, Herz 56-64 Grad)",
-   "36 Blaetter",
+   "Blatt 12-Eck 19 x 15.5 mm, 2 mm dick, Streuung Laenge 14 %, Breite 12 %",
+   "19 x 15.5 x 2 mm",
    "A + Bild",
-   "ref-6: Randblaetter haengen nach unten (Kritiker R3), Herzblaetter aufrecht",
+   "ref-6: fransige Silhouette; wenige Flaechen je Koerper (12-Eck-Prisma = 14 Flaechen)",
    "niedrig"
   ],
   [
-   "Zufallsversatz je Blatt (Azimut +-8 Grad, Radius +-14 %, Neigung +-4,5 Grad, Hoehe, Abstand)",
+   "Anstellwinkel 16 Grad + 0.5 x Hoehenwinkel, Streuung +-13 Grad; Azimut +-50 Grad, Roll +-50 Grad",
    "Seed sin(i*12,9898)",
    "A",
-   "Kritiker R3/R4: unregelmaessige Silhouette; deterministisch fuer reproduzierbare .sc",
+   "Saum flach/haengend, Herz aufrecht (ref-6, Kritiker R3); deterministisch fuer reproduzierbare .sc",
+   "niedrig"
+  ],
+  [
+   "Herz: Achteck-Prisma r 17, h 20, ab z 8",
+   "r 17 / h 20 mm",
+   "A",
+   "dunkler Kern unter den Blaettern, verdeckt Luecken",
+   "niedrig"
+  ],
+  [
+   "S/M/L per solid.scale (head_d / 100 mm)",
+   "0,7 / 1,0 / 1,3",
+   "A",
+   "Facetten bleiben gleich; Hals D16 bleibt (steckt im Topf)",
    "niedrig"
   ]
- ]
+ ],
+ "revision": "B"
 }

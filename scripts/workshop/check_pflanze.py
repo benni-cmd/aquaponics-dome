@@ -20,6 +20,8 @@ def main():
     ck.eq("netztopf Masse 14-20 g", 1 if 14 <= b["mass_g"] <= 20 else 0, 1)
     ck.eq("netztopf Anzahl 2160 laut layout.json", lay["total"], 2160)
     ck.eq("netztopf OBJ-Mass 50 x 64 x 63", 1 if sorted(lay["size_mm"]) == [50, 63, 64] or sorted(round(v) for v in lay["size_mm"]) == [50, 63, 64] else 0, 1)
+    pr, _ = sc.load_params("nft_rinne")
+    ck.eq("netztopf Spiel im Rinnen-Topfloch (hole_d - rim_d = 2 mm)", pr["hole_d"] - pn["rim_d"], 2, 0.01)
     ps, ds = sc.load_params("salatkopf")
     pth = os.path.join(sc.ROOT, "designs", "components", "salatkopf.sc")
     ev = sc.evaluate(pth)
@@ -31,8 +33,9 @@ def main():
     lv = [x for x in ev["bodies"] if x["name"].startswith("Blatt")]
     ck.eq("salatkopf Blaetter nicht unter dem Topfrand (Z >= -1)", 1 if min(x["bbox"]["min"][2] for x in lv) >= -1.0 else 0, 1)
     ck.eq("salatkopf Hoehe ueber dem Topfrand M 50-70", 1 if 50 <= mx[2] <= 70 else 0, 1)
-    ck.eq("salatkopf Hals im Topf (Z -25..0, D16 < Topf-Innen-D 47)", 1 if mn[2] >= -26 and ps["neck_d"] < 47 else 0, 1)
-    ck.eq("salatkopf Flaechenbudget (<= 14 je Koerper, <= 1200 gesamt)", 1 if max(x["faces"] for x in ev["bodies"]) <= 14 and sum(x["faces"] for x in ev["bodies"]) <= 1200 else 0, 1)
+    inner_neck = pn["base_d"] + (pn["rim_d"] - pn["base_d"]) * (pn["cup_h"] - ps["neck_len"]) / pn["cup_h"] - 2 * pn["wall"]   # Innen-D des konischen Topfs in Halstiefe
+    ck.eq(f"salatkopf Hals im Topf (Z -25..0, D16 < Topf-Innen-D in Halstiefe {inner_neck:.1f})", 1 if mn[2] >= -26 and ps["neck_d"] < inner_neck else 0, 1)
+    ck.eq("salatkopf Flaechenbudget (<= 14 je Koerper, <= 1500 gesamt)", 1 if max(x["faces"] for x in ev["bodies"]) <= 14 and sum(x["faces"] for x in ev["bodies"]) <= 1500 else 0, 1)
     import subprocess
     script = os.path.join(sc.TMP, "ws-cfg.json")
     json.dump({"commands": [{"command": "config.table", "params": {}}]}, open(script, "w"))

@@ -255,3 +255,25 @@ Teil A (Bild): PASS; Ecke parallel, Luft ca. 190 mm, Beine ausserhalb der Beete 
 | 4 | klein: Marken "[Orchestrator D18]", "Scope-Card + A", "A + Normteil"; Herkunftszeilen fehlen (corner_gap, leg_clearance, Beckenrand Z 650, foot_hole) | **gueltig** | Marken auf A (mit Bezug D18/Scope-Card), 6 Zeilen ergaenzt |
 | 5 | klein: Kopf "Revision A" bei Rev. B | **gueltig (eigenes Skript)** | partsheet.py liest revision aus dem JSON (B) |
 | H | Wasserfuellung/Topfloecher-Summe/Lochplanung liegen im Tisch statt Rinne; Beet-Tropfrohr im Bild; Fundament fuer 10 Auslegerpfosten (Boden = Erde); Pool-Wand 150 ist Platzhalter | **andere Klasse / Hinweis** | Integrator/Beet/Pool/Orchestrator |
+
+### salatkopf (W07 Rev. B), Bild-Kritiker Runde 5 29.10. ~19:40: Urteil "Referenz" (B)
+Modell Rev. B (72 Polygonblaetter, 12-Eck, Fibonacci auf Halbellipsoid). Proportion keine Luecke (0,53).
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, sicher: zu wenig Fuelle/Feinheit, Blaetter ca. 1/3 Kopfbreite, dunkle Spalten | **gueltig** | Rev. B2: 96 statt 72 Blaetter, 18 x 15,5 statt 21 x 18 mm, Huegel b 34; check 18/18, 98 Koerper, 1357 Flaechen, OBJ-Export 8756 Dreiecke (gemessen, `solidcraft-cli run salatkopf.sc --out x.obj`); Flaechenbudget im Check 1200 -> 1500 |
+| 2 | gross, sicher: Krone wie Artischocke, steile Lamellen oben | **gueltig** | Anstellwinkel 16 + 0,5 x Hoehenwinkel (vorher 15 + 0,55), Streuung +-13 statt +-21 Grad; Seitenbild salatkopf-03 zeigt geschlossene Kuppe (Hoehe 51,5, Breite 102) |
+| 3 | klein, sicher: Ausreisser/Stabblaetter an der Silhouette | **gueltig** | Streuung Laenge 22 -> 14 %, Breite 18 -> 12 %, Roll +-65 -> +-50, Azimut +-55 -> +-50 |
+| 4 | klein, vermutet: Hals frei sichtbar, kein haengender Saum | **falsch gelesen / teils andere Klasse** | Hals liegt per Bezug bei Z < 0 im Netztopf (im Elternkontext verdeckt); Einzelbild zeigt ihn nur, weil der Topf fehlt; Saum haengt nicht tiefer, weil Blaetter nicht in den Kragen eindringen duerfen (check Z >= -1) |
+| H | Instanzen gleich gross/gedreht, Topf sichtbar, Rinnenbreite | **andere Klasse** | Layout/Tisch, Netztopf, Rinne |
+Kein zweiter Bild-Kritiker-Lauf (Pruefer-Budget, ein Lauf je Komponente); Gesamtstand: Kritiker waehlte die Referenz, Luecken 1-3 danach in Sache umgesetzt und nicht erneut abgenommen. Orchestrator entscheidet.
+
+### netztopf (W07), Spec-Pruefer Runde 2 29.10. ~19:45: FAIL
+Kernzahlen (Box, Volumen/Masse, Anzahl 2160/556/2716, Spiel D52/D50) nachgerechnet ohne Abweichung.
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, vermutet: Herkunft "OBJ/hoch" fuer 63/50/64 ueberzogen (size_mm Konstante, Check liest sie nur zurueck, oasis-obj-analysis nennt 0,05 x 0,06 x 0,06 m) | **gueltig** | extract_layout.py:78 hartcodiert; Herkunft auf "OBJ-Box + E", Konfidenz mittel; Achszuordnung als offene Frage; Check-Zeile benennt "kein unabhaengiger Beleg" |
+| 2 | klein: Pruefzeile 14/14 veraltet, Spiel nicht geprueft | **gueltig** | check_pflanze 18/18 (neu: Spiel hole_d - rim_d = 2 mm), check.txt neu |
+| 3 | klein: erledigte offene Fragen (Scope-Card, Board 240+), Stueckliste "Orchestrator entscheidet" | **gueltig** | entfernt, D17 genannt |
+| 4 | klein: Werkstoff doppelte Marke [E]/[A] | **gueltig** | auf A |
+| 5 | klein: Salatkopf-Gauntlet im Netztopf-Blatt | **gueltig** | Pruefzeilen und Kritiker-Feld bereinigt |
+| H | Hals-Check nahm Innen-D 47 (oben), in Halstiefe 40,7 | **gueltig (eigener Check)** | Check rechnet den konischen Innen-D in Halstiefe (40,7 > 16); Hinweise zu Rinne (Topfboden/Film) und Beet-Raster im Blatt unter Offene Fragen |

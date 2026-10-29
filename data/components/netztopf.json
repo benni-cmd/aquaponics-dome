@@ -64,7 +64,7 @@
   "name": "PP (Polypropylen)",
   "dichte_g_cm3": 0.91,
   "farbe": "#2b2b2b",
-  "herkunft": "[E] Standardwerkstoff Netztopf; Farbe schwarz wie ref-6 (dunkle Toepfe unter dem Kopf nicht sichtbar) [A]"
+  "herkunft": "[A] Standardwerkstoff Netztopf (PP, Spritzguss); Farbe schwarz wie ref-6 (dunkle Toepfe unter dem Kopf nicht sichtbar) [A]"
  },
  "anzahl": {
   "soll": "Beete 2160 (OBJ) + Rinnen 556 (E) = 2716",
@@ -79,49 +79,49 @@
   "verbindungen": [
    "Steckt lose im Topfloch der NFT-Rinne (Kragen liegt auf) bzw. im Medium des IBC-Beets; keine Schrauben."
   ],
-  "abweichung": "OBJ-Box 50 x 64 x 63: Modell Korpus 50, Kragen 64, Hoehe 63 (Abweichung 0 mm); Innenprofil und Schlitze sind Annahmen.",
+  "abweichung": "OBJ-Box 50 x 64 x 63 (layout.json pots.size_mm, in extract_layout.py festgeschrieben; reference/oasis-obj-analysis.md nennt 0,05 x 0,06 x 0,06 m, Achszuordnung Hoehe/Kragen daher offen): Modell Korpus 50, Kragen 64, Hoehe 63; Innenprofil und Schlitze sind Annahmen.",
   "montage": [
    "Topf in das Loch der Rinne bzw. in die Kiesschicht druecken, bis der Kragen aufliegt",
    "Setzling mit Mineralwolle/Blaehton-Substrat in den Topf setzen"
   ],
   "werkzeug": "keines",
   "stueckliste": [
-   "T10 Netztopf 50/64 x 63, PP schwarz: Beete 2160 (OBJ: 7 Aussenbeete x 288 + 144 im Beet bei Azimut 113) + Rinnen 556 (20 Rinnen K x 5 Loecher + 24 Rinnen M x 7 + 24 Rinnen L x 12; Auslegung E) = 2716 gesamt; Ob Rinnen UND Beete bepflanzt werden (Tische stehen ueber den Beeten, decisions D04), entscheidet der Orchestrator/Integrator"
+   "T10 Netztopf 50/64 x 63, PP schwarz: Beete 2160 (OBJ: 7 Aussenbeete x 288 + 144 im Beet bei Azimut 113) + Rinnen 556 (20 Rinnen K x 5 Loecher + 24 Rinnen M x 7 + 24 Rinnen L x 12; Auslegung E) = 2716 gesamt (Besatz Rinnen und Beete laut decisions D17)"
   ],
   "lokal": "Netztoepfe 50 mm sind Massenware (Gartenbedarf/Hydroponik, ca. 0,05-0,10 EUR/Stueck, [A] nicht recherchiert).",
   "pruefung": [
-   "scripts/workshop/check_pflanze.py (14/14 PASS): Masse 50 x 64 x 63 (OBJ), Kragen D64, Bezugspunkt Z=0, 8 Schlitze, Material PP",
+   "scripts/workshop/check_pflanze.py (18/18 PASS, davon 9 Netztopf): Masse 50 x 64 x 63 (liest die Konstante aus layout.json, kein unabhaengiger OBJ-Beleg), Kragen D64, Bezugspunkt Z=0, 8 Schlitze, Material PP, Masse 14-20 g, Spiel im Rinnen-Topfloch D52 = 2 mm",
    "Schnitt `renders/components/netztopf/netztopf-02-schnitt.png` zeigt Wand, Kragen, Schlitze und Bodenloch; Sitz im Topfloch: `renders/components/nft_rinne/nft_rinne-06-schnitt-zulauf.png`",
-   "Kein Bild-Kritiker: der Netztopf ist in keiner Referenz sichtbar (vom Salat bzw. der Erde verdeckt); Spec-Pruefer (Runde 1: FAIL -> behoben)"
+   "Kein Bild-Kritiker: der Netztopf ist in keiner Referenz sichtbar (vom Salat bzw. der Erde verdeckt); Spec-Pruefer: Runde 1 FAIL -> behoben, Runde 2 (29.10. W07) FAIL (Herkunft/Altlasten) -> behoben, siehe workshop-log"
   ],
   "offen": [
    "Farbe schwarz oder weiss (nicht sichtbar in ref-6)",
-   "Topfhoehe 63 laut OBJ; Standardware ist oft 50 mm",
-   "Scope-Card netztopf/salatkopf ist nur eine Zeile (ohne Format nach review-protocol 1): Orchestrator ergaenzen (Anzahl je Eltern, Referenz, Pruefzahlen)",
-   "Anzahl gesamt 2716 gegen Board 'Salatkopf ca. 240+': Orchestrator klaeren",
-   "Beet-Raster 288 je Beet (24 x 12) gegen layout.json distinct_along 64 / distinct_across 39: Integrator"
-  ]
+   "Topfhoehe 63 laut OBJ-Box; Standardware ist oft 50 mm; Achszuordnung der OBJ-Box (Hoehe 60-64 laut oasis-obj-analysis) offen",
+   "Beet-Raster 288 je Beet (24 x 12) gegen layout.json distinct_along 64 / distinct_across 39: Integrator",
+   "Topfboden und Naehrloesungsfilm in der Rinne (Topf ragt ca. 59,5 mm unter die Deckelflaeche, Schlitze 8-46 mm ueber dem Boden): Rinne/Tisch pruefen"
+  ],
+  "kritiker": "Kein Bild-Kritiker (Netztopf in keiner Referenz sichtbar); Spec-Pruefer Runde 1 und 2, siehe workshop-log"
  },
  "herkunft_tabelle": [
   [
    "Hoehe 63 mm",
    "63",
-   "OBJ",
-   "layout.json pots.size_mm (50 x 64 x 63)",
-   "hoch"
+   "OBJ-Box + E",
+   "layout.json pots.size_mm (50, 64, 63; Konstante in extract_layout.py); Zuordnung zu Hoehe/Korpus/Kragen ist Auslegung E, oasis-obj-analysis nennt 0,05 x 0,06 x 0,06 m",
+   "mittel"
   ],
   [
    "Korpus-D oben 50 mm",
    "50",
-   "OBJ",
-   "layout.json pots.size_mm (50)",
-   "hoch"
+   "OBJ-Box + E",
+   "layout.json pots.size_mm (50, 64, 63; Konstante in extract_layout.py); Zuordnung zu Hoehe/Korpus/Kragen ist Auslegung E, oasis-obj-analysis nennt 0,05 x 0,06 x 0,06 m",
+   "mittel"
   ],
   [
    "Kragen D64 x 3,5 mm",
    "64 / 3,5",
    "OBJ + A",
-   "OBJ-Box 64 = Kragen (groesste Breite); Kragendicke Annahme",
+   "OBJ-Box 64 = Kragen (groesste Breite, Auslegung E); Kragendicke Annahme A",
    "mittel"
   ],
   [
@@ -156,7 +156,7 @@
    "Anzahl 2160",
    "2160",
    "OBJ",
-   "layout.json pots.total (7 Beete x 288 + 144); Topfzahl der Rinnen kommt aus dem Tisch",
+   "layout.json pots.total (7 Beete x 288 + 144); Topfzahl der Rinnen kommt aus dem Tisch; Besatz D17",
    "hoch"
   ],
   [

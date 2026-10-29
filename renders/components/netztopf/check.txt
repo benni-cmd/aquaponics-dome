@@ -6,13 +6,14 @@ PASS pflanze: netztopf Material PP: Ist 1, Soll 1
 PASS pflanze: netztopf Masse 14-20 g: Ist 1, Soll 1
 PASS pflanze: netztopf Anzahl 2160 laut layout.json: Ist 2160, Soll 2160
 PASS pflanze: netztopf OBJ-Mass 50 x 64 x 63: Ist 1, Soll 1
-PASS pflanze: salatkopf Blaetter (verteilung.n): Ist 72, Soll 72
+PASS pflanze: netztopf Spiel im Rinnen-Topfloch (hole_d - rim_d = 2 mm): Ist 2, Soll 2 (+-0.01)
+PASS pflanze: salatkopf Blaetter (verteilung.n): Ist 96, Soll 96
 PASS pflanze: salatkopf Breite M 95-125: Ist 1, Soll 1
 PASS pflanze: salatkopf Blaetter nicht unter dem Topfrand (Z >= -1): Ist 1, Soll 1
 PASS pflanze: salatkopf Hoehe ueber dem Topfrand M 50-70: Ist 1, Soll 1
-PASS pflanze: salatkopf Hals im Topf (Z -25..0, D16 < Topf-Innen-D 47): Ist 1, Soll 1
-PASS pflanze: salatkopf Flaechenbudget (<= 14 je Koerper, <= 1200 gesamt): Ist 1, Soll 1
+PASS pflanze: salatkopf Hals im Topf (Z -25..0, D16 < Topf-Innen-D in Halstiefe 40.7): Ist 1, Soll 1
+PASS pflanze: salatkopf Flaechenbudget (<= 14 je Koerper, <= 1500 gesamt): Ist 1, Soll 1
 PASS pflanze: salatkopf Konfigurationen S, M, L: Ist 1, Soll 1
 PASS pflanze: salatkopf Breite S = 0.7 x Breite M (+-6 %): Ist 0.7, Soll 0.7 (+-0.042)
 PASS pflanze: salatkopf Breite L = 1.3 x Breite M (+-6 %): Ist 1.3, Soll 1.3 (+-0.078)
-== pflanze: 17/17 PASS
+== pflanze: 18/18 PASS

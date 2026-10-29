@@ -2,7 +2,7 @@
 
 **Funktion:** Visuelles Pflanzenbauteil (Kopfsalat) fuer Rinnen und Beete; nur Darstellung, keine Funktion im Wasserkreislauf.
 
-**Datei:** `designs/components/salatkopf.sc` · **Teilenummer:** T12 · **Revision:** A · **Bezugspunkt:** Z=0 = Kragenoberkante des Netztopfs (Mitte Topfoeffnung); Kopf waechst nach +Z, Hals nach -Z in den Topf
+**Datei:** `designs/components/salatkopf.sc` · **Teilenummer:** T12 · **Revision:** B · **Bezugspunkt:** Z=0 = Kragenoberkante des Netztopfs (Mitte Topfoeffnung); Kopf waechst nach +Z, Hals nach -Z in den Topf
 
 **Anzahl (Instanzen):** Aussenbeete 2160 Toepfe, Besatz laut Integrator (Quelle: data/layout.json)
 
@@ -10,25 +10,22 @@
 
 | Parameter | Wert | Einheit | Herkunft |
 |---|---|---|---|
-| `head_d` | 100 | mm | [A] Standard M: Breite ca. 1,15 x head_d, Hoehe ca. 0,5 x head_d (ref-6: flacher, breiter Hügel, Hoehe etwa halbe Breite); S = 70, L = 130 |
-| `leaf_t_f` | 0.045 |  | [A] Blattdicke / head_d (Scheibe) |
-| `core_r_f` | 0.27 |  | [A] Kuppelkoerper Radius / head_d (klein gehalten, damit die Blattmasse das Bild bestimmt; Kritiker R3: Kern zu glatt) |
-| `core_h_f` | 0.2 |  | [A] Kernkugel Hoehe / head_d |
+| `head_d` | 100 | mm | [A] Standard M: Breite ca. 1,05 x head_d, Hoehe ca. 0,55 x head_d (ref-6: flacher, breiter Huegel, Hoehe etwa halbe Breite); S = 70, L = 130; wirkt als solid.scale-Faktor head_d/100 auf alle Blaetter und das Herz (Hals bleibt D16) |
 | `neck_d` | 16 | mm | [A] Wurzelhals-Durchmesser, steckt im Netztopf (Innen-D oben 47) |
 | `neck_len` | 25 | mm | [A] Wurzelhals unter Z=0 im Topf |
 
-Gesamt-Box (Messung): X -52.2 bis 56.4, Y -54.2 bis 54.4, Z -25.0 bis 54.9 mm; Koerper: 37.
+Gesamt-Box (Messung): X -50.6 bis 51.4, Y -51.9 bis 50.1, Z -25.0 bis 51.5 mm; Koerper: 98.
 
 **Toleranzen / Spiel:** Hals D16 in Netztopf-Innen-D 47 (oben).
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: Pflanze (Kopfsalat), Dichte 0.4 g/cm3, Farbe #58a63f ([A] Bulk-Dichte Naeherung nur fuer die Gewichtsangabe; Frischmasse eines Kopfes real 150-250 g (Blatt: Modellmasse ist die Frischmasse-Naeherung))
-- Volumen (Messung, `solidcraft-cli eval`): 285.5 cm3 · Masse leer: 114 g (0.11 kg)
+- Volumen (Messung, `solidcraft-cli eval`): 66.4 cm3 · Masse leer: 27 g (0.03 kg)
 
 ## Querschnitt / Profil
 
-Blattrosette: Kuppelkoerper (Kugel) mit 36 geneigten Blattscheiben in 7 Gruppen (Neigung -14 bis 64 Grad, Blattdicke 4,5 mm), Wurzelhals D16 x 25 mm nach unten in den Netztopf; Groesse M: Breite 109 mm, Hoehe 55 mm ueber dem Topfrand. Blattscheiben ueberlappen sich gewollt (Pflanze); Vereinigung flacher Scheiben scheitert im Kernel, daher je Gruppe eigene Koerper.
+Blattrosette: 96 kleine, ebene Polygonblaetter (12-Eck, unregelmaessiger Umriss, 2 mm dick, je Blatt eigener Koerper, <= 14 Flaechen) auf einem Halbellipsoid (a 34, b 34 mm bei head_d 100), Anstellwinkel steigt von flach am Saum bis steil im Herzen, Azimut, Roll, Laenge und Breite zufaellig (fester Seed); Herz = niedriges Achteck-Prisma, Wurzelhals D16 x 25 mm nach unten in den Netztopf. Groesse M: Breite 102 mm, Hoehe 52 mm ueber dem Topfrand; S/L entstehen durch Skalierung (0,7 / 1,3). Blaetter ueberlappen sich gewollt; die Vereinigung flacher Koerper scheitert im Kernel, daher keine Booleans.
 
 ## Verbindungen und Befestigungen
 
@@ -38,22 +35,23 @@ Blattrosette: Kuppelkoerper (Kugel) mit 36 geneigten Blattscheiben in 7 Gruppen 
 
 | Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
 |---|---|---|---|---|
-| Salat als buschige Blattrosette (33 Blaetter, 7 Gruppen, Kuppelkoerper) | - | Bild | ref-6 mittlerer Tisch: buschige Kopfsalat-Koepfe; Rosette aus Scheiben ist unsere Vereinfachung (Kritiker R1/R2) | mittel |
-| Breite M ca. 109 mm, Hoehe 55 mm | 109 / 55 mm | Bild + A | ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite; Kopf ca. 1,5-2 x Topfkragen (64 mm) | niedrig |
 | Groessen S 70 / M 100 / L 130 (head_d) | 3 | A | Wachstumsstadien; Konfigurationen, Quelle Ben/cad-standard (Groessenvarianten) | niedrig |
 | Wurzelhals D16 x 25 | 16 / 25 | A | steckt in Netztopf-Innen-D 47; ref-6 zeigt es nicht | niedrig |
 | Gruen #58a63f | #58a63f | Bild | ref-6 Salatgruen | mittel |
 | Anzahl | je Pflanzplatz | OBJ | layout.json: 2160 Topfpositionen; Besatz legt der Integrator fest | mittel |
-| Kuppelkoerper Radius 0,27 x head_d, Hoehe 0,20 x head_d | 0,27 / 0,20 x head_d | A | Kritiker R3: Kern klein halten, Blattmasse bestimmt das Bild | niedrig |
-| Blattdicke 0,045 x head_d (4,5 mm bei M) | 0,045 x head_d | A | Scheibenblatt; Mindestdicke fuer stabile Geometrie | niedrig |
-| 7 Blattgruppen (Saum haengt -14 Grad, Herz 56-64 Grad) | 36 Blaetter | A + Bild | ref-6: Randblaetter haengen nach unten (Kritiker R3), Herzblaetter aufrecht | niedrig |
-| Zufallsversatz je Blatt (Azimut +-8 Grad, Radius +-14 %, Neigung +-4,5 Grad, Hoehe, Abstand) | Seed sin(i*12,9898) | A | Kritiker R3/R4: unregelmaessige Silhouette; deterministisch fuer reproduzierbare .sc | niedrig |
+| Salat als buschige Blattrosette (96 Polygonblaetter auf Halbellipsoid) | - | Bild | ref-6 mittlerer Tisch: buschige, dichte Kopfsalat-Koepfe; Polygonblaetter sind unsere Vereinfachung (Kritiker R1-R4) | mittel |
+| Breite M ca. 102 mm, Hoehe 52 mm | 102 / 52 mm | Bild + A | ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite; Kopf ca. 1,5-2 x Topfkragen (64 mm) | niedrig |
+| Huegel Halbellipsoid a 34 / b 34 mm, Fibonacci-Verteilung der Blaetter | 34 / 34 mm | A | gleichmaessige Flaechenbelegung ohne Muster (Kritiker R4: gestapelte Scheiben) | niedrig |
+| Blatt 12-Eck 19 x 15.5 mm, 2 mm dick, Streuung Laenge 14 %, Breite 12 % | 19 x 15.5 x 2 mm | A + Bild | ref-6: fransige Silhouette; wenige Flaechen je Koerper (12-Eck-Prisma = 14 Flaechen) | niedrig |
+| Anstellwinkel 16 Grad + 0.5 x Hoehenwinkel, Streuung +-13 Grad; Azimut +-50 Grad, Roll +-50 Grad | Seed sin(i*12,9898) | A | Saum flach/haengend, Herz aufrecht (ref-6, Kritiker R3); deterministisch fuer reproduzierbare .sc | niedrig |
+| Herz: Achteck-Prisma r 17, h 20, ab z 8 | r 17 / h 20 mm | A | dunkler Kern unter den Blaettern, verdeckt Luecken | niedrig |
+| S/M/L per solid.scale (head_d / 100 mm) | 0,7 / 1,0 / 1,3 | A | Facetten bleiben gleich; Hals D16 bleibt (steckt im Topf) | niedrig |
 
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-6-grow-tables-detail.jpg
-- Quelle der Masse: ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm) breit, flacher Huegel (Hoehe ca. 0,5 x Breite) [A]
-- Abweichung zum OBJ: keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse M: Breite 109 mm, Hoehe 55 mm (Verhaeltnis 0.51; ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite).
+- Quelle der Masse: ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm) breit, flacher dichter Huegel (Hoehe ca. 0,5 x Breite) [A]
+- Abweichung zum OBJ: keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse M: Breite 102 mm, Hoehe 52 mm (Verhaeltnis 0.51; ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite).
 
 ## Montage (L4)
 
@@ -75,13 +73,12 @@ Blattrosette: Kuppelkoerper (Kugel) mit 36 geneigten Blattscheiben in 7 Gruppen 
 
 ## Pruefung
 
-- Gauntlet-Urteil: Bild-Kritiker (Salatkopf): vier Runden, Referenz; Spec-Pruefer: Netztopf FAIL behoben, Salatkopf PASS mit Hinweisen
-- Konfigurationszeilen S/M/L angelegt (`config.table`), Rosette je Konfiguration ueber head_d skaliert
+- Gauntlet-Urteil: Bild-Kritiker Runde 5 (Rev. B, 29.10.): Urteil Referenz; Luecken in Sache umgesetzt (Rev. B2, mehr/kleinere Blaetter, flacherer Herzwinkel), kein zweiter Lauf (Pruefer-Budget)
+- scripts/workshop/check_pflanze.py (18/18 PASS, davon 9 Salatkopf): 96 Blaetter, Breite M 95-125, Hoehe 50-70, Hals im Topf, Flaechenbudget, Konfigurationen S/M/L, Breite S/L = 0,7/1,3 x M
+- Facetten: 98 Koerper, 1357 Flaechen gesamt, OBJ-Export 8756 Dreiecke (solidcraft-cli run salatkopf.sc --out x.obj; vorher 69 k)
 
 ## Offene Fragen
 
-- Blattraender kreisrund (Ellipsen/Zacken fehlen)
-- Konfiguration S/L als Zeile vorhanden, Wirkung auf verknuepfte Instanz im Dom vom Integrator zu pruefen
+- Blattraender eben und kantig (keine Kraeuselung): gekraeuselte Blaetter brauchen viele Flaechen, Budget bei 2716 Instanzen
 - Konfigurationen S/L wirken auf verknuepfte Instanzen im Dom: Integrator pruefen
-- Instanzvariation (zufaellige Drehung um Z, S/M/L gemischt) ist Sache des Layouts/Tisches (Kritiker R3/R4 Hinweis)
-- Bild-Kritiker: vier Runden, Referenz gewaehlt (Stilunterschied CAD gegen Raytracing; gekraeuselte Blaetter mit < 8 Flaechen je Koerper nicht erreichbar); Restluecken: Blattraender kreisrund, glatte Scheiben
+- Instanzvariation (zufaellige Drehung um Z, S/M/L gemischt) ist Sache des Layouts/Tisches

@@ -1688,5 +1688,45 @@
   "note": "M2: 26 Knoten + 10 Fundamentanker als Instanzen, Streben um 2x120 mm gekuerzt mit Steckaufnahme",
   "commit": "e9c7c91",
   "source": "renders/round-33.png"
+ },
+ {
+  "file": "20261029-183552_werkstatt_salatkopf_salatkopf-02.png",
+  "sha": "0f9293fbef011a24",
+  "time": "2026-10-29 18:35:52",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "Rev. B2 (96 Blaetter) nach Kritiker Runde 5",
+  "commit": "cdec6f8",
+  "source": "renders/components/salatkopf/salatkopf-02.png"
+ },
+ {
+  "file": "20261029-183553_werkstatt_salatkopf_salatkopf-03.png",
+  "sha": "6c0f115fdca87ba9",
+  "time": "2026-10-29 18:35:53",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "Rev. B2 (96 Blaetter) nach Kritiker Runde 5",
+  "commit": "cdec6f8",
+  "source": "renders/components/salatkopf/salatkopf-03.png"
+ },
+ {
+  "file": "20261029-183553_werkstatt_salatkopf_salatkopf-04.png",
+  "sha": "6ca41ef6761841f9",
+  "time": "2026-10-29 18:35:53",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "Rev. B2 (96 Blaetter) nach Kritiker Runde 5",
+  "commit": "cdec6f8",
+  "source": "renders/components/salatkopf/salatkopf-04.png"
+ },
+ {
+  "file": "20261029-183557_werkstatt_salatkopf_k4-modell-im-eltern-kontext-rinne.png",
+  "sha": "c3d5727ec82607f5",
+  "time": "2026-10-29 18:35:57",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "Rev. B2 (96 Blaetter) nach Kritiker Runde 5",
+  "commit": "cdec6f8",
+  "source": "renders/components/salatkopf/critic/k4-modell-im-eltern-kontext-rinne.png"
  }
 ]

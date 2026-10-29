@@ -14,7 +14,7 @@ Format je Auftrag: **R-ID** | Prioritaet (H = blockiert den Bau, M, N) | Frage |
 | R06 | M | NFT: Rinnenzahl je Beet, Gefaelle, Durchfluss, Topfabstand fuer Salat (zwei Quellen) | Rinnen im Modell, Hydraulik | `nft_channels_per_bed`, `nft_slope`, `nft_flow` | erledigt 29.10. (`docs/research/R06.md`, Konfidenz mittel) |
 | R07 | M | Pumpenauswahl: Foerderstrom und Hoehe je Linie, Leistung, Notbetrieb | Elektrik, Pumpen im Modell | `pump_flow`, `pump_head`, `pump_power` | offen |
 | R08 | M | Elektrik: Solar-Inselanlage fuer Pumpen und Luft, Schutzvorschriften Nassbereich | Elektrikdokument | `solar_kwp`, `battery_kwh` | offen |
-| R09 | M | Vortex- und Radialstrom-Absetzer: Auslegung an unseren Tankmassen (Zulauf tangential, Kegelwinkel) | Tanks mit Kegel und Ports | `vortex_*` | teilweise |
+| R09 | M | Vortex- und Radialstrom-Absetzer: Auslegung an unseren Tankmassen (Zulauf tangential, Kegelwinkel) | Tanks mit Kegel und Ports | `vortex_*` | erledigt 29.10. (`docs/research/R09.md`, Konfidenz niedrig, Masse Annahme A) |
 | R10 | N | Wasserqualitaet aus Fluss als Zulauf: Filterung, Hygiene | Betrieb | - | offen |
 | R11 | N | Kuppelhaut: Folie oder Glas, Preis, UV, Befestigung an Streben | Haut T2 | `skin_material` | offen |
 | R12 | N | Rutschsicherheit, Zugang, Frost, Schaedlinge (Betrieb) | `operations.md` | - | offen |

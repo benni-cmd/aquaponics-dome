@@ -5,11 +5,11 @@ from geo import build
 
 P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe 6 m; Rest per Pixelvergleich mit ref-4 (Basis = 12 m)
     dome_base_d=12000, dome_h=6000, freq=2, sock_h=400, sock_w=250, strut_r=45,
-    door_w=1000, door_h=2000, door_az=-54, door_off=1100,
+    door_w=1000, door_h=2000, door_az=-54, door_off=0,
     t5_d=4210, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
     bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4500,
     tub_len=2200, tub_w=720, tub_h=550,
-    pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=160)
+    pipe_d=140, cab_x=800, cab_y=500, cab_z=1200, wall=160)
 
 cmds = []
 names = []
@@ -18,7 +18,7 @@ def add(c, **p):
     if p.get("body_name"): names.append(p["body_name"])
 
 COLORS = [  # (Namenspraefix, Farbe, Deckkraft) - Schicht 1
-    ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85),
+    ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85), ("T6_Wasser", "#3c8ed0", 0.85),
     ("T7_Plattform", "#9a9a96", 1), ("T7_Pumpe", "#555a60", 1), ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
     ("T10_Zulaufrohr", "#5fa8e0", 1), ("T10_Schlauch", "#8cc8f0", 1), ("T11_", "#8b9096", 1), ("T12_", "#4c9a3c", 1)]
 
@@ -60,10 +60,10 @@ def t1_t3_t4(sock_z):
     def V(k):
         x, y, z = pts[k]
         if abs(z) < 1e-3: z = zb
-        x, y = rot(x, y, -a0)
+        x, y = rot(x, y, -a0 + math.radians(18))   # Knoten bei door_az + 36k (OBJ: Tuer sitzt an einem Basisknoten)
         return (x*R, y*R, z*R*zsq + cz)
     # Tuerflaeche: Streben, die den Tuerquader kreuzen, entfallen
-    da = math.radians(P["door_az"]); rd = R*math.sqrt(1-zb*zb)*math.cos(math.radians(18))
+    da = math.radians(P["door_az"]); rd = R*math.sqrt(1-zb*zb) - 100
     def in_door(p):
         x, y = rot(p[0], p[1], -da)   # x = radial, y = tangential
         return abs(x - rd) < 150 and abs(y - P["door_off"]) < P["door_w"]/2 + 40 and sock_z - 20 < p[2] < sock_z + P["door_h"] + 40
@@ -84,7 +84,7 @@ def t1_t3_t4(sock_z):
             axis=[round(x, 6) for x in u], operation="new", name=f"T1_Strebe_{n:03d}", body_name=f"T1_Strebe_{n:03d}")
     # T3 Sockel: Zehneck-Prisma
     rs = P["dome_base_d"]/2 + P["sock_w"]
-    pts10 = [[round(rs*math.cos(math.radians(36*i)), 2), round(rs*math.sin(math.radians(36*i)), 2)] for i in range(10)]
+    pts10 = [[round(rs*math.cos(math.radians(36*i + 18)), 2), round(rs*math.sin(math.radians(36*i + 18)), 2)] for i in range(10)]
     add("sketch.create", plane="XY", name="T3_Sockel_sk")
     add("sketch.line", points=pts10, closed=True)
     add("sketch.finish")
@@ -107,54 +107,75 @@ def tank(name, cx, cy, z0, d, h, wall_expr, stand=0):
         lx, ly = cx+ (P["t7_d"]/2-60)*math.cos(math.radians(90*i+45)), cy+(P["t7_d"]/2-60)*math.sin(math.radians(90*i+45))
         add("solid.cylinder", radius=30, height=stand, base=[round(lx, 1), round(ly, 1), z0], operation="join", targets=[name], name=f"{name}_Fuss{i+1}")
 
-AZ0 = 111   # Azimut-Abbildung OBJ -> Modell (Tuerseite OBJ ~195 Grad -> Modell -54 Grad)
+LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))
+ROT = P["door_az"] - 167   # Layout-Drehung (docs/components.md)
 
-def t5_t7(fz):
-    """T5 Zentralpool in der Mitte (OBJ: Wasser D 3,89 m); T7 = 4 Tanks auf Plattformen (OBJ), T6 Mitteltank entfaellt (nicht im OBJ)."""
-    tank("T5_Zentraltank", 0, 0, fz, "t5_d", "t5_h", "wall")
-    add("solid.cylinder", diameter="t5_d - 2*wall", height=20, base=[0, 0, fz + P["t5_h"] - 250], operation="new", name="T5_Wasser", body_name="T5_Wasser")
-    specs = [(147, 670, 1080, 750), (237, 670, 1080, 750), (131, 930, 1440, 1010), (252, 930, 1440, 1010)]   # OBJ-Azimut, D, H, Beinhoehe
-    for i, (oaz, d, h, leg) in enumerate(specs, 1):
-        az = oaz + AZ0; x, y = pol(3350, az); x, y = round(x, 1), round(y, 1); nm = f"T7_Tank_{i}"
-        add("solid.cylinder", diameter=d, height=h, base=[x, y, fz + leg + 70], operation="new", name=nm, body_name=nm)
-        add("solid.cylinder", diameter=d - 2*60, height=h, base=[x, y, fz + leg + 70 + 60], operation="cut", targets=[nm], name=nm + "_Hohlraum")
-        rect_body(f"T7_Plattform_{i}", x, y, fz + leg, az, 710, 710, 70)
+def LXY(cx, cy):
+    """Layout-Koordinate (OBJ-Azimut) -> Modell-Koordinate (um ROT gedreht)."""
+    x, y = rot(cx, cy, math.radians(ROT)); return round(x, 1), round(y, 1)
+
+def vessel(name, cx, cy, fz, d_out, h, wall, water_z):
+    add("solid.cylinder", diameter=d_out, height=h, base=[cx, cy, fz], operation="new", name=name, body_name=name)
+    add("solid.cylinder", diameter=d_out - 2*wall, height=h, base=[cx, cy, fz + 80], operation="cut", targets=[name], name=name + "_Hohlraum")
+    return fz + water_z
+
+def pools(fz):
+    """T5 Zentralpool (Wasser D 3,89 m), T6 zweites Becken vor der Tuer (D 1,75 m), Wasserspiegel Z 515 (layout.json)."""
+    for nm, src, wall in (("T5_Zentraltank", LAYOUT["pool"], P["wall"]), ("T6_Zweitbecken", LAYOUT["pool2"], 100)):
+        x, y = LXY(src["cx"], src["cy"]); wz = vessel(nm, x, y, fz, src["d"] + 2*wall, src["water_z"] + 90, wall, src["water_z"])
+        wn = "T5_Wasser" if nm.startswith("T5") else "T6_Wasser"
+        add("solid.cylinder", diameter=src["d"], height=20, base=[x, y, wz - 20], operation="new", name=wn, body_name=wn)
+
+def tanks(fz):
+    """T7: 4 Tanks (Kegelboden, Zylinder, Plattformring auf 4 Beinen) + Pump-/Filtermodule, Positionen aus layout.json."""
+    for i, t in enumerate(LAYOUT["tanks"], 1):
+        x, y = LXY(t["cx"], t["cy"]); pl = t["platform"][0]; yaw = pl["yaw"] + ROT; nm = f"T7_Tank_{i}"
+        ztop = fz + pl["z1"]; cone_h = pl["z1"] - t["z0"]
+        add("solid.cone", diameter=t["d"], top_diameter=60, height=cone_h, base=[x, y, ztop], axis=[0, 0, -1], operation="new", name=nm, body_name=nm)
+        add("solid.cylinder", diameter=t["d"], height=t["z0"] + t["h"] - pl["z1"], base=[x, y, ztop], operation="join", targets=[nm], name=nm + "_Zylinder")
+        add("solid.cylinder", diameter=t["d"] - 100, height=t["z0"] + t["h"] - pl["z1"], base=[x, y, ztop + 80], operation="cut", targets=[nm], name=nm + "_Hohlraum")
+        rect_body(f"T7_Plattform_{i}", x, y, fz + pl["z0"], yaw, pl["length"], pl["width"], pl["height"])
+        add("solid.cylinder", diameter=t["d"] + 20, height=pl["height"] + 20, base=[x, y, fz + pl["z0"] - 10], operation="cut", targets=[f"T7_Plattform_{i}"], name=f"T7_Plattform_{i}_Loch")
+        a = math.radians(yaw)
         for sx in (-1, 1):
             for sy in (-1, 1):
-                lx, ly = rot(sx*300, sy*300, math.radians(az))
-                add("solid.cylinder", radius=20, height=leg, base=[round(x+lx, 1), round(y+ly, 1), fz], operation="join", targets=[f"T7_Plattform_{i}"], name=f"{nm}_Bein{(sx+1)+(sy+1)//2+1}")
-        mx, my = pol(3350 - 700, az)   # Pump-/Filtermodul daneben
-        rect_body(f"T7_Pumpe_{i}", round(mx, 1), round(my, 1), fz, az, 460, 350, 200)
-        ux, uy = -math.cos(math.radians(az)), -math.sin(math.radians(az))   # Schlauch zum Pool
-        sx_, sy_, sz_ = x + ux*d/2, y + uy*d/2, fz + leg + 200
-        ex, ey, ez = ux*(3350 - d/2 - P["t5_d"]/2), uy*(3350 - d/2 - P["t5_d"]/2), fz + P["t5_h"] + 60
-        dd = [ex - (sx_ - x) - 0, ey - (sy_ - y) - 0, ez - sz_]; L = math.sqrt(sum(q*q for q in dd))
-        add("solid.cylinder", radius=25, height=round(L, 1), base=[round(sx_, 1), round(sy_, 1), sz_], axis=[round(q/L, 6) for q in dd], operation="new", name=f"T10_Schlauch_{i}", body_name=f"T10_Schlauch_{i}")
+                lx, ly = rot(sx*(pl["length"]/2 - 40), sy*(pl["width"]/2 - 40), a)
+                add("solid.cylinder", radius=18, height=pl["z0"], base=[round(x+lx, 1), round(y+ly, 1), fz], operation="join", targets=[f"T7_Plattform_{i}"], name=f"T7_Plattform_{i}_Bein{(sx+1)+(sy+1)//2+1}")
+        placed = []
+        for k, m in enumerate(t["modules"], 1):
+            mx, my = LXY(m["cx"], m["cy"])
+            if math.hypot(mx - x, my - y) < t["d"]/2 + 150 or any(math.hypot(mx - px, my - py) < 350 for px, py in placed): continue   # OBJ-Module ueberlappen sich teils: nur freistehende
+            placed.append((mx, my))
+            rect_body(f"T7_Pumpe_{i}_{k}", mx, my, fz, m["yaw"] + ROT, m["l"], max(m["w"], 20), m["h"])
+
+# T9: 14 halbe IBC-Wannen (layout.json), 8 aussen (mit Pflanzen), 6 innen
+def t9(fz):
+    for k, b in enumerate(LAYOUT["ibc_beds"], 1):
+        x, y = LXY(b["cx"], b["cy"]); yaw = b["yaw"] + ROT; top = b["z1"]
+        rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz, yaw, b["length"] - 40, b["width"], top)   # Unterkante im OBJ unter dem Boden: auf Boden gekappt
+        if "plants" in b:   # Aussenbeete: 3 Reihen x 10 Pflanzen (OBJ: 288 Toepfe, hier reduziert)
+            ta = math.radians(yaw)
+            for r_ in range(3):
+                for c_ in range(10):
+                    lx, ly = rot((c_ - 4.5)*270, (r_ - 1)*270, ta)
+                    plant(round(x + lx, 1), round(y + ly, 1), fz + top + 95, 90)
 
 plants = [0]
 def plant(x, y, z, r=90):
     plants[0] += 1
     add("solid.sphere", radius=r, center=[x, y, z], operation="new", name=f"T12_Salat_{plants[0]:03d}", body_name=f"T12_Salat_{plants[0]:03d}")
 
-# T9: 14 halbe IBC-Wannen (OBJ): (OBJ-Azimut, Radius, Laenge)
-T9_OUT = [(az, 5000, 3000) for az in (355, 319, 247, 31, 140, 67, 283, 103)]
-T9_IN = [(az, 3300, ln) for az, ln in zip((318, 103, 283, 67, 30, 354), (1600, 1200, 2000, 1600, 1200, 2000))]
-
-def t9(fz):
-    for k, (oaz, r, ln) in enumerate(T9_OUT + T9_IN, 1):
-        az = oaz + AZ0; cx, cy = pol(r, az); cx, cy = round(cx, 1), round(cy, 1)
-        rect_body(f"T9_Substratbeet_{k:02d}", cx, cy, fz, az + 90, ln, 700, 640)
-        ta = math.radians(az + 90); n = int(ln // 400)
-        for r_ in range(2):
-            for c_ in range(n):
-                lx, ly = rot((c_ - (n - 1)/2)*400, (r_ - 0.5)*300, ta)
-                plant(round(cx + lx, 1), round(cy + ly, 1), fz + 640 + 112, 110)
-
 def t10_t11(fz):
-    A = (-6577, 2394, 4400); B = (-1488, 1488, fz+1400)
-    d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [round(x/L, 6) for x in d]
-    add("solid.cylinder", diameter="pipe_d", height=round(L, 1), base=list(A), axis=u, operation="new", name="T10_Zulaufrohr", body_name="T10_Zulaufrohr")
-    az = -18; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))
+    # Zulaufrohr (Frischwasser) nur AUSSEN: flach auf dem Boden, Bogen zur Sockelwand nahe dem Zweitbecken (OBJ-Azimut 166 -> Modell -55)
+    pr = P["pipe_d"]/2; z = pr
+    P0 = pol(9500, -90); P1 = pol(7600, -66); P2 = pol(6030, -66)
+    def seg(A, B, nm, op, **kw):
+        d = [B[0]-A[0], B[1]-A[1]]; L = math.hypot(*d)
+        add("solid.cylinder", radius=pr, height=round(L, 1), base=[round(A[0], 1), round(A[1], 1), z], axis=[round(d[0]/L, 6), round(d[1]/L, 6), 0], operation=op, name=nm, **kw)
+    seg(P0, P1, "T10_Zulaufrohr", "new", body_name="T10_Zulaufrohr")
+    add("solid.sphere", radius=round(pr*1.15, 1), center=[round(P1[0], 1), round(P1[1], 1), z], operation="join", targets=["T10_Zulaufrohr"], name="T10_Knie")
+    seg(P1, P2, "T10_Zulaufrohr_2", "join", targets=["T10_Zulaufrohr"])
+    az = -36; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
     rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), 0, az+90, P["cab_x"], P["cab_y"], P["cab_z"])
 
@@ -163,7 +184,7 @@ if __name__ == "__main__":
     params()
     t1_t3_t4(P["sock_h"]) if False else None
     n, dropped = t1_t3_t4(P["sock_h"])
-    if stage >= 2: t5_t7(P["sock_h"])
+    if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"])
     if stage >= 4: t10_t11(P["sock_h"])
     colors()

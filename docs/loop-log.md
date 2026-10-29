@@ -11,3 +11,4 @@
 - R13 (Komponenten): Bauteil Pflanztisch als eigenes Design designs/components/pflanztisch.sc (Rippen, 3 gestaffelte Reihen, Winkelstuetzen); Einbau ins Dom-Modell offen.
 - R13 (OBJ 1+2): Pool zentriert (Wasser D 3,89 m), T6 entfaellt, T7 = 4 Tanks (D0,67/h1,08 und D0,93/h1,44) auf Plattformen mit Beinen + Pumpenmodul + Schlauch zum Pool; Azimut-Abbildung OBJ->Modell +111 Grad; check 24/24.
 - R14 (OBJ 3): T9 = 14 halbe IBC-Wannen (8 aussen r 5,0 m L 3,0 m; 6 innen r 3,3 m L 1,2-2,0 m; H 0,64) mit Salatkoepfen; alte 10 Tische T8 entfernt (NFT-Ring folgt); check 20/21 (T8 fehlt bis NFT).
+- R15 (Layout): Dom-Skript liest data/layout.json (Drehung door_az-167); Pool + Zweitbecken T6, 4 Tanks mit Kegelboden/Plattformring, 14 IBC-Beete, Zulaufrohr nur aussen (D140, Bogen, am Sockel bei Azimut -66), Dom/Sockel auf 18 Grad gedreht (Tuer am Basisknoten). Offen: 4 Kollisionspaare (Strebe-Beet 05 416 mm3, Pool-Wasser2 1244, Tank1-Plattform3, Plattform2-Beet12).

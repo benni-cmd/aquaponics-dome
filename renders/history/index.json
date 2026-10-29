@@ -1,0 +1,1302 @@
+[
+ {
+  "file": "20261029-010736_montage_gesamt_round-01.png",
+  "sha": "ffba564919849596",
+  "time": "2026-10-29 01:07:36",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "1bdf8a1",
+  "source": "renders/round-01.png"
+ },
+ {
+  "file": "20261029-010813_montage_gesamt_round-02.png",
+  "sha": "a7fa0bb3d1604876",
+  "time": "2026-10-29 01:08:13",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "abe4f16",
+  "source": "renders/round-02.png"
+ },
+ {
+  "file": "20261029-010948_montage_gesamt_round-03.png",
+  "sha": "059e9cea33bdd7a1",
+  "time": "2026-10-29 01:09:48",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "abe4f16",
+  "source": "renders/round-03.png"
+ },
+ {
+  "file": "20261029-011152_montage_gesamt_round-04.png",
+  "sha": "cedad9479699e97d",
+  "time": "2026-10-29 01:11:52",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "abe4f16",
+  "source": "renders/round-04.png"
+ },
+ {
+  "file": "20261029-011340_montage_gesamt_round-05.png",
+  "sha": "a63d5f048022807b",
+  "time": "2026-10-29 01:13:40",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "1abac7e",
+  "source": "renders/round-05.png"
+ },
+ {
+  "file": "20261029-011651_montage_gesamt_round-06.png",
+  "sha": "98cc3337f7e60b44",
+  "time": "2026-10-29 01:16:51",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "cb11d5e",
+  "source": "renders/round-06.png"
+ },
+ {
+  "file": "20261029-011804_montage_gesamt_round-06b-ref1.png",
+  "sha": "309cc3b878e04f98",
+  "time": "2026-10-29 01:18:04",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "a9e8e36",
+  "source": "renders/round-06b-ref1.png"
+ },
+ {
+  "file": "20261029-011922_montage_gesamt_round-07.png",
+  "sha": "f8e958544e9370b8",
+  "time": "2026-10-29 01:19:22",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "c7708e8",
+  "source": "renders/round-07.png"
+ },
+ {
+  "file": "20261029-012103_montage_gesamt_round-08.png",
+  "sha": "57d7ee3a7bce67f0",
+  "time": "2026-10-29 01:21:03",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "9968588",
+  "source": "renders/round-08.png"
+ },
+ {
+  "file": "20261029-012314_montage_gesamt_round-09.png",
+  "sha": "7a1a6628e8f13156",
+  "time": "2026-10-29 01:23:14",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "faa2480",
+  "source": "renders/round-09.png"
+ },
+ {
+  "file": "20261029-012447_montage_gesamt_failed-photoreal-01.png",
+  "sha": "9b18b4ec3f2d2ac5",
+  "time": "2026-10-29 01:24:47",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "6d606d2",
+  "source": "renders/failed-photoreal-01.png"
+ },
+ {
+  "file": "20261029-014220_montage_gesamt_round-10.png",
+  "sha": "a6afc30320d33c9b",
+  "time": "2026-10-29 01:42:20",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "6d606d2",
+  "source": "renders/round-10.png"
+ },
+ {
+  "file": "20261029-014618_montage_gesamt_round-11.png",
+  "sha": "84b0d8a9fe7c97c0",
+  "time": "2026-10-29 01:46:18",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "2700516",
+  "source": "renders/round-11.png"
+ },
+ {
+  "file": "20261029-015738_montage_gesamt_round-12.png",
+  "sha": "27651f2218e1f41e",
+  "time": "2026-10-29 01:57:38",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "74326b2",
+  "source": "renders/round-12.png"
+ },
+ {
+  "file": "20261029-020244_werkstatt_pflanztisch_comp-pflanztisch-01.png",
+  "sha": "0cea77425c08324f",
+  "time": "2026-10-29 02:02:44",
+  "role": "werkstatt",
+  "subject": "pflanztisch",
+  "note": "",
+  "commit": "cc6eb83",
+  "source": "renders/comp-pflanztisch-01.png"
+ },
+ {
+  "file": "20261029-021844_montage_gesamt_round-13.png",
+  "sha": "8f8af19dbc926704",
+  "time": "2026-10-29 02:18:44",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "a8c992e",
+  "source": "renders/round-13.png"
+ },
+ {
+  "file": "20261029-022250_montage_gesamt_round-14.png",
+  "sha": "7d2754ca53ee30a4",
+  "time": "2026-10-29 02:22:50",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "c218b27",
+  "source": "renders/round-14.png"
+ },
+ {
+  "file": "20261029-025827_montage_gesamt_round-15.png",
+  "sha": "9aaf664b2cea5c6a",
+  "time": "2026-10-29 02:58:27",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "5896c35",
+  "source": "renders/round-15.png"
+ },
+ {
+  "file": "20261029-032756_montage_gesamt_round-16.png",
+  "sha": "c3f3fc99e4cf14b0",
+  "time": "2026-10-29 03:27:56",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "5fb1a80",
+  "source": "renders/round-16.png"
+ },
+ {
+  "file": "20261029-032807_montage_gesamt-schnitt_section-16.png",
+  "sha": "cdaee8bd696362a8",
+  "time": "2026-10-29 03:28:07",
+  "role": "montage",
+  "subject": "gesamt-schnitt",
+  "note": "",
+  "commit": "5fb1a80",
+  "source": "renders/section-16.png"
+ },
+ {
+  "file": "20261029-033656_montage_gesamt_round-17.png",
+  "sha": "6cdcaf3f1c08fff5",
+  "time": "2026-10-29 03:36:56",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "5affb47",
+  "source": "renders/round-17.png"
+ },
+ {
+  "file": "20261029-033708_montage_gesamt-schnitt_section-17.png",
+  "sha": "738fd567c1e28792",
+  "time": "2026-10-29 03:37:08",
+  "role": "montage",
+  "subject": "gesamt-schnitt",
+  "note": "",
+  "commit": "5affb47",
+  "source": "renders/section-17.png"
+ },
+ {
+  "file": "20261029-034250_werkstatt_salatkopf_salatkopf-01.png",
+  "sha": "fb3b0b337b88dbac",
+  "time": "2026-10-29 03:42:50",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "",
+  "commit": "8a4827a",
+  "source": "renders/components/salatkopf/salatkopf-01.png"
+ },
+ {
+  "file": "20261029-035038_montage_gesamt_round-19.png",
+  "sha": "3e926e2e2f1eafec",
+  "time": "2026-10-29 03:50:38",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "68dfa67",
+  "source": "renders/round-19.png"
+ },
+ {
+  "file": "20261029-035047_montage_gesamt-schnitt_section-19.png",
+  "sha": "ba9e1eeb12495e9a",
+  "time": "2026-10-29 03:50:47",
+  "role": "montage",
+  "subject": "gesamt-schnitt",
+  "note": "",
+  "commit": "",
+  "source": "renders/section-19.png"
+ },
+ {
+  "file": "20261029-035804_werkstatt_nft-rinne_nft-rinne-02-zulauf-ende.png",
+  "sha": "0a0bfbb974e38dab",
+  "time": "2026-10-29 03:58:04",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/nft_rinne-02-zulauf-ende.png"
+ },
+ {
+  "file": "20261029-035805_werkstatt_nft-rinne_k3-modell-ausschnitt.png",
+  "sha": "c5974d7f4a2b66ed",
+  "time": "2026-10-29 03:58:05",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "Kritiker",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/critic/k3-modell-ausschnitt.png"
+ },
+ {
+  "file": "20261029-035805_werkstatt_nft-rinne_nft-rinne-03-ablauf-ende.png",
+  "sha": "e2ddae3a3a5223a3",
+  "time": "2026-10-29 03:58:05",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/nft_rinne-03-ablauf-ende.png"
+ },
+ {
+  "file": "20261029-035806_werkstatt_nft-rinne_k4-modell-gesamt.png",
+  "sha": "6c60328524c6117e",
+  "time": "2026-10-29 03:58:06",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "Kritiker",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/critic/k4-modell-gesamt.png"
+ },
+ {
+  "file": "20261029-035806_werkstatt_nft-rinne_nft-rinne-06-schnitt-zulauf.png",
+  "sha": "5abb014bd6ad3301",
+  "time": "2026-10-29 03:58:06",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/nft_rinne-06-schnitt-zulauf.png"
+ },
+ {
+  "file": "20261029-035807_werkstatt_nft-rinne_nft-rinne-07-querschnitt.png",
+  "sha": "3b277b78f16360e4",
+  "time": "2026-10-29 03:58:07",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/nft_rinne-07-querschnitt.png"
+ },
+ {
+  "file": "20261029-040347_montage_gesamt_round-20.png",
+  "sha": "e9159d099d26817b",
+  "time": "2026-10-29 04:03:47",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "57a02ce",
+  "source": "renders/round-20.png"
+ },
+ {
+  "file": "20261029-040356_montage_gesamt-schnitt_section-20.png",
+  "sha": "d60e05df54031ea4",
+  "time": "2026-10-29 04:03:56",
+  "role": "montage",
+  "subject": "gesamt-schnitt",
+  "note": "",
+  "commit": "",
+  "source": "renders/section-20.png"
+ },
+ {
+  "file": "20261029-040400_werkstatt_nft-rinne_k1-referenz-gesamt-markiert.png",
+  "sha": "239b8d9f46f1460c",
+  "time": "2026-10-29 04:04:00",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "Kritiker",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/critic/k1-referenz-gesamt-markiert.png"
+ },
+ {
+  "file": "20261029-040400_werkstatt_nft-rinne_k2-referenz-ausschnitt-tisch.png",
+  "sha": "4649c96caaae3ae0",
+  "time": "2026-10-29 04:04:00",
+  "role": "werkstatt",
+  "subject": "nft_rinne",
+  "note": "Kritiker",
+  "commit": "f54f647",
+  "source": "renders/components/nft_rinne/critic/k2-referenz-ausschnitt-tisch.png"
+ },
+ {
+  "file": "20261029-040852_montage_gesamt_round-21.png",
+  "sha": "7e6180590638ce1a",
+  "time": "2026-10-29 04:08:52",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "eccb01d",
+  "source": "renders/round-21.png"
+ },
+ {
+  "file": "20261029-040902_montage_gesamt-schnitt_section-21.png",
+  "sha": "2556edbc312ee93b",
+  "time": "2026-10-29 04:09:02",
+  "role": "montage",
+  "subject": "gesamt-schnitt",
+  "note": "",
+  "commit": "",
+  "source": "renders/section-21.png"
+ },
+ {
+  "file": "20261029-040915_montage_gesamt_door-close-21.png",
+  "sha": "35285ccc330e19f0",
+  "time": "2026-10-29 04:09:15",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "eccb01d",
+  "source": "renders/door-close-21.png"
+ },
+ {
+  "file": "20261029-052030_werkstatt_nft-tisch-innen_nft-tisch-innen-01-iso.png",
+  "sha": "6ae2680a5de72c07",
+  "time": "2026-10-29 05:20:30",
+  "role": "werkstatt",
+  "subject": "nft_tisch_innen",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_innen/nft_tisch_innen-01-iso.png"
+ },
+ {
+  "file": "20261029-052123_werkstatt_nft-tisch-innen_nft-tisch-innen-02-zulauf.png",
+  "sha": "37d6065df790c223",
+  "time": "2026-10-29 05:21:23",
+  "role": "werkstatt",
+  "subject": "nft_tisch_innen",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_innen/nft_tisch_innen-02-zulauf.png"
+ },
+ {
+  "file": "20261029-052218_werkstatt_nft-tisch-innen_nft-tisch-innen-03-bock.png",
+  "sha": "188473466995905b",
+  "time": "2026-10-29 05:22:18",
+  "role": "werkstatt",
+  "subject": "nft_tisch_innen",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_innen/nft_tisch_innen-03-bock.png"
+ },
+ {
+  "file": "20261029-052306_werkstatt_nft-tisch-innen_nft-tisch-innen-04-ablauf.png",
+  "sha": "60638380e6cd9033",
+  "time": "2026-10-29 05:23:06",
+  "role": "werkstatt",
+  "subject": "nft_tisch_innen",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_innen/nft_tisch_innen-04-ablauf.png"
+ },
+ {
+  "file": "20261029-052348_werkstatt_nft-tisch-innen_nft-tisch-innen-05-oberseite.png",
+  "sha": "425cf5e7f87d88f3",
+  "time": "2026-10-29 05:23:48",
+  "role": "werkstatt",
+  "subject": "nft_tisch_innen",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_innen/nft_tisch_innen-05-oberseite.png"
+ },
+ {
+  "file": "20261029-053036_werkstatt_nft-tisch-mitte_nft-tisch-mitte-01-iso.png",
+  "sha": "c0138a074bcc7562",
+  "time": "2026-10-29 05:30:36",
+  "role": "werkstatt",
+  "subject": "nft_tisch_mitte",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-01-iso.png"
+ },
+ {
+  "file": "20261029-053200_werkstatt_nft-tisch-mitte_nft-tisch-mitte-02-zulauf.png",
+  "sha": "8e43f2e3e0a51f2b",
+  "time": "2026-10-29 05:32:00",
+  "role": "werkstatt",
+  "subject": "nft_tisch_mitte",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-02-zulauf.png"
+ },
+ {
+  "file": "20261029-053256_werkstatt_nft-tisch-mitte_nft-tisch-mitte-03-bock.png",
+  "sha": "49f0b5a003baf9f0",
+  "time": "2026-10-29 05:32:56",
+  "role": "werkstatt",
+  "subject": "nft_tisch_mitte",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-03-bock.png"
+ },
+ {
+  "file": "20261029-053349_werkstatt_nft-tisch-mitte_nft-tisch-mitte-04-ablauf.png",
+  "sha": "c10b9133ca875322",
+  "time": "2026-10-29 05:33:49",
+  "role": "werkstatt",
+  "subject": "nft_tisch_mitte",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-04-ablauf.png"
+ },
+ {
+  "file": "20261029-053441_werkstatt_nft-tisch-mitte_nft-tisch-mitte-05-oberseite.png",
+  "sha": "733c7353bc8877ab",
+  "time": "2026-10-29 05:34:41",
+  "role": "werkstatt",
+  "subject": "nft_tisch_mitte",
+  "note": "",
+  "commit": "8dba568",
+  "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-05-oberseite.png"
+ },
+ {
+  "file": "20261029-053649_werkstatt_nft-tisch-aussen_nft-tisch-aussen-01-iso.png",
+  "sha": "0b84f4fcc8dc2d5a",
+  "time": "2026-10-29 05:36:49",
+  "role": "werkstatt",
+  "subject": "nft_tisch_aussen",
+  "note": "",
+  "commit": "c813496",
+  "source": "renders/components/nft_tisch_aussen/nft_tisch_aussen-01-iso.png"
+ },
+ {
+  "file": "20261029-053728_werkstatt_nft-tisch-aussen_nft-tisch-aussen-02-zulauf.png",
+  "sha": "716a4892be9461c5",
+  "time": "2026-10-29 05:37:28",
+  "role": "werkstatt",
+  "subject": "nft_tisch_aussen",
+  "note": "",
+  "commit": "c813496",
+  "source": "renders/components/nft_tisch_aussen/nft_tisch_aussen-02-zulauf.png"
+ },
+ {
+  "file": "20261029-053806_werkstatt_nft-tisch-aussen_nft-tisch-aussen-03-bock.png",
+  "sha": "849663fb57e32898",
+  "time": "2026-10-29 05:38:06",
+  "role": "werkstatt",
+  "subject": "nft_tisch_aussen",
+  "note": "",
+  "commit": "c813496",
+  "source": "renders/components/nft_tisch_aussen/nft_tisch_aussen-03-bock.png"
+ },
+ {
+  "file": "20261029-053844_werkstatt_nft-tisch-aussen_nft-tisch-aussen-04-ablauf.png",
+  "sha": "90b73ac16ffedab1",
+  "time": "2026-10-29 05:38:44",
+  "role": "werkstatt",
+  "subject": "nft_tisch_aussen",
+  "note": "",
+  "commit": "c813496",
+  "source": "renders/components/nft_tisch_aussen/nft_tisch_aussen-04-ablauf.png"
+ },
+ {
+  "file": "20261029-053923_werkstatt_nft-tisch-aussen_nft-tisch-aussen-05-oberseite.png",
+  "sha": "a9c0a9819d23cb9e",
+  "time": "2026-10-29 05:39:23",
+  "role": "werkstatt",
+  "subject": "nft_tisch_aussen",
+  "note": "",
+  "commit": "c813496",
+  "source": "renders/components/nft_tisch_aussen/nft_tisch_aussen-05-oberseite.png"
+ },
+ {
+  "file": "20261029-072541_werkstatt_ibc-beet-aussen-933_k2-referenz-ausschnitt-beet-ref6.png",
+  "sha": "eb25c15ebbe316da",
+  "time": "2026-10-29 07:25:41",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "Kritiker",
+  "commit": "09e3406",
+  "source": "renders/components/ibc_beet_aussen_933/critic/k2-referenz-ausschnitt-beet-ref6.png"
+ },
+ {
+  "file": "20261029-072541_werkstatt_ibc-beet-aussen-933_k2b-referenz-ausschnitt-beet-ref5.png",
+  "sha": "c38d59fa02e018df",
+  "time": "2026-10-29 07:25:41",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "Kritiker",
+  "commit": "09e3406",
+  "source": "renders/components/ibc_beet_aussen_933/critic/k2b-referenz-ausschnitt-beet-ref5.png"
+ },
+ {
+  "file": "20261029-072542_werkstatt_ibc-beet-aussen-933_k1-referenz-gesamt-markiert.png",
+  "sha": "c4cbe48bf7d7127b",
+  "time": "2026-10-29 07:25:42",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "Kritiker",
+  "commit": "09e3406",
+  "source": "renders/components/ibc_beet_aussen_933/critic/k1-referenz-gesamt-markiert.png"
+ },
+ {
+  "file": "20261029-075239_werkstatt_tank-klein_k2-referenz-ausschnitt-tanks-ref4.png",
+  "sha": "2974ca63f6234540",
+  "time": "2026-10-29 07:52:39",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "Kritiker",
+  "commit": "1e1a6f4",
+  "source": "renders/components/tank_klein/critic/k2-referenz-ausschnitt-tanks-ref4.png"
+ },
+ {
+  "file": "20261029-075240_werkstatt_tank-klein_k1-referenz-gesamt-markiert.png",
+  "sha": "cbfc12a2402455ca",
+  "time": "2026-10-29 07:52:40",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "Kritiker",
+  "commit": "1e1a6f4",
+  "source": "renders/components/tank_klein/critic/k1-referenz-gesamt-markiert.png"
+ },
+ {
+  "file": "20261029-075240_werkstatt_tank-klein_k2b-referenz-ausschnitt-tanks-ref5.png",
+  "sha": "fe7d8358628cb4c6",
+  "time": "2026-10-29 07:52:40",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "Kritiker",
+  "commit": "1e1a6f4",
+  "source": "renders/components/tank_klein/critic/k2b-referenz-ausschnitt-tanks-ref5.png"
+ },
+ {
+  "file": "20261029-075337_werkstatt_ibc-beet-aussen-933_ibc-beet-aussen-933-01-iso.png",
+  "sha": "22231965fe4730b7",
+  "time": "2026-10-29 07:53:37",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-01-iso.png"
+ },
+ {
+  "file": "20261029-075401_werkstatt_ibc-beet-aussen-933_ibc-beet-aussen-933-02-siphon.png",
+  "sha": "0371cc572fb5034c",
+  "time": "2026-10-29 07:54:01",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-02-siphon.png"
+ },
+ {
+  "file": "20261029-075424_werkstatt_ibc-beet-aussen-933_ibc-beet-aussen-933-03-zulauf.png",
+  "sha": "c23b9b125fd1fa26",
+  "time": "2026-10-29 07:54:24",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "",
+  "commit": "708bc15",
+  "source": "renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-03-zulauf.png"
+ },
+ {
+  "file": "20261029-075448_werkstatt_ibc-beet-aussen-933_ibc-beet-aussen-933-04-medium.png",
+  "sha": "6c127df4d6be6136",
+  "time": "2026-10-29 07:54:48",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-04-medium.png"
+ },
+ {
+  "file": "20261029-075513_werkstatt_ibc-beet-aussen-933_ibc-beet-aussen-933-05-schnitt.png",
+  "sha": "c5d43b9b747def06",
+  "time": "2026-10-29 07:55:13",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-05-schnitt.png"
+ },
+ {
+  "file": "20261029-075537_werkstatt_ibc-beet-aussen-933_ibc-beet-aussen-933-06-schnitt-quer.png",
+  "sha": "4b4218c4963418b8",
+  "time": "2026-10-29 07:55:37",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-06-schnitt-quer.png"
+ },
+ {
+  "file": "20261029-075646_werkstatt_ibc-beet-aussen-993_ibc-beet-aussen-993-01-iso.png",
+  "sha": "6de3241ded7f4e68",
+  "time": "2026-10-29 07:56:46",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_993",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-01-iso.png"
+ },
+ {
+  "file": "20261029-075711_werkstatt_ibc-beet-aussen-993_ibc-beet-aussen-993-02-siphon.png",
+  "sha": "61af9f90c4f2de57",
+  "time": "2026-10-29 07:57:11",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_993",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-02-siphon.png"
+ },
+ {
+  "file": "20261029-075736_werkstatt_ibc-beet-aussen-993_ibc-beet-aussen-993-03-zulauf.png",
+  "sha": "0c4a2901ca3491da",
+  "time": "2026-10-29 07:57:36",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_993",
+  "note": "",
+  "commit": "708bc15",
+  "source": "renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-03-zulauf.png"
+ },
+ {
+  "file": "20261029-075801_werkstatt_ibc-beet-aussen-993_ibc-beet-aussen-993-04-medium.png",
+  "sha": "293f4a336a138fa8",
+  "time": "2026-10-29 07:58:01",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_993",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-04-medium.png"
+ },
+ {
+  "file": "20261029-075845_werkstatt_ibc-beet-aussen-993_ibc-beet-aussen-993-06-schnitt-quer.png",
+  "sha": "6662858d7e8f42c8",
+  "time": "2026-10-29 07:58:45",
+  "role": "werkstatt",
+  "subject": "ibc_beet_aussen_993",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-06-schnitt-quer.png"
+ },
+ {
+  "file": "20261029-075945_werkstatt_ibc-beet-innen-933_ibc-beet-innen-933-01-iso.png",
+  "sha": "144071dfb7eae7d3",
+  "time": "2026-10-29 07:59:45",
+  "role": "werkstatt",
+  "subject": "ibc_beet_innen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_innen_933/ibc_beet_innen_933-01-iso.png"
+ },
+ {
+  "file": "20261029-080008_werkstatt_ibc-beet-innen-933_ibc-beet-innen-933-02-siphon.png",
+  "sha": "dae03f2b68b46787",
+  "time": "2026-10-29 08:00:08",
+  "role": "werkstatt",
+  "subject": "ibc_beet_innen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_innen_933/ibc_beet_innen_933-02-siphon.png"
+ },
+ {
+  "file": "20261029-080030_werkstatt_ibc-beet-innen-933_ibc-beet-innen-933-03-zulauf.png",
+  "sha": "5dbfb8fb4efacb10",
+  "time": "2026-10-29 08:00:30",
+  "role": "werkstatt",
+  "subject": "ibc_beet_innen_933",
+  "note": "",
+  "commit": "708bc15",
+  "source": "renders/components/ibc_beet_innen_933/ibc_beet_innen_933-03-zulauf.png"
+ },
+ {
+  "file": "20261029-080051_werkstatt_ibc-beet-innen-933_ibc-beet-innen-933-04-medium.png",
+  "sha": "c5c40aba5dc7cfb5",
+  "time": "2026-10-29 08:00:51",
+  "role": "werkstatt",
+  "subject": "ibc_beet_innen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_innen_933/ibc_beet_innen_933-04-medium.png"
+ },
+ {
+  "file": "20261029-080115_werkstatt_ibc-beet-innen-933_ibc-beet-innen-933-05-schnitt.png",
+  "sha": "ecb3dc8fba35999b",
+  "time": "2026-10-29 08:01:15",
+  "role": "werkstatt",
+  "subject": "ibc_beet_innen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_innen_933/ibc_beet_innen_933-05-schnitt.png"
+ },
+ {
+  "file": "20261029-080137_werkstatt_ibc-beet-innen-933_ibc-beet-innen-933-06-schnitt-quer.png",
+  "sha": "bb94e564824f10ad",
+  "time": "2026-10-29 08:01:37",
+  "role": "werkstatt",
+  "subject": "ibc_beet_innen_933",
+  "note": "",
+  "commit": "1e1a6f4",
+  "source": "renders/components/ibc_beet_innen_933/ibc_beet_innen_933-06-schnitt-quer.png"
+ },
+ {
+  "file": "20261029-081000_werkstatt_tank-klein_tank-klein-01-iso.png",
+  "sha": "92908d2a2bb38404",
+  "time": "2026-10-29 08:10:00",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/tank_klein/tank_klein-01-iso.png"
+ },
+ {
+  "file": "20261029-081014_werkstatt_tank-klein_tank-klein-02-kegel.png",
+  "sha": "38aed3f59a72b9c6",
+  "time": "2026-10-29 08:10:14",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/tank_klein/tank_klein-02-kegel.png"
+ },
+ {
+  "file": "20261029-081027_werkstatt_tank-klein_tank-klein-03-zulauf.png",
+  "sha": "be05653ad7334b41",
+  "time": "2026-10-29 08:10:27",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/tank_klein/tank_klein-03-zulauf.png"
+ },
+ {
+  "file": "20261029-081041_werkstatt_tank-klein_tank-klein-04-deckel.png",
+  "sha": "eb75b81b1e96ece8",
+  "time": "2026-10-29 08:10:41",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/tank_klein/tank_klein-04-deckel.png"
+ },
+ {
+  "file": "20261029-081055_werkstatt_tank-klein_tank-klein-05-schnitt.png",
+  "sha": "4aef72746630b1c9",
+  "time": "2026-10-29 08:10:55",
+  "role": "werkstatt",
+  "subject": "tank_klein",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/tank_klein/tank_klein-05-schnitt.png"
+ },
+ {
+  "file": "20261029-081535_werkstatt_pumpe-klein_pumpe-klein-01-iso.png",
+  "sha": "a8a148de3c0f9c59",
+  "time": "2026-10-29 08:15:35",
+  "role": "werkstatt",
+  "subject": "pumpe_klein",
+  "note": "",
+  "commit": "c15704e",
+  "source": "renders/components/pumpe_klein/pumpe_klein-01-iso.png"
+ },
+ {
+  "file": "20261029-081536_werkstatt_pumpe-klein_pumpe-klein-02-pumpe.png",
+  "sha": "14096171e71d77ac",
+  "time": "2026-10-29 08:15:36",
+  "role": "werkstatt",
+  "subject": "pumpe_klein",
+  "note": "",
+  "commit": "c15704e",
+  "source": "renders/components/pumpe_klein/pumpe_klein-02-pumpe.png"
+ },
+ {
+  "file": "20261029-081536_werkstatt_pumpe-klein_pumpe-klein-03-rueckseite.png",
+  "sha": "321e02e25c54c25b",
+  "time": "2026-10-29 08:15:36",
+  "role": "werkstatt",
+  "subject": "pumpe_klein",
+  "note": "",
+  "commit": "c15704e",
+  "source": "renders/components/pumpe_klein/pumpe_klein-03-rueckseite.png"
+ },
+ {
+  "file": "20261029-081537_werkstatt_pumpe-klein_pumpe-klein-04-seite.png",
+  "sha": "7823258c490af4c9",
+  "time": "2026-10-29 08:15:37",
+  "role": "werkstatt",
+  "subject": "pumpe_klein",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/pumpe_klein/pumpe_klein-04-seite.png"
+ },
+ {
+  "file": "20261029-081537_werkstatt_pumpe-klein_pumpe-klein-05-schnitt.png",
+  "sha": "01bc371d531007e4",
+  "time": "2026-10-29 08:15:37",
+  "role": "werkstatt",
+  "subject": "pumpe_klein",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/pumpe_klein/pumpe_klein-05-schnitt.png"
+ },
+ {
+  "file": "20261029-081538_werkstatt_pumpe-gross_pumpe-gross-01-iso.png",
+  "sha": "faeecd0a270b058b",
+  "time": "2026-10-29 08:15:38",
+  "role": "werkstatt",
+  "subject": "pumpe_gross",
+  "note": "",
+  "commit": "c15704e",
+  "source": "renders/components/pumpe_gross/pumpe_gross-01-iso.png"
+ },
+ {
+  "file": "20261029-081539_werkstatt_pumpe-gross_pumpe-gross-02-pumpe.png",
+  "sha": "b63bfa9a043538e9",
+  "time": "2026-10-29 08:15:39",
+  "role": "werkstatt",
+  "subject": "pumpe_gross",
+  "note": "",
+  "commit": "c15704e",
+  "source": "renders/components/pumpe_gross/pumpe_gross-02-pumpe.png"
+ },
+ {
+  "file": "20261029-081540_werkstatt_pumpe-gross_pumpe-gross-03-rueckseite.png",
+  "sha": "533b4e4a8be7dd17",
+  "time": "2026-10-29 08:15:40",
+  "role": "werkstatt",
+  "subject": "pumpe_gross",
+  "note": "",
+  "commit": "c15704e",
+  "source": "renders/components/pumpe_gross/pumpe_gross-03-rueckseite.png"
+ },
+ {
+  "file": "20261029-081540_werkstatt_pumpe-gross_pumpe-gross-04-seite.png",
+  "sha": "126e7a96c46500e6",
+  "time": "2026-10-29 08:15:40",
+  "role": "werkstatt",
+  "subject": "pumpe_gross",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/pumpe_gross/pumpe_gross-04-seite.png"
+ },
+ {
+  "file": "20261029-081541_werkstatt_pumpe-gross_pumpe-gross-05-schnitt.png",
+  "sha": "6314fcd3c92dff71",
+  "time": "2026-10-29 08:15:41",
+  "role": "werkstatt",
+  "subject": "pumpe_gross",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/pumpe_gross/pumpe_gross-05-schnitt.png"
+ },
+ {
+  "file": "20261029-081821_werkstatt_netztopf_netztopf-01-iso.png",
+  "sha": "02a9762119233572",
+  "time": "2026-10-29 08:18:21",
+  "role": "werkstatt",
+  "subject": "netztopf",
+  "note": "",
+  "commit": "8ea9d5b",
+  "source": "renders/components/netztopf/netztopf-01-iso.png"
+ },
+ {
+  "file": "20261029-081825_werkstatt_netztopf_netztopf-02-schnitt.png",
+  "sha": "e825720caa356715",
+  "time": "2026-10-29 08:18:25",
+  "role": "werkstatt",
+  "subject": "netztopf",
+  "note": "",
+  "commit": "8ea9d5b",
+  "source": "renders/components/netztopf/netztopf-02-schnitt.png"
+ },
+ {
+  "file": "20261029-081830_werkstatt_netztopf_netztopf-03-seite.png",
+  "sha": "dfc4193f61ecc498",
+  "time": "2026-10-29 08:18:30",
+  "role": "werkstatt",
+  "subject": "netztopf",
+  "note": "",
+  "commit": "8ea9d5b",
+  "source": "renders/components/netztopf/netztopf-03-seite.png"
+ },
+ {
+  "file": "20261029-081900_werkstatt_salatkopf_k2-referenz-ausschnitt-salat-ref6.png",
+  "sha": "ab5a6e6532c2609b",
+  "time": "2026-10-29 08:19:00",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "Kritiker",
+  "commit": "8ea9d5b",
+  "source": "renders/components/salatkopf/critic/k2-referenz-ausschnitt-salat-ref6.png"
+ },
+ {
+  "file": "20261029-081900_werkstatt_salatkopf_k2b-referenz-ausschnitt-salat-ref6-links.png",
+  "sha": "5dc53cd042cf0093",
+  "time": "2026-10-29 08:19:00",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "Kritiker",
+  "commit": "8ea9d5b",
+  "source": "renders/components/salatkopf/critic/k2b-referenz-ausschnitt-salat-ref6-links.png"
+ },
+ {
+  "file": "20261029-082226_werkstatt_salatkopf_salatkopf-02.png",
+  "sha": "c4057d423c5ec38f",
+  "time": "2026-10-29 08:22:26",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "",
+  "commit": "1b1261e",
+  "source": "renders/components/salatkopf/salatkopf-02.png"
+ },
+ {
+  "file": "20261029-082227_werkstatt_salatkopf_salatkopf-03.png",
+  "sha": "10f2e4dc6ed9bedc",
+  "time": "2026-10-29 08:22:27",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "",
+  "commit": "1b1261e",
+  "source": "renders/components/salatkopf/salatkopf-03.png"
+ },
+ {
+  "file": "20261029-082228_werkstatt_salatkopf_salatkopf-04.png",
+  "sha": "9e6bf1861caa9889",
+  "time": "2026-10-29 08:22:28",
+  "role": "werkstatt",
+  "subject": "salatkopf",
+  "note": "",
+  "commit": "1b1261e",
+  "source": "renders/components/salatkopf/salatkopf-04.png"
+ },
+ {
+  "file": "20261029-083840_werkstatt_knoten-6_knoten-6-n01-01-iso.png",
+  "sha": "46023270e83a8007",
+  "time": "2026-10-29 08:38:40",
+  "role": "werkstatt",
+  "subject": "knoten_6",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_6/knoten_6_n01-01-iso.png"
+ },
+ {
+  "file": "20261029-083842_werkstatt_knoten-6_knoten-6-n01-02-draufsicht.png",
+  "sha": "ba6e462b03e79c73",
+  "time": "2026-10-29 08:38:42",
+  "role": "werkstatt",
+  "subject": "knoten_6",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_6/knoten_6_n01-02-draufsicht.png"
+ },
+ {
+  "file": "20261029-083845_werkstatt_knoten-6_knoten-6-n01-03-seite.png",
+  "sha": "2831e2b1bd231fac",
+  "time": "2026-10-29 08:38:45",
+  "role": "werkstatt",
+  "subject": "knoten_6",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_6/knoten_6_n01-03-seite.png"
+ },
+ {
+  "file": "20261029-083855_werkstatt_knoten-5_knoten-5-n02-01-iso.png",
+  "sha": "726d56273a3453c4",
+  "time": "2026-10-29 08:38:55",
+  "role": "werkstatt",
+  "subject": "knoten_5",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_5/knoten_5_n02-01-iso.png"
+ },
+ {
+  "file": "20261029-083857_werkstatt_knoten-5_knoten-5-n02-02-draufsicht.png",
+  "sha": "f313e8dddf89b1a0",
+  "time": "2026-10-29 08:38:57",
+  "role": "werkstatt",
+  "subject": "knoten_5",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_5/knoten_5_n02-02-draufsicht.png"
+ },
+ {
+  "file": "20261029-083859_werkstatt_knoten-5_knoten-5-n02-03-seite.png",
+  "sha": "fc333a4517e0112d",
+  "time": "2026-10-29 08:38:59",
+  "role": "werkstatt",
+  "subject": "knoten_5",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_5/knoten_5_n02-03-seite.png"
+ },
+ {
+  "file": "20261029-083908_werkstatt_knoten-4_knoten-4-n17-01-iso.png",
+  "sha": "5ef25ea04edea6ab",
+  "time": "2026-10-29 08:39:08",
+  "role": "werkstatt",
+  "subject": "knoten_4",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_4/knoten_4_n17-01-iso.png"
+ },
+ {
+  "file": "20261029-083909_werkstatt_knoten-4_knoten-4-n17-02-draufsicht.png",
+  "sha": "08c4ae22cf650731",
+  "time": "2026-10-29 08:39:09",
+  "role": "werkstatt",
+  "subject": "knoten_4",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_4/knoten_4_n17-02-draufsicht.png"
+ },
+ {
+  "file": "20261029-083911_werkstatt_knoten-4_knoten-4-n17-03-seite.png",
+  "sha": "2a657548eca8c702",
+  "time": "2026-10-29 08:39:11",
+  "role": "werkstatt",
+  "subject": "knoten_4",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/knoten_4/knoten_4_n17-03-seite.png"
+ },
+ {
+  "file": "20261029-084229_werkstatt_tank-gross_tank-gross-01-iso.png",
+  "sha": "a864d8a421598dc2",
+  "time": "2026-10-29 08:42:29",
+  "role": "werkstatt",
+  "subject": "tank_gross",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/tank_gross/tank_gross-01-iso.png"
+ },
+ {
+  "file": "20261029-084241_werkstatt_tank-gross_tank-gross-02-kegel.png",
+  "sha": "68f302c23cb993bb",
+  "time": "2026-10-29 08:42:41",
+  "role": "werkstatt",
+  "subject": "tank_gross",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/tank_gross/tank_gross-02-kegel.png"
+ },
+ {
+  "file": "20261029-084253_werkstatt_tank-gross_tank-gross-03-zulauf.png",
+  "sha": "b2299bd3afae472b",
+  "time": "2026-10-29 08:42:53",
+  "role": "werkstatt",
+  "subject": "tank_gross",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/tank_gross/tank_gross-03-zulauf.png"
+ },
+ {
+  "file": "20261029-084305_werkstatt_tank-gross_tank-gross-04-deckel.png",
+  "sha": "049fc711042a1c83",
+  "time": "2026-10-29 08:43:05",
+  "role": "werkstatt",
+  "subject": "tank_gross",
+  "note": "",
+  "commit": "1d152ab",
+  "source": "renders/components/tank_gross/tank_gross-04-deckel.png"
+ },
+ {
+  "file": "20261029-084318_werkstatt_tank-gross_tank-gross-05-schnitt.png",
+  "sha": "58f83811ba5dd0f4",
+  "time": "2026-10-29 08:43:18",
+  "role": "werkstatt",
+  "subject": "tank_gross",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/tank_gross/tank_gross-05-schnitt.png"
+ },
+ {
+  "file": "20261029-084357_werkstatt_tank-gross-t3_tank-gross-t3-01-iso.png",
+  "sha": "88cde1929a3cbc27",
+  "time": "2026-10-29 08:43:57",
+  "role": "werkstatt",
+  "subject": "tank_gross_t3",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/tank_gross_t3/tank_gross_t3-01-iso.png"
+ },
+ {
+  "file": "20261029-084409_werkstatt_tank-gross-t3_tank-gross-t3-02-kegel.png",
+  "sha": "c78814690e07470a",
+  "time": "2026-10-29 08:44:09",
+  "role": "werkstatt",
+  "subject": "tank_gross_t3",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/tank_gross_t3/tank_gross_t3-02-kegel.png"
+ },
+ {
+  "file": "20261029-084446_werkstatt_tank-gross-t3_tank-gross-t3-05-schnitt.png",
+  "sha": "29097391293f9d53",
+  "time": "2026-10-29 08:44:46",
+  "role": "werkstatt",
+  "subject": "tank_gross_t3",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/tank_gross_t3/tank_gross_t3-05-schnitt.png"
+ },
+ {
+  "file": "20261029-084511_werkstatt_fundamentanker_fundamentanker-01-iso.png",
+  "sha": "543861b9775880ca",
+  "time": "2026-10-29 08:45:11",
+  "role": "werkstatt",
+  "subject": "fundamentanker",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/fundamentanker/fundamentanker-01-iso.png"
+ },
+ {
+  "file": "20261029-084511_werkstatt_fundamentanker_fundamentanker-02-gabel.png",
+  "sha": "d11fb3ace9164799",
+  "time": "2026-10-29 08:45:11",
+  "role": "werkstatt",
+  "subject": "fundamentanker",
+  "note": "",
+  "commit": "fe0eff9",
+  "source": "renders/components/fundamentanker/fundamentanker-02-gabel.png"
+ },
+ {
+  "file": "20261029-084512_werkstatt_fundamentanker_fundamentanker-03-schnitt.png",
+  "sha": "7dfb2a72e1829e5d",
+  "time": "2026-10-29 08:45:12",
+  "role": "werkstatt",
+  "subject": "fundamentanker",
+  "note": "",
+  "commit": "0bf6a30",
+  "source": "renders/components/fundamentanker/fundamentanker-03-schnitt.png"
+ },
+ {
+  "file": "20261029-091833_werkstatt_leitungsteile_lt-rohr-d50.png",
+  "sha": "5122ff1d3917b7d3",
+  "time": "2026-10-29 09:18:33",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_rohr_d50.png"
+ },
+ {
+  "file": "20261029-091845_werkstatt_leitungsteile_lt-bogen90-d50.png",
+  "sha": "c2e4cb5a626d880c",
+  "time": "2026-10-29 09:18:45",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_bogen90_d50.png"
+ },
+ {
+  "file": "20261029-091851_werkstatt_leitungsteile_lt-bogen45-d50.png",
+  "sha": "4ef403d922111cbf",
+  "time": "2026-10-29 09:18:51",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_bogen45_d50.png"
+ },
+ {
+  "file": "20261029-091901_werkstatt_leitungsteile_lt-t-d50.png",
+  "sha": "8bfd7e6c1c2c205d",
+  "time": "2026-10-29 09:19:01",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_t_d50.png"
+ },
+ {
+  "file": "20261029-091904_werkstatt_leitungsteile_lt-klemme-d50.png",
+  "sha": "f8ae04f0949ffc7d",
+  "time": "2026-10-29 09:19:04",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_klemme_d50.png"
+ },
+ {
+  "file": "20261029-091904_werkstatt_leitungsteile_lt-kugelhahn-d50.png",
+  "sha": "82d944f5ba742dde",
+  "time": "2026-10-29 09:19:04",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_kugelhahn_d50.png"
+ },
+ {
+  "file": "20261029-091910_werkstatt_leitungsteile_lt-schlauchbogen90-id16.png",
+  "sha": "645d224548faa70d",
+  "time": "2026-10-29 09:19:10",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_schlauchbogen90_id16.png"
+ },
+ {
+  "file": "20261029-091919_werkstatt_leitungsteile_lt-kupplung-d50.png",
+  "sha": "c68d7c542d73cbdb",
+  "time": "2026-10-29 09:19:19",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_kupplung_d50.png"
+ },
+ {
+  "file": "20261029-091919_werkstatt_leitungsteile_lt-verteiler-d32-n3.png",
+  "sha": "5fabd233ab43598e",
+  "time": "2026-10-29 09:19:19",
+  "role": "werkstatt",
+  "subject": "leitungsteile",
+  "note": "",
+  "commit": "6bc4b98",
+  "source": "renders/components/leitungsteile/lt_verteiler_d32_n3.png"
+ },
+ {
+  "file": "20261029-123158_montage_gesamt_round-22.png",
+  "sha": "546b8cc5d716f73f",
+  "time": "2026-10-29 12:31:58",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "",
+  "commit": "",
+  "source": "renders/round-22.png"
+ },
+ {
+  "file": "20261029-123202_montage_gesamt-schnitt_section-22.png",
+  "sha": "9f131776893d7adc",
+  "time": "2026-10-29 12:32:02",
+  "role": "montage",
+  "subject": "gesamt-schnitt",
+  "note": "",
+  "commit": "",
+  "source": "renders/section-22.png"
+ }
+]

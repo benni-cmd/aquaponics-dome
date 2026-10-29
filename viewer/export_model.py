@@ -57,13 +57,18 @@ small = [b for b in found if SMALL.search(b) or 'Netztopf' in b or 'Salatkopf' i
 cmds_job = [{'command': 'doc.open', 'params': {'path': DESIGN.replace(chr(92), '/'), 'read_only': True}}]
 if small:
     cmds_job.append({'command': 'solid.remove', 'params': {'bodies': small}})   # nur im geladenen Modell, wird nicht gespeichert
-cmds_job.append({'command': 'file.export', 'params': {'path': OUT.replace(chr(92), '/'), 'format': 'obj', 'quality': 'standard'}})
+OUT_TMP = os.path.join(HERE, 'model.building.obj')   # erst daneben schreiben, dann atomar ersetzen: der Viewer sieht nie eine halbe Datei
+cmds_job.append({'command': 'file.export', 'params': {'path': OUT_TMP.replace(chr(92), '/'), 'format': 'obj', 'quality': 'standard'}})
 job = {'commands': cmds_job}
 tmp = os.path.join(HERE, '.export-job.json')
 json.dump(job, open(tmp, 'w'))
 t = time.time()
 r = subprocess.run([CLI, 'run', tmp, '--quiet'], capture_output=True, text=True)
 os.remove(tmp)
+if r.returncode == 0 and os.path.exists(OUT_TMP):
+    os.replace(OUT_TMP, OUT)
+elif os.path.exists(OUT_TMP):
+    os.remove(OUT_TMP)
 json.dump({'plants': extras, 'colors': colors, 'built': time.strftime('%Y-%m-%d %H:%M:%S'), 'bodies': len(bodies)}, open(EXTRAS, 'w'))
 size = os.path.getsize(OUT) / 1e6 if os.path.exists(OUT) else -1
 print(f'export rc={r.returncode} {time.time()-t:.0f}s model.obj={size:.1f} MB bodies={len(bodies)} plants={len(extras)}')

@@ -54,3 +54,10 @@ Grundsatz: Der Ueberblick lebt im Orchestrator (Board, Plaene, Entscheidungen, A
 - **Montage: ein Schritt M<n> = ein Kontext.** Nach jedem erledigten Schritt `clear_session` self; neuer Kontext = `docs/loop-state.md` + der Schritt aus `docs/next-steps-montage.md` + `data/layout.json` (nur benoetigte Teile) + Board-Zeile der betroffenen Klassen.
 - **Orchestrator** liest die Fertigmeldungen und Blaetter, setzt das Board, schreibt die Auftraege (Scope-Card, Eingaben, Pruefung) so, dass die Arbeitssitzung nichts anderes braucht. Fehlt ihr etwas, steht das als Mangel im Auftrag, nicht als Sucharbeit der Sitzung.
 - Anstoss nach dem Leeren (SendMessage): "Neuer Kontext: docs/resume.md Abschnitt Werkstatt (bzw. Montage), dann Zustandsdatei, dann Schritt <ID> aus deinem Plan."
+
+## Bildverlauf (Ben, 29.10. 12:50) — alle Pruefbilder an EINEM Ort
+Jedes Bild, das eine Sitzung als Pruefung erzeugt (Render, Schnitt, Kritiker-Bild, Nahaufnahme), wird zusaetzlich in `renders/history/` abgelegt, damit der Verlauf spaeter nachvollziehbar ist und Ben zwischendurch bewerten kann.
+- Ablage per Befehl: `python scripts/archive_render.py <bild.png> --role werkstatt|montage --subject <klasse oder gesamt> --note "<kurz, z. B. Kritiker Runde 2>"` (mehrere Bilder moeglich). Das Skript benennt `YYYYMMDD-HHMMSS_<rolle>_<bauteil>_<name>`, vermerkt den Commit, ueberspringt identische Bilder und baut `renders/history/index.html` (Galerie, neueste zuerst, Filter Bauteil/Rolle) und `index.json` neu.
+- Das Original bleibt am bisherigen Ort (Dokumente verweisen darauf); der Verlauf ist die Kopie. Zeitpunkt: direkt nach dem Render, vor dem Commit des Schritts; die Bilder gehoeren in denselben Commit (`git add renders/history`).
+- Ansicht: http://localhost:4410/history/ (Link "Bildverlauf" im Viewer) oder `renders/history/index.html`.
+- Bestand: 130 bisherige Bilder am 29.10. 12:48 einsortiert (`--backfill`).

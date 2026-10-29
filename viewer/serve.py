@@ -63,6 +63,15 @@ class H(http.server.SimpleHTTPRequestHandler):
             self.send_response(200); self.send_header('Content-Type', 'application/json'); self.send_header('Content-Length', str(len(b)))
             self.end_headers(); self.wfile.write(b); return
         super().do_GET()
+    def translate_path(self, path):
+        # /history/... liefert den Bildverlauf (renders/history), alles andere kommt aus viewer/
+        p = path.split('?', 1)[0]
+        if p == '/history' or p.startswith('/history/'):
+            rel = p[len('/history'):].lstrip('/') or 'index.html'
+            full = os.path.abspath(os.path.join(ROOT, 'renders', 'history', rel))
+            if full.startswith(os.path.join(ROOT, 'renders', 'history')):
+                return full
+        return super().translate_path(path)
     def log_message(self, *a): pass
 
 threading.Thread(target=watch, daemon=True).start()

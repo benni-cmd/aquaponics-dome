@@ -37,8 +37,9 @@
 - **Bens Fragen fuer den Morgen:** Standort/Klima, Fischart, Pooltiefe (Annahme 2,34 m), Tuerrichtung/Windfang, Klasse der 10 Kassetten (D16), Anzahl 3 Aussenrinnen je Tisch (D17), Wanne "IBC" 2953 mm = Sonderwanne (R03 Nachtrag).
 
 ## Stand 29.10. 17:15 (Orchestrator)
-- Limit: 5h 0 % (Reset durch), Woche 83 % (Reset 30.10. 02:00, 9 h 48 min). Werkstatt und Montage hatten 14:50 das 5h-Limit erreicht und endeten mit Fehler.
+- Limit: 5h 0 % (Reset durch), Woche 83 % (Reset 30.10. 03:00 Ortszeit; get_usage nennt UTC, 02:00Z). Werkstatt und Montage hatten 14:50 das 5h-Limit erreicht und endeten mit Fehler.
 - WECK-TEST BESTANDEN: `mcp__ccd_session_mgmt__send_message` mit Praefix `WIEDERANLAUF aquaponics-dome:` an die nicht laufende (limit-gestoppte) Werkstatt-Sitzung local_584eec27-13ed-44b2-9b2a-c509ec227d8c wurde zugestellt, ihr Zug startete (Hook-Ausnahme 90f3967 wirkt). Ob dasselbe fuer eine per clear_session geleerte Sitzung gilt, ist noch ungetestet (Prozess evtl. weg).
 - Montage (idle, gelistet) per SendMessage auf M1.3 angestossen; M6 Viewer fertig (31 MB), M1.4 wartet auf W16.
 - Werkstatt-Arbeitsstand ungesichert: W16-Dateien (nft_tisch_*.sc 14:35, data/components/nft_tisch.json, check_nft_fit.py); 72 Dateien im Arbeitsbaum offen.
 - Wochenbudget: Regel ab 95 % Woche keine Anstoesse mehr, Zustand sichern.
+- ZEITANGABEN: `get_usage` liefert `resetsAt` in UTC. Ortszeit ist MEZ (UTC+1, seit 25.10.2026). Reset 5h-Fenster 29.10. 22:10, Woche 30.10. 03:00 Ortszeit. Immer aus `resetsIn` und der Systemuhr (`date`) rechnen, nie die UTC-Zahl uebernehmen.

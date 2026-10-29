@@ -1,5 +1,7 @@
 # Recherche-Warteschlange
 
+**PHASE REINES MODELL (Ben, 29.10.2026):** aktiv nur R02 (Hub-Geometrie), R03 (Kiestiefe/Beetaufbau), R06 (NFT-Geometrie), R09 (Vortex-Tank-Geometrie), R11 (Haut). Alle anderen Auftraege (R01 Statik, R04 Fischart, R05 Pooltiefe, R07 Pumpen, R08 Elektrik, R10, R12) sind `pausiert`, bis Ben sie freigibt.
+
 Format je Auftrag: **R-ID** | Prioritaet (H = blockiert den Bau, M, N) | Frage | Warum | Akzeptanz | Zielparameter | Status. Ergebnis in `docs/research/<R-ID>.md`. Akzeptanz Standard: zwei unabhaengige, gelesene Quellen oder eigene Rechnung mit belegten Eingaben; Widersprueche notieren.
 
 | ID | Prio | Frage | Warum | Zielparameter | Status |

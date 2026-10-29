@@ -4,6 +4,10 @@
 **Intent:** Planen, Recherchieren, Entscheiden und Bauen laufen parallel, aber jeder Schritt ist wiederholbar, belegt und im Repo sichtbar; eine neue Sitzung ohne Gespraechsverlauf kann ohne Rueckfrage weitermachen. Ben schlaeft, es gibt keine Rueckfragen.
 **Goal:** Morgen liegt ein schoenes, plausibles Modell vor (Meilenstein unten), und jedes Dokument sagt, wie reif es ist, woher die Zahlen kommen und was noch offen ist.
 
+## 0. AKTUELLE PHASE: reines Modell (Ben, 29.10.2026, bis er etwas anderes sagt)
+
+Es geht NUR darum, das Modell und seine Bauteile besser, logischer und geprueft zu machen. Fischart, Standort, Klima, Biologie-Bilanz, Elektrik/Solar, Betrieb und Preise ruhen. Aktiv sind: wiederkehrende Bauteile als Komponenten, Layout nach `layout.json`, Geometrie und Details (Knoten, Beete mit Kies, NFT-Rinnen, Tanks mit Kegel, Pool, Rohre/Schlaeuche aus dem Graphen, Farben/Materialien), Wasserweg als Graph (Logik des Modells), geometrische Pruefungen (Kollisionen, Anschluesse, Gefaelle, Massabgleich mit dem OBJ), Gauntlet je Bauteil. Recherche nur fuer Modellgeometrie: R02 Hub, R03 Kiestiefe/Beetaufbau, R06 NFT-Geometrie, R09 Vortex-Tank-Geometrie, R11 Haut. Alle anderen R-Auftraege stehen auf `pausiert`. Die Abschnitte unten gelten sonst unveraendert; die Etappen E4 (Fachlich) und E5 (Betrieb) ruhen bis Ben sie freigibt. Statik bleibt als Hinweis im Morgenbericht (30x30-Profil), wird aber jetzt nicht ausgebaut.
+
 ## 1. Artefakte und ihre Rolle (eine Quelle der Wahrheit je Frage)
 
 | Frage | Quelle der Wahrheit | Verbraucher |

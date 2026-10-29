@@ -136,37 +136,19 @@ def plant(x, y, z, r=90):
     plants[0] += 1
     add("solid.sphere", radius=r, center=[x, y, z], operation="new", name=f"T12_Salat_{plants[0]:03d}", body_name=f"T12_Salat_{plants[0]:03d}")
 
-def t8_t9(fz):
-    n = P["bed_n"]
-    for i in range(n):
-        az = 36*i + 18   # Zehneck-Seitenmitten
-        cx, cy = pol(P["bed_r"], az)
-        blen = P["bed_len"]
-        if az == P["door_az"] % 360:   # Bett vor der Tuer: kuerzer und von der Tuer weg
-            blen = 1200; t = math.radians(az+90)
-            cx, cy = cx + -800*math.cos(t), cy + -800*math.sin(t)
-        nm = f"T8_Anbaubett_{i+1:02d}"
-        rect_body(nm, round(cx, 1), round(cy, 1), fz+P["bed_h"]-60, az+90, blen, P["bed_w"], 60)
-        a = math.radians(az+90)
-        for sx in (-1, 1):
-            for sy in (-1, 1):
-                lx, ly = rot(sx*(blen/2-80), sy*(P["bed_w"]/2-45), a)
-                add("solid.cylinder", radius=30, height=P["bed_h"]-60, base=[round(cx+lx, 1), round(cy+ly, 1), fz], operation="join", targets=[nm], name=f"{nm}_Bein{(sx+1)//2*2+(sy+1)//2+1}")
-        nc = 6 if blen > 1500 else 3
-        for r in range(3):
-            for c in range(nc):
-                lx, ly = rot((c-(nc-1)/2)*330 + (r % 2)*165 - 82, (r-1)*270, a)   # gestaffelte Reihen
-                add("solid.cylinder", diameter=70, height=70, base=[round(cx+lx, 1), round(cy+ly, 1), fz+P["bed_h"]-65], operation="cut", targets=[nm], name=f"{nm}_Loch{r*6+c+1}")
-                plant(round(cx+lx, 1), round(cy+ly, 1), fz + P["bed_h"] + 92)
-    # T9: vier Substratwannen unter Bett 7 (Azimut 270? -> hier Azimut 234 und 342)
-    for k, az in enumerate((126, 198, 234, 342), 1):
-        cx, cy = pol(P["bed_r"], az)
-        rect_body(f"T9_Substratbeet_{k}", round(cx, 1), round(cy, 1), fz, az+90, P["tub_len"], P["tub_w"], P["tub_h"])
-        ta = math.radians(az+90)
+# T9: 14 halbe IBC-Wannen (OBJ): (OBJ-Azimut, Radius, Laenge)
+T9_OUT = [(az, 5000, 3000) for az in (355, 319, 247, 31, 140, 67, 283, 103)]
+T9_IN = [(az, 3300, ln) for az, ln in zip((318, 103, 283, 67, 30, 354), (1600, 1200, 2000, 1600, 1200, 2000))]
+
+def t9(fz):
+    for k, (oaz, r, ln) in enumerate(T9_OUT + T9_IN, 1):
+        az = oaz + AZ0; cx, cy = pol(r, az); cx, cy = round(cx, 1), round(cy, 1)
+        rect_body(f"T9_Substratbeet_{k:02d}", cx, cy, fz, az + 90, ln, 700, 640)
+        ta = math.radians(az + 90); n = int(ln // 400)
         for r_ in range(2):
-            for c_ in range(5):
-                lx, ly = rot((c_-2)*380, (r_-0.5)*250, ta)
-                plant(round(cx+lx, 1), round(cy+ly, 1), fz + P["tub_h"] + 112, 110)
+            for c_ in range(n):
+                lx, ly = rot((c_ - (n - 1)/2)*400, (r_ - 0.5)*300, ta)
+                plant(round(cx + lx, 1), round(cy + ly, 1), fz + 640 + 112, 110)
 
 def t10_t11(fz):
     A = (-6577, 2394, 4400); B = (-1488, 1488, fz+1400)
@@ -182,7 +164,7 @@ if __name__ == "__main__":
     t1_t3_t4(P["sock_h"]) if False else None
     n, dropped = t1_t3_t4(P["sock_h"])
     if stage >= 2: t5_t7(P["sock_h"])
-    if stage >= 3: t8_t9(P["sock_h"])
+    if stage >= 3: t9(P["sock_h"])
     if stage >= 4: t10_t11(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)

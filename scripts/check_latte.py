@@ -55,17 +55,8 @@ s = B["T3_Sockel"]; ue = (s["bbox"]["max"][0] - s["bbox"]["min"][0] - 12000) / 2
 chk("L2/9/11 Sockel Seiten (Flaechen = 10 + 2)", s["faces"], 12, s["faces"] == 12)
 chk("L9/11 Sockel Ueberstand [mm]", round(ue), "<= 300", ue <= 300)
 chk("L11 Sockelhoehe [mm]", round(s["bbox"]["max"][2] - s["bbox"]["min"][2]), "300-500", 300 <= s["bbox"]["max"][2] - s["bbox"]["min"][2] <= 500)
-beds = [b for n, b in B.items() if n.startswith("T8_Anbaubett_") and n.count("_") == 2]
-bh = max(b["bbox"]["max"][2] for b in beds) - sock_top
-chk("L4/12 Zahl Tische", len(beds), "10-12", 10 <= len(beds) <= 12)
-chk("L12 Tischhoehe [mm]", round(bh), "900-1000", 900 <= bh <= 1000)
-holes = {}
-for c in cmds:
-    n = str(c["params"].get("name", ""))
-    if "_Loch" in n: holes[n.split("_Loch")[0]] = holes.get(n.split("_Loch")[0], 0) + 1
-rows = min(v / (6 if v > 9 else 3) for v in holes.values()) if holes else 0
-chk("L4/12 Pflanzreihen je Tisch", rows, ">= 3", rows >= 3)
-chk("L12 Substratwannen", len(pre("T9_")), ">= 4", len(pre("T9_")) >= 4)
+beds = pre("T9_") + pre("T8_")
+chk("OBJ Substratbeete T9 (14 IBC-Wannen)", len(pre("T9_")), 14, len(pre("T9_")) == 14)
 chk("L12 Schlaeuche (1 je Tank)", len(pre("T10_Schlauch")), ">= 4", len(pre("T10_Schlauch")) >= 4)
 d = B["T4_Tuer"]["bbox"]; dh = d["max"][2] - d["min"][2]
 dw = math.hypot(d["max"][0] - d["min"][0], d["max"][1] - d["min"][1])

@@ -85,3 +85,6 @@ Sobald das Wochenlimit (get_usage, Fenster "Weekly") 95 % erreicht:
 3. Orchestrator wartet, bis beide Sitzungen idle sind, pruefte dann `git status` (nichts Eigenes ungesichert), laesst den Viewer-Export neu laufen (Server Port 4410, /api/state, Modell neu bauen lassen) und meldet Ben EINE Zeile mit dem Stand.
 4. Kleinere Arbeiten macht Ben danach manuell mit dem Restlimit.
 Die Sitzungen pruefen ihr Limit selbst: nach jedem Schritt `get_usage` (Fenster "Weekly"); ab 95 % keinen neuen Schritt beginnen.
+
+## Modellbeschreibung (Ben, 29.10. 20:30)
+`docs/model-description.md` ist ein lebendes Dokument, Besitzer Orchestrator: bei jeder Abnahme Tabelle "Bauteile und Pruefstand" und "Verlauf" ergaenzen, Lernpunkte (Abschnitt 8) und Grenzen (6, 9) praezisieren, danach `python scripts/build_model_description.py` (Kennzahlen). Sitzungen melden Fund und Beleg in ihrer Fertigmeldung; sie schreiben nicht selbst hinein.

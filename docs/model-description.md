@@ -6,16 +6,16 @@ Besitzer: Orchestrator. Waechst mit jeder Abnahme und wird dabei genauer. Zweck:
 <!-- KENNZAHLEN-START -->
 | Kennzahl | Wert |
 |---|---|
-| Stand | 29.10.2026 20:01 |
-| Komponenten-Definitionen (`designs/components/*.sc`) | 133 |
+| Stand | 29.10.2026 21:36 |
+| Komponenten-Definitionen (`designs/components/*.sc`) | 134 |
 | Bauteilklassen (grob nach Dateiname) | 35 |
 | Bauteilblaetter mit Herkunftstabelle (`docs/parts/*.md`) | 17 |
-| Entscheidungen (`docs/decisions.md`) | 29 |
+| Entscheidungen (`docs/decisions.md`) | 31 |
 | Recherchen (`docs/research/R*.md`) | 7 |
-| Pruefskripte (`scripts/check_*.py`, `scripts/workshop/check_*.py`) | 12 |
-| Pruefbilder im Verlauf (`renders/history`) | 173 |
-| Commits | 145 |
-| Erster / letzter Commit | 29.10.2026 01:04 / 29.10.2026 19:59 |
+| Pruefskripte (`scripts/check_*.py`, `scripts/workshop/check_*.py`) | 13 |
+| Pruefbilder im Verlauf (`renders/history`) | 180 |
+| Commits | 157 |
+| Erster / letzter Commit | 29.10.2026 01:04 / 29.10.2026 21:36 |
 <!-- KENNZAHLEN-ENDE -->
 
 ## 2. Was gebaut wird
@@ -38,15 +38,15 @@ Jede Zahl im Bauteilblatt traegt eine Herkunftsmarke: **Q** (Quelle), **E** (aus
 ## 5. Bauteile und Pruefstand (von Hand, mit Datum)
 | Klasse | Stand | Pruefung | Datum |
 |---|---|---|---|
-| Netztopf, Salatkopf | gebaut, Salatkopf Rev. B2 (96 Blaetter, ca. 8,8k Dreiecke statt 69k) | check_pflanze 17/17, Bild-Kritiker Runde 5 | 29.10. |
+| Netztopf, Salatkopf | Salatkopf Rev. B2 (96 Blaetter, ca. 8,8k Dreiecke statt 69k) | check_pflanze 18/18, Bild-Kritiker Runde 5 | 29.10. 21:30 |
 | NFT-Rinne (3 Laengen + Reihenvarianten) | abgenommen | Vorpruefung 93/93 | 29.10. |
-| NFT-Tisch innen/mitte/aussen | Rev. B: Rinnenlaenge je Reihe, Portal-/Auslegerboecke | check_nft_fit 36/36, check_nft_tisch 124/124 | 29.10. |
-| IBC-Beet aussen/innen | abgenommen, wird nach D29 schmaler | Vorpruefung 66/66 | 29.10. |
+| NFT-Tisch innen/mitte/aussen | Rev. C (W17): Radialbudget, `corner_gap` 60 (Annahme der Werkstatt), 462 Rinnenpflanzen, Winkelhalter (W11) | check_nft_fit 40/40, check_nft_tisch 196/196; Spec-Pruefer fehlt wegen Limit | 29.10. 21:30 |
+| IBC-Beet aussen/innen | Aussenbeet 800 breit (D29, W17), Innenbeet 933 | Vorpruefung 66/66 (alt), neue Parameter in check_nft_fit | 29.10. 21:30 |
 | Tank klein (Vortex), gross (Biofilter) | abgenommen, 45-Grad-Kegel ab Plattform (R09) | check_tank 60/60 | 29.10. |
 | Pumpe (4 Tafeln) | abgenommen nach 4 Pruefrunden | check_pumpe 34/34 | 29.10. |
 | Knoten 4/5/6 (26 Dateien), Fundamentanker | abgenommen | 135/135 bzw. 15/15 | 29.10. |
 | Leitungsteile (Rohr, Bogen, T, Kugelhahn, Schlauch, Verteiler, 63 Dateien) | gebaut, Sammelblatt | check_leitungsteile 231/231 (Volumen nach Pappus) | 29.10. |
-| Gesamtmodell `designs/dome.sc` | Beete, Tanks, Pumpen, Knoten, Anker, 24 Tische, 2160 + 466 Toepfe als Instanzen | check_latte Runde 36: 20/21, keine echte Kollision, 1207 Paare noch ungeprueft | 29.10. |
+| Gesamtmodell `designs/dome.sc` | Beete, Tanks, Pumpen, Knoten, Anker, 24 Tische, Toepfe als Instanzen; M7 Radialbudget als WIP (D30, D31) | check_latte Runde 39: 21/24 (WIP), check_walkways: Laufweg B 476 mm gegen Ziel 600 (Minimum 500) | 29.10. 21:35 |
 | Tuer, Rohrnetz, Haut (Paneele) | offen | - | - |
 
 ## 6. Wie genau ist das Modell?
@@ -69,6 +69,7 @@ Wiederkehrende Teile als Komponenten (D12) · Zickzack-Pflanzmuster (Phase A/B d
 Tuer komplett (M3) · Rohrnetz aus dem Wasserweg-Graphen (M4, M5) · Laufwege-Umbau (M7, W17) · Haut/Paneele (R11) · vollstaendige Kollisionspruefung · Pflanzenartmodelle (7 Arten laut Tabelle, bewusst hinten) · Fragen an Ben: Innenring 6 oder 10 Tische, Zuchtbecken gleich zweites Becken, 2 oder 4 Pumpen, 2 oder 3 Rinnen je Aussentisch.
 
 ## 10. Verlauf (neueste zuerst)
+- 29.10. 21:35 Auslaufen wegen Wochenlimit (93 %): W07, W11, W17 gepusht, M7 als WIP gepusht; Arbeitsbaum sauber, alles auf GitHub (Commit 8eebd21). Offen: Laufweg B 476 mm statt 600, Spec-Pruefer W17, Tuer, Rohrnetz.
 - 29.10. 20:30 Beschreibung angelegt. Stand: 133 Komponentendateien, Bens Tabelle ausgewertet (R15), Laufwege-Regeln D28/D29, Wochenlimit-Regel.
 - 29.10. 19:20 Montage M1.4: 24 Tische Rev. B und 466 Rinnenpflanzen im Gesamtmodell.
 - 29.10. 17:15 Werkstatt W16 NFT-Tisch-Passung nach Bens Kollisionsfund; Viewer von 320 auf 32 MB.

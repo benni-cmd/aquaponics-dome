@@ -47,3 +47,9 @@
 ## Stand 29.10. 21:20 (Orchestrator): AUSLAUFEN auf Bens Anweisung
 - Wochenlimit 93 %, 5h-Fenster 89 % (Reset 22:10 Ortszeit). Beide Sitzungen angewiesen: laufenden Schritt beenden, Zustandsdatei, WIP-Commit + Push, Zug beenden. Keine neuen Auftraege, keine Anstoesse bis Ben freigibt.
 - Danach Orchestrator: git status pruefen, Viewer neu exportieren lassen, Ben EINE Zeile melden. Offene Auftraege nach dem Stop: Montage M7 (D30/D31 laut loop-state), M3 Tuer, M4/M5 Rohre; Werkstatt W17 (Beet 800, Tische), Haut-Paneel R11. Modellbeschreibung: Pruefstand nach M7/W17 aktualisieren.
+
+## Stand 29.10. 21:40 (Orchestrator): AUSGELAUFEN, alles gesichert
+- Beide Sitzungen haben sauber gestoppt (Werkstatt ba3e781, Montage 217f3c2). Arbeitsbaum sauber, `main` gleich `origin/main` (8eebd21). Viewer aktuell (dome.sc 20:11, Export 20:17), Browser-Pane neu geladen.
+- Offen fuer den Neustart (Reihenfolge): (1) Montage M7 fertigmachen: Laufweg B 476 -> mindestens 500, Ziel 600 (D29), check_latte 24/24, check_walkways PASS; (2) Werkstatt: Spec-Pruefer W17 (corner_gap 60 ist Annahme), danach Haut-Paneel R11; (3) Montage M3 Tuer, M4/M5 Wasserweg und Rohre; (4) Orchestrator: Pruefstand in docs/model-description.md nachziehen, Board abnehmen (W07, W11, W17 sind gemeldet, nicht abgenommen).
+- Neustart: 5h-Limit Reset 22:10 Ortszeit, Wochenlimit Reset 30.10. 03:00 Ortszeit. Sitzungen sind idle und per SendMessage erreichbar (laufende Prozesse), sonst Weck-Nachricht `WIEDERANLAUF aquaponics-dome:` an die Session-ID (Werkstatt local_584eec27-..., Montage local_5d913ca0-...).
+- Bens Freigabe zum Weitermachen abwarten (Anweisung 21:15: nichts Neues starten).

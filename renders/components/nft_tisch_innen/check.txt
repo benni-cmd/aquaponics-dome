@@ -1,0 +1,122 @@
+PASS nft_tisch: innen Rinnenzahl: Ist 2, Soll 2
+PASS nft_tisch: innen Rinne 1 Querlage y: Ist -131, Soll -131 (+-0.5)
+PASS nft_tisch: innen Rinne 1 Laenge (Zehneck-Seite 1126 - 2 x 100 - Ueberstaende): Ist 677.925, Soll 678 (+-1)
+PASS nft_tisch: innen Rinne 1 Gefaelle in %: Ist 1.45558, Soll 1.5 (+-0.05)
+PASS nft_tisch: innen Rinne 1 Hoehe Boden an der Rinnenmitte: Ist 840, Soll 840 (+-1.5)
+PASS nft_tisch: innen Rinne 1 Loecher: Ist 2, Soll 2
+PASS nft_tisch: innen Rinne 1 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.4, Soll 0 (+-1.5)
+PASS nft_tisch: innen Rinne 2 Querlage y: Ist 131, Soll 131 (+-0.5)
+PASS nft_tisch: innen Rinne 2 Laenge (Zehneck-Seite 1296 - 2 x 100 - Ueberstaende): Ist 847.925, Soll 848 (+-1)
+PASS nft_tisch: innen Rinne 2 Gefaelle in %: Ist 1.46445, Soll 1.5 (+-0.05)
+PASS nft_tisch: innen Rinne 2 Hoehe Boden an der Rinnenmitte: Ist 840, Soll 840 (+-1.5)
+PASS nft_tisch: innen Rinne 2 Loecher: Ist 3, Soll 3
+PASS nft_tisch: innen Rinne 2 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.4, Soll 0 (+-1.5)
+PASS nft_tisch: innen Zickzack-Versatz 1/2 = pitch/2: Ist 125, Soll 125 (+-1.5)
+PASS nft_tisch: innen Rinnenabstand 1: Ist 262, Soll 262 (+-0.5)
+PASS nft_tisch: innen Beine (ausleger): Ist 2, Soll 2
+PASS nft_tisch: innen Fussplatten: Ist 2, Soll 2
+PASS nft_tisch: innen Laengsstreben: Ist 1, Soll 1
+PASS nft_tisch: innen Rinnenhalter: Ist 8, Soll 8
+PASS nft_tisch: innen Schlaeuche: Ist 2, Soll 2
+PASS nft_tisch: innen Bein bei x=-44 Lage y (ausserhalb Beet/Pool): Ist 341, Soll 341 (+-0.6)
+PASS nft_tisch: innen Bein bei x=134 Lage y (ausserhalb Beet/Pool): Ist 341, Soll 341 (+-0.6)
+PASS nft_tisch: innen Kragarme: Ist 2, Soll 2
+PASS nft_tisch: innen Auflage Kragarm_1 bei x=-44 = Rinnenunterkante: Ist 841.335, Soll 841.335 (+-1)
+PASS nft_tisch: innen Auflage Kragarm_2 bei x=134 = Rinnenunterkante: Ist 838.665, Soll 838.665 (+-1)
+PASS nft_tisch: innen Verteiler-Stutzen: Ist 2, Soll 2
+PASS nft_tisch: innen Sammelrohr-Muffen: Ist 2, Soll 2
+PASS nft_tisch: innen Verteiler endet an der Sektorgrenze (x_min, aussen): Ist -587.575, Soll -588.83 (+-8)
+PASS nft_tisch: innen Sammelrohr endet an der Sektorgrenze (x_max, aussen): Ist 586.319, Soll 588.83 (+-8)
+PASS nft_tisch: mitte Rinnenzahl: Ist 4, Soll 4
+PASS nft_tisch: mitte Rinne 1 Querlage y: Ist -394.5, Soll -394.5 (+-0.5)
+PASS nft_tisch: mitte Rinne 1 Laenge (Zehneck-Seite 1916 - 2 x 100 - Ueberstaende): Ist 1467.92, Soll 1468 (+-1)
+PASS nft_tisch: mitte Rinne 1 Gefaelle in %: Ist 1.47939, Soll 1.5 (+-0.05)
+PASS nft_tisch: mitte Rinne 1 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
+PASS nft_tisch: mitte Rinne 1 Loecher: Ist 5, Soll 5
+PASS nft_tisch: mitte Rinne 1 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: mitte Rinne 2 Querlage y: Ist -131.5, Soll -131.5 (+-0.5)
+PASS nft_tisch: mitte Rinne 2 Laenge (Zehneck-Seite 2087 - 2 x 100 - Ueberstaende): Ist 1638.92, Soll 1639 (+-1)
+PASS nft_tisch: mitte Rinne 2 Gefaelle in %: Ist 1.48153, Soll 1.5 (+-0.05)
+PASS nft_tisch: mitte Rinne 2 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
+PASS nft_tisch: mitte Rinne 2 Loecher: Ist 6, Soll 6
+PASS nft_tisch: mitte Rinne 2 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: mitte Rinne 3 Querlage y: Ist 131.5, Soll 131.5 (+-0.5)
+PASS nft_tisch: mitte Rinne 3 Laenge (Zehneck-Seite 2258 - 2 x 100 - Ueberstaende): Ist 1809.92, Soll 1810 (+-1)
+PASS nft_tisch: mitte Rinne 3 Gefaelle in %: Ist 1.48325, Soll 1.5 (+-0.05)
+PASS nft_tisch: mitte Rinne 3 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
+PASS nft_tisch: mitte Rinne 3 Loecher: Ist 7, Soll 7
+PASS nft_tisch: mitte Rinne 3 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: mitte Rinne 4 Querlage y: Ist 394.5, Soll 394.5 (+-0.5)
+PASS nft_tisch: mitte Rinne 4 Laenge (Zehneck-Seite 2429 - 2 x 100 - Ueberstaende): Ist 1980.92, Soll 1981 (+-1)
+PASS nft_tisch: mitte Rinne 4 Gefaelle in %: Ist 1.48469, Soll 1.5 (+-0.05)
+PASS nft_tisch: mitte Rinne 4 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
+PASS nft_tisch: mitte Rinne 4 Loecher: Ist 7, Soll 7
+PASS nft_tisch: mitte Rinne 4 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: mitte Zickzack-Versatz 1/2 = pitch/2: Ist 125, Soll 125 (+-1.5)
+PASS nft_tisch: mitte Zickzack-Versatz 2/3 = pitch/2: Ist 125, Soll 125 (+-1.5)
+PASS nft_tisch: mitte Zickzack-Versatz 3/4 = pitch/2: Ist 125, Soll 125 (+-1.5)
+PASS nft_tisch: mitte Rinnenabstand 1: Ist 263, Soll 263 (+-0.5)
+PASS nft_tisch: mitte Rinnenabstand 2: Ist 263, Soll 263 (+-0.5)
+PASS nft_tisch: mitte Rinnenabstand 3: Ist 263, Soll 263 (+-0.5)
+PASS nft_tisch: mitte Beine (portal): Ist 4, Soll 4
+PASS nft_tisch: mitte Fussplatten: Ist 4, Soll 4
+PASS nft_tisch: mitte Laengsstreben: Ist 2, Soll 2
+PASS nft_tisch: mitte Rinnenhalter: Ist 16, Soll 16
+PASS nft_tisch: mitte Schlaeuche: Ist 4, Soll 4
+PASS nft_tisch: mitte Bein bei x=-439 Lage y (ausserhalb Beet/Pool): Ist -576.5, Soll -576.5 (+-0.6)
+PASS nft_tisch: mitte Bein bei x=-439 Lage y (ausserhalb Beet/Pool): Ist 576.5, Soll 576.5 (+-0.6)
+PASS nft_tisch: mitte Bein bei x=529 Lage y (ausserhalb Beet/Pool): Ist -576.5, Soll -576.5 (+-0.6)
+PASS nft_tisch: mitte Bein bei x=529 Lage y (ausserhalb Beet/Pool): Ist 576.5, Soll 576.5 (+-0.6)
+PASS nft_tisch: mitte Querholme: Ist 2, Soll 2
+PASS nft_tisch: mitte Querstreben: Ist 2, Soll 2
+PASS nft_tisch: mitte Diagonalen: Ist 4, Soll 4
+PASS nft_tisch: mitte Querholm lang genug (Beine ausserhalb Beetbreite 933): Ist 1193, Soll 1193 (+-1)
+PASS nft_tisch: mitte Auflage Holm_1 bei x=-439 = Rinnenunterkante: Ist 1307.26, Soll 1307.26 (+-1)
+PASS nft_tisch: mitte Auflage Holm_2 bei x=529 = Rinnenunterkante: Ist 1292.74, Soll 1292.74 (+-1)
+PASS nft_tisch: mitte Verteiler-Stutzen: Ist 4, Soll 4
+PASS nft_tisch: mitte Sammelrohr-Muffen: Ist 4, Soll 4
+PASS nft_tisch: mitte Verteiler endet an der Sektorgrenze (x_min, aussen): Ist -1153.74, Soll -1155 (+-8)
+PASS nft_tisch: mitte Sammelrohr endet an der Sektorgrenze (x_max, aussen): Ist 1152.49, Soll 1155 (+-8)
+PASS nft_tisch: aussen Rinnenzahl: Ist 3, Soll 3
+PASS nft_tisch: aussen Rinne 1 Querlage y: Ist -288, Soll -288 (+-0.5)
+PASS nft_tisch: aussen Rinne 1 Laenge (Zehneck-Seite 3198 - 2 x 100 - Ueberstaende): Ist 2749.92, Soll 2750 (+-1)
+PASS nft_tisch: aussen Rinne 1 Gefaelle in %: Ist 1.48892, Soll 1.5 (+-0.05)
+PASS nft_tisch: aussen Rinne 1 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
+PASS nft_tisch: aussen Rinne 1 Loecher: Ist 11, Soll 11
+PASS nft_tisch: aussen Rinne 1 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: aussen Rinne 2 Querlage y: Ist -7.10543e-15, Soll 0 (+-0.5)
+PASS nft_tisch: aussen Rinne 2 Laenge (Zehneck-Seite 3385 - 2 x 100 - Ueberstaende): Ist 2936.92, Soll 2937 (+-1)
+PASS nft_tisch: aussen Rinne 2 Gefaelle in %: Ist 1.48961, Soll 1.5 (+-0.05)
+PASS nft_tisch: aussen Rinne 2 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
+PASS nft_tisch: aussen Rinne 2 Loecher: Ist 11, Soll 11
+PASS nft_tisch: aussen Rinne 2 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: aussen Rinne 3 Querlage y: Ist 288, Soll 288 (+-0.5)
+PASS nft_tisch: aussen Rinne 3 Laenge (Zehneck-Seite 3572 - 2 x 100 - Ueberstaende): Ist 3123.92, Soll 3124 (+-1)
+PASS nft_tisch: aussen Rinne 3 Gefaelle in %: Ist 1.49023, Soll 1.5 (+-0.05)
+PASS nft_tisch: aussen Rinne 3 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
+PASS nft_tisch: aussen Rinne 3 Loecher: Ist 12, Soll 12
+PASS nft_tisch: aussen Rinne 3 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: aussen Zickzack-Versatz 1/2 = pitch/2: Ist 125, Soll 125 (+-1.5)
+PASS nft_tisch: aussen Zickzack-Versatz 2/3 = pitch/2: Ist 125, Soll 125 (+-1.5)
+PASS nft_tisch: aussen Rinnenabstand 1: Ist 288, Soll 288 (+-0.5)
+PASS nft_tisch: aussen Rinnenabstand 2: Ist 288, Soll 288 (+-0.5)
+PASS nft_tisch: aussen Beine (portal): Ist 4, Soll 4
+PASS nft_tisch: aussen Fussplatten: Ist 4, Soll 4
+PASS nft_tisch: aussen Laengsstreben: Ist 2, Soll 2
+PASS nft_tisch: aussen Rinnenhalter: Ist 12, Soll 12
+PASS nft_tisch: aussen Schlaeuche: Ist 3, Soll 3
+PASS nft_tisch: aussen Bein bei x=-1080 Lage y (ausserhalb Beet/Pool): Ist -606.5, Soll -606.5 (+-0.6)
+PASS nft_tisch: aussen Bein bei x=-1080 Lage y (ausserhalb Beet/Pool): Ist 606.5, Soll 606.5 (+-0.6)
+PASS nft_tisch: aussen Bein bei x=1170 Lage y (ausserhalb Beet/Pool): Ist -606.5, Soll -606.5 (+-0.6)
+PASS nft_tisch: aussen Bein bei x=1170 Lage y (ausserhalb Beet/Pool): Ist 606.5, Soll 606.5 (+-0.6)
+PASS nft_tisch: aussen Querholme: Ist 2, Soll 2
+PASS nft_tisch: aussen Querstreben: Ist 2, Soll 2
+PASS nft_tisch: aussen Diagonalen: Ist 4, Soll 4
+PASS nft_tisch: aussen Querholm lang genug (Beine ausserhalb Beetbreite 993): Ist 1253, Soll 1253 (+-1)
+PASS nft_tisch: aussen Auflage Holm_1 bei x=-1080 = Rinnenunterkante: Ist 1316.88, Soll 1316.88 (+-1)
+PASS nft_tisch: aussen Auflage Holm_2 bei x=1170 = Rinnenunterkante: Ist 1283.13, Soll 1283.12 (+-1)
+PASS nft_tisch: aussen Verteiler-Stutzen: Ist 3, Soll 3
+PASS nft_tisch: aussen Sammelrohr-Muffen: Ist 3, Soll 3
+PASS nft_tisch: aussen Verteiler endet an der Sektorgrenze (x_min, aussen): Ist -1725.44, Soll -1726.7 (+-8)
+PASS nft_tisch: aussen Sammelrohr endet an der Sektorgrenze (x_max, aussen): Ist 1724.19, Soll 1726.7 (+-8)
+== nft_tisch: 121/121 PASS

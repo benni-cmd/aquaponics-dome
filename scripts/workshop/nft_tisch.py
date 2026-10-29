@@ -1,10 +1,13 @@
-"""NFT-Tisch T22 (aussen / mitte / innen): Rinnen mit Zickzack-Phase, Boecke, Laengsstreben, Zulaufverteiler, Sammelablauf.
+"""NFT-Tisch T22 (aussen / mitte / innen), Rev. B (W16, D18): je Reihe eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap), Zulaufverteiler und Sammelrohr schraeg entlang der Sektorgrenze,
+Portalbock mit Beinen ausserhalb der Beete (mitte/aussen) bzw. Auslegerbock mit Pfosten ausserhalb des Pools (innen). Geometrie: tisch_geom.py, Rinnenvarianten: rinnen_reihen.py.
 Aufruf: python scripts/workshop/nft_tisch.py [typ ...] [--render]   (ohne Typ: alle drei)"""
 import sys, os, math
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
+import tisch_geom as TG
 
 STEEL = "#aeb4b8"
+STRUT_Z = {"innen": 400}          # Laengsstreben der Ausleger unterhalb des Kragarms und ausserhalb des Beckenrands (A); sonst Parameter strut_z
 
 def member(b, name, dims, origin, xdir, ydir, dist, symmetric=True, kind="rect_tube"):
     """Rechteckrohr: Profil in der Ebene (origin, xdir, ydir), Mitte auf origin, extrudiert um dist (symmetrisch oder in Normalenrichtung)."""
@@ -17,76 +20,87 @@ def member(b, name, dims, origin, xdir, ydir, dist, symmetric=True, kind="rect_t
     b.add("solid.extrude", **ex)
     b.add("material.assign", bodies=[name], material="Stahl verzinkt")
 
+def skew(sgn):
+    """Einheitsvektor und Streckung der schraegen Rohrachse entlang der Sektorgrenze (sgn -1: Zulaufseite -X, +1: Sammelrohr +X)."""
+    k = math.sqrt(1 + TG.T18 ** 2)
+    return [round(sgn * TG.T18 / k, 6), round(1 / k, 6), 0.0], k
+
 def build(typ):
     p, d = sc.load_params("nft_tisch")
     T = d["typen"][typ]
-    n, rp, L, zc = T["n"], T["rinnen_abstand"], T["laenge"], T["z_rinne_mitte"]
-    slope = p["slope_pct"] / 100.0
+    G = TG.geometry(typ, p, T)
+    rows, n, zc, slope, Wt, xb = G["rows"], G["n"], G["zc"], G["slope"], G["Wt"], G["xb"]
     ang = math.degrees(math.atan(slope))
-    Wt = (n - 1) * rp + 130                                   # Tischbreite = Rinnenbreite + Abstaende
-    yl = Wt / 2 - p["holm_overhang"] - p["leg_inset"]          # Beine bei +-yl
-    holm_len = Wt + 2 * p["holm_overhang"]
-    xb = [-(L / 2 - p["bock_inset"]), L / 2 - p["bock_inset"]]          # zwei Boecke = 4 Beine (Scope-Card nft_tisch)
+    xc = rows[0]["xc"]
+    zrow = lambda x: zc - (x - xc) * slope                    # Rinnen-Unterkante/Holmoberkante an der Stelle x (Gefaelle zur +X-Seite)
     b = sc.Build()
     b.add("parameters.add", name="slope_pct", expression=str(p["slope_pct"]), unit="")
-    for k in ("leg_w", "leg_wall", "holm_w", "holm_h", "strut_z"):
+    for k in ("leg_w", "leg_wall", "holm_w", "holm_h", "strut_z", "corner_gap", "leg_clearance"):
         b.add("parameters.add", name=k, expression=f"{p[k]} mm")
-    b.add("parameters.add", name="rinnen_abstand", expression=f"{rp} mm")
-    b.add("parameters.add", name="laenge", expression=f"{L} mm")
+    b.add("parameters.add", name="rinnen_abstand", expression=f"{G['rp']} mm")
+    b.add("parameters.add", name="ap_c", expression=f"{G['apc']} mm")
     b.add("parameters.add", name="z_rinne_mitte", expression=f"{zc} mm")
     b.add("parameters.add", name="n_rinnen", expression=str(n), unit="")
+    if G["bed_w"]:
+        b.add("parameters.add", name="bed_outer_w", expression=f"{G['bed_w']} mm")
     b.add("material.create", name="Stahl verzinkt", density_g_cm3=7.85, color=STEEL, pbr={"metallic": 0.8, "roughness": 0.45, "dielectric_ior": 1.5})
     b.add("material.create", name="PVC blau", density_g_cm3=1.4, color="#2a5da8")
     b.add("material.create", name="PVC grau", density_g_cm3=1.4, color="#8d9296")
     b.add("material.create", name="Schlauch hellblau", density_g_cm3=1.0, color="#7fc4ea")
     root = f"T22_NFT_Tisch_{typ}"
     b.add("component.create", name=root, grounded=True)
-    # --- Rinnen (Phase A/B abwechselnd = Zickzack)
+    # --- Rinnen (je Reihe eigene Laenge, Phase A/B abwechselnd = Zickzack)
     b.add("component.create", name="T22b_Rinnen")
-    rinne_names = []
-    for k in range(n):
-        y = (k - (n - 1) / 2) * rp
-        phase = "ab"[k % 2]
-        nm = f"Rinne_{k + 1}"
-        rinne_names.append((nm, y, phase))
-        b.add("component.insert_design", path=f"designs/components/nft_rinne_{T['rinne']}_{phase}.sc", name=nm)
-        b.add("occurrence.move", occurrence=f"{nm}:1", translate=[0, y, zc])
-        b.add("occurrence.move", occurrence=f"{nm}:1", axis=[0, 1, 0], angle=f"{ang:.5f} deg", origin=[0, y, zc], space="world")
+    for r in rows:
+        nm = f"Rinne_{r['k'] + 1}"
+        b.add("component.insert_design", path=f"designs/components/nft_rinne_{typ}_r{r['k'] + 1}.sc", name=nm)
+        b.add("occurrence.move", occurrence=f"{nm}:1", translate=[xc, r["y"], zc])
+        b.add("occurrence.move", occurrence=f"{nm}:1", axis=[0, 1, 0], angle=f"{ang:.5f} deg", origin=[xc, r["y"], zc], space="world")
     # --- Boecke
+    leg_w, lw = p["leg_w"], p["leg_wall"]
     for i, x in enumerate(xb, 1):
-        zh = zc - x * slope                                     # Rinnenunterkante = Holmoberkante an dieser Stelle
+        zh = zrow(x)                                            # Rinnenunterkante = Holmoberkante an dieser Stelle
         zb = zh - p["holm_h"]                                   # Holmunterkante = Beinoberkante
         leg_len = zb - p["foot_t"]
         b.add("component.activate", component=root)
         b.add("component.create", name=f"T22a_Bock_{i}")
-        for sy, tag in ((-1, "L"), (1, "R")):
-            member(b, f"Bein_{i}{tag}", dict(width=p["leg_w"], height=p["leg_w"], wall=p["leg_wall"]), [x, sy * yl, p["foot_t"]], [1, 0, 0], [0, 1, 0], leg_len, symmetric=False)
-            # Fussplatte mit zwei Loechern und zwei Schrauben M8
-            b.add("solid.box", length=p["foot_plate"], width=p["foot_plate"], height=p["foot_t"], center=[x, sy * yl, p["foot_t"] / 2], operation="new", name=f"FP_{i}{tag}", body_name=f"Fussplatte_{i}{tag}")
-            for hx, hy in ((-25, -25), (25, 25)):
-                b.add("solid.cylinder", diameter=p["foot_hole"], height=p["foot_t"] + 2, base=[x + hx, sy * yl + hy, -1], operation="cut", targets=[f"Fussplatte_{i}{tag}"], name=f"FL_{i}{tag}{hx}")
+        for (lx, ly) in [(x, y) for (xx, y) in G["legs"] if abs(xx - x) < 1e-6]:
+            tag = "A" if ly < 0 else "B"
+            member(b, f"Bein_{i}{tag}", dict(width=leg_w, height=leg_w, wall=lw), [lx, ly, p["foot_t"]], [1, 0, 0], [0, 1, 0], leg_len, symmetric=False)
+            fp = p["foot_plate"]
+            b.add("solid.box", length=fp, width=fp, height=p["foot_t"], center=[lx, ly, p["foot_t"] / 2], operation="new", name=f"FP_{i}{tag}", body_name=f"Fussplatte_{i}{tag}")
+            for hx, hy in ((-fp / 2 + 15, -fp / 2 + 15), (fp / 2 - 15, fp / 2 - 15)):
+                b.add("solid.cylinder", diameter=p["foot_hole"], height=p["foot_t"] + 2, base=[lx + hx, ly + hy, -1], operation="cut", targets=[f"Fussplatte_{i}{tag}"], name=f"FL_{i}{tag}{int(hx)}")
             b.add("material.assign", bodies=[f"Fussplatte_{i}{tag}"], material="Stahl verzinkt")
-            for hx, hy in ((-25, -25), (25, 25)):
-                b.add("parts.insert", family="hex_bolt", size="M8", length=30, point=[x + hx, sy * yl + hy, p["foot_t"]], direction=[0, 0, 1], name=f"Schraube_{i}{tag}{hx}")
-        member(b, f"Holm_{i}", dict(width=p["holm_w"], height=p["holm_h"], wall=p["leg_wall"]), [x, 0, zh - p["holm_h"] / 2], [1, 0, 0], [0, 0, 1], holm_len)
-        member(b, f"Querstrebe_{i}", dict(width=p["leg_w"], height=p["leg_w"], wall=p["leg_wall"]), [x, 0, p["strut_z"]], [1, 0, 0], [0, 0, 1], 2 * yl - p["leg_w"])
-        # Diagonalen (Flachstahl 25 x 3, ausserhalb der Beinflaeche, gekreuzt), je Ende eine Schraube M6x40 mit Mutter durch das Bein
-        z0, z1 = p["strut_z"], zb - 40
-        for sx, (ya, yb_) in ((1, (-yl, yl)), (-1, (yl, -yl))):
-            dy, dz = yb_ - ya, z1 - z0
-            ln = math.hypot(dy, dz)
-            xo = x + sx * (p["leg_w"] / 2 + 1.5)
-            member(b, f"Diagonale_{i}{'a' if sx > 0 else 'b'}", dict(width=3, height=25), [xo, ya, z0], [1, 0, 0], [0, dz / ln, -dy / ln], ln, symmetric=False, kind="bar")
-            for yy, zz in ((ya, z0), (yb_, z1)):
-                b.add("parts.insert", family="hex_bolt", size="M6", length=40, point=[x + sx * (p["leg_w"] / 2 + 3), yy, zz], direction=[sx, 0, 0], name=f"SchraubeD_{i}{sx}{int(yy)}")
-                b.add("parts.insert", family="hex_nut", size="M6", point=[x - sx * p["leg_w"] / 2, yy, zz], direction=[-sx, 0, 0], name=f"MutterD_{i}{sx}{int(yy)}")
+            for hx, hy in ((-fp / 2 + 15, -fp / 2 + 15), (fp / 2 - 15, fp / 2 - 15)):
+                b.add("parts.insert", family="hex_bolt", size="M8", length=30, point=[lx + hx, ly + hy, p["foot_t"]], direction=[0, 0, 1], name=f"Schraube_{i}{tag}{int(hx)}")
+        if G["art"] == "portal":
+            yl = G["yl"]
+            hlen = 2 * yl + leg_w
+            member(b, f"Holm_{i}", dict(width=p["holm_w"], height=p["holm_h"], wall=lw), [x, 0, zh - p["holm_h"] / 2], [1, 0, 0], [0, 0, 1], hlen)
+            member(b, f"Querstrebe_{i}", dict(width=leg_w, height=leg_w, wall=lw), [x, 0, p["strut_z"]], [1, 0, 0], [0, 0, 1], 2 * yl - leg_w)
+            # Diagonalen (Flachstahl 25 x 3, ausserhalb der Beinflaeche, gekreuzt), je Ende eine Schraube M6x40 mit Mutter durch das Bein
+            z0, z1 = p["strut_z"], zb - 40
+            for sx, (ya, yb_) in ((1, (-yl, yl)), (-1, (yl, -yl))):
+                dy, dz = yb_ - ya, z1 - z0
+                ln = math.hypot(dy, dz)
+                xo = x + sx * (leg_w / 2 + 1.5)
+                member(b, f"Diagonale_{i}{'a' if sx > 0 else 'b'}", dict(width=3, height=25), [xo, ya, z0], [1, 0, 0], [0, dz / ln, -dy / ln], ln, symmetric=False, kind="bar")
+                for yy, zz in ((ya, z0), (yb_, z1)):
+                    b.add("parts.insert", family="hex_bolt", size="M6", length=40, point=[x + sx * (leg_w / 2 + 3), yy, zz], direction=[sx, 0, 0], name=f"SchraubeD_{i}{sx}{int(yy)}")
+                    b.add("parts.insert", family="hex_nut", size="M6", point=[x - sx * leg_w / 2, yy, zz], direction=[-sx, 0, 0], name=f"MutterD_{i}{sx}{int(yy)}")
+        else:       # Auslegerbock: Kragarm vom Pfosten (aussen, +Y) ueber den Pool bis hinter die innerste Rinne
+            y_in = -(Wt / 2 + p["holm_overhang"])
+            yl = G["yl"]
+            hlen = yl - y_in + leg_w / 2
+            member(b, f"Kragarm_{i}", dict(width=p["holm_w"], height=p["holm_h"], wall=lw), [x, (yl + leg_w / 2 + y_in) / 2, zh - p["holm_h"] / 2], [1, 0, 0], [0, 0, 1], hlen)
         # Rinnenhalter: L-Winkel 3 mm je Rinnenseite, 25 breit, auf dem Holm neben der Rinnenwand, Schraube M5
-        for (nm, y, ph) in rinne_names:
+        for r in rows:
+            y = r["y"]
             for sy in (-1, 1):
                 yc = y + sy * (65 + p["clip_t"] / 2)
-                ytop = zh                                       # Holmoberkante
-                tag = f"{i}_{nm}_{'L' if sy < 0 else 'R'}"
-                # waagerechter Schenkel auf dem Holm (nach aussen von der Rinnenwand), senkrechter Schenkel an der Rinnenwand
+                ytop = zh
+                tag = f"{i}_Rinne_{r['k'] + 1}_{'L' if sy < 0 else 'R'}"
                 b.add("solid.box", length=p["clip_len"], width=25, height=p["clip_t"], center=[x, y + sy * (65 + 12.5), ytop + p["clip_t"] / 2], operation="new", name=f"CH_{tag}", body_name=f"Halter_{tag}")
                 b.add("solid.box", length=p["clip_len"], width=p["clip_t"], height=25, center=[x, yc, ytop + 12.5], operation="join", targets=[f"Halter_{tag}"], name=f"CV_{tag}")
                 b.add("solid.cylinder", diameter=5.5, height=p["clip_t"] + 2, base=[x, y + sy * (65 + 15), ytop - 1], operation="cut", targets=[f"Halter_{tag}"], name=f"CB_{tag}")
@@ -95,69 +109,84 @@ def build(typ):
     # --- Laengsstreben zwischen den Boecken (an den Beinen, auf strut_z)
     b.add("component.activate", component=root)
     b.add("component.create", name="T22c_Laengsstreben")
-    for i in range(len(xb) - 1):
-        for sy, tag in ((-1, "L"), (1, "R")):
-            member(b, f"Laengs_{i + 1}{tag}", dict(width=p["leg_w"], height=p["leg_w"], wall=p["leg_wall"]), [xb[i] + p["leg_w"] / 2, sy * yl, p["strut_z"]], [0, 1, 0], [0, 0, 1], xb[i + 1] - xb[i] - p["leg_w"], symmetric=False)
-    # --- Zulaufverteiler (-X): Rohr D25 quer, n Stutzen D16, n Schlaeuche zu den Tuellen
+    sz = STRUT_Z.get(typ, p["strut_z"])
+    ys = sorted(set(round(y, 3) for (_, y) in G["legs"]))
+    for j, y in enumerate(ys):
+        member(b, f"Laengs_{j + 1}", dict(width=leg_w, height=leg_w, wall=lw), [xb[0] + leg_w / 2, y, sz], [0, 1, 0], [0, 0, 1], xb[1] - xb[0] - leg_w, symmetric=False)
+    # --- Zulaufverteiler (-X): schraeges Rohr D25 entlang der Sektorgrenze, je Reihe Stutzen D16 und Schlauch zur Tuelle
     b.add("component.activate", component=root)
     b.add("component.create", name="T22d_Zulaufverteiler")
-    xt = -(L / 2 + 29)                                            # Tuellenspitze (Rinne gerade betrachtet)
-    z_in = lambda x: zc - x * slope + 70                          # Zulaufachse z an der Stirn
-    zi = z_in(-L / 2)
-    xs = xt - p["hose_gap"]                                       # Spitze der Verteilerstutzen
-    xh = xs - 45 - p["hdr_od"] / 2                                # Achse des Verteilerrohrs
     ho = p["hdr_od"]
-    hl = Wt + 2 * 60
-    # Verteiler: erst Vollzylinder + Stutzen vereinigen (robust), dann Hauptbohrung und Stutzenbohrungen schneiden
-    b.add("solid.cylinder", diameter=ho, height=hl, base=[xh, -hl / 2, zi], axis=[0, 1, 0], operation="new", name="VerteilerRohr", body_name="Verteiler")
-    for (nm, y, ph) in rinne_names:
-        b.add("solid.cylinder", diameter=16, height=xs - xh, base=[xh, y, zi], axis=[1, 0, 0], operation="join", targets=["Verteiler"], name=f"Stutzen_{nm}")
-    b.add("solid.cylinder", diameter=ho - 2 * p["hdr_wall"], height=hl + 2, base=[xh, -hl / 2 - 1, zi], axis=[0, 1, 0], operation="cut", targets=["Verteiler"], name="VerteilerBohrung")
-    for (nm, y, ph) in rinne_names:
-        b.add("solid.cylinder", diameter=12, height=xs - xh + 1, base=[xh, y, zi], axis=[1, 0, 0], operation="cut", targets=["Verteiler"], name=f"Bohr_{nm}")
-    b.add("solid.cylinder", diameter=ho - 2 * p["hdr_wall"] - 0.4, height=20, base=[xh, -hl / 2 + 2, zi], axis=[0, 1, 0], operation="new", name="StopfenV", body_name="Endstopfen_Verteiler")
+    dvec, kk = skew(-1)
+    y0, y1 = -Wt / 2 - 60, Wt / 2 + 60
+    hl = (y1 - y0) * kk
+    xbd = lambda y, sgn: sgn * ((G["apc"] + y) * TG.T18 - G["gap"])          # Sektorgrenze (Aussenkante des Rohrs) bei y
+    zi_row = {r["k"]: zrow(r["xc"] - r["L"] / 2) + 70 for r in rows}
+    zi = sum(zi_row.values()) / len(rows)
+    xh0 = xbd(y0, -1) + ho / 2 * kk
+    b.add("solid.cylinder", diameter=ho, height=hl, base=[round(xh0, 3), y0, round(zi, 3)], axis=dvec, operation="new", name="VerteilerRohr", body_name="Verteiler")
+    stubs = []
+    for r in rows:
+        y = r["y"]
+        xend = r["xc"] - r["L"] / 2
+        xt = xend - 29                                            # Tuellenspitze
+        xs = xt - p["hose_gap"]                                   # Spitze der Verteilerstutzen
+        xh = xbd(y, -1) + ho / 2 * kk                             # Rohrachse bei y
+        stubs.append((r, xt, xs, xh))
+        b.add("solid.cylinder", diameter=16, height=xs - xh, base=[round(xh, 3), y, round(zi, 3)], axis=[1, 0, 0], operation="join", targets=["Verteiler"], name=f"Stutzen_Rinne_{r['k'] + 1}")
+    b.add("solid.cylinder", diameter=ho - 2 * p["hdr_wall"], height=hl + 2, base=[round(xh0 - dvec[0], 3), y0 - dvec[1], round(zi, 3)], axis=dvec, operation="cut", targets=["Verteiler"], name="VerteilerBohrung")
+    for (r, xt, xs, xh) in stubs:
+        b.add("solid.cylinder", diameter=12, height=xs - xh + 1, base=[round(xh, 3), r["y"], round(zi, 3)], axis=[1, 0, 0], operation="cut", targets=["Verteiler"], name=f"Bohr_Rinne_{r['k'] + 1}")
+    b.add("solid.cylinder", diameter=ho - 2 * p["hdr_wall"] - 0.4, height=20, base=[round(xh0 + dvec[0] * 2, 3), y0 + dvec[1] * 2, round(zi, 3)], axis=dvec, operation="new", name="StopfenV", body_name="Endstopfen_Verteiler")
     b.add("material.assign", bodies=["Verteiler", "Endstopfen_Verteiler"], material="PVC blau")
-    for (nm, y, ph) in rinne_names:   # Schlauch ID 16 / AD 20 von der Stutzenspitze (minus 20) bis auf die Tuelle (20 mm)
+    for (r, xt, xs, xh) in stubs:   # Schlauch ID 16 / AD 20 von der Stutzenspitze (minus 20) bis auf die Tuelle (20 mm)
         x0, x1 = xs - 20, xt + 20
-        b.add("solid.cylinder", diameter=p["hose_od"], height=x1 - x0, base=[x0, y, zi], axis=[1, 0, 0], operation="new", name=f"SchlauchA_{nm}", body_name=f"Schlauch_{nm}")
-        b.add("solid.cylinder", diameter=16, height=x1 - x0 + 2, base=[x0 - 1, y, zi], axis=[1, 0, 0], operation="cut", targets=[f"Schlauch_{nm}"], name=f"SchlauchI_{nm}")
-        b.add("material.assign", bodies=[f"Schlauch_{nm}"], material="Schlauch hellblau")
-    # --- Sammelablauf (+X): Rohr DN50 quer mit n Muffen DN32 auf den Ablaufstutzen
+        zz = round(zi_row[r["k"]], 3)
+        b.add("solid.cylinder", diameter=p["hose_od"], height=x1 - x0, base=[x0, r["y"], zz], axis=[1, 0, 0], operation="new", name=f"SchlauchA_{r['k'] + 1}", body_name=f"Schlauch_Rinne_{r['k'] + 1}")
+        b.add("solid.cylinder", diameter=16, height=x1 - x0 + 2, base=[x0 - 1, r["y"], zz], axis=[1, 0, 0], operation="cut", targets=[f"Schlauch_Rinne_{r['k'] + 1}"], name=f"SchlauchI_{r['k'] + 1}")
+        b.add("material.assign", bodies=[f"Schlauch_Rinne_{r['k'] + 1}"], material="Schlauch hellblau")
+    # --- Sammelablauf (+X): schraeges Rohr DN50 entlang der Sektorgrenze mit Muffen DN32 je Reihe
     b.add("component.activate", component=root)
     b.add("component.create", name="T22e_Sammelablauf")
-    za = zc - L / 2 * slope + 20                                  # Ablaufachse an der +X-Stirn (tiefes Ende)
-    xo = L / 2 + 34                                               # Stutzenspitze (4 Kappe + 30 Stutzen)
     co = p["col_od"]
-    xc = xo + 5 + co / 2 - 10 + 0                                # Sammelrohrachse
-    b.add("solid.cylinder", diameter=co, height=hl, base=[xc, -hl / 2, za], axis=[0, 1, 0], operation="new", name="SammelRohr", body_name="Sammelrohr")
-    for (nm, y, ph) in rinne_names:
-        b.add("solid.cylinder", diameter=40, height=xc - (L / 2 + 10), base=[L / 2 + 10, y, za], axis=[1, 0, 0], operation="join", targets=["Sammelrohr"], name=f"Muffe_{nm}")
-    b.add("solid.cylinder", diameter=co - 2 * p["col_wall"], height=hl + 2, base=[xc, -hl / 2 - 1, za], axis=[0, 1, 0], operation="cut", targets=["Sammelrohr"], name="SammelBohrung")
-    for (nm, y, ph) in rinne_names:
-        b.add("solid.cylinder", diameter=32, height=xc - (L / 2 + 10) + 1, base=[L / 2 + 9, y, za], axis=[1, 0, 0], operation="cut", targets=["Sammelrohr"], name=f"MuffeBohr_{nm}")
-    b.add("solid.cylinder", diameter=co - 2 * p["col_wall"] - 0.4, height=20, base=[xc, -hl / 2 + 2, za], axis=[0, 1, 0], operation="new", name="StopfenS", body_name="Endstopfen_Sammelrohr")
+    dvec2, kk = skew(1)
+    za_row = {r["k"]: zrow(r["xc"] + r["L"] / 2) + 20 for r in rows}
+    za = sum(za_row.values()) / len(rows)
+    xc0 = xbd(y0, 1) - co / 2 * kk
+    b.add("solid.cylinder", diameter=co, height=hl, base=[round(xc0, 3), y0, round(za, 3)], axis=dvec2, operation="new", name="SammelRohr", body_name="Sammelrohr")
+    muffs = []
+    for r in rows:
+        xe = r["xc"] + r["L"] / 2
+        xcp = xbd(r["y"], 1) - co / 2 * kk
+        muffs.append((r, xe, xcp))
+        b.add("solid.cylinder", diameter=40, height=xcp - (xe + 10), base=[round(xe + 10, 3), r["y"], round(za_row[r["k"]], 3)], axis=[1, 0, 0], operation="join", targets=["Sammelrohr"], name=f"Muffe_Rinne_{r['k'] + 1}")
+    b.add("solid.cylinder", diameter=co - 2 * p["col_wall"], height=hl + 2, base=[round(xc0 - dvec2[0], 3), y0 - dvec2[1], round(za, 3)], axis=dvec2, operation="cut", targets=["Sammelrohr"], name="SammelBohrung")
+    for (r, xe, xcp) in muffs:
+        b.add("solid.cylinder", diameter=32, height=xcp - (xe + 10) + 1, base=[round(xe + 9, 3), r["y"], round(za_row[r["k"]], 3)], axis=[1, 0, 0], operation="cut", targets=["Sammelrohr"], name=f"MuffeBohr_Rinne_{r['k'] + 1}")
+    b.add("solid.cylinder", diameter=co - 2 * p["col_wall"] - 0.4, height=20, base=[round(xc0 + dvec2[0] * 2, 3), y0 + dvec2[1] * 2, round(za, 3)], axis=dvec2, operation="new", name="StopfenS", body_name="Endstopfen_Sammelrohr")
     b.add("material.assign", bodies=["Sammelrohr", "Endstopfen_Sammelrohr"], material="PVC grau")
     b.add("component.activate", component=root)
-    for nm, pn, ds in ((root, "T22", d["beschreibung"]), ("T22a_Bock_1", "T22a", "Bock aus Rechteckrohr: 2 Beine, Fussplatten mit M8, Querholm, Querstrebe, Rinnenhalter"),
-                       ("T22b_Rinnen", "T22b", "Rinnen mit Zickzack-Phase A/B, geneigt 1 %"), ("T22c_Laengsstreben", "T22c", "Laengsstreben 30x30x2"),
-                       ("T22d_Zulaufverteiler", "T22d", "Zulaufverteiler D25 mit n Stutzen und Schlaeuchen"), ("T22e_Sammelablauf", "T22e", "Sammelrohr DN50 mit n Muffen DN32")):
-        b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
-    return b, (n, rp, L, zc, Wt, xb, yl)
+    bock_ds = "Portalbock aus Rechteckrohr: 2 Beine ausserhalb der Beete, Fussplatten mit M8, Querholm, Querstrebe, Diagonalen, Rinnenhalter" if G["art"] == "portal" else "Auslegerbock: Pfosten ausserhalb des Pools, Fussplatte mit M8, Kragarm ueber das Wasser, Rinnenhalter"
+    for nm, pn, ds in ((root, "T22", d["beschreibung"]), ("T22a_Bock_1", "T22a", bock_ds),
+                       ("T22b_Rinnen", "T22b", "Rinnen je Reihe eigene Laenge, Zickzack-Phase A/B, geneigt 1,5 %"), ("T22c_Laengsstreben", "T22c", "Laengsstreben 40x40x3"),
+                       ("T22d_Zulaufverteiler", "T22d", "Zulaufverteiler D25 schraeg entlang der Sektorgrenze mit n Stutzen und Schlaeuchen"), ("T22e_Sammelablauf", "T22e", "Sammelrohr DN50 schraeg mit n Muffen DN32")):
+        b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="B", properties={"Werkstoff": d["werkstoff"]["name"]})
+    return b, G
 
-def render(typ, sc_path, info):
-    n, rp, L, zc, Wt, xb, yl = info
+def render(typ, sc_path, G):
     r = os.path.join(sc.ROOT, "renders", "components", f"nft_tisch_{typ}")
     os.makedirs(r, exist_ok=True)
-    views = {"01-iso": ([0, 0, zc / 2], 0.7, 0.4, L * 1.5 + 1200), "02-zulauf": ([-L / 2, 0, zc], 0.9, 0.35, 1500),
-             "03-bock": ([xb[0], 0, zc / 2], 0.5, 0.3, 1700), "04-ablauf": ([L / 2, 0, zc], -2.3, 0.35, 1500),
-             "05-oberseite": ([0, 0, zc], 0.2, 1.0, Wt * 3)}
+    zc, Lm = G["zc"], G["Lmin"]
+    views = {"01-iso": ([G["rows"][0]["xc"], 0, zc / 2], 0.7, 0.4, Lm * 1.5 + 1800), "02-zulauf": ([G["rows"][0]["xc"] - Lm / 2, 0, zc], 0.9, 0.35, 1800),
+             "03-bock": ([G["xb"][0], 0, zc / 2], 0.5, 0.3, 2200), "04-ablauf": ([G["rows"][0]["xc"] + Lm / 2, 0, zc], -2.3, 0.35, 1800),
+             "05-oberseite": ([0, 0, zc], 0.0, 1.5, max(Lm, G["Wt"]) * 2.2), "06-querschnitt-bock": ([G["xb"][0], 0, zc / 2], 1.5708, 0.0, 3200)}
     for nme, (t, yaw, pitch, dist) in views.items():
-        sc.snapshot(sc_path, os.path.join(r, f"nft_tisch_{typ}-{nme}.png"), t, yaw, pitch, dist, w=1000, h=650)
+        sc.snapshot(sc_path, os.path.join(r, f"nft_tisch_{typ}-{nme}.png"), t, yaw, pitch, dist, w=1000, h=650, section="YZ" if nme.startswith("06") else None)
 
 if __name__ == "__main__":
     typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["innen", "mitte", "aussen"]
     for typ in typs:
-        b, info = build(typ)
+        b, G = build(typ)
         out = os.path.join(sc.ROOT, "designs", "components", f"nft_tisch_{typ}.sc")
         sc.run(b.write(f"nft_tisch_{typ}"), out)
         ev = sc.evaluate(out)
@@ -165,4 +194,4 @@ if __name__ == "__main__":
         mn, mx = sc.bbox_all(ev)
         print(typ, "Koerper", len(ev["bodies"]), "Masse", round(mass / 1000, 1), "kg", [round(v) for v in mn], [round(v) for v in mx])
         if "--render" in sys.argv:
-            render(typ, out, info)
+            render(typ, out, G)

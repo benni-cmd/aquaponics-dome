@@ -1,0 +1,41 @@
+PASS nft_fit: innen Reihe 1 (ap 1733): Rinne 678 + Ueberstaende + 2 x 100 <= Zehneck-Seite 1126: Ist 1, Soll 1
+PASS nft_fit: innen Reihe 2 (ap 1995): Rinne 848 + Ueberstaende + 2 x 100 <= Zehneck-Seite 1296: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 0/1: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 1/2: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 2/3: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 3/4: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 4/5: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 5/6: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 6/7: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 7/8: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 8/9: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 9/0: Abstand der Footprints >= 100: Ist 1, Soll 1
+   innen: kleinster Footprint-Abstand 190 mm, Rinnenlaengen [678, 848], Loecher je Reihe [2, 3]
+PASS nft_fit: innen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 587 mm >= 30): Ist 1, Soll 1
+PASS nft_fit: innen Pfosten ausserhalb des Beckenrands (Aussenradius 2095, Abstand 69 mm >= 30): Ist 1, Soll 1
+PASS nft_fit: mitte Reihe 1 (ap 2948): Rinne 1468 + Ueberstaende + 2 x 100 <= Zehneck-Seite 1916: Ist 1, Soll 1
+PASS nft_fit: mitte Reihe 2 (ap 3212): Rinne 1639 + Ueberstaende + 2 x 100 <= Zehneck-Seite 2087: Ist 1, Soll 1
+PASS nft_fit: mitte Reihe 3 (ap 3474): Rinne 1810 + Ueberstaende + 2 x 100 <= Zehneck-Seite 2258: Ist 1, Soll 1
+PASS nft_fit: mitte Reihe 4 (ap 3738): Rinne 1981 + Ueberstaende + 2 x 100 <= Zehneck-Seite 2429: Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 0/1: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 1/2: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 7/8: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 8/9: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 9/0: Abstand der Footprints >= 100: Ist 1, Soll 1
+   mitte: kleinster Footprint-Abstand 171 mm, Rinnenlaengen [1468, 1639, 1810, 1981], Loecher je Reihe [5, 6, 7, 7]
+PASS nft_fit: mitte Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 52 mm >= 30): Ist 1, Soll 1
+PASS nft_fit: aussen Reihe 1 (ap 4921): Rinne 2750 + Ueberstaende + 2 x 100 <= Zehneck-Seite 3198: Ist 1, Soll 1
+PASS nft_fit: aussen Reihe 2 (ap 5209): Rinne 2937 + Ueberstaende + 2 x 100 <= Zehneck-Seite 3385: Ist 1, Soll 1
+PASS nft_fit: aussen Reihe 3 (ap 5497): Rinne 3124 + Ueberstaende + 2 x 100 <= Zehneck-Seite 3572: Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 0/1: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 1/2: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 2/3: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 6/7: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 7/8: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 8/9: Abstand der Footprints >= 100: Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 9/0: Abstand der Footprints >= 100: Ist 1, Soll 1
+   aussen: kleinster Footprint-Abstand 171 mm, Rinnenlaengen [2750, 2937, 3124], Loecher je Reihe [11, 11, 12]
+PASS nft_fit: aussen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 56 mm >= 30): Ist 1, Soll 1
+   Tische gesamt 24 (Soll 24), Rinnen-Topfloecher gesamt 472
+PASS nft_fit: Tische gesamt (innen 10 + mitte 6 + aussen 8): Ist 24, Soll 24
+== nft_fit: 36/36 PASS

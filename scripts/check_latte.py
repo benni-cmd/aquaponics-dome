@@ -82,7 +82,7 @@ chk("L13 Tankwand [mm]", round(P["wall"]), ">= 150", P["wall"] >= 150)
 chk("L13 Wasserscheibe T5_Wasser", len(pre("T5_Wasser")), 1, len(pre("T5_Wasser")) == 1)
 chk("L6 Teilenamen T1,T3-T6,T10,T11 vorhanden (T2 Haut = Phase 2, T8 NFT folgt)", sorted({n.split("_")[0] for n in BN}, key=lambda x: int(x[1:])), "T1,T3..T11", {n.split("_")[0] for n in BN} >= {f"T{i}" for i in (1, 3, 4, 5, 6, 10, 11)})   # T7/T9 = Werkstatt-Instanzen (Tanks, Beete)
 n_cls = lambda c: sum(1 for x in cmds if x["command"] == "occurrence.move" and str(x["params"].get("occurrence", "")).startswith(c + ":"))
-chk("OBJ Netztoepfe (2160 in Aussenbeeten) als Instanzen", n_cls("Netztopf"), 2160, n_cls("Netztopf") == 2160)
+chk("OBJ Netztoepfe (2160 Beete + 466 Rinnen) als Instanzen", n_cls("Netztopf"), 2626, n_cls("Netztopf") == 2626)
 # Interferenz zwischen Instanzen/Teilen (Koerper EINER Komponenteninstanz ueberschneiden sich bewusst: Schweiss-/Schraubverbindungen, Pruefung der Werkstatt-Skripte)
 # Das ganze Modell hat > 1500 Koerper: erst Bounding-Boxen in Python (nur Paare verschiedener Instanzen), dann nur die betroffenen Koerper exakt schneiden.
 cl = {}

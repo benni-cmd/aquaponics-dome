@@ -183,7 +183,7 @@
   "value": 120,
   "unit": "mm",
   "origin": "A",
-  "source": "D21: 8 Aussenbeete im OBJ ragen bei Betten 2-4 17-36 mm in den Fundamentring und beruehren Strebe_B-Knotennaehe; Beete radial nach innen versetzt (Rangfolge Ben > OBJ-Zahlen, Annahme)",
+  "source": "D21: 8 Aussenbeete im OBJ ragen bei Betten 2-4 17-36 mm in den Fundamentring und beruehren Strebe_B-Knotennaehe; Beete radial 120 nach innen (mehr geht nicht: ab ca. 200 mm stossen die Beetenden an die Nachbarbeete, D25)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"
@@ -198,19 +198,10 @@
   "used_by": "gen_dome.py"
  },
  "salat_n": {
-  "value": 2160,
+  "value": 2626,
   "unit": "Stueck",
   "origin": "A",
   "source": "Anzahl Salatkoepfe im Dom (0 = keine, 2160 = alle): Salatkopf hat 74 Koerper/1021 Flaechen, 2160 Instanzen = 160k Koerper; Hochziehen nach Messung der Build-/Pruefzeiten",
-  "r_id": "",
-  "maturity": 0,
-  "used_by": "gen_dome.py"
- },
- "nft_outer_inset": {
-  "value": 320,
-  "unit": "mm",
-  "origin": "A",
-  "source": "D24: Aussentisch (Werkstatt W16: 1312 breit, Boecke +-600 ausserhalb der Beetbreite) stiesse bei 120 mm Versatz an Dom-Streben A/B (Luft -45 mm); 320 mm Versatz: Luft >= 0 zu Streben, 49 mm zum Mitteltisch (Aussenkante 4007)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"
@@ -232,5 +223,14 @@
   "r_id": "R02",
   "maturity": 0,
   "used_by": "scripts/components/strebe.py"
+ },
+ "nft_outer_inset": {
+  "value": 497,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D25: Rev.-B-Aussentisch (Fussplattenkante bei Tischmitte + 656) darf die Domwand (Fundamentring-Innenflaeche 5706) und Streben A/B nicht beruehren: Tischmitte 4712 statt ap_c 5209; Folge: Aussenbeine stehen im Beet (W-M2)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
  }
 }

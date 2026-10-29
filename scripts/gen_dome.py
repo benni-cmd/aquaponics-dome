@@ -268,18 +268,25 @@ def t9(fz):
     for v, items in groups.items():
         place_instances("Beet_" + v, os.path.join(ROOT, "designs", "components", f"ibc_beet_{v}.sc"), items, "05_Beete")
 
-# T8: 14 NFT-Tische (8 aussen ueber den Aussenbeeten, 6 mitte ueber den Innenbeeten) als Instanzen von nft_tisch_{aussen,mitte}; Ursprung = Mitte Standflaeche am Boden, X = Laengsachse.
-# Der Innenring (10 Tische ueber dem Pool) folgt, sobald die Werkstatt eine Variante liefert, deren Beine nicht im Pool/Beet stehen (docs/session-notes/werkstatt.md).
-NFT_RC = {"aussen": (4888 + 5176) / 2, "mitte": (2987 + 3248 + 3514 + 3775) / 4}   # Mittellinie der Rinnen (Apothem, layout.json hydro_tables)
+# T8: 24 NFT-Tische Rev. B (W16, D18) als Instanzen nft_tisch_{aussen,mitte,innen}: je Sektor eine Tischinstanz, Tischkoordinaten X tangential, Y radial INNEN, yaw = Azimut + 90 Grad (volle 360 Grad); Ursprung = Mitte Standflaeche am Boden.
+# Portaltische (aussen, mitte) stehen auf der Beetmitte (Radius des Beets auf der Sektorachse), aussen um nft_outer_inset (497) nach innen, damit der Aussenbein-Fuss die Domwand/Streben meidet (D25); die Beete koennen nicht mit (Nachbarbeete stossen); innen auf ap_c 1864.
+SECTORS = {"innen": list(range(10)), "mitte": [0, 1, 2, 7, 8, 9], "aussen": [0, 1, 2, 3, 6, 7, 8, 9]}
+NFT_APC = {"innen": 1864, "mitte": 3343, "aussen": 5209}   # data/components/nft_tisch.json typen.<typ>.ap_c
+NFT_POTS = []                                                # Rinnen-Topfpositionen (x, y, z Topfboden), von nft() gefuellt, von pots() gesetzt
 
 def nft(fz):
-    groups = {"aussen": [], "mitte": []}
-    for b in LAYOUT["ibc_beds"]:
-        v = "aussen" if "plants" in b else "mitte"
-        x, y = LXY(b["cx"], b["cy"]); r = math.hypot(x, y); rc = NFT_RC[v] - (P["nft_outer_inset"] if v == "aussen" else 0)   # D24
-        groups[v].append((round(x/r*rc, 1), round(y/r*rc, 1), fz, b["yaw"] + ROT))
-    for v, items in groups.items():
-        place_instances("Tisch_" + v, os.path.join(ROOT, "designs", "components", f"nft_tisch_{v}.sc"), items, "06_NFT")
+    tp = json.load(open(os.path.join(ROOT, "data", "nft_pots.json")))["typen"]
+    for typ, sectors in SECTORS.items():
+        items = []
+        for i in sectors:
+            az = 5.3 + 36.0 * i; ap = NFT_APC[typ]
+            if typ != "innen":
+                bed = min((b for b in LAYOUT["ibc_beds"] if abs(b["r"] - NFT_APC[typ]) < 400), key=lambda b: abs((b["az"] - az + 180) % 360 - 180))
+                ap = bed["r"] * math.cos(math.radians(bed["az"] - az)) - (P["nft_outer_inset"] if typ == "aussen" else 0)
+            x, y = LXY(ap * math.cos(math.radians(az)), ap * math.sin(math.radians(az))); yaw = az + 90 + ROT; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
+            items.append((x, y, fz, yaw))
+            for u, v, z in tp[typ]["pots"]: NFT_POTS.append((round(x + u*c - v*s, 1), round(y + u*s + v*c, 1), round(fz + z, 1)))
+        place_instances("Tisch_" + typ, os.path.join(ROOT, "designs", "components", f"nft_tisch_{typ}.sc"), items, "06_NFT")
 
 # T10/T12: Netztoepfe und Salatkoepfe in den 8 Aussenbeeten als Instanzen (Positionen je Topf aus data/pots.json = OBJ, Beet-Koordinaten); Netztopf-Ursprung Mitte Boden, Salatkopf-Ursprung Kragenoberkante (Boden + 63)
 PLANTS = json.load(open(os.path.join(ROOT, "data", "pots.json")))
@@ -290,6 +297,7 @@ def pots(fz, with_heads):
         for u, v, z in PLANTS["per_bed"][k]:
             x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1); zb = round(fz + z - 31.5, 1)
             pots_.append((x, y, zb, 0)); heads.append((x, y, zb + 63, 0))
+    for x, y, zb in NFT_POTS: pots_.append((x, y, zb, 0)); heads.append((x, y, round(zb + 63, 1), 0))   # 466 Rinnen-Toepfe (D20)
     place_instances("Netztopf", os.path.join(ROOT, "designs", "components", "netztopf.sc"), pots_, "10_Pflanzen")
     if with_heads: place_instances("Salatkopf", os.path.join(ROOT, "designs", "components", "salatkopf.sc"), heads[:int(P["salat_n"])], "10_Pflanzen")
 

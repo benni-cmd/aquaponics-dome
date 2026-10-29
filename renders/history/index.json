@@ -1728,5 +1728,15 @@
   "note": "Rev. B2 (96 Blaetter) nach Kritiker Runde 5",
   "commit": "cdec6f8",
   "source": "renders/components/salatkopf/critic/k4-modell-im-eltern-kontext-rinne.png"
+ },
+ {
+  "file": "20261029-185931_montage_nft-tisch_round-36.png",
+  "sha": "1e9564ebabcaa77a",
+  "time": "2026-10-29 18:59:31",
+  "role": "montage",
+  "subject": "nft_tisch",
+  "note": "Rev. B: 24 Tische inkl. Innenring + 466 Rinnen-Toepfe als Instanzen (D25)",
+  "commit": "e6b7ec9",
+  "source": "renders/round-36.png"
  }
 ]

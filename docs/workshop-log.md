@@ -98,3 +98,16 @@ Beginn 29.10.2026 ~03:50. Befunde zu SolidCraft v0.25.1 (Headless, `solidcraft-c
 | 4 | gross: Herkunft/Detail unvollstaendig (Wertspalten, Rohrwaende, DN, Normen, Stueckliste-Mengen, Renders leer, PP/HDPE) | **gueltig** | 7 Herkunftszeilen, DN/Normen, Stueckliste mit Mengen, Render-Liste ueber alle Variantenordner, Werkstoffzeile |
 | 5 | klein: Zulaufport x -1526 gegen Box -1516,5; Rohr laengs statt quer | **gueltig** | Ports aus aktuellen Parametern neu berechnet; laengs als Auslegung E begruendet |
 | H | 288 je Aussenbeet / Montage Netztoepfe | **andere Klasse (Integrator)** | im Blatt klargestellt (144 beim Beet Azimut 113) |
+
+### ibc_beet, Orchestrator-Vorgaben 29.10. ~08:00 (nach Abnahme)
+Standrohr `standpipe_over` = media_depth - 35 = 265 (FarmHub 220 als Variante vermerkt), Glocke 295 (Standrohr + 30), Bezeichnung "IBC-Wanne (Sondermass nach OBJ)", Zulauf laengs als A. Beete neu gebaut, check_ibc_beet.py 66/66 PASS.
+
+### tank (klein/gross), Bild-Kritiker (Kontextpaket) 29.10. ~08:05: Urteil "Modell"
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, vermutet: Biomediumkorb schwebt, keine Auflage | **gueltig** | 4 Konsolen unter dem Tragrost (40x40x30 an die Tankwand) |
+| 2 | klein, sicher: Randwulst nur duenne Doppellinie, Referenz dicker Wulst | **gueltig** | Wulst 25 x 40 mm, Deckel buendig (lid_over 0) |
+| 3 | klein, vermutet: Beine ragen 250 mm ueber die Plattform | **unklar** (OBJ-Mass 751) | bleibt, im Blatt offen |
+| 4 | klein, sicher: Diagonalenenden ragen ueber die Beine | **gueltig** | Diagonalen um Beinhalbbreite + 8 mm gekuerzt |
+| 5 | klein, vermutet: Revisionszugang fehlt | **gueltig** | Revisionsoeffnung D200 im Deckel |
+| Hinweis | Schlaeuche, Wasserspiegel, Pumpe | **andere Klasse** | - |

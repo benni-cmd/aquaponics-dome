@@ -14,7 +14,8 @@ PASS tank: klein Beinquerschnitt: Ist 30, Soll 30 (+-0.2)
 PASS tank: klein Fussplatten: Ist 4, Soll 4
 PASS tank: klein Querstreben: Ist 4, Soll 4
 PASS tank: klein Diagonalen: Ist 4, Soll 4
-PASS tank: klein Zulauf tangential: Rohr beruehrt Innenwand (x_max = R-w): Ist 332.5, Soll 332.5 (+-0.5)
+PASS tank: klein Zulauf tangential: Rohr beruehrt Innenwand (x_max = Rb-w): Ist 307.5, Soll 307.5 (+-0.5)
+PASS tank: klein Randwulst: Aussenradius = OBJ: Ist 336.5, Soll 336.5 (+-0.5)
 PASS tank: klein Zulauf Rohr-D: Ist 49.9992, Soll 50 (+-0.2)
 PASS tank: klein Zulauf unter dem Rand: Ist 250, Soll 250 (+-0.5)
 PASS tank: klein Schlammstutzen an der Spitze (z0 im Stutzen): Ist 1, Soll 1
@@ -41,7 +42,8 @@ PASS tank: gross Beinquerschnitt: Ist 40, Soll 40 (+-0.2)
 PASS tank: gross Fussplatten: Ist 4, Soll 4
 PASS tank: gross Querstreben: Ist 4, Soll 4
 PASS tank: gross Diagonalen: Ist 4, Soll 4
-PASS tank: gross Zulauf tangential: Rohr beruehrt Innenwand (x_max = R-w): Ist 460, Soll 460 (+-0.5)
+PASS tank: gross Zulauf tangential: Rohr beruehrt Innenwand (x_max = Rb-w): Ist 435, Soll 435 (+-0.5)
+PASS tank: gross Randwulst: Aussenradius = OBJ: Ist 465, Soll 465 (+-0.5)
 PASS tank: gross Zulauf Rohr-D: Ist 62.999, Soll 63 (+-0.2)
 PASS tank: gross Zulauf unter dem Rand: Ist 250, Soll 250 (+-0.5)
 PASS tank: gross Schlammstutzen an der Spitze (z0 im Stutzen): Ist 1, Soll 1
@@ -52,4 +54,4 @@ PASS tank: gross Biomedium als EIN Koerper: Ist 1, Soll 1
 PASS tank: gross Biomedium-Hoehe: Ist 520, Soll 520 (+-0.5)
 PASS tank: gross Biomedium ruht auf dem Tragrost: Ist 970, Soll 970 (+-0.01)
 PASS tank: gross Deckel auf dem Rand: Ist 1670, Soll 1670 (+-0.1)
-== tank: 54/54 PASS
+== tank: 56/56 PASS

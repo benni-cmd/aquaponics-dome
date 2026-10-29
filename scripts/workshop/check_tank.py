@@ -11,6 +11,7 @@ def main(typs):
     for typ in typs:
         T = d["typen"][typ]
         R, w, rt = T["R"], T["wall"], T["rt"]
+        Rb = R - p["rim_w"]                                  # Koerperradius ohne Randwulst
         path = os.path.join(sc.ROOT, "designs", "components", f"tank_{typ}.sc")
         ev = sc.evaluate(path)
         B = {b["name"]: b for b in ev["bodies"]}
@@ -22,7 +23,7 @@ def main(typs):
         ck.eq(f"{typ} Kegelspitze Z", tk["min"][2], T["z0"], 1.0)
         ck.eq(f"{typ} Kegel vorhanden (Flaechentyp cone)", B["Tank"]["face_types"].get("cone", 0) > 0, True) if False else ck.eq(f"{typ} Kegel vorhanden (Flaechentyp cone)", 1 if B["Tank"]["face_types"].get("cone", 0) > 0 else 0, 1)
         z_t, z_c = T["z0"], T["plat_z0"] + T["plat_t"]
-        ang = math.degrees(math.atan((z_c - z_t) / (R - rt)))
+        ang = math.degrees(math.atan((z_c - z_t) / (Rb - rt)))
         ck.eq(f"{typ} Kegelwinkel ab Horizontal in 40-60 Grad", 1 if 40 <= ang <= 60 else 0, 1)
         # Plattform
         pb = B["Plattform"]["bbox"]
@@ -40,7 +41,8 @@ def main(typs):
         ck.eq(f"{typ} Diagonalen", len([k for k in B if k.startswith("Diagonale_")]), 4)
         # Zulauf tangential: Rohr beruehrt die Innenwand (x_max = R - w), Achse parallel zur Wandtangente (Y)
         z = B["Zulaufrohr"]["bbox"]
-        ck.eq(f"{typ} Zulauf tangential: Rohr beruehrt Innenwand (x_max = R-w)", z["max"][0], R - w, 0.5)
+        ck.eq(f"{typ} Zulauf tangential: Rohr beruehrt Innenwand (x_max = Rb-w)", z["max"][0], Rb - w, 0.5)
+        ck.eq(f"{typ} Randwulst: Aussenradius = OBJ", (tk["max"][0] - tk["min"][0]) / 2, R, 0.5)
         ck.eq(f"{typ} Zulauf Rohr-D", z["max"][0] - z["min"][0], T["inlet_d"], 0.2)
         ck.eq(f"{typ} Zulauf unter dem Rand", tk["max"][2] - (z["min"][2] + z["max"][2]) / 2, p["inlet_below_top"], 0.5)
         # Schlammventil an der Kegelspitze: Stutzen umschliesst z0, Hahn darunter, Ablaufstutzen unten

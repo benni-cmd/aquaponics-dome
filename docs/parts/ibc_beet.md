@@ -25,10 +25,10 @@
 | `post` | 60 | mm | [A] Stuetzklotz 60 x 60 unter dem Siebboden |
 | `post_nx` | 8 |  | [A] Stuetzen in Laengsrichtung: aussen 8, innen 5; 3 Reihen (y = +-(Wi/2-100) und 0) |
 | `standpipe_d` | 25 | mm | R03: Standrohr D25 (FarmHub 2,5 cm PVC) |
-| `standpipe_over` | 220 | mm | R03: Standrohr 220 mm hoch ueber der Medienunterkante (Gesamtlaenge ab Bulkhead = Stuetzhoehe + 220) [E] |
+| `standpipe_over` | 265 | mm | Orchestrator 29.10.: standpipe_h = media_depth - 35 mm = 265 ueber der Medienunterkante (Wasserstand 35 mm unter der Oberflaeche, dazwischen SRAC 1 Zoll = 25 mm / R03 trockene Zone 2-5 cm); Variante FarmHub 220 (R03 Befund 5, widerspricht Befund 4); Gesamtlaenge ab Bulkhead = Stuetzhoehe + 265 [E] |
 | `standpipe_wall` | 2 | mm | [A] PVC-Rohr d25 |
 | `bell_d` | 75 | mm | R03: Glocke D75 |
-| `bell_h` | 250 | mm | R03: Glocke 250 hoch, oben verschlossen |
+| `bell_h` | 295 | mm | [E] Glocke = Standrohrhoehe + 30 mm (R03: 250 bei Standrohr 220); oben verschlossen |
 | `bell_wall` | 3 | mm | [A] PVC-Rohr d75 |
 | `bell_slot_w` | 10 | mm | R03: zwei Schlitze 10 x 40 mm |
 | `bell_slot_h` | 40 | mm | R03 |
@@ -54,20 +54,20 @@
 
 Gesamt-Box (Messung): X -1516.5 bis 1476.5, Y -466.5 bis 466.5, Z -30.0 bis 637.0 mm; Koerper: 33.
 
-**Toleranzen / Spiel:** Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase = Standrohrkante, 220 mm ueber der Medienunterkante = 80 mm unter der Medienoberflaeche (R03 Befund 5: Standrohr 22 cm bei 30 cm Medium); R03 Befund 4 nennt eine trockene Oberzone von 2-5 cm, SRAC 5007 einen Wasserstand 1 Zoll unter der Oberflaeche -> Abweichung 3-6 cm, siehe offen.
+**Toleranzen / Spiel:** Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase = Standrohrkante, 265 mm ueber der Medienunterkante = 35 mm unter der Medienoberflaeche (Orchestrator-Vorgabe 29.10.: media_depth - 35; FarmHub-Variante 220 = 80 mm unter der Oberflaeche, R03 Befund 5); R03 Befund 4 nennt eine trockene Oberzone von 2-5 cm, SRAC 5007 einen Wasserstand 1 Zoll unter der Oberflaeche -> Abweichung 3-6 cm, siehe offen.
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: HDPE weiss (Wanne), PVC grau (Rohre), Kies/Blaehton (Medium), Dichte 0.95 g/cm3, Farbe #e9ebe8 (ref-5/ref-6 weisse Wannen (HDPE IBC-Innenbehaelter 0,95 g/cm3); Siebboden/Stuetzen PP 0,91, Rohre PVC-U 1,4 g/cm3)
-- Volumen (Messung, `solidcraft-cli eval`): 76889.0 cm3 · Masse leer (ohne Medium): 71775 g (71.78 kg)
-- Variante `ibc_beet_aussen_933`: 758.94 kg leer
-- Variante `ibc_beet_aussen_993`: 808.35 kg leer
-- Variante `ibc_beet_innen_933`: 476.06 kg leer
-- Gefuellt/in Betrieb: aussen_933: leer ohne Medium 72 kg; Medium 764 l = 687 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 865 l = 865 kg (Wasserraum unter dem Siebboden 640 l + Porenwasser 225 l bei 40 % Porositaet [A]); gefuellt gesamt 1624 kg | aussen_993: leer ohne Medium 74 kg; Medium 816 l = 734 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 924 l = 924 kg (Wasserraum unter dem Siebboden 684 l + Porenwasser 240 l bei 40 % Porositaet [A]); gefuellt gesamt 1732 kg | innen_933: leer ohne Medium 48 kg; Medium 476 l = 428 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 560 l = 560 kg (Wasserraum unter dem Siebboden 420 l + Porenwasser 141 l bei 40 % Porositaet [A]); gefuellt gesamt 1036 kg
+- Volumen (Messung, `solidcraft-cli eval`): 76926.0 cm3 · Masse leer (ohne Medium): 71827 g (71.83 kg)
+- Variante `ibc_beet_aussen_933`: 758.99 kg leer
+- Variante `ibc_beet_aussen_993`: 808.40 kg leer
+- Variante `ibc_beet_innen_933`: 476.11 kg leer
+- Gefuellt/in Betrieb: aussen_933: leer ohne Medium 72 kg; Medium 764 l = 687 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 911 l = 911 kg (Wasserraum unter dem Siebboden 640 l + Porenwasser 271 l bei 40 % Porositaet [A]); gefuellt gesamt 1670 kg | aussen_993: leer ohne Medium 74 kg; Medium 816 l = 734 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 973 l = 973 kg (Wasserraum unter dem Siebboden 684 l + Porenwasser 289 l bei 40 % Porositaet [A]); gefuellt gesamt 1781 kg | innen_933: leer ohne Medium 48 kg; Medium 476 l = 428 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 589 l = 589 kg (Wasserraum unter dem Siebboden 420 l + Porenwasser 169 l bei 40 % Porositaet [A]); gefuellt gesamt 1065 kg
 
 ## Querschnitt / Profil
 
-Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 15 (innen, 5 x 3) bzw. 24 (aussen, 8 x 3) Stuetzkloetzen 60 x 60 (Abstand <= 420 mm); Medium 300 mm (EIN Koerper) mit Oberflaeche 75 mm unter dem Rand; Glockensiphon: Standrohr d25, Glocke d75 x 250 (2 Schlitze 10 x 40, Luftloch 10), Medienschutz d110 x 320 (12 Durchbrueche 12 x 12).
+Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 15 (innen, 5 x 3) bzw. 24 (aussen, 8 x 3) Stuetzkloetzen 60 x 60 (Abstand <= 420 mm); Medium 300 mm (EIN Koerper) mit Oberflaeche 75 mm unter dem Rand; Glockensiphon: Standrohr d25, Glocke d75 x 295 (2 Schlitze 10 x 40, Luftloch 10), Medienschutz d110 x 320 (12 Durchbrueche 12 x 12).
 
 ## Ports (Anschluesse)
 
@@ -99,8 +99,8 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 
 | Medium als EIN Koerper | 1 Koerper | R03/Scope-Card | Scope-Card ibc_beet: Medium als EIN Koerper | hoch |
 | Siebboden 8 mm, Lochraster 20 x 5 D12 (vereinfacht) | 8 / D12 | Scope-Card + A | Scope-Card nennt Siebboden; Raster vereinfacht | niedrig |
 | Stuetzkloetze 60x60, 15 (innen) / 24 (aussen) | 60 x 60 | A | Konstruktionspraxis; Abstand <= 420 mm wegen Medienlast (Bild-Kritiker); Wasserraum unter dem Medium ist Annahme | niedrig |
-| Standrohr d25, 220 mm ueber Medienunterkante | 25 / 220 | R03 | docs/research/R03.md (FarmHub 2,5 cm, 22 cm) | mittel |
-| Glocke d75 x 250, Schlitze 10x40, Luftloch 10 | d75 x 250 | R03 | docs/research/R03.md (FarmHub) | mittel |
+| Standrohr d25, 265 mm ueber Medienunterkante (Variante FarmHub 220) | 25 / 265 | Orchestrator + R03 | Vorgabe media_depth - 35 mm (29.10.), FarmHub 220 als Variante; R03 Befund 5 widerspricht Befund 4/SRAC | mittel |
+| Glocke d75 x 295, Schlitze 10x40, Luftloch 10 | d75 x 250 | R03 + E | R03: d75, Schlitze 10x40 (FarmHub); Hoehe 295 = Standrohr 265 + 30 (R03: 250 bei 220) | mittel |
 | Medienschutz d110 x 320 mit Seitenloechern | d110 x 320 | R03 | docs/research/R03.md (FarmHub 11 cm, 32 cm) | mittel |
 | Bulkhead D36 / Flansch D50 | D36 / Flansch D50 | A | Standrohr d25; Durchfuehrung geschaetzt (Scope-Card: Ablauf-Fitting im Boden) | niedrig |
 | Zulauf-Tropfrohr d20 auf Z 450 (25 mm unter dem Rand) | 20 | R03 + A | R03: Zulaufrohr auf Z 450; Durchmesser Annahme | niedrig |
@@ -114,12 +114,19 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 
 | Zulauf-Wanddurchfuehrung D22 in der Stirnwand (Rohr d20) | D22 | A | Konstruktionspraxis (Gummitulle); y = -(Wi/2 - 50) | niedrig |
 | Zulaufrohr liegt laengs (nicht quer), 25 mm unter dem Rand | z 612 lokal / 450 abs. | R03 + E | R03: 'quer ueber das Beet auf Z 450'; bei 2,9 m Laenge laengs ausgelegt (E) | niedrig |
 | Gewichtsrechnung: leer ohne Medium, Medium 0,9, Wasser bis Standrohrkante (Sumpf + 40 % Poren) | siehe Gewicht | E | Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme | niedrig |
+| Wandstaerken Rohre: Standrohr 2, Glocke 3, Medienschutz 3, Tropfrohr 2 | 2 / 3 / 3 / 2 mm | A | PVC-U/PE Rohre d25/d75/d110/d20 Normwanddicken ungefaehr; nicht recherchiert | niedrig |
+| Medium-Spiel zur Wannenwand | 2 mm | A | Konstruktionspraxis | niedrig |
+| Medienschutz-Durchbrueche 12 x 12 mm, 3 Ringe x 4 (z 40/120/200) | 12 Stueck | R03 + A | R03: kleine Seitenloecher; Anzahl und Form (quadratisch statt rund wegen Rechenzeit) Annahme | niedrig |
+| Tropfloecher 4 x 4 mm, Teilung 200 mm, ab 150 mm von der Stirn | 4 / 200 mm | A | R03: gelochtes Rohr oder Tropfschlauch; Raster Annahme | niedrig |
+| Zulauf-Wanddurchfuehrung D22 in der Stirnwand (Rohr d20) | D22 | A | Konstruktionspraxis (Gummitulle); y = -(Wi/2 - 50) | niedrig |
+| Zulaufrohr liegt laengs (nicht quer), 25 mm unter dem Rand | z 612 lokal / 450 abs. | R03 + E | R03: 'quer ueber das Beet auf Z 450'; bei 2,9 m Laenge laengs ausgelegt (E) | niedrig |
+| Gewichtsrechnung: leer ohne Medium, Medium 0,9, Wasser bis Standrohrkante (Sumpf + 40 % Poren) | siehe Gewicht | E | Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme | niedrig |
 
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-5-dome-closeup.jpg und ref-6 (weisse Wannen mit Rand, Erde/Kies); docs/research/R03.md (Beetaufbau)
 - Quelle der Masse: data/layout.json ibc_beds (Laenge, Breite, Hoehe, Z-Unterkante), docs/research/R03.md (Beetaufbau), docs/scope-cards.md ibc_beet; ref-5/ref-6: weisse Wannen mit Rand und Erde/Kies
-- Abweichung zum OBJ: OBJ ibc_beds: Laenge/Breite/Hoehe wie layout.json (Messung 0 mm Abweichung); die Bezeichnung 'halbe IBC' (OBJ-Gruppe IBC_Open_Top) passt nicht zu 2953 mm (eine halbe IBC misst ca. 1200 x 1000): die 2953-mm-Wanne ist ein Sonderbau (verschweisste/laengere Wanne) - Bild-Kritiker Luecke 1, offen beim Orchestrator; Medium-Hoehe absolut Z 400 laut R03; Beetinnenraum im OBJ nicht modelliert -> Aufbau aus R03. Innenbeete: OBJ z0 -209, -173, -172, -170, -194, -194 (Rand Z 440-479): die Medienoberflaeche liegt absolut bei Z 365-404, nicht einheitlich 400 (Vorpruefung Toleranz 40 mm fuer innen; R03-Z-400 gilt fuer aussen).
+- Abweichung zum OBJ: OBJ ibc_beds: Laenge/Breite/Hoehe wie layout.json (Messung 0 mm Abweichung); die OBJ-Gruppe heisst IBC_Open_Top, das Mass 2953 x 933-993 x 637 ist ein Sondermass: Bezeichnung im Modell 'IBC-Wanne (Sondermass nach OBJ)', Werkstoff A (Orchestrator-Entscheidung 29.10.); Medium-Hoehe absolut Z 400 laut R03; Beetinnenraum im OBJ nicht modelliert -> Aufbau aus R03. Innenbeete: OBJ z0 -209, -173, -172, -170, -194, -194 (Rand Z 440-479): die Medienoberflaeche liegt absolut bei Z 365-404, nicht einheitlich 400 (Vorpruefung Toleranz 40 mm fuer innen; R03-Z-400 gilt fuer aussen). Innenbeete: OBJ z0 -209, -173, -172, -170, -194, -194 (Rand Z 440-479): die Medienoberflaeche liegt absolut bei Z 365-404, nicht einheitlich 400 (Vorpruefung Toleranz 40 mm fuer innen; R03-Z-400 gilt fuer aussen).
 
 ## Montage (L4)
 
@@ -138,7 +145,7 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 
 - T30b Stuetzkloetze PP 60x60: 24 (aussen) / 15 (innen) je Beet
 - T30c Siebboden PP 8 mm (Rasterlochplatte): 1 je Beet
 - T30d Medium Blaehton/Kies 8-20 mm: aussen_933 764 l (687 kg); aussen_993 816 l (734 kg); innen_933 476 l (428 kg) je Beet; 14 Beete gesamt ca. 8,4 m3
-- T30e Siphon: 1 Bulkhead D36 mit Flansch D50 + Dichtung + Kontermutter, 1 Standrohr PVC-U d25 (Laenge 30 + 482 mm), 1 Glocke PVC-U d75 x 250 mit Deckel, 1 Medienschutz PVC-U d110 x 320
+- T30e Siphon: 1 Bulkhead D36 mit Flansch D50 + Dichtung + Kontermutter, 1 Standrohr PVC-U d25 (Laenge 30 + 527 mm), 1 Glocke PVC-U d75 x 295 mit Deckel, 1 Medienschutz PVC-U d110 x 320
 - T30f Zulauf: 1 Tropfrohr PE d20 (Laenge siehe Messung), 1 Endstopfen d20, 1 Gummitulle D22 fuer die Wanddurchfuehrung, 1 Anschluss-Kupplung d20
 - Normbezeichnungen: PVC-U Rohr nach DIN 8062 / EN 1452; PE-Rohr nach DIN 8074; Medium gewaschen, Korn 8-20 mm (R03)
 
@@ -169,17 +176,20 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 
 ## Pruefung
 
-- Gauntlet-Urteil: Bild-Kritiker: Modell; Spec-Pruefer: FAIL behoben (siehe workshop-log)
+- Gauntlet-Urteil: Bild-Kritiker: Modell; Spec-Pruefer: FAIL behoben; Orchestrator: abgenommen 29.10.
 - scripts/workshop/check_ibc_beet.py (Ergebnis renders/components/ibc_beet_aussen_933/check.txt)
 - Triage in docs/workshop-log.md
 
 ## Offene Fragen
 
 - Rolle des Hohlraums unter dem Siebboden (262 mm): R03 nennt Medientiefe 300 bei Behaelter 637 -> Wasserraum/Reservoir [A]
-- Standrohrhoehe 220 ueber Medienunterkante (R03 gibt 220 bei Medientiefe 300 ohne Wasserraum) [E]
+- Standrohrhoehe 265 ueber Medienunterkante (Orchestrator: media_depth - 35), Variante FarmHub 220 mit Glocke 250; R03 gibt 220 bei Medientiefe 300 ohne Wasserraum
 - Seitenloecher/Tropfloecher/Luftloch quadratisch modelliert (Rechenzeit), real rund
 - Tropfrohr-Halterung am Wannenrand nicht modelliert
-- Wanne 2953 mm lang: 'halbe IBC' ist nur die OBJ-Bezeichnung; Fertigung als Sonderwanne (Bild-Kritiker Luecke 1, Einstufung: gueltig, Klaerung Orchestrator)
 - Zulauf-Wanddurchfuehrung ohne Fitting/Dichtung modelliert (nur Bohrung D22, Gummitulle im Blatt)
 - Pflanzen: 288 je Aussenbeet (Beet bei Azimut 113: 144; 7 x 288 + 144 = 2160) sind Instanzen des Integrators
-- Wasserstand 80 mm unter der Oberflaeche (FarmHub-Standrohr 22 cm) gegen trockene Oberzone 2-5 cm (R03 Befund 4) und SRAC 1 Zoll: Standrohrhoehe als E, Konfidenz niedrig; Siphon steht auf dem Siebboden, darunter ein Wasserraum von 262-274 mm (Annahme A)
+- Wasserstand 35 mm unter der Oberflaeche (Standrohr 265; FarmHub 220 = 80 mm) gegen trockene Oberzone 2-5 cm (R03 Befund 4) und SRAC 1 Zoll: Standrohrhoehe als E, Konfidenz niedrig; Siphon steht auf dem Siebboden, darunter ein Wasserraum von 262-274 mm (Annahme A)
+- Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)
+- Pflanzen: 288 je Aussenbeet (Beet bei Azimut 113: 144; 7 x 288 + 144 = 2160) sind Instanzen des Integrators
+- Wasserstand 35 mm unter der Oberflaeche (Standrohr 265; FarmHub 220 = 80 mm) gegen trockene Oberzone 2-5 cm (R03 Befund 4) und SRAC 1 Zoll: Standrohrhoehe als E, Konfidenz niedrig; Siphon steht auf dem Siebboden, darunter ein Wasserraum von 262-274 mm (Annahme A)
+- Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)

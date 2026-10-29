@@ -16,7 +16,7 @@ def member(b, name, dims, origin, xdir, ydir, dist, symmetric=True, kind="rect_t
 
 def geometry(T, p):
     """Kegel 45 Grad (Spitze bei rt, z_t) bis zur Plattform-Oberkante; Zylinder darueber bis zur Tankoberkante."""
-    R, w, rt = T["R"], T["wall"], T["rt"]
+    R, w, rt = T["R"] - p["rim_w"], T["wall"], T["rt"]      # R = Radius des Koerpers; der Randwulst bringt den Aussenradius auf T["R"] (OBJ-Mass)
     z_t = T["z0"]                                         # tiefster Punkt des Tanks = OBJ-Spitze
     z_c = T["plat_z0"] + T["plat_t"]                       # Kegel endet auf der Plattform-Oberkante
     z_top = T["z0"] + T["H"]
@@ -30,7 +30,8 @@ def build(typ):
     p, d = sc.load_params("tank")
     T = d["typen"][typ]
     G = geometry(T, p)
-    R, w, rt, z_t, z_c, z_top = G["R"], G["w"], G["rt"], G["z_t"], G["z_c"], G["z_top"]
+    R, w, rt, z_t, z_c, z_top = G["R"], G["w"], G["rt"], G["z_t"], G["z_c"], G["z_top"]    # R = Koerperradius (ohne Randwulst)
+    RR = T["R"]                                                                           # Aussenradius mit Randwulst
     b = sc.Build()
     unit = {k: v["einheit"] for k, v in d["parameter"].items()}
     b.params_to_design(p, d, unit)
@@ -46,7 +47,7 @@ def build(typ):
     # --- Tankkoerper: Kegel + Zylinder als EIN Rotationskoerper mit Wand
     b.add("component.create", name="T40a_Tank")
     b.add("sketch.create", plane={"origin": [0, 0, 0], "x_dir": [1, 0, 0], "y_dir": [0, 0, 1]}, name="Tankprofil")
-    pts = [[G["r_in"], z_t], [rt, z_t], [R, z_c], [R, z_top], [R - w, z_top], [R - w, G["zc_i"]]]
+    pts = [[G["r_in"], z_t], [rt, z_t], [R, z_c], [R, z_top - p["rim_h"]], [RR, z_top - p["rim_h"]], [RR, z_top], [R - w, z_top], [R - w, G["zc_i"]]]
     b.add("sketch.line", points=pts, closed=True)
     b.add("sketch.finish")
     b.add("solid.revolve", axis="y", angle="360 deg", name="Tankkoerper", body_name="Tank")
@@ -60,8 +61,9 @@ def build(typ):
         b.add("solid.cylinder", diameter=p["outlet_d"] + 13, height=w + 40, base=[R - w - 20, 0, z_top - 80], axis=[1, 0, 0], operation="cut", targets=["Tank"], name="Durchbruch_Ueberlauf")
     b.add("material.assign", bodies=["Tank"], material="PE Tank")
     # Deckel mit Leitrohr-Loch
-    b.add("solid.cylinder", diameter=2 * R + 2 * p["lid_over"], height=p["lid_t"], base=[0, 0, z_top], operation="new", name="Deckel", body_name="Deckel")
+    b.add("solid.cylinder", diameter=2 * RR + 2 * p["lid_over"], height=p["lid_t"], base=[0, 0, z_top], operation="new", name="Deckel", body_name="Deckel")
     b.add("solid.cylinder", diameter=p["guide_d"] + 2, height=p["lid_t"] + 2, base=[0, 0, z_top - 1], operation="cut", targets=["Deckel"], name="Deckel_Leitrohrloch")
+    b.add("solid.cylinder", diameter=p["rev_d"], height=p["lid_t"] + 2, base=[-R / 2, 0, z_top - 1], operation="cut", targets=["Deckel"], name="Deckel_Revision")
     if T["biofilter"]:
         b.add("solid.cylinder", diameter=p["air_d"], height=p["lid_t"] + 2, base=[R / 2, 0, z_top - 1], operation="cut", targets=["Deckel"], name="Deckel_Belueftung")
     b.add("material.assign", bodies=["Deckel"], material="PE Tank")
@@ -100,6 +102,10 @@ def build(typ):
         for k in range(4):
             b.add("solid.box", length=(2 * rb - 120), width=30, height=12, center=[0, (k - 1.5) * 100, zb0 - 5], operation="cut", targets=["Tragrost"], name=f"Rostschlitz_{k}")
         b.add("material.assign", bodies=["Tragrost"], material="PVC grau Tank")
+        bk = p["bracket"]
+        for k, (ux, uy) in enumerate(((1, 0), (-1, 0), (0, 1), (0, -1)), 1):
+            b.add("solid.box", length=(bk if uy == 0 else 40), width=(bk if ux == 0 else 40), height=30, center=[ux * (R - w - bk / 2) if uy == 0 else 0, uy * (R - w - bk / 2) if ux == 0 else 0, zb0 - 25], operation="new", name=f"Kons_{k}", body_name=f"Konsole_{k}")
+            b.add("material.assign", bodies=[f"Konsole_{k}"], material="PE Tank")
         b.add("solid.cylinder", diameter=p["air_d"], height=z_top - zb0 + 120, base=[R / 2, 0, zb0 - 40], operation="new", name="Luftrohr_R", body_name="Belueftungsrohr")
         b.add("material.assign", bodies=["Belueftungsrohr"], material="PVC grau Tank")
     # --- Schlammventil an der Kegelspitze: Stutzen, Kugelhahn, Hebel
@@ -156,12 +162,16 @@ def build(typ):
         half = ay if along == "y" else ax
         a0, a1 = -half, half
         dy, dz = a1 - a0, z1d - z0d
+        ln0 = math.hypot(dy, dz)
+        sh = lw / 2 + 8                                       # Enden an den Beinkanten enden lassen
+        a0 += sh * dy / ln0; z0d_ = z0d + sh * dz / ln0
+        dy, dz = dy * (1 - 2 * sh / ln0), dz * (1 - 2 * sh / ln0)
         ln = math.hypot(dy, dz)
         off = (lw / 2 + 1.5)
         if along == "y":
-            member(b, f"Diagonale_{k}", dict(width=3, height=p["diag_w"]), [sx * (ax + off), a0, z0d], [1, 0, 0], [0, dz / ln, -dy / ln], ln, symmetric=False, kind="bar")
+            member(b, f"Diagonale_{k}", dict(width=3, height=p["diag_w"]), [sx * (ax + off), a0, z0d_], [1, 0, 0], [0, dz / ln, -dy / ln], ln, symmetric=False, kind="bar")
         else:
-            member(b, f"Diagonale_{k}", dict(width=3, height=p["diag_w"]), [a0, sy * (ay + off), z0d], [0, 1, 0], [-dz / ln, 0, dy / ln], ln, symmetric=False, kind="bar")
+            member(b, f"Diagonale_{k}", dict(width=3, height=p["diag_w"]), [a0, sy * (ay + off), z0d_], [0, 1, 0], [-dz / ln, 0, dy / ln], ln, symmetric=False, kind="bar")
     b.add("component.activate", component=root)
     for nm, pn, ds in ((root, "T40", d["beschreibung"]), ("T40a_Tank", "T40a", "Tankkoerper Kegel 45 Grad + Zylinder, Deckel"), ("T40b_Zulauf", "T40b", "tangentialer Zulauf"),
                        ("T40c_Leitrohr", "T40c", "Leitrohr mit Auslauf (Vortex) bzw. Biomediumkorb (Biofilter)"), ("T40d_Schlammventil", "T40d", "Schlammventil an der Kegelspitze"),

@@ -1298,5 +1298,15 @@
   "note": "",
   "commit": "",
   "source": "renders/section-22.png"
+ },
+ {
+  "file": "20261029-123849_montage_gesamt_round-22.png",
+  "sha": "1c65ad4097ec770b",
+  "time": "2026-10-29 12:38:49",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "M1.1 IBC-Beete als 14 Instanzen (Kollision Beet/Strebe offen)",
+  "commit": "7ee3480",
+  "source": "renders/round-22.png"
  }
 ]

@@ -84,7 +84,7 @@ def erde_fn(sock_z):
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = LXY(b["cx"], b["cy"]); ln, wd = bed_dims(k, b)
-        rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"], b["yaw"] + ROT, ln + 20, wd + 20, -b["z0"] + 1, op="cut", targets=["T13_Erde"])
+        rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, b["yaw"] + ROT, ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
 
 def ring_fn(sock_z):
     rs = P["dome_base_d"]/2 + P["sock_w"]; ri = P["dome_base_d"]/2
@@ -168,7 +168,7 @@ def pool_dims(fz, src, wall, depth, nm):
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
 
 def bed_dims(k, b):
-    return b["length"] - (400 if "plants" in b else 300) - (500 if k == 4 else 0), b["width"] - (200 if "plants" in b else 0)
+    return b["length"], b["width"]   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel)
 
 def pool_fn(fz, nm, src, wall, depth, tn):
     x, y, d_out, z_bot, total = pool_dims(fz, src, wall, depth, nm)
@@ -208,19 +208,23 @@ def tanks(fz):
             act("09_Technik")
             act("09_Technik"); rect_body(f"T7_Pumpe_{i}_{k}", mx, my, fz, m["yaw"] + ROT, m["l"], max(m["w"], 20), m["h"])
 
-# T9: 14 halbe IBC-Wannen (layout.json), 8 aussen (mit Pflanzen), 6 innen
+def place_instances(cls, path, items, assembly):
+    """Werkstatt-Komponente verknuepfen (eine Definition) und je Eintrag (x, y, z, yaw_grad) eine Instanz setzen (erst alle Kopien am Ursprung, dann absolut verschieben)."""
+    act(assembly); add("component.insert_design", path=path.replace("\\", "/"), name=cls)
+    for _ in range(len(items) - 1): add("occurrence.copy", component=cls)
+    for i, (x, y, z, yaw) in enumerate(items, 1):
+        c, s_ = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
+        add("occurrence.move", occurrence=f"{cls}:{i}", matrix=[round(v, 9) for v in (c, -s_, 0, x, s_, c, 0, y, 0, 0, 1, z)], tolerance=1e-6, move_grounded=True)
+
+# T9: 14 halbe IBC-Wannen (layout.json) als Instanzen der Werkstatt-Komponenten ibc_beet_{aussen_933,aussen_993,innen_933}; Ursprung = Mitte Wannenunterseite
 def t9(fz):
+    groups = {}
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
-        x, y = LXY(b["cx"], b["cy"]); yaw = b["yaw"] + ROT; top = b["z1"]
-        ln, wd = bed_dims(k, b)
-        act("05_Beete")
-        rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz + b["z0"] + 5, yaw, ln, wd, top - b["z0"] - 5)   # eingelassen wie im OBJ
-        if "plants" in b:   # Aussenbeete: 3 Reihen x 10 Pflanzen (OBJ: 288 Toepfe, hier reduziert)
-            ta = math.radians(yaw); act("10_Pflanzen")
-            for r_ in range(3):
-                for c_ in range(10):
-                    lx, ly = rot((c_ - 4.5)*270, (r_ - 1)*270, ta)
-                    plant(round(x + lx, 1), round(y + ly, 1), fz + top + 95, 90)
+        x, y = LXY(b["cx"], b["cy"])
+        v = "innen_933" if "plants" not in b else ("aussen_993" if b["width"] > 960 else "aussen_933")
+        groups.setdefault(v, []).append((x, y, fz + b["z0"], b["yaw"] + ROT))
+    for v, items in groups.items():
+        place_instances("Beet_" + v, os.path.join(ROOT, "designs", "components", f"ibc_beet_{v}.sc"), items, "05_Beete")
 
 plants = [0]
 def plant(x, y, z, r=90):

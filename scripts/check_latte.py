@@ -25,6 +25,7 @@ def find(o, key):
 
 bodies = find(run_json(["eval", dome]), "bodies")
 B = {b["name"]: b for b in bodies}
+BN = {n: b for n, b in B.items() if n[:1] == "T" and n[1:2].isdigit()}   # eigene T-Koerper; Werkstatt-Instanzen heissen anders
 cmds = json.load(open(os.path.join(ROOT, "scripts", "dome-script.json")))["commands"]
 P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["command"] == "parameters.add"}
 pre = lambda p: [b for n, b in B.items() if n.startswith(p)]
@@ -55,8 +56,8 @@ chk("L10 Strebenzahl 2V (60 + 10 Basis - Tuer)", len(t1), "55-65", 55 <= len(t1)
 s = B["T3_Sockel"]; ue = (s["bbox"]["max"][0] - s["bbox"]["min"][0] - 12000) / 2
 chk("L2/11 Fundamentring (Flaechen 10 aussen + 10 innen + 2, Tuerluecke +4)", s["faces"], "22-28", 22 <= s["faces"] <= 30)
 chk("L9/11 Sockel Ueberstand [mm]", round(ue), "<= 300", ue <= 300)
-beds = pre("T9_") + pre("T8_")
-chk("OBJ Substratbeete T9 (14 IBC-Wannen)", len(pre("T9_")), 14, len(pre("T9_")) == 14)
+beds = [b for n, b in B.items() if n.startswith("Wanne")]   # Werkstatt-Komponente ibc_beet_*: je Instanz eine Wanne
+chk("OBJ Substratbeete (14 IBC-Wannen als Instanzen)", len(beds), 14, len(beds) == 14)
 d = B["T4_Blatt"]["bbox"]; dh = d["max"][2] - d["min"][2]
 dw = math.hypot(d["max"][0] - d["min"][0], d["max"][1] - d["min"][1])
 chk("Tuer Hoehe Blatt ueber Schwelle 40 mm [mm]", round(dh), 1960, abs(dh - 1960) < 20)
@@ -74,7 +75,7 @@ wb = B["T5_Wasser"]["bbox"]; wd = wb["max"][0] - wb["min"][0]
 chk("OBJ Wasserscheibe D [mm]", round(wd), 3890, abs(wd - 3890) < 20)
 chk("L13 Tankwand [mm]", round(P["wall"]), ">= 150", P["wall"] >= 150)
 chk("L13 Wasserscheibe T5_Wasser", len(pre("T5_Wasser")), 1, len(pre("T5_Wasser")) == 1)
-chk("L6 Teilenamen T1,T3-T5,T7-T11 vorhanden (T2 Haut = Phase 2, T8 NFT folgt)", sorted({n.split("_")[0] for n in B}, key=lambda x: int(x[1:])), "T1,T3..T11", {n.split("_")[0] for n in B} >= {f"T{i}" for i in (1, 3, 4, 5, 6, 7, 9, 10, 11)})
+chk("L6 Teilenamen T1,T3-T5,T7-T11 vorhanden (T2 Haut = Phase 2, T8 NFT folgt)", sorted({n.split("_")[0] for n in BN}, key=lambda x: int(x[1:])), "T1,T3..T11", {n.split("_")[0] for n in BN} >= {f"T{i}" for i in (1, 3, 4, 5, 6, 7, 10, 11)})   # T9 = Werkstatt-Instanzen (Beete)
 # Interferenz (T1-T1, Rohr durch Haut/Struts-Bereich und Schlaeuche an Tanks erlaubt)
 sc = os.path.join(tmp, "i.json"); json.dump({"commands": [{"command": "inspect.interference", "params": {"budget_s": 150}}]}, open(sc, "w"))
 rr = run_json(["run", sc, "--in", dome, "--results"])
@@ -86,6 +87,7 @@ for it in inter:
     if a.split("_")[0] == b.split("_")[0] == "T4": continue   # Tuer-Teile verbinden sich (Scharnier/Pfosten/Schwelle)
     if {a.split("_")[0], b.split("_")[0]} == {"T1", "T3"}: continue   # Streben im Fundamentring verankert
     if {a.split("_")[0], b.split("_")[0]} & {"T10"} and ({a.split("_")[0], b.split("_")[0]} <= {"T10", "T1", "T5", "T7"}): continue
+    print("KOLL", a, b)
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))
 chk("L6 Kollisionen (ohne Strebenknoten, Rohr/Schlauch)", len(bad), 0, len(bad) == 0)
 res.append({"info": "Kollisionen", "pairs": bad[:20]})

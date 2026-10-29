@@ -163,7 +163,7 @@ def pool_dims(fz, src, wall, depth, nm):
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
 
 def bed_dims(k, b):
-    return b["length"] - (400 if "plants" in b else 300) - (500 if k == 4 else 0), b["width"] - (100 if "plants" in b else 0)
+    return b["length"] - (400 if "plants" in b else 300) - (500 if k == 4 else 0), b["width"] - (200 if "plants" in b else 0)
 
 def pool_fn(fz, nm, src, wall, depth, tn):
     x, y, d_out, z_bot, total = pool_dims(fz, src, wall, depth, nm)

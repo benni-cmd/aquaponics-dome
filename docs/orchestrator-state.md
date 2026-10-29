@@ -12,3 +12,8 @@
 - Neue Montage-Sitzung "Montage und Layout (Kuppel)" noch NICHT gestartet: start_session ist in automatischen Laeufen gesperrt, ein Einmalauftrag wurde vom Auto-Modus abgelehnt (nicht umgangen). Der dauerhafte Auftrag `dome-loop-hourly-fallback` (:41) wurde auf die neuen Rollen aktualisiert und uebernimmt die Montage-Rolle (Plan `docs/next-steps-montage.md`), sobald deren letzter Commit aelter als 20 Minuten ist (ab 04:39). Ben kann sie alternativ per Prompt aus `docs/resume.md` starten.
 - Noch auf die neuen Namen umzustellen: `dome-loop-restart-0715` (alter Sitzungsname im Wachter).
 - Werkstatt: NFT-Rinne abgenommen (f478774), R06 geliefert, NFT-Tisch innen laeuft. Recherche offen: R09 Vortex-Tank, R11 Haut.
+
+## Stand 04:48 (Kontext 84 %, Limit 5h 91 %, Woche 60 %)
+- Montage laeuft: Commit b1b48c7 04:45 (M0 Uebernahme) kam aus der ueber den stuendlichen Auftrag gestarteten Sitzung (erscheint nicht als Peer in ListAgents). Werkstatt busy (NFT-Tisch innen). Plaene: Montage 6 Schritte, Werkstatt 5 Schritte offen.
+- Wenn ich verdichtet oder neu gestartet werde: lies zuerst diese Datei, docs/parallel-work.md (04:15), docs/endless-mechanics.md, docs/integration-board.md, docs/research-queue.md (offen: R09, R11), docs/review-lessons.md. Naechste Orchestrator-Aufgaben: Abnahme Netztopf/Salatkopf/NFT-Tisch innen (Stichprobe nach docs/review-protocol.md Abschnitt 6), Plan bei weniger als 3 offenen Schritten auf 5 auffuellen, R09 (Vortex-Tank-Geometrie) fuer W4, dome-loop-restart-0715 auf neue Namen umstellen.
+- Bei Limit ueber 90 %: Werkstatt nicht anstossen; Montage zuerst.

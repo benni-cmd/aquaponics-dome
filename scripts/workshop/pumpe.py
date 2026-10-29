@@ -123,8 +123,8 @@ def render(typ, path, info):
     r = os.path.join(sc.ROOT, "renders", "components", typ)
     os.makedirs(r, exist_ok=True)
     if typ.startswith("pumpe"):
-        views = {"01-iso": ([0, 0, info["H"] / 2], 0.6, 0.35, info["L"] * 2.0), "02-pumpe": ([info["x0"] + 100, info["ycent"], info["za"]], 0.8, 0.3, 700),
-                 "03-rueckseite": ([0, 0, info["H"] / 2], 2.6, 0.3, info["L"] * 2.0), "04-seite": ([0, 0, info["H"] / 2], 1.5708, 0.0, info["L"] * 1.8)}
+        views = {"01-iso": ([0, 0, info["H"] / 2], 2.5, 0.35, info["L"] * 2.0), "02-pumpe": ([info["x0"] + 100, info["ycent"], info["za"]], 2.5, 0.3, 700),
+                 "03-rueckseite": ([0, 0, info["H"] / 2], 0.6, 0.3, info["L"] * 2.0), "04-seite": ([0, 0, info["H"] / 2], 1.5708, 0.0, info["L"] * 1.8)}
     else:
         views = {"01-iso": ([0, 0, info["H"] / 2], 0.6, 0.35, info["L"] * 2.2), "02-anschluesse": ([0, 0, info["H"] / 2], 0.3, 0.4, info["L"] * 1.6),
                  "03-rueckseite": ([0, 0, info["H"] / 2], 2.6, 0.3, info["L"] * 2.2)}

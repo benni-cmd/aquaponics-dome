@@ -1,0 +1,38 @@
+PASS pumpe: pumpe_klein Anzahl laut layout.json (eindeutige Positionen): Ist 4, Soll 4
+PASS pumpe: pumpe_klein Tafel Laenge: Ist 502, Soll 502 (+-0.5)
+PASS pumpe: pumpe_klein Tafel Dicke: Ist 5, Soll 5 (+-0.5)
+PASS pumpe: pumpe_klein Tafel Hoehe: Ist 345, Soll 345 (+-0.5)
+PASS pumpe: pumpe_klein Pumpensockel steht auf der Konsole: Ist 67, Soll 67 (+-0.01)
+PASS pumpe: pumpe_klein Motor ruht auf dem Sockel (tangential): Ist 75.0012, Soll 75 (+-0.01)
+PASS pumpe: pumpe_klein Motor-D: Ist 89.9976, Soll 90 (+-0.2)
+PASS pumpe: pumpe_klein Saugstutzen D: Ist 39.9989, Soll 40 (+-0.2)
+PASS pumpe: pumpe_klein Druckstutzen D: Ist 31.9995, Soll 32 (+-0.2)
+PASS pumpe: pumpe_klein Druckstutzen zeigt nach oben (Oberkante ueber Pumpenkopf): Ist 1, Soll 1
+PASS pumpe: pumpe_klein Pumpe vor der Tafel (+Y): Ist 1, Soll 1
+PASS pumpe: pumpe_klein Pumpe liegt innerhalb der Tafellaenge (Motor+Kopf): Ist 1, Soll 1
+PASS pumpe: pumpe_klein Standwinkel: Ist 2, Soll 2
+PASS pumpe: pumpe_klein Kabel mit Stecker: Ist 2, Soll 2
+PASS pumpe: pumpe_gross Anzahl laut layout.json (eindeutige Positionen): Ist 4, Soll 4
+PASS pumpe: pumpe_gross Tafel Laenge: Ist 693, Soll 693 (+-0.5)
+PASS pumpe: pumpe_gross Tafel Dicke: Ist 7, Soll 7 (+-0.5)
+PASS pumpe: pumpe_gross Tafel Hoehe: Ist 463, Soll 463 (+-0.5)
+PASS pumpe: pumpe_gross Pumpensockel steht auf der Konsole: Ist 57, Soll 57 (+-0.01)
+PASS pumpe: pumpe_gross Motor ruht auf dem Sockel (tangential): Ist 65.0015, Soll 65 (+-0.01)
+PASS pumpe: pumpe_gross Motor-D: Ist 109.997, Soll 110 (+-0.2)
+PASS pumpe: pumpe_gross Saugstutzen D: Ist 49.9987, Soll 50 (+-0.2)
+PASS pumpe: pumpe_gross Druckstutzen D: Ist 39.9994, Soll 40 (+-0.2)
+PASS pumpe: pumpe_gross Druckstutzen zeigt nach oben (Oberkante ueber Pumpenkopf): Ist 1, Soll 1
+PASS pumpe: pumpe_gross Pumpe vor der Tafel (+Y): Ist 1, Soll 1
+PASS pumpe: pumpe_gross Pumpe liegt innerhalb der Tafellaenge (Motor+Kopf): Ist 1, Soll 1
+PASS pumpe: pumpe_gross Standwinkel: Ist 2, Soll 2
+PASS pumpe: pumpe_gross Kabel mit Stecker: Ist 2, Soll 2
+PASS pumpe: filtermodul Anzahl laut layout.json: Ist 10, Soll 10
+PASS pumpe: filtermodul Laenge: Ist 384, Soll 384 (+-0.5)
+PASS pumpe: filtermodul Dicke (Gehaeuse + Deckel): Ist 44, Soll 44 (+-0.5)
+PASS pumpe: filtermodul Hoehe: Ist 419, Soll 419 (+-0.5)
+PASS pumpe: filtermodul Siebeinsatz im Gehaeuse (Spiel zur Wand >= 3 mm): Ist 1, Soll 1
+PASS pumpe: filtermodul Einlass oben (Stutzen ueber dem Gehaeuse): Ist 1, Soll 1
+PASS pumpe: filtermodul Auslass seitlich (Stutzen links neben dem Gehaeuse): Ist 1, Soll 1
+PASS pumpe: filtermodul Stutzen D: Ist 49.9992, Soll 50 (+-0.2)
+PASS pumpe: filtermodul Montagelaschen: Ist 4, Soll 4
+== pumpe: 37/37 PASS

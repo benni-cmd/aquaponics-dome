@@ -75,7 +75,7 @@ def main(name):
         L.append(f"\n## Alternative lokale Fertigung\n\n{bl['lokal']}")
     L.append("\n## Renders\n")
     base = os.path.join(sc.ROOT, "renders", "components")
-    for dn in sorted(x for x in os.listdir(base) if x == name or x.startswith(name + "_")):
+    for dn in sorted(x for x in os.listdir(base) if x == name or x.startswith(name + "_") or x in bl.get("render_dirs", [])):
         L += [f"- `renders/components/{dn}/{f}`" for f in sorted(os.listdir(os.path.join(base, dn))) if f.endswith(".png")]
     L.append("\n## Pruefung\n")
     L.append(f"- Gauntlet-Urteil: {sys.argv[2] if len(sys.argv) > 2 else bl.get('kritiker', 'offen')}")

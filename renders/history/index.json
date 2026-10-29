@@ -1788,5 +1788,25 @@
   "note": "W11 Winkelhalter am Beinkopf",
   "commit": "5317f56",
   "source": "renders/components/winkelhalter/winkelhalter-06-querschnitt-bock.png"
+ },
+ {
+  "file": "20261029-212421_werkstatt_nft-tisch_radialbudget-01-draufsicht.png",
+  "sha": "477b20636e4d618c",
+  "time": "2026-10-29 21:24:21",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W17 Radialbudget: Draufsicht mit Massen, Querschnitt Wand-Beet-Weg",
+  "commit": "75d0317",
+  "source": "renders/components/nft_passung/radialbudget-01-draufsicht.png"
+ },
+ {
+  "file": "20261029-212443_werkstatt_nft-tisch_radialbudget-02-querschnitt.png",
+  "sha": "c15d2f650148664d",
+  "time": "2026-10-29 21:24:43",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W17 Radialbudget: Draufsicht mit Massen, Querschnitt Wand-Beet-Weg",
+  "commit": "75d0317",
+  "source": "renders/components/nft_passung/radialbudget-02-querschnitt.png"
  }
 ]

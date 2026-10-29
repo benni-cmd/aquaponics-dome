@@ -5,3 +5,7 @@
 - **Latte:** 1-11 erfuellt; 12, 13 weitgehend (siehe Paket)
 - **Offene Fehler:** keine bekannten.
 - **Bauweise:** `scripts/build.sh <stufe> <runde>` erzeugt `designs/dome.sc` + `renders/round-NN.png` (Skript `scripts/gen_dome.py`, Parameter-Tabelle `P`).
+
+## Checkpoint vor dem naechsten Schritt (Limit ~90 %)
+- **Jetzt kommt:** Schlussschritt ComfyUI: `renders/round-09.png` -> `renders/photoreal-01.png` (denoise 0.45), dann 2-3 Varianten. Entscheidung: Latte 12/13 gelten mit dokumentierten Abweichungen (Neigung, Rippen, Rand-Rundung, Farben, 12 Tische) als abgenommen; nach dem Schritt ComfyUI beenden.
+- **Nach Abbruch:** `git status`, letzten Commit pruefen; ComfyUI-Prozess pruefen/beenden; fehlende photoreal-Dateien erneut erzeugen.

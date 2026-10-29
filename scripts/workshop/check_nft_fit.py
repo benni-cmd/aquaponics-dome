@@ -1,5 +1,5 @@
 """Passungspruefung der NFT-Tische (W16, D18): reine Geometrie aus data/layout.json und data/components/nft_tisch.json (kein CAD-Lauf).
-Je Ring stehen die Tische auf den Sektorachsen des Zehnecks (az0 + 36 Grad x i; aussen 8 Tische i = 0-3 und 6-9, mitte 6 Tische i = 0-2 und 7-9, innen 10 Tische, Sektoren wie die Beete in layout.json).
+Tisch-KS: X tangential CCW, Y radial nach INNEN (Platzierung yaw = az + 90 Grad = OBJ-yaw). Je Ring stehen die Tische auf den Sektorachsen des Zehnecks (az0 + 36 Grad x i; aussen 8 Tische i = 0-3 und 6-9, mitte 6 Tische i = 0-2 und 7-9, innen 10 Tische, Sektoren wie die Beete in layout.json).
 Pruefungen: (1) Rinnenende samt Zulauf/Sammelrohr liegt >= corner_gap vor der Sektorgrenze je Reihe, (2) Footprints benachbarter Tische haben >= corner_gap Abstand, (3) Beine/Fussplatten liegen ausserhalb jedes Beet-Rechtecks (>= 30 mm),
 (4) innen: Pfosten ausserhalb des Beckenrands (Aussenradius Pool + Abstand). Aufruf: python scripts/workshop/check_nft_fit.py   (exit 1 bei FAIL)"""
 import json, math, os, sys
@@ -13,7 +13,7 @@ AZ0 = 5.3
 def world(az_deg, ap, x, y):
     a = math.radians(az_deg)
     u, t = (math.cos(a), math.sin(a)), (-math.sin(a), math.cos(a))
-    return ((ap + y) * u[0] + x * t[0], (ap + y) * u[1] + x * t[1])
+    return ((ap - y) * u[0] + x * t[0], (ap - y) * u[1] + x * t[1])          # X = Tangente (CCW), Y radial nach innen (proper rotation, yaw = az + 90)
 
 def bed_dist(pt, bed):
     """vorzeichenbehafteter Abstand eines Punktes zum Beet-Rechteck (negativ = innen)."""

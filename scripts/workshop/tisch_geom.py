@@ -1,5 +1,5 @@
 """Gemeinsame Geometrie der NFT-Tische (W16, D18): Reihen, Rinnenlaengen je Reihe, Portal-/Auslegerbock, Verteiler-/Sammelrohr-Linien.
-Tisch-KS: X = Rinnenachse (tangential, +X = Sammelrohr/tiefes Ende), Y = radial nach AUSSEN, Z hoch; Ursprung = Tischmitte auf der Sektorachse (Beetmitte bzw. Poolmitte-Radius ap_c), Z = 0 Boden.
+Tisch-KS: X = Rinnenachse (tangential, CCW wie OBJ-yaw = Azimut + 90 Grad, +X = Sammelrohr/tiefes Ende), Y = radial nach INNEN (Richtung Kuppelmitte; mit yaw = Azimut + 90 Grad ist Y = Z x X), Z hoch; Ursprung = Tischmitte auf der Sektorachse (Beetmitte bzw. Poolmitte-Radius ap_c), Z = 0 Boden.
 Wird von nft_tisch.py (Bau), rinnen_reihen.py (Rinnenvarianten) und check_nft_fit.py (Pruefung) benutzt."""
 import json, math, os
 import sc
@@ -39,7 +39,7 @@ def geometry(typ, p, T, pitch=250.0):
     rows = []
     for k in range(n):
         y = (k - (n - 1) / 2.0) * rp
-        ap = apc + y
+        ap = apc - y                                           # Y zeigt radial nach innen
         side = 2 * ap * T18
         L = round(side - 2 * gap - E_IN - E_OUT)
         nh, sh = hole_plan(L, 0.0 if k % 2 == 0 else pitch / 2.0, pitch)
@@ -55,7 +55,7 @@ def geometry(typ, p, T, pitch=250.0):
         G.update(art="portal", legs=[(x, s * yl) for x in xb for s in (-1, 1)], yl=yl)
     else:       # innen: Ausleger ueber den Pool, Pfosten ausserhalb des Beckenrands
         ap_leg = pool_outer_r() + p["leg_clearance"] + p["foot_plate"] / 2.0
-        yl = ap_leg - apc
+        yl = apc - ap_leg                                      # negativ: Pfosten ausserhalb (radial aussen = -Y)
         G.update(art="ausleger", legs=[(x, yl) for x in xb], yl=yl, ap_leg=ap_leg)
     return G
 
@@ -83,7 +83,7 @@ def footprint_pts(G, p):
     for sgn, rad in ((-1, 12.5), (1, 25.0)):           # Zulaufverteiler (-X), Sammelrohr (+X): Linien entlang der Sektorgrenze
         for k in range(int((y1 - y0) / 25) + 1):
             y = y0 + k * 25.0
-            ap = G["apc"] + y
+            ap = G["apc"] - y
             xb = sgn * (ap * t - G["gap"])
             pts += [(xb - sgn * 2 * rad, y), (xb, y)]            # Aussenkante an der Grenzlinie, Rohrachse eine Rohrbreite innen
     fp = p["foot_plate"] / 2.0

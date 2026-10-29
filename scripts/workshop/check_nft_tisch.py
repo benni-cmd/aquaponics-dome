@@ -53,6 +53,7 @@ def main(typs):
         ck.eq(f"{typ} Beine ({G['art']})", len(beine), len(G["legs"]))
         ck.eq(f"{typ} Fussplatten", len([k for k in B if k.startswith("Fussplatte_")]), len(G["legs"]))
         ck.eq(f"{typ} Laengsstreben", len([k for k in B if k.startswith("Laengs_")]), 2 if G["art"] == "portal" else 1)
+        ck.eq(f"{typ} Laengsdiagonalen (Laengsaussteifung)", len([k for k in B if k.startswith("LDiag_")]), 2 if G["art"] == "portal" else 1)
         ck.eq(f"{typ} Rinnenhalter", len([k for k in B if k.startswith("Halter_")]), n * 2 * nb)
         ck.eq(f"{typ} Schlaeuche", len([k for k in B if k.startswith("Schlauch_")]), n)
         for (lx, ly), b in zip(sorted(G["legs"]), beine):

@@ -1,6 +1,6 @@
 # Bauteilblatt T22 nft_tisch (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/nft_tisch.json` und `designs/components/nft_tisch.sc`, nicht von Hand aendern)
 
-**Funktion:** Tragt n NFT-Rinnen mit 1,5 % Gefaelle (Zulauf hoch bei -X), verteilt Wasser ueber Zulaufverteiler und Schlaeuche (ein Schlauch je Rinne) und sammelt den Ablauf im Sammelrohr; Zickzack der Pflanzen durch Phase A/B benachbarter Rinnen (pitch/2).
+**Funktion:** Traegt n NFT-Rinnen mit 1,5 % Gefaelle (Zulauf hoch bei -X), verteilt Wasser ueber Zulaufverteiler und Schlaeuche (ein Schlauch je Rinne) und sammelt den Ablauf im Sammelrohr; Zickzack der Pflanzen durch Phase A/B benachbarter Rinnen (pitch/2). Rev. B (W16/D18): jede Reihe hat ihre eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap minus Ueberstaende), Verteiler und Sammelrohr laufen schraeg entlang der Sektorgrenze, die Beine stehen ausserhalb der Beete (Portalbock) bzw. ausserhalb des Pools (Auslegerbock innen).
 
 **Datei:** `designs/components/nft_tisch.sc` · **Teilenummer:** T22 · **Revision:** A · **Bezugspunkt:** Mitte der Standflaeche (Z=0 Boden), X Laengsachse (Zulauf bei -X), Y quer
 
@@ -11,15 +11,15 @@
 | Parameter | Wert | Einheit | Herkunft |
 |---|---|---|---|
 | `slope_pct` | 1.5 |  | R06 (docs/research/R06.md): Gefaelle laut zwei Quellen 1,3-3 % (Morgan 1:50-1:75, Greenhouse Management 1,2-3 %), nur FarmHub 1 % -> 1,5 % = 15 mm/m = 0,86 Grad; Durchfluss je Rinne 0,5 l/min (Port-Attribut) |
-| `leg_w` | 30 | mm | OBJ-Analyse: Beine 30 x 30 (Tanks); Tischbeine in ref-6 flache Winkelprofile, hier Rechteckrohr 30 x 30 x 2 [A] |
-| `leg_wall` | 2 | mm | [A] Rechteckrohr verzinkt |
-| `holm_w` | 40 | mm | [A] Querholm 40 x 30 x 2 (Rinne liegt auf) |
-| `holm_h` | 30 | mm | [A] |
+| `leg_w` | 40 | mm | [A] Portal-/Auslegerbein Rechteckrohr 40 x 40 x 3 (statt 30 x 30 x 2: Beine 1250 mm hoch ausserhalb der Beete, Auslegerlasten) |
+| `leg_wall` | 3 | mm | [A] Wand Beine/Holm 3 mm |
+| `holm_w` | 40 | mm | [A] Querholm Breite in X (Auflage der Rinnenhalter 40 mm) |
+| `holm_h` | 60 | mm | [A] Querholm Hoehe 60 mm: Rechteckrohr 60 x 40 x 3 ueber ca. 1,2 m Spannweite (Portal) bzw. 0,6 m Kragarm (innen); Biegung 50 kg mittig 1,2 m = 150 Nm, W ca. 10 cm3 -> ca. 15 N/mm2 gegen S235 235 N/mm2 [E] |
 | `holm_overhang` | 30 | mm | [A] Holm steht je Seite 30 mm ueber die Beine |
-| `bock_inset` | 250 | mm | [A] Abstand Bock zur Rinnenstirn (Ueberstand 250) |
+| `bock_inset` | 250 | mm | [A] Abstand Bock zur Stirn der KUERZESTEN Reihe (250 mm) |
 | `leg_inset` | 25 | mm | [A] Beinmitte um 25 mm nach innen von der Holmkante |
-| `strut_z` | 250 | mm | [A] Querstrebe/Laengsstrebe auf Hoehe 250 ueber Boden |
-| `foot_plate` | 80 | mm | [A] Fussplatte 80 x 80 x 5 |
+| `strut_z` | 800 | mm | [A] Querstrebe/Laengsstreben/Diagonalen UEBER den Pflanzen (Beet-Oberkante Z 475, Pflanzen bis ca. Z 560), Portal ausserhalb der Beete; innen Laengsstrebe auf Z 400 (Ausleger ausserhalb des Beckenrands) |
+| `foot_plate` | 100 | mm | [A] Fussplatte 100 x 100 x 5, 2 Schrauben M8 (Beine tragen Kippmoment der Ausleger) |
 | `foot_t` | 5 | mm | [A] |
 | `foot_hole` | 9 | mm | [E] Durchgangsloch fuer M8 (ISO 273 mittel 9) |
 | `clip_t` | 3 | mm | [A] Rinnenhalter aus 3-mm-Blech, 25 breit, 25 hoch |
@@ -30,92 +30,102 @@
 | `hose_gap` | 70 | mm | [A] freier Abstand zwischen Tuelle und Verteilerstutzen |
 | `col_od` | 50 | mm | [A] Sammelrohr d50 (Aussen 50, Wand 3; entspricht etwa DN40, Muffen d40/d32) |
 | `col_wall` | 3 | mm | [A] |
+| `corner_gap` | 100 | mm | [Orchestrator D18] Abstand von der Zehneck-Ecke (Sektorgrenze) zum Rinnen-/Verteilerende je Seite; der Abstand zwischen zwei Tischen ist 2 x corner_gap x cos 18 Grad = 190 mm |
+| `leg_clearance` | 60 | mm | [Orchestrator D18] Luft zwischen Beet-Aussenbreite (ibc_beet.json) und Bein |
 
-| Typ | n | rinnen_abstand | rinne | z_rinne_mitte | laenge | herkunft |
-|---|---|---|---|---|---|---|
-| aussen | 3 | 288 | l | 1300 | 3232 | layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) |
-| mitte | 4 | 263 | m | 1300 | 1983 | layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 |
-| innen | 2 | 262 | k | 840 | 1304 | layout.json hydro_tables r 1733/1995, Rinnen-Unterkante Z 819-858 (Mittel 838,5, gerundet 840 = +1,5 mm), Abstand 262 |
+| Typ | n | rinnen_abstand | rinne | z_rinne_mitte | laenge | herkunft | ap_c | ap_c_herkunft |
+|---|---|---|---|---|---|---|---|---|
+| aussen | 3 | 288 | l | 1300 | 2750 / 2937 / 3124 (je Reihe) | layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 5209 mm ([E]) | 5209 | [E] Mittel der Beetradien aussen (layout.json ibc_beds r 5167-5276): Tischmitte auf der Beetmitte; 3 Rinnen, OBJ-Reihen 4888/5176 (+ 3. Reihe A), Abweichung ca. 33 mm |
+| mitte | 4 | 263 | m | 1300 | 1468 / 1639 / 1810 / 1981 (je Reihe) | layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 3343 mm ([E]) | 3343 | [E] Mittel der Beetradien innen (layout.json ibc_beds r 3311-3408): Tischmitte liegt auf der Beetmitte; OBJ-Reihen ap 2987-3775 (Mittel 3381, Abweichung 38 mm) |
+| innen | 2 | 262 | k | 840 | 678 / 848 (je Reihe) | layout.json hydro_tables r 1733/1995, Rinnen-Unterkante Z 819-858 (Mittel 838,5, gerundet 840 = +1,5 mm), Abstand 262 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 1864 mm ([E]) | 1864 | [E] Mittel der OBJ-Reihen ap 1733/1995 (layout.json hydro_tables); Pool Wasserradius 1945 |
 
-Gesamt-Box (Messung): X -1785.0 bis 1695.0, Y -413.0 bis 413.0, Z -25.0 bis 1424.3 mm; Koerper: 82.
+Gesamt-Box (Messung, Variante nft_tisch_aussen): X -1725.4 bis 1724.2, Y -656.5 bis 656.5, Z -25.0 bis 1423.5 mm; Koerper: 82.
 
-**Toleranzen / Spiel:** Rinnenunterkante = Holmoberkante an jedem Bock (Pruefung +-1 mm); Gefaelle 1,5 % +-0,03 %; Rinnenhoehe Z +-1,5 mm. Gewichte: Summe je Koerper nach Werkstoff (Stahl 7,85, PVC 1,4 g/cm3; die Messung am .sc enthaelt auch die verknuepften Rinnen).
+**Toleranzen / Spiel:** Rinnenunterkante = Holm-/Kragarm-Oberkante an jedem Bock (Pruefung +-1 mm); Gefaelle 1,5 % +-0,05 %; Rinnenhoehe Z +-1,5 mm; Lochlage je Rinne +-1,5 mm zur Rechnung; Abstand zwischen benachbarten Tischen an der Ecke >= corner_gap (100 mm; gemessen 171-190 mm); Beine/Fussplatten >= 30 mm von jedem Beet-Rechteck (leg_clearance 60 mm sollwert). Gewichte: Summe je Koerper nach Werkstoff (Stahl 7,85, PVC 1,4 g/cm3; die Messung am .sc enthaelt auch die verknuepften Rinnen).
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: Stahl verzinkt (Boecke), PVC/PE (Rohre, Schlaeuche), Dichte 7.85 g/cm3, Farbe #aeb4b8 (ref-6: graue/verzinkte Beine mit Halterungen)
-- Volumen (Messung, `solidcraft-cli eval`): 15969.3 cm3 · Masse leer: 42880 g (42.88 kg)
-- Variante `nft_tisch_aussen`: 42.88 kg leer
-- Variante `nft_tisch_mitte`: 38.32 kg leer
-- Variante `nft_tisch_innen`: 18.22 kg leer
+- Volumen (Messung, Variante nft_tisch_aussen, `solidcraft-cli eval`): 18457.4 cm3 · Masse leer: 69156 g (69.16 kg)
+- Variante `nft_tisch_aussen`: 69.16 kg leer
+- Variante `nft_tisch_mitte`: 57.28 kg leer
+- Variante `nft_tisch_innen`: 14.88 kg leer
 - Gefuellt/in Betrieb: Wasserfuellung der Rinnen (Film 10 mm, 1 l = 1 kg): aussen 3 x 4,0 = 12 kg, Mitte 4 x 2,5 = 10 kg, innen 2 x 1,6 = 3,2 kg [E]; Verteiler d25 und Sammelrohr d50 gefuellt je ca. 0,3-1,6 kg [E]
 
 ## Querschnitt / Profil
 
-Boecke: Beine, Querholm, Querstrebe aus Rechteckrohr verzinkt 30x30x2 bzw. 40x30x2; Diagonalen Flachstahl 25x3 gekreuzt; Fussplatten 80x80x5. Rinnen: Instanzen nft_rinne_<l|m|k>_<a|b>, Phase abwechselnd.
+Mitte/aussen: Portalbock aus Rechteckrohr verzinkt: Beine 40x40x3, Querholm 40 x 60 x 3 (Hoehe 60) ueber die Beet-Aussenbreite, Querstrebe 40x40x3 auf Z 800 (ueber den Pflanzen), Diagonalen Flachstahl 25x3 gekreuzt, Fussplatten 100x100x5 mit 2 x M8. Innen: Auslegerbock: je Bock ein Pfosten 40x40x3 ausserhalb des Beckenrands, Kragarm 40 x 60 x 3 ueber das Wasser, Laengsstrebe auf Z 400 unter dem Kragarm. Rinnen: Instanzen nft_rinne_<typ>_r<k> (eigene Laenge je Reihe), Phase 0 / pitch/2 abwechselnd.
 
 ## Ports (Anschluesse)
 
 | Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
 |---|---|---|---|
-| aussen: Zulauf Tisch (Verteilerrohr D25 offen, +Y-Ende) | Rohr d25, Wand 3 (Anschluss Rohr/Schlauch) | x -1772, y 413, z 1394 | Wasser tritt am +Y-Ende in das Rohr ein (Oeffnung zeigt nach +Y); Rohr d25 (etwa DN20) |
-| aussen: Ablauf Tisch (Sammelrohr d50 offen, +Y-Ende) | Rohr d50, Wand 3 (etwa DN40) | x 1670, y 413, z 1296 | Wasser verlaesst das Rohr am +Y-Ende (Oeffnung zeigt nach +Y); Rohr d50 (etwa DN40); Gefaelle des Sammelrohrs zum Port nicht modelliert (horizontal) |
-| aussen: Verteiler-Stutzen je Rinne (n=3) | Schlauch ID 16, Durchfluss je Rinne 0,5 l/min (R06) | x -1715, y = Rinnenmitte, z 1394 | aus Verteiler, Richtung +X |
-| aussen: Fussplatten-Anker | M8, 2 Schrauben je Platte, Loch D9, Diagonalversatz +-25 | Fusspunkte z 5; aussen: Beinabstand y 596, Bockabstand x 2732; mitte: Beinabstand y 809, Bockabstand x 1483; innen: Beinabstand y 282, Bockabstand x 804 (je Bock zwei Fuesse bei y = +-Beinabstand/2) | Befestigung auf Boden/Betonpunkt, Richtung -Z |
-| mitte: Zulauf Tisch (Verteilerrohr D25 offen, +Y-Ende) | Rohr d25, Wand 3 (Anschluss Rohr/Schlauch) | x -1148, y 520, z 1385 | Wasser tritt am +Y-Ende in das Rohr ein (Oeffnung zeigt nach +Y); Rohr d25 (etwa DN20) |
-| mitte: Ablauf Tisch (Sammelrohr d50 offen, +Y-Ende) | Rohr d50, Wand 3 (etwa DN40) | x 1046, y 520, z 1305 | Wasser verlaesst das Rohr am +Y-Ende (Oeffnung zeigt nach +Y); Rohr d50 (etwa DN40); Gefaelle des Sammelrohrs zum Port nicht modelliert (horizontal) |
-| mitte: Verteiler-Stutzen je Rinne (n=4) | Schlauch ID 16, Durchfluss je Rinne 0,5 l/min (R06) | x -1090, y = Rinnenmitte, z 1385 | aus Verteiler, Richtung +X |
-| mitte: Fussplatten-Anker | M8, 2 Schrauben je Platte, Loch D9, Diagonalversatz +-25 | Fusspunkte z 5; aussen: Beinabstand y 596, Bockabstand x 2732; mitte: Beinabstand y 809, Bockabstand x 1483; innen: Beinabstand y 282, Bockabstand x 804 (je Bock zwei Fuesse bei y = +-Beinabstand/2) | Befestigung auf Boden/Betonpunkt, Richtung -Z |
-| innen: Zulauf Tisch (Verteilerrohr D25 offen, +Y-Ende) | Rohr d25, Wand 3 (Anschluss Rohr/Schlauch) | x -808, y 256, z 920 | Wasser tritt am +Y-Ende in das Rohr ein (Oeffnung zeigt nach +Y); Rohr d25 (etwa DN20) |
-| innen: Ablauf Tisch (Sammelrohr d50 offen, +Y-Ende) | Rohr d50, Wand 3 (etwa DN40) | x 706, y 256, z 850 | Wasser verlaesst das Rohr am +Y-Ende (Oeffnung zeigt nach +Y); Rohr d50 (etwa DN40); Gefaelle des Sammelrohrs zum Port nicht modelliert (horizontal) |
-| innen: Verteiler-Stutzen je Rinne (n=2) | Schlauch ID 16, Durchfluss je Rinne 0,5 l/min (R06) | x -751, y = Rinnenmitte, z 920 | aus Verteiler, Richtung +X |
-| innen: Fussplatten-Anker | M8, 2 Schrauben je Platte, Loch D9, Diagonalversatz +-25 | Fusspunkte z 5; aussen: Beinabstand y 596, Bockabstand x 2732; mitte: Beinabstand y 809, Bockabstand x 1483; innen: Beinabstand y 282, Bockabstand x 804 (je Bock zwei Fuesse bei y = +-Beinabstand/2) | Befestigung auf Boden/Betonpunkt, Richtung -Z |
+| aussen: Zulauf Tisch (Verteilerrohr D25 offen, +Y-Ende, schraeg) | Rohr d25, Wand 3 (Anschluss Rohr/Schlauch) | x -1714, y 413, z 1392 (Achse laeuft schraeg: dx/dy = -tan 18 Grad) | Wasser tritt am +Y-Ende in das Rohr ein (Oeffnung zeigt nach +Y, 18 Grad zur Y-Achse geneigt); Rohr d25 (etwa DN20) |
+| aussen: Ablauf Tisch (Sammelrohr d50 offen, +Y-Ende, schraeg) | Rohr d50, Wand 3 (etwa DN40) | x 1700, y 413, z 1298 (Achse dx/dy = +tan 18 Grad) | Wasser verlaesst das Rohr am +Y-Ende (Oeffnung zeigt nach +Y); Rohr d50 (etwa DN40); Gefaelle des Sammelrohrs zum Port nicht modelliert (horizontal) |
+| aussen: Verteiler-Stutzen je Rinne (n=3) | Schlauch ID 16, Durchfluss je Rinne 0,5 l/min (R06) | x -1429, -1522, -1616 (Stutzenspitze je Reihe), y = Rinnenmitte, z ca. 1392 | aus Verteiler, Richtung +X |
+| aussen: Fussplatten-Anker | M8, 2 Schrauben je Platte (100 x 100 x 5), Loch D9, Diagonalversatz +-35 | Fusspunkte z 5 an: x -1080 / y -606; x -1080 / y 606; x 1170 / y -606; x 1170 / y 606 | Befestigung auf dem Boden/Betonpunkt, Richtung -Z |
+| mitte: Zulauf Tisch (Verteilerrohr D25 offen, +Y-Ende, schraeg) | Rohr d25, Wand 3 (Anschluss Rohr/Schlauch) | x -1142, y 520, z 1383 (Achse laeuft schraeg: dx/dy = -tan 18 Grad) | Wasser tritt am +Y-Ende in das Rohr ein (Oeffnung zeigt nach +Y, 18 Grad zur Y-Achse geneigt); Rohr d25 (etwa DN20) |
+| mitte: Ablauf Tisch (Sammelrohr d50 offen, +Y-Ende, schraeg) | Rohr d50, Wand 3 (etwa DN40) | x 1129, y 520, z 1307 (Achse dx/dy = +tan 18 Grad) | Wasser verlaesst das Rohr am +Y-Ende (Oeffnung zeigt nach +Y); Rohr d50 (etwa DN40); Gefaelle des Sammelrohrs zum Port nicht modelliert (horizontal) |
+| mitte: Verteiler-Stutzen je Rinne (n=4) | Schlauch ID 16, Durchfluss je Rinne 0,5 l/min (R06) | x -788, -874, -959, -1044 (Stutzenspitze je Reihe), y = Rinnenmitte, z ca. 1383 | aus Verteiler, Richtung +X |
+| mitte: Fussplatten-Anker | M8, 2 Schrauben je Platte (100 x 100 x 5), Loch D9, Diagonalversatz +-35 | Fusspunkte z 5 an: x -439 / y -576; x -439 / y 576; x 529 / y -576; x 529 / y 576 | Befestigung auf dem Boden/Betonpunkt, Richtung -Z |
+| innen: Zulauf Tisch (Verteilerrohr D25 offen, +Y-Ende, schraeg) | Rohr d25, Wand 3 (Anschluss Rohr/Schlauch) | x -576, y 256, z 916 (Achse laeuft schraeg: dx/dy = -tan 18 Grad) | Wasser tritt am +Y-Ende in das Rohr ein (Oeffnung zeigt nach +Y, 18 Grad zur Y-Achse geneigt); Rohr d25 (etwa DN20) |
+| innen: Ablauf Tisch (Sammelrohr d50 offen, +Y-Ende, schraeg) | Rohr d50, Wand 3 (etwa DN40) | x 563, y 256, z 854 (Achse dx/dy = +tan 18 Grad) | Wasser verlaesst das Rohr am +Y-Ende (Oeffnung zeigt nach +Y); Rohr d50 (etwa DN40); Gefaelle des Sammelrohrs zum Port nicht modelliert (horizontal) |
+| innen: Verteiler-Stutzen je Rinne (n=2) | Schlauch ID 16, Durchfluss je Rinne 0,5 l/min (R06) | x -393, -478 (Stutzenspitze je Reihe), y = Rinnenmitte, z ca. 916 | aus Verteiler, Richtung +X |
+| innen: Fussplatten-Anker | M8, 2 Schrauben je Platte (100 x 100 x 5), Loch D9, Diagonalversatz +-35 | Fusspunkte z 5 an: x -44 / y 341; x 134 / y 341 | Befestigung auf dem Boden/Betonpunkt, Richtung -Z |
 
 ## Verbindungen und Befestigungen
 
-- Beine an Fussplatte und Querholm: geschweisst (MAG), danach verzinkt [A]
-- Fussplatten: 2 Schrauben M8x30 (hex_bolt) je Platte in den Boden/Betonpunkt, Loch D9
-- Diagonalen: je Ende Schraube M6x40 mit Mutter durch das Bein
+- Beine an Fussplatte und Querholm/Kragarm: geschweisst (MAG), danach verzinkt [A]
+- Fussplatten: 2 Schrauben M8x30 (hex_bolt) je Platte in den Boden/Betonpunkt, Loch D9; Kragarm-Pfosten innen mit Verbundankern (Kippmoment ca. 165 Nm, Statik nicht nachgewiesen)
+- Diagonalen (nur Portal): je Ende Schraube M6x40 mit Mutter durch das Bein
 - Rinnenhalter: L-Blech 3 mm, 25 x 25 x 25, je Rinnenseite und Bock, Schraube M5x12
-- Verteiler: Rohr d25 mit Stutzen D16 (Verklebung/Schweissen), Schlaeuche ID 16 auf Tuelle und Stutzen, Sammelrohr d50 mit Muffen d40/d32 auf den Ablaufstutzen
+- Verteiler: schraeges Rohr d25 mit Stutzen D16 (Verklebung/Schweissen), Schlaeuche ID 16 auf Tuelle und Stutzen; Sammelrohr d50 schraeg mit Muffen d40/d32 auf den Ablaufstutzen
 
 ## Herkunft (docs/provenance.md)
 
 | Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
 |---|---|---|---|---|
+| Rinnenlaenge je Reihe 678/848 (innen), 1468-1981 (Mitte), 2750-3124 (aussen) | je Reihe | E | Zehneck-Seite 2 x ap x tan 18 Grad (ap aus ap_c +- Reihenabstand) - 2 x corner_gap 100 - Ueberstaende 169 + 79 (Orchestrator D18, docs/jobs/W16-nft-tisch-passung.md); OBJ-Reihen nur als Beispiel | hoch |
+| Rinnenlaenge 1304 / 1983 / 3232 (OBJ-Beispiel je Ring) | nur Beleg des Problems | OBJ | layout.json hydro_tables: groesser als die Zehneck-Seite der Reihen (innen -178/-8, Mitte -42, aussen -56), daher ersetzt (D18) | hoch |
+| Beine ausserhalb der Beet-Aussenbreite (Portal): y = +-(bed_outer_w/2 + 60 + 50) | y +-587 (aussen), +-557 (Mitte) | E + A | bed_outer_w aus ibc_beet.json (993 / 933), leg_clearance 60 (D18), Fussplatte 100: Plattenkante 60 mm vom Beet | mittel |
+| Auslegerbock innen: Pfosten bei ap = Pool-Aussenradius 2095 + 60 + 50 | ap 2205 | E + A | layout.json pool.d/2 1945 + params.json wall 150 (A) + leg_clearance + Fussplatte/2; Kragarm 40x60x3 ueber das Wasser, Statik nicht nachgewiesen | niedrig |
+| Querholm/Kragarm Rechteckrohr 40 x 60 x 3, Beine 40x40x3 | 40x60x3; 40x40x3 | A + E | Biegung 50 kg mittig auf 1,2 m = 150 Nm, W ca. 10 cm3 -> ca. 15 N/mm2 gegen S235 235 N/mm2 | niedrig |
+| Querstrebe/Laengsstreben/Diagonalen auf Z 800 (innen Z 400) | Z 800 | A | ueber den Pflanzen (Beet-Oberkante Z 475, Pflanzen bis ca. 560); Portal steht ausserhalb der Beete | niedrig |
+| Verteiler und Sammelrohr schraeg entlang der Sektorgrenze (18 Grad) | dx/dy = +-tan 18 | E | jede Reihe hat anderen Abstand zur Ecke; schraeges Rohr haelt Ueberstand und corner_gap fuer alle Reihen gleich | mittel |
+| Rinnenmitte um +45 mm nach +X versetzt | +45 mm | E | (Ueberstand Zulaufseite 169 - Ablaufseite 79)/2 | hoch |
+| Lochraster je Reihe mit Phase 0 / pitch/2, n = floor(L/250) | Phase 0 / 125 | Bild + E | ref-6 Zickzack; Versatz je Reihe aus hole_plan() (tisch_geom.py), Loecher >= 46 mm vom Rinnenende | mittel |
+| Tischmitte auf der Beetmitte: ap_c aussen 5209, Mitte 3343, innen 1864 | mm | E + A | Mittel der Beetradien (ibc_beds r) bzw. Mittel der OBJ-Reihen innen; Abweichung zum OBJ 33-38 mm | mittel |
+| Tischzahl je Sektor: innen 10, Mitte 6 (Sektoren 0-2, 7-9), aussen 8 (0-3, 6-9) | 24 | OBJ | Beet-Azimute in layout.json ibc_beds (5,3 + 36 Grad x i) | mittel |
 | Rinnenzahl 2 / 4 / 3 | 2/4/3 | OBJ + Ben + A | layout.json hydro_tables (2 innen, 4 Mitte, 2 aussen im OBJ/Bild); aussen 3: Ben (Bild/OBJ zeigen nur 2, oasis-obj-analysis) + A Anzahl nach Beetbreite 933-993 | mittel |
 | Rinnenabstand 262 / 263 / 288 | 262 / 263 / 288 mm | OBJ | layout.json hydro_tables (Abstand der Rinnen) | hoch |
-| Rinnenlaenge 1304 / 1983 / 3232 | 1304 / 1983 / 3232 mm | OBJ | layout.json hydro_tables | hoch |
 | Hoehe Rinnenunterkante (Boden) bei x=0: Z 840 / 1300 / 1300 | 840 / 1300 / 1300 | OBJ | layout.json hydro_tables Z (Unterkanten 819-858, 1280-1330, 1291-1325), Mittel 838,5 / 1307 / 1308 gerundet (Abweichung <= 8 mm) | mittel |
 | Zickzack Versatz pitch/2 = 125 | 125 mm | Bild | ref-6 mittlerer Tisch (zwei versetzte Reihen zwischen Nachbarrinnen); Scope-Card nft_tisch | hoch |
 | Gefaelle 1,5 % (0,86 Grad) | 1,5 % (0,86 Grad) | R06 | docs/research/R06.md: 1,3-3 % (Morgan, Greenhouse Mgmt), FarmHub 1 % | mittel |
-| Zwei Boecke = 4 Beine, Abstand zur Rinnenstirn 250 | 2 Boecke (4 Beine) | Scope-Card + A | docs/scope-cards.md nft_tisch: 4 Beine mit Querstreben, Diagonalen; ref-6: zwei Beinpaare je Tisch (Bild-Kritiker: keine Mittelbeine); Abstand 250 geschaetzt | mittel |
-| Rechteckrohr 30x30x2 / 40x30x2 | 30x30x2; 40x30x2 | A + OBJ | Beine 30x30 aus OBJ-Analyse (Tank); ref-6 zeigt flache Beine/Winkel mit Halterungen | niedrig |
 | Gekreuzte Diagonalen Flachstahl 25x3 | 2 je Bock | Bild + A | ref-6: schraege Stuetzen an den Beinen; Scope-Card verlangt Diagonalen | mittel |
-| Fussplatten 80x80x5, M8 | 80x80x5 | A | Standard-Fusspaltte; ref-6 zeigt Winkelfuesse | niedrig |
 | Rinnenhalter L-Blech 25x25x3, M5 | 25x25x25 x 3 mm, M5x12 | Bild + A | ref-6: kleine Befestigungspunkte an der Rinnenseitenwand (Bild-Kritiker B3) | niedrig |
 | Zulaufverteiler d25 mit n Stutzen, Schlauch ID 16 / AD 20 (hellblau) | d25; Schlauch ID16/AD20 | Bild + A | ref-6: hellblaue Schlaeuche am Tischende, ein Schlauch je Rinne; Masse A | mittel |
 | Sammelrohr d50 mit Muffen | d50, Muffen d40/d32 | A | Scope-Card: Sammelablauf; Mass A (keine Quelle) | niedrig |
 | Durchfluss je Rinne 0,5 l/min | 0,5 l/min je Rinne | R06 | docs/research/R06.md | mittel |
 | Anzahl Tische 10 / 6 / 8 | 10 / 6 / 8 | OBJ + Ben | components.md NFT-Ringe (Sektoren je Ring) | mittel |
-| Laengsstreben 30x30x2 auf Hoehe 250 (Bodenrahmen) | 30x30x2, z 250 | A | statisch noetig (Aussteifung der zwei Boecke); in ref-6 durch Beete verdeckt (Bild-Kritiker vermutet: nicht sichtbar) | niedrig |
+| Diagonalenschrauben M6x40 mit Mutter | M6x40 | A + Normteil | SolidCraft parts.insert hex_bolt/hex_nut M6 | mittel |
 | Zulaufverteiler: Achse auf Hoehe der Tuellenachse (+70 mm), freier Schlauchabschnitt 70 mm (hose_gap) | 70 / 70 | E + A | Rinne: Tuelle z 70 (nft_rinne.json); hose_gap Annahme | niedrig |
 | Sammelrohr: Achse auf Hoehe der Ablaufachse der Rinne (+20 mm ueber dem tiefen Rinnenende) | 20 | E | Rinne: Ablaufstutzen z 20 (nft_rinne.json) | mittel |
 | Holmueberstand 30 mm, Beineinzug 25 mm | 30 / 25 | A | Konstruktionspraxis (Holm ragt je Seite 30 mm ueber die Beine) | niedrig |
-| Diagonalenschrauben M6x40 mit Mutter | M6x40 | A + Normteil | SolidCraft parts.insert hex_bolt/hex_nut M6 | mittel |
+| Zwei Boecke je Tisch (4 Beine Portal, 2 Pfosten innen), Abstand zur Stirn der kuerzesten Reihe 250 | 2 Boecke | Scope-Card + A | docs/scope-cards.md nft_tisch (4 Beine mit Querstreben, Diagonalen); innen 2 Pfosten wegen Pool (D18) | mittel |
+| Fussplatten 100x100x5, M8 | 100x100x5 | A | Kippmoment der Ausleger und Plattenkante-Abstand 60 mm zum Beet | niedrig |
 
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-6-grow-tables-detail.jpg (Tisch: Platte aus Rinnen auf Boecken, Schlaeuche am Tischende hellblau); reference/ref-4 und ref-5 (Ringanordnung)
-- Quelle der Masse: docs/components.md und data/layout.json hydro_tables (Hoehe Z, Rinnenabstand, Laenge); ref-6: weisse Platte aus Rinnen auf Boecken, Verteilerschlaeuche hellblau am Tischende
-- Abweichung zum OBJ: OBJ: hydro_tables je Ring nur ein Beispiel (2 Rinnen aussen, Platten ohne Beine); Hoehe Z (Rinnenmitte) innen 840, Mitte/aussen 1300 als Mittel der OBJ-Werte (819-858, 1280-1330, 1291-1325); die Ringlage (Azimut, Apothem) kommt vom Integrator.
+- Quelle der Masse: data/layout.json hydro_tables, ibc_beds, pool; Rinnenlaenge je Reihe aus der Zehneck-Seite (D18, docs/jobs/W16-nft-tisch-passung.md); Beetbreite aus data/components/ibc_beet.json
+- Abweichung zum OBJ: layout.json hydro_tables liefert je Ring nur ein Beispiel (Reihen ap 1733/1995 innen, 2987-3775 Mitte, 4888/5176 aussen) mit gleicher Rinnenlaenge 1304/1983/3232; diese Laengen sind groesser als die Zehneck-Seite 2 x ap x tan 18 Grad der Reihe (innen 1126/1296, Mitte 1916-2429, aussen 3198-3572) und kollidierten an den Ecken (Ben-Fund 29.10.). Rev. B folgt D18: Rinnenlaenge je Reihe = Zehneck-Seite - 2 x corner_gap (100) - Ueberstaende (Zulaufseite 169, Ablaufseite 79); Ergebnis innen 678/848, Mitte 1468/1639/1810/1981, aussen 2750/2937/3124 mm. Folge: Topfloecher je Tisch innen 5 statt 10, Mitte 25 statt 28, aussen 34 statt 36; gesamt 472 statt 556 (check_nft_fit.py). Tischmitte liegt auf der Beetmitte (Mittel der Beetradien: aussen 5209, innen-Beet 3343) und weicht von den OBJ-Reihen um 33-38 mm ab (Annahme A, Layout/Integrator). Die Tisch-Beine des OBJ stehen nicht im Layout (Platten ohne Beine). Die Z-Hoehen bleiben (innen 840, Mitte/aussen 1300). Ausrichtung: X tangential (+X Sammelrohr/tiefes Ende), Y radial nach aussen; die Instanz wird mit yaw = Azimut + 90 Grad auf die Sektorachse gesetzt.
 
 ## Montage (L4)
 
-1. Boecke am Boden ausrichten, Fussplatten mit M8 verschrauben
-2. Querstreben und Laengsstreben einsetzen, Diagonalen verschrauben
-3. Rinnen auf die Querholme legen (Zulaufende hoeher), Halteclips M5 setzen
-4. Zulaufverteiler an die Boecke haengen, Schlaeuche ID 16 auf Stutzen und Tuellen
+1. Bock am Boden ausrichten: Portal ausserhalb der Beete bzw. Pfosten ausserhalb des Pools, Fussplatten mit M8 / Verbundankern verschrauben
+2. Querstrebe und Laengsstreben einsetzen, Diagonalen verschrauben (Portal)
+3. Rinnen auf die Querholme/Kragarme legen (Zulaufende hoeher), Halteclips M5 setzen
+4. Zulaufverteiler schraeg entlang der Sektorgrenze haengen, Schlaeuche ID 16 auf Stutzen und Tuellen
 5. Sammelrohr mit Muffen auf die Ablaufstutzen stecken, Gefaelle kontrollieren (1,5 %)
 
 **Werkzeug:** Wasserwaage/Gefaellelatte, Akkuschrauber, Schluessel M5/M6/M8, Bohrmaschine, Schweissgeraet (oder Winkelverbinder)
@@ -123,11 +133,14 @@ Boecke: Beine, Querholm, Querstrebe aus Rechteckrohr verzinkt 30x30x2 bzw. 40x30
 ## Stueckliste-Zeile
 
 - Pro Tisch je Typ (Laengen in mm):
--   aussen: Beine 4 x 30x30x2: Laenge 1285 (Zulauf-Bock) / 1245 (Ablauf-Bock), Beinabstand y 596; Holm 40x30x2 x 2: Laenge 766; Querstrebe 30x30x2 x 2: Laenge 566; Laengsstreben 30x30x2 x 2: Laenge 2702; Diagonalen 25x3 x 4: Laenge 1165/1130; Fussplatten 80x80x5 x 4; Rinnen 3 x nft_rinne_l (Laenge 3232); Verteiler d25: Laenge 826, 3 Stutzen d16; Sammelrohr d50: Laenge 826; Schlaeuche 3 x ID16/AD20 x 110
--   mitte: Beine 4 x 30x30x2: Laenge 1276 (Zulauf-Bock) / 1254 (Ablauf-Bock), Beinabstand y 809; Holm 40x30x2 x 2: Laenge 979; Querstrebe 30x30x2 x 2: Laenge 779; Laengsstreben 30x30x2 x 2: Laenge 1453; Diagonalen 25x3 x 4: Laenge 1279/1262; Fussplatten 80x80x5 x 4; Rinnen 4 x nft_rinne_m (Laenge 1983); Verteiler d25: Laenge 1039, 4 Stutzen d16; Sammelrohr d50: Laenge 1039; Schlaeuche 4 x ID16/AD20 x 110
--   innen: Beine 4 x 30x30x2: Laenge 811 (Zulauf-Bock) / 799 (Ablauf-Bock), Beinabstand y 282; Holm 40x30x2 x 2: Laenge 452; Querstrebe 30x30x2 x 2: Laenge 252; Laengsstreben 30x30x2 x 2: Laenge 774; Diagonalen 25x3 x 4: Laenge 597/586; Fussplatten 80x80x5 x 4; Rinnen 2 x nft_rinne_k (Laenge 1304); Verteiler d25: Laenge 512, 2 Stutzen d16; Sammelrohr d50: Laenge 512; Schlaeuche 2 x ID16/AD20 x 110
-- Je Bock: 2 Beine, 1 Holm, 1 Querstrebe, 2 Diagonalen, 2 Fussplatten, 4 Schrauben M8x30 (Fussplatten, 2 je Platte), 4 Schrauben M6x40 + 4 Muttern M6 (Diagonalen, 1 je Ende), 2 Rinnenhalter je Rinne (je Rinnenseite 1) mit Schraube M5x12; Bock-Anzahl je Tisch 2, Tische gesamt 10 / 6 / 8 (Boecke gesamt 48)
-- Dabei: 4 Duebel/Anker M8 je Bock (Boden), je 1 Endstopfen d25 und d50 je Tisch (-Y-Rohrende)
+-   aussen: Beine 4 x 40x40x3: Laenge 1252 / 1218, Beinabstand y 1213; Querholm 40x60x3 x 2: Laenge 1253; Querstrebe 40x40x3 x 2: Laenge 1173; Laengsstreben 40x40x3 x 2: Laenge 2210; Diagonalen 25x3 x 4; Fussplatten 100x100x5 x 4
+-      Rinnen (3): 2750 mm / 11 Loecher, 2937 mm / 11 Loecher, 3124 mm / 12 Loecher; Verteiler d25 schraeg: Laenge 869; Sammelrohr d50 schraeg: Laenge 869
+-   mitte: Beine 4 x 40x40x3: Laenge 1242 / 1228, Beinabstand y 1153; Querholm 40x60x3 x 2: Laenge 1193; Querstrebe 40x40x3 x 2: Laenge 1113; Laengsstreben 40x40x3 x 2: Laenge 928; Diagonalen 25x3 x 4; Fussplatten 100x100x5 x 4
+-      Rinnen (4): 1468 mm / 5 Loecher, 1639 mm / 6 Loecher, 1810 mm / 7 Loecher, 1981 mm / 7 Loecher; Verteiler d25 schraeg: Laenge 1092; Sammelrohr d50 schraeg: Laenge 1092
+-   innen: Pfosten 2 x 40x40x3: Laenge 776 / 774; Kragarm 40x60x3 x 2: Laenge 587; Laengsstrebe 40x40x3 x 1: Laenge 138 (Z 400); Fussplatten 100x100x5 x 2
+-      Rinnen (2): 678 mm / 2 Loecher, 848 mm / 3 Loecher; Verteiler d25 schraeg: Laenge 538; Sammelrohr d50 schraeg: Laenge 538
+- Je Bock (Portal): 2 Beine, 1 Holm, 1 Querstrebe, 2 Diagonalen, 2 Fussplatten, 4 Schrauben M8x30, 4 Schrauben M6x40 + 4 Muttern M6, 2 Rinnenhalter je Rinne mit Schraube M5x12; Bock-Anzahl 2 je Tisch. Je Bock (Ausleger): 1 Pfosten, 1 Kragarm, 1 Fussplatte, 2 Schrauben M8x30, 2 Rinnenhalter je Rinne.
+- Dabei: 4 Duebel/Anker M8 je Bock (Boden; innen Verbundanker), je 1 Endstopfen d25 und d50 je Tisch (-Y-Rohrende)
 
 ## Alternative lokale Fertigung
 
@@ -135,22 +148,41 @@ Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Sys
 
 ## Renders
 
+- `renders/components/nft_tisch_aussen/nft_tisch_aussen-01-iso.png`
+- `renders/components/nft_tisch_aussen/nft_tisch_aussen-02-zulauf.png`
+- `renders/components/nft_tisch_aussen/nft_tisch_aussen-03-bock.png`
+- `renders/components/nft_tisch_aussen/nft_tisch_aussen-04-ablauf.png`
+- `renders/components/nft_tisch_aussen/nft_tisch_aussen-05-oberseite.png`
+- `renders/components/nft_tisch_aussen/nft_tisch_aussen-06-querschnitt-bock.png`
+- `renders/components/nft_tisch_innen/nft_tisch_innen-01-iso.png`
+- `renders/components/nft_tisch_innen/nft_tisch_innen-02-zulauf.png`
+- `renders/components/nft_tisch_innen/nft_tisch_innen-03-bock.png`
+- `renders/components/nft_tisch_innen/nft_tisch_innen-04-ablauf.png`
+- `renders/components/nft_tisch_innen/nft_tisch_innen-05-oberseite.png`
+- `renders/components/nft_tisch_innen/nft_tisch_innen-06-querschnitt-bock.png`
+- `renders/components/nft_tisch_mitte/nft_tisch_mitte-01-iso.png`
+- `renders/components/nft_tisch_mitte/nft_tisch_mitte-02-zulauf.png`
+- `renders/components/nft_tisch_mitte/nft_tisch_mitte-03-bock.png`
+- `renders/components/nft_tisch_mitte/nft_tisch_mitte-04-ablauf.png`
+- `renders/components/nft_tisch_mitte/nft_tisch_mitte-05-oberseite.png`
+- `renders/components/nft_tisch_mitte/nft_tisch_mitte-06-querschnitt-bock.png`
 
 ## Pruefung
 
-- Gauntlet-Urteil: Bild-Kritiker: Referenz (Luecken trianguliert); Spec-Pruefer: FAIL behoben, Beinstandort offen (Orchestrator)
-- scripts/workshop/check_nft_tisch.py (Ergebnis renders/components/nft_tisch_aussen/check.txt): Rinnenzahl, Abstand, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Verteiler/Sammelrohr
-- Triage in docs/workshop-log.md
-- Bild-Kritiker (Kontextpaket): Referenz; grosse Luecken vermutet (Bockzahl, Rinnenbreite) -> Triage im Log; Bockzahl auf Scope-Card (4 Beine) umgestellt
+- Gauntlet-Urteil: offen
+- scripts/workshop/check_nft_tisch.py (121/121 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze
+- scripts/workshop/check_nft_fit.py (36/36 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische: Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite, Footprint-Abstand benachbarter Tische >= 100 (gemessen 171-190), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, Pfosten ausserhalb des Pools
+- Bild-Kritiker (Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innen/Aussen) und Spec-Pruefer: Runden siehe docs/workshop-log.md (W16)
 
 ## Offene Fragen
 
-- Aufhaengung des Verteilers an den Boecken (Rohrschellen) nicht modelliert
-- Eckengehrung/Zehneck-Lage und Azimut vom Integrator (Ring)
-- Halteclips und Verteiler sind Annahmen [A]; Statik des Tisches nicht nachgewiesen
-- Aussen 3 Rinnen (OBJ 2) als Annahme
-- Rinnenabstand 262-288 (OBJ) bei Rinnenbreite 130 laesst 132-158 mm Luecken; ref-6 zeigt fast buendige Rinnen: Widerspruch OBJ/Bild, OBJ gilt (provenance), beim Orchestrator/Ben nachfragen
-- Schlaeuche gerade statt gebogen (Zwischenbauteil, Montage-Sitzung), Kopfplatten/Winkelhalter an den Beinkoepfen nicht modelliert
-- STANDORT DER BEINE (components.md Z.44): Fusspunkte liegen auf Z=0 des Bauteils; die Innentische (Apothem 1733-1995) liegen ueber dem Pool (Wasserradius 1945): ihre Beine stuenden im Wasser -> Stuetzung des Innenrings (Ausleger/Konsole am Beckenrand oder Beine ausserhalb) ist OFFEN, Entscheidung beim Orchestrator/Integrator; Aussen/Mitte: Beine neben den Beeten auf dem Boden (Beinabstand siehe Ports), Kollision mit den Beeten vom Integrator zu pruefen
+- Statik der Portal-/Auslegerboecke nicht nachgewiesen (Querholm 40x60x3 ueber ca. 1,2 m: Biegung 50 kg mittig ca. 150 Nm, ca. 15 N/mm2 [E]; Kragarm innen ca. 165 Nm am Pfosten, Fussplatte/Verbundanker nachzurechnen)
+- Tischmitte = Beetmitte ist Annahme (OBJ-Reihen weichen um 33-38 mm ab); die Instanz-Platzierung gehoert dem Integrator (yaw = Azimut + 90 Grad, Y radial aussen)
+- Rinnenlaenge je Reihe ist die Folge von D18; weniger Topfloecher (472 statt 556) beim Orchestrator/Ben bestaetigen
+- Aufhaengung des Verteilers an den Boecken (Rohrschellen) nicht modelliert; Verteiler/Sammelrohr laufen frei schraeg
+- aussen 3 Rinnen (OBJ 2) bleibt Annahme; 3. Reihe liegt auf ap 5497 (aussen), im Beet-Radius 5209 + 288
+- Beine ausserhalb der Beete stehen im Gehweg: Durchgangsbreite zwischen den Beeten und Tischen vom Integrator zu pruefen (Beinabstand y aussen 1175)
+- Rinnenabstand 262-288 (OBJ) bei Rinnenbreite 130 laesst 132-158 mm Luecken; ref-6 zeigt fast buendige Rinnen: Widerspruch OBJ/Bild, OBJ gilt (provenance)
+- Schlaeuche gerade statt gebogen; Kopfplatten/Winkelhalter an den Beinkoepfen (W11) nicht modelliert
+- Innen: Pfosten stehen ausserhalb des Beckenrands (Wasserradius 1945 + Wand 150 + 60 + 50); der Kragarm ueberspannt Rand Z 650 mit 130 mm Luft; ein Stuetzwinkel am Pfosten ist wegen der Beckenwand nicht moeglich (Annahme A)
 - Gefaelle: detail-standard.md und Scope-Card nennen noch 1 cm/m, gebaut 1,5 % nach R06 (Orchestrator-Vorgabe)
-- Wasserfilm 10 mm ist ein Rinnenmerkmal (Blatt nft_rinne)

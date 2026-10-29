@@ -1,5 +1,6 @@
 """NFT-Tisch T22 (aussen / mitte / innen), Rev. B (W16, D18): je Reihe eigene Rinnenlaenge (Zehneck-Seite minus 2 x corner_gap), Zulaufverteiler und Sammelrohr schraeg entlang der Sektorgrenze,
 Portalbock mit Beinen ausserhalb der Beete (mitte/aussen) bzw. Auslegerbock mit Pfosten ausserhalb des Pools (innen). Geometrie: tisch_geom.py, Rinnenvarianten: rinnen_reihen.py.
+Tisch-KS: X tangential (OBJ-yaw = Azimut + 90 Grad), Y radial nach INNEN, Z hoch; Instanz mit yaw = Azimut + 90 Grad auf die Sektorachse bei ap_c setzen.
 Aufruf: python scripts/workshop/nft_tisch.py [typ ...] [--render]   (ohne Typ: alle drei)"""
 import sys, os, math
 sys.path.insert(0, os.path.dirname(__file__))
@@ -90,10 +91,10 @@ def build(typ):
                     b.add("parts.insert", family="hex_bolt", size="M6", length=40, point=[x + sx * (leg_w / 2 + 3), yy, zz], direction=[sx, 0, 0], name=f"SchraubeD_{i}{sx}{int(yy)}")
                     b.add("parts.insert", family="hex_nut", size="M6", point=[x - sx * leg_w / 2, yy, zz], direction=[-sx, 0, 0], name=f"MutterD_{i}{sx}{int(yy)}")
         else:       # Auslegerbock: Kragarm vom Pfosten (aussen, +Y) ueber den Pool bis hinter die innerste Rinne
-            y_in = -(Wt / 2 + p["holm_overhang"])
-            yl = G["yl"]
-            hlen = yl - y_in + leg_w / 2
-            member(b, f"Kragarm_{i}", dict(width=p["holm_w"], height=p["holm_h"], wall=lw), [x, (yl + leg_w / 2 + y_in) / 2, zh - p["holm_h"] / 2], [1, 0, 0], [0, 0, 1], hlen)
+            y_in = Wt / 2 + p["holm_overhang"]                       # Kragarm-Ende ueber dem Wasser (radial innen = +Y)
+            yl = G["yl"]                                             # Pfosten aussen = -Y
+            hlen = y_in - yl + leg_w / 2
+            member(b, f"Kragarm_{i}", dict(width=p["holm_w"], height=p["holm_h"], wall=lw), [x, (yl - leg_w / 2 + y_in) / 2, zh - p["holm_h"] / 2], [1, 0, 0], [0, 0, 1], hlen)
         # Rinnenhalter: L-Winkel 3 mm je Rinnenseite, 25 breit, auf dem Holm neben der Rinnenwand, Schraube M5
         for r in rows:
             y = r["y"]
@@ -113,14 +114,22 @@ def build(typ):
     ys = sorted(set(round(y, 3) for (_, y) in G["legs"]))
     for j, y in enumerate(ys):
         member(b, f"Laengs_{j + 1}", dict(width=leg_w, height=leg_w, wall=lw), [xb[0] + leg_w / 2, y, sz], [0, 1, 0], [0, 0, 1], xb[1] - xb[0] - leg_w, symmetric=False)
+    # Laengsdiagonalen (Flachstahl 25 x 3, ausserhalb der Beine) je Beinseite zwischen den Boecken: Laengsaussteifung (Befund Bild-Kritiker W16)
+    for j, y in enumerate(ys):
+        zbs = zrow(xb[1]) - p["holm_h"] - p["foot_t"]
+        z0_, z1_ = sz, zbs - 40
+        dx_, dz_ = xb[1] - xb[0], z1_ - z0_
+        ln_ = math.hypot(dx_, dz_)
+        yo = y + (leg_w / 2 + 1.5) * (1 if y > 0 else -1)
+        member(b, f"LDiag_{j + 1}", dict(width=3, height=25), [xb[0], round(yo, 3), z0_], [0, 1, 0], [-dz_ / ln_, 0, dx_ / ln_], ln_, symmetric=False, kind="bar")
     # --- Zulaufverteiler (-X): schraeges Rohr D25 entlang der Sektorgrenze, je Reihe Stutzen D16 und Schlauch zur Tuelle
     b.add("component.activate", component=root)
     b.add("component.create", name="T22d_Zulaufverteiler")
     ho = p["hdr_od"]
-    dvec, kk = skew(-1)
+    dvec, kk = skew(1)
     y0, y1 = -Wt / 2 - 60, Wt / 2 + 60
     hl = (y1 - y0) * kk
-    xbd = lambda y, sgn: sgn * ((G["apc"] + y) * TG.T18 - G["gap"])          # Sektorgrenze (Aussenkante des Rohrs) bei y
+    xbd = lambda y, sgn: sgn * ((G["apc"] - y) * TG.T18 - G["gap"])          # Sektorgrenze (Aussenkante des Rohrs) bei y
     zi_row = {r["k"]: zrow(r["xc"] - r["L"] / 2) + 70 for r in rows}
     zi = sum(zi_row.values()) / len(rows)
     xh0 = xbd(y0, -1) + ho / 2 * kk
@@ -149,7 +158,7 @@ def build(typ):
     b.add("component.activate", component=root)
     b.add("component.create", name="T22e_Sammelablauf")
     co = p["col_od"]
-    dvec2, kk = skew(1)
+    dvec2, kk = skew(-1)
     za_row = {r["k"]: zrow(r["xc"] + r["L"] / 2) + 20 for r in rows}
     za = sum(za_row.values()) / len(rows)
     xc0 = xbd(y0, 1) - co / 2 * kk

@@ -82,3 +82,12 @@ class Check:
         bad = [r for r in self.rows if not r[3]]
         print(f"== {self.name}: {len(self.rows) - len(bad)}/{len(self.rows)} PASS")
         return 0 if not bad else 1
+
+def faces_multi(sc_path, bodies):
+    """model.faces mehrerer Koerper in EINEM CLI-Lauf (grosse Designs werden nur einmal geladen): {name: [faces]}."""
+    script = os.path.join(TMP, "ws-faces-multi.json")
+    json.dump({"commands": [{"command": "model.faces", "params": {"body": b}} for b in bodies]}, open(script, "w"))
+    r = subprocess.run([CLI, "run", script, "--in", sc_path, "--results"], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER faces_multi: " + r.stderr.strip())
+    return {x["body"]: x["faces"] for x in json.loads(r.stdout)}

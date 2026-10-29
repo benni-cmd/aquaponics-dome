@@ -38,3 +38,12 @@ Sind alle Klassen im Board `eingebaut` und alle Checks PASS: (1) Foto-Latte (Con
 | Zwei Sitzungen in gleicher Rolle | doppelte Commits | Wachter mit Commit-Alter und ListAgents |
 | Berechtigungs-Ablehnung (Auto-Modus) | Aktion fehlt | nicht umgehen, im Checkpoint vermerken, weiter mit anderem |
 | Teures Bauteil ohne Commit > 20 min | Wachter koennte Doppelstart ausloesen | ListAgents-Pruefung (busy) verhindert es |
+
+## Kontext-Hygiene (Ben, 29.10. 12:35) — Werkstatt und Montage halten ihren Kontext unter 50-60 %
+Messwert beim Beschluss: Werkstatt 92 % (917k von 1M Token, davon 835k Nachrichten), Montage 11 %. Jeder weitere Zug liest den ganzen Kontext neu: das kostet Limit.
+Regel nach jedem sinnvollen groesseren Schritt (ein Bauteil oder eine Klasse fertig, Commit + Push erledigt):
+1. Eigenen Kontext messen (get_usage, session "self"). Unter 50 %: weiterarbeiten.
+2. Ab 50 %: Zwischenstand in die eigene Zustandsdatei schreiben (Werkstatt docs/workshop-state.md, Montage docs/loop-state.md): erledigter Schritt, naechster Schritt aus dem Plan, offene Punkte, laufende Messwerte. Committen + pushen.
+3. Dann `clear_session` mit session_id "self" als letzte Aktion des Zuges. Danach ist der Kontext leer; der Zustand liegt im Repo.
+4. Nach dem Leeren startet der naechste Anstoss (Orchestrator oder stuendlicher Auffang) die Sitzung wieder: erst docs/resume.md (eigener Abschnitt), dann die Zustandsdatei, dann den obersten Schritt des eigenen Next-Steps-Plans.
+Der Orchestrator darf eine Sitzung, die er gestartet hat und die idle ist, selbst leeren (clear_session mit ihrer ID), wenn sie ueber 60 % liegt und ihr Zustand committet ist.

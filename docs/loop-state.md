@@ -5,3 +5,7 @@
 - Nach Abbruch: `git status`, letzter Commit; `sh scripts/build.sh 4 NN` regeneriert alles.
 - ComfyUI/ControlNet erst nach den Schichten (Schlussschritt E). `renders/failed-photoreal-01.png`: img2img unbrauchbar.
 - Checkpoint (Limit 96 %, Reset in ~8 min): Erkundung Komponenten: SolidCraft kann echte Instanzen (`component.insert_design` = verlinkte Instanz eines Designs, `occurrence.copy`, `occurrence.move`, `component.copies`, `solid.pattern.*`). Plan: Bauteil als `designs/components/<name>.sc` bauen und per `component.insert_design` + `occurrence.move` platzieren. Naechster Schritt: `describe_command component.insert_design` und `occurrence.move`, dann Pflanztisch-Bauteil (Schritt 3a des Auftrags). Katalog (Anzahl): Strebe 63, Pflanztisch 10, Fasstank 6, Zentralpool 1, Mitteltank 1, Substratwanne 4, Salatkopf 210, Schlauch 6, Tuer 1, Rohr 1, Schaltschrank 1.
+
+## Checkpoint (Limit 0 %, 02:10): OBJ-Korrekturen (reference/oasis-obj-analysis.md)
+Reihenfolge: 1 Pool zentriert D3,89 (Wasser) + T6 entfaellt (nicht im OBJ) · 2 T7 = 4 Tanks (Azimut OBJ 147/237 klein, 131/252 gross, r 3,35 m) auf Plattformen + Pumpenmodule · 3 T9 = 14 IBC-Wannen · 4 NFT-Ring statt 10 Tische · 5 Strebenprofil 30x30 · 6 offene Fragen · check_latte neu. Azimut-Abbildung OBJ->Modell: +111 Grad (Tuerseite OBJ ~195 -> Modell -54).
+Jetzt kommt: Schritt 1+2.

@@ -32,3 +32,8 @@ Besitzer: Orchestrator (fuellt auf). Die Montage-Sitzung liest diese Datei als E
 
 ## Reserve
 M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/Schnitt · M8 ControlNet-Foto-Render mit farbigem Modell (Schlusschritt).
+
+## Auffuellung 29.10. 14:35 (Orchestrator)
+**M6 Viewer klein halten (zuerst, vor M1.3):** Problem: `viewer/model.obj` ist von 76 MB auf 320 MB gewachsen (Instanzen werden je Instanz voll exportiert); der Live-Viewer im Browser wird dadurch traege oder laedt nicht. Ziel: Export je Komponentendefinition EINMAL plus Instanz-Transformationen (three.js InstancedMesh bzw. Gruppen mit Matrix), Zielgroesse unter 40 MB, Ladezeit unter 10 s. Eingaben: `viewer/export_model.py`, `viewer/index.html`, `component.list` mit Instanzen/Transformationen (occurrence-Daten). Ergebnis: Export schreibt `model.obj` (nur Definitionen/Unikate) + `instances.json` (Name, Matrix, Farbe); Viewer baut daraus die Szene; Vorher/Nachher-Screenshot im Bildverlauf. Pruefung: gleiche Ansicht wie vorher (Screenshot-Vergleich), Zeit und Dateigroesse gemessen, Kamera bleibt beim Reload. Abhaengigkeit: keine.
+**M1.3 Netztoepfe/Salatkoepfe als Instanzen:** wie unter M1 Punkt 4 (2716 Instanzen) — Instanzen nur ueber den neuen Viewer-Pfad exportieren (M6), nicht als Koerper in model.obj.
+**M1.4 Innenring-Tische:** erst nach Werkstatt-Variante W16 (Beine ausserhalb Beet, Innenring Auflage auf Beckenrand); bis dahin offen.

@@ -27,3 +27,11 @@ Besitzer: Orchestrator (fuellt auf). Die Werkstatt liest diese Datei als Erstes,
 
 ## Reserve (rueckt nach, wenn ein Schritt fertig ist)
 W6 Pumpe/Filtermodul (OBJ-Module 502 x 345, 384 x 419, Platte 693 x 463) · W7 Salatkopf-Varianten S/M/L fuer Beet und Rinne feinern · W8 Haut-Paneel (R11, falls fertig).
+
+## Auffuellung 29.10. 08:25 (Orchestrator) — W1-W6 gebaut/abgenommen, ab hier arbeiten
+**W7 Abschluss Netztopf und Salatkopf:** Netztopf-Spec-Pruefer, Salatkopf-Kritiker Runde 3 (Kontextpaket), Fertigmeldung. Salatkopf sieht aus wie gestapelte Scheiben, ref-4/ref-6 zeigen buschige Salatkoepfe: Form feinern (mehr Blaetter, Falten), wenige Facetten halten (Export!). Pruefung: Vorpruefung, Bild-Kritiker (Ausschnitt ref-6 NUR Salatkopf), Blatt. Abhaengigkeit: keine.
+**W8 Knoten 4/5/6 (R02, Scope-Card `knoten_*`):** isoliert bauen: Platten/Huelsen, Normschrauben M10, Armrichtungen aus `layout.json`; drei Komponenten, Konfigurationen je Knoten moeglich. Ergebnis: `designs/components/knoten_{4,5,6}.sc`, Vorpruefung (Armzahl, Winkel), Blatt mit Herkunft, Kritiker + Spec-Pruefer. Abhaengigkeit: Scope-Card (steht).
+**W9 Fundamentanker (Scope-Card `fundamentanker`):** Ankerplatte, Bolzen, Betonpunkt; ein Bauteil. Pruefung wie oben.
+**W10 Leitungsteile-Bibliothek (Scope-Card `rohr...verteiler`):** Rohr (DN 25/32/50/110), Bogen 90/45, T-Stueck, Kugelhahn, Kupplung, Schlauchstueck, Klemme/Halter, Verteiler als Komponenten mit Ports; die Montage verlegt sie (M5). Ergebnis: je Teil Datei + Sammelblatt `docs/parts/leitungsteile.md` mit Herkunft; Vorpruefung (DN, Ports, Biegeradius).
+**W11 Reserve:** Winkelhalter am Beinkopf der NFT-Tische (L4), Beine/Plattform des Tanks klaeren (Beine ueber Plattform: Zweck im OBJ pruefen), Haut-Paneel (R11 steht aus).
+Hinweis: Die Montage-Sitzung laeuft derzeit nicht; Komponenten-DEFINITIONEN (isoliert) fuer Knoten, Anker und Leitungsteile liegen deshalb vorerst bei der Werkstatt, die Platzierung in `dome.sc` bleibt bei der Montage.

@@ -38,3 +38,21 @@ Format je Klasse: DRIN · DRAUSSEN · Anzahl je Eltern · Masse (Quelle) · Refe
 
 ## salatkopf, netztopf
 - **salatkopf DRIN:** EIN Bauteil, wenige Facetten, Varianten S/M/L; **DRAUSSEN:** Topf, Beet, Anzahl/Platzierung. **netztopf DRIN:** 50 x 64 x 63, Kragen; **DRAUSSEN:** Rinne/Beet, Pflanze.
+
+## knoten_4 / knoten_5 / knoten_6 (Kuppelknoten, R02) — Werkstatt baut isoliert, Montage platziert
+- **DRIN:** Nabe fuer 4/5/6 Streben als zwei Knotenplatten (oben/unten, Dicke `hub_plate_t` 6 mm A) mit Armen in den Strebenrichtungen aus den Knotenvektoren in `layout.json` (`dome.nodes_list`, Strebenrichtungen per Nachbarknoten), Stecklaenge `hub_insert` 80 mm, Normschrauben M10 (`parts.insert`) mit Mutter und Scheibe je Strebe, Schraubenbild, Bezugspunkt = Knotenmitte; Wertigkeit 4 (10 Stueck, Basis), 5 (6 Stueck, Apex und Ring 2), 6 (10 Stueck).
+- **DRAUSSEN:** Strebe (Komponente strebe_a/b), Haut, Fundamentanker, Tuerknoten-Sonderanschluss (Montage).
+- **Masse/Quelle:** Anzahl und Wertigkeit OBJ (26 Knoten: 10 vierwertig, 6 fuenfwertig, 10 sechswertig); Bauart R02 (Platten/Huelsen, kein Flachdruecken); Strebenteillaenge = Knoten-zu-Knoten minus 2 x `strut_end_offset` (120 mm A).
+- **Typische Fehlinterpretation:** Armwinkel gleich fuer alle Knoten (jeder Knoten hat eigene Richtungen); Streben als Teil des Knotens.
+- **Pruefzahlen:** Armzahl = Wertigkeit, Armwinkel aus Vektoren (Toleranz 0,5 Grad), Schrauben je Strebe >= 1, Gewicht.
+
+## fundamentanker (10 Stueck an den Basisknoten)
+- **DRIN:** Ankerplatte mit 2 Bolzen, Betonpunkt (Block im Erdreich, Mass A), Anschlusslaschen zum Basisknoten, Normschrauben.
+- **DRAUSSEN:** Knoten, Strebe, Fundamentring (Montage), Erde.
+- **Masse/Quelle:** Anzahl OBJ (10 Basisknoten); Block 400 x 400 x 600 mm A; Verankerung wie Ben: Skelett im Boden verankert.
+
+## rohr / bogen / t_stueck / ventil / kupplung / schlauch / klemme / verteiler (Leitungsteile, Bibliothek)
+- **DRIN:** je Teil Geometrie und Ports (Name, DN, Lage): Rohrstueck (DN parametrisch 25/32/50/110, Laenge parametrisch, Wandstaerke), Bogen 90 und 45 Grad, T-Stueck, Kugelhahn, Kupplung, Schlauchstueck (ID 16/25, Laenge, Biegeradius >= 5 x Aussendurchmesser, Farbe nach Funktion), Rohrklemme/Halter (fuer Boden und Beine), Verteiler mit n Anschluessen. Kuppelungen als Normteil (`parts.insert`), Farben nach `docs/hydraulics.md` Abschnitt 5.
+- **DRAUSSEN:** Verlegung und Weg (aus `data/system.json`, Montage), welcher Port womit verbunden ist, `routing surface/buried`.
+- **Masse/Quelle:** DN aus Fittings im OBJ (30-56 mm) und Bauteilblaettern (Rinne Stutzen d32, Tuelle ID 16, Tankzulauf DN50, Beet Standrohr/Ablauf); Normmasse PVC-U; Annahme A.
+- **Fehlinterpretation:** Rohrverlauf im Bauteil modellieren; jedes Rohr als Einzelkoerper statt Komponente.

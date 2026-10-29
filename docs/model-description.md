@@ -69,6 +69,7 @@ Wiederkehrende Teile als Komponenten (D12) · Zickzack-Pflanzmuster (Phase A/B d
 Tuer komplett (M3) · Rohrnetz aus dem Wasserweg-Graphen (M4, M5) · Laufwege-Umbau (M7, W17) · Haut/Paneele (R11) · vollstaendige Kollisionspruefung · Pflanzenartmodelle (7 Arten laut Tabelle, bewusst hinten) · Fragen an Ben: Innenring 6 oder 10 Tische, Zuchtbecken gleich zweites Becken, 2 oder 4 Pumpen, 2 oder 3 Rinnen je Aussentisch.
 
 ## 10. Verlauf (neueste zuerst)
+- 29.10. 22:20 Viewer: Bauteile als einklappbare Gruppenliste mit Zaehlern (24 NFT-Tische, 5252 Pflanzenteile, ...), Ein-/Ausblenden je Gruppe und Einzelteil, Hover und Klick leuchten durch andere Koerper (`viewer/index.html`).
 - 29.10. 21:35 Auslaufen wegen Wochenlimit (93 %): W07, W11, W17 gepusht, M7 als WIP gepusht; Arbeitsbaum sauber, alles auf GitHub (Commit 8eebd21). Offen: Laufweg B 476 mm statt 600, Spec-Pruefer W17, Tuer, Rohrnetz.
 - 29.10. 20:30 Beschreibung angelegt. Stand: 133 Komponentendateien, Bens Tabelle ausgewertet (R15), Laufwege-Regeln D28/D29, Wochenlimit-Regel.
 - 29.10. 19:20 Montage M1.4: 24 Tische Rev. B und 466 Rinnenpflanzen im Gesamtmodell.

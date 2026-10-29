@@ -1808,5 +1808,15 @@
   "note": "W17 Radialbudget: Draufsicht mit Massen, Querschnitt Wand-Beet-Weg",
   "commit": "75d0317",
   "source": "renders/components/nft_passung/radialbudget-02-querschnitt.png"
+ },
+ {
+  "file": "20261029-214943_orchestrator_viewer_viewer-gruppenliste-auswahl.jpg",
+  "sha": "2416e97ab398b283",
+  "time": "2026-10-29 21:49:43",
+  "role": "orchestrator",
+  "subject": "viewer",
+  "note": "Gruppenliste, Klick waehlt Tank, Auswahl leuchtet cyan",
+  "commit": "583ed39",
+  "source": "renders/viewer-gruppenliste-auswahl.jpg"
  }
 ]

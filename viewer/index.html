@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kuppel Live-Viewer</title>
 <style>
-  :root { --bg:#0f1720; --panel:#17212c; --line:#2a3846; --text:#e6edf3; --muted:#9fb0c0; --accent:#4cc38a; }
+  :root { --bg:#0f1720; --panel:#17212c; --line:#2a3846; --text:#e6edf3; --muted:#9fb0c0; --accent:#4cc38a; --hover:#ffc247; --sel:#4de1ff; }
   * { box-sizing: border-box; }
   html, body { margin:0; height:100%; background:var(--bg); color:var(--text); font:13px/1.4 system-ui, sans-serif; overflow:hidden; }
   #view { position:fixed; inset:0; }
-  #panel { position:fixed; top:10px; left:10px; width:250px; max-height:calc(100% - 20px); overflow:auto; background:var(--panel);
+  #panel { position:fixed; top:10px; left:10px; width:330px; max-height:calc(100% - 20px); overflow:auto; background:var(--panel);
            border:1px solid var(--line); border-radius:8px; padding:10px; }
   #panel h1 { font-size:14px; margin:0 0 6px; }
   #status { color:var(--muted); font-size:12px; margin-bottom:8px; }
@@ -17,10 +17,24 @@
   .row { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
   button { background:#223142; color:var(--text); border:1px solid var(--line); border-radius:5px; padding:4px 8px; cursor:pointer; font:inherit; }
   button:hover { border-color:var(--accent); }
-  label { display:flex; align-items:center; gap:6px; padding:1px 0; cursor:pointer; }
+  label.opt { display:flex; align-items:center; gap:6px; padding:1px 0; cursor:pointer; }
   .sw { width:10px; height:10px; border-radius:2px; border:1px solid #0006; flex:none; }
   input[type=range] { width:100%; }
   h2 { font-size:12px; margin:10px 0 4px; color:var(--muted); font-weight:600; }
+  /* Bauteilbaum */
+  #tree { font-size:12.5px; user-select:none; }
+  .node { display:flex; align-items:center; gap:5px; padding:2px 4px; border-radius:4px; cursor:default; }
+  .node:hover { background:#22303f; }
+  .node.hov { background:#3a3320; outline:1px solid var(--hover); }
+  .node.sel { background:#16384a; outline:1px solid var(--sel); }
+  .node .chev { width:12px; text-align:center; color:var(--muted); cursor:pointer; flex:none; }
+  .node .name { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .node .cnt { color:var(--muted); font-variant-numeric:tabular-nums; flex:none; }
+  .node input { margin:0; flex:none; }
+  .lvl1 { margin-left:14px; } .lvl2 { margin-left:28px; }
+  .cat > .node { font-weight:600; }
+  .kids { display:none; } .open > .kids { display:block; }
+  #sel { min-height:18px; color:var(--sel); font-size:12px; margin:4px 0; }
 </style>
 <script type="importmap">
 { "imports": { "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -36,15 +50,17 @@
     <button data-cam="iso">Ansicht ref-4</button><button data-cam="top">Oben</button>
     <button data-cam="side">Seite</button><button data-cam="pool">Pool</button> <a href="/history/" target="_blank" style="color:inherit">Bildverlauf</a>
   </div>
-  <label><input type="checkbox" id="wire"> Drahtgitter</label>
-  <label><input type="checkbox" id="auto" checked> Auto-Update</label>
+  <label class="opt"><input type="checkbox" id="wire"> Drahtgitter</label>
+  <label class="opt"><input type="checkbox" id="auto" checked> Auto-Update</label>
   <h2>Schnitt (Hoehe)</h2>
   <input type="range" id="clip" min="0" max="7000" value="7000">
+  <h2>Bauteile (Hover leuchtet, Klick waehlt)</h2>
+  <div class="row"><button id="expandAll">Alle auf</button><button id="collapseAll">Alle zu</button><button id="showAll">Alle zeigen</button><button id="clearSel">Auswahl weg</button></div>
+  <div id="sel"></div>
+  <div id="tree"></div>
+  <div id="perf" style="color:var(--muted);font-size:11px;margin-top:6px"></div>
   <h2>Bauteil-Stand (Board)</h2>
   <div id="board" style="font-size:12px"></div>
-  <div id="perf" style="color:var(--muted);font-size:11px;margin-top:6px"></div>
-  <h2>Gruppen</h2>
-  <div id="groups"></div>
 </div>
 <script type="module">
 import * as THREE from 'three';
@@ -85,14 +101,34 @@ function matFor(color, opacity) {
     transparent: opacity < 1, opacity, clippingPlanes: [clipPlane], depthWrite: opacity >= 1 }));
   return mats.get(key);
 }
+// Leucht-Materialien: zeichnen ueber allem (depthTest aus), schimmern also durch andere Koerper
+const hlMat = { hover: null, sel: null };
+for (const [k, col] of [['hover', 0xffc247], ['sel', 0x4de1ff]]) {
+  hlMat[k] = new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.7, depthTest: false, depthWrite: false, side: THREE.DoubleSide, clippingPlanes: [clipPlane] });
+}
 
-let model = null, extras = {}, groupsOn = {}, version = -1;
+let model = null, extras = {}, version = -1;
 const loader = new OBJLoader();
-const defCache = new Map();                                 // Definitionsname -> {text, built}: unveraenderte Definitionen werden nicht neu geladen
+const defCache = new Map();                                 // Definitionsname -> Text: unveraenderte Definitionen werden nicht neu geladen
+const hlGroup = new THREE.Group(); hlGroup.renderOrder = 999; scene.add(hlGroup);
 
-const baseName = n => n.replace(/ \(.*$/, '');            // Koerpernamen: "T1_Strebe_A", "Wanne (2)"
-function groupKey(name) { return baseName(name).replace(/_\d+[A-Z]?$/, '').replace(/ ?\d+$/, ''); }
+// ---- Bauteilbaum: Kategorie -> Gruppe -> Einzelteil -----------------------------------------------------------
+const CATS = [
+  ['Kuppel-Struktur', /^(strebe|knoten|fundamentanker|fundamentring)/],
+  ['Beete (Substrat)', /^ibc_beet/],
+  ['NFT-Systeme', /^(nft_|winkelhalter)/],
+  ['Tanks und Pumpen', /^(tank_|pumpe)/],
+  ['Rohre und Schlaeuche', /^(lt_|zulaufrohr|rohr|schlauch)/],
+  ['Pflanzen', /^(netztopf|salatkopf)/],
+  ['Becken und Gelaende', /^(pool|zweitbecken|erdflaeche)/],
+  ['Tuer', /^tuer/],
+  ['Technik', /^schaltschrank/],
+];
+const catOf = stem => (CATS.find(c => c[1].test(stem)) || ['Sonstiges'])[0];
+const leafKeyOf = stem => stem.replace(/_(n|r|t)\d+$/, '');   // Varianten (knoten_4_n17, nft_rinne_x_r3) zu einer Gruppe
+const pretty = s => s.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase());
 const DEFCOL = [[/^tank_/, '#93b49a'], [/^pumpe_/, '#2a5da8'], [/^ibc_beet/, '#c9ccc4'], [/^nft_tisch/, '#9aa6b2'], [/^strebe/, '#b9c0c8']];
+const baseName = n => n.replace(/ \(.*$/, '');            // Koerpernamen: "T1_Strebe_A", "Wanne (2)"
 function colorFor(name, def) {
   const base = baseName(name);
   const c = extras.colors && (extras.colors[base] || extras.colors[Object.keys(extras.colors).find(k => k.replace(/_\d+$/, '') === base.replace(/_\d+$/, ''))]);
@@ -106,20 +142,148 @@ function colorFor(name, def) {
   if (/Wasser|Medium/.test(base)) return matFor(/Wasser/.test(base) ? '#3c8ed0' : '#8a6f4d', /Wasser/.test(base) ? 0.85 : 1);
   return matFor(d ? d[1] : '#b0b8c0', 1);
 }
-function buildGroups() {
-  const keys = new Map();
-  model.traverse(o => { if (o.isMesh) { const k = o.userData.group; (keys.get(k) || keys.set(k, []).get(k)).push(o); } });
-  const box = document.getElementById('groups'); box.innerHTML = '';
-  [...keys.keys()].sort().forEach(k => {
-    const first = keys.get(k)[0], c = first.material.color.getStyle();
-    const n = keys.get(k).reduce((s, o) => s + o.count, 0);
-    const lab = document.createElement('label');
-    lab.innerHTML = `<input type="checkbox" checked><span class="sw" style="background:${c}"></span>${k} (${n})`;
-    lab.querySelector('input').addEventListener('change', e => { groupsOn[k] = e.target.checked; keys.get(k).forEach(o => o.visible = e.target.checked); });
-    if (k in groupsOn) { lab.querySelector('input').checked = groupsOn[k]; keys.get(k).forEach(o => o.visible = groupsOn[k]); }
-    box.appendChild(lab);
+
+// Zustand, der Neuladen ueberlebt
+const hiddenLeaf = new Set(), hiddenInst = new Set(), openNodes = new Set(['cat:NFT-Systeme']);
+let selected = null;                                        // { stem, idx }
+let hover = null;                                           // Liste [{stem, idx}] oder null
+// Modellindex (bei jedem load neu)
+let defMeshes = {}, defMats = {}, defList = {}, defCol = {}, leaves = new Map(), cats = new Map(), stemLeaf = {};
+
+const zero = new THREE.Matrix4().makeScale(0, 0, 0);
+function applyInstVisibility(stem, idx) {
+  const hide = hiddenInst.has(stem + '#' + idx) || hiddenLeaf.has(stemLeaf[stem]);
+  defMeshes[stem].forEach(im => { im.setMatrixAt(idx, hide ? zero : defMats[stem][idx]); im.instanceMatrix.needsUpdate = true; });
+}
+function setLeafVisible(key, on) {
+  on ? hiddenLeaf.delete(key) : hiddenLeaf.add(key);
+  leaves.get(key).stems.forEach(stem => defMeshes[stem].forEach(im => { im.visible = on; }));
+}
+function itemsOf(kind, key) {                               // alle {stem, idx} einer Kategorie / Gruppe
+  const out = [];
+  const stems = kind === 'cat' ? cats.get(key).leaves.flatMap(l => leaves.get(l).stems) : leaves.get(key).stems;
+  stems.forEach(s => defList[s].forEach((_, i) => { if (!hiddenInst.has(s + '#' + i)) out.push({ stem: s, idx: i }); }));
+  return out;
+}
+
+// ---- Leuchten (Hover = gelb, Auswahl = cyan), auch durch andere Koerper sichtbar ---------------------------------
+function rebuildHighlight() {
+  hlGroup.children.slice().forEach(o => { hlGroup.remove(o); o.dispose && o.dispose(); });
+  const add = (items, mat) => {
+    if (!items || !items.length) return;
+    const by = {}; items.forEach(it => (by[it.stem] || (by[it.stem] = [])).push(it.idx));
+    for (const [stem, idxs] of Object.entries(by)) {
+      if (!defMeshes[stem] || !defMeshes[stem][0].visible) continue;
+      defMeshes[stem].forEach(base => {
+        const im = new THREE.InstancedMesh(base.geometry, mat, idxs.length);
+        idxs.forEach((ix, j) => im.setMatrixAt(j, defMats[stem][ix]));
+        im.frustumCulled = false; im.renderOrder = 999; im.raycast = () => {}; hlGroup.add(im);
+      });
+    }
+  };
+  add(selected ? [selected] : null, hlMat.sel);
+  add(hover, hlMat.hover);
+}
+function setHover(items, node) {
+  hover = items; document.querySelectorAll('.node.hov').forEach(n => n.classList.remove('hov')); if (node) node.classList.add('hov'); rebuildHighlight();
+}
+
+// ---- Baum aufbauen ----------------------------------------------------------------------------------------------
+function buildTree(inst) {
+  leaves = new Map(); cats = new Map(); stemLeaf = {};
+  Object.keys(defList).forEach(stem => {
+    const lk = leafKeyOf(stem), ck = catOf(stem);
+    if (!leaves.has(lk)) leaves.set(lk, { key: lk, cat: ck, stems: [], count: 0, label: pretty(inst.defs[stem].cls.replace(/_(n|r|t)\d+$/, '')) });
+    const L = leaves.get(lk); L.stems.push(stem); L.count += defList[stem].length; stemLeaf[stem] = lk;
+    if (!cats.has(ck)) cats.set(ck, { key: ck, leaves: [], count: 0 });
+  });
+  leaves.forEach(L => { const C = cats.get(L.cat); if (!C.leaves.includes(L.key)) C.leaves.push(L.key); C.count += L.count; });
+  const box = document.getElementById('tree'), keep = document.getElementById('panel').scrollTop; box.innerHTML = '';
+  const order = CATS.map(c => c[0]).concat('Sonstiges');
+  [...cats.keys()].sort((a, b) => order.indexOf(a) - order.indexOf(b)).forEach(ck => {
+    const C = cats.get(ck), el = document.createElement('div'); el.className = 'cat'; el.dataset.key = 'cat:' + ck;
+    if (openNodes.has('cat:' + ck)) el.classList.add('open');
+    el.appendChild(nodeRow({ kind: 'cat', key: ck, label: ck, count: C.count, color: null, chev: true }));
+    const kids = document.createElement('div'); kids.className = 'kids';
+    C.leaves.sort().forEach(lk => {
+      const L = leaves.get(lk), le = document.createElement('div'); le.className = 'leaf lvl1'; le.dataset.key = 'leaf:' + lk;
+      if (openNodes.has('leaf:' + lk)) le.classList.add('open');
+      const many = L.count > 80;
+      le.appendChild(nodeRow({ kind: 'leaf', key: lk, label: L.label, count: L.count, color: defCol[L.stems[0]], chev: !many }));
+      if (!many) {
+        const ik = document.createElement('div'); ik.className = 'kids';
+        L.stems.forEach(stem => defList[stem].forEach((it, i) => ik.appendChild(nodeRow({ kind: 'inst', key: stem + '#' + i, stem, idx: i, label: it.n.replace(/_/g, ' '), count: '', color: null, chev: false }))));
+        le.appendChild(ik);
+      }
+      kids.appendChild(le);
+    });
+    el.appendChild(kids); box.appendChild(el);
+  });
+  document.getElementById('panel').scrollTop = keep;
+  refreshChecks(); markSelection();
+}
+function nodeRow(o) {
+  const n = document.createElement('div'); n.className = 'node' + (o.kind === 'inst' ? ' lvl2' : ''); n.dataset.nk = o.kind + ':' + o.key;
+  const on = o.kind === 'inst' ? !hiddenInst.has(o.key) : o.kind === 'leaf' ? !hiddenLeaf.has(o.key) : true;
+  n.innerHTML = `<span class="chev">${o.chev ? '▸' : ''}</span><input type="checkbox" ${on ? 'checked' : ''}>` +
+    (o.color ? `<span class="sw" style="background:${o.color}"></span>` : '') +
+    `<span class="name" title="${o.label}">${o.label}</span><span class="cnt">${o.count === '' ? '' : '(' + o.count + ')'}</span>`;
+  const items = () => o.kind === 'inst' ? [{ stem: o.stem, idx: o.idx }] : itemsOf(o.kind, o.key);
+  n.addEventListener('mouseenter', () => setHover(items(), n));
+  n.addEventListener('mouseleave', () => setHover(null, null));
+  n.querySelector('.chev').addEventListener('click', e => {
+    const p = n.parentElement; p.classList.toggle('open'); const id = p.dataset.key;
+    p.classList.contains('open') ? openNodes.add(id) : openNodes.delete(id); e.stopPropagation();
+  });
+  n.querySelector('input').addEventListener('change', e => toggle(o, e.target.checked));
+  n.addEventListener('click', e => {
+    if (e.target.tagName === 'INPUT' || e.target.classList.contains('chev')) return;
+    if (o.kind === 'inst') select({ stem: o.stem, idx: o.idx }, false);
+  });
+  return n;
+}
+function toggle(o, on) {
+  if (o.kind === 'inst') { on ? hiddenInst.delete(o.key) : hiddenInst.add(o.key); applyInstVisibility(o.stem, o.idx); }
+  else if (o.kind === 'leaf') setLeafVisible(o.key, on);
+  else cats.get(o.key).leaves.forEach(lk => setLeafVisible(lk, on));
+  refreshChecks(); rebuildHighlight();
+}
+function refreshChecks() {                                   // Haken und Teil-Zustand der Eltern nachziehen
+  document.querySelectorAll('#tree .leaf > .node').forEach(n => { const k = n.dataset.nk.slice(5); n.querySelector('input').checked = !hiddenLeaf.has(k); n.querySelector('input').indeterminate = false; });
+  document.querySelectorAll('#tree .cat').forEach(c => {
+    const ck = c.dataset.key.slice(4), ls = cats.get(ck).leaves, off = ls.filter(l => hiddenLeaf.has(l)).length, inp = c.querySelector(':scope > .node input');
+    inp.checked = off < ls.length; inp.indeterminate = off > 0 && off < ls.length;
   });
 }
+
+// ---- Auswahl durch Klick im Modell oder in der Liste ---------------------------------------------------------------
+function markSelection() {
+  document.querySelectorAll('.node.sel').forEach(n => n.classList.remove('sel'));
+  const sl = document.getElementById('sel');
+  if (!selected || !defList[selected.stem]) { sl.textContent = ''; return; }
+  const it = defList[selected.stem][selected.idx], lk = stemLeaf[selected.stem], L = leaves.get(lk);
+  sl.textContent = `Auswahl: ${it.n.replace(/_/g, ' ')} — ${L.label} (${L.cat})`;
+  const find = nk => document.querySelector(`[data-nk="${nk}"]`);
+  let row = find('inst:' + selected.stem + '#' + selected.idx);
+  [`leaf:${lk}`, `cat:${L.cat}`].forEach(id => { const p = document.querySelector(`[data-key="${id}"]`); if (p) { p.classList.add('open'); openNodes.add(id); } });
+  row = row || find('leaf:' + lk);
+  if (row) { row.classList.add('sel'); row.scrollIntoView({ block: 'nearest' }); }
+}
+function select(s, fromModel) { selected = s; markSelection(); rebuildHighlight(); }
+const ray = new THREE.Raycaster(), ptr = new THREE.Vector2(); let down = null;
+renderer.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
+renderer.domElement.addEventListener('pointerup', e => {
+  if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5 || !model) return;
+  ptr.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
+  const hit = ray.intersectObjects(model.children.filter(o => o.visible), false)[0];
+  if (hit && hit.instanceId !== undefined) select({ stem: hit.object.userData.def, idx: hit.instanceId }, true); else select(null, true);
+});
+document.getElementById('clearSel').addEventListener('click', () => select(null));
+document.getElementById('showAll').addEventListener('click', () => { hiddenInst.clear(); [...leaves.keys()].forEach(k => setLeafVisible(k, true)); defList && Object.keys(defList).forEach(s => defList[s].forEach((_, i) => applyInstVisibility(s, i))); document.querySelectorAll('#tree input').forEach(i => { i.checked = true; i.indeterminate = false; }); rebuildHighlight(); });
+document.getElementById('expandAll').addEventListener('click', () => document.querySelectorAll('#tree .cat, #tree .leaf').forEach(p => { p.classList.add('open'); openNodes.add(p.dataset.key); }));
+document.getElementById('collapseAll').addEventListener('click', () => document.querySelectorAll('#tree .cat, #tree .leaf').forEach(p => { p.classList.remove('open'); openNodes.delete(p.dataset.key); }));
+
+// ---- Laden ----------------------------------------------------------------------------------------------------------
 async function load() {
   const v = Date.now();
   const [inst, ex] = await Promise.all([fetch('instances.json?v=' + v).then(r => r.json()), fetch('extras.json?v=' + v).then(r => r.json())]);
@@ -130,21 +294,27 @@ async function load() {
     if (!defCache.has(key)) defCache.set(key, await fetch(`defs/${stem}.obj?k=${d.kb}`).then(r => r.text()));
   }));
   const byDef = {}; inst.instances.forEach(i => (byDef[i.d] || (byDef[i.d] = [])).push(i));
+  defMeshes = {}; defMats = {}; defList = {}; defCol = {};
   for (const [stem, list] of Object.entries(byDef)) {
     const g = loader.parse(defCache.get(stem + '|' + inst.defs[stem].kb));
-    const mats = list.map(i => new THREE.Matrix4().set(...i.m, 0, 0, 0, 1));
+    const mxs = list.map(i => new THREE.Matrix4().set(...i.m, 0, 0, 0, 1));
+    defMats[stem] = mxs; defList[stem] = list; defMeshes[stem] = [];
     g.traverse(o => {
       if (!o.isMesh) return;
-      const name = o.name || o.parent.name;
-      const im = new THREE.InstancedMesh(o.geometry, colorFor(name, stem), list.length);
-      mats.forEach((mx, i) => im.setMatrixAt(i, mx));
-      im.frustumCulled = false; im.name = name; im.userData.group = groupKey(name); m.add(im);
+      const name = o.name || o.parent.name, mat = colorFor(name, stem);
+      const im = new THREE.InstancedMesh(o.geometry, mat, list.length);
+      mxs.forEach((mx, i) => im.setMatrixAt(i, mx));
+      im.frustumCulled = false; im.name = name; im.userData.def = stem; m.add(im); defMeshes[stem].push(im);
+      if (!defCol[stem]) defCol[stem] = '#' + mat.color.getHexString();
     });
   }
   if (model) { scene.remove(model); model.traverse(o => o.geometry && !o.isInstancedMesh && o.geometry.dispose()); }
   model = m; scene.add(model);
+  Object.keys(defList).forEach(stem => { if (hiddenLeaf.has(leafKeyOf(stem))) defMeshes[stem].forEach(im => { im.visible = false; }); });
+  hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
+  if (selected && !defList[selected.stem]) selected = null;
   document.getElementById('perf').textContent = `${inst.instances.length} Instanzen, ${Object.keys(inst.defs).length} Definitionen, ${(Object.values(inst.defs).reduce((s, d) => s + d.kb, 0) / 1024).toFixed(1)} MB, Aufbau ${((performance.now() - t0) / 1000).toFixed(1)} s, Kleinteile < ${inst.min_diag} mm ausgeblendet`;
-  buildGroups(); applyWire();
+  buildTree(inst); applyWire(); rebuildHighlight();
 }
 function applyWire() { const w = document.getElementById('wire').checked; mats.forEach(m => m.wireframe = w); }
 document.getElementById('wire').addEventListener('change', applyWire);
@@ -174,7 +344,10 @@ async function pollBoard() {
 }
 setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard();
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
-(function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+(function loop(t) {
+  const p = 0.45 + 0.25 * Math.sin(t / 220); hlMat.hover.opacity = p; hlMat.sel.opacity = 0.35 + 0.25 * Math.sin(t / 300 + 1);
+  controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop);
+})(0);
 </script>
 </body>
 </html>

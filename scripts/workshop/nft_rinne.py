@@ -46,7 +46,8 @@ def build():
     b.add("component.activate", component="T20_NFT_Rinne")
     b.add("config.configure", params=["len_l", "n_holes", "shift"])      # L aussen, M Mitte, K innen; Phase A/B = Zickzack-Versatz im Tisch
     b.add("config.row", name="L_A")
-    for row, ln, n, sh in (("L_B", 3232, 12, 62.5), ("M_A", 1983, 7, -62.5), ("M_B", 1983, 7, 62.5), ("K_A", 1304, 5, -62.5), ("K_B", 1304, 5, 62.5)):
+    pt = p["pitch"]                                                       # W18: Lochzahl = floor(Laenge / pitch), Phase A/B = -+pitch/4 (Zickzack = pitch/2)
+    for row, ln, n, sh in (("L_B", 3232, int(3232 // pt), pt / 4), ("M_A", 1983, int(1983 // pt), -pt / 4), ("M_B", 1983, int(1983 // pt), pt / 4), ("K_A", 1304, int(1304 // pt), -pt / 4), ("K_B", 1304, int(1304 // pt), pt / 4)):
         b.add("config.row", name=row, **{"from": "L_A"}, values={"param:len_l": f"{ln} mm", "param:n_holes": str(n), "param:shift": f"{sh} mm"})
     b.add("config.activate", row="L_A")
     for nm, pn, ds in (("T20_NFT_Rinne", "T20", d["beschreibung"]), ("T20a_Profil", "T20a", "Rinnenprofil 130x100x2,5 mit Rippen und Topfoeffnungen"),

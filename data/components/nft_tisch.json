@@ -134,7 +134,7 @@
   "corner_gap": {
    "wert": 60,
    "einheit": "mm",
-   "herkunft": "[A] W17: Abstand Rinnenende/Rohr zur Sektorgrenze 60 mm (vorher 100, D18); noetig, damit die NFT-Mindestzahl 459 (R15, D27) mit den auf das Radialbudget verschobenen Aussentischen erreicht wird (gap 100 -> 442, gap 60 -> 462); Entscheidung beim Orchestrator/Ben"
+   "herkunft": "[A] W17: Abstand Rinnenende/Rohr zur Sektorgrenze 60 mm (vorher 100, D18); mit Lochabstand 200 (W18/D32) ergibt das 586 Topfloecher (Soll ca. 580; mit 100 nur 542); Entscheidung beim Orchestrator/Ben"
   },
   "leg_clearance": {
    "wert": 45,

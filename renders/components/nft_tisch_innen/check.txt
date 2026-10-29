@@ -3,15 +3,15 @@ PASS nft_tisch: innen Rinne 1 Querlage y: Ist -131, Soll -131 (+-0.5)
 PASS nft_tisch: innen Rinne 1 Laenge (Zehneck-Seite 1296 - 2 x 60 - Ueberstaende): Ist 927.925, Soll 928 (+-1)
 PASS nft_tisch: innen Rinne 1 Gefaelle in %: Ist 1.4675, Soll 1.5 (+-0.05)
 PASS nft_tisch: innen Rinne 1 Hoehe Boden an der Rinnenmitte: Ist 840, Soll 840 (+-1.5)
-PASS nft_tisch: innen Rinne 1 Loecher: Ist 3, Soll 3
-PASS nft_tisch: innen Rinne 1 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
+PASS nft_tisch: innen Rinne 1 Loecher: Ist 4, Soll 4
+PASS nft_tisch: innen Rinne 1 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.4, Soll 0 (+-1.5)
 PASS nft_tisch: innen Rinne 2 Querlage y: Ist 131, Soll 131 (+-0.5)
 PASS nft_tisch: innen Rinne 2 Laenge (Zehneck-Seite 1126 - 2 x 60 - Ueberstaende): Ist 757.925, Soll 758 (+-1)
 PASS nft_tisch: innen Rinne 2 Gefaelle in %: Ist 1.46025, Soll 1.5 (+-0.05)
 PASS nft_tisch: innen Rinne 2 Hoehe Boden an der Rinnenmitte: Ist 840, Soll 840 (+-1.5)
-PASS nft_tisch: innen Rinne 2 Loecher: Ist 2, Soll 2
+PASS nft_tisch: innen Rinne 2 Loecher: Ist 3, Soll 3
 PASS nft_tisch: innen Rinne 2 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.4, Soll 0 (+-1.5)
-PASS nft_tisch: innen Zickzack-Versatz 1/2 = pitch/2: Ist 124.9, Soll 125 (+-1.5)
+PASS nft_tisch: innen Zickzack-Versatz 1/2 = pitch/2: Ist 100, Soll 100 (+-1.5)
 PASS nft_tisch: innen Rinnenabstand 1: Ist 262, Soll 262 (+-0.5)
 PASS nft_tisch: innen Beine (ausleger): Ist 2, Soll 2
 PASS nft_tisch: innen Fussplatten: Ist 2, Soll 2
@@ -49,29 +49,29 @@ PASS nft_tisch: mitte Rinne 1 Querlage y: Ist -394.5, Soll -394.5 (+-0.5)
 PASS nft_tisch: mitte Rinne 1 Laenge (Zehneck-Seite 2386 - 2 x 60 - Ueberstaende): Ist 2017.92, Soll 2018 (+-1)
 PASS nft_tisch: mitte Rinne 1 Gefaelle in %: Ist 1.48496, Soll 1.5 (+-0.05)
 PASS nft_tisch: mitte Rinne 1 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
-PASS nft_tisch: mitte Rinne 1 Loecher: Ist 7, Soll 7
+PASS nft_tisch: mitte Rinne 1 Loecher: Ist 9, Soll 9
 PASS nft_tisch: mitte Rinne 1 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
 PASS nft_tisch: mitte Rinne 2 Querlage y: Ist -131.5, Soll -131.5 (+-0.5)
 PASS nft_tisch: mitte Rinne 2 Laenge (Zehneck-Seite 2215 - 2 x 60 - Ueberstaende): Ist 1846.92, Soll 1847 (+-1)
 PASS nft_tisch: mitte Rinne 2 Gefaelle in %: Ist 1.48359, Soll 1.5 (+-0.05)
 PASS nft_tisch: mitte Rinne 2 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
-PASS nft_tisch: mitte Rinne 2 Loecher: Ist 7, Soll 7
+PASS nft_tisch: mitte Rinne 2 Loecher: Ist 8, Soll 8
 PASS nft_tisch: mitte Rinne 2 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
 PASS nft_tisch: mitte Rinne 3 Querlage y: Ist 131.5, Soll 131.5 (+-0.5)
 PASS nft_tisch: mitte Rinne 3 Laenge (Zehneck-Seite 2044 - 2 x 60 - Ueberstaende): Ist 1675.92, Soll 1676 (+-1)
 PASS nft_tisch: mitte Rinne 3 Gefaelle in %: Ist 1.48193, Soll 1.5 (+-0.05)
 PASS nft_tisch: mitte Rinne 3 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
-PASS nft_tisch: mitte Rinne 3 Loecher: Ist 6, Soll 6
-PASS nft_tisch: mitte Rinne 3 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.4, Soll 0 (+-1.5)
+PASS nft_tisch: mitte Rinne 3 Loecher: Ist 7, Soll 7
+PASS nft_tisch: mitte Rinne 3 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
 PASS nft_tisch: mitte Rinne 4 Querlage y: Ist 394.5, Soll 394.5 (+-0.5)
 PASS nft_tisch: mitte Rinne 4 Laenge (Zehneck-Seite 1873 - 2 x 60 - Ueberstaende): Ist 1504.92, Soll 1505 (+-1)
 PASS nft_tisch: mitte Rinne 4 Gefaelle in %: Ist 1.4799, Soll 1.5 (+-0.05)
 PASS nft_tisch: mitte Rinne 4 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
 PASS nft_tisch: mitte Rinne 4 Loecher: Ist 6, Soll 6
-PASS nft_tisch: mitte Rinne 4 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
-PASS nft_tisch: mitte Zickzack-Versatz 1/2 = pitch/2: Ist 125, Soll 125 (+-1.5)
-PASS nft_tisch: mitte Zickzack-Versatz 2/3 = pitch/2: Ist 124.9, Soll 125 (+-1.5)
-PASS nft_tisch: mitte Zickzack-Versatz 3/4 = pitch/2: Ist 124.9, Soll 125 (+-1.5)
+PASS nft_tisch: mitte Rinne 4 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.4, Soll 0 (+-1.5)
+PASS nft_tisch: mitte Zickzack-Versatz 1/2 = pitch/2: Ist 100, Soll 100 (+-1.5)
+PASS nft_tisch: mitte Zickzack-Versatz 2/3 = pitch/2: Ist 100, Soll 100 (+-1.5)
+PASS nft_tisch: mitte Zickzack-Versatz 3/4 = pitch/2: Ist 99.9, Soll 100 (+-1.5)
 PASS nft_tisch: mitte Rinnenabstand 1: Ist 263, Soll 263 (+-0.5)
 PASS nft_tisch: mitte Rinnenabstand 2: Ist 263, Soll 263 (+-0.5)
 PASS nft_tisch: mitte Rinnenabstand 3: Ist 263, Soll 263 (+-0.5)
@@ -128,22 +128,22 @@ PASS nft_tisch: aussen Rinne 1 Querlage y: Ist -288, Soll -288 (+-0.5)
 PASS nft_tisch: aussen Rinne 1 Laenge (Zehneck-Seite 3419 - 2 x 60 - Ueberstaende): Ist 3050.92, Soll 3051 (+-1)
 PASS nft_tisch: aussen Rinne 1 Gefaelle in %: Ist 1.49, Soll 1.5 (+-0.05)
 PASS nft_tisch: aussen Rinne 1 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
-PASS nft_tisch: aussen Rinne 1 Loecher: Ist 11, Soll 11
+PASS nft_tisch: aussen Rinne 1 Loecher: Ist 15, Soll 15
 PASS nft_tisch: aussen Rinne 1 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
 PASS nft_tisch: aussen Rinne 2 Querlage y: Ist -7.10543e-15, Soll 0 (+-0.5)
 PASS nft_tisch: aussen Rinne 2 Laenge (Zehneck-Seite 3232 - 2 x 60 - Ueberstaende): Ist 2863.92, Soll 2864 (+-1)
 PASS nft_tisch: aussen Rinne 2 Gefaelle in %: Ist 1.48935, Soll 1.5 (+-0.05)
 PASS nft_tisch: aussen Rinne 2 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
-PASS nft_tisch: aussen Rinne 2 Loecher: Ist 11, Soll 11
+PASS nft_tisch: aussen Rinne 2 Loecher: Ist 14, Soll 14
 PASS nft_tisch: aussen Rinne 2 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
 PASS nft_tisch: aussen Rinne 3 Querlage y: Ist 288, Soll 288 (+-0.5)
 PASS nft_tisch: aussen Rinne 3 Laenge (Zehneck-Seite 3044 - 2 x 60 - Ueberstaende): Ist 2675.92, Soll 2676 (+-1)
 PASS nft_tisch: aussen Rinne 3 Gefaelle in %: Ist 1.48862, Soll 1.5 (+-0.05)
 PASS nft_tisch: aussen Rinne 3 Hoehe Boden an der Rinnenmitte: Ist 1300, Soll 1300 (+-1.5)
-PASS nft_tisch: aussen Rinne 3 Loecher: Ist 10, Soll 10
+PASS nft_tisch: aussen Rinne 3 Loecher: Ist 13, Soll 13
 PASS nft_tisch: aussen Rinne 3 Lochlage (max. Abweichung zur Rechnung, mm): Ist 1.5, Soll 0 (+-1.5)
-PASS nft_tisch: aussen Zickzack-Versatz 1/2 = pitch/2: Ist 125, Soll 125 (+-1.5)
-PASS nft_tisch: aussen Zickzack-Versatz 2/3 = pitch/2: Ist 125, Soll 125 (+-1.5)
+PASS nft_tisch: aussen Zickzack-Versatz 1/2 = pitch/2: Ist 100, Soll 100 (+-1.5)
+PASS nft_tisch: aussen Zickzack-Versatz 2/3 = pitch/2: Ist 100, Soll 100 (+-1.5)
 PASS nft_tisch: aussen Rinnenabstand 1: Ist 288, Soll 288 (+-0.5)
 PASS nft_tisch: aussen Rinnenabstand 2: Ist 288, Soll 288 (+-0.5)
 PASS nft_tisch: aussen Beine (portal): Ist 4, Soll 4

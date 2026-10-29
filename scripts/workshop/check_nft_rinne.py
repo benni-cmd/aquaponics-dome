@@ -29,7 +29,7 @@ def main():
         ck.eq(f"{row} Lochabstand", min(gaps), p["pitch"], 0.01); ck.eq(f"{row} Lochabstand max", max(gaps), p["pitch"], 0.01)
         ck.eq(f"{row} Lochdurchmesser", 2 * 26, p["hole_d"], 0.01)
         mid = (hs[0][0] + hs[-1][0]) / 2
-        ck.eq(f"{row} Phase (Mitte der Reihe)", mid, (-62.5 if row.endswith("a") else 62.5), 0.01)
+        ck.eq(f"{row} Phase (Mitte der Reihe)", mid, (-p["pitch"] / 4 if row.endswith("a") else p["pitch"] / 4), 0.01)
         pos[row] = mid
         # Wand: innere Seitenflaeche bei y = +-(65 - wall)
         inner = max(abs(f["centroid"][1]) for f in fs if f.get("plane_normal") and abs(f["plane_normal"][1]) > 0.99 and abs(f["centroid"][1]) < 64)

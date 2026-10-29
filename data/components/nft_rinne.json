@@ -115,14 +115,14 @@
    "herkunft": "[A] W18/D32 (Ben 29.10.): Lochabstand EINER Reihe 200 mm (vorher 250); Q: Iowa State 8 Zoll = 203 mm, HortTechnology 15 cm, FarmHub 150-250 (R16); einstellbar 150..250, Zickzack zu Nachbarrinnen = pitch/2 im Tisch (Rinnenabstand 262: kollisionsfrei bis 150)"
   },
   "n_holes": {
-   "wert": 12,
+   "wert": 16,
    "einheit": "",
-   "herkunft": "[E] = floor(len_l / pitch): L 12, M 7, K 5 (Pruefzahl Scope-Card: Lochzahl = Laenge/pitch abgerundet; Lochreihen = 1)"
+   "herkunft": "[E] = floor(len_l / pitch): Master L 16, M 9, K 6 (Pruefzahl Scope-Card: Lochzahl = Laenge/pitch abgerundet; Lochreihen = 1); die Tischreihen bekommen je Reihe eigene Zahl aus tisch_geom.hole_plan (Randabstand 64)"
   },
   "shift": {
-   "wert": -62.5,
+   "wert": -50.0,
    "einheit": "mm",
-   "herkunft": "[E] Phase der Lochreihe: Variante A -pitch/4, Variante B +pitch/4 -> benachbarte Rinnen im Tisch um pitch/2 versetzt (Zickzack)"
+   "herkunft": "[E] Phase der Lochreihe: Variante A -pitch/4 = -50, Variante B +pitch/4 -> benachbarte Rinnen im Tisch um pitch/2 = 100 versetzt (Zickzack)"
   }
  },
  "werkstoff": {
@@ -138,7 +138,7 @@
  "bezugspunkt": "Mitte der Rinnenlaenge, Mitte Breite, Rinnenboden Z=0; Zulaufende bei -X, Ablaufende bei +X; Rinne selbst gerade (Neigung/Gefaelle ist Sache des Tisches)",
  "blatt": {
   "funktion": "Fuehrt den Naehrloesungsfilm an den Wurzeln der Pflanzen vorbei (NFT); Zulauf am hoeheren Ende (-X), Ablauf am tieferen Ende (+X).",
-  "querschnitt": "Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf der Oberseite (y = +-38 und +-52, enden 20 mm vor den Kappen): Gesamthoehe 100; EINE Reihe Topfloecher D52 in der Mittellinie, Teilung 250 (L 12, M 7, K 5 Loecher), Reihe um shift = +-62,5 verschoben (Phase A/B fuer den Zickzack im Tisch).",
+  "querschnitt": "Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf der Oberseite (y = +-38 und +-52, enden 20 mm vor den Kappen): Gesamthoehe 100; EINE Reihe Topfloecher D52 in der Mittellinie, Teilung 200 (Master L 16, M 9, K 6 Loecher), Reihe um shift = +-50 verschoben (Phase A/B fuer den Zickzack im Tisch).",
   "toleranzen": "Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90 (Klebespalt, Fuge mit PVC-Kleber/Silikon 2 mm Kehlnaht, nicht als Koerper modelliert); Topfloch +2 mm zum Topf; Kragen R32 laesst 3,5 mm bis zur inneren Rippe.",
   "ports": [
    [
@@ -180,7 +180,7 @@
   ],
   "offen": [
    "Rippenprofil (vier Rippen 5x5) und Wandstaerke sind Annahmen [A]",
-   "Lochabstand 250 ist unsere Auslegung, ref-6 gibt kein Mass",
+   "Lochabstand 200 (D32, Ben 29.10.) gestuetzt auf Iowa State 8 Zoll = 203 mm und HortTechnology 15 cm (R16); einstellbar 150..250; ref-6 gibt kein Mass",
    "Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)",
    "Klebefuge der Endkappen nicht als Koerper modelliert",
    "Zickzack = Versatz benachbarter Rinnen im Tisch; die Rinne liefert nur die Lochphase A/B (Konfiguration shift +-pitch/4, Dateien nft_rinne_<l|m|k>_<a|b>.sc) - Scope-Card nft_rinne vom Orchestrator zu ergaenzen",

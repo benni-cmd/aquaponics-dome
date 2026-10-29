@@ -30,13 +30,13 @@
 
 ## Plan
 
-1. [ ] Sitzung in diesem Repo: SolidCraft-MCP pruefen, Parameter-Tabelle (Durchmesser, Hoehe, Frequenz) anlegen
-2. [ ] Geruest T1 + Sockel T3 + Tuer T4 bauen, Screenshot, gegen `ref-4` pruefen
-3. [ ] Tanks T5-T7 bauen, pruefen
-4. [ ] Anbaubetten-Ring T8 + Substratbeete T9, pruefen
-5. [ ] Rohr T10 + Schaltschrank T11, pruefen
-6. [ ] Verfeinerungsschleife (Latte unten), je Runde in `docs/loop-log.md` protokollieren
-7. [ ] Export `designs/dome.step`, Render-Screenshots in `renders/`, committen und pushen
+1. [x] Sitzung in diesem Repo: SolidCraft-MCP pruefen, Parameter-Tabelle (Durchmesser, Hoehe, Frequenz) anlegen
+2. [x] Geruest T1 + Sockel T3 + Tuer T4 bauen, Screenshot, gegen `ref-4` pruefen
+3. [x] Tanks T5-T7 bauen, pruefen
+4. [x] Anbaubetten-Ring T8 + Substratbeete T9, pruefen
+5. [x] Rohr T10 + Schaltschrank T11, pruefen
+6. [~] Verfeinerungsschleife (4 von 8 Runden, siehe docs/loop-log.md) (Latte unten), je Runde in `docs/loop-log.md` protokollieren
+7. [~] (STEP + Renders da, Schluss-Push nach Klaerung Bett/Tuer) Export `designs/dome.step`, Render-Screenshots in `renders/`, committen und pushen
 
 ## Verfeinerungsschleife (Latte)
 
@@ -49,9 +49,13 @@ Jede Runde: bauen -> Screenshot aus Kamera wie `ref-4` -> Referenz und Screensho
 5. Hoehen-Breiten-Verhaeltnis der Kuppel stimmt auf 10 % mit der Referenz
 6. Alle Teile haben Namen T1-T11 im Design und liegen im richtigen Verhaeltnis zueinander (keine Durchdringungen ausser Rohr durch die Haut)
 
+## Kalibrierte Masse (Aenderungen gegenueber den Annahmen)
+
+Kuppel 5/8-3V, Basis-D 7,0 m, Hoehe 4,2 m (statt 3,5; Verhaeltnis 0,6 wie Bild) · Zentraltank D2,4 · Mitteltank D1,2 · Betten r=2,85 m, 1,5x0,7 m, 2x4 Loecher · Substratwanne 1,5x0,56x0,4 · Rohr aus Westen. Streben als Einzelkoerper T1_Strebe_nnn (157, 8 im Tuerbereich entfallen). Bauweise: `scripts/build.sh`, Parameter in `scripts/gen_dome.py` (Tabelle `P`; Tank-/Bett-Masse als Parameter-Ausdruecke im Design, Strebenpositionen numerisch aus dem Skript).
+
 ## Status
 
-29.10.2026 — Repo angelegt, Teileliste aus den vier Bildern erstellt. Masse sind Annahmen; echte Masse fehlen.
+29.10.2026 — Stufen 1-4 gebaut, STEP exportiert, Latte 1-5 erfuellt, 6 offen (Bett 09 vor der Tuer). Repo angelegt, Teileliste aus den vier Bildern erstellt. Masse sind Annahmen; echte Masse fehlen.
 
 ## Definition of Done
 

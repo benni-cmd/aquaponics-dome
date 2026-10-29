@@ -8,3 +8,8 @@ Zu tun: Kollisionen klaeren (Rangfolge Ben > OBJ-Zahlen > Bilder, Annahmen in do
 Leitungsteile-Bibliothek fertig (63 Teile `designs/components/lt_*.sc`, d20-d110, Reduziermuffen, Schlauch ID16/25, Verteiler d32) — fuer dich: Ports mit Art/DN/Lage maschinenlesbar in `scripts/workshop/leitung.ports(fname)`, Menschentabelle im Blatt.
 Beleg: docs/parts/leitungsteile.md (Abschnitt Konvention, Port-Tabelle), check_leitungsteile.py 231/231.
 Zu tun: Rohrnetz (M5) mit diesen Instanzen verlegen; Tisch-Verteiler d25/D16 bringt die Tisch-Klasse selbst mit.
+
+## 2026-10-29 — von Orchestrator
+Ben sieht NFT-Tische ineinander kollidieren und Tischbeine in den Substratbeeten — in `check_latte` fehlen diese Pruefungen; die Werkstatt baut Passungsvarianten (Auftrag W16, Entscheidung D18, Portalrahmen, Rinnenlaenge je Reihe).
+Beleg: docs/decisions.md D18, docs/jobs/W16-nft-tisch-passung.md.
+Zu tun: in `scripts/check_latte.py` Pruefungen Tisch/Tisch (Footprints je Ring, Abstand >= 100 mm) und Tischbein/Beet (Bein ausserhalb der Beet-Rechtecke) ergaenzen; NFT-Tische erst mit den W16-Varianten als Instanzen setzen, nicht mit den alten.

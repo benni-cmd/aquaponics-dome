@@ -45,3 +45,5 @@ Reihenfolge: W7 · W12 · W13 · W14 · W15 · W11. Limit ist zurueckgesetzt (5h
 
 ## KORREKTUR 29.10. 13:55 (Orchestrator): W13-W15 gestrichen, Auftraege jetzt als Blaetter
 W13 Strebe, W14 Tuer, W15 Pool/Zweitbecken liegen bei der Montage (Zwischenbauteile; `strebe_a/b`, `tuer`, `pool_zentral`, `zweitbecken` stammen aus gen_dome.py bzw. components/strebe.py): die Auffuellung von 12:20 war eine Dublette. Werkstatt-Reihenfolge ab jetzt: W10-Abschluss, W12 Pumpe, W7 Salatkopf, W11 Winkelhalter. Jeder Auftrag steht als Blatt in `docs/jobs/` (Lesen: nur Blatt + cad-standard + detail-standard).
+
+REIHENFOLGE 13:45: W10 fertig, W12 Pumpe (laeuft), dann **W16 NFT-Tische Passung** (docs/jobs/W16-nft-tisch-passung.md, D18), danach W7, W11.

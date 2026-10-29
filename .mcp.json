@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "solidcraft": {
+      "command": "C:\\Program Files\\SolidCraft\\solidcraft-cli.exe",
+      "args": [
+        "mcp",
+        "--allow-path",
+        "C:\\Users\\benkn\\Claude\\keel-harness\\user-projects\\aquaponics-dome\\designs",
+        "--allow-path",
+        "C:\\Users\\benkn\\Claude\\keel-harness\\user-projects\\aquaponics-dome\\renders"
+      ]
+    }
+  }
+}

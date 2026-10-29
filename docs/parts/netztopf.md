@@ -39,6 +39,19 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 
 - Steckt lose im Topfloch der NFT-Rinne (Kragen liegt auf) bzw. im Medium des IBC-Beets; keine Schrauben.
 
+## Herkunft (docs/provenance.md)
+
+| Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
+|---|---|---|---|---|
+| Hoehe 63 mm | 63 | OBJ | layout.json pots.size_mm (50 x 64 x 63) | hoch |
+| Korpus-D oben 50 mm | 50 | OBJ | layout.json pots.size_mm (50) | hoch |
+| Kragen D64 x 3,5 mm | 64 / 3,5 | OBJ + A | OBJ-Box 64 = Kragen (groesste Breite); Kragendicke Annahme | mittel |
+| Boden-D 34 (Konus) | 34 | A | Standard-Netztopf konisch; im OBJ nur Box 'potplant_dxf' ohne Profil | niedrig |
+| Wand 1,5 mm, Boden 1,5 mm, Bodenloch D10 | 1,5 | A | PP-Spritzguss typisch 1,2-1,6; OBJ ohne Wand | niedrig |
+| 8 Schlitze 3 x 38 mm | 8 | A | Netztoepfe haben Schlitze fuer Wurzeln; Zahl geschaetzt | niedrig |
+| Werkstoff PP schwarz | 0,91 g/cm3 | A | Standard; ref-6 zeigt den Topf nicht (vom Salat verdeckt) | niedrig |
+| Anzahl 2160 | 2160 | OBJ | layout.json pots.total (7 Beete x 288 + 144); Topfzahl der Rinnen kommt aus dem Tisch | hoch |
+
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-6-grow-tables-detail.jpg

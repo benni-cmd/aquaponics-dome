@@ -34,6 +34,17 @@ Rosette aus 33 geneigten Blattscheiben (7 Gruppen, Neigung 8 bis 68 Grad, Blattd
 
 - Hals steckt im Netztopf; Instanz wird mit Ursprung auf die Kragenoberkante des Netztopfs gesetzt (Topf-Ursprung + 63 mm).
 
+## Herkunft (docs/provenance.md)
+
+| Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
+|---|---|---|---|---|
+| Salat als Blattrosette (33 Blaetter, 7 Gruppen) | - | Bild | ref-6 mittlerer Tisch: buschige Kopfsalat-Koepfe; Rosette aus Scheiben ist unsere Vereinfachung (Kritiker R1/R2) | mittel |
+| Breite M ca. 115 mm, Hoehe 61 mm | 115 / 61 | Bild + A | ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm) breit; Proportion 0,5-0,6 (Kritiker widerspruechlich) | niedrig |
+| Groessen S 70 / M 100 / L 130 (head_d) | 3 | A | Wachstumsstadien; Konfigurationen, Quelle Ben/cad-standard (Groessenvarianten) | niedrig |
+| Wurzelhals D16 x 25 | 16 / 25 | A | steckt in Netztopf-Innen-D 47; ref-6 zeigt es nicht | niedrig |
+| Gruen #58a63f | - | Bild | ref-6 Salatgruen | mittel |
+| Anzahl | je Pflanzplatz | OBJ | layout.json: 2160 Topfpositionen; Besatz legt der Integrator fest | mittel |
+
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-6-grow-tables-detail.jpg

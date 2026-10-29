@@ -40,8 +40,9 @@ def main():
             cf = [f["cylinder"] for f in sc.faces(path, nm) if f.get("cylinder") and abs(abs(f["cylinder"]["axis"][0]) - 1) < 1e-6]
             ck.eq(f"{row} {nm} Aussen-D", max(2 * c["radius"] for c in cf), od, 0.01)
             ck.eq(f"{row} {nm} Achse z", cf[0]["origin"][2], zz, 0.01)
+    # Phase A/B der Rinne (Zickzack selbst wird im Tisch geprueft: check_nft_tisch.py)
     for l in "lmk":
-        ck.eq(f"Zickzack {l}: Versatz A/B", pos[l + "_b"] - pos[l + "_a"], p["pitch"] / 2, 0.01)
+        ck.eq(f"Phasen-Abstand {l}: B minus A", pos[l + "_b"] - pos[l + "_a"], p["pitch"] / 2, 0.01)
     sys.exit(ck.done())
 
 if __name__ == "__main__":

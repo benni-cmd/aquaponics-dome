@@ -45,3 +45,16 @@ Beginn 29.10.2026 ~03:50. Befunde zu SolidCraft v0.25.1 (Headless, `solidcraft-c
 | R2-4,5 | klein: Blattraender glatt, Hals sichtbar | **gueltig, offen** | Ellipsen/Zacken offen; Hals D16 (bleibt, steckt im Topf) |
 
 ### netztopf: Kritiker noch nicht gelaufen (offen).
+
+### nft_rinne, Kontextpaket-Runde (Bild-Kritiker: Modell gewaehlt; Spec-Pruefer: FAIL) 29.10. ~05:10
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| B1 | Hoehe wirkt flacher als 130:100 (vermutet) | **unklar/falsch gelesen**: Mass aus OBJ (102-103), Bild ohne Mass | layout.json hydro_tables; bleibt |
+| B2 | Rippenbild: nur eine Naht je Rinnengrenze (vermutet) | **unklar**, klein | vier 5x5-Rippen bleiben (A), im Tisch pruefen |
+| B3 | Befestigungspunkte an der Seitenwand (sicher) | **andere Klasse** (Tisch: Rinnenhalter/Nieten) | im NFT-Tisch umgesetzt (Rinnenhalter mit Schraube M5) |
+| B4 | Tuelle am Stirnende nicht im Bild, Schlaeuche von oben/seitlich (vermutet) | **unklar**: Scope-Card verlangt Stutzen am Ende; ref-6 zeigt Schlaeuche am Tischende | bleibt, beim Orchestrator gemeldet |
+| S1 | Herkunftstabelle fehlt im Blatt (sicher) | **gueltig, Eigenfehler**: Ersetzung in `partsheet.py` war beim ersten Mal wirkungslos (Zeichenfolge), Commit ef0c25e behauptete es faelschlich | behoben (Tabelle im Blatt, 19 Zeilen), 5 fehlende Merkmale ergaenzt |
+| S2 | Eltern-Merkmale in der Rinne (slope_pct, Montageschritt Gefaelle, Zickzack-Checks) | **gueltig** | slope_pct aus der Rinne entfernt, Montage umformuliert, Zickzack-Check wandert in `check_nft_tisch.py`; Phase A/B der Rinne ist neu und gehoert in die Scope-Card (Orchestrator informiert) |
+| S3 | Gewicht nur leer, Varianten, Stueckliste ohne Mengen, Kleber ohne Norm (sicher) | **gueltig** | Varianten-Gewichte, Fuellung, Mengen (68 Rinnen), Kleber DIN EN 14814 |
+| S4 | Tuelle D16 vs. PE-Rohr 16; DN32 vs. d32 (vermutet) | **gueltig** | Schlauch ID 16 (5/8 Zoll), "Muffe d32 (etwa DN25)" |
+| S5 | Lochabstand-Herkunft "2 Topfbreiten" falsch; Anzahl aussen 2/3 nicht als A | **gueltig** | Text korrigiert (3-4 Kragenbreiten = 200-250), 2/3 als A |

@@ -28,6 +28,9 @@ def main(name):
     w = d["werkstoff"]
     L.append(f"- Werkstoff: {w['name']}, Dichte {w['dichte_g_cm3']} g/cm3, Farbe {w['farbe']} ({w['herkunft']})")
     L.append(f"- Volumen (Messung, `solidcraft-cli eval`): {vol/1000:.1f} cm3 · Masse leer: {mass:.0f} g ({mass/1000:.2f} kg)")
+    for v in bl.get("varianten", []):
+        evv = sc.evaluate(os.path.join(sc.ROOT, "designs", "components", v + ".sc"))
+        L.append(f"- Variante `{v}`: {sum(b['mass_g'] for b in evv['bodies'])/1000:.2f} kg leer")
     if bl.get("gewicht_gefuellt"):
         L.append(f"- Gefuellt/in Betrieb: {bl['gewicht_gefuellt']}")
     if bl.get("querschnitt"):
@@ -39,6 +42,9 @@ def main(name):
     if bl.get("verbindungen"):
         L.append("\n## Verbindungen und Befestigungen\n")
         L += [f"- {x}" for x in bl["verbindungen"]]
+    L.append("\n## Herkunft (docs/provenance.md)\n\n| Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |\n|---|---|---|---|---|")
+    for r in d.get("herkunft_tabelle", []):
+        L.append("| " + " | ".join(r) + " |")
     L.append("\n## Referenz und Abweichung zum OBJ\n")
     L.append(f"- Referenzbild: {bl.get('referenz', 'reference/ref-6-grow-tables-detail.jpg')}")
     L.append(f"- Quelle der Masse: {d['quelle_masse']}")

@@ -5,9 +5,9 @@ Zustaendig: I = Integrator, W = Werkstatt. Quelle der Anzahl: `data/layout.json`
 
 | Klasse | Anzahl | Zustaendig | Status | Datei | Letzte Meldung |
 |---|---|---|---|---|---|
-| Salatkopf | ca. 240+ | W | offen | `designs/components/salatkopf.sc` | - |
-| Netztopf | 2160 | W | offen | `designs/components/netztopf.sc` | - |
-| NFT-Rinne (3 Laengen) | je Tisch 2-4 | W | offen | `designs/components/nft_rinne_*.sc` | - |
+| Salatkopf | ca. 240+ | W | L3 gebaut, Bauteilblatt/Kritiker offen | `designs/components/salatkopf.sc` | 03:50 Orchestrator: Bauteilblatt und Gauntlet fehlen |
+| Netztopf | 2160 | W | L3 gebaut, Bauteilblatt/Kritiker offen | `designs/components/netztopf.sc` | 03:50 Orchestrator: Bauteilblatt und Gauntlet fehlen |
+| NFT-Rinne (3 Laengen) | je Tisch 2-4 | W | L3 gebaut, Bauteilblatt/Kritiker offen | `designs/components/nft_rinne.sc` | 03:50 Orchestrator: Nahaufnahme zu klein, Bauteilblatt fehlt |
 | NFT-Tisch innen (10), Mitte (6), aussen (8) | 24 | W | offen | `designs/components/nft_tisch_*.sc` | - |
 | IBC-Beet aussen (8), innen (6) | 14 | W | offen | `designs/components/ibc_beet_*.sc` | - |
 | Tank klein (Vortex) | 2 | W | offen | `designs/components/tank_klein.sc` | - |

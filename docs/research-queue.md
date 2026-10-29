@@ -8,7 +8,7 @@ Format je Auftrag: **R-ID** | Prioritaet (H = blockiert den Bau, M, N) | Frage |
 |---|---|---|---|---|---|
 | R01 | H | Welches Profil/Wanddicke tragen die Streben bei Schnee und Wind (Beispielstandorte)? Lastannahmen nach Eurocode 1 oder aehnlich | Profil bestimmt die Strebenmasse im Modell | `strut_profile`, `strut_wall`, `snow_load`, `wind_load` | offen |
 | R02 | H | Welche Hub-Variante ist am billigsten und mit lokalen Mitteln baubar und tragfaehig (Vergleich mit Preisen, Quelle und Datum)? | Knoten muessen modelliert werden | `hub_variant`, Kosten | Geometrie erledigt 29.10. (`docs/research/R02.md`, Konfidenz mittel); Preise/Tragfaehigkeit pausiert |
-| R03 | H | Kiestiefe im Substratbeet, Flutzyklus, Glockensiphon-Auslegung (Quelle zu Medientiefe fehlt) | Beet-Modell und Gewicht | `media_depth`, `siphon_*` | offen |
+| R03 | H | Kiestiefe im Substratbeet, Flutzyklus, Glockensiphon-Auslegung (Quelle zu Medientiefe fehlt) | Beet-Modell und Gewicht | `media_depth`, `siphon_*` | erledigt 29.10. (`docs/research/R03.md`, Konfidenz mittel) |
 | R04 | M | Fischart nach Klima (Tilapia warm, Forelle kalt): Temperatur, Sauerstoff, Besatzdichte, Futter | Biologie-Bilanz | `fish_species`, `stocking_density` | offen |
 | R05 | M | Pool-Wassertiefe aus OBJ ableiten oder Standard; Volumen | Besatz, Umlauf | `pool_depth` | offen |
 | R06 | M | NFT: Rinnenzahl je Beet, Gefaelle, Durchfluss, Topfabstand fuer Salat (zwei Quellen) | Rinnen im Modell, Hydraulik | `nft_channels_per_bed`, `nft_slope`, `nft_flow` | teilweise (hydraulics.md) |

@@ -41,6 +41,12 @@ def rect_body(name, cx, cy, z0, az_deg, along, across, h, op="new", targets=None
     if op == "new": add("solid.extrude", distance=h, operation="new", name=name, body_name=name)
     else: add("solid.extrude", distance=h, operation=op, targets=targets, name=name)
 
+ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen"]
+
+def act(name):
+    """Baugruppe aktivieren: neue Koerper/Instanzen entstehen darin (Wurzel bleibt frei von losen Koerpern)."""
+    add("component.activate", component=name)
+
 def place_struts(segs):
     """Streben als Instanzen der Komponenten strebe_a/strebe_b (component.insert_design + occurrence.copy), Platzierung per Matrix."""
     R = P["dome_base_d"]/2; cnt = {"A": 0, "B": 0}
@@ -90,7 +96,8 @@ def t1_t3_t4(sock_z):
         if any(in_door(tuple(A[i]+(B[i]-A[i])*t/10 for i in range(3))) for t in range(1, 10)):
             dropped += 1; continue
         segs.append((A, B))
-    place_struts(segs)
+    act("03_Kuppel"); place_struts(segs)
+    act("02_Gelaende")
     # T13 Erde (kein fester Boden, D13): grosse Erdebene, Oberkante = Bodenniveau sock_h; Becken/Beete schneiden Aussparungen ein
     add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
     # T3 Fundamentring (Zehneck, flach, ragt ueber die Erde): Streben sind hier verankert, kein Boden
@@ -103,6 +110,7 @@ def t1_t3_t4(sock_z):
     add("solid.extrude", distance=P["ring_h"], operation="new", name="T3_Sockel", body_name="T3_Sockel")
     gx, gy = pol(P["dome_base_d"]/2 + 75, P["door_az"])
     rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
+    act("03_Kuppel")
     # T4 Tuer: Rahmen (aussen/innen), Ebene radial zur Tuerflaeche
     ca, sa = math.cos(da), math.sin(da)
     ox, oy = rd*ca - P['door_off']*sa, rd*sa + P['door_off']*ca
@@ -127,15 +135,19 @@ def pools(fz):
     for nm, src, wall, depth, rim in (("T5_Zentraltank", LAYOUT["pool"], P["wall"], P["pool_depth"], P["pool_rim"]),
                                        ("T6_Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], P["pool_rim"])):
         x, y = LXY(src["cx"], src["cy"]); (x, y) = (round(x*1.02, 1), round(y*1.02, 1)) if nm.startswith("T6") else (x, y); d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth; total = fz + rim - z_bot
+        act("02_Gelaende")
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
+        act("04_Wasserbecken")
         add("solid.cylinder", diameter=d_out, height=total, base=[x, y, z_bot], operation="new", name=nm, body_name=nm)
         add("solid.cylinder", diameter=d_out - 2*wall, height=total, base=[x, y, z_bot + 120], operation="cut", targets=[nm], name=nm + "_Hohlraum")
         wn = "T5_Wasser" if nm.startswith("T5") else "T6_Wasser"
         add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + 120), base=[x, y, z_bot + 120], operation="new", name=wn, body_name=wn)
 
 def tanks(fz):
+    act("07_Tanks")
     """T7: 4 Tanks (Kegelboden, Zylinder, Plattformring auf 4 Beinen) + Pump-/Filtermodule, Positionen aus layout.json."""
     for i, t in enumerate(LAYOUT["tanks"], 1):
+        act("07_Tanks")
         x, y = LXY(t["cx"], t["cy"]); pl = t["platform"][0]; yaw = pl["yaw"] + ROT; nm = f"T7_Tank_{i}"
         ztop = fz + pl["z1"]; cone_h = pl["z1"] - t["z0"]
         add("solid.cone", diameter=t["d"], top_diameter=60, height=cone_h, base=[x, y, ztop], axis=[0, 0, -1], operation="new", name=nm, body_name=nm)
@@ -149,21 +161,25 @@ def tanks(fz):
                 lx, ly = rot(sx*(pl["length"]/2 - 140), sy*(pl["width"]/2 - 140), a)
                 add("solid.cylinder", radius=18, height=pl["z0"], base=[round(x+lx, 1), round(y+ly, 1), fz], operation="join", targets=[f"T7_Plattform_{i}"], name=f"T7_Plattform_{i}_Bein{(sx+1)+(sy+1)//2+1}")
         placed = []
+        act("07_Tanks")
         for k, m in enumerate(t["modules"], 1):
             mx, my = LXY(m["cx"], m["cy"])
             if math.hypot(mx - x, my - y) < t["d"]/2 + 150 or any(math.hypot(mx - px, my - py) < 350 for px, py in placed): continue   # OBJ-Module ueberlappen sich teils: nur freistehende
             placed.append((mx, my))
-            rect_body(f"T7_Pumpe_{i}_{k}", mx, my, fz, m["yaw"] + ROT, m["l"], max(m["w"], 20), m["h"])
+            act("09_Technik")
+            act("09_Technik"); rect_body(f"T7_Pumpe_{i}_{k}", mx, my, fz, m["yaw"] + ROT, m["l"], max(m["w"], 20), m["h"])
 
 # T9: 14 halbe IBC-Wannen (layout.json), 8 aussen (mit Pflanzen), 6 innen
 def t9(fz):
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = LXY(b["cx"], b["cy"]); yaw = b["yaw"] + ROT; top = b["z1"]
         ln = b["length"] - (400 if "plants" in b else 300) - (500 if k == 4 else 0); wd = b["width"] - (100 if "plants" in b else 0)
+        act("05_Beete")
         rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz + b["z0"] + 5, yaw, ln, wd, top - b["z0"] - 5)   # eingelassen wie im OBJ
+        act("02_Gelaende")
         rect_body(f"T9_Tasche_{k:02d}", x, y, fz + b["z0"], yaw, ln + 20, wd + 20, -b["z0"] + 1, op="cut", targets=["T13_Erde"])
         if "plants" in b:   # Aussenbeete: 3 Reihen x 10 Pflanzen (OBJ: 288 Toepfe, hier reduziert)
-            ta = math.radians(yaw)
+            ta = math.radians(yaw); act("10_Pflanzen")
             for r_ in range(3):
                 for c_ in range(10):
                     lx, ly = rot((c_ - 4.5)*270, (r_ - 1)*270, ta)
@@ -176,6 +192,7 @@ def plant(x, y, z, r=90):
 
 def t10_t11(fz):
     # Zulaufrohr (Frischwasser) nur AUSSEN: flach auf dem Boden, Bogen zur Sockelwand nahe dem Zweitbecken (OBJ-Azimut 166 -> Modell -55)
+    act("08_Leitungen")
     pr = P["pipe_d"]/2; z = P["sock_h"] + pr
     P0 = pol(9500, -90); P1 = pol(7600, -66); P2 = pol(6030, -66)
     def seg(A, B, nm, op, **kw):
@@ -186,11 +203,14 @@ def t10_t11(fz):
     seg(P1, P2, "T10_Zulaufrohr_2", "join", targets=["T10_Zulaufrohr"])
     az = -36; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
+    act("09_Technik")
     rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), P["sock_h"], az+90, P["cab_x"], P["cab_y"], P["cab_z"])
 
 if __name__ == "__main__":
     stage = int(sys.argv[1]); out = sys.argv[2]
     params()
+    add("component.rename", component=0, name="Kuppel_Aquaponik")
+    for nm in ASSEMBLIES: add("component.create", name=nm, activate=False)
     t1_t3_t4(P["sock_h"]) if False else None
     n, dropped = t1_t3_t4(P["sock_h"])
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])

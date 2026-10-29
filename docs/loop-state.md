@@ -27,3 +27,6 @@ Jetzt kommt: Schritt 1+2.
 
 ## Checkpoint R16
 - Stand: Erde/Fundamentring/eingelassene Becken fertig. Kollision offen: T1_Strebe_018 vs T9_Substratbeet_04. Offene Auftragskette von Ben (Reihenfolge): (1) Komponenten-Umbau nach docs/cad-standard.md + docs/solidcraft-components.md: ZUERST Test an EINER Klasse (Salatkopf): component.insert_design + occurrence.copy + component.update_links im Headless-Lauf; Befund in docs/solidcraft-components.md; (2) Wurzel Kuppel_Aquaponik mit Baugruppen 01..10, scripts/check_components.py; (3) NFT-Ringe (3 Ringe, Zehneck, hydro_tables, components.md Ende); (4) Tuer_Komplett im Dreieck Spitze Z 3150 (docs/research/R13.md); (5) Tanks/Pool Details nach detail-standard.md.
+
+## Checkpoint R18 (Integrator, Endlos)
+- Prioritaet 1+2 erledigt (R18): Wurzel + 10 Baugruppen, check_components.py. Jetzt: lose Koerper in eigenen Klassen durch Komponenten-Dateien ersetzen (Integrator-Klassen: Erde, Fundamentring, Pool, Zweitbecken, Schrank, Rohr, Tuer; Werkstatt-Klassen erst nach Abnahme laut integration-board.md). Dann Tuer_Komplett (R13), Knoten (R02), 2 Kollisionen.

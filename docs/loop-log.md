@@ -15,3 +15,4 @@
 - R15b: check_latte 19/20; 3 Kollisionspaare offen (siehe interf.py); Dom-Rotation 18 Grad, Breite aus Knoten gemessen.
 - R16: Erdebene T13 statt Boden (D13), Fundamentring T3 (ragt 250 mm), Pool/Zweitbecken eingelassen (Z -1825, Rand 650, Aussparung in Erde), Beete in Taschen, Zulaufrohr/Schrank auf Erdniveau. check_latte 18/19 (3 Kollisionspaare: Strebe018-Beet04, Strebe-Ring anchor erlaubt).
 - R17: Streben als echte Instanzen (component.insert_design strebe_a/strebe_b + occurrence.copy/move per Matrix; erst Kopien, dann Platzierung, sonst erbt die Kopie die Matrix). Bodynamen im eval: 'T1_Strebe_A (Strebe_A:n)'. Offen: Kollisionen 2 (Strebe018-Beet04 u. a.).
+- R18: Wurzel Kuppel_Aquaponik mit 10 Baugruppen (01_Layout..10_Pflanzen), Teile hineingehaengt; scripts/check_components.py (Wurzel leer PASS, 10 Baugruppen PASS, Streben-Instanzen PASS; FAIL: lose Koerper in 02,03,04,05,07,08,09,10 bis zur Umstellung auf Komponenten-Dateien).

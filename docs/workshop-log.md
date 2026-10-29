@@ -121,3 +121,13 @@ Standrohr `standpipe_over` = media_depth - 35 = 265 (FarmHub 220 als Variante ve
 | 4 | klein: Herkunft unvollstaendig (Wulst, Revision, Konsolen, Spiel, Auslaufhoehe, Leitrohr; R09 nur klein; Dichte) | **gueltig** | 20 Herkunftszeilen, R09 nur klein vermerkt, Dichte Fachwert |
 | 5 | klein: Ports/Stueckliste (DN, d55 kein Normmass, Schrauben ISO, Konsolen, Revisionsdeckel, Bulkheads, kein Leitrohr im Biofilter, Instanz-Versatz) | **gueltig** | DN ergaenzt, Hahn gross d50, ISO-Nummern, Stueckliste ergaenzt, Biofilter ohne Leitrohr als offen, Versatz bis 5 mm im Blatt |
 | H | Wasserfuellung gehoert DRAUSSEN | **Hinweis** | nur als Gewichtsangabe (nicht modelliert) |
+
+### pumpe (pumpe_klein, pumpe_gross, filtermodul), Spec-Pruefer (FAIL) 29.10. ~08:50
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Rolle "384er Kassette = Filter" widerspricht der Lage (radial zur Tankachse, r 84-468, Oberkante = Plattform-OK, innerhalb der Plattform) -> Stuetzrippen der Klasse Tank? | **gueltig, unklar** | Gegenindizien im Blatt (funktion/abweichung/offen/Herkunft), Frage an den Orchestrator; Bauteil bleibt als Annahme gebaut |
+| 2 | gross: Anzahl nicht konsistent (components.md 4-8; hydraulics 4 Pumpen + 2 Siebe) | **gueltig** | Duplikate-Logik erklaert (4/8 OBJ-Eintraege -> 2 bzw. 1 Duplikate), Abweichung zur Hydraulik als offen |
+| 3 | gross: Herkunft formal unvollstaendig (Wertspalten, Stecker, Kabel, Gewichte, Farbe, Ports) | **gueltig** | 19 Zeilen mit Werten |
+| 4 | klein: Gewicht/Foerderdaten (Mischdichte, gefuellt, "Foerderstrom offen" gegen hydraulics 12/30 l/min) | **gueltig** | Dichten ausgewiesen, Foerderstrom 12/30 l/min [E] aus hydraulics.md 2.3 |
+| 5 | klein: Kleinigkeiten (foot_h, Kabelport x, "0 mm", yaw, Stueckliste, +Y-Ausrichtung) | **gueltig** | alle korrigiert (Steckerende x, <= 1 mm, yaw 0/45/90/135, Schrauben/Dichtung in der Stueckliste, +Y vom Tank weg) |
+| H | Durchdringung Kassette/Plattform, Rohrnetz Pumpe A/B, Elektrik | **andere Klasse** | im Blatt als offen |

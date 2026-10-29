@@ -1,6 +1,6 @@
 # Bauteilblatt T50 pumpe (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/pumpe.json` und `designs/components/pumpe.sc`, nicht von Hand aendern)
 
-**Funktion:** Pump-/Filtermodule an den Tanks (Rolle laut docs/components.md Annahme): Pumpenmodul = Montagetafel mit Kreiselpumpe fuer den Umlauf; Filtermodul = flache Filterkassette mit Siebeinsatz (Feinfilter, Matte) im Wasserweg zwischen Absetzer und Biofilter. Ob die OBJ-Platten wirklich Pumpentafeln und die 384-mm-Kassetten Filter sind, ist offen.
+**Funktion:** Pump-/Filtermodule an den Tanks (Rolle ANNAHME): Pumpenmodul = Montagetafel mit Kreiselpumpe fuer den Umlauf (Foerderstrom laut docs/hydraulics.md 2.3 [E]: kleiner Tank ca. 12 l/min, grosser ca. 30 l/min, statische Hoehe ca. 1,3 m plus Reibung); Filtermodul = flache Filterkassette mit Siebeinsatz (Feinfilter, Matte) im Wasserweg. GEGENINDIZIEN zur Rolle der 384er-Kassetten (Spec-Pruefer): alle 10 liegen radial zur Tankachse (Abstand 276 mm, r 84-468), Oberkante = Plattform-Oberkante (668/670) und innerhalb der Plattform - das sieht nach Stuetzrippen/Konsolen der Klasse Tank aus; die 502/693er-Tafeln stehen tangential am Boden. Entscheidung offen (Orchestrator).
 
 **Datei:** `designs/components/pumpe.sc` · **Teilenummer:** T50 · **Revision:** A · **Bezugspunkt:** Mitte der Standflaeche (Tafel/Gehaeuse-Unterkante), X Laengsachse der Tafel, Y Tafeldicke (Pumpe/Anschluesse auf +Y), Z Hoehe
 
@@ -10,7 +10,7 @@
 
 | Parameter | Wert | Einheit | Herkunft |
 |---|---|---|---|
-| `foot_h` | 40 | mm | [A] Fussleiste unter der Tafel (Standfuesse 2 x 60 x 40 x 5) |
+| `foot_h` | 40 | mm | [A] (derzeit ungenutzt) Standwinkel statt Fussleiste: 2 Winkel 50 x 100 x 5 hinten an der Tafel |
 | `wall` | 3 | mm | [A] Gehaeuse PP/PE 3 mm |
 | `bracket_w` | 150 | mm | [A] Pumpenkonsole 150 breit (Winkel 5 mm) |
 | `bracket_t` | 5 | mm | [A] |
@@ -52,11 +52,11 @@ Pumpenmodul: Montagetafel PP (502x5x345 bzw. 693x7x463) stehend auf zwei Standwi
 |---|---|---|---|
 | pumpe_klein: Saugstutzen (Pumpenkopf) | PVC-U d40 (DN32), Wand 3 | x 176, y 64, z 120 | Wasser tritt ein, Oeffnung zeigt +X |
 | pumpe_klein: Druckstutzen (Pumpenkopf oben) | PVC-U d32 (DN25), Wand 3 | x 75, y 64, z 245 | Wasser tritt aus, Oeffnung zeigt +Z |
-| pumpe_klein: Stromanschluss (Kabel 3 x 1,5 mm2 mit Schutzkontaktstecker) | 230 V, Stecker 55 x 45 x 40 | x -288, y 64, z 120 | Strom ein; Kabel laeuft nach -X (Laenge 150 modelliert, real 1,5-3 m) |
+| pumpe_klein: Stromanschluss (Kabel 3 x 1,5 mm2 mit Schutzkontaktstecker) | 230 V, Stecker 55 x 45 x 40 | x -288, y 64, z 120 (Steckermitte; Steckerende x -316, Kabel 150 mm) | Strom ein; Kabel laeuft nach -X (Laenge 150 modelliert, real 1,5-3 m) |
 | pumpe_klein: Standwinkel (Befestigung am Boden) | 2 Winkel 50 x 100 x 5 hinten an der Tafel | x +-191, y -42, z 0 | Befestigung auf dem Boden (Schrauben nicht modelliert), Richtung -Z |
 | pumpe_gross: Saugstutzen (Pumpenkopf) | PVC-U d50 (DN40), Wand 3 | x 196, y 76, z 120 | Wasser tritt ein, Oeffnung zeigt +X |
 | pumpe_gross: Druckstutzen (Pumpenkopf oben) | PVC-U d40 (DN32), Wand 3 | x 90, y 76, z 255 | Wasser tritt aus, Oeffnung zeigt +Z |
-| pumpe_gross: Stromanschluss (Kabel 3 x 1,5 mm2 mit Schutzkontaktstecker) | 230 V, Stecker 55 x 45 x 40 | x -308, y 76, z 120 | Strom ein; Kabel laeuft nach -X (Laenge 150 modelliert, real 1,5-3 m) |
+| pumpe_gross: Stromanschluss (Kabel 3 x 1,5 mm2 mit Schutzkontaktstecker) | 230 V, Stecker 55 x 45 x 40 | x -308, y 76, z 120 (Steckermitte; Steckerende x -336, Kabel 150 mm) | Strom ein; Kabel laeuft nach -X (Laenge 150 modelliert, real 1,5-3 m) |
 | pumpe_gross: Standwinkel (Befestigung am Boden) | 2 Winkel 50 x 100 x 5 hinten an der Tafel | x +-286, y -44, z 0 | Befestigung auf dem Boden (Schrauben nicht modelliert), Richtung -Z |
 | filtermodul: Einlass (Stutzen oben, +X-Ende) | PVC-U d50 (DN40), Wand 3 | x 132, y -2.5, z 479 | Wasser tritt ein, Oeffnung zeigt +Z |
 | filtermodul: Auslass (Stutzen seitlich unten, -X-Wand) | PVC-U d50 (DN40), Wand 3 | x -252, y -2.5, z 70 | Wasser tritt aus, Oeffnung zeigt -X |
@@ -73,25 +73,30 @@ Pumpenmodul: Montagetafel PP (502x5x345 bzw. 693x7x463) stehend auf zwei Standwi
 
 | Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
 |---|---|---|---|---|
-| Tafel klein 502 x 5 x 345 (2 je Tank, 4 gesamt) | 502x5x345 mm | OBJ | layout.json tanks 1 und 4 modules (Duplikate zusammengefasst) | hoch |
-| Tafel gross 693 x 7 x 463 (2 je Tank, 4 gesamt) | 693x7x463 mm | OBJ | layout.json tanks 2 und 3 modules | hoch |
-| Filterkassette 384 x 44 x 419 (5 je Tank gross, 10 gesamt) | 384x44x419 mm | OBJ | layout.json tanks 2 und 3 modules (z0 249-256, yaw je 90 Grad versetzt) | hoch |
-| Rolle: Tafel = Pumpenmodul, Kassette = Filtermodul | - | A | docs/components.md: Bedeutung Annahme; docs/hydraulics.md: Pumpen, Feinfilter (Matten) im Wasserweg | niedrig |
-| Kreiselpumpe: Motor D90 x 150 / D110 x 180, Kopf D110 x 70 / D130 x 80, Achse 120 ueber der Tafelunterkante | mm | A | typische Teich-/Umwaelzpumpen; keine Quelle (R07 pausiert) | niedrig |
-| Saug-/Druckstutzen d40/d32 (klein) und d50/d40 (gross) | d40/d32; d50/d40 | A | Rohr d50/d63 am Tank (R09 A); DN der Pumpen Annahme | niedrig |
-| Konsole Winkel 5 mm, 150 breit; Pumpensockel | 150 x 5 mm | A | Konstruktionspraxis | niedrig |
-| Standwinkel 50 x 100 x 5 (2 je Tafel) | 50x100x5 | A | gegen Kippen | niedrig |
-| Kabel 3 x 1,5 mm2 (D8) mit Schutzkontaktstecker | D8 | A | 230 V Standard; Laenge modelliert 150 mm | niedrig |
+| Tafel klein 502 x 5 x 345 (2 je Tank, 4 gesamt) | 502 x 5 x 345 mm | OBJ | layout.json tanks 1 und 4 modules (4 Eintraege je Tank, 2 Duplikate zusammengefasst; OBJ 501-502) | hoch |
+| Tafel gross 693 x 7 x 463 (2 je Tank, 4 gesamt) | 693 x 7 x 463 mm | OBJ | layout.json tanks 2 und 3 modules (3 Eintraege je Tank, 1 Duplikat) | hoch |
+| Kassette 384 x 44 x 419 (5 je Tank gross, 10 gesamt) | 384 x 44 x 419 mm | OBJ | layout.json tanks 2 und 3 modules (OBJ 384 x 43/44 x 418/419, z0 249-256, yaw 0/45/90/135 Grad, radial zur Tankachse) | hoch |
+| Rolle: Tafel = Pumpenmodul, Kassette = Filtermodul | Annahme | A | docs/components.md (Bedeutung Annahme), hydraulics.md (Pumpen, Feinsieb); GEGENINDIZ: Kassetten radial in der Plattform, Oberkante = Plattform-OK (Spec-Pruefer) | niedrig |
+| Anzahl 4 / 4 / 10 (aus 4 bzw. 8 OBJ-Eintraegen je Tank) | 4 / 4 / 10 | OBJ + E | Duplikate (<= 5 mm Versatz) zusammengefasst; hydraulics.md 3 nennt 4 Pumpen + 2 Siebe (Abweichung offen) | mittel |
+| Kreiselpumpe klein: Motor D90 x 150, Kopf D110 x 70, Achse 120 ueber der Tafelunterkante | D90/150, D110/70, z 120 | A | typische Teich-/Umwaelzpumpe; keine Quelle (R07 pausiert) | niedrig |
+| Kreiselpumpe gross: Motor D110 x 180, Kopf D130 x 80 | D110/180, D130/80 | A | typische Umwaelzpumpe; keine Quelle | niedrig |
+| Foerderstrom klein ca. 12 l/min, gross ca. 30 l/min | 12 / 30 l/min | E | docs/hydraulics.md 2.3 (Verweilzeit 30 min im Absetzer) | niedrig |
+| Saug-/Druckstutzen d40/d32 (klein), d50/d40 (gross) | d40/d32; d50/d40 | A | Rohr d50/d63 am Tank (R09 A); Pumpen-DN Annahme | niedrig |
+| Konsole Winkel 5 mm, 150 breit; Pumpensockel 8 mm | 150 x 5 mm; 8 mm | A | Konstruktionspraxis | niedrig |
+| Standwinkel 50 x 100 x 5 (2 je Tafel) | 50 x 100 x 5 mm | A | gegen Kippen der stehenden Tafel | niedrig |
+| Kabel 3 x 1,5 mm2 D8, 150 mm modelliert; Schutzkontaktstecker 55 x 45 x 40 | D8 x 150; 55 x 45 x 40 mm | A | 230 V Standard; Laenge kuerzer als real (1,5-3 m) | niedrig |
 | Filtergehaeuse Wand 3 mm, Deckel 5 mm, Siebeinsatz mit 4 mm Spiel | 3 / 5 / 4 mm | A | Kunststoffgehaeuse Praxis | niedrig |
-| Ein-/Auslass d50 (DN40): Einlass oben, Auslass seitlich unten | d50 | A | Wasserweg: Zulauf oben, Ablauf unten (Schwerkraft); keine Quelle | niedrig |
-| Montagelaschen 30x5x40 mit M6x16 | M6 | A | Befestigung an Tankbein/Wand (OBJ: Kassetten stehen an den Tankbeinen) | niedrig |
-| Werkstoffe PP 0,91, Stahl 7,85, PVC 1,4 | g/cm3 | Fachwert | Handbuchwerte | mittel |
+| Ein-/Auslass d50 (DN40): Einlass oben x = L/2 - 60, Auslass seitlich unten z 70 | d50; z 70 | A | Wasserweg: Zulauf oben, Ablauf unten (Schwerkraft); keine Quelle | niedrig |
+| Montagelaschen 30 x 5 x 40 mit M6x16, 4 je Kassette (z 15 % und 85 % der Hoehe) | M6x16; 30x5x40 mm | A | Befestigung an Montageflaeche; keine Quelle | niedrig |
+| Werkstoffe: Tafel/Gehaeuse PP 0,91, Stahl 7,85, PVC-U 1,4, Pumpe Kunststoff 1,5, Siebeinsatz 0,05 | 0,91 / 7,85 / 1,4 / 1,5 / 0,05 g/cm3 | Fachwert + A | Handbuchwerte; Masse im Modell = Summe je Koerper nach Werkstoff (pumpe_klein 5,3 kg, pumpe_gross 8,5 kg, filtermodul 1,8 kg) | mittel |
+| Farbe Pumpe #2a5da8, Tafel grau, Stutzen grau | #2a5da8 | A | Module in keiner Referenz sichtbar | niedrig |
+| Port-Koordinaten (Saug-, Druckstutzen, Strom, Standwinkel, Ein-/Auslass, Laschen) | siehe Ports | E | berechnet aus den Parametern (fix_pumpe_blatt.py), Ursprung = Mitte der Standflaeche | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-4/ref-5: Module im Bild nicht erkennbar; data/layout.json tanks[].modules (nur Boxen); docs/components.md (Rolle Annahme); docs/hydraulics.md (Wasserweg)
 - Quelle der Masse: data/layout.json tanks[].modules: klein 502 x 5 x 345 (2 je Tank), gross 693 x 7 x 463 (2 je Tank) und 384 x 44 x 419 (5 je Tank, z0 249-256); Rolle der Module ist Annahme (docs/components.md), Pumpe/Filter aus Hydraulik-Konzept (docs/hydraulics.md)
-- Abweichung zum OBJ: layout.json tanks[].modules: Tafel- und Kassettenmasse 502x5x345 / 693x7x463 / 384x44x419 stimmen (0 mm Abweichung); Lage und Drehung je Modul stehen in layout.json (yaw, z0: Tafeln am Boden Z -6..3, Kassetten z0 249-256 an den Tankbeinen) und sind Sache des Integrators. Die Rolle der Module ist Annahme (docs/components.md); im OBJ sind es nur Platten/Kassetten ohne Pumpe, Anschluesse oder Kabel; Pumpe, Konsole, Stutzen, Kabel sind [A].
+- Abweichung zum OBJ: layout.json tanks[].modules: Tafel- und Kassettenmasse stimmen auf <= 1 mm (OBJ 501/502 x 5 x 345, 693 x 7 x 463, 384 x 43/44 x 418/419; Bauteil 502/693/384 mit Dicke 5/7/44); Lage je Modul: layout.json (yaw: Tafeln 22,9/40,7 bzw. 22,9/41,1 Grad, Kassetten 0/45/90/135 Grad versetzt; z0 Tafeln -6..3, Kassetten 249-256) - Integrator. Anzahl: OBJ listet je Tank 4 (klein) bzw. 8 (gross) Eintraege (components.md: 4-8), davon 2 bzw. 1 Duplikate an derselben Position (Abstand <= 5 mm) -> 2 Tafeln je kleinem Tank, 2 Tafeln + 5 Kassetten je grossem Tank; gesamt 4 / 4 / 10. docs/hydraulics.md 3 sieht je Linie Pumpe A, Pumpe B und ein Feinsieb vor (4 Pumpen, 2 Siebe): Abweichung zu 8 Tafeln und 10 Kassetten offen. Im OBJ sind es nur Boxen ohne Pumpe, Anschluesse oder Kabel: Pumpe, Konsole, Stutzen, Kabel sind [A]. Ausrichtung: Pumpenseite +Y; im OBJ steht die Tafel tangential zum Tank, +Y soll vom Tank weg zeigen (yaw des Integrators).
 
 ## Montage (L4)
 
@@ -104,9 +109,9 @@ Pumpenmodul: Montagetafel PP (502x5x345 bzw. 693x7x463) stehend auf zwei Standwi
 
 ## Stueckliste-Zeile
 
-- pumpe_klein (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 502x5x345 1, Standwinkel 50x100x5 2, Pumpenkonsole 150x100x5 + 40 hoch 1, Pumpensockel 1, Kreiselpumpe (Motor D90 x 150, Kopf D110 x 70) 1 mit Stutzen d40 und d32, Kabel mit Stecker 1, Schrauben M6x16 ISO 4017 mit Muttern ISO 4032 2
-- pumpe_gross (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 693x7x463 1, Standwinkel 50x100x5 2, Pumpenkonsole 150x100x5 + 40 hoch 1, Pumpensockel 1, Kreiselpumpe (Motor D110 x 180, Kopf D130 x 80) 1 mit Stutzen d50 und d40, Kabel mit Stecker 1, Schrauben M6x16 ISO 4017 mit Muttern ISO 4032 2
-- filtermodul (je Modul, Menge 10 gesamt = 5 je Tank gross): Gehaeuse PP 384x39x419 (Wand 3) 1, Deckel PP 384x5x419 1, Siebeinsatz (Filtermatte) 1, Stutzen d50 2, Montagelaschen 4, Schrauben M6x16 ISO 4017 4, Deckelschrauben M6x14 ISO 4017 4 (im Modell, 2 Stueck mehr in Reserve)
+- pumpe_klein (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 502x5x345 1, Standwinkel 50x100x5 2, Pumpenkonsole 150x100x5 + 40 hoch 1, Pumpensockel 1, Kreiselpumpe (Motor D90 x 150, Kopf D110 x 70) 1 mit Stutzen d40 und d32, Kabel mit Stecker 1, Schrauben M6x16 ISO 4017 mit Muttern ISO 4032 2; zusaetzlich 4 Schrauben M6x20 fuer die Pumpe, 2 Schrauben M6 fuer die Standwinkel, Dichtung ID 16 (nicht modelliert)
+- pumpe_gross (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 693x7x463 1, Standwinkel 50x100x5 2, Pumpenkonsole 150x100x5 + 40 hoch 1, Pumpensockel 1, Kreiselpumpe (Motor D110 x 180, Kopf D130 x 80) 1 mit Stutzen d50 und d40, Kabel mit Stecker 1, Schrauben M6x16 ISO 4017 mit Muttern ISO 4032 2; zusaetzlich 4 Schrauben M6x20 fuer die Pumpe, 2 Schrauben M6 fuer die Standwinkel, Dichtung ID 16 (nicht modelliert)
+- filtermodul (je Modul, Menge 10 gesamt = 5 je Tank gross): Gehaeuse PP 384x39x419 (Wand 3) 1, Deckel PP 384x5x419 1, Siebeinsatz (Filtermatte) 1, Stutzen d50 2, Montagelaschen 4, Schrauben M6x16 ISO 4017 4, Deckelschrauben M6x14 ISO 4017 4 (im Modell, 2 Stueck mehr in Reserve); zusaetzlich Deckeldichtung 1 (nicht modelliert)
 - Module gesamt: Pumpenmodul klein 4, gross 4, Filtermodul 10 (layout.json tanks[].modules; Duplikate des OBJ zusammengefasst)
 
 ## Alternative lokale Fertigung
@@ -131,14 +136,15 @@ Pumpe: handelsuebliche Kreiselpumpe (Teich-/Umwaelzpumpe) auf Montagebrett; Filt
 
 ## Pruefung
 
-- Gauntlet-Urteil: Spec-Pruefer laeuft; kein Bild-Kritiker (Module in keiner Referenz sichtbar)
+- Gauntlet-Urteil: Spec-Pruefer: FAIL, behoben bis auf Rollenfrage (Orchestrator); kein Bild-Kritiker
 - scripts/workshop/check_pumpe.py (Ergebnis renders/components/pumpe_klein/check.txt)
 - Kein Bild-Kritiker: die Module sind in keiner Referenz sichtbar; Spec-Pruefer und Orchestrator-Stichprobe
 
 ## Offene Fragen
 
-- Rolle der Module (Pumpentafel/Filterkassette) ist Annahme; OBJ liefert nur Boxen
-- Pumpenfabrikat, Foerderstrom und Leistung offen (R07 pausiert)
-- Schrauben der Pumpe auf dem Sockel, Standwinkel-Befestigung und Deckel-Flansch nicht modelliert
-- Kabel gerade und 150 mm kurz modelliert (real 1,5-3 m)
-- Lage der 693-mm-Tafeln am Boden und der Kassetten an den Tankbeinen: Integrator
+- ROLLE der Module ist Annahme mit Gegenindizien (Kassetten radial unter/in der Plattform, Oberkante = Plattform-OK: moeglicherweise Stuetzrippen der Klasse Tank; Tafeln tangential am Boden: Seitenbleche/Spritzschutz?) - Entscheidung Orchestrator
+- Anzahl gegen Hydraulik: 4 Pumpenmodule (OBJ) gegen 4 Pumpen A/B + 2 Siebe (hydraulics.md 3); je Tank zwei Pumpen (Betrieb/Reserve) steht nirgends
+- Pumpenfabrikat, Leistung (R07 pausiert); Foerderstrom 12 / 30 l/min nur als [E] aus hydraulics.md
+- Schrauben der Pumpe auf dem Sockel (4 x M6), Standwinkel-Befestigung, Deckeldichtung und Deckel-Flansch nicht modelliert
+- Kabel gerade und 150 mm kurz modelliert (real 1,5-3 m); Elektrik/Zufuehrung: Schaltschrank-Klasse
+- Durchdringung Kassetten/Plattform und Pumpe/Tankkegel: Integrator/Tank pruefen

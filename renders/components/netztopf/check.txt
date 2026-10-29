@@ -1,0 +1,15 @@
+PASS pflanze: netztopf Hoehe (OBJ 63): Ist 63, Soll 63 (+-0.1)
+PASS pflanze: netztopf Kragen-D (OBJ 64): Ist 64, Soll 64 (+-0.1)
+PASS pflanze: netztopf Bezugspunkt Boden Z=0: Ist -1.65146e-15, Soll 0 (+-0.01)
+PASS pflanze: netztopf Schlitze (8): Ist 8, Soll 8 (+-0.01)
+PASS pflanze: netztopf Material PP: Ist 1, Soll 1
+PASS pflanze: netztopf Masse 14-20 g: Ist 1, Soll 1
+PASS pflanze: netztopf Anzahl 2160 laut layout.json: Ist 2160, Soll 2160
+PASS pflanze: netztopf OBJ-Mass 50 x 64 x 63: Ist 1, Soll 1
+PASS pflanze: salatkopf Blaetter (Summe der Gruppen): Ist 33, Soll 33
+PASS pflanze: salatkopf Breite M 95-125: Ist 1, Soll 1
+PASS pflanze: salatkopf Hoehe ueber dem Topfrand M 50-70: Ist 1, Soll 1
+PASS pflanze: salatkopf Hals im Topf (Z -25..0, D16 < Topf-Innen-D 47): Ist 1, Soll 1
+PASS pflanze: salatkopf Wenige Flaechen (< 8 je Koerper): Ist 1, Soll 1
+PASS pflanze: salatkopf Konfigurationen S, M, L: Ist 1, Soll 1
+== pflanze: 14/14 PASS

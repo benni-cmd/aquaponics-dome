@@ -7,20 +7,20 @@
   "head_d": {
    "wert": 100,
    "einheit": "mm",
-   "herkunft": "[A] Standard M (Rosettenbreite ca. 1,05 x head_d, Hoehe ca. 0,7 x head_d); S = 70, L = 130"
+   "herkunft": "[A] Standard M: Breite ca. 1,15 x head_d, Hoehe ca. 0,5 x head_d (ref-6: flacher, breiter Hügel, Hoehe etwa halbe Breite); S = 70, L = 130"
   },
   "leaf_t_f": {
-   "wert": 0.035,
+   "wert": 0.045,
    "einheit": "",
    "herkunft": "[A] Blattdicke / head_d (Scheibe)"
   },
   "core_r_f": {
-   "wert": 0.14,
+   "wert": 0.32,
    "einheit": "",
-   "herkunft": "[A] Kernkugel Radius / head_d"
+   "herkunft": "[A] Kuppelkoerper (dichte Blattmasse) Radius / head_d; Blaetter ragen als Fransen heraus (Kritiker R1-R3: buschig statt glatt/rosenartig)"
   },
   "core_h_f": {
-   "wert": 0.35,
+   "wert": 0.21,
    "einheit": "",
    "herkunft": "[A] Kernkugel Hoehe / head_d"
   },
@@ -53,44 +53,44 @@
     "name": "Saum",
     "n": 6,
     "phase": 0,
-    "rho": 0.3,
-    "h": 0.1,
-    "rad": 0.21,
-    "alpha": 8
+    "rho": 0.33,
+    "h": 0.09,
+    "rad": 0.23,
+    "alpha": 24
    },
    {
     "name": "AussenA",
     "n": 5,
     "phase": 36,
-    "rho": 0.27,
-    "h": 0.17,
-    "rad": 0.21,
-    "alpha": 18
+    "rho": 0.3,
+    "h": 0.15,
+    "rad": 0.22,
+    "alpha": 32
    },
    {
     "name": "AussenB",
     "n": 5,
     "phase": 10,
-    "rho": 0.25,
-    "h": 0.24,
-    "rad": 0.2,
-    "alpha": 28
+    "rho": 0.28,
+    "h": 0.2,
+    "rad": 0.21,
+    "alpha": 40
    },
    {
     "name": "MitteA",
     "n": 5,
     "phase": 24,
     "rho": 0.19,
-    "h": 0.32,
+    "h": 0.26,
     "rad": 0.19,
-    "alpha": 40
+    "alpha": 46
    },
    {
     "name": "MitteB",
     "n": 5,
     "phase": 48,
     "rho": 0.15,
-    "h": 0.37,
+    "h": 0.31,
     "rad": 0.18,
     "alpha": 48
    },
@@ -99,31 +99,31 @@
     "n": 4,
     "phase": 5,
     "rho": 0.08,
-    "h": 0.42,
+    "h": 0.36,
     "rad": 0.17,
-    "alpha": 58
+    "alpha": 56
    },
    {
     "name": "Herz2",
     "n": 3,
     "phase": 30,
     "rho": 0.04,
-    "h": 0.46,
+    "h": 0.39,
     "rad": 0.16,
-    "alpha": 68
+    "alpha": 64
    }
   ],
   "ueberlappung": "Blaetter ueberlappen sich gewollt (Rosette); Vereinigung flacher Scheiben scheitert im Kernel, daher je Gruppe eigene Koerper"
  },
  "blatt": {
   "funktion": "Visuelles Pflanzenbauteil (Kopfsalat) fuer Rinnen und Beete; nur Darstellung, keine Funktion im Wasserkreislauf.",
-  "querschnitt": "Rosette aus 33 geneigten Blattscheiben (7 Gruppen, Neigung 8 bis 68 Grad, Blattdicke 3,5 mm) um eine Kernkugel; Wurzelhals D16 x 25 mm nach unten in den Netztopf. Blattscheiben ueberlappen sich gewollt (Pflanze).",
+  "querschnitt": "Blattrosette: Kuppelkoerper (Kugel) mit 33 geneigten Blattscheiben in 7 Gruppen (Neigung 24 bis 64 Grad, Blattdicke 4,5 mm), Wurzelhals D16 x 25 mm nach unten in den Netztopf; Groesse M: Breite 110 mm, Hoehe 54 mm ueber dem Topfrand. Blattscheiben ueberlappen sich gewollt (Pflanze); Vereinigung flacher Scheiben scheitert im Kernel, daher je Gruppe eigene Koerper.",
   "toleranzen": "Hals D16 in Netztopf-Innen-D 47 (oben).",
   "ports": [],
   "verbindungen": [
    "Hals steckt im Netztopf; Instanz wird mit Ursprung auf die Kragenoberkante des Netztopfs gesetzt (Topf-Ursprung + 63 mm)."
   ],
-  "abweichung": "keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse M: Breite ca. 115 mm, Hoehe 61 mm.",
+  "abweichung": "keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse M: Breite 110 mm, Hoehe 54 mm (Verhaeltnis 0.49; ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite).",
   "montage": [
    "Instanz auf den Topf setzen (Pattern oder `occurrence.copy`)",
    "Groesse ueber Konfiguration S (70) / M (100) / L (130) waehlen"
@@ -135,7 +135,7 @@
   "pruefung": [
    "Konfigurationszeilen S/M/L angelegt (`config.table`), Rosette je Konfiguration ueber head_d skaliert"
   ],
-  "kritiker": "Runde 1 und 2: Referenz gewaehlt (A), grosse Luecken Silhouette/Blattstruktur; nach Umbau auf Blattrosette Runde 3 offen",
+  "kritiker": "Runde 1/2: Referenz gewaehlt (Kugelhaufen, Rose), Runde 3 (Kontextpaket): siehe workshop-log",
   "offen": [
    "Blattraender kreisrund (Ellipsen/Zacken fehlen)",
    "Konfiguration S/L als Zeile vorhanden, Wirkung auf verknuepfte Instanz im Dom vom Integrator zu pruefen"
@@ -143,17 +143,17 @@
  },
  "herkunft_tabelle": [
   [
-   "Salat als Blattrosette (33 Blaetter, 7 Gruppen)",
+   "Salat als buschige Blattrosette (33 Blaetter, 7 Gruppen, Kuppelkoerper)",
    "-",
    "Bild",
    "ref-6 mittlerer Tisch: buschige Kopfsalat-Koepfe; Rosette aus Scheiben ist unsere Vereinfachung (Kritiker R1/R2)",
    "mittel"
   ],
   [
-   "Breite M ca. 115 mm, Hoehe 61 mm",
-   "115 / 61",
+   "Breite M ca. 110 mm, Hoehe 54 mm",
+   "110 / 54 mm",
    "Bild + A",
-   "ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm) breit; Proportion 0,5-0,6 (Kritiker widerspruechlich)",
+   "ref-6: flacher breiter Huegel, Hoehe etwa halbe Breite; Kopf ca. 1,5-2 x Topfkragen (64 mm)",
    "niedrig"
   ],
   [
@@ -172,7 +172,7 @@
   ],
   [
    "Gruen #58a63f",
-   "-",
+   "#58a63f",
    "Bild",
    "ref-6 Salatgruen",
    "mittel"

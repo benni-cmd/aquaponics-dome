@@ -1,12 +1,9 @@
-# Checkpoint Montage (M0 Uebernahme, 29.10.2026 04:50)
+# Checkpoint Montage (M1 Start, 29.10.2026, Sitzung neu gestartet)
 ## Stand
-- Rolle Montage per dauerhaftem Auftrag uebernommen (Commit 21 min alt, keine Montage-Sitzung). Werkstatt-Sitzung laeuft (busy), ihre Dateien nicht angefasst.
-- Layout, Streben (64), Fundamentring, Erdflaeche, Pools, Schrank, Zulaufrohr, Tuer_Komplett (R21) verknuepft; Wurzel Kuppel_Aquaponik mit 10 Baugruppen.
-## Messwerte (Befehl)
-- python scripts/check_latte.py -> SCORE 19/19 = 100 %, Kollisionen 0.
-- python scripts/check_components.py -> 4 PASS, 1 FAIL (lose Werkstatt-Koerper: 05_Beete 14, 07_Tanks 20, 10_Pflanzen 240); Ursache: Werkstatt-Klassen noch nicht abgenommen/eingebaut.
-## Board (docs/integration-board.md, 03:35)
-- abgenommen: nur NFT-Rinne. Netztopf/Salatkopf L3, Blatt/Kritiker offen -> M1 (Pflanzen als Instanzen) wartet darauf.
-## Naechster Schritt
-- M2 Knoten (R02): Scope-Card fehlt in docs/scope-cards.md (Orchestrator legt sie an, siehe Plan) -> Orchestrator-Anstoss; sonst naechster Lauf legt sie selbst an und beginnt mit knoten_5.
-- Strebenprofil strut_r 45 mm vs OBJ 30x30: offen (Ben).
+- Docs gelesen. dome.sc (Stand 04:45): Layout, 64 Streben, Fundamentring, Erdflaeche, Pools, Schrank, Zulaufrohr, Tuer. check_components: 4 PASS, 1 FAIL (lose Koerper 05_Beete 14, 07_Tanks 20, 10_Pflanzen 240).
+- Board: abgenommen NFT-Rinne, NFT-Tisch, IBC-Beet, Tank klein/gross; L3: Knoten, Anker, Pumpe, Salatkopf, Netztopf.
+## Plan M1 in Teilschritten (je Commit+Push)
+1. IBC-Beete (14 Instanzen, Varianten aussen_933/aussen_993/innen_933; Ursprung = Mitte Wannenunterseite, z = sock_z + z0, yaw = yaw + ROT) in gen_dome.py t9.
+2. Tanks (4) + Pumpen, 3. NFT-Tische (24, aus Ringen), 4. Netztopf/Salatkopf (2716), 5. Knoten/Anker.
+## Regel vom Orchestrator
+- Kontext messen nach grossem Schritt; ab 50 % Zustand sichern, dann clear_session("self") als letzte Aktion.

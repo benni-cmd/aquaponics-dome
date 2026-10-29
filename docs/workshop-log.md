@@ -68,3 +68,13 @@ Beginn 29.10.2026 ~03:50. Befunde zu SolidCraft v0.25.1 (Headless, `solidcraft-c
 | 4 | klein, sicher: Schlaeuche weich gebogen, Modell gerade starr | **gueltig, Zwischenbauteil** (Montage-Sitzung baut Schlaeuche/Verteiler nach Scope-Teilung) | gerade Stutzen bleiben als Platzhalter |
 | 5 | klein, vermutet: Beine flache Profile statt Rechteckrohr | **unklar** | ref-6 verdeckt; Rechteckrohr 30x30 aus OBJ-Analyse (Tanks) bleibt (A) |
 | Hinweis | Rinnenprofil flach/gerillt vs. hohes Kasten; Verteiler ueber Tischende hinaus, Schlaeuche zu Nachbartischen | **andere Klasse** (Rinne; Rohrnetz Integrator) | Rinne abgenommen; Verteiler als Platzhalter |
+
+### nft_tisch, Spec-Pruefer (FAIL) 29.10. ~07:25
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Standort der Beine (innen ueber dem Pool, Stuetzung Innenring) fehlt im Blatt | **gueltig (components.md Z.44)** | im Blatt als OFFEN mit Beinabstand und Bockabstand je Typ; Entscheidung Orchestrator/Integrator (Innenring Apothem 1733-1995 ueber Pool-Wasserradius 1945) |
+| 2 | gross: Gewicht widerspruechlich (Volumen x 7,85 gegen 42,9 kg) | **falsch gelesen** (Masse je Koerper nach Werkstoff, Rinnen PVC 1,4) | Hinweis im Blatt, gefuellt in kg |
+| 3 | klein: Stueckliste/Ports nicht bestellbar | **gueltig** | Stueckliste mit Laengen je Typ, Schrauben je Bock korrigiert (4 M6), Anker-Port mit Koordinaten |
+| 4 | klein: Portrichtung mehrdeutig, DN, Gefaelle Sammelrohr | **gueltig** | "Wasser tritt ein/verlaesst, Oeffnung +Y", DN genannt, Sammelrohr horizontal als offen |
+| 5 | klein: Herkunft (Mitte/gemittelt statt Unterkante, Ben bei 3 Rinnen, leere Wertspalten, fehlende Zeilen) | **gueltig** | Texte korrigiert, Ben genannt, Wertspalten gefuellt, 4 Zeilen ergaenzt |
+| H | Scope-Card/detail-standard 1 cm/m gegen R06 1,5 % | **andere Klasse (Orchestrator)** | im Blatt vermerkt |

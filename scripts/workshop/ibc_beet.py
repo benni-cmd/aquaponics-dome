@@ -24,11 +24,12 @@ def build(typ):
     T = d["typen"][typ]
     L, W, H = T["laenge"], T["breite"], T["hoehe"]
     wl, ft, cr, rw, rh = p["wall"], p["floor_t"], p["corner_r"], p["rim_w"], p["rim_h"]
-    Li, Wi = L - 2 * wl, W - 2 * wl
+    Lw, Ww = L - 2 * rw, W - 2 * rw               # Wandaussenmass; Randwulst bringt die Wanne auf das OBJ-Mass L x W
+    Li, Wi = Lw - 2 * wl, Ww - 2 * wl
     z_ms = H - p["rim_gap"]                      # Medienoberflaeche
     z_m0 = z_ms - p["media_depth"]               # Medienunterkante = Oberkante Siebboden
     z_g0 = z_m0 - p["grid_t"]                    # Unterkante Siebboden
-    x_sp = L / 2 - 200                           # Siphon nahe dem Ablaufende (+X)
+    x_sp = Li / 2 - 200                          # Siphon nahe dem Ablaufende (+X)
     y_in, z_in = -(Wi / 2 - 50), H - p["inflow_below_rim"]
     b = sc.Build()
     unit = {k: v["einheit"] for k, v in d["parameter"].items()}
@@ -42,14 +43,14 @@ def build(typ):
     b.add("component.create", name=root, grounded=True)
     # --- Wanne
     b.add("component.create", name="T30a_Wanne")
-    rrect(b, 0, W, L, cr + wl, "Aussenform"); b.add("sketch.finish")
+    rrect(b, 0, Ww, Lw, cr + wl, "Aussenform"); b.add("sketch.finish")
     b.add("solid.extrude", distance=H, name="Wannenkoerper", body_name="Wanne")
-    rrect(b, H - rh, W + 2 * rw, L + 2 * rw, cr + wl + rw, "Randwulst"); b.add("sketch.finish")
+    rrect(b, H - rh, W, L, cr + wl + rw, "Randwulst"); b.add("sketch.finish")
     b.add("solid.extrude", distance=rh, operation="join", targets=["Wanne"], name="Randwulst")
     rrect(b, ft, Wi, Li, cr, "Innenraum"); b.add("sketch.finish")
     b.add("solid.extrude", distance=H - ft + 1, operation="cut", targets=["Wanne"], name="Innenraum_Ausschnitt")
     b.add("solid.cylinder", diameter=p["bulkhead_d"], height=ft + 2, base=[x_sp, 0, -1], operation="cut", targets=["Wanne"], name="Bohrung_Bulkhead")
-    b.add("solid.cylinder", diameter=p["inflow_d"] + 2, height=wl + 4, base=[-L / 2 - 2, y_in, z_in], axis=[1, 0, 0], operation="cut", targets=["Wanne"], name="Durchfuehrung_Zulauf")
+    b.add("solid.cylinder", diameter=p["inflow_d"] + 2, height=wl + 4, base=[-Lw / 2 - 2, y_in, z_in], axis=[1, 0, 0], operation="cut", targets=["Wanne"], name="Durchfuehrung_Zulauf")
     b.add("material.assign", bodies=["Wanne"], material="HDPE weiss")
     # --- Stuetzen (Klotz 60 x 60 unter dem Siebboden), Raster nx x 2
     b.add("component.activate", component=root)
@@ -108,12 +109,12 @@ def build(typ):
     # --- Zulaufrohr (Tropfrohr) laengs, durch die Stirnwand
     b.add("component.activate", component=root)
     b.add("component.create", name="T30f_Zulauf")
-    x0, x1 = -L / 2 - 60, L / 2 - 400
+    x0, x1 = -Lw / 2 - 60, Li / 2 - 300
     tube(b, "Tropfrohr", p["inflow_d"], p["inflow_wall"], [x0, y_in, z_in], [1, 0, 0], x1 - x0)
-    n_dr = int((x1 - (-L / 2 + 150)) // p["inflow_pitch"]) + 1
+    n_dr = int((x1 - (-Lw / 2 + 150)) // p["inflow_pitch"]) + 1
     ih = p["inflow_hole"]
     for k in range(n_dr):                           # Tropfloecher als Boxen durch die untere Rohrwand
-        b.add("solid.box", length=ih, width=ih, height=p["inflow_wall"] + 4, center=[-L / 2 + 150 + k * p["inflow_pitch"], y_in, z_in - p["inflow_d"] / 2 + p["inflow_wall"] / 2], operation="cut", targets=["Tropfrohr"], name=f"Tropfloch_{k}")
+        b.add("solid.box", length=ih, width=ih, height=p["inflow_wall"] + 4, center=[-Lw / 2 + 150 + k * p["inflow_pitch"], y_in, z_in - p["inflow_d"] / 2 + p["inflow_wall"] / 2], operation="cut", targets=["Tropfrohr"], name=f"Tropfloch_{k}")
     b.add("solid.cylinder", diameter=p["inflow_d"] - 2 * p["inflow_wall"] - 0.4, height=20, base=[x1 - 18, y_in, z_in], axis=[1, 0, 0], operation="new", name="Stopfen", body_name="Endstopfen_Zulauf")
     b.add("material.assign", bodies=["Tropfrohr", "Endstopfen_Zulauf"], material="PVC grau Beet")
     b.add("component.activate", component=root)
@@ -128,8 +129,9 @@ def render(typ, path, info):
     r = os.path.join(sc.ROOT, "renders", "components", f"ibc_beet_{typ}")
     os.makedirs(r, exist_ok=True)
     L, H = info["L"], info["H"]
+    Lw_ = L - 2 * 10
     views = {"01-iso": ([0, 0, H / 3], 0.6, 0.45, L * 1.25), "02-siphon": ([info["x_sp"], 0, info["z_m0"] + 120], 0.7, 0.5, 700),
-             "03-zulauf": ([-L / 2 + 150, info["y_in"], info["z_in"]], 0.9, 0.4, 700), "04-medium": ([0, 0, info["z_ms"]], 0.3, 0.8, L * 0.9)}
+             "03-zulauf": ([-Lw_ / 2 + 150, info["y_in"], info["z_in"]], 0.9, 0.4, 700), "04-medium": ([0, 0, info["z_ms"]], 0.3, 0.8, L * 0.9)}
     for n, (t, yaw, pitch, dist) in views.items():
         sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-{n}.png"), t, yaw, pitch, dist, w=1000, h=650)
     sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-05-schnitt.png"), [info["x_sp"] - 100, 0, H / 2], 3.14159, 0.0, 1300, w=1000, h=650, section="XZ")

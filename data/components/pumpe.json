@@ -131,9 +131,9 @@
    ]
   ],
   "verbindungen": [
-   "Konsole an der Tafel: je 2 Schrauben M6x20 ISO 4017 mit Mutter ISO 4032 mittig im haengenden Vertikalschenkel (im Modell, Bohrungen in Konsole/Tafel nicht modelliert: der Schaft liegt im Blech; Klemmlaenge Tafel 5/7 + Konsole 5 + Mutter 5,2 = 15,2/17,2 mm, Schraube 20 mm steht >= 2 Gewindegaenge ueber), Scheiben ISO 7089 (nicht modelliert) [A]",
-   "Tafel steht auf 2 Standwinkeln; je Winkel 2 Schrauben M6 mit Duebel/Mutter (4 je Tafel, nicht modelliert) [A], am tragfaehigen Untergrund zu verschrauben",
-   "Pumpe auf dem Sockel: 4 Schrauben M6x30 mit Mutter und Scheibe (Klemmlaenge Sockel 11 + Konsole 5 + 2 Scheiben 3,2 + Mutter 5,2 = 24,4 mm; nicht modelliert) [A]",
+   "Konsole an der Tafel: je 2 Schrauben M6x20 ISO 4017 mit Mutter ISO 4032 mittig im haengenden Vertikalschenkel (im Modell, Bohrungen in Konsole/Tafel nicht modelliert: der Schaft liegt im Blech; Klemmlaenge Tafel 5/7 + Konsole 5 + Mutter 5,2 = 15,2/17,2 mm ohne Scheibe, Schraube 20 mm steht 4,8/2,8 mm ueber der Mutter)",
+   "Standwinkel an der Tafel: je Winkel 2 Schrauben M6x16 mit Mutter (4 je Tafel, nicht modelliert) [A]; Winkel am tragfaehigen Untergrund: waagerechter Schenkel mit 1-2 Schrauben M6 und Duebel (nicht modelliert) [A]",
+   "Pumpe auf dem Sockel: Befestigung des zylindrischen Motors ueber Pumpenfuss/Spannband (nicht modelliert, Motor liegt tangential), 4 Schrauben M6x30 mit Mutter und Scheibe (Klemmlaenge Sockel 11 + Konsole 5 + 2 Scheiben 3,2 + Mutter 5,2 = 24,4 mm; nicht modelliert) [A]",
    "Stutzen PVC-U d40/d32 (klein), d50/d40 (gross) (DIN 8062): geklebt oder mit Verschraubung am Rohrnetz (Montage); Uebergang auf Tankrohr d50/d63 mit Reduziermuffe aus `leitungsteile`"
   ],
   "abweichung": "layout.json tanks[].modules: Tafelmasse stimmen auf <= 1 mm (OBJ 501/502 x 5 x 345, 693 x 7 x 463; Bauteil 502 x 5 bzw. 693 x 7); Lage je Modul: layout.json (yaw: Tafeln 22,9/40,7 bzw. 22,9/41,1 Grad, Tafeln z0 -6..3) - Integrator. Anzahl: OBJ listet je kleinem Tank 4 und je grossem Tank 3 Pumpentafel-Eintraege, davon 2 bzw. 1 Duplikate an derselben Position (Abstand <= 5 mm) -> 2 Tafeln je Tank, gesamt 4 klein + 4 gross = 8 Pumpenmodule. docs/hydraulics.md 3 sieht je Linie Pumpe A und Pumpe B vor (4 Pumpen) und 2 Siebe: Abweichung 8 gegen 4 Pumpen offen, die Siebe haben kein Bauteil. Im OBJ sind es nur Boxen ohne Pumpe, Anschluesse oder Kabel: Pumpe, Konsole, Stutzen, Kabel sind [A]. Ausrichtung: Pumpenseite +Y; im OBJ steht die Tafel tangential zum Tank, +Y soll vom Tank weg zeigen (yaw des Integrators). Die 384er-Kassetten sind Stuetzrippen der Tankplattform (Klasse Tank, Entscheidung Orchestrator 29.10.) und gehoeren nicht zu dieser Klasse.",
@@ -144,8 +144,8 @@
   ],
   "werkzeug": "Akkuschrauber, Schluessel M6, Wasserwaage, Rohrschneider, PVC-Kleber",
   "stueckliste": [
-   "pumpe_klein (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 502x5x345 1, Standwinkel 50x100x5 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 117, Vertikalschenkel 150 x 40 haengt nach unten, Konsole = Winkel) 1, Pumpensockel 105 x 54 x 11 1, Kreiselpumpe (Motor D90 x 150, Kopf D110 x 70) 1 mit Stutzen d40 und d32, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 und Scheiben ISO 7089 2 (Scheiben nicht modelliert); zusaetzlich nicht modelliert: 4 Schrauben M6x30 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6 fuer die Standwinkel (je Winkel 2). Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
-   "pumpe_gross (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 693x7x463 1, Standwinkel 50x100x5 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 137, Vertikalschenkel 150 x 40 haengt nach unten, Konsole = Winkel) 1, Pumpensockel 126 x 66 x 11 1, Kreiselpumpe (Motor D110 x 180, Kopf D130 x 80) 1 mit Stutzen d50 und d40, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 und Scheiben ISO 7089 2 (Scheiben nicht modelliert); zusaetzlich nicht modelliert: 4 Schrauben M6x30 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6 fuer die Standwinkel (je Winkel 2). Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
+   "pumpe_klein (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 502x5x345 1, Standwinkel (senkrechter Schenkel 50 x 100 x 5, waagerechter 50 x 80 x 5) 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 117, Vertikalschenkel 150 x 40 haengt nach unten, Konsole = Winkel) 1, Pumpensockel 105 x 54 x 11 1, Kreiselpumpe (Motor D90 x 150, Kopf D110 x 70) 1 mit Stutzen d40 und d32, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 (ohne Scheiben); zusaetzlich nicht modelliert: 4 Schrauben M6x30 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6x16 mit Mutter fuer Winkel an Tafel (je Winkel 2) und je Winkel 1-2 Schrauben M6 mit Duebel in den Untergrund. Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
+   "pumpe_gross (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 693x7x463 1, Standwinkel (senkrechter Schenkel 50 x 100 x 5, waagerechter 50 x 80 x 5) 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 137, Vertikalschenkel 150 x 40 haengt nach unten, Konsole = Winkel) 1, Pumpensockel 126 x 66 x 11 1, Kreiselpumpe (Motor D110 x 180, Kopf D130 x 80) 1 mit Stutzen d50 und d40, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 (ohne Scheiben); zusaetzlich nicht modelliert: 4 Schrauben M6x30 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6x16 mit Mutter fuer Winkel an Tafel (je Winkel 2) und je Winkel 1-2 Schrauben M6 mit Duebel in den Untergrund. Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
    "Module gesamt: Pumpenmodul klein 4, gross 4 (layout.json tanks[].modules; Duplikate zusammengefasst)"
   ],
   "lokal": "Pumpe: handelsuebliche Kreiselpumpe (Teich-/Umwaelzpumpe) auf Montagebrett.",
@@ -161,8 +161,8 @@
   ],
   "render_dirs": [],
   "pruefung": [
-   "scripts/workshop/check_pumpe.py: 32/32 PASS fuer beide Varianten (Ergebnis `renders/components/pumpe_klein/check.txt`; eine Datei deckt klein und gross), inkl. Konsole = Winkel und Kopf/Konsole ohne Durchdringung; Normteile (Schrauben, Muttern) auf Stahl 7,85",
-   "Kein Bild-Kritiker: die Module sind in keiner Referenz sichtbar; Spec-Pruefer Runde 1 (FAIL, behoben, 29.10. ~08:50), Runde 2 (FAIL, 5 Befunde, eingearbeitet) und Runde 3 (FAIL knapp, 5 Befunde, eingearbeitet; Triage in `docs/workshop-log.md`); Orchestrator-Entscheidung D16 zur Rolle"
+   "scripts/workshop/check_pumpe.py: 34/34 PASS fuer beide Varianten (Ergebnis `renders/components/pumpe_klein/check.txt`; eine Datei deckt klein und gross), inkl. Konsole = Winkel und Kopf/Konsole ohne Durchdringung; Normteile (Schrauben, Muttern) auf Stahl 7,85",
+   "Kein Bild-Kritiker: die Module sind in keiner Referenz sichtbar; Spec-Pruefer Runde 1 (FAIL, behoben, 29.10. ~08:50), Runde 2 (FAIL, 5 Befunde, eingearbeitet) und Runde 3 (FAIL knapp, 5 Befunde, eingearbeitet) und Runde 4 (PASS knapp, 4 kleine Befunde, eingearbeitet; Triage in `docs/workshop-log.md`); Orchestrator-Entscheidung D16 zur Rolle"
   ],
   "offen": [
    "Rolle der 502/693er-Tafeln als Pumpentafeln ist Annahme (OBJ liefert nur Boxen; Tafeln stehen tangential am Boden: alternativ Seitenbleche/Spritzschutz)",
@@ -174,7 +174,9 @@
    "Uebergang Stutzen d40/d32 bzw. d50/d40 auf Tankrohr d50/d63: Reduziermuffen aus `leitungsteile`, Verlegung Montage",
    "Rohrwand 3 mm der Stutzen gegen SDR 21 der Bibliothek leitungsteile (Abweichung dort dokumentiert)",
    "Bohrungen fuer die Konsolenschrauben (M6, 2 je Konsole) sind nicht modelliert; Schaft und Kopf liegen am Blech, Kopf ausserhalb der Platte",
-   "docs/hydraulics.md 5 fuehrt weiter 'Filtermodul' bzw. 'Pump-/Filtermodule' als Klasse (D16-Rest, Orchestrator)"
+   "docs/hydraulics.md 5 fuehrt weiter 'Filtermodul' bzw. 'Pump-/Filtermodule' als Klasse (D16-Rest, Orchestrator)",
+   "Pumpenbefestigung auf dem Sockel (Fuss oder Spannband fuer den zylindrischen Motor) nicht modelliert und ohne Fabrikat offen",
+   "parts.insert liefert beim ersten Bolzen einen D6-Stummel auf dem Kopf; pumpe.py schneidet ihn mit einem Werkzeugkoerper ab (Body1, Pruefzeile Schraubenvolumen gleich)"
   ]
  },
  "herkunft_tabelle": [
@@ -273,7 +275,7 @@
    "Schrauben M6x20 an der Konsole (statt M6x16)",
    "M6x20 ISO 4017 + Mutter ISO 4032",
    "E",
-   "Klemmlaenge Tafel + Konsole 5 + Mutter 5,2 = 15,2 (klein) / 17,2 (gross); M6x16 stand 0,8 mm bzw. gar nicht ueber der Mutter",
+   "Klemmlaenge ohne Scheibe Tafel + Konsole 5 + Mutter 5,2 = 15,2 (klein) / 17,2 (gross); M6x16 stand 0,8 mm bzw. gar nicht ueber der Mutter",
    "mittel"
   ],
   [
@@ -295,6 +297,20 @@
    "A / B",
    "A",
    "hydraulics.md 3: Pumpe A vor dem kleinen Tank, Pumpe B hinter dem grossen Tank; Tafel-Rolle bleibt Annahme",
+   "niedrig"
+  ],
+  [
+   "Standwinkel: senkrechter Schenkel 50 x 100 x 5, waagerechter 50 x 80 x 5",
+   "50 x 100 x 5 / 50 x 80 x 5 mm",
+   "A",
+   "gegen Kippen der stehenden Tafel; Masse aus pumpe.py (Winkel hinten an der Tafel)",
+   "niedrig"
+  ],
+  [
+   "Pumpenschrauben M6x30 (Klemmlaenge 24,4 mm)",
+   "M6x30 ISO 4017",
+   "E",
+   "Sockel 11 + Konsole 5 + 2 Scheiben je 1,6 (ISO 7089) + Mutter 5,2 = 24,4 mm; nicht modelliert",
    "niedrig"
   ]
  ]

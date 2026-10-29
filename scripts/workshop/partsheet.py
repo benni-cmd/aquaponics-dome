@@ -11,6 +11,7 @@ def main(name):
     main_sc = os.path.join(sc.ROOT, "designs", "components", name + ".sc")
     if not os.path.exists(main_sc):                       # Klassen mit Typ-Dateien: erste Variante als Hauptmessung
         main_sc = os.path.join(sc.ROOT, "designs", "components", bl["varianten"][0] + ".sc")
+    vlabel = ", Variante " + os.path.basename(main_sc)[:-3] if bl.get("varianten") and not os.path.exists(os.path.join(sc.ROOT, "designs", "components", name + ".sc")) else ""
     ev = sc.evaluate(main_sc)
     mn, mx = sc.bbox_all(ev)
     sep = bl.get("massen_getrennt", [])                  # Koerper, die nicht zur Leermasse zaehlen (z. B. Medium)
@@ -33,7 +34,7 @@ def main(name):
         L.append("\n| Typ | " + " | ".join(cols) + " |\n|---|" + "---|" * len(cols))
         for k, v in d["typen"].items():
             L.append(f"| {k} | " + " | ".join(str(v.get(c, "")) for c in cols) + " |")
-    L.append(f"\nGesamt-Box (Messung): X {mn[0]:.1f} bis {mx[0]:.1f}, Y {mn[1]:.1f} bis {mx[1]:.1f}, Z {mn[2]:.1f} bis {mx[2]:.1f} mm; Koerper: {len(ev['bodies'])}.\n")
+    L.append(f"\nGesamt-Box (Messung{vlabel}): X {mn[0]:.1f} bis {mx[0]:.1f}, Y {mn[1]:.1f} bis {mx[1]:.1f}, Z {mn[2]:.1f} bis {mx[2]:.1f} mm; Koerper: {len(ev['bodies'])}.\n")
     for bx in bl.get("boxen", []):
         L.append(f"- Box (Messung) {bx}")
     if bl.get("toleranzen"):
@@ -41,7 +42,7 @@ def main(name):
     L.append("## Werkstoff und Gewicht\n")
     w = d["werkstoff"]
     L.append(f"- Werkstoff: {w['name']}, Dichte {w['dichte_g_cm3']} g/cm3, Farbe {w['farbe']} ({w['herkunft']})")
-    L.append(f"- Volumen (Messung, `solidcraft-cli eval`): {vol/1000:.1f} cm3 · Masse leer{' (ohne ' + ', '.join(sep) + ')' if sep else ''}: {mass:.0f} g ({mass/1000:.2f} kg)")
+    L.append(f"- Volumen (Messung{vlabel}, `solidcraft-cli eval`): {vol/1000:.1f} cm3 · Masse leer{' (ohne ' + ', '.join(sep) + ')' if sep else ''}: {mass:.0f} g ({mass/1000:.2f} kg)")
     for v in bl.get("varianten", []):
         evv = sc.evaluate(os.path.join(sc.ROOT, "designs", "components", v + ".sc"))
         L.append(f"- Variante `{v}`: {sum(b['mass_g'] for b in evv['bodies'] if not isep(b))/1000:.2f} kg leer{' (ohne ' + ', '.join(sep) + ')' if sep else ''}")

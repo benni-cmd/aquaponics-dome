@@ -3,6 +3,7 @@ PASS pumpe: pumpe_klein Tafel Laenge: Ist 502, Soll 502 (+-0.5)
 PASS pumpe: pumpe_klein Tafel Dicke: Ist 5, Soll 5 (+-0.5)
 PASS pumpe: pumpe_klein Tafel Hoehe: Ist 345, Soll 345 (+-0.5)
 PASS pumpe: pumpe_klein Pumpensockel steht auf der Konsole: Ist 64, Soll 64 (+-0.01)
+PASS pumpe: pumpe_klein Konsolenschrauben gleich (Volumen Body1 = Body3, kein Stummel): Ist 911.794, Soll 911.794 (+-5)
 PASS pumpe: pumpe_klein Konsole ist ein Winkel (Oberkante Vertikalschenkel = Oberkante Platte): Ist 64, Soll 64 (+-0.01)
 PASS pumpe: pumpe_klein Pumpenkopf kollidiert nicht mit der Konsole (Luft >= 0,5 mm): Ist 1, Soll 1
 PASS pumpe: pumpe_klein Motor ruht auf dem Sockel (tangential): Ist 75.0012, Soll 75 (+-0.01)
@@ -19,6 +20,7 @@ PASS pumpe: pumpe_gross Tafel Laenge: Ist 693, Soll 693 (+-0.5)
 PASS pumpe: pumpe_gross Tafel Dicke: Ist 7, Soll 7 (+-0.5)
 PASS pumpe: pumpe_gross Tafel Hoehe: Ist 463, Soll 463 (+-0.5)
 PASS pumpe: pumpe_gross Pumpensockel steht auf der Konsole: Ist 54, Soll 54 (+-0.01)
+PASS pumpe: pumpe_gross Konsolenschrauben gleich (Volumen Body1 = Body3, kein Stummel): Ist 913.207, Soll 911.794 (+-5)
 PASS pumpe: pumpe_gross Konsole ist ein Winkel (Oberkante Vertikalschenkel = Oberkante Platte): Ist 54, Soll 54 (+-0.01)
 PASS pumpe: pumpe_gross Pumpenkopf kollidiert nicht mit der Konsole (Luft >= 0,5 mm): Ist 1, Soll 1
 PASS pumpe: pumpe_gross Motor ruht auf dem Sockel (tangential): Ist 65.0015, Soll 65 (+-0.01)
@@ -30,4 +32,4 @@ PASS pumpe: pumpe_gross Pumpe vor der Tafel (+Y): Ist 1, Soll 1
 PASS pumpe: pumpe_gross Pumpe liegt innerhalb der Tafellaenge (Motor+Kopf): Ist 1, Soll 1
 PASS pumpe: pumpe_gross Standwinkel: Ist 2, Soll 2
 PASS pumpe: pumpe_gross Kabel mit Stecker: Ist 2, Soll 2
-== pumpe: 32/32 PASS
+== pumpe: 34/34 PASS

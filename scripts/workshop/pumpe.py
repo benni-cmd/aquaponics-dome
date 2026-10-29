@@ -46,6 +46,9 @@ def build_pumpe(typ, T, p, d):
         zz = z_s - 20                                           # Schrauben mittig im haengenden Vertikalschenkel (z_s - 40 .. z_s), Kopf ausserhalb der Platte
         b.add("parts.insert", family="hex_bolt", size="M6", length=20, point=[sx * (bw / 2 - 25), t / 2 + bt, zz], direction=[0, 1, 0], name=f"SchraubeK_{sx}")
         b.add("parts.insert", family="hex_nut", size="M6", point=[sx * (bw / 2 - 25), -t / 2, zz], direction=[0, -1, 0], name=f"MutterK_{sx}")
+    # parts.insert liefert beim ersten Bolzen (Body1) einen D6-Stummel auf dem Kopf (12 statt 10 Flaechen, Befund Spec-Pruefer Runde 4): Werkzeugkoerper schneidet ihn ab
+    b.add("solid.box", length=12, width=6, height=12, center=[-(bw / 2 - 25), t / 2 + bt + 4.05 + 3, z_s - 20], operation="new", name="Stummelwerkzeug_R", body_name="Stummelwerkzeug")
+    b.add("solid.combine", target="Body1", tools=["Stummelwerkzeug"], operation="cut")
     # --- Pumpe: Sockel, Motor, Pumpenkopf, Saug- und Druckstutzen, Kabel mit Stecker
     b.add("component.activate", component=root)
     b.add("component.create", name="T50c_Pumpe")

@@ -223,3 +223,13 @@ Runde-2-Punkte in Sache behoben (Kopf/Konsole 1 mm Luft, Masse, Filter-Reste im 
 | 4 | klein: 384er/Tafelnmasse-Reste in der Abweichungszeile | **gueltig** | Zeile bereinigt, Tippfehler korrigiert |
 | 5 | klein: "Pumpe A" fuer die grosse Tafel (hydraulics.md: Pumpe B hinter dem grossen Tank) | **gueltig (Annahme)** | gross = Pumpe B, Herkunftszeile A |
 | H | hydraulics.md 51/61 fuehren "Filtermodul" weiter; Pumpen-A/B-Positionen, Siebe, Untergrund Erde | **andere Klasse** | Orchestrator/Hydraulik/Integrator, im Blatt offen |
+
+### pumpe (W12), Spec-Pruefer Runde 4 (PASS knapp) 29.10. ~15:00
+Runde-3-Punkte per Messung bestaetigt (Konsole z 24..64 Winkel, Kopf 1 mm Luft, keine Durchdringung ausser gewollt, check 32/32, Normteile Stahl, A/B konsistent).
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | klein: Body1 (linke Konsolenschraube) in pumpe_gross.sc hat D6-Stummel (12 statt 10 Flaechen) | **gueltig (Modell)** | parts.insert-Eigenheit am ersten Bolzen (auch bei vertauschter Reihenfolge); pumpe.py schneidet ihn per Werkzeugkoerper + solid.combine ab; neue Pruefzeile Schraubenvolumen gleich, check 34/34 |
+| 2 | klein: Klemmlaengen-Rechnung M6x20 mit/ohne Scheibe uneinheitlich (gross 1,2 mm Ueberstand) | **gueltig** | Scheiben bei den Konsolenschrauben gestrichen, Ueberstand 4,8/2,8 mm im Blatt |
+| 3 | klein: Standwinkel-Befestigung an der Tafel fehlt, waagerechter Schenkel 80 mm nicht im Blatt | **gueltig** | M6x16 Winkel/Tafel, Bodenschrauben, Masse 50x100x5 / 50x80x5 in Stueckliste und Herkunft |
+| 4 | klein, vermutet: Pumpenbefestigung auf dem Sockel offen, M6x30 ohne Herkunftszeile | **gueltig** | Fuss/Spannband als offene Frage, Herkunftszeile E |
+| H | Template zeigt Box/Volumen nur der ersten Variante unbeschriftet | **gueltig (eigenes Skript)** | partsheet.py beschriftet "Variante pumpe_klein" |

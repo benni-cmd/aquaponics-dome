@@ -1518,5 +1518,15 @@
   "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
   "commit": "a1cccec",
   "source": "renders/components/pumpe_gross/pumpe_gross-05-schnitt.png"
+ },
+ {
+  "file": "20261029-133218_werkstatt_pumpe_pumpe-gross-04-seite.png",
+  "sha": "8dc5ef54002f5e73",
+  "time": "2026-10-29 13:32:18",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 4: Schraubenstummel entfernt, Endstand",
+  "commit": "9def5df",
+  "source": "renders/components/pumpe_gross/pumpe_gross-04-seite.png"
  }
 ]

@@ -22,13 +22,21 @@ PASS nft_tisch: innen Schlaeuche: Ist 2, Soll 2
 PASS nft_tisch: innen Bein bei x=-44 Lage y (ausserhalb Beet/Pool): Ist -341, Soll -341 (+-0.6)
 PASS nft_tisch: innen Bein bei x=134 Lage y (ausserhalb Beet/Pool): Ist -341, Soll -341 (+-0.6)
 PASS nft_tisch: innen Winkelhalter (je Bein einer): Ist 2, Soll 2
-PASS nft_tisch: innen Winkelhalter-Normteile (2 x M6x16, 2 x M6x50, 2 Muttern je Winkel): Ist 12, Soll 12
+PASS nft_tisch: innen Winkelhalter-Normteile (2 x M6x16, 2 x M6x55, 2 Muttern je Winkel): Ist 12, Soll 12
 PASS nft_tisch: innen Winkelhalter x=-44, y=-341: Anlage Beininnenflaeche (y): Ist -321, Soll -321 (+-0.3)
-PASS nft_tisch: innen Winkelhalter x=-44, y=-341: Oberkante = Beinoberkante = Holmunterkante (z): Ist 781.335, Soll 781.335 (+-0.3)
-PASS nft_tisch: innen Winkelhalter x=-44, y=-341: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=-44, y=-341: Oberkante = Unterkante Holm/Kragarm (z): Ist 781.335, Soll 781.335 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=-44, y=-341: Oberkante = Beinoberkante (z): Ist 781.335, Soll 781.335 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=-44, y=-341: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=-44, y=-341: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=-44, y=-341: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
 PASS nft_tisch: innen Winkelhalter x=134, y=-341: Anlage Beininnenflaeche (y): Ist -321, Soll -321 (+-0.3)
-PASS nft_tisch: innen Winkelhalter x=134, y=-341: Oberkante = Beinoberkante = Holmunterkante (z): Ist 778.665, Soll 778.665 (+-0.3)
-PASS nft_tisch: innen Winkelhalter x=134, y=-341: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=134, y=-341: Oberkante = Unterkante Holm/Kragarm (z): Ist 778.665, Soll 778.665 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=134, y=-341: Oberkante = Beinoberkante (z): Ist 778.665, Soll 778.665 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=134, y=-341: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=134, y=-341: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: innen Winkelhalter x=134, y=-341: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: innen Winkelhalter Dichte Stahl (Masse 126,8 g je Winkel): Ist 126.83, Soll 126.8 (+-1)
+PASS nft_tisch: innen Winkelhalter-Interferenzen mit anderen Teilen (Schrauben, Diagonalen, Rinnenhalter): Ist 0, Soll 0
 PASS nft_tisch: innen Kragarme: Ist 2, Soll 2
 PASS nft_tisch: innen Auflage Kragarm_1 bei x=-44 = Rinnenunterkante: Ist 841.335, Soll 841.335 (+-1)
 PASS nft_tisch: innen Auflage Kragarm_2 bei x=134 = Rinnenunterkante: Ist 838.665, Soll 838.665 (+-1)
@@ -78,19 +86,33 @@ PASS nft_tisch: mitte Bein bei x=-439 Lage y (ausserhalb Beet/Pool): Ist 576.5, 
 PASS nft_tisch: mitte Bein bei x=529 Lage y (ausserhalb Beet/Pool): Ist -576.5, Soll -576.5 (+-0.6)
 PASS nft_tisch: mitte Bein bei x=529 Lage y (ausserhalb Beet/Pool): Ist 576.5, Soll 576.5 (+-0.6)
 PASS nft_tisch: mitte Winkelhalter (je Bein einer): Ist 4, Soll 4
-PASS nft_tisch: mitte Winkelhalter-Normteile (2 x M6x16, 2 x M6x50, 2 Muttern je Winkel): Ist 24, Soll 24
+PASS nft_tisch: mitte Winkelhalter-Normteile (2 x M6x16, 2 x M6x55, 2 Muttern je Winkel): Ist 24, Soll 24
 PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: Anlage Beininnenflaeche (y): Ist -556.5, Soll -556.5 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1247.26, Soll 1247.26 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: Oberkante = Unterkante Holm/Kragarm (z): Ist 1247.26, Soll 1247.26 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: Oberkante = Beinoberkante (z): Ist 1247.26, Soll 1247.26 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=-576: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
 PASS nft_tisch: mitte Winkelhalter x=-439, y=576: Anlage Beininnenflaeche (y): Ist 556.5, Soll 556.5 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=-439, y=576: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1247.26, Soll 1247.26 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=-439, y=576: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=576: Oberkante = Unterkante Holm/Kragarm (z): Ist 1247.26, Soll 1247.26 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=576: Oberkante = Beinoberkante (z): Ist 1247.26, Soll 1247.26 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=576: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=576: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=-439, y=576: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
 PASS nft_tisch: mitte Winkelhalter x=529, y=-576: Anlage Beininnenflaeche (y): Ist -556.5, Soll -556.5 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=529, y=-576: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1232.74, Soll 1232.74 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=529, y=-576: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=-576: Oberkante = Unterkante Holm/Kragarm (z): Ist 1232.74, Soll 1232.74 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=-576: Oberkante = Beinoberkante (z): Ist 1232.74, Soll 1232.74 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=-576: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=-576: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=-576: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
 PASS nft_tisch: mitte Winkelhalter x=529, y=576: Anlage Beininnenflaeche (y): Ist 556.5, Soll 556.5 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=529, y=576: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1232.74, Soll 1232.74 (+-0.3)
-PASS nft_tisch: mitte Winkelhalter x=529, y=576: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=576: Oberkante = Unterkante Holm/Kragarm (z): Ist 1232.74, Soll 1232.74 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=576: Oberkante = Beinoberkante (z): Ist 1232.74, Soll 1232.74 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=576: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=576: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter x=529, y=576: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: mitte Winkelhalter Dichte Stahl (Masse 126,8 g je Winkel): Ist 126.83, Soll 126.8 (+-1)
+PASS nft_tisch: mitte Winkelhalter-Interferenzen mit anderen Teilen (Schrauben, Diagonalen, Rinnenhalter): Ist 0, Soll 0
 PASS nft_tisch: mitte Querholme: Ist 2, Soll 2
 PASS nft_tisch: mitte Querstreben: Ist 2, Soll 2
 PASS nft_tisch: mitte Diagonalen: Ist 4, Soll 4
@@ -135,19 +157,33 @@ PASS nft_tisch: aussen Bein bei x=-1080 Lage y (ausserhalb Beet/Pool): Ist 606.5
 PASS nft_tisch: aussen Bein bei x=1170 Lage y (ausserhalb Beet/Pool): Ist -606.5, Soll -606.5 (+-0.6)
 PASS nft_tisch: aussen Bein bei x=1170 Lage y (ausserhalb Beet/Pool): Ist 606.5, Soll 606.5 (+-0.6)
 PASS nft_tisch: aussen Winkelhalter (je Bein einer): Ist 4, Soll 4
-PASS nft_tisch: aussen Winkelhalter-Normteile (2 x M6x16, 2 x M6x50, 2 Muttern je Winkel): Ist 24, Soll 24
+PASS nft_tisch: aussen Winkelhalter-Normteile (2 x M6x16, 2 x M6x55, 2 Muttern je Winkel): Ist 24, Soll 24
 PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: Anlage Beininnenflaeche (y): Ist -586.5, Soll -586.5 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1256.88, Soll 1256.88 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: Oberkante = Unterkante Holm/Kragarm (z): Ist 1256.88, Soll 1256.87 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: Oberkante = Beinoberkante (z): Ist 1256.88, Soll 1256.88 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=-606: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
 PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: Anlage Beininnenflaeche (y): Ist 586.5, Soll 586.5 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1256.88, Soll 1256.88 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: Oberkante = Unterkante Holm/Kragarm (z): Ist 1256.88, Soll 1256.87 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: Oberkante = Beinoberkante (z): Ist 1256.88, Soll 1256.88 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=-1080, y=606: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
 PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: Anlage Beininnenflaeche (y): Ist -586.5, Soll -586.5 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1223.12, Soll 1223.13 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: Oberkante = Unterkante Holm/Kragarm (z): Ist 1223.12, Soll 1223.12 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: Oberkante = Beinoberkante (z): Ist 1223.12, Soll 1223.13 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=-606: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
 PASS nft_tisch: aussen Winkelhalter x=1170, y=606: Anlage Beininnenflaeche (y): Ist 586.5, Soll 586.5 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=1170, y=606: Oberkante = Beinoberkante = Holmunterkante (z): Ist 1223.12, Soll 1223.13 (+-0.3)
-PASS nft_tisch: aussen Winkelhalter x=1170, y=606: Schenkel 60 x 60: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=606: Oberkante = Unterkante Holm/Kragarm (z): Ist 1223.12, Soll 1223.12 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=606: Oberkante = Beinoberkante (z): Ist 1223.12, Soll 1223.13 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=606: Breite: Ist 36, Soll 36 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=606: senkrechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter x=1170, y=606: waagerechter Schenkel: Ist 60, Soll 60 (+-0.3)
+PASS nft_tisch: aussen Winkelhalter Dichte Stahl (Masse 126,8 g je Winkel): Ist 126.83, Soll 126.8 (+-1)
+PASS nft_tisch: aussen Winkelhalter-Interferenzen mit anderen Teilen (Schrauben, Diagonalen, Rinnenhalter): Ist 0, Soll 0
 PASS nft_tisch: aussen Querholme: Ist 2, Soll 2
 PASS nft_tisch: aussen Querstreben: Ist 2, Soll 2
 PASS nft_tisch: aussen Diagonalen: Ist 4, Soll 4
@@ -158,4 +194,4 @@ PASS nft_tisch: aussen Verteiler-Stutzen: Ist 3, Soll 3
 PASS nft_tisch: aussen Sammelrohr-Muffen: Ist 3, Soll 3
 PASS nft_tisch: aussen Verteiler endet an der Sektorgrenze (x_min, aussen): Ist -1725.44, Soll -1726.7 (+-8)
 PASS nft_tisch: aussen Sammelrohr endet an der Sektorgrenze (x_max, aussen): Ist 1724.19, Soll 1726.7 (+-8)
-== nft_tisch: 160/160 PASS
+== nft_tisch: 196/196 PASS

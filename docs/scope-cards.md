@@ -65,3 +65,12 @@ Abweichung der Werkstatt akzeptiert: **Knotenkugel Ø100 mit 4/5/6 Steckarmen** 
 - **salatkopf DRIN:** EIN Kopf als Bauteil, wenige Facetten (Export!), Hals, Groessen S/M/L als Konfigurationen, Ursprung = Kragenoberkante des Netztopfs. **DRAUSSEN:** Netztopf, Platzierung, Instanzvariation (Layout).
 - **Anzahl:** Netztopf gesamt ca. 2716 = 2160 (Beete, OBJ) + 556 (Rinnen: 20 Rinnen x 5 + 24 x 7 + 24 x 12, Annahme 3 Aussenrinnen je Tisch, E); Salatkopf gleiche Zahl (ein Kopf je Topf), Board-Angabe "ca. 240+" war veraltet.
 - **Pruefzahlen:** Topfkragen liegt auf der Deckelflaeche, Kopf sitzt auf dem Kragen (Abstand Mitte Kopf zu Lochmitte 0).
+
+## winkelhalter (Beinkopf-Winkel der NFT-Tische, W11, Werkstatt 29.10.)
+- **DRIN:** EIN Stahlwinkel 36 x 60 x 60 x 4 mm (Flansch senkrecht am Bein, Flansch waagerecht unter dem Querholm bzw. Kragarm), je 2 Loecher D6,6 je Flansch, Normteile M6 (2 x M6x55 + Mutter durch das Bein, 2 x M6x16 in den Holm); Ursprung = Ecke Beininnenflaeche / Holmunterkante, Mitte der Winkelbreite. Holm/Kragarm ist ueber diesen Winkel am Bein geschraubt (nicht geschweisst).
+- **DRAUSSEN:** Bein, Holm, Kragarm, Rinnenhalter, Diagonalen (Klasse nft_tisch); Platzierung je Bein (Tisch); Statik.
+- **Anzahl:** je Bein einer = innen 2, mitte 4, aussen 4 je Tisch; gesamt 10 x 2 + 6 x 4 + 8 x 4 = 76 (Tische innen 10, mitte 6, aussen 8 laut docs/components.md: Zehneck-Sockel, 8 Aussen-, 6 Innenbeete).
+- **Masse/Quelle:** Annahme A (Baumarkt-Eckwinkel 60 x 60 x 4, Breite 36); Bein 40 x 40 x 3 und Holm 40 x 60 x 3 aus nft_tisch.
+- **Referenz:** keine sichtbar (ref-6 zeigt die Beinkoepfe nicht aufgeloest); Ausfuehrung Annahme A.
+- **Typische Fehlinterpretation:** Winkel als Teil von Bein oder Holm modellieren (gehoert zur eigenen Klasse); Schrauben/Mutter in die Diagonalen- und Laengsdiagonalenschrauben legen (Spec-Pruefer W11 fand das bei z -20 / -45).
+- **Pruefzahlen:** Winkelzahl = Beinzahl; Winkel beruehrt Bein-Innenflaeche (Abstand 0) und Holmunterkante (Oberkante = Unterkante Holm/Kragarm); Schenkel 60, Breite 36, Masse 126,8 g; inspect.interference ohne Treffer ausser Bein/Holm/Kragarm (Rohrloecher nicht modelliert).

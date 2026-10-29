@@ -277,3 +277,14 @@ Kernzahlen (Box, Volumen/Masse, Anzahl 2160/556/2716, Spiel D52/D50) nachgerechn
 | 4 | klein: Werkstoff doppelte Marke [E]/[A] | **gueltig** | auf A |
 | 5 | klein: Salatkopf-Gauntlet im Netztopf-Blatt | **gueltig** | Pruefzeilen und Kritiker-Feld bereinigt |
 | H | Hals-Check nahm Innen-D 47 (oben), in Halstiefe 40,7 | **gueltig (eigener Check)** | Check rechnet den konischen Innen-D in Halstiefe (40,7 > 16); Hinweise zu Rinne (Topfboden/Film) und Beet-Raster im Blatt unter Offene Fragen |
+
+### winkelhalter (W11) + nft_tisch, Spec-Pruefer Runde 1 29.10. ~20:20: FAIL
+Masse, Anzahl 76, Lage und 180-Grad-Drehung nachgerechnet ohne Abweichung; Auslegerbock innen: Winkel 69 mm ueber dem Beckenrand Z 650, 30 mm Radialluft.
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, sicher: Winkelschraube M6 (z -45) durchdringt die Diagonalenschraube M6x40 (z -40) im Bein, 56 Stellen | **gueltig (Modell)** | Loecher im senkrechten Flansch jetzt z -10 / -26 (wh_edge_v 10, wh_pitch_v 16); inspect.interference im Check: 0 Treffer in innen/mitte/aussen |
+| 2 | gross, sicher: Mutter/Schraubenspitze der unteren Winkelschraube durchdringen die Laengsdiagonale (Ende z -45), 38 Stellen | **gueltig (Modell)** | gleiche Aenderung (Mutter bis z -31,8, Diagonale endet ca. -33,6); Interferenzcheck 0 |
+| 3 | gross, sicher: Blatt sagt Bein/Holm geschweisst, Winkel sagt "lag nur auf" | **gueltig (Konzept)** | Entscheidung: Fussplatte-Bein geschweisst, Holm/Kragarm am Bein geschraubt ueber T23 (Bohren vor dem Verzinken); nft_tisch- und Winkelblatt angeglichen; Statik innen (Winkel nahe dem Kragarm-Drehpunkt) offen |
+| 4 | klein, sicher: Check liest Platzierungskonstanten, misst Holmunterkante nicht, Breite/Dicke ungeprueft, keine Interferenz | **gueltig (eigener Check)** | Beininnenflaeche aus Bein-bbox, Unterkante Holm/Kragarm gemessen, Breite/Schenkel/Masse, inspect.interference; 196/196 PASS. Gesamtzahl 76 nicht im Check (Tischzahlen kommen aus components.md, nicht aus dem Modell) |
+| 5 | klein, sicher: Tischzahlen-Quelle falsch zitiert (hydro_tables ist Beispielliste), Marke "nft_tisch", M6x50 nur 0,8 mm Ueberstand, Gewicht mit/ohne Normteile, Material im Tisch Default 1,29, Scope-Card ohne Masse/Fehlinterpretation, Hoehe 718,7 statt 721 | **gueltig** | Quelle docs/components.md, Marke A, M6x55, Blatt nennt 127 g Winkel / 174 g gesamt, nft_tisch.py weist Normteile/Winkel Stahl zu (sc.assign_part_materials mit Muster), Scope-Card ergaenzt, Z 719-781 |
+| H | Bein/Holm ohne Schraubenloecher, Normteile durchdringen die Rohrwaende | **vereinfacht, im Blatt genannt** | Interferenzcheck ignoriert Bein/Holm/Kragarm bewusst |

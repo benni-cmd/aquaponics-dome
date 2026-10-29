@@ -1738,5 +1738,45 @@
   "note": "Rev. B: 24 Tische inkl. Innenring + 466 Rinnen-Toepfe als Instanzen (D25)",
   "commit": "e6b7ec9",
   "source": "renders/round-36.png"
+ },
+ {
+  "file": "20261029-192039_werkstatt_winkelhalter_winkelhalter-02-unten.png",
+  "sha": "e19a06657bbcd97b",
+  "time": "2026-10-29 19:20:39",
+  "role": "werkstatt",
+  "subject": "winkelhalter",
+  "note": "W11 Winkelhalter am Beinkopf",
+  "commit": "5317f56",
+  "source": "renders/components/winkelhalter/winkelhalter-02-unten.png"
+ },
+ {
+  "file": "20261029-201031_werkstatt_winkelhalter_winkelhalter-04-im-tisch-mitte-ecke.png",
+  "sha": "44d49b3aa075aeb9",
+  "time": "2026-10-29 20:10:31",
+  "role": "werkstatt",
+  "subject": "winkelhalter",
+  "note": "W11 Winkelhalter am Beinkopf",
+  "commit": "5317f56",
+  "source": "renders/components/winkelhalter/winkelhalter-04-im-tisch-mitte-ecke.png"
+ },
+ {
+  "file": "20261029-201140_werkstatt_winkelhalter_winkelhalter-05-im-tisch-mitte-gegenseite.png",
+  "sha": "fca594dcc9899099",
+  "time": "2026-10-29 20:11:40",
+  "role": "werkstatt",
+  "subject": "winkelhalter",
+  "note": "W11 Winkelhalter am Beinkopf",
+  "commit": "5317f56",
+  "source": "renders/components/winkelhalter/winkelhalter-05-im-tisch-mitte-gegenseite.png"
+ },
+ {
+  "file": "20261029-201250_werkstatt_winkelhalter_winkelhalter-06-querschnitt-bock.png",
+  "sha": "737c4ba669542db0",
+  "time": "2026-10-29 20:12:50",
+  "role": "werkstatt",
+  "subject": "winkelhalter",
+  "note": "W11 Winkelhalter am Beinkopf",
+  "commit": "5317f56",
+  "source": "renders/components/winkelhalter/winkelhalter-06-querschnitt-bock.png"
  }
 ]

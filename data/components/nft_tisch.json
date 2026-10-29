@@ -150,7 +150,7 @@
  },
  "anzahl": {
   "soll": "innen 10, Mitte 6, aussen 8",
-  "quelle": "docs/scope-cards.md nft_tisch, data/layout.json hydro_tables"
+  "quelle": "docs/components.md (Zehneck-Sockel: 10 Sektoren, 8 Aussen-, 6 Innenbeete; innen 10, mitte 6, aussen 8); data/layout.json hydro_tables ist nur eine Beispielliste"
  },
  "bezugspunkt": "Mitte der Standflaeche (Z=0 Boden), X Laengsachse (Zulauf bei -X), Y quer",
  "blatt": {
@@ -232,17 +232,17 @@
    ]
   ],
   "verbindungen": [
-   "Beine an Fussplatte und Querholm/Kragarm: geschweisst (MAG), danach verzinkt [A]",
+   "Beine an Fussplatte: geschweisst (MAG), danach verzinkt [A]; Querholm/Kragarm am Bein NICHT geschweisst, sondern ueber den Winkelhalter T23 geschraubt (W11)",
    "Fussplatten: 2 Schrauben M8x30 (hex_bolt) je Platte in den Boden/Betonpunkt, Loch D9; Kragarm-Pfosten innen mit Verbundankern (Kippmoment ca. 165 Nm, Statik nicht nachgewiesen)",
    "Diagonalen (nur Portal): je Ende Schraube M6x40 mit Mutter durch das Bein",
    "Rinnenhalter: L-Blech 3 mm, 25 x 25 x 25, je Rinnenseite und Bock, Schraube M5x12",
    "Verteiler: schraeges Rohr d25 mit Stutzen D16 (Verklebung/Schweissen), Schlaeuche ID 16 auf Tuelle und Stutzen; Sammelrohr d50 schraeg mit Muffen d40/d32 auf den Ablaufstutzen",
-   "Winkelhalter T23 (W11): je Bein ein Eckwinkel 36 x 60 x 60 x 4 an der Beininnenflaeche (2 x M6x50 mit Mutter durch das Bein) und unter Holm/Kragarm (2 x M6x16 in Blindnietmuttern M6, nicht modelliert); Schenkel am Bein 60 mm (z -60..0), unter dem Holm 60 mm (y 0..60); Bein mit y < 0 nach +Y, Bein mit y > 0 um 180 Grad gedreht"
+   "Winkelhalter T23 (W11): je Bein ein Eckwinkel 36 x 60 x 60 x 4 an der Beininnenflaeche (2 x M6x55 mit Mutter durch das Bein, Loecher z -10 / -26) und unter Holm/Kragarm (2 x M6x16 in Blindnietmuttern M6, nicht modelliert); Schenkel am Bein 60 mm (z -60..0), unter dem Holm 60 mm (y 0..60); Bein mit y < 0 nach +Y, Bein mit y > 0 um 180 Grad gedreht; Bohrungen vor dem Feuerverzinken, Normteile durchdringen die Rohrwaende (Loecher nicht modelliert)"
   ],
   "abweichung": "layout.json hydro_tables liefert je Ring nur ein Beispiel (Reihen ap 1733/1995 innen, 2987-3775 Mitte, 4888/5176 aussen) mit gleicher Rinnenlaenge 1304/1983/3232; diese Laengen sind groesser als die Zehneck-Seite 2 x ap x tan 18 Grad der Reihe (innen 1126/1296, Mitte 1916-2429, aussen 3198-3572) und kollidierten an den Ecken (Ben-Fund 29.10.). Rev. B folgt D18: Rinnenlaenge je Reihe = Zehneck-Seite - 2 x corner_gap (100) - Ueberstaende (Zulaufseite 169, Ablaufseite 79); Ergebnis innen 678/848, Mitte 1468/1639/1810/1981, aussen 2750/2937/3124 mm. Folge: Topfloecher je Tisch innen 5 statt 10, Mitte 24 statt 28, aussen 34 statt 36; gesamt 466 statt 556 (check_nft_fit.py). Tischmitte liegt auf der Beetmitte (Mittel der Beetradien: aussen 5209, innen-Beet 3343) und weicht von den OBJ-Reihen um 33-38 mm ab (Annahme A, Layout/Integrator). Die Tisch-Beine des OBJ stehen nicht im Layout (Platten ohne Beine). Die Z-Hoehen bleiben (innen 840, Mitte/aussen 1300). Ausrichtung: X tangential gegen den Uhrzeigersinn (+X Sammelrohr/tiefes Ende), Y radial nach INNEN; die Instanz wird mit yaw = Azimut + 90 Grad (volle 360 Grad; layout.json hydro_tables speichert yaw nur modulo 180: aussen Sektoren 3 und 6-9 sowie Mitte/innen 7-9 haben dort az - 90, den Tisch dann um 180 Grad gedreht setzen) auf die Sektorachse bei ap_c gesetzt, aussen liegt dann -Y. Mit yaw = Azimut - 90 Grad waere die Konvention gespiegelt (Fehler des ersten Kritiker-Bildes, W16).",
   "montage": [
    "Bock am Boden ausrichten: Portal ausserhalb der Beete bzw. Pfosten ausserhalb des Pools, Fussplatten mit M8 / Verbundankern verschrauben",
-   "Winkelhalter T23 je Bein an die Holmunterkante schrauben (Blindnietmuttern M6) und am Bein verschrauben (M6x50, Winkel nach innen zum Holm hin), vor dem Auflegen der Rinnen",
+   "Winkelhalter T23 je Bein an die Holmunterkante schrauben (Blindnietmuttern M6) und am Bein verschrauben (M6x55, Winkel nach innen zum Holm hin), vor dem Auflegen der Rinnen",
    "Querstrebe und Laengsstreben einsetzen, Diagonalen verschrauben (Portal)",
    "Rinnen auf die Querholme/Kragarme legen (Zulaufende hoeher), Halteclips M5 setzen",
    "Zulaufverteiler schraeg entlang der Sektorgrenze haengen, Schlaeuche ID 16 auf Stutzen und Tuellen",
@@ -259,7 +259,7 @@
    "     Rinnen (2): 848 mm / 3 Loecher, 678 mm / 2 Loecher; Verteiler d25 schraeg: Laenge 538; Sammelrohr d50 schraeg: Laenge 538",
    "Je Bock (Portal): 2 Beine, 1 Holm, 1 Querstrebe, 2 Diagonalen, 2 Fussplatten, 4 Schrauben M8x30, 4 Schrauben M6x40 + 4 Muttern M6, 2 Rinnenhalter je Rinne mit Schraube M5x12; Bock-Anzahl 2 je Tisch. Je Bock (Ausleger): 1 Pfosten, 1 Kragarm, 1 Fussplatte, 2 Schrauben M8x30, 2 Rinnenhalter je Rinne.",
    "Dabei: 4 Duebel/Anker M8 je Bock (Boden; innen Verbundanker), je 1 Endstopfen d25 und d50 je Tisch (-Y-Rohrende)",
-   "Je Bein ein Winkelhalter T23 (36 x 60 x 60 x 4, S235 verzinkt, 2 x M6x50 + Mutter, 2 x M6x16): innen 2, mitte 4, aussen 4 je Tisch; gesamt 76 (innen 10 x 2, mitte 6 x 4, aussen 8 x 4), Blatt docs/parts/winkelhalter.md"
+   "Je Bein ein Winkelhalter T23 (36 x 60 x 60 x 4, S235 verzinkt, 2 x M6x55 + Mutter, 2 x M6x16): innen 2, mitte 4, aussen 4 je Tisch; gesamt 76 (innen 10 x 2, mitte 6 x 4, aussen 8 x 4), Blatt docs/parts/winkelhalter.md"
   ],
   "lokal": "Rahmen aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-Systemprofil mit Winkelverbindern; Rinnenhalter aus Streifen 25x3 selbst gebogen.",
   "referenz": "reference/ref-6-grow-tables-detail.jpg (Tisch: Platte aus Rinnen auf Boecken, Schlaeuche am Tischende hellblau); reference/ref-4 und ref-5 (Ringanordnung)",
@@ -272,7 +272,7 @@
   "pruefung": [
    "scripts/workshop/check_nft_fit.py (36/36 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische: Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite, Footprint-Abstand benachbarter Tische >= 100 (gemessen 171-190), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, Pfosten ausserhalb des Pools",
    "Bild-Kritiker (Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innen/Aussen) und Spec-Pruefer: Runden siehe docs/workshop-log.md (W16)",
-   "scripts/workshop/check_nft_tisch.py (160/160 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze, Winkelhalter (Zahl = Beinzahl, Anlage Beininnenflaeche, Oberkante = Holmunterkante, Schenkel 60, 6 Normteile je Winkel)"
+   "scripts/workshop/check_nft_tisch.py (196/196 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage, Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze; Winkelhalter: Zahl = Beinzahl, 6 Normteile je Winkel, Anlage Beininnenflaeche (aus Bein-bbox), Oberkante = Unterkante Holm/Kragarm = Beinoberkante, Breite/Schenkel, Masse, inspect.interference ohne Treffer"
   ],
   "offen": [
    "Statik der Portal-/Auslegerboecke nicht nachgewiesen (Querholm 40x60x3 ueber ca. 1,2 m: Biegung 50 kg mittig ca. 150 Nm, ca. 15 N/mm2 [E]; Kragarm innen ca. 165 Nm am Pfosten, Fussplatte/Verbundanker nachzurechnen)",
@@ -283,8 +283,8 @@
    "Beine ausserhalb der Beete stehen im Gehweg: Durchgangsbreite zwischen den Beeten und Tischen vom Integrator zu pruefen (Beinabstand y aussen 1213, Mitte 1153)",
    "Rinnenabstand 262-288 (OBJ) bei Rinnenbreite 130 laesst 132-158 mm Luecken; ref-6 zeigt fast buendige Rinnen: Widerspruch OBJ/Bild, OBJ gilt (provenance)",
    "Schlaeuche gerade statt gebogen",
-   "Innen: Pfosten stehen ausserhalb des Beckenrands (Wasserradius 1945 + Wand 150 + 60 + 50); der Kragarm ueberspannt Rand Z 650 mit 130 mm Luft; ein tiefer Stuetzwinkel am Pfosten ist wegen der Beckenwand nicht moeglich (Annahme A); der Winkelhalter T23 sitzt am Pfostenkopf (Z 721-781) ueber dem Beckenrand Z 650",
-   "Gefaelle: detail-standard.md und Scope-Card nennen noch 1 cm/m, gebaut 1,5 % nach R06 (Orchestrator-Vorgabe)"
+   "Gefaelle: detail-standard.md und Scope-Card nennen noch 1 cm/m, gebaut 1,5 % nach R06 (Orchestrator-Vorgabe)",
+   "Innen: Pfosten stehen ausserhalb des Beckenrands (Wasserradius 1945 + Wand 150 + 60 + 50); der Kragarm ueberspannt Rand Z 650 mit 130 mm Luft; ein tiefer Stuetzwinkel am Pfosten ist wegen der Beckenwand nicht moeglich (Annahme A); der Winkelhalter T23 sitzt am Pfostenkopf (Z 719-781) ueber dem Beckenrand Z 650"
   ]
  },
  "herkunft_tabelle": [
@@ -530,7 +530,7 @@
    "Winkelhalter T23 je Bein (Eckwinkel am Beinkopf)",
    "76 gesamt",
    "A + E",
-   "Job W11 / Scope-Card winkelhalter; Beinzahl 2/4/4 je Tisch aus tisch_geom.py, Tischzahl 10/6/8 aus layout.json; Ausfuehrung Annahme A",
+   "Job W11 / Scope-Card winkelhalter; Beinzahl 2/4/4 je Tisch aus tisch_geom.py, Tischzahl 10/6/8 aus docs/components.md; Ausfuehrung Annahme A",
    "niedrig"
   ]
  ],

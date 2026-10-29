@@ -119,10 +119,10 @@
   ],
   "lokal": "Eckwinkel 60 x 60 x 4 gibt es als Baumarktware (Lochwinkel, ca. 1-2 EUR/Stueck, [A] nicht recherchiert); Breite 36 durch Zuschnitt aus 40er Winkel.",
   "pruefung": [
-   "scripts/workshop/check_nft_tisch.py (160/160 PASS): je Tisch Winkelzahl = Beinzahl (innen 2, mitte 4, aussen 4), 6 Normteile je Winkel, Anlage an der Beininnenflaeche (Abstand 0), Oberkante = Beinoberkante = Holmunterkante, Schenkel 60 x 60",
-   "Bilder `renders/components/winkelhalter/` 01-03 (Einzelteil), 04-05 (Winkel am Beinkopf mitte, Ecke und Gegenseite), 06 (Querschnitt Bock); Winkel liegt an Holmunterkante, Diagonalen (Flachstahl ausserhalb der Beinflaeche) kollidieren nicht (Winkelbreite 36 < 40)"
+   "scripts/workshop/check_nft_tisch.py (196/196 PASS): je Tisch Winkelzahl = Beinzahl (innen 2, mitte 4, aussen 4), 6 Normteile je Winkel, Anlage an der Beininnenflaeche (aus der Bein-bbox), Oberkante = Unterkante Holm/Kragarm = Beinoberkante, Breite 36, Schenkel 60 x 60, Masse 126,8 g, inspect.interference: 0 Treffer ausser Bein/Holm/Kragarm",
+   "Bilder `renders/components/winkelhalter/` 01-03 (Einzelteil), 04-05 (Winkel am Beinkopf mitte), 06 (Querschnitt Bock); Spec-Pruefer Runde 1: FAIL (zwei Schraubendurchdringungen, Widerspruch Schweissung, Check), Befunde behoben (Loecher z -10 / -26, M6x55, Konzept geschraubt, Interferenzcheck)"
   ],
-  "kritiker": "offen",
+  "kritiker": "Spec-Pruefer Runde 1 (29.10.) FAIL -> behoben (kein zweiter Lauf, Pruefer-Budget); kein Bild-Kritiker (Beinkopf in keiner Referenz sichtbar)",
   "offen": [
    "Statik der Verbindung (Kippmoment Ausleger innen: der Winkel sitzt an der Pfosteninnenseite, nahe dem Drehpunkt des Kragarms; Abheben am Aussenrand nicht nachgewiesen) nicht nachgewiesen",
    "Blindnietmuttern M6, Scheiben und Huelsen gegen Quetschen der Beinrohre nicht modelliert; Bein/Holm ohne Bohrungen",

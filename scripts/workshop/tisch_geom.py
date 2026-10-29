@@ -18,9 +18,14 @@ def pool_outer_r():
     par = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))
     return lay["pool"]["d"] / 2.0 + par["wall"]["value"]
 
-def hole_plan(L, phi, pitch=250.0, margin=46.0):
+def rinne_pitch():
+    """Lochabstand der Rinne aus data/components/nft_rinne.json (einzige Quelle, W18/D32)."""
+    return float(json.load(open(os.path.join(sc.ROOT, "data", "components", "nft_rinne.json"), encoding="utf-8"))["parameter"]["pitch"]["wert"])
+
+def hole_plan(L, phi, pitch=None, margin=64.0):
     """Lochzahl und Versatz (shift) einer Rinne der Laenge L so, dass das Lochraster (relativ zur Rinnenmitte) die Phase phi mod pitch hat:
     Loch i bei x = shift + (i - (n-1)/2) x pitch. Zickzack: benachbarte Reihen haben phi 0 und pitch/2. Alle Loecher bleiben >= margin (Rippe 20 + Lochradius 26) vom Rinnenende."""
+    pitch = pitch or rinne_pitch()
     best = None
     for n in range(int(L // pitch), 0, -1):
         base = (phi + (n - 1) * pitch / 2.0) % pitch          # shift mod pitch
@@ -32,8 +37,9 @@ def hole_plan(L, phi, pitch=250.0, margin=46.0):
             return best[0], round(best[1], 2)
     return 0, 0.0
 
-def geometry(typ, p, T, pitch=250.0):
+def geometry(typ, p, T, pitch=None):
     """Reihen und Boecke eines Tischtyps aus den Tischparametern p (nft_tisch.json parameter) und Typ-Daten T."""
+    pitch = pitch or rinne_pitch()
     n, rp, apc = T["n"], T["rinnen_abstand"], T["ap_c"]
     gap = p["corner_gap"]
     rows = []

@@ -110,9 +110,9 @@
    "herkunft": "[A] Rippen enden 20 mm vor der Endkappe"
   },
   "pitch": {
-   "wert": 250,
+   "wert": 200,
    "einheit": "mm",
-   "herkunft": "[A] Lochabstand EINER Reihe in der Mittellinie (Scope-Card nft_rinne); ref-6: Abstand der Pflanzen je Reihe ca. 3-4 Kragenbreiten = 200-250 mm geschaetzt; Blattsalat NFT 150-250 mm (FarmHub 2.4); Zickzack zu Nachbarrinnen = pitch/2 im Tisch"
+   "herkunft": "[A] W18/D32 (Ben 29.10.): Lochabstand EINER Reihe 200 mm (vorher 250); Q: Iowa State 8 Zoll = 203 mm, HortTechnology 15 cm, FarmHub 150-250 (R16); einstellbar 150..250, Zickzack zu Nachbarrinnen = pitch/2 im Tisch (Rinnenabstand 262: kollisionsfrei bis 150)"
   },
   "n_holes": {
    "wert": 12,

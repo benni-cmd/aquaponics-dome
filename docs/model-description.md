@@ -47,7 +47,8 @@ Jede Zahl im Bauteilblatt traegt eine Herkunftsmarke: **Q** (Quelle), **E** (aus
 | Knoten 4/5/6 (26 Dateien), Fundamentanker | abgenommen | 135/135 bzw. 15/15 | 29.10. |
 | Leitungsteile (Rohr, Bogen, T, Kugelhahn, Schlauch, Verteiler, 63 Dateien) | gebaut, Sammelblatt | check_leitungsteile 231/231 (Volumen nach Pappus) | 29.10. |
 | Gesamtmodell `designs/dome.sc` | Beete, Tanks, Pumpen, Knoten, Anker, 24 Tische, Toepfe als Instanzen; M7 Radialbudget als WIP (D30, D31) | check_latte Runde 39: 21/24 (WIP), check_walkways: Laufweg B 476 mm gegen Ziel 600 (Minimum 500) | 29.10. 21:35 |
-| Tuer, Rohrnetz, Haut (Paneele) | offen | - | - |
+| Haut-Paneele (T40) | 40 Dreiecke, 2 Typen (AAB, BBB), Doppelstegplatte 8 mm, Rand 15 mm vor der Strebenachse, Alu-Kappe 30 x 8 als Randprofil (W19, noch nicht im Gesamtmodell) | check_haut 27/27 (nachgemessen), Spec-Pruefer und Bild-Kritiker fehlen | 30.10. 00:00 |
+| Tuer, Rohrnetz | offen | - | - |
 
 ## 6. Wie genau ist das Modell?
 - **Anzahlen** stimmen mit Bens OBJ und Tabelle ueberein: 14 Beete (8 x 2953, 6 x 1865), 4 Tanks, 24 NFT-Tische, 2160 Beetpflanzen (Tabelle verlangt mindestens 152) und 586 Rinnenpflanzen (Tabelle verlangt mindestens 459). Die NFT-Mindestzahl ist die bindende Grenze.
@@ -69,6 +70,7 @@ Wiederkehrende Teile als Komponenten (D12) · Zickzack-Pflanzmuster (Phase A/B d
 Tuer komplett (M3) · Rohrnetz aus dem Wasserweg-Graphen (M4, M5) · Laufwege-Umbau (M7, W17) · Haut/Paneele (R11) · vollstaendige Kollisionspruefung · Pflanzenartmodelle (7 Arten laut Tabelle, bewusst hinten) · Fragen an Ben: Innenring 6 oder 10 Tische, Zuchtbecken gleich zweites Becken, 2 oder 4 Pumpen, 2 oder 3 Rinnen je Aussentisch.
 
 ## 10. Verlauf (neueste zuerst)
+- 30.10. 00:00 Werkstatt W19: Kuppelhaut als Komponenten (40 Dreiecke, 2 Typen, Randprofil), Recherche R11; Becken wird zentriert, Zickzack bleibt (D35).
 - 29.10. 23:55 Werkstatt: gemeinsamer Pruefer W17+W18, Laufweg A am Innenpfosten von 486 auf >= 500 mm (Parameter `leg_clearance_innen`), check_nft_fit 42/42.
 - 29.10. 22:40 Werkstatt W18: Lochabstand der NFT-Rinnen 250 auf 200 mm (Recherche R16), Rinnenpflanzen 462 auf 586, Gesamt 2746 Pflanzen-Toepfe; check_nft_fit 40/40.
 - 29.10. 22:20 Viewer: Bauteile als einklappbare Gruppenliste mit Zaehlern (24 NFT-Tische, 5252 Pflanzenteile, ...), Ein-/Ausblenden je Gruppe und Einzelteil, Hover und Klick leuchten durch andere Koerper (`viewer/index.html`).

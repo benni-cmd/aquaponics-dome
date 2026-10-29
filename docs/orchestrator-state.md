@@ -67,3 +67,5 @@
 - Als Naechstes (kleine Werkstatt-Schritte): Spec-Pruefer W17+W18 in einem Lauf, dann Haut-Paneel R11. Montage nach dem Reset (30.10. 03:00): M7, M3, M4/M5 (Rohrabstaende und Wege). Orchestrator-Cron bleibt geloescht.
 
 ## Stand 29.10. 23:55: Werkstatt W17/W18 abgeschlossen (86d02ad), check_nft_fit 42/42 nachgemessen. Haut-Paneel R11 zurueckgestellt (Recherche fehlt). Montage idle seit Stopp; M7 (inkl. Beetraster 800 x 2640, D34), M3, M4/M5 nach Wochenreset 30.10. 03:00 Ortszeit. Werkstatt wartet auf neuen Auftrag.
+
+## Stand 30.10. 00:00: Werkstatt W19 Haut fertig (7b56237, check_haut 27/27 nachgemessen), Stop sauber. Werkstatt wartet; Montage idle. Naechster Schritt nach Wochenreset 03:00: Montage M7 (Becken zentrieren D35, Beetraster 800 x 2640 D34), danach Haut einsetzen (40 Paneele + Profile), M3 Tuer, M4/M5. Spec-Pruefer W19 offen. Viewer-Server lief neu (Port 4410, Hintergrundprozess dieser Sitzung).

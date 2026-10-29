@@ -1,0 +1,737 @@
+{
+ "klasse": "haut_paneel",
+ "teilenummer": "T40",
+ "revision": "A",
+ "beschreibung": "Haut-Paneele der Kuppel: dreieckige Doppelstegplatten 8 mm je Kuppelfeld (Halbkugel 2V), ein Bauteil je Dreieckstyp, mit Randprofil (Aluminium-Kappe) auf den Streben",
+ "quelle_masse": "data/layout.json dome (nodes_list, strut_len_mm, struts 65), docs/research/R11.md (Doppelstegplatte 8 mm, Paneele enden 15 mm vor der Strebenachse), docs/decisions.md D35",
+ "typen": {
+  "AAB": {
+   "anzahl_felder": 30,
+   "anzahl_voll": 29,
+   "anzahl_mit_tuerausschnitt": 1,
+   "kanten_nominal": [
+    3279,
+    3279,
+    3708
+   ],
+   "kanten_gemessen_min": [
+    3278.8,
+    3278.9,
+    3707.6
+   ],
+   "kanten_gemessen_max": [
+    3279.6,
+    3279.8,
+    3708.9
+   ],
+   "basisfelder": 5
+  },
+  "BBB": {
+   "anzahl_felder": 10,
+   "anzahl_voll": 9,
+   "anzahl_mit_tuerausschnitt": 1,
+   "kanten_nominal": [
+    3708,
+    3708,
+    3708
+   ],
+   "kanten_gemessen_min": [
+    3707.6,
+    3707.9,
+    3708.0
+   ],
+   "kanten_gemessen_max": [
+    3708.4,
+    3708.7,
+    3708.9
+   ],
+   "basisfelder": 5
+  }
+ },
+ "felder": [
+  {
+   "nodes": [
+    0,
+    1,
+    2
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.3,
+    3279.1,
+    3707.8
+   ],
+   "az": 198.5,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    0,
+    1,
+    6
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.3,
+    3279.2,
+    3708.1
+   ],
+   "az": 171.8,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    0,
+    2,
+    4
+   ],
+   "typ": "BBB",
+   "edges": [
+    3707.8,
+    3707.9,
+    3708.6
+   ],
+   "az": 221.2,
+   "z": 4440,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    0,
+    3,
+    4
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.6,
+    3279.6,
+    3708.6
+   ],
+   "az": 221.2,
+   "z": 5389,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    0,
+    3,
+    8
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.6,
+    3279.2,
+    3708.3
+   ],
+   "az": 149.2,
+   "z": 5389,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    0,
+    6,
+    8
+   ],
+   "typ": "BBB",
+   "edges": [
+    3708.1,
+    3708.0,
+    3708.3
+   ],
+   "az": 149.2,
+   "z": 4440,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    1,
+    2,
+    21
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.1,
+    3707.8,
+    3278.9
+   ],
+   "az": 202.9,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    1,
+    6,
+    22
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.2,
+    3707.9,
+    3278.9
+   ],
+   "az": 167.5,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    1,
+    21,
+    22
+   ],
+   "typ": "AAB",
+   "edges": [
+    3278.9,
+    3708.1,
+    3278.9
+   ],
+   "az": 185.2,
+   "z": 880,
+   "basis": true,
+   "door": true
+  },
+  {
+   "nodes": [
+    2,
+    4,
+    5
+   ],
+   "typ": "AAB",
+   "edges": [
+    3707.9,
+    3278.8,
+    3279.1
+   ],
+   "az": 243.8,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    2,
+    5,
+    23
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.1,
+    3279.4,
+    3708.0
+   ],
+   "az": 239.5,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    2,
+    21,
+    23
+   ],
+   "typ": "BBB",
+   "edges": [
+    3707.8,
+    3707.9,
+    3708.0
+   ],
+   "az": 221.2,
+   "z": 1037,
+   "basis": true,
+   "door": false
+  },
+  {
+   "nodes": [
+    3,
+    4,
+    12
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.6,
+    3708.1,
+    3278.8
+   ],
+   "az": 293.2,
+   "z": 5389,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    3,
+    8,
+    9
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.2,
+    3708.7,
+    3279.2
+   ],
+   "az": 77.2,
+   "z": 5389,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    3,
+    9,
+    12
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.2,
+    3708.0,
+    3278.8
+   ],
+   "az": 5.2,
+   "z": 5389,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    4,
+    5,
+    15
+   ],
+   "typ": "AAB",
+   "edges": [
+    3278.8,
+    3279.1,
+    3708.9
+   ],
+   "az": 270.5,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    4,
+    12,
+    15
+   ],
+   "typ": "BBB",
+   "edges": [
+    3708.1,
+    3708.7,
+    3708.9
+   ],
+   "az": 293.2,
+   "z": 4440,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    5,
+    15,
+    16
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.1,
+    3707.9,
+    3279.0
+   ],
+   "az": 274.9,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    5,
+    16,
+    23
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.0,
+    3708.7,
+    3279.4
+   ],
+   "az": 257.2,
+   "z": 880,
+   "basis": true,
+   "door": false
+  },
+  {
+   "nodes": [
+    6,
+    7,
+    8
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.1,
+    3279.5,
+    3708.0
+   ],
+   "az": 126.5,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    6,
+    7,
+    24
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.1,
+    3278.8,
+    3708.0
+   ],
+   "az": 130.9,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    6,
+    22,
+    24
+   ],
+   "typ": "BBB",
+   "edges": [
+    3707.9,
+    3708.3,
+    3708.0
+   ],
+   "az": 149.2,
+   "z": 1037,
+   "basis": true,
+   "door": true
+  },
+  {
+   "nodes": [
+    7,
+    8,
+    10
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.5,
+    3708.5,
+    3279.3
+   ],
+   "az": 99.8,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    7,
+    10,
+    25
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.3,
+    3708.1,
+    3279.1
+   ],
+   "az": 95.5,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    7,
+    24,
+    25
+   ],
+   "typ": "AAB",
+   "edges": [
+    3278.8,
+    3708.1,
+    3279.1
+   ],
+   "az": 113.2,
+   "z": 880,
+   "basis": true,
+   "door": false
+  },
+  {
+   "nodes": [
+    8,
+    9,
+    10
+   ],
+   "typ": "BBB",
+   "edges": [
+    3708.7,
+    3708.4,
+    3708.5
+   ],
+   "az": 77.2,
+   "z": 4440,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    9,
+    10,
+    11
+   ],
+   "typ": "AAB",
+   "edges": [
+    3708.4,
+    3279.0,
+    3279.2
+   ],
+   "az": 54.5,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    9,
+    11,
+    13
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.2,
+    3279.2,
+    3708.2
+   ],
+   "az": 27.8,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    9,
+    12,
+    13
+   ],
+   "typ": "BBB",
+   "edges": [
+    3708.0,
+    3708.5,
+    3708.2
+   ],
+   "az": 5.2,
+   "z": 4440,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    10,
+    11,
+    20
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.0,
+    3279.1,
+    3708.1
+   ],
+   "az": 58.9,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    10,
+    20,
+    25
+   ],
+   "typ": "BBB",
+   "edges": [
+    3708.1,
+    3708.7,
+    3708.1
+   ],
+   "az": 77.2,
+   "z": 1037,
+   "basis": true,
+   "door": false
+  },
+  {
+   "nodes": [
+    11,
+    13,
+    19
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.2,
+    3708.0,
+    3278.8
+   ],
+   "az": 23.5,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    11,
+    19,
+    20
+   ],
+   "typ": "AAB",
+   "edges": [
+    3278.8,
+    3707.9,
+    3279.1
+   ],
+   "az": 41.2,
+   "z": 880,
+   "basis": true,
+   "door": false
+  },
+  {
+   "nodes": [
+    12,
+    13,
+    14
+   ],
+   "typ": "AAB",
+   "edges": [
+    3708.5,
+    3279.0,
+    3279.8
+   ],
+   "az": 342.5,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    12,
+    14,
+    15
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.8,
+    3279.2,
+    3708.7
+   ],
+   "az": 315.8,
+   "z": 3633,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    13,
+    14,
+    18
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.0,
+    3279.0,
+    3707.7
+   ],
+   "az": 346.9,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    13,
+    18,
+    19
+   ],
+   "typ": "BBB",
+   "edges": [
+    3707.7,
+    3708.1,
+    3708.0
+   ],
+   "az": 5.2,
+   "z": 1037,
+   "basis": true,
+   "door": false
+  },
+  {
+   "nodes": [
+    14,
+    15,
+    17
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.2,
+    3707.6,
+    3279.0
+   ],
+   "az": 311.5,
+   "z": 1932,
+   "basis": false,
+   "door": false
+  },
+  {
+   "nodes": [
+    14,
+    17,
+    18
+   ],
+   "typ": "AAB",
+   "edges": [
+    3279.0,
+    3708.3,
+    3279.0
+   ],
+   "az": 329.2,
+   "z": 880,
+   "basis": true,
+   "door": false
+  },
+  {
+   "nodes": [
+    15,
+    16,
+    17
+   ],
+   "typ": "BBB",
+   "edges": [
+    3707.9,
+    3708.1,
+    3707.6
+   ],
+   "az": 293.2,
+   "z": 1037,
+   "basis": true,
+   "door": false
+  }
+ ],
+ "anzahl": {
+  "soll": "40 Felder: 38 volle Paneele + 2 Paneele mit Tuerausschnitt (Tuerknoten 22, Azimut 167.2)",
+  "quelle": "data/layout.json dome: 65 Streben, 26 Knoten -> 40 Dreiecke (V - E + F = 1); Tuer bei Azimut 167 (docs/components.md) sitzt auf Basisknoten 22"
+ }
+}

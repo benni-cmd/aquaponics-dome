@@ -1,7 +1,7 @@
 {
  "klasse": "nft_rinne",
  "teilenummer": "T20",
- "beschreibung": "NFT-Rinne 130 x 100 mm, geschlossenes Kunststoffprofil mit gerippter Oberseite, Topfoeffnungen im Raster, Endkappen mit Zulauf-Tuelle und Ablaufstutzen",
+ "beschreibung": "NFT-Rinne 130 x 100 mm, geschlossenes Kunststoffprofil mit Mittelrippe, zwei versetzten Topfloch-Reihen, Endkappen mit Zulauf-Tuelle und Ablaufstutzen",
  "quelle_masse": "docs/components.md und data/layout.json hydro_tables: Breite 130, Hoehe 100, Laengen 1304 / 1983 / 3232; ref-6: weisse Rinnen mit Rippen",
  "parameter": {
   "len_l": {
@@ -30,14 +30,9 @@
    "herkunft": "[A] Rippenhoehe, ref-6"
   },
   "rib_w": {
-   "wert": 8,
+   "wert": 4,
    "einheit": "mm",
-   "herkunft": "[A]"
-  },
-  "rib_y": {
-   "wert": 40,
-   "einheit": "mm",
-   "herkunft": "[A] Rippen-Mittellinie von der Rinnenmitte; innen 36 mm > Netztopf-Kragenradius 32"
+   "herkunft": "[A] eine Mittelrippe; Kritiker Runde 1: Rippen durchgehend wie ref-6"
   },
   "hole_d": {
    "wert": 52,
@@ -45,19 +40,14 @@
    "herkunft": "[E] Netztopf-Korpus 50 + 2 mm Spiel; Kragen 64 liegt auf"
   },
   "pitch": {
-   "wert": 200,
+   "wert": 250,
    "einheit": "mm",
-   "herkunft": "[A] Pflanzabstand Blattsalat im NFT 150-250 mm (FarmHub 2.4 allgemein)"
+   "herkunft": "[A] Pflanzabstand je Reihe 250, Versatz der Reihen pitch/2 -> Diagonalabstand 136 (Blattsalat NFT 150-250 mm, FarmHub 2.4)"
   },
   "margin": {
-   "wert": 110,
+   "wert": 120,
    "einheit": "mm",
-   "herkunft": "[A] Abstand erstes Loch vom Rinnenende"
-  },
-  "n_holes": {
-   "wert": 15,
-   "einheit": "",
-   "herkunft": "[E] = floor((len_l - 2 margin)/pitch) + 1; K 6, M 9, L 15"
+   "herkunft": "[A] Abstand erstes Loch vom Rinnenende (Kritiker: >= 100)"
   },
   "cap_t": {
    "wert": 4,
@@ -80,9 +70,9 @@
    "herkunft": "[A] Zulauf-Tuelle fuer 16-mm-Schlauch (PE-Verteilerrohr)"
   },
   "inlet_id": {
-   "wert": 12,
+   "wert": 10,
    "einheit": "mm",
-   "herkunft": "[A]"
+   "herkunft": "[A] Tuelle Wand 3 mm (Kritiker Runde 1)"
   },
   "inlet_len": {
    "wert": 25,
@@ -110,14 +100,29 @@
    "herkunft": "[A]"
   },
   "drain_z": {
-   "wert": 25,
+   "wert": 20,
    "einheit": "mm",
-   "herkunft": "[A] Hoehe Ablaufachse ueber Rinnenboden"
+   "herkunft": "[A] Ablaufachse 20 mm ueber Rinnenboden: Unterkante Bohrung 6 mm, Restfilm 3,5 mm ueber Innenboden (Kritiker: 16 mm ueber Innenboden)"
   },
   "slope_pct": {
    "wert": 1.0,
    "einheit": "",
    "herkunft": "docs/hydraulics.md 2.5: Vorschlag 1 % = 1 cm/m (FarmHub 2.4); im Tisch durch Neigung der Rinne um atan(0,01) = 0,573 Grad umgesetzt"
+  },
+  "row_y": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] Abstand der zwei Lochreihen von der Rinnenmitte (Kritiker Runde 1: zwei versetzte Reihen wie ref-6); Topfkragen R32 -> 2 mm Luft zur Mittelrippe, Lochrand 56 < 62,5 Innenwand"
+  },
+  "n_row": {
+   "wert": 12,
+   "einheit": "",
+   "herkunft": "[E] = floor((len_l - 2 margin - pitch/2)/pitch) + 1 je Reihe; L 12, M 7, K 4 (zwei Reihen: 24 / 14 / 8 Loecher)"
+  },
+  "rib_end": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Rippe endet 20 mm vor der Endkappe"
   }
  },
  "werkstoff": {
@@ -133,19 +138,19 @@
  "bezugspunkt": "Mitte der Rinnenlaenge, Mitte Breite, Rinnenboden Z=0; Zulaufende bei -X (hoeheres Ende), Ablaufende bei +X; Rinne selbst gerade, Gefaelle entsteht im Tisch",
  "blatt": {
   "funktion": "Fuehrt den Naehrloesungsfilm an den Wurzeln der Pflanzen vorbei (NFT); Zulauf am hoeheren Ende (-X), Ablauf am tieferen Ende (+X).",
-  "querschnitt": "Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, plus zwei Rippen 8 x 5 mm auf der Oberseite (y = +-40): Gesamthoehe 100; Topfloecher D52, Raster 200 mm, erstes Loch 110 mm vom Ende (K 6, M 9, L 15 Loecher).",
-  "toleranzen": "Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90; Topfloch +2 mm zum Topf.",
+  "querschnitt": "Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, Mittelrippe 4 x 5 mm (endet 20 mm vor den Kappen): Gesamthoehe 100; zwei versetzte Reihen Topfloecher D52 bei y = +-30, Teilung 250 je Reihe, Versatz 125 (L 24, M 14, K 8 Loecher), erstes Loch 120 mm vom Ende.",
+  "toleranzen": "Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90 (Klebespalt, Fuge mit PVC-Kleber/Silikon 2 mm Kehlnaht, nicht als Koerper modelliert); Topfloch +2 mm zum Topf; Kragen liegt 2 mm neben der Mittelrippe.",
   "ports": [
    [
     "Zulauf",
-    "Tuelle D16 (innen 12) fuer 16-mm-Schlauch",
+    "Tuelle D16 (innen 10, Wand 3) fuer 16-mm-Schlauch",
     "x = -len_l/2 - 29, y 0, z 70",
     "in, Richtung -X"
    ],
    [
     "Ablauf",
     "Stutzen D32 (innen 28), 30 mm lang, PVC-Klebemuffe DN32",
-    "x = +len_l/2 + 34, y 0, z 25",
+    "x = +len_l/2 + 34, y 0, z 20",
     "aus, Richtung +X"
    ]
   ],
@@ -173,8 +178,9 @@
   ],
   "offen": [
    "Rippenprofil und Wandstaerke sind Annahmen [A]",
-   "Topfzahl je Rinne ist unsere Auslegung (Raster 200 mm)",
-   "Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)"
+   "Topfzahl und -raster je Rinne sind unsere Auslegung (zwei Reihen, Teilung 250)",
+   "Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)",
+   "Klebefuge der Endkappen nicht als Koerper modelliert"
   ]
  }
 }

@@ -19,10 +19,11 @@ def build():
     b.add("sketch.rectangle.two_point", p0=[-W/2 + w, w], p1=[W/2 - w, hb - w])
     b.add("sketch.finish")
     b.add("solid.extrude", distance="len_l", direction="symmetric", name="Profil", body_name="Rinnenprofil")
-    for s in (-1, 1):
-        b.add("solid.box", length="len_l", width="rib_w", height="rib_h", center=[0, s*p["rib_y"], hb + rh/2], operation="join", targets=["Rinnenprofil"], name="Rippe" + ("L" if s < 0 else "R"))
-    b.add("solid.cylinder", diameter="hole_d", height="wall + 2", base=["-(n_holes-1)*pitch/2", 0, hb - w - 1], operation="cut", targets=["Rinnenprofil"], name="Topfloch1")
-    b.add("solid.pattern.rectangular", features=["Topfloch1"], dir1=[1, 0, 0], count1="n_holes", spacing1="pitch")
+    b.add("solid.box", length="len_l - 2*rib_end", width="rib_w", height="rib_h", center=[0, 0, hb + rh/2], operation="join", targets=["Rinnenprofil"], name="Mittelrippe")
+    # zwei versetzte Lochreihen (Reihe A bei -row_y, Reihe B bei +row_y, um pitch/2 versetzt), je n_row Loecher
+    for tag, sy, off in (("A", -1, "0"), ("B", 1, "pitch/2")):
+        b.add("solid.cylinder", diameter="hole_d", height="wall + 2", base=[f"-((n_row-1)*pitch + pitch/2)/2 + {off}", f"{sy}*row_y", hb - w - 1], operation="cut", targets=["Rinnenprofil"], name="Topfloch" + tag)
+        b.add("solid.pattern.rectangular", features=["Topfloch" + tag], dir1=[1, 0, 0], count1="n_row", spacing1="pitch")
     b.add("material.assign", bodies=["Rinnenprofil"], material="PVC-U weiss")
     # --- Endkappen: Platte + Zapfen + Stutzen mit Bohrung
     for name, sx, od, idd, ln, zz, tag in (("T20b_Endkappe_Zulauf", -1, "inlet_od", "inlet_id", "inlet_len", "inlet_z", "Zulauf"),
@@ -40,10 +41,10 @@ def build():
         b.add("material.assign", bodies=["Kappe" + tag], material="PVC-U weiss")
         b.add("appearance.assign", bodies=["Kappe" + tag], color="#d6d8dc")
     b.add("component.activate", component="T20_NFT_Rinne")
-    b.add("config.configure", params=["len_l", "n_holes"])      # Laengen-Varianten: L aussen, M Mitte, K innen
+    b.add("config.configure", params=["len_l", "n_row"])      # Laengen-Varianten: L aussen, M Mitte, K innen
     b.add("config.row", name="L")
-    b.add("config.row", name="M", **{"from": "L"}, values={"param:len_l": "1983 mm", "param:n_holes": "9"})
-    b.add("config.row", name="K", **{"from": "L"}, values={"param:len_l": "1304 mm", "param:n_holes": "6"})
+    b.add("config.row", name="M", **{"from": "L"}, values={"param:len_l": "1983 mm", "param:n_row": "7"})
+    b.add("config.row", name="K", **{"from": "L"}, values={"param:len_l": "1304 mm", "param:n_row": "4"})
     b.add("config.activate", row="L")
     for nm, pn, ds in (("T20_NFT_Rinne", "T20", d["beschreibung"]), ("T20a_Profil", "T20a", "Rinnenprofil 130x100x2,5 mit Rippen und Topfoeffnungen"),
                        ("T20b_Endkappe_Zulauf", "T20b", "Endkappe Zulauf mit Tuelle 16 mm"), ("T20c_Endkappe_Ablauf", "T20c", "Endkappe Ablauf mit Stutzen DN32")):
@@ -54,12 +55,12 @@ def render(out, p):
     """Testaufbau (nur Render): Rinne + 3 Netztoepfe + 3 Salatkoepfe in den ersten Topfloechern; Kameras fuellen das Bild."""
     items = [("component.create", {"name": "Test", "grounded": True}),
              ("component.insert_design", {"path": "designs/components/nft_rinne.sc", "name": "R1"})]
-    x0 = -(p["n_holes"] - 1) * p["pitch"] / 2
+    x0 = -((p["n_row"] - 1) * p["pitch"] + p["pitch"] / 2) / 2
     zp = p["ch_h"] - p["rib_h"] - 59.5
     for nm, path, dz in (("P", "netztopf", 0), ("S", "salatkopf", 63)):
-        items.append(("component.insert_design", {"path": f"designs/components/{path}.sc", "name": f"{nm}1", "translate": [x0, 0, zp + dz]}))
-        for k in (1, 2):
-            items.append(("occurrence.copy", {"component": f"{nm}1", "translate": [k * p["pitch"], 0, 0]}))
+        items.append(("component.insert_design", {"path": f"designs/components/{path}.sc", "name": f"{nm}1", "translate": [x0, -p["row_y"], zp + dz]}))
+        for dx, dy in ((p["pitch"] / 2, 2 * p["row_y"]), (p["pitch"], 0), (3 * p["pitch"] / 2, 2 * p["row_y"]), (2 * p["pitch"], 0)):
+            items.append(("occurrence.copy", {"component": f"{nm}1", "translate": [dx, dy, 0]}))
     b = sc.Build()
     for c, q in items:
         b.add(c, **q)
@@ -68,11 +69,11 @@ def render(out, p):
     r = os.path.join(sc.ROOT, "renders", "components", "nft_rinne")
     L = p["len_l"]
     views = {"02-zulauf-ende": ([-L/2 + 150, 0, 60], 0.9, 0.45, 750), "03-ablauf-ende": ([L/2 - 150, 0, 60], -2.3, 0.45, 750),
-             "04-oberseite-toepfe": ([x0 + p["pitch"], 0, 95], 0.35, 1.0, 650), "05-ueberblick": ([0, 0, 50], 0.7, 0.3, 4300)}
+             "04-oberseite-toepfe": ([x0 + p["pitch"], 0, 95], 0.35, 1.0, 750), "05-ueberblick": ([0, 0, 50], 0.7, 0.3, 4300)}
     for n, (t, yaw, pitch, dist) in views.items():
         sc.snapshot(tmp, os.path.join(r, f"nft_rinne-{n}.png"), t, yaw, pitch, dist, w=1000, h=650)
     sc.snapshot(tmp, os.path.join(r, "nft_rinne-06-schnitt-zulauf.png"), [-L/2 + 200, 0, 55], 3.14159, 0.0, 520, w=1000, h=520, section="XZ")
-    sc.snapshot(tmp, os.path.join(r, "nft_rinne-07-querschnitt.png"), [x0 + p["pitch"], 0, 50], 1.5708, 0.0, 420, w=800, h=600, section="YZ,flip")
+    sc.snapshot(tmp, os.path.join(r, "nft_rinne-07-querschnitt.png"), [0, 0, 50], 1.5708, 0.0, 420, w=800, h=600, section="YZ,flip")
 
 if __name__ == "__main__" and "--render-only" not in sys.argv:
     b = build()

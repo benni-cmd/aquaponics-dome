@@ -15,44 +15,45 @@
 | `ch_h` | 100 | mm | OBJ: 102-103 (Hoehe inkl. Rippen); Normmass 100 |
 | `wall` | 2.5 | mm | [A] Strangpress-/Extrusionsprofil PVC-U oder PP, 2-3 mm |
 | `rib_h` | 5 | mm | [A] Rippenhoehe, ref-6 |
-| `rib_w` | 8 | mm | [A] |
-| `rib_y` | 40 | mm | [A] Rippen-Mittellinie von der Rinnenmitte; innen 36 mm > Netztopf-Kragenradius 32 |
+| `rib_w` | 4 | mm | [A] eine Mittelrippe; Kritiker Runde 1: Rippen durchgehend wie ref-6 |
 | `hole_d` | 52 | mm | [E] Netztopf-Korpus 50 + 2 mm Spiel; Kragen 64 liegt auf |
-| `pitch` | 200 | mm | [A] Pflanzabstand Blattsalat im NFT 150-250 mm (FarmHub 2.4 allgemein) |
-| `margin` | 110 | mm | [A] Abstand erstes Loch vom Rinnenende |
-| `n_holes` | 15 |  | [E] = floor((len_l - 2 margin)/pitch) + 1; K 6, M 9, L 15 |
+| `pitch` | 250 | mm | [A] Pflanzabstand je Reihe 250, Versatz der Reihen pitch/2 -> Diagonalabstand 136 (Blattsalat NFT 150-250 mm, FarmHub 2.4) |
+| `margin` | 120 | mm | [A] Abstand erstes Loch vom Rinnenende (Kritiker: >= 100) |
 | `cap_t` | 4 | mm | [A] Endkappe Plattenstaerke |
 | `plug_len` | 14 | mm | [A] Steckzapfen-Tiefe |
 | `fit` | 0.5 | mm | [A] Spiel je Seite Zapfen/Profil |
 | `inlet_od` | 16 | mm | [A] Zulauf-Tuelle fuer 16-mm-Schlauch (PE-Verteilerrohr) |
-| `inlet_id` | 12 | mm | [A] |
+| `inlet_id` | 10 | mm | [A] Tuelle Wand 3 mm (Kritiker Runde 1) |
 | `inlet_len` | 25 | mm | [A] |
 | `inlet_z` | 70 | mm | [A] Hoehe Zulaufachse ueber Rinnenboden |
 | `drain_od` | 32 | mm | [A] Ablaufstutzen DN32 (Aussen 32, PVC-Klebemuffe 32) |
 | `drain_id` | 28 | mm | [A] |
 | `drain_len` | 30 | mm | [A] |
-| `drain_z` | 25 | mm | [A] Hoehe Ablaufachse ueber Rinnenboden |
+| `drain_z` | 20 | mm | [A] Ablaufachse 20 mm ueber Rinnenboden: Unterkante Bohrung 6 mm, Restfilm 3,5 mm ueber Innenboden (Kritiker: 16 mm ueber Innenboden) |
 | `slope_pct` | 1.0 |  | docs/hydraulics.md 2.5: Vorschlag 1 % = 1 cm/m (FarmHub 2.4); im Tisch durch Neigung der Rinne um atan(0,01) = 0,573 Grad umgesetzt |
+| `row_y` | 30 | mm | [A] Abstand der zwei Lochreihen von der Rinnenmitte (Kritiker Runde 1: zwei versetzte Reihen wie ref-6); Topfkragen R32 -> 2 mm Luft zur Mittelrippe, Lochrand 56 < 62,5 Innenwand |
+| `n_row` | 12 |  | [E] = floor((len_l - 2 margin - pitch/2)/pitch) + 1 je Reihe; L 12, M 7, K 4 (zwei Reihen: 24 / 14 / 8 Loecher) |
+| `rib_end` | 20 | mm | [A] Rippe endet 20 mm vor der Endkappe |
 
-Gesamt-Box (Messung): X -1645.0 bis 1650.0, Y -65.0 bis 65.0, Z -0.0 bis 100.0 mm; Koerper: 3.
+Gesamt-Box (Messung): X -1645.0 bis 1650.0, Y -65.0 bis 65.0, Z 0.0 bis 100.0 mm; Koerper: 3.
 
-**Toleranzen / Spiel:** Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90; Topfloch +2 mm zum Topf.
+**Toleranzen / Spiel:** Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90 (Klebespalt, Fuge mit PVC-Kleber/Silikon 2 mm Kehlnaht, nicht als Koerper modelliert); Topfloch +2 mm zum Topf; Kragen liegt 2 mm neben der Mittelrippe.
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: PVC-U weiss, UV-stabilisiert (alternativ PP), Dichte 1.4 g/cm3, Farbe #f2f2ee ([A] ref-6 weisse Rinne)
-- Volumen (Messung, `solidcraft-cli eval`): 3889.2 cm3 · Masse leer: 5445 g (5.44 kg)
+- Volumen (Messung, `solidcraft-cli eval`): 3647.6 cm3 · Masse leer: 5107 g (5.11 kg)
 
 ## Querschnitt / Profil
 
-Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, plus zwei Rippen 8 x 5 mm auf der Oberseite (y = +-40): Gesamthoehe 100; Topfloecher D52, Raster 200 mm, erstes Loch 110 mm vom Ende (K 6, M 9, L 15 Loecher).
+Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, Mittelrippe 4 x 5 mm (endet 20 mm vor den Kappen): Gesamthoehe 100; zwei versetzte Reihen Topfloecher D52 bei y = +-30, Teilung 250 je Reihe, Versatz 125 (L 24, M 14, K 8 Loecher), erstes Loch 120 mm vom Ende.
 
 ## Ports (Anschluesse)
 
 | Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
 |---|---|---|---|
-| Zulauf | Tuelle D16 (innen 12) fuer 16-mm-Schlauch | x = -len_l/2 - 29, y 0, z 70 | in, Richtung -X |
-| Ablauf | Stutzen D32 (innen 28), 30 mm lang, PVC-Klebemuffe DN32 | x = +len_l/2 + 34, y 0, z 25 | aus, Richtung +X |
+| Zulauf | Tuelle D16 (innen 10, Wand 3) fuer 16-mm-Schlauch | x = -len_l/2 - 29, y 0, z 70 | in, Richtung -X |
+| Ablauf | Stutzen D32 (innen 28), 30 mm lang, PVC-Klebemuffe DN32 | x = +len_l/2 + 34, y 0, z 20 | aus, Richtung +X |
 
 ## Verbindungen und Befestigungen
 
@@ -95,12 +96,13 @@ Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne
 
 ## Pruefung
 
-- Gauntlet-Urteil: offen
+- Gauntlet-Urteil: Runde 1: Referenz gewaehlt (A), grosse Luecken: zwei versetzte Lochreihen (behoben), Endkappe/Spalt, Ablauf/Zulauf (behoben); Runde 2 offen
 - `solidcraft-cli eval`: Boxen und Massen; Schnitt `nft_rinne-06-schnitt-zulauf.png`, Querschnitt `nft_rinne-07-querschnitt.png`
 - Gefaelle: wird im Tisch gebaut (Neigung 0,573 Grad)
 
 ## Offene Fragen
 
 - Rippenprofil und Wandstaerke sind Annahmen [A]
-- Topfzahl je Rinne ist unsere Auslegung (Raster 200 mm)
+- Topfzahl und -raster je Rinne sind unsere Auslegung (zwei Reihen, Teilung 250)
 - Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)
+- Klebefuge der Endkappen nicht als Koerper modelliert

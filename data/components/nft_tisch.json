@@ -11,8 +11,8 @@
    "z_rinne_mitte": 1300,
    "laenge": "3124 / 2937 / 2750 (je Reihe)",
    "herkunft": "layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 5209 mm ([E])",
-   "ap_c": 5209,
-   "ap_c_herkunft": "[E] Mittel der Beetradien aussen (layout.json ibc_beds r 5167-5276): Tischmitte auf der Beetmitte; 3 Rinnen, OBJ-Reihen 4888/5176 (+ 3. Reihe A), Abweichung ca. 33 mm"
+   "ap_c": 4973,
+   "ap_c_herkunft": "W17/D30: Tischmitte = Aussenbeet-Mitte 4973 (Aussenportal 4458..5488, Beet 800 + 2 x 115); vorher 5209 (OBJ-Mittel)"
   },
   "mitte": {
    "n": 4,
@@ -21,8 +21,8 @@
    "z_rinne_mitte": 1300,
    "laenge": "1981 / 1810 / 1639 / 1468 (je Reihe)",
    "herkunft": "layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 3343 mm ([E])",
-   "ap_c": 3343,
-   "ap_c_herkunft": "[E] Mittel der Beetradien innen (layout.json ibc_beds r 3311-3408): Tischmitte liegt auf der Beetmitte; OBJ-Reihen ap 2987-3775 (Mittel 3381, Abweichung 38 mm)"
+   "ap_c": 3277,
+   "ap_c_herkunft": "W17/D30: Tischmitte = Innenbeet-Mitte 3277 (Innenportal 2695..3858, Beet 933 + 2 x 115); vorher 3343 (OBJ-Mittel)"
   },
   "innen": {
    "n": 2,
@@ -77,9 +77,9 @@
    "herkunft": "[A] Querstrebe/Laengsstreben/Diagonalen UEBER den Pflanzen (Beet-Oberkante Z 475, Pflanzen bis ca. Z 560), Portal ausserhalb der Beete; innen Laengsstrebe auf Z 400 (Ausleger ausserhalb des Beckenrands)"
   },
   "foot_plate": {
-   "wert": 100,
+   "wert": 70,
    "einheit": "mm",
-   "herkunft": "[A] Fussplatte 100 x 100 x 5, 2 Schrauben M8 (Beine tragen Kippmoment der Ausleger)"
+   "herkunft": "[A] Fussplatte 70 x 70 x 5 (W17: vorher 100; Portalrand = Beet-Aussenkante + 115 nach D29, Radialbudget); Lochbild +-20, M8 mit 15 mm Randabstand"
   },
   "foot_t": {
    "wert": 5,
@@ -132,14 +132,14 @@
    "herkunft": "[A]"
   },
   "corner_gap": {
-   "wert": 100,
-   "einheit": "mm",
-   "herkunft": "[A] Vorgabe Orchestrator, docs/decisions.md D18: Abstand von der Zehneck-Ecke (Sektorgrenze) zum Rinnen-/Verteilerende je Seite; Abstand zwischen zwei Tischen 2 x corner_gap x cos 18 Grad = 190 mm"
-  },
-  "leg_clearance": {
    "wert": 60,
    "einheit": "mm",
-   "herkunft": "[A] Vorgabe Orchestrator, docs/decisions.md D18: Luft zwischen Beet-Aussenbreite (ibc_beet.json) und Fussplattenkante"
+   "herkunft": "[A] W17: Abstand Rinnenende/Rohr zur Sektorgrenze 60 mm (vorher 100, D18); noetig, damit die NFT-Mindestzahl 459 (R15, D27) mit den auf das Radialbudget verschobenen Aussentischen erreicht wird (gap 100 -> 442, gap 60 -> 462); Entscheidung beim Orchestrator/Ben"
+  },
+  "leg_clearance": {
+   "wert": 45,
+   "einheit": "mm",
+   "herkunft": "[A] W17/D29: Abstand Fussplattenkante zur Beet-Aussenkante 45 mm (vorher 60; gemessen kleinster Abstand zu den OBJ-Beeten >= 30 mm); Portalrand = 45 + 70 = 115 mm ausserhalb des Beets (Radialbudget D28/D29)"
   }
  },
  "werkstoff": {

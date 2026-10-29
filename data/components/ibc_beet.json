@@ -24,6 +24,13 @@
    "hoehe": 649,
    "anzahl": 6,
    "herkunft": "layout.json ibc_beds 9-14: 1865 x 933 x 649"
+  },
+  "aussen_800": {
+   "laenge": 2640,
+   "breite": 800,
+   "hoehe": 637,
+   "anzahl": 8,
+   "herkunft": "W17/D29: Aussenbeet einseitig erreichbar <= 800 breit; Laenge 2640 = Obergrenze aus der Montage-Rechnung (Streben/Sockel, D25; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 100 = 2771); Hoehe wie OBJ 637; ersetzt aussen_933/aussen_993 im Dom (Montage M7 stellt um)"
   }
  },
  "parameter": {

@@ -1,4 +1,4 @@
-"""IBC-Beet T30 (aussen_933 / aussen_993 / innen_933): Wanne, Stuetzen, Siebboden, Medium (EIN Koerper), Glockensiphon, Zulaufrohr.
+"""IBC-Beet T30 (aussen_933 / aussen_993 / aussen_800 / innen_933): Wanne, Stuetzen, Siebboden, Medium (EIN Koerper), Glockensiphon, Zulaufrohr.
 Bezugspunkt: Mitte Wannenunterseite. Aufruf: python scripts/workshop/ibc_beet.py [typ ...] [--render]"""
 import sys, os, math
 sys.path.insert(0, os.path.dirname(__file__))
@@ -138,7 +138,7 @@ def render(typ, path, info):
     sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-06-schnitt-quer.png"), [info["x_sp"], 0, H / 2], 1.5708, 0.0, info["W"] * 2.0, w=900, h=650, section="x=%d,flip" % int(info["x_sp"]))
 
 if __name__ == "__main__":
-    typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["aussen_933", "aussen_993", "innen_933"]
+    typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["aussen_933", "aussen_993", "aussen_800", "innen_933"]
     for typ in typs:
         b, info = build(typ)
         out = os.path.join(sc.ROOT, "designs", "components", f"ibc_beet_{typ}.sc")

@@ -28,7 +28,17 @@ def bed_dist(pt, bed):
 def main():
     p, d = sc.load_params("nft_tisch")
     lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))
-    beds = lay["ibc_beds"]
+    par = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))
+    bj = json.load(open(os.path.join(sc.ROOT, "data", "components", "ibc_beet.json"), encoding="utf-8"))["typen"]
+    ish, osh = par["inner_bed_shift"]["value"], par["outer_bed_shift"]["value"]
+    beds = []                                                      # W17: Beete nach Radialbudget (M7 verschiebt radial, Aussenbeete 800 x 2640 laut D29)
+    for b in lay["ibc_beds"]:
+        outer = "plants" in b
+        f = (b["r"] - (osh if outer else ish)) / b["r"]
+        nb = dict(b, cx=b["cx"] * f, cy=b["cy"] * f, r=b["r"] - (osh if outer else ish))
+        if outer:
+            nb.update(length=bj["aussen_800"]["laenge"], width=bj["aussen_800"]["breite"])
+        beds.append(nb)
     pool = lay["pool"]
     pcx, pcy = pool["cx"], pool["cy"]
     ck = sc.Check("nft_fit")
@@ -41,7 +51,7 @@ def main():
         for i in sect:
             az = AZ0 + 36.0 * i
             ap = G["apc"]
-            if G["art"] == "portal":                               # Tischmitte auf der Beetmitte (Radius des Beets auf der Sektorachse)
+            if G["art"] == "portal":                               # Tischmitte auf der Beetmitte (Radialbudget: ap_c = Beetmitte nach Verschiebung)
                 b = min((b for b in beds if abs(b["r"] - G["apc"]) < 400), key=lambda b: abs(((b["az"] - az + 180) % 360) - 180))
                 ap = b["r"] * math.cos(math.radians(b["az"] - az))
             tabs[i] = (az, ap)
@@ -80,6 +90,17 @@ def main():
             dpool = min(math.hypot(world(az, ap, x, y)[0] - pcx, world(az, ap, x, y)[1] - pcy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"])
             ck.eq(f"innen Pfosten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Abstand {dpool:.0f} mm >= 30)", 1 if dpool >= 30 else 0, 1)
     print(f"   Tische gesamt {total_tables} (Soll 24), Rinnen-Topfloecher gesamt {total_holes}")
+    ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 459 (R15/D27: Mindestzahl NFT)", 1 if total_holes >= 459 else 0, 1)
+    # (5) Laufwege radial (D28/D29): Portalrand = Beet-Halbbreite + leg_clearance + foot_plate; Rand Pool, Portale, Wand
+    Gm, Ga = TG.geometry("mitte", p, d["typen"]["mitte"]), TG.geometry("aussen", p, d["typen"]["aussen"])
+    half = lambda G: G["bed_w"] / 2.0 + p["leg_clearance"] + p["foot_plate"]
+    wall_ap = 5706.0
+    a_ = Gm["apc"] - half(Gm) - TG.pool_outer_r()
+    b_ = (Ga["apc"] - half(Ga)) - (Gm["apc"] + half(Gm))
+    c_ = wall_ap - (Ga["apc"] + half(Ga))
+    ck.eq(f"Laufweg A Beckenrand (Aussenradius {TG.pool_outer_r():.0f}) - Innenportal ({Gm['apc'] - half(Gm):.0f}): {a_:.0f} mm >= 500 (Soll 600)", 1 if a_ >= 500 else 0, 1)
+    ck.eq(f"Laufweg B Innenportal (bis {Gm['apc'] + half(Gm):.0f}) - Aussenportal (ab {Ga['apc'] - half(Ga):.0f}): {b_:.0f} mm >= 500 (Soll 600)", 1 if b_ >= 500 else 0, 1)
+    ck.eq(f"Wandluft Aussenportal (bis {Ga['apc'] + half(Ga):.0f}) - Domwand-Apothem {wall_ap:.0f}: {c_:.0f} mm >= 100 (Soll 218)", 1 if c_ >= 100 else 0, 1)
     ck.eq("Tische gesamt (innen 10 + mitte 6 + aussen 8)", total_tables, 24)
     return ck.done()
 

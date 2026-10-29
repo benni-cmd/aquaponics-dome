@@ -8,9 +8,9 @@ T18 = math.tan(math.radians(18.0))
 E_IN, E_OUT = 169.0, 79.0          # Ueberstand ueber das Rinnenende: Zulaufseite (Tuelle 29 + Schlauch 70 + Stutzen 45 + halbes Verteilerrohr 12,5 + Rohrwand-Aussen 12,5), Ablaufseite (Stutzen 34 + Sammelrohr D50: 54 + 25)
 
 def bed_outer_w(typ):
-    """Beet-Aussenbreite aus data/components/ibc_beet.json (einzige Quelle): aussen -> aussen_993 (breiteste), mitte -> innen_933."""
+    """Beet-Aussenbreite aus data/components/ibc_beet.json (einzige Quelle): aussen -> aussen_800 (W17/D29), mitte -> innen_933."""
     d = json.load(open(os.path.join(sc.ROOT, "data", "components", "ibc_beet.json"), encoding="utf-8"))["typen"]
-    return {"aussen": d["aussen_993"]["breite"], "mitte": d["innen_933"]["breite"]}.get(typ)
+    return {"aussen": d["aussen_800"]["breite"], "mitte": d["innen_933"]["breite"]}.get(typ)
 
 def pool_outer_r():
     """Aussenradius des Zentralpools: Wasserradius (layout.json pool.d/2) + Wandstaerke (data/params.json wall)."""

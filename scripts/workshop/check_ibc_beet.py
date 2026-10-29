@@ -15,8 +15,11 @@ def main(typs):
         ev = sc.evaluate(path)
         B = {b["name"]: b for b in ev["bodies"]}
         # Anzahl und Masse gegen layout.json (Klasse aussen: Laenge 2953; innen 1865)
-        ls = [b for b in lay if b["length"] == L and b["width"] == W and b["height"] == H]
-        ck.eq(f"{typ} Anzahl laut layout.json", len(ls), T["anzahl"])
+        if typ == "aussen_800":                                    # W17: Sollmass aus D29, im Layout noch nicht gesetzt (Montage M7): Anzahl = Aussenbeete (mit 'plants')
+            ls = [b for b in lay if "plants" in b]
+        else:
+            ls = [b for b in lay if b["length"] == L and b["width"] == W and b["height"] == H]
+        ck.eq(f"{typ} Anzahl laut layout.json" + (" (Aussenbeete, Mass erst nach M7)" if typ == "aussen_800" else ""), len(ls), T["anzahl"])
         w = B["Wanne"]["bbox"]
         ck.eq(f"{typ} Wanne Laenge", w["max"][0] - w["min"][0], L, 0.5)
         ck.eq(f"{typ} Wanne Breite", w["max"][1] - w["min"][1], W, 0.5)
@@ -57,4 +60,4 @@ def main(typs):
     return ck.done()
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1:] or ["aussen_933", "aussen_993", "innen_933"]))
+    sys.exit(main(sys.argv[1:] or ["aussen_933", "aussen_993", "aussen_800", "innen_933"]))

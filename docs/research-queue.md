@@ -18,3 +18,4 @@ Format je Auftrag: **R-ID** | Prioritaet (H = blockiert den Bau, M, N) | Frage |
 | R10 | N | Wasserqualitaet aus Fluss als Zulauf: Filterung, Hygiene | Betrieb | - | offen |
 | R11 | N | Kuppelhaut: Folie oder Glas, Preis, UV, Befestigung an Streben | Haut T2 | `skin_material` | offen |
 | R12 | N | Rutschsicherheit, Zugang, Frost, Schaedlinge (Betrieb) | `operations.md` | - | offen |
+| R13 | H | Tuer in geodaetischer Kuppel: Rahmen, Streben, Platzierung (Ben: bisher provisorisch) | Tuer-Komponente | `door_*` | erledigt 29.10. (`docs/research/R13.md`, Konfidenz mittel) |

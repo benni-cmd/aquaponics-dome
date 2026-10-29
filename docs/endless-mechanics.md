@@ -61,3 +61,7 @@ Jedes Bild, das eine Sitzung als Pruefung erzeugt (Render, Schnitt, Kritiker-Bil
 - Das Original bleibt am bisherigen Ort (Dokumente verweisen darauf); der Verlauf ist die Kopie. Zeitpunkt: direkt nach dem Render, vor dem Commit des Schritts; die Bilder gehoeren in denselben Commit (`git add renders/history`).
 - Ansicht: http://localhost:4410/history/ (Link "Bildverlauf" im Viewer) oder `renders/history/index.html`.
 - Bestand: 130 bisherige Bilder am 29.10. 12:48 einsortiert (`--backfill`).
+
+## KORREKTUR 29.10. 13:00 (Ben) — NICHT leeren, komprimieren lassen
+Die Regeln "clear_session self" in den Abschnitten Kontext-Hygiene und Kontext-Zuschnitt sind AUFGEHOBEN. Grund: Leeren loescht die Gespraechsgeschichte; eine geleerte Sitzung ist danach ein leerer Prozess, den der Orchestrator wegen der Sitzungspost-Sperre (Owner-Entscheid 27.08.) nicht mehr anstossen kann, die Endlosschleife reisst. Komprimieren behaelt eine Zusammenfassung und laeuft weiter.
+Neue Regel: Sitzungen leeren sich NIE selbst. Der Kontext bleibt klein, weil jede Sitzung nur ihre Komponente bzw. ihren Schritt liest (Zustandsdatei, Scope-Card, Standards, Log nur letzte 40 Zeilen); wird er trotzdem gross, komprimiert das System automatisch (bei 97 %), und der Zustand liegt ohnehin im Repo (Zustandsdatei nach jedem Schritt committen). Manuelles Komprimieren (/compact) kann nur Ben in der jeweiligen Sitzung ausloesen.

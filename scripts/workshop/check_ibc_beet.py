@@ -28,7 +28,8 @@ def main(typs):
         ck.eq(f"{typ} Medium Oberflaeche lokal", m["max"][2], H - p["rim_gap"], 0.5)
         ck.eq(f"{typ} Medium Tiefe", m["max"][2] - m["min"][2], p["media_depth"], 0.5)
         z0_abs = lay[0]["z0"] if typ.startswith("aussen") else lay[8]["z0"]
-        ck.eq(f"{typ} Medium Oberflaeche absolut (z0 {z0_abs})", m["max"][2] + z0_abs, 400, 15)      # R03: Z 400 (innen z0 -209..-173)
+        tol_abs = 15 if typ.startswith("aussen") else 40            # innen: OBJ-Beete liegen z0 -209..-170 (Rand Z 440-479): Oberflaeche absolut 365-404
+        ck.eq(f"{typ} Medium Oberflaeche absolut (z0 {z0_abs})", m["max"][2] + z0_abs, 400, tol_abs)      # R03: Z 400
         # Siebboden unter dem Medium
         g = B["Siebboden"]["bbox"]
         ck.eq(f"{typ} Siebboden Oberkante = Medienunterkante", g["max"][2], m["min"][2], 0.01)
@@ -50,7 +51,7 @@ def main(typs):
         t = B["Tropfrohr"]["bbox"]
         ck.eq(f"{typ} Zulaufport ausserhalb der Wanne (x < -L/2)", 1 if t["min"][0] < w["min"][0] + 10 else 0, 1)
         ck.eq(f"{typ} Zulaufhoehe lokal", (t["min"][2] + t["max"][2]) / 2, H - p["inflow_below_rim"], 0.5)
-        ck.eq(f"{typ} Zulauf absolut (z0 {z0_abs})", (t["min"][2] + t["max"][2]) / 2 + z0_abs, 450, 25)
+        ck.eq(f"{typ} Zulauf absolut (z0 {z0_abs})", (t["min"][2] + t["max"][2]) / 2 + z0_abs, 450, tol_abs + 10)
         # Nichts schwebt: jedes Teil der Wanne kollidiert nicht mit dem Medium (Medienschutz/Glocke stehen auf dem Siebboden)
         ck.eq(f"{typ} Glocke steht auf dem Siebboden", gl["min"][2], g["max"][2], 0.01)
     return ck.done()

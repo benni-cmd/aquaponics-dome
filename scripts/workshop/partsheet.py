@@ -25,9 +25,12 @@ def main(name):
     for k, v in d["parameter"].items():
         L.append(f"| `{k}` | {v['wert']} | {v['einheit']} | {v['herkunft']} |")
     if d.get("typen"):
-        L.append("\n| Typ | Rinnen | Abstand | Rinne | Z Rinnenmitte | Laenge | Herkunft |\n|---|---|---|---|---|---|---|")
+        cols = []
+        for v in d["typen"].values():
+            cols += [c for c in v if c not in cols]
+        L.append("\n| Typ | " + " | ".join(cols) + " |\n|---|" + "---|" * len(cols))
         for k, v in d["typen"].items():
-            L.append(f"| {k} | {v['n']} | {v['rinnen_abstand']} | {v['rinne']} | {v['z_rinne_mitte']} | {v['laenge']} | {v['herkunft']} |")
+            L.append(f"| {k} | " + " | ".join(str(v.get(c, "")) for c in cols) + " |")
     L.append(f"\nGesamt-Box (Messung): X {mn[0]:.1f} bis {mx[0]:.1f}, Y {mn[1]:.1f} bis {mx[1]:.1f}, Z {mn[2]:.1f} bis {mx[2]:.1f} mm; Koerper: {len(ev['bodies'])}.\n")
     if bl.get("toleranzen"):
         L.append(f"**Toleranzen / Spiel:** {bl['toleranzen']}\n")

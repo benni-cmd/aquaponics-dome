@@ -31,7 +31,7 @@
 | `col_od` | 50 | mm | [A] Sammelrohr d50 (Aussen 50, Wand 3; entspricht etwa DN40, Muffen d40/d32) |
 | `col_wall` | 3 | mm | [A] |
 
-| Typ | Rinnen | Abstand | Rinne | Z Rinnenmitte | Laenge | Herkunft |
+| Typ | n | rinnen_abstand | rinne | z_rinne_mitte | laenge | herkunft |
 |---|---|---|---|---|---|---|
 | aussen | 3 | 288 | l | 1300 | 3232 | layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) |
 | mitte | 4 | 263 | m | 1300 | 1983 | layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 |

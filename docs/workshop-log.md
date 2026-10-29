@@ -154,3 +154,13 @@ Luecken: glatte runde Scheiben / Scalloprand (gross, sicher), konzentrische Schi
 | 4 | klein (salatkopf): Widersprueche (4 Blattgruppen/33 Blaetter/Hoehe 0,7 x Breite, Gewicht "leer") | **gueltig** | JSON-Beschreibung, Herkunft und quelle_masse auf 36 Blaetter/7 Gruppen/0,5 x Breite; Masse = Frischmasse-Naeherung |
 | 5 | klein (salatkopf): Kern/Blattdicke/Gruppen/Jitter ohne Herkunftszeile | **gueltig** | 4 Zeilen ergaenzt |
 | H | Rinne D52 gegen Card D50 (dokumentiert), "288 je Aussenbeet" (Beet Az 113 hat 144), Raster 24 x 12 gegen distinct_along 64 | **andere Klasse** | im Blatt als offen (Integrator/Orchestrator) |
+
+### knoten, Spec-Pruefer (FAIL) 29.10. ~08:40
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Abweichung Kugel statt Platten nicht gemeldet; Ankerlasche fehlt in der Card | **gueltig (Meldung)** | an den Orchestrator gemeldet; ANGENOMMEN (decisions D15, Scope-Card Revision 08:40) |
+| 2 | klein: Gewicht 5,77 gegen 6,08 kg (Normteile mit Standarddichte 1,29) | **gueltig** | Normteile nachtraeglich auf Stahl (`sc.assign_part_materials`), Blatt 6,03 kg = Volumen x 7,85; Vollkugel 4,1 kg im Blatt |
+| 3 | klein, vermutet: Passung 23,6 zu eng nach Verzinken/Schweissen | **gueltig** | Steckarm 23,0 (0,5 mm Spiel je Seite), alle 26 Knoten neu gebaut |
+| 4 | klein: Ports nur fuer 3 Knoten ausgeschrieben, Ankerlasche-Achse mehrdeutig, Bolzenachse fehlt | **gueltig** | docs/parts/knoten-ports.md (alle 26 Knoten mit Spitzen, Richtung, Bolzenachse, Azimut), Lochachse tangential = umlaufend |
+| 5 | klein: Montage (Anzugsmoment, Zink, Toleranz) | **gueltig** | M10 8.8 49 Nm, M12 85 Nm, Zink-Nacharbeit, Vorrichtung +-0,5 Grad |
+| H | Tuer-Sturz, Gabel M12/D14, Strebenwand 3 | **andere Klasse** | Hinweis |

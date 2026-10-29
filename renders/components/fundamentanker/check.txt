@@ -1,0 +1,16 @@
+PASS fundamentanker: Anzahl = Basisknoten (OBJ): Ist 10, Soll 10
+PASS fundamentanker: Betonpunkt X: Ist 400, Soll 400 (+-0.1)
+PASS fundamentanker: Betonpunkt Y: Ist 400, Soll 400 (+-0.1)
+PASS fundamentanker: Betonpunkt Z: Ist 600, Soll 600 (+-0.1)
+PASS fundamentanker: Ankerplatte steht auf dem Beton: Ist -244, Soll -244 (+-0.01)
+PASS fundamentanker: Ankerplatte Seite: Ist 250, Soll 250 (+-0.1)
+PASS fundamentanker: Verbundanker M16 (2 Stueck): Ist 2, Soll 2
+PASS fundamentanker: Anker reichen mind. 250 mm in den Beton: Ist 1, Soll 1
+PASS fundamentanker: Lochhoehe = Lochhoehe der Knotenlasche (knoten.json): Ist -159, Soll -159 (+-0.01)
+PASS fundamentanker: Gabelspalt = Knotenlasche + 2 mm: Ist 12, Soll 12 (+-0.01)
+PASS fundamentanker: Knotenlasche passt in die Gabel (Spalt > Lasche): Ist 1, Soll 1
+PASS fundamentanker: Gabelhoehe ueber der Lochmitte (Gabel reicht ueber das Loch): Ist 1, Soll 1
+PASS fundamentanker: Lochdurchmesser = Loch der Knotenlasche D14: Ist 14, Soll 14 (+-0.01)
+PASS fundamentanker: Gabelbreite >= Lasche + Spiel: Ist 1, Soll 1
+PASS fundamentanker: Querbolzen M12 vorhanden (durch beide Laschen): Ist 1, Soll 1
+== fundamentanker: 15/15 PASS

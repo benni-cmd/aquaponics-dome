@@ -112,10 +112,11 @@ if __name__ == "__main__":
         b, G = build(i, N, nb, p, d)
         out = os.path.join(sc.ROOT, "designs", "components", f"knoten_{N[i]['valence']}_n{i + 1:02d}.sc")
         sc.run(b.write(f"knoten_{i + 1}"), out)
+        sc.assign_part_materials(out, "Stahl Knoten")                      # Normteile (Body<n>) auf Stahl (Dichte 7,85)
         ev = sc.evaluate(out)
         print(i + 1, "Wertigkeit", N[i]["valence"], "min. Armwinkel %.1f" % G["theta_min"], "Koerper", len(ev["bodies"]), "Masse %.2f kg" % (sum(x["mass_g"] for x in ev["bodies"]) / 1000))
-        arme[i + 1] = dict(valenz=N[i]["valence"], pos=[round(x, 1) for x in G["pos"]], n=[round(x, 5) for x in G["n"]], rho0=round(G["rho0"], 1), ball_r=round(G["ball_r"], 1),
-                           arme=[dict(nachbar=a["nachbar"] + 1, typ=a["typ"], laenge=a["laenge"], kipp_gegen_tangentialebene=round(a["kipp"], 2), u=[round(x, 6) for x in a["u"]]) for a in G["arms"]])
+        arme[i + 1] = dict(valenz=N[i]["valence"], az_grad=round(math.degrees(math.atan2(G['n'][1], G['n'][0])), 2), pos=[round(x, 1) for x in G["pos"]], n=[round(x, 5) for x in G["n"]], rho0=round(G["rho0"], 1), ball_r=round(G["ball_r"], 1),
+                           arme=[dict(nachbar=a["nachbar"] + 1, typ=a["typ"], laenge=a["laenge"], kipp_gegen_tangentialebene=round(a["kipp"], 2), u=[round(x, 6) for x in a["u"]], bolzenachse=[round(x, 6) for x in a["_bperp"]]) for a in G["arms"]])
         if "--render" in sys.argv:
             r = os.path.join(sc.ROOT, "renders", "components", f"knoten_{N[i]['valence']}")
             os.makedirs(r, exist_ok=True)

@@ -91,3 +91,17 @@ def faces_multi(sc_path, bodies):
     if r.returncode != 0:
         sys.exit("FEHLER faces_multi: " + r.stderr.strip())
     return {x["body"]: x["faces"] for x in json.loads(r.stdout)}
+
+def assign_part_materials(sc_path, material):
+    """Normteile aus parts.insert heissen 'Body<n>' und tragen die Standarddichte 1,29: Material nachtraeglich zuweisen (speichert die Datei neu)."""
+    import re
+    ev = evaluate(sc_path)
+    names = [b["name"] for b in ev["bodies"] if re.fullmatch(r"Body\d+", b["name"])]
+    if not names:
+        return 0
+    script = os.path.join(TMP, "ws-partmat.json")
+    json.dump({"commands": [{"command": "material.assign", "params": {"bodies": names, "material": material}}]}, open(script, "w"))
+    r = subprocess.run([CLI, "run", script, "--in", sc_path, "--save", sc_path, "--quiet"], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER assign_part_materials: " + r.stderr.strip())
+    return len(names)

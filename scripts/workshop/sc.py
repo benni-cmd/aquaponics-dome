@@ -22,7 +22,7 @@ class Build:
             if u in ("mm", "deg"):
                 self.add("parameters.add", name=k, expression=f"{v} {u}")
             elif u == "":
-                self.add("parameters.add", name=k, expression=str(v))
+                self.add("parameters.add", name=k, expression=str(v), unit="")
     def write(self, name):
         path = os.path.join(TMP, f"ws-{name}.json")
         json.dump({"commands": self.cmds}, open(path, "w"))

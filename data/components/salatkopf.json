@@ -1,0 +1,19 @@
+{
+  "klasse": "salatkopf",
+  "teilenummer": "T12",
+  "beschreibung": "Salatkopf (Lollo-/Kopfsalat-Naeherung) aus wenigen ueberlappenden Kugeln, Groessen S/M/L ueber Parameter head_d",
+  "quelle_masse": "ref-6: Kopf ca. 1,5-2 x Topfkragen (64 mm); Hoehe ca. 0,7 x Breite [A]",
+  "parameter": {
+    "head_d":    {"wert": 100, "einheit": "mm", "herkunft": "[A] Standard M; S = 70, L = 130 (Konfigurationszeilen S/M/L)"},
+    "core_r_f":  {"wert": 0.34, "einheit": "",  "herkunft": "[A] Kernradius / head_d"},
+    "ring1_r_f": {"wert": 0.26, "einheit": "",  "herkunft": "[A] Blattring 1 Radius / head_d (6 Stueck)"},
+    "ring1_d_f": {"wert": 0.27, "einheit": "",  "herkunft": "[A] Blattring 1 Abstand von der Achse / head_d"},
+    "ring2_r_f": {"wert": 0.19, "einheit": "",  "herkunft": "[A] Blattring 2 Radius / head_d (6 Stueck, um 30 Grad versetzt)"},
+    "ring2_d_f": {"wert": 0.40, "einheit": "",  "herkunft": "[A] Blattring 2 Abstand / head_d"},
+    "neck_d":    {"wert": 24,  "einheit": "mm", "herkunft": "[A] Wurzelhals-Durchmesser, steckt im Netztopf (Innen-D oben 47)"},
+    "neck_len":  {"wert": 25,  "einheit": "mm", "herkunft": "[A] Wurzelhals unter Z=0 im Topf"}
+  },
+  "werkstoff": {"name": "Pflanze (Kopfsalat)", "dichte_g_cm3": 0.4, "farbe": "#4c9a3c", "herkunft": "[A] Bulk-Dichte Naeherung, nur fuer Gewichtsangabe grob; Gewicht eines Kopfes real 150-250 g"},
+  "anzahl": {"soll": "Aussenbeete 2160 Toepfe, Besatz laut Integrator", "quelle": "data/layout.json"},
+  "bezugspunkt": "Z=0 = Kragenoberkante des Netztopfs (Mitte Topfoeffnung); Kopf waechst nach +Z, Hals nach -Z in den Topf"
+}

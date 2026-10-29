@@ -19,3 +19,6 @@ Runde 6, Zweitkamera (`renders/round-06b-ref1.png`, Yaw 0,6 rad): Anordnung wie 
 | 7 | ref-5: wenige grosse Dreiecke, 5 am Scheitel, Basis-Zehneck. 3V gibt 157 Streben, 2V 63; 2V hat 10 Knoten auf Z=0 | Frequenz 3 -> 2, Basis-Zehneck-Kanten ergaenzt, keine Stauchung noetig, Sockel 0,4 m, Wasserscheibe T5_Wasser | 1-5,7,9,10,11; 12,13 teilweise |
 
 Entscheidung Runde 7: 2V gewaehlt (Zaehlung an ref-5: ~5 Scheiteldreiecke + 10 + 10 Felder sichtbar; Bild passt zu 2V, nicht zu 3V). ref-6 von mir noch nicht angesehen, Punkt 12 stuetzt sich auf die Beschreibung der Hauptsitzung. Rohr-Strebe-Abstand nach 2V-Wechsel 252 mm (Achse zu Achse, > 195 mm noetig).
+| 8 | ref-6: Reihen gestaffelt, Schlaeuche Tank-Tisch, mehr Substratwannen, dicker Tankrand | Reihenversatz 165 mm, 4 Substratwannen (126/198/234/342 Grad), 6 Schlaeuche r25, Tankwand 160 mm | 1-11; 12, 13 weitgehend |
+
+Entscheidung Runde 8: 12 Tische nicht umgesetzt (10 Betten, Tuerplatz); keine Neigung/Rippen (nur Quader). ref-6 selbst angesehen: Reihen sind gestaffelt, Schlaeuche blau und flexibel zwischen Tischen/Tank.

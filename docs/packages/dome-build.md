@@ -71,5 +71,5 @@ Offen: Schritte 1-7; echte Masse (DEINE ENTSCHEIDUNG, falls bekannt)
 9. Sockel Ueberstand <= 0,3 m — erfuellt (0,25 m)
 10. Geruest 2V statt 3V (ref-5: 5 Dreiecke am Scheitel, grosse Felder, Basis-Zehneck) — erfuellt Runde 7; 2V hat exakt 10 Knoten auf Z=0 (Halbkugel, H/D = 0,5), 63 Streben inkl. 10 Basiskanten; Haut/Nabenfreiheit: Haut T2 offen (Phase 2), Knoten ohne Naben
 11. Sockel flach, Zehneck, kaum Ueberstand — erfuellt (0,4 m hoch, 0,25 m Ueberstand)
-12. Pflanztische wie ref-6 (Rinnen, gestaffelte Reihen, Schlaeuche, 10-12 Tische) — teilweise: 10 Tische mit 3 Reihen x 6 Loechern; Schlaeuche, Neigung, gerippte Oberseite, Winkelstuetzen offen
-13. Tanks wie ref-5 (Rand dick, Wasserscheibe) — teilweise: Wasserscheibe T5_Wasser da; gerundeter Rand, Farben offen
+12. Pflanztische wie ref-6 — weitgehend erfuellt (Runde 8): 10 Tische, 3 gestaffelte Reihen x 6 Loecher, 4 Substratwannen, 6 Schlaeuche (T10_Schlauch_n) von Fasstanks zum Zentraltank; offen: Neigung, gerippte Oberseite, Winkelstuetzen, Schlaeuche zwischen Tischen, 10-12 Tische bleibt bei 10 (Tuer)
+13. Tanks wie ref-5 — weitgehend erfuellt (Runde 8): Wand 160 mm, Wasserscheibe T5_Wasser, 6 Fasstanks + Mitteltank; offen: gerundeter Rand, Farben (SolidCraft-Aussehen nicht gesetzt)

@@ -9,7 +9,7 @@ P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe
     t5_d=3800, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
     bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4800,
     tub_len=2200, tub_w=760, tub_h=550,
-    pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=120)
+    pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=160)
 
 cmds = []
 def add(c, **p): cmds.append({"command": c, "params": p})
@@ -98,6 +98,12 @@ def t5_t7(fz):
     tank("T6_Mitteltank", 500, -2600, fz, "t6_d", "t6_h", "wall")
     pos = [(-3200, 500), (-2600, -1700), (3200, 300), (2700, 1800), (-1500, -3000), (2400, -2300)]
     for i, (x, y) in enumerate(pos, 1):
+        # Schlauch (T10-Gruppe) vom Fasstank zum Rand des Zentraltanks
+        dx, dy = 0 - x, 450 - y; dl = math.hypot(dx, dy); ux, uy = dx/dl, dy/dl
+        sx, sy, sz = x + ux*P["t7_d"]/2, y + uy*P["t7_d"]/2, fz + P["t7_stand"] + P["t7_h"] - 150
+        ex, ey, ez = ux*(dl - P["t5_d"]/2), uy*(dl - P["t5_d"]/2), fz + P["t5_h"] + 60
+        d = [ex - (sx - x), ey - (sy - y), ez - sz]; L = math.sqrt(sum(q*q for q in d))
+        add("solid.cylinder", radius=25, height=round(L, 1), base=[round(sx, 1), round(sy, 1), sz], axis=[round(q/L, 6) for q in d], operation="new", name=f"T10_Schlauch_{i}", body_name=f"T10_Schlauch_{i}")
         tank(f"T7_Fasstank_{i}", x, y, fz, "t7_d", "t7_h", "wall", stand=P["t7_stand"])
 
 def t8_t9(fz):
@@ -119,10 +125,10 @@ def t8_t9(fz):
         nc = 6 if blen > 1500 else 3
         for r in range(3):
             for c in range(nc):
-                lx, ly = rot((c-(nc-1)/2)*330, (r-1)*270, a)
+                lx, ly = rot((c-(nc-1)/2)*330 + (r % 2)*165 - 82, (r-1)*270, a)   # gestaffelte Reihen
                 add("solid.cylinder", diameter=70, height=70, base=[round(cx+lx, 1), round(cy+ly, 1), fz+P["bed_h"]-65], operation="cut", targets=[nm], name=f"{nm}_Loch{r*6+c+1}")
-    # T9: zwei Substratwannen unter Bett 7 (Azimut 270? -> hier Azimut 234 und 342)
-    for k, az in enumerate((234, 342), 1):
+    # T9: vier Substratwannen unter Bett 7 (Azimut 270? -> hier Azimut 234 und 342)
+    for k, az in enumerate((126, 198, 234, 342), 1):
         cx, cy = pol(P["bed_r"], az)
         rect_body(f"T9_Substratbeet_{k}", round(cx, 1), round(cy, 1), fz, az+90, P["tub_len"], P["tub_w"], P["tub_h"])
 

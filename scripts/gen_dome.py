@@ -3,13 +3,7 @@ Aufruf: python gen_dome.py <stufe> <out.json>. Masse in mm; alle Annahmen stehen
 import json, math, sys
 from geo import build
 
-P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe 6 m; Rest per Pixelvergleich mit ref-4 (Basis = 12 m)
-    dome_base_d=12000, dome_h=6000, freq=2, sock_h=400, sock_w=250, strut_r=45,
-    door_w=1000, door_h=2000, door_az=-54, door_off=0,
-    t5_d=4210, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
-    bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4500,
-    tub_len=2200, tub_w=720, tub_h=550,
-    pipe_d=140, cab_x=800, cab_y=500, cab_z=1200, wall=160)
+P = {k: v["value"] for k, v in json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "params.json"))).items()}   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort)
 
 cmds = []
 names = []
@@ -99,13 +93,6 @@ def t1_t3_t4(sock_z):
     add("sketch.finish")
     add("solid.extrude", distance=60, direction="symmetric", operation="new", name="T4_Tuer", body_name="T4_Tuer")
     return n, dropped
-
-def tank(name, cx, cy, z0, d, h, wall_expr, stand=0):
-    add("solid.cylinder", diameter=d, height=h, base=[cx, cy, z0+stand], operation="new", name=name, body_name=name)
-    add("solid.cylinder", diameter=f"({d}) - 2*wall", height=h, base=[cx, cy, z0+stand+P["wall"]], operation="cut", targets=[name], name=name+"_Hohlraum")
-    for i in range(4 if stand else 0):
-        lx, ly = cx+ (P["t7_d"]/2-60)*math.cos(math.radians(90*i+45)), cy+(P["t7_d"]/2-60)*math.sin(math.radians(90*i+45))
-        add("solid.cylinder", radius=30, height=stand, base=[round(lx, 1), round(ly, 1), z0], operation="join", targets=[name], name=f"{name}_Fuss{i+1}")
 
 LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))
 ROT = P["door_az"] - 167   # Layout-Drehung (docs/components.md)

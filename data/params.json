@@ -1,0 +1,146 @@
+{
+ "dome_base_d": {
+  "value": 12000,
+  "unit": "mm",
+  "origin": "Q",
+  "source": "Ben 29.10.2026",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "dome_h": {
+  "value": 6000,
+  "unit": "mm",
+  "origin": "Q",
+  "source": "Ben 29.10.2026",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "freq": {
+  "value": 2,
+  "unit": "-",
+  "origin": "Q",
+  "source": "ref-5 Dreieckszaehlung + OBJ 2V",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "sock_h": {
+  "value": 400,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Platzhalter, OBJ-Boden unklar",
+  "r_id": "R12",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "sock_w": {
+  "value": 250,
+  "unit": "mm",
+  "origin": "A",
+  "source": "ref-5, <=0,3 m laut Ben",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "strut_r": {
+  "value": 45,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Platzhalter: OBJ 30x30 mm Profil, wirkt in Bild unsichtbar; Statik offen",
+  "r_id": "R01",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "door_w": {
+  "value": 1000,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Normtuer (Ben: wahrscheinlich)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "door_h": {
+  "value": 2000,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Normtuer (Ben: wahrscheinlich)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "door_az": {
+  "value": -54,
+  "unit": "deg",
+  "origin": "A",
+  "source": "Modellwahl: Tuer vorne rechts wie ref-4",
+  "r_id": "",
+  "maturity": 1,
+  "used_by": "gen_dome.py"
+ },
+ "door_off": {
+  "value": 0,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Tuer sitzt am Basisknoten (OBJ-Luecke zwischen Aussenbeeten)",
+  "r_id": "",
+  "maturity": 1,
+  "used_by": "gen_dome.py"
+ },
+ "wall": {
+  "value": 160,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Beckenwand, Platzhalter",
+  "r_id": "R05",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pipe_d": {
+  "value": 140,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Standardrohr 110-160 (Ben)",
+  "r_id": "R10",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "cab_x": {
+  "value": 800,
+  "unit": "mm",
+  "origin": "A",
+  "source": "ref-5 geschaetzt",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "cab_y": {
+  "value": 500,
+  "unit": "mm",
+  "origin": "A",
+  "source": "ref-5 geschaetzt",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "cab_z": {
+  "value": 1200,
+  "unit": "mm",
+  "origin": "A",
+  "source": "ref-5 geschaetzt",
+  "r_id": "R08",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "t5_d": {
+  "value": 4210,
+  "unit": "mm",
+  "origin": "E",
+  "source": "Wasser 3890 (OBJ) + 2*160 Wand",
+  "r_id": "R05",
+  "maturity": 1,
+  "used_by": "gen_dome.py"
+ }
+}

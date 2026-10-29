@@ -19,7 +19,7 @@ Port A liegt im Ursprung (Rohr-/Schlauchachse +Z, bei Bogen/T in der XZ-Ebene). 
 | T-Stueck (Arm a = t + OD_f/2) | A / B / C | -a, 0, 0 / +a, 0, 0 / 0, 0, +a | -X / +X / +Z |
 | Kugelhahn (L = 50 + 2 t) | A / B | 0, 0, 0 / 0, 0, L | -Z / +Z; Hebel +X (offen = parallel zur Rohrachse) |
 | Schlauch (ID16 / ID25, Standard 1000) | A / B | 0, 0, 0 / 0, 0, L | -Z / +Z |
-| Schlauchbogen 90 (R = 5 x AD, Schenkel 100) | A / B | 0, 0, 0 / R, 0, 100 + R + 100 | -Z / +X |
+| Schlauchbogen 90 (R = 5 x AD, Schenkel 100) | A / B | 0, 0, 0 / R + 100, 0, 100 + R | -Z / +X |
 | Rohrklemme (Aufnahme Rohr d) | Rohrachse | 0, 0, z = 4 + (d + 6)/2, Achse X | Rohr liegt entlang X; Fuss unten (Z = 0), 2 Schrauben M6x20 |
 | Verteiler d32 (n = 2, 3, 4 Abgaenge d25, Teilung 120) | Sammler A / B | 0, 0, 0 / L, 0, 0 (L = 120 n + 120) | -X / +X |
 | Verteiler | Abgang k | x_k = 60 + 60 + 120 (k - 1), 0, 66 | +Z |

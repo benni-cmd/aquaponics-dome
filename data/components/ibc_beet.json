@@ -43,14 +43,14 @@
    "herkunft": "[A] Innenradius der Wannenecken (IBC-Schnitt, ref-5)"
   },
   "rim_w": {
-   "wert": 10,
+   "wert": 20,
    "einheit": "mm",
-   "herkunft": "[A] Randwulst: Breite nach aussen"
+   "herkunft": "[A] Randsims: Breite nach aussen 20 mm (Bild-Kritiker: Referenz zeigt breiten flachen Randsims)"
   },
   "rim_h": {
-   "wert": 12,
+   "wert": 14,
    "einheit": "mm",
-   "herkunft": "[A] Randwulst: Hoehe"
+   "herkunft": "[A] Randsims: Hoehe 14 mm"
   },
   "rim_gap": {
    "wert": 75,
@@ -68,9 +68,9 @@
    "herkunft": "[A] Spiel Medium zur Wannenwand"
   },
   "grid_t": {
-   "wert": 5,
+   "wert": 8,
    "einheit": "mm",
-   "herkunft": "[A] Siebboden (Lochblech) Staerke"
+   "herkunft": "[A] Siebboden 8 mm (PP-Lochplatte), Stuetzenabstand <= 420 mm (Bild-Kritiker: Traglast Medium)"
   },
   "grid_hole": {
    "wert": 12,
@@ -93,9 +93,9 @@
    "herkunft": "[A] Stuetzklotz 60 x 60 unter dem Siebboden"
   },
   "post_nx": {
-   "wert": 4,
+   "wert": 8,
    "einheit": "",
-   "herkunft": "[A] Stuetzen in Laengsrichtung (aussen 4, innen 3 per Konfiguration im Generator)"
+   "herkunft": "[A] Stuetzen in Laengsrichtung: aussen 8, innen 5; 3 Reihen (y = +-(Wi/2-100) und 0)"
   },
   "standpipe_d": {
    "wert": 25,
@@ -222,7 +222,7 @@
  "bezugspunkt": "Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienoberflaeche bei hoehe - rim_gap; Ablaufport unter dem Boden (Z < 0); Wannen sind eingelassen (z0 -162 bis -209, Integrator)",
  "blatt": {
   "funktion": "Substratbeet (Fluten und Entleeren per Glockensiphon): Pflanzen in Netztoepfen im Medium (Blaehton/Kies), Wasser fliesst ueber das Tropfrohr zu, der Glockensiphon entleert das Beet in Zyklen; zugleich Biofilterflaeche.",
-  "querschnitt": "Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randwulst 10 x 12 mm; Siebboden 5 mm auf 6 (innen) bzw. 8 (aussen) Stuetzkloetzen 60 x 60; Medium 300 mm (EIN Koerper) mit Oberflaeche 75 mm unter dem Rand; Glockensiphon: Standrohr d25, Glocke d75 x 250 (2 Schlitze 10 x 40, Luftloch 10), Medienschutz d110 x 320 (12 Durchbrueche 12 x 12).",
+  "querschnitt": "Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 15 (innen, 5 x 3) bzw. 24 (aussen, 8 x 3) Stuetzkloetzen 60 x 60 (Abstand <= 420 mm); Medium 300 mm (EIN Koerper) mit Oberflaeche 75 mm unter dem Rand; Glockensiphon: Standrohr d25, Glocke d75 x 250 (2 Schlitze 10 x 40, Luftloch 10), Medienschutz d110 x 320 (12 Durchbrueche 12 x 12).",
   "toleranzen": "Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase ueber die Standrohrkante 220 mm ueber der Medienunterkante, also ca. 80 mm unter der Medienoberflaeche (trockene Zone 5-8 cm, R03).",
   "ports": [
    [
@@ -264,10 +264,10 @@
   ],
   "verbindungen": [
    "Standrohr steckt in der Bulkhead-Durchfuehrung D36 (Gewindehuelse mit Flansch D50 und Dichtung, Kontermutter unter dem Boden) [A]",
-   "Glocke und Medienschutz stehen lose auf dem Siebboden; Siebboden liegt auf Stuetzkloetzen",
+   "Glocke und Medienschutz stehen lose auf dem Siebboden; Siebboden (8 mm, Rasterlochplatte) liegt auf 15/24 Stuetzkloetzen",
    "Zulauf-Tropfrohr durch eine Durchfuehrung D22 in der Stirnwand (Dichtung Gummitülle), Endstopfen am Ende"
   ],
-  "abweichung": "OBJ ibc_beds: Laenge/Breite/Hoehe wie layout.json (Messung 0 mm Abweichung); Medium-Hoehe absolut Z 400 laut R03 (Beet z0 -162..-209, Oberkante 475); Beetinnenraum ist im OBJ nicht modelliert (nur Huelle) -> Aufbau komplett aus R03.",
+  "abweichung": "OBJ ibc_beds: Laenge/Breite/Hoehe wie layout.json (Messung 0 mm Abweichung); die Bezeichnung 'halbe IBC' (OBJ-Gruppe IBC_Open_Top) passt nicht zu 2953 mm (eine halbe IBC misst ca. 1200 x 1000): die 2953-mm-Wanne ist ein Sonderbau (verschweisste/laengere Wanne) - Bild-Kritiker Luecke 1, offen beim Orchestrator; Medium-Hoehe absolut Z 400 laut R03; Beetinnenraum im OBJ nicht modelliert -> Aufbau aus R03.",
   "montage": [
    "Grube ausheben, Wanne einsetzen und waagerecht ausrichten",
    "Bohrung D36 in den Boden, Bulkhead mit Dichtung einsetzen, Standrohr stecken",
@@ -279,8 +279,8 @@
   "werkzeug": "Bohrmaschine mit Lochsaege D36, Wasserwaage, Schaufel, Silikon/Dichtung",
   "stueckliste": [
    "T30a Wanne halbe IBC (HDPE): 1 je Beet; 14 gesamt (aussen 8: 5 x 933 + 3 x 993, innen 6)",
-   "T30b Stuetzkloetze 60x60: 6 (innen) / 8 (aussen) je Beet",
-   "T30c Siebboden 5 mm (PP): 1",
+   "T30b Stuetzkloetze 60x60: 15 (innen) / 24 (aussen) je Beet",
+   "T30c Siebboden 8 mm (PP): 1",
    "T30d Medium Blaehton/Kies 8-20 mm: 1 Fuellung (Menge siehe Messung)",
    "T30e Bulkhead D36 + Standrohr d25 + Glocke d75 x 250 + Medienschutz d110 x 320: 1 Satz",
    "T30f Zulauf-Tropfrohr d20 PE mit Endstopfen: 1"
@@ -302,7 +302,9 @@
    "Standrohrhoehe 220 ueber Medienunterkante (R03 gibt 220 bei Medientiefe 300 ohne Wasserraum) [E]",
    "Seitenloecher/Tropfloecher/Luftloch quadratisch modelliert (Rechenzeit), real rund",
    "Pflanzen (Netztoepfe, Koepfe) sind Instanzen nach layout.json (288 je Aussenbeet) und nicht Teil des Beets",
-   "Tropfrohr-Halterung am Wannenrand nicht modelliert"
+   "Tropfrohr-Halterung am Wannenrand nicht modelliert",
+   "Wanne 2953 mm lang: 'halbe IBC' ist nur die OBJ-Bezeichnung; Fertigung als Sonderwanne (Bild-Kritiker Luecke 1, Einstufung: gueltig, Klaerung Orchestrator)",
+   "Zulauf-Wanddurchfuehrung ohne Fitting/Dichtung modelliert (nur Bohrung D22, Gummitulle im Blatt)"
   ]
  },
  "herkunft_tabelle": [
@@ -328,10 +330,10 @@
    "mittel"
   ],
   [
-   "Randwulst 10 x 12 mm",
-   "10 / 12",
+   "Randsims 20 x 14 mm",
+   "20 / 14",
    "Bild + A",
-   "ref-5/ref-6: umlaufender Rand der weissen Wannen",
+   "ref-5/ref-6: breiter flacher Randsims der weissen Wannen (Bild-Kritiker)",
    "niedrig"
   ],
   [
@@ -350,23 +352,23 @@
   ],
   [
    "Medium als EIN Koerper",
-   "-",
+   "1 Koerper",
    "R03/Scope-Card",
    "Scope-Card ibc_beet: Medium als EIN Koerper",
    "hoch"
   ],
   [
-   "Siebboden 5 mm, Lochraster 20 x 5 D12 (vereinfacht)",
-   "-",
+   "Siebboden 8 mm, Lochraster 20 x 5 D12 (vereinfacht)",
+   "8 / D12",
    "Scope-Card + A",
    "Scope-Card nennt Siebboden; Raster vereinfacht",
    "niedrig"
   ],
   [
-   "Stuetzkloetze 60x60",
-   "-",
+   "Stuetzkloetze 60x60, 15 (innen) / 24 (aussen)",
+   "60 x 60",
    "A",
-   "Konstruktionspraxis; Wasserraum unter dem Medium ist Annahme",
+   "Konstruktionspraxis; Abstand <= 420 mm wegen Medienlast (Bild-Kritiker); Wasserraum unter dem Medium ist Annahme",
    "niedrig"
   ],
   [
@@ -378,21 +380,21 @@
   ],
   [
    "Glocke d75 x 250, Schlitze 10x40, Luftloch 10",
-   "-",
+   "d75 x 250",
    "R03",
    "docs/research/R03.md (FarmHub)",
    "mittel"
   ],
   [
    "Medienschutz d110 x 320 mit Seitenloechern",
-   "-",
+   "d110 x 320",
    "R03",
    "docs/research/R03.md (FarmHub 11 cm, 32 cm)",
    "mittel"
   ],
   [
    "Bulkhead D36 / Flansch D50",
-   "-",
+   "D36 / Flansch D50",
    "A",
    "Standrohr d25; Durchfuehrung geschaetzt (Scope-Card: Ablauf-Fitting im Boden)",
    "niedrig"
@@ -406,7 +408,7 @@
   ],
   [
    "Zulauf 200-500 l/h je Beet",
-   "-",
+   "200-500 l/h",
    "R03",
    "docs/research/R03.md (Glockensiphon-Auslegung)",
    "mittel"
@@ -420,7 +422,7 @@
   ],
   [
    "Werkstoff HDPE weiss, Medium Blaehton",
-   "-",
+   "HDPE / Blaehton",
    "Bild + A",
    "ref-5/6 weisse Wannen; Medium R03 (Vulkankies/Blaehton 8-20 mm)",
    "mittel"

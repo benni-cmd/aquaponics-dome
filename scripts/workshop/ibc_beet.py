@@ -55,11 +55,11 @@ def build(typ):
     # --- Stuetzen (Klotz 60 x 60 unter dem Siebboden), Raster nx x 2
     b.add("component.activate", component=root)
     b.add("component.create", name="T30b_Stuetzen")
-    nx = int(p["post_nx"]) if L > 2500 else 3
+    nx = int(p["post_nx"]) if L > 2500 else 5
     sx = (Li - 200) / (nx - 1)
     b.add("solid.box", length=p["post"], width=p["post"], height=z_g0 - ft, center=[-Li / 2 + 100, -(Wi / 2 - 100), ft + (z_g0 - ft) / 2], operation="new", name="Klotz", body_name="Stuetze")
-    b.add("solid.pattern.rectangular", bodies=["Stuetze"], dir1=[1, 0, 0], count1=nx, spacing1=sx, dir2=[0, 1, 0], count2=2, spacing2=Wi - 200)
-    b.add("material.assign", bodies=["Stuetze"] + [f"Stuetze ({k})" for k in range(2, 2 * nx + 1)], material="PP grau")
+    b.add("solid.pattern.rectangular", bodies=["Stuetze"], dir1=[1, 0, 0], count1=nx, spacing1=sx, dir2=[0, 1, 0], count2=3, spacing2=(Wi - 200) / 2)
+    b.add("material.assign", bodies=["Stuetze"] + [f"Stuetze ({k})" for k in range(2, 3 * nx + 1)], material="PP grau")
     # --- Siebboden
     b.add("component.activate", component=root)
     b.add("component.create", name="T30c_Siebboden")
@@ -129,13 +129,13 @@ def render(typ, path, info):
     r = os.path.join(sc.ROOT, "renders", "components", f"ibc_beet_{typ}")
     os.makedirs(r, exist_ok=True)
     L, H = info["L"], info["H"]
-    Lw_ = L - 2 * 10
+    Lw_ = L - 2 * 20
     views = {"01-iso": ([0, 0, H / 3], 0.6, 0.45, L * 1.25), "02-siphon": ([info["x_sp"], 0, info["z_m0"] + 120], 0.7, 0.5, 700),
              "03-zulauf": ([-Lw_ / 2 + 150, info["y_in"], info["z_in"]], 0.9, 0.4, 700), "04-medium": ([0, 0, info["z_ms"]], 0.3, 0.8, L * 0.9)}
     for n, (t, yaw, pitch, dist) in views.items():
         sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-{n}.png"), t, yaw, pitch, dist, w=1000, h=650)
     sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-05-schnitt.png"), [info["x_sp"] - 100, 0, H / 2], 3.14159, 0.0, 1300, w=1000, h=650, section="XZ")
-    sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-06-schnitt-quer.png"), [0, 0, H / 2], 1.5708, 0.0, info["W"] * 2.2, w=900, h=650, section="YZ")
+    sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-06-schnitt-quer.png"), [info["x_sp"], 0, H / 2], 1.5708, 0.0, info["W"] * 2.0, w=900, h=650, section="x=%d,flip" % int(info["x_sp"]))
 
 if __name__ == "__main__":
     typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["aussen_933", "aussen_993", "innen_933"]

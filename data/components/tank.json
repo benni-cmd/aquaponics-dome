@@ -1,0 +1,146 @@
+{
+ "klasse": "tank",
+ "teilenummer": "T40",
+ "beschreibung": "Tank mit Kegelboden auf Plattform und 4 Beinen: klein = Vortex-Absetzer (tangentialer Zulauf, Leitrohr, Schlammventil an der Kegelspitze), gross = Biofilter (Biomediumkorb, Belueftungsanschluss, Schlammventil)",
+ "quelle_masse": "data/layout.json tanks (Durchmesser, Hoehe, Z-Spitze, Plattform, Beine, Fittings), docs/scope-cards.md tank_klein/tank_gross, docs/hydraulics.md (Vortex), R09 (teilweise)",
+ "typen": {
+  "klein": {
+   "R": 336.5,
+   "H": 1075,
+   "z0": 172,
+   "plat_l": 706,
+   "plat_w": 707,
+   "plat_t": 73,
+   "plat_z0": 428,
+   "leg_w": 30,
+   "leg_h": 751,
+   "leg_wall": 2,
+   "wall": 4,
+   "rt": 22,
+   "strut_z": 250,
+   "valve_d": 40,
+   "inlet_d": 50,
+   "anzahl": 2,
+   "biofilter": 0,
+   "herkunft": "layout.json tanks 1 und 4: D673, H1075, Spitze Z 167-172, Plattform 706x707x73 auf Z 424-428, Beine 4 x h751, Fittings 30-40 an der Spitze"
+  },
+  "gross": {
+   "R": 465,
+   "H": 1444,
+   "z0": 226,
+   "plat_l": 977,
+   "plat_w": 976,
+   "plat_t": 98,
+   "plat_z0": 570,
+   "leg_w": 40,
+   "leg_h": 1008,
+   "leg_wall": 2.5,
+   "wall": 5,
+   "rt": 28,
+   "strut_z": 300,
+   "valve_d": 55,
+   "inlet_d": 63,
+   "anzahl": 2,
+   "biofilter": 1,
+   "herkunft": "layout.json tanks 2 und 3: D930, H1441-1444, Spitze Z 226-229, Plattform 977x976x98 auf Z 570-572, Beine 4 x h1006-1008, Fittings 41-56 an der Spitze"
+  }
+ },
+ "parameter": {
+  "foot_plate": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Fussplatte 100 x 100 x 6 (Tank gross: bei leg_w 40)"
+  },
+  "foot_t": {
+   "wert": 6,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "foot_hole": {
+   "wert": 9,
+   "einheit": "mm",
+   "herkunft": "[E] Durchgangsloch fuer M8"
+  },
+  "cone_clear": {
+   "wert": 2,
+   "einheit": "mm",
+   "herkunft": "[A] Spiel zwischen Tankkegel und Plattform-Kegelsitz"
+  },
+  "lid_t": {
+   "wert": 6,
+   "einheit": "mm",
+   "herkunft": "[A] Deckel"
+  },
+  "lid_over": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A] Deckel ragt 8 mm ueber den Tankrand"
+  },
+  "guide_d": {
+   "wert": 110,
+   "einheit": "mm",
+   "herkunft": "[A] Leitrohr (Mittelrohr) D110, Wand 3 (OSE Vortex Biofilter: Leitrohr)"
+  },
+  "guide_wall": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "guide_depth": {
+   "wert": 420,
+   "einheit": "mm",
+   "herkunft": "[A] Leitrohr reicht 420 mm unter den Deckel"
+  },
+  "outlet_d": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "[A] Auslauf am Leitrohr d50 (Rohr 50, Wand 3)"
+  },
+  "pipe_wall": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Rohrwand Zulauf/Auslauf"
+  },
+  "inlet_below_top": {
+   "wert": 250,
+   "einheit": "mm",
+   "herkunft": "[A] Zulauf tangential 250 mm unter dem Tankrand"
+  },
+  "valve_len": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Kugelhahn Baulaenge 40 (OBJ-Fittings Z 143-177 nur 34 mm Bandbreite: Verschraubungen)"
+  },
+  "air_d": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] Belueftungsanschluss im Deckel (Biofilter)"
+  },
+  "bio_h": {
+   "wert": 520,
+   "einheit": "mm",
+   "herkunft": "[A] Biomediumkorb: Hoehe"
+  },
+  "bio_z_below_top": {
+   "wert": 700,
+   "einheit": "mm",
+   "herkunft": "[A] Biomediumkorb: Unterkante 700 mm unter dem Tankrand"
+  },
+  "diag_w": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Diagonale Flachstahl 25 x 3"
+  }
+ },
+ "werkstoff": {
+  "name": "PE (Tank), Stahl verzinkt (Plattform, Beine), PVC (Rohre, Ventil)",
+  "dichte_g_cm3": 0.95,
+  "farbe": "#9db89c",
+  "herkunft": "ref-4/ref-5: gruene Kunststofftanks auf duennen Beinen"
+ },
+ "anzahl": {
+  "soll": "klein 2, gross 2",
+  "quelle": "data/layout.json tanks"
+ },
+ "bezugspunkt": "Mitte der Standflaeche am Boden, Z=0 (Boden); Tankachse = Z; Hoehen wie im OBJ (Kegelspitze, Plattform); Zulauf tangential bei +X/-Y, Auslauf am Leitrohr +X"
+}

@@ -78,3 +78,13 @@ Beginn 29.10.2026 ~03:50. Befunde zu SolidCraft v0.25.1 (Headless, `solidcraft-c
 | 4 | klein: Portrichtung mehrdeutig, DN, Gefaelle Sammelrohr | **gueltig** | "Wasser tritt ein/verlaesst, Oeffnung +Y", DN genannt, Sammelrohr horizontal als offen |
 | 5 | klein: Herkunft (Mitte/gemittelt statt Unterkante, Ben bei 3 Rinnen, leere Wertspalten, fehlende Zeilen) | **gueltig** | Texte korrigiert, Ben genannt, Wertspalten gefuellt, 4 Zeilen ergaenzt |
 | H | Scope-Card/detail-standard 1 cm/m gegen R06 1,5 % | **andere Klasse (Orchestrator)** | im Blatt vermerkt |
+
+### ibc_beet, Bild-Kritiker (Kontextpaket) 29.10. ~07:35: Urteil "Modell"
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, sicher: 2953 mm gegen "halbe IBC" (ca. 1200 x 1000) | **gueltig als Dokumentationsluecke**, Mass aus OBJ (Ben > OBJ) | Blatt: Sonderwanne, Klaerung Orchestrator |
+| 2 | gross, vermutet: Siebboden 5 mm / zwei Stuetzen tragen 300 mm Medium nicht | **gueltig** | Siebboden 8 mm, Stuetzen 8 x 3 (aussen) / 5 x 3 (innen), Abstand <= 420 mm |
+| 3 | klein, vermutet: Randsims breit und flach in der Referenz | **gueltig (klein)** | Randsims 20 x 14 mm |
+| 4 | klein, sicher: Zulaufrohr ohne Fitting/Dichtung; Tropfloecher quadratisch | **gueltig, offen** | im Blatt offen (Gummitulle, quadratische Vereinfachung begruendet: Zylinder-Zylinder-Schnitt > 1 min je Loch) |
+| 5 | klein, sicher: Querschnitt 06 zeigt nur leere Wand | **gueltig (Render)** | Schnitt jetzt durch die Siphonebene (x = Siphon) |
+| Hinweis | Pflanzen, NFT, Einbautiefe | **andere Klasse** | - |

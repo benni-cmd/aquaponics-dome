@@ -179,15 +179,6 @@
   "maturity": 1,
   "used_by": "gen_dome.py"
  },
- "outer_bed_inset": {
-  "value": 120,
-  "unit": "mm",
-  "origin": "A",
-  "source": "D21: 8 Aussenbeete im OBJ ragen bei Betten 2-4 17-36 mm in den Fundamentring und beruehren Strebe_B-Knotennaehe; Beete radial 120 nach innen (mehr geht nicht: ab ca. 200 mm stossen die Beetenden an die Nachbarbeete, D25)",
-  "r_id": "",
-  "maturity": 0,
-  "used_by": "gen_dome.py"
- },
  "tank_clear": {
   "value": 60,
   "unit": "mm",
@@ -216,21 +207,39 @@
   "used_by": "gen_dome.py, scripts/components/strebe.py, check_latte.py"
  },
  "strut_pocket": {
-  "value": 24,
+  "value": 34,
   "unit": "mm",
   "origin": "A",
-  "source": "Steckaufnahme 24 x 24 x 80 mm an jedem Strebenende fuer den Steckarm 23 x 23 des Knotens (Werkstatt knoten.json spigot_w 23, hub_insert 80)",
+  "source": "Runde Steckaufnahme D34 x 80 an jedem Strebenende (Steckarm 23 x 23 hat 32,5 mm Diagonale, Rollwinkel beliebig; quadratische 24er Aufnahme gab 604 Kollisionen)",
   "r_id": "R02",
   "maturity": 0,
   "used_by": "scripts/components/strebe.py"
  },
- "nft_outer_inset": {
-  "value": 497,
+ "inner_bed_shift": {
+  "value": 66,
   "unit": "mm",
   "origin": "A",
-  "source": "D25: Rev.-B-Aussentisch (Fussplattenkante bei Tischmitte + 656) darf die Domwand (Fundamentring-Innenflaeche 5706) und Streben A/B nicht beruehren: Tischmitte 4712 statt ap_c 5209; Folge: Aussenbeine stehen im Beet (W-M2)",
+  "source": "M7/D28/D29: Innenbeet-Mitte 3343 -> 3277 (Radialbudget W17: Innenportal 2695..3858 = Beet 933 + 2 x 115); radial nach innen; ersetzt D21 fuer Innenbeete",
   "r_id": "",
   "maturity": 0,
-  "used_by": "gen_dome.py"
+  "used_by": "gen_dome.py, check_walkways.py"
+ },
+ "outer_bed_shift": {
+  "value": 236,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M7/D28/D29: Aussenbeet-Mitte 5209 -> 4973 (Aussenportal 4458..5488, Wandluft 218); ersetzt D21/D24/D25. Aussenbeet bis W17 noch 993 x 2953 (Ziel 800 x ~2640): Beetenden stossen bis dahin an die Nachbarn",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_walkways.py"
+ },
+ "walkway_min": {
+  "value": 600,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D29: Laufwege A (Beckenrand-Innenbeete) und B (Innen-Aussenbeete) >= 600, nie < 500; Tuer-Gang >= 900",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_walkways.py"
  }
 }

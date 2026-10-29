@@ -183,11 +183,9 @@ def pool_dims(fz, src, wall, depth, nm):
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
 
 def bed_xy(b):
-    """Beetmitte im Modell; Aussenbeete (mit 'plants') um outer_bed_inset radial nach innen (D21)."""
-    x, y = LXY(b["cx"], b["cy"])
-    if "plants" in b:
-        r = math.hypot(x, y); f = (r - P["outer_bed_inset"]) / r; x, y = round(x*f, 1), round(y*f, 1)
-    return x, y
+    """Beetmitte im Modell; Aussenbeete (mit 'plants') um outer_bed_shift, Innenbeete um inner_bed_shift radial nach innen (D28/D29, Radialbudget W17)."""
+    x, y = LXY(b["cx"], b["cy"]); r = math.hypot(x, y); f = (r - P["outer_bed_shift" if "plants" in b else "inner_bed_shift"]) / r
+    return round(x*f, 1), round(y*f, 1)
 
 def bed_dims(k, b):
     return b["length"], b["width"]   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel)
@@ -269,7 +267,7 @@ def t9(fz):
         place_instances("Beet_" + v, os.path.join(ROOT, "designs", "components", f"ibc_beet_{v}.sc"), items, "05_Beete")
 
 # T8: 24 NFT-Tische Rev. B (W16, D18) als Instanzen nft_tisch_{aussen,mitte,innen}: je Sektor eine Tischinstanz, Tischkoordinaten X tangential, Y radial INNEN, yaw = Azimut + 90 Grad (volle 360 Grad); Ursprung = Mitte Standflaeche am Boden.
-# Portaltische (aussen, mitte) stehen auf der Beetmitte (Radius des Beets auf der Sektorachse), aussen um nft_outer_inset (497) nach innen, damit der Aussenbein-Fuss die Domwand/Streben meidet (D25); die Beete koennen nicht mit (Nachbarbeete stossen); innen auf ap_c 1864.
+# Portaltische (aussen, mitte) stehen auf der Beetmitte (Radius des Beets auf der Sektorachse), wie die Beete um outer_bed_shift/inner_bed_shift nach innen (Radialbudget D28/D29, M7); innen auf ap_c 1864.
 SECTORS = {"innen": list(range(10)), "mitte": [0, 1, 2, 7, 8, 9], "aussen": [0, 1, 2, 3, 6, 7, 8, 9]}
 NFT_APC = {"innen": 1864, "mitte": 3343, "aussen": 5209}   # data/components/nft_tisch.json typen.<typ>.ap_c
 NFT_POTS = []                                                # Rinnen-Topfpositionen (x, y, z Topfboden), von nft() gefuellt, von pots() gesetzt
@@ -282,7 +280,7 @@ def nft(fz):
             az = 5.3 + 36.0 * i; ap = NFT_APC[typ]
             if typ != "innen":
                 bed = min((b for b in LAYOUT["ibc_beds"] if abs(b["r"] - NFT_APC[typ]) < 400), key=lambda b: abs((b["az"] - az + 180) % 360 - 180))
-                ap = bed["r"] * math.cos(math.radians(bed["az"] - az)) - (P["nft_outer_inset"] if typ == "aussen" else 0)
+                ap = bed["r"] * math.cos(math.radians(bed["az"] - az)) - P["outer_bed_shift" if typ == "aussen" else "inner_bed_shift"] * (typ != "innen")
             x, y = LXY(ap * math.cos(math.radians(az)), ap * math.sin(math.radians(az))); yaw = az + 90 + ROT; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
             items.append((x, y, fz, yaw))
             for u, v, z in tp[typ]["pots"]: NFT_POTS.append((round(x + u*c - v*s, 1), round(y + u*s + v*c, 1), round(fz + z, 1)))

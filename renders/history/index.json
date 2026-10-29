@@ -1770,6 +1770,16 @@
   "source": "renders/components/winkelhalter/winkelhalter-05-im-tisch-mitte-gegenseite.png"
  },
  {
+  "file": "20261029-201219_montage_laufwege_round-39.png",
+  "sha": "33b754415383266c",
+  "time": "2026-10-29 20:12:19",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "WIP M7: Radialbudget gesetzt, check_walkways A 580 / B 476 / Wand 82",
+  "commit": "b247efb",
+  "source": "renders/round-39.png"
+ },
+ {
   "file": "20261029-201250_werkstatt_winkelhalter_winkelhalter-06-querschnitt-bock.png",
   "sha": "737c4ba669542db0",
   "time": "2026-10-29 20:12:50",

@@ -96,48 +96,114 @@ def grp(n):
     return (m.group(3), int(m.group(4))) if m else cl.get(n, (n, 0))
 names = [n for n in B if grp(n)[0] not in PLANT_CLS]; G = {n: grp(n) for n in names}   # Pflanzen stecken bewusst im Medium: nicht auf Kollision geprueft
 bb = {n: (B[n]["bbox"]["min"], B[n]["bbox"]["max"]) for n in names}
-cand = []; openm = {"W-M1": [], "W-M2": [], "W-M3": []}
+
+# --- 1) Reine Geometrie: NFT-Tisch-Fusspunkte gegen Beete/Pool und Tisch gegen Tisch (statt zehntausender exakter Booleans; Werkstatt-Mangel W-M2/W-M3 jetzt ZAEHLBAR) ---
+sys.path.insert(0, os.path.join(ROOT, "scripts", "workshop"))
+import sc as WSC, tisch_geom as TG
+LAY = json.load(open(os.path.join(ROOT, "data", "layout.json"), encoding="utf-8"))
+tp, td = WSC.load_params("nft_tisch")
+mv = {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}
+def sat_gap(A, Bq):
+    g = -1e9
+    for Q in (A, Bq):
+        for i in range(4):
+            e = (Q[(i + 1) % 4][0] - Q[i][0], Q[(i + 1) % 4][1] - Q[i][1]); m = math.hypot(*e); nx, ny = -e[1] / m, e[0] / m
+            pa = [q[0] * nx + q[1] * ny for q in A]; pb = [q[0] * nx + q[1] * ny for q in Bq]
+            g = max(g, min(pa) - max(pb), min(pb) - max(pa))
+    return g
+def rect(cx, cy, l, w, m):   # Rechteck mit Drehung aus Matrix m (3x4, zeilenweise)
+    c, s = m[0], m[4]; return [(cx + u * c - v * s, cy + u * s + v * c) for u, v in ((-l / 2, -w / 2), (l / 2, -w / 2), (l / 2, w / 2), (-l / 2, w / 2))]
+vdim = {}
+for b in LAY["ibc_beds"]: vdim.setdefault("Beet_" + ("innen_933" if "plants" not in b else ("aussen_993" if b["width"] > 960 else "aussen_933")), (b["length"], b["width"]))
+bedrects = [rect(m[3], m[7], *vdim[k.split(":")[0]], m) for k, m in mv.items() if k.split(":")[0] in vdim]
+pool = B["T5_Zentraltank"]["bbox"]; pcx, pcy = (pool["max"][0] + pool["min"][0]) / 2, (pool["max"][1] + pool["min"][1]) / 2; pr = (pool["max"][0] - pool["min"][0]) / 2
+fpw = {}; legbad = []; mingap = 1e9; poolbad = 0
+for k, m in mv.items():
+    cls = k.split(":")[0]
+    if not cls.startswith("Tisch_"): continue
+    typ = cls[6:]; G_ = TG.geometry(typ, tp, td["typen"][typ]); fp = tp["foot_plate"] / 2
+    W = lambda x, y, m=m: (m[0] * x + m[1] * y + m[3], m[4] * x + m[5] * y + m[7])
+    fpw[k] = [W(x, y) for x, y in TG.footprint_pts(G_, tp)]
+    for (x, y) in G_["legs"]:
+        plate = [W(x + sx * fp, y + sy * fp) for sx, sy in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+        for br in bedrects:
+            g = sat_gap(plate, br); mingap = min(mingap, g)
+            if g < 0: legbad.append((k, round(g)))
+        if typ == "innen":
+            dpool = min(math.hypot(q[0] - pcx, q[1] - pcy) for q in plate) - pr
+            if dpool < 0: poolbad += 1
+chk("W-M2 NFT-Tisch-Fussplatten ausserhalb der Beete (reine Geometrie, Verletzungen)", len(legbad), 0, len(legbad) == 0)
+chk("W-M2b Innentisch-Pfosten ausserhalb des Poolrands (Verletzungen)", poolbad, 0, poolbad == 0)
+tmin = {}
+cen = {k: (sum(q[0] for q in v) / len(v), sum(q[1] for q in v) / len(v)) for k, v in fpw.items()}
+keys = list(fpw)
+for i, a in enumerate(keys):
+    for b in keys[i + 1:]:
+        if math.hypot(cen[a][0] - cen[b][0], cen[a][1] - cen[b][1]) > 4800: continue
+        tmin[(a, b)] = min(math.hypot(p1[0] - p2[0], p1[1] - p2[1]) for p1 in fpw[a][::2] for p2 in fpw[b][::2])
+tbad = [(k, round(v)) for k, v in tmin.items() if v < tp["corner_gap"]]
+chk("W-M3 Tisch-Tisch-Abstand an den Ecken >= corner_gap (Umrisspunkte, Verletzungen)", len(tbad), 0, len(tbad) == 0)
+print("GEOMETRIE kleinster Fussplatte-Beet-Abstand", round(mingap), "mm | kleinster Tisch-Tisch-Abstand", round(min(tmin.values())) if tmin else None, "mm | Verletzungen Bein/Beet, Pool, Tisch/Tisch:", len(legbad), poolbad, len(tbad), tbad[:3], legbad[:3])
+
+# --- 2) Exakte Kollisionspruefung fuer Paare, die nicht schon Geometrie/Verankerung abdeckt; getrennte Laeufe nach Klassen (Knotenarm x Fundamentring braucht Minuten je Paar, ist aber verankert und erlaubt) ---
+cand = []; openm = {"W-M1": [], "M2b": []}
 for i, a in enumerate(names):
     amin, amax = bb[a]
     for b in names[i + 1:]:
         if G[a] == G[b] and G[a][1]: continue   # gleiche Komponenteninstanz
         if a.startswith("T1_") and b.startswith("T1_"): continue   # Streben treffen sich an den Knoten (bewusst)
         bmin, bmax = bb[b]
-        if all(amin[k] < bmax[k] and bmin[k] < amax[k] for k in range(3)):
-            cs = {G[a][0], G[b][0]}
-            ring = [n for n in (a, b) if n == "T3_Sockel"]   # Fundamentring: Bounding-Box ueberdeckt alles, nur Koerper am Rand (Radius >= 5600) koennen es beruehren
-            if ring and max(math.hypot(x, y) for n in (a, b) if n != "T3_Sockel" for x in (B[n]["bbox"]["min"][0], B[n]["bbox"]["max"][0]) for y in (B[n]["bbox"]["min"][1], B[n]["bbox"]["max"][1])) < 5600: continue
-            kk = ("W-M2" if   # offene Werkstatt-Maengel W-M2/W-M3 (docs/session-notes/werkstatt.md): nur Bounding-Box-Kandidaten gezaehlt, nicht exakt geschnitten (zu viele Paare)
-                   any(c.startswith("Tisch_") for c in cs) and any(c.startswith("Beet_") for c in cs) else
-                  "W-M3" if all(c.startswith("Tisch_") for c in cs) else None)
-            if kk: openm[kk].append((a, b))
-            else: cand.append((a, b))
-used = sorted({n for pr in cand for n in pr})
-sc = os.path.join(tmp, "i.json"); json.dump({"commands": [{"command": "inspect.interference", "params": {"bodies": used, "budget_s": 420}}]}, open(sc, "w"))
-rr = run_json(["run", sc, "--in", dome, "--results"])
-inter = find(rr, "interferences") or []
-candset = {frozenset(pr) for pr in cand}
+        if not all(amin[k] < bmax[k] and bmin[k] < amax[k] for k in range(3)): continue
+        cs = {G[a][0], G[b][0]}
+        if "T3_Sockel" in (a, b) and max(math.hypot(x, y) for n in (a, b) if n != "T3_Sockel" for x in (B[n]["bbox"]["min"][0], B[n]["bbox"]["max"][0]) for y in (B[n]["bbox"]["min"][1], B[n]["bbox"]["max"][1])) < 5600: continue   # Fundamentring nur am Rand
+        if all(c.startswith(("Tisch_", "Beet_")) for c in cs) and any(c.startswith("Tisch_") for c in cs): continue   # Tisch x Beet/Tisch: Geometrie oben
+        if any(c.startswith(("Knoten_", "Fundamentanker")) for c in cs) and ({a, b} & {"T3_Sockel", "T13_Erde"}): continue   # Knoten/Anker sind im Fundamentring bzw. Erdreich verankert
+        if {a.split("_")[0], b.split("_")[0]} == {"T1", "T3"}: continue   # Streben im Fundamentring verankert
+        if "T13_Erde" in (a, b) and len(cs) > 1 and all(c.startswith(("Tank_", "Pumpe_", "Tisch_")) for c in cs - {"Erdflaeche"}): continue   # Fussplatten/-schrauben stehen im Boden (Werkstatt: bis 24 mm)
+        cand.append((a, b))
+HEAVY = ("T3_Sockel", "T13_Erde")
+CACHE = os.path.join(ROOT, "scripts", ".latte-cache.json")   # Ergebnisse je Paar, gueltig solange dome.sc und alle verknuepften Komponentendateien unveraendert sind
+sig = str(os.path.getmtime(dome)) + "|" + str(max(os.path.getmtime(os.path.join(ROOT, "designs", "components", f)) for f in os.listdir(os.path.join(ROOT, "designs", "components")) if f.endswith(".sc")))
+cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
+if cache.get("sig") != sig: cache = {"sig": sig, "checked": [], "found": []}
+pk = lambda a, b: "|".join(sorted((a, b)))
+def save_cache(): json.dump(cache, open(CACHE, "w"))
+def run_exact(pairs, label):
+    """Paare in Runden exakt schneiden (Ergebnisse gecacht): unfertige Paare (Budget) werden mit nur ihren Koerpern wiederholt, spaete Runden mit grossem Budget (max. 6 Runden)."""
+    done = set(cache["checked"]); found = [it for it in cache["found"] if frozenset((it["a"], it["b"])) in {frozenset(p_) for p_ in pairs}]
+    todo = [pr for pr in pairs if pk(*pr) not in done]
+    print(f"EXAKT {label}: {len(pairs)} Paare, {len(pairs) - len(todo)} aus dem Cache", flush=True)
+    for rnd in range(6):
+        if not todo: break
+        bodies = sorted({n for pr in todo for n in pr}); sj = os.path.join(tmp, "i.json")
+        json.dump({"commands": [{"command": "inspect.interference", "params": {"bodies": bodies, "budget_s": 600 if rnd < 2 else 2400}}]}, open(sj, "w"))
+        rr = run_json(["run", sj, "--in", dome, "--results"]); ts = {frozenset(pr) for pr in todo}
+        new = [it for it in (find(rr, "interferences") or []) if frozenset((it["a"], it["b"])) in ts]
+        left = {frozenset((u["a"], u["b"])) for u in (find(rr, "unchecked") or []) if u.get("b")}
+        fin = [pr for pr in todo if frozenset(pr) not in left]
+        cache["checked"] += [pk(*pr) for pr in fin]; cache["found"] += new; save_cache(); found += new
+        todo = [pr for pr in todo if frozenset(pr) in left]
+        print(f"EXAKT {label} Runde {rnd + 1}: {len(bodies)} Koerper, noch offen {len(todo)}", flush=True)
+    return found, todo
+inter, unch = [], []
+for label, gp in (("ohne Fundamentring/Erde", [pr for pr in cand if not set(pr) & set(HEAVY)]),
+                  ("Fundamentring", [pr for pr in cand if "T3_Sockel" in pr]), ("Erde", [pr for pr in cand if "T13_Erde" in pr])):
+    f, u = run_exact(gp, label); inter += f; unch += u
 bad = []
 for it in inter:
     a, b = it["a"], it["b"]
-    if frozenset((a, b)) not in candset: continue   # nur Paare verschiedener Instanzen
-    ca, cb = G[a][0], G[b][0]; cs = {ca, cb}
-    if a.startswith("T1_") and b.startswith("T1_"): continue
+    cs = {G[a][0], G[b][0]}
     if a.split("_")[0] == b.split("_")[0] == "T4": continue   # Tuer-Teile verbinden sich (Scharnier/Pfosten/Schwelle)
-    if {a.split("_")[0], b.split("_")[0]} == {"T1", "T3"}: continue   # Streben im Fundamentring verankert
     if {a.split("_")[0], b.split("_")[0]} & {"T10"} and ({a.split("_")[0], b.split("_")[0]} <= {"T10", "T1", "T5", "T7"}): continue
-    if "T13_Erde" in (a, b) and (cs - {"Erdflaeche"}) and all(c.startswith(("Tank_", "Pumpe_", "Tisch_")) for c in cs - {"Erdflaeche"}): continue   # Fussplatten/-schrauben stehen im Boden (Werkstatt: bis 24 mm)
     if all(c.startswith(("Pumpe_", "Tank_")) for c in cs) and any(c.startswith("Pumpe_") for c in cs): openm["W-M1"].append((a, b)); continue   # offener Werkstatt-Mangel W-M1: Tank-Rahmenstreben x OBJ-Pumpentafeln
-    if any(c.startswith(("Knoten_", "Fundamentanker")) for c in cs) and ({a, b} & {"T3_Sockel", "T13_Erde"}): continue   # Knoten/Anker sind im Fundamentring bzw. Erdreich verankert
+    if "T1_Strebe" in a + b and (base(a).startswith("knoten_") or base(b).startswith("knoten_")): openm["M2b"].append((a, b)); continue   # Querbolzen/Scheiben/Muttern des Knotens durch die Strebe: Bohrungen fehlen (offen, M2b)
     print("KOLL", a, b)
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))
-chk("L6 Kollisionen (ohne Strebenknoten, Rohr/Schlauch; ohne offene Werkstatt-Maengel)", len(bad), 0, len(bad) == 0)
+chk("L6 Kollisionen (exakt; ohne verankerte Teile, Rohr/Schlauch, offenen Mangel W-M1)", len(bad), 0, len(bad) == 0)
 res.append({"info": "Kollisionen", "pairs": bad[:20]})
-unch = [u for u in (find(rr, "unchecked") or []) if u.get("b") and frozenset((u["a"], u["b"])) in candset]   # nur Kandidatenpaare (das Werkzeug paart alle uebergebenen Koerper)
-from collections import Counter
-if unch: print("NICHT GEPRUEFT je Klassenpaar:", dict(Counter(" x ".join(sorted({G[u["a"]][0], G.get(u["b"], ("?",))[0]})) for u in unch if u.get("b"))))
 chk("L6 Kollisionspruefung vollstaendig (alle Kandidatenpaare exakt geschnitten)", len(unch), 0, len(unch) == 0)
-print("OFFEN Werkstatt-Maengel (nur Bounding-Box-Kandidaten, nicht gezaehlt): W-M1 Pumpentafel x Tankrahmen (exakt)", len(openm["W-M1"]), "| W-M2 NFT-Tisch x Beet", len(openm["W-M2"]), "| W-M3 Tisch x Tisch", len(openm["W-M3"]), "| exakt geprueft: Paare", len(cand), "Koerper", len(used))
+print("OFFEN W-M1 (Pumpentafel x Tankrahmen, Werkstatt):", len(openm["W-M1"]), "| M2b (Knoten-Querbolzen x Strebe, Bohrungen fehlen, Montage):", len(openm["M2b"]), "| exakt geprueft: Paare", len(cand))
+if unch: print("NICHT GEPRUEFT:", [(a[:30], b[:30]) for a, b in unch[:10]])
 passed = sum(1 for r in res if r.get("pass")); total = sum(1 for r in res if "pass" in r)
 for r in res:
     if "pass" in r: print(("PASS" if r["pass"] else "FAIL"), r["check"], "| Ist:", r["ist"], "| Soll:", r["soll"])

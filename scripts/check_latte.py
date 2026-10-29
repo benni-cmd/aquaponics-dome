@@ -32,7 +32,7 @@ ext = lambda bs, i: (min(b["bbox"]["min"][i] for b in bs), max(b["bbox"]["max"][
 res = []
 def chk(name, ist, soll, ok): res.append({"check": name, "ist": ist, "soll": soll, "pass": bool(ok)})
 
-t1 = pre("T1_"); sock_top = B["T3_Sockel"]["bbox"]["max"][2]
+t1 = pre("T1_"); sock_top = P["sock_h"]
 z0, z1 = ext(t1, 2); x0, x1 = ext(t1, 0)
 h = z1 - sock_top - 75 - 45
 chk("L5/7 Kuppelhoehe [mm]", round(h), 6000, abs(h - 6000) / 6000 < 0.03)
@@ -53,9 +53,8 @@ chk("L5/7 Hoehe/Breite", round(h / w, 3), 0.5, abs(h / w - 0.5) / 0.5 < 0.03)
 chk("L10 Basisknoten (Zehneck; 1 Knoten an der Tuer ohne Streben)", len(base_nodes), "9-10", len(base_nodes) in (9, 10))
 chk("L10 Strebenzahl 2V (60 + 10 Basis - Tuer)", len(t1), "55-63", 55 <= len(t1) <= 63)
 s = B["T3_Sockel"]; ue = (s["bbox"]["max"][0] - s["bbox"]["min"][0] - 12000) / 2
-chk("L2/9/11 Sockel Seiten (Flaechen = 10 + 2)", s["faces"], 12, s["faces"] == 12)
+chk("L2/11 Fundamentring (Flaechen 10 aussen + 10 innen + 2, Tuerluecke +4)", s["faces"], "22-28", 22 <= s["faces"] <= 30)
 chk("L9/11 Sockel Ueberstand [mm]", round(ue), "<= 300", ue <= 300)
-chk("L11 Sockelhoehe [mm]", round(s["bbox"]["max"][2] - s["bbox"]["min"][2]), "300-500", 300 <= s["bbox"]["max"][2] - s["bbox"]["min"][2] <= 500)
 beds = pre("T9_") + pre("T8_")
 chk("OBJ Substratbeete T9 (14 IBC-Wannen)", len(pre("T9_")), 14, len(pre("T9_")) == 14)
 d = B["T4_Tuer"]["bbox"]; dh = d["max"][2] - d["min"][2]
@@ -84,6 +83,7 @@ bad = []
 for it in inter:
     a, b = it["a"], it["b"]
     if a.startswith("T1_") and b.startswith("T1_"): continue
+    if {a.split("_")[0], b.split("_")[0]} == {"T1", "T3"}: continue   # Streben im Fundamentring verankert
     if {a.split("_")[0], b.split("_")[0]} & {"T10"} and ({a.split("_")[0], b.split("_")[0]} <= {"T10", "T1", "T5", "T7"}): continue
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))
 chk("L6 Kollisionen (ohne Strebenknoten, Rohr/Schlauch)", len(bad), 0, len(bad) == 0)

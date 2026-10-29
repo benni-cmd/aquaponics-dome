@@ -30,7 +30,7 @@
   "value": 400,
   "unit": "mm",
   "origin": "A",
-  "source": "Platzhalter, OBJ-Boden unklar",
+  "source": "Bodenniveau (Z=400 absolut); Erdebene, kein fester Boden (D13)",
   "r_id": "R12",
   "maturity": 0,
   "used_by": "gen_dome.py"
@@ -90,10 +90,10 @@
   "used_by": "gen_dome.py"
  },
  "wall": {
-  "value": 160,
+  "value": 150,
   "unit": "mm",
   "origin": "A",
-  "source": "Beckenwand, Platzhalter",
+  "source": "Ben 29.10.2026 (ca. 150), Platzhalter",
   "r_id": "R05",
   "maturity": 0,
   "used_by": "gen_dome.py"
@@ -134,13 +134,40 @@
   "maturity": 0,
   "used_by": "gen_dome.py"
  },
- "t5_d": {
-  "value": 4210,
+ "pool_depth": {
+  "value": 2340,
   "unit": "mm",
-  "origin": "E",
-  "source": "Wasser 3890 (OBJ) + 2*160 Wand",
+  "origin": "A",
+  "source": "Ben/Simulator 27,8 m3 bei D 3,89 m (Kontext, unverifiziert); Beckenboden Z -1825",
   "r_id": "R05",
-  "maturity": 1,
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_rim": {
+  "value": 650,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Ben: Rand ca. Z 650, am Bild ref-4 pruefen",
+  "r_id": "R05",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool2_depth": {
+  "value": 1000,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Annahme: eingelassen wie Pool",
+  "r_id": "R05",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ring_h": {
+  "value": 250,
+  "unit": "mm",
+  "origin": "A",
+  "source": "ref-5: Fundamentring ragt ca. 0,25 m ueber Erde, Platzhalter",
+  "r_id": "R02",
+  "maturity": 0,
   "used_by": "gen_dome.py"
  }
 }

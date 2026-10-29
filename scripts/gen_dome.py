@@ -12,7 +12,7 @@ def add(c, **p):
     if p.get("body_name"): names.append(p["body_name"])
 
 COLORS = [  # (Namenspraefix, Farbe, Deckkraft) - Schicht 1
-    ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85), ("T6_Wasser", "#3c8ed0", 0.85),
+    ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T13_", "#7a5c3a", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85), ("T6_Wasser", "#3c8ed0", 0.85),
     ("T7_Plattform", "#9a9a96", 1), ("T7_Pumpe", "#555a60", 1), ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
     ("T10_Zulaufrohr", "#5fa8e0", 1), ("T10_Schlauch", "#8cc8f0", 1), ("T11_", "#8b9096", 1), ("T12_", "#4c9a3c", 1)]
 
@@ -29,7 +29,7 @@ def params():
     for k, v in P.items():
         add("parameters.add", name=k, expression=str(v), comment="dome-build Parameter")
 
-def rect_body(name, cx, cy, z0, az_deg, along, across, h):
+def rect_body(name, cx, cy, z0, az_deg, along, across, h, op="new", targets=None):
     """Quader um (cx,cy), Laengsachse 'along' in Richtung az, ab Hoehe z0 (rotierte Skizzenebene)."""
     a = math.radians(az_deg)
     xd = [round(math.cos(a), 6), round(math.sin(a), 6), 0]
@@ -37,7 +37,8 @@ def rect_body(name, cx, cy, z0, az_deg, along, across, h):
     add("sketch.create", plane={"origin": [cx, cy, z0], "x_dir": xd, "y_dir": yd}, name=name+"_sk")
     add("sketch.rectangle.center", center=[0, 0], corner=[along/2, across/2])
     add("sketch.finish")
-    add("solid.extrude", distance=h, operation="new", name=name, body_name=name)
+    if op == "new": add("solid.extrude", distance=h, operation="new", name=name, body_name=name)
+    else: add("solid.extrude", distance=h, operation=op, targets=targets, name=name)
 
 def t1_t3_t4(sock_z):
     pts, edges = build(P["freq"])
@@ -76,13 +77,18 @@ def t1_t3_t4(sock_z):
         n += 1
         add("solid.cylinder", radius="strut_r", height=L+2*ext, base=[round(x, 2) for x in s],
             axis=[round(x, 6) for x in u], operation="new", name=f"T1_Strebe_{n:03d}", body_name=f"T1_Strebe_{n:03d}")
-    # T3 Sockel: Zehneck-Prisma
-    rs = P["dome_base_d"]/2 + P["sock_w"]
-    pts10 = [[round(rs*math.cos(math.radians(36*i + 18)), 2), round(rs*math.sin(math.radians(36*i + 18)), 2)] for i in range(10)]
-    add("sketch.create", plane="XY", name="T3_Sockel_sk")
-    add("sketch.line", points=pts10, closed=True)
+    # T13 Erde (kein fester Boden, D13): grosse Erdebene, Oberkante = Bodenniveau sock_h; Becken/Beete schneiden Aussparungen ein
+    add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
+    # T3 Fundamentring (Zehneck, flach, ragt ueber die Erde): Streben sind hier verankert, kein Boden
+    rs = P["dome_base_d"]/2 + P["sock_w"]; ri = P["dome_base_d"]/2
+    ring = lambda r: [[round(r*math.cos(math.radians(36*i + 18)), 2), round(r*math.sin(math.radians(36*i + 18)), 2)] for i in range(10)]
+    add("sketch.create", plane={"origin": [0, 0, sock_z], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="T3_Sockel_sk")
+    add("sketch.line", points=ring(rs), closed=True)
+    add("sketch.line", points=ring(ri), closed=True)
     add("sketch.finish")
-    add("solid.extrude", distance="sock_h", operation="new", name="T3_Sockel", body_name="T3_Sockel")
+    add("solid.extrude", distance=P["ring_h"], operation="new", name="T3_Sockel", body_name="T3_Sockel")
+    gx, gy = pol(P["dome_base_d"]/2 + 75, P["door_az"])
+    rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
     # T4 Tuer: Rahmen (aussen/innen), Ebene radial zur Tuerflaeche
     ca, sa = math.cos(da), math.sin(da)
     ox, oy = rd*ca - P['door_off']*sa, rd*sa + P['door_off']*ca
@@ -101,17 +107,17 @@ def LXY(cx, cy):
     """Layout-Koordinate (OBJ-Azimut) -> Modell-Koordinate (um ROT gedreht)."""
     x, y = rot(cx, cy, math.radians(ROT)); return round(x, 1), round(y, 1)
 
-def vessel(name, cx, cy, fz, d_out, h, wall, water_z):
-    add("solid.cylinder", diameter=d_out, height=h, base=[cx, cy, fz], operation="new", name=name, body_name=name)
-    add("solid.cylinder", diameter=d_out - 2*wall, height=h, base=[cx, cy, fz + 80], operation="cut", targets=[name], name=name + "_Hohlraum")
-    return fz + water_z
-
 def pools(fz):
-    """T5 Zentralpool (Wasser D 3,89 m), T6 zweites Becken vor der Tuer (D 1,75 m), Wasserspiegel Z 515 (layout.json)."""
-    for nm, src, wall in (("T5_Zentraltank", LAYOUT["pool"], P["wall"]), ("T6_Zweitbecken", LAYOUT["pool2"], 100)):
-        x, y = LXY(src["cx"], src["cy"]); wz = vessel(nm, x, y, fz, src["d"] + 2*wall, src["water_z"] + 90, wall, src["water_z"])
+    """T5 Zentralpool (Wasser D 3,89 m, Tiefe pool_depth, eingelassen) und T6 zweites Becken (D 1,75 m) vor der Tuer; Rand ueber dem Boden, Wasserspiegel Z 515.
+    Der Sockel bekommt kreisrunde Aussparungen, nichts schwebt."""
+    for nm, src, wall, depth, rim in (("T5_Zentraltank", LAYOUT["pool"], P["wall"], P["pool_depth"], P["pool_rim"]),
+                                       ("T6_Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], P["pool_rim"])):
+        x, y = LXY(src["cx"], src["cy"]); (x, y) = (round(x*1.02, 1), round(y*1.02, 1)) if nm.startswith("T6") else (x, y); d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth; total = fz + rim - z_bot
+        add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
+        add("solid.cylinder", diameter=d_out, height=total, base=[x, y, z_bot], operation="new", name=nm, body_name=nm)
+        add("solid.cylinder", diameter=d_out - 2*wall, height=total, base=[x, y, z_bot + 120], operation="cut", targets=[nm], name=nm + "_Hohlraum")
         wn = "T5_Wasser" if nm.startswith("T5") else "T6_Wasser"
-        add("solid.cylinder", diameter=src["d"] - (20 if nm.startswith("T6") else 0), height=20, base=[x, y, wz - 20], operation="new", name=wn, body_name=wn)
+        add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + 120), base=[x, y, z_bot + 120], operation="new", name=wn, body_name=wn)
 
 def tanks(fz):
     """T7: 4 Tanks (Kegelboden, Zylinder, Plattformring auf 4 Beinen) + Pump-/Filtermodule, Positionen aus layout.json."""
@@ -139,7 +145,9 @@ def tanks(fz):
 def t9(fz):
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = LXY(b["cx"], b["cy"]); yaw = b["yaw"] + ROT; top = b["z1"]
-        rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz, yaw, b["length"] - (120 if "plants" in b else 300), b["width"] - (100 if "plants" in b else 0), top)   # Unterkante im OBJ unter dem Boden: auf Boden gekappt
+        ln = b["length"] - (400 if "plants" in b else 300) - (500 if k == 4 else 0); wd = b["width"] - (100 if "plants" in b else 0)
+        rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz + b["z0"] + 5, yaw, ln, wd, top - b["z0"] - 5)   # eingelassen wie im OBJ
+        rect_body(f"T9_Tasche_{k:02d}", x, y, fz + b["z0"], yaw, ln + 20, wd + 20, -b["z0"] + 1, op="cut", targets=["T13_Erde"])
         if "plants" in b:   # Aussenbeete: 3 Reihen x 10 Pflanzen (OBJ: 288 Toepfe, hier reduziert)
             ta = math.radians(yaw)
             for r_ in range(3):
@@ -154,7 +162,7 @@ def plant(x, y, z, r=90):
 
 def t10_t11(fz):
     # Zulaufrohr (Frischwasser) nur AUSSEN: flach auf dem Boden, Bogen zur Sockelwand nahe dem Zweitbecken (OBJ-Azimut 166 -> Modell -55)
-    pr = P["pipe_d"]/2; z = pr
+    pr = P["pipe_d"]/2; z = P["sock_h"] + pr
     P0 = pol(9500, -90); P1 = pol(7600, -66); P2 = pol(6030, -66)
     def seg(A, B, nm, op, **kw):
         d = [B[0]-A[0], B[1]-A[1]]; L = math.hypot(*d)
@@ -164,7 +172,7 @@ def t10_t11(fz):
     seg(P1, P2, "T10_Zulaufrohr_2", "join", targets=["T10_Zulaufrohr"])
     az = -36; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
-    rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), 0, az+90, P["cab_x"], P["cab_y"], P["cab_z"])
+    rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), P["sock_h"], az+90, P["cab_x"], P["cab_y"], P["cab_z"])
 
 if __name__ == "__main__":
     stage = int(sys.argv[1]); out = sys.argv[2]

@@ -1,5 +1,7 @@
 # Wasserkreislauf, Filter und Bauplan (Konzept, recherchiert 29.10.2026)
 
+> **Stand 30.10.:** Pool-Tiefe ist 2,2 m (D26), nicht 0,5 m: die Pool-Zahlen in 2.4 sind veraltet. Aktuelle Rechnung und offene Punkte: `docs/system-concept.md`.
+
 Zweck: Grundlage fuer `data/system.json` (Graph), `scripts/check_hydraulics.py` und die 3D-Rohre. Jede Zahl traegt eine Herkunft:
 **[Q]** = durch Quelle belegt (Link unten), **[E]** = eigene Rechnung aus Quellwerten, **[A]** = Annahme, von Ben nicht bestaetigt. Nichts hier ist eine statische oder fachliche Freigabe.
 

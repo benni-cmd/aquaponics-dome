@@ -68,6 +68,8 @@ class H(http.server.SimpleHTTPRequestHandler):
         p = path.split('?', 1)[0]
         if p == '/descriptions.json':
             return os.path.join(ROOT, 'data', 'descriptions.json')
+        if p == '/system-specs.json':
+            return os.path.join(ROOT, 'data', 'system-specs.json')
         if p == '/history' or p.startswith('/history/'):
             rel = p[len('/history'):].lstrip('/') or 'index.html'
             full = os.path.abspath(os.path.join(ROOT, 'renders', 'history', rel))

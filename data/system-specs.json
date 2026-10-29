@@ -1,0 +1,115 @@
+{
+ "stand": "30.10.2026",
+ "hinweis": "Schätzung aus den Modellmaßen und Bens Tabelle; Annahmen (A) stehen im Text. Keine fachliche Freigabe.",
+ "wasser": {
+  "gesamt_m3": 34.1,
+  "teile": [
+   [
+    "Hauptbecken (Pool)",
+    26.15,
+    "77%"
+   ],
+   [
+    "Zweites Becken",
+    2.4,
+    "7%"
+   ],
+   [
+    "Tanks (2 Absetzer, 2 Biofilter)",
+    1.94,
+    "6%"
+   ],
+   [
+    "Beete (Porenwasser bei Flutung)",
+    3.28,
+    "10%"
+   ],
+   [
+    "NFT-Rinnen (Wasserfilm)",
+    0.13,
+    "0%"
+   ],
+   [
+    "Rohre und Schläuche",
+    0.23,
+    "1%"
+   ]
+  ],
+  "in_tanks_m3": 1.94,
+  "tabelle_systemwasser_m3": 25
+ },
+ "pflanzen": {
+  "beete": 2160,
+  "nft": 586,
+  "gesamt": 2746,
+  "tabelle": 609,
+  "rinnen": 68,
+  "rinnenlaenge_m": 127.9,
+  "substrat_m3": 8.2
+ },
+ "fische": {
+  "anzahl": 1839,
+  "biomasse_kg": 1287,
+  "futter_kg_tag": 10.7,
+  "dichte_kg_m3": 45,
+  "tan_g_tag": 345
+ },
+ "fluesse": {
+  "nft_l_min": 34,
+  "beete_l_min": 109,
+  "kreislauf_l_min": 143,
+  "kreislauf_m3_h": 8.6,
+  "je_linie_l_min": 72,
+  "umwaelzzeit_h": 4.0,
+  "pumpe_hoehe_m": 2.0
+ },
+ "leistung": {
+  "pumpe_hydraulisch_w": 23,
+  "pumpe_elektrisch_w": 67,
+  "belueftung_w": 177,
+  "steuerung_w": 40,
+  "gesamt_w": 351,
+  "kwh_tag": 8.4,
+  "kwh_monat": 253
+ },
+ "filter": {
+  "absetzer_klein_l": 267,
+  "biofilter_gross_l": 702,
+  "medium_biofilter_m3": 0.52,
+  "kapazitaet_biofilter_kg_futter": 1.0,
+  "kapazitaet_substrat_kg_futter": 8.2,
+  "verweilzeit_absetzer_min": 22.3
+ },
+ "kapazitaet": {
+  "medien_kg_futter_tag": 9.2,
+  "pflanzen_kg_futter_tag": 4.0,
+  "passender_fischanteil": 0.38
+ },
+ "konsistenz": [
+  {
+   "pruefung": "Pflanzenzahl gegen Ben-Tabelle",
+   "ok": true,
+   "detail": "2746 im Modell gegen mindestens 609"
+  },
+  {
+   "pruefung": "Besatzdichte höchstens 150 kg/m³ (Tabellenobergrenze)",
+   "ok": true,
+   "detail": "45 kg/m³ im Beckenwasser 28.5 m³ (Tabellenbereich 60–150, also eher locker besetzt)"
+  },
+  {
+   "pruefung": "Biofilter-/Substratvolumen deckt das Futter",
+   "ok": false,
+   "detail": "deckt 9.2 von 10.7 kg Futter/Tag (86%)"
+  },
+  {
+   "pruefung": "Pflanzfläche deckt das Futter (50 g/m²/Tag)",
+   "ok": false,
+   "detail": "deckt 4.0 von 10.7 kg Futter/Tag (38%)"
+  },
+  {
+   "pruefung": "Pumpen im Modell reichen für den Hauptkreislauf",
+   "ok": false,
+   "detail": "Modell-Pumpen klein 2 × 12 l/min = 24 gegen Bedarf 143 l/min"
+  }
+ ]
+}

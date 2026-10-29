@@ -58,7 +58,7 @@
 </head>
 <body>
 <div id="view"></div>
-<div id="infopanel"><div id="info"><span class="ph">Zeige in der Liste auf ein Bauteil oder klicke es im Modell an. Ein Klick auf eine Zeile haelt die Beschreibung fest.</span></div></div>
+<div id="infopanel"><div id="info"></div></div>
 <div id="panel">
   <h1>Kuppel Live-Viewer</h1>
   <div id="status">verbinde ...</div>
@@ -219,9 +219,27 @@ const steps = a => `<ol>${a.map(x => `<li>${esc(x)}</li>`).join('')}</ol>`;
 const bullets = a => `<ul>${a.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
 const grouped = a => a.map(g => typeof g === 'string' ? bullets([g]) : `<div class="g">${esc(g.t)}</div>${bullets(g.p)}`).join('');
 const kv = o => `<table class="kv">${Object.entries(o).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</table>`;
+let SPEC = null;
+fetch('/system-specs.json?v=' + Date.now()).then(r => r.json()).then(d => { SPEC = d; if (!pinned && !selected) showInfo(null); }).catch(() => {});
+const fm = (x, n = 1) => Number(x).toLocaleString('de-DE', { maximumFractionDigits: n });
+function overview() {
+  if (!SPEC) return '<span class="ph">Kuppel-Kennzahlen werden geladen ...</span>';
+  const w = SPEC.wasser, pf = SPEC.pflanzen, f = SPEC.fische, fl = SPEC.fluesse, l = SPEC.leistung, fi = SPEC.filter, k = SPEC.kapazitaet;
+  const wt = {}; w.teile.forEach(t => { wt[t[0]] = fm(t[1]) + ' m³ (' + t[2] + ')'; });
+  const chk = SPEC.konsistenz.map(c => `<li>${c.ok ? '✔' : '⚠'} ${esc(c.pruefung)}: ${esc(c.detail)}</li>`).join('');
+  return `<h3>Kuppel auf einen Blick</h3><div class="sub">12 m Durchmesser, 2V-Halbkugel, 6 m hoch. Schätzung aus den Modellmaßen und Bens Tabelle.</div>
+  <div class="k">Wasser im System</div>${kv({ 'Gesamt (Schätzung)': fm(w.gesamt_m3) + ' m³ (Tabelle: ' + w.tabelle_systemwasser_m3 + ' m³)', ...wt, 'davon in den Tanks': fm(w.in_tanks_m3) + ' m³' })}
+  <div class="k">Pflanzen</div>${kv({ 'Töpfe gesamt': fm(pf.gesamt, 0) + ' (Tabelle mindestens ' + pf.tabelle + ')', 'in den Beeten': fm(pf.beete, 0), 'in den NFT-Rinnen': fm(pf.nft, 0) + ' (' + pf.rinnen + ' Rinnen, ' + fm(pf.rinnenlaenge_m, 0) + ' m)', 'Substrat': fm(pf.substrat_m3) + ' m³' })}
+  <div class="k">Fische und Futter (Bens Tabelle)</div>${kv({ 'Tilapia': fm(f.anzahl, 0) + ' Fische, ' + fm(f.biomasse_kg, 0) + ' kg', 'Futter': fm(f.futter_kg_tag) + ' kg pro Tag', 'Besatzdichte': f.dichte_kg_m3 + ' kg/m³ Beckenwasser', 'Ammonium-Anfall (TAN)': '≈ ' + f.tan_g_tag + ' g pro Tag' })}
+  <div class="k">Kreislauf und Pumpen</div>${kv({ 'Bedarf Pflanzen': fl.kreislauf_l_min + ' l/min = ' + fm(fl.kreislauf_m3_h) + ' m³/h (NFT ' + fl.nft_l_min + ' + Beete ' + fl.beete_l_min + ')', 'je Linie (2 Linien)': fl.je_linie_l_min + ' l/min bei ' + fm(fl.pumpe_hoehe_m) + ' m Förderhöhe', 'Umwälzzeit gesamt': '≈ ' + fm(fl.umwaelzzeit_h) + ' h' })}
+  <div class="k">Strom (ohne Heizung)</div>${kv({ 'Pumpen': '2 × ' + l.pumpe_elektrisch_w + ' W (hydraulisch ' + l.pumpe_hydraulisch_w + ' W je Pumpe)', 'Belüftung': '≈ ' + l.belueftung_w + ' W', 'Steuerung': l.steuerung_w + ' W', 'Summe': l.gesamt_w + ' W = ' + fm(l.kwh_tag) + ' kWh/Tag = ' + l.kwh_monat + ' kWh/Monat' })}
+  <div class="k">Filter</div>${kv({ 'Absetzer klein': fi.absetzer_klein_l + ' l, Verweilzeit ' + fm(fi.verweilzeit_absetzer_min, 0) + ' min bei 12 l/min', 'Biofilter groß': fi.biofilter_gross_l + ' l, Medium ' + fi.medium_biofilter_m3 + ' m³ → ' + fi.kapazitaet_biofilter_kg_futter + ' kg Futter/Tag', 'Substratbeete': fi.kapazitaet_substrat_kg_futter + ' kg Futter/Tag (1 l Medium je g)', 'Pflanzfläche': k.pflanzen_kg_futter_tag + ' kg Futter/Tag (40–50 g/m²)' })}
+  <div class="k">Passt das zusammen?</div><ul>${chk}</ul>
+  <div class="note"><b>Hinweis:</b> ${esc(SPEC.hinweis)} Rechnung: scripts/system_specs.py, Konzept: docs/system-concept.md.</div>`;
+}
 function showInfo(o) {
   const box = document.getElementById('info');
-  if (!o) { box.innerHTML = '<span class="ph">Zeige in der Liste auf ein Bauteil oder klicke es im Modell an. Ein Klick auf eine Zeile haelt die Beschreibung fest.</span>'; return; }
+  if (!o) { box.innerHTML = overview() + '<div class="src">Zeige auf ein Bauteil in der Liste oder klicke es im Modell an: dann steht hier seine Beschreibung.</div>'; return; }
   if (o.kind === 'cat') { const C = cats.get(o.key); box.innerHTML = `<h3>${esc(o.key)}</h3><div class="badges"><span class="badge cnt">${C ? C.count : ''} Teile</span><span class="badge">${C ? C.leaves.length : ''} Gruppen</span></div><div>${esc(DESC.kategorien[o.key] || '')}</div>`; return; }
   const stem = o.kind === 'leaf' ? leaves.get(o.key).stems[0] : o.stem, d = descOf(stem);
   const cnt = o.kind === 'leaf' ? leaves.get(o.key).count + ' Stück' : (defList[o.stem] && o.idx !== undefined && defList[o.stem][o.idx] ? defList[o.stem][o.idx].n.replace(/_/g, ' ') : '');
@@ -361,7 +379,7 @@ async function load() {
   hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
   if (selected && !defList[selected.stem]) selected = null;
   document.getElementById('perf').textContent = `${inst.instances.length} Instanzen, ${Object.keys(inst.defs).length} Definitionen, ${(Object.values(inst.defs).reduce((s, d) => s + d.kb, 0) / 1024).toFixed(1)} MB, Aufbau ${((performance.now() - t0) / 1000).toFixed(1)} s, Kleinteile < ${inst.min_diag} mm ausgeblendet`;
-  buildTree(inst); applyWire(); rebuildHighlight();
+  buildTree(inst); applyWire(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
 }
 function applyWire() { const w = document.getElementById('wire').checked; mats.forEach(m => m.wireframe = w); }
 document.getElementById('wire').addEventListener('change', applyWire);

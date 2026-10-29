@@ -33,6 +33,9 @@ Du besitzt designs/components/, docs/parts/, renders/components/, data/component
 Baue die Klassen aus docs/integration-board.md isoliert bis L3/L4 mit Gauntlet-Kritiker (frischer Unter-Agent, einer zur Zeit);
 fasse designs/dome.sc und die Dateien des Integrators nie an. Checkpoint VOR, Commit mit Pfad und Push NACH jedem Schritt.
 Endlos bis "stopp"; dann docs/clean-stop.md Schritt 1.
+Kontext: eine Komponente = ein Kontext. Nach jeder Fertigmeldung Zustand in docs/workshop-state.md sichern, committen + pushen,
+dann clear_session self (docs/endless-mechanics.md, Abschnitt Kontext-Zuschnitt). Lies nur Zustandsdatei, Scope-Card der naechsten Klasse
+und die Standards; workshop-log.md nur die letzten 40 Zeilen. Der Orchestrator haelt den Ueberblick.
 ```
 
 ## Automatik wieder einschalten

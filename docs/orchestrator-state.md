@@ -75,3 +75,7 @@
 ## Stand 30.10. 01:00: Fachrecherche (Session local_ee5ee82d-6143-4f68-b26a-bedfc628839a) gestoppt bei Woche 99 %: R17 und R18 als Teilergebnis (d255d8a), offen R19-R22 und docs/research/aquaponik-empfehlung.md.
 - Zwischenbefund R17: Besatz 15-22 kg/m3 als Auslegung (FAO TP 589: bis 20, SRAC 454: UVI-Technik bis 60), Simulator 15; Bens Tabelle 45 kg/m3 (1287 kg) nur mit UVI-Technik erreichbar. Fuer ca. 28,5 m3 Beckenwasser: 430-630 kg = 500-900 Fische je 0,7 kg statt 1839.
 - NEUSTART nach Wochenreset 30.10. 03:00 Ortszeit (Freigabe Ben): Weck-Nachricht `WIEDERANLAUF aquaponics-dome:` an die Session-ID oben (Hook-Ausnahme), Auftrag: R19-R22 + Empfehlung, Simulator als Vergleichswert. Danach Orchestrator: scripts/system_specs.py auf Q-Werte, Viewer-Kennzahlen, Beschreibungen nachziehen. Parallel: Werkstatt (local_584eec27-...) und Montage (local_5d913ca0-...) nach M7-Plan.
+
+## Stand 30.10. 01:10: ALLE LOOPS AUS (Ben: "beende evtl. laufende Loops")
+- Orchestrator-Cron: keiner (geloescht 22:05). Geplante Aufgabe `dome-loop-hourly-fallback` (stuendlich) auf enabled=false gesetzt, `dome-loop-restart-0715` war schon aus. Alle Sitzungen idle (Werkstatt, Montage, Fachrecherche). Nur der Viewer-Server (Port 4410, Hintergrundprozess) laeuft.
+- Wieder einschalten nur auf Bens Wunsch: `docs/resume.md` (Automatik wieder einschalten) und `docs/orchestrator-nachtmodus-prompt.md`.

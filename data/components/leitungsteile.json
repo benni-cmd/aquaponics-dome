@@ -1,5 +1,21 @@
 {
+ "reduzierungen": [
+  "d110/d63",
+  "d63/d50",
+  "d50/d40",
+  "d50/d32",
+  "d40/d32",
+  "d32/d25",
+  "d25/d20"
+ ],
  "sizes": {
+  "20": {
+   "dn": "DN15",
+   "wand": 1.8,
+   "muffentiefe": 16,
+   "formstueck_aussen": 27.0,
+   "bogenradius": 27.0
+  },
   "25": {
    "dn": "DN20",
    "wand": 1.8,
@@ -45,14 +61,16 @@
  },
  "schlauch": {
   "16": {
-   "aussen": 23.0,
+   "aussen": 20.0,
+   "wand": 2.0,
    "farbe": "hellblau",
-   "biegeradius": 115.0
+   "biegeradius": 100.0
   },
   "25": {
-   "aussen": 32.0,
+   "aussen": 29.0,
+   "wand": 2.0,
    "farbe": "dunkelblau",
-   "biegeradius": 160.0
+   "biegeradius": 145.0
   }
  }
 }

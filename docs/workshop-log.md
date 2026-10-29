@@ -180,3 +180,24 @@ Herleitung der Rippenform: Bounding-Box 384 x 419 mit Steigung 419/384 = 47,5 Gr
 
 ### W10 Leitungsteile-Bibliothek 29.10. ~09:20
 49 Definitionen (Rohr, Kupplung, Bogen 90/45, T-Stueck, Kugelhahn, Klemme je d25/32/40/50/63/110; Schlauch ID16/25 gerade + Bogen 90 (R = 5 x AD); Verteiler d32 n2-4), check_leitungsteile.py 78/78 PASS (Volumen = Ringflaeche x Mittellinie nach Pappus), Sammelblatt docs/parts/leitungsteile.md. Befunde zu SolidCraft: Revolve-Cut an deckungsgleichen Stirnflaechen scheitert -> Bohrung als Werkzeugkoerper + `solid.combine` (cut); zweiter Bogenschenkel ueber `solid.extrude face=...` (Endflaeche verlaengern) statt Cylinder-Union an schraegen Flaechen (45 Grad scheitert).
+
+### leitungsteile (W10), Spec-Pruefer Runde 2 (FAIL knapp) 29.10. ~13:35
+Runde 1 (FAIL, 5 Befunde) wurde im Blatt behoben; Runde 2 rechnete 5+ Stichproben nach (Wasser l/m, Reduzierlaengen, Bogenradius, Port-Lagen, Dateizahl 63) ohne Abweichung.
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Wandabweichung "bis 0,6 mm" falsch beziffert (Leitrohr d110 Wand 3 gegen 5,2; Pumpe d40/d32; Tisch d25) | **gueltig (Doku)** | Abschnitt "Wandstaerken-Abweichung" im Blatt mit allen Klassen; Abgleich beim Orchestrator offen |
+| 2 | gross: Tisch-Verteiler (d25, Stutzen D16, Teilung 262-288) gleich Bibliotheks-Verteiler d32/Teilung 120? | **gueltig, andere Klasse** | Verbraucher-Tabelle korrigiert: Tisch-Verteiler gehoert der Tisch-Klasse, Bibliothek hat keinen d25 mit Abgang D16 (offene Frage) |
+| 3 | klein: "49 Dateien" in der Pruefung, Klemme fehlt in der Port-Ausnahme | **gueltig** | 63, Klemme als Ausnahme |
+| 4 | klein: Herkunft fehlt (Mittelsteg, T-Arm, Hahn-Gehaeuse, Verteiler-Abgang, d20 als PVC statt PE), Dichten "mittel" | **gueltig** | 6 Zeilen ergaenzt, Dichten niedrig; Spindel/Hebel-Kommentar "Schweissverbindung" meint 3 mm Einschub (Kommentar, kein Modellfehler) |
+| 5 | klein: Farbkonflikt selbst gemacht, SDR 21 = PN12,5 ohne Quelle | **gueltig** | als Annahme A (ID16 hellblau/ID25 dunkelblau) umformuliert, SDR 21 mit PN10/12,5 je Tabelle, Konfidenz niedrig |
+| H | Kupplung nicht per `parts.insert` (Scope-Card); Bibliothek d20 PVC statt PE; Rohrwand 3 mm in Tank/Pumpe/Tisch | **andere Klasse / unklar** | im Blatt als offene Fragen, Orchestrator entscheidet |
+
+### leitungsteile (W10), Spec-Pruefer Runde 3 (PASS knapp) 29.10. ~13:55
+Die 5 Punkte aus Runde 2 bestaetigt behoben; Nachrechnung (Wand, Port-Lagen, Wasser l/m, 63 Dateien, 231/231) ohne Abweichung.
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | klein: Leitrohr d110 in der Verbraucher-Tabelle beim Biofilter (gross) statt beim Absetzer (klein) | **gueltig** | `tank.md` 104/172: Leitrohr nur Absetzer; Tabelle korrigiert, Belueftung d16 als Nicht-Bibliotheksteil vermerkt |
+| 2 | klein: Wandabweichung nicht vollstaendig (Rinne d32 W2, Beet d20 W2, Pumpe gross d50 W3) | **gueltig** | drei Eintraege ergaenzt |
+| 3 | klein: Herkunftsmarken "R"/"Bild + hydraulics" statt Marke + Bezug; Zeilen fehlen (Schlauchbogen-Schenkel/-Wand, Standardlaenge 1000, DN-Zuordnung) | **gueltig** | Marken auf OBJ/Bild/A mit Bezug in der Bezugsspalte, 3 Zeilen ergaenzt |
+| 4 | klein: Pruefungsabschnitt nennt nur Runde 1 | **gueltig** | Runden 1-3 eingetragen |
+| H | tank.md 73 "DN30" fuer d40 (sonst DN32); `.bak`-Dateien in designs/components | **andere Klasse / Hinweis** | Tank-Blatt Hinweis an den Orchestrator; .bak sind gitignored |

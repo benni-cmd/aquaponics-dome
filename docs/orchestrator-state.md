@@ -61,3 +61,7 @@
   2. An die MONTAGE (Session local_5d913ca0-...): M7 fertigmachen (Laufweg B 476 -> mindestens 500, Ziel 600; check_latte 24/24), dann M3 Tuer, M4/M5 Rohre/Schlaeuche; Rinnen-Pflanzenzahl kommt nach W18 aus data/components/nft_tisch.json.
   Rueckfrage zur Formulierung "Rohrabstaende": gemeint ist der Lochabstand der NFT-Rohre (R16/D32); falls Ben Abstaende zwischen Rohrleitungen meint, Laufwege D29 + M5 pruefen.
 - Freigabe durch Ben abwarten. Limits: 5h-Fenster ab 22:10 neu, Woche Reset 30.10. 03:00 Ortszeit.
+
+## Stand 29.10. 22:45 (Orchestrator)
+- Werkstatt W18 fertig und gepusht (fab161d), Stop sauber; check_nft_fit 40/40 nachgemessen, 586 Rinnen-Toepfe (D33). Spec-Pruefer W17 und W18 fehlen (Limit). Montage idle, nicht angestossen (Ben: nur Werkstatt, Wochenlimit 94 %).
+- Als Naechstes (kleine Werkstatt-Schritte): Spec-Pruefer W17+W18 in einem Lauf, dann Haut-Paneel R11. Montage nach dem Reset (30.10. 03:00): M7, M3, M4/M5 (Rohrabstaende und Wege). Orchestrator-Cron bleibt geloescht.

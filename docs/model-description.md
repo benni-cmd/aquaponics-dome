@@ -40,7 +40,7 @@ Jede Zahl im Bauteilblatt traegt eine Herkunftsmarke: **Q** (Quelle), **E** (aus
 |---|---|---|---|
 | Netztopf, Salatkopf | Salatkopf Rev. B2 (96 Blaetter, ca. 8,8k Dreiecke statt 69k) | check_pflanze 18/18, Bild-Kritiker Runde 5 | 29.10. 21:30 |
 | NFT-Rinne (3 Laengen + Reihenvarianten) | abgenommen | Vorpruefung 93/93 | 29.10. |
-| NFT-Tisch innen/mitte/aussen | Rev. C (W17): Radialbudget, `corner_gap` 60 (Annahme der Werkstatt), 462 Rinnenpflanzen, Winkelhalter (W11) | check_nft_fit 40/40, check_nft_tisch 196/196; Spec-Pruefer fehlt wegen Limit | 29.10. 21:30 |
+| NFT-Tisch innen/mitte/aussen | Rev. C (W17): Radialbudget, `corner_gap` 60 (Annahme der Werkstatt), 586 Rinnenpflanzen bei Lochabstand 200 mm (D32/D33, W18), Winkelhalter (W11) | check_nft_fit 40/40 (selbst nachgemessen), check_nft_tisch 196/196; Spec-Pruefer W17/W18 fehlen wegen Limit | 29.10. 22:40 |
 | IBC-Beet aussen/innen | Aussenbeet 800 breit (D29, W17), Innenbeet 933 | Vorpruefung 66/66 (alt), neue Parameter in check_nft_fit | 29.10. 21:30 |
 | Tank klein (Vortex), gross (Biofilter) | abgenommen, 45-Grad-Kegel ab Plattform (R09) | check_tank 60/60 | 29.10. |
 | Pumpe (4 Tafeln) | abgenommen nach 4 Pruefrunden | check_pumpe 34/34 | 29.10. |
@@ -50,7 +50,7 @@ Jede Zahl im Bauteilblatt traegt eine Herkunftsmarke: **Q** (Quelle), **E** (aus
 | Tuer, Rohrnetz, Haut (Paneele) | offen | - | - |
 
 ## 6. Wie genau ist das Modell?
-- **Anzahlen** stimmen mit Bens OBJ und Tabelle ueberein: 14 Beete (8 x 2953, 6 x 1865), 4 Tanks, 24 NFT-Tische, 2160 Beetpflanzen (Tabelle verlangt mindestens 152) und 466 Rinnenpflanzen (Tabelle verlangt mindestens 459). Die NFT-Mindestzahl ist die bindende Grenze.
+- **Anzahlen** stimmen mit Bens OBJ und Tabelle ueberein: 14 Beete (8 x 2953, 6 x 1865), 4 Tanks, 24 NFT-Tische, 2160 Beetpflanzen (Tabelle verlangt mindestens 152) und 586 Rinnenpflanzen (Tabelle verlangt mindestens 459). Die NFT-Mindestzahl ist die bindende Grenze.
 - **Positionen** folgen dem OBJ; dessen Beetlage ist nur auf etwa 100 mm genau (D21), Tankplattformen ueberlappen dort teils (D22).
 - **Bauteile** sind nach Herkunftstabelle gebaut, Volumina per Pappus und Port-Stirnflaechen geprueft; jede Klasse lief durch einen Bild-Kritiker und einen Spec-Pruefer mit getrennten Rollen, nicht durch den Bauer selbst.
 - **Grenzen:** keine Statik, keine Hydraulik-Rechnung, keine Bewegungs-/Erreichbarkeitssimulation; Erreichbarkeit nur mit einfachen Regeln (D29). Annahmen (A) sind im Blatt gekennzeichnet.
@@ -69,6 +69,7 @@ Wiederkehrende Teile als Komponenten (D12) · Zickzack-Pflanzmuster (Phase A/B d
 Tuer komplett (M3) · Rohrnetz aus dem Wasserweg-Graphen (M4, M5) · Laufwege-Umbau (M7, W17) · Haut/Paneele (R11) · vollstaendige Kollisionspruefung · Pflanzenartmodelle (7 Arten laut Tabelle, bewusst hinten) · Fragen an Ben: Innenring 6 oder 10 Tische, Zuchtbecken gleich zweites Becken, 2 oder 4 Pumpen, 2 oder 3 Rinnen je Aussentisch.
 
 ## 10. Verlauf (neueste zuerst)
+- 29.10. 22:40 Werkstatt W18: Lochabstand der NFT-Rinnen 250 auf 200 mm (Recherche R16), Rinnenpflanzen 462 auf 586, Gesamt 2746 Pflanzen-Toepfe; check_nft_fit 40/40.
 - 29.10. 22:20 Viewer: Bauteile als einklappbare Gruppenliste mit Zaehlern (24 NFT-Tische, 5252 Pflanzenteile, ...), Ein-/Ausblenden je Gruppe und Einzelteil, Hover und Klick leuchten durch andere Koerper (`viewer/index.html`).
 - 29.10. 21:35 Auslaufen wegen Wochenlimit (93 %): W07, W11, W17 gepusht, M7 als WIP gepusht; Arbeitsbaum sauber, alles auf GitHub (Commit 8eebd21). Offen: Laufweg B 476 mm statt 600, Spec-Pruefer W17, Tuer, Rohrnetz.
 - 29.10. 20:30 Beschreibung angelegt. Stand: 133 Komponentendateien, Bens Tabelle ausgewertet (R15), Laufwege-Regeln D28/D29, Wochenlimit-Regel.

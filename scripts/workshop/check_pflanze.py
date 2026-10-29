@@ -23,13 +23,16 @@ def main():
     ps, ds = sc.load_params("salatkopf")
     pth = os.path.join(sc.ROOT, "designs", "components", "salatkopf.sc")
     ev = sc.evaluate(pth)
-    n_leaves = sum(g["n"] for g in ds["blatt_gruppen"]["gruppen"])
-    ck.eq("salatkopf Blaetter (Summe der Gruppen)", len([x for x in ev["bodies"] if x["name"].startswith("Blatt")]), n_leaves)
+    n_leaves = ds["blatt_gruppen"]["verteilung"]["n"]
+    ck.eq("salatkopf Blaetter (verteilung.n)", len([x for x in ev["bodies"] if x["name"].startswith("Blatt")]), n_leaves)
     mn, mx = sc.bbox_all(ev)
-    ck.eq("salatkopf Breite M 95-125", 1 if 95 <= (mx[0] - mn[0]) <= 125 else 0, 1)
+    wm = max(mx[0] - mn[0], mx[1] - mn[1])
+    ck.eq("salatkopf Breite M 95-125", 1 if 95 <= wm <= 125 else 0, 1)
+    lv = [x for x in ev["bodies"] if x["name"].startswith("Blatt")]
+    ck.eq("salatkopf Blaetter nicht unter dem Topfrand (Z >= -1)", 1 if min(x["bbox"]["min"][2] for x in lv) >= -1.0 else 0, 1)
     ck.eq("salatkopf Hoehe ueber dem Topfrand M 50-70", 1 if 50 <= mx[2] <= 70 else 0, 1)
     ck.eq("salatkopf Hals im Topf (Z -25..0, D16 < Topf-Innen-D 47)", 1 if mn[2] >= -26 and ps["neck_d"] < 47 else 0, 1)
-    ck.eq("salatkopf Wenige Flaechen (< 8 je Koerper)", 1 if max(x["faces"] for x in ev["bodies"]) < 8 else 0, 1)
+    ck.eq("salatkopf Flaechenbudget (<= 14 je Koerper, <= 1200 gesamt)", 1 if max(x["faces"] for x in ev["bodies"]) <= 14 and sum(x["faces"] for x in ev["bodies"]) <= 1200 else 0, 1)
     import subprocess
     script = os.path.join(sc.TMP, "ws-cfg.json")
     json.dump({"commands": [{"command": "config.table", "params": {}}]}, open(script, "w"))
@@ -37,6 +40,18 @@ def main():
     rows = json.loads(r.stdout)[0].get("rows", []) if r.returncode == 0 else []
     names = {(x.get("name") if isinstance(x, dict) else x) for x in rows}
     ck.eq("salatkopf Konfigurationen S, M, L", 1 if {"S", "M", "L"} <= names else 0, 1)
+    for row, f in (("S", 0.7), ("L", 1.3)):
+        sp = os.path.join(sc.TMP, "ws-cfg-" + row + ".json")
+        json.dump({"commands": [{"command": "config.activate", "params": {"row": row}}]}, open(sp, "w"))
+        out = os.path.join(sc.TMP, "ws-cfg-" + row + ".sc")
+        r = subprocess.run([sc.CLI, "run", sp, "--in", pth, "--save", out, "--quiet"], capture_output=True, text=True)
+        if r.returncode == 0:
+            e2 = sc.evaluate(out)
+            m2, x2 = sc.bbox_all(e2)
+            w2 = max(x2[0] - m2[0], x2[1] - m2[1])
+            ck.eq(f"salatkopf Breite {row} = {f} x Breite M (+-6 %)", w2 / wm, f, 0.06 * f)
+        else:
+            ck.eq(f"salatkopf Konfiguration {row} laeuft", 0, 1)
     return ck.done()
 
 if __name__ == "__main__":

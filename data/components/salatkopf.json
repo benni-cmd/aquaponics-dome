@@ -47,80 +47,87 @@
  },
  "bezugspunkt": "Z=0 = Kragenoberkante des Netztopfs (Mitte Topfoeffnung); Kopf waechst nach +Z, Hals nach -Z in den Topf",
  "blatt_gruppen": {
-  "herkunft": "[A] nach Kritiker Runde 1 (flachere Rosette, gezackte Kontur): je Gruppe Anzahl, Phase (Grad), Abstand rho, Hoehe h, Radius rad (alle / head_d), Neigung alpha (Grad ueber der Waagerechten, nach aussen ansteigend)",
-  "gruppen": [
-   {
-    "name": "Saum",
-    "n": 7,
-    "phase": 0,
-    "rho": 0.33,
-    "h": 0.07,
-    "rad": 0.24,
-    "alpha": -14
-   },
-   {
-    "name": "AussenA",
-    "n": 6,
-    "phase": 36,
-    "rho": 0.3,
-    "h": 0.12,
-    "rad": 0.22,
-    "alpha": 12
-   },
-   {
-    "name": "AussenB",
-    "n": 6,
-    "phase": 10,
-    "rho": 0.28,
-    "h": 0.2,
-    "rad": 0.21,
-    "alpha": 34
-   },
-   {
-    "name": "MitteA",
-    "n": 5,
-    "phase": 24,
-    "rho": 0.19,
-    "h": 0.26,
-    "rad": 0.19,
-    "alpha": 46
-   },
-   {
-    "name": "MitteB",
-    "n": 5,
-    "phase": 48,
-    "rho": 0.15,
-    "h": 0.31,
-    "rad": 0.18,
-    "alpha": 48
-   },
-   {
-    "name": "Herz",
-    "n": 4,
-    "phase": 5,
-    "rho": 0.08,
-    "h": 0.36,
-    "rad": 0.17,
-    "alpha": 56
-   },
-   {
-    "name": "Herz2",
-    "n": 3,
-    "phase": 30,
-    "rho": 0.04,
-    "h": 0.39,
-    "rad": 0.16,
-    "alpha": 64
-   }
+  "herkunft": "[A] Rev. B 29.10. 15:40 (W07, Kritiker R4: gestapelte glatte Scheiben, ref-6 zeigt dichte krause Huegel): 72 kleine polygonale Blaetter (12-Eck, unregelmaessig) auf einem Halbellipsoid (a 34, b 32 mm bei head_d 100), Fibonacci-Verteilung ueber die Huegelflaeche, je Blatt Azimut, Anstellwinkel (pitch ueber der Waagerechten, steigt mit der Hoehe) und Roll zufaellig mit festem Seed; alle Zahlen in mm fuer head_d 100, solid.scale mit head_d/100 liefert S/L",
+  "a": 34.0,
+  "b": 32.0,
+  "dicke": 2.0,
+  "umriss": [
+   [
+    0,
+    0
+   ],
+   [
+    0.38,
+    0.1
+   ],
+   [
+    0.5,
+    0.35
+   ],
+   [
+    0.48,
+    0.62
+   ],
+   [
+    0.3,
+    0.88
+   ],
+   [
+    0.08,
+    0.98
+   ],
+   [
+    0.0,
+    0.84
+   ],
+   [
+    -0.14,
+    1.0
+   ],
+   [
+    -0.34,
+    0.86
+   ],
+   [
+    -0.5,
+    0.6
+   ],
+   [
+    -0.5,
+    0.34
+   ],
+   [
+    -0.38,
+    0.09
+   ]
   ],
-  "ueberlappung": "Blaetter ueberlappen sich gewollt (Rosette); Vereinigung flacher Scheiben scheitert im Kernel, daher je Gruppe eigene Koerper",
   "jitter": {
-   "herkunft": "[A] deterministischer Zufallsversatz je Blatt (Seed fest, Formel sin(i*12.9898)): Kritiker R3 unregelmaessige, fransige Silhouette",
-   "az": 16,
-   "rad": 0.28,
-   "alpha": 9,
-   "h": 0.025,
-   "rho": 0.035
+   "herkunft": "[A] deterministischer Zufall (Seed fest, sin(i*12.9898)): unregelmaessige, fransige Silhouette (ref-6)",
+   "punkt": 0.05
+  },
+  "herz": {
+   "r": 17,
+   "h": 20,
+   "z0": 8
+  },
+  "farben": [
+   "#5fae45",
+   "#4e9a3a",
+   "#72b84e",
+   "#3f8a35"
+  ],
+  "verteilung": {
+   "n": 72,
+   "theta_min": 8,
+   "L": 21,
+   "w": 18,
+   "L_streu": 0.22,
+   "w_streu": 0.18,
+   "pitch0": 15,
+   "pitch_pro_theta": 0.55,
+   "pitch_streu": 42,
+   "az_streu": 55,
+   "roll_streu": 65
   }
  },
  "blatt": {

@@ -1,46 +1,78 @@
-"""Salatkopf T12: Rosette aus geneigten Blattscheiben (je Gruppe ein Koerper, Muster um Z; Vereinigung ueberlappender flacher Scheiben scheitert im Kernel) um eine Kernkugel, bei Z=0 abgeschnitten, Wurzelhals nach -Z. Konfigurationen S/M/L."""
+"""Salatkopf T12 (Rev. B, 29.10. W07): ca. 50 flache polygonale Blaetter (12-Eck, unregelmaessig) auf einem Halbellipsoid-Huegel, Herz-Prisma, Wurzelhals nach -Z.
+Blatt = Skizze auf geneigter Ebene (Ursprung/Achsen nur Zahlen, in mm fuer head_d 100) + Extrusion; solid.scale mit head_d/100 liefert S/M/L (Konfiguration head_d 70/100/130). Ursprung = Kragenoberkante Netztopf, Hals D16 nach unten.
+Aufruf: python scripts/workshop/salatkopf.py [--render]"""
 import sys, os, math
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 
+def norm(v):
+    l = math.sqrt(sum(c * c for c in v))
+    return [c / l for c in v]
+
+def cross(a, b):
+    return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]
+
 def build():
     p, d = sc.load_params("salatkopf")
+    G = d["blatt_gruppen"]
     unit = {k: v["einheit"] for k, v in d["parameter"].items()}
     b = sc.Build()
     b.params_to_design(p, d, unit)
     b.add("component.create", name="T12_Salatkopf", grounded=True)
-    D = "head_d"
-    b.add("solid.sphere", radius=f"{D}*core_r_f", center=[0, 0, f"{D}*core_h_f"], operation="new", name="Kern", body_name="Salatkopf")
-    jt = d["blatt_gruppen"]["jitter"]
-    rnd = lambda i: (math.sin(i * 12.9898) * 43758.5453) % 1.0 - 0.5        # deterministisch in [-0.5, 0.5)
-    leaf_names = []
-    cnt = 0
-    for g in d["blatt_gruppen"]["gruppen"]:
-        for k in range(g["n"]):
-            cnt += 1
-            ph = math.radians(g["phase"] + k * 360.0 / g["n"] + jt["az"] * rnd(cnt * 5 + 1))
-            al = math.radians(g["alpha"] + jt["alpha"] * rnd(cnt * 5 + 2))
-            rho = g["rho"] * (1 + jt["rho"] * 2 * rnd(cnt * 5 + 3))
-            rad = g["rad"] * (1 + jt["rad"] * rnd(cnt * 5 + 4))
-            hh = g["h"] + jt["h"] * rnd(cnt * 5 + 5)
-            n = (-math.sin(al) * math.cos(ph), -math.sin(al) * math.sin(ph), math.cos(al))      # Blattnormale
-            cx, cy = rho * math.cos(ph), rho * math.sin(ph)
-            base = [f"{D}*({cx:.5f}) - {n[0]:.5f}*{D}*leaf_t_f/2", f"{D}*({cy:.5f}) - {n[1]:.5f}*{D}*leaf_t_f/2", f"{D}*{hh:.5f} - {n[2]:.5f}*{D}*leaf_t_f/2"]
-            nm = f"Blatt{g['name']}_{k + 1}"
-            b.add("solid.cylinder", radius=f"{D}*{rad:.5f}", height=f"{D}*leaf_t_f", base=base, axis=[round(v, 5) for v in n], operation="new", name=nm, body_name=nm)
-            leaf_names.append(nm)
-    b.add("solid.box", length=f"{D}*3", width=f"{D}*3", height=f"{D}", center=[0, 0, f"-{D}/2"], operation="cut", targets=["Salatkopf"], name="Boden")
-    b.add("solid.cylinder", diameter="neck_d", height="neck_len + 5", base=[0, 0, "-neck_len"], operation="join", targets=["Salatkopf"], name="Hals")
     b.add("material.create", name="Salat", density_g_cm3=d["werkstoff"]["dichte_g_cm3"], color=d["werkstoff"]["farbe"])
-    leaves = ["Salatkopf"] + leaf_names
-    b.add("material.assign", bodies=leaves, material="Salat")
-    b.add("appearance.assign", bodies=leaves, color=d["werkstoff"]["farbe"])
+    jt = G["jitter"]
+    rnd = lambda i: (math.sin(i * 12.9898) * 43758.5453) % 1.0 - 0.5        # deterministisch in [-0.5, 0.5)
+    a, c, t = G["a"], G["b"], G["dicke"]
+    # --- Herz (niedriges Achteck-Prisma unter den Blaettern)
+    hz = G["herz"]
+    pts = [[round(hz["r"] * math.cos(math.radians(45 * k + 22.5)), 3), round(hz["r"] * math.sin(math.radians(45 * k + 22.5)), 3)] for k in range(8)]
+    b.add("sketch.create", plane={"origin": [0, 0, hz["z0"]], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="S_Herz")
+    b.add("sketch.line", points=pts, closed=True)
+    b.add("sketch.finish")
+    b.add("solid.extrude", distance=hz["h"], operation="new", name="Herz", body_name="Herz")
+    bodies, colors = ["Herz"], {"Herz": "#3f8a35"}
+    V = G["verteilung"]
+    N = V["n"]
+    s0 = math.sin(math.radians(V["theta_min"]))
+    for i in range(N):
+        cnt = i + 1
+        th = math.asin(s0 + (1 - s0) * (i + 0.5) / N)                     # Fibonacci: gleichmaessige Flaechenverteilung ueber die Huegelflaeche
+        ph = i * 2.399963
+        phb = ph + math.radians(V["az_streu"]) * 2 * rnd(cnt * 7 + 1)      # Blattrichtung weicht vom Radius ab
+        L = V["L"] * (1 + V["L_streu"] * 2 * rnd(cnt * 7 + 2))
+        w = V["w"] * (1 + V["w_streu"] * 2 * rnd(cnt * 7 + 3))
+        pitch = math.radians(V["pitch0"] + V["pitch_pro_theta"] * math.degrees(th) + V["pitch_streu"] * rnd(cnt * 7 + 4))
+        roll = math.radians(V["roll_streu"] * 2 * rnd(cnt * 7 + 5))
+        P = [a * math.cos(th) * math.cos(ph), a * math.cos(th) * math.sin(ph), c * math.sin(th)]
+        v = [math.cos(pitch) * math.cos(phb), math.cos(pitch) * math.sin(phb), math.sin(pitch)]
+        u0 = [-math.sin(phb), math.cos(phb), 0.0]
+        n0 = cross(u0, v)
+        u = norm([u0[k] * math.cos(roll) + n0[k] * math.sin(roll) for k in range(3)])
+        poly = []
+        for j, (fx, fy) in enumerate(G["umriss"]):
+            jx = jt["punkt"] * 2 * rnd(cnt * 31 + j * 2 + 100)
+            jy = jt["punkt"] * 2 * rnd(cnt * 31 + j * 2 + 101)
+            poly.append([round((fx + jx) * w, 3), round(max(0.0, (fy + jy)) * L, 3)])
+        nm = f"Blatt_{cnt:02d}"
+        b.add("sketch.create", plane={"origin": [round(x, 4) for x in P], "x_dir": [round(x, 6) for x in u], "y_dir": [round(x, 6) for x in v]}, name="S_" + nm)
+        b.add("sketch.line", points=poly, closed=True)
+        b.add("sketch.finish")
+        b.add("solid.extrude", distance=t, operation="new", name="E_" + nm, body_name=nm)
+        bodies.append(nm)
+        colors[nm] = G["farben"][(cnt * 5 + int(math.degrees(th))) % len(G["farben"])]
+    b.add("solid.scale", bodies=bodies, factor="head_d / 100 mm", origin=[0, 0, 0])
+    b.add("material.assign", bodies=bodies, material="Salat")
+    for col in sorted(set(colors.values())):
+        b.add("appearance.assign", bodies=[n for n in bodies if colors[n] == col], color=col)
+    b.add("solid.cylinder", diameter="neck_d", height="neck_len + 5", base=[0, 0, "-neck_len"], operation="new", name="Hals_R", body_name="Hals")
+    b.add("material.assign", bodies=["Hals"], material="Salat")
+    b.add("appearance.assign", bodies=["Hals"], color="#8ab87a")
     b.add("config.configure", params=["head_d"])
     b.add("config.row", name="M")
     b.add("config.row", name="S", **{"from": "M"}, values={"param:head_d": "70 mm"})
     b.add("config.row", name="L", **{"from": "M"}, values={"param:head_d": "130 mm"})
     b.add("config.activate", row="M")
-    b.add("component.metadata.set", component="T12_Salatkopf", part_number="T12", description=d["beschreibung"], revision="A",
+    b.add("component.metadata.set", component="T12_Salatkopf", part_number="T12", description=d["beschreibung"], revision="B",
           properties={"Werkstoff": d["werkstoff"]["name"], "Bezugspunkt": "Z=0 Kragenoberkante Netztopf"})
     return b
 
@@ -50,8 +82,8 @@ if __name__ == "__main__":
     out = os.path.join(sc.ROOT, "designs", "components", "salatkopf.sc")
     sc.run(script, out)
     ev = sc.evaluate(out)
-    for x in ev["bodies"]:
-        print(x["name"], round(x["volume_mm3"], 1), "mm3", x["faces"], "Flaechen", [round(v, 1) for v in x["bbox"]["min"]], [round(v, 1) for v in x["bbox"]["max"]])
+    mn, mx = sc.bbox_all(ev)
+    print("Koerper", len(ev["bodies"]), "Flaechen", sum(x["faces"] for x in ev["bodies"]), "Box", [round(v, 1) for v in mn], [round(v, 1) for v in mx])
     if "--render" in sys.argv:
         r = os.path.join(sc.ROOT, "renders", "components", "salatkopf")
         for i, (yaw, pitch) in enumerate(((0.6, 0.4), (2.2, 0.15), (0.0, 1.45)), 1):

@@ -8,7 +8,7 @@ P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe
     door_w=1000, door_h=2000, door_az=-54, door_off=1100,
     t5_d=3800, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
     bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4500,
-    tub_len=2200, tub_w=760, tub_h=550,
+    tub_len=2200, tub_w=720, tub_h=550,
     pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=160)
 
 cmds = []
@@ -38,7 +38,7 @@ def t1_t3_t4(sock_z):
     # Radius so, dass der Basisring-Umkreis = dome_base_d/2
     R = (P["dome_base_d"]/2) / math.sqrt(1 - zb*zb)
     zsq = P['dome_h']/((1-zb)*R)   # Hoehe/Breite = 0,5: Kuppel in Z gestaucht
-    cz = sock_z - zb*R*zsq
+    cz = sock_z + P['strut_r'] + 30 - zb*R*zsq   # Basisring liegt auf dem Sockel
     # Basisring auf gleiche Hoehe setzen; Drehung: Basisknoten bei Azimut 0
     base = [k for k in keep if abs(pts[k][2]) < 1e-3]
     a0 = math.atan2(pts[base[0]][1], pts[base[0]][0])
@@ -120,7 +120,7 @@ def t8_t9(fz):
         a = math.radians(az+90)
         for sx in (-1, 1):
             for sy in (-1, 1):
-                lx, ly = rot(sx*(blen/2-80), sy*(P["bed_w"]/2-80), a)
+                lx, ly = rot(sx*(blen/2-80), sy*(P["bed_w"]/2-45), a)
                 add("solid.cylinder", radius=30, height=P["bed_h"]-60, base=[round(cx+lx, 1), round(cy+ly, 1), fz], operation="join", targets=[nm], name=f"{nm}_Bein{(sx+1)//2*2+(sy+1)//2+1}")
         nc = 6 if blen > 1500 else 3
         for r in range(3):

@@ -39,22 +39,11 @@
 6. [x] Verfeinerungsschleife (5 von 8 Runden, siehe docs/loop-log.md) (Latte unten), je Runde in `docs/loop-log.md` protokollieren
 7. [x] STEP + Renders, gepusht Export `designs/dome.step`, Render-Screenshots in `renders/`, committen und pushen
 
-## Verfeinerungsschleife (Latte)
+## Verfeinerungsschleife v3 (Detail-Schichten)
 
-Jede Runde: bauen -> Screenshot aus Kamera wie `ref-4` -> Referenz und Screenshot nebeneinander ansehen -> Abweichungen in Zahlen auflisten -> beheben. Abbruch, wenn alle sechs Punkte stimmen oder nach 8 Runden (dann Rest als Offen listen):
-
-1. Geruest: gleiche Zahl Streben-Ebenen, 5 Streben am Scheitel
-2. Sockel hat 10 Seiten, Tuer an derselben Stelle (vorne rechts)
-3. Tank-Gruppierung: 1 grosser Zentraltank, 1 Mitteltank, 6 Fass-Tanks, gleiche Anordnung
-4. Anbaubetten: 10 Segmente ringfoermig, Reihen mit Pflanzloechern
-5. Hoehen-Breiten-Verhaeltnis = 0,5 (12 m / 6 m), Abweichung unter 3 % (gemessen 0,503)
-6. Alle Teile haben Namen T1-T11 im Design und liegen im richtigen Verhaeltnis zueinander (keine Durchdringungen ausser Rohr durch die Haut)
-
-## Masse (von Ben bestaetigt, 29.10.2026) und Rangfolge der Massquellen
-
-Bei Konflikt gewinnt die hoehere Quelle: 1. Kuppel Grundflaeche 12 m, Hoehe 6 m (verbindlich) · 2. Tuer 1,0 x 2,0 m (Normtuer, wahrscheinlich) · 3. Menschenmasse (Tischhoehe 0,9-1,0 m, Fass 1-1,2 m, Gehweg >= 0,8 m) · 4. Pixelverhaeltnisse aus ref-4 (nur Anordnung/relative Groesse).
-
-Umgesetzt (Runde 6, Tabelle `P` in `scripts/gen_dome.py`): Kuppel 2V (ab Runde 7; vorher 3V), D 12,0 m, H 6,0 m (Verhaeltnis gemessen 6095/12119 = 0,503; 5/8-Geruest in Z gestaucht, da 3V keinen Aequator-Ring hat), Stab r 45 mm · Sockel 0,6 m hoch, 0,25 m Ueberstand · Tuer 1,0x2,0 m, 1,1 m seitlich versetzt · T5 D3,8x1,2 · T6 D2,2x0,9 · T7 D1,1x1,2 auf 0,5 m Staendern · Betten 2,3x0,9x0,95, 3 Reihen Topf-Loecher, Ring r 4,8 m, Bett 09 gekuerzt auf 1,2 m · Substratwanne 2,2x0,76x0,55 · Rohr D0,3 · Schaltschrank 0,8x0,5x1,2. Abweichung zur Referenz: Tuer im Bild relativ groesser (Perspektive); Punkt 1/2 gehen vor. Pixelvermessung der Tanks/Betten ist Naeherung (Perspektive), nicht auf 5 % belegt.
+Pro Schicht: bauen -> `python scripts/check_latte.py` (muss PASS bleiben) -> Screenshot -> Commit+Push. Abbruch: alle Schichten durch oder zwei ohne sichtbare Verbesserung.
+- [ ] 1 Farben/Materialien je Teil · [ ] 2 Pflanzen (Salatkoepfe, 3 gestaffelte Reihen; Substratwannen) · [ ] 3 Tankraender gerundet, Wasserflaeche blau · [ ] 4 Schlaeuche/Rohr sauber verlegt · [ ] 5 Haut T2 transparent (falls moeglich) · [ ] 6 Rippen/Neigung der Tische
+Latte 1-13 (Mass-Pruefung) gelten als erfuellt: `check_latte.py` 23/23 PASS. Photoreal: img2img gescheitert (`renders/failed-photoreal-01.png`), noetig ControlNet (Canny/Depth), nach den Schichten.
 
 ## Status
 

@@ -1,5 +1,5 @@
 """Messbare Latte: prueft designs/dome.sc per Zahlen. Aufruf: python scripts/check_latte.py <runde>
-Schreibt renders/score.json (Verlauf je Runde) und gibt je Pruefung PASS/FAIL mit Ist/Soll aus."""
+Gibt je Pruefung PASS/FAIL mit Ist/Soll aus (Exit-Code 0 = alles PASS). Sicherheitstest, kein Score-Verlauf."""
 import json, math, os, subprocess, sys, tempfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CLI = r"C:\Program Files\SolidCraft\solidcraft-cli.exe"
@@ -34,7 +34,7 @@ def chk(name, ist, soll, ok): res.append({"check": name, "ist": ist, "soll": sol
 
 t1 = pre("T1_"); sock_top = B["T3_Sockel"]["bbox"]["max"][2]
 z0, z1 = ext(t1, 2); x0, x1 = ext(t1, 0)
-h = z1 - sock_top - 45; w = x1 - x0 - 90
+h = z1 - sock_top - 75 - 45; w = x1 - x0 - 90
 chk("L5/7 Kuppelhoehe [mm]", round(h), 6000, abs(h - 6000) / 6000 < 0.03)
 chk("L5/7 Kuppelbreite [mm]", round(w), 12000, abs(w - 12000) / 12000 < 0.03)
 chk("L5/7 Hoehe/Breite", round(h / w, 3), 0.5, abs(h / w - 0.5) / 0.5 < 0.03)
@@ -47,7 +47,7 @@ for c in cmds:
         for pt in (tuple(round(b[i] + u[i]*25) for i in range(3)), tuple(round(b[i] + u[i]*(L-25)) for i in range(3))):
             ends[pt] = ends.get(pt, 0) + 1
 apex = max(ends, key=lambda k: k[2]); apex_n = ends[apex]
-base_nodes = [k for k in ends if abs(k[2] - sock_top) < 5]
+base_nodes = [k for k in ends if abs(k[2] - (sock_top + P['strut_r'] + 30)) < 5]
 chk("L1/10 Streben am Scheitel", apex_n, 5, apex_n == 5)
 chk("L10 Basisknoten (Zehneck)", len(base_nodes), 10, len(base_nodes) == 10)
 chk("L10 Strebenzahl 2V (60 + 10 Basis - Tuer)", len(t1), "55-63", 55 <= len(t1) <= 63)
@@ -94,13 +94,8 @@ for it in inter:
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))
 chk("L6 Kollisionen (ohne Strebenknoten, Rohr/Schlauch)", len(bad), 0, len(bad) == 0)
 res.append({"info": "Kollisionen", "pairs": bad[:20]})
-vol = {n: round(b["volume_mm3"] / 1e6) for n, b in B.items() if not n.startswith("T1_")}
 passed = sum(1 for r in res if r.get("pass")); total = sum(1 for r in res if "pass" in r)
 for r in res:
     if "pass" in r: print(("PASS" if r["pass"] else "FAIL"), r["check"], "| Ist:", r["ist"], "| Soll:", r["soll"])
 print(f"SCORE {passed}/{total} = {100*passed/total:.0f}%")
-sp = os.path.join(ROOT, "renders", "score.json")
-hist = json.load(open(sp)) if os.path.exists(sp) else []
-hist.append({"runde": rnd, "score": round(100*passed/total, 1), "passed": passed, "total": total, "fails": [r["check"] for r in res if r.get("pass") is False]})
-json.dump(hist, open(sp, "w"), indent=1, ensure_ascii=False)
-json.dump({"volumen_dm3": vol}, open(os.path.join(ROOT, "renders", "volumes.json"), "w"), indent=1)
+sys.exit(0 if passed == total else 1)

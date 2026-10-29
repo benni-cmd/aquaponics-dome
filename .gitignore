@@ -1,3 +1,8 @@
 scripts/dome-script.json
 designs/*.bak
 scripts/comfy*.log
+*.bak
+*.log
+scripts/dome-script.json
+renders/volumes.json
+renders/score.json

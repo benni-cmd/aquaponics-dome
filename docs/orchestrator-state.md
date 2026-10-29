@@ -17,3 +17,8 @@
 - Montage laeuft: Commit b1b48c7 04:45 (M0 Uebernahme) kam aus der ueber den stuendlichen Auftrag gestarteten Sitzung (erscheint nicht als Peer in ListAgents). Werkstatt busy (NFT-Tisch innen). Plaene: Montage 6 Schritte, Werkstatt 5 Schritte offen.
 - Wenn ich verdichtet oder neu gestartet werde: lies zuerst diese Datei, docs/parallel-work.md (04:15), docs/endless-mechanics.md, docs/integration-board.md, docs/research-queue.md (offen: R09, R11), docs/review-lessons.md. Naechste Orchestrator-Aufgaben: Abnahme Netztopf/Salatkopf/NFT-Tisch innen (Stichprobe nach docs/review-protocol.md Abschnitt 6), Plan bei weniger als 3 offenen Schritten auf 5 auffuellen, R09 (Vortex-Tank-Geometrie) fuer W4, dome-loop-restart-0715 auf neue Namen umstellen.
 - Bei Limit ueber 90 %: Werkstatt nicht anstossen; Montage zuerst.
+
+## Stand 07:15 (Limit zurueckgesetzt 07:10, 5h 11 %, Woche 62 %; mein Kontext 87 %)
+- Werkstatt: Limit-Abbruch um ca. 05:30, angestossen 07:12 (Plan: NFT-Tisch abschliessen, dann IBC-Beet; erst git status, nur konsistente Staende committen). Letzter Commit 8dba568 (05:13).
+- Montage: seit 04:45 nicht mehr aktiv (Limit). start_session und run_scheduled_task sind in automatischen Laeufen vom Auto-Modus gesperrt (nicht umgangen). Start geschieht ueber den dauerhaften Auftrag `dome-loop-hourly-fallback` (:41, naechster Lauf ca. 07:41) oder durch Ben mit dem Prompt aus `docs/resume.md`. `dome-loop-restart-0715` ist abgeschaltet (Doppelstart-Gefahr, alter Sitzungsname).
+- Naechste Orchestrator-Schritte: Abnahme NFT-Tische (nach Werkstatt-Meldung), Plan auffuellen, R09/R11 recherchieren, Viewer-Server neu starten falls Stand veraltet (zeigt 04:08).

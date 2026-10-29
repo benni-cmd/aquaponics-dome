@@ -1,10 +1,11 @@
 """Erzeugt das SolidCraft-Befehlsskript fuer designs/dome.sc (Stufe 1-4 = Plan-Schritte 2-5).
 Aufruf: python gen_dome.py <stufe> <out.json>. Masse in mm; alle Annahmen stehen in P."""
-import json, math, sys
+import json, math, os, sys
 from geo import build
 
 P = {k: v["value"] for k, v in json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "params.json"))).items()}   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort)
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 cmds = []
 names = []
 def add(c, **p):
@@ -40,6 +41,23 @@ def rect_body(name, cx, cy, z0, az_deg, along, across, h, op="new", targets=None
     if op == "new": add("solid.extrude", distance=h, operation="new", name=name, body_name=name)
     else: add("solid.extrude", distance=h, operation=op, targets=targets, name=name)
 
+def place_struts(segs):
+    """Streben als Instanzen der Komponenten strebe_a/strebe_b (component.insert_design + occurrence.copy), Platzierung per Matrix."""
+    R = P["dome_base_d"]/2; cnt = {"A": 0, "B": 0}
+    for key, fct in (("A", 0.5465), ("B", 0.6180)):
+        add("component.insert_design", path=os.path.join(ROOT, "designs", "components", f"strebe_{key.lower()}.sc").replace("\\", "/"), name=f"Strebe_{key}")
+    moves = {"A": [], "B": []}
+    for A, B in segs:
+        d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [x/L for x in d]
+        key = "A" if abs(L - 0.5465*R) < abs(L - 0.6180*R) else "B"
+        h = [1, 0, 0] if abs(u[0]) < 0.9 else [0, 1, 0]
+        x = [h[1]*u[2]-h[2]*u[1], h[2]*u[0]-h[0]*u[2], h[0]*u[1]-h[1]*u[0]]; xl = math.sqrt(sum(q*q for q in x)); x = [q/xl for q in x]
+        y = [u[1]*x[2]-u[2]*x[1], u[2]*x[0]-u[0]*x[2], u[0]*x[1]-u[1]*x[0]]
+        moves[key].append([round(v, 9) for v in (x[0], y[0], u[0], A[0], x[1], y[1], u[1], A[1], x[2], y[2], u[2], A[2])])
+    for key in ("A", "B"):   # erst alle Kopien (alle am Ursprung), dann jede Instanz absolut platzieren
+        for _ in range(len(moves[key]) - 1): add("occurrence.copy", component=f"Strebe_{key}")
+        for i, mat in enumerate(moves[key], 1): add("occurrence.move", occurrence=f"Strebe_{key}:{i}", matrix=mat, tolerance=1e-6, move_grounded=True)
+
 def t1_t3_t4(sock_z):
     pts, edges = build(P["freq"])
     zcut = -0.01
@@ -65,18 +83,14 @@ def t1_t3_t4(sock_z):
     import math as _m
     ring = sorted(base, key=lambda k: _m.atan2(V(k)[1], V(k)[0]))   # Basis-Zehneck: 10 Kanten
     edges = set(edges) | {tuple(sorted((ring[i], ring[(i+1) % len(ring)]))) for i in range(len(ring))}
-    n = 0; dropped = 0
+    n = 0; dropped = 0; segs = []
     for a, b in sorted(edges):
         if a not in keep or b not in keep: continue
         A, B = V(a), V(b)
         if any(in_door(tuple(A[i]+(B[i]-A[i])*t/10 for i in range(3))) for t in range(1, 10)):
             dropped += 1; continue
-        d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [x/L for x in d]
-        ext = 25
-        s = [A[i]-u[i]*ext for i in range(3)]
-        n += 1
-        add("solid.cylinder", radius="strut_r", height=L+2*ext, base=[round(x, 2) for x in s],
-            axis=[round(x, 6) for x in u], operation="new", name=f"T1_Strebe_{n:03d}", body_name=f"T1_Strebe_{n:03d}")
+        segs.append((A, B))
+    place_struts(segs)
     # T13 Erde (kein fester Boden, D13): grosse Erdebene, Oberkante = Bodenniveau sock_h; Becken/Beete schneiden Aussparungen ein
     add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
     # T3 Fundamentring (Zehneck, flach, ragt ueber die Erde): Streben sind hier verankert, kein Boden

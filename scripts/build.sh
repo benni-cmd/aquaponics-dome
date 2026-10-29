@@ -2,7 +2,7 @@
 # Aufruf: scripts/build.sh <stufe> <runde>   (erzeugt designs/dome.sc, renders/round-NN.png)
 cd "$(dirname "$0")/.." || exit 1
 CLI="/c/Program Files/SolidCraft/solidcraft-cli.exe"
-python scripts/gen_dome.py "$1" scripts/dome-script.json || exit 1
+python scripts/components/strebe.py >/dev/null && python scripts/gen_dome.py "$1" scripts/dome-script.json || exit 1
 "$CLI" run scripts/dome-script.json --save designs/dome.sc --quiet || exit 1
 N=$(printf '%02d' "$2")
 "$CLI" snapshot designs/dome.sc --out renders/round-$N.png --width 909 --height 766 \

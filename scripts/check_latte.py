@@ -40,9 +40,9 @@ chk("L5/7 Kuppelhoehe [mm]", round(h), 6000, abs(h - 6000) / 6000 < 0.03)
 ends = {}
 for c in cmds:
     p = c["params"]
-    if c["command"] == "solid.cylinder" and str(p.get("name", "")).startswith("T1_"):
-        b = p["base"]; u = p["axis"]; L = p["height"]
-        for pt in (tuple(round(b[i] + u[i]*25) for i in range(3)), tuple(round(b[i] + u[i]*(L-25)) for i in range(3))):
+    if c["command"] == "occurrence.move" and str(p.get("occurrence", "")).startswith("Strebe_"):
+        m = p["matrix"]; L = 0.5465 * P["dome_base_d"] / 2 if p["occurrence"].startswith("Strebe_A") else 0.618 * P["dome_base_d"] / 2
+        for pt in (tuple(round(m[i]) for i in (3, 7, 11)), tuple(round(m[i + 3 - 0] if False else m[(3, 7, 11)[j]] + m[(2, 6, 10)[j]] * L) for j in range(3))):
             ends[pt] = ends.get(pt, 0) + 1
 apex = max(ends, key=lambda k: k[2]); apex_n = ends[apex]
 base_nodes = [k for k in ends if abs(k[2] - (sock_top + P['strut_r'] + 30)) < 5]

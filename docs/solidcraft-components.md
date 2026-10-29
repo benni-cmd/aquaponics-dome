@@ -20,3 +20,10 @@ Regeln fuer dieses Projekt:
 2. Aenderung = Definition aendern, `component.update_links`, Neubau; keine Zahlen in den Platzierungsschleifen.
 3. Salatkopf: EIN Bauteil (z. B. 5-7 ueberlappende abgeflachte Kugeln oder Rotationskoerper, wenige Facetten), Groessenvarianten als eigene Komponenten (Tisch, Wanne), Instanzen per Muster.
 4. Hinweis Export/Viewer: SolidCraft meshed jeden Koerper nach seiner eigenen Groesse; kleine gekruemmte Koerper werden dadurch riesig (240 Kugeln = 1,25 GB OBJ). Salatkoepfe niedrig tesselliert bauen (wenige Facetten) oder im Viewer als Extras zeichnen (`viewer/export_model.py`).
+
+## Befund Headless-Test (Integrator, 29.10.2026)
+- `component.insert_design {path, name}` + `occurrence.copy {component}` + `occurrence.move {occurrence:"Name:n", matrix:[12 Zahlen], tolerance:1e-6, move_grounded:true}` funktionieren im CLI-Lauf (`solidcraft-cli run`). Instanznamen `Name:1`, `Name:2` ...
+- FALLE: `occurrence.copy` kopiert die aktuelle (ggf. schon verschobene) Platzierung. Reihenfolge: erst alle Kopien am Ursprung, dann jede Instanz einmal mit `occurrence.move` (Matrix absolut) setzen.
+- `matrix`: Zeilen-Reihenfolge `[r00 r01 r02 tx, r10 r11 r12 ty, r20 r21 r22 tz]`, Spalten = Basisvektoren; Rundung auf 9 Stellen und `tolerance` 1e-6 noetig.
+- `eval` listet Instanz-Koerper in Weltlage, Name `<Koerper> (<Instanz>)`; `inspect.interference` arbeitet damit.
+- Umgesetzt fuer Streben: `scripts/components/strebe.py` -> `designs/components/strebe_a.sc/strebe_b.sc`; 61 Instanzen in `designs/dome.sc`. Noch offen: `component.update_links`-Test, Wurzel-Baugruppen 01-10, Normteile.

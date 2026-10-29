@@ -13,6 +13,10 @@ Ziel (Ben): Das ganze Konstrukt (Integrator, Werkstatt, Orchestrator, Viewer, Re
 | Gauntlet-Kritiker | Unter-Agenten der Bau-Sitzungen | je Meilenstein, ein Agent zur Zeit | Limit frei | verbraucht Limit |
 | Recherche | Orchestrator (Aufträge R03, R06, R09, R11) | je Anstossrunde ein Auftrag | Limit frei | gemeinsames Limit |
 
+## Stopp und Wiederaufnahme
+
+Nur Bens ausdrueckliches "stopp" (oder eine neue Phase) beendet das Konstrukt, und zwar als **sauberer Stopp** nach `docs/clean-stop.md` (Sitzungen sichern, Automatik aus, alles gepusht, Gesamtzusammenfassung). Wiederaufnahme: `docs/resume.md`.
+
 ## Wachter-Regeln (verhindern Doppelarbeit)
 
 1. Rolle waehlen: Alter des letzten Commits je Rollenpfad (Integrator: `designs/dome.sc scripts data/params.json docs/loop-state.md viewer`; Werkstatt: `designs/components docs/parts docs/workshop-state.md docs/workshop-log.md data/components renders/components`; Orchestrator: `docs/integration-board.md docs/research docs/research-queue.md docs/decisions.md docs/orchestrator-state.md`).

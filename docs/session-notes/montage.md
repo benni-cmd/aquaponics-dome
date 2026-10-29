@@ -13,3 +13,8 @@ Zu tun: Rohrnetz (M5) mit diesen Instanzen verlegen; Tisch-Verteiler d25/D16 bri
 Ben sieht NFT-Tische ineinander kollidieren und Tischbeine in den Substratbeeten — in `check_latte` fehlen diese Pruefungen; die Werkstatt baut Passungsvarianten (Auftrag W16, Entscheidung D18, Portalrahmen, Rinnenlaenge je Reihe).
 Beleg: docs/decisions.md D18, docs/jobs/W16-nft-tisch-passung.md.
 Zu tun: in `scripts/check_latte.py` Pruefungen Tisch/Tisch (Footprints je Ring, Abstand >= 100 mm) und Tischbein/Beet (Bein ausserhalb der Beet-Rechtecke) ergaenzen; NFT-Tische erst mit den W16-Varianten als Instanzen setzen, nicht mit den alten.
+
+## 2026-10-29 — von Orchestrator
+Bens Tabelle (reference/Kuppelberechnung-neu-2.xlsx) bestaetigt die Zahlen; Pool-Tiefe wird 2200 statt 2340 (D26); Pflanzenartmodelle hinten, Technik/Rohre/Schlaeuche haben Vorrang (D27).
+Beleg: docs/research/R15.md, docs/decisions.md D26 D27.
+Zu tun: `pool_depth_total` auf 2200 setzen (Pool-Wanne/Erdtasche), dann M4/M5 (Wasserweg, Rohre, Schlaeuche) vor weiteren Pflanzenarbeiten.

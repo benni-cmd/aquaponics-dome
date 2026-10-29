@@ -1320,6 +1320,16 @@
   "source": "renders/round-23.png"
  },
  {
+  "file": "20261029-125356_montage_tank_round-24.png",
+  "sha": "d415706641d30ace",
+  "time": "2026-10-29 12:53:56",
+  "role": "montage",
+  "subject": "tank",
+  "note": "Tanks+Pumpen als Instanzen, vor D19",
+  "commit": "7d02f11",
+  "source": "renders/round-24.png"
+ },
+ {
   "file": "20261029-131744_werkstatt_pumpe_pumpe-klein-01-iso.png",
   "sha": "df632378e484e15f",
   "time": "2026-10-29 13:17:44",
@@ -1418,6 +1428,26 @@
   "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
   "commit": "454af16",
   "source": "renders/components/pumpe_gross/pumpe_gross-05-schnitt.png"
+ },
+ {
+  "file": "20261029-132032_montage_gesamt_round-26.png",
+  "sha": "4584ff951c6f4612",
+  "time": "2026-10-29 13:20:32",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "M1.2: Tanks, Pumpen, 14 NFT-Tische als Instanzen (innen 10 offen, W-M2)",
+  "commit": "7d02f11",
+  "source": "renders/round-26.png"
+ },
+ {
+  "file": "20261029-132037_montage_gesamt_section-26.png",
+  "sha": "d6061dabd1b30851",
+  "time": "2026-10-29 13:20:37",
+  "role": "montage",
+  "subject": "gesamt",
+  "note": "M1.2: Tanks, Pumpen, 14 NFT-Tische als Instanzen (innen 10 offen, W-M2)",
+  "commit": "7d02f11",
+  "source": "renders/section-26.png"
  },
  {
   "file": "20261029-132542_werkstatt_pumpe_pumpe-klein-01-iso.png",

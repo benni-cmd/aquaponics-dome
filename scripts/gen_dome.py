@@ -83,7 +83,7 @@ def erde_fn(sock_z):
         x, y, d_out, z_bot, total = pool_dims(sock_z, src, wall, depth, nm)
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
-        x, y = LXY(b["cx"], b["cy"]); ln, wd = bed_dims(k, b)
+        x, y = bed_xy(b); ln, wd = bed_dims(k, b)
         rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, b["yaw"] + ROT, ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
 
 def ring_fn(sock_z):
@@ -167,6 +167,13 @@ def pool_dims(fz, src, wall, depth, nm):
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
 
+def bed_xy(b):
+    """Beetmitte im Modell; Aussenbeete (mit 'plants') um outer_bed_inset radial nach innen (D21)."""
+    x, y = LXY(b["cx"], b["cy"])
+    if "plants" in b:
+        r = math.hypot(x, y); f = (r - P["outer_bed_inset"]) / r; x, y = round(x*f, 1), round(y*f, 1)
+    return x, y
+
 def bed_dims(k, b):
     return b["length"], b["width"]   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel)
 
@@ -182,31 +189,51 @@ def pools(fz):
     component_file("pool_zentral", "Pool", "04_Wasserbecken", lambda: pool_fn(fz, "Pool", LAYOUT["pool"], P["wall"], P["pool_depth"], "T5_Zentraltank"))
     component_file("zweitbecken", "Zweitbecken", "04_Wasserbecken", lambda: pool_fn(fz, "Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], "T6_Zweitbecken"))
 
+def rect_corners(cx, cy, l, w, yaw):
+    c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
+    return [(cx + u*c - v*s, cy + u*s + v*c) for u, v in ((-l/2, -w/2), (l/2, -w/2), (l/2, w/2), (-l/2, w/2))]
+
+def rect_gap(A, B):
+    """Trennabstand zweier Rechtecke im Grundriss (SAT; negativ = Ueberlappung)."""
+    g = -1e9
+    for Q in (A, B):
+        for i in range(4):
+            e = (Q[(i+1) % 4][0] - Q[i][0], Q[(i+1) % 4][1] - Q[i][1]); m = math.hypot(*e); n = (-e[1]/m, e[0]/m)
+            pa = [p[0]*n[0] + p[1]*n[1] for p in A]; pb = [p[0]*n[0] + p[1]*n[1] for p in B]
+            g = max(g, min(pa) - max(pb), min(pb) - max(pa))
+    return g
+
+def tank_offsets():
+    """D22: OBJ-Plattformen von Tank 1/3 (-83 mm) und Tank 2 / Innenbeet 12 (-77 mm) ueberlappen im Grundriss, die Werkstatt-Rahmen (Beine an den Ecken) stossen dort durch Nachbarplattform bzw. Beet.
+    Der kleinere Tank samt Pumpentafeln rueckt um (tank_clear - Luecke) von der Nachbarplattform bzw. dem Beet weg (Layout-Koordinaten)."""
+    T = LAYOUT["tanks"]; pl = [t["platform"][0] for t in T]; off = {i: [0.0, 0.0] for i in range(len(T))}
+    rc = lambda i: rect_corners(pl[i]["cx"] + off[i][0], pl[i]["cy"] + off[i][1], pl[i]["length"], pl[i]["width"], pl[i]["yaw"])
+    obstacles = lambda i: [(rc(j), (pl[j]["cx"] + off[j][0], pl[j]["cy"] + off[j][1])) for j in range(len(T)) if j != i and pl[j]["length"] >= pl[i]["length"] and not (pl[j]["length"] == pl[i]["length"] and j < i)] +         [(rect_corners(b["cx"], b["cy"], b["length"], b["width"], b["yaw"]), (b["cx"], b["cy"])) for b in LAYOUT["ibc_beds"] if "plants" not in b]
+    for _ in range(3):
+        for i in range(len(T)):
+            for R, (ox, oy) in obstacles(i):
+                gap = rect_gap(rc(i), R)
+                if gap < P["tank_clear"]:
+                    dx, dy = pl[i]["cx"] + off[i][0] - ox, pl[i]["cy"] + off[i][1] - oy; d = math.hypot(dx, dy); mv = P["tank_clear"] - gap
+                    off[i][0] += dx/d*mv; off[i][1] += dy/d*mv
+    return off
+
 def tanks(fz):
-    act("07_Tanks")
-    """T7: 4 Tanks (Kegelboden, Zylinder, Plattformring auf 4 Beinen) + Pump-/Filtermodule, Positionen aus layout.json."""
-    for i, t in enumerate(LAYOUT["tanks"], 1):
-        act("07_Tanks")
-        x, y = LXY(t["cx"], t["cy"]); pl = t["platform"][0]; yaw = pl["yaw"] + ROT; nm = f"T7_Tank_{i}"
-        ztop = fz + pl["z1"]; cone_h = pl["z1"] - t["z0"]
-        add("solid.cone", diameter=t["d"], top_diameter=60, height=cone_h, base=[x, y, ztop], axis=[0, 0, -1], operation="new", name=nm, body_name=nm)
-        add("solid.cylinder", diameter=t["d"], height=t["z0"] + t["h"] - pl["z1"], base=[x, y, ztop], operation="join", targets=[nm], name=nm + "_Zylinder")
-        add("solid.cylinder", diameter=t["d"] - 100, height=t["z0"] + t["h"] - pl["z1"], base=[x, y, ztop + 80], operation="cut", targets=[nm], name=nm + "_Hohlraum")
-        rect_body(f"T7_Plattform_{i}", x, y, fz + pl["z0"], yaw, pl["length"] - 200, pl["width"] - 200, pl["height"])
-        add("solid.cylinder", diameter=t["d"] + 20, height=pl["height"] + 20, base=[x, y, fz + pl["z0"] - 10], operation="cut", targets=[f"T7_Plattform_{i}"], name=f"T7_Plattform_{i}_Loch")
-        a = math.radians(yaw)
-        for sx in (-1, 1):
-            for sy in (-1, 1):
-                lx, ly = rot(sx*(pl["length"]/2 - 140), sy*(pl["width"]/2 - 140), a)
-                add("solid.cylinder", radius=18, height=pl["z0"], base=[round(x+lx, 1), round(y+ly, 1), fz], operation="join", targets=[f"T7_Plattform_{i}"], name=f"T7_Plattform_{i}_Bein{(sx+1)+(sy+1)//2+1}")
+    """07_Tanks/09_Technik: 4 Tanks (Werkstatt: tank_klein x2, tank_gross, tank_gross_t3) und 8 Pumpentafeln (pumpe_klein/gross, je Tank 2) als Instanzen; Ursprung Tank = Mitte Standflaeche am Boden, Drehung = Plattform-yaw; Positionen aus layout.json plus tank_offsets."""
+    tk = {"klein": [], "gross": [], "gross_t3": []}; pk = {"klein": [], "gross": []}; off = tank_offsets()
+    for i, t in enumerate(LAYOUT["tanks"]):
+        dx, dy = off[i]; x, y = LXY(t["cx"] + dx, t["cy"] + dy); yaw = t["platform"][0]["yaw"] + ROT
+        tk["klein" if t["d"] < 800 else ("gross_t3" if i == 2 else "gross")].append((x, y, fz, yaw))
         placed = []
-        act("07_Tanks")
-        for k, m in enumerate(t["modules"], 1):
-            mx, my = LXY(m["cx"], m["cy"])
-            if math.hypot(mx - x, my - y) < t["d"]/2 + 150 or any(math.hypot(mx - px, my - py) < 350 for px, py in placed): continue   # OBJ-Module ueberlappen sich teils: nur freistehende
-            placed.append((mx, my))
-            act("09_Technik")
-            act("09_Technik"); rect_body(f"T7_Pumpe_{i}_{k}", mx, my, fz, m["yaw"] + ROT, m["l"], max(m["w"], 20), m["h"])
+        for m in t["modules"]:
+            if m["l"] < 500: continue   # 384-mm-Kassetten = Stuetzrippen der Plattform (D16, Teil der Tank-Komponente)
+            mx, my = LXY(m["cx"] + dx, m["cy"] + dy)
+            if any(math.hypot(mx - px, my - py) < 100 for px, py in placed): continue   # OBJ-Duplikate zusammenfassen
+            placed.append((mx, my)); pk["klein" if t["d"] < 800 else "gross"].append((mx, my, fz, m["yaw"] + ROT))
+    for v, items in tk.items():
+        if items: place_instances("Tank_" + v, os.path.join(ROOT, "designs", "components", f"tank_{v}.sc"), items, "07_Tanks")
+    for v, items in pk.items():
+        place_instances("Pumpe_" + v, os.path.join(ROOT, "designs", "components", f"pumpe_{v}.sc"), items, "09_Technik")
 
 def place_instances(cls, path, items, assembly):
     """Werkstatt-Komponente verknuepfen (eine Definition) und je Eintrag (x, y, z, yaw_grad) eine Instanz setzen (erst alle Kopien am Ursprung, dann absolut verschieben)."""
@@ -220,11 +247,24 @@ def place_instances(cls, path, items, assembly):
 def t9(fz):
     groups = {}
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
-        x, y = LXY(b["cx"], b["cy"])
+        x, y = bed_xy(b)
         v = "innen_933" if "plants" not in b else ("aussen_993" if b["width"] > 960 else "aussen_933")
         groups.setdefault(v, []).append((x, y, fz + b["z0"], b["yaw"] + ROT))
     for v, items in groups.items():
         place_instances("Beet_" + v, os.path.join(ROOT, "designs", "components", f"ibc_beet_{v}.sc"), items, "05_Beete")
+
+# T8: 14 NFT-Tische (8 aussen ueber den Aussenbeeten, 6 mitte ueber den Innenbeeten) als Instanzen von nft_tisch_{aussen,mitte}; Ursprung = Mitte Standflaeche am Boden, X = Laengsachse.
+# Der Innenring (10 Tische ueber dem Pool) folgt, sobald die Werkstatt eine Variante liefert, deren Beine nicht im Pool/Beet stehen (docs/session-notes/werkstatt.md).
+NFT_RC = {"aussen": (4888 + 5176) / 2, "mitte": (2987 + 3248 + 3514 + 3775) / 4}   # Mittellinie der Rinnen (Apothem, layout.json hydro_tables)
+
+def nft(fz):
+    groups = {"aussen": [], "mitte": []}
+    for b in LAYOUT["ibc_beds"]:
+        v = "aussen" if "plants" in b else "mitte"
+        x, y = LXY(b["cx"], b["cy"]); r = math.hypot(x, y); rc = NFT_RC[v] - (P["outer_bed_inset"] if v == "aussen" else 0)
+        groups[v].append((round(x/r*rc, 1), round(y/r*rc, 1), fz, b["yaw"] + ROT))
+    for v, items in groups.items():
+        place_instances("Tisch_" + v, os.path.join(ROOT, "designs", "components", f"nft_tisch_{v}.sc"), items, "06_NFT")
 
 plants = [0]
 def plant(x, y, z, r=90):
@@ -259,7 +299,7 @@ if __name__ == "__main__":
     t1_t3_t4(P["sock_h"]) if False else None
     n, dropped = t1_t3_t4(P["sock_h"])
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
-    if stage >= 3: t9(P["sock_h"])
+    if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 4: t10_t11(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)

@@ -178,5 +178,23 @@
   "r_id": "R13",
   "maturity": 1,
   "used_by": "gen_dome.py"
+ },
+ "outer_bed_inset": {
+  "value": 120,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D21: 8 Aussenbeete im OBJ ragen bei Betten 2-4 17-36 mm in den Fundamentring und beruehren Strebe_B-Knotennaehe; Beete radial nach innen versetzt (Rangfolge Ben > OBJ-Zahlen, Annahme)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "tank_clear": {
+  "value": 60,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D22: Mindestluecke im Grundriss zwischen Tankplattform und Nachbarplattform/Innenbeet (OBJ ueberlappt dort 77-83 mm, Beine der Werkstatt-Rahmen kollidieren)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
  }
 }

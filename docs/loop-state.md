@@ -1,9 +1,9 @@
-# Checkpoint Montage (M1.1 fertig, 29.10.2026)
+# Checkpoint Montage (M1.2 fertig, 29.10.2026)
 ## Stand
-- IBC-Beete: 14 Instanzen (Beet_aussen_933 x5, aussen_993 x3, innen_933 x6) in 05_Beete per gen_dome.py `place_instances`; Erdtaschen auf echte Wannenmasse, 200 mm tiefer (Bulkhead). Build: `sh scripts/build.sh 4 22`.
-- check_components: nur FAIL 07_Tanks 20 lose Koerper. check_latte 18/19: 8 Kollisionen Beet/Strebe_B und Beet/Sockel (beds 2,3,4: OBJ-Wannen ragen in Kuppelrand; Layout-Frage, nicht gefixt).
-- 10_Pflanzen: alte Kugeln entfernt, bis Netztopf/Salatkopf als Instanzen kommen leer.
-## Naechste Teilschritte M1
-2. Tanks (4: klein 2, gross 2 inkl. tank_gross_t3?) + Pumpen als Instanzen (07_Tanks, 09_Technik). 3. NFT-Tische (24 aus Ringen, nft_tisch_*). 4. Netztopf/Salatkopf (2716). 5. Knoten/Anker (M2).
-## Regeln vom Orchestrator
-- Ein Schritt = ein enger Lesekontext; nach jedem Schritt Zustand sichern, NICHT leeren (System komprimiert, docs/endless-mechanics.md KORREKTUR). Render zusaetzlich mit scripts/archive_render.py ablegen (renders/history mit committen).
+- M1.1: 14 IBC-Beete (Instanzen). M1.2: D21 8 Aussenbeete 120 mm nach innen (`outer_bed_inset`, 8 Kollisionen weg, check_latte 19/19 Runde 23). D22 Tank 1/2/4 um 130-150 mm von Nachbarplattform bzw. Innenbeet (`tank_clear`, `tank_offsets`). 4 Tanks (Tank_klein x2, Tank_gross, Tank_gross_t3) + 8 Pumpentafeln (Pumpe_klein/gross) als Instanzen (07_Tanks/09_Technik, `tanks()`). 14 NFT-Tische (Tisch_aussen x8, Tisch_mitte x6) in 06_NFT (`nft()`); Innenring (10) NICHT gesetzt (W-M2). Build Runde 26 (`sh scripts/build.sh 4 26`).
+- check_latte umgebaut (Runde 26): Kollisionspruefung nur noch zwischen verschiedenen Komponenteninstanzen (Bounding-Box-Vorfilter in Python, dann exakt; der volle Lauf schaffte >1500 Koerper nicht im Budget). Offene Werkstatt-Maengel W-M1 (Pumpentafel x Tankrahmen, OBJ-Lage), W-M2 (NFT-Tisch-Beine x Beet/Pool), W-M3 (Tisch x Tisch an Ecken) stehen in docs/session-notes/werkstatt.md; nur Bounding-Box-Kandidaten gezaehlt.
+## Naechste Teilschritte M1 (Orchestrator-D18 NFT-Tische Ecken/Beine: siehe decisions.md)
+4. Netztopf/Salatkopf (2716 Instanzen: 2160 Beete, 556 Rinnen; Raster layout.json `pots`) — Hinweis: Tisch-Rinnenloecher gehoeren zu Rinne/Tisch (Werkstatt), Beet-Toepfe 288 je Aussenbeet. 5. Innenring-Tische nach Werkstatt-Variante. 6. Knoten/Anker (M2). check_components um Tanks/Pumpen/Tische erweitern (Instanzzahl = layout.json).
+## Regeln
+- Leeren nur nach sauberem Schritt UND >70 % Kontext UND Zustand hier gesichert (endless-mechanics REGEL Kontext). Renders mit scripts/archive_render.py. Werkstatt-.sc im Arbeitsbaum (fundamentring, pool_zentral, schaltschrank, strebe_a/b, tuer, zulaufrohr, zweitbecken) nicht committen.
+- Keine parallelen CLI-Laeufe waehrend check_latte (Budget).

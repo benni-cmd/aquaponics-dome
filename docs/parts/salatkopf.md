@@ -79,6 +79,6 @@ Blattrosette: 96 kleine, ebene Polygonblaetter (12-Eck, unregelmaessiger Umriss,
 
 ## Offene Fragen
 
-- Blattraender eben und kantig (keine Kraeuselung): gekraeuselte Blaetter brauchen viele Flaechen, Budget bei 2716 Instanzen
+- Blattraender eben und kantig (keine Kraeuselung): gekraeuselte Blaetter brauchen viele Flaechen, Budget bei 2746 Instanzen
 - Konfigurationen S/L wirken auf verknuepfte Instanzen im Dom: Integrator pruefen
 - Instanzvariation (zufaellige Drehung um Z, S/M/L gemischt) ist Sache des Layouts/Tisches

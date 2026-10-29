@@ -296,3 +296,24 @@ Eigener Fund beim Bau (Lehre): Die Hintergrundkette las die Parameter beim Start
 ### W18 Lochabstand pitch 200 (nft_rinne, nft_tisch) 29.10. ~22:30: Pruefer NICHT gelaufen
 Grund: Wochenlimit 94 % (Regel Wochenlimit). Eigene Messungen: check_nft_rinne 93/93 (Lochzahl = floor(L/200), Teilung 200, Phase +-50, Zickzack 100), check_nft_tisch 196/196 (Lochlage gegen Rechnung, Zickzack pitch/2, Interferenz Winkelhalter 0), check_nft_fit 40/40 (586 Topfloecher >= 459, Laufwege unveraendert 600/600, Wandluft 218). Randabstand der Loecher zum Rinnenende 64 (Job), Rinnenabstand 262 > pitch/2: kollisionsfrei.
 Eigene Fehler/Funde: (1) nft_rinne.py hatte die Konfigurationszeilen M/K/L_B mit 12/7/5 Loechern und +-62,5 fest eingetragen -> jetzt aus pitch gerechnet; check_nft_rinne hatte +-62,5 fest -> jetzt pitch/4 (zwei Altlasten aus pitch 250, vom Check gefunden, nicht vom Pruefer). (2) Zahlen im Netztopf-Blatt (556/2716) auf 586/2746 nachgefuehrt; D20 (466/462) ersetzt durch 586.
+
+### W17 + W18 gemeinsamer Pruefer (Bild-Kritiker Draufsicht + Spec-Pruefer, ein Unteragent) 29.10. ~23:00: Teil B FAIL
+Nachgerechnet ohne Abweichung: Radialbudget (2095/600/2695..3858/600/4458..5488/218/5706), Rinnenlaengen aller 9 Reihen, Lochzahl 15/14/13 + 9/8/7/6 + 4/3 = 586, Netztopf 2746, Zickzack kollisionsfrei (Diagonale 280, Kragen 64), Aussenbeet 800 x 2640 gegen Zehneck-Grenze.
+Teil A (Bild):
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, sicher: Rinnen im Modell mit Luecken (132-158 mm), in ref-6 buendig | **bekannt / Owner-Entscheid** | Widerspruch OBJ (Rinnenabstand 262-288) gegen Bild; OBJ gilt (provenance); steht seit W16 als offene Frage in nft_tisch.md |
+| 2 | gross, vermutet: ref-6 zeigt Staffel (Nachbarrinne in gleicher Richtung um ca. pitch/3 versetzt), Modell alternierend pitch/2 | **unklar** | Bens Definition (review-protocol: halber Topfabstand, Zickzack) gilt; an den Orchestrator: ob Ben "Zickzack" als Staffel meint |
+| 3 | klein, vermutet: Tisch hoch (Z 1,4 m, Beine ca. 1250) gegen ref-6 niedriger | **andere Klasse / OBJ** | z_rinne_mitte 1300 aus layout.json hydro_tables (OBJ); Beine sind Annahme (Portalbock) |
+| 4 | klein, sicher: Schlaeuche gerade, Referenz gebogen | **bekannt** | offene Frage seit W16 |
+| 5 | klein: Topfdichte | **Folge von 1** | keine eigene Ursache |
+| Hinweis | Draufsichtbild vor W18 gerendert (pitch 250) | **gueltig** | neu gerendert (render_radialbudget.py, pitch 200, 15/14/13) |
+Teil B (Spec):
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross, sicher: Laufweg A am Innenpfosten nur 486 mm (< 500), Plattenkante nur 4 mm vom exzentrischen Beckenrand; check_nft_fit rechnete nur Beckenrand bis Innenportal = 600 | **gueltig** | Check misst jetzt am Pfosten (Plattenaussenkante 2210) und die Plattenkante zum Becken: 2 neue FAIL (40/42), im Blatt offen mit Abhilfe (Innenbeete 40 mm nach aussen oder Becken zentrieren); die Entscheidung liegt beim Orchestrator/Montage (D30-Parameter) |
+| 2 | gross, sicher: alte Zahlen in Blatt/JSON/Scope-Card (Fussplatte 100, y +-606/576, pitch 250, 125, 62,5, 12/7/5, 5/7/12, 2716, floor(L/250), Randabstand 46) | **gueltig** | fix_w18_blatt2.py: Ports/Fussplatten neu aus der Geometrie, Herkunftszeilen, Netztopf/Salatkopf, Scope-Card-Nachtrag W17/W18 (aeltere Zeilen bleiben als Historie, Nachtrag nennt den Stand) |
+| 3 | klein/mittel: check_nft_fit teils tautologisch (Rinne <= Zehneck-Seite folgt aus der Formel; Laufwege aus Budgetparametern; NFT nur Untergrenze; Aussenkante 1,3 m gegen Strebenabstand fehlt) | **gueltig, teilweise** | Check um Pfosten/Becken, NFT >= 580 erweitert, Tautologie im Blatt benannt; Strebenabstand = Montage M7; check_walkways.py (Dom) ist die Platzierungs-Messung |
+| 4 | klein: Scope-Card "Lochzahl = floor(L/pitch)" gilt fuer Reihenvarianten nicht (Mitte 9/8/7/6) | **gueltig** | Nachtrag in Scope-Card und nft_rinne-Blatt (Zustaendigkeit Lochzahl: Tisch/hole_plan) |
+| 5 | klein, vermutet: Netztopf-Gesamtzahl 2746 gehoert zum Integrator, mischt alte Beete und neue Rinnen | **gueltig (andere Klasse)** | Scope-Card-Nachtrag: Gesamtzahl ist Sache des Integrators/Layouts; Blatt vermerkt das Raster als offen |
+| H | check_walkways.py (Dom) zeigt A 580, B 476 FAIL, Wandluft 82 | **andere Klasse (Montage M7)** | Dom-Skript hat noch alte Beetmasse; M7 |

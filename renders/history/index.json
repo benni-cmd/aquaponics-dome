@@ -1838,5 +1838,25 @@
   "note": "W18 pitch 200, Draufsicht Rinne mit Toepfen",
   "commit": "8e5bd87",
   "source": "renders/components/nft_rinne/nft_rinne-05-ueberblick.png"
+ },
+ {
+  "file": "20261029-225617_werkstatt_nft-tisch_radialbudget-02-querschnitt.png",
+  "sha": "040e73a2af1be4ec",
+  "time": "2026-10-29 22:56:17",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W17/W18 neu gerendert (pitch 200)",
+  "commit": "dc70499",
+  "source": "renders/components/nft_passung/radialbudget-02-querschnitt.png"
+ },
+ {
+  "file": "20261029-225618_werkstatt_nft-tisch_radialbudget-01-draufsicht.png",
+  "sha": "77126a252a9377a0",
+  "time": "2026-10-29 22:56:18",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W17/W18 neu gerendert (pitch 200)",
+  "commit": "dc70499",
+  "source": "renders/components/nft_passung/radialbudget-01-draufsicht.png"
  }
 ]

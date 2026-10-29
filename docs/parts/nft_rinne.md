@@ -78,14 +78,14 @@ Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf 
 | geschlossenes Rechteckprofil (Hohlkammer) | - | Bild + A | ref-6: Rinnen wirken als weisse geschlossene Platten mit Loechern; Hohlkammer aus NFT-Praxis (FarmHub 2.4) | mittel |
 | vier Rippen 5 x 5 mm auf der Oberseite | y +-38, +-52 | Bild + A | ref-6 mittlerer Tisch: laengs verlaufende Ruecken auf der Oberseite; Mass geschaetzt | niedrig |
 | EINE Lochreihe in der Mittellinie | 1 Reihe | Bild | ref-6 mittlerer Tisch (je Rinne eine Reihe, Zickzack zwischen Nachbarrinnen); Scope-Card nft_rinne | hoch |
-| Lochabstand 250 mm, 12/7/5 Loecher | 250 mm | A | ref-6 zeigt Raster ohne Mass (ca. 2 Topfbreiten); Blattsalat NFT 150-250 mm (FarmHub 2.4, hydraulics.md 2.5) | niedrig |
+| Lochabstand 200 mm, Master 16/9/6 Loecher | 200 mm | A | D32 (Ben 29.10.): Iowa State 8 Zoll = 203 mm, HortTechnology 15 cm (R16); ref-6 zeigt Raster ohne Mass (ca. 2 Topfbreiten); Blattsalat NFT 150-250 mm (FarmHub 2.4) | niedrig |
 | Loch D52 | 52 mm | E | Netztopf-Korpus 50 (OBJ potplant_dxf 50 x 64 x 63) + 2 mm Spiel | mittel |
 | Endkappen mit Stopfen 14 mm, Spiel 0,5 | - | A | Konstruktionspraxis fuer Steckkappen; ref-6 zeigt Kappen am Tischende nur angedeutet | niedrig |
 | Zulauf-Tuelle D16 (Wand 3), z 70 | 16 mm | Bild + A | ref-6: hellblaue Schlaeuche am Tischende, ein Schlauch je Rinne; 16-mm-PE-Rohr ist Standard der Tropfbewaesserung | mittel |
 | Ablaufstutzen DN32, z 20, mittig unten | 32 mm | A | Scope-Card: Ablauf mittig unten; DN32 Standard-PVC-Klebemuffe; Hoehe so, dass 3,5 mm Restfilm bleiben | niedrig |
 | Gefaelle 1 cm/m | 1 % | R / hydraulics.md | FarmHub 2.4 (1 cm/m) bis Greenhouse Mgmt 1,2-3 %; Quellen widersprechen sich; im Tisch gebaut | mittel |
 | Werkstoff PVC-U weiss | 1,4 g/cm3 | Bild + A | ref-6 weisse Oberflaeche; Werkstoff ungeprueft | niedrig |
-| Lochphase A/B (shift +-pitch/4) | +-62,5 mm | E | Scope-Card nft_tisch: Versatz benachbarter Rinnen pitch/2; die Rinne stellt beide Phasen bereit | mittel |
+| Lochphase A/B (shift +-pitch/4) | +-50 mm | E | Scope-Card nft_tisch: Versatz benachbarter Rinnen pitch/2; die Rinne stellt beide Phasen bereit | mittel |
 | Rippen enden 20 mm vor Kappe (rib_end) | 20 mm | A | Kritiker Runde 1 (Rippenenden auslaufen lassen), Konstruktionspraxis | niedrig |
 | Tuelle Laenge 25 mm, Ablaufstutzen 30 mm | 25 / 30 | A | Aufsteckbarkeit Schlauch/Muffe; ref-6 zeigt Laenge nicht | niedrig |
 | Rinnen je Tisch 2 / 4 / 2-3 | - | OBJ + A | layout.json hydro_tables (2/4/2), components.md: aussen 3 nach Beetbreite 933-993 [A] | mittel |
@@ -142,3 +142,4 @@ Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne
 - Klebefuge der Endkappen nicht als Koerper modelliert
 - Zickzack = Versatz benachbarter Rinnen im Tisch; die Rinne liefert nur die Lochphase A/B (Konfiguration shift +-pitch/4, Dateien nft_rinne_<l|m|k>_<a|b>.sc) - Scope-Card nft_rinne vom Orchestrator zu ergaenzen
 - Anzahl Rinnen je Aussentisch: layout.json 2, components.md 3 -> 3 als Annahme A (Beetbreite 933-993)
+- Zustaendigkeit Lochzahl: die Rinne liefert das Raster (pitch, Phase); die Lochzahl je Tischreihe bestimmt der Tisch (tisch_geom.hole_plan: n <= floor(L/pitch), Phasenzwang, Randabstand 64), daher weniger als floor(L/pitch) (Mitte 9/8/7/6 statt 9/9/8/7)

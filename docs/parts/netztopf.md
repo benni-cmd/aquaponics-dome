@@ -4,7 +4,7 @@
 
 **Datei:** `designs/components/netztopf.sc` · **Teilenummer:** T10 · **Revision:** A · **Bezugspunkt:** Mitte Boden (Z=0), Achse Z; Kragenoberkante bei Z=cup_h
 
-**Anzahl (Instanzen):** Beete 2160 (OBJ) + Rinnen 586 (E) = 2746 (Quelle: data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_rinne.md (20 Rinnen x 5 + 24 x 7 + 24 x 12 Loecher))
+**Anzahl (Instanzen):** Beete 2160 (OBJ) + Rinnen 586 (E) = 2746 (Quelle: data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_tisch.md (Loecher je Tischreihe, W18))
 
 ## Masse und Parameter
 
@@ -54,7 +54,7 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 | Schlitze 3 x 38 mm, 8 Stueck, ab 8 mm ueber dem Boden | 3 x 38 mm, 8 St. | A | Netztoepfe haben Schlitze fuer den Wurzeldurchtritt; Mass geschaetzt | niedrig |
 | Bodenloch D10 | D10 | A | Standard-Netztopf; OBJ hat nur eine Box | niedrig |
 | Konischer Korpus 34 -> 50 mm, Innenwand parallel | D34 / D50 | A | Standard-Netztopf konisch; Aussen-D oben 50 = OBJ | niedrig |
-| Gesamtzahl 2746 = 2160 (Beete) + 586 (Rinnen) | 2746 | OBJ + E | layout.json pots.total + Rinnen-Blatt (Loecher 5/7/12 je Rinne) | mittel |
+| Gesamtzahl 2746 = 2160 (Beete) + 586 (Rinnen) | 2746 | OBJ + E | layout.json pots.total + Rinnen-Blatt (Loecher je Tischreihe aus tisch_geom.hole_plan, docs/parts/nft_tisch.md) | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -85,7 +85,7 @@ Netztoepfe 50 mm sind Massenware (Gartenbedarf/Hydroponik, ca. 0,05-0,10 EUR/Stu
 
 ## Pruefung
 
-- Gauntlet-Urteil: Spec-Pruefer Runde 1 und 2 (siehe workshop-log); W18 Zahlen nachgefuehrt
+- Gauntlet-Urteil: Kein Bild-Kritiker (Netztopf in keiner Referenz sichtbar); Spec-Pruefer Runde 1 und 2, siehe workshop-log
 - scripts/workshop/check_pflanze.py (18/18 PASS, davon 9 Netztopf): Masse 50 x 64 x 63 (liest die Konstante aus layout.json, kein unabhaengiger OBJ-Beleg), Kragen D64, Bezugspunkt Z=0, 8 Schlitze, Material PP, Masse 14-20 g, Spiel im Rinnen-Topfloch D52 = 2 mm
 - Schnitt `renders/components/netztopf/netztopf-02-schnitt.png` zeigt Wand, Kragen, Schlitze und Bodenloch; Sitz im Topfloch: `renders/components/nft_rinne/nft_rinne-06-schnitt-zulauf.png`
 - Kein Bild-Kritiker: der Netztopf ist in keiner Referenz sichtbar (vom Salat bzw. der Erde verdeckt); Spec-Pruefer: Runde 1 FAIL -> behoben, Runde 2 (29.10. W07) FAIL (Herkunft/Altlasten) -> behoben, siehe workshop-log

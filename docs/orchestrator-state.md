@@ -43,3 +43,7 @@
 - Werkstatt-Arbeitsstand ungesichert: W16-Dateien (nft_tisch_*.sc 14:35, data/components/nft_tisch.json, check_nft_fit.py); 72 Dateien im Arbeitsbaum offen.
 - Wochenbudget: Regel ab 95 % Woche keine Anstoesse mehr, Zustand sichern.
 - ZEITANGABEN: `get_usage` liefert `resetsAt` in UTC. Ortszeit ist MEZ (UTC+1, seit 25.10.2026). Reset 5h-Fenster 29.10. 22:10, Woche 30.10. 03:00 Ortszeit. Immer aus `resetsIn` und der Systemuhr (`date`) rechnen, nie die UTC-Zahl uebernehmen.
+
+## Stand 29.10. 21:20 (Orchestrator): AUSLAUFEN auf Bens Anweisung
+- Wochenlimit 93 %, 5h-Fenster 89 % (Reset 22:10 Ortszeit). Beide Sitzungen angewiesen: laufenden Schritt beenden, Zustandsdatei, WIP-Commit + Push, Zug beenden. Keine neuen Auftraege, keine Anstoesse bis Ben freigibt.
+- Danach Orchestrator: git status pruefen, Viewer neu exportieren lassen, Ben EINE Zeile melden. Offene Auftraege nach dem Stop: Montage M7 (D30/D31 laut loop-state), M3 Tuer, M4/M5 Rohre; Werkstatt W17 (Beet 800, Tische), Haut-Paneel R11. Modellbeschreibung: Pruefstand nach M7/W17 aktualisieren.

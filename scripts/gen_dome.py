@@ -3,13 +3,13 @@ Aufruf: python gen_dome.py <stufe> <out.json>. Masse in mm; alle Annahmen stehen
 import json, math, sys
 from geo import build
 
-P = dict(  # Parameter-Tabelle (siehe docs/packages/dome-build.md)
-    dome_base_d=7000, freq=3, sock_h=400, sock_w=300, strut_r=20,
-    door_w=900, door_h=2000, door_az=-54, door_off=550,
-    t5_d=2400, t5_h=900, t6_d=1200, t6_h=700, t7_d=700, t7_h=1000, t7_stand=400,
-    bed_n=10, bed_len=1500, bed_w=700, bed_h=900, bed_r=2850,
-    tub_len=1500, tub_w=560, tub_h=400,
-    pipe_d=200, cab_x=500, cab_y=300, cab_z=800, wall=80)
+P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe 6 m; Rest per Pixelvergleich mit ref-4 (Basis = 12 m)
+    dome_base_d=12000, dome_h=6000, freq=3, sock_h=600, sock_w=250, strut_r=45,
+    door_w=1000, door_h=2000, door_az=-54, door_off=1100,
+    t5_d=3800, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
+    bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4800,
+    tub_len=2200, tub_w=760, tub_h=550,
+    pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=120)
 
 cmds = []
 def add(c, **p): cmds.append({"command": c, "params": p})
@@ -37,7 +37,8 @@ def t1_t3_t4(sock_z):
     zb = -0.18
     # Radius so, dass der Basisring-Umkreis = dome_base_d/2
     R = (P["dome_base_d"]/2) / math.sqrt(1 - zb*zb)
-    cz = sock_z - zb*R
+    zsq = P['dome_h']/((1-zb)*R)   # Hoehe/Breite = 0,5: Kuppel in Z gestaucht
+    cz = sock_z - zb*R*zsq
     # Basisring auf gleiche Hoehe setzen; Drehung: Basisknoten bei Azimut 0
     base = [k for k in keep if pts[k][2] < 0]
     a0 = math.atan2(pts[base[0]][1], pts[base[0]][0])
@@ -45,7 +46,7 @@ def t1_t3_t4(sock_z):
         x, y, z = pts[k]
         if z < 0: z = zb
         x, y = rot(x, y, -a0)
-        return (x*R, y*R, z*R + cz)
+        return (x*R, y*R, z*R*zsq + cz)
     # Tuerflaeche: Streben, die den Tuerquader kreuzen, entfallen
     da = math.radians(P["door_az"]); rd = R*math.sqrt(1-zb*zb)*math.cos(math.radians(18))
     def in_door(p):
@@ -86,12 +87,12 @@ def tank(name, cx, cy, z0, d, h, wall_expr, stand=0):
     add("solid.cylinder", diameter=f"({d}) - 2*wall", height=h, base=[cx, cy, z0+stand+P["wall"]], operation="cut", targets=[name], name=name+"_Hohlraum")
     for i in range(4 if stand else 0):
         lx, ly = cx+ (P["t7_d"]/2-60)*math.cos(math.radians(90*i+45)), cy+(P["t7_d"]/2-60)*math.sin(math.radians(90*i+45))
-        add("solid.cylinder", radius=20, height=stand, base=[round(lx, 1), round(ly, 1), z0], operation="join", targets=[name], name=f"{name}_Fuss{i+1}")
+        add("solid.cylinder", radius=30, height=stand, base=[round(lx, 1), round(ly, 1), z0], operation="join", targets=[name], name=f"{name}_Fuss{i+1}")
 
 def t5_t7(fz):
-    tank("T5_Zentraltank", 0, 300, fz, "t5_d", "t5_h", "wall")
-    tank("T6_Mitteltank", 300, -1550, fz, "t6_d", "t6_h", "wall")
-    pos = [(-1900, 200), (-1500, -700), (1900, 300), (1600, 1100), (-900, -1700), (1500, -1350)]
+    tank("T5_Zentraltank", 0, 450, fz, "t5_d", "t5_h", "wall")
+    tank("T6_Mitteltank", 500, -2600, fz, "t6_d", "t6_h", "wall")
+    pos = [(-3200, 500), (-2600, -1700), (3200, 300), (2700, 1800), (-1500, -3000), (2400, -2300)]
     for i, (x, y) in enumerate(pos, 1):
         tank(f"T7_Fasstank_{i}", x, y, fz, "t7_d", "t7_h", "wall", stand=P["t7_stand"])
 
@@ -102,26 +103,27 @@ def t8_t9(fz):
         cx, cy = pol(P["bed_r"], az)
         blen = P["bed_len"]
         if az == P["door_az"] % 360:   # Bett vor der Tuer: kuerzer und von der Tuer weg
-            blen = 700; t = math.radians(az+90)
-            cx, cy = cx + -400*math.cos(t), cy + -400*math.sin(t)
+            blen = 1200; t = math.radians(az+90)
+            cx, cy = cx + -800*math.cos(t), cy + -800*math.sin(t)
         nm = f"T8_Anbaubett_{i+1:02d}"
         rect_body(nm, round(cx, 1), round(cy, 1), fz+P["bed_h"]-60, az+90, blen, P["bed_w"], 60)
         a = math.radians(az+90)
         for sx in (-1, 1):
             for sy in (-1, 1):
-                lx, ly = rot(sx*(blen/2-60), sy*(P["bed_w"]/2-60), a)
-                add("solid.cylinder", radius=20, height=P["bed_h"]-60, base=[round(cx+lx, 1), round(cy+ly, 1), fz], operation="join", targets=[nm], name=f"{nm}_Bein{(sx+1)//2*2+(sy+1)//2+1}")
-        for r in range(2):
-            for c in range(4 if blen > 1000 else 2):
-                lx, ly = rot((c-(1.5 if blen > 1000 else 0.5))*330, (r-0.5)*300, a)
-                add("solid.cylinder", diameter=50, height=70, base=[round(cx+lx, 1), round(cy+ly, 1), fz+P["bed_h"]-65], operation="cut", targets=[nm], name=f"{nm}_Loch{r*4+c+1}")
+                lx, ly = rot(sx*(blen/2-80), sy*(P["bed_w"]/2-80), a)
+                add("solid.cylinder", radius=30, height=P["bed_h"]-60, base=[round(cx+lx, 1), round(cy+ly, 1), fz], operation="join", targets=[nm], name=f"{nm}_Bein{(sx+1)//2*2+(sy+1)//2+1}")
+        nc = 6 if blen > 1500 else 3
+        for r in range(3):
+            for c in range(nc):
+                lx, ly = rot((c-(nc-1)/2)*330, (r-1)*270, a)
+                add("solid.cylinder", diameter=70, height=70, base=[round(cx+lx, 1), round(cy+ly, 1), fz+P["bed_h"]-65], operation="cut", targets=[nm], name=f"{nm}_Loch{r*6+c+1}")
     # T9: zwei Substratwannen unter Bett 7 (Azimut 270? -> hier Azimut 234 und 342)
     for k, az in enumerate((234, 342), 1):
         cx, cy = pol(P["bed_r"], az)
         rect_body(f"T9_Substratbeet_{k}", round(cx, 1), round(cy, 1), fz, az+90, P["tub_len"], P["tub_w"], P["tub_h"])
 
 def t10_t11(fz):
-    A = (-4078, 429, 2200); B = (-849, 1149, fz+1050)
+    A = (-6577, 2394, 4400); B = (-1344, 1794, fz+1400)
     d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [round(x/L, 6) for x in d]
     add("solid.cylinder", diameter="pipe_d", height=round(L, 1), base=list(A), axis=u, operation="new", name="T10_Zulaufrohr", body_name="T10_Zulaufrohr")
     az = -18; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))

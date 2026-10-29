@@ -46,12 +46,14 @@ Jede Runde: bauen -> Screenshot aus Kamera wie `ref-4` -> Referenz und Screensho
 2. Sockel hat 10 Seiten, Tuer an derselben Stelle (vorne rechts)
 3. Tank-Gruppierung: 1 grosser Zentraltank, 1 Mitteltank, 6 Fass-Tanks, gleiche Anordnung
 4. Anbaubetten: 10 Segmente ringfoermig, Reihen mit Pflanzloechern
-5. Hoehen-Breiten-Verhaeltnis der Kuppel stimmt auf 10 % mit der Referenz
+5. Hoehen-Breiten-Verhaeltnis = 0,5 (12 m / 6 m), Abweichung unter 3 % (gemessen 0,503)
 6. Alle Teile haben Namen T1-T11 im Design und liegen im richtigen Verhaeltnis zueinander (keine Durchdringungen ausser Rohr durch die Haut)
 
-## Kalibrierte Masse (Aenderungen gegenueber den Annahmen)
+## Masse (von Ben bestaetigt, 29.10.2026) und Rangfolge der Massquellen
 
-Kuppel 5/8-3V, Basis-D 7,0 m, Hoehe 4,2 m (statt 3,5; Verhaeltnis 0,6 wie Bild) · Zentraltank D2,4 · Mitteltank D1,2 · Betten r=2,85 m, 1,5x0,7 m, 2x4 Loecher · Substratwanne 1,5x0,56x0,4 · Rohr aus Westen. Streben als Einzelkoerper T1_Strebe_nnn (157, 8 im Tuerbereich entfallen). Bauweise: `scripts/build.sh`, Parameter in `scripts/gen_dome.py` (Tabelle `P`; Tank-/Bett-Masse als Parameter-Ausdruecke im Design, Strebenpositionen numerisch aus dem Skript).
+Bei Konflikt gewinnt die hoehere Quelle: 1. Kuppel Grundflaeche 12 m, Hoehe 6 m (verbindlich) · 2. Tuer 1,0 x 2,0 m (Normtuer, wahrscheinlich) · 3. Menschenmasse (Tischhoehe 0,9-1,0 m, Fass 1-1,2 m, Gehweg >= 0,8 m) · 4. Pixelverhaeltnisse aus ref-4 (nur Anordnung/relative Groesse).
+
+Umgesetzt (Runde 6, Tabelle `P` in `scripts/gen_dome.py`): Kuppel 3V, D 12,0 m, H 6,0 m (Verhaeltnis gemessen 6095/12119 = 0,503; 5/8-Geruest in Z gestaucht, da 3V keinen Aequator-Ring hat), Stab r 45 mm · Sockel 0,6 m hoch, 0,25 m Ueberstand · Tuer 1,0x2,0 m, 1,1 m seitlich versetzt · T5 D3,8x1,2 · T6 D2,2x0,9 · T7 D1,1x1,2 auf 0,5 m Staendern · Betten 2,3x0,9x0,95, 3 Reihen Topf-Loecher, Ring r 4,8 m, Bett 09 gekuerzt auf 1,2 m · Substratwanne 2,2x0,76x0,55 · Rohr D0,3 · Schaltschrank 0,8x0,5x1,2. Abweichung zur Referenz: Tuer im Bild relativ groesser (Perspektive); Punkt 1/2 gehen vor. Pixelvermessung der Tanks/Betten ist Naeherung (Perspektive), nicht auf 5 % belegt.
 
 ## Status
 
@@ -61,3 +63,8 @@ Kuppel 5/8-3V, Basis-D 7,0 m, Hoehe 4,2 m (statt 3,5; Verhaeltnis 0,6 wie Bild) 
 
 Geprueft gegen: Screenshot gegen `reference/ref-4-dome-clean.jpg` (Latte 1-6), `designs/dome.sc`, `git log`
 Offen: Schritte 1-7; echte Masse (DEINE ENTSCHEIDUNG, falls bekannt)
+
+## Zusaetzliche Latte (29.10.2026)
+7. Kuppel 12 m / 6 m, Abweichung < 3 % — erfuellt (Runde 6)
+8. Betten 2,3 x 0,9 m mit 3 Reihen Topf-Loechern, Tuerzugang frei — erfuellt (Bett 09 gekuerzt, Tuer versetzt); Abstand Tuer–Bett 09 ~0,55 m seitlich, Zugang radial frei (nicht auf 1,0 m seitlich)
+9. Sockel Ueberstand <= 0,3 m — erfuellt (0,25 m)

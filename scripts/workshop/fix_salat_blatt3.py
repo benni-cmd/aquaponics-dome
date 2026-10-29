@@ -25,7 +25,7 @@ bl["abweichung"] = f"keine OBJ-Vorgabe (Salatkoepfe stammen aus ref-6); Groesse 
 bl["pruefung"] = [f"scripts/workshop/check_pflanze.py (18/18 PASS, davon 9 Salatkopf): {n} Blaetter, Breite M 95-125, Hoehe 50-70, Hals im Topf, Flaechenbudget, Konfigurationen S/M/L, Breite S/L = 0,7/1,3 x M",
                   "Facetten: " + f"{len(ev['bodies'])} Koerper, {sum(x['faces'] for x in ev['bodies'])} Flaechen gesamt, OBJ-Export 8756 Dreiecke (solidcraft-cli run salatkopf.sc --out x.obj; vorher 69 k)"]
 bl["kritiker"] = sys.argv[1] if len(sys.argv) > 1 else "siehe docs/workshop-log.md (Runde 5, Rev. B)"
-bl["offen"] = ["Blattraender eben und kantig (keine Kraeuselung): gekraeuselte Blaetter brauchen viele Flaechen, Budget bei 2716 Instanzen",
+bl["offen"] = ["Blattraender eben und kantig (keine Kraeuselung): gekraeuselte Blaetter brauchen viele Flaechen, Budget bei 2746 Instanzen",
                "Konfigurationen S/L wirken auf verknuepfte Instanzen im Dom: Integrator pruefen",
                "Instanzvariation (zufaellige Drehung um Z, S/M/L gemischt) ist Sache des Layouts/Tisches"]
 keep = [r for r in d["herkunft_tabelle"] if r[0].startswith(("Groessen S", "Wurzelhals", "Gruen", "Anzahl"))]

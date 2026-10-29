@@ -68,7 +68,7 @@
  },
  "anzahl": {
   "soll": "Beete 2160 (OBJ) + Rinnen 586 (E) = 2746",
-  "quelle": "data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_rinne.md (20 Rinnen x 5 + 24 x 7 + 24 x 12 Loecher)"
+  "quelle": "data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_tisch.md (Loecher je Tischreihe, W18)"
  },
  "bezugspunkt": "Mitte Boden (Z=0), Achse Z; Kragenoberkante bei Z=cup_h",
  "blatt": {
@@ -185,7 +185,7 @@
    "Gesamtzahl 2746 = 2160 (Beete) + 586 (Rinnen)",
    "2746",
    "OBJ + E",
-   "layout.json pots.total + Rinnen-Blatt (Loecher 5/7/12 je Rinne)",
+   "layout.json pots.total + Rinnen-Blatt (Loecher je Tischreihe aus tisch_geom.hole_plan, docs/parts/nft_tisch.md)",
    "mittel"
   ]
  ]

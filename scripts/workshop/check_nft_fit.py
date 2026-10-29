@@ -87,10 +87,12 @@ def main():
         # (4) innen: Pfosten ausserhalb des Pools
         if G["art"] == "ausleger":
             rim = TG.pool_outer_r()
-            dpool = min(math.hypot(world(az, ap, x, y)[0] - pcx, world(az, ap, x, y)[1] - pcy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"])
-            ck.eq(f"innen Pfosten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Abstand {dpool:.0f} mm >= 30)", 1 if dpool >= 30 else 0, 1)
+            fpl = p["foot_plate"] / 2.0
+            dpool = min(math.hypot(world(az, ap, x + dx, y + dy)[0] - pcx, world(az, ap, x + dx, y + dy)[1] - pcy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"] for (dx, dy) in ((-fpl, -fpl), (fpl, -fpl), (fpl, fpl), (-fpl, fpl)))
+            ck.eq(f"innen Fussplatten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Plattenkante, Becken exzentrisch: Abstand {dpool:.0f} mm >= 5)", 1 if dpool >= 5 else 0, 1)
     print(f"   Tische gesamt {total_tables} (Soll 24), Rinnen-Topfloecher gesamt {total_holes}")
     ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 459 (R15/D27: Mindestzahl NFT)", 1 if total_holes >= 459 else 0, 1)
+    ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 580 (D32: Soll ca. 580 bei pitch {TG.rinne_pitch():g})", 1 if total_holes >= 580 else 0, 1)
     # (5) Laufwege radial (D28/D29): Portalrand = Beet-Halbbreite + leg_clearance + foot_plate; Rand Pool, Portale, Wand
     Gm, Ga = TG.geometry("mitte", p, d["typen"]["mitte"]), TG.geometry("aussen", p, d["typen"]["aussen"])
     half = lambda G: G["bed_w"] / 2.0 + p["leg_clearance"] + p["foot_plate"]
@@ -99,6 +101,9 @@ def main():
     b_ = (Ga["apc"] - half(Ga)) - (Gm["apc"] + half(Gm))
     c_ = wall_ap - (Ga["apc"] + half(Ga))
     ck.eq(f"Laufweg A Beckenrand (Aussenradius {TG.pool_outer_r():.0f}) - Innenportal ({Gm['apc'] - half(Gm):.0f}): {a_:.0f} mm >= 500 (Soll 600)", 1 if a_ >= 500 else 0, 1)
+    Gi = TG.geometry("innen", p, d["typen"]["innen"])
+    a_post = (Gm["apc"] - half(Gm)) - (Gi["ap_leg"] + p["foot_plate"] / 2.0)
+    ck.eq(f"Laufweg A frei am Innenpfosten (Plattenaussenkante {Gi['ap_leg'] + p['foot_plate'] / 2.0:.0f} - Innenportal {Gm['apc'] - half(Gm):.0f}): {a_post:.0f} mm >= 500 (D29: nie unter 500; OBJ-Beete/Becken-Exzentrizitaet nicht eingerechnet)", 1 if a_post >= 500 else 0, 1)
     ck.eq(f"Laufweg B Innenportal (bis {Gm['apc'] + half(Gm):.0f}) - Aussenportal (ab {Ga['apc'] - half(Ga):.0f}): {b_:.0f} mm >= 500 (Soll 600)", 1 if b_ >= 500 else 0, 1)
     ck.eq(f"Wandluft Aussenportal (bis {Ga['apc'] + half(Ga):.0f}) - Domwand-Apothem {wall_ap:.0f}: {c_:.0f} mm >= 100 (Soll 218)", 1 if c_ >= 100 else 0, 1)
     ck.eq("Tische gesamt (innen 10 + mitte 6 + aussen 8)", total_tables, 24)

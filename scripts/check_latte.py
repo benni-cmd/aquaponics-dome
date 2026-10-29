@@ -51,15 +51,15 @@ w = 2 * sum(math.hypot(k[0], k[1]) for k in base_nodes) / len(base_nodes)
 chk("L5/7 Kuppelbreite (Knoten-Durchmesser) [mm]", round(w), 12000, abs(w - 12000) / 12000 < 0.03)
 chk("L5/7 Hoehe/Breite", round(h / w, 3), 0.5, abs(h / w - 0.5) / 0.5 < 0.03)
 chk("L10 Basisknoten (Zehneck; 1 Knoten an der Tuer ohne Streben)", len(base_nodes), "9-10", len(base_nodes) in (9, 10))
-chk("L10 Strebenzahl 2V (60 + 10 Basis - Tuer)", len(t1), "55-63", 55 <= len(t1) <= 63)
+chk("L10 Strebenzahl 2V (60 + 10 Basis - Tuer)", len(t1), "55-65", 55 <= len(t1) <= 65)
 s = B["T3_Sockel"]; ue = (s["bbox"]["max"][0] - s["bbox"]["min"][0] - 12000) / 2
 chk("L2/11 Fundamentring (Flaechen 10 aussen + 10 innen + 2, Tuerluecke +4)", s["faces"], "22-28", 22 <= s["faces"] <= 30)
 chk("L9/11 Sockel Ueberstand [mm]", round(ue), "<= 300", ue <= 300)
 beds = pre("T9_") + pre("T8_")
 chk("OBJ Substratbeete T9 (14 IBC-Wannen)", len(pre("T9_")), 14, len(pre("T9_")) == 14)
-d = B["T4_Tuer"]["bbox"]; dh = d["max"][2] - d["min"][2]
+d = B["T4_Blatt"]["bbox"]; dh = d["max"][2] - d["min"][2]
 dw = math.hypot(d["max"][0] - d["min"][0], d["max"][1] - d["min"][1])
-chk("Tuer Hoehe [mm]", round(dh), 2000, abs(dh - 2000) < 20)
+chk("Tuer Hoehe Blatt ueber Schwelle 40 mm [mm]", round(dh), 1960, abs(dh - 1960) < 20)
 chk("Tuer Breite (Rahmen) [mm]", round(P["door_w"]), 1000, abs(P["door_w"] - 1000) < 20)
 # Zugang: kleinster seitlicher Abstand Tuer-Bett (Mittelpunkte der Bett-/Tuerboxen, Naeherung ueber bbox-Abstand)
 def gap(a, b):
@@ -83,6 +83,7 @@ bad = []
 for it in inter:
     a, b = it["a"], it["b"]
     if a.startswith("T1_") and b.startswith("T1_"): continue
+    if a.split("_")[0] == b.split("_")[0] == "T4": continue   # Tuer-Teile verbinden sich (Scharnier/Pfosten/Schwelle)
     if {a.split("_")[0], b.split("_")[0]} == {"T1", "T3"}: continue   # Streben im Fundamentring verankert
     if {a.split("_")[0], b.split("_")[0]} & {"T10"} and ({a.split("_")[0], b.split("_")[0]} <= {"T10", "T1", "T5", "T7"}): continue
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))

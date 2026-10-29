@@ -32,7 +32,7 @@ inst = {}
 for c in comps:
     for ch in c.get("children", []):
         nm = byid[ch["component"]]["name"] if ch["component"] in byid else ch["name"]; inst[nm] = inst.get(nm, 0) + 1
-chk("Strebe A (30) + B (35) = 65 minus 4 Tuer-Streben", (inst.get("Strebe_A", 0), inst.get("Strebe_B", 0)), "30/35 minus Tuerraum", inst.get("Strebe_A", 0) + inst.get("Strebe_B", 0) == 61)
+chk("Strebe A (30) + B (35) = 65 minus 1 Basisstrebe am Tuerdreieck (R13)", (inst.get("Strebe_A", 0), inst.get("Strebe_B", 0)), "30/35 minus Tuerraum", inst.get("Strebe_A", 0) + inst.get("Strebe_B", 0) == 64)
 ncopies = sum(len(r["copies"]) for r in (res if isinstance(res, list) else [res]) if isinstance(r, dict) and isinstance(r.get("copies"), list))
 chk("component.copies leer", ncopies, 0, ncopies == 0)
 sys.exit(0 if all(rows) else 1)

@@ -169,5 +169,14 @@
   "r_id": "R02",
   "maturity": 0,
   "used_by": "gen_dome.py"
+ },
+ "door_edge_az": {
+  "value": -72,
+  "unit": "deg",
+  "origin": "E",
+  "source": "R13: Basisdreieck mit Spitzenknoten Z 3154 (r 5104), naechst zu door_az; aus Knotenliste",
+  "r_id": "R13",
+  "maturity": 1,
+  "used_by": "gen_dome.py"
  }
 }

@@ -94,19 +94,29 @@ def ring_fn(sock_z):
     add("sketch.line", points=ring(ri), closed=True)
     add("sketch.finish")
     add("solid.extrude", distance=P["ring_h"], operation="new", name="T3_Sockel", body_name="T3_Sockel")
-    gx, gy = pol(P["dome_base_d"]/2 + 75, P["door_az"])
-    rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
+    gx, gy = pol(P["dome_base_d"]/2*math.cos(math.radians(18)) + 150, P["door_edge_az"])
+    rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_edge_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
 
 def tuer_fn(sock_z, rd, da):
-    # T4 Tuer: Rahmen (aussen/innen), Ebene radial zur Tuerflaeche
-    ca, sa = math.cos(da), math.sin(da)
-    ox, oy = rd*ca - P['door_off']*sa, rd*sa + P['door_off']*ca
-    add("sketch.create", plane={"origin": [round(ox, 2), round(oy, 2), sock_z], "x_dir": [round(-sa, 6), round(ca, 6), 0], "y_dir": [0, 0, 1]}, name="T4_Tuer_sk")
-    w, h, f = P["door_w"], P["door_h"], 60
-    add("sketch.rectangle.two_point", p0=[-w/2, 0], p1=[w/2, h])
-    add("sketch.rectangle.two_point", p0=[-w/2+f, 30], p1=[w/2-f, h-f])
+    """Tuer_Komplett (R13): rechteckiger Rahmen aus 2 Pfosten, Sturz, Schwelle im Basisdreieck mit Spitze Z 3154; Blatt 1000 x 2000 nach aussen oeffnend, 3 Scharniere, Griff."""
+    az = P["door_edge_az"]; a = math.radians(az); ap = P["dome_base_d"]/2 * math.cos(math.radians(18))   # Mitte der Basiskante
+    t = (-math.sin(a), math.cos(a)); n = (math.cos(a), math.sin(a))
+    W = lambda u, v: (round(ap*n[0] + u*t[0] + v*n[0], 1), round(ap*n[1] + u*t[1] + v*n[1], 1))
+    w, h = P["door_w"], P["door_h"]
+    for nm, u in (("T4_Pfosten_L", -(w/2 + 45)), ("T4_Pfosten_R", w/2 + 45)):
+        x, y = W(u, 0); rect_body(nm, x, y, sock_z, az + 90, 90, 90, h + 100)
+    x, y = W(0, 0); rect_body("T4_Sturz", x, y, sock_z + h + 100, az + 90, w + 180, 90, 90)
+    x, y = W(0, 0); rect_body("T4_Schwelle", x, y, sock_z, az + 90, w + 180, 110, 40)
+    ox, oy = W(0, 75)
+    add("sketch.create", plane={"origin": [ox, oy, sock_z + 40], "x_dir": [round(t[0], 6), round(t[1], 6), 0], "y_dir": [0, 0, 1]}, name="T4_Blatt_sk")
+    f = 60
+    add("sketch.rectangle.two_point", p0=[-w/2, 0], p1=[w/2, h - 40])
+    add("sketch.rectangle.two_point", p0=[-w/2 + f, f], p1=[w/2 - f, h - 40 - f])
     add("sketch.finish")
-    add("solid.extrude", distance=60, direction="symmetric", operation="new", name="T4_Tuer", body_name="T4_Tuer")
+    add("solid.extrude", distance=45, direction="symmetric", operation="new", name="T4_Blatt", body_name="T4_Blatt")
+    for i, z in enumerate((300, 1000, 1700), 1):
+        x, y = W(-(w/2 + 5), 75); add("solid.cylinder", radius=14, height=110, base=[x, y, sock_z + z], operation="new", name=f"T4_Scharnier_{i}", body_name=f"T4_Scharnier_{i}")
+    x, y = W(w/2 - 80, 110); add("solid.cylinder", radius=16, height=160, base=[x, y, sock_z + 1000], axis=[round(t[0], 6), round(t[1], 6), 0], operation="new", name="T4_Griff", body_name="T4_Griff")
 
 def t1_t3_t4(sock_z):
     pts, edges = build(P["freq"])
@@ -127,18 +137,13 @@ def t1_t3_t4(sock_z):
         return (x*R, y*R, z*R*zsq + cz)
     # Tuerflaeche: Streben, die den Tuerquader kreuzen, entfallen
     da = math.radians(P["door_az"]); rd = R*math.sqrt(1-zb*zb) - 100
-    def in_door(p):
-        x, y = rot(p[0], p[1], -da)   # x = radial, y = tangential
-        return abs(x - rd) < 150 and abs(y - P["door_off"]) < P["door_w"]/2 + 40 and sock_z - 20 < p[2] < sock_z + P["door_h"] + 40
-    import math as _m
-    ring = sorted(base, key=lambda k: _m.atan2(V(k)[1], V(k)[0]))   # Basis-Zehneck: 10 Kanten
-    edges = set(edges) | {tuple(sorted((ring[i], ring[(i+1) % len(ring)]))) for i in range(len(ring))}
     n = 0; dropped = 0; segs = []
     for a, b in sorted(edges):
         if a not in keep or b not in keep: continue
         A, B = V(a), V(b)
-        if any(in_door(tuple(A[i]+(B[i]-A[i])*t/10 for i in range(3))) for t in range(1, 10)):
-            dropped += 1; continue
+        if a in base and b in base:   # Basiskante des Tuerdreiecks (R13) entfaellt: Schwelle/Pfosten ersetzen sie
+            ma = math.degrees(math.atan2((A[1]+B[1])/2, (A[0]+B[0])/2))
+            if abs((ma - P["door_edge_az"] + 180) % 360 - 180) < 2: dropped += 1; continue
         segs.append((A, B))
     act("03_Kuppel"); place_struts(segs)
     act("02_Gelaende")
@@ -225,7 +230,7 @@ def plant(x, y, z, r=90):
 def rohr_fn():
     # Zulaufrohr (Frischwasser) nur AUSSEN: flach auf dem Boden, Bogen zur Fundamentringwand nahe dem Zweitbecken (OBJ-Azimut 166 -> Modell -55)
     pr = P["pipe_d"]/2; z = P["sock_h"] + pr
-    P0 = pol(9500, -90); P1 = pol(7600, -66); P2 = pol(6030, -66)
+    P0 = pol(9500, -90); P1 = pol(7600, -48); P2 = pol(6120, -48)
     def seg(A, B, nm, op, **kw):
         d = [B[0]-A[0], B[1]-A[1]]; L = math.hypot(*d)
         add("solid.cylinder", radius=pr, height=round(L, 1), base=[round(A[0], 1), round(A[1], 1), z], axis=[round(d[0]/L, 6), round(d[1]/L, 6), 0], operation=op, name=nm, **kw)

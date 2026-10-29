@@ -13,6 +13,9 @@
 | R21 Hydraulik | Umwaelzrate (Beckenvolumen pro Stunde), Flutzyklen Glockensiphon, NFT-Durchfluss, Pumpenwirkungsgrad, Foerderhoehe | 143 l/min, 2 Zyklen/h [A], 0,5 l/min je Rinne |
 | R22 Belueftung, Strom | Sauerstoffbedarf je kg Futter/Fisch, Belueftungswirkungsgrad kg O2/kWh, Heizbedarf Tilapia 26-28 °C in der Kuppel | 4,3 kg O2/Tag, 1 kg/kWh [A], Heizung nicht modelliert |
 
+## Vergleichsquellen (Ben 30.10.): der Oasis-Simulator wird berücksichtigt, aber nicht blind uebernommen
+Bens Simulator https://showcase-oasis-simulator.vercel.app/ui-prototype/ (Notizen `reference/oasis-simulator-notes.md`) und seine Tabelle `reference/Kuppelberechnung-neu-2.xlsx` gelten als **Vergleichswerte**: je Block die Simulator-Zahl neben die eigene Recherche stellen, Abweichungen begruenden. Erst eine unabhaengig belegte Zahl wird Standard.
+
 ## Vorgehen
 1. Je Block ein unabhaengiger Recherche-Agent (zwei Quellen mindestens, bevorzugt Extension-Dienste, Peer-Review, FAO), Ergebnis mit Zahl, Spannweite, Quelle, Konfidenz.
 2. Orchestrator fuehrt zusammen: Besatz aus dem engsten Engpass (Sauerstoff, Ammonium, Filter, Pflanzflaeche) bestimmen, dann Futter, Pflanzen, Pumpen, Strom neu rechnen; `system_specs.py` auf Q-Quellen umstellen.

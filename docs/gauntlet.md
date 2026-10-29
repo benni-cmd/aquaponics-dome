@@ -1,5 +1,25 @@
 # Gauntlet-Loop fuer dieses Projekt (hohe Messlatte)
 
+## Kurzfassung (nach der Vorlage des Skills; GILT ZUERST, der Rest unten ist Anhang)
+
+```
+Baue ein parametrisches SolidCraft-Modell der Aquaponik-Kuppel (12 m, 2V-Halbkugel), das aussieht wie die Referenz und technisch stimmt: Wasserkreislauf, wiederkehrende Bauteile als Komponenten mit Instanzen.
+
+Die Messlatte sind Bens Blender-Renders `reference/ref-4` bis `ref-6` und das OBJ-Layout `data/layout.json`. Hol sie dir und vergleiche direkt damit, nicht mit einer Beschreibung davon. Die messbare Haelfte sind `check_fidelity.py` und `check_hydraulics.py`.
+
+Teile die Arbeit in die kleinsten Stuecke, die einzeln verbessert und beurteilt werden koennen. Pro Stueck: ein Bauer und ein getrennter Kritiker mit frischem Kontext. Der Kritiker oeffnet das echte Ergebnis, legt es ohne Beschriftung neben die Referenz, sagt welches die Anlage genauer zeigt und nennt die eine groesste Luecke. Dann zurueck zum Bauer.
+
+Der Kritiker ist hart. Lob ist nicht nuetzlich. Gewinnt unser Stueck nicht, geht es weiter.
+
+/loop pro Stueck, bis der Kritiker unseres waehlt. Nicht vorher aufhoeren. Nur Bens "stopp" beendet.
+
+Nur ein Agent zur Zeit wegen des gemeinsamen Limits.
+```
+
+Offen und ungeprueft (29.10.2026): kein Kritiker ist bisher gelaufen; die Abweichungen vom Skill (Zahlengrenzen, ein Agent zur Zeit, nicht streng blind) stehen im Anhang.
+
+## Anhang: ausfuehrliches Protokoll (meine Zutaten, nicht Teil des Skills)
+
 Technik: Matt Shumer, Skill: robonuggets/gauntlet-loop (`.claude/skills/gauntlet-loop/`, siehe `SOURCE.md` dort). Kern: eine **echte Messlatte** (benannt, abrufbar, vergleichbar), kleine einzeln beurteilbare Stuecke, je Stueck ein **Bauer** und ein **getrennter, strenger Kritiker mit frischem Kontext**, der blind vergleicht und EINE Entscheidung trifft (nie eine Note), Schleife bis der Kritiker "ours" waehlt. Kein Ende nach fester Rundenzahl; nur Bens "stopp" beendet.
 
 ## Unsere Messlatte (drei Teile, alle muessen halten)

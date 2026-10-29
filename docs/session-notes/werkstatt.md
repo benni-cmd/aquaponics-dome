@@ -18,3 +18,8 @@ Zu tun: Variante(n) mit Beinen ausserhalb der Beetbreite (aussen Beinabstand > 1
 Ben verlangt Laufwege >= 0,5 m zwischen den Pflanzringen; Beete und Tische muessen auf ein Radialbudget (D28): Aussenbeete kuerzer (~2640), Tische neu auf die neuen Apotheme.
 Beleg: docs/jobs/W17-radialbudget.md, docs/decisions.md D28 (loest W-M2, D24, D25).
 Zu tun: nach W11 Auftrag W17 bearbeiten; W07/W11 nicht blockieren.
+
+## 2026-10-29 — von Orchestrator
+W17 ist praezisiert (D29): Aussenbeete 800 breit x ~2640, Portalbreite = Beet + 180, NFT-Summe >= 459 (3 Rinnen je Aussentisch, 10 Innentische bleiben), Laufwege >= 600.
+Beleg: docs/jobs/W17-radialbudget.md, docs/decisions.md D29.
+Zu tun: nach W11 W17 mit den Budgetzahlen im Blatt; Erreichbarkeit nur einfach pruefen.

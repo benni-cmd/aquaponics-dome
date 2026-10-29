@@ -23,3 +23,8 @@ Zu tun: `pool_depth_total` auf 2200 setzen (Pool-Wanne/Erdtasche), dann M4/M5 (W
 Ben verlangt Laufwege >= 0,5 m zwischen den Pflanzringen und kluge Platznutzung — das ersetzt D24/D25 durch ein Radialbudget (D28); neuer Schritt M7 vor M3.
 Beleg: docs/next-steps-montage.md M7, docs/decisions.md D28, docs/jobs/W17-radialbudget.md.
 Zu tun: M7 abarbeiten (Radien setzen, scripts/check_walkways.py, Tuer-Gang >= 900); die Werkstatt baut dazu kuerzere Aussenbeete und neu angepasste Tische (W17).
+
+## 2026-10-29 — von Orchestrator
+M7 ist praezisiert (D29): Laufwege >= 600 (nie < 500), Aussenbeete 800 breit, Tuer-Gang >= 900, alles erreichbar (nicht zu tief pruefen); NFT-Mindestzahl 459 bleibt bindend.
+Beleg: docs/next-steps-montage.md M7, docs/decisions.md D29, docs/jobs/W17-radialbudget.md.
+Zu tun: M7 nach den Budgetzahlen umsetzen; aktuell liegen die Aussentische (D25, 497 nach innen) im Laufweg B, das ist der Grund fuer "zu eng".

@@ -124,7 +124,7 @@ def pools(fz):
     for nm, src, wall in (("T5_Zentraltank", LAYOUT["pool"], P["wall"]), ("T6_Zweitbecken", LAYOUT["pool2"], 100)):
         x, y = LXY(src["cx"], src["cy"]); wz = vessel(nm, x, y, fz, src["d"] + 2*wall, src["water_z"] + 90, wall, src["water_z"])
         wn = "T5_Wasser" if nm.startswith("T5") else "T6_Wasser"
-        add("solid.cylinder", diameter=src["d"], height=20, base=[x, y, wz - 20], operation="new", name=wn, body_name=wn)
+        add("solid.cylinder", diameter=src["d"] - (20 if nm.startswith("T6") else 0), height=20, base=[x, y, wz - 20], operation="new", name=wn, body_name=wn)
 
 def tanks(fz):
     """T7: 4 Tanks (Kegelboden, Zylinder, Plattformring auf 4 Beinen) + Pump-/Filtermodule, Positionen aus layout.json."""
@@ -134,12 +134,12 @@ def tanks(fz):
         add("solid.cone", diameter=t["d"], top_diameter=60, height=cone_h, base=[x, y, ztop], axis=[0, 0, -1], operation="new", name=nm, body_name=nm)
         add("solid.cylinder", diameter=t["d"], height=t["z0"] + t["h"] - pl["z1"], base=[x, y, ztop], operation="join", targets=[nm], name=nm + "_Zylinder")
         add("solid.cylinder", diameter=t["d"] - 100, height=t["z0"] + t["h"] - pl["z1"], base=[x, y, ztop + 80], operation="cut", targets=[nm], name=nm + "_Hohlraum")
-        rect_body(f"T7_Plattform_{i}", x, y, fz + pl["z0"], yaw, pl["length"], pl["width"], pl["height"])
+        rect_body(f"T7_Plattform_{i}", x, y, fz + pl["z0"], yaw, pl["length"] - 200, pl["width"] - 200, pl["height"])
         add("solid.cylinder", diameter=t["d"] + 20, height=pl["height"] + 20, base=[x, y, fz + pl["z0"] - 10], operation="cut", targets=[f"T7_Plattform_{i}"], name=f"T7_Plattform_{i}_Loch")
         a = math.radians(yaw)
         for sx in (-1, 1):
             for sy in (-1, 1):
-                lx, ly = rot(sx*(pl["length"]/2 - 40), sy*(pl["width"]/2 - 40), a)
+                lx, ly = rot(sx*(pl["length"]/2 - 140), sy*(pl["width"]/2 - 140), a)
                 add("solid.cylinder", radius=18, height=pl["z0"], base=[round(x+lx, 1), round(y+ly, 1), fz], operation="join", targets=[f"T7_Plattform_{i}"], name=f"T7_Plattform_{i}_Bein{(sx+1)+(sy+1)//2+1}")
         placed = []
         for k, m in enumerate(t["modules"], 1):
@@ -152,7 +152,7 @@ def tanks(fz):
 def t9(fz):
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = LXY(b["cx"], b["cy"]); yaw = b["yaw"] + ROT; top = b["z1"]
-        rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz, yaw, b["length"] - 40, b["width"], top)   # Unterkante im OBJ unter dem Boden: auf Boden gekappt
+        rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz, yaw, b["length"] - (120 if "plants" in b else 300), b["width"] - (100 if "plants" in b else 0), top)   # Unterkante im OBJ unter dem Boden: auf Boden gekappt
         if "plants" in b:   # Aussenbeete: 3 Reihen x 10 Pflanzen (OBJ: 288 Toepfe, hier reduziert)
             ta = math.radians(yaw)
             for r_ in range(3):

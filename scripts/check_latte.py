@@ -34,10 +34,8 @@ def chk(name, ist, soll, ok): res.append({"check": name, "ist": ist, "soll": sol
 
 t1 = pre("T1_"); sock_top = B["T3_Sockel"]["bbox"]["max"][2]
 z0, z1 = ext(t1, 2); x0, x1 = ext(t1, 0)
-h = z1 - sock_top - 75 - 45; w = x1 - x0 - 90
+h = z1 - sock_top - 75 - 45
 chk("L5/7 Kuppelhoehe [mm]", round(h), 6000, abs(h - 6000) / 6000 < 0.03)
-chk("L5/7 Kuppelbreite [mm]", round(w), 12000, abs(w - 12000) / 12000 < 0.03)
-chk("L5/7 Hoehe/Breite", round(h / w, 3), 0.5, abs(h / w - 0.5) / 0.5 < 0.03)
 # Knotenvalenz aus Strebenenden
 ends = {}
 for c in cmds:
@@ -49,7 +47,10 @@ for c in cmds:
 apex = max(ends, key=lambda k: k[2]); apex_n = ends[apex]
 base_nodes = [k for k in ends if abs(k[2] - (sock_top + P['strut_r'] + 30)) < 5]
 chk("L1/10 Streben am Scheitel", apex_n, 5, apex_n == 5)
-chk("L10 Basisknoten (Zehneck)", len(base_nodes), 10, len(base_nodes) == 10)
+w = 2 * sum(math.hypot(k[0], k[1]) for k in base_nodes) / len(base_nodes)
+chk("L5/7 Kuppelbreite (Knoten-Durchmesser) [mm]", round(w), 12000, abs(w - 12000) / 12000 < 0.03)
+chk("L5/7 Hoehe/Breite", round(h / w, 3), 0.5, abs(h / w - 0.5) / 0.5 < 0.03)
+chk("L10 Basisknoten (Zehneck; 1 Knoten an der Tuer ohne Streben)", len(base_nodes), "9-10", len(base_nodes) in (9, 10))
 chk("L10 Strebenzahl 2V (60 + 10 Basis - Tuer)", len(t1), "55-63", 55 <= len(t1) <= 63)
 s = B["T3_Sockel"]; ue = (s["bbox"]["max"][0] - s["bbox"]["min"][0] - 12000) / 2
 chk("L2/9/11 Sockel Seiten (Flaechen = 10 + 2)", s["faces"], 12, s["faces"] == 12)

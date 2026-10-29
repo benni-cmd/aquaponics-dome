@@ -23,3 +23,4 @@ Jetzt kommt: Schritt 1+2.
 
 ## Checkpoint R15 (Gauntlet startet)
 - Stand: Layout aus layout.json gebaut (Rotation -221, Dom/Sockel +18 Grad, Tuer am Knoten), Rohr aussen. check_latte: Kollisionen 4 Paare offen (siehe loop-log R15). Naechster Schritt: docs/gauntlet.md (Kurzfassung) lesen, Stueck 1 beginnen (Reihenfolge laut Gauntlet; Aussenbeet vor Knoten erlaubt). NFT-Rinnen noch nicht gebaut (T8 fehlt im Check).
+- R15b: check_latte 19/20 (nur Kollisionen, 3 Paare, scripts/interf.py listet). Offene Kette (Reihenfolge): (1) 3 Kollisionen weg, (2) Gauntlet Stueck 1 (Kurzfassung in docs/gauntlet.md; Kritiker = Unter-Agent sonnet, A/B-Bilder), (3) NFT-Rinnen (130x100, ueber den Beeten, Gefaelle), (4) statics/biology/hydraulics/electrical/bom laut concept-atlas.md, (5) Komponenten-Instanzen (component.insert_design, siehe docs/components.md).

@@ -1,187 +1,238 @@
 {
-  "_hinweis": "Beschreibungen der Bauteile fuer den Viewer und die Modelldokumentation. Quelle je Eintrag: Bauteilblatt in docs/parts/ und Entscheidungen in docs/decisions.md. Besitzer: Orchestrator. Eintrag 'match' ist ein regulaerer Ausdruck auf den Definitionsnamen (z. B. nft_tisch_aussen). SolidCraft hat kein Beschreibungsfeld an Komponenten, deshalb liegen die Texte hier und werden vom Viewer angezeigt.",
+  "_hinweis": "Beschreibungen der Bauteile fuer den Viewer und die Modelldokumentation. Felder: titel, was (ein Satz), status, ablauf (Schritte: so funktioniert es), aufbau (Gruppen mit Teilen: was im Modell steckt), masse (Kennzahlen), grenzen (Annahmen), quelle. 'match' ist ein regulaerer Ausdruck auf den Definitionsnamen. Quelle der Fakten: Bauteilblaetter in docs/parts/ und docs/decisions.md. Besitzer: Orchestrator. SolidCraft hat kein Beschreibungsfeld an Komponenten.",
   "kategorien": {
-    "Kuppel-Struktur": "Das tragende Skelett der Geodätischen Kuppel (2V, 12 m): Streben, Knoten und die Verankerung im Erdreich.",
-    "Beete (Substrat)": "Substratbeete (halbierte IBC-Wannen): Pflanzen wachsen in Blähton oder Kies, das Wasser wird zyklisch geflutet und entleert.",
-    "NFT-Systeme": "Nährlösungsfilm-Tische (NFT): Pflanzen stehen in geneigten Rinnen, durch die ein dünner Wasserfilm fließt.",
-    "Tanks und Pumpen": "Die Wasseraufbereitung: Vortex-Absetzer (Feststoffe raus), Biofilter (Bakterien) und die Pumpenmodule an den Tanks.",
-    "Rohre und Schläuche": "Die Verbindungsteile des Wasserkreislaufs: Rohre, Bögen, Kugelhähne, Verteiler, Schläuche.",
+    "Kuppel-Struktur": "Das tragende Skelett der Geodätischen Kuppel (2V, Ø12 m, 6 m hoch): 65 Streben, 26 Knoten und 10 Fundamentanker im Erdreich.",
+    "Beete (Substrat)": "Substratbeete aus halbierten IBC-Wannen: Pflanzen wachsen in Blähton oder Kies, das Wasser wird zyklisch geflutet und entleert.",
+    "NFT-Systeme": "Nährlösungsfilm-Tische (NFT): Pflanzen stehen in geneigten Rinnen, durch die ein dünner Wasserfilm fließt. Drei Ringe: innen über dem Pool, Mitte über den Innenbeeten, außen über den Außenbeeten.",
+    "Tanks und Pumpen": "Wasseraufbereitung: zwei Vortex-Absetzer (Feststoffe raus), zwei Biofilter (Bakterien) und die Pumpenmodule an den Tanks.",
+    "Rohre und Schläuche": "Verbindungsteile des Wasserkreislaufs: Rohre, Bögen, Kugelhähne, Verteiler und Schläuche. Das Rohrnetz selbst wird noch verlegt.",
     "Pflanzen": "Netztöpfe und Salatköpfe als Platzhalter für die bepflanzten Löcher. Nur Darstellung, keine Funktion im Wasserkreislauf.",
-    "Becken und Gelände": "Das Hauptbecken (Pool), das zweite Becken vor der Tür und das Erdreich, in das die Becken eingelassen sind.",
+    "Becken und Gelände": "Hauptbecken (Pool), zweites Becken vor der Tür und das Erdreich, in das alles eingelassen ist.",
     "Tuer": "Der Eingang der Kuppel.",
-    "Technik": "Steuerung und Elektrik."
+    "Technik": "Steuerung und Elektrik (Platzhalter)."
   },
   "bauteile": [
     {
       "match": "^strebe_a",
-      "titel": "Strebe A (30 Stück)",
-      "was": "Kürzere der zwei Strebenlängen der 2V-Kuppel, 3279 mm (0,5465 × Radius 6000), Rohrprofil 30 × 30 mm.",
-      "funktion": "Bildet zusammen mit den Streben B die dreieckigen Felder der Kuppel; wird 80 mm auf den Steckarm eines Knotens geschoben und mit einem Querbolzen gesichert.",
-      "modelliert": ["Rohrprofil mit Länge und Endversatz für die Steckarme", "Lage und Neigung aus dem Kuppelgitter (65 Streben, 26 Knoten)"],
-      "hinweis": "Das Profil 30 × 30 stammt aus dem OBJ; für Schneelast wäre ein größeres Profil nötig (Entscheidung D09)."
+      "titel": "Strebe A",
+      "was": "Kürzere der beiden Strebenlängen der 2V-Kuppel.",
+      "status": "gebaut, im Modell",
+      "ablauf": ["Die Strebe wird auf den Steckarm eines Knotens geschoben (80 mm Einschub).", "Ein Querbolzen M10 sichert sie.", "Zusammen mit den Streben B bildet sie die dreieckigen Felder der Kuppel."],
+      "aufbau": [{ "t": "Körper", "p": ["Rohrprofil 30 × 30 mm", "Endversatz für die Steckarme"] }, { "t": "Lage", "p": ["aus dem Kuppelgitter (65 Streben, 26 Knoten)"] }],
+      "masse": { "Anzahl": "30", "Länge": "3279 mm (0,5465 × Radius 6000)", "Profil": "30 × 30 mm" },
+      "grenzen": "Das Profil 30 × 30 stammt aus dem OBJ; für Schneelast wäre ein größeres nötig (D09).",
+      "quelle": "docs/parts/knoten.md, data/layout.json"
     },
     {
       "match": "^strebe_b",
-      "titel": "Strebe B (35 Stück)",
-      "was": "Längere Strebe der 2V-Kuppel, 3708 mm (0,618 × Radius 6000), Rohrprofil 30 × 30 mm.",
-      "funktion": "Wie Strebe A; die Streben B bilden unter anderem das Basis-Zehneck am Boden (Seitenlänge 3708 mm).",
-      "modelliert": ["Rohrprofil mit Länge und Endversatz für die Steckarme", "Lage aus dem Kuppelgitter"],
-      "hinweis": "Profil 30 × 30 aus dem OBJ (D09)."
+      "titel": "Strebe B",
+      "was": "Längere Strebe der 2V-Kuppel; bildet auch das Basis-Zehneck am Boden.",
+      "status": "gebaut, im Modell",
+      "ablauf": ["Wird wie Strebe A auf einen Knotenarm gesteckt und verbolzt.", "Am Boden bilden Streben B das Zehneck mit 3708 mm Seitenlänge."],
+      "aufbau": [{ "t": "Körper", "p": ["Rohrprofil 30 × 30 mm", "Endversatz für die Steckarme"] }],
+      "masse": { "Anzahl": "35", "Länge": "3708 mm (0,618 × Radius 6000)", "Profil": "30 × 30 mm" },
+      "grenzen": "Profil 30 × 30 aus dem OBJ (D09).",
+      "quelle": "data/layout.json"
     },
     {
       "match": "^knoten_(4|5|6)",
-      "titel": "Kuppelknoten (26 Stück: 10 × 4-wertig, 6 × 5-wertig, 10 × 6-wertig)",
-      "was": "Knotenkugel Ø100 mit 4, 5 oder 6 Steckarmen in Richtung der Nachbarknoten.",
-      "funktion": "Verbindet die Streben: jede Strebe wird 80 mm auf einen Steckarm geschoben und mit einem Querbolzen M10 gesichert. Die 10 Basisknoten tragen zusätzlich eine Ankerlasche für das Fundament.",
-      "modelliert": ["Kugel mit Steckarmen (Armrichtung aus dem Kuppelgitter, Neigung 15,9 bzw. 18,0° gegen die Tangentialebene)", "Querbolzen M10 mit Normteil-Material", "Ankerlasche 60 × 10 mit Loch Ø14 an den Basisknoten", "Ports an allen Armen"],
-      "kennzahlen": ["Kugel Ø100 mm", "Steckarm-Einschub 80 mm"]
+      "titel": "Kuppelknoten",
+      "was": "Knotenkugel mit 4, 5 oder 6 Steckarmen in Richtung der Nachbarknoten.",
+      "status": "abgenommen, 135/135 Prüfungen",
+      "ablauf": ["Jede Strebe wird 80 mm auf einen Steckarm der Kugel geschoben.", "Ein Querbolzen M10 sichert sie gegen Herausziehen.", "Die 10 Basisknoten tragen zusätzlich eine Ankerlasche, in die der Fundamentanker eingehängt wird."],
+      "aufbau": [{ "t": "Kugel", "p": ["Knotenkugel Ø100", "4, 5 oder 6 Steckarme, Richtung aus dem Kuppelgitter (Neigung 15,9° bzw. 18,0° gegen die Tangentialebene)"] }, { "t": "Verbindung", "p": ["Querbolzen M10 (Normteil)", "Ports an allen Armen"] }, { "t": "Basisknoten", "p": ["Ankerlasche 60 × 10 mit Loch Ø14"] }],
+      "masse": { "Anzahl": "26 (10 × 4-wertig, 6 × 5-wertig, 10 × 6-wertig)", "Kugel": "Ø100 mm", "Einschub": "80 mm" },
+      "grenzen": "Bauart nach Recherche R02 (Steck-/Sternnaben), Entscheidung D15; keine statische Berechnung.",
+      "quelle": "docs/parts/knoten.md"
     },
     {
       "match": "^fundamentanker",
-      "titel": "Fundamentanker (10 Stück)",
-      "was": "Verankerung eines Basisknotens im Erdreich.",
-      "funktion": "Ein Betonpunkt trägt eine Ankerplatte mit zwei Verbundankern M16; eine Gabel aus zwei Laschen nimmt die Ankerlasche des Basisknotens auf, ein Querbolzen M12 hängt sie ein. So ist das Skelett im Boden verankert, ohne feste Bodenplatte.",
-      "modelliert": ["Betonpunkt", "Ankerplatte mit zwei Verbundankern M16 (Mutter, Anzugsmoment im Blatt)", "Gabel aus zwei Laschen", "Querbolzen M12"]
+      "titel": "Fundamentanker",
+      "was": "Verankert einen Basisknoten im Erdreich; das Skelett steht ohne feste Bodenplatte.",
+      "status": "abgenommen",
+      "ablauf": ["Ein Betonpunkt im Boden trägt die Ankerplatte.", "Zwei Verbundanker M16 halten die Platte.", "Eine Gabel aus zwei Laschen nimmt die Ankerlasche des Basisknotens auf.", "Ein Querbolzen M12 hängt sie ein."],
+      "aufbau": [{ "t": "Fundament", "p": ["Betonpunkt"] }, { "t": "Platte", "p": ["Ankerplatte mit zwei Verbundankern M16 (Mutter, Anzugsmoment im Blatt)"] }, { "t": "Anschluss", "p": ["Gabel aus zwei Laschen", "Querbolzen M12"] }],
+      "masse": { "Anzahl": "10 (an den Basisknoten)" },
+      "grenzen": "Lage unter dem Gelände offen (Montage); Abmessungen sind Annahmen.",
+      "quelle": "docs/parts/fundamentanker.md"
     },
     {
       "match": "^fundamentring",
-      "titel": "Sockel / Fundamentring",
-      "was": "Zehneckiger Sockel, auf dem die Kuppel steht (Innenfläche Apothem 5706 mm).",
-      "funktion": "Trägt die Basisstreben und begrenzt den Innenraum am Boden.",
-      "modelliert": ["Zehneck-Ring um die Kuppelachse"],
-      "hinweis": "Maße aus dem OBJ; keine statische Auslegung."
+      "titel": "Sockel (Fundamentring)",
+      "was": "Zehneckiger Sockel, auf dem die Kuppel steht.",
+      "status": "im Modell",
+      "ablauf": ["Trägt die Basisstreben.", "Begrenzt den Innenraum am Boden (Innenfläche Apothem 5706 mm)."],
+      "aufbau": [{ "t": "Körper", "p": ["Zehneck-Ring um die Kuppelachse"] }],
+      "masse": { "Innenfläche": "Apothem 5706 mm" },
+      "grenzen": "Maße aus dem OBJ; keine statische Auslegung."
     },
     {
       "match": "^ibc_beet",
-      "titel": "Substratbeet (14 Stück: 8 außen, 6 innen)",
-      "was": "Beet aus einer halbierten IBC-Wanne mit Kies oder Blähton (Tiefe 300 mm, Oberfläche auf Z 400), teilweise in den Boden eingelassen.",
-      "funktion": "Wasser läuft über ein Tropfrohr zu. Ein Glockensiphon füllt das Beet bis zur Standrohrhöhe und entleert es dann schlagartig (Fluten und Entleeren): die Wurzeln bekommen abwechselnd Wasser und Luft. Das Substrat ist zugleich Biofilterfläche, Bakterien wandeln dort Ammonium um.",
-      "modelliert": ["Wanne (Wand 3–4 mm)", "Medium als ein Körper mit Oberfläche Z 400", "Siebboden", "Standrohr Ø25 × 220 mm", "Glocke Ø75 × 250 mm mit Schlitzen und Luftloch", "Medienschutz Ø110 × 320 mm", "Ablauf-Durchführung", "Zulauf-Tropfrohr", "Ports"],
-      "kennzahlen": ["außen 8 Stück (nach D29 schmaler, 800 mm)", "innen 6 Stück, 933 mm breit", "Pflanzen: 288 Töpfe je Außenbeet laut OBJ"]
+      "titel": "Substratbeet",
+      "was": "Beet aus einer halbierten IBC-Wanne mit Kies oder Blähton; Fluten und Entleeren per Glockensiphon.",
+      "status": "abgenommen; Außenbeet wird nach D29 schmaler (800 mm)",
+      "ablauf": ["Wasser läuft über ein Tropfrohr gleichmäßig auf das Substrat.", "Das Beet füllt sich bis zur Höhe des Standrohrs.", "Dann springt der Glockensiphon an und entleert das Beet schlagartig (Fluten und Entleeren).", "Die Wurzeln bekommen so abwechselnd Wasser und Luft.", "Das Substrat ist zugleich Biofilterfläche: Bakterien wandeln dort Ammonium um."],
+      "aufbau": [{ "t": "Wanne und Medium", "p": ["Wanne, Wand 3–4 mm", "Medium (Kies/Blähton) als ein Körper, 300 mm tief, Oberfläche auf Z 400", "Siebboden"] }, { "t": "Siphon", "p": ["Standrohr Ø25 × 220 mm", "Glocke Ø75 × 250 mm mit Schlitzen und Luftloch", "Medienschutz Ø110 × 320 mm"] }, { "t": "Anschlüsse", "p": ["Ablauf-Durchführung", "Zulauf-Tropfrohr", "Ports"] }],
+      "masse": { "Anzahl": "14 (8 außen, 6 innen)", "Innenbeet": "933 × 1865 mm", "Außenbeet": "ursprünglich 993 × 2953, jetzt 800 × ~2640 (D29)", "Substrattiefe": "300 mm", "Pflanzen": "288 Töpfe je Außenbeet laut OBJ" },
+      "grenzen": "Siphonmaße aus der Scope-Card, nicht gegen die fertige Datei gemessen; Topfraster der neuen Außenbeete rechnet die Montage (D34).",
+      "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md"
     },
     {
       "match": "^nft_tisch",
-      "titel": "NFT-Tisch (24 Stück: 10 innen über dem Pool, 6 Mitte, 8 außen)",
-      "was": "Ein Gestell, das mehrere NFT-Rinnen mit Gefälle über den Beeten bzw. dem Pool trägt.",
-      "funktion": "Die Rinnen haben 1,5 % Gefälle (rund 0,86°), das Wasser fließt deshalb von allein vom hohen Zulaufende zum tiefen Ablauf. Ein Zulaufverteiler gibt über je einen Schlauch pro Rinne einen dünnen Wasserfilm auf, der die Wurzeln der Pflanzen umspült; ein Sammelrohr fängt den Ablauf auf. Die Pflanzen benachbarter Rinnen stehen um einen halben Topfabstand versetzt (Zickzack), damit sie sich nicht beschatten.",
-      "modelliert": ["Beine als Portalbock (außen und Mitte, Beine stehen neben den Beeten) bzw. Auslegerbock (innen, Beine außerhalb des Pools)", "Querholme, Diagonalen, Fußplatten", "je Bein ein Winkelhalter (Schraubverbindung)", "Rinnen mit eigener Länge je Reihe (Zehneck-Seite minus Eckluft)", "Zulaufverteiler mit Schlauch je Rinne", "schräge Sammelrohre", "Ports"],
-      "kennzahlen": ["Rinnen je Tisch: innen 2, Mitte 4, außen 3", "Lochabstand 200 mm", "586 Topflöcher in allen Tischen", "Gefälle 1,5 %"]
+      "titel": "NFT-Tisch",
+      "was": "Gestell, das mehrere NFT-Rinnen mit Gefälle über den Beeten bzw. dem Pool trägt.",
+      "status": "Rev. C (W17/W18), check_nft_fit 42/42",
+      "ablauf": ["Ein Zulaufverteiler gibt über je einen Schlauch pro Rinne Wasser auf.", "Die Rinnen haben 1,5 % Gefälle (rund 0,86°): das Wasser fließt von allein vom hohen zum tiefen Ende.", "Dabei umspült ein dünner Wasserfilm die Wurzeln der Pflanzen in den Löchern.", "Ein Sammelrohr fängt den Ablauf auf.", "Benachbarte Rinnen sind um einen halben Topfabstand versetzt (Zickzack), damit sich die Pflanzen nicht beschatten."],
+      "aufbau": [{ "t": "Gestell", "p": ["Beine als Portalbock (außen, Mitte: Beine stehen neben den Beeten) bzw. Auslegerbock (innen: Beine außerhalb des Pools)", "Querholme, Diagonalen, Fußplatten", "je Bein ein Winkelhalter (Schraubverbindung)"] }, { "t": "Wasserführung", "p": ["Rinnen mit eigener Länge je Reihe (Zehneck-Seite minus Eckluft)", "Zulaufverteiler mit Schlauch je Rinne", "schräge Sammelrohre", "Ports"] }],
+      "masse": { "Anzahl": "24 (10 innen über dem Pool, 6 Mitte, 8 außen)", "Rinnen je Tisch": "innen 2, Mitte 4, außen 3", "Lochabstand": "200 mm", "Topflöcher": "586 gesamt", "Gefälle": "1,5 %", "Eckluft": "60 mm (D34)" },
+      "grenzen": "Rev. C ist noch ohne Spec-Prüfer-Lauf nach der letzten Änderung; endgültige Lage setzt die Montage (M7).",
+      "quelle": "docs/parts/nft_tisch.md, docs/research/R06.md, R16.md"
     },
     {
       "match": "^nft_rinne",
       "titel": "NFT-Rinne",
-      "was": "Eine Kunststoffrinne, 130 mm breit und 100 mm hoch, mit einer Reihe Löcher für Netztöpfe.",
-      "funktion": "Führt den Nährlösungsfilm an den Wurzeln vorbei: Zulauf am höheren Ende, Ablauf am tieferen Ende; die Pflanze hängt im Netztopf im Loch, nur die Wurzelspitzen berühren den Film. Durchfluss rund 0,5 l/min je Rinne.",
-      "modelliert": ["Rinnenprofil mit Lochreihe (Ø52 mm, Abstand 200 mm, Phase A/B für den Zickzack)", "Zulauf- und Ablaufende", "Ports"],
-      "kennzahlen": ["Gefälle im Tisch 1,5 %", "Lochabstand 200 mm"]
+      "was": "Kunststoffrinne mit einer Reihe Löcher für Netztöpfe.",
+      "status": "abgenommen, 93/93 Prüfungen",
+      "ablauf": ["Zulauf am höheren Ende, Ablauf am tieferen Ende.", "Die Pflanze hängt im Netztopf im Loch; nur die Wurzelspitzen berühren den Wasserfilm.", "Durchfluss rund 0,5 l/min je Rinne."],
+      "aufbau": [{ "t": "Rinne", "p": ["Profil 130 mm breit, 100 mm hoch", "Lochreihe Ø52 mm, Abstand 200 mm, Phase A/B für den Zickzack", "Zulauf- und Ablaufende", "Ports"] }],
+      "masse": { "Lochabstand": "200 mm (R16)", "Breite × Höhe": "130 × 100 mm", "Durchfluss": "0,5 l/min", "Gefälle im Tisch": "1,5 %" },
+      "grenzen": "Lochabstand 200 mm ist eine begründete Annahme (Iowa State 203 mm, FarmHub 150–250 mm); 150 mm ist als Variante möglich.",
+      "quelle": "docs/parts/nft_rinne.md"
     },
     {
       "match": "^winkelhalter",
-      "titel": "Winkelhalter (am Kopf jedes Tischbeins)",
-      "was": "Eckwinkel 36 × 60 × 60 × 4 mm.",
-      "funktion": "Verbindet Bein und Querholm bzw. Kragarm als lösbare Schraubverbindung (statt Schweißen); die Löcher liegen für M6-Schrauben.",
-      "modelliert": ["Eckwinkel mit Schraubenlöchern", "Schrauben M6"]
+      "titel": "Winkelhalter",
+      "was": "Eckwinkel am Kopf jedes Tischbeins.",
+      "status": "gebaut (W11)",
+      "ablauf": ["Verbindet Bein und Querholm bzw. Kragarm als lösbare Schraubverbindung statt Schweißnaht.", "Schrauben M6 durch die Löcher in Bein und Holm."],
+      "aufbau": [{ "t": "Körper", "p": ["Eckwinkel 36 × 60 × 60 × 4 mm mit Schraubenlöchern", "Schrauben M6"] }],
+      "masse": { "Winkel": "36 × 60 × 60 × 4 mm", "Schrauben": "M6 × 55" },
+      "quelle": "docs/parts/winkelhalter.md"
     },
     {
       "match": "^tank_klein",
-      "titel": "Vortex-Absetzer (Tank klein, 2 Stück)",
-      "was": "Tank mit Kegelboden, Ø673 mm, Gesamthöhe 1075 mm, auf einer Plattform mit 4 Beinen.",
-      "funktion": "Das Wasser tritt tangential ein und kreist; Feststoffe sinken in der Strömungsruhe zur Kegelspitze und werden dort über einen Schlammablass mit Kugelhahn abgezogen. Das geklärte Wasser verlässt den Tank über das Leitrohr und einen seitlichen Auslass oben. Rund 12 l/min fließen durch.",
-      "modelliert": ["Zylinder mit gerolltem Randwulst und Deckel (6 mm) mit Revisionsöffnung Ø200", "Kegelboden 45° ab der Plattform-Oberkante", "tangentialer Zulauf Ø50 (250 mm unter dem Rand)", "Leitrohr Ø110 (420 mm unter dem Deckel)", "Auslass Ø50 (100 mm unter dem Rand)", "Schlammablass mit Kugelhahn an der Kegelspitze", "Plattform, 4 Beine mit Diagonalen und Fußplatten", "Ports"],
-      "kennzahlen": ["Ø673 mm", "ca. 12 l/min"],
-      "hinweis": "Rohrmaße und Kegelwinkel sind Annahmen (R09, Konfidenz niedrig)."
+      "titel": "Vortex-Absetzer (Tank klein)",
+      "was": "Tank mit Kegelboden, der Feststoffe aus dem Wasser abscheidet.",
+      "status": "abgenommen, 60/60 Prüfungen",
+      "ablauf": ["Das Wasser tritt tangential ein (Zulauf Ø50, 250 mm unter dem Rand) und kreist im Tank.", "In der Strömungsruhe sinken Feststoffe zur Kegelspitze.", "Das geklärte Wasser steigt im Leitrohr (Ø110, reicht 420 mm unter den Deckel) auf und verlässt den Tank über den Auslass Ø50, 100 mm unter dem Rand.", "Der Schlamm wird an der Kegelspitze über einen Kugelhahn abgelassen."],
+      "aufbau": [{ "t": "Tank", "p": ["Zylinder mit gerolltem Randwulst (25 × 40 mm)", "Kegelboden 45° ab der Plattform-Oberkante", "Deckel 6 mm mit Revisionsöffnung Ø200"] }, { "t": "Wasserwege", "p": ["tangentialer Zulauf Ø50", "Leitrohr Ø110", "Auslass Ø50", "Schlammablass mit Kugelhahn an der Kegelspitze", "Ports"] }, { "t": "Unterbau", "p": ["Plattform 706 × 707 mm, 4 Beine mit Diagonalen und Fußplatten"] }],
+      "masse": { "Anzahl": "2", "Durchmesser": "673 mm", "Gesamthöhe": "1075 mm", "Durchfluss": "ca. 12 l/min", "Verweilzeit": "30 min (FarmHub)" },
+      "grenzen": "Rohrmaße und Kegelwinkel sind Annahmen mit niedriger Konfidenz (R09); Rolle nach D06.",
+      "quelle": "docs/parts/tank.md, docs/research/R09.md"
     },
     {
       "match": "^tank_gross",
-      "titel": "Biofilter (Tank groß, 2 Stück)",
-      "was": "Tank mit Kegelboden, Ø930 mm, Gesamthöhe 1444 mm, mit einem Korb voller Biomedium.",
-      "funktion": "Das Wasser durchströmt das Biomedium (große Oberfläche); darauf siedeln Bakterien, die Ammonium über Nitrit in Nitrat umwandeln. Belüftung versorgt sie mit Sauerstoff, ein Überlauf hält den Wasserstand, Schlamm sinkt zur Kegelspitze und wird dort abgelassen. Rund 30 l/min werden umgewälzt.",
-      "modelliert": ["Zylinder mit Randwulst und Deckel mit Revisionsöffnung", "Biomediumkorb (520 mm hoch, Unterkante 700 mm unter dem Rand) auf Tragrost mit 4 Konsolen", "Belüftungsanschluss Ø16 im Deckel", "Überlauf und Auslass Ø50", "Schlammablass mit Kugelhahn an der Kegelspitze", "5 Stützrippen unter der Plattform (D16)", "Plattform und 4 Beine (40 × 40) mit Diagonalen und Fußplatten", "Ports"],
-      "kennzahlen": ["Ø930 mm", "ca. 30 l/min Umwälzung"],
-      "hinweis": "Biomedium als ein Körper (Platzhalter); Rollen der Tanks nach D06."
+      "titel": "Biofilter (Tank groß)",
+      "was": "Tank mit Kegelboden und einem Korb voller Biomedium: hier siedeln die Filterbakterien.",
+      "status": "abgenommen, 60/60 Prüfungen",
+      "ablauf": ["Das Wasser durchströmt das Biomedium (große Oberfläche).", "Bakterien darauf wandeln Ammonium über Nitrit in Nitrat um.", "Ein Belüftungsanschluss im Deckel versorgt sie mit Sauerstoff.", "Ein Überlauf hält den Wasserstand, der Auslass führt das Wasser ab.", "Schlamm sinkt zur Kegelspitze und wird über den Kugelhahn abgelassen."],
+      "aufbau": [{ "t": "Tank", "p": ["Zylinder mit Randwulst, Deckel mit Revisionsöffnung Ø200", "Kegelboden 45° ab der Plattform-Oberkante"] }, { "t": "Filter", "p": ["Biomediumkorb, 520 mm hoch, Unterkante 700 mm unter dem Rand", "Tragrost mit 4 Konsolen", "Belüftungsanschluss Ø16 im Deckel"] }, { "t": "Wasserwege", "p": ["Zulauf und Auslass Ø50, Überlauf", "Schlammablass mit Kugelhahn", "Ports"] }, { "t": "Unterbau", "p": ["Plattform 977 × 976 mm", "5 Stützrippen darunter (D16)", "4 Beine 40 × 40 mm mit Diagonalen und Fußplatten"] }],
+      "masse": { "Anzahl": "2 (davon 1 gedrehte Variante)", "Durchmesser": "930 mm", "Gesamthöhe": "1444 mm", "Umwälzung": "ca. 30 l/min" },
+      "grenzen": "Biomedium als ein Körper (Platzhalter), kein Einzelmedium.",
+      "quelle": "docs/parts/tank.md"
     },
     {
       "match": "^pumpe",
-      "titel": "Pumpenmodul (4 Tafeln an den Tanks)",
-      "was": "Montagetafel mit Kreiselpumpe (502 × 345 mm klein bzw. 693 × 463 mm groß), Rolle als Annahme.",
-      "funktion": "Die Pumpe fördert das Wasser im Umlauf: rund 12 l/min am kleinen, 30 l/min am großen Tank gegen etwa 1,3 m statische Höhe plus Reibung.",
-      "modelliert": ["Montagetafel mit Sockel, Konsole als Winkel", "Kreiselpumpe", "Schrauben M6", "Anschlüsse als Ports"],
-      "hinweis": "Pumpen laut Bens Tabelle: 2; im OBJ: 4 Tafeln (offen)."
+      "titel": "Pumpenmodul",
+      "was": "Montagetafel mit Kreiselpumpe an den Tanks.",
+      "status": "abgenommen nach 4 Prüfrunden, 34/34",
+      "ablauf": ["Die Pumpe saugt Wasser aus dem Tank und fördert es im Umlauf.", "Förderstrom: kleiner Tank ca. 12 l/min, großer Tank ca. 30 l/min gegen etwa 1,3 m statische Höhe plus Reibung."],
+      "aufbau": [{ "t": "Tafel", "p": ["Montagetafel mit Sockel", "Konsole als Winkel", "Schrauben M6"] }, { "t": "Pumpe", "p": ["Kreiselpumpe", "Anschlüsse als Ports"] }],
+      "masse": { "Anzahl": "4 Tafeln", "Tafel klein": "502 × 345 mm", "Tafel groß": "693 × 463 mm" },
+      "grenzen": "Rolle ist eine Annahme; Bens Tabelle nennt 2 Pumpen, das OBJ 4 Tafeln (offen).",
+      "quelle": "docs/parts/pumpe.md"
     },
     {
       "match": "^lt_",
-      "titel": "Leitungsteile (63 Normteile)",
-      "was": "Rohre, Kupplungen, Bögen 90° und 45°, T-Stücke, Kugelhähne, Klemmen in 7 Größen (d20 bis d110), dazu 7 Reduzierungen, Schlauch gerade und Bogen und Verteiler.",
-      "funktion": "Bausteine des Wasserkreislaufs: Rohre leiten, Bögen und T-Stücke verzweigen, Kugelhähne sperren, Reduzierungen passen die Größe an, Schläuche verbinden bewegliche oder weiche Stellen. Jedes Teil hat Ports, an denen die Montage es mit dem Nachbarteil verbindet.",
-      "modelliert": ["Volumen nach Normmaß (geprüft per Pappus-Formel)", "Ports mit Funktion", "Schlauchbogen mit Biegeradius 5 × Außendurchmesser"],
-      "hinweis": "Das Rohrnetz selbst (Wege) folgt mit M4/M5."
+      "titel": "Leitungsteile",
+      "was": "Normteile des Rohrnetzes als Komponenten mit Ports.",
+      "status": "gebaut, 231/231 Prüfungen (Volumen per Pappus)",
+      "ablauf": ["Rohre leiten, Bögen und T-Stücke verzweigen, Kugelhähne sperren.", "Reduzierungen passen die Größe an, Schläuche verbinden weiche Stellen.", "Jedes Teil hat Ports; die Montage verbindet damit die Nachbarteile."],
+      "aufbau": [{ "t": "Normteile (7 Größen d20–d110)", "p": ["Rohr, Kupplung (Doppelmuffe), Bogen 90° und 45°", "T-Stück, Kugelhahn, Rohrklemme"] }, { "t": "Weitere", "p": ["7 Reduzierungen", "Schlauch gerade und Bogen (Biegeradius 5 × Außendurchmesser)", "Verteiler d32 mit 2–4 Abgängen"] }],
+      "masse": { "Teile": "63 Dateien", "Größen": "d20, d25, d32, d40, d50, d63, d110" },
+      "grenzen": "Das Rohrnetz (Wege, Höhen) wird erst in M4/M5 verlegt.",
+      "quelle": "docs/parts/leitungsteile.md"
     },
     {
       "match": "^zulaufrohr",
       "titel": "Zulaufrohr (außen)",
       "was": "Wasserzulauf von außen bis zur Kuppelwand.",
-      "funktion": "Bringt Frischwasser zur Anlage; der Innenanschluss folgt als Schlauch aus dem Wasserweg-Graphen (D11).",
-      "modelliert": ["Rohrstück außen bis zur Wand"]
+      "status": "im Modell",
+      "ablauf": ["Bringt Frischwasser zur Anlage.", "Den Innenanschluss bildet später ein Schlauch aus dem Wasserweg-Graphen (D11)."],
+      "aufbau": [{ "t": "Körper", "p": ["Rohrstück außen bis zur Wand"] }]
     },
     {
       "match": "^netztopf",
       "titel": "Netztopf",
-      "was": "Pflanzkorb mit Schlitzen und Kragen Ø64 mm.",
-      "funktion": "Hält die Pflanze im Beet (Kies oder Blähton) und in den NFT-Rinnen; die Wurzeln wachsen durch die Schlitze zum Wasser.",
-      "modelliert": ["Korb Ø50 mit Schlitzen und Kragen Ø64"],
-      "kennzahlen": ["2160 in den Beeten", "586 in den NFT-Rinnen"]
+      "was": "Pflanzkorb mit Schlitzen und Kragen.",
+      "status": "gebaut",
+      "ablauf": ["Hält die Pflanze im Beet (Kies/Blähton) oder in einer NFT-Rinne.", "Die Wurzeln wachsen durch die Schlitze zum Wasser."],
+      "aufbau": [{ "t": "Körper", "p": ["Korb Ø50 mit Schlitzen", "Kragen Ø64 liegt auf dem Loch auf"] }],
+      "masse": { "In den Beeten": "2160", "In den NFT-Rinnen": "586", "Gesamt": "2746" }
     },
     {
       "match": "^salatkopf",
       "titel": "Salatkopf",
-      "was": "Darstellung eines Kopfsalats (96 Blätter, rund 8,8 k Dreiecke), in Größen S, M, L.",
-      "funktion": "Nur Optik, keine Funktion im Wasserkreislauf; er zeigt, wo Pflanzen stehen.",
-      "modelliert": ["Blätter in Spirale (Fibonacci) mit Falten"]
+      "was": "Darstellung eines Kopfsalats in den Größen S, M, L.",
+      "status": "Rev. B2, 18/18 Prüfungen",
+      "ablauf": ["Nur Optik, keine Funktion im Wasserkreislauf.", "Zeigt, wo Pflanzen stehen."],
+      "aufbau": [{ "t": "Körper", "p": ["96 Blätter in Spirale (Fibonacci) mit Falten", "ca. 8,8 k Dreiecke statt 69 k (leicht für den Viewer)"] }]
     },
     {
       "match": "^haut_paneel|^haut_profil",
-      "titel": "Kuppelhaut (40 Paneele, 65 Randprofile)",
-      "was": "Dreieckige Doppelstegplatten (8 mm) je Kuppelfeld, 2 Typen (AAB, BBB), mit Aluminium-Kappe (30 × 8 mm) auf jeder Strebe.",
-      "funktion": "Hält Wind und Regen ab und lässt Licht durch. Die Paneelkanten liegen 15 mm über der Strebe auf der Kappe und werden dort gehalten.",
-      "modelliert": ["Paneel mit Randabstand 15 mm zur Strebenachse", "Randprofil als Kappe für 30 × Strebe A und 35 × Strebe B"],
-      "hinweis": "Noch nicht im Gesamtmodell; Folie wäre eine spätere Variante (R11)."
+      "titel": "Kuppelhaut",
+      "was": "Dreieckige Doppelstegplatten je Kuppelfeld mit Aluminium-Kappe auf jeder Strebe.",
+      "status": "gebaut (W19), noch nicht im Gesamtmodell",
+      "ablauf": ["Hält Wind und Regen ab und lässt Licht durch.", "Die Paneelkanten liegen auf der Kappe der Strebe auf (je 15 mm Auflage) und werden dort gehalten."],
+      "aufbau": [{ "t": "Paneel", "p": ["2 Typen (AAB, BBB), Doppelstegplatte 8 mm", "Rand 15 mm vor der Strebenachse"] }, { "t": "Randprofil", "p": ["Aluminium-Kappe 30 × 8 mm", "30 × für Strebe A, 35 × für Strebe B"] }],
+      "masse": { "Paneele": "40 (minus Türfeld)", "Randprofile": "65" },
+      "grenzen": "Folie wäre eine spätere Variante (R11); kein Spec-Prüfer.",
+      "quelle": "docs/parts/haut_paneel.md, docs/research/R11.md"
     },
     {
       "match": "^pool",
       "titel": "Hauptbecken (Pool)",
-      "was": "Rundes Becken, Ø 3890 mm (Bens Tabelle: 4,0 m), 2,2 m tief, teilweise in den Boden eingelassen; Wasserspiegel auf Z 515 (0,5 m über dem Boden).",
-      "funktion": "Aufnahmebecken des Wasserkreislaufs; über dem Pool hängen die inneren NFT-Tische.",
-      "modelliert": ["Wanne und Wasserscheibe", "Beckenrand ca. Z 650 (Annahme)"],
-      "hinweis": "Tiefe 2,2 m nach Bens Tabelle (D26); das Becken wird auf die Kuppelachse zentriert (D35)."
+      "was": "Rundes Becken, teilweise in den Boden eingelassen; über ihm hängen die inneren NFT-Tische.",
+      "status": "im Modell",
+      "ablauf": ["Aufnahmebecken des Wasserkreislaufs.", "Wasserspiegel auf Z 515 (0,5 m über dem Boden)."],
+      "aufbau": [{ "t": "Körper", "p": ["Wanne", "Wasserscheibe", "Beckenrand ca. Z 650 (Annahme)"] }],
+      "masse": { "Durchmesser": "3890 mm (Bens Tabelle 4,0 m)", "Tiefe": "2,2 m (D26)", "Lage": "wird auf die Kuppelachse zentriert (D35)" },
+      "grenzen": "Rand und Wandstärke sind Annahmen.",
+      "quelle": "docs/decisions.md D08, D26"
     },
     {
       "match": "^zweitbecken",
       "titel": "Zweites Becken (vor der Tür)",
-      "was": "Flacher Rundtank, Ø 1747 mm, Wasserspiegel auf Z 515 wie der Pool.",
-      "funktion": "Rolle noch offen (in Bens Tabelle ein Zuchtbecken Ø2,0 m); steht direkt vor der Tür.",
-      "modelliert": ["Wanne und Wasserscheibe"]
+      "was": "Flacher Rundtank direkt vor der Tür.",
+      "status": "im Modell",
+      "ablauf": ["Wasserspiegel auf Z 515 wie der Pool.", "Rolle offen: in Bens Tabelle ein Zuchtbecken Ø2,0 m."],
+      "aufbau": [{ "t": "Körper", "p": ["Wanne", "Wasserscheibe"] }],
+      "masse": { "Durchmesser": "1747 mm" }
     },
     {
       "match": "^erdflaeche",
       "titel": "Erdboden",
-      "was": "Gelände innerhalb der Kuppel: Erdoberfläche, keine feste Bodenplatte.",
-      "funktion": "Pool, Beete und Zweitbecken sind in die Erde eingelassen, das System ist geschlossen und versickert nichts (D13).",
-      "modelliert": ["Erdfläche mit Taschen für Pool und Beete"]
+      "was": "Gelände in der Kuppel: Erdoberfläche, keine feste Bodenplatte.",
+      "status": "im Modell",
+      "ablauf": ["Pool, Beete und zweites Becken sind in die Erde eingelassen.", "Das System ist geschlossen, es versickert nichts (D13)."],
+      "aufbau": [{ "t": "Körper", "p": ["Erdfläche mit Taschen für Pool und Beete"] }]
     },
     {
       "match": "^tuer",
       "titel": "Tür",
-      "was": "Normtür 1000 × 2000 mm im Basisdreieck der Kuppel (Azimut ca. 167°), Scheitel Z 3150.",
-      "funktion": "Eingang; vor der Tür liegt das zweite Becken, der Gang zum Pool bleibt mindestens 900 mm breit.",
-      "modelliert": ["Rahmen und Blatt"],
-      "hinweis": "Komplette Tür mit Beschlägen folgt (M3)."
+      "was": "Normtür im Basisdreieck der Kuppel.",
+      "status": "Platzhalter, komplette Tür folgt (M3)",
+      "ablauf": ["Eingang; direkt dahinter liegt das zweite Becken.", "Der Gang zum Pool bleibt mindestens 900 mm breit."],
+      "aufbau": [{ "t": "Körper", "p": ["Rahmen und Blatt"] }],
+      "masse": { "Maß": "1000 × 2000 mm", "Lage": "Azimut ca. 167°", "Scheitel": "Z 3150" }
     },
     {
       "match": "^schaltschrank",
       "titel": "Schaltschrank",
-      "was": "Steuerung und Elektrik (Platzhalter aus dem OBJ).",
-      "funktion": "Rolle angenommen; Elektrik ist nicht Teil der Phase reines Modell.",
-      "modelliert": ["Kasten"]
+      "was": "Steuerung und Elektrik.",
+      "status": "Platzhalter aus dem OBJ",
+      "ablauf": ["Rolle angenommen; Elektrik ist nicht Teil der Phase reines Modell."],
+      "aufbau": [{ "t": "Körper", "p": ["Kasten"] }]
     }
   ]
 }

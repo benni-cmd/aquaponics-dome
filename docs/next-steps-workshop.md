@@ -49,3 +49,5 @@ W13 Strebe, W14 Tuer, W15 Pool/Zweitbecken liegen bei der Montage (Zwischenbaute
 REIHENFOLGE 13:45: W10 fertig, W12 Pumpe (laeuft), dann **W16 NFT-Tische Passung** (docs/jobs/W16-nft-tisch-passung.md, D18), danach W7, W11.
 
 REIHENFOLGE 19:55: W11 (laeuft) -> **W17 Radialbudget** (docs/jobs/W17-radialbudget.md, D28) -> Haut-Paneel nach R11. Pflanzenartmodelle (7 Arten laut R15) hinten angestellt (D27).
+
+REIHENFOLGE 22:05: nach dem Neustart: W17-Spec-Pruefer -> **W18 Lochabstand 200 mm** (docs/jobs/W18-lochabstand.md, D32, R16) -> Haut-Paneel R11.

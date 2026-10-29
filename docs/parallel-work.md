@@ -2,6 +2,12 @@
 
 Ziel: Bauteile werden parallel und unabhaengig verfeinert, das Gesamtmodell bleibt sauber und wird nur an einer Stelle zusammengesetzt; jedes Bauteil geht durch den Gauntlet, bevor es ins Modell kommt.
 
+## AENDERUNG 29.10.2026 04:15 (Ben): Neue Aufteilung
+- Die erste Sitzung ("Kuppel mit Aquaponik in SolidCraft bauen", Rolle Integrator) wird sauber beendet. An ihre Stelle tritt die Sitzung **"Montage und Layout (Kuppel)" (Rolle M)**: Layout und Anordnung der Komponenten, Zwischenbauteile (Streben, Knoten, Anker, Tuer, Haut, Rohre, Schlaeuche, Verteiler, Ventile, Klemmen), Wasserweg-Graph, Zusammenbau, Gesamtchecks, Viewer. Plan: `docs/next-steps-montage.md`.
+- Die **Werkstatt** (Rolle W) baut die grossen Funktionsbauteile: NFT-Tische, Beete, Tanks, Pumpen/Filter, Pflanzen. Plan: `docs/next-steps-workshop.md`.
+- **Rollender Plan:** Fuer W und M liegt immer ein ausdefinierter Plan fuer die naechsten 3-5 Schritte vor (je Schritt Ziel, Eingaben, Ergebnis, Pruefung, Abhaengigkeit). Der Orchestrator fuellt auf, sobald ein Schritt fertig ist oder eine Sitzung meldet, dass nur noch 2 Schritte uebrig sind. Eine Sitzung ohne definierten Schritt meldet das sofort.
+- Wo unten "Integrator" steht, ist ab der neuen Sitzung "Montage" (Rolle M) gemeint.
+
 ## Rollen
 
 | Rolle | Wer | Besitzt (nur hier schreiben) | Aufgabe |

@@ -88,3 +88,10 @@ Die Sitzungen pruefen ihr Limit selbst: nach jedem Schritt `get_usage` (Fenster 
 
 ## Modellbeschreibung (Ben, 29.10. 20:30)
 `docs/model-description.md` ist ein lebendes Dokument, Besitzer Orchestrator: bei jeder Abnahme Tabelle "Bauteile und Pruefstand" und "Verlauf" ergaenzen, Lernpunkte (Abschnitt 8) und Grenzen (6, 9) praezisieren, danach `python scripts/build_model_description.py` (Kennzahlen). Sitzungen melden Fund und Beleg in ihrer Fertigmeldung; sie schreiben nicht selbst hinein.
+
+## REGEL Zwischenspeichern (Ben, 29.10. 20:50) — der letzte Schritt darf nie verloren gehen
+Gilt fuer Werkstatt und Montage, zusaetzlich zur Wochenlimit-Regel:
+1. **Sicherungs-Commit ("WIP")**: spaetestens alle 20 Minuten und nach jedem Lauf, der laenger als 10 Minuten gedauert hat, werden alle eigenen Dateien mit Pfad committet und gepusht, auch wenn die Pruefung noch nicht gruen ist (Message beginnt mit "WIP:" und nennt den Stand, z. B. "WIP: W17 Beet 800 gebaut, check_nft_fit 30/36"). Kein "erst fertig, dann sichern".
+2. **Limit knapp**: ab 5-Stunden-Limit 88 % oder Wochenlimit 93 % (get_usage, nach jedem Schritt) sofort: Sicherungs-Commit + Zustandsdatei (was laeuft, naechster Schritt, offene Dateien) + Push, dann weiterarbeiten, solange das Limit nicht 95 % (Woche) erreicht; bei 95 % laut REGEL Wochenlimit auslaufen lassen.
+3. **Nur eigene Dateien**: Werkstatt committet nur designs/components/, docs/parts/, data/components/, scripts/workshop/, renders/; Montage nur dome.sc, gen_dome.py, check_*.py, viewer/, data/params.json, loop-state. Fremde Dateien werden nicht mit committet.
+4. Orchestrator prueft bei jedem Lauf `git status`; liegen mehr als 30 Minuten ungesicherte eigene Dateien einer Rolle, kommt EINE Zeile an die Sitzung.

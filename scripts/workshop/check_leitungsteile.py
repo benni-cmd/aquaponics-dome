@@ -12,7 +12,7 @@ def vol(path):
 def main():
     ck = sc.Check("leitungsteile")
     D = os.path.join(sc.ROOT, "designs", "components")
-    ck.eq("Dateien lt_*.sc", len(glob.glob(os.path.join(D, "lt_*.sc"))), 49)
+    ck.eq("Dateien lt_*.sc (7 Groessen x 7 Teile + 7 Reduzierungen + 4 Schlauch + 3 Verteiler)", len(glob.glob(os.path.join(D, "lt_*.sc"))), 7 * 7 + 7 + 4 + 3)
     for d in L.SIZES:
         A = math.pi / 4 * (d * d - (d - 2 * L.wall_p(d)) ** 2)
         ev, v = vol(os.path.join(D, f"lt_rohr_d{d}.sc"))
@@ -43,7 +43,7 @@ def main():
         rr = {round(f["cylinder"]["radius"], 2) for f in fs if f.get("cylinder")}
         ck.eq(f"klemme d{d} Ringbohrung = Rohr-D", 1 if round(d / 2, 2) in rr else 0, 1)
     for idd in (16, 25):
-        ad = idd + 7
+        ad = idd + 4
         ev, v = vol(os.path.join(D, f"lt_schlauch_id{idd}.sc"))
         mn, mx = sc.bbox_all(ev)
         ck.eq(f"schlauch ID{idd} Aussen-D", mx[0] - mn[0], ad, 0.1)
@@ -58,6 +58,27 @@ def main():
         fs = sc.faces(path, "Verteiler")
         xs = {round(f["cylinder"]["origin"][0], 1) for f in fs if f.get("cylinder") and abs(f["cylinder"]["radius"] - 12.5) < 0.1 and abs(abs(f["cylinder"]["axis"][2]) - 1) < 0.01}
         ck.eq(f"verteiler d32 n{n} Abgaenge d25", len(xs), n)
+    for dg, dk in L.REDUCERS:
+        ev, v = vol(os.path.join(D, f"lt_reduzierung_d{dg}_d{dk}.sc"))
+        mn, mx = sc.bbox_all(ev)
+        ck.eq(f"reduzierung d{dg}/d{dk} Laenge", mx[2] - mn[2], L.DEPTH[dg] + L.DEPTH[dk] + 6, 0.1)
+        ck.eq(f"reduzierung d{dg}/d{dk} Aussen-D", mx[0] - mn[0], L.od_f(dg), 0.1)
+    # Ports: zu jedem Port existiert eine ebene Stirnflaeche mit passender Normalen und Mittelpunkt (Pruefung der Port-Koordinaten im Blatt)
+    body = {"rohr": "Rohr", "kupplung": "Kupplung", "bogen": "Bogen", "t": "T_Stueck", "kugelhahn": "Kugelhahn", "reduzierung": "Reduzierung", "schlauch": "Schlauch", "schlauchbogen90": "Schlauchbogen", "verteiler": "Verteiler"}
+    nport = 0
+    for f in sorted(glob.glob(os.path.join(D, "lt_*.sc"))):
+        fn = os.path.basename(f)[:-3]
+        pl = L.ports(fn)
+        if not pl or fn.startswith("lt_klemme"):
+            continue
+        key = fn.split("_")[1]
+        key = "bogen" if key.startswith("bogen") else key
+        fs = sc.faces(f, body[key])
+        planes = [(x["plane_normal"], x["centroid"]) for x in fs if x.get("plane_normal")]
+        for name, pos, dr, art, dn in pl:
+            hit = any(sum(n[i] * dr[i] for i in range(3)) > 0.999 and math.dist(cen, pos) < 0.6 for n, cen in planes)
+            nport += 1
+            ck.eq(f"{fn} Port {name} ({art}, {dn}) Stirnflaeche an {tuple(round(v, 1) for v in pos)}", 1 if hit else 0, 1)
     return ck.done()
 
 if __name__ == "__main__":

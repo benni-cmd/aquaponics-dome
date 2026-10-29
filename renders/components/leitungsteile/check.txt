@@ -1,4 +1,15 @@
-PASS leitungsteile: Dateien lt_*.sc: Ist 49, Soll 49
+PASS leitungsteile: Dateien lt_*.sc (7 Groessen x 7 Teile + 7 Reduzierungen + 4 Schlauch + 3 Verteiler): Ist 63, Soll 63
+PASS leitungsteile: rohr d20 Aussen-D: Ist 19.9964, Soll 20 (+-0.1)
+PASS leitungsteile: rohr d20 Laenge: Ist 1000, Soll 1000 (+-0.1)
+PASS leitungsteile: rohr d20 Volumen = Ringflaeche x Laenge (Wand 1.8): Ist 102872, Soll 102919 (+-205.837)
+PASS leitungsteile: kupplung d20 Laenge: Ist 38, Soll 38 (+-0.1)
+PASS leitungsteile: kupplung d20 Aussen-D (Formstueck): Ist 26.9996, Soll 27 (+-0.1)
+PASS leitungsteile: bogen90 d20 Volumen = Ringflaeche x Mittellinie (2 Schenkel + Bogen R 27): Ist 19225.9, Soll 19227.6 (+-96.1382)
+PASS leitungsteile: bogen45 d20 Volumen = Ringflaeche x Mittellinie (2 Schenkel + Bogen R 27): Ist 13747, Soll 13748.2 (+-68.7408)
+PASS leitungsteile: t d20 Laenge Lauf: Ist 59, Soll 59 (+-0.2)
+PASS leitungsteile: t d20 Abgang Hoehe: Ist 29.5, Soll 29.5 (+-0.2)
+PASS leitungsteile: kugelhahn d20 Baulaenge (Gehaeuse ohne Hebel): Ist 82, Soll 82 (+-0.1)
+PASS leitungsteile: klemme d20 Ringbohrung = Rohr-D: Ist 1, Soll 1
 PASS leitungsteile: rohr d25 Aussen-D: Ist 24.9955, Soll 25 (+-0.1)
 PASS leitungsteile: rohr d25 Laenge: Ist 1000, Soll 1000 (+-0.1)
 PASS leitungsteile: rohr d25 Volumen = Ringflaeche x Laenge (Wand 1.8): Ist 131200, Soll 131193 (+-262.386)
@@ -65,15 +76,157 @@ PASS leitungsteile: t d110 Laenge Lauf: Ist 243.5, Soll 243.5 (+-0.2)
 PASS leitungsteile: t d110 Abgang Hoehe: Ist 121.75, Soll 121.75 (+-0.2)
 PASS leitungsteile: kugelhahn d110 Baulaenge (Gehaeuse ohne Hebel): Ist 172, Soll 172 (+-0.1)
 PASS leitungsteile: klemme d110 Ringbohrung = Rohr-D: Ist 1, Soll 1
-PASS leitungsteile: schlauch ID16 Aussen-D: Ist 22.9959, Soll 23 (+-0.1)
+PASS leitungsteile: schlauch ID16 Aussen-D: Ist 19.9964, Soll 20 (+-0.1)
 PASS leitungsteile: schlauch ID16 Laenge: Ist 1000, Soll 1000 (+-0.1)
-PASS leitungsteile: schlauchbogen ID16 Volumen (Biegeradius 115 = 5 x AD): Ist 81607, Soll 81614.8 (+-408.074)
+PASS leitungsteile: schlauchbogen ID16 Volumen (Biegeradius 100 = 5 x AD): Ist 40381, Soll 40384.8 (+-201.924)
 PASS leitungsteile: schlauchbogen ID16 Biegeradius >= 5 x AD: Ist 1, Soll 1
-PASS leitungsteile: schlauch ID25 Aussen-D: Ist 31.9995, Soll 32 (+-0.1)
+PASS leitungsteile: schlauch ID25 Aussen-D: Ist 28.9948, Soll 29 (+-0.1)
 PASS leitungsteile: schlauch ID25 Laenge: Ist 1000, Soll 1000 (+-0.1)
-PASS leitungsteile: schlauchbogen ID25 Volumen (Biegeradius 160 = 5 x AD): Ist 141420, Soll 141434 (+-707.171)
+PASS leitungsteile: schlauchbogen ID25 Volumen (Biegeradius 145 = 5 x AD): Ist 72561.4, Soll 72568.7 (+-362.844)
 PASS leitungsteile: schlauchbogen ID25 Biegeradius >= 5 x AD: Ist 1, Soll 1
 PASS leitungsteile: verteiler d32 n2 Abgaenge d25: Ist 2, Soll 2
 PASS leitungsteile: verteiler d32 n3 Abgaenge d25: Ist 3, Soll 3
 PASS leitungsteile: verteiler d32 n4 Abgaenge d25: Ist 4, Soll 4
-== leitungsteile: 78/78 PASS
+PASS leitungsteile: reduzierung d110/d63 Laenge: Ist 104.5, Soll 104.5 (+-0.1)
+PASS leitungsteile: reduzierung d110/d63 Aussen-D: Ist 121.498, Soll 121.5 (+-0.1)
+PASS leitungsteile: reduzierung d63/d50 Laenge: Ist 74.5, Soll 74.5 (+-0.1)
+PASS leitungsteile: reduzierung d63/d50 Aussen-D: Ist 72.1489, Soll 72.15 (+-0.1)
+PASS leitungsteile: reduzierung d50/d40 Laenge: Ist 63, Soll 63 (+-0.1)
+PASS leitungsteile: reduzierung d50/d40 Aussen-D: Ist 58.4991, Soll 58.5 (+-0.1)
+PASS leitungsteile: reduzierung d50/d32 Laenge: Ist 59, Soll 59 (+-0.1)
+PASS leitungsteile: reduzierung d50/d32 Aussen-D: Ist 58.4991, Soll 58.5 (+-0.1)
+PASS leitungsteile: reduzierung d40/d32 Laenge: Ist 54, Soll 54 (+-0.1)
+PASS leitungsteile: reduzierung d40/d32 Aussen-D: Ist 47.9993, Soll 48 (+-0.1)
+PASS leitungsteile: reduzierung d32/d25 Laenge: Ist 47, Soll 47 (+-0.1)
+PASS leitungsteile: reduzierung d32/d25 Aussen-D: Ist 39.5994, Soll 39.6 (+-0.1)
+PASS leitungsteile: reduzierung d25/d20 Laenge: Ist 41, Soll 41 (+-0.1)
+PASS leitungsteile: reduzierung d25/d20 Aussen-D: Ist 32.2495, Soll 32.25 (+-0.1)
+PASS leitungsteile: lt_bogen45_d110 Port A (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d110 Port B (Muffe, DN100) Stirnflaeche an (81.8, 0, 197.5): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d20 Port A (Muffe, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d20 Port B (Muffe, DN15) Stirnflaeche an (19.2, 0, 46.4): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d25 Port A (Muffe, DN20) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d25 Port B (Muffe, DN20) Stirnflaeche an (22.9, 0, 55.2): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d32 Port A (Muffe, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d32 Port B (Muffe, DN25) Stirnflaeche an (27.2, 0, 65.6): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d40 Port A (Muffe, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d40 Port B (Muffe, DN32) Stirnflaeche an (32.4, 0, 78.3): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d50 Port A (Muffe, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d50 Port B (Muffe, DN40) Stirnflaeche an (39.5, 0, 95.3): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d63 Port A (Muffe, DN50) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen45_d63 Port B (Muffe, DN50) Stirnflaeche an (48.7, 0, 117.5): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d110 Port A (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d110 Port B (Muffe, DN100) Stirnflaeche an (193.0, 0, 193.0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d20 Port A (Muffe, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d20 Port B (Muffe, DN15) Stirnflaeche an (43.0, 0, 43.0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d25 Port A (Muffe, DN20) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d25 Port B (Muffe, DN20) Stirnflaeche an (51.2, 0, 51.2): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d32 Port A (Muffe, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d32 Port B (Muffe, DN25) Stirnflaeche an (61.6, 0, 61.6): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d40 Port A (Muffe, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d40 Port B (Muffe, DN32) Stirnflaeche an (74.0, 0, 74.0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d50 Port A (Muffe, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d50 Port B (Muffe, DN40) Stirnflaeche an (91.0, 0, 91.0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d63 Port A (Muffe, DN50) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_bogen90_d63 Port B (Muffe, DN50) Stirnflaeche an (113.1, 0, 113.1): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d110 Port A (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d110 Port B (Muffe, DN100) Stirnflaeche an (0, 0, 172): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d20 Port A (Muffe, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d20 Port B (Muffe, DN15) Stirnflaeche an (0, 0, 82): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d25 Port A (Muffe, DN20) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d25 Port B (Muffe, DN20) Stirnflaeche an (0, 0, 88): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d32 Port A (Muffe, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d32 Port B (Muffe, DN25) Stirnflaeche an (0, 0, 94): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d40 Port A (Muffe, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d40 Port B (Muffe, DN32) Stirnflaeche an (0, 0, 102): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d50 Port A (Muffe, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d50 Port B (Muffe, DN40) Stirnflaeche an (0, 0, 112): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d63 Port A (Muffe, DN50) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kugelhahn_d63 Port B (Muffe, DN50) Stirnflaeche an (0, 0, 125.0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d110 Port A (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d110 Port B (Muffe, DN100) Stirnflaeche an (0, 0, 128): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d20 Port A (Muffe, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d20 Port B (Muffe, DN15) Stirnflaeche an (0, 0, 38): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d25 Port A (Muffe, DN20) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d25 Port B (Muffe, DN20) Stirnflaeche an (0, 0, 44): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d32 Port A (Muffe, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d32 Port B (Muffe, DN25) Stirnflaeche an (0, 0, 50): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d40 Port A (Muffe, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d40 Port B (Muffe, DN32) Stirnflaeche an (0, 0, 58): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d50 Port A (Muffe, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d50 Port B (Muffe, DN40) Stirnflaeche an (0, 0, 68): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d63 Port A (Muffe, DN50) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_kupplung_d63 Port B (Muffe, DN50) Stirnflaeche an (0, 0, 81.0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d110_d63 Port A (gross) (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d110_d63 Port B (klein) (Muffe, DN50) Stirnflaeche an (0, 0, 104.5): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d25_d20 Port A (gross) (Muffe, DN20) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d25_d20 Port B (klein) (Muffe, DN15) Stirnflaeche an (0, 0, 41): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d32_d25 Port A (gross) (Muffe, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d32_d25 Port B (klein) (Muffe, DN20) Stirnflaeche an (0, 0, 47): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d40_d32 Port A (gross) (Muffe, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d40_d32 Port B (klein) (Muffe, DN25) Stirnflaeche an (0, 0, 54): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d50_d32 Port A (gross) (Muffe, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d50_d32 Port B (klein) (Muffe, DN25) Stirnflaeche an (0, 0, 59): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d50_d40 Port A (gross) (Muffe, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d50_d40 Port B (klein) (Muffe, DN32) Stirnflaeche an (0, 0, 63): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d63_d50 Port A (gross) (Muffe, DN50) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_reduzierung_d63_d50 Port B (klein) (Muffe, DN40) Stirnflaeche an (0, 0, 74.5): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d110 Port A (Zapfen, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d110 Port B (Zapfen, DN100) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d20 Port A (Zapfen, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d20 Port B (Zapfen, DN15) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d25 Port A (Zapfen, DN20) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d25 Port B (Zapfen, DN20) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d32 Port A (Zapfen, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d32 Port B (Zapfen, DN25) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d40 Port A (Zapfen, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d40 Port B (Zapfen, DN32) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d50 Port A (Zapfen, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d50 Port B (Zapfen, DN40) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d63 Port A (Zapfen, DN50) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_rohr_d63 Port B (Zapfen, DN50) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauch_id16 Port A (Schlauchende, ID16) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauch_id16 Port B (Schlauchende, ID16) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauch_id25 Port A (Schlauchende, ID25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauch_id25 Port B (Schlauchende, ID25) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauchbogen90_id16 Port A (Schlauchende, ID16) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauchbogen90_id16 Port B (Schlauchende, ID16) Stirnflaeche an (200, 0, 200): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauchbogen90_id25 Port A (Schlauchende, ID25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_schlauchbogen90_id25 Port B (Schlauchende, ID25) Stirnflaeche an (245, 0, 245): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d110 Port A (Muffe, DN100) Stirnflaeche an (-121.8, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d110 Port B (Muffe, DN100) Stirnflaeche an (121.8, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d110 Port C (Muffe, DN100) Stirnflaeche an (0, 0, 121.8): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d20 Port A (Muffe, DN15) Stirnflaeche an (-29.5, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d20 Port B (Muffe, DN15) Stirnflaeche an (29.5, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d20 Port C (Muffe, DN15) Stirnflaeche an (0, 0, 29.5): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d25 Port A (Muffe, DN20) Stirnflaeche an (-35.1, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d25 Port B (Muffe, DN20) Stirnflaeche an (35.1, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d25 Port C (Muffe, DN20) Stirnflaeche an (0, 0, 35.1): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d32 Port A (Muffe, DN25) Stirnflaeche an (-41.8, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d32 Port B (Muffe, DN25) Stirnflaeche an (41.8, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d32 Port C (Muffe, DN25) Stirnflaeche an (0, 0, 41.8): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d40 Port A (Muffe, DN32) Stirnflaeche an (-50.0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d40 Port B (Muffe, DN32) Stirnflaeche an (50.0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d40 Port C (Muffe, DN32) Stirnflaeche an (0, 0, 50.0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d50 Port A (Muffe, DN40) Stirnflaeche an (-60.2, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d50 Port B (Muffe, DN40) Stirnflaeche an (60.2, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d50 Port C (Muffe, DN40) Stirnflaeche an (0, 0, 60.2): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d63 Port A (Muffe, DN50) Stirnflaeche an (-73.6, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d63 Port B (Muffe, DN50) Stirnflaeche an (73.6, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_t_d63 Port C (Muffe, DN50) Stirnflaeche an (0, 0, 73.6): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n2 Port A (Zapfen, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n2 Port B (Zapfen, DN25) Stirnflaeche an (360, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n2 Port Abgang 1 (Zapfen, DN20) Stirnflaeche an (120, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n2 Port Abgang 2 (Zapfen, DN20) Stirnflaeche an (240, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n3 Port A (Zapfen, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n3 Port B (Zapfen, DN25) Stirnflaeche an (480, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n3 Port Abgang 1 (Zapfen, DN20) Stirnflaeche an (120, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n3 Port Abgang 2 (Zapfen, DN20) Stirnflaeche an (240, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n3 Port Abgang 3 (Zapfen, DN20) Stirnflaeche an (360, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n4 Port A (Zapfen, DN25) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n4 Port B (Zapfen, DN25) Stirnflaeche an (600, 0, 0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n4 Port Abgang 1 (Zapfen, DN20) Stirnflaeche an (120, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n4 Port Abgang 2 (Zapfen, DN20) Stirnflaeche an (240, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n4 Port Abgang 3 (Zapfen, DN20) Stirnflaeche an (360, 0, 66.0): Ist 1, Soll 1
+PASS leitungsteile: lt_verteiler_d32_n4 Port Abgang 4 (Zapfen, DN20) Stirnflaeche an (480, 0, 66.0): Ist 1, Soll 1
+== leitungsteile: 231/231 PASS

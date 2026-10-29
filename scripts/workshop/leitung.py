@@ -5,13 +5,13 @@ import sys, os, math, json
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 
-SIZES = [25, 32, 40, 50, 63, 110]                       # Rohr-Aussendurchmesser d (mm), DN-Naeherung 20/25/32/40/50/100
-DEPTH = {25: 19, 32: 22, 40: 26, 50: 31, 63: 37.5, 110: 61}   # Muffentiefe (EN 1452-3, gerundet)
-DN = {25: "DN20", 32: "DN25", 40: "DN32", 50: "DN40", 63: "DN50", 110: "DN100"}
+SIZES = [20, 25, 32, 40, 50, 63, 110]                   # Rohr-Aussendurchmesser d (mm), DN-Naeherung 15/20/25/32/40/50/100 (d20 = PE-Tropfrohr des Beets)
+DEPTH = {20: 16, 25: 19, 32: 22, 40: 26, 50: 31, 63: 37.5, 110: 61}   # Muffentiefe (EN 1452-3, gerundet)
+DN = {20: "DN15", 25: "DN20", 32: "DN25", 40: "DN32", 50: "DN40", 63: "DN50", 110: "DN100"}
 HOSE = {16: "hellblau", 25: "dunkelblau"}               # Schlauch-Innendurchmesser -> Standardfarbe (hydraulics.md 5: Frischwasser hellblau, Filterlinie dunkelblau)
 COL = {"pvc": "#8d9296", "hellblau": "#7fc4ea", "dunkelblau": "#2a5da8", "stahl": "#aeb4b8", "hahn": "#2a5da8"}
 
-def wall_p(d): return max(1.8, round(d / 21.0, 1))        # PVC-U PN10 (SDR 21)
+def wall_p(d): return max(1.8, round(d / 21.0, 1))        # PVC-U SDR 21 (entspricht PN12,5)
 def wall_f(d): return 3 + d / 40.0                         # Muffenwand Formstueck
 def od_f(d): return d + 2 * wall_f(d)
 
@@ -115,14 +115,73 @@ def kugelhahn(d):
     b.add("component.activate", component=nm)
     b.add("component.create", name="T70a_Hebel")
     zc = DEPTH[d] + Lb / 2
-    b.add("solid.cylinder", diameter=14, height=ob / 2 + 24, base=[0, 0, zc], axis=[1, 0, 0], operation="new", name="Spindel_R", body_name="Spindel")
+    b.add("solid.cylinder", diameter=14, height=ob / 2 + 30, base=[0, 0, zc], axis=[1, 0, 0], operation="new", name="Spindel_R", body_name="Spindel")      # 3 mm Einschub in den Hebel (Schweissverbindung)
     b.add("solid.box", length=14, width=max(8, d / 5), height=110, center=[ob / 2 + 34, 0, zc], operation="new", name="Hebel_R", body_name="Hebel")
     b.add("material.assign", bodies=["Spindel", "Hebel"], material="LT hahn")
     meta(b, nm, f"T70-KH-{d}", f"Kugelhahn PVC-U d{d}, Klebemuffen, Hebel +X (offen = parallel zur Rohrachse)")
     return b, nm, dict(L=L)
 
+REDUCERS = [(110, 63), (63, 50), (50, 40), (50, 32), (40, 32), (32, 25), (25, 20)]
+
+def reduzierung(dg, dk):
+    """Reduziermuffe: grosse Muffe d_g an Port A, kleine Muffe d_k an Port B; Aussen-D = Formstueck der grossen Seite."""
+    L = DEPTH[dg] + DEPTH[dk] + 6
+    b = sc.Build(); nm = f"T70_Reduzierung_d{dg}_d{dk}"
+    setup(b, nm, dg, {"laenge": L, "d_klein": dk})
+    b.add("solid.cylinder", diameter=od_f(dg), height=L, base=[0, 0, 0], operation="new", name="Red_R", body_name="Reduzierung")
+    b.add("solid.cylinder", diameter=dg, height=DEPTH[dg] + 1, base=[0, 0, -1], operation="cut", targets=["Reduzierung"], name="Muffe_gross")
+    b.add("solid.cylinder", diameter=dk, height=DEPTH[dk] + 1, base=[0, 0, L - DEPTH[dk]], operation="cut", targets=["Reduzierung"], name="Muffe_klein")
+    b.add("solid.cylinder", diameter=dk - 2 * wall_p(dk), height=L + 2, base=[0, 0, -1], operation="cut", targets=["Reduzierung"], name="Durchgang")
+    b.add("material.assign", bodies=["Reduzierung"], material="LT pvc")
+    meta(b, nm, f"T70-RED-{dg}-{dk}", f"Reduziermuffe PVC-U d{dg} auf d{dk}, Klebemuffen")
+    return b, nm, dict(L=L)
+
+def ports(fname, L_rohr=1000):
+    """Ports eines Teils (Lage im Bauteil-KS, Richtung der Oeffnung, Art 'Muffe' = Rohr wird eingesteckt, 'Zapfen' = Rohr-/Schlauchende, Lage auf der Oeffnungsebene): [(name, (x,y,z), (dx,dy,dz), art, dn)]."""
+    import re
+    m = re.match(r"lt_(rohr|kupplung|bogen90|bogen45|t|kugelhahn|klemme)_d(\d+)$", fname)
+    if m:
+        t, d = m.group(1), int(m.group(2))
+        dp, of = DEPTH[d], od_f(d)
+        if t == "rohr":
+            return [("A", (0, 0, 0), (0, 0, -1), "Zapfen", DN[d]), ("B", (0, 0, L_rohr), (0, 0, 1), "Zapfen", DN[d])]
+        if t == "kupplung":
+            Lk = 2 * dp + 6
+            return [("A", (0, 0, 0), (0, 0, -1), "Muffe", DN[d]), ("B", (0, 0, Lk), (0, 0, 1), "Muffe", DN[d])]
+        if t in ("bogen90", "bogen45"):
+            ang = 90 if t == "bogen90" else 45
+            R = max(of, 1.2 * d); r = math.radians(ang)
+            ex, ez = R - R * math.cos(r), dp + R * math.sin(r)
+            dx, dz = math.sin(r), math.cos(r)
+            return [("A", (0, 0, 0), (0, 0, -1), "Muffe", DN[d]), ("B", (ex + dx * dp, 0, ez + dz * dp), (dx, 0, dz), "Muffe", DN[d])]
+        if t == "t":
+            a = dp + of / 2
+            return [("A", (-a, 0, 0), (-1, 0, 0), "Muffe", DN[d]), ("B", (a, 0, 0), (1, 0, 0), "Muffe", DN[d]), ("C", (0, 0, a), (0, 0, 1), "Muffe", DN[d])]
+        if t == "kugelhahn":
+            Lh = 50 + 2 * dp
+            return [("A", (0, 0, 0), (0, 0, -1), "Muffe", DN[d]), ("B", (0, 0, Lh), (0, 0, 1), "Muffe", DN[d])]
+        return [("Rohrachse", (0, 0, 4 + (d + 6) / 2), (1, 0, 0), "Aufnahme", DN[d])]
+    m = re.match(r"lt_reduzierung_d(\d+)_d(\d+)$", fname)
+    if m:
+        dg, dk = int(m.group(1)), int(m.group(2))
+        return [("A (gross)", (0, 0, 0), (0, 0, -1), "Muffe", DN[dg]), ("B (klein)", (0, 0, DEPTH[dg] + DEPTH[dk] + 6), (0, 0, 1), "Muffe", DN[dk])]
+    m = re.match(r"lt_schlauch_id(\d+)$", fname)
+    if m:
+        return [("A", (0, 0, 0), (0, 0, -1), "Schlauchende", "ID" + m.group(1)), ("B", (0, 0, L_rohr), (0, 0, 1), "Schlauchende", "ID" + m.group(1))]
+    m = re.match(r"lt_schlauchbogen90_id(\d+)$", fname)
+    if m:
+        idd = int(m.group(1)); ad = idd + 4; R = 5 * ad
+        return [("A", (0, 0, 0), (0, 0, -1), "Schlauchende", f"ID{idd}"), ("B", (R + 100, 0, 100 + R), (1, 0, 0), "Schlauchende", f"ID{idd}")]
+    m = re.match(r"lt_verteiler_d32_n(\d+)$", fname)
+    if m:
+        n = int(m.group(1)); Lv = n * 120 + 120
+        out = [("A", (0, 0, 0), (-1, 0, 0), "Zapfen", DN[32]), ("B", (Lv, 0, 0), (1, 0, 0), "Zapfen", DN[32])]
+        out += [(f"Abgang {k}", (60 + 60 + 120 * (k - 1), 0, 66.0), (0, 0, 1), "Zapfen", DN[25]) for k in range(1, n + 1)]
+        return out
+    return []
+
 def schlauch(idd, L=1000):
-    wh = 3.5
+    wh = 2.0
     ad = idd + 2 * wh
     b = sc.Build(); nm = f"T70_Schlauch_ID{idd}"
     b.add("parameters.add", name="id", expression=f"{idd} mm"); b.add("parameters.add", name="wand", expression=f"{wh} mm"); b.add("parameters.add", name="laenge", expression=f"{L} mm")
@@ -136,7 +195,7 @@ def schlauch(idd, L=1000):
     return b, nm, dict(ad=ad)
 
 def schlauch_bogen(idd):
-    wh = 3.5
+    wh = 2.0
     ad = idd + 2 * wh
     R = 5 * ad                                                   # Biegeradius >= 5 x Aussendurchmesser (hydraulics.md 5)
     b = sc.Build(); nm = f"T70_SchlauchBogen90_ID{idd}"
@@ -156,13 +215,14 @@ def klemme(d):
     b = sc.Build(); nm = f"T70_Klemme_d{d}"
     setup(b, nm, d)
     zc = plate + ring_od / 2
-    b.add("solid.box", length=44, width=max(40, ring_od * 0.8), height=plate, center=[0, 0, plate / 2], operation="new", name="Fuss_R", body_name="Klemmenfuss")
+    fw = ring_od + 36                                          # Fussbreite: Schrauben liegen ausserhalb des Rings
+    b.add("solid.box", length=44, width=fw, height=plate, center=[0, 0, plate / 2], operation="new", name="Fuss_R", body_name="Klemmenfuss")
     b.add("solid.cylinder", diameter=ring_od, height=w, base=[-w / 2, 0, zc], axis=[1, 0, 0], operation="new", name="Ring_R", body_name="Klemmenring")
     b.add("solid.cylinder", diameter=d, height=w + 2, base=[-w / 2 - 1, 0, zc], axis=[1, 0, 0], operation="cut", targets=["Klemmenring"], name="Ring_Bohrung")
     b.add("material.assign", bodies=["Klemmenfuss", "Klemmenring"], material="LT stahl")
     for sy in (-1, 1):
-        b.add("parts.insert", family="hex_bolt", size="M6", length=20, point=[0, sy * (max(40, ring_od * 0.8) / 2 - 8), plate], direction=[0, 0, 1], name=f"Schraube_{sy}")
-    meta(b, nm, f"T70-KL-{d}", f"Rohrklemme/Halter fuer Rohr d{d}, Fuss 44 x {max(40, ring_od * 0.8):.0f}, Ring B20, 2 Schrauben M6x20")
+        b.add("parts.insert", family="hex_bolt", size="M6", length=20, point=[0, sy * (ring_od / 2 + 12), plate], direction=[0, 0, 1], name=f"Schraube_{sy}")
+    meta(b, nm, f"T70-KL-{d}", f"Rohrklemme/Halter fuer Rohr d{d}, Fuss 44 x {ring_od + 36:.0f}, Ring B20, 2 Schrauben M6x20")
     return b, nm, dict(zc=zc)
 
 def verteiler(d, n, ds=25, pitch=120):
@@ -204,6 +264,8 @@ if __name__ == "__main__":
         do("t", f"lt_t_d{d}", t_stueck(d))
         do("kugelhahn", f"lt_kugelhahn_d{d}", kugelhahn(d))
         do("klemme", f"lt_klemme_d{d}", klemme(d))
+    for dg, dk in REDUCERS:
+        do("reduzierung", f"lt_reduzierung_d{dg}_d{dk}", reduzierung(dg, dk))
     for idd in (16, 25):
         do("schlauch", f"lt_schlauch_id{idd}", schlauch(idd))
         do("schlauch", f"lt_schlauchbogen90_id{idd}", schlauch_bogen(idd))

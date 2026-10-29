@@ -36,3 +36,28 @@ Der Orchestrator prueft bei der Abnahme: stimmt die Scope-Card mit `data/layout.
 ## 7. Zahlen-Gegenprobe
 
 Zu jeder Klasse gehoeren Pruefzahlen aus `layout.json` (Anzahl je Eltern, Masse, Abstaende). Der Pruefskript der Klasse stellt sie fest (z. B. Rinne: Lochreihen = 1; Tisch: Versatz benachbarter Rinnen = Topfabstand/2, Rinnenzahl und Abstand wie Ring).
+
+## 8. Kontextpaket fuer den Kritiker (neu 29.10. 04:00, nach Bens Hinweis: "dem Kritiker fehlt vielleicht Kontext")
+
+Der Bauer legt vor jedem Kritikerlauf `docs/parts/<klasse>-critic-pack.md` an und gibt es dem Kritiker mit. Inhalt:
+1. **Scope-Card** der Klasse (DRIN / DRAUSSEN, Stelle in der Hierarchie, Anzahl je Eltern) aus `docs/scope-cards.md`.
+2. **Systemueberblick in fuenf Zeilen:** geodaetische Aquaponik-Kuppel, Wasserweg, Rolle dieser Klasse darin, was darueber und darunter haengt.
+3. **Vier Bilder:** (a) Referenz Gesamtansicht `ref-4` mit eingezeichneter Stelle der Klasse, (b) Referenzausschnitt NUR der Einzelklasse (Rahmen), (c) Modell-Render im gleichen Ausschnitt, (d) Modell-Render im Elternkontext (z. B. Rinne im Tisch). A/B weiterhin ohne Beschriftung und zufaellig benannt.
+4. **Messwerte aus dem Modell** (Ausgabe des Vorpruefskripts, siehe 9): Masse, Anzahl Loecher/Reihen/Abstaende, Ports, Wandstaerken.
+5. **Soll** aus `data/layout.json`, `docs/components.md`, `docs/scope-cards.md`.
+6. **Bekannte Fehlinterpretationen** aus `docs/review-lessons.md`.
+7. Frage und Antwortformat aus Abschnitt 4.
+
+## 9. Maschinelle Vorpruefung (Zahlen) VOR jedem Kritiker
+
+Je Klasse ein Pruefskript `scripts/workshop/check_<klasse>.py`, das am gespeicherten `.sc` misst (`solidcraft-cli`, z. B. Bounding-Box, `component.properties`, Anzahl Loecher und Reihen, Port-Positionen) und mit der Scope-Card vergleicht (PASS/FAIL mit Ist und Soll). Der Kritiker laeuft nur bei PASS. Beispiele: Rinne Lochreihen = 1, Loecher = Laenge/pitch, Profil 130 x 100; Tisch Versatz benachbarter Rinnen = pitch/2; Tank Kegel vorhanden, Fitting an Kegelspitze; Beet Medienoberflaeche Z 400.
+
+## 10. Zwei Pruefer statt einem
+
+- **Bild-Kritiker** (Aussehen, Abschnitt 4 mit Kontextpaket).
+- **Spec-Pruefer** (kein Bild, nur Zahlen und Text): ein zweiter frischer Agent liest Scope-Card, Hierarchie und die Messwerte und nennt Widersprueche (z. B. Merkmal gehoert zu anderer Klasse, Zahl weicht vom OBJ ab, Anzahl falsch). Er hat die Hierarchie als Pflichtfrage: "Gehoert jedes Merkmal in dieser Klasse hierher oder in die Eltern- oder Kindklasse?"
+Beide Ergebnisse gehen durch die Triage (Abschnitt 5).
+
+## 11. Lernprotokoll
+
+Jeder gefundene Fehler kommt in `docs/review-lessons.md` (Datum, Klasse, was schiefging, Ursache, neue Regel). Der Bauer fuegt "Bekannte Fehlinterpretationen" daraus ins Kontextpaket ein. Der Orchestrator ergaenzt die Datei bei Abnahme-Funden.

@@ -56,3 +56,12 @@ Format je Klasse: DRIN · DRAUSSEN · Anzahl je Eltern · Masse (Quelle) · Refe
 - **DRAUSSEN:** Verlegung und Weg (aus `data/system.json`, Montage), welcher Port womit verbunden ist, `routing surface/buried`.
 - **Masse/Quelle:** DN aus Fittings im OBJ (30-56 mm) und Bauteilblaettern (Rinne Stutzen d32, Tuelle ID 16, Tankzulauf DN50, Beet Standrohr/Ablauf); Normmasse PVC-U; Annahme A.
 - **Fehlinterpretation:** Rohrverlauf im Bauteil modellieren; jedes Rohr als Einzelkoerper statt Komponente.
+
+## REVISION 29.10. 08:40 (Orchestrator, Entscheidung D15): knoten_4/5/6
+Abweichung der Werkstatt akzeptiert: **Knotenkugel Ø100 mit 4/5/6 Steckarmen** (Rechteckrohr, 80 mm in die Strebe gesteckt) und **Querbolzen M10** je Strebe statt "zwei Knotenplatten oben/unten". Grund (nachgerechnet aus `layout.json`): die Strebenrichtungen sind um asin(L/2R) = 15,9 Grad (Strebe A) bzw. 18,0 Grad (Strebe B) gegen die Tangentialebene geneigt; Arme zwischen flachen Platten wuerden die Platten durchdringen. R02 nennt Huelsen- und Sternnaben als Bauart, passt. Ergaenzung: Ankerlasche 60 x 10 x 150 mm, Loch Ø14, nur am vierwertigen Basisknoten (Schnittstelle zum Fundamentanker). 26 Einzelknoten-Dateien (Armrichtungen je Knoten aus den Nachbarknoten), Repraesentanten knoten_4/5/6. Pruefzahlen wie bisher (Armzahl = Wertigkeit, Armwinkel aus Vektoren).
+
+## netztopf / salatkopf (Format nachgetragen, 08:40)
+- **netztopf DRIN:** Korpus 50 x 64 x 63 mm mit Kragen (Ø64, Dicke 3,5 mm), Schlitze/Loecher fuer Wurzeln, Sitz im Topfloch (Rinne: Loch Ø52, Beet: Loch im Medium). **DRAUSSEN:** Loch, Rinne, Beet, Pflanze.
+- **salatkopf DRIN:** EIN Kopf als Bauteil, wenige Facetten (Export!), Hals, Groessen S/M/L als Konfigurationen, Ursprung = Kragenoberkante des Netztopfs. **DRAUSSEN:** Netztopf, Platzierung, Instanzvariation (Layout).
+- **Anzahl:** Netztopf gesamt ca. 2716 = 2160 (Beete, OBJ) + 556 (Rinnen: 20 Rinnen x 5 + 24 x 7 + 24 x 12, Annahme 3 Aussenrinnen je Tisch, E); Salatkopf gleiche Zahl (ein Kopf je Topf), Board-Angabe "ca. 240+" war veraltet.
+- **Pruefzahlen:** Topfkragen liegt auf der Deckelflaeche, Kopf sitzt auf dem Kragen (Abstand Mitte Kopf zu Lochmitte 0).

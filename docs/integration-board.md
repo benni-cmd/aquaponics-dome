@@ -8,8 +8,8 @@ Zustaendig: I = Integrator, W = Werkstatt. Quelle der Anzahl: `data/layout.json`
 | Salatkopf | ca. 240+ | W | L3 gebaut, Bauteilblatt/Kritiker offen | `designs/components/salatkopf.sc` | 03:50 Orchestrator: Bauteilblatt und Gauntlet fehlen |
 | Netztopf | 2160 | W | L3 gebaut, Bauteilblatt/Kritiker offen | `designs/components/netztopf.sc` | 03:50 Orchestrator: Bauteilblatt und Gauntlet fehlen |
 | NFT-Rinne (3 Laengen, Phase A/B) | je Tisch 2-4 | W | abgenommen | `designs/components/nft_rinne.sc` (+6 Varianten) | 04:20 Orchestrator: Stichprobe ok (eine Lochreihe, 93/93 PASS selbst gemessen, Blatt mit Herkunft); Montage darf verknuepfen |
-| NFT-Tisch innen (10), Mitte (6), aussen (8) | 24 | W | offen | `designs/components/nft_tisch_*.sc` | - |
-| IBC-Beet aussen (8), innen (6) | 14 | W | offen | `designs/components/ibc_beet_*.sc` | - |
+| NFT-Tisch innen (10), Mitte (6), aussen (8) | 24 | W | abgenommen (Stichprobe innen) | `designs/components/nft_tisch_{innen,mitte,aussen}.sc` | 07:35 Orchestrator: Render innen ok (2 Rinnen versetzt, 2 Boecke mit Diagonalen, Verteiler, Sammelrohr), Blatt nach Spec-Pruefer, Triage im Log; Montage darf verknuepfen; offen laut Log: Winkelhalter (L4), Schlaeuche weich = Montage |
+| IBC-Beet aussen (8), innen (6) | 14 | W | L3 gebaut, Kritiker/Abnahme offen | `designs/components/ibc_beet_*.sc` | 07:35 Werkstatt: Vorpruefung 66/66, Blatt, Kontextpaket (Commit 09e3406); Orchestrator: Stichprobe steht aus |
 | Tank klein (Vortex) | 2 | W | offen | `designs/components/tank_klein.sc` | - |
 | Tank gross (Biofilter) | 2 | W | offen | `designs/components/tank_gross.sc` | - |
 | Pumpe/Filtermodul | siehe layout | W | offen | `designs/components/pumpe.sc` | - |

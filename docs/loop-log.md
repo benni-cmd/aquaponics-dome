@@ -22,3 +22,6 @@ Entscheidung Runde 7: 2V gewaehlt (Zaehlung an ref-5: ~5 Scheiteldreiecke + 10 +
 | 8 | ref-6: Reihen gestaffelt, Schlaeuche Tank-Tisch, mehr Substratwannen, dicker Tankrand | Reihenversatz 165 mm, 4 Substratwannen (126/198/234/342 Grad), 6 Schlaeuche r25, Tankwand 160 mm | 1-11; 12, 13 weitgehend |
 
 Entscheidung Runde 8: 12 Tische nicht umgesetzt (10 Betten, Tuerplatz); keine Neigung/Rippen (nur Quader). ref-6 selbst angesehen: Reihen sind gestaffelt, Schlaeuche blau und flexibel zwischen Tischen/Tank.
+| 9 | Hoehe/Breite per Zahlen: T1-Bounding-Box 12101 x 11515 x 6096 mm (Knoten-Durchmesser 12000 + Stab 90; Zehneck-Tiefe 12000*cos18 = 11416 + Stab); Scheitel 6050 mm ueber Sockeloberkante -> 6050/12000 ~ 0,50 | Kein Fehler im Modell: flacher Eindruck kommt von Kamera (Pitch 0,5) und Sockel. Tischring dichter am Zentraltank: bed_r 4800 -> 4500 (Innenkante 4050 > Fasstank-Aussenkante max. 3900) | 1-11; 12, 13 weitgehend |
+
+Entscheidung Runde 9: 12 Tische weiterhin nicht (Tuer + Latte-4-Zaehlung 10).

@@ -7,7 +7,7 @@ P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe
     dome_base_d=12000, dome_h=6000, freq=2, sock_h=400, sock_w=250, strut_r=45,
     door_w=1000, door_h=2000, door_az=-54, door_off=1100,
     t5_d=3800, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
-    bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4800,
+    bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4500,
     tub_len=2200, tub_w=760, tub_h=550,
     pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=160)
 

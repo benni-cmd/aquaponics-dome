@@ -1,0 +1,25 @@
+{
+  "klasse": "pumpe",
+  "teilenummer": "T50",
+  "beschreibung": "Pump-/Filtermodule an den Tanks: Pumpenmodul (Montagetafel mit Kreiselpumpe, Konsole, Saug-/Druckstutzen, Kabel mit Stecker) in klein und gross, Filtermodul (flache Filterkassette mit Siebeinsatz, Ein-/Auslass, Deckel)",
+  "quelle_masse": "data/layout.json tanks[].modules: klein 502 x 5 x 345 (2 je Tank), gross 693 x 7 x 463 (2 je Tank) und 384 x 44 x 419 (5 je Tank, z0 249-256); Rolle der Module ist Annahme (docs/components.md), Pumpe/Filter aus Hydraulik-Konzept (docs/hydraulics.md)",
+  "typen": {
+    "pumpe_klein": {"art": "pumpe", "tafel_l": 502, "tafel_t": 5, "tafel_h": 345, "motor_d": 90, "motor_l": 150, "kopf_d": 110, "kopf_l": 70, "saug_d": 40, "druck_d": 32, "anzahl": 4, "herkunft": "layout.json tanks 1 und 4: je 2 Tafeln 502 x 5 x 345 (Duplikate zusammengefasst), Pumpe A"},
+    "pumpe_gross": {"art": "pumpe", "tafel_l": 693, "tafel_t": 7, "tafel_h": 463, "motor_d": 110, "motor_l": 180, "kopf_d": 130, "kopf_l": 80, "saug_d": 50, "druck_d": 40, "anzahl": 4, "herkunft": "layout.json tanks 2 und 3: je 2 Tafeln 693 x 7 x 463 (Duplikate zusammengefasst), Pumpe A"},
+    "filtermodul": {"art": "filter", "box_l": 384, "box_t": 44, "box_h": 419, "port_d": 50, "anzahl": 10, "herkunft": "layout.json tanks 2 und 3: je 5 Module 384 x 44 x 419 (z0 249-256) rund um den Tank, Rolle Feinfilter-Matte [A]"}
+  },
+  "parameter": {
+    "foot_h": {"wert": 40, "einheit": "mm", "herkunft": "[A] Fussleiste unter der Tafel (Standfuesse 2 x 60 x 40 x 5)"},
+    "wall": {"wert": 3, "einheit": "mm", "herkunft": "[A] Gehaeuse PP/PE 3 mm"},
+    "bracket_w": {"wert": 150, "einheit": "mm", "herkunft": "[A] Pumpenkonsole 150 breit (Winkel 5 mm)"},
+    "bracket_t": {"wert": 5, "einheit": "mm", "herkunft": "[A]"},
+    "pump_z": {"wert": 120, "einheit": "mm", "herkunft": "[A] Pumpenachse 120 mm ueber der Tafelunterkante (Konsole darunter)"},
+    "cable_d": {"wert": 8, "einheit": "mm", "herkunft": "[A] Kabel 3 x 1,5 mm2, D8"},
+    "plug_l": {"wert": 55, "einheit": "mm", "herkunft": "[A] Schutzkontaktstecker 55 x 45 x 40"},
+    "mat_clear": {"wert": 4, "einheit": "mm", "herkunft": "[A] Spiel Siebeinsatz zur Gehaeusewand"},
+    "lid_t": {"wert": 5, "einheit": "mm", "herkunft": "[A] Deckel der Filterkassette"}
+  },
+  "werkstoff": {"name": "PP/PE (Tafel, Gehaeuse), PVC (Stutzen), Pumpe Kunststoffgehaeuse", "dichte_g_cm3": 0.91, "farbe": "#2a5da8", "herkunft": "ref-4/5: Module sind im Bild nicht erkennbar; Farbe Annahme"},
+  "anzahl": {"soll": "Pumpenmodul klein 4, gross 4, Filtermodul 10", "quelle": "data/layout.json tanks[].modules"},
+  "bezugspunkt": "Mitte der Standflaeche (Tafel/Gehaeuse-Unterkante), X Laengsachse der Tafel, Y Tafeldicke (Pumpe/Anschluesse auf +Y), Z Hoehe"
+}

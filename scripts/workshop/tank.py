@@ -57,8 +57,10 @@ def build(typ):
     xin = R - w - di / 2
     yin = math.sqrt(R ** 2 - xin ** 2)                    # Schnittpunkt Achse mit Aussenwand (negative Seite)
     b.add("solid.cylinder", diameter=di, height=2 * yin + 40, base=[xin, -yin - 20, z_in], axis=[0, 1, 0], operation="cut", targets=["Tank"], name="Durchbruch_Zulauf")
+    if not T["biofilter"]:                                # Auslauf-Durchbruch d50 radial +X
+        b.add("solid.cylinder", diameter=p["outlet_d"], height=w + 40, base=[R - w - 20, 0, z_top - p["outlet_below_top"]], axis=[1, 0, 0], operation="cut", targets=["Tank"], name="Durchbruch_Auslauf")
     if T["biofilter"]:                                    # Ueberlauf-Durchbruch d63 radial +X, 80 mm unter dem Rand
-        b.add("solid.cylinder", diameter=p["outlet_d"] + 13, height=w + 40, base=[R - w - 20, 0, z_top - 80], axis=[1, 0, 0], operation="cut", targets=["Tank"], name="Durchbruch_Ueberlauf")
+        b.add("solid.cylinder", diameter=p["outlet_d"] + 13, height=w + 40, base=[R - w - 20, 0, z_top - p["outlet_below_top"]], axis=[1, 0, 0], operation="cut", targets=["Tank"], name="Durchbruch_Ueberlauf")
     b.add("material.assign", bodies=["Tank"], material="PE Tank")
     # Deckel mit Leitrohr-Loch
     b.add("solid.cylinder", diameter=2 * RR + 2 * p["lid_over"], height=p["lid_t"], base=[0, 0, z_top], operation="new", name="Deckel", body_name="Deckel")
@@ -79,15 +81,20 @@ def build(typ):
     b.add("component.create", name="T40c_Leitrohr")
     if not T["biofilter"]:
         gd, gw = p["guide_d"], p["guide_wall"]
-        zg0 = z_top - p["guide_depth"]
-        b.add("solid.cylinder", diameter=gd, height=p["guide_depth"] + p["lid_t"] + 70, base=[0, 0, zg0], operation="new", name="Leitrohr_R", body_name="Leitrohr")
+        zg0 = z_t + (z_top - z_c) * p["guide_bottom_f"]                 # R09: ca. 1/3 der Zylinderhoehe ueber der Kegelspitze
+        zo = z_top - p["outlet_below_top"]
         od = p["outlet_d"]
-        b.add("solid.cylinder", diameter=od, height=gd / 2 + 140, base=[0, 0, z_top + p["lid_t"] + 35], axis=[1, 0, 0], operation="join", targets=["Leitrohr"], name="Auslauf_R")
-        b.add("solid.cylinder", diameter=gd - 2 * gw, height=p["guide_depth"] + p["lid_t"] + 72, base=[0, 0, zg0 - 1], operation="cut", targets=["Leitrohr"], name="Leitrohr_Bohrung")
-        b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=gd / 2 + 142, base=[0, 0, z_top + p["lid_t"] + 35], axis=[1, 0, 0], operation="cut", targets=["Leitrohr"], name="Auslauf_Bohrung")
+        b.add("solid.cylinder", diameter=gd, height=z_top + p["lid_t"] + 70 - zg0, base=[0, 0, zg0], operation="new", name="Leitrohr_R", body_name="Leitrohr")
+        b.add("solid.cylinder", diameter=gd - 2 * gw, height=z_top + p["lid_t"] + 72 - zg0, base=[0, 0, zg0 - 1], operation="cut", targets=["Leitrohr"], name="Leitrohr_Bohrung")
+        b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=gw + 6, base=[gd / 2 - gw - 2, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Leitrohr"], name="Leitrohr_Auslassloch")
         b.add("material.assign", bodies=["Leitrohr"], material="PVC grau Tank")
+        # Auslaufrohr radial +X von der Leitrohrwand durch die Tankwand (100 mm unter dem Rand)
+        x_a0 = gd / 2
+        b.add("solid.cylinder", diameter=od, height=R + 130 - x_a0, base=[x_a0, 0, zo], axis=[1, 0, 0], operation="new", name="Auslaufrohr_R", body_name="Auslaufrohr")
+        b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=R + 132 - x_a0, base=[x_a0 - 1, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Auslaufrohr"], name="Auslaufrohr_Bohrung")
+        b.add("material.assign", bodies=["Auslaufrohr"], material="PVC grau Tank")
     else:   # Biofilter: Ueberlauf (Auslauf) radial +X, Biomediumkorb als EIN Koerper, Tragrost, Belueftungsrohr
-        zo = z_top - 80
+        zo = z_top - p["outlet_below_top"]
         od = p["outlet_d"] + 13                         # d63
         b.add("solid.cylinder", diameter=od, height=w + 150, base=[R - w - 20, 0, zo], axis=[1, 0, 0], operation="new", name="Ueberlauf_R", body_name="Ueberlauf")
         b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=w + 152, base=[R - w - 21, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Ueberlauf"], name="Ueberlauf_Bohrung")

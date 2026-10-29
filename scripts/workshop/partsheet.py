@@ -34,6 +34,8 @@ def main(name):
         for k, v in d["typen"].items():
             L.append(f"| {k} | " + " | ".join(str(v.get(c, "")) for c in cols) + " |")
     L.append(f"\nGesamt-Box (Messung): X {mn[0]:.1f} bis {mx[0]:.1f}, Y {mn[1]:.1f} bis {mx[1]:.1f}, Z {mn[2]:.1f} bis {mx[2]:.1f} mm; Koerper: {len(ev['bodies'])}.\n")
+    for bx in bl.get("boxen", []):
+        L.append(f"- Box (Messung) {bx}")
     if bl.get("toleranzen"):
         L.append(f"**Toleranzen / Spiel:** {bl['toleranzen']}\n")
     L.append("## Werkstoff und Gewicht\n")
@@ -42,7 +44,7 @@ def main(name):
     L.append(f"- Volumen (Messung, `solidcraft-cli eval`): {vol/1000:.1f} cm3 · Masse leer{' (ohne ' + ', '.join(sep) + ')' if sep else ''}: {mass:.0f} g ({mass/1000:.2f} kg)")
     for v in bl.get("varianten", []):
         evv = sc.evaluate(os.path.join(sc.ROOT, "designs", "components", v + ".sc"))
-        L.append(f"- Variante `{v}`: {sum(b['mass_g'] for b in evv['bodies'])/1000:.2f} kg leer")
+        L.append(f"- Variante `{v}`: {sum(b['mass_g'] for b in evv['bodies'] if not isep(b))/1000:.2f} kg leer{' (ohne ' + ', '.join(sep) + ')' if sep else ''}")
     if bl.get("gewicht_gefuellt"):
         L.append(f"- Gefuellt/in Betrieb: {bl['gewicht_gefuellt']}")
     if bl.get("querschnitt"):

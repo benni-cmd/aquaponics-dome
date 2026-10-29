@@ -24,7 +24,7 @@ def main(typs):
         ck.eq(f"{typ} Kegel vorhanden (Flaechentyp cone)", B["Tank"]["face_types"].get("cone", 0) > 0, True) if False else ck.eq(f"{typ} Kegel vorhanden (Flaechentyp cone)", 1 if B["Tank"]["face_types"].get("cone", 0) > 0 else 0, 1)
         z_t, z_c = T["z0"], T["plat_z0"] + T["plat_t"]
         ang = math.degrees(math.atan((z_c - z_t) / (Rb - rt)))
-        ck.eq(f"{typ} Kegelwinkel ab Horizontal in 40-60 Grad", 1 if 40 <= ang <= 60 else 0, 1)
+        ck.eq(f"{typ} Kegelwinkel ab Horizontal in 45-60 Grad (Scope-Card)", 1 if 45 <= ang <= 60 else 0, 1)
         # Plattform
         pb = B["Plattform"]["bbox"]
         ck.eq(f"{typ} Plattform Laenge", pb["max"][0] - pb["min"][0], T["plat_l"], 1.0)
@@ -58,8 +58,16 @@ def main(typs):
         else:
             lr = B["Leitrohr"]["bbox"]
             ck.eq(f"{typ} Leitrohr D", lr["max"][1] - lr["min"][1], p["guide_d"], 0.5)
-            ck.eq(f"{typ} Leitrohr reicht in den Tank (Tiefe unter Deckel)", T["z0"] + T["H"] - lr["min"][2], p["guide_depth"], 0.5)
-            ck.eq(f"{typ} Auslauf d50 ausserhalb (x_max > R_deckel)", 1 if lr["max"][0] < tk["max"][0] else 0, 1)
+            zc_ = T["plat_z0"] + T["plat_t"]
+            ck.eq(f"{typ} Leitrohr endet 1/3 Zylinderhoehe ueber der Spitze (R09)", lr["min"][2], T["z0"] + (T["z0"] + T["H"] - zc_) * p["guide_bottom_f"], 1.0)
+            al = B["Auslaufrohr"]["bbox"]
+            ck.eq(f"{typ} Auslaufrohr 100 mm unter dem Rand (R09)", T["z0"] + T["H"] - (al["min"][2] + al["max"][2]) / 2, p["outlet_below_top"], 0.5)
+            ck.eq(f"{typ} Auslaufrohr ausserhalb des Tanks (x_max > R)", 1 if al["max"][0] > R else 0, 1)
+            ck.eq(f"{typ} Auslaufrohr D", al["max"][2] - al["min"][2], p["outlet_d"], 0.2)
+        if T["biofilter"]:
+            ue = B["Ueberlauf"]["bbox"]
+            ck.eq(f"{typ} Ueberlauf 100 mm unter dem Rand (R09)", T["z0"] + T["H"] - (ue["min"][2] + ue["max"][2]) / 2, p["outlet_below_top"], 0.5)
+            ck.eq(f"{typ} Ueberlauf ausserhalb des Tanks (x_max > R)", 1 if ue["max"][0] > R else 0, 1)
         ck.eq(f"{typ} Deckel auf dem Rand", B["Deckel"]["bbox"]["min"][2], T["z0"] + T["H"], 0.1)
     return ck.done()
 

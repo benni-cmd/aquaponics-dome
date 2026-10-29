@@ -1,79 +1,90 @@
-"""Blatt-Text fuer data/components/tank.json (Ports, Gewichte, Stueckliste, Herkunft) aus den Parametern berechnet."""
+"""Blatt-Text fuer data/components/tank.json (Ports, Gewichte, Stueckliste, Herkunft) aus den Parametern und dem Modell berechnet (Stand nach Spec-Pruefer 29.10.)."""
 import json, math, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
-sys.path.insert(0, os.path.dirname(__file__))
 import tank as tk
 p = os.path.join(sc.ROOT, "data", "components", "tank.json")
 d = json.load(open(p, encoding="utf-8"))
 P = {k: v["wert"] for k, v in d["parameter"].items()}
-ports, gew, sl, legs = [], [], [], []
+ports, gew, sl, legs, geo, boxes = [], [], [], [], [], []
 for typ, T in d["typen"].items():
     G = tk.geometry(T, P)
-    R, w, z0, H = T["R"] - P["rim_w"], T["wall"], T["z0"], T["H"]            # R = Koerperradius
+    Rb, w, z0, H = T["R"] - P["rim_w"], T["wall"], T["z0"], T["H"]
     z_top = z0 + H
     di = T["inlet_d"]
-    xin = R - w - di / 2
-    yin = math.sqrt(R ** 2 - xin ** 2)
+    xin = Rb - w - di / 2
+    yin = math.sqrt(Rb ** 2 - xin ** 2)
     z_in = z_top - P["inlet_below_top"]
-    nm = "Vortex-Absetzer" if not T["biofilter"] else "Biofilter"
-    ports.append([f"{typ}: Zulauf tangential (Rohr d{di:.0f})", f"Rohr PVC-U d{di:.0f} (etwa DN{di - 10:.0f}), Wand 3", f"x {xin:.1f}, y {-yin - 220:.0f}, z {z_in:.0f} (Rohrachse parallel Y, Rohrende aussen)", "Wasser tritt ein, Oeffnung zeigt -Y; Rohr beruehrt die Innenwand tangential (Drall)"])
+    zo = z_top - P["outlet_below_top"]
+    dn_in = {50: "DN40", 63: "DN50"}.get(int(di), "")
+    ports.append([f"{typ}: Zulauf tangential (Rohr d{di:.0f}, {dn_in})", f"PVC-U d{di:.0f} nach DIN 8062 ({dn_in}), Wand 3", f"x {xin:.1f}, y {-yin - 220:.0f}, z {z_in:.0f} (Rohrachse parallel Y, Rohrende aussen)", "Wasser tritt ein, Oeffnung zeigt -Y; Rohr beruehrt die Innenwand tangential (Drall)"])
     if not T["biofilter"]:
-        ports.append([f"{typ}: Auslauf am Leitrohr", "Rohr d50 (etwa DN40), Leitrohr d110", f"x {P['guide_d'] / 2 + 140:.0f}, y 0, z {z_top + P['lid_t'] + 35:.0f}", "Wasser verlaesst den Absetzer nach +X (Oeffnung zeigt +X)"])
+        ports.append([f"{typ}: Auslauf (Auslaufrohr vom Leitrohr durch die Tankwand)", "PVC-U d50 (DN40)", f"x {Rb + 130:.0f}, y 0, z {zo:.0f} (100 mm unter dem Rand, R09)", "Wasser verlaesst den Absetzer nach +X (Oeffnung zeigt +X)"])
     else:
-        ports.append([f"{typ}: Ueberlauf (Auslauf)", "Rohr d63 (etwa DN50), 80 mm unter dem Rand", f"x {R + 130:.0f}, y 0, z {z_top - 80:.0f}", "Wasser verlaesst den Biofilter nach +X (Oeffnung zeigt +X)"])
-        ports.append([f"{typ}: Belueftungsanschluss im Deckel", "Rohr d16 (Luftschlauch 16 mm)", f"x {R / 2:.0f}, y 0, z {z_top + P['lid_t']:.0f}", "Luft tritt ein, Oeffnung zeigt +Z"])
+        ports.append([f"{typ}: Ueberlauf (Auslauf)", "PVC-U d63 (DN50)", f"x {Rb + 130:.0f}, y 0, z {zo:.0f} (100 mm unter dem Rand, R09)", "Wasser verlaesst den Biofilter nach +X (Oeffnung zeigt +X)"])
+        ports.append([f"{typ}: Belueftungsanschluss im Deckel", "Rohr d16 (Luftschlauch 16 mm, etwa DN10)", f"x {Rb / 2:.0f}, y 0, z {z_top + P['lid_t']:.0f}", "Luft tritt ein, Oeffnung zeigt +Z"])
     zv = z0 - 12 - P["valve_len"] - 40
-    ports.append([f"{typ}: Schlammablass (Kugelhahn an der Kegelspitze)", f"Kugelhahn d{T['valve_d']}, Ablaufstutzen d{T['valve_d']} (Verschraubung)", f"x 0, y 0, z {zv:.0f} (Stutzenende); Kegelspitze z {z0}", "Schlamm laeuft nach unten ab (Oeffnung zeigt -Z), Hebel +X"])
+    ports.append([f"{typ}: Schlammablass (Kugelhahn an der Kegelspitze)", f"PVC-U d{T['valve_d']} (DN{T['valve_d'] - 10}), Kugelhahn mit Verschraubung", f"x 0, y 0, z {zv:.0f} (Stutzenende); Kegelspitze z {z0}", "Schlamm laeuft nach unten ab (Oeffnung zeigt -Z), Hebel +X"])
     lx, ly = T["plat_l"] / 2 - T["leg_w"] / 2, T["plat_w"] / 2 - T["leg_w"] / 2
-    ports.append([f"{typ}: Fussplatten-Anker (4 Fuesse, je 2 x M8)", "M8, Loch D9, Platte 100 x 100 x 6", f"x +-{lx:.0f}, y +-{ly:.0f}, z {P['foot_t']:.0f} (Diagonalversatz +-35)", "Befestigung auf Boden/Betonpunkt, Richtung -Z"])
+    ports.append([f"{typ}: Fussplatten-Anker (4 Fuesse, je 2 x M8)", "Schrauben M8x30 ISO 4017, Loch D9, Platte 100 x 100 x 6; im Boden Duebel/Betonpunkt M8", f"x +-{lx:.0f}, y +-{ly:.0f}, z {P['foot_t']:.0f} (Diagonalversatz +-35); Schraubenenden z {P['foot_t'] - 30:.0f}", "Befestigung auf Boden/Betonpunkt, Richtung -Z"])
     ev = sc.evaluate(os.path.join(sc.ROOT, "designs", "components", f"tank_{typ}.sc"))
-    sep = ["Biomedium"] if T["biofilter"] else []
-    leer = sum(b["mass_g"] for b in ev["bodies"] if not any(b["name"].startswith(x) for x in sep)) / 1000
-    bio = sum(b["mass_g"] for b in ev["bodies"] if any(b["name"].startswith(x) for x in sep)) / 1000
-    Ri = R - w
+    mn, mx = sc.bbox_all(ev)
+    boxes.append(f"{typ}: X {mn[0]:.0f} bis {mx[0]:.0f}, Y {mn[1]:.0f} bis {mx[1]:.0f}, Z {mn[2]:.0f} (Schraubenenden 24 mm im Boden) bis {mx[2]:.0f}")
+    bio = sum(b["mass_g"] for b in ev["bodies"] if b["name"].startswith("Biomedium")) / 1000
+    tot = sum(b["mass_g"] for b in ev["bodies"]) / 1000
+    leer = tot - bio
+    Ri = Rb - w
     cyl = math.pi * Ri ** 2 * (z_top - G["z_c"]) / 1e6
     cone = math.pi * Ri ** 2 * (G["z_c"] - G["z_t"]) / 3 / 1e6
     vol = cyl + cone
-    gew.append(f"{typ}: leer {leer:.0f} kg" + (f" (ohne Biomedium {bio:.0f} kg)" if bio else "") + f"; Wasserfuellung bis Rand {vol:.0f} l = {vol:.0f} kg (Zylinder {cyl:.0f} l + Kegel {cone:.0f} l); gefuellt gesamt {leer + bio + vol:.0f} kg [E]")
-    legs.append(f"{typ}: Beine 4 x {T['leg_w']}x{T['leg_w']}x{T['leg_wall']} Laenge {T['leg_h'] - P['foot_t']:.0f}; Plattform {T['plat_l']}x{T['plat_w']}x{T['plat_t']} Blech 4 mm hohl mit Kegelsitz")
-    sl.append(f"{typ} (Stueck je Tank): Tank PE ({T['wall']} mm Wand, Aussen-D{2 * (R + P['rim_w']):.0f} x H{H}, Randwulst) 1; Deckel 1; Zulaufrohr d{di:.0f} 1; " + ("Leitrohr d110 x 420 mit Auslauf d50 1; " if not T["biofilter"] else "Ueberlauf d63 1, Biomediumkorb mit Tragrost 1, Belueftungsrohr d16 1; ") + f"Kugelhahn d{T['valve_d']} mit 2 Stutzen 1; Plattform 1; Beine {T['leg_w']}x{T['leg_w']} 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 + Mutter nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30")
+    gew.append(f"{typ}: leer {leer:.0f} kg" + (f", Biomedium (Schuettung 0,15 g/cm3) {bio:.0f} kg" if bio else "") + f"; Wasserfuellung bis Rand {vol:.0f} l = {vol:.0f} kg (Zylinder {cyl:.0f} l + Kegel {cone:.0f} l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt {tot + vol:.0f} kg")
+    geo.append(f"{typ}: Kegel {G['ang']:.1f} Grad ab Horizontal (Spitze Z {z0}, Ende Z {G['z_c']}), Koerperradius {Rb:.1f} (D{2 * Rb:.0f}) plus Randwulst {P['rim_w']:.0f} = Aussen-D{2 * T['R']:.0f}")
+    di_ = T["inlet_d"]
+    sl.append(f"{typ} (je Tank): Tank PE ({T['wall']} mm Wand, Aussen-D{2 * T['R']:.0f} x H{H}, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d{di_:.0f} 1 + Bulkhead mit Dichtung 1; " + ("Leitrohr d110 mit Auslaufrohr d50 1 + Bulkhead mit Dichtung 1; " if not T["biofilter"] else "Ueberlauf d63 1 + Bulkhead mit Dichtung 1, Biomediumkorb 1 mit Tragrost 1 und 4 Konsolen 40x40x30, Belueftungsrohr d16 1; ") + f"Kugelhahn d{T['valve_d']} mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine {T['leg_w']}x{T['leg_w']} 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8")
+    legs.append(f"{typ}: Beine 4 x {T['leg_w']}x{T['leg_w']}x{T['leg_wall']} Laenge {T['leg_h'] - P['foot_t']:.0f}")
+G1 = tk.geometry(d["typen"]["klein"], P)
 bl = {
     "funktion": "Tank mit Kegelboden: klein = Vortex-Absetzer (tangentialer Zulauf, Leitrohr, Schlamm sinkt zur Spitze und wird dort abgelassen), gross = Biofilter (Biomediumkorb auf Tragrost, Belueftung, Ueberlauf, Schlammablass); steht auf Plattform und 4 Beinen.",
-    "querschnitt": "Tank PE: Zylinder (Koerper D633/D890) ueber Kegel (ca. 47 Grad ab Horizontal, Spitze mit Stutzen D44/D56); gerollter Randwulst 20 x 30 mm (Aussendurchmesser D673/D930 laut OBJ); Wand 4/5 mm; Deckel 6 mm mit 8 mm Ueberstand. Plattform: Blechkasten 4 mm, innen hohl, Kegelsitz 2 mm Spiel, Eckenaussparungen fuer die Beine; Beine Rechteckrohr verzinkt; vier Querstreben auf Hoehe 250/300 und vier Diagonalen.",
-    "toleranzen": "Kegelsitz in der Plattform 2 mm Spiel; Zulaufrohr beruehrt die Innenwand tangential (Pruefung +-0,5 mm); Tankhoehe und Kegelspitze +-1 mm gegen layout.json.",
+    "querschnitt": "Tank PE: Zylinder ueber Kegel, gerollter Randwulst " + f"{P['rim_w']:.0f} x {P['rim_h']:.0f} mm, Wand 4/5 mm, Deckel {P['lid_t']:.0f} mm buendig mit dem Wulst, Revisionsoeffnung D{P['rev_d']:.0f}. Geometrie je Tank: " + " | ".join(geo) + ". Plattform: Blechkasten 4 mm, innen hohl, Kegelsitz 2 mm Spiel, Eckenaussparungen fuer die Beine; Beine Rechteckrohr verzinkt; vier Querstreben auf Hoehe 250/300 und vier Diagonalen (an den Beinkanten gekuerzt).",
+    "toleranzen": "Kegelsitz in der Plattform 2 mm Spiel; Zulaufrohr beruehrt die Innenwand tangential (+-0,5 mm); Tankhoehe und Kegelspitze +-1 mm gegen layout.json im Bauteil; Instanzen: layout.json hat je Tank eine eigene Spitze (klein 167-172, gross 226-229): der Integrator setzt z so, dass die Spitze stimmt (Versatz bis 5 mm gegenueber dem Bauteil, z. B. Tank 4: -5 mm), die Plattform liegt je Tank 424-428 bzw. 570-572.",
     "ports": ports,
-    "verbindungen": ["Tank sitzt mit dem Kegel im Kegelsitz der Plattform (Kegel-Zylinder-Uebergang auf der Plattform-Oberkante), Haltegurt/Schellen nicht modelliert [A]", "Beine laufen durch Eckenaussparungen der Plattform, geschweisst (MAG), danach verzinkt [A]", "Fussplatten: je 2 Schrauben M8x30 (hex_bolt), Loch D9", "Rohre PVC-U (DIN 8062/EN 1452) mit Bulkhead-Durchfuehrung und Dichtung durch die Tankwand [A, im Modell nur Durchbruch + Rohr]", "Schlammventil: Kugelhahn PVC-U mit Verschraubung an Stutzen d40/d55"],
-    "abweichung": "layout.json tanks: Durchmesser, Hoehe, Kegelspitze Z, Plattform (Mass und Z), Beinhoehe stimmen (Pruefung check_tank.py). Kegel: OBJ liefert nur Spitze Z 172/226 und Gesamthoehe; das Ende des Kegels ist Annahme A (Plattform-Oberkante -> 45 Grad ab Horizontal, Absetzer-Praxis); Alternative laut R09-Auslegung: Kegelende an der Plattform-Unterkante (256 mm hoch, 37 Grad ab Horizontal / Halbwinkel 53 Grad) -> zu flach fuer Schlamm. Beine 751/1008 laufen bis ueber die Plattform (OBJ-Mass). Fittings: OBJ 4 Stueck Z 143-177, hier Schlammstutzen + Kugelhahn + Ablaufstutzen.",
+    "verbindungen": ["Tank sitzt mit dem Kegel im Kegelsitz der Plattform (Kegel-Zylinder-Uebergang auf der Plattform-Oberkante), Haltegurt/Schellen nicht modelliert [A]", "Beine laufen durch Eckenaussparungen der Plattform, geschweisst (MAG), danach verzinkt [A]", "Fussplatten: je 2 Schrauben M8x30 ISO 4017 mit Duebel M8 im Boden/Betonpunkt, Loch D9", "Rohre PVC-U nach DIN 8062/EN 1452 mit Bulkhead-Durchfuehrung und Dichtung durch die Tankwand [A, im Modell nur Durchbruch + Rohr]", "Schlammventil: Kugelhahn PVC-U mit Verschraubung an Stutzen d40/d50", "Biomediumkorb (gross): Tragrost auf 4 Konsolen 40x40x30 (an die Tankwand geschweisst/geklebt) [A]"],
+    "abweichung": "layout.json tanks: Durchmesser (inkl. Randwulst), Hoehe, Kegelspitze Z, Plattform (Mass und Z), Beinhoehe stimmen (check_tank.py). Kegel: OBJ liefert nur Spitze und Gesamthoehe; Kegelende auf der Plattform-Oberkante, 45 Grad ab Horizontal als Auslegung E (R09-Nachtrag 29.10. 07:55, vom Orchestrator bestaetigt; Gegenprobe Spitze klein 165 gegen OBJ 167-172, gross 203 gegen 226-229); gebaut 48,7 / 47,0 Grad, weil der Randwulst den Koerperradius gegenueber dem OBJ-Durchmesser verkleinert. Leitrohr und Auslauf nach R09 (A, Konfidenz niedrig, R09 behandelt nur den kleinen Tank, fuer gross analog). Beine 751/1008 laufen bis ueber die Plattform (OBJ-Mass). Fittings: OBJ 4 Stueck Z 143-177 mit 30-56 mm, hier Schlammstutzen + Kugelhahn (d40 / d50 Norm statt OBJ 55) + Ablaufstutzen.",
     "montage": ["Plattform mit Beinen am Boden ausrichten, Fussplatten mit M8 verschrauben, Streben und Diagonalen einsetzen", "Tank in den Kegelsitz setzen (zu zweit), Deckel und Leitrohr bzw. Biomediumkorb einsetzen", "Zulauf-Rohr tangential und Auslauf/Ueberlauf durch die Wand fuehren, Dichtungen setzen", "Kugelhahn mit Verschraubung an den Kegelstutzen, Ablaufrohr anschliessen", "Dichtheit pruefen (Wasserprobe), Biomedium und Belueftung einbauen (gross)"],
     "werkzeug": "Lochsaege (d63/d50), Bohrer, Schluessel M6/M8, Wasserwaage, Schweissgeraet (Rahmen) oder Winkelverbinder",
-    "stueckliste": sl + ["Tanks gesamt: klein 2, gross 2 (Azimute 123/213 und 108/229, layout.json)"],
+    "stueckliste": sl + ["Tanks gesamt: klein 2, gross 2 (Azimute 123/213 und 108/229, layout.json); Normschrauben: M8x30 ISO 4017, M6x40 ISO 4017, Muttern ISO 4032"],
     "lokal": "Tank: handelsueblicher Konus-Boden-Tank (Kunststoff, 500-1000 l); Plattform/Beine aus Baustahl-Rechteckrohr (Metallbauer) oder Alu-Systemprofil; Rohre und Kugelhaehne PVC-U aus dem Sanitaerhandel.",
-    "referenz": "reference/ref-4-dome-clean.jpg und ref-5 (gruene Tanks auf duennen Beinen mit Kegelboden); data/layout.json tanks; docs/research/R09.md",
+    "referenz": "reference/ref-4-dome-clean.jpg und ref-5 (gruene Tanks mit gerolltem Randwulst auf duennen Beinen mit Kegelboden); data/layout.json tanks; docs/research/R09.md",
     "varianten": ["tank_klein", "tank_gross"],
     "gewicht_gefuellt": " | ".join(gew),
     "massen_getrennt": ["Biomedium"],
-    "pruefung": ["scripts/workshop/check_tank.py (Ergebnis renders/components/tank_klein/check.txt)", "Triage in docs/workshop-log.md"],
-    "offen": ["Kegelende (Plattform-Oberkante vs. -Unterkante) und Kegelwinkel: nur Annahme, R09 Konfidenz niedrig", "Rohrmasse (Zulauf d50/d63, Leitrohr d110, Auslauf d50/d63, Wand 3 mm) ohne Quelle (R09)", "Beine 751/1008 bis ueber die Plattform: Zweck (Tankfuehrung) aus OBJ nicht ableitbar", "Haltegurt/Schellen, Dichtungen, Verschraubungen der Diagonalen (M6x40) nicht modelliert", "Biofilter: Biomediumkorb und Belueftung als Platzhalter, keine Quelle zur Auslegung (R09)", "Rolle der Pumpen/Filtermodule (eigene Klasse pumpe)"],
+    "boxen": boxes,
+    "pruefung": ["scripts/workshop/check_tank.py (Ergebnis renders/components/tank_klein/check.txt)", "Bild-Kritiker: Modell; Spec-Pruefer: FAIL (Gewicht, Text gegen Parameter, Auslaufhoehe, Herkunft, Ports) -> behoben, Triage in docs/workshop-log.md"],
+    "offen": ["Kegelwinkel/Kegelende: Auslegung E (45 Grad, Plattform-OK), R09 Konfidenz niedrig", "Rohrmasse (Zulauf d50/d63, Leitrohr d110, Auslauf d50/d63, Wand 3 mm) ohne Quelle (R09)", "Beine 751/1008 bis ueber die Plattform: Zweck (Tankfuehrung) aus OBJ nicht ableitbar", "Haltegurt/Schellen, Dichtungen, Verschraubungen der Diagonalen (M6x40), Revisionsdeckel nicht modelliert", "Biofilter (gross): Biomediumkorb, Konsolen, Belueftung als Platzhalter ohne Quelle; kein Leitrohr im Biofilter (R09 nennt es nur fuer den Absetzer, Scope-Card fuehrt es gemeinsam)", "Rolle der Pumpen/Filtermodule (eigene Klasse pumpe)"],
 }
 d["blatt"] = bl
+d["werkstoff"]["herkunft"] = "ref-4/ref-5: gruene Kunststofftanks mit Randwulst; PE-Dichte 0,95 g/cm3 Handbuchwert; Stahl 7,85; PVC-U 1,4"
 d["herkunft_tabelle"] = [
-    ["Tankdurchmesser 673 / 930", "673 / 930 mm", "OBJ", "layout.json tanks d (Tank 1/4 und 2/3)", "hoch"],
+    ["Tankdurchmesser 673 / 930 (inkl. Randwulst)", "673 / 930 mm", "OBJ", "layout.json tanks d (Tank 1/4 und 2/3)", "hoch"],
     ["Tankhoehe 1075 / 1444 (inkl. Kegel)", "1075 / 1444 mm", "OBJ", "layout.json tanks h", "hoch"],
     ["Kegelspitze Z 172 / 226", "172 / 226 mm", "OBJ", "layout.json tanks z0 (167-172, 226-229)", "hoch"],
-    ["Plattform 706x707x73 auf Z 428 / 977x976x98 auf Z 570", "mm", "OBJ", "layout.json tanks platform", "hoch"],
-    ["Beine 4 x 30x30xh751 / 40x40xh1008", "mm", "OBJ", "layout.json tanks legs; Querschnitt aus oasis-obj-analysis", "hoch"],
-    ["Kegel 45 Grad ab Horizontal, endet auf der Plattform-Oberkante", "45 Grad", "A", "OBJ liefert nur Spitze und Gesamthoehe; Scope-Card 45-60 Grad; Absetzer-Praxis; Alternative Unterkante = 37 Grad (R09-Auslegung)", "niedrig"],
-    ["Tankwand 4 / 5 mm, Deckel 6 mm", "4 / 5 / 6 mm", "A", "PE-Tank Wanddicke; OBJ nur Huelle", "niedrig"],
-    ["Zulauf tangential d50 / d63, 250 mm unter dem Rand", "d50 / d63", "R09 + A", "R09: tangentialer Zulauf, DN50 oben (Konfidenz niedrig); Masse A", "niedrig"],
-    ["Leitrohr d110 x 420 mit Auslauf d50 (klein)", "d110 / d50", "R09 + A", "R09: Leitrohr D110, Auslass oben seitlich DN50; Tiefe A", "niedrig"],
-    ["Schlammventil Kugelhahn d40 / d55 an der Kegelspitze", "d40 / d55", "OBJ + R09", "layout.json tanks fittings (Groessen 30-56 an der Spitze); R09: Schlammablass Bulkhead 32-40 mit Hahn", "mittel"],
-    ["Biofilter: Biomediumkorb (EIN Koerper) auf Tragrost, Belueftung d16, Ueberlauf d63", "-", "A", "Scope-Card tank_gross: Platzhalter; keine Quelle (R09)", "niedrig"],
-    ["Plattform als Blechkasten 4 mm, hohl, mit Kegelsitz und Eckenaussparungen", "4 mm", "A", "OBJ-Plattform 73/98 mm dick (massiv unwahrscheinlich); Konstruktionsannahme", "niedrig"],
+    ["Plattform 706x707x73 auf Z 428 / 977x976x98 auf Z 570", "706x707x73 / 977x976x98", "OBJ", "layout.json tanks platform", "hoch"],
+    ["Beine 4 x 30x30xh751 / 40x40xh1008", "751 / 1008 mm", "OBJ", "layout.json tanks legs; Querschnitt aus oasis-obj-analysis", "hoch"],
+    ["Kegel 45 Grad ab Horizontal, Ende auf der Plattform-Oberkante (gebaut 48,7 / 47,0 Grad wegen Randwulst)", "45 Grad", "E", "R09-Nachtrag 29.10. 07:55 (Orchestrator): Gegenprobe Spitze klein 165 gegen OBJ 167-172, gross 203 gegen 226-229; Scope-Card 45-60 Grad", "mittel"],
+    ["Randwulst 25 x 40 mm", "25 x 40", "Bild + A", "ref-5: dicker gerollter Randwulst der gruenen Tanks; Mass Annahme", "niedrig"],
+    ["Tankwand 4 / 5 mm, Deckel 6 mm buendig", "4 / 5 / 6 mm", "A", "PE-Tank Wanddicke; OBJ nur Huelle", "niedrig"],
+    ["Revisionsoeffnung im Deckel D200", "D200", "Scope-Card + A", "Scope-Card: Deckel/Oeffnung; Mass Annahme", "niedrig"],
+    ["Zulauf tangential d50 / d63, 250 mm unter dem Rand", "d50 / d63", "R09 + A", "R09: tangentialer Zulauf, DN50 oben (Konfidenz niedrig, nur fuer klein); gross analog [A]", "niedrig"],
+    ["Leitrohr d110, endet 1/3 Zylinderhoehe ueber der Spitze (klein)", "d110", "R09", "R09: Leitrohr D110, endet ca. 1/3 der Zylinderhoehe ueber der Kegelspitze (A, Konfidenz niedrig)", "niedrig"],
+    ["Auslauf d50 (klein) / Ueberlauf d63 (gross) 100 mm unter dem Rand", "d50 / d63, 100 mm", "R09 + A", "R09: Auslass oben seitlich, 100 mm unter dem Rand (A); gross analog", "niedrig"],
+    ["Schlammventil Kugelhahn d40 / d50 an der Kegelspitze", "d40 / d50", "OBJ + R09 + A", "layout.json tanks fittings (Groessen 30-56 an der Spitze); R09: Schlammablass Bulkhead 32-40 mit Hahn; gross d50 Norm statt OBJ 55", "mittel"],
+    ["Biofilter: Biomediumkorb (EIN Koerper) auf Tragrost mit 4 Konsolen 40x40x30, Belueftung d16", "520 mm hoch", "A", "Scope-Card tank_gross: Platzhalter; keine Quelle (R09)", "niedrig"],
+    ["Plattform als Blechkasten 4 mm, hohl, mit Kegelsitz (Spiel 2) und Eckenaussparungen", "4 mm / 2 mm", "A", "OBJ-Plattform 73/98 mm dick (massiv unwahrscheinlich); Konstruktionsannahme", "niedrig"],
     ["Querstreben auf Hoehe 250 / 300, 4 Diagonalen 25x3", "250 / 300 mm", "Bild + A", "ref-4/ref-5: Tanks auf Beinen mit Diagonalstreben (Scope-Card: Diagonalen)", "mittel"],
-    ["Fussplatten 100x100x6 mit M8", "100x100x6", "A", "Standard", "niedrig"],
+    ["Fussplatten 100x100x6 mit M8x30", "100x100x6", "A", "Standard", "niedrig"],
     ["Anzahl 2 klein, 2 gross", "2 + 2", "OBJ", "layout.json tanks (Azimut 123/213 und 108/229)", "hoch"],
-    ["Farbe gruen #9db89c, Werkstoff PE 0,95", "0,95 g/cm3", "Bild", "ref-4/ref-5 gruene Tanks", "mittel"],
+    ["Farbe gruen #9db89c", "#9db89c", "Bild", "ref-4/ref-5 gruene Tanks", "mittel"],
+    ["Werkstoffdichten: PE 0,95, Stahl 7,85, PVC-U 1,4, Biomedium 0,15", "g/cm3", "Fachwert + A", "Handbuchwerte Kunststoffe/Stahl; Biomedium Schuettdichte Annahme", "mittel"],
 ]
 json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("tank.json gepflegt")

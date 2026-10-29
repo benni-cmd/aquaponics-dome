@@ -3,7 +3,7 @@ PASS tank: klein Tank Durchmesser: Ist 673, Soll 673 (+-1)
 PASS tank: klein Tank Hoehe (Spitze bis Rand): Ist 1075, Soll 1075 (+-1)
 PASS tank: klein Kegelspitze Z: Ist 172, Soll 172 (+-1)
 PASS tank: klein Kegel vorhanden (Flaechentyp cone): Ist 1, Soll 1
-PASS tank: klein Kegelwinkel ab Horizontal in 40-60 Grad: Ist 1, Soll 1
+PASS tank: klein Kegelwinkel ab Horizontal in 45-60 Grad (Scope-Card): Ist 1, Soll 1
 PASS tank: klein Plattform Laenge: Ist 706, Soll 706 (+-1)
 PASS tank: klein Plattform Breite: Ist 707, Soll 707 (+-1)
 PASS tank: klein Plattform Dicke: Ist 73, Soll 73 (+-1)
@@ -23,15 +23,17 @@ PASS tank: klein Kugelhahn unter der Spitze: Ist 1, Soll 1
 PASS tank: klein Ablaufstutzen D = Ventil-D: Ist 39.9994, Soll 40 (+-0.2)
 PASS tank: klein Schlammventil D im OBJ-Bereich 30-56: Ist 1, Soll 1
 PASS tank: klein Leitrohr D: Ist 109.997, Soll 110 (+-0.5)
-PASS tank: klein Leitrohr reicht in den Tank (Tiefe unter Deckel): Ist 420, Soll 420 (+-0.5)
-PASS tank: klein Auslauf d50 ausserhalb (x_max > R_deckel): Ist 1, Soll 1
+PASS tank: klein Leitrohr endet 1/3 Zylinderhoehe ueber der Spitze (R09): Ist 420.418, Soll 420.418 (+-1)
+PASS tank: klein Auslaufrohr 100 mm unter dem Rand (R09): Ist 100, Soll 100 (+-0.5)
+PASS tank: klein Auslaufrohr ausserhalb des Tanks (x_max > R): Ist 1, Soll 1
+PASS tank: klein Auslaufrohr D: Ist 49.9987, Soll 50 (+-0.2)
 PASS tank: klein Deckel auf dem Rand: Ist 1247, Soll 1247 (+-0.1)
 PASS tank: gross Anzahl laut layout.json: Ist 2, Soll 2
 PASS tank: gross Tank Durchmesser: Ist 930, Soll 930 (+-1)
 PASS tank: gross Tank Hoehe (Spitze bis Rand): Ist 1444, Soll 1444 (+-1)
 PASS tank: gross Kegelspitze Z: Ist 226, Soll 226 (+-1)
 PASS tank: gross Kegel vorhanden (Flaechentyp cone): Ist 1, Soll 1
-PASS tank: gross Kegelwinkel ab Horizontal in 40-60 Grad: Ist 1, Soll 1
+PASS tank: gross Kegelwinkel ab Horizontal in 45-60 Grad (Scope-Card): Ist 1, Soll 1
 PASS tank: gross Plattform Laenge: Ist 977, Soll 977 (+-1)
 PASS tank: gross Plattform Breite: Ist 976, Soll 976 (+-1)
 PASS tank: gross Plattform Dicke: Ist 98, Soll 98 (+-1)
@@ -48,10 +50,12 @@ PASS tank: gross Zulauf Rohr-D: Ist 62.999, Soll 63 (+-0.2)
 PASS tank: gross Zulauf unter dem Rand: Ist 250, Soll 250 (+-0.5)
 PASS tank: gross Schlammstutzen an der Spitze (z0 im Stutzen): Ist 1, Soll 1
 PASS tank: gross Kugelhahn unter der Spitze: Ist 1, Soll 1
-PASS tank: gross Ablaufstutzen D = Ventil-D: Ist 54.9992, Soll 55 (+-0.2)
+PASS tank: gross Ablaufstutzen D = Ventil-D: Ist 49.9992, Soll 50 (+-0.2)
 PASS tank: gross Schlammventil D im OBJ-Bereich 30-56: Ist 1, Soll 1
 PASS tank: gross Biomedium als EIN Koerper: Ist 1, Soll 1
 PASS tank: gross Biomedium-Hoehe: Ist 520, Soll 520 (+-0.5)
 PASS tank: gross Biomedium ruht auf dem Tragrost: Ist 970, Soll 970 (+-0.01)
+PASS tank: gross Ueberlauf 100 mm unter dem Rand (R09): Ist 100, Soll 100 (+-0.5)
+PASS tank: gross Ueberlauf ausserhalb des Tanks (x_max > R): Ist 1, Soll 1
 PASS tank: gross Deckel auf dem Rand: Ist 1670, Soll 1670 (+-0.1)
-== tank: 56/56 PASS
+== tank: 60/60 PASS

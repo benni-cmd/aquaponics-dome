@@ -111,3 +111,13 @@ Standrohr `standpipe_over` = media_depth - 35 = 265 (FarmHub 220 als Variante ve
 | 4 | klein, sicher: Diagonalenenden ragen ueber die Beine | **gueltig** | Diagonalen um Beinhalbbreite + 8 mm gekuerzt |
 | 5 | klein, vermutet: Revisionszugang fehlt | **gueltig** | Revisionsoeffnung D200 im Deckel |
 | Hinweis | Schlaeuche, Wasserspiegel, Pumpe | **andere Klasse** | - |
+
+### tank, Spec-Pruefer (FAIL) 29.10. ~08:25
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Gewichte widersprechen sich (136 gegen "leer 95 / ohne Biomedium 41"), Box nur fuer klein, Z -24 | **gueltig (Blatt)** | Text falsch beschriftet (Biomedium-Masse als "ohne Biomedium"); Boxen und Gewichte je Variante; Schraubenenden 24 mm im Boden vermerkt |
+| 2 | gross: Text widerspricht Parametern (47 Grad, Randwulst 20x30, D633, Deckel 8 mm Ueberstand), Kegel A statt E | **gueltig (Blatt)** | Blatt jetzt aus Parametern berechnet; Kegel E (R09-Nachtrag); Check 45-60 Grad |
+| 3 | gross: Klein-Auslauf z 1288 ueber dem Rand; R09: 100 mm unter dem Rand; Leitrohrende 833 statt 1/3 Zylinderhoehe; Checks fehlen | **gueltig (Modell)** | Auslaufrohr radial durch die Wand 100 mm unter dem Rand (beide Tanks), Leitrohr endet 1/3 Zylinderhoehe ueber der Spitze, Check-Zeilen fuer Auslauf/Ueberlauf/Leitrohr (60/60 PASS) |
+| 4 | klein: Herkunft unvollstaendig (Wulst, Revision, Konsolen, Spiel, Auslaufhoehe, Leitrohr; R09 nur klein; Dichte) | **gueltig** | 20 Herkunftszeilen, R09 nur klein vermerkt, Dichte Fachwert |
+| 5 | klein: Ports/Stueckliste (DN, d55 kein Normmass, Schrauben ISO, Konsolen, Revisionsdeckel, Bulkheads, kein Leitrohr im Biofilter, Instanz-Versatz) | **gueltig** | DN ergaenzt, Hahn gross d50, ISO-Nummern, Stueckliste ergaenzt, Biofilter ohne Leitrohr als offen, Versatz bis 5 mm im Blatt |
+| H | Wasserfuellung gehoert DRAUSSEN | **Hinweis** | nur als Gewichtsangabe (nicht modelliert) |

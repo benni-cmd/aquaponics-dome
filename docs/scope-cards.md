@@ -10,6 +10,7 @@ Format je Klasse: DRIN · DRAUSSEN · Anzahl je Eltern · Masse (Quelle) · Refe
 - **Referenz:** `reference/ref-6-grow-tables-detail.jpg`, Ausschnitt EINE Rinne mit Rahmen; Zickzack nur im Tisch-Ausschnitt.
 - **Typische Fehlinterpretation:** zwei versetzte Lochreihen in einer Rinne (falsch: Zickzack entsteht durch Versatz benachbarter Rinnen).
 - **Pruefzahlen:** Lochreihen je Rinne = 1; Lochzahl = Laenge / pitch (abgerundet); Rinnenbreite 130.
+- **Ergaenzung 29.10. 04:20 (Werkstatt, bestaetigt):** Die Rinne liefert die Lochphase als Konfiguration A/B (shift = -pitch/4 bzw. +pitch/4, Phasenabstand = pitch/2, hier 125 mm bei pitch 250); der Zickzack selbst entsteht erst im Tisch, wenn benachbarte Rinnen abwechselnd Phase A und B bekommen. Konfigurationszeilen L/M/K (3232/1983/1304) je A und B, Masterdatei plus sechs Varianten. Zulauf-Tuelle am Stirnende (Schlauch ID 16), Ablaufstutzen d32 am anderen Ende; ref-6 zeigt Schlaeuche am Tischende, passt zum Stirnanschluss.
 
 ## nft_tisch (innen, mitte, aussen)
 - **DRIN:** n Rinnen parallel (Abstand 262-288), **Versatz der Lochmuster benachbarter Rinnen um pitch/2 (Zickzack wie ref-6)**, 4 Beine mit Querstreben, Diagonalen, Fussplatten, Zulaufverteiler mit n Schlauchanschluessen (hellblau, ein Schlauch je Rinne wie ref-6), Sammelablauf, Gefaelle 1 cm/m, Rinnenhalter, Normschrauben.

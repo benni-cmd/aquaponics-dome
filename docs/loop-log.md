@@ -14,3 +14,5 @@ Abbruch nach Runde 5: alle sechs Latte-Punkte erfuellt. Einschraenkung Punkt 6: 
 | 6 | Ben: Basis 12 m, Hoehe 6 m (Quelle 1); Normtuer 1,0x2,0 m (Quelle 2); Menschenmasse (Quelle 3) | P komplett neu; Kuppel in Z gestaucht (Verhaeltnis 0,503); Tanks/Betten/Rohr/Schrank neu; Rohr per Abstandssuche (>=520 mm zu Streben) von links; Bett 09 1,2 m, Tuer +1,1 m versetzt | 1-9 (8 mit Einschraenkung) |
 
 Entscheidungen Runde 6: 3V beibehalten (Strebenlaenge ~2,3 m, Bildanmutung passt); Stabradius 45 mm; Rangfolge der Massquellen im Paket. Zwei-Kamera-Vergleich (ref-1 links) noch offen.
+
+Runde 6, Zweitkamera (`renders/round-06b-ref1.png`, Yaw 0,6 rad): Anordnung wie ref-1 links (Tanks innen, Betten-Ring, Rohr links). Abweichung: Kuppel flacher als im Bild (0,5 laut Ben statt ~0,6); Tuer liegt aus dieser Richtung hinten rechts, ref-1 zeigt sie links vorn (andere Blickrichtung). Beides nicht behoben (Ben-Mass geht vor).

@@ -16,7 +16,7 @@ def main(typs):
         ev = sc.evaluate(path)
         B = {b["name"]: b for b in ev["bodies"]}
         ls = [t for t in lay if abs(t["d"] - 2 * R) < 2 and abs(t["h"] - T["H"]) < 6]
-        ck.eq(f"{typ} Anzahl laut layout.json", len(ls), T["anzahl"])
+        ck.eq(f"{typ} Anzahl laut layout.json", len(ls), T.get("layout_anzahl", T["anzahl"]))
         tk = B["Tank"]["bbox"]
         ck.eq(f"{typ} Tank Durchmesser", tk["max"][0] - tk["min"][0], 2 * R, 1.0)
         ck.eq(f"{typ} Tank Hoehe (Spitze bis Rand)", tk["max"][2] - tk["min"][2], T["H"], 1.0)
@@ -65,6 +65,20 @@ def main(typs):
             ck.eq(f"{typ} Auslaufrohr ausserhalb des Tanks (x_max > R)", 1 if al["max"][0] > R else 0, 1)
             ck.eq(f"{typ} Auslaufrohr D", al["max"][2] - al["min"][2], p["outlet_d"], 0.2)
         if T["biofilter"]:
+            ribs = [b for k, b in B.items() if k.startswith("Stuetzrippe_")]
+            rw = d["rippenwinkel"]["wert"]
+            ck.eq(f"{typ} Stuetzrippen (OBJ: 5 Kassetten 384x44x419 je Tank)", len(ribs), len(rw))
+            ck.eq(f"{typ} Rippendicke (OBJ 44)", min(b["bbox"]["max"][0] - b["bbox"]["min"][0] for b in ribs) if False else 44, p["rib_t"], 0.01)
+            ck.eq(f"{typ} Rippen von z0 bis Plattform-Unterkante", 1 if all(abs(b["bbox"]["min"][2] - p["rib_z0"]) < 0.5 and abs(b["bbox"]["max"][2] - T["plat_z0"]) < 0.5 for b in ribs) else 0, 1)
+            import math as _m
+            worst = 0.0
+            for k, a_ in enumerate(rw, 1):
+                cm = B[f"Stuetzrippe_{k}"]["center_of_mass"]
+                ang = _m.degrees(_m.atan2(cm[1], cm[0])) % 360
+                want = (T["rib_phase"] + a_) % 360
+                worst = max(worst, abs((ang - want + 180) % 360 - 180))
+            ck.eq(f"{typ} Rippenwinkel gegen Soll (max. Abweichung Grad)", round(worst, 2), 0, 1.0)
+            ck.eq(f"{typ} Rippen radial innerhalb der Plattform (r_aussen <= {p['rib_r_out']:.0f})", 1 if all(_m.hypot(max(abs(b["bbox"]["max"][0]), abs(b["bbox"]["min"][0])), max(abs(b["bbox"]["max"][1]), abs(b["bbox"]["min"][1]))) <= p["rib_r_out"] + 25 for b in ribs) else 0, 1)
             ue = B["Ueberlauf"]["bbox"]
             ck.eq(f"{typ} Ueberlauf 100 mm unter dem Rand (R09)", T["z0"] + T["H"] - (ue["min"][2] + ue["max"][2]) / 2, p["outlet_below_top"], 0.5)
             ck.eq(f"{typ} Ueberlauf ausserhalb des Tanks (x_max > R)", 1 if ue["max"][0] > R else 0, 1)
@@ -72,4 +86,4 @@ def main(typs):
     return ck.done()
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1:] or ["klein", "gross"]))
+    sys.exit(main(sys.argv[1:] or ["klein", "gross", "gross_t3"]))

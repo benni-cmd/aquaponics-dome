@@ -26,13 +26,4 @@ PASS pumpe: pumpe_gross Pumpe vor der Tafel (+Y): Ist 1, Soll 1
 PASS pumpe: pumpe_gross Pumpe liegt innerhalb der Tafellaenge (Motor+Kopf): Ist 1, Soll 1
 PASS pumpe: pumpe_gross Standwinkel: Ist 2, Soll 2
 PASS pumpe: pumpe_gross Kabel mit Stecker: Ist 2, Soll 2
-PASS pumpe: filtermodul Anzahl laut layout.json: Ist 10, Soll 10
-PASS pumpe: filtermodul Laenge: Ist 384, Soll 384 (+-0.5)
-PASS pumpe: filtermodul Dicke (Gehaeuse + Deckel): Ist 44, Soll 44 (+-0.5)
-PASS pumpe: filtermodul Hoehe: Ist 419, Soll 419 (+-0.5)
-PASS pumpe: filtermodul Siebeinsatz im Gehaeuse (Spiel zur Wand >= 3 mm): Ist 1, Soll 1
-PASS pumpe: filtermodul Einlass oben (Stutzen ueber dem Gehaeuse): Ist 1, Soll 1
-PASS pumpe: filtermodul Auslass seitlich (Stutzen links neben dem Gehaeuse): Ist 1, Soll 1
-PASS pumpe: filtermodul Stutzen D: Ist 49.9992, Soll 50 (+-0.2)
-PASS pumpe: filtermodul Montagelaschen: Ist 4, Soll 4
-== pumpe: 37/37 PASS
+== pumpe: 28/28 PASS

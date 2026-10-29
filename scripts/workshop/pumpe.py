@@ -134,7 +134,7 @@ def render(typ, path, info):
         sc.snapshot(path, os.path.join(r, f"{typ}-05-schnitt.png"), [0, info["ycent"], info["za"]], 0.0, 0.0, info["L"] * 1.6, w=1000, h=700, section="XZ")
 
 if __name__ == "__main__":
-    typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["pumpe_klein", "pumpe_gross", "filtermodul"]
+    typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["pumpe_klein", "pumpe_gross"]
     p, d = sc.load_params("pumpe")
     for typ in typs:
         T = d["typen"][typ]

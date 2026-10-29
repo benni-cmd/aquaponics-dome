@@ -40,9 +40,9 @@
    "herkunft": "[A] Verbundanker M16 x 300 (Setztiefe ca. 280)"
   },
   "anchor_hole": {
-   "wert": 18,
+   "wert": 17.5,
    "einheit": "mm",
-   "herkunft": "[E] Durchgangsloch in der Ankerplatte fuer M16 (ISO 273 mittel 18)"
+   "herkunft": "[E] Durchgangsloch in der Ankerplatte fuer M16 (ISO 273 mittel 17,5)"
   },
   "anchor_off": {
    "wert": 75,
@@ -80,9 +80,9 @@
    "herkunft": "knoten.json lug_hole: Loch D14 fuer M12"
   },
   "bolt_len": {
-   "wert": 50,
+   "wert": 55,
    "einheit": "mm",
-   "herkunft": "[E] M12x50 ISO 4017: Lasche 10 + 12 + 10 + 2 Scheiben 6 + Mutter 10 + Ueberstand"
+   "herkunft": "[E] M12x55 ISO 4017: Gabel 10 + 12 + 10 + 2 Scheiben 6 + Mutter 10 + Ueberstand 7 (Spec-Pruefer: 2 mm Ueberstand bei 50 zu knapp)"
   },
   "washer_t": {
    "wert": 3,
@@ -118,14 +118,14 @@
   "ports": [
    [
     "Anschluss Knotenlasche (Gabel)",
-    "Querbolzen M12x50 ISO 4017, Loch D14 durch beide Laschen",
+    "Querbolzen M12x55 ISO 4017, Loch D14 durch beide Laschen",
     "x 0, y 0, z -159 (Lochmitte, Bezug = Knotenmitte); Gabelspalt y +-6",
     "Lochachse Y = tangential (waagerecht, senkrecht zur Knotennormalen, umlaufend um die Kuppel); Knotenlasche kommt von oben (+Z)"
    ],
    [
     "Verbundanker (2 Stueck)",
     "M16 x 300, Setztiefe ca. 280, Bohrloch D18, chemisch (Verbundmoertel nicht modelliert)",
-    "x,y = +-75 (Diagonale), z -229 (Plattenoberkante) bis -529",
+    "x,y = (+75, +75) und (-75, -75) (Diagonale ++/--), z -229 (Plattenoberkante) bis -529",
     "Kopf oben, Schaft nach -Z in den Beton"
    ],
    [
@@ -142,25 +142,26 @@
    ]
   ],
   "verbindungen": [
-   "Ankerplatte auf dem Betonpunkt, Verbundanker M16x300 (ISO 4017-aehnlich, Kopf oben) mit Scheibe ISO 7089; Platte 15 mm, Loecher D18",
+   "Ankerplatte auf dem Betonpunkt, Verbundanker = Gewindestange M16 x 300 (8.8) mit Sechskantmutter ISO 4032 und Scheibe ISO 7089 oben, im Modell als Sechskantschraube mit Kopf oben dargestellt (Kopf = Mutter); Platte 15 mm, Loecher D17,5",
    "Gabellaschen an die Ankerplatte geschweisst (MAG), dann feuerverzinkt [A]",
-   "Querbolzen M12x50 ISO 4017 mit 2 Scheiben ISO 7089 und Mutter ISO 4032 durch Gabel und Knotenlasche",
+   "Querbolzen M12x55 ISO 4017 mit 2 Scheiben ISO 7089 und Mutter ISO 4032 durch Gabel und Knotenlasche",
    "Betonpunkt: Beton C25/30, Gruendungstiefe frostfrei (Tiefe 600 + Aufbau) nicht nachgewiesen"
   ],
-  "abweichung": "Scope-Card: Ankerplatte mit 2 Bolzen, Betonpunkt (Block im Erdreich 400 x 400 x 600 A), Anschlusslaschen zum Basisknoten, Normschrauben: umgesetzt. Hoehenlage: Der Basisknoten sitzt bei z = -14, die Lasche haengt 150 mm unter die Knotenkugel, die Ankerplatte liegt 229 mm unter der Knotenmitte: der Betonpunkt ist damit etwa 235 mm unter dem Gelaende vergraben (Erdflaeche/Fundamentring: Montage pruefen).",
+  "abweichung": "Scope-Card: Ankerplatte mit 2 Bolzen, Betonpunkt (Block im Erdreich 400 x 400 x 600 A), Anschlusslaschen zum Basisknoten, Normschrauben: umgesetzt. Hoehenlage: Der Basisknoten sitzt bei z = -14, die Lasche haengt 150 mm unter die Knotenkugel, die Ankerplatte liegt 229 mm unter der Knotenmitte: damit liegt der Betonkopf bei Weltz = -14 - 244 = -258 mm (Gelaende/Fundamentring: Montage pruefen).",
   "montage": [
    "Grube ausheben (400 x 400 x 600 plus Arbeitsraum), Schalung, Beton C25/30 mit Bohrlochraster einbringen und abbinden lassen",
    "Bohrloecher D18 setzen, Verbundmoertel einbringen, Verbundanker M16 setzen, Ankerplatte mit Gabel aufsetzen, Muttern/Scheiben anziehen",
    "Basisknoten mit der Ankerlasche in die Gabel einfuehren, Querbolzen M12 mit Scheiben und Mutter montieren",
-   "Ausrichtung: X radial nach aussen, Lochachse tangential"
+   "Ausrichtung: X radial nach aussen, Lochachse tangential",
+   "Anzugsmomente (Richtwerte [E]): Querbolzen M12 8.8 85 Nm (verspannt die 10-mm-Gabellaschen nicht auf der Knotenlasche: Spalt 12 bleibt frei, Muttern nur handfest plus 1/4 Umdrehung bzw. nach Herstellervorgabe), Verbundanker M16 nach Moertelhersteller (Richtwert 80 Nm)"
   ],
   "werkzeug": "Spaten/Bagger, Schalungsbretter, Betonmischer, Bohrhammer D18, Dosierpistole Verbundmoertel, Schluessel M12/M16, Wasserwaage",
   "stueckliste": [
    "1 Betonpunkt C25/30 400 x 400 x 600 (0,096 m3, ca. 230 kg)",
-   "1 Ankerplatte S235 250 x 250 x 15 mit 2 Loechern D18",
+   "1 Ankerplatte S235 250 x 250 x 15 mit 2 Loechern D17,5",
    "2 Gabellaschen S235 80 x 10 x 140",
-   "2 Verbundanker M16 x 300 mit 2 Scheiben ISO 7089, Verbundmoertel 2 Kartuschen je 10 Anker [A]",
-   "1 Querbolzen M12x50 ISO 4017 mit 2 Scheiben ISO 7089 und Mutter ISO 4032",
+   "2 Gewindestangen M16 x 300 (Verbundanker) mit je 1 Mutter ISO 4032 und 1 Scheibe ISO 7089, Verbundmoertel 2 Kartuschen je 10 Anker [A]",
+   "1 Querbolzen M12x55 ISO 4017 mit 2 Scheiben ISO 7089 und Mutter ISO 4032",
    "Menge: 10 Anker (je Basisknoten einer): 10 Betonpunkte, 10 Platten, 20 Laschen, 20 Verbundanker, 10 Querbolzen"
   ],
   "lokal": "Betonpunkt vor Ort gegossen; Platte und Laschen vom Metallbauer (Reststuecke S235); Verbundanker aus dem Baustoffhandel oder Gewindestangen M16 mit Ankermoertel.",
@@ -176,7 +177,7 @@
   "offen": [
    "Statik/Tragfaehigkeit nicht nachgewiesen (Statik ruht): Block, Anker, Laschen sind Annahmen A",
    "Gruendungstiefe/Frost und Bodenkennwerte offen",
-   "Lage zur Erdflaeche/zum Fundamentring: Betonpunkt ca. 235 mm unter Gelaende (Montage)",
+   "Lage zur Erdflaeche/zum Fundamentring: Der Basisknoten liegt bei z = -14, damit Ankerplatten-Oberkante z = -243 und Betonkopf z = -258 (Welt); das Gelaende (z = 0?) ist nicht definiert -> Montage",
    "Hebelwirkung: Gabel nimmt nur Querkraefte quer zur Lochachse auf; Zug/Druck in Strebenrichtung ueber die Ankerplatte [A]",
    "Ausrichtung Lochachse tangential (umlaufend) ist Annahme; im OBJ keine Ankerdetails"
   ]
@@ -192,8 +193,8 @@
   [
    "Betonpunkt 400 x 400 x 600",
    "400x400x600 mm",
-   "Scope-Card",
-   "docs/scope-cards.md fundamentanker (Annahme A, keine Quelle)",
+   "A (Scope-Card)",
+   "docs/scope-cards.md fundamentanker nennt das Mass selbst Annahme A, keine Quelle",
    "niedrig"
   ],
   [
@@ -206,23 +207,23 @@
   [
    "2 Verbundanker M16 x 300 auf der Diagonale +-75",
    "M16 x 300",
-   "Scope-Card + A",
+   "A (Scope-Card)",
    "Scope-Card: Ankerplatte mit 2 Bolzen; Groesse Annahme (R01 Statik ruht)",
    "niedrig"
   ],
   [
    "Gabel aus 2 Laschen 80 x 10 x 140, Spalt 12",
    "80x10x140, 12 mm",
-   "Scope-Card + E",
+   "A (Scope-Card) + E",
    "Scope-Card: Anschlusslaschen zum Basisknoten; Spalt = Knotenlasche 10 + 2 (knoten.json)",
    "mittel"
   ],
   [
-   "Lochhoehe z -159 ab Knotenmitte, Loch D14, Querbolzen M12x50",
+   "Lochhoehe z -159 ab Knotenmitte, Loch D14, Querbolzen M12x55",
    "z -159, D14, M12",
-   "E",
-   "knoten.json: -ball_d/2 + 6 - lug_l + 35; Loch D14 = lug_hole (Querpruefung 15/15)",
-   "hoch"
+   "E + A",
+   "knoten.json: -ball_d/2 + 6 - lug_l + 35 mit lug_l 150 und Lochlage 35 (beide A); Loch D14 durch die M12-Wahl (A); Querpruefung 15/15 prueft die Uebereinstimmung beider Klassen",
+   "mittel"
   ],
   [
    "Ankerplatte 70 mm unter der Lochmitte (clevis_below_hole)",
@@ -239,11 +240,18 @@
    "mittel"
   ],
   [
-   "Ausrichtung X radial, Y tangential, Azimut je Basisknoten",
+   "Azimut je Basisknoten (X radial)",
    "az je Knoten",
    "E",
-   "knoten_arme.json (az_grad = atan2(n_y, n_x) der Knotennormalen)",
+   "knoten_arme.json (az_grad = atan2(n_y, n_x) der Knotennormalen aus nodes_list)",
    "hoch"
+  ],
+  [
+   "Lochachse tangential (umlaufend), Knotenlasche kommt von oben",
+   "tangential",
+   "A",
+   "Annahme der Werkstatt, im OBJ keine Ankerdetails",
+   "niedrig"
   ]
  ]
 }

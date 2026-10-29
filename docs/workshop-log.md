@@ -164,3 +164,16 @@ Luecken: glatte runde Scheiben / Scalloprand (gross, sicher), konzentrische Schi
 | 4 | klein: Ports nur fuer 3 Knoten ausgeschrieben, Ankerlasche-Achse mehrdeutig, Bolzenachse fehlt | **gueltig** | docs/parts/knoten-ports.md (alle 26 Knoten mit Spitzen, Richtung, Bolzenachse, Azimut), Lochachse tangential = umlaufend |
 | 5 | klein: Montage (Anzugsmoment, Zink, Toleranz) | **gueltig** | M10 8.8 49 Nm, M12 85 Nm, Zink-Nacharbeit, Vorrichtung +-0,5 Grad |
 | H | Tuer-Sturz, Gabel M12/D14, Strebenwand 3 | **andere Klasse** | Hinweis |
+
+### Orchestrator-Entscheidung D-Punkt 4 (29.10. ~08:55) umgesetzt
+Die 10 Kassetten 384 x 44 x 419 sind Stuetzrippen/Konsolen der Tankplattform (Klasse Tank): tank_gross.sc (Tank 2, Rippenphase 11,0 Grad) und tank_gross_t3.sc (Tank 3, 53,6 Grad) haben je 5 Stuetzrippen (Kantholz 44, Dreiecksknaggen unter dem Kegel, radial, Winkel 0/90/135/180/225 Grad), check_tank.py 100/100 PASS. Die Klasse filtermodul entfaellt (Datei und Renders entfernt), pumpe bleibt mit 4 Pumpentafeln (check_pumpe.py 28/28 PASS).
+Herleitung der Rippenform: Bounding-Box 384 x 419 mit Steigung 419/384 = 47,5 Grad entspricht dem Kegel (47 Grad): rechtwinkliges Dreieck mit der Hypotenuse entlang der Kegelflanke; aussen r 440 statt 468, damit die Rippe die Querstreben nicht durchdringt; Oberkante Plattform-Unterkante statt -Oberkante (die hohle Plattform nimmt die Rippe auf).
+
+### fundamentanker, Spec-Pruefer (FAIL) 29.10. ~08:50
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Herkunft Lochhoehe/Ausrichtung als E/hoch ueberzeichnet | **gueltig** | E + A, Konfidenz mittel; Lochachse tangential als A |
+| 2 | klein: "235 mm unter Gelaende" nicht herleitbar | **gueltig** | ersetzt: Ankerplatte OK z -243, Betonkopf z -258 (Welt, Knoten bei -14); Gelaende offen (Montage) |
+| 3 | klein: Montage/Stueckliste (Mutter, Anzugsmoment, Bolzenueberstand 2 mm) | **gueltig** | Gewindestange mit Mutter, Anzugsmomente, M12x55 (7 mm Ueberstand) |
+| 4 | klein: Diagonale ++/-- unklar, ISO 273 M16 = 17,5 | **gueltig** | beide Angaben korrigiert (Loch D17,5) |
+| 5 | klein: Herkunftskategorie "Scope-Card" unzulaessig | **gueltig** | "A (Scope-Card)" |

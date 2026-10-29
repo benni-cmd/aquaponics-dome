@@ -22,7 +22,8 @@
    "inlet_d": 50,
    "anzahl": 2,
    "biofilter": 0,
-   "herkunft": "layout.json tanks 1 und 4: D673, H1075, Spitze Z 167-172, Plattform 706x707x73 auf Z 424-428, Beine 4 x h751, Fittings 30-40 an der Spitze"
+   "herkunft": "layout.json tanks 1 und 4: D673, H1075, Spitze Z 167-172, Plattform 706x707x73 auf Z 424-428, Beine 4 x h751, Fittings 30-40 an der Spitze",
+   "layout_anzahl": 2
   },
   "gross": {
    "R": 465,
@@ -40,9 +41,33 @@
    "strut_z": 300,
    "valve_d": 50,
    "inlet_d": 63,
-   "anzahl": 2,
+   "anzahl": 1,
    "biofilter": 1,
-   "herkunft": "layout.json tanks 2 und 3: D930, H1441-1444, Spitze Z 226-229, Plattform 977x976x98 auf Z 570-572, Beine 4 x h1006-1008, Fittings 41-56 an der Spitze; Hahn d50 (Norm) statt OBJ-Fitting 55 [A]"
+   "herkunft": "layout.json tanks 2 und 3: D930, H1441-1444, Spitze Z 226-229, Plattform 977x976x98 auf Z 570-572, Beine 4 x h1006-1008, Fittings 41-56 an der Spitze; Hahn d50 (Norm) statt OBJ-Fitting 55 [A]; Stuetzrippen: layout.json tanks 2/3 modules 384 x 44 x 419 (Orchestrator-Entscheidung 29.10.: Rippen/Konsolen der Plattform, Klasse Tank)",
+   "rib_phase": 11.0,
+   "layout_anzahl": 2
+  },
+  "gross_t3": {
+   "R": 465,
+   "H": 1444,
+   "z0": 226,
+   "plat_l": 977,
+   "plat_w": 976,
+   "plat_t": 98,
+   "plat_z0": 570,
+   "leg_w": 40,
+   "leg_h": 1008,
+   "leg_wall": 2.5,
+   "wall": 5,
+   "rt": 28,
+   "strut_z": 300,
+   "valve_d": 50,
+   "inlet_d": 63,
+   "anzahl": 1,
+   "biofilter": 1,
+   "herkunft": "Tank 3 (Azimut 107,8): wie gross, Rippenmuster um 42,6 Grad gedreht (Rippenwinkel relativ zur Plattformdrehung 53,6 statt 11,0 Grad)",
+   "rib_phase": 53.6,
+   "layout_anzahl": 2
   }
  },
  "parameter": {
@@ -160,6 +185,26 @@
    "wert": 0.333,
    "einheit": "",
    "herkunft": "R09: Leitrohr endet ca. 1/3 der Zylinderhoehe ueber der Kegelspitze (Zylinderhoehe = Rand minus Kegelende) [A]"
+  },
+  "rib_z0": {
+   "wert": 249,
+   "einheit": "mm",
+   "herkunft": "OBJ: Kassetten/Rippen z0 249-256 (layout.json tanks[].modules)"
+  },
+  "rib_r_out": {
+   "wert": 440,
+   "einheit": "mm",
+   "herkunft": "OBJ: Rippen reichen bis r 468; hier 440, damit die Rippe die Querstreben an den Plattformseiten (Innenkante bei 448) nicht durchdringt [A]"
+  },
+  "rib_t": {
+   "wert": 44,
+   "einheit": "mm",
+   "herkunft": "OBJ: Dicke 43-44 mm (Kantholz-/Bohlenstaerke 44) [A Werkstoff Fichte]"
+  },
+  "rib_gap": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Abstand der Rippenschraege zum Tankkegel"
   }
  },
  "werkstoff": {
@@ -241,7 +286,7 @@
    "Schlammventil: Kugelhahn PVC-U mit Verschraubung an Stutzen d40/d50",
    "Biomediumkorb (gross): Tragrost auf 4 Konsolen 40x40x30 (an die Tankwand geschweisst/geklebt) [A]"
   ],
-  "abweichung": "layout.json tanks: Durchmesser (inkl. Randwulst), Hoehe, Kegelspitze Z, Plattform (Mass und Z), Beinhoehe stimmen (check_tank.py). Kegel: OBJ liefert nur Spitze und Gesamthoehe; Kegelende auf der Plattform-Oberkante, 45 Grad ab Horizontal als Auslegung E (R09-Nachtrag 29.10. 07:55, vom Orchestrator bestaetigt; Gegenprobe Spitze klein 165 gegen OBJ 167-172, gross 203 gegen 226-229); gebaut 48,7 / 47,0 Grad, weil der Randwulst den Koerperradius gegenueber dem OBJ-Durchmesser verkleinert. Leitrohr und Auslauf nach R09 (A, Konfidenz niedrig, R09 behandelt nur den kleinen Tank, fuer gross analog). Beine 751/1008 laufen bis ueber die Plattform (OBJ-Mass). Fittings: OBJ 4 Stueck Z 143-177 mit 30-56 mm, hier Schlammstutzen + Kugelhahn (d40 / d50 Norm statt OBJ 55) + Ablaufstutzen.",
+  "abweichung": "layout.json tanks: Durchmesser (inkl. Randwulst), Hoehe, Kegelspitze Z, Plattform (Mass und Z), Beinhoehe stimmen (check_tank.py). Kegel: OBJ liefert nur Spitze und Gesamthoehe; Kegelende auf der Plattform-Oberkante, 45 Grad ab Horizontal als Auslegung E (R09-Nachtrag 29.10. 07:55, vom Orchestrator bestaetigt; Gegenprobe Spitze klein 165 gegen OBJ 167-172, gross 203 gegen 226-229); gebaut 48,7 / 47,0 Grad, weil der Randwulst den Koerperradius gegenueber dem OBJ-Durchmesser verkleinert. Leitrohr und Auslauf nach R09 (A, Konfidenz niedrig, R09 behandelt nur den kleinen Tank, fuer gross analog). Beine 751/1008 laufen bis ueber die Plattform (OBJ-Mass). STUETZRIPPEN (gross): die 5 Kassetten 384 x 44 x 419 je grossem Tank aus layout.json tanks[].modules sind nach Orchestrator-Entscheidung 29.10. (D-Punkt 4) Stuetzrippen/Konsolen der Plattform: radial zur Tankachse, Winkel 0/90/135/180/225 Grad (Phase 11,0 Grad bei Tank 2, 53,6 Grad bei Tank 3: Dateien tank_gross.sc und tank_gross_t3.sc), Dreiecksknaggen von z 249 bis zur Plattform-Unterkante 570 (OBJ: bis Plattform-Oberkante 668, also in die hohle Plattform hinein), aussen r 440 statt 468 (Querstreben), Hypotenuse entlang des Tankkegels mit 3 mm Spiel; Alternative (nicht gebaut): Filterkassetten, Entwurf entfernt. Fittings: OBJ 4 Stueck Z 143-177 mit 30-56 mm, hier Schlammstutzen + Kugelhahn (d40 / d50 Norm statt OBJ 55) + Ablaufstutzen.",
   "montage": [
    "Plattform mit Beinen am Boden ausrichten, Fussplatten mit M8 verschrauben, Streben und Diagonalen einsetzen",
    "Tank in den Kegelsitz setzen (zu zweit), Deckel und Leitrohr bzw. Biomediumkorb einsetzen",
@@ -252,22 +297,24 @@
   "werkzeug": "Lochsaege (d63/d50), Bohrer, Schluessel M6/M8, Wasserwaage, Schweissgeraet (Rahmen) oder Winkelverbinder",
   "stueckliste": [
    "klein (je Tank): Tank PE (4 mm Wand, Aussen-D673 x H1075, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d50 1 + Bulkhead mit Dichtung 1; Leitrohr d110 mit Auslaufrohr d50 1 + Bulkhead mit Dichtung 1; Kugelhahn d40 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 30x30 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8",
-   "gross (je Tank): Tank PE (5 mm Wand, Aussen-D930 x H1444, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d63 1 + Bulkhead mit Dichtung 1; Ueberlauf d63 1 + Bulkhead mit Dichtung 1, Biomediumkorb 1 mit Tragrost 1 und 4 Konsolen 40x40x30, Belueftungsrohr d16 1; Kugelhahn d50 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 40x40 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8",
+   "gross (je Tank): Tank PE (5 mm Wand, Aussen-D930 x H1444, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d63 1 + Bulkhead mit Dichtung 1; Ueberlauf d63 1 + Bulkhead mit Dichtung 1, Biomediumkorb 1 mit Tragrost 1 und 4 Konsolen 40x40x30, Belueftungsrohr d16 1; 5 Stuetzrippen Kantholz 44 (Dreiecksknaggen radial unter dem Kegel, Fichte, T40g) 1 Satz; Kugelhahn d50 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 40x40 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8",
    "Tanks gesamt: klein 2, gross 2 (Azimute 123/213 und 108/229, layout.json); Normschrauben: M8x30 ISO 4017, M6x40 ISO 4017, Muttern ISO 4032"
   ],
   "lokal": "Tank: handelsueblicher Konus-Boden-Tank (Kunststoff, 500-1000 l); Plattform/Beine aus Baustahl-Rechteckrohr (Metallbauer) oder Alu-Systemprofil; Rohre und Kugelhaehne PVC-U aus dem Sanitaerhandel.",
   "referenz": "reference/ref-4-dome-clean.jpg und ref-5 (gruene Tanks mit gerolltem Randwulst auf duennen Beinen mit Kegelboden); data/layout.json tanks; docs/research/R09.md",
   "varianten": [
    "tank_klein",
-   "tank_gross"
+   "tank_gross",
+   "tank_gross_t3"
   ],
-  "gewicht_gefuellt": "klein: leer 46 kg; Wasserfuellung bis Rand 254 l = 254 kg (Zylinder 222 l + Kegel 33 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 300 kg | gross: leer 95 kg, Biomedium (Schuettung 0,15 g/cm3) 41 kg; Wasserfuellung bis Rand 683 l = 683 kg (Zylinder 596 l + Kegel 88 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 820 kg",
+  "gewicht_gefuellt": "klein: leer 46 kg; Wasserfuellung bis Rand 254 l = 254 kg (Zylinder 222 l + Kegel 33 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 300 kg | gross: leer 103 kg, Biomedium (Schuettung 0,15 g/cm3) 41 kg; Wasserfuellung bis Rand 683 l = 683 kg (Zylinder 596 l + Kegel 88 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 827 kg",
   "massen_getrennt": [
    "Biomedium"
   ],
   "boxen": [
    "klein: X -388 bis 442, Y -388 bis 388, Z -24 (Schraubenenden 24 mm im Boden) bis 1323",
-   "gross: X -518 bis 570, Y -518 bis 518, Z -24 (Schraubenenden 24 mm im Boden) bis 1750"
+   "gross: X -518 bis 570, Y -518 bis 518, Z -24 (Schraubenenden 24 mm im Boden) bis 1750",
+   "gross_t3 (Tank 3, Rippenmuster gedreht): X -518 bis 570, Y -518 bis 518, Z -24 bis 1750"
   ],
   "pruefung": [
    "scripts/workshop/check_tank.py (Ergebnis renders/components/tank_klein/check.txt)",
@@ -279,7 +326,8 @@
    "Beine 751/1008 bis ueber die Plattform: Zweck (Tankfuehrung) aus OBJ nicht ableitbar",
    "Haltegurt/Schellen, Dichtungen, Verschraubungen der Diagonalen (M6x40), Revisionsdeckel nicht modelliert",
    "Biofilter (gross): Biomediumkorb, Konsolen, Belueftung als Platzhalter ohne Quelle; kein Leitrohr im Biofilter (R09 nennt es nur fuer den Absetzer, Scope-Card fuehrt es gemeinsam)",
-   "Rolle der Pumpen/Filtermodule (eigene Klasse pumpe)"
+   "Rolle der Stuetzrippen: Annahme A (Orchestrator), Werkstoff Holz Fichte nur wegen der Dicke 44 mm; Alternative Filterkassette; Rippen enden an der Plattform-Unterkante, im OBJ bis Plattform-Oberkante",
+   "Rolle der Pumpen (eigene Klasse pumpe)"
   ]
  },
  "herkunft_tabelle": [
@@ -403,6 +451,13 @@
    "niedrig"
   ],
   [
+   "Stuetzrippen: 5 je grossem Tank, 384 x 44 x 419, radial, Winkel 0/90/135/180/225 Grad",
+   "5 Rippen, 44 mm",
+   "OBJ + A",
+   "layout.json tanks 2/3 modules (384 x 43/44 x 418/419, z0 249-256, radial im Abstand 276); Rolle Stuetzrippe: Orchestrator-Entscheidung 29.10. (A)",
+   "mittel"
+  ],
+  [
    "Anzahl 2 klein, 2 gross",
    "2 + 2",
    "OBJ",
@@ -423,5 +478,15 @@
    "Handbuchwerte Kunststoffe/Stahl; Biomedium Schuettdichte Annahme",
    "mittel"
   ]
- ]
+ ],
+ "rippenwinkel": {
+  "wert": [
+   0,
+   90,
+   135,
+   180,
+   225
+  ],
+  "herkunft": "OBJ: 5 Rippen radial, Winkelabstaende 90/45/45/45/135 Grad (aus layout.json tanks 2 und 3 abgeleitet); Phase je Tank in rib_phase (Grad ab der Plattformachse X)"
+ }
 }

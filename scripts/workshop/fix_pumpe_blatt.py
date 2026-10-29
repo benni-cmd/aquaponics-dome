@@ -7,6 +7,8 @@ d = json.load(open(p, encoding="utf-8"))
 P = {k: v["wert"] for k, v in d["parameter"].items()}
 ports, gew, sl, boxes = [], [], [], []
 for typ, T in d["typen"].items():
+    if typ == "filtermodul":
+        continue
     ev = sc.evaluate(os.path.join(sc.ROOT, "designs", "components", f"{typ}.sc"))
     mass = sum(b["mass_g"] for b in ev["bodies"]) / 1000
     mn, mx = sc.bbox_all(ev)

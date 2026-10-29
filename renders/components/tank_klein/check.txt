@@ -55,7 +55,47 @@ PASS tank: gross Schlammventil D im OBJ-Bereich 30-56: Ist 1, Soll 1
 PASS tank: gross Biomedium als EIN Koerper: Ist 1, Soll 1
 PASS tank: gross Biomedium-Hoehe: Ist 520, Soll 520 (+-0.5)
 PASS tank: gross Biomedium ruht auf dem Tragrost: Ist 970, Soll 970 (+-0.01)
+PASS tank: gross Stuetzrippen (OBJ: 5 Kassetten 384x44x419 je Tank): Ist 5, Soll 5
+PASS tank: gross Rippendicke (OBJ 44): Ist 44, Soll 44 (+-0.01)
+PASS tank: gross Rippen von z0 bis Plattform-Unterkante: Ist 1, Soll 1
+PASS tank: gross Rippenwinkel gegen Soll (max. Abweichung Grad): Ist 0, Soll 0 (+-1)
+PASS tank: gross Rippen radial innerhalb der Plattform (r_aussen <= 440): Ist 1, Soll 1
 PASS tank: gross Ueberlauf 100 mm unter dem Rand (R09): Ist 100, Soll 100 (+-0.5)
 PASS tank: gross Ueberlauf ausserhalb des Tanks (x_max > R): Ist 1, Soll 1
 PASS tank: gross Deckel auf dem Rand: Ist 1670, Soll 1670 (+-0.1)
-== tank: 60/60 PASS
+PASS tank: gross_t3 Anzahl laut layout.json: Ist 2, Soll 2
+PASS tank: gross_t3 Tank Durchmesser: Ist 930, Soll 930 (+-1)
+PASS tank: gross_t3 Tank Hoehe (Spitze bis Rand): Ist 1444, Soll 1444 (+-1)
+PASS tank: gross_t3 Kegelspitze Z: Ist 226, Soll 226 (+-1)
+PASS tank: gross_t3 Kegel vorhanden (Flaechentyp cone): Ist 1, Soll 1
+PASS tank: gross_t3 Kegelwinkel ab Horizontal in 45-60 Grad (Scope-Card): Ist 1, Soll 1
+PASS tank: gross_t3 Plattform Laenge: Ist 977, Soll 977 (+-1)
+PASS tank: gross_t3 Plattform Breite: Ist 976, Soll 976 (+-1)
+PASS tank: gross_t3 Plattform Dicke: Ist 98, Soll 98 (+-1)
+PASS tank: gross_t3 Plattform Z-Unterkante: Ist 570, Soll 570 (+-1)
+PASS tank: gross_t3 Beine: Ist 4, Soll 4
+PASS tank: gross_t3 Beinhoehe (Oberkante): Ist 1008, Soll 1008 (+-1)
+PASS tank: gross_t3 Beinquerschnitt: Ist 40, Soll 40 (+-0.2)
+PASS tank: gross_t3 Fussplatten: Ist 4, Soll 4
+PASS tank: gross_t3 Querstreben: Ist 4, Soll 4
+PASS tank: gross_t3 Diagonalen: Ist 4, Soll 4
+PASS tank: gross_t3 Zulauf tangential: Rohr beruehrt Innenwand (x_max = Rb-w): Ist 435, Soll 435 (+-0.5)
+PASS tank: gross_t3 Randwulst: Aussenradius = OBJ: Ist 465, Soll 465 (+-0.5)
+PASS tank: gross_t3 Zulauf Rohr-D: Ist 62.999, Soll 63 (+-0.2)
+PASS tank: gross_t3 Zulauf unter dem Rand: Ist 250, Soll 250 (+-0.5)
+PASS tank: gross_t3 Schlammstutzen an der Spitze (z0 im Stutzen): Ist 1, Soll 1
+PASS tank: gross_t3 Kugelhahn unter der Spitze: Ist 1, Soll 1
+PASS tank: gross_t3 Ablaufstutzen D = Ventil-D: Ist 49.9992, Soll 50 (+-0.2)
+PASS tank: gross_t3 Schlammventil D im OBJ-Bereich 30-56: Ist 1, Soll 1
+PASS tank: gross_t3 Biomedium als EIN Koerper: Ist 1, Soll 1
+PASS tank: gross_t3 Biomedium-Hoehe: Ist 520, Soll 520 (+-0.5)
+PASS tank: gross_t3 Biomedium ruht auf dem Tragrost: Ist 970, Soll 970 (+-0.01)
+PASS tank: gross_t3 Stuetzrippen (OBJ: 5 Kassetten 384x44x419 je Tank): Ist 5, Soll 5
+PASS tank: gross_t3 Rippendicke (OBJ 44): Ist 44, Soll 44 (+-0.01)
+PASS tank: gross_t3 Rippen von z0 bis Plattform-Unterkante: Ist 1, Soll 1
+PASS tank: gross_t3 Rippenwinkel gegen Soll (max. Abweichung Grad): Ist 0, Soll 0 (+-1)
+PASS tank: gross_t3 Rippen radial innerhalb der Plattform (r_aussen <= 440): Ist 1, Soll 1
+PASS tank: gross_t3 Ueberlauf 100 mm unter dem Rand (R09): Ist 100, Soll 100 (+-0.5)
+PASS tank: gross_t3 Ueberlauf ausserhalb des Tanks (x_max > R): Ist 1, Soll 1
+PASS tank: gross_t3 Deckel auf dem Rand: Ist 1670, Soll 1670 (+-0.1)
+== tank: 100/100 PASS

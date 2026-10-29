@@ -143,6 +143,22 @@ def build(typ):
         for sy in (-1, 1):
             b.add("solid.box", length=lw + 1, width=lw + 1, height=pt + 2, center=[sx * (pl / 2 - lw / 2), sy * (pw / 2 - lw / 2), pz + pt / 2], operation="cut", targets=["Plattform"], name=f"Ecke_{sx}{sy}")
     b.add("material.assign", bodies=["Plattform"], material="Stahl verzinkt")
+    if T["biofilter"]:
+        # --- Stuetzrippen (Dreiecksknaggen, Kantholz 44 mm) radial unter dem Kegel, von der Plattform-Unterkante bis rib_z0 (Orchestrator-Entscheidung 29.10.: Klasse Tank)
+        b.add("component.activate", component=root)
+        b.add("component.create", name="T40g_Stuetzrippen")
+        b.add("material.create", name="Holz Fichte", density_g_cm3=0.47, color="#c8a46a")
+        zr0, zr1 = p["rib_z0"], T["plat_z0"]
+        r_c = lambda z: rt + (z - z_t) / G["tan_a"]
+        angs = d["rippenwinkel"]["wert"]
+        for k, a_ in enumerate(angs, 1):
+            ph = math.radians(T["rib_phase"] + a_)
+            cx, sy = math.cos(ph), math.sin(ph)
+            b.add("sketch.create", plane={"origin": [0, 0, 0], "x_dir": [round(cx, 6), round(sy, 6), 0], "y_dir": [0, 0, 1]}, name=f"S_Rippe{k}")
+            b.add("sketch.line", points=[[round(r_c(zr0) + p["rib_gap"], 2), zr0], [p["rib_r_out"], zr0], [p["rib_r_out"], zr1], [round(r_c(zr1) + p["rib_gap"], 2), zr1]], closed=True)
+            b.add("sketch.finish")
+            b.add("solid.extrude", distance=p["rib_t"], direction="symmetric", name=f"F_Rippe{k}", body_name=f"Stuetzrippe_{k}")
+            b.add("material.assign", bodies=[f"Stuetzrippe_{k}"], material="Holz Fichte")
     b.add("component.activate", component=root)
     b.add("component.create", name="T40f_Beine")
     ft, fp = p["foot_t"], p["foot_plate"]
@@ -182,7 +198,7 @@ def build(typ):
     b.add("component.activate", component=root)
     for nm, pn, ds in ((root, "T40", d["beschreibung"]), ("T40a_Tank", "T40a", "Tankkoerper Kegel 45 Grad + Zylinder, Deckel"), ("T40b_Zulauf", "T40b", "tangentialer Zulauf"),
                        ("T40c_Leitrohr", "T40c", "Leitrohr mit Auslauf (Vortex) bzw. Biomediumkorb (Biofilter)"), ("T40d_Schlammventil", "T40d", "Schlammventil an der Kegelspitze"),
-                       ("T40e_Plattform", "T40e", "Plattform mit Kegelsitz"), ("T40f_Beine", "T40f", "4 Beine, Streben, Diagonalen, Fussplatten")):
+                       ("T40e_Plattform", "T40e", "Plattform mit Kegelsitz"), ("T40f_Beine", "T40f", "4 Beine, Streben, Diagonalen, Fussplatten")) + ((("T40g_Stuetzrippen", "T40g", "5 Stuetzrippen (Kantholz 44) radial unter dem Kegel"),) if T["biofilter"] else ()):
         b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
     return b, G, dict(z_in=z_in, xin=xin, yin=yin)
 

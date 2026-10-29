@@ -51,4 +51,4 @@ def main(typs):
     return ck.done()
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1:] or ["pumpe_klein", "pumpe_gross", "filtermodul"]))
+    sys.exit(main(sys.argv[1:] or ["pumpe_klein", "pumpe_gross"]))

@@ -66,7 +66,7 @@ for c in cmds:
 rows = min(v / (6 if v > 9 else 3) for v in holes.values()) if holes else 0
 chk("L4/12 Pflanzreihen je Tisch", rows, ">= 3", rows >= 3)
 chk("L12 Substratwannen", len(pre("T9_")), ">= 4", len(pre("T9_")) >= 4)
-chk("L12 Schlaeuche", len(pre("T10_Schlauch")), ">= 6", len(pre("T10_Schlauch")) >= 6)
+chk("L12 Schlaeuche (1 je Tank)", len(pre("T10_Schlauch")), ">= 4", len(pre("T10_Schlauch")) >= 4)
 d = B["T4_Tuer"]["bbox"]; dh = d["max"][2] - d["min"][2]
 dw = math.hypot(d["max"][0] - d["min"][0], d["max"][1] - d["min"][1])
 chk("Tuer Hoehe [mm]", round(dh), 2000, abs(dh - 2000) < 20)
@@ -77,11 +77,14 @@ def gap(a, b):
 tg = min(gap(d, b["bbox"]) for b in beds)
 chk("Tuerzugang: Abstand Tuer-Bett (bbox) [mm]", round(tg), ">= 1000", tg >= 1000)
 t5 = B["T5_Zentraltank"]["bbox"]; t5d = t5["max"][0] - t5["min"][0]
-chk("L3/13 Tanks: Zentral/Mittel/Fass", (len(pre("T5_Zentral")), len(pre("T6_")), len(pre("T7_Fass"))), (1, 1, 6), (len(pre("T5_Zentral")), len(pre("T6_")), len(pre("T7_Fass"))) == (1, 1, 6))
-chk("L13 Zentraltank D [mm]", round(t5d), 3800, abs(t5d - 3800) < 20)
+chk("OBJ Tanks T7 (4 Tanks, kein Mitteltank)", (len(pre("T7_Tank_")), len(pre("T6_"))), (4, 0), (len(pre("T7_Tank_")), len(pre("T6_"))) == (4, 0))
+t5 = B["T5_Zentraltank"]["bbox"]; t5c = ((t5["max"][0] + t5["min"][0]) / 2, (t5["max"][1] + t5["min"][1]) / 2)
+chk("OBJ Pool zentriert (Abstand Mitte [mm])", round(math.hypot(*t5c)), "< 50", math.hypot(*t5c) < 50)
+wb = B["T5_Wasser"]["bbox"]; wd = wb["max"][0] - wb["min"][0]
+chk("OBJ Wasserscheibe D [mm]", round(wd), 3890, abs(wd - 3890) < 20)
 chk("L13 Tankwand [mm]", round(P["wall"]), ">= 150", P["wall"] >= 150)
 chk("L13 Wasserscheibe T5_Wasser", len(pre("T5_Wasser")), 1, len(pre("T5_Wasser")) == 1)
-chk("L6 Teilenamen T1,T3-T11 vorhanden (T2 Haut = Phase 2)", sorted({n.split("_")[0] for n in B}, key=lambda x: int(x[1:])), "T1,T3..T11", {n.split("_")[0] for n in B} >= {f"T{i}" for i in (1, 3, 4, 5, 6, 7, 8, 9, 10, 11)})
+chk("L6 Teilenamen T1,T3-T5,T7-T11 vorhanden (T2 Haut = Phase 2, T6 laut OBJ entfallen)", sorted({n.split("_")[0] for n in B}, key=lambda x: int(x[1:])), "T1,T3..T11", {n.split("_")[0] for n in B} >= {f"T{i}" for i in (1, 3, 4, 5, 7, 8, 9, 10, 11)})
 # Interferenz (T1-T1, Rohr durch Haut/Struts-Bereich und Schlaeuche an Tanks erlaubt)
 sc = os.path.join(tmp, "i.json"); json.dump({"commands": [{"command": "inspect.interference", "params": {"budget_s": 150}}]}, open(sc, "w"))
 rr = run_json(["run", sc, "--in", dome, "--results"])

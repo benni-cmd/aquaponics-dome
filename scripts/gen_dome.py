@@ -6,7 +6,7 @@ from geo import build
 P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe 6 m; Rest per Pixelvergleich mit ref-4 (Basis = 12 m)
     dome_base_d=12000, dome_h=6000, freq=2, sock_h=400, sock_w=250, strut_r=45,
     door_w=1000, door_h=2000, door_az=-54, door_off=1100,
-    t5_d=3800, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
+    t5_d=4210, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
     bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4500,
     tub_len=2200, tub_w=720, tub_h=550,
     pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=160)
@@ -19,7 +19,7 @@ def add(c, **p):
 
 COLORS = [  # (Namenspraefix, Farbe, Deckkraft) - Schicht 1
     ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85),
-    ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
+    ("T7_Plattform", "#9a9a96", 1), ("T7_Pumpe", "#555a60", 1), ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
     ("T10_Zulaufrohr", "#5fa8e0", 1), ("T10_Schlauch", "#8cc8f0", 1), ("T11_", "#8b9096", 1), ("T12_", "#4c9a3c", 1)]
 
 def colors():
@@ -107,19 +107,29 @@ def tank(name, cx, cy, z0, d, h, wall_expr, stand=0):
         lx, ly = cx+ (P["t7_d"]/2-60)*math.cos(math.radians(90*i+45)), cy+(P["t7_d"]/2-60)*math.sin(math.radians(90*i+45))
         add("solid.cylinder", radius=30, height=stand, base=[round(lx, 1), round(ly, 1), z0], operation="join", targets=[name], name=f"{name}_Fuss{i+1}")
 
+AZ0 = 111   # Azimut-Abbildung OBJ -> Modell (Tuerseite OBJ ~195 Grad -> Modell -54 Grad)
+
 def t5_t7(fz):
-    tank("T5_Zentraltank", 0, 450, fz, "t5_d", "t5_h", "wall")
-    add("solid.cylinder", diameter="t5_d - 2*wall", height=20, base=[0, 450, fz + P["t5_h"] - 250], operation="new", name="T5_Wasser", body_name="T5_Wasser")
-    tank("T6_Mitteltank", 500, -2600, fz, "t6_d", "t6_h", "wall")
-    pos = [(-3200, 500), (-2600, -1700), (3200, 300), (2700, 1800), (-1500, -3000), (2400, -2300)]
-    for i, (x, y) in enumerate(pos, 1):
-        # Schlauch (T10-Gruppe) vom Fasstank zum Rand des Zentraltanks
-        dx, dy = 0 - x, 450 - y; dl = math.hypot(dx, dy); ux, uy = dx/dl, dy/dl
-        sx, sy, sz = x + ux*P["t7_d"]/2, y + uy*P["t7_d"]/2, fz + P["t7_stand"] + P["t7_h"] - 150
-        ex, ey, ez = ux*(dl - P["t5_d"]/2), uy*(dl - P["t5_d"]/2), fz + P["t5_h"] + 60
-        d = [ex - (sx - x), ey - (sy - y), ez - sz]; L = math.sqrt(sum(q*q for q in d))
-        add("solid.cylinder", radius=25, height=round(L, 1), base=[round(sx, 1), round(sy, 1), sz], axis=[round(q/L, 6) for q in d], operation="new", name=f"T10_Schlauch_{i}", body_name=f"T10_Schlauch_{i}")
-        tank(f"T7_Fasstank_{i}", x, y, fz, "t7_d", "t7_h", "wall", stand=P["t7_stand"])
+    """T5 Zentralpool in der Mitte (OBJ: Wasser D 3,89 m); T7 = 4 Tanks auf Plattformen (OBJ), T6 Mitteltank entfaellt (nicht im OBJ)."""
+    tank("T5_Zentraltank", 0, 0, fz, "t5_d", "t5_h", "wall")
+    add("solid.cylinder", diameter="t5_d - 2*wall", height=20, base=[0, 0, fz + P["t5_h"] - 250], operation="new", name="T5_Wasser", body_name="T5_Wasser")
+    specs = [(147, 670, 1080, 750), (237, 670, 1080, 750), (131, 930, 1440, 1010), (252, 930, 1440, 1010)]   # OBJ-Azimut, D, H, Beinhoehe
+    for i, (oaz, d, h, leg) in enumerate(specs, 1):
+        az = oaz + AZ0; x, y = pol(3350, az); x, y = round(x, 1), round(y, 1); nm = f"T7_Tank_{i}"
+        add("solid.cylinder", diameter=d, height=h, base=[x, y, fz + leg + 70], operation="new", name=nm, body_name=nm)
+        add("solid.cylinder", diameter=d - 2*60, height=h, base=[x, y, fz + leg + 70 + 60], operation="cut", targets=[nm], name=nm + "_Hohlraum")
+        rect_body(f"T7_Plattform_{i}", x, y, fz + leg, az, 710, 710, 70)
+        for sx in (-1, 1):
+            for sy in (-1, 1):
+                lx, ly = rot(sx*300, sy*300, math.radians(az))
+                add("solid.cylinder", radius=20, height=leg, base=[round(x+lx, 1), round(y+ly, 1), fz], operation="join", targets=[f"T7_Plattform_{i}"], name=f"{nm}_Bein{(sx+1)+(sy+1)//2+1}")
+        mx, my = pol(3350 - 700, az)   # Pump-/Filtermodul daneben
+        rect_body(f"T7_Pumpe_{i}", round(mx, 1), round(my, 1), fz, az, 460, 350, 200)
+        ux, uy = -math.cos(math.radians(az)), -math.sin(math.radians(az))   # Schlauch zum Pool
+        sx_, sy_, sz_ = x + ux*d/2, y + uy*d/2, fz + leg + 200
+        ex, ey, ez = ux*(3350 - d/2 - P["t5_d"]/2), uy*(3350 - d/2 - P["t5_d"]/2), fz + P["t5_h"] + 60
+        dd = [ex - (sx_ - x) - 0, ey - (sy_ - y) - 0, ez - sz_]; L = math.sqrt(sum(q*q for q in dd))
+        add("solid.cylinder", radius=25, height=round(L, 1), base=[round(sx_, 1), round(sy_, 1), sz_], axis=[round(q/L, 6) for q in dd], operation="new", name=f"T10_Schlauch_{i}", body_name=f"T10_Schlauch_{i}")
 
 plants = [0]
 def plant(x, y, z, r=90):
@@ -159,7 +169,7 @@ def t8_t9(fz):
                 plant(round(cx+lx, 1), round(cy+ly, 1), fz + P["tub_h"] + 112, 110)
 
 def t10_t11(fz):
-    A = (-6577, 2394, 4400); B = (-1344, 1794, fz+1400)
+    A = (-6577, 2394, 4400); B = (-1488, 1488, fz+1400)
     d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [round(x/L, 6) for x in d]
     add("solid.cylinder", diameter="pipe_d", height=round(L, 1), base=list(A), axis=u, operation="new", name="T10_Zulaufrohr", body_name="T10_Zulaufrohr")
     az = -18; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))

@@ -9,3 +9,4 @@
 - R11 (Schicht 1): Farben je Teil per appearance.assign (Tanks salbeigruen, Tische weiss, Rohr/Schlaeuche blau, Streben silber, Wasser blau); check 23/23.
 - R12 (Schicht 2): Salatkoepfe (Kugeln) auf Tischen und in Wannen (T12_Salat_nnn); check 23/23.
 - R13 (Komponenten): Bauteil Pflanztisch als eigenes Design designs/components/pflanztisch.sc (Rippen, 3 gestaffelte Reihen, Winkelstuetzen); Einbau ins Dom-Modell offen.
+- R13 (OBJ 1+2): Pool zentriert (Wasser D 3,89 m), T6 entfaellt, T7 = 4 Tanks (D0,67/h1,08 und D0,93/h1,44) auf Plattformen mit Beinen + Pumpenmodul + Schlauch zum Pool; Azimut-Abbildung OBJ->Modell +111 Grad; check 24/24.

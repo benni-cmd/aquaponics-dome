@@ -9,3 +9,8 @@
 ## Checkpoint (Limit 0 %, 02:10): OBJ-Korrekturen (reference/oasis-obj-analysis.md)
 Reihenfolge: 1 Pool zentriert D3,89 (Wasser) + T6 entfaellt (nicht im OBJ) · 2 T7 = 4 Tanks (Azimut OBJ 147/237 klein, 131/252 gross, r 3,35 m) auf Plattformen + Pumpenmodule · 3 T9 = 14 IBC-Wannen · 4 NFT-Ring statt 10 Tische · 5 Strebenprofil 30x30 · 6 offene Fragen · check_latte neu. Azimut-Abbildung OBJ->Modell: +111 Grad (Tuerseite OBJ ~195 -> Modell -54).
 Jetzt kommt: Schritt 1+2.
+
+## Checkpoint 02:3x (fuer frischen Lauf ohne Verlauf)
+- Stand: Runde 13, check_latte 24/24 PASS. Fertig: OBJ-Schritte 1 (Pool zentriert) und 2 (4 Tanks). Bau: `sh scripts/build.sh 4 NN`, Pruefung `python scripts/check_latte.py`.
+- Naechster Schritt: OBJ 3 (T9 = 14 IBC-Wannen: 8 aussen r~5,2 m Laenge 3 m Azimut OBJ 355/319/247/31/140/67/283/103; 6 innen r~3,3 m Laenge 1,2-2,0 Azimut 318/103/283/67/30/354; Hoehe 0,64; +111 Grad), dann OBJ 4 (NFT-Ring), 5 (Strebe 30x30), 6 (offene Fragen), dann `docs/packages/system-logic.md` (Systemgraph data/system.json zuerst).
+- Annahmen: Azimut +111; T6 Mitteltank entfaellt; Pumpe 0,7 m innerhalb des Tanks; Beete T8/T9 alt bleiben bis ersetzt.

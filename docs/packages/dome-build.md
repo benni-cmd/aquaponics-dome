@@ -35,8 +35,8 @@
 3. [x] Tanks T5-T7 bauen, pruefen
 4. [x] Anbaubetten-Ring T8 + Substratbeete T9, pruefen
 5. [x] Rohr T10 + Schaltschrank T11, pruefen
-6. [~] Verfeinerungsschleife (4 von 8 Runden, siehe docs/loop-log.md) (Latte unten), je Runde in `docs/loop-log.md` protokollieren
-7. [~] (STEP + Renders da, Schluss-Push nach Klaerung Bett/Tuer) Export `designs/dome.step`, Render-Screenshots in `renders/`, committen und pushen
+6. [x] Verfeinerungsschleife (5 von 8 Runden, siehe docs/loop-log.md) (Latte unten), je Runde in `docs/loop-log.md` protokollieren
+7. [x] STEP + Renders, gepusht Export `designs/dome.step`, Render-Screenshots in `renders/`, committen und pushen
 
 ## Verfeinerungsschleife (Latte)
 
@@ -55,7 +55,7 @@ Kuppel 5/8-3V, Basis-D 7,0 m, Hoehe 4,2 m (statt 3,5; Verhaeltnis 0,6 wie Bild) 
 
 ## Status
 
-29.10.2026 — Stufen 1-4 gebaut, STEP exportiert, Latte 1-5 erfuellt, 6 offen (Bett 09 vor der Tuer). Repo angelegt, Teileliste aus den vier Bildern erstellt. Masse sind Annahmen; echte Masse fehlen.
+29.10.2026 — Stufen 1-4 gebaut, STEP exportiert, Latte 1-6 erfuellt nach Runde 5 (Tuer verschoben, Bett 09 gekuerzt). Repo angelegt, Teileliste aus den vier Bildern erstellt. Masse sind Annahmen; echte Masse fehlen.
 
 ## Definition of Done
 

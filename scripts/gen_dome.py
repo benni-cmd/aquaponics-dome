@@ -5,7 +5,7 @@ from geo import build
 
 P = dict(  # Parameter-Tabelle (siehe docs/packages/dome-build.md)
     dome_base_d=7000, freq=3, sock_h=400, sock_w=300, strut_r=20,
-    door_w=900, door_h=2000, door_az=-54,
+    door_w=900, door_h=2000, door_az=-54, door_off=550,
     t5_d=2400, t5_h=900, t6_d=1200, t6_h=700, t7_d=700, t7_h=1000, t7_stand=400,
     bed_n=10, bed_len=1500, bed_w=700, bed_h=900, bed_r=2850,
     tub_len=1500, tub_w=560, tub_h=400,
@@ -50,7 +50,7 @@ def t1_t3_t4(sock_z):
     da = math.radians(P["door_az"]); rd = R*math.sqrt(1-zb*zb)*math.cos(math.radians(18))
     def in_door(p):
         x, y = rot(p[0], p[1], -da)   # x = radial, y = tangential
-        return abs(x - rd) < 150 and abs(y) < P["door_w"]/2 + 40 and sock_z - 20 < p[2] < sock_z + P["door_h"] + 40
+        return abs(x - rd) < 150 and abs(y - P["door_off"]) < P["door_w"]/2 + 40 and sock_z - 20 < p[2] < sock_z + P["door_h"] + 40
     n = 0; dropped = 0
     for a, b in sorted(edges):
         if a not in keep or b not in keep: continue
@@ -72,7 +72,7 @@ def t1_t3_t4(sock_z):
     add("solid.extrude", distance="sock_h", operation="new", name="T3_Sockel", body_name="T3_Sockel")
     # T4 Tuer: Rahmen (aussen/innen), Ebene radial zur Tuerflaeche
     ca, sa = math.cos(da), math.sin(da)
-    ox, oy = rd*ca, rd*sa
+    ox, oy = rd*ca - P['door_off']*sa, rd*sa + P['door_off']*ca
     add("sketch.create", plane={"origin": [round(ox, 2), round(oy, 2), sock_z], "x_dir": [round(-sa, 6), round(ca, 6), 0], "y_dir": [0, 0, 1]}, name="T4_Tuer_sk")
     w, h, f = P["door_w"], P["door_h"], 60
     add("sketch.rectangle.two_point", p0=[-w/2, 0], p1=[w/2, h])
@@ -99,18 +99,21 @@ def t8_t9(fz):
     n = P["bed_n"]
     for i in range(n):
         az = 36*i + 18   # Zehneck-Seitenmitten
-        if abs(((az - P["door_az"]) + 180) % 360 - 180) < 1: pass
         cx, cy = pol(P["bed_r"], az)
+        blen = P["bed_len"]
+        if az == P["door_az"] % 360:   # Bett vor der Tuer: kuerzer und von der Tuer weg
+            blen = 700; t = math.radians(az+90)
+            cx, cy = cx + -400*math.cos(t), cy + -400*math.sin(t)
         nm = f"T8_Anbaubett_{i+1:02d}"
-        rect_body(nm, round(cx, 1), round(cy, 1), fz+P["bed_h"]-60, az+90, P["bed_len"], P["bed_w"], 60)
+        rect_body(nm, round(cx, 1), round(cy, 1), fz+P["bed_h"]-60, az+90, blen, P["bed_w"], 60)
         a = math.radians(az+90)
         for sx in (-1, 1):
             for sy in (-1, 1):
-                lx, ly = rot(sx*(P["bed_len"]/2-60), sy*(P["bed_w"]/2-60), a)
+                lx, ly = rot(sx*(blen/2-60), sy*(P["bed_w"]/2-60), a)
                 add("solid.cylinder", radius=20, height=P["bed_h"]-60, base=[round(cx+lx, 1), round(cy+ly, 1), fz], operation="join", targets=[nm], name=f"{nm}_Bein{(sx+1)//2*2+(sy+1)//2+1}")
         for r in range(2):
-            for c in range(4):
-                lx, ly = rot((c-1.5)*330, (r-0.5)*300, a)
+            for c in range(4 if blen > 1000 else 2):
+                lx, ly = rot((c-(1.5 if blen > 1000 else 0.5))*330, (r-0.5)*300, a)
                 add("solid.cylinder", diameter=50, height=70, base=[round(cx+lx, 1), round(cy+ly, 1), fz+P["bed_h"]-65], operation="cut", targets=[nm], name=f"{nm}_Loch{r*4+c+1}")
     # T9: zwei Substratwannen unter Bett 7 (Azimut 270? -> hier Azimut 234 und 342)
     for k, az in enumerate((234, 342), 1):

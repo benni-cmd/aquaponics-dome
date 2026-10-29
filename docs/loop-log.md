@@ -8,3 +8,6 @@
 | 4 | Rohr kollidierte mit Fasstank 1 | Fasstank 1 -> (-1900,200); Rohr A=(-4078,429,2200) | 1-5 |
 
 Entscheidungen: Streben als getrennte Koerper T1_Strebe_nnn (kein Boolean, schneller, 157 Stueck); 8 Streben im Tuerbereich entfallen; Skript statt Einzelaufrufe (CLI `run`, gleiche Engine). Hoehe 4,2 m statt 3,5 m (5/8-Kuppel, an Referenz kalibriert).
+| 5 | Bett 09 versperrt Tuer (Tuer ±450 mm, Bett ±750 mm); Strebenstumpf neben Tuer | Tuer 550 mm tangential verschoben (door_off), Bett 09 auf 700 mm gekuerzt und 400 mm von der Tuer weg; Stumpf entfaellt mit der Tuerverschiebung | 1-6 |
+
+Abbruch nach Runde 5: alle sechs Latte-Punkte erfuellt. Einschraenkung Punkt 6: Durchdringungen nur per Rohr-Strebe-Abstand und Geometrierechnung geprueft, nicht per Boolean-Test aller Paare.

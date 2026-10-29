@@ -201,3 +201,14 @@ Die 5 Punkte aus Runde 2 bestaetigt behoben; Nachrechnung (Wand, Port-Lagen, Was
 | 3 | klein: Herkunftsmarken "R"/"Bild + hydraulics" statt Marke + Bezug; Zeilen fehlen (Schlauchbogen-Schenkel/-Wand, Standardlaenge 1000, DN-Zuordnung) | **gueltig** | Marken auf OBJ/Bild/A mit Bezug in der Bezugsspalte, 3 Zeilen ergaenzt |
 | 4 | klein: Pruefungsabschnitt nennt nur Runde 1 | **gueltig** | Runden 1-3 eingetragen |
 | H | tank.md 73 "DN30" fuer d40 (sonst DN32); `.bak`-Dateien in designs/components | **andere Klasse / Hinweis** | Tank-Blatt Hinweis an den Orchestrator; .bak sind gitignored |
+
+### pumpe (W12), Spec-Pruefer Runde 2 (FAIL) 29.10. ~14:05
+Kernzahlen (Anzahl 4/4, Tafelmasse, Stutzen-DN, Port-Koordinaten, Masse 5,28/8,53 kg) nachgerechnet ohne Abweichung.
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Pumpenkopf dringt 2 mm in die Konsole (Kopf-D > Motor-D + 16) | **gueltig (Modell)** | pumpe.py: Sockelhoehe = (Kopf-D - Motor-D)/2 + 1 = 11 mm statt 8 (Achse bleibt z 120, Ports unveraendert), neue Pruefzeile Kopf/Konsole, check_pumpe 30/30 PASS; Bild pumpe_gross-02 |
+| 2 | gross: Konsolenmass 150x100x5 + 40 falsch (gemessen 150 x 117/137 x 5), Sockelmasse fehlen, Steckerende -316/-336 (-315/-335), "PVC-U d40/d50" | **gueltig** | Stueckliste/Herkunft aus Messung, Steckerenden und Stutzen-d korrigiert |
+| 3 | gross: Reste der Filtermodul-Klasse (Siebeinsatz, 10 Tafeln, build_filter, Filter-Zweig im Check) | **gueltig** | aus Blatt, pumpe.py, check_pumpe.py entfernt; Doku ausserhalb (scope-cards 34/37, components.md 22, detail-standard 28/40) -> Orchestrator |
+| 4 | klein: Stueckliste/Befestigung (Dichtung ID16 ohne Port, Scheiben/Muttern, M6x16 zu kurz, Standwinkel-Untergrund) | **gueltig** | M6x20 im Modell (Klemmlaenge 15,2/17,2), Dichtung gestrichen (Rohrnetz), Scheiben/Muttern [A], Untergrund Erde als offen |
+| 5 | klein: Dichte 0,91 gegen gemessene ~1,9, Gewicht/Hydraulik (4-9 kg), Anzahl "4 Module" statt 8, Foerderstrom 30 gegen 12 l/min | **gueltig / teils vermutet** | Dichten-Mischung und Herkunft, Gewicht modelliert/real getrennt, Anzahl 8 gegen 4 Pumpen, 30 l/min = Tankumwaelzung (hydraulics 2.3) vs 12 l/min je Pool-Linie (2.4) im Blatt |
+| H | D16-Reste in Scope-Card/components/detail-standard; Kassetten im Tank-Blatt; Rohrwand 3 mm; Kabel 150 mm; Pumpe/Tankkegel | **andere Klasse** | Orchestrator/Tank/Integrator, im Blatt unter Offene Fragen |

@@ -1308,5 +1308,115 @@
   "note": "M1.1 IBC-Beete als 14 Instanzen (Kollision Beet/Strebe offen)",
   "commit": "7ee3480",
   "source": "renders/round-22.png"
+ },
+ {
+  "file": "20261029-125018_montage_beete_round-23.png",
+  "sha": "ef46fc9669e21f85",
+  "time": "2026-10-29 12:50:18",
+  "role": "montage",
+  "subject": "beete",
+  "note": "D18 Beete 120 mm nach innen, check_latte 19/19",
+  "commit": "1b7b8a9",
+  "source": "renders/round-23.png"
+ },
+ {
+  "file": "20261029-131744_werkstatt_pumpe_pumpe-klein-01-iso.png",
+  "sha": "df632378e484e15f",
+  "time": "2026-10-29 13:17:44",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_klein/pumpe_klein-01-iso.png"
+ },
+ {
+  "file": "20261029-131745_werkstatt_pumpe_pumpe-klein-02-pumpe.png",
+  "sha": "cc2eddd845ae65e0",
+  "time": "2026-10-29 13:17:45",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_klein/pumpe_klein-02-pumpe.png"
+ },
+ {
+  "file": "20261029-131746_werkstatt_pumpe_pumpe-klein-03-rueckseite.png",
+  "sha": "e1a9886bb53c707d",
+  "time": "2026-10-29 13:17:46",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_klein/pumpe_klein-03-rueckseite.png"
+ },
+ {
+  "file": "20261029-131746_werkstatt_pumpe_pumpe-klein-04-seite.png",
+  "sha": "be49e7b5566e25df",
+  "time": "2026-10-29 13:17:46",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_klein/pumpe_klein-04-seite.png"
+ },
+ {
+  "file": "20261029-131747_werkstatt_pumpe_pumpe-klein-05-schnitt.png",
+  "sha": "b4b39b7dd55a26df",
+  "time": "2026-10-29 13:17:47",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_klein/pumpe_klein-05-schnitt.png"
+ },
+ {
+  "file": "20261029-131749_werkstatt_pumpe_pumpe-gross-01-iso.png",
+  "sha": "1ac9a3645255ef7d",
+  "time": "2026-10-29 13:17:49",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_gross/pumpe_gross-01-iso.png"
+ },
+ {
+  "file": "20261029-131750_werkstatt_pumpe_pumpe-gross-02-pumpe.png",
+  "sha": "ee5ff1909fb59427",
+  "time": "2026-10-29 13:17:50",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_gross/pumpe_gross-02-pumpe.png"
+ },
+ {
+  "file": "20261029-131751_werkstatt_pumpe_pumpe-gross-03-rueckseite.png",
+  "sha": "b33bf03166d77e0f",
+  "time": "2026-10-29 13:17:51",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_gross/pumpe_gross-03-rueckseite.png"
+ },
+ {
+  "file": "20261029-131753_werkstatt_pumpe_pumpe-gross-04-seite.png",
+  "sha": "5c95593e859f5754",
+  "time": "2026-10-29 13:17:53",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_gross/pumpe_gross-04-seite.png"
+ },
+ {
+  "file": "20261029-131754_werkstatt_pumpe_pumpe-gross-05-schnitt.png",
+  "sha": "47bfef3d186cc29f",
+  "time": "2026-10-29 13:17:54",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
+  "commit": "454af16",
+  "source": "renders/components/pumpe_gross/pumpe_gross-05-schnitt.png"
  }
 ]

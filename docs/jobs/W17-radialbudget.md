@@ -1,0 +1,10 @@
+# W17 Beete und Tische auf das Radialbudget bringen (Laufwege >= 500 mm) — Ben 29.10. 19:55
+Problem: Zwischen den Pflanzringen fehlen Laufwege (Ben: mindestens 0,5 m lichte Weite), und die OBJ-Beete liegen an der Domwand, sodass Rev.-B-Tischboecke (Beine ausserhalb Beet) nicht daneben passen (D24, D25).
+Ziel: Eine radiale Aufteilung vom Beckenrand bis zur Domwand mit Laufwegen, in der Beete und Tische ohne Kollision stehen; Platz klug nutzen.
+Budget (Apothem-Koordinate, mm, aus layout.json und Fundamentring 5706): Beckenrand aussen 2095 | Laufweg A >= 500 | Innenbeet-Portal (Beet 933 + 2 x 115 Bein/Fuss/Luft = rund 1163) | Laufweg B >= 500 | Aussenbeet-Portal (993 + 230 = rund 1223) | Wandluft >= 100. Summe 5581 gegen 5706: Reserve 125 mm, auf die Laufwege verteilen. Ergebnis grob: Innenbeet-Mitte etwa 3176 (OBJ 3344), Aussenbeet-Mitte etwa 4870 (OBJ 5188).
+Folgen: (1) Aussenbeete kuerzer: Laenge = 2 x Apothem_innen x tan 18 Grad - 2 x `corner_gap` 100, bei Innenkante 4373 also rund 2640 statt 2953 (Beetnachbarn stossen sonst an). (2) Aussen- und Mitte-Tische: Rinnenlaenge je Reihe neu aus den neuen Apothemen (`tisch_geom.py`, Regel D18); Portalbreite = Beetbreite + 2 x 90. (3) Pflanzen bleiben ueber der Mindestzahl (Substrat >= 152, NFT >= 459, D27).
+Eingaben: `docs/research/R15.md`, `docs/decisions.md` D18, D21, D24, D25, D28; `data/components/ibc_beet.json`, `data/components/nft_tisch.json`, `scripts/workshop/tisch_geom.py`, `scripts/workshop/check_nft_fit.py`, Scope-Cards ibc_beet und nft_tisch.
+Ergebnis: `ibc_beet_aussen` mit Parameter `bed_length` (Standard 2640), Tische neu gebaut auf die Budget-Apotheme, `check_nft_fit` um Laufwege erweitert (Mindestabstand Portal zu Portal und zu Pool/Wand/Tanks >= 500 bzw. 100), Blatt-Nachtraege, Bildverlauf (Draufsicht Ring mit Massen).
+Pruefung: check_nft_fit/check_nft_tisch PASS, Draufsicht-Kritiker, Spec-Pruefer, Blatt.
+Nicht anfassen: designs/dome.sc, Layout-Lage (Montage setzt die Radien, M7).
+Abhaengigkeit: Montage M7 liefert die endgueltigen Radien; bis dahin die Budgetwerte oben verwenden.

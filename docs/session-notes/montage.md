@@ -18,3 +18,8 @@ Zu tun: in `scripts/check_latte.py` Pruefungen Tisch/Tisch (Footprints je Ring, 
 Bens Tabelle (reference/Kuppelberechnung-neu-2.xlsx) bestaetigt die Zahlen; Pool-Tiefe wird 2200 statt 2340 (D26); Pflanzenartmodelle hinten, Technik/Rohre/Schlaeuche haben Vorrang (D27).
 Beleg: docs/research/R15.md, docs/decisions.md D26 D27.
 Zu tun: `pool_depth_total` auf 2200 setzen (Pool-Wanne/Erdtasche), dann M4/M5 (Wasserweg, Rohre, Schlaeuche) vor weiteren Pflanzenarbeiten.
+
+## 2026-10-29 — von Orchestrator
+Ben verlangt Laufwege >= 0,5 m zwischen den Pflanzringen und kluge Platznutzung — das ersetzt D24/D25 durch ein Radialbudget (D28); neuer Schritt M7 vor M3.
+Beleg: docs/next-steps-montage.md M7, docs/decisions.md D28, docs/jobs/W17-radialbudget.md.
+Zu tun: M7 abarbeiten (Radien setzen, scripts/check_walkways.py, Tuer-Gang >= 900); die Werkstatt baut dazu kuerzere Aussenbeete und neu angepasste Tische (W17).

@@ -1,20 +1,12 @@
-# Uebergabestand Integrator (Stopp 29.10.2026, nach R21)
-## Fertig (Commits)
-- Layout aus data/layout.json (Drehung door_az-167 = -221), Zahlen aus data/params.json: 57a02ce (R20), 68dfa67 (R19), c90f532 (R18), R17 Streben als Instanzen; R21 siehe git log (Tuer_Komplett).
-- Wurzel Kuppel_Aquaponik mit 10 Baugruppen (01_Layout leer, 02..10 belegt), keine losen Koerper in der Wurzel.
-- Verknuepfte Komponenten (designs/components, gebaut von gen_dome.py component_file()): strebe_a/b (64 Instanzen), erdflaeche, fundamentring, pool_zentral, zweitbecken, tuer (Tuer_Komplett), zulaufrohr, schaltschrank. Pools eingelassen (Z -1825, Rand 650, Wasser 515).
-## Angefangen/halbfertig
-- Tuer: Seitenfelder (dreieckig), Anker im Erdreich, parts.insert-Schrauben fehlen. 01_Layout nur leer angelegt. Knoten (R02) und Haut nicht begonnen.
-- Werkstatt-Klassen noch lose im Dom (Beete 14, Tanks+Pumpen 20, Salatkugeln 240): ersetzen, sobald docs/integration-board.md "abgenommen" fuehrt.
-## Bekannte Fallen und Befunde
-- component.insert_design + occurrence.copy + occurrence.move (matrix, tolerance 1e-6, move_grounded) funktionieren headless; ERST alle Kopien, DANN absolut platzieren (Kopie erbt Matrix).
-- Instanz-Koerper heissen im eval "<Koerper> (<Baugruppe>:n/<Komponente>:m)"; check_latte zaehlt per Praefix.
-- XZ-Skizzenebene: sketch y = -Z. Boolean-Joins mit tangentialen Flaechen scheitern (Beinbreite/Kugel-Zylinder: Radius leicht aendern). Coincidente Zylinderkoerper ergeben "Interferenz" mit Volumen 0.
-- 3V hat keinen Aequatorring; 2V (freq 2) liefert Halbkugel mit 10 Basisknoten. Dome/Fundamentring um 18 Grad gedreht, Tuer-Dreieck bei Azimut -72.
-- Aussenbeete wurden 200 mm schmaler (Streben schneiden sonst Beetkante); Beet 4 zusaetzlich 500 mm kuerzer.
-## Messwerte mit Befehl
-- python scripts/check_latte.py -> 19/19 PASS (Kollisionen 0). python scripts/check_components.py -> 4 PASS, 1 FAIL (lose Werkstatt-Koerper). python scripts/interf.py listet Interferenzen.
-## Offene Punkte mit Besitzer
-- Knoten 4/5/6 (R02), Haut T2, Fundamentanker, 01_Layout-Skelett, Seitenfelder/Anker Tuer: Montage-Sitzung. NFT-Ringe (3 Zehneck-Ringe, components.md) und Werkstatt-Komponenten einbauen: Montage nach Abnahme. check_fidelity, check_hydraulics, system.json: nicht begonnen (Montage). Strebenprofil strut_r 45 mm (A, R01) vs OBJ 30x30: DEINE ENTSCHEIDUNG.
-## Bau-Aufrufe
-- sh scripts/build.sh 4 NN (baut Komponenten + designs/dome.sc + renders/round-NN.png + section-NN.png); danach python scripts/check_latte.py und check_components.py; Export: solidcraft-cli run designs/dome.sc --out designs/dome.step.
+# Checkpoint Montage (M0 Uebernahme, 29.10.2026 04:50)
+## Stand
+- Rolle Montage per dauerhaftem Auftrag uebernommen (Commit 21 min alt, keine Montage-Sitzung). Werkstatt-Sitzung laeuft (busy), ihre Dateien nicht angefasst.
+- Layout, Streben (64), Fundamentring, Erdflaeche, Pools, Schrank, Zulaufrohr, Tuer_Komplett (R21) verknuepft; Wurzel Kuppel_Aquaponik mit 10 Baugruppen.
+## Messwerte (Befehl)
+- python scripts/check_latte.py -> SCORE 19/19 = 100 %, Kollisionen 0.
+- python scripts/check_components.py -> 4 PASS, 1 FAIL (lose Werkstatt-Koerper: 05_Beete 14, 07_Tanks 20, 10_Pflanzen 240); Ursache: Werkstatt-Klassen noch nicht abgenommen/eingebaut.
+## Board (docs/integration-board.md, 03:35)
+- abgenommen: nur NFT-Rinne. Netztopf/Salatkopf L3, Blatt/Kritiker offen -> M1 (Pflanzen als Instanzen) wartet darauf.
+## Naechster Schritt
+- M2 Knoten (R02): Scope-Card fehlt in docs/scope-cards.md (Orchestrator legt sie an, siehe Plan) -> Orchestrator-Anstoss; sonst naechster Lauf legt sie selbst an und beginnt mit knoten_5.
+- Strebenprofil strut_r 45 mm vs OBJ 30x30: offen (Ben).

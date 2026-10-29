@@ -41,6 +41,19 @@ def rect_body(name, cx, cy, z0, az_deg, along, across, h, op="new", targets=None
     if op == "new": add("solid.extrude", distance=h, operation="new", name=name, body_name=name)
     else: add("solid.extrude", distance=h, operation=op, targets=targets, name=name)
 
+def component_file(fname, cls, assembly, fn):
+    """Bauteilklasse als eigene Datei designs/components/<fname>.sc bauen (fn erzeugt Koerper in Weltlage) und im Dom verknuepfen (Instanz im Ursprung)."""
+    global cmds, names
+    saved, savedn = cmds, names; cmds, names = [], []
+    fn(); colors()
+    data = cmds; cmds, names = saved, savedn
+    tmp = os.path.join(ROOT, "scripts", "_comp.json"); json.dump({"commands": data}, open(tmp, "w"))
+    out = os.path.join(ROOT, "designs", "components", fname + ".sc")
+    r = __import__("subprocess").run([r"C:\Program Files\SolidCraft\solidcraft-cli.exe", "run", tmp, "--save", out, "--quiet"], capture_output=True, text=True)
+    if r.returncode: raise SystemExit(f"Komponente {fname} fehlgeschlagen: {r.stderr[-400:]}{r.stdout[-400:]}")
+    os.remove(tmp)
+    act(assembly); add("component.insert_design", path=out.replace("\\", "/"), name=cls)
+
 ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen"]
 
 def act(name):
@@ -63,6 +76,37 @@ def place_struts(segs):
     for key in ("A", "B"):   # erst alle Kopien (alle am Ursprung), dann jede Instanz absolut platzieren
         for _ in range(len(moves[key]) - 1): add("occurrence.copy", component=f"Strebe_{key}")
         for i, mat in enumerate(moves[key], 1): add("occurrence.move", occurrence=f"Strebe_{key}:{i}", matrix=mat, tolerance=1e-6, move_grounded=True)
+
+def erde_fn(sock_z):
+    add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
+    for nm, src, wall, depth in (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]), ("Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"])):
+        x, y, d_out, z_bot, total = pool_dims(sock_z, src, wall, depth, nm)
+        add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
+    for k, b in enumerate(LAYOUT["ibc_beds"], 1):
+        x, y = LXY(b["cx"], b["cy"]); ln, wd = bed_dims(k, b)
+        rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"], b["yaw"] + ROT, ln + 20, wd + 20, -b["z0"] + 1, op="cut", targets=["T13_Erde"])
+
+def ring_fn(sock_z):
+    rs = P["dome_base_d"]/2 + P["sock_w"]; ri = P["dome_base_d"]/2
+    ring = lambda r: [[round(r*math.cos(math.radians(36*i + 18)), 2), round(r*math.sin(math.radians(36*i + 18)), 2)] for i in range(10)]
+    add("sketch.create", plane={"origin": [0, 0, sock_z], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="T3_Sockel_sk")
+    add("sketch.line", points=ring(rs), closed=True)
+    add("sketch.line", points=ring(ri), closed=True)
+    add("sketch.finish")
+    add("solid.extrude", distance=P["ring_h"], operation="new", name="T3_Sockel", body_name="T3_Sockel")
+    gx, gy = pol(P["dome_base_d"]/2 + 75, P["door_az"])
+    rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
+
+def tuer_fn(sock_z, rd, da):
+    # T4 Tuer: Rahmen (aussen/innen), Ebene radial zur Tuerflaeche
+    ca, sa = math.cos(da), math.sin(da)
+    ox, oy = rd*ca - P['door_off']*sa, rd*sa + P['door_off']*ca
+    add("sketch.create", plane={"origin": [round(ox, 2), round(oy, 2), sock_z], "x_dir": [round(-sa, 6), round(ca, 6), 0], "y_dir": [0, 0, 1]}, name="T4_Tuer_sk")
+    w, h, f = P["door_w"], P["door_h"], 60
+    add("sketch.rectangle.two_point", p0=[-w/2, 0], p1=[w/2, h])
+    add("sketch.rectangle.two_point", p0=[-w/2+f, 30], p1=[w/2-f, h-f])
+    add("sketch.finish")
+    add("solid.extrude", distance=60, direction="symmetric", operation="new", name="T4_Tuer", body_name="T4_Tuer")
 
 def t1_t3_t4(sock_z):
     pts, edges = build(P["freq"])
@@ -98,28 +142,11 @@ def t1_t3_t4(sock_z):
         segs.append((A, B))
     act("03_Kuppel"); place_struts(segs)
     act("02_Gelaende")
-    # T13 Erde (kein fester Boden, D13): grosse Erdebene, Oberkante = Bodenniveau sock_h; Becken/Beete schneiden Aussparungen ein
-    add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
-    # T3 Fundamentring (Zehneck, flach, ragt ueber die Erde): Streben sind hier verankert, kein Boden
-    rs = P["dome_base_d"]/2 + P["sock_w"]; ri = P["dome_base_d"]/2
-    ring = lambda r: [[round(r*math.cos(math.radians(36*i + 18)), 2), round(r*math.sin(math.radians(36*i + 18)), 2)] for i in range(10)]
-    add("sketch.create", plane={"origin": [0, 0, sock_z], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="T3_Sockel_sk")
-    add("sketch.line", points=ring(rs), closed=True)
-    add("sketch.line", points=ring(ri), closed=True)
-    add("sketch.finish")
-    add("solid.extrude", distance=P["ring_h"], operation="new", name="T3_Sockel", body_name="T3_Sockel")
-    gx, gy = pol(P["dome_base_d"]/2 + 75, P["door_az"])
-    rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
+    # 02_Gelaende: Erdflaeche (mit Aussparungen fuer Becken und Beete) und Fundamentring (Streben hier verankert) als Komponenten
+    component_file("erdflaeche", "Erdflaeche", "02_Gelaende", lambda: erde_fn(sock_z))
+    component_file("fundamentring", "Fundamentring", "02_Gelaende", lambda: ring_fn(sock_z))
     act("03_Kuppel")
-    # T4 Tuer: Rahmen (aussen/innen), Ebene radial zur Tuerflaeche
-    ca, sa = math.cos(da), math.sin(da)
-    ox, oy = rd*ca - P['door_off']*sa, rd*sa + P['door_off']*ca
-    add("sketch.create", plane={"origin": [round(ox, 2), round(oy, 2), sock_z], "x_dir": [round(-sa, 6), round(ca, 6), 0], "y_dir": [0, 0, 1]}, name="T4_Tuer_sk")
-    w, h, f = P["door_w"], P["door_h"], 60
-    add("sketch.rectangle.two_point", p0=[-w/2, 0], p1=[w/2, h])
-    add("sketch.rectangle.two_point", p0=[-w/2+f, 30], p1=[w/2-f, h-f])
-    add("sketch.finish")
-    add("solid.extrude", distance=60, direction="symmetric", operation="new", name="T4_Tuer", body_name="T4_Tuer")
+    component_file("tuer", "Tuer", "03_Kuppel", lambda: tuer_fn(sock_z, rd, da))
     return n, dropped
 
 LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))
@@ -129,19 +156,26 @@ def LXY(cx, cy):
     """Layout-Koordinate (OBJ-Azimut) -> Modell-Koordinate (um ROT gedreht)."""
     x, y = rot(cx, cy, math.radians(ROT)); return round(x, 1), round(y, 1)
 
+def pool_dims(fz, src, wall, depth, nm):
+    x, y = LXY(src["cx"], src["cy"])
+    if nm.startswith("Zweit"): x, y = round(x*1.02, 1), round(y*1.02, 1)   # 2 % nach aussen: Abstand zum Zentralpool
+    d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
+    return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
+
+def bed_dims(k, b):
+    return b["length"] - (400 if "plants" in b else 300) - (500 if k == 4 else 0), b["width"] - (100 if "plants" in b else 0)
+
+def pool_fn(fz, nm, src, wall, depth, tn):
+    x, y, d_out, z_bot, total = pool_dims(fz, src, wall, depth, nm)
+    add("solid.cylinder", diameter=d_out, height=total, base=[x, y, z_bot], operation="new", name=tn, body_name=tn)
+    add("solid.cylinder", diameter=d_out - 2*wall, height=total, base=[x, y, z_bot + 120], operation="cut", targets=[tn], name=tn + "_Hohlraum")
+    wn = tn.split("_")[0] + "_Wasser"
+    add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + 120), base=[x, y, z_bot + 120], operation="new", name=wn, body_name=wn)
+
 def pools(fz):
-    """T5 Zentralpool (Wasser D 3,89 m, Tiefe pool_depth, eingelassen) und T6 zweites Becken (D 1,75 m) vor der Tuer; Rand ueber dem Boden, Wasserspiegel Z 515.
-    Der Sockel bekommt kreisrunde Aussparungen, nichts schwebt."""
-    for nm, src, wall, depth, rim in (("T5_Zentraltank", LAYOUT["pool"], P["wall"], P["pool_depth"], P["pool_rim"]),
-                                       ("T6_Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], P["pool_rim"])):
-        x, y = LXY(src["cx"], src["cy"]); (x, y) = (round(x*1.02, 1), round(y*1.02, 1)) if nm.startswith("T6") else (x, y); d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth; total = fz + rim - z_bot
-        act("02_Gelaende")
-        add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
-        act("04_Wasserbecken")
-        add("solid.cylinder", diameter=d_out, height=total, base=[x, y, z_bot], operation="new", name=nm, body_name=nm)
-        add("solid.cylinder", diameter=d_out - 2*wall, height=total, base=[x, y, z_bot + 120], operation="cut", targets=[nm], name=nm + "_Hohlraum")
-        wn = "T5_Wasser" if nm.startswith("T5") else "T6_Wasser"
-        add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + 120), base=[x, y, z_bot + 120], operation="new", name=wn, body_name=wn)
+    """04_Wasserbecken: Zentralpool (T5) und Zweitbecken (T6) als Komponenten; eingelassen, Rand Z 650, Wasserspiegel Z 515."""
+    component_file("pool_zentral", "Pool", "04_Wasserbecken", lambda: pool_fn(fz, "Pool", LAYOUT["pool"], P["wall"], P["pool_depth"], "T5_Zentraltank"))
+    component_file("zweitbecken", "Zweitbecken", "04_Wasserbecken", lambda: pool_fn(fz, "Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], "T6_Zweitbecken"))
 
 def tanks(fz):
     act("07_Tanks")
@@ -173,11 +207,9 @@ def tanks(fz):
 def t9(fz):
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = LXY(b["cx"], b["cy"]); yaw = b["yaw"] + ROT; top = b["z1"]
-        ln = b["length"] - (400 if "plants" in b else 300) - (500 if k == 4 else 0); wd = b["width"] - (100 if "plants" in b else 0)
+        ln, wd = bed_dims(k, b)
         act("05_Beete")
         rect_body(f"T9_Substratbeet_{k:02d}", x, y, fz + b["z0"] + 5, yaw, ln, wd, top - b["z0"] - 5)   # eingelassen wie im OBJ
-        act("02_Gelaende")
-        rect_body(f"T9_Tasche_{k:02d}", x, y, fz + b["z0"], yaw, ln + 20, wd + 20, -b["z0"] + 1, op="cut", targets=["T13_Erde"])
         if "plants" in b:   # Aussenbeete: 3 Reihen x 10 Pflanzen (OBJ: 288 Toepfe, hier reduziert)
             ta = math.radians(yaw); act("10_Pflanzen")
             for r_ in range(3):
@@ -190,9 +222,8 @@ def plant(x, y, z, r=90):
     plants[0] += 1
     add("solid.sphere", radius=r, center=[x, y, z], operation="new", name=f"T12_Salat_{plants[0]:03d}", body_name=f"T12_Salat_{plants[0]:03d}")
 
-def t10_t11(fz):
-    # Zulaufrohr (Frischwasser) nur AUSSEN: flach auf dem Boden, Bogen zur Sockelwand nahe dem Zweitbecken (OBJ-Azimut 166 -> Modell -55)
-    act("08_Leitungen")
+def rohr_fn():
+    # Zulaufrohr (Frischwasser) nur AUSSEN: flach auf dem Boden, Bogen zur Fundamentringwand nahe dem Zweitbecken (OBJ-Azimut 166 -> Modell -55)
     pr = P["pipe_d"]/2; z = P["sock_h"] + pr
     P0 = pol(9500, -90); P1 = pol(7600, -66); P2 = pol(6030, -66)
     def seg(A, B, nm, op, **kw):
@@ -201,10 +232,15 @@ def t10_t11(fz):
     seg(P0, P1, "T10_Zulaufrohr", "new", body_name="T10_Zulaufrohr")
     add("solid.sphere", radius=round(pr*1.15, 1), center=[round(P1[0], 1), round(P1[1], 1), z], operation="join", targets=["T10_Zulaufrohr"], name="T10_Knie")
     seg(P1, P2, "T10_Zulaufrohr_2", "join", targets=["T10_Zulaufrohr"])
+
+def schrank_fn():
     az = -36; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
-    act("09_Technik")
     rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), P["sock_h"], az+90, P["cab_x"], P["cab_y"], P["cab_z"])
+
+def t10_t11(fz):
+    component_file("zulaufrohr", "Zulaufrohr", "08_Leitungen", rohr_fn)
+    component_file("schaltschrank", "Schaltschrank", "09_Technik", schrank_fn)
 
 if __name__ == "__main__":
     stage = int(sys.argv[1]); out = sys.argv[2]

@@ -1,0 +1,144 @@
+# Bauteilblatt T60 knoten (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/knoten.json` und `designs/components/knoten.sc`, nicht von Hand aendern)
+
+**Funktion:** Verbindet die Streben der 2V-Kuppel: Knotenkugel D100 mit 4, 5 oder 6 Steckarmen in den Strebenrichtungen (Nachbarknoten aus layout.json); jede Strebe wird 80 mm auf einen Steckarm geschoben und mit einem Querbolzen M10 gesichert; die 10 Basisknoten tragen eine Ankerlasche fuer den Fundamentanker.
+
+**Datei:** `designs/components/knoten.sc` · **Teilenummer:** T60 · **Revision:** A · **Bezugspunkt:** Knotenmitte (Koordinatenursprung des Bauteils); Armrichtungen im Koordinatensystem von layout.json (OBJ-Frame, Z oben), die Montage dreht wie die Streben um Z (layout_rot) und setzt die Instanz an die Knotenposition
+
+**Anzahl (Instanzen):** 10 vierwertig, 6 fuenfwertig, 10 sechswertig (26 Knoten) (Quelle: data/layout.json dome.node_valence)
+
+## Masse und Parameter
+
+| Parameter | Wert | Einheit | Herkunft |
+|---|---|---|---|
+| `spigot_w` | 23.6 | mm | [E] Steckarm passt in die Strebe 30 x 30 x 3 (Innenmass 24) mit 0,2 mm Spiel je Seite; Strebe 30 x 30 aus oasis-obj-analysis, Wand 3 [A] |
+| `spigot_wall` | 3 | mm | [A] Steckarm Rechteckrohr 3 mm Wand |
+| `strut_end_offset` | 120 | mm | Scope-Card: strut_end_offset 120 mm (Annahme A): Strebenende liegt 120 mm von der Knotenmitte |
+| `hub_insert` | 80 | mm | Scope-Card/R02: Stecklaenge hub_insert 80 mm in die Strebe (A) |
+| `bolt_hole` | 11 | mm | [E] Durchgangsloch fuer M10 (ISO 273 mittel 11) |
+| `bolt_len` | 55 | mm | [E] M10x55 ISO 4017: Strebe 30 + 2 Scheiben 4 + Mutter 8 + Gewindeueberstand 5 + Kopf-Aufmass |
+| `washer_t` | 2 | mm | [E] Scheibe M10 ISO 7089 ca. 2 mm (Bibliothek parts.insert) |
+| `lug_w` | 60 | mm | [A] Ankerlasche Breite (Basisknoten) |
+| `lug_t` | 10 | mm | [A] Ankerlasche Dicke |
+| `lug_l` | 150 | mm | [A] Ankerlasche Laenge nach unten |
+| `lug_hole` | 14 | mm | [E] Loch fuer M12 an der Ankerlasche (Anschluss Fundamentanker) |
+| `neighbor_tol` | 40 | mm | [E] Toleranz Knotenabstand gegen Strebenlaenge 3279/3708 (Nachbarerkennung) |
+| `ball_d` | 100 | mm | [A] Knotenkugel D100 (Stahl): ersetzt die zwei Knotenplatten der Scope-Card, weil die Strebenrichtungen um 16-18 Grad gegen die Plattenebene (Tangentialebene) geneigt sind (Sehnenwinkel 2V, L/2R = 0,27); flache Platten wuerden die Arme durchdringen (Befund Werkstatt 29.10.); R02 kennt Huelsen-/Sternnaben |
+| `arm_root` | 4 | mm | [A] Arme beginnen 4 mm in der Kugel (Schweissverbindung, gewollte Ueberlappung) |
+| `bolt_dist` | 50 | mm | [E] Querbolzen 50 mm hinter dem Strebenende (Strebenende bei strut_end_offset): Bolzen durch Strebe (2 x 3 mm Wand) und Steckarm |
+
+Gesamt-Box (Messung): X -143.6 bis 195.4, Y -173.7 bis 178.8, Z -155.6 bis 71.5 mm; Koerper: 31.
+
+- Box (Messung) knoten_6 (n01): X -144 bis 195, Y -174 bis 179, Z -156 bis 71
+- Box (Messung) knoten_5 (n02): X -51 bis 146, Y -182 bis 194, Z -172 bis 156
+- Box (Messung) knoten_4 (n17): X -198 bis 189, Y -50 bis 104, Z -194 bis 177
+**Toleranzen / Spiel:** Armrichtung = Richtung zum Nachbarknoten (Pruefung <= 0,5 Grad, gemessen 0,00 Grad); Steckarm 0,2 mm Spiel je Seite zur Strebe; Kugel D100 +-0,3.
+
+## Werkstoff und Gewicht
+
+- Werkstoff: Stahl S235 feuerverzinkt, Dichte 7.85 g/cm3, Farbe #aeb4b8 (ref-4/ref-5: helle Metallknoten; Werkstoff Annahme)
+- Volumen (Messung, `solidcraft-cli eval`): 774.2 cm3 · Masse leer: 5769 g (5.77 kg)
+- Variante `knoten_6`: 5.77 kg leer
+- Variante `knoten_5`: 5.49 kg leer
+- Variante `knoten_4`: 5.91 kg leer
+- Gefuellt/in Betrieb: Knoten 6-wertig: 5.77 kg je Knoten (Stahl S235), 10 Stueck = 57.7 kg | Knoten 5-wertig: 5.49 kg je Knoten (Stahl S235), 6 Stueck = 33.0 kg | Knoten 4-wertig: 5.91 kg je Knoten (Stahl S235), 10 Stueck = 59.1 kg | Summe aller Knoten ca. 150 kg
+
+## Querschnitt / Profil
+
+Kugel D100; Steckarm Rechteckrohr 23,6 x 23,6 x 3 (passt in die Strebe 30 x 30 x 3), Laenge 154 mm ab Kugel (Strebenende bei 120, Stecktiefe 80); Querbolzen M10x55 mit 2 Scheiben und Mutter 50 mm hinter dem Strebenende; Ankerlasche 60 x 10 x 150 (nur 4-wertig).
+
+## Ports (Anschluesse)
+
+| Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
+|---|---|---|---|
+| knoten_6 n01: Steckarm 1 (zu Knoten n02, Strebe A 3279) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x -134, y -12, z -148; Strebenende bei 120 mm | Richtung u = (-0.6718, -0.0607, -0.7383), Kipp -15.9 Grad gegen die Tangentialebene |
+| knoten_6 n01: Steckarm 2 (zu Knoten n03, Strebe B 3708) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x -38, y -166, z -105; Strebenende bei 120 mm | Richtung u = (-0.1888, -0.8293, -0.5259), Kipp -18.0 Grad gegen die Tangentialebene |
+| knoten_6 n01: Steckarm 3 (zu Knoten n04, Strebe A 3280) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 192, y 17, z 55; Strebenende bei 120 mm | Richtung u = (0.9580, 0.0866, 0.2732), Kipp -15.9 Grad gegen die Tangentialebene |
+| knoten_6 n01: Steckarm 4 (zu Knoten n05, Strebe B 3709) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 132, y -151, z 0; Strebenende bei 120 mm | Richtung u = (0.6582, -0.7528, 0.0000), Kipp -18.0 Grad gegen die Tangentialebene |
+| knoten_6 n01: Steckarm 5 (zu Knoten n07, Strebe B 3708) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x -67, y 156, z -105; Strebenende bei 120 mm | Richtung u = (-0.3344, 0.7821, -0.5259), Kipp -18.0 Grad gegen die Tangentialebene |
+| knoten_6 n01: Steckarm 6 (zu Knoten n09, Strebe B 3708) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 103, y 172, z 0; Strebenende bei 120 mm | Richtung u = (0.5126, 0.8586, 0.0000), Kipp -18.0 Grad gegen die Tangentialebene |
+| knoten_5 n02: Steckarm 1 (zu Knoten n01, Strebe A 3279) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 134, y 12, z 148; Strebenende bei 120 mm | Richtung u = (0.6718, 0.0607, 0.7383), Kipp -15.8 Grad gegen die Tangentialebene |
+| knoten_5 n02: Steckarm 2 (zu Knoten n03, Strebe A 3279) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 92, y -175, z 29; Strebenende bei 120 mm | Richtung u = (0.4584, -0.8771, 0.1436), Kipp -15.9 Grad gegen die Tangentialebene |
+| knoten_5 n02: Steckarm 3 (zu Knoten n07, Strebe A 3279) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 59, y 189, z 29; Strebenende bei 120 mm | Richtung u = (0.2937, 0.9451, 0.1436), Kipp -15.9 Grad gegen die Tangentialebene |
+| knoten_5 n02: Steckarm 4 (zu Knoten n22, Strebe A 3279) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x -10, y -114, z -164; Strebenende bei 120 mm | Richtung u = (-0.0522, -0.5725, -0.8183), Kipp -15.9 Grad gegen die Tangentialebene |
+| knoten_5 n02: Steckarm 5 (zu Knoten n23, Strebe A 3279) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x -31, y 111, z -164; Strebenende bei 120 mm | Richtung u = (-0.1540, 0.5538, -0.8183), Kipp -15.9 Grad gegen die Tangentialebene |
+| knoten_4 n17: Steckarm 1 (zu Knoten n06, Strebe A 3279) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x -106, y 45, z 164; Strebenende bei 120 mm | Richtung u = (-0.5282, 0.2269, 0.8182), Kipp -15.9 Grad gegen die Tangentialebene |
+| knoten_4 n17: Steckarm 2 (zu Knoten n16, Strebe B 3708) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 79, y 69, z 170; Strebenende bei 120 mm | Richtung u = (0.3959, 0.3460, 0.8506), Kipp -18.0 Grad gegen die Tangentialebene |
+| knoten_4 n17: Steckarm 3 (zu Knoten n18, Strebe B 3708) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x 184, y 79, z 0; Strebenende bei 120 mm | Richtung u = (0.9193, 0.3935, 0.0000), Kipp -18.0 Grad gegen die Tangentialebene |
+| knoten_4 n17: Steckarm 4 (zu Knoten n24, Strebe B 3709) | Rechteckrohr 23,6 x 23,6 x 3, steckt 80 mm in die Strebe 30 x 30 | Spitze x -195, y 44, z 0; Strebenende bei 120 mm | Richtung u = (-0.9750, 0.2222, 0.0000), Kipp -18.0 Grad gegen die Tangentialebene |
+| knoten_4: Ankerlasche (Basisknoten) | Lasche 60 x 10 x 150, Loch D14 fuer M12 | x 0, y 0, z -159 (Lochmitte; Lasche haengt unter der Knotenkugel) | Anschluss Fundamentanker, Lochachse tangential, Richtung -Z |
+| alle 26 Knoten | Armrichtungen je Knoten | data/components/knoten_arme.json (Richtung u, Nachbar, Strebenart, Kipp je Arm) | Montage: Instanz an layout.json dome.nodes_list-Position, Drehung wie die Streben (layout_rot um Z) |
+
+## Verbindungen und Befestigungen
+
+- Arme an die Knotenkugel geschweisst (MAG, 4 mm Ueberlappung), danach feuerverzinkt [A]
+- Strebe auf Steckarm: Querbolzen M10x55 ISO 4017 mit 2 Scheiben ISO 7089 und Mutter ISO 4032, Loch D11, je Strebe 1 Bolzen
+- Ankerlasche an die Kugel geschweisst, Loch D14 fuer M12 zum Fundamentanker (Normteil dort)
+
+## Herkunft (docs/provenance.md)
+
+| Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
+|---|---|---|---|---|
+| Knotenzahl 26: 10 vierwertig, 6 fuenfwertig, 10 sechswertig | 26 (10/6/10) | OBJ | layout.json dome.nodes (26), node_valence {6:10, 5:6, 4:10} | hoch |
+| Knotenpositionen (Ursprung je Instanz) | 26 Positionen | OBJ | layout.json dome.nodes_list (x, y, z) | hoch |
+| Armrichtungen = Richtung zum Nachbarknoten (65 Streben) | 26 x 4-6 Richtungen | OBJ + E | Nachbarn aus Knotenabstand 3279/3708 +-40 (alle 65 Streben, Wertigkeit stimmt bei allen 26 Knoten); knoten_arme.json | hoch |
+| Bauart Huelse/Kugel statt Platten | Kugel D100 | R02 + A | R02: Huelsen-/Sternnaben, flachgedrueckte Enden fuer 12 m ungeeignet; Kugel wegen Strebenneigung 16-18 Grad (Abweichung von der Scope-Card) | mittel |
+| strut_end_offset 120 mm, hub_insert 80 mm | 120 / 80 mm | A | Scope-Card (Annahme A); R02 nennt keine Masse fuer Plattennaben | niedrig |
+| Steckarm Rechteckrohr 23,6 x 23,6 x 3 | 23,6 x 3 mm | E + A | passt in die Strebe 30 x 30 x 3 (Innenmass 24); Strebenwand Annahme | niedrig |
+| Querbolzen M10x55 ISO 4017, Scheiben ISO 7089, Mutter ISO 4032, Loch D11 | M10x55 | A + Normteil | R02: Bolzen M10 als Annahme; ISO-Normteile aus der SolidCraft-Bibliothek (parts.insert); Bolzenmass fuer grosse Streben nicht gefunden | niedrig |
+| Kugel D100, Arme 4 mm in der Kugel (Schweissung) | D100 / 4 mm | A | keine Quelle zum Nabenmass (R02 Luecke) | niedrig |
+| Ankerlasche 60 x 10 x 150 mit Loch D14 (nur Basisknoten) | 60x10x150, D14 | Scope-Card + A | Scope-Card fundamentanker: Anschlusslaschen zum Basisknoten; Mass Annahme | niedrig |
+| Werkstoff Stahl S235 feuerverzinkt, 7,85 g/cm3 | 7,85 g/cm3 | A | ueblicher Baustahl; ref-4/5 helle Metallknoten | mittel |
+| Kippwinkel der Arme gegen die Tangentialebene (16-18 Grad bei Strebe A/B) | 15,9 / 18,0 Grad | E | knoten_arme.json: asin(u.n) je Arm, L/2R = 0,27 (Sehnenwinkel) | hoch |
+| Anzahl Teile: 130 Arme, 130 Bolzen, 260 Scheiben, 130 Muttern, 10 Laschen | siehe Stueckliste | E | Summe der Wertigkeiten = 2 x 65 Streben | hoch |
+
+## Referenz und Abweichung zum OBJ
+
+- Referenzbild: ref-4/ref-5: Knoten in den Referenzen nicht erkennbar (Streben treffen sich ohne sichtbare Nabe); data/layout.json dome.nodes_list; docs/research/R02.md
+- Quelle der Masse: data/layout.json dome.nodes_list (26 Knoten, Wertigkeit, Position; Nachbarn ueber Strebenlaengen 3279/3708 mm), docs/research/R02.md (Bauart Platte/Huelse), docs/scope-cards.md knoten_4/5/6
+- Abweichung zum OBJ: ABWEICHUNG von der Scope-Card (zwei Knotenplatten): Die Strebenrichtungen sind wegen des Sehnenwinkels der 2V-Kuppel um 16 bis 18 Grad gegen die Tangentialebene (Plattenebene) geneigt (Abstand Knoten-zu-Knoten 3279/3708 auf R 6000); flache Platten mit Steckarmen in der Plattenebene wuerden die Arme durchdringen oder verlangen gebogene Arme. Darum Knotenkugel mit Steckhuelsen (R02: Huelsen-/Sternnaben als Bauart genannt). Anzahl, Wertigkeit und Strebenrichtungen exakt aus layout.json (26 Knoten, 65 Streben, 10/6/10).
+
+## Montage (L4)
+
+1. Arme an die Knotenkugel schweissen (Vorrichtung nach den Armwinkeln aus knoten_arme.json), verzinken lassen
+2. Streben auf die Steckarme schieben (80 mm), Loch durch Strebe und Steckarm bohren bzw. vorgebohrt ausrichten, Querbolzen M10 mit Scheiben und Mutter anziehen
+3. Basisknoten: Ankerlasche mit dem Fundamentanker verschrauben (M12)
+4. Reihenfolge: Basisring, dann Reihe fuer Reihe nach oben, Apex zuletzt
+
+**Werkzeug:** Schweissgeraet und Vorrichtung (Armwinkel), Bohrmaschine D11, Schluessel M10, Hebezeug/Geruest
+
+## Stueckliste-Zeile
+
+- Je Knoten: 1 Kugel D100, n Steckarme (n = Wertigkeit, Rechteckrohr 23,6 x 23,6 x 3, Laenge 154 ab Kugel), n Querbolzen M10x55 ISO 4017, 2n Scheiben ISO 7089, n Muttern ISO 4032; Basisknoten zusaetzlich 1 Ankerlasche 60 x 10 x 150
+- Gesamt 26 Knoten: 26 Kugeln, 130 Steckarme (= 2 x 65 Streben), 130 Bolzen M10x55, 260 Scheiben, 130 Muttern, 10 Ankerlaschen
+- Knoten: 10 vierwertig (Basis), 6 fuenfwertig, 10 sechswertig; Dateien designs/components/knoten_<wertigkeit>_n<nr>.sc (26) und Repraesentanten knoten_4/5/6.sc
+
+## Alternative lokale Fertigung
+
+Kugeln als Vollkugel oder Rohrstueck mit Kappen aus dem Stahlhandel; Steckarme aus Rechteckrohr 25 x 25 x 3 abgedreht/abgeschliffen; Schweissen und Verzinken beim Metallbauer; Ersatz: Holzstreben mit Bandstahl-Nabe (R02 Bauart D).
+
+## Renders
+
+- `renders/components/knoten_4/knoten_4_n17-01-iso.png`
+- `renders/components/knoten_4/knoten_4_n17-02-draufsicht.png`
+- `renders/components/knoten_4/knoten_4_n17-03-seite.png`
+- `renders/components/knoten_5/knoten_5_n02-01-iso.png`
+- `renders/components/knoten_5/knoten_5_n02-02-draufsicht.png`
+- `renders/components/knoten_5/knoten_5_n02-03-seite.png`
+- `renders/components/knoten_6/knoten_6_n01-01-iso.png`
+- `renders/components/knoten_6/knoten_6_n01-02-draufsicht.png`
+- `renders/components/knoten_6/knoten_6_n01-03-seite.png`
+
+## Pruefung
+
+- Gauntlet-Urteil: Spec-Pruefer laeuft; kein Bild-Kritiker (Knoten in keiner Referenz sichtbar)
+- scripts/workshop/check_knoten.py (Ergebnis renders/components/knoten_6/check.txt): Anzahl 10/6/10, Armzahl = Wertigkeit, Armrichtung je Knoten <= 0,5 Grad, Bolzen je Strebe, Ankerlasche nur Basisknoten
+- Kein Bild-Kritiker: die Knoten sind in keiner Referenz sichtbar; Spec-Pruefer und Orchestrator-Stichprobe
+
+## Offene Fragen
+
+- Tragfaehigkeit nicht nachgewiesen (Statik ruht): Kugel D100, Steckarm 23,6 x 3 und M10 sind Annahmen A
+- ABWEICHUNG von der Scope-Card (Platten statt Kugel) begruendet, Entscheidung beim Orchestrator
+- Tuerknoten: Sonderanschluss fuer den Sturz (Montage/Tuer-Klasse); Knoten im Tuer-Dreieck nur als Standardknoten gebaut
+- strut_end_offset 120 und hub_insert 80 sind Annahmen A (Scope-Card)
+- Strebenquerschnitt: 30 x 30 x 3 angenommen; das OBJ gibt 30 x 30 ohne Wand, die Integrator-Strebe ist ein Vollzylinder
+- Armrichtungen liegen im OBJ-Frame (layout.json); die Montage dreht wie die Streben

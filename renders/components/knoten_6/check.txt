@@ -1,0 +1,136 @@
+PASS knoten: Anzahl Knoten vierwertig: Ist 10, Soll 10
+PASS knoten: Anzahl Knoten fuenfwertig: Ist 6, Soll 6
+PASS knoten: Anzahl Knoten sechswertig: Ist 10, Soll 10
+PASS knoten: Strebenzahl aus den Knoten (Summe Armzahl / 2 = 65 Streben): Ist 65, Soll 65
+PASS knoten: n17 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n17 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n17 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n17 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n17 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n18 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n18 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n18 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n18 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n18 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n19 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n19 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n19 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n19 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n19 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n20 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n20 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n20 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n20 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n20 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n21 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n21 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n21 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n21 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n21 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n22 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n22 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n22 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n22 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n22 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n23 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n23 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n23 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n23 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n23 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n24 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n24 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n24 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n24 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n24 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n25 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n25 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n25 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n25 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n25 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n26 (4-wertig) Armzahl = Wertigkeit: Ist 4, Soll 4
+PASS knoten: n26 (4-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n26 (4-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n26 (4-wertig) Schrauben je Strebe (Querbolzen): Ist 4, Soll 4
+PASS knoten: n26 (4-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n02 (5-wertig) Armzahl = Wertigkeit: Ist 5, Soll 5
+PASS knoten: n02 (5-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n02 (5-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n02 (5-wertig) Schrauben je Strebe (Querbolzen): Ist 5, Soll 5
+PASS knoten: n02 (5-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n04 (5-wertig) Armzahl = Wertigkeit: Ist 5, Soll 5
+PASS knoten: n04 (5-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n04 (5-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n04 (5-wertig) Schrauben je Strebe (Querbolzen): Ist 5, Soll 5
+PASS knoten: n04 (5-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n06 (5-wertig) Armzahl = Wertigkeit: Ist 5, Soll 5
+PASS knoten: n06 (5-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n06 (5-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n06 (5-wertig) Schrauben je Strebe (Querbolzen): Ist 5, Soll 5
+PASS knoten: n06 (5-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n08 (5-wertig) Armzahl = Wertigkeit: Ist 5, Soll 5
+PASS knoten: n08 (5-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n08 (5-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n08 (5-wertig) Schrauben je Strebe (Querbolzen): Ist 5, Soll 5
+PASS knoten: n08 (5-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n12 (5-wertig) Armzahl = Wertigkeit: Ist 5, Soll 5
+PASS knoten: n12 (5-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n12 (5-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n12 (5-wertig) Schrauben je Strebe (Querbolzen): Ist 5, Soll 5
+PASS knoten: n12 (5-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n15 (5-wertig) Armzahl = Wertigkeit: Ist 5, Soll 5
+PASS knoten: n15 (5-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n15 (5-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n15 (5-wertig) Schrauben je Strebe (Querbolzen): Ist 5, Soll 5
+PASS knoten: n15 (5-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n01 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n01 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n01 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n01 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n01 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n03 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n03 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n03 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n03 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n03 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n05 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n05 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n05 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n05 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n05 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n07 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n07 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n07 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n07 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n07 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n09 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n09 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n09 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n09 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n09 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n10 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n10 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n10 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n10 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n10 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n11 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n11 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n11 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n11 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n11 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n13 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n13 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n13 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n13 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n13 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n14 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n14 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n14 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n14 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n14 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: n16 (6-wertig) Armzahl = Wertigkeit: Ist 6, Soll 6
+PASS knoten: n16 (6-wertig) Knotenkugel D: Ist 100, Soll 100 (+-0.3)
+PASS knoten: n16 (6-wertig) Armrichtungen aus layout.json (max. Abweichung Grad): Ist 0, Soll 0 (+-0.5)
+PASS knoten: n16 (6-wertig) Schrauben je Strebe (Querbolzen): Ist 6, Soll 6
+PASS knoten: n16 (6-wertig) Ankerlasche nur Basisknoten: Ist 1, Soll 1
+PASS knoten: schlechteste Armrichtung ueber alle 26 Knoten (Grad): Ist 0, Soll 0 (+-0.5)
+== knoten: 135/135 PASS

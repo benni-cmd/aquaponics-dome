@@ -60,3 +60,25 @@ def bbox_all(ev):
         for i in range(3):
             mn[i] = min(mn[i], b["bbox"]["min"][i]); mx[i] = max(mx[i], b["bbox"]["max"][i])
     return mn, mx
+
+def faces(sc_path, body):
+    """model.faces eines Koerpers (Liste); Zylinderflaechen tragen 'cylinder': {axis, origin, radius}."""
+    script = os.path.join(TMP, "ws-faces.json")
+    json.dump({"commands": [{"command": "model.faces", "params": {"body": body}}]}, open(script, "w"))
+    r = subprocess.run([CLI, "run", script, "--in", sc_path, "--results"], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER faces: " + r.stderr.strip())
+    return json.loads(r.stdout)[0]["faces"]
+
+class Check:
+    """Sammelt PASS/FAIL-Zeilen mit Ist und Soll; exit-Code 1 bei FAIL."""
+    def __init__(self, name):
+        self.name, self.rows = name, []
+    def eq(self, label, ist, soll, tol=0.0):
+        ok = abs(ist - soll) <= tol
+        self.rows.append((label, ist, soll, ok))
+        print(("PASS" if ok else "FAIL"), f"{self.name}: {label}: Ist {ist:g}, Soll {soll:g}" + (f" (+-{tol:g})" if tol else ""))
+    def done(self):
+        bad = [r for r in self.rows if not r[3]]
+        print(f"== {self.name}: {len(self.rows) - len(bad)}/{len(self.rows)} PASS")
+        return 0 if not bad else 1

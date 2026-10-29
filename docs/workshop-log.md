@@ -14,3 +14,34 @@ Beginn 29.10.2026 ~03:50. Befunde zu SolidCraft v0.25.1 (Headless, `solidcraft-c
 - Schnittansicht: `snapshot --section XZ` mit `yaw 3.14159` zeigt die Wandstaerken; Test: Netztopf sitzt im Topfloch, Kragen liegt auf der Rippenebene.
 - Annahme [A]: Topf-Kragenunterseite liegt auf der Deckelflaeche (Z 95), Kragen 3,5 mm; Salat-Ursprung = Kragenoberkante.
 - Befund: Die 2160 Pflanztoepfe des OBJ stehen in den Beeten (Z 407-506, 288 je Aussenbeet), nicht in den Rinnen; die Rinnen im OBJ haben keine Toepfe -> Topfzahl der Rinnen ist unsere Auslegung (Raster 200 mm).
+
+## Triage der Kritiker-Luecken (docs/review-protocol.md Abschnitt 5; Stand 29.10. ~04:50)
+
+### nft_rinne, Kritiker Runde 1 (vor Scope-Card)
+| Nr | Luecke (Kritiker) | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: zwei versetzte Lochreihen je Rinne | **andere Klasse / falsch gelesen** (Zickzack = Nachbarrinnen im Tisch) | Scope-Card nft_rinne, review-lessons 03:55; Umbau ZURUECKGENOMMEN: eine Lochreihe, Phase A/B (`shift` +-62,5) fuer den Tisch |
+| 2 | gross: Endkappe/Spalt, Dichtung fehlt | **unklar/klein**: Klebefuge ist im Bauteilblatt dokumentiert (2 mm Kehlnaht, 0,5 mm Spalt), nicht als Koerper | Bauteilblatt Abschnitt Toleranzen; nicht umgebaut |
+| 3 | gross: Ablaufstutzen tief, Tuelle nur duenner Stift | **gueltig** | Ablauf z 20 (3,5 mm Restfilm), Tuelle Wand 3 mm (inlet_id 10); gilt weiter |
+| 4 | klein: Rippen zu schmal, unklar | **gueltig** | vier Rippen 5 x 5 mm statt zwei 8 x 5 |
+| 5 | klein: Loecher zu nah an Kappe | **gueltig** | Loch 1 in mind. 179 mm Abstand (Reihe zentriert) |
+
+### nft_rinne, Kritiker Runde 2 (Zickzack-Variante, jetzt verworfen)
+| Nr | Luecke | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Wand wie Doppelschale, Deckel steht als Kragen vor | **falsch gelesen**: Schnitt zeigt Endkappen-Zapfen im Profil (Stopfen mit 0,5 mm Spiel), Deckel = Profil, Boxen gleich breit (bbox 130) | `nft_rinne-07-querschnitt.png`, check.txt Breite 130 |
+| 2 | gross: Mittelrippe lose, duenn | **gueltig, erledigt durch Entfernung** (Rippe gehoert nicht zur Referenz) | Mittelrippe entfernt, Rippen jetzt 4 x 5 mm seitlich |
+| 3 | mittel: Salatkoepfe so gross wie Rinnenbreite | **andere Klasse** (salatkopf) | Scope-Card salatkopf; Kopfbreite M ca. 115 mm bei Rinne 130: an Salatkopf weitergereicht (Konfiguration S 70 / M 100 / L 130) |
+| 4 | klein: Stopfen mit sichtbarem Spalt | **falsch gelesen** (0,5 mm radial gewollt, Platte liegt auf Anschlag) | check: Kappenplatte buendig am Profilende |
+| 5 | klein: Lochrand ~9 mm | **falsch gelesen** (Kritiker widerspricht sich selbst; Rand bei y=30 war 35 mm) | rechnerisch |
+
+### salatkopf, Kritiker Runde 1 und 2 (vor Protokoll)
+| Nr | Luecke | Einstufung | Folge |
+|---|---|---|---|
+| R1-1,2 | gross: glatter Kugelhaufen, keine Blattstruktur | **gueltig** | Umbau auf Blattrosette aus geneigten Scheiben |
+| R1-3 | gross: zu kompakt/hoch | **widerspruechlich** (R2-2 fordert hoeher, Verhaeltnis 0,6) | Kompromiss Hoehe 61 / Breite 115 (0,53) |
+| R2-1 | gross: wirkt wie Rose, 12+ Blaetter | **gueltig** | von 25 auf 33 Blaetter, 7 Gruppen |
+| R2-3 | gross: Kern und Streben sichtbar | **gueltig** | Kernkugel kleiner, Herzblaetter steiler |
+| R2-4,5 | klein: Blattraender glatt, Hals sichtbar | **gueltig, offen** | Ellipsen/Zacken offen; Hals D16 (bleibt, steckt im Topf) |
+
+### netztopf: Kritiker noch nicht gelaufen (offen).

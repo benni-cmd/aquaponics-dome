@@ -1,13 +1,13 @@
 {
  "klasse": "nft_rinne",
  "teilenummer": "T20",
- "beschreibung": "NFT-Rinne 130 x 100 mm, geschlossenes Kunststoffprofil mit Mittelrippe, zwei versetzten Topfloch-Reihen, Endkappen mit Zulauf-Tuelle und Ablaufstutzen",
+ "beschreibung": "NFT-Rinne 130 x 100 mm, geschlossenes Kunststoffprofil mit gerippter Oberseite, EINE Lochreihe in der Mittellinie, Endkappen mit Zulauf-Tuelle und Ablaufstutzen",
  "quelle_masse": "docs/components.md und data/layout.json hydro_tables: Breite 130, Hoehe 100, Laengen 1304 / 1983 / 3232; ref-6: weisse Rinnen mit Rippen",
  "parameter": {
   "len_l": {
    "wert": 3232,
    "einheit": "mm",
-   "herkunft": "layout.json: Laenge Aussentisch; Konfigurationen K 1304 (innen), M 1983 (Mitte), L 3232 (aussen)"
+   "herkunft": "layout.json: Laenge Aussentisch; Konfigurationszeilen L 3232 (aussen), M 1983 (Mitte), K 1304 (innen), je Phase A/B"
   },
   "ch_w": {
    "wert": 130,
@@ -29,25 +29,10 @@
    "einheit": "mm",
    "herkunft": "[A] Rippenhoehe, ref-6"
   },
-  "rib_w": {
-   "wert": 4,
-   "einheit": "mm",
-   "herkunft": "[A] eine Mittelrippe; Kritiker Runde 1: Rippen durchgehend wie ref-6"
-  },
   "hole_d": {
    "wert": 52,
    "einheit": "mm",
    "herkunft": "[E] Netztopf-Korpus 50 + 2 mm Spiel; Kragen 64 liegt auf"
-  },
-  "pitch": {
-   "wert": 250,
-   "einheit": "mm",
-   "herkunft": "[A] Pflanzabstand je Reihe 250, Versatz der Reihen pitch/2 -> Diagonalabstand 136 (Blattsalat NFT 150-250 mm, FarmHub 2.4)"
-  },
-  "margin": {
-   "wert": 120,
-   "einheit": "mm",
-   "herkunft": "[A] Abstand erstes Loch vom Rinnenende (Kritiker: >= 100)"
   },
   "cap_t": {
    "wert": 4,
@@ -109,20 +94,40 @@
    "einheit": "",
    "herkunft": "docs/hydraulics.md 2.5: Vorschlag 1 % = 1 cm/m (FarmHub 2.4); im Tisch durch Neigung der Rinne um atan(0,01) = 0,573 Grad umgesetzt"
   },
-  "row_y": {
-   "wert": 30,
+  "rib_w": {
+   "wert": 5,
    "einheit": "mm",
-   "herkunft": "[A] Abstand der zwei Lochreihen von der Rinnenmitte (Kritiker Runde 1: zwei versetzte Reihen wie ref-6); Topfkragen R32 -> 2 mm Luft zur Mittelrippe, Lochrand 56 < 62,5 Innenwand"
+   "herkunft": "[A] Rippenbreite (ref-6: gerippte Oberseite)"
   },
-  "n_row": {
-   "wert": 12,
-   "einheit": "",
-   "herkunft": "[E] = floor((len_l - 2 margin - pitch/2)/pitch) + 1 je Reihe; L 12, M 7, K 4 (zwei Reihen: 24 / 14 / 8 Loecher)"
+  "rib_y1": {
+   "wert": 38,
+   "einheit": "mm",
+   "herkunft": "[A] innere Rippen bei y = +-38: innen 35,5 > Netztopf-Kragenradius 32"
+  },
+  "rib_y2": {
+   "wert": 52,
+   "einheit": "mm",
+   "herkunft": "[A] aeussere Rippen bei y = +-52"
   },
   "rib_end": {
    "wert": 20,
    "einheit": "mm",
-   "herkunft": "[A] Rippe endet 20 mm vor der Endkappe"
+   "herkunft": "[A] Rippen enden 20 mm vor der Endkappe"
+  },
+  "pitch": {
+   "wert": 250,
+   "einheit": "mm",
+   "herkunft": "[A] Lochabstand EINER Reihe in der Mittellinie (Scope-Card nft_rinne); Blattsalat NFT 150-250 mm (FarmHub 2.4 allgemein); Zickzack zu Nachbarrinnen = pitch/2 im Tisch"
+  },
+  "n_holes": {
+   "wert": 12,
+   "einheit": "",
+   "herkunft": "[E] = floor(len_l / pitch): L 12, M 7, K 5 (Pruefzahl Scope-Card: Lochzahl = Laenge/pitch abgerundet; Lochreihen = 1)"
+  },
+  "shift": {
+   "wert": -62.5,
+   "einheit": "mm",
+   "herkunft": "[E] Phase der Lochreihe: Variante A -pitch/4, Variante B +pitch/4 -> benachbarte Rinnen im Tisch um pitch/2 versetzt (Zickzack)"
   }
  },
  "werkstoff": {
@@ -138,8 +143,8 @@
  "bezugspunkt": "Mitte der Rinnenlaenge, Mitte Breite, Rinnenboden Z=0; Zulaufende bei -X (hoeheres Ende), Ablaufende bei +X; Rinne selbst gerade, Gefaelle entsteht im Tisch",
  "blatt": {
   "funktion": "Fuehrt den Naehrloesungsfilm an den Wurzeln der Pflanzen vorbei (NFT); Zulauf am hoeheren Ende (-X), Ablauf am tieferen Ende (+X).",
-  "querschnitt": "Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, Mittelrippe 4 x 5 mm (endet 20 mm vor den Kappen): Gesamthoehe 100; zwei versetzte Reihen Topfloecher D52 bei y = +-30, Teilung 250 je Reihe, Versatz 125 (L 24, M 14, K 8 Loecher), erstes Loch 120 mm vom Ende.",
-  "toleranzen": "Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90 (Klebespalt, Fuge mit PVC-Kleber/Silikon 2 mm Kehlnaht, nicht als Koerper modelliert); Topfloch +2 mm zum Topf; Kragen liegt 2 mm neben der Mittelrippe.",
+  "querschnitt": "Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf der Oberseite (y = +-38 und +-52, enden 20 mm vor den Kappen): Gesamthoehe 100; EINE Reihe Topfloecher D52 in der Mittellinie, Teilung 250 (L 12, M 7, K 5 Loecher), Reihe um shift = +-62,5 verschoben (Phase A/B fuer den Zickzack im Tisch).",
+  "toleranzen": "Endkappen-Zapfen mit 0,5 mm Spiel je Seite zum Innenmass 125 x 90 (Klebespalt, Fuge mit PVC-Kleber/Silikon 2 mm Kehlnaht, nicht als Koerper modelliert); Topfloch +2 mm zum Topf; Kragen R32 laesst 3,5 mm bis zur inneren Rippe.",
   "ports": [
    [
     "Zulauf",
@@ -158,7 +163,7 @@
    "Endkappen als Stopfen 14 mm tief in das Profil gesteckt, 4 mm Plattenstaerke (Verklebung/Silikon, Schrauben nicht modelliert)",
    "Auflage auf den Querholmen des NFT-Tischs (Halteclips: im Tisch)"
   ],
-  "abweichung": "OBJ-Rinnen 129/130 x 102/103 mm, Laenge 1304/1983/3232: Modell Breite 130, Hoehe 100, Laenge ueber len_l (Abweichung <= 3 %). Die OBJ-Hoehe 102-103 enthaelt vermutlich Plattenreste/Rippen [A].",
+  "abweichung": "OBJ-Rinnen 129/130 x 102/103 mm, Laenge 1304/1983/3232: Modell Breite 130, Hoehe 100, Laenge ueber len_l (Abweichung <= 3 %). Die OBJ zeigt keine Topfloecher in den Rinnen (Platten mit Loechern, Hidrtoponia): Lochreihe nach ref-6 und Scope-Card.",
   "montage": [
    "Profil auf Laenge sagen (len_l)",
    "Endkappen mit PVC-Kleber/Silikon einsetzen",
@@ -173,14 +178,15 @@
   ],
   "lokal": "Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne aus dem Gewaechshausbedarf; Loecher mit Dosensaege D52, Endkappen aus 4-mm-PVC-Platte plus Dichtleiste.",
   "pruefung": [
-   "`solidcraft-cli eval`: Boxen und Massen; Schnitt `nft_rinne-06-schnitt-zulauf.png`, Querschnitt `nft_rinne-07-querschnitt.png`",
-   "Gefaelle: wird im Tisch gebaut (Neigung 0,573 Grad)"
+   "Scope-Card nft_rinne: Lochreihen je Rinne = 1, Loecher = floor(Laenge/pitch) (L 12, M 7, K 5), Breite 130",
+   "Triage der Kritiker-Luecken Runde 1 und 2 in `docs/workshop-log.md`"
   ],
   "offen": [
-   "Rippenprofil und Wandstaerke sind Annahmen [A]",
-   "Topfzahl und -raster je Rinne sind unsere Auslegung (zwei Reihen, Teilung 250)",
+   "Rippenprofil (vier Rippen 5x5) und Wandstaerke sind Annahmen [A]",
+   "Lochabstand 250 ist unsere Auslegung, ref-6 gibt kein Mass",
    "Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)",
-   "Klebefuge der Endkappen nicht als Koerper modelliert"
+   "Klebefuge der Endkappen nicht als Koerper modelliert",
+   "Zickzack (Phase A/B) wird im Tisch gebaut, Varianten nft_rinne_<l|m|k>_<a|b>.sc"
   ]
  }
 }

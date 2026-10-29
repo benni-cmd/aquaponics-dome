@@ -88,3 +88,13 @@ Beginn 29.10.2026 ~03:50. Befunde zu SolidCraft v0.25.1 (Headless, `solidcraft-c
 | 4 | klein, sicher: Zulaufrohr ohne Fitting/Dichtung; Tropfloecher quadratisch | **gueltig, offen** | im Blatt offen (Gummitulle, quadratische Vereinfachung begruendet: Zylinder-Zylinder-Schnitt > 1 min je Loch) |
 | 5 | klein, sicher: Querschnitt 06 zeigt nur leere Wand | **gueltig (Render)** | Schnitt jetzt durch die Siphonebene (x = Siphon) |
 | Hinweis | Pflanzen, NFT, Einbautiefe | **andere Klasse** | - |
+
+### ibc_beet, Spec-Pruefer (FAIL) 29.10. ~07:55
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Gewicht leer 759 kg enthielt das Medium; gefuellt in kg fehlt | **gueltig** | Leermasse ohne Medium (72-74 kg), Medium und Wasser getrennt, gefuellt je Variante in kg (aussen_933 ca. 1,6 t) |
+| 2 | gross: Pruefung innen maskiert Abweichung (Z 365-404 statt 400) | **gueltig (Doku)** | im Blatt: Medienoberflaeche innen absolut 365-404 (z0 -209..-170), Toleranz 40 mm begruendet |
+| 3 | gross, vermutet: Wasserstand/Standrohr widersprechen sich (R03 Befund 4/5, SRAC) | **gueltig, unklar** | im Blatt als offen mit Spannweite 3-6 cm, Konfidenz niedrig; Hoehe 220 (R03 Befund 5) bleibt |
+| 4 | gross: Herkunft/Detail unvollstaendig (Wertspalten, Rohrwaende, DN, Normen, Stueckliste-Mengen, Renders leer, PP/HDPE) | **gueltig** | 7 Herkunftszeilen, DN/Normen, Stueckliste mit Mengen, Render-Liste ueber alle Variantenordner, Werkstoffzeile |
+| 5 | klein: Zulaufport x -1526 gegen Box -1516,5; Rohr laengs statt quer | **gueltig** | Ports aus aktuellen Parametern neu berechnet; laengs als Auslegung E begruendet |
+| H | 288 je Aussenbeet / Montage Netztoepfe | **andere Klasse (Integrator)** | im Blatt klargestellt (144 beim Beet Azimut 113) |

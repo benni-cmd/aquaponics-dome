@@ -13,8 +13,10 @@ def main(name):
         main_sc = os.path.join(sc.ROOT, "designs", "components", bl["varianten"][0] + ".sc")
     ev = sc.evaluate(main_sc)
     mn, mx = sc.bbox_all(ev)
-    mass = sum(b["mass_g"] for b in ev["bodies"])
-    vol = sum(b["volume_mm3"] for b in ev["bodies"])
+    sep = bl.get("massen_getrennt", [])                  # Koerper, die nicht zur Leermasse zaehlen (z. B. Medium)
+    isep = lambda b: any(b["name"].startswith(x) and not b["name"].startswith("Medienschutz") for x in sep)
+    mass = sum(b["mass_g"] for b in ev["bodies"] if not isep(b))
+    vol = sum(b["volume_mm3"] for b in ev["bodies"] if not isep(b))
     L = []
     L.append(f"# Bauteilblatt {d['teilenummer']} {name} (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/{name}.json` und `designs/components/{name}.sc`, nicht von Hand aendern)\n")
     L.append(f"**Funktion:** {bl.get('funktion', d['beschreibung'])}\n")
@@ -37,7 +39,7 @@ def main(name):
     L.append("## Werkstoff und Gewicht\n")
     w = d["werkstoff"]
     L.append(f"- Werkstoff: {w['name']}, Dichte {w['dichte_g_cm3']} g/cm3, Farbe {w['farbe']} ({w['herkunft']})")
-    L.append(f"- Volumen (Messung, `solidcraft-cli eval`): {vol/1000:.1f} cm3 · Masse leer: {mass:.0f} g ({mass/1000:.2f} kg)")
+    L.append(f"- Volumen (Messung, `solidcraft-cli eval`): {vol/1000:.1f} cm3 · Masse leer{' (ohne ' + ', '.join(sep) + ')' if sep else ''}: {mass:.0f} g ({mass/1000:.2f} kg)")
     for v in bl.get("varianten", []):
         evv = sc.evaluate(os.path.join(sc.ROOT, "designs", "components", v + ".sc"))
         L.append(f"- Variante `{v}`: {sum(b['mass_g'] for b in evv['bodies'])/1000:.2f} kg leer")
@@ -70,9 +72,9 @@ def main(name):
     if bl.get("lokal"):
         L.append(f"\n## Alternative lokale Fertigung\n\n{bl['lokal']}")
     L.append("\n## Renders\n")
-    rd = os.path.join(sc.ROOT, "renders", "components", name)
-    if os.path.isdir(rd):
-        L += [f"- `renders/components/{name}/{f}`" for f in sorted(os.listdir(rd)) if f.endswith(".png")]
+    base = os.path.join(sc.ROOT, "renders", "components")
+    for dn in sorted(x for x in os.listdir(base) if x == name or x.startswith(name + "_")):
+        L += [f"- `renders/components/{dn}/{f}`" for f in sorted(os.listdir(os.path.join(base, dn))) if f.endswith(".png")]
     L.append("\n## Pruefung\n")
     L.append(f"- Gauntlet-Urteil: {sys.argv[2] if len(sys.argv) > 2 else bl.get('kritiker', 'offen')}")
     L += [f"- {x}" for x in bl.get("pruefung", [])]

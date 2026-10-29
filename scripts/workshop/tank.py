@@ -56,6 +56,8 @@ def build(typ):
     xin = R - w - di / 2
     yin = math.sqrt(R ** 2 - xin ** 2)                    # Schnittpunkt Achse mit Aussenwand (negative Seite)
     b.add("solid.cylinder", diameter=di, height=2 * yin + 40, base=[xin, -yin - 20, z_in], axis=[0, 1, 0], operation="cut", targets=["Tank"], name="Durchbruch_Zulauf")
+    if T["biofilter"]:                                    # Ueberlauf-Durchbruch d63 radial +X, 80 mm unter dem Rand
+        b.add("solid.cylinder", diameter=p["outlet_d"] + 13, height=w + 40, base=[R - w - 20, 0, z_top - 80], axis=[1, 0, 0], operation="cut", targets=["Tank"], name="Durchbruch_Ueberlauf")
     b.add("material.assign", bodies=["Tank"], material="PE Tank")
     # Deckel mit Leitrohr-Loch
     b.add("solid.cylinder", diameter=2 * R + 2 * p["lid_over"], height=p["lid_t"], base=[0, 0, z_top], operation="new", name="Deckel", body_name="Deckel")
@@ -82,7 +84,12 @@ def build(typ):
         b.add("solid.cylinder", diameter=gd - 2 * gw, height=p["guide_depth"] + p["lid_t"] + 72, base=[0, 0, zg0 - 1], operation="cut", targets=["Leitrohr"], name="Leitrohr_Bohrung")
         b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=gd / 2 + 142, base=[0, 0, z_top + p["lid_t"] + 35], axis=[1, 0, 0], operation="cut", targets=["Leitrohr"], name="Auslauf_Bohrung")
         b.add("material.assign", bodies=["Leitrohr"], material="PVC grau Tank")
-    else:   # Biofilter: Biomediumkorb als EIN Koerper (Schuettung), Tragring, Belueftungsrohr
+    else:   # Biofilter: Ueberlauf (Auslauf) radial +X, Biomediumkorb als EIN Koerper, Tragrost, Belueftungsrohr
+        zo = z_top - 80
+        od = p["outlet_d"] + 13                         # d63
+        b.add("solid.cylinder", diameter=od, height=w + 150, base=[R - w - 20, 0, zo], axis=[1, 0, 0], operation="new", name="Ueberlauf_R", body_name="Ueberlauf")
+        b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=w + 152, base=[R - w - 21, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Ueberlauf"], name="Ueberlauf_Bohrung")
+        b.add("material.assign", bodies=["Ueberlauf"], material="PVC grau Tank")
         rb = R - w - 25
         zb0 = z_top - p["bio_z_below_top"]
         b.add("solid.cylinder", diameter=2 * rb, height=p["bio_h"], base=[0, 0, zb0], operation="new", name="Biomedium_R", body_name="Biomedium")

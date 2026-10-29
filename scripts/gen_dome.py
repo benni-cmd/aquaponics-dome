@@ -4,7 +4,7 @@ import json, math, sys
 from geo import build
 
 P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe 6 m; Rest per Pixelvergleich mit ref-4 (Basis = 12 m)
-    dome_base_d=12000, dome_h=6000, freq=3, sock_h=600, sock_w=250, strut_r=45,
+    dome_base_d=12000, dome_h=6000, freq=2, sock_h=400, sock_w=250, strut_r=45,
     door_w=1000, door_h=2000, door_az=-54, door_off=1100,
     t5_d=3800, t5_h=1200, t6_d=2200, t6_h=900, t7_d=1100, t7_h=1200, t7_stand=500,
     bed_n=10, bed_len=2300, bed_w=900, bed_h=950, bed_r=4800,
@@ -32,19 +32,19 @@ def rect_body(name, cx, cy, z0, az_deg, along, across, h):
 
 def t1_t3_t4(sock_z):
     pts, edges = build(P["freq"])
-    zcut = -0.19
+    zcut = -0.01
     keep = {k for k, p in pts.items() if p[2] >= zcut}
-    zb = -0.18
+    zb = 0.0
     # Radius so, dass der Basisring-Umkreis = dome_base_d/2
     R = (P["dome_base_d"]/2) / math.sqrt(1 - zb*zb)
     zsq = P['dome_h']/((1-zb)*R)   # Hoehe/Breite = 0,5: Kuppel in Z gestaucht
     cz = sock_z - zb*R*zsq
     # Basisring auf gleiche Hoehe setzen; Drehung: Basisknoten bei Azimut 0
-    base = [k for k in keep if pts[k][2] < 0]
+    base = [k for k in keep if abs(pts[k][2]) < 1e-3]
     a0 = math.atan2(pts[base[0]][1], pts[base[0]][0])
     def V(k):
         x, y, z = pts[k]
-        if z < 0: z = zb
+        if abs(z) < 1e-3: z = zb
         x, y = rot(x, y, -a0)
         return (x*R, y*R, z*R*zsq + cz)
     # Tuerflaeche: Streben, die den Tuerquader kreuzen, entfallen
@@ -52,6 +52,9 @@ def t1_t3_t4(sock_z):
     def in_door(p):
         x, y = rot(p[0], p[1], -da)   # x = radial, y = tangential
         return abs(x - rd) < 150 and abs(y - P["door_off"]) < P["door_w"]/2 + 40 and sock_z - 20 < p[2] < sock_z + P["door_h"] + 40
+    import math as _m
+    ring = sorted(base, key=lambda k: _m.atan2(V(k)[1], V(k)[0]))   # Basis-Zehneck: 10 Kanten
+    edges = set(edges) | {tuple(sorted((ring[i], ring[(i+1) % len(ring)]))) for i in range(len(ring))}
     n = 0; dropped = 0
     for a, b in sorted(edges):
         if a not in keep or b not in keep: continue
@@ -91,6 +94,7 @@ def tank(name, cx, cy, z0, d, h, wall_expr, stand=0):
 
 def t5_t7(fz):
     tank("T5_Zentraltank", 0, 450, fz, "t5_d", "t5_h", "wall")
+    add("solid.cylinder", diameter="t5_d - 2*wall", height=20, base=[0, 450, fz + P["t5_h"] - 250], operation="new", name="T5_Wasser", body_name="T5_Wasser")
     tank("T6_Mitteltank", 500, -2600, fz, "t6_d", "t6_h", "wall")
     pos = [(-3200, 500), (-2600, -1700), (3200, 300), (2700, 1800), (-1500, -3000), (2400, -2300)]
     for i, (x, y) in enumerate(pos, 1):

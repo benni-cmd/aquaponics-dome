@@ -8,7 +8,8 @@
 
 1. `reference/ref-4-dome-clean.jpg` — Hauptreferenz: saubere Ansicht der Kuppel mit Innenleben
 2. `reference/ref-1-blender-views.jpg` — Blender-Ansichten, gleiche Kuppel, zwei Perspektiven
-3. `reference/ref-2-site-with-solar.jpg`, `ref-3-site-trees.jpg` — Umgebung (Fluss, Wehr, Solarfeld); v1 ausserhalb
+3. `reference/ref-5-dome-closeup.jpg` (Geruest, Sockel, Tischring, Tanks von schraeg oben), `reference/ref-6-grow-tables-detail.jpg` (Pflanztische, Nahaufnahme)
+4. `reference/ref-2-site-with-solar.jpg`, `ref-3-site-trees.jpg` — Umgebung (Fluss, Wehr, Solarfeld); v1 ausserhalb
 
 ## Teileliste (aus den Bildern erkannt; Masse = Annahmen, an Referenz zu kalibrieren)
 
@@ -53,7 +54,7 @@ Jede Runde: bauen -> Screenshot aus Kamera wie `ref-4` -> Referenz und Screensho
 
 Bei Konflikt gewinnt die hoehere Quelle: 1. Kuppel Grundflaeche 12 m, Hoehe 6 m (verbindlich) · 2. Tuer 1,0 x 2,0 m (Normtuer, wahrscheinlich) · 3. Menschenmasse (Tischhoehe 0,9-1,0 m, Fass 1-1,2 m, Gehweg >= 0,8 m) · 4. Pixelverhaeltnisse aus ref-4 (nur Anordnung/relative Groesse).
 
-Umgesetzt (Runde 6, Tabelle `P` in `scripts/gen_dome.py`): Kuppel 3V, D 12,0 m, H 6,0 m (Verhaeltnis gemessen 6095/12119 = 0,503; 5/8-Geruest in Z gestaucht, da 3V keinen Aequator-Ring hat), Stab r 45 mm · Sockel 0,6 m hoch, 0,25 m Ueberstand · Tuer 1,0x2,0 m, 1,1 m seitlich versetzt · T5 D3,8x1,2 · T6 D2,2x0,9 · T7 D1,1x1,2 auf 0,5 m Staendern · Betten 2,3x0,9x0,95, 3 Reihen Topf-Loecher, Ring r 4,8 m, Bett 09 gekuerzt auf 1,2 m · Substratwanne 2,2x0,76x0,55 · Rohr D0,3 · Schaltschrank 0,8x0,5x1,2. Abweichung zur Referenz: Tuer im Bild relativ groesser (Perspektive); Punkt 1/2 gehen vor. Pixelvermessung der Tanks/Betten ist Naeherung (Perspektive), nicht auf 5 % belegt.
+Umgesetzt (Runde 6, Tabelle `P` in `scripts/gen_dome.py`): Kuppel 2V (ab Runde 7; vorher 3V), D 12,0 m, H 6,0 m (Verhaeltnis gemessen 6095/12119 = 0,503; 5/8-Geruest in Z gestaucht, da 3V keinen Aequator-Ring hat), Stab r 45 mm · Sockel 0,6 m hoch, 0,25 m Ueberstand · Tuer 1,0x2,0 m, 1,1 m seitlich versetzt · T5 D3,8x1,2 · T6 D2,2x0,9 · T7 D1,1x1,2 auf 0,5 m Staendern · Betten 2,3x0,9x0,95, 3 Reihen Topf-Loecher, Ring r 4,8 m, Bett 09 gekuerzt auf 1,2 m · Substratwanne 2,2x0,76x0,55 · Rohr D0,3 · Schaltschrank 0,8x0,5x1,2. Abweichung zur Referenz: Tuer im Bild relativ groesser (Perspektive); Punkt 1/2 gehen vor. Pixelvermessung der Tanks/Betten ist Naeherung (Perspektive), nicht auf 5 % belegt.
 
 ## Status
 
@@ -68,3 +69,7 @@ Offen: Schritte 1-7; echte Masse (DEINE ENTSCHEIDUNG, falls bekannt)
 7. Kuppel 12 m / 6 m, Abweichung < 3 % — erfuellt (Runde 6)
 8. Betten 2,3 x 0,9 m mit 3 Reihen Topf-Loechern, Tuerzugang frei — erfuellt (Bett 09 gekuerzt, Tuer versetzt); Abstand Tuer–Bett 09 ~0,55 m seitlich, Zugang radial frei (nicht auf 1,0 m seitlich)
 9. Sockel Ueberstand <= 0,3 m — erfuellt (0,25 m)
+10. Geruest 2V statt 3V (ref-5: 5 Dreiecke am Scheitel, grosse Felder, Basis-Zehneck) — erfuellt Runde 7; 2V hat exakt 10 Knoten auf Z=0 (Halbkugel, H/D = 0,5), 63 Streben inkl. 10 Basiskanten; Haut/Nabenfreiheit: Haut T2 offen (Phase 2), Knoten ohne Naben
+11. Sockel flach, Zehneck, kaum Ueberstand — erfuellt (0,4 m hoch, 0,25 m Ueberstand)
+12. Pflanztische wie ref-6 (Rinnen, gestaffelte Reihen, Schlaeuche, 10-12 Tische) — teilweise: 10 Tische mit 3 Reihen x 6 Loechern; Schlaeuche, Neigung, gerippte Oberseite, Winkelstuetzen offen
+13. Tanks wie ref-5 (Rand dick, Wasserscheibe) — teilweise: Wasserscheibe T5_Wasser da; gerundeter Rand, Farben offen

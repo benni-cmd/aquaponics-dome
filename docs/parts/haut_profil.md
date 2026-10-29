@@ -1,0 +1,87 @@
+# Bauteilblatt T41 haut_profil (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/haut_profil.json` und `designs/components/haut_profil.sc`, nicht von Hand aendern)
+
+**Funktion:** Randprofil der Kuppelhaut: Aluminium-Kappe auf jeder Strebe, auf der die Paneelkanten beider Nachbarfelder aufliegen (je 15 mm Auflage) und gehalten werden.
+
+**Datei:** `designs/components/haut_profil.sc` · **Teilenummer:** T41 · **Revision:** A · **Bezugspunkt:** Mitte der Kappenlaenge auf der Strebenachse, X = Laengsrichtung, Y quer (Breite 30), Z 0 = Unterkante der Kappe (liegt auf der Strebe), Z 8 = Oberkante; U-Profil oeffnet nach unten
+
+**Anzahl (Instanzen):** 65 (30 x A 3279, 35 x B 3708): je Strebe eine Kappe (Quelle: data/layout.json dome.struts 65, strut_len_mm (30 x 3279, 35 x 3708))
+
+## Masse und Parameter
+
+| Parameter | Wert | Einheit | Herkunft |
+|---|---|---|---|
+| `cap_w` | 30 | mm | [A] R11: Kappe 30 mm breit (Paneele enden 15 mm vor der Strebenachse) |
+| `cap_h` | 8 | mm | [A] R11: Kappe 8 mm hoch |
+| `cap_wall` | 2 | mm | [A] Wand der Aluminium-Kappe 2 mm (Strangpressprofil) |
+| `len` | 3279 | mm | layout.json dome.strut_len_mm: A 3279 / B 3708 (Knoten-zu-Knoten-Mass; die Kappe laeuft ueber die ganze Strebe; Strebenversatz an den Knoten nicht abgezogen, A) |
+
+Gesamt-Box (Messung): X -1639.5 bis 1639.5, Y -15.0 bis 15.0, Z 0.0 bis 8.0 mm; Koerper: 1.
+
+**Toleranzen / Spiel:** Laenge = Knoten-zu-Knoten-Mass (Knotenversatz nicht abgezogen, A); Wand 2 mm Strangpressprofil.
+
+## Werkstoff und Gewicht
+
+- Werkstoff: Aluminium EN AW-6063 (Strangpressprofil), Dichte 2.7 g/cm3, Farbe #c9ced2 ([A] Standard-Aluminium-Strangpressprofil, Dichte 2,7)
+- Volumen (Messung, `solidcraft-cli eval`): 275.4 cm3 · Masse leer: 744 g (0.74 kg)
+
+## Querschnitt / Profil
+
+U-Profil 30 breit x 8 hoch, Wand 2 mm, offen nach unten (sitzt auf der Strebe), Querschnitt 84 mm2; Laenge A 3279 / B 3708 als Konfiguration; Masse A 0.74 kg, B 0.84 kg.
+
+## Ports (Anschluesse)
+
+| Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
+|---|---|---|---|
+| Auflage Strebe | U-Profil Innenbreite 26 mm | Z 0 (Unterkante), y +-13 (Innenwaende) | Kappe sitzt auf dem Strebenrohr, offene Seite nach unten |
+| Auflage Paneel | Oberseite 30 mm breit | Z 8 (Oberkante), y +-15 | Paneelkanten beider Nachbarfelder liegen je 15 mm auf der Kappe |
+
+## Verbindungen und Befestigungen
+
+- Befestigung auf der Strebe (Schrauben/Klemmung) und Dichtband zwischen Kappe und Paneel nicht modelliert [A]
+
+## Herkunft (docs/provenance.md)
+
+| Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
+|---|---|---|---|---|
+| Kappe 30 x 8 mm | 30 x 8 mm | A | R11: Aluminium-Kappe 30 mm breit, 8 mm hoch | niedrig |
+| Wand 2 mm, U-Profil offen nach unten | 2 mm | A | Strangpressprofil-Annahme | niedrig |
+| Laengen A 3279 / B 3708, 65 Stueck | 30 x A + 35 x B | OBJ | layout.json dome.strut_len_mm | hoch |
+| Aluminium EN AW-6063, 2,7 g/cm3 | 2,7 g/cm3 | A | Standardwerkstoff Strangpressprofil | niedrig |
+
+## Referenz und Abweichung zum OBJ
+
+- Referenzbild: reference/ref-6-grow-tables-detail.jpg
+- Quelle der Masse: docs/research/R11.md (Aluminium-Kappe 30 mm breit, 8 mm hoch, Paneele enden 15 mm vor der Strebenachse), data/layout.json dome.strut_len_mm (3279 / 3708; 30 x A + 35 x B = 65)
+- Abweichung zum OBJ: keine OBJ-Vorgabe (das OBJ-Dom hat keine Haut).
+
+## Montage (L4)
+
+1. Kappe auf die Strebe legen, ausrichten, befestigen
+2. Paneele auflegen, Dichtband einlegen
+
+**Werkzeug:** Saege (Zuschnitt), Akkuschrauber
+
+## Stueckliste-Zeile
+
+- T41 Haut-Randprofil Alu-Kappe 30 x 8 x 2: 30 x Laenge 3279 (A) + 35 x Laenge 3708 (B) = 65 Stueck, gesamt ca. 52 kg
+
+## Alternative lokale Fertigung
+
+Aluminium-Kappenprofile gibt es als Strangpressprofil (Gewaechshausbau, Foliensysteme); Standardlaenge 6 m, Zuschnitt auf 3279/3708 [A, nicht recherchiert].
+
+## Renders
+
+- `renders/components/haut_profil/haut_profil-01-iso.png`
+- `renders/components/haut_profil/haut_profil-02-querschnitt.png`
+
+## Pruefung
+
+- Gauntlet-Urteil: offen (kein Pruefer-Lauf, Wochenlimit)
+- scripts/workshop/check_haut.py (27/27 PASS): Laenge A/B, Breite, Hoehe, Querschnitt 84 mm2, Masse
+- Bilder renders/components/haut_profil/ (Iso, Querschnitt); kein Bild-Kritiker, kein Spec-Pruefer (Wochenlimit)
+
+## Offene Fragen
+
+- Befestigung der Kappe auf der Strebe, Dichtband und Eckverbindung an den Knoten nicht modelliert
+- Profilform (U 30 x 8, Wand 2) ist Annahme A; R11 nennt nur Breite/Hoehe
+- Laenge ohne Knotenversatz (Knoten-zu-Knoten-Mass)

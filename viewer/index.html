@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuppel Live-Viewer</title>
+<style>
+  :root { --bg:#0f1720; --panel:#17212c; --line:#2a3846; --text:#e6edf3; --muted:#9fb0c0; --accent:#4cc38a; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--text); font:13px/1.4 system-ui, sans-serif; overflow:hidden; }
+  #view { position:fixed; inset:0; }
+  #panel { position:fixed; top:10px; left:10px; width:250px; max-height:calc(100% - 20px); overflow:auto; background:var(--panel);
+           border:1px solid var(--line); border-radius:8px; padding:10px; }
+  #panel h1 { font-size:14px; margin:0 0 6px; }
+  #status { color:var(--muted); font-size:12px; margin-bottom:8px; }
+  #status b { color:var(--accent); font-weight:600; }
+  .row { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
+  button { background:#223142; color:var(--text); border:1px solid var(--line); border-radius:5px; padding:4px 8px; cursor:pointer; font:inherit; }
+  button:hover { border-color:var(--accent); }
+  label { display:flex; align-items:center; gap:6px; padding:1px 0; cursor:pointer; }
+  .sw { width:10px; height:10px; border-radius:2px; border:1px solid #0006; flex:none; }
+  input[type=range] { width:100%; }
+  h2 { font-size:12px; margin:10px 0 4px; color:var(--muted); font-weight:600; }
+</style>
+<script type="importmap">
+{ "imports": { "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+               "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+</script>
+</head>
+<body>
+<div id="view"></div>
+<div id="panel">
+  <h1>Kuppel Live-Viewer</h1>
+  <div id="status">verbinde ...</div>
+  <div class="row">
+    <button data-cam="iso">Ansicht ref-4</button><button data-cam="top">Oben</button>
+    <button data-cam="side">Seite</button><button data-cam="pool">Pool</button>
+  </div>
+  <label><input type="checkbox" id="wire"> Drahtgitter</label>
+  <label><input type="checkbox" id="auto" checked> Auto-Update</label>
+  <h2>Schnitt (Hoehe)</h2>
+  <input type="range" id="clip" min="0" max="7000" value="7000">
+  <h2>Gruppen</h2>
+  <div id="groups"></div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+
+const view = document.getElementById('view');
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.localClippingEnabled = true;
+view.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0f1720);
+const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 100, 400000);
+camera.up.set(0, 0, 1);                       // Z ist oben, Masse in mm
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+scene.add(new THREE.HemisphereLight(0xffffff, 0x445566, 1.3));
+const sun = new THREE.DirectionalLight(0xffffff, 1.6); sun.position.set(-8000, -12000, 16000); scene.add(sun);
+
+const CAMS = {
+  iso:  { pos: [0, -19000, 11000], target: [0, 0, 2200] },
+  top:  { pos: [0, -1, 26000],      target: [0, 0, 0] },
+  side: { pos: [0, -26000, 3200],   target: [0, 0, 3000] },
+  pool: { pos: [3500, -5500, 3200], target: [0, 0, 300] },
+};
+function setCam(k) { const c = CAMS[k]; camera.position.set(...c.pos); controls.target.set(...c.target); controls.update(); }
+setCam('iso');
+
+const clipPlane = new THREE.Plane(new THREE.Vector3(0, 0, -1), 7000);
+const mats = new Map();
+function matFor(color, opacity) {
+  const key = color + '|' + opacity;
+  if (!mats.has(key)) mats.set(key, new THREE.MeshStandardMaterial({
+    color, flatShading: true, side: THREE.DoubleSide, roughness: 0.65, metalness: 0.1,
+    transparent: opacity < 1, opacity, clippingPlanes: [clipPlane], depthWrite: opacity >= 1 }));
+  return mats.get(key);
+}
+
+let model = null, plants = null, extras = {}, groupsOn = {}, version = -1;
+const loader = new OBJLoader();
+const plantGeo = new THREE.SphereGeometry(1, 10, 8);
+const plantMat = new THREE.MeshStandardMaterial({ color: 0x3f9a3a, flatShading: true, roughness: 0.8, clippingPlanes: [clipPlane] });
+
+function groupKey(name) { return name.replace(/_\d+$/, '').replace(/\d+$/, ''); }
+function colorFor(name) {
+  const c = extras.colors && extras.colors[name];
+  return c ? matFor(c[0], c[1]) : matFor('#b0b8c0', 1);
+}
+function buildGroups() {
+  const keys = new Map();
+  model.traverse(o => { if (o.isMesh) { const k = groupKey(o.name || o.parent.name); (keys.get(k) || keys.set(k, []).get(k)).push(o); } });
+  const box = document.getElementById('groups'); box.innerHTML = '';
+  [...keys.keys()].sort().forEach(k => {
+    const c = extras.colors && extras.colors[keys.get(k)[0].name];
+    const lab = document.createElement('label');
+    lab.innerHTML = `<input type="checkbox" checked><span class="sw" style="background:${c ? c[0] : '#b0b8c0'}"></span>${k} (${keys.get(k).length})`;
+    lab.querySelector('input').addEventListener('change', e => { groupsOn[k] = e.target.checked; keys.get(k).forEach(o => o.visible = e.target.checked); });
+    if (k in groupsOn) { lab.querySelector('input').checked = groupsOn[k]; keys.get(k).forEach(o => o.visible = groupsOn[k]); }
+    box.appendChild(lab);
+  });
+}
+async function load() {
+  const [obj, ex] = await Promise.all([fetch('model.obj?v=' + Date.now()).then(r => r.text()), fetch('extras.json?v=' + Date.now()).then(r => r.json())]);
+  extras = ex;
+  const m = loader.parse(obj);
+  m.traverse(o => { if (o.isMesh) { o.material = colorFor(o.name || o.parent.name); o.name = o.name || o.parent.name; } });
+  if (model) { scene.remove(model); model.traverse(o => o.geometry && o.geometry.dispose()); }
+  model = m; scene.add(model);
+  if (plants) scene.remove(plants);
+  const P = ex.plants || [];
+  plants = new THREE.InstancedMesh(plantGeo, plantMat, P.length);
+  const d = new THREE.Object3D();
+  P.forEach((p, i) => { d.position.set(...p.c); d.scale.setScalar(p.r); d.updateMatrix(); plants.setMatrixAt(i, d.matrix); });
+  scene.add(plants);
+  buildGroups(); applyWire();
+}
+function applyWire() { const w = document.getElementById('wire').checked; mats.forEach(m => m.wireframe = w); plantMat.wireframe = w; }
+document.getElementById('wire').addEventListener('change', applyWire);
+document.getElementById('clip').addEventListener('input', e => { clipPlane.constant = +e.target.value; });
+document.querySelectorAll('[data-cam]').forEach(b => b.addEventListener('click', () => setCam(b.dataset.cam)));
+
+async function poll() {
+  const st = document.getElementById('status');
+  try {
+    const s = await fetch('/api/state?t=' + Date.now()).then(r => r.json());
+    const auto = document.getElementById('auto').checked;
+    st.innerHTML = `Modell gespeichert <b>${s.design_saved || '-'}</b> · Viewer <b>${s.built || '-'}</b>` +
+      (s.busy ? ' · <b>exportiert ...</b>' : '') + (s.error ? '<br>Fehler: ' + s.error.replace(/</g, '&lt;') : '') +
+      (extras.bodies ? `<br>${extras.bodies} Koerper, ${(extras.plants || []).length} Pflanzen` : '');
+    if (auto && s.version !== version && s.version > 0) { version = s.version; await load(); }
+  } catch (e) { st.textContent = 'Server nicht erreichbar'; }
+}
+setInterval(poll, 2000); poll();
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+(function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+</script>
+</body>
+</html>

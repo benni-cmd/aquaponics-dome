@@ -22,3 +22,8 @@
 - Werkstatt: Limit-Abbruch um ca. 05:30, angestossen 07:12 (Plan: NFT-Tisch abschliessen, dann IBC-Beet; erst git status, nur konsistente Staende committen). Letzter Commit 8dba568 (05:13).
 - Montage: seit 04:45 nicht mehr aktiv (Limit). start_session und run_scheduled_task sind in automatischen Laeufen vom Auto-Modus gesperrt (nicht umgangen). Start geschieht ueber den dauerhaften Auftrag `dome-loop-hourly-fallback` (:41, naechster Lauf ca. 07:41) oder durch Ben mit dem Prompt aus `docs/resume.md`. `dome-loop-restart-0715` ist abgeschaltet (Doppelstart-Gefahr, alter Sitzungsname).
 - Naechste Orchestrator-Schritte: Abnahme NFT-Tische (nach Werkstatt-Meldung), Plan auffuellen, R09/R11 recherchieren, Viewer-Server neu starten falls Stand veraltet (zeigt 04:08).
+
+## Stand 07:48 (Kontext 90 %, Limit 5h 39 %, Woche 65 %)
+- Werkstatt laeuft gut: NFT-Rinne und NFT-Tische abgenommen (Board), R06/R09 geliefert, IBC-Beet nach Bild-Kritiker (708bc15), Tank klein/gross gebaut (Kritiker/Blaetter offen). Naechste Orchestrator-Abnahmen: IBC-Beet, Tank klein, Tank gross, Netztopf, Salatkopf.
+- Montage: KEINE Sitzung aktiv und kein Commit seit 04:45 (b1b48c7). Der stuendliche Auftrag (:41) hat sie bisher nicht sichtbar gestartet. Einzige Hebel: Ben startet sie mit dem Prompt aus `docs/resume.md` (Abschnitt Integrator = Montage, Plan `docs/next-steps-montage.md`), oder ein spaeterer Lauf des Auftrags greift. start_session und run_scheduled_task sind in automatischen Laeufen gesperrt.
+- Verdichtung: Falls ich verdichtet werde, ist der Stand vollstaendig in diesen Dateien: docs/orchestrator-state.md, docs/integration-board.md, docs/research-queue.md (offen nur R11 Haut), docs/review-lessons.md, docs/next-steps-*.md.

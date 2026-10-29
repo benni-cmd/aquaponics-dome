@@ -129,7 +129,7 @@ for it in inter:
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))
 chk("L6 Kollisionen (ohne Strebenknoten, Rohr/Schlauch; ohne offene Werkstatt-Maengel)", len(bad), 0, len(bad) == 0)
 res.append({"info": "Kollisionen", "pairs": bad[:20]})
-unch = find(rr, "unchecked") or []
+unch = [u for u in (find(rr, "unchecked") or []) if u.get("b") and frozenset((u["a"], u["b"])) in candset]   # nur Kandidatenpaare (das Werkzeug paart alle uebergebenen Koerper)
 from collections import Counter
 if unch: print("NICHT GEPRUEFT je Klassenpaar:", dict(Counter(" x ".join(sorted({G[u["a"]][0], G.get(u["b"], ("?",))[0]})) for u in unch if u.get("b"))))
 chk("L6 Kollisionspruefung vollstaendig (alle Kandidatenpaare exakt geschnitten)", len(unch), 0, len(unch) == 0)

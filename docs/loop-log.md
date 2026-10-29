@@ -6,3 +6,4 @@
 - R8: gestaffelte Pflanzreihen, 4 Substratwannen, 6 Schlaeuche.
 - R9: Hoehe/Breite per Zahlen 0,50 belegt; Tischring r 4,5 m.
 - R10: check_latte.py 23/23 PASS: Strebenlift 75 mm, Bettbeine/Wannen entzerrt (Kollisionen 0).
+- R11 (Schicht 1): Farben je Teil per appearance.assign (Tanks salbeigruen, Tische weiss, Rohr/Schlaeuche blau, Streben silber, Wasser blau); check 23/23.

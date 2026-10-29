@@ -42,7 +42,7 @@
 ## Verfeinerungsschleife v3 (Detail-Schichten)
 
 Pro Schicht: bauen -> `python scripts/check_latte.py` (muss PASS bleiben) -> Screenshot -> Commit+Push. Abbruch: alle Schichten durch oder zwei ohne sichtbare Verbesserung.
-- [ ] 1 Farben/Materialien je Teil · [ ] 2 Pflanzen (Salatkoepfe, 3 gestaffelte Reihen; Substratwannen) · [ ] 3 Tankraender gerundet, Wasserflaeche blau · [ ] 4 Schlaeuche/Rohr sauber verlegt · [ ] 5 Haut T2 transparent (falls moeglich) · [ ] 6 Rippen/Neigung der Tische
+- [x] 1 Farben/Materialien je Teil · [ ] 2 Pflanzen (Salatkoepfe, 3 gestaffelte Reihen; Substratwannen) · [ ] 3 Tankraender gerundet, Wasserflaeche blau · [ ] 4 Schlaeuche/Rohr sauber verlegt · [ ] 5 Haut T2 transparent (falls moeglich) · [ ] 6 Rippen/Neigung der Tische
 Latte 1-13 (Mass-Pruefung) gelten als erfuellt: `check_latte.py` 23/23 PASS. Photoreal: img2img gescheitert (`renders/failed-photoreal-01.png`), noetig ControlNet (Canny/Depth), nach den Schichten.
 
 ## Status

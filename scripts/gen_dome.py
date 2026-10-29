@@ -12,7 +12,22 @@ P = dict(  # Parameter-Tabelle, von Ben bestaetigt 29.10.2026: Basis 12 m, Hoehe
     pipe_d=300, cab_x=800, cab_y=500, cab_z=1200, wall=160)
 
 cmds = []
-def add(c, **p): cmds.append({"command": c, "params": p})
+names = []
+def add(c, **p):
+    cmds.append({"command": c, "params": p})
+    if p.get("body_name"): names.append(p["body_name"])
+
+COLORS = [  # (Namenspraefix, Farbe, Deckkraft) - Schicht 1
+    ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85),
+    ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
+    ("T10_Zulaufrohr", "#5fa8e0", 1), ("T10_Schlauch", "#8cc8f0", 1), ("T11_", "#8b9096", 1)]
+
+def colors():
+    left = list(names)
+    for pre, col, op in COLORS:
+        grp = [n for n in left if n.startswith(pre)]
+        left = [n for n in left if n not in grp]
+        if grp: add("appearance.assign", bodies=grp, color=col, opacity=op)
 def rot(x, y, a): c, s = math.cos(a), math.sin(a); return (x*c - y*s, x*s + y*c)
 def pol(r, az): a = math.radians(az); return (r*math.cos(a), r*math.sin(a))
 
@@ -148,5 +163,6 @@ if __name__ == "__main__":
     if stage >= 2: t5_t7(P["sock_h"])
     if stage >= 3: t8_t9(P["sock_h"])
     if stage >= 4: t10_t11(P["sock_h"])
+    colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

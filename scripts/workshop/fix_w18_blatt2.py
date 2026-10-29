@@ -35,8 +35,8 @@ for t, G in Gs.items():
     legs = "; ".join(f"x {fmt(x)} / y {fmt(y)}" for (x, y) in G["legs"])
     ports.append([f"{t}: Fussplatten-Anker", f"M8, 2 Schrauben je Platte ({fp} x {fp} x 5), Loch D9, Diagonalversatz +-{fp / 2 - 15:g}", f"Fusspunkte z 5 an: {legs}", "Befestigung auf dem Boden/Betonpunkt, Richtung -Z"])
 bl["ports"] = ports
-FIND = "Pruefer W17/W18 (offen): Laufweg A am Innenpfosten nur 486 mm (Plattenaussenkante 2210 gegen Innenportal 2696; D29: nie unter 500) und die Fussplatten stehen wegen des exzentrischen Beckens (cx -36, cy 20) nur 4 mm vom Beckenrand; Abhilfe braucht Orchestrator/Montage: Innenbeete 40 mm nach aussen (inner_bed_shift 66 -> 26, dann A 526 / B 560) oder Becken zentrieren; check_nft_fit meldet beide als FAIL"
-bl["offen"] = [x for x in bl["offen"] if not x.startswith("Pruefer W17/W18 (offen)")] + [FIND]
+FIND = "Pruefer W17/W18 (behoben, Rest M7): Laufweg A am Innenpfosten war 486 mm (< 500): leg_clearance_innen 30 -> Plattenaussenkante 2195, Laufweg A frei 500 mm (D29: nie unter 500, Ziel 600 mit Innenportal); gilt fuer das zentrierte Becken des Budgets; mit dem OBJ-Becken (cx -36, cy 20, exzentrisch) beruehrt die Platte den Beckenrand (-11 mm): M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen (inner_bed_shift 66 -> 26)"
+bl["offen"] = [x for x in bl["offen"] if not x.startswith("Pruefer W17/W18")] + [FIND]
 rows = d["herkunft_tabelle"]
 for r in rows:
     if r[0].startswith("Lochraster je Reihe mit Phase 0"):

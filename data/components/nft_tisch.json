@@ -232,7 +232,7 @@
    [
     "innen: Fussplatten-Anker",
     "M8, 2 Schrauben je Platte (70 x 70 x 5), Loch D9, Diagonalversatz +-20",
-    "Fusspunkte z 5 an: x -84 / y -311; x 174 / y -311",
+    "Fusspunkte z 5 an: x -84 / y -296; x 174 / y -296",
     "Befestigung auf dem Boden/Betonpunkt, Richtung -Z"
    ]
   ],
@@ -260,7 +260,7 @@
    "     Rinnen (3): 3051 mm / 15 Loecher, 2864 mm / 14 Loecher, 2676 mm / 13 Loecher; Verteiler d25 schraeg: Laenge 869; Sammelrohr d50 schraeg: Laenge 869",
    "  mitte: Beine 4 x 40x40x3: Laenge 1243 / 1227, Beinabstand y 1093; Querholm 40x60x3 x 2: Laenge 1133; Querstrebe 40x40x3 x 2: Laenge 1053; Laengsstreben 40x40x3 x 2: Laenge 965; Diagonalen 25x3 x 4; Laengsdiagonalen 25x3 x 2; Fussplatten 70x70x5 x 4",
    "     Rinnen (4): 2018 mm / 9 Loecher, 1847 mm / 8 Loecher, 1676 mm / 7 Loecher, 1505 mm / 6 Loecher; Verteiler d25 schraeg: Laenge 1092; Sammelrohr d50 schraeg: Laenge 1092",
-   "  innen: Pfosten 2 x 40x40x3: Laenge 777 / 773; Kragarm 40x60x3 x 2: Laenge 557; Laengsstrebe 40x40x3 x 1: Laenge 218 (Z 400); Laengsdiagonale 25x3 x 1; Fussplatten 70x70x5 x 2",
+   "  innen: Pfosten 2 x 40x40x3: Laenge 777 / 773; Kragarm 40x60x3 x 2: Laenge 542; Laengsstrebe 40x40x3 x 1: Laenge 218 (Z 400); Laengsdiagonale 25x3 x 1; Fussplatten 70x70x5 x 2",
    "     Rinnen (2): 928 mm / 4 Loecher, 758 mm / 3 Loecher; Verteiler d25 schraeg: Laenge 538; Sammelrohr d50 schraeg: Laenge 538",
    "Je Bock (Portal): 2 Beine, 1 Holm, 1 Querstrebe, 2 Diagonalen, 2 Fussplatten, 4 Schrauben M8x30, 4 Schrauben M6x40 + 4 Muttern M6, 2 Rinnenhalter je Rinne mit Schraube M5x12; Bock-Anzahl 2 je Tisch. Je Bock (Ausleger): 1 Pfosten, 1 Kragarm, 1 Fussplatte, 2 Schrauben M8x30, 2 Rinnenhalter je Rinne.",
    "Dabei: 4 Duebel/Anker M8 je Bock (Boden; innen Verbundanker), je 1 Endstopfen d25 und d50 je Tisch (-Y-Rohrende)",
@@ -277,7 +277,7 @@
   "pruefung": [
    "Bild-Kritiker (Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innen/Aussen) und Spec-Pruefer: Runden siehe docs/workshop-log.md (W16)",
    "scripts/workshop/check_nft_tisch.py (196/196 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage (pitch 200), Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze; Winkelhalter (Zahl, Lage, Masse, inspect.interference ohne Treffer)",
-   "scripts/workshop/check_nft_fit.py (40/42 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische mit den verschobenen OBJ-Beeten (Aussen 800 x 2640): Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite (rechnerisch, weil L aus dieser Gleichung folgt), Footprint-Abstand benachbarter Tische >= corner_gap (gemessen 95-114), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, NFT-Topfloecher >= 459 und >= 580 (586), Laufwege A/B >= 500 und Wandluft >= 100 (aus den Budget-Parametern gerechnet). 2 FAIL (Pruefer W17/W18, offen): Laufweg A frei am Innenpfosten 486 mm < 500 (Plattenaussenkante 2210 gegen Innenportal 2696) und Plattenkante nur 4 mm vom exzentrischen Beckenrand (>= 5); beides haengt aneinander (Pfosten naeher ans Becken = Weg breiter, aber Becken kollidiert) -> Entscheidung Orchestrator/Montage: Innenbeete 40 mm nach aussen (inner_bed_shift 66 -> 26, Laufweg B 560) oder Becken zentrieren"
+   "scripts/workshop/check_nft_fit.py (42/42 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische mit den verschobenen OBJ-Beeten (Aussen 800 x 2640): Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite (rechnerisch, weil L aus dieser Gleichung folgt), Footprint-Abstand benachbarter Tische >= corner_gap (gemessen 95-114), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, Innenpfosten-Platten >= 5 mm vom (zentrierten) Beckenrand, NFT-Topfloecher >= 459 und >= 580 (586), Laufwege A/B >= 500 und Wandluft >= 100, Laufweg A frei am Innenpfosten 500 (aus den Budget-Parametern gerechnet; mit dem exzentrischen OBJ-Becken waere die Plattenkante -11 mm: Hinweis im Check, M7)"
   ],
   "offen": [
    "Statik der Portal-/Auslegerboecke nicht nachgewiesen (Querholm 40x60x3 ueber ca. 1,2 m: Biegung 50 kg mittig ca. 150 Nm, ca. 15 N/mm2 [E]; Kragarm innen ca. 165 Nm am Pfosten, Fussplatte/Verbundanker nachzurechnen)",
@@ -287,11 +287,10 @@
    "Gefaelle: detail-standard.md und Scope-Card nennen noch 1 cm/m, gebaut 1,5 % nach R06 (Orchestrator-Vorgabe)",
    "Innen: Pfosten stehen ausserhalb des Beckenrands (Wasserradius 1945 + Wand 150 + 60 + 50); der Kragarm ueberspannt Rand Z 650 mit 130 mm Luft; ein tiefer Stuetzwinkel am Pfosten ist wegen der Beckenwand nicht moeglich (Annahme A); der Winkelhalter T23 sitzt am Pfostenkopf (Z 719-781) ueber dem Beckenrand Z 650",
    "W17/W18: corner_gap von 100 auf 60 mm gesenkt (Annahme A, W17); mit Lochabstand 200 (W18/D32) ergibt das 586 Topfloecher (Mindestzahl 459, Soll ca. 580); mit corner_gap 100 waeren es nur 542",
-   "W17/W18: corner_gap von 100 auf 60 mm gesenkt (Annahme A, W17); mit Lochabstand 200 (W18/D32) ergibt das 586 Topfloecher (Mindestzahl 459, Soll ca. 580); mit corner_gap 100 waeren es nur 542",
-   "W17: Portalrand = Beet-Aussenkante + 115 mm (Fussplatte 70, leg_clearance 45); Laufwege nach check_nft_fit: A (Beckenrand-Innenportal) 600 mm, B (Innen-Aussenportal) 600 mm, Wandluft 218 mm; Aussenkante Tisch in 1,3 m Hoehe gegen Strebenabstand: Montage rechnet nach (D29)",
+   "W17: Portalrand = Beet-Aussenkante + 115 mm (Fussplatte 70, leg_clearance 45, Innenpfosten 30); Laufwege nach check_nft_fit: A (Beckenrand-Innenportal) 600 mm, B (Innen-Aussenportal) 600 mm, Wandluft 218 mm; Aussenkante Tisch in 1,3 m Hoehe gegen Strebenabstand: Montage rechnet nach (D29)",
    "W17: aussen 3 Rinnen (OBJ 2) bleibt Annahme; Reihen auf ap 4685, 4973, 5261 (Mitte 4973 +- 288)",
    "W17: Tischmitte folgt den Beeten nach Verschiebung (outer_bed_shift 236 / inner_bed_shift 66, M7); die OBJ-Beete liegen einzeln bis ca. 70 mm daneben, daher Beine-Beet-Abstand im Check ab 30 mm",
-   "Pruefer W17/W18 (offen): Laufweg A am Innenpfosten nur 486 mm (Plattenaussenkante 2210 gegen Innenportal 2696; D29: nie unter 500) und die Fussplatten stehen wegen des exzentrischen Beckens (cx -36, cy 20) nur 4 mm vom Beckenrand; Abhilfe braucht Orchestrator/Montage: Innenbeete 40 mm nach aussen (inner_bed_shift 66 -> 26, dann A 526 / B 560) oder Becken zentrieren; check_nft_fit meldet beide als FAIL"
+   "Pruefer W17/W18 (behoben, Rest M7): Laufweg A am Innenpfosten war 486 mm (< 500): leg_clearance_innen 30 -> Plattenaussenkante 2195, Laufweg A frei 500 mm (D29: nie unter 500, Ziel 600 mit Innenportal); gilt fuer das zentrierte Becken des Budgets; mit dem OBJ-Becken (cx -36, cy 20, exzentrisch) beruehrt die Platte den Beckenrand (-11 mm): M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen (inner_bed_shift 66 -> 26)"
   ]
  },
  "herkunft_tabelle": [
@@ -317,8 +316,8 @@
    "mittel"
   ],
   [
-   "Auslegerbock innen: Pfosten bei ap = Pool-Aussenradius 2095 + 60 + 50",
-   "ap 2205",
+   "Auslegerbock innen: Pfosten bei ap = Pool-Aussenradius 2095 + 30 + 35",
+   "ap 2160",
    "E + A",
    "layout.json pool.d/2 1945 + params.json wall 150 (A) + leg_clearance + Fussplatte/2; Kragarm 40x60x3 ueber das Wasser, Statik nicht nachgewiesen",
    "niedrig"
@@ -560,6 +559,27 @@
    "E + A",
    "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
    "mittel"
+  ],
+  [
+   "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",
+   "mm",
+   "E + A",
+   "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
+   "mittel"
+  ],
+  [
+   "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",
+   "mm",
+   "E + A",
+   "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
+   "mittel"
+  ],
+  [
+   "leg_clearance_innen 30 mm zwischen Beckenrand und Fussplattenkante der Innen-Pfosten",
+   "30 mm",
+   "A",
+   "W17-Nachtrag: Laufweg A frei am Pfosten 500 mm (Plattenaussenkante 2195 gegen Innenportal 2696); sonst leg_clearance 45; gilt fuer zentriertes Becken (Budget D28/D29)",
+   "niedrig"
   ],
   [
    "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",

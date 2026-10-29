@@ -43,7 +43,8 @@ for c in cmds:
     p = c["params"]
     if c["command"] == "occurrence.move" and str(p.get("occurrence", "")).startswith("Strebe_"):
         m = p["matrix"]; L = 0.5465 * P["dome_base_d"] / 2 if p["occurrence"].startswith("Strebe_A") else 0.618 * P["dome_base_d"] / 2
-        for pt in (tuple(round(m[i]) for i in (3, 7, 11)), tuple(round(m[i + 3 - 0] if False else m[(3, 7, 11)[j]] + m[(2, 6, 10)[j]] * L) for j in range(3))):
+        o = P["strut_end_offset"]; org = [m[(3, 7, 11)[j]] - m[(2, 6, 10)[j]] * o for j in range(3)]   # Strebe beginnt strut_end_offset hinter der Knotenmitte
+        for pt in (tuple(round(v) for v in org), tuple(round(org[j] + m[(2, 6, 10)[j]] * L) for j in range(3))):
             ends[pt] = ends.get(pt, 0) + 1
 apex = max(ends, key=lambda k: k[2]); apex_n = ends[apex]
 base_nodes = [k for k in ends if abs(k[2] - (sock_top + P['strut_r'] + 30)) < 5]
@@ -104,6 +105,8 @@ for i, a in enumerate(names):
         bmin, bmax = bb[b]
         if all(amin[k] < bmax[k] and bmin[k] < amax[k] for k in range(3)):
             cs = {G[a][0], G[b][0]}
+            ring = [n for n in (a, b) if n == "T3_Sockel"]   # Fundamentring: Bounding-Box ueberdeckt alles, nur Koerper am Rand (Radius >= 5600) koennen es beruehren
+            if ring and max(math.hypot(x, y) for n in (a, b) if n != "T3_Sockel" for x in (B[n]["bbox"]["min"][0], B[n]["bbox"]["max"][0]) for y in (B[n]["bbox"]["min"][1], B[n]["bbox"]["max"][1])) < 5600: continue
             kk = ("W-M2" if   # offene Werkstatt-Maengel W-M2/W-M3 (docs/session-notes/werkstatt.md): nur Bounding-Box-Kandidaten gezaehlt, nicht exakt geschnitten (zu viele Paare)
                    any(c.startswith("Tisch_") for c in cs) and any(c.startswith("Beet_") for c in cs) else
                   "W-M3" if all(c.startswith("Tisch_") for c in cs) else None)
@@ -125,6 +128,7 @@ for it in inter:
     if {a.split("_")[0], b.split("_")[0]} & {"T10"} and ({a.split("_")[0], b.split("_")[0]} <= {"T10", "T1", "T5", "T7"}): continue
     if "T13_Erde" in (a, b) and (cs - {"Erdflaeche"}) and all(c.startswith(("Tank_", "Pumpe_", "Tisch_")) for c in cs - {"Erdflaeche"}): continue   # Fussplatten/-schrauben stehen im Boden (Werkstatt: bis 24 mm)
     if all(c.startswith(("Pumpe_", "Tank_")) for c in cs) and any(c.startswith("Pumpe_") for c in cs): openm["W-M1"].append((a, b)); continue   # offener Werkstatt-Mangel W-M1: Tank-Rahmenstreben x OBJ-Pumpentafeln
+    if any(c.startswith(("Knoten_", "Fundamentanker")) for c in cs) and ({a, b} & {"T3_Sockel", "T13_Erde"}): continue   # Knoten/Anker sind im Fundamentring bzw. Erdreich verankert
     print("KOLL", a, b)
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))
 chk("L6 Kollisionen (ohne Strebenknoten, Rohr/Schlauch; ohne offene Werkstatt-Maengel)", len(bad), 0, len(bad) == 0)

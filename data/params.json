@@ -214,5 +214,23 @@
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"
+ },
+ "strut_end_offset": {
+  "value": 120,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Scope-Card knoten/R02: Strebenende liegt 120 mm von der Knotenmitte (Knotenkugel D100 + Steckarm 80 mm in der Strebe); Strebe = Knoten-Knoten-Abstand minus 2 x 120",
+  "r_id": "R02",
+  "maturity": 0,
+  "used_by": "gen_dome.py, scripts/components/strebe.py, check_latte.py"
+ },
+ "strut_pocket": {
+  "value": 24,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Steckaufnahme 24 x 24 x 80 mm an jedem Strebenende fuer den Steckarm 23 x 23 des Knotens (Werkstatt knoten.json spigot_w 23, hub_insert 80)",
+  "r_id": "R02",
+  "maturity": 0,
+  "used_by": "scripts/components/strebe.py"
  }
 }

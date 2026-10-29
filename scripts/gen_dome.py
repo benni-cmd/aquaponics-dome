@@ -72,7 +72,8 @@ def place_struts(segs):
         h = [1, 0, 0] if abs(u[0]) < 0.9 else [0, 1, 0]
         x = [h[1]*u[2]-h[2]*u[1], h[2]*u[0]-h[0]*u[2], h[0]*u[1]-h[1]*u[0]]; xl = math.sqrt(sum(q*q for q in x)); x = [q/xl for q in x]
         y = [u[1]*x[2]-u[2]*x[1], u[2]*x[0]-u[0]*x[2], u[0]*x[1]-u[1]*x[0]]
-        moves[key].append([round(v, 9) for v in (x[0], y[0], u[0], A[0], x[1], y[1], u[1], A[1], x[2], y[2], u[2], A[2])])
+        o = P["strut_end_offset"]   # Strebe beginnt 120 mm hinter dem Knoten (Komponente = Knoten-Knoten minus 2 x Endversatz)
+        moves[key].append([round(v, 9) for v in (x[0], y[0], u[0], A[0] + u[0]*o, x[1], y[1], u[1], A[1] + u[1]*o, x[2], y[2], u[2], A[2] + u[2]*o)])
     for key in ("A", "B"):   # erst alle Kopien (alle am Ursprung), dann jede Instanz absolut platzieren
         for _ in range(len(moves[key]) - 1): add("occurrence.copy", component=f"Strebe_{key}")
         for i, mat in enumerate(moves[key], 1): add("occurrence.move", occurrence=f"Strebe_{key}:{i}", matrix=mat, tolerance=1e-6, move_grounded=True)
@@ -118,6 +119,20 @@ def tuer_fn(sock_z, rd, da):
         x, y = W(-(w/2 + 5), 75); add("solid.cylinder", radius=14, height=110, base=[x, y, sock_z + z], operation="new", name=f"T4_Scharnier_{i}", body_name=f"T4_Scharnier_{i}")
     x, y = W(w/2 - 80, 110); add("solid.cylinder", radius=16, height=160, base=[x, y, sock_z + 1000], axis=[round(t[0], 6), round(t[1], 6), 0], operation="new", name="T4_Griff", body_name="T4_Griff")
 
+NODE_FILES = {}   # Knoten-Index (1-26 wie layout.json nodes_list) -> Dateiname
+def knoten_anker(segs):
+    """26 Knoten (Werkstatt: knoten_<wertigkeit>_n<ii>.sc, Ursprung Knotenmitte, Armrichtungen im OBJ-Rahmen -> Drehung um ROT) an den Strebenenden + 10 Fundamentanker an den Basisknoten (X radial nach aussen)."""
+    ends = {}
+    for A, B in segs:
+        for q in (A, B): ends.setdefault(tuple(round(v / 20) for v in q), []).append(q)
+    E = [tuple(sum(v[i] for v in l)/len(l) for i in range(3)) for l in ends.values()]
+    base_z = min(e[2] for e in E)
+    for i, n in enumerate(LAYOUT["dome"]["nodes_list"], 1):
+        x, y = rot(n["x"], n["y"], math.radians(ROT)); e = min(E, key=lambda e: math.hypot(e[0] - x, e[1] - y))
+        place_instances(f"Knoten_n{i:02d}", os.path.join(ROOT, "designs", "components", f"knoten_{n['valence']}_n{i:02d}.sc"), [(round(e[0], 1), round(e[1], 1), round(e[2], 1), ROT)], "03_Kuppel")
+    anchors = [(round(e[0], 1), round(e[1], 1), round(e[2], 1), math.degrees(math.atan2(e[1], e[0]))) for e in E if abs(e[2] - base_z) < 5]
+    place_instances("Fundamentanker", os.path.join(ROOT, "designs", "components", "fundamentanker.sc"), anchors, "02_Gelaende")
+
 def t1_t3_t4(sock_z):
     pts, edges = build(P["freq"])
     zcut = -0.01
@@ -145,7 +160,7 @@ def t1_t3_t4(sock_z):
             ma = math.degrees(math.atan2((A[1]+B[1])/2, (A[0]+B[0])/2))
             if abs((ma - P["door_edge_az"] + 180) % 360 - 180) < 2: dropped += 1; continue
         segs.append((A, B))
-    act("03_Kuppel"); place_struts(segs)
+    act("03_Kuppel"); place_struts(segs); knoten_anker(segs)
     act("02_Gelaende")
     # 02_Gelaende: Erdflaeche (mit Aussparungen fuer Becken und Beete) und Fundamentring (Streben hier verankert) als Komponenten
     component_file("erdflaeche", "Erdflaeche", "02_Gelaende", lambda: erde_fn(sock_z))

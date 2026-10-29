@@ -1678,5 +1678,15 @@
   "note": "W16 Rev. B nach Konventions-Korrektur (Y innen): Ecke parallel, Portal, Innen",
   "commit": "f60f521",
   "source": "renders/components/nft_passung/passung_aussen-03-querschnitt-bock-beet.png"
+ },
+ {
+  "file": "20261029-180645_montage_knoten_round-33.png",
+  "sha": "7449f46f757c0b95",
+  "time": "2026-10-29 18:06:45",
+  "role": "montage",
+  "subject": "knoten",
+  "note": "M2: 26 Knoten + 10 Fundamentanker als Instanzen, Streben um 2x120 mm gekuerzt mit Steckaufnahme",
+  "commit": "e9c7c91",
+  "source": "renders/round-33.png"
  }
 ]

@@ -177,3 +177,6 @@ Herleitung der Rippenform: Bounding-Box 384 x 419 mit Steigung 419/384 = 47,5 Gr
 | 3 | klein: Montage/Stueckliste (Mutter, Anzugsmoment, Bolzenueberstand 2 mm) | **gueltig** | Gewindestange mit Mutter, Anzugsmomente, M12x55 (7 mm Ueberstand) |
 | 4 | klein: Diagonale ++/-- unklar, ISO 273 M16 = 17,5 | **gueltig** | beide Angaben korrigiert (Loch D17,5) |
 | 5 | klein: Herkunftskategorie "Scope-Card" unzulaessig | **gueltig** | "A (Scope-Card)" |
+
+### W10 Leitungsteile-Bibliothek 29.10. ~09:20
+49 Definitionen (Rohr, Kupplung, Bogen 90/45, T-Stueck, Kugelhahn, Klemme je d25/32/40/50/63/110; Schlauch ID16/25 gerade + Bogen 90 (R = 5 x AD); Verteiler d32 n2-4), check_leitungsteile.py 78/78 PASS (Volumen = Ringflaeche x Mittellinie nach Pappus), Sammelblatt docs/parts/leitungsteile.md. Befunde zu SolidCraft: Revolve-Cut an deckungsgleichen Stirnflaechen scheitert -> Bohrung als Werkzeugkoerper + `solid.combine` (cut); zweiter Bogenschenkel ueber `solid.extrude face=...` (Endflaeche verlaengern) statt Cylinder-Union an schraegen Flaechen (45 Grad scheitert).

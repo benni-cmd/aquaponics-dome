@@ -1,0 +1,58 @@
+{
+ "sizes": {
+  "25": {
+   "dn": "DN20",
+   "wand": 1.8,
+   "muffentiefe": 19,
+   "formstueck_aussen": 32.25,
+   "bogenradius": 32.2
+  },
+  "32": {
+   "dn": "DN25",
+   "wand": 1.8,
+   "muffentiefe": 22,
+   "formstueck_aussen": 39.6,
+   "bogenradius": 39.6
+  },
+  "40": {
+   "dn": "DN32",
+   "wand": 1.9,
+   "muffentiefe": 26,
+   "formstueck_aussen": 48.0,
+   "bogenradius": 48.0
+  },
+  "50": {
+   "dn": "DN40",
+   "wand": 2.4,
+   "muffentiefe": 31,
+   "formstueck_aussen": 58.5,
+   "bogenradius": 60.0
+  },
+  "63": {
+   "dn": "DN50",
+   "wand": 3.0,
+   "muffentiefe": 37.5,
+   "formstueck_aussen": 72.15,
+   "bogenradius": 75.6
+  },
+  "110": {
+   "dn": "DN100",
+   "wand": 5.2,
+   "muffentiefe": 61,
+   "formstueck_aussen": 121.5,
+   "bogenradius": 132.0
+  }
+ },
+ "schlauch": {
+  "16": {
+   "aussen": 23.0,
+   "farbe": "hellblau",
+   "biegeradius": 115.0
+  },
+  "25": {
+   "aussen": 32.0,
+   "farbe": "dunkelblau",
+   "biegeradius": 160.0
+  }
+ }
+}

@@ -53,3 +53,11 @@
 - Offen fuer den Neustart (Reihenfolge): (1) Montage M7 fertigmachen: Laufweg B 476 -> mindestens 500, Ziel 600 (D29), check_latte 24/24, check_walkways PASS; (2) Werkstatt: Spec-Pruefer W17 (corner_gap 60 ist Annahme), danach Haut-Paneel R11; (3) Montage M3 Tuer, M4/M5 Wasserweg und Rohre; (4) Orchestrator: Pruefstand in docs/model-description.md nachziehen, Board abnehmen (W07, W11, W17 sind gemeldet, nicht abgenommen).
 - Neustart: 5h-Limit Reset 22:10 Ortszeit, Wochenlimit Reset 30.10. 03:00 Ortszeit. Sitzungen sind idle und per SendMessage erreichbar (laufende Prozesse), sonst Weck-Nachricht `WIEDERANLAUF aquaponics-dome:` an die Session-ID (Werkstatt local_584eec27-..., Montage local_5d913ca0-...).
 - Bens Freigabe zum Weitermachen abwarten (Anweisung 21:15: nichts Neues starten).
+
+## Stand 29.10. 22:05 (Orchestrator): IDLE, Wiederaufnahme-Plan (Ben: "schliesse deine Arbeit ab")
+- Orchestrator-Cron 97071355 geloescht (kein Hintergrundverbrauch). Prompt zum Neu-Einrichten: `docs/orchestrator-nachtmodus-prompt.md`. Arbeitsbaum sauber, `main` = `origin/main`.
+- **BEIM NEUSTART ZUERST SENDEN (Ben-Auftrag, nicht vergessen):**
+  1. An die WERKSTATT (Session local_584eec27-..., Weck-Nachricht oder SendMessage): Lochabstand/Rohrabstand der NFT-Rinnen auf 200 mm (D32, R16), Auftrag `docs/jobs/W18-lochabstand.md`; Reihenfolge: W17-Spec-Pruefer, W18, Haut-Paneel R11. Notiz liegt in `docs/session-notes/werkstatt.md`, ist aber noch NICHT als Nachricht gesendet.
+  2. An die MONTAGE (Session local_5d913ca0-...): M7 fertigmachen (Laufweg B 476 -> mindestens 500, Ziel 600; check_latte 24/24), dann M3 Tuer, M4/M5 Rohre/Schlaeuche; Rinnen-Pflanzenzahl kommt nach W18 aus data/components/nft_tisch.json.
+  Rueckfrage zur Formulierung "Rohrabstaende": gemeint ist der Lochabstand der NFT-Rohre (R16/D32); falls Ben Abstaende zwischen Rohrleitungen meint, Laufwege D29 + M5 pruefen.
+- Freigabe durch Ben abwarten. Limits: 5h-Fenster ab 22:10 neu, Woche Reset 30.10. 03:00 Ortszeit.

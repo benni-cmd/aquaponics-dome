@@ -4,7 +4,7 @@
 
 **Datei:** `designs/components/ibc_beet.sc` · **Teilenummer:** T30 · **Revision:** A · **Bezugspunkt:** Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienoberflaeche bei hoehe - rim_gap; Ablaufport unter dem Boden (Z < 0); Wannen sind eingelassen (z0 -162 bis -209, Integrator)
 
-**Anzahl (Instanzen):** aussen 8 (5 x 933, 3 x 993), innen 6 (Quelle: data/layout.json ibc_beds)
+**Anzahl (Instanzen):** aussen 8 (OBJ: 5 x 933, 3 x 993; Zielmass nach D29: 8 x aussen_800), innen 6 (Quelle: data/layout.json ibc_beds; aussen_800: docs/decisions.md D29 (Montage M7 stellt den Dom um))
 
 ## Masse und Parameter
 
@@ -51,19 +51,21 @@
 | aussen_933 | 2953 | 933 | 637 | 5 | layout.json ibc_beds 3-7: 2953 x 933 x 637 |
 | aussen_993 | 2953 | 993 | 637 | 3 | layout.json ibc_beds 1, 2, 8: 2953 x 993 x 637 |
 | innen_933 | 1865 | 933 | 649 | 6 | layout.json ibc_beds 9-14: 1865 x 933 x 649 |
+| aussen_800 | 2640 | 800 | 637 | 8 | W17/D29: Aussenbeet einseitig erreichbar <= 800 breit; Laenge 2640 = Obergrenze aus der Montage-Rechnung (Streben/Sockel, D25; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 100 = 2771); Hoehe wie OBJ 637; ersetzt aussen_933/aussen_993 im Dom (Montage M7 stellt um) |
 
-Gesamt-Box (Messung): X -1516.5 bis 1476.5, Y -466.5 bis 466.5, Z -30.0 bis 637.0 mm; Koerper: 33.
+Gesamt-Box (Messung, Variante ibc_beet_aussen_933): X -1516.5 bis 1476.5, Y -466.5 bis 466.5, Z -30.0 bis 637.0 mm; Koerper: 33.
 
 **Toleranzen / Spiel:** Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase = Standrohrkante, 265 mm ueber der Medienunterkante = 35 mm unter der Medienoberflaeche (Orchestrator-Vorgabe 29.10.: media_depth - 35; FarmHub-Variante 220 = 80 mm unter der Oberflaeche, R03 Befund 5); R03 Befund 4 nennt eine trockene Oberzone von 2-5 cm, SRAC 5007 einen Wasserstand 1 Zoll unter der Oberflaeche -> Abweichung 3-6 cm, siehe offen.
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: HDPE weiss (Wanne), PVC grau (Rohre), Kies/Blaehton (Medium), Dichte 0.95 g/cm3, Farbe #e9ebe8 (ref-5/ref-6 weisse Wannen (HDPE IBC-Innenbehaelter 0,95 g/cm3); Siebboden/Stuetzen PP 0,91, Rohre PVC-U 1,4 g/cm3)
-- Volumen (Messung, `solidcraft-cli eval`): 76926.0 cm3 · Masse leer (ohne Medium): 71827 g (71.83 kg)
-- Variante `ibc_beet_aussen_933`: 758.99 kg leer
-- Variante `ibc_beet_aussen_993`: 808.40 kg leer
-- Variante `ibc_beet_innen_933`: 476.11 kg leer
-- Gefuellt/in Betrieb: aussen_933: leer ohne Medium 72 kg; Medium 764 l = 687 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 911 l = 911 kg (Wasserraum unter dem Siebboden 640 l + Porenwasser 271 l bei 40 % Porositaet [A]); gefuellt gesamt 1670 kg | aussen_993: leer ohne Medium 74 kg; Medium 816 l = 734 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 973 l = 973 kg (Wasserraum unter dem Siebboden 684 l + Porenwasser 289 l bei 40 % Porositaet [A]); gefuellt gesamt 1781 kg | innen_933: leer ohne Medium 48 kg; Medium 476 l = 428 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 589 l = 589 kg (Wasserraum unter dem Siebboden 420 l + Porenwasser 169 l bei 40 % Porositaet [A]); gefuellt gesamt 1065 kg
+- Volumen (Messung, Variante ibc_beet_aussen_933, `solidcraft-cli eval`): 76926.0 cm3 · Masse leer (ohne Medium): 71827 g (71.83 kg)
+- Variante `ibc_beet_aussen_933`: 71.83 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_993`: 74.24 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_800`: 61.91 kg leer (ohne Medium)
+- Variante `ibc_beet_innen_933`: 47.75 kg leer (ohne Medium)
+- Gefuellt/in Betrieb: aussen_933: leer ohne Medium 72 kg; Medium 764 l = 687 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 911 l = 911 kg (Wasserraum unter dem Siebboden 640 l + Porenwasser 271 l bei 40 % Porositaet [A]); gefuellt gesamt 1670 kg | aussen_993: leer ohne Medium 74 kg; Medium 816 l = 734 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 973 l = 973 kg (Wasserraum unter dem Siebboden 684 l + Porenwasser 289 l bei 40 % Porositaet [A]); gefuellt gesamt 1781 kg | innen_933: leer ohne Medium 48 kg; Medium 476 l = 428 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 589 l = 589 kg (Wasserraum unter dem Siebboden 420 l + Porenwasser 169 l bei 40 % Porositaet [A]); gefuellt gesamt 1065 kg | aussen_800: leer ohne Medium 62 kg; Medium 578 l = 520 kg (Schuettdichte 0,9 [A]); Wasser nicht gerechnet (wie aussen_933 skaliert ca. 0,8 x)
 
 ## Querschnitt / Profil
 
@@ -79,6 +81,8 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 
 | aussen_993: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1516, y -422, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
 | innen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25, etwa DN20), Bulkhead D36 mit Flansch D50 | x 708, y 0, z -30 | Wasser verlaesst das Beet nach unten (Oeffnung zeigt -Z; Beet ist eingelassen, Ablauf unter dem Wannenboden) |
 | innen_933: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -972, y -392, z 624 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
+| aussen_800: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25, etwa DN20), Bulkhead D36 mit Flansch D50 | x 1096, y 0, z -30 | Wasser verlaesst das Beet nach unten; Lage aus der Messung (Siphon 200 mm vor dem Ablaufende) |
+| aussen_800: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1360, y -326, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Lage aus der Messung (Rohr 50 mm von der Innenwand) |
 
 ## Verbindungen und Befestigungen
 
@@ -121,6 +125,7 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 
 | Zulauf-Wanddurchfuehrung D22 in der Stirnwand (Rohr d20) | D22 | A | Konstruktionspraxis (Gummitulle); y = -(Wi/2 - 50) | niedrig |
 | Zulaufrohr liegt laengs (nicht quer), 25 mm unter dem Rand | z 612 lokal / 450 abs. | R03 + E | R03: 'quer ueber das Beet auf Z 450'; bei 2,9 m Laenge laengs ausgelegt (E) | niedrig |
 | Gewichtsrechnung: leer ohne Medium, Medium 0,9, Wasser bis Standrohrkante (Sumpf + 40 % Poren) | siehe Gewicht | E | Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme | niedrig |
+| Aussenbeet 800 x 2640 x 637 (aussen_800) | 800 / 2640 / 637 mm | Ben + E | D29: einseitig erreichbar <= 800; Laenge 2640 = Obergrenze aus der Montage-Rechnung (D25/D28 outer_bed_len), Hoehe wie OBJ; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 100 = 2771 | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -148,6 +153,7 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Siebboden 8 mm auf 
 - T30e Siphon: 1 Bulkhead D36 mit Flansch D50 + Dichtung + Kontermutter, 1 Standrohr PVC-U d25 (Laenge 30 + 527 mm), 1 Glocke PVC-U d75 x 295 mit Deckel, 1 Medienschutz PVC-U d110 x 320
 - T30f Zulauf: 1 Tropfrohr PE d20 (Laenge siehe Messung), 1 Endstopfen d20, 1 Gummitulle D22 fuer die Wanddurchfuehrung, 1 Anschluss-Kupplung d20
 - Normbezeichnungen: PVC-U Rohr nach DIN 8062 / EN 1452; PE-Rohr nach DIN 8074; Medium gewaschen, Korn 8-20 mm (R03)
+- T30 aussen_800 (W17/D29): 8 Beete 800 x 2640 x 637 statt 5 x 933 + 3 x 993 x 2953; Medium 578 l (520 kg bei 0,9 kg/l [A]); leer ohne Medium 62 kg; Wannen-Sondermass (HDPE), Siphon wie die anderen Aussenbeete
 
 ## Alternative lokale Fertigung
 
@@ -176,7 +182,7 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 
 ## Pruefung
 
-- Gauntlet-Urteil: Bild-Kritiker: Modell; Spec-Pruefer: FAIL behoben; Orchestrator: abgenommen 29.10.
+- Gauntlet-Urteil: offen
 - scripts/workshop/check_ibc_beet.py (Ergebnis renders/components/ibc_beet_aussen_933/check.txt)
 - Triage in docs/workshop-log.md
 
@@ -193,3 +199,5 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 - Pflanzen: 288 je Aussenbeet (Beet bei Azimut 113: 144; 7 x 288 + 144 = 2160) sind Instanzen des Integrators
 - Wasserstand 35 mm unter der Oberflaeche (Standrohr 265; FarmHub 220 = 80 mm) gegen trockene Oberzone 2-5 cm (R03 Befund 4) und SRAC 1 Zoll: Standrohrhoehe als E, Konfidenz niedrig; Siphon steht auf dem Siebboden, darunter ein Wasserraum von 262-274 mm (Annahme A)
 - Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)
+- W17: aussen_800 (800 x 2640) ist das Zielmass nach D29; layout.json/gen_dome tragen noch 933/993 x 2953 (Montage M7 setzt Layout und Dom um); Aussenbeete sind einseitig erreichbar (Domwand), daher <= 800 breit
+- W17: Pflanzraster im Aussenbeet: 288 je Beet (24 x 12) passt nicht auf 800 x 2640 (Topfabstand 110 x 67 mm, Kragen 64): Raster/Topfzahl vom Layout/Integrator neu (Substrat-Mindestzahl 152 gesamt ist mit weniger Toepfen erfuellt: R15/D27); NFT-Mindestzahl 459 haengt nicht am Beet

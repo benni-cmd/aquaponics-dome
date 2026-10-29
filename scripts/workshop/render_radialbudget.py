@@ -38,7 +38,7 @@ mid = y_of(0.5 * (Ga["apc"] + Gm["apc"]))
 top = os.path.join(OUT, "radialbudget-01-draufsicht.png")
 sc.snapshot(out, top, [0, mid, 0], 0.0, 1.5707, 5200, w=1400, h=900)
 sec = os.path.join(OUT, "radialbudget-02-querschnitt.png")
-sc.snapshot(out, sec, [0, mid, 900], 0.0, 0.0, 5200, w=1400, h=800, section="x=0")
+sc.snapshot(out, sec, [0, mid, 900], 1.5708, 0.0, 5200, w=1400, h=800, section="YZ")
 try:                                                     # Masse in die Draufsicht schreiben (PIL, falls vorhanden)
     from PIL import Image, ImageDraw
     im = Image.open(top).convert("RGB")

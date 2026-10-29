@@ -223,8 +223,8 @@
   "herkunft": "[A] Schuettdichte Blaehton 0,5-0,8, Kies 1,5 g/cm3: Mittel 0,9 trocken; nass ca. 1,3; nur fuer die Gewichtsabschaetzung"
  },
  "anzahl": {
-  "soll": "aussen 8 (5 x 933, 3 x 993), innen 6",
-  "quelle": "data/layout.json ibc_beds"
+  "soll": "aussen 8 (OBJ: 5 x 933, 3 x 993; Zielmass nach D29: 8 x aussen_800), innen 6",
+  "quelle": "data/layout.json ibc_beds; aussen_800: docs/decisions.md D29 (Montage M7 stellt den Dom um)"
  },
  "bezugspunkt": "Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienoberflaeche bei hoehe - rim_gap; Ablaufport unter dem Boden (Z < 0); Wannen sind eingelassen (z0 -162 bis -209, Integrator)",
  "blatt": {
@@ -267,6 +267,18 @@
     "Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03)",
     "x -972, y -392, z 624",
     "Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge)"
+   ],
+   [
+    "aussen_800: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden)",
+    "Rohr d25 (PVC-U d25, etwa DN20), Bulkhead D36 mit Flansch D50",
+    "x 1096, y 0, z -30",
+    "Wasser verlaesst das Beet nach unten; Lage aus der Messung (Siphon 200 mm vor dem Ablaufende)"
+   ],
+   [
+    "aussen_800: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand)",
+    "Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03)",
+    "x -1360, y -326, z 612",
+    "Wasser tritt von aussen ein (Oeffnung zeigt -X); Lage aus der Messung (Rohr 50 mm von der Innenwand)"
    ]
   ],
   "verbindungen": [
@@ -291,16 +303,18 @@
    "T30d Medium Blaehton/Kies 8-20 mm: aussen_933 764 l (687 kg); aussen_993 816 l (734 kg); innen_933 476 l (428 kg) je Beet; 14 Beete gesamt ca. 8,4 m3",
    "T30e Siphon: 1 Bulkhead D36 mit Flansch D50 + Dichtung + Kontermutter, 1 Standrohr PVC-U d25 (Laenge 30 + 527 mm), 1 Glocke PVC-U d75 x 295 mit Deckel, 1 Medienschutz PVC-U d110 x 320",
    "T30f Zulauf: 1 Tropfrohr PE d20 (Laenge siehe Messung), 1 Endstopfen d20, 1 Gummitulle D22 fuer die Wanddurchfuehrung, 1 Anschluss-Kupplung d20",
-   "Normbezeichnungen: PVC-U Rohr nach DIN 8062 / EN 1452; PE-Rohr nach DIN 8074; Medium gewaschen, Korn 8-20 mm (R03)"
+   "Normbezeichnungen: PVC-U Rohr nach DIN 8062 / EN 1452; PE-Rohr nach DIN 8074; Medium gewaschen, Korn 8-20 mm (R03)",
+   "T30 aussen_800 (W17/D29): 8 Beete 800 x 2640 x 637 statt 5 x 933 + 3 x 993 x 2953; Medium 578 l (520 kg bei 0,9 kg/l [A]); leer ohne Medium 62 kg; Wannen-Sondermass (HDPE), Siphon wie die anderen Aussenbeete"
   ],
   "lokal": "Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kunststoffwanne; Siebboden: Lochblech/Gitterrost mit Vlies; Siphon aus PVC-Rohr-Standardteilen (d25/d75/d110).",
   "referenz": "reference/ref-5-dome-closeup.jpg und ref-6 (weisse Wannen mit Rand, Erde/Kies); docs/research/R03.md (Beetaufbau)",
   "varianten": [
    "ibc_beet_aussen_933",
    "ibc_beet_aussen_993",
+   "ibc_beet_aussen_800",
    "ibc_beet_innen_933"
   ],
-  "gewicht_gefuellt": "aussen_933: leer ohne Medium 72 kg; Medium 764 l = 687 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 911 l = 911 kg (Wasserraum unter dem Siebboden 640 l + Porenwasser 271 l bei 40 % Porositaet [A]); gefuellt gesamt 1670 kg | aussen_993: leer ohne Medium 74 kg; Medium 816 l = 734 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 973 l = 973 kg (Wasserraum unter dem Siebboden 684 l + Porenwasser 289 l bei 40 % Porositaet [A]); gefuellt gesamt 1781 kg | innen_933: leer ohne Medium 48 kg; Medium 476 l = 428 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 589 l = 589 kg (Wasserraum unter dem Siebboden 420 l + Porenwasser 169 l bei 40 % Porositaet [A]); gefuellt gesamt 1065 kg",
+  "gewicht_gefuellt": "aussen_933: leer ohne Medium 72 kg; Medium 764 l = 687 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 911 l = 911 kg (Wasserraum unter dem Siebboden 640 l + Porenwasser 271 l bei 40 % Porositaet [A]); gefuellt gesamt 1670 kg | aussen_993: leer ohne Medium 74 kg; Medium 816 l = 734 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 973 l = 973 kg (Wasserraum unter dem Siebboden 684 l + Porenwasser 289 l bei 40 % Porositaet [A]); gefuellt gesamt 1781 kg | innen_933: leer ohne Medium 48 kg; Medium 476 l = 428 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 589 l = 589 kg (Wasserraum unter dem Siebboden 420 l + Porenwasser 169 l bei 40 % Porositaet [A]); gefuellt gesamt 1065 kg | aussen_800: leer ohne Medium 62 kg; Medium 578 l = 520 kg (Schuettdichte 0,9 [A]); Wasser nicht gerechnet (wie aussen_933 skaliert ca. 0,8 x)",
   "pruefung": [
    "scripts/workshop/check_ibc_beet.py (Ergebnis renders/components/ibc_beet_aussen_933/check.txt)",
    "Triage in docs/workshop-log.md"
@@ -316,7 +330,9 @@
    "Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)",
    "Pflanzen: 288 je Aussenbeet (Beet bei Azimut 113: 144; 7 x 288 + 144 = 2160) sind Instanzen des Integrators",
    "Wasserstand 35 mm unter der Oberflaeche (Standrohr 265; FarmHub 220 = 80 mm) gegen trockene Oberzone 2-5 cm (R03 Befund 4) und SRAC 1 Zoll: Standrohrhoehe als E, Konfidenz niedrig; Siphon steht auf dem Siebboden, darunter ein Wasserraum von 262-274 mm (Annahme A)",
-   "Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)"
+   "Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)",
+   "W17: aussen_800 (800 x 2640) ist das Zielmass nach D29; layout.json/gen_dome tragen noch 933/993 x 2953 (Montage M7 setzt Layout und Dom um); Aussenbeete sind einseitig erreichbar (Domwand), daher <= 800 breit",
+   "W17: Pflanzraster im Aussenbeet: 288 je Beet (24 x 12) passt nicht auf 800 x 2640 (Topfabstand 110 x 67 mm, Kragen 64): Raster/Topfzahl vom Layout/Integrator neu (Substrat-Mindestzahl 152 gesamt ist mit weniger Toepfen erfuellt: R15/D27); NFT-Mindestzahl 459 haengt nicht am Beet"
   ],
   "massen_getrennt": [
    "Medium"
@@ -539,6 +555,13 @@
    "E",
    "Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme",
    "niedrig"
+  ],
+  [
+   "Aussenbeet 800 x 2640 x 637 (aussen_800)",
+   "800 / 2640 / 637 mm",
+   "Ben + E",
+   "D29: einseitig erreichbar <= 800; Laenge 2640 = Obergrenze aus der Montage-Rechnung (D25/D28 outer_bed_len), Hoehe wie OBJ; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 100 = 2771",
+   "mittel"
   ]
  ]
 }

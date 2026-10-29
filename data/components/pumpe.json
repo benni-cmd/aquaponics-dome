@@ -30,7 +30,7 @@
    "saug_d": 50,
    "druck_d": 40,
    "anzahl": 4,
-   "herkunft": "layout.json tanks 2 und 3: je 2 Tafeln 693 x 7 x 463 (Duplikate zusammengefasst), Pumpe A"
+   "herkunft": "layout.json tanks 2 und 3: je 2 Tafeln 693 x 7 x 463 (Duplikate zusammengefasst), Pumpe B (hydraulics.md 3: Pumpe B hinter dem grossen Tank, Annahme)"
   }
  },
  "parameter": {
@@ -79,7 +79,7 @@
  "blatt": {
   "funktion": "Pumpenmodul an den Tanks (Rolle ANNAHME): Montagetafel mit Kreiselpumpe fuer den Umlauf; Foerderstrom laut docs/hydraulics.md 2.3 [E]: kleiner Tank ca. 12 l/min, grosser ca. 30 l/min, statische Hoehe ca. 1,3 m plus Reibung (hydraulics.md 2.8 [E]); die 30 l/min sind die Umwaelzung des grossen Tanks bei 30 min Verweilzeit, nicht der Linienstrom 12 l/min je Pool-Linie aus 2.4. ENTSCHEIDUNG Orchestrator 29.10.: Die 10 Kassetten 384 x 44 x 419 (layout.json tanks 2/3) sind KEINE Filtermodule, sondern Stuetzrippen/Konsolen der Tankplattform (Klasse Tank, Annahme A); die Klasse filtermodul entfaellt.",
   "querschnitt": "Montagetafel PP (502x5x345 bzw. 693x7x463) stehend auf zwei Standwinkeln; Konsole aus Winkel 5 mm mit Pumpensockel; Pumpe: Motor (D90 x 150 / D110 x 180) + Pumpenkopf (D110 x 70 / D130 x 80), Saugstutzen axial, Druckstutzen nach oben; Kabel mit Stecker.",
-  "toleranzen": "Tafel-/Gehaeusemasse = OBJ (Pruefung +-0,5 mm); Pumpensockel 11 mm hoch (= Kopfueberstand 10 mm + 1 mm Luft), Motor ruht tangential auf dem Sockel, der Pumpenkopf (D110/D130) hat 1 mm Luft zur Konsole (Vorpruefung, keine Durchdringung); Pumpenachse bleibt bei z 120 (Konsole liegt entsprechend tiefer).",
+  "toleranzen": "Tafel-/Gehaeusemasse = OBJ (Pruefung +-0,5 mm); Pumpensockel 11 mm hoch (= Kopfueberstand 10 mm + 1 mm Luft), Motor ruht tangential auf dem Sockel, der Pumpenkopf (D110/D130) hat 1 mm Luft zur Konsole (Vorpruefung, ohne Durchdringung); Pumpenachse bleibt bei z 120 (Konsole liegt entsprechend tiefer).",
   "ports": [
    [
     "pumpe_klein: Saugstutzen (Pumpenkopf)",
@@ -131,12 +131,12 @@
    ]
   ],
   "verbindungen": [
-   "Konsole an der Tafel: je 2 Schrauben M6x20 ISO 4017 mit Mutter ISO 4032 (im Modell; Klemmlaenge Tafel 5/7 + Konsole 5 + Mutter 5,2 = 15,2/17,2 mm, Schraube 20 mm steht >= 2 Gewindegaenge ueber), Scheiben ISO 7089 (nicht modelliert) [A]",
+   "Konsole an der Tafel: je 2 Schrauben M6x20 ISO 4017 mit Mutter ISO 4032 mittig im haengenden Vertikalschenkel (im Modell, Bohrungen in Konsole/Tafel nicht modelliert: der Schaft liegt im Blech; Klemmlaenge Tafel 5/7 + Konsole 5 + Mutter 5,2 = 15,2/17,2 mm, Schraube 20 mm steht >= 2 Gewindegaenge ueber), Scheiben ISO 7089 (nicht modelliert) [A]",
    "Tafel steht auf 2 Standwinkeln; je Winkel 2 Schrauben M6 mit Duebel/Mutter (4 je Tafel, nicht modelliert) [A], am tragfaehigen Untergrund zu verschrauben",
-   "Pumpe auf dem Sockel: 4 Schrauben M6x20 mit Mutter und Scheibe (nicht modelliert) [A]",
+   "Pumpe auf dem Sockel: 4 Schrauben M6x30 mit Mutter und Scheibe (Klemmlaenge Sockel 11 + Konsole 5 + 2 Scheiben 3,2 + Mutter 5,2 = 24,4 mm; nicht modelliert) [A]",
    "Stutzen PVC-U d40/d32 (klein), d50/d40 (gross) (DIN 8062): geklebt oder mit Verschraubung am Rohrnetz (Montage); Uebergang auf Tankrohr d50/d63 mit Reduziermuffe aus `leitungsteile`"
   ],
-  "abweichung": "layout.json tanks[].modules: Tafel- und Tafelnmasse stimmen auf <= 1 mm (OBJ 501/502 x 5 x 345, 693 x 7 x 463, 384 x 43/44 x 418/419; Bauteil 502/693/384 mit Dicke 5/7/44); Lage je Modul: layout.json (yaw: Tafeln 22,9/40,7 bzw. 22,9/41,1 Grad, Tafeln z0 -6..3) - Integrator. Anzahl: OBJ listet je kleinem Tank 4 und je grossem Tank 3 Pumpentafel-Eintraege, davon 2 bzw. 1 Duplikate an derselben Position (Abstand <= 5 mm) -> 2 Tafeln je Tank, gesamt 4 klein + 4 gross = 8 Pumpenmodule. docs/hydraulics.md 3 sieht je Linie Pumpe A und Pumpe B vor (4 Pumpen) und 2 Siebe: Abweichung 8 gegen 4 Pumpen offen, die Siebe haben kein Bauteil. Im OBJ sind es nur Boxen ohne Pumpe, Anschluesse oder Kabel: Pumpe, Konsole, Stutzen, Kabel sind [A]. Ausrichtung: Pumpenseite +Y; im OBJ steht die Tafel tangential zum Tank, +Y soll vom Tank weg zeigen (yaw des Integrators). Die 384er-Kassetten sind Stuetzrippen der Tankplattform (Klasse Tank, Entscheidung Orchestrator 29.10.) und gehoeren nicht zu dieser Klasse.",
+  "abweichung": "layout.json tanks[].modules: Tafelmasse stimmen auf <= 1 mm (OBJ 501/502 x 5 x 345, 693 x 7 x 463; Bauteil 502 x 5 bzw. 693 x 7); Lage je Modul: layout.json (yaw: Tafeln 22,9/40,7 bzw. 22,9/41,1 Grad, Tafeln z0 -6..3) - Integrator. Anzahl: OBJ listet je kleinem Tank 4 und je grossem Tank 3 Pumpentafel-Eintraege, davon 2 bzw. 1 Duplikate an derselben Position (Abstand <= 5 mm) -> 2 Tafeln je Tank, gesamt 4 klein + 4 gross = 8 Pumpenmodule. docs/hydraulics.md 3 sieht je Linie Pumpe A und Pumpe B vor (4 Pumpen) und 2 Siebe: Abweichung 8 gegen 4 Pumpen offen, die Siebe haben kein Bauteil. Im OBJ sind es nur Boxen ohne Pumpe, Anschluesse oder Kabel: Pumpe, Konsole, Stutzen, Kabel sind [A]. Ausrichtung: Pumpenseite +Y; im OBJ steht die Tafel tangential zum Tank, +Y soll vom Tank weg zeigen (yaw des Integrators). Die 384er-Kassetten sind Stuetzrippen der Tankplattform (Klasse Tank, Entscheidung Orchestrator 29.10.) und gehoeren nicht zu dieser Klasse.",
   "montage": [
    "Standwinkel an der Tafelrueckseite anschrauben, Tafel am vorgesehenen Platz ausrichten und befestigen",
    "Konsole an die Tafel schrauben, Pumpe mit Sockel aufsetzen und fixieren",
@@ -144,8 +144,8 @@
   ],
   "werkzeug": "Akkuschrauber, Schluessel M6, Wasserwaage, Rohrschneider, PVC-Kleber",
   "stueckliste": [
-   "pumpe_klein (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 502x5x345 1, Standwinkel 50x100x5 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 117, Vertikalschenkel 150 x 40) 1, Pumpensockel 105 x 54 x 11 1, Kreiselpumpe (Motor D90 x 150, Kopf D110 x 70) 1 mit Stutzen d40 und d32, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 und Scheiben ISO 7089 2 (Scheiben nicht modelliert); zusaetzlich nicht modelliert: 4 Schrauben M6x20 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6 fuer die Standwinkel (je Winkel 2). Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
-   "pumpe_gross (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 693x7x463 1, Standwinkel 50x100x5 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 137, Vertikalschenkel 150 x 40) 1, Pumpensockel 126 x 66 x 11 1, Kreiselpumpe (Motor D110 x 180, Kopf D130 x 80) 1 mit Stutzen d50 und d40, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 und Scheiben ISO 7089 2 (Scheiben nicht modelliert); zusaetzlich nicht modelliert: 4 Schrauben M6x20 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6 fuer die Standwinkel (je Winkel 2). Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
+   "pumpe_klein (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 502x5x345 1, Standwinkel 50x100x5 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 117, Vertikalschenkel 150 x 40 haengt nach unten, Konsole = Winkel) 1, Pumpensockel 105 x 54 x 11 1, Kreiselpumpe (Motor D90 x 150, Kopf D110 x 70) 1 mit Stutzen d40 und d32, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 und Scheiben ISO 7089 2 (Scheiben nicht modelliert); zusaetzlich nicht modelliert: 4 Schrauben M6x30 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6 fuer die Standwinkel (je Winkel 2). Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
+   "pumpe_gross (je Modul, Menge 4 gesamt = 2 je Tank): Montagetafel PP 693x7x463 1, Standwinkel 50x100x5 2, Pumpenkonsole (Winkel 5 mm: Horizontalschenkel 150 x 137, Vertikalschenkel 150 x 40 haengt nach unten, Konsole = Winkel) 1, Pumpensockel 126 x 66 x 11 1, Kreiselpumpe (Motor D110 x 180, Kopf D130 x 80) 1 mit Stutzen d50 und d40, Kabel mit Stecker 1, Schrauben M6x20 ISO 4017 mit Muttern ISO 4032 2 und Scheiben ISO 7089 2 (Scheiben nicht modelliert); zusaetzlich nicht modelliert: 4 Schrauben M6x30 mit Mutter und Scheibe fuer die Pumpe, 4 Schrauben M6 fuer die Standwinkel (je Winkel 2). Dichtungen/Verschraubungen der Stutzen gehoeren zum Rohrnetz (leitungsteile, Montage)",
    "Module gesamt: Pumpenmodul klein 4, gross 4 (layout.json tanks[].modules; Duplikate zusammengefasst)"
   ],
   "lokal": "Pumpe: handelsuebliche Kreiselpumpe (Teich-/Umwaelzpumpe) auf Montagebrett.",
@@ -154,25 +154,27 @@
    "pumpe_klein",
    "pumpe_gross"
   ],
-  "gewicht_gefuellt": "pumpe_klein: leer 5.4 kg (Tafel PP, Pumpe Kunststoff, Konsole Stahl), davon modellierte Pumpe (Motor + Kopf, Volumen x 1,5 g/cm3) 2.4 kg; gefuellt/in Betrieb ca. 5.9 kg (Betriebsfuellung der Pumpe ca. 0,5 l [A]) | pumpe_gross: leer 8.7 kg, davon Pumpe 4.1 kg; gefuellt ca. 9.2 kg. Reale Pumpen je nach Fabrikat 4-9 kg [A]: das modellierte Pumpenvolumen ist nur eine Huellform, das reale Gewicht liegt hoeher (Gewichtsbudget der Montage mit 4-9 kg je Pumpe rechnen).",
+  "gewicht_gefuellt": "pumpe_klein: leer 5.4 kg (Tafel PP, Pumpe Kunststoff, Konsole Stahl), davon modellierte Pumpe (Motor + Kopf, Motor 1,5, Kopf PVC 1,4 g/cm3) 2.4 kg; gefuellt/in Betrieb ca. 5.9 kg (Betriebsfuellung der Pumpe ca. 0,5 l [A]) | pumpe_gross: leer 8.7 kg, davon Pumpe 4.1 kg; gefuellt ca. 9.2 kg. Reale Pumpen je nach Fabrikat 4-9 kg [A]: das modellierte Pumpenvolumen ist nur eine Huellform, das reale Gewicht liegt hoeher (Gewichtsbudget der Montage mit 4-9 kg je Pumpe rechnen).",
   "boxen": [
    "pumpe_klein: X -315 bis 251, Y -82 bis 120, Z 0 bis 345",
    "pumpe_gross: X -346 bis 346, Y -84 bis 140, Z 0 bis 463"
   ],
   "render_dirs": [],
   "pruefung": [
-   "scripts/workshop/check_pumpe.py: 30/30 PASS fuer beide Varianten (Ergebnis `renders/components/pumpe_klein/check.txt`; eine Datei deckt klein und gross), inkl. Kopf/Konsole ohne Durchdringung",
-   "Kein Bild-Kritiker: die Module sind in keiner Referenz sichtbar; Spec-Pruefer Runde 1 (FAIL, behoben, 29.10. ~08:50) und Runde 2 (FAIL, 5 Befunde, eingearbeitet; Triage in `docs/workshop-log.md`); Orchestrator-Entscheidung D16 zur Rolle"
+   "scripts/workshop/check_pumpe.py: 32/32 PASS fuer beide Varianten (Ergebnis `renders/components/pumpe_klein/check.txt`; eine Datei deckt klein und gross), inkl. Konsole = Winkel und Kopf/Konsole ohne Durchdringung; Normteile (Schrauben, Muttern) auf Stahl 7,85",
+   "Kein Bild-Kritiker: die Module sind in keiner Referenz sichtbar; Spec-Pruefer Runde 1 (FAIL, behoben, 29.10. ~08:50), Runde 2 (FAIL, 5 Befunde, eingearbeitet) und Runde 3 (FAIL knapp, 5 Befunde, eingearbeitet; Triage in `docs/workshop-log.md`); Orchestrator-Entscheidung D16 zur Rolle"
   ],
   "offen": [
    "Rolle der 502/693er-Tafeln als Pumpentafeln ist Annahme (OBJ liefert nur Boxen; Tafeln stehen tangential am Boden: alternativ Seitenbleche/Spritzschutz)",
    "Anzahl 8 Pumpenmodule (4 klein + 4 gross, OBJ) gegen 4 Pumpen A/B + 2 Siebe (hydraulics.md 3): Siebe ohne Bauteil, Orchestrator/Hydraulik",
    "Pumpenfabrikat, Leistung (R07 pausiert); Foerderstrom 12 / 30 l/min nur [E]; Reale Pumpe 4-9 kg [A]",
-   "Schrauben der Pumpe auf dem Sockel (4 x M6x20), Scheiben, Standwinkel-Befestigung nicht modelliert; Untergrund der Standwinkel (Erde) klaert Montage/Integrator",
+   "Schrauben der Pumpe auf dem Sockel (4 x M6x30), Scheiben, Standwinkel-Befestigung nicht modelliert; Untergrund der Standwinkel (Erde) klaert Montage/Integrator",
    "Kabel gerade und 150 mm kurz modelliert (real 1,5-3 m); Elektrik/Zufuehrung: Schaltschrank-Klasse",
    "Kollision Pumpe/Tankkegel und Tafel-Ausrichtung (+Y weg vom Tank): Integrator pruefen",
    "Uebergang Stutzen d40/d32 bzw. d50/d40 auf Tankrohr d50/d63: Reduziermuffen aus `leitungsteile`, Verlegung Montage",
-   "Rohrwand 3 mm der Stutzen gegen SDR 21 der Bibliothek leitungsteile (Abweichung dort dokumentiert)"
+   "Rohrwand 3 mm der Stutzen gegen SDR 21 der Bibliothek leitungsteile (Abweichung dort dokumentiert)",
+   "Bohrungen fuer die Konsolenschrauben (M6, 2 je Konsole) sind nicht modelliert; Schaft und Kopf liegen am Blech, Kopf ausserhalb der Platte",
+   "docs/hydraulics.md 5 fuehrt weiter 'Filtermodul' bzw. 'Pump-/Filtermodule' als Klasse (D16-Rest, Orchestrator)"
   ]
  },
  "herkunft_tabelle": [
@@ -226,7 +228,7 @@
    "niedrig"
   ],
   [
-   "Konsole Winkel 5 mm: Horizontalschenkel 150 x 117 (klein) / 137 (gross) x 5, Vertikalschenkel 150 x 40 x 5",
+   "Konsole Winkel 5 mm: Horizontalschenkel (Platte) 150 x 117 (klein) / 137 (gross) x 5, Vertikalschenkel 150 x 40 x 5 haengt von der Plattenoberkante nach unten an der Tafel",
    "150 x 117/137 x 5; 150 x 40 x 5",
    "A",
    "Konstruktionspraxis; Tiefe = Pumpenachse vor der Tafel + Motorradius + 10 (E aus pumpe.py)",
@@ -286,6 +288,13 @@
    "4-9 kg; 0,5 l",
    "A",
    "typische Teich-/Umwaelzpumpe; keine Quelle (R07 pausiert); modellierte Huellform ist leichter",
+   "niedrig"
+  ],
+  [
+   "Zuordnung Pumpentafel gross = Pumpe B, klein = Pumpe A",
+   "A / B",
+   "A",
+   "hydraulics.md 3: Pumpe A vor dem kleinen Tank, Pumpe B hinter dem grossen Tank; Tafel-Rolle bleibt Annahme",
    "niedrig"
   ]
  ]

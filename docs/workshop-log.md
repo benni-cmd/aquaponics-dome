@@ -212,3 +212,14 @@ Kernzahlen (Anzahl 4/4, Tafelmasse, Stutzen-DN, Port-Koordinaten, Masse 5,28/8,5
 | 4 | klein: Stueckliste/Befestigung (Dichtung ID16 ohne Port, Scheiben/Muttern, M6x16 zu kurz, Standwinkel-Untergrund) | **gueltig** | M6x20 im Modell (Klemmlaenge 15,2/17,2), Dichtung gestrichen (Rohrnetz), Scheiben/Muttern [A], Untergrund Erde als offen |
 | 5 | klein: Dichte 0,91 gegen gemessene ~1,9, Gewicht/Hydraulik (4-9 kg), Anzahl "4 Module" statt 8, Foerderstrom 30 gegen 12 l/min | **gueltig / teils vermutet** | Dichten-Mischung und Herkunft, Gewicht modelliert/real getrennt, Anzahl 8 gegen 4 Pumpen, 30 l/min = Tankumwaelzung (hydraulics 2.3) vs 12 l/min je Pool-Linie (2.4) im Blatt |
 | H | D16-Reste in Scope-Card/components/detail-standard; Kassetten im Tank-Blatt; Rohrwand 3 mm; Kabel 150 mm; Pumpe/Tankkegel | **andere Klasse** | Orchestrator/Tank/Integrator, im Blatt unter Offene Fragen |
+
+### pumpe (W12), Spec-Pruefer Runde 3 (FAIL knapp) 29.10. ~14:30
+Runde-2-Punkte in Sache behoben (Kopf/Konsole 1 mm Luft, Masse, Filter-Reste im Code, Dichten, Anzahl).
+| Nr | Befund | Einstufung | Beleg / Folge |
+|---|---|---|---|
+| 1 | gross: Pumpenschrauben M6x20 zu kurz (Klemmlaenge Sockel 11 + Konsole 5 + Mutter 5,2 = 21,2) | **gueltig** | M6x30 (24,4 mm mit 2 Scheiben), nicht modelliert [A] |
+| 2 | gross: Konsole war ein T (Vertikalschenkel mittig auf der Platte, z 39-79), Schraubenkoepfe zur Haelfte in der Platte; Normteile mit Dichte 1,29 | **gueltig (Modell)** | Vertikalschenkel haengt nach unten (z_s-40..z_s), Schrauben mittig im Schenkel; `assign_part_materials` auf Stahl; neue Pruefzeile Konsole = Winkel; Bilder 04-seite, check 32/32 PASS |
+| 3 | gross: check.txt veraltet (28/28) | **gueltig** | check.txt neu aus dem Lauf, Blatt nennt 32/32 |
+| 4 | klein: 384er/Tafelnmasse-Reste in der Abweichungszeile | **gueltig** | Zeile bereinigt, Tippfehler korrigiert |
+| 5 | klein: "Pumpe A" fuer die grosse Tafel (hydraulics.md: Pumpe B hinter dem grossen Tank) | **gueltig (Annahme)** | gross = Pumpe B, Herkunftszeile A |
+| H | hydraulics.md 51/61 fuehren "Filtermodul" weiter; Pumpen-A/B-Positionen, Siebe, Untergrund Erde | **andere Klasse** | Orchestrator/Hydraulik/Integrator, im Blatt offen |

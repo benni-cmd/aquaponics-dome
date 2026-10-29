@@ -27,6 +27,7 @@ def main(typs):
             ck.eq(f"{typ} Tafel Dicke", tb["max"][1] - tb["min"][1], T["tafel_t"], 0.5)
             ck.eq(f"{typ} Tafel Hoehe", tb["max"][2] - tb["min"][2], T["tafel_h"], 0.5)
             ck.eq(f"{typ} Pumpensockel steht auf der Konsole", B["Pumpensockel"]["bbox"]["min"][2], p["pump_z"] - T["motor_d"] / 2 - ((T["kopf_d"] - T["motor_d"]) / 2 + 1), 0.01)      # Oberkante der waagerechten Konsole (Sockelhoehe = Kopfueberstand + 1 mm)
+            ck.eq(f"{typ} Konsole ist ein Winkel (Oberkante Vertikalschenkel = Oberkante Platte)", B["Konsole"]["bbox"]["max"][2], B["Pumpensockel"]["bbox"]["min"][2], 0.01)
             ck.eq(f"{typ} Pumpenkopf kollidiert nicht mit der Konsole (Luft >= 0,5 mm)", 1 if B["Pumpenkopf"]["bbox"]["min"][2] - B["Pumpensockel"]["bbox"]["min"][2] >= 0.5 else 0, 1)
             ck.eq(f"{typ} Motor ruht auf dem Sockel (tangential)", B["Motor"]["bbox"]["min"][2], B["Pumpensockel"]["bbox"]["max"][2], 0.01)
             ck.eq(f"{typ} Motor-D", B["Motor"]["bbox"]["max"][2] - B["Motor"]["bbox"]["min"][2], T["motor_d"], 0.2)

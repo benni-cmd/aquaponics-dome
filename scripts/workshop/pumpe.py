@@ -40,10 +40,10 @@ def build_pumpe(typ, T, p, d):
     b.add("component.activate", component=root)
     b.add("component.create", name="T50b_Konsole")
     b.add("solid.box", length=bw, width=ycent + md / 2 + 10 - t / 2, height=bt, center=[0, t / 2 + (ycent + md / 2 + 10 - t / 2) / 2, z_s - bt / 2], operation="new", name="KH", body_name="Konsole")
-    b.add("solid.box", length=bw, width=bt, height=40, center=[0, t / 2 + bt / 2, z_s - bt - 20 + 40 / 2 - 0], operation="join", targets=["Konsole"], name="KV")
+    b.add("solid.box", length=bw, width=bt, height=40, center=[0, t / 2 + bt / 2, z_s - 20], operation="join", targets=["Konsole"], name="KV")
     b.add("material.assign", bodies=["Konsole"], material="Stahl Pumpe")
     for sx in (-1, 1):
-        zz = z_s - bt - 20 + 20
+        zz = z_s - 20                                           # Schrauben mittig im haengenden Vertikalschenkel (z_s - 40 .. z_s), Kopf ausserhalb der Platte
         b.add("parts.insert", family="hex_bolt", size="M6", length=20, point=[sx * (bw / 2 - 25), t / 2 + bt, zz], direction=[0, 1, 0], name=f"SchraubeK_{sx}")
         b.add("parts.insert", family="hex_nut", size="M6", point=[sx * (bw / 2 - 25), -t / 2, zz], direction=[0, -1, 0], name=f"MutterK_{sx}")
     # --- Pumpe: Sockel, Motor, Pumpenkopf, Saug- und Druckstutzen, Kabel mit Stecker
@@ -88,6 +88,7 @@ if __name__ == "__main__":
         b.cmds = [c for c in b.cmds if c]
         out = os.path.join(sc.ROOT, "designs", "components", f"{typ}.sc")
         sc.run(b.write(typ), out)
+        sc.assign_part_materials(out, "Stahl Pumpe")                 # Normteile (Body<n>) auf Stahl (Dichte 7,85)
         ev = sc.evaluate(out)
         print(typ, "Koerper", len(ev["bodies"]), "Masse", round(sum(x["mass_g"] for x in ev["bodies"]) / 1000, 2), "kg")
         if "--render" in sys.argv:

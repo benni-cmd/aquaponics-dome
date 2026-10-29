@@ -1418,5 +1418,105 @@
   "note": "W12 nach Spec-Pruefer Runde 2: Sockel 11 mm, Kopf ohne Konsolenkollision",
   "commit": "454af16",
   "source": "renders/components/pumpe_gross/pumpe_gross-05-schnitt.png"
+ },
+ {
+  "file": "20261029-132542_werkstatt_pumpe_pumpe-klein-01-iso.png",
+  "sha": "dcea554865a8fee6",
+  "time": "2026-10-29 13:25:42",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_klein/pumpe_klein-01-iso.png"
+ },
+ {
+  "file": "20261029-132543_werkstatt_pumpe_pumpe-klein-02-pumpe.png",
+  "sha": "7b37aa0726f31b9f",
+  "time": "2026-10-29 13:25:43",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_klein/pumpe_klein-02-pumpe.png"
+ },
+ {
+  "file": "20261029-132543_werkstatt_pumpe_pumpe-klein-03-rueckseite.png",
+  "sha": "77411f7e6be72db2",
+  "time": "2026-10-29 13:25:43",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_klein/pumpe_klein-03-rueckseite.png"
+ },
+ {
+  "file": "20261029-132544_werkstatt_pumpe_pumpe-klein-04-seite.png",
+  "sha": "65c6bb88ad48ea55",
+  "time": "2026-10-29 13:25:44",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_klein/pumpe_klein-04-seite.png"
+ },
+ {
+  "file": "20261029-132544_werkstatt_pumpe_pumpe-klein-05-schnitt.png",
+  "sha": "ee05f4deff9aa333",
+  "time": "2026-10-29 13:25:44",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_klein/pumpe_klein-05-schnitt.png"
+ },
+ {
+  "file": "20261029-132546_werkstatt_pumpe_pumpe-gross-01-iso.png",
+  "sha": "52954756acba6008",
+  "time": "2026-10-29 13:25:46",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_gross/pumpe_gross-01-iso.png"
+ },
+ {
+  "file": "20261029-132547_werkstatt_pumpe_pumpe-gross-02-pumpe.png",
+  "sha": "cbd96ffc103d81dc",
+  "time": "2026-10-29 13:25:47",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_gross/pumpe_gross-02-pumpe.png"
+ },
+ {
+  "file": "20261029-132548_werkstatt_pumpe_pumpe-gross-03-rueckseite.png",
+  "sha": "c0fb180edadbf335",
+  "time": "2026-10-29 13:25:48",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_gross/pumpe_gross-03-rueckseite.png"
+ },
+ {
+  "file": "20261029-132548_werkstatt_pumpe_pumpe-gross-04-seite.png",
+  "sha": "ea61353396749777",
+  "time": "2026-10-29 13:25:48",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_gross/pumpe_gross-04-seite.png"
+ },
+ {
+  "file": "20261029-132549_werkstatt_pumpe_pumpe-gross-05-schnitt.png",
+  "sha": "bfd6d30f1b7c245b",
+  "time": "2026-10-29 13:25:49",
+  "role": "werkstatt",
+  "subject": "pumpe",
+  "note": "W12 Runde 3: Konsole als Winkel, Schrauben mittig im Schenkel",
+  "commit": "a1cccec",
+  "source": "renders/components/pumpe_gross/pumpe_gross-05-schnitt.png"
  }
 ]

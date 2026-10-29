@@ -14,3 +14,7 @@ Jetzt kommt: Schritt 1+2.
 - Stand: Runde 13, check_latte 24/24 PASS. Fertig: OBJ-Schritte 1 (Pool zentriert) und 2 (4 Tanks). Bau: `sh scripts/build.sh 4 NN`, Pruefung `python scripts/check_latte.py`.
 - Naechster Schritt: OBJ 3 (T9 = 14 IBC-Wannen: 8 aussen r~5,2 m Laenge 3 m Azimut OBJ 355/319/247/31/140/67/283/103; 6 innen r~3,3 m Laenge 1,2-2,0 Azimut 318/103/283/67/30/354; Hoehe 0,64; +111 Grad), dann OBJ 4 (NFT-Ring), 5 (Strebe 30x30), 6 (offene Fragen), dann `docs/packages/system-logic.md` (Systemgraph data/system.json zuerst).
 - Annahmen: Azimut +111; T6 Mitteltank entfaellt; Pumpe 0,7 m innerhalb des Tanks; Beete T8/T9 alt bleiben bis ersetzt.
+
+## Checkpoint R14
+- Stand: check_latte 20/21 (einziger FAIL: T8-Name fehlt, bis der NFT-Ring steht). Fertig: OBJ 1, 2, 3 (Aussen-Wannen r=5,0 m statt 5,2, damit Ecken im Zehneck bleiben).
+- Naechster Schritt: OBJ 4 NFT-Ring: Topfpositionen im OBJ (Downloads/Project_Oasis_Layout.obj, Gruppen potplant) per scripts/analyze_nft.py clustern (Radius-/Hoehenstufen, Reihenabstand, Topfabstand); Rohrsegment mit Topfreihe als EIN Bauteil designs/components/nft_rohr.sc, per Instanz/Muster um den Ring (Luecke Tuerseite OBJ 150-240 Grad).

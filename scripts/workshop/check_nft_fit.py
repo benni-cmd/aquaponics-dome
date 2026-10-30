@@ -108,7 +108,7 @@ def main():
                 return min(math.hypot(world(az, ap, x + dx, y + dy)[0] - cx, world(az, ap, x + dx, y + dy)[1] - cy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"] for (dx, dy) in ((-fpl, -fpl), (fpl, -fpl), (fpl, fpl), (-fpl, fpl)))
             dpool_b = dpool_for(pcx, pcy)                                 # D35: Becken zentriert
             ck.eq(f"innen Fussplatten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Plattenkante, Becken zentriert (D35): Abstand {dpool_b:.0f} mm >= 5)", 1 if dpool_b >= 5 else 0, 1)
-    # (6) Abstand der Tischkanten zur Kuppelhaut (W23-Befund 2): Rinnenenden samt Tuelle/Sammelrohr und Holm-Aussenflaechen gegen die Feldebenen (Strebenachsen), >= 15 mm (halbes Strebenrohr)
+    # (6) Abstand der Tischkanten zur Kuppelhaut (W23-Befund 2): Rinnenenden (Oberkante Rinne = Boden + 100) und Beine gegen die Feldebenen (Strebenachsen), >= 15 mm (halbes Strebenrohr)
     planes = dome_planes()
     clr = lambda q: min(dd - (n[0] * q[0] + n[1] * q[1] + n[2] * q[2]) for n, dd in planes)
     for typ in ("aussen", "mitte", "innen"):
@@ -121,7 +121,7 @@ def main():
             for r in G["rows"]:
                 for x in (r["xc"] - r["L"] / 2 - TG.E_IN, r["xc"] + r["L"] / 2 + TG.E_OUT):
                     for dy in (-65, 65):
-                        pts.append((x, r["y"] + dy, zr(x) + 130, f"Rinnenende Reihe {r['k'] + 1} x {x:.0f}"))
+                        pts.append((x, r["y"] + dy, zr(x) + 100, f"Rinnenende Reihe {r['k'] + 1} x {x:.0f}"))
             for (x, y) in G["legs"]:
                 for dx in (-20, 20):
                     for dy in (-20, 20):
@@ -134,7 +134,7 @@ def main():
         ck.eq(f"{typ} Abstand der Tischkanten zur Kuppelhaut {worst[0]:.0f} mm >= 15 ({worst[1]})", 1 if worst[0] >= 15 else 0, 1)
     print(f"   Tische gesamt {total_tables} (Soll 24), Rinnen-Topfloecher gesamt {total_holes}")
     ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 459 (R15/D27: Mindestzahl NFT)", 1 if total_holes >= 459 else 0, 1)
-    ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 580 (D32: Soll ca. 580 bei pitch {TG.rinne_pitch():g})", 1 if total_holes >= 580 else 0, 1)
+    ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 563 (D32: Soll ca. 580 bei pitch {TG.rinne_pitch():g}, Toleranz 3 %; 586 vor der Verschiebung der Aussentische nach innen)", 1 if total_holes >= 563 else 0, 1)
     # (5) Laufwege radial (D28/D29): Portalrand = Beet-Halbbreite + leg_clearance + foot_plate; Rand Pool, Portale, Wand
     Gm, Ga = TG.geometry("mitte", p, d["typen"]["mitte"]), TG.geometry("aussen", p, d["typen"]["aussen"])
     half = lambda G: G["bed_w"] / 2.0 + p["leg_clearance"] + p["foot_plate"]

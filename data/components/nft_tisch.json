@@ -11,8 +11,8 @@
    "z_rinne_mitte": 1300,
    "laenge": "3051 / 2864 / 2676 (je Reihe)",
    "herkunft": "layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 4973 mm (D30/D37: Beetmitte)",
-   "ap_c": 4973,
-   "ap_c_herkunft": "W17/D30: Tischmitte = Aussenbeet-Mitte 4973 (Aussenportal 4458..5488, Beet 800 + 2 x 115); vorher 5209 (OBJ-Mittel)"
+   "ap_c": 4874,
+   "ap_c_herkunft": "Ben 30.10. (Tische nach innen) + W23-Befund 2: Tischmitte = Aussenbeet-Mitte 4874 (vorher 4973, D30/W17): die aeusserste Rinnenreihe lag bis 87 mm ausserhalb der Kuppelhaut (check_nft_fit, Feldebenen durch die Strebenachsen); Aussenportal 4359..5389, Laufweg B 500,5 mm (harte Untergrenze D29: 500), Wandluft 317 mm; Beete folgen (D37)"
   },
   "mitte": {
    "n": 4,

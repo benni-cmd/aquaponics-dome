@@ -79,3 +79,9 @@
 ## Stand 30.10. 01:10: ALLE LOOPS AUS (Ben: "beende evtl. laufende Loops")
 - Orchestrator-Cron: keiner (geloescht 22:05). Geplante Aufgabe `dome-loop-hourly-fallback` (stuendlich) auf enabled=false gesetzt, `dome-loop-restart-0715` war schon aus. Alle Sitzungen idle (Werkstatt, Montage, Fachrecherche). Nur der Viewer-Server (Port 4410, Hintergrundprozess) laeuft.
 - Wieder einschalten nur auf Bens Wunsch: `docs/resume.md` (Automatik wieder einschalten) und `docs/orchestrator-nachtmodus-prompt.md`.
+
+## Stand 30.10. 11:30: Neustart nach Wochenreset (Woche 0 %, Reset 6.11.), alle drei Sitzungen geweckt
+- Montage: M7 fertig (Becken zentrieren D35, Aussenbeete 800 x 2640 D34, Laufweg B), dann M3 Tuer nach D36 (Feld BBB 149,2), Haut einsetzen, M4/M5.
+- Werkstatt: W20 Tuer komplett (D36), W21 Pruefer W19.
+- Fachrecherche (local_ee5ee82d-...): R19-R22 + Empfehlung; danach Orchestrator: system_specs.py auf Q-Werte, Viewer-Kennzahlen, Beschreibungen.
+- Orchestrator-Kontext 75 %: Zustand im Repo; Loops bleiben AUS (kein Cron), Anstoss nur per Hand bzw. Weck-Nachricht. Viewer-Server neu gestartet (Port 4410).

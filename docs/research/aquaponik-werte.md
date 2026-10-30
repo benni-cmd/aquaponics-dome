@@ -33,7 +33,23 @@ Konfidenz: hoch = zwei Primaerquellen gelesen und uebereinstimmend; mittel = zwe
 | DO-Ziel | 4-8 mg/l, Nitrifikation stoppt <2 mg/l | FAO TP 589 | SRAC 454 (6-7 mg/l) | hoch | |
 | Belueftungsleistung | SAE fein 1,2-2,0 kg O2/kWh; UVI 0,59 W/kg Fisch | Colt & Orwicz 1991 (sekundaer) | SRAC 454 (UVI) | niedrig-mittel | A 1 kg O2/kWh; UVI-Wert gibt hoeher |
 | Temperatur Tilapia | 27-30 °C ideal; <17 °C kein Wachstum; <12 °C Tod | FAO TP 589 | SRAC 454 | hoch | Heizung nicht modelliert |
-| Heizlast Huelle | 3,1-6,8 W/m²K; Kuppel 0,7-0,9 kW/K (Halbkugel 226 m², Eigenrechnung) | Purdue CEA | (Huellmaterial offen) | mittel (Standort offen) | T 219 EUR/Monat reichen nicht |
+| Heizlast Huelle (R22, **ersetzt durch R24 unten**) | 3,1-6,8 W/m²K; Kuppel 0,7-0,9 kW/K (Halbkugel 226 m², Paneel-U) | Purdue CEA | (Huellmaterial offen) | mittel (Standort offen) | T 219 EUR/Monat reichen nicht |
+
+## R24 Huelle als Plane (D39), Heizlast, Fruchtgemuese (30.10.2026, Details `R24.md`)
+| Wert | Spannweite | Quelle 1 | Quelle 2 | Konfidenz | Abweichung |
+|---|---|---|---|---|---|
+| Huellflaeche netto | 208 m² (40 Dreiecke 209,9 − Tuerfeld) | E aus `haut_paneel.md` | | hoch (Rechnung) | R22 226 m² (ideale Halbkugel) |
+| U Folie einlagig / doppelt luftgepolstert | 6,8 / 4,0 (2,8–5,7) W/m²K | Kentucky State Univ. (FarmHub 9.2) | Purdue CEA | mittel | R22 3,1–4,0 (Paneel-U) |
+| **Heizlast PE doppelt** | **0,83 (0,59–1,18) kW/K**; Spitze 25 kW bei ΔT 30 K (−10/20 °C, Annahme Mitteleuropa); Jahres-Obergrenze ca. 70 MWh ohne Sonne | E aus Quelle 1+2; Gt20/15 3500 Kd (DWD ueber Rechnerportal) | | mittel (UA) / niedrig (Jahr) | R22 0,7–0,9 kW/K; Standort offen |
+| Einsparung Doppel- gegen Einfachfolie | 25–60 % | Virginia Tech HORT-284 (Zusammenfassung) | Sherry u. a.; Domerama | niedrig-mittel | nicht eingerechnet |
+| Lichtdurchlass einlagig / doppelt | 90 % / 75–80 % | Kentucky State Univ. | UMass (Suchzusammenfassung) | mittel | nicht in A/T |
+| Lebensdauer UV-Gewaechshaus-PE | 4 Jahre (Standard 1–2, Baumarkt 1) | Domerama | UMass (Zusammenfassung) | mittel | |
+| ETFE | 93–95 % Licht, 25–35 Jahre, 10–15-fach Preis, U-Wert nicht gefunden | Hersteller (Ceres) | HortiDaily | niedrig | |
+| Folienpreis (PE doppelt mit Montage) | ca. 5 USD/m² (nur Haendlerangabe) | Prospiant | | niedrig | |
+| Befestigung | Alu-Keilschiene + Federdraht auf allen 65 Streben (ca. 228 m); Zuschnitt je Dreieck mit Ueberlappung | Domerama | Northern Homestead; Haendler | mittel | D39 offen |
+| Futter Fruchtgemuese | 50–80 g/m²/Tag (⅓ mehr als Blatt); Bens Mix ca. 55 g/m² = 3,8 kg Futter/Tag | FAO TP 589 | UVI-Okra 95,6 g (Zusammenfassung) | mittel | R20 45 g Blatt-Mitte |
+| Suesskartoffel | in Aquaponik **nicht belegt**; NFT-Rinnenabstand ≥ 25–38 cm | Mortley u. a. 1991 (Abstract) | | niedrig | Topfraster 11 cm zu eng (E) |
+| Kondenswasser | Doppelfolie reduziert, Anti-Drip + Anti-Fog senkt Pilzdruck; Aquaponik-Messwerte nicht belegt | Kentucky State Univ. | Univ. Thessalien (Abstract) | niedrig-mittel | |
 
 ## Zusammenfassung der Abweichungen von Bens Tabelle
 1. **Fischbiomasse 1287 kg (45 kg/m³)** liegt ueber dem FAO-Wert (20 kg/m³) und braucht UVI-Technik; Pflanzflaeche und Substrat tragen davon nur 180-640 kg.

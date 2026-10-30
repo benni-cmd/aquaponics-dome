@@ -1,0 +1,82 @@
+{
+ "klasse": "tuer",
+ "teilenummer": "T50",
+ "revision": "B",
+ "beschreibung": "Tuer komplett (D36, R13): Zarge aus Rohr 30 x 30 (2 Pfosten, Sturz, Schwelle) mit Normtuerblatt 1000 x 2000 x 40 im Basisfeld BBB 149,2, nach aussen oeffnend, 3 Scharniere, Druecker, Dichtung",
+ "quelle_masse": "docs/research/R13.md, docs/decisions.md D36, data/layout.json dome.nodes_list (Knoten 24, 22, 6), data/components/haut_paneel.json felder",
+ "parameter": {
+  "blatt_w": {
+   "wert": 1000,
+   "einheit": "mm",
+   "herkunft": "[A] Normtuer 1000 x 2000 (docs/components.md, Auftrag W20)"
+  },
+  "blatt_h": {
+   "wert": 2000,
+   "einheit": "mm",
+   "herkunft": "[A] Normtuer 1000 x 2000"
+  },
+  "blatt_t": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Tuerblatt 40 mm (Auftrag W20)"
+  },
+  "spiel": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A] Spiel Blatt zu Zarge je Seite und oben (Normtuer-Praxis 5-10 mm)"
+  },
+  "rohr": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] Zarge aus Rechteckrohr 30 x 30 x 2 wie die Streben (Auftrag W20 Schritt 2)"
+  },
+  "rohr_wand": {
+   "wert": 2,
+   "einheit": "mm",
+   "herkunft": "[A] Wandstaerke Zargenrohr 2 mm"
+  },
+  "schwelle_h": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] Schwelle = Rohr 30 x 30 (ebenerdig, Blatt liegt auf der Schwelle auf, R13 Befund 8: kein Mass belegt)"
+  }
+ },
+ "geometrie": {
+  "az_achse": 149.2,
+  "neigung_feldebene_grad": 10.82,
+  "basis_w": 3708.3,
+  "hang_laenge_spitze": 3211.1,
+  "spitze_z": 3154,
+  "nodes_feld": {
+   "24": [
+    -1854.2,
+    -0.0,
+    0.0
+   ],
+   "22": [
+    1854.2,
+    0.0,
+    0.0
+   ],
+   "6": [
+    0.0,
+    3211.1,
+    0.0
+   ]
+  },
+  "lichte_w": 1016,
+  "lichte_h": 2008,
+  "zarge_aussen_w": 1076,
+  "zarge_hoehe": 2068,
+  "senkrechte_hoehe_sturz": 2031.2,
+  "feldbreite_sturz_oben": 1320.1,
+  "feldbreite_lichte_oben": 1354.7,
+  "reserve_je_seite_sturz": 122.0,
+  "reserve_je_seite_lichte_oben": 169.4
+ },
+ "anzahl": {
+  "soll": "1 (Feld BBB 149,2)",
+  "quelle": "docs/decisions.md D36"
+ },
+ "bezugspunkt": "Feld-KS: Ursprung Mitte der Basiskante (Knoten 24 -> 22) auf Z 0 = Basisknotenhoehe, X tangential (24 -> 22), Y hangaufwaerts in der Feldebene zur Spitze (Knoten 6), Z Feldnormale nach aussen; Zarge liegt in der Feldebene (um ca. 10,8 Grad zur Senkrechten geneigt)"
+}

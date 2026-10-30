@@ -7,8 +7,8 @@
  "typen": {
   "AAB": {
    "anzahl_felder": 30,
-   "anzahl_voll": 29,
-   "anzahl_mit_tuerausschnitt": 1,
+   "anzahl_voll": 30,
+   "anzahl_mit_tuerausschnitt": 0,
    "kanten_nominal": [
     3279,
     3279,
@@ -200,7 +200,7 @@
    "az": 185.2,
    "z": 880,
    "basis": true,
-   "door": true
+   "door": false
   },
   {
    "nodes": [
@@ -731,8 +731,8 @@
   }
  ],
  "anzahl": {
-  "soll": "40 Felder: 38 volle Paneele + 2 Paneele mit Tuerausschnitt (Tuerknoten 22, Azimut 167.2)",
-  "quelle": "data/layout.json dome: 65 Streben, 26 Knoten -> 40 Dreiecke (V - E + F = 1); Tuer bei Azimut 167 (docs/components.md) sitzt auf Basisknoten 22"
+  "soll": "40 Felder: 39 volle Paneele + 1 Paneel mit Tuerausschnitt (Basisfeld BBB 149.2)",
+  "quelle": "data/layout.json dome: 65 Streben, 26 Knoten -> 40 Dreiecke (V - E + F = 1); Tuerfeld nach D36 (docs/decisions.md)"
  },
  "parameter": {
   "panel_t": {

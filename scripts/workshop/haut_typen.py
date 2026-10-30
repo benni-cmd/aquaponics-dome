@@ -1,12 +1,12 @@
 """Haut-Paneel (W19, D35, R11) Schritt 1: Dreieckstypen aus data/layout.json (dome.nodes_list, strut_len_mm) bestimmen und in data/components/haut_paneel.json ablegen.
 Kanten = Knotenpaare mit Abstand = einer Strebenlaenge (A 3279 / B 3708, Toleranz 15 mm; Anzahl muss dome.struts = 65 ergeben); Dreiecke = Tripel paarweise verbundener Knoten (Soll 40 fuer die Halbkugel 2V).
-Tuer: sitzt im OBJ bei Azimut 167 (docs/components.md) und damit auf einem Basisknoten (Azimut 167,2): die beiden Basisfelder an diesem Knoten sind 'tuer_beruehrt' (Paneel mit Tuerausschnitt 1000 x 2000, Zuschnitt = spaeterer Schritt); alle anderen Felder sind volle Paneele.
+Tuer (D36): mittig im Basisfeld BBB 149,2; NUR dieses Feld traegt den Tuerausschnitt (Paneel haut_paneel_BBB_tuer), alle anderen Felder sind volle Paneele.
 Aufruf: python scripts/workshop/haut_typen.py"""
 import collections, itertools, json, math, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 
-DOOR_AZ = 167.0                     # OBJ (docs/components.md: Tuer bei Azimut ca. 167 Grad, Mitte zwischen den Aussenbeeten 149 und 185)
+DOOR_AZ = 149.2                     # D36 (30.10.): Tuer mittig im Basisfeld BBB 149,2 (OBJ-Tuer bei Azimut 167 sass auf Basisknoten 22 und beruehrte zwei Felder)
 TOL = 15.0
 
 def main():
@@ -41,11 +41,11 @@ def main():
         nbase = sum(1 for n in (i, j, k) if abs(N[n]["z"] - base_z) < 5)
         out.append(dict(nodes=[i, j, k], typ=typ, edges=[round(E[tuple(sorted(p))][1], 1) for p in ((i, j), (j, k), (i, k))], az=round(az(cx, cy), 1), z=round(cz), basis=nbase == 2, door=False))
         types[typ].append(len(out) - 1)
-    base_nodes = [n for n in range(len(N)) if abs(N[n]["z"] - base_z) < 5]
-    door_node = min(base_nodes, key=lambda n: abs(((az(N[n]["x"], N[n]["y"]) - DOOR_AZ + 180) % 360) - 180))
+    cand = [t for t in out if t["basis"]]
+    door_f = min(cand, key=lambda t: abs(((t["az"] - DOOR_AZ + 180) % 360) - 180))
     for t in out:
-        t["door"] = bool(t["basis"] and door_node in t["nodes"])
-    door = dict(node=door_node, az=round(az(N[door_node]["x"], N[door_node]["y"]), 1), felder=[t for t in out if t["door"]])
+        t["door"] = t is door_f
+    door = dict(node=None, az=door_f["az"], felder=[door_f], typ=door_f["typ"])
     typen = {}
     for typ, idx in sorted(types.items()):
         ts = [out[n] for n in idx]
@@ -69,9 +69,9 @@ if __name__ == "__main__":
         "quelle_masse": "data/layout.json dome (nodes_list, strut_len_mm, struts 65), docs/research/R11.md (Doppelstegplatte 8 mm, Paneele enden 15 mm vor der Strebenachse), docs/decisions.md D35",
         "typen": typen,
         "felder": out,
-        "anzahl": {"soll": f"{len(out)} Felder: {pan} volle Paneele + {tf} Paneele mit Tuerausschnitt (Tuerknoten {door['node']}, Azimut {door['az']})", "quelle": "data/layout.json dome: 65 Streben, 26 Knoten -> 40 Dreiecke (V - E + F = 1); Tuer bei Azimut 167 (docs/components.md) sitzt auf Basisknoten " + str(door["node"])},
+        "anzahl": {"soll": f"{len(out)} Felder: {pan} volle Paneele + {tf} Paneel mit Tuerausschnitt (Basisfeld {door['typ']} {door['az']})", "quelle": "data/layout.json dome: 65 Streben, 26 Knoten -> 40 Dreiecke (V - E + F = 1); Tuerfeld nach D36 (docs/decisions.md)"},
     })
     json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(f"Kanten A {A} / B {B}; Felder {len(out)}; volle Paneele {pan}; mit Tuerausschnitt {tf} (Tuerknoten {door['node']} az {door['az']}: Felder az {[t['az'] for t in door['felder']]})")
+    print(f"Kanten A {A} / B {B}; Felder {len(out)}; volle Paneele {pan}; mit Tuerausschnitt {tf} (Feld az {door['az']} Typ {door['typ']})")
     for t, v in typen.items():
         print(t, v)

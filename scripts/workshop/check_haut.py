@@ -62,7 +62,10 @@ def main():
     r_ = subprocess.run([sc.CLI, "run", s, "--in", path, "--save", o, "--quiet"], capture_output=True, text=True)
     bB = sc.evaluate(o)["bodies"][0] if r_.returncode == 0 else None
     ck.eq("Profil B Laenge (Konfiguration B)", (bB["bbox"]["max"][0] - bB["bbox"]["min"][0]) if bB else 0, B, 0.01)
-    ck.eq("Kappen gesamt 30 x A + 35 x B", n_a + n_b, 65)
+    tg = json.load(open(os.path.join(sc.ROOT, "data", "components", "tuer_komplett.json"), encoding="utf-8"))["geometrie"]
+    rest = (tg["basis_w"] - tg["zarge_aussen_w"]) / 2
+    ck.eq("Reststrecke der Basisstrebe am Tuerfeld je Seite (Basiskante - Zarge)/2 = 1316 mm", rest, 1316, 1.0)
+    ck.eq("Kappen gesamt 66 = 64 ganze (65 Streben - 1 geteilte Basisstrebe) + 2 Reststuecke (D37)", (n_a + n_b - 1) + 2, 66)
     return ck.done()
 
 if __name__ == "__main__":

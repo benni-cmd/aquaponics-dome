@@ -1,16 +1,16 @@
 # Bauteilblatt T41 haut_profil (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/haut_profil.json` und `designs/components/haut_profil.sc`, nicht von Hand aendern)
 
-**Funktion:** Randprofil der Kuppelhaut: Aluminium-Kappe auf jeder Strebe, an der die Paneelkanten beider Nachbarfelder buendig enden (Fugenleiste; Auflage 0 mm, Halt der Paneele nicht modelliert, siehe haut_paneel).
+**Funktion:** Randprofil der Kuppelhaut: Aluminium-Kappe auf jeder Strebe, auf der die Paneelkanten beider Nachbarfelder aufliegen (je 15 mm Auflage) und von der Kappe geklemmt werden (D37; Klemmung nicht modelliert).
 
 **Datei:** `designs/components/haut_profil.sc` · **Teilenummer:** T41 · **Revision:** A · **Bezugspunkt:** Mitte der Kappenlaenge auf der Strebenachse, X = Laengsrichtung, Y quer (Breite 30), Z 0 = Unterkante der Kappe (liegt auf der Strebe), Z 8 = Oberkante; U-Profil oeffnet nach unten
 
-**Anzahl (Instanzen):** 65 (30 x A 3279, 35 x B 3708): je Strebe eine Kappe (Quelle: data/layout.json dome.struts 65, strut_len_mm (30 x 3279, 35 x 3708))
+**Anzahl (Instanzen):** 66 Kappen: 30 x A 3279 + 34 x B 3708 + 2 Reststuecke von je 1316 mm am Tuerfeld (D37) (Quelle: data/layout.json dome.struts 65, strut_len_mm (30 x 3279, 35 x 3708); die Basisstrebe 24-22 am Tuerfeld wird zwischen den Pfosten geteilt (tuer_komplett.json: Reststrecke 1316 je Seite))
 
 ## Masse und Parameter
 
 | Parameter | Wert | Einheit | Herkunft |
 |---|---|---|---|
-| `cap_w` | 30 | mm | [A] R11: Kappe 30 mm breit (Paneele enden 15 mm vor der Strebenachse) |
+| `cap_w` | 30 | mm | [A] R11: Kappe 30 mm breit (Paneel bis zur Strebenachse, Kappe klemmt beide Kanten mit 15 mm Auflage je Seite: D37) |
 | `cap_h` | 8 | mm | [A] R11: Kappe 8 mm hoch |
 | `cap_wall` | 2 | mm | [A] Wand der Aluminium-Kappe 2 mm (Strangpressprofil) |
 | `len` | 3279 | mm | layout.json dome.strut_len_mm: A 3279 / B 3708 (Knoten-zu-Knoten-Mass; die Kappe laeuft ueber die ganze Strebe; Strebenversatz an den Knoten nicht abgezogen, A) |
@@ -33,7 +33,7 @@ U-Profil 30 breit x 8 hoch, Wand 2 mm, offen nach unten (sitzt auf der Strebe), 
 | Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
 |---|---|---|---|
 | Auflage Strebe | U-Profil Innenbreite 26 mm | Z 0 (Unterkante), y +-13 (Innenwaende) | Kappe sitzt auf dem Strebenrohr, offene Seite nach unten |
-| Auflage Paneel | Oberseite 30 mm breit | Z 8 (Oberkante), y +-15 | Paneelkanten beider Nachbarfelder enden buendig an der Kappenkante (je 15 mm vor der Strebenachse) |
+| Auflage Paneel | Oberseite 30 mm breit | Z 8 (Oberkante), y +-15 | Paneelkanten beider Nachbarfelder liegen je 15 mm auf der Kappe (Paneel bis zur Strebenachse, D37) |
 
 ## Verbindungen und Befestigungen
 
@@ -45,13 +45,13 @@ U-Profil 30 breit x 8 hoch, Wand 2 mm, offen nach unten (sitzt auf der Strebe), 
 |---|---|---|---|---|
 | Kappe 30 x 8 mm | 30 x 8 mm | A | R11: Aluminium-Kappe 30 mm breit, 8 mm hoch | niedrig |
 | Wand 2 mm, U-Profil offen nach unten | 2 mm | A | Strangpressprofil-Annahme | niedrig |
-| Laengen A 3279 / B 3708, 65 Stueck | 30 x A + 35 x B | OBJ | layout.json dome.strut_len_mm | hoch |
+| Laengen A 3279 / B 3708, 65 Streben, 66 Kappen | 30 x A + 34 x B + 2 Reststuecke | OBJ + E | layout.json dome.strut_len_mm; D37: die Basisstrebe am Tuerfeld wird geteilt (2 Reststuecke je (3708 - 1076)/2 = 1316 mm) | hoch |
 | Aluminium EN AW-6063, 2,7 g/cm3 | 2,7 g/cm3 | A | Standardwerkstoff Strangpressprofil | niedrig |
 
 ## Referenz und Abweichung zum OBJ
 
 - Referenzbild: reference/ref-6-grow-tables-detail.jpg
-- Quelle der Masse: docs/research/R11.md (Aluminium-Kappe 30 mm breit, 8 mm hoch, Paneele enden 15 mm vor der Strebenachse), data/layout.json dome.strut_len_mm (3279 / 3708; 30 x A + 35 x B = 65)
+- Quelle der Masse: docs/research/R11.md (Aluminium-Kappe 30 mm breit, 8 mm hoch, Paneel bis zur Strebenachse, Kappe klemmt beide Kanten mit 15 mm Auflage je Seite: D37), data/layout.json dome.strut_len_mm (3279 / 3708; 30 x A + 35 x B = 65)
 - Abweichung zum OBJ: keine OBJ-Vorgabe (das OBJ-Dom hat keine Haut).
 
 ## Montage (L4)
@@ -63,7 +63,7 @@ U-Profil 30 breit x 8 hoch, Wand 2 mm, offen nach unten (sitzt auf der Strebe), 
 
 ## Stueckliste-Zeile
 
-- T41 Haut-Randprofil Alu-Kappe 30 x 8 x 2: 30 x Laenge 3279 (A) + 35 x Laenge 3708 (B) = 65 Strebenkappen, gesamt ca. 52 kg; am Tuerfeld wird die Basisstrebe 24-22 zwischen den Pfosten entfernt: dort 2 Kappen 1316 statt 1 x 3708 (Parameter len), also 66 Kappen
+- T41 Haut-Randprofil Alu-Kappe 30 x 8 x 2: 30 x Laenge 3279 (A) + 35 x Laenge 3708 (B) = 65 Streben; am Tuerfeld wird das Mittelstueck der Basisstrebe 24-22 entfernt, dort 2 Reststuecke von je 1316 mm (Parameter len): 66 Kappen (30 x A 3279 + 34 x B 3708 + 2 x 1316), gesamt ca. 52 kg (D37)
 
 ## Alternative lokale Fertigung
 
@@ -77,7 +77,7 @@ Aluminium-Kappenprofile gibt es als Strangpressprofil (Gewaechshausbau, Foliensy
 ## Pruefung
 
 - Gauntlet-Urteil: offen (kein Pruefer-Lauf, Wochenlimit)
-- scripts/workshop/check_haut.py (28/28 PASS): Laenge A/B, Breite, Hoehe, Querschnitt 84 mm2, Masse
+- scripts/workshop/check_haut.py (29/29 PASS): Laenge A/B, Breite, Hoehe, Querschnitt 84 mm2, Masse
 - Bilder renders/components/haut_profil/ (Iso, Querschnitt); kein Bild-Kritiker, kein Spec-Pruefer (Wochenlimit)
 
 ## Offene Fragen

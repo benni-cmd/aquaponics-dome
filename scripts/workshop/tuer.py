@@ -18,7 +18,7 @@ def rect_member(b, name, dims, origin, xdir, ydir, dist, symmetric=False):
     b.add("material.assign", bodies=[name], material="Stahl verzinkt")
 
 def build():
-    p, d = sc.load_params("tuer")
+    p, d = sc.load_params("tuer_komplett")
     G = d["geometrie"]
     unit = {k: v["einheit"] for k, v in d["parameter"].items()}
     b = sc.Build()

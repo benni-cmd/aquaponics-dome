@@ -1,4 +1,4 @@
-"""Tuer komplett (W20, D36, R13) Schritt 1: Geometrie des Basisfeldes BBB 149,2 und der Tuerlage; schreibt data/components/tuer.json (Parameter, Geometrie, Pruefwerte).
+"""Tuer komplett (W20, D36, R13) Schritt 1: Geometrie des Basisfeldes BBB 149,2 und der Tuerlage; schreibt data/components/tuer_komplett.json (Parameter, Geometrie, Pruefwerte).
 Feld-KS (Tuer-KS, in der Ebene des Strebendreiecks): Ursprung = Mitte der Basiskante (Knoten 24 -> 22) auf Z 0 = Basisknotenhoehe (base_z), X tangential (Knoten 24 -> 22), Y' in der Feldebene hangaufwaerts zur Spitze (Knoten 6), Z' = Feldnormale nach aussen.
 Entscheidung [A]: der rechteckige Rahmen liegt in der Feldebene (um den Winkel der Feldebene zur Senkrechten geneigt, R13 Befund 2: die Tuer steht nicht senkrecht); die Rahmenmasse (Lichte 1016 x 2008) werden in der Feldebene gemessen, der Tuerausschnitt im Paneel BBB liegt damit eben im Paneel.
 Aufruf: python scripts/workshop/tuer_geom.py"""
@@ -32,7 +32,7 @@ def local_nodes(lay):
 def main():
     lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))["dome"]
     P, _ = {}, None
-    pth = os.path.join(sc.ROOT, "data", "components", "tuer.json")
+    pth = os.path.join(sc.ROOT, "data", "components", "tuer_komplett.json")
     d = json.load(open(pth, encoding="utf-8")) if os.path.exists(pth) else {}
     P = {k: v["wert"] for k, v in d.get("parameter", {}).items()} or None
     return lay, d, pth

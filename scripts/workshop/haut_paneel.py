@@ -1,7 +1,7 @@
 """Haut-Paneel T40 (W19 Schritt 2): EIN Paneel je Dreieckstyp (AAB, BBB) als haut_paneel_<typ>.sc: ebenes Dreieck, Dicke panel_t, Rand edge_inset vor der Strebenachse (Dreieck um den Inkreismittelpunkt verkleinert), Material Polycarbonat, transparent.
 Bezug: Inkreismittelpunkt des Strebendreiecks im Ursprung, Z = Aussennormale, Paneel Z 0..panel_t, Kante P0P1 (Typ-Kante) parallel X. Kanten: e0 = P0P1, e1 = P1P2, e2 = P2P0.
 Aufruf: python scripts/workshop/haut_paneel.py [typ ...] [--render]"""
-import math, os, sys
+import json, math, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 
@@ -19,8 +19,10 @@ def tri_points(kanten, inset):
     return strebe, [(x * k, y * k) for x, y in strebe], r
 
 def build(typ):
+    tuer = typ.endswith("_tuer")                      # W20: BBB mit Tuerausschnitt (Basisfeld BBB 149,2, D36)
+    base = typ[:-5] if tuer else typ
     p, d = sc.load_params("haut_paneel")
-    T = d["typen"][typ]
+    T = d["typen"][base]
     kanten = T["kanten_nominal"]
     strebe, pan, r = tri_points(kanten, p["edge_inset"])
     b = sc.Build()
@@ -33,13 +35,20 @@ def build(typ):
     b.add("sketch.line", points=[[round(x, 3), round(y, 3)] for x, y in pan], closed=True)
     b.add("sketch.finish")
     b.add("solid.extrude", distance="panel_t", operation="new", name="E_Paneel", body_name="Paneel")
+    if tuer:                                           # Ausschnitt = Zarge (Aussenbreite x Hoehe in der Feldebene, tuer_komplett.json), reicht bis ueber die Basiskante hinaus; P0P1 = Basiskante, Zarge mittig
+        G = json.load(open(os.path.join(sc.ROOT, "data", "components", "tuer_komplett.json"), encoding="utf-8"))["geometrie"]
+        yb = strebe[0][1]                                        # Basiskante P0P1 (Strebenachse) im Paneel-KS
+        b.add("sketch.create", plane={"origin": [0, 0, -1], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name="S_Tuerausschnitt")
+        b.add("sketch.rectangle.two_point", p0=[-G["zarge_aussen_w"] / 2, round(yb - 1, 3)], p1=[G["zarge_aussen_w"] / 2, round(yb + G["zarge_hoehe"], 3)])
+        b.add("sketch.finish")
+        b.add("solid.extrude", distance=p["panel_t"] + 2, operation="cut", targets=["Paneel"], name="E_Tuerausschnitt")
     b.add("material.assign", bodies=["Paneel"], material="Polycarbonat")
     b.add("appearance.assign", bodies=["Paneel"], color=d["werkstoff"]["farbe"], opacity=p["opacity"])
     b.add("component.metadata.set", component=root, part_number="T40", description=d["beschreibung"] + f" (Typ {typ})", revision="A", properties={"Werkstoff": d["werkstoff"]["name"], "Typ": typ})
     return b, strebe, pan, r
 
 if __name__ == "__main__":
-    typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["AAB", "BBB"]
+    typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["AAB", "BBB", "BBB_tuer"]
     for typ in typs:
         b, strebe, pan, r = build(typ)
         out = os.path.join(sc.ROOT, "designs", "components", f"haut_paneel_{typ}.sc")

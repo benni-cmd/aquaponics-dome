@@ -46,3 +46,5 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 **Auffuellung 30.10. 11:30 (Orchestrator):** M7 fertigmachen (Becken zentrieren D35, Aussenbeete 800 x ~2640 mit neuem Topfraster D34, Laufweg B >= 500, Ziel 600, check_latte 24/24). Danach **M3 Tuer nach D36:** Tuer im Basisfeld BBB 149,2 (nicht bei 167), zweites Becken auf Azimut 149,2 drehen, `tuer_komplett.sc` kommt von der Werkstatt (W20). Dann Haut einsetzen (40 Felder `felder[]` in data/components/haut_paneel.json, 65 Kappen; Tuerfeld mit Ausschnitt), danach M4/M5 Rohre und Schlaeuche.
 
 **HINWEIS 30.10. 14:00 (D39):** Huelle ist eine Plane, keine Paneele. Schritt "Haut einsetzen" ruht bis R24 und Werkstatt-Bauteile; Tuer (M3) bleibt. Sonst Reihenfolge unveraendert (M7, M3, M4/M5).
+
+**HINWEIS 30.10. 14:30 (D42):** Aussentisch bekommt 4 Rinnen (674 Toepfe) als Standard, sobald die Werkstatt W25a meldet. Reihenfolge: check_latte 43 fertig laufen lassen, M3 Tuer, DANN extract_nft_pots + build + check_walkways + ein gemeinsamer check_latte mit aussen4. Pumpen: D38.

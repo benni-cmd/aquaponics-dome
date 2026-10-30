@@ -41,7 +41,7 @@ def build():
     # --- Tuerblatt 1000 x 2000 x 40 (Sandwich), Z' -11..29
     bw, bh, bt = p["blatt_w"], p["blatt_h"], p["blatt_t"]
     z0b = -11.0
-    s0b = sh + 2.0                                                              # Spiel unten 2 mm
+    s0b = sh + p["spiel_unten"]                                                # Spiel unten (Dichtstreifen)
     b.add("component.activate", component=root)
     b.add("component.create", name="T50b_Tuerblatt")
     b.add("material.create", name="Tuerblatt Sandwich", density_g_cm3=0.31, color="#d9d3c3")
@@ -56,10 +56,11 @@ def build():
         b.add("solid.box", length=14, width=lh, height=3, center=[sg * (sx - 7), sz0 + lh / 2, -15 + 1.5], operation="new", name="AS_" + nm, body_name=nm)
     b.add("solid.box", length=lw - 28, width=14, height=3, center=[0, sz1 - 7, -15 + 1.5], operation="new", name="AS_Sturz", body_name="Anschlag_Sturz")
     b.add("material.assign", bodies=["Anschlag_links", "Anschlag_rechts", "Anschlag_Sturz"], material="Stahl verzinkt")
-    for sg, nm in ((-1, "Dichtung_links"), (1, "Dichtung_rechts")):
-        b.add("solid.box", length=6, width=lh - 14, height=1, center=[sg * (sx - 17), sz0 + (lh - 14) / 2 + 0, -12 + 0.5], operation="new", name="DI_" + nm, body_name=nm)
-    b.add("solid.box", length=lw - 2 * 17 - 12, width=6, height=1, center=[0, sz1 - 17, -12 + 0.5], operation="new", name="DI_Sturz", body_name="Dichtung_Sturz")
-    b.add("material.assign", bodies=["Dichtung_links", "Dichtung_rechts", "Dichtung_Sturz"], material="EPDM schwarz")
+    for sg, nm in ((-1, "Dichtung_links"), (1, "Dichtung_rechts")):                 # liegt auf dem Anschlag (x von der Anschlagkante bis zur Blattkante), unter dem Blatt
+        b.add("solid.box", length=bw / 2 - (sx - 14), width=bh, height=1, center=[sg * ((bw / 2 + sx - 14) / 2), s0b + bh / 2, -12 + 0.5], operation="new", name="DI_" + nm, body_name=nm)
+    b.add("solid.box", length=sx * 2 - 28, width=(s0b + bh) - (sz1 - 14), height=1, center=[0, ((s0b + bh) + (sz1 - 14)) / 2, -12 + 0.5], operation="new", name="DI_Sturz", body_name="Dichtung_Sturz")
+    b.add("solid.box", length=bw, width=p["spiel_unten"], height=bt, center=[0, sh + p["spiel_unten"] / 2, z0b + bt / 2], operation="new", name="DI_Schwelle", body_name="Dichtung_Schwelle")
+    b.add("material.assign", bodies=["Dichtung_links", "Dichtung_rechts", "Dichtung_Sturz", "Dichtung_Schwelle"], material="EPDM schwarz")
     # --- Beschlaege: 3 Aufschraubbaender links (Zargenlasche auf dem Pfosten Z' 15..19, Blattlasche auf dem Blatt Z' 29..33, Bolzen D10 dazwischen), Druecker rechts
     b.add("component.activate", component=root)
     b.add("component.create", name="T50d_Beschlaege")

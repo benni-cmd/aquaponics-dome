@@ -41,10 +41,12 @@ PARAM = {
     "blatt_w": ("mm", 1000, "[A] Normtuer 1000 x 2000 (docs/components.md, Auftrag W20)"),
     "blatt_h": ("mm", 2000, "[A] Normtuer 1000 x 2000"),
     "blatt_t": ("mm", 40, "[A] Tuerblatt 40 mm (Auftrag W20)"),
-    "spiel": ("mm", 8, "[A] Spiel Blatt zu Zarge je Seite und oben (Normtuer-Praxis 5-10 mm)"),
+    "spiel": ("mm", 8, "[A] Spiel Blatt zu Zarge je Seite (Normtuer-Praxis 5-10 mm)"),
+    "spiel_oben": ("mm", 6, "[A] Spiel Blatt zum Sturz oben"),
+    "spiel_unten": ("mm", 2, "[A] Spiel Blatt zur Schwelle unten (Dichtstreifen EPDM 2 mm dazwischen)"),
     "rohr": ("mm", 30, "[A] Zarge aus Rechteckrohr 30 x 30 x 2 wie die Streben (Auftrag W20 Schritt 2)"),
     "rohr_wand": ("mm", 2, "[A] Wandstaerke Zargenrohr 2 mm"),
-    "schwelle_h": ("mm", 30, "[A] Schwelle = Rohr 30 x 30 (ebenerdig, Blatt liegt auf der Schwelle auf, R13 Befund 8: kein Mass belegt)"),
+    "schwelle_h": ("mm", 30, "[A] Schwelle = Rohr 30 x 30 (ebenerdig; Blatt steht 2 mm darueber auf einem EPDM-Dichtstreifen, R13 Befund 8: kein Mass belegt)"),
 }
 
 def compute(lay, P):
@@ -52,7 +54,7 @@ def compute(lay, P):
     xa = nl[24][0]; xb = nl[22][0]; S = nl[6][1]
     base_w = xb - xa
     lichte_w = P["blatt_w"] + 2 * P["spiel"]
-    lichte_h = P["blatt_h"] + P["spiel"]
+    lichte_h = P["blatt_h"] + P["spiel_oben"] + P["spiel_unten"]
     frame_w = lichte_w + 2 * P["rohr"]                              # Aussenbreite der Zarge
     s_sturz_o = P["schwelle_h"] + lichte_h + P["rohr"]               # Oberkante Sturz, in der Feldebene gemessen
     w = lambda s: base_w * (1 - s / S)                               # Feldbreite in Hangabstand s von der Basiskante

@@ -23,7 +23,17 @@
   "spiel": {
    "wert": 8,
    "einheit": "mm",
-   "herkunft": "[A] Spiel Blatt zu Zarge je Seite und oben (Normtuer-Praxis 5-10 mm)"
+   "herkunft": "[A] Spiel Blatt zu Zarge je Seite (Normtuer-Praxis 5-10 mm)"
+  },
+  "spiel_oben": {
+   "wert": 6,
+   "einheit": "mm",
+   "herkunft": "[A] Spiel Blatt zum Sturz oben"
+  },
+  "spiel_unten": {
+   "wert": 2,
+   "einheit": "mm",
+   "herkunft": "[A] Spiel Blatt zur Schwelle unten (Dichtstreifen EPDM 2 mm dazwischen)"
   },
   "rohr": {
    "wert": 30,
@@ -38,7 +48,7 @@
   "schwelle_h": {
    "wert": 30,
    "einheit": "mm",
-   "herkunft": "[A] Schwelle = Rohr 30 x 30 (ebenerdig, Blatt liegt auf der Schwelle auf, R13 Befund 8: kein Mass belegt)"
+   "herkunft": "[A] Schwelle = Rohr 30 x 30 (ebenerdig; Blatt steht 2 mm darueber auf einem EPDM-Dichtstreifen, R13 Befund 8: kein Mass belegt)"
   }
  },
  "geometrie": {

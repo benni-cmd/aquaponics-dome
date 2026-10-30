@@ -1,19 +1,24 @@
 PASS tuer: Lichte Breite (Pfosten innen): Ist 1016, Soll 1016 (+-0.01)
-PASS tuer: Lichte Hoehe (Schwelle oben bis Sturz unten): Ist 2008, Soll 2008 (+-0.01)
+PASS tuer: Lichte Hoehe (Schwelle oben bis Sturz unten) = Blatt + Spiel oben + Spiel unten: Ist 2008, Soll 2008 (+-0.01)
 PASS tuer: Zarge Aussenbreite: Ist 1076, Soll 1076 (+-0.01)
-PASS tuer: Blatt Breite x Hoehe x Dicke (1000 x 2000 x 40): Ist 4.02001e+08, Soll 4.02001e+08 (+-0.01)
+PASS tuer: Blatt Breite: Ist 1000, Soll 1000 (+-0.01)
+PASS tuer: Blatt Hoehe: Ist 2000, Soll 2000 (+-0.01)
+PASS tuer: Blatt Dicke: Ist 40, Soll 40 (+-0.01)
 PASS tuer: Spiel links (Pfosten innen - Blatt): Ist 8, Soll 8 (+-0.01)
 PASS tuer: Spiel rechts: Ist 8, Soll 8 (+-0.01)
-PASS tuer: Spiel oben 6 (Sturz unten - Blatt oben): Ist 6, Soll 6 (+-0.01)
-PASS tuer: Spiel unten 2 (Blatt unten - Schwelle oben): Ist 2, Soll 2 (+-0.01)
-PASS tuer: Anschlag innen (Blatt kann nicht nach innen: Anschlag-Aussenflaeche <= Blatt-Innenflaeche): Ist 1, Soll 1
+PASS tuer: Spiel oben (Sturz unten - Blatt oben): Ist 6, Soll 6 (+-0.01)
+PASS tuer: Spiel unten (Blatt unten - Schwelle oben): Ist 2, Soll 2 (+-0.01)
+PASS tuer: Anschlag innen an allen drei Seiten (Blatt kann nicht nach innen: Anschlag-Aussenflaeche <= Blatt-Innenflaeche): Ist 3, Soll 3
 PASS tuer: Scharniere (3 x Zargenlasche, Blattlasche, Bolzen): Ist 9, Soll 9
 PASS tuer: Druecker (Rosette, Hals, Hebel je Seite): Ist 6, Soll 6
 PASS tuer: Scharnier 1: Bolzen verbindet Zargen- und Blattlasche (z): Ist 1, Soll 1
 PASS tuer: Scharnier 2: Bolzen verbindet Zargen- und Blattlasche (z): Ist 1, Soll 1
 PASS tuer: Scharnier 3: Bolzen verbindet Zargen- und Blattlasche (z): Ist 1, Soll 1
-PASS tuer: Blattlage: Dichtung liegt am Blatt an (Abstand z, mm): Ist 0, Soll 0 (+-0.01)
-PASS tuer: Zarge passt ins Feld: Feldbreite in Sturzhoehe 1320 - Zarge 1076, Reserve je Seite >= 100 mm: Ist 122.042, Soll 100 (+-40)
+PASS tuer: Dichtung_links liegt auf dem Anschlag (x/y innerhalb Anschlag_links) und unter dem Blatt (Abstand z zum Blatt, mm): Ist 0, Soll 0 (+-0.01)
+PASS tuer: Dichtung_rechts liegt auf dem Anschlag (x/y innerhalb Anschlag_rechts) und unter dem Blatt (Abstand z zum Blatt, mm): Ist 0, Soll 0 (+-0.01)
+PASS tuer: Dichtung_Sturz liegt auf dem Anschlag (x/y innerhalb Anschlag_Sturz) und unter dem Blatt (Abstand z zum Blatt, mm): Ist 0, Soll 0 (+-0.01)
+PASS tuer: Dichtung_Schwelle zwischen Schwelle (oben) und Blatt (unten): Ist 3.55271e-15, Soll 0 (+-0.01)
+PASS tuer: Zarge passt ins Feld: Feldbreite in Sturzhoehe 1320 - Zarge 1076 - Strebenhalbbreite 17.3: Reserve je Seite zur Strebenkante >= 100 mm: Ist 1, Soll 1
 PASS tuer: Neigung der Feldebene 10.8 Grad gegen tuer_komplett.json: Ist 10.8188, Soll 10.82 (+-0.05)
 PASS tuer: Feldazimut 149,2 (Basiskantenmitte): Ist 149.163, Soll 149.2 (+-0.1)
 PASS tuer: Feld ist BBB (Basiskante und beide Hangkanten 3708): Ist 1, Soll 1
@@ -23,4 +28,4 @@ PASS tuer: Interferenzen im Tuerdesign (Zarge, Blatt, Anschlag, Dichtung, Beschl
 PASS tuer: Paneel BBB mit Ausschnitt: Flaechenverlust (m2) gegen numerische Rechnung (Zarge 1076 x 2068 in das Paneeldreieck): Ist 2.20903, Soll 2.20903 (+-0.005)
 PASS tuer: Paneel BBB_tuer: Dicke: Ist 8, Soll 8 (+-0.01)
 PASS tuer: Paneel BBB_tuer: ein Koerper: Ist 1, Soll 1
-== tuer: 25/25 PASS
+== tuer: 30/30 PASS

@@ -1898,5 +1898,25 @@
   "note": "W19 Haut-Paneel und Randprofil",
   "commit": "099ffe6",
   "source": "renders/components/haut_profil/haut_profil-02-querschnitt.png"
+ },
+ {
+  "file": "20261030-111359_werkstatt_tuer_tuer-komplett-01-zarge.png",
+  "sha": "36348077dd65a933",
+  "time": "2026-10-30 11:13:59",
+  "role": "werkstatt",
+  "subject": "tuer",
+  "note": "W20 Tuer komplett, Paneel mit Tuerausschnitt",
+  "commit": "ad8dec1",
+  "source": "renders/components/tuer_komplett/tuer_komplett-01-zarge.png"
+ },
+ {
+  "file": "20261030-111426_werkstatt_tuer_haut-paneel-bbb-tuer-01-draufsicht.png",
+  "sha": "27d5f2e132e72e22",
+  "time": "2026-10-30 11:14:26",
+  "role": "werkstatt",
+  "subject": "tuer",
+  "note": "W20 Tuer komplett, Paneel mit Tuerausschnitt",
+  "commit": "ad8dec1",
+  "source": "renders/components/haut_paneel/haut_paneel_BBB_tuer-01-draufsicht.png"
  }
 ]

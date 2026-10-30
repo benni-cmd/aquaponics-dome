@@ -4,7 +4,7 @@
 
 **Datei:** `designs/components/haut_paneel.sc` · **Teilenummer:** T40 · **Revision:** A · **Bezugspunkt:** Inkreismittelpunkt des Strebendreiecks (Achsen der drei Streben), Z = Aussennormale, Paneel von Z 0 (Innenseite) bis Z 8 (Aussenseite); X parallel zur ersten (Typ-)Kante P0P1
 
-**Anzahl (Instanzen):** 40 Felder: 38 volle Paneele + 2 Paneele mit Tuerausschnitt (Tuerknoten 22, Azimut 167.2) (Quelle: data/layout.json dome: 65 Streben, 26 Knoten -> 40 Dreiecke (V - E + F = 1); Tuer bei Azimut 167 (docs/components.md) sitzt auf Basisknoten 22)
+**Anzahl (Instanzen):** 40 Felder: 39 volle Paneele + 1 Paneel mit Tuerausschnitt (Basisfeld BBB 149.2) (Quelle: data/layout.json dome: 65 Streben, 26 Knoten -> 40 Dreiecke (V - E + F = 1); Tuerfeld nach D36 (docs/decisions.md))
 
 ## Masse und Parameter
 
@@ -18,7 +18,7 @@
 
 | Typ | anzahl_felder | anzahl_voll | anzahl_mit_tuerausschnitt | kanten_nominal | kanten_gemessen_min | kanten_gemessen_max | basisfelder |
 |---|---|---|---|---|---|---|---|
-| AAB | 30 | 29 | 1 | [3279, 3279, 3708] | [3278.8, 3278.9, 3707.6] | [3279.6, 3279.8, 3708.9] | 5 |
+| AAB | 30 | 30 | 0 | [3279, 3279, 3708] | [3278.8, 3278.9, 3707.6] | [3279.6, 3279.8, 3708.9] | 5 |
 | BBB | 10 | 9 | 1 | [3708, 3708, 3708] | [3707.6, 3707.9, 3708.0] | [3708.4, 3708.7, 3708.9] | 5 |
 
 Gesamt-Box (Messung, Variante haut_paneel_AAB): X -1825.5 bis 1403.1, Y -961.9 bis 2049.6, Z 0.0 bis 8.0 mm; Koerper: 1.
@@ -31,6 +31,7 @@ Gesamt-Box (Messung, Variante haut_paneel_AAB): X -1825.5 bis 1403.1, Y -961.9 b
 - Volumen (Messung, Variante haut_paneel_AAB, `solidcraft-cli eval`): 38891.2 cm3 · Masse leer: 7389 g (7.39 kg)
 - Variante `haut_paneel_AAB`: 7.39 kg leer
 - Variante `haut_paneel_BBB`: 8.80 kg leer
+- Variante `haut_paneel_BBB_tuer`: 5.44 kg leer
 
 ## Querschnitt / Profil
 
@@ -50,7 +51,7 @@ Ebenes Dreieck, 8 mm dick (Doppelstegplatte), Randabstand 15 mm vor der Strebena
 ## Verbindungen und Befestigungen
 
 - Paneelkante liegt auf dem Randprofil T41 (Aluminium-Kappe 30 x 8) ueber der Strebe, 15 mm Auflage je Seite; Befestigung der Kappe auf der Strebe (Schrauben/Klemmung) und Dichtband nicht modelliert [A]
-- Tuerfelder: die zwei Basisfelder am Tuerknoten brauchen einen Tuerausschnitt 1000 x 2000 (Zuschnitt = spaeterer Schritt, nicht modelliert)
+- Tuerfeld (D36): das Basisfeld BBB 149,2 bekommt das Paneel haut_paneel_BBB_tuer mit Ausschnitt = Zarge (1076 x 2068, in der Feldebene) ab der Basiskante; Zarge siehe docs/parts/tuer_komplett.md
 
 ## Herkunft (docs/provenance.md)
 
@@ -62,7 +63,7 @@ Ebenes Dreieck, 8 mm dick (Doppelstegplatte), Randabstand 15 mm vor der Strebena
 | Rand 15 mm vor der Strebenachse | 15 mm | A | R11: halbe Kappenbreite 30/2 | niedrig |
 | Dichte 0,19 g/cm3 | 0,19 g/cm3 | A | Flaechengewicht ca. 1,5 kg/m2 (Herstellerrichtwert, nicht recherchiert) / 8 mm | niedrig |
 | Opazitaet 0,35 im Viewer | 0,35 | A | R11/D35 | niedrig |
-| Tuer bei Azimut 167 (Basisknoten 22) beruehrt 2 Felder | 2 Felder | OBJ + E | docs/components.md (Tuer Azimut 167 im OBJ, 1000 x 2000); Basisknoten 22 hat Azimut 167,2: beide Basisfelder am Knoten (149,2 BBB und 185,2 AAB) beruehrt | mittel |
+| Tuerfeld BBB 149,2 (D36) | 1 Feld | E | D36 (30.10.): Tuer mittig im Basisfeld BBB 149,2 statt auf Knoten 22 (OBJ Azimut 167 beruehrte zwei Felder); Ausschnitt = Zarge Aussenmass (tuer_komplett.json) | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -74,13 +75,13 @@ Ebenes Dreieck, 8 mm dick (Doppelstegplatte), Randabstand 15 mm vor der Strebena
 
 1. Randprofile T41 auf alle 65 Streben setzen und befestigen
 2. Paneele je Feld auflegen (Typ AAB/BBB nach Feld, Lage aus den Knoten), Kanten auf die Kappen, Klemmleisten/Dichtband setzen
-3. Tuerfelder mit Ausschnitt zuschneiden
+3. Tuerfeld BBB 149,2: Paneel BBB_tuer auflegen (Ausschnitt an der Zarge)
 
 **Werkzeug:** Akkuschrauber, Dichtband, Hebezeug/Helfer (ein Paneel bis ca. 9 kg)
 
 ## Stueckliste-Zeile
 
-- T40 Haut-Paneel Typ AAB: 29 voll + 1 mit Tuerausschnitt = 30; Flaeche 4.86 m2, 7.4 kg
+- T40 Haut-Paneel Typ AAB: 30 voll + 0 mit Tuerausschnitt = 30; Flaeche 4.86 m2, 7.4 kg
 - T40 Haut-Paneel Typ BBB: 9 voll + 1 mit Tuerausschnitt = 10; Flaeche 5.79 m2, 8.8 kg
 - Gesamtflaeche Haut ca. 204 m2 (40 Felder)
 
@@ -92,6 +93,7 @@ Doppelstegplatten 8 mm sind Baumarktware (Gewaechshausbau); Zuschnitt auf Dreiec
 
 - `renders/components/haut_paneel/haut_paneel_AAB-01-draufsicht.png`
 - `renders/components/haut_paneel/haut_paneel_BBB-01-draufsicht.png`
+- `renders/components/haut_paneel/haut_paneel_BBB_tuer-01-draufsicht.png`
 
 ## Pruefung
 
@@ -101,7 +103,7 @@ Doppelstegplatten 8 mm sind Baumarktware (Gewaechshausbau); Zuschnitt auf Dreiec
 
 ## Offene Fragen
 
-- Tuer: die zwei Basisfelder am Tuerknoten 22 (Azimut 167,2) tragen den Tuerausschnitt; Zuschnittform nicht modelliert; Lage der Tuer im Dom (Knoten statt Feldmitte) mit Montage/Orchestrator pruefen
+- Tuer (D36): nur das Basisfeld BBB 149,2 (Basisknoten-Azimut 149,2) traegt den Tuerausschnitt (haut_paneel_BBB_tuer.sc, 9 Flaechen); Zargenlage in der Feldebene Annahme A (siehe tuer_komplett)
 - Hohlkammern, Dichtband, Klemmleisten, Lueftungsklappen nicht modelliert; Material/Preis/UV nicht recherchiert (R11 offen)
 - Paneele sind eben; die Streben liegen auf der Kugel, die Felder sind plan (Pfeilhoehe zur Kugel bei 3,7 m Kante ca. 0,2 m): Aussenflaeche haengt an den Streben, Einbau durch die Montage
 - Plattenlage: Inkreismittelpunkt des Strebendreiecks (Strebenachsen), nicht Schwerpunkt; Z 0 = Innenseite

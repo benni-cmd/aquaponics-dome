@@ -85,3 +85,9 @@
 - Werkstatt: W20 Tuer komplett (D36), W21 Pruefer W19.
 - Fachrecherche (local_ee5ee82d-...): R19-R22 + Empfehlung; danach Orchestrator: system_specs.py auf Q-Werte, Viewer-Kennzahlen, Beschreibungen.
 - Orchestrator-Kontext 75 %: Zustand im Repo; Loops bleiben AUS (kein Cron), Anstoss nur per Hand bzw. Weck-Nachricht. Viewer-Server neu gestartet (Port 4410).
+
+## 30.10. ~14:50 Stand (Orchestrator)
+- Limit: 5h 72 %, Woche 8 % (get_usage 14:50 MEZ-Rechnung: Reset 5h um 16:00 MEZ). Ben: Sessions sichern und enden lassen. Stopp-Nachrichten an Werkstatt, Montage, Fachrecherche gesendet (queued).
+- Entschieden: D36 Tuer Feld BBB 149,2; D37 Haut edge_inset 0 (jetzt Variante); D38 pumpe_gross = Hauptkreislauf, pumpe_klein = Absetzer; D39 Huelle = Plane; D40 Fischmenge 475 kg (450-500).
+- Laufend/offen: Montage M7 (dann M3 Tuer, M4/M5; Haut ruht), Werkstatt W23 Pruefer W17/W18 -> W24 Aussentisch 4 Rinnen -> W25 Pumpen-Blatt, Fachrecherche R25 (Kennzahlen/Plane). Danach Orchestrator: Viewer-Uebersicht (Heizung, Huelle, Szenario) anpassen, Plane-Bauteile fuer Werkstatt (huelle_folie, keilschiene) nach Bens Entscheidung zu Folie/Standort.
+- Ben offen: Standort + Folienart, Fruchtgemuese-Anteil im Pflanzmix. Loops bleiben aus.

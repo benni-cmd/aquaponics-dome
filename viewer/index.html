@@ -222,20 +222,27 @@ const kv = o => `<table class="kv">${Object.entries(o).map(([k, v]) => `<tr><td>
 let SPEC = null;
 fetch('/system-specs.json?v=' + Date.now()).then(r => r.json()).then(d => { SPEC = d; if (!pinned && !selected) showInfo(null); }).catch(() => {});
 const fm = (x, n = 1) => Number(x).toLocaleString('de-DE', { maximumFractionDigits: n });
+const has = x => x !== undefined && x !== null;
+const kvx = o => kv(Object.fromEntries(Object.entries(o).filter(([, v]) => v)));   // Zeilen ohne Wert (fehlender Schluessel) entfallen
+const rng = (a, u, n = 1) => Array.isArray(a) ? fm(a[0], n) + '–' + fm(a[a.length - 1], n) + ' ' + u : '';
 function overview() {
   if (!SPEC) return '<span class="ph">Kuppel-Kennzahlen werden geladen ...</span>';
-  const w = SPEC.wasser, pf = SPEC.pflanzen, f = SPEC.fische, fl = SPEC.fluesse, l = SPEC.leistung, fi = SPEC.filter, k = SPEC.kapazitaet;
-  const wt = {}; w.teile.forEach(t => { wt[t[0]] = fm(t[1]) + ' m³ (' + t[2] + ')'; });
-  const chk = SPEC.konsistenz.map(c => `<li>${c.ok ? '✔' : '⚠'} ${esc(c.pruefung)}: ${esc(c.detail)}</li>`).join('');
-  return `<h3>Kuppel auf einen Blick</h3><div class="sub">12 m Durchmesser, 2V-Halbkugel, 6 m hoch. Schätzung aus den Modellmaßen und Bens Tabelle.</div>
-  <div class="k">Wasser im System</div>${kv({ 'Gesamt (Schätzung)': fm(w.gesamt_m3) + ' m³ (Tabelle: ' + w.tabelle_systemwasser_m3 + ' m³)', ...wt, 'davon in den Tanks': fm(w.in_tanks_m3) + ' m³' })}
-  <div class="k">Pflanzen</div>${kv({ 'Töpfe gesamt': fm(pf.gesamt, 0) + ' (Tabelle mindestens ' + pf.tabelle + ')', 'in den Beeten': fm(pf.beete, 0), 'in den NFT-Rinnen': fm(pf.nft, 0) + ' (' + pf.rinnen + ' Rinnen, ' + fm(pf.rinnenlaenge_m, 0) + ' m)', 'Substrat': fm(pf.substrat_m3) + ' m³' })}
-  <div class="k">Fische und Futter (Bens Tabelle)</div>${kv({ 'Tilapia': fm(f.anzahl, 0) + ' Fische, ' + fm(f.biomasse_kg, 0) + ' kg', 'Futter': fm(f.futter_kg_tag) + ' kg pro Tag', 'Besatzdichte': f.dichte_kg_m3 + ' kg/m³ Beckenwasser', 'Ammonium-Anfall (TAN)': '≈ ' + f.tan_g_tag + ' g pro Tag' })}
-  <div class="k">Kreislauf und Pumpen</div>${kv({ 'Bedarf Pflanzen': fl.kreislauf_l_min + ' l/min = ' + fm(fl.kreislauf_m3_h) + ' m³/h (NFT ' + fl.nft_l_min + ' + Beete ' + fl.beete_l_min + ')', 'je Linie (2 Linien)': fl.je_linie_l_min + ' l/min bei ' + fm(fl.pumpe_hoehe_m) + ' m Förderhöhe', 'Umwälzzeit gesamt': '≈ ' + fm(fl.umwaelzzeit_h) + ' h' })}
-  <div class="k">Strom (ohne Heizung)</div>${kv({ 'Pumpen': '2 × ' + l.pumpe_elektrisch_w + ' W (hydraulisch ' + l.pumpe_hydraulisch_w + ' W je Pumpe)', 'Belüftung': '≈ ' + l.belueftung_w + ' W', 'Steuerung': l.steuerung_w + ' W', 'Summe': l.gesamt_w + ' W = ' + fm(l.kwh_tag) + ' kWh/Tag = ' + l.kwh_monat + ' kWh/Monat' })}
-  <div class="k">Filter</div>${kv({ 'Absetzer klein': fi.absetzer_klein_l + ' l, Verweilzeit ' + fm(fi.verweilzeit_absetzer_min, 0) + ' min bei 12 l/min', 'Biofilter groß': fi.biofilter_gross_l + ' l, Medium ' + fi.medium_biofilter_m3 + ' m³ → ' + fi.kapazitaet_biofilter_kg_futter + ' kg Futter/Tag', 'Substratbeete': fi.kapazitaet_substrat_kg_futter + ' kg Futter/Tag (1 l Medium je g)', 'Pflanzfläche': k.pflanzen_kg_futter_tag + ' kg Futter/Tag (40–50 g/m²)' })}
-  <div class="k">Passt das zusammen?</div><ul>${chk}</ul>
-  <div class="note"><b>Hinweis:</b> ${esc(SPEC.hinweis)} Rechnung: scripts/system_specs.py, Konzept: docs/system-concept.md.</div>`;
+  const w = SPEC.wasser || {}, pf = SPEC.pflanzen || {}, f = SPEC.fische || {}, fl = SPEC.fluesse || {}, l = SPEC.leistung || {}, fi = SPEC.filter || {}, k = SPEC.kapazitaet || {};
+  const h = SPEC.huelle || {}, hz = l.heizung || {}, fb = f.tabelle_ben || {}, sp = f.spanne || {};
+  const wt = {}; (w.teile || []).forEach(t => { wt[t[0]] = fm(t[1]) + ' m³ (' + t[2] + ')'; });
+  const chk = (SPEC.konsistenz || []).map(c => `<li>${c.ok ? '✔ OK' : '⚠ Warnung'} – <b>${esc(c.pruefung)}</b><div class="sub">${esc(c.detail)}</div></li>`).join('');
+  const tab = (v, u, n = 0) => has(v) ? ' (Ben: ' + fm(v, n) + ' ' + u + ')' : '';
+  const sec = (titel, o) => Object.values(o).some(Boolean) ? `<div class="k">${titel}</div>${kvx(o)}` : '';
+  return `<h3>Kuppel auf einen Blick</h3><div class="sub">12 m Durchmesser, 2V-Halbkugel, 6 m hoch.${has(SPEC.stand) ? ' Stand ' + esc(SPEC.stand) + '.' : ''}</div>`
+  + sec('Wasser im System', has(w.gesamt_m3) ? { 'Gesamt': fm(w.gesamt_m3) + ' m³' + tab(w.tabelle_systemwasser_m3, 'm³'), ...wt, 'Fischwasser': has(w.fischwasser_m3) ? fm(w.fischwasser_m3) + ' m³' : '' } : {})
+  + sec('Pflanzen', has(pf.gesamt) ? { 'Töpfe gesamt': fm(pf.gesamt, 0) + ' (Ben: mind. ' + fm(pf.tabelle, 0) + ')', 'Beete / NFT': has(pf.beete) ? fm(pf.beete, 0) + ' / ' + fm(pf.nft, 0) : '', 'NFT-Rinnen': has(pf.rinnen) ? pf.rinnen + ' Rinnen, ' + fm(pf.rinnenlaenge_m, 0) + ' m' : '', 'Pflanzfläche': has(pf.flaeche_gesamt_m2) ? fm(pf.flaeche_gesamt_m2) + ' m²' : '', 'Substrat': has(pf.substrat_m3) ? fm(pf.substrat_m3) + ' m³' : '' } : {})
+  + sec('Fische und Futter (Auslegung D40)', has(f.biomasse_kg) ? { 'Biomasse': fm(f.biomasse_kg, 0) + ' kg' + (sp.biomasse_kg ? ' (Spanne ' + rng(sp.biomasse_kg, 'kg', 0) + ')' : '') + tab(fb.biomasse_kg, 'kg'), 'Futter': fm(f.futter_kg_tag) + ' kg/Tag' + tab(fb.futter_kg_tag, 'kg/Tag', 1), 'Fischzahl': has(f.anzahl) ? fm(f.anzahl, 0) + ' Tilapia' + tab(fb.anzahl, 'Fische') : '', 'Dichte': has(f.dichte_kg_m3) ? fm(f.dichte_kg_m3, 0) + ' kg/m³' + tab(fb.dichte_kg_m3, 'kg/m³') : '', 'Ammonium (TAN)': has(f.tan_g_tag) ? '≈ ' + fm(f.tan_g_tag, 0) + ' g/Tag' + tab(fb.tan_g_tag, 'g/Tag') : '', 'Obergrenze FAO': has(f.obergrenze_fao_kg) ? fm(f.obergrenze_fao_kg, 0) + ' kg' : '' } : {})
+  + sec('Hülle und Heizung', has(h.flaeche_m2) || has(hz.huelle_m2) ? { 'Hülle': h.material ? 'Plane, PE doppelt luftgepolstert' : '', 'Fläche': fm(h.flaeche_m2 || hz.huelle_m2, 0) + ' m²', 'Wärmeverlust': rng(hz.w_je_k, 'W/K', 0) && (rng(hz.w_je_k, 'W/K', 0) + (hz.w_je_k.length > 2 ? ' (Mitte ' + fm(hz.w_je_k[1], 0) + ')' : '')), ['Spitze bei ' + (hz.dT_k || '?') + ' K']: has(hz.beispiel_dT30_kw) ? rng(hz.beispiel_dT30_kw, 'kW') + (hz.beispiel_dT30_kw.length > 2 ? ' (Mitte ' + fm(hz.beispiel_dT30_kw[1]) + ')' : '') : '', 'Jahr (Obergrenze)': rng(hz.jahr_obergrenze_mwh, 'MWh', 0), 'Gebläse Luftpolster': has(l.geblaese_luftpolster_w) ? fm(l.geblaese_luftpolster_w, 0) + ' W' : '', 'Standort': h.standort ? h.standort : '' } : {})
+  + sec('Kreislauf und Pumpen', has(fl.kreislauf_l_min) ? { 'Bedarf Pflanzen': fl.kreislauf_l_min + ' l/min = ' + fm(fl.kreislauf_m3_h) + ' m³/h (NFT ' + fl.nft_l_min + ' + Beete ' + fl.beete_l_min + ')', 'Hauptkreislauf': has(fl.hauptkreislauf_l_min) ? fl.hauptkreislauf_l_min + ' l/min (' + (fl.hauptkreislauf_pumpen || '') + ')' : '', 'Umwälzzeit': has(fl.umwaelzzeit_h) ? '≈ ' + fm(fl.umwaelzzeit_h) + ' h' : '' } : {})
+  + sec('Strom (ohne Heizung)', has(l.gesamt_w) ? { 'Pumpen': has(l.pumpe_elektrisch_w) ? '2 × ' + l.pumpe_elektrisch_w + ' W' : '', 'Belüftung': has(l.belueftung_w) ? l.belueftung_w + ' W' : '', 'Steuerung': has(l.steuerung_w) ? l.steuerung_w + ' W' : '', 'Summe': l.gesamt_w + ' W = ' + fm(l.kwh_tag) + ' kWh/Tag = ' + l.kwh_monat + ' kWh/Monat' } : {})
+  + sec('Filter', has(fi.absetzer_klein_l) ? { 'Absetzer klein': fi.absetzer_klein_l + ' l, ' + fm(fi.verweilzeit_absetzer_min, 0) + ' min Verweilzeit', 'Biofilter groß': has(fi.biofilter_gross_l) ? fi.biofilter_gross_l + ' l, Medium ' + fi.medium_biofilter_m3 + ' m³' : '', 'Pflanzen tragen': has(k.pflanzen_kg_futter_tag) ? fm(k.pflanzen_kg_futter_tag) + ' kg Futter/Tag' : '' } : {})
+  + (chk ? `<div class="k">Passt das zusammen?</div><ul>${chk}</ul>` : '')
+  + `<div class="note"><b>Hinweis:</b> ${esc(SPEC.hinweis || '')} Rechnung: scripts/system_specs.py.</div>`;
 }
 function showInfo(o) {
   const box = document.getElementById('info');

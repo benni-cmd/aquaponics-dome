@@ -1,46 +1,48 @@
-# Aquaponik-Werte: Gesamttabelle und Stand der Recherche (30.10.2026)
+# Aquaponik-Werte: Gesamttabelle R17-R22 (Stand 30.10.2026, alle sechs Bloecke bearbeitet)
 
-> **STAND: Stop sauber am Wochenlimit (99 %, Reset 30.10. 03:00 Ortszeit).** Fertig: R17 und R18 als **Teilergebnis** (je zwei gelesene Primaerquellen, siehe unten). Offen: R19, R20, R21, R22 (nur Vorab-Werte aus den schon gelesenen Quellen, keine eigene Suche) sowie `aquaponik-empfehlung.md`. Alle "Vorab"-Zeilen sind ausdruecklich nicht abgeschlossen.
-> Gelesen im Volltext: **SRAC 454** (Rakocy, Masser, Losordo 2006) und **FAO TP 589** (Somerville u. a. 2014); Fundstellen in `R17.md`. Zahlen nicht aus Bens Tabelle (`reference/Kuppelberechnung-neu-2.xlsx`) und nicht aus dem Simulator uebernommen, beide stehen nur als Vergleich in der Spalte "Abweichung".
+> Quellen im Volltext gelesen: **SRAC 454** (Rakocy, Masser, Losordo 2006), **FAO TP 589** (Somerville u. a. 2014), **SRAC 451** (Losordo, Masser, Rakocy), **Losordo/DeLong 2015** (Global Seafood Alliance), **Fort Valley State Extension** (Duncan), **Aly 2007** (Egyptian J. Aquat. Res.), **Purdue CEA** (Miller/Nemali 2019); Abstract/Seite gelesen: **Kim & Jo 1999a/b** (Korean Fisheries Journals). Nur als Suchzusammenfassung (niedrige Konfidenz): UVI-Basilikum/Okra-Versuche, Aquaculture America 2023, HortTechnology/Horticultura Brasileira zu NFT, Colt & Orwicz 1991.
+> Bens Tabelle (`reference/Kuppelberechnung-neu-2.xlsx`) und der Oasis-Simulator (`reference/oasis-simulator-notes.md`, nur 15 kg/m³ bei 27,8 m³ und Medienkatalog sichtbar) wurden nicht uebernommen, nur verglichen. Details und Fundstellen je Block in `R17.md` bis `R22.md`. Empfehlung: `aquaponik-empfehlung.md`.
 
 ## Gesamttabelle
-| Wert | Spannweite | Quelle 1 | Quelle 2 | Konfidenz | Abweichung von Bens Tabelle / Annahme (A) / Simulator (S) |
+Konfidenz: hoch = zwei Primaerquellen gelesen und uebereinstimmend; mittel = zwei Quellen mit Spanne oder eine Primaerquelle plus Sekundaerquelle; niedrig = nur Zusammenfassung oder Eigenableitung.
+
+| Wert | Spannweite | Quelle 1 | Quelle 2 | Konfidenz | Abweichung (T = Bens Tabelle, A = unsere Annahme `system_specs.py`, S = Simulator) |
 |---|---|---|---|---|---|
-| Besatzdichte Tilapia | 15-22 kg/m3 Auslegung; 20 kg/m3 FAO-Max.; 60 kg/m3 UVI-Absolutgrenze | FAO TP 589 Tab. 8.1 | SRAC 454 | mittel-hoch | Tabelle 45 kg/m3 (1287 kg) liegt dazwischen, nur mit UVI-Technik belegt; S: 15 kg/m3 (417 kg) passt zu FAO |
-| Endgewicht Nile-Tilapia | 500 g (FAO, 6-8 Monate) bis 814 g (UVI, 24 Wochen) | FAO TP 589 | SRAC 454 Tab. 1 | mittel-hoch | Tabelle 0,7 kg: im Bereich |
-| Futterrate | 1 % KG/Tag (1-2 %) bei >100 g | FAO TP 589 | (SRAC FCR 1,7) | mittel | Tabelle 10,7 kg/Tag = 0,83 % von 1287 kg: plausibel, aber Biomasse selbst ueberhoeht |
-| TAN je kg Futter | 3,75 % (FAO-Beispiel, 32 % Protein); 3,0-4,0 % | FAO TP 589 | zweite Quelle OFFEN | mittel | A: 3,2 % ist 14 % niedriger; 401 statt 345 g TAN/Tag bei 10,7 kg |
-| Nitrifikation je m2 Medium | 0,57 g TAN/m2/Tag konservativ (Bereich 0,2-2) | FAO TP 589 | OFFEN | mittel | nicht in der Rechnung bisher |
-| Biofilter-Medium je g Tagesfutter | 1 l (Kies) / 0,5 l (Bioballs), Tab. in FAO: Bioballs 150-400 m2/m3 | FAO TP 589 | SRAC 454 (Standardformeln RAS) | mittel | wie A in `system_specs.py` |
-| Volumen Absetzer + Biofilter | 10-30 % des Fischtankvolumens (Kleinanlage) | FAO TP 589 Tab. 8.1 | OFFEN | niedrig-mittel | Modell: Tanks 1,94 m3 = 7 % von 28,5 m3 |
-| Futter je m2 Pflanzflaeche (Raft) | 60-100 g/m2/Tag | SRAC 454 | (UVI) | hoch | nicht verwendet |
-| Futter je m2 (Substrat/NFT) | SRAC: ca. 25 % des Raft-Werts = 15-25 g/m2/Tag; FAO: Blatt 40-50, Frucht 50-80 | SRAC 454 | FAO TP 589 | mittel (Quellen widersprechen sich um Faktor 2) | A: 40-50; SRAC liegt bei Substrat/NFT deutlich niedriger |
-| Medienbeet : Fischtank | 2 : 1 Volumen (Kies, ohne Feststoffabzug) | SRAC 454 | OFFEN | mittel | Modell: 8,2 m3 Substrat gegen 28,5 m3 Fischwasser = 0,29 : 1 |
-| Umwaelzung Fischwasser | UVI: Retention Fischtank 82 min; FAO: gesamtes Fischtankvolumen je Stunde durch die Beete | SRAC 454 | FAO TP 589 | mittel | Modell 143 l/min = 8,6 m3/h bei 28,5 m3 -> Umwaelzzeit 3,3 h; die Quellen verlangen 1-1,4 h = 350-475 l/min |
-| Flutzyklen Beet | FAO: Fischtankvolumen je Stunde durch die Beete; Zyklenzahl nicht belegt | FAO TP 589 | OFFEN | niedrig | A: 2/h bleibt Annahme |
-| O2-Verbrauch Tilapia | Suchzusammenfassung: 400 g Fische 69/116/236 mg/kg/h bei 20/25/30 °C; Fuetterungspeak 111-161 | Koreanische Studie (nur Abstract) | niob (nur Suchtreffer) | **niedrig (nicht gelesen)** | A: 0,25 kg O2/kg Futter gleich 2,7 kg/Tag Fische; mit 100-160 mg/kg/h x 1287 kg = 3,1-4,9 kg/Tag |
-| DO-Zielwert | 4-8 mg/l (Nitrifikation, Fische, Pflanzen); Nitrifikation stoppt <2 mg/l | FAO TP 589 5.1.4 | SRAC 454 (80 % Saettigung = 6-7 mg/l) | hoch | |
-| Stromverbrauch Belueftung | nicht recherchiert | | | offen | A 1 kg O2/kWh unbelegt |
-| Heizung | nicht recherchiert | | | offen | in Tabelle 219 EUR/Monat Strom; Modell ohne Heizung |
+| **R17** Besatzdichte Beckenwasser | 15-22 kg/m³ Auslegung; 20 FAO-Maximum; 60 UVI-Obergrenze | FAO TP 589 Tab. 8.1 | SRAC 454 | mittel-hoch | T 45 kg/m³ (1287 kg) nur mit UVI-Technik belegt; S 15 kg/m³ (417 kg) passt zu FAO |
+| Endgewicht Nil-Tilapia | 500 g (6-8 Monate, FAO) bis 814 g (24 Wochen, UVI) | FAO TP 589 | SRAC 454 Tab. 1 | mittel-hoch | T 0,7 kg im Bereich |
+| Wachstum / FCR | 4,4 g/Tag; FCR 1,7 | SRAC 454 Tab. 1 | (FAO Wachstum 50 -> 500 g) | mittel | nicht in T/A |
+| **R18** Futterrate | 1 % (1-2 %) KG/Tag bei >100 g; 3 % bei 50 g | FAO TP 589 | SRAC 454 (FCR) | mittel | T 10,7 kg/Tag = 0,83 % von 1287 kg plausibel, Biomasse zu hoch |
+| TAN je kg Futter | 3-5 % (Mitte 3,75 %) | SRAC 451 | FAO 589; Losordo/DeLong 2015 | mittel-hoch | A 3,2 % am unteren Rand |
+| Nitrit / Nitrat | Problem ab 0,25 mg/l Nitrit; Nitrat-N >200 mg/l vertraeglich | FAO TP 589 | SRAC 451 | mittel | nicht modelliert |
+| **R19** Nitrifikation je Flaeche | 0,57 (0,2-2) g TAN/m²/Tag | FAO TP 589 | Losordo/DeLong (0,45 g/m² Tropfkoerper) | mittel | nicht in A |
+| Bioballs-Kapazitaet (SSA 400) | 3-5 kg Futter/Tag je 0,52 m³ (FAO-Rechnung 6 g/l; Losordo 350 g TAN/m³/Tag) | FAO TP 589 | Losordo/DeLong 2015 | mittel | A 0,5 l/g = 1,0 kg/Tag (rund 3-fach Reserve) |
+| Substrat-Kapazitaet (Blaehton/Kies) | 19-31 kg Futter/Tag fuer 8,2 m³ (2,3-3,8 g/l) | FAO TP 589 | SRAC 454 (Kies als alleiniger Biofilter) | mittel | A 1 l/g = 8,2 kg/Tag |
+| Absetzer + Biofilter, Volumen | 10-30 % des Fischtankvolumens | FAO TP 589 Tab. 8.1 | SRAC 454 (UVI-Klaerer 3,8 m³/Paar) | niedrig-mittel | Modell 6,8 % (Tanks 1,94 m³) |
+| Absetzer-Verweilzeit | ca. 20 min (UVI) | SRAC 454 | Fort Valley (1 ft²/gpm) | mittel | Modell 3,7 min bei 72 l/min; 20 min nur als Teilstrom ca. 13 l/min |
+| **R20** Futter je m² Raft | 60-100 g/m²/Tag | SRAC 454 | Fort Valley State | hoch | nicht verwendet |
+| Futter je m² Substrat/NFT | 15-25 (SRAC: 25 % Raft) bis 40-50 Blatt, 50-80 Frucht (FAO) | SRAC 454 | FAO TP 589 | mittel (Quellen widersprechen sich) | A 40-50; T rechnet 134 g/m² (10,7 kg auf 80 m²) |
+| Volumenverhaeltnis Fisch : Kiesbeet | 1 : 2 (bis 1 : 4) | SRAC 454 | Fort Valley State | mittel | Modell 1 : 0,29 |
+| Pflanzdichte | Blatt 20-25, Frucht 4-8 /m² | FAO TP 589 | (FAO Pflanzenblaetter) | mittel | Modell 79 Toepfe/m² Beet; T 7,6/m² |
+| Zusatz | K, Ca, Fe (Fe-Chelat 2 mg/l ca. alle 3 Wochen); pH 7,0-7,5 | SRAC 454 | Fort Valley State | hoch | nicht modelliert |
+| **R21** Umwaelzung Fischwasser | 60-82 min Retention = 350-475 l/min fuer 28,5 m³ (bei Bens Besatz); TAN-Formel: 121 l/min (3,5 kg Futter) bis 372 l/min (10,7 kg) | SRAC 454; FAO TP 589 | Losordo/DeLong 2015 (rekonstruiert) | mittel | Modell-Kreislauf 143 l/min (3,3 h) |
+| NFT-Durchfluss | 1-2 l/min je Rinne | FAO TP 589 | HortTech/Horticultura Brasileira (Abstract) | mittel | A 0,5 l/min zu niedrig |
+| Flutzyklus Beet | 5-8 min offen, 2 x/h | Fort Valley State | TCF Freshwater Institute (ueber Fort Valley) | niedrig-mittel | A 2 x/h bestaetigt |
+| Pumpen-Wirkungsgrad Kleinpumpe | 16-33 % (abgeleitet aus 25-50 W fuer 2000 l/h bei 1,5 m) | FAO TP 589 | (Sulzer gross 85-88 %, nicht uebertragbar) | niedrig-mittel | A 35 % optimistisch |
+| **R22** O2-Verbrauch Tilapia | 80-190 mg/kg/h (Mittel), Spitze 111-161 und +40-60 % | Kim & Jo 1999a | Kim & Jo 1999b; Aly 2007 | mittel | A entspricht ca. 88 mg/kg/h (unterer Rand) |
+| O2 fuer Nitrifikation | 4,57 g O2 je g TAN | Stoechiometrie (nicht aus Quelle gelesen) | | niedrig | wie A |
+| DO-Ziel | 4-8 mg/l, Nitrifikation stoppt <2 mg/l | FAO TP 589 | SRAC 454 (6-7 mg/l) | hoch | |
+| Belueftungsleistung | SAE fein 1,2-2,0 kg O2/kWh; UVI 0,59 W/kg Fisch | Colt & Orwicz 1991 (sekundaer) | SRAC 454 (UVI) | niedrig-mittel | A 1 kg O2/kWh; UVI-Wert gibt hoeher |
+| Temperatur Tilapia | 27-30 °C ideal; <17 °C kein Wachstum; <12 °C Tod | FAO TP 589 | SRAC 454 | hoch | Heizung nicht modelliert |
+| Heizlast Huelle | 3,1-6,8 W/m²K; Kuppel 0,7-0,9 kW/K (Halbkugel 226 m², Eigenrechnung) | Purdue CEA | (Huellmaterial offen) | mittel (Standort offen) | T 219 EUR/Monat reichen nicht |
 
-## Vorab-Engpassrechnung (aus gelesenen Quellen, nicht abgeschlossen)
-Fischwasser 28,5 m3 (Pool 26,15 + Becken 2,4). Pflanzflaeche laut Tabelle 80,4 m2 (Substrat 37,97 + NFT 42,41).
-- **Dichte (FAO 20 kg/m3):** 570 kg; Simulator 15 kg/m3: 428 kg; UVI 60 kg/m3: 1710 kg.
-- **Pflanzflaeche (Futterbilanz bei 1 % KG/Tag):** SRAC 15-25 g/m2: 1,2-2,0 kg Futter/Tag = 120-200 kg Fisch; FAO Blatt 40-50: 3,2-4,0 kg/Tag = 320-400 kg; FAO Frucht 50-80: 4,0-6,4 kg/Tag = 400-640 kg.
-- **Zwischenfazit:** Der engste Engpass ist die Pflanzflaeche (und die Annahme, dass sie die ganze Futterfracht verbraucht), nicht das Beckenvolumen. Eine tragfaehige Auslegung liegt bei etwa **320-640 kg Fisch (15-22 kg/m3), 3-6 kg Futter/Tag**; Bens Tabelle (1287 kg, 10,7 kg/Tag) braucht rund die doppelte bis vierfache Pflanzflaeche oder einen anderen Naehrstoffsenke (Wasserwechsel, Denitrifikation). Das ist ein Zwischenstand, kein Endergebnis.
-- **Flaechenfrage Substratbeet:** Modellmasse ergeben 8 x (0,80 x 2,64) + 6 x (0,933 x 1,865) = **27,3 m2**, die Tabelle rechnet **37,97 m2** (Nennmasse 3,0/1,8 x 1,0). Die Pflanzflaeche ist also im Modell um rund 28 % kleiner. Und 2160 Toepfe auf 27,3 m2 sind rund 79 Toepfe/m2 (Raster ca. 11 cm), das ist fuer die meisten Fruchtgemuese und Blattgemuese zu dicht (R20 offen).
+## Zusammenfassung der Abweichungen von Bens Tabelle
+1. **Fischbiomasse 1287 kg (45 kg/m³)** liegt ueber dem FAO-Wert (20 kg/m³) und braucht UVI-Technik; Pflanzflaeche und Substrat tragen davon nur 180-640 kg.
+2. **Futter 10,7 kg/Tag** ist 2-6-fach ueber dem, was 80 m² Pflanzflaeche (Modell: 27,3 m² Substrat + 42,4 m² NFT) verbrauchen koennen (1,8-6,4 kg/Tag).
+3. **Substratflaeche 37,97 m² (Tabelle) gegen 27,3 m² (Modellmaß)**; 2160 Toepfe = 79/m².
+4. **Pumpen:** 143 l/min decken nur ca. 4 kg Futter/Tag nach TAN-Rechnung; Pflanzenstrom allein 177-245 l/min.
+5. **Strom** ohne Heizung 0,26-1,3 kW; Heizung 0,7-0,9 kW je Kelvin Differenz, bei Ben 219 EUR/Monat nicht gedeckt (Standort offen).
 
-## Offene Fragen fuer Ben (entstanden bis jetzt)
-1. Soll die Anlage wie Bens Tabelle bei 45 kg/m3 laufen (UVI-Niveau, braucht starke Belueftung, Klaerer und Netzfilter, mehr Pflanzflaeche) oder wie die Kleinanlagen-Leitfaeden bei 15-20 kg/m3?
-2. Wird die Pflanzflaeche mit Modellmassen (27,3 m2 Substrat) oder Nennmassen (37,97 m2) gerechnet, und sind 2160 Toepfe auf den Beeten gewollt?
-3. Heizung (Tilapia 26-28 °C in der Kuppel) im Strombudget: ja/nein.
+## Offene Punkte (nicht erfunden)
+UVI-Volltexte (401), SRAC 453 (Fehlerseite), Boyd-SAE-Primaertabelle, Peer-Review-Volltexte NFT-Durchfluss, Temperaturangabe Kim & Jo 1999a, Hel-X-Daten, Standort/Huelle der Kuppel, Suesskartoffel/Kohlrabi/Sellerie im Aquaponik, Winterbetrieb Nitrifikation.
 
-## Reihenfolge fuer die Fortsetzung (nach Reset)
-1. R19 Filter (TAN je Oberflaeche, Bioball-/Hel-X-Daten, Absetzer-Verweilzeit; Zweitquelle zu FAO).
-2. R20 Pflanzen (SRAC 454 und FAO sind gelesen; fehlt eine dritte Quelle zu NFT-Futter-Verhaeltnis, Naehrstoffe K/Ca/Fe, Pflanzdichte).
-3. R21 Hydraulik (UVI: 100 GPM/4 Tanks, FAO Tab. 8.1: 2000 l/h je 1000 l; Pumpen-Wirkungsgrad, Flutzyklen).
-4. R22 Belueftung (Volltext zum O2-Verbrauch, kg O2/kWh der Belueftung; Heizlast) und Strom.
-5. `aquaponik-empfehlung.md` mit Fischzahl, Futter, Pflanzflaeche, Pumpen.
-6. Vergleichsspalte Simulator je Block (Seitenabruf zeigt nur Besatz 15 kg/m3 bei 27,8 m3 und Medienliste SSA, Rest per JavaScript).
-
-Geprueft gegen: SRAC 454 (Volltext), FAO TP 589 (Volltext), `scripts/system_specs.py`, `data/system-specs.json`, `reference/oasis-simulator-notes.md` · Offen: R19-R22, Empfehlung, Zweitquellen fuer TAN-Faktor und O2-Verbrauch
+Geprueft gegen: SRAC 454, SRAC 451, FAO TP 589 (Volltexte), Losordo/DeLong 2015, Fort Valley State, Aly 2007, Purdue CEA, Kim & Jo 1999 (Abstracts), `scripts/system_specs.py`, `data/system-specs.json`, `reference/oasis-simulator-notes.md` · Offen: siehe oben und Fragen in `aquaponik-empfehlung.md`

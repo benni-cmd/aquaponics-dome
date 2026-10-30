@@ -79,6 +79,6 @@ Abweichung der Werkstatt akzeptiert: **Knotenkugel Ø100 mit 4/5/6 Steckarmen** 
 ## Nachtrag W17/W18 (Werkstatt, 29.10. ~23:00)
 Stand der Parameter nach W17/W18/D32-D34; aeltere Zeilen oben (Laengen 1304/1983/3232, pitch 250, 125 mm, 2716/556, Beet 2953 x 933-993, Gefaelle 1 cm/m) gelten nicht mehr.
 - **nft_rinne:** `pitch` 200 mm (einstellbar 150..250), Zickzack = pitch/2 = 100, Phase +-50; Master-Konfigurationen L/M/K 16/9/6 Loecher; Lochzahl je Tischreihe bestimmt der Tisch (hole_plan: n <= floor(L/pitch), Phasenzwang, Randabstand 64).
-- **nft_tisch:** Rinnenlaenge je Reihe (innen 758/928, Mitte 1505-2018, aussen 2676-3051), 2 / 4 / 3 Rinnen, Tischmitte ap_c innen 1864, Mitte 3277, aussen 4973, `corner_gap` 60 (D34), Portalrand = Beet + 115 (Fussplatte 70, leg_clearance 45), Gefaelle 1,5 %, Winkelhalter je Bein; NFT-Topfloecher gesamt 586 (innen 10 x 7, Mitte 6 x 30, aussen 8 x 42; D33).
+- **nft_tisch:** Rinnenlaenge je Reihe (innen 758/928, Mitte 1505-2018, aussen 2676-3051), 2 / 4 / 3 Rinnen, Tischmitte ap_c innen 1864, Mitte 3277, aussen 4874 (30.10. Tische nach innen, vorher 4973), `corner_gap` 60 (D34), Portalrand = Beet + 115 (Fussplatte 70, leg_clearance 45), Gefaelle 1,5 %, Winkelhalter je Bein; NFT-Topfloecher gesamt 570 (innen 10 x 7, Mitte 6 x 30, aussen 8 x 40; D33).
 - **ibc_beet:** Aussenbeet `aussen_800` = 800 x 2640 x 637 (D29), Innenbeet 933 x 1865 x 649; Pflanzraster im Aussenbeet rechnet die Montage (M7).
-- **netztopf:** Gesamtzahl 2160 (Beete, altes Raster) + 586 (Rinnen) = 2746 ist Sache des Integrators/Layouts, nicht der Klasse.
+- **netztopf:** Gesamtzahl 2160 (Beete, altes Raster) + 570 (Rinnen) = 2730 ist Sache des Integrators/Layouts, nicht der Klasse.

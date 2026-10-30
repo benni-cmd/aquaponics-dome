@@ -215,24 +215,6 @@
   "maturity": 0,
   "used_by": "scripts/components/strebe.py"
  },
- "inner_bed_shift": {
-  "value": 66,
-  "unit": "mm",
-  "origin": "A",
-  "source": "M7/D28/D29: Innenbeet-Mitte 3343 -> 3277 (Radialbudget W17: Innenportal 2695..3858 = Beet 933 + 2 x 115); radial nach innen; ersetzt D21 fuer Innenbeete",
-  "r_id": "",
-  "maturity": 0,
-  "used_by": "gen_dome.py, check_walkways.py"
- },
- "outer_bed_shift": {
-  "value": 236,
-  "unit": "mm",
-  "origin": "A",
-  "source": "M7/D28/D29: Aussenbeet-Mitte 5209 -> 4973 (Aussenportal 4458..5488, Wandluft 218); ersetzt D21/D24/D25. Aussenbeet bis W17 noch 993 x 2953 (Ziel 800 x ~2640): Beetenden stossen bis dahin an die Nachbarn",
-  "r_id": "",
-  "maturity": 0,
-  "used_by": "gen_dome.py, check_walkways.py"
- },
  "walkway_min": {
   "value": 600,
   "unit": "mm",

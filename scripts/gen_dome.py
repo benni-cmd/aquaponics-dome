@@ -85,7 +85,7 @@ def erde_fn(sock_z):
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = bed_xy(b); ln, wd = bed_dims(k, b)
-        rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, b["yaw"] + ROT, ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
+        rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, bed_yaw(b), ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
 
 def ring_fn(sock_z):
     rs = P["dome_base_d"]/2 + P["sock_w"]; ri = P["dome_base_d"]/2
@@ -185,10 +185,15 @@ def pool_dims(fz, src, wall, depth, nm):
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
 
+def bed_obj(b):
+    """D41: Beet exakt auf der Sektorachse (OBJ-Azimut 5,3 + 36 k, Apothem = ap_c der Tische aus nft_tisch.json = Radialbudget, yaw = Azimut + 90): Tischmitte = Beetmitte ohne OBJ-Streuung (Beetlage nur ~100 mm genau, D21). Rueckgabe (x, y, yaw) im OBJ-Rahmen."""
+    az = 5.3 + 36.0 * round((b["az"] - 5.3) / 36.0); ap = NFT_APC["aussen" if "plants" in b else "mitte"]
+    return ap * math.cos(math.radians(az)), ap * math.sin(math.radians(az)), az + 90.0
+
 def bed_xy(b):
-    """Beetmitte im Modell; Aussenbeete (mit 'plants') um outer_bed_shift, Innenbeete um inner_bed_shift radial nach innen (D28/D29, Radialbudget W17)."""
-    x, y = LXY(b["cx"], b["cy"]); r = math.hypot(x, y); f = (r - P["outer_bed_shift" if "plants" in b else "inner_bed_shift"]) / r
-    return round(x*f, 1), round(y*f, 1)
+    x, y = LXY(*bed_obj(b)[:2]); return x, y
+
+def bed_yaw(b): return bed_obj(b)[2] + ROT
 
 def bed_dims(k, b):
     return (BED_OUT_L, BED_OUT_W) if "plants" in b else (b["length"], b["width"])   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel); Aussenbeet 2640 x 800 (W17, D29)
@@ -225,7 +230,7 @@ def tank_offsets():
     Der kleinere Tank samt Pumpentafeln rueckt um (tank_clear - Luecke) von der Nachbarplattform bzw. dem Beet weg (Layout-Koordinaten)."""
     T = LAYOUT["tanks"]; pl = [t["platform"][0] for t in T]; off = {i: [0.0, 0.0] for i in range(len(T))}
     rc = lambda i: rect_corners(pl[i]["cx"] + off[i][0], pl[i]["cy"] + off[i][1], pl[i]["length"], pl[i]["width"], pl[i]["yaw"])
-    obstacles = lambda i: [(rc(j), (pl[j]["cx"] + off[j][0], pl[j]["cy"] + off[j][1])) for j in range(len(T)) if j != i and pl[j]["length"] >= pl[i]["length"] and not (pl[j]["length"] == pl[i]["length"] and j < i)] +         [(rect_corners(b["cx"], b["cy"], b["length"], b["width"], b["yaw"]), (b["cx"], b["cy"])) for b in LAYOUT["ibc_beds"] if "plants" not in b]
+    obstacles = lambda i: [(rc(j), (pl[j]["cx"] + off[j][0], pl[j]["cy"] + off[j][1])) for j in range(len(T)) if j != i and pl[j]["length"] >= pl[i]["length"] and not (pl[j]["length"] == pl[i]["length"] and j < i)] +         [(rect_corners(*bed_obj(b)[:2], b["length"], b["width"], bed_obj(b)[2]), bed_obj(b)[:2]) for b in LAYOUT["ibc_beds"] if "plants" not in b]
     for _ in range(3):
         for i in range(len(T)):
             for R, (ox, oy) in obstacles(i):
@@ -266,7 +271,7 @@ def t9(fz):
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = bed_xy(b)
         v = "innen_933" if "plants" not in b else "aussen_800"
-        groups.setdefault(v, []).append((x, y, fz + b["z0"], b["yaw"] + ROT))
+        groups.setdefault(v, []).append((x, y, fz + b["z0"], bed_yaw(b)))
     for v, items in groups.items():
         place_instances("Beet_" + v, os.path.join(ROOT, "designs", "components", f"ibc_beet_{v}.sc"), items, "05_Beete")
 
@@ -299,7 +304,7 @@ def pots(fz, with_heads):
     grid = bed_pot_grid()
     for k, b in enumerate(LAYOUT["ibc_beds"]):
         if "plants" not in b: continue
-        cx, cy = bed_xy(b); yaw = b["yaw"] + ROT; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
+        cx, cy = bed_xy(b); yaw = bed_yaw(b); c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
         for u, v in grid:
             x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1); zb = round(fz + P["pot_base_z"], 1)
             pots_.append((x, y, zb, 0)); heads.append((x, y, zb + 63, 0))

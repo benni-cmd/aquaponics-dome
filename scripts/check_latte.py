@@ -145,6 +145,8 @@ for i, a in enumerate(keys):
         if math.hypot(cen[a][0] - cen[b][0], cen[a][1] - cen[b][1]) > 4800: continue
         tmin[(a, b)] = min(math.hypot(p1[0] - p2[0], p1[1] - p2[1]) for p1 in fpw[a][::2] for p2 in fpw[b][::2])
 tbad = [(k, round(v)) for k, v in tmin.items() if v < tp["corner_gap"]]
+bgap = min(sat_gap(a_, b_) for i, a_ in enumerate(bedrects) for b_ in bedrects[i + 1:])
+chk("Beete untereinander kollisionsfrei (reine Geometrie, kleinste Luecke [mm])", round(bgap), "> 0", bgap > 0)
 chk("W-M3 Tisch-Tisch-Abstand an den Ecken >= corner_gap (Umrisspunkte, Verletzungen)", len(tbad), 0, len(tbad) == 0)
 print("GEOMETRIE kleinster Fussplatte-Beet-Abstand", round(mingap), "mm | kleinster Tisch-Tisch-Abstand", round(min(tmin.values())) if tmin else None, "mm | Verletzungen Bein/Beet, Pool, Tisch/Tisch:", len(legbad), poolbad, len(tbad), tbad[:3], legbad[:3])
 
@@ -158,6 +160,8 @@ for i, a in enumerate(names):
         bmin, bmax = bb[b]
         if not all(amin[k] < bmax[k] and bmin[k] < amax[k] for k in range(3)): continue
         cs = {G[a][0], G[b][0]}
+        if all(c.startswith("Beet_") for c in cs): continue   # Beete untereinander: reine Geometrie (bedrects, siehe unten)
+        if "T1_Strebe" in a + b and (base(a).startswith("knoten_") or base(b).startswith("knoten_")): openm["M2b"].append((a, b)); continue   # Querbolzen/Muttern x Strebe: Bohrungen fehlen (offen, M2b), Bounding-Box-Kandidaten
         if "T3_Sockel" in (a, b) and max(math.hypot(x, y) for n in (a, b) if n != "T3_Sockel" for x in (B[n]["bbox"]["min"][0], B[n]["bbox"]["max"][0]) for y in (B[n]["bbox"]["min"][1], B[n]["bbox"]["max"][1])) < 5600: continue   # Fundamentring nur am Rand
         if all(c.startswith(("Tisch_", "Beet_")) for c in cs) and any(c.startswith("Tisch_") for c in cs): continue   # Tisch x Beet/Tisch: Geometrie oben
         if any(c.startswith(("Knoten_", "Fundamentanker")) for c in cs) and ({a, b} & {"T3_Sockel", "T13_Erde"}): continue   # Knoten/Anker sind im Fundamentring bzw. Erdreich verankert
@@ -179,14 +183,15 @@ def run_exact(pairs, label):
     for rnd in range(6):
         if not todo: break
         bodies = sorted({n for pr in todo for n in pr}); sj = os.path.join(tmp, "i.json")
-        json.dump({"commands": [{"command": "inspect.interference", "params": {"bodies": bodies, "budget_s": 600 if rnd < 2 else 2400}}]}, open(sj, "w"))
+        json.dump({"commands": [{"command": "inspect.interference", "params": {"bodies": bodies, "budget_s": 600 if rnd < 2 else 1200}}]}, open(sj, "w"))
         rr = run_json(["run", sj, "--in", dome, "--results"]); ts = {frozenset(pr) for pr in todo}
         new = [it for it in (find(rr, "interferences") or []) if frozenset((it["a"], it["b"])) in ts]
         left = {frozenset((u["a"], u["b"])) for u in (find(rr, "unchecked") or []) if u.get("b")}
         fin = [pr for pr in todo if frozenset(pr) not in left]
         cache["checked"] += [pk(*pr) for pr in fin]; cache["found"] += new; save_cache(); found += new
-        todo = [pr for pr in todo if frozenset(pr) in left]
+        n_before = len(todo); todo = [pr for pr in todo if frozenset(pr) in left]
         print(f"EXAKT {label} Runde {rnd + 1}: {len(bodies)} Koerper, noch offen {len(todo)}", flush=True)
+        if len(todo) == n_before and rnd >= 2: break   # kein Fortschritt mehr: Rest bleibt ungeprueft (wird gemeldet)
     return found, todo
 inter, unch = [], []
 for label, gp in (("ohne Fundamentring/Erde", [pr for pr in cand if not set(pr) & set(HEAVY)]),

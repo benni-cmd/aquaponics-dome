@@ -51,3 +51,5 @@ REIHENFOLGE 13:45: W10 fertig, W12 Pumpe (laeuft), dann **W16 NFT-Tische Passung
 REIHENFOLGE 19:55: W11 (laeuft) -> **W17 Radialbudget** (docs/jobs/W17-radialbudget.md, D28) -> Haut-Paneel nach R11. Pflanzenartmodelle (7 Arten laut R15) hinten angestellt (D27).
 
 REIHENFOLGE 22:05: nach dem Neustart: W17-Spec-Pruefer -> **W18 Lochabstand 200 mm** (docs/jobs/W18-lochabstand.md, D32, R16) -> Haut-Paneel R11.
+
+REIHENFOLGE 30.10. 11:30: **W20 Tuer komplett** (docs/jobs/W20-tuer-komplett.md, D36) -> W21 Pruefer W19 (docs/jobs/W21-pruefer-w19.md) -> weitere Auftraege nach Fachrecherche (Pumpen/Hauptkreislauf).

@@ -23,7 +23,9 @@
    "breite": 933,
    "hoehe": 649,
    "anzahl": 6,
-   "herkunft": "layout.json ibc_beds 9-14: 1865 x 933 x 649"
+   "herkunft": "layout.json ibc_beds 9-14: 1865 x 933 x 649",
+   "fase": 120,
+   "fase_herkunft": "D44 (W-M4, 31.10.): Ecken 45 Grad angefast, Schenkel 120 mm am Randwulst-Umriss (ueberlappten Nachbarbeete um 35 mm); Rueckfall Laenge 1790; Medium/Siebboden/Wanne parallel versetzt"
   },
   "aussen_800": {
    "laenge": 2640,
@@ -332,7 +334,8 @@
    "Wasserstand 35 mm unter der Oberflaeche (Standrohr 265; FarmHub 220 = 80 mm) gegen trockene Oberzone 2-5 cm (R03 Befund 4) und SRAC 1 Zoll: Standrohrhoehe als E, Konfidenz niedrig; Siphon steht auf dem Siebboden, darunter ein Wasserraum von 262-274 mm (Annahme A)",
    "Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)",
    "W17: aussen_800 (800 x 2640) ist das Zielmass nach D29; layout.json/gen_dome tragen noch 933/993 x 2953 (Montage M7 setzt Layout und Dom um); Aussenbeete sind einseitig erreichbar (Domwand), daher <= 800 breit",
-   "W17: Pflanzraster im Aussenbeet: 288 je Beet (24 x 12) passt nicht auf 800 x 2640 (Topfabstand 110 x 67 mm, Kragen 64): Raster/Topfzahl vom Layout/Integrator neu (Substrat-Mindestzahl 152 gesamt ist mit weniger Toepfen erfuellt: R15/D27); NFT-Mindestzahl 459 haengt nicht am Beet"
+   "W17: Pflanzraster im Aussenbeet: 288 je Beet (24 x 12) passt nicht auf 800 x 2640 (Topfabstand 110 x 67 mm, Kragen 64): Raster/Topfzahl vom Layout/Integrator neu (Substrat-Mindestzahl 152 gesamt ist mit weniger Toepfen erfuellt: R15/D27); NFT-Mindestzahl 459 haengt nicht am Beet",
+   "W26 (D44, 31.10.): Innenbeet innen_933 hat 45-Grad-Eckenfasen 120 mm am Randwulst-Umriss (Medium/Siebboden/Wanne parallel versetzt: Medium-Fase 104,8); Beet x Beet Abstand benachbarter Innenbeete +36 mm (ohne Fase -35, check_nft_fit SAT); Medium-Volumen 469,7 l (check_ibc_beet gegen Flaechenrechnung); Eckstuetzen liegen innerhalb der Fase; Pflanzraster/Topfzahl der Innenbeete rechnet die Montage (M7) neu; Rueckfall Laenge 1790 nicht noetig"
   ],
   "massen_getrennt": [
    "Medium"

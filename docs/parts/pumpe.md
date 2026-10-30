@@ -1,6 +1,6 @@
 # Bauteilblatt T50 pumpe (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/pumpe.json` und `designs/components/pumpe.sc`, nicht von Hand aendern)
 
-**Funktion:** Pumpenmodul an den Tanks (Rolle ANNAHME): Montagetafel mit Kreiselpumpe fuer den Umlauf; Foerderstrom laut docs/hydraulics.md 2.3 [E]: kleiner Tank ca. 12 l/min, grosser ca. 30 l/min, statische Hoehe ca. 1,3 m plus Reibung (hydraulics.md 2.8 [E]); die 30 l/min sind die Umwaelzung des grossen Tanks bei 30 min Verweilzeit, nicht der Linienstrom 12 l/min je Pool-Linie aus 2.4. ENTSCHEIDUNG Orchestrator 29.10.: Die 10 Kassetten 384 x 44 x 419 (layout.json tanks 2/3) sind KEINE Filtermodule, sondern Stuetzrippen/Konsolen der Tankplattform (Klasse Tank, Annahme A); die Klasse filtermodul entfaellt.
+**Funktion:** Pumpenmodul an den Tanks (Montagetafel mit Kreiselpumpe, Rolle ANNAHME fuer die Tafel, ENTSCHEIDUNG D38 30.10. fuer die Pumpen): pumpe_gross (4 Stueck, Tanktafeln 2/3) = HAUPTKREISLAUF, je Linie 2 parallel: 55-60 l/min je Pumpe, zusammen 220-240 l/min (Empfehlung 180-250 l/min gesamt, 90-125 je Linie) [E]; pumpe_klein (4 Stueck, Tanktafeln 1/4) = ABSETZER-TEILSTROM, 12-13 l/min je Pumpe [E]. Plausibilitaet [R]: Pflanzenstrom = Hauptkreislauf - Beete (109 l/min) = 111-131 l/min auf 76 Rinnen (aussen mit 4 Rinnen, D43) = 1.5-1.7 l/min je Rinne (Soll 1-2). Statische Hoehe ca. 1,3 m plus Reibung (hydraulics.md 2.8 [E]); elektrisch ca. 230-320 W fuer den Hauptkreislauf [E]. Die frueheren Modellwerte 12 / 30 l/min gelten nicht mehr als Kreislauf. ENTSCHEIDUNG Orchestrator 29.10.: Die 10 Kassetten 384 x 44 x 419 (layout.json tanks 2/3) sind KEINE Filtermodule, sondern Stuetzrippen/Konsolen der Tankplattform (Klasse Tank, Annahme A); die Klasse filtermodul entfaellt.
 
 **Datei:** `designs/components/pumpe.sc` · **Teilenummer:** T50 · **Revision:** A · **Bezugspunkt:** Mitte der Standflaeche (Tafel/Gehaeuse-Unterkante), X Laengsachse der Tafel, Y Tafeldicke (Pumpe/Anschluesse auf +Y), Z Hoehe
 
@@ -17,10 +17,10 @@
 | `cable_d` | 8 | mm | [A] Kabel 3 x 1,5 mm2, D8 |
 | `plug_l` | 55 | mm | [A] Schutzkontaktstecker 55 x 45 x 40 |
 
-| Typ | art | tafel_l | tafel_t | tafel_h | motor_d | motor_l | kopf_d | kopf_l | saug_d | druck_d | anzahl | herkunft |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| pumpe_klein | pumpe | 502 | 5 | 345 | 90 | 150 | 110 | 70 | 40 | 32 | 4 | layout.json tanks 1 und 4: je 2 Tafeln 502 x 5 x 345 (Duplikate zusammengefasst), Pumpe A |
-| pumpe_gross | pumpe | 693 | 7 | 463 | 110 | 180 | 130 | 80 | 50 | 40 | 4 | layout.json tanks 2 und 3: je 2 Tafeln 693 x 7 x 463 (Duplikate zusammengefasst), Pumpe B (hydraulics.md 3: Pumpe B hinter dem grossen Tank, Annahme) |
+| Typ | art | tafel_l | tafel_t | tafel_h | motor_d | motor_l | kopf_d | kopf_l | saug_d | druck_d | anzahl | herkunft | rolle | foerderstrom_l_min | foerderstrom_herkunft |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| pumpe_klein | pumpe | 502 | 5 | 345 | 90 | 150 | 110 | 70 | 40 | 32 | 4 | layout.json tanks 1 und 4: je 2 Tafeln 502 x 5 x 345 (Duplikate zusammengefasst), Pumpe A | Absetzer-Teilstrom (D38) | 12-13 je Pumpe | [E] D38: Teilstrom ca. 13 l/min je Tank (20 min Verweilzeit des Absetzers); ersetzt den Modellwert 12 l/min des kleinen Tanks als Kreislauf |
+| pumpe_gross | pumpe | 693 | 7 | 463 | 110 | 180 | 130 | 80 | 50 | 40 | 4 | layout.json tanks 2 und 3: je 2 Tafeln 693 x 7 x 463 (Duplikate zusammengefasst), Pumpe B (hydraulics.md 3: Pumpe B hinter dem grossen Tank, Annahme) | Hauptkreislauf (je Linie 2 Pumpen parallel, D38) | 55-60 je Pumpe, 220-240 gesamt, 110-120 je Linie | [E] D38/aquaponik-empfehlung.md Frage 5 (Hauptkreislauf 180-250 l/min gesamt, 90-125 je Linie); Fabrikat offen |
 
 Gesamt-Box (Messung, Variante pumpe_klein): X -315.0 bis 251.0, Y -82.5 bis 119.5, Z 0.0 bis 345.0 mm; Koerper: 15.
 
@@ -131,7 +131,6 @@ Pumpe: handelsuebliche Kreiselpumpe (Teich-/Umwaelzpumpe) auf Montagebrett.
 
 - Rolle der 502/693er-Tafeln als Pumpentafeln ist Annahme (OBJ liefert nur Boxen; Tafeln stehen tangential am Boden: alternativ Seitenbleche/Spritzschutz)
 - Anzahl 8 Pumpenmodule (4 klein + 4 gross, OBJ) gegen 4 Pumpen A/B + 2 Siebe (hydraulics.md 3): Siebe ohne Bauteil, Orchestrator/Hydraulik
-- Pumpenfabrikat, Leistung (R07 pausiert); Foerderstrom 12 / 30 l/min nur [E]; Reale Pumpe 4-9 kg [A]
 - Schrauben der Pumpe auf dem Sockel (4 x M6x30), Scheiben, Standwinkel-Befestigung nicht modelliert; Untergrund der Standwinkel (Erde) klaert Montage/Integrator
 - Kabel gerade und 150 mm kurz modelliert (real 1,5-3 m); Elektrik/Zufuehrung: Schaltschrank-Klasse
 - Kollision Pumpe/Tankkegel und Tafel-Ausrichtung (+Y weg vom Tank): Integrator pruefen
@@ -141,3 +140,5 @@ Pumpe: handelsuebliche Kreiselpumpe (Teich-/Umwaelzpumpe) auf Montagebrett.
 - docs/hydraulics.md 5 fuehrt weiter 'Filtermodul' bzw. 'Pump-/Filtermodule' als Klasse (D16-Rest, Orchestrator)
 - Pumpenbefestigung auf dem Sockel (Fuss oder Spannband fuer den zylindrischen Motor) nicht modelliert und ohne Fabrikat offen
 - parts.insert liefert beim ersten Bolzen einen D6-Stummel auf dem Kopf; pumpe.py schneidet ihn mit einem Werkzeugkoerper ab (Body1, Pruefzeile Schraubenvolumen gleich)
+- Pumpenfabrikat und Leistung offen (R07 pausiert); Foerderstrom 55-60 / 12-13 l/min nur [E] aus D38; Kennlinie (Foerderhoehe gegen Menge), Reserve-Paar und Trockenlaufschutz nicht festgelegt; reale Pumpe 4-9 kg [A]
+- W25 (D38, 31.10.): Geometrie unveraendert (keine neue Komponente); Viewer-/system_specs-Kennzahlen (180-250 l/min statt 12/30) und hydraulics.md 2.3 fuehrt der Orchestrator nach; Pflanzenstrom je Rinne rechnet mit den 76 Rinnen aus D43

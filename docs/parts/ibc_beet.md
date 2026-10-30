@@ -46,12 +46,12 @@
 | `inflow_hole` | 4 | mm | [A] Tropfloecher 4 x 4 mm (quadratisch modelliert, real D4) |
 | `inflow_pitch` | 200 | mm | [A] Tropflochabstand |
 
-| Typ | laenge | breite | hoehe | anzahl | herkunft |
-|---|---|---|---|---|---|
-| aussen_933 | 2953 | 933 | 637 | 5 | layout.json ibc_beds 3-7: 2953 x 933 x 637 |
-| aussen_993 | 2953 | 993 | 637 | 3 | layout.json ibc_beds 1, 2, 8: 2953 x 993 x 637 |
-| innen_933 | 1865 | 933 | 649 | 6 | layout.json ibc_beds 9-14: 1865 x 933 x 649 |
-| aussen_800 | 2640 | 800 | 637 | 8 | W17/D29: Aussenbeet einseitig erreichbar <= 800 breit; Laenge 2640 = Obergrenze aus der Montage-Rechnung (Streben/Sockel, D25; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771)); Hoehe wie OBJ 637; ersetzt aussen_933/aussen_993 im Dom (Montage M7 stellt um) |
+| Typ | laenge | breite | hoehe | anzahl | herkunft | fase | fase_herkunft |
+|---|---|---|---|---|---|---|---|
+| aussen_933 | 2953 | 933 | 637 | 5 | layout.json ibc_beds 3-7: 2953 x 933 x 637 |  |  |
+| aussen_993 | 2953 | 993 | 637 | 3 | layout.json ibc_beds 1, 2, 8: 2953 x 993 x 637 |  |  |
+| innen_933 | 1865 | 933 | 649 | 6 | layout.json ibc_beds 9-14: 1865 x 933 x 649 | 120 | D44 (W-M4, 31.10.): Ecken 45 Grad angefast, Schenkel 120 mm am Randwulst-Umriss (ueberlappten Nachbarbeete um 35 mm); Rueckfall Laenge 1790; Medium/Siebboden/Wanne parallel versetzt |
+| aussen_800 | 2640 | 800 | 637 | 8 | W17/D29: Aussenbeet einseitig erreichbar <= 800 breit; Laenge 2640 = Obergrenze aus der Montage-Rechnung (Streben/Sockel, D25; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771)); Hoehe wie OBJ 637; ersetzt aussen_933/aussen_993 im Dom (Montage M7 stellt um) |  |  |
 
 Gesamt-Box (Messung, Variante ibc_beet_aussen_933): X -1516.5 bis 1476.5, Y -466.5 bis 466.5, Z -30.0 bis 637.0 mm; Koerper: 33.
 
@@ -64,7 +64,7 @@ Gesamt-Box (Messung, Variante ibc_beet_aussen_933): X -1516.5 bis 1476.5, Y -466
 - Variante `ibc_beet_aussen_933`: 71.83 kg leer (ohne Medium)
 - Variante `ibc_beet_aussen_993`: 74.24 kg leer (ohne Medium)
 - Variante `ibc_beet_aussen_800`: 61.91 kg leer (ohne Medium)
-- Variante `ibc_beet_innen_933`: 47.75 kg leer (ohne Medium)
+- Variante `ibc_beet_innen_933`: 47.01 kg leer (ohne Medium)
 - Gefuellt/in Betrieb: aussen_933: leer ohne Medium 72 kg; Medium 764 l = 687 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 911 l = 911 kg (Wasserraum unter dem Siebboden 640 l + Porenwasser 271 l bei 40 % Porositaet [A]); gefuellt gesamt 1670 kg | aussen_993: leer ohne Medium 74 kg; Medium 816 l = 734 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 973 l = 973 kg (Wasserraum unter dem Siebboden 684 l + Porenwasser 289 l bei 40 % Porositaet [A]); gefuellt gesamt 1781 kg | innen_933: leer ohne Medium 48 kg; Medium 476 l = 428 kg (Schuettdichte 0,9 [A]); Wasser bis Standrohrkante 589 l = 589 kg (Wasserraum unter dem Siebboden 420 l + Porenwasser 169 l bei 40 % Porositaet [A]); gefuellt gesamt 1065 kg | aussen_800: leer ohne Medium 62 kg; Medium 578 l = 520 kg (Schuettdichte 0,9 [A]); Wasser nicht gerechnet (wie aussen_933 skaliert ca. 0,8 x)
 
 ## Querschnitt / Profil
@@ -201,3 +201,4 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 - Zulaufrohr laengs statt quer: Auslegung A, vom Orchestrator bestaetigt (29.10.)
 - W17: aussen_800 (800 x 2640) ist das Zielmass nach D29; layout.json/gen_dome tragen noch 933/993 x 2953 (Montage M7 setzt Layout und Dom um); Aussenbeete sind einseitig erreichbar (Domwand), daher <= 800 breit
 - W17: Pflanzraster im Aussenbeet: 288 je Beet (24 x 12) passt nicht auf 800 x 2640 (Topfabstand 110 x 67 mm, Kragen 64): Raster/Topfzahl vom Layout/Integrator neu (Substrat-Mindestzahl 152 gesamt ist mit weniger Toepfen erfuellt: R15/D27); NFT-Mindestzahl 459 haengt nicht am Beet
+- W26 (D44, 31.10.): Innenbeet innen_933 hat 45-Grad-Eckenfasen 120 mm am Randwulst-Umriss (Medium/Siebboden/Wanne parallel versetzt: Medium-Fase 104,8); Beet x Beet Abstand benachbarter Innenbeete +36 mm (ohne Fase -35, check_nft_fit SAT); Medium-Volumen 469,7 l (check_ibc_beet gegen Flaechenrechnung); Eckstuetzen liegen innerhalb der Fase; Pflanzraster/Topfzahl der Innenbeete rechnet die Montage (M7) neu; Rueckfall Laenge 1790 nicht noetig

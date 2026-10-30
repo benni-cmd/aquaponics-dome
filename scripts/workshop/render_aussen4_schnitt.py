@@ -1,4 +1,4 @@
-"""Querschnitt Wand-Beet-Tisch-Weg fuer die Aussentisch-Varianten aussen (3 Rinnen) und aussen4 (4 Rinnen), W24. Reines PIL-Schemabild aus tisch_geom + Kuppelhaut-Feldebenen (kein CAD-Lauf).
+"""Querschnitt Wand-Beet-Tisch-Weg fuer die Aussentisch-Varianten aussen3 (3 Rinnen, Alternative) und aussen (4 Rinnen, Standard seit D43), W24/W25a. Reines PIL-Schemabild aus tisch_geom + Kuppelhaut-Feldebenen (kein CAD-Lauf).
 Horizontal: Apothem ap (mm, innen links, Domwand rechts), vertikal: Z. Tisch im Schnitt durch die Tischmitte (x = 0); die Kuppelhaut ist im Schnitt durch das Rinnenende der aeussersten Reihe (x = Ende, Sektor 6) gezeichnet.
 Aufruf: python scripts/workshop/render_aussen4_schnitt.py"""
 import os, sys, math
@@ -81,7 +81,7 @@ def panel(variant, G, row_hdr):
     return im
 
 out = Image.new("RGB", (2 * W + 4, H), "white")
-for k, v in enumerate(("aussen", "aussen4")):
+for k, v in enumerate(("aussen3", "aussen")):
     G = TG.geometry("aussen", p, d["typen"][v])
     out.paste(panel(v, G, None), (k * (W + 4), 0))
 fn = os.path.join(OUT, "aussen4-querschnitt.png")

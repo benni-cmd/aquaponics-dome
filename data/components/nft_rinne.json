@@ -132,7 +132,7 @@
   "herkunft": "[A] ref-6 weisse Rinne"
  },
  "anzahl": {
-  "soll": "Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 3 (OBJ 2, Annahme 3; docs/components.md)",
+  "soll": "Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 4 (OBJ 2, Annahme 3, seit D43 4; docs/components.md)",
   "quelle": "data/layout.json hydro_tables"
  },
  "bezugspunkt": "Mitte der Rinnenlaenge, Mitte Breite, Rinnenboden Z=0; Zulaufende bei -X, Ablaufende bei +X; Rinne selbst gerade (Neigung/Gefaelle ist Sache des Tisches)",
@@ -186,7 +186,8 @@
    "Klebefuge der Endkappen nicht als Koerper modelliert",
    "Zickzack = Versatz benachbarter Rinnen im Tisch; die Rinne liefert nur die Lochphase A/B (Konfiguration shift +-pitch/4, Dateien nft_rinne_<l|m|k>_<a|b>.sc) - Scope-Card nft_rinne vom Orchestrator zu ergaenzen",
    "Anzahl Rinnen je Aussentisch: layout.json 2, components.md 3 -> 3 als Annahme A (Beetbreite 933-993)",
-   "Zustaendigkeit Lochzahl: die Rinne liefert das Raster (pitch, Phase); die Lochzahl je Tischreihe bestimmt der Tisch (tisch_geom.hole_plan: n <= floor(L/pitch), Phasenzwang, Randabstand 64), daher weniger als floor(L/pitch) (Mitte 9/8/7/6 statt 9/9/8/7)"
+   "Zustaendigkeit Lochzahl: die Rinne liefert das Raster (pitch, Phase); die Lochzahl je Tischreihe bestimmt der Tisch (tisch_geom.hole_plan: n <= floor(L/pitch), Phasenzwang, Randabstand 64), daher weniger als floor(L/pitch) (Mitte 9/8/7/6 statt 9/9/8/7)",
+   "W25a (D43, 31.10.): Aussentisch hat 4 Rinnen (aussen_r1..r4: 2986 / 2844 / 2701 / 2558 mm, 14 / 14 / 13 / 12 Loecher), Rinnenzahl 76, Topfloecher gesamt 674; Varianten aussen_r1..r3 neu gerechnet (r2/r3 kuerzer als die 3-Reihen-Fassung)"
   ],
   "varianten": [
    "nft_rinne_l_a",

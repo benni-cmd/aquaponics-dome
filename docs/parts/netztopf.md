@@ -71,7 +71,7 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 
 ## Stueckliste-Zeile
 
-- T10 Netztopf 50/64 x 63, PP schwarz: Beete 2160 (OBJ: 7 Aussenbeete x 288 + 144 im Beet bei Azimut 113) + Rinnen 570 (Tische innen 10 x 7, Mitte 6 x 30, aussen 8 x 40; pitch 200, W18) = 2730 gesamt (Besatz Rinnen und Beete laut decisions D17)
+- T10 Netztopf 50/64 x 63, PP schwarz: Beete 2160 (OBJ: 7 Aussenbeete x 288 + 144 im Beet bei Azimut 113) + Rinnen 674 (Tische innen 10 x 7, Mitte 6 x 30, aussen 8 x 53 mit 4 Rinnen, D43; pitch 200, W18) = 2834 gesamt (Besatz Rinnen und Beete laut decisions D17)
 
 ## Alternative lokale Fertigung
 

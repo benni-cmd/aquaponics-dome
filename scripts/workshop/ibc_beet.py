@@ -9,6 +9,15 @@ def rrect(b, plane_z, w, l, r, name):
     b.add("sketch.create", plane={"origin": [0, 0, plane_z], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name=name)
     b.add("sketch.rectangle.rounded", p0=[-l / 2, -w / 2], p1=[l / 2, w / 2], radius=r)
 
+def crect(b, plane_z, w, l, c, name):
+    """Skizze mit rechteckigem Umriss und 45-Grad-Fasen der Eckenschenkel c (Mitte im Ursprung) auf Ebene z = plane_z (W26/D44)."""
+    pts = []
+    for sx, sy in ((1, 1), (-1, 1), (-1, -1), (1, -1)):
+        pts += [[sx * l / 2, sy * (w / 2 - c)], [sx * (l / 2 - c), sy * w / 2]] if sx * sy > 0 else [[sx * (l / 2 - c), sy * w / 2], [sx * l / 2, sy * (w / 2 - c)]]
+    pts = [[round(x, 3), round(y, 3)] for x, y in pts]
+    b.add("sketch.create", plane={"origin": [0, 0, plane_z], "x_dir": [1, 0, 0], "y_dir": [0, 1, 0]}, name=name)
+    b.add("sketch.line", points=pts, closed=True)
+
 def tube(b, name, od, wall, base, axis, height, op="new", targets=None):
     kw = dict(diameter=od, height=height, base=base, axis=axis, operation=op, name="R_" + name)
     if op == "new":
@@ -26,6 +35,12 @@ def build(typ):
     wl, ft, cr, rw, rh = p["wall"], p["floor_t"], p["corner_r"], p["rim_w"], p["rim_h"]
     Lw, Ww = L - 2 * rw, W - 2 * rw               # Wandaussenmass; Randwulst bringt die Wanne auf das OBJ-Mass L x W
     Li, Wi = Lw - 2 * wl, Ww - 2 * wl
+    fase = T.get("fase", 0)                      # Eckenfase am Randwulst-Umriss (innen_933: 120, D44); Innenkonturen parallel versetzt
+    def rr(b_, z, w, l, r, name):
+        if not fase:
+            return rrect(b_, z, w, l, r, name)
+        d_ = (W - w) / 2.0                       # Versatz gegen den Randwulst-Umriss
+        return crect(b_, z, w, l, fase - d_ * (2 - math.sqrt(2)), name)
     z_ms = H - p["rim_gap"]                      # Medienoberflaeche
     z_m0 = z_ms - p["media_depth"]               # Medienunterkante = Oberkante Siebboden
     z_g0 = z_m0 - p["grid_t"]                    # Unterkante Siebboden
@@ -43,11 +58,11 @@ def build(typ):
     b.add("component.create", name=root, grounded=True)
     # --- Wanne
     b.add("component.create", name="T30a_Wanne")
-    rrect(b, 0, Ww, Lw, cr + wl, "Aussenform"); b.add("sketch.finish")
+    rr(b, 0, Ww, Lw, cr + wl, "Aussenform"); b.add("sketch.finish")
     b.add("solid.extrude", distance=H, name="Wannenkoerper", body_name="Wanne")
-    rrect(b, H - rh, W, L, cr + wl + rw, "Randwulst"); b.add("sketch.finish")
+    rr(b, H - rh, W, L, cr + wl + rw, "Randwulst"); b.add("sketch.finish")
     b.add("solid.extrude", distance=rh, operation="join", targets=["Wanne"], name="Randwulst")
-    rrect(b, ft, Wi, Li, cr, "Innenraum"); b.add("sketch.finish")
+    rr(b, ft, Wi, Li, cr, "Innenraum"); b.add("sketch.finish")
     b.add("solid.extrude", distance=H - ft + 1, operation="cut", targets=["Wanne"], name="Innenraum_Ausschnitt")
     b.add("solid.cylinder", diameter=p["bulkhead_d"], height=ft + 2, base=[x_sp, 0, -1], operation="cut", targets=["Wanne"], name="Bohrung_Bulkhead")
     b.add("solid.cylinder", diameter=p["inflow_d"] + 2, height=wl + 4, base=[-Lw / 2 - 2, y_in, z_in], axis=[1, 0, 0], operation="cut", targets=["Wanne"], name="Durchfuehrung_Zulauf")
@@ -64,7 +79,7 @@ def build(typ):
     b.add("component.activate", component=root)
     b.add("component.create", name="T30c_Siebboden")
     g = p["media_gap"]
-    rrect(b, z_g0, Wi - 2 * g, Li - 2 * g, cr - g, "Siebboden_Kontur"); b.add("sketch.finish")
+    rr(b, z_g0, Wi - 2 * g, Li - 2 * g, cr - g, "Siebboden_Kontur"); b.add("sketch.finish")
     b.add("solid.extrude", distance=p["grid_t"], name="Siebblech", body_name="Siebboden")
     gx, gy = int(p["grid_nx"]), int(p["grid_ny"])
     sxg, syg = (Li - 400) / (gx - 1), (Wi - 400) / (gy - 1)
@@ -75,7 +90,7 @@ def build(typ):
     # --- Medium: EIN Koerper, Oberflaeche z_ms, Tiefe media_depth, Loch fuer den Medienschutz
     b.add("component.activate", component=root)
     b.add("component.create", name="T30d_Medium")
-    rrect(b, z_m0, Wi - 2 * g, Li - 2 * g, cr - g, "Medium_Kontur"); b.add("sketch.finish")
+    rr(b, z_m0, Wi - 2 * g, Li - 2 * g, cr - g, "Medium_Kontur"); b.add("sketch.finish")
     b.add("solid.extrude", distance=p["media_depth"], name="Mediumblock", body_name="Medium")
     b.add("solid.cylinder", diameter=p["guard_d"], height=p["media_depth"] + 2, base=[x_sp, 0, z_m0 - 1], operation="cut", targets=["Medium"], name="Medium_Schutzloch")
     b.add("material.assign", bodies=["Medium"], material="Medium Blaehton")

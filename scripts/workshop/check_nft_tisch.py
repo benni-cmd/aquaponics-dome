@@ -81,7 +81,7 @@ def main(typs):
             ck.eq(f"{typ} Rinnenabstand {i + 1}", ys[i + 1] - ys[i], G["rp"], 0.5)
         # Boecke
         nb = len(G["xb"])
-        beine = sorted([b for k, b in B.items() if k.startswith("Bein_")], key=lambda b: (b["bbox"]["min"][0], b["bbox"]["min"][1]))
+        beine = sorted([b for k, b in B.items() if k.startswith("Bein_")], key=lambda b: (round(b["bbox"]["min"][0]), b["bbox"]["min"][1]))   # x gerundet: zwei Beine am selben x duerfen nicht durch Rundungsrauschen vertauscht werden
         ck.eq(f"{typ} Beine ({G['art']})", len(beine), len(G["legs"]))
         ck.eq(f"{typ} Fussplatten", len([k for k in B if k.startswith("Fussplatte_")]), len(G["legs"]))
         ck.eq(f"{typ} Laengsstreben", len([k for k in B if k.startswith("Laengs_")]), 2 if G["art"] == "portal" else 1)
@@ -134,7 +134,7 @@ def main(typs):
         ck.eq(f"{typ} Verteiler-Stutzen", len(stutz), n)
         muff = {round(f["cylinder"]["origin"][1], 1) for f in sf if f.get("cylinder") and abs(f["cylinder"]["radius"] - 16) < 0.1 and abs(abs(f["cylinder"]["axis"][0]) - 1) < 0.02}
         ck.eq(f"{typ} Sammelrohr-Muffen", len(muff), n)
-        y1 = G["Wt"] / 2 + 60
+        y1 = G["Wt"] / 2 + 60 - G["ymid"]                           # aeusserer Verteilerrand y0 = ymid - Wt/2 - 60 (Ap = apc + y1)
         ck.eq(f"{typ} Verteiler endet an der Sektorgrenze (x_min, aussen)", B["Verteiler"]["bbox"]["min"][0], -((G["apc"] + y1) * TG.T18 - G["gap"]), 8.0)
         ck.eq(f"{typ} Sammelrohr endet an der Sektorgrenze (x_max, aussen)", B["Sammelrohr"]["bbox"]["max"][0], (G["apc"] + y1) * TG.T18 - G["gap"], 8.0)
     return ck.done()

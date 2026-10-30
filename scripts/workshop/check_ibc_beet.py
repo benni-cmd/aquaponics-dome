@@ -30,6 +30,12 @@ def main(typs):
         m = B["Medium"]["bbox"]
         ck.eq(f"{typ} Medium Oberflaeche lokal", m["max"][2], H - p["rim_gap"], 0.5)
         ck.eq(f"{typ} Medium Tiefe", m["max"][2] - m["min"][2], p["media_depth"], 0.5)
+        if T.get("fase"):                                          # W26/D44: Medium-Grundflaeche = Rechteck - 4 Ecken (c^2/2) - Loch Medienschutz; Fase am Medium-Umriss parallel versetzt (c - d x (2 - sqrt 2))
+            Wi_, Li_ = W - 2 * p["rim_w"] - 2 * p["wall"], L - 2 * p["rim_w"] - 2 * p["wall"]
+            wm, lm = Wi_ - 2 * p["media_gap"], Li_ - 2 * p["media_gap"]
+            cm = T["fase"] - (W - wm) / 2.0 * (2 - 2 ** 0.5)
+            area = lm * wm - 2 * cm * cm - 3.141592653589793 * (p["guard_d"] / 2.0) ** 2
+            ck.eq(f"{typ} Medium-Volumen (Liter) mit Eckenfase {T['fase']} (Medium-Fase {cm:.1f}) gegen Flaechenrechnung", B["Medium"]["volume_mm3"] / 1e6, area * p["media_depth"] / 1e6, 0.5)
         z0_abs = lay[0]["z0"] if typ.startswith("aussen") else lay[8]["z0"]
         tol_abs = 15 if typ.startswith("aussen") else 40            # innen: OBJ-Beete liegen z0 -209..-170 (Rand Z 440-479): Oberflaeche absolut 365-404
         ck.eq(f"{typ} Medium Oberflaeche absolut (z0 {z0_abs})", m["max"][2] + z0_abs, 400, tol_abs)      # R03: Z 400

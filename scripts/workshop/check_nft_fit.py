@@ -25,6 +25,29 @@ def bed_dist(pt, bed):
         return max(ex, ey)
     return math.hypot(max(ex, 0), max(ey, 0))
 
+def bed_poly(b, fase=0.0):
+    """Eckpunkte des Beet-Umrisses (Rechteck, optional 45-Grad-Fasen der Schenkel fase) in Weltkoordinaten, gegen den Uhrzeigersinn."""
+    a = math.radians(b["yaw"])
+    hl, hw, c = b["length"] / 2.0, b["width"] / 2.0, fase
+    loc = []
+    for sx, sy in ((1, 1), (-1, 1), (-1, -1), (1, -1)):
+        pair = [(sx * hl, sy * (hw - c)), (sx * (hl - c), sy * hw)] if sx * sy > 0 else [(sx * (hl - c), sy * hw), (sx * hl, sy * (hw - c))]
+        loc += pair if c else pair[:1]
+    return [(b["cx"] + x * math.cos(a) - y * math.sin(a), b["cy"] + x * math.sin(a) + y * math.cos(a)) for x, y in loc]
+
+def sat_gap(P, Q):
+    """Abstand zweier konvexer Polygone aus den Kantennormalen: > 0 = getrennt (Untergrenze des echten Abstands), < 0 = Eindringtiefe."""
+    best = -1e9
+    for poly in (P, Q):
+        for k in range(len(poly)):
+            ex, ey = poly[(k + 1) % len(poly)][0] - poly[k][0], poly[(k + 1) % len(poly)][1] - poly[k][1]
+            n = math.hypot(ex, ey)
+            nx, ny = ey / n, -ex / n
+            pa = [x * nx + y * ny for x, y in P]
+            pb = [x * nx + y * ny for x, y in Q]
+            best = max(best, max(min(pb) - max(pa), min(pa) - max(pb)))
+    return best
+
 def dome_planes():
     """Feldebenen der Kuppelhaut (Ebene durch die drei Strebenachsen je Dreiecksfeld, Normale nach aussen): [(n, d)]; die Kuppel ist konvex, ein Punkt liegt innen, wenn d - n.p >= 0 fuer alle Felder."""
     lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))["dome"]
@@ -45,7 +68,7 @@ def dome_planes():
     return out
 
 def main(variant="aussen"):
-    """variant: "aussen" (Standard, 3 Rinnen) oder "aussen4" (W24, 4 Rinnen): die Variante ersetzt den Typ "aussen" in d["typen"], alles andere bleibt."""
+    """variant: "aussen" (Standard seit D43, 4 Rinnen) oder "aussen3" (Alternative, 3 Rinnen): die Variante ersetzt den Typ "aussen" in d["typen"], alles andere bleibt."""
     p, d = sc.load_params("nft_tisch")
     d["typen"] = dict(d["typen"])
     if variant != "aussen":
@@ -58,10 +81,18 @@ def main(variant="aussen"):
         for i_ in SECTORS[typ_b]:
             az_ = AZ0 + 36.0 * i_
             a_ = math.radians(az_)
-            beds.append(dict(cx=ac * math.cos(a_), cy=ac * math.sin(a_), yaw=az_ + 90.0, length=bj[key]["laenge"], width=bj[key]["breite"], r=ac, az=az_))
+            beds.append(dict(cx=ac * math.cos(a_), cy=ac * math.sin(a_), yaw=az_ + 90.0, length=bj[key]["laenge"], width=bj[key]["breite"], fase=bj[key].get("fase", 0.0), r=ac, az=az_, ring=typ_b))
+    gaps = []                                                      # (7) Beet x Beet: kein Beet dringt in ein Nachbarbeet ein (D44: Innenbeet-Ecken anfasen, Fase aus ibc_beet.json)
+    for i_ in range(len(beds)):
+        for j_ in range(i_ + 1, len(beds)):
+            if math.hypot(beds[i_]["cx"] - beds[j_]["cx"], beds[i_]["cy"] - beds[j_]["cy"]) < 3500:
+                gaps.append((sat_gap(bed_poly(beds[i_], beds[i_]["fase"]), bed_poly(beds[j_], beds[j_]["fase"])), beds[i_]["ring"], beds[j_]["ring"]))
     pool = lay["pool"]
     pcx, pcy = 0.0, 0.0                                            # D35: Becken zentriert (Ringe konzentrisch; layout.json cx/cy -36/20 ist OBJ-Ungenauigkeit)
     ck = sc.Check("nft_fit" if variant == "aussen" else f"nft_fit[{variant}]")
+    g_mit = min([g for g, a_, b_ in gaps if a_ == b_ == "mitte"] or [1e9]); g_aus = min([g for g, a_, b_ in gaps if a_ == b_ == "aussen"] or [1e9])
+    ck.eq(f"Innenbeete (mitte) Beet x Beet Abstand {g_mit:.0f} mm >= 0 (Fase {bj['innen_933'].get('fase', 0):g}, D44; ohne Fase -35)", 1 if g_mit >= 0 else 0, 1)
+    ck.eq(f"Aussenbeete Beet x Beet Abstand {g_aus:.0f} mm >= 0", 1 if g_aus >= 0 else 0, 1)
     total_tables, total_holes = 0, 0
     for typ in ("innen", "mitte", "aussen"):
         T = d["typen"][typ]
@@ -143,7 +174,8 @@ def main(variant="aussen"):
         ck.eq(f"{typ} Abstand der Tischkanten zur Kuppelhaut {worst[0]:.0f} mm >= 15 ({worst[1]})", 1 if worst[0] >= 15 else 0, 1)
     print(f"   Tische gesamt {total_tables} (Soll 24), Rinnen-Topfloecher gesamt {total_holes}")
     ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 459 (R15/D27: Mindestzahl NFT)", 1 if total_holes >= 459 else 0, 1)
-    ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 563 (D32: Soll ca. 580 bei pitch {TG.rinne_pitch():g}, Toleranz 3 %; 586 vor der Verschiebung der Aussentische nach innen)", 1 if total_holes >= 563 else 0, 1)
+    thr = 654 if d["typen"]["aussen"]["n"] == 4 else 563
+    ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= {thr} (D32/D43: Soll 674 mit 4 Aussenrinnen, 570 mit 3 (Soll ca. 580 bei pitch {TG.rinne_pitch():g}), Toleranz 3 %)", 1 if total_holes >= thr else 0, 1)
     # (5) Laufwege radial (D28/D29): Portalrand = Beet-Halbbreite + leg_clearance + foot_plate; Rand Pool, Portale, Wand
     Gm, Ga = TG.geometry("mitte", p, d["typen"]["mitte"]), TG.geometry("aussen", p, d["typen"]["aussen"])
     half = lambda G: G["bed_w"] / 2.0 + p["leg_clearance"] + p["foot_plate"]
@@ -164,6 +196,6 @@ def main(variant="aussen"):
 
 if __name__ == "__main__":
     rc = 0
-    for v in ("aussen", "aussen4"):
+    for v in ("aussen", "aussen3"):
         rc |= main(v)
     sys.exit(rc)

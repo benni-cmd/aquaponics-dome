@@ -135,7 +135,7 @@ def build(typ):
     b.add("component.create", name="T22d_Zulaufverteiler")
     ho = p["hdr_od"]
     dvec, kk = skew(1)
-    y0, y1 = -Wt / 2 - 60, Wt / 2 + 60
+    y0, y1 = G["ymid"] - Wt / 2 - 60, G["ymid"] + Wt / 2 + 60
     hl = (y1 - y0) * kk
     xbd = lambda y, sgn: sgn * ((G["apc"] - y) * TG.T18 - G["gap"])          # Sektorgrenze (Aussenkante des Rohrs) bei y
     zi_row = {r["k"]: zrow(r["xc"] - r["L"] / 2) + 70 for r in rows}

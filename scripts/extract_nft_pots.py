@@ -1,4 +1,4 @@
-"""Topfpositionen in den NFT-Rinnen je Tischtyp -> data/nft_pots.json (D33: 586 Topfloecher in 24 Tischen).
+"""Topfpositionen in den NFT-Rinnen je Tischtyp -> data/nft_pots.json (D33/D43: 674 Topfloecher in 24 Tischen, aussen 4 Rinnen).
 Lochraster aus scripts/workshop/tisch_geom.py (Zahl und Versatz je Reihe), Reihenlage und Hoehe aus den Rinnenprofil-Koerpern der Tischdatei (Rinne liegt mit 1,5 % Gefaelle: Oberkante Rippen linear von -X nach +X fallend).
 Topfboden = Oberkante Rippen - 64,5 (Netztopf 63 hoch, Kragen 1,5 mm unter Rippenoberkante, wie nft_rinne.py render()). Koordinaten im Tischrahmen (X tangential, Y radial innen, Z ueber Boden).
 Aufruf: python scripts/extract_nft_pots.py"""
@@ -27,4 +27,4 @@ for typ in ("innen", "mitte", "aussen"):
     print(typ, len(pots), "Reihen", [(r["n_holes"], round(r["shift"])) for r in rows])
 json.dump(out, open(os.path.join(ROOT, "data", "nft_pots.json"), "w"), separators=(",", ":"))
 tot = 10 * out["typen"]["innen"]["n_tisch_pots"] + 6 * out["typen"]["mitte"]["n_tisch_pots"] + 8 * out["typen"]["aussen"]["n_tisch_pots"]
-print("gesamt (10 innen + 6 mitte + 8 aussen):", tot, "Soll 586 (D33)")
+print("gesamt (10 innen + 6 mitte + 8 aussen):", tot, "Soll 674 (D43)")

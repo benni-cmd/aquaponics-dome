@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""Rechnet die Kuppel-Kennzahlen (Wasser, Pflanzen, Fluesse, Pumpenleistung, Filterkapazitaet) aus den Modellmassen und
+"""Rechnet die Kuppel-Kennzahlen (Wasser, Pflanzen, Fluesse, Pumpenleistung, Filterkapazitaet, Heizung) aus den Modellmassen und
 schreibt data/system-specs.json (der Viewer zeigt sie, solange nichts ausgewaehlt ist) und die Konsistenzpruefung.
-Jede Zahl traegt eine Herkunft: Q = Quelle (Ben-Tabelle R15 / docs/hydraulics.md), E = eigene Rechnung aus Modellmassen, A = Annahme.
+Auslegung nach der Fachrecherche R17-R22 (docs/research/aquaponik-empfehlung.md, aquaponik-werte.md); Bens Tabellenwerte
+(reference/Kuppelberechnung-neu-2.xlsx, R15) bleiben als zweiter Wert unter "tabelle_ben" stehen.
+Jede Zahl traegt eine Herkunft: Q = Quelle (R-Nummer in docs/research), E = eigene Rechnung aus Modellmassen oder Quellwerten,
+A = Annahme, B = Bens Tabelle.
 Aufruf: python scripts/system_specs.py"""
 import json
 import math
@@ -11,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 pi = math.pi
 
 # ---- Eingaben (Modell) ------------------------------------------------------------------------------------------------
-POOL_D, POOL_DEPTH = 3.890, 2.200                      # E/Q: OBJ-Durchmesser, Tiefe nach Ben-Tabelle (D26)
+POOL_D, POOL_DEPTH = 3.890, 2.200                      # E/B: OBJ-Durchmesser, Tiefe nach Ben-Tabelle (D26)
 BASIN2_D, BASIN2_DEPTH = 1.747, 1.0                    # E aus OBJ; Tiefe 1,0 m aus Zuchtbecken der Ben-Tabelle [A]
 TANK_KLEIN = dict(D=0.673, H=1.075, n=2)               # OBJ
 TANK_GROSS = dict(D=0.930, H=1.444, n=2)
@@ -20,22 +23,42 @@ BEDS = dict(outer=dict(n=8, w=0.800, l=2.640), inner=dict(n=6, w=0.933, l=1.865)
 SUBSTRATE_DEPTH, POROSITY = 0.300, 0.40                # Substrattiefe (Beet-Blatt), Porositaet Kies/Blaehton [A 0,35-0,45]
 NFT_CHANNELS = {"aussen": (8, [3.051, 2.864, 2.676]), "mitte": (6, [2.018, 1.847, 1.676, 1.505]), "innen": (10, [0.928, 0.758])}  # W17/W18
 NFT_FILM_L_PER_M = 1.0                                 # Wasserfilm in der Rinne ca. 1 l je Meter [A]
-NFT_FLOW_PER_CHANNEL = 0.5                             # l/min je Rinne (nft_rinne-Blatt, Bereich 0,5-2)
+NFT_FLOW_PER_CHANNEL = 1.0                             # l/min je Rinne [Q R21: FAO 589 1-2, Salat 1-1,5; vorher 0,5]
 POTS_BEDS, POTS_NFT = 2160, 586                        # Modell (OBJ, D33)
-POTS_TABLE = 609                                       # Ben-Tabelle Gesamt
-FISH_N, FISH_KG = 1839, 0.7                            # Ben-Tabelle Tilapia
-FEED_KG_DAY = 321.255 / 30                             # Ben-Tabelle Fischfutter pro Monat
-PLANT_AREA_SUBSTRATE, PLANT_AREA_NFT = 37.97, 42.41    # Ben-Tabelle m2
+POTS_TABLE = 609                                       # B Ben-Tabelle Gesamt
+PLANT_AREA_SUBSTRATE_TABLE, PLANT_AREA_NFT = 37.97, 42.41   # B Ben-Tabelle m2 (NFT-Flaeche nicht gegengemessen)
 PIPE_WATER_L = 225                                     # Rohre/Schlaeuche, Annahme: 150 m, im Mittel 1,5 l/m [A]
-FLOOD_CYCLES_PER_H = 2                                 # Beete [A, keine belastbare Quelle, hydraulics.md 2.6]
-HEAD_M = 2.0                                           # statisch 1,3 + Reibung + 20 % Reserve (hydraulics.md 2.8)
-PUMP_EFF = 0.35                                        # kleine Kreiselpumpe [A]
-O2_PER_KG_FEED = 0.25                                  # kg O2 je kg Futter fuer Fische [A, Faustregel]
-O2_NITRIF_PER_G_TAN = 4.57                             # g O2 je g TAN (Nitrifikation, Stoechiometrie) [Q Lehrbuch]
-TAN_FRACTION = 0.35 * 0.092                            # TAN je g Futter bei 35 % Protein (Faustregel) [A]
-AIR_KG_O2_PER_KWH = 1.0                                # Belueftung [A, 0,8-2 je nach System]
-FEED_RULE_MEDIA_L_PER_G = {"kies": 1.0, "bioball": 0.5}  # hydraulics.md Regel Biofilter [Q FAO ueber Zweitquellen]
-PLANT_FEED_G_M2 = (40, 50)                             # Blattgemuese g Futter je m2 und Tag (hydraulics.md 2.7)
+FLOOD_CYCLES_PER_H = 2                                 # Beete [Q R21: Fort Valley State Extension, TCF Freshwater Institute, 5-8 min]
+HEAD_M = 2.0                                           # statisch 1,3 + Reibung + 20 % Reserve (hydraulics.md 2.8), FAO nennt 1,5 m [E]
+PUMP_EFF = 0.25                                        # Netz-zu-Wasser Kleinpumpe [Q R21: FAO 589, 16-33 %; vorher 0,35]
+# Pumpenkonzept D38: 4 pumpe_gross = Hauptkreislauf (je Linie 2 parallel), 4 pumpe_klein = Absetzer-Teilstrom (je Absetzer-Tank 1 in Betrieb)
+PUMP_GROSS_N, PUMP_GROSS_L_MIN = 4, 55                 # D38: je 55-60 l/min
+PUMP_KLEIN_N, PUMP_KLEIN_L_MIN = 4, 12.5               # D38: 12-13 l/min
+PUMP_KLEIN_IN_BETRIEB = 2                              # eine je Absetzer-Tank, die zweite Pumpe als Reserve [A]
+
+# Fische und Futter: Auslegung aus der Pflanzflaeche (R20), Bens Tabelle als Vergleich
+FISH_KG_DESIGN = 350                                   # E: Mitte der Pflanzengrenze 170-460 kg (aquaponik-empfehlung.md Abschn. 1/2), Spanne 250-570
+FISH_END_WEIGHT = 0.7                                  # kg Endgewicht [Q R17: FAO 0,5 kg, SRAC 454 0,81 kg]
+FEED_PCT_BW = 0.01                                     # 1 % Koerpergewicht/Tag [Q R18: FAO 589, bei >100 g]
+TABLE_FISH_N, TABLE_FISH_KG = 1839, 0.7                # B Ben-Tabelle Tilapia
+TABLE_FEED_KG_DAY = 321.255 / 30                       # B Fischfutter pro Monat
+TAN_FRACTION = 0.0375                                  # TAN je kg Futter [Q R18/R19: SRAC 451 3 %, FAO 3,75 %, Losordo 3,84 %; Spanne 3-5 %]
+O2_FISH_MG_KG_H = (80, 135, 190)                       # Tilapia Grow-out Tagesmittel [Q R22: Kim & Jo 1999a/b, Aly 2007], unten/Mitte/oben
+O2_PEAK_FACTOR = 1.5                                   # Fuetterungsspitze +40-60 % [Q R22]
+O2_NITRIF_PER_G_TAN = 4.57                             # g O2 je g TAN (Stoechiometrie) [A, Quelle nicht gelesen]
+AIR_W_PER_KG_FISH = 0.59                               # UVI-Fischgeblaese 1,1 kW fuer 1900 kg [Q R22: SRAC 454]
+AIR_KG_O2_PER_KWH = 1.0                                # Feld-SAE [A; Norm-SAE feine Diffusoren 1,2-2,0, Colt & Orwicz sekundaer]
+FEED_RULE_MEDIA_L_PER_G = {"kies": 1.0, "bioball": 0.5}   # Faustregel [Q R19: FAO 589, ca. 3-fach Reserve]
+FEED_G_PER_L_FAO = {"bioball": 6.0, "substrat_min": 2.3, "substrat_max": 3.8}   # g Futter/l Medium/Tag [Q R19: FAO 589 Anh. 4, SSA 400 / 150 / 200-250]
+LOSORDO_VTR_G_TAN_M3 = 350                             # Moving-Bed [Q R19: Losordo/DeLong 2015]
+PLANT_FEED_G_M2 = (25, 45, 65)                         # g Futter je m2 und Tag: SRAC 454 (25 % Raft), Mitte, FAO Frucht [Q R20]
+SUBSTRATE_PER_KG_FISH_L = 32.5                         # l Kies je kg Fisch bei 1 : 2 und 61,5 kg/m3 [Q R20: SRAC 454]
+TAN_TARGET_MG_L, BIOFILTER_EFF = 1.5, 0.5              # Durchflussrechnung [Q R21: Losordo/DeLong 2015, rekonstruiert]
+SETTLER_MIN_RESIDENCE = 20                             # min, UVI-Klaerer [Q R19: SRAC 454]
+HULL_R = 6.0                                           # Halbkugel Ø12 m [E]
+HULL_U = (3.1, 4.0)                                    # W/m2K Doppel-Polycarbonat bis Doppel-PE [Q R22: Purdue CEA], Huellmaterial offen
+CONTROL_W = 40                                         # Steuerung [A]
+MAX_FISH_KG_M3 = 20                                    # FAO 589 Tab. 8.1 [Q R17]
 
 
 def cyl_cone(D, H, below):
@@ -51,8 +74,8 @@ basin2 = pi * (BASIN2_D / 2) ** 2 * BASIN2_DEPTH
 t_klein = cyl_cone(TANK_KLEIN["D"], TANK_KLEIN["H"], RIM_BELOW_WATER)
 t_gross = cyl_cone(TANK_GROSS["D"], TANK_GROSS["H"], RIM_BELOW_WATER)
 tanks = TANK_KLEIN["n"] * t_klein + TANK_GROSS["n"] * t_gross
-bed_vol = {k: v["n"] * v["w"] * v["l"] * SUBSTRATE_DEPTH for k, v in BEDS.items()}
-substrate_total = sum(bed_vol.values())
+substrate_area = sum(v["n"] * v["w"] * v["l"] for v in BEDS.values())
+substrate_total = substrate_area * SUBSTRATE_DEPTH
 beds_water = substrate_total * POROSITY
 nft_len = sum(n * sum(ch) for n, ch in NFT_CHANNELS.values())
 nft_channels = sum(n * len(ch) for n, ch in NFT_CHANNELS.values())
@@ -62,56 +85,121 @@ parts = [("Hauptbecken (Pool)", pool), ("Zweites Becken", basin2), ("Tanks (2 Ab
          ("Beete (Porenwasser bei Flutung)", beds_water), ("NFT-Rinnen (Wasserfilm)", nft_water), ("Rohre und Schläuche", pipes)]
 total = sum(v for _, v in parts)
 
-# ---- Fische, Futter, Filterkapazitaet --------------------------------------------------------------------------------
-biomass = FISH_N * FISH_KG
+# ---- Fische, Futter, Ammonium ----------------------------------------------------------------------------------------
 fish_water = pool + basin2
+biomass = FISH_KG_DESIGN
+fish_n = round(biomass / FISH_END_WEIGHT)
+feed_kg_day = biomass * FEED_PCT_BW
 density = biomass / fish_water
-tan_g = FEED_KG_DAY * 1000 * TAN_FRACTION
+tan_g = feed_kg_day * 1000 * TAN_FRACTION
+table_biomass = TABLE_FISH_N * TABLE_FISH_KG
+table_density = table_biomass / fish_water
+table_tan_g = TABLE_FEED_KG_DAY * 1000 * TAN_FRACTION
+table_tan_g_alt = TABLE_FEED_KG_DAY * 1000 * 0.35 * 0.092   # frueherer Ansatz 3,2 %
+
+# ---- Filterkapazitaet --------------------------------------------------------------------------------------------------
 media_biofilter_m3 = TANK_GROSS["n"] * pi * 0.40 ** 2 * 0.52          # Biomediumkorb Ø~0,8 m, 520 mm hoch [E]
-cap_bio = media_biofilter_m3 * 1000 / FEED_RULE_MEDIA_L_PER_G["bioball"] / 1000   # kg Futter/Tag
+cap_bio = media_biofilter_m3 * 1000 / FEED_RULE_MEDIA_L_PER_G["bioball"] / 1000   # kg Futter/Tag, Faustregel
 cap_sub = substrate_total * 1000 / FEED_RULE_MEDIA_L_PER_G["kies"] / 1000
 cap_media = cap_bio + cap_sub
-cap_plants = (PLANT_AREA_SUBSTRATE + PLANT_AREA_NFT) * PLANT_FEED_G_M2[1] / 1000
-fish_fit = min(cap_media, cap_plants) / FEED_KG_DAY
+cap_bio_fao = media_biofilter_m3 * FEED_G_PER_L_FAO["bioball"]          # kg Futter/Tag (m3 x g/l)
+cap_bio_losordo = media_biofilter_m3 * LOSORDO_VTR_G_TAN_M3 / TAN_FRACTION / 1000
+cap_sub_fao = (substrate_total * FEED_G_PER_L_FAO["substrat_min"], substrate_total * FEED_G_PER_L_FAO["substrat_max"])
+plant_area = substrate_area + PLANT_AREA_NFT
+cap_plants = tuple(plant_area * g / 1000 for g in PLANT_FEED_G_M2)      # kg Futter/Tag (niedrig, Mitte, hoch)
+fish_kg_supported_by_substrate = substrate_total * 1000 / SUBSTRATE_PER_KG_FISH_L
+fish_fit = min(cap_media, cap_plants[1]) / feed_kg_day
+table_plants_cover = cap_plants[1] / TABLE_FEED_KG_DAY
 
 # ---- Fluesse, Pumpen, Strom -------------------------------------------------------------------------------------------
 nft_flow = nft_channels * NFT_FLOW_PER_CHANNEL                         # l/min
-bed_flow = sum(v["n"] * v["w"] * v["l"] * SUBSTRATE_DEPTH * POROSITY for v in BEDS.values()) * 1000 * FLOOD_CYCLES_PER_H / 60
-circuit = nft_flow + bed_flow
-per_line = circuit / 2
-p_hyd = 1000 * 9.81 * (per_line / 60000) * HEAD_M                      # W
-p_el = p_hyd / PUMP_EFF
-o2_kg_day = FEED_KG_DAY * O2_PER_KG_FEED + tan_g / 1000 * O2_NITRIF_PER_G_TAN
-air_w = o2_kg_day / AIR_KG_O2_PER_KWH * 1000 / 24
-control_w = 40
-power_w = 2 * p_el + air_w + control_w
-vortex_flow = 2 * 12                                                    # l/min, Modell-Pumpe klein (Verweilzeit-Auslegung)
-resid_small = t_klein * 1000 / 12
+nft_flow_high = nft_channels * 2.0
+bed_flow = beds_water * 1000 * FLOOD_CYCLES_PER_H / 60
+circuit = nft_flow + bed_flow                                          # Bedarf Pflanzenstrom
+circuit_high = nft_flow_high + bed_flow
+pumps_main = PUMP_GROSS_N * PUMP_GROSS_L_MIN                           # D38 Hauptkreislauf
+per_line = pumps_main / 2
+p_hyd_main = 1000 * 9.81 * (pumps_main / 60000) * HEAD_M               # W gesamt
+p_el_main = p_hyd_main / PUMP_EFF
+settler_flow = PUMP_KLEIN_IN_BETRIEB * PUMP_KLEIN_L_MIN                # l/min, Teilstrom ueber beide Absetzer
+p_el_small = 1000 * 9.81 * (settler_flow / 60000) * HEAD_M / PUMP_EFF
+resid_small = t_klein * 1000 / PUMP_KLEIN_L_MIN                        # min je Absetzer-Tank mit einer Pumpe
+resid_small_both = t_klein * 1000 / (2 * PUMP_KLEIN_L_MIN)             # beide Pumpen am Tank
+tan_flow_l_min = tan_g * 1000 / (TAN_TARGET_MG_L * BIOFILTER_EFF) / 1440   # l/min, Durchfluss nach TAN
+tan_flow_table = table_tan_g * 1000 / (TAN_TARGET_MG_L * BIOFILTER_EFF) / 1440
+tan_feed_at_main = pumps_main * 1440 * TAN_TARGET_MG_L * BIOFILTER_EFF / 1000 / TAN_FRACTION / 1000   # kg Futter/Tag, die der Hauptkreislauf traegt
+turnover_fish_h = fish_water * 1000 / pumps_main / 60
+
+o2_fish = tuple(biomass * mg * 24 / 1e6 for mg in O2_FISH_MG_KG_H)     # kg O2/Tag
+o2_nitrif = tan_g / 1000 * O2_NITRIF_PER_G_TAN
+o2_total = tuple(x + o2_nitrif for x in o2_fish)
+air_w = AIR_W_PER_KG_FISH * biomass                                    # Auslegung nach UVI-Geblaese
+air_supply_kg = air_w * 24 / 1000 * AIR_KG_O2_PER_KWH                  # kg O2/Tag, die diese Leistung bei Feld-SAE liefert
+air_w_by_o2 = o2_total[1] / AIR_KG_O2_PER_KWH * 1000 / 24              # nur aus dem Sauerstoffbedarf (Mitte)
+power_w = p_el_main + p_el_small + air_w + CONTROL_W
+hull_area = 2 * pi * HULL_R ** 2
+heat_w_per_k = tuple(round(hull_area * u) for u in HULL_U)
 
 checks = [
-    ("Pflanzenzahl gegen Ben-Tabelle", POTS_BEDS + POTS_NFT >= POTS_TABLE, f"{POTS_BEDS + POTS_NFT} im Modell gegen mindestens {POTS_TABLE}"),
-    ("Besatzdichte höchstens 150 kg/m³ (Tabellenobergrenze)", density <= 150, f"{density:.0f} kg/m³ im Beckenwasser {fish_water:.1f} m³ (Tabellenbereich 60–150, also eher locker besetzt)"),
-    ("Biofilter-/Substratvolumen deckt das Futter", cap_media >= FEED_KG_DAY, f"deckt {cap_media:.1f} von {FEED_KG_DAY:.1f} kg Futter/Tag ({cap_media / FEED_KG_DAY:.0%})"),
-    ("Pflanzfläche deckt das Futter (50 g/m²/Tag)", cap_plants >= FEED_KG_DAY, f"deckt {cap_plants:.1f} von {FEED_KG_DAY:.1f} kg Futter/Tag ({cap_plants / FEED_KG_DAY:.0%})"),
-    ("Pumpen im Modell reichen für den Hauptkreislauf", vortex_flow >= circuit, f"Modell-Pumpen klein 2 × 12 l/min = {vortex_flow:.0f} gegen Bedarf {circuit:.0f} l/min"),
+    ("Pflanzenzahl gegen Ben-Tabelle", POTS_BEDS + POTS_NFT >= POTS_TABLE, f"{POTS_BEDS + POTS_NFT} Töpfe im Modell gegen mindestens {POTS_TABLE} (Kapazität; empfohlene Pflanzdichte Blatt 20–25, Frucht 4–8/m², Beete aktuell {POTS_BEDS / substrate_area:.0f}/m²)"),
+    (f"Besatzdichte höchstens {MAX_FISH_KG_M3} kg/m³ (FAO 589)", density <= MAX_FISH_KG_M3, f"{density:.0f} kg/m³ im Beckenwasser {fish_water:.1f} m³ ({biomass} kg); Bens Tabelle {table_density:.0f} kg/m³ ({table_biomass:.0f} kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"),
+    ("Biofilter-/Substratvolumen deckt das Futter (Faustregel)", cap_media >= feed_kg_day, f"deckt {cap_media:.1f} von {feed_kg_day:.1f} kg Futter/Tag ({cap_media / feed_kg_day:.0%}); nach FAO-Tabelle Bioballs {cap_bio_fao:.1f}, Substrat {cap_sub_fao[0]:.0f}–{cap_sub_fao[1]:.0f} kg/Tag (Faustregel hat ca. 3-fach Reserve)"),
+    ("Pflanzfläche deckt das Futter (45 g/m²/Tag, Mitte)", cap_plants[1] >= feed_kg_day, f"deckt {cap_plants[1]:.1f} von {feed_kg_day:.1f} kg Futter/Tag ({cap_plants[1] / feed_kg_day:.0%}); Spanne {cap_plants[0] / feed_kg_day:.0%} (25 g, SRAC) bis {cap_plants[2] / feed_kg_day:.0%} (65 g, FAO Frucht) auf {plant_area:.1f} m²"),
+    ("Substratvolumen trägt die Fischmenge (SRAC 1 : 2)", fish_kg_supported_by_substrate >= biomass, f"{substrate_total:.1f} m³ Substrat tragen nach SRAC 454 etwa {fish_kg_supported_by_substrate:.0f} kg Fisch gegen {biomass} kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"),
+    ("Bens Tabellenfutter gegen Pflanzfläche", cap_plants[1] >= TABLE_FEED_KG_DAY, f"Pflanzfläche deckt bei 45 g/m² nur {table_plants_cover:.0%} von Bens {TABLE_FEED_KG_DAY:.1f} kg Futter/Tag; nötig wären {TABLE_FEED_KG_DAY * 1000 / PLANT_FEED_G_M2[1]:.0f} m² statt {plant_area:.0f} m² (Frage 1 an Ben)"),
+    ("Hauptkreislauf deckt den Pflanzenstrom (D38)", pumps_main >= circuit, f"4 Pumpen gross × {PUMP_GROSS_L_MIN} = {pumps_main} l/min gegen Bedarf {circuit:.0f} l/min (NFT {NFT_FLOW_PER_CHANNEL:g} l/min je Rinne); bei 2 l/min je Rinne {circuit_high:.0f} l/min ({'gedeckt' if pumps_main >= circuit_high else 'nicht gedeckt'})"),
+    ("Hauptkreislauf trägt das Futter (TAN-Durchfluss)", pumps_main >= tan_flow_l_min, f"Bedarf {tan_flow_l_min:.0f} l/min bei {feed_kg_day:.1f} kg Futter (TAN {TAN_TARGET_MG_L:g} mg/l, Biofilter {BIOFILTER_EFF:.0%}); {pumps_main} l/min tragen bis {tan_feed_at_main:.1f} kg Futter/Tag; für Bens {TABLE_FEED_KG_DAY:.1f} kg wären {tan_flow_table:.0f} l/min nötig"),
+    (f"Absetzer-Verweilzeit mindestens {SETTLER_MIN_RESIDENCE} min (UVI)", resid_small >= SETTLER_MIN_RESIDENCE, f"{t_klein * 1000:.0f} l je Absetzer bei {PUMP_KLEIN_L_MIN:g} l/min (eine kleine Pumpe je Tank) = {resid_small:.0f} min; mit beiden Pumpen {resid_small_both:.0f} min"),
+    ("Belüftung deckt den Sauerstoffbedarf", air_supply_kg >= o2_total[2] * O2_PEAK_FACTOR, f"{air_w:.0f} W liefern bei {AIR_KG_O2_PER_KWH:g} kg O₂/kWh {air_supply_kg:.1f} kg/Tag gegen Bedarf {o2_total[0]:.1f}–{o2_total[2]:.1f} kg/Tag (Spitze ×{O2_PEAK_FACTOR:g}: {o2_total[2] * O2_PEAK_FACTOR:.1f})"),
 ]
 
 specs = {
     "stand": "30.10.2026",
-    "hinweis": "Schätzung aus den Modellmaßen und Bens Tabelle; Annahmen (A) stehen im Text. Keine fachliche Freigabe.",
+    "hinweis": "Auslegung nach Fachrecherche (docs/research/aquaponik-empfehlung.md), Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, vorläufig bis Ben die Fragen 1–6 der Empfehlung beantwortet hat. Keine fachliche Freigabe.",
     "wasser": {"gesamt_m3": round(total, 1), "teile": [(n, round(v, 2), f"{v / total:.0%}") for n, v in parts], "in_tanks_m3": round(tanks, 2),
-               "tabelle_systemwasser_m3": 25},
+               "tabelle_systemwasser_m3": 25, "fischwasser_m3": round(fish_water, 1)},
     "pflanzen": {"beete": POTS_BEDS, "nft": POTS_NFT, "gesamt": POTS_BEDS + POTS_NFT, "tabelle": POTS_TABLE, "rinnen": nft_channels,
-                 "rinnenlaenge_m": round(nft_len, 1), "substrat_m3": round(substrate_total, 1)},
-    "fische": {"anzahl": FISH_N, "biomasse_kg": round(biomass), "futter_kg_tag": round(FEED_KG_DAY, 1), "dichte_kg_m3": round(density), "tan_g_tag": round(tan_g)},
+                 "rinnenlaenge_m": round(nft_len, 1), "substrat_m3": round(substrate_total, 1),
+                 "flaeche_substrat_m2": round(substrate_area, 1), "flaeche_substrat_tabelle_m2": PLANT_AREA_SUBSTRATE_TABLE,
+                 "flaeche_nft_m2": PLANT_AREA_NFT, "flaeche_gesamt_m2": round(plant_area, 1),
+                 "toepfe_je_m2_beet": round(POTS_BEDS / substrate_area), "dichte_empfohlen": "Blatt 20-25, Frucht 4-8 je m2 (FAO 589)"},
+    "fische": {"anzahl": fish_n, "biomasse_kg": round(biomass), "futter_kg_tag": round(feed_kg_day, 1), "dichte_kg_m3": round(density), "tan_g_tag": round(tan_g),
+               "spanne": {"biomasse_kg": [250, 570], "futter_kg_tag": [2.5, 5.7], "dichte_kg_m3": [9, 20]},
+               "tabelle_ben": {"anzahl": TABLE_FISH_N, "biomasse_kg": round(table_biomass), "futter_kg_tag": round(TABLE_FEED_KG_DAY, 1),
+                               "dichte_kg_m3": round(table_density), "tan_g_tag": round(table_tan_g), "tan_g_tag_frueherer_ansatz": round(table_tan_g_alt)}},
     "fluesse": {"nft_l_min": round(nft_flow), "beete_l_min": round(bed_flow), "kreislauf_l_min": round(circuit), "kreislauf_m3_h": round(circuit * 0.06, 1),
-                "je_linie_l_min": round(per_line), "umwaelzzeit_h": round(total * 1000 / circuit / 60, 1), "pumpe_hoehe_m": HEAD_M},
-    "leistung": {"pumpe_hydraulisch_w": round(p_hyd), "pumpe_elektrisch_w": round(p_el), "belueftung_w": round(air_w), "steuerung_w": control_w,
-                 "gesamt_w": round(power_w), "kwh_tag": round(power_w * 24 / 1000, 1), "kwh_monat": round(power_w * 24 * 30 / 1000)},
+                "je_linie_l_min": round(per_line), "umwaelzzeit_h": round(total * 1000 / pumps_main / 60, 1), "pumpe_hoehe_m": HEAD_M,
+                "bedarf_nft_2_l_min": round(circuit_high), "hauptkreislauf_l_min": pumps_main, "hauptkreislauf_pumpen": f"{PUMP_GROSS_N} x {PUMP_GROSS_L_MIN} l/min (D38)",
+                "absetzer_teilstrom_l_min": round(settler_flow, 1), "fischwasser_umlauf_h": round(turnover_fish_h, 1),
+                "tan_durchfluss_l_min": round(tan_flow_l_min), "tan_durchfluss_tabelle_l_min": round(tan_flow_table),
+                "tabelle_ben": {"kreislauf_modell_l_min": 143, "hinweis": "Bens Tabelle nennt nur 2 Pumpen ohne Daten; 143 l/min war die erste Rechnung (NFT 0,5 l/min)"}},
+    "leistung": {"pumpe_hydraulisch_w": round(p_hyd_main / 2), "pumpe_elektrisch_w": round(p_el_main / 2), "pumpe_klein_w": round(p_el_small),
+                 "belueftung_w": round(air_w), "steuerung_w": CONTROL_W,
+                 "gesamt_w": round(power_w), "kwh_tag": round(power_w * 24 / 1000, 1), "kwh_monat": round(power_w * 24 * 30 / 1000),
+                 "spanne_w": [260, 1300], "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
+                 "heizung": {"huelle_m2": round(hull_area), "w_je_k": list(heat_w_per_k), "beispiel_dT20_kw": [round(w * 20 / 1000, 1) for w in heat_w_per_k],
+                             "wasser_speicher_kwh_je_k": round(total * 1.163, 1),
+                             "hinweis": "Halbkugel-Huelle, U 3,1-4,0 W/m2K (Doppel-PC bis Doppel-PE), Standort und Material offen; nicht in 'gesamt_w' enthalten"},
+                 "tabelle_ben": {"strom_eur_monat": 219, "hinweis": "Bens Tabelle rechnet 219 EUR/Monat Strom (inkl. Heizung?), Zusammensetzung unbekannt"}},
+    "sauerstoff": {"fisch_kg_tag": [round(x, 1) for x in o2_fish], "nitrifikation_kg_tag": round(o2_nitrif, 1), "gesamt_kg_tag": [round(x, 1) for x in o2_total],
+                   "spitze_faktor": O2_PEAK_FACTOR, "belueftung_aus_bedarf_w": round(air_w_by_o2)},
     "filter": {"absetzer_klein_l": round(t_klein * 1000), "biofilter_gross_l": round(t_gross * 1000), "medium_biofilter_m3": round(media_biofilter_m3, 2),
-               "kapazitaet_biofilter_kg_futter": round(cap_bio, 1), "kapazitaet_substrat_kg_futter": round(cap_sub, 1), "verweilzeit_absetzer_min": round(resid_small, 1)},
-    "kapazitaet": {"medien_kg_futter_tag": round(cap_media, 1), "pflanzen_kg_futter_tag": round(cap_plants, 1), "passender_fischanteil": round(fish_fit, 2)},
+               "kapazitaet_biofilter_kg_futter": round(cap_bio, 1), "kapazitaet_substrat_kg_futter": round(cap_sub, 1), "verweilzeit_absetzer_min": round(resid_small, 1),
+               "kapazitaet_biofilter_fao_kg_futter": round(cap_bio_fao, 1), "kapazitaet_biofilter_losordo_kg_futter": round(cap_bio_losordo, 1),
+               "kapazitaet_substrat_fao_kg_futter": [round(x) for x in cap_sub_fao], "absetzer_teilstrom_je_tank_l_min": PUMP_KLEIN_L_MIN,
+               "anteil_am_fischwasser": f"{tanks / fish_water:.0%} (FAO: 10-30 %)"},
+    "kapazitaet": {"medien_kg_futter_tag": round(cap_media, 1), "pflanzen_kg_futter_tag": round(cap_plants[1], 1),
+                   "pflanzen_kg_futter_tag_spanne": [round(x, 1) for x in cap_plants], "passender_fischanteil": round(fish_fit, 2),
+                   "substrat_traegt_fisch_kg": round(fish_kg_supported_by_substrate)},
     "konsistenz": [{"pruefung": n, "ok": bool(ok), "detail": d} for n, ok, d in checks],
+    "herkunft": {
+        "biomasse_350_kg": "E aus R20 (Pflanzenflaeche), Spanne 250-570 kg; Q FAO 589, SRAC 454",
+        "futter_1_prozent": "Q FAO 589 (R18)", "tan_3_75_prozent": "Q SRAC 451, FAO 589, Losordo/DeLong (R18/R19)",
+        "nft_1_l_min": "Q FAO 589, HortTech (R21)", "flutzyklus_2_je_h": "Q Fort Valley State Extension (R21)", "pumpe_wirkungsgrad_25": "Q FAO 589 (R21), Spanne 16-33 %",
+        "pumpen_d38": "A/E Entscheidung D38 (4 x 55 l/min Hauptkreislauf, 4 x 12,5 l/min Absetzer)",
+        "futter_je_m2": "Q SRAC 454 (25), FAO 589 (45-65) (R20)", "o2_fisch": "Q Kim & Jo 1999a/b, Aly 2007 (R22)", "belueftung": "Q SRAC 454 UVI 0,59 W/kg (R22)",
+        "o2_je_g_tan_4_57": "A Stoechiometrie, nicht aus Quelle gelesen", "heizung": "E aus Purdue CEA U-Werten (R22), Standort offen",
+        "tabelle_ben": "B reference/Kuppelberechnung-neu-2.xlsx (R15)"},
 }
 (ROOT / "data" / "system-specs.json").write_text(json.dumps(specs, ensure_ascii=False, indent=1), encoding="utf-8")
-print(json.dumps(specs, ensure_ascii=False, indent=1)[:4500])
+print(json.dumps(specs, ensure_ascii=False, indent=1)[:6500])

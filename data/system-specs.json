@@ -1,6 +1,6 @@
 {
  "stand": "30.10.2026",
- "hinweis": "Schätzung aus den Modellmaßen und Bens Tabelle; Annahmen (A) stehen im Text. Keine fachliche Freigabe.",
+ "hinweis": "Auslegung nach Fachrecherche (docs/research/aquaponik-empfehlung.md), Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, vorläufig bis Ben die Fragen 1–6 der Empfehlung beantwortet hat. Keine fachliche Freigabe.",
  "wasser": {
   "gesamt_m3": 34.1,
   "teile": [
@@ -36,7 +36,8 @@
    ]
   ],
   "in_tanks_m3": 1.94,
-  "tabelle_systemwasser_m3": 25
+  "tabelle_systemwasser_m3": 25,
+  "fischwasser_m3": 28.5
  },
  "pflanzen": {
   "beete": 2160,
@@ -45,32 +46,109 @@
   "tabelle": 609,
   "rinnen": 68,
   "rinnenlaenge_m": 127.9,
-  "substrat_m3": 8.2
+  "substrat_m3": 8.2,
+  "flaeche_substrat_m2": 27.3,
+  "flaeche_substrat_tabelle_m2": 37.97,
+  "flaeche_nft_m2": 42.41,
+  "flaeche_gesamt_m2": 69.7,
+  "toepfe_je_m2_beet": 79,
+  "dichte_empfohlen": "Blatt 20-25, Frucht 4-8 je m2 (FAO 589)"
  },
  "fische": {
-  "anzahl": 1839,
-  "biomasse_kg": 1287,
-  "futter_kg_tag": 10.7,
-  "dichte_kg_m3": 45,
-  "tan_g_tag": 345
+  "anzahl": 500,
+  "biomasse_kg": 350,
+  "futter_kg_tag": 3.5,
+  "dichte_kg_m3": 12,
+  "tan_g_tag": 131,
+  "spanne": {
+   "biomasse_kg": [
+    250,
+    570
+   ],
+   "futter_kg_tag": [
+    2.5,
+    5.7
+   ],
+   "dichte_kg_m3": [
+    9,
+    20
+   ]
+  },
+  "tabelle_ben": {
+   "anzahl": 1839,
+   "biomasse_kg": 1287,
+   "futter_kg_tag": 10.7,
+   "dichte_kg_m3": 45,
+   "tan_g_tag": 402,
+   "tan_g_tag_frueherer_ansatz": 345
+  }
  },
  "fluesse": {
-  "nft_l_min": 34,
+  "nft_l_min": 68,
   "beete_l_min": 109,
-  "kreislauf_l_min": 143,
-  "kreislauf_m3_h": 8.6,
-  "je_linie_l_min": 72,
-  "umwaelzzeit_h": 4.0,
-  "pumpe_hoehe_m": 2.0
+  "kreislauf_l_min": 177,
+  "kreislauf_m3_h": 10.6,
+  "je_linie_l_min": 110,
+  "umwaelzzeit_h": 2.6,
+  "pumpe_hoehe_m": 2.0,
+  "bedarf_nft_2_l_min": 245,
+  "hauptkreislauf_l_min": 220,
+  "hauptkreislauf_pumpen": "4 x 55 l/min (D38)",
+  "absetzer_teilstrom_l_min": 25.0,
+  "fischwasser_umlauf_h": 2.2,
+  "tan_durchfluss_l_min": 122,
+  "tan_durchfluss_tabelle_l_min": 372,
+  "tabelle_ben": {
+   "kreislauf_modell_l_min": 143,
+   "hinweis": "Bens Tabelle nennt nur 2 Pumpen ohne Daten; 143 l/min war die erste Rechnung (NFT 0,5 l/min)"
+  }
  },
  "leistung": {
-  "pumpe_hydraulisch_w": 23,
-  "pumpe_elektrisch_w": 67,
-  "belueftung_w": 177,
+  "pumpe_hydraulisch_w": 36,
+  "pumpe_elektrisch_w": 144,
+  "pumpe_klein_w": 33,
+  "belueftung_w": 206,
   "steuerung_w": 40,
-  "gesamt_w": 351,
-  "kwh_tag": 8.4,
-  "kwh_monat": 253
+  "gesamt_w": 567,
+  "kwh_tag": 13.6,
+  "kwh_monat": 408,
+  "spanne_w": [
+   260,
+   1300
+  ],
+  "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
+  "heizung": {
+   "huelle_m2": 226,
+   "w_je_k": [
+    701,
+    905
+   ],
+   "beispiel_dT20_kw": [
+    14.0,
+    18.1
+   ],
+   "wasser_speicher_kwh_je_k": 39.7,
+   "hinweis": "Halbkugel-Huelle, U 3,1-4,0 W/m2K (Doppel-PC bis Doppel-PE), Standort und Material offen; nicht in 'gesamt_w' enthalten"
+  },
+  "tabelle_ben": {
+   "strom_eur_monat": 219,
+   "hinweis": "Bens Tabelle rechnet 219 EUR/Monat Strom (inkl. Heizung?), Zusammensetzung unbekannt"
+  }
+ },
+ "sauerstoff": {
+  "fisch_kg_tag": [
+   0.7,
+   1.1,
+   1.6
+  ],
+  "nitrifikation_kg_tag": 0.6,
+  "gesamt_kg_tag": [
+   1.3,
+   1.7,
+   2.2
+  ],
+  "spitze_faktor": 1.5,
+  "belueftung_aus_bedarf_w": 72
  },
  "filter": {
   "absetzer_klein_l": 267,
@@ -78,38 +156,92 @@
   "medium_biofilter_m3": 0.52,
   "kapazitaet_biofilter_kg_futter": 1.0,
   "kapazitaet_substrat_kg_futter": 8.2,
-  "verweilzeit_absetzer_min": 22.3
+  "verweilzeit_absetzer_min": 21.4,
+  "kapazitaet_biofilter_fao_kg_futter": 3.1,
+  "kapazitaet_biofilter_losordo_kg_futter": 4.9,
+  "kapazitaet_substrat_fao_kg_futter": [
+   19,
+   31
+  ],
+  "absetzer_teilstrom_je_tank_l_min": 12.5,
+  "anteil_am_fischwasser": "7% (FAO: 10-30 %)"
  },
  "kapazitaet": {
   "medien_kg_futter_tag": 9.2,
-  "pflanzen_kg_futter_tag": 4.0,
-  "passender_fischanteil": 0.38
+  "pflanzen_kg_futter_tag": 3.1,
+  "pflanzen_kg_futter_tag_spanne": [
+   1.7,
+   3.1,
+   4.5
+  ],
+  "passender_fischanteil": 0.9,
+  "substrat_traegt_fisch_kg": 252
  },
  "konsistenz": [
   {
    "pruefung": "Pflanzenzahl gegen Ben-Tabelle",
    "ok": true,
-   "detail": "2746 im Modell gegen mindestens 609"
+   "detail": "2746 Töpfe im Modell gegen mindestens 609 (Kapazität; empfohlene Pflanzdichte Blatt 20–25, Frucht 4–8/m², Beete aktuell 79/m²)"
   },
   {
-   "pruefung": "Besatzdichte höchstens 150 kg/m³ (Tabellenobergrenze)",
+   "pruefung": "Besatzdichte höchstens 20 kg/m³ (FAO 589)",
    "ok": true,
-   "detail": "45 kg/m³ im Beckenwasser 28.5 m³ (Tabellenbereich 60–150, also eher locker besetzt)"
+   "detail": "12 kg/m³ im Beckenwasser 28.5 m³ (350 kg); Bens Tabelle 45 kg/m³ (1287 kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"
   },
   {
-   "pruefung": "Biofilter-/Substratvolumen deckt das Futter",
-   "ok": false,
-   "detail": "deckt 9.2 von 10.7 kg Futter/Tag (86%)"
+   "pruefung": "Biofilter-/Substratvolumen deckt das Futter (Faustregel)",
+   "ok": true,
+   "detail": "deckt 9.2 von 3.5 kg Futter/Tag (264%); nach FAO-Tabelle Bioballs 3.1, Substrat 19–31 kg/Tag (Faustregel hat ca. 3-fach Reserve)"
   },
   {
-   "pruefung": "Pflanzfläche deckt das Futter (50 g/m²/Tag)",
+   "pruefung": "Pflanzfläche deckt das Futter (45 g/m²/Tag, Mitte)",
    "ok": false,
-   "detail": "deckt 4.0 von 10.7 kg Futter/Tag (38%)"
+   "detail": "deckt 3.1 von 3.5 kg Futter/Tag (90%); Spanne 50% (25 g, SRAC) bis 130% (65 g, FAO Frucht) auf 69.7 m²"
   },
   {
-   "pruefung": "Pumpen im Modell reichen für den Hauptkreislauf",
+   "pruefung": "Substratvolumen trägt die Fischmenge (SRAC 1 : 2)",
    "ok": false,
-   "detail": "Modell-Pumpen klein 2 × 12 l/min = 24 gegen Bedarf 143 l/min"
+   "detail": "8.2 m³ Substrat tragen nach SRAC 454 etwa 252 kg Fisch gegen 350 kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"
+  },
+  {
+   "pruefung": "Bens Tabellenfutter gegen Pflanzfläche",
+   "ok": false,
+   "detail": "Pflanzfläche deckt bei 45 g/m² nur 29% von Bens 10.7 kg Futter/Tag; nötig wären 238 m² statt 70 m² (Frage 1 an Ben)"
+  },
+  {
+   "pruefung": "Hauptkreislauf deckt den Pflanzenstrom (D38)",
+   "ok": true,
+   "detail": "4 Pumpen gross × 55 = 220 l/min gegen Bedarf 177 l/min (NFT 1 l/min je Rinne); bei 2 l/min je Rinne 245 l/min (nicht gedeckt)"
+  },
+  {
+   "pruefung": "Hauptkreislauf trägt das Futter (TAN-Durchfluss)",
+   "ok": true,
+   "detail": "Bedarf 122 l/min bei 3.5 kg Futter (TAN 1.5 mg/l, Biofilter 50%); 220 l/min tragen bis 6.3 kg Futter/Tag; für Bens 10.7 kg wären 372 l/min nötig"
+  },
+  {
+   "pruefung": "Absetzer-Verweilzeit mindestens 20 min (UVI)",
+   "ok": true,
+   "detail": "267 l je Absetzer bei 12.5 l/min (eine kleine Pumpe je Tank) = 21 min; mit beiden Pumpen 11 min"
+  },
+  {
+   "pruefung": "Belüftung deckt den Sauerstoffbedarf",
+   "ok": true,
+   "detail": "206 W liefern bei 1 kg O₂/kWh 5.0 kg/Tag gegen Bedarf 1.3–2.2 kg/Tag (Spitze ×1.5: 3.3)"
   }
- ]
+ ],
+ "herkunft": {
+  "biomasse_350_kg": "E aus R20 (Pflanzenflaeche), Spanne 250-570 kg; Q FAO 589, SRAC 454",
+  "futter_1_prozent": "Q FAO 589 (R18)",
+  "tan_3_75_prozent": "Q SRAC 451, FAO 589, Losordo/DeLong (R18/R19)",
+  "nft_1_l_min": "Q FAO 589, HortTech (R21)",
+  "flutzyklus_2_je_h": "Q Fort Valley State Extension (R21)",
+  "pumpe_wirkungsgrad_25": "Q FAO 589 (R21), Spanne 16-33 %",
+  "pumpen_d38": "A/E Entscheidung D38 (4 x 55 l/min Hauptkreislauf, 4 x 12,5 l/min Absetzer)",
+  "futter_je_m2": "Q SRAC 454 (25), FAO 589 (45-65) (R20)",
+  "o2_fisch": "Q Kim & Jo 1999a/b, Aly 2007 (R22)",
+  "belueftung": "Q SRAC 454 UVI 0,59 W/kg (R22)",
+  "o2_je_g_tan_4_57": "A Stoechiometrie, nicht aus Quelle gelesen",
+  "heizung": "E aus Purdue CEA U-Werten (R22), Standort offen",
+  "tabelle_ben": "B reference/Kuppelberechnung-neu-2.xlsx (R15)"
+ }
 }

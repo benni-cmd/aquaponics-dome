@@ -1938,5 +1938,25 @@
   "note": "W22 Paneel (edge_inset 0) auf Kappe im Schnitt",
   "commit": "76aa262",
   "source": "renders/components/haut_profil/haut_profil-03-schnitt-paneel-kappe.png"
+ },
+ {
+  "file": "20261030-123032_werkstatt_nft-tisch_radialbudget-02-querschnitt.png",
+  "sha": "d254f009e3ccefa7",
+  "time": "2026-10-30 12:30:32",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "Tische nach innen, ap_c aussen 4874",
+  "commit": "ce5d61e",
+  "source": "renders/components/nft_passung/radialbudget-02-querschnitt.png"
+ },
+ {
+  "file": "20261030-123033_werkstatt_nft-tisch_radialbudget-01-draufsicht.png",
+  "sha": "3e37bbaa5b1000f7",
+  "time": "2026-10-30 12:30:33",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "Tische nach innen, ap_c aussen 4874",
+  "commit": "ce5d61e",
+  "source": "renders/components/nft_passung/radialbudget-01-draufsicht.png"
  }
 ]

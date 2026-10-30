@@ -35,10 +35,19 @@ for t, G in Gs.items():
     legs = "; ".join(f"x {fmt(x)} / y {fmt(y)}" for (x, y) in G["legs"])
     ports.append([f"{t}: Fussplatten-Anker", f"M8, 2 Schrauben je Platte ({fp} x {fp} x 5), Loch D9, Diagonalversatz +-{fp / 2 - 15:g}", f"Fusspunkte z 5 an: {legs}", "Befestigung auf dem Boden/Betonpunkt, Richtung -Z"])
 bl["ports"] = ports
-FIND = "Pruefer W17/W18 (behoben, Rest M7): Laufweg A am Innenpfosten war 486 mm (< 500): leg_clearance_innen 30 -> Plattenaussenkante 2195, Laufweg A frei 500 mm (D29: nie unter 500, Ziel 600 mit Innenportal); gilt fuer das zentrierte Becken des Budgets; mit dem OBJ-Becken (cx -36, cy 20, exzentrisch) beruehrt die Platte den Beckenrand (-11 mm): M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen (inner_bed_shift 66 -> 26)"
-bl["offen"] = [x for x in bl["offen"] if not x.startswith("Pruefer W17/W18")] + [FIND]
+FIND = "Laufweg A am Innenpfosten (Pruefer W17/W18, behoben): leg_clearance_innen 30 -> Plattenaussenkante 2195, Laufweg A frei 500,5 mm (D29: nie unter 500; Ziel 600 gilt am Beckenrand); das Becken ist nach D35 zentriert (cx = cy = 0), Plattenkante 31 mm vom Beckenrand; Rand-Reserve am Pfosten 0,5 mm"
+bl["offen"] = [x for x in bl["offen"] if not x.startswith(("Pruefer W17/W18", "Laufweg A am Innenpfosten"))] + [FIND]
 rows = d["herkunft_tabelle"]
+d["parameter"]["leg_clearance_innen"]["herkunft"] = "[A] W17-Nachtrag: Abstand Fussplattenkante der Innen-Pfosten zum Beckenrand 30 mm (sonst 45): Plattenaussenkante bei Beckenrand 2095 + 30 + 70 = 2195, Laufweg A frei am Pfosten 500,5 mm gegen Innenportal 2695,5 (D29 nie unter 500); Becken zentriert (D35), Plattenkante 31 mm vom Beckenrand"
 for r in rows:
+    if r[0].startswith("Zickzack Versatz pitch/2") or r[0].startswith("Lochraster je Reihe mit Phase 0"):
+        r[2], r[4] = "Ben (D35)", "mittel"
+        if "Staffel" not in r[3]:
+            r[3] += "; ref-6 zeigt evtl. Staffel (ca. pitch/3), Bens Definition gilt (D35, review-protocol)"
+    if r[1] == "Phase 0 / 125":
+        r[1] = f"Phase 0 / {pt / 2:g}"
+    if r[0].startswith("Rinnenzahl 2 / 4 / 3"):
+        r[3] = r[3].replace("Anzahl nach Beetbreite 933-993", "Anzahl nach Beetbreite (aussen 800, innen 933)")
     if r[0].startswith("Lochraster je Reihe mit Phase 0"):
         r[0] = f"Lochraster je Reihe mit Phase 0 / pitch/2, n <= floor(L/{pt:g}) nach hole_plan"
         r[3] = r[3].replace("Loecher >= 46 mm vom Rinnenende", "Loecher >= 64 mm vom Rinnenende (Kragen 32 + Rippe 20 + Luft, W18)")
@@ -53,7 +62,21 @@ for r in d["herkunft_tabelle"]:
         r[3] = f"D32 (Ben 29.10.): Iowa State 8 Zoll = 203 mm, HortTechnology 15 cm (R16); ref-6 zeigt Raster ohne Mass (ca. 2 Topfbreiten); Blattsalat NFT 150-250 mm (FarmHub 2.4)"
     if r[1] == "+-62,5 mm":
         r[1] = f"+-{pt / 4:g} mm"
+_rep = (("Laenge 1304 / 1983 / 3232 (Rinnen gesamt 68: 20 + 24 + 24)", "Laenge je Tischreihe 758-3051 (neun Reihenvarianten nft_rinne_<typ>_r<k>.sc; die Master-Konfigurationen 1304 / 1983 / 3232 sind nur Vorlage) (Rinnen gesamt 68: 20 + 24 + 24)"),
+        ("Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)", "Eckengehrung am Zehneck-Ring: im Tisch durch die Reihenlaengen (Zehneck-Seite - 2 x corner_gap - Ueberstaende) geloest (D18, W16); Master-Laenge 1304 gilt nicht mehr"),
+        ("Rinnen je Tisch 2 / 4 / 2-3", "Rinnen je Tisch 2 / 4 / 3 (aussen 3: Annahme, OBJ 2)"),
+        ("Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 2-3 (docs/components.md)", "Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 3 (OBJ 2, Annahme 3; docs/components.md)"),
+        ("Gefaelle 1 cm/m", "Gefaelle 1,5 % (Tisch)"),
+        ("FarmHub 2.4 (1 cm/m) bis Greenhouse Mgmt 1,2-3 %; Quellen widersprechen sich; im Tisch gebaut", "FarmHub 2.4 (1 cm/m) bis Greenhouse Mgmt 1,2-3 %; Quellen widersprechen sich; im Tisch 1,5 % gebaut (R06)"),
+        ("passt auf Zehneck-Seite (components.md)", "OBJ-Beispiel je Ring; die Tische verkuerzen je Reihe auf die Zehneck-Seite (D18, nft_tisch.md)"))
 note = "Zustaendigkeit Lochzahl: die Rinne liefert das Raster (pitch, Phase); die Lochzahl je Tischreihe bestimmt der Tisch (tisch_geom.hole_plan: n <= floor(L/pitch), Phasenzwang, Randabstand 64), daher weniger als floor(L/pitch) (Mitte 9/8/7/6 statt 9/9/8/7)"
+_txt = json.dumps(d, ensure_ascii=False)
+for _a, _b in _rep:
+    _txt = _txt.replace(_a, _b)
+d = json.loads(_txt)
+for _r in d["herkunft_tabelle"]:
+    if _r[0].startswith("Laenge 1304 / 1983 / 3232"):
+        _r[0], _r[4] = "Laenge Master 1304 / 1983 / 3232 (OBJ-Beispiel), Tischreihen 758-3051", "mittel"
 if not any(x.startswith("Zustaendigkeit Lochzahl") for x in d["blatt"]["offen"]):
     d["blatt"]["offen"].append(note)
 json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)

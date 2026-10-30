@@ -24,7 +24,7 @@ def rinne_pitch():
 
 def hole_plan(L, phi, pitch=None, margin=64.0):
     """Lochzahl und Versatz (shift) einer Rinne der Laenge L so, dass das Lochraster (relativ zur Rinnenmitte) die Phase phi mod pitch hat:
-    Loch i bei x = shift + (i - (n-1)/2) x pitch. Zickzack: benachbarte Reihen haben phi 0 und pitch/2. Alle Loecher bleiben >= margin (Rippe 20 + Lochradius 26) vom Rinnenende."""
+    Loch i bei x = shift + (i - (n-1)/2) x pitch. Zickzack: benachbarte Reihen haben phi 0 und pitch/2. Alle Loecher bleiben >= margin (64: Kragen 32 + Rippe 20 + Luft, W18) vom Rinnenende."""
     pitch = pitch or rinne_pitch()
     best = None
     for n in range(int(L // pitch), 0, -1):

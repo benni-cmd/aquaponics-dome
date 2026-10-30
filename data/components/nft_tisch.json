@@ -10,7 +10,7 @@
    "rinne": "l",
    "z_rinne_mitte": 1300,
    "laenge": "3051 / 2864 / 2676 (je Reihe)",
-   "herkunft": "layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 5209 mm ([E])",
+   "herkunft": "layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 4973 mm (D30/D37: Beetmitte)",
    "ap_c": 4973,
    "ap_c_herkunft": "W17/D30: Tischmitte = Aussenbeet-Mitte 4973 (Aussenportal 4458..5488, Beet 800 + 2 x 115); vorher 5209 (OBJ-Mittel)"
   },
@@ -20,7 +20,7 @@
    "rinne": "m",
    "z_rinne_mitte": 1300,
    "laenge": "2018 / 1847 / 1676 / 1505 (je Reihe)",
-   "herkunft": "layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 3343 mm ([E])",
+   "herkunft": "layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 3277 mm (D30/D37: Beetmitte)",
    "ap_c": 3277,
    "ap_c_herkunft": "W17/D30: Tischmitte = Innenbeet-Mitte 3277 (Innenportal 2695..3858, Beet 933 + 2 x 115); vorher 3343 (OBJ-Mittel)"
   },
@@ -30,7 +30,7 @@
    "rinne": "k",
    "z_rinne_mitte": 840,
    "laenge": "928 / 758 (je Reihe)",
-   "herkunft": "layout.json hydro_tables r 1733/1995, Rinnen-Unterkante Z 819-858 (Mittel 838,5, gerundet 840 = +1,5 mm), Abstand 262 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 1864 mm ([E])",
+   "herkunft": "layout.json hydro_tables r 1733/1995, Rinnen-Unterkante Z 819-858 (Mittel 838,5, gerundet 840 = +1,5 mm), Abstand 262 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 1864 mm (D30/D37: Beetmitte)",
    "ap_c": 1864,
    "ap_c_herkunft": "[E] Mittel der OBJ-Reihen ap 1733/1995 (layout.json hydro_tables); Pool Wasserradius 1945"
   }
@@ -144,7 +144,7 @@
   "leg_clearance_innen": {
    "wert": 30,
    "einheit": "mm",
-   "herkunft": "[A] W17-Nachtrag (Pruefer W17/W18, Laufweg A): Abstand Fussplattenkante der Innen-Pfosten zum Beckenrand 30 mm (sonst 45): Plattenaussenkante bei Beckenrand + 30 + 70 = 2195, Laufweg A frei am Pfosten 500 mm gegen Innenportal 2695,5 (D29 nie unter 500); gilt fuer ein zentriertes Becken (Budget D28/D29); beim OBJ-Becken (cx -36, cy 20, 41 mm exzentrisch) wuerde die Platte den Beckenrand beruehren: M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen"
+   "herkunft": "[A] W17-Nachtrag: Abstand Fussplattenkante der Innen-Pfosten zum Beckenrand 30 mm (sonst 45): Plattenaussenkante bei Beckenrand 2095 + 30 + 70 = 2195, Laufweg A frei am Pfosten 500,5 mm gegen Innenportal 2695,5 (D29 nie unter 500); Becken zentriert (D35), Plattenkante 31 mm vom Beckenrand"
   }
  },
  "werkstoff": {
@@ -277,7 +277,7 @@
   "pruefung": [
    "Bild-Kritiker (Ecke Draufsicht/Iso, Querschnitt Bock + Beet, Innen/Aussen) und Spec-Pruefer: Runden siehe docs/workshop-log.md (W16)",
    "scripts/workshop/check_nft_tisch.py (196/196 PASS, Ergebnis renders/components/nft_tisch_innen/check.txt): Rinnenzahl, Abstand, Laenge je Reihe, Lochlage (pitch 200), Zickzack pitch/2, Gefaelle, Hoehe, Auflage, Boecke, Beinlage, Verteiler/Sammelrohr an der Sektorgrenze; Winkelhalter (Zahl, Lage, Masse, inspect.interference ohne Treffer)",
-   "scripts/workshop/check_nft_fit.py (42/42 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt): reine Geometrie fuer alle 24 Tische mit den verschobenen OBJ-Beeten (Aussen 800 x 2640): Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite (rechnerisch, weil L aus dieser Gleichung folgt), Footprint-Abstand benachbarter Tische >= corner_gap (gemessen 95-114), Beine >= 30 mm ausserhalb jedes Beet-Rechtecks, Innenpfosten-Platten >= 5 mm vom (zentrierten) Beckenrand, NFT-Topfloecher >= 459 und >= 580 (586), Laufwege A/B >= 500 und Wandluft >= 100, Laufweg A frei am Innenpfosten 500 (aus den Budget-Parametern gerechnet; mit dem exzentrischen OBJ-Becken waere die Plattenkante -11 mm: Hinweis im Check, M7)"
+   "scripts/workshop/check_nft_fit.py (44/45 PASS, Ergebnis renders/components/nft_tisch_innen/check_fit.txt, Stand D37: Beete exakt auf der Sektorachse, Becken zentriert): Rinne + Ueberstaende + 2 x corner_gap <= Zehneck-Seite (rechnerisch, folgt aus der Formel), Footprint-Abstand benachbarter Tische >= 112 (nominal 2 x 60 x cos 18 = 114, gemessen 114), Beine >= 40 mm ausserhalb jedes Beet-Rechtecks (Soll 45, gemessen 45), Innenpfosten-Platten >= 5 mm vom Beckenrand (31), NFT-Topfloecher >= 459 und >= 580 (586), Laufwege A/B >= 500 und Wandluft >= 100, Laufweg A frei am Innenpfosten 500. 1 FAIL (W23 Befund 2, offen): Abstand der Tischkanten zur Kuppelhaut aussen -87 mm (Rinnenenden der aeussersten Reihe, Sektor 6) gegen >= 15; mitte/innen PASS"
   ],
   "offen": [
    "Statik der Portal-/Auslegerboecke nicht nachgewiesen (Querholm 40x60x3 ueber ca. 1,2 m: Biegung 50 kg mittig ca. 150 Nm, ca. 15 N/mm2 [E]; Kragarm innen ca. 165 Nm am Pfosten, Fussplatte/Verbundanker nachzurechnen)",
@@ -289,8 +289,9 @@
    "W17/W18: corner_gap von 100 auf 60 mm gesenkt (Annahme A, W17); mit Lochabstand 200 (W18/D32) ergibt das 586 Topfloecher (Mindestzahl 459, Soll ca. 580); mit corner_gap 100 waeren es nur 542",
    "W17: Portalrand = Beet-Aussenkante + 115 mm (Fussplatte 70, leg_clearance 45, Innenpfosten 30); Laufwege nach check_nft_fit: A (Beckenrand-Innenportal) 600 mm, B (Innen-Aussenportal) 600 mm, Wandluft 218 mm; Aussenkante Tisch in 1,3 m Hoehe gegen Strebenabstand: Montage rechnet nach (D29)",
    "W17: aussen 3 Rinnen (OBJ 2) bleibt Annahme; Reihen auf ap 4685, 4973, 5261 (Mitte 4973 +- 288)",
-   "W17: Tischmitte folgt den Beeten nach Verschiebung (outer_bed_shift 236 / inner_bed_shift 66, M7); die OBJ-Beete liegen einzeln bis ca. 70 mm daneben, daher Beine-Beet-Abstand im Check ab 30 mm",
-   "Pruefer W17/W18 (behoben, Rest M7): Laufweg A am Innenpfosten war 486 mm (< 500): leg_clearance_innen 30 -> Plattenaussenkante 2195, Laufweg A frei 500 mm (D29: nie unter 500, Ziel 600 mit Innenportal); gilt fuer das zentrierte Becken des Budgets; mit dem OBJ-Becken (cx -36, cy 20, exzentrisch) beruehrt die Platte den Beckenrand (-11 mm): M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen (inner_bed_shift 66 -> 26)"
+   "D37 (30.10.): alle 14 Beete liegen exakt auf der Sektorachse (Apothem = ap_c), Tischmitte = Beetmitte; Beine-Beet-Abstand im Check ab 40 mm (nominal 45)",
+   "W23-Befund 2 (offen, Montage/Orchestrator): die Tischkanten des Aussentischs liegen NICHT innerhalb der Kuppelhaut: Rinnenenden der aeussersten Reihe bis -87 mm ausserhalb der Feldebenen (Sektor 6, x -1650, Hoehe Rinnenoberkante, Strebenrohr 30 -> Soll >= 15), Holm-Aussenseite in den BBB-Sektoren +-0; check_nft_fit meldet FAIL; Abhilfe braucht eine Entscheidung (Aussenportal ca. 100 mm nach innen: Laufweg B ca. 500 statt 600, oder aeusserste Reihe kuerzen), D29-Rueckfall (40 mm) reicht nicht",
+   "Laufweg A am Innenpfosten (Pruefer W17/W18, behoben): leg_clearance_innen 30 -> Plattenaussenkante 2195, Laufweg A frei 500,5 mm (D29: nie unter 500; Ziel 600 gilt am Beckenrand); das Becken ist nach D35 zentriert (cx = cy = 0), Plattenkante 31 mm vom Beckenrand; Rand-Reserve am Pfosten 0,5 mm"
   ]
  },
  "herkunft_tabelle": [
@@ -352,9 +353,9 @@
   ],
   [
    "Lochraster je Reihe mit Phase 0 / pitch/2, n <= floor(L/200) nach hole_plan",
-   "Phase 0 / 125",
-   "Bild + E",
-   "ref-6 Zickzack; Versatz je Reihe aus hole_plan() (tisch_geom.py), Loecher >= 64 mm vom Rinnenende (Kragen 32 + Rippe 20 + Luft, W18)",
+   "Phase 0 / 100",
+   "Ben (D35)",
+   "ref-6 Zickzack; Versatz je Reihe aus hole_plan() (tisch_geom.py), Loecher >= 64 mm vom Rinnenende (Kragen 32 + Rippe 20 + Luft, W18); ref-6 zeigt evtl. Staffel (ca. pitch/3), Bens Definition gilt (D35, review-protocol)",
    "mittel"
   ],
   [
@@ -375,7 +376,7 @@
    "Rinnenzahl 2 / 4 / 3",
    "2/4/3",
    "OBJ + Ben + A",
-   "layout.json hydro_tables (2 innen, 4 Mitte, 2 aussen im OBJ/Bild); aussen 3: Ben (Bild/OBJ zeigen nur 2, oasis-obj-analysis) + A Anzahl nach Beetbreite 933-993",
+   "layout.json hydro_tables (2 innen, 4 Mitte, 2 aussen im OBJ/Bild); aussen 3: Ben (Bild/OBJ zeigen nur 2, oasis-obj-analysis) + A Anzahl nach Beetbreite (aussen 800, innen 933)",
    "mittel"
   ],
   [
@@ -395,9 +396,9 @@
   [
    "Zickzack Versatz pitch/2 = 100",
    "100 mm",
-   "Bild",
-   "ref-6 mittlerer Tisch (zwei versetzte Reihen zwischen Nachbarrinnen); Scope-Card nft_tisch",
-   "hoch"
+   "Ben (D35)",
+   "ref-6 mittlerer Tisch (zwei versetzte Reihen zwischen Nachbarrinnen); Scope-Card nft_tisch; ref-6 zeigt evtl. Staffel (ca. pitch/3), Bens Definition gilt (D35, review-protocol)",
+   "mittel"
   ],
   [
    "Gefaelle 1,5 % (0,86 Grad)",
@@ -554,39 +555,11 @@
    "mittel"
   ],
   [
-   "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",
-   "mm",
-   "E + A",
-   "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
-   "mittel"
-  ],
-  [
-   "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",
-   "mm",
-   "E + A",
-   "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
-   "mittel"
-  ],
-  [
-   "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",
-   "mm",
-   "E + A",
-   "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
-   "mittel"
-  ],
-  [
    "leg_clearance_innen 30 mm zwischen Beckenrand und Fussplattenkante der Innen-Pfosten",
    "30 mm",
    "A",
    "W17-Nachtrag: Laufweg A frei am Pfosten 500 mm (Plattenaussenkante 2195 gegen Innenportal 2696); sonst leg_clearance 45; gilt fuer zentriertes Becken (Budget D28/D29)",
    "niedrig"
-  ],
-  [
-   "Tischmitte = Beetmitte: ap_c aussen 4973, Mitte 3277, innen 1864",
-   "mm",
-   "E + A",
-   "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343",
-   "mittel"
   ]
  ],
  "revision": "B"

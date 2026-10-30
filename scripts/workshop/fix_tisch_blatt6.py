@@ -56,7 +56,8 @@ bl["offen"] = [x for x in bl["offen"] if not x.startswith(("Rinnenlaenge je Reih
     f"W17/W18: corner_gap von 100 auf {P['corner_gap']:.0f} mm gesenkt (Annahme A, W17); mit Lochabstand {PITCH:.0f} (W18/D32) ergibt das {total} Topfloecher (Mindestzahl 459, Soll ca. 580); mit corner_gap 100 waeren es nur {total100}",
     f"W17: Portalrand = Beet-Aussenkante + {P['leg_clearance'] + P['foot_plate']:.0f} mm (Fussplatte {fp}, leg_clearance {P['leg_clearance']:.0f}, Innenpfosten {P['leg_clearance_innen']:.0f}); Laufwege nach check_nft_fit: A (Beckenrand-Innenportal) {A:.0f} mm, B (Innen-Aussenportal) {B:.0f} mm, Wandluft {C:.0f} mm; Aussenkante Tisch in 1,3 m Hoehe gegen Strebenabstand: Montage rechnet nach (D29)",
     "W17: aussen 3 Rinnen (OBJ 2) bleibt Annahme; Reihen auf ap " + ", ".join(fmt(r["ap"]) for r in Ga["rows"][::-1]) + f" (Mitte {Ga['apc']:.0f} +- {Ga['rp']:.0f})",
-    "W17: Tischmitte folgt den Beeten nach Verschiebung (outer_bed_shift 236 / inner_bed_shift 66, M7); die OBJ-Beete liegen einzeln bis ca. 70 mm daneben, daher Beine-Beet-Abstand im Check ab 30 mm"]
+    "D37 (30.10.): alle 14 Beete liegen exakt auf der Sektorachse (Apothem = ap_c), Tischmitte = Beetmitte; Beine-Beet-Abstand im Check ab 40 mm (nominal 45)",
+    "W23-Befund 2 (offen, Montage/Orchestrator): die Tischkanten des Aussentischs liegen NICHT innerhalb der Kuppelhaut: Rinnenenden der aeussersten Reihe bis -87 mm ausserhalb der Feldebenen (Sektor 6, x -1650, Hoehe Rinnenoberkante, Strebenrohr 30 -> Soll >= 15), Holm-Aussenseite in den BBB-Sektoren +-0; check_nft_fit meldet FAIL; Abhilfe braucht eine Entscheidung (Aussenportal ca. 100 mm nach innen: Laufweg B ca. 500 statt 600, oder aeusserste Reihe kuerzen), D29-Rueckfall (40 mm) reicht nicht"]
 rows = d["herkunft_tabelle"]
 def setrow(prefix, new):
     for i, r in enumerate(rows):
@@ -65,7 +66,7 @@ def setrow(prefix, new):
             return
     rows.append(new)
 setrow("Rinnenlaenge je Reihe", [f"Rinnenlaenge je Reihe {'/'.join(str(r['L']) for r in Gs['innen']['rows'][::-1])} (innen), {Gm['rows'][-1]['L']}-{Gm['rows'][0]['L']} (Mitte), {Ga['rows'][-1]['L']}-{Ga['rows'][0]['L']} (aussen)", "je Reihe", "E", f"Zehneck-Seite 2 x ap x tan 18 Grad (ap aus ap_c +- Reihenabstand) - 2 x corner_gap {P['corner_gap']:.0f} - Ueberstaende 169/79; D18 + W17", "mittel"])
-setrow("Tischmitte auf der Beetmitte", [f"Tischmitte = Beetmitte: ap_c aussen {Ga['apc']:.0f}, Mitte {Gm['apc']:.0f}, innen {Gs['innen']['apc']:.0f}", "mm", "E + A", "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343", "mittel"])
+setrow("Tischmitte = Beetmitte", [f"Tischmitte = Beetmitte: ap_c aussen {Ga['apc']:.0f}, Mitte {Gm['apc']:.0f}, innen {Gs['innen']['apc']:.0f}", "mm", "E + A", "Radialbudget D28/D29/D30 (Aussenportal 4458..5488, Innenportal 2695..3858); innen Mittel der OBJ-Reihen; vorher 5209 / 3343", "mittel"])
 setrow("Fussplatten", [f"Fussplatten {fp}x{fp}x5, M8", f"{fp}x{fp}x5", "A", f"Kippmoment der Ausleger; Portalrand = 115 mm ausserhalb des Beets (Radialbudget D29), Plattenkante-Abstand {P['leg_clearance']:.0f} mm zum Beet", "niedrig"])
 setrow("corner_gap", [f"corner_gap {P['corner_gap']:.0f} mm je Seite der Sektorgrenze", f"{P['corner_gap']:.0f} mm", "A", f"W17: vorher 100 (D18); {P['corner_gap']:.0f} gewaehlt fuer die NFT-Mindestzahl 459 (R15, W17) und das Soll ca. 580 (W18/D32); Abstand zwischen zwei Tischen ca. 95-114 mm (check_nft_fit)", "niedrig"])
 setrow("leg_clearance", [f"leg_clearance {P['leg_clearance']:.0f} mm zwischen Beet-Aussenbreite und Fussplattenkante", f"{P['leg_clearance']:.0f} mm", "A", "W17/D29: Portalrand 115 mm (45 + Fussplatte 70); vorher 60 (D18); Beet-Aussenbreite aus ibc_beet.json (aussen 800)", "niedrig"])
@@ -79,5 +80,13 @@ setrow("Beine ausserhalb der Beet-Aussenbreite", [f"Beine ausserhalb der Beet-Au
 setrow("Laufwege", [f"Laufwege radial: A {A:.0f}, B {B:.0f}, Wandluft {C:.0f}", "mm", "Ben + E", "D29: Laufweg A/B >= 600, nie unter 500; Rechnung check_nft_fit (Portalrand = Beet-Halbbreite + 115); Wand-Apothem 5706", "mittel"])
 setrow("NFT-Topfloecher gesamt", [f"NFT-Topfloecher gesamt {total} (Mindestzahl 459, Soll ca. 580)", str(total), "OBJ + R15 + E", f"R15/D27: NFT >= 459; D32: Lochabstand {PITCH:.0f}; Summe 10 x innen + 6 x Mitte + 8 x aussen aus hole_plan (Randabstand 64)", "mittel"])
 bl["pruefung"] = [x for x in bl["pruefung"] if "check_nft_fit.py" not in x and "check_nft_tisch.py" not in x] + sys.argv[1:3]
+import re
+for _t, _v in d["typen"].items():
+    _v["herkunft"] = re.sub(r"Tischmitte ap_c \d+ mm \(\[E\]\)", f"Tischmitte ap_c {Gs[_t]['apc']:.0f} mm (D30/D37: Beetmitte)", _v["herkunft"])
+_seen, _rows = set(), []
+for _r in d["herkunft_tabelle"]:                              # Dedupe: Fix-Skripte haengen nicht immer idempotent an
+    if _r[0] not in _seen:
+        _seen.add(_r[0]); _rows.append(_r)
+d["herkunft_tabelle"] = _rows
 json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(f"nft_tisch.json gepflegt: Summe {total}, Laufweg A {A:.0f}, B {B:.0f}, Wandluft {C:.0f}")

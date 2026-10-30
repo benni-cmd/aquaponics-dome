@@ -4,7 +4,7 @@
 
 **Datei:** `designs/components/nft_rinne.sc` · **Teilenummer:** T20 · **Revision:** A · **Bezugspunkt:** Mitte der Rinnenlaenge, Mitte Breite, Rinnenboden Z=0; Zulaufende bei -X, Ablaufende bei +X; Rinne selbst gerade (Neigung/Gefaelle ist Sache des Tisches)
 
-**Anzahl (Instanzen):** Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 2-3 (docs/components.md) (Quelle: data/layout.json hydro_tables)
+**Anzahl (Instanzen):** Tisch innen 10 x 2, Mitte 6 x 4, aussen 8 x 3 (OBJ 2, Annahme 3; docs/components.md) (Quelle: data/layout.json hydro_tables)
 
 ## Masse und Parameter
 
@@ -73,7 +73,7 @@ Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf 
 |---|---|---|---|---|
 | Profil Breite 130 | 130 mm | OBJ | layout.json hydro_tables (Breite 129/130) | hoch |
 | Profil Hoehe 100 (inkl. Rippen) | 100 mm | OBJ | layout.json hydro_tables (Hoehe 102/103, gerundet auf Normmass) | mittel |
-| Laenge 1304 / 1983 / 3232 | 3 Varianten | OBJ | layout.json hydro_tables (Laenge je Ring); passt auf Zehneck-Seite (components.md) | hoch |
+| Laenge Master 1304 / 1983 / 3232 (OBJ-Beispiel), Tischreihen 758-3051 | 3 Varianten | OBJ | layout.json hydro_tables (Laenge je Ring); OBJ-Beispiel je Ring; die Tische verkuerzen je Reihe auf die Zehneck-Seite (D18, nft_tisch.md) | mittel |
 | Wandstaerke 2,5 mm | 2,5 mm | A | OBJ hat Plattenkoerper ohne Wand; Extrusionsprofil PVC-U 2-3 mm typisch | niedrig |
 | geschlossenes Rechteckprofil (Hohlkammer) | - | Bild + A | ref-6: Rinnen wirken als weisse geschlossene Platten mit Loechern; Hohlkammer aus NFT-Praxis (FarmHub 2.4) | mittel |
 | vier Rippen 5 x 5 mm auf der Oberseite | y +-38, +-52 | Bild + A | ref-6 mittlerer Tisch: laengs verlaufende Ruecken auf der Oberseite; Mass geschaetzt | niedrig |
@@ -83,12 +83,12 @@ Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf 
 | Endkappen mit Stopfen 14 mm, Spiel 0,5 | - | A | Konstruktionspraxis fuer Steckkappen; ref-6 zeigt Kappen am Tischende nur angedeutet | niedrig |
 | Zulauf-Tuelle D16 (Wand 3), z 70 | 16 mm | Bild + A | ref-6: hellblaue Schlaeuche am Tischende, ein Schlauch je Rinne; 16-mm-PE-Rohr ist Standard der Tropfbewaesserung | mittel |
 | Ablaufstutzen DN32, z 20, mittig unten | 32 mm | A | Scope-Card: Ablauf mittig unten; DN32 Standard-PVC-Klebemuffe; Hoehe so, dass 3,5 mm Restfilm bleiben | niedrig |
-| Gefaelle 1 cm/m | 1 % | R / hydraulics.md | FarmHub 2.4 (1 cm/m) bis Greenhouse Mgmt 1,2-3 %; Quellen widersprechen sich; im Tisch gebaut | mittel |
+| Gefaelle 1,5 % (Tisch) | 1 % | R / hydraulics.md | FarmHub 2.4 (1 cm/m) bis Greenhouse Mgmt 1,2-3 %; Quellen widersprechen sich; im Tisch 1,5 % gebaut (R06) | mittel |
 | Werkstoff PVC-U weiss | 1,4 g/cm3 | Bild + A | ref-6 weisse Oberflaeche; Werkstoff ungeprueft | niedrig |
 | Lochphase A/B (shift +-pitch/4) | +-50 mm | E | Scope-Card nft_tisch: Versatz benachbarter Rinnen pitch/2; die Rinne stellt beide Phasen bereit | mittel |
 | Rippen enden 20 mm vor Kappe (rib_end) | 20 mm | A | Kritiker Runde 1 (Rippenenden auslaufen lassen), Konstruktionspraxis | niedrig |
 | Tuelle Laenge 25 mm, Ablaufstutzen 30 mm | 25 / 30 | A | Aufsteckbarkeit Schlauch/Muffe; ref-6 zeigt Laenge nicht | niedrig |
-| Rinnen je Tisch 2 / 4 / 2-3 | - | OBJ + A | layout.json hydro_tables (2/4/2), components.md: aussen 3 nach Beetbreite 933-993 [A] | mittel |
+| Rinnen je Tisch 2 / 4 / 3 (aussen 3: Annahme, OBJ 2) | - | OBJ + A | layout.json hydro_tables (2/4/2), components.md: aussen 3 nach Beetbreite 933-993 [A] | mittel |
 | Anzahl Rinnen gesamt 68 | 68 | E | 10 x 2 + 6 x 4 + 8 x 3 (innen/mitte/aussen) | mittel |
 
 ## Referenz und Abweichung zum OBJ
@@ -108,7 +108,7 @@ Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf 
 
 ## Stueckliste-Zeile
 
-- T20a Rinnenprofil 130x95x2,5 + 4 Rippen 5x5, PVC-U weiss: 1 je Rinne, Laenge 1304 / 1983 / 3232 (Rinnen gesamt 68: 20 + 24 + 24)
+- T20a Rinnenprofil 130x95x2,5 + 4 Rippen 5x5, PVC-U weiss: 1 je Rinne, Laenge je Tischreihe 758-3051 (neun Reihenvarianten nft_rinne_<typ>_r<k>.sc; die Master-Konfigurationen 1304 / 1983 / 3232 sind nur Vorlage) (Rinnen gesamt 68: 20 + 24 + 24)
 - T20b Endkappe Zulauf mit Tuelle D16: 1 je Rinne (68)
 - T20c Endkappe Ablauf mit Stutzen d32: 1 je Rinne (68)
 - PVC-U-Kleber DIN EN 14814: ca. 20 g je Kappe, 1 Kartusche je ca. 20 Rinnen [A]
@@ -138,7 +138,7 @@ Statt Spezialprofil: PVC-Rechteckrohr/Kabelkanal-aehnliche Profile oder PP-Rinne
 
 - Rippenprofil (vier Rippen 5x5) und Wandstaerke sind Annahmen [A]
 - Lochabstand 200 (D32, Ben 29.10.) gestuetzt auf Iowa State 8 Zoll = 203 mm und HortTechnology 15 cm (R16); einstellbar 150..250; ref-6 gibt kein Mass
-- Rinne 1304 mm innen: Eckengehrung am Zehneck-Ring klaeren (docs/components.md)
+- Eckengehrung am Zehneck-Ring: im Tisch durch die Reihenlaengen (Zehneck-Seite - 2 x corner_gap - Ueberstaende) geloest (D18, W16); Master-Laenge 1304 gilt nicht mehr
 - Klebefuge der Endkappen nicht als Koerper modelliert
 - Zickzack = Versatz benachbarter Rinnen im Tisch; die Rinne liefert nur die Lochphase A/B (Konfiguration shift +-pitch/4, Dateien nft_rinne_<l|m|k>_<a|b>.sc) - Scope-Card nft_rinne vom Orchestrator zu ergaenzen
 - Anzahl Rinnen je Aussentisch: layout.json 2, components.md 3 -> 3 als Annahme A (Beetbreite 933-993)

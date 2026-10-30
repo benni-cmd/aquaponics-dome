@@ -1,0 +1,320 @@
+{
+ "klasse": "puffer_ibc",
+ "teilenummer": "T80",
+ "revision": "A",
+ "beschreibung": "Puffertank 1000 l: Standard-IBC (Palette 150, Stahlgitterkaefig, PE-Blase, Deckel/Einfuelloeffnung DN150, Ablaufhahn DN50 unten) mit DN50-Anschluessen fuer Zulauf, Ueberlauf, Belueftung und Sensor; zwei Stueck bilden die Puffer-Station (T81)",
+ "quelle_masse": "docs/jobs/W28-puffer-ibc.md und D46 (Ben 31.10.): IBC 1200 x 1000 x 1165; Wandstaerken und Kaefig Annahme A nach Handelsmassen",
+ "parameter": {
+  "ibc_l": {
+   "wert": 1200,
+   "einheit": "mm",
+   "herkunft": "[E] Handelsmass Standard-IBC 1000 l: 1200 x 1000 x 1165 (Schuetz/Mauser-Datenblaetter, Messmass nicht recherchiert)"
+  },
+  "ibc_w": {
+   "wert": 1000,
+   "einheit": "mm",
+   "herkunft": "[E] Handelsmass IBC"
+  },
+  "ibc_h": {
+   "wert": 1165,
+   "einheit": "mm",
+   "herkunft": "[E] Handelsmass IBC (Oberkante Deckel)"
+  },
+  "pal_h": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[E] Palette 150 mm laut Jobblatt W28"
+  },
+  "deck_t": {
+   "wert": 22,
+   "einheit": "mm",
+   "herkunft": "[A] Deckplatte der Kunststoffpalette"
+  },
+  "runner_w": {
+   "wert": 160,
+   "einheit": "mm",
+   "herkunft": "[A] Kufenbreite der Palette (3 Kufen laengs)"
+  },
+  "rail": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Kaefigrahmen Rechteckrohr 25 x 25 x 1,5 (verzinkt)"
+  },
+  "rail_wall": {
+   "wert": 1.5,
+   "einheit": "mm",
+   "herkunft": "[A] Wand Kaefigrohr"
+  },
+  "rod_d": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A] Gitterstab Durchmesser 8 (Kaefig)"
+  },
+  "rod_pitch_v": {
+   "wert": 200,
+   "einheit": "mm",
+   "herkunft": "[A] Teilung der senkrechten Staebe"
+  },
+  "rod_pitch_h": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Teilung der waagerechten Staebe"
+  },
+  "rod_z0": {
+   "wert": 300,
+   "einheit": "mm",
+   "herkunft": "[A] unterster waagerechter Stab (laesst den Ablaufhahn frei)"
+  },
+  "blase_l": {
+   "wert": 1140,
+   "einheit": "mm",
+   "herkunft": "[A] Blase 1140 x 940 innerhalb des Kaefigs (Spiel 5 mm zu den Pfosten)"
+  },
+  "blase_w": {
+   "wert": 940,
+   "einheit": "mm",
+   "herkunft": "[A] Blasenbreite"
+  },
+  "blase_h": {
+   "wert": 995,
+   "einheit": "mm",
+   "herkunft": "[A] Blasenhoehe, von der Palette (z 150) bis 1145"
+  },
+  "blase_wall": {
+   "wert": 2.5,
+   "einheit": "mm",
+   "herkunft": "[A] Wand PE-Blase (real 1,5-3)"
+  },
+  "blase_r": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[A] Eckenradius der Blase"
+  },
+  "neck_od": {
+   "wert": 225,
+   "einheit": "mm",
+   "herkunft": "[E] Einfuelloeffnung DN150 mit Gewindehals ca. D225"
+  },
+  "neck_id": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[E] Einfuelloeffnung DN150"
+  },
+  "neck_h": {
+   "wert": 15,
+   "einheit": "mm",
+   "herkunft": "[A] Halshoehe ueber der Blase"
+  },
+  "neck_x": {
+   "wert": -200,
+   "einheit": "mm",
+   "herkunft": "[A] Lage des Halses (x), y = 0"
+  },
+  "lid_d": {
+   "wert": 235,
+   "einheit": "mm",
+   "herkunft": "[A] Schraubdeckel"
+  },
+  "lid_t": {
+   "wert": 5,
+   "einheit": "mm",
+   "herkunft": "[A] Deckelstaerke (Oberkante z 1165)"
+  },
+  "stub_od": {
+   "wert": 63,
+   "einheit": "mm",
+   "herkunft": "[E] PVC-U d63 = DN50 (Rohrnetz leitungsteile)"
+  },
+  "stub_id": {
+   "wert": 55,
+   "einheit": "mm",
+   "herkunft": "[A] Innendurchmesser Stutzen"
+  },
+  "stub_len_side": {
+   "wert": 75,
+   "einheit": "mm",
+   "herkunft": "[A] Seitenstutzen von der Blase bis zum Zapfenende"
+  },
+  "stub_up": {
+   "wert": 45,
+   "einheit": "mm",
+   "herkunft": "[A] Stutzen oben ab Blasendach (Oberkante z 1190 <= 1195, Stapelbedarf)"
+  },
+  "vent_d": {
+   "wert": 32,
+   "einheit": "mm",
+   "herkunft": "[A] Belueftung d32"
+  },
+  "port_x": {
+   "wert": 300,
+   "einheit": "mm",
+   "herkunft": "[A] Lage der Seitenstutzen (x), zwischen den senkrechten Staeben"
+  },
+  "zulauf_z": {
+   "wert": 1100,
+   "einheit": "mm",
+   "herkunft": "[A] Zulauf oben (seitlich vorn)"
+  },
+  "ueberlauf_z": {
+   "wert": 1090,
+   "einheit": "mm",
+   "herkunft": "[A] Ueberlauf oben (seitlich hinten), ueber dem Nutzwasserstand"
+  },
+  "ablauf_z": {
+   "wert": 215,
+   "einheit": "mm",
+   "herkunft": "[A] Ablauf unten DN50 (vorn), ueber dem Kaefig-Bodenrahmen"
+  },
+  "hahn_d": {
+   "wert": 70,
+   "einheit": "mm",
+   "herkunft": "[A] Kugelhahn DN50 Gehaeuse"
+  },
+  "hahn_l": {
+   "wert": 70,
+   "einheit": "mm",
+   "herkunft": "[A] Kugelhahn Baulaenge"
+  },
+  "nutz_l": {
+   "wert": 900,
+   "einheit": "l",
+   "herkunft": "[E] Nutzvolumen ca. 900 l laut Jobblatt W28 (Nenninhalt 1000 l)"
+  }
+ },
+ "werkstoff": {
+  "name": "Stahl verzinkt (Kaefig), PE (Blase), HDPE (Palette)",
+  "dichte_g_cm3": 7.85,
+  "farbe": "#aeb4b8",
+  "herkunft": "[A] Handels-IBC"
+ },
+ "anzahl": {
+  "soll": "2 (Puffer-Station: 1 unten, 1 oben)",
+  "quelle": "D46 / docs/jobs/W28-puffer-ibc.md"
+ },
+ "bezugspunkt": "Mitte der Standflaeche am Boden (x Laenge 1200, y Breite 1000, z hoch); Vorderseite = -Y (Ablauf, Zulauf), Rueckseite = +Y (Ueberlauf)",
+ "herkunft_tabelle": [
+  [
+   "IBC 1200 x 1000 x 1165",
+   "1200/1000/1165 mm",
+   "E",
+   "Handelsmass Standard-IBC 1000 l (Hersteller-Datenblaetter, nicht geprueft)",
+   "mittel"
+  ],
+  [
+   "Palette 150 mm",
+   "150 mm",
+   "E",
+   "Jobblatt W28 (Palette 150 mm); Kufen/Deckplatte Annahme",
+   "mittel"
+  ],
+  [
+   "Stahlgitterkaefig (Rahmen 25 x 25 x 1,5, Staebe D8)",
+   "25/8 mm",
+   "A",
+   "Aufbau typisch; Staebe und Teilung geschaetzt",
+   "niedrig"
+  ],
+  [
+   "PE-Blase 1140 x 940, Wand 2,5",
+   "2,5 mm",
+   "A",
+   "Wand real 1,5-3; Inhalt innen ca. 1000 l gerechnet (check_puffer)",
+   "mittel"
+  ],
+  [
+   "Einfuelloeffnung DN150 mit Deckel",
+   "D150/D225",
+   "E",
+   "Handelsmass der IBC (Gewindehals ca. D225)",
+   "mittel"
+  ],
+  [
+   "Ablauf DN50 mit Kugelhahn unten vorn",
+   "d63",
+   "E",
+   "Handelsmass; Lage Annahme (z 215 ueber dem Bodenrahmen)",
+   "mittel"
+  ],
+  [
+   "Zulauf/Ueberlauf DN50 seitlich oben, Belueftung d32, Sensorstutzen d63 oben",
+   "d63/d32",
+   "A",
+   "D46/W28: Zulauf oben, Ueberlauf oben; seitlich statt Deckel wegen der Stapelhoehe <= 2,5 m (check_puffer)",
+   "niedrig"
+  ],
+  [
+   "Nutzvolumen 900 l (Wasserkoerper)",
+   "900 l",
+   "E",
+   "Jobblatt W28",
+   "mittel"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Puffertank der Puffer-Station (D46): hier wird gemessen und werden Naehrstoffe ausgeglichen. Nutzvolumen ca. 900 l bei Nenninhalt 1000 l. Zulauf und Ueberlauf liegen oben (Seitenstutzen), der Ablauf DN50 mit Kugelhahn unten; die Belueftung und der Sensorstutzen sitzen auf dem Blasendach niedrig (Oberkante z 1190), damit zwei gestapelte IBC unter 2,5 m bleiben.",
+  "querschnitt": "Kaefig: Rahmen 25 x 25 x 1,5 (Boden z 150-175, Kopf z 1140-1165), 4 Eckpfosten, senkrechte Staebe D8 alle 200, waagerechte alle 100 ab z 300; Blase 1140 x 940 x 995 Wand 2,5 auf der Palette; Palette 150: Deckplatte 22 und 3 Kufen 160 breit.",
+  "toleranzen": "Blase 5 mm Spiel zu den Eckpfosten; Stutzen sitzen in den Gittermaschen (Abstand >= 3 mm zu den Staeben).",
+  "ports": [
+   [
+    "Zulauf oben",
+    "DN50 (d63)",
+    "x 300, y -470..-545, z 1100",
+    "-Y (Zapfenende)"
+   ],
+   [
+    "Ueberlauf oben",
+    "DN50 (d63)",
+    "x 300, y 470..545, z 1090",
+    "+Y"
+   ],
+   [
+    "Ablauf unten (Kugelhahn)",
+    "DN50 (d63)",
+    "x 300, y -575..-615, z 215",
+    "-Y"
+   ],
+   [
+    "Belueftung",
+    "d32",
+    "x -420, y -300, z 1145..1190",
+    "+Z"
+   ],
+   [
+    "Sensorstutzen",
+    "DN50 (d63)",
+    "x -420, y 300, z 1145..1190",
+    "+Z"
+   ],
+   [
+    "Einfuelloeffnung",
+    "DN150",
+    "x -200, y 0, z 1145..1165 (Deckel)",
+    "+Z"
+   ]
+  ],
+  "verbindungen": [
+   "Blase steht auf der Palette (Kontakt), Kaefig umschliesst die Blase; Stutzen sind mit der Blase verschweisst/verschraubt (nicht im Detail modelliert); Ablauf: Schraubstutzen S60 x 6 mit Kugelhahn (Platzhalter fuer lt_kugelhahn)."
+  ],
+  "abweichung": "keine OBJ-Vorgabe (IBC-Puffer neu, D46); Handelsmass.",
+  "montage": [
+   "IBC auf tragfaehigem Untergrund aufstellen (Station: Stapelrahmen T81), Ablaufhahn schliessen",
+   "Stutzen mit den Rohren der Montage (leitungsteile) verbinden, Belueftung nicht verschliessen",
+   "Sonden in den Sensorstutzen; Ueberlauf gefaellig abfuehren"
+  ],
+  "werkzeug": "Schluessel, Rohrschneider, PVC-Kleber",
+  "stueckliste": [
+   "T80 Puffer-IBC 1000 l, Kaefig verzinkt: 2 Stueck in der Puffer-Station (T81)"
+  ],
+  "lokal": "Gebrauchte IBC (Lebensmittel, 1000 l) sind guenstig verfuegbar [A]; Palette aus HDPE oder Stahl.",
+  "massen_getrennt": [
+   "Wasser"
+  ],
+  "gewicht_gefuellt": "Nutzwasser 900 l = 900 kg je IBC (im Modell als Wasserkoerper, nicht in der Leermasse); Leermasse siehe oben.",
+  "pruefung": [],
+  "offen": [
+   "Kaefig/Blase/Palette sind Annahme A nach Handelsmassen; Hersteller offen (Nenngewicht leer ca. 60 kg real, gegen Messung)",
+   "Stutzenlagen (Seitenstutzen statt Deckelstutzen) sind eine Entscheidung dieser Werkstatt wegen Stapelhoehe; Orchestrator/Ben bestaetigen",
+   "Ablaufhahn/Anschluesse sind Platzhalter fuer die Bibliothek leitungsteile (T70)"
+  ]
+ }
+}

@@ -1,7 +1,7 @@
 # Bauteil-Spezifikation (aus dem OASIS-OBJ abgeleitet, Maße in mm)
 
 Rohzahlen: `data/layout.json`, Tabellen: `docs/layout.md` (beide erzeugt von `scripts/extract_layout.py`). Rangfolge: Ben > OBJ-Zahlen > Bilder (Look). Koordinaten: Ursprung Kuppelmitte am Boden, Z nach oben, Azimut gegen den Uhrzeigersinn.
-**Drehung:** Im OBJ liegt die Tuer bei Azimut ca. 167 Grad (Mitte der Luecke zwischen den Aussenbeeten bei 149 und 185 Grad; das zweite Becken liegt direkt davor). Unser Modell hat die Tuer bei `door_az` = -54. Das ganze Layout wird um `layout_rot = door_az - 167` um Z gedreht (Parameter in `P`), damit die Tuer wie in ref-4 vorne rechts liegt.
+**Drehung:** Im OBJ liegt die Tuer bei Azimut ca. 167 Grad auf einem Basisknoten (Knoten 22; Mitte der Luecke zwischen den Aussenbeeten bei 149 und 185 Grad; das zweite Becken liegt direkt davor). **Stand D36 (30.10.):** im Modell liegt die Tuer mittig im Basisfeld BBB 149,2 (Spitze Z 3140 absolut = 3154 relativ zu base_z -14; 1353 mm breit in 2 m Hoehe), das zweite Becken wird auf diese Achse gedreht (Montage); `door_az` 149,2 ersetzt D02. Die folgenden Saetze zu `door_az` -54 und `layout_rot = door_az - 167` beschreiben den Stand vor D36. Unser Modell hat die Tuer bei `door_az` = -54. Das ganze Layout wird um `layout_rot = door_az - 167` um Z gedreht (Parameter in `P`), damit die Tuer wie in ref-4 vorne rechts liegt.
 
 ## Sektoren-Prinzip
 Der Sockel ist ein Zehneck: 10 Sektoren zu je 36 Grad, Mitte der Aussenbeete bei Azimut 5,3 + 36 k. In 8 Sektoren steht ein Aussenbeet (k = 0-3 und 5-8 ohne die zwei Tuersektoren bei 149 und 185 Grad), in 6 Sektoren ein Innenbeet. Je Sektor: Beet unten, NFT-Rinnen darueber. Die vier Tanks stehen in den Sektoren um 108-123 Grad und 213-229 Grad.
@@ -22,7 +22,7 @@ Der Sockel ist ein Zehneck: 10 Sektoren zu je 36 Grad, Mitte der Aussenbeete bei
 | Pump-/Filtermodule | je Tank 4-8 | 502 x 345 (klein), 384 x 419 (gross), Platten 693 x 463 | Positionen je Tank in `layout.json` `tanks[].modules`; Bedeutung noch Annahme |
 | Pool | 1 | Durchmesser 3890, Wasserspiegel Z 515, Mitte (-36, 20) | Wasserspiegel gleich im zweiten Becken |
 | Zweites Becken | 1 | Durchmesser 1747, Wasserspiegel Z 515, r 3017, Azimut 166 | direkt vor der Tuer (der flache Rundtank aus ref-4) |
-| Tuer | 1 | 1000 x 2000 | Normtuer, Azimut 167 im OBJ |
+| Tuer | 1 | 1000 x 2000 | Normtuer; OBJ-Azimut 167 (auf Basisknoten 22), im Modell Azimut 149,2 (Basisfeld BBB, D36) |
 
 ## Bauvorgaben fuer die Modell-Sitzung
 1. Pro wiederkehrendem Bauteil EINE Definition mit Parametern (Datei `scripts/components/<name>.py` oder SolidCraft-Komponente), die Platzierungen stehen als Tabelle aus `data/layout.json` (Mitte, Azimut/Radius, yaw, Z). Das Dom-Skript liest `layout.json`, keine Zahlen im Skript wiederholen.

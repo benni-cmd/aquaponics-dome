@@ -32,7 +32,7 @@ Jede Zahl im Bauteilblatt traegt eine Herkunftsmarke: **Q** (Quelle), **E** (aus
 ## 4. Geometrie-Grundlagen
 - Kuppel 2V, Radius 6000: Streben A 3279 mm (0,5465 R, 30 Stueck), B 3708 mm (0,618 R, 35), Profil 30 x 30 (OBJ-Treue; die Statik wuerde ein groesseres Profil verlangen, D09). Knoten als Kugel mit 4/5/6 Steckarmen (D15, Recherche R02), Fundamentanker an den 10 Basisknoten.
 - Boden: kein fester Boden, Erdoberflaeche mit eingelassenem Pool und eingelassenen Beeten (D13).
-- Tuer: Normtuer 1000 x 2000, im Basisdreieck mit Scheitel Z 3150 (R13); Azimut 167 im OBJ (D02).
+- Tuer: Normtuer 1000 x 2000, mittig im Basisfeld BBB 149,2 (Spitze Z 3140 absolut, D36; R13); OBJ-Azimut 167 liegt auf einem Basisknoten (D02 durch D36 ersetzt); Komponente tuer_komplett.sc (W20).
 - Die drei NFT-Ringe sind regelmaessige Zehnecke (Seite = 2 x Apothem x tan 18 Grad); das OBJ zeigt je Ring nur ein Beispiel, die Ringe sind daraus abgeleitet (D04).
 
 ## 5. Bauteile und Pruefstand (von Hand, mit Datum)

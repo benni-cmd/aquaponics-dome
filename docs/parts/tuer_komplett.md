@@ -101,5 +101,5 @@ Normtuer 1000 x 2000 (Stahl-/Holzsandwich) ist Baumarktware; Zarge selbst geschw
 - Platzhalter designs/components/tuer.sc (Integrator, alter Stand) ist durch tuer_komplett.sc zu ersetzen (Montage)
 - Zweites Becken muss auf die Tuerachse 149,2 gedreht werden (D36, Montage)
 - Spitze Z: D36/W20 3140 absolut = 3154 relativ zu base_z -14 (R13 rundet 3150); Schwelle liegt auf Basisknotenhoehe -14, nicht auf Erdniveau 0 (Sockel/Fundament offen im Tuerfeld)
-- Zarge liefert nur das Mass; der Tuerausschnitt gehoert dem Paneel T40 (haut_paneel.py liest tuer_komplett.json, check_tuer prueft die Paneelflaeche): Zustaendigkeit bei Gelegenheit trennen
+- Entscheidung D37: der Tuerausschnitt gehoert dem Paneel T40; T50 liefert nur das Zargenmass (haut_paneel.py liest aus tuer_komplett.json nur zarge_aussen_w und zarge_hoehe; check_tuer prueft die Paneelflaeche mit)
 - Reserve 122 mm je Seite gilt zur Strebenachse; zur Strebenkante (Rohr 30, 17,3 mm) sind es 105 mm

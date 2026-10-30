@@ -45,6 +45,7 @@ def main():
         ck.eq(f"{typ} Material Polycarbonat", 1 if b["material"] == "Polycarbonat" else 0, 1)
         ck.eq(f"{typ} Masse bei Dichte 0,19 (kg)", b["mass_g"] / 1000, b["volume_mm3"] / 1e6 * 0.19, 0.01)
     # --- Randprofil
+    ck.eq("Randabstand Paneel (edge_inset) = halbe Kappenbreite T41 (cap_w/2): Paneel endet an der Kappenkante, Auflage 0 mm", pp["edge_inset"], sc.load_params("haut_profil")[0]["cap_w"] / 2, 0.01)
     path = os.path.join(sc.ROOT, "designs", "components", "haut_profil.sc")
     pr, dr = sc.load_params("haut_profil")
     ev = sc.evaluate(path)

@@ -38,7 +38,7 @@
  },
  "bezugspunkt": "Mitte der Kappenlaenge auf der Strebenachse, X = Laengsrichtung, Y quer (Breite 30), Z 0 = Unterkante der Kappe (liegt auf der Strebe), Z 8 = Oberkante; U-Profil oeffnet nach unten",
  "blatt": {
-  "funktion": "Randprofil der Kuppelhaut: Aluminium-Kappe auf jeder Strebe, auf der die Paneelkanten beider Nachbarfelder aufliegen (je 15 mm Auflage) und gehalten werden.",
+  "funktion": "Randprofil der Kuppelhaut: Aluminium-Kappe auf jeder Strebe, an der die Paneelkanten beider Nachbarfelder buendig enden (Fugenleiste; Auflage 0 mm, Halt der Paneele nicht modelliert, siehe haut_paneel).",
   "querschnitt": "U-Profil 30 breit x 8 hoch, Wand 2 mm, offen nach unten (sitzt auf der Strebe), Querschnitt 84 mm2; Laenge A 3279 / B 3708 als Konfiguration; Masse A 0.74 kg, B 0.84 kg.",
   "toleranzen": "Laenge = Knoten-zu-Knoten-Mass (Knotenversatz nicht abgezogen, A); Wand 2 mm Strangpressprofil.",
   "ports": [
@@ -52,7 +52,7 @@
     "Auflage Paneel",
     "Oberseite 30 mm breit",
     "Z 8 (Oberkante), y +-15",
-    "Paneelkanten beider Nachbarfelder liegen je 15 mm auf der Kappe"
+    "Paneelkanten beider Nachbarfelder enden buendig an der Kappenkante (je 15 mm vor der Strebenachse)"
    ]
   ],
   "verbindungen": [
@@ -65,11 +65,11 @@
   ],
   "werkzeug": "Saege (Zuschnitt), Akkuschrauber",
   "stueckliste": [
-   "T41 Haut-Randprofil Alu-Kappe 30 x 8 x 2: 30 x Laenge 3279 (A) + 35 x Laenge 3708 (B) = 65 Stueck, gesamt ca. 52 kg"
+   "T41 Haut-Randprofil Alu-Kappe 30 x 8 x 2: 30 x Laenge 3279 (A) + 35 x Laenge 3708 (B) = 65 Strebenkappen, gesamt ca. 52 kg; am Tuerfeld wird die Basisstrebe 24-22 zwischen den Pfosten entfernt: dort 2 Kappen 1316 statt 1 x 3708 (Parameter len), also 66 Kappen"
   ],
   "lokal": "Aluminium-Kappenprofile gibt es als Strangpressprofil (Gewaechshausbau, Foliensysteme); Standardlaenge 6 m, Zuschnitt auf 3279/3708 [A, nicht recherchiert].",
   "pruefung": [
-   "scripts/workshop/check_haut.py (27/27 PASS): Laenge A/B, Breite, Hoehe, Querschnitt 84 mm2, Masse",
+   "scripts/workshop/check_haut.py (28/28 PASS): Laenge A/B, Breite, Hoehe, Querschnitt 84 mm2, Masse",
    "Bilder renders/components/haut_profil/ (Iso, Querschnitt); kein Bild-Kritiker, kein Spec-Pruefer (Wochenlimit)"
   ],
   "kritiker": "offen (kein Pruefer-Lauf, Wochenlimit)",

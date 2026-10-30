@@ -18,6 +18,7 @@ PASS haut: BBB Randabstand zur Strebenachse = Inkreisradius Strebe - Inkreisradi
 PASS haut: BBB Koerper: Ist 1, Soll 1
 PASS haut: BBB Material Polycarbonat: Ist 1, Soll 1
 PASS haut: BBB Masse bei Dichte 0,19 (kg): Ist 8.79763, Soll 8.79763 (+-0.01)
+PASS haut: Randabstand Paneel (edge_inset) = halbe Kappenbreite T41 (cap_w/2): Paneel endet an der Kappenkante, Auflage 0 mm: Ist 15, Soll 15 (+-0.01)
 PASS haut: Profil A Laenge: Ist 3279, Soll 3279 (+-0.01)
 PASS haut: Profil Breite: Ist 30, Soll 30 (+-0.01)
 PASS haut: Profil Hoehe: Ist 8, Soll 8 (+-0.01)
@@ -25,4 +26,4 @@ PASS haut: Profil Querschnitt mm2 (30 x 8 - 26 x 6): Ist 84, Soll 84 (+-0.05)
 PASS haut: Profil Masse A (kg, Dichte 2,7): Ist 0.743677, Soll 0.743677 (+-0.005)
 PASS haut: Profil B Laenge (Konfiguration B): Ist 3708, Soll 3708 (+-0.01)
 PASS haut: Kappen gesamt 30 x A + 35 x B: Ist 65, Soll 65
-== haut: 27/27 PASS
+== haut: 28/28 PASS

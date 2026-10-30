@@ -13,19 +13,21 @@
 | `blatt_w` | 1000 | mm | [A] Normtuer 1000 x 2000 (docs/components.md, Auftrag W20) |
 | `blatt_h` | 2000 | mm | [A] Normtuer 1000 x 2000 |
 | `blatt_t` | 40 | mm | [A] Tuerblatt 40 mm (Auftrag W20) |
-| `spiel` | 8 | mm | [A] Spiel Blatt zu Zarge je Seite und oben (Normtuer-Praxis 5-10 mm) |
+| `spiel` | 8 | mm | [A] Spiel Blatt zu Zarge je Seite (Normtuer-Praxis 5-10 mm) |
+| `spiel_oben` | 6 | mm | [A] Spiel Blatt zum Sturz oben |
+| `spiel_unten` | 2 | mm | [A] Spiel Blatt zur Schwelle unten (Dichtstreifen EPDM 2 mm dazwischen) |
 | `rohr` | 30 | mm | [A] Zarge aus Rechteckrohr 30 x 30 x 2 wie die Streben (Auftrag W20 Schritt 2) |
 | `rohr_wand` | 2 | mm | [A] Wandstaerke Zargenrohr 2 mm |
-| `schwelle_h` | 30 | mm | [A] Schwelle = Rohr 30 x 30 (ebenerdig, Blatt liegt auf der Schwelle auf, R13 Befund 8: kein Mass belegt) |
+| `schwelle_h` | 30 | mm | [A] Schwelle = Rohr 30 x 30 (ebenerdig; Blatt steht 2 mm darueber auf einem EPDM-Dichtstreifen, R13 Befund 8: kein Mass belegt) |
 
-Gesamt-Box (Messung): X -549.0 bis 538.0, Y -0.0 bis 2068.0, Z -55.0 bis 73.0 mm; Koerper: 26.
+Gesamt-Box (Messung): X -549.0 bis 538.0, Y -0.0 bis 2068.0, Z -55.0 bis 73.0 mm; Koerper: 27.
 
 **Toleranzen / Spiel:** Spiel Blatt zu Zarge 8 mm je Seite, oben 6, unten 2 (gemessen); Zarge passt ins Feld: Feldbreite in Sturzhoehe 1320 mm gegen Zarge 1076, Reserve 122 mm je Seite (>= 100).
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: Stahl verzinkt (Zarge, Beschlaege), Tuerblatt Sandwich, EPDM (Dichtung), Dichte 7.85 g/cm3, Farbe #aeb4b8 ([A] Zarge Rechteckrohr 30 x 30 x 2 verzinkt; Tuerblatt Sandwich 0,31 g/cm3 (ca. 25 kg fuer 1 x 2 x 0,04 m, Normtuer-Richtwert, nicht recherchiert); EPDM 1,1 g/cm3)
-- Volumen (Messung, `solidcraft-cli eval`): 81790.0 cm3 · Masse leer: 38651 g (38.65 kg)
+- Volumen (Messung, `solidcraft-cli eval`): 81872.2 cm3 · Masse leer: 38741 g (38.74 kg)
 
 ## Querschnitt / Profil
 
@@ -37,7 +39,7 @@ Zarge Aussenbreite 1076 x Hoehe 2068 (in der Feldebene gemessen, Neigung der Fel
 |---|---|---|---|
 | Anschluss Sturz links / rechts an die schraege Strebe (Knoten 24-6 / 22-6) | Flachstahl-Lasche 30 x 4, Schrauben M6 [A, nicht modelliert] | Sturzende x +-538, y' 2053, z' 0; Strebenachse bei x +-669 (Luecke 131 mm je Seite) | Sturz liegt in der Feldebene, Strebe verlaeuft schraeg nach oben; die Lasche ueberbrueckt die Luecke |
 | Anschluss Pfosten / Schwelle an den Boden | Ankerplatten 70 x 70 x 5 mit M8 [A, nicht modelliert] | Schwellenenden x +-538, y' 0..30 | Zarge steht auf dem Fundament/Boden; Tuer ist hoch beanspruchte Zone (R13: zusaetzliche Bodenverankerung) |
-| Basisstrebe zwischen den Pfosten entfaellt | Strebe 3708 (Knoten 24-22) | Basiskante y' 0, x +-1854; verbleibende Reststrecke je Seite 1316 mm | die Schwelle ersetzt die Basisstrebe zwischen den Pfosten (R13); im Dom entfaellt die Strebe (Montage) |
+| Basisstrebe: Mittelstueck zwischen den Pfosten entfaellt | Strebe 3708 (Knoten 24-22) wird gekuerzt | Basiskante y' 0, x +-1854; es entfaellt das Mittelstueck x +-538, es bleiben Reststrecken von 1316 mm je Seite (je eine Kappe T41 mit len 1316) | die Schwelle ersetzt das Mittelstueck der Basisstrebe (R13); im Dom wird die Strebe gekuerzt (Montage) |
 | Tuerausschnitt im Paneel BBB | haut_paneel_BBB_tuer.sc | Rechteck 1076 x 2068 ab der Basiskante, mittig | Paneel liegt aussen an der Zarge; Ausschnitt = Zarge-Aussenmass |
 
 ## Verbindungen und Befestigungen
@@ -54,7 +56,7 @@ Zarge Aussenbreite 1076 x Hoehe 2068 (in der Feldebene gemessen, Neigung der Fel
 | Normtuer 1000 x 2000 x 40 | 1000 x 2000 x 40 | OBJ + A | docs/components.md Tuer 1000 x 2000 (OBJ-Normtuer), Dicke 40 Annahme | mittel |
 | Zarge Rohr 30 x 30 x 2, Schwelle 30 | 30 x 30 x 2 | A | Auftrag W20 (Rohr wie die Streben); R13 Befund 8: kein belastbares Mass fuer Sturz/Schwelle | niedrig |
 | Spiel 8 seitlich, 6 oben, 2 unten | 8 / 6 / 2 mm | A | Normtuer-Praxis 5-10 mm | niedrig |
-| Zarge in der Feldebene, Neigung 10,8 Grad | 10.8 Grad | E | aus den Knoten 24, 22, 6 (layout.json); R13 Befund 2: die Tuer steht nicht senkrecht | mittel |
+| Zarge in der Feldebene, Neigung 10,8 Grad | 10.8 Grad | A | Neigung gerechnet (E) aus den Knoten 24, 22, 6 (layout.json); die WAHL der Feldebene statt des senkrechten Rahmens ist Annahme (R13 Befund 2 nennt rechteckigen Rahmen mit verlaengerten Streben) | niedrig |
 | Blatt oeffnet nach aussen, Anschlag innen | nach aussen | A | R13 Befund 7 (Shelter Dome: oeffnet nach aussen) | niedrig |
 | 3 Aufschraubbaender, Druecker auf 1 m, Dichtung EPDM | 3 + 1 + 1 | A | Standard-Tuerbeschlag; Beschlagmasse Annahme | niedrig |
 | Tuerblatt 0,31 g/cm3 (25 kg) | 0,31 g/cm3 | A | Sandwich-Tuerblatt 1 x 2 x 0,04 m ca. 25 kg (Richtwert, nicht recherchiert) | niedrig |
@@ -88,13 +90,16 @@ Normtuer 1000 x 2000 (Stahl-/Holzsandwich) ist Baumarktware; Zarge selbst geschw
 ## Pruefung
 
 - Gauntlet-Urteil: offen (kein Pruefer-Lauf, Auftrag W20)
-- scripts/workshop/check_tuer.py (25/25 PASS, Ergebnis renders/components/tuer_komplett/check.txt): Lichte, Spiel, Zarge im Feld (Reserve), Neigung und Feldtyp aus den Knoten, Beschlaege, Interferenz 0, Paneelausschnitt gegen numerische Rechnung
+- scripts/workshop/check_tuer.py (30/30 PASS, Ergebnis renders/components/tuer_komplett/check.txt): Lichte, Spiel, Zarge im Feld (Reserve), Neigung und Feldtyp aus den Knoten, Beschlaege, Interferenz 0, Paneelausschnitt gegen numerische Rechnung
 - Bilder renders/components/tuer_komplett/ und renders/components/haut_paneel/haut_paneel_BBB_tuer-01-draufsicht.png; kein Spec-Pruefer, kein Bild-Kritiker (Auftrag W20)
 
 ## Offene Fragen
 
-- Zarge in der Feldebene (Neigung 10,8 Grad) ist Annahme A (R13 nennt auch rechteckigen senkrechten Rahmen mit verlaengerten Streben); senkrechter Rahmen braucht Tiefe bis 603 mm am Oberkante, Entscheidung Orchestrator/Ben
+- Zarge in der Feldebene (Neigung 10,8 Grad) ist Annahme A (R13 nennt auch rechteckigen senkrechten Rahmen mit verlaengerten Streben); ein senkrechter Rahmen braeuchte Tiefe 388 mm am Sturz (603 mm an der Spitze), Entscheidung Orchestrator/Ben
 - Anschlag-Laschen an die Streben, Bodenanker, Schrauben der Baender, Schloss/Schliessblech nicht modelliert; Statik (Schnee/Wind auf Sturz, R13 Befund 8) nicht gerechnet
 - Oeffnungsrichtung nach aussen (Shelter Dome, R13) und Windfang offen (Ben: wohin soll die Tuer)
 - Platzhalter designs/components/tuer.sc (Integrator, alter Stand) ist durch tuer_komplett.sc zu ersetzen (Montage)
 - Zweites Becken muss auf die Tuerachse 149,2 gedreht werden (D36, Montage)
+- Spitze Z: D36/W20 3140 absolut = 3154 relativ zu base_z -14 (R13 rundet 3150); Schwelle liegt auf Basisknotenhoehe -14, nicht auf Erdniveau 0 (Sockel/Fundament offen im Tuerfeld)
+- Zarge liefert nur das Mass; der Tuerausschnitt gehoert dem Paneel T40 (haut_paneel.py liest tuer_komplett.json, check_tuer prueft die Paneelflaeche): Zustaendigkeit bei Gelegenheit trennen
+- Reserve 122 mm je Seite gilt zur Strebenachse; zur Strebenkante (Rohr 30, 17,3 mm) sind es 105 mm

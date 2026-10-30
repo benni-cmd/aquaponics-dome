@@ -1,6 +1,6 @@
 # Bauteilblatt T41 haut_profil (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/haut_profil.json` und `designs/components/haut_profil.sc`, nicht von Hand aendern)
 
-**Funktion:** Randprofil der Kuppelhaut: Aluminium-Kappe auf jeder Strebe, auf der die Paneelkanten beider Nachbarfelder aufliegen (je 15 mm Auflage) und gehalten werden.
+**Funktion:** Randprofil der Kuppelhaut: Aluminium-Kappe auf jeder Strebe, an der die Paneelkanten beider Nachbarfelder buendig enden (Fugenleiste; Auflage 0 mm, Halt der Paneele nicht modelliert, siehe haut_paneel).
 
 **Datei:** `designs/components/haut_profil.sc` · **Teilenummer:** T41 · **Revision:** A · **Bezugspunkt:** Mitte der Kappenlaenge auf der Strebenachse, X = Laengsrichtung, Y quer (Breite 30), Z 0 = Unterkante der Kappe (liegt auf der Strebe), Z 8 = Oberkante; U-Profil oeffnet nach unten
 
@@ -33,7 +33,7 @@ U-Profil 30 breit x 8 hoch, Wand 2 mm, offen nach unten (sitzt auf der Strebe), 
 | Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
 |---|---|---|---|
 | Auflage Strebe | U-Profil Innenbreite 26 mm | Z 0 (Unterkante), y +-13 (Innenwaende) | Kappe sitzt auf dem Strebenrohr, offene Seite nach unten |
-| Auflage Paneel | Oberseite 30 mm breit | Z 8 (Oberkante), y +-15 | Paneelkanten beider Nachbarfelder liegen je 15 mm auf der Kappe |
+| Auflage Paneel | Oberseite 30 mm breit | Z 8 (Oberkante), y +-15 | Paneelkanten beider Nachbarfelder enden buendig an der Kappenkante (je 15 mm vor der Strebenachse) |
 
 ## Verbindungen und Befestigungen
 
@@ -63,7 +63,7 @@ U-Profil 30 breit x 8 hoch, Wand 2 mm, offen nach unten (sitzt auf der Strebe), 
 
 ## Stueckliste-Zeile
 
-- T41 Haut-Randprofil Alu-Kappe 30 x 8 x 2: 30 x Laenge 3279 (A) + 35 x Laenge 3708 (B) = 65 Stueck, gesamt ca. 52 kg
+- T41 Haut-Randprofil Alu-Kappe 30 x 8 x 2: 30 x Laenge 3279 (A) + 35 x Laenge 3708 (B) = 65 Strebenkappen, gesamt ca. 52 kg; am Tuerfeld wird die Basisstrebe 24-22 zwischen den Pfosten entfernt: dort 2 Kappen 1316 statt 1 x 3708 (Parameter len), also 66 Kappen
 
 ## Alternative lokale Fertigung
 
@@ -77,7 +77,7 @@ Aluminium-Kappenprofile gibt es als Strangpressprofil (Gewaechshausbau, Foliensy
 ## Pruefung
 
 - Gauntlet-Urteil: offen (kein Pruefer-Lauf, Wochenlimit)
-- scripts/workshop/check_haut.py (27/27 PASS): Laenge A/B, Breite, Hoehe, Querschnitt 84 mm2, Masse
+- scripts/workshop/check_haut.py (28/28 PASS): Laenge A/B, Breite, Hoehe, Querschnitt 84 mm2, Masse
 - Bilder renders/components/haut_profil/ (Iso, Querschnitt); kein Bild-Kritiker, kein Spec-Pruefer (Wochenlimit)
 
 ## Offene Fragen

@@ -779,44 +779,44 @@
   "toleranzen": "Fuge zum Randprofil und Dehnung (Polycarbonat ca. 0,07 mm/m/K) nicht modelliert; Aussenflaeche eben (die Kuppelfelder sind plan, die Streben bilden die Kanten).",
   "ports": [
    [
-    "AAB Kante e0 (P0P1): Auflage auf Randprofil",
+    "AAB Kante e0 (P0P1): Anschluss an das Randprofil (buendig)",
     "Randkante 3229 mm, Strebe 3279 mm",
     "Kantenmitte x -211, y -962, z 0..8 (Bezug = Inkreismittelpunkt)",
-    "Kante liegt 15 mm vor der Strebenachse auf der Kappe T41 (Kappe 30 breit: 15 mm Auflage je Seite); Normale in der Plattenebene nach aussen"
+    "Kante liegt 15 mm vor der Strebenachse, genau an der Kappenkante (T41 30 breit: Kappe buendig neben dem Paneel, Auflage 0 mm; Halt durch Klemmung/Klemmleiste, nicht modelliert); Normale in der Plattenebene nach aussen"
    ],
    [
-    "AAB Kante e1 (P1P2): Auflage auf Randprofil",
+    "AAB Kante e1 (P1P2): Anschluss an das Randprofil (buendig)",
     "Randkante 3229 mm, Strebe 3279 mm",
     "Kantenmitte x 821, y 544, z 0..8 (Bezug = Inkreismittelpunkt)",
-    "Kante liegt 15 mm vor der Strebenachse auf der Kappe T41 (Kappe 30 breit: 15 mm Auflage je Seite); Normale in der Plattenebene nach aussen"
+    "Kante liegt 15 mm vor der Strebenachse, genau an der Kappenkante (T41 30 breit: Kappe buendig neben dem Paneel, Auflage 0 mm; Halt durch Klemmung/Klemmleiste, nicht modelliert); Normale in der Plattenebene nach aussen"
    ],
    [
-    "AAB Kante e2 (P2P0): Auflage auf Randprofil",
+    "AAB Kante e2 (P2P0): Anschluss an das Randprofil (buendig)",
     "Randkante 3651 mm, Strebe 3708 mm",
     "Kantenmitte x -793, y 544, z 0..8 (Bezug = Inkreismittelpunkt)",
-    "Kante liegt 15 mm vor der Strebenachse auf der Kappe T41 (Kappe 30 breit: 15 mm Auflage je Seite); Normale in der Plattenebene nach aussen"
+    "Kante liegt 15 mm vor der Strebenachse, genau an der Kappenkante (T41 30 breit: Kappe buendig neben dem Paneel, Auflage 0 mm; Halt durch Klemmung/Klemmleiste, nicht modelliert); Normale in der Plattenebene nach aussen"
    ],
    [
-    "BBB Kante e0 (P0P1): Auflage auf Randprofil",
+    "BBB Kante e0 (P0P1): Anschluss an das Randprofil (buendig)",
     "Randkante 3656 mm, Strebe 3708 mm",
     "Kantenmitte x 0, y -1055, z 0..8 (Bezug = Inkreismittelpunkt)",
-    "Kante liegt 15 mm vor der Strebenachse auf der Kappe T41 (Kappe 30 breit: 15 mm Auflage je Seite); Normale in der Plattenebene nach aussen"
+    "Kante liegt 15 mm vor der Strebenachse, genau an der Kappenkante (T41 30 breit: Kappe buendig neben dem Paneel, Auflage 0 mm; Halt durch Klemmung/Klemmleiste, nicht modelliert); Normale in der Plattenebene nach aussen"
    ],
    [
-    "BBB Kante e1 (P1P2): Auflage auf Randprofil",
+    "BBB Kante e1 (P1P2): Anschluss an das Randprofil (buendig)",
     "Randkante 3656 mm, Strebe 3708 mm",
     "Kantenmitte x 914, y 528, z 0..8 (Bezug = Inkreismittelpunkt)",
-    "Kante liegt 15 mm vor der Strebenachse auf der Kappe T41 (Kappe 30 breit: 15 mm Auflage je Seite); Normale in der Plattenebene nach aussen"
+    "Kante liegt 15 mm vor der Strebenachse, genau an der Kappenkante (T41 30 breit: Kappe buendig neben dem Paneel, Auflage 0 mm; Halt durch Klemmung/Klemmleiste, nicht modelliert); Normale in der Plattenebene nach aussen"
    ],
    [
-    "BBB Kante e2 (P2P0): Auflage auf Randprofil",
+    "BBB Kante e2 (P2P0): Anschluss an das Randprofil (buendig)",
     "Randkante 3656 mm, Strebe 3708 mm",
     "Kantenmitte x -914, y 528, z 0..8 (Bezug = Inkreismittelpunkt)",
-    "Kante liegt 15 mm vor der Strebenachse auf der Kappe T41 (Kappe 30 breit: 15 mm Auflage je Seite); Normale in der Plattenebene nach aussen"
+    "Kante liegt 15 mm vor der Strebenachse, genau an der Kappenkante (T41 30 breit: Kappe buendig neben dem Paneel, Auflage 0 mm; Halt durch Klemmung/Klemmleiste, nicht modelliert); Normale in der Plattenebene nach aussen"
    ]
   ],
   "verbindungen": [
-   "Paneelkante liegt auf dem Randprofil T41 (Aluminium-Kappe 30 x 8) ueber der Strebe, 15 mm Auflage je Seite; Befestigung der Kappe auf der Strebe (Schrauben/Klemmung) und Dichtband nicht modelliert [A]",
+   "Paneelkante endet 15 mm vor der Strebenachse = an der Kante des Randprofils T41 (Aluminium-Kappe 30 x 8 ueber der Strebe): die Kappe ist eine buendige Fugenleiste, Auflage 0 mm (R11 widerspricht sich: 'Paneele enden 15 mm vor der Achse' gegen 'Randprofil haelt die Paneelkanten'); Halt der Paneele (Klemmleiste, Schrauben, Dichtband) nicht modelliert [A]",
    "Tuerfeld (D36): das Basisfeld BBB 149,2 bekommt das Paneel haut_paneel_BBB_tuer mit Ausschnitt = Zarge (1076 x 2068, in der Feldebene) ab der Basiskante; Zarge siehe docs/parts/tuer_komplett.md"
   ],
   "abweichung": "keine OBJ-Vorgabe (das OBJ-Dom hat keine Haut); Dreiecksseiten aus den Strebenlaengen layout.json dome.strut_len_mm (3279 A / 3708 B, gemessene Knotenabstaende 3278,8-3279,8 bzw. 3707,6-3708,9).",
@@ -829,19 +829,21 @@
   "stueckliste": [
    "T40 Haut-Paneel Typ AAB: 30 voll + 0 mit Tuerausschnitt = 30; Flaeche 4.86 m2, 7.4 kg",
    "T40 Haut-Paneel Typ BBB: 9 voll + 1 mit Tuerausschnitt = 10; Flaeche 5.79 m2, 8.8 kg",
-   "Gesamtflaeche Haut ca. 204 m2 (40 Felder)"
+   "Gesamtflaeche Haut ca. 201.5 m2 (39 volle Paneele + Tuerpaneel mit Ausschnitt 3.58 m2)"
   ],
   "lokal": "Doppelstegplatten 8 mm sind Baumarktware (Gewaechshausbau); Zuschnitt auf Dreiecke selbst oder per Zuschnittservice [A, nicht recherchiert]; Folie als billige Variante (R11).",
   "pruefung": [
-   "scripts/workshop/check_haut.py (27/27 PASS, Ergebnis renders/components/haut_paneel/check.txt): Felderzahl (Euler), Typen, Dicke 8, Flaeche gegen Heron-Rechnung, Randkanten, Randabstand 15 mm (Inkreisradius), Masse",
+   "scripts/workshop/check_haut.py (28/28 PASS, Ergebnis renders/components/haut_paneel/check.txt): Felderzahl (Euler), Typen, Dicke 8, Flaeche gegen Heron-Rechnung, Randkanten, Randabstand 15 mm (Inkreisradius), Masse",
    "Bild renders/components/haut_paneel/haut_paneel_AAB-01-draufsicht.png (und BBB); kein Bild-Kritiker, kein Spec-Pruefer (Wochenlimit, W19 Auftrag)"
   ],
   "kritiker": "offen (kein Pruefer-Lauf, Wochenlimit)",
   "offen": [
-   "Tuer (D36): nur das Basisfeld BBB 149,2 (Basisknoten-Azimut 149,2) traegt den Tuerausschnitt (haut_paneel_BBB_tuer.sc, 9 Flaechen); Zargenlage in der Feldebene Annahme A (siehe tuer_komplett)",
+   "Tuer (D36): nur das Basisfeld BBB 149,2 traegt den Tuerausschnitt (haut_paneel_BBB_tuer.sc); Zargenlage in der Feldebene Annahme A (siehe tuer_komplett)",
    "Hohlkammern, Dichtband, Klemmleisten, Lueftungsklappen nicht modelliert; Material/Preis/UV nicht recherchiert (R11 offen)",
-   "Paneele sind eben; die Streben liegen auf der Kugel, die Felder sind plan (Pfeilhoehe zur Kugel bei 3,7 m Kante ca. 0,2 m): Aussenflaeche haengt an den Streben, Einbau durch die Montage",
-   "Plattenlage: Inkreismittelpunkt des Strebendreiecks (Strebenachsen), nicht Schwerpunkt; Z 0 = Innenseite"
+   "Paneele sind eben; die Streben liegen auf der Kugel, die Felder sind plan (Pfeilhoehe zur Kugel (Umkreis des Feldes gegen R 6000) ca. 0,34 m (AAB) bzw. 0,40 m (BBB)): Aussenflaeche haengt an den Streben, Einbau durch die Montage",
+   "Plattenlage: Inkreismittelpunkt des Strebendreiecks (Strebenachsen), nicht Schwerpunkt; Z 0 = Innenseite",
+   "Auflage 0 mm (Befund Pruefer W19): edge_inset 15 = cap_w/2, die Kappe ist buendig neben dem Paneel und haelt es nicht; Entscheidung Orchestrator: edge_inset 0 (Kappe klemmt beide Kanten, 15 mm Auflage je Seite) oder Klemmleiste/Schrauben; R11 widerspricht sich",
+   "edge_inset gehoert zu T41: edge_inset = cap_w/2 (haut_profil.json) ist hier doppelt gefuehrt (check_haut vergleicht beide)"
   ]
  },
  "herkunft_tabelle": [

@@ -113,10 +113,10 @@
     "Zarge steht auf dem Fundament/Boden; Tuer ist hoch beanspruchte Zone (R13: zusaetzliche Bodenverankerung)"
    ],
    [
-    "Basisstrebe zwischen den Pfosten entfaellt",
-    "Strebe 3708 (Knoten 24-22)",
-    "Basiskante y' 0, x +-1854; verbleibende Reststrecke je Seite 1316 mm",
-    "die Schwelle ersetzt die Basisstrebe zwischen den Pfosten (R13); im Dom entfaellt die Strebe (Montage)"
+    "Basisstrebe: Mittelstueck zwischen den Pfosten entfaellt",
+    "Strebe 3708 (Knoten 24-22) wird gekuerzt",
+    "Basiskante y' 0, x +-1854; es entfaellt das Mittelstueck x +-538, es bleiben Reststrecken von 1316 mm je Seite (je eine Kappe T41 mit len 1316)",
+    "die Schwelle ersetzt das Mittelstueck der Basisstrebe (R13); im Dom wird die Strebe gekuerzt (Montage)"
    ],
    [
     "Tuerausschnitt im Paneel BBB",
@@ -142,16 +142,19 @@
   ],
   "lokal": "Normtuer 1000 x 2000 (Stahl-/Holzsandwich) ist Baumarktware; Zarge selbst geschweisst oder aus Systemprofil; Beschlaege Standard [A, nicht recherchiert].",
   "pruefung": [
-   "scripts/workshop/check_tuer.py (25/25 PASS, Ergebnis renders/components/tuer_komplett/check.txt): Lichte, Spiel, Zarge im Feld (Reserve), Neigung und Feldtyp aus den Knoten, Beschlaege, Interferenz 0, Paneelausschnitt gegen numerische Rechnung",
+   "scripts/workshop/check_tuer.py (30/30 PASS, Ergebnis renders/components/tuer_komplett/check.txt): Lichte, Spiel, Zarge im Feld (Reserve), Neigung und Feldtyp aus den Knoten, Beschlaege, Interferenz 0, Paneelausschnitt gegen numerische Rechnung",
    "Bilder renders/components/tuer_komplett/ und renders/components/haut_paneel/haut_paneel_BBB_tuer-01-draufsicht.png; kein Spec-Pruefer, kein Bild-Kritiker (Auftrag W20)"
   ],
   "kritiker": "offen (kein Pruefer-Lauf, Auftrag W20)",
   "offen": [
-   "Zarge in der Feldebene (Neigung 10,8 Grad) ist Annahme A (R13 nennt auch rechteckigen senkrechten Rahmen mit verlaengerten Streben); senkrechter Rahmen braucht Tiefe bis 603 mm am Oberkante, Entscheidung Orchestrator/Ben",
+   "Zarge in der Feldebene (Neigung 10,8 Grad) ist Annahme A (R13 nennt auch rechteckigen senkrechten Rahmen mit verlaengerten Streben); ein senkrechter Rahmen braeuchte Tiefe 388 mm am Sturz (603 mm an der Spitze), Entscheidung Orchestrator/Ben",
    "Anschlag-Laschen an die Streben, Bodenanker, Schrauben der Baender, Schloss/Schliessblech nicht modelliert; Statik (Schnee/Wind auf Sturz, R13 Befund 8) nicht gerechnet",
    "Oeffnungsrichtung nach aussen (Shelter Dome, R13) und Windfang offen (Ben: wohin soll die Tuer)",
    "Platzhalter designs/components/tuer.sc (Integrator, alter Stand) ist durch tuer_komplett.sc zu ersetzen (Montage)",
-   "Zweites Becken muss auf die Tuerachse 149,2 gedreht werden (D36, Montage)"
+   "Zweites Becken muss auf die Tuerachse 149,2 gedreht werden (D36, Montage)",
+   "Spitze Z: D36/W20 3140 absolut = 3154 relativ zu base_z -14 (R13 rundet 3150); Schwelle liegt auf Basisknotenhoehe -14, nicht auf Erdniveau 0 (Sockel/Fundament offen im Tuerfeld)",
+   "Zarge liefert nur das Mass; der Tuerausschnitt gehoert dem Paneel T40 (haut_paneel.py liest tuer_komplett.json, check_tuer prueft die Paneelflaeche): Zustaendigkeit bei Gelegenheit trennen",
+   "Reserve 122 mm je Seite gilt zur Strebenachse; zur Strebenkante (Rohr 30, 17,3 mm) sind es 105 mm"
   ]
  },
  "herkunft_tabelle": [
@@ -186,9 +189,9 @@
   [
    "Zarge in der Feldebene, Neigung 10,8 Grad",
    "10.8 Grad",
-   "E",
-   "aus den Knoten 24, 22, 6 (layout.json); R13 Befund 2: die Tuer steht nicht senkrecht",
-   "mittel"
+   "A",
+   "Neigung gerechnet (E) aus den Knoten 24, 22, 6 (layout.json); die WAHL der Feldebene statt des senkrechten Rahmens ist Annahme (R13 Befund 2 nennt rechteckigen Rahmen mit verlaengerten Streben)",
+   "niedrig"
   ],
   [
    "Blatt oeffnet nach aussen, Anschlag innen",

@@ -10,9 +10,9 @@ P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["c
 LAY = json.load(open(os.path.join(ROOT, "data", "layout.json")))
 mv = {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}
 PORTAL = 115.0
-vdim = {}
+vdim = {"Beet_aussen_800": (2640, 800, True)}   # Aussenbeet W17/D29
 for b in LAY["ibc_beds"]:
-    vdim.setdefault("Beet_" + ("innen_933" if "plants" not in b else ("aussen_993" if b["width"] > 960 else "aussen_933")), (b["length"], b["width"], "plants" in b))
+    if "plants" not in b: vdim.setdefault("Beet_innen_933", (b["length"], b["width"], False))
 
 def rect(m, l, w):
     c, s = m[0], m[4]; return [(m[3] + u * c - v * s, m[7] + u * s + v * c) for u, v in ((-l / 2, -w / 2), (l / 2, -w / 2), (l / 2, w / 2), (-l / 2, w / 2))]
@@ -37,8 +37,8 @@ for k, m in mv.items():
 # Zentralpool/Zweitbecken aus layout.json (Position wie gen_dome: um ROT gedreht; Zweitbecken 2 % nach aussen)
 ROT = math.radians(P["door_az"] - 167)
 rot = lambda x, y: (x * math.cos(ROT) - y * math.sin(ROT), x * math.sin(ROT) + y * math.cos(ROT))
-pc = rot(LAY["pool"]["cx"], LAY["pool"]["cy"]); pr = LAY["pool"]["d"] / 2 + P["wall"]
-p2 = rot(LAY["pool2"]["cx"] * 1.02, LAY["pool2"]["cy"] * 1.02); p2r = LAY["pool2"]["d"] / 2 + 60
+pc = (0.0, 0.0); pr = LAY["pool"]["d"] / 2 + P["wall"]   # D35: Zentralpool auf der Achse
+p2 = rot(math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * 1.02 * math.cos(math.radians(149.2)), math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * 1.02 * math.sin(math.radians(149.2))); p2r = LAY["pool2"]["d"] / 2 + 60
 res = []
 def chk(name, ist, soll, ok): res.append(ok); print(("PASS" if ok else "FAIL"), name, "| Ist:", ist, "| Soll:", soll)
 wmin = P["walkway_min"]

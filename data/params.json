@@ -241,5 +241,32 @@
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py, check_walkways.py"
+ },
+ "pot_pitch": {
+  "value": 130,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D34: Topfraster Aussenbeet quadratisch 130 (Salatkopf 95-125 mm breit, Netztopf-Kragen 64); ersetzt die OBJ-Raster (288 je Beet)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_latte.py"
+ },
+ "pot_margin": {
+  "value": 70,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D34: Abstand Topfmitte zur Beetwand",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_latte.py"
+ },
+ "pot_base_z": {
+  "value": 405,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Topfboden auf der Medienoberflaeche (Z 400, Beet-Spec) + 5 mm; Kragen oben 468 < Beetrand 475",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_latte.py"
  }
 }

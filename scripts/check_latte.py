@@ -82,7 +82,9 @@ chk("L13 Tankwand [mm]", round(P["wall"]), ">= 150", P["wall"] >= 150)
 chk("L13 Wasserscheibe T5_Wasser", len(pre("T5_Wasser")), 1, len(pre("T5_Wasser")) == 1)
 chk("L6 Teilenamen T1,T3-T6,T10,T11 vorhanden (T2 Haut = Phase 2, T8 NFT folgt)", sorted({n.split("_")[0] for n in BN}, key=lambda x: int(x[1:])), "T1,T3..T11", {n.split("_")[0] for n in BN} >= {f"T{i}" for i in (1, 3, 4, 5, 6, 10, 11)})   # T7/T9 = Werkstatt-Instanzen (Tanks, Beete)
 n_cls = lambda c: sum(1 for x in cmds if x["command"] == "occurrence.move" and str(x["params"].get("occurrence", "")).startswith(c + ":"))
-chk("OBJ Netztoepfe (2160 Beete + 466 Rinnen) als Instanzen", n_cls("Netztopf"), 2626, n_cls("Netztopf") == 2626)
+nu, nv = int((2640 - 2 * P["pot_margin"]) // P["pot_pitch"]) + 1, int((800 - 2 * P["pot_margin"]) // P["pot_pitch"]) + 1
+exp_pots = 8 * nu * nv + sum(len(v["pots"]) * n for v, n in zip(json.load(open(os.path.join(ROOT, "data", "nft_pots.json")))["typen"].values(), (10, 6, 8)))
+chk("Netztoepfe: Aussenbeet-Raster (8 x %d x %d) + Rinnen (586) als Instanzen" % (nu, nv), n_cls("Netztopf"), exp_pots, n_cls("Netztopf") == exp_pots)
 # Interferenz zwischen Instanzen/Teilen (Koerper EINER Komponenteninstanz ueberschneiden sich bewusst: Schweiss-/Schraubverbindungen, Pruefung der Werkstatt-Skripte)
 # Das ganze Modell hat > 1500 Koerper: erst Bounding-Boxen in Python (nur Paare verschiedener Instanzen), dann nur die betroffenen Koerper exakt schneiden.
 cl = {}
@@ -113,8 +115,9 @@ def sat_gap(A, Bq):
     return g
 def rect(cx, cy, l, w, m):   # Rechteck mit Drehung aus Matrix m (3x4, zeilenweise)
     c, s = m[0], m[4]; return [(cx + u * c - v * s, cy + u * s + v * c) for u, v in ((-l / 2, -w / 2), (l / 2, -w / 2), (l / 2, w / 2), (-l / 2, w / 2))]
-vdim = {}
-for b in LAY["ibc_beds"]: vdim.setdefault("Beet_" + ("innen_933" if "plants" not in b else ("aussen_993" if b["width"] > 960 else "aussen_933")), (b["length"], b["width"]))
+vdim = {"Beet_aussen_800": (2640, 800)}   # Aussenbeet W17/D29 (data/components/ibc_beet.json aussen_800)
+for b in LAY["ibc_beds"]:
+    if "plants" not in b: vdim.setdefault("Beet_innen_933", (b["length"], b["width"]))
 bedrects = [rect(m[3], m[7], *vdim[k.split(":")[0]], m) for k, m in mv.items() if k.split(":")[0] in vdim]
 pool = B["T5_Zentraltank"]["bbox"]; pcx, pcy = (pool["max"][0] + pool["min"][0]) / 2, (pool["max"][1] + pool["min"][1]) / 2; pr = (pool["max"][0] - pool["min"][0]) / 2
 fpw = {}; legbad = []; mingap = 1e9; poolbad = 0

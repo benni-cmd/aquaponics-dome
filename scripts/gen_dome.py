@@ -171,6 +171,7 @@ def t1_t3_t4(sock_z):
 
 LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))
 ROT = P["door_az"] - 167   # Layout-Drehung (docs/components.md)
+DOOR_OBJ_AZ = 149.2   # D36: Tuer im Basisfeld BBB; im Modell door_edge_az = DOOR_OBJ_AZ + ROT (-72 = 149,2 - 221,2)
 
 def LXY(cx, cy):
     """Layout-Koordinate (OBJ-Azimut) -> Modell-Koordinate (um ROT gedreht)."""
@@ -178,7 +179,9 @@ def LXY(cx, cy):
 
 def pool_dims(fz, src, wall, depth, nm):
     x, y = LXY(src["cx"], src["cy"])
-    if nm.startswith("Zweit"): x, y = round(x*1.02, 1), round(y*1.02, 1)   # 2 % nach aussen: Abstand zum Zentralpool
+    if nm.startswith("Zweit"):   # D36: Zweitbecken auf die Tuerachse (OBJ-Azimut 149,2, Tuer im Basisfeld BBB), Radius wie im OBJ, 2 % nach aussen: Abstand zum Zentralpool
+        r = math.hypot(src["cx"], src["cy"]) * 1.02; x, y = LXY(r * math.cos(math.radians(DOOR_OBJ_AZ)), r * math.sin(math.radians(DOOR_OBJ_AZ)))
+    else: x, y = 0.0, 0.0   # D35: Zentralpool auf der Kuppelachse (alle Ringe konzentrisch; OBJ-Abweichung 41 mm)
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
 
@@ -188,7 +191,8 @@ def bed_xy(b):
     return round(x*f, 1), round(y*f, 1)
 
 def bed_dims(k, b):
-    return b["length"], b["width"]   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel)
+    return (BED_OUT_L, BED_OUT_W) if "plants" in b else (b["length"], b["width"])   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel); Aussenbeet 2640 x 800 (W17, D29)
+BED_OUT_L, BED_OUT_W = 2640, 800
 
 def pool_fn(fz, nm, src, wall, depth, tn):
     x, y, d_out, z_bot, total = pool_dims(fz, src, wall, depth, nm)
@@ -261,7 +265,7 @@ def t9(fz):
     groups = {}
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = bed_xy(b)
-        v = "innen_933" if "plants" not in b else ("aussen_993" if b["width"] > 960 else "aussen_933")
+        v = "innen_933" if "plants" not in b else "aussen_800"
         groups.setdefault(v, []).append((x, y, fz + b["z0"], b["yaw"] + ROT))
     for v, items in groups.items():
         place_instances("Beet_" + v, os.path.join(ROOT, "designs", "components", f"ibc_beet_{v}.sc"), items, "05_Beete")
@@ -269,7 +273,7 @@ def t9(fz):
 # T8: 24 NFT-Tische Rev. B (W16, D18) als Instanzen nft_tisch_{aussen,mitte,innen}: je Sektor eine Tischinstanz, Tischkoordinaten X tangential, Y radial INNEN, yaw = Azimut + 90 Grad (volle 360 Grad); Ursprung = Mitte Standflaeche am Boden.
 # Portaltische (aussen, mitte) stehen auf der Beetmitte (Radius des Beets auf der Sektorachse), wie die Beete um outer_bed_shift/inner_bed_shift nach innen (Radialbudget D28/D29, M7); innen auf ap_c 1864.
 SECTORS = {"innen": list(range(10)), "mitte": [0, 1, 2, 7, 8, 9], "aussen": [0, 1, 2, 3, 6, 7, 8, 9]}
-NFT_APC = {"innen": 1864, "mitte": 3343, "aussen": 5209}   # data/components/nft_tisch.json typen.<typ>.ap_c
+NFT_APC = {k: v["ap_c"] for k, v in json.load(open(os.path.join(ROOT, "data", "components", "nft_tisch.json"), encoding="utf-8"))["typen"].items()}   # Radialbudget (W17): Tischmitte = Beetmitte
 NFT_POTS = []                                                # Rinnen-Topfpositionen (x, y, z Topfboden), von nft() gefuellt, von pots() gesetzt
 
 def nft(fz):
@@ -278,9 +282,6 @@ def nft(fz):
         items = []
         for i in sectors:
             az = 5.3 + 36.0 * i; ap = NFT_APC[typ]
-            if typ != "innen":
-                bed = min((b for b in LAYOUT["ibc_beds"] if abs(b["r"] - NFT_APC[typ]) < 400), key=lambda b: abs((b["az"] - az + 180) % 360 - 180))
-                ap = bed["r"] * math.cos(math.radians(bed["az"] - az)) - P["outer_bed_shift" if typ == "aussen" else "inner_bed_shift"] * (typ != "innen")
             x, y = LXY(ap * math.cos(math.radians(az)), ap * math.sin(math.radians(az))); yaw = az + 90 + ROT; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
             items.append((x, y, fz, yaw))
             for u, v, z in tp[typ]["pots"]: NFT_POTS.append((round(x + u*c - v*s, 1), round(y + u*s + v*c, 1), round(fz + z, 1)))
@@ -288,14 +289,21 @@ def nft(fz):
 
 # T10/T12: Netztoepfe und Salatkoepfe in den 8 Aussenbeeten als Instanzen (Positionen je Topf aus data/pots.json = OBJ, Beet-Koordinaten); Netztopf-Ursprung Mitte Boden, Salatkopf-Ursprung Kragenoberkante (Boden + 63)
 PLANTS = json.load(open(os.path.join(ROOT, "data", "pots.json")))
+def bed_pot_grid():
+    """Topfraster im Aussenbeet 2640 x 800 (D34): quadratisches Raster `pot_pitch` (Salatkopf 95-125 mm breit), `pot_margin` zur Wanne, symmetrisch zur Beetmitte; (u laengs, v quer)."""
+    nu, nv = int((BED_OUT_L - 2*P["pot_margin"]) // P["pot_pitch"]) + 1, int((BED_OUT_W - 2*P["pot_margin"]) // P["pot_pitch"]) + 1
+    return [((i - (nu - 1)/2) * P["pot_pitch"], (j - (nv - 1)/2) * P["pot_pitch"]) for i in range(nu) for j in range(nv)]
+
 def pots(fz, with_heads):
     pots_, heads = [], []
+    grid = bed_pot_grid()
     for k, b in enumerate(LAYOUT["ibc_beds"]):
+        if "plants" not in b: continue
         cx, cy = bed_xy(b); yaw = b["yaw"] + ROT; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
-        for u, v, z in PLANTS["per_bed"][k]:
-            x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1); zb = round(fz + z - 31.5, 1)
+        for u, v in grid:
+            x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1); zb = round(fz + P["pot_base_z"], 1)
             pots_.append((x, y, zb, 0)); heads.append((x, y, zb + 63, 0))
-    for x, y, zb in NFT_POTS: pots_.append((x, y, zb, 0)); heads.append((x, y, round(zb + 63, 1), 0))   # 466 Rinnen-Toepfe (D20)
+    for x, y, zb in NFT_POTS: pots_.append((x, y, zb, 0)); heads.append((x, y, round(zb + 63, 1), 0))   # Rinnen-Toepfe (D33: 586, Lochabstand 200)
     place_instances("Netztopf", os.path.join(ROOT, "designs", "components", "netztopf.sc"), pots_, "10_Pflanzen")
     if with_heads: place_instances("Salatkopf", os.path.join(ROOT, "designs", "components", "salatkopf.sc"), heads[:int(P["salat_n"])], "10_Pflanzen")
 

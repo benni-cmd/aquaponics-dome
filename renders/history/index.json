@@ -1918,5 +1918,15 @@
   "note": "W20 Tuer komplett, Paneel mit Tuerausschnitt",
   "commit": "ad8dec1",
   "source": "renders/components/haut_paneel/haut_paneel_BBB_tuer-01-draufsicht.png"
+ },
+ {
+  "file": "20261030-111842_montage_laufwege_round-41.png",
+  "sha": "f887997e0f1478a8",
+  "time": "2026-10-30 11:18:42",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "M7: Becken zentriert, Aussenbeet 800 x 2640 mit Raster 130, Tische W17/W18 (586 Rinnen-Toepfe), Zweitbecken auf Tuerachse 149,2; A 568 / B 573 / Wand 149",
+  "commit": "86f9c13",
+  "source": "renders/round-41.png"
  }
 ]

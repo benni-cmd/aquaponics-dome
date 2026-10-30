@@ -1,48 +1,50 @@
 PASS nft_fit: innen Reihe 1 (ap 1995): Rinne 928 + Ueberstaende + 2 x 60 <= Zehneck-Seite 1296: Ist 1, Soll 1
 PASS nft_fit: innen Reihe 2 (ap 1733): Rinne 758 + Ueberstaende + 2 x 60 <= Zehneck-Seite 1126: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 0/1: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 1/2: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 2/3: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 3/4: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 4/5: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 5/6: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 6/7: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 7/8: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 8/9: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: innen Tisch 9/0: Abstand der Footprints >= 60: Ist 1, Soll 1
+PASS nft_fit: innen Tisch 0/1: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 1/2: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 2/3: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 3/4: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 4/5: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 5/6: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 6/7: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 7/8: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 8/9: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: innen Tisch 9/0: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
    innen: kleinster Footprint-Abstand 114 mm, Rinnenlaengen [928, 758], Loecher je Reihe [4, 3]
-PASS nft_fit: innen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 581 mm >= 30): Ist 1, Soll 1
-PASS nft_fit: innen Fussplatten ausserhalb des Beckenrands (Aussenradius 2095, Plattenkante, Becken zentriert wie Budget: Abstand 31 mm >= 5): Ist 1, Soll 1
-   HINWEIS: mit dem OBJ-Becken (cx -36, cy 20, exzentrisch) waere der Plattenabstand zum Beckenrand -11 mm: M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen
+PASS nft_fit: innen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 615 mm >= 40, Soll leg_clearance 45): Ist 1, Soll 1
+PASS nft_fit: innen Fussplatten ausserhalb des Beckenrands (Aussenradius 2095, Plattenkante, Becken zentriert (D35): Abstand 31 mm >= 5): Ist 1, Soll 1
 PASS nft_fit: mitte Reihe 1 (ap 3672): Rinne 2018 + Ueberstaende + 2 x 60 <= Zehneck-Seite 2386: Ist 1, Soll 1
 PASS nft_fit: mitte Reihe 2 (ap 3408): Rinne 1847 + Ueberstaende + 2 x 60 <= Zehneck-Seite 2215: Ist 1, Soll 1
 PASS nft_fit: mitte Reihe 3 (ap 3146): Rinne 1676 + Ueberstaende + 2 x 60 <= Zehneck-Seite 2044: Ist 1, Soll 1
 PASS nft_fit: mitte Reihe 4 (ap 2882): Rinne 1505 + Ueberstaende + 2 x 60 <= Zehneck-Seite 1873: Ist 1, Soll 1
-PASS nft_fit: mitte Tisch 0/1: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: mitte Tisch 1/2: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: mitte Tisch 7/8: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: mitte Tisch 8/9: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: mitte Tisch 9/0: Abstand der Footprints >= 60: Ist 1, Soll 1
-   mitte: kleinster Footprint-Abstand 95 mm, Rinnenlaengen [2018, 1847, 1676, 1505], Loecher je Reihe [9, 8, 7, 6]
-PASS nft_fit: mitte Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 37 mm >= 30): Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 0/1: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 1/2: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 7/8: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 8/9: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: mitte Tisch 9/0: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+   mitte: kleinster Footprint-Abstand 114 mm, Rinnenlaengen [2018, 1847, 1676, 1505], Loecher je Reihe [9, 8, 7, 6]
+PASS nft_fit: mitte Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 45 mm >= 40, Soll leg_clearance 45): Ist 1, Soll 1
 PASS nft_fit: aussen Reihe 1 (ap 5261): Rinne 3051 + Ueberstaende + 2 x 60 <= Zehneck-Seite 3419: Ist 1, Soll 1
 PASS nft_fit: aussen Reihe 2 (ap 4973): Rinne 2864 + Ueberstaende + 2 x 60 <= Zehneck-Seite 3232: Ist 1, Soll 1
 PASS nft_fit: aussen Reihe 3 (ap 4685): Rinne 2676 + Ueberstaende + 2 x 60 <= Zehneck-Seite 3044: Ist 1, Soll 1
-PASS nft_fit: aussen Tisch 0/1: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: aussen Tisch 1/2: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: aussen Tisch 2/3: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: aussen Tisch 6/7: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: aussen Tisch 7/8: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: aussen Tisch 8/9: Abstand der Footprints >= 60: Ist 1, Soll 1
-PASS nft_fit: aussen Tisch 9/0: Abstand der Footprints >= 60: Ist 1, Soll 1
-   aussen: kleinster Footprint-Abstand 95 mm, Rinnenlaengen [3051, 2864, 2676], Loecher je Reihe [15, 14, 13]
-PASS nft_fit: aussen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 32 mm >= 30): Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 0/1: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 1/2: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 2/3: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 6/7: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 7/8: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 8/9: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+PASS nft_fit: aussen Tisch 9/0: Abstand der Footprints 114 >= 112 (2 x corner_gap x cos 18 Grad = 114): Ist 1, Soll 1
+   aussen: kleinster Footprint-Abstand 114 mm, Rinnenlaengen [3051, 2864, 2676], Loecher je Reihe [15, 14, 13]
+PASS nft_fit: aussen Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand 45 mm >= 40, Soll leg_clearance 45): Ist 1, Soll 1
+FAIL nft_fit: aussen Abstand der Tischkanten zur Kuppelhaut -87 mm >= 15 (Sektor 6, Rinnenende Reihe 1 x -1650): Ist 0, Soll 1
+PASS nft_fit: mitte Abstand der Tischkanten zur Kuppelhaut 1493 mm >= 15 (Sektor 2, Rinnenende Reihe 1 x -1133): Ist 1, Soll 1
+PASS nft_fit: innen Abstand der Tischkanten zur Kuppelhaut 3303 mm >= 15 (Sektor 4, Bein x -84 y -296): Ist 1, Soll 1
    Tische gesamt 24 (Soll 24), Rinnen-Topfloecher gesamt 586
 PASS nft_fit: NFT-Topfloecher gesamt 586 >= 459 (R15/D27: Mindestzahl NFT): Ist 1, Soll 1
 PASS nft_fit: NFT-Topfloecher gesamt 586 >= 580 (D32: Soll ca. 580 bei pitch 200): Ist 1, Soll 1
 PASS nft_fit: Laufweg A Beckenrand (Aussenradius 2095) - Innenportal (2696): 600 mm >= 500 (Soll 600): Ist 1, Soll 1
-PASS nft_fit: Laufweg A frei am Innenpfosten (Plattenaussenkante 2195 - Innenportal 2696): 500 mm >= 500 (D29: nie unter 500; OBJ-Beete/Becken-Exzentrizitaet nicht eingerechnet): Ist 1, Soll 1
+PASS nft_fit: Laufweg A frei am Innenpfosten (Plattenaussenkante 2195 - Innenportal 2696): 500 mm >= 500 (D29: nie unter 500; Becken zentriert, D35): Ist 1, Soll 1
 PASS nft_fit: Laufweg B Innenportal (bis 3858) - Aussenportal (ab 4458): 600 mm >= 500 (Soll 600): Ist 1, Soll 1
 PASS nft_fit: Wandluft Aussenportal (bis 5488) - Domwand-Apothem 5706: 218 mm >= 100 (Soll 218): Ist 1, Soll 1
 PASS nft_fit: Tische gesamt (innen 10 + mitte 6 + aussen 8): Ist 24, Soll 24
-== nft_fit: 42/42 PASS
+== nft_fit: 44/45 PASS

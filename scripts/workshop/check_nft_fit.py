@@ -25,22 +25,38 @@ def bed_dist(pt, bed):
         return max(ex, ey)
     return math.hypot(max(ex, 0), max(ey, 0))
 
+def dome_planes():
+    """Feldebenen der Kuppelhaut (Ebene durch die drei Strebenachsen je Dreiecksfeld, Normale nach aussen): [(n, d)]; die Kuppel ist konvex, ein Punkt liegt innen, wenn d - n.p >= 0 fuer alle Felder."""
+    lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))["dome"]
+    N = lay["nodes_list"]
+    hp = json.load(open(os.path.join(sc.ROOT, "data", "components", "haut_paneel.json"), encoding="utf-8"))
+    out = []
+    for f in hp["felder"]:
+        P = [(N[n]["x"], N[n]["y"], N[n]["z"]) for n in f["nodes"]]
+        u = [P[1][k] - P[0][k] for k in range(3)]
+        v = [P[2][k] - P[0][k] for k in range(3)]
+        n = [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]]
+        L = math.sqrt(sum(c * c for c in n))
+        n = [c / L for c in n]
+        c = [sum(q[k] for q in P) / 3 for k in range(3)]
+        if sum(n[k] * c[k] for k in range(3)) < 0:
+            n = [-c_ for c_ in n]
+        out.append((n, sum(n[k] * P[0][k] for k in range(3))))
+    return out
+
 def main():
     p, d = sc.load_params("nft_tisch")
     lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))
-    par = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))
     bj = json.load(open(os.path.join(sc.ROOT, "data", "components", "ibc_beet.json"), encoding="utf-8"))["typen"]
-    ish, osh = par["inner_bed_shift"]["value"], par["outer_bed_shift"]["value"]
-    beds = []                                                      # W17: Beete nach Radialbudget (M7 verschiebt radial, Aussenbeete 800 x 2640 laut D29)
-    for b in lay["ibc_beds"]:
-        outer = "plants" in b
-        f = (b["r"] - (osh if outer else ish)) / b["r"]
-        nb = dict(b, cx=b["cx"] * f, cy=b["cy"] * f, r=b["r"] - (osh if outer else ish))
-        if outer:
-            nb.update(length=bj["aussen_800"]["laenge"], width=bj["aussen_800"]["breite"])
-        beds.append(nb)
+    beds = []                                                      # D37 (30.10.): alle 14 Beete exakt auf der Sektorachse (Azimut 5,3 + 36 k), Apothem = ap_c, yaw = Azimut + 90; Aussenbeete 800 x 2640 (D29), Innenbeete 933 x 1865
+    for typ_b, key in (("aussen", "aussen_800"), ("mitte", "innen_933")):
+        ac = d["typen"][typ_b]["ap_c"]
+        for i_ in SECTORS[typ_b]:
+            az_ = AZ0 + 36.0 * i_
+            a_ = math.radians(az_)
+            beds.append(dict(cx=ac * math.cos(a_), cy=ac * math.sin(a_), yaw=az_ + 90.0, length=bj[key]["laenge"], width=bj[key]["breite"], r=ac, az=az_))
     pool = lay["pool"]
-    pcx, pcy = pool["cx"], pool["cy"]
+    pcx, pcy = 0.0, 0.0                                            # D35: Becken zentriert (Ringe konzentrisch; layout.json cx/cy -36/20 ist OBJ-Ungenauigkeit)
     ck = sc.Check("nft_fit")
     total_tables, total_holes = 0, 0
     for typ in ("innen", "mitte", "aussen"):
@@ -52,8 +68,7 @@ def main():
             az = AZ0 + 36.0 * i
             ap = G["apc"]
             if G["art"] == "portal":                               # Tischmitte auf der Beetmitte (Radialbudget: ap_c = Beetmitte nach Verschiebung)
-                b = min((b for b in beds if abs(b["r"] - G["apc"]) < 400), key=lambda b: abs(((b["az"] - az + 180) % 360) - 180))
-                ap = b["r"] * math.cos(math.radians(b["az"] - az))
+                ap = G["apc"]                                          # Tischmitte = Beetmitte exakt (D37: Beete auf der Sektorachse)
             tabs[i] = (az, ap)
         total_tables += len(sect)
         total_holes += sum(r["n_holes"] for r in G["rows"]) * len(sect)
@@ -72,7 +87,8 @@ def main():
             B = [world(tabs[j][0], tabs[j][1], x, y) for (x, y) in fp]
             dmin = min(math.hypot(a[0] - b[0], a[1] - b[1]) for a in A for b in B)
             dmin_all = min(dmin_all, dmin)
-            ck.eq(f"{typ} Tisch {i}/{j}: Abstand der Footprints >= {G['gap']:.0f}", 1 if dmin >= G["gap"] else 0, 1)
+            nom = 2 * G["gap"] * math.cos(math.radians(18.0))             # nominal: zwei Tische mit je corner_gap an der gemeinsamen Sektorgrenze (Grenze unter 18 Grad zur Achse)
+            ck.eq(f"{typ} Tisch {i}/{j}: Abstand der Footprints {dmin:.0f} >= {nom - 2:.0f} (2 x corner_gap x cos 18 Grad = {nom:.0f})", 1 if dmin >= nom - 2.0 else 0, 1)
         print(f"   {typ}: kleinster Footprint-Abstand {dmin_all:.0f} mm, Rinnenlaengen {[r['L'] for r in G['rows']]}, Loecher je Reihe {[r['n_holes'] for r in G['rows']]}")
         # (3) Beine ausserhalb der Beete
         dleg = 1e9
@@ -83,17 +99,39 @@ def main():
                 for (dx, dy) in ((-fpl, -fpl), (fpl, -fpl), (fpl, fpl), (-fpl, fpl), (0, 0)):
                     w = world(az, ap, x + dx, y + dy)
                     dleg = min(dleg, min(bed_dist(w, b) for b in beds))
-        ck.eq(f"{typ} Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand {dleg:.0f} mm >= 30)", 1 if dleg >= 30 else 0, 1)
+        ck.eq(f"{typ} Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand {dleg:.0f} mm >= 40, Soll leg_clearance {p['leg_clearance']:.0f})", 1 if dleg >= 40 else 0, 1)
         # (4) innen: Pfosten ausserhalb des Pools
         if G["art"] == "ausleger":
             rim = TG.pool_outer_r()
             fpl = p["foot_plate"] / 2.0
             def dpool_for(cx, cy):
                 return min(math.hypot(world(az, ap, x + dx, y + dy)[0] - cx, world(az, ap, x + dx, y + dy)[1] - cy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"] for (dx, dy) in ((-fpl, -fpl), (fpl, -fpl), (fpl, fpl), (-fpl, fpl)))
-            dpool_b = dpool_for(0.0, 0.0)                                 # Budget D28/D29: Becken zentriert (M7 setzt die Endlage)
-            dpool_e = dpool_for(pcx, pcy)                                 # OBJ-Becken exzentrisch (layout.json pool cx/cy)
-            ck.eq(f"innen Fussplatten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Plattenkante, Becken zentriert wie Budget: Abstand {dpool_b:.0f} mm >= 5)", 1 if dpool_b >= 5 else 0, 1)
-            print(f"   HINWEIS: mit dem OBJ-Becken (cx {pcx:.0f}, cy {pcy:.0f}, exzentrisch) waere der Plattenabstand zum Beckenrand {dpool_e:.0f} mm: M7 muss das Becken zentrieren oder die Innenbeete 40 mm nach aussen setzen")
+            dpool_b = dpool_for(pcx, pcy)                                 # D35: Becken zentriert
+            ck.eq(f"innen Fussplatten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Plattenkante, Becken zentriert (D35): Abstand {dpool_b:.0f} mm >= 5)", 1 if dpool_b >= 5 else 0, 1)
+    # (6) Abstand der Tischkanten zur Kuppelhaut (W23-Befund 2): Rinnenenden samt Tuelle/Sammelrohr und Holm-Aussenflaechen gegen die Feldebenen (Strebenachsen), >= 15 mm (halbes Strebenrohr)
+    planes = dome_planes()
+    clr = lambda q: min(dd - (n[0] * q[0] + n[1] * q[1] + n[2] * q[2]) for n, dd in planes)
+    for typ in ("aussen", "mitte", "innen"):
+        G = TG.geometry(typ, p, d["typen"][typ])
+        zr = lambda x: G["zc"] - (x - G["rows"][0]["xc"]) * G["slope"]
+        worst = (1e9, "")
+        for i in SECTORS[typ]:
+            az = AZ0 + 36.0 * i
+            pts = []
+            for r in G["rows"]:
+                for x in (r["xc"] - r["L"] / 2 - TG.E_IN, r["xc"] + r["L"] / 2 + TG.E_OUT):
+                    for dy in (-65, 65):
+                        pts.append((x, r["y"] + dy, zr(x) + 130, f"Rinnenende Reihe {r['k'] + 1} x {x:.0f}"))
+            for (x, y) in G["legs"]:
+                for dx in (-20, 20):
+                    for dy in (-20, 20):
+                        pts.append((x + dx, y + dy, zr(x), f"Bein x {x:.0f} y {y:.0f}"))
+            for (x, y, z, nm) in pts:
+                w = world(az, G["apc"], x, y)
+                c = clr((w[0], w[1], z))
+                if c < worst[0]:
+                    worst = (c, f"Sektor {i}, {nm}")
+        ck.eq(f"{typ} Abstand der Tischkanten zur Kuppelhaut {worst[0]:.0f} mm >= 15 ({worst[1]})", 1 if worst[0] >= 15 else 0, 1)
     print(f"   Tische gesamt {total_tables} (Soll 24), Rinnen-Topfloecher gesamt {total_holes}")
     ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 459 (R15/D27: Mindestzahl NFT)", 1 if total_holes >= 459 else 0, 1)
     ck.eq(f"NFT-Topfloecher gesamt {total_holes} >= 580 (D32: Soll ca. 580 bei pitch {TG.rinne_pitch():g})", 1 if total_holes >= 580 else 0, 1)
@@ -107,7 +145,7 @@ def main():
     ck.eq(f"Laufweg A Beckenrand (Aussenradius {TG.pool_outer_r():.0f}) - Innenportal ({Gm['apc'] - half(Gm):.0f}): {a_:.0f} mm >= 500 (Soll 600)", 1 if a_ >= 500 else 0, 1)
     Gi = TG.geometry("innen", p, d["typen"]["innen"])
     a_post = (Gm["apc"] - half(Gm)) - (Gi["ap_leg"] + p["foot_plate"] / 2.0)
-    ck.eq(f"Laufweg A frei am Innenpfosten (Plattenaussenkante {Gi['ap_leg'] + p['foot_plate'] / 2.0:.0f} - Innenportal {Gm['apc'] - half(Gm):.0f}): {a_post:.0f} mm >= 500 (D29: nie unter 500; OBJ-Beete/Becken-Exzentrizitaet nicht eingerechnet)", 1 if a_post >= 500 else 0, 1)
+    ck.eq(f"Laufweg A frei am Innenpfosten (Plattenaussenkante {Gi['ap_leg'] + p['foot_plate'] / 2.0:.0f} - Innenportal {Gm['apc'] - half(Gm):.0f}): {a_post:.0f} mm >= 500 (D29: nie unter 500; Becken zentriert, D35)", 1 if a_post >= 500 else 0, 1)
     ck.eq(f"Laufweg B Innenportal (bis {Gm['apc'] + half(Gm):.0f}) - Aussenportal (ab {Ga['apc'] - half(Ga):.0f}): {b_:.0f} mm >= 500 (Soll 600)", 1 if b_ >= 500 else 0, 1)
     ck.eq(f"Wandluft Aussenportal (bis {Ga['apc'] + half(Ga):.0f}) - Domwand-Apothem {wall_ap:.0f}: {c_:.0f} mm >= 100 (Soll 218)", 1 if c_ >= 100 else 0, 1)
     ck.eq("Tische gesamt (innen 10 + mitte 6 + aussen 8)", total_tables, 24)

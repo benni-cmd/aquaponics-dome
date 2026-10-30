@@ -52,3 +52,5 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 **HINWEIS 31.10. 00:30:** Jetzt M3 Tuer: `tuer_fn` durch `tuer_komplett.sc` ersetzen (Feld BBB 149,2, D36), nur bauen, noch kein check_latte. Danach NICHT weiter: erst Werkstatt-Meldung W25a (aussen4) und W26 (Innenbeet-Fase) abwarten, dann extract_nft_pots, build, check_walkways, EIN check_latte, danach M4/M5 (Rohre).
 
 **HINWEIS 31.10. 01:10 (D46):** Drittbecken + Puffer-Station kommen als M8 (docs/jobs/M8-drittbecken-puffer.md) nach Werkstatt W28. Reihenfolge: W25a/W26 -> Neubau -> W28 -> M8 -> EIN check_latte.
+
+**HINWEIS 31.10. 01:40:** M8 (Drittbecken + Puffer-Station) kommt vor W26: sobald Werkstatt W25a und W28 gemeldet haben -> extract_nft_pots, Neubau mit aussen4, M8, check_walkways. Der grosse check_latte folgt erst nach W26 (Innenbeet-Fase).

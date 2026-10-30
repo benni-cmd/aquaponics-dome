@@ -34,11 +34,11 @@ for k, m in mv.items():
     cls = k.split(":")[0]
     if cls in vdim:
         l, w, out = vdim[cls]; (outer if out else inner).append(rect(m, l, w + 2 * PORTAL)); beds.append(rect(m, l, w))
-# Zentralpool/Zweitbecken aus layout.json (Position wie gen_dome: um ROT gedreht; Zweitbecken 2 % nach aussen)
+# Zentralpool/Zweitbecken aus layout.json (Position wie gen_dome: um ROT gedreht; Zweitbecken pool2_r_factor nach aussen)
 ROT = math.radians(P["door_az"] - 167)
 rot = lambda x, y: (x * math.cos(ROT) - y * math.sin(ROT), x * math.sin(ROT) + y * math.cos(ROT))
 pc = (0.0, 0.0); pr = LAY["pool"]["d"] / 2 + P["wall"]   # D35: Zentralpool auf der Achse
-p2 = rot(math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * 1.02 * math.cos(math.radians(149.2)), math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * 1.02 * math.sin(math.radians(149.2))); p2r = LAY["pool2"]["d"] / 2 + 60
+p2 = rot(math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * P["pool2_r_factor"] * math.cos(math.radians(149.2)), math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * P["pool2_r_factor"] * math.sin(math.radians(149.2))); p2r = LAY["pool2"]["d"] / 2 + 60
 res = []
 def chk(name, ist, soll, ok): res.append(ok); print(("PASS" if ok else "FAIL"), name, "| Ist:", ist, "| Soll:", soll)
 wmin = P["walkway_min"]

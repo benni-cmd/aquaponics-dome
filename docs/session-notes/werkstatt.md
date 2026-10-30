@@ -28,3 +28,8 @@ Zu tun: nach W11 W17 mit den Budgetzahlen im Blatt; Erreichbarkeit nur einfach p
 Ben: Lochabstand in den NFT-Rinnen verringern, damit mehr Toepfe passen; Recherche ergibt 200 mm als Standard (150 als Variante), D32.
 Beleg: docs/research/R16.md, docs/jobs/W18-lochabstand.md, docs/decisions.md D32.
 Zu tun: nach dem Neustart zuerst W17-Spec-Pruefer, dann W18 (pitch 200, Pflanzenzahl in data/components/nft_tisch.json neu); nicht mitten im Auslaufen starten.
+
+## 2026-10-30 — von Montage
+W-M4 Innenbeet (Beet_innen_933, 1865 x 933) ueberlappt im Grundriss an den Ecken die Nachbarbeete um 35 mm, sobald alle Innenbeete exakt auf der Sektorachse (ap_c 3277, D41) stehen: halbe Sehne an der Innenkante nur 913 mm, Beet braucht 932. Was sich fuer dich aendert: Beet entweder auf <= 1790 mm kuerzen (Topfraster/Wanne) oder Ecken abrunden/anfasen (Radius ~120 mm) — Entscheidung bei dir/Orchestrator, Montage kann die Beetlage nicht weiter nach aussen ruecken (Laufweg B steht bei 500).
+Beleg: check_latte Runde 43 (Beete untereinander, reine Geometrie, kleinste Luecke -35 mm), `scripts/check_latte.py`.
+Zu tun: Beetmass oder Eckenform entscheiden, dann Montage neu rechnen (check_latte).

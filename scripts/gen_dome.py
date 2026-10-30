@@ -179,8 +179,8 @@ def LXY(cx, cy):
 
 def pool_dims(fz, src, wall, depth, nm):
     x, y = LXY(src["cx"], src["cy"])
-    if nm.startswith("Zweit"):   # D36: Zweitbecken auf die Tuerachse (OBJ-Azimut 149,2, Tuer im Basisfeld BBB), Radius wie im OBJ, 2 % nach aussen: Abstand zum Zentralpool
-        r = math.hypot(src["cx"], src["cy"]) * 1.02; x, y = LXY(r * math.cos(math.radians(DOOR_OBJ_AZ)), r * math.sin(math.radians(DOOR_OBJ_AZ)))
+    if nm.startswith("Zweit"):   # D36: Zweitbecken auf die Tuerachse (OBJ-Azimut 149,2, Tuer im Basisfeld BBB), Radius wie im OBJ mal pool2_r_factor (D42: Abstand zum Innentisch und Zentralpool)
+        r = math.hypot(src["cx"], src["cy"]) * P["pool2_r_factor"]; x, y = LXY(r * math.cos(math.radians(DOOR_OBJ_AZ)), r * math.sin(math.radians(DOOR_OBJ_AZ)))
     else: x, y = 0.0, 0.0   # D35: Zentralpool auf der Kuppelachse (alle Ringe konzentrisch; OBJ-Abweichung 41 mm)
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
@@ -231,9 +231,12 @@ def tank_offsets():
     T = LAYOUT["tanks"]; pl = [t["platform"][0] for t in T]; off = {i: [0.0, 0.0] for i in range(len(T))}
     rc = lambda i: rect_corners(pl[i]["cx"] + off[i][0], pl[i]["cy"] + off[i][1], pl[i]["length"], pl[i]["width"], pl[i]["yaw"])
     obstacles = lambda i: [(rc(j), (pl[j]["cx"] + off[j][0], pl[j]["cy"] + off[j][1])) for j in range(len(T)) if j != i and pl[j]["length"] >= pl[i]["length"] and not (pl[j]["length"] == pl[i]["length"] and j < i)] +         [(rect_corners(*bed_obj(b)[:2], b["length"], b["width"], bed_obj(b)[2]), bed_obj(b)[:2]) for b in LAYOUT["ibc_beds"] if "plants" not in b]
+    p2r = math.hypot(LAYOUT["pool2"]["cx"], LAYOUT["pool2"]["cy"]) * P["pool2_r_factor"]; p2 = (p2r * math.cos(math.radians(DOOR_OBJ_AZ)), p2r * math.sin(math.radians(DOOR_OBJ_AZ))); p2h = LAYOUT["pool2"]["d"] / 2 + 60
+    def pool2_obst(i):   # D42: Zweitbecken als Quadrat (Seite = Aussendurchmesser) mit einer Seite zum Tank gedreht = beruehrt den Kreis nur in Tankrichtung
+        yaw = math.degrees(math.atan2(pl[i]["cy"] + off[i][1] - p2[1], pl[i]["cx"] + off[i][0] - p2[0])); return (rect_corners(p2[0], p2[1], 2 * p2h, 2 * p2h, yaw), p2)
     for _ in range(3):
         for i in range(len(T)):
-            for R, (ox, oy) in obstacles(i):
+            for R, (ox, oy) in obstacles(i) + [pool2_obst(i)]:
                 gap = rect_gap(rc(i), R)
                 if gap < P["tank_clear"]:
                     dx, dy = pl[i]["cx"] + off[i][0] - ox, pl[i]["cy"] + off[i][1] - oy; d = math.hypot(dx, dy); mv = P["tank_clear"] - gap

@@ -215,6 +215,15 @@
   "maturity": 0,
   "used_by": "scripts/components/strebe.py"
  },
+ "pool2_r_factor": {
+  "value": 1.07,
+  "unit": "",
+  "origin": "A",
+  "source": "D42: Zweitbecken auf der Tuerachse, OBJ-Radius mal Faktor (1.02 stiess an Beine von Innentisch 5)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_walkways.py"
+ },
  "walkway_min": {
   "value": 600,
   "unit": "mm",

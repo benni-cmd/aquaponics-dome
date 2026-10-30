@@ -53,3 +53,5 @@ REIHENFOLGE 19:55: W11 (laeuft) -> **W17 Radialbudget** (docs/jobs/W17-radialbud
 REIHENFOLGE 22:05: nach dem Neustart: W17-Spec-Pruefer -> **W18 Lochabstand 200 mm** (docs/jobs/W18-lochabstand.md, D32, R16) -> Haut-Paneel R11.
 
 REIHENFOLGE 30.10. 11:30: **W20 Tuer komplett** (docs/jobs/W20-tuer-komplett.md, D36) -> W21 Pruefer W19 (docs/jobs/W21-pruefer-w19.md) -> weitere Auftraege nach Fachrecherche (Pumpen/Hauptkreislauf).
+
+REIHENFOLGE 30.10. 13:10: W20/W21 fertig (check_haut 28/28, check_tuer 30/30). Jetzt **W22 Haut nacharbeiten** (docs/jobs/W22-haut-nacharbeit.md, D37) -> **W23 Spec-Pruefer W17+W18** (docs/jobs/W23-spec-pruefer-w17-w18.md) -> W24 Pumpen-Blatt (nach Fachrecherche-Integration, D38).

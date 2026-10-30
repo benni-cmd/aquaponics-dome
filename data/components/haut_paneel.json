@@ -2,7 +2,7 @@
  "klasse": "haut_paneel",
  "teilenummer": "T40",
  "revision": "A",
- "beschreibung": "Haut-Paneele der Kuppel: dreieckige Doppelstegplatten 8 mm je Kuppelfeld (Halbkugel 2V), ein Bauteil je Dreieckstyp, mit Randprofil (Aluminium-Kappe) auf den Streben",
+ "beschreibung": "Haut-Paneele der Kuppel: dreieckige Doppelstegplatten 8 mm je Kuppelfeld (Halbkugel 2V), ein Bauteil je Dreieckstyp, mit Randprofil (Aluminium-Kappe) auf den Streben, das beide Paneelkanten klemmt",
  "quelle_masse": "data/layout.json dome (nodes_list, strut_len_mm, struts 65), docs/research/R11.md (Doppelstegplatte 8 mm, Paneele enden 15 mm vor der Strebenachse), docs/decisions.md D35",
  "typen": {
   "AAB": {
@@ -741,9 +741,9 @@
    "herkunft": "[A] Doppelstegplatte 8 mm (D35, R11: 6 mm ca. 80 % Lichtdurchlass, 16 mm 65 %)"
   },
   "edge_inset": {
-   "wert": 15,
+   "wert": 0,
    "einheit": "mm",
-   "herkunft": "[A] R11: Paneele enden 15 mm vor der Strebenachse (halbe Kappenbreite 30/2)"
+   "herkunft": "[A] D37 (30.10.): Paneel reicht bis zur Strebenachse, die Kappe T41 (30 breit) klemmt beide Nachbarkanten mit 15 mm Auflage je Seite; vorher 15 (buendig an der Kappenkante, Auflage 0, Befund Pruefer W19; R11 widerspricht sich: 'Paneele enden 15 mm vor der Achse' gegen 'Randprofil haelt die Paneelkanten')"
   },
   "cap_w": {
    "wert": 30,

@@ -25,7 +25,7 @@ PASS tuer: Feld ist BBB (Basiskante und beide Hangkanten 3708): Ist 1, Soll 1
 PASS tuer: Tuerfelder in haut_paneel.json (nur BBB 149,2): Ist 1, Soll 1
 PASS tuer: Tuerfeld = BBB bei Azimut 149,2: Ist 1, Soll 1
 PASS tuer: Interferenzen im Tuerdesign (Zarge, Blatt, Anschlag, Dichtung, Beschlaege): Ist 0, Soll 0
-PASS tuer: Paneel BBB mit Ausschnitt: Flaechenverlust (m2) gegen numerische Rechnung (Zarge 1076 x 2068 in das Paneeldreieck): Ist 2.20903, Soll 2.20903 (+-0.005)
+PASS tuer: Paneel BBB mit Ausschnitt: Flaechenverlust (m2) gegen numerische Rechnung (Zarge 1076 x 2068 in das Paneeldreieck): Ist 2.22517, Soll 2.22517 (+-0.005)
 PASS tuer: Paneel BBB_tuer: Dicke: Ist 8, Soll 8 (+-0.01)
 PASS tuer: Paneel BBB_tuer: ein Koerper: Ist 1, Soll 1
 == tuer: 30/30 PASS

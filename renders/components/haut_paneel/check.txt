@@ -5,20 +5,20 @@ PASS haut: Basisfelder je Typ summieren auf die Randkanten (ein Basisfeld je Ran
 PASS haut: Tuerfeld (D36: nur das Basisfeld BBB 149,2): Ist 1, Soll 1
 PASS haut: Strebenzahl A + B = layout.json dome.struts: Ist 65, Soll 65
 PASS haut: AAB Dicke: Ist 8, Soll 8 (+-0.01)
-PASS haut: AAB Flaeche (Heron des Strebendreiecks x ((r - 15)/r)^2): Ist 4.86141, Soll 4.86141 (+-0.001)
-PASS haut: AAB Randkanten gleich Strebenlaenge x k (max. Abweichung mm): Ist 0.000193726, Soll 0 (+-0.5)
-PASS haut: AAB Randabstand zur Strebenachse = Inkreisradius Strebe - Inkreisradius Paneel (mm): Ist 15, Soll 15 (+-0.05)
+PASS haut: AAB Flaeche (Heron des Strebendreiecks x ((r - 15)/r)^2): Ist 5.01421, Soll 5.01421 (+-0.001)
+PASS haut: AAB Randkanten gleich Strebenlaenge x k (max. Abweichung mm): Ist 0.000609677, Soll 0 (+-0.5)
+PASS haut: AAB Randabstand zur Strebenachse = Inkreisradius Strebe - Inkreisradius Paneel (mm), D37: 0: Ist 8.31954e-05, Soll 0 (+-0.05)
 PASS haut: AAB Koerper: Ist 1, Soll 1
 PASS haut: AAB Material Polycarbonat: Ist 1, Soll 1
-PASS haut: AAB Masse bei Dichte 0,19 (kg): Ist 7.38934, Soll 7.38934 (+-0.01)
+PASS haut: AAB Masse bei Dichte 0,19 (kg): Ist 7.6216, Soll 7.6216 (+-0.01)
 PASS haut: BBB Dicke: Ist 8, Soll 8 (+-0.01)
-PASS haut: BBB Flaeche (Heron des Strebendreiecks x ((r - 15)/r)^2): Ist 5.78791, Soll 5.78792 (+-0.001)
-PASS haut: BBB Randkanten gleich Strebenlaenge x k (max. Abweichung mm): Ist 0.000475773, Soll 0 (+-0.5)
-PASS haut: BBB Randabstand zur Strebenachse = Inkreisradius Strebe - Inkreisradius Paneel (mm): Ist 15.0001, Soll 15 (+-0.05)
+PASS haut: BBB Flaeche (Heron des Strebendreiecks x ((r - 15)/r)^2): Ist 5.95361, Soll 5.95361 (+-0.001)
+PASS haut: BBB Randkanten gleich Strebenlaenge x k (max. Abweichung mm): Ist 0.000170809, Soll 0 (+-0.5)
+PASS haut: BBB Randabstand zur Strebenachse = Inkreisradius Strebe - Inkreisradius Paneel (mm), D37: 0: Ist 3.28721e-05, Soll 0 (+-0.05)
 PASS haut: BBB Koerper: Ist 1, Soll 1
 PASS haut: BBB Material Polycarbonat: Ist 1, Soll 1
-PASS haut: BBB Masse bei Dichte 0,19 (kg): Ist 8.79763, Soll 8.79763 (+-0.01)
-PASS haut: Randabstand Paneel (edge_inset) = halbe Kappenbreite T41 (cap_w/2): Paneel endet an der Kappenkante, Auflage 0 mm: Ist 15, Soll 15 (+-0.01)
+PASS haut: BBB Masse bei Dichte 0,19 (kg): Ist 9.04948, Soll 9.04948 (+-0.01)
+PASS haut: Auflage Paneel auf der Kappe T41 = halbe Kappenbreite - edge_inset = 15 mm je Seite (D37): Ist 15, Soll 15 (+-0.01)
 PASS haut: Profil A Laenge: Ist 3279, Soll 3279 (+-0.01)
 PASS haut: Profil Breite: Ist 30, Soll 30 (+-0.01)
 PASS haut: Profil Hoehe: Ist 8, Soll 8 (+-0.01)

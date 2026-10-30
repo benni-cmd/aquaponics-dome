@@ -40,12 +40,12 @@ def main():
         ck.eq(f"{typ} Randkanten gleich Strebenlaenge x k (max. Abweichung mm)", max(abs(x - y) for x, y in zip(sides, exp)), 0, 0.5)
         per = sum(sides)
         r_pan = 2 * (b["volume_mm3"] / pp["panel_t"]) / per
-        ck.eq(f"{typ} Randabstand zur Strebenachse = Inkreisradius Strebe - Inkreisradius Paneel (mm)", r - r_pan, pp["edge_inset"], 0.05)
+        ck.eq(f"{typ} Randabstand zur Strebenachse = Inkreisradius Strebe - Inkreisradius Paneel (mm), D37: 0", r - r_pan, pp["edge_inset"], 0.05)
         ck.eq(f"{typ} Koerper", len(ev["bodies"]), 1)
         ck.eq(f"{typ} Material Polycarbonat", 1 if b["material"] == "Polycarbonat" else 0, 1)
         ck.eq(f"{typ} Masse bei Dichte 0,19 (kg)", b["mass_g"] / 1000, b["volume_mm3"] / 1e6 * 0.19, 0.01)
     # --- Randprofil
-    ck.eq("Randabstand Paneel (edge_inset) = halbe Kappenbreite T41 (cap_w/2): Paneel endet an der Kappenkante, Auflage 0 mm", pp["edge_inset"], sc.load_params("haut_profil")[0]["cap_w"] / 2, 0.01)
+    ck.eq("Auflage Paneel auf der Kappe T41 = halbe Kappenbreite - edge_inset = 15 mm je Seite (D37)", sc.load_params("haut_profil")[0]["cap_w"] / 2 - pp["edge_inset"], 15, 0.01)
     path = os.path.join(sc.ROOT, "designs", "components", "haut_profil.sc")
     pr, dr = sc.load_params("haut_profil")
     ev = sc.evaluate(path)

@@ -41,10 +41,11 @@ def geometry(typ, p, T, pitch=None):
     """Reihen und Boecke eines Tischtyps aus den Tischparametern p (nft_tisch.json parameter) und Typ-Daten T."""
     pitch = pitch or rinne_pitch()
     n, rp, apc = T["n"], T["rinnen_abstand"], T["ap_c"]
+    yv = T.get("reihen_versatz", 0.0)                            # Reihengruppe gegen die Tischmitte verschoben (+Y = radial nach innen); W24 aussen4
     gap = p["corner_gap"]
     rows = []
     for k in range(n):
-        y = (k - (n - 1) / 2.0) * rp
+        y = (k - (n - 1) / 2.0) * rp + yv
         ap = apc - y                                           # Y zeigt radial nach innen
         side = 2 * ap * T18
         L = round(side - 2 * gap - E_IN - E_OUT)
@@ -55,7 +56,7 @@ def geometry(typ, p, T, pitch=None):
     zc, slope = T["z_rinne_mitte"], p["slope_pct"] / 100.0
     Lmin = min(r["L"] for r in rows)
     xb = [rows[0]["xc"] - (Lmin / 2.0 - p["bock_inset"]), rows[0]["xc"] + (Lmin / 2.0 - p["bock_inset"])]       # zwei Boecke innerhalb der kuerzesten Reihe
-    G = dict(typ=typ, n=n, rp=rp, apc=apc, rows=rows, Wt=Wt, zc=zc, slope=slope, gap=gap, xb=xb, Lmin=Lmin, bed_w=bw)
+    G = dict(typ=typ, n=n, rp=rp, apc=apc, ymid=yv, rows=rows, Wt=Wt, zc=zc, slope=slope, gap=gap, xb=xb, Lmin=Lmin, bed_w=bw)
     if bw:      # Portalbock: Beine ausserhalb der Beet-Aussenbreite
         yl = bw / 2.0 + p["leg_clearance"] + p["foot_plate"] / 2.0          # Abstand bis zur Fussplattenkante
         G.update(art="portal", legs=[(x, s * yl) for x in xb for s in (-1, 1)], yl=yl)
@@ -85,7 +86,7 @@ def footprint_pts(G, p):
         x1 = r["xc"] + r["L"] / 2.0 + 34.0
         pts += rect_pts(x0, x1, r["y"] - 65, r["y"] + 65)
     t = T18
-    y0, y1 = -G["Wt"] / 2.0 - 60, G["Wt"] / 2.0 + 60
+    y0, y1 = G["ymid"] - G["Wt"] / 2.0 - 60, G["ymid"] + G["Wt"] / 2.0 + 60
     for sgn, rad in ((-1, 12.5), (1, 25.0)):           # Zulaufverteiler (-X), Sammelrohr (+X): Linien entlang der Sektorgrenze
         for k in range(int((y1 - y0) / 25) + 1):
             y = y0 + k * 25.0

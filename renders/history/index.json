@@ -1958,5 +1958,15 @@
   "note": "Tische nach innen, ap_c aussen 4874",
   "commit": "ce5d61e",
   "source": "renders/components/nft_passung/radialbudget-01-draufsicht.png"
+ },
+ {
+  "file": "20261030-141142_werkstatt_nft-tisch_aussen4-querschnitt.png",
+  "sha": "142dcd5d68cfce63",
+  "time": "2026-10-30 14:11:42",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W24 Aussentisch 3 gegen 4 Rinnen, Querschnitt",
+  "commit": "eb54483",
+  "source": "renders/components/nft_passung/aussen4-querschnitt.png"
  }
 ]

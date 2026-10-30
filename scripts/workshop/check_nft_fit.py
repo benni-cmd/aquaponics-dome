@@ -44,8 +44,12 @@ def dome_planes():
         out.append((n, sum(n[k] * P[0][k] for k in range(3))))
     return out
 
-def main():
+def main(variant="aussen"):
+    """variant: "aussen" (Standard, 3 Rinnen) oder "aussen4" (W24, 4 Rinnen): die Variante ersetzt den Typ "aussen" in d["typen"], alles andere bleibt."""
     p, d = sc.load_params("nft_tisch")
+    d["typen"] = dict(d["typen"])
+    if variant != "aussen":
+        d["typen"]["aussen"] = d["typen"][variant]
     lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))
     bj = json.load(open(os.path.join(sc.ROOT, "data", "components", "ibc_beet.json"), encoding="utf-8"))["typen"]
     beds = []                                                      # D37 (30.10.): alle 14 Beete exakt auf der Sektorachse (Azimut 5,3 + 36 k), Apothem = ap_c, yaw = Azimut + 90; Aussenbeete 800 x 2640 (D29), Innenbeete 933 x 1865
@@ -57,7 +61,7 @@ def main():
             beds.append(dict(cx=ac * math.cos(a_), cy=ac * math.sin(a_), yaw=az_ + 90.0, length=bj[key]["laenge"], width=bj[key]["breite"], r=ac, az=az_))
     pool = lay["pool"]
     pcx, pcy = 0.0, 0.0                                            # D35: Becken zentriert (Ringe konzentrisch; layout.json cx/cy -36/20 ist OBJ-Ungenauigkeit)
-    ck = sc.Check("nft_fit")
+    ck = sc.Check("nft_fit" if variant == "aussen" else f"nft_fit[{variant}]")
     total_tables, total_holes = 0, 0
     for typ in ("innen", "mitte", "aussen"):
         T = d["typen"][typ]
@@ -100,6 +104,11 @@ def main():
                     w = world(az, ap, x + dx, y + dy)
                     dleg = min(dleg, min(bed_dist(w, b) for b in beds))
         ck.eq(f"{typ} Beine/Fussplatten ausserhalb aller Beet-Rechtecke (kleinster Abstand {dleg:.0f} mm >= 40, Soll leg_clearance {p['leg_clearance']:.0f})", 1 if dleg >= 40 else 0, 1)
+        # (3b) Portal: aeusserste Rinnenkante (Mitte +- 65) bleibt >= 15 mm von der Beininnenflaeche (Rinne ragt nicht in die Beine; W24)
+        if G["art"] == "portal":
+            edge = max(abs(r["y"]) + 65 for r in G["rows"])
+            leg_in = G["yl"] - p["leg_w"] / 2.0
+            ck.eq(f"{typ} Rinnenkante {edge:.0f} (aeusserste Reihe Mitte + 65) <= Beininnenflaeche {leg_in:.0f} - 15 (Luft {leg_in - edge:.0f} mm)", 1 if edge <= leg_in - 15 else 0, 1)
         # (4) innen: Pfosten ausserhalb des Pools
         if G["art"] == "ausleger":
             rim = TG.pool_outer_r()
@@ -149,7 +158,12 @@ def main():
     ck.eq(f"Laufweg B Innenportal (bis {Gm['apc'] + half(Gm):.0f}) - Aussenportal (ab {Ga['apc'] - half(Ga):.0f}): {b_:.0f} mm >= 500 (Soll 600)", 1 if b_ >= 500 else 0, 1)
     ck.eq(f"Wandluft Aussenportal (bis {Ga['apc'] + half(Ga):.0f}) - Domwand-Apothem {wall_ap:.0f}: {c_:.0f} mm >= 100 (Soll 218)", 1 if c_ >= 100 else 0, 1)
     ck.eq("Tische gesamt (innen 10 + mitte 6 + aussen 8)", total_tables, 24)
+    reach = min(r["ap"] for r in [max(Ga["rows"], key=lambda r: r["ap"])]) - (Ga["apc"] - half(Ga))          # entfernteste Reihenmitte (aeusserste Reihe) vom inneren Portalrand, Laufweg-B-Seite
+    print(f"   Variante {variant}: Rinnen {len(Ga['rows']) * 8} aussen, Rinnenlaenge aussen je Tisch {sum(r['L'] for r in Ga['rows'])} mm, Tischbreite Rinnenband {Ga['Wt']:.0f}, entfernteste Reihe vom Laufweg B {reach:.0f} mm")
     return ck.done()
 
 if __name__ == "__main__":
-    sys.exit(main())
+    rc = 0
+    for v in ("aussen", "aussen4"):
+        rc |= main(v)
+    sys.exit(rc)

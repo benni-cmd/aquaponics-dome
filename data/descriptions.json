@@ -9,7 +9,8 @@
     "Pflanzen": "Netztöpfe und Salatköpfe als Platzhalter für die bepflanzten Löcher. Nur Darstellung, keine Funktion im Wasserkreislauf.",
     "Becken und Gelände": "Hauptbecken (Pool), zweites Becken vor der Tür und das Erdreich, in das alles eingelassen ist.",
     "Tuer": "Der Eingang der Kuppel.",
-    "Technik": "Steuerung und Elektrik (Platzhalter)."
+    "Technik": "Steuerung und Elektrik (Platzhalter).",
+    "Hülle (Plane)": "Doppelte PE-Folie über den Streben mit Keilschienen (D39); die Doppelstegplatten sind eine ruhende Variante."
   },
   "bauteile": [
     {
@@ -216,11 +217,11 @@
         "Substrattiefe": "300 mm",
         "Pflanzen": "288 Töpfe je Außenbeet laut OBJ",
         "Porenwasser bei Flutung": "≈ 0,2–0,25 m³ je Beet (Porosität 0,4)",
-        "Umsatz (Substrat gesamt)": "8,2 m³ Substrat → Faustregel 8,2 kg Futter/Tag (1 l Medium je g, ca. 3-fach Reserve); FAO-Tabelle 19–31 kg/Tag; Auslegung 3,5 kg/Tag",
+        "Umsatz (Substrat gesamt)": "8,2 m³ Substrat → Faustregel 8,2 kg Futter/Tag (1 l Medium je g, ca. 3-fach Reserve); FAO-Tabelle 19–31 kg/Tag; Auslegung 4,75 kg/Tag",
         "Wasserbedarf Flutzyklus": "≈ 109 l/min im Mittel bei 2 Zyklen/Stunde (alle 14 Beete; je Flutung 5–8 min, Fort Valley State Extension)",
         "Pflanzfläche": "27,3 m² nach Modellmaßen (Bens Tabelle 37,97 m²); Futter je m² 25–65 g/Tag (SRAC 454 / FAO 589)",
         "Pflanzdichte": "2160 Töpfe sind Kapazität (79 je m²); empfohlen Blatt 20–25, Frucht 4–8 je m² (FAO 589)",
-        "Tragfähigkeit Fisch": "8,2 m³ Substrat tragen nach SRAC 454 (Fisch : Kies = 1 : 2) etwa 250 kg Fisch"
+        "Tragfähigkeit Fisch": "8,2 m³ Substrat tragen nach SRAC 454 (Fisch : Kies = 1 : 2) etwa 250 kg Fisch; die übrigen 225 kg der Auslegung (475 kg) tragen NFT-Flächen und Fruchtgemüse"
       },
       "grenzen": "Siphonmaße aus der Scope-Card, nicht gegen die fertige Datei gemessen; Topfraster der neuen Außenbeete rechnet die Montage (D34).",
       "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md"
@@ -258,14 +259,14 @@
       ],
       "masse": {
         "Anzahl": "24 (10 innen über dem Pool, 6 Mitte, 8 außen)",
-        "Rinnen je Tisch": "innen 2, Mitte 4, außen 3",
+        "Rinnen je Tisch": "innen 2, Mitte 4, außen 3 (Ben prüft 4 außen, W24: dann 76 Rinnen, ≈ 148 m, ca. 677 Töpfe, +8 l/min)",
         "Lochabstand": "200 mm",
         "Topflöcher": "586 gesamt",
         "Gefälle": "1,5 %",
         "Eckluft": "60 mm (D34)",
         "Wasserbedarf": "1 l/min je Rinne (FAO 589: 1–2), alle 68 Rinnen ≈ 68 l/min (bei 2 l/min 136 l/min)",
         "Wasser im Film": "≈ 1 l je Meter Rinne, gesamt ≈ 130 l",
-        "Futter je m² Pflanzfläche": "NFT 25–45 g/Tag (SRAC 454: 25 % des Raft-Werts; FAO 589: 40–50 Blatt)"
+        "Futter je m² Pflanzfläche": "NFT 25–45 g/Tag (SRAC 454: 25 % des Raft-Werts; FAO 589: 40–50 Blatt, 50–80 Frucht); Auslegung 475 kg braucht ca. 68 g/m² (3 Außenrinnen) bzw. 62 g/m² (4)"
       },
       "grenzen": "Rev. C ist noch ohne Spec-Prüfer-Lauf nach der letzten Änderung; endgültige Lage setzt die Montage (M7).",
       "quelle": "docs/parts/nft_tisch.md, docs/research/R06.md, R16.md"
@@ -426,7 +427,7 @@
         "Umwälzung": "Hauptkreislauf: 2 große Pumpen je Linie à 55 l/min = 110 l/min (D38)",
         "Wasservolumen": "≈ 702 l",
         "Biomedium": "≈ 0,26 m³ je Tank (Korb Ø0,8 × 0,52 m)",
-        "Umsatz": "Medium 0,52 m³ gesamt → Faustregel 1,0 kg Futter/Tag (0,5 l je g, mit Reserve), FAO-Tabelle 3,1 und Losordo/DeLong 4,9 kg/Tag; Auslegung 3,5 kg/Tag, die Substratbeete übernehmen den Rest"
+        "Umsatz": "Medium 0,52 m³ gesamt → Faustregel 1,0 kg Futter/Tag (0,5 l je g, mit Reserve), FAO-Tabelle 3,1 und Losordo/DeLong 4,9 kg/Tag; Auslegung 4,75 kg/Tag, die Substratbeete übernehmen den Rest"
       },
       "grenzen": "Biomedium als ein Körper (Platzhalter), kein Einzelmedium.",
       "quelle": "docs/parts/tank.md"
@@ -466,7 +467,7 @@
         "Absetzer-Teilstrom (D38)": "4 × 12,5 l/min, je Absetzer-Tank eine in Betrieb",
         "Hydraulische Leistung": "≈ 18 W je große Pumpe (ρ·g·Q·H bei 55 l/min, 2,0 m)",
         "Elektrische Leistung": "≈ 72 W je große Pumpe, ≈ 17 W je kleine (Wirkungsgrad 25 %, FAO 589: 16–33 %)",
-        "Fischwasser-Umlauf": "28,5 m³ in ≈ 2,2 h bei 220 l/min; TAN-Durchfluss erfordert 122 l/min bei 3,5 kg Futter (372 l/min bei Bens 10,7 kg)"
+        "Fischwasser-Umlauf": "28,5 m³ in ≈ 2,2 h bei 220 l/min; TAN-Durchfluss erfordert 165 l/min bei 4,75 kg Futter (372 l/min bei Bens 10,7 kg); 220 l/min tragen bis 6,3 kg Futter/Tag"
       },
       "grenzen": "Rollen nach Entscheidung D38 (vorläufig): Bens Tabelle nennt 2 Pumpen, das OBJ 4 Tafeln. Fabrikat und Pumpenkennlinie offen; Fischmenge und Pflanzfläche warten auf Bens Antwort zu den Fragen 1–6 (docs/research/aquaponik-empfehlung.md).",
       "quelle": "docs/parts/pumpe.md, docs/research/R21.md, docs/decisions.md D38"
@@ -569,9 +570,9 @@
     },
     {
       "match": "^haut_paneel|^haut_profil",
-      "titel": "Kuppelhaut",
-      "was": "Dreieckige Doppelstegplatten je Kuppelfeld mit Aluminium-Kappe auf jeder Strebe.",
-      "status": "gebaut (W19), noch nicht im Gesamtmodell",
+      "titel": "Kuppelhaut (Variante Doppelstegplatten)",
+      "was": "Variante: dreieckige Doppelstegplatten je Kuppelfeld mit Aluminium-Kappe auf jeder Strebe. Die Hülle ist laut D39 eine Plane; diese Bauteile ruhen.",
+      "status": "Variante, ruht seit D39 (Hülle = Plane); gebaut (W19), nicht im Gesamtmodell",
       "ablauf": [
         "Hält Wind und Regen ab und lässt Licht durch.",
         "Die Paneelkanten liegen auf der Kappe der Strebe auf (je 15 mm Auflage) und werden dort gehalten."
@@ -596,8 +597,51 @@
         "Paneele": "40 (minus Türfeld)",
         "Randprofile": "65"
       },
-      "grenzen": "Folie wäre eine spätere Variante (R11); kein Spec-Prüfer.",
+      "grenzen": "Nicht mehr die geplante Hülle: Ben hat sich für eine Plane entschieden (D39, Empfehlung R24). Die Paneele bleiben als Variante erhalten (U-Wert ca. 3,0–4,0 W/m²K, Folie wäre eine spätere Variante, R11).",
       "quelle": "docs/parts/haut_paneel.md, docs/research/R11.md"
+    },
+    {
+      "match": "^huelle|^keilschiene",
+      "titel": "Hülle (Plane)",
+      "was": "Doppelte, luftgepolsterte PE-Folie über den 65 Streben, an Aluminium-Keilschienen geklemmt. Ersetzt die Paneele (D39).",
+      "status": "Entscheidung D39, Empfehlung R24; noch nicht im Modell",
+      "ablauf": [
+        "Je Kuppelfeld (40 Dreiecke) wird die Folie zugeschnitten und über zwei Lagen mit etwa 100 mm Luftpolster gelegt.",
+        "Die Folie liegt in der Keilschiene auf der Strebe und wird mit Federdraht festgeklemmt; benachbarte Felder überlappen ziegelartig.",
+        "Ein kleines Gebläse hält das Luftpolster aufgeblasen und damit die Isolation.",
+        "Die Tür sitzt mit Zarge in einem Planenausschnitt."
+      ],
+      "aufbau": [
+        {
+          "t": "Folie",
+          "p": [
+            "PE doppelt, UV-stabil, 6 mil (ca. 150 µm), Infrarotsperre, Anti-Drip/Anti-Fog",
+            "40 Facetten, ca. 208 m² netto"
+          ]
+        },
+        {
+          "t": "Befestigung",
+          "p": [
+            "Aluminium-Keilschiene mit Federdraht auf allen 65 Streben, ca. 228 m",
+            "Schaumband auf der Strebenkante gegen Scheuern"
+          ]
+        },
+        {
+          "t": "Technik",
+          "p": [
+            "Gebläse für das Luftpolster, ca. 80 W (60–100 W, Annahme)"
+          ]
+        }
+      ],
+      "masse": {
+        "Fläche": "≈ 208 m² (40 Dreiecke minus Türfeld)",
+        "U-Wert": "4,0 W/m²K (2,8 mit IR-Sperre, bis 5,7)",
+        "Heizlast": "≈ 0,83 kW je Kelvin (0,58–1,19); bei ΔT 30 K ≈ 25 kW Spitze, Jahres-Obergrenze ca. 70 MWh (Annahme Mitteleuropa, Standort offen)",
+        "Lichtdurchlass": "75–80 % doppelt, 90 % einlagig",
+        "Lebensdauer": "ca. 4 Jahre (UV-Gewächshausfolie)"
+      },
+      "grenzen": "Standort, Windlast auf Stahlprofil 30 × 30, Gebläseleistung und Preis sind offen (R24). Kondenswasser: Doppelfolie mindert es, Lüftung nötig.",
+      "quelle": "docs/research/R24.md, docs/decisions.md D39"
     },
     {
       "match": "^pool",
@@ -623,7 +667,7 @@
         "Tiefe": "2,2 m (D26)",
         "Lage": "wird auf die Kuppelachse zentriert (D35)",
         "Wasser": "≈ 26,2 m³ (mit zweitem Becken 28,5 m³ Fischwasser)",
-        "Besatz (Auslegung)": "350 kg Tilapia ≈ 500 Fische à 0,7 kg = 12 kg/m³ (FAO 589: höchstens 20); Bens Tabelle 1287 kg = 45 kg/m³ braucht UVI-Technik (SRAC 454) und mehr Pflanzfläche"
+        "Besatz (Auslegung)": "475 kg Tilapia (D40, Spanne 450–500) ≈ 680 Fische à 0,7 kg, gestaffelt = 17 kg/m³ (FAO 589: höchstens 20). Die Pflanzfläche trägt mit Bens Pflanzmix (35 % Frucht) nur ca. 380 kg, mit 4. Außenrinne ca. 420 kg; voll gedeckt erst bei ca. 60–85 % Fruchtgemüse. Bens Tabelle: 1287 kg = 45 kg/m³ (braucht UVI-Technik und mehr Pflanzfläche)"
       },
       "grenzen": "Rand und Wandstärke sind Annahmen.",
       "quelle": "docs/decisions.md D08, D26"
@@ -710,10 +754,12 @@
         }
       ],
       "masse": {
-        "Strom ohne Heizung": "≈ 570 W = 13,6 kWh/Tag (Spanne 0,26–1,3 kW)",
-        "Belüftung": "≈ 206 W (0,59 W je kg Fisch, UVI-Wert)",
+        "Strom ohne Heizung": "≈ 720 W = 17,3 kWh/Tag = 519 kWh/Monat (Spanne 0,38–0,92 kW)",
+        "Belüftung": "≈ 280 W (0,59 W je kg Fisch, UVI-Wert)",
         "Pumpen": "≈ 290 W Hauptkreislauf + 33 W Absetzer",
-        "Heizung": "nicht enthalten: 0,7–0,9 kW je Kelvin Temperaturunterschied zur Außenluft (Standort und Hüllmaterial offen)"
+        "Gebläse Luftpolster Doppelfolie": "≈ 80 W (60–100 W, Annahme)",
+        "Steuerung": "40 W",
+        "Heizung": "nicht enthalten: ≈ 0,83 kW je Kelvin (0,58–1,19) für die Plane aus doppelter PE-Folie, 208 m²; bei ΔT 30 K ≈ 25 kW Spitze (Standort offen)"
       }
     }
   ]

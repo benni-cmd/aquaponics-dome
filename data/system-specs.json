@@ -1,6 +1,6 @@
 {
  "stand": "30.10.2026",
- "hinweis": "Auslegung nach Fachrecherche (docs/research/aquaponik-empfehlung.md), Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, vorläufig bis Ben die Fragen 1–6 der Empfehlung beantwortet hat. Keine fachliche Freigabe.",
+ "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D40 (Biomasse 475 kg, Spanne 450–500, nur mit viel Fruchtgemüse und 4. Außenrinne voll gedeckt); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
  "wasser": {
   "gesamt_m3": 34.1,
   "teile": [
@@ -49,31 +49,37 @@
   "substrat_m3": 8.2,
   "flaeche_substrat_m2": 27.3,
   "flaeche_substrat_tabelle_m2": 37.97,
-  "flaeche_nft_m2": 42.41,
+  "flaeche_nft_m2": 42.4,
   "flaeche_gesamt_m2": 69.7,
+  "noetig_g_m2": 68,
+  "noetiger_fruchtanteil": 0.84,
+  "tragbar_bens_mix_kg": 381,
   "toepfe_je_m2_beet": 79,
   "dichte_empfohlen": "Blatt 20-25, Frucht 4-8 je m2 (FAO 589)"
  },
  "fische": {
-  "anzahl": 500,
-  "biomasse_kg": 350,
-  "futter_kg_tag": 3.5,
-  "dichte_kg_m3": 12,
-  "tan_g_tag": 131,
+  "anzahl": 679,
+  "biomasse_kg": 475,
+  "futter_kg_tag": 4.75,
+  "dichte_kg_m3": 17,
+  "tan_g_tag": 178,
   "spanne": {
    "biomasse_kg": [
-    250,
-    570
+    450,
+    500
    ],
    "futter_kg_tag": [
-    2.5,
-    5.7
+    4.5,
+    5.0
    ],
    "dichte_kg_m3": [
-    9,
-    20
+    16,
+    18
    ]
   },
+  "obergrenze_fao_kg": 571,
+  "substrat_traegt_kg": 252,
+  "bedingung": "84% Fruchtgemüse nötig bei 3 Außenrinnen; Bens Mix 35% trägt 381 kg (D40)",
   "tabelle_ben": {
    "anzahl": 1839,
    "biomasse_kg": 1287,
@@ -96,7 +102,7 @@
   "hauptkreislauf_pumpen": "4 x 55 l/min (D38)",
   "absetzer_teilstrom_l_min": 25.0,
   "fischwasser_umlauf_h": 2.2,
-  "tan_durchfluss_l_min": 122,
+  "tan_durchfluss_l_min": 165,
   "tan_durchfluss_tabelle_l_min": 372,
   "tabelle_ben": {
    "kreislauf_modell_l_min": 143,
@@ -107,28 +113,39 @@
   "pumpe_hydraulisch_w": 36,
   "pumpe_elektrisch_w": 144,
   "pumpe_klein_w": 33,
-  "belueftung_w": 206,
+  "belueftung_w": 280,
   "steuerung_w": 40,
-  "gesamt_w": 567,
-  "kwh_tag": 13.6,
-  "kwh_monat": 408,
+  "geblaese_luftpolster_w": 80,
+  "gesamt_w": 721,
+  "kwh_tag": 17.3,
+  "kwh_monat": 519,
   "spanne_w": [
-   260,
-   1300
+   380,
+   920
   ],
   "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
   "heizung": {
-   "huelle_m2": 226,
+   "huelle_m2": 208,
    "w_je_k": [
-    701,
-    905
+    582,
+    832,
+    1185
    ],
-   "beispiel_dT20_kw": [
-    14.0,
-    18.1
+   "w_je_k_reihenfolge": "IR-Sperre, Mitte, oben",
+   "beispiel_dT30_kw": [
+    17.5,
+    25.0,
+    35.5
    ],
+   "jahr_obergrenze_mwh": [
+    49,
+    70,
+    100
+   ],
+   "dT_k": 30,
+   "gradtagzahl_kd": 3500,
    "wasser_speicher_kwh_je_k": 39.7,
-   "hinweis": "Halbkugel-Huelle, U 3,1-4,0 W/m2K (Doppel-PC bis Doppel-PE), Standort und Material offen; nicht in 'gesamt_w' enthalten"
+   "hinweis": "Huelle = Plane PE doppelt luftgepolstert (R24), 208 m2 aus 40 Facetten; Standort offen (Annahme Mitteleuropa -10/20 C), Jahreswert ohne Sonnengewinn, Infiltration und Thermoschirm; nicht in 'gesamt_w' enthalten"
   },
   "tabelle_ben": {
    "strom_eur_monat": 219,
@@ -137,18 +154,18 @@
  },
  "sauerstoff": {
   "fisch_kg_tag": [
-   0.7,
-   1.1,
-   1.6
-  ],
-  "nitrifikation_kg_tag": 0.6,
-  "gesamt_kg_tag": [
-   1.3,
-   1.7,
+   0.9,
+   1.5,
    2.2
   ],
+  "nitrifikation_kg_tag": 0.8,
+  "gesamt_kg_tag": [
+   1.7,
+   2.4,
+   3.0
+  ],
   "spitze_faktor": 1.5,
-  "belueftung_aus_bedarf_w": 72
+  "belueftung_aus_bedarf_w": 98
  },
  "filter": {
   "absetzer_klein_l": 267,
@@ -174,9 +191,71 @@
    3.1,
    4.5
   ],
-  "passender_fischanteil": 0.9,
+  "passender_fischanteil": 0.66,
+  "pflanzen_kg_futter_tag_bens_mix": 3.8,
+  "passender_fischanteil_bens_mix": 0.8,
   "substrat_traegt_fisch_kg": 252
  },
+ "huelle": {
+  "material": "PE-Folie doppelt luftgepolstert, UV-stabil, 6 mil (ca. 150 um), IR-Sperre, Anti-Drip/Anti-Fog (Empfehlung R24; Entscheidung D39: Plane)",
+  "flaeche_m2": 208,
+  "u_w_m2k": {
+   "ir_sperre": 2.8,
+   "mitte": 4.0,
+   "oben": 5.7
+  },
+  "befestigung": "Alu-Keilschiene mit Federdraht auf allen 65 Streben, ca. 228 m; Zuschnitt je Dreieck mit Ueberlappung",
+  "lebensdauer_jahre": 4,
+  "lichtdurchlass_prozent": "75-80 (doppelt), 90 (einlagig)",
+  "geblaese_luftpolster_w": [
+   60,
+   80,
+   100
+  ],
+  "paneele": "Doppelstegplatten (W19/W20, D35) bleiben als Variante, nicht eingerechnet",
+  "standort": "offen (Frage an Ben)"
+ },
+ "szenario": {
+  "aussen_rinnen": 3,
+  "drei_rinnen": {
+   "rinnen_aussen": 3,
+   "rinnenlaenge_m": 127.9,
+   "nft_topf": 586,
+   "nft_flaeche_m2": 42.4,
+   "flaeche_gesamt_m2": 69.7,
+   "noetig_g_m2": 68,
+   "noetiger_fruchtanteil": 0.84,
+   "tragbar_bens_mix_kg": 381,
+   "tragbar_blatt_kg": 314,
+   "tragbar_frucht_kg": 506
+  },
+  "vier_rinnen": {
+   "rinnen_aussen": 4,
+   "rinnenlaenge_m": 147.8,
+   "nft_topf": 677,
+   "nft_flaeche_m2": 49.0,
+   "flaeche_gesamt_m2": 76.3,
+   "noetig_g_m2": 62,
+   "noetiger_fruchtanteil": 0.63,
+   "tragbar_bens_mix_kg": 417,
+   "tragbar_blatt_kg": 344,
+   "tragbar_frucht_kg": 554
+  },
+  "hinweis": "4. Rinne: Staffel der Aussenrinnen fortgesetzt (ca. 2,49 m), Flaeche und Toepfe anteilig [A]; W24 prueft die Machbarkeit am Radialbudget",
+  "frucht_blatt_g_m2": [
+   72.5,
+   45
+  ],
+  "bens_mix_frucht_anteil": 0.35
+ },
+ "offene_fragen": [
+  "Standort und Aussenklima (Heizlast, Jahresenergie)",
+  "4. Aussenrinne machbar (W24)?",
+  "Anteil Fruchtgemuese/Knollen im Pflanzplan (nötig ca. 60-85 %, Bens Mix 35 %)",
+  "Zweites Becken: Besatz oder Brut/Quarantaene",
+  "Notstrom und Alarm fuer die Belueftung",
+  "Geblaese und Windlast der Plane"
+ ],
  "konsistenz": [
   {
    "pruefung": "Pflanzenzahl gegen Ben-Tabelle",
@@ -186,22 +265,22 @@
   {
    "pruefung": "Besatzdichte höchstens 20 kg/m³ (FAO 589)",
    "ok": true,
-   "detail": "12 kg/m³ im Beckenwasser 28.5 m³ (350 kg); Bens Tabelle 45 kg/m³ (1287 kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"
+   "detail": "17 kg/m³ im Beckenwasser 28.5 m³ (475 kg); Bens Tabelle 45 kg/m³ (1287 kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"
   },
   {
    "pruefung": "Biofilter-/Substratvolumen deckt das Futter (Faustregel)",
    "ok": true,
-   "detail": "deckt 9.2 von 3.5 kg Futter/Tag (264%); nach FAO-Tabelle Bioballs 3.1, Substrat 19–31 kg/Tag (Faustregel hat ca. 3-fach Reserve)"
+   "detail": "deckt 9.2 von 4.8 kg Futter/Tag (195%); nach FAO-Tabelle Bioballs 3.1, Substrat 19–31 kg/Tag (Faustregel hat ca. 3-fach Reserve)"
   },
   {
-   "pruefung": "Pflanzfläche deckt das Futter (45 g/m²/Tag, Mitte)",
+   "pruefung": "Pflanzfläche deckt das Futter (D40: 475 kg, 3 Außenrinnen)",
    "ok": false,
-   "detail": "deckt 3.1 von 3.5 kg Futter/Tag (90%); Spanne 50% (25 g, SRAC) bis 130% (65 g, FAO Frucht) auf 69.7 m²"
+   "detail": "nötig 68 g Futter/m²/Tag auf 69.7 m²: dazu ca. 84% Fruchtgemüse (Blatt 45, Frucht 72.5 g); Bens Mix (35% Frucht, 55 g) trägt nur 381 kg; mit 3 Rinnen 381 kg, mit 4. Außenrinne 417 kg (alles Fruchtgemüse 554 kg, nur Blatt 344 kg)"
   },
   {
    "pruefung": "Substratvolumen trägt die Fischmenge (SRAC 1 : 2)",
    "ok": false,
-   "detail": "8.2 m³ Substrat tragen nach SRAC 454 etwa 252 kg Fisch gegen 350 kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"
+   "detail": "8.2 m³ Substrat tragen nach SRAC 454 etwa 252 kg Fisch gegen 475 kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"
   },
   {
    "pruefung": "Bens Tabellenfutter gegen Pflanzfläche",
@@ -216,7 +295,7 @@
   {
    "pruefung": "Hauptkreislauf trägt das Futter (TAN-Durchfluss)",
    "ok": true,
-   "detail": "Bedarf 122 l/min bei 3.5 kg Futter (TAN 1.5 mg/l, Biofilter 50%); 220 l/min tragen bis 6.3 kg Futter/Tag; für Bens 10.7 kg wären 372 l/min nötig"
+   "detail": "Bedarf 165 l/min bei 4.8 kg Futter (TAN 1.5 mg/l, Biofilter 50%); 220 l/min tragen bis 6.3 kg Futter/Tag; für Bens 10.7 kg wären 372 l/min nötig"
   },
   {
    "pruefung": "Absetzer-Verweilzeit mindestens 20 min (UVI)",
@@ -226,11 +305,18 @@
   {
    "pruefung": "Belüftung deckt den Sauerstoffbedarf",
    "ok": true,
-   "detail": "206 W liefern bei 1 kg O₂/kWh 5.0 kg/Tag gegen Bedarf 1.3–2.2 kg/Tag (Spitze ×1.5: 3.3)"
+   "detail": "280 W liefern bei 1 kg O₂/kWh 6.7 kg/Tag gegen Bedarf 1.7–3.0 kg/Tag (Spitze ×1.5: 4.5)"
+  },
+  {
+   "pruefung": "Hülle (Plane, D39) und Heizlast: Standort",
+   "ok": false,
+   "detail": "PE doppelt 208 m²: 0.83 kW je Kelvin (0.58–1.19); bei ΔT 30 K (Annahme Mitteleuropa −10/20 °C) 25.0 kW Spitze, Jahres-Obergrenze 70 MWh ohne Sonnengewinn; Standort offen, Heizung nicht in den Stromwerten"
   }
  ],
  "herkunft": {
-  "biomasse_350_kg": "E aus R20 (Pflanzenflaeche), Spanne 250-570 kg; Q FAO 589, SRAC 454",
+  "biomasse_475_kg": "B/Entscheidung D40 (Ben: 450-500 kg); Obergrenze Q FAO 589 (20 kg/m3 = 570 kg), tragbar aus Pflanzflaeche E R20/R24: 380-420 kg",
+  "huelle_plane": "Entscheidung D39; Material, U, Befestigung Q R24 (Kentucky State Univ., Purdue CEA, Domerama); Standort/Gradtage A",
+  "vierte_rinne": "A Staffel fortgesetzt, Flaeche anteilig skaliert; bis W24-Zahlen da sind",
   "futter_1_prozent": "Q FAO 589 (R18)",
   "tan_3_75_prozent": "Q SRAC 451, FAO 589, Losordo/DeLong (R18/R19)",
   "nft_1_l_min": "Q FAO 589, HortTech (R21)",
@@ -241,7 +327,7 @@
   "o2_fisch": "Q Kim & Jo 1999a/b, Aly 2007 (R22)",
   "belueftung": "Q SRAC 454 UVI 0,59 W/kg (R22)",
   "o2_je_g_tan_4_57": "A Stoechiometrie, nicht aus Quelle gelesen",
-  "heizung": "E aus Purdue CEA U-Werten (R22), Standort offen",
+  "heizung": "E aus Purdue CEA / KSU U-Werten fuer die Plane (R24), 208 m2, Standort offen",
   "tabelle_ben": "B reference/Kuppelberechnung-neu-2.xlsx (R15)"
  }
 }

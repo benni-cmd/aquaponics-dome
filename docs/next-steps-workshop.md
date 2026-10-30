@@ -55,3 +55,4 @@ REIHENFOLGE 22:05: nach dem Neustart: W17-Spec-Pruefer -> **W18 Lochabstand 200 
 REIHENFOLGE 30.10. 11:30: **W20 Tuer komplett** (docs/jobs/W20-tuer-komplett.md, D36) -> W21 Pruefer W19 (docs/jobs/W21-pruefer-w19.md) -> weitere Auftraege nach Fachrecherche (Pumpen/Hauptkreislauf).
 
 REIHENFOLGE 30.10. 13:10: W20/W21 fertig (check_haut 28/28, check_tuer 30/30). Jetzt **W22 Haut nacharbeiten** (docs/jobs/W22-haut-nacharbeit.md, D37) -> **W23 Spec-Pruefer W17+W18** (docs/jobs/W23-spec-pruefer-w17-w18.md) -> W24 Pumpen-Blatt (nach Fachrecherche-Integration, D38).
+REIHENFOLGE 30.10. 14:00: nach W23 -> **W24 Aussentisch 4 Rinnen** (docs/jobs/W24-aussentisch-4-rinnen.md, Ben-Idee) -> W25 Pumpen-Blatt (D38). Haut-Paneel ruht (D39: Huelle ist eine Plane); Plane-Bauteile erst nach R24.

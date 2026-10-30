@@ -98,26 +98,18 @@ def ring_fn(sock_z):
     gx, gy = pol(P["dome_base_d"]/2*math.cos(math.radians(18)) + 150, P["door_edge_az"])
     rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_edge_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
 
-def tuer_fn(sock_z, rd, da):
-    """Tuer_Komplett (R13): rechteckiger Rahmen aus 2 Pfosten, Sturz, Schwelle im Basisdreieck mit Spitze Z 3154; Blatt 1000 x 2000 nach aussen oeffnend, 3 Scharniere, Griff."""
-    az = P["door_edge_az"]; a = math.radians(az); ap = P["dome_base_d"]/2 * math.cos(math.radians(18))   # Mitte der Basiskante
-    t = (-math.sin(a), math.cos(a)); n = (math.cos(a), math.sin(a))
-    W = lambda u, v: (round(ap*n[0] + u*t[0] + v*n[0], 1), round(ap*n[1] + u*t[1] + v*n[1], 1))
-    w, h = P["door_w"], P["door_h"]
-    for nm, u in (("T4_Pfosten_L", -(w/2 + 45)), ("T4_Pfosten_R", w/2 + 45)):
-        x, y = W(u, 0); rect_body(nm, x, y, sock_z, az + 90, 90, 90, h + 100)
-    x, y = W(0, 0); rect_body("T4_Sturz", x, y, sock_z + h + 100, az + 90, w + 180, 90, 90)
-    x, y = W(0, 0); rect_body("T4_Schwelle", x, y, sock_z, az + 90, w + 180, 110, 40)
-    ox, oy = W(0, 75)
-    add("sketch.create", plane={"origin": [ox, oy, sock_z + 40], "x_dir": [round(t[0], 6), round(t[1], 6), 0], "y_dir": [0, 0, 1]}, name="T4_Blatt_sk")
-    f = 60
-    add("sketch.rectangle.two_point", p0=[-w/2, 0], p1=[w/2, h - 40])
-    add("sketch.rectangle.two_point", p0=[-w/2 + f, f], p1=[w/2 - f, h - 40 - f])
-    add("sketch.finish")
-    add("solid.extrude", distance=45, direction="symmetric", operation="new", name="T4_Blatt", body_name="T4_Blatt")
-    for i, z in enumerate((300, 1000, 1700), 1):
-        x, y = W(-(w/2 + 5), 75); add("solid.cylinder", radius=14, height=110, base=[x, y, sock_z + z], operation="new", name=f"T4_Scharnier_{i}", body_name=f"T4_Scharnier_{i}")
-    x, y = W(w/2 - 80, 110); add("solid.cylinder", radius=16, height=160, base=[x, y, sock_z + 1000], axis=[round(t[0], 6), round(t[1], 6), 0], operation="new", name="T4_Griff", body_name="T4_Griff")
+def tuer_komplett(segs, base_z):
+    """M3 (D36, W20): Werkstatt-Komponente tuer_komplett.sc (T50) als Instanz im Basisfeld BBB. Feld-KS der Komponente: Ursprung Mitte der Basiskante (Knoten 24 -> 22) auf Basisknotenhoehe,
+    X tangential (24 -> 22 = gegen den Uhrzeigersinn), Y hangaufwaerts in der Feldebene, Z Feldnormale nach aussen; Neigung der Feldebene aus dem Modell (Basismitte -> Feldspitze, Knoten 6)."""
+    az = math.radians(P["door_edge_az"]); ap = P["dome_base_d"]/2 * math.cos(math.radians(18))
+    n = (math.cos(az), math.sin(az)); t = (-math.sin(az), math.cos(az))
+    ends = {tuple(round(v / 20) for v in q): q for A, B in segs for q in (A, B)}
+    apex = min((q for q in ends.values() if abs((math.degrees(math.atan2(q[1], q[0])) - P["door_edge_az"] + 180) % 360 - 180) < 1 and q[2] > base_z + 1000), key=lambda q: q[2])
+    tilt = math.atan2(ap - math.hypot(apex[0], apex[1]), apex[2] - base_z); c, s = math.cos(tilt), math.sin(tilt)
+    print(f"tuer_komplett: Feldspitze Z {apex[2]:.0f} r {math.hypot(apex[0], apex[1]):.0f}, Neigung {math.degrees(tilt):.2f} Grad")
+    act("03_Kuppel"); add("component.insert_design", path=os.path.join(ROOT, "designs", "components", "tuer_komplett.sc").replace("\\", "/"), name="Tuer_Komplett")
+    X, Y, Z = (t[0], t[1], 0.0), (-s*n[0], -s*n[1], c), (c*n[0], c*n[1], s)
+    add("occurrence.move", occurrence="Tuer_Komplett:1", matrix=[round(v, 9) for v in (X[0], Y[0], Z[0], ap*n[0], X[1], Y[1], Z[1], ap*n[1], X[2], Y[2], Z[2], base_z)], tolerance=1e-6, move_grounded=True)
 
 NODE_FILES = {}   # Knoten-Index (1-26 wie layout.json nodes_list) -> Dateiname
 def knoten_anker(segs):
@@ -166,7 +158,7 @@ def t1_t3_t4(sock_z):
     component_file("erdflaeche", "Erdflaeche", "02_Gelaende", lambda: erde_fn(sock_z))
     component_file("fundamentring", "Fundamentring", "02_Gelaende", lambda: ring_fn(sock_z))
     act("03_Kuppel")
-    component_file("tuer", "Tuer", "03_Kuppel", lambda: tuer_fn(sock_z, rd, da))
+    tuer_komplett(segs, cz)
     return n, dropped
 
 LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))

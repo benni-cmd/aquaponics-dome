@@ -50,3 +50,5 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 **HINWEIS 30.10. 14:30 (D43):** Aussentisch bekommt 4 Rinnen (674 Toepfe) als Standard, sobald die Werkstatt W25a meldet. Reihenfolge: check_latte 43 fertig laufen lassen, M3 Tuer, DANN extract_nft_pots + build + check_walkways + ein gemeinsamer check_latte mit aussen4. Pumpen: D38.
 
 **HINWEIS 31.10. 00:30:** Jetzt M3 Tuer: `tuer_fn` durch `tuer_komplett.sc` ersetzen (Feld BBB 149,2, D36), nur bauen, noch kein check_latte. Danach NICHT weiter: erst Werkstatt-Meldung W25a (aussen4) und W26 (Innenbeet-Fase) abwarten, dann extract_nft_pots, build, check_walkways, EIN check_latte, danach M4/M5 (Rohre).
+
+**HINWEIS 31.10. 01:10 (D46):** Drittbecken + Puffer-Station kommen als M8 (docs/jobs/M8-drittbecken-puffer.md) nach Werkstatt W28. Reihenfolge: W25a/W26 -> Neubau -> W28 -> M8 -> EIN check_latte.

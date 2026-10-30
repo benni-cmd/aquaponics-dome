@@ -1,0 +1,5 @@
+# R27 Rolle und Auslegung von Drittbecken und Puffertanks (Ben 31.10., D46)
+Problem: Drittbecken (Ø 1,03 m, 1,13 m tief) und 2 gestapelte IBC (2 x 1000 l) sind im Modell neu; Wasservolumen, Rolle im Kreislauf, Strom und Beschreibungen fehlen.
+Ziel: Belegte Rolle und Zahlen: (1) Wo sitzt ein Puffertank im Aquaponik-Kreislauf (Sump/Ausgleichsbehaelter), Volumen gegen Systemwasser (Faustregel Verhaeltnis), Messung (pH, EC, Temperatur, O2, Nitrat) und Naehrstoffausgleich (pH-Puffer, Kalium, Eisen): Dosiermenge je Tag, Verfahren. (2) Drittbecken als Jungfisch/Quarantaene/Notbecken, Besatz und Wasserwechsel (D45d). (3) Stapel: obere IBC als Messtank mit Schwerkraftablauf nach unten, Pumpenbedarf. (4) Strom der Sonden/Dosierpumpen.
+Aendern: `docs/research/R27.md`, `scripts/system_specs.py` (Wasserbilanz +2,0 m3 Puffer und +0,9 m3 Drittbecken, Strom), `data/system-specs.json`, `data/descriptions.json` (neue Gruppen `puffer_ibc`, `becken_dritt` mit Rolle/Masse/Grenzen), `docs/system-concept.md`, `docs/hydraulics.md`. Nicht anfassen: `viewer/`, `designs/`.
+Ergebnis: Zwei unabhaengige Quellen je Zahl, Konfidenz, WIP-Commit mit Pfad, Push, Kurzmeldung.

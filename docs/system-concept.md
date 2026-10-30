@@ -16,6 +16,9 @@ Rechnung: `python scripts/system_specs.py` -> `data/system-specs.json` (der View
 | Sauerstoff | 1,7–3,0 kg O₂/Tag (Fisch 80–190 mg/kg/h + Nitrifikation) [Q Kim & Jo, Aly] | |
 | Strom (ohne Heizung) | **ca. 720 W = 17,3 kWh/Tag = 519 kWh/Monat** (Pumpen 321 W, Belueftung 280 W [UVI 0,59 W/kg], Geblaese Luftpolster 80 W [A], Steuerung 40 W); Spanne 0,38–0,92 kW | B: 219 EUR/Monat, Aufteilung unbekannt |
 
+## Stand R26 (31.10.2026): aussen4 ist Standard (D43), Pflanzmix
+Aussen 4 Rinnen (D43): 76 Rinnen, 147,8 m, **674 NFT-Toepfe**, Pflanzflaeche **77,0 m²** (Substrat 27,3 + NFT 49,6 [A skaliert]); noetig 62 g Futter/m², Bens Mix traegt 420 kg. **Pflanzmix (R26):** Beete Tomate 36, Paprika 19, Gurke 15, Suesskartoffel 62 (132 Pflanzen); NFT Salat 250, Mangold 100, Spinat 80, Basilikum 130, Petersilie 70, Kraeuter 44 (674). Mit den oberen FAO-Werten (Beete 80, NFT 50 g/m²) **4,67 kg Futter/Tag = 467 kg Fisch**; Rueckfall 335–420 kg (Mitte der FAO-Werte 422 kg, untere 335 kg, SRAC-NFT 302 kg). Besatz stufenweise erhoehen, Nitrat 5–150 mg/l halten. Details `docs/research/R26.md`; die Zahlen der Auslegungstabelle oben fuer "3 Rinnen" gelten als Alternative aussen3.
+
 ## Huelle: Plane (D39, Empfehlung R24)
 Doppelte, luftgepolsterte UV-PE-Folie (6 mil, IR-Sperre, Anti-Drip/Anti-Fog), **208 m² netto** (40 ebene Dreiecke minus Tuerfeld) [E], Alu-Keilschiene mit Federdraht auf allen 65 Streben (ca. 228 m) [Q Domerama], Lebensdauer ca. 4 Jahre, Licht 75–80 % [Q Kentucky State Univ., Purdue CEA]. **Heizlast 0,83 kW je Kelvin** (0,58–1,19; U 4,0, 2,8–5,7 W/m²K), bei ΔT 30 K (Annahme Mitteleuropa −10/20 °C) **ca. 25 kW Spitze**, Jahres-Obergrenze ca. 70 MWh ohne Sonnengewinn, Infiltration und Thermoschirm (Gradtagzahl 3500 Kd [A/Q Rechnerportal nach DWD]). Wasser speichert 40 kWh je Kelvin. Die Doppelstegplatten (W19/W20) bleiben als ruhende Variante. **Standort ist offen**, die Heizung steht nicht in den Stromwerten.
 

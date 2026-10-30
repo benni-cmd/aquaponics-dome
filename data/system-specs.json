@@ -26,7 +26,7 @@
    ],
    [
     "NFT-Rinnen (Wasserfilm)",
-    0.13,
+    0.15,
     "0%"
    ],
    [
@@ -41,19 +41,19 @@
  },
  "pflanzen": {
   "beete": 2160,
-  "nft": 586,
-  "gesamt": 2746,
+  "nft": 674,
+  "gesamt": 2834,
   "tabelle": 609,
-  "rinnen": 68,
-  "rinnenlaenge_m": 127.9,
+  "rinnen": 76,
+  "rinnenlaenge_m": 147.8,
   "substrat_m3": 8.2,
   "flaeche_substrat_m2": 27.3,
   "flaeche_substrat_tabelle_m2": 37.97,
-  "flaeche_nft_m2": 42.4,
-  "flaeche_gesamt_m2": 69.7,
-  "noetig_g_m2": 68,
-  "noetiger_fruchtanteil": 0.84,
-  "tragbar_bens_mix_kg": 381,
+  "flaeche_nft_m2": 49.6,
+  "flaeche_gesamt_m2": 77.0,
+  "noetig_g_m2": 62,
+  "noetiger_fruchtanteil": 0.61,
+  "tragbar_bens_mix_kg": 420,
   "toepfe_je_m2_beet": 79,
   "dichte_empfohlen": "Blatt 20-25, Frucht 4-8 je m2 (FAO 589)"
  },
@@ -79,7 +79,7 @@
   },
   "obergrenze_fao_kg": 571,
   "substrat_traegt_kg": 252,
-  "bedingung": "84% Fruchtgemüse nötig bei 3 Außenrinnen; Bens Mix 35% trägt 381 kg (D40)",
+  "bedingung": "61% Fruchtgemüse nötig bei 4 Außenrinnen; Bens Mix 35% trägt 420 kg (D40)",
   "tabelle_ben": {
    "anzahl": 1839,
    "biomasse_kg": 1287,
@@ -90,14 +90,14 @@
   }
  },
  "fluesse": {
-  "nft_l_min": 68,
+  "nft_l_min": 76,
   "beete_l_min": 109,
-  "kreislauf_l_min": 177,
-  "kreislauf_m3_h": 10.6,
+  "kreislauf_l_min": 185,
+  "kreislauf_m3_h": 11.1,
   "je_linie_l_min": 110,
   "umwaelzzeit_h": 2.6,
   "pumpe_hoehe_m": 2.0,
-  "bedarf_nft_2_l_min": 245,
+  "bedarf_nft_2_l_min": 261,
   "hauptkreislauf_l_min": 220,
   "hauptkreislauf_pumpen": "4 x 55 l/min (D38)",
   "absetzer_teilstrom_l_min": 25.0,
@@ -185,15 +185,15 @@
  },
  "kapazitaet": {
   "medien_kg_futter_tag": 9.2,
-  "pflanzen_kg_futter_tag": 3.1,
+  "pflanzen_kg_futter_tag": 3.5,
   "pflanzen_kg_futter_tag_spanne": [
-   1.7,
-   3.1,
-   4.5
+   1.9,
+   3.5,
+   5.0
   ],
-  "passender_fischanteil": 0.66,
-  "pflanzen_kg_futter_tag_bens_mix": 3.8,
-  "passender_fischanteil_bens_mix": 0.8,
+  "passender_fischanteil": 0.73,
+  "pflanzen_kg_futter_tag_bens_mix": 4.2,
+  "passender_fischanteil_bens_mix": 0.89,
   "substrat_traegt_fisch_kg": 252
  },
  "huelle": {
@@ -215,12 +215,130 @@
   "paneele": "Doppelstegplatten (W19/W20, D35) bleiben als Variante, nicht eingerechnet",
   "standort": "offen (Frage an Ben)"
  },
+ "pflanzmix": {
+  "beete": [
+   {
+    "art": "Tomate",
+    "flaeche_m2": 9.0,
+    "pflanzen_je_m2": 4.0,
+    "pflanzen": 36
+   },
+   {
+    "art": "Paprika",
+    "flaeche_m2": 5.5,
+    "pflanzen_je_m2": 3.5,
+    "pflanzen": 19
+   },
+   {
+    "art": "Gurke (Rankhilfe)",
+    "flaeche_m2": 5.0,
+    "pflanzen_je_m2": 3.0,
+    "pflanzen": 15
+   },
+   {
+    "art": "Süßkartoffel",
+    "flaeche_m2": 7.8,
+    "pflanzen_je_m2": 8.0,
+    "pflanzen": 62
+   }
+  ],
+  "beete_pflanzen": 132,
+  "beete_flaeche_m2": 27.3,
+  "nft": [
+   {
+    "art": "Salat",
+    "toepfe": 250
+   },
+   {
+    "art": "Mangold",
+    "toepfe": 100
+   },
+   {
+    "art": "Spinat",
+    "toepfe": 80
+   },
+   {
+    "art": "Basilikum",
+    "toepfe": 130
+   },
+   {
+    "art": "Petersilie",
+    "toepfe": 70
+   },
+   {
+    "art": "Kräuter (Schnittlauch, Minze, Koriander)",
+    "toepfe": 44
+   }
+  ],
+  "nft_toepfe": 674,
+  "nft_flaeche_m2": 49.6,
+  "topfplaetze": {
+   "gesamt": 2834,
+   "bepflanzt": 806,
+   "anteil_beete": 0.06,
+   "anteil_nft": 1.0
+  },
+  "szenarien": [
+   {
+    "szenario": "Empfehlungsmix, obere FAO-Werte",
+    "beete_g_m2": 80,
+    "nft_g_m2": 50,
+    "futter_kg_tag": 4.67,
+    "fisch_kg": 467
+   },
+   {
+    "szenario": "Mitte der FAO-Werte",
+    "beete_g_m2": 72.5,
+    "nft_g_m2": 45,
+    "futter_kg_tag": 4.22,
+    "fisch_kg": 422
+   },
+   {
+    "szenario": "Bens Mix gleichmäßig (35 % Frucht)",
+    "beete_g_m2": 54.6,
+    "nft_g_m2": 54.6,
+    "futter_kg_tag": 4.2,
+    "fisch_kg": 420
+   },
+   {
+    "szenario": "untere FAO-Werte",
+    "beete_g_m2": 50,
+    "nft_g_m2": 40,
+    "futter_kg_tag": 3.35,
+    "fisch_kg": 335
+   },
+   {
+    "szenario": "SRAC-NFT (25 g)",
+    "beete_g_m2": 65,
+    "nft_g_m2": 25,
+    "futter_kg_tag": 3.02,
+    "fisch_kg": 302
+   }
+  ],
+  "empfehlung": {
+   "szenario": "Empfehlungsmix, obere FAO-Werte",
+   "beete_g_m2": 80,
+   "nft_g_m2": 50,
+   "futter_kg_tag": 4.67,
+   "fisch_kg": 467
+  },
+  "ziel_futter_kg_tag": [
+   4.3,
+   5.0
+  ],
+  "rueckfall_fisch_kg": [
+   335,
+   422
+  ],
+  "regel": "Besatz stufenweise erhoehen, Nitrat 5-150 mg/l halten (FAO 589: unter 5 Futter erhoehen, ueber 150 Wasser wechseln)",
+  "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50, Frucht 50-80), SRAC 454 NFT nur 25 % des Raft-Werts; Kohlrabi/Sellerie aus Bens Liste nur als Zwischenkultur, nicht im Hauptmix"
+ },
  "szenario": {
-  "aussen_rinnen": 3,
+  "aussen_rinnen": 4,
   "drei_rinnen": {
    "rinnen_aussen": 3,
-   "rinnenlaenge_m": 127.9,
-   "nft_topf": 586,
+   "rinnenlaenge_m": 126.3,
+   "nft_topf": 570,
    "nft_flaeche_m2": 42.4,
    "flaeche_gesamt_m2": 69.7,
    "noetig_g_m2": 68,
@@ -232,16 +350,16 @@
   "vier_rinnen": {
    "rinnen_aussen": 4,
    "rinnenlaenge_m": 147.8,
-   "nft_topf": 677,
-   "nft_flaeche_m2": 49.0,
-   "flaeche_gesamt_m2": 76.3,
+   "nft_topf": 674,
+   "nft_flaeche_m2": 49.6,
+   "flaeche_gesamt_m2": 77.0,
    "noetig_g_m2": 62,
-   "noetiger_fruchtanteil": 0.63,
-   "tragbar_bens_mix_kg": 417,
-   "tragbar_blatt_kg": 344,
-   "tragbar_frucht_kg": 554
+   "noetiger_fruchtanteil": 0.61,
+   "tragbar_bens_mix_kg": 420,
+   "tragbar_blatt_kg": 346,
+   "tragbar_frucht_kg": 558
   },
-  "hinweis": "4. Rinne: Staffel der Aussenrinnen fortgesetzt (ca. 2,49 m), Flaeche und Toepfe anteilig [A]; W24 prueft die Machbarkeit am Radialbudget",
+  "hinweis": "aussen4 ist Standard (D43, W24 check_nft_fit 48/48): Rinnenlaengen und Toepfe aus nft_tisch.json; NFT-Flaeche aus Bens Tabellenflaeche (42,41 m2 bei aussen3-Laenge) auf die Rinnenlaenge skaliert [A]",
   "frucht_blatt_g_m2": [
    72.5,
    45
@@ -258,9 +376,9 @@
  ],
  "konsistenz": [
   {
-   "pruefung": "Pflanzenzahl gegen Ben-Tabelle",
+   "pruefung": "Pflanzenzahl und Bepflanzung",
    "ok": true,
-   "detail": "2746 Töpfe im Modell gegen mindestens 609 (Kapazität; empfohlene Pflanzdichte Blatt 20–25, Frucht 4–8/m², Beete aktuell 79/m²)"
+   "detail": "2834 Topfplätze im Modell gegen mindestens 609 (Kapazität); bepflanzt werden im Mix 132 Pflanzen in den Beeten (4.8/m², FAO Frucht 4–8) und 674 in den NFT-Rinnen (13.6/m²)"
   },
   {
    "pruefung": "Besatzdichte höchstens 20 kg/m³ (FAO 589)",
@@ -273,9 +391,9 @@
    "detail": "deckt 9.2 von 4.8 kg Futter/Tag (195%); nach FAO-Tabelle Bioballs 3.1, Substrat 19–31 kg/Tag (Faustregel hat ca. 3-fach Reserve)"
   },
   {
-   "pruefung": "Pflanzfläche deckt das Futter (D40: 475 kg, 3 Außenrinnen)",
-   "ok": false,
-   "detail": "nötig 68 g Futter/m²/Tag auf 69.7 m²: dazu ca. 84% Fruchtgemüse (Blatt 45, Frucht 72.5 g); Bens Mix (35% Frucht, 55 g) trägt nur 381 kg; mit 3 Rinnen 381 kg, mit 4. Außenrinne 417 kg (alles Fruchtgemüse 554 kg, nur Blatt 344 kg)"
+   "pruefung": "Pflanzmix trägt die Auslegung (D40: 475 kg, 4 Außenrinnen)",
+   "ok": true,
+   "detail": "Empfehlungsmix (Beete 80 g/m², NFT 50 g/m², obere FAO-Werte) liefert 4.67 kg Futter/Tag = 467 kg Fisch gegen Ziel 4.75 (Spanne 4,5–5,0); Mitte der FAO-Werte 422 kg, Bens Mix 420 kg, untere FAO-Werte 335 kg, SRAC-NFT 302 kg (Rückfall)"
   },
   {
    "pruefung": "Substratvolumen trägt die Fischmenge (SRAC 1 : 2)",
@@ -285,12 +403,12 @@
   {
    "pruefung": "Bens Tabellenfutter gegen Pflanzfläche",
    "ok": false,
-   "detail": "Pflanzfläche deckt bei 45 g/m² nur 29% von Bens 10.7 kg Futter/Tag; nötig wären 238 m² statt 70 m² (Frage 1 an Ben)"
+   "detail": "Pflanzfläche deckt bei 45 g/m² nur 32% von Bens 10.7 kg Futter/Tag; nötig wären 238 m² statt 77 m² (Frage 1 an Ben)"
   },
   {
    "pruefung": "Hauptkreislauf deckt den Pflanzenstrom (D38)",
    "ok": true,
-   "detail": "4 Pumpen gross × 55 = 220 l/min gegen Bedarf 177 l/min (NFT 1 l/min je Rinne); bei 2 l/min je Rinne 245 l/min (nicht gedeckt)"
+   "detail": "4 Pumpen gross × 55 = 220 l/min gegen Bedarf 185 l/min (NFT 1 l/min je Rinne); bei 2 l/min je Rinne 261 l/min (nicht gedeckt)"
   },
   {
    "pruefung": "Hauptkreislauf trägt das Futter (TAN-Durchfluss)",

@@ -51,6 +51,17 @@ Konfidenz: hoch = zwei Primaerquellen gelesen und uebereinstimmend; mittel = zwe
 | Suesskartoffel | in Aquaponik **nicht belegt**; NFT-Rinnenabstand ≥ 25–38 cm | Mortley u. a. 1991 (Abstract) | | niedrig | Topfraster 11 cm zu eng (E) |
 | Kondenswasser | Doppelfolie reduziert, Anti-Drip + Anti-Fog senkt Pilzdruck; Aquaponik-Messwerte nicht belegt | Kentucky State Univ. | Univ. Thessalien (Abstract) | niedrig-mittel | |
 
+## R26 Pflanzmix fuer D40 (31.10.2026, Details `R26.md`)
+| Wert | Spannweite | Quelle 1 | Quelle 2 | Konfidenz | Abweichung |
+|---|---|---|---|---|---|
+| Artenzuordnung | Beete: Tomate, Paprika, Gurke, Knollen; NFT: Blatt und Kraeuter; Fruchtgemuese im NFT nur mit grossen Rohren | FAO TP 589 (Kap. 6.4, Pflanzenblaetter) | SRAC 5009 (Zusammenfassung) | mittel | Bens Liste: Kohlrabi 100, Sellerie 50 weichen (Knollen nur Beet) |
+| Pflanzdichte Beete | Tomate 3–5, Paprika 3–4, Gurke 2–5 /m²; Suesskartoffel 8/m² [A] | FAO TP 589 | Mortley u. a. 1991 (hydroponisch) | mittel / niedrig | Modell 79 Topfplaetze/m², Mix 4,8 Pflanzen/m² |
+| Bepflanzte Topfplaetze | 806 von 2834 (Beete 132 = 6 %, NFT 674 = 100 %) | E | | hoch (Rechnung) | Topfzahl = Kapazitaet |
+| Futter Empfehlungsmix | Beete 80, NFT 50 g/m² = **4,67 kg/Tag = 467 kg Fisch** (nur obere FAO-Werte) | FAO TP 589 | | mittel-niedrig | D40 4,75 kg; Ziel 4,3–5,0 |
+| Rueckfall | 335 (untere FAO) – 420 kg (Mitte, Bens Mix); SRAC-NFT 302 kg | FAO TP 589 | SRAC 454 | mittel-niedrig | D45: 380–430 |
+| Steuerregel | Nitrat 5–150 mg/l: unter 5 Futter erhoehen, ueber 150 Wasser teilweise wechseln | FAO TP 589 Kap. 8 | | mittel | Besatz stufenweise statt sofort 475 kg |
+| Suesskartoffel | in Aquaponik **nicht belegt** | Mortley u. a. 1991 (Abstract) | | niedrig | Bens 151 Pflanzen -> Mix 62 |
+
 ## Zusammenfassung der Abweichungen von Bens Tabelle
 1. **Fischbiomasse 1287 kg (45 kg/m³)** liegt ueber dem FAO-Wert (20 kg/m³) und braucht UVI-Technik; Pflanzflaeche und Substrat tragen davon nur 180-640 kg.
 2. **Futter 10,7 kg/Tag** ist 2-6-fach ueber dem, was 80 m² Pflanzflaeche (Modell: 27,3 m² Substrat + 42,4 m² NFT) verbrauchen koennen (1,8-6,4 kg/Tag).

@@ -2,11 +2,11 @@
   "_hinweis": "Beschreibungen der Bauteile fuer den Viewer und die Modelldokumentation. Felder: titel, was (ein Satz), status, ablauf (Schritte: so funktioniert es), aufbau (Gruppen mit Teilen: was im Modell steckt), masse (Kennzahlen), grenzen (Annahmen), quelle. 'match' ist ein regulaerer Ausdruck auf den Definitionsnamen. Quelle der Fakten: Bauteilblaetter in docs/parts/ und docs/decisions.md. Besitzer: Orchestrator. SolidCraft hat kein Beschreibungsfeld an Komponenten.",
   "kategorien": {
     "Kuppel-Struktur": "Das tragende Skelett der Geodätischen Kuppel (2V, Ø12 m, 6 m hoch): 65 Streben, 26 Knoten und 10 Fundamentanker im Erdreich.",
-    "Beete (Substrat)": "Substratbeete aus halbierten IBC-Wannen: Pflanzen wachsen in Blähton oder Kies, das Wasser wird zyklisch geflutet und entleert.",
+    "Beete (Substrat)": "Substratbeete aus halbierten IBC-Wannen: Pflanzen wachsen in Blähton oder Kies, das Wasser wird zyklisch geflutet und entleert. Im Pflanzmix tragen sie Tomate, Paprika, Gurke und Süßkartoffel (R26).",
     "NFT-Systeme": "Nährlösungsfilm-Tische (NFT): Pflanzen stehen in geneigten Rinnen, durch die ein dünner Wasserfilm fließt. Drei Ringe: innen über dem Pool, Mitte über den Innenbeeten, außen über den Außenbeeten.",
     "Tanks und Pumpen": "Wasseraufbereitung: zwei Vortex-Absetzer (Feststoffe raus, Teilstrom), zwei Biofilter (Bakterien) und die Pumpenmodule: 4 große Pumpen bilden den Hauptkreislauf, 4 kleine den Absetzer-Teilstrom (D38).",
     "Rohre und Schläuche": "Verbindungsteile des Wasserkreislaufs: Rohre, Bögen, Kugelhähne, Verteiler und Schläuche. Das Rohrnetz selbst wird noch verlegt.",
-    "Pflanzen": "Netztöpfe und Salatköpfe als Platzhalter für die bepflanzten Löcher. Nur Darstellung, keine Funktion im Wasserkreislauf.",
+    "Pflanzen": "Netztöpfe und Salatköpfe als Platzhalter für die bepflanzten Löcher. Nur Darstellung, keine Funktion im Wasserkreislauf. Pflanzmix (R26): Beete Frucht und Knollen, NFT Blatt und Kräuter.",
     "Becken und Gelände": "Hauptbecken (Pool), zweites Becken vor der Tür und das Erdreich, in das alles eingelassen ist.",
     "Tuer": "Der Eingang der Kuppel.",
     "Technik": "Steuerung und Elektrik (Platzhalter).",
@@ -220,10 +220,11 @@
         "Umsatz (Substrat gesamt)": "8,2 m³ Substrat → Faustregel 8,2 kg Futter/Tag (1 l Medium je g, ca. 3-fach Reserve); FAO-Tabelle 19–31 kg/Tag; Auslegung 4,75 kg/Tag",
         "Wasserbedarf Flutzyklus": "≈ 109 l/min im Mittel bei 2 Zyklen/Stunde (alle 14 Beete; je Flutung 5–8 min, Fort Valley State Extension)",
         "Pflanzfläche": "27,3 m² nach Modellmaßen (Bens Tabelle 37,97 m²); Futter je m² 25–65 g/Tag (SRAC 454 / FAO 589)",
-        "Pflanzdichte": "2160 Töpfe sind Kapazität (79 je m²); empfohlen Blatt 20–25, Frucht 4–8 je m² (FAO 589)",
-        "Tragfähigkeit Fisch": "8,2 m³ Substrat tragen nach SRAC 454 (Fisch : Kies = 1 : 2) etwa 250 kg Fisch; die übrigen 225 kg der Auslegung (475 kg) tragen NFT-Flächen und Fruchtgemüse"
+        "Pflanzdichte": "2160 Topfplätze sind Kapazität (79 je m²); im Pflanzmix (R26) werden nur ca. 132 Pflanzen gesetzt (4,8 je m², FAO Frucht 4–8)",
+        "Tragfähigkeit Fisch": "8,2 m³ Substrat tragen nach SRAC 454 (Fisch : Kies = 1 : 2) etwa 250 kg Fisch; die übrigen 225 kg der Auslegung (475 kg) tragen NFT-Flächen und Fruchtgemüse",
+        "Pflanzmix Beete (R26)": "Tomate 36 (9,0 m², 4/m²), Paprika 19 (5,5 m², 3,5/m²), Gurke 15 (5,0 m², 3/m², Rankhilfe), Süßkartoffel 62 (7,8 m², 8/m² [Annahme]); Futterbedarf 50–80 g/m²/Tag, 2,2 kg/Tag bei 80 g"
       },
-      "grenzen": "Siphonmaße aus der Scope-Card, nicht gegen die fertige Datei gemessen; Topfraster der neuen Außenbeete rechnet die Montage (D34).",
+      "grenzen": "Siphonmaße aus der Scope-Card, nicht gegen die fertige Datei gemessen; Topfraster der neuen Außenbeete rechnet die Montage (D34). Pflanzmix R26: Süßkartoffel in Aquaponik nicht belegt, Beettiefe 30 cm ist für Knollen die Untergrenze.",
       "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md"
     },
     {
@@ -259,14 +260,15 @@
       ],
       "masse": {
         "Anzahl": "24 (10 innen über dem Pool, 6 Mitte, 8 außen)",
-        "Rinnen je Tisch": "innen 2, Mitte 4, außen 3 (Ben prüft 4 außen, W24: dann 76 Rinnen, ≈ 148 m, ca. 677 Töpfe, +8 l/min)",
+        "Rinnen je Tisch": "innen 2, Mitte 4, außen 4 (aussen4, D43; Alternative aussen3 mit 570 statt 674 Töpfen)",
         "Lochabstand": "200 mm",
-        "Topflöcher": "586 gesamt",
+        "Topflöcher": "674 gesamt (aussen4, D43)",
         "Gefälle": "1,5 %",
         "Eckluft": "60 mm (D34)",
-        "Wasserbedarf": "1 l/min je Rinne (FAO 589: 1–2), alle 68 Rinnen ≈ 68 l/min (bei 2 l/min 136 l/min)",
-        "Wasser im Film": "≈ 1 l je Meter Rinne, gesamt ≈ 130 l",
-        "Futter je m² Pflanzfläche": "NFT 25–45 g/Tag (SRAC 454: 25 % des Raft-Werts; FAO 589: 40–50 Blatt, 50–80 Frucht); Auslegung 475 kg braucht ca. 68 g/m² (3 Außenrinnen) bzw. 62 g/m² (4)"
+        "Wasserbedarf": "1 l/min je Rinne (FAO 589: 1–2), alle 76 Rinnen ≈ 76 l/min (bei 2 l/min 152 l/min)",
+        "Wasser im Film": "≈ 1 l je Meter Rinne, gesamt ≈ 148 l",
+        "Futter je m² Pflanzfläche": "NFT 25–50 g/Tag (SRAC 454: 25 % des Raft-Werts; FAO 589: 40–50 Blatt); Pflanzmix (R26) rechnet 50 g/m² bei ca. 50 m² NFT-Fläche = 2,5 kg Futter/Tag",
+        "Pflanzmix NFT (R26)": "Salat 250, Mangold 100, Spinat 80, Basilikum 130, Petersilie 70, Kräuter 44 = 674 Töpfe (13,6 je m²); Blatt und Kräuter, keine Fruchtgemüse (FAO 589: Knollen und Kohl nur im Medienbett)"
       },
       "grenzen": "Rev. C ist noch ohne Spec-Prüfer-Lauf nach der letzten Änderung; endgültige Lage setzt die Montage (M7).",
       "quelle": "docs/parts/nft_tisch.md, docs/research/R06.md, R16.md"
@@ -543,11 +545,12 @@
         }
       ],
       "masse": {
-        "In den Beeten": "2160",
-        "In den NFT-Rinnen": "586",
-        "Gesamt": "2746"
+        "In den Beeten": "2160 Topfplätze",
+        "In den NFT-Rinnen": "674 (aussen4, D43)",
+        "Gesamt": "2834 Topfplätze",
+        "Bepflanzt im Mix (R26)": "≈ 806: 132 in den Beeten (6 %), 674 in den NFT-Rinnen (100 %)"
       },
-      "grenzen": "2746 Töpfe sind Kapazität, kein Pflanzplan: empfohlen sind Blatt 20–25 und Frucht 4–8 Pflanzen je m² (FAO 589); die Beete haben 79 Töpfe je m²."
+      "grenzen": "Die Topfplätze sind Kapazität, kein Pflanzplan: In den Beeten stehen nur ca. 132 Pflanzen (Tomate, Paprika, Gurke, Süßkartoffel); die NFT-Rinnen sind voll bepflanzt (Blatt und Kräuter)."
     },
     {
       "match": "^salatkopf",
@@ -566,7 +569,8 @@
             "ca. 8,8 k Dreiecke statt 69 k (leicht für den Viewer)"
           ]
         }
-      ]
+      ],
+      "grenzen": "Im Pflanzmix (R26) ist Salat eine von sechs NFT-Arten (250 von 674 Töpfen); der Salatkopf bleibt ein Darstellungsmodell."
     },
     {
       "match": "^haut_paneel|^haut_profil",

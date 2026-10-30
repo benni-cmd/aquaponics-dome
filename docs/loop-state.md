@@ -21,3 +21,4 @@
 ## Regeln
 - Leeren nur nach sauberem Schritt UND >70 % Kontext UND Zustand hier gesichert (endless-mechanics REGEL Kontext). Renders mit scripts/archive_render.py. Werkstatt-.sc im Arbeitsbaum (fundamentring, pool_zentral, schaltschrank, strebe_a/b, tuer, zulaufrohr, zweitbecken) nicht committen.
 - Keine parallelen CLI-Laeufe waehrend check_latte (Budget).
+- WIEDERANLAUF 30.10. (Runde 43): extract_nft_pots -> 570 Rinnen-Toepfe (Werkstatt W23, nicht mehr 586), Build `sh scripts/build.sh 5 43` (6515 Befehle), check_walkways alle PASS: A 600, B 500 (Mindestmass erreicht, Ziel 600 nicht: Aussentisch ap_c 4874), Wandluft 310, Nachbarportale 183, Tuer-Gang 2944, Auslastung 50 %. check_latte 43 laeuft im Hintergrund (erster Lauf ca. 35 min); Ergebnis danach hier nachtragen. Danach M3: tuer_fn durch tuer_komplett.sc ersetzen, dann M4/M5.

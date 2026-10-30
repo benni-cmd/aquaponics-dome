@@ -84,7 +84,7 @@ chk("L6 Teilenamen T1,T3-T6,T10,T11 vorhanden (T2 Haut = Phase 2, T8 NFT folgt)"
 n_cls = lambda c: sum(1 for x in cmds if x["command"] == "occurrence.move" and str(x["params"].get("occurrence", "")).startswith(c + ":"))
 nu, nv = int((2640 - 2 * P["pot_margin"]) // P["pot_pitch"]) + 1, int((800 - 2 * P["pot_margin"]) // P["pot_pitch"]) + 1
 exp_pots = 8 * nu * nv + sum(len(v["pots"]) * n for v, n in zip(json.load(open(os.path.join(ROOT, "data", "nft_pots.json")))["typen"].values(), (10, 6, 8)))
-chk("Netztoepfe: Aussenbeet-Raster (8 x %d x %d) + Rinnen (586) als Instanzen" % (nu, nv), n_cls("Netztopf"), exp_pots, n_cls("Netztopf") == exp_pots)
+chk("Netztoepfe: Aussenbeet-Raster (8 x %d x %d) + Rinnen (nft_pots.json) als Instanzen" % (nu, nv), n_cls("Netztopf"), exp_pots, n_cls("Netztopf") == exp_pots)
 # Interferenz zwischen Instanzen/Teilen (Koerper EINER Komponenteninstanz ueberschneiden sich bewusst: Schweiss-/Schraubverbindungen, Pruefung der Werkstatt-Skripte)
 # Das ganze Modell hat > 1500 Koerper: erst Bounding-Boxen in Python (nur Paare verschiedener Instanzen), dann nur die betroffenen Koerper exakt schneiden.
 cl = {}

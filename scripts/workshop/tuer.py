@@ -73,7 +73,7 @@ def build():
     gx, gs = bw / 2 - 60, s0b + 1000                                              # Druecker rechts auf Blatthoehe 1 m
     for face, zf, dz, nm in ((1, 29, 1, "aussen"), (-1, -11, -1, "innen")):
         b.add("solid.cylinder", diameter=50, height=4, base=[gx, gs, zf if face > 0 else zf - 4], axis=[0, 0, 1], operation="new", name=f"RO_{nm}", body_name=f"Rosette_{nm}")
-        b.add("solid.cylinder", diameter=18, height=40, base=[gx, gs, zf + (4 if face > 0 else -4)] if face > 0 else [gx, gs, zf - 4], axis=[0, 0, face], operation="new", name=f"DH_{nm}", body_name=f"Druecker_Hals_{nm}")
+        b.add("solid.cylinder", diameter=18, height=22, base=[gx, gs, zf + (4 if face > 0 else -4)] if face > 0 else [gx, gs, zf - 4], axis=[0, 0, face], operation="new", name=f"DH_{nm}", body_name=f"Druecker_Hals_{nm}")
         zl = zf + face * (4 + 40 - 9)
         b.add("solid.box", length=130, width=18, height=18, center=[gx - 45, gs, zl], operation="new", name=f"DL_{nm}", body_name=f"Druecker_Hebel_{nm}")
         b.add("material.assign", bodies=[f"Rosette_{nm}", f"Druecker_Hals_{nm}", f"Druecker_Hebel_{nm}"], material="Stahl verzinkt")

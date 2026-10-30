@@ -67,7 +67,7 @@ if __name__ == "__main__":
     lay, d, pth = main()
     P = {k: v[1] for k, v in PARAM.items()}
     G = compute(lay, P)
-    d.update({"klasse": "tuer", "teilenummer": "T50", "revision": "B",
+    d.update({"klasse": "tuer_komplett", "teilenummer": "T50", "revision": "B",
               "beschreibung": "Tuer komplett (D36, R13): Zarge aus Rohr 30 x 30 (2 Pfosten, Sturz, Schwelle) mit Normtuerblatt 1000 x 2000 x 40 im Basisfeld BBB 149,2, nach aussen oeffnend, 3 Scharniere, Druecker, Dichtung",
               "quelle_masse": "docs/research/R13.md, docs/decisions.md D36, data/layout.json dome.nodes_list (Knoten 24, 22, 6), data/components/haut_paneel.json felder",
               "parameter": {k: {"wert": v[1], "einheit": v[0], "herkunft": v[2]} for k, v in PARAM.items()},

@@ -1,0 +1,26 @@
+PASS tuer: Lichte Breite (Pfosten innen): Ist 1016, Soll 1016 (+-0.01)
+PASS tuer: Lichte Hoehe (Schwelle oben bis Sturz unten): Ist 2008, Soll 2008 (+-0.01)
+PASS tuer: Zarge Aussenbreite: Ist 1076, Soll 1076 (+-0.01)
+PASS tuer: Blatt Breite x Hoehe x Dicke (1000 x 2000 x 40): Ist 4.02001e+08, Soll 4.02001e+08 (+-0.01)
+PASS tuer: Spiel links (Pfosten innen - Blatt): Ist 8, Soll 8 (+-0.01)
+PASS tuer: Spiel rechts: Ist 8, Soll 8 (+-0.01)
+PASS tuer: Spiel oben 6 (Sturz unten - Blatt oben): Ist 6, Soll 6 (+-0.01)
+PASS tuer: Spiel unten 2 (Blatt unten - Schwelle oben): Ist 2, Soll 2 (+-0.01)
+PASS tuer: Anschlag innen (Blatt kann nicht nach innen: Anschlag-Aussenflaeche <= Blatt-Innenflaeche): Ist 1, Soll 1
+PASS tuer: Scharniere (3 x Zargenlasche, Blattlasche, Bolzen): Ist 9, Soll 9
+PASS tuer: Druecker (Rosette, Hals, Hebel je Seite): Ist 6, Soll 6
+PASS tuer: Scharnier 1: Bolzen verbindet Zargen- und Blattlasche (z): Ist 1, Soll 1
+PASS tuer: Scharnier 2: Bolzen verbindet Zargen- und Blattlasche (z): Ist 1, Soll 1
+PASS tuer: Scharnier 3: Bolzen verbindet Zargen- und Blattlasche (z): Ist 1, Soll 1
+PASS tuer: Blattlage: Dichtung liegt am Blatt an (Abstand z, mm): Ist 0, Soll 0 (+-0.01)
+PASS tuer: Zarge passt ins Feld: Feldbreite in Sturzhoehe 1320 - Zarge 1076, Reserve je Seite >= 100 mm: Ist 122.042, Soll 100 (+-40)
+PASS tuer: Neigung der Feldebene 10.8 Grad gegen tuer_komplett.json: Ist 10.8188, Soll 10.82 (+-0.05)
+PASS tuer: Feldazimut 149,2 (Basiskantenmitte): Ist 149.163, Soll 149.2 (+-0.1)
+PASS tuer: Feld ist BBB (Basiskante und beide Hangkanten 3708): Ist 1, Soll 1
+PASS tuer: Tuerfelder in haut_paneel.json (nur BBB 149,2): Ist 1, Soll 1
+PASS tuer: Tuerfeld = BBB bei Azimut 149,2: Ist 1, Soll 1
+PASS tuer: Interferenzen im Tuerdesign (Zarge, Blatt, Anschlag, Dichtung, Beschlaege): Ist 0, Soll 0
+PASS tuer: Paneel BBB mit Ausschnitt: Flaechenverlust (m2) gegen numerische Rechnung (Zarge 1076 x 2068 in das Paneeldreieck): Ist 2.20903, Soll 2.20903 (+-0.005)
+PASS tuer: Paneel BBB_tuer: Dicke: Ist 8, Soll 8 (+-0.01)
+PASS tuer: Paneel BBB_tuer: ein Koerper: Ist 1, Soll 1
+== tuer: 25/25 PASS

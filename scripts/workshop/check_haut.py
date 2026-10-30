@@ -22,7 +22,7 @@ def main():
     nbase = sum(1 for n in lay["nodes_list"] if abs(n["z"] - lay["base_z"]) < 5)
     ck.eq("Kanteninzidenz: 3 x Felder = 2 x Streben - Randkanten (Basisring: Randkanten = Basisknoten)", 3 * len(felder), 2 * lay["struts"] - nbase)
     ck.eq("Basisfelder je Typ summieren auf die Randkanten (ein Basisfeld je Randkante)", sum(t["basisfelder"] for t in dp["typen"].values()), nbase)
-    ck.eq("Tuerfelder beruehrt (zwei Basisfelder am Tuerknoten)", sum(1 for f in felder if f["door"]), 2)
+    ck.eq("Tuerfeld (D36: nur das Basisfeld BBB 149,2)", sum(1 for f in felder if f["door"]), 1)
     ck.eq("Strebenzahl A + B = layout.json dome.struts", n_a + n_b, lay["struts"])
     # --- Paneele
     for typ, T in dp["typen"].items():

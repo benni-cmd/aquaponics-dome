@@ -2,7 +2,7 @@ PASS haut: Felder (Euler V - E + F = 1: 65 - 26 + 1): Ist 40, Soll 40
 PASS haut: Felder je Typ summieren auf alle Felder: Ist 40, Soll 40
 PASS haut: Kanteninzidenz: 3 x Felder = 2 x Streben - Randkanten (Basisring: Randkanten = Basisknoten): Ist 120, Soll 120
 PASS haut: Basisfelder je Typ summieren auf die Randkanten (ein Basisfeld je Randkante): Ist 10, Soll 10
-PASS haut: Tuerfelder beruehrt (zwei Basisfelder am Tuerknoten): Ist 2, Soll 2
+PASS haut: Tuerfeld (D36: nur das Basisfeld BBB 149,2): Ist 1, Soll 1
 PASS haut: Strebenzahl A + B = layout.json dome.struts: Ist 65, Soll 65
 PASS haut: AAB Dicke: Ist 8, Soll 8 (+-0.01)
 PASS haut: AAB Flaeche (Heron des Strebendreiecks x ((r - 15)/r)^2): Ist 4.86141, Soll 4.86141 (+-0.001)

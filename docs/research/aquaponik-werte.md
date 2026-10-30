@@ -62,6 +62,20 @@ Konfidenz: hoch = zwei Primaerquellen gelesen und uebereinstimmend; mittel = zwe
 | Steuerregel | Nitrat 5–150 mg/l: unter 5 Futter erhoehen, ueber 150 Wasser teilweise wechseln | FAO TP 589 Kap. 8 | | mittel | Besatz stufenweise statt sofort 475 kg |
 | Suesskartoffel | in Aquaponik **nicht belegt** | Mortley u. a. 1991 (Abstract) | | niedrig | Bens 151 Pflanzen -> Mix 62 |
 
+## R27 Puffer-Station und Drittbecken (31.10.2026, Details `R27.md`)
+| Wert | Spannweite | Quelle 1 | Quelle 2 | Konfidenz | Abweichung |
+|---|---|---|---|---|---|
+| Sumpf / Basentank gegen Systemwasser | UVI: Sumpf 160 gal + Basentank 50 gal von 29 375 gal = 0,7 %; FAO: Sumpf mindestens 70 % des Medienbett-Volumens (nur bei Sumpf-Bauweise) | SRAC 454 (UVI-Daten) | FAO TP 589 Kap. 4.3 | mittel | Puffer 2,0 m³ = 5 % (rund das 7-fache der UVI-Station); Beete laufen in den Pool, nicht in den Puffer |
+| Wasserverlust | unter 2 %/Tag Wasserwechsel (geschlossene Anlage) | SRAC 454 | (zweite Quelle offen) | niedrig-mittel | Puffer deckt 2,9 Tage |
+| Frischwasser | 2 Tage stehen lassen (Chlor), nur entchlort einsetzen | FAO TP 589 | SRAC 454 | mittel | Puffer als Vorrat |
+| Alkalinitaetsverbrauch | 7,14 g CaCO₃ je g TAN-N (Theorie); praktisch etwa 50 % (250 gegen 500 g NaHCO₃ je kg Futter) | Boyd 2016 (GAA, gelesen) | Timmons u. a. 2018 / Brune (Suchzusammenfassung) | mittel / niedrig | nicht in A; 25 Aequivalente/Tag theoretisch |
+| Basenmenge | 0,6 kg/Tag je halb Ca(OH)₂ und KOH (praktisch); KOH allein 0,71, Ca(OH)₂ allein 0,47, NaHCO₃ 1,07 kg/Tag | E aus Boyd und Brune | SRAC 454 (UVI wechselt KOH/Ca(OH)₂) | niedrig-mittel | Kaliumbedarf der Pflanzen viel kleiner |
+| pH-Ziel | 7,0–7,5 (UVI) gegen 6–7 (FAO-Kompromiss) | SRAC 454 / Fort Valley State | FAO TP 589 | mittel | |
+| Eisen | 2 mg/l Chelat ca. alle 3 Wochen ≈ 74 g Fe | SRAC 454 | Fort Valley State | hoch | |
+| Quarantaene | Neufische 45 Tage isolieren; Besatz 77 Fische/m³ à 79 g, FAO-Max 20 kg/m³ | FAO TP 589 | SRAC 454 Tab. 1 | mittel | Drittbecken 72 Fische, 5,7 kg |
+| Sensorstrom | pH-Kreis 18 mA, EC-Kreis 50 mA bei 5 V (0,1 und 0,25 W); Kit pH+DO+EC 310 mA | Atlas Scientific Datenblaetter | Haendlerseite Kit | mittel | Station ca. 17 W insgesamt |
+| Dosierpumpe | 12 V, 5–10 W, 4,5–220 ml/min | Kamoer-Datenblaetter (Haendler) | | niedrig-mittel | 2 Stueck, 25 % Laufzeit |
+
 ## Zusammenfassung der Abweichungen von Bens Tabelle
 1. **Fischbiomasse 1287 kg (45 kg/m³)** liegt ueber dem FAO-Wert (20 kg/m³) und braucht UVI-Technik; Pflanzflaeche und Substrat tragen davon nur 180-640 kg.
 2. **Futter 10,7 kg/Tag** ist 2-6-fach ueber dem, was 80 m² Pflanzflaeche (Modell: 27,3 m² Substrat + 42,4 m² NFT) verbrauchen koennen (1,8-6,4 kg/Tag).

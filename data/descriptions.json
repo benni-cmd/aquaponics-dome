@@ -7,10 +7,11 @@
     "Tanks und Pumpen": "Wasseraufbereitung: zwei Vortex-Absetzer (Feststoffe raus, Teilstrom), zwei Biofilter (Bakterien) und die Pumpenmodule: 4 große Pumpen bilden den Hauptkreislauf, 4 kleine den Absetzer-Teilstrom (D38).",
     "Rohre und Schläuche": "Verbindungsteile des Wasserkreislaufs: Rohre, Bögen, Kugelhähne, Verteiler und Schläuche. Das Rohrnetz selbst wird noch verlegt.",
     "Pflanzen": "Netztöpfe und Salatköpfe als Platzhalter für die bepflanzten Löcher. Nur Darstellung, keine Funktion im Wasserkreislauf. Pflanzmix (R26): Beete Frucht und Knollen, NFT Blatt und Kräuter.",
-    "Becken und Gelände": "Hauptbecken (Pool), zweites Becken vor der Tür und das Erdreich, in das alles eingelassen ist.",
+    "Becken und Gelände": "Hauptbecken (Pool), zweites Becken (Aufzucht) und Drittbecken (Quarantäne) vor der Tür sowie das Erdreich, in das alles eingelassen ist.",
     "Tuer": "Der Eingang der Kuppel.",
     "Technik": "Steuerung und Elektrik (Platzhalter).",
-    "Hülle (Plane)": "Doppelte PE-Folie über den Streben mit Keilschienen (D39); die Doppelstegplatten sind eine ruhende Variante."
+    "Hülle (Plane)": "Doppelte PE-Folie über den Streben mit Keilschienen (D39); die Doppelstegplatten sind eine ruhende Variante.",
+    "Puffer-Station": "Zwei gestapelte IBC-Tanks (je 1000 l) mit Messplatz und Dosierkonsole: Messen, Basen und Eisen dosieren, Frischwasser und Notvorrat (D46, R27)."
   },
   "bauteile": [
     {
@@ -648,6 +649,76 @@
       "quelle": "docs/research/R24.md, docs/decisions.md D39"
     },
     {
+      "match": "^puffer",
+      "titel": "Puffer-Station (2 IBC gestapelt)",
+      "was": "Zwei übereinander gestellte IBC-Tanks (je 1000 l) mit Messplatz und Dosierkonsole: Messstation, Basenzugabe, Frischwasser- und Notvorrat.",
+      "status": "Entscheidung D46, Werkstatt W28; Rolle und Zahlen R27",
+      "ablauf": [
+        "Eine Messpumpe fördert Systemwasser (ca. 3 l/min) in die obere IBC; sie ist der Messtank mit Sonden für pH, Leitfähigkeit (EC), Temperatur, Sauerstoff und Nitrat.",
+        "Aus der oberen IBC läuft das Wasser per Schwerkraft in die untere IBC und von dort zurück ins System.",
+        "Dosierpumpen geben Base (Calciumhydroxid, Kaliumhydroxid) und Eisenchelat in die Station; die verdünnte Lösung fließt langsam ins System (wie der Basentank der UVI-Anlage).",
+        "Die untere IBC hält Frischwasser (2 Tage stehen lassen, Chlor entweicht) für Wasserverlust und Wasserwechsel und dient als Notvorrat."
+      ],
+      "aufbau": [
+        {
+          "t": "Stapel",
+          "p": [
+            "2 IBC à 1000 l übereinander, Stapelhöhe höchstens 2,5 m",
+            "obere IBC = Messtank, untere = Vorrat und Dosierung"
+          ]
+        },
+        {
+          "t": "Technik",
+          "p": [
+            "Messplatz mit Sonden (Atlas-Scientific-Kreise pH, EC, DO)",
+            "Dosierkonsole mit 2 Schlauchpumpen",
+            "Messpumpe und Umpumpe"
+          ]
+        }
+      ],
+      "masse": {
+        "Volumen": "2,0 m³ = 5 % des Systemwassers (UVI-Sumpf plus Basentank nur 0,7 %)",
+        "Deckt Wasserverlust": "ca. 2,9 Tage bei 2 %/Tag (0,68 m³/Tag, SRAC 454: unter 2 %)",
+        "Alkalinität": "Nitrifikation verbraucht 7,14 g je g Ammonium (Boyd 2016): 1,27 kg CaCO₃-Äquivalent/Tag theoretisch, praktisch etwa die Hälfte",
+        "Basenmenge (praktisch)": "ca. 0,6 kg/Tag je halb Ca(OH)₂ und KOH (0,47 kg Ca(OH)₂ allein, 0,71 kg KOH allein)",
+        "Eisen": "Fe-Chelat 2 mg/l alle ca. 3 Wochen ≈ 74 g Fe je Gabe",
+        "Messwerte": "pH 7,0–7,5, Nitrat 5–150 mg/l, O₂ 4–8 mg/l, Nitrit unter 0,25 mg/l",
+        "Strom": "ca. 17 W im Mittel (Sonden 0,6, Rechner 5, Dosierpumpen 3, Messpumpe 6, Umpumpen 3)",
+        "Pumpe Messkreis": "3 l/min bei 3 m Förderhöhe ≈ 1,5 W hydraulisch, ≈ 6 W elektrisch"
+      },
+      "grenzen": "Messkreisdurchfluss, Dosierpumpen und Rechner sind Annahmen; der praktische Basenfaktor 0,5 stammt aus einer Zusammenfassung (Brune), der Kaliumbedarf der Pflanzen ist viel kleiner als die KOH-Menge, das Verhältnis Ca(OH)₂ zu KOH muss nach Messung eingestellt werden. Lage im Sektor rechts der Tür und Stapelabstand zu den Streben prüft die Montage (M8).",
+      "quelle": "docs/research/R27.md, docs/decisions.md D46"
+    },
+    {
+      "match": "^becken_dritt|^drittbecken|^pool_dritt|^pool3|^pool_3",
+      "titel": "Drittbecken",
+      "was": "Kleines Becken (Ø 1,03 × 1,13 m) hinter dem Zweitbecken auf der Türachse: Quarantäne, Krankenbecken und Notbecken.",
+      "status": "Entscheidung D46, Maß aus dem Designer-Modell (Ben bestätigt offen)",
+      "ablauf": [
+        "Neue Fische bleiben hier 45 Tage isoliert, bevor sie zum Gesamtbesatz kommen (FAO 589).",
+        "Kranke oder gestresste Tiere können getrennt behandelt werden; im Notfall nimmt das Becken Fische aus dem Hauptbecken auf.",
+        "Es braucht eigene Belüftung und einen kleinen Biofilter; Wasser kommt aus dem Puffer."
+      ],
+      "aufbau": [
+        {
+          "t": "Körper",
+          "p": [
+            "Rundbecken, teilweise im Boden",
+            "Wasserscheibe"
+          ]
+        }
+      ],
+      "masse": {
+        "Durchmesser × Tiefe": "1,03 × 1,13 m",
+        "Wasser": "≈ 0,94 m³",
+        "Besatz Quarantäne (UVI-Dichte)": "72 Fische à 79 g ≈ 5,7 kg (FAO-Maximum 20 kg/m³ ≈ 19 kg)",
+        "Futter und Ammonium": "≈ 171 g Futter/Tag (3 % KG), ≈ 6,4 g Ammonium/Tag",
+        "Wasserwechsel allein": "würde 6,4 m³/Tag brauchen (TAN 1 mg/l), daher Biofilter ca. 85 l Bioballs"
+      },
+      "grenzen": "Maß 1,03 × 1,13 m stammt aus dem Designer-Modell; Quarantäneverfahren und Besatz sind Vorschläge aus FAO 589 und SRAC 454. Das Zweitbecken (2,4 m³) bleibt Aufzucht (D45 d); beide zählen nicht zum Gesamtbesatz.",
+      "quelle": "docs/research/R27.md, docs/decisions.md D45, D46"
+    },
+    {
       "match": "^pool",
       "titel": "Hauptbecken (Pool)",
       "was": "Rundes Becken, teilweise in den Boden eingelassen; über ihm hängen die inneren NFT-Tische.",
@@ -697,7 +768,7 @@
       "masse": {
         "Durchmesser": "1747 mm",
         "Wasser": "≈ 2,4 m³ bei 1,0 m Tiefe [Annahme]",
-        "Besatz": "zählt zum Fischwasser (28,5 m³); Rolle als Brut- oder Quarantänebecken offen (Frage 4 der Empfehlung)"
+        "Besatz": "Aufzucht junger Tilapia (D45 d, D46), zählt nicht zum Gesamtbesatz; Quarantäne und Notbecken ist das Drittbecken"
       }
     },
     {
@@ -758,9 +829,10 @@
         }
       ],
       "masse": {
-        "Strom ohne Heizung": "≈ 720 W = 17,3 kWh/Tag = 519 kWh/Monat (Spanne 0,38–0,92 kW)",
+        "Strom ohne Heizung": "≈ 740 W = 17,7 kWh/Tag = 531 kWh/Monat (Spanne 0,39–0,95 kW)",
         "Belüftung": "≈ 280 W (0,59 W je kg Fisch, UVI-Wert)",
         "Pumpen": "≈ 290 W Hauptkreislauf + 33 W Absetzer",
+        "Puffer-Station": "≈ 17 W im Mittel (Sonden, Rechner, Dosier- und Messpumpen)",
         "Gebläse Luftpolster Doppelfolie": "≈ 80 W (60–100 W, Annahme)",
         "Steuerung": "40 W",
         "Heizung": "nicht enthalten: ≈ 0,83 kW je Kelvin (0,58–1,19) für die Plane aus doppelter PE-Folie, 208 m²; bei ΔT 30 K ≈ 25 kW Spitze (Standort offen)"

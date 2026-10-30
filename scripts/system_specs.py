@@ -73,6 +73,20 @@ DT_DESIGN = 30                                         # K: innen 20, aussen -10
 KEIL_M = 30 * 3.279 + 35 * 3.708                       # Keilschiene auf allen 65 Streben [E]
 BLOWER_FILM_W = (60, 80, 100)                          # Geblaese Luftpolster [A, R24 ohne Datenblatt]
 CONTROL_W = 40                                         # Steuerung [A]
+# D46 (Ben 31.10.): Drittbecken und 2 gestapelte IBC als Puffer-Station (R27)
+PUFFER_N, PUFFER_L = 2, 1000                           # 2 IBC a 1000 l uebereinander, Stapelhoehe <= 2,5 m [D46]
+THIRD_D, THIRD_H = 1.03, 1.13                          # Drittbecken Ø x Tiefe (Designer-Modell, Maß offen) [D46/E]
+SYSTEM_LOSS_PCT_DAY = 0.02                             # Wasserverlust/Tag: weniger als 2 % [Q SRAC 454 / SRAC 451]
+ALK_G_PER_G_TAN = 7.14                                 # g Alkalinitaet (als CaCO3) je g TAN-N nitrifiziert [Q Boyd 2016 (GAA), Timmons u. a. 2018 ueber Suchzusammenfassung]
+ALK_PRACTICAL = 0.5                                    # praktischer Verbrauch gegen Theorie (Brune: 250 gegen 500 g NaHCO3/kg Futter) [A, eine Zusammenfassung]
+EQ_G = {"Ca(OH)2": 37.05, "KOH": 56.11, "NaHCO3": 84.0}   # g je Aequivalent Alkalinitaet
+QUARANTINE_FISH_PER_M3, QUARANTINE_FISH_G = 77, 79     # Besatz UVI Nile-Tilapia (SRAC 454 Tab. 1) [Q]
+JUVENILE_FEED_PCT = 0.03                               # Jungfische 3 % KG/Tag [Q FAO 589]
+SAMPLE_FLOW_L_MIN, STACK_HEAD_M = 3.0, 3.0             # Messkreis ueber den Stapel [A], Foerderhoehe 2,5 m Stapel + Reibung [E]
+FILL_FLOW_L_MIN, FILL_H_PER_DAY = 17.0, 2.0            # Umpumpen/Fuellen 1 m3 in ca. 1 h, zwei Stunden am Tag [A]
+SENSORS_W = {"pH EZO": 5 * 0.0183, "EC EZO": 5 * 0.050, "DO EZO": 5 * 0.050}   # Atlas Scientific Datenblaetter pH 18,3 mA, EC 50 mA bei 5 V; DO wie EC angenommen [Q/A]
+DOSE_PUMP_W, DOSE_PUMP_N, DOSE_DUTY = 6.0, 2, 0.25     # 12-V-Schlauchpumpe 5-10 W (Kamoer, Haendler), 2 Stueck, 25 % Laufzeit [A]
+PI_W = 5.0                                             # Messrechner/Steuerung der Station [A]
 MAX_FISH_KG_M3 = 20                                    # FAO 589 Tab. 8.1 [Q R17]
 
 
@@ -99,6 +113,10 @@ nft_water = nft_len * NFT_FILM_L_PER_M / 1000
 pipes = PIPE_WATER_L / 1000
 parts = [("Hauptbecken (Pool)", pool), ("Zweites Becken", basin2), ("Tanks (2 Absetzer, 2 Biofilter)", tanks),
          ("Beete (Porenwasser bei Flutung)", beds_water), ("NFT-Rinnen (Wasserfilm)", nft_water), ("Rohre und Schläuche", pipes)]
+total_circuit = sum(v for _, v in parts)                               # Wasser im Kreislauf ohne Puffer und Drittbecken
+puffer_m3 = PUFFER_N * PUFFER_L / 1000
+third_m3 = pi * (THIRD_D / 2) ** 2 * THIRD_H
+parts += [("Puffertanks (2 IBC gestapelt)", puffer_m3), ("Drittbecken", third_m3)]
 total = sum(v for _, v in parts)
 
 # ---- Fische, Futter, Ammonium ----------------------------------------------------------------------------------------
@@ -189,11 +207,34 @@ o2_total = tuple(x + o2_nitrif for x in o2_fish)
 air_w = AIR_W_PER_KG_FISH * biomass                                    # Auslegung nach UVI-Geblaese
 air_supply_kg = air_w * 24 / 1000 * AIR_KG_O2_PER_KWH                  # kg O2/Tag, die diese Leistung bei Feld-SAE liefert
 air_w_by_o2 = o2_total[1] / AIR_KG_O2_PER_KWH * 1000 / 24              # nur aus dem Sauerstoffbedarf (Mitte)
+# ---- Puffer-Station und Drittbecken (R27) -----------------------------------------------------------------------------------
+loss_m3_day = total_circuit * SYSTEM_LOSS_PCT_DAY
+puffer_days = puffer_m3 / loss_m3_day                                  # Tage Wasserverlust, die der Puffer deckt
+alk_g_day = tan_g * ALK_G_PER_G_TAN                                    # g CaCO3/Tag theoretisch
+alk_eq_day = alk_g_day / 50.0
+alk_eq_pract = alk_eq_day * ALK_PRACTICAL
+base_kg = {k: round(alk_eq_day * g / 1000, 2) for k, g in EQ_G.items()}
+base_kg_pract = {k: round(alk_eq_pract * g / 1000, 2) for k, g in EQ_G.items()}
+base_mix_kg = round(alk_eq_pract / 2 * (EQ_G["Ca(OH)2"] + EQ_G["KOH"]) / 1000, 2)   # je halb Ca(OH)2 und KOH (UVI wechselt ab)
+third_fish = round(QUARANTINE_FISH_PER_M3 * third_m3)
+third_kg = third_fish * QUARANTINE_FISH_G / 1000
+third_max_kg = MAX_FISH_KG_M3 * third_m3
+third_feed = third_kg * JUVENILE_FEED_PCT
+third_tan_g = third_feed * 1000 * TAN_FRACTION
+third_exchange_m3 = third_tan_g / 1.0                                 # m3/Tag bei TAN-Ziel 1 mg/l (g/m3 = mg/l), reiner Wasserwechsel
+third_biofilter_l = third_feed * 1000 * FEED_RULE_MEDIA_L_PER_G["bioball"]    # l Bioballs nach Faustregel
+puffer_pump_hyd = 1000 * 9.81 * (SAMPLE_FLOW_L_MIN / 60000) * STACK_HEAD_M
+puffer_pump_el = puffer_pump_hyd / PUMP_EFF
+fill_hyd = 1000 * 9.81 * (FILL_FLOW_L_MIN / 60000) * STACK_HEAD_M
+fill_el_avg = fill_hyd / PUMP_EFF * FILL_H_PER_DAY / 24
+sensors_w = sum(SENSORS_W.values())
+dose_w_avg = DOSE_PUMP_W * DOSE_PUMP_N * DOSE_DUTY
+puffer_w = sensors_w + PI_W + dose_w_avg + puffer_pump_el + fill_el_avg   # mittlere Leistung der Station
 blower_w = BLOWER_FILM_W[1]                                            # Geblaese Luftpolster der Doppelfolie
-power_w = p_el_main + p_el_small + air_w + CONTROL_W + blower_w
+power_w = p_el_main + p_el_small + air_w + CONTROL_W + blower_w + puffer_w
 p_hyd_small = 1000 * 9.81 * (settler_flow / 60000) * HEAD_M
-power_lo = (p_hyd_main + p_hyd_small) / 0.33 + o2_total[0] / 2.0 * 1000 / 24 + CONTROL_W + BLOWER_FILM_W[0]      # Pumpen 33 %, SAE 2,0
-power_hi = (p_hyd_main + p_hyd_small) / 0.16 + max(air_w, o2_total[2] * O2_PEAK_FACTOR / AIR_KG_O2_PER_KWH * 1000 / 24) + CONTROL_W + BLOWER_FILM_W[2]   # Pumpen 16 %
+power_lo = (p_hyd_main + p_hyd_small) / 0.33 + o2_total[0] / 2.0 * 1000 / 24 + CONTROL_W + BLOWER_FILM_W[0] + puffer_w * 0.5      # Pumpen 33 %, SAE 2,0
+power_hi = (p_hyd_main + p_hyd_small) / 0.16 + max(air_w, o2_total[2] * O2_PEAK_FACTOR / AIR_KG_O2_PER_KWH * 1000 / 24) + CONTROL_W + BLOWER_FILM_W[2] + puffer_w * 1.5   # Pumpen 16 %
 heat_w_per_k = tuple(round(HULL_AREA * u) for u in HULL_U)             # Doppelfolie: IR-Sperre, Mitte, oben
 heat_kw_dt = [round(w * DT_DESIGN / 1000, 1) for w in heat_w_per_k]
 heat_mwh_year = [round(w / 1000 * 24 * GT_KD / 1000) for w in heat_w_per_k]
@@ -209,13 +250,15 @@ checks = [
     ("Hauptkreislauf trägt das Futter (TAN-Durchfluss)", pumps_main >= tan_flow_l_min, f"Bedarf {tan_flow_l_min:.0f} l/min bei {feed_kg_day:.1f} kg Futter (TAN {TAN_TARGET_MG_L:g} mg/l, Biofilter {BIOFILTER_EFF:.0%}); {pumps_main} l/min tragen bis {tan_feed_at_main:.1f} kg Futter/Tag; für Bens {TABLE_FEED_KG_DAY:.1f} kg wären {tan_flow_table:.0f} l/min nötig"),
     (f"Absetzer-Verweilzeit mindestens {SETTLER_MIN_RESIDENCE} min (UVI)", resid_small >= SETTLER_MIN_RESIDENCE, f"{t_klein * 1000:.0f} l je Absetzer bei {PUMP_KLEIN_L_MIN:g} l/min (eine kleine Pumpe je Tank) = {resid_small:.0f} min; mit beiden Pumpen {resid_small_both:.0f} min"),
     ("Belüftung deckt den Sauerstoffbedarf", air_supply_kg >= o2_total[2] * O2_PEAK_FACTOR, f"{air_w:.0f} W liefern bei {AIR_KG_O2_PER_KWH:g} kg O₂/kWh {air_supply_kg:.1f} kg/Tag gegen Bedarf {o2_total[0]:.1f}–{o2_total[2]:.1f} kg/Tag (Spitze ×{O2_PEAK_FACTOR:g}: {o2_total[2] * O2_PEAK_FACTOR:.1f})"),
+    ("Puffertanks decken Wasserverlust und Frischwasser-Ruhe (R27)", puffer_days >= 2, f"{puffer_m3:.1f} m³ Puffer decken {puffer_days:.1f} Tage Wasserverlust bei {SYSTEM_LOSS_PCT_DAY:.0%}/Tag ({loss_m3_day:.2f} m³/Tag, SRAC 454: unter 2 %) und lassen Frischwasser 2 Tage stehen (Chlor, FAO 589); {puffer_m3 / total * 100:.0f} % des Systemwassers (UVI-Sumpf + Basentank: 0,7 %)"),
+    ("Drittbecken als Quarantäne (R27)", False, f"{third_m3:.2f} m³ nehmen nach UVI-Besatz {third_fish} Fische à {QUARANTINE_FISH_G} g ({third_kg:.1f} kg; FAO-Max {third_max_kg:.0f} kg); Futter {third_feed * 1000:.0f} g/Tag → {third_tan_g:.1f} g TAN/Tag: reiner Wasserwechsel bräuchte {third_exchange_m3:.1f} m³/Tag (TAN 1 mg/l), also eigener kleiner Biofilter (ca. {third_biofilter_l:.0f} l Bioballs) und Belüftung nötig; FAO: Neufische 45 Tage isolieren"),
     ("Hülle (Plane, D39) und Heizlast: Standort", False, f"PE doppelt {HULL_AREA:.0f} m²: {heat_w_per_k[1] / 1000:.2f} kW je Kelvin ({heat_w_per_k[0] / 1000:.2f}–{heat_w_per_k[2] / 1000:.2f}); bei ΔT {DT_DESIGN} K (Annahme Mitteleuropa −10/20 °C) {heat_kw_dt[1]} kW Spitze, Jahres-Obergrenze {heat_mwh_year[1]} MWh ohne Sonnengewinn; Standort offen, Heizung nicht in den Stromwerten"),
 ]
 
 specs = {
     "stand": "30.10.2026",
     "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D40 (Biomasse 475 kg, Spanne 450–500, nur mit viel Fruchtgemüse und 4. Außenrinne voll gedeckt); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
-    "wasser": {"gesamt_m3": round(total, 1), "teile": [(n, round(v, 2), f"{v / total:.0%}") for n, v in parts], "in_tanks_m3": round(tanks, 2),
+    "wasser": {"gesamt_m3": round(total, 1), "teile": [(n, round(v, 2), f"{v / total:.0%}") for n, v in parts], "in_tanks_m3": round(tanks, 2), "im_kreislauf_m3": round(total_circuit, 1),
                "tabelle_systemwasser_m3": 25, "fischwasser_m3": round(fish_water, 1)},
     "pflanzen": {"beete": POTS_BEDS, "nft": sc["nft_topf"], "gesamt": POTS_BEDS + sc["nft_topf"], "tabelle": POTS_TABLE, "rinnen": nft_channels,
                  "rinnenlaenge_m": round(nft_len, 1), "substrat_m3": round(substrate_total, 1),
@@ -230,13 +273,13 @@ specs = {
                "tabelle_ben": {"anzahl": TABLE_FISH_N, "biomasse_kg": round(table_biomass), "futter_kg_tag": round(TABLE_FEED_KG_DAY, 1),
                                "dichte_kg_m3": round(table_density), "tan_g_tag": round(table_tan_g), "tan_g_tag_frueherer_ansatz": round(table_tan_g_alt)}},
     "fluesse": {"nft_l_min": round(nft_flow), "beete_l_min": round(bed_flow), "kreislauf_l_min": round(circuit), "kreislauf_m3_h": round(circuit * 0.06, 1),
-                "je_linie_l_min": round(per_line), "umwaelzzeit_h": round(total * 1000 / pumps_main / 60, 1), "pumpe_hoehe_m": HEAD_M,
+                "je_linie_l_min": round(per_line), "umwaelzzeit_h": round(total_circuit * 1000 / pumps_main / 60, 1), "pumpe_hoehe_m": HEAD_M,
                 "bedarf_nft_2_l_min": round(circuit_high), "hauptkreislauf_l_min": pumps_main, "hauptkreislauf_pumpen": f"{PUMP_GROSS_N} x {PUMP_GROSS_L_MIN} l/min (D38)",
                 "absetzer_teilstrom_l_min": round(settler_flow, 1), "fischwasser_umlauf_h": round(turnover_fish_h, 1),
                 "tan_durchfluss_l_min": round(tan_flow_l_min), "tan_durchfluss_tabelle_l_min": round(tan_flow_table),
                 "tabelle_ben": {"kreislauf_modell_l_min": 143, "hinweis": "Bens Tabelle nennt nur 2 Pumpen ohne Daten; 143 l/min war die erste Rechnung (NFT 0,5 l/min)"}},
     "leistung": {"pumpe_hydraulisch_w": round(p_hyd_main / 2), "pumpe_elektrisch_w": round(p_el_main / 2), "pumpe_klein_w": round(p_el_small),
-                 "belueftung_w": round(air_w), "steuerung_w": CONTROL_W, "geblaese_luftpolster_w": blower_w,
+                 "belueftung_w": round(air_w), "steuerung_w": CONTROL_W, "puffer_station_w": round(puffer_w), "geblaese_luftpolster_w": blower_w,
                  "gesamt_w": round(power_w), "kwh_tag": round(power_w * 24 / 1000, 1), "kwh_monat": round(power_w * 24 * 30 / 1000),
                  "spanne_w": [int(round(power_lo, -1)), int(round(power_hi, -1))], "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
                  "heizung": {"huelle_m2": round(HULL_AREA), "w_je_k": list(heat_w_per_k), "w_je_k_reihenfolge": "IR-Sperre, Mitte, oben",
@@ -260,6 +303,21 @@ specs = {
                "befestigung": f"Alu-Keilschiene mit Federdraht auf allen 65 Streben, ca. {KEIL_M:.0f} m; Zuschnitt je Dreieck mit Ueberlappung",
                "lebensdauer_jahre": 4, "lichtdurchlass_prozent": "75-80 (doppelt), 90 (einlagig)", "geblaese_luftpolster_w": list(BLOWER_FILM_W),
                "paneele": "Doppelstegplatten (W19/W20, D35) bleiben als Variante, nicht eingerechnet", "standort": "offen (Frage an Ben)"},
+    "puffer": {"volumen_m3": puffer_m3, "anteil_wasser": f"{puffer_m3 / total:.0%}", "deckt_wasserverlust_tage": round(puffer_days, 1), "wasserverlust_m3_tag": round(loss_m3_day, 2),
+               "stapel": {"ibc": PUFFER_N, "hoehe_max_m": 2.5, "obere": "Messtank mit Schwerkraftablauf in die untere IBC", "foerderhoehe_m": STACK_HEAD_M,
+                          "messkreis_l_min": SAMPLE_FLOW_L_MIN, "messpumpe_w": round(puffer_pump_el, 1), "umpumpen_l_min": FILL_FLOW_L_MIN, "umpumpen_w_mittel": round(fill_el_avg, 1)},
+               "rollen": ["Messstation (pH, EC, Temperatur, O2, Nitrat)", "Basenzugabe und Naehrstoffausgleich (K, Ca, Fe) wie UVI-Basentank", "Frischwasser stehen lassen (2 Tage) und Wasserwechsel-Reserve", "Notvorrat"],
+               "messgroessen": {"pH": "7,0-7,5 (UVI, Fort Valley State; FAO-Kompromiss 6-7)", "Nitrat": "5-150 mg/l (FAO 589)", "O2": "4-8 mg/l", "Nitrit": "unter 0,25 mg/l"},
+               "dosierung": {"alkalinitaet_g_caco3_tag_theorie": round(alk_g_day), "aequivalente_tag_theorie": round(alk_eq_day, 1), "praktisch_faktor": ALK_PRACTICAL,
+                             "theorie_kg_tag": base_kg, "praktisch_kg_tag": base_kg_pract, "mix_halb_ca_halb_koh_praktisch_kg_tag": base_mix_kg,
+                             "eisen": f"Fe-Chelat 2 mg/l alle ca. 3 Wochen = {2 * total:.0f} g Fe je Gabe, ca. {2 * total / 21:.1f} g Fe/Tag",
+                             "hinweis": "Nitrifikation verbraucht 7,14 g Alkalinitaet je g TAN (Boyd 2016); K-Bedarf der Pflanzen (ca. 0,4 g/m2/Tag, Graber/Junge, Abstract) ist viel kleiner als die KOH-Menge: Verhaeltnis Ca(OH)2/KOH nach Messung (EC, K) einstellen"},
+               "strom_w": {"sensoren": round(sensors_w, 2), "rechner": PI_W, "dosierpumpen_mittel": round(dose_w_avg, 1), "messpumpe": round(puffer_pump_el, 1), "umpumpen_mittel": round(fill_el_avg, 1), "summe": round(puffer_w, 1)}},
+    "drittbecken": {"durchmesser_m": THIRD_D, "tiefe_m": THIRD_H, "volumen_m3": round(third_m3, 2), "mass_status": "Designer-Modell, Maß von Ben offen (D46)",
+                    "rolle": "Quarantaene und Krankenbecken (Neufische 45 Tage isolieren, FAO 589), zugleich Notbecken; Zweitbecken (2,4 m3) bleibt Aufzucht (D45 d)",
+                    "besatz_uvi": {"fische": third_fish, "einzelgewicht_g": QUARANTINE_FISH_G, "kg": round(third_kg, 1), "fao_max_kg": round(third_max_kg, 1)},
+                    "futter_g_tag": round(third_feed * 1000), "tan_g_tag": round(third_tan_g, 1), "wasserwechsel_m3_tag_ohne_biofilter": round(third_exchange_m3, 1), "biofilter_bioballs_l": round(third_biofilter_l),
+                    "noetig": "eigene Belueftung und kleiner Biofilter, Wasserwechsel aus dem Puffer"},
     "pflanzmix": {"beete": mix_beete, "beete_pflanzen": sum(m["pflanzen"] for m in mix_beete), "beete_flaeche_m2": round(mix_beete_area, 1),
                   "nft": [{"art": n, "toepfe": k} for n, k in MIX_NFT], "nft_toepfe": mix_nft_pots, "nft_flaeche_m2": round(nft_area_now, 1),
                   "topfplaetze": {"gesamt": POTS_BEDS + POTS_NFT, "bepflanzt": sum(m["pflanzen"] for m in mix_beete) + mix_nft_pots,
@@ -271,7 +329,7 @@ specs = {
                  "hinweis": "aussen4 ist Standard (D43, W24 check_nft_fit 48/48): Rinnenlaengen und Toepfe aus nft_tisch.json; NFT-Flaeche aus Bens Tabellenflaeche (42,41 m2 bei aussen3-Laenge) auf die Rinnenlaenge skaliert [A]",
                  "frucht_blatt_g_m2": [FRUIT_G, LEAF_G], "bens_mix_frucht_anteil": FRUIT_SHARE_MIX},
     "offene_fragen": ["Standort und Aussenklima (Heizlast, Jahresenergie)", "4. Aussenrinne machbar (W24)?", "Anteil Fruchtgemuese/Knollen im Pflanzplan (nötig ca. 60-85 %, Bens Mix 35 %)",
-                      "Zweites Becken: Besatz oder Brut/Quarantaene", "Notstrom und Alarm fuer die Belueftung", "Geblaese und Windlast der Plane"],
+                      "Drittbecken: Maß 1,03 x 1,13 m bestätigen (D46); Puffer-Station Lage und Stapelhöhe", "Notstrom und Alarm fuer die Belueftung", "Geblaese und Windlast der Plane"],
     "konsistenz": [{"pruefung": n, "ok": bool(ok), "detail": d} for n, ok, d in checks],
     "herkunft": {
         "biomasse_475_kg": "B/Entscheidung D40 (Ben: 450-500 kg); Obergrenze Q FAO 589 (20 kg/m3 = 570 kg), tragbar aus Pflanzflaeche E R20/R24: 380-420 kg",

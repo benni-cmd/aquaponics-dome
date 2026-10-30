@@ -47,4 +47,4 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 
 **HINWEIS 30.10. 14:00 (D39):** Huelle ist eine Plane, keine Paneele. Schritt "Haut einsetzen" ruht bis R24 und Werkstatt-Bauteile; Tuer (M3) bleibt. Sonst Reihenfolge unveraendert (M7, M3, M4/M5).
 
-**HINWEIS 30.10. 14:30 (D42):** Aussentisch bekommt 4 Rinnen (674 Toepfe) als Standard, sobald die Werkstatt W25a meldet. Reihenfolge: check_latte 43 fertig laufen lassen, M3 Tuer, DANN extract_nft_pots + build + check_walkways + ein gemeinsamer check_latte mit aussen4. Pumpen: D38.
+**HINWEIS 30.10. 14:30 (D43):** Aussentisch bekommt 4 Rinnen (674 Toepfe) als Standard, sobald die Werkstatt W25a meldet. Reihenfolge: check_latte 43 fertig laufen lassen, M3 Tuer, DANN extract_nft_pots + build + check_walkways + ein gemeinsamer check_latte mit aussen4. Pumpen: D38.

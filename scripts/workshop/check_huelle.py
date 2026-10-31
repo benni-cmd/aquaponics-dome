@@ -78,10 +78,79 @@ def check_keilschiene(ck):
         print("   Interferenz", x)
     ck.eq("Interferenzen Keilschiene (Schaumband, Kanal, Federdraht)", len(itf), 0)
 
+def heron(a, b, c):
+    s = (a + b + c) / 2
+    return math.sqrt(s * (s - a) * (s - b) * (s - c))
+
+def layout_triangles():
+    """Dreiecke aus layout.json unabhaengig vom Generator: Knotenpaare mit Abstand = Strebenlaenge (+-15), Tripel paarweise verbunden; Rueckgabe Liste der Flaechen in m2 und der Typen."""
+    lay, lens = strut_lengths()
+    N = lay["nodes_list"]
+    P = [(n["x"], n["y"], n["z"]) for n in N]
+    edge = lambda i, j: min(lens, key=lambda L: abs(math.dist(P[i], P[j]) - L)) if min(abs(math.dist(P[i], P[j]) - L) for L in lens) <= 15 else None
+    E = {(i, j) for i, j in itertools.combinations(range(len(P)), 2) if edge(i, j)}
+    tris = [(i, j, k) for i, j, k in itertools.combinations(range(len(P)), 3) if (i, j) in E and (i, k) in E and (j, k) in E]
+    area = lambda t: heron(math.dist(P[t[0]], P[t[1]]), math.dist(P[t[1]], P[t[2]]), math.dist(P[t[0]], P[t[2]])) / 1e6
+    return len(E), [area(t) for t in tris]
+
+def check_folie(ck):
+    p, d = sc.load_params("huelle_folie")
+    hp = json.load(open(os.path.join(sc.ROOT, "data", "components", "haut_paneel.json"), encoding="utf-8"))["typen"]
+    G = json.load(open(os.path.join(sc.ROOT, "data", "components", "tuer_komplett.json"), encoding="utf-8"))["geometrie"]
+    ne, areas = layout_triangles()
+    ck.eq("Streben aus layout.json (Knotenabstaende) = 65", ne, 65)
+    ck.eq("Dreiecke aus layout.json = 40", len(areas), 40)
+    ck.eq("Anzahl Folien-Bauteile je Typ summiert = 40 Felder", sum(t["anzahl"] for t in d["typen"].values()), 40)
+    brutto = sum(areas)
+    ck.eq("Huellflaeche brutto aus layout.json in m2 (R24: 209,9)", brutto, 209.9, 0.5)
+    zarge = G["zarge_aussen_w"] * G["zarge_hoehe"] / 1e6
+    netto = brutto - zarge
+    ck.eq("Huellflaeche netto = brutto - Tuerfeld in m2 (R24: 208 +- 3 %)", netto, 208.0, 208.0 * 0.03)
+    k_of = {}
+    tot_net, tot_gross, tot_mass = 0.0, 0.0, 0.0
+    for typ, T in d["typen"].items():
+        path = comp(f"huelle_folie_{typ}")
+        ev = sc.evaluate(path)
+        Bd = {b["name"]: b for b in ev["bodies"]}
+        c, a, b_ = T["kanten_nominal"]
+        A0 = heron(a, b_, c)
+        r = A0 / ((a + b_ + c) / 2)
+        k = (r + p["overlap"] / 2) / r
+        for lage in ("Folie_innen", "Folie_aussen"):
+            ck.eq(f"{typ} {lage}: Dicke 0,15 (Z-Ausdehnung)", Bd[lage]["bbox"]["max"][2] - Bd[lage]["bbox"]["min"][2], p["foil_t"], 0.005)
+        ck.eq(f"{typ}: innere Lage bei Z 64 (liegt auf der Keilschiene)", Bd["Folie_innen"]["bbox"]["min"][2], p["foil_z0"], 0.005)
+        ck.eq(f"{typ}: Lagenabstand 100 mm (Luftpolster, Unterkante zu Unterkante)", Bd["Folie_aussen"]["bbox"]["min"][2] - Bd["Folie_innen"]["bbox"]["min"][2], p["layer_gap"], 0.005)
+        cut = 0.0
+        if T["tuerausschnitt"]:
+            hw = G["zarge_aussen_w"] - 2 * p["door_overlap"]
+            cut = hw * (G["zarge_hoehe"] - p["door_overlap"] + p["overlap"] / 2 + 0.0)
+            # Der Ausschnitt reicht von der Basiskante - Ueberstand bis zur Sturz-Oberkante - door_overlap; Hoehe ab der Basiskante: zarge_hoehe - door_overlap, plus Ueberstand nach unten
+        A_ist = Bd["Folie_innen"]["volume_mm3"] / p["foil_t"]
+        ck.eq(f"{typ}: Folienflaeche je Lage (Volumen / Dicke) gegen Heron mit Ueberstand-Aufmass + Ausschnitt in m2", (A_ist + cut) / 1e6, A0 * k * k / 1e6, A0 * k * k / 1e6 * 0.002)
+        if typ == "BBB":
+            ck.eq("BBB: Seitenlaenge mit Ueberstand = 3708 + 2 x wurzel(3) x 100 (X-Ausdehnung)", Bd["Folie_innen"]["bbox"]["max"][0] - Bd["Folie_innen"]["bbox"]["min"][0], 3708 + 2 * math.sqrt(3) * p["overlap"] / 2, 0.5)
+        if typ == "BBB_tuer":
+            ck.eq("BBB_tuer: Ausschnitt entfernt Flaeche (1026 x 2143 = 2,20 m2) aus beiden Lagen", Bd["Folie_aussen"]["volume_mm3"] / p["foil_t"], A0 * k * k - cut, A0 * k * k * 0.002)
+        n_vol = 1 if typ == "BBB" else T["anzahl"]
+        tot_net += (A0 / 1e6) * (T["anzahl"] if typ != "BBB_tuer" else 0) + (0 if typ != "BBB_tuer" else (A0 / 1e6 - zarge))
+        tot_gross += (A_ist / 1e6) * T["anzahl"]
+        tot_mass += (Bd["Folie_innen"]["mass_g"] + Bd["Folie_aussen"]["mass_g"]) / 1000 * T["anzahl"]
+        ck.eq(f"{typ}: Masse je Feld (2 Lagen) = Flaeche x 0,15 mm x 0,92", (Bd["Folie_innen"]["mass_g"] + Bd["Folie_aussen"]["mass_g"]) / 1000, 2 * A_ist * p["foil_t"] * 0.92 / 1e6, 0.002)
+        itf = interference(path)
+        ck.eq(f"{typ}: Interferenzen innere/aeussere Lage", len(itf), 0)
+    ck.eq("Summe netto aus den Bauteilen (30 AAB + 9 BBB + Tuerfeld) in m2 gegen R24 208 +- 3 %", tot_net, 208.0, 208.0 * 0.03)
+    print(f"   Folienflaeche je Lage mit Ueberstand: {tot_gross:.1f} m2 (netto {tot_net:.1f} m2); Gesamtmasse beide Lagen: {tot_mass:.1f} kg")
+    kp, dk = sc.load_params("keilschiene")
+    strut_r = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))["strut_r"]["value"]
+    ck.eq("Innere Lage liegt ueber Strebe + Schaumband + Kanal (45 + 3 + 15 = 63 < 64)", 1 if strut_r + kp["foam_t"] + kp["ch_h"] < p["foil_z0"] else 0, 1)
+    ck.eq("Luft zwischen Kanal-Oberkante und innerer Lage in mm (1)", p["foil_z0"] - (strut_r + kp["foam_t"] + kp["ch_h"]), 1.0, 0.01)
+
 def main(which):
     ck = sc.Check("huelle")
     if "keilschiene" in which:
         check_keilschiene(ck)
+    if "folie" in which:
+        check_folie(ck)
     return ck.done()
 
 if __name__ == "__main__":

@@ -2078,5 +2078,25 @@
   "note": "W27 Keilschiene T43",
   "commit": "30739a1",
   "source": "renders/components/keilschiene/keilschiene-02-querschnitt.png"
+ },
+ {
+  "file": "20261031-123304_werkstatt_huelle-folie_huelle-folie-aab-02-iso.png",
+  "sha": "cd4e17b049a4f658",
+  "time": "2026-10-31 12:33:04",
+  "role": "werkstatt",
+  "subject": "huelle_folie",
+  "note": "W27 Huelle-Folie T42",
+  "commit": "bd9bae2",
+  "source": "renders/components/huelle_folie/huelle_folie_AAB-02-iso.png"
+ },
+ {
+  "file": "20261031-123306_werkstatt_huelle-folie_huelle-folie-bbb-tuer-01-draufsicht.png",
+  "sha": "42b5709c4f07db9d",
+  "time": "2026-10-31 12:33:06",
+  "role": "werkstatt",
+  "subject": "huelle_folie",
+  "note": "W27 Huelle-Folie T42",
+  "commit": "bd9bae2",
+  "source": "renders/components/huelle_folie/huelle_folie_BBB_tuer-01-draufsicht.png"
  }
 ]

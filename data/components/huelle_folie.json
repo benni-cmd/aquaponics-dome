@@ -1,0 +1,211 @@
+{
+ "klasse": "huelle_folie",
+ "teilenummer": "T42",
+ "revision": "A",
+ "beschreibung": "Huelle der Kuppel als Plane (D39, R24): doppelte, luftgepolsterte UV-PE-Folie 150 Mikrometer je Dreiecksfeld, zwei Lagen im Abstand 100 mm, je Seite 100 mm Ueberstand ueber die Strebenachse (ziegelartige Ueberlappung); ein Bauteil je Dreiecksform (AAB, BBB, BBB mit Planenausschnitt fuer die Tuer-Zarge)",
+ "quelle_masse": "docs/research/R24.md (Empfehlung 1/2: PE doppelt luftgepolstert 6 mil, Zuschnitt je Dreieck mit 100 mm Ueberstand, ziegelartig ueberlappend; Huellflaeche netto 208 m2 = 209,9 - Tuerfeld), data/layout.json dome (nodes_list, strut_len_mm), data/components/haut_paneel.json (Dreieckstypen), tuer_komplett.json (Zarge 1076 x 2068)",
+ "typen": {
+  "AAB": {
+   "anzahl": 30,
+   "kanten_nominal": [
+    3279,
+    3279,
+    3708
+   ],
+   "tuerausschnitt": false
+  },
+  "BBB": {
+   "anzahl": 9,
+   "kanten_nominal": [
+    3708,
+    3708,
+    3708
+   ],
+   "tuerausschnitt": false
+  },
+  "BBB_tuer": {
+   "anzahl": 1,
+   "kanten_nominal": [
+    3708,
+    3708,
+    3708
+   ],
+   "tuerausschnitt": true
+  }
+ },
+ "parameter": {
+  "foil_t": {
+   "wert": 0.15,
+   "einheit": "mm",
+   "herkunft": "[Q] R24: Gewaechshaus-PE-Folie 6 mil (ca. 150 Mikrometer)"
+  },
+  "layer_gap": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Auftrag W27 / R24: zwei Lagen im Abstand ca. 100 mm (Luftpolster); real aufgeblasen und gewoelbt, hier als parallele Ebenen"
+  },
+  "overlap": {
+   "wert": 200,
+   "einheit": "mm",
+   "herkunft": "[E] R24: 100 mm Ueberstand je Seite ueber die Strebenachse, im Verband ziegelartig ueberlappend; Ueberlappung zweier Nachbarfelder = 2 x 100 mm"
+  },
+  "foil_z0": {
+   "wert": 64,
+   "einheit": "mm",
+   "herkunft": "[E] Hoehe der inneren Lage ueber der Ebene der Strebenachsen: Strebenradius 45 + Schaumband 3 + Kanal 15 + 1 mm Luft (liegt auf der Keilschiene)"
+  },
+  "door_overlap": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Der Planenausschnitt ist je Seite und oben 25 mm kleiner als das Zargen-Aussenmass; die Folie liegt auf dem Aufsatzrahmen (tuer_zarge_planenausschnitt)"
+  },
+  "opacity": {
+   "wert": 0.25,
+   "einheit": "",
+   "herkunft": "[A] Darstellung transparent"
+  }
+ },
+ "werkstoff": {
+  "name": "PE-Gewaechshausfolie UV-stabilisiert, 150 Mikrometer, Infrarotsperre, Anti-Drip (R24)",
+  "dichte_g_cm3": 0.92,
+  "farbe": "#e8f4f8",
+  "herkunft": "Handbuchwert PE (LDPE 0,92); Eigenschaften nach R24"
+ },
+ "anzahl": {
+  "soll": "40 Felder: 30 AAB, 9 BBB, 1 BBB mit Planenausschnitt (Tuer)",
+  "quelle": "data/components/haut_paneel.json typen (anzahl_voll 30/9, anzahl_mit_tuerausschnitt 1); data/layout.json dome 65 Streben, 26 Knoten, 40 Dreiecke"
+ },
+ "bezugspunkt": "Inkreismittelpunkt des Strebendreiecks, Z = Aussennormale, Z 0 = Ebene der Strebenachsen (innere Lage bei Z 64, aeussere bei Z 164), X parallel zur Kante P0P1 (beim Tuerfeld die Basiskante)",
+ "blatt": {
+  "funktion": "Huelle der Kuppel als Plane (D39): je Dreiecksfeld zwei Lagen UV-PE-Gewaechshausfolie (150 Mikrometer, Infrarotsperre, Anti-Drip) mit Luftpolster dazwischen; die Folie liegt aussen auf den Streben, ihre Kante wird in der Keilschiene der Strebe geklemmt, und jede Bahn ragt 100 mm ueber die Strebenachse hinaus und ueberlappt ziegelartig mit der Nachbarbahn. Das Tuerfeld hat einen Planenausschnitt fuer die Zarge. Die Haut aus Paneelen (haut_paneel, W19/W20) ruht als Variante und bleibt erhalten.",
+  "querschnitt": "Zwei Lagen PE 0,15 mm, parallel im Abstand 100 mm (Luftpolster-Platzhalter: real aufgeblasen und gewoelbt); innere Lage 64 mm ueber der Ebene der Strebenachsen (liegt auf der Keilschiene), aeussere Lage 164 mm.",
+  "toleranzen": "Ueberstand 100 mm je Seite ueber die Strebenachse (Parameter overlap = 200 mm Ueberlappung zweier Nachbarfelder); Planenausschnitt 1026 x 2043 mm (Zarge 1076 x 2068 minus 25 mm je Seite und oben), reicht nach unten durch den Ueberstand; Pruefung check_huelle.py folie (Flaeche +-0,2 % gegen Heron).",
+  "ports": [
+   [
+    "Folienkante an der Keilschiene (3 Kanten je Feld)",
+    "Maul 17 mm",
+    "Kante des Strebendreiecks + 100 mm Ueberstand, Z 64 (innen) und Z 164 (aussen)",
+    "Kante wird in den Kanal gedrueckt, Federdraht klemmt, Richtung -Z"
+   ],
+   [
+    "Ueberlappung zur Nachbarbahn",
+    "200 mm (2 x 100 mm Ueberstand)",
+    "an den drei Seiten des Felds",
+    "ziegelartig: untere Bahn vor der oberen (Montage legt die Reihenfolge fest)"
+   ],
+   [
+    "Planenausschnitt Tuerfeld (nur BBB_tuer)",
+    "1026 x 2043 mm",
+    "mittig auf der Basiskante, von der Basiskante - 100 mm bis y' 2043",
+    "Folienkante liegt 25 mm auf dem Aufsatzrahmen der Zarge (tuer_zarge_planenausschnitt)"
+   ]
+  ],
+  "verbindungen": [
+   "Folie an der Strebe: Keilschiene (T43) mit Federdraht D2 [Q R24]; kein Tackern, kein Kleben",
+   "Folie an der Zarge: Klemmleiste und Aufsatzrahmen (T44), Dichtband EPDM",
+   "Folie an Folie: Ueberlappung 200 mm, Verbindung durch die Klemmung in den Schienen; Luftdichtigkeit der Lagen und das Geblaese fuer das Luftpolster sind offen [A]"
+  ],
+  "abweichung": "Das Bauteil kommt nicht aus dem OBJ (die Huelle ist Plane, D39). Netto-Flaeche aus den Bauteilen 207,7 m2 gegen R24 208 m2 (209,9 - Tuerfeld; Pruefung +-3 %); mit Ueberstand ergeben sich je Lage 251,8 m2 Folie, bei zwei Lagen ca. 504 m2 und 69,5 kg. Das Blatt W27 nennt die Datei 'huelle_folie.sc': wegen der Skizzen-Zahlen (keine Ausdruecke) gibt es je Dreiecksform eine Datei huelle_folie_AAB.sc, huelle_folie_BBB.sc und huelle_folie_BBB_tuer.sc, wie bei haut_paneel.",
+  "gewicht_gefuellt": "nicht zutreffend; Gesamtgewicht der Folie beider Lagen 69,5 kg (Summe ueber 40 Felder); Wind- und Schneelast sind nicht gerechnet.",
+  "montage": [
+   "Keilschienen auf alle Streben setzen (keilschiene)",
+   "Folienbahnen je Dreiecksfeld mit 100 mm Ueberstand zuschneiden (zwei Lagen je Feld)",
+   "Innere Lage einlegen: Kanten in die Kanaele druecken, Federdraht einziehen; aeussere Lage darueber, gleiches Vorgehen",
+   "Ueberlappung ziegelartig legen (von unten nach oben, damit Regen ablaeuft)",
+   "Tuerfeld: Planenausschnitt an der Zarge befestigen (tuer_zarge_planenausschnitt); Luftpolster aufblasen (Gebläse, offen)"
+  ],
+  "werkzeug": "Cuttermesser, Federdrahtroller, Massband, Leiter oder Geruest",
+  "stueckliste": [
+   "huelle_folie_AAB (je 2 Lagen PE 0,15 mm, 6,09 m2 je Lage): 30 Felder",
+   "huelle_folie_BBB (7,12 m2 je Lage): 9 Felder",
+   "huelle_folie_BBB_tuer (4,92 m2 je Lage nach Ausschnitt): 1 Feld",
+   "Gesamt je Lage 251,8 m2 (mit Ueberstand), beide Lagen ca. 504 m2; netto 207,7 m2"
+  ],
+  "lokal": "Handelsueblich: Gewaechshausfolie UV-stabilisiert 150 Mikrometer in Bahnen; Zuschnitt aus der Rolle vor Ort; ETFE-Kissen als teure Langzeitoption (R24).",
+  "referenz": "docs/research/R24.md (Empfehlung Plane, Folge fuer Modell); kein Referenzbild",
+  "render_dirs": [],
+  "varianten": [
+   "huelle_folie_AAB",
+   "huelle_folie_BBB",
+   "huelle_folie_BBB_tuer"
+  ],
+  "kritiker": "kein Pruefer-Lauf (Auftrag W27: Selbstcheck)",
+  "pruefung": [
+   "scripts/workshop/check_huelle.py folie: Ergebnis in renders/components/huelle_folie/check.txt (Flaechensumme netto 207,7 m2 gegen R24 208 m2 +-3 %, Dreiecke aus layout.json, Heron-Flaeche je Typ, Lagenabstand, Interferenz 0)",
+   "Kein Bild-Kritiker und kein Spec-Pruefer (Auftrag W27)"
+  ],
+  "offen": [
+   "Folienmass (150 Mikrometer, zwei Lagen, 100 mm Luftpolster) ist [A]/R24; Standort und Heizlast sind offen (D45: Annahme Mitteleuropa)",
+   "Luftpolster real gewoelbt: hier parallele Ebenen; Gebläse am Schaltschrank (geblaese_luftpolster) ist nur Platzhalter in R24 und nicht gebaut",
+   "Zuschnittreihenfolge der Ueberlappung (welche Bahn oben liegt) legt die Montage fest; die Bauteile sind symmetrisch (Ueberstand an allen drei Seiten)",
+   "Folienstoss an den Knoten (Kreuzung dreier Bahnen) und die Klappen fuer Lueftung sind nicht modelliert",
+   "Unterer Ueberstand an den Basisfeldern (100 mm unter der Basisstrebe) braucht eine Bodenbefestigung (Sandsaecke, Erdnut): Montage",
+   "Wind- und Schneelast der Plane nicht gerechnet"
+  ]
+ },
+ "herkunft_tabelle": [
+  [
+   "Huelle als Plane (Folie), keine Paneele",
+   "Plane",
+   "Q",
+   "docs/decisions.md D39 (Owner 30.10.)",
+   "hoch"
+  ],
+  [
+   "Material: UV-PE 6 mil (ca. 150 Mikrometer), doppelt, luftgepolstert, Infrarotsperre, Anti-Drip",
+   "150 Mikrometer, 2 Lagen",
+   "Q",
+   "docs/research/R24.md Empfehlung 1 (KSU, Purdue CEA, Haendler); D45 Annahme",
+   "mittel"
+  ],
+  [
+   "Abstand der Lagen 100 mm",
+   "100 mm",
+   "A",
+   "Auftrag W27 / R24 Folge fuer Modell: Luftpolster [A]",
+   "niedrig"
+  ],
+  [
+   "Ueberstand 100 mm je Seite, ziegelartige Ueberlappung",
+   "100 mm, Parameter overlap 200",
+   "E",
+   "R24 Empfehlung 2 (E: 100 mm je Seite, im Verband ziegelartig ueberlappend)",
+   "mittel"
+  ],
+  [
+   "Huellflaeche netto 208 m2",
+   "207,7 m2 (Bauteile) / 208 m2 (R24)",
+   "E",
+   "209,98 m2 aus layout.json (40 Dreiecke) minus Tuerfeld 2,22 m2; R24 Zahlen",
+   "hoch"
+  ],
+  [
+   "Dreieckstypen AAB 30 / BBB 9 / BBB mit Tuerausschnitt 1",
+   "30 / 9 / 1",
+   "Q",
+   "data/components/haut_paneel.json typen (aus layout.json nodes_list)",
+   "hoch"
+  ],
+  [
+   "Innere Lage bei Z 64",
+   "64 mm",
+   "E",
+   "Strebenradius 45 + Schaumband 3 + Kanal 15 + 1 mm Luft",
+   "mittel"
+  ],
+  [
+   "Planenausschnitt 1026 x 2043",
+   "1026 x 2043 mm",
+   "E",
+   "Zarge 1076 x 2068 (tuer_komplett.json) minus door_overlap 25 [A]",
+   "niedrig"
+  ],
+  [
+   "Dichte PE 0,92",
+   "g/cm3",
+   "A",
+   "Handbuchwert LDPE",
+   "niedrig"
+  ]
+ ]
+}

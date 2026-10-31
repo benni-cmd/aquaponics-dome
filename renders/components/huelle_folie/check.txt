@@ -1,0 +1,33 @@
+PASS huelle: Streben aus layout.json (Knotenabstaende) = 65: Ist 65, Soll 65
+PASS huelle: Dreiecke aus layout.json = 40: Ist 40, Soll 40
+PASS huelle: Anzahl Folien-Bauteile je Typ summiert = 40 Felder: Ist 40, Soll 40
+PASS huelle: Huellflaeche brutto aus layout.json in m2 (R24: 209,9): Ist 209.981, Soll 209.9 (+-0.5)
+PASS huelle: Huellflaeche netto = brutto - Tuerfeld in m2 (R24: 208 +- 3 %): Ist 207.755, Soll 208 (+-6.24)
+PASS huelle: AAB Folie_innen: Dicke 0,15 (Z-Ausdehnung): Ist 0.15, Soll 0.15 (+-0.005)
+PASS huelle: AAB Folie_aussen: Dicke 0,15 (Z-Ausdehnung): Ist 0.15, Soll 0.15 (+-0.005)
+PASS huelle: AAB: innere Lage bei Z 64 (liegt auf der Keilschiene): Ist 64, Soll 64 (+-0.005)
+PASS huelle: AAB: Lagenabstand 100 mm (Luftpolster, Unterkante zu Unterkante): Ist 100, Soll 100 (+-0.005)
+PASS huelle: AAB: Folienflaeche je Lage (Volumen / Dicke) gegen Heron mit Ueberstand-Aufmass + Ausschnitt in m2: Ist 6.09336, Soll 6.09336 (+-0.0121867)
+PASS huelle: AAB: Masse je Feld (2 Lagen) = Flaeche x 0,15 mm x 0,92: Ist 1.68177, Soll 1.68177 (+-0.002)
+PASS huelle: AAB: Interferenzen innere/aeussere Lage: Ist 0, Soll 0
+PASS huelle: BBB Folie_innen: Dicke 0,15 (Z-Ausdehnung): Ist 0.15, Soll 0.15 (+-0.005)
+PASS huelle: BBB Folie_aussen: Dicke 0,15 (Z-Ausdehnung): Ist 0.15, Soll 0.15 (+-0.005)
+PASS huelle: BBB: innere Lage bei Z 64 (liegt auf der Keilschiene): Ist 64, Soll 64 (+-0.005)
+PASS huelle: BBB: Lagenabstand 100 mm (Luftpolster, Unterkante zu Unterkante): Ist 100, Soll 100 (+-0.005)
+PASS huelle: BBB: Folienflaeche je Lage (Volumen / Dicke) gegen Heron mit Ueberstand-Aufmass + Ausschnitt in m2: Ist 7.11797, Soll 7.11797 (+-0.0142359)
+PASS huelle: BBB: Seitenlaenge mit Ueberstand = 3708 + 2 x wurzel(3) x 100 (X-Ausdehnung): Ist 4054.41, Soll 4054.41 (+-0.5)
+PASS huelle: BBB: Masse je Feld (2 Lagen) = Flaeche x 0,15 mm x 0,92: Ist 1.96456, Soll 1.96456 (+-0.002)
+PASS huelle: BBB: Interferenzen innere/aeussere Lage: Ist 0, Soll 0
+PASS huelle: BBB_tuer Folie_innen: Dicke 0,15 (Z-Ausdehnung): Ist 0.15, Soll 0.15 (+-0.005)
+PASS huelle: BBB_tuer Folie_aussen: Dicke 0,15 (Z-Ausdehnung): Ist 0.15, Soll 0.15 (+-0.005)
+PASS huelle: BBB_tuer: innere Lage bei Z 64 (liegt auf der Keilschiene): Ist 64, Soll 64 (+-0.005)
+PASS huelle: BBB_tuer: Lagenabstand 100 mm (Luftpolster, Unterkante zu Unterkante): Ist 100, Soll 100 (+-0.005)
+PASS huelle: BBB_tuer: Folienflaeche je Lage (Volumen / Dicke) gegen Heron mit Ueberstand-Aufmass + Ausschnitt in m2: Ist 7.11797, Soll 7.11797 (+-0.0142359)
+PASS huelle: BBB_tuer: Ausschnitt entfernt Flaeche (1026 x 2143 = 2,20 m2) aus beiden Lagen: Ist 4.91925e+06, Soll 4.91925e+06 (+-14235.9)
+PASS huelle: BBB_tuer: Masse je Feld (2 Lagen) = Flaeche x 0,15 mm x 0,92: Ist 1.35771, Soll 1.35771 (+-0.002)
+PASS huelle: BBB_tuer: Interferenzen innere/aeussere Lage: Ist 0, Soll 0
+PASS huelle: Summe netto aus den Bauteilen (30 AAB + 9 BBB + Tuerfeld) in m2 gegen R24 208 +- 3 %: Ist 207.737, Soll 208 (+-6.24)
+   Folienflaeche je Lage mit Ueberstand: 251.8 m2 (netto 207.7 m2); Gesamtmasse beide Lagen: 69.5 kg
+PASS huelle: Innere Lage liegt ueber Strebe + Schaumband + Kanal (45 + 3 + 15 = 63 < 64): Ist 1, Soll 1
+PASS huelle: Luft zwischen Kanal-Oberkante und innerer Lage in mm (1): Ist 1, Soll 1 (+-0.01)
+== huelle: 31/31 PASS

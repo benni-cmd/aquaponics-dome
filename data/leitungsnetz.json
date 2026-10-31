@@ -1,7 +1,7 @@
 {
  "stand": "31.10.2026",
  "version": 2,
- "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe.",
+ "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe. Version 2 (R40): Puffer klein, Drittbecken klein, Messknoten-Trunks, Hauptstrom-Feinfilter, Linienteilung 12+7 (D67); Aenderungen in docs/leitungsnetz-aenderungen.md.",
  "konventionen": {
   "dn_einheit": "Aussendurchmesser mm der Leitungsteile-Bibliothek (d20-d110)",
   "geschwindigkeit": "Druckseite <= 1,5 m/s (UVI-Hauptleitung ca. 1,4 m/s), Saugseite <= 1,0 m/s [A]",
@@ -926,13 +926,148 @@
    "quelle": "A R24"
   },
   {
-   "von": "schaltschrank",
-   "nach": "sonden_signal",
+   "von": "mk_kuppel",
+   "nach": "schaltschrank",
    "medium": "Signal",
-   "adern_stueck": 3,
+   "adern_stueck": 6,
+   "leistung_w": 2,
+   "bemerkung": "Trunk Messknoten zur Zentrale: RS-485/Modbus RTU 4 Adern (galvanisch getrennt) + 24 V DC 2 Adern; Messknoten mk_kuppel (Kuppelinneres (Maste Arbeitsbereich, Scheitel, Ansaug)), 4 Messstellen; Laenge nach Aufstellung (Montage M10)",
+   "quelle": "A R39"
+  },
+  {
+   "von": "sonden_mk_kuppel",
+   "nach": "mk_kuppel",
+   "medium": "Signal",
+   "adern_stueck": 18,
    "leistung_w": null,
-   "bemerkung": "pH, EC, DO-Kreise zum Messrechner (isoliert, FAO/Atlas)",
-   "quelle": "Q R27"
+   "bemerkung": "5 Stichleitungen (18 Adern) von den Sonden/Fuehlern zum Messknoten (Herstellerkabel Atlas: pH/EC 1 m, DO 3 m, Messknoten neben dem Halter)",
+   "quelle": "E R39"
+  },
+  {
+   "von": "mk_l1",
+   "nach": "schaltschrank",
+   "medium": "Signal",
+   "adern_stueck": 6,
+   "leistung_w": 3,
+   "bemerkung": "Trunk Messknoten zur Zentrale: RS-485/Modbus RTU 4 Adern (galvanisch getrennt) + 24 V DC 2 Adern; Messknoten mk_l1 (Technikbereich Linie 1 (Absetzer 1, Biofilter 1, Verteiler 1)), 12 Messstellen; Laenge nach Aufstellung (Montage M10)",
+   "quelle": "A R39"
+  },
+  {
+   "von": "sonden_mk_l1",
+   "nach": "mk_l1",
+   "medium": "Signal",
+   "adern_stueck": 27,
+   "leistung_w": null,
+   "bemerkung": "12 Stichleitungen (27 Adern) von den Sonden/Fuehlern zum Messknoten (Herstellerkabel Atlas: pH/EC 1 m, DO 3 m, Messknoten neben dem Halter)",
+   "quelle": "E R39"
+  },
+  {
+   "von": "mk_l2",
+   "nach": "schaltschrank",
+   "medium": "Signal",
+   "adern_stueck": 6,
+   "leistung_w": 3,
+   "bemerkung": "Trunk Messknoten zur Zentrale: RS-485/Modbus RTU 4 Adern (galvanisch getrennt) + 24 V DC 2 Adern; Messknoten mk_l2 (Technikbereich Linie 2 (Absetzer 2, Biofilter 2, Verteiler 2)), 12 Messstellen; Laenge nach Aufstellung (Montage M10)",
+   "quelle": "A R39"
+  },
+  {
+   "von": "sonden_mk_l2",
+   "nach": "mk_l2",
+   "medium": "Signal",
+   "adern_stueck": 27,
+   "leistung_w": null,
+   "bemerkung": "12 Stichleitungen (27 Adern) von den Sonden/Fuehlern zum Messknoten (Herstellerkabel Atlas: pH/EC 1 m, DO 3 m, Messknoten neben dem Halter)",
+   "quelle": "E R39"
+  },
+  {
+   "von": "mk_pool",
+   "nach": "schaltschrank",
+   "medium": "Signal",
+   "adern_stueck": 6,
+   "leistung_w": 3,
+   "bemerkung": "Trunk Messknoten zur Zentrale: RS-485/Modbus RTU 4 Adern (galvanisch getrennt) + 24 V DC 2 Adern; Messknoten mk_pool (Beckenrand Zentralpool), 10 Messstellen; Laenge nach Aufstellung (Montage M10)",
+   "quelle": "A R39"
+  },
+  {
+   "von": "sonden_mk_pool",
+   "nach": "mk_pool",
+   "medium": "Signal",
+   "adern_stueck": 25,
+   "leistung_w": null,
+   "bemerkung": "14 Stichleitungen (25 Adern) von den Sonden/Fuehlern zum Messknoten (Herstellerkabel Atlas: pH/EC 1 m, DO 3 m, Messknoten neben dem Halter)",
+   "quelle": "E R39"
+  },
+  {
+   "von": "mk_puffer",
+   "nach": "schaltschrank",
+   "medium": "Signal",
+   "adern_stueck": 6,
+   "leistung_w": 5,
+   "bemerkung": "Trunk Messknoten zur Zentrale: RS-485/Modbus RTU 4 Adern (galvanisch getrennt) + 24 V DC 2 Adern; Messknoten mk_puffer (Puffer-Station T82 (Messrechner R27, Messzelle, Stammloesungsfass, Eisen-Kanister)), 8 Messstellen; Laenge nach Aufstellung (Montage M10)",
+   "quelle": "A R39"
+  },
+  {
+   "von": "sonden_mk_puffer",
+   "nach": "mk_puffer",
+   "medium": "Signal",
+   "adern_stueck": 21,
+   "leistung_w": null,
+   "bemerkung": "11 Stichleitungen (21 Adern) von den Sonden/Fuehlern zum Messknoten (Herstellerkabel Atlas: pH/EC 1 m, DO 3 m, Messknoten neben dem Halter)",
+   "quelle": "E R39"
+  },
+  {
+   "von": "mk_schrank",
+   "nach": "schaltschrank",
+   "medium": "Signal",
+   "adern_stueck": 6,
+   "leistung_w": 10,
+   "bemerkung": "Trunk Messknoten zur Zentrale: RS-485/Modbus RTU 4 Adern (galvanisch getrennt) + 24 V DC 2 Adern; Messknoten mk_schrank (Schaltschrank (Strom, Netz, Gebläse, Batterie, Alarm)), 16 Messstellen; Laenge nach Aufstellung (Montage M10)",
+   "quelle": "A R39"
+  },
+  {
+   "von": "sonden_mk_schrank",
+   "nach": "mk_schrank",
+   "medium": "Signal",
+   "adern_stueck": 36,
+   "leistung_w": null,
+   "bemerkung": "17 Stichleitungen (36 Adern) von den Sonden/Fuehlern zum Messknoten (Herstellerkabel Atlas: pH/EC 1 m, DO 3 m, Messknoten neben dem Halter)",
+   "quelle": "E R39"
+  },
+  {
+   "von": "mk_zd",
+   "nach": "schaltschrank",
+   "medium": "Signal",
+   "adern_stueck": 6,
+   "leistung_w": 2,
+   "bemerkung": "Trunk Messknoten zur Zentrale: RS-485/Modbus RTU 4 Adern (galvanisch getrennt) + 24 V DC 2 Adern; Messknoten mk_zd (zwischen Zweitbecken und Drittbecken), 5 Messstellen; Laenge nach Aufstellung (Montage M10)",
+   "quelle": "A R39"
+  },
+  {
+   "von": "sonden_mk_zd",
+   "nach": "mk_zd",
+   "medium": "Signal",
+   "adern_stueck": 5,
+   "leistung_w": null,
+   "bemerkung": "4 Stichleitungen (5 Adern) von den Sonden/Fuehlern zum Messknoten (Herstellerkabel Atlas: pH/EC 1 m, DO 3 m, Messknoten neben dem Halter)",
+   "quelle": "E R39"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "steuerung_alarm",
+   "medium": "Signal",
+   "adern_stueck": 5,
+   "leistung_w": null,
+   "bemerkung": "Alarmwaehler (MS67, GSM) unabhaengig vom Messrechner: 4 Schaltkontakte (Netz, Luftdruck, Pegel niedrig, Watchdog) + gemeinsamer Leiter; ruft 3-4 Nummern",
+   "quelle": "A R39 alarmwege stufe 2"
+  },
+  {
+   "von": "steuerung_alarm",
+   "nach": "blitzleuchte_summer",
+   "medium": "Signal",
+   "adern_stueck": 4,
+   "leistung_w": null,
+   "bemerkung": "Blitzleuchte + Summer an der Tuer und am Schaltschrank, verdrahtet, laeuft ohne Rechner (24 V aus der Batterie), 2 Stellen x 2 Adern",
+   "quelle": "A R39 alarmwege stufe 1"
   }
  ],
  "bilanz_je_linie_l_min": {

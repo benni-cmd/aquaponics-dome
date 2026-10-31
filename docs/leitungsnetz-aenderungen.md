@@ -40,3 +40,24 @@ Der Stapel aus zwei IBC (Messtank oben, Vorrat unten) entfällt. Im Dom stehen d
 | Kabel `geblaese_fisch` | 280 W | 204 W | UVI 0,59 W/kg × 346 kg (D61), `system-specs.json` leistung.belueftung_w |
 | `messstellen.json` MS11 | Probenahmehahn K42 | Text „Umlauf zum Biofilter 37 l“ | Konsistenz |
 | Hinweis | | `system-specs.json` führt `leistung.puffer_station_w` weiter mit 17 W (Standard bleibt Station 2 IBC bis zur Orchestrator-Umstellung); die Netzliste rechnet mit 11,5 W (T82) | R37, D66 |
+
+## Schritt 3: Messstellen als Signalkabel (D65, R39 Signalweg, `data/messstellen.json`)
+`sonden_signal` (3 Adern, nur Puffer) entfällt. Je Messknoten ein Trunk zur Zentrale (Schaltschrank): RS-485/Modbus RTU 4 Adern + 24 V DC 2 Adern, dazu die Stichleitungen der Sonden. Zahlen aus `python scripts/messstellen_plan.py` (zaehlen()).
+
+| Messknoten | Messstellen | Stichleitungen | Adern der Stichleitungen | Leistung W |
+|---|---|---|---|---|
+| mk_kuppel | 4 | 5 | 18 | 2 |
+| mk_l1 | 12 | 12 | 27 | 3 |
+| mk_l2 | 12 | 12 | 27 | 3 |
+| mk_pool | 10 | 14 | 25 | 3 |
+| mk_puffer | 8 | 11 | 21 | 5 |
+| mk_schrank | 16 | 17 | 36 | 10 |
+| mk_zd | 5 | 4 | 5 | 2 |
+
+| Element | alt | neu | Begründung / Quelle |
+|---|---|---|---|
+| Kabel `sonden_signal` | 3 Adern pH/EC/DO zum Messrechner | **entfällt**, ersetzt durch 7 Trunks und 7 Stichleitungs-Bündel | R39 Signalweg: Messknoten neben dem Halter, weil die Atlas-Sondenkabel kurz sind |
+| Kabel Trunk je Messknoten | — | 6 Adern (4 Bus + 2 × 24 V), Länge Montage M10 | R39 signalweg, [A] Entwurf |
+| Kabel `steuerung_alarm` | Platzhalter 40 W | + Alarmwähler-Eingänge 5 Adern (4 Schaltkontakte + gemeinsamer Leiter) und Blitzleuchte/Summer 2 × 2 Adern | MS67, R39 alarmwege Stufe 1 und 2 |
+| `hinweis` | R28 | Version 2 mit Verweis auf dieses Protokoll | |
+| Offen für M10 | | Trunk-Längen und Weg (Kabeltrasse), Spannungsabfall 24 V auf langen Strecken, Notstrom der Zentrale | nicht gerechnet |

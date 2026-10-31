@@ -50,6 +50,8 @@
   #info .note { background:#2a2616; border-left:3px solid #d9c35b; padding:5px 8px; margin-top:8px; color:#e8d98a; }
   #info .src { color:var(--muted); font-size:11px; margin-top:8px; }
   #info .ph { color:var(--muted); }
+  #fpvx { position:fixed; top:10px; right:10px; z-index:20; display:none; font-size:16px; padding:6px 14px; }
+  body.fpv #panel, body.fpv #infopanel { display:none; } body.fpv #fpvx { display:block; }
 </style>
 <script type="importmap">
 { "imports": { "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -58,13 +60,14 @@
 </head>
 <body>
 <div id="view"></div>
+<button id="fpvx" title="FPV beenden (Esc)">X</button>
 <div id="infopanel"><div id="info"></div></div>
 <div id="panel">
   <h1>Kuppel Live-Viewer</h1>
   <div id="status">verbinde ...</div>
   <div class="row">
     <button data-cam="iso">Ansicht ref-4</button><button data-cam="top">Oben</button>
-    <button data-cam="side">Seite</button><button data-cam="pool">Pool</button> <a href="/history/" target="_blank" style="color:inherit">Bildverlauf</a>
+    <button data-cam="side">Seite</button><button data-cam="pool">Pool</button><button id="fpv">FPV</button> <a href="/history/" target="_blank" style="color:inherit">Bildverlauf</a>
   </div>
   <label class="opt"><input type="checkbox" id="wire"> Drahtgitter</label>
   <label class="opt"><input type="checkbox" id="auto" checked> Auto-Update</label>
@@ -351,7 +354,7 @@ function select(s, fromModel) { selected = s; markSelection(); rebuildHighlight(
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2(); let down = null;
 renderer.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
 renderer.domElement.addEventListener('pointerup', e => {
-  if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5 || !model) return;
+  if (fpv.on || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5 || !model) return;
   ptr.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
   const hit = ray.intersectObjects(model.children.filter(o => o.visible), false)[0];
   if (hit && hit.instanceId !== undefined) select({ stem: hit.object.userData.def, idx: hit.instanceId }, true); else select(null, true);
@@ -407,7 +410,7 @@ async function poll() {
     st.innerHTML = `Modell gespeichert <b>${s.design_saved || '-'}</b> · Viewer <b>${s.built || '-'}</b>` +
       (s.busy ? ' · <b>exportiert ...</b>' : '') + (s.error ? '<br>Fehler: ' + s.error.replace(/</g, '&lt;') : '') +
       (extras.bodies ? `<br>${extras.bodies} Instanzen` : '');
-    if (auto && s.version !== version && s.version > 0) { version = s.version; await load(); }
+    if (auto && !(window.fpvState && window.fpvState().on) && s.version !== version && s.version > 0) { version = s.version; await load(); }
   } catch (e) { st.textContent = 'Server nicht erreichbar'; }
 }
 async function pollBoard() {
@@ -422,9 +425,67 @@ async function pollBoard() {
 }
 setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard();
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+
+// ---- FPV: in Augenhoehe 1,68 m durch die Kuppel gehen (Masse in mm) -------------------------------------------------
+const GROUND = 0, EYE = 1680, WALK = 1400, TURN = 1.6;      // Boden-Z, Augenhoehe, mm/s, rad/s
+const fpv = { on: false, x: 0, y: 0, yaw: 0, pitch: 0, keys: new Set(), saved: null, last: 0, drag: false };
+function fpvStart() {
+  const door = model && defList.tuer_komplett && defList.tuer_komplett[0];
+  const d = door ? Math.hypot(door.m[3], door.m[7]) || 1 : 1, dx = door ? door.m[3] / d : 0, dy = door ? door.m[7] / d : -1;
+  fpv.x = dx * 8000; fpv.y = dy * 8000; fpv.yaw = Math.atan2(-dy, -dx); fpv.pitch = 0;   // 8 m vom Mittelpunkt, Blick zur Tuer
+}
+function fpvEnter() {
+  if (fpv.on) return;
+  fpv.saved = { pos: camera.position.clone(), target: controls.target.clone(), fov: camera.fov, near: camera.near, clip: clipPlane.constant, up: camera.up.clone() };
+  fpvStart(); fpv.on = true; fpv.keys.clear(); fpv.last = 0;
+  document.body.classList.add('fpv'); controls.enabled = false; hlGroup.visible = false;
+  clipPlane.constant = 100000;
+  camera.fov = 75; camera.near = 50; camera.updateProjectionMatrix();
+  fpvApply();
+}
+function fpvExit() {
+  if (!fpv.on) return;
+  fpv.on = false; fpv.keys.clear(); fpv.drag = false;
+  if (document.pointerLockElement) document.exitPointerLock();
+  const sv = fpv.saved;
+  document.body.classList.remove('fpv'); controls.enabled = true; hlGroup.visible = true;
+  clipPlane.constant = sv.clip; camera.fov = sv.fov; camera.near = sv.near; camera.up.copy(sv.up); camera.updateProjectionMatrix();
+  camera.position.copy(sv.pos); controls.target.copy(sv.target); controls.update();
+}
+function fpvApply() {
+  camera.position.set(fpv.x, fpv.y, GROUND + EYE);
+  const cp = Math.cos(fpv.pitch);
+  camera.lookAt(fpv.x + Math.cos(fpv.yaw) * cp, fpv.y + Math.sin(fpv.yaw) * cp, GROUND + EYE + Math.sin(fpv.pitch));
+}
+function fpvStep(t) {
+  const dt = fpv.last ? Math.min((t - fpv.last) / 1000, 0.1) : 0; fpv.last = t;
+  const k = c => fpv.keys.has(c), sp = WALK * dt * (k('ShiftLeft') || k('ShiftRight') ? 3 : 1);
+  const fw = (k('KeyW') || k('ArrowUp') ? 1 : 0) - (k('KeyS') || k('ArrowDown') ? 1 : 0), st = (k('KeyD') ? 1 : 0) - (k('KeyA') ? 1 : 0);
+  fpv.yaw += ((k('ArrowLeft') || k('KeyQ') ? 1 : 0) - (k('ArrowRight') || k('KeyE') ? 1 : 0)) * TURN * dt;
+  fpv.x += (Math.cos(fpv.yaw) * fw + Math.sin(fpv.yaw) * st) * sp;
+  fpv.y += (Math.sin(fpv.yaw) * fw - Math.cos(fpv.yaw) * st) * sp;
+  fpvApply();
+}
+function fpvLook(dx, dy) {
+  fpv.yaw -= dx * 0.0025; fpv.pitch = Math.max(-1.396, Math.min(1.396, fpv.pitch - dy * 0.0025));   // +-80 Grad
+}
+document.getElementById('fpv').addEventListener('click', fpvEnter);
+document.getElementById('fpvx').addEventListener('click', fpvExit);
+addEventListener('keydown', e => {
+  if (!fpv.on) return;
+  if (e.code === 'Escape') { fpvExit(); return; }
+  fpv.keys.add(e.code); if (e.code.startsWith('Arrow') || e.code === 'Space') e.preventDefault();
+}, true);
+addEventListener('keyup', e => fpv.keys.delete(e.code), true);
+addEventListener('blur', () => fpv.keys.clear());
+renderer.domElement.addEventListener('pointerdown', e => { if (!fpv.on) return; fpv.drag = true; try { renderer.domElement.requestPointerLock && renderer.domElement.requestPointerLock(); } catch (_) {} });
+addEventListener('pointerup', () => { fpv.drag = false; });
+addEventListener('pointermove', e => { if (fpv.on && (document.pointerLockElement || fpv.drag)) fpvLook(e.movementX || 0, e.movementY || 0); });
+window.fpvState = () => ({ on: fpv.on, x: fpv.x, y: fpv.y, z: camera.position.z, yaw: fpv.yaw, pitch: fpv.pitch });
 (function loop(t) {
   const p = 0.45 + 0.25 * Math.sin(t / 220); hlMat.hover.opacity = p; hlMat.sel.opacity = 0.35 + 0.25 * Math.sin(t / 300 + 1);
-  controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop);
+  if (fpv.on) fpvStep(t); else controls.update();
+  renderer.render(scene, camera); requestAnimationFrame(loop);
 })(0);
 </script>
 </body>

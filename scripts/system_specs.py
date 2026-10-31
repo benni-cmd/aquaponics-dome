@@ -260,6 +260,49 @@ checks = [
     ("Hülle (Plane, D39) und Heizlast: Standort", False, f"PE doppelt {HULL_AREA:.0f} m²: {heat_w_per_k[1] / 1000:.2f} kW je Kelvin ({heat_w_per_k[0] / 1000:.2f}–{heat_w_per_k[2] / 1000:.2f}); bei ΔT {DT_DESIGN} K (Annahme Mitteleuropa −10/20 °C) {heat_kw_dt[1]} kW Spitze, Jahres-Obergrenze {heat_mwh_year[1]} MWh ohne Sonnengewinn; Standort offen, Heizung nicht in den Stromwerten"),
 ]
 
+# ---- Puffer klein (R37, D63): Fass-Varianten im Dom, nur zusaetzlich; Standard bleibt Puffer-Station 2 IBC (D46) bis zur Entscheidung -------
+# Fass-Masse [Q Haendler: Kaufland/denios/toom 120 l Weithals Ø 470-500 x 795-800 mm; freshdi 200 l Ø 570-600 x 930-1000 mm, zweite Quelle fehlt]
+BARREL_120 = dict(l=120, d=0.47, h=0.80, raster=0.50)
+BARREL_200 = dict(l=200, d=0.60, h=0.95, raster=0.60)
+STOCK_G_L = {"KOH": 100, "NaHCO3": 96, "Ca(OH)2": 100}   # Arbeitsloesung g/l: NaHCO3 96 g/l Loeslichkeit 20 C [Q Merck SDB]; KOH 100 [A, Loeslichkeit nicht gelesen]; Ca(OH)2 loest nur 1,7 g/l [Q Merck/VWR, Wikipedia] -> Kalkmilch 100 g/l [A]
+DOSE_TANK_L, MEASURE_CELL_L, IRON_L = 120, 20, 20      # Stammloesungsfass, Messzelle (3 l/min -> ca. 7 min Verweilzeit), Eisenchelat-Kanister (74 g Fe je 3 Wochen)
+CISTERN_L = 3000                                       # Erdtank aussen [Q Haendlerpreise 899-1097 EUR nur Tank, 1649-2469 EUR Komplettsets]
+MEASURE_HEAD_M = 1.5                                   # Messzelle neben dem Verteiler statt 2,5-m-Stapel [A]
+third_small_m3 = pi * 0.4 ** 2 * 0.8                   # Drittbecken klein Ø 0,8 x 0,8 m [A]
+ts_fish = round(QUARANTINE_FISH_PER_M3 * third_small_m3)
+ts_kg = ts_fish * QUARANTINE_FISH_G / 1000
+ts_feed = ts_kg * JUVENILE_FEED_PCT
+ts_tan = ts_feed * 1000 * TAN_FRACTION
+water_without_puffer = total - puffer_m3 - third_m3
+stock_days = {k: round(DOSE_TANK_L / (base_kg_pract[k] * 1000 / STOCK_G_L[k]), 1) for k in STOCK_G_L}
+meas_w = 1000 * 9.81 * (SAMPLE_FLOW_L_MIN / 60000) * MEASURE_HEAD_M / PUMP_EFF
+fill_w_b = 1000 * 9.81 * (FILL_FLOW_L_MIN / 60000) * MEASURE_HEAD_M / PUMP_EFF * FILL_H_PER_DAY / 24
+
+
+def puffer_variant(key, name, fresh_n, cistern_l, rolle):
+    dom_l = DOSE_TANK_L + MEASURE_CELL_L + IRON_L + fresh_n * BARREL_200["l"]
+    area = BARREL_120["raster"] ** 2 + 0.30 * 0.25 + 0.25 * 0.25 + fresh_n * BARREL_200["raster"] ** 2   # Raster-Grundflaeche m2 (Fass + Messzelle + Kanister)
+    fresh_l = fresh_n * BARREL_200["l"] + cistern_l
+    strom = sensors_w + PI_W + dose_w_avg + meas_w + (fill_w_b if fresh_n else 0)
+    return {"key": key, "name": name, "im_dom_l": dom_l, "im_dom_m3": round(dom_l / 1000, 2), "anteil_wasser_prozent": round(dom_l / 10 / (water_without_puffer + dom_l / 1000), 2),
+            "frischwasser_l": fresh_l, "frischwasser_tage_bei_verlust": [round(fresh_l / 1000 / (loss_m3_day * f), 1) for f in (1.0, 0.5)],
+            "grundflaeche_m2": round(area, 2), "grundflaeche_gespart_gegen_station_m2": round(2.42 * 1.92 - area, 1), "strom_w": round(strom, 1), "rolle": rolle,
+            "fass_zahl": {"fass_120": 1, "fass_200": fresh_n}, "zisterne_aussen_l": cistern_l}
+
+
+puffer_klein = {
+    "standard": "puffer_station_2_ibc (D46) bis Entscheidung Ben", "pflicht": ["Messzelle (Sonden pH, EC, Temperatur, O2, Nitrat) im Messkreis 3 l/min", "Stammloesungsfass Base (Ca(OH)2/KOH/NaHCO3)", "Eisenchelat-Kanister", "entchlortes Nachfuellwasser (Quelle, nicht Menge)"],
+    "komfort": ["2 Tage stehendes Frischwasser (FAO 589: 1,4 m3 bei 0,68 m3/Tag)", "Notvorrat ueber Stunden hinaus", "Stapel-Schwerkraft"],
+    "bedarf": {"verlust_m3_tag_2prozent": round(loss_m3_day, 2), "verlust_m3_tag_1prozent": round(loss_m3_day / 2, 2), "uvi_anteil_m3": round(0.007 * total, 2), "stammloesung_tage_je_120l": stock_days},
+    "optionen": [puffer_variant("A", "A Minimal im Dom: Dosierfass 120 l + Messzelle + Eisen, Nachfuellwasser direkt ueber Aktivkohle", 0, 0, "Mess-, Dosier-, Eisenstation; kein Vorrat"),
+                 puffer_variant("B", "B Fass-Station mit Tagesreserve: wie A + 3 x 200-l-Fass belueftet", 3, 0, "wie A + 0,6 m3 Nachfuell- und Notvorrat im Dom"),
+                 puffer_variant("C", "C Minimal im Dom (wie A) + Zisterne 3 m3 aussen (Erdtank, Regenwasser)", 0, CISTERN_L, "wie A + Frischwasser/Notvorrat aussen")],
+    "drittbecken_klein": {"durchmesser_m": 0.8, "tiefe_m": 0.8, "volumen_m3": round(third_small_m3, 2), "fische_uvi": ts_fish, "kg": round(ts_kg, 1), "fao_max_kg": round(MAX_FISH_KG_M3 * third_small_m3, 1),
+                          "futter_g_tag": round(ts_feed * 1000), "tan_g_tag": round(ts_tan, 1), "wasserwechsel_m3_tag_ohne_biofilter": round(ts_tan, 1), "biofilter_bioballs_l": round(ts_feed * 1000 * FEED_RULE_MEDIA_L_PER_G["bioball"]),
+                          "grundflaeche_m2_mit_60mm": round(pi * (0.4 + 0.06) ** 2, 2), "grundflaeche_gespart_m2": round(pi * (THIRD_D / 2 + 0.06) ** 2 - pi * (0.4 + 0.06) ** 2, 2),
+                          "notbecken": f"nur Zuchttiere/Kranke (max. {MAX_FISH_KG_M3 * third_small_m3:.0f} kg bei 20 kg/m3); Notaufnahme des Pools (346 kg) nicht moeglich, das Zweitbecken (2,4 m3, max. 48 kg) uebernimmt nur Teile"},
+    "hinweis": "Zahlen R37; Fass-Masse und Preise sind Haendlerangaben (Snapshot), Stammloesungs-Konzentrationen KOH/Kalkmilch Annahmen; keine Layoutaenderung, Standard bleibt Puffer-Station 2 IBC bis zur Entscheidung (D63)."}
+
 # ---- Beete unter den Tischen (R36, D60): Weg 1 = Standard, Weg 2 = Pruefszenarien; Rechnung in scripts/bed_table_variants.py ----
 import bed_table_variants as btv
 assert len(NFT_CHANNELS["aussen"][1]) == 4 and POTS_NFT == 674, "Szenarien weg1/weg2 gelten fuer aussen4 (D43)"
@@ -341,6 +384,7 @@ specs = {
                   "szenarien": mix_rows, "empfehlung": mix_best, "ziel_futter_kg_tag": [mix_rows[2]["futter_kg_tag"], mix_rows[0]["futter_kg_tag"]], "rueckfall_fisch_kg": [mix_rows[3]["fisch_kg"], mix_rows[2]["fisch_kg"]],
                   "regel": "Besatz stufenweise erhoehen, Nitrat 5-150 mg/l halten (FAO 589: unter 5 Futter erhoehen, ueber 150 Wasser wechseln)",
                   "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50), SRAC 454 NFT nur 25 % des Raft-Werts; Beete unter den Tischen nur Blatt/Kraeuter (D61, R36): Tomate, Paprika, Gurke und Suesskartoffel entfallen; Kohlrabi/Sellerie nur als Zwischenkultur"},
+    "puffer_klein": puffer_klein,
     "beete_tische": beete_tische,
     "szenario": {"aussen_rinnen": AUSSEN_RINNEN, "drei_rinnen": scen3, "vier_rinnen": scen4,
                  "hinweis": "aussen4 ist Standard (D43, W24 check_nft_fit 48/48): Rinnenlaengen und Toepfe aus nft_tisch.json; NFT-Flaeche aus Bens Tabellenflaeche (42,41 m2 bei aussen3-Laenge) auf die Rinnenlaenge skaliert [A]",

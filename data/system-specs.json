@@ -418,6 +418,111 @@
   "regel": "Besatz stufenweise erhoehen, Nitrat 5-150 mg/l halten (FAO 589: unter 5 Futter erhoehen, ueber 150 Wasser wechseln)",
   "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50), SRAC 454 NFT nur 25 % des Raft-Werts; Beete unter den Tischen nur Blatt/Kraeuter (D61, R36): Tomate, Paprika, Gurke und Suesskartoffel entfallen; Kohlrabi/Sellerie nur als Zwischenkultur"
  },
+ "puffer_klein": {
+  "standard": "puffer_station_2_ibc (D46) bis Entscheidung Ben",
+  "pflicht": [
+   "Messzelle (Sonden pH, EC, Temperatur, O2, Nitrat) im Messkreis 3 l/min",
+   "Stammloesungsfass Base (Ca(OH)2/KOH/NaHCO3)",
+   "Eisenchelat-Kanister",
+   "entchlortes Nachfuellwasser (Quelle, nicht Menge)"
+  ],
+  "komfort": [
+   "2 Tage stehendes Frischwasser (FAO 589: 1,4 m3 bei 0,68 m3/Tag)",
+   "Notvorrat ueber Stunden hinaus",
+   "Stapel-Schwerkraft"
+  ],
+  "bedarf": {
+   "verlust_m3_tag_2prozent": 0.68,
+   "verlust_m3_tag_1prozent": 0.34,
+   "uvi_anteil_m3": 0.26,
+   "stammloesung_tage_je_120l": {
+    "KOH": 23.1,
+    "NaHCO3": 14.8,
+    "Ca(OH)2": 35.3
+   }
+  },
+  "optionen": [
+   {
+    "key": "A",
+    "name": "A Minimal im Dom: Dosierfass 120 l + Messzelle + Eisen, Nachfuellwasser direkt ueber Aktivkohle",
+    "im_dom_l": 160,
+    "im_dom_m3": 0.16,
+    "anteil_wasser_prozent": 0.47,
+    "frischwasser_l": 0,
+    "frischwasser_tage_bei_verlust": [
+     0.0,
+     0.0
+    ],
+    "grundflaeche_m2": 0.39,
+    "grundflaeche_gespart_gegen_station_m2": 4.3,
+    "strom_w": 11.5,
+    "rolle": "Mess-, Dosier-, Eisenstation; kein Vorrat",
+    "fass_zahl": {
+     "fass_120": 1,
+     "fass_200": 0
+    },
+    "zisterne_aussen_l": 0
+   },
+   {
+    "key": "B",
+    "name": "B Fass-Station mit Tagesreserve: wie A + 3 x 200-l-Fass belueftet",
+    "im_dom_l": 760,
+    "im_dom_m3": 0.76,
+    "anteil_wasser_prozent": 2.18,
+    "frischwasser_l": 600,
+    "frischwasser_tage_bei_verlust": [
+     0.9,
+     1.8
+    ],
+    "grundflaeche_m2": 1.47,
+    "grundflaeche_gespart_gegen_station_m2": 3.2,
+    "strom_w": 12.9,
+    "rolle": "wie A + 0,6 m3 Nachfuell- und Notvorrat im Dom",
+    "fass_zahl": {
+     "fass_120": 1,
+     "fass_200": 3
+    },
+    "zisterne_aussen_l": 0
+   },
+   {
+    "key": "C",
+    "name": "C Minimal im Dom (wie A) + Zisterne 3 m3 aussen (Erdtank, Regenwasser)",
+    "im_dom_l": 160,
+    "im_dom_m3": 0.16,
+    "anteil_wasser_prozent": 0.47,
+    "frischwasser_l": 3000,
+    "frischwasser_tage_bei_verlust": [
+     4.4,
+     8.8
+    ],
+    "grundflaeche_m2": 0.39,
+    "grundflaeche_gespart_gegen_station_m2": 4.3,
+    "strom_w": 11.5,
+    "rolle": "wie A + Frischwasser/Notvorrat aussen",
+    "fass_zahl": {
+     "fass_120": 1,
+     "fass_200": 0
+    },
+    "zisterne_aussen_l": 3000
+   }
+  ],
+  "drittbecken_klein": {
+   "durchmesser_m": 0.8,
+   "tiefe_m": 0.8,
+   "volumen_m3": 0.4,
+   "fische_uvi": 31,
+   "kg": 2.4,
+   "fao_max_kg": 8.0,
+   "futter_g_tag": 73,
+   "tan_g_tag": 2.8,
+   "wasserwechsel_m3_tag_ohne_biofilter": 2.8,
+   "biofilter_bioballs_l": 37,
+   "grundflaeche_m2_mit_60mm": 0.66,
+   "grundflaeche_gespart_m2": 0.37,
+   "notbecken": "nur Zuchttiere/Kranke (max. 8 kg bei 20 kg/m3); Notaufnahme des Pools (346 kg) nicht moeglich, das Zweitbecken (2,4 m3, max. 48 kg) uebernimmt nur Teile"
+  },
+  "hinweis": "Zahlen R37; Fass-Masse und Preise sind Haendlerangaben (Snapshot), Stammloesungs-Konzentrationen KOH/Kalkmilch Annahmen; keine Layoutaenderung, Standard bleibt Puffer-Station 2 IBC bis zur Entscheidung (D63)."
+ },
  "beete_tische": {
   "standard": "weg1",
   "szenarien": [

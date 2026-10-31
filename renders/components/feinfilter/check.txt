@@ -1,44 +1,4 @@
-PASS feinfilter: Behaelter Laenge (Blatt W31: 400 x 300 x 500): Ist 400, Soll 400 (+-0.5)
-PASS feinfilter: Behaelter Tiefe (Blatt W31: 400 x 300 x 500): Ist 300, Soll 300 (+-0.5)
-PASS feinfilter: Behaelter Hoehe (Blatt W31: 400 x 300 x 500): Ist 500, Soll 500 (+-0.5)
-PASS feinfilter: Behaelter steht auf dem Standrahmen (Unterkante = foot_h): Ist 250, Soll 250 (+-0.01)
-PASS feinfilter: Behaelter-Volumen aus Wandformel (Wanne + Leisten - 3 Bohrungen), Wand 5 mm: Ist 4.08751e+06, Soll 4.0875e+06 (+-12046.5)
-PASS feinfilter: Behaelter-Fassungsvermoegen bis Rand (390 x 290 x 495 mm) in Litern (Blatt: etwa 56 l, Korb verdraengt ca. 5 l): Ist 55.9845, Soll 55.9845 (+-0.05)
-PASS feinfilter: Korbflansch liegt auf den Leisten (Unterkante = Leistenoberkante): Ist 680, Soll 680 (+-0.01)
-PASS feinfilter: Spalt Korbflansch zur Behaelterwand in X je Seite >= 3 mm (Entnahme): Ist 3, Soll 3 (+-0.01)
-PASS feinfilter: Spalt Korbflansch zur Behaelterwand in Y je Seite >= 3 mm: Ist 3, Soll 3 (+-0.01)
-PASS feinfilter: Korbboden-Abstand zum Behaelterboden >= 90 mm (Ablaufkammer): Ist 1, Soll 1
-PASS feinfilter: Korbgewebe Aussenmasse 340 x 240 x 330: Ist 910, Soll 910 (+-0.5)
-PASS feinfilter: Korbgewebe Huelle 1 mm: Volumen aus Flaechen (Boden + 4 Waende): Ist 461924, Soll 463240 (+-5119.24)
-PASS feinfilter: Korbstaebe 4 Stueck: Ist 4, Soll 4
-PASS feinfilter: Korbgriff je Seite ein Koerper (2): Ist 2, Soll 2
-PASS feinfilter: Korb herausnehmbar: Griff-Oberkante unter dem Deckel (>= 10 mm Luft): Ist 1, Soll 1
-PASS feinfilter: Einlauf: Oeffnungsebene aussen bei x = -(L/2 + 60) (Richtung -X): Ist -260, Soll -260 (+-0.01)
-PASS feinfilter: Einlauf: Durchmesser d50: Ist 50, Soll 50 (+-0.2)
-PASS feinfilter: Einlauf: Mitte y = 0: Ist -2.08763e-10, Soll 0 (+-0.01)
-PASS feinfilter: Einlauf: Oberkante des Winkels = Einlaufmitte + 25 (z 743): Ist 743, Soll 743 (+-0.01)
-PASS feinfilter: Einlauf: senkrechtes Rohr endet 90 mm unter der Einlaufmitte (z 628): Ist 628, Soll 628 (+-0.01)
-PASS feinfilter: Einlauf: Oberkante des waagerechten Rohrs <= Behaelterrand (kein Stau ueber dem Rand): Ist 1, Soll 1
-PASS feinfilter: Einlauf mündet über dem Korb: senkrechtes Rohr endet im Korb (Unterkante > Korbboden): Ist 1, Soll 1
-PASS feinfilter: Einlaufrohr liegt ueber dem Korbflansch (Luft >= 8 mm): Ist 1, Soll 1
-PASS feinfilter: Auslauf: Oeffnungsebene aussen bei x = L/2 + 70 (Richtung +X): Ist 270, Soll 270 (+-0.01)
-PASS feinfilter: Auslauf: Durchmesser d50: Ist 49.9992, Soll 50 (+-0.2)
-PASS feinfilter: Auslauf: Mitte z = foot_h + 52, unter dem Korbboden: Ist 1, Soll 1
-PASS feinfilter: Ablass: Oeffnungsebene aussen bei y = -(W/2 + 40 + 50 + 30) (Richtung -Y): Ist -270, Soll -270 (+-0.01)
-PASS feinfilter: Ablass: Durchmesser d40: Ist 39.9994, Soll 40 (+-0.2)
-PASS feinfilter: Ablass: Unterkante der Bohrung ueber dem Boden >= 5 mm (Restwasser < 0,6 l): Ist 1, Soll 1
-PASS feinfilter: Kugelhahn d40: Gehaeuse D56 und Hebel vorhanden: Ist 1, Soll 1
-PASS feinfilter: Ablass-Kugelhahn erreichbar: Hebel ausserhalb der Behaelterbox (y < -W/2): Ist 1, Soll 1
-PASS feinfilter: Eimer unter dem Ablass: Mitte Schlauchtuelle 280 mm ueber dem Boden (Eimer 220 + Luft): Ist 280, Soll 280 (+-0.01)
-PASS feinfilter: Deckel ueberdeckt den Behaelter (Laenge >= Behaelter + 2 x 4): Ist 408, Soll 408 (+-0.01)
-PASS feinfilter: Spannverschluesse 4 Stueck (Bock + Hebel): Ist 8, Soll 8
-PASS feinfilter: Dichtung EPDM auf dem Rand (Unterkante = Behaelteroberkante): Ist 750, Soll 750 (+-0.01)
-PASS feinfilter: Gesamthoehe (Rahmen + Behaelter + Dichtung + Deckel + Griff) in mm: Ist 793, Soll 793 (+-0.5)
-PASS feinfilter: Standrahmen 4 Beine und 4 Fussplatten: Ist 8, Soll 8
-PASS feinfilter: Rahmen traegt den Boden: Ring-Oberkante = Behaelterunterkante: Ist 250, Soll 250 (+-0.01)
-PASS feinfilter: Fussplatten stehen auf z = 0: Ist 0, Soll 0 (+-0.01)
-PASS feinfilter: Auflagestege 3 Stueck (Boden-Spannweite <= 100 mm): Ist 3, Soll 3
-PASS feinfilter: Leermasse plausibel (8-16 kg): Ist 1, Soll 1
-   Leermasse 14.02 kg, Koerper 49
-PASS feinfilter: Interferenzen im Feinfilter (Rahmen, Behaelter, Korb, Deckel, Anschluesse): Ist 0, Soll 0
-== feinfilter: 42/42 PASS
+   Innenraum 153.7 l, Korb-Siebflaeche 0.840 m2, Siebbelastung 7.86 m/h
+   Rohrgeschwindigkeit d63 0.72 m/s
+   Leermasse 40.45 kg, Koerper 55
+== feinfilter: 54/54 PASS

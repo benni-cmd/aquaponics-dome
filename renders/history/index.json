@@ -2118,5 +2118,25 @@
   "note": "W27 Zarge-Planenausschnitt T44",
   "commit": "ceefc6d",
   "source": "renders/components/tuer_zarge_planenausschnitt/tuer_zarge_planenausschnitt-02-querschnitt.png"
+ },
+ {
+  "file": "20261031-130546_werkstatt_feinfilter_feinfilter-01-iso.png",
+  "sha": "3b50e18158acbca7",
+  "time": "2026-10-31 13:05:46",
+  "role": "werkstatt",
+  "subject": "feinfilter",
+  "note": "W32 Feinfilter Hauptstrom",
+  "commit": "079ed4f",
+  "source": "renders/components/feinfilter/feinfilter-01-iso.png"
+ },
+ {
+  "file": "20261031-130650_werkstatt_feinfilter_feinfilter-05-schnitt.png",
+  "sha": "13fda9955d92ede4",
+  "time": "2026-10-31 13:06:50",
+  "role": "werkstatt",
+  "subject": "feinfilter",
+  "note": "W32 Feinfilter Hauptstrom",
+  "commit": "079ed4f",
+  "source": "renders/components/feinfilter/feinfilter-05-schnitt.png"
  }
 ]

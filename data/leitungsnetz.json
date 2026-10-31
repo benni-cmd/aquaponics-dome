@@ -729,10 +729,10 @@
    "nach": "biofilter_dritt",
    "medium": "Wasser",
    "dn": 25,
-   "soll_l_min": 10.0,
-   "quelle": "A",
-   "bemerkung": "kleiner Biofilter Quarantaene (Umlauf)",
-   "v_m_s": 0.48
+   "soll_l_min": 5.0,
+   "quelle": "E",
+   "bemerkung": "Umlauf Quarantaene zum kleinen Biofilter (37 l Bioballs): TAN-Mindestdurchfluss 2,6 l/min (2,8 g TAN/Tag, Ziel 1,5 mg/l, Biofilter 50 %), 5 l/min = 2fach; Becken 0,4 m3 in 80 min umgewaelzt",
+   "v_m_s": 0.24
   },
   {
    "id": "K43",
@@ -740,10 +740,10 @@
    "nach": "drittbecken",
    "medium": "Wasser",
    "dn": 25,
-   "soll_l_min": 10.0,
-   "quelle": "A",
-   "bemerkung": "Rueckfluss",
-   "v_m_s": 0.48
+   "soll_l_min": 5.0,
+   "quelle": "E",
+   "bemerkung": "Rueckfluss vom Biofilter in das Becken",
+   "v_m_s": 0.24
   },
   {
    "id": "K44",
@@ -753,7 +753,7 @@
    "dn": 40,
    "soll_l_min": 120,
    "quelle": "A",
-   "bemerkung": "Ausstroemer Pool; Luftbedarf gesamt 90-180 l/min (E aus O2-Bedarf 1,7-3,0 kg/Tag, OTE 13 % [A]), Hauptleitung d40"
+   "bemerkung": "Ausstroemer Pool; Luftbedarf gesamt: R28 nannte 90-180 l/min aus 1,7-3,0 kg O2/Tag; nach D61 sind es 1,3-2,2 kg O2/Tag (system-specs sauerstoff), zurueckgerechnet auf den R28-Ansatz 70-130 l/min; eine Gegenrechnung mit OTE 13 % und 0,28 g O2/l Luft ergibt nur 25-63 l/min. Widerspruch offen (Frage M10: Geblaese am hoeheren Wert dimensionieren), Hauptleitung d40"
   },
   {
    "id": "K45",
@@ -801,9 +801,9 @@
    "nach": "drittbecken",
    "medium": "Luft",
    "dn": 20,
-   "soll_l_min": null,
-   "quelle": "A",
-   "bemerkung": "Belueftung Quarantaene (Notstrom!)"
+   "soll_l_min": 2.0,
+   "quelle": "E",
+   "bemerkung": "Belueftung Quarantaene (Notstrom!): O2-Bedarf 0,2-0,5 g/h Fisch (2,4 kg, 80-190 mg/kg/h) plus Nitrifikation 0,5 g/h = 0,7-1,0 g O2/h; bei 0,036 g O2 je l Luft (OTE 13 %) 0,3-0,5 l/min, ausgelegt 2 l/min [A, Reserve]"
   },
   {
    "id": "K51",
@@ -885,8 +885,8 @@
    "nach": "geblaese_fisch",
    "medium": "Strom",
    "adern_stueck": 1,
-   "leistung_w": 280,
-   "bemerkung": "Belueftung Fischwasser, UVI 0,59 W/kg; Reserve-Geblaese (D45 e)",
+   "leistung_w": 204,
+   "bemerkung": "Belueftung Fischwasser, UVI 0,59 W/kg x 346 kg (D61); vorher 280 W bei 475 kg; Reserve-Geblaese (D45 e)",
    "quelle": "Q R22"
   },
   {

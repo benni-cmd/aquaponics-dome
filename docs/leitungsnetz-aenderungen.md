@@ -30,3 +30,13 @@ Der Stapel aus zwei IBC (Messtank oben, Vorrat unten) entfällt. Im Dom stehen d
 | Kabel `puffer_station` | 17 W | `puffer_klein` 11,5 W | R37 Befund 9: Messkreis nur 1,5 m, Umpumpen entfällt |
 | `messstellen.json` | `puffer_oben`, `puffer_unten` | `puffer_messzelle`, `puffer_stammfass` (MS46–49, MS55, Pflichtliste); MS08 Text 2,8 g TAN/0,4 m³; MS49 Füllstand Stammlösung | damit `scripts/messstellen_plan.py` weiter besteht; zwei neue Einträge unter `ohne_messstelle` (`aktivkohle`, `puffer_eisen`) |
 
+
+## Schritt 2: Drittbecken klein (K41–K43, K49, K44, D66, R37 Befund 10)
+| Element | alt | neu | Begründung / Quelle |
+|---|---|---|---|
+| K42, K43 | Umlauf Biofilter 10 l/min, d25 (0,48 m/s) | 5 l/min, d25 (0,24 m/s) | TAN-Mindestdurchfluss 2,6 l/min bei 2,8 g TAN/Tag (Ziel 1,5 mg/l, Biofilter 50 %, Rechenweg R21/system_specs); 5 l/min = 2fach; 0,4 m³ in 80 min umgewälzt; R37 Befund 10 |
+| K49 | Luft Drittbecken ohne Menge | 2 l/min | O2-Bedarf 0,7–1,0 g/h (2,4 kg Fisch, 80–190 mg/kg/h, R22, plus Nitrifikation 0,5 g/h) = 0,3–0,5 l/min bei 0,036 g O2/l Luft (OTE 13 %); 2 l/min als Reserve [A] |
+| K44 | Luftbedarf Pool 90–180 l/min aus 1,7–3,0 kg O2/Tag | Bemerkung: nach D61 1,3–2,2 kg O2/Tag, auf R28-Ansatz zurückgerechnet 70–130 l/min; Gegenrechnung OTE 13 % gibt 25–63 l/min | Widerspruch zwischen R28-Ansatz und Gegenrechnung bleibt offen (Frage M10) |
+| Kabel `geblaese_fisch` | 280 W | 204 W | UVI 0,59 W/kg × 346 kg (D61), `system-specs.json` leistung.belueftung_w |
+| `messstellen.json` MS11 | Probenahmehahn K42 | Text „Umlauf zum Biofilter 37 l“ | Konsistenz |
+| Hinweis | | `system-specs.json` führt `leistung.puffer_station_w` weiter mit 17 W (Standard bleibt Station 2 IBC bis zur Orchestrator-Umstellung); die Netzliste rechnet mit 11,5 W (T82) | R37, D66 |

@@ -12,3 +12,4 @@ viewer/instances.json
 scripts/.latte-cache.json
 __pycache__/
 scripts/.segs.json
+scripts/.compbox.json

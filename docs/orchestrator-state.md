@@ -105,3 +105,4 @@
 - 31.10. 16:00: R35 Tischhoehe (docs/jobs/R35-tischhoehe.md, D58) beauftragt; Reihenfolge Fachrecherche-3: R34 Strebenkonzept, dann R35.
 - 31.10. 16:30: R34/R35 abgenommen; D59 (Streben V1 bleibt, V2c Variante nach Statik), D60 (Tischhoehe 1000 mm alle Ringe, Weg 1 Planungsstand, Weg 2 R36). Reihenfolge: Werkstatt-4 W33 -> Fachrecherche-3 R36 -> Montage.
 - 31.10. 16:35: W33 abgenommen (Commits 5e3f49c, 2afeb23, 066f420): Rinnenunterkante 1000 mm in allen Ringen, Tische neu gebaut, check_nft_tisch 204/204, check_nft_fit PASS, Topfliste 674. 5h-Limit 90 %, Reset 17:10: Fachrecherche-3 R36 startet danach (Cron 17:16). Danach Montage.
+- 31.10. 17:00: R36 abgenommen (4b01a5a, 5d642d3, de108c3); D61: Weg 1 bleibt, Fisch 346 kg statt 475. Offen: Fachrecherche-3 setzt FISH_KG_DESIGN/MIX_BEETE/Texte um (nach Limit-Reset 17:10), dann Montage.

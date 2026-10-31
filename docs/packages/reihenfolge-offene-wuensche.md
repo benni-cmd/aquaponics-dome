@@ -18,3 +18,18 @@
 | 10 | EIN check_latte mit allem, Draufsicht/Seitenansicht, PAUSE und Zwischencheck mit Ben | Montage + Orchestrator | - | 9 | offen |
 | 11 | Docs: Folgedokumente 475 -> 346 kg, Specs-Zaehlung aus Modell (D52), model-description, integration-board | Orchestrator | - | laufend | offen |
 | 12 | Nach Zwischencheck: Roadmap B1-B10 (Detailansicht, Teile, Katalog, Meterware, R31 Materialien, R32 Becken, R33 Beete, B9b Statik, V2c Streben, B10 Bauanleitung), Notstrom/Alarm konkret | verschiedene | packages/bauanleitung-teileliste-detailansicht | 10 | zurueckgestellt |
+
+## Rest-Befunde aus den Sitzungen (Pruefung 31.10. 20:00, nach Bens Sorge um unsauberes Ende bei Limit)
+Alle sieben Sitzungen gelesen (Montage, Werkstatt-2/-3/-4, Fachrecherche-aquaponik/-3, Viewer). Nichts ist wegen eines Limit-Resets halb abgebrochen: die Sitzungen haben sauber gesichert und gepusht; die zuletzt gestoppten Hintergrundlaeufe von Werkstatt-3 waren Reste NACH W27/W31/W32 (alle committet: 7cbe695, 7ca71f9, fca0290). Unbeantwortet war EINE Frage (Viewer), dazu stehen Befunde, die in keinem Auftrag lagen. Eingeordnet:
+
+| # | Befund | Herkunft | Besitzer | Wohin |
+|---|---|---|---|---|
+| a | `walk_z` in `viewer/export_model.py` schreiben (FPV-Hoehe haengt sonst am Rueckfall 400) | Viewer-Sitzung (Frage unbeantwortet) | Viewer-Sitzung | JA entschieden (D67), Nachricht gesendet |
+| b | Pool-Seitenablauf; Hoehenlage der Beetablaeufe unter dem Pool-Spiegel (Z 515); Aufteilung Tische/Beete auf zwei Linien (12 Tische + 7 Beete je Linie angenommen) | Fachrecherche-aquaponik R28 | Montage M10-Plan | Linienaufteilung 12/7 entschieden (D67); Ablaeufe als Punkte im M10-Plan vorab |
+| c | Pumpentafeln seitlich am Tankstand setzen, `tank_offsets` pruefen (Plattform klein 619, gross 821) | Werkstatt-2 W30 | Montage | in Schritt 7 (Puffer/Messstellen setzen) mitnehmen |
+| d | Netzliste K05/K06/K21/K22 noch d50; Bett 68-75 % des Modellwassers; Siebbelastung 8 m/h ohne Datenblatt; Notueberlauf Feinfilter | Werkstatt-3 W32 | Fachrecherche | neuer Auftrag R40 "Netzliste auf Stand bringen" nach W34/W35 (Puffer klein, Drittbecken, Messstellen, Linien), VOR M10-Plan |
+| e | Querstrebe Z 650 statt 800 an den Tischen (Beetzugang unter der Strebe enger, Statik der kuerzeren Beine nicht nachgewiesen) | Werkstatt-4 W33 | Orchestrator | vorlaeufig akzeptiert (D67), im FPV beim Zwischencheck pruefen, Statik B9b |
+| f | Kegelsitz Tank, Beine Tisch, Strebenkonzept: Statik nicht nachgewiesen | W30, W33, R34 | Roadmap B9b | nach Zwischencheck |
+| g | check_latte seit Plane, Tuer und Ringverschiebung nicht gelaufen; Skript umstellen (Tuer_Komplett statt T4_Blatt, Plane/Figuren ausnehmen, W-M4 gegen Fase) | Montage | Montage | Schritt 10 |
+| h | Keilschienen (65), Planenausschnitt-Zarge, Bodenbefestigung der Basisueberstaende nicht eingesetzt; W-M1 (Druckstutzen Pumpe_klein:4 x Tank-Strebe), M2b Querbolzen x Strebe 517 | Montage | Montage/Werkstatt | nach R38 (Plane) bzw. Schritt 10 |
+| i | Pointer Lock/Mausblick im FPV nicht im echten Browser getestet | Viewer-Sitzung | Ben | DEINE HANDLUNG, beim Zwischencheck |

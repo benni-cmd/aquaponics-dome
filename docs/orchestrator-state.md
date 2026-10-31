@@ -108,3 +108,4 @@
 - 31.10. 17:00: R36 abgenommen (4b01a5a, 5d642d3, de108c3); D61: Weg 1 bleibt, Fisch 346 kg statt 475. Offen: Fachrecherche-3 setzt FISH_KG_DESIGN/MIX_BEETE/Texte um (nach Limit-Reset 17:10), dann Montage.
 - 31.10. 17:50: Montage-Meldung Laufwegkarte (9403a3c): Innenraum nicht erreichbar. D62: Zweitbecken von der Achse, Station/Drittbecken ggf. als Vorbau aussen, Tanks 60-80 mm abruecken. Montage setzt um, dann Karte gruen, dann Leitungsplan.
 - 31.10. 18:20: Ben: Plane durchsichtig (Viewer dedad6a), Puffer klein im Dom statt Vorbau. D63, Auftrag R37 (docs/jobs/R37-puffer-klein.md) an Fachrecherche-3; danach Werkstatt-Puffer, Montage platziert. Montage-Laufwegkarte (D62-Stand) laeuft weiter.
+- 31.10. 18:45: Ben: Plane braucht simples Schnitt- und Nahtmuster im Bauplan. D64, Auftrag R38 (docs/jobs/R38-plane-schnittmuster.md) an eine frische Fachrecherche-Sitzung.

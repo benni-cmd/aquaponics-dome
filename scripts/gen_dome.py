@@ -80,7 +80,7 @@ def place_struts(segs):
 
 def erde_fn(sock_z):
     add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
-    for nm, src, wall, depth in (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]), ("Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"])):
+    for nm, src, wall, depth in (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]), ("Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"]), ("Dritt", POOL3, 60, P["pool3_depth"])):
         x, y, d_out, z_bot, total = pool_dims(sock_z, src, wall, depth, nm)
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
@@ -97,6 +97,12 @@ def ring_fn(sock_z):
     add("solid.extrude", distance=P["ring_h"], operation="new", name="T3_Sockel", body_name="T3_Sockel")
     gx, gy = pol(P["dome_base_d"]/2*math.cos(math.radians(18)) + 150, P["door_edge_az"])
     rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_edge_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
+
+def puffer_station(fz):
+    """M8 (D46, W28): Puffer-Station T81 (2 gestapelte IBC) im Sektor rechts der Tuer; Lage aus scripts/place_m8.py. Station-KS: X = -t, Y radial nach aussen (Rueckseite/Plattform zur Wand)."""
+    a = P["door_edge_az"] + 36.0; ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar))
+    x, y = P["station_r"] * n[0] + P["station_s"] * t[0], P["station_r"] * n[1] + P["station_s"] * t[1]
+    place_instances("Puffer_Station", os.path.join(ROOT, "designs", "components", "puffer_station.sc"), [(round(x, 1), round(y, 1), fz, a - 90.0)], "09_Technik")
 
 def tuer_komplett(segs, base_z):
     """M3 (D36, W20): Werkstatt-Komponente tuer_komplett.sc (T50) als Instanz im Basisfeld BBB. Feld-KS der Komponente: Ursprung Mitte der Basiskante (Knoten 24 -> 22) auf Basisknotenhoehe,
@@ -152,6 +158,7 @@ def t1_t3_t4(sock_z):
             ma = math.degrees(math.atan2((A[1]+B[1])/2, (A[0]+B[0])/2))
             if abs((ma - P["door_edge_az"] + 180) % 360 - 180) < 2: dropped += 1; continue
         segs.append((A, B))
+    json.dump(segs, open(os.path.join(ROOT, "scripts", ".segs.json"), "w"))   # Strebenachsen (Knoten-Knoten) fuer scripts/place_m8.py und Abstandsrechnungen
     act("03_Kuppel"); place_struts(segs); knoten_anker(segs)
     act("02_Gelaende")
     # 02_Gelaende: Erdflaeche (mit Aussparungen fuer Becken und Beete) und Fundamentring (Streben hier verankert) als Komponenten
@@ -169,10 +176,13 @@ def LXY(cx, cy):
     """Layout-Koordinate (OBJ-Azimut) -> Modell-Koordinate (um ROT gedreht)."""
     x, y = rot(cx, cy, math.radians(ROT)); return round(x, 1), round(y, 1)
 
+POOL3 = None   # nach params(): {"d", "water_z"} wie Zweitbecken, Durchmesser aus pool3_d
+
 def pool_dims(fz, src, wall, depth, nm):
     x, y = LXY(src["cx"], src["cy"])
     if nm.startswith("Zweit"):   # D36: Zweitbecken auf die Tuerachse (OBJ-Azimut 149,2, Tuer im Basisfeld BBB), Radius wie im OBJ mal pool2_r_factor (D42: Abstand zum Innentisch und Zentralpool)
         r = math.hypot(src["cx"], src["cy"]) * P["pool2_r_factor"]; x, y = LXY(r * math.cos(math.radians(DOOR_OBJ_AZ)), r * math.sin(math.radians(DOOR_OBJ_AZ)))
+    elif nm.startswith("Dritt"): x, y = P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))   # D48: Sektor neben der Tuer, Mittelring frei
     else: x, y = 0.0, 0.0   # D35: Zentralpool auf der Kuppelachse (alle Ringe konzentrisch; OBJ-Abweichung 41 mm)
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
@@ -202,6 +212,7 @@ def pools(fz):
     """04_Wasserbecken: Zentralpool (T5) und Zweitbecken (T6) als Komponenten; eingelassen, Rand Z 650, Wasserspiegel Z 515."""
     component_file("pool_zentral", "Pool", "04_Wasserbecken", lambda: pool_fn(fz, "Pool", LAYOUT["pool"], P["wall"], P["pool_depth"], "T5_Zentraltank"))
     component_file("zweitbecken", "Zweitbecken", "04_Wasserbecken", lambda: pool_fn(fz, "Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], "T6_Zweitbecken"))
+    component_file("becken_dritt", "Becken_Dritt", "04_Wasserbecken", lambda: pool_fn(fz, "Dritt", POOL3, 60, P["pool3_depth"], "T14_Drittbecken"))   # M8/D46
 
 def rect_corners(cx, cy, l, w, yaw):
     c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
@@ -334,7 +345,7 @@ def t10_t11(fz):
 
 if __name__ == "__main__":
     stage = int(sys.argv[1]); out = sys.argv[2]
-    params()
+    params(); POOL3 = {"cx": 0, "cy": 0, "d": P["pool3_d"], "water_z": LAYOUT["pool2"]["water_z"]}
     add("component.rename", component=0, name="Kuppel_Aquaponik")
     for nm in ASSEMBLIES: add("component.create", name=nm, activate=False)
     t1_t3_t4(P["sock_h"]) if False else None
@@ -342,7 +353,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); puffer_station(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

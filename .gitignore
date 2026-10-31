@@ -11,3 +11,4 @@ viewer/defs/
 viewer/instances.json
 scripts/.latte-cache.json
 __pycache__/
+scripts/.segs.json

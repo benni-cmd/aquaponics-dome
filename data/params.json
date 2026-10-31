@@ -224,6 +224,60 @@
   "maturity": 0,
   "used_by": "gen_dome.py, check_walkways.py"
  },
+ "pool3_d": {
+  "value": 1030,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D46: Drittbecken Innendurchmesser (Designer-Modell, E; Mass Ben offen)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, place_m8.py"
+ },
+ "pool3_depth": {
+  "value": 1130,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D46: Drittbecken Tiefe bis Wasserspiegel (Designer-Modell, E)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, place_m8.py"
+ },
+ "pool3_r": {
+  "value": 3350,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D48: Drittbecken-Mitte, Radius im Modellrahmen (scripts/place_m8.py, groesster kleinster Abstand 434)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, place_m8.py"
+ },
+ "pool3_az": {
+  "value": -108,
+  "unit": "deg",
+  "origin": "A",
+  "source": "D48: Drittbecken-Mitte, Azimut im Modellrahmen (Sektor neben der Tuer, Mittelring frei)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, place_m8.py"
+ },
+ "station_r": {
+  "value": 4000,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D48: Puffer-Station Mitte Standflaeche, Radius (Sektor rechts der Tuer, Azimut door_edge_az + 36)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, place_m8.py"
+ },
+ "station_s": {
+  "value": 150,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D48: Puffer-Station tangentialer Versatz gegen den Uhrzeigersinn von der Sektorachse",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, place_m8.py"
+ },
  "walkway_min": {
   "value": 600,
   "unit": "mm",

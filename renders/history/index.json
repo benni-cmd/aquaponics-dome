@@ -2038,5 +2038,25 @@
   "note": "W30 Stand verkleinert (Plattform 619/821)",
   "commit": "a535701",
   "source": "renders/components/tank_gross/tank_gross-05-schnitt.png"
+ },
+ {
+  "file": "20261031-122641_werkstatt_feinfilter_feinfilter-01-iso.png",
+  "sha": "131fac4ae2ede5af",
+  "time": "2026-10-31 12:26:41",
+  "role": "werkstatt",
+  "subject": "feinfilter",
+  "note": "W31 Feinfilter T55",
+  "commit": "ec3b0fe",
+  "source": "renders/components/feinfilter/feinfilter-01-iso.png"
+ },
+ {
+  "file": "20261031-122752_werkstatt_feinfilter_feinfilter-05-schnitt.png",
+  "sha": "b606e5adbe3566fe",
+  "time": "2026-10-31 12:27:52",
+  "role": "werkstatt",
+  "subject": "feinfilter",
+  "note": "W31 Feinfilter T55",
+  "commit": "ec3b0fe",
+  "source": "renders/components/feinfilter/feinfilter-05-schnitt.png"
  }
 ]

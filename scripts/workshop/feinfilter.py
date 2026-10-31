@@ -153,7 +153,7 @@ def render(path, info):
     views = {"01-iso": ([0, 0, zc], 2.5, 0.35, 1900), "02-vorn": ([0, 0, zc], 0.0, 0.2, 1700), "03-einlauf": ([-200, 0, info["zi"]], 2.2, 0.3, 700), "04-ablass": ([info["L"] / 2 - 200, -230, info["zd"]], 0.4, 0.3, 700)}
     for n, (tt, yaw, pitch, dist) in views.items():
         sc.snapshot(path, os.path.join(r, f"feinfilter-{n}.png"), tt, yaw, pitch, dist, w=1000, h=700)
-    sc.snapshot(path, os.path.join(r, "feinfilter-05-schnitt.png"), [0, 0, zc], 0.0, 0.0, 1700, w=1000, h=700, section="XZ")
+    sc.snapshot(path, os.path.join(r, "feinfilter-05-schnitt.png"), [0, 0, zc], 3.14159, 0.0, 1700, w=1000, h=700, section="XZ")
 
 if __name__ == "__main__":
     p, d = sc.load_params("feinfilter")

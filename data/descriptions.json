@@ -438,6 +438,57 @@
       "rolle": "Schritt 5 der Kette: Biofilter im Hauptstrom (110 l/min je Linie von den zwei großen Pumpen). Hier wandeln Bakterien Ammonium in Nitrat; der Auslass führt zum Verteiler, der Tank steht hoch als Druckkopf über den Rinnen. Die Substratbeete übernehmen den Rest des Ammoniums."
     },
     {
+      "match": "^feinfilter",
+      "titel": "Feinfilter",
+      "was": "Behälter mit herausnehmbarem Siebkorb: fängt die feinen Schwebstoffe, die der Absetzer durchlässt.",
+      "status": "gebaut, Selbstcheck 42/42 (kein Prüfer-Lauf)",
+      "ablauf": [
+        "Das klare Wasser des Absetzers fließt über ein senkrechtes Einlaufrohr in den Siebkorb.",
+        "Es tritt durch das Edelstahlgewebe (ca. 150 µm) in die Ablaufkammer unter dem Korb.",
+        "Der Auslauf führt zur Saugseite der großen Pumpen.",
+        "Alle 1–2 Wochen: Deckel öffnen, Korb herausheben und ausspülen, Behälter über den Kugelhahn ablassen."
+      ],
+      "aufbau": [
+        {
+          "t": "Behälter",
+          "p": [
+            "PP 400 × 300 × 500 mm, Wand 5 mm, Deckel mit Dichtung und 4 Spannverschlüssen",
+            "Auflageleisten tragen den Korbflansch"
+          ]
+        },
+        {
+          "t": "Siebkorb",
+          "p": [
+            "Edelstahl 340 × 240 × 330 mm, Gewebehülle mit Stützrahmen",
+            "2 Bügelgriffe zum Herausheben"
+          ]
+        },
+        {
+          "t": "Wasserwege",
+          "p": [
+            "Einlauf Ø50 oben seitlich, Auslauf Ø50 unten seitlich",
+            "Ablass Ø40 mit Kugelhahn und Schlauchtülle",
+            "Ports"
+          ]
+        },
+        {
+          "t": "Unterbau",
+          "p": [
+            "Standrahmen Vierkantrohr 30 × 30 mm, 250 mm hoch (Eimer unter dem Ablass)"
+          ]
+        }
+      ],
+      "masse": {
+        "Anzahl": "2 (eine je Linie)",
+        "Leermasse": "14 kg, im Betrieb ca. 63 kg",
+        "Inhalt": "ca. 56 l bis zum Rand",
+        "Durchfluss": "12,5 l/min je Linie (Absetzer-Teilstrom)"
+      },
+      "grenzen": "Behältermaße sind Annahme (Blatt W31). Kein Notüberlauf bei verstopftem Korb. Höhenlage gegen den Absetzer-Auslass prüft die Montage (M10). Fabrikate von Gewebe, Spannverschlüssen und Kugelhahn offen.",
+      "quelle": "docs/parts/feinfilter.md, docs/filter-konzept.md Schritt 3, data/leitungsnetz.json",
+      "rolle": "Schritt 3 der Kette (docs/filter-konzept.md): zwischen Absetzer und großen Pumpen; schützt Beete, Rinnen und Pumpen vor Schwebstoffen (FAO 589: ab 15 kg/m³ zusätzlicher mechanischer Filter, wir haben 17)."
+    },
+    {
       "match": "^pumpe",
       "titel": "Pumpenmodul",
       "was": "Montagetafel mit Kreiselpumpe an den Tanks.",

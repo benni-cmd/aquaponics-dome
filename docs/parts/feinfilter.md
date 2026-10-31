@@ -142,6 +142,11 @@ Handelsueblicher Sieb-/Netzfilter: Regentonnen- oder Teichfilter-Behaelter mit V
 
 ## Renders
 
+- `renders/components/feinfilter/feinfilter-01-iso.png`
+- `renders/components/feinfilter/feinfilter-02-vorn.png`
+- `renders/components/feinfilter/feinfilter-03-einlauf.png`
+- `renders/components/feinfilter/feinfilter-04-ablass.png`
+- `renders/components/feinfilter/feinfilter-05-schnitt.png`
 
 ## Pruefung
 

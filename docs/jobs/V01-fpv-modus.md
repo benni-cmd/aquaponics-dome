@@ -1,4 +1,4 @@
-# V01 FPV-Modus im Viewer (Ben 31.10., Side-Projekt, D48)
+# V01 FPV-Modus im Viewer (Ben 31.10., Side-Projekt, D49)
 Problem: Ben will die Anlage als 1,80 m grosse Person durchlaufen, um Platz und Wege zu fuehlen. Der Viewer hat nur die Orbit-Kamera.
 Intent: Schnelles Gefuehl fuer Masse und Laufwege, super simpel.
 Ziel: Ein Knopf `FPV` in den Viewer-Steuerelementen; Klick = FPV-Modus: gesamte UI ausgeblendet (linke Spalte, Infopanel, Schnitt-Regler, alles) ausser EINEM Knopf `X` (oben rechts) zum Beenden; man laeuft in Augenhoehe 1,68 m (Person 1,80 m) durch die Kuppel.
@@ -12,3 +12,7 @@ Verhalten:
 Pruefen im Browser-Pane (http://localhost:4410/): Knopf klicken, `read_page`/Screenshot: nur `X` sichtbar, per Tastatur-Ereignisse (javascript_tool `dispatchEvent(new KeyboardEvent('keydown',{code:'KeyW'}))`) Kamera bewegt sich, Position/Hoehe auslesen (Augen 1,68 m), X beendet, UI zurueck; Tuer ausgeblendet -> im FPV nicht sichtbar. Konsole ohne Fehler (read_console_messages). Pointer Lock geht im Pane evtl. nicht: Fallback testen.
 Nicht anfassen: alles ausser `viewer/index.html`; kein Server-Neustart noetig.
 Commit nur mit Pfad: `git -C C:\Users\benkn\Claude\keel-harness\user-projects\aquaponics-dome commit -m "Viewer: FPV-Modus" -- viewer/index.html`, push. Fertig = Knopf, Bewegung, Beenden, Tuer-Sichtbarkeit nachgewiesen; Kurzmeldung (Geprueft gegen / Offen), dann sauber enden.
+
+
+## Nachtrag 31.10. (Bens Screenshot: Figur ist groesser als der FPV-Blick)
+Ursache: Die Figuren stehen auf dem Sockel `sock_h` = 400 mm (Boden begehbar), die FPV-Kamera steht auf z = 1680 absolut. Augenhoehe muss BODEN + 1680 sein: Boden = `sock_h` aus `data/params.json` (400). Fix: `viewer/export_model.py` schreibt `walk_z` (aus params.json sock_h) in `viewer/instances.json`, `viewer/index.html` nutzt `walk_z + 1680` als Kamerahoehe; Rueckfall 400, falls `walk_z` fehlt. Nachweis: im FPV neben `Mensch_Referenz_messen:1` die Augen auf Hoehe der Figurenaugen (Figur 1800, Augen 1680 ueber Boden), Screenshot. Dabei Gehhoehe ueberall Boden + 1680.

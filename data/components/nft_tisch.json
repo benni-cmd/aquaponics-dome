@@ -8,7 +8,7 @@
    "n": 2,
    "rinnen_abstand": 262,
    "rinne": "k",
-   "z_rinne_mitte": 840,
+   "z_rinne_mitte": 1000,
    "laenge": "928 / 758 (je Reihe)",
    "herkunft": "layout.json hydro_tables r 1733/1995, Rinnen-Unterkante Z 819-858 (Mittel 838,5, gerundet 840 = +1,5 mm), Abstand 262 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 1864 mm (D30/D37: Beetmitte)",
    "ap_c": 1864,
@@ -18,7 +18,7 @@
    "n": 4,
    "rinnen_abstand": 263,
    "rinne": "m",
-   "z_rinne_mitte": 1300,
+   "z_rinne_mitte": 1000,
    "laenge": "2018 / 1847 / 1676 / 1505 (je Reihe)",
    "herkunft": "layout.json hydro_tables r 2987-3775, Rinnen-Unterkante Z 1280-1330 (Mittel 1307, gerundet 1300 = -7 mm), Abstand 263 || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 3277 mm (D30/D37: Beetmitte)",
    "ap_c": 3277,
@@ -28,7 +28,7 @@
    "n": 4,
    "rinnen_abstand": 220,
    "rinne": "l",
-   "z_rinne_mitte": 1300,
+   "z_rinne_mitte": 1000,
    "laenge": "2986 / 2844 / 2701 / 2558 (je Reihe)",
    "herkunft": "D43 (31.10.): STANDARD seit W25a, vorher Variante aussen4 (W24, Ben 30.10.: 4. Rinne fuer mehr Pflanzflaeche, D40) || Variante aussen4 als Parameter-Konfiguration, seit D43 Standard (die 3-Rinnen-Fassung steht als aussen3); Rinnenabstand 220 (Salatkopf 100 mm, Rinne 130: 90 mm Luft; 230-240 aus dem Jobblatt kollidiert in der 4. Reihe mit dem Bein, Rechnung unten); aeusserste Reihe bleibt bei Ap 5162 wie im Standard (Kuppelhaut-Abstand 21 mm), die Reihengruppe ist um 42 mm nach INNEN verschoben (reihen_versatz): Reihen y = -288 / -68 / 152 / 372, innere Rinnenkante 437 gegen Beinflaeche 460 (23 mm Luft)",
    "ap_c": 4874,
@@ -40,7 +40,7 @@
    "n": 3,
    "rinnen_abstand": 288,
    "rinne": "l",
-   "z_rinne_mitte": 1300,
+   "z_rinne_mitte": 1000,
    "laenge": "2986 / 2799 / 2612 (je Reihe, Alternative 3 Rinnen)",
    "herkunft": "ALTERNATIVE aussen3 (bis D43 Standard): layout.json hydro_tables r 4888/5176, Rinnen-Unterkante Z 1291-1325 (Mittel 1308, gerundet auf 1300 = -8 mm); 3 Rinnen: Ben (OBJ/Bild zeigen nur 2, oasis-obj-analysis) + A (3 nach Beetbreite) || Rinnenlaenge je Reihe = 2 x (ap x tan 18 Grad - corner_gap) - Ueberstaende 248 (D18); Tischmitte ap_c 4973 mm (D30/D37: Beetmitte)",
    "ap_c": 4874,
@@ -84,9 +84,9 @@
    "herkunft": "[A] Abstand Bock zur Stirn der KUERZESTEN Reihe (250 mm)"
   },
   "strut_z": {
-   "wert": 800,
+   "wert": 650,
    "einheit": "mm",
-   "herkunft": "[A] Querstrebe/Laengsstreben/Diagonalen UEBER den Pflanzen (Beet-Oberkante Z 475, Pflanzen bis ca. Z 560), Portal ausserhalb der Beete; innen Laengsstrebe auf Z 400 (Ausleger ausserhalb des Beckenrands)"
+   "herkunft": "[A] W33 (R35/D60, Rinne 1000): Querstrebe/Laengsstreben/Diagonalen so tief wie die Pflanzen erlauben (Beet-Oberkante Z 475, Pflanzen bis ca. Z 560, Strebenmitte 650 = Unterkante 630, 70 mm Luft) -> Diagonalenwinkel 12,5-15,5 Grad; bei der alten Lage 800 waeren es nur 4,8-6,9 Grad (vorher bei Rinne 1300: ca. 23 Grad); Portal ausserhalb der Beete; innen Laengsstrebe auf Z 400 (Ausleger ausserhalb des Beckenrands)"
   },
   "foot_plate": {
    "wert": 70,

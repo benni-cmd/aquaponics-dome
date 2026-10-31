@@ -81,7 +81,7 @@ def main(typs):
             ck.eq(f"{typ} Rinnenabstand {i + 1}", ys[i + 1] - ys[i], G["rp"], 0.5)
         # Boecke
         nb = len(G["xb"])
-        beine = sorted([b for k, b in B.items() if k.startswith("Bein_")], key=lambda b: (round(b["bbox"]["min"][0]), b["bbox"]["min"][1]))   # x gerundet: zwei Beine am selben x duerfen nicht durch Rundungsrauschen vertauscht werden
+        beine = sorted([b for k, b in B.items() if k.startswith("Bein_")], key=lambda b: (round((b["bbox"]["min"][0] + b["bbox"]["max"][0]) / 20), b["bbox"]["min"][1]))   # Mitte-x in 10-mm-Klassen: zwei Beine am selben x duerfen nicht durch Rundungsrauschen vertauscht werden (W33: x 547,5 -> min x 527,5 lag auf der Rundungsgrenze)
         ck.eq(f"{typ} Beine ({G['art']})", len(beine), len(G["legs"]))
         ck.eq(f"{typ} Fussplatten", len([k for k in B if k.startswith("Fussplatte_")]), len(G["legs"]))
         ck.eq(f"{typ} Laengsstreben", len([k for k in B if k.startswith("Laengs_")]), 2 if G["art"] == "portal" else 1)

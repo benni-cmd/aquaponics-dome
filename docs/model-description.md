@@ -6,16 +6,16 @@ Besitzer: Orchestrator. Waechst mit jeder Abnahme und wird dabei genauer. Zweck:
 <!-- KENNZAHLEN-START -->
 | Kennzahl | Wert |
 |---|---|
-| Stand | 29.10.2026 21:36 |
-| Komponenten-Definitionen (`designs/components/*.sc`) | 134 |
-| Bauteilklassen (grob nach Dateiname) | 35 |
-| Bauteilblaetter mit Herkunftstabelle (`docs/parts/*.md`) | 17 |
-| Entscheidungen (`docs/decisions.md`) | 31 |
-| Recherchen (`docs/research/R*.md`) | 7 |
-| Pruefskripte (`scripts/check_*.py`, `scripts/workshop/check_*.py`) | 13 |
-| Pruefbilder im Verlauf (`renders/history`) | 180 |
-| Commits | 157 |
-| Erster / letzter Commit | 29.10.2026 01:04 / 29.10.2026 21:36 |
+| Stand | 31.10.2026 12:15 |
+| Komponenten-Definitionen (`designs/components/*.sc`) | 146 |
+| Bauteilklassen (grob nach Dateiname) | 46 |
+| Bauteilblaetter mit Herkunftstabelle (`docs/parts/*.md`) | 23 |
+| Entscheidungen (`docs/decisions.md`) | 53 |
+| Recherchen (`docs/research/R*.md`) | 18 |
+| Pruefskripte (`scripts/check_*.py`, `scripts/workshop/check_*.py`) | 18 |
+| Pruefbilder im Verlauf (`renders/history`) | 202 |
+| Commits | 260 |
+| Erster / letzter Commit | 29.10.2026 01:04 / 31.10.2026 12:15 |
 <!-- KENNZAHLEN-ENDE -->
 
 ## 2. Was gebaut wird
@@ -70,6 +70,10 @@ Wiederkehrende Teile als Komponenten (D12) · Zickzack-Pflanzmuster (Phase A/B d
 Tuer komplett (M3) · Rohrnetz aus dem Wasserweg-Graphen (M4, M5) · Laufwege-Umbau (M7, W17) · Haut/Paneele (R11) · vollstaendige Kollisionspruefung · Pflanzenartmodelle (7 Arten laut Tabelle, bewusst hinten) · Fragen an Ben: Innenring 6 oder 10 Tische, Zuchtbecken gleich zweites Becken, 2 oder 4 Pumpen, 2 oder 3 Rinnen je Aussentisch.
 
 ## 10. Verlauf (neueste zuerst)
+- 31.10. 12:30 Stand: Tuer im Feld BBB (M3), aussen4 mit 674 Rinnen-Toepfen (D43), Innenbeet-Fase (D44), Puffer-Station und Drittbecken (M8/M9), zwei Referenzfiguren 1,80 m (D47), FPV-Modus im Viewer (D49), Tank-Staende verkleinert (W30), Filterkonzept R28 mit Netzliste, Feinfilter und Plane in Arbeit (D51, D39). Befund D52: Innenbeete ohne Toepfe.
+- 31.10. 00:30 Fachlich: Auslegung Fischbiomasse 475 kg (D40), Pflanzmix R26 (467 kg bei oberen FAO-Werten), Puffer 2,0 m3 und Drittbecken 0,94 m3 (R27), Systemwasser 37,1 m3.
+- 30.10. Huelle ist eine Plane (D39, R24: PE doppelt aufgeblasen, Keilschiene, Heizlast 0,83 kW je K); Paneele ruhen als Variante; Pumpenkonzept D38 (4 grosse Pumpen = Hauptkreislauf).
+- 30.10. Montage M7: Becken zentriert (D35), Beete auf Sektorachse (D41), Laufweg A 600 / B 500; check_latte 24/25.
 - 30.10. 00:05 Viewer: Beschreibungskarte zu jedem Bauteil (Was ist es, so funktioniert es, im Modell enthalten, Kennzahlen, Hinweise) aus `data/descriptions.json`; 21 Bauteilgruppen beschrieben, Kategorien erklaert.
 - 30.10. 00:00 Werkstatt W19: Kuppelhaut als Komponenten (40 Dreiecke, 2 Typen, Randprofil), Recherche R11; Becken wird zentriert, Zickzack bleibt (D35).
 - 29.10. 23:55 Werkstatt: gemeinsamer Pruefer W17+W18, Laufweg A am Innenpfosten von 486 auf >= 500 mm (Parameter `leg_clearance_innen`), check_nft_fit 42/42.

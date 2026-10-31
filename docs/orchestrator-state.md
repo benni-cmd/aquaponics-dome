@@ -102,3 +102,4 @@
 - 31.10. 12:45: Reihenfolge (eine Sitzung gleichzeitig): Werkstatt-3 (W31 Feinfilter, W27 Plane) laeuft -> Fachrecherche R30 Filterarten (docs/jobs/R30-filterarten.md) -> Montage Innenbeete bepflanzen (D52), check_latte, M10 Plan -> M10 Leitungen -> check_latte -> PAUSE und Zwischencheck. Fortschritt zwischendurch melden (Ben).
 - 31.10. 15:00: Roadmap Bauanleitung/Teileliste/Detailansicht angelegt (`docs/packages/bauanleitung-teileliste-detailansicht.md`, D56, B1-B10, Recherche R31-R34); noch nichts begonnen, Start nach dem Zwischencheck (Empfehlung B9 Strebenkonzept und B4 Katalog).
 - 31.10. 15:20: R34 Strebenkonzept (docs/jobs/R34-strebenkonzept.md, D57) beauftragt; Reihenfolge: Werkstatt-3 W32 (laeuft) -> Fachrecherche-3 R34 -> Montage (Innenbeete, Laufwegkarte, Leitungsplan).
+- 31.10. 16:00: R35 Tischhoehe (docs/jobs/R35-tischhoehe.md, D58) beauftragt; Reihenfolge Fachrecherche-3: R34 Strebenkonzept, dann R35.

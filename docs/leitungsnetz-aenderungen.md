@@ -61,3 +61,18 @@ Der Stapel aus zwei IBC (Messtank oben, Vorrat unten) entfällt. Im Dom stehen d
 | Kabel `steuerung_alarm` | Platzhalter 40 W | + Alarmwähler-Eingänge 5 Adern (4 Schaltkontakte + gemeinsamer Leiter) und Blitzleuchte/Summer 2 × 2 Adern | MS67, R39 alarmwege Stufe 1 und 2 |
 | `hinweis` | R28 | Version 2 mit Verweis auf dieses Protokoll | |
 | Offen für M10 | | Trunk-Längen und Weg (Kabeltrasse), Spannungsabfall 24 V auf langen Strecken, Notstrom der Zentrale | nicht gerechnet |
+
+## Schritt 4: Feinfilter im Hauptstrom, Durchmesser, Notüberlauf (K01/K02/K05/K06, K17/K18/K21/K22, K56/K57, D55, T55)
+Der Feinfilter sitzt seit D55 im Hauptstrom (110 l/min je Linie, Einlauf d63, Auslauf d63), nicht mehr im Absetzer-Teilstrom (12,5 l/min). Pool-Seitenablauf und Absetzer-Klarwasser laufen durch den Filter, erst dann die zwei großen Pumpen. Geschwindigkeiten mit den PVC-PN10-Innendurchmessern der Netzliste (d50 44,0 mm, d63 55,7 mm).
+
+| Element | alt | neu | Begründung / Quelle |
+|---|---|---|---|
+| K01 / K17 | Pool → Pumpe gross 1 bzw. 3, d50, 48,75 l/min | Pool → `feinfilter_1` bzw. `_2`, **d63**, 97,5 l/min (0,67 m/s) | Filterstutzen d63 (T55), Saugseite ≤ 1,0 m/s; d50 hätte 1,03 m/s bei 97,5 l/min; D55 |
+| K02 / K18 | Pool → Pumpe gross 2 bzw. 4, d50, 48,75 | `feinfilter` → Pumpe gross 2 bzw. 4, d50, **55** l/min (0,60 m/s) | Auslauf d63 teilt sich auf zwei d50 (Pumpenanschluss Saugseite d50) |
+| K05 / K21 | Absetzer → Feinfilter, d50, 12,5 | unverändert d50, 12,5 l/min (0,14 m/s); Text: Einlauf d63 mit T-Stück | geprüft: Tankanschluss Ø50, Schwerkraft, langsam |
+| K06 / K22 | Feinfilter → Pumpe gross 1 bzw. 3, **12,5 l/min** (0,14 m/s) | **55 l/min**, d50 (0,60 m/s) | R30: Sieb sah nur 11 % des Stroms; nun 100 % (D55) |
+| K56 / K57 (neu) | — | `pool` → `pumpe_gross_1` bzw. `_3`, d63, 110 l/min, **nur Störfall** (`betrieb: stoerfall`) | Notüberlauf/Bypass am Filter vorbei, Kugelhahn im Normalbetrieb zu; bei verstopftem Korb (MS14/MS15 Hoch-Schwimmer, Alarm) öffnen, damit die Pumpen nicht trockenlaufen; offene Frage des Bauteilblatts T55 |
+| Knoten `feinfilter_1/2` | „Empfehlung, nicht im Modell“, Siebkorb am Biofilter-Einlauf | Bauteil `feinfilter` (T55): 0,84 m², Gewebe ≤ 100 µm, 7,9 m/h [A] | W32, D55 |
+| Knoten `biofilter_1` | „Medium 0,26 m³“ | lose K1-Träger 0,47 m³ bei 67 % Füllung | D55 |
+| K12, K28 (Höhe), K15, K31 (Höhe) | Rinnenende Z ca. 1300 | Rinnenunterkante Z 1000 (W33), Gefälle 1,5 % bis 45 mm | R35/D60, W33 |
+| weitere d50-Kanten geprüft | K10, K13, K29, K33 d50 | unverändert (K10 1,21 m/s ≤ 1,5; die übrigen < 0,3 m/s) | Skript `check_netz.py` (Schritt 6) |

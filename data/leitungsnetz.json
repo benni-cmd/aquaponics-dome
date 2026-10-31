@@ -32,7 +32,7 @@
    "typ": "Tank",
    "bauteil": "tank_gross",
    "linie": 1,
-   "bemerkung": "702 l, Medium 0,26 m3, Zulauf/Auslass Ø50, Ueberlauf, Belueftung Ø16 im Deckel, Schlammablass"
+   "bemerkung": "702 l, lose K1-Traeger 0,47 m3 bei 67 % Fuellung (D55, Schwebebett, belueftet), Zulauf/Auslass Ø50, Ueberlauf, Belueftung Ø16 im Deckel, Schlammablass"
   },
   {
    "id": "biofilter_2",
@@ -43,17 +43,18 @@
   {
    "id": "feinfilter_1",
    "typ": "Filter",
-   "bauteil": null,
+   "bauteil": "feinfilter",
    "linie": 1,
-   "status": "Empfehlung, nicht im Modell",
-   "bemerkung": "Siebkorb/Netzfilter am Biofilter-Einlauf (FAO 589: ab 15 kg/m3 zusaetzlicher mechanischer Filter), alle 1-2 Wochen reinigen"
+   "status": "im Modell (T55, W32)",
+   "bemerkung": "Feinfilter im HAUPTSTROM (D55): 110 l/min je Linie, Siebkorb 560 x 370 x 400 mm, 0,84 m2, Gewebe <= 100 um, Siebbelastung 7,9 m/h [A]; Einlauf d63 (Bauteil z 816), Auslauf d63 (z 310), Ablass d40, Spuelanschluss d25; alle 1-2 Wochen reinigen"
   },
   {
    "id": "feinfilter_2",
    "typ": "Filter",
-   "bauteil": null,
+   "bauteil": "feinfilter",
    "linie": 2,
-   "status": "Empfehlung, nicht im Modell"
+   "status": "im Modell (T55, W32)",
+   "bemerkung": "Feinfilter im HAUPTSTROM (D55): 110 l/min je Linie, Siebkorb 560 x 370 x 400 mm, 0,84 m2, Gewebe <= 100 um, Siebbelastung 7,9 m/h [A]; Einlauf d63 (Bauteil z 816), Auslauf d63 (z 310), Ablass d40, Spuelanschluss d25; alle 1-2 Wochen reinigen"
   },
   {
    "id": "puffer_messzelle",
@@ -267,25 +268,25 @@
   {
    "id": "K01",
    "von": "pool",
-   "nach": "pumpe_gross_1",
+   "nach": "feinfilter_1",
    "medium": "Wasser",
-   "dn": 50,
-   "soll_l_min": 48.75,
+   "dn": 63,
+   "soll_l_min": 97.5,
    "quelle": "E",
-   "bemerkung": "Seitenablauf Pool (Skimmer/Auslass) zur Saugseite; Saugleitung <= 1,0 m/s",
-   "v_m_s": 0.53,
+   "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s",
+   "v_m_s": 0.67,
    "hoehe": "Pool-Seitenablauf Z ca. 450, Saugpumpe unter Wasserspiegel"
   },
   {
    "id": "K02",
-   "von": "pool",
+   "von": "feinfilter_1",
    "nach": "pumpe_gross_2",
    "medium": "Wasser",
    "dn": 50,
-   "soll_l_min": 48.75,
+   "soll_l_min": 55.0,
    "quelle": "E",
-   "bemerkung": "Seitenablauf Pool, zweite Pumpe der Linie",
-   "v_m_s": 0.53
+   "bemerkung": "Auslauf Feinfilter zur zweiten grossen Pumpe der Linie (55 l/min); frueher direkt vom Pool-Seitenablauf (48,75 l/min)",
+   "v_m_s": 0.6
   },
   {
    "id": "K03",
@@ -319,7 +320,7 @@
    "dn": 50,
    "soll_l_min": 12.5,
    "quelle": "E",
-   "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Feinfilter und weiter zur Saugseite der grossen Pumpen",
+   "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Einlauf d63 des Feinfilters (T-Stueck mit Seitenablauf); d50 geprueft: 0,14 m/s, bleibt d50 (Tankanschluss Ø50, langsam gegen Verstopfen)",
    "v_m_s": 0.14
   },
   {
@@ -328,10 +329,10 @@
    "nach": "pumpe_gross_1",
    "medium": "Wasser",
    "dn": 50,
-   "soll_l_min": 12.5,
+   "soll_l_min": 55.0,
    "quelle": "E",
-   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie). Befund R30: Sieb sieht nur 11 % des Stroms (12,5 von 110 l/min); Empfehlung Sieb im Hauptstrom vor den grossen Pumpen und Gewebe <= 100 um (docs/filter-konzept.md Art 2), Entscheidung bei Montage M10/Werkstatt W31",
-   "v_m_s": 0.14
+   "bemerkung": "Auslauf Feinfilter d63 (110 l/min, T-Stueck d63/d50/d50) zur Saugseite der grossen Pumpe, 55 l/min je Pumpe; frueher 12,5 l/min (Sieb im Teilstrom, R30: Sieb sah nur 11 % des Stroms)",
+   "v_m_s": 0.6
   },
   {
    "id": "K07",
@@ -399,8 +400,9 @@
    "dn": 32,
    "soll_l_min": 38.0,
    "quelle": "E",
-   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min)",
-   "v_m_s": 1.03
+   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60)",
+   "v_m_s": 1.03,
+   "hoehe": "Rinnenanfang Z 1000 plus Gefaelle (Biofilter-Spiegel ca. Z 1600 als Druckkopf, > 500 mm)"
   },
   {
    "id": "K13",
@@ -435,7 +437,7 @@
    "quelle": "E",
    "bemerkung": "Sammelrohr der Tische, Gefaelle 1,5 %",
    "v_m_s": 0.26,
-   "hoehe": "Rinnenende Z ca. 1300 minus Gefaelle"
+   "hoehe": "Rinnenende Z ca. 1000 minus Gefaelle 1,5 % (bis 45 mm bei 3 m Rinne); Rinnenunterkante 1000 seit W33 (R35/D60), vorher 1300"
   },
   {
    "id": "K16",
@@ -452,25 +454,25 @@
   {
    "id": "K17",
    "von": "pool",
-   "nach": "pumpe_gross_3",
+   "nach": "feinfilter_2",
    "medium": "Wasser",
-   "dn": 50,
-   "soll_l_min": 48.75,
+   "dn": 63,
+   "soll_l_min": 97.5,
    "quelle": "E",
-   "bemerkung": "Seitenablauf Pool (Skimmer/Auslass) zur Saugseite; Saugleitung <= 1,0 m/s",
-   "v_m_s": 0.53,
+   "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s",
+   "v_m_s": 0.67,
    "hoehe": "Pool-Seitenablauf Z ca. 450, Saugpumpe unter Wasserspiegel"
   },
   {
    "id": "K18",
-   "von": "pool",
+   "von": "feinfilter_2",
    "nach": "pumpe_gross_4",
    "medium": "Wasser",
    "dn": 50,
-   "soll_l_min": 48.75,
+   "soll_l_min": 55.0,
    "quelle": "E",
-   "bemerkung": "Seitenablauf Pool, zweite Pumpe der Linie",
-   "v_m_s": 0.53
+   "bemerkung": "Auslauf Feinfilter zur zweiten grossen Pumpe der Linie (55 l/min); frueher direkt vom Pool-Seitenablauf (48,75 l/min)",
+   "v_m_s": 0.6
   },
   {
    "id": "K19",
@@ -504,7 +506,7 @@
    "dn": 50,
    "soll_l_min": 12.5,
    "quelle": "E",
-   "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Feinfilter und weiter zur Saugseite der grossen Pumpen",
+   "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Einlauf d63 des Feinfilters (T-Stueck mit Seitenablauf); d50 geprueft: 0,14 m/s, bleibt d50 (Tankanschluss Ø50, langsam gegen Verstopfen)",
    "v_m_s": 0.14
   },
   {
@@ -513,10 +515,10 @@
    "nach": "pumpe_gross_3",
    "medium": "Wasser",
    "dn": 50,
-   "soll_l_min": 12.5,
+   "soll_l_min": 55.0,
    "quelle": "E",
-   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie). Befund R30: Sieb sieht nur 11 % des Stroms (12,5 von 110 l/min); Empfehlung Sieb im Hauptstrom vor den grossen Pumpen und Gewebe <= 100 um (docs/filter-konzept.md Art 2), Entscheidung bei Montage M10/Werkstatt W31",
-   "v_m_s": 0.14
+   "bemerkung": "Auslauf Feinfilter d63 (110 l/min, T-Stueck d63/d50/d50) zur Saugseite der grossen Pumpe, 55 l/min je Pumpe; frueher 12,5 l/min (Sieb im Teilstrom, R30: Sieb sah nur 11 % des Stroms)",
+   "v_m_s": 0.6
   },
   {
    "id": "K23",
@@ -584,8 +586,9 @@
    "dn": 32,
    "soll_l_min": 38.0,
    "quelle": "E",
-   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min)",
-   "v_m_s": 1.03
+   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60)",
+   "v_m_s": 1.03,
+   "hoehe": "Rinnenanfang Z 1000 plus Gefaelle"
   },
   {
    "id": "K29",
@@ -620,7 +623,7 @@
    "quelle": "E",
    "bemerkung": "Sammelrohr der Tische, Gefaelle 1,5 %",
    "v_m_s": 0.26,
-   "hoehe": "Rinnenende Z ca. 1300 minus Gefaelle"
+   "hoehe": "Rinnenende Z ca. 1000 minus Gefaelle 1,5 % (bis 45 mm bei 3 m Rinne); Rinnenunterkante 1000 seit W33 (R35/D60), vorher 1300"
   },
   {
    "id": "K32",
@@ -859,6 +862,32 @@
    "quelle": "E",
    "bemerkung": "Dosierleitung Eisen (Schlauch 6/9, Pumpe Eisen) in den Pool/Ruecklauf, verduennt",
    "v_m_s": 0.0
+  },
+  {
+   "id": "K56",
+   "von": "pool",
+   "nach": "pumpe_gross_1",
+   "medium": "Wasser",
+   "dn": 63,
+   "soll_l_min": 110.0,
+   "quelle": "A",
+   "bemerkung": "NOTUEBERLAUF/BYPASS am Feinfilter vorbei (nur Stoerfall, Kugelhahn im Normalbetrieb zu): bei verstopftem Korb (Hoch-Schwimmer MS14/MS15, Alarm) Hand-/Magnetventil auf, damit die grossen Pumpen der Linie nicht trockenlaufen; T-Stueck d63/d50 an der Saugseite beider Pumpen; Filterkorb danach spuelen (T55 Spuelanschluss)",
+   "v_m_s": 0.75,
+   "hoehe": "Anschluss an die Saugleitung hinter dem Filterauslauf",
+   "betrieb": "stoerfall"
+  },
+  {
+   "id": "K57",
+   "von": "pool",
+   "nach": "pumpe_gross_3",
+   "medium": "Wasser",
+   "dn": 63,
+   "soll_l_min": 110.0,
+   "quelle": "A",
+   "bemerkung": "NOTUEBERLAUF/BYPASS am Feinfilter vorbei (nur Stoerfall, Kugelhahn im Normalbetrieb zu): bei verstopftem Korb (Hoch-Schwimmer MS14/MS15, Alarm) Hand-/Magnetventil auf, damit die grossen Pumpen der Linie nicht trockenlaufen; T-Stueck d63/d50 an der Saugseite beider Pumpen; Filterkorb danach spuelen (T55 Spuelanschluss)",
+   "v_m_s": 0.75,
+   "hoehe": "Anschluss an die Saugleitung hinter dem Filterauslauf",
+   "betrieb": "stoerfall"
   }
  ],
  "kabel": [

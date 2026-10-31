@@ -8,16 +8,16 @@
 
 1. [x] Auftrag, R27, Werte-Tabelle, Puffer-Station, Filterkonzept, Netzliste, Laufwegkarte gelesen
 2. [x] Web: Messgroessen/Alarme (SRAC 452 Volltext, Global-Seafood-Artikel), Sonden (Atlas pH/DO/EC/Durchfluss), Strom-/Pegel-/CO2-Sensorik
-3. [ ] `data/messstellen.json` (Sondentypen, Messknoten, Messstellen, Alarmgrenzen, Pflichtliste)
-4. [ ] `scripts/messstellen_plan.py` (Pruefung, Zaehlung, Zugang) laufen lassen
-5. [ ] `docs/research/R39.md` schreiben
-6. [ ] Committen mit Pfad, pushen
+3. [x] `data/messstellen.json` (Sondentypen, Messknoten, Messstellen, Alarmgrenzen, Pflichtliste)
+4. [x] `scripts/messstellen_plan.py` (Pruefung, Zaehlung, Zugang), Negativtest: fehlende Pflichtstelle und fehlender Netzknoten werden gemeldet
+5. [x] `docs/research/R39.md` geschrieben
+6. [x] Committen mit Pfad, pushen
 
 ## Status
 
-31.10.2026 — Schritte 1 und 2 erledigt.
+31.10.2026 — alle Schritte erledigt; 67 Messstellen (22 Pflicht, 45 Zusatz), Skript Exit 0. Folge: Werkstatt W35 (Halter `H_*`), Montage-Platzierung nach R37/W34, Leitungsplan M10 (Trunk + Stichleitungen je Messknoten).
 
 ## Definition of Done
 
-Geprueft gegen: (wird beim Abschluss nachgefuehrt)
-Offen: (wird beim Abschluss nachgefuehrt)
+Geprueft gegen: `python scripts/messstellen_plan.py` (Exit 0, 26/26 Pflichtlisten-Eintraege, alle Netzlisten-Knoten abgedeckt oder begruendet), Negativtest, `data/leitungsnetz.json`, `docs/walkway-map.md` (Runde 57), SRAC 452 Volltext, Atlas-Herstellerseiten
+Offen: Notluft-/Notstrom-Auslegung (Ben waehlt Variante a/b/c, danach eigener Auftrag); Online-Verfahren fuer Ammonium/Nitrit/Nitrat nicht belegt (Handmessung); Durchflussmesser fuer 110 l/min Typ offen; Zugang von 28 Messstellen nicht pruefbar (Karte kennt Beete, Tische, Verteiler, Feinfilter, Station nicht)

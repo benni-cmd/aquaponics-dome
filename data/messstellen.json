@@ -555,9 +555,9 @@
    "leistung_w": 3
   },
   "mk_puffer": {
-   "ort": "Puffer-Station (Messrechner R27)",
+   "ort": "Puffer-Station T82 (Messrechner R27, Messzelle, Stammloesungsfass, Eisen-Kanister)",
    "bauteil": null,
-   "versorgt": "Puffer oben/unten, Dosierkonsole, Frischwasser",
+   "versorgt": "Messzelle, Stammloesungsfass, Dosierpumpen, Frischwasser",
    "leistung_w": 5
   },
   "mk_schrank": {
@@ -800,7 +800,7 @@
     "AL03"
    ],
    "wartung_noetig": true,
-   "hinweis": "Hoechste Last je m3 (R27: 6,4 g TAN/Tag in 0,94 m3), eigene Belueftung K49"
+   "hinweis": "Hoechste Last je m3 (R37: 2,8 g TAN/Tag in 0,4 m3), eigene Belueftung K49"
   },
   {
    "id": "MS09",
@@ -1769,9 +1769,9 @@
   },
   {
    "id": "MS46",
-   "knoten": "puffer_oben",
+   "knoten": "puffer_messzelle",
    "kante": null,
-   "ort": "Puffer oben, Messplatz (Bestand R27, 4 Sonden)",
+   "ort": "Messzelle, Messplatz (T82, 4 Sondenstutzen)",
    "bauteil": null,
    "groessen": [
     "pH",
@@ -1800,9 +1800,9 @@
   },
   {
    "id": "MS47",
-   "knoten": "puffer_oben",
+   "knoten": "puffer_messzelle",
    "kante": null,
-   "ort": "Puffer oben, Probenahmehahn (fehlt laut puffer_station.md) als Referenz fuer Sondendrift",
+   "ort": "Messzelle, Probenahmehahn (fehlt laut puffer_station.md) als Referenz fuer Sondendrift",
    "bauteil": null,
    "groessen": [
     "TAN/Nitrit/Nitrat"
@@ -1827,9 +1827,9 @@
   },
   {
    "id": "MS48",
-   "knoten": "puffer_oben",
+   "knoten": "puffer_messzelle",
    "kante": null,
-   "ort": "Puffer oben, Niedrig/Hoch (Messpumpe trocken / Ueberlauf)",
+   "ort": "Messzelle, Niedrig/Hoch (Messpumpe trocken / Ueberlauf)",
    "bauteil": null,
    "groessen": [
     "Wasserstand"
@@ -1853,9 +1853,9 @@
   },
   {
    "id": "MS49",
-   "knoten": "puffer_unten",
+   "knoten": "puffer_stammfass",
    "kante": null,
-   "ort": "Puffer unten, Reserve in m3 (Frischwasser fuer den Verlustausgleich)",
+   "ort": "Stammloesungsfass, Fuellstand (Vorrat Base, kein Frischwasser-Vorrat mehr, D66)",
    "bauteil": null,
    "groessen": [
     "Fuellstand"
@@ -1875,13 +1875,14 @@
    "alarm": [
     "AL20"
    ],
-   "wartung_noetig": false
+   "wartung_noetig": false,
+   "hinweis": "R40: Netzlisten-Knoten puffer_unten entfaellt (D66); Fuellstand Stammloesung statt Frischwasser-Reserve"
   },
   {
    "id": "MS50",
    "knoten": "frischwasser",
    "kante": "K39",
-   "ort": "Frischwasser-Zulauf (K39) als Zaehler: Verbrauch gegen Soll 0,68 m3/Tag erkennt Lecks",
+   "ort": "Frischwasser-Zulauf (K39) als Zaehler: Verbrauch gegen Soll 0,68 m3/Tag erkennt Lecks (vor dem Aktivkohlefilter)",
    "bauteil": null,
    "groessen": [
     "Durchfluss"
@@ -1999,9 +2000,9 @@
   },
   {
    "id": "MS55",
-   "knoten": "puffer_unten",
+   "knoten": "puffer_stammfass",
    "kante": null,
-   "ort": "Boden unter der Puffer-Station",
+   "ort": "Boden unter der Puffer-Station T82 (Auffangrand 20 mm)",
    "bauteil": null,
    "groessen": [
     "Leckage"
@@ -2398,22 +2399,22 @@
    "grund": "Hauptkreislauf Linie 2"
   },
   {
-   "knoten": "puffer_oben",
+   "knoten": "puffer_messzelle",
    "groesse": "pH",
    "grund": "Bestand R27, Dosierung haengt daran"
   },
   {
-   "knoten": "puffer_oben",
+   "knoten": "puffer_messzelle",
    "groesse": "EC",
    "grund": "Bestand R27"
   },
   {
-   "knoten": "puffer_oben",
+   "knoten": "puffer_messzelle",
    "groesse": "Temperatur",
    "grund": "Bestand R27"
   },
   {
-   "knoten": "puffer_oben",
+   "knoten": "puffer_messzelle",
    "groesse": "O2",
    "grund": "Bestand R27"
   },
@@ -2440,7 +2441,9 @@
  ],
  "ohne_messstelle": {
   "biofilter_dritt": "Empfehlung, nicht im Modell (Netzliste status); Drittbecken-Sonden MS08-MS11 decken die Funktion, Messstelle folgt mit dem Bauteil",
-  "schlammsammler": "Platzhalter ohne Bauteil, Ort offen (Montage); kein Kreislaufwasser"
+  "schlammsammler": "Platzhalter ohne Bauteil, Ort offen (Montage); kein Kreislaufwasser",
+  "aktivkohle": "Handelsteil im Frischwasser (R40, D66); der Verbrauch wird am Zulauf K39 gezaehlt (MS50), die Entchlorung selbst ist nicht messbar ohne Chlorsonde, Wechsel nach Plan",
+  "puffer_eisen": "Kanister im Stand T82 (R40); Fuellstand ueber MS51/MS52 an der Dosierkonsole"
  },
  "alarmgrenzen": [
   {

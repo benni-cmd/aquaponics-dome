@@ -1,6 +1,6 @@
 {
  "stand": "31.10.2026",
- "version": 1,
+ "version": 2,
  "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe.",
  "konventionen": {
   "dn_einheit": "Aussendurchmesser mm der Leitungsteile-Bibliothek (d20-d110)",
@@ -56,22 +56,28 @@
    "status": "Empfehlung, nicht im Modell"
   },
   {
-   "id": "puffer_oben",
+   "id": "puffer_messzelle",
    "typ": "Tank",
-   "bauteil": "puffer_ibc",
-   "bemerkung": "obere IBC, Messtank (pH, EC, Temperatur, O2, Nitrat), Stapelhoehe <= 2,5 m (D46)"
+   "bauteil": "puffer_klein",
+   "bemerkung": "Messzelle 20 l Acryl auf dem Regalboden (T82), Messkreis 3 l/min, 4 Sondenstutzen d25, Ablauf d25 zum Pool; transparent, abdeckbar (D66, R37 Befund 5)"
   },
   {
-   "id": "puffer_unten",
+   "id": "puffer_stammfass",
    "typ": "Tank",
-   "bauteil": "puffer_ibc",
-   "bemerkung": "untere IBC, Vorrat und Dosierung, Frischwasser 2 Tage stehen"
+   "bauteil": "puffer_klein",
+   "bemerkung": "Stammloesungsfass 120 l HDPE opak (T82): Base KOH/NaHCO3 (R37 Befund 8), Entnahmestutzen d25 unten, Einfuellstutzen d32 im Deckel; kein Frischwasser-Vorrat (D66)"
+  },
+  {
+   "id": "puffer_eisen",
+   "typ": "Tank",
+   "bauteil": "puffer_klein",
+   "bemerkung": "Eisenchelat-Kanister 20 l (T82), 74 g Fe je Gabe alle 3 Wochen (R37 Befund 1), Pumpe Eisen auf dem Regalboden"
   },
   {
    "id": "dosierkonsole",
    "typ": "Technik",
-   "bauteil": "puffer_station",
-   "bemerkung": "2 Schlauchpumpen (Base, Eisen), Messplatz"
+   "bauteil": "puffer_klein",
+   "bemerkung": "2 Schlauchpumpen 12 V (Base, Eisen) auf dem Regalboden der Puffer-Station T82, Dosierschlaeuche 6/9"
   },
   {
    "id": "verteiler_1",
@@ -140,15 +146,15 @@
   {
    "id": "drittbecken",
    "typ": "Becken",
-   "bauteil": "becken_dritt",
-   "bemerkung": "Quarantaene/Notbecken, eigener Biofilter und Belueftung (R27)"
+   "bauteil": "becken_dritt_klein",
+   "bemerkung": "Quarantaene und Notbecken fuer Zuchttiere/Kranke, 0,4 m3 (Ø 800 x 800, T14k), eigener Biofilter 37 l und Belueftung (R37 Befund 10, D66)"
   },
   {
    "id": "biofilter_dritt",
    "typ": "Filter",
    "bauteil": null,
    "status": "Empfehlung, nicht im Modell",
-   "bemerkung": "ca. 85 l Bioballs (Faustregel), R27"
+   "bemerkung": "ca. 37 l Bioballs (0,5 l je g Futter bei 73 g Futter/Tag, R37 Befund 10; frueher 85 l fuer 0,94 m3)"
   },
   {
    "id": "belueftung",
@@ -167,7 +173,14 @@
    "id": "frischwasser",
    "typ": "Zulauf",
    "bauteil": "zulaufrohr",
-   "bemerkung": "blaues Rohr von aussen, geht in den Puffer unten (Chlor entweicht 2 Tage), nicht direkt in den Pool"
+   "bemerkung": "blaues Rohr von aussen; Frischwasser laeuft ueber Aktivkohle direkt in den Pool (D66), kein Standvorrat im Dom"
+  },
+  {
+   "id": "aktivkohle",
+   "typ": "Filter",
+   "bauteil": null,
+   "status": "Handelsteil, Fabrikat offen",
+   "bemerkung": "Aktivkohlefilter im Frischwasser (entfernt Chlor und Chloramin, R37 Befund 3; Kontaktzeit und Fabrikat offen), Schwimmerventil am Pool/Zweitbecken"
   },
   {
    "id": "pumpe_gross_1",
@@ -646,35 +659,24 @@
   {
    "id": "K35",
    "von": "verteiler_1",
-   "nach": "puffer_oben",
+   "nach": "puffer_messzelle",
    "medium": "Wasser",
    "dn": 20,
    "soll_l_min": 3.0,
    "quelle": "A",
-   "bemerkung": "Messkreis 3 l/min zum Messtank oben (Pumpe noetig, Foerderhoehe ca. 3 m)",
+   "bemerkung": "Messkreis 3 l/min zur Messzelle neben dem Verteiler (Messpumpe 2,9 W, Foerderhoehe 1,5 m statt 2,5-m-Stapel; R37 Befund 9, Zelle 20 l = 6,7 min Verweilzeit)",
    "v_m_s": 0.25,
-   "hoehe": "Stapelhoehe <= 2,5 m"
-  },
-  {
-   "id": "K36",
-   "von": "puffer_oben",
-   "nach": "puffer_unten",
-   "medium": "Wasser",
-   "dn": 25,
-   "soll_l_min": 3.0,
-   "quelle": "A",
-   "bemerkung": "Schwerkraftablauf der oberen IBC in die untere",
-   "v_m_s": 0.14
+   "hoehe": "Foerderhoehe 1,5 m [A]"
   },
   {
    "id": "K37",
-   "von": "puffer_unten",
+   "von": "puffer_messzelle",
    "nach": "pool",
    "medium": "Wasser",
    "dn": 25,
    "soll_l_min": 3.0,
    "quelle": "A",
-   "bemerkung": "Rueckfluss des Messwassers zum Pool",
+   "bemerkung": "Ablauf Messzelle (Stutzen d25) per Schwerkraft zum Pool; Rueckfluss des Messwassers",
    "v_m_s": 0.14
   },
   {
@@ -682,43 +684,43 @@
    "von": "dosierkonsole",
    "nach": "pool",
    "medium": "Wasser",
-   "dn": 20,
-   "soll_l_min": 0.4,
+   "dn": 9,
+   "soll_l_min": 0.003,
    "quelle": "E",
-   "bemerkung": "Dosierlinie Base/Eisen in die Sammelrinne oder den Pool (verduennt, langsam)",
-   "v_m_s": 0.03
+   "bemerkung": "Dosierleitung Base (Schlauch 6/9, Pumpe Base): praktisch 0,43 kg/Tag je halb Ca(OH)2/KOH bei 100 g/l = 4,3 l/Tag; Pumpe 4,5-220 ml/min, in die Sammelrinne oder den Pool, verduennt (R27, R37 Befund 8, D61: 130 g TAN/Tag)",
+   "v_m_s": 0.0
   },
   {
    "id": "K39",
    "von": "frischwasser",
-   "nach": "puffer_unten",
+   "nach": "aktivkohle",
    "medium": "Wasser",
    "dn": 25,
    "soll_l_min": 10.0,
    "quelle": "A",
-   "bemerkung": "Frischwasser entchlort stehen lassen (2 Tage), Schwimmerventil",
+   "bemerkung": "Frischwasser von aussen zum Aktivkohlefilter; Spitze 10 l/min beim Nachspeisen, Mittel 0,47 l/min (0,68 m3/Tag bei 2 %/Tag, SRAC 454; D66: kein Stehenlassen, kein Vorrat)",
    "v_m_s": 0.48
   },
   {
    "id": "K40",
-   "von": "puffer_unten",
+   "von": "aktivkohle",
    "nach": "pool",
    "medium": "Wasser",
-   "dn": 20,
-   "soll_l_min": 0.5,
-   "quelle": "E",
-   "bemerkung": "Nachfuellung Wasserverlust ca. 0,68 m3/Tag im Mittel, mit Pumpe/Schwimmer",
-   "v_m_s": 0.04
+   "dn": 25,
+   "soll_l_min": 10.0,
+   "quelle": "A",
+   "bemerkung": "Nachspeisung ueber Schwimmerventil am Pool (Spitze 10 l/min, Mittel 0,47 l/min = 0,68 m3/Tag); entchlort ueber Aktivkohle statt 2 Tage Standzeit (D66, R37 Befund 3)",
+   "v_m_s": 0.48
   },
   {
    "id": "K41",
-   "von": "puffer_unten",
+   "von": "aktivkohle",
    "nach": "drittbecken",
    "medium": "Wasser",
    "dn": 20,
    "soll_l_min": 2.0,
    "quelle": "A",
-   "bemerkung": "Wasserwechsel Quarantaene aus dem Puffer",
+   "bemerkung": "Wasserwechsel Quarantaene 2 l/min aus der entchlorten Frischwasserleitung (R37 Befund 9); Becken 0,4 m3, 2,8 g TAN/Tag",
    "v_m_s": 0.17
   },
   {
@@ -804,16 +806,6 @@
    "bemerkung": "Belueftung Quarantaene (Notstrom!)"
   },
   {
-   "id": "K50",
-   "von": "belueftung",
-   "nach": "puffer_unten",
-   "medium": "Luft",
-   "dn": 20,
-   "soll_l_min": null,
-   "quelle": "A",
-   "bemerkung": "Dosierung/Frischwasser-Beluftung"
-  },
-  {
    "id": "K51",
    "von": "belueftung",
    "nach": "zweitbecken",
@@ -822,6 +814,51 @@
    "soll_l_min": null,
    "quelle": "A",
    "bemerkung": "Aufzucht"
+  },
+  {
+   "id": "K52",
+   "von": "aktivkohle",
+   "nach": "puffer_stammfass",
+   "medium": "Wasser",
+   "dn": 25,
+   "soll_l_min": 0.0,
+   "quelle": "A",
+   "bemerkung": "Ansetzen der Stammloesung von Hand (Einfuellstutzen d32 im Deckel, Schlauch), ca. 5-8 l Wasser je Liter Ansatz einmal je 2-3 Wochen; kein Dauerfluss",
+   "v_m_s": 0.0
+  },
+  {
+   "id": "K53",
+   "von": "puffer_stammfass",
+   "nach": "dosierkonsole",
+   "medium": "Wasser",
+   "dn": 12,
+   "soll_l_min": 0.003,
+   "quelle": "E",
+   "bemerkung": "Entnahme Stammloesung (Stutzen d25 unten, Kugelhahn) zur Saugseite der Base-Pumpe, Schlauch 6/9; Fass reicht 15-35 Tage je Base (R37 Befund 8)",
+   "v_m_s": 0.0,
+   "hoehe": "Fass unten Z 60, Pumpe auf dem Regalboden Z 898: Pumpe saugt von unten (Schlauchpumpe selbstansaugend)"
+  },
+  {
+   "id": "K54",
+   "von": "puffer_eisen",
+   "nach": "dosierkonsole",
+   "medium": "Wasser",
+   "dn": 12,
+   "soll_l_min": 0.0004,
+   "quelle": "E",
+   "bemerkung": "Saugleitung Eisenchelat-Kanister zur Eisen-Pumpe, Schlauch 6/9; ca. 12 l Loesung (100 g/l) je Gabe alle 3 Wochen [A, Chelatanteil]",
+   "v_m_s": 0.0
+  },
+  {
+   "id": "K55",
+   "von": "dosierkonsole",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 9,
+   "soll_l_min": 0.0004,
+   "quelle": "E",
+   "bemerkung": "Dosierleitung Eisen (Schlauch 6/9, Pumpe Eisen) in den Pool/Ruecklauf, verduennt",
+   "v_m_s": 0.0
   }
  ],
  "kabel": [
@@ -863,12 +900,12 @@
   },
   {
    "von": "schaltschrank",
-   "nach": "puffer_station",
+   "nach": "puffer_klein",
    "medium": "Strom",
    "adern_stueck": 1,
-   "leistung_w": 17,
-   "bemerkung": "Sonden (5 V Netzteil), Rechner, 2 Dosierpumpen 12 V, Messpumpe, Umpumpe",
-   "quelle": "E R27"
+   "leistung_w": 11.5,
+   "bemerkung": "Sonden (5 V Netzteil), Rechner, 2 Dosierpumpen 12 V, Messpumpe 2,9 W; Umpumpen entfaellt (R37 Befund 9: 17,3 W -> 11,5 W)",
+   "quelle": "E R37"
   },
   {
    "von": "schaltschrank",

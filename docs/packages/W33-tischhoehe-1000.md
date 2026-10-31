@@ -14,7 +14,7 @@
 Tischunterkante = Rinne - Holm (Modell: 60 mm, R35 rechnete mit 50) = 940 mm; Beetrand Z 475: 465 mm Luft. Das Beet unter dem Tisch ist nur an den Kanten erreichbar (Unterarme). Entscheidung zu den Beeten (Weg 1/2) liegt bei Ben/Orchestrator, nicht in diesem Paket.
 
 ## Stand
-Geplant, noch nichts gebaut.
+31.10.: Tische neu gebaut (innen/mitte/aussen, 1000 mm), check_nft_tisch 204/204, check_nft_fit 50/50 (aussen3 49/49), Kuppelhaut-Abstand 121 mm, nft_pots 674, Blatt und descriptions nachgefuehrt, Bild `renders/components/nft_tisch_mitte/nft_tisch_mitte-07-hoehe-quer.png` und `-laengs.png` (Figur 1,80 m; archiviert). Eigene Annahme: Querstrebe Z 650 statt 800 (Diagonalen 12,5-15,5 Grad). Offen: Montage baut Tische neu; Beete-Weg 1/2 und strut_z bei Ben/Orchestrator; Statik der kuerzeren Beine.
 
 ## DoD
 Checks gruen (Zahlen im Stand), Topfliste neu, Blatt und descriptions nachgefuehrt, Render im Bildverlauf, WIP-Commits gepusht, `docs/workshop-state.md` und `docs/workshop-log.md` nachgefuehrt.

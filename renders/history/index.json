@@ -2158,5 +2158,25 @@
   "note": "W32 Schwebebett tank_gross",
   "commit": "f38a6b6",
   "source": "renders/components/tank_gross/tank_gross-05-schnitt.png"
+ },
+ {
+  "file": "20261031-155721_werkstatt_nft-tisch_nft-tisch-mitte-07-hoehe-quer.png",
+  "sha": "f3de3b5b4230cc6a",
+  "time": "2026-10-31 15:57:21",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W33 Tischhoehe 1000 mm mit Figur 1,80 m (Rinne 135 mm unter Ellbogen 1134)",
+  "commit": "2afeb23",
+  "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-07-hoehe-quer.png"
+ },
+ {
+  "file": "20261031-155823_werkstatt_nft-tisch_nft-tisch-mitte-07-hoehe-laengs.png",
+  "sha": "d79a9605305f6cee",
+  "time": "2026-10-31 15:58:23",
+  "role": "werkstatt",
+  "subject": "nft_tisch",
+  "note": "W33 Tischhoehe 1000 mm mit Figur 1,80 m (Rinne 135 mm unter Ellbogen 1134)",
+  "commit": "2afeb23",
+  "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-07-hoehe-laengs.png"
  }
 ]

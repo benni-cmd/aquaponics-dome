@@ -30,11 +30,11 @@
    "rinne": "l",
    "z_rinne_mitte": 1300,
    "laenge": "2986 / 2844 / 2701 / 2558 (je Reihe)",
-   "herkunft": "D43 (31.10.): STANDARD seit W25a, vorher Variante aussen4 (W24, Ben 30.10.: 4. Rinne fuer mehr Pflanzflaeche, D40) || Variante aussen4 als Parameter-Konfiguration, Standard bleibt aussen (3 Rinnen) bis Ben/Orchestrator entscheidet; Rinnenabstand 220 (Salatkopf 100 mm, Rinne 130: 90 mm Luft; 230-240 aus dem Jobblatt kollidiert in der 4. Reihe mit dem Bein, Rechnung unten); aeusserste Reihe bleibt bei Ap 5162 wie im Standard (Kuppelhaut-Abstand 21 mm), die Reihengruppe ist um 42 mm nach INNEN verschoben (reihen_versatz): Reihen y = -288 / -68 / 152 / 372, innere Rinnenkante 437 gegen Beinflaeche 460 (23 mm Luft)",
+   "herkunft": "D43 (31.10.): STANDARD seit W25a, vorher Variante aussen4 (W24, Ben 30.10.: 4. Rinne fuer mehr Pflanzflaeche, D40) || Variante aussen4 als Parameter-Konfiguration, seit D43 Standard (die 3-Rinnen-Fassung steht als aussen3); Rinnenabstand 220 (Salatkopf 100 mm, Rinne 130: 90 mm Luft; 230-240 aus dem Jobblatt kollidiert in der 4. Reihe mit dem Bein, Rechnung unten); aeusserste Reihe bleibt bei Ap 5162 wie im Standard (Kuppelhaut-Abstand 21 mm), die Reihengruppe ist um 42 mm nach INNEN verschoben (reihen_versatz): Reihen y = -288 / -68 / 152 / 372, innere Rinnenkante 437 gegen Beinflaeche 460 (23 mm Luft)",
    "ap_c": 4874,
    "ap_c_herkunft": "wie aussen (4874, Ben 30.10.); Beetmitte unveraendert, Laufweg B 500,5 mm unveraendert",
    "reihen_versatz": 42,
-   "reihen_versatz_herkunft": "[R] aeusserste Reihe y = (0 - 1,5) x 220 + 42 = -288 = Standard aussen (3 Reihen, Abstand 288: y = -288); keine Reihe weiter aussen als im Standard"
+   "reihen_versatz_herkunft": "[R] aeusserste Reihe y = (0 - 1,5) x 220 + 42 = -288 = aussen3 (3 Reihen, Abstand 288: y = -288); keine Reihe weiter aussen als in aussen3"
   },
   "aussen3": {
    "n": 3,
@@ -178,25 +178,25 @@
    [
     "aussen: Zulauf Tisch (Verteilerrohr D25 offen, +Y-Ende, schraeg)",
     "Rohr d25, Wand 3 (Anschluss Rohr/Schlauch)",
-    "x -1376, y 413, z 1391 (Achse laeuft schraeg: dx/dy = +tan 18 Grad, entlang der Sektorgrenze)",
+    "x -1349, y 497, z 1391 (Achse laeuft schraeg: dx/dy = +tan 18 Grad, entlang der Sektorgrenze)",
     "Wasser tritt am +Y-Ende in das Rohr ein (Oeffnung zeigt nach +Y, 18 Grad zur Y-Achse geneigt); Rohr d25 (etwa DN20)"
    ],
    [
     "aussen: Ablauf Tisch (Sammelrohr d50 offen, +Y-Ende, schraeg)",
     "Rohr d50, Wand 3 (etwa DN40)",
-    "x 1363, y 413, z 1299 (Achse dx/dy = -tan 18 Grad)",
+    "x 1336, y 497, z 1299 (Achse dx/dy = -tan 18 Grad)",
     "Wasser verlaesst das Rohr am +Y-Ende (Oeffnung zeigt nach +Y); Rohr d50 (etwa DN40); Gefaelle des Sammelrohrs zum Port nicht modelliert (horizontal)"
    ],
    [
-    "aussen: Verteiler-Stutzen je Rinne (n=3)",
+    "aussen: Verteiler-Stutzen je Rinne (n=4)",
     "Schlauch ID 16, Durchfluss je Rinne 0,5 l/min (R06)",
-    "x -1547, -1454, -1360 (Stutzenspitze je Reihe), y = Rinnenmitte, z ca. 1391",
+    "x -1547, -1476, -1404, -1333 (Stutzenspitze je Reihe), y = Rinnenmitte (-288 / -68 / 152 / 372), z ca. 1391",
     "aus Verteiler, Richtung +X"
    ],
    [
     "aussen: Fussplatten-Anker",
     "M8, 2 Schrauben je Platte (70 x 70 x 5), Loch D9, Diagonalversatz +-20",
-    "Fusspunkte z 5 an: x -1011 / y -480; x -1011 / y 480; x 1101 / y -480; x 1101 / y 480",
+    "Fusspunkte z 5 an: x -984 / y -480; x -984 / y 480; x 1074 / y -480; x 1074 / y 480",
     "Befestigung auf dem Boden/Betonpunkt, Richtung -Z"
    ],
    [
@@ -268,8 +268,8 @@
   "werkzeug": "Wasserwaage/Gefaellelatte, Akkuschrauber, Schluessel M5/M6/M8, Bohrmaschine, Schweissgeraet (oder Winkelverbinder)",
   "stueckliste": [
    "Pro Tisch je Typ (Laengen in mm, Stand W17):",
-   "  aussen: Beine 4 x 40x40x3: Laenge 1251 / 1219, Beinabstand y 960; Querholm 40x60x3 x 2: Laenge 1000; Querstrebe 40x40x3 x 2: Laenge 920; Laengsstreben 40x40x3 x 2: Laenge 2072; Diagonalen 25x3 x 4; Laengsdiagonalen 25x3 x 2; Fussplatten 70x70x5 x 4",
-   "     Rinnen (4): 2986 mm / 14 Loecher, 2844 mm / 14 Loecher, 2701 mm / 13 Loecher, 2558 mm / 12 Loecher; Verteiler d25 schraeg: Laenge 869; Sammelrohr d50 schraeg: Laenge 869",
+   "  aussen: Beine 4 x 40x40x3: Laenge 1251 / 1219, Beinabstand y 960; Querholm 40x60x3 x 2: Laenge 1000; Querstrebe 40x40x3 x 2: Laenge 920; Laengsstreben 40x40x3 x 2: Laenge 2018; Diagonalen 25x3 x 4; Laengsdiagonalen 25x3 x 2; Fussplatten 70x70x5 x 4",
+   "     Rinnen (4): 2986 mm / 14 Loecher, 2844 mm / 14 Loecher, 2701 mm / 13 Loecher, 2558 mm / 12 Loecher; Verteiler d25 schraeg: Laenge 957; Sammelrohr d50 schraeg: Laenge 957",
    "  mitte: Beine 4 x 40x40x3: Laenge 1243 / 1227, Beinabstand y 1093; Querholm 40x60x3 x 2: Laenge 1133; Querstrebe 40x40x3 x 2: Laenge 1053; Laengsstreben 40x40x3 x 2: Laenge 965; Diagonalen 25x3 x 4; Laengsdiagonalen 25x3 x 2; Fussplatten 70x70x5 x 4",
    "     Rinnen (4): 2018 mm / 9 Loecher, 1847 mm / 8 Loecher, 1676 mm / 7 Loecher, 1505 mm / 6 Loecher; Verteiler d25 schraeg: Laenge 1092; Sammelrohr d50 schraeg: Laenge 1092",
    "  innen: Pfosten 2 x 40x40x3: Laenge 777 / 773; Kragarm 40x60x3 x 2: Laenge 542; Laengsstrebe 40x40x3 x 1: Laenge 218 (Z 400); Laengsdiagonale 25x3 x 1; Fussplatten 70x70x5 x 2",
@@ -310,7 +310,7 @@
  },
  "herkunft_tabelle": [
   [
-   "Rinnenlaenge je Reihe 758/928 (innen), 1505-2018 (Mitte), 2612-2986 (aussen)",
+   "Rinnenlaenge je Reihe 758/928 (innen), 1505-2018 (Mitte), 2558-2986 (aussen, 4 Reihen)",
    "je Reihe",
    "E",
    "Zehneck-Seite 2 x ap x tan 18 Grad (ap aus ap_c +- Reihenabstand) - 2 x corner_gap 60 - Ueberstaende 169/79; D18 + W17",
@@ -388,14 +388,14 @@
   ],
   [
    "Rinnenzahl 2 / 4 / 4 (aussen 4 seit D43, vorher 3)",
-   "2/4/3",
+   "2/4/4",
    "OBJ + Ben + A",
    "layout.json hydro_tables (2 innen, 4 Mitte, 2 aussen im OBJ/Bild); aussen 3: Ben (Bild/OBJ zeigen nur 2, oasis-obj-analysis) + A Anzahl nach Beetbreite (aussen 800, innen 933)",
    "mittel"
   ],
   [
-   "Rinnenabstand 262 / 263 / 288",
-   "262 / 263 / 288 mm",
+   "Rinnenabstand 262 / 263 / 220 (aussen: D43, vorher 288)",
+   "262 / 263 / 220 mm",
    "OBJ",
    "layout.json hydro_tables (Abstand der Rinnen)",
    "hoch"
@@ -562,8 +562,8 @@
    "mittel"
   ],
   [
-   "NFT-Topfloecher gesamt 570 (Mindestzahl 459, Soll ca. 580)",
-   "570",
+   "NFT-Topfloecher gesamt 674 (aussen3: 570) (Mindestzahl 459, Soll ca. 580)",
+   "674",
    "OBJ + R15 + E",
    "R15/D27: NFT >= 459; D32: Lochabstand 200; Summe 10 x innen + 6 x Mitte + 8 x aussen aus hole_plan (Randabstand 64)",
    "mittel"

@@ -4,7 +4,7 @@
 
 **Datei:** `designs/components/netztopf.sc` · **Teilenummer:** T10 · **Revision:** A · **Bezugspunkt:** Mitte Boden (Z=0), Achse Z; Kragenoberkante bei Z=cup_h
 
-**Anzahl (Instanzen):** Beete 2160 (OBJ) + Rinnen 570 (E) = 2730 (Quelle: data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_tisch.md (Loecher je Tischreihe, W18))
+**Anzahl (Instanzen):** Beete 2160 (OBJ) + Rinnen 674 (E) = 2834 (Quelle: data/layout.json pots.total (7 x 288 + 144) und docs/parts/nft_tisch.md (Loecher je Tischreihe, W18))
 
 ## Masse und Parameter
 
@@ -54,7 +54,7 @@ Rotationskoerper: konischer Korpus (Aussen-D 34 unten, 50 oben), Wand 1,5 mm, Bo
 | Schlitze 3 x 38 mm, 8 Stueck, ab 8 mm ueber dem Boden | 3 x 38 mm, 8 St. | A | Netztoepfe haben Schlitze fuer den Wurzeldurchtritt; Mass geschaetzt | niedrig |
 | Bodenloch D10 | D10 | A | Standard-Netztopf; OBJ hat nur eine Box | niedrig |
 | Konischer Korpus 34 -> 50 mm, Innenwand parallel | D34 / D50 | A | Standard-Netztopf konisch; Aussen-D oben 50 = OBJ | niedrig |
-| Gesamtzahl 2730 = 2160 (Beete) + 570 (Rinnen) | 2730 | OBJ + E | layout.json pots.total + Rinnen-Blatt (Loecher je Tischreihe aus tisch_geom.hole_plan, docs/parts/nft_tisch.md) | mittel |
+| Gesamtzahl 2834 = 2160 (Beete) + 674 (Rinnen) | 2834 | OBJ + E | layout.json pots.total + Rinnen-Blatt (Loecher je Tischreihe aus tisch_geom.hole_plan, docs/parts/nft_tisch.md) | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -96,4 +96,4 @@ Netztoepfe 50 mm sind Massenware (Gartenbedarf/Hydroponik, ca. 0,05-0,10 EUR/Stu
 - Topfhoehe 63 laut OBJ-Box; Standardware ist oft 50 mm; Achszuordnung der OBJ-Box (Hoehe 60-64 laut oasis-obj-analysis) offen
 - Beet-Raster 288 je Beet (24 x 12) gegen layout.json distinct_along 64 / distinct_across 39: Integrator
 - Topfboden und Naehrloesungsfilm in der Rinne (Topf ragt ca. 59,5 mm unter die Deckelflaeche, Schlitze 8-46 mm ueber dem Boden): Rinne/Tisch pruefen
-- W18: Rinnen-Topfloecher 570 laut docs/parts/nft_tisch.md (pitch 200, corner_gap 60); Beete 2160 nur bis zur Umstellung auf aussen_800 (Raster Aussenbeet 800 x 2640: Layout/Integrator)
+- W18/D43: Rinnen-Topfloecher 674 (aussen 4 Rinnen; 570 mit 3) laut docs/parts/nft_tisch.md (pitch 200, corner_gap 60); Beete 2160 nur bis zur Umstellung auf aussen_800 (Raster Aussenbeet 800 x 2640: Layout/Integrator)

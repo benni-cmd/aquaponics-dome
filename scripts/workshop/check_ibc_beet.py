@@ -36,6 +36,11 @@ def main(typs):
             cm = T["fase"] - (W - wm) / 2.0 * (2 - 2 ** 0.5)
             area = lm * wm - 2 * cm * cm - 3.141592653589793 * (p["guard_d"] / 2.0) ** 2
             ck.eq(f"{typ} Medium-Volumen (Liter) mit Eckenfase {T['fase']} (Medium-Fase {cm:.1f}) gegen Flaechenrechnung", B["Medium"]["volume_mm3"] / 1e6, area * p["media_depth"] / 1e6, 0.5)
+        if T.get("fase"):                                          # Zulauf-Tropfrohr liegt vor der Eckenfase (gerade Stirnwand), sonst durchstoesst das Rohr die schraege Wand ohne Bohrung
+            c_a = T["fase"] - ((W - (W - 2 * p["rim_w"])) / 2.0) * (2 - 2 ** 0.5)
+            tr = B["Tropfrohr"]["bbox"]
+            y_edge = (W - 2 * p["rim_w"]) / 2.0 - c_a                                  # Beginn der Fase an der Stirnwand (|y|)
+            ck.eq(f"{typ} Zulauf-Tropfrohr: |y| {max(abs(tr['min'][1]), abs(tr['max'][1])):.0f} liegt vor dem Fasenbeginn {y_edge:.0f} (Rohr trifft die gerade Stirnwand)", 1 if max(abs(tr["min"][1]), abs(tr["max"][1])) <= y_edge - 10 else 0, 1)
         z0_abs = lay[0]["z0"] if typ.startswith("aussen") else lay[8]["z0"]
         tol_abs = 15 if typ.startswith("aussen") else 40            # innen: OBJ-Beete liegen z0 -209..-170 (Rand Z 440-479): Oberflaeche absolut 365-404
         ck.eq(f"{typ} Medium Oberflaeche absolut (z0 {z0_abs})", m["max"][2] + z0_abs, 400, tol_abs)      # R03: Z 400

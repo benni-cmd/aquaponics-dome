@@ -320,7 +320,7 @@
    "niedrig"
   ],
   [
-   "Rinnen je Tisch 2 / 4 / 3 (aussen 3: Annahme, OBJ 2)",
+   "Rinnen je Tisch 2 / 4 / 4 (aussen 4: D43, vorher Annahme 3, OBJ 2)",
    "-",
    "OBJ + A",
    "layout.json hydro_tables (2/4/2), components.md: aussen 3 nach Beetbreite 933-993 [A]",

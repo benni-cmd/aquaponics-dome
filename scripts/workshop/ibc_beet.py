@@ -46,6 +46,8 @@ def build(typ):
     z_g0 = z_m0 - p["grid_t"]                    # Unterkante Siebboden
     x_sp = Li / 2 - 200                          # Siphon nahe dem Ablaufende (+X)
     y_in, z_in = -(Wi / 2 - 50), H - p["inflow_below_rim"]
+    if fase:                                     # Zulauf durch die gerade Stirnwand: y_in vor dem Beginn der Eckenfase (Befund Spec-Pruefer W26: bei y -392 lag die Wand schraeg und das Rohr ohne Loch)
+        y_in = -(Ww / 2 - (fase - ((W - Ww) / 2.0) * (2 - math.sqrt(2))) - 40)
     b = sc.Build()
     unit = {k: v["einheit"] for k, v in d["parameter"].items()}
     b.params_to_design(p, d, unit)

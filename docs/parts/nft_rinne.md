@@ -88,7 +88,7 @@ Geschlossenes Rechteckprofil 130 x 95 mm, Wand 2,5 mm, vier Rippen 5 x 5 mm auf 
 | Lochphase A/B (shift +-pitch/4) | +-50 mm | E | Scope-Card nft_tisch: Versatz benachbarter Rinnen pitch/2; die Rinne stellt beide Phasen bereit | mittel |
 | Rippen enden 20 mm vor Kappe (rib_end) | 20 mm | A | Kritiker Runde 1 (Rippenenden auslaufen lassen), Konstruktionspraxis | niedrig |
 | Tuelle Laenge 25 mm, Ablaufstutzen 30 mm | 25 / 30 | A | Aufsteckbarkeit Schlauch/Muffe; ref-6 zeigt Laenge nicht | niedrig |
-| Rinnen je Tisch 2 / 4 / 3 (aussen 3: Annahme, OBJ 2) | - | OBJ + A | layout.json hydro_tables (2/4/2), components.md: aussen 3 nach Beetbreite 933-993 [A] | mittel |
+| Rinnen je Tisch 2 / 4 / 4 (aussen 4: D43, vorher Annahme 3, OBJ 2) | - | OBJ + A | layout.json hydro_tables (2/4/2), components.md: aussen 3 nach Beetbreite 933-993 [A] | mittel |
 | Anzahl Rinnen gesamt 68 | 68 | E | 10 x 2 + 6 x 4 + 8 x 3 (innen/mitte/aussen) | mittel |
 
 ## Referenz und Abweichung zum OBJ

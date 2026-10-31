@@ -245,7 +245,7 @@
    "konfidenz": "mittel"
   },
   "flow_34": {
-   "name": "Paddelrad-Durchflussmesser 3/4 Zoll (Atlas)",
+   "name": "Paddelrad-Durchflussmesser 3/4 Zoll (Atlas), Alternative zu flow_gross, nicht eingeplant",
    "groessen": [
     "Durchfluss"
    ],
@@ -321,7 +321,8 @@
   "strom_ct": {
    "name": "Stromwandler SCT-013 (Klemm-CT) je Verbraucher",
    "groessen": [
-    "Pumpenstrom"
+    "Pumpenstrom",
+    "Gesamtstrom"
    ],
    "technik": "Messung im Schaltschrank, kontaktlos; +-3 %, Alarm bei Stromabfall (Trockenlauf) oder Anstieg (blockiert)",
    "preis": {
@@ -1245,8 +1246,7 @@
    "alarm": [
     "AL12"
    ],
-   "wartung_noetig": false,
-   "hinweis": "Pumpe_klein:3 (Betriebspumpe Linie 2) ist laut Laufwegkarte nicht erreichbar; Schaltschrank-Messung umgeht das"
+   "wartung_noetig": false
   },
   {
    "id": "MS27",
@@ -1788,12 +1788,7 @@
    "stufe": "pflicht",
    "prio": 0,
    "messknoten": "mk_puffer",
-   "halter": [
-    [
-     "H_BOX",
-     0
-    ]
-   ],
+   "halter": [],
    "alarm": [
     "AL01",
     "AL03",
@@ -2541,6 +2536,36 @@
    ],
    "konfidenz": "mittel",
    "begruendung": "FAO 589 Steuerregel: unter 5 Futter erhoehen, ueber 150 Wasser teilweise wechseln (R26)"
+  },
+  {
+   "id": "AL08",
+   "groesse": "CO2 im Wasser",
+   "ort": "Fischbecken",
+   "einheit": "mg/l",
+   "warn": "> 10 [A]",
+   "alarm": "> 20",
+   "notfall": null,
+   "quellen": [
+    "S452",
+    "FILTER"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "SRAC 452 Tabelle 4: unter 20 ppm; Filterkonzept Art 8: bei pH 7,0 und Alkalinitaet 100 mg/l rechnerisch 20 mg/l; wird nicht gemessen, sondern aus pH und Alkalinitaet berechnet (Handmessung)"
+  },
+  {
+   "id": "AL09",
+   "groesse": "Alkalinitaet",
+   "ort": "Kreislauf",
+   "einheit": "mg/l CaCO3",
+   "warn": "< 100 [A]",
+   "alarm": "< 50",
+   "notfall": null,
+   "quellen": [
+    "S452",
+    "FILTER"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "SRAC 452: 50-100 ppm oder mehr; Simulator-Warnschwelle 50 mg/l (Filterkonzept Art 7); Handmessung woechentlich, Basendosierung nach Messung (R27)"
   },
   {
    "id": "AL10",

@@ -1,0 +1,53 @@
+PASS puffer_klein: Pfosten: Ist 4, Soll 4
+PASS puffer_klein: Fussplatten: Ist 4, Soll 4
+PASS puffer_klein: Riegel (5 oben, 3 unten): Ist 8, Soll 8
+PASS puffer_klein: Auffangrand-Teile: Ist 4, Soll 4
+PASS puffer_klein: Koerper gesamt (Stand 21 + Fass 3 + Zelle 3 + Kanister 2 + Pumpen 2 + Kabel 1): Ist 32, Soll 32
+PASS puffer_klein: Grundflaeche X <= 700 (Auftrag: max 0,7 x 0,7 m): Ist 1, Soll 1
+PASS puffer_klein: Grundflaeche Y <= 700: Ist 1, Soll 1
+PASS puffer_klein: Hoehe gesamt 1203 < 1300 (Auftrag): Ist 1, Soll 1
+PASS puffer_klein: Fass Durchmesser (bbox x) = 500: Ist 500, Soll 500 (+-0.2)
+PASS puffer_klein: Fass Hoehe mit Deckel = 800 (Deckelplatte ohne Einfuellstutzen): Ist 800, Soll 800 (+-0.2)
+PASS puffer_klein: Fass steht auf dem Boden (z 0): Ist -1.74971e-13, Soll 0 (+-0.1)
+PASS puffer_klein: Fass-Masse 6.5 kg (R37: ca. 6 kg): Ist 6.4871, Soll 6 (+-1.5)
+PASS puffer_klein: Fass Hohlraum 150 l >= 120 (Nennvolumen): Ist 1, Soll 1
+PASS puffer_klein: Fuellmarke 120 l bei Z 630 liegt unter dem Deckel (788) (Rechnung aus Innenradius): Ist 1, Soll 1
+PASS puffer_klein: Fass-Spiel zum Pfosten (Fass Aussenkante 250, Pfosten Innenkante) >= 40: Ist 45, Soll 45 (+-0.2)
+PASS puffer_klein: Luft Fass-Einfuellstutzen 835 bis Regalboden-Unterkante 895 >= 50: Ist 1, Soll 1
+PASS puffer_klein: Messzelle Innenvolumen 20.0 l = 20 (R37 Befund 1; aus Aussenmass minus Volumen): Ist 19.9839, Soll 20 (+-0.3)
+PASS puffer_klein: Messzelle Wand 5 mm (Aussen 290 - Innen 280): Ist 5, Soll 5 (+-0.1)
+PASS puffer_klein: Verweilzeit im Messkreis 3 l/min bis Ablauf-Unterkante 17.4 l = 5.8 min >= 5,5 (R37: 6,7 min bei voller Zelle): Ist 1, Soll 1
+PASS puffer_klein: Ablaufstutzen unter dem Zelldeckel (Oberkante < Innenhoehe): Ist 1, Soll 1
+PASS puffer_klein: Sondenstutzen im Deckel: 4 Stueck d25: Ist 4, Soll 4
+PASS puffer_klein: Blende liegt an der Vorderseite der Zelle (y-Abstand 0): Ist 3.55271e-15, Soll 0 (+-0.1)
+PASS puffer_klein: Kanister Innenvolumen 20.0 l = 20 (R37: Eisenchelat-Kanister 20 l): Ist 20.0143, Soll 20 (+-0.3)
+PASS puffer_klein: Kanister leer 1.35 kg (HDPE, Wand 3 mm: 1-1,5 kg): Ist 1, Soll 1
+PASS puffer_klein: Regalboden liegt auf den oberen Riegeln (Unterkante = Riegel-Oberkante): Ist 1.13687e-13, Soll 0 (+-0.1)
+PASS puffer_klein: Regalboden Oberkante z 898: Ist 898, Soll 898 (+-0.1)
+PASS puffer_klein: Zelle, Kanister, Pumpen (inkl. Stutzen) liegen innerhalb des Auffangrands (innen 347): Ist 1, Soll 1
+PASS puffer_klein: Port Messkreis Zulauf: Spitze x: Ist -345, Soll -345 (+-0.2)
+PASS puffer_klein: Port Messkreis Zulauf: Richtung -X: Ist 0, Soll 0
+PASS puffer_klein: Port Messkreis Zulauf: y-Mitte der Zelle: Ist 170, Soll 170 (+-0.2)
+PASS puffer_klein: Port Ablauf Messzelle: Spitze y (+Y): Ist 340, Soll 340 (+-0.2)
+PASS puffer_klein: Port Entnahme: Spitze x (+X): Ist 285, Soll 285 (+-0.2)
+PASS puffer_klein: Port Entnahme: z-Mitte: Ist 60, Soll 60 (+-0.2)
+PASS puffer_klein: Port Frischwasser: Spitze z (+Z): Ist 835, Soll 835 (+-0.2)
+PASS puffer_klein: Port Sondenstutzen 1: Spitze z: Ist 1203, Soll 1203 (+-0.2)
+PASS puffer_klein: Port Sondenstutzen 2: Spitze z: Ist 1203, Soll 1203 (+-0.2)
+PASS puffer_klein: Port Sondenstutzen 3: Spitze z: Ist 1203, Soll 1203 (+-0.2)
+PASS puffer_klein: Port Sondenstutzen 4: Spitze z: Ist 1203, Soll 1203 (+-0.2)
+PASS puffer_klein: Sondenstutzen x/y gegen Blatt (max. Abweichung mm): Ist 0, Soll 0 (+-1)
+PASS puffer_klein: Port Saug Base: Spitze y (+Y): Ist -160, Soll -160 (+-0.2)
+PASS puffer_klein: Port Saug Base: x-Mitte: Ist -190, Soll -190 (+-0.2)
+PASS puffer_klein: Port Dosierleitung Base: Spitze y (-Y): Ist -320, Soll -320 (+-0.2)
+PASS puffer_klein: Port Dosierleitung Base: z-Mitte: Ist 948, Soll 948 (+-0.2)
+PASS puffer_klein: Port Saug Eisen: Spitze y (+Y): Ist -160, Soll -160 (+-0.2)
+PASS puffer_klein: Port Saug Eisen: x-Mitte: Ist 190, Soll 190 (+-0.2)
+PASS puffer_klein: Port Dosierleitung Eisen: Spitze y (-Y): Ist -320, Soll -320 (+-0.2)
+PASS puffer_klein: Port Dosierleitung Eisen: z-Mitte: Ist 948, Soll 948 (+-0.2)
+PASS puffer_klein: Port Kabel: Spitze y (+Y): Ist 345, Soll 345 (+-0.2)
+PASS puffer_klein: Kabelverschraubung sitzt am hinteren oberen Riegel (Anlage y): Ist 3.51122e-10, Soll 0 (+-0.1)
+PASS puffer_klein: Ports im Blatt: 2 + 4 + 2 + 4 + 1: Ist 13, Soll 13
+PASS puffer_klein: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+== puffer_klein: 51/51 PASS
+exit 0

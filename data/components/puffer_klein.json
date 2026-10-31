@@ -1,0 +1,455 @@
+{
+ "klasse": "puffer_klein",
+ "teilenummer": "T82",
+ "revision": "A",
+ "beschreibung": "Kleiner Puffer im Dom (R37 Option A, D66): Stammloesungsfass 120 l (Base) auf dem Boden, darueber ein Regalboden mit Messzelle 20 l (Acryl, abdeckbar, 4 Sondenstutzen d25), Eisenchelat-Kanister 20 l und zwei Schlauchpumpen (Dosierung); Stand aus Rechteckrohr mit Auffangwanne, Grundflaeche 700 x 700 mm, Hoehe 1203 mm",
+ "quelle_masse": "docs/research/R37.md (Befund 1, 5, 6, 7, 9, 11; Option A), docs/parts/puffer_station.md (Ports, Pumpen- und Kanistermasse)",
+ "parameter": {
+  "fass_d": {
+   "wert": 500,
+   "einheit": "mm",
+   "herkunft": "[E] R37 Befund 7: 120-l-Weithals-/Deckelfass HDPE Ø 470-500 x 795-800 mm, 6 kg, lebensmittelecht lt. Haendler (toom/GRAF, Kaufland, denios Ø 496 x 800); Auftrag W34: Ø 500 x 800"
+  },
+  "fass_h": {
+   "wert": 800,
+   "einheit": "mm",
+   "herkunft": "[E] R37 Befund 7 (795-800 mm), inklusive Deckel"
+  },
+  "fass_wall": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Wandstaerke HDPE-Fass (kein Datenblatt gelesen)"
+  },
+  "fass_floor": {
+   "wert": 4,
+   "einheit": "mm",
+   "herkunft": "[A] Bodenstaerke HDPE-Fass"
+  },
+  "fass_lid_t": {
+   "wert": 12,
+   "einheit": "mm",
+   "herkunft": "[A] Deckel mit Spannring, Oberkante = Fasshoehe 800"
+  },
+  "fass_nenn_l": {
+   "wert": 120,
+   "einheit": "",
+   "herkunft": "[E] R37 Befund 1/7: Stammloesungsfass 120 l; Fuellmarke 120 l bei Z 630 (Innenzylinder, Rechnung im Check), der modellierte Zylinder fasst bis zum Deckel mehr"
+  },
+  "fass_cx": {
+   "wert": 0,
+   "einheit": "mm",
+   "herkunft": "[A] Fass mittig im Stand (Spiel zu den Pfosten 45 mm je Seite)"
+  },
+  "fass_cy": {
+   "wert": 0,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "entn_z": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[A] Entnahmestutzen (Kugelhahn-Stutzen R3/4, vereinfacht d25 mit Bohrung d16) seitlich unten, +X; Spitze x 285"
+  },
+  "stu_od": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Stutzen d25 (R37: Sondenhalter d25, Ablauf zum Pool)"
+  },
+  "stu_id": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] Bohrung der Stutzen (Schlauch ID 16 wie NFT-Verteiler)"
+  },
+  "einf_od": {
+   "wert": 32,
+   "einheit": "mm",
+   "herkunft": "[A] Einfuellstutzen im Deckel (Frischwasser zum Ansetzen der Stammloesung, Quelle: entchlortes Nachfuellwasser R37 Befund 3)"
+  },
+  "einf_h": {
+   "wert": 35,
+   "einheit": "mm",
+   "herkunft": "[A] Einfuellstutzen Hoehe ueber dem Deckel"
+  },
+  "regal_z": {
+   "wert": 898,
+   "einheit": "mm",
+   "herkunft": "[A] Oberkante Regalboden: 98 mm ueber dem Fassdeckel (800) fuer Spannring und Deckelabnahme nach vorn (Fass wird nach vorn herausgezogen, Vorderseite ohne Querriegel)"
+  },
+  "zelle_ix": {
+   "wert": 280,
+   "einheit": "mm",
+   "herkunft": "[R] Messzelle Innenmass 280 x 280 x 255 = 20,0 l (R37 Befund 1: 20 l reichen, 6,7 min Verweilzeit bei 3 l/min)"
+  },
+  "zelle_iy": {
+   "wert": 280,
+   "einheit": "mm",
+   "herkunft": "[R]"
+  },
+  "zelle_ih": {
+   "wert": 255,
+   "einheit": "mm",
+   "herkunft": "[R]"
+  },
+  "zelle_wall": {
+   "wert": 5,
+   "einheit": "mm",
+   "herkunft": "[A] Acryl (PMMA) 5 mm; R37 Befund 6: Acryl hat die beste UV-Beständigkeit (ca. 3 % Durchlassverlust in 10 Jahren); Lebensmittelaussage zu Acryl nicht gefunden"
+  },
+  "zelle_cx": {
+   "wert": -175,
+   "einheit": "mm",
+   "herkunft": "[A] Lage auf dem Regalboden (links hinten)"
+  },
+  "zelle_cy": {
+   "wert": 170,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "zelle_zulauf_z": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] Zulauf Messkreis (Tuelle d20, ID 16) 30 mm ueber dem Zellboden, Seite -X"
+  },
+  "zelle_ablauf_z": {
+   "wert": 235,
+   "einheit": "mm",
+   "herkunft": "[A] Ablauf zum Pool (d25) 235 mm ueber dem Zellboden: Wasserstand bis Unterkante Ablauf 222 mm = 17,4 l = 5,8 min bei 3 l/min (R37: 20 l = 6,7 min bei voller Zelle; Ablaufhoehe ist Annahme), Oberkante Stutzen 248 mm, 7 mm Luft zum Deckel"
+  },
+  "halter_od": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[E] R37/Auftrag: Stutzen fuer 4 Sondenhalter d25 im Deckel der Messzelle (Sondenliste liefert R39, W35)"
+  },
+  "halter_id": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] Bohrung fuer Sonde mit Kabelverschraubung (Sondenfabrikate offen)"
+  },
+  "halter_h": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Stutzenhoehe ueber dem Deckel"
+  },
+  "halter_pitch": {
+   "wert": 110,
+   "einheit": "mm",
+   "herkunft": "[A] Raster der 4 Stutzen (2 x 2, +-55 um die Zellmitte)"
+  },
+  "blende_t": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Lichtschutz-Blende vorn (PP schwarz), abdeckbar laut R37 Befund 5; Seiten und Rueckseite nicht abgedeckt (offen)"
+  },
+  "kan_l": {
+   "wert": 250,
+   "einheit": "mm",
+   "herkunft": "[A] Kanister 20 l: 250 x 300 x 285 (puffer_station: 250 x 300 x 280); Innenvolumen 244 x 294 x 279 = 20,0 l"
+  },
+  "kan_w": {
+   "wert": 300,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "kan_h": {
+   "wert": 285,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "kan_wall": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Wand HDPE-Kanister"
+  },
+  "kan_cx": {
+   "wert": 190,
+   "einheit": "mm",
+   "herkunft": "[A] Lage auf dem Regalboden (rechts hinten)"
+  },
+  "kan_cy": {
+   "wert": 175,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "kap_d": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[A] Schraubdeckel des Kanisters"
+  },
+  "kap_h": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "pump_l": {
+   "wert": 140,
+   "einheit": "mm",
+   "herkunft": "[A] Schlauchpumpe 140 x 120 x 100 (puffer_station, Pumpenmasse Annahme)"
+  },
+  "pump_w": {
+   "wert": 120,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "pump_h": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "pump_x": {
+   "wert": 190,
+   "einheit": "mm",
+   "herkunft": "[A] Pumpen in der vorderen Reihe auf dem Regalboden: Base-Pumpe x -190, Eisen-Pumpe x +190"
+  },
+  "pump_y": {
+   "wert": -240,
+   "einheit": "mm",
+   "herkunft": "[A] Mitte der vorderen Reihe (Pumpen y -300 bis -180)"
+  },
+  "tuelle_od": {
+   "wert": 12,
+   "einheit": "mm",
+   "herkunft": "[A] Dosierschlauch 6/9 (ID 6, AD 9) auf Tuelle d12"
+  },
+  "tuelle_len": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Tuellenlaenge ab Pumpengehaeuse"
+  },
+  "stand_w": {
+   "wert": 700,
+   "einheit": "mm",
+   "herkunft": "[E] Auftrag W34: max. 0,7 x 0,7 m ohne Mensch; Regalboden und Fussplattenaussenkanten = Grundflaeche"
+  },
+  "leg_w": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] Pfosten und Riegel Rechteckrohr 30 x 30 x 2 verzinkt (Last auf dem Regal ca. 60 kg, Statik nicht gerechnet)"
+  },
+  "leg_wall": {
+   "wert": 2,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "leg_pos": {
+   "wert": 310,
+   "einheit": "mm",
+   "herkunft": "[A] Pfostenmitte x/y +-310: Pfostenaussenkante 325, Innenkante 295 (Fass Ø 500 hat 45 mm Spiel)"
+  },
+  "foot": {
+   "wert": 80,
+   "einheit": "mm",
+   "herkunft": "[A] Fussplatte 80 x 80 x 6, aussen buendig mit 350"
+  },
+  "foot_t": {
+   "wert": 6,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "rail_z": {
+   "wert": 880,
+   "einheit": "mm",
+   "herkunft": "[A] Mitte der oberen Riegel (Oberkante 895 = Unterkante Regalboden)"
+  },
+  "low_rail_z": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[A] untere Riegel links, rechts und hinten (Vorderseite frei fuer das Fass)"
+  },
+  "plate_t": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] Regalboden Stahlblech verzinkt 3 mm, 700 x 700, mit Querriegel y 0 unterstuetzt"
+  },
+  "rim_h": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Auffangrand 20 mm, 3 mm stark, rundum auf dem Regalboden (Lauge/Chelat-Leckage)"
+  },
+  "rim_t": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "kabel_od": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Kabelverschraubung M20 (PA schwarz) am hinteren oberen Riegel, nach +Y"
+  },
+  "hoehe_max": {
+   "wert": 1300,
+   "einheit": "mm",
+   "herkunft": "[E] Auftrag W34: Hoehe unter 1,3 m"
+  }
+ },
+ "werkstoff": {
+  "name": "Stahl verzinkt (Stand), HDPE (Fass, Kanister), Acryl (Messzelle)",
+  "dichte_g_cm3": 7.85,
+  "farbe": "#aeb4b8",
+  "herkunft": "[A]; HDPE opak blau (Algen: R37 Befund 5), Acryl klar"
+ },
+ "anzahl": {
+  "soll": "1 Puffer klein im Dom",
+  "quelle": "R37 Option A, D66; Platzierung Montage (Laufwegkarte, place_m8.py)"
+ },
+ "bezugspunkt": "Mitte der Standflaeche am Boden (Z 0); X: Messzelle -X, Kanister +X; Y: vorn -Y (Pumpen, Fass wird nach vorn herausgezogen), hinten +Y (Ablauf, Kabel); Z hoch",
+ "herkunft_tabelle": [
+  [
+   "Fass 120 l HDPE opak Ø 500 x 800, Deckel, Entnahmestutzen",
+   "Ø 500 x 800",
+   "E",
+   "R37 Befund 7 (toom/GRAF, Kaufland, denios); opak wegen Algen (Befund 5)",
+   "mittel"
+  ],
+  [
+   "Messzelle 20 l Acryl, abdeckbar, 4 Sondenstutzen d25",
+   "280 x 280 x 255 innen",
+   "R + E",
+   "R37 Befund 1 (20 l, 6,7 min bei 3 l/min), Befund 5/6 (transparent nur Messzelle, abdeckbar; Acryl); Stutzenzahl aus dem Auftrag W34",
+   "mittel"
+  ],
+  [
+   "Eisenchelat-Kanister 20 l",
+   "250 x 300 x 285",
+   "E + A",
+   "R37 Befund 1 (74 g Fe alle 3 Wochen); Mass aus puffer_station (Kanister 250 x 300 x 280)",
+   "niedrig"
+  ],
+  [
+   "2 Schlauchpumpen 140 x 120 x 100 (Dosierung Base und Eisen)",
+   "2 Stueck",
+   "E + A",
+   "R37 Befund 8/9; Pumpenmasse Annahme aus puffer_station",
+   "niedrig"
+  ],
+  [
+   "Stand 700 x 700, Hoehe 1203, Regalboden auf Z 898",
+   "0,49 m2",
+   "E + A",
+   "Auftrag W34: Raster max 0,7 x 0,7 m, Hoehe < 1,3 m; R37 Befund 11: etwa 0,4 m2 Raster (Summe der Einzelflaechen 0,39 m2)",
+   "mittel"
+  ],
+  [
+   "Pumpe Strom 11,5 W der Station (A)",
+   "11,5 W",
+   "E",
+   "R37 Befund 9 (Messkreis 1,5 m Foerderhoehe, Umpumpen entfaellt)",
+   "mittel"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Kleiner Puffer (R37 Option A): 120-l-Fass opak fuer die Stammloesung (Base: KOH/NaHCO3, R37 Befund 8), Messzelle 20 l (Messkreis 3 l/min, 4 Sondenstutzen d25, Ablauf zum Pool), Eisenchelat-Kanister 20 l, zwei Schlauchpumpen (Dosierung Base und Eisen). Der Regalboden traegt Messzelle, Kanister und Pumpen ueber dem Fass; das Fass wird nach vorn herausgezogen. Entchlortes Frischwasser ist eine Quelle (Aktivkohle oder Zisterne), kein Volumen im Dom.",
+  "querschnitt": "Stand: 4 Pfosten und 8 Riegel Rechteckrohr 30 x 30 x 2 (obere Riegel Z 865-895 an allen Seiten und quer bei y 0, untere Riegel Z 135-165 links, rechts, hinten), Fussplatten 80 x 80 x 6, Regalboden 700 x 700 x 3 mit 20-mm-Auffangrand. Fass Ø 500 x 800 (Wand 3, Boden 4, Deckel 12) steht auf dem Boden. Messzelle Acryl 5 mm (aussen 290 x 290 x 260), Deckel 5 mm, Blende 3 mm vorn. Kanister 250 x 300 x 285 (Wand 3).",
+  "toleranzen": "Fass 45 mm Spiel zu den Pfosten, 65 mm bis zur Riegel-Unterkante; Fassdeckel 98 mm unter dem Regalboden; Messzelle, Kanister und Pumpen liegen innerhalb des Auffangrands (innen 347 mm); Hoehe gesamt unter 1300 mm.",
+  "ports": [
+   [
+    "Messkreis Zulauf (Messzelle, 3 l/min)",
+    "Tuelle d20, ID 16",
+    "x -345, y 170, z 933",
+    "-X"
+   ],
+   [
+    "Ablauf Messzelle -> Pool",
+    "Stutzen d25, ID 16",
+    "x -175, y 340, z 1138",
+    "+Y"
+   ],
+   [
+    "Sondenstutzen 1 (Deckel Messzelle)",
+    "d25, Bohrung 16 (Sondenhalter, Liste R39/W35)",
+    "x -230, y 115, z 1203",
+    "+Z"
+   ],
+   [
+    "Sondenstutzen 2 (Deckel Messzelle)",
+    "d25, Bohrung 16 (Sondenhalter, Liste R39/W35)",
+    "x -120, y 115, z 1203",
+    "+Z"
+   ],
+   [
+    "Sondenstutzen 3 (Deckel Messzelle)",
+    "d25, Bohrung 16 (Sondenhalter, Liste R39/W35)",
+    "x -230, y 225, z 1203",
+    "+Z"
+   ],
+   [
+    "Sondenstutzen 4 (Deckel Messzelle)",
+    "d25, Bohrung 16 (Sondenhalter, Liste R39/W35)",
+    "x -120, y 225, z 1203",
+    "+Z"
+   ],
+   [
+    "Frischwasser / Ansetzen (Einfuellstutzen Fass)",
+    "d32, Bohrung 25",
+    "x 0, y -120, z 835",
+    "+Z"
+   ],
+   [
+    "Entnahme Stammloesung (Fass -> Pumpe Base)",
+    "Stutzen d25, ID 16",
+    "x 285, y 0, z 60",
+    "+X"
+   ],
+   [
+    "Saug Base (Pumpe Base, aus dem Fass)",
+    "Tuelle d12 (Schlauch 6/9)",
+    "x -190, y -160, z 948",
+    "+Y"
+   ],
+   [
+    "Dosierleitung Base (Pumpe Base, Druckseite -> Pool)",
+    "Tuelle d12 (Schlauch 6/9)",
+    "x -190, y -320, z 948",
+    "-Y"
+   ],
+   [
+    "Saug Eisen (Pumpe Eisen, aus dem Kanister)",
+    "Tuelle d12 (Schlauch 6/9)",
+    "x 190, y -160, z 948",
+    "+Y"
+   ],
+   [
+    "Dosierleitung Eisen (Pumpe Eisen, Druckseite -> Pool)",
+    "Tuelle d12 (Schlauch 6/9)",
+    "x 190, y -320, z 948",
+    "-Y"
+   ],
+   [
+    "Kabel (Netz 230 V, Sonden, Steuerung)",
+    "Kabelverschraubung M20",
+    "x 0, y 345, z 880",
+    "+Y"
+   ]
+  ],
+  "verbindungen": [
+   "Stand: Pfosten an Fussplatten geschweisst, Riegel an die Pfosten geschweisst, danach verzinkt [A]; Regalboden auf die oberen Riegel geschraubt (nicht modelliert)",
+   "Messzelle: Deckel aufgelegt (Dichtung/Schrauben nicht modelliert), Tuellen und Stutzen angeklebt (Acryl-Klebstoff) [A]; Blende liegt vorn an, Scharnier nicht modelliert",
+   "Fass: Spannringdeckel (nicht modelliert), Entnahmestutzen und Einfuellstutzen angeschweisst bzw. verschraubt [A]; Fass steht frei, Wegrutschen am Regalboden nicht gesichert (offen)"
+  ],
+  "abweichung": "Keine OBJ-Vorgabe; Konzept der Werkstatt nach R37 Option A (D66). Gegenueber der Station T81 (2420 x 1920 x 2445 mm, 4,65 m2): 0,49 m2 Grundflaeche, 1,2 m Hoehe; Messplatz und Dosierkonsole der Station entfallen als eigene Gestelle.",
+  "montage": [
+   "Stand aufstellen, Fussplatten am Boden verschrauben, Regalboden auflegen und verschrauben",
+   "Fass von vorn einschieben, Entnahmestutzen nach +X, Einfuellstutzen oben",
+   "Messzelle, Kanister und die beiden Pumpen auf den Regalboden stellen, Schlaeuche aufstecken, Kabel durch die Verschraubung hinten"
+  ],
+  "werkzeug": "Schweissgeraet oder Winkelverbinder, Schluesselsatz, Schlauchschneider, Wasserwaage",
+  "stueckliste": [
+   "T82 Puffer klein: Stand (4 Pfosten 30x30x2, 8 Riegel, 4 Fussplatten 80x80x6, Regalboden 700x700x3, Auffangrand), 1 Fass 120 l HDPE mit Deckel, 1 Messzelle 20 l Acryl mit Deckel, Blende und 4 Sondenstutzen, 1 Kanister 20 l mit Schraubdeckel, 2 Schlauchpumpen, 1 Kabelverschraubung M20"
+  ],
+  "lokal": "Stand aus Baustahl-Rechteckrohr (Metallbauer, Kaltverzinken) oder Aluprofil-System; Messzelle aus PMMA-Platten 5 mm geklebt (Kunststoffhandel) oder transparenter Lebensmittelbehaelter 20 l; Fass und Kanister aus dem Handel (R37).",
+  "massen_getrennt": [],
+  "gewicht_gefuellt": "Fass 120 l, Messzelle 20 l, Kanister 20 l Flüssigkeit: zusammen ca. 160 kg zusaetzlich zur Leermasse [E, Dichte 1]; Regalboden traegt Messzelle + Kanister + Pumpen ca. 45 kg gefuellt [A, Statik nicht gerechnet]",
+  "pruefung": [
+   "scripts/workshop/check_puffer_klein.py (Ergebnis renders/components/puffer_klein/check.txt): Fass Ø/Hoehe/Masse, Innenvolumen Messzelle 20 l und Kanister 20 l, Grundflaeche <= 700 x 700, Hoehe < 1300, Ports (Lage und Richtung), Interferenz 0"
+  ],
+  "offen": [
+   "Statik von Regalboden und Pfosten (ca. 60 kg auf 4 Pfosten 30x30x2, Regalboden 3 mm mit Querriegel) nicht gerechnet [A]",
+   "Lichtschutz der Messzelle: nur Blende vorn modelliert, Seiten und Rueckseite nicht abgedeckt; ob 7 min Verweilzeit ohne Abdeckung reichen, ist Annahme (R37 Befund 5)",
+   "Fass modelliert als Zylinder: Innenvolumen bis zum Deckel groesser als 120 l, Fuellmarke 120 l bei Z 630; reale Fass-Rippen und Spannring nicht modelliert",
+   "Fass und Kanister: Konformitaetserklaerung EU 10/2011 des konkreten Fabrikats fehlt (R37 Befund 7)",
+   "Sondenliste und Sondenmasse liefert R39 (Auftrag W35): die 4 Stutzen d25 sind Ports, keine Sonden modelliert",
+   "Leitungsplan K35-K41 und Platzierung im Dom (Messzelle neben dem Verteiler): Montage; Schlaeuche sind Platzhalter (nur Tuellen modelliert)",
+   "Frischwasserquelle (Aktivkohle oder Zisterne): Versorger fragen (Chlor/Chloramin), Entscheidung Ben (R37)"
+  ],
+  "kritiker": "Kein Pruefer-Lauf (Auftrag W34: Selbstcheck)."
+ }
+}

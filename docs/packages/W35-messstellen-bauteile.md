@@ -17,7 +17,7 @@
 - Ports an Rohren sind Anlagen (Anbohrschelle, Stutzen); die Rohrmuffen der Bibliothek T70 werden nicht nachgebaut.
 
 ## Stand
-Geplant, noch nichts gebaut.
+31.10.: 23 Komponenten gebaut (9 Halterdateien, 14 Sonden), check_messstellen 348/348 PASS, Interferenz 0; Blatt `docs/parts/messstellen.md`, `data/components/messstellen.json`, descriptions `^halter_`/`^sonde_`; Bilder `renders/components/messstellen/messstellen-01-massstab.png`, `-02-halter`, `-03-sonden` (Figur 1,80 m, archiviert). Fachaenderung: Nippel und Druckschalter Edelstahl statt Messing. Luecke: Sondenmasse sind Annahme (messstellen.json ohne Abmessungen). Offen: Montage setzt die Bauteile; H_INLINE-d je Kante (R40); Datenblatt-Masse; Statik Mast.
 
 ## DoD
 Alle 8 Halter und 14 Sonden gebaut, Check gruen (Zahlen im Stand), Blatt und descriptions nachgefuehrt, Render im Bildverlauf, WIP-Commits gepusht, `docs/workshop-state.md` und `docs/workshop-log.md` nachgefuehrt.

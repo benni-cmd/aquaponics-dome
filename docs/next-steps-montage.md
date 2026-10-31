@@ -60,3 +60,5 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 **HINWEIS 31.10. 04:00 (D50):** Nach der M8/M9-Messung: M10 Leitungen (docs/jobs/M10-leitungen.md) erst, wenn R28 (Netzliste) und W30 (Stands) gemeldet sind; Plan vorab im Paket. Danach check_latte und Pause.
 
 **HINWEIS 31.10. 05:00 (D51):** M9 fertig (a535701, Build 51). Naechste Schritte: (1) das EINE check_latte nach M9 (steht in loop-state.md), (2) M10 Leitungen mit Plan vorab: Pumpentafeln seitlich am Tankstand setzen (W30: Plattform klein 619, gross 821), Feinfilter (W31) einplanen. Erst starten, wenn die Werkstatt W31 gemeldet hat.
+
+**HINWEIS 31.10. 12:30 (D52):** Zu M10 gehoert vorab: Innenbeete bepflanzen (`bed_pot_grid()` auch fuer `ibc_beet_innen_933`, Params `pot_pitch`/`pot_margin`), Build, check_walkways; Zahl der Beet-Toepfe in loop-state.md melden.

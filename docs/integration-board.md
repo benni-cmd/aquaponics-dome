@@ -1,22 +1,26 @@
-# Integrations-Board (Besitzer: Orchestrator; Stand 29.10.2026 03:35)
+# Integrations-Board (Besitzer: Orchestrator; Stand 31.10.2026 12:30)
 
-Status je Bauteilklasse: `offen` · `in Arbeit` · `L2` · `L3` · `abgenommen` (Orchestrator hat Stichprobe gemacht) · `eingebaut` (Integrator hat es im Dom verknuepft).
-Zustaendig: I = Integrator, W = Werkstatt. Quelle der Anzahl: `data/layout.json`.
+Status je Bauteilklasse: `offen` · `in Arbeit` · `L2` · `L3` · `abgenommen` (Orchestrator hat Stichprobe gemacht) · `eingebaut` (Montage hat es im Dom verknuepft).
+Zustaendig: I = Integrator/Montage, W = Werkstatt. Quelle der Anzahl: `data/layout.json`, `viewer/instances.json` (Build 51).
 
 | Klasse | Anzahl | Zustaendig | Status | Datei | Letzte Meldung |
 |---|---|---|---|---|---|
-| Salatkopf | ca. 2716 (D17) | W | L3 gebaut, Bauteilblatt/Kritiker offen | `designs/components/salatkopf.sc` | 03:50 Orchestrator: Bauteilblatt und Gauntlet fehlen |
-| Netztopf | ca. 2716 (D17) | W | L3 gebaut, Bauteilblatt/Kritiker offen | `designs/components/netztopf.sc` | 03:50 Orchestrator: Bauteilblatt und Gauntlet fehlen |
-| NFT-Rinne (3 Laengen, Phase A/B) | je Tisch 2-4 | W | abgenommen | `designs/components/nft_rinne.sc` (+6 Varianten) | 04:20 Orchestrator: Stichprobe ok (eine Lochreihe, 93/93 PASS selbst gemessen, Blatt mit Herkunft); Montage darf verknuepfen |
-| NFT-Tisch innen (10), Mitte (6), aussen (8) | 24 | W | abgenommen Rev. B (W16, 18:35), W17 und W18 (Lochabstand 200, 586 Toepfe, 22:40) gebaut, nur check nachgemessen, Spec-Pruefer offen: check_nft_fit 36/36 selbst nachgemessen, Pruefer-Befunde eingearbeitet, Blatt; Montage darf Rev. B einsetzen (Rinnen-Pflanzen 466 aus data/components/nft_tisch.json, D20) | `designs/components/nft_tisch_{innen,mitte,aussen}.sc` | 07:35 Orchestrator: Render innen ok (2 Rinnen versetzt, 2 Boecke mit Diagonalen, Verteiler, Sammelrohr), Blatt nach Spec-Pruefer, Triage im Log; Montage darf verknuepfen; offen laut Log: Winkelhalter (L4), Schlaeuche weich = Montage |
-| IBC-Beet aussen (8), innen (6) | 14 | W | abgenommen | `designs/components/ibc_beet_*.sc` | 07:35 Werkstatt: Vorpruefung 66/66, Blatt, Kontextpaket (Commit 09e3406); Orchestrator: Stichprobe steht aus |
-| Tank klein (Vortex) | 2 | W | abgenommen (08:25, check_tank 60/60, Schnitt ok) | `designs/components/tank_klein.sc` | - |
-| Tank gross (Biofilter) | 2 | W | abgenommen (08:25, check_tank 60/60) | `designs/components/tank_gross.sc` | - |
-| Pumpe (4 Tafeln; Kassetten = Tank-Stuetzrippen, D16) | 4 | W | L3 gebaut (check_pumpe 37/37), Spec-Pruefer laeuft | `designs/components/pumpe.sc` | - |
-| Strebe A / B | 30 / 35 | I | in Arbeit | `designs/components/strebe_*.sc` | - |
-| Knoten 4/5/6-wertig (Kugel mit Steckarmen, D15) | 10 / 6 / 10 | W | gebaut (26 Dateien, 135/135), Spec-Pruefer laeuft | `designs/components/knoten_*.sc` | - |
-| Tuer komplett | 1 | I | offen | `designs/components/tuer_komplett.sc` | - |
-| Fundamentanker (Werkstatt), Fundamentring, Erdflaeche | 10 / 1 / 1 | W/I | Anker gebaut (15/15), Blatt/Pruefer folgen | | - |
-| Pool, zweites Becken | 2 | I | in Arbeit | | - |
-| Haut | siehe Gitter | I | offen | | - |
-| Rohrnetz (aus `system.json`) | - | I (nach W) | offen | | - |
+| Salatkopf | 1634 (Modell) | W | eingebaut, Einheitsmodell; Artenmodelle zuletzt (D27) | `designs/components/salatkopf.sc` | 31.10. Orchestrator: Innenbeete (6) tragen noch keine Toepfe (Befund), Zaehlung gegen system_specs abgleichen |
+| Netztopf | 1634 (960 Aussenbeete + 674 NFT) | W | eingebaut | `designs/components/netztopf.sc` | 31.10. Orchestrator: Innenbeete ohne Toepfe, Specs zaehlen 2160 Beet-Toepfe (Abweichung, D52) |
+| NFT-Rinne (aussen 4 Rinnen, Mitte 4, innen 2) | 76 | W | abgenommen (W24/W25a, check_nft_fit 48/48) | `designs/components/nft_rinne.sc` (+Varianten) | 31.10. Werkstatt: aussen4 Standard, 674 Toepfe |
+| NFT-Tisch aussen (8), Mitte (6), innen (10) | 24 | W | eingebaut (Runde 51), Pruefer W17/W18/W25 gelaufen | `designs/components/nft_tisch_*.sc` | 31.10. Werkstatt: check_nft_tisch aussen 79/79 |
+| IBC-Beet aussen (8), innen (6) | 14 | W | eingebaut, Innenbeet-Fase 120 (W26, D44) | `designs/components/ibc_beet_*.sc` | 31.10. Werkstatt: Beet x Beet +36 mm |
+| Tank klein (Absetzer) | 2 | W | eingebaut, Stand verkleinert (W30, Plattform 619) | `designs/components/tank_klein.sc` | 31.10. Werkstatt: check_tank 114/114 |
+| Tank gross (Biofilter) | 2 | W | eingebaut, Stand verkleinert (W30, Plattform 821) | `designs/components/tank_gross.sc` | 31.10. Werkstatt: Pumpentafeln jetzt seitlich (D51) |
+| Pumpe (4 gross = Hauptkreislauf, 4 klein = Absetzer-Teilstrom, D38) | 8 | W | eingebaut, Blatt nach D38 (W25) | `designs/components/pumpe.sc` | 31.10. Werkstatt: Tafeln seitlich am Stand setzen (Montage, M10) |
+| Puffer-Station (2 IBC gestapelt, Messplatz, Dosierkonsole) | 1 | W/I | eingebaut (M8, Lage D48/D49), check_latte offen | `designs/components/puffer_station.sc` | 31.10. Montage: Station r 4000, Sektor rechts der Tuer |
+| Drittbecken (Quarantaene, D 1030) | 1 | I | eingebaut (D49), Mass und Rolle von Ben offen | `designs/components/becken_dritt.sc` | 31.10. Montage: Zwickel Tuer/Station |
+| Mensch-Referenz (1,80 m, messen/arbeiten) | 2 | W/I | eingebaut (M9), nicht in check_latte | `designs/components/mensch_referenz_*.sc` | 31.10. Montage: Build 51 |
+| Strebe A / B | 30 / 34 | I | eingebaut (B 34: Tuerfeld teilt die Basisstrebe) | `designs/components/strebe_*.sc` | 31.10. Montage |
+| Knoten 4/5/6-wertig (Kugel mit Steckarmen, D15) | 10 / 6 / 10 | W | eingebaut (26), 135/135 | `designs/components/knoten_*.sc` | 31.10. Montage: Querbolzen x Strebe 517 offen (Bohrungen) |
+| Tuer komplett (Feld BBB 149,2, D36) | 1 | W/I | eingebaut (M3), check_tuer 30/30 | `designs/components/tuer_komplett.sc` | 31.10. Montage: Neigung 10,81 Grad |
+| Fundamentanker, Fundamentring, Erdflaeche | 10 / 1 / 1 | W/I | eingebaut | | 31.10. Montage |
+| Pool zentral, Zweitbecken | 2 | I | eingebaut (zentriert D35, Zweitbecken auf Tuerachse D36) | | 31.10. Montage |
+| Feinfilter (R28, D51) | 2 | W | in Arbeit (W31) | `designs/components/feinfilter.sc` | 31.10. Orchestrator: Auftrag an Werkstatt-3 |
+| Huelle als Plane (Keilschiene, Folie, Zargenanschluss, D39) | 65 / 40 / 1 | W | in Arbeit (W27 nach W31); Haut-Paneel ruht als Variante | | 31.10. Orchestrator |
+| Rohrnetz, Schlaeuche, Kabel (M10) | - | I | offen: Plan vorab, Netzliste `data/leitungsnetz.json` liegt vor | | 31.10. Orchestrator: nach W31/W27 |

@@ -260,6 +260,17 @@ checks = [
     ("Hülle (Plane, D39) und Heizlast: Standort", False, f"PE doppelt {HULL_AREA:.0f} m²: {heat_w_per_k[1] / 1000:.2f} kW je Kelvin ({heat_w_per_k[0] / 1000:.2f}–{heat_w_per_k[2] / 1000:.2f}); bei ΔT {DT_DESIGN} K (Annahme Mitteleuropa −10/20 °C) {heat_kw_dt[1]} kW Spitze, Jahres-Obergrenze {heat_mwh_year[1]} MWh ohne Sonnengewinn; Standort offen, Heizung nicht in den Stromwerten"),
 ]
 
+# ---- Beete unter den Tischen (R36, D60): Weg 1 = Standard, Weg 2 = Pruefszenarien; Rechnung in scripts/bed_table_variants.py ----
+import bed_table_variants as btv
+assert len(NFT_CHANNELS["aussen"][1]) == 4 and POTS_NFT == 674, "Szenarien weg1/weg2 gelten fuer aussen4 (D43)"
+beete_tische = {"standard": "weg1", "szenarien": [
+    {"name": n, "tische": c["tische"], "rinnen": c["rinnen"], "nft_toepfe": c["toepfe"], "nft_flaeche_m2": round(c["nft_m2"], 1),
+     "beet_frucht_m2": round(c["beet_frucht_m2"], 1), "beet_blatt_m2": round(c["beet_blatt_m2"], 1),
+     "fisch_kg_oben_mitte_unten": [round(x) for x in c["fisch_kg"]], "verlust_gegen_475_kg_mitte": round(c["fisch_kg"][1] - FISH_KG_DESIGN),
+     "fruchtpflanzen": sum(c["fruchtpflanzen"].values()), "blattpflanzen_beet": c["blattpflanzen_beet"]}
+    for key, (n, r, b) in zip(("d40_annahme", "weg1", "weg2a", "weg2b", "weg2c"), btv.VARIANTS) for c in [btv.compute(n, r, b)]],
+    "hinweis": "Planungsstand Weg 1 (D60). Futter je m2 aus R26 (obere / Mitte / untere FAO-Werte), NFT-Flaeche wie R26 aus Bens Tabelle skaliert; mit Rinnenraster als NFT-Flaeche 20-25 % weniger Fisch in allen Varianten (R36). Nur zusaetzlich: Pflanzmix, Fischmenge 475 kg und Konsistenzpruefungen oben rechnen weiter mit D40/R26 (Fruchtanteil im Beet), bis Ben Weg 1 oder 2 entscheidet."}
+
 specs = {
     "stand": "30.10.2026",
     "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D40 (Biomasse 475 kg, Spanne 450–500, nur mit viel Fruchtgemüse und 4. Außenrinne voll gedeckt); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
@@ -330,6 +341,7 @@ specs = {
                   "szenarien": mix_rows, "empfehlung": mix_best, "ziel_futter_kg_tag": [4.3, 5.0], "rueckfall_fisch_kg": [mix_rows[3]["fisch_kg"], mix_rows[1]["fisch_kg"]],
                   "regel": "Besatz stufenweise erhoehen, Nitrat 5-150 mg/l halten (FAO 589: unter 5 Futter erhoehen, ueber 150 Wasser wechseln)",
                   "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50, Frucht 50-80), SRAC 454 NFT nur 25 % des Raft-Werts; Kohlrabi/Sellerie aus Bens Liste nur als Zwischenkultur, nicht im Hauptmix"},
+    "beete_tische": beete_tische,
     "szenario": {"aussen_rinnen": AUSSEN_RINNEN, "drei_rinnen": scen3, "vier_rinnen": scen4,
                  "hinweis": "aussen4 ist Standard (D43, W24 check_nft_fit 48/48): Rinnenlaengen und Toepfe aus nft_tisch.json; NFT-Flaeche aus Bens Tabellenflaeche (42,41 m2 bei aussen3-Laenge) auf die Rinnenlaenge skaliert [A]",
                  "frucht_blatt_g_m2": [FRUIT_G, LEAF_G], "bens_mix_frucht_anteil": FRUIT_SHARE_MIX},

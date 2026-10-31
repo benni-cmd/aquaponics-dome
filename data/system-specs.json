@@ -419,6 +419,97 @@
   "regel": "Besatz stufenweise erhoehen, Nitrat 5-150 mg/l halten (FAO 589: unter 5 Futter erhoehen, ueber 150 Wasser wechseln)",
   "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50, Frucht 50-80), SRAC 454 NFT nur 25 % des Raft-Werts; Kohlrabi/Sellerie aus Bens Liste nur als Zwischenkultur, nicht im Hauptmix"
  },
+ "beete_tische": {
+  "standard": "weg1",
+  "szenarien": [
+   {
+    "name": "D40-Annahme (R26): Tische ueber allen Beeten, alle Beete Frucht",
+    "tische": 24,
+    "rinnen": 76,
+    "nft_toepfe": 674,
+    "nft_flaeche_m2": 49.6,
+    "beet_frucht_m2": 27.3,
+    "beet_blatt_m2": 0,
+    "fisch_kg_oben_mitte_unten": [
+     467,
+     422,
+     335
+    ],
+    "verlust_gegen_475_kg_mitte": -53,
+    "fruchtpflanzen": 132,
+    "blattpflanzen_beet": 0
+   },
+   {
+    "name": "Weg 1: Tische bleiben, alle 14 Beete Blatt/Kraeuter",
+    "tische": 24,
+    "rinnen": 76,
+    "nft_toepfe": 674,
+    "nft_flaeche_m2": 49.6,
+    "beet_frucht_m2": 0,
+    "beet_blatt_m2": 27.3,
+    "fisch_kg_oben_mitte_unten": [
+     385,
+     346,
+     308
+    ],
+    "verlust_gegen_475_kg_mitte": -129,
+    "fruchtpflanzen": 0,
+    "blattpflanzen_beet": 615
+   },
+   {
+    "name": "Weg 2a: Aussentische weg (Aussenbeete frei = Frucht), Innenbeete unter Mitteltischen = Blatt",
+    "tische": 16,
+    "rinnen": 44,
+    "nft_toepfe": 250,
+    "nft_flaeche_m2": 19.9,
+    "beet_frucht_m2": 16.9,
+    "beet_blatt_m2": 10.4,
+    "fisch_kg_oben_mitte_unten": [
+     287,
+     259,
+     206
+    ],
+    "verlust_gegen_475_kg_mitte": -216,
+    "fruchtpflanzen": 82,
+    "blattpflanzen_beet": 235
+   },
+   {
+    "name": "Weg 2b: Mitteltische weg (Innenbeete frei = Frucht), Aussenbeete unter Aussentischen = Blatt",
+    "tische": 18,
+    "rinnen": 52,
+    "nft_toepfe": 494,
+    "nft_flaeche_m2": 35.4,
+    "beet_frucht_m2": 10.4,
+    "beet_blatt_m2": 16.9,
+    "fisch_kg_oben_mitte_unten": [
+     345,
+     311,
+     262
+    ],
+    "verlust_gegen_475_kg_mitte": -164,
+    "fruchtpflanzen": 51,
+    "blattpflanzen_beet": 380
+   },
+   {
+    "name": "Weg 2c: Aussen- und Mitteltische weg (alle Beete frei = Frucht), nur Innentische ueber dem Pool",
+    "tische": 10,
+    "rinnen": 20,
+    "nft_toepfe": 70,
+    "nft_flaeche_m2": 5.7,
+    "beet_frucht_m2": 27.3,
+    "beet_blatt_m2": 0,
+    "fisch_kg_oben_mitte_unten": [
+     247,
+     224,
+     159
+    ],
+    "verlust_gegen_475_kg_mitte": -251,
+    "fruchtpflanzen": 132,
+    "blattpflanzen_beet": 0
+   }
+  ],
+  "hinweis": "Planungsstand Weg 1 (D60). Futter je m2 aus R26 (obere / Mitte / untere FAO-Werte), NFT-Flaeche wie R26 aus Bens Tabelle skaliert; mit Rinnenraster als NFT-Flaeche 20-25 % weniger Fisch in allen Varianten (R36). Nur zusaetzlich: Pflanzmix, Fischmenge 475 kg und Konsistenzpruefungen oben rechnen weiter mit D40/R26 (Fruchtanteil im Beet), bis Ben Weg 1 oder 2 entscheidet."
+ },
  "szenario": {
   "aussen_rinnen": 4,
   "drei_rinnen": {

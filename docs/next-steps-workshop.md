@@ -62,3 +62,4 @@ REIHENFOLGE 31.10. 00:30: Limit neu (5h 8 %, Woche 14 %). Reihenfolge unveraende
 REIHENFOLGE 31.10. 01:10 (D46): W25a -> W26 -> **W28 Puffer-Station** (docs/jobs/W28-puffer-ibc.md) -> W25 Pumpen-Blatt -> W27 Huelle. Montage platziert danach per M8.
 REIHENFOLGE 31.10. 01:40 (Ben: IBC und Dosierkonsole sofort sichtbar machen): aktuellen Schritt (W25a) fertig, DANN **W28 Puffer-Station** (docs/jobs/W28-puffer-ibc.md), dann W26 Innenbeet-Fase, dann W25 Pumpen-Blatt, W27 Huelle. Platz geprueft (Orchestrator): Sektor 185,2 frei, Stapel Aussenkante r <= ca. 5150 (Wand neigt 10,8 Grad, 100 mm Abstand), Innenkante ca. 4150, Tank 4 (213 Grad) und Tank 1 (123 Grad) sind >= 2 m entfernt.
 REIHENFOLGE 31.10. 02:40: nach W28 -> **W29 Mensch-Referenz** (docs/jobs/W29-mensch-referenz.md, D47) -> W27 Huelle (Plane).
+REIHENFOLGE 31.10. 04:00 (D50): W30 Tank-Staende verkleinern (docs/jobs/W30-tank-staende.md), dann W27 Huelle. Danach Pause fuer den Zwischencheck.

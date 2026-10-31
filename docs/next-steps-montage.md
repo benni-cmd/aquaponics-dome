@@ -56,3 +56,5 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 **HINWEIS 31.10. 01:40:** M8 (Drittbecken + Puffer-Station) kommt vor W26: sobald Werkstatt W25a und W28 gemeldet haben -> extract_nft_pots, Neubau mit aussen4, M8, check_walkways. Der grosse check_latte folgt erst nach W26 (Innenbeet-Fase).
 
 **HINWEIS 31.10. 02:40 (D47):** Nach M8: M9 zwei Referenzfiguren (docs/jobs/M9-mensch-platzieren.md), sobald Werkstatt W29 meldet.
+
+**HINWEIS 31.10. 04:00 (D50):** Nach der M8/M9-Messung: M10 Leitungen (docs/jobs/M10-leitungen.md) erst, wenn R28 (Netzliste) und W30 (Stands) gemeldet sind; Plan vorab im Paket. Danach check_latte und Pause.

@@ -309,16 +309,16 @@ def nft(fz):
 
 # T10/T12: Netztoepfe und Salatkoepfe in den 8 Aussenbeeten als Instanzen (Positionen je Topf aus data/pots.json = OBJ, Beet-Koordinaten); Netztopf-Ursprung Mitte Boden, Salatkopf-Ursprung Kragenoberkante (Boden + 63)
 PLANTS = json.load(open(os.path.join(ROOT, "data", "pots.json")))
-def bed_pot_grid():
-    """Topfraster im Aussenbeet 2640 x 800 (D34): quadratisches Raster `pot_pitch` (Salatkopf 95-125 mm breit), `pot_margin` zur Wanne, symmetrisch zur Beetmitte; (u laengs, v quer)."""
-    nu, nv = int((BED_OUT_L - 2*P["pot_margin"]) // P["pot_pitch"]) + 1, int((BED_OUT_W - 2*P["pot_margin"]) // P["pot_pitch"]) + 1
+def bed_pot_grid(l=None, w=None):
+    """Topfraster im Beet (Aussenbeet 2640 x 800, D34; Innenbeet 1865 x 933, D52): quadratisches Raster `pot_pitch` (Salatkopf 95-125 mm breit), `pot_margin` zur Wanne, symmetrisch zur Beetmitte; (u laengs, v quer)."""
+    l, w = l or BED_OUT_L, w or BED_OUT_W
+    nu, nv = int((l - 2*P["pot_margin"]) // P["pot_pitch"]) + 1, int((w - 2*P["pot_margin"]) // P["pot_pitch"]) + 1
     return [((i - (nu - 1)/2) * P["pot_pitch"], (j - (nv - 1)/2) * P["pot_pitch"]) for i in range(nu) for j in range(nv)]
 
 def pots(fz, with_heads):
     pots_, heads = [], []
-    grid = bed_pot_grid()
     for k, b in enumerate(LAYOUT["ibc_beds"]):
-        if "plants" not in b: continue
+        grid = bed_pot_grid() if "plants" in b else bed_pot_grid(b["length"], b["width"])   # D52: auch die 6 Innenbeete tragen Toepfe
         cx, cy = bed_xy(b); yaw = bed_yaw(b); c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
         for u, v in grid:
             x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1); zb = round(fz + P["pot_base_z"], 1)

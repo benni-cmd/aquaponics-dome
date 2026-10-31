@@ -749,6 +749,98 @@
       "rolle": "Arten 7 und 9 der Filterarten (docs/filter-konzept.md, R30): Seitenzweig am Verteiler, kein Teil des Hauptstroms; Pflicht im Dom sind nur Messzelle, Basen-Stammlösung, Eisenchelat und die Frischwasserquelle (R37 Befund 1)."
     },
     {
+      "match": "^halter_",
+      "titel": "Messstellen-Halter (8 Bauteile)",
+      "was": "Standardhalter, an denen die Sonden der 67 Messstellen sitzen: Tauchrohr am Beckenrand, Beruhigungsrohr, Durchflusszelle, Einbaustück mit Vorfilter, Probenahmehahn, Druckstutzen, Sensor-Mast und Messknoten-Gehäuse.",
+      "status": "Werkstatt W35 (R39, D65), check_messstellen alle Komponenten PASS",
+      "ablauf": [
+        "Der Halter nimmt die Sonde auf und bringt sie in den Wasserstrom, den Beckenrand-Bereich oder die Kuppelluft.",
+        "Das Sondenkabel läuft zum Messknoten-Gehäuse (H_BOX) neben dem Halter; von dort geht ein Bus (RS-485 plus 24 V) zur Zentrale.",
+        "Alarm- und Warngrenzen je Messgröße stehen bei den Sonden (R39)."
+      ],
+      "aufbau": [
+        {
+          "t": "Halter",
+          "p": [
+            "H_TAUCH: Beckenrand-Tauchhalter (5 Stück)",
+            "H_BERUHIG: Beruhigungsrohr fuer Schwimmerschalter (14 Stück)",
+            "H_ZELLE: Durchflusszelle mit 3 Sondenstutzen (2 Stück)",
+            "H_INLINE d32: Einbaustueck Durchflussmesser d32 mit Vorfilter (7 Stück)",
+            "H_INLINE d50: Einbaustueck Durchflussmesser d50 mit Vorfilter (2 Stück)",
+            "H_HAHN: Probenahmehahn (5 Stück)",
+            "H_DRUCK: Druckschalter-Stutzen R1/4 (6 Stück)",
+            "H_MAST: Sensor-Mast Kuppel (5 Stück)",
+            "H_BOX: Messknoten-Gehaeuse IP65 (7 Stück)"
+          ]
+        }
+      ],
+      "masse": {
+        "H_TAUCH": "3 Teile, 1766 g, Box 242 × 52 × 1020 mm; Funktion: Rohr d40 mit Klemme am Beckenrand, 0,3-0,7 m Eintauchtiefe, Sonde ohne Werkzeug herausziehbar",
+        "H_BERUHIG": "5 Teile, 1173 g, Box 105 × 75 × 650 mm; Funktion: PVC-U d63 senkrecht, geschlitzt, 2 Schwimmerschalter (Niedrig/Hoch)",
+        "H_ZELLE": "4 Teile, 490 g, Box 320 × 70 × 74 mm; Funktion: Durchflusszelle am Abzweig d20 des Sammelrohrs mit 3 Sondenstutzen (pH, EC, Temperatur) und Absperrhahn",
+        "H_INLINE d32": "6 Teile, 1392 g, Box 470 × 54 × 117 mm; Funktion: Rohrstueck mit Verschraubung, 20 cm gerade Strecke vor dem Messer und Vorfilter >= 80 um",
+        "H_INLINE d50": "6 Teile, 2196 g, Box 470 × 72 × 135 mm; Funktion: wie H_INLINE d32, Groesse d50 fuer die Hauptleitungen K10/K26 (110 l/min, flow_gross)",
+        "H_HAHN": "3 Teile, 141 g, Box 95 × 50 × 89 mm; Funktion: Kugelhahn d16/d20 mit Schlauchtuelle an einer Anbohrschelle, Handmessung mit Tropfentest oder Photometer",
+        "H_DRUCK": "2 Teile, 128 g, Box 60 × 50 × 67 mm; Funktion: Anschlussstutzen R1/4 am Rohr bzw. an der Luftleitung fuer den Druckschalter",
+        "H_MAST": "3 Teile, 936 g, Box 100 × 100 × 1736 mm; Funktion: Rohr d32 mit Strahlungsschutz, Hoehe 1,7 m (Kopfhoehe) bzw. am Scheitel",
+        "H_BOX": "9 Teile, 906 g, Box 260 × 150 × 116 mm; Funktion: Messknoten-Gehaeuse IP65 mit Hutschiene (ESP32/Rechner, EZO-Schaltkreise, Isolatoren) neben dem Halter"
+      },
+      "grenzen": "Handelsware (PVC-U, Stahl, Edelstahl) angenommen, keine Zulassung für Lebensmittelkontakt belegt; Anbohrschelle als flache Platte; Rohrdurchmesser je Messstelle bestimmt R40; Statik des Masts nicht gerechnet.",
+      "quelle": "docs/parts/messstellen.md, docs/research/R39.md, data/messstellen.json",
+      "rolle": "Messnetz der Anlage (R39): trägt 22 Pflicht- und 45 Zusatzmessstellen; Pflicht = Fischtod oder Anlagenschaden binnen Stunden (O₂, Temperatur, Wasserstand, Pumpenausfall, Strom, Luft)."
+    },
+    {
+      "match": "^sonde_",
+      "titel": "Sonden-Platzhalter (14 Typen)",
+      "was": "Je ein schlichter Körper pro Sondentyp in Maß und Farbe einer Hersteller-Sonde (Maße Annahme), damit die Montage jede Messstelle mit einem Bauteil besetzen kann.",
+      "status": "Werkstatt W35 (R39, D65), Maße Annahme, check_messstellen PASS",
+      "ablauf": [
+        "Die Sonde misst eine Größe (O₂, pH, EC, Temperatur, Pegel, Durchfluss, Druck, Strom, CO₂, Licht, Leckage) und gibt ein Signal über Kabel an den Messknoten.",
+        "Der Messknoten wertet aus; bei Überschreiten der Warn- oder Alarmgrenze meldet die Steuerung (lokal, Wähler, Software).",
+        "Kalibrierung und Standzeit stehen im Blatt je Typ."
+      ],
+      "aufbau": [
+        {
+          "t": "Typen",
+          "p": [
+            "do_ind: Gel/galvanische DO-Sonde industriell mit PT-1000 (Atlas ENV-50-DO) (1 Stück)",
+            "do_mini: Mini-DO-Sonde (Atlas ENV-20-DOX) (5 Stück)",
+            "ph: pH-Sonde Doppelelektrolyt Ag/AgCl (Atlas ENV-40-pH) (5 Stück)",
+            "ec: Leitfaehigkeitssonde K 0,1 (Atlas) (3 Stück)",
+            "temp_ds: Temperaturfuehler DS18B20 wasserdicht (6 Stück)",
+            "level_float: Schwimmerschalter (Niedrig/Hoch) (17 Stück)",
+            "level_druck: Tauchdrucksonde 4-20 mA (2 Stück)",
+            "flow_12: Paddelrad-Durchflussmesser 1/2 Zoll (Atlas) (7 Stück)",
+            "flow_gross: Durchflussmesser fuer 110 l/min (1 Zoll oder Ultraschall-Clamp-on, Typ offen) (2 Stück)",
+            "druck_schalter: Druckschalter mit Relais (Luft oder Wasser) (6 Stück)",
+            "strom_ct: Stromwandler SCT-013 (Klemm-CT) je Verbraucher (10 Stück)",
+            "co2_scd41: CO2/Temperatur/Feuchte-Modul SCD41 (3 Stück)",
+            "par: Quantensensor PAR (z. B. Apogee SQ-500) oder Lux-Platine (2 Stück)",
+            "leck: Leckagesonde (Kontakt am Boden) (3 Stück)"
+          ]
+        }
+      ],
+      "masse": {
+        "do_ind": "Funktion: Tauchsonde, Kabel 3 m, 0-100 mg/l, +-0,05 mg/l, ca. 0,1 mg/l/s; Alarmgrenze: AL01 O2 Fischbecken: Warnung < 5,0, Alarm < 4,0, Notfall < 3,0 (Notluft sofort); AL03 Temperatur Fischbecken/Heizung: Warnung < 25 oder > 31, Alarm < 20 oder > 34 [A] oder Sprung > 2,8 K in 1 h; Preis 349.99 USD (gelesen); Kalibrierung: ca. 1 Jahr (Hersteller), Ein-Punkt in Luft; Platzhalter Tauchsonde industriell Ø 25 x 170 (Atlas ENV-50-DO) (Platzhalter, Masse Annahme)",
+        "do_mini": "Funktion: Tauchsonde klein, fuer Drittbecken, Zweitbecken, Biofilter, Puffer; Alarmgrenze: AL01 O2 Fischbecken: Warnung < 5,0, Alarm < 4,0, Notfall < 3,0 (Notluft sofort); AL02 O2 Biofilter-Auslass: Warnung < 3,0, Alarm < 2,0; AL03 Temperatur Fischbecken/Heizung: Warnung < 25 oder > 31, Alarm < 20 oder > 34 [A] oder Sprung > 2,8 K in 1 h; Preis 199.99 USD (Haendlerliste); Kalibrierung: ca. 6 Monate (Haendlerangabe); Platzhalter Mini-Tauchsonde Ø 12 x 110 (Atlas ENV-20-DOX) (Platzhalter, Masse Annahme)",
+        "ph": "Funktion: Tauch- oder Inline-Sonde, Kabel 1 m, 0,002 pH Schaltkreis-Aufloesung; Alarmgrenze: AL01 O2 Fischbecken: Warnung < 5,0, Alarm < 4,0, Notfall < 3,0 (Notluft sofort); AL03 Temperatur Fischbecken/Heizung: Warnung < 25 oder > 31, Alarm < 20 oder > 34 [A] oder Sprung > 2,8 K in 1 h; AL04 pH Kreislauf: Warnung < 6,8 oder > 7,8, Alarm < 6,5 oder > 8,5 [A] oder Sprung >= 0,5 in 1 h [A]; Preis 99.99 USD (gelesen); Kalibrierung: Hersteller ca. 1 Jahr; im Dauerbetrieb im Fischwasser erst monatlich pruefen [A]; Platzhalter pH-Sonde Ø 12 x 150 (Atlas ENV-40-pH) (Platzhalter, Masse Annahme)",
+        "ec": "Funktion: Tauch- oder Inline-Sonde, Kabel 1 m, 1-110 C, ohne Elektrolyt; Alarmgrenze: AL01 O2 Fischbecken: Warnung < 5,0, Alarm < 4,0, Notfall < 3,0 (Notluft sofort); AL03 Temperatur Fischbecken/Heizung: Warnung < 25 oder > 31, Alarm < 20 oder > 34 [A] oder Sprung > 2,8 K in 1 h; AL04 pH Kreislauf: Warnung < 6,8 oder > 7,8, Alarm < 6,5 oder > 8,5 [A] oder Sprung >= 0,5 in 1 h [A]; Preis 177.99 USD (gelesen); Kalibrierung: bei Einbau, danach Hersteller ca. 10 Jahre; Kontrolle mit Standard jaehrlich [A]; Platzhalter Leitfaehigkeitssonde K 0,1 Ø 12 x 150 (Atlas) (Platzhalter, Masse Annahme)",
+        "temp_ds": "Funktion: 1-Wire-Digitalfuehler im Edelstahlmantel, +-0,5 C, Kabel 1-5 m; Alarmgrenze: AL01 O2 Fischbecken: Warnung < 5,0, Alarm < 4,0, Notfall < 3,0 (Notluft sofort); AL03 Temperatur Fischbecken/Heizung: Warnung < 25 oder > 31, Alarm < 20 oder > 34 [A] oder Sprung > 2,8 K in 1 h; AL04 pH Kreislauf: Warnung < 6,8 oder > 7,8, Alarm < 6,5 oder > 8,5 [A] oder Sprung >= 0,5 in 1 h [A]; Preis 3-10 USD (Annahme); Kalibrierung: Vergleichsmessung jaehrlich [A]; Platzhalter Temperaturfuehler DS18B20, Edelstahlhuelse Ø 6 x 50 (Platzhalter, Masse Annahme)",
+        "level_float": "Funktion: potentialfreier Kontakt, im Beruhigungsrohr; zwei in Reihe liefern Hoch/Niedrig; Alarmgrenze: AL10 Wasserstand Pool (Soll Z 515): Warnung -30 / +30, Alarm -50 / +50 (Heizung und Pumpen sperren); Preis 10-20 USD (gelesen); Kalibrierung: Funktionstest monatlich; Platzhalter Schwimmerschalter Ø 30 x 55 (Niedrig/Hoch, Kontakt) (Platzhalter, Masse Annahme)",
+        "level_druck": "Funktion: hydrostatisch, +-1-2 mm bis 0,25 % Endwert (Herstellerangabe), unempfindlich gegen Schaum/Blasen; Alarmgrenze: AL10 Wasserstand Pool (Soll Z 515): Warnung -30 / +30, Alarm -50 / +50 (Heizung und Pumpen sperren); AL20 Reserve Frischwasser Puffer unten: Warnung < 0,7 (1 Tag), Alarm < 0,35 (0,5 Tag); Preis 300-500 USD (Herstellerblog); Kalibrierung: Nullpunkt jaehrlich [A]; Platzhalter Tauchdrucksonde 4-20 mA Ø 20 x 140 (Platzhalter, Masse Annahme)",
+        "flow_12": "Funktion: 5,7-75,7 l/min, +-10 %, Summe und Rate, Impulsausgang ueber EZO-Flow-Totalizer; Alarmgrenze: AL11 Durchfluss Linie, Abgaenge: Warnung < 82 % Soll, Alarm < 64 % Soll laenger als 60 s [A]; AL20 Reserve Frischwasser Puffer unten: Warnung < 0,7 (1 Tag), Alarm < 0,35 (0,5 Tag); Preis 145.99 USD (gelesen); Kalibrierung: nicht noetig, Plausibilitaet gegen Pumpen-Soll; Platzhalter Paddelrad-Durchflussmesser 1/2 Zoll 50 x 40 x 80 (Atlas) (Platzhalter, Masse Annahme)",
+        "flow_gross": "Funktion: Messbereich bis mindestens 150 l/min; Atlas 3/4 Zoll endet bei 114 l/min; Alarmgrenze: AL11 Durchfluss Linie, Abgaenge: Warnung < 82 % Soll, Alarm < 64 % Soll laenger als 60 s [A]; Preis 266-500 USD (Annahme); Kalibrierung: nicht noetig; Platzhalter Durchflussmesser fuer 110 l/min (Ultraschall-Clamp-on, Typ offen) 100 x 60 x 40 (Platzhalter, Masse Annahme)",
+        "druck_schalter": "Funktion: Schaltkontakt faellt bei Druckverlust ab; steuert Notluft/Magnetventil; Alarmgrenze: AL12 Pumpenstrom Pumpen, Gebläse: Warnung < 70 oder > 120, Alarm < 50 laenger als 5 s oder > 130 [A]; AL13 Luftdruck Belueftung, Luftpolster: Warnung -, Alarm faellt unter 50 % des Betriebsdrucks [A] (sofort), Notfall Notluft sofort; Preis 30 USD (gelesen (Luft)); Kalibrierung: Funktionstest monatlich (Gebläse abschalten); Platzhalter Druckschalter mit Relais-Ausgang Ø 32 x 55, Anschluss R1/4 (Platzhalter, Masse Annahme)",
+        "strom_ct": "Funktion: Messung im Schaltschrank, kontaktlos; +-3 %, Alarm bei Stromabfall (Trockenlauf) oder Anstieg (blockiert); Alarmgrenze: AL12 Pumpenstrom Pumpen, Gebläse: Warnung < 70 oder > 120, Alarm < 50 laenger als 5 s oder > 130 [A]; Preis 17-21 EUR (Haendlerliste); Kalibrierung: Sollstrom bei Inbetriebnahme einlernen; Platzhalter Klemm-Stromwandler SCT-013 36 x 13 x 30 (Platzhalter, Masse Annahme)",
+        "co2_scd41": "Funktion: photoakustisches NDIR, +-(40 ppm + 5 %) von 400-5000 ppm, Drift ca. +-(5 ppm + 0,5 %)/Jahr mit Selbstkalibrierung; Alarmgrenze: AL16 CO2 Raumluft Kuppel: Warnung > 1000, Alarm > 2000 (lueften), > 5000 (Raum verlassen); AL17 Luftfeuchte Kuppel: Warnung > 85 [A], Alarm -; Preis 14-19 GBP (Haendlerliste (nur Chip)); Kalibrierung: Selbstkalibrierung, Frischluft-Abgleich jaehrlich [A]; Platzhalter CO2-Modul SCD41 auf Platine 25 x 17 x 10 (Chip 10 x 10 x 6,5) (Platzhalter, Masse Annahme)",
+        "par": "Funktion: PPFD 400-700 nm, Analogausgang; Lux-Platine als billige Alternative; Alarmgrenze: kein eigener Alarm (Signal fuer Verknuepfungen); Preis offen (offen); Kalibrierung: Herstellerkalibrierung, 4 Jahre Garantie; Intervall nicht gelesen; Platzhalter Quantensensor PAR Ø 30 x 37 (z. B. Apogee SQ-500) (Platzhalter, Masse Annahme)",
+        "leck": "Funktion: Kontaktflaeche meldet Nasswerden, Sammelmodul (Apex-LDK-Prinzip); Alarmgrenze: AL19 Leckage Technikbereich: Warnung -, Alarm nass; Preis 45 GBP (Haendlerliste); Kalibrierung: Nassprobe halbjaehrlich; Platzhalter Leckagesonde, Kontaktflaeche 50 x 20 x 6 (Platzhalter, Masse Annahme)"
+      },
+      "grenzen": "Alle Sondenmaße und Farben sind Annahmen (keine Abmessungen in R39, Datenblätter nicht gelesen); Konformität der Gehäuse für Lebensmittelkontakt nicht belegt; Kalibrierintervalle Herstellerangaben bzw. Annahme [A].",
+      "quelle": "docs/parts/messstellen.md, docs/research/R39.md, data/messstellen.json (sondentypen, alarmgrenzen)",
+      "rolle": "Messnetz der Anlage (R39): 72 Sonden und Fühler an 67 Messstellen; Alarm in drei Stufen (lokal, GSM-Wähler, Software)."
+    },
+    {
       "match": "^puffer",
       "titel": "Puffer-Station (2 IBC gestapelt)",
       "was": "Zwei übereinander gestellte IBC-Tanks (je 1000 l) mit Messplatz und Dosierkonsole: Messstation, Basenzugabe, Frischwasser- und Notvorrat.",

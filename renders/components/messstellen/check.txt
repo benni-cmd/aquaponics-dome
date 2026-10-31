@@ -282,7 +282,7 @@ PASS messstellen: sonde_druck_schalter: Port 'Kabel (kontakt_2ader)' Spitze am R
 PASS messstellen: Sonde Durchmesser 32: Ist 31.9995, Soll 32 (+-0.1)
 PASS messstellen: Sonde Laenge 55: Ist 55, Soll 55 (+-0.1)
 PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 44228.3, Soll 44233.6 (+-221.168)
-PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 375.94, Soll 375.986 (+-3.75986)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 349.403, Soll 349.446 (+-3.49446)
 PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
 PASS messstellen: sonde_druck_schalter: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
 PASS messstellen: sonde_strom_ct: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1

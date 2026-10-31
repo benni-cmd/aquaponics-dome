@@ -2268,5 +2268,35 @@
   "note": "W34 kleiner Puffer T82 mit Figur 1,80 m und Drittbecken klein",
   "commit": "1725180",
   "source": "renders/components/puffer_klein/puffer_klein-04-massstab.png"
+ },
+ {
+  "file": "20261031-182641_werkstatt_messstellen_messstellen-01-massstab.png",
+  "sha": "4c59cd44c4946a95",
+  "time": "2026-10-31 18:26:41",
+  "role": "werkstatt",
+  "subject": "messstellen",
+  "note": "W35 Halter und Sonden-Platzhalter mit Figur 1,80 m",
+  "commit": "eb5cee3",
+  "source": "renders/components/messstellen/messstellen-01-massstab.png"
+ },
+ {
+  "file": "20261031-182642_werkstatt_messstellen_messstellen-02-halter.png",
+  "sha": "778443a39b39a102",
+  "time": "2026-10-31 18:26:42",
+  "role": "werkstatt",
+  "subject": "messstellen",
+  "note": "W35 Halter und Sonden-Platzhalter mit Figur 1,80 m",
+  "commit": "eb5cee3",
+  "source": "renders/components/messstellen/messstellen-02-halter.png"
+ },
+ {
+  "file": "20261031-182643_werkstatt_messstellen_messstellen-03-sonden.png",
+  "sha": "43e7d735a2d200ad",
+  "time": "2026-10-31 18:26:43",
+  "role": "werkstatt",
+  "subject": "messstellen",
+  "note": "W35 Halter und Sonden-Platzhalter mit Figur 1,80 m",
+  "commit": "eb5cee3",
+  "source": "renders/components/messstellen/messstellen-03-sonden.png"
  }
 ]

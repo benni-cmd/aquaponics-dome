@@ -1,0 +1,3069 @@
+{
+ "klasse": "messstellen",
+ "stand": "31.10.2026 (W35)",
+ "quelle": "docs/research/R39.md, data/messstellen.json; Masse der Sonden Annahme [A]",
+ "komponenten": {
+  "halter_tauch": {
+   "id": "H_TAUCH",
+   "art": "halter",
+   "teilenummer": "T90a",
+   "titel": "Beckenrand-Tauchhalter",
+   "ks": "Z hoch; Ursprung = Mitte der unteren Rohrkante (Tauchende); +X zeigt vom Rohr ueber den Beckenrand",
+   "funktion": "Rohr d40 mit Klemme am Beckenrand, 0,3-0,7 m Eintauchtiefe, Sonde ohne Werkzeug herausziehbar (R39 H_TAUCH, 5 Stueck)",
+   "stueck_laut_R39": 5,
+   "parameter": {
+    "laenge": {
+     "wert": 1000,
+     "einheit": "mm",
+     "herkunft": "[E] Rohrlaenge: Klemme bei 640 mm, Beckenrand Z 650 minus Spiegel 515 = 135 mm Freibord, Eintauchtiefe 505 mm (R39: 0,3-0,7 m)"
+    },
+    "rohr_d": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[E] Rohr PVC-U d40 (R39 H_TAUCH; Bibliothek T70)"
+    },
+    "rohr_wall": {
+     "wert": 1.9,
+     "einheit": "mm",
+     "herkunft": "[E] PVC-U SDR 21 (leitung.wall_p)"
+    },
+    "bohr_d": {
+     "wert": 10,
+     "einheit": "mm",
+     "herkunft": "[A] zwei Querbohrungen d10 am Tauchende (Wasserzutritt, Z 30 und 70)"
+    },
+    "kappe_d": {
+     "wert": 44,
+     "einheit": "mm",
+     "herkunft": "[A] Kappe PA schwarz"
+    },
+    "kappe_h": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "kabel_d": {
+     "wert": 8,
+     "einheit": "mm",
+     "herkunft": "[A] Kabelbohrung d8 (Atlas-Kabel 1-3 m)"
+    },
+    "schelle_z": {
+     "wert": 640,
+     "einheit": "mm",
+     "herkunft": "[E] Unterkante Klemmarm = Beckenrand-Auflage (Rand Z 650: Eintauchtiefe 505)"
+    },
+    "schelle_od": {
+     "wert": 52,
+     "einheit": "mm",
+     "herkunft": "[A] Klemmring Stahl, Wand 6"
+    },
+    "schelle_h": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "arm_len": {
+     "wert": 190,
+     "einheit": "mm",
+     "herkunft": "[A] Arm ueber den Rand (Beckenwand 150 mm + 40 Luft)"
+    },
+    "arm_w": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "haken_h": {
+     "wert": 80,
+     "einheit": "mm",
+     "herkunft": "[A] Haken aussen am Rand"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Tauchrohr",
+     "beschreibung": "PVC-U d40 x 1,9, 1000 lang, 2 Querbohrungen d10",
+     "werkstoff": "PVC grau",
+     "herkunft": "E",
+     "masse_g": 317.5
+    },
+    {
+     "koerper": "Kappe",
+     "beschreibung": "Kappe d44 x 20 mit Kabelbohrung d8",
+     "werkstoff": "PA schwarz",
+     "herkunft": "A",
+     "masse_g": 33.5
+    },
+    {
+     "koerper": "Klemme",
+     "beschreibung": "Klemmring d52 mit Arm 190 x 30 und Haken 80 (ein Stahlteil)",
+     "werkstoff": "Stahl verzinkt",
+     "herkunft": "A",
+     "masse_g": 1414.9
+    }
+   ],
+   "ports": [
+    {
+     "name": "Kabeldurchfuehrung (Kappe, Sonde haengt im Rohr d40)",
+     "mass": "Bohrung d8",
+     "lage": [
+      0,
+      0,
+      1020
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Kappe",
+     "spitze": true
+    },
+    {
+     "name": "Beckenrand-Anlage (Unterkante Klemmarm auf dem Rand)",
+     "mass": "Arm 30 breit, Haken 80",
+     "lage": [
+      126.0,
+      0,
+      640
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Klemme",
+     "spitze": false
+    }
+   ],
+   "masse_kg": 1.766,
+   "box": [
+    [
+     -26.0,
+     -26.0,
+     0.0
+    ],
+    [
+     216.0,
+     26.0,
+     1020.0
+    ]
+   ]
+  },
+  "halter_beruhig": {
+   "id": "H_BERUHIG",
+   "art": "halter",
+   "teilenummer": "T90b",
+   "titel": "Beruhigungsrohr fuer Schwimmerschalter",
+   "ks": "Z hoch; Ursprung = Mitte der Rohrunterkante (Boden des Rohrs, Bodenkappe darunter); +X zur Wand",
+   "funktion": "PVC-U d63 senkrecht, geschlitzt, 2 Schwimmerschalter (Niedrig/Hoch) (R39 H_BERUHIG, 14 Stueck)",
+   "stueck_laut_R39": 14,
+   "parameter": {
+    "laenge": {
+     "wert": 600,
+     "einheit": "mm",
+     "herkunft": "[A] Rohrlaenge: zwei Schwimmer im Abstand bis 300 mm im geschlitzten Bereich"
+    },
+    "rohr_d": {
+     "wert": 63,
+     "einheit": "mm",
+     "herkunft": "[E] Rohr PVC-U d63 (R39)"
+    },
+    "rohr_wall": {
+     "wert": 3.0,
+     "einheit": "mm",
+     "herkunft": "[E] PVC-U SDR 21"
+    },
+    "schlitz_l": {
+     "wert": 360,
+     "einheit": "mm",
+     "herkunft": "[A] Schlitzlaenge, mittig"
+    },
+    "schlitz_w": {
+     "wert": 8,
+     "einheit": "mm",
+     "herkunft": "[A] Schlitzbreite, 4 Schlitze (je 2 durch das Rohr)"
+    },
+    "kappe_d": {
+     "wert": 70,
+     "einheit": "mm",
+     "herkunft": "[A] Bodenkappe"
+    },
+    "kappe_h": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "dkappe_h": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Deckelkappe"
+    },
+    "kabel_d": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A] 2 Kabelbohrungen d12"
+    },
+    "kabel_abst": {
+     "wert": 24,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "schelle_z1": {
+     "wert": 100,
+     "einheit": "mm",
+     "herkunft": "[A] untere Rohrschelle"
+    },
+    "schelle_z2": {
+     "wert": 480,
+     "einheit": "mm",
+     "herkunft": "[A] obere Rohrschelle"
+    },
+    "schelle_od": {
+     "wert": 75,
+     "einheit": "mm",
+     "herkunft": "[A] Rohrschelle Stahl 6 mm Wand"
+    },
+    "schelle_h": {
+     "wert": 15,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "ohr_len": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Befestigungsohr"
+    },
+    "ohr_w": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Rohr",
+     "beschreibung": "PVC-U d63 x 3,0, 600 lang, 4 Schlitze 8 x 360",
+     "werkstoff": "PVC grau",
+     "herkunft": "E",
+     "masse_g": 426.4
+    },
+    {
+     "koerper": "Bodenkappe",
+     "beschreibung": "Kappe d70 x 20, geschlossen",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 107.7
+    },
+    {
+     "koerper": "Deckelkappe",
+     "beschreibung": "Kappe d70 x 30 mit 2 Kabelbohrungen d12",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 152.1
+    },
+    {
+     "koerper": "Schelle_1",
+     "beschreibung": "Rohrschelle d75 x 15 mit Ohr (unten)",
+     "werkstoff": "Stahl verzinkt",
+     "herkunft": "A",
+     "masse_g": 243.5
+    },
+    {
+     "koerper": "Schelle_2",
+     "beschreibung": "Rohrschelle d75 x 15 mit Ohr (oben)",
+     "werkstoff": "Stahl verzinkt",
+     "herkunft": "A",
+     "masse_g": 243.5
+    }
+   ],
+   "ports": [
+    {
+     "name": "Kabeldurchfuehrung 1 (Deckelkappe, Schwimmerkabel)",
+     "mass": "Bohrung d12",
+     "lage": [
+      -12.0,
+      0,
+      630
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Deckelkappe",
+     "spitze": true
+    },
+    {
+     "name": "Kabeldurchfuehrung 2 (Deckelkappe, Schwimmerkabel)",
+     "mass": "Bohrung d12",
+     "lage": [
+      12.0,
+      0,
+      630
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Deckelkappe",
+     "spitze": true
+    },
+    {
+     "name": "Wandbefestigung 1 (Ohr der Rohrschelle)",
+     "mass": "Ohr 25 breit",
+     "lage": [
+      67.5,
+      0,
+      107.5
+     ],
+     "richtung": [
+      1,
+      0,
+      0
+     ],
+     "koerper": "Schelle_1",
+     "spitze": true
+    },
+    {
+     "name": "Wandbefestigung 2 (Ohr der Rohrschelle)",
+     "mass": "Ohr 25 breit",
+     "lage": [
+      67.5,
+      0,
+      487.5
+     ],
+     "richtung": [
+      1,
+      0,
+      0
+     ],
+     "koerper": "Schelle_2",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 1.173,
+   "box": [
+    [
+     -37.5,
+     -37.5,
+     -20.0
+    ],
+    [
+     67.5,
+     37.5,
+     630.0
+    ]
+   ]
+  },
+  "halter_zelle": {
+   "id": "H_ZELLE",
+   "art": "halter",
+   "teilenummer": "T90c",
+   "titel": "Durchflusszelle mit 3 Sondenstutzen",
+   "ks": "X = Strommrichtung (Zulauf -X, Ablauf +X), Z hoch; Ursprung = Mitte der Zulaufseite des Zellkoerpers",
+   "funktion": "Durchflusszelle am Abzweig d20 des Sammelrohrs mit 3 Sondenstutzen (pH, EC, Temperatur) und Absperrhahn (R39 H_ZELLE, 2 Stueck: MS40, MS41)",
+   "stueck_laut_R39": 2,
+   "parameter": {
+    "laenge": {
+     "wert": 220,
+     "einheit": "mm",
+     "herkunft": "[A] Zellkoerper PVC-Block 220 x 44 x 44"
+    },
+    "breite": {
+     "wert": 44,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "hoehe": {
+     "wert": 44,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "bohr_d": {
+     "wert": 28,
+     "einheit": "mm",
+     "herkunft": "[A] Durchgangsbohrung d28 (Zellvolumen ca. 0,13 l)"
+    },
+    "stutzen_x": {
+     "wert": [
+      40,
+      110,
+      180
+     ],
+     "einheit": "mm",
+     "herkunft": "[A] Lage der Sondenstutzen (pH, EC, Temperatur)"
+    },
+    "stutzen_d": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[E] Stutzen d25 wie die Sondenstutzen im Deckel der Messzelle (puffer_klein)"
+    },
+    "stutzen_id": {
+     "wert": 16,
+     "einheit": "mm",
+     "herkunft": "[A] Bohrung fuer Sonde mit Kabelverschraubung"
+    },
+    "stutzen_h": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "anschl_d": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[E] Anschlussstutzen d20 (R39)"
+    },
+    "anschl_id": {
+     "wert": 14,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "anschl_l": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "hahn_l": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[A] Absperrhahn Gehaeuse 40 x 28 x 28"
+    },
+    "hahn_b": {
+     "wert": 28,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Zellkoerper",
+     "beschreibung": "PVC-Block 220 x 44 x 44, Bohrung d28, 3 Stutzen d25 mit Bohrung d16",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 435.9
+    },
+    {
+     "koerper": "Anschluss_Zulauf",
+     "beschreibung": "Stutzen d20 x 30, ID 14",
+     "werkstoff": "PVC grau",
+     "herkunft": "E",
+     "masse_g": 6.7
+    },
+    {
+     "koerper": "Anschluss_Ablauf",
+     "beschreibung": "Stutzen d20 x 30, ID 14",
+     "werkstoff": "PVC grau",
+     "herkunft": "E",
+     "masse_g": 6.7
+    },
+    {
+     "koerper": "Absperrhahn",
+     "beschreibung": "Kugelhahn d20 (Block 40 x 28 x 28) mit Spindel und Hebel",
+     "werkstoff": "PVC blau",
+     "herkunft": "E",
+     "masse_g": 40.8
+    }
+   ],
+   "ports": [
+    {
+     "name": "Zulauf (Anschluss d20, Abzweig Sammelrohr)",
+     "mass": "Stutzen d20, ID 14",
+     "lage": [
+      -30,
+      0,
+      0
+     ],
+     "richtung": [
+      -1,
+      0,
+      0
+     ],
+     "koerper": "Anschluss_Zulauf",
+     "spitze": true
+    },
+    {
+     "name": "Ablauf (hinter dem Absperrhahn)",
+     "mass": "Hahn d20, ID 14",
+     "lage": [
+      290,
+      0,
+      0
+     ],
+     "richtung": [
+      1,
+      0,
+      0
+     ],
+     "koerper": "Absperrhahn",
+     "spitze": true
+    },
+    {
+     "name": "Sondenstutzen 1 (pH)",
+     "mass": "d25, Bohrung 16",
+     "lage": [
+      40,
+      0,
+      52.0
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Zellkoerper",
+     "spitze": true
+    },
+    {
+     "name": "Sondenstutzen 2 (EC)",
+     "mass": "d25, Bohrung 16",
+     "lage": [
+      110,
+      0,
+      52.0
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Zellkoerper",
+     "spitze": true
+    },
+    {
+     "name": "Sondenstutzen 3 (Temperatur)",
+     "mass": "d25, Bohrung 16",
+     "lage": [
+      180,
+      0,
+      52.0
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Zellkoerper",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.49,
+   "box": [
+    [
+     -30.0,
+     -35.0,
+     -22.0
+    ],
+    [
+     290.0,
+     35.0,
+     52.0
+    ]
+   ]
+  },
+  "halter_inline_d32": {
+   "id": "H_INLINE",
+   "art": "halter",
+   "teilenummer": "T90d",
+   "titel": "Einbaustueck Durchflussmesser d32 mit Vorfilter",
+   "ks": "X = Stroemungsrichtung (Zulauf -X), Z hoch; Ursprung = Achse an der Vorfilter-Eintrittsseite",
+   "funktion": "Rohrstueck mit Verschraubung, 20 cm gerade Strecke vor dem Messer und Vorfilter >= 80 um (R39 H_INLINE, 9 Stueck: MS12/13, MS34-39, MS50), Groesse d32 (flow_12)",
+   "stueck_laut_R39": 7,
+   "parameter": {
+    "d": {
+     "wert": 32,
+     "einheit": "mm",
+     "herkunft": "[E] Rohr-Aussendurchmesser PVC-U (R39 H_INLINE; flow_12 an d32, flow_gross an d50, K10/K26)"
+    },
+    "wand": {
+     "wert": 1.8,
+     "einheit": "mm",
+     "herkunft": "[E] PVC-U SDR 21"
+    },
+    "block": {
+     "wert": 52,
+     "einheit": "mm",
+     "herkunft": "[A] Vierkantblock d + 20 (Messstueck und Vorfilter aus PVC-Block gebohrt)"
+    },
+    "nut_l": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Verschraubung (Union) 30 lang, Aussen d + 22"
+    },
+    "filter_l": {
+     "wert": 110,
+     "einheit": "mm",
+     "herkunft": "[A] Vorfilterblock"
+    },
+    "strecke_l": {
+     "wert": 200,
+     "einheit": "mm",
+     "herkunft": "[R] 20 cm gerade Strecke vor dem Messer (R39 H_INLINE: Herstellervorgabe Paddelrad)"
+    },
+    "sensor_l": {
+     "wert": 100,
+     "einheit": "mm",
+     "herkunft": "[A] Messblock mit Sensorsitz"
+    },
+    "x_end": {
+     "wert": 410,
+     "einheit": "mm",
+     "herkunft": "[R] Ende des Messblocks = filter_l + strecke_l + sensor_l"
+    },
+    "kappe_d": {
+     "wert": 36,
+     "einheit": "mm",
+     "herkunft": "[A] Filterkappe 0,7 x Block"
+    },
+    "kappe_h": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[A] Kappe unter dem Block; Sieb >= 80 um (R39) Edelstahlgewebe, Maschenweite nicht modelliert"
+    },
+    "sitz_d": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Sensorsitz (Gewindestutzen fuer Atlas-Paddelrad 1/2 Zoll, Hersteller-Datenblatt nicht gelesen)"
+    },
+    "sitz_id": {
+     "wert": 22,
+     "einheit": "mm",
+     "herkunft": "[A] Bohrung Sensorsitz"
+    },
+    "sitz_h": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Verschraubung_A",
+     "beschreibung": "Union d54 x 30 (Zulauf), Rohr d32",
+     "werkstoff": "PVC blau",
+     "herkunft": "A",
+     "masse_g": 69.6
+    },
+    {
+     "koerper": "Vorfilter",
+     "beschreibung": "Block 52 x 52 x 110 mit Filterkappe d36 x 40",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 337.1
+    },
+    {
+     "koerper": "Sieb",
+     "beschreibung": "Siebkorb Edelstahl d26 x 30 (>= 80 um, Gewebe nicht modelliert)",
+     "werkstoff": "Edelstahl",
+     "herkunft": "A",
+     "masse_g": 41.7
+    },
+    {
+     "koerper": "Beruhigungsstrecke",
+     "beschreibung": "Block 52 x 52 x 200, Bohrung = Rohr-ID (20 cm gerade Strecke)",
+     "werkstoff": "PVC grau",
+     "herkunft": "R",
+     "masse_g": 579.8
+    },
+    {
+     "koerper": "Sensorblock",
+     "beschreibung": "Block 52 x 52 x 100 mit Sensorsitz d30 x 25",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 294.4
+    },
+    {
+     "koerper": "Verschraubung_B",
+     "beschreibung": "Union d54 x 30 (Ablauf), Rohr d32",
+     "werkstoff": "PVC blau",
+     "herkunft": "A",
+     "masse_g": 69.6
+    }
+   ],
+   "ports": [
+    {
+     "name": "Zulauf (Verschraubung, Rohr d32)",
+     "mass": "Rohr d32",
+     "lage": [
+      -30,
+      0,
+      0
+     ],
+     "richtung": [
+      -1,
+      0,
+      0
+     ],
+     "koerper": "Verschraubung_A",
+     "spitze": true
+    },
+    {
+     "name": "Ablauf (Verschraubung, Rohr d32)",
+     "mass": "Rohr d32",
+     "lage": [
+      440,
+      0,
+      0
+     ],
+     "richtung": [
+      1,
+      0,
+      0
+     ],
+     "koerper": "Verschraubung_B",
+     "spitze": true
+    },
+    {
+     "name": "Sensorsitz (Paddelrad / Ultraschall, Bohrung d22)",
+     "mass": "d30",
+     "lage": [
+      360.0,
+      0,
+      51.0
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sensorblock",
+     "spitze": true
+    },
+    {
+     "name": "Filterwechsel / Entleerung (Kappe unten)",
+     "mass": "Kappe d36",
+     "lage": [
+      55.0,
+      0,
+      -66.0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Vorfilter",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 1.392,
+   "box": [
+    [
+     -30.0,
+     -27.0,
+     -66.0
+    ],
+    [
+     440.0,
+     27.0,
+     51.0
+    ]
+   ]
+  },
+  "halter_inline_d50": {
+   "id": "H_INLINE",
+   "art": "halter",
+   "teilenummer": "T90e",
+   "titel": "Einbaustueck Durchflussmesser d50 mit Vorfilter",
+   "ks": "X = Stroemungsrichtung (Zulauf -X), Z hoch; Ursprung = Achse an der Vorfilter-Eintrittsseite",
+   "funktion": "wie H_INLINE d32, Groesse d50 fuer die Hauptleitungen K10/K26 (110 l/min, flow_gross)",
+   "stueck_laut_R39": 2,
+   "parameter": {
+    "d": {
+     "wert": 50,
+     "einheit": "mm",
+     "herkunft": "[E] Rohr-Aussendurchmesser PVC-U (R39 H_INLINE; flow_12 an d32, flow_gross an d50, K10/K26)"
+    },
+    "wand": {
+     "wert": 2.4,
+     "einheit": "mm",
+     "herkunft": "[E] PVC-U SDR 21"
+    },
+    "block": {
+     "wert": 70,
+     "einheit": "mm",
+     "herkunft": "[A] Vierkantblock d + 20 (Messstueck und Vorfilter aus PVC-Block gebohrt)"
+    },
+    "nut_l": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Verschraubung (Union) 30 lang, Aussen d + 22"
+    },
+    "filter_l": {
+     "wert": 110,
+     "einheit": "mm",
+     "herkunft": "[A] Vorfilterblock"
+    },
+    "strecke_l": {
+     "wert": 200,
+     "einheit": "mm",
+     "herkunft": "[R] 20 cm gerade Strecke vor dem Messer (R39 H_INLINE: Herstellervorgabe Paddelrad)"
+    },
+    "sensor_l": {
+     "wert": 100,
+     "einheit": "mm",
+     "herkunft": "[A] Messblock mit Sensorsitz"
+    },
+    "x_end": {
+     "wert": 410,
+     "einheit": "mm",
+     "herkunft": "[R] Ende des Messblocks = filter_l + strecke_l + sensor_l"
+    },
+    "kappe_d": {
+     "wert": 49,
+     "einheit": "mm",
+     "herkunft": "[A] Filterkappe 0,7 x Block"
+    },
+    "kappe_h": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[A] Kappe unter dem Block; Sieb >= 80 um (R39) Edelstahlgewebe, Maschenweite nicht modelliert"
+    },
+    "sitz_d": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Sensorsitz (Gewindestutzen fuer Atlas-Paddelrad 1/2 Zoll, Hersteller-Datenblatt nicht gelesen)"
+    },
+    "sitz_id": {
+     "wert": 22,
+     "einheit": "mm",
+     "herkunft": "[A] Bohrung Sensorsitz"
+    },
+    "sitz_h": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Verschraubung_A",
+     "beschreibung": "Union d72 x 30 (Zulauf), Rohr d50",
+     "werkstoff": "PVC blau",
+     "herkunft": "A",
+     "masse_g": 103.6
+    },
+    {
+     "koerper": "Vorfilter",
+     "beschreibung": "Block 70 x 70 x 110 mit Filterkappe d49 x 40",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 530.0
+    },
+    {
+     "koerper": "Sieb",
+     "beschreibung": "Siebkorb Edelstahl d39 x 30 (>= 80 um, Gewebe nicht modelliert)",
+     "werkstoff": "Edelstahl",
+     "herkunft": "A",
+     "masse_g": 70.3
+    },
+    {
+     "koerper": "Beruhigungsstrecke",
+     "beschreibung": "Block 70 x 70 x 200, Bohrung = Rohr-ID (20 cm gerade Strecke)",
+     "werkstoff": "PVC grau",
+     "herkunft": "R",
+     "masse_g": 922.8
+    },
+    {
+     "koerper": "Sensorblock",
+     "beschreibung": "Block 70 x 70 x 100 mit Sensorsitz d30 x 25",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 465.8
+    },
+    {
+     "koerper": "Verschraubung_B",
+     "beschreibung": "Union d72 x 30 (Ablauf), Rohr d50",
+     "werkstoff": "PVC blau",
+     "herkunft": "A",
+     "masse_g": 103.6
+    }
+   ],
+   "ports": [
+    {
+     "name": "Zulauf (Verschraubung, Rohr d50)",
+     "mass": "Rohr d50",
+     "lage": [
+      -30,
+      0,
+      0
+     ],
+     "richtung": [
+      -1,
+      0,
+      0
+     ],
+     "koerper": "Verschraubung_A",
+     "spitze": true
+    },
+    {
+     "name": "Ablauf (Verschraubung, Rohr d50)",
+     "mass": "Rohr d50",
+     "lage": [
+      440,
+      0,
+      0
+     ],
+     "richtung": [
+      1,
+      0,
+      0
+     ],
+     "koerper": "Verschraubung_B",
+     "spitze": true
+    },
+    {
+     "name": "Sensorsitz (Paddelrad / Ultraschall, Bohrung d22)",
+     "mass": "d30",
+     "lage": [
+      360.0,
+      0,
+      60.0
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sensorblock",
+     "spitze": true
+    },
+    {
+     "name": "Filterwechsel / Entleerung (Kappe unten)",
+     "mass": "Kappe d49",
+     "lage": [
+      55.0,
+      0,
+      -75.0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Vorfilter",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 2.196,
+   "box": [
+    [
+     -30.0,
+     -36.0,
+     -75.0
+    ],
+    [
+     440.0,
+     36.0,
+     60.0
+    ]
+   ]
+  },
+  "halter_hahn": {
+   "id": "H_HAHN",
+   "art": "halter",
+   "teilenummer": "T90f",
+   "titel": "Probenahmehahn",
+   "ks": "Z hoch; Ursprung = Mitte der Unterseite der Anbohrschelle (Anlage am Rohr); Tuelle zeigt nach +X",
+   "funktion": "Kugelhahn d16/d20 mit Schlauchtuelle an einer Anbohrschelle, Handmessung mit Tropfentest oder Photometer (R39 H_HAHN, 5 Stueck)",
+   "stueck_laut_R39": 5,
+   "parameter": {
+    "sattel_l": {
+     "wert": 60,
+     "einheit": "mm",
+     "herkunft": "[A] Anbohrschelle 60 x 50 x 20 (flache Platte statt Rohrsattel; Rohr d20-d63)"
+    },
+    "sattel_b": {
+     "wert": 50,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "sattel_h": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "stutzen_d": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[A] Stutzen d25 (R3/4)"
+    },
+    "stutzen_h": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "bohr_d": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A] Durchgang d12"
+    },
+    "hahn_b": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Kugelhahn d16/d20 Gehaeuse 30 x 30 x 36 (R39 hahn_probe)"
+    },
+    "hahn_h": {
+     "wert": 36,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "hebel_l": {
+     "wert": 65,
+     "einheit": "mm",
+     "herkunft": "[A] Hebel 70 lang, 8 breit"
+    },
+    "tuelle_d": {
+     "wert": 14,
+     "einheit": "mm",
+     "herkunft": "[A] Schlauchtuelle d14 fuer Schlauch ID 12 (Probenahme per Hand)"
+    },
+    "tuelle_id": {
+     "wert": 8,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "tuelle_l": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Anbohrschelle",
+     "beschreibung": "Platte 60 x 50 x 20 mit Stutzen d25 x 20",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 91.4
+    },
+    {
+     "koerper": "Kugelhahn",
+     "beschreibung": "Gehaeuse 30 x 30 x 36 mit Spindel und Hebel",
+     "werkstoff": "PVC blau",
+     "herkunft": "A",
+     "masse_g": 44.2
+    },
+    {
+     "koerper": "Schlauchtuelle",
+     "beschreibung": "Tuelle d14 x 40 mit Bohrung d8",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 5.8
+    }
+   ],
+   "ports": [
+    {
+     "name": "Rohr-Anlage (Unterkante Anbohrschelle auf dem Rohr)",
+     "mass": "Anbohrschelle d20-d63",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Anbohrschelle",
+     "spitze": true
+    },
+    {
+     "name": "Probenahme (Schlauchtuelle)",
+     "mass": "Tuelle d14",
+     "lage": [
+      55.0,
+      0,
+      58.0
+     ],
+     "richtung": [
+      1,
+      0,
+      0
+     ],
+     "koerper": "Schlauchtuelle",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.141,
+   "box": [
+    [
+     -30.0,
+     -25.0,
+     0.0
+    ],
+    [
+     65.0,
+     25.0,
+     89.0
+    ]
+   ]
+  },
+  "halter_druck": {
+   "id": "H_DRUCK",
+   "art": "halter",
+   "teilenummer": "T90g",
+   "titel": "Druckschalter-Stutzen R1/4",
+   "ks": "Z hoch; Ursprung = Mitte der Unterseite der Anbohrschelle; Gewinde zeigt nach +Z",
+   "funktion": "Anschlussstutzen R1/4 am Rohr bzw. an der Luftleitung fuer den Druckschalter (R39 H_DRUCK, 6 Stueck)",
+   "stueck_laut_R39": 6,
+   "parameter": {
+    "sattel_l": {
+     "wert": 60,
+     "einheit": "mm",
+     "herkunft": "[A] Anbohrschelle 60 x 50 x 20 (flache Platte statt Rohrsattel; Rohr d20-d63)"
+    },
+    "sattel_b": {
+     "wert": 50,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "sattel_h": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "stutzen_d": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[A] Stutzen d25 (R3/4)"
+    },
+    "stutzen_h": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "bohr_d": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A] Durchgang d12"
+    },
+    "sechs_d": {
+     "wert": 19,
+     "einheit": "mm",
+     "herkunft": "[A] Sechskantteil des Nippels (Schluesselweite 19, als Zylinder)"
+    },
+    "sechs_h": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "gewinde_d": {
+     "wert": 13.2,
+     "einheit": "mm",
+     "herkunft": "[E] Gewinde R1/4 Aussen 13,157 mm (DIN EN 10226)"
+    },
+    "gewinde_h": {
+     "wert": 15,
+     "einheit": "mm",
+     "herkunft": "[A] Gewindelaenge"
+    },
+    "nippel_id": {
+     "wert": 6,
+     "einheit": "mm",
+     "herkunft": "[A] Durchgang d6"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Anbohrschelle",
+     "beschreibung": "Platte 60 x 50 x 20 mit Stutzen d25 x 20",
+     "werkstoff": "PVC grau",
+     "herkunft": "A",
+     "masse_g": 91.4
+    },
+    {
+     "koerper": "Gewindenippel",
+     "beschreibung": "Edelstahl, Sechskant d19 x 12 mit Gewinde R1/4 x 15, Durchgang d6 (kein Messing: Kupfer ist fuer Fische giftig)",
+     "werkstoff": "Edelstahl",
+     "herkunft": "E",
+     "masse_g": 37.1
+    }
+   ],
+   "ports": [
+    {
+     "name": "Rohr-Anlage (Unterkante Anbohrschelle auf Rohr oder Luftleitung)",
+     "mass": "Anbohrschelle d20-d63",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Anbohrschelle",
+     "spitze": true
+    },
+    {
+     "name": "Druckanschluss R1/4 (Druckschalter)",
+     "mass": "R1/4 aussen",
+     "lage": [
+      0,
+      0,
+      67
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Gewindenippel",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.128,
+   "box": [
+    [
+     -30.0,
+     -25.0,
+     0.0
+    ],
+    [
+     30.0,
+     25.0,
+     67.0
+    ]
+   ]
+  },
+  "halter_mast": {
+   "id": "H_MAST",
+   "art": "halter",
+   "teilenummer": "T90h",
+   "titel": "Sensor-Mast Kuppel",
+   "ks": "Z hoch; Ursprung = Mitte der Unterseite der Fussplatte (Boden)",
+   "funktion": "Rohr d32 mit Strahlungsschutz, Hoehe 1,7 m (Kopfhoehe) bzw. am Scheitel (R39 H_MAST, 5 Stueck: MS59-MS62)",
+   "stueck_laut_R39": 5,
+   "parameter": {
+    "hoehe": {
+     "wert": 1700,
+     "einheit": "mm",
+     "herkunft": "[E] Kopfhoehe 1,7 m (R39 H_MAST), Oberkante Mastrohr"
+    },
+    "rohr_d": {
+     "wert": 32,
+     "einheit": "mm",
+     "herkunft": "[E] Rohr PVC-U d32 (R39)"
+    },
+    "rohr_wall": {
+     "wert": 1.8,
+     "einheit": "mm",
+     "herkunft": "[E] PVC-U SDR 21"
+    },
+    "platte": {
+     "wert": 100,
+     "einheit": "mm",
+     "herkunft": "[A] Fussplatte Stahl 100 x 100 x 6, 4 Duebel (nicht modelliert)"
+    },
+    "platte_t": {
+     "wert": 6,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "spindel_d": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A] Strahlungsschutz Spindel"
+    },
+    "schirm_d": {
+     "wert": 90,
+     "einheit": "mm",
+     "herkunft": "[A] Lamellenscheiben d90, 3 Stueck im Abstand 14"
+    },
+    "schirm_h": {
+     "wert": 36,
+     "einheit": "mm",
+     "herkunft": "[A] Hoehe des Strahlungsschutzes"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Fussplatte",
+     "beschreibung": "Stahl 100 x 100 x 6",
+     "werkstoff": "Stahl verzinkt",
+     "herkunft": "A",
+     "masse_g": 471.0
+    },
+    {
+     "koerper": "Mastrohr",
+     "beschreibung": "PVC-U d32 x 1,5, Oberkante Z 1700",
+     "werkstoff": "PVC grau",
+     "herkunft": "E",
+     "masse_g": 404.8
+    },
+    {
+     "koerper": "Strahlungsschutz",
+     "beschreibung": "Spindel d20 mit 3 Lamellenscheiben d90 (weiss)",
+     "werkstoff": "PP weiss",
+     "herkunft": "A",
+     "masse_g": 59.8
+    }
+   ],
+   "ports": [
+    {
+     "name": "Fuss (Unterkante Fussplatte auf dem Boden)",
+     "mass": "Platte 100 x 100",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Fussplatte",
+     "spitze": true
+    },
+    {
+     "name": "Sensoraufnahme (Strahlungsschutz oben)",
+     "mass": "Spindel d20, SCD41-Platine / PAR-Sensor",
+     "lage": [
+      0,
+      0,
+      1736
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Strahlungsschutz",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.936,
+   "box": [
+    [
+     -50.0,
+     -50.0,
+     0.0
+    ],
+    [
+     50.0,
+     50.0,
+     1736.0
+    ]
+   ]
+  },
+  "halter_box": {
+   "id": "H_BOX",
+   "art": "halter",
+   "teilenummer": "T90i",
+   "titel": "Messknoten-Gehaeuse IP65",
+   "ks": "Z hoch; Ursprung = Mitte der Gehaeuse-Unterseite; Verschraubungen zeigen nach -Z (Kabel nach unten), Laschen +-X",
+   "funktion": "Messknoten-Gehaeuse IP65 mit Hutschiene (ESP32/Rechner, EZO-Schaltkreise, Isolatoren) neben dem Halter (R39 H_BOX, 7 Stueck, Messknoten mk_*)",
+   "stueck_laut_R39": 7,
+   "parameter": {
+    "l": {
+     "wert": 200,
+     "einheit": "mm",
+     "herkunft": "[A] IP65-Gehaeuse 200 x 150 x 100 (ESP32/Rechner, EZO-Schaltkreise, Isolatoren, R39 H_BOX; Handelsmass ueblich)"
+    },
+    "w": {
+     "wert": 150,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "h": {
+     "wert": 100,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "wand": {
+     "wert": 4,
+     "einheit": "mm",
+     "herkunft": "[A] Wand PS"
+    },
+    "deckel_t": {
+     "wert": 4,
+     "einheit": "mm",
+     "herkunft": "[A] Klardeckel Acryl"
+    },
+    "schiene_l": {
+     "wert": 150,
+     "einheit": "mm",
+     "herkunft": "[E] Hutschiene TS35 35 x 7,5 (DIN EN 60715), 150 lang"
+    },
+    "kabel_x": {
+     "wert": [
+      -60,
+      -20,
+      20,
+      60
+     ],
+     "einheit": "mm",
+     "herkunft": "[A] 4 Kabelverschraubungen M16 in der Bodenwand"
+    },
+    "kabel_y": {
+     "wert": -50,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "kabel_d": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A] Verschraubung M16 aussen d20"
+    },
+    "kabel_id": {
+     "wert": 10,
+     "einheit": "mm",
+     "herkunft": "[A] Durchgang d10 (Atlas-Koaxkabel, Bus 4 Adern + 24 V)"
+    },
+    "kabel_l": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "lasche_l": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Wandlasche 30 x 30 x 3"
+    },
+    "lasche_t": {
+     "wert": 3,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    },
+    "lasche_z": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[A]"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Gehaeuse",
+     "beschreibung": "PS 200 x 150 x 100, Wand 4, 4 Durchgaenge d10",
+     "werkstoff": "PS grau",
+     "herkunft": "A",
+     "masse_g": 400.5
+    },
+    {
+     "koerper": "Deckel",
+     "beschreibung": "Klardeckel Acryl 200 x 150 x 4",
+     "werkstoff": "Acryl klar",
+     "herkunft": "A",
+     "masse_g": 142.8
+    },
+    {
+     "koerper": "Hutschiene",
+     "beschreibung": "TS35 35 x 7,5 x 150",
+     "werkstoff": "Stahl verzinkt",
+     "herkunft": "E",
+     "masse_g": 309.1
+    },
+    {
+     "koerper": "Verschraubung_1",
+     "beschreibung": "Kabelverschraubung M16 (Trunk)",
+     "werkstoff": "PA schwarz",
+     "herkunft": "A",
+     "masse_g": 3.2
+    },
+    {
+     "koerper": "Verschraubung_2",
+     "beschreibung": "Kabelverschraubung M16 (Sonde 1)",
+     "werkstoff": "PA schwarz",
+     "herkunft": "A",
+     "masse_g": 3.2
+    },
+    {
+     "koerper": "Verschraubung_3",
+     "beschreibung": "Kabelverschraubung M16 (Sonde 2)",
+     "werkstoff": "PA schwarz",
+     "herkunft": "A",
+     "masse_g": 3.2
+    },
+    {
+     "koerper": "Verschraubung_4",
+     "beschreibung": "Kabelverschraubung M16 (Sonde 3)",
+     "werkstoff": "PA schwarz",
+     "herkunft": "A",
+     "masse_g": 3.2
+    },
+    {
+     "koerper": "Wandlasche_1",
+     "beschreibung": "Stahl 30 x 30 x 3, Loch d6",
+     "werkstoff": "Stahl verzinkt",
+     "herkunft": "A",
+     "masse_g": 20.5
+    },
+    {
+     "koerper": "Wandlasche_2",
+     "beschreibung": "Stahl 30 x 30 x 3, Loch d6",
+     "werkstoff": "Stahl verzinkt",
+     "herkunft": "A",
+     "masse_g": 20.5
+    }
+   ],
+   "ports": [
+    {
+     "name": "Trunk (RS-485 4 Adern + 24 V DC 2 Adern)",
+     "mass": "Verschraubung M16",
+     "lage": [
+      -60,
+      -50,
+      -12
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Verschraubung_1",
+     "spitze": true
+    },
+    {
+     "name": "Sondenanschluss 1 (Koax / Kabel)",
+     "mass": "Verschraubung M16",
+     "lage": [
+      -20,
+      -50,
+      -12
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Verschraubung_2",
+     "spitze": true
+    },
+    {
+     "name": "Sondenanschluss 2 (Koax / Kabel)",
+     "mass": "Verschraubung M16",
+     "lage": [
+      20,
+      -50,
+      -12
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Verschraubung_3",
+     "spitze": true
+    },
+    {
+     "name": "Sondenanschluss 3 (Koax / Kabel)",
+     "mass": "Verschraubung M16",
+     "lage": [
+      60,
+      -50,
+      -12
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Verschraubung_4",
+     "spitze": true
+    },
+    {
+     "name": "Wandbefestigung 1",
+     "mass": "Lasche 30 x 30 x 3, Loch d6",
+     "lage": [
+      -130.0,
+      0,
+      41.5
+     ],
+     "richtung": [
+      -1,
+      0,
+      0
+     ],
+     "koerper": "Wandlasche_1",
+     "spitze": true
+    },
+    {
+     "name": "Wandbefestigung 2",
+     "mass": "Lasche 30 x 30 x 3, Loch d6",
+     "lage": [
+      130.0,
+      0,
+      41.5
+     ],
+     "richtung": [
+      1,
+      0,
+      0
+     ],
+     "koerper": "Wandlasche_2",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.906,
+   "box": [
+    [
+     -130.0,
+     -75.0,
+     -12.0
+    ],
+    [
+     130.0,
+     75.0,
+     104.0
+    ]
+   ]
+  },
+  "sonde_do_ind": {
+   "id": "do_ind",
+   "art": "sonde",
+   "teilenummer": "T91-do_ind",
+   "titel": "Gel/galvanische DO-Sonde industriell mit PT-1000 (Atlas ENV-50-DO)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Tauchsonde industriell Ø 25 x 170 (Atlas ENV-50-DO); Tauchsonde, Kabel 3 m, 0-100 mg/l, +-0,05 mg/l, ca. 0,1 mg/l/s",
+   "stueck_laut_R39": 1,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde blau",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "koax_sma",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.do_ind.kabel_art"
+    },
+    "adern": {
+     "wert": 1,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 170,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Tauchsonde industriell Ø 25 x 170 (Atlas ENV-50-DO) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde blau",
+     "herkunft": "A",
+     "masse_g": 133.5
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (koax_sma)",
+     "mass": "1 Adern, 5 V",
+     "lage": [
+      0,
+      0,
+      170
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.133,
+   "box": [
+    [
+     -12.5,
+     -12.5,
+     0.0
+    ],
+    [
+     12.5,
+     12.5,
+     170.0
+    ]
+   ]
+  },
+  "sonde_do_mini": {
+   "id": "do_mini",
+   "art": "sonde",
+   "teilenummer": "T91-do_mini",
+   "titel": "Mini-DO-Sonde (Atlas ENV-20-DOX)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Mini-Tauchsonde Ø 12 x 110 (Atlas ENV-20-DOX); Tauchsonde klein, fuer Drittbecken, Zweitbecken, Biofilter, Puffer",
+   "stueck_laut_R39": 5,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde blau",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "koax_sma",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.do_mini.kabel_art"
+    },
+    "adern": {
+     "wert": 1,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 110,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Mini-Tauchsonde Ø 12 x 110 (Atlas ENV-20-DOX) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde blau",
+     "herkunft": "A",
+     "masse_g": 19.9
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (koax_sma)",
+     "mass": "1 Adern, 5 V",
+     "lage": [
+      0,
+      0,
+      110
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.02,
+   "box": [
+    [
+     -6.0,
+     -6.0,
+     0.0
+    ],
+    [
+     6.0,
+     6.0,
+     110.0
+    ]
+   ]
+  },
+  "sonde_ph": {
+   "id": "ph",
+   "art": "sonde",
+   "teilenummer": "T91-ph",
+   "titel": "pH-Sonde Doppelelektrolyt Ag/AgCl (Atlas ENV-40-pH)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: pH-Sonde Ø 12 x 150 (Atlas ENV-40-pH); Tauch- oder Inline-Sonde, Kabel 1 m, 0,002 pH Schaltkreis-Aufloesung",
+   "stueck_laut_R39": 5,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde grau",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "koax_bnc",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.ph.kabel_art"
+    },
+    "adern": {
+     "wert": 1,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 150,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "pH-Sonde Ø 12 x 150 (Atlas ENV-40-pH) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde grau",
+     "herkunft": "A",
+     "masse_g": 27.1
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (koax_bnc)",
+     "mass": "1 Adern, 5 V",
+     "lage": [
+      0,
+      0,
+      150
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.027,
+   "box": [
+    [
+     -6.0,
+     -6.0,
+     0.0
+    ],
+    [
+     6.0,
+     6.0,
+     150.0
+    ]
+   ]
+  },
+  "sonde_ec": {
+   "id": "ec",
+   "art": "sonde",
+   "teilenummer": "T91-ec",
+   "titel": "Leitfaehigkeitssonde K 0,1 (Atlas)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Leitfaehigkeitssonde K 0,1 Ø 12 x 150 (Atlas); Tauch- oder Inline-Sonde, Kabel 1 m, 1-110 C, ohne Elektrolyt",
+   "stueck_laut_R39": 3,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde grau",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "koax_bnc",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.ec.kabel_art"
+    },
+    "adern": {
+     "wert": 1,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 12,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 150,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Leitfaehigkeitssonde K 0,1 Ø 12 x 150 (Atlas) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde grau",
+     "herkunft": "A",
+     "masse_g": 27.1
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (koax_bnc)",
+     "mass": "1 Adern, 5 V",
+     "lage": [
+      0,
+      0,
+      150
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.027,
+   "box": [
+    [
+     -6.0,
+     -6.0,
+     0.0
+    ],
+    [
+     6.0,
+     6.0,
+     150.0
+    ]
+   ]
+  },
+  "sonde_temp_ds": {
+   "id": "temp_ds",
+   "art": "sonde",
+   "teilenummer": "T91-temp_ds",
+   "titel": "Temperaturfuehler DS18B20 wasserdicht",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Temperaturfuehler DS18B20, Edelstahlhuelse Ø 6 x 50; 1-Wire-Digitalfuehler im Edelstahlmantel, +-0,5 C, Kabel 1-5 m",
+   "stueck_laut_R39": 6,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Edelstahl",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "onewire_3ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.temp_ds.kabel_art"
+    },
+    "adern": {
+     "wert": 3,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "3,3-5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 6,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 50,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Temperaturfuehler DS18B20, Edelstahlhuelse Ø 6 x 50 (Platzhalter, Masse Annahme)",
+     "werkstoff": "Edelstahl",
+     "herkunft": "A",
+     "masse_g": 11.2
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (onewire_3ader)",
+     "mass": "3 Adern, 3,3-5 V",
+     "lage": [
+      0,
+      0,
+      50
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.011,
+   "box": [
+    [
+     -3.0,
+     -3.0,
+     0.0
+    ],
+    [
+     3.0,
+     3.0,
+     50.0
+    ]
+   ]
+  },
+  "sonde_level_float": {
+   "id": "level_float",
+   "art": "sonde",
+   "teilenummer": "T91-level_float",
+   "titel": "Schwimmerschalter (Niedrig/Hoch)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Schwimmerschalter Ø 30 x 55 (Niedrig/Hoch, Kontakt); potentialfreier Kontakt, im Beruhigungsrohr; zwei in Reihe liefern Hoch/Niedrig",
+   "stueck_laut_R39": 17,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Schwimmer orange",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "kontakt_2ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.level_float.kabel_art"
+    },
+    "adern": {
+     "wert": 2,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "keine (Kontakt)",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 55,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Schwimmerschalter Ø 30 x 55 (Niedrig/Hoch, Kontakt) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Schwimmer orange",
+     "herkunft": "A",
+     "masse_g": 23.3
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (kontakt_2ader)",
+     "mass": "2 Adern, keine (Kontakt)",
+     "lage": [
+      0,
+      0,
+      55
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.023,
+   "box": [
+    [
+     -15.0,
+     -15.0,
+     0.0
+    ],
+    [
+     15.0,
+     15.0,
+     55.0
+    ]
+   ]
+  },
+  "sonde_level_druck": {
+   "id": "level_druck",
+   "art": "sonde",
+   "teilenummer": "T91-level_druck",
+   "titel": "Tauchdrucksonde 4-20 mA",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Tauchdrucksonde 4-20 mA Ø 20 x 140; hydrostatisch, +-1-2 mm bis 0,25 % Endwert (Herstellerangabe), unempfindlich gegen Schaum/Blasen",
+   "stueck_laut_R39": 2,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Edelstahl",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "strom_4_20mA_2ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.level_druck.kabel_art"
+    },
+    "adern": {
+     "wert": 2,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "12-24 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 140,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Tauchdrucksonde 4-20 mA Ø 20 x 140 (Platzhalter, Masse Annahme)",
+     "werkstoff": "Edelstahl",
+     "herkunft": "A",
+     "masse_g": 347.4
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (strom_4_20mA_2ader)",
+     "mass": "2 Adern, 12-24 V",
+     "lage": [
+      0,
+      0,
+      140
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.347,
+   "box": [
+    [
+     -10.0,
+     -10.0,
+     0.0
+    ],
+    [
+     10.0,
+     10.0,
+     140.0
+    ]
+   ]
+  },
+  "sonde_flow_12": {
+   "id": "flow_12",
+   "art": "sonde",
+   "teilenummer": "T91-flow_12",
+   "titel": "Paddelrad-Durchflussmesser 1/2 Zoll (Atlas)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Paddelrad-Durchflussmesser 1/2 Zoll 50 x 40 x 80 (Atlas); 5,7-75,7 l/min, +-10 %, Summe und Rate, Impulsausgang ueber EZO-Flow-Totalizer",
+   "stueck_laut_R39": 7,
+   "parameter": {
+    "form": {
+     "wert": "box",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde schwarz",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "impuls_3ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.flow_12.kabel_art"
+    },
+    "adern": {
+     "wert": 3,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "lx": {
+     "wert": 50,
+     "einheit": "mm",
+     "herkunft": "[A] Breite"
+    },
+    "ly": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[A] Tiefe"
+    },
+    "lz": {
+     "wert": 80,
+     "einheit": "mm",
+     "herkunft": "[A] Hoehe"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Paddelrad-Durchflussmesser 1/2 Zoll 50 x 40 x 80 (Atlas) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde schwarz",
+     "herkunft": "A",
+     "masse_g": 192.0
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (impuls_3ader)",
+     "mass": "3 Adern, 5 V",
+     "lage": [
+      0,
+      0,
+      80
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.192,
+   "box": [
+    [
+     -25.0,
+     -20.0,
+     0.0
+    ],
+    [
+     25.0,
+     20.0,
+     80.0
+    ]
+   ]
+  },
+  "sonde_flow_gross": {
+   "id": "flow_gross",
+   "art": "sonde",
+   "teilenummer": "T91-flow_gross",
+   "titel": "Durchflussmesser fuer 110 l/min (1 Zoll oder Ultraschall-Clamp-on, Typ offen)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Durchflussmesser fuer 110 l/min (Ultraschall-Clamp-on, Typ offen) 100 x 60 x 40; Messbereich bis mindestens 150 l/min; Atlas 3/4 Zoll endet bei 114 l/min",
+   "stueck_laut_R39": 2,
+   "parameter": {
+    "form": {
+     "wert": "box",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde schwarz",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "impuls_3ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.flow_gross.kabel_art"
+    },
+    "adern": {
+     "wert": 3,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5-24 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "lx": {
+     "wert": 100,
+     "einheit": "mm",
+     "herkunft": "[A] Breite"
+    },
+    "ly": {
+     "wert": 60,
+     "einheit": "mm",
+     "herkunft": "[A] Tiefe"
+    },
+    "lz": {
+     "wert": 40,
+     "einheit": "mm",
+     "herkunft": "[A] Hoehe"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Durchflussmesser fuer 110 l/min (Ultraschall-Clamp-on, Typ offen) 100 x 60 x 40 (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde schwarz",
+     "herkunft": "A",
+     "masse_g": 288.0
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (impuls_3ader)",
+     "mass": "3 Adern, 5-24 V",
+     "lage": [
+      0,
+      0,
+      40
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.288,
+   "box": [
+    [
+     -50.0,
+     -30.0,
+     0.0
+    ],
+    [
+     50.0,
+     30.0,
+     40.0
+    ]
+   ]
+  },
+  "sonde_druck_schalter": {
+   "id": "druck_schalter",
+   "art": "sonde",
+   "teilenummer": "T91-druck_schalter",
+   "titel": "Druckschalter mit Relais (Luft oder Wasser)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Druckschalter mit Relais-Ausgang Ø 32 x 55, Anschluss R1/4; Schaltkontakt faellt bei Druckverlust ab; steuert Notluft/Magnetventil",
+   "stueck_laut_R39": 6,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Edelstahl",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "kontakt_2ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.druck_schalter.kabel_art"
+    },
+    "adern": {
+     "wert": 2,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "keine (Kontakt)",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 32,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 55,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Druckschalter mit Relais-Ausgang Ø 32 x 55, Anschluss R1/4 (Platzhalter, Masse Annahme)",
+     "werkstoff": "Edelstahl",
+     "herkunft": "A",
+     "masse_g": 349.4
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (kontakt_2ader)",
+     "mass": "2 Adern, keine (Kontakt)",
+     "lage": [
+      0,
+      0,
+      55
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.349,
+   "box": [
+    [
+     -16.0,
+     -16.0,
+     0.0
+    ],
+    [
+     16.0,
+     16.0,
+     55.0
+    ]
+   ]
+  },
+  "sonde_strom_ct": {
+   "id": "strom_ct",
+   "art": "sonde",
+   "teilenummer": "T91-strom_ct",
+   "titel": "Stromwandler SCT-013 (Klemm-CT) je Verbraucher",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Klemm-Stromwandler SCT-013 36 x 13 x 30; Messung im Schaltschrank, kontaktlos; +-3 %, Alarm bei Stromabfall (Trockenlauf) oder Anstieg (blockiert)",
+   "stueck_laut_R39": 10,
+   "parameter": {
+    "form": {
+     "wert": "box",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde schwarz",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "ct_2ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.strom_ct.kabel_art"
+    },
+    "adern": {
+     "wert": 2,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "keine",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "lx": {
+     "wert": 36,
+     "einheit": "mm",
+     "herkunft": "[A] Breite"
+    },
+    "ly": {
+     "wert": 13,
+     "einheit": "mm",
+     "herkunft": "[A] Tiefe"
+    },
+    "lz": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Hoehe"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Klemm-Stromwandler SCT-013 36 x 13 x 30 (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde schwarz",
+     "herkunft": "A",
+     "masse_g": 16.8
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (ct_2ader)",
+     "mass": "2 Adern, keine",
+     "lage": [
+      0,
+      0,
+      30
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.017,
+   "box": [
+    [
+     -18.0,
+     -6.5,
+     0.0
+    ],
+    [
+     18.0,
+     6.5,
+     30.0
+    ]
+   ]
+  },
+  "sonde_co2_scd41": {
+   "id": "co2_scd41",
+   "art": "sonde",
+   "teilenummer": "T91-co2_scd41",
+   "titel": "CO2/Temperatur/Feuchte-Modul SCD41",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: CO2-Modul SCD41 auf Platine 25 x 17 x 10 (Chip 10 x 10 x 6,5); photoakustisches NDIR, +-(40 ppm + 5 %) von 400-5000 ppm, Drift ca. +-(5 ppm + 0,5 %)/Jahr mit Selbstkalibrierung",
+   "stueck_laut_R39": 3,
+   "parameter": {
+    "form": {
+     "wert": "box",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Platine gruen",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "i2c_4ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.co2_scd41.kabel_art"
+    },
+    "adern": {
+     "wert": 4,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "3,3-5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "lx": {
+     "wert": 25,
+     "einheit": "mm",
+     "herkunft": "[A] Breite"
+    },
+    "ly": {
+     "wert": 17,
+     "einheit": "mm",
+     "herkunft": "[A] Tiefe"
+    },
+    "lz": {
+     "wert": 10,
+     "einheit": "mm",
+     "herkunft": "[A] Hoehe"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "CO2-Modul SCD41 auf Platine 25 x 17 x 10 (Chip 10 x 10 x 6,5) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Platine gruen",
+     "herkunft": "A",
+     "masse_g": 7.7
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (i2c_4ader)",
+     "mass": "4 Adern, 3,3-5 V",
+     "lage": [
+      0,
+      0,
+      10
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.008,
+   "box": [
+    [
+     -12.5,
+     -8.5,
+     0.0
+    ],
+    [
+     12.5,
+     8.5,
+     10.0
+    ]
+   ]
+  },
+  "sonde_par": {
+   "id": "par",
+   "art": "sonde",
+   "teilenummer": "T91-par",
+   "titel": "Quantensensor PAR (z. B. Apogee SQ-500) oder Lux-Platine",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Quantensensor PAR Ø 30 x 37 (z. B. Apogee SQ-500); PPFD 400-700 nm, Analogausgang; Lux-Platine als billige Alternative",
+   "stueck_laut_R39": 2,
+   "parameter": {
+    "form": {
+     "wert": "zyl",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Sonde gelb",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "analog_3ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.par.kabel_art"
+    },
+    "adern": {
+     "wert": 3,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5-24 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "d": {
+     "wert": 30,
+     "einheit": "mm",
+     "herkunft": "[A] Durchmesser"
+    },
+    "l": {
+     "wert": 37,
+     "einheit": "mm",
+     "herkunft": "[A] Laenge"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Quantensensor PAR Ø 30 x 37 (z. B. Apogee SQ-500) (Platzhalter, Masse Annahme)",
+     "werkstoff": "Sonde gelb",
+     "herkunft": "A",
+     "masse_g": 41.8
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (analog_3ader)",
+     "mass": "3 Adern, 5-24 V",
+     "lage": [
+      0,
+      0,
+      37
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.042,
+   "box": [
+    [
+     -15.0,
+     -15.0,
+     0.0
+    ],
+    [
+     15.0,
+     15.0,
+     37.0
+    ]
+   ]
+  },
+  "sonde_leck": {
+   "id": "leck",
+   "art": "sonde",
+   "teilenummer": "T91-leck",
+   "titel": "Leckagesonde (Kontakt am Boden)",
+   "ks": "Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+   "funktion": "Platzhalter in Hersteller-Farbe: Leckagesonde, Kontaktflaeche 50 x 20 x 6; Kontaktflaeche meldet Nasswerden, Sammelmodul (Apex-LDK-Prinzip)",
+   "stueck_laut_R39": 3,
+   "parameter": {
+    "form": {
+     "wert": "box",
+     "einheit": "",
+     "herkunft": "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"
+    },
+    "mat": {
+     "wert": "Kontakt rot",
+     "einheit": "",
+     "herkunft": "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"
+    },
+    "kabel": {
+     "wert": "kontakt_2ader",
+     "einheit": "",
+     "herkunft": "[Q] data/messstellen.json sondentypen.leck.kabel_art"
+    },
+    "adern": {
+     "wert": 2,
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "versorgung": {
+     "wert": "5 V",
+     "einheit": "",
+     "herkunft": "[Q] messstellen.json"
+    },
+    "lx": {
+     "wert": 50,
+     "einheit": "mm",
+     "herkunft": "[A] Breite"
+    },
+    "ly": {
+     "wert": 20,
+     "einheit": "mm",
+     "herkunft": "[A] Tiefe"
+    },
+    "lz": {
+     "wert": 6,
+     "einheit": "mm",
+     "herkunft": "[A] Hoehe"
+    }
+   },
+   "teile": [
+    {
+     "koerper": "Sonde",
+     "beschreibung": "Leckagesonde, Kontaktflaeche 50 x 20 x 6 (Platzhalter, Masse Annahme)",
+     "werkstoff": "Kontakt rot",
+     "herkunft": "A",
+     "masse_g": 8.4
+    }
+   ],
+   "ports": [
+    {
+     "name": "Messspitze / Anlage (Unterseite)",
+     "mass": "Messfuehler",
+     "lage": [
+      0,
+      0,
+      0
+     ],
+     "richtung": [
+      0,
+      0,
+      -1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    },
+    {
+     "name": "Kabel (kontakt_2ader)",
+     "mass": "2 Adern, 5 V",
+     "lage": [
+      0,
+      0,
+      6
+     ],
+     "richtung": [
+      0,
+      0,
+      1
+     ],
+     "koerper": "Sonde",
+     "spitze": true
+    }
+   ],
+   "masse_kg": 0.008,
+   "box": [
+    [
+     -25.0,
+     -10.0,
+     0.0
+    ],
+    [
+     25.0,
+     10.0,
+     6.0
+    ]
+   ]
+  }
+ }
+}

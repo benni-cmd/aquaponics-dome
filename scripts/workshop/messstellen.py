@@ -205,7 +205,7 @@ def c_druck(b, p):
     cyl(b, "AST", p["stutzen_d"], p["stutzen_h"] + 1, [0, 0, p["sattel_h"] - 1], op="join", targets=["Anbohrschelle"])
     cyl(b, "ASB", p["bohr_d"], p["sattel_h"] + p["stutzen_h"] + 2, [0, 0, -1], op="cut", targets=["Anbohrschelle"])
     z0 = p["sattel_h"] + p["stutzen_h"]
-    cyl(b, "NI", p["sechs_d"], p["sechs_h"], [0, 0, z0], body="Gewindenippel", mat="Messing")
+    cyl(b, "NI", p["sechs_d"], p["sechs_h"], [0, 0, z0], body="Gewindenippel", mat="Edelstahl")
     cyl(b, "NIG", p["gewinde_d"], p["gewinde_h"] + 1, [0, 0, z0 + p["sechs_h"] - 1], op="join", targets=["Gewindenippel"])
     cyl(b, "NIB", p["nippel_id"], p["sechs_h"] + p["gewinde_h"] + 2, [0, 0, z0 - 1], op="cut", targets=["Gewindenippel"])
 
@@ -289,7 +289,7 @@ add("halter_hahn", id="H_HAHN", kind="halter", nr="T90f", titel="Probenahmehahn"
 add("halter_druck", id="H_DRUCK", kind="halter", nr="T90g", titel="Druckschalter-Stutzen R1/4", fn=c_druck, ports=druck_ports,
     ks="Z hoch; Ursprung = Mitte der Unterseite der Anbohrschelle; Gewinde zeigt nach +Z",
     funktion="Anschlussstutzen R1/4 am Rohr bzw. an der Luftleitung fuer den Druckschalter (R39 H_DRUCK, 6 Stueck)", params=druck_params(),
-    teile=[("Anbohrschelle", "Platte 60 x 50 x 20 mit Stutzen d25 x 20", "PVC grau", "A"), ("Gewindenippel", "Messing, Sechskant d19 x 12 mit Gewinde R1/4 x 15, Durchgang d6", "Messing", "E")])
+    teile=[("Anbohrschelle", "Platte 60 x 50 x 20 mit Stutzen d25 x 20", "PVC grau", "A"), ("Gewindenippel", "Edelstahl, Sechskant d19 x 12 mit Gewinde R1/4 x 15, Durchgang d6 (kein Messing: Kupfer ist fuer Fische giftig)", "Edelstahl", "E")])
 add("halter_mast", id="H_MAST", kind="halter", nr="T90h", titel="Sensor-Mast Kuppel", fn=c_mast, ports=mast_ports,
     ks="Z hoch; Ursprung = Mitte der Unterseite der Fussplatte (Boden)",
     funktion="Rohr d32 mit Strahlungsschutz, Hoehe 1,7 m (Kopfhoehe) bzw. am Scheitel (R39 H_MAST, 5 Stueck: MS59-MS62)", params=mast_params(),
@@ -315,7 +315,7 @@ SONDEN = {
     "level_druck":    ("zyl", (20, 140), "Edelstahl", "Tauchdrucksonde 4-20 mA Ø 20 x 140"),
     "flow_12":        ("box", (50, 40, 80), "Sonde schwarz", "Paddelrad-Durchflussmesser 1/2 Zoll 50 x 40 x 80 (Atlas)"),
     "flow_gross":     ("box", (100, 60, 40), "Sonde schwarz", "Durchflussmesser fuer 110 l/min (Ultraschall-Clamp-on, Typ offen) 100 x 60 x 40"),
-    "druck_schalter": ("zyl", (32, 55), "Messing", "Druckschalter mit Relais-Ausgang Ø 32 x 55, Anschluss R1/4"),
+    "druck_schalter": ("zyl", (32, 55), "Edelstahl", "Druckschalter mit Relais-Ausgang Ø 32 x 55, Anschluss R1/4"),
     "strom_ct":       ("box", (36, 13, 30), "Sonde schwarz", "Klemm-Stromwandler SCT-013 36 x 13 x 30"),
     "co2_scd41":      ("box", (25, 17, 10), "Platine gruen", "CO2-Modul SCD41 auf Platine 25 x 17 x 10 (Chip 10 x 10 x 6,5)"),
     "par":            ("zyl", (30, 37), "Sonde gelb", "Quantensensor PAR Ø 30 x 37 (z. B. Apogee SQ-500)"),

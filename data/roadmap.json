@@ -1,54 +1,410 @@
 {
-  "stand": "31.10.2026, Roadmap-Kurzfassung 20:30 plus Abnahmen bis W35 Schritt 3 und R42",
-  "schritte": [
-    {"id": "W33", "titel": "Tischhöhe 1000 mm", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 1, "wer": "Werkstatt-4", "notiz": "Tischhöhe auf 1000 mm gesetzt; Querstrebe Z 650 vorläufig akzeptiert (D67), im Ego-Blick beim Zwischencheck prüfen."},
-    {"id": "R34", "titel": "Streben-Recherche", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 2, "wer": "Fachrecherche", "notiz": "Ergebnis: V1 (zwei Strebenlängen) bleibt; Statik noch nicht nachgewiesen (B9b)."},
-    {"id": "R35", "titel": "Tischhöhe-Recherche", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 3, "wer": "Fachrecherche", "notiz": "Grundlage für W33."},
-    {"id": "R36", "titel": "Beete (Weg 1, 346 kg Fisch)", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 4, "wer": "Fachrecherche", "notiz": "Beetauslegung und Fischmenge 346 kg (D61); Bens Entscheidung dazu steht unten."},
-    {"id": "D62", "titel": "Zweitbecken von der Achse, Ringe +100/+200, Laufwegkarte Knie grün", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 5, "wer": "Montage", "notiz": "D62/D63: Laufwege im Dom frei am Knie; Build 55."},
-    {"id": "R37", "titel": "Puffer klein im Dom (0,16 m³)", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 6, "wer": "Fachrecherche-3", "notiz": "Fass, Messzelle, Kanister, Nachfüllwasser statt zwei IBC; Technikvorbau entfällt (D66)."},
-    {"id": "R38", "titel": "Plane: Schnittmuster (V2: 20 Rautenkissen)", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 7, "wer": "Fachrecherche-4", "notiz": "Commit 56e94a5; Einbau ins Modell erst nach dem Zwischencheck."},
-    {"id": "R39", "titel": "Messstellenkonzept (67 Messstellen, davon 22 Pflicht)", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 8, "wer": "Fachrecherche-5", "notiz": "Commit ac0eae3; Grundlage für W35 und Alarm."},
-    {"id": "W34", "titel": "Puffer klein und Drittbecken 0,4 m³ als Bauteile", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 9, "wer": "Werkstatt-4", "notiz": "Abgenommen (946df11); Abschluss 56e4f5b, Checks 51/51 und 13/13 PASS."},
-    {"id": "V-PLANE", "titel": "Plane im Viewer durchsichtig", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 10, "wer": "Viewer", "notiz": "Plane ist im 3D-Viewer durchsichtig sichtbar."},
-    {"id": "V-WALKZ", "titel": "Augenhöhe im Ego-Blick (walk_z)", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 11, "wer": "Viewer", "notiz": "Commit e5fae0d; Höhe kommt jetzt aus params.json statt Rückfall 400."},
-    {"id": "D-WUNSCH", "titel": "Wunschbuch und Roadmap-Paket B11-B15", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 12, "wer": "Orchestrator", "notiz": "Alle Wünsche von Ben erfasst (adaaf0b), spät genannte Wünsche in die Roadmap eingeordnet (1a52f9b)."},
-    {"id": "D69", "titel": "Umfang eng gezogen (D67-D69)", "status": "erledigt", "phase": "vor_zwischencheck", "reihenfolge": 13, "wer": "Orchestrator", "notiz": "Keine Ertragsrechnung, kein Standort, keine Kosten- oder Verschattungsrechnung (W41)."},
-
-    {"id": "W35", "titel": "Sondenhalter und Messstellen-Bauteile", "status": "laeuft", "phase": "vor_zwischencheck", "reihenfolge": 1, "wer": "Werkstatt-4", "notiz": "Schritte 1-3 gebaut (Halter, 14 Sonden-Platzhalter, 348/348 PASS); Abnahme durch den Orchestrator steht aus."},
-    {"id": "R42", "titel": "Folie, Lieferform und Machbarkeit des Schnittmusters", "status": "laeuft", "phase": "vor_zwischencheck", "reihenfolge": 2, "wer": "Fachrecherche-4", "notiz": "Zwischenstand eb5cee3: Folitec Folisol clear AF 200 µm, V2 auf realen Rollenbreiten bestätigt; Abschluss und Abnahme offen."},
-    {"id": "DOCS", "titel": "Docs auf Stand halten (346 kg, Puffer 0,16 m³)", "status": "laeuft", "phase": "dauerhaft", "reihenfolge": 1, "wer": "Orchestrator", "notiz": "Folgedokumente 475 → 346 kg, Specs-Zählung aus dem Modell (D52), Modellbeschreibung, Übersichtsseite."},
-    {"id": "WUNSCHBUCH", "titel": "Wunschbuch bei jeder Abnahme nachführen", "status": "laeuft", "phase": "dauerhaft", "reihenfolge": 2, "wer": "Orchestrator", "notiz": "Offen darin: W39 Hover-Fehler und W40 ComfyUI klären."},
-
-    {"id": "S1", "titel": "W35 abnehmen", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 3, "wer": "Orchestrator", "notiz": "Sobald die Werkstatt W35 abschließt; danach kann R40 starten."},
-    {"id": "R40", "titel": "Netzliste auf Stand bringen", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 4, "wer": "Fachrecherche", "notiz": "Puffer klein, Drittbecken, Messstellen, Linienteilung 12/7, K05/K06/K21/K22 auf DN, Notüberlauf Feinfilter; wartet auf W35."},
-    {"id": "M-SETZEN", "titel": "Montage: Vorbau raus, Puffer, Drittbecken, Pumpentafeln und Messstellen setzen, Karte grün", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 5, "wer": "Montage", "notiz": "Wartet auf W35; nimmt auch die Pumpentafeln seitlich am Tankstand und tank_offsets mit."},
-    {"id": "R41", "titel": "Laschen-Scheiben-Knoten gegen Kugelknoten", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 6, "wer": "Fachrecherche (frisch)", "notiz": "Vergleich zum Foto aus Chemnitz; startet parallel, wenn das Limit passt."},
-    {"id": "LATTE-SKRIPT", "titel": "check_latte-Skript umstellen", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 7, "wer": "Montage", "notiz": "Tür_Komplett statt T4_Blatt, Plane und Figuren ausnehmen, W-M4 gegen Fase."},
-    {"id": "M10-PLAN", "titel": "M10 Leitungsplan (Plan vorab, Orchestrator liest gegen)", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 8, "wer": "Montage", "notiz": "Braucht Puffer und Messstellen gesetzt; Beetabläufe unter dem Pool-Spiegel als Punkte im Plan."},
-    {"id": "M10-LEITUNGEN", "titel": "M10 Leitungen und Kabel inkl. Signalkabel der Messstellen", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 9, "wer": "Montage", "notiz": "Nach Abnahme des Leitungsplans."},
-    {"id": "PUFFER-SPECS", "titel": "puffer_klein als Standardszenario in system_specs.py", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 10, "wer": "Fachrecherche", "notiz": "Heute nur zusätzlich; nach der Abnahme von W34 umstellen."},
-    {"id": "V-MESS", "titel": "Viewer: Ebene Messstellen, Plane-Sichtbarkeit, neue Kennzahlen", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 11, "wer": "Viewer", "notiz": "Wartet auf W35 und die Übersicht mit 346 kg und Puffer 0,16 m³."},
-    {"id": "CHECK", "titel": "EIN check_latte mit allem, Draufsicht und Seitenansicht", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 12, "wer": "Montage + Orchestrator", "notiz": "Letzter Schritt vor der Pause; heute läuft check_latte seit Plane, Tür und Ringverschiebung nicht mehr."},
-    {"id": "PAUSE", "titel": "Zwischencheck mit Ben", "status": "geplant", "phase": "vor_zwischencheck", "reihenfolge": 13, "wer": "Ben + Orchestrator", "notiz": "Ego-Blick durch den Dom, Querstrebe Z 650 prüfen, Bens Entscheidungen einholen."},
-
-    {"id": "N-PLANE", "titel": "Plane im Modell (R38 V2) und im Bauplan", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 1, "wer": "Werkstatt + Montage", "notiz": "Keilschienen, Fußrand, Türzarge, Planenausschnitt-Zarge; vor R42-Abschluss nicht beginnen."},
-    {"id": "N-STATIK", "titel": "Statik B9b, Strebe V1/V2c, Verbindungsstück-Entscheidung", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 2, "wer": "Fachrecherche", "notiz": "Kegelsitz Tank, Tischbeine und Strebenkonzept sind bisher nicht nachgewiesen."},
-    {"id": "N-KATALOG", "titel": "B4 Katalog und B1 Teile-Datenmodell", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 3, "wer": "Werkstatt", "notiz": "Grundlage für Detailansicht und Stückliste."},
-    {"id": "N-DETAIL", "titel": "B2/B3 Detailansicht", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 4, "wer": "Viewer", "notiz": "Einzelteile im Viewer ansehen."},
-    {"id": "N-STUECKLISTE", "titel": "B5 Stückliste und Meterware", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 5, "wer": "Werkstatt", "notiz": "Reale standardisierte Teile mit Mengen."},
-    {"id": "N-R31-33", "titel": "R31 Materialien, R32 Becken, R33 Beete", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 6, "wer": "Fachrecherche", "notiz": "Recherchen zum Abschluss des Teilekatalogs."},
-    {"id": "N-BAUANLEITUNG", "titel": "B10 Bauanleitung", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 7, "wer": "Orchestrator", "notiz": "Baut auf Katalog, Detailansicht und Stückliste auf."},
-    {"id": "N-RENDER", "titel": "Farben, Material, Renders und Pflanzenmodelle", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 8, "wer": "Werkstatt", "notiz": "Optische Feinarbeit nach der Technik."},
-    {"id": "N-ALARM", "titel": "Notstrom und Alarm konkretisieren", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 9, "wer": "Fachrecherche + Werkstatt", "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39."},
-    {"id": "N-LICHT", "titel": "Süßkartoffel-Licht belegen, NFT-Wuchsfläche messen", "status": "geplant", "phase": "nach_zwischencheck", "reihenfolge": 10, "wer": "Fachrecherche", "notiz": "Entscheidet 49,6 gegen 35,1 m² und damit etwa ±80 kg Fisch."},
-
-    {"id": "E1", "titel": "Fischmenge: 346 kg akzeptieren oder 450-500 kg verlangen?", "status": "entscheidung", "phase": "vor_zwischencheck", "reihenfolge": 1, "wer": "Ben", "notiz": "Mehr Fisch heißt mehr Pflanzfläche: Weg 2b oder mehr Rinnen (W24)."},
-    {"id": "E2", "titel": "Puffer klein im Dom (0,16 m³) bestätigen", "status": "entscheidung", "phase": "vor_zwischencheck", "reihenfolge": 2, "wer": "Ben", "notiz": "Technikvorbau entfällt (D66); Frischwasser: Aktivkohle oder Zisterne bleibt offen."},
-    {"id": "E3", "titel": "Drittbecken 0,4 m³ (Ø 0,8 m) bestätigen", "status": "entscheidung", "phase": "vor_zwischencheck", "reihenfolge": 3, "wer": "Ben", "notiz": "Als Quarantäne gedacht; ist in W34 schon gebaut."},
-    {"id": "E4", "titel": "Folienart der Plane und Beschaffungsregion", "status": "entscheidung", "phase": "nach_zwischencheck", "reihenfolge": 4, "wer": "Ben", "notiz": "Standort entfällt (W41); R42 liefert den Vorschlag."},
-    {"id": "E5", "titel": "Strebenkonzept V1 oder V2c; Verbindungsstück Kugel oder Laschenknoten", "status": "entscheidung", "phase": "nach_zwischencheck", "reihenfolge": 5, "wer": "Ben", "notiz": "Laschenknoten erst nach R41 entscheidbar."},
-    {"id": "E6", "titel": "Weg 2b für Fruchtgemüse in den Beeten", "status": "entscheidung", "phase": "nach_zwischencheck", "reihenfolge": 6, "wer": "Ben", "notiz": "Nur falls gewünscht."},
-    {"id": "E7", "titel": "Mausblick (Pointer Lock) im echten Browser testen", "status": "entscheidung", "phase": "vor_zwischencheck", "reihenfolge": 7, "wer": "Ben", "notiz": "Handlung statt Entscheidung: beim Zwischencheck im Ego-Blick ausprobieren."}
-  ]
+ "stand": "Stand 31.10.2026 18:50, W35 und R42 abgenommen, Limit-Reset 22:10 abwarten",
+ "schritte": [
+  {
+   "id": "W33",
+   "titel": "Tischhöhe 1000 mm",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 1,
+   "wer": "Werkstatt-4",
+   "notiz": "Tischhöhe auf 1000 mm gesetzt; Querstrebe Z 650 vorläufig akzeptiert (D67), im Ego-Blick beim Zwischencheck prüfen."
+  },
+  {
+   "id": "R34",
+   "titel": "Streben-Recherche",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2,
+   "wer": "Fachrecherche",
+   "notiz": "Ergebnis: V1 (zwei Strebenlängen) bleibt; Statik noch nicht nachgewiesen (B9b)."
+  },
+  {
+   "id": "R35",
+   "titel": "Tischhöhe-Recherche",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3,
+   "wer": "Fachrecherche",
+   "notiz": "Grundlage für W33."
+  },
+  {
+   "id": "R36",
+   "titel": "Beete (Weg 1, 346 kg Fisch)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 4,
+   "wer": "Fachrecherche",
+   "notiz": "Beetauslegung und Fischmenge 346 kg (D61); Bens Entscheidung dazu steht unten."
+  },
+  {
+   "id": "D62",
+   "titel": "Zweitbecken von der Achse, Ringe +100/+200, Laufwegkarte Knie grün",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 5,
+   "wer": "Montage",
+   "notiz": "D62/D63: Laufwege im Dom frei am Knie; Build 55."
+  },
+  {
+   "id": "R37",
+   "titel": "Puffer klein im Dom (0,16 m³)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 6,
+   "wer": "Fachrecherche-3",
+   "notiz": "Fass, Messzelle, Kanister, Nachfüllwasser statt zwei IBC; Technikvorbau entfällt (D66)."
+  },
+  {
+   "id": "R38",
+   "titel": "Plane: Schnittmuster (V2: 20 Rautenkissen)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Fachrecherche-4",
+   "notiz": "Commit 56e94a5; Einbau ins Modell erst nach dem Zwischencheck."
+  },
+  {
+   "id": "R39",
+   "titel": "Messstellenkonzept (67 Messstellen, davon 22 Pflicht)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 8,
+   "wer": "Fachrecherche-5",
+   "notiz": "Commit ac0eae3; Grundlage für W35 und Alarm."
+  },
+  {
+   "id": "W34",
+   "titel": "Puffer klein und Drittbecken 0,4 m³ als Bauteile",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 9,
+   "wer": "Werkstatt-4",
+   "notiz": "Abgenommen (946df11); Abschluss 56e4f5b, Checks 51/51 und 13/13 PASS."
+  },
+  {
+   "id": "V-PLANE",
+   "titel": "Plane im Viewer durchsichtig",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 10,
+   "wer": "Viewer",
+   "notiz": "Plane ist im 3D-Viewer durchsichtig sichtbar."
+  },
+  {
+   "id": "V-WALKZ",
+   "titel": "Augenhöhe im Ego-Blick (walk_z)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 11,
+   "wer": "Viewer",
+   "notiz": "Commit e5fae0d; Höhe kommt jetzt aus params.json statt Rückfall 400."
+  },
+  {
+   "id": "D-WUNSCH",
+   "titel": "Wunschbuch und Roadmap-Paket B11-B15",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 12,
+   "wer": "Orchestrator",
+   "notiz": "Alle Wünsche von Ben erfasst (adaaf0b), spät genannte Wünsche in die Roadmap eingeordnet (1a52f9b)."
+  },
+  {
+   "id": "D69",
+   "titel": "Umfang eng gezogen (D67-D69)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 13,
+   "wer": "Orchestrator",
+   "notiz": "Keine Ertragsrechnung, kein Standort, keine Kosten- oder Verschattungsrechnung (W41)."
+  },
+  {
+   "id": "W35",
+   "titel": "Sondenhalter und Messstellen-Bauteile",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 1,
+   "wer": "Werkstatt-4",
+   "notiz": "Commit c288e09: 8 Halter und 14 Sonden-Platzhalter (23 Komponenten), check_messstellen 348/348; Sondenmasse sind Annahmen, Nippel/Druckschalter Edelstahl (Kupfer giftig fuer Fische)."
+  },
+  {
+   "id": "R42",
+   "titel": "Folie, Lieferform und Machbarkeit des Schnittmusters",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2,
+   "wer": "Fachrecherche-4",
+   "notiz": "Commit eb5cee3: Hauptfolie Folitec Folisol clear AF 200 um (7-Schicht-PE, 5 Jahre UV), Ersatz AGRIplus UV5; V2 auf 7,5-m-Rolle; Schweissbarkeit nicht belegt, Preis fehlt, Konfektion ab Werk als Ersatz."
+  },
+  {
+   "id": "DOCS",
+   "titel": "Docs auf Stand halten (346 kg, Puffer 0,16 m³)",
+   "status": "laeuft",
+   "phase": "dauerhaft",
+   "reihenfolge": 1,
+   "wer": "Orchestrator",
+   "notiz": "Folgedokumente 475 → 346 kg, Specs-Zählung aus dem Modell (D52), Modellbeschreibung, Übersichtsseite."
+  },
+  {
+   "id": "WUNSCHBUCH",
+   "titel": "Wunschbuch bei jeder Abnahme nachführen",
+   "status": "laeuft",
+   "phase": "dauerhaft",
+   "reihenfolge": 2,
+   "wer": "Orchestrator",
+   "notiz": "Offen darin: W39 Hover-Fehler und W40 ComfyUI klären."
+  },
+  {
+   "id": "S1",
+   "titel": "W35 abnehmen",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3,
+   "wer": "Orchestrator",
+   "notiz": "W35 am 31.10. abgenommen (Orchestrator)."
+  },
+  {
+   "id": "R40",
+   "titel": "Netzliste auf Stand bringen",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 4,
+   "wer": "Fachrecherche",
+   "notiz": "Fachrecherche: Puffer klein, Drittbecken 0,4, Messstellen, Linienteilung 12/7, K05/K06/K21/K22 DN, Notueberlauf Feinfilter. Startet nach Limit-Reset 22:10."
+  },
+  {
+   "id": "M-SETZEN",
+   "titel": "Montage: Vorbau raus, Puffer, Drittbecken, Pumpentafeln und Messstellen setzen, Karte grün",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 5,
+   "wer": "Montage",
+   "notiz": "Montage: Vorbau raus, puffer_klein und becken_dritt_klein setzen, Pumpentafeln seitlich, Messstellen, Karte wieder gruen. Startet nach Limit-Reset 22:10."
+  },
+  {
+   "id": "R41",
+   "titel": "Laschen-Scheiben-Knoten gegen Kugelknoten",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 6,
+   "wer": "Fachrecherche (frisch)",
+   "notiz": "Vergleich zum Foto aus Chemnitz; startet parallel, wenn das Limit passt."
+  },
+  {
+   "id": "LATTE-SKRIPT",
+   "titel": "check_latte-Skript umstellen",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 8,
+   "wer": "Montage",
+   "notiz": "Tür_Komplett statt T4_Blatt, Plane und Figuren ausnehmen, W-M4 gegen Fase."
+  },
+  {
+   "id": "M10-PLAN",
+   "titel": "M10 Leitungsplan (Plan vorab, Orchestrator liest gegen)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 9,
+   "wer": "Montage",
+   "notiz": "Braucht Puffer und Messstellen gesetzt; Beetabläufe unter dem Pool-Spiegel als Punkte im Plan."
+  },
+  {
+   "id": "M10-LEITUNGEN",
+   "titel": "M10 Leitungen und Kabel inkl. Signalkabel der Messstellen",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 10,
+   "wer": "Montage",
+   "notiz": "Nach Abnahme des Leitungsplans."
+  },
+  {
+   "id": "PUFFER-SPECS",
+   "titel": "puffer_klein als Standardszenario in system_specs.py",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Fachrecherche",
+   "notiz": "Heute nur zusätzlich; nach der Abnahme von W34 umstellen."
+  },
+  {
+   "id": "V-MESS",
+   "titel": "Viewer: Ebene Messstellen, Plane-Sichtbarkeit, neue Kennzahlen",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 11,
+   "wer": "Viewer",
+   "notiz": "Wartet auf W35 und die Übersicht mit 346 kg und Puffer 0,16 m³."
+  },
+  {
+   "id": "CHECK",
+   "titel": "EIN check_latte mit allem, Draufsicht und Seitenansicht",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 12,
+   "wer": "Montage + Orchestrator",
+   "notiz": "Letzter Schritt vor der Pause; heute läuft check_latte seit Plane, Tür und Ringverschiebung nicht mehr."
+  },
+  {
+   "id": "PAUSE",
+   "titel": "Zwischencheck mit Ben",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 13,
+   "wer": "Ben + Orchestrator",
+   "notiz": "Ego-Blick durch den Dom, Querstrebe Z 650 prüfen, Bens Entscheidungen einholen."
+  },
+  {
+   "id": "N-PLANE",
+   "titel": "Plane im Modell (R38 V2) und im Bauplan",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 1,
+   "wer": "Werkstatt + Montage",
+   "notiz": "Keilschienen, Fußrand, Türzarge, Planenausschnitt-Zarge; vor R42-Abschluss nicht beginnen."
+  },
+  {
+   "id": "N-STATIK",
+   "titel": "Statik B9b, Strebe V1/V2c, Verbindungsstück-Entscheidung",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 2,
+   "wer": "Fachrecherche",
+   "notiz": "Kegelsitz Tank, Tischbeine und Strebenkonzept sind bisher nicht nachgewiesen."
+  },
+  {
+   "id": "N-KATALOG",
+   "titel": "B4 Katalog und B1 Teile-Datenmodell",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 3,
+   "wer": "Werkstatt",
+   "notiz": "Grundlage für Detailansicht und Stückliste."
+  },
+  {
+   "id": "N-DETAIL",
+   "titel": "B2/B3 Detailansicht",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 4,
+   "wer": "Viewer",
+   "notiz": "Einzelteile im Viewer ansehen."
+  },
+  {
+   "id": "N-STUECKLISTE",
+   "titel": "B5 Stückliste und Meterware",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 5,
+   "wer": "Werkstatt",
+   "notiz": "Reale standardisierte Teile mit Mengen."
+  },
+  {
+   "id": "N-R31-33",
+   "titel": "R31 Materialien, R32 Becken, R33 Beete",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 6,
+   "wer": "Fachrecherche",
+   "notiz": "Recherchen zum Abschluss des Teilekatalogs."
+  },
+  {
+   "id": "N-BAUANLEITUNG",
+   "titel": "B10 Bauanleitung",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Orchestrator",
+   "notiz": "Baut auf Katalog, Detailansicht und Stückliste auf."
+  },
+  {
+   "id": "N-RENDER",
+   "titel": "Farben, Material, Renders und Pflanzenmodelle",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 8,
+   "wer": "Werkstatt",
+   "notiz": "Optische Feinarbeit nach der Technik."
+  },
+  {
+   "id": "N-ALARM",
+   "titel": "Notstrom und Alarm konkretisieren",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 9,
+   "wer": "Fachrecherche + Werkstatt",
+   "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39."
+  },
+  {
+   "id": "N-LICHT",
+   "titel": "Süßkartoffel-Licht belegen, NFT-Wuchsfläche messen",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 10,
+   "wer": "Fachrecherche",
+   "notiz": "Entscheidet 49,6 gegen 35,1 m² und damit etwa ±80 kg Fisch."
+  },
+  {
+   "id": "E1",
+   "titel": "Fischmenge: 346 kg akzeptieren oder 450-500 kg verlangen?",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 1,
+   "wer": "Ben",
+   "notiz": "Dein Wunsch war 450-500 kg; R36 ergibt bei Weg 1 nur 346 kg (308-385). Mehr Fisch braucht mehr Pflanzflaeche (mehr Rinnen/Weg 2b)."
+  },
+  {
+   "id": "E2",
+   "titel": "Puffer klein im Dom (0,16 m³) bestätigen",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2,
+   "wer": "Ben",
+   "notiz": "Technikvorbau entfällt (D66); Frischwasser: Aktivkohle oder Zisterne bleibt offen."
+  },
+  {
+   "id": "E3",
+   "titel": "Drittbecken 0,4 m³ (Ø 0,8 m) bestätigen",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3,
+   "wer": "Ben",
+   "notiz": "Als Quarantäne gedacht; ist in W34 schon gebaut."
+  },
+  {
+   "id": "E4",
+   "titel": "Hauptfolie Folitec Folisol clear AF 200 um bestaetigen (R42); Konfektion ab Werk anfragen",
+   "status": "entscheidung",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 4,
+   "wer": "Ben",
+   "notiz": "Standort und Beschaffungsregion sind laut D69 egal; nur die Folienwahl bestaetigen. Haendleranfrage erst beim Bauplan."
+  },
+  {
+   "id": "E5",
+   "titel": "Strebenkonzept V1 oder V2c; Verbindungsstück Kugel oder Laschenknoten",
+   "status": "entscheidung",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 5,
+   "wer": "Ben",
+   "notiz": "Laschenknoten erst nach R41 entscheidbar."
+  },
+  {
+   "id": "E6",
+   "titel": "Weg 2b für Fruchtgemüse in den Beeten",
+   "status": "entscheidung",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 6,
+   "wer": "Ben",
+   "notiz": "Nur falls gewünscht."
+  },
+  {
+   "id": "E7",
+   "titel": "Mausblick (Pointer Lock) im echten Browser testen",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Ben",
+   "notiz": "Handlung statt Entscheidung: beim Zwischencheck im Ego-Blick ausprobieren."
+  }
+ ]
 }

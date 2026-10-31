@@ -279,10 +279,10 @@
   "used_by": "gen_dome.py, place_m8.py"
  },
  "mensch_mes_x": {
-  "value": 1000,
+  "value": 700,
   "unit": "mm",
   "origin": "A",
-  "source": "D47/M9: Figur messen, Station-KS x (vor der Dosierkonsole x 800..1200)",
+  "source": "D47/M9: Figur messen, Station-KS x (Hand x 880 vor der Dosierkonsole 800..1200; bei 1000 stiess der Fuss an das Zweitbecken)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"

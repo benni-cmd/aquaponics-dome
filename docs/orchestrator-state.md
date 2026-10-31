@@ -104,3 +104,4 @@
 - 31.10. 15:20: R34 Strebenkonzept (docs/jobs/R34-strebenkonzept.md, D57) beauftragt; Reihenfolge: Werkstatt-3 W32 (laeuft) -> Fachrecherche-3 R34 -> Montage (Innenbeete, Laufwegkarte, Leitungsplan).
 - 31.10. 16:00: R35 Tischhoehe (docs/jobs/R35-tischhoehe.md, D58) beauftragt; Reihenfolge Fachrecherche-3: R34 Strebenkonzept, dann R35.
 - 31.10. 16:30: R34/R35 abgenommen; D59 (Streben V1 bleibt, V2c Variante nach Statik), D60 (Tischhoehe 1000 mm alle Ringe, Weg 1 Planungsstand, Weg 2 R36). Reihenfolge: Werkstatt-4 W33 -> Fachrecherche-3 R36 -> Montage.
+- 31.10. 16:35: W33 abgenommen (Commits 5e3f49c, 2afeb23, 066f420): Rinnenunterkante 1000 mm in allen Ringen, Tische neu gebaut, check_nft_tisch 204/204, check_nft_fit PASS, Topfliste 674. 5h-Limit 90 %, Reset 17:10: Fachrecherche-3 R36 startet danach (Cron 17:16). Danach Montage.

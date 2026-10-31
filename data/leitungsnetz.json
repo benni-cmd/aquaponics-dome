@@ -1,0 +1,909 @@
+{
+ "stand": "31.10.2026",
+ "version": 1,
+ "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe.",
+ "konventionen": {
+  "dn_einheit": "Aussendurchmesser mm der Leitungsteile-Bibliothek (d20-d110)",
+  "geschwindigkeit": "Druckseite <= 1,5 m/s (UVI-Hauptleitung ca. 1,4 m/s), Saugseite <= 1,0 m/s [A]",
+  "linien": "zwei gleiche Linien (Tank 1+2, Tank 3+4), Pumpen 1-2 und 3-4 grosser Tanks, Pumpen klein 1-2 (an Absetzer 1) und 3-4 (an Absetzer 2)"
+ },
+ "knoten": [
+  {
+   "id": "pool",
+   "typ": "Becken",
+   "bauteil": "pool",
+   "bemerkung": "Wasserspiegel Z 515, Bodenablauf in der Mitte (ca. 11 % des Stroms), Seitenablauf/Skimmer (ca. 89 %)"
+  },
+  {
+   "id": "absetzer_1",
+   "typ": "Tank",
+   "bauteil": "tank_klein",
+   "linie": 1,
+   "bemerkung": "Vortex, 267 l, Zulauf Ø50 tangential 250 mm unter Rand, Auslass Ø50 100 mm unter Rand, Schlammablass Kugelhahn an der Kegelspitze"
+  },
+  {
+   "id": "absetzer_2",
+   "typ": "Tank",
+   "bauteil": "tank_klein",
+   "linie": 2
+  },
+  {
+   "id": "biofilter_1",
+   "typ": "Tank",
+   "bauteil": "tank_gross",
+   "linie": 1,
+   "bemerkung": "702 l, Medium 0,26 m3, Zulauf/Auslass Ø50, Ueberlauf, Belueftung Ø16 im Deckel, Schlammablass"
+  },
+  {
+   "id": "biofilter_2",
+   "typ": "Tank",
+   "bauteil": "tank_gross",
+   "linie": 2
+  },
+  {
+   "id": "feinfilter_1",
+   "typ": "Filter",
+   "bauteil": null,
+   "linie": 1,
+   "status": "Empfehlung, nicht im Modell",
+   "bemerkung": "Siebkorb/Netzfilter am Biofilter-Einlauf (FAO 589: ab 15 kg/m3 zusaetzlicher mechanischer Filter), alle 1-2 Wochen reinigen"
+  },
+  {
+   "id": "feinfilter_2",
+   "typ": "Filter",
+   "bauteil": null,
+   "linie": 2,
+   "status": "Empfehlung, nicht im Modell"
+  },
+  {
+   "id": "puffer_oben",
+   "typ": "Tank",
+   "bauteil": "puffer_ibc",
+   "bemerkung": "obere IBC, Messtank (pH, EC, Temperatur, O2, Nitrat), Stapelhoehe <= 2,5 m (D46)"
+  },
+  {
+   "id": "puffer_unten",
+   "typ": "Tank",
+   "bauteil": "puffer_ibc",
+   "bemerkung": "untere IBC, Vorrat und Dosierung, Frischwasser 2 Tage stehen"
+  },
+  {
+   "id": "dosierkonsole",
+   "typ": "Technik",
+   "bauteil": "puffer_station",
+   "bemerkung": "2 Schlauchpumpen (Base, Eisen), Messplatz"
+  },
+  {
+   "id": "verteiler_1",
+   "typ": "Verteiler",
+   "bauteil": "lt_verteiler",
+   "linie": 1,
+   "bemerkung": "d50 Eingang, Abgaenge Beete d40, NFT d32, Rest zurueck"
+  },
+  {
+   "id": "verteiler_2",
+   "typ": "Verteiler",
+   "bauteil": "lt_verteiler",
+   "linie": 2
+  },
+  {
+   "id": "nft_linie_1",
+   "typ": "NFT",
+   "bauteil": "nft_tisch",
+   "linie": 1,
+   "tische": 12,
+   "rinnen": 38,
+   "bemerkung": "Haelfte der 24 Tische und 76 Rinnen [A, Aufteilung nach Sektoren Montage]"
+  },
+  {
+   "id": "nft_linie_2",
+   "typ": "NFT",
+   "bauteil": "nft_tisch",
+   "linie": 2,
+   "tische": 12,
+   "rinnen": 38
+  },
+  {
+   "id": "beete_linie_1",
+   "typ": "Beete",
+   "bauteil": "ibc_beet",
+   "linie": 1,
+   "beete": 7,
+   "bemerkung": "Glockensiphon, 2 Flutzyklen je Stunde, Ablauf in die Sammelrinne [A: 7 von 14 Beeten]"
+  },
+  {
+   "id": "beete_linie_2",
+   "typ": "Beete",
+   "bauteil": "ibc_beet",
+   "linie": 2,
+   "beete": 7
+  },
+  {
+   "id": "ruecklauf_1",
+   "typ": "Sammler",
+   "bauteil": "lt_rohr",
+   "linie": 1,
+   "bemerkung": "Sammelrinne/Sammelrohr, Schwerkraft, Gefaelle >= 1 %, zum Pool"
+  },
+  {
+   "id": "ruecklauf_2",
+   "typ": "Sammler",
+   "bauteil": "lt_rohr",
+   "linie": 2
+  },
+  {
+   "id": "zweitbecken",
+   "typ": "Becken",
+   "bauteil": "zweitbecken",
+   "bemerkung": "Aufzucht, Wasserspiegel gleich dem Pool (Verbindungsrohr), Frischwasser per Schwimmerventil"
+  },
+  {
+   "id": "drittbecken",
+   "typ": "Becken",
+   "bauteil": "becken_dritt",
+   "bemerkung": "Quarantaene/Notbecken, eigener Biofilter und Belueftung (R27)"
+  },
+  {
+   "id": "biofilter_dritt",
+   "typ": "Filter",
+   "bauteil": null,
+   "status": "Empfehlung, nicht im Modell",
+   "bemerkung": "ca. 85 l Bioballs (Faustregel), R27"
+  },
+  {
+   "id": "belueftung",
+   "typ": "Luft",
+   "bauteil": "geblaese",
+   "bemerkung": "Seitenkanal-/Membrangeblaese im Schaltschrankbereich, Verteiler mit Ausstroemern in Pool, Biofilter, Absetzer, Drittbecken, Puffer"
+  },
+  {
+   "id": "schlammsammler",
+   "typ": "Behaelter",
+   "bauteil": null,
+   "status": "Platzhalter",
+   "bemerkung": "Auffang fuer Absetzer-Schlamm (Kompost/Beet, nicht in den Pool), Ort offen (Montage)"
+  },
+  {
+   "id": "frischwasser",
+   "typ": "Zulauf",
+   "bauteil": "zulaufrohr",
+   "bemerkung": "blaues Rohr von aussen, geht in den Puffer unten (Chlor entweicht 2 Tage), nicht direkt in den Pool"
+  },
+  {
+   "id": "pumpe_gross_1",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_gross",
+   "linie": 1,
+   "soll_l_min": 55,
+   "saug_d": 50,
+   "druck_d": 40,
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+  },
+  {
+   "id": "pumpe_klein_1",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_klein",
+   "linie": 1,
+   "soll_l_min": 12.5,
+   "saug_d": 40,
+   "druck_d": 32,
+   "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve"
+  },
+  {
+   "id": "pumpe_gross_2",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_gross",
+   "linie": 1,
+   "soll_l_min": 55,
+   "saug_d": 50,
+   "druck_d": 40,
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+  },
+  {
+   "id": "pumpe_klein_2",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_klein",
+   "linie": 1,
+   "soll_l_min": 12.5,
+   "saug_d": 40,
+   "druck_d": 32,
+   "bemerkung": "Reserve"
+  },
+  {
+   "id": "pumpe_gross_3",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_gross",
+   "linie": 2,
+   "soll_l_min": 55,
+   "saug_d": 50,
+   "druck_d": 40,
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+  },
+  {
+   "id": "pumpe_klein_3",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_klein",
+   "linie": 2,
+   "soll_l_min": 12.5,
+   "saug_d": 40,
+   "druck_d": 32,
+   "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve"
+  },
+  {
+   "id": "pumpe_gross_4",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_gross",
+   "linie": 2,
+   "soll_l_min": 55,
+   "saug_d": 50,
+   "druck_d": 40,
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+  },
+  {
+   "id": "pumpe_klein_4",
+   "typ": "Pumpe",
+   "bauteil": "pumpe_klein",
+   "linie": 2,
+   "soll_l_min": 12.5,
+   "saug_d": 40,
+   "druck_d": 32,
+   "bemerkung": "Reserve"
+  }
+ ],
+ "kanten": [
+  {
+   "id": "K01",
+   "von": "pool",
+   "nach": "pumpe_gross_1",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 48.75,
+   "quelle": "E",
+   "bemerkung": "Seitenablauf Pool (Skimmer/Auslass) zur Saugseite; Saugleitung <= 1,0 m/s",
+   "v_m_s": 0.53,
+   "hoehe": "Pool-Seitenablauf Z ca. 450, Saugpumpe unter Wasserspiegel"
+  },
+  {
+   "id": "K02",
+   "von": "pool",
+   "nach": "pumpe_gross_2",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 48.75,
+   "quelle": "E",
+   "bemerkung": "Seitenablauf Pool, zweite Pumpe der Linie",
+   "v_m_s": 0.53
+  },
+  {
+   "id": "K03",
+   "von": "pool",
+   "nach": "pumpe_klein_1",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Bodenablauf Pool (Mitte, feststoffreich), >= d50 empfohlen gegen Verstopfen: Bodenablauf d50 reduziert auf d40 an der Pumpe",
+   "v_m_s": 0.22,
+   "hoehe": "Poolboden Z -1685, Dual-Drain-Teilstrom 5-20 % (Davidson/Summerfelt)"
+  },
+  {
+   "id": "K04",
+   "von": "pumpe_klein_1",
+   "nach": "absetzer_1",
+   "medium": "Wasser",
+   "dn": 32,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Druckseite zum tangentialen Zulauf (Ø50 am Tank, Reduzierung d32/d50)",
+   "v_m_s": 0.34,
+   "hoehe": "Zulauf 250 mm unter Rand"
+  },
+  {
+   "id": "K05",
+   "von": "absetzer_1",
+   "nach": "feinfilter_1",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Feinfilter und weiter zur Saugseite der grossen Pumpen",
+   "v_m_s": 0.14
+  },
+  {
+   "id": "K06",
+   "von": "feinfilter_1",
+   "nach": "pumpe_gross_1",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie)",
+   "v_m_s": 0.14
+  },
+  {
+   "id": "K07",
+   "von": "absetzer_1",
+   "nach": "schlammsammler",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 0.5,
+   "quelle": "A",
+   "bemerkung": "Schlammablass Kugelhahn an der Kegelspitze, taeglich/woechentlich, Schlamm in Kompost/Beet (nicht in den Pool)",
+   "v_m_s": 0.01
+  },
+  {
+   "id": "K08",
+   "von": "pumpe_gross_1",
+   "nach": "biofilter_1",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 55,
+   "quelle": "E",
+   "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
+   "v_m_s": 0.95,
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+  },
+  {
+   "id": "K09",
+   "von": "pumpe_gross_2",
+   "nach": "biofilter_1",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 55,
+   "quelle": "E",
+   "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
+   "v_m_s": 0.95,
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+  },
+  {
+   "id": "K10",
+   "von": "biofilter_1",
+   "nach": "verteiler_1",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 110.0,
+   "quelle": "E",
+   "bemerkung": "Auslass Biofilter Ø50 (100 mm unter Rand) per Schwerkraft zum Verteiler; Biofilter liegt hoch (Spiegel ca. Z 1600) als Druckkopf fuer NFT (Z 1300) und Beete",
+   "v_m_s": 1.21,
+   "hoehe": "Tankspiegel ueber der hoechsten Rinne"
+  },
+  {
+   "id": "K11",
+   "von": "verteiler_1",
+   "nach": "beete_linie_1",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 54.5,
+   "quelle": "E",
+   "bemerkung": "Beete: Tropfrohr je Beet, mittlerer Bedarf bei 2 Zyklen/h; Spitze 5-8 min je Flutung (staffeln)",
+   "v_m_s": 0.94
+  },
+  {
+   "id": "K12",
+   "von": "verteiler_1",
+   "nach": "nft_linie_1",
+   "medium": "Wasser",
+   "dn": 32,
+   "soll_l_min": 38.0,
+   "quelle": "E",
+   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min)",
+   "v_m_s": 1.03
+  },
+  {
+   "id": "K13",
+   "von": "verteiler_1",
+   "nach": "ruecklauf_1",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 17.5,
+   "quelle": "E",
+   "bemerkung": "Ueberschuss/Bypass (Hauptkreislauf 110 minus Pflanzenbedarf 92,5) direkt zum Ruecklauf, Drossel am Verteiler",
+   "v_m_s": 0.19
+  },
+  {
+   "id": "K14",
+   "von": "beete_linie_1",
+   "nach": "ruecklauf_1",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 54.5,
+   "quelle": "E",
+   "bemerkung": "Glockensiphon-Ablauf; ACHTUNG Hoehenlage: Beetablauf liegt unter dem Pool-Wasserspiegel Z 515, Sump oder Pumpe noetig (Befund, Montage pruefen)",
+   "v_m_s": 0.94,
+   "hoehe": "offen"
+  },
+  {
+   "id": "K15",
+   "von": "nft_linie_1",
+   "nach": "ruecklauf_1",
+   "medium": "Wasser",
+   "dn": 63,
+   "soll_l_min": 38.0,
+   "quelle": "E",
+   "bemerkung": "Sammelrohr der Tische, Gefaelle 1,5 %",
+   "v_m_s": 0.26,
+   "hoehe": "Rinnenende Z ca. 1300 minus Gefaelle"
+  },
+  {
+   "id": "K16",
+   "von": "ruecklauf_1",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 110,
+   "soll_l_min": 110.0,
+   "quelle": "E",
+   "bemerkung": "Sammelrinne/Sammelrohr Schwerkraft (Gefaelle >= 1 %) in den Pool",
+   "v_m_s": 0.24,
+   "hoehe": "oberhalb Wasserspiegel Z 515"
+  },
+  {
+   "id": "K17",
+   "von": "pool",
+   "nach": "pumpe_gross_3",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 48.75,
+   "quelle": "E",
+   "bemerkung": "Seitenablauf Pool (Skimmer/Auslass) zur Saugseite; Saugleitung <= 1,0 m/s",
+   "v_m_s": 0.53,
+   "hoehe": "Pool-Seitenablauf Z ca. 450, Saugpumpe unter Wasserspiegel"
+  },
+  {
+   "id": "K18",
+   "von": "pool",
+   "nach": "pumpe_gross_4",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 48.75,
+   "quelle": "E",
+   "bemerkung": "Seitenablauf Pool, zweite Pumpe der Linie",
+   "v_m_s": 0.53
+  },
+  {
+   "id": "K19",
+   "von": "pool",
+   "nach": "pumpe_klein_3",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Bodenablauf Pool (Mitte, feststoffreich), >= d50 empfohlen gegen Verstopfen: Bodenablauf d50 reduziert auf d40 an der Pumpe",
+   "v_m_s": 0.22,
+   "hoehe": "Poolboden Z -1685, Dual-Drain-Teilstrom 5-20 % (Davidson/Summerfelt)"
+  },
+  {
+   "id": "K20",
+   "von": "pumpe_klein_3",
+   "nach": "absetzer_2",
+   "medium": "Wasser",
+   "dn": 32,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Druckseite zum tangentialen Zulauf (Ø50 am Tank, Reduzierung d32/d50)",
+   "v_m_s": 0.34,
+   "hoehe": "Zulauf 250 mm unter Rand"
+  },
+  {
+   "id": "K21",
+   "von": "absetzer_2",
+   "nach": "feinfilter_2",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Feinfilter und weiter zur Saugseite der grossen Pumpen",
+   "v_m_s": 0.14
+  },
+  {
+   "id": "K22",
+   "von": "feinfilter_2",
+   "nach": "pumpe_gross_3",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 12.5,
+   "quelle": "E",
+   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie)",
+   "v_m_s": 0.14
+  },
+  {
+   "id": "K23",
+   "von": "absetzer_2",
+   "nach": "schlammsammler",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 0.5,
+   "quelle": "A",
+   "bemerkung": "Schlammablass Kugelhahn an der Kegelspitze, taeglich/woechentlich, Schlamm in Kompost/Beet (nicht in den Pool)",
+   "v_m_s": 0.01
+  },
+  {
+   "id": "K24",
+   "von": "pumpe_gross_3",
+   "nach": "biofilter_2",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 55,
+   "quelle": "E",
+   "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
+   "v_m_s": 0.95,
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+  },
+  {
+   "id": "K25",
+   "von": "pumpe_gross_4",
+   "nach": "biofilter_2",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 55,
+   "quelle": "E",
+   "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
+   "v_m_s": 0.95,
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+  },
+  {
+   "id": "K26",
+   "von": "biofilter_2",
+   "nach": "verteiler_2",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 110.0,
+   "quelle": "E",
+   "bemerkung": "Auslass Biofilter Ø50 (100 mm unter Rand) per Schwerkraft zum Verteiler; Biofilter liegt hoch (Spiegel ca. Z 1600) als Druckkopf fuer NFT (Z 1300) und Beete",
+   "v_m_s": 1.21,
+   "hoehe": "Tankspiegel ueber der hoechsten Rinne"
+  },
+  {
+   "id": "K27",
+   "von": "verteiler_2",
+   "nach": "beete_linie_2",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 54.5,
+   "quelle": "E",
+   "bemerkung": "Beete: Tropfrohr je Beet, mittlerer Bedarf bei 2 Zyklen/h; Spitze 5-8 min je Flutung (staffeln)",
+   "v_m_s": 0.94
+  },
+  {
+   "id": "K28",
+   "von": "verteiler_2",
+   "nach": "nft_linie_2",
+   "medium": "Wasser",
+   "dn": 32,
+   "soll_l_min": 38.0,
+   "quelle": "E",
+   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min)",
+   "v_m_s": 1.03
+  },
+  {
+   "id": "K29",
+   "von": "verteiler_2",
+   "nach": "ruecklauf_2",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 17.5,
+   "quelle": "E",
+   "bemerkung": "Ueberschuss/Bypass (Hauptkreislauf 110 minus Pflanzenbedarf 92,5) direkt zum Ruecklauf, Drossel am Verteiler",
+   "v_m_s": 0.19
+  },
+  {
+   "id": "K30",
+   "von": "beete_linie_2",
+   "nach": "ruecklauf_2",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 54.5,
+   "quelle": "E",
+   "bemerkung": "Glockensiphon-Ablauf; ACHTUNG Hoehenlage: Beetablauf liegt unter dem Pool-Wasserspiegel Z 515, Sump oder Pumpe noetig (Befund, Montage pruefen)",
+   "v_m_s": 0.94,
+   "hoehe": "offen"
+  },
+  {
+   "id": "K31",
+   "von": "nft_linie_2",
+   "nach": "ruecklauf_2",
+   "medium": "Wasser",
+   "dn": 63,
+   "soll_l_min": 38.0,
+   "quelle": "E",
+   "bemerkung": "Sammelrohr der Tische, Gefaelle 1,5 %",
+   "v_m_s": 0.26,
+   "hoehe": "Rinnenende Z ca. 1300 minus Gefaelle"
+  },
+  {
+   "id": "K32",
+   "von": "ruecklauf_2",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 110,
+   "soll_l_min": 110.0,
+   "quelle": "E",
+   "bemerkung": "Sammelrinne/Sammelrohr Schwerkraft (Gefaelle >= 1 %) in den Pool",
+   "v_m_s": 0.24,
+   "hoehe": "oberhalb Wasserspiegel Z 515"
+  },
+  {
+   "id": "K33",
+   "von": "ruecklauf_1",
+   "nach": "zweitbecken",
+   "medium": "Wasser",
+   "dn": 50,
+   "soll_l_min": 5.0,
+   "quelle": "A",
+   "bemerkung": "Teilstrom zum Zweitbecken (Aufzucht), Wasserspiegel gleich dem Pool",
+   "v_m_s": 0.05
+  },
+  {
+   "id": "K34",
+   "von": "zweitbecken",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 63,
+   "soll_l_min": 5.0,
+   "quelle": "A",
+   "bemerkung": "Verbindungsrohr/Ueberlauf zum Pool",
+   "v_m_s": 0.03
+  },
+  {
+   "id": "K35",
+   "von": "verteiler_1",
+   "nach": "puffer_oben",
+   "medium": "Wasser",
+   "dn": 20,
+   "soll_l_min": 3.0,
+   "quelle": "A",
+   "bemerkung": "Messkreis 3 l/min zum Messtank oben (Pumpe noetig, Foerderhoehe ca. 3 m)",
+   "v_m_s": 0.25,
+   "hoehe": "Stapelhoehe <= 2,5 m"
+  },
+  {
+   "id": "K36",
+   "von": "puffer_oben",
+   "nach": "puffer_unten",
+   "medium": "Wasser",
+   "dn": 25,
+   "soll_l_min": 3.0,
+   "quelle": "A",
+   "bemerkung": "Schwerkraftablauf der oberen IBC in die untere",
+   "v_m_s": 0.14
+  },
+  {
+   "id": "K37",
+   "von": "puffer_unten",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 25,
+   "soll_l_min": 3.0,
+   "quelle": "A",
+   "bemerkung": "Rueckfluss des Messwassers zum Pool",
+   "v_m_s": 0.14
+  },
+  {
+   "id": "K38",
+   "von": "dosierkonsole",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 20,
+   "soll_l_min": 0.4,
+   "quelle": "E",
+   "bemerkung": "Dosierlinie Base/Eisen in die Sammelrinne oder den Pool (verduennt, langsam)",
+   "v_m_s": 0.03
+  },
+  {
+   "id": "K39",
+   "von": "frischwasser",
+   "nach": "puffer_unten",
+   "medium": "Wasser",
+   "dn": 25,
+   "soll_l_min": 10.0,
+   "quelle": "A",
+   "bemerkung": "Frischwasser entchlort stehen lassen (2 Tage), Schwimmerventil",
+   "v_m_s": 0.48
+  },
+  {
+   "id": "K40",
+   "von": "puffer_unten",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 20,
+   "soll_l_min": 0.5,
+   "quelle": "E",
+   "bemerkung": "Nachfuellung Wasserverlust ca. 0,68 m3/Tag im Mittel, mit Pumpe/Schwimmer",
+   "v_m_s": 0.04
+  },
+  {
+   "id": "K41",
+   "von": "puffer_unten",
+   "nach": "drittbecken",
+   "medium": "Wasser",
+   "dn": 20,
+   "soll_l_min": 2.0,
+   "quelle": "A",
+   "bemerkung": "Wasserwechsel Quarantaene aus dem Puffer",
+   "v_m_s": 0.17
+  },
+  {
+   "id": "K42",
+   "von": "drittbecken",
+   "nach": "biofilter_dritt",
+   "medium": "Wasser",
+   "dn": 25,
+   "soll_l_min": 10.0,
+   "quelle": "A",
+   "bemerkung": "kleiner Biofilter Quarantaene (Umlauf)",
+   "v_m_s": 0.48
+  },
+  {
+   "id": "K43",
+   "von": "biofilter_dritt",
+   "nach": "drittbecken",
+   "medium": "Wasser",
+   "dn": 25,
+   "soll_l_min": 10.0,
+   "quelle": "A",
+   "bemerkung": "Rueckfluss",
+   "v_m_s": 0.48
+  },
+  {
+   "id": "K44",
+   "von": "belueftung",
+   "nach": "pool",
+   "medium": "Luft",
+   "dn": 40,
+   "soll_l_min": 120,
+   "quelle": "A",
+   "bemerkung": "Ausstroemer Pool; Luftbedarf gesamt 90-180 l/min (E aus O2-Bedarf 1,7-3,0 kg/Tag, OTE 13 % [A]), Hauptleitung d40"
+  },
+  {
+   "id": "K45",
+   "von": "belueftung",
+   "nach": "biofilter_1",
+   "medium": "Luft",
+   "dn": 25,
+   "soll_l_min": null,
+   "quelle": "A",
+   "bemerkung": "Belueftung Biofilter 1 (Ø16 Anschluss im Deckel)"
+  },
+  {
+   "id": "K46",
+   "von": "belueftung",
+   "nach": "biofilter_2",
+   "medium": "Luft",
+   "dn": 25,
+   "soll_l_min": null,
+   "quelle": "A",
+   "bemerkung": "Belueftung Biofilter 2"
+  },
+  {
+   "id": "K47",
+   "von": "belueftung",
+   "nach": "absetzer_1",
+   "medium": "Luft",
+   "dn": 20,
+   "soll_l_min": null,
+   "quelle": "A",
+   "bemerkung": "optional"
+  },
+  {
+   "id": "K48",
+   "von": "belueftung",
+   "nach": "absetzer_2",
+   "medium": "Luft",
+   "dn": 20,
+   "soll_l_min": null,
+   "quelle": "A",
+   "bemerkung": "optional"
+  },
+  {
+   "id": "K49",
+   "von": "belueftung",
+   "nach": "drittbecken",
+   "medium": "Luft",
+   "dn": 20,
+   "soll_l_min": null,
+   "quelle": "A",
+   "bemerkung": "Belueftung Quarantaene (Notstrom!)"
+  },
+  {
+   "id": "K50",
+   "von": "belueftung",
+   "nach": "puffer_unten",
+   "medium": "Luft",
+   "dn": 20,
+   "soll_l_min": null,
+   "quelle": "A",
+   "bemerkung": "Dosierung/Frischwasser-Beluftung"
+  },
+  {
+   "id": "K51",
+   "von": "belueftung",
+   "nach": "zweitbecken",
+   "medium": "Luft",
+   "dn": 20,
+   "soll_l_min": null,
+   "quelle": "A",
+   "bemerkung": "Aufzucht"
+  }
+ ],
+ "kabel": [
+  {
+   "von": "schaltschrank",
+   "nach": "pumpe_gross_1..4",
+   "medium": "Strom",
+   "adern_stueck": 4,
+   "leistung_w": 72,
+   "bemerkung": "je 72 W (Wirkungsgrad 25 %), 230 V, 3 x 1,5 mm2",
+   "quelle": "E R21"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "pumpe_klein_1..4",
+   "medium": "Strom",
+   "adern_stueck": 4,
+   "leistung_w": 17,
+   "bemerkung": "je 17 W, zwei in Betrieb, zwei Reserve",
+   "quelle": "E R21"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "geblaese_fisch",
+   "medium": "Strom",
+   "adern_stueck": 1,
+   "leistung_w": 280,
+   "bemerkung": "Belueftung Fischwasser, UVI 0,59 W/kg; Reserve-Geblaese (D45 e)",
+   "quelle": "Q R22"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "geblaese_luftpolster",
+   "medium": "Strom",
+   "adern_stueck": 1,
+   "leistung_w": 80,
+   "bemerkung": "Gebläse Luftpolster Plane, 60-100 W",
+   "quelle": "A R24"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "puffer_station",
+   "medium": "Strom",
+   "adern_stueck": 1,
+   "leistung_w": 17,
+   "bemerkung": "Sonden (5 V Netzteil), Rechner, 2 Dosierpumpen 12 V, Messpumpe, Umpumpe",
+   "quelle": "E R27"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "steuerung_alarm",
+   "medium": "Strom",
+   "adern_stueck": 1,
+   "leistung_w": 40,
+   "bemerkung": "Steuerung, Alarm (Platzhalter), Notstrom-Batterie fuer Luftpumpe (FAO 589)",
+   "quelle": "A"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "heizung",
+   "medium": "Strom",
+   "adern_stueck": 1,
+   "leistung_w": null,
+   "bemerkung": "Heizung Platzhalter, 0,6-1,2 kW je Kelvin Differenz, Standort offen",
+   "quelle": "A R24"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "sonden_signal",
+   "medium": "Signal",
+   "adern_stueck": 3,
+   "leistung_w": null,
+   "bemerkung": "pH, EC, DO-Kreise zum Messrechner (isoliert, FAO/Atlas)",
+   "quelle": "Q R27"
+  }
+ ],
+ "bilanz_je_linie_l_min": {
+  "hauptkreislauf": 110.0,
+  "seitenablauf_pool": 97.5,
+  "absetzer_teilstrom": 12.5,
+  "beete_mittel": 54.5,
+  "nft": 38.0,
+  "bypass": 17.5
+ }
+}

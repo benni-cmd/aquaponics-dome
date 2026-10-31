@@ -1,0 +1,75 @@
+# Wunschbuch: alles, was Ben gewuenscht oder vorgegeben hat (Orchestrator, Stand 31.10.2026 17:30)
+
+**Problem:** Ben gibt ueber viele Nachrichten Wuensche und Vorgaben; einzeln gehen sie in langen Sitzungen verloren. Ben (31.10.): "behalte die gesamte restliche Dokumentation vollstaendig und im Blick und vergiss nichts, was ich dir in Nachrichten gegeben habe; das muss alles nacheinander abgearbeitet werden."
+**Intent:** Eine einzige, nachpruefbare Liste jedes Wunschs mit Quelle (Nachricht Nr. in Bens Verlauf dieser Sitzung, Datum), Status und Platz in der Abarbeitung. Der Orchestrator liest sie bei jedem Wiederanlauf und fuehrt sie bei jeder Abnahme nach.
+**Goal:** Kein Wunsch ohne Zeile; jede offene Zeile hat einen Auftrag in `docs/packages/reihenfolge-offene-wuensche.md` oder `docs/packages/bauanleitung-teileliste-detailansicht.md`.
+**Herkunft der Liste:** automatisch aus dem Sitzungsprotokoll gezogen (alle Nachrichten Bens ab 28.10.2026 20:17, 202 nach Filter, danach von Hand gelesen), nicht aus der Erinnerung. Befehl: `python -I ben_msgs.py` (Scratchpad der Orchestrator-Sitzung), Quelle `~/.claude/projects/C--Users-benkn-Claude-keel-harness/b929343a-3fc8-48fb-98d8-33a811bb78fe.jsonl`.
+**Statuscodes:** ERLEDIGT (im Repo belegt) · LAEUFT · GEPLANT (Auftrag/Zeile vorhanden) · DAUERHAFT (Regel, gilt immer) · PRUEFEN (Stand nicht sicher belegt) · ENTSCHEIDUNG (wartet auf Ben).
+
+## A. Modell, Standard und Technik
+| Nr | Wunsch (Kurzform, Bens Sinn) | Quelle | Status | Wo |
+|---|---|---|---|---|
+| W01 | Kuppel mit Aquaponik-System nachbauen, Teile sauber erkennen, in Schleifen verfeinern | #12 29.10. | ERLEDIGT bis Zwischencheck (Loop aus) | `designs/dome.sc`, D-Liste |
+| W02 | Grundflaeche genau 12 m Durchmesser als Massstab, Hoehe entsprechend | #21 | ERLEDIGT | layout.json, Radius 6000 |
+| W03 | Genormte deutsche Tuer | #22 | ERLEDIGT | `tuer_komplett`, D36 |
+| W04 | Wiederkehrende Elemente als EINE Definition, viele Instanzen; Aenderung einer Komponente aendert alle Klone | #32, #41 | DAUERHAFT, erfuellt | Komponenten + Instanzen |
+| W05 | Expertenstandard in allen Bereichen; maximale Detailtiefe; statisch, biologisch, technisch sinnvoll | #45, #50, #51 | DAUERHAFT | Arbeitsregel; Statik siehe W32/B9b |
+| W06 | Phase "reines Modell": Fischart, Standort, Betrieb, Preise ruhen, bis Ben etwas anderes sagt | #48 | DAUERHAFT | Standort/Folie bleiben ENTSCHEIDUNG |
+| W07 | Technisch logisch: wo Wasser fliesst, Filter, Pumpen, Verteiler, Schlaeuche | #37, #41 | GEPLANT (M10) | Reihenfolge Zeile 9 |
+| W08 | Kuppel ohne festen Boden, Skelett im Boden verankert, Rohre liegen auf der Erde oder sind erkennbar vergraben | #49 | GEPLANT (in M10-Plan aufnehmen) | M10 |
+| W09 | Verbindungsstuecke der Streben: einfachste, billigste, mit lokalen Ressourcen baubare Loesung (NGO, entfernte Regionen) | #37 | ERLEDIGT als Knotenkugel D100 mit Steckarmen und Querbolzen; Alternative Laschenknoten (Foto Chemnitz, #272) wird verglichen | D59, R41 |
+| W10 | Bauplan mit Farben, Materialien, Schlaeuche schoen liegend, schoene Renders | #41 | GEPLANT (nach Zwischencheck: Farben/Material/Render, ComfyUI-Schlussschritt) | Roadmap B10 / Render |
+| W11 | Filterarten einzeln verstehen und modellieren (Helix, Sediment, Vortex, Biofilter), Simulator pruefen | #41, #224, #230 | ERLEDIGT | R28, R30, D53, D55, `docs/filter-konzept.md` |
+| W12 | Staender unter den Filtern kleiner | #224 | ERLEDIGT | W30 (Plattform klein 619, gross 821) |
+| W13 | NFT: nur EINE Lochreihe je Rinne; aussen 4 Rohre; mehr Pflanzen | #60, #35, #201 | ERLEDIGT | W24, D43 (674 Toepfe) |
+| W14 | NFT-Tische ohne Kollision, passend zu den Beeten, Beete notfalls schmaler | #123, #160 | ERLEDIGT bis check_latte | D24, D25, D30, W33; check_latte steht aus (G) |
+| W15 | Standardbauteile (Pumpen usw.) online als fertige Modelle suchen | #126 | ERLEDIGT | R14 (Gewinn klein) |
+| W16 | Pflanzenzahl mindestens wie Bens Tabelle (609: Substrat >= 152, NFT >= 459), eher mehr | #159 | ERLEDIGT (Modell 674 Rinnen + 960 + 588 Beet-Toepfe) | system-specs, D52 |
+| W17 | Pflanzenarten-Modelle zuletzt, Bauteile/Technik/Schlaeuche haben Vorrang | #159 | DAUERHAFT (zurueckgestellt) | nach Zwischencheck |
+| W18 | Alles erreichbar, Laufwege nicht zu eng; NFT/Beete notfalls schmaler, nur praeziser platzieren | #160, #235 | LAEUFT (Karte Knie ok, Kopfscheibe 2 rote Engstellen Becken/Wand) | D54, D62, Montage |
+| W19 | Wachsende Beschreibung des Modells: was beruecksichtigt ist, was wir lernen, wie praezise | #161 | LAEUFT | `docs/model-description.md` (B14) |
+| W20 | Lochabstand verringern, mehr Toepfe | #173, #178 | ERLEDIGT | W18 (200 mm) |
+| W21 | Bauteilbeschreibungen mit Funktion, Neigung usw.; Kuppel-Specs bei keiner Auswahl; Strom, Pumpenleistung, Filterumsatz rechnerisch stimmig | #187-#189 | ERLEDIGT, laufend nachfuehren | `data/descriptions.json`, `system-specs.json` (B14) |
+| W22 | Nicht blind Tabelle/Simulator uebernehmen, eigene wissenschaftliche Recherche, Fischbesatz zur Tankgroesse; Fachrecherche-Sitzung | #191-#193 | ERLEDIGT / laufend | R17-R39 |
+| W23 | Huelle ist eine Plane, keine Paneele | #201 | ERLEDIGT | D39, 40 Felder (Montage, Build 53) |
+| W24 | Fisch 450-500 kg (mehr Pflanzen: 4 Rohre aussen, Suesskartoffeln dichter) | #201, #202 | **ENTSCHEIDUNG**: R36 ergibt bei Weg 1 nur 346 kg (308-385); ich habe D61 so gesetzt. Ben soll bestaetigen, dass 346 reicht, oder mehr Pflanzflaeche/Weg 2b will | R36, D61 |
+| W25 | Designer-Modell (.blend) als Massreferenz nutzen | #205 | ERLEDIGT | `reference/designer-glb-analysis.md` |
+| W26 | Drittes (kleineres) Becken platzieren | #213 | ERLEDIGT / angepasst | D46, D48, D49, D66 (0,4 m3) |
+| W27 | Puffertanks (2 IBC gestapelt) mit Messung und Naehrstoffausgleich, rechts neben der Tuer; Dosierkonsole | #213, #214 | ERSETZT durch kleinen Puffer im Dom (Bens Frage 31.10.): W34 LAEUFT | D46, D66 |
+| W28 | Menschenfigur 1,80 m an der Station und an der Gegenseite zwischen Mittel- und Aussenring, wenn moeglich arbeitend | #216 | ERLEDIGT | M9, W29 |
+| W29 | FPV-Knopf, UI weg, 1,80 m Person, Tuer ausgeblendet = fehlt auch im FPV | #219, #220 | ERLEDIGT (Hoehe 400+1680, `walk_z` Export e5fae0d) | V01 |
+| W30 | Danach komplette Schlaeuche/Rohre/Kabel logisch verlegen, Kollisionspruefung, dann Pause und Zwischencheck | #224 | GEPLANT | Reihenfolge Zeilen 9, 10 |
+| W31 | Tischhoehe der NFT-Tische begruenden; zu hoch? | #243, #245 | ERLEDIGT (1000 mm) | R35, W33, D60 |
+| W32 | Roadmap: Bauanleitung mit Teileliste und Funktionserklaerung; Detailansicht per Rechtsklick mit Explosion jedes Einzelteils; Teileliste; Klick auf Teil = Erklaerung; Standardprofile/Meterware, minimaler Verschnitt; Schrauben/Winkel einheitlich; lebensmittelechte Werkstoffe/Zertifizierung DE; Becken/Beete kaufen oder selbst bauen; Streben moeglichst einheitliche Laenge | #239 | GEPLANT (nach Zwischencheck) | B1-B10 (+ B11-B15) |
+| W33 | Plane muss transparent sein | #265 | ERLEDIGT im Viewer (dedad6a); CAD-Render zeigt Referenzflaeche | D63, B15 |
+| W34 | Puffer vielleicht nur 100-l-Faesser oder kleine transparente Optionen, alles in der Kuppel | #265 | R37 ERLEDIGT, W34 LAEUFT | D66 |
+| W35 | Plane im Bauplan mit moeglichst simplem Schnitt- und Nahtmuster | #266 | LAEUFT (R38) | D64, B11 |
+| W36 | Wichtige Kreislaufwerte an mehreren kritischen Stellen messen, Recherche, ins Modell | #267 | LAEUFT (R39), danach W35-Bauteile | D65, B12 |
+| W37 | Aufgaben in alle offenen Wuensche einreihen; Roadmap vollstaendig; nichts vergessen | #267, #271, #273 | ERLEDIGT / dauerhaft | dieses Buch, Reihenfolge-Paket |
+| W38 | Chemnitz-Verbindungsstueck (Foto) und Bericht des NGO-Forschers verstehen und einordnen | #272 | GEPLANT (R41) | D68, `reference/chemnitz/` |
+| W39 | Viewer: Gruppen mit Zahl, ein-/ausblendbar, Hover-/Klick-Leuchten durch andere Koerper | #174, #188 | ERLEDIGT; Hover-Bug (#188) PRUEFEN | Viewer |
+| W40 | ComfyUI-Workflow fuer photoreale Renders einrichten und nutzen | #4-#11, #28 | PRUEFEN (Stand nicht belegt) | dome-build.md |
+
+## B. Arbeitsweise, Sitzungen, Limit (alles DAUERHAFT, soweit nicht anders vermerkt)
+| Nr | Regel | Quelle | Stand |
+|---|---|---|---|
+| P01 | Orchestrator behaelt den Ueberblick, Werkstatt/Montage nur begrenzten Kontext; Subsessions bekommen konkrete Auftraege und lesen wenig | #105-#118, #206, #229 | umgesetzt (Jobblaetter) |
+| P02 | Kontext unter 50-70 %; Werkstatt erst nach sauber abgeschlossener Komponente leeren, Montage weicher | #105, #113 | umgesetzt |
+| P03 | Leere Sitzungen darf der Orchestrator selbst neu anstossen; vorher pruefen, ob sie arbeitet; Weck-Nachrichten (Praefix, <= 300 Zeichen) im sessionpost-guard | #115-#117 | umgesetzt, Guard-Ausnahme gebaut |
+| P04 | Bilder der Pruefungen in einem Ordner sammeln, Entwicklung sichtbar | #108 | umgesetzt (`renders/history/`) |
+| P05 | Limit: nicht bei 95 % aufhoeren, aber vorsichtiger; immer zwischenspeichern; nichts abbrechen; bei knappem Wochenlimit nur eine Sitzung; bei Reset sofort weiter | #28, #166, #170, #177, #178, #227, #257, #260 | umgesetzt |
+| P06 | Fragen der Subsessions logisch selbst beantworten, Ben nicht unnoetig fragen | #180, #184 | umgesetzt (Pruefung 31.10., D67) |
+| P07 | Entscheidungen wie empfohlen treffen und weitermachen | #211 | umgesetzt |
+| P08 | Zwischenstand-Zeile bei abgeschlossenen Schritten; gegliederte Stand-Aufzaehlung mit Besitzern beibehalten | #224, #230 | umgesetzt (Memory) |
+| P09 | Dokumentation pflegen, regelmaessig zwischenspeichern | #224 | umgesetzt (laufend, B14) |
+| P10 | Viewer auf Zuruf starten | #185, #204, #212, #234 | Server Port 4410 |
+| P11 | Loops aus | #195 | umgesetzt |
+| P12 | Nichts vergessen: dieses Buch bei jeder Abnahme nachfuehren | #273 | dauerhaft |
+
+## C. Offene Entscheidungen fuer Ben (alle ENTSCHEIDUNG, keine blockiert den naechsten Schritt)
+1. W24: Fischmenge 346 kg (R36, D61) akzeptieren oder 450-500 kg verlangen (dann mehr Pflanzflaeche, Weg 2b oder mehr Rinnen)?
+2. Technikvorbau entfaellt (D66); Puffer klein im Dom (0,16 m3) bestaetigen; Frischwasser: Aktivkohle oder Zisterne (Versorger fragen: Chlor/Chloramin).
+3. Drittbecken 0,4 m3 (Oe 0,8 m) bestaetigen.
+4. Standort, Folienart (Plane), Beschaffungsregion.
+5. V1 (zwei Strebenlaengen) oder V2c; Verbindungsstueck: Knotenkugel (heute) oder Laschenknoten (nach R41).
+6. Weg 2b fuer Fruchtgemuese in den Beeten (nur falls gewuenscht).

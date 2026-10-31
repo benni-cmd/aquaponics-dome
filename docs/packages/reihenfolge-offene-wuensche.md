@@ -46,3 +46,12 @@ Auf Nachfrage, ob alle spaeten Wuensche auf der Roadmap stehen: Puffer klein (W3
 | 17 | `puffer_klein` als Standardszenario in `scripts/system_specs.py` (heute nur zusaetzlich) nach Abnahme W34 | Fachrecherche | W34 |
 | 18 | Notstrom und Alarm konkretisieren (heute nur Platzhalter `steuerung_alarm`), hangt an Messstellen R39 | Fachrecherche + Werkstatt | R39 |
 | 19 | Sueesskartoffel-Licht belegen, NFT-Wuchsflaeche aus dem Modell messen (entscheidet 49,6 gegen 35,1 m2, +-80 kg Fisch) | Fachrecherche | nach Zwischencheck |
+
+## Nachtrag 31.10. 17:30 (D68): Wunschbuch und Verbindungsstueck
+Alle Wuensche Bens stehen jetzt in `docs/packages/wunschbuch-ben.md` (W01-W40, P01-P12). Neue Zeilen in der Abarbeitung:
+
+| # | Auftrag | Sitzung | Blatt | Wartet auf |
+|---|---|---|---|---|
+| 20 | R41 Laschen-Scheiben-Knoten (Foto Chemnitz) gegen Kugelknoten; Einordnung des Berichts | Fachrecherche (frisch) | jobs/R41 | startet, sobald eine der laufenden Recherchen (R38/R39) fertig ist (Limit) |
+| 21 | Bens Entscheidung zu 346 kg gegen 450-500 kg (W24) in den Zwischencheck aufnehmen | Orchestrator + Ben | wunschbuch C1 | Zwischencheck |
+| 22 | Wunschbuch bei jeder Abnahme nachfuehren; offene PRUEFEN-Zeilen klaeren (W39 Hover-Bug, W40 ComfyUI) | Orchestrator | wunschbuch | laufend |

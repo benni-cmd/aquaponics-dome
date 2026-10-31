@@ -317,7 +317,7 @@
    "dn": 50,
    "soll_l_min": 12.5,
    "quelle": "E",
-   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie)",
+   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie). Befund R30: Sieb sieht nur 11 % des Stroms (12,5 von 110 l/min); Empfehlung Sieb im Hauptstrom vor den grossen Pumpen und Gewebe <= 100 um (docs/filter-konzept.md Art 2), Entscheidung bei Montage M10/Werkstatt W31",
    "v_m_s": 0.14
   },
   {
@@ -502,7 +502,7 @@
    "dn": 50,
    "soll_l_min": 12.5,
    "quelle": "E",
-   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie)",
+   "bemerkung": "Klaerwasser des Absetzers mischt sich mit dem Seitenablauf vor den grossen Pumpen (Summe 110 l/min je Linie). Befund R30: Sieb sieht nur 11 % des Stroms (12,5 von 110 l/min); Empfehlung Sieb im Hauptstrom vor den grossen Pumpen und Gewebe <= 100 um (docs/filter-konzept.md Art 2), Entscheidung bei Montage M10/Werkstatt W31",
    "v_m_s": 0.14
   },
   {

@@ -226,7 +226,8 @@
         "Pflanzmix Beete (R26)": "Tomate 36 (9,0 m², 4/m²), Paprika 19 (5,5 m², 3,5/m²), Gurke 15 (5,0 m², 3/m², Rankhilfe), Süßkartoffel 62 (7,8 m², 8/m² [Annahme]); Futterbedarf 50–80 g/m²/Tag, 2,2 kg/Tag bei 80 g"
       },
       "grenzen": "Siphonmaße aus der Scope-Card, nicht gegen die fertige Datei gemessen; Topfraster der neuen Außenbeete rechnet die Montage (D34). Pflanzmix R26: Süßkartoffel in Aquaponik nicht belegt, Beettiefe 30 cm ist für Knollen die Untergrenze.",
-      "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md"
+      "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md",
+      "rolle": "Art 4 der Filterarten (docs/filter-konzept.md, R30): Substratbeet als zweiter Netz- und Biofilter. 8,2 m³ Medium (Brutto-Fläche 2255 m², Simulator zählt 25 % = 564 m²) tragen je nach Rate 68–330 % des Ammoniums; Faustregel 8,2 kg Futter/Tag, FAO-Tabelle 19–31. Ohne Sieb im Hauptstrom verstopft das Medium zuerst; Flutung staffeln (alle Beete zugleich = 0,28 m Absenkung im Pool)."
     },
     {
       "match": "^nft_tisch",
@@ -272,7 +273,8 @@
         "Pflanzmix NFT (R26)": "Salat 250, Mangold 100, Spinat 80, Basilikum 130, Petersilie 70, Kräuter 44 = 674 Töpfe (13,6 je m²); Blatt und Kräuter, keine Fruchtgemüse (FAO 589: Knollen und Kohl nur im Medienbett)"
       },
       "grenzen": "Rev. C ist noch ohne Spec-Prüfer-Lauf nach der letzten Änderung; endgültige Lage setzt die Montage (M7).",
-      "quelle": "docs/parts/nft_tisch.md, docs/research/R06.md, R16.md"
+      "quelle": "docs/parts/nft_tisch.md, docs/research/R06.md, R16.md",
+      "rolle": "Art 5 der Filterarten (docs/filter-konzept.md, R30): NFT ist Nährstoffsenke, kein Filter. 76 Rinnen × 1 l/min = 76 l/min; Futter-Äquivalent 50 g/m² × 49,6 m² = 2,5 kg/Tag (gut die Hälfte der 4,75 kg). Filmgeschwindigkeit 0,026 m/s, ca. 1 l Wasser je m Rinne. Feststoffe verstopfen die Rinne: Siebung davor (Art 2)."
     },
     {
       "match": "^nft_rinne",
@@ -377,7 +379,7 @@
       },
       "grenzen": "Rohrmaße und Kegelwinkel sind Annahmen mit niedriger Konfidenz (R09); Rolle nach D06.",
       "quelle": "docs/parts/tank.md, docs/research/R09.md",
-      "rolle": "Schritt 2 der Kette (docs/filter-konzept.md): Absetzer im Teilstrom. Bekommt über den Bodenablauf des Pools etwa 11 % des Stroms (12,5 l/min je Tank), trennt grobe Feststoffe ab und gibt klares Wasser vor den großen Pumpen ab; ein Feinfilter dahinter fehlt noch."
+      "rolle": "Art 1 der Filterarten (docs/filter-konzept.md, R30): Swirl-Absetzer im Bodenablauf-Teilstrom, 12,5 l/min je Tank = 11 % des Stroms. Oberflächenbelastung 2,1 m/h (Prüfanlage Davidson/Summerfelt: 11,2 m/h, 37 % Abscheidung, 23 % der Feststoffmasse). Erwartet ca. 0,33 kg Trockenmasse/Tag von 1,4 kg/Tag (31–38 l Schlamm/Tag beide Tanks). Wirkungsgrad bei unserer Größe offen; Schlamm wiegen."
     },
     {
       "match": "^tank_gross",
@@ -435,7 +437,7 @@
       },
       "grenzen": "Biomedium als ein Körper (Platzhalter), kein Einzelmedium.",
       "quelle": "docs/parts/tank.md",
-      "rolle": "Schritt 5 der Kette: Biofilter im Hauptstrom (110 l/min je Linie von den zwei großen Pumpen). Hier wandeln Bakterien Ammonium in Nitrat; der Auslass führt zum Verteiler, der Tank steht hoch als Druckkopf über den Rinnen. Die Substratbeete übernehmen den Rest des Ammoniums."
+      "rolle": "Art 3 der Filterarten (docs/filter-konzept.md, R30): Biofilter im Hauptstrom (110 l/min je Linie). Bedarf bei 178 g TAN/Tag: 169 m² (Simulator-Rate 1,06 g/m²/Tag), 312 m² (FAO 0,57), 829 m² (Messwert 0,215, Kinyage & Pedersen 2016). Korb 0,52 m³ Bio Balls (SSA 400) = 208 m². Empfehlung, Entscheidung Ben: lose Träger K1-Typ 0,94 m³ bei 67 % Füllung = 470 m²; den Simulator-Faktor 2,5 (1,06 m³ Bio Balls) nicht blind übernehmen. Substratbeete übernehmen den Rest."
     },
     {
       "match": "^feinfilter",
@@ -486,7 +488,7 @@
       },
       "grenzen": "Behältermaße sind Annahme (Blatt W31). Kein Notüberlauf bei verstopftem Korb. Höhenlage gegen den Absetzer-Auslass prüft die Montage (M10). Fabrikate von Gewebe, Spannverschlüssen und Kugelhahn offen.",
       "quelle": "docs/parts/feinfilter.md, docs/filter-konzept.md Schritt 3, data/leitungsnetz.json",
-      "rolle": "Schritt 3 der Kette (docs/filter-konzept.md): zwischen Absetzer und großen Pumpen; schützt Beete, Rinnen und Pumpen vor Schwebstoffen (FAO 589: ab 15 kg/m³ zusätzlicher mechanischer Filter, wir haben 17)."
+      "rolle": "Art 2 der Filterarten (docs/filter-konzept.md, R30): Sieb im Absetzer-Teilstrom (12,5 von 110 l/min = 11 %), Siebbelastung 1,6 m/h. Maschenweite 150 µm liegt über dem geprüften Bereich (Mortensen 2000: 30/60/100 µm = 99/48/21 % Schwebstoffe). Befund: 89 % des Wassers umgehen das Sieb; Empfehlung Gewebe ≤100 µm und Sieb im Hauptstrom (Werkstatt W31, Montage M10)."
     },
     {
       "match": "^pumpe",
@@ -742,7 +744,7 @@
       },
       "grenzen": "Messkreisdurchfluss, Dosierpumpen und Rechner sind Annahmen; der praktische Basenfaktor 0,5 stammt aus einer Zusammenfassung (Brune), der Kaliumbedarf der Pflanzen ist viel kleiner als die KOH-Menge, das Verhältnis Ca(OH)₂ zu KOH muss nach Messung eingestellt werden. Lage im Sektor rechts der Tür und Stapelabstand zu den Streben prüft die Montage (M8).",
       "quelle": "docs/research/R27.md, docs/decisions.md D46",
-      "rolle": "Schritt 10 der Kette: Seitenzweig am Verteiler (Messkreis 3 l/min), kein Teil des Hauptstroms; misst, dosiert Base und Eisen, hält Frischwasser und Notvorrat."
+      "rolle": "Arten 7 und 9 der Filterarten (docs/filter-konzept.md, R30): Seitenzweig am Verteiler (Messkreis 3 l/min), kein Teil des Hauptstroms. Alkalinität: Bedarf 1271 g CaCO₃/Tag theoretisch (7,14 g je g TAN), Dosierung ca. 0,6 kg/Tag Ca(OH)₂/KOH; Muschelschill nach Simulator nur 4–20 %, Asche 2 % des Bedarfs, also nur Notpuffer. Puffer 2,0 m³ = 5 % des Wassers, deckt 2,9 Tage Verlust; der Pool ist der Sumpf (Schwankung 5,7 cm/Tag)."
     },
     {
       "match": "^becken_dritt|^drittbecken|^pool_dritt|^pool3|^pool_3",

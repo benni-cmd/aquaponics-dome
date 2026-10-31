@@ -243,19 +243,19 @@
   "used_by": "gen_dome.py, place_m8.py"
  },
  "pool3_r": {
-  "value": 3350,
+  "value": 5050,
   "unit": "mm",
   "origin": "A",
-  "source": "D48: Drittbecken-Mitte, Radius im Modellrahmen (scripts/place_m8.py, groesster kleinster Abstand 434)",
+  "source": "D49: Drittbecken-Mitte, Radius im Modellrahmen (scripts/place_m8.py, groesster kleinster Abstand 197 mit Tanks/Pumpen als Hindernis; ersetzt D48)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py, place_m8.py"
  },
  "pool3_az": {
-  "value": -108,
+  "value": -58,
   "unit": "deg",
   "origin": "A",
-  "source": "D48: Drittbecken-Mitte, Azimut im Modellrahmen (Sektor neben der Tuer, Mittelring frei)",
+  "source": "D49: Drittbecken-Mitte, Azimut im Modellrahmen (Zwickel zwischen Tuer und Puffer-Station)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py, place_m8.py"
@@ -277,6 +277,33 @@
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py, place_m8.py"
+ },
+ "mensch_mes_x": {
+  "value": 1000,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D47/M9: Figur messen, Station-KS x (vor der Dosierkonsole x 800..1200)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "mensch_mes_y": {
+  "value": -1040,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D47/M9: Figur messen, Station-KS y (Fuss; Hand erreicht die Konsolenfront)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "mensch_arb_r": {
+  "value": 4000,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D47/M9: Figur arbeiten, Radius im Laufweg B bei Azimut Station + 180 (Hand knapp unter der Rinne, kein Tischkontakt)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
  },
  "walkway_min": {
   "value": 600,

@@ -54,7 +54,7 @@ def component_file(fname, cls, assembly, fn):
     os.remove(tmp)
     act(assembly); add("component.insert_design", path=out.replace("\\", "/"), name=cls)
 
-ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen"]
+ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen", "11_Referenz"]
 
 def act(name):
     """Baugruppe aktivieren: neue Koerper/Instanzen entstehen darin (Wurzel bleibt frei von losen Koerpern)."""
@@ -103,6 +103,15 @@ def puffer_station(fz):
     a = P["door_edge_az"] + 36.0; ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar))
     x, y = P["station_r"] * n[0] + P["station_s"] * t[0], P["station_r"] * n[1] + P["station_s"] * t[1]
     place_instances("Puffer_Station", os.path.join(ROOT, "designs", "components", "puffer_station.sc"), [(round(x, 1), round(y, 1), fz, a - 90.0)], "09_Technik")
+
+def mensch_referenz(fz):
+    """M9 (D47, W29): zwei Referenzfiguren 1,80 m (Fussmitte am Boden, Blick +Y). messen: vor der Dosierkonsole der Puffer-Station (Station-KS), Blick zur Konsole; arbeiten: Laufweg B, Azimut Station + 180, Blick nach aussen zum Aussentisch."""
+    a = P["door_edge_az"] + 36.0; ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar))
+    sx, sy = P["station_r"] * n[0] + P["station_s"] * t[0], P["station_r"] * n[1] + P["station_s"] * t[1]   # Station-KS: X = -t, Y = n
+    mx, my = sx - P["mensch_mes_x"] * t[0] + P["mensch_mes_y"] * n[0], sy - P["mensch_mes_x"] * t[1] + P["mensch_mes_y"] * n[1]
+    place_instances("Mensch_Referenz_messen", os.path.join(ROOT, "designs", "components", "mensch_referenz_messen.sc"), [(round(mx, 1), round(my, 1), fz, a - 90.0)], "11_Referenz")
+    wa = a + 180.0; wr = math.radians(wa)
+    place_instances("Mensch_Referenz_arbeiten", os.path.join(ROOT, "designs", "components", "mensch_referenz_arbeiten.sc"), [(round(P["mensch_arb_r"] * math.cos(wr), 1), round(P["mensch_arb_r"] * math.sin(wr), 1), fz, wa - 90.0)], "11_Referenz")
 
 def tuer_komplett(segs, base_z):
     """M3 (D36, W20): Werkstatt-Komponente tuer_komplett.sc (T50) als Instanz im Basisfeld BBB. Feld-KS der Komponente: Ursprung Mitte der Basiskante (Knoten 24 -> 22) auf Basisknotenhoehe,
@@ -353,7 +362,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); puffer_station(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); puffer_station(P["sock_h"]); mensch_referenz(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

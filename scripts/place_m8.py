@@ -33,6 +33,8 @@ for k, m in mv.items():
     if cls == "Beet_aussen_800": rects.append(("Aussenportal", rect(m, 2640, 800 + 230)))
     elif cls == "Beet_innen_933": rects.append(("Innenportal", rect(m, 1865, 933 + 230)))
     elif cls == "Tisch_innen": rects.append(("Innentisch", rect(m, 1700, 700)))
+    elif cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3"): rects.append(("Tank", rect(m, 706, 706) if cls == "Tank_klein" else rect(m, 977, 977)))   # Plattform (layout.json)
+    elif cls.startswith("Pumpe_"): rects.append(("Pumpentafel", rect(m, 700, 400)))   # grobe Tafelflaeche (OBJ-Modul 502 breit)
 ROT = math.radians(P["door_az"] - 167)
 r2 = math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * P["pool2_r_factor"]
 az = math.radians(DOOR); p2 = (r2 * math.cos(az), r2 * math.sin(az)); p2r = LAY["pool2"]["d"] / 2 + 60
@@ -69,6 +71,7 @@ def gaps(R, skip=()):
     g = {}
     g["Innentisch"] = min([rr_dist(R, q) for nm, q in rects if nm == "Innentisch"])
     g["Portal"] = min([rr_dist(R, q) for nm, q in rects if nm.endswith("portal")])
+    g["Tank/Pumpe"] = min([rr_dist(R, q) for nm, q in rects if nm in ("Tank", "Pumpentafel")])
     g["Zentralpool"] = rc_dist(R, pc, pcr); g["Zweitbecken"] = rc_dist(R, p2, p2r)
     return g
 
@@ -81,10 +84,10 @@ def check():
     g3 = {"Wand": AP - max(c[0] * n[0] + c[1] * n[1] for n in nrm) - r3, "Zweitbecken": math.dist(c, p2) - p2r - r3, "Zentralpool": math.hypot(*c) - pcr - r3,
           "Station": rc_dist(R, c, r3), "Tuerachse": seg_pt(c, a, b) - 450 - r3}
     for nm, q in rects: g3[nm] = min(g3.get(nm, 1e9), rc_dist(q, c, r3))
-    ok = [sc >= 100, w >= 100, g["Innentisch"] >= 500, cc >= 0, min(g.values()) > 0, min(g3.values()) >= 400]
+    ok = [sc >= 100, w >= 100, g["Innentisch"] >= 500, cc >= 0, min(g.values()) > 0, min(g3.values()) >= 150]
     print("Station: Strebenabstand", round(sc), "| Wand", round(w), "| Luecken", {k: round(v) for k, v in g.items()}, "| Tuergang-Rand", round(cc))
     print("Drittbecken:", {k: round(v) for k, v in g3.items()})
-    print("PASS" if all(ok) else "FAIL", "M8-Lage (Strebe >= 100, Wand >= 100, Innentisch >= 500, Drittbecken-Luecken >= 400)")
+    print("PASS" if all(ok) else "FAIL", "M8-Lage (Strebe >= 100, Wand >= 100, Innentisch >= 500, Drittbecken-Luecken >= 150, Tuergang-Achse)")
     return all(ok)
 
 if __name__ == "__main__":

@@ -655,6 +655,11 @@ def strip_shrink(width_mm, radius_mm):
     return 1.0 - math.cos(width_mm / (2.0 * radius_mm))
 
 
+def arc_excess(span_mm, sag_mm):
+    """Mehrlaenge einer parabelfoermig aufgewoelbten Lage gegen die Sehne: s - L = 8 h^2 / (3 L)"""
+    return 8.0 * sag_mm ** 2 / (3.0 * span_mm)
+
+
 def canon_frame(u):
     """Drehung/Verschiebung, die die laengste Kante der Strebenachsen-Kontur waagerecht an den Boden legt"""
     pts = u.outline; n = len(pts)
@@ -928,6 +933,8 @@ def main(argv):
     print("Knickwinkel der Falz-Streben der Rauten: %.1f bis %.1f Grad (180 = eben); Kugelradius %.0f mm" % (hinge_deg[0], hinge_deg[-1], R))
     for w in (2000, 3000, 4000, 6000):
         print("  parallele gerade Bahn %d mm breit auf R %.0f mm: Randverkuerzung %.1f %%" % (w, R, strip_shrink(w, R) * 100))
+    for L in (A_NOM, B_NOM):
+        print("  Aufwoelbung 50 mm je Lage auf %d mm Spannweite: %.1f mm Mehrlaenge (%.2f %%)" % (L, arc_excess(L, 50), arc_excess(L, 50) / L * 100))
     X = dict(single=single, rh=rh, gores=gores, tperm=tperm)
     print("Selbsttest:")
     ok = selftest(G, variants, X)

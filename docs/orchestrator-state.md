@@ -100,3 +100,4 @@
 - Offen fuer Ben: Standort/Folienart, Drittbecken-Mass und Rolle, Fruchtgemuese-Anteil.
 - Aufraeumen (ICH): docs/integration-board.md und docs/model-description.md auf Stand bringen (python scripts/build_model_description.py), alte Sitzungen local_26fd6822..., local_0de58930... archivieren (auf Bens Ja).
 - 31.10. 12:45: Reihenfolge (eine Sitzung gleichzeitig): Werkstatt-3 (W31 Feinfilter, W27 Plane) laeuft -> Fachrecherche R30 Filterarten (docs/jobs/R30-filterarten.md) -> Montage Innenbeete bepflanzen (D52), check_latte, M10 Plan -> M10 Leitungen -> check_latte -> PAUSE und Zwischencheck. Fortschritt zwischendurch melden (Ben).
+- 31.10. 15:00: Roadmap Bauanleitung/Teileliste/Detailansicht angelegt (`docs/packages/bauanleitung-teileliste-detailansicht.md`, D56, B1-B10, Recherche R31-R34); noch nichts begonnen, Start nach dem Zwischencheck (Empfehlung B9 Strebenkonzept und B4 Katalog).

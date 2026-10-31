@@ -376,7 +376,8 @@
         "Größe gegen Fischwasser": "alle vier Tanks 1,94 m³ = 7 % von 28,5 m³ (FAO 589: Absetzer + Biofilter 10–30 %)"
       },
       "grenzen": "Rohrmaße und Kegelwinkel sind Annahmen mit niedriger Konfidenz (R09); Rolle nach D06.",
-      "quelle": "docs/parts/tank.md, docs/research/R09.md"
+      "quelle": "docs/parts/tank.md, docs/research/R09.md",
+      "rolle": "Schritt 2 der Kette (docs/filter-konzept.md): Absetzer im Teilstrom. Bekommt über den Bodenablauf des Pools etwa 11 % des Stroms (12,5 l/min je Tank), trennt grobe Feststoffe ab und gibt klares Wasser vor den großen Pumpen ab; ein Feinfilter dahinter fehlt noch."
     },
     {
       "match": "^tank_gross",
@@ -433,7 +434,8 @@
         "Umsatz": "Medium 0,52 m³ gesamt → Faustregel 1,0 kg Futter/Tag (0,5 l je g, mit Reserve), FAO-Tabelle 3,1 und Losordo/DeLong 4,9 kg/Tag; Auslegung 4,75 kg/Tag, die Substratbeete übernehmen den Rest"
       },
       "grenzen": "Biomedium als ein Körper (Platzhalter), kein Einzelmedium.",
-      "quelle": "docs/parts/tank.md"
+      "quelle": "docs/parts/tank.md",
+      "rolle": "Schritt 5 der Kette: Biofilter im Hauptstrom (110 l/min je Linie von den zwei großen Pumpen). Hier wandeln Bakterien Ammonium in Nitrat; der Auslass führt zum Verteiler, der Tank steht hoch als Druckkopf über den Rinnen. Die Substratbeete übernehmen den Rest des Ammoniums."
     },
     {
       "match": "^pumpe",
@@ -473,7 +475,8 @@
         "Fischwasser-Umlauf": "28,5 m³ in ≈ 2,2 h bei 220 l/min; TAN-Durchfluss erfordert 165 l/min bei 4,75 kg Futter (372 l/min bei Bens 10,7 kg); 220 l/min tragen bis 6,3 kg Futter/Tag"
       },
       "grenzen": "Rollen nach Entscheidung D38 (vorläufig): Bens Tabelle nennt 2 Pumpen, das OBJ 4 Tafeln. Fabrikat und Pumpenkennlinie offen; Fischmenge und Pflanzfläche warten auf Bens Antwort zu den Fragen 1–6 (docs/research/aquaponik-empfehlung.md).",
-      "quelle": "docs/parts/pumpe.md, docs/research/R21.md, docs/decisions.md D38"
+      "quelle": "docs/parts/pumpe.md, docs/research/R21.md, docs/decisions.md D38",
+      "rolle": "Schritt 4 (groß, Hauptkreislauf 4 × 55 l/min) und Schritt 2 (klein, Absetzer-Teilstrom 4 × 12,5 l/min, je Tank eine in Betrieb) der Kette; die Netzliste data/leitungsnetz.json hält Anschlüsse Ø50/40 (groß) und Ø40/32 (klein)."
     },
     {
       "match": "^lt_",
@@ -687,7 +690,8 @@
         "Pumpe Messkreis": "3 l/min bei 3 m Förderhöhe ≈ 1,5 W hydraulisch, ≈ 6 W elektrisch"
       },
       "grenzen": "Messkreisdurchfluss, Dosierpumpen und Rechner sind Annahmen; der praktische Basenfaktor 0,5 stammt aus einer Zusammenfassung (Brune), der Kaliumbedarf der Pflanzen ist viel kleiner als die KOH-Menge, das Verhältnis Ca(OH)₂ zu KOH muss nach Messung eingestellt werden. Lage im Sektor rechts der Tür und Stapelabstand zu den Streben prüft die Montage (M8).",
-      "quelle": "docs/research/R27.md, docs/decisions.md D46"
+      "quelle": "docs/research/R27.md, docs/decisions.md D46",
+      "rolle": "Schritt 10 der Kette: Seitenzweig am Verteiler (Messkreis 3 l/min), kein Teil des Hauptstroms; misst, dosiert Base und Eisen, hält Frischwasser und Notvorrat."
     },
     {
       "match": "^becken_dritt|^drittbecken|^pool_dritt|^pool3|^pool_3",

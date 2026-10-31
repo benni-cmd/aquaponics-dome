@@ -1,0 +1,8 @@
+# W31 Feinfilter-Bauteil (R28-Befund 1, D51)
+Problem: Im Filterkonzept (`docs/filter-konzept.md`, Schritt 3) steht zwischen Absetzer und Biofilter ein Feinfilter. Im Modell fehlt er. Der Swirl-Absetzer entfernt nur etwa 23 % der Feststoffe, ohne Feinfilter verstopfen Beete, Rinnen und Pumpen.
+Ziel: EINE Komponente `feinfilter` (zwei Stueck, eine je Linie) als Siebkorb-/Netzfilter-Behaelter, der in die Kette Pumpe klein -> Absetzer -> Feinfilter -> Pumpen gross passt und zum Reinigen alle 1-2 Wochen erreichbar ist.
+Eingaben: `docs/filter-konzept.md` (Zeilen zu Schritt 3, Ampel 1), `data/leitungsnetz.json` (Knoten und Ports des Feinfilters), `docs/jobs/README.md`, cad-/detail-Standard, `data/components/leitungsteile.json` (Anschluesse). Nur diese Dateien lesen.
+Bauteil (Masse E/A kennzeichnen): Behaelter etwa Rechteck oder Zylinder 400 x 300 x 500 mm mit abnehmbarem Deckel (Schnellverschluss), herausnehmbarer Siebkorb (Edelstahl oder PP, Maschenweite ca. 100-200 Mikrometer als Hinweis im Blatt), Einlauf DN 50 oben seitlich, Auslauf DN 50 unten seitlich, Ablassstutzen DN 32 mit Kugelhahn zum Spuelen, Standfuss/Konsole (an der Tank-Plattform oder frei, wie die Netzliste es vorsieht).
+Schritte (einzeln committen): (1) `feinfilter.sc` mit Ports, (2) Blatt `docs/parts/feinfilter.md` (Q/E/A, Funktion in drei Saetzen), `check_feinfilter.py` (Masse, Ports, Interferenz), (3) Eintrag in `data/descriptions.json` (`match ^feinfilter`) und ein Render per `scripts/archive_render.py --role werkstatt`.
+Nicht anfassen: `dome.sc`, Layout, andere Komponenten. Kein Pruefer-Lauf (Selbstcheck).
+Ergebnis: Komponente, Blatt, Check, Bild, WIP-Commit je Schritt, Push, Zeile in `docs/workshop-state.md`.

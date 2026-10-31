@@ -35,7 +35,18 @@ DART_ALLOW = 25.0      # mm [A] Nahtzugabe je Seite an Abnaehern (Ueberlappnaht 
 WELD_OFF = 45.0        # mm [A] Lage der Umfangsnaht ausserhalb der Strebenachse (Kanalhalbbreite 12,5 + 32 mm Luft)
 SEAM_W = 15.0          # mm [Q Leister COMET 500: 2 x 15 mm Nahtbreite] Breite einer Schweissspur
 NODE_CLEAR = 130.0     # mm [Q docs/parts/keilschiene.md] Knotenfreiraum je Schienenende
-ROLL_WIDTHS = [4000.0, 6000.0, 8000.0, 10000.0, 12000.0]   # mm [Q Haga 4/6 m; Agtec 1,0-14,5 m; USGR 3,05-15,2 m]
+# Reale Lieferbreiten in mm (R42): Folitec Folisol clear AF 200 um (folitec.de, Breiten, Laenge nach Wunsch);
+# AGRIplus UV5 200 um (stretchfolie.eu / dm-folien.com: 3,2 / 4,5 / 6 / 8 / 10 / 12 m); Lirsa Tristar Long Life 200 um (norhage.de: 10 m)
+ROLL_PRODUCTS = {
+    "folisol_clear_af": [4500.0, 6000.0, 6500.0, 7500.0, 8000.0, 9000.0, 10000.0, 11000.0, 12000.0, 12500.0, 14300.0, 15000.0, 16000.0],
+    "agriplus_uv5": [3200.0, 4500.0, 6000.0, 8000.0, 10000.0, 12000.0],
+    "lirsa_tristar": [10000.0],
+}
+# Richtwerte netto in EUR je m2 [Q stretchfolie.eu: AGRIplus UV5 200 um Zuschnitt 1,62, ganze Rolle 10 x 25 m 179,50 EUR = 0,72;
+# norhage.de: Lirsa 10 m breit 17,80 EUR je Laufmeter = 1,78]; Folitec nennt keinen Preis (Anfrage)
+PRICE_EUR_M2 = {"folisol_clear_af": None, "agriplus_uv5": 1.62, "lirsa_tristar": 1.78}
+PRIMARY_PRODUCT = "folisol_clear_af"
+ROLL_WIDTHS = ROLL_PRODUCTS[PRIMARY_PRODUCT]
 CUT_GAP = 0.0          # mm Abstand zwischen Zuschnitten im Nesting (gemeinsame Schnittlinie)
 A_NOM, B_NOM = 3279.0, 3708.0
 DOOR_CUT = (1026.0, 2043.0)   # mm [Q huelle_folie.md] Planenausschnitt Tuerfeld
@@ -590,10 +601,32 @@ def best_roll(types, widths):
     return min(rows, key=lambda r: r["verschnitt"]) if rows else None, rows
 
 
-def nest_report(types, widths=ROLL_WIDTHS):
-    """(a) eine gemeinsame Rolle fuer alle Zuschnitt-Typen, (b) je Typ eine eigene Rolle; jeweils beste Standardbreite"""
+def best_sequential(types, widths):
+    """eine Rollenbreite, die Zuschnitt-Typen werden in getrennten Bahnen hintereinander auf dieselbe Rolle genestet"""
+    total = sum(abs(area2(p)) * n for _, p, n in types); rows = []
+    for W in widths:
+        parts = []
+        for t in types:
+            r = nest([t], W)
+            if r is None: break
+            parts.append(dict(typ=t[0], W=W, L=r["L"], flaeche=W * r["L"],
+                              verschnitt=1 - abs(area2(t[1])) * t[2] / (W * r["L"]), nest=r))
+        else:
+            L = sum(x["L"] for x in parts)
+            rows.append(dict(W=W, L=L, flaeche=W * L, verschnitt=1 - total / (W * L), rollen=parts, modus="nacheinander"))
+    return min(rows, key=lambda r: r["flaeche"]) if rows else None
+
+
+def nest_report(types, widths=None):
+    """(a) eine Rollenbreite fuer alle Typen (parallele Bahnen oder hintereinander), (b) je Typ eine eigene Rolle; beste Breite"""
+    widths = widths or ROLL_WIDTHS
     total = sum(abs(area2(p)) * n for _, p, n in types)
-    common, rows = best_roll(types, widths)
+    par, rows = best_roll(types, widths)
+    seq = best_sequential(types, widths)
+    common = par
+    if par is not None: par["modus"] = "parallel"
+    if seq is not None and (par is None or seq["flaeche"] < par["flaeche"] - 1.0):
+        common = seq
     sep = []
     for t in types:
         b, _ = best_roll([t], widths)
@@ -873,7 +906,10 @@ def selftest(G, variants, X):
         s_cls = sum(2 * nom[k] if c == "fuge" else (nom[k] if c == "rand" else 0) for k, c in v["cls"].items())
         chk("%s: Randkanten = 2 x Fugen + Fussrand" % v["id"], abs(s_out - s_cls) < 1e-6)
         b = v["nest"]
-        rolls = ([b["gemeinsam"]] if b["gemeinsam"] and not b["bester"].get("getrennt") else b["getrennt"]["rollen"])
+        if b["gemeinsam"] and not b["bester"].get("getrennt"):
+            g = b["gemeinsam"]; rolls = g["rollen"] if "rollen" in g else [g]
+        else:
+            rolls = b["getrennt"]["rollen"]
         for r in rolls:
             pl = placed(r["nest"]); bad = 0
             for i in range(len(pl)):
@@ -887,11 +923,50 @@ def selftest(G, variants, X):
 
 
 # ---- 10. Hauptrechnung -------------------------------------------------------------------------------------------------------
+def width_table(variants, widths):
+    """je Variante und Rollenbreite: passt ein Zuschnitt, Rollenlaenge je Lage, Verschnitt (eine Rollenbreite fuer alle Typen)"""
+    rows = {}
+    for v in variants:
+        if v["id"] not in ("V1", "V2", "V3"): continue
+        types = v["types"]; row = []
+        for W in widths:
+            if any(nest([t], W) is None for t in types):
+                row.append(dict(W=W, passt=False)); continue
+            r = nest_report(types, [W]); g = r["gemeinsam"]
+            row.append(dict(W=W, passt=True, L=g["L"], flaeche=g["flaeche"], verschnitt=g["verschnitt"], modus=g.get("modus", "parallel")))
+        rows[v["id"]] = row
+    return rows
+
+
+def product_table(variants):
+    """je Produkt und Variante: beste Rollenbreite, Rollenlaenge je Lage, Verschnitt, Folienbedarf beide Lagen, Preis-Richtwert"""
+    out = {}
+    for prod, widths in ROLL_PRODUCTS.items():
+        out[prod] = {}
+        for v in variants:
+            if v["id"] not in ("V1", "V2", "V3"): continue
+            if any(nest([t], max(widths)) is None for t in v["types"]):
+                out[prod][v["id"]] = None; continue
+            r = nest_report(v["types"], widths); b = r["bester"]
+            area = b["flaeche"] * 2 / 1e6
+            if b.get("getrennt"):
+                text = roll_text(r)
+            else:
+                text = "%.1f m breit, %.1f m je Lage" % (b["W"] / 1000, b["L"] / 1000)
+            price = PRICE_EUR_M2.get(prod)
+            out[prod][v["id"]] = dict(rolle=text, verschnitt=b["verschnitt"], flaeche_beide_lagen_m2=area,
+                                      preis_eur=(area * price if price else None))
+    return out
+
+
 def roll_text(nr):
     b = nr["bester"]
     if b.get("getrennt"):
-        return "; ".join("%s: %.0f m x %.1f m" % (r["typ"], r["W"] / 1000, r["L"] / 1000) for r in nr["getrennt"]["rollen"])
-    return "gemeinsam %.0f m x %.1f m" % (b["W"] / 1000, b["L"] / 1000)
+        return "; ".join("%s: %.1f m x %.1f m" % (r["typ"], r["W"] / 1000, r["L"] / 1000) for r in nr["getrennt"]["rollen"])
+    g = nr["gemeinsam"]
+    if "rollen" in g:
+        return "%.1f m breit, Bahnen hintereinander %s = %.1f m" % (g["W"] / 1000, " + ".join("%.1f" % (r["L"] / 1000) for r in g["rollen"]), g["L"] / 1000)
+    return "gemeinsam %.1f m x %.1f m" % (g["W"] / 1000, g["L"] / 1000)
 
 
 def main(argv):
@@ -924,6 +999,16 @@ def main(argv):
               "Schiene einfach %5.1f doppelt %6.1f m | Rollen %s Verschnitt %.1f %%"
               % (v["id"], v["name"], v["einheiten"], v["formen"], v["zuschnitt_typen"], v["naht_gesamt_m"], v["umfangsnaht_m"], v["abnaeher_m"],
                  v["t_kreuzungen"], v["ventile"], v["max_einheit_m2"], v["schiene_einfach_m"], v["schiene_doppel_m"], roll_text(v["nest"]), b["verschnitt"] * 100))
+    wt = width_table(variants, [3200.0, 4000.0, 4500.0, 6000.0, 7500.0, 8000.0, 10000.0, 12000.0, 12500.0])
+    print("Rollenbreiten (eine Breite fuer alle Zuschnitte; Verschnitt in %, - = Zuschnitt passt nicht):")
+    print("  %-4s" % "" + "".join("%8.1f" % (r["W"] / 1000) for r in wt["V1"]))
+    for vid, row in wt.items():
+        print("  %-4s" % vid + "".join(("%8.1f" % (r["verschnitt"] * 100)) if r["passt"] else "%8s" % "-" for r in row))
+    pt = product_table(variants)
+    for prod, d in pt.items():
+        for vid, x in d.items():
+            print("  Produkt %-17s %-3s %s" % (prod, vid, "passt nicht" if x is None else "%s, Verschnitt %.1f %%, %.0f m2 beide Lagen%s" % (
+                x["rolle"], x["verschnitt"] * 100, x["flaeche_beide_lagen_m2"], (", ca. %.0f EUR" % x["preis_eur"]) if x["preis_eur"] else "")))
     # Zusatzzahlen
     d = vertex_defects(G)
     dn = sorted({(x["valence"], round(x["defekt"], 1)) for x in d.values() if not x["rand"]})
@@ -940,7 +1025,7 @@ def main(argv):
     ok = selftest(G, variants, X)
     print("Selbsttest gesamt:", "bestanden" if ok else "FEHLER")
     if "--json" in argv or "--svg" in argv:
-        write_outputs(G, variants, X, argv, dict(defekte=dn, knick=(hinge_deg[0], hinge_deg[-1]), radius=R))
+        write_outputs(G, variants, X, argv, dict(defekte=dn, knick=(hinge_deg[0], hinge_deg[-1]), radius=R, breiten=wt, produkte=pt))
     return variants, G, X
 
 
@@ -974,6 +1059,10 @@ def write_outputs(G, variants, X, argv, extra):
         if nm["bester"].get("getrennt"):
             for r in nm["getrennt"]["rollen"]:
                 svg_nesting(rec, r, names, os.path.join(OUT_SVG, "nesting-%s-%s.svg" % (rec["id"].lower(), r["typ"].lower())), "%s - Nesting %s" % (rec["name"], names.get(r["typ"], r["typ"])))
+        elif "rollen" in nm["gemeinsam"]:
+            for r in nm["gemeinsam"]["rollen"]:
+                svg_nesting(rec, r, names, os.path.join(OUT_SVG, "nesting-%s-%s.svg" % (rec["id"].lower(), r["typ"].lower())),
+                            "%s - Nesting %s, Rolle %.1f m breit (Bahnen hintereinander)" % (rec["name"], names.get(r["typ"], r["typ"]), r["W"] / 1000))
         else:
             svg_nesting(rec, nm["gemeinsam"], names, os.path.join(OUT_SVG, "nesting-%s.svg" % rec["id"].lower()), "%s - Nesting auf gemeinsamer Rolle" % rec["name"])
         svg_feldplan(rec["units"], G, rec["cls"], os.path.join(OUT_SVG, "feldplan-%s.svg" % rec["id"].lower()), "%s - Feldplan (welches Kissen liegt wo)" % rec["name"])
@@ -983,7 +1072,7 @@ def write_outputs(G, variants, X, argv, extra):
             meta=dict(
                 auftrag="R38", stand="2026-10-31", skript="scripts/plane_nesting.py",
                 parameter=dict(ueberstand_mm=OVERSTAND, nahtzugabe_abnaeher_mm=DART_ALLOW, umfangsnaht_ausserhalb_achse_mm=WELD_OFF,
-                               nahtbreite_mm=SEAM_W, knotenfreiraum_mm=NODE_CLEAR, rollenbreiten_mm=ROLL_WIDTHS, empfohlen=RECOMMENDED),
+                               nahtbreite_mm=SEAM_W, knotenfreiraum_mm=NODE_CLEAR, rollenbreiten_mm=ROLL_WIDTHS, produkt=PRIMARY_PRODUCT, rollenprodukte_mm=ROLL_PRODUCTS, empfohlen=RECOMMENDED),
                 herkunft="Q = R24/huelle_folie.md/keilschiene.md; A = Annahme im Skript; Rollenbreiten laut docs/research/R38.md"),
             varianten=[dict(id=v["id"], name=v["name"], naht=v["gelenk"], einheiten=v["einheiten"], formen=v["formen"],
                             zuschnitt_typen=v["zuschnitt_typen"], zuschnitte_gesamt=v["zuschnitte_gesamt"],
@@ -999,6 +1088,13 @@ def write_outputs(G, variants, X, argv, extra):
                                                                                          flaeche_m2=round(v["nest"]["gemeinsam"]["flaeche"] / 1e6, 1),
                                                                                          verschnitt_prozent=round(v["nest"]["gemeinsam"]["verschnitt"] * 100, 1)))
                        for v in variants],
+            rollenbreiten_tabelle={vid: [dict(breite_mm=r["W"], passt=r["passt"], laenge_m=(round(r["L"] / 1000, 2) if r["passt"] else None),
+                                              verschnitt_prozent=(round(r["verschnitt"] * 100, 1) if r["passt"] else None)) for r in row]
+                                   for vid, row in extra["breiten"].items()},
+            produkte={prod: {vid: (None if x is None else dict(rolle=x["rolle"], verschnitt_prozent=round(x["verschnitt"] * 100, 1),
+                                                                 flaeche_beide_lagen_m2=round(x["flaeche_beide_lagen_m2"], 1),
+                                                                 preis_richtwert_eur=(round(x["preis_eur"]) if x["preis_eur"] else None)))
+                             for vid, x in d.items()} for prod, d in extra["produkte"].items()},
             geometrie=dict(netto_huelle_m2=round(sum(tri_area_nom(t, nom) for t in tris) / 1e6, 2), winkeldefekt_innere_knoten=extra["defekte"],
                            knick_falz_grad=[round(extra["knick"][0], 1), round(extra["knick"][1], 1)], kugelradius_mm=round(extra["radius"])),
             empfehlung=dict(variante=rec["id"], name=rec["name"], montage_reihenfolge=montage_order(rec["units"], G),

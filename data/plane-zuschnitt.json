@@ -10,12 +10,49 @@
    "nahtbreite_mm": 15.0,
    "knotenfreiraum_mm": 130.0,
    "rollenbreiten_mm": [
-    4000.0,
+    4500.0,
     6000.0,
+    6500.0,
+    7500.0,
     8000.0,
+    9000.0,
     10000.0,
-    12000.0
+    11000.0,
+    12000.0,
+    12500.0,
+    14300.0,
+    15000.0,
+    16000.0
    ],
+   "produkt": "folisol_clear_af",
+   "rollenprodukte_mm": {
+    "folisol_clear_af": [
+     4500.0,
+     6000.0,
+     6500.0,
+     7500.0,
+     8000.0,
+     9000.0,
+     10000.0,
+     11000.0,
+     12000.0,
+     12500.0,
+     14300.0,
+     15000.0,
+     16000.0
+    ],
+    "agriplus_uv5": [
+     3200.0,
+     4500.0,
+     6000.0,
+     8000.0,
+     10000.0,
+     12000.0
+    ],
+    "lirsa_tristar": [
+     10000.0
+    ]
+   },
    "empfohlen": "V2"
   },
   "herkunft": "Q = R24/huelle_folie.md/keilschiene.md; A = Annahme im Skript; Rollenbreiten laut docs/research/R38.md"
@@ -44,8 +81,8 @@
     "scharnier": 0,
     "abnaeher": 0
    },
-   "verschnitt_prozent": 11.0,
-   "rollen": "T1: 6 m x 32.7 m; T2: 4 m x 22.3 m",
+   "verschnitt_prozent": 9.7,
+   "rollen": "gemeinsam 12.5 m x 22.5 m",
    "rollenbedarf": [
     {
      "typ": "T1",
@@ -56,17 +93,17 @@
     },
     {
      "typ": "T2",
-     "breite_mm": 4000.0,
-     "laenge_m": 22.3,
-     "flaeche_m2": 89.2,
-     "verschnitt_prozent": 20.2
+     "breite_mm": 7500.0,
+     "laenge_m": 12.16,
+     "flaeche_m2": 91.2,
+     "verschnitt_prozent": 22.0
     }
    ],
    "gemeinsame_rolle": {
-    "breite_mm": 10000.0,
-    "laenge_m": 32.71,
-    "flaeche_m2": 327.1,
-    "verschnitt_prozent": 22.4
+    "breite_mm": 12500.0,
+    "laenge_m": 22.49,
+    "flaeche_m2": 281.1,
+    "verschnitt_prozent": 9.7
    }
   },
   {
@@ -92,29 +129,29 @@
     "scharnier": 20,
     "abnaeher": 0
    },
-   "verschnitt_prozent": 21.9,
-   "rollen": "gemeinsam 8 m x 38.2 m",
+   "verschnitt_prozent": 16.7,
+   "rollen": "gemeinsam 7.5 m x 38.2 m",
    "rollenbedarf": [
     {
      "typ": "T1",
-     "breite_mm": 4000.0,
-     "laenge_m": 36.68,
-     "flaeche_m2": 146.7,
-     "verschnitt_prozent": 21.8
+     "breite_mm": 7500.0,
+     "laenge_m": 19.06,
+     "flaeche_m2": 142.9,
+     "verschnitt_prozent": 19.7
     },
     {
      "typ": "T2",
-     "breite_mm": 4000.0,
-     "laenge_m": 38.22,
-     "flaeche_m2": 152.9,
-     "verschnitt_prozent": 18.8
+     "breite_mm": 7500.0,
+     "laenge_m": 19.8,
+     "flaeche_m2": 148.5,
+     "verschnitt_prozent": 16.4
     }
    ],
    "gemeinsame_rolle": {
-    "breite_mm": 8000.0,
+    "breite_mm": 7500.0,
     "laenge_m": 38.22,
-    "flaeche_m2": 305.8,
-    "verschnitt_prozent": 21.9
+    "flaeche_m2": 286.7,
+    "verschnitt_prozent": 16.7
    }
   },
   {
@@ -140,22 +177,22 @@
     "scharnier": 35,
     "abnaeher": 5
    },
-   "verschnitt_prozent": 30.4,
-   "rollen": "gemeinsam 10 m x 32.3 m",
+   "verschnitt_prozent": 28.9,
+   "rollen": "gemeinsam 7.5 m x 42.1 m",
    "rollenbedarf": [
     {
      "typ": "T1",
-     "breite_mm": 10000.0,
-     "laenge_m": 32.26,
-     "flaeche_m2": 322.6,
-     "verschnitt_prozent": 30.4
+     "breite_mm": 7500.0,
+     "laenge_m": 42.09,
+     "flaeche_m2": 315.7,
+     "verschnitt_prozent": 28.9
     }
    ],
    "gemeinsame_rolle": {
-    "breite_mm": 10000.0,
-    "laenge_m": 32.26,
-    "flaeche_m2": 322.6,
-    "verschnitt_prozent": 30.4
+    "breite_mm": 7500.0,
+    "laenge_m": 42.09,
+    "flaeche_m2": 315.7,
+    "verschnitt_prozent": 28.9
    }
   },
   {
@@ -181,8 +218,8 @@
     "scharnier": 0,
     "abnaeher": 0
    },
-   "verschnitt_prozent": 11.0,
-   "rollen": "T1: 6 m x 32.7 m; T2: 4 m x 22.3 m",
+   "verschnitt_prozent": 9.7,
+   "rollen": "gemeinsam 12.5 m x 22.5 m",
    "rollenbedarf": [
     {
      "typ": "T1",
@@ -193,17 +230,17 @@
     },
     {
      "typ": "T2",
-     "breite_mm": 4000.0,
-     "laenge_m": 22.3,
-     "flaeche_m2": 89.2,
-     "verschnitt_prozent": 20.2
+     "breite_mm": 7500.0,
+     "laenge_m": 12.16,
+     "flaeche_m2": 91.2,
+     "verschnitt_prozent": 22.0
     }
    ],
    "gemeinsame_rolle": {
-    "breite_mm": 10000.0,
-    "laenge_m": 32.71,
-    "flaeche_m2": 327.1,
-    "verschnitt_prozent": 22.4
+    "breite_mm": 12500.0,
+    "laenge_m": 22.49,
+    "flaeche_m2": 281.1,
+    "verschnitt_prozent": 9.7
    }
   },
   {
@@ -229,32 +266,264 @@
     "scharnier": 20,
     "abnaeher": 0
    },
-   "verschnitt_prozent": 21.9,
-   "rollen": "gemeinsam 8 m x 38.2 m",
+   "verschnitt_prozent": 16.7,
+   "rollen": "gemeinsam 7.5 m x 38.2 m",
    "rollenbedarf": [
     {
      "typ": "T1",
-     "breite_mm": 4000.0,
-     "laenge_m": 36.68,
-     "flaeche_m2": 146.7,
-     "verschnitt_prozent": 21.8
+     "breite_mm": 7500.0,
+     "laenge_m": 19.06,
+     "flaeche_m2": 142.9,
+     "verschnitt_prozent": 19.7
     },
     {
      "typ": "T2",
-     "breite_mm": 4000.0,
-     "laenge_m": 38.22,
-     "flaeche_m2": 152.9,
-     "verschnitt_prozent": 18.8
+     "breite_mm": 7500.0,
+     "laenge_m": 19.8,
+     "flaeche_m2": 148.5,
+     "verschnitt_prozent": 16.4
     }
    ],
    "gemeinsame_rolle": {
-    "breite_mm": 8000.0,
+    "breite_mm": 7500.0,
     "laenge_m": 38.22,
-    "flaeche_m2": 305.8,
-    "verschnitt_prozent": 21.9
+    "flaeche_m2": 286.7,
+    "verschnitt_prozent": 16.7
    }
   }
  ],
+ "rollenbreiten_tabelle": {
+  "V1": [
+   {
+    "breite_mm": 3200.0,
+    "passt": false,
+    "laenge_m": null,
+    "verschnitt_prozent": null
+   },
+   {
+    "breite_mm": 4000.0,
+    "passt": true,
+    "laenge_m": 78.83,
+    "verschnitt_prozent": 19.5
+   },
+   {
+    "breite_mm": 4500.0,
+    "passt": true,
+    "laenge_m": 78.83,
+    "verschnitt_prozent": 28.4
+   },
+   {
+    "breite_mm": 6000.0,
+    "passt": true,
+    "laenge_m": 55.01,
+    "verschnitt_prozent": 23.1
+   },
+   {
+    "breite_mm": 7500.0,
+    "passt": true,
+    "laenge_m": 41.08,
+    "verschnitt_prozent": 17.6
+   },
+   {
+    "breite_mm": 8000.0,
+    "passt": true,
+    "laenge_m": 41.08,
+    "verschnitt_prozent": 22.7
+   },
+   {
+    "breite_mm": 10000.0,
+    "passt": true,
+    "laenge_m": 32.71,
+    "verschnitt_prozent": 22.4
+   },
+   {
+    "breite_mm": 12000.0,
+    "passt": true,
+    "laenge_m": 28.54,
+    "verschnitt_prozent": 25.8
+   },
+   {
+    "breite_mm": 12500.0,
+    "passt": true,
+    "laenge_m": 22.49,
+    "verschnitt_prozent": 9.7
+   }
+  ],
+  "V2": [
+   {
+    "breite_mm": 3200.0,
+    "passt": false,
+    "laenge_m": null,
+    "verschnitt_prozent": null
+   },
+   {
+    "breite_mm": 4000.0,
+    "passt": true,
+    "laenge_m": 74.91,
+    "verschnitt_prozent": 20.3
+   },
+   {
+    "breite_mm": 4500.0,
+    "passt": true,
+    "laenge_m": 74.91,
+    "verschnitt_prozent": 29.1
+   },
+   {
+    "breite_mm": 6000.0,
+    "passt": true,
+    "laenge_m": 74.91,
+    "verschnitt_prozent": 46.9
+   },
+   {
+    "breite_mm": 7500.0,
+    "passt": true,
+    "laenge_m": 38.22,
+    "verschnitt_prozent": 16.7
+   },
+   {
+    "breite_mm": 8000.0,
+    "passt": true,
+    "laenge_m": 38.22,
+    "verschnitt_prozent": 21.9
+   },
+   {
+    "breite_mm": 10000.0,
+    "passt": true,
+    "laenge_m": 38.14,
+    "verschnitt_prozent": 37.4
+   },
+   {
+    "breite_mm": 12000.0,
+    "passt": true,
+    "laenge_m": 32.51,
+    "verschnitt_prozent": 38.8
+   },
+   {
+    "breite_mm": 12500.0,
+    "passt": true,
+    "laenge_m": 32.51,
+    "verschnitt_prozent": 41.2
+   }
+  ],
+  "V3": [
+   {
+    "breite_mm": 3200.0,
+    "passt": false,
+    "laenge_m": null,
+    "verschnitt_prozent": null
+   },
+   {
+    "breite_mm": 4000.0,
+    "passt": false,
+    "laenge_m": null,
+    "verschnitt_prozent": null
+   },
+   {
+    "breite_mm": 4500.0,
+    "passt": false,
+    "laenge_m": null,
+    "verschnitt_prozent": null
+   },
+   {
+    "breite_mm": 6000.0,
+    "passt": false,
+    "laenge_m": null,
+    "verschnitt_prozent": null
+   },
+   {
+    "breite_mm": 7500.0,
+    "passt": true,
+    "laenge_m": 42.09,
+    "verschnitt_prozent": 28.9
+   },
+   {
+    "breite_mm": 8000.0,
+    "passt": true,
+    "laenge_m": 42.09,
+    "verschnitt_prozent": 33.3
+   },
+   {
+    "breite_mm": 10000.0,
+    "passt": true,
+    "laenge_m": 32.26,
+    "verschnitt_prozent": 30.4
+   },
+   {
+    "breite_mm": 12000.0,
+    "passt": true,
+    "laenge_m": 32.26,
+    "verschnitt_prozent": 42.0
+   },
+   {
+    "breite_mm": 12500.0,
+    "passt": true,
+    "laenge_m": 32.26,
+    "verschnitt_prozent": 44.3
+   }
+  ]
+ },
+ "produkte": {
+  "folisol_clear_af": {
+   "V1": {
+    "rolle": "12.5 m breit, 22.5 m je Lage",
+    "verschnitt_prozent": 9.7,
+    "flaeche_beide_lagen_m2": 562.2,
+    "preis_richtwert_eur": null
+   },
+   "V2": {
+    "rolle": "7.5 m breit, 38.2 m je Lage",
+    "verschnitt_prozent": 16.7,
+    "flaeche_beide_lagen_m2": 573.4,
+    "preis_richtwert_eur": null
+   },
+   "V3": {
+    "rolle": "7.5 m breit, 42.1 m je Lage",
+    "verschnitt_prozent": 28.9,
+    "flaeche_beide_lagen_m2": 631.4,
+    "preis_richtwert_eur": null
+   }
+  },
+  "agriplus_uv5": {
+   "V1": {
+    "rolle": "T1: 6.0 m x 32.7 m; T2: 8.0 m x 12.2 m",
+    "verschnitt_prozent": 13.5,
+    "flaeche_beide_lagen_m2": 587.1,
+    "preis_richtwert_eur": 951
+   },
+   "V2": {
+    "rolle": "8.0 m breit, 38.2 m je Lage",
+    "verschnitt_prozent": 21.9,
+    "flaeche_beide_lagen_m2": 611.6,
+    "preis_richtwert_eur": 991
+   },
+   "V3": {
+    "rolle": "10.0 m breit, 32.3 m je Lage",
+    "verschnitt_prozent": 30.4,
+    "flaeche_beide_lagen_m2": 645.2,
+    "preis_richtwert_eur": 1045
+   }
+  },
+  "lirsa_tristar": {
+   "V1": {
+    "rolle": "10.0 m breit, 32.7 m je Lage",
+    "verschnitt_prozent": 22.4,
+    "flaeche_beide_lagen_m2": 654.2,
+    "preis_richtwert_eur": 1165
+   },
+   "V2": {
+    "rolle": "10.0 m breit, 38.1 m je Lage",
+    "verschnitt_prozent": 37.4,
+    "flaeche_beide_lagen_m2": 762.8,
+    "preis_richtwert_eur": 1358
+   },
+   "V3": {
+    "rolle": "10.0 m breit, 32.3 m je Lage",
+    "verschnitt_prozent": 30.4,
+    "flaeche_beide_lagen_m2": 645.2,
+    "preis_richtwert_eur": 1149
+   }
+  }
+ },
  "geometrie": {
   "netto_huelle_m2": 209.96,
   "winkeldefekt_innere_knoten": [

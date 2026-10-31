@@ -2058,5 +2058,25 @@
   "note": "W31 Feinfilter T55",
   "commit": "ec3b0fe",
   "source": "renders/components/feinfilter/feinfilter-05-schnitt.png"
+ },
+ {
+  "file": "20261031-123112_werkstatt_keilschiene_keilschiene-01-iso.png",
+  "sha": "8e7a431bc8b9bd78",
+  "time": "2026-10-31 12:31:12",
+  "role": "werkstatt",
+  "subject": "keilschiene",
+  "note": "W27 Keilschiene T43",
+  "commit": "30739a1",
+  "source": "renders/components/keilschiene/keilschiene-01-iso.png"
+ },
+ {
+  "file": "20261031-123112_werkstatt_keilschiene_keilschiene-02-querschnitt.png",
+  "sha": "040d719898ffa3fb",
+  "time": "2026-10-31 12:31:12",
+  "role": "werkstatt",
+  "subject": "keilschiene",
+  "note": "W27 Keilschiene T43",
+  "commit": "30739a1",
+  "source": "renders/components/keilschiene/keilschiene-02-querschnitt.png"
  }
 ]

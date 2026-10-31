@@ -1,0 +1,22 @@
+PASS huelle: Strebenzahl laut layout.json = 65 = Anzahl Keilschienen: Ist 65, Soll 65
+PASS huelle: Typ A: len = Knotenabstand A - 2 x Knotenfreiraum: Ist 3019, Soll 3019 (+-1)
+PASS huelle: Typ B: len = Knotenabstand B - 2 x Knotenfreiraum: Ist 3448, Soll 3448 (+-1)
+PASS huelle: Gesamtlaenge Schienen in m (R24: ca. 228 m Knotenabstand, hier minus Freiraeume): Ist 211.25, Soll 211.25 (+-0.5)
+PASS huelle: Gesamtlaenge gegen R24 (228 m) in Prozent Abweichung <= 8 %: Ist 1, Soll 1
+PASS huelle: Kanal Laenge (Konfiguration A): Ist 3019, Soll 3019 (+-0.05)
+PASS huelle: Kanal Breite 25: Ist 25, Soll 25 (+-0.05)
+PASS huelle: Kanal Hoehe 15: Ist 15, Soll 15 (+-0.05)
+PASS huelle: Kanal Volumen = Profilflaeche (w*t + 2*t*(h-t) + 2*(lip-t)*t) x Laenge: Ist 258124, Soll 258124 (+-20)
+PASS huelle: Kanal Unterkante liegt auf dem Schaumband (z = 3): Ist 3, Soll 3 (+-0.01)
+PASS huelle: Schaumband 25 x 3 x len: Ist 226425, Soll 226425 (+-20)
+PASS huelle: Schaumband Unterkante z = 0 (Bezug): Ist 0, Soll 0 (+-0.01)
+PASS huelle: Federdraht Durchmesser 2: Ist 2, Soll 2 (+-0.02)
+PASS huelle: Federdraht Laenge = len - 2 x 20: Ist 2979, Soll 2979 (+-0.05)
+PASS huelle: Federdraht ist eigener Koerper: Ist 1, Soll 1
+PASS huelle: Federdraht liegt im Kanal (Luft zum Grund 0,5 mm): Ist 0.5, Soll 0.5 (+-0.01)
+PASS huelle: Federdraht unter den Lippen (Oberkante < Lippen-Unterkante, Maul 17 mm > Draht): Ist 1, Soll 1
+PASS huelle: Masse Kanal Typ A in kg (Dichte 2,7): Ist 0.696936, Soll 0.696936 (+-0.002)
+PASS huelle: Konfiguration B: Kanal Laenge: Ist 3448, Soll 3448 (+-0.05)
+PASS huelle: Konfiguration B: Federdraht Laenge: Ist 3408, Soll 3408 (+-0.05)
+PASS huelle: Interferenzen Keilschiene (Schaumband, Kanal, Federdraht): Ist 0, Soll 0
+== huelle: 21/21 PASS

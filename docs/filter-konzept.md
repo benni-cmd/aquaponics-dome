@@ -31,6 +31,25 @@ Für Ben und seinen Kollegen: Was macht welcher Filter, in welcher Reihenfolge f
 | ⚠ 4 | **Entgasung/CO₂** nur über die Belüftung, kein eigener Entgasungsschritt wie im UVI-Aufbau. Bei 17 kg/m³ meist unkritisch, bei Spitzenlast prüfen (SRAC 451: freies CO₂ niedrig halten). | Messen (pH, später CO₂); kein Umbau nötig |
 | ⚠ 5 | **Absetzerhöhe**: Absetzer und Biofilter liegen über dem Pool, die Pumpen müssen sie füllen; fällt die Pumpe aus, läuft nichts zurück (Rückschlagventile, Siphonbrecher). | Ventile in der Netzliste vorgesehen (Montage) |
 
+## Die neun Filterarten einzeln (R30, D53, 31.10.2026)
+Jede Art hat ihr eigenes Blatt: Zweck · Funktion in drei Sätzen · Auslegungsrechnung (Q Quelle, E eigene Rechnung, A Annahme) · Modellbauteil · Grenzen · Simulator-Katalogwert · eigene Ampel Modell gegen Konzept. Die Ampel einer Art sagt nichts über die anderen. Grundlage: TAN 178 g/Tag, Futter 4,75 kg/Tag, Feststoffe ca. 1,4 kg Trockenmasse/Tag (0,3 kg je kg Futter [Q Fort Valley State; Q Chowdhury u. a. 2013 ca. 0,33, über Suchzusammenfassung; Spanne 0,2–0,5 nach Chen u. a. 1997]). Ergebnis in Kurzform: siehe Tabelle am Ende dieses Kapitels.
+
+### Art 1 – Swirl-/Vortex-Absetzer (`tank_klein` ×2)
+- **Zweck:** Grobe, schwere Feststoffe (Kot, Futterbrocken über ca. 100 µm) aus dem Bodenablauf-Teilstrom abtrennen, bevor sie zerfallen und Ammonium bilden.
+- **Funktion in drei Sätzen:** Das Wasser tritt tangential ein und kreist; schwere Teilchen sinken durch die Schwerkraft zur Kegelspitze, die Drehung hält sie nur zusammen und im Ruhebereich. Das geklärte Wasser steigt im Leitrohr auf und läuft ab. Die Abscheidung hängt nach Davidson/Summerfelt vor allem von der Oberflächenbelastung (Durchfluss ÷ Beckenfläche) und der Sinkgeschwindigkeit der Teilchen ab, nicht vom Drall.
+- **Auslegungsrechnung:**
+  - Beckenfläche Ø0,673 m: 0,356 m² (abzüglich Leitrohr 0,346 m²); Teilstrom 12,5 l/min = 0,75 m³/h → Oberflächenbelastung **2,1 m/h** (0,00059 m/s) [E].
+  - Vergleich: Die Prüfanlage von Davidson/Summerfelt (2005) fuhr Swirl und Radial-Flow-Absetzer mit **0,0031 m³/s je m² = 11,2 m/h** und erreichte 37,1 % Abscheidung der Schwebstoffe (Swirl) gegen 77,9 % (Radial-Flow); der Swirl nahm ca. 23 % der täglichen Feststoffmasse [Q Davidson & Summerfelt 2005, gelesen über Global Seafood Advocate]. Unsere Belastung liegt **5,3-mal niedriger** [E] – günstig, aber ein Prozentwert für unsere Größe ist daraus nicht ableitbar.
+  - Verweilzeit 21 min bei 12,5 l/min [E]; UVI-Klärer ca. 20 min [Q SRAC 454]. Beide sind Absetzzeiten für Klärer, nicht für Swirl-Abscheider; das Maß für den Swirl ist die Oberflächenbelastung.
+  - Feststoffmenge: 1,4 kg/Tag; bei 23 % im Swirl ≈ **0,33 kg/Tag** im Absetzer, **1,1 kg/Tag** laufen weiter [E]. Frischer Schlamm hat nur 8,6–10,8 g Trockenmasse/l [Q Goddek u. a. 2018, Tab. 2] → 31–38 l Schlamm/Tag aus beiden Absetzern zusammen.
+  - Zweite Stütze für die Grenze: Absetzbecken für >100 µm erreichen 40–60 % TSS-Abscheidung [Q niederländisches Tilapia-RAS-Handbuch nach Timmons & Ebeling 2010, Suchzusammenfassung]; ein Patenttext nennt in der Praxis selten mehr als 70 % [niedrige Qualität].
+- **Modellbauteil:** `tank_klein` ×2, Pumpen `pumpe_klein` (je Linie 1 in Betrieb, 1 Reserve), Schlammablass Kugelhahn (Netz K07).
+- **Grenzen:** Swirl-Abscheider sind für dichte Teilchen wie Sand gebaut; Kot und Futter sind kaum schwerer als Wasser (Davidson/Summerfelt). Wirkungsgrad bei unserer Größe nicht gemessen. Kein Zulauf-Dämpfer gegen Turbulenz im Modell. Radial-Flow-Absetzer arbeiteten in derselben Studie doppelt so gut.
+- **Simulator-Katalog:** `vortex_filter`: 305 €, `capacity_m3` 10, 0 W, `f_split` 0,05; Formel „Mechanische Feststoff-Separation“: `Q_feinschlamm = Q_req × f_split` (nur ein Anteil, kein Abscheidegrad, keine Verweilzeit).
+- **Ampel Modell gegen Konzept:** ✔ Oberflächenbelastung weit unter dem Prüfwert (2,1 gegen 11,2 m/h), Teilstrom-Prinzip nach Dual-Drain stimmig. ⚠ Wirkungsgrad offen (23–37 % gelten für die Prüfanlage); Empfehlung: Schlammmenge nach der ersten Betriebswoche wiegen und mit 0,33 kg/Tag vergleichen; Zulaufdämpfer als Variante der Werkstatt melden.
+
+<!-- R30-ENDE -->
+
 ## Was zeigt der Simulator je Filter und was übernehmen wir
 Gelesen wurde die Seite https://showcase-oasis-simulator.vercel.app/ui-prototype/ im Browser-Pane (JavaScript rendert, `SystemCatalog.json` und `Formulas.json` aus dem Netzwerkverkehr gelesen, 155 Formeln).
 - **Kette im Simulator:** Haupt-Fischtank → **Vortex-Vorfilter** → **Fleece-Filter** (Feinfilter) → **Biofilter K1 (MBBR, belüftet)** → **Sumpf** → **Verteiler** (je Ring) → Beete/NFT; dazu Zuchtbecken, Mineralisationstank, Muschelschill- und Aschefilter (Alkalinitäts-Puffer), Heizstab, Sensoren. Die Reihenfolge ist aus den Katalogtexten abgeleitet (die Seite zeigt keinen Flussplan); im Prinzip ist es dieselbe Kette wie unsere.

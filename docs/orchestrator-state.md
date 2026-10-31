@@ -91,3 +91,12 @@
 - Entschieden: D36 Tuer Feld BBB 149,2; D37 Haut edge_inset 0 (jetzt Variante); D38 pumpe_gross = Hauptkreislauf, pumpe_klein = Absetzer; D39 Huelle = Plane; D40 Fischmenge 475 kg (450-500).
 - Laufend/offen: Montage M7 (dann M3 Tuer, M4/M5; Haut ruht), Werkstatt W23 Pruefer W17/W18 -> W24 Aussentisch 4 Rinnen -> W25 Pumpen-Blatt, Fachrecherche R25 (Kennzahlen/Plane). Danach Orchestrator: Viewer-Uebersicht (Heizung, Huelle, Szenario) anpassen, Plane-Bauteile fuer Werkstatt (huelle_folie, keilschiene) nach Bens Entscheidung zu Folie/Standort.
 - Ben offen: Standort + Folienart, Fruchtgemuese-Anteil im Pflanzmix. Loops bleiben aus.
+
+## 31.10. ~03:30 Stand (Orchestrator), Limit fast voll (5h 92 %, Woche 23 %)
+- Ben: alles sauber speichern, nur EINE Sitzung gleichzeitig, laufende Aufgaben nicht abbrechen. Stopp-Nachrichten an Fachrecherche (R28 laeuft) und Montage (Messung M8/M9 laeuft) gesendet; Werkstatt ist idle (W30 wartet).
+- Entschieden seit 30.10.: D36-D50 (Tuer BBB 149,2; Haut-Variante; Pumpen; Huelle = Plane; Auslegung 475 kg; aussen4 674 Toepfe; Innenbeet-Fase; Drittbecken + Puffer-Station; Menschenfiguren; FPV; Filter/Stands/Leitungen-Reihenfolge).
+- ERLEDIGT+gepusht: W20-W26, W28, W29, M3 Tuer, M8 (Drittbecken/Puffer, Lage wird nachgemessen), R24-R27, Viewer-Uebersicht, FPV (walk_z).
+- REIHENFOLGE nach dem Reset (immer nur EINE Sitzung): 1. Fachrecherche R28 Filterkonzept zu Ende (docs/jobs/R28-filterkonzept.md) -> 2. Werkstatt W30 Tank-Staende (docs/jobs/W30-tank-staende.md), danach W27 Huelle -> 3. Montage Messung/M9 Figuren abschliessen, dann M10 Leitungen mit Plan vorab (docs/jobs/M10-leitungen.md) -> 4. ein check_latte -> 5. PAUSE und Zwischencheck mit Ben.
+- Offen fuer Ben: Standort/Folienart, Drittbecken-Mass und Rolle, Fruchtgemuese-Anteil.
+- Aufraeumen (ICH): docs/integration-board.md und docs/model-description.md auf Stand bringen (python scripts/build_model_description.py), alte Sitzungen local_26fd6822..., local_0de58930... archivieren (auf Bens Ja).
+

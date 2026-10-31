@@ -1,0 +1,2739 @@
+{
+ "stand": "31.10.2026",
+ "version": 1,
+ "hinweis": "Messstellenplan R39 (D65): Orte als Knoten/Kanten aus data/leitungsnetz.json, Sonden mit Preis (Hersteller/Haendler, USD/EUR/GBP je Beleg), Alarmgrenzen mit Quellen. Pruefung: python scripts/messstellen_plan.py. Keine fachliche Freigabe; Annahmen sind mit [A] oder beleg 'Annahme' markiert.",
+ "stufen": {
+  "pflicht": "Mindestsatz: Fischtod oder Anlagenschaden binnen Stunden (O2, Temperatur, Wasserstand, Pumpenausfall, Strom, Luft) plus Bestand R27",
+  "zusatz": "Erweiterungssatz: prio 1 = Prozess und Frueherkennung, 2 = Komfort/Diagnose, 3 = spaeter oder nur bei Bedarf"
+ },
+ "quellen": {
+  "S452": "SRAC 452 'Recirculating Aquaculture Tank Production Systems: Management of Recirculating Systems' (Masser, Rakocy, Losordo), srac.msstate.edu, Volltext gelesen 31.10.2026",
+  "GSA": "Global Seafood Alliance Advocate, 'Backup oxygen and power systems: essential insurance', globalseafood.org, gelesen 31.10.2026",
+  "ATL_DO": "Atlas Scientific, Industrial Dissolved Oxygen Probe ENV-50-DO, atlas-scientific.com/probes/industrial-dissolved-oxygen-probe, gelesen 31.10.2026",
+  "ATL_DOM": "Atlas Scientific Mini/Lab Grade DO Probe, Suchergebnis plus Haendlerseite (Robotshop), nicht auf der Herstellerseite gelesen",
+  "ATL_PH": "Atlas Scientific, Lab Grade pH Probe ENV-40-pH, atlas-scientific.com/probes/ph-probe, gelesen 31.10.2026",
+  "ATL_EC": "Atlas Scientific, Conductivity Probe K 0.1, atlas-scientific.com/probes/conductivity-probe, gelesen 31.10.2026",
+  "ATL_F12": "Atlas Scientific, 1/2 Zoll Flow Meter, atlas-scientific.com/1-2-flow-meter, gelesen 31.10.2026",
+  "ATL_F34": "Atlas Scientific, 3/4 Zoll Flow Meter, atlas-scientific.com/3-4-flow-meter, gelesen 31.10.2026",
+  "ATL_EZO": "Atlas Scientific, EZO pH Circuit (45,99 USD) und Basic EZO Inline Voltage Isolator (27,99 USD), gelesen 31.10.2026",
+  "SENS_CT": "SCT-013 Datenblatt (Elecena-Listing: +-3 %, 17-21 EUR) und Hinweise zur Trockenlauf-Erkennung per Strom (industrialmonitordirect.com), Suchzusammenfassung",
+  "LVL": "Hersteller-Blogs iconprocon.com und industrialmonitordirect.com (Pegel: Tauchdruck gegen Ultraschall), Suchzusammenfassung",
+  "SCD41": "Sensirion SCD41 (Produktseite, Farnell-Listing): +-(40 ppm + 5 %) von 400-5000 ppm, Chip ca. 14-19 GBP, Suchzusammenfassung",
+  "DS18": "SparkFun/Botland-Listings DS18B20 wasserdicht: -55..125 C, +-0,5 C, Suchzusammenfassung",
+  "APEX": "Neptune Apex Leak Detection Kit / Probe (Haendlerlisten), Suchzusammenfassung",
+  "CO2_UBA": "UBA-Ad-hoc-Gruppe 2008 (Springer Bundesgesundheitsblatt) und LGL Bayern: 1000/2000 ppm Innenraum; TRGS 900: 5000 ppm Arbeitsplatzgrenzwert, Suchzusammenfassung",
+  "ISE": "Ammonium-/Nitrat-ISE: Drift und Biofouling (Hydroponik-Studie), YSI-Hinweis 30-Tage-Kalibrierung, Suchzusammenfassung",
+  "IOT": "ESP32/Telegram/SMS in Aquaponik- und Aquakultur-Arbeiten (JESSI 2025, Amrita 2025), Suchzusammenfassung",
+  "APOGEE": "Apogee SQ-500 Datenblatt/Handbuch, Suchzusammenfassung",
+  "R17-R27": "docs/research/aquaponik-werte.md (R17-R27: FAO TP 589, SRAC 454, SRAC 451, Fort Valley State; dort gelesen, hier uebernommen)",
+  "R27": "docs/research/R27.md und docs/parts/puffer_station.md",
+  "NETZ": "data/leitungsnetz.json (Knoten, Kanten, Kabelliste)",
+  "FILTER": "docs/filter-konzept.md (R28/R30)"
+ },
+ "sondentypen": {
+  "do_ind": {
+   "name": "Gel/galvanische DO-Sonde industriell mit PT-1000 (Atlas ENV-50-DO)",
+   "groessen": [
+    "O2",
+    "Temperatur"
+   ],
+   "technik": "Tauchsonde, Kabel 3 m, 0-100 mg/l, +-0,05 mg/l, ca. 0,1 mg/l/s",
+   "preis": {
+    "waehrung": "USD",
+    "min": 349.99,
+    "max": 349.99,
+    "beleg": "gelesen"
+   },
+   "kalibrierung": "ca. 1 Jahr (Hersteller), Ein-Punkt in Luft",
+   "wartung": "ca. 18 Monate",
+   "standzeit": "ca. 4 Jahre",
+   "zubehoer_usd": {
+    "EZO-Schaltkreis": 45.99,
+    "Isolator": 27.99
+   },
+   "kabel_art": "koax_sma",
+   "adern": 1,
+   "versorgung": "5 V",
+   "quellen": [
+    "ATL_DO",
+    "ATL_EZO"
+   ],
+   "konfidenz": "mittel"
+  },
+  "do_mini": {
+   "name": "Mini-DO-Sonde (Atlas ENV-20-DOX)",
+   "groessen": [
+    "O2",
+    "Temperatur"
+   ],
+   "technik": "Tauchsonde klein, fuer Drittbecken, Zweitbecken, Biofilter, Puffer",
+   "preis": {
+    "waehrung": "USD",
+    "min": 199.99,
+    "max": 199.99,
+    "beleg": "Haendlerliste"
+   },
+   "kalibrierung": "ca. 6 Monate (Haendlerangabe)",
+   "wartung": "ca. 6 Monate",
+   "standzeit": "ca. 2,5 Jahre",
+   "zubehoer_usd": {
+    "EZO-Schaltkreis": 45.99,
+    "Isolator": 27.99
+   },
+   "kabel_art": "koax_sma",
+   "adern": 1,
+   "versorgung": "5 V",
+   "quellen": [
+    "ATL_DOM",
+    "ATL_EZO"
+   ],
+   "konfidenz": "niedrig-mittel"
+  },
+  "ph": {
+   "name": "pH-Sonde Doppelelektrolyt Ag/AgCl (Atlas ENV-40-pH)",
+   "groessen": [
+    "pH"
+   ],
+   "technik": "Tauch- oder Inline-Sonde, Kabel 1 m, 0,002 pH Schaltkreis-Aufloesung",
+   "preis": {
+    "waehrung": "USD",
+    "min": 99.99,
+    "max": 99.99,
+    "beleg": "gelesen"
+   },
+   "kalibrierung": "Hersteller ca. 1 Jahr; im Dauerbetrieb im Fischwasser erst monatlich pruefen [A]",
+   "wartung": "Reinigen/Auffrischen nach Bedarf",
+   "standzeit": "ca. 2,5 Jahre",
+   "zubehoer_usd": {
+    "EZO-Schaltkreis": 45.99,
+    "Isolator": 27.99
+   },
+   "kabel_art": "koax_bnc",
+   "adern": 1,
+   "versorgung": "5 V",
+   "quellen": [
+    "ATL_PH",
+    "ATL_EZO"
+   ],
+   "konfidenz": "mittel"
+  },
+  "ec": {
+   "name": "Leitfaehigkeitssonde K 0,1 (Atlas)",
+   "groessen": [
+    "EC"
+   ],
+   "technik": "Tauch- oder Inline-Sonde, Kabel 1 m, 1-110 C, ohne Elektrolyt",
+   "preis": {
+    "waehrung": "USD",
+    "min": 177.99,
+    "max": 177.99,
+    "beleg": "gelesen"
+   },
+   "kalibrierung": "bei Einbau, danach Hersteller ca. 10 Jahre; Kontrolle mit Standard jaehrlich [A]",
+   "wartung": "Reinigen bei Belag",
+   "standzeit": "ca. 10 Jahre",
+   "zubehoer_usd": {
+    "EZO-Schaltkreis": 45.99,
+    "Isolator": 27.99
+   },
+   "kabel_art": "koax_bnc",
+   "adern": 1,
+   "versorgung": "5 V",
+   "quellen": [
+    "ATL_EC",
+    "ATL_EZO"
+   ],
+   "konfidenz": "mittel"
+  },
+  "temp_ds": {
+   "name": "Temperaturfuehler DS18B20 wasserdicht",
+   "groessen": [
+    "Temperatur"
+   ],
+   "technik": "1-Wire-Digitalfuehler im Edelstahlmantel, +-0,5 C, Kabel 1-5 m",
+   "preis": {
+    "waehrung": "USD",
+    "min": 3,
+    "max": 10,
+    "beleg": "Annahme"
+   },
+   "kalibrierung": "Vergleichsmessung jaehrlich [A]",
+   "wartung": "keine",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "onewire_3ader",
+   "adern": 3,
+   "versorgung": "3,3-5 V",
+   "quellen": [
+    "DS18"
+   ],
+   "konfidenz": "mittel (Technik) / niedrig (Preis)"
+  },
+  "level_float": {
+   "name": "Schwimmerschalter (Niedrig/Hoch)",
+   "groessen": [
+    "Wasserstand",
+    "Fuellstand"
+   ],
+   "technik": "potentialfreier Kontakt, im Beruhigungsrohr; zwei in Reihe liefern Hoch/Niedrig",
+   "preis": {
+    "waehrung": "USD",
+    "min": 10,
+    "max": 20,
+    "beleg": "gelesen"
+   },
+   "kalibrierung": "Funktionstest monatlich",
+   "wartung": "Reinigen von Belag",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "kontakt_2ader",
+   "adern": 2,
+   "versorgung": "keine (Kontakt)",
+   "quellen": [
+    "GSA",
+    "S452"
+   ],
+   "konfidenz": "mittel"
+  },
+  "level_druck": {
+   "name": "Tauchdrucksonde 4-20 mA",
+   "groessen": [
+    "Wasserstand",
+    "Fuellstand"
+   ],
+   "technik": "hydrostatisch, +-1-2 mm bis 0,25 % Endwert (Herstellerangabe), unempfindlich gegen Schaum/Blasen",
+   "preis": {
+    "waehrung": "USD",
+    "min": 300,
+    "max": 500,
+    "beleg": "Herstellerblog"
+   },
+   "kalibrierung": "Nullpunkt jaehrlich [A]",
+   "wartung": "Sediment/Biofilm abwischen",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "strom_4_20mA_2ader",
+   "adern": 2,
+   "versorgung": "12-24 V",
+   "quellen": [
+    "LVL"
+   ],
+   "konfidenz": "niedrig-mittel"
+  },
+  "flow_12": {
+   "name": "Paddelrad-Durchflussmesser 1/2 Zoll (Atlas)",
+   "groessen": [
+    "Durchfluss"
+   ],
+   "technik": "5,7-75,7 l/min, +-10 %, Summe und Rate, Impulsausgang ueber EZO-Flow-Totalizer",
+   "preis": {
+    "waehrung": "USD",
+    "min": 145.99,
+    "max": 145.99,
+    "beleg": "gelesen"
+   },
+   "kalibrierung": "nicht noetig, Plausibilitaet gegen Pumpen-Soll",
+   "wartung": "Vorfilter, Schmutz in den Schaufeln",
+   "standzeit": "ca. 10 Jahre",
+   "zubehoer_usd": {},
+   "kabel_art": "impuls_3ader",
+   "adern": 3,
+   "versorgung": "5 V",
+   "quellen": [
+    "ATL_F12"
+   ],
+   "konfidenz": "mittel"
+  },
+  "flow_34": {
+   "name": "Paddelrad-Durchflussmesser 3/4 Zoll (Atlas)",
+   "groessen": [
+    "Durchfluss"
+   ],
+   "technik": "19-114 l/min, +-10 %; Linie hat 110 l/min Soll, also am oberen Rand (Befund)",
+   "preis": {
+    "waehrung": "USD",
+    "min": 265.99,
+    "max": 265.99,
+    "beleg": "gelesen"
+   },
+   "kalibrierung": "nicht noetig",
+   "wartung": "Vorfilter",
+   "standzeit": "ca. 10 Jahre",
+   "zubehoer_usd": {},
+   "kabel_art": "impuls_3ader",
+   "adern": 3,
+   "versorgung": "5 V",
+   "quellen": [
+    "ATL_F34"
+   ],
+   "konfidenz": "mittel"
+  },
+  "flow_gross": {
+   "name": "Durchflussmesser fuer 110 l/min (1 Zoll oder Ultraschall-Clamp-on, Typ offen)",
+   "groessen": [
+    "Durchfluss"
+   ],
+   "technik": "Messbereich bis mindestens 150 l/min; Atlas 3/4 Zoll endet bei 114 l/min",
+   "preis": {
+    "waehrung": "USD",
+    "min": 266,
+    "max": 500,
+    "beleg": "Annahme"
+   },
+   "kalibrierung": "nicht noetig",
+   "wartung": "Vorfilter",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "impuls_3ader",
+   "adern": 3,
+   "versorgung": "5-24 V",
+   "quellen": [
+    "ATL_F34"
+   ],
+   "konfidenz": "niedrig"
+  },
+  "druck_schalter": {
+   "name": "Druckschalter mit Relais (Luft oder Wasser)",
+   "groessen": [
+    "Luftdruck",
+    "Druck"
+   ],
+   "technik": "Schaltkontakt faellt bei Druckverlust ab; steuert Notluft/Magnetventil",
+   "preis": {
+    "waehrung": "USD",
+    "min": 30,
+    "max": 30,
+    "beleg": "gelesen (Luft)"
+   },
+   "kalibrierung": "Funktionstest monatlich (Gebläse abschalten)",
+   "wartung": "keine",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "kontakt_2ader",
+   "adern": 2,
+   "versorgung": "keine (Kontakt)",
+   "quellen": [
+    "GSA",
+    "SENS_CT"
+   ],
+   "konfidenz": "mittel"
+  },
+  "strom_ct": {
+   "name": "Stromwandler SCT-013 (Klemm-CT) je Verbraucher",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "technik": "Messung im Schaltschrank, kontaktlos; +-3 %, Alarm bei Stromabfall (Trockenlauf) oder Anstieg (blockiert)",
+   "preis": {
+    "waehrung": "EUR",
+    "min": 17,
+    "max": 21,
+    "beleg": "Haendlerliste"
+   },
+   "kalibrierung": "Sollstrom bei Inbetriebnahme einlernen",
+   "wartung": "keine",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "ct_2ader",
+   "adern": 2,
+   "versorgung": "keine",
+   "quellen": [
+    "SENS_CT"
+   ],
+   "konfidenz": "mittel"
+  },
+  "co2_scd41": {
+   "name": "CO2/Temperatur/Feuchte-Modul SCD41",
+   "groessen": [
+    "CO2",
+    "Lufttemperatur",
+    "Luftfeuchte"
+   ],
+   "technik": "photoakustisches NDIR, +-(40 ppm + 5 %) von 400-5000 ppm, Drift ca. +-(5 ppm + 0,5 %)/Jahr mit Selbstkalibrierung",
+   "preis": {
+    "waehrung": "GBP",
+    "min": 14,
+    "max": 19,
+    "beleg": "Haendlerliste (nur Chip)"
+   },
+   "kalibrierung": "Selbstkalibrierung, Frischluft-Abgleich jaehrlich [A]",
+   "wartung": "keine",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "i2c_4ader",
+   "adern": 4,
+   "versorgung": "3,3-5 V",
+   "quellen": [
+    "SCD41"
+   ],
+   "konfidenz": "mittel"
+  },
+  "par": {
+   "name": "Quantensensor PAR (z. B. Apogee SQ-500) oder Lux-Platine",
+   "groessen": [
+    "PAR"
+   ],
+   "technik": "PPFD 400-700 nm, Analogausgang; Lux-Platine als billige Alternative",
+   "preis": {
+    "waehrung": "USD",
+    "min": null,
+    "max": null,
+    "beleg": "offen"
+   },
+   "kalibrierung": "Herstellerkalibrierung, 4 Jahre Garantie; Intervall nicht gelesen",
+   "wartung": "Diffusor reinigen",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "analog_3ader",
+   "adern": 3,
+   "versorgung": "5-24 V",
+   "quellen": [
+    "APOGEE"
+   ],
+   "konfidenz": "niedrig"
+  },
+  "leck": {
+   "name": "Leckagesonde (Kontakt am Boden)",
+   "groessen": [
+    "Leckage"
+   ],
+   "technik": "Kontaktflaeche meldet Nasswerden, Sammelmodul (Apex-LDK-Prinzip)",
+   "preis": {
+    "waehrung": "GBP",
+    "min": 45,
+    "max": 45,
+    "beleg": "Haendlerliste"
+   },
+   "kalibrierung": "Nassprobe halbjaehrlich",
+   "wartung": "trocken halten",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "kontakt_2ader",
+   "adern": 2,
+   "versorgung": "5 V",
+   "quellen": [
+    "APEX"
+   ],
+   "konfidenz": "niedrig-mittel"
+  },
+  "hahn_probe": {
+   "name": "Probenahmehahn (Kugelhahn d16/d20 mit Schlauchtuelle)",
+   "groessen": [
+    "TAN/Nitrit/Nitrat"
+   ],
+   "technik": "Handmessung mit Tropfentest oder Photometer; Online-Ionenelektroden werden nicht empfohlen (Drift, Biofouling)",
+   "preis": {
+    "waehrung": "USD",
+    "min": null,
+    "max": null,
+    "beleg": "offen (Leitungsteile-Bibliothek)"
+   },
+   "kalibrierung": "Testreagenzien nach Packungsangabe",
+   "wartung": "Hahn spuelen",
+   "standzeit": "Jahre",
+   "zubehoer_usd": {},
+   "kabel_art": "keines",
+   "adern": 0,
+   "versorgung": "keine",
+   "quellen": [
+    "S452",
+    "ISE"
+   ],
+   "konfidenz": "mittel"
+  },
+  "spannungswaechter": {
+   "name": "Netzspannungswaechter 230 V mit Relais",
+   "groessen": [
+    "Netz"
+   ],
+   "technik": "meldet Netzausfall sofort, Relais schaltet Notluft und Alarm",
+   "preis": {
+    "waehrung": "EUR",
+    "min": null,
+    "max": null,
+    "beleg": "offen"
+   },
+   "kalibrierung": "Funktionstest monatlich (Netz trennen)",
+   "wartung": "keine",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "kontakt_2ader",
+   "adern": 2,
+   "versorgung": "230 V",
+   "quellen": [
+    "S452",
+    "GSA"
+   ],
+   "konfidenz": "mittel"
+  },
+  "batt_mon": {
+   "name": "Batterie-Spannungsueberwachung (Notstrom)",
+   "groessen": [
+    "Batterie"
+   ],
+   "technik": "Spannung/Ladezustand der Notstrom-Batterie fuer Luftpumpe und Alarm",
+   "preis": {
+    "waehrung": "EUR",
+    "min": null,
+    "max": null,
+    "beleg": "offen"
+   },
+   "kalibrierung": "Entladetest jaehrlich",
+   "wartung": "Batterie nach Herstellerangabe",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "analog_2ader",
+   "adern": 2,
+   "versorgung": "aus der Batterie",
+   "quellen": [
+    "GSA",
+    "S452",
+    "R17-R27"
+   ],
+   "konfidenz": "mittel"
+  },
+  "alarmwaehler": {
+   "name": "Alarmwaehler (GSM/Telefon) mit Eingaengen und Lebenszeichen-Watchdog",
+   "groessen": [
+    "Alarm"
+   ],
+   "technik": "ruft mindestens 3-4 Nummern, nimmt Schaltkontakte an; unabhaengig von Messrechner und WLAN",
+   "preis": {
+    "waehrung": "USD",
+    "min": 100,
+    "max": 500,
+    "beleg": "gelesen"
+   },
+   "kalibrierung": "Testalarm woechentlich",
+   "wartung": "SIM-Guthaben/Vertrag",
+   "standzeit": "Jahre [A]",
+   "zubehoer_usd": {},
+   "kabel_art": "kontakt_2ader",
+   "adern": 2,
+   "versorgung": "12-24 V aus der Batterie",
+   "quellen": [
+    "GSA",
+    "S452"
+   ],
+   "konfidenz": "mittel"
+  }
+ },
+ "halter": {
+  "H_TAUCH": "Beckenrand-Tauchhalter: Rohr d40 mit Klemme am Beckenrand, 0,3-0,7 m Eintauchtiefe, Sonde ohne Werkzeug herausziehbar",
+  "H_BERUHIG": "Beruhigungsrohr fuer Schwimmerschalter: PVC d63 senkrecht, geschlitzt, 2 Schwimmerschalter",
+  "H_ZELLE": "Durchflusszelle am Abzweig d20 des Sammelrohrs mit 3 Sondenstutzen (pH, EC, Temperatur) und Absperrhahn",
+  "H_HAHN": "Probenahmehahn: Kugelhahn d16/d20 mit Schlauchtuelle am Rohr",
+  "H_INLINE": "Einbaustueck fuer Durchflussmesser: Rohrstueck mit Verschraubung, 20 cm gerade Strecke vor und Vorfilter >= 80 um",
+  "H_DRUCK": "Anschlussstutzen R1/4 am Rohr bzw. Luftleitung fuer Druckschalter",
+  "H_MAST": "Sensor-Mast Kuppel: Rohr d32 mit Strahlungsschutz, Hoehe 1,7 m oder Scheitel",
+  "H_BOX": "Messknoten-Gehaeuse IP65 mit Hutschiene (ESP32/Rechner, EZO-Schaltkreise, Isolatoren)"
+ },
+ "messknoten": {
+  "mk_pool": {
+   "ort": "Beckenrand Zentralpool",
+   "bauteil": "Zentralpool",
+   "versorgt": "Pool, Ruecklauf-Eintritte",
+   "leistung_w": 3
+  },
+  "mk_zd": {
+   "ort": "zwischen Zweitbecken und Drittbecken",
+   "bauteil": "Zweitbecken",
+   "versorgt": "Zweitbecken, Drittbecken",
+   "leistung_w": 2
+  },
+  "mk_l1": {
+   "ort": "Technikbereich Linie 1 (Absetzer 1, Biofilter 1, Verteiler 1)",
+   "bauteil": "Tank_gross:1",
+   "versorgt": "Linie 1",
+   "leistung_w": 3
+  },
+  "mk_l2": {
+   "ort": "Technikbereich Linie 2 (Absetzer 2, Biofilter 2, Verteiler 2)",
+   "bauteil": "Tank_gross_t3:1",
+   "versorgt": "Linie 2",
+   "leistung_w": 3
+  },
+  "mk_puffer": {
+   "ort": "Puffer-Station (Messrechner R27)",
+   "bauteil": null,
+   "versorgt": "Puffer oben/unten, Dosierkonsole, Frischwasser",
+   "leistung_w": 5
+  },
+  "mk_schrank": {
+   "ort": "Schaltschrank (Strom, Netz, Gebläse, Batterie, Alarm)",
+   "bauteil": null,
+   "versorgt": "Strom- und Alarmgroessen",
+   "leistung_w": 10
+  },
+  "mk_kuppel": {
+   "ort": "Kuppelinneres (Maste Arbeitsbereich, Scheitel, Ansaug)",
+   "bauteil": null,
+   "versorgt": "Luft, Licht",
+   "leistung_w": 2
+  }
+ },
+ "signalweg": {
+  "bus": "RS-485 (Modbus RTU) vom Messknoten zur Zentrale, 4 Adern, galvanisch getrennt [A, Entwurf]",
+  "versorgung": "24 V DC Hilfsnetzteil mit Batteriepufferung, lokal 5 V je Messknoten [A, Entwurf]",
+  "sonden": "Atlas-Sonden mit Herstellerkabel (pH, EC 1 m, DO 3 m) direkt an EZO-Schaltkreisen im Messknoten; Verlaengerung nicht gelesen, deshalb Messknoten neben dem Halter",
+  "isolation": "Atlas-Sonden im selben Wasser ueber Isolator oder isolierte Traegerplatine trennen (27,99 USD je Sonde laut Herstellerseite)"
+ },
+ "messstellen": [
+  {
+   "id": "MS01",
+   "knoten": "pool",
+   "kante": null,
+   "ort": "Pool, am Seitenablauf (K01/K02), 0,5 m unter dem Spiegel",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "O2",
+    "Temperatur"
+   ],
+   "sonden": {
+    "do_ind": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_TAUCH",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL01",
+    "AL03"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Hauptmessstelle fuer Fischtod; Sonde am Seitenablauf sieht das Wasser, das die Pumpen holen"
+  },
+  {
+   "id": "MS02",
+   "knoten": "pool",
+   "kante": null,
+   "ort": "Pool, zweiter unabhaengiger Fuehler am Rand gegenueber",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "Temperatur"
+   ],
+   "sonden": {
+    "temp_ds": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_TAUCH",
+     0
+    ]
+   ],
+   "alarm": [
+    "AL03"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Redundanz zu MS01 und Heizungs-Abschaltung; Abweichung > 1 K ist ein Sondenfehler-Alarm"
+  },
+  {
+   "id": "MS03",
+   "knoten": "pool",
+   "kante": null,
+   "ort": "Pool, Beruhigungsrohr am Rand: Niedrig und Hoch",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 2
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Seitenablauf Z 450 liegt nur ca. 65 mm unter dem Spiegel Z 515 (leitungsnetz K01): Niedrig-Kontakt bei -50 mm"
+  },
+  {
+   "id": "MS04",
+   "knoten": "pool",
+   "kante": null,
+   "ort": "Pool, Tauchdrucksonde am Beckenrand (Trend, Flutstaffelung, Leck)",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_druck": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_TAUCH",
+     0
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS05",
+   "knoten": "pool",
+   "kante": null,
+   "ort": "Pool, pH-Sonde neben MS01",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "pH"
+   ],
+   "sonden": {
+    "ph": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_TAUCH",
+     0
+    ]
+   ],
+   "alarm": [
+    "AL04"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Der Messkreis der Puffer-Station zieht nur aus Verteiler 1 (K35): Pool und Linie 2 sind sonst nicht gemessen"
+  },
+  {
+   "id": "MS06",
+   "knoten": "pool",
+   "kante": "K01",
+   "ort": "Pool, Probenahmehahn an der Saugleitung K01",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "TAN/Nitrit/Nitrat"
+   ],
+   "sonden": {
+    "hahn_probe": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_HAHN",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL05",
+    "AL06",
+    "AL07"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Handmessung; Ammonium und Nitrit sind die haeufigste stille Gefahr und werden nicht online gemessen"
+  },
+  {
+   "id": "MS07",
+   "knoten": "zweitbecken",
+   "kante": null,
+   "ort": "Zweitbecken (Aufzucht, besetzt), Beckenrand",
+   "bauteil": "Zweitbecken",
+   "groessen": [
+    "O2",
+    "Temperatur"
+   ],
+   "sonden": {
+    "do_mini": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_zd",
+   "halter": [
+    [
+     "H_TAUCH",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL01",
+    "AL03"
+   ],
+   "wartung_noetig": true
+  },
+  {
+   "id": "MS08",
+   "knoten": "drittbecken",
+   "kante": null,
+   "ort": "Drittbecken (Quarantaene, nur bei Besatz), Beckenrand",
+   "bauteil": "Drittbecken",
+   "groessen": [
+    "O2",
+    "Temperatur"
+   ],
+   "sonden": {
+    "do_mini": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_zd",
+   "halter": [
+    [
+     "H_TAUCH",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL01",
+    "AL03"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Hoechste Last je m3 (R27: 6,4 g TAN/Tag in 0,94 m3), eigene Belueftung K49"
+  },
+  {
+   "id": "MS09",
+   "knoten": "drittbecken",
+   "kante": null,
+   "ort": "Drittbecken, pH-Sonde",
+   "bauteil": "Drittbecken",
+   "groessen": [
+    "pH"
+   ],
+   "sonden": {
+    "ph": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_zd",
+   "halter": [
+    [
+     "H_TAUCH",
+     0
+    ]
+   ],
+   "alarm": [
+    "AL04"
+   ],
+   "wartung_noetig": true
+  },
+  {
+   "id": "MS10",
+   "knoten": "drittbecken",
+   "kante": null,
+   "ort": "Drittbecken, Niedrig-Schwimmer",
+   "bauteil": "Drittbecken",
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_zd",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS11",
+   "knoten": "drittbecken",
+   "kante": "K42",
+   "ort": "Drittbecken, Probenahmehahn an K42",
+   "bauteil": "Drittbecken",
+   "groessen": [
+    "TAN/Nitrit/Nitrat"
+   ],
+   "sonden": {
+    "hahn_probe": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_zd",
+   "halter": [
+    [
+     "H_HAHN",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL05",
+    "AL06"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS12",
+   "knoten": "absetzer_1",
+   "kante": "K04",
+   "ort": "Absetzer 1, Druckleitung der kleinen Pumpe (K04)",
+   "bauteil": "Tank_klein:1",
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_12": 1
+   },
+   "stufe": "zusatz",
+   "prio": 3,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Soll 12,5 l/min liegt nahe der Messbereichsgrenze 5,7 l/min; erst bauen, wenn der Pumpenstrom nicht reicht"
+  },
+  {
+   "id": "MS13",
+   "knoten": "absetzer_2",
+   "kante": "K20",
+   "ort": "Absetzer 2, Druckleitung der kleinen Pumpe (K20)",
+   "bauteil": "Tank_klein:2",
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_12": 1
+   },
+   "stufe": "zusatz",
+   "prio": 3,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Soll 12,5 l/min liegt nahe der Messbereichsgrenze 5,7 l/min; erst bauen, wenn der Pumpenstrom nicht reicht"
+  },
+  {
+   "id": "MS14",
+   "knoten": "feinfilter_1",
+   "kante": null,
+   "ort": "Feinfilter 1, Hoch-Schwimmer im Siebbehaelter (Korb verstopft)",
+   "bauteil": null,
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Wird Pflicht, sobald das Sieb in den Hauptstrom wandert (Befund R30, Montage M10)"
+  },
+  {
+   "id": "MS15",
+   "knoten": "feinfilter_2",
+   "kante": null,
+   "ort": "Feinfilter 2, Hoch-Schwimmer im Siebbehaelter (Korb verstopft)",
+   "bauteil": null,
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Wird Pflicht, sobald das Sieb in den Hauptstrom wandert (Befund R30, Montage M10)"
+  },
+  {
+   "id": "MS16",
+   "knoten": "pumpe_gross_1",
+   "kante": null,
+   "ort": "Pumpe gross 1, Stromwandler im Schaltschrank (Abgang)",
+   "bauteil": "Pumpe_gross:1",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Messung im Schaltschrank: kein Zugang an der Pumpe noetig"
+  },
+  {
+   "id": "MS17",
+   "knoten": "pumpe_gross_2",
+   "kante": null,
+   "ort": "Pumpe gross 2, Stromwandler im Schaltschrank (Abgang)",
+   "bauteil": "Pumpe_gross:2",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Messung im Schaltschrank: kein Zugang an der Pumpe noetig"
+  },
+  {
+   "id": "MS18",
+   "knoten": "pumpe_gross_3",
+   "kante": null,
+   "ort": "Pumpe gross 3, Stromwandler im Schaltschrank (Abgang)",
+   "bauteil": "Pumpe_gross:3",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Messung im Schaltschrank: kein Zugang an der Pumpe noetig"
+  },
+  {
+   "id": "MS19",
+   "knoten": "pumpe_gross_4",
+   "kante": null,
+   "ort": "Pumpe gross 4, Stromwandler im Schaltschrank (Abgang)",
+   "bauteil": "Pumpe_gross:4",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Messung im Schaltschrank: kein Zugang an der Pumpe noetig"
+  },
+  {
+   "id": "MS20",
+   "knoten": "pumpe_gross_1",
+   "kante": "K08",
+   "ort": "Pumpe gross 1, Druckleitung K08: zweites Signal gegen Fehlalarm des Stroms",
+   "bauteil": "Pumpe_gross:1",
+   "groessen": [
+    "Druck"
+   ],
+   "sonden": {
+    "druck_schalter": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_DRUCK",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Strom allein unterscheidet Trockenlauf nicht von verstopfter Druckseite (beide: wenig Strom)"
+  },
+  {
+   "id": "MS21",
+   "knoten": "pumpe_gross_2",
+   "kante": "K09",
+   "ort": "Pumpe gross 2, Druckleitung K09: zweites Signal gegen Fehlalarm des Stroms",
+   "bauteil": "Pumpe_gross:2",
+   "groessen": [
+    "Druck"
+   ],
+   "sonden": {
+    "druck_schalter": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_DRUCK",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Strom allein unterscheidet Trockenlauf nicht von verstopfter Druckseite (beide: wenig Strom)"
+  },
+  {
+   "id": "MS22",
+   "knoten": "pumpe_gross_3",
+   "kante": "K24",
+   "ort": "Pumpe gross 3, Druckleitung K24: zweites Signal gegen Fehlalarm des Stroms",
+   "bauteil": "Pumpe_gross:3",
+   "groessen": [
+    "Druck"
+   ],
+   "sonden": {
+    "druck_schalter": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_DRUCK",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Strom allein unterscheidet Trockenlauf nicht von verstopfter Druckseite (beide: wenig Strom)"
+  },
+  {
+   "id": "MS23",
+   "knoten": "pumpe_gross_4",
+   "kante": "K25",
+   "ort": "Pumpe gross 4, Druckleitung K25: zweites Signal gegen Fehlalarm des Stroms",
+   "bauteil": "Pumpe_gross:4",
+   "groessen": [
+    "Druck"
+   ],
+   "sonden": {
+    "druck_schalter": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_DRUCK",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Strom allein unterscheidet Trockenlauf nicht von verstopfter Druckseite (beide: wenig Strom)"
+  },
+  {
+   "id": "MS24",
+   "knoten": "pumpe_klein_1",
+   "kante": null,
+   "ort": "Pumpe klein 1, Stromwandler im Schaltschrank (Betrieb/Reserve)",
+   "bauteil": "Pumpe_klein:1",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS25",
+   "knoten": "pumpe_klein_2",
+   "kante": null,
+   "ort": "Pumpe klein 2, Stromwandler im Schaltschrank (Betrieb/Reserve)",
+   "bauteil": "Pumpe_klein:2",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS26",
+   "knoten": "pumpe_klein_3",
+   "kante": null,
+   "ort": "Pumpe klein 3, Stromwandler im Schaltschrank (Betrieb/Reserve)",
+   "bauteil": "Pumpe_klein:3",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Pumpe_klein:3 (Betriebspumpe Linie 2) ist laut Laufwegkarte nicht erreichbar; Schaltschrank-Messung umgeht das"
+  },
+  {
+   "id": "MS27",
+   "knoten": "pumpe_klein_4",
+   "kante": null,
+   "ort": "Pumpe klein 4, Stromwandler im Schaltschrank (Betrieb/Reserve)",
+   "bauteil": "Pumpe_klein:4",
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS28",
+   "knoten": "biofilter_1",
+   "kante": "K10",
+   "ort": "Biofilter 1, Auslasskammer (K10)",
+   "bauteil": "Tank_gross:1",
+   "groessen": [
+    "O2",
+    "Temperatur"
+   ],
+   "sonden": {
+    "do_mini": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_TAUCH",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL02",
+    "AL03"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Unter 2 mg/l O2 stoppt die Nitrifikation (SRAC 452, FAO 589)"
+  },
+  {
+   "id": "MS29",
+   "knoten": "biofilter_2",
+   "kante": "K26",
+   "ort": "Biofilter 2, Auslasskammer (K26)",
+   "bauteil": "Tank_gross_t3:1",
+   "groessen": [
+    "O2",
+    "Temperatur"
+   ],
+   "sonden": {
+    "do_mini": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_TAUCH",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL02",
+    "AL03"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Unter 2 mg/l O2 stoppt die Nitrifikation (SRAC 452, FAO 589)"
+  },
+  {
+   "id": "MS30",
+   "knoten": "biofilter_1",
+   "kante": null,
+   "ort": "Biofilter 1 (Druckkopf), Niedrig/Hoch im Beruhigungsrohr",
+   "bauteil": "Tank_gross:1",
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 2
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Pumpenausfall zeigt sich als fallender Spiegel, verstopfter Ablauf als steigender (Ueberlauf)"
+  },
+  {
+   "id": "MS31",
+   "knoten": "biofilter_2",
+   "kante": null,
+   "ort": "Biofilter 2 (Druckkopf), Niedrig/Hoch im Beruhigungsrohr",
+   "bauteil": "Tank_gross_t3:1",
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 2
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Pumpenausfall zeigt sich als fallender Spiegel, verstopfter Ablauf als steigender (Ueberlauf)"
+  },
+  {
+   "id": "MS32",
+   "knoten": "biofilter_1",
+   "kante": "K10",
+   "ort": "Biofilter 1, Probenahmehahn am Auslass (K10), Vergleich mit Pool-Hahn MS06",
+   "bauteil": "Tank_gross:1",
+   "groessen": [
+    "TAN/Nitrit/Nitrat"
+   ],
+   "sonden": {
+    "hahn_probe": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_HAHN",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL05",
+    "AL06",
+    "AL07"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Unterschied Pool gegen Auslass = Leistung des Biofilters"
+  },
+  {
+   "id": "MS33",
+   "knoten": "biofilter_2",
+   "kante": "K26",
+   "ort": "Biofilter 2, Probenahmehahn am Auslass (K26), Vergleich mit Pool-Hahn MS06",
+   "bauteil": "Tank_gross_t3:1",
+   "groessen": [
+    "TAN/Nitrit/Nitrat"
+   ],
+   "sonden": {
+    "hahn_probe": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_HAHN",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL05",
+    "AL06",
+    "AL07"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Unterschied Pool gegen Auslass = Leistung des Biofilters"
+  },
+  {
+   "id": "MS34",
+   "knoten": "verteiler_1",
+   "kante": "K10",
+   "ort": "Linie 1, Eingang Verteiler (K10, d50, Soll 110 l/min)",
+   "bauteil": "Tank_gross:1",
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_gross": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Atlas 3/4 Zoll reicht nur bis 114 l/min (Soll 110): groesserer Typ noetig"
+  },
+  {
+   "id": "MS35",
+   "knoten": "verteiler_2",
+   "kante": "K26",
+   "ort": "Linie 2, Eingang Verteiler (K26, d50, Soll 110 l/min)",
+   "bauteil": "Tank_gross_t3:1",
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_gross": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Atlas 3/4 Zoll reicht nur bis 114 l/min (Soll 110): groesserer Typ noetig"
+  },
+  {
+   "id": "MS36",
+   "knoten": "beete_linie_1",
+   "kante": "K11",
+   "ort": "Linie 1, Abgang Beete (K11, d40, 54,5 l/min)",
+   "bauteil": null,
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_12": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS37",
+   "knoten": "beete_linie_2",
+   "kante": "K27",
+   "ort": "Linie 2, Abgang Beete (K27, d40, 54,5 l/min)",
+   "bauteil": null,
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_12": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS38",
+   "knoten": "nft_linie_1",
+   "kante": "K12",
+   "ort": "Linie 1, Abgang NFT (K12, d32, 38 l/min)",
+   "bauteil": null,
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_12": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS39",
+   "knoten": "nft_linie_2",
+   "kante": "K28",
+   "ort": "Linie 2, Abgang NFT (K28, d32, 38 l/min)",
+   "bauteil": null,
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_12": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL11"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS40",
+   "knoten": "ruecklauf_1",
+   "kante": "K16",
+   "ort": "Ruecklauf Linie 1 vor dem Eintritt in den Pool (K16), Durchflusszelle",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "pH",
+    "EC",
+    "Temperatur"
+   ],
+   "sonden": {
+    "ph": 1,
+    "ec": 1,
+    "temp_ds": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_ZELLE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL04",
+    "AL18"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Wasser, das die Pflanzen gesehen haben; Vergleich mit Puffer/Verteiler zeigt die Pflanzenaufnahme"
+  },
+  {
+   "id": "MS41",
+   "knoten": "ruecklauf_2",
+   "kante": "K32",
+   "ort": "Ruecklauf Linie 2 vor dem Eintritt in den Pool (K32), Durchflusszelle",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "pH",
+    "EC",
+    "Temperatur"
+   ],
+   "sonden": {
+    "ph": 1,
+    "ec": 1,
+    "temp_ds": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_ZELLE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL04",
+    "AL18"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Wasser, das die Pflanzen gesehen haben; Vergleich mit Puffer/Verteiler zeigt die Pflanzenaufnahme"
+  },
+  {
+   "id": "MS42",
+   "knoten": "beete_linie_1",
+   "kante": "K14",
+   "ort": "Referenzbeet Linie 1, Siphon-Ablauf (K14): Flutung erkannt",
+   "bauteil": null,
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_l1",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Ausbleibende Flutung = Siphon verstopft; Standort Referenzbeet laut Zugang offen (Montage)"
+  },
+  {
+   "id": "MS43",
+   "knoten": "beete_linie_2",
+   "kante": "K30",
+   "ort": "Referenzbeet Linie 2, Siphon-Ablauf (K30): Flutung erkannt",
+   "bauteil": null,
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_l2",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Ausbleibende Flutung = Siphon verstopft; Standort Referenzbeet laut Zugang offen (Montage)"
+  },
+  {
+   "id": "MS44",
+   "knoten": "ruecklauf_1",
+   "kante": null,
+   "ort": "Sammelrinne Linie 1, Hoch-Schwimmer (Rinne laeuft ueber)",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS45",
+   "knoten": "ruecklauf_2",
+   "kante": null,
+   "ort": "Sammelrinne Linie 2, Hoch-Schwimmer (Rinne laeuft ueber)",
+   "bauteil": "Zentralpool",
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_pool",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS46",
+   "knoten": "puffer_oben",
+   "kante": null,
+   "ort": "Puffer oben, Messplatz (Bestand R27, 4 Sonden)",
+   "bauteil": null,
+   "groessen": [
+    "pH",
+    "EC",
+    "Temperatur",
+    "O2"
+   ],
+   "sonden": {
+    "ph": 1,
+    "ec": 1,
+    "temp_ds": 1,
+    "do_mini": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_puffer",
+   "halter": [
+    [
+     "H_BOX",
+     0
+    ]
+   ],
+   "alarm": [
+    "AL01",
+    "AL03",
+    "AL04",
+    "AL18"
+   ],
+   "wartung_noetig": true,
+   "hinweis": "Bestand; filter-konzept.md nennt zusaetzlich Nitrat, puffer_station.md nicht: Nitrat bleibt Handmessung (MS Probenahme)"
+  },
+  {
+   "id": "MS47",
+   "knoten": "puffer_oben",
+   "kante": null,
+   "ort": "Puffer oben, Probenahmehahn (fehlt laut puffer_station.md) als Referenz fuer Sondendrift",
+   "bauteil": null,
+   "groessen": [
+    "TAN/Nitrit/Nitrat"
+   ],
+   "sonden": {
+    "hahn_probe": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_puffer",
+   "halter": [
+    [
+     "H_HAHN",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL05",
+    "AL07"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS48",
+   "knoten": "puffer_oben",
+   "kante": null,
+   "ort": "Puffer oben, Niedrig/Hoch (Messpumpe trocken / Ueberlauf)",
+   "bauteil": null,
+   "groessen": [
+    "Wasserstand"
+   ],
+   "sonden": {
+    "level_float": 2
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_puffer",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS49",
+   "knoten": "puffer_unten",
+   "kante": null,
+   "ort": "Puffer unten, Reserve in m3 (Frischwasser fuer den Verlustausgleich)",
+   "bauteil": null,
+   "groessen": [
+    "Fuellstand"
+   ],
+   "sonden": {
+    "level_druck": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_puffer",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL20"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS50",
+   "knoten": "frischwasser",
+   "kante": "K39",
+   "ort": "Frischwasser-Zulauf (K39) als Zaehler: Verbrauch gegen Soll 0,68 m3/Tag erkennt Lecks",
+   "bauteil": null,
+   "groessen": [
+    "Durchfluss"
+   ],
+   "sonden": {
+    "flow_12": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_puffer",
+   "halter": [
+    [
+     "H_INLINE",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL20"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS51",
+   "knoten": "dosierkonsole",
+   "kante": null,
+   "ort": "Dosierkonsole, Kanister 1 leer (Base bzw. Eisen)",
+   "bauteil": null,
+   "groessen": [
+    "Fuellstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_puffer",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS52",
+   "knoten": "dosierkonsole",
+   "kante": null,
+   "ort": "Dosierkonsole, Kanister 2 leer (Base bzw. Eisen)",
+   "bauteil": null,
+   "groessen": [
+    "Fuellstand"
+   ],
+   "sonden": {
+    "level_float": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_puffer",
+   "halter": [
+    [
+     "H_BERUHIG",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL10"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS53",
+   "knoten": "biofilter_1",
+   "kante": null,
+   "ort": "Boden unter Tankstand Linie 1",
+   "bauteil": "Tank_gross:1",
+   "groessen": [
+    "Leckage"
+   ],
+   "sonden": {
+    "leck": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l1",
+   "halter": [],
+   "alarm": [
+    "AL19"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS54",
+   "knoten": "biofilter_2",
+   "kante": null,
+   "ort": "Boden unter Tankstand Linie 2",
+   "bauteil": "Tank_gross_t3:1",
+   "groessen": [
+    "Leckage"
+   ],
+   "sonden": {
+    "leck": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_l2",
+   "halter": [],
+   "alarm": [
+    "AL19"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS55",
+   "knoten": "puffer_unten",
+   "kante": null,
+   "ort": "Boden unter der Puffer-Station",
+   "bauteil": null,
+   "groessen": [
+    "Leckage"
+   ],
+   "sonden": {
+    "leck": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_puffer",
+   "halter": [],
+   "alarm": [
+    "AL19"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS56",
+   "knoten": "belueftung",
+   "kante": "K44",
+   "ort": "Belueftung Hauptleitung K44 (Fischwasser), hinter dem Gebläse",
+   "bauteil": null,
+   "groessen": [
+    "Luftdruck"
+   ],
+   "sonden": {
+    "druck_schalter": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [
+    [
+     "H_DRUCK",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL13"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Schaltet Notluft (Magnetventil stromlos offen oder DC-Pumpe) und Alarm"
+  },
+  {
+   "id": "MS57",
+   "knoten": "belueftung",
+   "kante": null,
+   "ort": "Gebläse Fischwasser, Stromwandler im Schaltschrank (Verschleiss, Verstopfung)",
+   "bauteil": null,
+   "groessen": [
+    "Pumpenstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL12"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS58",
+   "knoten": "geblaese_luftpolster",
+   "kante": null,
+   "ort": "Gebläse Luftpolster der Plane (80 W): Druck im Polster",
+   "bauteil": null,
+   "groessen": [
+    "Luftdruck"
+   ],
+   "sonden": {
+    "druck_schalter": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_schrank",
+   "halter": [
+    [
+     "H_DRUCK",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL13"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS59",
+   "knoten": "kuppel",
+   "kante": null,
+   "ort": "Kuppel, Arbeitsbereich, Kopfhoehe 1,7 m, nahe dem Gang",
+   "bauteil": null,
+   "groessen": [
+    "CO2",
+    "Lufttemperatur",
+    "Luftfeuchte"
+   ],
+   "sonden": {
+    "co2_scd41": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_kuppel",
+   "halter": [
+    [
+     "H_MAST",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL16",
+    "AL17"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS60",
+   "knoten": "kuppel",
+   "kante": null,
+   "ort": "Kuppel, Scheitel (Waerme und Kondenswasser)",
+   "bauteil": null,
+   "groessen": [
+    "CO2",
+    "Lufttemperatur",
+    "Luftfeuchte"
+   ],
+   "sonden": {
+    "co2_scd41": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_kuppel",
+   "halter": [
+    [
+     "H_MAST",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL17"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS61",
+   "knoten": "kuppel",
+   "kante": null,
+   "ort": "Kuppel, Gebläse-Ansaug (Frischluft oder Innenluft?)",
+   "bauteil": null,
+   "groessen": [
+    "CO2",
+    "Lufttemperatur",
+    "Luftfeuchte"
+   ],
+   "sonden": {
+    "co2_scd41": 1
+   },
+   "stufe": "zusatz",
+   "prio": 1,
+   "messknoten": "mk_kuppel",
+   "halter": [
+    [
+     "H_MAST",
+     1
+    ]
+   ],
+   "alarm": [
+    "AL16"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Filterkonzept Art 8: Innenluft kann nachts CO2-reich sein, Ansaugluft von aussen fuehren"
+  },
+  {
+   "id": "MS62",
+   "knoten": "kuppel",
+   "kante": null,
+   "ort": "Kuppel, Pflanzhoehe Mitte und Randzone",
+   "bauteil": null,
+   "groessen": [
+    "PAR"
+   ],
+   "sonden": {
+    "par": 2
+   },
+   "stufe": "zusatz",
+   "prio": 3,
+   "messknoten": "mk_kuppel",
+   "halter": [
+    [
+     "H_MAST",
+     2
+    ]
+   ],
+   "alarm": [],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS63",
+   "knoten": "heizung",
+   "kante": null,
+   "ort": "Heizkreis Vorlauf und Ruecklauf (Heizung noch Platzhalter)",
+   "bauteil": null,
+   "groessen": [
+    "Temperatur"
+   ],
+   "sonden": {
+    "temp_ds": 2
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL03"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS64",
+   "knoten": "schaltschrank",
+   "kante": null,
+   "ort": "Schaltschrank, Netzeingang",
+   "bauteil": null,
+   "groessen": [
+    "Netz"
+   ],
+   "sonden": {
+    "spannungswaechter": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL14"
+   ],
+   "wartung_noetig": false,
+   "hinweis": "Erster Alarm bei Stromausfall; SRAC 452: bei 30 kg/m3 Besatz nur 16 min bis 3 mg/l O2"
+  },
+  {
+   "id": "MS65",
+   "knoten": "schaltschrank",
+   "kante": null,
+   "ort": "Notstrom-Batterie fuer Luftpumpe und Alarm",
+   "bauteil": null,
+   "groessen": [
+    "Batterie"
+   ],
+   "sonden": {
+    "batt_mon": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [
+    "AL15"
+   ],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS66",
+   "knoten": "schaltschrank",
+   "kante": null,
+   "ort": "Gesamtstrom Hauptabgang",
+   "bauteil": null,
+   "groessen": [
+    "Gesamtstrom"
+   ],
+   "sonden": {
+    "strom_ct": 1
+   },
+   "stufe": "zusatz",
+   "prio": 2,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [],
+   "wartung_noetig": false
+  },
+  {
+   "id": "MS67",
+   "knoten": "steuerung_alarm",
+   "kante": null,
+   "ort": "Alarmwaehler mit Lebenszeichen-Watchdog des Messrechners",
+   "bauteil": null,
+   "groessen": [
+    "Alarm"
+   ],
+   "sonden": {
+    "alarmwaehler": 1
+   },
+   "stufe": "pflicht",
+   "prio": 0,
+   "messknoten": "mk_schrank",
+   "halter": [],
+   "alarm": [],
+   "wartung_noetig": false,
+   "hinweis": "Konkretisiert den Platzhalter steuerung_alarm der Netzliste: unabhaengig vom Messrechner"
+  }
+ ],
+ "pflichtliste": [
+  {
+   "knoten": "pool",
+   "groesse": "O2",
+   "grund": "Fischtod"
+  },
+  {
+   "knoten": "pool",
+   "groesse": "Temperatur",
+   "grund": "Fischtod"
+  },
+  {
+   "knoten": "pool",
+   "groesse": "Wasserstand",
+   "grund": "Pumpen saugen Luft bei -65 mm"
+  },
+  {
+   "knoten": "pool",
+   "groesse": "TAN/Nitrit/Nitrat",
+   "grund": "stille Vergiftung"
+  },
+  {
+   "knoten": "zweitbecken",
+   "groesse": "O2",
+   "grund": "Fischtod"
+  },
+  {
+   "knoten": "zweitbecken",
+   "groesse": "Temperatur",
+   "grund": "Fischtod"
+  },
+  {
+   "knoten": "drittbecken",
+   "groesse": "O2",
+   "grund": "Fischtod (bei Besatz)"
+  },
+  {
+   "knoten": "drittbecken",
+   "groesse": "Temperatur",
+   "grund": "Fischtod (bei Besatz)"
+  },
+  {
+   "knoten": "biofilter_1",
+   "groesse": "TAN/Nitrit/Nitrat",
+   "grund": "Leistung des Biofilters"
+  },
+  {
+   "knoten": "biofilter_2",
+   "groesse": "TAN/Nitrit/Nitrat",
+   "grund": "Leistung des Biofilters"
+  },
+  {
+   "knoten": "pumpe_gross_1",
+   "groesse": "Pumpenstrom",
+   "grund": "Pumpenausfall"
+  },
+  {
+   "knoten": "pumpe_gross_2",
+   "groesse": "Pumpenstrom",
+   "grund": "Pumpenausfall"
+  },
+  {
+   "knoten": "pumpe_gross_3",
+   "groesse": "Pumpenstrom",
+   "grund": "Pumpenausfall"
+  },
+  {
+   "knoten": "pumpe_gross_4",
+   "groesse": "Pumpenstrom",
+   "grund": "Pumpenausfall"
+  },
+  {
+   "knoten": "verteiler_1",
+   "groesse": "Durchfluss",
+   "grund": "Hauptkreislauf Linie 1"
+  },
+  {
+   "knoten": "verteiler_2",
+   "groesse": "Durchfluss",
+   "grund": "Hauptkreislauf Linie 2"
+  },
+  {
+   "knoten": "puffer_oben",
+   "groesse": "pH",
+   "grund": "Bestand R27, Dosierung haengt daran"
+  },
+  {
+   "knoten": "puffer_oben",
+   "groesse": "EC",
+   "grund": "Bestand R27"
+  },
+  {
+   "knoten": "puffer_oben",
+   "groesse": "Temperatur",
+   "grund": "Bestand R27"
+  },
+  {
+   "knoten": "puffer_oben",
+   "groesse": "O2",
+   "grund": "Bestand R27"
+  },
+  {
+   "knoten": "belueftung",
+   "groesse": "Luftdruck",
+   "grund": "Gebläse laeuft"
+  },
+  {
+   "knoten": "schaltschrank",
+   "groesse": "Netz",
+   "grund": "Stromausfall"
+  },
+  {
+   "knoten": "schaltschrank",
+   "groesse": "Batterie",
+   "grund": "Notstrom bereit"
+  },
+  {
+   "knoten": "steuerung_alarm",
+   "groesse": "Alarm",
+   "grund": "Meldung an Menschen"
+  }
+ ],
+ "ohne_messstelle": {
+  "biofilter_dritt": "Empfehlung, nicht im Modell (Netzliste status); Drittbecken-Sonden MS08-MS11 decken die Funktion, Messstelle folgt mit dem Bauteil",
+  "schlammsammler": "Platzhalter ohne Bauteil, Ort offen (Montage); kein Kreislaufwasser"
+ },
+ "alarmgrenzen": [
+  {
+   "id": "AL01",
+   "groesse": "O2",
+   "ort": "Fischbecken",
+   "einheit": "mg/l",
+   "warn": "< 5,0",
+   "alarm": "< 4,0",
+   "notfall": "< 3,0 (Notluft sofort)",
+   "quellen": [
+    "S452",
+    "R17-R27"
+   ],
+   "konfidenz": "hoch",
+   "begruendung": "SRAC 452: mindestens 60 % Saettigung bzw. 5 ppm, 3 ppm sind Stress; FAO 589: Ziel 4-8 mg/l (laut aquaponik-werte.md)"
+  },
+  {
+   "id": "AL02",
+   "groesse": "O2",
+   "ort": "Biofilter-Auslass",
+   "einheit": "mg/l",
+   "warn": "< 3,0",
+   "alarm": "< 2,0",
+   "notfall": null,
+   "quellen": [
+    "S452",
+    "R17-R27"
+   ],
+   "konfidenz": "hoch",
+   "begruendung": "Nitrifikation stoppt unter 2 mg/l (SRAC 452, FAO 589)"
+  },
+  {
+   "id": "AL03",
+   "groesse": "Temperatur",
+   "ort": "Fischbecken/Heizung",
+   "einheit": "Grad C",
+   "warn": "< 25 oder > 31",
+   "alarm": "< 20 oder > 34 [A] oder Sprung > 2,8 K in 1 h",
+   "notfall": null,
+   "quellen": [
+    "R17-R27",
+    "S452"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "Tilapia 27-30 C ideal, unter 17 C kein Wachstum, unter 12 C Tod (FAO/SRAC 454 laut Repo); SRAC 452: Sprung ueber 5 F = 2,8 K ist 'rapid'; obere Alarmgrenze 34 C ist Annahme (Quelle offen)"
+  },
+  {
+   "id": "AL04",
+   "groesse": "pH",
+   "ort": "Kreislauf",
+   "einheit": "pH",
+   "warn": "< 6,8 oder > 7,8",
+   "alarm": "< 6,5 oder > 8,5 [A] oder Sprung >= 0,5 in 1 h [A]",
+   "notfall": null,
+   "quellen": [
+    "R27",
+    "S452"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "Ziel 7,0-7,5 (UVI/Fort Valley, R27); unter 6 Nitrifikation gehemmt, Biofilter-Optimum 7-8, Fische 6-9,5, Sprung >= 2 Einheiten schaedlich (SRAC 452); Alarmgrenzen enger gewaehlt [A]"
+  },
+  {
+   "id": "AL05",
+   "groesse": "TAN/Ammoniak",
+   "ort": "Pool, Biofilter-Auslass",
+   "einheit": "mg/l NH3-N",
+   "warn": "> 0,02 [A]",
+   "alarm": "> 0,05",
+   "notfall": null,
+   "quellen": [
+    "S452",
+    "FILTER"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "unionisiertes Ammoniak-N unter 0,05 mg/l (SRAC 452, Simulator-Sublethalgrenze); Handmessung taeglich, Umrechnung aus TAN, pH, Temperatur"
+  },
+  {
+   "id": "AL06",
+   "groesse": "Nitrit",
+   "ort": "Pool, Biofilter-Auslass",
+   "einheit": "mg/l NO2-N",
+   "warn": "> 0,25",
+   "alarm": "> 0,5",
+   "notfall": null,
+   "quellen": [
+    "R17-R27",
+    "S452"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "FAO 589: Problem ab 0,25 mg/l; SRAC 452 Tabelle 4: unter 0,5 mg/l"
+  },
+  {
+   "id": "AL07",
+   "groesse": "Nitrat",
+   "ort": "Kreislauf",
+   "einheit": "mg/l NO3-N",
+   "warn": "< 5 oder > 150",
+   "alarm": null,
+   "notfall": null,
+   "quellen": [
+    "R17-R27"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "FAO 589 Steuerregel: unter 5 Futter erhoehen, ueber 150 Wasser teilweise wechseln (R26)"
+  },
+  {
+   "id": "AL10",
+   "groesse": "Wasserstand",
+   "ort": "Pool (Soll Z 515)",
+   "einheit": "mm",
+   "warn": "-30 / +30",
+   "alarm": "-50 / +50 (Heizung und Pumpen sperren)",
+   "notfall": null,
+   "quellen": [
+    "NETZ",
+    "FILTER",
+    "GSA"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "Seitenablauf Z 450 nur ca. 65 mm unter dem Spiegel (K01); Verdunstung ohne Nachfuellen 5,7 cm/Tag, Flutung aller Beete gleichzeitig 0,28 m (Filterkonzept Art 9, Art 4); Heizstab bei tiefem Pegel abschalten (GSA)"
+  },
+  {
+   "id": "AL11",
+   "groesse": "Durchfluss",
+   "ort": "Linie, Abgaenge",
+   "einheit": "l/min",
+   "warn": "< 82 % Soll",
+   "alarm": "< 64 % Soll laenger als 60 s [A]",
+   "notfall": null,
+   "quellen": [
+    "NETZ",
+    "R17-R27"
+   ],
+   "konfidenz": "niedrig-mittel",
+   "begruendung": "Soll 110 l/min je Linie, Beete 54,5, NFT 38 (Netzliste); NFT 1-2 l/min je Rinne (FAO 589); Prozentgrenzen sind Annahme"
+  },
+  {
+   "id": "AL12",
+   "groesse": "Pumpenstrom",
+   "ort": "Pumpen, Gebläse",
+   "einheit": "% des Sollstroms",
+   "warn": "< 70 oder > 120",
+   "alarm": "< 50 laenger als 5 s oder > 130 [A]",
+   "notfall": null,
+   "quellen": [
+    "SENS_CT",
+    "NETZ"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "Trockenlauf = wenig Strom, mit Anlaufverzoegerung; verstopfte Druckseite zeigt dasselbe, darum zweites Signal (Druckschalter); Sollstrom Pumpe gross 72 W, klein 17 W (Netzliste)"
+  },
+  {
+   "id": "AL13",
+   "groesse": "Luftdruck",
+   "ort": "Belueftung, Luftpolster",
+   "einheit": "Druck",
+   "warn": null,
+   "alarm": "faellt unter 50 % des Betriebsdrucks [A] (sofort)",
+   "notfall": "Notluft sofort",
+   "quellen": [
+    "GSA"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "Luftdruckschalter + Relais oeffnet die Sauerstoff-/Notluft-Quelle (GSA, 30 USD); Schwelle ist Annahme"
+  },
+  {
+   "id": "AL14",
+   "groesse": "Netz",
+   "ort": "Schaltschrank",
+   "einheit": "230 V",
+   "warn": null,
+   "alarm": "Ausfall sofort",
+   "notfall": "Notluft + Anruf",
+   "quellen": [
+    "S452",
+    "GSA"
+   ],
+   "konfidenz": "hoch",
+   "begruendung": "SRAC 452: 16 min bis 3 ppm bei 0,25 lb/gal (30 kg/m3), unter 6 min bei 1 lb/gal; Telefonalarm bei Stromausfall und Pegelabweichung ist 'essential'"
+  },
+  {
+   "id": "AL15",
+   "groesse": "Batterie",
+   "ort": "Notstrom",
+   "einheit": "Spannung",
+   "warn": "unter Erhaltungsspannung [A]",
+   "alarm": "unter 80 % Kapazitaet [A]",
+   "notfall": null,
+   "quellen": [
+    "GSA",
+    "R17-R27"
+   ],
+   "konfidenz": "niedrig",
+   "begruendung": "Notstrom-Batterie fuer Luftpumpe laut FAO 589 (R27); Schwellen sind Annahme"
+  },
+  {
+   "id": "AL16",
+   "groesse": "CO2 Raumluft",
+   "ort": "Kuppel",
+   "einheit": "ppm",
+   "warn": "> 1000",
+   "alarm": "> 2000 (lueften), > 5000 (Raum verlassen)",
+   "notfall": null,
+   "quellen": [
+    "CO2_UBA",
+    "FILTER"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "UBA 2008: unter 1000 unbedenklich, 2000 inakzeptabel (Innenraum); TRGS 900: 5000 ppm Arbeitsplatzgrenzwert (8 h); Kuppel nachts CO2-reich (Filterkonzept Art 8)"
+  },
+  {
+   "id": "AL17",
+   "groesse": "Luftfeuchte",
+   "ort": "Kuppel",
+   "einheit": "% rF",
+   "warn": "> 85 [A]",
+   "alarm": null,
+   "notfall": null,
+   "quellen": [
+    "R17-R27"
+   ],
+   "konfidenz": "niedrig",
+   "begruendung": "Kondenswasser erhoeht den Pilzdruck (R24, Kentucky State/Thessalien); Schwelle ist Annahme"
+  },
+  {
+   "id": "AL18",
+   "groesse": "EC",
+   "ort": "Puffer, Ruecklauf",
+   "einheit": "uS/cm",
+   "warn": "Abweichung > 15 % vom 7-Tage-Mittel [A]",
+   "alarm": "> 25 % [A]",
+   "notfall": null,
+   "quellen": [
+    "R27"
+   ],
+   "konfidenz": "niedrig",
+   "begruendung": "R27: kein Zielwert fuer EC gelesen; deshalb Trendalarm statt fester Grenze"
+  },
+  {
+   "id": "AL19",
+   "groesse": "Leckage",
+   "ort": "Technikbereich",
+   "einheit": "Kontakt",
+   "warn": null,
+   "alarm": "nass",
+   "notfall": null,
+   "quellen": [
+    "APEX"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "Leckkontakte am Boden unter Tanks und Station"
+  },
+  {
+   "id": "AL20",
+   "groesse": "Reserve Frischwasser",
+   "ort": "Puffer unten",
+   "einheit": "m3",
+   "warn": "< 0,7 (1 Tag)",
+   "alarm": "< 0,35 (0,5 Tag)",
+   "notfall": null,
+   "quellen": [
+    "FILTER",
+    "R27"
+   ],
+   "konfidenz": "mittel",
+   "begruendung": "Verlust 0,68 m3/Tag bei 2 %/Tag (SRAC 454 laut R27); Verbrauch am Zaehler K39 gegen Soll vergleichen"
+  }
+ ],
+ "alarmwege": {
+  "stufe1_lokal": "Blitzleuchte + Summer an der Tuer und am Schaltschrank, verdrahtet, laeuft ohne Rechner (24 V aus der Batterie)",
+  "stufe2_fern": "Alarmwaehler (GSM) ruft 3-4 Nummern, nimmt Schaltkontakte (Netz, Luftdruck, Pegel niedrig, Watchdog); unabhaengig von WLAN und Messrechner [GSA, S452]",
+  "stufe3_software": "Messrechner/ESP32 melden Trends, Handmessungen und Warnstufen per Telegram/Mail; Muster aus Aquaponik-Arbeiten (JESSI 2025, Amrita 2025) [IOT]",
+  "automatik": [
+   "Netz weg oder Luftdruck faellt: Notluft sofort (Magnetventil stromlos offen oder DC-Pumpe), Alarm",
+   "Pool-Niedrig: Heizung aus, Pumpen aus, Alarm (GSA: Heizstab bei tiefem Pegel abschalten)",
+   "pH-/EC-Sonde ausser Plausibilitaet oder Abweichung > 1 K zwischen MS01 und MS02: Dosierung stoppen, Alarm",
+   "Beetflutung staffeln (Steuerung), nie alle Beete gleichzeitig (-0,28 m Pool)"
+  ],
+  "notluft_optionen": [
+   {
+    "name": "DC-Membranpumpe an Batterie (FAO 589 laut R27)",
+    "preis_usd": null,
+    "beleg": "Auslegung offen"
+   },
+   {
+    "name": "Sauerstoffflasche + stromlos offenes Magnetventil + Ausstroemer je Becken (GSA ca. 250 USD)",
+    "preis_usd": [
+     250,
+     250
+    ],
+    "beleg": "GSA gelesen, SRAC 452 beschreibt dasselbe Prinzip"
+   },
+   {
+    "name": "Generator mit Netzumschalter (beste, aber teure Loesung laut GSA)",
+    "preis_usd": null,
+    "beleg": "GSA gelesen"
+   }
+  ]
+ }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1149 930" font-family="Arial,Helvetica,sans-serif"><rect width="100%" height="100%" fill="#ffffff"/><text x="16" y="26" font-size="18" font-weight="bold" fill="#111">Rautenkissen (20), geschweisst - Zuschnitt Z2 (9 Stueck)</text>
+<polygon points="333.2,710.0 1049.2,710.0 691.2,90.0 60.0,138.9" fill="#eaf4fb" stroke="#111" stroke-width="2"/>
+<polygon points="344.7,691.8 1017.7,691.8 681.2,109.0 87.8,155.0" fill="none" stroke="#777" stroke-width="1.2" stroke-dasharray="8 5"/>
+<polygon points="339.5,700.0 1031.9,700.0 685.7,100.4 75.3,147.7" fill="none" stroke="#1f5fd0" stroke-width="1.5" stroke-dasharray="2 4"/>
+<line x1="344.7" y1="691.8" x2="681.2" y2="109.0" stroke="#2a9d3a" stroke-width="2" stroke-dasharray="14 4 3 4"/>
+<text x="709.2" y="744.8" font-size="13" text-anchor="middle" fill="#111">3708 mm</text>
+<text x="909.3" y="398.2" font-size="13" text-anchor="middle" fill="#111">3708 mm</text>
+<text x="356.4" y="79.0" font-size="13" text-anchor="middle" fill="#111">3279 mm</text>
+<text x="156.4" y="425.6" font-size="13" text-anchor="middle" fill="#111">3279 mm</text>
+<line x1="16" y1="780" x2="60" y2="780" stroke="#111" stroke-width="3" /><text x="70" y="784" font-size="13" fill="#111">Schnittkante = Strebenachse + 100 mm Ueberstand (Abnaeher: + 25 mm Nahtzugabe)</text>
+<line x1="16" y1="800" x2="60" y2="800" stroke="#777" stroke-width="3" stroke-dasharray="8 5"/><text x="70" y="804" font-size="13" fill="#111">Strebenachse (Knoten zu Knoten, nominal)</text>
+<line x1="16" y1="820" x2="60" y2="820" stroke="#1f5fd0" stroke-width="3" stroke-dasharray="2 4"/><text x="70" y="824" font-size="13" fill="#111">Umfangsnaht (Heizkeil, 2 x 15 mm) 45 mm ausserhalb der Achse, beide Lagen</text>
+<line x1="16" y1="840" x2="60" y2="840" stroke="#2a9d3a" stroke-width="3" stroke-dasharray="14 4 3 4"/><text x="70" y="844" font-size="13" fill="#111">Falz ueber der Strebe: Folie nicht schneiden, nicht klemmen</text>
+<line x1="16" y1="860" x2="60" y2="860" stroke="#d02020" stroke-width="3" /><text x="70" y="864" font-size="13" fill="#111">Abnaeher: beide Kanten ueberlappen und verschweissen, je Lage</text>
+<text x="16" y="886" font-size="13" fill="#111">Flaeche der Schnittkontur 12.41 m2 je Lage - Masse in mm, Blatt je Lage zweimal schneiden (innen/aussen), Ansicht von aussen, Spiegeln erlaubt.</text>
+</svg>

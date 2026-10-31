@@ -1,0 +1,1046 @@
+{
+ "meta": {
+  "auftrag": "R38",
+  "stand": "2026-10-31",
+  "skript": "scripts/plane_nesting.py",
+  "parameter": {
+   "ueberstand_mm": 100.0,
+   "nahtzugabe_abnaeher_mm": 25.0,
+   "umfangsnaht_ausserhalb_achse_mm": 45.0,
+   "nahtbreite_mm": 15.0,
+   "knotenfreiraum_mm": 130.0,
+   "rollenbreiten_mm": [
+    4000.0,
+    6000.0,
+    8000.0,
+    10000.0,
+    12000.0
+   ],
+   "empfohlen": "V2"
+  },
+  "herkunft": "Q = R24/huelle_folie.md/keilschiene.md; A = Annahme im Skript; Rollenbreiten laut docs/research/R38.md"
+ },
+ "varianten": [
+  {
+   "id": "V1",
+   "name": "Dreieckskissen (40), geschweisst",
+   "naht": "geschweisst",
+   "einheiten": 40,
+   "formen": 2,
+   "zuschnitt_typen": 3,
+   "zuschnitte_gesamt": 80,
+   "schnittlaenge_m": 461.1,
+   "umfangsnaht_m": 438.1,
+   "abnaeher_naht_m": 0.0,
+   "naht_gesamt_m": 438.1,
+   "t_kreuzungen": 0,
+   "ventile": 40,
+   "max_einheit_m2": 7.1,
+   "schiene_einfach_m": 34.5,
+   "schiene_doppel_m": 176.8,
+   "streben": {
+    "rand": 10,
+    "fuge": 55,
+    "scharnier": 0,
+    "abnaeher": 0
+   },
+   "verschnitt_prozent": 11.0,
+   "rollen": "T1: 6 m x 32.7 m; T2: 4 m x 22.3 m",
+   "rollenbedarf": [
+    {
+     "typ": "T1",
+     "breite_mm": 6000.0,
+     "laenge_m": 32.71,
+     "flaeche_m2": 196.3,
+     "verschnitt_prozent": 6.9
+    },
+    {
+     "typ": "T2",
+     "breite_mm": 4000.0,
+     "laenge_m": 22.3,
+     "flaeche_m2": 89.2,
+     "verschnitt_prozent": 20.2
+    }
+   ],
+   "gemeinsame_rolle": {
+    "breite_mm": 10000.0,
+    "laenge_m": 32.71,
+    "flaeche_m2": 327.1,
+    "verschnitt_prozent": 22.4
+   }
+  },
+  {
+   "id": "V2",
+   "name": "Rautenkissen (20), geschweisst",
+   "naht": "geschweisst",
+   "einheiten": 20,
+   "formen": 2,
+   "zuschnitt_typen": 3,
+   "zuschnitte_gesamt": 40,
+   "schnittlaenge_m": 298.1,
+   "umfangsnaht_m": 287.9,
+   "abnaeher_naht_m": 0.0,
+   "naht_gesamt_m": 287.9,
+   "t_kreuzungen": 0,
+   "ventile": 20,
+   "max_einheit_m2": 12.4,
+   "schiene_einfach_m": 34.5,
+   "schiene_doppel_m": 112.1,
+   "streben": {
+    "rand": 10,
+    "fuge": 35,
+    "scharnier": 20,
+    "abnaeher": 0
+   },
+   "verschnitt_prozent": 21.9,
+   "rollen": "gemeinsam 8 m x 38.2 m",
+   "rollenbedarf": [
+    {
+     "typ": "T1",
+     "breite_mm": 4000.0,
+     "laenge_m": 36.68,
+     "flaeche_m2": 146.7,
+     "verschnitt_prozent": 21.8
+    },
+    {
+     "typ": "T2",
+     "breite_mm": 4000.0,
+     "laenge_m": 38.22,
+     "flaeche_m2": 152.9,
+     "verschnitt_prozent": 18.8
+    }
+   ],
+   "gemeinsame_rolle": {
+    "breite_mm": 8000.0,
+    "laenge_m": 38.22,
+    "flaeche_m2": 305.8,
+    "verschnitt_prozent": 21.9
+   }
+  },
+  {
+   "id": "V3",
+   "name": "Sektorkissen (5 a 8 Dreiecke), geschweisst",
+   "naht": "geschweisst",
+   "einheiten": 5,
+   "formen": 1,
+   "zuschnitt_typen": 2,
+   "zuschnitte_gesamt": 10,
+   "schnittlaenge_m": 172.4,
+   "umfangsnaht_m": 137.4,
+   "abnaeher_naht_m": 32.8,
+   "naht_gesamt_m": 170.2,
+   "t_kreuzungen": 10,
+   "ventile": 5,
+   "max_einheit_m2": 44.9,
+   "schiene_einfach_m": 34.5,
+   "schiene_doppel_m": 45.3,
+   "streben": {
+    "rand": 10,
+    "fuge": 15,
+    "scharnier": 35,
+    "abnaeher": 5
+   },
+   "verschnitt_prozent": 30.4,
+   "rollen": "gemeinsam 10 m x 32.3 m",
+   "rollenbedarf": [
+    {
+     "typ": "T1",
+     "breite_mm": 10000.0,
+     "laenge_m": 32.26,
+     "flaeche_m2": 322.6,
+     "verschnitt_prozent": 30.4
+    }
+   ],
+   "gemeinsame_rolle": {
+    "breite_mm": 10000.0,
+    "laenge_m": 32.26,
+    "flaeche_m2": 322.6,
+    "verschnitt_prozent": 30.4
+   }
+  },
+  {
+   "id": "V4",
+   "name": "Dreiecke (40), nur geklemmt",
+   "naht": "geklemmt",
+   "einheiten": 40,
+   "formen": 2,
+   "zuschnitt_typen": 3,
+   "zuschnitte_gesamt": 80,
+   "schnittlaenge_m": 461.1,
+   "umfangsnaht_m": 0.0,
+   "abnaeher_naht_m": 0.0,
+   "naht_gesamt_m": 0.0,
+   "t_kreuzungen": 0,
+   "ventile": 1,
+   "max_einheit_m2": 7.1,
+   "schiene_einfach_m": 34.5,
+   "schiene_doppel_m": 176.8,
+   "streben": {
+    "rand": 10,
+    "fuge": 55,
+    "scharnier": 0,
+    "abnaeher": 0
+   },
+   "verschnitt_prozent": 11.0,
+   "rollen": "T1: 6 m x 32.7 m; T2: 4 m x 22.3 m",
+   "rollenbedarf": [
+    {
+     "typ": "T1",
+     "breite_mm": 6000.0,
+     "laenge_m": 32.71,
+     "flaeche_m2": 196.3,
+     "verschnitt_prozent": 6.9
+    },
+    {
+     "typ": "T2",
+     "breite_mm": 4000.0,
+     "laenge_m": 22.3,
+     "flaeche_m2": 89.2,
+     "verschnitt_prozent": 20.2
+    }
+   ],
+   "gemeinsame_rolle": {
+    "breite_mm": 10000.0,
+    "laenge_m": 32.71,
+    "flaeche_m2": 327.1,
+    "verschnitt_prozent": 22.4
+   }
+  },
+  {
+   "id": "V4b",
+   "name": "Rauten (20), nur geklemmt",
+   "naht": "geklemmt",
+   "einheiten": 20,
+   "formen": 2,
+   "zuschnitt_typen": 3,
+   "zuschnitte_gesamt": 40,
+   "schnittlaenge_m": 298.1,
+   "umfangsnaht_m": 0.0,
+   "abnaeher_naht_m": 0.0,
+   "naht_gesamt_m": 0.0,
+   "t_kreuzungen": 0,
+   "ventile": 1,
+   "max_einheit_m2": 12.4,
+   "schiene_einfach_m": 34.5,
+   "schiene_doppel_m": 112.1,
+   "streben": {
+    "rand": 10,
+    "fuge": 35,
+    "scharnier": 20,
+    "abnaeher": 0
+   },
+   "verschnitt_prozent": 21.9,
+   "rollen": "gemeinsam 8 m x 38.2 m",
+   "rollenbedarf": [
+    {
+     "typ": "T1",
+     "breite_mm": 4000.0,
+     "laenge_m": 36.68,
+     "flaeche_m2": 146.7,
+     "verschnitt_prozent": 21.8
+    },
+    {
+     "typ": "T2",
+     "breite_mm": 4000.0,
+     "laenge_m": 38.22,
+     "flaeche_m2": 152.9,
+     "verschnitt_prozent": 18.8
+    }
+   ],
+   "gemeinsame_rolle": {
+    "breite_mm": 8000.0,
+    "laenge_m": 38.22,
+    "flaeche_m2": 305.8,
+    "verschnitt_prozent": 21.9
+   }
+  }
+ ],
+ "geometrie": {
+  "netto_huelle_m2": 209.96,
+  "winkeldefekt_innere_knoten": [
+   [
+    5,
+    15.7
+   ],
+   [
+    6,
+    17.7
+   ]
+  ],
+  "knick_falz_grad": [
+   157.5,
+   162.0
+  ],
+  "kugelradius_mm": 5986
+ },
+ "empfehlung": {
+  "variante": "V2",
+  "name": "Rautenkissen (20), geschweisst",
+  "montage_reihenfolge": [
+   "R16",
+   "R19",
+   "R14",
+   "R20",
+   "R15",
+   "R11",
+   "R17",
+   "R12",
+   "R18",
+   "R13",
+   "R04",
+   "R05",
+   "R01",
+   "R02",
+   "R03",
+   "R08",
+   "R09",
+   "R10",
+   "R06",
+   "R07"
+  ],
+  "zuschnitte": [
+   {
+    "id": "Z1",
+    "anzahl": 10,
+    "tuerfeld": false,
+    "einheiten": [
+     "R01",
+     "R02",
+     "R03",
+     "R04",
+     "R05",
+     "R11",
+     "R12",
+     "R13",
+     "R14",
+     "R15"
+    ],
+    "kante_nominal_mm": [
+     3279,
+     3708,
+     3708,
+     3279
+    ],
+    "schnitt_m2": 11.47,
+    "umfangsnaht_m": 14.41,
+    "polygon_achse_mm": [
+     [
+      2043.8,
+      2804.5
+     ],
+     [
+      189.8,
+      100.0
+     ],
+     [
+      3897.8,
+      100.0
+     ],
+     [
+      5234.9,
+      3558.5
+     ]
+    ],
+    "polygon_schnitt_mm": [
+     [
+      1983.2,
+      2893.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3966.3,
+      0.0
+     ],
+     [
+      5396.6,
+      3699.5
+     ]
+    ],
+    "tuer_ausschnitt_mm": null
+   },
+   {
+    "id": "Z2",
+    "anzahl": 9,
+    "tuerfeld": false,
+    "einheiten": [
+     "R06",
+     "R07",
+     "R08",
+     "R09",
+     "R10",
+     "R17",
+     "R18",
+     "R19",
+     "R20"
+    ],
+    "kante_nominal_mm": [
+     3708,
+     3708,
+     3279,
+     3279
+    ],
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.37,
+    "polygon_achse_mm": [
+     [
+      1568.4,
+      100.0
+     ],
+     [
+      5276.4,
+      100.0
+     ],
+     [
+      3422.4,
+      3311.2
+     ],
+     [
+      153.2,
+      3057.9
+     ]
+    ],
+    "polygon_schnitt_mm": [
+     [
+      1505.4,
+      0.0
+     ],
+     [
+      5449.6,
+      0.0
+     ],
+     [
+      3477.5,
+      3415.8
+     ],
+     [
+      0.0,
+      3146.3
+     ]
+    ],
+    "tuer_ausschnitt_mm": null
+   },
+   {
+    "id": "Z3",
+    "anzahl": 1,
+    "tuerfeld": true,
+    "einheiten": [
+     "R16"
+    ],
+    "kante_nominal_mm": [
+     3279,
+     3708,
+     3708,
+     3279
+    ],
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.37,
+    "polygon_achse_mm": [
+     [
+      5296.4,
+      3057.9
+     ],
+     [
+      2027.2,
+      3311.2
+     ],
+     [
+      173.2,
+      100.0
+     ],
+     [
+      3881.2,
+      100.0
+     ]
+    ],
+    "polygon_schnitt_mm": [
+     [
+      5449.6,
+      3146.3
+     ],
+     [
+      1972.1,
+      3415.8
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3944.2,
+      0.0
+     ]
+    ],
+    "tuer_ausschnitt_mm": [
+     [
+      1514.2,
+      0.0
+     ],
+     [
+      2540.2,
+      0.0
+     ],
+     [
+      2540.2,
+      2143.0
+     ],
+     [
+      1514.2,
+      2143.0
+     ]
+    ]
+   }
+  ],
+  "einheiten": [
+   {
+    "id": "R01",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     0,
+     1
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      0,
+      1
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R02",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     9,
+     15
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      4,
+      5
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R03",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     33,
+     34
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      12,
+      14
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R04",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     26,
+     27
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      9,
+      11
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R05",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     19,
+     22
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      7,
+      8
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R06",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     2,
+     3
+    ],
+    "typen": [
+     "BBB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      0,
+      4
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R07",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     12,
+     16
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      4,
+      12
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R08",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     14,
+     28
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      9,
+      12
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R09",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     13,
+     25
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      8,
+      9
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R10",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     4,
+     5
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      0,
+      8
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R11",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     6,
+     8
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      1,
+      21
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R12",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     17,
+     18
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      5,
+      16
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R13",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     35,
+     38
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      14,
+      18
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R14",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     29,
+     32
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      11,
+      20
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R15",
+    "zuschnitt": "Z1",
+    "tuer": false,
+    "dreiecke": [
+     20,
+     24
+    ],
+    "typen": [
+     "AAB",
+     "AAB"
+    ],
+    "scharniere": [
+     [
+      7,
+      24
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.028,
+    "schnitt_m2": 11.475,
+    "umfangsnaht_m": 14.412,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R16",
+    "zuschnitt": "Z3",
+    "tuer": true,
+    "dreiecke": [
+     7,
+     21
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      6,
+      22
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R17",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     10,
+     11
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      2,
+      23
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R18",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     37,
+     39
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      15,
+      17
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R19",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     31,
+     36
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      13,
+      19
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   },
+   {
+    "id": "R20",
+    "zuschnitt": "Z2",
+    "tuer": false,
+    "dreiecke": [
+     23,
+     30
+    ],
+    "typen": [
+     "AAB",
+     "BBB"
+    ],
+    "scharniere": [
+     [
+      10,
+      25
+     ]
+    ],
+    "abnaeher": [],
+    "netto_m2": 10.968,
+    "schnitt_m2": 12.41,
+    "umfangsnaht_m": 14.375,
+    "abnaeher_m": 0.0
+   }
+  ],
+  "streben_klassen": {
+   "0-1": "scharnier",
+   "0-2": "fuge",
+   "0-3": "fuge",
+   "0-4": "scharnier",
+   "0-6": "fuge",
+   "0-8": "scharnier",
+   "1-2": "fuge",
+   "1-6": "fuge",
+   "1-21": "scharnier",
+   "1-22": "fuge",
+   "2-4": "fuge",
+   "2-5": "fuge",
+   "2-21": "fuge",
+   "2-23": "scharnier",
+   "3-4": "fuge",
+   "3-8": "fuge",
+   "3-9": "fuge",
+   "3-12": "fuge",
+   "4-5": "scharnier",
+   "4-12": "scharnier",
+   "4-15": "fuge",
+   "5-15": "fuge",
+   "5-16": "scharnier",
+   "5-23": "fuge",
+   "6-7": "fuge",
+   "6-8": "fuge",
+   "6-22": "scharnier",
+   "6-24": "fuge",
+   "7-8": "scharnier",
+   "7-10": "fuge",
+   "7-24": "scharnier",
+   "7-25": "fuge",
+   "8-9": "scharnier",
+   "8-10": "fuge",
+   "9-10": "fuge",
+   "9-11": "scharnier",
+   "9-12": "scharnier",
+   "9-13": "fuge",
+   "10-11": "fuge",
+   "10-20": "fuge",
+   "10-25": "scharnier",
+   "11-13": "fuge",
+   "11-19": "fuge",
+   "11-20": "scharnier",
+   "12-13": "fuge",
+   "12-14": "scharnier",
+   "12-15": "fuge",
+   "13-14": "fuge",
+   "13-18": "fuge",
+   "13-19": "scharnier",
+   "14-15": "fuge",
+   "14-17": "fuge",
+   "14-18": "scharnier",
+   "15-16": "fuge",
+   "15-17": "scharnier",
+   "16-17": "rand",
+   "16-23": "rand",
+   "17-18": "rand",
+   "18-19": "rand",
+   "19-20": "rand",
+   "20-25": "rand",
+   "21-22": "rand",
+   "21-23": "rand",
+   "22-24": "rand",
+   "24-25": "rand"
+  }
+ }
+}

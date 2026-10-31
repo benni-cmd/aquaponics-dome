@@ -1,0 +1,48 @@
+{
+ "klasse": "becken_dritt_klein",
+ "teilenummer": "T14k",
+ "revision": "A",
+ "beschreibung": "Drittbecken klein (R37 Befund 10, D66): Quarantaene- und Notbecken 0,4 m3, Wasser Ø 800 x 800 mm Tiefe, Ringwand 60 mm, Boden 120 mm, Rand 135 mm ueber dem Wasserspiegel (Rand Z 650, Wasserspiegel Z 515 wie Pool und Zweitbecken); eingelassen in den Boden",
+ "quelle_masse": "docs/research/R37.md Befund 10 (0,4 m3 = Ø 0,8 x 0,8 m, 37-l-Biofilter, Grundflaeche 0,66 m2 mit 60-mm-Ring); Bestand: scripts/gen_dome.py pool_fn (Boden 120, Wasser Ø d-10, Wand 60, Rand pool_rim 650, Wasserspiegel water_z 515)",
+ "parameter": {
+  "wasser_d": {"wert": 800, "einheit": "mm", "herkunft": "[E] R37 Befund 10 / Auftrag W34: Wasserdurchmesser (Innendurchmesser) 800 mm; ersetzt pool3_d 1030"},
+  "wasser_tiefe": {"wert": 800, "einheit": "mm", "herkunft": "[E] R37 Befund 10 / Auftrag W34: Wassertiefe 800 mm (0,4 m3 = Ø 0,8 x 0,8 m); der Bestand pool3_depth 1130 war die Tiefe einschliesslich des 120-mm-Bodens bis zum Wasserspiegel"},
+  "ring": {"wert": 60, "einheit": "mm", "herkunft": "[E] Auftrag W34 / R37 Befund 10: Ring 60 mm (wie Zweitbecken und Drittbecken im Bestand)"},
+  "boden": {"wert": 120, "einheit": "mm", "herkunft": "[E] Bestand gen_dome.py pool_fn: Hohlraum beginnt 120 mm ueber der Unterkante"},
+  "wasser_spiel": {"wert": 10, "einheit": "mm", "herkunft": "[E] Bestand gen_dome.py pool_fn: Wasserkoerper Ø d - 10 (5 mm Luft zur Wand, keine Beruehrung)"},
+  "rand_ueber_wasser": {"wert": 135, "einheit": "mm", "herkunft": "[E] data/params.json pool_rim 650 minus data/layout.json pool2.water_z 515 (Rand Z 650, Wasserspiegel Z 515, wie Pool und Zweitbecken)"},
+  "pool3_d_neu": {"wert": 800, "einheit": "mm", "herkunft": "[R] Wert fuer data/params.json pool3_d (Montage setzt ihn; vorher 1030)"},
+  "pool3_depth_neu": {"wert": 920, "einheit": "mm", "herkunft": "[R] Wert fuer data/params.json pool3_depth (Tiefe bis Wasserspiegel einschliesslich Boden 120: 800 + 120; vorher 1130)"}
+ },
+ "werkstoff": {"name": "Beton (Platzhalter fuer die Ringwand)", "dichte_g_cm3": 2.4, "farbe": "#9a9a96", "herkunft": "[A] Wandwerkstoff nicht entschieden (Bestand ohne Material, Standarddichte); Beton als Platzhalter fuer eingelassene Becken"},
+ "anzahl": {"soll": "1 Drittbecken", "quelle": "D46/D49 (Lage Zwickel Tuer/Station, Platzierung Montage); D66: klein"},
+ "bezugspunkt": "Mitte der Beckenunterkante (Z 0 = Unterkante Boden); Z hoch; Einbau: Z 0 liegt bei Wasserspiegel Z 515 minus 920 = Z -405 im Modellrahmen",
+ "herkunft_tabelle": [
+  ["Drittbecken 0,4 m3: Wasser Ø 800 x 800 tief", "402 l Nennvolumen", "E", "R37 Befund 10 (Quarantaene, 31 Fische, 2,4 kg, 37-l-Biofilter); Auftrag W34", "mittel"],
+  ["Ring 60 mm, Aussendurchmesser 920", "Ø 920", "E", "Auftrag W34; Bestand pool_fn (wall 60)", "mittel"],
+  ["Grundflaeche mit Ring 0,66 m2", "0,66 m2", "R", "pi x 0,46^2 = 0,665 m2 (R37 Befund 10: 0,66 m2; Bestand 1,04 m2)", "hoch"],
+  ["Rand 135 mm ueber dem Wasserspiegel", "135", "E", "data/params.json pool_rim 650, layout pool2.water_z 515 (wie Pool/Zweitbecken)", "hoch"],
+  ["Ringwand Beton", "2,4 g/cm3", "A", "Wandwerkstoff offen; Bestand ohne Material", "niedrig"]
+ ],
+ "blatt": {
+  "funktion": "Drittbecken als Quarantaene- und Notbecken fuer Zuchttiere oder Kranke (R37 Befund 10): 0,4 m3 Wasser, eingelassen in den Boden wie Pool und Zweitbecken. Der Pool (346 kg Fisch) laesst sich in keinem Becken auffangen. Eigener Biofilter (37 l Bioballs) und Belueftung sind noetig und liegen ausserhalb dieses Bauteils.",
+  "querschnitt": "Zylinderwanne: Aussen Ø 920, Hohlraum Ø 800 ab 120 mm ueber der Unterkante, Gesamthoehe 1055 mm (Boden 120 + Wassertiefe 800 + Rand 135). Wasserkoerper Ø 790 x 800.",
+  "toleranzen": "Rand 135 mm ueber dem Wasserspiegel; 5 mm Luft zwischen Wasserkoerper und Wand.",
+  "ports": [],
+  "verbindungen": ["Anschluesse und Stutzen sind im Bestand nicht modelliert (gen_dome.py pool_fn erzeugt nur Wanne und Wasser); Zu- und Ablaufstutzen liefert das Leitungsnetz (Montage). Stutzen wie bisher: keine."],
+  "abweichung": "Bestand: Innen Ø 1030, Wassertiefe 1010 (pool3_depth 1130 bis Wasserspiegel), 825 l Wasser, Grundflaeche 1,04 m2. Neu: Innen Ø 800, Wassertiefe 800, 402 l Nennvolumen, Grundflaeche 0,66 m2. Der Bestand `designs/components/becken_dritt.sc` bleibt unveraendert (Montage-Datei, von gen_dome.py erzeugt).",
+  "montage": ["Grube Ø 920, Tiefe 1055 minus 135 Rand ueber Gelaende (Wasserspiegel Z 515, Rand Z 650)", "Becken einsetzen, Wasserspiegel auf Z 515 einstellen"],
+  "werkzeug": "Bagger oder Spaten, Wasserwaage",
+  "stueckliste": ["T14k Drittbecken klein: 1 Wanne Ø 920 x 1055 (Ringwand 60, Boden 120)"],
+  "lokal": "Fertigbecken PE Ø 920 oder Betonring DN 800 mit Bodenplatte; Rand 135 mm ueber dem Wasserspiegel.",
+  "massen_getrennt": ["Wasser"],
+  "gewicht_gefuellt": "Wasser 392 l ca. 392 kg [E, Dichte 1]",
+  "pruefung": ["scripts/workshop/check_becken_dritt_klein.py (Ergebnis renders/components/becken_dritt_klein/check.txt): Durchmesser, Ring, Tiefe, Volumen 0,4 m3, Grundflaeche 0,66 m2, Rand, Interferenz 0"],
+  "offen": [
+   "Montage: data/params.json pool3_d 800 und pool3_depth 920 setzen (oder die neue Komponente verknuepfen); Lage D49 (Zwickel Tuer/Station) mit dem kleineren Becken neu pruefen (place_m8.py, Laufwegkarte)",
+   "Wandwerkstoff (Beton oder PE) offen; Stutzen, Biofilter 37 l und Belueftung nicht modelliert (Leitungsnetz K35-K41: Montage)",
+   "Wasserwechsel 2 l/min aus der Frischwasserleitung bzw. Zisterne (R37 Befund 9), Frischwasserquelle klaert Ben beim Versorger"
+  ],
+  "kritiker": "Kein Pruefer-Lauf (Auftrag W34: Selbstcheck)."
+ }
+}

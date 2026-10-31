@@ -1,0 +1,14 @@
+PASS becken_dritt_klein: Koerper (Wanne, Wasser): Ist 2, Soll 2
+PASS becken_dritt_klein: Aussendurchmesser = 800 + 2 x 60 = 920: Ist 919.986, Soll 920 (+-0.5)
+PASS becken_dritt_klein: Gesamthoehe 1055 (Boden 120 + Wasser 800 + Rand 135): Ist 1055, Soll 1055 (+-0.2)
+PASS becken_dritt_klein: Unterkante Z 0: Ist 0, Soll 0 (+-0.1)
+PASS becken_dritt_klein: Wasserspiegel (Oberkante Wasserkoerper) Z 920: Ist 920, Soll 920 (+-0.2)
+PASS becken_dritt_klein: Rand ueber dem Wasserspiegel 135 (Rand Z 650 - Wasserspiegel Z 515): Ist 135, Soll 135 (+-0.2)
+PASS becken_dritt_klein: Wassertiefe 800 (Wasserkoerper): Ist 800, Soll 800 (+-0.2)
+PASS becken_dritt_klein: Boden 120 (Wasserunterkante): Ist 120, Soll 120 (+-0.2)
+PASS becken_dritt_klein: Nennvolumen bis Wasserspiegel 402 l = 0,4 m3 (R37 Befund 10): Ist 402.128, Soll 400 (+-5)
+PASS becken_dritt_klein: Wasserkoerper 392 l (Ø 790 x 800, 5 mm Luft zur Wand) zwischen 380 und 402: Ist 1, Soll 1
+PASS becken_dritt_klein: Grundflaeche mit Ring 0.66 m2 = 0,66 (R37: 0,66 m2): Ist 0.66474, Soll 0.66 (+-0.01)
+PASS becken_dritt_klein: Wandstaerke Ring 60 (Hohlraum 800 gegen aussen 920): Wasser-Luft 5 mm je Seite: Ist 5.0061, Soll 5 (+-0.2)
+PASS becken_dritt_klein: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+== becken_dritt_klein: 13/13 PASS

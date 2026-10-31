@@ -55,3 +55,10 @@ Alle Wuensche Bens stehen jetzt in `docs/packages/wunschbuch-ben.md` (W01-W40, P
 | 20 | R41 Laschen-Scheiben-Knoten (Foto Chemnitz) gegen Kugelknoten; Einordnung des Berichts | Fachrecherche (frisch) | jobs/R41 | startet, sobald eine der laufenden Recherchen (R38/R39) fertig ist (Limit) |
 | 21 | Bens Entscheidung zu 346 kg gegen 450-500 kg (W24) in den Zwischencheck aufnehmen | Orchestrator + Ben | wunschbuch C1 | Zwischencheck |
 | 22 | Wunschbuch bei jeder Abnahme nachfuehren; offene PRUEFEN-Zeilen klaeren (W39 Hover-Bug, W40 ComfyUI) | Orchestrator | wunschbuch | laufend |
+
+## Roadmap-Kurzfassung 31.10. 20:30 (fuer Ben, Reihenfolge verbindlich)
+ERLEDIGT: W33 Tischhoehe 1000 · R34 Streben (V1 bleibt) · R35 Tischhoehe · R36 Beete (Weg 1, 346 kg) · D62/D63 Zweitbecken von der Achse, Ringe +100/+200, Karte Knie gruen · R37 Puffer klein (D66) · R38 Plane (V2: 20 Rautenkissen) · R39 Messstellen (67, davon 22 Pflicht) · Plane im Viewer durchsichtig · walk_z · Wunschbuch · Roadmap-Paket B11-B15.
+LAEUFT: W34 Puffer klein + Drittbecken 0,4 m3 (Werkstatt-4).
+VOR DEM ZWISCHENCHECK: 1 W34 abnehmen · 2 W35 Sondenhalter/Messstellen-Bauteile (Werkstatt) · 3 R40 Netzliste auf Stand · 4 Montage: Vorbau raus, Puffer/Drittbecken/Pumpentafeln/Messstellen setzen, Karte gruen · 5 R41 Laschenknoten-Vergleich (parallel, wenn Limit passt) · 6 check_latte-Skript umstellen · 7 M10 Leitungsplan (Orchestrator liest gegen) · 8 M10 Leitungen und Kabel inkl. Signalkabel Messstellen · 9 EIN check_latte, Draufsicht/Seitenansicht · 10 PAUSE Zwischencheck mit Ben.
+NACH DEM ZWISCHENCHECK: 11 Plane im Modell (R38 V2) und im Bauplan · 12 Statik B9b, Strebe V1/V2c, Verbindungsstueck-Entscheidung · 13 B4 Katalog, B1 Teile-Datenmodell, B2/B3 Detailansicht, B5 Stueckliste/Meterware, R31/R32/R33, B10 Bauanleitung · 14 Farben/Material/Renders, Pflanzenmodelle, Notstrom/Alarm, Suesskartoffel-Licht, NFT-Wuchsflaeche messen.
+LAUFEND: Docs auf Stand (346 kg, Puffer 0,16 m3), Wunschbuch nachfuehren.

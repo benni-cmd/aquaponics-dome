@@ -53,6 +53,9 @@ rep("Die Z-Hoehen bleiben (innen 840, Mitte/aussen 1300).", "Z-Hoehen: seit W33 
 rep("Kragarm ueberspannt Rand Z 650 mit 130 mm Luft", "Kragarm ueberspannt Rand Z 650 mit 290 mm Luft (W33; vorher 130)")
 wz = M["innen"]["wz"]
 rep("Winkelhalter T23 sitzt am Pfostenkopf (Z 719-781) ueber dem Beckenrand Z 650", f"Winkelhalter T23 sitzt am Pfostenkopf (Z {wz[0]:.0f}-{wz[1]:.0f}, W33) ueber dem Beckenrand Z 650")
+rep("196/196 PASS", "204/204 PASS")
+rep("48/48 PASS aussen, 47/47 aussen3", "50/50 PASS aussen, 49/49 aussen3 (W33)")
+rep("Abstand der Tischkanten zur Kuppelhaut >= 15 (aussen 21, mitte/innen weit innen)", "Abstand der Tischkanten zur Kuppelhaut >= 15 (aussen 121 seit W33, vorher 21; mitte/innen weit innen)")
 rep("Aussenkante Tisch in 1,3 m Hoehe gegen Strebenabstand", "Aussenkante Tisch in 1,0 m Hoehe (W33; vorher 1,3 m) gegen Strebenabstand")
 d = json.loads(txt)
 
@@ -84,6 +87,6 @@ fit = sys.argv[1] if len(sys.argv) > 1 else "?"
 entry = (f"W33 (31.10., R35/D60): Rinnenunterkante 1000 mm in allen Ringen (innen 840, Mitte/aussen 1300 vorher); Beine {la[0]}-{la[-1]} mm statt ca. 1220-1250 (aussen), Kuppelhaut-Abstand aeusserste Rinne {fit} mm statt 21; "
          "Querstrebe Z 650 statt 800 (Annahme A, Diagonalen 12,5-15,5 Grad); Tischunterkante 940, 465 mm ueber Beetrand: Beet nur an den Kanten erreichbar (R35 Befund 6; Beete-Weg 1/2 bei Ben/Orchestrator); "
          "Statik (kuerzere Beine, hoehere Knicklast) nicht nachgewiesen; Montage: Tische neu bauen, Hoehe von Zulaufverteiler, Sammelrohr und Leitungen mitfuehren, Laufwegkarte (D54) danach")
-d["offen"] = [x for x in d["offen"] if not x.startswith("W33 (31.10.")] + [entry]
+d["blatt"]["offen"] = [x for x in d["blatt"]["offen"] if not x.startswith("W33 (31.10.")] + [entry]
 json.dump(d, open(pth, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("OK")

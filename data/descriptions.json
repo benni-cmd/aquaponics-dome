@@ -233,7 +233,7 @@
       "match": "^nft_tisch",
       "titel": "NFT-Tisch",
       "was": "Gestell, das mehrere NFT-Rinnen mit Gefälle über den Beeten bzw. dem Pool trägt.",
-      "status": "Rev. C (W17/W18), check_nft_fit 42/42",
+      "status": "Rev. C (W33: Rinnenunterkante 1000 mm), check_nft_tisch 204/204, check_nft_fit 50/50",
       "ablauf": [
         "Ein Zulaufverteiler gibt über je einen Schlauch pro Rinne Wasser auf.",
         "Die Rinnen haben 1,5 % Gefälle (rund 0,86°): das Wasser fließt von allein vom hohen zum tiefen Ende.",
@@ -266,6 +266,8 @@
         "Lochabstand": "200 mm",
         "Topflöcher": "674 gesamt (aussen4, D43)",
         "Gefälle": "1,5 %",
+        "Rinnenhöhe": "Unterkante 1000 mm über Boden in allen drei Ringen (R35/D60; Toleranz 950–1050; vorher innen 840, Mitte/außen 1300); Topfebene 1014–1054 mm, passend zum Ellbogen von 1,55–1,90 m; Tischunterkante 940 mm, 465 mm über dem Beetrand",
+        "Beine": "Höhe 920–950 mm (außen), 927–943 mm (Mitte), 933–937 mm (innen); Querstrebe auf Z 650 über den Pflanzen; Abstand der äußersten Rinne zur Kuppelhaut 121 mm (vorher 21)",
         "Eckluft": "60 mm (D34)",
         "Wasserbedarf": "1 l/min je Rinne (FAO 589: 1–2), alle 76 Rinnen ≈ 76 l/min (bei 2 l/min 152 l/min)",
         "Wasser im Film": "≈ 1 l je Meter Rinne, gesamt ≈ 148 l",

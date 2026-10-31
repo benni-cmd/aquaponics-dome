@@ -837,6 +837,46 @@
         "Steuerung": "40 W",
         "Heizung": "nicht enthalten: ≈ 0,83 kW je Kelvin (0,58–1,19) für die Plane aus doppelter PE-Folie, 208 m²; bei ΔT 30 K ≈ 25 kW Spitze (Standort offen)"
       }
+    },
+    {
+      "match": "^mensch",
+      "titel": "Größenreferenz Mensch 1,80 m",
+      "was": "Zwei Figuren von 1,80 m Körpergröße als Maßstab im Modell: eine misst an der Puffer-Station, eine arbeitet am NFT-Tisch.",
+      "status": "Referenz (D47, Werkstatt W29), keine Anlagenkomponente",
+      "ablauf": [
+        "Typ messen: Oberkörper leicht vorgebeugt, rechter Arm auf Brusthöhe zur Dosierkonsole oder Sonde, linke Hand hält ein Messgerät.",
+        "Typ arbeiten: Oberkörper etwa 20 Grad vorgebeugt, beide Hände auf 1,2 bis 1,3 m Höhe, wie beim Pflanzen und Ernten an den NFT-Tischen.",
+        "Platzierung durch die Montage (M9): eine Figur an der Puffer-Station, die andere im Laufweg B zwischen Mittel- und Aussenring."
+      ],
+      "aufbau": [
+        {
+          "t": "Körper",
+          "p": [
+            "Kopf (Kugel mit Hals)",
+            "Rumpf 466 × 230 mm",
+            "Oberarm, Unterarm, Hand je Seite",
+            "Oberschenkel, Unterschenkel, Fuss je Seite",
+            "Messgerät (nur Typ messen)"
+          ]
+        }
+      ],
+      "masse": {
+        "Höhe aufrecht": "1800 mm",
+        "Schulterbreite": "466 mm (0,259 H)",
+        "Schulterhöhe": "1472 mm (0,818 H)",
+        "Ellbogen": "1134 mm (0,63 H)",
+        "Hüfte": "954 mm (0,53 H)",
+        "Knie": "513 mm (0,285 H)",
+        "Fuss": "99 × 274 mm",
+        "Masse (Ersatzdichte)": "ca. 80 kg",
+        "Flächen": "55 bis 61 je Figur"
+      },
+      "grenzen": [
+        "Stilisierte Silhouette aus Zylindern und Kasten; Querschnitte und Posen sind Annahmen.",
+        "Proportionen sind Mittelwerte für einen Mann von 1,80 m; Frauen und kleinere Menschen sind nicht modelliert.",
+        "Kleidung blau, Weste orange, Kopf und Hände hautfarben (Hinweis, im Modell nur Materialien)."
+      ],
+      "quelle": "Drillis und Contini (Körperproportionen als Anteile der Körperhöhe); docs/parts/mensch_referenz.md; Ben 31.10. (D47)"
     }
   ]
 }

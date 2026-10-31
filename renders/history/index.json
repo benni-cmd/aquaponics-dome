@@ -1998,5 +1998,15 @@
   "note": "W28 Puffer-IBC und Station",
   "commit": "392dd49",
   "source": "renders/components/puffer_station/puffer_station-02-seite.png"
+ },
+ {
+  "file": "20261031-012401_werkstatt_mensch_mensch-referenz-massstab.png",
+  "sha": "eda64c88aec3d968",
+  "time": "2026-10-31 01:24:01",
+  "role": "werkstatt",
+  "subject": "mensch",
+  "note": "W29 Menschenfigur 1,80 m aufrecht/messen/arbeiten mit Massstab",
+  "commit": "11eee12",
+  "source": "renders/components/mensch_referenz/mensch_referenz-massstab.png"
  }
 ]

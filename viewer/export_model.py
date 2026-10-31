@@ -70,7 +70,9 @@ for cls, path in ins.items():
 built = time.strftime('%Y-%m-%d %H:%M:%S')
 for f in os.listdir(HERE):   # Altlast: das fruehere Gesamt-OBJ
     if f.startswith('model') and f.endswith('.obj'): os.remove(os.path.join(HERE, f))
-json.dump({'built': built, 'min_diag': MIN_DIAG, 'defs': defs, 'instances': insts}, open(os.path.join(HERE, 'instances.json'), 'w'))
+try: walk_z = json.load(open(os.path.join(ROOT, 'data', 'params.json'), encoding='utf-8'))['sock_h']['value']   # begehbarer Boden fuer den FPV-Modus
+except Exception: walk_z = 400
+json.dump({'built': built, 'min_diag': MIN_DIAG, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, open(os.path.join(HERE, 'instances.json'), 'w'))
 json.dump({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, open(os.path.join(HERE, 'extras.json'), 'w'))
 size = sum(d['kb'] for d in defs.values()) / 1024
 print(f'export {time.time()-t0:.0f}s defs={len(defs)} (neu {exported}) = {size:.1f} MB, instanzen={len(insts)}')

@@ -64,3 +64,5 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 **HINWEIS 31.10. 12:30 (D52):** Zu M10 gehoert vorab: Innenbeete bepflanzen (`bed_pot_grid()` auch fuer `ibc_beet_innen_933`, Params `pot_pitch`/`pot_margin`), Build, check_walkways; Zahl der Beet-Toepfe in loop-state.md melden.
 
 **HINWEIS 31.10. 13:30 (D54):** Vor M10-Plan: Schritt 0 Laufwegkarte (docs/jobs/M10-leitungen.md, Abschnitt Schritt 0), Reihenfolge der Montage: Innenbeete bepflanzen (D52), Laufwegkarte, Massnahmen, Neubau, dann Leitungsplan.
+
+**HINWEIS 31.10. 17:50 (D62):** Laufwegkarte rot. Entschieden: Zweitbecken von der Tuerachse, Tanks 60-80 mm vom Aussenportal weg, Station und/oder Drittbecken als Vorbau AUSSEN rechts der Tuer (Varianten mit place_m8.py, kleinste Aenderung mit allen Gaengen >= 500). Danach Build, check_walkways_voll gruen, dann Leitungsplan M10 (Orchestrator gegenlesen).

@@ -384,12 +384,12 @@
     {
       "match": "^tank_gross",
       "titel": "Biofilter (Tank groß)",
-      "was": "Tank mit Kegelboden und einem Korb voller Biomedium: hier siedeln die Filterbakterien.",
-      "status": "abgenommen, 60/60 Prüfungen",
+      "was": "Tank mit Kegelboden und einem Schwebebett aus losen K1-Trägern: hier siedeln die Filterbakterien.",
+      "status": "umgebaut W32 (Schwebebett), Selbstcheck 154/154, kein Prüfer-Lauf",
       "ablauf": [
-        "Das Wasser durchströmt das Biomedium (große Oberfläche).",
-        "Bakterien darauf wandeln Ammonium über Nitrit in Nitrat um.",
-        "Ein Belüftungsanschluss im Deckel versorgt sie mit Sauerstoff.",
+        "Das Belüftungsgitter am Konusboden bläst Luft ein; die K1-Träger schweben und scheuern sich frei.",
+        "Bakterien auf den Trägern (ca. 500 m² je m³ Schüttung) wandeln Ammonium über Nitrit in Nitrat um.",
+        "Siebe an Zulauf und Überlauf (Schlitz 5 mm) halten die Träger im Tank.",
         "Ein Überlauf hält den Wasserstand, der Auslass führt das Wasser ab.",
         "Schlamm sinkt zur Kegelspitze und wird über den Kugelhahn abgelassen."
       ],
@@ -404,9 +404,9 @@
         {
           "t": "Filter",
           "p": [
-            "Biomediumkorb, 520 mm hoch, Unterkante 700 mm unter dem Rand",
-            "Tragrost mit 4 Konsolen",
-            "Belüftungsanschluss Ø16 im Deckel"
+            "Schwebebett: 470 l K1-Schüttung (67 % von 702 l), Oberkante Z 1353 unter dem Zulauf",
+            "Belüftungsgitter Ø20 (Ring + 2 Arme) am Konus, Steigrohr Ø16 durch den Deckel",
+            "Zulaufsieb (Schlitzkappe) und Auslaufsieb (Kappe Ø110), Schlitz 5 mm"
           ]
         },
         {
@@ -433,62 +433,65 @@
         "Umwälzung": "Hauptkreislauf: 2 große Pumpen je Linie à 55 l/min = 110 l/min (D38)",
         "Wasservolumen": "≈ 702 l",
         "Biomedium": "lose K1-Träger, ≈ 0,47 m³ je Tank (67 % der Wasserfüllung 702 l), gesamt 0,94 m³ = 471 m² Trägerfläche (D55, R30); bisher Korb Ø0,8 × 0,52 m mit Bio Balls 0,26 m³",
-        "Umsatz": "471 m² × 0,57 g TAN/m²/Tag (FAO) = 7,2 kg Futter/Tag; mit Faktor 2,5 (Simulator-Logik) 2,9 kg/Tag; Losordo/DeLong (350 g TAN/m³/Tag) 8,8 kg/Tag; Auslegung 4,75 kg/Tag. Der Messwert aus Süßwasser-RAS (0,215 g/m²/Tag bei 28 °C) wäre 829 m² – dann tragen die Substratbeete mit"
+        "Umsatz": "471 m² × 0,57 g TAN/m²/Tag (FAO) = 7,2 kg Futter/Tag; mit Faktor 2,5 (Simulator-Logik) 2,9 kg/Tag; Losordo/DeLong (350 g TAN/m³/Tag) 8,8 kg/Tag; Auslegung 4,75 kg/Tag. Der Messwert aus Süßwasser-RAS (0,215 g/m²/Tag bei 28 °C) wäre 829 m² – dann tragen die Substratbeete mit",
+        "Schwebebett im Modell": "ein Körper, 470 l Schüttvolumen (0,67 × 702 l); das Modell fasst 687 l bis zum Rand und 628 l bis zum Überlauf: Füllung 68 % bzw. 75 % des Modellwassers (Befund)"
       },
-      "grenzen": "Modell zeigt noch den Korb als ein Körper (Platzhalter); nach D55 entfällt er zugunsten loser K1-Träger mit Siebgitter am Auslass (Umbau Werkstatt W32). K1-Fläche 500 m²/m³ nur über Suchzusammenfassungen belegt.",
-      "quelle": "docs/parts/tank.md",
+      "grenzen": "Die einzelnen K1-Träger sind nicht modelliert, das Bett ist ein Körper (Siebschlitze und Belüftungsbohrungen auch nicht). K1-Fläche 500 m²/m³ nur über Suchzusammenfassungen belegt (R30). Das Bett füllt 75 % des Modellwassers bis zum Überlauf (R30 rechnet mit 702 l): Überlauf tiefer oder Füllung 421 l offen. Luftmenge und Gebläse nicht gerechnet.",
+      "quelle": "docs/parts/tank.md, docs/research/R30.md, docs/decisions.md D55",
       "rolle": "Art 3 der Filterarten (docs/filter-konzept.md, R30): Biofilter im Hauptstrom (110 l/min je Linie). Bedarf bei 178 g TAN/Tag: 169 m² (Simulator-Rate 1,06 g/m²/Tag), 312 m² (FAO 0,57), 829 m² (Messwert 0,215, Kinyage & Pedersen 2016). Korb 0,52 m³ Bio Balls (SSA 400) = 208 m². Empfehlung, Entscheidung Ben: lose Träger K1-Typ 0,94 m³ bei 67 % Füllung = 470 m²; den Simulator-Faktor 2,5 (1,06 m³ Bio Balls) nicht blind übernehmen. Substratbeete übernehmen den Rest."
     },
     {
       "match": "^feinfilter",
       "titel": "Feinfilter",
-      "was": "Behälter mit herausnehmbarem Siebkorb: fängt die feinen Schwebstoffe, die der Absetzer durchlässt.",
-      "status": "gebaut, Selbstcheck 42/42 (kein Prüfer-Lauf)",
+      "was": "Behälter mit herausnehmbarem Siebkorb im Hauptstrom: fängt die feinen Schwebstoffe aus den 110 l/min der Linie.",
+      "status": "neu bemessen W32 (Hauptstrom), Selbstcheck 54/54, kein Prüfer-Lauf",
       "ablauf": [
-        "Das klare Wasser des Absetzers fließt über ein senkrechtes Einlaufrohr in den Siebkorb.",
-        "Es tritt durch das Edelstahlgewebe (ca. 150 µm) in die Ablaufkammer unter dem Korb.",
-        "Der Auslauf führt zur Saugseite der großen Pumpen.",
-        "Alle 1–2 Wochen: Deckel öffnen, Korb herausheben und ausspülen, Behälter über den Kugelhahn ablassen."
+        "Das Wasser der Linie (110 l/min) fließt über ein senkrechtes Einlaufrohr Ø63 in den Siebkorb.",
+        "Es tritt durch das Edelstahlgewebe (100 µm) in die Ablaufkammer unter dem Korb.",
+        "Der Auslauf Ø63 führt zur Saugseite der großen Pumpen.",
+        "Alle 1–2 Wochen: Spülanschluss öffnen, Deckel öffnen, Korb herausheben und ausspülen, Behälter über den Kugelhahn ablassen."
       ],
       "aufbau": [
         {
           "t": "Behälter",
           "p": [
-            "PP 400 × 300 × 500 mm, Wand 5 mm, Deckel mit Dichtung und 4 Spannverschlüssen",
+            "PP 630 × 440 × 610 mm, Wand 10 mm, Deckel mit Dichtung und 4 Spannverschlüssen",
             "Auflageleisten tragen den Korbflansch"
           ]
         },
         {
           "t": "Siebkorb",
           "p": [
-            "Edelstahl 340 × 240 × 330 mm, Gewebehülle mit Stützrahmen",
+            "Edelstahl 560 × 370 × 400 mm, Gewebehülle mit Stützrahmen, Gewebe 100 µm",
             "2 Bügelgriffe zum Herausheben"
           ]
         },
         {
           "t": "Wasserwege",
           "p": [
-            "Einlauf Ø50 oben seitlich, Auslauf Ø50 unten seitlich",
+            "Einlauf Ø63 oben seitlich, Auslauf Ø63 unten seitlich",
             "Ablass Ø40 mit Kugelhahn und Schlauchtülle",
+            "Spülanschluss Ø25 mit Kugelhahn und Spritzrohr",
             "Ports"
           ]
         },
         {
           "t": "Unterbau",
           "p": [
-            "Standrahmen Vierkantrohr 30 × 30 mm, 250 mm hoch (Eimer unter dem Ablass)"
+            "Standrahmen Vierkantrohr 40 × 40 mm, 250 mm hoch (Eimer unter dem Ablass), 4 Auflagestege unter dem Boden"
           ]
         }
       ],
       "masse": {
         "Anzahl": "2 (eine je Linie)",
-        "Leermasse": "14 kg, im Betrieb ca. 63 kg",
-        "Inhalt": "ca. 56 l bis zum Rand",
-        "Durchfluss": "12,5 l/min je Linie (Absetzer-Teilstrom)"
+        "Leermasse": "40,5 kg, im Betrieb ca. 175 kg",
+        "Inhalt": "154 l bis zum Rand",
+        "Siebfläche": "0,84 m² benetzt (Soll 0,825 m² = 6,6 m³/h ÷ 8 m/h)",
+        "Durchfluss": "110 l/min je Linie (Hauptstrom), Siebbelastung 7,9 m/h [A], Rohrgeschwindigkeit 0,72 m/s"
       },
-      "grenzen": "Behältermaße sind Annahme (Blatt W31). Kein Notüberlauf bei verstopftem Korb. Höhenlage gegen den Absetzer-Auslass prüft die Montage (M10). Fabrikate von Gewebe, Spannverschlüssen und Kugelhahn offen.",
-      "quelle": "docs/parts/feinfilter.md, docs/filter-konzept.md Schritt 3, data/leitungsnetz.json",
-      "rolle": "Art 2 der Filterarten (docs/filter-konzept.md, R30): Sieb im Absetzer-Teilstrom (12,5 von 110 l/min = 11 %), Siebbelastung 1,6 m/h. Maschenweite 150 µm liegt über dem geprüften Bereich (Mortensen 2000: 30/60/100 µm = 99/48/21 % Schwebstoffe). Befund: 89 % des Wassers umgehen das Sieb; Empfehlung Gewebe ≤100 µm und Sieb im Hauptstrom (Werkstatt W31, Montage M10)."
+      "grenzen": "Die Siebbelastung 8 m/h ist eine Annahme (R30 nennt keine belegte Auslegungsgröße). Kein Notüberlauf bei verstopftem Korb. Höhenlage und Platz (ca. 770 × 680 mm, 855 mm hoch) prüft die Montage (M10); die Netzliste führt den Feinfilter noch mit Ø50 und 12,5 l/min. Fabrikate von Gewebe, Spannverschlüssen und Kugelhähnen offen.",
+      "quelle": "docs/parts/feinfilter.md, docs/filter-konzept.md Art 2, docs/research/R30.md, docs/decisions.md D55",
+      "rolle": "Art 2 der Filterarten (docs/filter-konzept.md, R30): Sieb im HAUPTSTROM vor den großen Pumpen (110 l/min je Linie, W32/D55). Vorher (W31) im Absetzer-Teilstrom (12,5 l/min = 11 %, Gewebe 150 µm) – Befund R30: 89 % des Wassers umgingen das Sieb. Jetzt Gewebe 100 µm (Mortensen 2000: 30/60/100 µm = 99/48/21 % Schwebstoffe) und Siebfläche aus Strom ÷ Siebbelastung."
     },
     {
       "match": "^pumpe",

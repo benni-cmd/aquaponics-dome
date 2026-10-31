@@ -1,0 +1,56 @@
+PASS messstellen: halter_tauch: Koerper = Teile-Zeilen (3) (Roadmap B1): Ist 3, Soll 3
+PASS messstellen: halter_tauch: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_tauch: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_tauch: Port 'Kabeldurchfuehrung (Kappe, Sonde haengt im Rohr d40)' liegt am Koerper Kappe: Ist 1, Soll 1
+PASS messstellen: halter_tauch: Port 'Kabeldurchfuehrung (Kappe, Sonde haengt im Rohr d40)' Spitze am Rand in Richtung (0, 0, 1): Ist 1020, Soll 1020 (+-0.3)
+PASS messstellen: halter_tauch: Port 'Beckenrand-Anlage (Unterkante Klemmarm auf dem Rand)' liegt am Koerper Klemme: Ist 1, Soll 1
+PASS messstellen: Tauchrohr Aussen-D 40: Ist 40, Soll 40 (+-0.1)
+PASS messstellen: Tauchrohr Laenge 1000: Ist 1000, Soll 1000 (+-0.1)
+PASS messstellen: Tauchrohr Volumen = Ringflaeche x Laenge (minus 2 Querbohrungen, 1,5 %): Ist 226796, Soll 227420 (+-3411.3)
+PASS messstellen: Eintauchtiefe = Klemmenhoehe 640 - Freibord (Rand Z 650 - Spiegel 515 = 135) im Bereich 300-700 (R39): Ist 1, Soll 1
+PASS messstellen: Klemmarm liegt ueber dem Beckenrand: Hakeninnenkante >= Ringradius + Wand 150 (Beckenwand params wall 150): Ist 1, Soll 1
+PASS messstellen: Rohr-ID >= 30 (groesste Tauchsonde do_ind d25 plus Spiel): Ist 1, Soll 1
+PASS messstellen: Kappe sitzt auf dem Rohrende (z-Anlage): Ist 1000, Soll 1000 (+-0.1)
+PASS messstellen: halter_tauch: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: halter_beruhig: Koerper = Teile-Zeilen (5) (Roadmap B1): Ist 5, Soll 5
+PASS messstellen: halter_beruhig: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_beruhig: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_beruhig: Port 'Kabeldurchfuehrung 1 (Deckelkappe, Schwimmerkabel)' liegt am Koerper Deckelkappe: Ist 1, Soll 1
+PASS messstellen: halter_beruhig: Port 'Kabeldurchfuehrung 1 (Deckelkappe, Schwimmerkabel)' Spitze am Rand in Richtung (0, 0, 1): Ist 630, Soll 630 (+-0.3)
+PASS messstellen: halter_beruhig: Port 'Kabeldurchfuehrung 2 (Deckelkappe, Schwimmerkabel)' liegt am Koerper Deckelkappe: Ist 1, Soll 1
+PASS messstellen: halter_beruhig: Port 'Kabeldurchfuehrung 2 (Deckelkappe, Schwimmerkabel)' Spitze am Rand in Richtung (0, 0, 1): Ist 630, Soll 630 (+-0.3)
+PASS messstellen: halter_beruhig: Port 'Wandbefestigung 1 (Ohr der Rohrschelle)' liegt am Koerper Schelle_1: Ist 1, Soll 1
+PASS messstellen: halter_beruhig: Port 'Wandbefestigung 1 (Ohr der Rohrschelle)' Spitze am Rand in Richtung (1, 0, 0): Ist 67.5, Soll 67.5 (+-0.3)
+PASS messstellen: halter_beruhig: Port 'Wandbefestigung 2 (Ohr der Rohrschelle)' liegt am Koerper Schelle_2: Ist 1, Soll 1
+PASS messstellen: halter_beruhig: Port 'Wandbefestigung 2 (Ohr der Rohrschelle)' Spitze am Rand in Richtung (1, 0, 0): Ist 67.5, Soll 67.5 (+-0.3)
+PASS messstellen: Rohr Aussen-D 63: Ist 63, Soll 63 (+-0.1)
+PASS messstellen: Rohr Laenge 600: Ist 600, Soll 600 (+-0.1)
+PASS messstellen: Rohr Volumen = Ringflaeche x Laenge minus 4 Schlitze (2 %): Ist 304556, Soll 304732 (+-6094.64)
+PASS messstellen: Rohr-ID >= 40 (Schwimmerschalter d30 hinein): Ist 1, Soll 1
+PASS messstellen: Schlitze liegen im Rohr (Schlitz-Oberkante <= Rohrlaenge, Unterkante >= 0): Ist 1, Soll 1
+PASS messstellen: Bodenkappe schliesst unten an (Oberkante = Rohr-Unterkante): Ist 4.44089e-15, Soll -3.51285e-11 (+-0.1)
+PASS messstellen: Deckelkappe sitzt oben auf (Unterkante = Rohr-Oberkante): Ist 600, Soll 600 (+-0.1)
+PASS messstellen: zwei Rohrschellen mit Abstand >= 300 (Rohr stabil gehalten): Ist 1, Soll 1
+PASS messstellen: halter_beruhig: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: halter_zelle: Koerper = Teile-Zeilen (4) (Roadmap B1): Ist 4, Soll 4
+PASS messstellen: halter_zelle: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_zelle: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_zelle: Port 'Zulauf (Anschluss d20, Abzweig Sammelrohr)' liegt am Koerper Anschluss_Zulauf: Ist 1, Soll 1
+PASS messstellen: halter_zelle: Port 'Zulauf (Anschluss d20, Abzweig Sammelrohr)' Spitze am Rand in Richtung (-1, 0, 0): Ist -30, Soll -30 (+-0.3)
+PASS messstellen: halter_zelle: Port 'Ablauf (hinter dem Absperrhahn)' liegt am Koerper Absperrhahn: Ist 1, Soll 1
+PASS messstellen: halter_zelle: Port 'Ablauf (hinter dem Absperrhahn)' Spitze am Rand in Richtung (1, 0, 0): Ist 290, Soll 290 (+-0.3)
+PASS messstellen: halter_zelle: Port 'Sondenstutzen 1 (pH)' liegt am Koerper Zellkoerper: Ist 1, Soll 1
+PASS messstellen: halter_zelle: Port 'Sondenstutzen 1 (pH)' Spitze am Rand in Richtung (0, 0, 1): Ist 52, Soll 52 (+-0.3)
+PASS messstellen: halter_zelle: Port 'Sondenstutzen 2 (EC)' liegt am Koerper Zellkoerper: Ist 1, Soll 1
+PASS messstellen: halter_zelle: Port 'Sondenstutzen 2 (EC)' Spitze am Rand in Richtung (0, 0, 1): Ist 52, Soll 52 (+-0.3)
+PASS messstellen: halter_zelle: Port 'Sondenstutzen 3 (Temperatur)' liegt am Koerper Zellkoerper: Ist 1, Soll 1
+PASS messstellen: halter_zelle: Port 'Sondenstutzen 3 (Temperatur)' Spitze am Rand in Richtung (0, 0, 1): Ist 52, Soll 52 (+-0.3)
+PASS messstellen: Zellkoerper Laenge 220: Ist 220, Soll 220 (+-0.1)
+PASS messstellen: Zellkoerper-Oberkante mit Stutzen = 22 + 30: Ist 52, Soll 52 (+-0.1)
+PASS messstellen: Sondenstutzen-Abstand >= 60 (Sonden d12 mit Kabelverschraubung): Ist 1, Soll 1
+PASS messstellen: Anschluss Zulauf d20: Ist 19.9997, Soll 20 (+-0.1)
+PASS messstellen: Anschluesse schliessen an den Zellkoerper an (x 0 bzw. 220): Ist 8.30891e-13, Soll 0 (+-0.1)
+PASS messstellen: Absperrhahn schliesst an den Ablaufstutzen an: Ist 250, Soll 250 (+-0.1)
+PASS messstellen: Zellvolumen 135 ml (Bohrung d28 x 220) < 0,2 l: schneller Austausch bei 3 l/min: Ist 1, Soll 1
+PASS messstellen: halter_zelle: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+== messstellen: 55/55 PASS

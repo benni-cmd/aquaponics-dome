@@ -54,7 +54,7 @@ def component_file(fname, cls, assembly, fn):
     os.remove(tmp)
     act(assembly); add("component.insert_design", path=out.replace("\\", "/"), name=cls)
 
-ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen", "11_Referenz"]
+ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen", "11_Referenz", "12_Huelle"]
 
 def act(name):
     """Baugruppe aktivieren: neue Koerper/Instanzen entstehen darin (Wurzel bleibt frei von losen Koerpern)."""
@@ -126,6 +126,42 @@ def tuer_komplett(segs, base_z):
     X, Y, Z = (t[0], t[1], 0.0), (-s*n[0], -s*n[1], c), (c*n[0], c*n[1], s)
     add("occurrence.move", occurrence="Tuer_Komplett:1", matrix=[round(v, 9) for v in (X[0], Y[0], Z[0], ap*n[0], X[1], Y[1], Z[1], ap*n[1], X[2], Y[2], Z[2], base_z)], tolerance=1e-6, move_grounded=True)
 
+def huelle(segs):
+    """M11/D39 (W27): Plane als 40 Folienfelder (huelle_folie_AAB/BBB/BBB_tuer, T42) je Dreiecksfeld aus data/components/haut_paneel.json felder. Feld-KS der Komponente: Ursprung Inkreismittelpunkt, Z = Aussennormale,
+    Z 0 = Ebene der Strebenachsen, P0 -> P1 (Kante kanten_nominal[0]; beim Tuerfeld die Basiskante) parallel X; Dreieck P0 P1 P2 gegen den Uhrzeigersinn von aussen (tri_points der Werkstatt)."""
+    ends = {}
+    for A, B in segs:
+        for q in (A, B): ends.setdefault(tuple(round(v / 20) for v in q), []).append(q)
+    E = [tuple(sum(v[i] for v in l)/len(l) for i in range(3)) for l in ends.values()]
+    NP = []
+    for n in LAYOUT["dome"]["nodes_list"]:
+        x, y = rot(n["x"], n["y"], math.radians(ROT)); NP.append(min(E, key=lambda e: math.hypot(e[0] - x, e[1] - y)))
+    hp = json.load(open(os.path.join(ROOT, "data", "components", "haut_paneel.json"), encoding="utf-8")); typen = hp["typen"]
+    sub = lambda a, b: tuple(a[i] - b[i] for i in range(3)); dot = lambda a, b: sum(a[i]*b[i] for i in range(3))
+    cross = lambda a, b: (a[1]*b[2] - a[2]*b[1], a[2]*b[0] - a[0]*b[2], a[0]*b[1] - a[1]*b[0]); unit = lambda a: tuple(v / math.sqrt(dot(a, a)) for v in a)
+    items = {"AAB": [], "BBB": [], "BBB_tuer": []}; base_z = min(e[2] for e in E)
+    for f in hp["felder"]:
+        P3 = [NP[i] for i in f["nodes"]]; cen = tuple(sum(p[i] for p in P3)/3 for i in range(3))
+        if dot(cross(sub(P3[1], P3[0]), sub(P3[2], P3[0])), cen) < 0: P3 = [P3[0], P3[2], P3[1]]   # gegen den Uhrzeigersinn von aussen
+        typ = f["typ"] + ("_tuer" if f.get("door") else ""); kn = typen[f["typ"]]["kanten_nominal"]; best = None
+        for r in range(3):
+            Q = [P3[(r + j) % 3] for j in range(3)]
+            if f.get("door") and not (abs(Q[0][2] - base_z) < 5 and abs(Q[1][2] - base_z) < 5): continue
+            err = abs(math.dist(Q[0], Q[1]) - kn[0]) + abs(math.dist(Q[1], Q[2]) - kn[1]) + abs(math.dist(Q[2], Q[0]) - kn[2])
+            if best is None or err < best[0]: best = (err, Q)
+        Q = best[1]; la, lb, lc = math.dist(Q[1], Q[2]), math.dist(Q[2], Q[0]), math.dist(Q[0], Q[1])
+        inc = tuple((la*Q[0][i] + lb*Q[1][i] + lc*Q[2][i]) / (la + lb + lc) for i in range(3))
+        Z = unit(cross(sub(Q[1], Q[0]), sub(Q[2], Q[0]))); X = unit(sub(Q[1], Q[0])); Y = cross(Z, X)
+        items[typ].append([round(v, 9) for v in (X[0], Y[0], Z[0], inc[0], X[1], Y[1], Z[1], inc[1], X[2], Y[2], Z[2], inc[2])])
+    act("12_Huelle")
+    for typ, mats in items.items():
+        if not mats: continue
+        cls = "Huelle_" + typ
+        add("component.insert_design", path=os.path.join(ROOT, "designs", "components", f"huelle_folie_{typ}.sc").replace("\\", "/"), name=cls)
+        for _ in range(len(mats) - 1): add("occurrence.copy", component=cls)
+        for i, m in enumerate(mats, 1): add("occurrence.move", occurrence=f"{cls}:{i}", matrix=m, tolerance=1e-6, move_grounded=True)
+    print("huelle:", {k: len(v) for k, v in items.items()})
+
 NODE_FILES = {}   # Knoten-Index (1-26 wie layout.json nodes_list) -> Dateiname
 def knoten_anker(segs):
     """26 Knoten (Werkstatt: knoten_<wertigkeit>_n<ii>.sc, Ursprung Knotenmitte, Armrichtungen im OBJ-Rahmen -> Drehung um ROT) an den Strebenenden + 10 Fundamentanker an den Basisknoten (X radial nach aussen)."""
@@ -175,6 +211,7 @@ def t1_t3_t4(sock_z):
     component_file("fundamentring", "Fundamentring", "02_Gelaende", lambda: ring_fn(sock_z))
     act("03_Kuppel")
     tuer_komplett(segs, cz)
+    if P.get("huelle_an", 1): huelle(segs)
     return n, dropped
 
 LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))

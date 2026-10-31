@@ -947,8 +947,8 @@
    "sonden": {
     "level_float": 1
    },
-   "stufe": "zusatz",
-   "prio": 1,
+   "stufe": "pflicht",
+   "prio": 0,
    "messknoten": "mk_l1",
    "halter": [
     [
@@ -960,7 +960,7 @@
     "AL10"
    ],
    "wartung_noetig": false,
-   "hinweis": "Wird Pflicht, sobald das Sieb in den Hauptstrom wandert (Befund R30, Montage M10)"
+   "hinweis": "Pflicht seit D55: das Sieb liegt im Hauptstrom (110 l/min) vor den grossen Pumpen, ein verstopfter Korb laesst sie trocken laufen; Netzliste K05/K06 zeigt noch den Teilstrom (M10 aendert)"
   },
   {
    "id": "MS15",
@@ -974,8 +974,8 @@
    "sonden": {
     "level_float": 1
    },
-   "stufe": "zusatz",
-   "prio": 1,
+   "stufe": "pflicht",
+   "prio": 0,
    "messknoten": "mk_l2",
    "halter": [
     [
@@ -987,7 +987,7 @@
     "AL10"
    ],
    "wartung_noetig": false,
-   "hinweis": "Wird Pflicht, sobald das Sieb in den Hauptstrom wandert (Befund R30, Montage M10)"
+   "hinweis": "Pflicht seit D55: das Sieb liegt im Hauptstrom (110 l/min) vor den grossen Pumpen, ein verstopfter Korb laesst sie trocken laufen; Netzliste K05/K06 zeigt noch den Teilstrom (M10 aendert)"
   },
   {
    "id": "MS16",
@@ -2346,6 +2346,16 @@
    "knoten": "drittbecken",
    "groesse": "Temperatur",
    "grund": "Fischtod (bei Besatz)"
+  },
+  {
+   "knoten": "feinfilter_1",
+   "groesse": "Wasserstand",
+   "grund": "Sieb im Hauptstrom (D55): Verstopfung = Pumpen trocken"
+  },
+  {
+   "knoten": "feinfilter_2",
+   "groesse": "Wasserstand",
+   "grund": "Sieb im Hauptstrom (D55): Verstopfung = Pumpen trocken"
   },
   {
    "knoten": "biofilter_1",

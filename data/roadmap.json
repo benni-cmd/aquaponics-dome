@@ -1,5 +1,5 @@
 {
- "stand": "Stand 31.10.2026 18:50, W35 und R42 abgenommen, Limit-Reset 22:10 abwarten",
+ "stand": "Stand 01.11.2026 01:05: nur R40 laeuft, nichts Neues wird gestartet (Bens Vorgabe)",
  "schritte": [
   {
    "id": "W33",
@@ -166,11 +166,11 @@
   {
    "id": "R40",
    "titel": "Netzliste auf Stand bringen",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Fachrecherche",
-   "notiz": "Fachrecherche: Puffer klein, Drittbecken 0,4, Messstellen, Linienteilung 12/7, K05/K06/K21/K22 DN, Notueberlauf Feinfilter. Startet nach Limit-Reset 22:10."
+   "notiz": "Fachrecherche-3 arbeitet (Blatt docs/jobs/R40-netzliste-stand.md); nach dem Limit-Stopp um 22:10 neu geweckt. Wird fertig gemacht, danach startet NICHTS Neues (Bens Vorgabe 1.11.)."
   },
   {
    "id": "M-SETZEN",
@@ -179,7 +179,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Montage",
-   "notiz": "Montage: Vorbau raus, puffer_klein und becken_dritt_klein setzen, Pumpentafeln seitlich, Messstellen, Karte wieder gruen. Startet nach Limit-Reset 22:10."
+   "notiz": "Montage: Vorbau raus, puffer_klein und becken_dritt_klein setzen, Pumpentafeln seitlich, Messstellen, Karte wieder gruen. Startet erst nach Bens Freigabe (Vorgabe 1.11.: nur laufende Aufgaben fertig machen)."
   },
   {
    "id": "R41",

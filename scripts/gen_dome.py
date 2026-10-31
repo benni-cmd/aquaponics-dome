@@ -98,16 +98,20 @@ def ring_fn(sock_z):
     gx, gy = pol(P["dome_base_d"]/2*math.cos(math.radians(18)) + 150, P["door_edge_az"])
     rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_edge_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
 
+def station_pose():
+    """D62: Puffer-Station als Technikvorbau AUSSERHALB der Plane rechts neben der Tuer (Flaeche door_edge_az + 36): Front (Y -691,5) zur Kuppel im Abstand `station_out_gap` zur Aussenkante des Fundamentrings. Station-KS: X = -t, Y radial nach aussen. Rueckgabe (x, y, az)."""
+    a = P["door_edge_az"] + 36.0; ar = math.radians(a); n = (math.cos(ar), math.sin(ar))
+    r = (P["dome_base_d"]/2 + P["sock_w"]) * math.cos(math.radians(18)) + P["station_out_gap"] + 691.5
+    return r * n[0], r * n[1], a
+
 def puffer_station(fz):
-    """M8 (D46, W28): Puffer-Station T81 (2 gestapelte IBC) im Sektor rechts der Tuer; Lage aus scripts/place_m8.py. Station-KS: X = -t, Y radial nach aussen (Rueckseite/Plattform zur Wand)."""
-    a = P["door_edge_az"] + 36.0; ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar))
-    x, y = P["station_r"] * n[0] + P["station_s"] * t[0], P["station_r"] * n[1] + P["station_s"] * t[1]
+    """M8 (D46, W28, D62): Puffer-Station T81 (2 gestapelte IBC) als Vorbau aussen; Station-KS: X = -t, Y radial nach aussen (Rueckseite/Plattform von der Kuppel weg)."""
+    x, y, a = station_pose()
     place_instances("Puffer_Station", os.path.join(ROOT, "designs", "components", "puffer_station.sc"), [(round(x, 1), round(y, 1), fz, a - 90.0)], "09_Technik")
 
 def mensch_referenz(fz):
     """M9 (D47, W29): zwei Referenzfiguren 1,80 m (Fussmitte am Boden, Blick +Y). messen: vor der Dosierkonsole der Puffer-Station (Station-KS), Blick zur Konsole; arbeiten: Laufweg B, Azimut Station + 180, Blick nach aussen zum Aussentisch."""
-    a = P["door_edge_az"] + 36.0; ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar))
-    sx, sy = P["station_r"] * n[0] + P["station_s"] * t[0], P["station_r"] * n[1] + P["station_s"] * t[1]   # Station-KS: X = -t, Y = n
+    sx, sy, a = station_pose(); ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar))   # Station-KS: X = -t, Y = n
     mx, my = sx - P["mensch_mes_x"] * t[0] + P["mensch_mes_y"] * n[0], sy - P["mensch_mes_x"] * t[1] + P["mensch_mes_y"] * n[1]
     place_instances("Mensch_Referenz_messen", os.path.join(ROOT, "designs", "components", "mensch_referenz_messen.sc"), [(round(mx, 1), round(my, 1), fz, a - 90.0)], "11_Referenz")
     wa = a + 180.0; wr = math.radians(wa)
@@ -226,8 +230,7 @@ POOL3 = None   # nach params(): {"d", "water_z"} wie Zweitbecken, Durchmesser au
 
 def pool_dims(fz, src, wall, depth, nm):
     x, y = LXY(src["cx"], src["cy"])
-    if nm.startswith("Zweit"):   # D36: Zweitbecken auf die Tuerachse (OBJ-Azimut 149,2, Tuer im Basisfeld BBB), Radius wie im OBJ mal pool2_r_factor (D42: Abstand zum Innentisch und Zentralpool)
-        r = math.hypot(src["cx"], src["cy"]) * P["pool2_r_factor"]; x, y = LXY(r * math.cos(math.radians(DOOR_OBJ_AZ)), r * math.sin(math.radians(DOOR_OBJ_AZ)))
+    if nm.startswith("Zweit"): x, y = P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))   # D62: Zweitbecken von der Tuerachse (Gang Tuer -> Zentralpool frei), Modellrahmen
     elif nm.startswith("Dritt"): x, y = P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))   # D48: Sektor neben der Tuer, Mittelring frei
     else: x, y = 0.0, 0.0   # D35: Zentralpool auf der Kuppelachse (alle Ringe konzentrisch; OBJ-Abweichung 41 mm)
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
@@ -279,16 +282,20 @@ def tank_offsets():
     Der kleinere Tank samt Pumpentafeln rueckt um (tank_clear - Luecke) von der Nachbarplattform bzw. dem Beet weg (Layout-Koordinaten)."""
     T = LAYOUT["tanks"]; pl = [t["platform"][0] for t in T]; off = {i: [0.0, 0.0] for i in range(len(T))}
     rc = lambda i: rect_corners(pl[i]["cx"] + off[i][0], pl[i]["cy"] + off[i][1], pl[i]["length"], pl[i]["width"], pl[i]["yaw"])
-    obstacles = lambda i: [(rc(j), (pl[j]["cx"] + off[j][0], pl[j]["cy"] + off[j][1])) for j in range(len(T)) if j != i and pl[j]["length"] >= pl[i]["length"] and not (pl[j]["length"] == pl[i]["length"] and j < i)] +         [(rect_corners(*bed_obj(b)[:2], b["length"], b["width"], bed_obj(b)[2]), bed_obj(b)[:2]) for b in LAYOUT["ibc_beds"] if "plants" not in b]
-    p2r = math.hypot(LAYOUT["pool2"]["cx"], LAYOUT["pool2"]["cy"]) * P["pool2_r_factor"]; p2 = (p2r * math.cos(math.radians(DOOR_OBJ_AZ)), p2r * math.sin(math.radians(DOOR_OBJ_AZ))); p2h = LAYOUT["pool2"]["d"] / 2 + 60
+    portal = lambda k, b: (rect_corners(*bed_obj(b)[:2], bed_dims(k, b)[0], bed_dims(k, b)[1] + 230, bed_obj(b)[2]), bed_obj(b)[:2], P["tank_walk_clear"])   # Portal = Beet + 115 je Seite, D62: >= 500 mm Gang
+    obstacles = lambda i: [(rc(j), (pl[j]["cx"] + off[j][0], pl[j]["cy"] + off[j][1]), P["tank_clear"]) for j in range(len(T)) if j != i and pl[j]["length"] >= pl[i]["length"] and not (pl[j]["length"] == pl[i]["length"] and j < i)] + [portal(k, b) for k, b in enumerate(LAYOUT["ibc_beds"], 1)]
+    p2 = rot(P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"])), -math.radians(ROT)); p2h = LAYOUT["pool2"]["d"] / 2 + 60
     def pool2_obst(i):   # D42: Zweitbecken als Quadrat (Seite = Aussendurchmesser) mit einer Seite zum Tank gedreht = beruehrt den Kreis nur in Tankrichtung
-        yaw = math.degrees(math.atan2(pl[i]["cy"] + off[i][1] - p2[1], pl[i]["cx"] + off[i][0] - p2[0])); return (rect_corners(p2[0], p2[1], 2 * p2h, 2 * p2h, yaw), p2)
-    for _ in range(3):
+        yaw = math.degrees(math.atan2(pl[i]["cy"] + off[i][1] - p2[1], pl[i]["cx"] + off[i][0] - p2[0])); return (rect_corners(p2[0], p2[1], 2 * p2h, 2 * p2h, yaw), p2, P["tank_walk_clear"])
+    p0h = LAYOUT["pool"]["d"] / 2 + P["wall"]
+    def pool0_obst(i):   # D62: Zentralpool (Rand 2095 + Innentisch-Pfosten bei 2160) wie das Zweitbecken als zum Tank gedrehtes Quadrat
+        yaw = math.degrees(math.atan2(pl[i]["cy"] + off[i][1], pl[i]["cx"] + off[i][0])); return (rect_corners(0.0, 0.0, 2 * p0h, 2 * p0h, yaw), (0.0, 0.0), P["tank_walk_clear"])
+    for _ in range(12):
         for i in range(len(T)):
-            for R, (ox, oy) in obstacles(i) + [pool2_obst(i)]:
+            for R, (ox, oy), clr in obstacles(i) + [pool2_obst(i), pool0_obst(i)]:
                 gap = rect_gap(rc(i), R)
-                if gap < P["tank_clear"]:
-                    dx, dy = pl[i]["cx"] + off[i][0] - ox, pl[i]["cy"] + off[i][1] - oy; d = math.hypot(dx, dy); mv = P["tank_clear"] - gap
+                if gap < clr:
+                    dx, dy = pl[i]["cx"] + off[i][0] - ox, pl[i]["cy"] + off[i][1] - oy; d = math.hypot(dx, dy); mv = clr - gap
                     off[i][0] += dx/d*mv; off[i][1] += dy/d*mv
     return off
 
@@ -331,6 +338,7 @@ def t9(fz):
 # Portaltische (aussen, mitte) stehen auf der Beetmitte (Radius des Beets auf der Sektorachse), wie die Beete um outer_bed_shift/inner_bed_shift nach innen (Radialbudget D28/D29, M7); innen auf ap_c 1864.
 SECTORS = {"innen": list(range(10)), "mitte": [0, 1, 2, 7, 8, 9], "aussen": [0, 1, 2, 3, 6, 7, 8, 9]}
 NFT_APC = {k: v["ap_c"] for k, v in json.load(open(os.path.join(ROOT, "data", "components", "nft_tisch.json"), encoding="utf-8"))["typen"].items()}   # Radialbudget (W17): Tischmitte = Beetmitte
+NFT_APC["mitte"] += P["ring_shift_mid"]; NFT_APC["aussen"] += P["ring_shift_out"]   # D63: Laufweg A effektiv nur 501 mm (Innentisch-Pfosten bei r 2160 stehen im Gang) -> Mittel- und Aussenring um die Wandluft nach aussen
 NFT_POTS = []                                                # Rinnen-Topfpositionen (x, y, z Topfboden), von nft() gefuellt, von pots() gesetzt
 
 def nft(fz):
@@ -372,7 +380,7 @@ def plant(x, y, z, r=90):
 def rohr_fn():
     # Zulaufrohr (Frischwasser) nur AUSSEN: flach auf dem Boden, Bogen zur Fundamentringwand nahe dem Zweitbecken (OBJ-Azimut 166 -> Modell -55)
     pr = P["pipe_d"]/2; z = P["sock_h"] + pr
-    P0 = pol(9500, -90); P1 = pol(7600, -48); P2 = pol(6120, -48)
+    P0 = pol(9500, -90); P1 = pol(7600, -58); P2 = pol(6120, -58)
     def seg(A, B, nm, op, **kw):
         d = [B[0]-A[0], B[1]-A[1]]; L = math.hypot(*d)
         add("solid.cylinder", radius=pr, height=round(L, 1), base=[round(A[0], 1), round(A[1], 1), z], axis=[round(d[0]/L, 6), round(d[1]/L, 6), 0], operation=op, name=nm, **kw)
@@ -381,7 +389,7 @@ def rohr_fn():
     seg(P1, P2, "T10_Zulaufrohr_2", "join", targets=["T10_Zulaufrohr"])
 
 def schrank_fn():
-    az = -36; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))
+    az = 0; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))   # D62: Schaltschrank neben den Vorbau (Flaeche 0 statt -36)
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
     rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), P["sock_h"], az+90, P["cab_x"], P["cab_y"], P["cab_z"])
 

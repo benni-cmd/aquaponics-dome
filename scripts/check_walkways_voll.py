@@ -29,19 +29,25 @@ def poly(m, bx):
     x0, y0, z0, x1, y1, z1 = bx; c, s = m[0], m[4]
     return [(m[3] + u * c - v * s, m[7] + u * s + v * c) for u, v in ((x0, y0), (x1, y0), (x1, y1), (x0, y1))], (m[11] + z0, m[11] + z1)
 
+sys.path.insert(0, os.path.join(ROOT, "scripts", "workshop")); import sc as WSC, tisch_geom as TG
+tp, td = WSC.load_params("nft_tisch")
 obst = []   # (name, polygon | ("circle", cx, cy, r), zmin, zmax)
 for k, m in mv.items():
     cls = k.split(":")[0]
     if cls == "Beet_aussen_800": l, w = 2640, 800 + 230
     elif cls == "Beet_innen_933": l, w = 1865, 933 + 230
-    elif cls == "Tisch_innen": l, w = 1700, 700
+    elif cls == "Tisch_innen":   # Innentisch steht auf Pfosten (Rinnen ab 1,0 m): im Knie nur die Fussplatten (80 mm), keine ganze Tischflaeche
+        for (x, y) in TG.geometry("innen", tp, td["typen"]["innen"])["legs"]:
+            pl_ = [(m[0] * (x + sx * tp["foot_plate"] / 2) + m[1] * (y + sy * tp["foot_plate"] / 2) + m[3], m[4] * (x + sx * tp["foot_plate"] / 2) + m[5] * (y + sy * tp["foot_plate"] / 2) + m[7]) for sx, sy in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+            obst.append((k + " Fuss", pl_, FZ, FZ + 900))
+        continue
     else: l = None
     if l:
         pg, _ = poly(m, (-l / 2, -w / 2, 0, l / 2, w / 2, 0)); obst.append((k, pg, FZ, FZ + 1500)); continue
     if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station"):
-        pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station"}.get(cls, cls.lower()))); obst.append((k, pg, za, zb))
-r2 = math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * P["pool2_r_factor"]
-pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (r2 * math.cos(math.radians(DOOR)), r2 * math.sin(math.radians(DOOR))), LAY["pool2"]["d"] / 2 + 60),
+        pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station"}.get(cls, cls.lower())))
+        if max(math.hypot(*p) for p in pg) < AP + 200: obst.append((k, pg, za, zb))   # Vorbau ausserhalb der Wand (D62) liegt nicht im Innenraum
+pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))), LAY["pool2"]["d"] / 2 + 60),
          ("Drittbecken", (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))), P["pool3_d"] / 2 + 60)]
 for nm, c, r in pools: obst.append((nm, ("circle",) + c + (r,), -1e9, 1e9))
 
@@ -134,6 +140,9 @@ for sl, h in [s_ for s_ in (("knie", 300), ("kopf", 1700)) if s_[0] in os.enviro
                     if w < 500: red.add((j, i))
                     elif w < 600: yel.add((j, i))
     ok250 = flood(d, 250, seed); ok300 = flood(d, 300, seed)
+    if os.environ.get("WDEBUG"):
+        for rr in (2300, 2450, 2600):
+            print(sl, "r", rr, [(a, d[int((rr * math.sin(math.radians(a)) + EXT) // CELL)][int((rr * math.cos(math.radians(a)) + EXT) // CELL)], int(ok250[int((rr * math.sin(math.radians(a)) + EXT) // CELL)][int((rr * math.cos(math.radians(a)) + EXT) // CELL)])) for a in range(-90, 270, 18)])
     for thr in (150, 200, 220):
         reach = flood(d, thr, seed); print(sl, "Gang >=", 2 * thr, "mm: erreichte Zellen", sum(map(sum, reach)), "Bauteile:", sorted({nm_of(src[j][i]) for j in range(N) for i in range(N) if reach[j][i] and d[j][i] <= thr + 200 and lab[j][i] == -1 and src[j][i] >= 0 and obst[src[j][i]][0].startswith(("Tank", "Pumpe", "Puffer", "Dritt", "Zweit", "Zentral"))}))
     lines += [f"## Scheibe {sl} ({h / 1000:.1f} m ueber Boden)", ""]

@@ -36,8 +36,7 @@ for k, m in mv.items():
     elif cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3"): rects.append(("Tank", rect(m, 706, 706) if cls == "Tank_klein" else rect(m, 977, 977)))   # Plattform (layout.json)
     elif cls.startswith("Pumpe_"): rects.append(("Pumpentafel", rect(m, 700, 400)))   # grobe Tafelflaeche (OBJ-Modul 502 breit)
 ROT = math.radians(P["door_az"] - 167)
-r2 = math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * P["pool2_r_factor"]
-az = math.radians(DOOR); p2 = (r2 * math.cos(az), r2 * math.sin(az)); p2r = LAY["pool2"]["d"] / 2 + 60
+az = math.radians(DOOR); p2 = (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))); p2r = LAY["pool2"]["d"] / 2 + 60
 pc, pcr = (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]
 n_door = (math.cos(az), math.sin(az)); t_door = (-math.sin(az), math.cos(az))
 

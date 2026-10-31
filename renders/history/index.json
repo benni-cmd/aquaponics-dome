@@ -2208,5 +2208,35 @@
   "note": "Laufwegkarte Knie/Kopf, Runde 53",
   "commit": "0dbc1ef",
   "source": "renders/walkway-map-knie.png"
+ },
+ {
+  "file": "20261031-175554_montage_laufwege_round-57.png",
+  "sha": "74cf95578716a65a",
+  "time": "2026-10-31 17:55:54",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "Laufwegkarte nach D62/D63, Runde 57",
+  "commit": "d61bf61",
+  "source": "renders/round-57.png"
+ },
+ {
+  "file": "20261031-175702_montage_laufwege_walkway-map-knie.png",
+  "sha": "b37e939a9a6a2a95",
+  "time": "2026-10-31 17:57:02",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "Laufwegkarte nach D62/D63, Runde 57",
+  "commit": "d61bf61",
+  "source": "renders/walkway-map-knie.png"
+ },
+ {
+  "file": "20261031-175703_montage_laufwege_walkway-map-kopf.png",
+  "sha": "265dcc7a5c233af9",
+  "time": "2026-10-31 17:57:03",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "Laufwegkarte nach D62/D63, Runde 57",
+  "commit": "d61bf61",
+  "source": "renders/walkway-map-kopf.png"
  }
 ]

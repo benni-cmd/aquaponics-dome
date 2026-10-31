@@ -38,7 +38,7 @@ for k, m in mv.items():
 ROT = math.radians(P["door_az"] - 167)
 rot = lambda x, y: (x * math.cos(ROT) - y * math.sin(ROT), x * math.sin(ROT) + y * math.cos(ROT))
 pc = (0.0, 0.0); pr = LAY["pool"]["d"] / 2 + P["wall"]   # D35: Zentralpool auf der Achse
-p2 = rot(math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * P["pool2_r_factor"] * math.cos(math.radians(149.2)), math.hypot(LAY["pool2"]["cx"], LAY["pool2"]["cy"]) * P["pool2_r_factor"] * math.sin(math.radians(149.2))); p2r = LAY["pool2"]["d"] / 2 + 60
+p2 = (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))); p2r = LAY["pool2"]["d"] / 2 + 60
 res = []
 def chk(name, ist, soll, ok): res.append(ok); print(("PASS" if ok else "FAIL"), name, "| Ist:", ist, "| Soll:", soll)
 wmin = P["walkway_min"]

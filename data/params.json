@@ -180,7 +180,7 @@
   "used_by": "gen_dome.py"
  },
  "tank_clear": {
-  "value": 60,
+  "value": 560,
   "unit": "mm",
   "origin": "A",
   "source": "D22: Mindestluecke im Grundriss zwischen Tankplattform und Nachbarplattform/Innenbeet (OBJ ueberlappt dort 77-83 mm, Beine der Werkstatt-Rahmen kollidieren)",
@@ -243,7 +243,7 @@
   "used_by": "gen_dome.py, place_m8.py"
  },
  "pool3_r": {
-  "value": 5050,
+  "value": 4970,
   "unit": "mm",
   "origin": "A",
   "source": "D49: Drittbecken-Mitte, Radius im Modellrahmen (scripts/place_m8.py, groesster kleinster Abstand 197 mit Tanks/Pumpen als Hindernis; ersetzt D48)",
@@ -252,7 +252,7 @@
   "used_by": "gen_dome.py, place_m8.py"
  },
  "pool3_az": {
-  "value": -58,
+  "value": -30,
   "unit": "deg",
   "origin": "A",
   "source": "D49: Drittbecken-Mitte, Azimut im Modellrahmen (Zwickel zwischen Tuer und Puffer-Station)",
@@ -301,6 +301,60 @@
   "unit": "mm",
   "origin": "A",
   "source": "D47/M9: Figur arbeiten, Radius im Laufweg B bei Azimut Station + 180 (Hand knapp unter der Rinne, kein Tischkontakt)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool2_r": {
+  "value": 4820,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D62: Zweitbecken-Mitte Radius im Modellrahmen (scripts/place_m8.py-Suche, kleinste Luecke 581 bei Station aussen)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_walkways*.py"
+ },
+ "pool2_az": {
+  "value": -54,
+  "unit": "deg",
+  "origin": "A",
+  "source": "D62: Zweitbecken-Mitte Azimut im Modellrahmen (von der Tuerachse -72)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_walkways*.py"
+ },
+ "station_out_gap": {
+  "value": 800,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D62: Abstand Vorbau-Front zur Fundamentring-Aussenkante (>= 600 zur Plane, Figur messen steht dazwischen)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_walkways*.py"
+ },
+ "tank_walk_clear": {
+  "value": 615,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D62: Luecke Tank/Plattform zum Beet (Portal = Beet + 115 je Seite) bzw. Zweitbecken >= 500 mm Gang + 115",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py, check_walkways*.py"
+ },
+ "ring_shift_mid": {
+  "value": 100,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D63: Mittelring (Innenbeete, Mitteltische) radial nach aussen; Laufweg A war wegen der Innentisch-Pfosten (r 2160) nur 501 mm breit",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ring_shift_out": {
+  "value": 200,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D63: Aussenring (Aussenbeete, Aussentische) radial nach aussen, Laufweg B 500 -> 600; Wandluft 310 -> 110",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"

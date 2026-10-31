@@ -710,6 +710,45 @@
       "quelle": "docs/research/R24.md, docs/decisions.md D39"
     },
     {
+      "match": "^puffer_klein",
+      "titel": "Kleiner Puffer (Option A, R37)",
+      "was": "Kompakter Stand im Dom mit Stammlösungsfass 120 l, Messzelle 20 l, Eisenchelat-Kanister 20 l und zwei Dosierpumpen; ersetzt die Puffer-Station (2 IBC) auf 0,49 m² statt 4,65 m².",
+      "status": "Werkstatt W34 (D66), check_puffer_klein 51/51; Variante, die Puffer-Station bleibt bis Bens Entscheidung",
+      "ablauf": [
+        "Ein Messkreis (ca. 3 l/min) fließt durch die durchsichtige Messzelle mit vier Sondenstutzen und läuft zum Pool zurück.",
+        "Eine Schlauchpumpe holt Base (KOH/NaHCO₃) aus dem lichtdichten 120-l-Fass und dosiert sie ins System; eine zweite dosiert Eisenchelat aus dem 20-l-Kanister.",
+        "Entchlortes Frischwasser ist eine Quelle (Aktivkohle oder Zisterne), kein Volumen im Dom; das Fass wird damit angesetzt."
+      ],
+      "aufbau": [
+        {
+          "t": "Stand",
+          "p": [
+            "Grundfläche 700 × 700 mm, Höhe 1203 mm, Rechteckrohr 30 × 30 × 2 verzinkt",
+            "Regalboden mit 20-mm-Auffangrand; das Fass steht darunter auf dem Boden und wird nach vorn herausgezogen"
+          ]
+        },
+        {
+          "t": "Behälter und Technik",
+          "p": [
+            "Fass 120 l HDPE opak blau (Ø 500 × 800 mm, 6,5 kg), Entnahme- und Einfüllstutzen",
+            "Messzelle 20 l Acryl 5 mm, Deckel mit 4 Sondenstutzen d25, Lichtschutz-Blende vorn",
+            "Kanister 20 l HDPE, 2 Schlauchpumpen, Kabelverschraubung M20"
+          ]
+        }
+      ],
+      "masse": {
+        "Grundfläche": "0,49 m² (700 × 700); Summe der Einzelflächen 0,39 m² (R37: etwa 0,4 m²)",
+        "Volumen im Dom": "0,16 m³ (120 + 20 + 20 l), 0,47 % des Wassers (R37 Option A)",
+        "Masse leer": "43,8 kg; gefüllt rund 200 kg",
+        "Messzelle": "20 l Innenvolumen; bis zur Ablaufhöhe 17,4 l = 5,8 min Verweilzeit bei 3 l/min (R37: 6,7 min bei voller Zelle)",
+        "Ports": "13: Messkreis Zulauf/Ablauf, 4 Sondenstutzen, Frischwasser, Entnahme, 2 × Saug und 2 × Dosierleitung, Kabel",
+        "Strom": "ca. 11,5 W (R37: Messkreis 1,5 m Förderhöhe, kein Umpumpen)"
+      },
+      "grenzen": "Statik des Regalbodens nicht gerechnet; Lichtschutz der Messzelle nur vorn (Blende); Sondenliste und Sondenmaße liefert R39 (W35); Fass und Kanister brauchen eine Konformitätserklärung nach EU 10/2011; Frischwasserquelle (Chlor oder Chloramin) muss Ben beim Versorger klären.",
+      "quelle": "docs/parts/puffer_klein.md, docs/research/R37.md, docs/decisions.md D66",
+      "rolle": "Arten 7 und 9 der Filterarten (docs/filter-konzept.md, R30): Seitenzweig am Verteiler, kein Teil des Hauptstroms; Pflicht im Dom sind nur Messzelle, Basen-Stammlösung, Eisenchelat und die Frischwasserquelle (R37 Befund 1)."
+    },
+    {
       "match": "^puffer",
       "titel": "Puffer-Station (2 IBC gestapelt)",
       "was": "Zwei übereinander gestellte IBC-Tanks (je 1000 l) mit Messplatz und Dosierkonsole: Messstation, Basenzugabe, Frischwasser- und Notvorrat.",

@@ -2,7 +2,7 @@
   "_hinweis": "Beschreibungen der Bauteile fuer den Viewer und die Modelldokumentation. Felder: titel, was (ein Satz), status, ablauf (Schritte: so funktioniert es), aufbau (Gruppen mit Teilen: was im Modell steckt), masse (Kennzahlen), grenzen (Annahmen), quelle. 'match' ist ein regulaerer Ausdruck auf den Definitionsnamen. Quelle der Fakten: Bauteilblaetter in docs/parts/ und docs/decisions.md. Besitzer: Orchestrator. SolidCraft hat kein Beschreibungsfeld an Komponenten.",
   "kategorien": {
     "Kuppel-Struktur": "Das tragende Skelett der Geodätischen Kuppel (2V, Ø12 m, 6 m hoch): 65 Streben, 26 Knoten und 10 Fundamentanker im Erdreich.",
-    "Beete (Substrat)": "Substratbeete aus halbierten IBC-Wannen: Pflanzen wachsen in Blähton oder Kies, das Wasser wird zyklisch geflutet und entleert. Im Pflanzmix tragen sie Tomate, Paprika, Gurke und Süßkartoffel (R26).",
+    "Beete (Substrat)": "Substratbeete aus halbierten IBC-Wannen: Pflanzen wachsen in Blähton oder Kies, das Wasser wird zyklisch geflutet und entleert. Unter den Tischen tragen sie nur Blatt und Kräuter (Salat, Mangold, Spinat, Petersilie, Kräuter; D61, R36).",
     "NFT-Systeme": "Nährlösungsfilm-Tische (NFT): Pflanzen stehen in geneigten Rinnen, durch die ein dünner Wasserfilm fließt. Drei Ringe: innen über dem Pool, Mitte über den Innenbeeten, außen über den Außenbeeten.",
     "Tanks und Pumpen": "Wasseraufbereitung: zwei Vortex-Absetzer (Feststoffe raus, Teilstrom), zwei Biofilter (Bakterien) und die Pumpenmodule: 4 große Pumpen bilden den Hauptkreislauf, 4 kleine den Absetzer-Teilstrom (D38).",
     "Rohre und Schläuche": "Verbindungsteile des Wasserkreislaufs: Rohre, Bögen, Kugelhähne, Verteiler und Schläuche. Das Rohrnetz selbst wird noch verlegt.",
@@ -218,12 +218,12 @@
         "Substrattiefe": "300 mm",
         "Pflanzen": "288 Töpfe je Außenbeet laut OBJ",
         "Porenwasser bei Flutung": "≈ 0,2–0,25 m³ je Beet (Porosität 0,4)",
-        "Umsatz (Substrat gesamt)": "8,2 m³ Substrat → Faustregel 8,2 kg Futter/Tag (1 l Medium je g, ca. 3-fach Reserve); FAO-Tabelle 19–31 kg/Tag; Auslegung 4,75 kg/Tag",
+        "Umsatz (Substrat gesamt)": "8,2 m³ Substrat → Faustregel 8,2 kg Futter/Tag (1 l Medium je g, ca. 3-fach Reserve); FAO-Tabelle 19–31 kg/Tag; Auslegung 3,46 kg/Tag (D61)",
         "Wasserbedarf Flutzyklus": "≈ 109 l/min im Mittel bei 2 Zyklen/Stunde (alle 14 Beete; je Flutung 5–8 min, Fort Valley State Extension)",
         "Pflanzfläche": "27,3 m² nach Modellmaßen (Bens Tabelle 37,97 m²); Futter je m² 25–65 g/Tag (SRAC 454 / FAO 589)",
-        "Pflanzdichte": "2160 Topfplätze sind Kapazität (79 je m²); im Pflanzmix (R26) werden nur ca. 132 Pflanzen gesetzt (4,8 je m², FAO Frucht 4–8)",
-        "Tragfähigkeit Fisch": "8,2 m³ Substrat tragen nach SRAC 454 (Fisch : Kies = 1 : 2) etwa 250 kg Fisch; die übrigen 225 kg der Auslegung (475 kg) tragen NFT-Flächen und Fruchtgemüse",
-        "Pflanzmix Beete (R26)": "Tomate 36 (9,0 m², 4/m²), Paprika 19 (5,5 m², 3,5/m²), Gurke 15 (5,0 m², 3/m², Rankhilfe), Süßkartoffel 62 (7,8 m², 8/m² [Annahme]); Futterbedarf 50–80 g/m²/Tag, 2,2 kg/Tag bei 80 g"
+        "Pflanzdichte": "2160 Topfplätze sind Kapazität (79 je m²); im Pflanzmix (D61) werden ca. 523 Blatt- und Kräuterpflanzen gesetzt (19 je m², FAO Blatt 20–25)",
+        "Tragfähigkeit Fisch": "8,2 m³ Substrat tragen nach SRAC 454 (Fisch : Kies = 1 : 2) etwa 250 kg Fisch; die übrigen ca. 95 kg der Auslegung (346 kg) tragen die NFT-Flächen",
+        "Pflanzmix Beete (D61)": "Salat 202 (9,0 m², 22,5/m²), Mangold 105 (6,0 m², 17,5/m²), Spinat 86 (4,3 m², 20/m²), Petersilie 50 (4,0 m², 12,5/m²), Kräuter 80 (4,0 m², 20/m² [Annahme]) = 523 Pflanzen; Futterbedarf 40–50 g/m²/Tag, 1,2 kg/Tag bei 45 g (D61, R36)"
       },
       "grenzen": "Siphonmaße aus der Scope-Card, nicht gegen die fertige Datei gemessen; Topfraster der neuen Außenbeete rechnet die Montage (D34). Pflanzmix R26: Süßkartoffel in Aquaponik nicht belegt, Beettiefe 30 cm ist für Knollen die Untergrenze.",
       "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md",
@@ -276,7 +276,7 @@
       },
       "grenzen": "Rev. C ist noch ohne Spec-Prüfer-Lauf nach der letzten Änderung; endgültige Lage setzt die Montage (M7).",
       "quelle": "docs/parts/nft_tisch.md, docs/research/R06.md, R16.md",
-      "rolle": "Art 5 der Filterarten (docs/filter-konzept.md, R30): NFT ist Nährstoffsenke, kein Filter. 76 Rinnen × 1 l/min = 76 l/min; Futter-Äquivalent 50 g/m² × 49,6 m² = 2,5 kg/Tag (gut die Hälfte der 4,75 kg). Filmgeschwindigkeit 0,026 m/s, ca. 1 l Wasser je m Rinne. Feststoffe verstopfen die Rinne: Siebung davor (Art 2)."
+      "rolle": "Art 5 der Filterarten (docs/filter-konzept.md, R30): NFT ist Nährstoffsenke, kein Filter. 76 Rinnen × 1 l/min = 76 l/min; Futter-Äquivalent 45 g/m² × 49,6 m² = 2,2 kg/Tag (knapp zwei Drittel der 3,46 kg). Filmgeschwindigkeit 0,026 m/s, ca. 1 l Wasser je m Rinne. Feststoffe verstopfen die Rinne: Siebung davor (Art 2)."
     },
     {
       "match": "^nft_rinne",
@@ -435,12 +435,12 @@
         "Umwälzung": "Hauptkreislauf: 2 große Pumpen je Linie à 55 l/min = 110 l/min (D38)",
         "Wasservolumen": "≈ 702 l",
         "Biomedium": "lose K1-Träger, ≈ 0,47 m³ je Tank (67 % der Wasserfüllung 702 l), gesamt 0,94 m³ = 471 m² Trägerfläche (D55, R30); bisher Korb Ø0,8 × 0,52 m mit Bio Balls 0,26 m³",
-        "Umsatz": "471 m² × 0,57 g TAN/m²/Tag (FAO) = 7,2 kg Futter/Tag; mit Faktor 2,5 (Simulator-Logik) 2,9 kg/Tag; Losordo/DeLong (350 g TAN/m³/Tag) 8,8 kg/Tag; Auslegung 4,75 kg/Tag. Der Messwert aus Süßwasser-RAS (0,215 g/m²/Tag bei 28 °C) wäre 829 m² – dann tragen die Substratbeete mit",
+        "Umsatz": "471 m² × 0,57 g TAN/m²/Tag (FAO) = 7,2 kg Futter/Tag; mit Faktor 2,5 (Simulator-Logik) 2,9 kg/Tag; Losordo/DeLong (350 g TAN/m³/Tag) 8,8 kg/Tag; Auslegung 3,46 kg/Tag. Der Messwert aus Süßwasser-RAS (0,215 g/m²/Tag bei 28 °C) wäre 829 m² – dann tragen die Substratbeete mit",
         "Schwebebett im Modell": "ein Körper, 470 l Schüttvolumen (0,67 × 702 l); das Modell fasst 687 l bis zum Rand und 628 l bis zum Überlauf: Füllung 68 % bzw. 75 % des Modellwassers (Befund)"
       },
       "grenzen": "Die einzelnen K1-Träger sind nicht modelliert, das Bett ist ein Körper (Siebschlitze und Belüftungsbohrungen auch nicht). K1-Fläche 500 m²/m³ nur über Suchzusammenfassungen belegt (R30). Das Bett füllt 75 % des Modellwassers bis zum Überlauf (R30 rechnet mit 702 l): Überlauf tiefer oder Füllung 421 l offen. Luftmenge und Gebläse nicht gerechnet.",
       "quelle": "docs/parts/tank.md, docs/research/R30.md, docs/decisions.md D55",
-      "rolle": "Art 3 der Filterarten (docs/filter-konzept.md, R30): Biofilter im Hauptstrom (110 l/min je Linie). Bedarf bei 178 g TAN/Tag: 169 m² (Simulator-Rate 1,06 g/m²/Tag), 312 m² (FAO 0,57), 829 m² (Messwert 0,215, Kinyage & Pedersen 2016). Korb 0,52 m³ Bio Balls (SSA 400) = 208 m². Empfehlung, Entscheidung Ben: lose Träger K1-Typ 0,94 m³ bei 67 % Füllung = 470 m²; den Simulator-Faktor 2,5 (1,06 m³ Bio Balls) nicht blind übernehmen. Substratbeete übernehmen den Rest."
+      "rolle": "Art 3 der Filterarten (docs/filter-konzept.md, R30): Biofilter im Hauptstrom (110 l/min je Linie). Bedarf bei 130 g TAN/Tag (346 kg Fisch, D61): 123 m² (Simulator-Rate 1,06 g/m²/Tag), 228 m² (FAO 0,57), 605 m² (Messwert 0,215, Kinyage & Pedersen 2016). Korb 0,52 m³ Bio Balls (SSA 400) = 208 m². Empfehlung, Entscheidung Ben: lose Träger K1-Typ 0,94 m³ bei 67 % Füllung = 470 m²; den Simulator-Faktor 2,5 (1,06 m³ Bio Balls) nicht blind übernehmen. Substratbeete übernehmen den Rest."
     },
     {
       "match": "^feinfilter",
@@ -530,7 +530,7 @@
         "Absetzer-Teilstrom (D38)": "4 × 12,5 l/min, je Absetzer-Tank eine in Betrieb",
         "Hydraulische Leistung": "≈ 18 W je große Pumpe (ρ·g·Q·H bei 55 l/min, 2,0 m)",
         "Elektrische Leistung": "≈ 72 W je große Pumpe, ≈ 17 W je kleine (Wirkungsgrad 25 %, FAO 589: 16–33 %)",
-        "Fischwasser-Umlauf": "28,5 m³ in ≈ 2,2 h bei 220 l/min; TAN-Durchfluss erfordert 165 l/min bei 4,75 kg Futter (372 l/min bei Bens 10,7 kg); 220 l/min tragen bis 6,3 kg Futter/Tag"
+        "Fischwasser-Umlauf": "28,5 m³ in ≈ 2,2 h bei 220 l/min; TAN-Durchfluss erfordert 120 l/min bei 3,46 kg Futter (372 l/min bei Bens 10,7 kg); 220 l/min tragen bis 6,3 kg Futter/Tag"
       },
       "grenzen": "Rollen nach Entscheidung D38 (vorläufig): Bens Tabelle nennt 2 Pumpen, das OBJ 4 Tafeln. Fabrikat und Pumpenkennlinie offen; Fischmenge und Pflanzfläche warten auf Bens Antwort zu den Fragen 1–6 (docs/research/aquaponik-empfehlung.md).",
       "quelle": "docs/parts/pumpe.md, docs/research/R21.md, docs/decisions.md D38",
@@ -610,9 +610,9 @@
         "In den Beeten": "2160 Topfplätze",
         "In den NFT-Rinnen": "674 (aussen4, D43)",
         "Gesamt": "2834 Topfplätze",
-        "Bepflanzt im Mix (R26)": "≈ 806: 132 in den Beeten (6 %), 674 in den NFT-Rinnen (100 %)"
+        "Bepflanzt im Mix (D61)": "≈ 1197: 523 in den Beeten (24 %), 674 in den NFT-Rinnen (100 %)"
       },
-      "grenzen": "Die Topfplätze sind Kapazität, kein Pflanzplan: In den Beeten stehen nur ca. 132 Pflanzen (Tomate, Paprika, Gurke, Süßkartoffel); die NFT-Rinnen sind voll bepflanzt (Blatt und Kräuter)."
+      "grenzen": "Die Topfplätze sind Kapazität, kein Pflanzplan: In den Beeten stehen ca. 523 Blatt- und Kräuterpflanzen; die NFT-Rinnen sind voll bepflanzt (Blatt und Kräuter)."
     },
     {
       "match": "^salatkopf",
@@ -749,7 +749,7 @@
       },
       "grenzen": "Messkreisdurchfluss, Dosierpumpen und Rechner sind Annahmen; der praktische Basenfaktor 0,5 stammt aus einer Zusammenfassung (Brune), der Kaliumbedarf der Pflanzen ist viel kleiner als die KOH-Menge, das Verhältnis Ca(OH)₂ zu KOH muss nach Messung eingestellt werden. Lage im Sektor rechts der Tür und Stapelabstand zu den Streben prüft die Montage (M8).",
       "quelle": "docs/research/R27.md, docs/decisions.md D46",
-      "rolle": "Arten 7 und 9 der Filterarten (docs/filter-konzept.md, R30): Seitenzweig am Verteiler (Messkreis 3 l/min), kein Teil des Hauptstroms. Alkalinität: Bedarf 1271 g CaCO₃/Tag theoretisch (7,14 g je g TAN), Dosierung ca. 0,6 kg/Tag Ca(OH)₂/KOH; Muschelschill nach Simulator nur 4–20 %, Asche 2 % des Bedarfs, also nur Notpuffer. Puffer 2,0 m³ = 5 % des Wassers, deckt 2,9 Tage Verlust; der Pool ist der Sumpf (Schwankung 5,7 cm/Tag)."
+      "rolle": "Arten 7 und 9 der Filterarten (docs/filter-konzept.md, R30): Seitenzweig am Verteiler (Messkreis 3 l/min), kein Teil des Hauptstroms. Alkalinität: Bedarf 926 g CaCO₃/Tag theoretisch (7,14 g je g TAN bei 130 g TAN/Tag), Dosierung ca. 0,43 kg/Tag Ca(OH)₂/KOH; Muschelschill nach Simulator nur 4–20 %, Asche 2 % des Bedarfs, also nur Notpuffer. Puffer 2,0 m³ = 5 % des Wassers, deckt 2,9 Tage Verlust; der Pool ist der Sumpf (Schwankung 5,7 cm/Tag)."
     },
     {
       "match": "^becken_dritt|^drittbecken|^pool_dritt|^pool3|^pool_3",
@@ -804,7 +804,7 @@
         "Tiefe": "2,2 m (D26)",
         "Lage": "wird auf die Kuppelachse zentriert (D35)",
         "Wasser": "≈ 26,2 m³ (mit zweitem Becken 28,5 m³ Fischwasser)",
-        "Besatz (Auslegung)": "475 kg Tilapia (D40, Spanne 450–500) ≈ 680 Fische à 0,7 kg, gestaffelt = 17 kg/m³ (FAO 589: höchstens 20). Die Pflanzfläche trägt mit Bens Pflanzmix (35 % Frucht) nur ca. 380 kg, mit 4. Außenrinne ca. 420 kg; voll gedeckt erst bei ca. 60–85 % Fruchtgemüse. Bens Tabelle: 1287 kg = 45 kg/m³ (braucht UVI-Technik und mehr Pflanzfläche)"
+        "Besatz (Auslegung)": "346 kg Tilapia (D61, Weg 1 nach R36, Spanne 308–385) ≈ 494 Fische à 0,7 kg, gestaffelt = 12 kg/m³ (FAO 589: höchstens 20). Die Pflanzfläche (Beete und NFT nur Blatt/Kräuter, 77 m²) trägt bei 45 g/m²/Tag diese Menge; D40 hatte 475 kg mit Fruchtgemüse in den Beeten angesetzt, das unter den Tischen nicht wächst. Bens Tabelle: 1287 kg = 45 kg/m³ (braucht UVI-Technik und mehr Pflanzfläche)"
       },
       "grenzen": "Rand und Wandstärke sind Annahmen.",
       "quelle": "docs/decisions.md D08, D26"
@@ -891,8 +891,8 @@
         }
       ],
       "masse": {
-        "Strom ohne Heizung": "≈ 740 W = 17,7 kWh/Tag = 531 kWh/Monat (Spanne 0,39–0,95 kW)",
-        "Belüftung": "≈ 280 W (0,59 W je kg Fisch, UVI-Wert)",
+        "Strom ohne Heizung": "≈ 660 W = 15,9 kWh/Tag = 477 kWh/Monat (Spanne 0,38–0,87 kW)",
+        "Belüftung": "≈ 204 W (0,59 W je kg Fisch, UVI-Wert)",
         "Pumpen": "≈ 290 W Hauptkreislauf + 33 W Absetzer",
         "Puffer-Station": "≈ 17 W im Mittel (Sonden, Rechner, Dosier- und Messpumpen)",
         "Gebläse Luftpolster Doppelfolie": "≈ 80 W (60–100 W, Annahme)",

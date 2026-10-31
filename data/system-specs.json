@@ -1,6 +1,6 @@
 {
- "stand": "30.10.2026",
- "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D40 (Biomasse 475 kg, Spanne 450–500, nur mit viel Fruchtgemüse und 4. Außenrinne voll gedeckt); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
+ "stand": "31.10.2026",
+ "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D61 (Weg 1 nach R36: Tische über den Beeten, Beete nur Blatt/Kräuter, Biomasse 346 kg, Spanne 308–385; D40 hatte 475 kg mit Fruchtgemüse); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
  "wasser": {
   "gesamt_m3": 37.1,
   "teile": [
@@ -62,35 +62,35 @@
   "flaeche_substrat_tabelle_m2": 37.97,
   "flaeche_nft_m2": 49.6,
   "flaeche_gesamt_m2": 77.0,
-  "noetig_g_m2": 62,
-  "noetiger_fruchtanteil": 0.61,
+  "noetig_g_m2": 45,
+  "noetiger_fruchtanteil": -0.0,
   "tragbar_bens_mix_kg": 420,
   "toepfe_je_m2_beet": 79,
   "dichte_empfohlen": "Blatt 20-25, Frucht 4-8 je m2 (FAO 589)"
  },
  "fische": {
-  "anzahl": 679,
-  "biomasse_kg": 475,
-  "futter_kg_tag": 4.75,
-  "dichte_kg_m3": 17,
-  "tan_g_tag": 178,
+  "anzahl": 494,
+  "biomasse_kg": 346,
+  "futter_kg_tag": 3.46,
+  "dichte_kg_m3": 12,
+  "tan_g_tag": 130,
   "spanne": {
    "biomasse_kg": [
-    450,
-    500
+    308,
+    385
    ],
    "futter_kg_tag": [
-    4.5,
-    5.0
+    3.08,
+    3.85
    ],
    "dichte_kg_m3": [
-    16,
-    18
+    11,
+    13
    ]
   },
   "obergrenze_fao_kg": 571,
   "substrat_traegt_kg": 252,
-  "bedingung": "61% Fruchtgemüse nötig bei 4 Außenrinnen; Bens Mix 35% trägt 420 kg (D40)",
+  "bedingung": "Weg 1 (D61): Beete unter den Tischen nur Blatt/Kräuter, kein Fruchtanteil nötig; 4 Außenrinnen, Auslegung = Mitte der FAO-Werte, Spanne untere bis obere FAO-Werte; D40 (475 kg) setzte ca. 61 % Fruchtgemüse voraus",
   "tabelle_ben": {
    "anzahl": 1839,
    "biomasse_kg": 1287,
@@ -113,7 +113,7 @@
   "hauptkreislauf_pumpen": "4 x 55 l/min (D38)",
   "absetzer_teilstrom_l_min": 25.0,
   "fischwasser_umlauf_h": 2.2,
-  "tan_durchfluss_l_min": 165,
+  "tan_durchfluss_l_min": 120,
   "tan_durchfluss_tabelle_l_min": 372,
   "tabelle_ben": {
    "kreislauf_modell_l_min": 143,
@@ -124,16 +124,16 @@
   "pumpe_hydraulisch_w": 36,
   "pumpe_elektrisch_w": 144,
   "pumpe_klein_w": 33,
-  "belueftung_w": 280,
+  "belueftung_w": 204,
   "steuerung_w": 40,
   "puffer_station_w": 17,
   "geblaese_luftpolster_w": 80,
-  "gesamt_w": 738,
-  "kwh_tag": 17.7,
-  "kwh_monat": 531,
+  "gesamt_w": 662,
+  "kwh_tag": 15.9,
+  "kwh_monat": 477,
   "spanne_w": [
-   390,
-   950
+   380,
+   870
   ],
   "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
   "heizung": {
@@ -166,18 +166,18 @@
  },
  "sauerstoff": {
   "fisch_kg_tag": [
-   0.9,
-   1.5,
+   0.7,
+   1.1,
+   1.6
+  ],
+  "nitrifikation_kg_tag": 0.6,
+  "gesamt_kg_tag": [
+   1.3,
+   1.7,
    2.2
   ],
-  "nitrifikation_kg_tag": 0.8,
-  "gesamt_kg_tag": [
-   1.7,
-   2.4,
-   3.0
-  ],
   "spitze_faktor": 1.5,
-  "belueftung_aus_bedarf_w": 98
+  "belueftung_aus_bedarf_w": 71
  },
  "filter": {
   "absetzer_klein_l": 267,
@@ -205,9 +205,9 @@
    3.5,
    5.0
   ],
-  "passender_fischanteil": 0.73,
+  "passender_fischanteil": 1.0,
   "pflanzen_kg_futter_tag_bens_mix": 4.2,
-  "passender_fischanteil_bens_mix": 0.89,
+  "passender_fischanteil_bens_mix": 1.22,
   "substrat_traegt_fisch_kg": 252
  },
  "huelle": {
@@ -257,20 +257,20 @@
    "Nitrit": "unter 0,25 mg/l"
   },
   "dosierung": {
-   "alkalinitaet_g_caco3_tag_theorie": 1272,
-   "aequivalente_tag_theorie": 25.4,
+   "alkalinitaet_g_caco3_tag_theorie": 926,
+   "aequivalente_tag_theorie": 18.5,
    "praktisch_faktor": 0.5,
    "theorie_kg_tag": {
-    "Ca(OH)2": 0.94,
-    "KOH": 1.43,
-    "NaHCO3": 2.14
+    "Ca(OH)2": 0.69,
+    "KOH": 1.04,
+    "NaHCO3": 1.56
    },
    "praktisch_kg_tag": {
-    "Ca(OH)2": 0.47,
-    "KOH": 0.71,
-    "NaHCO3": 1.07
+    "Ca(OH)2": 0.34,
+    "KOH": 0.52,
+    "NaHCO3": 0.78
    },
-   "mix_halb_ca_halb_koh_praktisch_kg_tag": 0.59,
+   "mix_halb_ca_halb_koh_praktisch_kg_tag": 0.43,
    "eisen": "Fe-Chelat 2 mg/l alle ca. 3 Wochen = 74 g Fe je Gabe, ca. 3.5 g Fe/Tag",
    "hinweis": "Nitrifikation verbraucht 7,14 g Alkalinitaet je g TAN (Boyd 2016); K-Bedarf der Pflanzen (ca. 0,4 g/m2/Tag, Graber/Junge, Abstract) ist viel kleiner als die KOH-Menge: Verhaeltnis Ca(OH)2/KOH nach Messung (EC, K) einstellen"
   },
@@ -304,31 +304,37 @@
  "pflanzmix": {
   "beete": [
    {
-    "art": "Tomate",
+    "art": "Salat",
     "flaeche_m2": 9.0,
-    "pflanzen_je_m2": 4.0,
-    "pflanzen": 36
+    "pflanzen_je_m2": 22.5,
+    "pflanzen": 202
    },
    {
-    "art": "Paprika",
-    "flaeche_m2": 5.5,
-    "pflanzen_je_m2": 3.5,
-    "pflanzen": 19
+    "art": "Mangold",
+    "flaeche_m2": 6.0,
+    "pflanzen_je_m2": 17.5,
+    "pflanzen": 105
    },
    {
-    "art": "Gurke (Rankhilfe)",
-    "flaeche_m2": 5.0,
-    "pflanzen_je_m2": 3.0,
-    "pflanzen": 15
+    "art": "Spinat",
+    "flaeche_m2": 4.3,
+    "pflanzen_je_m2": 20.0,
+    "pflanzen": 86
    },
    {
-    "art": "Süßkartoffel",
-    "flaeche_m2": 7.8,
-    "pflanzen_je_m2": 8.0,
-    "pflanzen": 62
+    "art": "Petersilie",
+    "flaeche_m2": 4.0,
+    "pflanzen_je_m2": 12.5,
+    "pflanzen": 50
+   },
+   {
+    "art": "Kräuter (Basilikum, Schnittlauch, Minze, Koriander)",
+    "flaeche_m2": 4.0,
+    "pflanzen_je_m2": 20.0,
+    "pflanzen": 80
    }
   ],
-  "beete_pflanzen": 132,
+  "beete_pflanzen": 523,
   "beete_flaeche_m2": 27.3,
   "nft": [
    {
@@ -360,64 +366,57 @@
   "nft_flaeche_m2": 49.6,
   "topfplaetze": {
    "gesamt": 2834,
-   "bepflanzt": 806,
-   "anteil_beete": 0.06,
+   "bepflanzt": 1197,
+   "anteil_beete": 0.24,
    "anteil_nft": 1.0
   },
   "szenarien": [
    {
-    "szenario": "Empfehlungsmix, obere FAO-Werte",
-    "beete_g_m2": 80,
-    "nft_g_m2": 50,
-    "futter_kg_tag": 4.67,
-    "fisch_kg": 467
-   },
-   {
-    "szenario": "Mitte der FAO-Werte",
-    "beete_g_m2": 72.5,
-    "nft_g_m2": 45,
-    "futter_kg_tag": 4.22,
-    "fisch_kg": 422
-   },
-   {
-    "szenario": "Bens Mix gleichmäßig (35 % Frucht)",
-    "beete_g_m2": 54.6,
-    "nft_g_m2": 54.6,
-    "futter_kg_tag": 4.2,
-    "fisch_kg": 420
-   },
-   {
-    "szenario": "untere FAO-Werte",
+    "szenario": "Obere FAO-Werte (Blatt 50 g)",
     "beete_g_m2": 50,
+    "nft_g_m2": 50,
+    "futter_kg_tag": 3.85,
+    "fisch_kg": 385
+   },
+   {
+    "szenario": "Mitte der FAO-Werte (Blatt 45 g)",
+    "beete_g_m2": 45,
+    "nft_g_m2": 45,
+    "futter_kg_tag": 3.46,
+    "fisch_kg": 346
+   },
+   {
+    "szenario": "Untere FAO-Werte (Blatt 40 g)",
+    "beete_g_m2": 40,
     "nft_g_m2": 40,
-    "futter_kg_tag": 3.35,
-    "fisch_kg": 335
+    "futter_kg_tag": 3.08,
+    "fisch_kg": 308
    },
    {
     "szenario": "SRAC-NFT (25 g)",
-    "beete_g_m2": 65,
+    "beete_g_m2": 45,
     "nft_g_m2": 25,
-    "futter_kg_tag": 3.02,
-    "fisch_kg": 302
+    "futter_kg_tag": 2.47,
+    "fisch_kg": 247
    }
   ],
   "empfehlung": {
-   "szenario": "Empfehlungsmix, obere FAO-Werte",
-   "beete_g_m2": 80,
-   "nft_g_m2": 50,
-   "futter_kg_tag": 4.67,
-   "fisch_kg": 467
+   "szenario": "Mitte der FAO-Werte (Blatt 45 g)",
+   "beete_g_m2": 45,
+   "nft_g_m2": 45,
+   "futter_kg_tag": 3.46,
+   "fisch_kg": 346
   },
   "ziel_futter_kg_tag": [
-   4.3,
-   5.0
+   3.08,
+   3.85
   ],
   "rueckfall_fisch_kg": [
-   335,
-   422
+   247,
+   308
   ],
   "regel": "Besatz stufenweise erhoehen, Nitrat 5-150 mg/l halten (FAO 589: unter 5 Futter erhoehen, ueber 150 Wasser wechseln)",
-  "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50, Frucht 50-80), SRAC 454 NFT nur 25 % des Raft-Werts; Kohlrabi/Sellerie aus Bens Liste nur als Zwischenkultur, nicht im Hauptmix"
+  "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50), SRAC 454 NFT nur 25 % des Raft-Werts; Beete unter den Tischen nur Blatt/Kraeuter (D61, R36): Tomate, Paprika, Gurke und Suesskartoffel entfallen; Kohlrabi/Sellerie nur als Zwischenkultur"
  },
  "beete_tische": {
   "standard": "weg1",
@@ -508,7 +507,7 @@
     "blattpflanzen_beet": 0
    }
   ],
-  "hinweis": "Planungsstand Weg 1 (D60). Futter je m2 aus R26 (obere / Mitte / untere FAO-Werte), NFT-Flaeche wie R26 aus Bens Tabelle skaliert; mit Rinnenraster als NFT-Flaeche 20-25 % weniger Fisch in allen Varianten (R36). Nur zusaetzlich: Pflanzmix, Fischmenge 475 kg und Konsistenzpruefungen oben rechnen weiter mit D40/R26 (Fruchtanteil im Beet), bis Ben Weg 1 oder 2 entscheidet."
+  "hinweis": "Planungsstand Weg 1 (D60). Futter je m2 aus R26 (obere / Mitte / untere FAO-Werte), NFT-Flaeche wie R26 aus Bens Tabelle skaliert; mit Rinnenraster als NFT-Flaeche 20-25 % weniger Fisch in allen Varianten (R36). Seit D61 gilt Weg 1: Pflanzmix, Fischmenge (346 kg) und Konsistenzpruefungen rechnen mit Beeten Blatt/Kraeuter; die Zeile D40-Annahme (475 kg) bleibt als Vergleich."
  },
  "szenario": {
   "aussen_rinnen": 4,
@@ -518,8 +517,8 @@
    "nft_topf": 570,
    "nft_flaeche_m2": 42.4,
    "flaeche_gesamt_m2": 69.7,
-   "noetig_g_m2": 68,
-   "noetiger_fruchtanteil": 0.84,
+   "noetig_g_m2": 50,
+   "noetiger_fruchtanteil": 0.17,
    "tragbar_bens_mix_kg": 381,
    "tragbar_blatt_kg": 314,
    "tragbar_frucht_kg": 506
@@ -530,8 +529,8 @@
    "nft_topf": 674,
    "nft_flaeche_m2": 49.6,
    "flaeche_gesamt_m2": 77.0,
-   "noetig_g_m2": 62,
-   "noetiger_fruchtanteil": 0.61,
+   "noetig_g_m2": 45,
+   "noetiger_fruchtanteil": -0.0,
    "tragbar_bens_mix_kg": 420,
    "tragbar_blatt_kg": 346,
    "tragbar_frucht_kg": 558
@@ -546,7 +545,7 @@
  "offene_fragen": [
   "Standort und Aussenklima (Heizlast, Jahresenergie)",
   "4. Aussenrinne machbar (W24)?",
-  "Anteil Fruchtgemuese/Knollen im Pflanzplan (nötig ca. 60-85 %, Bens Mix 35 %)",
+  "Fruchtgemuese: ausserhalb der Tische gaebe es keinen Platz (D61 Weg 1); Weg 2b (Mitteltische weg) nur auf Bens Wunsch (R36)",
   "Drittbecken: Maß 1,03 x 1,13 m bestätigen (D46); Puffer-Station Lage und Stapelhöhe",
   "Notstrom und Alarm fuer die Belueftung",
   "Geblaese und Windlast der Plane"
@@ -555,27 +554,27 @@
   {
    "pruefung": "Pflanzenzahl und Bepflanzung",
    "ok": true,
-   "detail": "2834 Topfplätze im Modell gegen mindestens 609 (Kapazität); bepflanzt werden im Mix 132 Pflanzen in den Beeten (4.8/m², FAO Frucht 4–8) und 674 in den NFT-Rinnen (13.6/m²)"
+   "detail": "2834 Topfplätze im Modell gegen mindestens 609 (Kapazität); bepflanzt werden im Mix 523 Pflanzen in den Beeten (19.1/m², Blatt/Kräuter, FAO 20–25 für Salat) und 674 in den NFT-Rinnen (13.6/m²)"
   },
   {
    "pruefung": "Besatzdichte höchstens 20 kg/m³ (FAO 589)",
    "ok": true,
-   "detail": "17 kg/m³ im Beckenwasser 28.5 m³ (475 kg); Bens Tabelle 45 kg/m³ (1287 kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"
+   "detail": "12 kg/m³ im Beckenwasser 28.5 m³ (346 kg); Bens Tabelle 45 kg/m³ (1287 kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"
   },
   {
    "pruefung": "Biofilter-/Substratvolumen deckt das Futter (Faustregel)",
    "ok": true,
-   "detail": "deckt 11.1 von 4.8 kg Futter/Tag (233%); Biofilter mit K1-Traegern 0.94 m³ = 471 m² (FAO-Rate 7.2 kg/Tag, mit Faktor 2,5 2.9), Substrat nach FAO-Tabelle 19–31 kg/Tag (Substrat-Faustregel hat ca. 3-fach Reserve)"
+   "detail": "deckt 11.1 von 3.5 kg Futter/Tag (320%); Biofilter mit K1-Traegern 0.94 m³ = 471 m² (FAO-Rate 7.2 kg/Tag, mit Faktor 2,5 2.9), Substrat nach FAO-Tabelle 19–31 kg/Tag (Substrat-Faustregel hat ca. 3-fach Reserve)"
   },
   {
-   "pruefung": "Pflanzmix trägt die Auslegung (D40: 475 kg, 4 Außenrinnen)",
+   "pruefung": "Pflanzmix trägt die Auslegung (D61: 346 kg, Weg 1 Blatt/Kräuter, 4 Außenrinnen)",
    "ok": true,
-   "detail": "Empfehlungsmix (Beete 80 g/m², NFT 50 g/m², obere FAO-Werte) liefert 4.67 kg Futter/Tag = 467 kg Fisch gegen Ziel 4.75 (Spanne 4,5–5,0); Mitte der FAO-Werte 422 kg, Bens Mix 420 kg, untere FAO-Werte 335 kg, SRAC-NFT 302 kg (Rückfall)"
+   "detail": "Mitte der FAO-Werte (Beete 45 g/m², NFT 45 g/m²) liefert 3.46 kg Futter/Tag = 346 kg Fisch gegen Ziel 3.46; obere FAO-Werte 385 kg, untere 308 kg, SRAC-NFT 247 kg (Rückfall); Rinnenraster als NFT-Fläche gäbe etwa 20–25 % weniger (R36)"
   },
   {
    "pruefung": "Substratvolumen trägt die Fischmenge (SRAC 1 : 2)",
    "ok": false,
-   "detail": "8.2 m³ Substrat tragen nach SRAC 454 etwa 252 kg Fisch gegen 475 kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"
+   "detail": "8.2 m³ Substrat tragen nach SRAC 454 etwa 252 kg Fisch gegen 346 kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"
   },
   {
    "pruefung": "Bens Tabellenfutter gegen Pflanzfläche",
@@ -590,7 +589,7 @@
   {
    "pruefung": "Hauptkreislauf trägt das Futter (TAN-Durchfluss)",
    "ok": true,
-   "detail": "Bedarf 165 l/min bei 4.8 kg Futter (TAN 1.5 mg/l, Biofilter 50%); 220 l/min tragen bis 6.3 kg Futter/Tag; für Bens 10.7 kg wären 372 l/min nötig"
+   "detail": "Bedarf 120 l/min bei 3.5 kg Futter (TAN 1.5 mg/l, Biofilter 50%); 220 l/min tragen bis 6.3 kg Futter/Tag; für Bens 10.7 kg wären 372 l/min nötig"
   },
   {
    "pruefung": "Absetzer-Verweilzeit mindestens 20 min (UVI)",
@@ -600,7 +599,7 @@
   {
    "pruefung": "Belüftung deckt den Sauerstoffbedarf",
    "ok": true,
-   "detail": "280 W liefern bei 1 kg O₂/kWh 6.7 kg/Tag gegen Bedarf 1.7–3.0 kg/Tag (Spitze ×1.5: 4.5)"
+   "detail": "204 W liefern bei 1 kg O₂/kWh 4.9 kg/Tag gegen Bedarf 1.3–2.2 kg/Tag (Spitze ×1.5: 3.3)"
   },
   {
    "pruefung": "Puffertanks decken Wasserverlust und Frischwasser-Ruhe (R27)",
@@ -619,7 +618,7 @@
   }
  ],
  "herkunft": {
-  "biomasse_475_kg": "B/Entscheidung D40 (Ben: 450-500 kg); Obergrenze Q FAO 589 (20 kg/m3 = 570 kg), tragbar aus Pflanzflaeche E R20/R24: 380-420 kg",
+  "biomasse_346_kg": "Entscheidung D61 (Weg 1, R36): Pflanzflaeche Mitte der FAO-Werte, Spanne 308-385; frueher D40 475 kg (setzte Fruchtgemuese voraus); Obergrenze Q FAO 589 (20 kg/m3 = 570 kg)",
   "huelle_plane": "Entscheidung D39; Material, U, Befestigung Q R24 (Kentucky State Univ., Purdue CEA, Domerama); Standort/Gradtage A",
   "vierte_rinne": "A Staffel fortgesetzt, Flaeche anteilig skaliert; bis W24-Zahlen da sind",
   "futter_1_prozent": "Q FAO 589 (R18)",

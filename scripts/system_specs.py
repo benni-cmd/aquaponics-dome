@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Rechnet die Kuppel-Kennzahlen (Wasser, Pflanzen, Fluesse, Pumpenleistung, Filterkapazitaet, Heizung) aus den Modellmassen und
 schreibt data/system-specs.json (der Viewer zeigt sie, solange nichts ausgewaehlt ist) und die Konsistenzpruefung.
-Auslegung nach der Fachrecherche R17-R24 (docs/research/aquaponik-empfehlung.md, aquaponik-werte.md, R24.md Huelle) und Entscheidung D40
-(Biomasse 475 kg, Spanne 450-500); Bens Tabellenwerte
+Auslegung nach der Fachrecherche R17-R24 (docs/research/aquaponik-empfehlung.md, aquaponik-werte.md, R24.md Huelle) und Entscheidung D61
+(Weg 1 nach R36: Tische ueber den Beeten, Beete nur Blatt/Kraeuter, Biomasse 346 kg, Spanne 308-385; D40 hatte 475 kg mit Fruchtgemuese);
+Bens Tabellenwerte
 (reference/Kuppelberechnung-neu-2.xlsx, R15) bleiben als zweiter Wert unter "tabelle_ben" stehen.
 Jede Zahl traegt eine Herkunft: Q = Quelle (R-Nummer in docs/research), E = eigene Rechnung aus Modellmassen oder Quellwerten,
 A = Annahme, B = Bens Tabelle.
@@ -44,7 +45,8 @@ PUMP_KLEIN_N, PUMP_KLEIN_L_MIN = 4, 12.5               # D38: 12-13 l/min
 PUMP_KLEIN_IN_BETRIEB = 2                              # eine je Absetzer-Tank, die zweite Pumpe als Reserve [A]
 
 # Fische und Futter: Auslegung aus der Pflanzflaeche (R20), Bens Tabelle als Vergleich
-FISH_KG_DESIGN = 475                                   # D40 (Ben): 450-500 kg; Bedingung: viel Fruchtgemuese und 4. Aussenrinne (ohne: ca. 380-420 kg tragbar)
+FISH_KG_DESIGN = 346                                   # D61 (Ben): Weg 1 nach R36, Spanne 308-385 kg (untere / obere FAO-Werte); D40 hatte 475 kg mit Fruchtgemuese in den Beeten
+D40_FISH_KG = 475                                      # frueherer Zielwert D40, nur als Vergleich
 FISH_END_WEIGHT = 0.7                                  # kg Endgewicht [Q R17: FAO 0,5 kg, SRAC 454 0,81 kg]
 FEED_PCT_BW = 0.01                                     # 1 % Koerpergewicht/Tag [Q R18: FAO 589, bei >100 g]
 TABLE_FISH_N, TABLE_FISH_KG = 1839, 0.7                # B Ben-Tabelle Tilapia
@@ -165,23 +167,21 @@ scen3, scen4 = plant_scenario(nft_len3), plant_scenario(nft_len4)
 sc = scen4 if AUSSEN_RINNEN == 4 else scen3
 mix_g = FRUIT_SHARE_MIX * FRUIT_G + (1 - FRUIT_SHARE_MIX) * LEAF_G
 cap_mix = plant_area * mix_g / 1000
-# ---- Pflanzmix (R26): Beete = Frucht/Knollen, NFT = Blatt/Kraeuter ----------------------------------------------------------
+# ---- Pflanzmix (R26, seit D61/R36 Weg 1): Beete UND NFT = Blatt/Kraeuter (unter den Tischen kein Fruchtgemuese) ----------------------------------------------------------
 # Beete (Flaeche m2, Pflanzen je m2): FAO 589 Pflanzenblaetter (Tomate 3-5, Paprika 3-4, Gurke 2-5), Suesskartoffel 8/m2 [A aus Mortley u. a. 1991: 25 x 38 cm]
-MIX_BEETE = [("Tomate", 9.0, 4.0), ("Paprika", 5.5, 3.5), ("Gurke (Rankhilfe)", 5.0, 3.0), ("Süßkartoffel", 7.8, 8.0)]
+MIX_BEETE = [("Salat", 9.0, 22.5), ("Mangold", 6.0, 17.5), ("Spinat", 4.3, 20.0), ("Petersilie", 4.0, 12.5), ("Kräuter (Basilikum, Schnittlauch, Minze, Koriander)", 4.0, 20.0)]   # Flaeche m2, Pflanzen/m2: FAO 589 Salat 20-25, Mangold 15-20, Petersilie 10-15; Spinat/Kraeuter 20 [A]
 MIX_NFT = [("Salat", 250), ("Mangold", 100), ("Spinat", 80), ("Basilikum", 130), ("Petersilie", 70), ("Kräuter (Schnittlauch, Minze, Koriander)", 44)]
-MIX_SCENARIOS = [("Empfehlungsmix, obere FAO-Werte", 80, 50), ("Mitte der FAO-Werte", 72.5, 45), ("Bens Mix gleichmäßig (35 % Frucht)", None, None),
-                 ("untere FAO-Werte", 50, 40), ("SRAC-NFT (25 g)", 65, 25)]     # g Futter/m2/Tag Beete / NFT
+MIX_SCENARIOS = [("Obere FAO-Werte (Blatt 50 g)", 50, 50), ("Mitte der FAO-Werte (Blatt 45 g)", 45, 45),
+                 ("Untere FAO-Werte (Blatt 40 g)", 40, 40), ("SRAC-NFT (25 g)", 45, 25)]     # g Futter/m2/Tag Beete / NFT
 nft_area_now = nft_area_of(nft_len)
 mix_beete_area = sum(a for _, a, _ in MIX_BEETE)
 mix_beete = [{"art": n, "flaeche_m2": a, "pflanzen_je_m2": d, "pflanzen": round(a * d)} for n, a, d in MIX_BEETE]
 mix_nft_pots = sum(n for _, n in MIX_NFT)
 mix_rows = []
 for name, gb, gn in MIX_SCENARIOS:
-    if gb is None:
-        gb = gn = FRUIT_SHARE_MIX * FRUIT_G + (1 - FRUIT_SHARE_MIX) * LEAF_G
     feed = (substrate_area * gb + nft_area_now * gn) / 1000
     mix_rows.append({"szenario": name, "beete_g_m2": round(gb, 1), "nft_g_m2": round(gn, 1), "futter_kg_tag": round(feed, 2), "fisch_kg": round(feed / FEED_PCT_BW)})
-mix_best = mix_rows[0]
+mix_best = mix_rows[1]                                                  # Mitte der FAO-Werte = Auslegung D61 (346 kg)
 cap_plants = tuple(plant_area * g / 1000 for g in PLANT_FEED_G_M2)      # kg Futter/Tag (niedrig, Mitte, hoch)
 fish_kg_supported_by_substrate = substrate_total * 1000 / SUBSTRATE_PER_KG_FISH_L
 fish_fit = min(cap_media, cap_plants[1]) / feed_kg_day
@@ -245,10 +245,10 @@ heat_kw_dt = [round(w * DT_DESIGN / 1000, 1) for w in heat_w_per_k]
 heat_mwh_year = [round(w / 1000 * 24 * GT_KD / 1000) for w in heat_w_per_k]
 
 checks = [
-    ("Pflanzenzahl und Bepflanzung", POTS_BEDS + POTS_NFT >= POTS_TABLE, f"{POTS_BEDS + POTS_NFT} Topfplätze im Modell gegen mindestens {POTS_TABLE} (Kapazität); bepflanzt werden im Mix {sum(m['pflanzen'] for m in mix_beete)} Pflanzen in den Beeten ({sum(m['pflanzen'] for m in mix_beete) / substrate_area:.1f}/m², FAO Frucht 4–8) und {mix_nft_pots} in den NFT-Rinnen ({mix_nft_pots / nft_area_now:.1f}/m²)"),
+    ("Pflanzenzahl und Bepflanzung", POTS_BEDS + POTS_NFT >= POTS_TABLE, f"{POTS_BEDS + POTS_NFT} Topfplätze im Modell gegen mindestens {POTS_TABLE} (Kapazität); bepflanzt werden im Mix {sum(m['pflanzen'] for m in mix_beete)} Pflanzen in den Beeten ({sum(m['pflanzen'] for m in mix_beete) / substrate_area:.1f}/m², Blatt/Kräuter, FAO 20–25 für Salat) und {mix_nft_pots} in den NFT-Rinnen ({mix_nft_pots / nft_area_now:.1f}/m²)"),
     (f"Besatzdichte höchstens {MAX_FISH_KG_M3} kg/m³ (FAO 589)", density <= MAX_FISH_KG_M3, f"{density:.0f} kg/m³ im Beckenwasser {fish_water:.1f} m³ ({biomass} kg); Bens Tabelle {table_density:.0f} kg/m³ ({table_biomass:.0f} kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"),
     ("Biofilter-/Substratvolumen deckt das Futter (Faustregel)", cap_media >= feed_kg_day, f"deckt {cap_media:.1f} von {feed_kg_day:.1f} kg Futter/Tag ({cap_media / feed_kg_day:.0%}); Biofilter mit K1-Traegern {media_biofilter_m3:.2f} m³ = {media_area_m2:.0f} m² (FAO-Rate {cap_bio_fao:.1f} kg/Tag, mit Faktor 2,5 {cap_bio:.1f}), Substrat nach FAO-Tabelle {cap_sub_fao[0]:.0f}–{cap_sub_fao[1]:.0f} kg/Tag (Substrat-Faustregel hat ca. 3-fach Reserve)"),
-    (f"Pflanzmix trägt die Auslegung (D40: {biomass} kg, {AUSSEN_RINNEN} Außenrinnen)", mix_best["futter_kg_tag"] >= 4.5, f"Empfehlungsmix (Beete {mix_best['beete_g_m2']:g} g/m², NFT {mix_best['nft_g_m2']:g} g/m², obere FAO-Werte) liefert {mix_best['futter_kg_tag']:.2f} kg Futter/Tag = {mix_best['fisch_kg']} kg Fisch gegen Ziel {feed_kg_day:.2f} (Spanne 4,5–5,0); Mitte der FAO-Werte {mix_rows[1]['fisch_kg']} kg, Bens Mix {mix_rows[2]['fisch_kg']} kg, untere FAO-Werte {mix_rows[3]['fisch_kg']} kg, SRAC-NFT {mix_rows[4]['fisch_kg']} kg (Rückfall)"),
+    (f"Pflanzmix trägt die Auslegung (D61: {biomass} kg, Weg 1 Blatt/Kräuter, {AUSSEN_RINNEN} Außenrinnen)", mix_best["futter_kg_tag"] >= feed_kg_day, f"Mitte der FAO-Werte (Beete {mix_best['beete_g_m2']:g} g/m², NFT {mix_best['nft_g_m2']:g} g/m²) liefert {mix_best['futter_kg_tag']:.2f} kg Futter/Tag = {mix_best['fisch_kg']} kg Fisch gegen Ziel {feed_kg_day:.2f}; obere FAO-Werte {mix_rows[0]['fisch_kg']} kg, untere {mix_rows[2]['fisch_kg']} kg, SRAC-NFT {mix_rows[3]['fisch_kg']} kg (Rückfall); Rinnenraster als NFT-Fläche gäbe etwa 20–25 % weniger (R36)"),
     ("Substratvolumen trägt die Fischmenge (SRAC 1 : 2)", fish_kg_supported_by_substrate >= biomass, f"{substrate_total:.1f} m³ Substrat tragen nach SRAC 454 etwa {fish_kg_supported_by_substrate:.0f} kg Fisch gegen {biomass} kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"),
     ("Bens Tabellenfutter gegen Pflanzfläche", cap_plants[1] >= TABLE_FEED_KG_DAY, f"Pflanzfläche deckt bei 45 g/m² nur {table_plants_cover:.0%} von Bens {TABLE_FEED_KG_DAY:.1f} kg Futter/Tag; nötig wären {TABLE_FEED_KG_DAY * 1000 / PLANT_FEED_G_M2[1]:.0f} m² statt {plant_area:.0f} m² (Frage 1 an Ben)"),
     ("Hauptkreislauf deckt den Pflanzenstrom (D38)", pumps_main >= circuit, f"4 Pumpen gross × {PUMP_GROSS_L_MIN} = {pumps_main} l/min gegen Bedarf {circuit:.0f} l/min (NFT {NFT_FLOW_PER_CHANNEL:g} l/min je Rinne); bei 2 l/min je Rinne {circuit_high:.0f} l/min ({'gedeckt' if pumps_main >= circuit_high else 'nicht gedeckt'})"),
@@ -266,14 +266,14 @@ assert len(NFT_CHANNELS["aussen"][1]) == 4 and POTS_NFT == 674, "Szenarien weg1/
 beete_tische = {"standard": "weg1", "szenarien": [
     {"name": n, "tische": c["tische"], "rinnen": c["rinnen"], "nft_toepfe": c["toepfe"], "nft_flaeche_m2": round(c["nft_m2"], 1),
      "beet_frucht_m2": round(c["beet_frucht_m2"], 1), "beet_blatt_m2": round(c["beet_blatt_m2"], 1),
-     "fisch_kg_oben_mitte_unten": [round(x) for x in c["fisch_kg"]], "verlust_gegen_475_kg_mitte": round(c["fisch_kg"][1] - FISH_KG_DESIGN),
+     "fisch_kg_oben_mitte_unten": [round(x) for x in c["fisch_kg"]], "verlust_gegen_475_kg_mitte": round(c["fisch_kg"][1] - D40_FISH_KG),
      "fruchtpflanzen": sum(c["fruchtpflanzen"].values()), "blattpflanzen_beet": c["blattpflanzen_beet"]}
     for key, (n, r, b) in zip(("d40_annahme", "weg1", "weg2a", "weg2b", "weg2c"), btv.VARIANTS) for c in [btv.compute(n, r, b)]],
-    "hinweis": "Planungsstand Weg 1 (D60). Futter je m2 aus R26 (obere / Mitte / untere FAO-Werte), NFT-Flaeche wie R26 aus Bens Tabelle skaliert; mit Rinnenraster als NFT-Flaeche 20-25 % weniger Fisch in allen Varianten (R36). Nur zusaetzlich: Pflanzmix, Fischmenge 475 kg und Konsistenzpruefungen oben rechnen weiter mit D40/R26 (Fruchtanteil im Beet), bis Ben Weg 1 oder 2 entscheidet."}
+    "hinweis": "Planungsstand Weg 1 (D60). Futter je m2 aus R26 (obere / Mitte / untere FAO-Werte), NFT-Flaeche wie R26 aus Bens Tabelle skaliert; mit Rinnenraster als NFT-Flaeche 20-25 % weniger Fisch in allen Varianten (R36). Seit D61 gilt Weg 1: Pflanzmix, Fischmenge (346 kg) und Konsistenzpruefungen rechnen mit Beeten Blatt/Kraeuter; die Zeile D40-Annahme (475 kg) bleibt als Vergleich."}
 
 specs = {
-    "stand": "30.10.2026",
-    "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D40 (Biomasse 475 kg, Spanne 450–500, nur mit viel Fruchtgemüse und 4. Außenrinne voll gedeckt); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
+    "stand": "31.10.2026",
+    "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D61 (Weg 1 nach R36: Tische über den Beeten, Beete nur Blatt/Kräuter, Biomasse 346 kg, Spanne 308–385; D40 hatte 475 kg mit Fruchtgemüse); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
     "wasser": {"gesamt_m3": round(total, 1), "teile": [(n, round(v, 2), f"{v / total:.0%}") for n, v in parts], "in_tanks_m3": round(tanks, 2), "im_kreislauf_m3": round(total_circuit, 1),
                "tabelle_systemwasser_m3": 25, "fischwasser_m3": round(fish_water, 1)},
     "pflanzen": {"beete": POTS_BEDS, "nft": sc["nft_topf"], "gesamt": POTS_BEDS + sc["nft_topf"], "tabelle": POTS_TABLE, "rinnen": nft_channels,
@@ -283,9 +283,9 @@ specs = {
                  "noetig_g_m2": sc["noetig_g_m2"], "noetiger_fruchtanteil": sc["noetiger_fruchtanteil"], "tragbar_bens_mix_kg": sc["tragbar_bens_mix_kg"],
                  "toepfe_je_m2_beet": round(POTS_BEDS / substrate_area), "dichte_empfohlen": "Blatt 20-25, Frucht 4-8 je m2 (FAO 589)"},
     "fische": {"anzahl": fish_n, "biomasse_kg": round(biomass), "futter_kg_tag": round(feed_kg_day, 2), "dichte_kg_m3": round(density), "tan_g_tag": round(tan_g),
-               "spanne": {"biomasse_kg": [450, 500], "futter_kg_tag": [4.5, 5.0], "dichte_kg_m3": [16, 18]},
+               "spanne": {"biomasse_kg": [mix_rows[2]["fisch_kg"], mix_rows[0]["fisch_kg"]], "futter_kg_tag": [mix_rows[2]["futter_kg_tag"], mix_rows[0]["futter_kg_tag"]], "dichte_kg_m3": [round(mix_rows[2]["fisch_kg"] / fish_water), round(mix_rows[0]["fisch_kg"] / fish_water)]},
                "obergrenze_fao_kg": round(MAX_FISH_KG_M3 * fish_water), "substrat_traegt_kg": round(fish_kg_supported_by_substrate),
-               "bedingung": f"{sc['noetiger_fruchtanteil']:.0%} Fruchtgemüse nötig bei {sc['rinnen_aussen']} Außenrinnen; Bens Mix {FRUIT_SHARE_MIX:.0%} trägt {sc['tragbar_bens_mix_kg']} kg (D40)",
+               "bedingung": f"Weg 1 (D61): Beete unter den Tischen nur Blatt/Kräuter, kein Fruchtanteil nötig; {sc['rinnen_aussen']} Außenrinnen, Auslegung = Mitte der FAO-Werte, Spanne untere bis obere FAO-Werte; D40 (475 kg) setzte ca. 61 % Fruchtgemüse voraus",
                "tabelle_ben": {"anzahl": TABLE_FISH_N, "biomasse_kg": round(table_biomass), "futter_kg_tag": round(TABLE_FEED_KG_DAY, 1),
                                "dichte_kg_m3": round(table_density), "tan_g_tag": round(table_tan_g), "tan_g_tag_frueherer_ansatz": round(table_tan_g_alt)}},
     "fluesse": {"nft_l_min": round(nft_flow), "beete_l_min": round(bed_flow), "kreislauf_l_min": round(circuit), "kreislauf_m3_h": round(circuit * 0.06, 1),
@@ -338,18 +338,18 @@ specs = {
                   "nft": [{"art": n, "toepfe": k} for n, k in MIX_NFT], "nft_toepfe": mix_nft_pots, "nft_flaeche_m2": round(nft_area_now, 1),
                   "topfplaetze": {"gesamt": POTS_BEDS + POTS_NFT, "bepflanzt": sum(m["pflanzen"] for m in mix_beete) + mix_nft_pots,
                                   "anteil_beete": round(sum(m["pflanzen"] for m in mix_beete) / POTS_BEDS, 2), "anteil_nft": round(mix_nft_pots / POTS_NFT, 2)},
-                  "szenarien": mix_rows, "empfehlung": mix_best, "ziel_futter_kg_tag": [4.3, 5.0], "rueckfall_fisch_kg": [mix_rows[3]["fisch_kg"], mix_rows[1]["fisch_kg"]],
+                  "szenarien": mix_rows, "empfehlung": mix_best, "ziel_futter_kg_tag": [mix_rows[2]["futter_kg_tag"], mix_rows[0]["futter_kg_tag"]], "rueckfall_fisch_kg": [mix_rows[3]["fisch_kg"], mix_rows[2]["fisch_kg"]],
                   "regel": "Besatz stufenweise erhoehen, Nitrat 5-150 mg/l halten (FAO 589: unter 5 Futter erhoehen, ueber 150 Wasser wechseln)",
-                  "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50, Frucht 50-80), SRAC 454 NFT nur 25 % des Raft-Werts; Kohlrabi/Sellerie aus Bens Liste nur als Zwischenkultur, nicht im Hauptmix"},
+                  "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50), SRAC 454 NFT nur 25 % des Raft-Werts; Beete unter den Tischen nur Blatt/Kraeuter (D61, R36): Tomate, Paprika, Gurke und Suesskartoffel entfallen; Kohlrabi/Sellerie nur als Zwischenkultur"},
     "beete_tische": beete_tische,
     "szenario": {"aussen_rinnen": AUSSEN_RINNEN, "drei_rinnen": scen3, "vier_rinnen": scen4,
                  "hinweis": "aussen4 ist Standard (D43, W24 check_nft_fit 48/48): Rinnenlaengen und Toepfe aus nft_tisch.json; NFT-Flaeche aus Bens Tabellenflaeche (42,41 m2 bei aussen3-Laenge) auf die Rinnenlaenge skaliert [A]",
                  "frucht_blatt_g_m2": [FRUIT_G, LEAF_G], "bens_mix_frucht_anteil": FRUIT_SHARE_MIX},
-    "offene_fragen": ["Standort und Aussenklima (Heizlast, Jahresenergie)", "4. Aussenrinne machbar (W24)?", "Anteil Fruchtgemuese/Knollen im Pflanzplan (nötig ca. 60-85 %, Bens Mix 35 %)",
+    "offene_fragen": ["Standort und Aussenklima (Heizlast, Jahresenergie)", "4. Aussenrinne machbar (W24)?", "Fruchtgemuese: ausserhalb der Tische gaebe es keinen Platz (D61 Weg 1); Weg 2b (Mitteltische weg) nur auf Bens Wunsch (R36)",
                       "Drittbecken: Maß 1,03 x 1,13 m bestätigen (D46); Puffer-Station Lage und Stapelhöhe", "Notstrom und Alarm fuer die Belueftung", "Geblaese und Windlast der Plane"],
     "konsistenz": [{"pruefung": n, "ok": bool(ok), "detail": d} for n, ok, d in checks],
     "herkunft": {
-        "biomasse_475_kg": "B/Entscheidung D40 (Ben: 450-500 kg); Obergrenze Q FAO 589 (20 kg/m3 = 570 kg), tragbar aus Pflanzflaeche E R20/R24: 380-420 kg",
+        "biomasse_346_kg": "Entscheidung D61 (Weg 1, R36): Pflanzflaeche Mitte der FAO-Werte, Spanne 308-385; frueher D40 475 kg (setzte Fruchtgemuese voraus); Obergrenze Q FAO 589 (20 kg/m3 = 570 kg)",
         "huelle_plane": "Entscheidung D39; Material, U, Befestigung Q R24 (Kentucky State Univ., Purdue CEA, Domerama); Standort/Gradtage A",
         "vierte_rinne": "A Staffel fortgesetzt, Flaeche anteilig skaliert; bis W24-Zahlen da sind",
         "futter_1_prozent": "Q FAO 589 (R18)", "tan_3_75_prozent": "Q SRAC 451, FAO 589, Losordo/DeLong (R18/R19)",

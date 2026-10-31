@@ -1,0 +1,17 @@
+PASS huelle: Scharnier-Zargenlaschen der Tuer = 3, je eine Ausklinkung im Steg: Ist 3, Soll 3
+PASS huelle: Aufsatzrahmen Volumen = Stege + Kraegen - Ueberdeckung (Steg im Kragen) - 3 Ausklinkungen: Ist 1.28299e+06, Soll 1.28299e+06 (+-60)
+PASS huelle: Dichtband Volumen (2 Pfosten + Sturz, ohne Doppelzaehlung der Ecken): Ist 204480, Soll 204480 (+-20)
+PASS huelle: Klemmleiste Volumen: Ist 459180, Soll 459180 (+-20)
+PASS huelle: Aufsatzrahmen steht auf der Zarge (Unterkante Z' = 15 = Zargenrohr-Oberflaeche): Ist 15, Soll 15 (+-0.01)
+PASS huelle: Aufsatzrahmen Breite X = 2 x 523 + 20 (Kragen 40 breit): Ist 1086, Soll 1086 (+-0.05)
+PASS huelle: Kragen-Oberkante Z' = Dichtband-Unterkante: Ist 62, Soll 62 (+-0.01)
+PASS huelle: Dichtband-Oberkante Z' 64 = innere Folienlage (liegt auf): Ist 64, Soll 64 (+-0.01)
+PASS huelle: Klemmleiste-Unterkante = Folien-Oberflaeche (64 + 0,15): Ist 64.15, Soll 64.15 (+-0.01)
+PASS huelle: Folien-Ausschnitt halbe Breite 513 = Dichtband-Innenkante (xc - seal_w/2): Ist 513, Soll 513 (+-0.01)
+PASS huelle: Folien-Ausschnitt oben Y' 2043 = Dichtband-Innenkante oben (yc - seal_w/2): Ist 2043, Soll 2043 (+-0.01)
+PASS huelle: Folie liegt 30 mm auf dem Kragen (Ausschnitt-Kante zu Kragen-Aussenkante): Ist 30, Soll 30 (+-0.01)
+PASS huelle: Lichte Weite der Tuer bleibt frei: Aufsatzrahmen-Innenkante x = 521,5 > Blatt halbe Breite 500: Ist 1, Soll 1
+PASS huelle: Schwelle bleibt frei: Rahmen beginnt bei Y' = Schwellenhoehe 30: Ist 30, Soll 30 (+-0.01)
+PASS huelle: Gemeinsames Tuerfeld enthaelt Zarge, Tuerblatt, Aufsatzrahmen, Dichtband, Klemmleiste, 2 Folienlagen: Ist 1, Soll 1
+PASS huelle: Interferenzen im Tuerfeld (Zarge, Tuerblatt, Aufsatzrahmen, Dichtband, Klemmleiste, Folie): Ist 0, Soll 0
+== huelle: 16/16 PASS

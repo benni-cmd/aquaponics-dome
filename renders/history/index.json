@@ -2098,5 +2098,25 @@
   "note": "W27 Huelle-Folie T42",
   "commit": "bd9bae2",
   "source": "renders/components/huelle_folie/huelle_folie_BBB_tuer-01-draufsicht.png"
+ },
+ {
+  "file": "20261031-123547_werkstatt_tuer-zarge-planenausschnitt_tuer-zarge-planenausschnitt-01-iso.png",
+  "sha": "e7aa05ffeea12d70",
+  "time": "2026-10-31 12:35:47",
+  "role": "werkstatt",
+  "subject": "tuer_zarge_planenausschnitt",
+  "note": "W27 Zarge-Planenausschnitt T44",
+  "commit": "ceefc6d",
+  "source": "renders/components/tuer_zarge_planenausschnitt/tuer_zarge_planenausschnitt-01-iso.png"
+ },
+ {
+  "file": "20261031-123733_werkstatt_tuer-zarge-planenausschnitt_tuer-zarge-planenausschnitt-02-querschnitt.png",
+  "sha": "64c0e6e6ab14b0ca",
+  "time": "2026-10-31 12:37:33",
+  "role": "werkstatt",
+  "subject": "tuer_zarge_planenausschnitt",
+  "note": "W27 Zarge-Planenausschnitt T44",
+  "commit": "ceefc6d",
+  "source": "renders/components/tuer_zarge_planenausschnitt/tuer_zarge_planenausschnitt-02-querschnitt.png"
  }
 ]

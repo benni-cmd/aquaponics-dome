@@ -145,8 +145,63 @@ def check_folie(ck):
     ck.eq("Innere Lage liegt ueber Strebe + Schaumband + Kanal (45 + 3 + 15 = 63 < 64)", 1 if strut_r + kp["foam_t"] + kp["ch_h"] < p["foil_z0"] else 0, 1)
     ck.eq("Luft zwischen Kanal-Oberkante und innerer Lage in mm (1)", p["foil_z0"] - (strut_r + kp["foam_t"] + kp["ch_h"]), 1.0, 0.01)
 
+def check_zarge(ck):
+    p, d = sc.load_params("tuer_zarge_planenausschnitt")
+    tp, td = sc.load_params("tuer_komplett")
+    fp, fd = sc.load_params("huelle_folie")
+    G = td["geometrie"]
+    r, sh, lw, lh = tp["rohr"], tp["schwelle_h"], G["lichte_w"], G["lichte_h"]
+    xc, yc, ytop = lw / 2 + r / 2, sh + lh + r / 2, sh + lh + r
+    wt, cw, ct, sw, st, kw, kt = p["web_t"], p["collar_w"], p["collar_t"], p["seal_w"], p["seal_t"], p["clamp_w"], p["clamp_t"]
+    Ly = (ytop + (cw - r) / 2) - sh
+    path = comp("tuer_zarge_planenausschnitt")
+    ev = sc.evaluate(path)
+    Bd = {b["name"]: b for b in ev["bodies"]}
+    bb = lambda n: Bd[n]["bbox"]
+    # Erwartung aus der Querschnittsformel (Vereinigungsvolumen, unabhaengig vom Generator)
+    hs = (fp["foil_z0"] - st) - r / 2
+    Lt, Lc = 2 * xc + wt, 2 * xc + cw
+    web_fp = 2 * wt * Ly + (Lt - 2 * wt) * wt
+    v_web = web_fp * hs
+    v_col = 2 * cw * Ly * ct + (Lc - 2 * cw) * cw * ct
+    evt = sc.evaluate(comp("tuer_komplett"))
+    lugs = [x for x in evt["bodies"] if x["name"].endswith("Zargenlasche")]
+    v_notch = sum(wt * ((x["bbox"]["max"][1] - x["bbox"]["min"][1]) + 2 * p["notch_clear"]) * (x["bbox"]["max"][2] + p["notch_clear"] - r / 2) for x in lugs)
+    ck.eq("Scharnier-Zargenlaschen der Tuer = 3, je eine Ausklinkung im Steg", len(lugs), 3)
+    ck.eq("Aufsatzrahmen Volumen = Stege + Kraegen - Ueberdeckung (Steg im Kragen) - 3 Ausklinkungen", Bd["Aufsatzrahmen"]["volume_mm3"], v_web + v_col - web_fp * ct - v_notch, 60)
+    ck.eq("Dichtband Volumen (2 Pfosten + Sturz, ohne Doppelzaehlung der Ecken)", Bd["Dichtband"]["volume_mm3"], (2 * sw * Ly + (2 * xc + sw - 2 * sw) * sw) * st, 20)
+    ck.eq("Klemmleiste Volumen", Bd["Klemmleiste"]["volume_mm3"], (2 * kw * Ly + (2 * xc + kw - 2 * kw) * kw) * kt, 20)
+    ck.eq("Aufsatzrahmen steht auf der Zarge (Unterkante Z' = 15 = Zargenrohr-Oberflaeche)", bb("Aufsatzrahmen")["min"][2], r / 2, 0.01)
+    ck.eq("Aufsatzrahmen Breite X = 2 x 523 + 20 (Kragen 40 breit)", bb("Aufsatzrahmen")["max"][0] - bb("Aufsatzrahmen")["min"][0], 2 * xc + cw, 0.05)
+    ck.eq("Kragen-Oberkante Z' = Dichtband-Unterkante", bb("Aufsatzrahmen")["max"][2], bb("Dichtband")["min"][2], 0.01)
+    ck.eq("Dichtband-Oberkante Z' 64 = innere Folienlage (liegt auf)", bb("Dichtband")["max"][2], fp["foil_z0"], 0.01)
+    ck.eq("Klemmleiste-Unterkante = Folien-Oberflaeche (64 + 0,15)", bb("Klemmleiste")["min"][2], fp["foil_z0"] + fp["foil_t"], 0.01)
+    # Planenausschnitt der Folie liegt auf dem Dichtband
+    ck.eq("Folien-Ausschnitt halbe Breite 513 = Dichtband-Innenkante (xc - seal_w/2)", G["zarge_aussen_w"] / 2 - fp["door_overlap"], xc - sw / 2, 0.01)
+    ck.eq("Folien-Ausschnitt oben Y' 2043 = Dichtband-Innenkante oben (yc - seal_w/2)", G["zarge_hoehe"] - fp["door_overlap"], yc - sw / 2, 0.01)
+    ck.eq("Folie liegt 30 mm auf dem Kragen (Ausschnitt-Kante zu Kragen-Aussenkante)", (xc + cw / 2) - (G["zarge_aussen_w"] / 2 - fp["door_overlap"]), 30.0, 0.01)
+    ck.eq("Lichte Weite der Tuer bleibt frei: Aufsatzrahmen-Innenkante x = 521,5 > Blatt halbe Breite 500", 1 if (xc - wt / 2) > tp["blatt_w"] / 2 else 0, 1)
+    ck.eq("Schwelle bleibt frei: Rahmen beginnt bei Y' = Schwellenhoehe 30", bb("Aufsatzrahmen")["min"][1], sh, 0.01)
+    # Gemeinsames Design: Zarge + Aufsatzrahmen + Folie des Tuerfelds (Folien-KS: Inkreismittelpunkt, Ursprung 1070,4 ueber der Basiskante)
+    rr = 3708 / (2 * math.sqrt(3))
+    b = sc.Build()
+    for nm, f in (("Tuer_Komplett", "tuer_komplett"), ("Zarge_Uebergang", "tuer_zarge_planenausschnitt"), ("Folie_Tuerfeld", "huelle_folie_BBB_tuer")):
+        b.add("component.insert_design", path=comp(f).replace("\\", "/"), name=nm)
+    b.add("occurrence.move", occurrence="Folie_Tuerfeld:1", matrix=[1, 0, 0, 0, 0, 1, 0, round(rr, 4), 0, 0, 1, 0], tolerance=1e-6, move_grounded=True)
+    comb = os.path.join(sc.TMP, "ws-huelle-tuerfeld.sc")
+    sc.run(b.write("huelle-tuerfeld"), comb)
+    evc = sc.evaluate(comb)
+    names = [x["name"] for x in evc["bodies"]]
+    ck.eq("Gemeinsames Tuerfeld enthaelt Zarge, Tuerblatt, Aufsatzrahmen, Dichtband, Klemmleiste, 2 Folienlagen", 1 if all(any(n.endswith(x) or x in n for n in names) for x in ("Tuerblatt", "Aufsatzrahmen", "Dichtband", "Klemmleiste", "Folie_innen", "Folie_aussen")) else 0, 1)
+    itf = interference(comb)
+    for x in itf[:8]:
+        print("   Interferenz", x)
+    ck.eq("Interferenzen im Tuerfeld (Zarge, Tuerblatt, Aufsatzrahmen, Dichtband, Klemmleiste, Folie)", len(itf), 0)
+
 def main(which):
     ck = sc.Check("huelle")
+    if "zarge" in which:
+        check_zarge(ck)
     if "keilschiene" in which:
         check_keilschiene(ck)
     if "folie" in which:

@@ -2008,5 +2008,35 @@
   "note": "W29 Menschenfigur 1,80 m aufrecht/messen/arbeiten mit Massstab",
   "commit": "11eee12",
   "source": "renders/components/mensch_referenz/mensch_referenz-massstab.png"
+ },
+ {
+  "file": "20261031-015247_werkstatt_tank_tank-klein-01-iso.png",
+  "sha": "89a5d92cb2291ebb",
+  "time": "2026-10-31 01:52:47",
+  "role": "werkstatt",
+  "subject": "tank",
+  "note": "W30 Stand verkleinert (Plattform 619/821)",
+  "commit": "a535701",
+  "source": "renders/components/tank_klein/tank_klein-01-iso.png"
+ },
+ {
+  "file": "20261031-015557_werkstatt_tank_tank-gross-01-iso.png",
+  "sha": "ef1959d46aa39677",
+  "time": "2026-10-31 01:55:57",
+  "role": "werkstatt",
+  "subject": "tank",
+  "note": "W30 Stand verkleinert (Plattform 619/821)",
+  "commit": "a535701",
+  "source": "renders/components/tank_gross/tank_gross-01-iso.png"
+ },
+ {
+  "file": "20261031-015801_werkstatt_tank_tank-gross-05-schnitt.png",
+  "sha": "680ca088eaa1871f",
+  "time": "2026-10-31 01:58:01",
+  "role": "werkstatt",
+  "subject": "tank",
+  "note": "W30 Stand verkleinert (Plattform 619/821)",
+  "commit": "a535701",
+  "source": "renders/components/tank_gross/tank_gross-05-schnitt.png"
  }
 ]

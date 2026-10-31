@@ -31,6 +31,17 @@ def main(typs):
         ck.eq(f"{typ} Plattform Breite", pb["max"][1] - pb["min"][1], T["plat_w"], 1.0)
         ck.eq(f"{typ} Plattform Dicke", pb["max"][2] - pb["min"][2], T["plat_t"], 1.0)
         ck.eq(f"{typ} Plattform Z-Unterkante", pb["min"][2], T["plat_z0"], 1.0)
+        # W30/D50: Plattform = Konusdurchmesser auf Plattform-Unterkante + 2 x (Spiel + 60); Beine ausserhalb des Tanks; Pumpentafel passt zum Stand
+        tan_a_ = (T["plat_z0"] + T["plat_t"] - T["z0"]) / (Rb - rt)
+        r_pz = rt + (T["plat_z0"] - T["z0"]) / tan_a_
+        ck.eq(f"{typ} Plattform = 2 x (Konusradius {r_pz:.1f} auf Z {T['plat_z0']} + {p['cone_clear']:.0f} + {p['plat_margin']:.0f}) = Laenge und Breite (W30/D50)", (pb["max"][0] - pb["min"][0]) + (pb["max"][1] - pb["min"][1]), 2 * 2 * (r_pz + p["cone_clear"] + p["plat_margin"]), 3.0)
+        ck.eq(f"{typ} Plattform kleiner als im OBJ ({T['plat_l_obj']}) und >= Konusdurchmesser auf Plattformhoehe + 2 x 50", 1 if (pb["max"][0] - pb["min"][0]) < T["plat_l_obj"] and (pb["max"][0] - pb["min"][0]) >= 2 * (r_pz + 50) else 0, 1)
+        legs0 = [b for k, b in B.items() if k.startswith("Bein_")]
+        near = min(math.hypot(min(abs(b["bbox"]["min"][0]), abs(b["bbox"]["max"][0])), min(abs(b["bbox"]["min"][1]), abs(b["bbox"]["max"][1]))) for b in legs0)
+        ck.eq(f"{typ} Beine ausserhalb des Tankwulstes (Abstand Beinkante zur Achse {near:.0f} >= Aussenradius {R:.0f} + 20)", 1 if near >= R + 20 else 0, 1)
+        lay_t = [t for t in lay if abs(t["d"] - 2 * R) < 2]
+        taf = [m["l"] for t in lay_t for m in t["modules"] if m["w"] < 10]
+        ck.eq(f"{typ} Pumpentafel (Laenge {max(taf)}) <= Plattform ({pb['max'][0] - pb['min'][0]:.0f}): sie passt seitlich an den Stand", 1 if max(taf) <= pb["max"][0] - pb["min"][0] else 0, 1)
         # Beine
         legs = [b for k, b in B.items() if k.startswith("Bein_")]
         ck.eq(f"{typ} Beine", len(legs), 4)
@@ -79,6 +90,8 @@ def main(typs):
                 worst = max(worst, abs((ang - want + 180) % 360 - 180))
             ck.eq(f"{typ} Rippenwinkel gegen Soll (max. Abweichung Grad)", round(worst, 2), 0, 1.0)
             ck.eq(f"{typ} Rippen radial innerhalb der Plattform (r_aussen <= {p['rib_r_out']:.0f})", 1 if all(_m.hypot(max(abs(b["bbox"]["max"][0]), abs(b["bbox"]["min"][0])), max(abs(b["bbox"]["max"][1]), abs(b["bbox"]["min"][1]))) <= p["rib_r_out"] + 25 for b in ribs) else 0, 1)
+            st = B["Strebe_1"]["bbox"]
+            ck.eq(f"{typ} Rippenradius {p['rib_r_out']:.0f} <= Innenkante der Querstrebe {st['min'][0]:.1f} - 3", 1 if p["rib_r_out"] <= st["min"][0] - 3 + 0.5 else 0, 1)
             ue = B["Ueberlauf"]["bbox"]
             ck.eq(f"{typ} Ueberlauf 100 mm unter dem Rand (R09)", T["z0"] + T["H"] - (ue["min"][2] + ue["max"][2]) / 2, p["outlet_below_top"], 0.5)
             ck.eq(f"{typ} Ueberlauf ausserhalb des Tanks (x_max > R)", 1 if ue["max"][0] > R else 0, 1)

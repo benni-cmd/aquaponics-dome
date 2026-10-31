@@ -8,8 +8,8 @@
    "R": 336.5,
    "H": 1075,
    "z0": 172,
-   "plat_l": 706,
-   "plat_w": 707,
+   "plat_l": 619,
+   "plat_w": 619,
    "plat_t": 73,
    "plat_z0": 428,
    "leg_w": 30,
@@ -23,14 +23,17 @@
    "anzahl": 2,
    "biofilter": 0,
    "herkunft": "layout.json tanks 1 und 4: D673, H1075, Spitze Z 167-172, Plattform 706x707x73 auf Z 424-428, Beine 4 x h751, Fittings 30-40 an der Spitze",
-   "layout_anzahl": 2
+   "layout_anzahl": 2,
+   "plat_l_obj": 706,
+   "plat_w_obj": 707,
+   "plat_herkunft": "W30/D50: 2 x (Konusradius 247.3 auf Z 428 + Kegelsitz-Spiel 2 + Rand 60) = 619 (OBJ 706 x 707); Plattformdicke und Z unveraendert, Tank unveraendert"
   },
   "gross": {
    "R": 465,
    "H": 1444,
    "z0": 226,
-   "plat_l": 977,
-   "plat_w": 976,
+   "plat_l": 821,
+   "plat_w": 821,
    "plat_t": 98,
    "plat_z0": 570,
    "leg_w": 40,
@@ -45,14 +48,17 @@
    "biofilter": 1,
    "herkunft": "layout.json tanks 2 und 3: D930, H1441-1444, Spitze Z 226-229, Plattform 977x976x98 auf Z 570-572, Beine 4 x h1006-1008, Fittings 41-56 an der Spitze; Hahn d50 (Norm) statt OBJ-Fitting 55 [A]; Stuetzrippen: layout.json tanks 2/3 modules 384 x 44 x 419 (Orchestrator-Entscheidung 29.10.: Rippen/Konsolen der Plattform, Klasse Tank)",
    "rib_phase": 11.0,
-   "layout_anzahl": 2
+   "layout_anzahl": 2,
+   "plat_l_obj": 977,
+   "plat_w_obj": 976,
+   "plat_herkunft": "W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert"
   },
   "gross_t3": {
    "R": 465,
    "H": 1444,
    "z0": 226,
-   "plat_l": 977,
-   "plat_w": 976,
+   "plat_l": 821,
+   "plat_w": 821,
    "plat_t": 98,
    "plat_z0": 570,
    "leg_w": 40,
@@ -67,7 +73,10 @@
    "biofilter": 1,
    "herkunft": "Tank 3 (Azimut 107,8): wie gross, Rippenmuster um 42,6 Grad gedreht (Rippenwinkel relativ zur Plattformdrehung 53,6 statt 11,0 Grad)",
    "rib_phase": 53.6,
-   "layout_anzahl": 2
+   "layout_anzahl": 2,
+   "plat_l_obj": 977,
+   "plat_w_obj": 976,
+   "plat_herkunft": "W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert"
   }
  },
  "parameter": {
@@ -192,9 +201,9 @@
    "herkunft": "OBJ: Kassetten/Rippen z0 249-256 (layout.json tanks[].modules)"
   },
   "rib_r_out": {
-   "wert": 440,
+   "wert": 367,
    "einheit": "mm",
-   "herkunft": "OBJ: Rippen reichen bis r 468; hier 440, damit die Rippe die Querstreben an den Plattformseiten (Innenkante bei 448) nicht durchdringt [A]"
+   "herkunft": "W30: Innenkante der Querstreben (Plattformhalbbreite - leg_w = 370.5) minus 3 mm Spiel, damit die Rippe die Querstreben nicht durchdringt (OBJ: Rippen bis r 468, vor W30 440) [A]"
   },
   "rib_t": {
    "wert": 44,
@@ -205,6 +214,16 @@
    "wert": 3,
    "einheit": "mm",
    "herkunft": "[A] Abstand der Rippenschraege zum Tankkegel"
+  },
+  "plat_margin": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "Ben 31.10./D50: Rand der Plattform um den Konus 60 mm je Seite; Plattform aus dem Konusdurchmesser auf Plattform-Unterkante berechnet (fix_w30_tank.py), nicht hart"
+  },
+  "tafel_gap": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] W30: Pumpentafel steht seitlich am Stand, Abstand von der Aussenkante der Diagonalen/Querstreben 30 mm; Platzierung Montage"
   }
  },
  "werkstoff": {
@@ -244,7 +263,7 @@
    [
     "klein: Fussplatten-Anker (4 Fuesse, je 2 x M8)",
     "Schrauben M8x30 ISO 4017, Loch D9, Platte 100 x 100 x 6; im Boden Duebel/Betonpunkt M8",
-    "x +-338, y +-338, z 6 (Diagonalversatz +-35); Schraubenenden z -24",
+    "x +-294, y +-294, z 6 (Diagonalversatz +-35); Schraubenenden z -24",
     "Befestigung auf Boden/Betonpunkt, Richtung -Z"
    ],
    [
@@ -274,7 +293,7 @@
    [
     "gross: Fussplatten-Anker (4 Fuesse, je 2 x M8)",
     "Schrauben M8x30 ISO 4017, Loch D9, Platte 100 x 100 x 6; im Boden Duebel/Betonpunkt M8",
-    "x +-468, y +-468, z 6 (Diagonalversatz +-35); Schraubenenden z -24",
+    "x +-390, y +-390, z 6 (Diagonalversatz +-35); Schraubenenden z -24",
     "Befestigung auf Boden/Betonpunkt, Richtung -Z"
    ]
   ],
@@ -286,7 +305,7 @@
    "Schlammventil: Kugelhahn PVC-U mit Verschraubung an Stutzen d40/d50",
    "Biomediumkorb (gross): Tragrost auf 4 Konsolen 40x40x30 (an die Tankwand geschweisst/geklebt) [A]"
   ],
-  "abweichung": "layout.json tanks: Durchmesser (inkl. Randwulst), Hoehe, Kegelspitze Z, Plattform (Mass und Z), Beinhoehe stimmen (check_tank.py). Kegel: OBJ liefert nur Spitze und Gesamthoehe; Kegelende auf der Plattform-Oberkante, 45 Grad ab Horizontal als Auslegung E (R09-Nachtrag 29.10. 07:55, vom Orchestrator bestaetigt; Gegenprobe Spitze klein 165 gegen OBJ 167-172, gross 203 gegen 226-229); gebaut 48,7 / 47,0 Grad, weil der Randwulst den Koerperradius gegenueber dem OBJ-Durchmesser verkleinert. Leitrohr und Auslauf nach R09 (A, Konfidenz niedrig, R09 behandelt nur den kleinen Tank, fuer gross analog). Beine 751/1008 laufen bis ueber die Plattform (OBJ-Mass). STUETZRIPPEN (gross): die 5 Kassetten 384 x 44 x 419 je grossem Tank aus layout.json tanks[].modules sind nach Orchestrator-Entscheidung 29.10. (D-Punkt 4) Stuetzrippen/Konsolen der Plattform: radial zur Tankachse, Winkel 0/90/135/180/225 Grad (Phase 11,0 Grad bei Tank 2, 53,6 Grad bei Tank 3: Dateien tank_gross.sc und tank_gross_t3.sc), Dreiecksknaggen von z 249 bis zur Plattform-Unterkante 570 (OBJ: bis Plattform-Oberkante 668, also in die hohle Plattform hinein), aussen r 440 statt 468 (Querstreben), Hypotenuse entlang des Tankkegels mit 3 mm Spiel; Alternative (nicht gebaut): Filterkassetten, Entwurf entfernt. Fittings: OBJ 4 Stueck Z 143-177 mit 30-56 mm, hier Schlammstutzen + Kugelhahn (d40 / d50 Norm statt OBJ 55) + Ablaufstutzen.",
+  "abweichung": "layout.json tanks: Durchmesser (inkl. Randwulst), Hoehe, Kegelspitze Z, Plattform-Z und Beinhoehe stimmen (check_tank.py); das Plattform-MASS ist seit W30/D50 absichtlich kleiner als im OBJ (klein 619 statt 706, gross 821 statt 977: Konusdurchmesser auf Plattform-Unterkante + 2 x 60). Kegel: OBJ liefert nur Spitze und Gesamthoehe; Kegelende auf der Plattform-Oberkante, 45 Grad ab Horizontal als Auslegung E (R09-Nachtrag 29.10. 07:55, vom Orchestrator bestaetigt; Gegenprobe Spitze klein 165 gegen OBJ 167-172, gross 203 gegen 226-229); gebaut 48,7 / 47,0 Grad, weil der Randwulst den Koerperradius gegenueber dem OBJ-Durchmesser verkleinert. Leitrohr und Auslauf nach R09 (A, Konfidenz niedrig, R09 behandelt nur den kleinen Tank, fuer gross analog). Beine 751/1008 laufen bis ueber die Plattform (OBJ-Mass). STUETZRIPPEN (gross): die 5 Kassetten 384 x 44 x 419 je grossem Tank aus layout.json tanks[].modules sind nach Orchestrator-Entscheidung 29.10. (D-Punkt 4) Stuetzrippen/Konsolen der Plattform: radial zur Tankachse, Winkel 0/90/135/180/225 Grad (Phase 11,0 Grad bei Tank 2, 53,6 Grad bei Tank 3: Dateien tank_gross.sc und tank_gross_t3.sc), Dreiecksknaggen von z 249 bis zur Plattform-Unterkante 570 (OBJ: bis Plattform-Oberkante 668, also in die hohle Plattform hinein), aussen r 367 statt 468 (Innenkante der Querstreben minus 3 mm, W30), Hypotenuse entlang des Tankkegels mit 3 mm Spiel; Alternative (nicht gebaut): Filterkassetten, Entwurf entfernt. Fittings: OBJ 4 Stueck Z 143-177 mit 30-56 mm, hier Schlammstutzen + Kugelhahn (d40 / d50 Norm statt OBJ 55) + Ablaufstutzen.",
   "montage": [
    "Plattform mit Beinen am Boden ausrichten, Fussplatten mit M8 verschrauben, Streben und Diagonalen einsetzen",
    "Tank in den Kegelsitz setzen (zu zweit), Deckel und Leitrohr bzw. Biomediumkorb einsetzen",
@@ -327,7 +346,9 @@
    "Haltegurt/Schellen, Dichtungen, Verschraubungen der Diagonalen (M6x40), Revisionsdeckel nicht modelliert",
    "Biofilter (gross): Biomediumkorb, Konsolen, Belueftung als Platzhalter ohne Quelle; kein Leitrohr im Biofilter (R09 nennt es nur fuer den Absetzer, Scope-Card fuehrt es gemeinsam)",
    "Rolle der Stuetzrippen: Annahme A (Orchestrator), Werkstoff Holz Fichte nur wegen der Dicke 44 mm; Alternative Filterkassette; Rippen enden an der Plattform-Unterkante, im OBJ bis Plattform-Oberkante",
-   "Rolle der Pumpen (eigene Klasse pumpe)"
+   "Rolle der Pumpen (eigene Klasse pumpe)",
+   "W30/D50: Plattform 619 / 821 statt 706 / 977; der Kegel sitzt in einem kegeligen Sitz, der Tankzylinder (R 311,5 / 440) ueberragt die Plattform (Kontaktring nur ca. 60 mm hoch im unteren Plattformteil): Tragfaehigkeit des Sitzes und Haltegurt nicht nachgewiesen [A]",
+   "W30: Pumpentafeln 502 x 345 / 693 x 463 passen nicht mehr unter die Plattform (Tank 1: Tafelrand 327 gegen Plattformhalbbreite 310); Montage setzt sie seitlich am Stand, Tafelmittelabstand >= Plattformhalbbreite + 25 + tafel_gap (tank_offsets pruefen)"
   ]
  },
  "herkunft_tabelle": [
@@ -353,11 +374,25 @@
    "hoch"
   ],
   [
-   "Plattform 706x707x73 auf Z 428 / 977x976x98 auf Z 570",
+   "Plattform OBJ 706x707x73 auf Z 428 / 977x976x98 auf Z 570 (Z und Dicke gelten weiter)",
    "706x707x73 / 977x976x98",
    "OBJ",
    "layout.json tanks platform",
    "hoch"
+  ],
+  [
+   "Plattform Breite/Laenge 619 (klein) / 821 (gross) = 2 x (Konusradius auf Plattform-Unterkante + 2 + 60)",
+   "619 / 821",
+   "Ben + R",
+   "Ben 31.10./D50 (Stand zu gross), Rechnung aus der Tankgeometrie (fix_w30_tank.py)",
+   "mittel"
+  ],
+  [
+   "Pumpentafel steht seitlich am Stand (Abstand 30 mm von der Strebenaussenkante), Tafellaenge <= Plattform",
+   "502 <= 619 / 693 <= 821",
+   "A",
+   "W30: Tafel passt nicht mehr unter die Plattform (Tank 1: 327 gegen 310), Montage setzt sie seitlich",
+   "niedrig"
   ],
   [
    "Beine 4 x 30x30xh751 / 40x40xh1008",

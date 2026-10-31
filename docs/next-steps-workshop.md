@@ -64,3 +64,4 @@ REIHENFOLGE 31.10. 01:40 (Ben: IBC und Dosierkonsole sofort sichtbar machen): ak
 REIHENFOLGE 31.10. 02:40: nach W28 -> **W29 Mensch-Referenz** (docs/jobs/W29-mensch-referenz.md, D47) -> W27 Huelle (Plane).
 REIHENFOLGE 31.10. 04:00 (D50): W30 Tank-Staende verkleinern (docs/jobs/W30-tank-staende.md), dann W27 Huelle. Danach Pause fuer den Zwischencheck.
 REIHENFOLGE 31.10. 05:00 (D51): W30 fertig (f40d967). Jetzt W31 Feinfilter (docs/jobs/W31-feinfilter.md), dann W27 Huelle. Immer nur EINE Sitzung gleichzeitig.
+REIHENFOLGE 31.10. 14:00 (D55): W32 Biofilter K1 und Feinfilter im Hauptstrom (docs/jobs/W32-biofilter-feinfilter.md).

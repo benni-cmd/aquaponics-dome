@@ -2178,5 +2178,35 @@
   "note": "W33 Tischhoehe 1000 mm mit Figur 1,80 m (Rinne 135 mm unter Ellbogen 1134)",
   "commit": "2afeb23",
   "source": "renders/components/nft_tisch_mitte/nft_tisch_mitte-07-hoehe-laengs.png"
+ },
+ {
+  "file": "20261031-172137_montage_laufwege_round-53.png",
+  "sha": "f8a0fed67b31a319",
+  "time": "2026-10-31 17:21:37",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "Laufwegkarte Knie/Kopf, Runde 53",
+  "commit": "0dbc1ef",
+  "source": "renders/round-53.png"
+ },
+ {
+  "file": "20261031-173236_montage_laufwege_walkway-map-kopf.png",
+  "sha": "4ad586246afb9a92",
+  "time": "2026-10-31 17:32:36",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "Laufwegkarte Knie/Kopf, Runde 53",
+  "commit": "0dbc1ef",
+  "source": "renders/walkway-map-kopf.png"
+ },
+ {
+  "file": "20261031-173317_montage_laufwege_walkway-map-knie.png",
+  "sha": "bbbef28f2ebdcc87",
+  "time": "2026-10-31 17:33:17",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "Laufwegkarte Knie/Kopf, Runde 53",
+  "commit": "0dbc1ef",
+  "source": "renders/walkway-map-knie.png"
  }
 ]

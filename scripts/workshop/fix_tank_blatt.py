@@ -1,4 +1,5 @@
-"""Blatt-Text fuer data/components/tank.json (Ports, Gewichte, Stueckliste, Herkunft) aus den Parametern und dem Modell berechnet (Stand nach Spec-Pruefer 29.10.)."""
+"""Blatt-Text fuer data/components/tank.json (Ports, Gewichte, Stueckliste, Herkunft) aus den Parametern und dem Modell berechnet (Stand nach Spec-Pruefer 29.10.).
+ACHTUNG seit W32 (31.10.): NICHT mehr ausfuehren. Es kennt das Schwebebett nicht (Biomediumkorb, Tragrost, bio_h) und wuerde die von Hand fortgeschriebenen Texte in tank.json ueberschreiben (scripts/workshop/tank.py bed_geometry, check_tank.py check_bed)."""
 import json, math, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 import sc

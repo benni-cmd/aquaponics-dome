@@ -26,6 +26,23 @@ def geometry(T, p):
     zc_i = z_t + (R - w - r_in) * tan_a
     return dict(R=R, w=w, rt=rt, z_t=z_t, z_c=z_c, z_top=z_top, tan_a=tan_a, ang=ang, r_in=r_in, zc_i=zc_i)
 
+def bed_geometry(T, p, G):
+    """Schwebebett (W32): Ring am Konus, Bettunterkante ueber dem Ring, Oberkante z_m aus Volumen = fill x water_l (Frustum + Zylinder - Luftrohr-Loch, 3 mm Spalt zur Wand)."""
+    R, w, z_t, tan_a, r_in, zc_i = G["R"], G["w"], G["z_t"], G["tan_a"], G["r_in"], G["zc_i"]
+    rr = R / 2                                            # Ring-Radius = Lage des Luftrohrs (x = R/2)
+    ar = p["air_ring_d"] / 2
+    z_ring = z_t + (rr + ar + p["ring_clear"] - r_in) * tan_a
+    z0b = z_ring + ar + 2
+    ins = p["bed_inset"]
+    r0 = r_in + (z0b - z_t) / tan_a - ins
+    r1 = R - w - ins
+    h = zc_i - z0b
+    v_f = math.pi * h / 3 * (r0 * r0 + r0 * r1 + r1 * r1)
+    a_h = math.pi / 4 * (p["air_d"] + 2) ** 2
+    target = p["fill"] * p["water_l"] * 1e6
+    z_m = (target - v_f + math.pi * r1 * r1 * zc_i - a_h * z0b) / (math.pi * r1 * r1 - a_h)
+    return dict(rr=rr, z_ring=z_ring, z0b=z0b, r0=r0, r1=r1, z_m=z_m, target_mm3=target)
+
 def build(typ):
     p, d = sc.load_params("tank")
     T = d["typen"][typ]
@@ -93,28 +110,46 @@ def build(typ):
         b.add("solid.cylinder", diameter=od, height=R + 130 - x_a0, base=[x_a0, 0, zo], axis=[1, 0, 0], operation="new", name="Auslaufrohr_R", body_name="Auslaufrohr")
         b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=R + 132 - x_a0, base=[x_a0 - 1, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Auslaufrohr"], name="Auslaufrohr_Bohrung")
         b.add("material.assign", bodies=["Auslaufrohr"], material="PVC grau Tank")
-    else:   # Biofilter: Ueberlauf (Auslauf) radial +X, Biomediumkorb als EIN Koerper, Tragrost, Belueftungsrohr
+    else:   # Biofilter (W32, D55): Ueberlauf radial +X, Schwebebett aus losen K1-Traegern (EIN Koerper, fill x Wasserfuellung), Belueftungsgitter am Konus, Rueckhaltesiebe an Zulauf und Ueberlauf
         zo = z_top - p["outlet_below_top"]
         od = p["outlet_d"] + 13                         # d63
         b.add("solid.cylinder", diameter=od, height=w + 150, base=[R - w - 20, 0, zo], axis=[1, 0, 0], operation="new", name="Ueberlauf_R", body_name="Ueberlauf")
         b.add("solid.cylinder", diameter=od - 2 * p["pipe_wall"], height=w + 152, base=[R - w - 21, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Ueberlauf"], name="Ueberlauf_Bohrung")
         b.add("material.assign", bodies=["Ueberlauf"], material="PVC grau Tank")
-        rb = R - w - 25
-        zb0 = z_top - p["bio_z_below_top"]
-        b.add("solid.cylinder", diameter=2 * rb, height=p["bio_h"], base=[0, 0, zb0], operation="new", name="Biomedium_R", body_name="Biomedium")
-        b.add("solid.cylinder", diameter=p["air_d"] + 2, height=p["bio_h"] + 2, base=[R / 2, 0, zb0 - 1], operation="cut", targets=["Biomedium"], name="Biomedium_Luftloch")
+        BG = bed_geometry(T, p, G)
+        # Schwebebett: Rotationskoerper des Innenprofils (3 mm Spalt zur Wand) von z0b bis z_m, Volumen = fill x water_l; Luftrohr-Loch
+        b.add("sketch.create", plane={"origin": [0, 0, 0], "x_dir": [1, 0, 0], "y_dir": [0, 0, 1]}, name="S_Schwebebett")
+        b.add("sketch.line", points=[[0, round(BG["z0b"], 3)], [round(BG["r0"], 3), round(BG["z0b"], 3)], [round(BG["r1"], 3), round(G["zc_i"], 3)], [round(BG["r1"], 3), round(BG["z_m"], 3)], [0, round(BG["z_m"], 3)]], closed=True)
+        b.add("sketch.finish")
+        b.add("solid.revolve", axis="y", angle="360 deg", name="Schwebebett", body_name="Biomedium")
+        b.add("solid.cylinder", diameter=p["air_d"] + 2, height=BG["z_m"] - BG["z0b"] + 2, base=[R / 2, 0, BG["z0b"] - 1], operation="cut", targets=["Biomedium"], name="Biomedium_Luftloch")
         b.add("material.assign", bodies=["Biomedium"], material="Biomedium")
-        # Tragrost: Scheibe auf Konsolen an der Tankwand, 8 Schlitze (Wasserdurchtritt)
-        b.add("solid.cylinder", diameter=2 * (R - w) - 2, height=10, base=[0, 0, zb0 - 10], operation="new", name="Tragrost_R", body_name="Tragrost")
-        for k in range(4):
-            b.add("solid.box", length=(2 * rb - 120), width=30, height=12, center=[0, (k - 1.5) * 100, zb0 - 5], operation="cut", targets=["Tragrost"], name=f"Rostschlitz_{k}")
-        b.add("material.assign", bodies=["Tragrost"], material="PVC grau Tank")
-        bk = p["bracket"]
-        for k, (ux, uy) in enumerate(((1, 0), (-1, 0), (0, 1), (0, -1)), 1):
-            b.add("solid.box", length=(bk if uy == 0 else 40), width=(bk if ux == 0 else 40), height=30, center=[ux * (R - w - bk / 2) if uy == 0 else 0, uy * (R - w - bk / 2) if ux == 0 else 0, zb0 - 25], operation="new", name=f"Kons_{k}", body_name=f"Konsole_{k}")
-            b.add("material.assign", bodies=[f"Konsole_{k}"], material="PE Tank")
-        b.add("solid.cylinder", diameter=p["air_d"], height=z_top - zb0 + 120, base=[R / 2, 0, zb0 - 40], operation="new", name="Luftrohr_R", body_name="Belueftungsrohr")
+        # Belueftungsgitter am Konusboden: Ring (Rohr D20) mit zwei Kreuzarmen; Steigrohr D16 am Ring bis ueber den Deckel
+        ar, rr, zr = p["air_ring_d"] / 2, BG["rr"], BG["z_ring"]
+        b.add("sketch.create", plane={"origin": [0, 0, 0], "x_dir": [1, 0, 0], "y_dir": [0, 0, 1]}, name="S_Belueftungsring")
+        b.add("sketch.circle.center", center=[round(rr, 3), round(zr, 3)], radius=ar)
+        b.add("sketch.finish")
+        b.add("solid.revolve", axis="y", angle="360 deg", name="Belueftungsring", body_name="Belueftungsgitter")
+        b.add("solid.cylinder", diameter=2 * ar - 2, height=2 * rr, base=[-rr, 0, zr], axis=[1, 0, 0], operation="join", targets=["Belueftungsgitter"], name="Gitter_Arm_X")
+        b.add("solid.cylinder", diameter=2 * ar - 2, height=2 * rr, base=[0, -rr, zr], axis=[0, 1, 0], operation="join", targets=["Belueftungsgitter"], name="Gitter_Arm_Y")
+        b.add("material.assign", bodies=["Belueftungsgitter"], material="PVC grau Tank")
+        b.add("solid.cylinder", diameter=p["air_d"], height=z_top + p["lid_t"] + 80 - (zr + ar), base=[rr, 0, zr + ar], operation="new", name="Luftrohr_R", body_name="Belueftungsrohr")
         b.add("material.assign", bodies=["Belueftungsrohr"], material="PVC grau Tank")
+        # Zulaufsieb: Schlitzkappe auf dem Rohrende im Tank (Scheibe D = Zulauf-D, 4 mm, 5 Schlitze); beruehrt das Rohrende
+        y1s = -yin + 40
+        b.add("solid.cylinder", diameter=di, height=4, base=[xin, y1s, z_in], axis=[0, 1, 0], operation="new", name="Zulaufsieb_R", body_name="Zulaufsieb")
+        for k in range(5):
+            b.add("solid.box", length=di - 20, width=8, height=p["screen_slot"], center=[xin, y1s + 2, z_in + (k - 2) * 2 * p["screen_slot"]], operation="cut", targets=["Zulaufsieb"], name=f"Sieb_Schlitz_{k}")
+        b.add("material.assign", bodies=["Zulaufsieb"], material="Stahl verzinkt")
+        # Auslaufsieb: Kappe D110 (Wand 2, Boden 3) ueber dem Ueberlaufrohr; Flanschring stuetzt sie am Rohr, Ende 0,1 mm vor der Wand
+        sdm, sl = p["screen_d"], p["screen_l"]
+        x_end = math.sqrt((R - w) ** 2 - (sdm / 2) ** 2) - 0.1
+        x_beg = x_end - sl
+        b.add("solid.cylinder", diameter=sdm, height=sl, base=[x_beg, 0, zo], axis=[1, 0, 0], operation="new", name="Auslaufsieb_R", body_name="Auslaufsieb")
+        b.add("solid.cylinder", diameter=sdm - 4, height=sl - 3 + 1, base=[x_beg + 3, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Auslaufsieb"], name="Auslaufsieb_Hohl")
+        b.add("solid.cylinder", diameter=sdm - 3, height=3, base=[x_end - 6, 0, zo], axis=[1, 0, 0], operation="join", targets=["Auslaufsieb"], name="Auslaufsieb_Flansch")
+        b.add("solid.cylinder", diameter=od + 0.0, height=4, base=[x_end - 6 - 0.5, 0, zo], axis=[1, 0, 0], operation="cut", targets=["Auslaufsieb"], name="Auslaufsieb_Rohrsitz")
+        b.add("material.assign", bodies=["Auslaufsieb"], material="Stahl verzinkt")
     # --- Schlammventil an der Kegelspitze: Stutzen, Kugelhahn, Hebel
     b.add("component.activate", component=root)
     b.add("component.create", name="T40d_Schlammventil")
@@ -197,9 +232,9 @@ def build(typ):
             member(b, f"Diagonale_{k}", dict(width=3, height=p["diag_w"]), [a0, sy * (ay + off), z0d_], [0, 1, 0], [-dz / ln, 0, dy / ln], ln, symmetric=False, kind="bar")
     b.add("component.activate", component=root)
     for nm, pn, ds in ((root, "T40", d["beschreibung"]), ("T40a_Tank", "T40a", "Tankkoerper Kegel 45 Grad + Zylinder, Deckel"), ("T40b_Zulauf", "T40b", "tangentialer Zulauf"),
-                       ("T40c_Leitrohr", "T40c", "Leitrohr mit Auslauf (Vortex) bzw. Biomediumkorb (Biofilter)"), ("T40d_Schlammventil", "T40d", "Schlammventil an der Kegelspitze"),
+                       ("T40c_Leitrohr", "T40c", "Leitrohr mit Auslauf (Vortex) bzw. Schwebebett mit Belueftungsgitter und Sieben (Biofilter)"), ("T40d_Schlammventil", "T40d", "Schlammventil an der Kegelspitze"),
                        ("T40e_Plattform", "T40e", "Plattform mit Kegelsitz"), ("T40f_Beine", "T40f", "4 Beine, Streben, Diagonalen, Fussplatten")) + ((("T40g_Stuetzrippen", "T40g", "5 Stuetzrippen (Kantholz 44) radial unter dem Kegel"),) if T["biofilter"] else ()):
-        b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
+        b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="B" if T["biofilter"] else "A", properties={"Werkstoff": d["werkstoff"]["name"]})
     return b, G, dict(z_in=z_in, xin=xin, yin=yin)
 
 if __name__ == "__main__":

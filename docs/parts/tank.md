@@ -1,6 +1,6 @@
 # Bauteilblatt T40 tank (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/tank.json` und `designs/components/tank.sc`, nicht von Hand aendern)
 
-**Funktion:** Tank mit Kegelboden: klein = Vortex-Absetzer (tangentialer Zulauf, Leitrohr, Schlamm sinkt zur Spitze und wird dort abgelassen), gross = Biofilter (Biomediumkorb auf Tragrost, Belueftung, Ueberlauf, Schlammablass); steht auf Plattform und 4 Beinen.
+**Funktion:** Tank mit Kegelboden: klein = Vortex-Absetzer (tangentialer Zulauf, Leitrohr, Schlamm sinkt zur Spitze und wird dort abgelassen), gross = Biofilter (Schwebebett aus losen K1-Traegern mit Belueftungsgitter am Konus, Rueckhaltesieben, Ueberlauf, Schlammablass; W32/D55); steht auf Plattform und 4 Beinen.
 
 **Datei:** `designs/components/tank.sc` · **Teilenummer:** T40 · **Revision:** A · **Bezugspunkt:** Mitte der Standflaeche am Boden, Z=0 (Boden); Tankachse = Z; Hoehen wie im OBJ (Kegelspitze, Plattform); Zulauf tangential bei +X/-Y, Auslauf am Leitrohr +X
 
@@ -24,13 +24,10 @@
 | `inlet_below_top` | 250 | mm | [A] Zulauf tangential 250 mm unter dem Tankrand |
 | `valve_len` | 40 | mm | [A] Kugelhahn Baulaenge 40 (OBJ-Fittings Z 143-177 nur 34 mm Bandbreite: Verschraubungen) |
 | `air_d` | 16 | mm | [A] Belueftungsanschluss im Deckel (Biofilter) |
-| `bio_h` | 520 | mm | [A] Biomediumkorb: Hoehe |
-| `bio_z_below_top` | 700 | mm | [A] Biomediumkorb: Unterkante 700 mm unter dem Tankrand |
 | `diag_w` | 25 | mm | [A] Diagonale Flachstahl 25 x 3 |
 | `rim_w` | 25 | mm | Bild: ref-5 dicker gerollter Randwulst; 25 mm nach aussen, Aussenmass D laut OBJ inkl. Wulst [A] |
 | `rim_h` | 40 | mm | Bild: ref-5 dicker gerollter Randwulst (Bild-Kritiker Luecke 2: Wulst zu schmal); 40 mm hoch [A] |
 | `rev_d` | 200 | mm | [A] Revisionsoeffnung im Deckel D200 (Scope-Card: Deckel/Oeffnung; Bild-Kritiker Luecke 5) |
-| `bracket` | 40 | mm | [A] Konsolen 40 x 40 x 30 (4 Stueck) unter dem Tragrost, an die Tankwand geschweisst (Bild-Kritiker Luecke 1) |
 | `outlet_below_top` | 100 | mm | R09 (Auslass oben seitlich, 100 mm unter dem Rand) [A, Konfidenz niedrig]; fuer klein und gross |
 | `guide_bottom_f` | 0.333 |  | R09: Leitrohr endet ca. 1/3 der Zylinderhoehe ueber der Kegelspitze (Zylinderhoehe = Rand minus Kegelende) [A] |
 | `rib_z0` | 249 | mm | OBJ: Kassetten/Rippen z0 249-256 (layout.json tanks[].modules) |
@@ -39,6 +36,16 @@
 | `rib_gap` | 3 | mm | [A] Abstand der Rippenschraege zum Tankkegel |
 | `plat_margin` | 60 | mm | Ben 31.10./D50: Rand der Plattform um den Konus 60 mm je Seite; Plattform aus dem Konusdurchmesser auf Plattform-Unterkante berechnet (fix_w30_tank.py), nicht hart |
 | `tafel_gap` | 30 | mm | [A] W30: Pumpentafel steht seitlich am Stand, Abstand von der Aussenkante der Diagonalen/Querstreben 30 mm; Platzierung Montage |
+| `fill` | 0.67 |  | [Q] D55/W32, R30: lose K1-Traeger mit 67 % Fuellung der Wasserfuellung (Schuettvolumen / Wasservolumen) |
+| `water_l` | 702 |  | [Q] R30 / system_specs: Wasserfuellung je grossem Tank 702 l (1,404 m3 beide). Das Modell fasst bis zum Rand 687 l und bis zum Ueberlauf-Mittelpunkt 627 l (Rechnung aus dem Tankprofil, check_tank): Abweichung offen |
+| `k1_area` | 500 |  | [Q] R30: K1-Traegerflaeche ca. 500 m2/m3 Schuettvolumen (Odegaard 2006 / WST 2009, Suchzusammenfassung, Datenblatt nicht gelesen) |
+| `carrier_d` | 9 | mm | [A] K1-Traeger Durchmesser ca. 9 mm (Kaldnes-Typ, Handbuchwert), Hoehe ca. 7 mm; nicht einzeln modelliert |
+| `screen_slot` | 5 | mm | [A] Schlitzweite der Rueckhaltesiebe 5 mm < Traegerdurchmesser 9 mm; Schlitze nicht modelliert |
+| `air_ring_d` | 20 | mm | [A] Belueftungsring und Kreuzarme: PVC-Rohr D20 mit Ausstroemerbohrungen (nicht modelliert), speist ueber das Steigrohr D16 |
+| `ring_clear` | 25 | mm | [A] Luft zwischen Belueftungsring und Innenwand des Konus |
+| `bed_inset` | 3 | mm | [A] Das Schwebebett-Volumen endet 3 mm vor der Innenwand (Modellspalt) |
+| `screen_d` | 110 | mm | [A] Auslaufsieb (Kappe ueber dem Ueberlauf) D110, Wand 2 |
+| `screen_l` | 70 | mm | [A] Laenge der Siebkappe |
 
 | Typ | R | H | z0 | plat_l | plat_w | plat_t | plat_z0 | leg_w | leg_h | leg_wall | wall | rt | strut_z | valve_d | inlet_d | anzahl | biofilter | herkunft | layout_anzahl | plat_l_obj | plat_w_obj | plat_herkunft | rib_phase |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -58,9 +65,9 @@ Gesamt-Box (Messung, Variante tank_klein): X -344.5 bis 441.5, Y -351.2 bis 344.
 - Werkstoff: PE (Tank), Stahl verzinkt (Plattform, Beine), PVC (Rohre, Ventil), Dichte 0.95 g/cm3, Farbe #9db89c (ref-4/ref-5: gruene Kunststofftanks mit Randwulst; PE-Dichte 0,95 g/cm3 Handbuchwert; Stahl 7,85; PVC-U 1,4)
 - Volumen (Messung, Variante tank_klein, `solidcraft-cli eval`): 15923.5 cm3 · Masse leer (ohne Biomedium): 37237 g (37.24 kg)
 - Variante `tank_klein`: 37.24 kg leer (ohne Biomedium)
-- Variante `tank_gross`: 79.15 kg leer (ohne Biomedium)
-- Variante `tank_gross_t3`: 79.15 kg leer (ohne Biomedium)
-- Gefuellt/in Betrieb: klein: leer 46 kg; Wasserfuellung bis Rand 254 l = 254 kg (Zylinder 222 l + Kegel 33 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 300 kg | gross: leer 103 kg, Biomedium (Schuettung 0,15 g/cm3) 41 kg; Wasserfuellung bis Rand 683 l = 683 kg (Zylinder 596 l + Kegel 88 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 827 kg
+- Variante `tank_gross`: 73.67 kg leer (ohne Biomedium)
+- Variante `tank_gross_t3`: 73.67 kg leer (ohne Biomedium)
+- Gefuellt/in Betrieb: klein: leer 46 kg; Wasserfuellung bis Rand 254 l = 254 kg (Zylinder 222 l + Kegel 33 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 300 kg | gross: leer 103 kg, Biomedium (K1-Schuettung 470 l x 0,15 g/cm3) 71 kg; Wasserfuellung bis Rand 683 l = 683 kg (Zylinder 596 l + Kegel 88 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt ca. 857 kg (ohne Abzug des Traegervolumens)
 
 ## Querschnitt / Profil
 
@@ -87,7 +94,7 @@ Tank PE: Zylinder ueber Kegel, gerollter Randwulst 25 x 40 mm, Wand 4/5 mm, Deck
 - Fussplatten: je 2 Schrauben M8x30 ISO 4017 mit Duebel M8 im Boden/Betonpunkt, Loch D9
 - Rohre PVC-U nach DIN 8062/EN 1452 mit Bulkhead-Durchfuehrung und Dichtung durch die Tankwand [A, im Modell nur Durchbruch + Rohr]
 - Schlammventil: Kugelhahn PVC-U mit Verschraubung an Stutzen d40/d50
-- Biomediumkorb (gross): Tragrost auf 4 Konsolen 40x40x30 (an die Tankwand geschweisst/geklebt) [A]
+- Schwebebett (gross): lose K1-Traeger (ca. D9 x 7 mm) frei im Tank, zurueckgehalten durch das Zulaufsieb (Schlitzkappe auf dem Zulaufrohr, 5 mm) und die Siebkappe D110 am Ueberlauf (Schlitz 5 mm); Belueftungsgitter D20 (Ring + 2 Kreuzarme) am Konus, gespeist ueber das Steigrohr D16 [A]
 
 ## Herkunft (docs/provenance.md)
 
@@ -108,7 +115,7 @@ Tank PE: Zylinder ueber Kegel, gerollter Randwulst 25 x 40 mm, Wand 4/5 mm, Deck
 | Leitrohr d110, endet 1/3 Zylinderhoehe ueber der Spitze (klein) | d110 | R09 | R09: Leitrohr D110, endet ca. 1/3 der Zylinderhoehe ueber der Kegelspitze (A, Konfidenz niedrig) | niedrig |
 | Auslauf d50 (klein) / Ueberlauf d63 (gross) 100 mm unter dem Rand | d50 / d63, 100 mm | R09 + A | R09: Auslass oben seitlich, 100 mm unter dem Rand (A); gross analog | niedrig |
 | Schlammventil Kugelhahn d40 / d50 an der Kegelspitze | d40 / d50 | OBJ + R09 + A | layout.json tanks fittings (Groessen 30-56 an der Spitze); R09: Schlammablass Bulkhead 32-40 mit Hahn; gross d50 Norm statt OBJ 55 | mittel |
-| Biofilter: Biomediumkorb (EIN Koerper) auf Tragrost mit 4 Konsolen 40x40x30, Belueftung d16 | 520 mm hoch | A | Scope-Card tank_gross: Platzhalter; keine Quelle (R09) | niedrig |
+| Biofilter: Schwebebett (EIN Koerper, 67 % von 702 l = 470 l), Belueftungsgitter D20 mit Steigrohr d16, 2 Rueckhaltesiebe | 520 mm hoch | A | Scope-Card tank_gross: Platzhalter; keine Quelle (R09) | niedrig |
 | Plattform als Blechkasten 4 mm, hohl, mit Kegelsitz (Spiel 2) und Eckenaussparungen | 4 mm / 2 mm | A | OBJ-Plattform 73/98 mm dick (massiv unwahrscheinlich); Konstruktionsannahme | niedrig |
 | Querstreben auf Hoehe 250 / 300, 4 Diagonalen 25x3 | 250 / 300 mm | Bild + A | ref-4/ref-5: Tanks auf Beinen mit Diagonalstreben (Scope-Card: Diagonalen) | mittel |
 | Fussplatten 100x100x6 mit M8x30 | 100x100x6 | A | Standard | niedrig |
@@ -116,6 +123,7 @@ Tank PE: Zylinder ueber Kegel, gerollter Randwulst 25 x 40 mm, Wand 4/5 mm, Deck
 | Anzahl 2 klein, 2 gross | 2 + 2 | OBJ | layout.json tanks (Azimut 123/213 und 108/229) | hoch |
 | Farbe gruen #9db89c | #9db89c | Bild | ref-4/ref-5 gruene Tanks | mittel |
 | Werkstoffdichten: PE 0,95, Stahl 7,85, PVC-U 1,4, Biomedium 0,15 | g/cm3 | Fachwert + A | Handbuchwerte Kunststoffe/Stahl; Biomedium Schuettdichte Annahme | mittel |
+| Schwebebett K1 (67 % von 702 l = 470 l), Belueftungsgitter, Rueckhaltesiebe | 470 l | Q/A | R30 (K1-Traeger 0,94 m3 fuer beide Tanks = 470 m2), D55/W32; Gitter und Siebe Entwurf [A] | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -126,17 +134,17 @@ Tank PE: Zylinder ueber Kegel, gerollter Randwulst 25 x 40 mm, Wand 4/5 mm, Deck
 ## Montage (L4)
 
 1. Plattform mit Beinen am Boden ausrichten, Fussplatten mit M8 verschrauben, Streben und Diagonalen einsetzen
-2. Tank in den Kegelsitz setzen (zu zweit), Deckel und Leitrohr bzw. Biomediumkorb einsetzen
+2. Tank in den Kegelsitz setzen (zu zweit), Deckel einsetzen (Leitrohr beim Absetzer); beim Biofilter Belueftungsgitter und Siebe einbauen
 3. Zulauf-Rohr tangential und Auslauf/Ueberlauf durch die Wand fuehren, Dichtungen setzen
 4. Kugelhahn mit Verschraubung an den Kegelstutzen, Ablaufrohr anschliessen
-5. Dichtheit pruefen (Wasserprobe), Biomedium und Belueftung einbauen (gross)
+5. Dichtheit pruefen (Wasserprobe), K1-Traeger einschuetten (gross: ca. 470 l Schuettvolumen) und Belueftung anschliessen
 
 **Werkzeug:** Lochsaege (d63/d50), Bohrer, Schluessel M6/M8, Wasserwaage, Schweissgeraet (Rahmen) oder Winkelverbinder
 
 ## Stueckliste-Zeile
 
 - klein (je Tank): Tank PE (4 mm Wand, Aussen-D673 x H1075, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d50 1 + Bulkhead mit Dichtung 1; Leitrohr d110 mit Auslaufrohr d50 1 + Bulkhead mit Dichtung 1; Kugelhahn d40 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 30x30 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8
-- gross (je Tank): Tank PE (5 mm Wand, Aussen-D930 x H1444, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d63 1 + Bulkhead mit Dichtung 1; Ueberlauf d63 1 + Bulkhead mit Dichtung 1, Biomediumkorb 1 mit Tragrost 1 und 4 Konsolen 40x40x30, Belueftungsrohr d16 1; 5 Stuetzrippen Kantholz 44 (Dreiecksknaggen radial unter dem Kegel, Fichte, T40g) 1 Satz; Kugelhahn d50 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 40x40 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8
+- gross (je Tank): Tank PE (5 mm Wand, Aussen-D930 x H1444, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d63 1 + Bulkhead mit Dichtung 1; Ueberlauf d63 1 + Bulkhead mit Dichtung 1, Schwebebett K1-Traeger (470 l Schuettvolumen, ca. 71 kg) 1, Belueftungsgitter D20 mit Steigrohr d16 1, Zulaufsieb 1, Auslaufsieb 1; 5 Stuetzrippen Kantholz 44 (Dreiecksknaggen radial unter dem Kegel, Fichte, T40g) 1 Satz; Kugelhahn d50 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 40x40 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8
 - Tanks gesamt: klein 2, gross 2 (Azimute 123/213 und 108/229, layout.json); Normschrauben: M8x30 ISO 4017, M6x40 ISO 4017, Muttern ISO 4032
 
 ## Alternative lokale Fertigung
@@ -166,6 +174,7 @@ Tank: handelsueblicher Konus-Boden-Tank (Kunststoff, 500-1000 l); Plattform/Bein
 - Gauntlet-Urteil: offen
 - scripts/workshop/check_tank.py (Ergebnis renders/components/tank_klein/check.txt)
 - Bild-Kritiker: Modell; Spec-Pruefer: FAIL (Gewicht, Text gegen Parameter, Auslaufhoehe, Herkunft, Ports) -> behoben, Triage in docs/workshop-log.md
+- W32: scripts/workshop/check_tank.py um check_bed erweitert (Bettvolumen 470 l, Traegerflaeche, Lage im Tank, Belueftungsgitter, Siebe, Interferenzen im Biofilter; Ergebnis in renders/components/tank_klein/check.txt)
 
 ## Offene Fragen
 
@@ -173,8 +182,12 @@ Tank: handelsueblicher Konus-Boden-Tank (Kunststoff, 500-1000 l); Plattform/Bein
 - Rohrmasse (Zulauf d50/d63, Leitrohr d110, Auslauf d50/d63, Wand 3 mm) ohne Quelle (R09)
 - Beine 751/1008 bis ueber die Plattform: Zweck (Tankfuehrung) aus OBJ nicht ableitbar
 - Haltegurt/Schellen, Dichtungen, Verschraubungen der Diagonalen (M6x40), Revisionsdeckel nicht modelliert
-- Biofilter (gross): Biomediumkorb, Konsolen, Belueftung als Platzhalter ohne Quelle; kein Leitrohr im Biofilter (R09 nennt es nur fuer den Absetzer, Scope-Card fuehrt es gemeinsam)
+- Biofilter (gross): Schwebebett nach R30/D55 (K1, 67 % der Wasserfuellung 702 l), Belueftungsgitter und Siebe als Entwurf [A]; kein Leitrohr im Biofilter (R09 nennt es nur fuer den Absetzer, Scope-Card fuehrt es gemeinsam)
 - Rolle der Stuetzrippen: Annahme A (Orchestrator), Werkstoff Holz Fichte nur wegen der Dicke 44 mm; Alternative Filterkassette; Rippen enden an der Plattform-Unterkante, im OBJ bis Plattform-Oberkante
 - Rolle der Pumpen (eigene Klasse pumpe)
 - W30/D50: Plattform 619 / 821 statt 706 / 977; der Kegel sitzt in einem kegeligen Sitz, der Tankzylinder (R 311,5 / 440) ueberragt die Plattform (Kontaktring nur ca. 60 mm hoch im unteren Plattformteil): Tragfaehigkeit des Sitzes und Haltegurt nicht nachgewiesen [A]
 - W30: Pumpentafeln 502 x 345 / 693 x 463 passen nicht mehr unter die Plattform (Tank 1: Tafelrand 327 gegen Plattformhalbbreite 310); Montage setzt sie seitlich am Stand, Tafelmittelabstand >= Plattformhalbbreite + 25 + tafel_gap (tank_offsets pruefen)
+- W32 (D55, 31.10.): Das Schwebebett ist ein Koerper mit 470 l Schuettvolumen (0,67 x 702 l, Z 489..1353); das Tankprofil fasst bis zum Rand nur 687 l und bis zum Ueberlauf-Mittelpunkt 628 l: Das Bett fuellt damit 68 % (Rand) bzw. 75 % (Ueberlauf) des Modellwassers; K1-Betten werden meist auf hoechstens 67-70 % ausgelegt. Entscheidung offen: Ueberlauf tiefer oder Fuellung 0,67 x 628 l = 421 l (Orchestrator/Ben)
+- K1-Traeger Fabrikat, Abmessungen (D9 x 7 mm, 500 m2/m3) und die Schwebewirkung bei der Belueftung sind [A]/R30 (Datenblatt nicht gelesen); die Traeger sind nicht einzeln modelliert; Siebschlitze (5 mm) und Belueftungsbohrungen nicht modelliert; Luftmenge/Gebläse nicht gerechnet
+- Schlammstutzen sitzt 2 mm in der Kegelspitze (gewollter Sitz, 857,8 mm3 Ueberdeckung, unveraendert gegen den Stand vor W32); der Check nimmt diese eine Paarung aus
+- Die frueheren Interferenzen Tank/Konsolen und Zulaufrohr/Biomediumkorb (Stand vor W32) entfallen mit dem Schwebebett

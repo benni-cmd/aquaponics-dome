@@ -4,10 +4,14 @@ PASS tank: klein Tank Hoehe (Spitze bis Rand): Ist 1075, Soll 1075 (+-1)
 PASS tank: klein Kegelspitze Z: Ist 172, Soll 172 (+-1)
 PASS tank: klein Kegel vorhanden (Flaechentyp cone): Ist 1, Soll 1
 PASS tank: klein Kegelwinkel ab Horizontal in 45-60 Grad (Scope-Card): Ist 1, Soll 1
-PASS tank: klein Plattform Laenge: Ist 706, Soll 706 (+-1)
-PASS tank: klein Plattform Breite: Ist 707, Soll 707 (+-1)
+PASS tank: klein Plattform Laenge: Ist 619, Soll 619 (+-1)
+PASS tank: klein Plattform Breite: Ist 619, Soll 619 (+-1)
 PASS tank: klein Plattform Dicke: Ist 73, Soll 73 (+-1)
 PASS tank: klein Plattform Z-Unterkante: Ist 428, Soll 428 (+-1)
+PASS tank: klein Plattform = 2 x (Konusradius 247.3 auf Z 428 + 2 + 60) = Laenge und Breite (W30/D50): Ist 1238, Soll 1237.06 (+-3)
+PASS tank: klein Plattform kleiner als im OBJ (706) und >= Konusdurchmesser auf Plattformhoehe + 2 x 50: Ist 1, Soll 1
+PASS tank: klein Beine ausserhalb des Tankwulstes (Abstand Beinkante zur Achse 395 >= Aussenradius 336 + 20): Ist 1, Soll 1
+PASS tank: klein Pumpentafel (Laenge 502) <= Plattform (619): sie passt seitlich an den Stand: Ist 1, Soll 1
 PASS tank: klein Beine: Ist 4, Soll 4
 PASS tank: klein Beinhoehe (Oberkante): Ist 751, Soll 751 (+-1)
 PASS tank: klein Beinquerschnitt: Ist 30, Soll 30 (+-0.2)
@@ -34,10 +38,14 @@ PASS tank: gross Tank Hoehe (Spitze bis Rand): Ist 1444, Soll 1444 (+-1)
 PASS tank: gross Kegelspitze Z: Ist 226, Soll 226 (+-1)
 PASS tank: gross Kegel vorhanden (Flaechentyp cone): Ist 1, Soll 1
 PASS tank: gross Kegelwinkel ab Horizontal in 45-60 Grad (Scope-Card): Ist 1, Soll 1
-PASS tank: gross Plattform Laenge: Ist 977, Soll 977 (+-1)
-PASS tank: gross Plattform Breite: Ist 976, Soll 976 (+-1)
+PASS tank: gross Plattform Laenge: Ist 821, Soll 821 (+-1)
+PASS tank: gross Plattform Breite: Ist 821, Soll 821 (+-1)
 PASS tank: gross Plattform Dicke: Ist 98, Soll 98 (+-1)
 PASS tank: gross Plattform Z-Unterkante: Ist 570, Soll 570 (+-1)
+PASS tank: gross Plattform = 2 x (Konusradius 348.7 auf Z 570 + 2 + 60) = Laenge und Breite (W30/D50): Ist 1642, Soll 1642.61 (+-3)
+PASS tank: gross Plattform kleiner als im OBJ (977) und >= Konusdurchmesser auf Plattformhoehe + 2 x 50: Ist 1, Soll 1
+PASS tank: gross Beine ausserhalb des Tankwulstes (Abstand Beinkante zur Achse 524 >= Aussenradius 465 + 20): Ist 1, Soll 1
+PASS tank: gross Pumpentafel (Laenge 693) <= Plattform (821): sie passt seitlich an den Stand: Ist 1, Soll 1
 PASS tank: gross Beine: Ist 4, Soll 4
 PASS tank: gross Beinhoehe (Oberkante): Ist 1008, Soll 1008 (+-1)
 PASS tank: gross Beinquerschnitt: Ist 40, Soll 40 (+-0.2)
@@ -52,27 +60,53 @@ PASS tank: gross Schlammstutzen an der Spitze (z0 im Stutzen): Ist 1, Soll 1
 PASS tank: gross Kugelhahn unter der Spitze: Ist 1, Soll 1
 PASS tank: gross Ablaufstutzen D = Ventil-D: Ist 49.9992, Soll 50 (+-0.2)
 PASS tank: gross Schlammventil D im OBJ-Bereich 30-56: Ist 1, Soll 1
-PASS tank: gross Biomedium als EIN Koerper: Ist 1, Soll 1
-PASS tank: gross Biomedium-Hoehe: Ist 520, Soll 520 (+-0.5)
-PASS tank: gross Biomedium ruht auf dem Tragrost: Ist 970, Soll 970 (+-0.01)
+PASS tank: gross Schwebebett als EIN Koerper: Ist 1, Soll 1
+PASS tank: gross Schwebebett-Volumen = fill 0,67 x 702 l = 470,3 l (Toleranz 1 %): Ist 4.70335e+08, Soll 4.7034e+08 (+-4.7034e+06)
+PASS tank: gross Traegerflaeche beide Tanks = Volumen x 500 m2/m3 x 2 in m2 (R30: 470): Ist 470.335, Soll 470 (+-6)
+   Modell-Wasservolumen: Rand 687 l, Ueberlauf-Mitte 628 l; Bett 470 l = 75 % des Wassers bis Ueberlauf-Mitte, 68 % bis Rand
+PASS tank: gross Modell-Wasservolumen bis Rand gegen R30 (702 l) in Prozent <= 3: Ist 2.14387, Soll 0 (+-3)
+PASS tank: gross Fuellung gegen Modell-Wasser bis Ueberlauf-Mitte <= 80 % (Handbuch: K1 meist <= 67-70 %: BEFUND, siehe Blatt): Ist 1, Soll 1
+PASS tank: gross Bett-Radius <= Innenradius - 3 mm: Ist 432, Soll 432 (+-0.2)
+PASS tank: gross Bett-Oberkante unter dem Zulaufrohr (Luft >= 20 mm zur Zulauf-Unterkante): Ist 1, Soll 1
+PASS tank: gross Belueftungsgitter Aussenradius = R/2 + 10: Ist 230, Soll 230 (+-0.3)
+PASS tank: gross Belueftungsgitter D20: Hoehe der Rohre: Ist 19.9998, Soll 20 (+-0.3)
+PASS tank: gross Belueftungsgitter Abstand zur Innenwand des Konus >= 20 mm (Ist in mm): Ist 1, Soll 1
+PASS tank: gross Bett beginnt ueber dem Gitter (Unterkante > Gitter-Oberkante): Ist 1, Soll 1
+PASS tank: gross Steigrohr D16 beruehrt das Gitter oben und ragt ueber den Deckel: Ist 1, Soll 1
+PASS tank: gross Steigrohr liegt am Ring (x = R/2): Ist 220, Soll 220 (+-0.2)
+PASS tank: gross kein Tragrost und keine Konsolen mehr (Schwebebett statt Korb): Ist 0, Soll 0
+PASS tank: gross Zulaufsieb: Scheibe D = Zulauf-D: Ist 62.999, Soll 63 (+-0.3)
+PASS tank: gross Zulaufsieb: Volumen = Scheibe 4 mm minus 5 Schlitze (5 x 43 x 4 x 5): Ist 8168.08, Soll 8168.98 (+-163.362)
+PASS tank: gross Zulaufsieb beruehrt das Zulaufrohr-Ende (Y): Ist -135.464, Soll -135.464 (+-0.05)
+PASS tank: gross Schlitzweite 5 mm < Traegerdurchmesser 9 mm: Ist 1, Soll 1
+PASS tank: gross Auslaufsieb D110: Ist 109.998, Soll 110 (+-0.3)
+PASS tank: gross Auslaufsieb umschliesst das Ueberlaufrohr-Ende (Sieb beginnt vor dem Rohrende): Ist 1, Soll 1
+PASS tank: gross Auslaufsieb endet vor der Innenwand (Wand an den Siebkanten): Ist 1, Soll 1
+PASS tank: gross Auslaufsieb mittig am Ueberlauf (z): Ist 1570, Soll 1570 (+-0.2)
 PASS tank: gross Stuetzrippen (OBJ: 5 Kassetten 384x44x419 je Tank): Ist 5, Soll 5
 PASS tank: gross Rippendicke (OBJ 44): Ist 44, Soll 44 (+-0.01)
 PASS tank: gross Rippen von z0 bis Plattform-Unterkante: Ist 1, Soll 1
 PASS tank: gross Rippenwinkel gegen Soll (max. Abweichung Grad): Ist 0, Soll 0 (+-1)
-PASS tank: gross Rippen radial innerhalb der Plattform (r_aussen <= 440): Ist 1, Soll 1
+PASS tank: gross Rippen radial innerhalb der Plattform (r_aussen <= 367): Ist 1, Soll 1
+PASS tank: gross Rippenradius 367 <= Innenkante der Querstrebe 370.5 - 3: Ist 1, Soll 1
 PASS tank: gross Ueberlauf 100 mm unter dem Rand (R09): Ist 100, Soll 100 (+-0.5)
 PASS tank: gross Ueberlauf ausserhalb des Tanks (x_max > R): Ist 1, Soll 1
 PASS tank: gross Deckel auf dem Rand: Ist 1670, Soll 1670 (+-0.1)
+PASS tank: gross Interferenzen im Biofilter (ohne Gestell-Gestell): Ist 0, Soll 0
 PASS tank: gross_t3 Anzahl laut layout.json: Ist 2, Soll 2
 PASS tank: gross_t3 Tank Durchmesser: Ist 930, Soll 930 (+-1)
 PASS tank: gross_t3 Tank Hoehe (Spitze bis Rand): Ist 1444, Soll 1444 (+-1)
 PASS tank: gross_t3 Kegelspitze Z: Ist 226, Soll 226 (+-1)
 PASS tank: gross_t3 Kegel vorhanden (Flaechentyp cone): Ist 1, Soll 1
 PASS tank: gross_t3 Kegelwinkel ab Horizontal in 45-60 Grad (Scope-Card): Ist 1, Soll 1
-PASS tank: gross_t3 Plattform Laenge: Ist 977, Soll 977 (+-1)
-PASS tank: gross_t3 Plattform Breite: Ist 976, Soll 976 (+-1)
+PASS tank: gross_t3 Plattform Laenge: Ist 821, Soll 821 (+-1)
+PASS tank: gross_t3 Plattform Breite: Ist 821, Soll 821 (+-1)
 PASS tank: gross_t3 Plattform Dicke: Ist 98, Soll 98 (+-1)
 PASS tank: gross_t3 Plattform Z-Unterkante: Ist 570, Soll 570 (+-1)
+PASS tank: gross_t3 Plattform = 2 x (Konusradius 348.7 auf Z 570 + 2 + 60) = Laenge und Breite (W30/D50): Ist 1642, Soll 1642.61 (+-3)
+PASS tank: gross_t3 Plattform kleiner als im OBJ (977) und >= Konusdurchmesser auf Plattformhoehe + 2 x 50: Ist 1, Soll 1
+PASS tank: gross_t3 Beine ausserhalb des Tankwulstes (Abstand Beinkante zur Achse 524 >= Aussenradius 465 + 20): Ist 1, Soll 1
+PASS tank: gross_t3 Pumpentafel (Laenge 693) <= Plattform (821): sie passt seitlich an den Stand: Ist 1, Soll 1
 PASS tank: gross_t3 Beine: Ist 4, Soll 4
 PASS tank: gross_t3 Beinhoehe (Oberkante): Ist 1008, Soll 1008 (+-1)
 PASS tank: gross_t3 Beinquerschnitt: Ist 40, Soll 40 (+-0.2)
@@ -87,15 +121,37 @@ PASS tank: gross_t3 Schlammstutzen an der Spitze (z0 im Stutzen): Ist 1, Soll 1
 PASS tank: gross_t3 Kugelhahn unter der Spitze: Ist 1, Soll 1
 PASS tank: gross_t3 Ablaufstutzen D = Ventil-D: Ist 49.9992, Soll 50 (+-0.2)
 PASS tank: gross_t3 Schlammventil D im OBJ-Bereich 30-56: Ist 1, Soll 1
-PASS tank: gross_t3 Biomedium als EIN Koerper: Ist 1, Soll 1
-PASS tank: gross_t3 Biomedium-Hoehe: Ist 520, Soll 520 (+-0.5)
-PASS tank: gross_t3 Biomedium ruht auf dem Tragrost: Ist 970, Soll 970 (+-0.01)
+PASS tank: gross_t3 Schwebebett als EIN Koerper: Ist 1, Soll 1
+PASS tank: gross_t3 Schwebebett-Volumen = fill 0,67 x 702 l = 470,3 l (Toleranz 1 %): Ist 4.70335e+08, Soll 4.7034e+08 (+-4.7034e+06)
+PASS tank: gross_t3 Traegerflaeche beide Tanks = Volumen x 500 m2/m3 x 2 in m2 (R30: 470): Ist 470.335, Soll 470 (+-6)
+   Modell-Wasservolumen: Rand 687 l, Ueberlauf-Mitte 628 l; Bett 470 l = 75 % des Wassers bis Ueberlauf-Mitte, 68 % bis Rand
+PASS tank: gross_t3 Modell-Wasservolumen bis Rand gegen R30 (702 l) in Prozent <= 3: Ist 2.14387, Soll 0 (+-3)
+PASS tank: gross_t3 Fuellung gegen Modell-Wasser bis Ueberlauf-Mitte <= 80 % (Handbuch: K1 meist <= 67-70 %: BEFUND, siehe Blatt): Ist 1, Soll 1
+PASS tank: gross_t3 Bett-Radius <= Innenradius - 3 mm: Ist 432, Soll 432 (+-0.2)
+PASS tank: gross_t3 Bett-Oberkante unter dem Zulaufrohr (Luft >= 20 mm zur Zulauf-Unterkante): Ist 1, Soll 1
+PASS tank: gross_t3 Belueftungsgitter Aussenradius = R/2 + 10: Ist 230, Soll 230 (+-0.3)
+PASS tank: gross_t3 Belueftungsgitter D20: Hoehe der Rohre: Ist 19.9998, Soll 20 (+-0.3)
+PASS tank: gross_t3 Belueftungsgitter Abstand zur Innenwand des Konus >= 20 mm (Ist in mm): Ist 1, Soll 1
+PASS tank: gross_t3 Bett beginnt ueber dem Gitter (Unterkante > Gitter-Oberkante): Ist 1, Soll 1
+PASS tank: gross_t3 Steigrohr D16 beruehrt das Gitter oben und ragt ueber den Deckel: Ist 1, Soll 1
+PASS tank: gross_t3 Steigrohr liegt am Ring (x = R/2): Ist 220, Soll 220 (+-0.2)
+PASS tank: gross_t3 kein Tragrost und keine Konsolen mehr (Schwebebett statt Korb): Ist 0, Soll 0
+PASS tank: gross_t3 Zulaufsieb: Scheibe D = Zulauf-D: Ist 62.999, Soll 63 (+-0.3)
+PASS tank: gross_t3 Zulaufsieb: Volumen = Scheibe 4 mm minus 5 Schlitze (5 x 43 x 4 x 5): Ist 8168.08, Soll 8168.98 (+-163.362)
+PASS tank: gross_t3 Zulaufsieb beruehrt das Zulaufrohr-Ende (Y): Ist -135.464, Soll -135.464 (+-0.05)
+PASS tank: gross_t3 Schlitzweite 5 mm < Traegerdurchmesser 9 mm: Ist 1, Soll 1
+PASS tank: gross_t3 Auslaufsieb D110: Ist 109.998, Soll 110 (+-0.3)
+PASS tank: gross_t3 Auslaufsieb umschliesst das Ueberlaufrohr-Ende (Sieb beginnt vor dem Rohrende): Ist 1, Soll 1
+PASS tank: gross_t3 Auslaufsieb endet vor der Innenwand (Wand an den Siebkanten): Ist 1, Soll 1
+PASS tank: gross_t3 Auslaufsieb mittig am Ueberlauf (z): Ist 1570, Soll 1570 (+-0.2)
 PASS tank: gross_t3 Stuetzrippen (OBJ: 5 Kassetten 384x44x419 je Tank): Ist 5, Soll 5
 PASS tank: gross_t3 Rippendicke (OBJ 44): Ist 44, Soll 44 (+-0.01)
 PASS tank: gross_t3 Rippen von z0 bis Plattform-Unterkante: Ist 1, Soll 1
 PASS tank: gross_t3 Rippenwinkel gegen Soll (max. Abweichung Grad): Ist 0, Soll 0 (+-1)
-PASS tank: gross_t3 Rippen radial innerhalb der Plattform (r_aussen <= 440): Ist 1, Soll 1
+PASS tank: gross_t3 Rippen radial innerhalb der Plattform (r_aussen <= 367): Ist 1, Soll 1
+PASS tank: gross_t3 Rippenradius 367 <= Innenkante der Querstrebe 370.5 - 3: Ist 1, Soll 1
 PASS tank: gross_t3 Ueberlauf 100 mm unter dem Rand (R09): Ist 100, Soll 100 (+-0.5)
 PASS tank: gross_t3 Ueberlauf ausserhalb des Tanks (x_max > R): Ist 1, Soll 1
 PASS tank: gross_t3 Deckel auf dem Rand: Ist 1670, Soll 1670 (+-0.1)
-== tank: 100/100 PASS
+PASS tank: gross_t3 Interferenzen im Biofilter (ohne Gestell-Gestell): Ist 0, Soll 0
+== tank: 154/154 PASS

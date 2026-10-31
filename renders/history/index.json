@@ -2138,5 +2138,25 @@
   "note": "W32 Feinfilter Hauptstrom",
   "commit": "079ed4f",
   "source": "renders/components/feinfilter/feinfilter-05-schnitt.png"
+ },
+ {
+  "file": "20261031-131611_werkstatt_tank_tank-gross-01-iso.png",
+  "sha": "4e3c4198f5d6dacd",
+  "time": "2026-10-31 13:16:11",
+  "role": "werkstatt",
+  "subject": "tank",
+  "note": "W32 Schwebebett tank_gross",
+  "commit": "f38a6b6",
+  "source": "renders/components/tank_gross/tank_gross-01-iso.png"
+ },
+ {
+  "file": "20261031-132855_werkstatt_tank_tank-gross-05-schnitt.png",
+  "sha": "3d1535d1aa153bc0",
+  "time": "2026-10-31 13:28:55",
+  "role": "werkstatt",
+  "subject": "tank",
+  "note": "W32 Schwebebett tank_gross",
+  "commit": "f38a6b6",
+  "source": "renders/components/tank_gross/tank_gross-05-schnitt.png"
  }
 ]

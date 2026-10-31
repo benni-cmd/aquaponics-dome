@@ -121,8 +121,48 @@ def chk_box(ck, p, B):
     ck.eq("Verschraubungen unter dem Boden angesetzt (Oberkante = z 0)", max(ext(B, f"Verschraubung_{k}", 2)[1] for k in range(1, 5)), 0, 0.1)
     ck.eq("IP65-Kasten 200 x 150 x 100 passt ESP32-Platine 52 x 28 und 3 EZO-Schaltkreise (je 20 x 20 + Isolatoren): Innenflaeche >= 100 x 100", 1 if l - 2 * wa >= 100 and w - 2 * wa >= 100 else 0, 1)
 
+def chk_sonde(ck, p, B):
+    b = B["Sonde"]
+    if p["form"] == "zyl":
+        ck.eq(f"Sonde Durchmesser {p['d']}", b["bbox"]["max"][0] - b["bbox"]["min"][0], p["d"], 0.1)
+        ck.eq(f"Sonde Laenge {p['l']}", b["bbox"]["max"][2] - b["bbox"]["min"][2], p["l"], 0.1)
+        exp = math.pi / 4 * p["d"] ** 2 * p["l"]
+    else:
+        ck.eq(f"Sonde Breite x Tiefe x Hoehe {p['lx']} x {p['ly']} x {p['lz']}", (b["bbox"]["max"][0] - b["bbox"]["min"][0]) + (b["bbox"]["max"][1] - b["bbox"]["min"][1]) + (b["bbox"]["max"][2] - b["bbox"]["min"][2]), p["lx"] + p["ly"] + p["lz"], 0.1)
+        exp = p["lx"] * p["ly"] * p["lz"]
+    ck.eq("Sonde Volumen = Formel (0,5 %)", b["volume_mm3"], exp, exp * 0.005)
+    ck.eq("Sonde Masse = Volumen x Dichte des Materials", b["mass_g"], exp / 1000 * M.MATS[p["mat"]][0], exp / 1000 * M.MATS[p["mat"]][0] * 0.01)
+    ck.eq("Sonde steht auf z 0 (Messspitze)", b["bbox"]["min"][2], 0, 0.1)
+
+def fit_checks(ck):
+    """Passung der Sonden in die Halter (aus den Parametern der Spezifikation) und Abdeckung der Sondentypen."""
+    S = lambda k: {a: v[0] for a, v in M.COMPS["sonde_" + k]["params"].items()}
+    H = lambda k: {a: v[0] for a, v in M.COMPS[k]["params"].items()}
+    t, bz, z, ib, mt, dr = H("halter_tauch"), H("halter_beruhig"), H("halter_zelle"), H("halter_inline_d32"), H("halter_mast"), H("halter_druck")
+    ck.eq("Passung: do_ind (d25) im Tauchrohr (ID 36,2 >= d + 5)", 1 if t["rohr_d"] - 2 * t["rohr_wall"] >= S("do_ind")["d"] + 5 else 0, 1)
+    ck.eq("Passung: do_mini, temp_ds im Tauchrohr", 1 if t["rohr_d"] - 2 * t["rohr_wall"] >= max(S("do_mini")["d"], S("temp_ds")["d"]) + 5 else 0, 1)
+    ck.eq("Passung: ph, ec, temp_ds im Zellenstutzen (Bohrung 16 >= d)", 1 if z["stutzen_id"] >= max(S("ph")["d"], S("ec")["d"], S("temp_ds")["d"]) else 0, 1)
+    pk = json.load(open(os.path.join(sc.ROOT, "data", "components", "puffer_klein.json"), encoding="utf-8"))["parameter"]
+    ck.eq("Passung: Sondenstutzen der Messzelle puffer_klein (Bohrung 16) nehmen ph, ec, do_mini, temp_ds", 1 if pk["halter_id"]["wert"] >= max(S("ph")["d"], S("ec")["d"], S("do_mini")["d"], S("temp_ds")["d"]) else 0, 1)
+    ck.eq("Passung: level_float (d30) im Beruhigungsrohr (ID >= d + 10)", 1 if bz["rohr_d"] - 2 * bz["rohr_wall"] >= S("level_float")["d"] + 10 else 0, 1)
+    ck.eq("Passung: flow_12 deckt den Sensorsitz d30 ab (Fuss >= Sitz)", 1 if min(S("flow_12")["lx"], S("flow_12")["ly"]) >= ib["sitz_d"] else 0, 1)
+    ck.eq("Passung: druck_schalter (d32) auf dem Nippel (Sechskant 19)", 1 if S("druck_schalter")["d"] >= dr["sechs_d"] else 0, 1)
+    ck.eq("Passung: par (d30) und SCD41-Diagonale unter dem Strahlungsschutz d90 (Rand >= 10)", 1 if max(S("par")["d"], math.hypot(S("co2_scd41")["lx"], S("co2_scd41")["ly"])) <= mt["schirm_d"] - 20 else 0, 1)
+    ck.eq("Passung: SCD41-Hoehe 10 passt in den Lamellenabstand 14 - 3 = 11 (Platine unter den Scheiben)", 1 if S("co2_scd41")["lz"] <= 14 - 3 else 0, 1)
+    d = json.load(open(os.path.join(sc.ROOT, "data", "messstellen.json"), encoding="utf-8"))
+    want = ["do_ind", "do_mini", "ph", "ec", "temp_ds", "level_float", "level_druck", "flow_12", "flow_gross", "druck_schalter", "strom_ct", "co2_scd41", "par", "leck"]
+    ck.eq("14 Sondentypen des Auftrags liegen als Datei sonde_<typ>.sc vor", sum(1 for k in want if os.path.exists(os.path.join(sc.ROOT, "designs", "components", f"sonde_{k}.sc"))), 14)
+    used = {s for m in d["messstellen"] for s in m["sonden"]}
+    ck.eq("jeder der 14 Typen kommt in mindestens einer Messstelle vor (kein totes Bauteil)", sum(1 for k in want if k in used), 14)
+    halter_used = {h for m in d["messstellen"] for h, _n in m["halter"]}
+    ck.eq("alle 7 in den Messstellen verwendeten Halter (H_*) sind als Datei vorhanden (H_INLINE als d32/d50)", sum(1 for h in halter_used if any(c["id"] == h for c in M.COMPS.values() if c["kind"] == "halter")), len(halter_used))
+    cover = sum(1 for m in d["messstellen"] if all(s in want or s == "hahn_probe" for s in m["sonden"]))
+    cnt = {k: sum(m["sonden"].get(k, 0) for m in d["messstellen"]) for k in want}
+    print(f"   Abdeckung: {cover} von {len(d['messstellen'])} Messstellen nur mit Bauteilen dieses Pakets (Rest: Alarmwaehler, Spannungswaechter, Batterie im Schaltschrank); Sonden Stueck {sum(cnt.values())} ({cnt})")
+
 SPECIAL = {"halter_tauch": chk_tauch, "halter_beruhig": chk_beruhig, "halter_zelle": chk_zelle, "halter_inline_d32": chk_inline, "halter_inline_d50": chk_inline,
            "halter_hahn": chk_hahn, "halter_druck": chk_druck, "halter_mast": chk_mast, "halter_box": chk_box}
+SPECIAL.update({k: chk_sonde for k in M.COMPS if k.startswith("sonde_")})
 
 def main(keys):
     ck = sc.Check("messstellen")
@@ -153,6 +193,8 @@ def main(keys):
         ck.eq(f"{key}: Interferenzen (Volumen > 1 mm3)", len(inter), 0)
         for i in inter[:6]:
             print("   Interferenz", key, i["a"], i["b"], round(i.get("volume_mm3", 0), 1), "mm3")
+    if set(keys) >= set(M.COMPS):
+        fit_checks(ck)
     return ck.done()
 
 if __name__ == "__main__":

@@ -301,6 +301,50 @@ add("halter_box", id="H_BOX", kind="halter", nr="T90i", titel="Messknoten-Gehaeu
            ("Verschraubung_1", "Kabelverschraubung M16 (Trunk)", "PA schwarz", "A"), ("Verschraubung_2", "Kabelverschraubung M16 (Sonde 1)", "PA schwarz", "A"), ("Verschraubung_3", "Kabelverschraubung M16 (Sonde 2)", "PA schwarz", "A"),
            ("Verschraubung_4", "Kabelverschraubung M16 (Sonde 3)", "PA schwarz", "A"), ("Wandlasche_1", "Stahl 30 x 30 x 3, Loch d6", STEEL, "A"), ("Wandlasche_2", "Stahl 30 x 30 x 3, Loch d6", STEEL, "A")])
 
+# ---------------------------------------------------------------- Sonden-Platzhalter
+ST = json.load(open(os.path.join(sc.ROOT, "data", "messstellen.json"), encoding="utf-8"))["sondentypen"]
+
+# typ: (Form, Masse mm, Material, Beschreibung); alle Masse Annahme [A] (messstellen.json hat keine Abmessungen, Datenblaetter nicht gelesen)
+SONDEN = {
+    "do_ind":         ("zyl", (25, 170), "Sonde blau", "Tauchsonde industriell Ø 25 x 170 (Atlas ENV-50-DO)"),
+    "do_mini":        ("zyl", (12, 110), "Sonde blau", "Mini-Tauchsonde Ø 12 x 110 (Atlas ENV-20-DOX)"),
+    "ph":             ("zyl", (12, 150), "Sonde grau", "pH-Sonde Ø 12 x 150 (Atlas ENV-40-pH)"),
+    "ec":             ("zyl", (12, 150), "Sonde grau", "Leitfaehigkeitssonde K 0,1 Ø 12 x 150 (Atlas)"),
+    "temp_ds":        ("zyl", (6, 50), "Edelstahl", "Temperaturfuehler DS18B20, Edelstahlhuelse Ø 6 x 50"),
+    "level_float":    ("zyl", (30, 55), "Schwimmer orange", "Schwimmerschalter Ø 30 x 55 (Niedrig/Hoch, Kontakt)"),
+    "level_druck":    ("zyl", (20, 140), "Edelstahl", "Tauchdrucksonde 4-20 mA Ø 20 x 140"),
+    "flow_12":        ("box", (50, 40, 80), "Sonde schwarz", "Paddelrad-Durchflussmesser 1/2 Zoll 50 x 40 x 80 (Atlas)"),
+    "flow_gross":     ("box", (100, 60, 40), "Sonde schwarz", "Durchflussmesser fuer 110 l/min (Ultraschall-Clamp-on, Typ offen) 100 x 60 x 40"),
+    "druck_schalter": ("zyl", (32, 55), "Messing", "Druckschalter mit Relais-Ausgang Ø 32 x 55, Anschluss R1/4"),
+    "strom_ct":       ("box", (36, 13, 30), "Sonde schwarz", "Klemm-Stromwandler SCT-013 36 x 13 x 30"),
+    "co2_scd41":      ("box", (25, 17, 10), "Platine gruen", "CO2-Modul SCD41 auf Platine 25 x 17 x 10 (Chip 10 x 10 x 6,5)"),
+    "par":            ("zyl", (30, 37), "Sonde gelb", "Quantensensor PAR Ø 30 x 37 (z. B. Apogee SQ-500)"),
+    "leck":           ("box", (50, 20, 6), "Kontakt rot", "Leckagesonde, Kontaktflaeche 50 x 20 x 6"),
+}
+
+def c_sonde(b, p):
+    if p["form"] == "zyl":
+        cyl(b, "S", p["d"], p["l"], [0, 0, 0], body="Sonde", mat=p["mat"])
+    else:
+        bx(b, "S", -p["lx"] / 2, p["lx"] / 2, -p["ly"] / 2, p["ly"] / 2, 0, p["lz"], body="Sonde", mat=p["mat"])
+
+def sonde_ports(p):
+    top = p["l"] if p["form"] == "zyl" else p["lz"]
+    return [("Messspitze / Anlage (Unterseite)", "Messfuehler", (0, 0, 0), (0, 0, -1), "Sonde", True),
+            (f"Kabel ({p['kabel']})", f"{p['adern']} Adern, {p['versorgung']}", (0, 0, top), (0, 0, 1), "Sonde", True)]
+
+for _k, (_form, _dim, _mat, _txt) in SONDEN.items():
+    _t = ST[_k]
+    _pp = {"form": (_form, "", "[A] Form (messstellen.json hat keine Abmessungen; Hersteller-Datenblatt nicht gelesen)"), "mat": (_mat, "", "[A] Farbe/Werkstoff nach Hersteller-Erscheinung geschaetzt"),
+           "kabel": (_t["kabel_art"], "", f"[Q] data/messstellen.json sondentypen.{_k}.kabel_art"), "adern": (_t["adern"], "", "[Q] messstellen.json"), "versorgung": (_t["versorgung"], "", "[Q] messstellen.json")}
+    if _form == "zyl":
+        _pp["d"] = (_dim[0], "mm", "[A] Durchmesser"); _pp["l"] = (_dim[1], "mm", "[A] Laenge")
+    else:
+        _pp["lx"] = (_dim[0], "mm", "[A] Breite"); _pp["ly"] = (_dim[1], "mm", "[A] Tiefe"); _pp["lz"] = (_dim[2], "mm", "[A] Hoehe")
+    add(f"sonde_{_k}", id=_k, kind="sonde", nr="T91-" + _k, titel=_t["name"], fn=c_sonde, ports=sonde_ports,
+        ks="Z hoch; Ursprung = Mitte der Messspitze/Unterseite; Kabel am oberen Ende (+Z)",
+        funktion=f"Platzhalter in Hersteller-Farbe: {_txt}; {_t['technik']}", params=_pp, teile=[("Sonde", _txt + " (Platzhalter, Masse Annahme)", _mat, "A")])
+
 # ---------------------------------------------------------------- Bau
 def build(key):
     c = COMPS[key]

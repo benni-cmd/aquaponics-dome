@@ -53,7 +53,6 @@ PASS messstellen: Anschluesse schliessen an den Zellkoerper an (x 0 bzw. 220): I
 PASS messstellen: Absperrhahn schliesst an den Ablaufstutzen an: Ist 250, Soll 250 (+-0.1)
 PASS messstellen: Zellvolumen 135 ml (Bohrung d28 x 220) < 0,2 l: schneller Austausch bei 3 l/min: Ist 1, Soll 1
 PASS messstellen: halter_zelle: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
-== messstellen: 55/55 PASS
 PASS messstellen: halter_inline_d32: Koerper = Teile-Zeilen (6) (Roadmap B1): Ist 6, Soll 6
 PASS messstellen: halter_inline_d32: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
 PASS messstellen: halter_inline_d32: jeder Koerper hat Masse > 0: Ist 1, Soll 1
@@ -158,4 +157,194 @@ PASS messstellen: Verschraubungs-Abstand >= 35 (Mutter d20 plus Werkzeug): Ist 1
 PASS messstellen: Verschraubungen unter dem Boden angesetzt (Oberkante = z 0): Ist 4.44089e-15, Soll 0 (+-0.1)
 PASS messstellen: IP65-Kasten 200 x 150 x 100 passt ESP32-Platine 52 x 28 und 3 EZO-Schaltkreise (je 20 x 20 + Isolatoren): Innenflaeche >= 100 x 100: Ist 1, Soll 1
 PASS messstellen: halter_box: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
-== messstellen: 104/104 PASS
+PASS messstellen: sonde_do_ind: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_do_ind: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_do_ind: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_do_ind: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_do_ind: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_do_ind: Port 'Kabel (koax_sma)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_do_ind: Port 'Kabel (koax_sma)' Spitze am Rand in Richtung (0, 0, 1): Ist 170, Soll 170 (+-0.3)
+PASS messstellen: Sonde Durchmesser 25: Ist 24.9996, Soll 25 (+-0.1)
+PASS messstellen: Sonde Laenge 170: Ist 170, Soll 170 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 83434.7, Soll 83448.6 (+-417.243)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 133.496, Soll 133.518 (+-1.33518)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_do_ind: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_do_mini: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_do_mini: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_do_mini: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_do_mini: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_do_mini: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_do_mini: Port 'Kabel (koax_sma)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_do_mini: Port 'Kabel (koax_sma)' Spitze am Rand in Richtung (0, 0, 1): Ist 110, Soll 110 (+-0.3)
+PASS messstellen: Sonde Durchmesser 12: Ist 11.9998, Soll 12 (+-0.1)
+PASS messstellen: Sonde Laenge 110: Ist 110, Soll 110 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 12438.6, Soll 12440.7 (+-62.2035)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 19.9018, Soll 19.9051 (+-0.199051)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_do_mini: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_ph: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_ph: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_ph: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_ph: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_ph: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_ph: Port 'Kabel (koax_bnc)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_ph: Port 'Kabel (koax_bnc)' Spitze am Rand in Richtung (0, 0, 1): Ist 150, Soll 150 (+-0.3)
+PASS messstellen: Sonde Durchmesser 12: Ist 11.9998, Soll 12 (+-0.1)
+PASS messstellen: Sonde Laenge 150: Ist 150, Soll 150 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 16961.8, Soll 16964.6 (+-84.823)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 27.1389, Soll 27.1434 (+-0.271434)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_ph: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_ec: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_ec: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_ec: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_ec: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_ec: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_ec: Port 'Kabel (koax_bnc)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_ec: Port 'Kabel (koax_bnc)' Spitze am Rand in Richtung (0, 0, 1): Ist 150, Soll 150 (+-0.3)
+PASS messstellen: Sonde Durchmesser 12: Ist 11.9998, Soll 12 (+-0.1)
+PASS messstellen: Sonde Laenge 150: Ist 150, Soll 150 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 16961.8, Soll 16964.6 (+-84.823)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 27.1389, Soll 27.1434 (+-0.271434)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_ec: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_temp_ds: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_temp_ds: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_temp_ds: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_temp_ds: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_temp_ds: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_temp_ds: Port 'Kabel (onewire_3ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_temp_ds: Port 'Kabel (onewire_3ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 50, Soll 50 (+-0.3)
+PASS messstellen: Sonde Durchmesser 6: Ist 5.99991, Soll 6 (+-0.1)
+PASS messstellen: Sonde Laenge 50: Ist 50, Soll 50 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 1413.48, Soll 1413.72 (+-7.06858)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 11.1665, Soll 11.1684 (+-0.111684)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_temp_ds: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_level_float: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_level_float: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_level_float: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_level_float: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_level_float: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_level_float: Port 'Kabel (kontakt_2ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_level_float: Port 'Kabel (kontakt_2ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 55, Soll 55 (+-0.3)
+PASS messstellen: Sonde Durchmesser 30: Ist 29.9995, Soll 30 (+-0.1)
+PASS messstellen: Sonde Laenge 55: Ist 55, Soll 55 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 38872.4, Soll 38877.2 (+-194.386)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 23.3234, Soll 23.3263 (+-0.233263)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_level_float: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_level_druck: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_level_druck: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_level_druck: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_level_druck: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_level_druck: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_level_druck: Port 'Kabel (strom_4_20mA_2ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_level_druck: Port 'Kabel (strom_4_20mA_2ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 140, Soll 140 (+-0.3)
+PASS messstellen: Sonde Durchmesser 20: Ist 19.9997, Soll 20 (+-0.1)
+PASS messstellen: Sonde Laenge 140: Ist 140, Soll 140 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 43975, Soll 43982.3 (+-219.911)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 347.402, Soll 347.46 (+-3.4746)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_level_druck: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_flow_12: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_flow_12: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_flow_12: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_flow_12: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_flow_12: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_flow_12: Port 'Kabel (impuls_3ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_flow_12: Port 'Kabel (impuls_3ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 80, Soll 80 (+-0.3)
+PASS messstellen: Sonde Breite x Tiefe x Hoehe 50 x 40 x 80: Ist 170, Soll 170 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 160000, Soll 160000 (+-800)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 192, Soll 192 (+-1.92)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_flow_12: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_flow_gross: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_flow_gross: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_flow_gross: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_flow_gross: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_flow_gross: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_flow_gross: Port 'Kabel (impuls_3ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_flow_gross: Port 'Kabel (impuls_3ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 40, Soll 40 (+-0.3)
+PASS messstellen: Sonde Breite x Tiefe x Hoehe 100 x 60 x 40: Ist 200, Soll 200 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 240000, Soll 240000 (+-1200)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 288, Soll 288 (+-2.88)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_flow_gross: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_druck_schalter: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_druck_schalter: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_druck_schalter: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_druck_schalter: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_druck_schalter: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_druck_schalter: Port 'Kabel (kontakt_2ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_druck_schalter: Port 'Kabel (kontakt_2ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 55, Soll 55 (+-0.3)
+PASS messstellen: Sonde Durchmesser 32: Ist 31.9995, Soll 32 (+-0.1)
+PASS messstellen: Sonde Laenge 55: Ist 55, Soll 55 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 44228.3, Soll 44233.6 (+-221.168)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 375.94, Soll 375.986 (+-3.75986)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_druck_schalter: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_strom_ct: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_strom_ct: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_strom_ct: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_strom_ct: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_strom_ct: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_strom_ct: Port 'Kabel (ct_2ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_strom_ct: Port 'Kabel (ct_2ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 30, Soll 30 (+-0.3)
+PASS messstellen: Sonde Breite x Tiefe x Hoehe 36 x 13 x 30: Ist 79, Soll 79 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 14040, Soll 14040 (+-70.2)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 16.848, Soll 16.848 (+-0.16848)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_strom_ct: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_co2_scd41: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_co2_scd41: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_co2_scd41: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_co2_scd41: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_co2_scd41: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_co2_scd41: Port 'Kabel (i2c_4ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_co2_scd41: Port 'Kabel (i2c_4ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 10, Soll 10 (+-0.3)
+PASS messstellen: Sonde Breite x Tiefe x Hoehe 25 x 17 x 10: Ist 52, Soll 52 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 4250, Soll 4250 (+-21.25)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 7.65, Soll 7.65 (+-0.0765)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_co2_scd41: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_par: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_par: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_par: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_par: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_par: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_par: Port 'Kabel (analog_3ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_par: Port 'Kabel (analog_3ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 37, Soll 37 (+-0.3)
+PASS messstellen: Sonde Durchmesser 30: Ist 29.9995, Soll 30 (+-0.1)
+PASS messstellen: Sonde Laenge 37: Ist 37, Soll 37 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 26150.8, Soll 26153.8 (+-130.769)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 41.8413, Soll 41.846 (+-0.41846)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_par: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: sonde_leck: Koerper = Teile-Zeilen (1) (Roadmap B1): Ist 1, Soll 1
+PASS messstellen: sonde_leck: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: sonde_leck: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: sonde_leck: Port 'Messspitze / Anlage (Unterseite)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_leck: Port 'Messspitze / Anlage (Unterseite)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: sonde_leck: Port 'Kabel (kontakt_2ader)' liegt am Koerper Sonde: Ist 1, Soll 1
+PASS messstellen: sonde_leck: Port 'Kabel (kontakt_2ader)' Spitze am Rand in Richtung (0, 0, 1): Ist 6, Soll 6 (+-0.3)
+PASS messstellen: Sonde Breite x Tiefe x Hoehe 50 x 20 x 6: Ist 76, Soll 76 (+-0.1)
+PASS messstellen: Sonde Volumen = Formel (0,5 %): Ist 6000, Soll 6000 (+-30)
+PASS messstellen: Sonde Masse = Volumen x Dichte des Materials: Ist 8.4, Soll 8.4 (+-0.084)
+PASS messstellen: Sonde steht auf z 0 (Messspitze): Ist 0, Soll 0 (+-0.1)
+PASS messstellen: sonde_leck: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: Passung: do_ind (d25) im Tauchrohr (ID 36,2 >= d + 5): Ist 1, Soll 1
+PASS messstellen: Passung: do_mini, temp_ds im Tauchrohr: Ist 1, Soll 1
+PASS messstellen: Passung: ph, ec, temp_ds im Zellenstutzen (Bohrung 16 >= d): Ist 1, Soll 1
+PASS messstellen: Passung: Sondenstutzen der Messzelle puffer_klein (Bohrung 16) nehmen ph, ec, do_mini, temp_ds: Ist 1, Soll 1
+PASS messstellen: Passung: level_float (d30) im Beruhigungsrohr (ID >= d + 10): Ist 1, Soll 1
+PASS messstellen: Passung: flow_12 deckt den Sensorsitz d30 ab (Fuss >= Sitz): Ist 1, Soll 1
+PASS messstellen: Passung: druck_schalter (d32) auf dem Nippel (Sechskant 19): Ist 1, Soll 1
+PASS messstellen: Passung: par (d30) und SCD41-Diagonale unter dem Strahlungsschutz d90 (Rand >= 10): Ist 1, Soll 1
+PASS messstellen: Passung: SCD41-Hoehe 10 passt in den Lamellenabstand 14 - 3 = 11 (Platine unter den Scheiben): Ist 1, Soll 1
+PASS messstellen: 14 Sondentypen des Auftrags liegen als Datei sonde_<typ>.sc vor: Ist 14, Soll 14
+PASS messstellen: jeder der 14 Typen kommt in mindestens einer Messstelle vor (kein totes Bauteil): Ist 14, Soll 14
+PASS messstellen: alle 7 in den Messstellen verwendeten Halter (H_*) sind als Datei vorhanden (H_INLINE als d32/d50): Ist 7, Soll 7
+   Abdeckung: 64 von 67 Messstellen nur mit Bauteilen dieses Pakets (Rest: Alarmwaehler, Spannungswaechter, Batterie im Schaltschrank); Sonden Stueck 72 ({'do_ind': 1, 'do_mini': 5, 'ph': 5, 'ec': 3, 'temp_ds': 6, 'level_float': 17, 'level_druck': 2, 'flow_12': 7, 'flow_gross': 2, 'druck_schalter': 6, 'strom_ct': 10, 'co2_scd41': 3, 'par': 2, 'leck': 3})
+== messstellen: 348/348 PASS

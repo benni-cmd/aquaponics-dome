@@ -99,4 +99,4 @@
 - REIHENFOLGE nach dem Reset (immer nur EINE Sitzung): 1. Fachrecherche R28 Filterkonzept zu Ende (docs/jobs/R28-filterkonzept.md) -> 2. Werkstatt W30 Tank-Staende (docs/jobs/W30-tank-staende.md), danach W27 Huelle -> 3. Montage Messung/M9 Figuren abschliessen, dann M10 Leitungen mit Plan vorab (docs/jobs/M10-leitungen.md) -> 4. ein check_latte -> 5. PAUSE und Zwischencheck mit Ben.
 - Offen fuer Ben: Standort/Folienart, Drittbecken-Mass und Rolle, Fruchtgemuese-Anteil.
 - Aufraeumen (ICH): docs/integration-board.md und docs/model-description.md auf Stand bringen (python scripts/build_model_description.py), alte Sitzungen local_26fd6822..., local_0de58930... archivieren (auf Bens Ja).
-
+- 31.10. 12:45: Reihenfolge (eine Sitzung gleichzeitig): Werkstatt-3 (W31 Feinfilter, W27 Plane) laeuft -> Fachrecherche R30 Filterarten (docs/jobs/R30-filterarten.md) -> Montage Innenbeete bepflanzen (D52), check_latte, M10 Plan -> M10 Leitungen -> check_latte -> PAUSE und Zwischencheck. Fortschritt zwischendurch melden (Ben).

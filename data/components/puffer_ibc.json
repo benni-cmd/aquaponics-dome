@@ -310,11 +310,15 @@
    "Wasser"
   ],
   "gewicht_gefuellt": "Nutzwasser 900 l = 900 kg je IBC (im Modell als Wasserkoerper, nicht in der Leermasse); Leermasse siehe oben.",
-  "pruefung": [],
+  "pruefung": [
+   "scripts/workshop/check_puffer.py ibc (17/17 PASS): Handelsmass 1200 x 1000 x 1165, Palette 150, 50 Gitterstaebe, Nutzvolumen 900 l (Wasserkoerper), Blasen-Innenvolumen 1048 l, Ueberlauf ueber dem Nutzstand, Portlagen und Zapfenenden, Dachstutzen <= 1195, Interferenz 0; Spec-/Bild-Pruefer: gemeinsamer Lauf mit W25 steht aus"
+  ],
   "offen": [
    "Kaefig/Blase/Palette sind Annahme A nach Handelsmassen; Hersteller offen (Nenngewicht leer ca. 60 kg real, gegen Messung)",
    "Stutzenlagen (Seitenstutzen statt Deckelstutzen) sind eine Entscheidung dieser Werkstatt wegen Stapelhoehe; Orchestrator/Ben bestaetigen",
-   "Ablaufhahn/Anschluesse sind Platzhalter fuer die Bibliothek leitungsteile (T70)"
-  ]
+   "Ablaufhahn/Anschluesse sind Platzhalter fuer die Bibliothek leitungsteile (T70)",
+   "Palette als Vollkoerper mit Ersatzdichte 0,2 g/cm3 modelliert (reale Hohlkufen/Rippen: Palettenmasse ca. 20 kg [A]), nicht als HDPE-Dichte 0,95; Masse leer der IBC ca. 70 kg gegen Handelsware 55-70 kg [A]"
+  ],
+  "kritiker": "offen (kein Pruefer-Lauf ohne Auftrag; gemeinsamer Lauf mit W25 am Ende)"
  }
 }

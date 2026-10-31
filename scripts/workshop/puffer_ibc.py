@@ -39,7 +39,7 @@ def build():
     b.params_to_design(p, d, unit)
     L, W = p["ibc_l"], p["ibc_w"]
     b.add("material.create", name="Stahl verzinkt", density_g_cm3=7.85, color="#aeb4b8", pbr={"metallic": 0.8, "roughness": 0.45, "dielectric_ior": 1.5})
-    b.add("material.create", name="HDPE Palette", density_g_cm3=0.95, color="#6f767a")
+    b.add("material.create", name="HDPE Palette", density_g_cm3=0.2, color="#6f767a")
     b.add("material.create", name="PE Blase", density_g_cm3=0.95, color="#e9edf0")
     b.add("material.create", name="PVC grau", density_g_cm3=1.4, color="#8d9296")
     b.add("material.create", name="PVC blau", density_g_cm3=1.4, color="#2a5da8")

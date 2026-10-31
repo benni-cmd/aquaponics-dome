@@ -1968,5 +1968,35 @@
   "note": "W24 Aussentisch 3 gegen 4 Rinnen, Querschnitt",
   "commit": "eb54483",
   "source": "renders/components/nft_passung/aussen4-querschnitt.png"
+ },
+ {
+  "file": "20261031-005343_werkstatt_puffer_puffer-ibc-01-schraeg.png",
+  "sha": "e130d4ded7a44720",
+  "time": "2026-10-31 00:53:43",
+  "role": "werkstatt",
+  "subject": "puffer",
+  "note": "W28 Puffer-IBC und Station",
+  "commit": "392dd49",
+  "source": "renders/components/puffer_ibc/puffer_ibc-01-schraeg.png"
+ },
+ {
+  "file": "20261031-010647_werkstatt_puffer_puffer-station-01-schraeg.png",
+  "sha": "5edf7c91ee51ef9f",
+  "time": "2026-10-31 01:06:47",
+  "role": "werkstatt",
+  "subject": "puffer",
+  "note": "W28 Puffer-IBC und Station",
+  "commit": "392dd49",
+  "source": "renders/components/puffer_station/puffer_station-01-schraeg.png"
+ },
+ {
+  "file": "20261031-010704_werkstatt_puffer_puffer-station-02-seite.png",
+  "sha": "2c21d2ad790c55c5",
+  "time": "2026-10-31 01:07:04",
+  "role": "werkstatt",
+  "subject": "puffer",
+  "note": "W28 Puffer-IBC und Station",
+  "commit": "392dd49",
+  "source": "renders/components/puffer_station/puffer_station-02-seite.png"
  }
 ]

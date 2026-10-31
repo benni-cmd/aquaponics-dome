@@ -73,3 +73,9 @@
 4. Standort, Folienart (Plane), Beschaffungsregion.
 5. V1 (zwei Strebenlaengen) oder V2c; Verbindungsstueck: Knotenkugel (heute) oder Laschenknoten (nach R41).
 6. Weg 2b fuer Fruchtgemuese in den Beeten (nur falls gewuenscht).
+
+## Nachtrag 31.10. 17:50 (D69)
+| Nr | Wunsch | Quelle | Status | Wo |
+|---|---|---|---|---|
+| W41 | Vorerst keine Ertragsrechnungen, keine konkreten Wasser-/Stromkosten, Standort irrelevant, keine Verschattungs- oder aehnlichen Rechnungen | #274 31.10. | DAUERHAFT (bis Ben es aendert) | D69; Entscheidungen "Standort" und "Wasserversorger" entfallen |
+| W42 | Folienart: in den Quellen suchen, sonst UV-bestaendige Gewaechshausfolie, moeglichst lange haltbar, noetige Zertifizierungen, guenstig; Lieferform klaeren; pruefen, ob das Schnittmuster damit umsetzbar ist; reale standardisierte Teile im Bauplan | #274 | LAEUFT (R42) | D69, B11 |

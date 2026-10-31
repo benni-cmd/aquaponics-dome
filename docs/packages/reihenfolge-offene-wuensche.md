@@ -62,3 +62,6 @@ LAEUFT: W34 Puffer klein + Drittbecken 0,4 m3 (Werkstatt-4).
 VOR DEM ZWISCHENCHECK: 1 W34 abnehmen · 2 W35 Sondenhalter/Messstellen-Bauteile (Werkstatt) · 3 R40 Netzliste auf Stand · 4 Montage: Vorbau raus, Puffer/Drittbecken/Pumpentafeln/Messstellen setzen, Karte gruen · 5 R41 Laschenknoten-Vergleich (parallel, wenn Limit passt) · 6 check_latte-Skript umstellen · 7 M10 Leitungsplan (Orchestrator liest gegen) · 8 M10 Leitungen und Kabel inkl. Signalkabel Messstellen · 9 EIN check_latte, Draufsicht/Seitenansicht · 10 PAUSE Zwischencheck mit Ben.
 NACH DEM ZWISCHENCHECK: 11 Plane im Modell (R38 V2) und im Bauplan · 12 Statik B9b, Strebe V1/V2c, Verbindungsstueck-Entscheidung · 13 B4 Katalog, B1 Teile-Datenmodell, B2/B3 Detailansicht, B5 Stueckliste/Meterware, R31/R32/R33, B10 Bauanleitung · 14 Farben/Material/Renders, Pflanzenmodelle, Notstrom/Alarm, Suesskartoffel-Licht, NFT-Wuchsflaeche messen.
 LAUFEND: Docs auf Stand (346 kg, Puffer 0,16 m3), Wunschbuch nachfuehren.
+
+## Nachtrag 31.10. 17:50 (D69)
+R42 Folienprodukt, Lieferform und Machbarkeit des Schnittmusters (Fachrecherche-4) laeuft parallel zu W35; vor Schritt 11 (Plane im Modell). Standort/Versorger/Ertrag/Kosten/Verschattung entfallen als offene Punkte.

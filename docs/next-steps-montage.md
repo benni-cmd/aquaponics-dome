@@ -54,3 +54,5 @@ M6 Haut T2 (R11) · M7 Gesamtansicht-Gauntlet `cam_ref4`/`cam_ref5`/`cam_ref1`/S
 **HINWEIS 31.10. 01:10 (D46):** Drittbecken + Puffer-Station kommen als M8 (docs/jobs/M8-drittbecken-puffer.md) nach Werkstatt W28. Reihenfolge: W25a/W26 -> Neubau -> W28 -> M8 -> EIN check_latte.
 
 **HINWEIS 31.10. 01:40:** M8 (Drittbecken + Puffer-Station) kommt vor W26: sobald Werkstatt W25a und W28 gemeldet haben -> extract_nft_pots, Neubau mit aussen4, M8, check_walkways. Der grosse check_latte folgt erst nach W26 (Innenbeet-Fase).
+
+**HINWEIS 31.10. 02:40 (D47):** Nach M8: M9 zwei Referenzfiguren (docs/jobs/M9-mensch-platzieren.md), sobald Werkstatt W29 meldet.

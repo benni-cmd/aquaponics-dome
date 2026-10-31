@@ -1,0 +1,6 @@
+# M9 Zwei Referenzfiguren platzieren (Ben 31.10., D47) — NACH M8 und Werkstatt W29
+Ziel: Zwei Instanzen von `mensch_referenz` (Werkstatt W29, 1,80 m): (1) Typ `messen` an der Puffer-Station (M8), Fuesse auf dem Boden vor der Dosierkonsole, Blick zur Konsole/zu den Sonden; (2) Typ `arbeiten` auf der gegenueberliegenden Seite (Azimut Puffer-Station + 180, also ca. 5,2 Grad), im Laufweg B zwischen Mittel- und Aussenring (Mitte Laufweg B, Radius ca. 4158 mm), Blick zum Aussentisch/Beet, Arme in Tischhoehe.
+Eingaben: D47, `docs/jobs/M8-drittbecken-puffer.md`; `scripts/check_walkways.py` (Laufweg B ist 500-600 breit: Schulterbreite 466 mm, Tiefe ca. 250 mm, Figur passt knapp, Position und Drehung so waehlen, dass sie den Weg nicht blockiert und die Tischbeine nicht beruehrt).
+Pruefen: Figuren duerfen nichts durchdringen (Abstand >= 20 mm zu Tisch, Beet, Bein, Strebe); aus der Kollisionspruefung `check_latte` herausnehmen wie Pflanzen (Referenz), aber im Bild mit Massen kontrollieren; Draufsicht und Seitenansicht in den Bildverlauf.
+Nicht anfassen: Werkstatt-Komponenten. Instanzen `Mensch_Referenz:1` (messen) und `:2` (arbeiten), Gruppe im Viewer `Referenz`.
+Ergebnis: WIP-Commit je Schritt, Stand in `docs/loop-state.md`.

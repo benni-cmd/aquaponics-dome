@@ -12,3 +12,6 @@ Schritte:
 6. check_walkways, EIN check_latte mit Leitungen, Draufsicht und Seitenansicht in den Bildverlauf. Je Schritt WIP-Commit.
 Nicht anfassen: Werkstatt-Komponenten; fehlt ein Leitungsteil, melden (Werkstatt-Notiz) statt selbst bauen.
 Danach PAUSE: Zwischencheck mit Ben; `docs/model-description.md` und `docs/integration-board.md` pflegen.
+
+## Schritt 0 (vorab, D54): vollstaendige Laufwegkarte
+`scripts/check_walkways.py` erweitern (oder `check_walkways_voll.py`): alle Hindernisse aus `scripts/dome-script.json` (Beete + Portale, Tische mit Ueberstand in 1,3 m Hoehe, Tanks samt Stand und Pumpentafeln, Pool, Zweitbecken, Drittbecken, Puffer-Station, Feinfilter, Schaltschrank, Figuren nicht) in zwei Hoehenscheiben (0,3 m und 1,7 m) als Grundriss-Raster (z. B. 20 mm) rastern; Freiraum um 250 mm erodieren (= 500 mm Gang) und von der Tuer fluten. Ausgabe: (1) Liste aller Engstellen unter 600 mm mit Ort (Azimut, Radius) und Paar der Hindernisse, (2) Bauteile, die nicht erreichbar sind, (3) Draufsicht als Karte (rot < 500, gelb 500-600) per `scripts/archive_render.py` in den Bildverlauf. Daraus Massnahmenliste: Tanks/Staende verschieben (Tank-Abstand D22 130-150 mm ist zu eng), Station/Drittbecken/Feinfilter positionieren; Aenderungen als Parameter, danach Neubau und Karte erneut. Erst danach Leitungen planen.

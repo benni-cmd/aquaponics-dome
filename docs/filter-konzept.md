@@ -48,6 +48,58 @@ Jede Art hat ihr eigenes Blatt: Zweck · Funktion in drei Sätzen · Auslegungsr
 - **Simulator-Katalog:** `vortex_filter`: 305 €, `capacity_m3` 10, 0 W, `f_split` 0,05; Formel „Mechanische Feststoff-Separation“: `Q_feinschlamm = Q_req × f_split` (nur ein Anteil, kein Abscheidegrad, keine Verweilzeit).
 - **Ampel Modell gegen Konzept:** ✔ Oberflächenbelastung weit unter dem Prüfwert (2,1 gegen 11,2 m/h), Teilstrom-Prinzip nach Dual-Drain stimmig. ⚠ Wirkungsgrad offen (23–37 % gelten für die Prüfanlage); Empfehlung: Schlammmenge nach der ersten Betriebswoche wiegen und mit 0,33 kg/Tag vergleichen; Zulaufdämpfer als Variante der Werkstatt melden.
 
+### Art 2 – Feinfilter (Sieb, `feinfilter` ×2; Simulator: Fleece-Filter)
+- **Zweck:** Schwebstoffe und Brocken, die der Absetzer durchlässt, abfangen, damit Pumpen, Beete und Rinnen nicht verstopfen.
+- **Funktion in drei Sätzen:** Das Wasser läuft durch ein Gewebe (bei uns Edelstahl, ca. 150 µm) und lässt Partikel größer als die Maschenweite im Korb zurück. Der Korb füllt sich, der Durchfluss sinkt; deshalb wird er alle 1–2 Wochen herausgehoben und gespült [Q SRAC 454: UVI reinigt Netzfilter 1–2× je Woche]. Siebe zerkleinern große Teilchen beim Durchlauf teilweise, wodurch Feinstpartikel entstehen.
+- **Auslegungsrechnung:**
+  - Maschenweite gegen Abscheidung: Mortensen (Hydrotech, Aal-RAS, 10 kg Futter/Tag) maß für 30/60/100 µm **99/48/21 % Schwebstoffe**, mit 200/100/50 l Spülwasser je kg Futter [Q Global Seafood Advocate 2000, gelesen]. 150 µm ist gröber als der gröbste getestete Wert → unter 21 % der Schwebstoffmasse zu erwarten [E, Extrapolation].
+  - Zweite Stütze: Ein Mikrosieb (Trommel) im Vollstrom nahm zusätzlich **40–45 % der täglichen Feststoffmasse**, die Autoren halten diesen Schritt für entscheidend [Q Davidson & Summerfelt 2005]. Eine Studie an einer norwegischen Smolt-Anlage fand mit 60-µm-Gewebe 97 % Abscheidung nach Partikelzahl, aber nur 34 % nach Gewicht, weil das Sieb Partikel zerbricht [Q NMBU-Studie, Suchzusammenfassung, niedrige Qualität].
+  - Bedarf: FAO 589 verlangt ab >15 kg/m³ Fisch oder >50 g Futter/m²/Tag zusätzlich einen mechanischen Filter; wir liegen bei 17 kg/m³ und 62 g/m² [Q FAO 589 laut R28].
+  - Hydraulik: Korb 340 × 240 × 330 mm → benetzte Fläche ca. 0,46 m² (Mantel 0,38 + Boden 0,08); 12,5 l/min = 0,75 m³/h → **1,6 m/h** Siebbelastung [E]. Eine belegte Auslegungsgröße für Siebe in dieser Klasse fand die Recherche nicht (Hersteller-Datenblätter ungelesen).
+  - **Strombilanz:** Der Feinfilter sitzt hinter dem Absetzer und sieht nur 12,5 von 110 l/min je Linie = **11 %** des Stroms (Netz K05/K06); 97,5 l/min Seitenablauf laufen ungesiebt zu Pumpe, Biofilter und Beeten [E, `leitungsnetz.json`]. Davidson/Summerfelt empfehlen dagegen, den **gesamten** Umlaufstrom über ein Mikrosieb zu führen.
+- **Modellbauteil:** `feinfilter` ×2 (Blatt W31, Behälter 400 × 300 × 500 mm, Siebkorb Edelstahl 150 µm, Ablass Kugelhahn). Knoten `feinfilter_1/2` im Netz.
+- **Grenzen:** Maße sind Annahme (W31); kein Notüberlauf bei verstopftem Korb; Gewebe, Spannverschlüsse, Kugelhahn ohne Fabrikat; Siebwirkung ist feinste Partikel gegenüber blind (Zerkleinerung).
+- **Simulator-Katalog:** `fleece_filter`: 550 €, `capacity_m3` 15, 20 W, „Mechanischer Feinstoff-Filter (Fleece-Filter)“. Im Rechenmodell kommt der Fleece-Filter nicht vor – die Feststoffabtrennung rechnet allein über den Vortex-Anteil `f_split`.
+- **Ampel Modell gegen Konzept:** ✔ Bauteil existiert (W31), Reinigungsrhythmus passt zu UVI. ⚠ **Teilstrom**: 89 % des Wassers umgehen Absetzer und Sieb; die Beete (Kies) werden zum eigentlichen Feinfilter und verstopfen zuerst. ⚠ **Maschenweite 150 µm** liegt oberhalb des geprüften Bereichs (≤100 µm). Empfehlung: Gewebe auf 100 µm (Variante 60 µm mit häufigerer Reinigung) ändern und den Sieb in den Hauptstrom vor die großen Pumpen legen oder zwei Körbe parallel; das betrifft Werkstatt W31 und Montage M10, nicht dieses Blatt.
+
+### Art 3 – Biofilter mit Schwebebett-Medium (`tank_gross` ×2)
+- **Zweck:** Ammonium (TAN, 178 g/Tag) über Nitrit zu Nitrat umwandeln, bevor es die Fische vergiftet.
+- **Funktion in drei Sätzen:** Auf der Oberfläche des Mediums wächst ein Bakterienfilm; er nimmt Ammonium und Sauerstoff auf und gibt Nitrat ab. Im Schwebebett (MBBR) bewegen sich kleine Kunststoffträger durch Luftblasen frei im Wasser und werden so ohne Verstopfen und ohne Rückspülen sauber gehalten. Die Umsatzleistung ist eine Flächenrate (g TAN je m² Träger und Tag) und hängt von Temperatur, Sauerstoff, Alkalinität und organischer Last ab.
+- **Auslegungsrechnung (Fläche = TAN ÷ Rate, Volumen = Fläche ÷ spezifische Oberfläche):**
+
+| Rate (g TAN/m²/Tag) | Herkunft | Fläche nötig | Volumen K1-Typ (500 m²/m³) | Volumen Bio Balls (400) |
+|---|---|---|---|---|
+| 1,06 (= 0,57 × 1,08⁸) | Simulator bei 28 °C | 169 m² | 0,34 m³ | 0,42 m³ |
+| 0,57 | FAO 589, „konservativ“, ohne Temperaturgewinn | 312 m² | 0,62 m³ | 0,78 m³ |
+| 0,215 (0,25 bei 30 °C, auf 28 °C umgerechnet) | gemessen am Schwebebett in Süßwasser-RAS, Kinyage & Pedersen 2016 | 829 m² | 1,66 m³ | 2,07 m³ |
+
+  - Temperaturfaktor: θ = 1,079 für Ammoniumoxidation 6–30 °C [Q Kinyage & Pedersen 2016, Aquacultural Engineering 75]; θ = 1,086–1,109 bei Ammoniak-Begrenzung, 1,023–1,081 bei Sauerstoff-Begrenzung [Q Salvetti u. a. 2006, Water Research 40]. Der Simulator-Wert 1,08 liegt in beiden Bereichen.
+  - Messwert für die Fläche: Kinyage & Pedersen maßen 0,04 g/m²/Tag bei 6 °C, 0,25 bei 30 °C, 0,14 bei 36 °C [Q, gelesen]. Das ist ein Kurzzeitwert an gealterten Trägern aus einer Süßwasser-Anlage, also eher Untergrenze; FAO 589 nennt 0,2–2 g/m²/Tag, konservativ 0,57 [Q laut R19]. Zwischen beiden Quellen liegt der Faktor 2,7.
+  - Trägeroberfläche: K1 ca. 500 m²/m³ Schüttvolumen, bei 67 % Füllung 335 m² je m³ Reaktor [Q Ødegaard 2006 und WST-Arbeit 2009, nur Suchzusammenfassung; zweite Stütze Händlerblatt, schwach]. Bio Balls 400 [Q FAO 589 Anh. 4 laut R19]. Kies/Lava ca. 300, Blähton 250–300 [Q FarmHub, OSU Extension 300–600 laut Suchzusammenfassung].
+  - **Unser Bestand:** Korb 0,26 m³ je Tank, 0,52 m³ gesamt; mit Bio Balls 400 → **208 m²** [E]. Das deckt 169 m² (Simulator-Rate) 1,2-fach, 312 m² (FAO) zu 67 %, 829 m² (Messwert) zu 25 %.
+  - **Der Simulator-Sicherheitsfaktor:** 2,5 auf die Rate 1,06 ergibt eine wirksame Auslegungsrate von **0,42 g/m²/Tag** – das liegt zwischen Messwert und FAO und ist deshalb vertretbar [E]. Er verdoppelt also nicht blind, sondern gleicht die zu hohe Ausgangsrate aus.
+  - Umsatz-Probe nach Losordo/DeLong: Moving-Bed-Reaktor 350 g TAN/m³/Tag [Q laut R19] → 0,52 m³ tragen 182 g TAN/Tag = 4,9 kg Futter, deckt 178 g gerade [E]; das gilt aber für 25 °C und TAN 2 mg/l, ohne Reserve.
+- **Medienvergleich (Simulator-Katalog gegen Befund):**
+
+| Medium | SSA Simulator (m²/m³) | Belegt durch | Hinweis |
+|---|---|---|---|
+| K1 Micro (MBBR) | 1150 | nur Simulator; Händler/Studie nennen für K1 500 | 1150 gilt für Mikro-Träger, nicht K1 |
+| Bio Balls | 400 | FAO 589 | pflegeleicht, groß |
+| Keramikringe | 2000 | nicht belegt | verstopfungsempfindlich, Denitrifikation (Simulator) |
+| Sinterglas | 1050 | nicht belegt | mineralisch, verstopfungsempfindlich |
+| Lavagestein | 290 | FarmHub ca. 300 | schwer, anaerobe Zonen |
+| Blähton (Substrat) | 275 | FarmHub 250–300 | Beetmedium, nicht Filterkorb |
+
+  Fazit: Messwerte aus Süßwasser-RAS liegen nur für Schwebebett-Kunststoffträger vor (Kinyage & Pedersen 2016). Für Keramik und Sinterglas fand die Recherche keine unabhängige Quelle; ihre SSA bleibt Simulator-Angabe.
+- **Empfehlung zum Biomedium-Volumen (offene Frage, Entscheidung Ben):**
+  1. Das Volumen 0,52 m³ **nicht** auf 1,06 m³ Bio Balls verdoppeln (passt nicht in die Körbe), sondern das **Medium wechseln**: K1-Typ lose im ganzen Tank (Auslass mit Siebgitter), Füllung 67 % der Wasserfüllung 1,404 m³ = **0,94 m³ Träger = 470 m²** [E].
+  2. Das deckt den FAO-Fall (312 m²) 1,5-fach und die Simulator-Rate 2,8-fach; den Messwert-Fall (829 m²) deckt allein der Filter nicht – dann tragen die Beete mit (Art 4).
+  3. Bleibt es bei 0,52 m³ Bio Balls im Korb, ist das Konzept nur tragfähig, wenn die Beete in den ersten Monaten Ammonium mitabbauen; bei Anlauf und im Winter ist das nicht sicher. Die Zahlen in `system_specs.py` sind daher **nicht geändert**; die Änderung wäre ein Modellumbau (Korb entfällt) und wartet auf Bens Entscheidung.
+- **Modellbauteil:** `tank_gross` ×2 (Ø930 mm, 702 l, Korb Ø0,8 × 0,52 m als ein Körper, Belüftung Ø16 im Deckel, Überlauf, Schlammablass).
+- **Grenzen:** Biofilter hängen an Temperatur (6 °C: 0,04 gegen 0,25 g/m²/Tag bei 30 °C), pH (Hemmung unter ca. 6,5 und Alkalinität unter 50 mg/l laut Simulator-Formeln, nicht unabhängig geprüft) und Sauerstoff (>4 mg/l). Anlaufzeit von Wochen bis Monaten (Simulator „Maturity“). Quellen für K1 sind Suchzusammenfassungen, kein Datenblatt gelesen.
+- **Simulator-Katalog:** `bio_filter`: 131 €, `capacity_m3` 10, 150 W (MBBR inkl. Belüftung); `filter_bio`: „Biofilter (Moving Bed)“, SSA 950, 300 €; `biofilter_media` je Medium `safety_factor` 2,5, `R_nitri` 0,57 (identisch für alle Medien), `k_denitri` 0–0,05; Formeln: Fläche = TAN ÷ R_nitri, Volumen = Fläche ÷ SSA × Sicherheitsfaktor, R(T) = R₂₀ · 1,08^(T−20).
+- **Ampel Modell gegen Konzept:** ✔ Bauteil, Belüftungsanschluss und Rolle passen; die Faustrechnung nach FAO-Rate trifft bei 67 %. ⚠ **Volumen knapp**: 0,52 m³ Bio Balls decken die Simulator-Rate, aber nicht FAO (67 %) und nicht den Messwert (25 %). Empfehlung: Medium-Wechsel auf K1-Typ (siehe oben), Entscheidung bei Ben.
+
 <!-- R30-ENDE -->
 
 ## Was zeigt der Simulator je Filter und was übernehmen wir

@@ -368,7 +368,7 @@ document.getElementById('collapseAll').addEventListener('click', () => document.
 async function load() {
   const v = Date.now();
   const [inst, ex] = await Promise.all([fetch('instances.json?v=' + v).then(r => r.json()), fetch('extras.json?v=' + v).then(r => r.json())]);
-  extras = ex;
+  extras = ex; GROUND = Number.isFinite(inst.walk_z) ? inst.walk_z : 400;   // begehbarer Boden = Sockelhoehe sock_h
   const m = new THREE.Group(); const t0 = performance.now();
   await Promise.all(Object.entries(inst.defs).map(async ([stem, d]) => {
     const key = stem + '|' + d.kb;                          // Groesse als Versionsmerkmal der Definition
@@ -427,7 +427,7 @@ setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard();
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
 
 // ---- FPV: in Augenhoehe 1,68 m durch die Kuppel gehen (Masse in mm) -------------------------------------------------
-const GROUND = 0, EYE = 1680, WALK = 1400, TURN = 1.6;      // Boden-Z, Augenhoehe, mm/s, rad/s
+let GROUND = 400; const EYE = 1680, WALK = 1400, TURN = 1.6;      // Boden-Z, Augenhoehe, mm/s, rad/s
 const fpv = { on: false, x: 0, y: 0, yaw: 0, pitch: 0, keys: new Set(), saved: null, last: 0, drag: false };
 function fpvStart() {
   const door = model && defList.tuer_komplett && defList.tuer_komplett[0];

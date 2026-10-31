@@ -2238,5 +2238,35 @@
   "note": "Laufwegkarte nach D62/D63, Runde 57",
   "commit": "d61bf61",
   "source": "renders/walkway-map-kopf.png"
+ },
+ {
+  "file": "20261031-180919_werkstatt_puffer-klein_puffer-klein-01-schraeg.png",
+  "sha": "d8b77eb97765fc7e",
+  "time": "2026-10-31 18:09:19",
+  "role": "werkstatt",
+  "subject": "puffer_klein",
+  "note": "W34 kleiner Puffer T82 mit Figur 1,80 m und Drittbecken klein",
+  "commit": "1725180",
+  "source": "renders/components/puffer_klein/puffer_klein-01-schraeg.png"
+ },
+ {
+  "file": "20261031-180924_werkstatt_puffer-klein_puffer-klein-03-schnitt.png",
+  "sha": "fb9e75199a3737a8",
+  "time": "2026-10-31 18:09:24",
+  "role": "werkstatt",
+  "subject": "puffer_klein",
+  "note": "W34 kleiner Puffer T82 mit Figur 1,80 m und Drittbecken klein",
+  "commit": "1725180",
+  "source": "renders/components/puffer_klein/puffer_klein-03-schnitt.png"
+ },
+ {
+  "file": "20261031-180926_werkstatt_puffer-klein_puffer-klein-04-massstab.png",
+  "sha": "bb9f4f309b0926b2",
+  "time": "2026-10-31 18:09:26",
+  "role": "werkstatt",
+  "subject": "puffer_klein",
+  "note": "W34 kleiner Puffer T82 mit Figur 1,80 m und Drittbecken klein",
+  "commit": "1725180",
+  "source": "renders/components/puffer_klein/puffer_klein-04-massstab.png"
  }
 ]

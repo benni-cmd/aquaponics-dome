@@ -15,7 +15,7 @@
 `designs/components/becken_dritt.sc` wird von `scripts/gen_dome.py` (`pool_fn`, Parameter `pool3_d`/`pool3_depth` in `data/params.json`) erzeugt und hat gerade ungesicherte Aenderungen der Montage im Arbeitsbaum. Ich ueberschreibe sie nicht: Die Werkstatt baut `becken_dritt_klein.sc` als eigene Komponente (neue Datei, eigener Generator). Die Montage setzt danach `pool3_d` 800 und `pool3_depth` 800 oder verknuepft die neue Komponente.
 
 ## Stand
-Geplant, noch nichts gebaut.
+31.10.: puffer_klein T82 gebaut (32 Koerper, 700 x 700 x 1203, 43,8 kg), check_puffer_klein 51/51; becken_dritt_klein T14k gebaut (402 l, 0,66 m2), check 13/13; Blaetter `docs/parts/puffer_klein.md` und `becken_dritt_klein.md`, descriptions `^puffer_klein` vor `^puffer`; Bilder `renders/components/puffer_klein/puffer_klein-04-massstab.png` (Figur 1,80 m), `-01-schraeg`, `-03-schnitt` archiviert. Alte puffer_station/puffer_ibc unveraendert. Offen: Montage setzt pool3_d 800 / pool3_depth 920 oder verknuepft T14k; Sondenliste R39; Statik; Lichtschutz Messzelle.
 
 ## DoD
 puffer_klein gebaut und Check gruen (Zahlen im Stand), Blaetter und descriptions nachgefuehrt, Drittbecken klein gebaut und geprueft, Render im Bildverlauf, WIP-Commits gepusht, workshop-state und workshop-log nachgefuehrt.

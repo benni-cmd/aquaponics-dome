@@ -100,7 +100,8 @@
    "linie": 1,
    "tische": 12,
    "rinnen": 38,
-   "bemerkung": "Haelfte der 24 Tische und 76 Rinnen [A, Aufteilung nach Sektoren Montage]"
+   "bemerkung": "12 von 24 Tischen und 38 von 76 Rinnen je Linie (D67, symmetrisch); 38 Rinnen = 7 Aussen-/Mitteltische (je 4 Rinnen) + 5 Innentische (je 2 Rinnen); welche Tische zu welcher Linie gehoeren, legt die Montage M10 nach Sektoren fest",
+   "quelle": "D67"
   },
   {
    "id": "nft_linie_2",
@@ -108,7 +109,8 @@
    "bauteil": "nft_tisch",
    "linie": 2,
    "tische": 12,
-   "rinnen": 38
+   "rinnen": 38,
+   "quelle": "D67"
   },
   {
    "id": "beete_linie_1",
@@ -116,14 +118,16 @@
    "bauteil": "ibc_beet",
    "linie": 1,
    "beete": 7,
-   "bemerkung": "Glockensiphon, 2 Flutzyklen je Stunde, Ablauf in die Sammelrinne [A: 7 von 14 Beeten]"
+   "bemerkung": "7 von 14 Beeten je Linie (D67, symmetrisch), Glockensiphon, 2 Flutzyklen je Stunde (7 x 234 l x 2/h = 54,6 l/min Mittel), Flutung gestaffelt (Steuerung); Ablauf in die Sammelrinne, Hoehenlage siehe Frage F3",
+   "quelle": "D67"
   },
   {
    "id": "beete_linie_2",
    "typ": "Beete",
    "bauteil": "ibc_beet",
    "linie": 2,
-   "beete": 7
+   "beete": 7,
+   "quelle": "D67"
   },
   {
    "id": "ruecklauf_1",
@@ -275,7 +279,7 @@
    "quelle": "E",
    "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s",
    "v_m_s": 0.67,
-   "hoehe": "Pool-Seitenablauf Z ca. 450, Saugpumpe unter Wasserspiegel"
+   "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)"
   },
   {
    "id": "K02",
@@ -423,9 +427,9 @@
    "dn": 40,
    "soll_l_min": 54.5,
    "quelle": "E",
-   "bemerkung": "Glockensiphon-Ablauf; ACHTUNG Hoehenlage: Beetablauf liegt unter dem Pool-Wasserspiegel Z 515, Sump oder Pumpe noetig (Befund, Montage pruefen)",
+   "bemerkung": "Glockensiphon-Ablauf der Beete (54,5 l/min Mittel, gestaffelt je Beet 234 l in ca. 6,5 min = 36 l/min); Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, Beet-Sumpf je Linie mit Pumpe noetig (Frage F3, Entscheidung Montage M10)",
    "v_m_s": 0.94,
-   "hoehe": "offen"
+   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515"
   },
   {
    "id": "K15",
@@ -461,7 +465,7 @@
    "quelle": "E",
    "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s",
    "v_m_s": 0.67,
-   "hoehe": "Pool-Seitenablauf Z ca. 450, Saugpumpe unter Wasserspiegel"
+   "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)"
   },
   {
    "id": "K18",
@@ -609,9 +613,9 @@
    "dn": 40,
    "soll_l_min": 54.5,
    "quelle": "E",
-   "bemerkung": "Glockensiphon-Ablauf; ACHTUNG Hoehenlage: Beetablauf liegt unter dem Pool-Wasserspiegel Z 515, Sump oder Pumpe noetig (Befund, Montage pruefen)",
+   "bemerkung": "Glockensiphon-Ablauf der Beete (54,5 l/min Mittel, gestaffelt je Beet 234 l in ca. 6,5 min = 36 l/min); Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, Beet-Sumpf je Linie mit Pumpe noetig (Frage F3, Entscheidung Montage M10)",
    "v_m_s": 0.94,
-   "hoehe": "offen"
+   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515"
   },
   {
    "id": "K31",
@@ -1106,5 +1110,49 @@
   "beete_mittel": 54.5,
   "nft": 38.0,
   "bypass": 17.5
- }
+ },
+ "fragen_m10": [
+  {
+   "id": "F1",
+   "frage": "Feinfilter-Hoehenlage: Einlauf des Bauteils T55 liegt 816 mm ueber der Standflaeche; Schwerkraftzulauf vom Pool verlangt Einlaufmitte <= Z ca. 320 (Seitenablauf Z 340 minus Gefaelle/Verlust). Standflaeche dann Z <= -496 (Grube ca. 500 mm) oder Filter auf die Druckseite (Pumpe vor dem Filter, Werkstatt/Orchestrator).",
+   "zahlen": "Einlauf 816, Auslauf 310 ueber Standflaeche; Pool-Spiegel Z 515; Pumpen-Saugseite muss unter dem Wasserspiegel bleiben",
+   "quelle": "T55-Blatt, K01/K17, E"
+  },
+  {
+   "id": "F2",
+   "frage": "Pool-Seitenablauf: Mitte Z 340 (Vorschlag) statt R28 Z 450. Mindest-Ueberdeckung gegen Wirbel S = d (1 + 2,3 Fr) = 171 mm bei d63, 97,5 l/min (Fr 0,90); bei Z 450 nur 65 mm.",
+   "zahlen": "v 0,667 m/s, Fr 0,902, S 171 mm; Faustformel (Gordon), nicht aus Quelle gelesen",
+   "quelle": "E"
+  },
+  {
+   "id": "F3",
+   "frage": "Beetablaeufe liegen unter dem Pool-Spiegel (Beetboden Z -162, Ablauf ca. Z -100, Pool Z 515): Beet-Sumpf je Linie mit Pumpe zurueck in den Ruecklauf. Bedarf je Linie: Mittel 54,5 l/min, gestaffelt je Beet 36 l/min, Foerderhoehe ca. 1,0 m, ca. 36 W elektrisch. Pumpe, Sumpfvolumen (mind. 234 l je Beet) und Lage entscheidet M10.",
+   "zahlen": "7 Beete x 234 l x 2 Flutungen/h = 54,6 l/min; 36 W bei 25 % Wirkungsgrad",
+   "quelle": "E, D67, system_specs.py"
+  },
+  {
+   "id": "F4",
+   "frage": "Luftbedarf Pool (K44): R28-Ansatz zurueckgerechnet 70-130 l/min, Gegenrechnung OTE 13 % nur 25-63 l/min. Geblaese am hoeheren Wert dimensionieren oder Rechenweg klaeren.",
+   "zahlen": "O2-Bedarf 1,3-2,2 kg/Tag (D61)",
+   "quelle": "E"
+  },
+  {
+   "id": "F5",
+   "frage": "Signalkabel: Laenge und Trasse der 7 Trunks (je 4 Adern Bus + 2 Adern 24 V), Spannungsabfall 24 V, Notstrom der Zentrale.",
+   "zahlen": "7 Trunks, 28 W Messnetz",
+   "quelle": "R39, Schritt 3"
+  },
+  {
+   "id": "F6",
+   "frage": "Aktivkohlefilter im Frischwasser: Fabrikat, Kontaktzeit und Wechselintervall offen (Handelsteil, R37).",
+   "zahlen": "Spitze 10 l/min, Mittel 0,47 l/min",
+   "quelle": "D66, R37"
+  },
+  {
+   "id": "F7",
+   "frage": "Biofilter-Bett: Orchestrator-Liste nennt 68-75 % des Modellwassers im Modell, Soll 67 % Fuellung (D55: 0,47 m3 in 0,70 m3). Werkstatt gleicht an; Netzliste rechnet mit 67 %.",
+   "zahlen": "0,47 m3 K1 je Tank",
+   "quelle": "D55, reihenfolge-offene-wuensche.md d"
+  }
+ ]
 }

@@ -76,3 +76,23 @@ Der Feinfilter sitzt seit D55 im Hauptstrom (110 l/min je Linie, Einlauf d63, Au
 | Knoten `biofilter_1` | „Medium 0,26 m³“ | lose K1-Träger 0,47 m³ bei 67 % Füllung | D55 |
 | K12, K28 (Höhe), K15, K31 (Höhe) | Rinnenende Z ca. 1300 | Rinnenunterkante Z 1000 (W33), Gefälle 1,5 % bis 45 mm | R35/D60, W33 |
 | weitere d50-Kanten geprüft | K10, K13, K29, K33 d50 | unverändert (K10 1,21 m/s ≤ 1,5; die übrigen < 0,3 m/s) | Skript `check_netz.py` (Schritt 6) |
+
+## Schritt 5: Linienteilung 12 + 7 und Höhenlagen (D67, offene Punkte R28/W32)
+| Element | alt | neu | Begründung / Quelle |
+|---|---|---|---|
+| Knoten `nft_linie_1/2` | „Hälfte … [A]“ | 12 von 24 Tischen, 38 von 76 Rinnen je Linie, Quelle D67; Tischzuordnung Montage M10 | D67 (b) symmetrisch 12/12; 38 Rinnen je Linie = 7 Außen-/Mitteltische (4 Rinnen) + 5 Innentische (2 Rinnen): 4·7 + 2·5 = 38 (a + b + c = 12 und 4(a + b) + 2c = 38 ergibt c = 5); Zuordnung Montage; Summe 76 aus `system-specs.json` |
+| Knoten `beete_linie_1/2` | „7 von 14 [A]“ | 7 von 14, Quelle D67, 54,6 l/min Mittel (234 l je Beet × 7 × 2/h) | D67, `system_specs.py` Substrat 8,2 m³ × 0,4 / 14 Beete |
+| K01 / K17 `hoehe` | Pool-Seitenablauf Z ca. 450 | Vorschlag Z 340 (Überdeckung 175 mm gegen Wirbel) | Frage F2: S = d(1 + 2,3·Fr) = 171 mm bei d63 und 97,5 l/min, Fr 0,90 (Faustformel, nicht aus Quelle gelesen) [E] |
+| K14 / K30 | Höhe „offen“ | Beetablauf ca. Z −100 [A] gegen Pool Z 515; Beet-Sumpf mit Pumpe nötig, Zahlen für M10 | Frage F3 |
+| neuer Block `fragen_m10` | — | F1–F7 mit Zahlen | Feinfilter-Höhenlage, Seitenablauf, Beetabläufe, Luftbedarf, Signaltrassen, Aktivkohle, Biofilter-Bett |
+
+Die Linienwerte der Netzliste (38 l/min NFT je Linie bei 1 l/min je Rinne) bleiben damit gültig; die Tischzuordnung legt die Montage fest.
+
+### Fragen an M10 (aus `fragen_m10`)
+1. **F1** Feinfilter liegt zu hoch für Schwerkraftzulauf (Einlauf 816 über Standfläche; Grube ≈ 500 mm oder Pumpe vor dem Filter).
+2. **F2** Pool-Seitenablauf Z 340 statt 450 (Wirbelgefahr bei 65 mm Überdeckung).
+3. **F3** Beetabläufe unter dem Pool-Spiegel: Beet-Sumpf je Linie mit Pumpe (≈ 36 W, 36 l/min gestaffelt).
+4. **F4** Luftbedarf Pool: 25–63 gegen 70–130 l/min.
+5. **F5** Trunk-Längen, 24-V-Abfall, Notstrom der Zentrale.
+6. **F6** Aktivkohle: Fabrikat, Kontaktzeit.
+7. **F7** Biofilter-Bett 67 % gegen 68–75 % im Modell.

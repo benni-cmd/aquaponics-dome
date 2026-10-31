@@ -141,6 +141,7 @@ const CATS = [
   ['Pflanzen', /^(netztopf|salatkopf)/],
   ['Becken und Gelaende', /^(pool|zweitbecken|erdflaeche)/],
   ['Tuer', /^tuer/],
+  ['Huelle (Plane)', /^huelle/],
   ['Technik', /^schaltschrank/],
 ];
 const catOf = stem => (CATS.find(c => c[1].test(stem)) || ['Sonstiges'])[0];
@@ -150,6 +151,7 @@ const DEFCOL = [[/^tank_/, '#93b49a'], [/^pumpe_/, '#2a5da8'], [/^ibc_beet/, '#c
 const baseName = n => n.replace(/ \(.*$/, '');            // Koerpernamen: "T1_Strebe_A", "Wanne (2)"
 function colorFor(name, def) {
   const base = baseName(name);
+  if (/^huelle/i.test(def)) return matFor('#d6ecff', 0.14);   // Plane (PE doppelt) ist durchsichtig, auch im FPV
   const c = extras.colors && (extras.colors[base] || extras.colors[Object.keys(extras.colors).find(k => k.replace(/_\d+$/, '') === base.replace(/_\d+$/, ''))]);
   if (c) return matFor(c[0], c[1]);
   const P = [[/^T5_Wasser|^T6_Wasser/, '#3c8ed0', 0.85], [/^T13_/, '#8a6f4d', 1], [/^T1_/, '#b9c0c8', 1], [/^T3_/, '#cfcfca', 1],

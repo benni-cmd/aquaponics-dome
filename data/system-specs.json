@@ -182,12 +182,14 @@
  "filter": {
   "absetzer_klein_l": 267,
   "biofilter_gross_l": 702,
-  "medium_biofilter_m3": 0.52,
-  "kapazitaet_biofilter_kg_futter": 1.0,
+  "medium_biofilter_m3": 0.94,
+  "medium_biofilter_flaeche_m2": 471,
+  "medium_biofilter_art": "lose K1-Traeger, Fuellgrad 67 % (D55)",
+  "kapazitaet_biofilter_kg_futter": 2.9,
   "kapazitaet_substrat_kg_futter": 8.2,
   "verweilzeit_absetzer_min": 21.4,
-  "kapazitaet_biofilter_fao_kg_futter": 3.1,
-  "kapazitaet_biofilter_losordo_kg_futter": 4.9,
+  "kapazitaet_biofilter_fao_kg_futter": 7.2,
+  "kapazitaet_biofilter_losordo_kg_futter": 8.8,
   "kapazitaet_substrat_fao_kg_futter": [
    19,
    31
@@ -196,7 +198,7 @@
   "anteil_am_fischwasser": "7% (FAO: 10-30 %)"
  },
  "kapazitaet": {
-  "medien_kg_futter_tag": 9.2,
+  "medien_kg_futter_tag": 11.1,
   "pflanzen_kg_futter_tag": 3.5,
   "pflanzen_kg_futter_tag_spanne": [
    1.9,
@@ -472,7 +474,7 @@
   {
    "pruefung": "Biofilter-/Substratvolumen deckt das Futter (Faustregel)",
    "ok": true,
-   "detail": "deckt 9.2 von 4.8 kg Futter/Tag (195%); nach FAO-Tabelle Bioballs 3.1, Substrat 19–31 kg/Tag (Faustregel hat ca. 3-fach Reserve)"
+   "detail": "deckt 11.1 von 4.8 kg Futter/Tag (233%); Biofilter mit K1-Traegern 0.94 m³ = 471 m² (FAO-Rate 7.2 kg/Tag, mit Faktor 2,5 2.9), Substrat nach FAO-Tabelle 19–31 kg/Tag (Substrat-Faustregel hat ca. 3-fach Reserve)"
   },
   {
    "pruefung": "Pflanzmix trägt die Auslegung (D40: 475 kg, 4 Außenrinnen)",

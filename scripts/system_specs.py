@@ -132,11 +132,16 @@ table_tan_g = TABLE_FEED_KG_DAY * 1000 * TAN_FRACTION
 table_tan_g_alt = TABLE_FEED_KG_DAY * 1000 * 0.35 * 0.092   # frueherer Ansatz 3,2 %
 
 # ---- Filterkapazitaet --------------------------------------------------------------------------------------------------
-media_biofilter_m3 = TANK_GROSS["n"] * pi * 0.40 ** 2 * 0.52          # Biomediumkorb Ø~0,8 m, 520 mm hoch [E]
-cap_bio = media_biofilter_m3 * 1000 / FEED_RULE_MEDIA_L_PER_G["bioball"] / 1000   # kg Futter/Tag, Faustregel
+K1_FILL = 0.67                                         # Fuellgrad lose K1-Traeger [Q Oedegaard 2006; D55]
+K1_SSA_M2_M3 = 500                                     # m2 je m3 Schuettvolumen [Q Oedegaard 2006/WST 2009, Suchzusammenfassung, R30]
+NITRI_RATE_FAO = 0.57                                  # g TAN/m2/Tag, FAO 589 konservativ [Q R19]
+SIM_SAFETY = 2.5                                       # Simulator-Sicherheitsfaktor, nur Vergleich [R30]
+media_biofilter_m3 = TANK_GROSS["n"] * t_gross * K1_FILL            # lose K1-Traeger in beiden Tanks, 67 % der Wasserfuellung [D55]
+media_area_m2 = media_biofilter_m3 * K1_SSA_M2_M3                      # Traegerflaeche [E]
+cap_bio = media_area_m2 * NITRI_RATE_FAO / SIM_SAFETY / TAN_FRACTION / 1000   # kg Futter/Tag, FAO-Rate mit Faktor 2,5
 cap_sub = substrate_total * 1000 / FEED_RULE_MEDIA_L_PER_G["kies"] / 1000
 cap_media = cap_bio + cap_sub
-cap_bio_fao = media_biofilter_m3 * FEED_G_PER_L_FAO["bioball"]          # kg Futter/Tag (m3 x g/l)
+cap_bio_fao = media_area_m2 * NITRI_RATE_FAO / TAN_FRACTION / 1000      # kg Futter/Tag, FAO-Rate ohne Reserve
 cap_bio_losordo = media_biofilter_m3 * LOSORDO_VTR_G_TAN_M3 / TAN_FRACTION / 1000
 cap_sub_fao = (substrate_total * FEED_G_PER_L_FAO["substrat_min"], substrate_total * FEED_G_PER_L_FAO["substrat_max"])
 nft_len3 = nft_len_of({**NFT_CHANNELS_BASE, "aussen": (8, OUTER_3)})
@@ -242,7 +247,7 @@ heat_mwh_year = [round(w / 1000 * 24 * GT_KD / 1000) for w in heat_w_per_k]
 checks = [
     ("Pflanzenzahl und Bepflanzung", POTS_BEDS + POTS_NFT >= POTS_TABLE, f"{POTS_BEDS + POTS_NFT} Topfplätze im Modell gegen mindestens {POTS_TABLE} (Kapazität); bepflanzt werden im Mix {sum(m['pflanzen'] for m in mix_beete)} Pflanzen in den Beeten ({sum(m['pflanzen'] for m in mix_beete) / substrate_area:.1f}/m², FAO Frucht 4–8) und {mix_nft_pots} in den NFT-Rinnen ({mix_nft_pots / nft_area_now:.1f}/m²)"),
     (f"Besatzdichte höchstens {MAX_FISH_KG_M3} kg/m³ (FAO 589)", density <= MAX_FISH_KG_M3, f"{density:.0f} kg/m³ im Beckenwasser {fish_water:.1f} m³ ({biomass} kg); Bens Tabelle {table_density:.0f} kg/m³ ({table_biomass:.0f} kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"),
-    ("Biofilter-/Substratvolumen deckt das Futter (Faustregel)", cap_media >= feed_kg_day, f"deckt {cap_media:.1f} von {feed_kg_day:.1f} kg Futter/Tag ({cap_media / feed_kg_day:.0%}); nach FAO-Tabelle Bioballs {cap_bio_fao:.1f}, Substrat {cap_sub_fao[0]:.0f}–{cap_sub_fao[1]:.0f} kg/Tag (Faustregel hat ca. 3-fach Reserve)"),
+    ("Biofilter-/Substratvolumen deckt das Futter (Faustregel)", cap_media >= feed_kg_day, f"deckt {cap_media:.1f} von {feed_kg_day:.1f} kg Futter/Tag ({cap_media / feed_kg_day:.0%}); Biofilter mit K1-Traegern {media_biofilter_m3:.2f} m³ = {media_area_m2:.0f} m² (FAO-Rate {cap_bio_fao:.1f} kg/Tag, mit Faktor 2,5 {cap_bio:.1f}), Substrat nach FAO-Tabelle {cap_sub_fao[0]:.0f}–{cap_sub_fao[1]:.0f} kg/Tag (Substrat-Faustregel hat ca. 3-fach Reserve)"),
     (f"Pflanzmix trägt die Auslegung (D40: {biomass} kg, {AUSSEN_RINNEN} Außenrinnen)", mix_best["futter_kg_tag"] >= 4.5, f"Empfehlungsmix (Beete {mix_best['beete_g_m2']:g} g/m², NFT {mix_best['nft_g_m2']:g} g/m², obere FAO-Werte) liefert {mix_best['futter_kg_tag']:.2f} kg Futter/Tag = {mix_best['fisch_kg']} kg Fisch gegen Ziel {feed_kg_day:.2f} (Spanne 4,5–5,0); Mitte der FAO-Werte {mix_rows[1]['fisch_kg']} kg, Bens Mix {mix_rows[2]['fisch_kg']} kg, untere FAO-Werte {mix_rows[3]['fisch_kg']} kg, SRAC-NFT {mix_rows[4]['fisch_kg']} kg (Rückfall)"),
     ("Substratvolumen trägt die Fischmenge (SRAC 1 : 2)", fish_kg_supported_by_substrate >= biomass, f"{substrate_total:.1f} m³ Substrat tragen nach SRAC 454 etwa {fish_kg_supported_by_substrate:.0f} kg Fisch gegen {biomass} kg Auslegung (Raft-/NFT-Flächen zusätzlich, nicht angerechnet)"),
     ("Bens Tabellenfutter gegen Pflanzfläche", cap_plants[1] >= TABLE_FEED_KG_DAY, f"Pflanzfläche deckt bei 45 g/m² nur {table_plants_cover:.0%} von Bens {TABLE_FEED_KG_DAY:.1f} kg Futter/Tag; nötig wären {TABLE_FEED_KG_DAY * 1000 / PLANT_FEED_G_M2[1]:.0f} m² statt {plant_area:.0f} m² (Frage 1 an Ben)"),
@@ -289,7 +294,7 @@ specs = {
                  "tabelle_ben": {"strom_eur_monat": 219, "hinweis": "Bens Tabelle rechnet 219 EUR/Monat Strom (inkl. Heizung?), Zusammensetzung unbekannt"}},
     "sauerstoff": {"fisch_kg_tag": [round(x, 1) for x in o2_fish], "nitrifikation_kg_tag": round(o2_nitrif, 1), "gesamt_kg_tag": [round(x, 1) for x in o2_total],
                    "spitze_faktor": O2_PEAK_FACTOR, "belueftung_aus_bedarf_w": round(air_w_by_o2)},
-    "filter": {"absetzer_klein_l": round(t_klein * 1000), "biofilter_gross_l": round(t_gross * 1000), "medium_biofilter_m3": round(media_biofilter_m3, 2),
+    "filter": {"absetzer_klein_l": round(t_klein * 1000), "biofilter_gross_l": round(t_gross * 1000), "medium_biofilter_m3": round(media_biofilter_m3, 2), "medium_biofilter_flaeche_m2": round(media_area_m2), "medium_biofilter_art": "lose K1-Traeger, Fuellgrad 67 % (D55)",
                "kapazitaet_biofilter_kg_futter": round(cap_bio, 1), "kapazitaet_substrat_kg_futter": round(cap_sub, 1), "verweilzeit_absetzer_min": round(resid_small, 1),
                "kapazitaet_biofilter_fao_kg_futter": round(cap_bio_fao, 1), "kapazitaet_biofilter_losordo_kg_futter": round(cap_bio_losordo, 1),
                "kapazitaet_substrat_fao_kg_futter": [round(x) for x in cap_sub_fao], "absetzer_teilstrom_je_tank_l_min": PUMP_KLEIN_L_MIN,

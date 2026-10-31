@@ -432,10 +432,10 @@
         "Gesamthöhe": "1444 mm",
         "Umwälzung": "Hauptkreislauf: 2 große Pumpen je Linie à 55 l/min = 110 l/min (D38)",
         "Wasservolumen": "≈ 702 l",
-        "Biomedium": "≈ 0,26 m³ je Tank (Korb Ø0,8 × 0,52 m)",
-        "Umsatz": "Medium 0,52 m³ gesamt → Faustregel 1,0 kg Futter/Tag (0,5 l je g, mit Reserve), FAO-Tabelle 3,1 und Losordo/DeLong 4,9 kg/Tag; Auslegung 4,75 kg/Tag, die Substratbeete übernehmen den Rest"
+        "Biomedium": "lose K1-Träger, ≈ 0,47 m³ je Tank (67 % der Wasserfüllung 702 l), gesamt 0,94 m³ = 471 m² Trägerfläche (D55, R30); bisher Korb Ø0,8 × 0,52 m mit Bio Balls 0,26 m³",
+        "Umsatz": "471 m² × 0,57 g TAN/m²/Tag (FAO) = 7,2 kg Futter/Tag; mit Faktor 2,5 (Simulator-Logik) 2,9 kg/Tag; Losordo/DeLong (350 g TAN/m³/Tag) 8,8 kg/Tag; Auslegung 4,75 kg/Tag. Der Messwert aus Süßwasser-RAS (0,215 g/m²/Tag bei 28 °C) wäre 829 m² – dann tragen die Substratbeete mit"
       },
-      "grenzen": "Biomedium als ein Körper (Platzhalter), kein Einzelmedium.",
+      "grenzen": "Modell zeigt noch den Korb als ein Körper (Platzhalter); nach D55 entfällt er zugunsten loser K1-Träger mit Siebgitter am Auslass (Umbau Werkstatt W32). K1-Fläche 500 m²/m³ nur über Suchzusammenfassungen belegt.",
       "quelle": "docs/parts/tank.md",
       "rolle": "Art 3 der Filterarten (docs/filter-konzept.md, R30): Biofilter im Hauptstrom (110 l/min je Linie). Bedarf bei 178 g TAN/Tag: 169 m² (Simulator-Rate 1,06 g/m²/Tag), 312 m² (FAO 0,57), 829 m² (Messwert 0,215, Kinyage & Pedersen 2016). Korb 0,52 m³ Bio Balls (SSA 400) = 208 m². Empfehlung, Entscheidung Ben: lose Träger K1-Typ 0,94 m³ bei 67 % Füllung = 470 m²; den Simulator-Faktor 2,5 (1,06 m³ Bio Balls) nicht blind übernehmen. Substratbeete übernehmen den Rest."
     },

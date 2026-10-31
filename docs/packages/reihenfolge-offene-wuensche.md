@@ -33,3 +33,16 @@ Alle sieben Sitzungen gelesen (Montage, Werkstatt-2/-3/-4, Fachrecherche-aquapon
 | g | check_latte seit Plane, Tuer und Ringverschiebung nicht gelaufen; Skript umstellen (Tuer_Komplett statt T4_Blatt, Plane/Figuren ausnehmen, W-M4 gegen Fase) | Montage | Montage | Schritt 10 |
 | h | Keilschienen (65), Planenausschnitt-Zarge, Bodenbefestigung der Basisueberstaende nicht eingesetzt; W-M1 (Druckstutzen Pumpe_klein:4 x Tank-Strebe), M2b Querbolzen x Strebe 517 | Montage | Montage/Werkstatt | nach R38 (Plane) bzw. Schritt 10 |
 | i | Pointer Lock/Mausblick im FPV nicht im echten Browser getestet | Viewer-Sitzung | Ben | DEINE HANDLUNG, beim Zwischencheck |
+
+## Nachtrag 31.10. 20:30: fehlende Zeilen der Roadmap (auf Bens Nachfrage geprueft)
+Auf Nachfrage, ob alle spaeten Wuensche auf der Roadmap stehen: Puffer klein (W34), Messstellen (R39, W35) und Plane-Schnittmuster (R38) standen in der Kette, aber NICHT in der Bauanleitungs-Roadmap, und mehrere Folgeschritte fehlten. Jetzt ergaenzt (Roadmap-Paket `bauanleitung-teileliste-detailansicht.md`, B11-B15):
+
+| # | Zusatz | Sitzung | Wartet auf |
+|---|---|---|---|
+| 13 | Puffer-Vorbau (Platzhalter aus D62) aus dem Modell entfernen, `puffer_klein` und `becken_dritt` 0,4 m3 setzen, Pumpentafeln seitlich, Karte erneut gruen | Montage | W34 (Zeile 5) |
+| 14 | R40 Netzliste auf Stand bringen (Puffer klein, Drittbecken, Messstellen, Linienteilung 12/7, K05/K06/K21/K22 DN, Notueberlauf Feinfilter) | Fachrecherche | W34, W35 (vor M10-Plan, Zeile 9) |
+| 15 | Viewer: Ebene "Messstellen", Plane-Sichtbarkeit; Uebersicht auf neue Kennzahlen (346 kg, Puffer 0,16 m3) | Viewer | W35, B14 |
+| 16 | Frage an den Wasserversorger (Chlor/Chloramin) -> Aktivkohle oder Zisterne 3 m3 aussen | Ben (DEINE HANDLUNG) | - |
+| 17 | `puffer_klein` als Standardszenario in `scripts/system_specs.py` (heute nur zusaetzlich) nach Abnahme W34 | Fachrecherche | W34 |
+| 18 | Notstrom und Alarm konkretisieren (heute nur Platzhalter `steuerung_alarm`), hangt an Messstellen R39 | Fachrecherche + Werkstatt | R39 |
+| 19 | Sueesskartoffel-Licht belegen, NFT-Wuchsflaeche aus dem Modell messen (entscheidet 49,6 gegen 35,1 m2, +-80 kg Fisch) | Fachrecherche | nach Zwischencheck |

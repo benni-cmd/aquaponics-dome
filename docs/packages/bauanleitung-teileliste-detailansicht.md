@@ -43,3 +43,13 @@ Strebe = Knoten zu Knoten minus 2 x 120 mm Steckaufnahme: A 3039, B 3468 (siehe 
 
 ## DoD (je Paket, nachgefuehrt bei Abschluss)
 Datei vorhanden, gegen Modell geprueft (Zahlen aus dem Repo), Quellen genannt, Entscheidungen in `docs/decisions.md`, WIP-Commit gepusht.
+
+## Ergaenzungen 31.10. 20:30 (Bens spaetere Wuensche, vorher NICHT in dieser Roadmap)
+| Nr | Paket | Wer | Ergebnis | Abhaengigkeit |
+|---|---|---|---|---|
+| B9 (Stand) | R34 ist fertig: V2 (eine Rohrlaenge 3468) geometrisch unmoeglich, V2c (2995 mm aus 6-m-Stangen, 1,7 % Verschnitt) nur mit freien B-Armen ca. 306 mm und ohne Statikbeleg; Modell bleibt V1 (D59). Teilschritt B9b Statik (Wind/Schnee, Kegelsitz Tank, Tischbeine) steht noch aus | Fachrecherche | Statik-Bericht, dann Entscheidung V1/V2c | nach Zwischencheck |
+| B11 | Plane im Bauplan (D64): Schnitt- und Nahtmuster moeglichst simpel (R38): Zuschnittliste, Nesting auf Rollenbreite, Schnittmuster als SVG in `docs/plane/`; Zuschnitte und Folienmeter als Meterware in B5; Bauschritt Huelle in B10; Modell (Keilschienen 65, Zarge, Fussrand) danach angleichen | Fachrecherche (R38), Werkstatt, Montage | `docs/research/R38.md`, `data/plane-zuschnitt.json`, Bauanleitungs-Abschnitt | R38; B10 |
+| B12 | Messstellen (D65): Sonden, Fuehler, Durchflussmesser, Wasserstandsgeber, Halter als Teile im Katalog (B4), in Stueckliste (B5), als eigene Ebene im Viewer ("Messstellen" ein/aus) und in der Detailansicht (B3: Klick auf Sonde = Erklaerung, Kalibrierintervall, Alarmgrenze); Signalkabel in M10 | Fachrecherche (R39), Werkstatt (W35), Montage, Viewer | `data/messstellen.json`, Bauteile, Viewer-Ebene | R39; B4; M10 |
+| B13 | Puffer klein im Dom (D66): `puffer_klein` (Fass 120 l HDPE opak, Messzelle 20 l, Eisen-Kanister), `becken_dritt` 0,4 m3 in Beckenkonzept (B7) und Materialtabelle (B6: HDPE EU 10/2011, Acryl-Messzelle) aufnehmen; Frischwasser: Aktivkohle oder Zisterne 3 m3 aussen (Entscheidung nach Bens Frage an den Wasserversorger: Chlor oder Chloramin) | Werkstatt (W34), Fachrecherche | Bauteile, B6/B7-Eintraege | W34; Ben-Antwort Versorger |
+| B14 | Folgedokumente auf Stand: 475 kg -> 346 kg (D61), Puffer 2,0 -> 0,16 m3 (D66), Specs-Zaehlung aus dem Modell (D52), `model-description.md`, `integration-board.md`, Viewer-Uebersicht | Orchestrator | Doku konsistent | laufend, nach jeder Abnahme |
+| B15 | Plane im Viewer durchsichtig (erledigt dedad6a); Sichtbarkeit der Plane im Gehmodus; CAD-Render der Plane bleibt Referenzflaeche | Viewer | erledigt | - |

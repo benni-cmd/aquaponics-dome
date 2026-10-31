@@ -54,3 +54,108 @@ PASS messstellen: Absperrhahn schliesst an den Ablaufstutzen an: Ist 250, Soll 2
 PASS messstellen: Zellvolumen 135 ml (Bohrung d28 x 220) < 0,2 l: schneller Austausch bei 3 l/min: Ist 1, Soll 1
 PASS messstellen: halter_zelle: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
 == messstellen: 55/55 PASS
+PASS messstellen: halter_inline_d32: Koerper = Teile-Zeilen (6) (Roadmap B1): Ist 6, Soll 6
+PASS messstellen: halter_inline_d32: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_inline_d32: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_inline_d32: Port 'Zulauf (Verschraubung, Rohr d32)' liegt am Koerper Verschraubung_A: Ist 1, Soll 1
+PASS messstellen: halter_inline_d32: Port 'Zulauf (Verschraubung, Rohr d32)' Spitze am Rand in Richtung (-1, 0, 0): Ist -30, Soll -30 (+-0.3)
+PASS messstellen: halter_inline_d32: Port 'Ablauf (Verschraubung, Rohr d32)' liegt am Koerper Verschraubung_B: Ist 1, Soll 1
+PASS messstellen: halter_inline_d32: Port 'Ablauf (Verschraubung, Rohr d32)' Spitze am Rand in Richtung (1, 0, 0): Ist 440, Soll 440 (+-0.3)
+PASS messstellen: halter_inline_d32: Port 'Sensorsitz (Paddelrad / Ultraschall, Bohrung d22)' liegt am Koerper Sensorblock: Ist 1, Soll 1
+PASS messstellen: halter_inline_d32: Port 'Sensorsitz (Paddelrad / Ultraschall, Bohrung d22)' Spitze am Rand in Richtung (0, 0, 1): Ist 51, Soll 51 (+-0.3)
+PASS messstellen: halter_inline_d32: Port 'Filterwechsel / Entleerung (Kappe unten)' liegt am Koerper Vorfilter: Ist 1, Soll 1
+PASS messstellen: halter_inline_d32: Port 'Filterwechsel / Entleerung (Kappe unten)' Spitze am Rand in Richtung (0, 0, -1): Ist -66, Soll -66 (+-0.3)
+PASS messstellen: Beruhigungsstrecke Laenge >= 200 (R39: 20 cm gerade Strecke vor dem Messer): Ist 200, Soll 200 (+-0.1)
+PASS messstellen: Beruhigungsstrecke Volumen = Block minus Bohrung ID 28.4 (0,5 %): Ist 414127, Soll 414106 (+-2070.53)
+PASS messstellen: Verschraubung Aussen-D = d + 22: Ist 53.9992, Soll 54 (+-0.1)
+PASS messstellen: Reihenfolge entlang X: Vorfilter, Strecke, Sensorblock, Verschraubung B schliessen buendig an: Ist 2.359e-12, Soll 0 (+-0.1)
+PASS messstellen: Sensorsitz-Oberkante = Block/2 + 25: Ist 51, Soll 51 (+-0.1)
+PASS messstellen: Filterkappe unten: Unterkante = -Block/2 - 40: Ist -66, Soll -66 (+-0.1)
+PASS messstellen: Sieb liegt oben in der Kappenhoehlung an (Oberkante = -Block/2 + 5) und ist schmaler als die Hoehlung: Ist 1.06581e-14, Soll 0 (+-0.1)
+PASS messstellen: Sieb Aussen-D = Kappe - 10 (1 mm Spiel je Seite zur Hoehlung): Ist 25.9996, Soll 26 (+-0.1)
+PASS messstellen: Sensorsitz-Bohrung d22 >= Paddelrad 1/2 Zoll (Annahme 20) und Sitz d30: Ist 1, Soll 1
+PASS messstellen: halter_inline_d32: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: halter_inline_d50: Koerper = Teile-Zeilen (6) (Roadmap B1): Ist 6, Soll 6
+PASS messstellen: halter_inline_d50: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_inline_d50: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_inline_d50: Port 'Zulauf (Verschraubung, Rohr d50)' liegt am Koerper Verschraubung_A: Ist 1, Soll 1
+PASS messstellen: halter_inline_d50: Port 'Zulauf (Verschraubung, Rohr d50)' Spitze am Rand in Richtung (-1, 0, 0): Ist -30, Soll -30 (+-0.3)
+PASS messstellen: halter_inline_d50: Port 'Ablauf (Verschraubung, Rohr d50)' liegt am Koerper Verschraubung_B: Ist 1, Soll 1
+PASS messstellen: halter_inline_d50: Port 'Ablauf (Verschraubung, Rohr d50)' Spitze am Rand in Richtung (1, 0, 0): Ist 440, Soll 440 (+-0.3)
+PASS messstellen: halter_inline_d50: Port 'Sensorsitz (Paddelrad / Ultraschall, Bohrung d22)' liegt am Koerper Sensorblock: Ist 1, Soll 1
+PASS messstellen: halter_inline_d50: Port 'Sensorsitz (Paddelrad / Ultraschall, Bohrung d22)' Spitze am Rand in Richtung (0, 0, 1): Ist 60, Soll 60 (+-0.3)
+PASS messstellen: halter_inline_d50: Port 'Filterwechsel / Entleerung (Kappe unten)' liegt am Koerper Vorfilter: Ist 1, Soll 1
+PASS messstellen: halter_inline_d50: Port 'Filterwechsel / Entleerung (Kappe unten)' Spitze am Rand in Richtung (0, 0, -1): Ist -75, Soll -75 (+-0.3)
+PASS messstellen: Beruhigungsstrecke Laenge >= 200 (R39: 20 cm gerade Strecke vor dem Messer): Ist 200, Soll 200 (+-0.1)
+PASS messstellen: Beruhigungsstrecke Volumen = Block minus Bohrung ID 45.2 (0,5 %): Ist 659133, Soll 659080 (+-3295.4)
+PASS messstellen: Verschraubung Aussen-D = d + 22: Ist 71.9989, Soll 72 (+-0.1)
+PASS messstellen: Reihenfolge entlang X: Vorfilter, Strecke, Sensorblock, Verschraubung B schliessen buendig an: Ist 3.68061e-12, Soll 0 (+-0.1)
+PASS messstellen: Sensorsitz-Oberkante = Block/2 + 25: Ist 60, Soll 60 (+-0.1)
+PASS messstellen: Filterkappe unten: Unterkante = -Block/2 - 40: Ist -75, Soll -75 (+-0.1)
+PASS messstellen: Sieb liegt oben in der Kappenhoehlung an (Oberkante = -Block/2 + 5) und ist schmaler als die Hoehlung: Ist 2.4869e-14, Soll 0 (+-0.1)
+PASS messstellen: Sieb Aussen-D = Kappe - 10 (1 mm Spiel je Seite zur Hoehlung): Ist 38.9994, Soll 39 (+-0.1)
+PASS messstellen: Sensorsitz-Bohrung d22 >= Paddelrad 1/2 Zoll (Annahme 20) und Sitz d30: Ist 1, Soll 1
+PASS messstellen: halter_inline_d50: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: halter_hahn: Koerper = Teile-Zeilen (3) (Roadmap B1): Ist 3, Soll 3
+PASS messstellen: halter_hahn: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_hahn: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_hahn: Port 'Rohr-Anlage (Unterkante Anbohrschelle auf dem Rohr)' liegt am Koerper Anbohrschelle: Ist 1, Soll 1
+PASS messstellen: halter_hahn: Port 'Rohr-Anlage (Unterkante Anbohrschelle auf dem Rohr)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: halter_hahn: Port 'Probenahme (Schlauchtuelle)' liegt am Koerper Schlauchtuelle: Ist 1, Soll 1
+PASS messstellen: halter_hahn: Port 'Probenahme (Schlauchtuelle)' Spitze am Rand in Richtung (1, 0, 0): Ist 55, Soll 55 (+-0.3)
+PASS messstellen: Anbohrschelle Oberkante (mit Stutzen) = 40: Ist 40, Soll 40 (+-0.1)
+PASS messstellen: Kugelhahn sitzt auf dem Stutzen (Unterkante = 40): Ist 40, Soll 40 (+-0.1)
+PASS messstellen: Schlauchtuelle beginnt an der Hahnseite (x = Hahnbreite/2): Ist 15, Soll 15 (+-0.1)
+PASS messstellen: Tuelle d14 fuer Schlauch ID 12 (Probenahme): Ist 13.9998, Soll 14 (+-0.1)
+PASS messstellen: Anbohrschelle passt auf Rohr d20-d63 (Platte 60 breit >= Rohr d63 nicht; Anlage nur d <= 50 flach, Sattelform offen): Ist 1, Soll 1
+PASS messstellen: halter_hahn: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: halter_druck: Koerper = Teile-Zeilen (2) (Roadmap B1): Ist 2, Soll 2
+PASS messstellen: halter_druck: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_druck: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_druck: Port 'Rohr-Anlage (Unterkante Anbohrschelle auf Rohr oder Luftleitung)' liegt am Koerper Anbohrschelle: Ist 1, Soll 1
+PASS messstellen: halter_druck: Port 'Rohr-Anlage (Unterkante Anbohrschelle auf Rohr oder Luftleitung)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: halter_druck: Port 'Druckanschluss R1/4 (Druckschalter)' liegt am Koerper Gewindenippel: Ist 1, Soll 1
+PASS messstellen: halter_druck: Port 'Druckanschluss R1/4 (Druckschalter)' Spitze am Rand in Richtung (0, 0, 1): Ist 67, Soll 67 (+-0.3)
+PASS messstellen: Gewindenippel sitzt auf dem Stutzen (Unterkante = 40): Ist 40, Soll 40 (+-0.1)
+PASS messstellen: Gesamthoehe = 40 + 12 + 15 = 67: Ist 67, Soll 67 (+-0.1)
+PASS messstellen: Gewinde R1/4 Aussen-D 13,157 (DIN EN 10226) gegen Parameter 13,2: Ist 0.043, Soll 0 (+-0.1)
+PASS messstellen: Sechskantteil d19 = Schluesselweite 19: Ist 18.9997, Soll 19 (+-0.1)
+PASS messstellen: halter_druck: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: halter_mast: Koerper = Teile-Zeilen (3) (Roadmap B1): Ist 3, Soll 3
+PASS messstellen: halter_mast: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_mast: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_mast: Port 'Fuss (Unterkante Fussplatte auf dem Boden)' liegt am Koerper Fussplatte: Ist 1, Soll 1
+PASS messstellen: halter_mast: Port 'Fuss (Unterkante Fussplatte auf dem Boden)' Spitze am Rand in Richtung (0, 0, -1): Ist 0, Soll 0 (+-0.3)
+PASS messstellen: halter_mast: Port 'Sensoraufnahme (Strahlungsschutz oben)' liegt am Koerper Strahlungsschutz: Ist 1, Soll 1
+PASS messstellen: halter_mast: Port 'Sensoraufnahme (Strahlungsschutz oben)' Spitze am Rand in Richtung (0, 0, 1): Ist 1736, Soll 1736 (+-0.3)
+PASS messstellen: Mastrohr Oberkante = 1700 (Kopfhoehe 1,7 m, R39): Ist 1700, Soll 1700 (+-0.1)
+PASS messstellen: Mastrohr Volumen = Ringflaeche x Laenge (0,5 %): Ist 289166, Soll 289296 (+-1446.48)
+PASS messstellen: Fussplatte 100 x 100 x 6: Ist 106, Soll 106 (+-0.1)
+PASS messstellen: Strahlungsschutz sitzt auf dem Mastrohr (Unterkante = 1700): Ist 1700, Soll 1700 (+-0.1)
+PASS messstellen: Lamellenscheibe d90 > Spindel d20 und Sensorplatine SCD41 (25 x 17) passt unter die Scheiben (Abstand 14 + Scheibe 3 = Platz fuer 10 mm): Ist 1, Soll 1
+PASS messstellen: halter_mast: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+PASS messstellen: halter_box: Koerper = Teile-Zeilen (9) (Roadmap B1): Ist 9, Soll 9
+PASS messstellen: halter_box: Koerpernamen gleich den Teile-Zeilen: Ist 1, Soll 1
+PASS messstellen: halter_box: jeder Koerper hat Masse > 0: Ist 1, Soll 1
+PASS messstellen: halter_box: Port 'Trunk (RS-485 4 Adern + 24 V DC 2 Adern)' liegt am Koerper Verschraubung_1: Ist 1, Soll 1
+PASS messstellen: halter_box: Port 'Trunk (RS-485 4 Adern + 24 V DC 2 Adern)' Spitze am Rand in Richtung (0, 0, -1): Ist -12, Soll -12 (+-0.3)
+PASS messstellen: halter_box: Port 'Sondenanschluss 1 (Koax / Kabel)' liegt am Koerper Verschraubung_2: Ist 1, Soll 1
+PASS messstellen: halter_box: Port 'Sondenanschluss 1 (Koax / Kabel)' Spitze am Rand in Richtung (0, 0, -1): Ist -12, Soll -12 (+-0.3)
+PASS messstellen: halter_box: Port 'Sondenanschluss 2 (Koax / Kabel)' liegt am Koerper Verschraubung_3: Ist 1, Soll 1
+PASS messstellen: halter_box: Port 'Sondenanschluss 2 (Koax / Kabel)' Spitze am Rand in Richtung (0, 0, -1): Ist -12, Soll -12 (+-0.3)
+PASS messstellen: halter_box: Port 'Sondenanschluss 3 (Koax / Kabel)' liegt am Koerper Verschraubung_4: Ist 1, Soll 1
+PASS messstellen: halter_box: Port 'Sondenanschluss 3 (Koax / Kabel)' Spitze am Rand in Richtung (0, 0, -1): Ist -12, Soll -12 (+-0.3)
+PASS messstellen: halter_box: Port 'Wandbefestigung 1' liegt am Koerper Wandlasche_1: Ist 1, Soll 1
+PASS messstellen: halter_box: Port 'Wandbefestigung 1' Spitze am Rand in Richtung (-1, 0, 0): Ist -130, Soll -130 (+-0.3)
+PASS messstellen: halter_box: Port 'Wandbefestigung 2' liegt am Koerper Wandlasche_2: Ist 1, Soll 1
+PASS messstellen: halter_box: Port 'Wandbefestigung 2' Spitze am Rand in Richtung (1, 0, 0): Ist 130, Soll 130 (+-0.3)
+PASS messstellen: Gehaeuse Volumen = Quader minus Hohlraum minus 4 Durchgaenge (381 cm3, 0,3 %): Ist 381400, Soll 381399 (+-1144.2)
+PASS messstellen: Hutschiene 35 breit (TS35): Ist 35, Soll 35 (+-0.1)
+PASS messstellen: Hutschiene 150 lang, 7,5 hoch: Ist 157.5, Soll 157.5 (+-0.1)
+PASS messstellen: Hutschiene liegt auf dem Innenboden (z = Wand): Ist 4, Soll 4 (+-0.1)
+PASS messstellen: Deckel liegt auf (Unterkante = Gehaeuse-Oberkante): Ist 100, Soll 100 (+-0.1)
+PASS messstellen: Verschraubungs-Abstand >= 35 (Mutter d20 plus Werkzeug): Ist 1, Soll 1
+PASS messstellen: Verschraubungen unter dem Boden angesetzt (Oberkante = z 0): Ist 4.44089e-15, Soll 0 (+-0.1)
+PASS messstellen: IP65-Kasten 200 x 150 x 100 passt ESP32-Platine 52 x 28 und 3 EZO-Schaltkreise (je 20 x 20 + Isolatoren): Innenflaeche >= 100 x 100: Ist 1, Soll 1
+PASS messstellen: halter_box: Interferenzen (Volumen > 1 mm3): Ist 0, Soll 0
+== messstellen: 104/104 PASS

@@ -1,7 +1,7 @@
 {
  "stand": "01.11.2026",
- "version": 2,
- "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe. Version 2 (R40): Puffer klein, Drittbecken klein, Messknoten-Trunks, Hauptstrom-Feinfilter, Linienteilung 12+7 (D67); Aenderungen in docs/leitungsnetz-aenderungen.md. Stand 01.11.2026 (L14): Feld \"modell\" an den Tank-/Pumpen-Knoten nennt die Modell-Instanz (Etikett im Modell, Linie 1 = Ost, Linie 2 = West); Quelle docs/leitungsnetz-umhaengen.md. Knotennamen und Linien unveraendert.",
+ "version": 3,
+ "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe. Version 2 (R40): Puffer klein, Drittbecken klein, Messknoten-Trunks, Hauptstrom-Feinfilter, Linienteilung 12+7 (D67); Aenderungen in docs/leitungsnetz-aenderungen.md. Stand 01.11.2026 (L14): Feld \"modell\" an den Tank-/Pumpen-Knoten nennt die Modell-Instanz (Etikett im Modell, Linie 1 = Ost, Linie 2 = West); Quelle docs/leitungsnetz-umhaengen.md. Knotennamen und Linien unveraendert. Version 3 (R45, Ben E14/E12): K01/K17 d75, Schlammfass je Linie statt Schlammsammler, Beet-Sumpf mit Foerderleitung K58/K59 (57 Kanten), K14/K30 d50, Aktivkohle 4 l/min, Luft 130 l/min; Aenderungen in docs/leitungsnetz-aenderungen.md.",
  "konventionen": {
   "dn_einheit": "Aussendurchmesser mm der Leitungsteile-Bibliothek (d20-d110)",
   "geschwindigkeit": "Druckseite <= 1,5 m/s (UVI-Hauptleitung ca. 1,4 m/s), Saugseite <= 1,0 m/s [A]",
@@ -172,13 +172,6 @@
    "bemerkung": "Seitenkanal-/Membrangeblaese im Schaltschrankbereich, Verteiler mit Ausstroemern in Pool, Biofilter, Absetzer, Drittbecken, Puffer"
   },
   {
-   "id": "schlammsammler",
-   "typ": "Behaelter",
-   "bauteil": null,
-   "status": "Platzhalter",
-   "bemerkung": "Auffang fuer Absetzer-Schlamm (Kompost/Beet, nicht in den Pool), Ort offen (Montage)"
-  },
-  {
    "id": "frischwasser",
    "typ": "Zulauf",
    "bauteil": "zulaufrohr",
@@ -188,8 +181,8 @@
    "id": "aktivkohle",
    "typ": "Filter",
    "bauteil": null,
-   "status": "Handelsteil, Fabrikat offen",
-   "bemerkung": "Aktivkohlefilter im Frischwasser (entfernt Chlor und Chloramin, R37 Befund 3; Kontaktzeit und Fabrikat offen), Schwimmerventil am Pool/Zweitbecken"
+   "status": "Auslegung R45, Fabrikat offen",
+   "bemerkung": "Aktivkohlefilter im Frischwasser (entfernt Chlor und Chloramin, R37 Befund 3; Kontaktzeit und Fabrikat offen), Schwimmerventil am Pool/Zweitbecken R45 (Auslegung auf Chloramin): katalytische Kohle, 2 Kompositbehaelter 10 x 35 Zoll in Reihe (je ca. 21 l Bett), Sedimentfilter 20 um davor, Probehahn zwischen den Behaeltern, Begrenzer 4 l/min, Kontaktzeit 10,5 min; Alternative Zisterne"
   },
   {
    "id": "pumpe_gross_1",
@@ -278,6 +271,38 @@
    "druck_d": 32,
    "bemerkung": "Reserve",
    "modell": "Pumpe_klein:2"
+  },
+  {
+   "id": "schlammfass_1",
+   "typ": "Behaelter",
+   "bauteil": "schlammfass",
+   "linie": 1,
+   "status": "Standardannahme R45 (E12), Bauteil W37",
+   "bemerkung": "Spannringfass 200-220 l (PE) in Grube Oe 0,8 m, Tiefe 0,95 m, 0,7-0,8 m neben dem Absetzer; Deckel mit Stutzen d40; woechentlich von Hand geleert, Klarwasser zurueck in den Pool, Dickschlamm in Wurmkompost ausserhalb; Kugelhahn mit Federrueckzug gegen leeren Pool"
+  },
+  {
+   "id": "schlammfass_2",
+   "typ": "Behaelter",
+   "bauteil": "schlammfass",
+   "linie": 2,
+   "status": "Standardannahme R45 (E12), Bauteil W37",
+   "bemerkung": "Spannringfass 200-220 l (PE) in Grube Oe 0,8 m, Tiefe 0,95 m, 0,7-0,8 m neben dem Absetzer; Deckel mit Stutzen d40; woechentlich von Hand geleert, Klarwasser zurueck in den Pool, Dickschlamm in Wurmkompost ausserhalb; Kugelhahn mit Federrueckzug gegen leeren Pool"
+  },
+  {
+   "id": "beet_sumpf_1",
+   "typ": "Behaelter",
+   "bauteil": "beet_sumpf",
+   "linie": 1,
+   "status": "Auslegung R45, Bauteil W37",
+   "bemerkung": "Rundtank PE Oe 0,8 m x H 1,0 m, ca. 500 l, eingegraben (Grube Oe 1,0 m, Tiefe 1,0 m), dichter lichtdichter begehbarer Deckel, Entlueftung d32 mit Gitter; Zulauf d63 Sektorsammler bei 800 mm; Teichpumpe 5300 l/h / 60 W (Hmax 2,8 m) mit Rueckschlagventil, 3 Schwimmerschalter (AUS 120 mm, EIN 320 mm, ALARM 620 mm), Alarm sperrt die Beet-Zufuhr K11/K27; kein Schwerkraft-Notueberlauf"
+  },
+  {
+   "id": "beet_sumpf_2",
+   "typ": "Behaelter",
+   "bauteil": "beet_sumpf",
+   "linie": 2,
+   "status": "Auslegung R45, Bauteil W37",
+   "bemerkung": "Rundtank PE Oe 0,8 m x H 1,0 m, ca. 500 l, eingegraben (Grube Oe 1,0 m, Tiefe 1,0 m), dichter lichtdichter begehbarer Deckel, Entlueftung d32 mit Gitter; Zulauf d63 Sektorsammler bei 800 mm; Teichpumpe 5300 l/h / 60 W (Hmax 2,8 m) mit Rueckschlagventil, 3 Schwimmerschalter (AUS 120 mm, EIN 320 mm, ALARM 620 mm), Alarm sperrt die Beet-Zufuhr K11/K27; kein Schwerkraft-Notueberlauf"
   }
  ],
  "kanten": [
@@ -286,11 +311,11 @@
    "von": "pool",
    "nach": "feinfilter_1",
    "medium": "Wasser",
-   "dn": 63,
+   "dn": 75,
    "soll_l_min": 97.5,
    "quelle": "E",
-   "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s",
-   "v_m_s": 0.67,
+   "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s [E14 01.11.2026: d75 statt d63 wegen Heber-Reserve, R45 Abschnitt 2; Stutzen Pool und Filter-Einlauf bleiben d63 mit Reduziermuffe]",
+   "v_m_s": 0.46,
    "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)"
   },
   {
@@ -353,13 +378,17 @@
   {
    "id": "K07",
    "von": "absetzer_1",
-   "nach": "schlammsammler",
+   "nach": "schlammfass_1",
    "medium": "Wasser",
    "dn": 40,
-   "soll_l_min": 0.5,
-   "quelle": "A",
-   "bemerkung": "Schlammablass Kugelhahn an der Kegelspitze, taeglich/woechentlich, Schlamm in Kompost/Beet (nicht in den Pool)",
-   "v_m_s": 0.01
+   "soll_l_min": 0.01,
+   "quelle": "E R45",
+   "bemerkung": "Schlammablass Kugelhahn (Federrueckzug) an der Kegelspitze, alle 2-3 Tage 20-40 l Spuelung (Spitze 133 l/min), Woche 70-105 l je Linie = Wochenmittel 0,01 l/min; Rohr d40 0,7 m mit 5 % Gefaelle, Bogen 90, Fallrohr 0,1 m in das Schlammfass. Die frueheren 0,5 l/min waren falsch (R45 Abschnitt 0)",
+   "v_m_s": 0.0,
+   "spuelung_l": 30,
+   "spitze_l_min": 133,
+   "laenge_mm": 700,
+   "gefaelle_pct": 5
   },
   {
    "id": "K08",
@@ -416,7 +445,7 @@
    "dn": 32,
    "soll_l_min": 38.0,
    "quelle": "E",
-   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60)",
+   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60) [L24: Auslegung 1 l/min je Rinne = 38 l/min (R06: etwa 1, hoechstens 2); das Tisch-Bauteil rechnet im Betrieb 0,5 l/min = 19 l/min, der Bypass nimmt den Rest]",
    "v_m_s": 1.03,
    "hoehe": "Rinnenanfang Z 1000 plus Gefaelle (Biofilter-Spiegel ca. Z 1600 als Druckkopf, > 500 mm)"
   },
@@ -434,14 +463,15 @@
   {
    "id": "K14",
    "von": "beete_linie_1",
-   "nach": "ruecklauf_1",
+   "nach": "beet_sumpf_1",
    "medium": "Wasser",
-   "dn": 40,
+   "dn": 50,
    "soll_l_min": 54.5,
    "quelle": "E",
-   "bemerkung": "Glockensiphon-Ablauf der Beete (54,5 l/min Mittel, gestaffelt je Beet 234 l in ca. 6,5 min = 36 l/min); Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, Beet-Sumpf je Linie mit Pumpe noetig (Frage F3, Entscheidung Montage M10)",
-   "v_m_s": 0.94,
-   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515"
+   "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (234 l in 4,3-6,1 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K58 mit Pumpe (R45 Abschnitt 3)",
+   "v_m_s": 0.6,
+   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515",
+   "spitze_l_min": 54
   },
   {
    "id": "K15",
@@ -472,11 +502,11 @@
    "von": "pool",
    "nach": "feinfilter_2",
    "medium": "Wasser",
-   "dn": 63,
+   "dn": 75,
    "soll_l_min": 97.5,
    "quelle": "E",
-   "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s",
-   "v_m_s": 0.67,
+   "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s [E14 01.11.2026: d75 statt d63 wegen Heber-Reserve, R45 Abschnitt 2; Stutzen Pool und Filter-Einlauf bleiben d63 mit Reduziermuffe]",
+   "v_m_s": 0.46,
    "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)"
   },
   {
@@ -539,13 +569,17 @@
   {
    "id": "K23",
    "von": "absetzer_2",
-   "nach": "schlammsammler",
+   "nach": "schlammfass_2",
    "medium": "Wasser",
    "dn": 40,
-   "soll_l_min": 0.5,
-   "quelle": "A",
-   "bemerkung": "Schlammablass Kugelhahn an der Kegelspitze, taeglich/woechentlich, Schlamm in Kompost/Beet (nicht in den Pool)",
-   "v_m_s": 0.01
+   "soll_l_min": 0.01,
+   "quelle": "E R45",
+   "bemerkung": "Schlammablass Kugelhahn (Federrueckzug) an der Kegelspitze, alle 2-3 Tage 20-40 l Spuelung (Spitze 133 l/min), Woche 70-105 l je Linie = Wochenmittel 0,01 l/min; Rohr d40 0,7 m mit 5 % Gefaelle, Bogen 90, Fallrohr 0,1 m in das Schlammfass. Die frueheren 0,5 l/min waren falsch (R45 Abschnitt 0)",
+   "v_m_s": 0.0,
+   "spuelung_l": 30,
+   "spitze_l_min": 133,
+   "laenge_mm": 700,
+   "gefaelle_pct": 5
   },
   {
    "id": "K24",
@@ -602,7 +636,7 @@
    "dn": 32,
    "soll_l_min": 38.0,
    "quelle": "E",
-   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60)",
+   "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60) [L24: Auslegung 1 l/min je Rinne = 38 l/min (R06: etwa 1, hoechstens 2); das Tisch-Bauteil rechnet im Betrieb 0,5 l/min = 19 l/min, der Bypass nimmt den Rest]",
    "v_m_s": 1.03,
    "hoehe": "Rinnenanfang Z 1000 plus Gefaelle"
   },
@@ -620,14 +654,15 @@
   {
    "id": "K30",
    "von": "beete_linie_2",
-   "nach": "ruecklauf_2",
+   "nach": "beet_sumpf_2",
    "medium": "Wasser",
-   "dn": 40,
+   "dn": 50,
    "soll_l_min": 54.5,
    "quelle": "E",
-   "bemerkung": "Glockensiphon-Ablauf der Beete (54,5 l/min Mittel, gestaffelt je Beet 234 l in ca. 6,5 min = 36 l/min); Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, Beet-Sumpf je Linie mit Pumpe noetig (Frage F3, Entscheidung Montage M10)",
-   "v_m_s": 0.94,
-   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515"
+   "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (234 l in 4,3-6,1 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K59 mit Pumpe (R45 Abschnitt 3)",
+   "v_m_s": 0.6,
+   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515",
+   "spitze_l_min": 54
   },
   {
    "id": "K31",
@@ -715,10 +750,10 @@
    "nach": "aktivkohle",
    "medium": "Wasser",
    "dn": 25,
-   "soll_l_min": 10.0,
+   "soll_l_min": 4.0,
    "quelle": "A",
-   "bemerkung": "Frischwasser von aussen zum Aktivkohlefilter; Spitze 10 l/min beim Nachspeisen, Mittel 0,47 l/min (0,68 m3/Tag bei 2 %/Tag, SRAC 454; D66: kein Stehenlassen, kein Vorrat)",
-   "v_m_s": 0.48,
+   "bemerkung": "Frischwasser von aussen zum Aktivkohlefilter; Spitze 10 l/min beim Nachspeisen, Mittel 0,47 l/min (0,68 m3/Tag bei 2 %/Tag, SRAC 454; D66: kein Stehenlassen, kein Vorrat) [R45: Durchfluss durch die Kohle auf 4 l/min begrenzt (Pool-Nachspeisung 2 + Quarantaene-Wechsel 2)]",
+   "v_m_s": 0.19,
    "mittel_l_min": 0.47
   },
   {
@@ -727,10 +762,10 @@
    "nach": "pool",
    "medium": "Wasser",
    "dn": 25,
-   "soll_l_min": 10.0,
+   "soll_l_min": 4.0,
    "quelle": "A",
-   "bemerkung": "Nachspeisung ueber Schwimmerventil am Pool (Spitze 10 l/min, Mittel 0,47 l/min = 0,68 m3/Tag); entchlort ueber Aktivkohle statt 2 Tage Standzeit (D66, R37 Befund 3)",
-   "v_m_s": 0.48,
+   "bemerkung": "Nachspeisung ueber Schwimmerventil am Pool (Spitze 10 l/min, Mittel 0,47 l/min = 0,68 m3/Tag); entchlort ueber Aktivkohle statt 2 Tage Standzeit (D66, R37 Befund 3) [R45: Durchfluss durch die Kohle auf 4 l/min begrenzt (Pool-Nachspeisung 2 + Quarantaene-Wechsel 2)]",
+   "v_m_s": 0.19,
    "mittel_l_min": 0.47
   },
   {
@@ -772,9 +807,10 @@
    "nach": "pool",
    "medium": "Luft",
    "dn": 40,
-   "soll_l_min": 120,
-   "quelle": "A",
-   "bemerkung": "Ausstroemer Pool; Luftbedarf gesamt: R28 nannte 90-180 l/min aus 1,7-3,0 kg O2/Tag; nach D61 sind es 1,3-2,2 kg O2/Tag (system-specs sauerstoff), zurueckgerechnet auf den R28-Ansatz 70-130 l/min; eine Gegenrechnung mit OTE 13 % und 0,28 g O2/l Luft ergibt nur 25-63 l/min. Widerspruch offen (Frage M10: Geblaese am hoeheren Wert dimensionieren), Hauptleitung d40"
+   "soll_l_min": 130,
+   "quelle": "E R45",
+   "bemerkung": "Ausstroemer Pool; Luftbedarf gesamt: R28 nannte 90-180 l/min aus 1,7-3,0 kg O2/Tag; nach D61 sind es 1,3-2,2 kg O2/Tag (system-specs sauerstoff), zurueckgerechnet auf den R28-Ansatz 70-130 l/min; eine Gegenrechnung mit OTE 13 % und 0,28 g O2/l Luft ergibt nur 25-63 l/min. Widerspruch offen (Frage M10: Geblaese am hoeheren Wert dimensionieren), Hauptleitung d40 [R45 Abschnitt 4: Widerspruch geloest, 130 l/min Planwert plausibel (Spitze 205), die 25-63 l/min rechneten mit der Reinwasser-OTE; zwei Linear-Membranpumpen N+1 fuer mindestens 26 kPa; Hauptverteiler 6-fach, Pool-Verteiler 4-fach]",
+   "spitze_l_min": 205
   },
   {
    "id": "K45",
@@ -906,6 +942,32 @@
    "v_m_s": 0.75,
    "hoehe": "Anschluss an die Saugleitung hinter dem Filterauslauf",
    "betrieb": "stoerfall"
+  },
+  {
+   "id": "K58",
+   "von": "beet_sumpf_1",
+   "nach": "ruecklauf_1",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 54.5,
+   "quelle": "E R45",
+   "bemerkung": "Foerderleitung Beet-Sumpf zum Ruecklauf-Sammelrohr oberhalb Z 515: Teichpumpe 60 W, Arbeitspunkt 61 l/min bei 1,47 m, Rueckschlagventil d40, <= 4 m (R45 Abschnitt 3)",
+   "v_m_s": 0.94,
+   "spitze_l_min": 61,
+   "hoehe": "Sumpf-Wasserspiegel bis Sammelrohr statisch 1,0-1,5 m [A]"
+  },
+  {
+   "id": "K59",
+   "von": "beet_sumpf_2",
+   "nach": "ruecklauf_2",
+   "medium": "Wasser",
+   "dn": 40,
+   "soll_l_min": 54.5,
+   "quelle": "E R45",
+   "bemerkung": "Foerderleitung Beet-Sumpf zum Ruecklauf-Sammelrohr oberhalb Z 515: Teichpumpe 60 W, Arbeitspunkt 61 l/min bei 1,47 m, Rueckschlagventil d40, <= 4 m (R45 Abschnitt 3)",
+   "v_m_s": 0.94,
+   "spitze_l_min": 61,
+   "hoehe": "Sumpf-Wasserspiegel bis Sammelrohr statisch 1,0-1,5 m [A]"
   }
  ],
  "kabel": [
@@ -1125,7 +1187,8 @@
   "nft": 38.0,
   "bypass": 17.5,
   "bypass_linie_1_mit_messkreis": 14.5,
-  "messkreis_linie_1": 3.0
+  "messkreis_linie_1": 3.0,
+  "nft_betrieb_bei_0_5_je_rinne": 19.0
  },
  "fragen_m10": [
   {

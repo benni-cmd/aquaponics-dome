@@ -115,3 +115,17 @@ Neues Prüfskript (Standardbibliothek, ändert nichts, Exit 1 bei Fehler): IDs u
 | K41 | | Bemerkung: Ablauf des Wechselwassers (Überlauf zum Abwasser/Pool) offen | Quarantäne-Wasserwechsel braucht einen Ablauf |
 | `bilanz_je_linie_l_min` | Bypass 17,5 | Bypass 17,5 (Linie 2), 14,5 (Linie 1 mit Messkreis), Messkreis 3 | s. K13 |
 | Prüfung | — | `check_netz.py` PASS | Poolbilanz: Abfluss 220 l/min (2 × 97,5 + 2 × 12,5), Zufluss 220,5 (102 + 110 + 5 + 3 + 0,47 + Dosierung) |
+
+## Version 3 (R45, 01.11.2026, Orchestrator)
+
+| Stelle | vorher | nachher | Grund |
+|---|---|---|---|
+| K01, K17 | d63 | d75 (Stutzen bleiben d63, Reduziermuffe) | E14: Heber-Reserve, R45 Abschnitt 2 |
+| Knoten `schlammsammler` | Platzhalter | `schlammfass_1`, `schlammfass_2` (Fass 200-220 l in Grube) | E12 Standardannahme, R45 Abschnitt 0 |
+| K07, K23 | 0,5 l/min, nach schlammsammler | 0,01 l/min Wochenmittel, 30 l je Spuelung, 0,7 m, 5 % Gefaelle, nach schlammfass | 0,5 l/min ergab 720 l/Tag gegen 11-14 l/Tag |
+| K14, K30 | d40, nach ruecklauf | d50, nach `beet_sumpf_1/2`, Spitze 54 l/min | R45 Abschnitt 1 |
+| neu K58, K59, Knoten `beet_sumpf_1/2` | - | Foerderleitung d40, 54,5 l/min Mittel, Pumpe 60 W, Sumpf 500 l | R45 Abschnitt 3 (statt 300 l / 36 W) |
+| K39, K40 | 10 l/min | 4 l/min begrenzt (Mittel 0,47 unveraendert) | R45 Abschnitt 5 |
+| K44 | 120 l/min, Widerspruch offen | 130 l/min, Spitze 205, Widerspruch geloest | R45 Abschnitt 4 |
+| K12, K28 | nur Bemerkung | Auslegung 1 l/min je Rinne, Betrieb 0,5 (19 l/min) vermerkt | L24, R06 |
+| Pruefung | - | `check_netz.py` PASS (57 Kanten) | |

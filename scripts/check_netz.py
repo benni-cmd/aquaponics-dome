@@ -19,7 +19,7 @@ ID = {9: 6.0, 12: 8.0, 16: 12.0, 20: 16.0, 25: 21.0, 32: 28.0, 40: 35.0, 50: 44.
 V_DRUCK, V_SAUG = 1.5, 1.0
 TOL_BILANZ = 0.6          # l/min (Schlammablass 0,5 l/min je Absetzer)
 BILANZ_TYPEN = {"Tank", "Filter", "Verteiler", "Pumpe", "Sammler", "Becken"}
-BILANZ_AUS = {"pool", "drittbecken", "biofilter_dritt", "zweitbecken", "schlammsammler", "frischwasser", "aktivkohle", "puffer_stammfass", "puffer_eisen", "dosierkonsole", "puffer_messzelle"}
+BILANZ_AUS = {"pool", "drittbecken", "biofilter_dritt", "zweitbecken", "schlammsammler", "schlammfass_1", "schlammfass_2", "beet_sumpf_1", "beet_sumpf_2", "frischwasser", "aktivkohle", "puffer_stammfass", "puffer_eisen", "dosierkonsole", "puffer_messzelle"}
 
 fehler, hinweise = [], []
 knoten = {k["id"]: k for k in NETZ["knoten"]}

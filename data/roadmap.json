@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 spaet: Planungs- und Pruefsitzung sind Standard (Vorlagen angelegt). Pilot: Planer fuer Werkstatt B laeuft; Montage baut Heber d75 (Build 66). Fragen an dich stehen oben.",
+ "stand": "Stand 01.11.2026 spaet: Heber d75 im Modell (Pruefer laeuft), Planer-Blaetter fuer Werkstatt B fertig, Werkstatt A2 (W39) laeuft. Weitere Sitzungen nacheinander. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -684,7 +684,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Werkstatt (eine Sitzung, zwei bei vollem Fenster)",
-   "notiz": "VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
+   "notiz": "Zerfaellt in drei Sitzungen nach Blaettern des Planers, nacheinander NACH W39: W37-1 Beet-Sumpf und Schlammfass, W37-2 Aktivkohle mit Schwimmerventil und Becken-Stutzen Drittbecken, W37-3 Geblaese, Luftverteiler und Schaltschrank-Einfuehrung (nur das Bauteil, der Standort bleibt E13). Blaetter in docs/jobs. VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
   },
   {
    "id": "E12",
@@ -866,7 +866,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.8,
    "wer": "Montage",
-   "notiz": "GESTARTET 01.11. spaet. Blatt docs/jobs/M10-S2R-heber-d75.md. Entschieden (E14 = d75). Braucht W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
+   "notiz": "Montage meldet fertig (Commit f072fb4, Runde 66): K01/K17 in d75, Reserve ungünstig 85 mm (K01) und 88 mm (K17), check_leitungen 0 Verstoesse, check_walkways PASS; nicht gelaufen: volle Gangkarte und check_latte; Reserve ist nur Rechnung, keine Messung. Netzliste K01/K17 d75 schon von mir (b98c4c1). PRUEFUNG LAEUFT (Pruefer pruefer-s2r), erst bei PASS erledigt. GESTARTET 01.11. spaet. Blatt docs/jobs/M10-S2R-heber-d75.md. Entschieden (E14 = d75). Braucht W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
   },
   {
    "id": "N-BESCHAFFUNG",
@@ -916,11 +916,11 @@
   {
    "id": "W39",
    "titel": "Werkstatt A2 (Leitungsteile-Kleinteile): Reduzierung d40/d20 oder Reduzier-T, PE-PVC-Verbinder d20, Schlauch ID16 kurz, Stopfen/Kappe d20 und d50, Schlauchschelle ID16, Leerrohr-Reduzierstueck, T, Kabeleinfuehrung",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.9,
    "wer": "Werkstatt (eine Sitzung)",
-   "notiz": "Schliesst L22. Gleiche Bibliotheksdateien wie W36, deshalb nach M10-S2R und nicht parallel dazu. Braucht NETZ-R45 (Rinnen-Durchfluss L24). Je Teil Mini-Plan, Check, Blatt, Bild; Handelsteile bevorzugen (W43). Blatt erst beim Start (Aktualitaetspruefung)."
+   "notiz": "GESTARTET 01.11. spaet (Werkstatt A2, Sitzung werkstatt-w39). Blatt docs/jobs/W39-kleinteile.md vom Planer. Schliesst L22. Gleiche Bibliotheksdateien wie W36, deshalb nach M10-S2R und nicht parallel dazu. Braucht NETZ-R45 (Rinnen-Durchfluss L24). Je Teil Mini-Plan, Check, Blatt, Bild; Handelsteile bevorzugen (W43). Blatt erst beim Start (Aktualitaetspruefung)."
   },
   {
    "id": "SPECS-R45",
@@ -952,20 +952,29 @@
   {
    "id": "PLAN-W37",
    "titel": "Planungssitzung (Pilot) fuer W37 Werkstatt B (Anlagenteile) und W39 (Kleinteile)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.95,
    "wer": "Planer (frische Sitzung)",
-   "notiz": "Pilot der neuen Sitzungsart. Schreibt docs/jobs/W37-anlagenteile.md und docs/jobs/W39-kleinteile.md aus R45, Netz Version 3, E12-Standardannahme; Schaltschrank bleibt \"OFFEN (Ben)\" bis E13. Nur lesen und Blaetter schreiben, aendert kein Modell."
+   "notiz": "Erledigt 01.11. spaet (Commit 6bb72fe): vier Blaetter docs/jobs/W39-kleinteile.md (zuerst, eine Sitzung, neun Teilgruppen), W37-1-sumpf-schlammfass.md, W37-2-aktivkohle-stutzen.md, W37-3-luft-schaltschrank.md. Aktualitaet: angepasst, Plan gilt als freigegeben. Neu gegenueber L22: Rueckschlagventil (W37 braucht es dreifach) und Kabeleinfuehrung (W39, von W37-3 genutzt). Offen fuer Ben: Beet-Redundanzpumpe (E19) und Schaltschrank-Standort (E13)."
   },
   {
    "id": "PRUEF-S2R",
    "titel": "Pruefsitzung fuer M10-S2R (Heber d75): Gegenmessung der Montage-Meldung",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.85,
    "wer": "Pruefer (frische Sitzung)",
-   "notiz": "Nach der Meldung von M10-S2R. Prueft nach: Rohr-Meter d75, Reserve aus r45_heber.py, check_leitungen und check_walkways neu, Graben, Bilder; Vorlage docs/jobs/vorlagen/pruefung.md; Befund docs/jobs/pruefung/M10-S2R.md."
+   "notiz": "GESTARTET 01.11. spaet (Sitzung pruefer-s2r), Befund kommt nach docs/jobs/pruefung/M10-S2R.md. Nach der Meldung von M10-S2R. Prueft nach: Rohr-Meter d75, Reserve aus r45_heber.py, check_leitungen und check_walkways neu, Graben, Bilder; Vorlage docs/jobs/vorlagen/pruefung.md; Befund docs/jobs/pruefung/M10-S2R.md."
+  },
+  {
+   "id": "E19",
+   "titel": "Beet-Sumpf: zweite Pumpe als Reserve einplanen?",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 5.7,
+   "wer": "Ben",
+   "notiz": "Aus R45 Abschnitt 3 und dem Plan W37-1: Der Beet-Sumpf hat keinen Schwerkraft-Notueberlauf (er liegt tiefer als der Pool). Faellt die Pumpe aus, laufen bei drei Beeten etwa 705 l in 12 min zu, mehr als der Tank fasst; der Alarmschwimmer sperrt zwar die Beet-Zufuhr, aber ohne Reserve steht das Beetsystem still. Option: zweite Pumpe als Reserve (50 Prozent Redundanz, 60 W im Stillstand, ein zweiter Pumpenplatz im Sumpf). Meine Empfehlung: ja, ein Platz fuer die zweite Pumpe wird in jedem Fall vorgesehen (kostet im Bauteil fast nichts); ob sie gekauft wird, entscheidest du spaeter. Blockiert W37-1 nicht."
   }
  ]
 }

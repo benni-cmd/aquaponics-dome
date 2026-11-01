@@ -2,6 +2,7 @@
 Aufruf: python gen_dome.py <stufe> <out.json>. Masse in mm; alle Annahmen stehen in P."""
 import json, math, os, sys
 from geo import build
+import leitungen as LTG   # M10-S2a
 
 P = {k: v["value"] for k, v in json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "params.json"))).items()}   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort)
 
@@ -88,6 +89,10 @@ def erde_fn(sock_z):
         rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, bed_yaw(b), ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
     for k, (x, y, yaw) in enumerate(feinfilter_orte(), 1):   # M10-S1: Feinfilter-Gruben (Boden = Standflaeche), Drehung wie der Filter
         rect_body(f"T55_Grube_{k:02d}", x, y, sock_z + P["ff_z"], yaw, P["ff_grube_l"], P["ff_grube_w"], -P["ff_z"] + 1, op="cut", targets=["T13_Erde"])
+    doc = LTG.laden()   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
+    for g in (LTG.graben(doc, sock_z) if doc else []):
+        if g[0] == "box": rect_body(g[1], g[2], g[3], g[4], g[5], g[6], g[7], g[8], op="cut", targets=["T13_Erde"])
+        else: add("solid.cylinder", diameter=g[5], height=g[6], base=[g[2], g[3], g[4]], operation="cut", targets=["T13_Erde"], name=g[1])
 
 def feinfilter_orte():
     """M10-S1 (D72, Bedienzone-Regel): Feinfilter Ost A (Linie 1) und West B (Linie 2); Rueckgabe [(x, y, yaw_grad)]. Drehung nach scripts/place_feinfilter_zone.py: Bauteil-X = Einlauf zu Auslauf, Bedienseite -Y."""
@@ -405,6 +410,21 @@ def place_instances(cls, path, items, assembly):
         c, s_ = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
         add("occurrence.move", occurrence=f"{cls}:{i}", matrix=[round(v, 9) for v in (c, -s_, 0, x, s_, c, 0, y, 0, 0, 1, z)], tolerance=1e-6, move_grounded=True)
 
+def place_matrices(cls, path, mats, assembly):
+    """Wie place_instances, aber mit fertigen 3x4-Matrizen (Rohre/Bogen in beliebiger Raumlage)."""
+    act(assembly); add("component.insert_design", path=path.replace("\\", "/"), name=cls)
+    for _ in range(len(mats) - 1): add("occurrence.copy", component=cls)
+    for i, m in enumerate(mats, 1): add("occurrence.move", occurrence=f"{cls}:{i}", matrix=m, tolerance=1e-6, move_grounded=True)
+
+def leitungen(fz):
+    """M10-S2a: Rohre, Bogen, T, Reduziermuffen und Kupplungen aus data/leitungstrassen.json als Instanzen der Bibliothek lt_*.sc (Rechnung: scripts/leitungen.py), Assembly 08_Leitungen, Farbe nach Funktion."""
+    doc = LTG.laden()
+    if not doc: return
+    teile, _ = LTG.bauen(doc)
+    for cls, path, mats, farben in LTG.dateien(teile):
+        place_matrices(cls, path, mats, "08_Leitungen")
+        for hexfarbe, occ in farben.items(): add("appearance.assign", components=occ, color=hexfarbe)
+
 # T9: 14 halbe IBC-Wannen (layout.json) als Instanzen der Werkstatt-Komponenten ibc_beet_{aussen_933,aussen_993,innen_933}; Ursprung = Mitte Wannenunterseite
 def t9(fz):
     groups = {}
@@ -488,7 +508,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

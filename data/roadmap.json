@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 spaet: E14 entschieden (d75), Werkstatt A baut d75 nach Teil 5. Besonderheiten-Register fuer den Pitch angelegt. Offene Fragen an dich stehen oben.",
+ "stand": "Stand 01.11.2026 spaet: Werkstatt A fertig (alle sechs Teile), Montage baut den Heber-Umbau auf d75 (M10-S2R). Wochenlimit 75 Prozent: nur eine Sitzung gleichzeitig. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -491,11 +491,11 @@
   {
    "id": "W36",
    "titel": "Werkstatt A (Leitungsteile): Verteiler d50, Rohrschelle Vierkant, Leerrohr DN50/DN100 mit Bogen, Kugelhahn-Schacht, Pruefung Tropfrohr und Rinnen-Schlauch",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3,
    "wer": "Werkstatt (eine Sitzung)",
-   "notiz": "GESTARTET 01.11. abends. Blatt docs/jobs/W36-verteiler-d50.md (Teil 1 Verteiler, Teile 2 bis 5 in der Erweiterung). Eine Sitzung, weil alle Teile dieselben Bibliotheksdateien schreiben (docs/parts/leitungsteile.md, data/components/leitungsteile.json, scripts/workshop/leitung.py, check_leitungsteile.py); zwei Sitzungen wuerden sich ueberschreiben. Reihenfolge: Verteiler d50 (Blatt docs/jobs/W36-verteiler-d50.md, bereit), Rohrschelle, Leerrohr mit Bogen, Schacht mit Deckel, zuletzt nur Pruefung, ob die Bibliothek fuer Tropfrohr und Rinnen-Schlauch reicht. Je Teil ein Commit; bei vollem Fenster frisch weiter ueber docs/workshop-state.md. Der Kabel-Sweep bleibt in S6. Schliesst L02, L07 (Teile), L16, L17. Je weiteres Teil eigenes Blatt erst beim Start (Aktualitaetspruefung)."
+   "notiz": "Erledigt 01.11. spaet, alle sechs Teile einzeln gesichert (Commits bis 9f3d8ab): Verteiler d50 (29/29), Rohrschelle Vierkant d32/d63 (30/30), Leerrohr DN50/DN100 mit Bogen (36/36), Schacht mit Deckel Kugelhahn d63 (17/17), Pruefung Tropfrohr/Schlauch als Bericht, Rohrbibliothek d75 (36/36). Bericht und Maße: docs/parts/leitungsteile.md, docs/workshop-state.md. Schelle und Verteiler sind Eigenkonstruktionen (L21)."
   },
   {
    "id": "L01",
@@ -509,11 +509,11 @@
   {
    "id": "L02",
    "titel": "Verteiler d50 fehlt in der Bibliothek",
-   "status": "luecke",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Werkstatt (W36)",
-   "notiz": "Zugeordnet: W36, dann M10 S3. Blatt docs/jobs/W36-verteiler-d50.md. Blockiert S3 (Verteiler, Beete, NFT: K11 bis K13, K27 bis K29, Messkreis K35)."
+   "notiz": "Geschlossen 01.11. durch W36 (lt_verteiler_d50). Zugeordnet: W36, dann M10 S3. Blatt docs/jobs/W36-verteiler-d50.md. Blockiert S3 (Verteiler, Beete, NFT: K11 bis K13, K27 bis K29, Messkreis K35)."
   },
   {
    "id": "L03",
@@ -558,7 +558,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 7,
    "wer": "Werkstatt",
-   "notiz": "Zugeordnet: W36 (Rohrschelle, Leerrohr), Kabel-Sweep in M10 S6. Bibliotheksklemme ist eine Fussklemme, passt nicht an Vierkantbeine (Befestigung ohne Streben, Plan Regel 7). Leerrohre und Kabel-Sweep brauchen S6."
+   "notiz": "Teile gebaut 01.11. (Rohrschelle Vierkant, Leerrohr DN50/DN100 mit Bogen); offen bleiben Kabel-Sweep (S6) und Leerrohr-Zubehoer (L22). Zugeordnet: W36 (Rohrschelle, Leerrohr), Kabel-Sweep in M10 S6. Bibliotheksklemme ist eine Fussklemme, passt nicht an Vierkantbeine (Befestigung ohne Streben, Plan Regel 7). Leerrohre und Kabel-Sweep brauchen S6."
   },
   {
    "id": "L08",
@@ -635,11 +635,11 @@
   {
    "id": "L16",
    "titel": "Tropfrohr je Beet und Tisch-Zulauf (76 Rinnen) in der Bibliothek pruefen",
-   "status": "luecke",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 16,
    "wer": "Montage + Werkstatt",
-   "notiz": "Zugeordnet: W36 prueft, dann M10 S3. S3 braucht Tropfrohr d20 je Beet und Schlauch ID16/AD20 je Rinne; Zulaufverteiler am Tisch ist Teil der Tisch-Klasse. Vor S3 klaeren, ob die Bibliothek reicht."
+   "notiz": "Geprueft 01.11. durch W36 Teil 5: die Bibliothek reicht NICHT ganz; fehlende Kleinteile stehen in L22. Zugeordnet: W36 prueft, dann M10 S3. S3 braucht Tropfrohr d20 je Beet und Schlauch ID16/AD20 je Rinne; Zulaufverteiler am Tisch ist Teil der Tisch-Klasse. Vor S3 klaeren, ob die Bibliothek reicht."
   },
   {
    "id": "L17",
@@ -648,7 +648,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 17,
    "wer": "Montage (S6)",
-   "notiz": "Zugeordnet: W36 (Teil), M10 S6 (setzen). Notbypass-Absperrung liegt unterflur; Wartungszugang (Schacht, Deckel) ist nicht modelliert."
+   "notiz": "Teil gebaut (lt_schacht_kugelhahn_d63); die LAGE ist offen, siehe L23. Zugeordnet: W36 (Teil), M10 S6 (setzen). Notbypass-Absperrung liegt unterflur; Wartungszugang (Schacht, Deckel) ist nicht modelliert."
   },
   {
    "id": "L18",
@@ -844,11 +844,11 @@
   {
    "id": "W38-D75",
    "titel": "Werkstatt: Rohrbibliothek um d75 erweitern (Rohr, Bogen 90/45, T, Kupplung, Reduziermuffen d75/d63 und d75/d50)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.2,
    "wer": "Werkstatt A (Teil 6 der laufenden Sitzung)",
-   "notiz": "FREIGEGEBEN 01.11. (E14 = d75). Als Teil 6 im Blatt docs/jobs/W36-verteiler-d50.md; die laufende Sitzung baut es nach Teil 5 (Nachricht eingereiht). Masse als [A] mit Vermerk Katalog offen. "
+   "notiz": "Erledigt als Teil 6 von W36 (Commit 9f3d8ab): sieben Teile, 36/36. Formstueck-Aussen 84,75 mm statt 72,2, Muffentiefe 44 mm ist Annahme (Katalog offen, N-BESCHAFFUNG)."
   },
   {
    "id": "NETZ-R45",
@@ -862,11 +862,11 @@
   {
    "id": "M10-S2R",
    "titel": "M10 S2R: Heber-Umbau K01/K17 auf d75",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.8,
    "wer": "Montage",
-   "notiz": "Entschieden (E14 = d75). Braucht W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
+   "notiz": "GESTARTET 01.11. spaet. Blatt docs/jobs/M10-S2R-heber-d75.md. Entschieden (E14 = d75). Braucht W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
   },
   {
    "id": "N-BESCHAFFUNG",
@@ -885,6 +885,42 @@
    "reihenfolge": 4,
    "wer": "Orchestrator",
    "notiz": "Wunsch W48 (Ben 01.11.): Besonderheiten des Projekts und Modells immer festhalten, damit man beides pitchen kann. Sitzungen melden \"Besonderheit: ...\" in der Kurzmeldung, ich trage ein, mit ehrlichem Belegstand und dem, was man NICHT behaupten darf. Sieben Eintraege angelegt (Schwerkraft-Kreislauf, Heber, Glockensiphon, zwei Linien mit Reserve, Skript-Teileliste, Schlamm-Wurmkompost, Dunstwasser-Idee)."
+  },
+  {
+   "id": "L22",
+   "titel": "Fehlende Kleinteile fuer S3 und S6: Reduzierung d40/d20 oder Reduzier-T (14 Beete), PE-PVC-Verbinder d20, Schlauch ID16 kurz (76 Stueck), Stopfen/Kappe d20 und d50, Schlauchschelle ID16; Leerrohr: Reduzierstueck DN100/DN50, T, Kabeleinfuehrung",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 22,
+   "wer": "Werkstatt (W39)",
+   "notiz": "Zugeordnet: W39, dann M10 S3 (Beete, Rinnen) und S6 (Leerrohr). Quelle: W36 Teil 5 und Teile 3, docs/workshop-state.md."
+  },
+  {
+   "id": "L23",
+   "titel": "Schacht fuer Kugelhahn K56/K57 kann nicht unter dem Filterkasten stehen (Tiefleitung Z -159, Kastenunterkante Z -96, 31 mm Luft)",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 23,
+   "wer": "Montage (M10-S6) + Orchestrator",
+   "notiz": "Zugeordnet: M10 S6 (Lage), Befund aus W36 Teil 4 (docs/parts/leitungsteile.md Zeile 383). Der Hahn muss ausserhalb des Kasten-Grundrisses sitzen, die Leitung dorthin fuehren. Der Grundriss des Filterkastens wurde dort nicht gelesen."
+  },
+  {
+   "id": "L24",
+   "titel": "Rinnen-Durchfluss: Netzliste rechnet 1 l/min je Rinne, das Tisch-Bauteilblatt 0,5 l/min",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 24,
+   "wer": "Orchestrator",
+   "notiz": "Zugeordnet: NETZ-R45 (ich klaere die Zahl, Quelle nachlesen). Befund W36 Teil 5. Wirkt auf NFT-Strang K12/K28 und Verteiler."
+  },
+  {
+   "id": "W39",
+   "titel": "Werkstatt A2 (Leitungsteile-Kleinteile): Reduzierung d40/d20 oder Reduzier-T, PE-PVC-Verbinder d20, Schlauch ID16 kurz, Stopfen/Kappe d20 und d50, Schlauchschelle ID16, Leerrohr-Reduzierstueck, T, Kabeleinfuehrung",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.9,
+   "wer": "Werkstatt (eine Sitzung)",
+   "notiz": "Schliesst L22. Gleiche Bibliotheksdateien wie W36, deshalb nach M10-S2R und nicht parallel dazu. Braucht NETZ-R45 (Rinnen-Durchfluss L24). Je Teil Mini-Plan, Check, Blatt, Bild; Handelsteile bevorzugen (W43). Blatt erst beim Start (Aktualitaetspruefung)."
   }
  ]
 }

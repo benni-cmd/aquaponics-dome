@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10-Bau S0 abgenommen, S1 laeuft (Feinfilter in Gruben); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10-Bau S0 und S1 abgenommen, nichts laeuft; naechster Schritt Pool-Ports; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -215,7 +215,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Montage",
-   "notiz": "Bau in Schritten S0 bis S7 nach Plan m10-leitungen.md; Freigabe je Schritt durch den Orchestrator. S0 abgenommen (acfb529: Pruefskript check_leitungen, Hoehenprobe bestaetigt absolut = relativ + 400, Werkstatt-Notiz, Umhaengeliste). Jetzt: S1 (2 Feinfilter in Gruben, ohne Rohre und Pool-Ports; Sitzung montage-m10-s1)."
+   "notiz": "Bau in Schritten S0 bis S7 nach Plan m10-leitungen.md. Erledigt: S0 (acfb529), S1 (2c9fe30 + Nachtrag f5a0c44: 2 Feinfilter in Gruben, Ost A/West B, Laufwege A 700/B 600/Wandluft 110, Gangkarte kennt Filter, Drittbecken bei 50 mm erreichbar; Filter-Nischen bringen +2 rot/+10 gelb Engstellen nach D72). Naechster: Pool-Ports (Seitenablauf Z 340, Bodenablauf) im Pool-Bauteil, dann Werkstatt-Fehlteile (Verteiler d50, T-Stueck d63/d50/d50), dann S2 Hauptkreislauf."
   },
   {
    "id": "PUFFER-SPECS",

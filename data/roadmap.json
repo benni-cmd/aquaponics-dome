@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: R41 Laschenknoten laeuft (Fachrecherche); M-SETZEN, R44, ComfyUI-Render abgenommen; Bens Entscheidungen offen (Filter, Puffer-Lage, Fischmenge)",
+ "stand": "Stand 01.11.2026: R41, M-SETZEN, R44, ComfyUI abgenommen; nichts laeuft; Bens Entscheidungen offen (Filter, Puffer-Lage, Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -184,11 +184,11 @@
   {
    "id": "R41",
    "titel": "Laschen-Scheiben-Knoten gegen Kugelknoten",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 6,
    "wer": "Fachrecherche (frisch)",
-   "notiz": "Sitzung fachrecherche-knoten (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/R41-laschenknoten.md; Ergebnis docs/research/R41.md und scripts/lasche_check.py; aendert das Modell nicht."
+   "notiz": "Commit 8948f77: Empfehlung Variante pruefen, nicht wechseln. Laschen-Scheiben-Knoten spart Drehen/Schweissen; mit Lasche 40x6 knickt Strebe B bei V2c 40 % frueher (2,66 statt ca. 4,4 kN), ab Lasche 10 mm unter 8 %. Laschenmasse sind Annahmen (Foto ohne Massstab), Preise und Wind fehlen. Offen: Nachfrage beim Forscher (Laschendicke, Schraube, Rohr, Last), Musterknoten und Statik."
   },
   {
    "id": "LATTE-SKRIPT",
@@ -386,7 +386,7 @@
    "phase": "nach_zwischencheck",
    "reihenfolge": 5,
    "wer": "Ben",
-   "notiz": "Laschenknoten erst nach R41 entscheidbar."
+   "notiz": "Laschenknoten erst nach R41 entscheidbar. R41 (8948f77): Variante moeglich, aber Lasche mind. 10 mm; vor Entscheidung beim Chemnitzer Forscher Laschendicke, Schraubengroesse, Rohrmass und Last erfragen (DEINE HANDLUNG)."
   },
   {
    "id": "E6",

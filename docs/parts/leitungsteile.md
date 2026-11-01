@@ -313,3 +313,47 @@ Montage: Port Bein auf die Beinachse des Tischs legen (Beinmitte = Mitte der Anl
 **Pruefung:** `check_lt_w36.py schelle` 30/30 PASS (beide Groessen): 11 Koerper (3 Blechteile + 8 Normteile), Aussenradius, Ohr, Ringbreite, Plattenbreite, Anlageflaeche, Bandspiel, Bandbreite, Rohrbohrung d, Port Bein (Anlageflaeche), Port Rohrachse (Bohrungsachse), Abstand Platte-Rohr >= 12, Interferenz 0 gegen Bein 40 x 40 und Rohr d (inspect.interference, 13 Koerper). Bild mit Bein und Rohr (durchsichtig): `renders/components/leitungsteile/lt_schelle_vk_d32.png`, `lt_schelle_vk_d63.png`.
 
 **Offene Fragen:** (1) Bandschelle und Rohrschelle sind Bauformen ohne Fabrikat; Anzugsmoment [A]. (2) Kollision mit Winkelhalter T23, Querholm und Diagonalen am Tischbein wird erst bei der Platzierung (S3/S6) geprueft; die Schelle belegt z +-10 (Platte und Band) bzw. +-41,5 (Ohren d63) um ihre Mitte. (3) Beinprofil gilt fuer Mitte/aussen und innen (40 x 40); die Querholme 40 x 60 sind keine Aufnahme.
+
+## Leerrohr DN50 und DN100 mit Bogen 90 und 45 Grad `lt_leerrohr_dn50/dn100`, `lt_leerrohr_bogen90_dn*`, `lt_leerrohr_bogen45_dn*` (T70-LR-*, T70-LRB90-*, T70-LRB45-*)
+
+**Mini-Plan.** Problem: S6 verlegt Kabel unterflur vom Schaltschrank zu Ost- und West-Gruppe in Leerrohren (Plan Abschnitt 4 Regel 9); in der Bibliothek gibt es nur Wasserrohre mit Klebemuffen und kleinen Bogenradien. Intent: Kabelschutzrohre mit Kabel-Bogenradius als Normteil, damit die Montage Rohr, Bogen und Anschluss an Schaltschrank und Technikgruppe aus Teilen legt; 230-V- und Signalkabel getrennt (eigene Rohre oder >= 200 mm Abstand). Goal: sechs Dateien (2 Groessen x gerade, 90, 45) mit Ports, Check gruen. Bau: Kabelschutzrohr PVC-U glatt mit Steckmuffe: gerade Stange 3000 mm (Muffe an B, in der Laenge enthalten, Zapfen an A); Bogen mit Muffe an A und glattem Ende B, damit sich Zapfen-in-Muffe durch die ganze Kette fortsetzt (Rohr.A in Bogen.A, Bogen.B in die Muffe des naechsten Rohrs). Kein Sweep-Bauteil fuer Kabel (bleibt in S6).
+
+| Merkmal | DN50 | DN100 |
+|---|---|---|
+| Aussen-d x Wand (PVC-U, Katalogwert [A]) | 50 x 1,8, innen 46,4 | 110 x 3,2 (EN 1401 SN4), innen 103,6 |
+| Muffe (Aussen / Tiefe) | 56 / 40 | 123 / 64 |
+| Stange | 3000 (Muffe eingerechnet), Parameter `laenge` fuer 1000/2000/5000 | gleich |
+| Bogenradius R (Mittellinie), Schenkel = t + 20 | 300 (Schenkel 60) | 500 (Schenkel 84) |
+| Masse Stange / Bogen 90 / Bogen 45 | 1,16 / 0,24 / 0,15 kg | 4,63 / 1,55 / 0,96 kg |
+| Werkstoff, Farbe | PVC-U 1,4 g/cm3, orange #c9742a (Elektro) | gleich |
+| Routing | `buried` (Z -100 bis -400 relativ) | gleich |
+
+**Bogenradius:** 300 mm erlaubt Kabel bis etwa 20 mm Aussen-d (Mindestradius 15 x Kabel-d, NYY 5 x 6 mm2 ca. 17 mm), 500 mm bis etwa 33 mm (NYY 4 x 35 mm2); gilt fuer 230-V-Pumpenkabel. Die Signal-Trunks (4 Adern RS-485 + 2 Adern 24 V, Herstellerkabel) sind duenner und laufen in DN50.
+
+**Ports** (Bauteil-KS, mm; Port A im Ursprung):
+
+| Teil | Port | Art | Lage x, y, z | Richtung |
+|---|---|---|---|---|
+| Stange (DN50 / DN100) | A | Zapfen | 0, 0, 0 | -Z |
+| | B | Muffe | 0, 0, 3000 | +Z |
+| Bogen 90 DN50 | A / B | Muffe / Zapfen | 0, 0, 0 / 360, 0, 360 | -Z / +X |
+| Bogen 45 DN50 | A / B | Muffe / Zapfen | 0, 0, 0 / 130,29, 0, 314,56 | -Z / (0,707, 0, 0,707) |
+| Bogen 90 DN100 | A / B | Muffe / Zapfen | 0, 0, 0 / 584, 0, 584 | -Z / +X |
+| Bogen 45 DN100 | A / B | Muffe / Zapfen | 0, 0, 0 / 205,84, 0, 496,95 | -Z / (0,707, 0, 0,707) |
+
+Einstecktiefe: ein Zapfen wird bis zum Anschlag um die Muffentiefe (40 / 64 mm) in die Muffe geschoben (wie die Klebemuffen der Bibliothek, hier Steckmuffe mit Lippendichtung, nicht modelliert).
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| AD 50 x 1,8 / 110 x 3,2, Muffe 56 / 123 x 40 / 64 | mm | A: Katalogwerte HT/KG-Rohr und Kabelschutzrohr aus dem Gedaechtnis gerundet, nicht abgerufen | niedrig |
+| Stangenlaenge 3000 | mm | A: handelsueblich 1/2/3/5 m | niedrig |
+| Bogenradius 300 / 500, Schenkel t + 20 | mm | A: Kabel-Mindestradius 15 x Kabel-d; Handelsbogen haben oft R 300 bis 1000 | niedrig |
+| Zapfen A + Muffe B je Stange, Muffe A + Zapfen B je Bogen | | A: eine Muffe je Verbindung, durchgehende Kette | mittel |
+
+**Montage (L4):** Stangen im Graben auslegen (Muffe in Verlegerichtung gegen Gefaelle nach oben), Zapfen entgraten, anfasen, Gleitmittel auftragen, bis zur Einstecktiefe in die Muffe schieben; Gefaelle 1 % zum Schacht, damit Kondenswasser ablaeuft; Zugdraht einziehen; Enden mit Kabeleinfuehrung oder Schaumdichtung schliessen. Werkzeug: Saege, Anfasgeraet, Gleitmittel, Wasserwaage. Alternative lokale Fertigung: gelbes oder oranges Kabelschutzrohr (Baumarkt, Elektrogrosshandel), Handelsboegen.
+
+**Pruefung:** `check_lt_w36.py leerrohr` 36/36 PASS: Koerperzahl, Laenge, Muffen-Aussen-D, Volumen Stange gegen Ringflaeche x Laenge + Muffe (Abweichung 0,05 %), Bogen-Volumen per Pappus (0,01 %), Innen-D, Bogenradius, alle 12 Port-Stirnflaechen. Bilder: `renders/components/leitungsteile/lt_leerrohr_bogen90_dn100.png`, `lt_leerrohr_dn50.png`.
+
+**Offene Fragen:** (1) Maße nur Katalog-Naeherung, keine abgerufene Norm. (2) Kabelzahl und -durchmesser je Rohr (230 V je Pumpe, Trunks) legt S6 fest; hier nur DN50 und DN100. (3) Fehlt fuer S6: Kabeleinfuehrung/Endverschluss, Schaltschrank-Einfuehrung, Zugschacht (Teil 4 liefert nur den Ventilschacht), Reduzierstueck DN100/DN50, T-Abzweig.

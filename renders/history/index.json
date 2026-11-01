@@ -2488,5 +2488,25 @@
   "note": "W36 Teil 2",
   "commit": "1a37ce5",
   "source": "renders/components/leitungsteile/lt_schelle_vk_d63.png"
+ },
+ {
+  "file": "20261101-225147_werkstatt_lt-leerrohr_lt-leerrohr-bogen90-dn100.png",
+  "sha": "d2d93d963445d03b",
+  "time": "2026-11-01 22:51:47",
+  "role": "werkstatt",
+  "subject": "lt_leerrohr",
+  "note": "W36 Teil 3",
+  "commit": "23521d2",
+  "source": "renders/components/leitungsteile/lt_leerrohr_bogen90_dn100.png"
+ },
+ {
+  "file": "20261101-225149_werkstatt_lt-leerrohr_lt-leerrohr-dn50.png",
+  "sha": "b62ceb21d2259813",
+  "time": "2026-11-01 22:51:49",
+  "role": "werkstatt",
+  "subject": "lt_leerrohr",
+  "note": "W36 Teil 3",
+  "commit": "23521d2",
+  "source": "renders/components/leitungsteile/lt_leerrohr_dn50.png"
  }
 ]

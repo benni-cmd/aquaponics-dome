@@ -329,6 +329,288 @@
      "dn": "Vierkant 40x40"
     }
    ]
+  },
+  "lt_leerrohr_dn50": {
+   "teilenummer": "T70-LR-50",
+   "komponente": "T70_Leerrohr_DN50",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 50,
+   "aussen_d": 50.0,
+   "wand": 1.8,
+   "innen_d": 46.4,
+   "muffentiefe": 40.0,
+   "muffe_aussen": 56.0,
+   "bogenradius": null,
+   "laenge": 3000.0,
+   "routing": "buried",
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN50"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      3000.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    }
+   ]
+  },
+  "lt_leerrohr_bogen90_dn50": {
+   "teilenummer": "T70-LRB90-50",
+   "komponente": "T70_LeerrohrBogen90_DN50",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 50,
+   "aussen_d": 50.0,
+   "wand": 1.8,
+   "innen_d": 46.4,
+   "muffentiefe": 40.0,
+   "muffe_aussen": 56.0,
+   "bogenradius": 300.0,
+   "laenge": null,
+   "routing": "buried",
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    },
+    {
+     "name": "B",
+     "lage": [
+      360.0,
+      0.0,
+      360.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN50"
+    }
+   ]
+  },
+  "lt_leerrohr_bogen45_dn50": {
+   "teilenummer": "T70-LRB45-50",
+   "komponente": "T70_LeerrohrBogen45_DN50",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 50,
+   "aussen_d": 50.0,
+   "wand": 1.8,
+   "innen_d": 46.4,
+   "muffentiefe": 40.0,
+   "muffe_aussen": 56.0,
+   "bogenradius": 300.0,
+   "laenge": null,
+   "routing": "buried",
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    },
+    {
+     "name": "B",
+     "lage": [
+      130.294,
+      0.0,
+      314.558
+     ],
+     "richtung": [
+      0.7071,
+      0.0,
+      0.7071
+     ],
+     "art": "Zapfen",
+     "dn": "DN50"
+    }
+   ]
+  },
+  "lt_leerrohr_dn100": {
+   "teilenummer": "T70-LR-100",
+   "komponente": "T70_Leerrohr_DN100",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 100,
+   "aussen_d": 110.0,
+   "wand": 3.2,
+   "innen_d": 103.6,
+   "muffentiefe": 64.0,
+   "muffe_aussen": 123.0,
+   "bogenradius": null,
+   "laenge": 3000.0,
+   "routing": "buried",
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN100"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      3000.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    }
+   ]
+  },
+  "lt_leerrohr_bogen90_dn100": {
+   "teilenummer": "T70-LRB90-100",
+   "komponente": "T70_LeerrohrBogen90_DN100",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 100,
+   "aussen_d": 110.0,
+   "wand": 3.2,
+   "innen_d": 103.6,
+   "muffentiefe": 64.0,
+   "muffe_aussen": 123.0,
+   "bogenradius": 500.0,
+   "laenge": null,
+   "routing": "buried",
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    },
+    {
+     "name": "B",
+     "lage": [
+      584.0,
+      0.0,
+      584.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN100"
+    }
+   ]
+  },
+  "lt_leerrohr_bogen45_dn100": {
+   "teilenummer": "T70-LRB45-100",
+   "komponente": "T70_LeerrohrBogen45_DN100",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 100,
+   "aussen_d": 110.0,
+   "wand": 3.2,
+   "innen_d": 103.6,
+   "muffentiefe": 64.0,
+   "muffe_aussen": 123.0,
+   "bogenradius": 500.0,
+   "laenge": null,
+   "routing": "buried",
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    },
+    {
+     "name": "B",
+     "lage": [
+      205.844,
+      0.0,
+      496.95
+     ],
+     "richtung": [
+      0.7071,
+      0.0,
+      0.7071
+     ],
+     "art": "Zapfen",
+     "dn": "DN100"
+    }
+   ]
   }
  }
 }

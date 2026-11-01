@@ -1,0 +1,37 @@
+PASS lt_w36: leerrohr DN50 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: leerrohr DN50 Laenge 3000 (Standardstange, Muffe eingerechnet): Ist 3000, Soll 3000 (+-0.1)
+PASS lt_w36: leerrohr DN50 Aussen-D Muffe 56: Ist 55.9899, Soll 56 (+-0.1)
+PASS lt_w36: leerrohr DN50 Volumen = Rohr AD50 x 1.8 + Muffe: Ist 826400, Soll 826772 (+-1653.54)
+PASS lt_w36: leerrohr DN50 Innen-D frei 46.4 (Kabeldurchgang): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_dn50 Port A (Zapfen, DN50) Stirnflaeche an (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_dn50 Port B (Muffe, DN50) Stirnflaeche an (0.0, 0.0, 3000.0): Ist 1, Soll 1
+PASS lt_w36: leerrohr DN50 Masse 1.16 kg (PVC-U 1,4): Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen90 DN50 Koerperzahl: Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen90 DN50 Volumen (Pappus: 2 Schenkel + Bogen R 300, Muffe): Ist 170214, Soll 170229 (+-851.144)
+PASS lt_w36: leerrohr-bogen90 DN50 Radius 300 >= Kabel-Mindestradius 15 x 20 mm (DN50) bzw. 15 x 33 mm (DN100): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen90_dn50 Port A (Muffe, DN50) Stirnflaeche an (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen90_dn50 Port B (Zapfen, DN50) Stirnflaeche an (360.0, 0.0, 360.0): Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen45 DN50 Koerperzahl: Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen45 DN50 Volumen (Pappus: 2 Schenkel + Bogen R 300, Muffe): Ist 105998, Soll 106007 (+-530.036)
+PASS lt_w36: leerrohr-bogen45 DN50 Radius 300 >= Kabel-Mindestradius 15 x 20 mm (DN50) bzw. 15 x 33 mm (DN100): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen45_dn50 Port A (Muffe, DN50) Stirnflaeche an (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen45_dn50 Port B (Zapfen, DN50) Stirnflaeche an (130.29, 0.0, 314.56): Ist 1, Soll 1
+PASS lt_w36: leerrohr DN100 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: leerrohr DN100 Laenge 3000 (Standardstange, Muffe eingerechnet): Ist 3000, Soll 3000 (+-0.1)
+PASS lt_w36: leerrohr DN100 Aussen-D Muffe 123: Ist 122.998, Soll 123 (+-0.1)
+PASS lt_w36: leerrohr DN100 Volumen = Rohr AD110 x 3.2 + Muffe: Ist 3.30421e+06, Soll 3.30455e+06 (+-6609.1)
+PASS lt_w36: leerrohr DN100 Innen-D frei 103.6 (Kabeldurchgang): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_dn100 Port A (Zapfen, DN100) Stirnflaeche an (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_dn100 Port B (Muffe, DN100) Stirnflaeche an (0.0, 0.0, 3000.0): Ist 1, Soll 1
+PASS lt_w36: leerrohr DN100 Masse 4.63 kg (PVC-U 1,4): Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen90 DN100 Koerperzahl: Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen90 DN100 Volumen (Pappus: 2 Schenkel + Bogen R 500, Muffe): Ist 1.10707e+06, Soll 1.10717e+06 (+-5535.87)
+PASS lt_w36: leerrohr-bogen90 DN100 Radius 500 >= Kabel-Mindestradius 15 x 20 mm (DN50) bzw. 15 x 33 mm (DN100): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen90_dn100 Port A (Muffe, DN100) Stirnflaeche an (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen90_dn100 Port B (Zapfen, DN100) Stirnflaeche an (584.0, 0.0, 584.0): Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen45 DN100 Koerperzahl: Ist 1, Soll 1
+PASS lt_w36: leerrohr-bogen45 DN100 Volumen (Pappus: 2 Schenkel + Bogen R 500, Muffe): Ist 685483, Soll 685545 (+-3427.73)
+PASS lt_w36: leerrohr-bogen45 DN100 Radius 500 >= Kabel-Mindestradius 15 x 20 mm (DN50) bzw. 15 x 33 mm (DN100): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen45_dn100 Port A (Muffe, DN100) Stirnflaeche an (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS lt_w36: lt_leerrohr_bogen45_dn100 Port B (Zapfen, DN100) Stirnflaeche an (205.84, 0.0, 496.95): Ist 1, Soll 1
+== lt_w36: 36/36 PASS

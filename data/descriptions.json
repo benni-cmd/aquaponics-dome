@@ -604,6 +604,39 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
     },
     {
+      "match": "^lt_leerrohr_",
+      "titel": "Leerrohr (Kabelschutzrohr) und Bögen",
+      "was": "Unterirdisches Schutzrohr für Kabel vom Schaltschrank zu den Technikgruppen; gerade Stange und Bögen 90° und 45° mit großem Radius.",
+      "status": "gebaut, 36/36 Prüfungen (Volumen per Pappus, Ports)",
+      "ablauf": [
+        "Die Stange (3 m) steckt mit dem glatten Ende in die Muffe der nächsten Stange oder des Bogens.",
+        "Bögen mit Radius 300 (DN50) und 500 (DN100) halten den Mindestradius der Kabel ein.",
+        "230-V-Kabel und Signalleitungen laufen in getrennten Rohren."
+      ],
+      "aufbau": [
+        {
+          "t": "Größen",
+          "p": [
+            "DN50: Außen 50 × 1,8",
+            "DN100: Außen 110 × 3,2"
+          ]
+        },
+        {
+          "t": "Teile",
+          "p": [
+            "Stange 3000 mm mit Steckmuffe",
+            "Bogen 90° und 45° mit Muffe"
+          ]
+        }
+      ],
+      "masse": {
+        "Stange DN50": "1,16 kg",
+        "Stange DN100": "4,63 kg"
+      },
+      "grenzen": "Maße aus Katalogwerten (nicht abgerufen); die Kabeltrasse selbst bleibt ein Bauteil in Schritt S6.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
+    },
+    {
       "match": "^lt_",
       "titel": "Leitungsteile",
       "was": "Normteile des Rohrnetzes als Komponenten mit Ports.",

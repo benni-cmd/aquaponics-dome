@@ -102,8 +102,61 @@ def schelle(d):
 for _d in SCH_SIZES:
     FILES.append(f"lt_schelle_vk_d{_d}")
 
+# ---------------------------------------------------------------- Teil 3: Leerrohr (Kabelschutzrohr) DN50 und DN100, unterflur
+# Kabelschutzrohr PVC-U glatt mit Steckmuffe (Katalogmasse aus dem Gedaechtnis, nicht abgerufen): DN50 = AD 50 x 1,8, DN100 = AD 110 x 3,2 (EN 1401 SN4).
+LR = {50: dict(d=50.0, wall=1.8, t=40.0, od_m=56.0, R=300.0), 100: dict(d=110.0, wall=3.2, t=64.0, od_m=123.0, R=500.0)}
+LR_L = 3000.0                                 # Standard-Stangenlaenge (Parameter laenge); Muffe am Ende B ist in der Laenge enthalten
+LR_COL = "#c9742a"                            # Kabelschutz orange (Elektro, nicht Wasser)
+
+def lr_setup(b, nm, dn, extra=None):
+    q = LR[dn]
+    b.add("parameters.add", name="d", expression=f"{q['d']} mm"); b.add("parameters.add", name="wall", expression=f"{q['wall']} mm")
+    b.add("parameters.add", name="muffentiefe", expression=f"{q['t']} mm"); b.add("parameters.add", name="muffe_aussen", expression=f"{q['od_m']} mm")
+    for k, v in (extra or {}).items():
+        b.add("parameters.add", name=k, expression=f"{v} mm")
+    b.add("material.create", name="LT leerrohr", density_g_cm3=1.4, color=LR_COL)
+    b.add("component.create", name=nm, grounded=True)
+
+def leerrohr(dn, L=LR_L):
+    q = LR[dn]; d, w, t, om = q["d"], q["wall"], q["t"], q["od_m"]
+    b = sc.Build(); nm = f"T70_Leerrohr_DN{dn}"
+    lr_setup(b, nm, dn, {"laenge": L})
+    b.add("solid.cylinder", diameter=d, height=L, base=[0, 0, 0], operation="new", name="Rohr_R", body_name="Leerrohr")
+    b.add("solid.cylinder", diameter=om, height=t, base=[0, 0, L - t], operation="join", targets=["Leerrohr"], name="Muffe_R")
+    b.add("solid.cylinder", diameter=d, height=t + 1, base=[0, 0, L - t], operation="cut", targets=["Leerrohr"], name="Muffe_B")
+    b.add("solid.cylinder", diameter=d - 2 * w, height=L + 2, base=[0, 0, -1], operation="cut", targets=["Leerrohr"], name="Bohrung")
+    b.add("material.assign", bodies=["Leerrohr"], material="LT leerrohr")
+    meta_desc = f"Leerrohr (Kabelschutzrohr) PVC-U DN{dn} AD{d:g} x {w}, Steckmuffe an B, Laenge {L:g}, unterflur"
+    b.add("component.activate", component=nm)
+    b.add("component.metadata.set", component=nm, part_number=f"T70-LR-{dn}", description=meta_desc, revision="A", properties={"Werkstoff": "PVC-U"})
+    return b, nm, dict(L=L, d=d, wall=w, t=t, od_m=om)
+
+def leerrohr_bogen(dn, ang):
+    q = LR[dn]; d, w, t, om, R = q["d"], q["wall"], q["t"], q["od_m"], q["R"]
+    leg = t + 20.0
+    b = sc.Build(); nm = f"T70_LeerrohrBogen{ang}_DN{dn}"
+    lr_setup(b, nm, dn, {"radius": R, "schenkel": leg})
+    end, dr = L.bend(b, "Leerrohrbogen", d, d - 2 * w, leg, R, ang, "LT leerrohr")
+    b.add("solid.cylinder", diameter=om, height=t, base=[0, 0, 0], operation="join", targets=["Leerrohrbogen"], name="Muffe_R")
+    b.add("solid.cylinder", diameter=d, height=t + 1, base=[0, 0, -1], operation="cut", targets=["Leerrohrbogen"], name="Muffe_A")
+    desc = f"Leerrohr-Bogen {ang} Grad PVC-U DN{dn} AD{d:g} x {w}, Radius {R:g}, Muffe A, glattes Ende B"
+    b.add("component.activate", component=nm)
+    b.add("component.metadata.set", component=nm, part_number=f"T70-LRB{ang}-{dn}", description=desc, revision="A", properties={"Werkstoff": "PVC-U"})
+    return b, nm, dict(end=end, dir=dr, R=R, leg=leg)
+
+for _dn in (50, 100):
+    FILES += [f"lt_leerrohr_dn{_dn}", f"lt_leerrohr_bogen90_dn{_dn}", f"lt_leerrohr_bogen45_dn{_dn}"]
+
 def ports(fname, L_rohr=1000):
     """Ports der W36-Teile, Format wie leitung.ports(): [(name, (x,y,z), (dx,dy,dz), art, dn)]."""
+    m = re.match(r"lt_leerrohr_dn(\d+)$", fname)
+    if m:
+        dn = int(m.group(1)); return [("A", (0.0, 0.0, 0.0), (0.0, 0.0, -1.0), "Zapfen", f"DN{dn}"), ("B", (0.0, 0.0, LR_L), (0.0, 0.0, 1.0), "Muffe", f"DN{dn}")]
+    m = re.match(r"lt_leerrohr_bogen(90|45)_dn(\d+)$", fname)
+    if m:
+        ang, dn = int(m.group(1)), int(m.group(2)); q = LR[dn]; leg = q["t"] + 20.0; r = math.radians(ang); R = q["R"]
+        ex, ez = R - R * math.cos(r), leg + R * math.sin(r); dx, dz = math.sin(r), math.cos(r)
+        return [("A", (0.0, 0.0, 0.0), (0.0, 0.0, -1.0), "Muffe", f"DN{dn}"), ("B", (round(ex + dx * leg, 3), 0.0, round(ez + dz * leg, 3)), (round(dx, 4), 0.0, round(dz, 4)), "Zapfen", f"DN{dn}")]
     m = re.match(r"lt_schelle_vk_d(\d+)$", fname)
     if m:
         d = int(m.group(1)); g = sch_geom(d)
@@ -132,6 +185,11 @@ def json_entries():
             "rohr_d": d, "bein": "Rechteckrohr 40x40x3", "ring": {"innen_d": d, "aussen_d": 2 * g["ro"], "wand": SCH_T, "breite": SCH_W}, "platte": {"breite": 2 * SCH_PLATE_HALF, "dicke": SCH_PLATE_T, "abstand_zum_rohr": SCH_STANDOFF},
             "spannband": {"breite": SCH_W, "dicke": SCH_BAND_T, "spiel": SCH_SPIEL, "lasche": SCH_TAB}, "bolzenbild": {"ring_z": g["ear_z"], "band_x": SCH_SCREW_X}, "anlageflaeche_y": g["yf"], "beinachse_y": g["leg_y"],
             "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn} for n, p, dr, a, dn in ports(f"lt_schelle_vk_d{d}")]}
+    for dn, q in LR.items():
+        for fn, pn, kind in ((f"lt_leerrohr_dn{dn}", f"T70-LR-{dn}", "gerade"), (f"lt_leerrohr_bogen90_dn{dn}", f"T70-LRB90-{dn}", "bogen90"), (f"lt_leerrohr_bogen45_dn{dn}", f"T70-LRB45-{dn}", "bogen45")):
+            out[fn] = {"teilenummer": pn, "komponente": f"T70_{'Leerrohr' if kind == 'gerade' else 'LeerrohrBogen' + kind[5:]}_DN{dn}", "werkstoff": "PVC-U (Kabelschutzrohr)", "farbe": "orange", "dn": dn, "aussen_d": q["d"], "wand": q["wall"], "innen_d": q["d"] - 2 * q["wall"],
+                "muffentiefe": q["t"], "muffe_aussen": q["od_m"], "bogenradius": q["R"] if kind != "gerade" else None, "laenge": LR_L if kind == "gerade" else None, "routing": "buried",
+                "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn_} for n, p, dr, a, dn_ in ports(fn)]}
     return out
 
 def write_json():
@@ -143,6 +201,11 @@ def write_json():
     open(p, "w", encoding="utf-8", newline="").write(txt)
 
 DESCRIPTIONS = [
+    {"match": "^lt_leerrohr_", "titel": "Leerrohr (Kabelschutzrohr) und Bögen", "was": "Unterirdisches Schutzrohr für Kabel vom Schaltschrank zu den Technikgruppen; gerade Stange und Bögen 90° und 45° mit großem Radius.",
+     "status": "gebaut, 36/36 Prüfungen (Volumen per Pappus, Ports)",
+     "ablauf": ["Die Stange (3 m) steckt mit dem glatten Ende in die Muffe der nächsten Stange oder des Bogens.", "Bögen mit Radius 300 (DN50) und 500 (DN100) halten den Mindestradius der Kabel ein.", "230-V-Kabel und Signalleitungen laufen in getrennten Rohren."],
+     "aufbau": [{"t": "Größen", "p": ["DN50: Außen 50 × 1,8", "DN100: Außen 110 × 3,2"]}, {"t": "Teile", "p": ["Stange 3000 mm mit Steckmuffe", "Bogen 90° und 45° mit Muffe"]}],
+     "masse": {"Stange DN50": "1,16 kg", "Stange DN100": "4,63 kg"}, "grenzen": "Maße aus Katalogwerten (nicht abgerufen); die Kabeltrasse selbst bleibt ein Bauteil in Schritt S6.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"},
     {"match": "^lt_schelle_vk_", "titel": "Rohrschelle für Vierkant-Tischbein", "was": "Hält ein Rohr (d32 oder d63) waagerecht am senkrechten Vierkant-Bein 40 × 40 des Tischs; die Fuß-Klemme der Bibliothek passt nicht an ein Bein.",
      "status": "gebaut, 30/30 Prüfungen mit Interferenz 0 gegen Bein und Rohr",
      "ablauf": ["Zwei Halbschalen mit je zwei Schrauben M6 umfassen das Rohr.", "Eine Rückenplatte mit Steg liegt am Bein; ein Spannband um das Bein zieht die Platte mit zwei Schrauben M6 fest.", "Der Steg hält die Platte 14 mm vom Rohr entfernt, damit Muttern und Schraubenenden Platz haben."],
@@ -178,6 +241,8 @@ if __name__ == "__main__":
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
     jobs = [("verteiler", "lt_verteiler_d50", verteiler_d50)]
     jobs += [("schelle", f"lt_schelle_vk_d{d}", (lambda d=d: schelle(d))) for d in SCH_SIZES]
+    for dn in (50, 100):
+        jobs += [("leerrohr", f"lt_leerrohr_dn{dn}", (lambda dn=dn: leerrohr(dn))), ("leerrohr", f"lt_leerrohr_bogen90_dn{dn}", (lambda dn=dn: leerrohr_bogen(dn, 90))), ("leerrohr", f"lt_leerrohr_bogen45_dn{dn}", (lambda dn=dn: leerrohr_bogen(dn, 45)))]
     for key, fname, fn in jobs:
         if want and key not in want:
             continue

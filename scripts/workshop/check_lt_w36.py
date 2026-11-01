@@ -147,6 +147,36 @@ def check_schelle(ck):
         # Gewicht (Stahl 7,85) aus der Messung
         print(f"INFO schelle d{d}: Masse {ev['total']['mass_g']:.0f} g (Stahl verzinkt 7,85), Volumen {ev['total']['volume_mm3']:.0f} mm3")
 
+def check_leerrohr(ck):
+    for dn, q in W.LR.items():
+        d, w, tm, om, R = q["d"], q["wall"], q["t"], q["od_m"], q["R"]
+        di = d - 2 * w
+        At, Am = math.pi / 4 * (d * d - di * di), math.pi / 4 * (om * om - d * d)
+        fname = f"lt_leerrohr_dn{dn}"
+        path = os.path.join(D, fname + ".sc")
+        ev = sc.evaluate(path)
+        v = ev["bodies"][0]["volume_mm3"]
+        bb = ev["bodies"][0]["bbox"]
+        ck.eq(f"leerrohr DN{dn} Koerperzahl (Interferenz 0: ein Koerper)", ev["body_count"], 1)
+        ck.eq(f"leerrohr DN{dn} Laenge {W.LR_L:g} (Standardstange, Muffe eingerechnet)", bb["max"][2] - bb["min"][2], W.LR_L, 0.1)
+        ck.eq(f"leerrohr DN{dn} Aussen-D Muffe {om:g}", bb["max"][0] - bb["min"][0], om, 0.1)
+        exp = At * (W.LR_L - tm) + Am * tm
+        ck.eq(f"leerrohr DN{dn} Volumen = Rohr AD{d:g} x {w} + Muffe", v, exp, exp * 0.002)
+        ck.eq(f"leerrohr DN{dn} Innen-D frei {di:g} (Kabeldurchgang)", 1 if any(abs(f["cylinder"]["radius"] - di / 2) < 0.01 for f in sc.faces(path, "Leerrohr") if f.get("cylinder")) else 0, 1)
+        port_checks(ck, fname, "Leerrohr")
+        ck.eq(f"leerrohr DN{dn} Masse {v * 1.4e-6:.2f} kg (PVC-U 1,4)", 1 if v > 0 else 0, 1)
+        for ang in (90, 45):
+            fname = f"lt_leerrohr_bogen{ang}_dn{dn}"
+            path = os.path.join(D, fname + ".sc")
+            ev = sc.evaluate(path)
+            v = ev["bodies"][0]["volume_mm3"]
+            leg = tm + 20.0
+            exp = At * (2 * leg + R * math.radians(ang) - tm) + Am * tm
+            ck.eq(f"leerrohr-bogen{ang} DN{dn} Koerperzahl", ev["body_count"], 1)
+            ck.eq(f"leerrohr-bogen{ang} DN{dn} Volumen (Pappus: 2 Schenkel + Bogen R {R:g}, Muffe)", v, exp, exp * 0.005)
+            ck.eq(f"leerrohr-bogen{ang} DN{dn} Radius {R:g} >= Kabel-Mindestradius 15 x 20 mm (DN50) bzw. 15 x 33 mm (DN100)", 1 if R >= (300 if dn == 50 else 495) else 0, 1)
+            port_checks(ck, fname, "Leerrohrbogen")
+
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
     ck = sc.Check("lt_w36")
@@ -154,6 +184,8 @@ def main():
         check_verteiler(ck)
     if not want or "schelle" in want:
         check_schelle(ck)
+    if not want or "leerrohr" in want:
+        check_leerrohr(ck)
     return ck.done()
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10 Hauptkreislauf beider Linien steht (S2c abgenommen); PAUSE nach Bens Vorgabe, nichts laeuft; weiter mit W36 Verteiler d50",
+ "stand": "Stand 01.11.2026: Hauptkreislauf beider Linien steht (S2c); 19 Luecken stehen jetzt in der Roadmap; naechster Schritt W36 Verteiler d50",
  "schritte": [
   {
    "id": "W33",
@@ -503,7 +503,178 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Werkstatt",
-   "notiz": "Blatt docs/jobs/W36-verteiler-d50.md: Sammelrohr d50 mit Abgaengen d40 (Beete), d32 (NFT), d50 (Bypass), d20 (Messkreis). Startet nach der Pause auf Freigabe."
+   "notiz": "Blatt docs/jobs/W36-verteiler-d50.md (Luecke L02). Sammelrohr d50 mit Abgaengen d40, d32, d50, d20. Blockiert S3."
+  },
+  {
+   "id": "L01",
+   "titel": "Schlammablass K07/K23: Schlammsammler fehlt im Modell",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 1,
+   "wer": "Werkstatt + Orchestrator",
+   "notiz": "Die Absetzer haben Schlammablass (d40, Kugelhahn), aber nichts nimmt den Schlamm auf: K07 und K23 enden im Nichts. Teil und Standort entscheiden (Behaelter/Kompost, R30 Art 6). Betrifft S5 oder S4."
+  },
+  {
+   "id": "L02",
+   "titel": "Verteiler d50 fehlt in der Bibliothek",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2,
+   "wer": "Werkstatt (W36)",
+   "notiz": "Blatt docs/jobs/W36-verteiler-d50.md. Blockiert S3 (Verteiler, Beete, NFT: K11 bis K13, K27 bis K29, Messkreis K35)."
+  },
+  {
+   "id": "L03",
+   "titel": "Beet-Ablauf: Bauteil d25 gegen Netz d40 (Widerspruch)",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3,
+   "wer": "Werkstatt + Orchestrator",
+   "notiz": "docs/parts/ibc_beet.md hat Port d25, Netzkanten K14/K30 rechnen d40; bei d25 sind 36 l/min Spitze 1,6 m/s (ueber Grenze 1,5). Klaeren vor S3/S4 (Bauteil aendern oder Netz auf d25/Mehrfachabgang)."
+  },
+  {
+   "id": "L04",
+   "titel": "Beet-Sumpf 300 l mit Tauchpumpe fehlt (je Linie)",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 4,
+   "wer": "Werkstatt",
+   "notiz": "Beetablauf liegt 600 mm unter Pool-Spiegel (F3): eingegrabener Sumpf, Schwimmerschalter, begehbarer Deckel, Pumpe ca. 36 W. Neue Verbraucher (2 x 36 W) sind in system_specs.py nicht eingerechnet. Blockiert S4."
+  },
+  {
+   "id": "L05",
+   "titel": "Aktivkohle-Gehaeuse und Schwimmerventil fehlen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 5,
+   "wer": "Werkstatt",
+   "notiz": "Frischwasser (K39 bis K43, K52): Handelsteil-Platzhalter, Fabrikat offen; Wasserversorger-Frage (Chlor/Chloramin, DEINE HANDLUNG) entscheidet die Auslegung. Blockiert S5."
+  },
+  {
+   "id": "L06",
+   "titel": "Belueftung: Geblaese, Luftverteiler 4- und 6-fach, Rueckschlagventil, Membranausstroemer fehlen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 6,
+   "wer": "Werkstatt",
+   "notiz": "Luftkanten K44 bis K51 (7 Kanten, d40/d25/d20) haben keine Quelle und keine Enden. Luftbedarf Pool 130 l/min (F4) ist Annahme. Blockiert S5."
+  },
+  {
+   "id": "L07",
+   "titel": "Rohrschelle fuer Vierkant-Tischbeine, Leerrohr-Stuecke DN50/DN100 mit Bogen, Kabel-Trasse als Bauteil fehlen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Werkstatt",
+   "notiz": "Bibliotheksklemme ist eine Fussklemme, passt nicht an Vierkantbeine (Befestigung ohne Streben, Plan Regel 7). Leerrohre und Kabel-Sweep brauchen S6."
+  },
+  {
+   "id": "L08",
+   "titel": "Schaltschrank nicht im Modell, Standort nur Annahme",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 8,
+   "wer": "Orchestrator + Ben",
+   "notiz": "Komponentendatei vorhanden, nicht gesetzt (Flaeche 0 seit D62/D63). Plan nimmt [A] Az -85 / r 5750 aussen am Fundamentring neben der Tuer, nur fuer die Kabelrechnung. Standort ist offen; Alarm-Zentrale haengt dran."
+  },
+  {
+   "id": "L09",
+   "titel": "Zweit- und Drittbecken haben keine Anschluss-Stutzen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 9,
+   "wer": "Montage + Werkstatt",
+   "notiz": "becken_dritt_klein.md: Stutzen nicht modelliert; Zweitbecken entsteht in gen_dome (pool_fn). Kanten K33, K34, K41 bis K43, K49, K51 haengen daran. Blockiert S5."
+  },
+  {
+   "id": "L10",
+   "titel": "Heber-Reserve an den Seitenablaeufen K01/K17 ist knapp",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 10,
+   "wer": "Orchestrator + Ben (Zwischencheck)",
+   "notiz": "Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen."
+  },
+  {
+   "id": "L11",
+   "titel": "Ruecklauf: Einlaeufe am Pool, Gangkreuzungen, Schlauchradius",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 11,
+   "wer": "Montage (S4)",
+   "notiz": "Halbringe d110 auf der Wandkrone (Z 660 bis 720) und Sektorsammler d63 sind nur geplant. Kreuzungen von Gaengen nur unterflur oder ueber 2100 mm; Schlauch-Biegeradius 5 x AD ist in engen Tisch-Fugen (d20: 100 mm) nicht immer einzuhalten."
+  },
+  {
+   "id": "L12",
+   "titel": "Plattformen und Tankstaende nur grob geprueft; Grabenschnitt Linie 1 fragil",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 12,
+   "wer": "Montage",
+   "notiz": "Bounding-Box-Pruefung der Rohre gegen Plattformen (K08/K09/K04 >= 60 mm); Grabenschnitt-Boolean scheiterte bei Linie 2 und wurde nur dort behoben (Linie 1 koennte beim naechsten Neubau brechen); K57 hat nur 31 mm Luft zur Filterkastenunterkante."
+  },
+  {
+   "id": "L13",
+   "titel": "Feinfilter-Nischen: West B Rueckseite 100 mm statt 150 mm",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 13,
+   "wer": "Orchestrator",
+   "notiz": "D72 verlangt Stirn/Rueck mind. 150 mm; die Gangkarte zeigt zwischen Filter West B und Pumpe_gross:4 etwa 100 mm auf 2,2 m (Auslass-Seite, Raster +-25 bis 50 mm). Im Knie-Schnitt 2 rote und 10 gelbe Engstellen mehr durch die Filter. Beim Bau der Rohre beobachten."
+  },
+  {
+   "id": "L14",
+   "titel": "Netzliste noch nicht auf die Modell-Etiketten umgehaengt",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 14,
+   "wer": "Orchestrator",
+   "notiz": "docs/leitungsnetz-umhaengen.md liegt (E2); data/leitungsnetz.json (Version 2) ist unveraendert: absetzer_1/2 und pumpe_klein_1..4 muessen auf Tank_klein:2/:1 und Pumpe_klein:3,4/:1,2 zeigen, sonst falsche Bauteile in Pruefung und Stueckliste."
+  },
+  {
+   "id": "L15",
+   "titel": "Messstellen am Rohr und Kabel: Rest aus M-SETZEN offen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 15,
+   "wer": "Montage (S2 bis S6)",
+   "notiz": "Ca. 40 Messstellen (H_INLINE, H_HAHN, H_DRUCK am Rohr, Tank-Auslass, Fass/Dosierkonsole, Schaltschrank, Kuppel) und 7 Signal-Trunks, 230-V-Leerrohre; Kuppel-Trunk (MS59 bis MS63) erst nach der Statik. Liste mit IDs in docs/loop-state.md (M-SETZEN)."
+  },
+  {
+   "id": "L16",
+   "titel": "Tropfrohr je Beet und Tisch-Zulauf (76 Rinnen) in der Bibliothek pruefen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 16,
+   "wer": "Montage + Werkstatt",
+   "notiz": "S3 braucht Tropfrohr d20 je Beet und Schlauch ID16/AD20 je Rinne; Zulaufverteiler am Tisch ist Teil der Tisch-Klasse. Vor S3 klaeren, ob die Bibliothek reicht."
+  },
+  {
+   "id": "L17",
+   "titel": "Kugelhaehne K56/K57 im Graben: Schacht und Deckel fehlen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 17,
+   "wer": "Montage (S6)",
+   "notiz": "Notbypass-Absperrung liegt unterflur; Wartungszugang (Schacht, Deckel) ist nicht modelliert."
+  },
+  {
+   "id": "L18",
+   "titel": "Viewer-Export 212 MB (Ziel unter 40 MB)",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 18,
+   "wer": "Viewer-Sitzung",
+   "notiz": "Seit Runde 60 gemeldet; neue Leitungs-Instanzen (199) erhoehen die Last. Instanz-Export pruefen."
+  },
+  {
+   "id": "L19",
+   "titel": "check_latte: Koerpernamen und Klassenzuordnung nach L01-Umstellung ungeprueft",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 19,
+   "wer": "Montage (Schritt CHECK)",
+   "notiz": "Skript ist umgestellt und kompiliert, lief aber noch nie; erst der grosse Lauf nach M10 zeigt, ob Plane/Figuren/Messstellen/Leitungen richtig zugeordnet sind (Leitungen als eigene Klasse ausnehmen oder einbeziehen)."
   }
  ]
 }

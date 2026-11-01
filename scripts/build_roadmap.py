@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "roadmap.json"
 OUT = ROOT / "roadmap" / "index.html"
 
-LABEL = {"erledigt": "erledigt", "laeuft": "läuft", "geplant": "geplant", "entscheidung": "Entscheidung"}
+LABEL = {"erledigt": "erledigt", "laeuft": "läuft", "geplant": "geplant", "entscheidung": "Entscheidung", "luecke": "Lücke"}
 STATUS = set(LABEL)
 PHASEN = {"vor_zwischencheck", "nach_zwischencheck", "dauerhaft"}
 
@@ -46,6 +46,7 @@ li.schritt .meta{grid-column:2;color:var(--muted);font-size:.9rem;overflow-wrap:
 .m-laeuft{color:var(--run);background:var(--run-bg)}
 .m-geplant{color:var(--plan);background:var(--plan-bg)}
 .m-entscheidung{color:var(--ask);background:var(--ask-bg)}
+.m-luecke{color:var(--pause);background:var(--pause-bg)}
 li.pause{background:var(--pause-bg);border-color:var(--pause);border-width:2px}
 li.pause .titel{color:var(--pause)}
 details{margin-top:28px}
@@ -112,13 +113,14 @@ def sortiert(schritte):
 
 def bauen():
     stand, alle = laden()
-    ablauf = [s for s in alle if s["status"] != "entscheidung" and s["phase"] != "dauerhaft"]
+    ablauf = [s for s in alle if s["status"] not in ("entscheidung", "luecke") and s["phase"] != "dauerhaft"]
     erledigt = sortiert([s for s in alle if s["status"] == "erledigt"])
     laeuft = sortiert([s for s in alle if s["status"] == "laeuft" and s["phase"] != "dauerhaft"])
     laufend = sortiert([s for s in alle if s["phase"] == "dauerhaft" and s["status"] != "erledigt"])
     vor = sortiert([s for s in alle if s["status"] == "geplant" and s["phase"] == "vor_zwischencheck"])
     nach = sortiert([s for s in alle if s["status"] == "geplant" and s["phase"] == "nach_zwischencheck"])
     fragen = sortiert([s for s in alle if s["status"] == "entscheidung"])
+    luecken = sortiert([s for s in alle if s["status"] == "luecke"])
 
     n_ok = sum(1 for s in ablauf if s["status"] == "erledigt")
     n_run = sum(1 for s in ablauf if s["status"] == "laeuft")
@@ -144,7 +146,7 @@ def bauen():
 <h1>Kuppel Roadmap</h1>
 <p class="stand">Stand: %(stand)s · Seite gebaut am %(gebaut)s</p>
 <div class="zaehler">
-<span>%(n_ok)d erledigt</span><span>%(n_run)d läuft</span><span>%(n_plan)d geplant</span><span>%(n_ask)d Entscheidungen</span>
+<span>%(n_ok)d erledigt</span><span>%(n_run)d läuft</span><span>%(n_plan)d geplant</span><span>%(n_ask)d Entscheidungen</span><span>%(n_luecke)d Lücken</span>
 </div>
 <div class="balken" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="%(prozent)d"><div style="width:%(prozent)d%%"></div></div>
 <p class="balkentext">%(n_ok)d von %(gesamt)d Schritten erledigt (%(prozent)d %%), ohne Entscheidungen und Dauerhaftes</p>
@@ -161,6 +163,10 @@ def bauen():
 <h2>Deine Entscheidungen</h2>
 %(fragen)s
 
+<h2>Offene Lücken und Risiken (nicht verlieren)</h2>
+<p class="balkentext">Fehlende Teile, ungeklärte Befunde und Risiken aus den Bauschritten. Sie bleiben hier stehen, bis sie geschlossen oder bewusst verworfen sind.</p>
+%(luecken)s
+
 <details>
 <summary>Erledigt (%(n_ok)d)</summary>
 %(erledigt)s
@@ -171,15 +177,15 @@ def bauen():
 </html>
 """ % {
         "css": CSS, "stand": escape(stand), "gebaut": gebaut,
-        "n_ok": n_ok, "n_run": n_run, "n_plan": n_plan, "n_ask": len(fragen),
+        "n_ok": n_ok, "n_run": n_run, "n_plan": n_plan, "n_ask": len(fragen), "n_luecke": len(luecken),
         "prozent": prozent, "gesamt": gesamt,
         "arbeit": arbeit, "vor": liste(vor, True), "nach": liste(nach, True),
-        "fragen": liste(fragen, False), "erledigt": liste(erledigt, False),
+        "fragen": liste(fragen, False), "luecken": liste(luecken, False), "erledigt": liste(erledigt, False),
         "daten": json.dumps(alle, ensure_ascii=False).replace("</", "<\\/"),
     }
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(html, encoding="utf-8")
-    print("roadmap/index.html: %d erledigt, %d laeuft, %d geplant, %d Entscheidungen" % (n_ok, n_run, n_plan, len(fragen)))
+    print("roadmap/index.html: %d erledigt, %d laeuft, %d geplant, %d Entscheidungen, %d Luecken" % (n_ok, n_run, n_plan, len(fragen), len(luecken)))
 
 
 if __name__ == "__main__":

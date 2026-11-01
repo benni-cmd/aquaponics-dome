@@ -476,6 +476,78 @@
   "maturity": 0,
   "used_by": "gen_dome.py"
  },
+ "pool_sd_z": {
+  "value": 340,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-Plan F2 / Netz K01, K17: Seitenablauf Pool Mitte Z 340 relativ zum Flur (absolut = relativ + sock_h), 175 mm Ueberdeckung gegen Wirbel",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_sd_d": {
+  "value": 63,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S1b / Netz K01, K17: Seitenablauf d63 (Aussendurchmesser, Rohr der Bibliothek leitungsteile.md)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_sd_wand": {
+  "value": 3.0,
+  "unit": "mm",
+  "origin": "A",
+  "source": "docs/parts/leitungsteile.md: Wand d63 SDR 21 = 3,0 mm (Naeherung ohne Normtabelle)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_sd_a_az": {
+  "value": 11.9,
+  "unit": "deg",
+  "origin": "A",
+  "source": "M10-S1b: Azimut Seitenablauf Linie 1 = Azimut Feinfilter Ost A (atan2(ff_a_y, ff_a_x) = 11,87 Grad) im Modellrahmen, Pool-Mitte (0, 0)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_sd_b_az": {
+  "value": -116.4,
+  "unit": "deg",
+  "origin": "A",
+  "source": "M10-S1b: Azimut Seitenablauf Linie 2 = Azimut Feinfilter West B (atan2(ff_b_y, ff_b_x) = -116,40 Grad) im Modellrahmen, Pool-Mitte (0, 0)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_bd_d": {
+  "value": 50,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S1b / Netz K03, K19: Bodenablauf d50 (>= d50 gegen Verstopfen), ein gemeinsamer Ablauf in der Poolmitte, Teilung in S2",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_bd_wand": {
+  "value": 2.4,
+  "unit": "mm",
+  "origin": "A",
+  "source": "docs/parts/leitungsteile.md: Wand d50 SDR 21 = 2,4 mm (Naeherung ohne Normtabelle)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "pool_ueberstand": {
+  "value": 150,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S1b Auftrag: Stutzen ragt ca. 150 mm ueber die Aussenflaeche der Poolwand (seitlich) bzw. die Unterseite der Bodenplatte (Boden) hinaus",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
  "walkway_min": {
   "value": 600,
   "unit": "mm",

@@ -14,7 +14,7 @@ def add(c, **p):
 
 COLORS = [  # (Namenspraefix, Farbe, Deckkraft) - Schicht 1
     ("T1_", "#b9c0c8", 1), ("T3_", "#cfcfca", 1), ("T13_", "#7a5c3a", 1), ("T4_", "#1c1c1c", 1), ("T5_Wasser", "#3c8ed0", 0.85), ("T6_Wasser", "#3c8ed0", 0.85),
-    ("T7_Plattform", "#9a9a96", 1), ("T7_Pumpe", "#555a60", 1), ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
+    ("T7_Plattform", "#9a9a96", 1), ("T7_Pumpe", "#555a60", 1), ("T5_Stutzen", "#2f6fb0", 1), ("T5_", "#93b49a", 1), ("T6_", "#93b49a", 1), ("T7_", "#93b49a", 1), ("T8_", "#f3f3f1", 1), ("T9_", "#ffffff", 1),
     ("T10_Zulaufrohr", "#5fa8e0", 1), ("T10_Schlauch", "#8cc8f0", 1), ("T11_", "#8b9096", 1), ("T12_", "#4c9a3c", 1)]
 
 def colors():
@@ -304,12 +304,34 @@ def bed_dims(k, b):
     return (BED_OUT_L, BED_OUT_W) if "plants" in b else (b["length"], b["width"])   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel); Aussenbeet 2640 x 800 (W17, D29)
 BED_OUT_L, BED_OUT_W = 2640, 800
 
+POOL_BODEN = 120   # Bodenplatte der Becken (Innenboden = z_bot + POOL_BODEN)
+
+def pool_ports(fz):
+    """M10-S1b: Anschlussstutzen am Zentralpool (Pool-Mitte 0/0). Netz K01/K17 Seitenablauf d63 je Linie (Plan F2, Azimut des Feinfilters), K03/K19 ein gemeinsamer Bodenablauf d50 (Netz: Knoten pool hat einen Bodenablauf, die Teilung auf zwei Pumpen kommt in S2).
+    Rueckgabe: Liste von dict (name, kante, dn, wand, von = Muendung innen in der Wandflaeche, ende = offenes Ende aussen, axis = Flussrichtung aus dem Pool, durch = Dicke der Durchfuehrung); Welt-mm, Z absolut."""
+    ri, ue = LAYOUT["pool"]["d"] / 2, P["pool_ueberstand"]; out = []
+    for nm, kante, az in (("SA_Ost_A", "K01", P["pool_sd_a_az"]), ("SA_West_B", "K17", P["pool_sd_b_az"])):
+        u = (math.cos(math.radians(az)), math.sin(math.radians(az))); z = fz + P["pool_sd_z"]; L = P["wall"] + ue
+        out.append({"name": nm, "kante": kante, "dn": P["pool_sd_d"], "wand": P["pool_sd_wand"], "von": (ri*u[0], ri*u[1], z), "ende": ((ri + L)*u[0], (ri + L)*u[1], z), "axis": (u[0], u[1], 0.0), "durch": P["wall"]})
+    z_in = pool_dims(fz, LAYOUT["pool"], P["wall"], P["pool_depth"], "Pool")[3] + POOL_BODEN
+    out.append({"name": "BA_Mitte", "kante": "K03/K19", "dn": P["pool_bd_d"], "wand": P["pool_bd_wand"], "von": (0.0, 0.0, z_in), "ende": (0.0, 0.0, z_in - POOL_BODEN - ue), "axis": (0.0, 0.0, -1.0), "durch": POOL_BODEN})
+    return out
+
+def pool_stutzen(fz, tn):
+    """M10-S1b: je Port ein Loch in der Wand/Bodenplatte (Aussen-d des Rohrs) und ein Rohrstueck (T5_Stutzen_*, eigener Koerper, Bohrung Innen-d) von der Muendung bis zum offenen Ende; Wasser fliesst aus dem Pool nach aussen."""
+    for p in pool_ports(fz):
+        sx, sy, sz = p["von"]; ax = list(p["axis"]); L =math.dist(p["von"], p["ende"]); nm = "T5_Stutzen_" + p["name"]
+        add("solid.cylinder", diameter=p["dn"], height=round(p["durch"] + 2, 1), base=[round(sx - ax[0], 2), round(sy - ax[1], 2), round(sz - ax[2], 2)], axis=ax, operation="cut", targets=[tn], name=nm + "_Loch")
+        add("solid.cylinder", diameter=p["dn"], height=round(L, 1), base=[round(sx, 2), round(sy, 2), round(sz, 2)], axis=ax, operation="new", name=nm, body_name=nm)
+        add("solid.cylinder", diameter=round(p["dn"] - 2*p["wand"], 2), height=round(L + 2, 1), base=[round(sx - ax[0], 2), round(sy - ax[1], 2), round(sz - ax[2], 2)], axis=ax, operation="cut", targets=[nm], name=nm + "_Bohrung")
+
 def pool_fn(fz, nm, src, wall, depth, tn):
     x, y, d_out, z_bot, total = pool_dims(fz, src, wall, depth, nm)
     add("solid.cylinder", diameter=d_out, height=total, base=[x, y, z_bot], operation="new", name=tn, body_name=tn)
-    add("solid.cylinder", diameter=d_out - 2*wall, height=total, base=[x, y, z_bot + 120], operation="cut", targets=[tn], name=tn + "_Hohlraum")
+    add("solid.cylinder", diameter=d_out - 2*wall, height=total, base=[x, y, z_bot + POOL_BODEN], operation="cut", targets=[tn], name=tn + "_Hohlraum")
+    if nm == "Pool": pool_stutzen(fz, tn)   # M10-S1b
     wn = tn.split("_")[0] + "_Wasser"
-    add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + 120), base=[x, y, z_bot + 120], operation="new", name=wn, body_name=wn)
+    add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + POOL_BODEN), base=[x, y, z_bot + POOL_BODEN], operation="new", name=wn, body_name=wn)
 
 def pools(fz):
     """04_Wasserbecken: Zentralpool (T5) und Zweitbecken (T6) als Komponenten; eingelassen, Rand Z 650, Wasserspiegel Z 515."""

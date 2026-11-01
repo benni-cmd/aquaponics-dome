@@ -199,3 +199,20 @@ PVC-/PE-Rohre und Fittings aus dem Sanitaer-/Bewaesserungshandel; Schlaeuche als
 
 - `scripts/workshop/check_leitungsteile.py` (Ergebnis `renders/components/leitungsteile/check.txt`): 63 Dateien (Soll 63, davon 7 Reduzierungen, 4 Schlauchteile, 3 Verteiler), Aussen-D, Laenge, Volumen = Ringflaeche x Mittellinie (Pappus, Rohr/Bogen/Schlauchbogen), Baulaengen, Biegeradius, Verteiler-Abgaenge und alle Port-Stirnflaechen (231 Pruefungen).
 - Kein Bild-Kritiker: Normteile ohne Referenzbild; Spec-Pruefer Runde 1 (FAIL, 5 Befunde), Runde 2 (FAIL knapp, 5 Befunde) und Runde 3 (PASS knapp, 4 kleine Befunde, hier eingearbeitet); Triage in `docs/workshop-log.md`; Orchestrator-Stichprobe steht aus.
+
+## Pool-Anschluesse am Zentralpool (M10-S1b, Montage, Runde 62)
+
+Ein eigenes Bauteilblatt fuer den Pool gibt es unter `docs/parts/` nicht; die Ports stehen deshalb hier. Sie entstehen im Pool-Bauteil `designs/components/pool_zentral.sc` (Build, `pool_ports()` / `pool_stutzen()` in `scripts/gen_dome.py`), nicht von Hand. Je Port ein Loch in Wand bzw. Bodenplatte (Aussen-d) und ein Rohrstueck `T5_Stutzen_<Name>` (eigener Koerper, Bohrung Innen-d, Farbe blau) von der Muendung bis zum offenen Ende; Wasser fliesst aus dem Pool nach aussen. Parameter `pool_sd_*`, `pool_bd_*`, `pool_ueberstand` in `data/params.json`. Koordinaten Modellrahmen (Pool-Mitte 0/0), mm, Z absolut = Netz-Z relativ + 400 (sock_h).
+
+| Port | Netz | DN (Aussen-d / Wand) | Muendung innen x / y / z | offenes Ende x / y / z | Richtung | Kommentar |
+|---|---|---|---|---|---|---|
+| SA_Ost_A | K01 (Linie 1) | d63 / 3,0 | 1903,2 / 401,1 / 740 | 2196,8 / 462,9 / 740 | radial nach aussen, Az 11,9 | Seitenablauf Z 340 rel., zum Feinfilter Ost A (x 3925 / y 825) |
+| SA_West_B | K17 (Linie 2) | d63 / 3,0 | -864,8 / -1742,2 / 740 | -998,2 / -2010,9 / 740 | radial nach aussen, Az -116,4 | Seitenablauf Z 340 rel., zum Feinfilter West B (x -1575 / y -3175) |
+| BA_Mitte | K03 + K19 | d50 / 2,4 | 0 / 0 / -1305 | 0 / 0 / -1575 | senkrecht nach unten | ein gemeinsamer Bodenablauf in der Poolmitte; Teilung auf d40 zu Pumpe_klein_1 und _3 folgt in S2 |
+
+- Ueberstand: Seitenstutzen 150 mm ueber der Aussenflaeche der Wand (Radius 2095, Ende bei Radius 2245), Bodenstutzen 150 mm unter der Unterseite der Bodenplatte (Z -1425, Ende -1575); die Muendungen schliessen buendig mit Innenwand bzw. Innenboden ab (kein Ueberstand ins Wasser).
+- Azimute: aus der Lage der Feinfilter im Modellrahmen gerechnet (`atan2(ff_a_y, ff_a_x)` = 11,87 Grad, `atan2(ff_b_y, ff_b_x)` = -116,40 Grad), nicht aus den Plan-Rundwerten 12 / -116; Pool-Mitte ist 0/0 (D35).
+- Hoehe Seitenablauf: Z 740 absolut (= 340 relativ); Wasserspiegel 915, Ueberdeckung der Achse 175 mm (Plan F2 [A]).
+- Bodenablauf-Z: Innenboden des Modells liegt bei Z -1305 absolut = -1705 relativ, das Netz nennt -1685 (20 mm darueber); Modellwert gilt, Abweichung im Rahmen der Netz-Rundung (siehe Hoehenprobe in `scripts/check_leitungen.py`).
+- Bodenstutzen reicht 150 mm in den Erdboden (`T13_Erde` ist unter dem Pool nicht ausgespart); der Graben dafuer entsteht mit der Unterflur-Verlegung in S2, nicht in S1b.
+- Nicht Teil von S1b: Ringsammler-Einlaeufe (S4), Zweit- und Drittbecken-Ports, Rohre, Pumpentafeln, Feinfilter.

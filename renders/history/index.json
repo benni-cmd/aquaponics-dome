@@ -2358,5 +2358,15 @@
   "note": "Runde 61: Feinfilter Ost A und West B in Gruben, Draufsicht mit Massen",
   "commit": "258d197",
   "source": "renders/top-61.png"
+ },
+ {
+  "file": "20261101-161234_montage_m10-s1b-pool-ports_top-62.png",
+  "sha": "aa4090f3d01c3237",
+  "time": "2026-11-01 16:12:34",
+  "role": "montage",
+  "subject": "m10-s1b-pool-ports",
+  "note": "Runde 62 Draufsicht, Stutzen Seitenablauf x2 und Bodenablauf",
+  "commit": "8e378ad",
+  "source": "renders/top-62.png"
  }
 ]

@@ -468,6 +468,15 @@
    "reihenfolge": 0,
    "wer": "Montage (Sitzung montage-kuppel-2)",
    "notiz": "Montage 01.11.: heutige Lage erfuellt alle Soll-Luecken (Bedienzone 632 mm, nur 132 mm Reserve). Ohne die 2 kleinen Tanks (Absetzer) 450 mm Reserve, zusaetzlich ohne ein grosses Tank 414 mm Reserve und Drittbecken-Luecke 914 mm. Bounding-Box-Zufallssuche, kein Build, keine Karte."
+  },
+  {
+   "id": "REGEL-AKTUELL",
+   "titel": "Regel: vor jedem Schritt Aktualitaet pruefen",
+   "status": "laeuft",
+   "phase": "dauerhaft",
+   "reihenfolge": 3,
+   "wer": "Orchestrator",
+   "notiz": "Ben 01.11.: Vor dem Start jedes Roadmap-Schritts pruefen, ob die Aufgabe noch aktuell ist oder sich durch vorherige Schritte geaendert hat; Ergebnis steht im Auftragsblatt (docs/jobs/README.md)."
   }
  ]
 }

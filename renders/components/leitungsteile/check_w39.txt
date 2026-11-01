@@ -32,4 +32,28 @@ PASS lt_w39: lt_schlauch_id16_L100 Innen ID16: Zylinderflaeche r 8: Ist 1, Soll 
 PASS lt_w39: lt_schlauch_id16_L100 Port A (Schlauchende, ID16) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
 PASS lt_w39: lt_schlauch_id16_L100 Port B (Schlauchende, ID16) Stirnflaeche an (0, 0, 100): Ist 1, Soll 1
 INFO schlauch ID16 L100: Masse 11.3 g
-== lt_w39: 31/31 PASS
+PASS lt_w39: kappe d20 Koerperzahl: Ist 1, Soll 1
+PASS lt_w39: kappe d20 Hoehe = Muffentiefe 16 + Boden 3: Ist 19, Soll 19 (+-0.05)
+PASS lt_w39: kappe d20 Aussen-D = Formstueck od_f: Ist 26.9996, Soll 27 (+-0.05)
+PASS lt_w39: kappe d20 Volumen = Aussen - Muffe: Ist 5851.34, Soll 5852 (+-11.704)
+PASS lt_w39: kappe d20 Boden geschlossen: Aussenflaeche +Z bei z = 19: Ist 1, Soll 1
+PASS lt_w39: kappe d20 Anschlag der Muffe bei z = 16 (Boden dick 3): Ist 1, Soll 1
+PASS lt_w39: lt_kappe_d20 Port A (Muffe, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: kappe d20 Interferenz 0 gegen Zapfen d20 (steckt 16 mm in der Muffe; geprueft 2 Koerper): Ist 0, Soll 0
+INFO kappe d20: Masse 8.2 g
+PASS lt_w39: kappe d50 Koerperzahl: Ist 1, Soll 1
+PASS lt_w39: kappe d50 Hoehe = Muffentiefe 31 + Boden 3: Ist 34, Soll 34 (+-0.05)
+PASS lt_w39: kappe d50 Aussen-D = Formstueck od_f: Ist 58.4991, Soll 58.5 (+-0.05)
+PASS lt_w39: kappe d50 Volumen = Aussen - Muffe: Ist 30517, Soll 30517.8 (+-61.0356)
+PASS lt_w39: kappe d50 Boden geschlossen: Aussenflaeche +Z bei z = 34: Ist 1, Soll 1
+PASS lt_w39: kappe d50 Anschlag der Muffe bei z = 31 (Boden dick 3): Ist 1, Soll 1
+PASS lt_w39: lt_kappe_d50 Port A (Muffe, DN40) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: kappe d50 Interferenz 0 gegen Zapfen d50 (steckt 31 mm in der Muffe; geprueft 2 Koerper): Ist 0, Soll 0
+INFO kappe d50: Masse 42.7 g
+PASS lt_w39: kappe d20 Zapfen Abgang 3 (x = 315): Aussenradius 10 = Muffenradius der Kappe (Passung ohne Spiel und ohne Ueberlappung): Ist 1, Soll 1
+PASS lt_w39: kappe d20 Zapfenoberkante z = 79.25 liegt am Muffenanschlag der Kappe (Kappenursprung z = 63.25 + Tiefe 16): Ist 1, Soll 1
+PASS lt_w39: kappe d20 Kappenhoehe 19 ueber dem Zapfen: Oberkante 82.25 > Zapfenoberkante, Boden 3 dick: Ist 1, Soll 1
+PASS lt_w39: kappe d50 Zapfen Abgang 4 (x = 435): Aussenradius 25 = Muffenradius der Kappe (Passung ohne Spiel und ohne Ueberlappung): Ist 1, Soll 1
+PASS lt_w39: kappe d50 Zapfenoberkante z = 79.25 liegt am Muffenanschlag der Kappe (Kappenursprung z = 48.25 + Tiefe 31): Ist 1, Soll 1
+PASS lt_w39: kappe d50 Kappenhoehe 34 ueber dem Zapfen: Oberkante 82.25 > Zapfenoberkante, Boden 3 dick: Ist 1, Soll 1
+== lt_w39: 53/53 PASS

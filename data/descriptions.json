@@ -612,6 +612,31 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_kappe_d",
+      "titel": "Kappe d20 und d50 (Abgang verschließen)",
+      "was": "Aufsteck-Kappe mit geschlossenem Boden, die einen unbenutzten Abgang oder ein Rohrende verschließt, z. B. den Messkreis-Abgang d20 am Verteiler d50 der Linie 2.",
+      "status": "gebaut, Prüfungen mit Interferenz 0 gegen den Zapfen und den Verteiler d50",
+      "ablauf": [
+        "Die Kappe wird auf den Zapfen geklebt (Einstecktiefe wie die Muffe: d20 16 mm, d50 31 mm).",
+        "Der Boden ist 3 mm dick und verschließt den Abgang."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "d20: Außen 27, Höhe 19",
+            "d50: Außen 58,5, Höhe 34"
+          ]
+        }
+      ],
+      "masse": {
+        "Kappe d20": "8,2 g",
+        "Kappe d50": "42,7 g"
+      },
+      "grenzen": "Maße aus der Bibliotheksnäherung, Handelsteil im Katalog offen.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

@@ -537,3 +537,25 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 | 76 Stueck | | E: 38 Rinnen x 2 Linien (Netzliste K12/K28) | mittel |
 
 **Montage (L4):** beide Enden auf Tuelle D16 stecken, je eine Schlauchschelle (Teil 5). Werkzeug: Schlauchschere. **Pruefung:** `check_lt_w39.py hose` 7/7 PASS (Koerper, Laenge, AD, Volumen gegen Ringflaeche 0,008 %, Innenzylinder r 8, beide Port-Stirnflaechen). **Bild:** `renders/components/leitungsteile/lt_schlauch_id16_L100.png`. **Offene Fragen:** genaue Laenge entscheidet die Montage (Tuellenabstand je Rinne); kein Katalog offen, da zuschneidbarer Meterschlauch.
+
+## Kappe d20 und d50 `lt_kappe_d20`, `lt_kappe_d50` (T70-KAP-20, T70-KAP-50)
+
+**Mini-Plan.** Problem: Der Verteiler d50 hat am Messkreis-Abgang d20 (Linie 2 ohne Messkreis) und am Reserveabgang d50 offene Zapfen; die Bibliothek hat keine Kappe (W36 Teil 5). Intent: Abgaenge mit einem Normteil verschliessen. Goal: zwei Dateien mit einem Port Muffe (Richtung -Z), Boden 3 mm geschlossen, Aussen wie das Formstueck `od_f(d)`, Check gruen, Kappe steckt ohne Ueberlappung (ausser Einstecktiefe) auf dem Zapfen von `lt_verteiler_d50`. Bau: eine parametrische Funktion `kappe(d)`: Zylinder Aussen od_f(d), Hoehe Muffentiefe + 3, Muffe d von unten.
+
+**Funktion:** Aufsteck-Kappe mit geschlossenem Boden; verschliesst einen Zapfen oder ein Rohrende (Klebemuffe). `kappe(d)` fuer d20 und d50. Bedarf laut Netz: d20 mindestens 1 je Linie 2 (Messkreis-Abgang 3 des Verteilers d50 bleibt unbenutzt), d50 fuer Reserveabgaenge; Stueckzahl entscheidet die Montage.
+
+| Merkmal | d20 | d50 |
+|---|---|---|
+| Muffe (Tiefe) | d20 (16) | d50 (31) |
+| Boden | 3 | 3 |
+| Hoehe gesamt | 19 | 34 |
+| Aussen-D (Formstueck od_f) | 27 | 58,5 |
+| Masse (PVC-U 1,4) | 8,2 g | 42,7 g |
+
+**Ports** (Bauteil-KS, mm; Oeffnung im Ursprung, Kappe waechst nach +Z): A (Muffe, DN15 bzw. DN40) bei 0, 0, 0, Richtung -Z. Sitz auf dem Zapfen: Kappenursprung = Zapfenoberkante minus Muffentiefe; am Verteiler d50 (Zapfenoberkante z = 79,25) also Kappe d20 bei z = 63,25 und Kappe d50 bei z = 48,25.
+
+**Herkunft:** Bauweise SDR-21-Naeherung der Bibliothek (A, niedrig); Boden 3 mm Annahme; Aussen-D gerechnet `od_f(d)` (mittel); Handelsteil "Kappe/Stopfen" im Katalog ueblich, Nachweis N-BESCHAFFUNG.
+
+**Montage (L4):** Zapfen entgraten, Kappe aufkleben bis Anschlag; ein verschlossener Abgang braucht keinen Kugelhahn. Werkzeug: Entgrater, Kleber.
+
+**Pruefung:** `check_lt_w39.py kappe` 22/22 PASS: je Groesse Koerper, Hoehe, Aussen-D, Volumen (0,01 %), Boden geschlossen, Anschlag, Port, Interferenz 0 gegen Testzapfen; zusaetzlich fuer Abgang 3 (d20) und Abgang 4 (d50) des echten `lt_verteiler_d50`: Zapfen-Zylinder mit Radius = Muffenradius der Kappe und Zapfenoberkante z = 79,25 = Kappenursprung + Muffentiefe (Passung, nur Einstecktiefe ueberlappt). Ein Boolean-Interferenztest Kappe gegen den ganzen Verteiler scheitert in SolidCraft (114 s, "boolean Intersect: no result") und ist deshalb durch diese Mass-Pruefung ersetzt. **Bild:** `renders/components/leitungsteile/lt_kappe_d20.png`, `lt_kappe_d50.png`. **Offene Fragen:** Handelsteil Kappe oder Stopfen (Stopfen = innen steckend) im Katalog offen.

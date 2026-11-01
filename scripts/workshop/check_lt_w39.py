@@ -5,10 +5,17 @@ sys.path.insert(0, os.path.dirname(__file__))
 import sc
 import leitung as L
 import leitung_w39 as W
-from check_lt_w36 import interference
+from check_lt_w36 import interference as _interference
 
 D = os.path.join(sc.ROOT, "designs", "components")
 PI4 = math.pi / 4
+
+def interference(path, extra=()):
+    """Wie check_lt_w36.interference, aber Paare, deren Boolean scheitert ('unchecked'), zaehlen als Treffer (sonst besteht der Check leer)."""
+    bad, res = _interference(path, extra)
+    for u in res.get("unchecked", []):
+        bad.append({"a": u.get("a"), "b": u.get("b"), "volume_mm3": "UNGEPRUEFT: " + str(u.get("reason"))})
+    return bad, res
 
 def path_of(fname): return os.path.join(D, fname + ".sc")
 
@@ -81,7 +88,36 @@ def check_hose(ck):
     port_checks(ck, fname, ["Schlauch"])
     print(f"INFO schlauch ID16 L100: Masse {ev['total']['mass_g']:.1f} g")
 
-CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose)]
+def check_kappe(ck):
+    for d in W.KAPPE_SIZES:
+        fname = f"lt_kappe_d{d}"; dp = L.DEPTH[d]; of = L.od_f(d); h = dp + W.KAPPE_BODEN
+        ev = sc.evaluate(path_of(fname)); b = ev["bodies"][0]; bb = b["bbox"]
+        ck.eq(f"kappe d{d} Koerperzahl", ev["body_count"], 1)
+        ck.eq(f"kappe d{d} Hoehe = Muffentiefe {dp:g} + Boden {W.KAPPE_BODEN:g}", bb["max"][2] - bb["min"][2], h, 0.05)
+        ck.eq(f"kappe d{d} Aussen-D = Formstueck od_f", bb["max"][0] - bb["min"][0], of, 0.05)
+        exp = PI4 * (of ** 2 * h - d ** 2 * dp)
+        ck.eq(f"kappe d{d} Volumen = Aussen - Muffe", b["volume_mm3"], exp, exp * 0.002)
+        fs = sc.faces(path_of(fname), "Kappe")
+        ck.eq(f"kappe d{d} Boden geschlossen: Aussenflaeche +Z bei z = {h:g}", 1 if any(f.get("plane_normal") and f["plane_normal"][2] > 0.999 and abs(f["centroid"][2] - h) < 0.05 for f in fs) else 0, 1)
+        ck.eq(f"kappe d{d} Anschlag der Muffe bei z = {dp:g} (Boden dick {W.KAPPE_BODEN:g})", 1 if any(f.get("plane_normal") and f["plane_normal"][2] < -0.999 and abs(f["centroid"][2] - dp) < 0.05 for f in fs) else 0, 1)
+        port_checks(ck, fname, ["Kappe"])
+        extra = [{"command": "solid.cylinder", "params": {"diameter": d, "height": 20 + dp, "base": [0, 0, -20], "operation": "new", "name": "T_Zapfen", "body_name": "Test_Zapfen"}}]
+        bad, res = interference(path_of(fname), extra)
+        ck.eq(f"kappe d{d} Interferenz 0 gegen Zapfen d{d} (steckt {dp:g} mm in der Muffe; geprueft {res.get('checked', '?')} Koerper)", len(bad), 0)
+        print(f"INFO kappe d{d}: Masse {ev['total']['mass_g']:.1f} g")
+    # Kappe auf den echten Zapfen des Verteilers d50 (Abgang 3 Messkreis d20, Abgang 4 Bypass d50): Zylinder und Zapfenoberkante der Verteiler-Datei gegen die Kappenmasse (Boolean mit dem Verteiler scheitert, 114 s, "no result")
+    import leitung_w36 as W36
+    g = W36.v50_geom(); top = g["top"]
+    fv = sc.faces(path_of("lt_verteiler_d50"), "Verteiler")
+    for k, d in ((2, 20), (3, 50)):
+        dp = L.DEPTH[d]; x = g["xs"][k]; z0 = top - dp
+        zyl = [f["cylinder"] for f in fv if f.get("cylinder") and abs(abs(f["cylinder"]["axis"][2]) - 1) < 0.01 and abs(f["cylinder"]["origin"][0] - x) < 0.1 and abs(f["cylinder"]["radius"] - d / 2) < 0.05]
+        ck.eq(f"kappe d{d} Zapfen Abgang {k + 1} (x = {x:g}): Aussenradius {d / 2:g} = Muffenradius der Kappe (Passung ohne Spiel und ohne Ueberlappung)", 1 if zyl else 0, 1)
+        ob = [f for f in fv if f.get("plane_normal") and f["plane_normal"][2] > 0.999 and abs(f["centroid"][2] - top) < 0.05 and abs(f["centroid"][0] - x) < 0.1]
+        ck.eq(f"kappe d{d} Zapfenoberkante z = {top:g} liegt am Muffenanschlag der Kappe (Kappenursprung z = {z0:g} + Tiefe {dp:g})", 1 if ob else 0, 1)
+        ck.eq(f"kappe d{d} Kappenhoehe {dp + W.KAPPE_BODEN:g} ueber dem Zapfen: Oberkante {z0 + dp + W.KAPPE_BODEN:g} > Zapfenoberkante, Boden {W.KAPPE_BODEN:g} dick", 1 if abs((z0 + dp + W.KAPPE_BODEN) - (top + W.KAPPE_BODEN)) < 1e-6 else 0, 1)
+
+CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose), ("kappe", check_kappe)]
 
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))

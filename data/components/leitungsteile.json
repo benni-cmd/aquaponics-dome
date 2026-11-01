@@ -851,6 +851,74 @@
      "dn": "ID16"
     }
    ]
+  },
+  "lt_kappe_d20": {
+   "teilenummer": "T70-KAP-20",
+   "komponente": "T70_Kappe_d20",
+   "werkstoff": "PVC-U (Klebemuffe)",
+   "d": 20,
+   "hoehe": 19.0,
+   "boden": 3.0,
+   "aussen_d": 27.0,
+   "muffentiefe": 16,
+   "verwendung": "Messkreis-Abgang am Verteiler d50, Linie 2 unbenutzt (Abgang 3, 1 Stueck); Reserveabgang",
+   "herkunft": {
+    "Bauweise": "A (SDR-21-Naeherung der Bibliothek)",
+    "boden 3": "Annahme",
+    "aussen": "gerechnet od_f(d)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN15"
+    }
+   ]
+  },
+  "lt_kappe_d50": {
+   "teilenummer": "T70-KAP-50",
+   "komponente": "T70_Kappe_d50",
+   "werkstoff": "PVC-U (Klebemuffe)",
+   "d": 50,
+   "hoehe": 34.0,
+   "boden": 3.0,
+   "aussen_d": 58.5,
+   "muffentiefe": 31,
+   "verwendung": "Reserveabgang d50 am Verteiler d50 (Abgang 4 Bypass bei abgesperrter Linie)",
+   "herkunft": {
+    "Bauweise": "A (SDR-21-Naeherung der Bibliothek)",
+    "boden 3": "Annahme",
+    "aussen": "gerechnet od_f(d)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN40"
+    }
+   ]
   }
  }
 }

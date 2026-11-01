@@ -105,6 +105,32 @@ DESC["hose"] = [{"match": "^lt_schlauch_id16_L100$", "titel": "Schlauch ID16, ku
     "aufbau": [{"t": "Maße", "p": ["Innen 16, Außen 20, Länge 100", "Farbe hellblau (Frischwasser)"]}],
     "masse": {"Länge": "100 mm"}, "grenzen": "Die Länge 100 deckt den freien Abschnitt 70 mm plus Aufsteckenden; genaue Länge entscheidet die Montage.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
 
+# ---------------------------------------------------------------- Teil 4: Kappe d20 und d50 (Stopfen als Aufsteck-Kappe, Boden geschlossen)
+KAPPE_SIZES = (20, 50)
+KAPPE_BODEN = 3.0                                             # geschlossener Boden [A]
+
+def kappe(d):
+    dp = L.DEPTH[d]; h = dp + KAPPE_BODEN
+    b = sc.Build(); nm = f"T70_Kappe_d{d}"
+    L.setup(b, nm, d, {"hoehe": h, "boden": KAPPE_BODEN})
+    b.add("solid.cylinder", diameter=L.od_f(d), height=h, base=[0, 0, 0], operation="new", name="Kappe_R", body_name="Kappe")
+    b.add("solid.cylinder", diameter=d, height=dp + 1, base=[0, 0, -1], operation="cut", targets=["Kappe"], name="Muffe_A")
+    b.add("material.assign", bodies=["Kappe"], material="LT pvc")
+    L.meta(b, nm, f"T70-KAP-{d}", f"Kappe PVC-U d{d} ({L.DN[d]}), Klebemuffe, Boden {KAPPE_BODEN:g} geschlossen, steckt auf einen Zapfen/ein Rohrende")
+    return b, nm, dict(h=h)
+
+for _d in KAPPE_SIZES:
+    reg("kappe", f"lt_kappe_d{_d}", (lambda d=_d: kappe(d)))
+    PORTS[f"lt_kappe_d{_d}"] = (lambda d=_d: [("A", (0, 0, 0), (0, 0, -1), "Muffe", L.DN[d])])
+JSON["kappe"] = lambda: {f"lt_kappe_d{d}": jent(f"lt_kappe_d{d}", f"T70-KAP-{d}", f"T70_Kappe_d{d}", "PVC-U (Klebemuffe)", d=d, hoehe=L.DEPTH[d] + KAPPE_BODEN, boden=KAPPE_BODEN, aussen_d=L.od_f(d), muffentiefe=L.DEPTH[d],
+    verwendung={"d20": "Messkreis-Abgang am Verteiler d50, Linie 2 unbenutzt (Abgang 3, 1 Stueck); Reserveabgang", "d50": "Reserveabgang d50 am Verteiler d50 (Abgang 4 Bypass bei abgesperrter Linie)"}[f"d{d}"],
+    herkunft={"Bauweise": "A (SDR-21-Naeherung der Bibliothek)", "boden 3": "Annahme", "aussen": "gerechnet od_f(d)", "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"}) for d in KAPPE_SIZES}
+DESC["kappe"] = [{"match": "^lt_kappe_d", "titel": "Kappe d20 und d50 (Abgang verschließen)", "was": "Aufsteck-Kappe mit geschlossenem Boden, die einen unbenutzten Abgang oder ein Rohrende verschließt, z. B. den Messkreis-Abgang d20 am Verteiler d50 der Linie 2.",
+    "status": "gebaut, Prüfungen mit Interferenz 0 gegen den Zapfen und den Verteiler d50",
+    "ablauf": ["Die Kappe wird auf den Zapfen geklebt (Einstecktiefe wie die Muffe: d20 16 mm, d50 31 mm).", "Der Boden ist 3 mm dick und verschließt den Abgang."],
+    "aufbau": [{"t": "Maße", "p": ["d20: Außen 27, Höhe 19", "d50: Außen 58,5, Höhe 34"]}],
+    "masse": {"Kappe d20": "8,2 g", "Kappe d50": "42,7 g"}, "grenzen": "Maße aus der Bibliotheksnäherung, Handelsteil im Katalog offen.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
+
 # ---------------------------------------------------------------- MARKE-EINFUEGEN (weitere Teile werden oberhalb dieser Zeile ergaenzt)
 
 # ---------------------------------------------------------------- Ausgabe nach JSON und descriptions

@@ -22,7 +22,9 @@ EINGABEFORMAT der Trassenliste (JSON, Koordinaten in mm im Modellrahmen, Ursprun
                  "heber": false,                              (optional: Pipe-voll-Heber, Gefaelle-Pruefung entfaellt)
                  "anschluss": ["Pumpe_gross:1", "Zentralpool"] } ]   (Hindernisse, die diese Trasse beruehren darf: Port, Rand)
   Baender (Plan Abschnitt 4 Regel 1, Z relativ zum Flur): U = Unterflur -400..-100; W = am Bauteil 0..1000 und hoechstens nah_w vom Tank/Pumpe/Puffer/Beckenrand;
-  T = Tischebene 900..1100 und im Grundriss unter einem Tisch; UE = ueber Kopf >= 2100. Senkrechte Teilstuecke (Grundriss < 20 mm) sind Steigleitungen: kein Bandtest, aber Kollision und Gang.
+  T = Tischebene 900..1100 und im Grundriss unter einem Tisch; UE = ueber Kopf >= 2100.
+  M10-S2b NEU (Befund: Plan 4.1 kennt sie nicht, die Bauteil-Ports liegen ausserhalb von W und U): WH = am Bauteil hoch, 0..2100, wie W nur innerhalb nah_w vom Tank/Pumpe/Becken (Biofilter-Zulauf Z 1420, Ueberlauf Z 1570);
+  UT = tief unterflur -2600..-400 (Pool-Bodenablauf liegt auf Z -1705, die Leitung muss unter dem Pool hinaus). Senkrechte Teilstuecke (Grundriss < 20 mm) sind Steigleitungen: kein Bandtest, aber Kollision und Gang.
 REGELN, die geprueft werden (Kennung im Bericht):
   KOLL     Rohrachse (Zylinder, Radius dn/2, Abtastung 10 mm) gegen Hindernisse (Bauteile als Bounding-Box je Instanz aus .compbox.json, Portale/Beete, Tischfuesse, Becken als Zylinder)
            und Rohr gegen Rohr (Abstand der Achsen < Summe der Radien; Abzweige: Beruehrung bis 150 mm vom Trassenende wird als T-Stueck gewertet). Nicht modelliert: Rinnen und Verteilerrohre der Tische, Haut, Streben, Pflanzen.
@@ -36,7 +38,7 @@ import json, math, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NETZ = os.path.join(ROOT, "data", "leitungsnetz.json")
 DEFAULT_TRASSEN = os.path.join(ROOT, "data", "leitungstrassen.json")
-BANDS = {"U": (-400.0, -100.0), "W": (0.0, 1000.0), "T": (900.0, 1100.0), "UE": (2100.0, 1e9)}   # Z relativ zum Flur (Plan 4.1)
+BANDS = {"U": (-400.0, -100.0), "W": (0.0, 1000.0), "T": (900.0, 1100.0), "UE": (2100.0, 1e9), "WH": (0.0, 2100.0), "UT": (-2600.0, -400.0)}   # Z relativ zum Flur (Plan 4.1); WH und UT neu in M10-S2b
 RULES = {"nah_w": 500.0, "gang_z_max": 2100.0, "tol": 2.0, "step": 10.0, "gang_step": 50.0, "junction": 150.0, "steig_xy": 20.0, "min_xy": 100.0}
 TECH = ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Klein", "Feinfilter")   # M10-S2a: Feinfilter ergaenzt (S1 stellte ihn ins Modell)
 
@@ -219,10 +221,10 @@ def pruefe(w, netz, doc):
                     if not (lo - R["tol"] <= z - w.fz <= hi + R["tol"]): viol.append(("BAND", tid, "Teilstueck %d Band %s: Z rel %.0f ausserhalb %g..%g" % (i + 1, b_, z - w.fz, lo, hi if hi < 1e8 else float("inf")))); break
             for p in samples(a, b, R["gang_step"]):
                 zr = p[2] - w.fz
-                if not steig and b_ == "W" and not near_tech(w, p[0], p[1], nah): bad_near.append(p)
+                if not steig and b_ in ("W", "WH") and not near_tech(w, p[0], p[1], nah): bad_near.append(p)
                 if not steig and b_ == "T" and not under_table(w, p[0], p[1]): bad_tab.append(p)
                 if 0.0 <= zr < R["gang_z_max"] and free_floor(w, p[0], p[1]):
-                    if (b_ == "W" or steig) and near_tech(w, p[0], p[1], nah): continue
+                    if (b_ in ("W", "WH") or steig) and near_tech(w, p[0], p[1], nah): continue
                     gang.append(p)
             if t["pct"] and not t["heber"]:
                 dz = b[2] - a[2]

@@ -637,5 +637,32 @@
   "r_id": "",
   "maturity": 0,
   "used_by": "trassen_linie.py, leitungen.py"
+ },
+ "lt_k08_west_x": {
+  "value": 2640,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K08 (Pumpe_gross:1 -> Biofilter): x der Nord-Sued-Strecke westlich der Tankplattform (Plattform-Bounding-Box beginnt bei x 2724 / y -648, 84 mm Abstand, K06-Steigleitung bei x 2636 liegt 183 mm tiefer)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k09_aus": {
+  "value": 195,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K09 (Pumpe_gross:2 -> Biofilter): Strecke unter der Tankplattform vom Druckstutzen bis zum Steigrohr; Druckstutzen liegt 123 mm innerhalb der Plattformkante, 195 mm bringen das Steigrohr 72 mm hinter die Kante",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k10_len": {
+  "value": 450,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K10 (Biofilter-Ueberlauf): Laenge des Rohrs d50 hinter der Reduziermuffe bis zum offenen Ende am vorgesehenen Verteilerplatz; der Verteiler d50 selbst folgt in S3",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
  }
 }

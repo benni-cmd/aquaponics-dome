@@ -111,6 +111,38 @@ def linie1_s2a(L, neu):
     neu["t_stuecke"].append({"id": "T1", "pos": rd(t0), "d": 63, "ports": [{"trasse": "K06-T", "ende": "ende", "d": 63}, {"trasse": "K06", "ende": "start", "d": 50}, {"trasse": "K02", "ende": "start", "d": 50}],
                          "notiz": "T d63 aus lt_t_d63 + je Ausgang Rohrstueck d63 (2 t) + Reduziermuffe d63/d50 (die Muffen eines T und einer Reduziermuffe passen nicht Muffe auf Muffe)"})
 
+def linie1_biofilter(L, neu):
+    """K08/K09 Pumpen-Druckstutzen d40 -> T d50 (Z des Biofilter-Zulaufs) -> Stamm d50 -> Reduziermuffe d63/d50 auf den Zulauf-Stutzen; K10 Ueberlauf d63 -> Reduziermuffe -> Rohr d50 bis zum offenen Verteilerplatz (M10-S2b)."""
+    tg = L["tank_gross"]; p8, p9 = (port(L["pumpe_gross"][i], "pumpe_gross", "druck") for i in (0, 1))
+    zt, zo, _ = port(tg, "tank_gross", "zulauf"); ut, uo, _ = port(tg, "tank_gross", "ueberlauf")
+    zh = zt[2]; R40 = r90(40); up = (0.0, 0.0, 1.0)
+    hp = (-zo[1], zo[0], 0.0)                                              # waagerecht, senkrecht zur Zulauf-Achse (Richtung Westnordwest)
+    # K09 (Pumpe 2 steht unter der Plattform): hoch -> unter der Plattform in Zulauf-Richtung hinaus -> Steigrohr -> waagerecht zum T
+    c1 = add(p9[0], up, R40); c2 = add(c1, zo, P["lt_k09_aus"]); c3 = (c2[0], c2[1], zh)
+    u = dot(sub(zt, c3), hp); t2 = add(c3, hp, u)                           # T: Schnitt der K09-Waagerechten mit der Zulauf-Achse
+    # K08 (Pumpe 1): hoch -> nach Westen -> an der Plattform vorbei nach Norden -> Steigrohr -> waagerecht von Westen zum T
+    xw = P["lt_k08_west_x"]; W = (xw - t2[0]) / hp[0]; cy = t2[1] + W * hp[1]
+    k8 = [p8[0], add(p8[0], up, R40), (xw, p8[0][1], p8[0][2] + R40), (xw, cy, p8[0][2] + R40), (xw, cy, zh), t2]
+    k9 = [p9[0], c1, c2, c3, t2]
+    # Reduziermuffe d63/d50 auf dem Zulauf-Stutzen, Stamm d50 vom T bis zur Muffenebene B
+    rz, pb = stutzen_red(zt, zo, 63, 50)
+    neu["r_stuecke"].append(dict(id="R_ZUL", **rz))
+    neu["trassen"] += [
+        {"id": "K08", "kante": "K08", "dn": 40, "farbe": "dunkelblau", "start": "stutzen", "ende": "t:T2", "baender": ["W", "W", "W", "W", "WH"], "anschluss": [L["pumpe_gross"][0]],
+         "pfad": [rd(p) for p in k8], "notiz": "Druckstutzen %s (Z %.0f) -> hoch auf Z %.0f -> %.0f mm nach Westen (x %g, an der Plattform vorbei) -> %.0f mm nach Norden -> Steigrohr auf Zulaufhoehe Z %.0f -> %.0f mm zum T d50 an der Zulauf-Achse" % (L["pumpe_gross"][0], p8[0][2], p8[0][2] + R40, p8[0][0] - xw, xw, cy - p8[0][1], zh, math.dist(k8[4], t2))},
+        {"id": "K09", "kante": "K09", "dn": 40, "farbe": "dunkelblau", "start": "stutzen", "ende": "t:T2", "baender": ["W", "W", "W", "WH"], "anschluss": [L["pumpe_gross"][1], tg],
+         "pfad": [rd(p) for p in k9], "notiz": "Druckstutzen %s (Z %.0f) -> hoch auf Z %.0f -> %g mm unter der Plattform nach aussen -> Steigrohr auf Zulaufhoehe Z %.0f -> %.0f mm zum T d50" % (L["pumpe_gross"][1], p9[0][2], p9[0][2] + R40, P["lt_k09_aus"], zh, math.dist(c3, t2))},
+        {"id": "K08-K09-Stamm", "kante": None, "dn": 50, "farbe": "dunkelblau", "start": "t:T2", "ende": "r:R_ZUL", "band": "WH", "anschluss": [tg], "pfad": [rd(t2), rd(pb)],
+         "notiz": "vereinigte Druckleitung d50 (Netz K08/K09: vereinigt vor dem Tank zu d50) vom T bis zur Reduziermuffe d63/d50 auf dem Zulauf-Stutzen d63 des Biofilters (Z %.0f)" % zh}]
+    neu["t_stuecke"].append({"id": "T2", "pos": rd(t2), "d": 50, "ports": [{"trasse": "K08", "ende": "ende", "d": 40}, {"trasse": "K09", "ende": "ende", "d": 40}, {"trasse": "K08-K09-Stamm", "ende": "start", "d": 50}],
+                             "notiz": "T d50 mit zwei Eingaengen d40 (Rohrstueck d50 + Reduziermuffe d50/d40) und einem Ausgang d50"})
+    # K10: Ueberlauf-Stutzen d63 -> Reduziermuffe d63/d50 -> Rohr d50, offenes Ende am Verteilerplatz
+    ru, pbu = stutzen_red(ut, uo, 63, 50)
+    neu["r_stuecke"].append(dict(id="R_UEB", **ru))
+    ende = add(pbu, uo, P["lt_k10_len"])
+    neu["trassen"].append({"id": "K10", "kante": "K10", "dn": 50, "farbe": "dunkelblau", "start": "r:R_UEB", "ende": "offen", "band": "WH", "anschluss": [tg], "pfad": [rd(pbu), rd(ende)],
+        "notiz": "Ueberlauf-Stutzen d63 (Z %.0f = 1570 relativ) -> Reduziermuffe d63/d50 -> %g mm Rohr d50 nach aussen; das offene Ende (x %.0f y %.0f) ist der Verteiler-Eingang (Verteilerplatz, Verteiler d50 in S3)" % (ut[2], P["lt_k10_len"], ende[0], ende[1])})
+
 def main(linie):
     if linie not in LINIEN: raise SystemExit("Linie 1 oder 2")
     if linie == 2: raise SystemExit("Linie 2: Trassen folgen in M10-S2c")
@@ -118,7 +150,8 @@ def main(linie):
     L = dict(LINIEN[linie]); L["G"] = G
     neu = {"trassen": [], "t_stuecke": [], "r_stuecke": []}
     linie1_s2a(L, neu)
-    doc = {"z_bezug": "absolut", "regeln": {}, "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost: K01, K02, K06"}
+    linie1_biofilter(L, neu)
+    doc = {"z_bezug": "absolut", "regeln": {}, "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost"}
     doc = schreiben(doc, linie, neu)
     json.dump(doc, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False); open(OUT, "a").write("\n")
     for t in neu["trassen"]:

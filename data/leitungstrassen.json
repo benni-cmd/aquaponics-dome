@@ -1,7 +1,7 @@
 {
  "z_bezug": "absolut",
  "regeln": {},
- "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost: K01, K02, K06",
+ "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost",
  "trassen": [
   {
    "id": "K01",
@@ -183,6 +183,157 @@
    ],
    "notiz": "T -> Fuss des Risers (Z 214) -> Riser auf Saugstutzenhoehe Z 520 -> Zulauf in den Saugstutzen Pumpe_gross:2 (Stutzenspitze x 3175.5 y 89.6, Oeffnung -X)",
    "linie": 1
+  },
+  {
+   "id": "K08",
+   "kante": "K08",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T2",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "W",
+    "WH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:1"
+   ],
+   "pfad": [
+    [
+     3282.7,
+     -841.3,
+     655
+    ],
+    [
+     3282.7,
+     -841.3,
+     703.0
+    ],
+    [
+     2640,
+     -841.3,
+     703.0
+    ],
+    [
+     2640,
+     411.9,
+     703.0
+    ],
+    [
+     2640,
+     411.9,
+     1820.0
+    ],
+    [
+     3081.3,
+     326.9,
+     1820.0
+    ]
+   ],
+   "notiz": "Druckstutzen Pumpe_gross:1 (Z 655) -> hoch auf Z 703 -> 643 mm nach Westen (x 2640, an der Plattform vorbei) -> 1253 mm nach Norden -> Steigrohr auf Zulaufhoehe Z 1820 -> 449 mm zum T d50 an der Zulauf-Achse",
+   "linie": 1
+  },
+  {
+   "id": "K09",
+   "kante": "K09",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T2",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "WH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:2",
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3281.5,
+     89.7,
+     655
+    ],
+    [
+     3281.5,
+     89.7,
+     703.0
+    ],
+    [
+     3318.4,
+     281.2,
+     703.0
+    ],
+    [
+     3318.4,
+     281.2,
+     1820.0
+    ],
+    [
+     3081.3,
+     326.9,
+     1820.0
+    ]
+   ],
+   "notiz": "Druckstutzen Pumpe_gross:2 (Z 655) -> hoch auf Z 703 -> 195 mm unter der Plattform nach aussen -> Steigrohr auf Zulaufhoehe Z 1820 -> 241 mm zum T d50",
+   "linie": 1
+  },
+  {
+   "id": "K08-K09-Stamm",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T2",
+   "ende": "r:R_ZUL",
+   "band": "WH",
+   "anschluss": [
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3081.3,
+     326.9,
+     1820.0
+    ],
+    [
+     3057.1,
+     200.9,
+     1820.0
+    ]
+   ],
+   "notiz": "vereinigte Druckleitung d50 (Netz K08/K09: vereinigt vor dem Tank zu d50) vom T bis zur Reduziermuffe d63/d50 auf dem Zulauf-Stutzen d63 des Biofilters (Z 1820)",
+   "linie": 1
+  },
+  {
+   "id": "K10",
+   "kante": "K10",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:R_UEB",
+   "ende": "offen",
+   "band": "WH",
+   "anschluss": [
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     2775.6,
+     -184.8,
+     1970.0
+    ],
+    [
+     2333.7,
+     -99.7,
+     1970.0
+    ]
+   ],
+   "notiz": "Ueberlauf-Stutzen d63 (Z 1970 = 1570 relativ) -> Reduziermuffe d63/d50 -> 450 mm Rohr d50 nach aussen; das offene Ende (x 2334 y -100) ist der Verteiler-Eingang (Verteilerplatz, Verteiler d50 in S3)",
+   "linie": 1
   }
  ],
  "t_stuecke": [
@@ -212,6 +363,68 @@
     }
    ],
    "notiz": "T d63 aus lt_t_d63 + je Ausgang Rohrstueck d63 (2 t) + Reduziermuffe d63/d50 (die Muffen eines T und einer Reduziermuffe passen nicht Muffe auf Muffe)",
+   "linie": 1
+  },
+  {
+   "id": "T2",
+   "pos": [
+    3081.3,
+    326.9,
+    1820.0
+   ],
+   "d": 50,
+   "ports": [
+    {
+     "trasse": "K08",
+     "ende": "ende",
+     "d": 40
+    },
+    {
+     "trasse": "K09",
+     "ende": "ende",
+     "d": 40
+    },
+    {
+     "trasse": "K08-K09-Stamm",
+     "ende": "start",
+     "d": 50
+    }
+   ],
+   "notiz": "T d50 mit zwei Eingaengen d40 (Rohrstueck d50 + Reduziermuffe d50/d40) und einem Ausgang d50",
+   "linie": 1
+  }
+ ],
+ "r_stuecke": [
+  {
+   "id": "R_ZUL",
+   "pos_a": [
+    3043.0,
+    127.8,
+    1820.0
+   ],
+   "dir": [
+    0.189095,
+    0.981959,
+    0.0
+   ],
+   "d_gross": 63,
+   "d_klein": 50,
+   "linie": 1
+  },
+  {
+   "id": "R_UEB",
+   "pos_a": [
+    2848.7,
+    -198.9,
+    1970.0
+   ],
+   "dir": [
+    -0.981959,
+    0.189095,
+    0.0
+   ],
+   "d_gross": 63,
+   "d_klein": 50,
    "linie": 1
   }
  ]

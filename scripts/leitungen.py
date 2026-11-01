@@ -143,14 +143,40 @@ def dateien(T):
         out.append((cls, os.path.join(COMP, fname + ".sc"), [m for m, _, _ in liste], farben))
     return out
 
+def _graben_trassen(trs):
+    """M10-S2c: Linie-2-Trassen derselben Netzkante, die lueckenlos aneinander anschliessen (T-Teilungen K17 / K17-m / K17-b), werden fuer die Grabenschnitte wieder zu einer Trasse; gerade Zwischenpunkte entfallen.
+    Aneinandergereihte gleichbreite Kaesten mit deckungsgleichen Seiten- und Bodenflaechen liessen den Boolean-Schnitt (Erdflaeche) mit einem querenden Graben scheitern. Linie 1 bleibt unveraendert."""
+    out = []
+    for tr in trs:
+        if tr.get("linie", 1) != 2:
+            out.append(tr); continue
+        v = out[-1] if out else None
+        if v and v.get("linie", 1) == 2 and tr.get("kante") and v.get("kante") == tr["kante"] and v["dn"] == tr["dn"] and math.dist(v["pfad"][-1], tr["pfad"][0]) < 0.6:
+            out[-1] = dict(v, pfad=[list(p) for p in v["pfad"]] + [list(p) for p in tr["pfad"][1:]])
+        else: out.append(dict(tr, pfad=[list(p) for p in tr["pfad"]]))
+    for tr in out:
+        if tr.get("linie", 1) != 2: continue
+        pf = tr["pfad"]; keep = [pf[0]]
+        for i in range(1, len(pf) - 1):
+            a, b, c = keep[-1], pf[i], pf[i + 1]
+            u, w = sub(b, a), sub(c, b); k = cross(u, w)
+            if nrm(k) <= 3e-3 * nrm(u) * nrm(w) and dot(u, w) > 0: continue
+            keep.append(b)
+        keep.append(pf[-1]); tr["pfad"] = keep
+    return out
+
 def graben(doc, fz):
     """Grabenschnitte fuer alle Teilstuecke unterhalb des Flurs: [("box", name, cx, cy, z0, az_grad, laenge, breite, hoehe)] und [("zyl", name, x, y, z0, durchm, hoehe)] (z absolut, bis fz + 1)."""
     zus = 160.0; out = []
     try:
         zus = float(json.load(open(os.path.join(ROOT, "data", "params.json"), encoding="utf-8"))["lt_graben_zuschlag"]["value"])
     except (OSError, KeyError): pass
-    for tr in doc["trassen"]:
+    k2 = {}
+    for tr in _graben_trassen(doc["trassen"]):
         d = float(tr["dn"]); w = d + zus; pts = [tuple(float(v) for v in p) for p in tr["pfad"]]
+        ex = 0.0 if tr.get("linie", 1) == 1 else 1.0               # M10-S2c: Linie 2 je Ende 1 mm laenger: an 90-Grad-Ecken und Steigleitungen fiel sonst die Stirnflaeche in die Seitenflaeche des Nachbarn (Boolean-Schnitt ohne Ergebnis)
+        if ex:                                                      # Linie 2: je Netzkante (Teilstuecke derselben Kante teilen die Breite, wie koaxiale Steigleitungen) eine eigene Breite, +0,4 mm je Kante: sonst deckungsgleiche Seiten- und Bodenflaechen verschiedener Nachbarn
+            w += 0.4 * k2.setdefault(tr.get("kante") or tr["id"], len(k2) + 1)
         for i in range(len(pts) - 1):
             a, b = pts[i], pts[i + 1]
             if min(a[2], b[2]) >= fz - 1.0: continue
@@ -158,10 +184,16 @@ def graben(doc, fz):
             dxy = math.hypot(b[0] - a[0], b[1] - a[1])
             if dxy < 20.0:                                              # Steigleitung
                 z0 = min(a[2], b[2]) - w / 2
-                out.append(("zyl", name, round(a[0], 1), round(a[1], 1), round(z0, 1), round(w, 1), round(fz + 1 - z0, 1)))
+                ent = ("zyl", name, round(a[0], 1), round(a[1], 1), round(z0, 1), round(w + 2 * ex, 1), round(fz + 1 - z0, 1))
+                if ex:                                                  # Linie 2: koaxiale Steigleitungen gleichen Durchmessers (Abzweig und Kugelhahn-Zug) nur einmal, der tiefste Schacht enthaelt den flacheren
+                    vor = [e for e in out if e[0] == "zyl" and e[2:4] == ent[2:4] and e[5] == ent[5]]
+                    if vor:
+                        if ent[4] < vor[0][4]: out[out.index(vor[0])] = ent
+                        continue
+                out.append(ent)
             else:
                 z = (a[2] + b[2]) / 2; z0 = min(a[2], b[2]) - w / 2
-                out.append(("box", name, round((a[0] + b[0]) / 2, 1), round((a[1] + b[1]) / 2, 1), round(z0, 1), round(math.degrees(math.atan2(b[1] - a[1], b[0] - a[0])), 3), round(dxy + w, 1), round(w, 1), round(fz + 1 - z0, 1)))
+                out.append(("box", name, round((a[0] + b[0]) / 2, 1), round((a[1] + b[1]) / 2, 1), round(z0, 1), round(math.degrees(math.atan2(b[1] - a[1], b[0] - a[0])), 3), round(dxy + w + 2 * ex, 1), round(w, 1), round(fz + 1 - z0, 1)))
     return out
 
 if __name__ == "__main__":

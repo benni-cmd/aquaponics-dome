@@ -8,6 +8,7 @@ import sc
 SIZES = [20, 25, 32, 40, 50, 63, 110]                   # Rohr-Aussendurchmesser d (mm), DN-Naeherung 15/20/25/32/40/50/100 (d20 = PE-Tropfrohr des Beets)
 DEPTH = {20: 16, 25: 19, 32: 22, 40: 26, 50: 31, 63: 37.5, 110: 61}   # Muffentiefe (EN 1452-3, gerundet)
 DN = {20: "DN15", 25: "DN20", 32: "DN25", 40: "DN32", 50: "DN40", 63: "DN50", 110: "DN100"}
+DEPTH[75] = 44; DN[75] = "DN65"                           # W36 Teil 6 (E14): d75 nur fuer Heber K01/K17; nicht in SIZES, damit der Hauptlauf die 63er-Bibliothek nicht neu schreibt (Muffentiefe [A], Katalog offen)
 HOSE = {16: "hellblau", 25: "dunkelblau"}               # Schlauch-Innendurchmesser -> Standardfarbe (hydraulics.md 5: Frischwasser hellblau, Filterlinie dunkelblau)
 COL = {"pvc": "#8d9296", "hellblau": "#7fc4ea", "dunkelblau": "#2a5da8", "stahl": "#aeb4b8", "hahn": "#2a5da8"}
 

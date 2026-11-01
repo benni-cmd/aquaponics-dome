@@ -671,6 +671,15 @@
      "dn": "400x400"
     }
    ]
+  },
+  "d75": {
+   "dn": "DN65",
+   "wand": 3.6,
+   "innen_d": 67.8,
+   "muffentiefe": 44,
+   "formstueck_aussen": 84.75,
+   "bogenradius": 90.0,
+   "herkunft": "A, Katalog offen (N-BESCHAFFUNG)"
   }
  }
 }

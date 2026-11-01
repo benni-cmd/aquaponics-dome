@@ -670,6 +670,32 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
     },
     {
+      "match": "^lt_.*d75",
+      "titel": "Rohrteile d75 (Heber)",
+      "was": "Rohr, Kupplung, Bogen 90° und 45°, T-Stück und Reduziermuffen d75/d63 und d75/d50 für die Heberleitungen des Pools (Entscheidung E14).",
+      "status": "gebaut, 36/36 Prüfungen (Volumen, Ports, Interferenz 0)",
+      "ablauf": [
+        "Gleiche Bauweise wie die Teile d20 bis d110: Klebemuffen, Ports am Ursprung.",
+        "Mischtees (d75 mit Abgang d50 oder d63) entstehen aus dem T d75 plus einer Reduziermuffe.",
+        "Kein Kugelhahn und keine Klemme d75."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße (Annahme, Katalog offen)",
+          "p": [
+            "Rohr 75 × 3,6, innen 67,8",
+            "Muffentiefe 44, Formstück außen 84,75",
+            "Bogenradius 90"
+          ]
+        }
+      ],
+      "masse": {
+        "Rohr": "1,13 kg je Meter"
+      },
+      "grenzen": "Muffentiefe und Formstückmaße sind Annahmen; Nachweis später in N-BESCHAFFUNG.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W36 Teil 6)"
+    },
+    {
       "match": "^lt_",
       "titel": "Leitungsteile",
       "was": "Normteile des Rohrnetzes als Komponenten mit Ports.",

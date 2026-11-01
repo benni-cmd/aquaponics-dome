@@ -228,6 +228,29 @@ def check_schacht(ck):
             print("   Ueberlappung:", i.get("a"), i.get("b"), i.get("volume_mm3"))
     print(f"INFO schacht: Masse {ev['total']['mass_g'] / 1000:.2f} kg (Wanne {bb['Schachtwanne']['mass_g'] / 1000:.2f}, Deckel {d['mass_g'] / 1000:.2f}), Aussen {g['aussen']:g} x {g['aussen']:g} x {g['z_wall_top'] - g['z_out_bottom']:g} + Deckel {s['deckel_dicke']:g}")
 
+def check_d75(ck):
+    d = 75; dp = L.DEPTH[d]; of = L.od_f(d); w = L.wall_p(d); R = max(of, 1.2 * d)
+    A = math.pi / 4 * (d * d - (d - 2 * w) ** 2)
+    D75 = lambda n: os.path.join(D, n + ".sc")
+    ev = sc.evaluate(D75("lt_rohr_d75")); mn, mx = sc.bbox_all(ev)
+    ck.eq("d75 Rohr Aussen-D", mx[0] - mn[0], d, 0.1); ck.eq("d75 Rohr Laenge", mx[2] - mn[2], 1000, 0.1)
+    ck.eq(f"d75 Rohr Volumen = Ringflaeche x Laenge (Wand {w})", ev["bodies"][0]["volume_mm3"], A * 1000, A * 1000 * 0.002)
+    ck.eq("d75 Rohr Innen-D 67,8", d - 2 * w, 67.8, 0.001)
+    ev = sc.evaluate(D75("lt_kupplung_d75")); mn, mx = sc.bbox_all(ev)
+    ck.eq("d75 Kupplung Laenge 2 t + 6", mx[2] - mn[2], 2 * dp + 6, 0.1); ck.eq("d75 Kupplung Aussen-D (Formstueck)", mx[0] - mn[0], of, 0.1)
+    for ang in (90, 45):
+        ev = sc.evaluate(D75(f"lt_bogen{ang}_d75")); Af = math.pi / 4 * (of ** 2 - d ** 2); exp = Af * (2 * dp + R * math.radians(ang))
+        ck.eq(f"d75 Bogen{ang} Volumen (2 Schenkel + Bogen R {R:g})", sum(b["volume_mm3"] for b in ev["bodies"]), exp, exp * 0.005)
+    ev = sc.evaluate(D75("lt_t_d75")); mn, mx = sc.bbox_all(ev); a = dp + of / 2
+    ck.eq("d75 T Laenge Lauf", mx[0] - mn[0], 2 * a, 0.2); ck.eq("d75 T Abgang Hoehe", mx[2], a, 0.2)
+    for dk in (63, 50):
+        ev = sc.evaluate(D75(f"lt_reduzierung_d75_d{dk}")); mn, mx = sc.bbox_all(ev)
+        ck.eq(f"d75/d{dk} Reduzierung Laenge", mx[2] - mn[2], dp + L.DEPTH[dk] + 6, 0.1); ck.eq(f"d75/d{dk} Reduzierung Aussen-D", mx[0] - mn[0], of, 0.1)
+    for fn, body in (("lt_rohr_d75", "Rohr"), ("lt_kupplung_d75", "Kupplung"), ("lt_bogen90_d75", "Bogen"), ("lt_bogen45_d75", "Bogen"), ("lt_t_d75", "T_Stueck"), ("lt_reduzierung_d75_d63", "Reduzierung"), ("lt_reduzierung_d75_d50", "Reduzierung")):
+        ck.eq(f"{fn} Koerperzahl (Interferenz 0: ein Koerper)", sc.evaluate(D75(fn))["body_count"], 1)
+        port_checks(ck, fn, body)
+    print(f"INFO d75: Formstueck-Aussen {of:.2f}, Muffentiefe {dp}, Bogenradius {R:g}, Rohr {A * 1000 * 1.4e-6:.2f} kg/m")
+
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
     ck = sc.Check("lt_w36")
@@ -239,6 +262,8 @@ def main():
         check_leerrohr(ck)
     if not want or "schacht" in want:
         check_schacht(ck)
+    if not want or "d75" in want:
+        check_d75(ck)
     return ck.done()
 
 if __name__ == "__main__":

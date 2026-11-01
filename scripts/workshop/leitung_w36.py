@@ -214,6 +214,18 @@ def ports(fname, L_rohr=1000):
         return out
     return []
 
+# ---------------------------------------------------------------- Teil 6: Rohrbibliothek d75 (E14: Heber K01/K17), Bauweise unveraendert aus leitung.py
+D75_FILES = ["lt_rohr_d75", "lt_kupplung_d75", "lt_bogen90_d75", "lt_bogen45_d75", "lt_t_d75", "lt_reduzierung_d75_d63", "lt_reduzierung_d75_d50"]
+FILES += D75_FILES
+
+def d75_jobs():
+    return [("d75", "lt_rohr_d75", lambda: L.rohr(75)), ("d75", "lt_kupplung_d75", lambda: L.kupplung(75)), ("d75", "lt_bogen90_d75", lambda: L.bogen(75, 90)), ("d75", "lt_bogen45_d75", lambda: L.bogen(75, 45)),
+            ("d75", "lt_t_d75", lambda: L.t_stueck(75)), ("d75", "lt_reduzierung_d75_d63", lambda: L.reduzierung(75, 63)), ("d75", "lt_reduzierung_d75_d50", lambda: L.reduzierung(75, 50))]
+
+def d75_info():
+    d = 75
+    return {"dn": L.DN[d], "wand": L.wall_p(d), "innen_d": d - 2 * L.wall_p(d), "muffentiefe": L.DEPTH[d], "formstueck_aussen": round(L.od_f(d), 2), "bogenradius": round(max(L.od_f(d), 1.2 * d), 1), "herkunft": "A, Katalog offen (N-BESCHAFFUNG)"}
+
 def json_entries():
     """Maschinenlesbare Daten der W36-Teile fuer data/components/leitungsteile.json (Schluessel w36_teile)."""
     g = v50_geom()
@@ -229,6 +241,7 @@ def json_entries():
             "rohr_d": d, "bein": "Rechteckrohr 40x40x3", "ring": {"innen_d": d, "aussen_d": 2 * g["ro"], "wand": SCH_T, "breite": SCH_W}, "platte": {"breite": 2 * SCH_PLATE_HALF, "dicke": SCH_PLATE_T, "abstand_zum_rohr": SCH_STANDOFF},
             "spannband": {"breite": SCH_W, "dicke": SCH_BAND_T, "spiel": SCH_SPIEL, "lasche": SCH_TAB}, "bolzenbild": {"ring_z": g["ear_z"], "band_x": SCH_SCREW_X}, "anlageflaeche_y": g["yf"], "beinachse_y": g["leg_y"],
             "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn} for n, p, dr, a, dn in ports(f"lt_schelle_vk_d{d}")]}
+    out["d75"] = d75_info()
     g = schacht_geom()
     out["lt_schacht_kugelhahn_d63"] = {"teilenummer": "T70-SCH-KH63", "komponente": "T70_Schacht_Kugelhahn_d63", "werkstoff": "PE-HD Wanne und Deckel, EPDM-Dichtung", "innen": [SCHACHT["innen"], SCHACHT["innen"]], "wand": SCHACHT["wand"], "achstiefe": SCHACHT["achstiefe"], "innentiefe_ab_deckelunterkante": g["z_wall_top"] - g["z_floor"],
         "kugelhahn": "lt_kugelhahn_d63", "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn_} for n, p, dr, a, dn_ in ports("lt_schacht_kugelhahn_d63")]}
@@ -248,6 +261,11 @@ def write_json():
     open(p, "w", encoding="utf-8", newline="").write(txt)
 
 DESCRIPTIONS = [
+    {"match": "^lt_.*d75", "titel": "Rohrteile d75 (Heber)", "was": "Rohr, Kupplung, Bogen 90° und 45°, T-Stück und Reduziermuffen d75/d63 und d75/d50 für die Heberleitungen des Pools (Entscheidung E14).",
+     "status": "gebaut, 36/36 Prüfungen (Volumen, Ports, Interferenz 0)",
+     "ablauf": ["Gleiche Bauweise wie die Teile d20 bis d110: Klebemuffen, Ports am Ursprung.", "Mischtees (d75 mit Abgang d50 oder d63) entstehen aus dem T d75 plus einer Reduziermuffe.", "Kein Kugelhahn und keine Klemme d75."],
+     "aufbau": [{"t": "Maße (Annahme, Katalog offen)", "p": ["Rohr 75 × 3,6, innen 67,8", "Muffentiefe 44, Formstück außen 84,75", "Bogenradius 90"]}],
+     "masse": {"Rohr": "1,13 kg je Meter"}, "grenzen": "Muffentiefe und Formstückmaße sind Annahmen; Nachweis später in N-BESCHAFFUNG.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W36 Teil 6)"},
     {"match": "^lt_schacht_kugelhahn", "titel": "Ventilschacht für Kugelhahn d63", "was": "Unterirdischer Schacht mit Deckel um den Kugelhahn des Notbypasses am Feinfilter (K56, K57); der Hahn bleibt von oben bedienbar.",
      "status": "gebaut, Prüfungen mit Interferenz 0 gegen Hahn, Hebel und Rohre",
      "ablauf": ["Das Rohr d63 läuft durch zwei abgedichtete Wanddurchführungen.", "Der Deckel wird an den Griffmulden abgehoben; der Hebel liegt 47 mm unter dem Deckel.", "Hebel offen und zu schwenken frei im Schacht."],
@@ -294,6 +312,7 @@ if __name__ == "__main__":
     jobs = [("verteiler", "lt_verteiler_d50", verteiler_d50)]
     jobs += [("schelle", f"lt_schelle_vk_d{d}", (lambda d=d: schelle(d))) for d in SCH_SIZES]
     jobs.append(("schacht", "lt_schacht_kugelhahn_d63", schacht))
+    jobs += d75_jobs()
     for dn in (50, 100):
         jobs += [("leerrohr", f"lt_leerrohr_dn{dn}", (lambda dn=dn: leerrohr(dn))), ("leerrohr", f"lt_leerrohr_bogen90_dn{dn}", (lambda dn=dn: leerrohr_bogen(dn, 90))), ("leerrohr", f"lt_leerrohr_bogen45_dn{dn}", (lambda dn=dn: leerrohr_bogen(dn, 45)))]
     for key, fname, fn in jobs:
@@ -303,4 +322,4 @@ if __name__ == "__main__":
         out = L.save(res[0], res[1], fname)
         if key == "schelle":
             sc.assign_part_materials(out, "LT stahl")                  # Normteile (Body<n>) tragen sonst die Standarddichte 1,29
-        print(fname, res[2])
+        print(fname, res[2] if len(res) > 2 else "")

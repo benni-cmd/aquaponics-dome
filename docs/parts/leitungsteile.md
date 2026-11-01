@@ -408,3 +408,28 @@ Montage: Schachtmitte auf die Hahnposition der Tiefleitung legen, Rohrachse = Ac
 **Tropfrohr d20 je Beet:** Das gelochte Tropfrohr im Beet (Loch 4, Teilung 200, ab 150 mm, Endstopfen, Durchfuehrung D22 mit Tuelle) gehoert zur Beet-Klasse (`ibc_beet.md`). Anschluss davor aus der Bibliothek: T d40 (Beete-Strang), Kugelhahn d20 (Drossel je Beet), Rohr d20, Bogen d20. Fehlt: (1) Reduzierung direkt d40 auf d20 (oder Reduzier-T d40/d20): sonst Kette Reduziermuffe d40/d32 + d32/d25 + d25/d20, zusammen 142 mm Baulaenge und drei Klebestellen je Beet (14 Beete); (2) PE-PVC-Verbinder d20 (Klemm- oder Steckverbinder): das Tropfrohr ist PE (nicht klebbar), die Bibliotheksteile d20 sind PVC-U-Platzhalter (Gewicht um etwa ein Drittel zu hoch); (3) Stopfen/Kappe d20 und d50 (Messkreis-Abgang Linie 2, Reserveabgaenge); (4) Werkstoff-Variante PE d20 (Dichte 0,95, Wand 2) ueber den Parameter statt der PVC-U-Annahme.
 
 **Liste fehlender Teile (Prioritaet):** 1. Reduzierung d40/d20 oder Reduzier-T (14 Beete). 2. PE-PVC-Verbinder d20 (14 Beete). 3. Schlauch ID16 kurz, 100 mm (76 Stueck). 4. Stopfen/Kappe d20, d50 (mindestens 1 je Linie 2 fuer den Messkreis-Abgang). 5. Schlauchschelle ID16 (152 Stueck, Stuecklistenzeile). Teil 4 (Schacht) und Teil 3 (Leerrohr) lieferten weitere Lueckenhinweise: Reduzierstueck DN100/DN50, Leerrohr-T, Kabeleinfuehrung. Keines davon wurde gebaut (Auftrag: nur melden).
+
+## Rohrbibliothek d75 (W36 Teil 6, Entscheidung E14: Heber K01/K17 auf d75) `lt_rohr_d75`, `lt_kupplung_d75`, `lt_bogen90_d75`, `lt_bogen45_d75`, `lt_t_d75`, `lt_reduzierung_d75_d63`, `lt_reduzierung_d75_d50`
+
+**Mini-Plan.** Problem: Ben hat E14 = d75 fuer die Heber K01/K17 entschieden (`R45-hydraulik-auslegung.md` Abschnitt 2); die Bibliothek hat nur d20 bis d110. Intent: Heberleitungen aus Normteilen d75 legen. Goal: sieben Komponenten mit Ports im Bibliotheksformat, gleiche Bauweise (`leitung.rohr/kupplung/bogen/t_stueck/reduzierung`, Aufruf mit d = 75), Check gruen. Mischtees der Montage (K05: d75 mit Abgang d50, K56: d75 mit Abgang d63) = T d75 plus Reduziermuffe, keine eigenen Teile; kein Kugelhahn und keine Klemme d75. d75 steht in `leitung.DEPTH` und `leitung.DN`, aber nicht in `SIZES`, damit der Aufruf der 63er-Bibliothek diese Dateien nicht neu schreibt.
+
+| Merkmal | Wert | Herkunft |
+|---|---|---|
+| Rohr d75 x 3,6 (SDR 21), Innen 67,8, DN65 | `wall_p(75)` = max(1,8; 75/21) | E nach Auftrag (Rohr d75 x 3,6) |
+| Muffentiefe t | 44 mm | A, zwischen d63 (37,5) und d110 (61) gerundet, Katalog offen (N-BESCHAFFUNG) |
+| Formstueck-Aussen 84,75 (3 + d/40 Wand je Seite) | mm | A, nach der Formel der Bibliothek; Graben prueft damit |
+| Bogenradius R | 90 = max(84,75; 1,2 d) | A |
+| Rohr 1 m | 1,13 kg, 4,0 l/m Wasser (Innen 67,8 mm) | E aus Volumen |
+| Kupplung L = 2 t + 6 = 94 | 0,168 kg | E |
+| Bogen 90 / 45 | 0,393 / 0,272 kg | E |
+| T-Stueck, Arm a = t + OD_f/2 = 86,4 | 0,449 kg | E |
+| Reduziermuffe d75/d63, L = t_g + t_k + 6 | 87,5, 0,234 kg | E |
+| Reduziermuffe d75/d50 | 81, 0,269 kg | E |
+
+**Ports** (Konvention der Bibliothek): Rohr A, B (Zapfen DN65) bei z = 0 und 1000; Kupplung A, B (Muffe) bei z = 0 und 94; Bogen 90: B bei (134, 0, 134) Richtung +X; Bogen 45: B bei (57,5, 0, 138,8) Richtung (0,707, 0, 0,707); T: A (-86,4, 0, 0), B (+86,4, 0, 0), C (0, 0, 86,4) Muffe DN65; Reduzierungen: A (gross, Muffe DN65) bei z = 0, B (klein, Muffe DN50 bzw. DN40) bei z = 87,5 bzw. 81.
+
+**Besonderheit:** (1) Die Formstuecke sind 84,75 mm dick (Rohr 75): fuer den Graben zaehlt dieser Wert, nicht d75. (2) Der Mischtee d75/d50 ist kein einzelnes Teil: T d75 (Arm 86,4) plus Reduziermuffe d75/d50 (L 81) macht den d50-Abgang rund 123 mm lang (86,4 - 44 + 81) bis zur Muffenoeffnung des d50-Rohrs; die Montage rechnet mit den Ports. (3) Muffentiefe 44 ist keine Norm-Angabe (d75 steht nicht in der urspruenglichen Tabelle). (4) Nach der Bibliotheks-Bauart ist der Bogenradius 90 nur etwas groesser als das Rohr d75; er ist klein fuer einen Heber (Verlustbeiwert hoeher als bei R >= 2 d); die Hydraulik bleibt bei R45.
+
+**Pruefung:** `check_lt_w36.py d75` 36/36 PASS: Rohr Aussen-D, Laenge, Innen-D 67,8, Volumen, Kupplung, Bogen 90/45 (Pappus), T, beide Reduzierungen, je Teil ein Koerper (Interferenz 0), 20 Port-Stirnflaechen. Bild: `renders/components/leitungsteile/lt_t_d75.png`.
+
+**Offene Fragen:** Katalogmasse d75 (Muffentiefe, Formstueck-Aussen) nach N-BESCHAFFUNG nachweisen; Bogen-Radius fuer Heber mit R45 abstimmen.

@@ -1,0 +1,38 @@
+PASS lt_w36: d75 Rohr Aussen-D: Ist 74.9988, Soll 75 (+-0.1)
+PASS lt_w36: d75 Rohr Laenge: Ist 1000, Soll 1000 (+-0.1)
+PASS lt_w36: d75 Rohr Volumen = Ringflaeche x Laenge (Wand 3.6): Ist 807440, Soll 807515 (+-1615.03)
+PASS lt_w36: d75 Rohr Innen-D 67,8: Ist 67.8, Soll 67.8 (+-0.001)
+PASS lt_w36: d75 Kupplung Laenge 2 t + 6: Ist 94, Soll 94 (+-0.1)
+PASS lt_w36: d75 Kupplung Aussen-D (Formstueck): Ist 84.7487, Soll 84.75 (+-0.1)
+PASS lt_w36: d75 Bogen90 Volumen (2 Schenkel + Bogen R 90): Ist 280562, Soll 280592 (+-1402.96)
+PASS lt_w36: d75 Bogen45 Volumen (2 Schenkel + Bogen R 90): Ist 194102, Soll 194121 (+-970.607)
+PASS lt_w36: d75 T Laenge Lauf: Ist 172.75, Soll 172.75 (+-0.2)
+PASS lt_w36: d75 T Abgang Hoehe: Ist 86.375, Soll 86.375 (+-0.2)
+PASS lt_w36: d75/d63 Reduzierung Laenge: Ist 87.5, Soll 87.5 (+-0.1)
+PASS lt_w36: d75/d63 Reduzierung Aussen-D: Ist 84.7487, Soll 84.75 (+-0.1)
+PASS lt_w36: d75/d50 Reduzierung Laenge: Ist 81, Soll 81 (+-0.1)
+PASS lt_w36: d75/d50 Reduzierung Aussen-D: Ist 84.7487, Soll 84.75 (+-0.1)
+PASS lt_w36: lt_rohr_d75 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: lt_rohr_d75 Port A (Zapfen, DN65) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_rohr_d75 Port B (Zapfen, DN65) Stirnflaeche an (0, 0, 1000): Ist 1, Soll 1
+PASS lt_w36: lt_kupplung_d75 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: lt_kupplung_d75 Port A (Muffe, DN65) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_kupplung_d75 Port B (Muffe, DN65) Stirnflaeche an (0, 0, 94): Ist 1, Soll 1
+PASS lt_w36: lt_bogen90_d75 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: lt_bogen90_d75 Port A (Muffe, DN65) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_bogen90_d75 Port B (Muffe, DN65) Stirnflaeche an (134.0, 0, 134.0): Ist 1, Soll 1
+PASS lt_w36: lt_bogen45_d75 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: lt_bogen45_d75 Port A (Muffe, DN65) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_bogen45_d75 Port B (Muffe, DN65) Stirnflaeche an (57.47, 0, 138.75): Ist 1, Soll 1
+PASS lt_w36: lt_t_d75 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: lt_t_d75 Port A (Muffe, DN65) Stirnflaeche an (-86.38, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_t_d75 Port B (Muffe, DN65) Stirnflaeche an (86.38, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_t_d75 Port C (Muffe, DN65) Stirnflaeche an (0, 0, 86.38): Ist 1, Soll 1
+PASS lt_w36: lt_reduzierung_d75_d63 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: lt_reduzierung_d75_d63 Port A (gross) (Muffe, DN65) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_reduzierung_d75_d63 Port B (klein) (Muffe, DN50) Stirnflaeche an (0, 0, 87.5): Ist 1, Soll 1
+PASS lt_w36: lt_reduzierung_d75_d50 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w36: lt_reduzierung_d75_d50 Port A (gross) (Muffe, DN65) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w36: lt_reduzierung_d75_d50 Port B (klein) (Muffe, DN40) Stirnflaeche an (0, 0, 81): Ist 1, Soll 1
+INFO d75: Formstueck-Aussen 84.75, Muffentiefe 44, Bogenradius 90, Rohr 1.13 kg/m
+== lt_w36: 36/36 PASS

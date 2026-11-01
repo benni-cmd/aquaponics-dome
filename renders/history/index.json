@@ -2518,5 +2518,15 @@
   "note": "W36 Teil 4",
   "commit": "fb10162",
   "source": "renders/components/leitungsteile/lt_schacht_kugelhahn_d63.png"
+ },
+ {
+  "file": "20261101-230150_werkstatt_lt-d75_lt-t-d75.png",
+  "sha": "a6e276d7b02a3b82",
+  "time": "2026-11-01 23:01:50",
+  "role": "werkstatt",
+  "subject": "lt_d75",
+  "note": "W36 Teil 6",
+  "commit": "48c4743",
+  "source": "renders/components/leitungsteile/lt_t_d75.png"
  }
 ]

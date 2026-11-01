@@ -269,7 +269,7 @@
    "phase": "nach_zwischencheck",
    "reihenfolge": 2,
    "wer": "Fachrecherche",
-   "notiz": "Kegelsitz Tank, Tischbeine und Strebenkonzept sind bisher nicht nachgewiesen."
+   "notiz": "Kegelsitz Tank, Tischbeine und Strebenkonzept sind bisher nicht nachgewiesen. Ben 01.11. (W43): Verbindungsstuecke mit moeglichst vielen Standardmassen; Profil der Streben zuerst waehlen (Orientierung: 30x30x2 hat nur 4,4 kN Euler, geschaetzte Last ca. 8,5 kN, deshalb wahrscheinlich 40x40x3 oder 50x50x3), Knoten und Laschen dazu passend mit genauen Massen auslegen."
   },
   {
    "id": "N-KATALOG",

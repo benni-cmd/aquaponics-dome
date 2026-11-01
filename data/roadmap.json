@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M-SETZEN laeuft (Montage), R44 Filter-Gegenpruefung laeuft; danach Pause",
+ "stand": "Stand 01.11.2026: M-SETZEN und R44 abgenommen; es laeuft noch der ComfyUI-Testrender (COMFY-V1, nicht abgenommen); nichts Neues gestartet; Bens Entscheidungen offen (Filter, Puffer-Lage)",
  "schritte": [
   {
    "id": "W33",
@@ -175,11 +175,11 @@
   {
    "id": "M-SETZEN",
    "titel": "Montage: Vorbau raus, Puffer, Drittbecken, Pumpentafeln und Messstellen setzen, Karte grün",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Montage",
-   "notiz": "Montage arbeitet (Blatt docs/jobs/M-SETZEN-puffer-drittbecken.md, Commit 018db3f), Freigabe durch Ben 01.11. Danach PAUSE, nichts Neues."
+   "notiz": "Commit 4287a37 (Runde 60): Vorbau aus (Schalter), Puffer klein r 2763/az -51 und Drittbecken klein im Dom, Pumpentafeln seitlich, 22 Messstellen-Teile am Pool/Becken/Puffer. check_walkways PASS (A 700, B 600, Wandluft 110); Karte Knie: alle Bauteile erreichbar. Offen: Puffer und Drittbecken zusammen nur 235 mm statt 500; 58 rote Engstellen; Viewer-Export 212 MB."
   },
   {
    "id": "R41",
@@ -418,11 +418,20 @@
   {
    "id": "R44",
    "titel": "Filter-Gegenpruefung: noetig, richtig gross, Platzbedarf",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "zusatz",
    "reihenfolge": 6,
    "wer": "Fachrecherche (Sitzung fachrecherche-filter)",
-   "notiz": "Auf Bens Wunsch 01.11.: unabhaengige Pruefung von Absetzer, Feinfilter, Biofilter (und Beetanteil) mit Last 346 kg / 3,46 kg Futter; Blatt docs/jobs/R44-filter-gegenpruefung.md (836a350); Bericht docs/research/R44-filter-gegenpruefung.md. Nur lesen, aendert nichts am Modell."
+   "notiz": "Commit 1a4594b: Last 346 kg senkt TAN auf 130 g/Tag, FAO-Ausloeser fuer Feinfilter entfaellt; Absetzer und Sieb zusammen mehr als Quellen verlangen; Biofilter 0 % nicht belegt. Kandidat A (Absetzer weg, ein Biofilter-Tank) spart 1,77 m2. Entscheidung Bens offen."
+  },
+  {
+   "id": "COMFY-V1",
+   "titel": "ComfyUI Foto-Render Testlauf (Skript photoreal.py, Workflow, Kamera-Tabelle)",
+   "status": "laeuft",
+   "phase": "zusatz",
+   "reihenfolge": 7,
+   "wer": "Analyse (Sitzung comfy-analyse, auf Bens direkten Wunsch)",
+   "notiz": "Sitzung baut V1 aus R43: scripts/photoreal.py, scripts/comfy/, data/photoreal.json; Testrender Uebersicht laeuft (Fehler HIP_VISIBLE_DEVICES=1 gefunden und behoben). Noch NICHT committet, noch nicht abgenommen. Aendert nichts am Modell."
   }
  ]
 }

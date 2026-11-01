@@ -38,7 +38,7 @@ NETZ = os.path.join(ROOT, "data", "leitungsnetz.json")
 DEFAULT_TRASSEN = os.path.join(ROOT, "data", "leitungstrassen.json")
 BANDS = {"U": (-400.0, -100.0), "W": (0.0, 1000.0), "T": (900.0, 1100.0), "UE": (2100.0, 1e9)}   # Z relativ zum Flur (Plan 4.1)
 RULES = {"nah_w": 500.0, "gang_z_max": 2100.0, "tol": 2.0, "step": 10.0, "gang_step": 50.0, "junction": 150.0, "steig_xy": 20.0, "min_xy": 100.0}
-TECH = ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Klein")
+TECH = ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Klein", "Feinfilter")   # M10-S2a: Feinfilter ergaenzt (S1 stellte ihn ins Modell)
 
 
 # ---------------------------------------------------------------- Modell einlesen (Einlesecode wie place_feinfilter.py / check_walkways_voll.py)

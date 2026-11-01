@@ -562,6 +562,32 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_uebergang_pe_pvc_d20$",
+      "titel": "Übergang PE-Rohr d20 auf Klebemuffe",
+      "was": "Klemmverbinder zwischen dem PE-Tropfrohr d20 des Beets und dem geklebten PVC-Rohrnetz; das PE-Rohr ist nicht klebbar.",
+      "status": "gebaut, Prüfungen mit Interferenz 0 gegen das eingesteckte PE-Rohr",
+      "ablauf": [
+        "Das PE-Rohr wird 30 mm tief durch Mutter und Klemmring gesteckt und mit der Mutter geklemmt.",
+        "Auf der anderen Seite wird das PVC-Rohr d20 in die Klebemuffe geklebt."
+      ],
+      "aufbau": [
+        {
+          "t": "Teile",
+          "p": [
+            "Körper mit Kragen, Gewindehals und Klebemuffe",
+            "Überwurfmutter 32 × 18",
+            "Klemmring (POM)"
+          ]
+        }
+      ],
+      "masse": {
+        "Länge": "50 mm",
+        "Einstecktiefe PE": "30 mm"
+      },
+      "grenzen": "Maße angenommen, kein Katalog gelesen; Nachweis später in N-BESCHAFFUNG.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

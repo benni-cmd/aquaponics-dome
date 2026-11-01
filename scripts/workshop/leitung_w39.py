@@ -13,6 +13,7 @@ JOBS = []           # (teil, dateiname, Baufunktion)
 PORTS = {}          # dateiname -> Funktion () -> [(name, (x,y,z), (dx,dy,dz), art, dn)]
 JSON = {}           # teil -> Funktion () -> {dateiname: eintrag}
 DESC = {}           # teil -> Liste von descriptions-Eintraegen
+RENDER = {}         # dateiname -> Kamera-/Schnitt-Optionen fuer render()
 
 def reg(teil, fname, fn):
     FILES.append(fname); JOBS.append((teil, fname, fn))
@@ -79,6 +80,7 @@ def uebergang_pe():
 
 def ports_pe():
     return [("A", (0, 0, 0), (0, 0, -1), "Klemme", "PE d20"), ("B", (0, 0, PE["laenge"]), (0, 0, 1), "Muffe", L.DN[20])]
+RENDER["lt_uebergang_pe_pvc_d20"] = dict(yaw=3.14159, pitch=0.0, section="XZ", zoom=2.2)
 reg("pe", "lt_uebergang_pe_pvc_d20", uebergang_pe); PORTS["lt_uebergang_pe_pvc_d20"] = ports_pe
 JSON["pe"] = lambda: {"lt_uebergang_pe_pvc_d20": jent("lt_uebergang_pe_pvc_d20", "T70-UEB-PE20", "T70_Uebergang_PE_PVC_d20", "PP (Koerper, Mutter), POM (Klemmring); Klebemuffe PVC-U-kompatibel",
     laenge=PE["laenge"], einstecktiefe_pe=PE["tiefe"], mutter={"aussen_d": PE["mutter_d"], "laenge": PE["mutter_l"], "gewinde_im_eingriff": PE["kragen_z0"] - PE["hals_z0"]},
@@ -144,7 +146,7 @@ if __name__ == "__main__":
     if "--render" in sys.argv:
         for key, fname, fn in JOBS:
             if not want or key in want:
-                print(render(fname))
+                print(render(fname, **RENDER.get(fname, {})))
         sys.exit(0)
     if "--json" in sys.argv:
         ts = [t for t in JSON if not want or t in want]

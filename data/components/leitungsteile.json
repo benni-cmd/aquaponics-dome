@@ -738,6 +738,71 @@
      "dn": "DN15"
     }
    ]
+  },
+  "lt_uebergang_pe_pvc_d20": {
+   "teilenummer": "T70-UEB-PE20",
+   "komponente": "T70_Uebergang_PE_PVC_d20",
+   "werkstoff": "PP (Koerper, Mutter), POM (Klemmring); Klebemuffe PVC-U-kompatibel",
+   "laenge": 50.0,
+   "einstecktiefe_pe": 30.0,
+   "mutter": {
+    "aussen_d": 32.0,
+    "laenge": 18.0,
+    "gewinde_im_eingriff": 6.0
+   },
+   "klemmring": {
+    "aussen_d": 24.8,
+    "innen_d": 20,
+    "breite": 5.0
+   },
+   "kragen": {
+    "aussen_d": 30.0,
+    "laenge": 12.0
+   },
+   "klebemuffe": {
+    "d": 20,
+    "tiefe": 16,
+    "aussen_d": 27.0
+   },
+   "durchgang_d": 16.4,
+   "herkunft": {
+    "Bauform": "Annahme (kein Katalog gelesen), Handelsteil 'Klemmverbinder PE-PVC'",
+    "einstecktiefe 30, mutter 32 x 18, kragen 30": "Annahme",
+    "klebemuffe": "gerechnet aus Bibliothek (d20, Tiefe 16)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Klemme",
+     "dn": "PE d20"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      50.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN15"
+    }
+   ]
   }
  }
 }

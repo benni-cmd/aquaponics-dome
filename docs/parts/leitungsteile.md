@@ -474,3 +474,40 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Pruefung:** `check_lt_w39.py red` 10/10 PASS: ein Koerper (Interferenz 0), Baulaenge 48, Aussen-D 48, kuerzer als die Kette, Portabstand, Volumen gegen Rechnung (0,002 %), beide Muffen-Zylinder, 2 Port-Stirnflaechen. **Bild:** `renders/components/leitungsteile/lt_reduzierung_d40_d20.png`.
 
 **Offene Fragen:** Handelsteil im Katalog offen (N-BESCHAFFUNG); das Netz (`leitungsnetz.json`, R40) nennt je Beet d25/d20 am Beet-Port, die Montage entscheidet, ob d40/d20 direkt gesetzt wird.
+
+## Uebergang PE-Rohr d20 auf Klebemuffe `lt_uebergang_pe_pvc_d20` (T70-UEB-PE20)
+
+**Mini-Plan.** Problem: Das Tropfrohr im Beet ist PE und nicht klebbar, das Netz davor ist geklebtes PVC-U; ein Uebergang fehlt (14 Beete). Intent: ein Handelsteil Klemmverbinder PE-PVC (Mutter, Klemmring, Klebemuffe) statt eines Eigenbaus. Goal: eine Komponente mit Port A Klemme PE d20 (Einstecktiefe 30) und Port B Klebemuffe d20, Mutter und Klemmring sichtbar, Check gruen, Interferenz 0 gegen das eingesteckte PE-Rohr. Bau: drei Koerper: Koerper (Kragen 30, Gewindehals 24,6, Klebemuffe d20), Ueberwurfmutter 32 x 18 mit Gegenbohrung 25, Klemmring POM 24,8 x 5; Stueckliste aus Handelsteilen, keine Fabrikat-Angabe.
+
+**Funktion:** Verbindet das PE-Tropfrohr d20 des Beets (nicht klebbar) mit dem geklebten PVC-U-Netz: PE-Rohr bis Anschlag (30 mm) einstecken, Ueberwurfmutter anziehen (Klemmring spannt), PVC-Rohr d20 in die Klebemuffe kleben. 14 Stueck (ein Uebergang je Beet).
+
+| Merkmal | Wert |
+|---|---|
+| Baulaenge | 50 (Mutter z 0 bis 18, Kragen 18 bis 30, Klebemuffe bis 50) |
+| Klemmseite | Mutter Aussen 32 x 18, Loch 20,4, Gegenbohrung 25; Gewindehals 24,6 (6 mm im Eingriff); Klemmring POM 24,8 x 5 (z 7 bis 12) |
+| Aufnahme PE | d20, Einstecktiefe 30, Anschlag bei z = 30 |
+| Klebemuffe B | d20, Tiefe 16, Aussen 27 (Formstueck d20), 4 mm Steg zum Anschlag |
+| Durchgang | d16,4 |
+| Werkstoff, Masse | PP (0,91) Koerper und Mutter, POM (1,41) Klemmring, 17,0 g [E aus Volumen] |
+
+**Ports** (Bauteil-KS, mm; Port A im Ursprung, Achse +Z):
+
+| Port | DN | Art | Lage x, y, z | Richtung |
+|---|---|---|---|---|
+| A | PE d20 | Klemme (PE-Rohr einstecken, Mutter anziehen) | 0, 0, 0 | -Z |
+| B | DN15 (d20) | Muffe (Klebemuffe) | 0, 0, 50 | +Z |
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| Bauform Klemmverbinder PE-PVC (Mutter, Klemmring, Klebemuffe) | | A, Handelsteil; kein Katalog gelesen, kein Fabrikat | niedrig |
+| Einstecktiefe 30, Mutter 32 x 18, Kragen 30 x 12, Klemmring 24,8 x 5, Hals 24,6 | mm | A, Konstruktionspraxis | niedrig |
+| Klebemuffe d20 (Tiefe 16, Aussen 27) | mm | E aus der Bibliothek (`leitung.DEPTH`, `od_f`) | mittel |
+| Tropfrohr ist PE, nicht klebbar | | belegt: `docs/parts/leitungsteile.md` Pruefung W36 Teil 5 | hoch |
+
+**Montage (L4):** PE-Rohr rechtwinklig abschneiden, entgraten, bis Anschlag (30 mm, Markierung) durch Mutter und Klemmring stecken, Mutter handfest anziehen; PVC-Rohr d20 in die Klebemuffe kleben (Klebstoff PVC-U). Werkzeug: Rohrschneider, Entgrater, Kleber. Alternative lokale Fertigung: Handelsverbinder "Klemmverbinder PE auf Klebemuffe" (Bewaesserungs-/Poolbedarf).
+
+**Pruefung:** `check_lt_w39.py pe` 14/14 PASS: 3 Koerper, Baulaenge 50, Mutter-Aussen, Volumen je Koerper gegen Rechnung (0,01 %), Anschlag bei z = 30, Eingriff, Gegenbohrung gross genug, Klebemuffen-Zylinder, 2 Port-Stirnflaechen, Interferenz 0 (Koerper, Mutter, Klemmring und ein eingestecktes PE-Rohr d20). **Bild** (Schnitt XZ): `renders/components/leitungsteile/lt_uebergang_pe_pvc_d20.png`.
+
+**Offene Fragen:** Handelsteil, Gewinde (hier nur Hals und Gegenbohrung, kein Gewindeprofil) und Fabrikat offen (N-BESCHAFFUNG); die Klemmverbindung fuer PE d20 gibt es auch als Steckverbinder (Push-Fit), Montage waehlt.

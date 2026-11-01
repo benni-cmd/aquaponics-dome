@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: Hauptkreislauf beider Linien steht (S2c); 19 Luecken stehen jetzt in der Roadmap; naechster Schritt W36 Verteiler d50",
+ "stand": "Stand 01.11.2026 abends: Hauptkreislauf beider Linien steht; 19 Luecken in der Roadmap; W36 Verteiler d50 laeuft (Werkstatt)",
  "schritte": [
   {
    "id": "W33",
@@ -499,11 +499,11 @@
   {
    "id": "W36",
    "titel": "Werkstatt: Verteiler d50 fuer die zwei Linien (Voraussetzung fuer M10 S3)",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Werkstatt",
-   "notiz": "Blatt docs/jobs/W36-verteiler-d50.md (Luecke L02). Sammelrohr d50 mit Abgaengen d40, d32, d50, d20. Blockiert S3."
+   "notiz": "Sitzung werkstatt-w36 (frisch, enger Kontext) seit 01.11. abends; Blatt docs/jobs/W36-verteiler-d50.md (Luecke L02). Sammelrohr d50 mit Abgaengen d40, d32, d50, d20. Blockiert S3."
   },
   {
    "id": "L01",

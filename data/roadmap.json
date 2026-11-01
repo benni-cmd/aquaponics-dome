@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10-Bau S0 und S1 abgenommen, nichts laeuft; naechster Schritt Pool-Ports; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10-Bau S0, S1, S1b abgenommen, S2a laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -215,7 +215,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Montage",
-   "notiz": "Bau in Schritten S0 bis S7 nach Plan m10-leitungen.md. Erledigt: S0 (acfb529), S1 (2c9fe30 + Nachtrag f5a0c44: 2 Feinfilter in Gruben, Ost A/West B, Laufwege A 700/B 600/Wandluft 110, Gangkarte kennt Filter, Drittbecken bei 50 mm erreichbar; Filter-Nischen bringen +2 rot/+10 gelb Engstellen nach D72). Naechster: Pool-Ports (Seitenablauf Z 340, Bodenablauf) im Pool-Bauteil, dann Werkstatt-Fehlteile (Verteiler d50, T-Stueck d63/d50/d50), dann S2 Hauptkreislauf."
+   "notiz": "Bau in Schritten nach Plan m10-leitungen.md. Erledigt: S0 (acfb529), S1 (2c9fe30, f5a0c44: 2 Feinfilter in Gruben), S1b (f007ecb: Pool-Stutzen Seitenablauf x2 d63 Z 740 + Bodenablauf d50). Jetzt: S2a (Leitungsbau-Werkzeug + Linie 1 Pool -> Feinfilter -> Pumpen; Sitzung montage-m10-s2a). Danach S2b (Rest Linie 1), S2c (Linie 2), S3 (Verteiler, Beete, NFT; Verteiler d50 fehlt bei der Werkstatt)."
   },
   {
    "id": "PUFFER-SPECS",

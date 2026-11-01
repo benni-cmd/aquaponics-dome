@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10-Plan abgenommen; wartet auf Bens Entscheidung E10 (Feinfilter-Standort), danach Bau M10-LEITUNGEN; nichts laeuft",
+ "stand": "Stand 01.11.2026: D72 entschieden; M10-LEITUNGEN S0 laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -211,11 +211,11 @@
   {
    "id": "M10-LEITUNGEN",
    "titel": "M10 Leitungen und Kabel inkl. Signalkabel der Messstellen",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Montage",
-   "notiz": "Nach Abnahme des Leitungsplans."
+   "notiz": "Bau in Schritten S0 bis S7 nach Plan m10-leitungen.md; Freigabe je Schritt durch den Orchestrator (M10-Blatt, Abschnitt Freigabe Bau). Jetzt: S0 (Vorbereitung, Pruefskript, Hoehenprobe, Werkstatt-Notiz)."
   },
   {
    "id": "PUFFER-SPECS",
@@ -489,12 +489,12 @@
   },
   {
    "id": "E10",
-   "titel": "Feinfilter-Standort: Bedienzone-Regel (Empfehlung) oder Absetzer entfaellt",
-   "status": "entscheidung",
+   "titel": "Feinfilter-Standort: Bedienzone-Regel akzeptiert (D72)",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Ben",
-   "notiz": "Empfehlung Orchestrator: Option a, Bedienzone-Regel (vor der Front 630 x 500 frei, Stirn/Rueck je 150 mm), Orte Ost A (3925/825) + West B (-1575/-3175): alle Bauteile erreichbar, Tuergang 900 unveraendert; D71 bleibt. Option e (Absetzer weg) spart nur wenig mehr und braucht neue Netzliste bei duenner Quellenlage. Streng (500 mm ringsum) gibt es in keiner Variante ohne den Tuergang zu verbauen."
+   "notiz": "Ben 01.11.: Regel akzeptieren. Orte Ost A und West B, Absetzer bleibt, D71 gilt. Ausnahme von 500 mm nur Filterzone."
   }
  ]
 }

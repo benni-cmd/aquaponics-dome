@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: S01 Specs und Viewer-Uebersicht laeuft; Filter entschieden (D71); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: S01 abgenommen, nichts laeuft; Filter entschieden (D71); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -220,11 +220,11 @@
   {
    "id": "PUFFER-SPECS",
    "titel": "puffer_klein als Standardszenario in system_specs.py",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 7,
    "wer": "Fachrecherche",
-   "notiz": "Sitzung specs-uebersicht (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/S01-puffer-specs-uebersicht.md (7579bd5): system_specs.py, system-specs.json und Bauteilliste auf Puffer klein 0,16 m3 und Drittbecken klein 0,40 m3; Viewer-Uebersicht zeigt dann den Modellstand."
+   "notiz": "Commit eb28874 (S01): Gesamtwasser 37,1 -> 34,7 m3, Puffer 2,0 -> 0,16 m3, Drittbecken 0,94 -> 0,40 m3; Pruefzeile R27 neu formuliert, keine wechselt auf nicht bestanden (9 von 13 bestanden). Viewer-Texte angepasst (Orchestrator). Offen: Wasserliste im Viewer rundet Puffer auf 0,2 m3 (0 %)."
   },
   {
    "id": "V-MESS",

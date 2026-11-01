@@ -2398,5 +2398,35 @@
   "note": "M10-S2a Runde 63: K01/K02/K06 Linie 1",
   "commit": "9f021e2",
   "source": "renders/leitungen-s2a-63-schnitt.png"
+ },
+ {
+  "file": "20261101-175111_montage_leitungen_round-64.png",
+  "sha": "ba486a245d1337fa",
+  "time": "2026-11-01 17:51:11",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2b Runde 64",
+  "commit": "a8d7841",
+  "source": "renders/round-64.png"
+ },
+ {
+  "file": "20261101-175158_montage_leitungen_section-64.png",
+  "sha": "2fd1db33232cfe6a",
+  "time": "2026-11-01 17:51:58",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2b Runde 64",
+  "commit": "a8d7841",
+  "source": "renders/section-64.png"
+ },
+ {
+  "file": "20261101-175252_montage_leitungen_leitungen-s2b-64-top.png",
+  "sha": "6847d2b5c282c818",
+  "time": "2026-11-01 17:52:52",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2b Runde 64",
+  "commit": "a8d7841",
+  "source": "renders/leitungen-s2b-64-top.png"
  }
 ]

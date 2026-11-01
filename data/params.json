@@ -395,6 +395,87 @@
   "maturity": 0,
   "used_by": "gen_dome.py"
  },
+ "ff_a_x": {
+  "value": 3925,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D72/M10-S1: Feinfilter Ost A (Linie 1), Mitte der Standflaeche, x im Modellrahmen",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_a_y": {
+  "value": 825,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D72/M10-S1: Feinfilter Ost A (Linie 1), y im Modellrahmen",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_a_yaw": {
+  "value": 285,
+  "unit": "deg",
+  "origin": "A",
+  "source": "D72/M10-S1: Drehung Ost A nach place_feinfilter_zone.py (Bauteil-X = Einlauf zu Auslauf, Bedienseite -Y)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_b_x": {
+  "value": -1575,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D72/M10-S1: Feinfilter West B (Linie 2), Mitte der Standflaeche, x im Modellrahmen",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_b_y": {
+  "value": -3175,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D72/M10-S1: Feinfilter West B (Linie 2), y im Modellrahmen",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_b_yaw": {
+  "value": 285,
+  "unit": "deg",
+  "origin": "A",
+  "source": "D72/M10-S1: Drehung West B nach place_feinfilter_zone.py",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_z": {
+  "value": -496,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-Plan F1: Standflaeche der Feinfilter relativ zum Flur (sock_h); absolut = relativ + 400 (Hoehenprobe S0)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_grube_l": {
+  "value": 900,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-Plan F1: Grube laengs (Bauteil-X); Filter-Box 760 x 665 (docs/parts/feinfilter.md Gesamt-Box) plus ca. 70 mm Spiel je Seite",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "ff_grube_w": {
+  "value": 800,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-Plan F1: Grube quer (Bauteil-Y), Spiel je Seite ca. 65 mm",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
  "walkway_min": {
   "value": 600,
   "unit": "mm",

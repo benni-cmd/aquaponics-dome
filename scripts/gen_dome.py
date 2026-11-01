@@ -86,6 +86,16 @@ def erde_fn(sock_z):
     for k, b in enumerate(LAYOUT["ibc_beds"], 1):
         x, y = bed_xy(b); ln, wd = bed_dims(k, b)
         rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, bed_yaw(b), ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
+    for k, (x, y, yaw) in enumerate(feinfilter_orte(), 1):   # M10-S1: Feinfilter-Gruben (Boden = Standflaeche), Drehung wie der Filter
+        rect_body(f"T55_Grube_{k:02d}", x, y, sock_z + P["ff_z"], yaw, P["ff_grube_l"], P["ff_grube_w"], -P["ff_z"] + 1, op="cut", targets=["T13_Erde"])
+
+def feinfilter_orte():
+    """M10-S1 (D72, Bedienzone-Regel): Feinfilter Ost A (Linie 1) und West B (Linie 2); Rueckgabe [(x, y, yaw_grad)]. Drehung nach scripts/place_feinfilter_zone.py: Bauteil-X = Einlauf zu Auslauf, Bedienseite -Y."""
+    return [(P["ff_a_x"], P["ff_a_y"], P["ff_a_yaw"]), (P["ff_b_x"], P["ff_b_y"], P["ff_b_yaw"])]
+
+def feinfilter(fz):
+    """M10-S1: 2 x T55 (designs/components/feinfilter.sc) in 09_Technik; Ursprung = Mitte Standflaeche am Boden, Z = Flur + ff_z (-496 relativ, im Modell absolut -96); Gruben siehe erde_fn."""
+    place_instances("Feinfilter", os.path.join(ROOT, "designs", "components", "feinfilter.sc"), [(x, y, fz + P["ff_z"], yaw) for x, y, yaw in feinfilter_orte()], "09_Technik")
 
 def ring_fn(sock_z):
     rs = P["dome_base_d"]/2 + P["sock_w"]; ri = P["dome_base_d"]/2
@@ -456,7 +466,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

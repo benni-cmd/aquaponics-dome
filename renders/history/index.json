@@ -2338,5 +2338,25 @@
   "note": "M-SETZEN: Draufsicht, Laufwegkarte Knie/Kopf, Runde 60",
   "commit": "12a68ca",
   "source": "renders/top-60.png"
+ },
+ {
+  "file": "20261101-155357_montage_m10-s1-feinfilter_round-61.png",
+  "sha": "45de7610285acd47",
+  "time": "2026-11-01 15:53:57",
+  "role": "montage",
+  "subject": "m10-s1-feinfilter",
+  "note": "Runde 61: Feinfilter Ost A und West B in Gruben, Draufsicht mit Massen",
+  "commit": "258d197",
+  "source": "renders/round-61.png"
+ },
+ {
+  "file": "20261101-155745_montage_m10-s1-feinfilter_top-61.png",
+  "sha": "22e5ab8e040ae539",
+  "time": "2026-11-01 15:57:45",
+  "role": "montage",
+  "subject": "m10-s1-feinfilter",
+  "note": "Runde 61: Feinfilter Ost A und West B in Gruben, Draufsicht mit Massen",
+  "commit": "258d197",
+  "source": "renders/top-61.png"
  }
 ]

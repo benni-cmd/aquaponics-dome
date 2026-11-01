@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 01:30: R40 abgenommen, nichts laeuft, wartet auf Bens Freigabe",
+ "stand": "Stand 01.11.2026: M-SETZEN laeuft (Bens Freigabe), dazu Analyse R43 ComfyUI; danach Pause",
  "schritte": [
   {
    "id": "W33",
@@ -175,11 +175,11 @@
   {
    "id": "M-SETZEN",
    "titel": "Montage: Vorbau raus, Puffer, Drittbecken, Pumpentafeln und Messstellen setzen, Karte grün",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Montage",
-   "notiz": "Montage: Vorbau raus, puffer_klein und becken_dritt_klein setzen, Pumpentafeln seitlich, Messstellen, Karte wieder gruen. Startet erst nach Bens Freigabe (Vorgabe 1.11.: nur laufende Aufgaben fertig machen)."
+   "notiz": "Montage arbeitet (Blatt docs/jobs/M-SETZEN-puffer-drittbecken.md, Commit 018db3f), Freigabe durch Ben 01.11. Danach PAUSE, nichts Neues."
   },
   {
    "id": "R41",
@@ -405,6 +405,15 @@
    "reihenfolge": 7,
    "wer": "Ben",
    "notiz": "Handlung statt Entscheidung: beim Zwischencheck im Ego-Blick ausprobieren."
+  },
+  {
+   "id": "R43",
+   "titel": "ComfyUI-Nutzung pruefen: Bestand und bessere Arbeitsweise",
+   "status": "laeuft",
+   "phase": "zusatz",
+   "reihenfolge": 5,
+   "wer": "Analyse (Sitzung comfy-analyse)",
+   "notiz": "Auf Bens Wunsch 01.11.: nur lesen und recherchieren, Bericht docs/research/R43-comfyui-nutzung.md; aendert nichts am Modell."
   }
  ]
 }

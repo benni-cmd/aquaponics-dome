@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 abends: Welle 1 laeuft (R45 Hydraulik mit Schlammkonzept zuerst, W36 Werkstatt A). Weitere Sitzungen nacheinander wegen des Limits. Fragen an dich stehen oben.",
+ "stand": "Stand 01.11.2026 abends: Welle 1 laeuft (R45 Hydraulik mit Schlammkonzept zuerst, W36 Werkstatt A). Weitere Sitzungen nacheinander wegen des Limits. Fragen an dich stehen oben. Neu: Wunsch W46 Dunstwasser (R46, E17, L20).",
  "schritte": [
   {
    "id": "W33",
@@ -249,16 +249,16 @@
    "titel": "Plane im Modell (R38 V2) und im Bauplan",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 1,
+   "reihenfolge": 2,
    "wer": "Werkstatt + Montage",
-   "notiz": "Keilschienen, Fußrand, Türzarge, Planenausschnitt-Zarge; vor R42-Abschluss nicht beginnen."
+   "notiz": "Keilschienen, Fußrand, Türzarge, Planenausschnitt-Zarge; vor R42-Abschluss nicht beginnen. Vorher R46 und E17: eine Kondensatrinne am Fussring muesste hier in Plane, Schnittmuster und Fundamentring eingehen."
   },
   {
    "id": "N-STATIK",
    "titel": "Statik B9b, Strebe V1/V2c, Verbindungsstück-Entscheidung",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 2,
+   "reihenfolge": 3,
    "wer": "Fachrecherche",
    "notiz": "Kegelsitz Tank, Tischbeine und Strebenkonzept sind bisher nicht nachgewiesen. Ben 01.11. (W43): Verbindungsstuecke mit moeglichst vielen Standardmassen; Profil der Streben zuerst waehlen (Orientierung: 30x30x2 hat nur 4,4 kN Euler, geschaetzte Last ca. 8,5 kN, deshalb wahrscheinlich 40x40x3 oder 50x50x3), Knoten und Laschen dazu passend mit genauen Massen auslegen."
   },
@@ -267,7 +267,7 @@
    "titel": "B4 Katalog und B1 Teile-Datenmodell",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 4,
+   "reihenfolge": 5,
    "wer": "Werkstatt",
    "notiz": "Grundlage für Detailansicht und Stückliste."
   },
@@ -276,7 +276,7 @@
    "titel": "B2/B3 Detailansicht",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 5,
+   "reihenfolge": 6,
    "wer": "Viewer",
    "notiz": "Einzelteile im Viewer ansehen."
   },
@@ -285,7 +285,7 @@
    "titel": "B5 Stueckliste und Meterware per Skript aus dem Modell (kein KI-Lauf je Aenderung)",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 6,
+   "reihenfolge": 7,
    "wer": "Werkstatt",
    "notiz": "Ben 01.11. (W45): deterministisches Skript scripts/bom.py liest Modellstand (Instanzliste) + Teile-Datenmodell B1 + Katalog B4; Zuschnitt/Meterware per festem Algorithmus (Ausgangspunkt strut_cutting.py); Aenderungen am Modell sieht man direkt in der Teileliste; Test: Summen gleich Modellzaehlung. Reale Standardteile mit Mengen."
   },
@@ -294,7 +294,7 @@
    "titel": "R31 Materialien, R32 Becken, R33 Beete",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 8,
+   "reihenfolge": 9,
    "wer": "Fachrecherche",
    "notiz": "Recherchen zum Abschluss des Teilekatalogs."
   },
@@ -303,7 +303,7 @@
    "titel": "B10 Bauanleitung",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 9,
+   "reihenfolge": 10,
    "wer": "Orchestrator",
    "notiz": "Baut auf Katalog, Detailansicht und Stückliste auf."
   },
@@ -312,7 +312,7 @@
    "titel": "Farben, Material, Renders und Pflanzenmodelle",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 10,
+   "reihenfolge": 11,
    "wer": "Werkstatt",
    "notiz": "Optische Feinarbeit nach der Technik. ComfyUI-Weg laut R43 (docs/research/R43-comfyui-nutzung.md): V1 Skript photoreal.py + Kamera-Tabelle + Protokoll, V2 Tiefe/saubere Kanten (Download nach Bens Freigabe), V3 Farb-ID, V4 Foto-Latte."
   },
@@ -321,7 +321,7 @@
    "titel": "Notstrom und Alarm konkretisieren",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 11,
+   "reihenfolge": 12,
    "wer": "Fachrecherche + Werkstatt",
    "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39."
   },
@@ -330,7 +330,7 @@
    "titel": "Süßkartoffel-Licht belegen, NFT-Wuchsfläche messen",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 12,
+   "reihenfolge": 13,
    "wer": "Fachrecherche",
    "notiz": "Entscheidet 49,6 gegen 35,1 m² und damit etwa ±80 kg Fisch."
   },
@@ -448,7 +448,7 @@
    "titel": "Filter erneut pruefen (Wiederholung R44 am fertigen Modell)",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 3,
+   "reihenfolge": 4,
    "wer": "Fachrecherche (frisch) + Orchestrator",
    "notiz": "Nach Statik, vor Katalog und Stueckliste: R44 mit dem Stand wiederholen, den es heute nicht gibt: Leitungsplan M10 (echte Stroeme, Siebbedarf im Hauptstrom, ein Biofilter fuer zwei Linien), entschiedene Fischmenge (E1: 346 kg oder 450-500 kg aendert die Last), gewaehlte Filter-Variante (E8), Plane und Heizlast, Volltexte der noch fehlenden Quellen (Timmons/Ebeling, Lennard). Danach filter-konzept.md und Teileliste nachziehen. Beete-Nitrifikation bleibt eine Betriebsmessung, im Modell nicht klaerbar."
   },
@@ -475,7 +475,7 @@
    "titel": "B16 Parametrische Teileliste: Parameter einstellen, Teile/Mengen/Schnittmuster rechnen sofort neu",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 7,
+   "reihenfolge": 8,
    "wer": "Montage + Viewer-Sitzung",
    "notiz": "Ben 01.11. (W45, Stufe 2, nach der Skript-Stueckliste): Rechenkern mit Formeln je Bauteil (sofort, ohne CAD), getestet gegen die Modellzaehlung; CAD-Modell nur auf Knopfdruck neu bauen (Build mehrere Minuten); Seite wie Viewer/Roadmap."
   },
@@ -804,6 +804,33 @@
    "reihenfolge": 9,
    "wer": "Montage",
    "notiz": "check_walkways, volle check_walkways_voll (7,5 min), Kollision, Draufsicht und Seitenansicht ins Bildarchiv, Heber-Nachrechnung L10 gegen die echten Rohrlaengen, Rohr-Stueckliste per Skript, docs/model-description.md und integration-board. Danach Bericht an dich."
+  },
+  {
+   "id": "R46",
+   "titel": "Dunstwasser wieder einfangen: Vorschlaege aus Kondensat und Verdunstung (Wunsch W46)",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 1,
+   "wer": "Fachrecherche (frische Sitzung)",
+   "notiz": "Blatt docs/jobs/R46-dunstwasser.md. Vor N-PLANE, weil eine Kondensatrinne am Fussring in Plane und Schnittmuster eingehen muesste. Nur lesen und rechnen; darf frueher laufen, sobald das Limit Luft hat. Sechs Fragen: Wie viel Dunst geht verloren (Spannen je Klimaklasse, nicht je Ort, D69), wie viel kondensiert, Vorschlaege (Rinne am Fussring, kalte Flaechen/Waermetauscher, Taufaenger, Entfeuchter, Lueftung als Gegenposition), Passung zur Bauweise, Wasserqualitaet und Nutzung, lohnt es sich. Ergebnis: Entscheidungsvorlage E17 mit Empfehlung; \"nein\" oder \"spaeter\" ist ein gueltiges Ergebnis. Heutige Platzhalter-Annahme: 0,68 m3/Tag Verlust (2 Prozent, Obergrenze SRAC 454, nicht gemessen)."
+  },
+  {
+   "id": "E17",
+   "titel": "Dunstwasser: Vorschlag aus R46 waehlen oder verwerfen",
+   "status": "entscheidung",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 14,
+   "wer": "Ben (nach R46)",
+   "notiz": "Noch nicht faellig: erst liefert R46 die Vorschlaege mit Empfehlung. Dann entscheidest du, ob und welche Variante in Plane und Fundamentring eingeplant wird. Blockiert nichts jetzt; muss vor N-PLANE entschieden sein (Luecke L20)."
+  },
+  {
+   "id": "L20",
+   "titel": "Dunst- und Kondenswasser wird nicht zurueckgewonnen (Wunsch W46)",
+   "status": "luecke",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 20,
+   "wer": "Fachrecherche (R46) + Ben (E17)",
+   "notiz": "Zugeordnet: R46, dann E17, dann N-PLANE. Heute nur Platzhalter-Nachspeisung 0,68 m3/Tag (2 Prozent, Obergrenze SRAC 454, nicht gemessen); R24: Plane aus Einfachfolie laesst Kondensat entstehen, das ungenutzt verloren geht, Zahlen fuer die Huelle nicht belegt. Ob eine Rueckgewinnung spuerbar ist, ist offen."
   }
  ]
 }

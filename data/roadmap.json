@@ -459,6 +459,15 @@
    "reihenfolge": 3,
    "wer": "Fachrecherche (frisch) + Orchestrator",
    "notiz": "Nach Statik, vor Katalog und Stueckliste: R44 mit dem Stand wiederholen, den es heute nicht gibt: Leitungsplan M10 (echte Stroeme, Siebbedarf im Hauptstrom, ein Biofilter fuer zwei Linien), entschiedene Fischmenge (E1: 346 kg oder 450-500 kg aendert die Last), gewaehlte Filter-Variante (E8), Plane und Heizlast, Volltexte der noch fehlenden Quellen (Timmons/Ebeling, Lennard). Danach filter-konzept.md und Teileliste nachziehen. Beete-Nitrifikation bleibt eine Betriebsmessung, im Modell nicht klaerbar."
+  },
+  {
+   "id": "FILTER-PLATZ",
+   "titel": "Platz-Szenario fuer die Filterwahl (Puffer + Drittbecken ohne Absetzer, ohne einen Biofilter-Tank)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 0,
+   "wer": "Montage (Sitzung montage-kuppel-2)",
+   "notiz": "Nur Rechnung ohne Build: freie Suche Lage Puffer+Drittbecken; Ergebnis hilft Ben bei E8 (Filter-Variante). Nichts wird committet oder am Modell geaendert."
   }
  ]
 }

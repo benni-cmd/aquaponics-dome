@@ -269,7 +269,7 @@
    "phase": "nach_zwischencheck",
    "reihenfolge": 5,
    "wer": "Werkstatt",
-   "notiz": "Grundlage für Detailansicht und Stückliste."
+   "notiz": "Grundlage für Detailansicht und Stückliste. Dazu L21: Masse der Rohrbibliothek gegen Herstellerkatalog pruefen (Wandstaerke, Muffentiefe, Bogenradius, Kugelhahn), Eigenkonstruktionen als Stueckliste aus Handelsteilen schreiben."
   },
   {
    "id": "N-DETAIL",
@@ -831,6 +831,15 @@
    "reihenfolge": 20,
    "wer": "Fachrecherche (R46) + Ben (E17)",
    "notiz": "Zugeordnet: R46, dann E17, dann N-PLANE. Heute nur Platzhalter-Nachspeisung 0,68 m3/Tag (2 Prozent, Obergrenze SRAC 454, nicht gemessen); R24: Plane aus Einfachfolie laesst Kondensat entstehen, das ungenutzt verloren geht, Zahlen fuer die Huelle nicht belegt. Ob eine Rueckgewinnung spuerbar ist, ist offen."
+  },
+  {
+   "id": "L21",
+   "titel": "Standardteile-Check: Rohrbibliothek-Masse sind Annahmen; Verteiler d50 und Vierkant-Schelle sind Eigenkonstruktionen",
+   "status": "luecke",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 21,
+   "wer": "Werkstatt A (Schelle jetzt) + N-KATALOG (Rest)",
+   "notiz": "Stichprobe 01.11. abends (Ben fragt): (1) Rohr, Bogen, T, Kupplung, Reduziermuffe, Kugelhahn sind Handelsteile (PVC-U Klebefittings; Kugelhahn d50 in mehreren Shops gefunden), aber Wandstaerke, Muffentiefe, Bogenradius und Hahnlaenge stehen in docs/parts/leitungsteile.md als [A] \"keine Quelle abgerufen\". Fuer die Mengenliste reicht das, fuer Passmasse noch nicht. (2) Verteiler d50 mit vier Abgaengen verschiedener Groesse: im Handel nicht gefunden; Bauteilblatt nennt selbst die Alternative aus T-Stuecken, Reduzierungen und Kugelhaehnen; Stueckliste \"aus Handelsteilen\" fehlt noch. (3) Rohrschelle fuer Vierkantbein (2 Halbschalen, Rueckenplatte, Spannband, M6-Schrauben) ist eine Eigenkonstruktion; Handelsschellen mit Gummieinlage fuer Rohr 32 bis 63 gibt es, eine Schelle direkt fuer Vierkant nicht. Empfehlung: Handelsschelle plus Standard-Befestigung am Bein (Spannband oder Montageplatte). Zugeordnet: Schelle in W36 (noch nicht gesichert), Masspruefung gegen Katalog in N-KATALOG (B4)."
   }
  ]
 }

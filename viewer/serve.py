@@ -9,6 +9,11 @@ DESIGN = os.path.join(ROOT, 'designs', 'dome.sc')
 EXPORT = os.path.join(HERE, 'export_model.py')
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 4410
 state = {'version': 0, 'built': '', 'busy': False, 'error': '', 'design_saved': ''}
+# Nach einem Neustart sofort das zuletzt exportierte Modell anbieten (die Seite laedt erst ab version > 0); der neue Export laeuft danach im Hintergrund
+_INST = os.path.join(HERE, 'instances.json')
+if os.path.exists(_INST):
+    state['version'] = 1
+    state['built'] = time.strftime('%H:%M:%S', time.localtime(os.path.getmtime(_INST)))
 
 def do_export():
     state['busy'] = True

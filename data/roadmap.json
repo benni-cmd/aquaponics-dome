@@ -657,7 +657,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 18,
    "wer": "Viewer-Sitzung",
-   "notiz": "Zugeordnet: V-MESS. Seit Runde 60 gemeldet; neue Leitungs-Instanzen (199) erhoehen die Last. Instanz-Export pruefen."
+   "notiz": "Zugeordnet: V-MESS. Seit Runde 60 gemeldet; neue Leitungs-Instanzen (199) erhoehen die Last. Instanz-Export pruefen. STAND 01.11. spaet: Export jetzt 272,5 MB (152 Definitionen, 4880 Instanzen, Aufbau 11,2 s im Browser) statt 212 MB. Ursache fuer \"Modell erscheint nicht\" nach Server-Neustart war etwas anderes (serve.py, behoben 02.11.)."
   },
   {
    "id": "L19",

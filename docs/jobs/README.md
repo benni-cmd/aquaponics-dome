@@ -10,3 +10,8 @@ Alles andere ist "bei Bedarf", mit Zeilenbereich oder Suchbegriff aus dem Auftra
 Aufbau jedes Blatts: Ziel in einem Satz · Eingaben (Datei, Zeilen) · Ergebnis (Dateien) · Pruefung · nicht anfassen · danach.
 Fehlt der Sitzung etwas, schreibt sie es als Mangel in `docs/session-notes/orchestrator.md`, statt zu suchen.
 Besonderheiten: Faellt einer Sitzung eine ungewoehnliche Loesung oder ein Vorteil auf, meldet sie in der Kurzmeldung eine Zeile "Besonderheit: ..."; der Orchestrator traegt sie in `docs/pitch-besonderheiten.md` ein (Wunsch W48).
+
+## Sitzungsarten Planer und Pruefer (Standard seit 01.11.2026, Ben E18)
+Ablauf je Schritt: Orchestrator -> **Planer** (schreibt `docs/jobs/<ID>.md` mit Aktualitaetspruefung und Pruefpunkten) -> Orchestrator liest nur Blatt und Kurzmeldung und gibt frei -> **Bau-Sitzung** (Montage, Werkstatt, Recherche) -> **Pruefer** (misst nach, `docs/jobs/pruefung/<ID>.md`) -> Orchestrator -> Ben.
+Vorlagen: `docs/jobs/vorlagen/planung.md` und `docs/jobs/vorlagen/pruefung.md`; der Start-Prompt des Orchestrators enthaelt nur die feste Kopfzeile (Projekt, cd, keine AskUserQuestion) plus Schritt-ID und drei bis fuenf Zeilen Brief.
+Nicht noetig fuer kleine Orchestrator-Arbeiten (Netzliste, Roadmap) und Wiederanlauf eines schon geplanten Schritts. Eine Sitzung gleichzeitig schreibt; Planer und Pruefer lesen nur und schreiben je eine eigene Datei.

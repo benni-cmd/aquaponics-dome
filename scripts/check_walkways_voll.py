@@ -1,7 +1,7 @@
 """Vollstaendige Laufwegkarte (M10 Schritt 0, D54): alle Hindernisse als Grundriss in zwei Hoehenscheiben (Knie 0,3 m, Kopf 1,7 m ueber Boden), 50-mm-Raster, Abstand zum naechsten Hindernis (Chamfer-Transformation mit Hindernis-Nummer).
 Engstelle = Grenze zwischen zwei Hindernis-Einzugsgebieten (Voronoi-Kante) mit Weite 2 x Abstand < 600 mm; rot < 500, gelb 500-600. Erreichbarkeit: Flutung von der Tuer ueber Zellen mit Abstand >= 250 mm (= 500 mm Gang); Bauteil erreichbar, wenn eine geflutete Zelle <= 450 mm vom Grundriss liegt.
 Aufruf: python scripts/check_walkways_voll.py   (schreibt docs/walkway-map.md, renders/walkway-map-knie.png, renders/walkway-map-kopf.png)
-Hindernisse: Portale (Beet + 115 je Seite, bis 1,5 m), Innentische, Tanks/Pumpentafeln/Puffer-Station (Komponenten-Bounding-Box je Instanz, Z-Bereich), Becken (Kreis), Zehneck-Wand ausser an der Tuer; Plane, Streben, Figuren, Pflanzen nicht."""
+Hindernisse: Portale (Beet + 115 je Seite, bis 1,5 m), Innentische, Tanks/Pumpentafeln/Puffer/Feinfilter (Komponenten-Bounding-Box je Instanz, Z-Bereich), Becken (Kreis), Zehneck-Wand ausser an der Tuer; Plane, Streben, Figuren, Pflanzen nicht."""
 import json, math, os, subprocess, sys, tempfile
 from PIL import Image, ImageDraw
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,7 +44,7 @@ for k, m in mv.items():
     else: l = None
     if l:
         pg, _ = poly(m, (-l / 2, -w / 2, 0, l / 2, w / 2, 0)); obst.append((k, pg, FZ, FZ + 1500)); continue
-    if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station", "Puffer_Klein"):
+    if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station", "Puffer_Klein", "Feinfilter"):   # Feinfilter (M10-S1): Box Z -96 bis 807 abs, im Knie-Schnitt (700) ein Hindernis
         pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station", "Puffer_Klein": "puffer_klein"}.get(cls, cls.lower())))
         if max(math.hypot(*p) for p in pg) < AP + 200: obst.append((k, pg, za, zb))   # Vorbau ausserhalb der Wand (D62) liegt nicht im Innenraum
 pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))), LAY["pool2"]["d"] / 2 + 60),
@@ -144,7 +144,7 @@ for sl, h in [s_ for s_ in (("knie", 300), ("kopf", 1700)) if s_[0] in os.enviro
         for rr in (2300, 2450, 2600):
             print(sl, "r", rr, [(a, d[int((rr * math.sin(math.radians(a)) + EXT) // CELL)][int((rr * math.cos(math.radians(a)) + EXT) // CELL)], int(ok250[int((rr * math.sin(math.radians(a)) + EXT) // CELL)][int((rr * math.cos(math.radians(a)) + EXT) // CELL)])) for a in range(-90, 270, 18)])
     for thr in (150, 200, 220):
-        reach = flood(d, thr, seed); print(sl, "Gang >=", 2 * thr, "mm: erreichte Zellen", sum(map(sum, reach)), "Bauteile:", sorted({nm_of(src[j][i]) for j in range(N) for i in range(N) if reach[j][i] and d[j][i] <= thr + 200 and lab[j][i] == -1 and src[j][i] >= 0 and obst[src[j][i]][0].startswith(("Tank", "Pumpe", "Puffer", "Dritt", "Zweit", "Zentral"))}))
+        reach = flood(d, thr, seed); print(sl, "Gang >=", 2 * thr, "mm: erreichte Zellen", sum(map(sum, reach)), "Bauteile:", sorted({nm_of(src[j][i]) for j in range(N) for i in range(N) if reach[j][i] and d[j][i] <= thr + 200 and lab[j][i] == -1 and src[j][i] >= 0 and obst[src[j][i]][0].startswith(("Tank", "Pumpe", "Puffer", "Feinfilter", "Dritt", "Zweit", "Zentral"))}))
     lines += [f"## Scheibe {sl} ({h / 1000:.1f} m ueber Boden)", ""]
     for col, cells in (("rot", red), ("gelb", yel)):
         rows = []
@@ -161,7 +161,7 @@ for sl, h in [s_ for s_ in (("knie", 300), ("kopf", 1700)) if s_[0] in os.enviro
         if not (FZ + h >= za and FZ + h <= zb): continue
         cells = [(j, i) for j in range(N) for i in range(N) if ok250[j][i] and lab[j][i] == -1 and src[j][i] == oi and d[j][i] <= 450 + 100]
         acc.append((nm, len(cells) > 0))
-    lines += ["### Erreichbarkeit der Bauteile (Zelle mit >= 500 mm Gang <= 450 mm vom Grundriss)", ""] + [f"- {'erreichbar' if a else 'NICHT erreichbar'}: {n}" for n, a in acc if (not a) or n.startswith(("Tank", "Pumpe", "Puffer", "Drittbecken", "Zweitbecken", "Zentralpool"))] + [""]
+    lines += ["### Erreichbarkeit der Bauteile (Zelle mit >= 500 mm Gang <= 450 mm vom Grundriss)", ""] + [f"- {'erreichbar' if a else 'NICHT erreichbar'}: {n}" for n, a in acc if (not a) or n.startswith(("Tank", "Pumpe", "Puffer", "Feinfilter", "Drittbecken", "Zweitbecken", "Zentralpool"))] + [""]
     # Bild
     S = 3; im = Image.new("RGB", (N * S // 2, N * S // 2), (235, 235, 235)); dr = ImageDraw.Draw(im); sc = S / 2
     for j in range(N):

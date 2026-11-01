@@ -4,7 +4,7 @@ Erzeugt von `scripts/check_walkways_voll.py` aus `scripts/dome-script.json` (Ras
 
 ## Scheibe knie (0.3 m ueber Boden)
 
-### rot: 58 Engstellen
+### rot: 60 Engstellen
 
 - Weite ca. 100 mm bei -180 Grad / 5675 mm (Laenge ca. 6450 mm): Beet_aussen_800:2 x Wand
 - Weite ca. 100 mm bei -170 Grad / 2256 mm (Laenge ca. 500 mm): Tisch_innen:2 Fuss x Zentralpool
@@ -12,10 +12,10 @@ Erzeugt von `scripts/check_walkways_voll.py` aus `scripts/dome-script.json` (Ras
 - Weite ca. 100 mm bei -161 Grad / 3510 mm (Laenge ca. 1100 mm): Beet_innen_933:2 x Beet_innen_933:3
 - Weite ca. 100 mm bei -144 Grad / 5696 mm (Laenge ca. 5350 mm): Beet_aussen_800:3 x Wand
 - Weite ca. 100 mm bei -141 Grad / 2276 mm (Laenge ca. 1650 mm): Tisch_innen:3 Fuss x Tisch_innen:3 Fuss | Tisch_innen:3 Fuss x Zentralpool
+- Weite ca. 100 mm bei -109 Grad / 3510 mm (Laenge ca. 2200 mm): Feinfilter:2 x Pumpe_gross:4 | Feinfilter:2 x Tank_gross_t3:1
 - Weite ca. 100 mm bei -108 Grad / 5660 mm (Laenge ca. 4250 mm): Beet_aussen_800:4 x Wand
 - Weite ca. 100 mm bei -106 Grad / 2263 mm (Laenge ca. 1800 mm): Tisch_innen:4 Fuss x Tisch_innen:4 Fuss | Tisch_innen:4 Fuss x Zentralpool
 - Weite ca. 100 mm bei -106 Grad / 2943 mm (Laenge ca. 400 mm): Pumpe_gross:3 x Tank_gross_t3:1
-- Weite ca. 100 mm bei -106 Grad / 3719 mm (Laenge ca. 300 mm): Pumpe_gross:4 x Tank_gross_t3:1
 - Weite ca. 100 mm bei -102 Grad / 4119 mm (Laenge ca. 500 mm): Pumpe_gross:4 x Tank_gross_t3:1
 - Weite ca. 100 mm bei -98 Grad / 4165 mm (Laenge ca. 450 mm): Pumpe_gross:4 x Tank_gross_t3:1
 - Weite ca. 100 mm bei -97 Grad / 2744 mm (Laenge ca. 450 mm): Pumpe_gross:3 x Tank_gross_t3:1
@@ -37,11 +37,13 @@ Erzeugt von `scripts/check_walkways_voll.py` aus `scripts/dome-script.json` (Ras
 - Weite ca. 100 mm bei -1 Grad / 5625 mm (Laenge ca. 6450 mm): Beet_aussen_800:5 x Wand
 - Weite ca. 100 mm bei 1 Grad / 2175 mm (Laenge ca. 1550 mm): Tisch_innen:7 Fuss x Tisch_innen:7 Fuss | Tisch_innen:7 Fuss x Zentralpool
 
-### gelb: 72 Engstellen
+### gelb: 82 Engstellen
 
+- Weite ca. 442 mm bei -110 Grad / 2958 mm (Laenge ca. 300 mm): Feinfilter:2 x Tank_gross_t3:1 | Pumpe_gross:3 x Tank_gross_t3:1
 - Weite ca. 442 mm bei -97 Grad / 2595 mm (Laenge ca. 150 mm): Pumpe_gross:3 x Tank_gross_t3:1
 - Weite ca. 442 mm bei -66 Grad / 5516 mm (Laenge ca. 250 mm): Wand x Zweitbecken
 - Weite ca. 442 mm bei -27 Grad / 2337 mm (Laenge ca. 150 mm): Tisch_innen:6 Fuss x Zentralpool
+- Weite ca. 442 mm bei 19 Grad / 4459 mm (Laenge ca. 500 mm): Beet_aussen_800:5 x Beet_aussen_800:6 | Beet_aussen_800:5 x Feinfilter:1
 - Weite ca. 442 mm bei 90 Grad / 5125 mm (Laenge ca. 350 mm): Beet_aussen_800:7 x Beet_aussen_800:8
 - Weite ca. 484 mm bei -161 Grad / 3937 mm (Laenge ca. 300 mm): Beet_innen_933:2 x Beet_innen_933:3
 - Weite ca. 484 mm bei -161 Grad / 4570 mm (Laenge ca. 150 mm): Beet_aussen_800:2 x Beet_aussen_800:3
@@ -58,17 +60,15 @@ Erzeugt von `scripts/check_walkways_voll.py` aus `scripts/dome-script.json` (Ras
 - Weite ca. 484 mm bei -36 Grad / 2435 mm (Laenge ca. 200 mm): Puffer_Klein:1 x Tisch_innen:6 Fuss | Tisch_innen:6 Fuss x Tisch_innen:6 Fuss
 - Weite ca. 484 mm bei -20 Grad / 2894 mm (Laenge ca. 350 mm): Pumpe_gross:1 x Pumpe_klein:3 | Pumpe_klein:3 x Tank_gross:1
 - Weite ca. 484 mm bei 9 Grad / 2355 mm (Laenge ca. 150 mm): Tisch_innen:7 Fuss x Zentralpool
+- Weite ca. 484 mm bei 15 Grad / 3390 mm (Laenge ca. 300 mm): Beet_innen_933:4 x Feinfilter:1
 - Weite ca. 484 mm bei 20 Grad / 5615 mm (Laenge ca. 150 mm): Beet_aussen_800:6 x Wand
+- Weite ca. 484 mm bei 21 Grad / 4193 mm (Laenge ca. 250 mm): Beet_innen_933:4 x Feinfilter:1
 - Weite ca. 484 mm bei 54 Grad / 5086 mm (Laenge ca. 450 mm): Beet_aussen_800:6 x Beet_aussen_800:7
 - Weite ca. 484 mm bei 66 Grad / 2318 mm (Laenge ca. 200 mm): Tisch_innen:9 Fuss x Zentralpool
 - Weite ca. 484 mm bei 90 Grad / 3875 mm (Laenge ca. 350 mm): Beet_innen_933:5 x Beet_innen_933:6
 - Weite ca. 484 mm bei 102 Grad / 2324 mm (Laenge ca. 150 mm): Tisch_innen:10 Fuss x Zentralpool
 - Weite ca. 484 mm bei 127 Grad / 3855 mm (Laenge ca. 250 mm): Beet_innen_933:1 x Beet_innen_933:6
 - Weite ca. 484 mm bei 128 Grad / 5626 mm (Laenge ca. 200 mm): Beet_aussen_800:1 x Wand
-- Weite ca. 484 mm bei 146 Grad / 2448 mm (Laenge ca. 550 mm): Beet_innen_933:1 x Tisch_innen:1 Fuss | Tisch_innen:1 Fuss x Tisch_innen:1 Fuss
-- Weite ca. 500 mm bei -163 Grad / 5711 mm (Laenge ca. 150 mm): Beet_aussen_800:2 x Wand
-- Weite ca. 500 mm bei -161 Grad / 2720 mm (Laenge ca. 150 mm): Beet_innen_933:2 x Beet_innen_933:3
-- Weite ca. 500 mm bei -141 Grad / 2526 mm (Laenge ca. 600 mm): Beet_innen_933:3 x Tisch_innen:3 Fuss | Tisch_innen:3 Fuss x Tisch_innen:3 Fuss
 
 ### Erreichbarkeit der Bauteile (Zelle mit >= 500 mm Gang <= 450 mm vom Grundriss)
 
@@ -85,6 +85,8 @@ Erzeugt von `scripts/check_walkways_voll.py` aus `scripts/dome-script.json` (Ras
 - erreichbar: Pumpe_gross:3
 - erreichbar: Pumpe_gross:4
 - erreichbar: Puffer_Klein:1
+- erreichbar: Feinfilter:1
+- erreichbar: Feinfilter:2
 - erreichbar: Zentralpool
 - erreichbar: Zweitbecken
 - erreichbar: Drittbecken
@@ -113,7 +115,7 @@ Erzeugt von `scripts/check_walkways_voll.py` aus `scripts/dome-script.json` (Ras
 
 ## Zusammenfassung
 
-- knie rot: 58 Engstellen
-- knie gelb: 72 Engstellen
+- knie rot: 60 Engstellen
+- knie gelb: 82 Engstellen
 - kopf rot: 2 Engstellen
 - kopf gelb: 4 Engstellen

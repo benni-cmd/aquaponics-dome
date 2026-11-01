@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: Filter-Entscheidung E8 in Klaerung, Montage rechnet Platz-Szenario; sonst nichts laeuft",
+ "stand": "Stand 01.11.2026: Platz-Szenario fertig; nichts laeuft; Bens Entscheidungen offen (Filter E8 nicht zwingend, Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -440,16 +440,16 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 8,
    "wer": "Ben",
-   "notiz": "Kandidat A: Absetzer entfaellt, Sieb bleibt, ein Biofilter-Tank (spart 1,77 m2). Kandidat B: Absetzer bleibt, Sieb nur am NFT-Zweig, ein Biofilter-Tank. Details docs/research/R44-filter-gegenpruefung.md. 01.11. Stand: Platz-Szenario laeuft bei der Montage (Puffer+Drittbecken ohne Absetzer, ohne einen Biofilter-Tank); Sieb T55 ist schon fuer den Hauptstrom bemessen, nur die Siebbelastung 8 m/h ist unbelegt."
+   "notiz": "Kandidat A: Absetzer entfaellt, Sieb bleibt, ein Biofilter-Tank (spart 1,77 m2). Kandidat B: Absetzer bleibt, Sieb nur am NFT-Zweig, ein Biofilter-Tank. Details docs/research/R44-filter-gegenpruefung.md. 01.11. Stand: Platz-Szenario laeuft bei der Montage (Puffer+Drittbecken ohne Absetzer, ohne einen Biofilter-Tank); Sieb T55 ist schon fuer den Hauptstrom bemessen, nur die Siebbelastung 8 m/h ist unbelegt. Ergebnis Platz-Szenario: Platz ist heute nicht zwingend; ohne Absetzer waechst die Reserve von 132 auf 450 mm. Empfehlung Orchestrator: Status quo behalten, Wiederholung N-FILTER am fertigen Modell."
   },
   {
    "id": "E9",
-   "titel": "Puffer und Drittbecken: zusammen nur 235 mm statt 500 mm Gang, Lage waehlen",
-   "status": "entscheidung",
+   "titel": "Puffer und Drittbecken: Lage (frueherer Engpass war ein Suchfehler)",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 9,
    "wer": "Ben",
-   "notiz": "Montage (M-SETZEN): Puffer-Optimum 630 mm nur mit Drittbecken auf der D62-Lage; mit beiden gemeinsam am besten 235 mm. Aktuell Puffer an Bedienseite 700 x 650 frei, Drittbecken r 4970/az -30. Varianten stehen in docs/loop-state.md (M-SETZEN)."
+   "notiz": "Korrektur 01.11.: Die gemeldeten 235 mm kamen aus einer Zufallssuche, die die bekannte Loesung nicht fand. Die heutige Lage (Puffer 2764/-51, Drittbecken 4966/-30) erfuellt alle Soll-Luecken mit 132 mm Reserve (Montage). Keine Entscheidung noetig; Reserve waechst nur, wenn Tanks entfallen (E8)."
   },
   {
    "id": "N-FILTER",
@@ -463,11 +463,11 @@
   {
    "id": "FILTER-PLATZ",
    "titel": "Platz-Szenario fuer die Filterwahl (Puffer + Drittbecken ohne Absetzer, ohne einen Biofilter-Tank)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 0,
    "wer": "Montage (Sitzung montage-kuppel-2)",
-   "notiz": "Nur Rechnung ohne Build: freie Suche Lage Puffer+Drittbecken; Ergebnis hilft Ben bei E8 (Filter-Variante). Nichts wird committet oder am Modell geaendert."
+   "notiz": "Montage 01.11.: heutige Lage erfuellt alle Soll-Luecken (Bedienzone 632 mm, nur 132 mm Reserve). Ohne die 2 kleinen Tanks (Absetzer) 450 mm Reserve, zusaetzlich ohne ein grosses Tank 414 mm Reserve und Drittbecken-Luecke 914 mm. Bounding-Box-Zufallssuche, kein Build, keine Karte."
   }
  ]
 }

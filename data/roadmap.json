@@ -947,7 +947,7 @@
    "phase": "dauerhaft",
    "reihenfolge": 5,
    "wer": "Orchestrator",
-   "notiz": "Dokumentiert 01.11. spaet: docs/arbeitsweise-sitzungen.md (Sitzungsarten, Ablauf, Start, Regeln), D73, D74, Messtabelle docs/jobs/kosten.md. Neue Kontextregel (Ben): untaetige Sitzung wiederverwenden, wenn das Paket verwandt und kurz ist und sie bis 25 Prozent Kontext hat; sonst neue Sitzung; weich 30, hart 45 Prozent. Ben 01.11.: Planungs- und Pruefsitzung sind Standard. Planer (frisch, nur lesen und ein Blatt schreiben) macht die Aktualitaetspruefung und das Auftragsblatt mit Pruefpunkten; Pruefer misst nach und schreibt docs/jobs/pruefung/<ID>.md. Ausnahmen: kleine Orchestrator-Arbeiten und Wiederanlauf. Preis: Wochenlimit; deshalb eine Sitzung gleichzeitig, Modell Sonnet mit Aufwand medium."
+   "notiz": "Dokumentiert 01.11. spaet: docs/arbeitsweise-sitzungen.md (Sitzungsarten, Ablauf, Start, Regeln), D73, D74, Messtabelle docs/jobs/kosten.md. Neue Kontextregel (Ben): untaetige Sitzung wiederverwenden, wenn das Paket verwandt und kurz ist, sie bis 35 Prozent Kontext hat (bis 25 Prozent etwa 10 Zuege, darueber etwa 5) und seit ihrem letzten Zug wenig an ihren Eingabedateien passiert ist (keine Zeitgrenze, Ben); sonst neue Sitzung; weich 40, hart 50 Prozent. Ben 01.11.: Planungs- und Pruefsitzung sind Standard. Planer (frisch, nur lesen und ein Blatt schreiben) macht die Aktualitaetspruefung und das Auftragsblatt mit Pruefpunkten; Pruefer misst nach und schreibt docs/jobs/pruefung/<ID>.md. Ausnahmen: kleine Orchestrator-Arbeiten und Wiederanlauf. Preis: Wochenlimit; deshalb eine Sitzung gleichzeitig, Modell Sonnet mit Aufwand medium."
   },
   {
    "id": "PLAN-W37",

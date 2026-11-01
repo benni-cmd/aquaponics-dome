@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: R43 abgenommen; M-SETZEN laeuft (Montage sucht Standort fuer kleinen Puffer); danach Pause",
+ "stand": "Stand 01.11.2026: M-SETZEN laeuft (Montage), R44 Filter-Gegenpruefung laeuft; danach Pause",
  "schritte": [
   {
    "id": "W33",
@@ -414,6 +414,15 @@
    "reihenfolge": 5,
    "wer": "Analyse (Sitzung comfy-analyse)",
    "notiz": "Commit 17fbb4f: ComfyUI laeuft auf der RX 9060 XT, im Projekt aber nur ein Test (Runde 09); Empfehlung V1 Skript mit Kamera-Tabelle und Seed-Protokoll, V2 Tiefe + saubere Kanten, V3 Farb-ID, V4 Foto-Latte; kein MCP. Umsetzung erst nach dem Zwischencheck."
+  },
+  {
+   "id": "R44",
+   "titel": "Filter-Gegenpruefung: noetig, richtig gross, Platzbedarf",
+   "status": "laeuft",
+   "phase": "zusatz",
+   "reihenfolge": 6,
+   "wer": "Fachrecherche (Sitzung fachrecherche-filter)",
+   "notiz": "Auf Bens Wunsch 01.11.: unabhaengige Pruefung von Absetzer, Feinfilter, Biofilter (und Beetanteil) mit Last 346 kg / 3,46 kg Futter; Blatt docs/jobs/R44-filter-gegenpruefung.md (836a350); Bericht docs/research/R44-filter-gegenpruefung.md. Nur lesen, aendert nichts am Modell."
   }
  ]
 }

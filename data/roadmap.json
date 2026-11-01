@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 abends: Hauptkreislauf beider Linien steht; 19 Luecken in der Roadmap; W36 Verteiler d50 laeuft (Werkstatt)",
+ "stand": "Stand 01.11.2026 abends: PAUSE. Hauptkreislauf beider Linien steht; Verteiler d50 und Werkstatt-Buendel vorbereitet, nichts laeuft; 19 Luecken und E11 (Abnahme) stehen fuer Ben bereit",
  "schritte": [
   {
    "id": "W33",
@@ -213,9 +213,9 @@
    "titel": "M10 Leitungen und Kabel inkl. Signalkabel der Messstellen",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 11,
+   "reihenfolge": 12,
    "wer": "Montage",
-   "notiz": "Teilweise erledigt: S0, S1, S1b, S2a, S2b, S2c (9697011: beide Linien des Hauptkreislaufs bis zum Verteiler-Eingang, 199 Instanzen, 0 Verstoesse, Laufwege A 700/B 600/Wandluft 110). RISIKO: Heber-Reserve K01 27-78 mm, K17 34-81 mm gegen 195 mm Druckhoehe (Ueberschlag), an der 30-mm-Grenze. Weiter nach W36 (Verteiler d50): S3 Verteiler/Beete/NFT, S4 Ruecklauf, S5 Becken/Luft/Puffer, S6 Kabel, S7 Abschluss."
+   "notiz": "PAUSE auf Bens Wunsch (01.11. abends). Teilweise erledigt: S0, S1, S1b, S2a, S2b, S2c (Hauptkreislauf beider Linien bis Verteiler-Eingang, 20 von 55 Kanten, 199 Instanzen, 0 Verstoesse). Stand und Details: docs/packages/m10-abnahme.md und Plan Abschnitt 11. Weiter: W36, S3, Werkstatt-Buendel, S4 bis S7. 19 Luecken L01 bis L19 unten."
   },
   {
    "id": "PUFFER-SPECS",
@@ -231,7 +231,7 @@
    "titel": "Viewer: Ebene Messstellen, Plane-Sichtbarkeit, neue Kennzahlen",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 12,
+   "reihenfolge": 13,
    "wer": "Viewer",
    "notiz": "Wartet auf W35 und die Übersicht mit 346 kg und Puffer 0,16 m³."
   },
@@ -240,7 +240,7 @@
    "titel": "EIN check_latte mit allem, Draufsicht und Seitenansicht",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 13,
+   "reihenfolge": 14,
    "wer": "Montage + Orchestrator",
    "notiz": "Letzter Schritt vor der Pause; heute läuft check_latte seit Plane, Tür und Ringverschiebung nicht mehr."
   },
@@ -249,7 +249,7 @@
    "titel": "Zwischencheck mit Ben",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 14,
+   "reihenfolge": 15,
    "wer": "Ben + Orchestrator",
    "notiz": "Ego-Blick durch den Dom, Querstrebe Z 650 prüfen, Bens Entscheidungen einholen."
   },
@@ -499,11 +499,11 @@
   {
    "id": "W36",
    "titel": "Werkstatt: Verteiler d50 fuer die zwei Linien (Voraussetzung fuer M10 S3)",
-   "status": "laeuft",
+   "status": "geplant",
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Werkstatt",
-   "notiz": "Sitzung werkstatt-w36 (frisch, enger Kontext) seit 01.11. abends; Blatt docs/jobs/W36-verteiler-d50.md (Luecke L02). Sammelrohr d50 mit Abgaengen d40, d32, d50, d20. Blockiert S3."
+   "notiz": "VORBEREITET, nicht gebaut (Ben 01.11.: nur vorbereiten und festhalten): Blatt docs/jobs/W36-verteiler-d50.md (Luecke L02). Sammelrohr d50 mit Abgaengen d40, d32, d50, d20. Blockiert S3. Startet nach Bens Durchsicht und Freigabe, mit Aktualitaetspruefung."
   },
   {
    "id": "L01",
@@ -675,6 +675,24 @@
    "reihenfolge": 19,
    "wer": "Montage (Schritt CHECK)",
    "notiz": "Skript ist umgestellt und kompiliert, lief aber noch nie; erst der grosse Lauf nach M10 zeigt, ob Plane/Figuren/Messstellen/Leitungen richtig zugeordnet sind (Leitungen als eigene Klasse ausnehmen oder einbeziehen)."
+  },
+  {
+   "id": "E11",
+   "titel": "Verrohrung zur Abnahme: Stand und Luecken ansehen (Schlammablass, Heber, Beet-Ablauf u. a.)",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 11,
+   "wer": "Ben",
+   "notiz": "Ben schaut sich das spaeter im Detail an. Unterlage: docs/packages/m10-abnahme.md (Stand, Bilder, sechs Punkte mit Optionen: Schlammablass L01, Heber-Reserve L10, Beet-Ablauf d25/d40 L03, Schaltschrank-Standort L08, Filter-Nische West B L13, Beet-Sumpf L04). Danach Freigabe der Reihenfolge W36 -> S3 -> Werkstatt-Buendel -> S4 bis S7."
+  },
+  {
+   "id": "W37",
+   "titel": "Werkstatt-Buendel Fehlteile: Beet-Sumpf+Pumpe, Aktivkohle+Schwimmerventil, Geblaese+Luftverteiler, Rohrschelle Vierkant, Leerrohr, Kabel-Bauteil, Schaltschrank, Becken-Stutzen, Schlammsammler",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 11,
+   "wer": "Werkstatt (mehrere Sitzungen)",
+   "notiz": "Luecken L01, L04 bis L09. VORBEREITET, nicht gestartet: je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Schlammsammler (L01) erst nach Bens Entscheidung zum Schlammkonzept (E11). Beet-Sumpf nach Klaerung Beet-Ablauf-DN (L03)."
   }
  ]
 }

@@ -1,0 +1,40 @@
+{
+ "hinweis": "Illustration, kein Modellbeleg (Pflanzen, Rasen, Himmel erfindet die KI)",
+ "kamera": "uebersicht",
+ "stil": "skizze",
+ "kamera_parameter": {
+  "target": [
+   0,
+   0,
+   2800
+  ],
+  "yaw": 0.0,
+  "pitch": 0.5,
+  "distance": 15500
+ },
+ "seed": 4711,
+ "prompt_positiv": "black ink architectural sketch of a geodesic dome building on bright pure white paper, white background, confident loose fineliner and marker lines, thick dark contour lines with thin hatching, a few scribbled shrubs at the base, black and white line drawing, only a very faint warm yellow marker glow on two or three glass panes, urban sketching, high contrast, clean",
+ "prompt_negativ": "photo, photorealistic, 3d render, grey background, beige, tinted paper, dark background, orange fill everywhere, colour fill, green, large plants in foreground, double outline, duplicate dome, blurry, text, watermark, signature, frame, border",
+ "controlnet_staerke": 0.9,
+ "schritte": 30,
+ "cfg": 7.0,
+ "canny": [
+  0.25,
+  0.65
+ ],
+ "modelle": {
+  "checkpoint": {
+   "datei": "sd_xl_base_1.0.safetensors",
+   "bytes": 6938078334
+  },
+  "controlnet": {
+   "datei": "controlnet-canny-sdxl-fp16.safetensors",
+   "bytes": 2502139136
+  }
+ },
+ "comfyui_version": "0.43.0",
+ "eingabe_sha256_16": "01fed6c55ea05a5c",
+ "design_mtime": "2026-11-01T05:31:34",
+ "commit": "607b929",
+ "dauer_s": 40.3
+}

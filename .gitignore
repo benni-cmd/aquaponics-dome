@@ -13,3 +13,5 @@ scripts/.latte-cache.json
 __pycache__/
 scripts/.segs.json
 scripts/.compbox.json
+renders/photoreal/_input/
+renders/photoreal/_png/

@@ -1,0 +1,40 @@
+{
+ "hinweis": "Illustration, kein Modellbeleg (Pflanzen, Rasen, Himmel erfindet die KI)",
+ "kamera": "uebersicht",
+ "stil": "foto",
+ "kamera_parameter": {
+  "target": [
+   0,
+   0,
+   2800
+  ],
+  "yaw": 0.0,
+  "pitch": 0.5,
+  "distance": 15500
+ },
+ "seed": 4711,
+ "prompt_positiv": "photorealistic architectural photograph of a geodesic dome greenhouse with an aquaponics farm inside, clear glass panels, slim aluminium frame, lush green lettuce and plants on the growing tables, green tanks with blue water, fresh natural green meadow around the dome, soft sunny daylight, blue sky with light clouds, high detail, natural colours",
+ "prompt_negativ": "cgi, 3d render, cad drawing, blueprint, cartoon, blurry, low quality, text, watermark, concrete plaza, paving tiles, neon colours, green metal frame, people crowd",
+ "controlnet_staerke": 0.8,
+ "schritte": 30,
+ "cfg": 7.0,
+ "canny": [
+  0.2,
+  0.6
+ ],
+ "modelle": {
+  "checkpoint": {
+   "datei": "sd_xl_base_1.0.safetensors",
+   "bytes": 6938078334
+  },
+  "controlnet": {
+   "datei": "controlnet-canny-sdxl-fp16.safetensors",
+   "bytes": 2502139136
+  }
+ },
+ "comfyui_version": "0.43.0",
+ "eingabe_sha256_16": "01fed6c55ea05a5c",
+ "design_mtime": "2026-11-01T05:31:34",
+ "commit": "058e6d5",
+ "dauer_s": 58.4
+}

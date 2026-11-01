@@ -1,0 +1,14 @@
+{
+  "1": {"class_type": "CheckpointLoaderSimple", "_meta": {"title": "Modell"}, "inputs": {"ckpt_name": "sd_xl_base_1.0.safetensors"}},
+  "2": {"class_type": "CLIPTextEncode", "_meta": {"title": "Prompt positiv"}, "inputs": {"text": "", "clip": ["1", 1]}},
+  "3": {"class_type": "CLIPTextEncode", "_meta": {"title": "Prompt negativ"}, "inputs": {"text": "", "clip": ["1", 1]}},
+  "4": {"class_type": "EmptyLatentImage", "_meta": {"title": "Bildgroesse"}, "inputs": {"width": 1216, "height": 832, "batch_size": 1}},
+  "10": {"class_type": "LoadImage", "_meta": {"title": "Eingabe Modellbild"}, "inputs": {"image": "eingabe.png"}},
+  "12": {"class_type": "Canny", "_meta": {"title": "Kanten"}, "inputs": {"image": ["10", 0], "low_threshold": 0.2, "high_threshold": 0.6}},
+  "13": {"class_type": "ControlNetLoader", "_meta": {"title": "ControlNet"}, "inputs": {"control_net_name": "controlnet-canny-sdxl-fp16.safetensors"}},
+  "14": {"class_type": "ControlNetApplyAdvanced", "_meta": {"title": "ControlNet anwenden"}, "inputs": {"positive": ["2", 0], "negative": ["3", 0], "control_net": ["13", 0], "image": ["12", 0], "strength": 0.8, "start_percent": 0.0, "end_percent": 1.0, "vae": ["1", 2]}},
+  "5": {"class_type": "KSampler", "_meta": {"title": "Sampler"}, "inputs": {"model": ["1", 0], "positive": ["14", 0], "negative": ["14", 1], "latent_image": ["4", 0], "seed": 0, "steps": 30, "cfg": 7.0, "sampler_name": "euler", "scheduler": "normal", "denoise": 1.0}},
+  "6": {"class_type": "VAEDecode", "_meta": {"title": "Dekodieren"}, "inputs": {"samples": ["5", 0], "vae": ["1", 2]}},
+  "7": {"class_type": "SaveImage", "_meta": {"title": "Ausgabe"}, "inputs": {"images": ["6", 0], "filename_prefix": "dome_photoreal"}},
+  "15": {"class_type": "SaveImage", "_meta": {"title": "Ausgabe Kanten"}, "inputs": {"images": ["12", 0], "filename_prefix": "dome_canny"}}
+}

@@ -135,3 +135,12 @@ Lokale Belege: `ComfyUI_windows_portable\comfyui-server.log`, `models/`, `custom
 ## 8. Folge
 - Kein Parameter in `params.json`. Vorschlag fuer den Orchestrator: W40 auf "Bestand belegt (R43); Umsetzung = V1/V2, nach Zwischencheck" setzen; `docs/plan-process.md` Abschn. 4 (nicht vorhandene Dateien) und `system-logic.md` Punkt 9 (Skript-Ort) beim naechsten Anfassen angleichen.
 - Entscheidungen fuer Ben: siehe "Offen" in der Abschlussmeldung.
+
+## 9. Nachtrag 01.11.2026: V1 umgesetzt (Ben: "ja", dazu Wunsch Skizzen-Stil und Auto-Lauf nach Montage-Paketen)
+Gebaut (neue Dateien, nichts am Modell): `scripts/photoreal.py`, `scripts/comfy/workflow_canny.json` (API-Format), `data/photoreal.json` (Kameras, Seeds, Prompts je Stil), `renders/photoreal/README.md`. Kein Download noetig; SDXL + das vorhandene Canny-ControlNet reichen fuer Foto und Skizze.
+Gemessen (Testlaeufe 01.11., `python scripts/photoreal.py ...`): Eingabebild 40 bis 60 s (`solidcraft-cli snapshot`), ComfyUI je Bild etwa 1 Minute, Bildgroesse 1216×832, 30 Schritte. Ergebnisse: `renders/photoreal/20261101_uebersicht_foto_s4711.jpg`, `..._rueckseite_foto_s4712.jpg`, `..._skizze_...jpg`.
+Was sich gegenueber der Analyse geaendert hat:
+- **Eingabe saubert sich besser als erwartet:** Erde in einer KOPIE des Designs per `browser.visibility` ausblenden (nicht per `--body opacity=0`: das laesst die Kanten der Erde stehen und erzeugt einen Rahmen im Bild), Haut per `--body ...:opacity=0`. Damit entfaellt der Boden-Klotz; das Foto zeigt gruene Beete, Pool und Tanks erkennbar am richtigen Platz. Die KI erfindet weiter Dachhaut-Glanz, Hecke und Wiese (Illustration).
+- **Stolperstein ComfyUI-Start:** In der Sitzung ist `HIP_VISIBLE_DEVICES=1` gesetzt (von Modly); damit meldet ComfyUI "No HIP GPUs are available". Das Skript entfernt die Variable nur fuer den ComfyUI-Kindprozess; keine Rechner-Einstellung wurde geaendert.
+- **Skizzen-Stil:** gleiches Eingabebild, anderer Prompt, ControlNet-Staerke 0,9. Drei Versuche (zu bunt und doppelte Kuppel; zu grau und orange; dann sauberer Tusche-Strich auf hellem Papier). Der Stil ist technisch-sauber, weniger locker als eine Hand-Marker-Skizze; Feintuning ueber `stile.skizze` in `data/photoreal.json`.
+- **Offen:** Auto-Lauf nach Montage-Paketen ist NICHT eingetragen (Dateien gehoeren Montage/Orchestrator); Vorschlag fuer den Abschluss-Ablauf: `python scripts/photoreal.py uebersicht` im Hintergrund starten, Fehler blockieren nicht. Bilder haben je etwa 0,2 bis 0,3 MB (JPEG, im Repo); Verlauf waechst langsam.

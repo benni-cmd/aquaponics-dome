@@ -1,0 +1,70 @@
+{
+  "_hinweis": "Einstellungen fuer scripts/photoreal.py (Foto-Look-Illustration, KEIN Modellbeleg). Kameras sind solidcraft-cli-Kameras (mm, Bogenmass). ausblenden_ganz = Koerper, die in einer KOPIE des Designs unsichtbar geschaltet werden (Erde); ausblenden_glas = Koerper mit Deckkraft 0 (Haut: sonst entstehen Kantengewirr und Milchglas). Das echte Design wird nie veraendert.",
+  "bild": {
+    "breite": 1216,
+    "hoehe": 832
+  },
+  "ausblenden_ganz": [
+    "T13_Erde"
+  ],
+  "ausblenden_glas": [
+    "Folie_innen",
+    "Folie_aussen",
+    "Folie_innen (2)",
+    "Folie_aussen (2)",
+    "Folie_innen (3)",
+    "Folie_aussen (3)"
+  ],
+  "kameras": {
+    "uebersicht": {
+      "camera": {
+        "target": [
+          0,
+          0,
+          2800
+        ],
+        "yaw": 0.0,
+        "pitch": 0.5,
+        "distance": 15500
+      },
+      "seed": 4711
+    },
+    "rueckseite": {
+      "camera": {
+        "target": [
+          0,
+          0,
+          2800
+        ],
+        "yaw": 2.6,
+        "pitch": 0.45,
+        "distance": 15500
+      },
+      "seed": 4712
+    }
+  },
+  "stile_standard": [
+    "foto",
+    "skizze"
+  ],
+  "stile": {
+    "foto": {
+      "positiv": "photorealistic architectural photograph of a geodesic dome greenhouse with an aquaponics farm inside, clear glass panels, slim aluminium frame, lush green lettuce and plants on the growing tables, green tanks with blue water, fresh natural green meadow around the dome, soft sunny daylight, blue sky with light clouds, high detail, natural colours",
+      "negativ": "cgi, 3d render, cad drawing, blueprint, cartoon, blurry, low quality, text, watermark, concrete plaza, paving tiles, neon colours, green metal frame, people crowd",
+      "staerke": 0.8,
+      "schritte": 30,
+      "cfg": 7.0,
+      "canny_low": 0.2,
+      "canny_high": 0.6
+    },
+    "skizze": {
+      "positiv": "black ink architectural sketch of a geodesic dome building on bright pure white paper, white background, confident loose fineliner and marker lines, thick dark contour lines with thin hatching, a few scribbled shrubs at the base, black and white line drawing, only a very faint warm yellow marker glow on two or three glass panes, urban sketching, high contrast, clean",
+      "negativ": "photo, photorealistic, 3d render, grey background, beige, tinted paper, dark background, orange fill everywhere, colour fill, green, large plants in foreground, double outline, duplicate dome, blurry, text, watermark, signature, frame, border",
+      "staerke": 0.9,
+      "schritte": 30,
+      "cfg": 7.0,
+      "canny_low": 0.25,
+      "canny_high": 0.65
+    }
+  }
+}

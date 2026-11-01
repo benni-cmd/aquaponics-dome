@@ -48,7 +48,7 @@
 | W37 | Aufgaben in alle offenen Wuensche einreihen; Roadmap vollstaendig; nichts vergessen | #267, #271, #273 | ERLEDIGT / dauerhaft | dieses Buch, Reihenfolge-Paket |
 | W38 | Chemnitz-Verbindungsstueck (Foto) und Bericht des NGO-Forschers verstehen und einordnen | #272 | GEPLANT (R41) | D68, `reference/chemnitz/` |
 | W39 | Viewer: Gruppen mit Zahl, ein-/ausblendbar, Hover-/Klick-Leuchten durch andere Koerper | #174, #188 | ERLEDIGT; Hover-Bug (#188) PRUEFEN | Viewer |
-| W40 | ComfyUI-Workflow fuer photoreale Renders einrichten und nutzen | #4-#11, #28 | PRUEFEN (Stand nicht belegt) | dome-build.md |
+| W40 | ComfyUI-Workflow fuer photoreale Renders einrichten und nutzen | #4-#11, #28 | BELEGT 01.11. (R43): ComfyUI laeuft, nur ein Test; Umsetzung nach Zwischencheck (Roadmap N-RENDER) | dome-build.md |
 
 ## B. Arbeitsweise, Sitzungen, Limit (alles DAUERHAFT, soweit nicht anders vermerkt)
 | Nr | Regel | Quelle | Stand |

@@ -7,7 +7,10 @@ Konvention der Bibliothek (docs/parts/leitungsteile.md): Port A im Ursprung, Oef
 Trassenpunkte sind Kreuzungspunkte der Achsen. Bogen: Schenkel k = Abstand Kreuzungspunkt - Muffenebene (aus leitung.ports()); Rohr zwischen zwei Muffen: Laenge = Abstand - k1 - k2 + 2 t.
 Stutzenspitze ("stutzen"): Zapfen des Bauteils (Pool, Filter, Pumpe), das Rohrnetz steckt darauf: ein Bogen sitzt direkt auf dem Stutzen, wenn der Kreuzungspunkt R = k - t von der Spitze entfernt liegt,
 sonst steckt eine Kupplung auf dem Stutzen und das Rohr in der Kupplung (Rohrende 6 mm von der Spitze).
-T-Stueck d63/d50/d50 ("t:<id>"): T d63 + je Ausgang ein Rohrstueck d63 (2 t) + Reduziermuffe d63/d50; die Muffen von T und Reduziermuffe passen nicht Muffe auf Muffe."""
+T-Stueck ("t:<id>", M10-S2b allgemein): T der Groesse d + je Port mit kleinerem Rohr ein Rohrstueck d (2 t) + Reduziermuffe d/d_klein; die Muffen von T und Reduziermuffe passen nicht Muffe auf Muffe.
+  Eintrag in "t_stuecke": {"id", "pos", "d", "ports": [{"trasse", "ende": "start"|"ende", "d"}, ...]}; zwei Ports muessen auf einer Geraden liegen, der dritte steht senkrecht (beliebige Richtung, auch senkrecht).
+Reduziermuffe ("r:<id>", M10-S2b): Eintrag in "r_stuecke": {"id", "pos_a", "dir", "d_gross", "d_klein"}; pos_a = Muffenebene A (grosse Seite), dir von A nach B; die Trasse beginnt/endet auf der Muffenebene B.
+Offenes Ende ("offen"): das Rohr endet am Trassenpunkt, kein Fitting."""
 import json, math, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -61,37 +64,35 @@ def bogen(T, corner, din, dout, d, farbe, tid):
     T.put(art, d, 0, add(corner, din, -k), din, dout, farbe, tid)
     return k
 
-def t_stueck(T, tr, doc, farbe):
-    """T d63 mit Einlauf aus Stamm tr und zwei Ausgaengen d50 (Reduziermuffe + Rohrstueck d63); gibt die Schenkel je Trasse zurueck."""
-    ts = {t["id"]: t for t in doc["t_stuecke"]}[tr]
-    tid = ts["id"]; t0 = tuple(ts["pos"]); d1, d2 = ts["d_ein"], ts["d_aus"]
-    stamm = [t for t in doc["trassen"] if t["id"] == ts["ein"]][0]
-    din = unit(sub(tuple(stamm["pfad"][-1]), tuple(stamm["pfad"][-2])))
-    outs = []
-    for oid in ts["aus"]:
-        o = [t for t in doc["trassen"] if t["id"] == oid][0]
-        outs.append(unit(sub(tuple(o["pfad"][1]), tuple(o["pfad"][0]))))
-    a = LT.ports("lt_t_d%d" % d1)[0][1][0] * -1.0
-    t1 = LT.DEPTH[d1]; lred = LT.ports("lt_reduzierung_d%d_d%d" % (d1, d2))[1][1][2]
-    if abs(dot(outs[0], din) - 1) < 1e-3: xc, zc = din, outs[1]
-    elif abs(dot(outs[1], din) - 1) < 1e-3: xc, zc = din, outs[0]
-    elif abs(dot(outs[0], outs[1]) + 1) < 1e-3: xc, zc = outs[0], tuple(-v for v in din)
-    else: raise SystemExit("%s: Ausgaenge liegen nicht auf T-Achsen (Einlauf %s, Ausgaenge %s)" % (tid, din, outs))
-    T.put("t", d1, 0, t0, zc, xc, farbe, tid)
-    # Achse des T: x = xc, z = zc; Ports: -x, +x, +z. Ausgaenge: die zwei Ports, die nicht der Einlauf sind
-    ports = {"-x": tuple(-v for v in xc), "+x": xc, "+z": zc}
-    ein_port = [k for k, v in ports.items() if abs(dot(v, tuple(-q for q in din)) - 1) < 1e-3][0]
-    for k, v in ports.items():
-        if k == ein_port: continue
+def t_stueck(T, ts, doc, farbe):
+    """T der Groesse ts["d"] an ts["pos"] mit den Ports aus ts["ports"]; Ports mit kleinerem Rohr bekommen Rohrstueck (2 t) + Reduziermuffe. Gibt {d_port: Schenkel k} zurueck (Abstand T-Mitte -> Muffenebene des Rohrs)."""
+    tid = ts["id"]; t0 = tuple(ts["pos"]); d1 = int(ts["d"]); tr = {t["id"]: t for t in doc["trassen"]}
+    dirs = []
+    for p in ts["ports"]:
+        pf = tr[p["trasse"]]["pfad"]
+        dirs.append(unit(sub(tuple(pf[-2] if p["ende"] == "ende" else pf[1]), t0)))   # Richtung von der T-Mitte entlang des Rohrs
+    paar = [(i, j) for i in range(3) for j in range(i + 1, 3) if abs(dot(dirs[i], dirs[j]) + 1) < 1e-3]
+    if len(paar) != 1: raise SystemExit("%s: zwei Ports muessen gegenueber liegen, der dritte senkrecht (Richtungen %s)" % (tid, [[round(v, 3) for v in d] for d in dirs]))
+    k = [x for x in range(3) if x not in paar[0]][0]
+    if abs(dot(dirs[k], dirs[paar[0][0]])) > 1e-3: raise SystemExit("%s: dritter Port steht nicht senkrecht zur Geraden" % tid)
+    T.put("t", d1, 0, t0, dirs[k], dirs[paar[0][0]], farbe, tid)
+    a = LT.ports("lt_t_d%d" % d1)[0][1][0] * -1.0; t1 = LT.DEPTH[d1]; ks = {}
+    for p, v in zip(ts["ports"], dirs):
+        dp = int(p["d"])
+        if dp == d1: ks[dp] = a; continue
+        lred = LT.ports("lt_reduzierung_d%d_d%d" % (d1, dp))[1][1][2]
         T.put("rohr", d1, int(round(2 * t1)), add(t0, v, a - t1), v, (1.0, 0.0, 0.0), farbe, tid)
-        T.put("reduzierung", d1, d2, add(t0, v, a), v, (1.0, 0.0, 0.0), farbe, tid)
-    return {"ein_k": a, "aus_k": a + lred}
+        T.put("reduzierung", d1, dp, add(t0, v, a), v, (1.0, 0.0, 0.0), farbe, tid)
+        ks[dp] = a + lred
+    return ks
 
 def bauen(doc):
     """Rechnet alle Trassen in Instanzen um; gibt (Teile, Bericht) zurueck. Bricht mit SystemExit ab, wenn ein Knick oder ein Abstand nicht zur Bibliothek passt."""
     T = Teile(); bericht = []
     tk = {}
-    for ts in doc.get("t_stuecke", []): tk[ts["id"]] = t_stueck(T, ts["id"], doc, FARBEN[[t for t in doc["trassen"] if t["id"] == ts["ein"]][0].get("farbe", "dunkelblau")])
+    for ts in doc.get("t_stuecke", []): tk[ts["id"]] = t_stueck(T, ts, doc, FARBEN[[t for t in doc["trassen"] if t["id"] == ts["ports"][0]["trasse"]][0].get("farbe", "dunkelblau")])
+    for r in doc.get("r_stuecke", []):
+        T.put("reduzierung", int(r["d_gross"]), int(r["d_klein"]), tuple(r["pos_a"]), tuple(r["dir"]), (1.0, 0.0, 0.0), FARBEN[r.get("farbe", "dunkelblau")], r["id"])
     for tr in doc["trassen"]:
         tid, d, farbe = tr["id"], int(tr["dn"]), FARBEN[tr.get("farbe", "dunkelblau")]
         pts = [tuple(float(v) for v in p) for p in tr["pfad"]]; n = len(pts)
@@ -101,9 +102,11 @@ def bauen(doc):
         for j in range(1, n - 1):
             k = bogen(T, pts[j], dirs[j - 1], dirs[j], d, farbe, tid); ke[j - 1] = k; ks[j] = k
         start, ende = tr.get("start", "stutzen"), tr.get("ende", "stutzen")
-        if start.startswith("t:"): ks[0] = tk[start[2:]]["aus_k"] if d != 63 else tk[start[2:]]["ein_k"]
-        if ende.startswith("t:"): ke[-1] = tk[ende[2:]]["ein_k"] if d == 63 else tk[ende[2:]]["aus_k"]
+        if start.startswith("t:"): ks[0] = tk[start[2:]][d]
+        if ende.startswith("t:"): ke[-1] = tk[ende[2:]][d]
         s0 = [ks[i] - t for i in range(n - 1)]; s1 = [D[i] - ke[i] + t for i in range(n - 1)]   # Rohr von s0 bis s1 entlang des Teilstuecks (ab Anfangspunkt)
+        if start == "offen": s0[0] = 0.0                              # offenes Ende: Rohr endet am Trassenpunkt
+        if ende == "offen": s1[-1] = D[-1]
         kein = set()                                                  # Teilstuecke ohne Rohr: Bogen sitzt direkt auf dem Stutzen
         for lage, tipp, o, i in (("start", pts[0], dirs[0], 0), ("ende", pts[-1], dirs[-1], n - 2)):
             if (start if lage == "start" else ende) != "stutzen": continue

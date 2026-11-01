@@ -1,7 +1,7 @@
 {
  "z_bezug": "absolut",
  "regeln": {},
- "quelle": "scripts/trassen_s2a.py (Ableitung); M10-S2a, Linie 1 Ost: K01, K02, K06",
+ "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost: K01, K02, K06",
  "trassen": [
   {
    "id": "K01",
@@ -54,7 +54,8 @@
      720
     ]
    ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen Ost A, Az 11.9) -> Bogen runter -> Graben Z 150 (Heber, Rohr oben 733.5 unter Spiegel 915) -> Bogen hoch -> Bogen in den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)"
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A, Az 11.9) -> Bogen runter -> Graben Z 150 (Heber, Rohr oben 733.5 unter Spiegel 915) -> Bogen hoch -> Bogen in den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
+   "linie": 1
   },
   {
    "id": "K06-T",
@@ -99,7 +100,8 @@
      214.0
     ]
    ],
-   "notiz": "Stamm d63 zwischen Filterauslauf und T (gehoert zu K02 und K06: Netz fuehrt dort d50, T-Stueck d63/d50/d50 laut Netz-Bemerkung K06); Winkel -165/-210/-165/-75 Grad im 15-Grad-Gitter des Filters; Laengen v2-v3 518, v3-v4 1110, v4-T 311"
+   "notiz": "Stamm d63 zwischen Filterauslauf und T (gehoert zu K02 und K06: Netz fuehrt dort d50, T-Stueck d63/d50/d50 laut Netz-Bemerkung K06); Winkel -165/-210/-165/-75 Grad im 15-Grad-Gitter des Filters; Laengen v2-v3 518, v3-v4 1110, v4-T 311",
+   "linie": 1
   },
   {
    "id": "K06",
@@ -138,7 +140,8 @@
      520
     ]
    ],
-   "notiz": "T -> Fuss des Risers (Z 214) -> Riser auf Saugstutzenhoehe Z 520 -> Zulauf in den Saugstutzen Pumpe_gross:1 (Stutzenspitze x 3176.7 y -841.4, Oeffnung -X)"
+   "notiz": "T -> Fuss des Risers (Z 214) -> Riser auf Saugstutzenhoehe Z 520 -> Zulauf in den Saugstutzen Pumpe_gross:1 (Stutzenspitze x 3176.7 y -841.4, Oeffnung -X)",
+   "linie": 1
   },
   {
    "id": "K02",
@@ -178,7 +181,8 @@
      520
     ]
    ],
-   "notiz": "T -> Fuss des Risers (Z 214) -> Riser auf Saugstutzenhoehe Z 520 -> Zulauf in den Saugstutzen Pumpe_gross:2 (Stutzenspitze x 3175.5 y 89.6, Oeffnung -X)"
+   "notiz": "T -> Fuss des Risers (Z 214) -> Riser auf Saugstutzenhoehe Z 520 -> Zulauf in den Saugstutzen Pumpe_gross:2 (Stutzenspitze x 3175.5 y 89.6, Oeffnung -X)",
+   "linie": 1
   }
  ],
  "t_stuecke": [
@@ -189,14 +193,26 @@
     0.0,
     214.0
    ],
-   "ein": "K06-T",
-   "aus": [
-    "K06",
-    "K02"
+   "d": 63,
+   "ports": [
+    {
+     "trasse": "K06-T",
+     "ende": "ende",
+     "d": 63
+    },
+    {
+     "trasse": "K06",
+     "ende": "start",
+     "d": 50
+    },
+    {
+     "trasse": "K02",
+     "ende": "start",
+     "d": 50
+    }
    ],
-   "d_ein": 63,
-   "d_aus": 50,
-   "notiz": "T d63 aus lt_t_d63 + je Ausgang Rohrstueck d63 (2 t) + Reduziermuffe d63/d50 (die Muffen eines T und einer Reduziermuffe passen nicht Muffe auf Muffe)"
+   "notiz": "T d63 aus lt_t_d63 + je Ausgang Rohrstueck d63 (2 t) + Reduziermuffe d63/d50 (die Muffen eines T und einer Reduziermuffe passen nicht Muffe auf Muffe)",
+   "linie": 1
   }
  ]
 }

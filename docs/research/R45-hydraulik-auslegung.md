@@ -1,7 +1,7 @@
 # R45: Hydraulik und Auslegung der Lücken L01, L03, L10, L04, L06, L05
 
 **Auftrag:** `docs/jobs/R45-hydraulik-auslegung.md` · **Rolle:** Fachrecherche (liest, rechnet, schreibt nur diese Datei und `scripts/r45_*.py`) · **Begonnen:** 01.11.2026
-**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve ✔ · 3 Beet-Sumpf ✔ · 4 Belüftung ✔ · 5 Aktivkohle offen
+**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve ✔ · 3 Beet-Sumpf ✔ · 4 Belüftung ✔ · 5 Aktivkohle ✔
 **Kennzeichnung:** [A] Annahme · [E] Schätzung/Rechnung · [Q] belegt mit Quelle. Koordinaten: Z relativ zum Innenboden (Bauskript Z − 400).
 
 ---
@@ -274,3 +274,64 @@ Der Pool belüftet den **Fisch** (Nitrifikation läuft in Biofilter und Beeten, 
 5. Zweite Quelle für die Rückschlagventil-Regel.
 
 **Geprüft gegen:** `data/leitungsnetz.json` (K44–K51, F4), `data/system-specs.json` (Sauerstoff, Fischwasser, Leistung), Abschnitt 0–3, wastewater.com, aquakin-Doku, Hiblow-Händlerdaten · **Rechnung:** `python -X utf8 scripts/r45_luft.py`
+
+---
+
+## 5. Aktivkohle im Frischwasser (L05, K39 bis K43, K52)
+
+**Problem:** Der Frischwasser-Filter ist ein Handelsteil ohne Fabrikat, Kontaktzeit und Gehäusegröße; der Wasserversorger ist unbekannt (D69). **Intent:** Auf den ungünstigeren Fall **Chloramin** auslegen, damit die Werkstatt ein Gehäuse bauen kann, egal was der Versorger antwortet. **Goal:** Kontaktzeit, Bettvolumen als Standardmaß, Durchflussbegrenzung, Wechselkontrolle, Zisterne als Alternative.
+
+### Empfehlung
+
+**Katalytische Kohle (Kokosschale), 2 Kompositbehälter 10 × 35 Zoll in Reihe (je ca. 21 l Bett, [A] Handelsmaß), Durchfluss auf 4 l/min begrenzt (Pool-Nachspeisung 2 + Quarantäne-Wechsel 2), Sedimentfilter 20 µm davor, Probehahn zwischen den Behältern.** Das ergibt 10,5 min Kontaktzeit (EBCT) für Chloramin; steht nur Chlor an, genügt der erste Behälter (5,2 min gegen ca. 0,5–1 min nötig).
+
+| Wert | Ergebnis | Quelle |
+|---|---|---|
+| EBCT Chlor (Standardkohle) | ca. 30–40 s | [Q] WQA-Merkblatt über Suchzusammenfassung (wcponline.com) |
+| EBCT Chloramin, katalytische Kohle | **ca. 3–5 min**; Standardkohle 2–4× länger; Planungswert Dialyse 10 min | [Q] WQA-Merkblatt ([wcponline](https://wcponline.com/2009/06/13/chlorine-chloramine-removal-activated-carbon/)), [Waterworld](https://www.waterworld.com/residential-commercial/article/14309145/filtrex-technologies-usa-catalytic-carbon-for-chloramine-removal), Händler ([Chloramine Catcher](https://purewaterproducts.com/chloramine-catcher): 1 ft³ bis 3,75 gpm = 2,0 min) |
+| Bett für Ziel-EBCT 5 / 10 min bei 4 l/min | 20 l / 40 l | [E] `scripts/r45_kohle.py` |
+| Bett bei 10 l/min (Netz heute) | 50 l (5 min) / 100 l (10 min) | [E]: darum Mengenbegrenzer statt Mengenmaximum |
+| Tageslaufzeit | 0,68 m³/Tag ÷ 4 l/min = 2,8 h | [E] (Netz: 2 %/Tag, SRAC 454) |
+| Fließgeschwindigkeit | d25 (Innen-Ø 22 mm): 0,18 m/s bei 4 l/min, 0,44 m/s bei 10 l/min | [E] |
+| Chloramin-Last | 1,4 g/Tag bei 2 mg/l (0,5 kg/Jahr, als Cl₂) [A: Konzentration typisch 0,5–4 mg/l] | [E] |
+| Ammoniak aus der Kohle | 0,27 g N/Tag gegen 130 g TAN/Tag der Anlage: vernachlässigbar | [E] |
+
+### Maße für die Werkstatt
+
+| Teil | Maß |
+|---|---|
+| Behälter | 2 × Kompositbehälter 10 × 35 Zoll (Ø 254 × 889 mm), je ca. 21 l katalytische Kohle 12 × 40 mesh; Kopf mit Bypass-/Absperrhahn |
+| Vorfilter | Sedimentfilter 20 µm, Gehäuse 10 Zoll [A] |
+| Verbindung | Leitung d25 (K39/K40), Probehahn d12 zwischen Behälter 1 und 2, Durchflussbegrenzer 4 l/min hinter Behälter 2 oder Schwimmerventil mit Drossel |
+| Abzweig | K41 (Quarantäne 2 l/min, d20) nach dem Filter; K52 (Stammlösung von Hand) nach dem Filter |
+| Aufstellung | frostfrei, auf dem Regalboden bzw. wandnah; Behälter stehend 0,9 m hoch |
+
+### Betrieb
+
+1. Wöchentlich Chlortest (DPD) hinter Behälter 1: zeigt Durchbruch; bei Durchbruch Bett 1 tauschen, Bett 2 rückt nach vorn (Lead/Lag).
+2. Wechselintervall nicht belegt (keine Quelle mit Standzeit gefunden) → [A] Prüfintervall 6–12 Monate nach Messung; Kapazität der gewählten Kohle beim Hersteller erfragen.
+3. Bei Stillstand von Tagen Bett vor Gebrauch spülen (Verkeimung im stehenden Bett) [A].
+
+### Alternative Zisterne
+
+Regenwasser aus einer Zisterne enthält weder Chlor noch Chloramin: Dann entfällt der Filter, K39 wird eine Zisterne mit Druckpumpe und Notvorrat (R37 Variante C: 3 m³ außen). **Beschaffung, Standort und Kosten sind laut D69 kein Thema dieser Recherche**; hydraulisch ändert sich nur die Quelle von K39 (Pumpe statt Netzdruck).
+
+### Offene Punkte Frage 5
+
+1. Chlor oder Chloramin: Wasserversorger-Frage geht an Ben (nicht meine Aufgabe, D69/R37).
+2. Handelsmaße 10 × 35 und Bettvolumen, Kapazität und Standzeit der Kohle: Werkstatt/Beschaffung (Datenblatt des Fabrikats).
+3. Chloramin-Kontaktzeit nur aus Händler- und Verbandsmaterial, keine Fachartikel gelesen; Zusammenfassungen, kein Volltext.
+4. Durchflussbegrenzer-Fabrikat und Verhalten mit Schwimmerventil (Schließdruck) am Pool.
+
+**Geprüft gegen:** `data/leitungsnetz.json` (K39–K43, K52), `docs/research/R37.md` (Befund 3, Varianten A bis C), `data/roadmap.json` (L05), WQA-Merkblatt, Waterworld, Händlerblatt Chloramine Catcher · **Rechnung:** `python -X utf8 scripts/r45_kohle.py`
+
+---
+
+## Kurzfassung der Empfehlungen (R45)
+
+1. **Schlamm (L01):** Schlammfass 200–220 l je Linie in Grube 0,7–0,8 m neben dem Absetzer, wöchentlich Hand; Klarwasser zurück in den Pool, Dickschlamm in Wurmkompost außerhalb; Federrückzug-Hahn gegen leeren Pool.
+2. **Beet-Ablauf (L03):** Bauteil bleibt d25; Einzelabgang d40, Sammelleitung K14/K30 auf d50, Spitze 47–54 l/min je Beet.
+3. **Heber (L10):** d63 hat im ungünstigen Fall keine Reserve; empfohlen d75 durchgehend (≥ 85 mm Reserve), Alternative Filtergrube 100 mm tiefer.
+4. **Beet-Sumpf (L04):** 500 l je Linie (300 l zu knapp), Pumpe 5300 l/h / 60 W, drei Schwimmer, Flutsperre; Leistung 108–120 W statt 72 W.
+5. **Belüftung (L06):** 130 l/min Pool ist plausibel (Spitze 205); 25–63 l/min war falsch; zwei Membranpumpen N+1 für ≥ 26 kPa; Ausfall = 0,8–1,2 h bis Sauerstoffmangel.
+6. **Aktivkohle (L05):** katalytische Kohle, 2 × 21 l in Reihe, 4 l/min begrenzt, EBCT 10,5 min; Zisterne als Alternative.

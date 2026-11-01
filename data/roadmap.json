@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: LATTE-SKRIPT abgenommen, nichts laeuft; naechster Schritt M10-PLAN wartet auf Bens Freigabe; Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10-PLAN laeuft (Aktualitaetspruefung ergab: Feinfilter fehlt im Modell); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -202,11 +202,11 @@
   {
    "id": "M10-PLAN",
    "titel": "M10 Leitungsplan (Plan vorab, Orchestrator liest gegen)",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 9,
    "wer": "Montage",
-   "notiz": "Braucht Puffer und Messstellen gesetzt; Beetabläufe unter dem Pool-Spiegel als Punkte im Plan."
+   "notiz": "Sitzung montage-leitungsplan (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/M10-leitungen.md mit Aktualitaetspruefung (c28e055). Wichtigster neuer Befund: Feinfilter (2 Stueck) steht noch nicht im Modell; Plan sucht zuerst Standorte. Nur Plan, kein Bau; Orchestrator liest gegen."
   },
   {
    "id": "M10-LEITUNGEN",

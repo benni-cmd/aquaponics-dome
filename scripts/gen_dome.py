@@ -54,7 +54,7 @@ def component_file(fname, cls, assembly, fn):
     os.remove(tmp)
     act(assembly); add("component.insert_design", path=out.replace("\\", "/"), name=cls)
 
-ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen", "11_Referenz", "12_Huelle"]
+ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen", "11_Referenz", "12_Huelle", "13_Messstellen"]
 
 def act(name):
     """Baugruppe aktivieren: neue Koerper/Instanzen entstehen darin (Wurzel bleibt frei von losen Koerpern)."""
@@ -117,6 +117,40 @@ def puffer_pose():
 def puffer_klein(fz):
     x, y, yaw, _, _ = puffer_pose()
     place_instances("Puffer_Klein", os.path.join(ROOT, "designs", "components", "puffer_klein.sc"), [(round(x, 1), round(y, 1), fz, yaw)], "09_Technik")
+
+def messstellen(fz):
+    """M-SETZEN Schritt 5 (D65, W35): Halter und Sonden-Platzhalter an gesetzten Bauteilen (Pool, Zweitbecken, Drittbecken, Puffer-Messzelle, Leckagesonden); Lage nach Ortsangabe in data/messstellen.json (Annahme A).
+    Beckenrand: H_TAUCH (X vom Rohr ueber den Rand, Klemme auf dem Rand Z fz + pool_rim), H_BERUHIG im Wasser am Rand; Sonden im Halterrohr. Rohr-/Tank-/Pumpen-Messstellen (H_INLINE, H_HAHN, H_DRUCK, Tank-Auslass) bleiben fuer M10."""
+    items = {}   # Dateiname (ohne .sc) -> [(x, y, z, yaw)]
+    add_i = lambda f, x, y, z, yaw=0.0: items.setdefault(f, []).append((round(x, 1), round(y, 1), round(z, 1), round(yaw, 1)))
+    rim_z = fz + P["pool_rim"]; wat_z = fz + LAYOUT["pool2"]["water_z"]
+    def tauch(c, inner, wall, phi, sonden, extra=()):   # H_TAUCH am Beckenrand, c Beckenmitte, phi Richtung der Rohrlage von der Mitte (X zeigt ueber den Rand nach aussen)
+        r = inner + wall / 2 - 126.0; x, y = c[0] + r * math.cos(math.radians(phi)), c[1] + r * math.sin(math.radians(phi)); z0 = rim_z - 640.0
+        add_i("halter_tauch", x, y, z0, phi)
+        for k, sn in enumerate(list(sonden) + list(extra)): add_i("sonde_" + sn, x + (k % 2) * 8 - 4, y + (k // 2) * 8 - 4, z0 + 30.0)
+    def beruhig(c, inner, phi, sonden):   # H_BERUHIG im Wasser an der Beckenwand, Unterkante 300 mm unter dem Spiegel, +X zur Wand
+        r = inner - 60.0; x, y = c[0] + r * math.cos(math.radians(phi)), c[1] + r * math.sin(math.radians(phi)); z0 = wat_z - 300.0
+        add_i("halter_beruhig", x, y, z0, phi)
+        for k, sn in enumerate(sonden): add_i("sonde_" + sn, x, y, z0 + 150.0 + 300.0 * k)
+    pi, pw = LAYOUT["pool"]["d"] / 2, P["wall"]
+    tauch((0, 0), pi, pw, 160.0, ["do_ind", "temp_ds", "level_druck", "ph"])            # MS01, MS02, MS04, MS05 (MS02/04/05 ohne eigenen Halter -> im Rohr von MS01)
+    beruhig((0, 0), pi, 100.0, ["level_float", "level_float"])                              # MS03
+    c2 = (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"])))
+    tauch(c2, LAYOUT["pool2"]["d"] / 2, 60.0, math.degrees(math.atan2(-c2[1], -c2[0])), ["do_mini"])   # MS07 (zur Kuppelmitte)
+    c3 = (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))); f3 = math.degrees(math.atan2(-c3[1], -c3[0]))
+    tauch(c3, P["pool3_d"] / 2, 60.0, f3, ["do_mini", "ph"])                                  # MS08, MS09
+    beruhig(c3, P["pool3_d"] / 2, f3 + 60.0, ["level_float"])                                  # MS10
+    px, py, pyaw, X, Y = puffer_pose()
+    pw_ = lambda lx, ly: (px + lx * X[0] + ly * Y[0], py + lx * X[1] + ly * Y[1])
+    for sn, (lx, ly) in zip(("ph", "ec", "temp_ds", "do_mini"), ((-230, 115), (-120, 115), (-230, 225), (-120, 225))):   # MS46: 4 Sondenstutzen im Messzellendeckel (Ports T82)
+        x, y = pw_(lx, ly); add_i("sonde_" + sn, x, y, fz + 1203.0 - 100.0)
+    x, y = pw_(0, 0); add_i("sonde_leck", x, y, fz + 1.0, pyaw)                              # MS55 Boden unter dem Puffer
+    for k, nm in enumerate(("Tank_gross:1", "Tank_gross_t3:1")):                              # MS53, MS54 Boden unter dem Tankstand
+        m = next((c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move" and c["params"].get("occurrence") == nm), None)
+        if m: add_i("sonde_leck", m[3], m[7], fz + 1.0, math.degrees(math.atan2(m[4], m[0])))
+    for f, its in items.items():
+        place_instances("MS_" + f, os.path.join(ROOT, "designs", "components", f + ".sc"), its, "13_Messstellen")
+    print("messstellen:", {f: len(v) for f, v in items.items()})
 
 def mensch_referenz(fz):
     """M9 (D47, W29): zwei Referenzfiguren 1,80 m (Fussmitte am Boden, Blick +Y). messen: vor der Dosierkonsole der Puffer-Station (Station-KS), Blick zur Konsole; arbeiten: Laufweg B, Azimut Station + 180, Blick nach aussen zum Aussentisch."""
@@ -321,7 +355,11 @@ def tanks(fz):
             if m["l"] < 500: continue   # 384-mm-Kassetten = Stuetzrippen der Plattform (D16, Teil der Tank-Komponente)
             mx, my = LXY(m["cx"] + dx, m["cy"] + dy)
             if any(math.hypot(mx - px, my - py) < 100 for px, py in placed): continue   # OBJ-Duplikate zusammenfassen
-            placed.append((mx, my)); pk["klein" if t["d"] < 800 else "gross"].append((mx, my, fz, m["yaw"] + ROT))
+            placed.append((mx, my))
+            yw = math.radians(m["yaw"] + ROT); yp = (-math.sin(yw), math.cos(yw)); dn = (mx - x) * yp[0] + (my - y) * yp[1]   # W30: Tafel steht seitlich am Stand, Mittelabstand (Tafelnormale) >= Plattformhalbbreite + 25 + tafel_gap
+            need = (619 if t["d"] < 800 else 821) / 2 + 25 + 30
+            if abs(dn) < need: sg = 1 if dn >= 0 else -1; mx, my = mx + sg * (need - abs(dn)) * yp[0], my + sg * (need - abs(dn)) * yp[1]
+            pk["klein" if t["d"] < 800 else "gross"].append((round(mx, 1), round(my, 1), fz, m["yaw"] + ROT))
     for v, items in tk.items():
         if items: place_instances("Tank_" + v, os.path.join(ROOT, "designs", "components", f"tank_{v}.sc"), items, "07_Tanks")
     for v, items in pk.items():
@@ -418,7 +456,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); mensch_referenz(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

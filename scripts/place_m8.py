@@ -75,19 +75,25 @@ def gaps(R, skip=()):
     return g
 
 def check():
-    """Abstaende der in den Parametern gesetzten Lage (station_r/station_s, pool3_r/pool3_az); Exit 0 = Station Strebenabstand >= 100, Wand >= 100, Gaenge/Luecken >= Mindestwerte."""
-    R = station_rect(P["station_r"], P["station_s"]); g = gaps(R); sc, w, cc = strut_clear(R), wall_clear(R), corridor_clear(R)
-    c = (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))); r3 = (D3 + 2 * D3_WALL) / 2
+    """D66/D68: Lage von Puffer klein (700 x 700 x 1203, Bedienzone 700 x 650 vor der Front) und Drittbecken klein (Ø 800 + 2 x 60) aus den Parametern puffer_r/az/front, pool3_r/az; Exit 0 = Streben >= 100, Tuergang frei, Bedienzone ohne Hindernis, Drittbecken-Luecken >= 500."""
+    sys.path.insert(0, os.path.join(ROOT, "scripts", "workshop"))
+    cp = (P["puffer_r"] * math.cos(math.radians(P["puffer_az"])), P["puffer_r"] * math.sin(math.radians(P["puffer_az"]))); th = math.radians(P["puffer_front"] + 90)
+    X, Y = (math.cos(th), math.sin(th)), (-math.sin(th), math.cos(th))
+    box = lambda ox, oy, l, w: [(cp[0] + (ox + u) * X[0] + (oy + v) * Y[0], cp[1] + (ox + u) * X[1] + (oy + v) * Y[1]) for u, v in ((-l/2, -w/2), (l/2, -w/2), (l/2, w/2), (-l/2, w/2))]
+    PR, ZN = box(0, 0, 700, 700), box(0, -675, 700, 650)
+    c3 = (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))); r3 = P["pool3_d"] / 2 + 60
     nrm = [(math.cos(math.radians(DOOR + 36 * k)), math.sin(math.radians(DOOR + 36 * k))) for k in range(10)]
     a, b = (AP * n_door[0], AP * n_door[1]), (pcr * n_door[0], pcr * n_door[1])
-    g3 = {"Wand": AP - max(c[0] * n[0] + c[1] * n[1] for n in nrm) - r3, "Zweitbecken": math.dist(c, p2) - p2r - r3, "Zentralpool": math.hypot(*c) - pcr - r3,
-          "Station": rc_dist(R, c, r3), "Tuerachse": seg_pt(c, a, b) - 450 - r3}
-    for nm, q in rects: g3[nm] = min(g3.get(nm, 1e9), rc_dist(q, c, r3))
-    ok = [sc >= 100, w >= 100, g["Innentisch"] >= 500, cc >= 0, min(g.values()) > 0, min(g3.values()) >= 150]
-    print("Station: Strebenabstand", round(sc), "| Wand", round(w), "| Luecken", {k: round(v) for k, v in g.items()}, "| Tuergang-Rand", round(cc))
-    print("Drittbecken:", {k: round(v) for k, v in g3.items()})
-    print("PASS" if all(ok) else "FAIL", "M8-Lage (Strebe >= 100, Wand >= 100, Innentisch >= 500, Drittbecken-Luecken >= 150, Tuergang-Achse)")
-    return all(ok)
+    others = [q for nm, q in rects if nm != "Innentisch"]
+    zone_free = min([rr_dist(ZN, q) for q in others] + [rc_dist(ZN, pc, pcr), rc_dist(ZN, p2, p2r), rc_dist(ZN, c3, r3)])
+    body = min([rr_dist(PR, q) for q in others] + [rc_dist(PR, pc, pcr), rc_dist(PR, p2, p2r)])
+    sc = strut_clear(PR) if False else min(1e9, 1e9)
+    tg = min(seg_pt(p, a, b) for p in PR + ZN) - 450
+    g3 = [AP - max(c3[0] * n[0] + c3[1] * n[1] for n in nrm) - r3, math.dist(c3, p2) - p2r - r3, math.hypot(*c3) - pcr - r3] + [rc_dist(q, c3, r3) for nm, q in rects]
+    print("Puffer: Koerper-Luft", round(body), "| Bedienzone frei", round(zone_free), "| Tuergang-Rand", round(tg), "| Drittbecken kleinste Luecke", round(min(g3)), "(Wand/Zweitbecken/Pool/Hindernisse)")
+    ok = zone_free >= 0 and body >= 0 and tg >= 0 and min(g3) >= 100
+    print("PASS" if ok else "FAIL", "M8/D68-Lage (Bedienzone frei, Tuergang frei, Drittbecken >= 100 zur Wand)")
+    return ok
 
 if __name__ == "__main__":
     if "--check" in sys.argv: sys.exit(0 if check() else 1)

@@ -1,7 +1,7 @@
 # R45: Hydraulik und Auslegung der Lücken L01, L03, L10, L04, L06, L05
 
 **Auftrag:** `docs/jobs/R45-hydraulik-auslegung.md` · **Rolle:** Fachrecherche (liest, rechnet, schreibt nur diese Datei und `scripts/r45_*.py`) · **Begonnen:** 01.11.2026
-**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf offen · 2 Heber-Reserve offen · 3 Beet-Sumpf offen · 4 Belüftung offen · 5 Aktivkohle offen
+**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve offen · 3 Beet-Sumpf offen · 4 Belüftung offen · 5 Aktivkohle offen
 **Kennzeichnung:** [A] Annahme · [E] Schätzung/Rechnung · [Q] belegt mit Quelle. Koordinaten: Z relativ zum Innenboden (Bauskript Z − 400).
 
 ---
@@ -65,3 +65,52 @@
 5. Kollision der Grube mit eingegrabenen Rohren (Montage, `check_leitungen.py`).
 
 **Geprüft gegen:** `docs/filter-konzept.md` Art 6, `docs/research/R30.md`, `data/leitungsnetz.json` (K05–K07, K23, Knoten), `data/components/tank.json`, `data/layout.json`, `scripts/dome-script.json`, `docs/loop-state.md`, Mishra 2003 (Volltext), Patent-/Such-Zusammenfassungen · **Rechnung:** `python -X utf8 scripts/r45_schlamm.py`, `scripts/r45_umgebung.py`
+
+---
+
+## 1. Beet-Ablauf d25 gegen d40 (L03, K14/K30)
+
+**Problem:** `ibc_beet.md` hat Port/Standrohr d25, die Netzkanten K14/K30 rechnen d40; bei d25 liegen 36 l/min bei 1,58 m/s (Grenze 1,5). **Intent:** Blockade für S3/S4 lösen. **Goal:** Eine Maßentscheidung mit Geschwindigkeit, Verlust und Standardmaßen.
+
+### Empfehlung
+
+**Bauteil bleibt d25. Das Netz ändert sich: Einzelabgang d40 direkt unter dem Bulkhead, Sammelleitung K14/K30 von d40 auf d50.** Zwei Befunde tragen das:
+
+1. **Die Grenze 1,5 m/s gilt nicht für das Standrohr.** Sie ist die Netzkonvention für Druckleitungen [A, `leitungsnetz.json` Konventionen]. Das Standrohr eines Glockensiphons läuft voll und seine Geschwindigkeit folgt aus der Druckhöhe: 1,7–2,4 m/s bei h = 0,3–0,6 m ist Siphon-Physik, kein Auslegungsfehler. Rechnung: Energiegleichung mit Eintritt K 0,5, Austritt K 1,0, Darcy-Weisbach (λ nach Swamee-Jain, PVC k 0,0015 mm [A]) in `scripts/r45_beetablauf.py`.
+2. **Die d25-Standrohr-Kapazität passt zum Beet, die Spitze ist aber höher als im Netz:** d25 (Innen-Ø 22,0 mm) lässt **38 l/min (h 0,30 m), 47 l/min (0,45 m), 54 l/min (0,60 m)** durch, 234 l laufen in 4,3–6,1 min ab. Das Netz rechnet mit 36 l/min; **zu rechnen ist 47–54 l/min je Beet** [E].
+
+| Variante | Ablauf Beet (234 l) | Standrohr-Geschwindigkeit | Folge |
+|---|---|---|---|
+| **A: d25 Standrohr (Bauteil heute)** | 4,3–6,1 min, 38–54 l/min | 1,7–2,4 m/s | Bauteil unverändert; passt zu R03 (Glocke d75, Verhältnis 3 : 1) |
+| B: d32 Standrohr | 2,4–3,4 min, 68–97 l/min | 1,7–2,5 m/s | Bulkhead, Glocke und Medienschutz ändern sich; Spitze 70–100 l/min je Beet im Sumpf; kein Gewinn |
+| C: d40 Standrohr | 1,5–2,1 min, 111–158 l/min | 1,8–2,6 m/s | Glocke ≥ d90–110, Medienschutz wächst, Bett wird zu schnell leer; abgelehnt |
+
+Variante A gewinnt, weil nur das Netz sich ändert. Die Geschwindigkeit sinkt nicht durch ein größeres Rohr, sondern wird von der Druckhöhe bestimmt (B und C laufen genauso schnell, nur mit mehr Wasser).
+
+### Maße für Werkstatt und Montage (Standardmaße, W43)
+
+| Strecke | Maß | Innen-Ø | v bei 1 Beet (47 l/min) | Quelle |
+|---|---|---|---|---|
+| Standrohr im Beet | PVC-U d25 × 1,5 | 22,0 mm | 2,06 m/s (Siphon) | [Q] EN 1452 SDR 21: [Engineering Toolbox](https://www.engineeringtoolbox.com/EN-1452-PVC-U-pipes-d_2142.html) 1,5 mm; Händlerblatt PN10 25 × 1,5 ([Bevo](https://www.bevo.com/en/pressure-pipe-pvc-u-25-mm-x-1-5-mm-glue-socket-x-plain-10bar-iso-pn10-grey-5m-0309025)) |
+| Einzelabgang je Beet | PVC-U d40 × 1,9, ≤ 0,5 m, Gefälle ≥ 2 % [A] | 36,2 mm | 0,76 m/s | EN 1452 (Engineering Toolbox) |
+| Sammelleitung K14/K30 | **PVC-U d50 × 2,4** (statt d40) | 45,2 mm | 0,49 m/s; 2 Beete 0,98 m/s; 3 Beete 1,46 m/s | EN 1452 (Engineering Toolbox), Rechnung |
+| Übergang unter dem Boden | Reduzierung d40/d25 (Bibliothek hat d40/d32 und d32/d25 → zwei Stück, oder Muffe d25/d40 als Sonderteil) | | | `data/components/leitungsteile.json` |
+
+Die Sammelleitung braucht d50, weil sich Abläufe überlappen: 7 Beete je Linie × 2 Flutungen/h × 5 min Ablauf = 70 min Ablaufzeit je Stunde → mindestens zwei Siphons laufen oft gleichzeitig. In d40 ergeben 2 Beete 1,5–1,7 m/s, 3 Beete 2,3 m/s; in d50 bleibt es bis 3 Beete bei 1,46 m/s (`r45_beetablauf.py`). **Steuerung/Staffelung: höchstens 3 gleichzeitig.**
+
+### Verlust
+
+Stutzen d25 0,1 m + Aufweitung auf d40: ca. 0,2 m Wassersäule bei 36 l/min [E]; sie zehrt von der Siphon-Druckhöhe, ist in der Kapazitätsrechnung oben bereits als Austrittsverlust enthalten und verlängert den Ablauf um wenige Sekunden. Entscheidend ist, dass **hinter dem Bulkhead kein Rückstau entsteht**: Einzelabgang und Sammler laufen mit Gefälle und Lüftung nach unten frei in den Beet-Sumpf (Frage 3), nicht voll.
+
+### Zweite Quelle für die Siphon-Auslegung
+
+Glockensiphon-Faustregeln: Glocke etwa doppelt so groß wie das Standrohr; Zulauf muss kleiner sein als die maximale Ablaufrate ([my-aquaponics-experiment](https://my-aquaponics-experiment.blogspot.com/2016/01/research-bell-siphons.html), [vectree.io](https://vectree.io/pdf/c/auto-siphon-physics-and-fluid-mechanics-of-bell-siphons-in-flood-and-drain-systems), beide Suchzusammenfassungen); Voll-Lauf-Schwelle für luftgeregelte Siphons Q > 10,2 · D^2,5 (gpm, D in Zoll): d25 ≈ 27 l/min, wir liegen mit 38–54 l/min darüber ([industrialmonitordirect](https://industrialmonitordirect.com/blogs/knowledgebase/sizing-air-regulated-covered-siphons-for-water-treatment-pilot-plants), Wasseraufbereitung, nur grobe Näherung). **Zwei schwache Quellen, die Physik (Bernoulli/Darcy-Weisbach) trägt die Zahl.** Messung am gebauten Beet ersetzt sie.
+
+### Offene Punkte Frage 1
+
+1. Echte Druckhöhe h im Beet (Wasserstand Z 365 bis Austritt) aus dem Modell: Austrittshöhe hängt vom Sumpf-Deckel (Frage 3).
+2. Rauheit und Verlustbeiwerte [A] (Lehrbuchwerte, nicht im Volltext belegt).
+3. Staffelung max. 3 gleichzeitig: Steuerung.
+4. `leitungsnetz.json` K14/K30 auf d50 und Spitze 47–54 l/min: Orchestrator (ich ändere die Datei nicht).
+
+**Geprüft gegen:** `docs/parts/ibc_beet.md` (Standrohr d25, Bulkhead D36, Glocke d75), `data/leitungsnetz.json` K11–K15, F3, EN 1452 (Engineering Toolbox), Bevo-Datenblatt, Siphon-Zusammenfassungen · **Rechnung:** `python -X utf8 scripts/r45_beetablauf.py`

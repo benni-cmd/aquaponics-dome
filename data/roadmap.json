@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10-Bau S0, S1, S1b abgenommen, S2a laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10-Bau S0, S1, S1b, S2a abgenommen, S2b laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -215,7 +215,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Montage",
-   "notiz": "Bau in Schritten nach Plan m10-leitungen.md. Erledigt: S0 (acfb529), S1 (2c9fe30, f5a0c44: 2 Feinfilter in Gruben), S1b (f007ecb: Pool-Stutzen Seitenablauf x2 d63 Z 740 + Bodenablauf d50). Jetzt: S2a (Leitungsbau-Werkzeug + Linie 1 Pool -> Feinfilter -> Pumpen; Sitzung montage-m10-s2a). Danach S2b (Rest Linie 1), S2c (Linie 2), S3 (Verteiler, Beete, NFT; Verteiler d50 fehlt bei der Werkstatt)."
+   "notiz": "Bau in Schritten nach Plan m10-leitungen.md. Erledigt: S0, S1, S1b, S2a (f7e1cdf: Leitungsbau-Werkzeug, K01/K02/K06 Pool -> Feinfilter Ost A -> Pumpen, 32 Instanzen, 0 Verstoesse, Laufwege unveraendert; K01 als Heber, Verlust 98-131 mm gegen 195 mm Druckhoehe). Jetzt: S2b (Rest Linie 1 bis Verteiler-Eingang; Sitzung montage-m10-s2b). Danach S2c (Linie 2), S3 bis S7."
   },
   {
    "id": "PUFFER-SPECS",

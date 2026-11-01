@@ -2458,5 +2458,15 @@
   "note": "M10-S2c Runde 65: Linie 2 Hauptkreislauf bis Verteiler-Eingang",
   "commit": "79a3a48",
   "source": "renders/leitungen-s2c-65-top.png"
+ },
+ {
+  "file": "20261101-223730_werkstatt_lt-verteiler-d50_lt-verteiler-d50.png",
+  "sha": "e26a7aa2880161cd",
+  "time": "2026-11-01 22:37:30",
+  "role": "werkstatt",
+  "subject": "lt_verteiler_d50",
+  "note": "W36 Teil 1",
+  "commit": "7267517",
+  "source": "renders/components/leitungsteile/lt_verteiler_d50.png"
  }
 ]

@@ -1,0 +1,31 @@
+PASS lt_w36: verteiler d50 Koerperzahl (Interferenz 0: ein einziger Koerper, kein Teil durchdringt ein anderes): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Laenge: Ist 490, Soll 490 (+-0.1)
+PASS lt_w36: verteiler d50 Aussen-D Koerper (Formstueck d50): Ist 58.4991, Soll 58.5 (+-0.1)
+PASS lt_w36: verteiler d50 Hoehe Zapfen ueber Achse: Ist 79.25, Soll 79.25 (+-0.1)
+PASS lt_w36: verteiler d50 Abgang 1 Beete: Zapfen d40 bei x = 75: Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 1 Beete: Bohrung d36.2 (Wand 1.9): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 2 NFT: Zapfen d32 bei x = 195: Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 2 NFT: Bohrung d28.4 (Wand 1.8): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 3 Messkreis: Zapfen d20 bei x = 315: Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 3 Messkreis: Bohrung d16.4 (Wand 1.8): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 4 Bypass: Zapfen d50 bei x = 435: Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 4 Bypass: Bohrung d45.2 (Wand 2.4): Ist 1, Soll 1
+PASS lt_w36: lt_verteiler_d50 Port A (Muffe, DN40) Stirnflaeche an (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS lt_w36: lt_verteiler_d50 Port Abgang 1 Beete (Zapfen, DN32) Stirnflaeche an (75.0, 0.0, 79.25): Ist 1, Soll 1
+PASS lt_w36: lt_verteiler_d50 Port Abgang 2 NFT (Zapfen, DN25) Stirnflaeche an (195.0, 0.0, 79.25): Ist 1, Soll 1
+PASS lt_w36: lt_verteiler_d50 Port Abgang 3 Messkreis (Zapfen, DN15) Stirnflaeche an (315.0, 0.0, 79.25): Ist 1, Soll 1
+PASS lt_w36: lt_verteiler_d50 Port Abgang 4 Bypass (Zapfen, DN40) Stirnflaeche an (435.0, 0.0, 79.25): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Linie 1 Zulauf 110 l/min im Sammler d45.2: v 1.14 m/s <= 1,5: Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Linie 2 Zulauf 110 l/min im Sammler d45.2: v 1.14 m/s <= 1,5: Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 1->2 Luft Muffe d40/d32 >= 10 (Ist 76.2): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 1->2 Luft Kugelhahn-Gehaeuse >= 10 (Ist 64.2): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 1->2 Luft Hebel (+X) zum Nachbargehaeuse >= 10 (Ist 23.2): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 2->3 Luft Muffe d32/d20 >= 10 (Ist 86.7): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 2->3 Luft Kugelhahn-Gehaeuse >= 10 (Ist 74.7): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 2->3 Luft Hebel (+X) zum Nachbargehaeuse >= 10 (Ist 33.7): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 3->4 Luft Muffe d20/d50 >= 10 (Ist 77.2): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 3->4 Luft Kugelhahn-Gehaeuse >= 10 (Ist 65.2): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Abgang 3->4 Luft Hebel (+X) zum Nachbargehaeuse >= 10 (Ist 24.2): Ist 1, Soll 1
+PASS lt_w36: verteiler d50 Volumen = CSG-Raster (1 mm): Ist 556440, Soll 556473 (+-5564.73)
+INFO verteiler d50: Volumen 556440 mm3, Masse 0.779 kg (PVC-U 1,4), Wasser 0.720 l (nur Sammler)
+== lt_w36: 29/29 PASS

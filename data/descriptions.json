@@ -537,6 +537,40 @@
       "rolle": "Schritt 4 (groß, Hauptkreislauf 4 × 55 l/min) und Schritt 2 (klein, Absetzer-Teilstrom 4 × 12,5 l/min, je Tank eine in Betrieb) der Kette; die Netzliste data/leitungsnetz.json hält Anschlüsse Ø50/40 (groß) und Ø40/32 (klein)."
     },
     {
+      "match": "^lt_verteiler_d50$",
+      "titel": "Verteiler d50 (Hauptkreislauf)",
+      "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",
+      "status": "gebaut, 29/29 Prüfungen (Interferenz 0, Volumen gegen CSG-Raster)",
+      "ablauf": [
+        "Das Rohr d50 vom Biofilter-Überlauf steckt in die Muffe am Einlauf.",
+        "Vier Abgänge nach oben: Beete d40, NFT d32, Messkreis d20, Bypass d50 (zuletzt, mit Drossel).",
+        "Das Ende ist geschlossen; der Strom nimmt nach jedem Abgang ab."
+      ],
+      "aufbau": [
+        {
+          "t": "Sammler",
+          "p": [
+            "Formstück 58,5 mm außen, Rohr d50 × 2,4, Länge 490",
+            "Einlauf als Klebemuffe d50"
+          ]
+        },
+        {
+          "t": "Abgänge",
+          "p": [
+            "4 Zapfen, 50 mm Überstand, Teilung 120",
+            "Platz für Kugelhähne und Hebel ohne Kollision"
+          ]
+        }
+      ],
+      "masse": {
+        "Leergewicht": "0,78 kg (PVC-U)",
+        "Wasser": "ca. 1,0 l",
+        "Geschwindigkeit": "1,14 m/s im Sammler (Grenze 1,5)"
+      },
+      "grenzen": "Stopfen für den unbenutzten Messkreis-Abgang (Linie 2) fehlen in der Bibliothek.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
+    },
+    {
       "match": "^lt_",
       "titel": "Leitungsteile",
       "was": "Normteile des Rohrnetzes als Komponenten mit Ports.",

@@ -72,5 +72,139 @@
    "farbe": "dunkelblau",
    "biegeradius": 145.0
   }
+ },
+ "w36_teile": {
+  "lt_verteiler_d50": {
+   "teilenummer": "T70-V-50-4",
+   "komponente": "T70_Verteiler_d50",
+   "werkstoff": "PVC-U",
+   "farbe": "dunkelblau",
+   "sammler": {
+    "d": 50,
+    "wand": 2.4,
+    "innen_d": 45.2,
+    "formstueck_aussen": 58.5,
+    "laenge": 490,
+    "muffentiefe_A": 31,
+    "ende_B": "geschlossen (integrierte Kappe 10 mm)"
+   },
+   "teilung": 120,
+   "zapfen_hoehe_z": 79.25,
+   "abgaenge": [
+    {
+     "nr": 1,
+     "name": "Beete",
+     "d": 40,
+     "dn": "DN32",
+     "x": 75,
+     "kante": "K11/K27",
+     "soll_l_min": 54.5
+    },
+    {
+     "nr": 2,
+     "name": "NFT",
+     "d": 32,
+     "dn": "DN25",
+     "x": 195,
+     "kante": "K12/K28",
+     "soll_l_min": 38.0
+    },
+    {
+     "nr": 3,
+     "name": "Messkreis",
+     "d": 20,
+     "dn": "DN15",
+     "x": 315,
+     "kante": "K35 (nur Linie 1)",
+     "soll_l_min": 3.0
+    },
+    {
+     "nr": 4,
+     "name": "Bypass",
+     "d": 50,
+     "dn": "DN40",
+     "x": 435,
+     "kante": "K13/K29",
+     "soll_l_min": 14.5
+    }
+   ],
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN40"
+    },
+    {
+     "name": "Abgang 1 Beete",
+     "lage": [
+      75.0,
+      0.0,
+      79.25
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN32"
+    },
+    {
+     "name": "Abgang 2 NFT",
+     "lage": [
+      195.0,
+      0.0,
+      79.25
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN25"
+    },
+    {
+     "name": "Abgang 3 Messkreis",
+     "lage": [
+      315.0,
+      0.0,
+      79.25
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN15"
+    },
+    {
+     "name": "Abgang 4 Bypass",
+     "lage": [
+      435.0,
+      0.0,
+      79.25
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN40"
+    }
+   ]
+  }
  }
 }

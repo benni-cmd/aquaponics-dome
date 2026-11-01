@@ -216,3 +216,56 @@ Ein eigenes Bauteilblatt fuer den Pool gibt es unter `docs/parts/` nicht; die Po
 - Bodenablauf-Z: Innenboden des Modells liegt bei Z -1305 absolut = -1705 relativ, das Netz nennt -1685 (20 mm darueber); Modellwert gilt, Abweichung im Rahmen der Netz-Rundung (siehe Hoehenprobe in `scripts/check_leitungen.py`).
 - Bodenstutzen reicht 150 mm in den Erdboden (`T13_Erde` ist unter dem Pool nicht ausgespart); der Graben dafuer entsteht mit der Unterflur-Verlegung in S2, nicht in S1b.
 - Nicht Teil von S1b: Ringsammler-Einlaeufe (S4), Zweit- und Drittbecken-Ports, Rohre, Pumpentafeln, Feinfilter.
+
+# Ergaenzung W36 (01.11.2026, Werkstatt A): Teile ausserhalb der 63er-Bibliothek
+
+Auftrag `docs/jobs/W36-verteiler-d50.md`. Generator `scripts/workshop/leitung_w36.py` (nutzt die Helfer aus `leitung.py`, `leitung.ports()` fragt ihn per Fallback), Pruefung `scripts/workshop/check_lt_w36.py` (Ergebnis `renders/components/leitungsteile/check_w36.txt`), maschinenlesbar unter `w36_teile` in `data/components/leitungsteile.json`. Die 63er-Pruefung `check_leitungsteile.py` zaehlt die W36-Dateien nicht mit (Liste `leitung_w36.FILES`).
+
+## Verteiler d50 `lt_verteiler_d50` (T70-V-50-4)
+
+**Mini-Plan.** Problem: Beide Linien enden offen am Biofilter-Ueberlauf (K10/K26), ein Verteiler d50 fehlt, S3 ist blockiert. Intent: Hauptstrom 110 l/min auf Beete, NFT, Bypass und Messkreis verteilen. Goal: eine Komponente mit Muffe A fuer das Rohr d50 und vier Abgaengen, Ports im Bibliotheksformat, Check gruen, Interferenz 0. Bau: Verteilerkoerper als Formstueck (Aussen 58,5 wie ein T d50) statt blankes Rohr, damit der Abgang d50 nicht deckungsgleich auf einem Rohr d50 sitzt und die Muffe A das Rohr aufnimmt; Abgaenge als Zapfen d40/d32/d20/d50 mit 50 mm Ueberstand, Teilung 120 wie der Bibliotheks-Verteiler.
+
+**Funktion:** Sammelrohr d50 am Ende der Hauptleitung einer Linie. Fliessrichtung +X; vom Einlauf aus Beete (grosser Strom zuerst), NFT, Messkreis, Bypass (zuletzt, Drossel am Abgang). Gilt fuer Linie 1 (Verteilerplatz) und Linie 2; bei Linie 2 bleibt Abgang 3 (Messkreis) unbenutzt.
+
+| Merkmal | Wert |
+|---|---|
+| Sammler | d50 x 2,4 (SDR 21 der Bibliothek), Innen-D 45,2, Aussen-D Koerper 58,5, Laenge 490 |
+| Einlauf A | Muffe d50, Tiefe 31 (Rohr `lt_rohr_d50` Port B steckt direkt hinein) |
+| Ende B | geschlossen, integrierte Kappe 10 mm (kein Port) |
+| Abgaenge | 4 Zapfen, Ueberstand 50 mm ueber dem Koerper, Oberkante z = 79,25, Teilung 120 |
+| Werkstoff, Farbe | PVC-U (1,4 g/cm3), dunkelblau #2a5da8 (Filterlinie) |
+| Masse | 556 440 mm3 = 0,779 kg leer [E aus Volumen]; Wasser ca. 1,0 l (Sammler 0,72 l + Abgangsbohrungen ca. 0,27 l), gefuellt ca. 1,8 kg [E] |
+
+**Ports** (Bauteil-KS, mm; Ursprung = Mitte der Muffenoeffnung A, Sammler-Achse +X):
+
+| Port | DN | Art | Lage x, y, z | Richtung | Netz-Kante | Soll (l/min) | v im Abgang |
+|---|---|---|---|---|---|---|---|
+| A (Einlauf) | DN40 (d50) | Muffe | 0, 0, 0 | -X | K10 / K26 | 110 | 1,14 m/s im Sammler |
+| Abgang 1 Beete | DN32 (d40) | Zapfen | 75, 0, 79,25 | +Z | K11 / K27 | 54,5 | 0,88 |
+| Abgang 2 NFT | DN25 (d32) | Zapfen | 195, 0, 79,25 | +Z | K12 / K28 | 38 | 1,00 |
+| Abgang 3 Messkreis | DN15 (d20) | Zapfen | 315, 0, 79,25 | +Z | K35 (nur Linie 1) | 3 | 0,24 |
+| Abgang 4 Bypass | DN40 (d50) | Zapfen | 435, 0, 79,25 | +Z | K13 / K29 | 14,5 (L1) / 17,5 (L2) | 0,15 |
+
+Geschwindigkeiten gerechnet aus den Innendurchmessern der Bibliothek (Wand SDR 21); die Netzliste nennt 0,94 / 1,03 / 0,25 / 0,16 mit etwas anderen Innen-D. Sammler 1,14 m/s liegt unter der Grenze 1,5 m/s (Druckseite). Der Strom nimmt nach jedem Abgang ab; der Einlauf ist die Spitze.
+
+**Kollisionsfreiheit (Abgaenge mit Muffen und Kugelhahn):** Teilung 120 laesst zwischen den Muffen (Aussen-D 48 / 39,6 / 27 / 58,5) 76 bis 87 mm Luft, zwischen den Kugelhahn-Gehaeusen (Aussen-D = Formstueck + 12, L = 50 + 2 t) 64 bis 75 mm, und der Hebel (offen, +X) bleibt 23 bis 34 mm vom Nachbargehaeuse entfernt. Die Hahnhoehe beginnt bei z = 79,25 ueber dem Zapfen (Muffe der Hahn-Gegenseite steckt auf dem Zapfen, Einstecktiefe t <= 31 < 50).
+
+**Verbindungen:** Klebemuffe nach DIN EN 1452, PVC-U-Kleber; Abgaenge werden mit Kugelhahn bzw. Rohr in die Muffe der Gegenseite gesteckt (Zapfen = glattes Rohrende, wie die Bibliotheks-Verteiler). Abgang 3 bei Linie 2 oder bei abgesperrten Linien braucht Stopfen/Kappe (fehlt, siehe Offene Fragen).
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| Sammler d50, Abgaenge d40/d32/d50/d20 | DN-Reihe des Netzes | `data/leitungsnetz.json` K10-K13, K35 (Python gelesen) | hoch |
+| Wand, Muffentiefe, Formstueck-Aussen 58,5 | SDR 21 / EN 1452 gerundet | A, aus der Bibliothek | niedrig |
+| Teilung 120, Ueberstand 50, Endkappe 10, Abgang 1 bei x = 75 | mm | A, wie Bibliotheks-Verteiler; x = 75 = 31 + 25 + 19 Luft zur Muffe A | niedrig |
+| Reihenfolge Beete, NFT, Messkreis, Bypass | Gross zuerst, Bypass am Ende (Drossel) | A | niedrig |
+| Ende B geschlossen | statt offenem Zapfen | A (spart ein Kappenteil; ein Totende ist hydraulisch ueblich) | niedrig |
+
+**Montage (L4):** Rohr d50 des Biofilter-Ueberlaufs bis Anschlag in Muffe A kleben; je Abgang Kugelhahn bzw. Rohr in die Muffe stecken (Zapfen in Muffe); Hebel der Haehne so ausrichten, dass sie nicht auf Nachbarhaehne zeigen; Dichtheitsprobe. Verteiler waagerecht auf Rohrschellen/Konsole (Schelle fuer Rundrohr: `lt_klemme_d50`). Werkzeug: Saege, Entgrater, Kleber. Alternative lokale Fertigung: Handelsteile (T-Stuecke d50 plus Reduzierungen) zusammenkleben; das Bauteil ist eine Naeherung eines Sammlers aus T-Stuecken.
+
+**Pruefung:** `check_lt_w36.py verteiler` 29/29 PASS: ein Koerper (Interferenz 0), Laenge, Aussen-D, Zapfenhoehe, je Abgang Zapfen- und Bohrungs-Zylinder, 5 Port-Stirnflaechen, Geschwindigkeit beider Linien, 9 Luft-Pruefungen, Volumen gegen unabhaengiges CSG-Raster (Abweichung 0,006 %).
+
+**Bild:** `renders/components/leitungsteile/lt_verteiler_d50.png`.
+
+**Offene Fragen:** (1) Stopfen/Kappe d20 und d50 fehlen in der Bibliothek (Linie 2 ohne Messkreis, Reserve): melden, nicht gebaut. (2) Abgang d40 (Beete) gegen Beet-Port d25: Klaerung in R45, hier unveraendert nach Netz. (3) Abstand der Haehne an Linie 1 (Verteilerplatz) gegen die Umgebung wird erst bei der Platzierung (S3) geprueft.

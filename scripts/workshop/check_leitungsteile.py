@@ -12,7 +12,9 @@ def vol(path):
 def main():
     ck = sc.Check("leitungsteile")
     D = os.path.join(sc.ROOT, "designs", "components")
-    ck.eq("Dateien lt_*.sc (7 Groessen x 7 Teile + 7 Reduzierungen + 4 Schlauch + 3 Verteiler)", len(glob.glob(os.path.join(D, "lt_*.sc"))), 7 * 7 + 7 + 4 + 3)
+    import leitung_w36 as W36                                    # W36-Teile gehoeren nicht zu den 63 Bibliotheksteilen (eigene Pruefung check_lt_w36.py)
+    lib = [f for f in glob.glob(os.path.join(D, "lt_*.sc")) if os.path.basename(f)[:-3] not in W36.FILES]
+    ck.eq("Dateien lt_*.sc (7 Groessen x 7 Teile + 7 Reduzierungen + 4 Schlauch + 3 Verteiler)", len(lib), 7 * 7 + 7 + 4 + 3)
     for d in L.SIZES:
         A = math.pi / 4 * (d * d - (d - 2 * L.wall_p(d)) ** 2)
         ev, v = vol(os.path.join(D, f"lt_rohr_d{d}.sc"))
@@ -66,7 +68,7 @@ def main():
     # Ports: zu jedem Port existiert eine ebene Stirnflaeche mit passender Normalen und Mittelpunkt (Pruefung der Port-Koordinaten im Blatt)
     body = {"rohr": "Rohr", "kupplung": "Kupplung", "bogen": "Bogen", "t": "T_Stueck", "kugelhahn": "Kugelhahn", "reduzierung": "Reduzierung", "schlauch": "Schlauch", "schlauchbogen90": "Schlauchbogen", "verteiler": "Verteiler"}
     nport = 0
-    for f in sorted(glob.glob(os.path.join(D, "lt_*.sc"))):
+    for f in sorted(lib):
         fn = os.path.basename(f)[:-3]
         pl = L.ports(fn)
         if not pl or fn.startswith("lt_klemme"):

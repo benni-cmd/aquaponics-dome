@@ -178,7 +178,8 @@ def ports(fname, L_rohr=1000):
         out = [("A", (0, 0, 0), (-1, 0, 0), "Zapfen", DN[32]), ("B", (Lv, 0, 0), (1, 0, 0), "Zapfen", DN[32])]
         out += [(f"Abgang {k}", (60 + 60 + 120 * (k - 1), 0, 66.0), (0, 0, 1), "Zapfen", DN[25]) for k in range(1, n + 1)]
         return out
-    return []
+    import leitung_w36                                           # W36-Teile (Verteiler d50, Schelle, Leerrohr, Schacht) liegen in leitung_w36.py
+    return leitung_w36.ports(fname, L_rohr)
 
 def schlauch(idd, L=1000):
     wh = 2.0

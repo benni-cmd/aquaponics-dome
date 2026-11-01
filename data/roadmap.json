@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: D72 entschieden; M10-LEITUNGEN S0 laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10-Bau S0 abgenommen, S1 laeuft (Feinfilter in Gruben); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -215,7 +215,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Montage",
-   "notiz": "Bau in Schritten S0 bis S7 nach Plan m10-leitungen.md; Freigabe je Schritt durch den Orchestrator (M10-Blatt, Abschnitt Freigabe Bau). Jetzt: S0 (Vorbereitung, Pruefskript, Hoehenprobe, Werkstatt-Notiz)."
+   "notiz": "Bau in Schritten S0 bis S7 nach Plan m10-leitungen.md; Freigabe je Schritt durch den Orchestrator. S0 abgenommen (acfb529: Pruefskript check_leitungen, Hoehenprobe bestaetigt absolut = relativ + 400, Werkstatt-Notiz, Umhaengeliste). Jetzt: S1 (2 Feinfilter in Gruben, ohne Rohre und Pool-Ports; Sitzung montage-m10-s1)."
   },
   {
    "id": "PUFFER-SPECS",

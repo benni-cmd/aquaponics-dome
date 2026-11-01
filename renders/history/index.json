@@ -2508,5 +2508,15 @@
   "note": "W36 Teil 3",
   "commit": "23521d2",
   "source": "renders/components/leitungsteile/lt_leerrohr_dn50.png"
+ },
+ {
+  "file": "20261101-225553_werkstatt_lt-schacht_lt-schacht-kugelhahn-d63.png",
+  "sha": "6d25132bae6e5682",
+  "time": "2026-11-01 22:55:53",
+  "role": "werkstatt",
+  "subject": "lt_schacht",
+  "note": "W36 Teil 4",
+  "commit": "fb10162",
+  "source": "renders/components/leitungsteile/lt_schacht_kugelhahn_d63.png"
  }
 ]

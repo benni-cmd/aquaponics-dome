@@ -177,6 +177,57 @@ def check_leerrohr(ck):
             ck.eq(f"leerrohr-bogen{ang} DN{dn} Radius {R:g} >= Kabel-Mindestradius 15 x 20 mm (DN50) bzw. 15 x 33 mm (DN100)", 1 if R >= (300 if dn == 50 else 495) else 0, 1)
             port_checks(ck, fname, "Leerrohrbogen")
 
+def hahn63_test_bodies(closed):
+    """Gegenstuecke im Schacht: Rohr d63 (zwei Stuecke), Kugelhahn d63 (Gehaeuse, Muffen, Spindel, Hebel offen = parallel zur Rohrachse bzw. zu = quer); Hahn-KS gedreht: Hahnachse Z -> Welt X, Spindel (+X) -> Welt +Z."""
+    h = W.HAHN63; of = L.od_f(63); Lh = h["L"]
+    def cyl(nm, d, ln, base, axis):
+        return {"command": "solid.cylinder", "params": {"diameter": d, "height": ln, "base": base, "axis": axis, "operation": "new", "name": nm, "body_name": nm}}
+    def box(nm, lx, wy, hz, c):
+        return {"command": "solid.box", "params": {"length": lx, "width": wy, "height": hz, "center": c, "operation": "new", "name": nm, "body_name": nm}}
+    cm = [cyl("Test_Rohr_A", 63, 600, [-Lh / 2 - 600, 0, 0], [1, 0, 0]), cyl("Test_Rohr_B", 63, 600, [Lh / 2, 0, 0], [1, 0, 0]),
+          cyl("Test_Hahn_Gehaeuse", h["ob"], 50, [-25, 0, 0], [1, 0, 0]), cyl("Test_Hahn_Muffe_A", of, L.DEPTH[63], [-Lh / 2, 0, 0], [1, 0, 0]), cyl("Test_Hahn_Muffe_B", of, L.DEPTH[63], [Lh / 2 - L.DEPTH[63], 0, 0], [1, 0, 0]),
+          cyl("Test_Hahn_Spindel", 14, h["spindel_h"], [0, 0, 0], [0, 0, 1])]
+    cm.append(box("Test_Hahn_Hebel", h["hebel_b"], h["hebel_l"], h["hebel_h"], [0, 0, h["hebel_x"]]) if closed else box("Test_Hahn_Hebel", h["hebel_l"], h["hebel_b"], h["hebel_h"], [0, 0, h["hebel_x"]]))
+    return cm
+
+def check_schacht(ck):
+    s, g = W.SCHACHT, W.schacht_geom()
+    fname = "lt_schacht_kugelhahn_d63"
+    path = os.path.join(D, fname + ".sc")
+    ev = sc.evaluate(path)
+    bb = {b["name"]: b for b in ev["bodies"]}
+    ck.eq("schacht Koerperzahl (Wanne, Deckel, 2 Dichtungen)", ev["body_count"], 4)
+    w = bb["Schachtwanne"]
+    ck.eq("schacht Aussenmass quer", w["bbox"]["max"][0] - w["bbox"]["min"][0], g["aussen"], 0.1)
+    ck.eq("schacht Aussenhoehe (Boden bis Deckelauflage)", w["bbox"]["max"][2] - w["bbox"]["min"][2], g["z_wall_top"] - g["z_out_bottom"], 0.1)
+    exp = g["aussen"] ** 2 * (g["z_wall_top"] - g["z_out_bottom"]) - s["innen"] ** 2 * (g["z_wall_top"] - g["z_floor"]) - 2 * math.pi / 4 * s["loch_d"] ** 2 * s["wand"]
+    ck.eq("schacht Wannenvolumen = Aussen - Innenraum - 2 Wanddurchfuehrungen", w["volume_mm3"], exp, exp * 0.002)
+    d = bb["Deckel"]
+    exp = g["deckel"] ** 2 * s["deckel_dicke"] - 2 * 100 * 30 * 15
+    ck.eq("schacht Deckelvolumen (420 x 420 x 30 minus 2 Griffmulden 100 x 30 x 15)", d["volume_mm3"], exp, exp * 0.002)
+    ck.eq("schacht Deckel Oberkante = Erdoberflaeche (z = Achstiefe)", d["bbox"]["max"][2], g["z_top"], 0.1)
+    ck.eq("schacht Deckel liegt auf der Wand (Unterkante = Wandoberkante)", d["bbox"]["min"][2], g["z_wall_top"], 0.1)
+    fs = sc.faces(path, "Schachtwanne")
+    ck.eq("schacht Wanddurchfuehrung d70 (Loch in Wand A und B)", 1 if any(f.get("cylinder") and abs(f["cylinder"]["radius"] - 35) < 0.01 and abs(abs(f["cylinder"]["axis"][0]) - 1) < 1e-6 for f in fs) else 0, 1)
+    for nmx in ("A", "B"):
+        fsd = sc.faces(path, f"Dichtung_{nmx}")
+        ck.eq(f"schacht Dichtung {nmx} Bohrung = Rohr d63", 1 if any(f.get("cylinder") and abs(f["cylinder"]["radius"] - 31.5) < 0.01 for f in fsd) else 0, 1)
+    fsd = sc.faces(path, "Deckel")
+    ck.eq("schacht Port Deckel: Oberflaeche mit Normale +Z bei z = Achstiefe, Mittelpunkt auf der Schachtachse", 1 if any(f.get("plane_normal") and f["plane_normal"][2] > 0.999 and math.dist(f["centroid"], (0, 0, g["z_top"])) < 0.6 for f in fsd) else 0, 1)
+    ck.eq("schacht Port Durchfuehrung A/B: Dichtung-Stirnflaeche an der Aussenwand x = +-208 bis +-211 (Dichtung ragt 3 mm)", 1 if abs(bb["Dichtung_B"]["bbox"]["max"][0] - (g["wall_x"] + 3)) < 0.1 and abs(bb["Dichtung_A"]["bbox"]["min"][0] + (g["wall_x"] + 3)) < 0.1 else 0, 1)
+    h = W.HAHN63
+    ck.eq(f"schacht Hebel oben frei: Hebel-Oberkante {h['hebel_x'] + h['hebel_h'] / 2:.1f} unter Deckelunterkante {g['z_wall_top']:g}, Luft >= 30", 1 if g["z_wall_top"] - (h["hebel_x"] + h["hebel_h"] / 2) >= 30 else 0, 1)
+    ck.eq(f"schacht Hahn von oben bedienbar: Oeffnung {s['innen']:g} >= Hebel {h['hebel_l']:g} + Handbreite 2 x 100", 1 if s["innen"] >= h["hebel_l"] + 200 else 0, 1)
+    ck.eq(f"schacht Platz unter dem Hahn: Gehaeuseunterkante {-h['ob'] / 2:.1f} bis Boden {g['z_floor']:g} >= 90", 1 if (-h["ob"] / 2 - g["z_floor"]) >= 90 else 0, 1)
+    own = {"Schachtwanne", "Deckel", "Dichtung_A", "Dichtung_B"}
+    for closed in (False, True):
+        bad, res = interference(path, hahn63_test_bodies(closed))
+        bad = [i for i in bad if i.get("a") in own or i.get("b") in own]
+        ck.eq(f"schacht Interferenz 0 mit Rohr d63 und Kugelhahn d63, Hebel {'zu (quer)' if closed else 'offen (laengs)'} (geprueft {res.get('checked', '?')} Koerper)", len(bad), 0)
+        for i in bad:
+            print("   Ueberlappung:", i.get("a"), i.get("b"), i.get("volume_mm3"))
+    print(f"INFO schacht: Masse {ev['total']['mass_g'] / 1000:.2f} kg (Wanne {bb['Schachtwanne']['mass_g'] / 1000:.2f}, Deckel {d['mass_g'] / 1000:.2f}), Aussen {g['aussen']:g} x {g['aussen']:g} x {g['z_wall_top'] - g['z_out_bottom']:g} + Deckel {s['deckel_dicke']:g}")
+
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
     ck = sc.Check("lt_w36")
@@ -186,6 +237,8 @@ def main():
         check_schelle(ck)
     if not want or "leerrohr" in want:
         check_leerrohr(ck)
+    if not want or "schacht" in want:
+        check_schacht(ck)
     return ck.done()
 
 if __name__ == "__main__":

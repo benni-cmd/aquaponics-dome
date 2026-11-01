@@ -147,8 +147,52 @@ def leerrohr_bogen(dn, ang):
 for _dn in (50, 100):
     FILES += [f"lt_leerrohr_dn{_dn}", f"lt_leerrohr_bogen90_dn{_dn}", f"lt_leerrohr_bogen45_dn{_dn}"]
 
+# ---------------------------------------------------------------- Teil 4: Schacht mit Deckel fuer Kugelhahn d63 (Notbypass K56/K57), unterflur
+# KS: Ursprung = Rohrachse in der Schachtmitte (Rohr d63 entlang X); Erdoberflaeche = Deckeloberkante bei z = +achstiefe.
+SCHACHT = dict(innen=400.0, wand=8.0, boden=15.0, achstiefe=160.0, unter_achse=150.0, deckel_dicke=30.0, deckel_ueber=2.0, loch_d=70.0, dichtung_len=14.0, rohr_d=63.0)
+HAHN63 = dict(ob=L.od_f(63) + 12, L=50 + 2 * L.DEPTH[63], hebel_x=(L.od_f(63) + 12) / 2 + 34, hebel_l=110.0, hebel_b=max(8, 63 / 5), hebel_h=14.0, spindel_h=(L.od_f(63) + 12) / 2 + 30)   # Masse aus leitung.kugelhahn(63)
+
+def schacht_geom():
+    s = SCHACHT
+    wall_x = s["innen"] / 2 + s["wand"]
+    z_floor = -s["unter_achse"]
+    z_wall_top = s["achstiefe"] - s["deckel_dicke"]
+    return dict(wall_x=wall_x, z_floor=z_floor, z_out_bottom=z_floor - s["boden"], z_wall_top=z_wall_top, z_top=s["achstiefe"], aussen=s["innen"] + 2 * s["wand"], deckel=s["innen"] + 2 * s["wand"] + 2 * s["deckel_ueber"])
+
+def schacht():
+    s, g = SCHACHT, schacht_geom()
+    b = sc.Build(); nm = "T70_Schacht_Kugelhahn_d63"
+    for k, v in s.items():
+        b.add("parameters.add", name=k, expression=f"{v} mm")
+    b.add("material.create", name="LT pehd", density_g_cm3=0.95, color="#3a3d40")
+    b.add("material.create", name="LT epdm", density_g_cm3=1.1, color="#1a1a1a")
+    b.add("component.create", name=nm, grounded=True)
+    zc = (g["z_out_bottom"] + g["z_wall_top"]) / 2
+    b.add("solid.box", length=g["aussen"], width=g["aussen"], height=g["z_wall_top"] - g["z_out_bottom"], center=[0, 0, zc], operation="new", name="Wanne_R", body_name="Schachtwanne")
+    b.add("solid.box", length=s["innen"], width=s["innen"], height=g["z_wall_top"] - g["z_floor"] + 1, center=[0, 0, (g["z_floor"] + g["z_wall_top"] + 1) / 2], operation="cut", targets=["Schachtwanne"], name="Innenraum")
+    b.add("solid.cylinder", diameter=s["loch_d"], height=2 * g["wall_x"] + 20, base=[-g["wall_x"] - 10, 0, 0], axis=[1, 0, 0], operation="cut", targets=["Schachtwanne"], name="Wanddurchfuehrungen")
+    for sg, nmx in ((-1, "A"), (1, "B")):
+        x0 = (-g["wall_x"] - 3) if sg < 0 else (g["wall_x"] - s["wand"] - 3)
+        b.add("solid.cylinder", diameter=s["loch_d"], height=s["dichtung_len"], base=[x0, 0, 0], axis=[1, 0, 0], operation="new", name=f"Dichtung_{nmx}_R", body_name=f"Dichtung_{nmx}")
+        b.add("solid.cylinder", diameter=s["rohr_d"], height=s["dichtung_len"] + 2, base=[x0 - 1, 0, 0], axis=[1, 0, 0], operation="cut", targets=[f"Dichtung_{nmx}"], name=f"Dichtung_{nmx}_Bohrung")
+    b.add("solid.box", length=g["deckel"], width=g["deckel"], height=s["deckel_dicke"], center=[0, 0, g["z_wall_top"] + s["deckel_dicke"] / 2], operation="new", name="Deckel_R", body_name="Deckel")
+    for sy in (-1, 1):
+        b.add("solid.box", length=100, width=30, height=16, center=[0, sy * 140, g["z_top"] - 7], operation="cut", targets=["Deckel"], name=f"Griffmulde_{sy}")
+    b.add("material.assign", bodies=["Schachtwanne", "Deckel"], material="LT pehd")
+    b.add("material.assign", bodies=["Dichtung_A", "Dichtung_B"], material="LT epdm")
+    desc = "Ventilschacht fuer Kugelhahn d63 unterflur: Wanne PE-HD innen 400 x 400, Wanddurchfuehrungen mit Dichtung fuer Rohr d63, Deckel mit Griffmulden; Rohrachse 160 mm unter der Erdoberflaeche"
+    b.add("component.activate", component=nm)
+    b.add("component.metadata.set", component=nm, part_number="T70-SCH-KH63", description=desc, revision="A", properties={"Werkstoff": "PE-HD, EPDM-Dichtung"})
+    return b, nm, g
+
+FILES.append("lt_schacht_kugelhahn_d63")
+
 def ports(fname, L_rohr=1000):
     """Ports der W36-Teile, Format wie leitung.ports(): [(name, (x,y,z), (dx,dy,dz), art, dn)]."""
+    if fname == "lt_schacht_kugelhahn_d63":
+        g = schacht_geom()
+        return [("Durchfuehrung A", (-g["wall_x"], 0.0, 0.0), (-1.0, 0.0, 0.0), "Durchfuehrung", L.DN[63]), ("Durchfuehrung B", (g["wall_x"], 0.0, 0.0), (1.0, 0.0, 0.0), "Durchfuehrung", L.DN[63]),
+                ("Deckel", (0.0, 0.0, g["z_top"]), (0.0, 0.0, 1.0), "Oeffnung", "400x400")]
     m = re.match(r"lt_leerrohr_dn(\d+)$", fname)
     if m:
         dn = int(m.group(1)); return [("A", (0.0, 0.0, 0.0), (0.0, 0.0, -1.0), "Zapfen", f"DN{dn}"), ("B", (0.0, 0.0, LR_L), (0.0, 0.0, 1.0), "Muffe", f"DN{dn}")]
@@ -185,6 +229,9 @@ def json_entries():
             "rohr_d": d, "bein": "Rechteckrohr 40x40x3", "ring": {"innen_d": d, "aussen_d": 2 * g["ro"], "wand": SCH_T, "breite": SCH_W}, "platte": {"breite": 2 * SCH_PLATE_HALF, "dicke": SCH_PLATE_T, "abstand_zum_rohr": SCH_STANDOFF},
             "spannband": {"breite": SCH_W, "dicke": SCH_BAND_T, "spiel": SCH_SPIEL, "lasche": SCH_TAB}, "bolzenbild": {"ring_z": g["ear_z"], "band_x": SCH_SCREW_X}, "anlageflaeche_y": g["yf"], "beinachse_y": g["leg_y"],
             "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn} for n, p, dr, a, dn in ports(f"lt_schelle_vk_d{d}")]}
+    g = schacht_geom()
+    out["lt_schacht_kugelhahn_d63"] = {"teilenummer": "T70-SCH-KH63", "komponente": "T70_Schacht_Kugelhahn_d63", "werkstoff": "PE-HD Wanne und Deckel, EPDM-Dichtung", "innen": [SCHACHT["innen"], SCHACHT["innen"]], "wand": SCHACHT["wand"], "achstiefe": SCHACHT["achstiefe"], "innentiefe_ab_deckelunterkante": g["z_wall_top"] - g["z_floor"],
+        "kugelhahn": "lt_kugelhahn_d63", "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn_} for n, p, dr, a, dn_ in ports("lt_schacht_kugelhahn_d63")]}
     for dn, q in LR.items():
         for fn, pn, kind in ((f"lt_leerrohr_dn{dn}", f"T70-LR-{dn}", "gerade"), (f"lt_leerrohr_bogen90_dn{dn}", f"T70-LRB90-{dn}", "bogen90"), (f"lt_leerrohr_bogen45_dn{dn}", f"T70-LRB45-{dn}", "bogen45")):
             out[fn] = {"teilenummer": pn, "komponente": f"T70_{'Leerrohr' if kind == 'gerade' else 'LeerrohrBogen' + kind[5:]}_DN{dn}", "werkstoff": "PVC-U (Kabelschutzrohr)", "farbe": "orange", "dn": dn, "aussen_d": q["d"], "wand": q["wall"], "innen_d": q["d"] - 2 * q["wall"],
@@ -201,6 +248,11 @@ def write_json():
     open(p, "w", encoding="utf-8", newline="").write(txt)
 
 DESCRIPTIONS = [
+    {"match": "^lt_schacht_kugelhahn", "titel": "Ventilschacht für Kugelhahn d63", "was": "Unterirdischer Schacht mit Deckel um den Kugelhahn des Notbypasses am Feinfilter (K56, K57); der Hahn bleibt von oben bedienbar.",
+     "status": "gebaut, Prüfungen mit Interferenz 0 gegen Hahn, Hebel und Rohre",
+     "ablauf": ["Das Rohr d63 läuft durch zwei abgedichtete Wanddurchführungen.", "Der Deckel wird an den Griffmulden abgehoben; der Hebel liegt 47 mm unter dem Deckel.", "Hebel offen und zu schwenken frei im Schacht."],
+     "aufbau": [{"t": "Schacht", "p": ["Wanne PE-HD innen 400 × 400, Wand 8", "Rohrachse 160 mm unter der Erdoberfläche, 150 mm Raum darunter"]}, {"t": "Deckel und Dichtung", "p": ["Deckel 420 × 420 × 30 mit 2 Griffmulden", "2 EPDM-Dichtungen für Rohr d63"]}],
+     "masse": {"Außenmaß": "416 × 416 × 295", "Gewicht": "siehe Blatt"}, "grenzen": "Die Zufahrt zum Schacht direkt unter dem Filterkasten ist geometrisch nicht möglich (siehe Blatt).", "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"},
     {"match": "^lt_leerrohr_", "titel": "Leerrohr (Kabelschutzrohr) und Bögen", "was": "Unterirdisches Schutzrohr für Kabel vom Schaltschrank zu den Technikgruppen; gerade Stange und Bögen 90° und 45° mit großem Radius.",
      "status": "gebaut, 36/36 Prüfungen (Volumen per Pappus, Ports)",
      "ablauf": ["Die Stange (3 m) steckt mit dem glatten Ende in die Muffe der nächsten Stange oder des Bogens.", "Bögen mit Radius 300 (DN50) und 500 (DN100) halten den Mindestradius der Kabel ein.", "230-V-Kabel und Signalleitungen laufen in getrennten Rohren."],
@@ -241,6 +293,7 @@ if __name__ == "__main__":
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
     jobs = [("verteiler", "lt_verteiler_d50", verteiler_d50)]
     jobs += [("schelle", f"lt_schelle_vk_d{d}", (lambda d=d: schelle(d))) for d in SCH_SIZES]
+    jobs.append(("schacht", "lt_schacht_kugelhahn_d63", schacht))
     for dn in (50, 100):
         jobs += [("leerrohr", f"lt_leerrohr_dn{dn}", (lambda dn=dn: leerrohr(dn))), ("leerrohr", f"lt_leerrohr_bogen90_dn{dn}", (lambda dn=dn: leerrohr_bogen(dn, 90))), ("leerrohr", f"lt_leerrohr_bogen45_dn{dn}", (lambda dn=dn: leerrohr_bogen(dn, 45)))]
     for key, fname, fn in jobs:

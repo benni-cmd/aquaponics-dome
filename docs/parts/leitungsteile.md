@@ -357,3 +357,42 @@ Einstecktiefe: ein Zapfen wird bis zum Anschlag um die Muffentiefe (40 / 64 mm) 
 **Pruefung:** `check_lt_w36.py leerrohr` 36/36 PASS: Koerperzahl, Laenge, Muffen-Aussen-D, Volumen Stange gegen Ringflaeche x Laenge + Muffe (Abweichung 0,05 %), Bogen-Volumen per Pappus (0,01 %), Innen-D, Bogenradius, alle 12 Port-Stirnflaechen. Bilder: `renders/components/leitungsteile/lt_leerrohr_bogen90_dn100.png`, `lt_leerrohr_dn50.png`.
 
 **Offene Fragen:** (1) Maße nur Katalog-Naeherung, keine abgerufene Norm. (2) Kabelzahl und -durchmesser je Rohr (230 V je Pumpe, Trunks) legt S6 fest; hier nur DN50 und DN100. (3) Fehlt fuer S6: Kabeleinfuehrung/Endverschluss, Schaltschrank-Einfuehrung, Zugschacht (Teil 4 liefert nur den Ventilschacht), Reduzierstueck DN100/DN50, T-Abzweig.
+
+## Schacht mit Deckel fuer Kugelhahn d63 `lt_schacht_kugelhahn_d63` (T70-SCH-KH63)
+
+**Mini-Plan.** Problem: Der Notbypass K56/K57 (Kugelhahn d63 im Normalbetrieb zu, nur im Stoerfall auf; `docs/loop-state.md` M10-S2b/S2c) liegt in der Tiefleitung bei Z -159 im Graben; ohne Schacht ist der Hahn nicht erreichbar. Intent: Hahn von oben bedienen und warten, ohne zu graben. Goal: ein Schacht mit Deckel als Komponente, in den Kugelhahn d63 der Bibliothek (L = 125, Gehaeuse 84,15, Spindel + Hebel) und das Rohr d63 passen, Hebel in beiden Stellungen frei, Interferenz 0. Bau: Wanne PE-HD, Innen 400 x 400 (Hebel 110 + je 100 Hand, Ellbogenraum), Wand 8, Boden 15, Rohrachse 160 mm unter der Erdoberflaeche (K56 liegt bei Z -159), 150 mm Raum unter der Achse, zwei Wanddurchfuehrungen d70 mit EPDM-Dichtung fuer Rohr d63, Deckel 420 x 420 x 30 mit zwei Griffmulden, Deckelunterkante 47 mm ueber der Hebeloberkante.
+
+| Merkmal | Wert |
+|---|---|
+| Wanne | PE-HD (0,95 g/cm3), Aussen 416 x 416, Hoehe 295 (z -165 bis 130), Innen 400 x 400 x 280, Wand 8, Boden 15 |
+| Deckel | 420 x 420 x 30 (z 130 bis 160), 2 Griffmulden 100 x 30 x 15, liegt auf der Wand, Oberkante = Erdoberflaeche |
+| Dichtung | 2 x EPDM-Manschette Aussen 70, Bohrung 63, Laenge 14 (ragt 3 mm innen und aussen) |
+| Masse | Wanne 5,88 kg, Deckel 4,94 kg, Dichtungen 2 x 0,011 kg, gesamt 10,84 kg [E aus Volumen] |
+| Hahn im Schacht | Hahnmitte im Ursprung, Rohrachse X, Spindel nach +Z; Hebeloberkante z = 83,1, Gehaeuseunterkante z = -42,1, Boden z = -150 |
+
+**Ports** (Bauteil-KS, mm; Ursprung = Rohrachse in der Schachtmitte):
+
+| Port | DN | Art | Lage x, y, z | Richtung |
+|---|---|---|---|---|
+| Durchfuehrung A | DN50 (d63) | Durchfuehrung (Dichtung) | -208, 0, 0 | -X |
+| Durchfuehrung B | DN50 (d63) | Durchfuehrung (Dichtung) | +208, 0, 0 | +X |
+| Deckel | 400 x 400 | Oeffnung / Erdoberflaeche | 0, 0, 160 | +Z |
+
+Montage: Schachtmitte auf die Hahnposition der Tiefleitung legen, Rohrachse = Achse X (Instanz um Z drehen, bis die Leitung durch beide Durchfuehrungen laeuft); der Hahn aus der Bibliothek (`lt_kugelhahn_d63`) wird so gedreht, dass seine Spindel (Bauteil +X) nach oben zeigt, Hahnachse (Bauteil Z) = Rohrachse, Hahnmitte im Schachtmittelpunkt (Hahnursprung A liegt dann 62,5 mm vor der Mitte). Hebel offen = laengs zum Rohr, zu = quer; beide Stellungen frei.
+
+**Befund fuer die Montage (K57/K56 unter dem Filterkasten):** Die Tiefleitung K57 liegt bei Z -159, die Filterkasten-Unterkante bei Z -96 (31 mm Luft, `loop-state.md` M10-S2c Befund 2). Ein Schacht mit Deckel an der Erdoberflaeche (Z 0 bis 1) kann nicht unter dem Filterkasten stehen, er wuerde den Kasten durchstossen. Der Hahn muss ausserhalb des Kasten-Grundrisses sitzen; die Leitung ist dafuer an eine Stelle neben dem Kasten zu fuehren (Schacht dort, Hahn im Schacht). Der Grundriss des Filterkastens wurde nicht gelesen; die Lage entscheidet S2b/S2c oder S6. Der Schacht selbst bleibt unveraendert und hat Platz fuer Hahn und Rohr d63.
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| Hahn d63: L 125, Gehaeuse 84,15, Spindel, Hebel 110 x 12,6 x 14 bei x = 76,1 | mm | E aus `leitung.kugelhahn(63)` (Bibliothek, Bauform ohne Quelle) | niedrig |
+| Rohrachse 160 unter Oberflaeche | mm | E aus K56 Z -159 (`loop-state.md`) | mittel |
+| Innen 400 x 400, Wand 8, Boden 15, Deckel 30, 150 Raum unter der Achse | mm | A: Handbreite + Hebel 110, Standard-Ventilschacht (PE-HD, Handelsmasse nicht abgerufen) | niedrig |
+| Werkstoffe PE-HD 0,95, EPDM 1,1 | g/cm3 | A: Handbuchwerte | niedrig |
+
+**Montage (L4):** Graben ausheben (Sohle 40 cm unter der Achse, 10 cm Sandbett), Wanne einsetzen, waagerecht ausrichten; Rohr d63 durch die Dichtungen schieben, Hahn mit Klebemuffen ankleben; Wanne mit Sand/Kies verfuellen, Deckel bundig zur Erdoberflaeche auflegen. Nach dem Einbau Kugelhahn pruefen (Hebel parallel = offen). Werkzeug: Spaten, Wasserwaage, Kleber. Alternative lokale Fertigung: Handels-Schachtring oder Kontrollschacht Kunststoff DN400 mit Abdeckung; Wanddurchfuehrung per Kernbohrung oder Dichtmanschette.
+
+**Pruefung:** `check_lt_w36.py schacht` 17/17 PASS: 4 Koerper, Aussenmasse, Wannen- und Deckelvolumen gegen Rechnung (0,0003 %), Deckel liegt auf der Wand, Oberkante = Erdoberflaeche, Durchfuehrung d70, Dichtungsbohrung d63, Ports, Luft Hebel-Deckel >= 30 (Ist 47), Oeffnung >= Hebel + 200, Platz unter dem Hahn >= 90 (Ist 108), Interferenz 0 gegen Rohr d63 und Kugelhahn d63 (Gehaeuse, Muffen, Spindel, Hebel) in beiden Hebelstellungen. Bild (Schnitt durch die Mitte, Deckel durchsichtig): `renders/components/leitungsteile/lt_schacht_kugelhahn_d63.png`.
+
+**Offene Fragen:** (1) Lage des Schachts gegen den Filterkasten (Befund oben, Entscheidung bei der Montage/Orchestrator). (2) Entwaesserung des Schachts (Grundwasser, Sickerung) fehlt, keine Angabe zu Grundwasser im Plan [A]; Boden hat keine Ablaufbohrung. (3) Magnetventil statt Hand-Kugelhahn (K56: Hand-/Magnetventil) braucht ggf. Kabeldurchfuehrung; hier nur Handhahn. (4) Der Schacht ist auch fuer Hahn d50 (Tank gross, Schlammablass) nutzbar, aber nicht darauf ausgelegt.

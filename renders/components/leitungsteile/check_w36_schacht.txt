@@ -1,0 +1,19 @@
+PASS lt_w36: schacht Koerperzahl (Wanne, Deckel, 2 Dichtungen): Ist 4, Soll 4
+PASS lt_w36: schacht Aussenmass quer: Ist 416, Soll 416 (+-0.1)
+PASS lt_w36: schacht Aussenhoehe (Boden bis Deckelauflage): Ist 295, Soll 295 (+-0.1)
+PASS lt_w36: schacht Wannenvolumen = Aussen - Innenraum - 2 Wanddurchfuehrungen: Ist 6.18996e+06, Soll 6.18994e+06 (+-12379.9)
+PASS lt_w36: schacht Deckelvolumen (420 x 420 x 30 minus 2 Griffmulden 100 x 30 x 15): Ist 5.202e+06, Soll 5.202e+06 (+-10404)
+PASS lt_w36: schacht Deckel Oberkante = Erdoberflaeche (z = Achstiefe): Ist 160, Soll 160 (+-0.1)
+PASS lt_w36: schacht Deckel liegt auf der Wand (Unterkante = Wandoberkante): Ist 130, Soll 130 (+-0.1)
+PASS lt_w36: schacht Wanddurchfuehrung d70 (Loch in Wand A und B): Ist 1, Soll 1
+PASS lt_w36: schacht Dichtung A Bohrung = Rohr d63: Ist 1, Soll 1
+PASS lt_w36: schacht Dichtung B Bohrung = Rohr d63: Ist 1, Soll 1
+PASS lt_w36: schacht Port Deckel: Oberflaeche mit Normale +Z bei z = Achstiefe, Mittelpunkt auf der Schachtachse: Ist 1, Soll 1
+PASS lt_w36: schacht Port Durchfuehrung A/B: Dichtung-Stirnflaeche an der Aussenwand x = +-208 bis +-211 (Dichtung ragt 3 mm): Ist 1, Soll 1
+PASS lt_w36: schacht Hebel oben frei: Hebel-Oberkante 83.1 unter Deckelunterkante 130, Luft >= 30: Ist 1, Soll 1
+PASS lt_w36: schacht Hahn von oben bedienbar: Oeffnung 400 >= Hebel 110 + Handbreite 2 x 100: Ist 1, Soll 1
+PASS lt_w36: schacht Platz unter dem Hahn: Gehaeuseunterkante -42.1 bis Boden -150 >= 90: Ist 1, Soll 1
+PASS lt_w36: schacht Interferenz 0 mit Rohr d63 und Kugelhahn d63, Hebel offen (laengs) (geprueft 11 Koerper): Ist 0, Soll 0
+PASS lt_w36: schacht Interferenz 0 mit Rohr d63 und Kugelhahn d63, Hebel zu (quer) (geprueft 11 Koerper): Ist 0, Soll 0
+INFO schacht: Masse 10.84 kg (Wanne 5.88, Deckel 4.94), Aussen 416 x 416 x 295 + Deckel 30
+== lt_w36: 17/17 PASS

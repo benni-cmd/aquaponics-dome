@@ -611,6 +611,66 @@
      "dn": "DN100"
     }
    ]
+  },
+  "lt_schacht_kugelhahn_d63": {
+   "teilenummer": "T70-SCH-KH63",
+   "komponente": "T70_Schacht_Kugelhahn_d63",
+   "werkstoff": "PE-HD Wanne und Deckel, EPDM-Dichtung",
+   "innen": [
+    400.0,
+    400.0
+   ],
+   "wand": 8.0,
+   "achstiefe": 160.0,
+   "innentiefe_ab_deckelunterkante": 280.0,
+   "kugelhahn": "lt_kugelhahn_d63",
+   "ports": [
+    {
+     "name": "Durchfuehrung A",
+     "lage": [
+      -208.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Durchfuehrung",
+     "dn": "DN50"
+    },
+    {
+     "name": "Durchfuehrung B",
+     "lage": [
+      208.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Durchfuehrung",
+     "dn": "DN50"
+    },
+    {
+     "name": "Deckel",
+     "lage": [
+      0.0,
+      0.0,
+      160.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Oeffnung",
+     "dn": "400x400"
+    }
+   ]
   }
  }
 }

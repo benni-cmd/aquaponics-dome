@@ -637,6 +637,39 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
     },
     {
+      "match": "^lt_schacht_kugelhahn",
+      "titel": "Ventilschacht für Kugelhahn d63",
+      "was": "Unterirdischer Schacht mit Deckel um den Kugelhahn des Notbypasses am Feinfilter (K56, K57); der Hahn bleibt von oben bedienbar.",
+      "status": "gebaut, Prüfungen mit Interferenz 0 gegen Hahn, Hebel und Rohre",
+      "ablauf": [
+        "Das Rohr d63 läuft durch zwei abgedichtete Wanddurchführungen.",
+        "Der Deckel wird an den Griffmulden abgehoben; der Hebel liegt 47 mm unter dem Deckel.",
+        "Hebel offen und zu schwenken frei im Schacht."
+      ],
+      "aufbau": [
+        {
+          "t": "Schacht",
+          "p": [
+            "Wanne PE-HD innen 400 × 400, Wand 8",
+            "Rohrachse 160 mm unter der Erdoberfläche, 150 mm Raum darunter"
+          ]
+        },
+        {
+          "t": "Deckel und Dichtung",
+          "p": [
+            "Deckel 420 × 420 × 30 mit 2 Griffmulden",
+            "2 EPDM-Dichtungen für Rohr d63"
+          ]
+        }
+      ],
+      "masse": {
+        "Außenmaß": "416 × 416 × 295",
+        "Gewicht": "siehe Blatt"
+      },
+      "grenzen": "Die Zufahrt zum Schacht direkt unter dem Filterkasten ist geometrisch nicht möglich (siehe Blatt).",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
+    },
+    {
       "match": "^lt_",
       "titel": "Leitungsteile",
       "was": "Normteile des Rohrnetzes als Komponenten mit Ports.",

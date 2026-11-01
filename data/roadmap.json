@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: S01 abgenommen, nichts laeuft; Filter entschieden (D71); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: LATTE-SKRIPT (L01) laeuft; S01 abgenommen; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -193,11 +193,11 @@
   {
    "id": "LATTE-SKRIPT",
    "titel": "check_latte-Skript umstellen",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 8,
    "wer": "Montage",
-   "notiz": "Tür_Komplett statt T4_Blatt, Plane und Figuren ausnehmen, W-M4 gegen Fase."
+   "notiz": "Sitzung montage-latte (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/L01-latte-skript-umstellen.md (79caeb4): Tuer_Komplett statt T4_Blatt, Plane und Figuren ausgenommen, Fase, Puffer klein. Kein voller Lauf, kein Build; der grosse Lauf bleibt Schritt CHECK."
   },
   {
    "id": "M10-PLAN",

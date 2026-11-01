@@ -137,4 +137,14 @@ PASS lt_w39: schelle ID25 Volumen Schelle >= Ringband (Band + Gehaeuse): Ist 1, 
 PASS lt_w39: lt_schlauchschelle_id25 Port Schlauchachse (Aufnahme AD29): Bandbohrung Achse X durch den Ursprung: Ist 1, Soll 1
 PASS lt_w39: schelle ID25 Interferenz 0 (Schelle, Schnecke, Testschlauch AD29; geprueft 3 Koerper): Ist 0, Soll 0
 INFO schelle ID25: Masse 14.8 g (Stahl 7,85)
-== lt_w39: 127/127 PASS
+PASS lt_w39: leerrohr-red DN100/DN50 Koerperzahl: Ist 1, Soll 1
+PASS lt_w39: leerrohr-red Laenge = Bodenwand + Uebergang + Zapfen = 130: Ist 130, Soll 130 (+-0.05)
+PASS lt_w39: leerrohr-red Muffe A Aussen-D = Muffe des Leerrohrs DN100 (123): Ist 122.998, Soll 123 (+-0.05)
+PASS lt_w39: leerrohr-red Volumen: Ist 248608, Soll 248606 (+-497.211)
+PASS lt_w39: lt_leerrohr_red_dn100_dn50 Muffe A DN100 (AD110): Zylinderflaeche r 55: Ist 1, Soll 1
+PASS lt_w39: leerrohr-red Zapfen B: Aussen-D 50 (Passung in die Muffe des Leerrohrs DN50, Tiefe 40 < Zapfenlaenge 50): Ist 1, Soll 1
+PASS lt_w39: leerrohr-red Innen-D Zapfen = Leerrohr DN50 innen 46.4: Ist 1, Soll 1
+PASS lt_w39: lt_leerrohr_red_dn100_dn50 Port A (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_leerrohr_red_dn100_dn50 Port B (Zapfen, DN50) Stirnflaeche an (0, 0, 130.0): Ist 1, Soll 1
+INFO leerrohr-red: Masse 348 g (PVC-U 1,4)
+== lt_w39: 136/136 PASS

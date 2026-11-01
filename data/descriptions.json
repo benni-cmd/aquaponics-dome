@@ -716,6 +716,30 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_leerrohr_red_",
+      "titel": "Leerrohr-Reduzierung DN100 auf DN50",
+      "was": "Wechselt unterirdisch vom Leerrohr DN100 (230-V-Kabel) auf DN50 (Signalkabel); Muffe für das große Rohr, glattes Ende für die Muffe des kleinen.",
+      "status": "gebaut, Prüfungen mit Volumen und Ports",
+      "ablauf": [
+        "Das glatte Ende des Leerrohrs DN100 steckt in die Muffe A.",
+        "Das Zapfenende B (Außen 50) steckt in die Muffe des Leerrohrs DN50 oder eines Bogens."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "Länge 130, Muffe 123 × 64, Zapfen AD50 × 50 lang",
+            "Übergang gestuft, nicht konisch"
+          ]
+        }
+      ],
+      "masse": {
+        "Länge": "130 mm"
+      },
+      "grenzen": "Der Übergang ist gestuft statt konisch; Maße aus den Katalognäherungen von W36.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

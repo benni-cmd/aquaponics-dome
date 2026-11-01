@@ -1312,6 +1312,69 @@
      "dn": "AD29"
     }
    ]
+  },
+  "lt_leerrohr_red_dn100_dn50": {
+   "teilenummer": "T70-LRR-100-50",
+   "komponente": "T70_LeerrohrRed_DN100_DN50",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "laenge": 130.0,
+   "muffe_a": {
+    "dn": 100,
+    "d": 110.0,
+    "aussen_d": 123.0,
+    "tiefe": 64.0
+   },
+   "zapfen_b": {
+    "dn": 50,
+    "aussen_d": 50.0,
+    "laenge": 50.0,
+    "innen_d": 46.4
+   },
+   "uebergang": {
+    "aussen_d": 70.0,
+    "laenge": 10.0,
+    "form": "gestuft, nicht konisch"
+   },
+   "routing": "buried",
+   "herkunft": {
+    "Muffe A und Zapfen B": "E aus lt_leerrohr_dn100/dn50 (W36 Teil 3, Katalognaeherung)",
+    "Bodenwand 6, Uebergang 70 x 10, Zapfen 50 lang": "Annahme",
+    "Reihenfolge Muffe A / Zapfen B": "wie die Leerrohr-Bogen (Muffe A, Zapfen B)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      130.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN50"
+    }
+   ]
   }
  }
 }

@@ -646,3 +646,28 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Pruefung:** `check_lt_w39.py schelle` 18/18 PASS: 2 Koerper je Groesse, Bandbreite, Band-Aussen-D, Gehaeuse-Oberkante, Spannbereich enthaelt den Schlauch, Bandbohrung = Schlauch-AD, Volumen groesser als das Ringband, Achse X des Ports, Interferenz 0 gegen einen Testschlauch. Das Volumen wird nur grob geprueft (Gehaeuse und Schnecke ohne eigene Rechnung). **Bilder:** `renders/components/leitungsteile/lt_schlauchschelle_id16.png`, `lt_schlauchschelle_id25.png`.
 
 **Offene Fragen:** Handelsteil und Fabrikat offen (N-BESCHAFFUNG); Gewinde der Schnecke nicht modelliert; ID25-Stueckzahl und -Einbauorte legt die Montage fest.
+
+## Leerrohr-Reduzierung DN100 auf DN50 `lt_leerrohr_red_dn100_dn50` (T70-LRR-100-50)
+
+**Mini-Plan.** Problem: Die Kabeltrasse (S6) fuehrt 230-V-Kabel in DN100 und Signalkabel in DN50; ein Wechsel der Rohrgroesse ist nur mit Wasserrohr-Reduzierungen moeglich (W36 Teil 3, offene Frage 3). Intent: Reduzierstueck im Leerrohr-System, das die Steckkonvention (Stange: Zapfen A, Muffe B; Bogen: Muffe A, Zapfen B) durchhaelt. Goal: eine Datei mit Port A Muffe DN100 (AD110, Muffe 123 x 64) und Port B Zapfen DN50 (AD50), Check gruen. Bau: gestufter Koerper (nicht konisch): Muffenkoerper 123 x 70 (Bodenwand 6), Uebergang d70 x 10, Zapfen AD50 x 50 lang (Einstecktiefe der Muffe DN50 ist 40), Durchgang = Innen-D DN50 (46,4); Masse E aus `lt_leerrohr_dn50/dn100`.
+
+**Funktion:** Wechsel der Leerrohr-Groesse im Graben: vom Rohr DN100 (230-V-Kabel, AD110 x 3,2) auf DN50 (Signal-/Sensorkabel, AD50 x 1,8). Konvention der Leerrohr-Kette: Muffe A nimmt das glatte Ende (Zapfen) des Rohrs DN100 auf (Stange A oder Bogen B), das glatte Ende B steckt in die Muffe der Stange DN50 (Port B) oder eines Bogens DN50 (Port A).
+
+| Merkmal | Wert |
+|---|---|
+| Baulaenge | 130 = Muffenkoerper 70 (Muffe 64 + Bodenwand 6) + Uebergang 10 + Zapfen 50 |
+| Muffe A | AD110, Tiefe 64, Aussen 123 (wie `lt_leerrohr_dn100`) |
+| Uebergang | d70 x 10, gestuft (nicht konisch) |
+| Zapfen B | AD50, Innen 46,4, Laenge 50 (Muffe DN50: Tiefe 40) |
+| Werkstoff, Farbe, Masse | PVC-U 1,4, orange #c9742a (Elektro), 348 g [E aus Volumen] |
+| Routing | `buried` |
+
+**Ports** (Bauteil-KS, mm; Port A im Ursprung, Achse +Z): A Muffe DN100 bei 0, 0, 0 Richtung -Z; B Zapfen DN50 bei 0, 0, 130 Richtung +Z.
+
+**Herkunft:** Muffe A, Zapfen B, Innen-D: E aus `lt_leerrohr_dn100` und `lt_leerrohr_dn50` (W36 Teil 3, selbst Katalognaeherung, niedrig); Bodenwand 6, Uebergang 70 x 10, Zapfenlaenge 50: Annahme; Handelsteil Leerrohr-Reduzierung/Reduzierstueck im Katalog ueblich, Nachweis N-BESCHAFFUNG.
+
+**Montage (L4):** Zapfen DN100 in Muffe A bis Anschlag schieben (Gleitmittel), Zapfen B in die Muffe des DN50-Rohrs; Gefaelle 1 % zum Schacht wie im Leerrohr-Blatt. Werkzeug: Gleitmittel, Saege. Alternative lokale Fertigung: Handels-Reduzierstueck DN100/DN50 (KG- oder HT-Reduzierung) mit Gummidichtung.
+
+**Pruefung:** `check_lt_w39.py lr_red` 9/9 PASS: ein Koerper, Laenge 130, Muffen-Aussen 123, Volumen gegen Rechnung (0,001 %), Muffenzylinder AD110, Zapfen AD50 passt (Zapfenlaenge >= Muffentiefe 40), Innen-D 46,4, 2 Port-Stirnflaechen. **Bild** (Schnitt XZ): `renders/components/leitungsteile/lt_leerrohr_red_dn100_dn50.png`.
+
+**Offene Fragen:** Handelsteil im Katalog offen; der gestufte Uebergang ist kein Kabelradius (Kabel laufen durch ein Reduzierstueck nur gerade durch).

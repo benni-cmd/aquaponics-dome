@@ -10,6 +10,7 @@ sonst steckt eine Kupplung auf dem Stutzen und das Rohr in der Kupplung (Rohrend
 T-Stueck ("t:<id>", M10-S2b allgemein): T der Groesse d + je Port mit kleinerem Rohr ein Rohrstueck d (2 t) + Reduziermuffe d/d_klein; die Muffen von T und Reduziermuffe passen nicht Muffe auf Muffe.
   Eintrag in "t_stuecke": {"id", "pos", "d", "ports": [{"trasse", "ende": "start"|"ende", "d"}, ...]}; zwei Ports muessen auf einer Geraden liegen, der dritte steht senkrecht (beliebige Richtung, auch senkrecht).
 Reduziermuffe ("r:<id>", M10-S2b): Eintrag in "r_stuecke": {"id", "pos_a", "dir", "d_gross", "d_klein"}; pos_a = Muffenebene A (grosse Seite), dir von A nach B; die Trasse beginnt/endet auf der Muffenebene B.
+  Mit "art": "kugelhahn" steht derselbe Eintrag fuer einen Kugelhahn (lt_kugelhahn_d<d_gross>, Doppelmuffe, Laenge aus der Bibliothek); die Trassen davor/dahinter enden/beginnen auf den Muffenebenen A/B.
 Offenes Ende ("offen"): das Rohr endet am Trassenpunkt, kein Fitting."""
 import json, math, os, sys
 
@@ -92,7 +93,8 @@ def bauen(doc):
     tk = {}
     for ts in doc.get("t_stuecke", []): tk[ts["id"]] = t_stueck(T, ts, doc, FARBEN[[t for t in doc["trassen"] if t["id"] == ts["ports"][0]["trasse"]][0].get("farbe", "dunkelblau")])
     for r in doc.get("r_stuecke", []):
-        T.put("reduzierung", int(r["d_gross"]), int(r["d_klein"]), tuple(r["pos_a"]), tuple(r["dir"]), (1.0, 0.0, 0.0), FARBEN[r.get("farbe", "dunkelblau")], r["id"])
+        if r.get("art") == "kugelhahn": T.put("kugelhahn", int(r["d_gross"]), 0, tuple(r["pos_a"]), tuple(r["dir"]), (1.0, 0.0, 0.0), FARBEN[r.get("farbe", "dunkelblau")], r["id"])   # Doppelmuffe L = 50 + 2 t
+        else: T.put("reduzierung", int(r["d_gross"]), int(r["d_klein"]), tuple(r["pos_a"]), tuple(r["dir"]), (1.0, 0.0, 0.0), FARBEN[r.get("farbe", "dunkelblau")], r["id"])
     for tr in doc["trassen"]:
         tid, d, farbe = tr["id"], int(tr["dn"]), FARBEN[tr.get("farbe", "dunkelblau")]
         pts = [tuple(float(v) for v in p) for p in tr["pfad"]]; n = len(pts)

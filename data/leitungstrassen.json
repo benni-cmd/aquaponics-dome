@@ -4,66 +4,12 @@
  "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost",
  "trassen": [
   {
-   "id": "K01",
-   "kante": "K01",
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "stutzen",
-   "heber": true,
-   "baender": [
-    "W",
-    "W",
-    "U",
-    "W",
-    "W"
-   ],
-   "anschluss": [
-    "Zentralpool",
-    "Feinfilter:1"
-   ],
-   "pfad": [
-    [
-     2196.8,
-     462.9,
-     740
-    ],
-    [
-     2270.7,
-     478.5,
-     740.0
-    ],
-    [
-     2270.7,
-     478.5,
-     150
-    ],
-    [
-     3808.4,
-     1260.2,
-     150
-    ],
-    [
-     3808.4,
-     1260.2,
-     720.0
-    ],
-    [
-     3827.9,
-     1187.2,
-     720
-    ]
-   ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A, Az 11.9) -> Bogen runter -> Graben Z 150 (Heber, Rohr oben 733.5 unter Spiegel 915) -> Bogen hoch -> Bogen in den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
-   "linie": 1
-  },
-  {
    "id": "K06-T",
    "kante": null,
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "stutzen",
-   "ende": "t:T1",
+   "ende": "t:T6",
    "band": "U",
    "anschluss": [
     "Feinfilter:1"
@@ -90,6 +36,32 @@
      214.0
     ],
     [
+     2650.0,
+     385.7,
+     214.0
+    ]
+   ],
+   "notiz": "Stamm d63 zwischen Filterauslauf und T (gehoert zu K02 und K06: Netz fuehrt dort d50, T-Stueck d63/d50/d50 laut Netz-Bemerkung K06); Winkel -165/-210/-165/-75 Grad im 15-Grad-Gitter des Filters; Laengen v2-v3 518, v3-v4 1110, v4-T 311",
+   "linie": 1
+  },
+  {
+   "id": "K06-T-b",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T6",
+   "ende": "t:T1",
+   "band": "U",
+   "anschluss": [
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     2650.0,
+     385.7,
+     214.0
+    ],
+    [
      2330,
      300,
      214
@@ -100,7 +72,7 @@
      214.0
     ]
    ],
-   "notiz": "Stamm d63 zwischen Filterauslauf und T (gehoert zu K02 und K06: Netz fuehrt dort d50, T-Stueck d63/d50/d50 laut Netz-Bemerkung K06); Winkel -165/-210/-165/-75 Grad im 15-Grad-Gitter des Filters; Laengen v2-v3 518, v3-v4 1110, v4-T 311",
+   "notiz": "K06-T (Teil 2): vom T d63 des Notbypasses K56 bis zum T d63/d50/d50 (T1) vor den Pumpen.",
    "linie": 1
   },
   {
@@ -334,6 +306,403 @@
    ],
    "notiz": "Ueberlauf-Stutzen d63 (Z 1970 = 1570 relativ) -> Reduziermuffe d63/d50 -> 450 mm Rohr d50 nach aussen; das offene Ende (x 2334 y -100) ist der Verteiler-Eingang (Verteilerplatz, Verteiler d50 in S3)",
    "linie": 1
+  },
+  {
+   "id": "K03-Tief",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T3",
+   "baender": [
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     0.0,
+     0.0,
+     -1575
+    ],
+    [
+     0.0,
+     0.0,
+     -1635.0
+    ],
+    [
+     0.0,
+     -1348.8,
+     -1635.0
+    ]
+   ],
+   "notiz": "Bodenablauf-Stutzen d50 (Pool-Mitte, Z -1575) -> Bogen -> 1349 mm unter dem Pool nach Sueden (Z -1635, unter der Pool-Bodenplatte Z -1425) bis zum T d50 (Teilung auf Linie 1 und 2)",
+   "linie": 1
+  },
+  {
+   "id": "K03-Steig",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T3",
+   "ende": "r:R_K03",
+   "baender": [
+    "UT",
+    "UT",
+    "W"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     0.0,
+     -1348.8,
+     -1635.0
+    ],
+    [
+     2400,
+     -1348.8,
+     -1635.0
+    ],
+    [
+     2400.0,
+     -1348.8,
+     520.0
+    ],
+    [
+     2484.4,
+     -1349.2,
+     520.0
+    ]
+   ],
+   "notiz": "T-Ost-Ausgang -> 2400 mm nach Osten unter dem Pool hinaus (x 2400) -> Steigrohr auf die Saughoehe Z 520 -> zur Reduziermuffe d50/d40",
+   "linie": 1
+  },
+  {
+   "id": "K03",
+   "kante": "K03",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "r:R_K03",
+   "ende": "stutzen",
+   "band": "W",
+   "anschluss": [
+    "Pumpe_klein:3",
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2547.4,
+     -1349.5,
+     520.0
+    ],
+    [
+     2667.4,
+     -1350.2,
+     520
+    ]
+   ],
+   "notiz": "Reduziermuffe d50/d40 -> Saugstutzen Pumpe_klein:3 (d40, Z 520)",
+   "linie": 1
+  },
+  {
+   "id": "K03-K19-Stumpf",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T3",
+   "ende": "offen",
+   "band": "UT",
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     0.0,
+     -1348.8,
+     -1635.0
+    ],
+    [
+     0.0,
+     -1648.8,
+     -1635.0
+    ]
+   ],
+   "notiz": "Linie-2-Zweig (Netz K19) nur bis zur Abzweigung: 300 mm Rohr d50 nach Sueden, offenes Ende; die Fortsetzung zu Pumpe_klein:1 baut S2c",
+   "linie": 1
+  },
+  {
+   "id": "K04",
+   "kante": "K04",
+   "dn": 32,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:R_K04",
+   "baender": [
+    "W",
+    "W",
+    "WH",
+    "WH",
+    "WH"
+   ],
+   "anschluss": [
+    "Pumpe_klein:3",
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2768.4,
+     -1350.7,
+     645
+    ],
+    [
+     2768.4,
+     -1350.7,
+     684.6
+    ],
+    [
+     2457.9,
+     -1258.2,
+     684.6
+    ],
+    [
+     2457.9,
+     -1258.2,
+     1397.0
+    ],
+    [
+     2300.8,
+     -1785.2,
+     1397.0
+    ],
+    [
+     2397.6,
+     -1814.1,
+     1397.0
+    ]
+   ],
+   "notiz": "Druckstutzen Pumpe_klein:3 (d32, Z 645) -> hoch auf Z 685 -> 324 mm unter der Plattform nach aussen -> Steigrohr auf Zulaufhoehe Z 1397 -> 550 mm an der Tankwand entlang -> Reduziermuffe d50/d32 auf dem tangentialen Zulauf-Stutzen",
+   "linie": 1
+  },
+  {
+   "id": "K05",
+   "kante": "K05",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T4",
+   "baender": [
+    "WH",
+    "U",
+    "U",
+    "U"
+   ],
+   "gefaelle_pct": 1.0,
+   "anschluss": [
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2715.2,
+     -2075.2,
+     1547
+    ],
+    [
+     2669.5,
+     -2228.5,
+     1544.6
+    ],
+    [
+     2669.5,
+     -2228.5,
+     212.5
+    ],
+    [
+     4070.1,
+     -1516.5,
+     188.9
+    ],
+    [
+     2894.7,
+     795.7,
+     150.0
+    ]
+   ],
+   "notiz": "Auslauf-Stutzen Tank_klein:2 (d50, Z 1547) -> Bogen -> Fallrohr auf Z 212 -> 1571 mm unterflur nach ENE (Gefaelle 1.5 %) -> 2594 mm senkrecht auf die K01-Grabenstrecke zum T d63 (Zweig d50, Z 150)",
+   "linie": 1
+  },
+  {
+   "id": "K01",
+   "kante": "K01",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T5",
+   "heber": true,
+   "baender": [
+    "W",
+    "W",
+    "U"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     2196.8,
+     462.9,
+     740
+    ],
+    [
+     2270.7,
+     478.5,
+     740.0
+    ],
+    [
+     2270.7,
+     478.5,
+     150
+    ],
+    [
+     2582.7,
+     637.1,
+     150.0
+    ]
+   ],
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A, Az 11.9) -> Bogen runter -> Graben Z 150 (Heber, Rohr oben 733.5 unter Spiegel 915) -> Bogen hoch -> Bogen in den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2) Hier bis zum T d63 des Absetzer-Zulaufs K05 (Teil 1).",
+   "linie": 1
+  },
+  {
+   "id": "K01-m",
+   "kante": "K01",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T5",
+   "ende": "t:T4",
+   "heber": true,
+   "baender": [
+    "U"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     2582.7,
+     637.1,
+     150.0
+    ],
+    [
+     2894.7,
+     795.7,
+     150.0
+    ]
+   ],
+   "notiz": "K01 (Teil 2): vom T d63 des Notbypasses K56 bis zum T d63 des Absetzer-Zulaufs K05 (Heber, Graben Z 150).",
+   "linie": 1
+  },
+  {
+   "id": "K01-b",
+   "kante": "K01",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T4",
+   "ende": "stutzen",
+   "heber": true,
+   "baender": [
+    "U",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     2894.7,
+     795.7,
+     150.0
+    ],
+    [
+     3808.4,
+     1260.2,
+     150
+    ],
+    [
+     3808.4,
+     1260.2,
+     720.0
+    ],
+    [
+     3827.9,
+     1187.2,
+     720
+    ]
+   ],
+   "notiz": "K01 (Teil 2): vom T d63 des Absetzer-Zulaufs K05 bis zum Feinfilter-Einlauf (Heber, Graben Z 150).",
+   "linie": 1
+  },
+  {
+   "id": "K56-a",
+   "kante": "K56",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T5",
+   "ende": "r:KH1",
+   "band": "UT",
+   "anschluss": [],
+   "pfad": [
+    [
+     2582.7,
+     637.1,
+     150.0
+    ],
+    [
+     2582.7,
+     637.1,
+     76.4
+    ]
+   ],
+   "notiz": "Abzweig vom T d63 auf K01 senkrecht nach unten bis zum Kugelhahn",
+   "linie": 1
+  },
+  {
+   "id": "K56-b",
+   "kante": "K56",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:KH1",
+   "ende": "t:T6",
+   "band": "UT",
+   "anschluss": [],
+   "pfad": [
+    [
+     2582.7,
+     637.1,
+     -48.6
+    ],
+    [
+     2582.7,
+     637.1,
+     -158.6
+    ],
+    [
+     2650.0,
+     385.7,
+     -158.6
+    ],
+    [
+     2650.0,
+     385.7,
+     214.0
+    ]
+   ],
+   "notiz": "Kugelhahn -> 110 mm abwaerts -> 260 mm Tiefleitung (Z -159) unter K01 und Stamm K06-T -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz K56: Anschluss an die Saugleitung hinter dem Filterauslauf)",
+   "linie": 1
   }
  ],
  "t_stuecke": [
@@ -347,7 +716,7 @@
    "d": 63,
    "ports": [
     {
-     "trasse": "K06-T",
+     "trasse": "K06-T-b",
      "ende": "ende",
      "d": 63
     },
@@ -392,6 +761,118 @@
    ],
    "notiz": "T d50 mit zwei Eingaengen d40 (Rohrstueck d50 + Reduziermuffe d50/d40) und einem Ausgang d50",
    "linie": 1
+  },
+  {
+   "id": "T3",
+   "pos": [
+    0.0,
+    -1348.8,
+    -1635.0
+   ],
+   "d": 50,
+   "ports": [
+    {
+     "trasse": "K03-Tief",
+     "ende": "ende",
+     "d": 50
+    },
+    {
+     "trasse": "K03-Steig",
+     "ende": "start",
+     "d": 50
+    },
+    {
+     "trasse": "K03-K19-Stumpf",
+     "ende": "start",
+     "d": 50
+    }
+   ],
+   "notiz": "T d50: Teilung des gemeinsamen Pool-Bodenablaufs auf Linie 1 (Ost) und Linie 2 (West)",
+   "linie": 1
+  },
+  {
+   "id": "T4",
+   "pos": [
+    2894.7,
+    795.7,
+    150.0
+   ],
+   "d": 63,
+   "ports": [
+    {
+     "trasse": "K01-m",
+     "ende": "ende",
+     "d": 63
+    },
+    {
+     "trasse": "K01-b",
+     "ende": "start",
+     "d": 63
+    },
+    {
+     "trasse": "K05",
+     "ende": "ende",
+     "d": 50
+    }
+   ],
+   "notiz": "T d63 im Einlauf der K01 (Netz K05: T-Stueck mit Seitenablauf); Zweig d50 mit Rohrstueck d63 + Reduziermuffe d63/d50",
+   "linie": 1
+  },
+  {
+   "id": "T5",
+   "pos": [
+    2582.7,
+    637.1,
+    150.0
+   ],
+   "d": 63,
+   "ports": [
+    {
+     "trasse": "K01",
+     "ende": "ende",
+     "d": 63
+    },
+    {
+     "trasse": "K01-m",
+     "ende": "start",
+     "d": 63
+    },
+    {
+     "trasse": "K56-a",
+     "ende": "start",
+     "d": 63
+    }
+   ],
+   "notiz": "T d63 auf K01, Zweig senkrecht nach unten (Notbypass K56)",
+   "linie": 1
+  },
+  {
+   "id": "T6",
+   "pos": [
+    2650.0,
+    385.7,
+    214.0
+   ],
+   "d": 63,
+   "ports": [
+    {
+     "trasse": "K06-T",
+     "ende": "ende",
+     "d": 63
+    },
+    {
+     "trasse": "K06-T-b",
+     "ende": "start",
+     "d": 63
+    },
+    {
+     "trasse": "K56-b",
+     "ende": "ende",
+     "d": 63
+    }
+   ],
+   "notiz": "T d63 im Filter-Stamm, Zweig senkrecht nach unten (Notbypass K56)",
+   "linie": 1
   }
  ],
  "r_stuecke": [
@@ -425,6 +906,56 @@
    ],
    "d_gross": 63,
    "d_klein": 50,
+   "linie": 1
+  },
+  {
+   "id": "R_K03",
+   "pos_a": [
+    2484.4,
+    -1349.2,
+    520.0
+   ],
+   "dir": [
+    0.999986,
+    -0.005236,
+    -0.0
+   ],
+   "d_gross": 50,
+   "d_klein": 40,
+   "linie": 1
+  },
+  {
+   "id": "R_K04",
+   "pos_a": [
+    2454.1,
+    -1830.9,
+    1397.0
+   ],
+   "dir": [
+    -0.958323,
+    0.285688,
+    0.0
+   ],
+   "d_gross": 50,
+   "d_klein": 32,
+   "linie": 1
+  },
+  {
+   "id": "KH1",
+   "art": "kugelhahn",
+   "pos_a": [
+    2582.7,
+    637.1,
+    76.4
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 63,
+   "d_klein": 63,
+   "notiz": "Kugelhahn d63 K56 (Normalbetrieb zu, Stoerfall auf); Handrad nicht erreichbar im Graben: Schacht mit Deckel in S6",
    "linie": 1
   }
  ]

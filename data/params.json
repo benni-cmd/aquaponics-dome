@@ -664,5 +664,77 @@
   "r_id": "",
   "maturity": 0,
   "used_by": "trassen_linie.py"
+ },
+ "lt_k03_riser_x": {
+  "value": 2400,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K03 (Pool-Bodenablauf -> Pumpe_klein:3): x des Steigrohrs von der Tiefleitung unter dem Pool auf Saughoehe (Pool-Aussenrand r 2095, Tankplattform-Bounding-Box ab x 2565; 192 mm Abstand zur Pumpe)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k05_s": {
+  "value": 700,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K05 (Absetzer-Auslass -> Einlauf-T): Lage des T d63 auf der K01-Grabenstrecke, gemessen vom Knick am Pool-Ende; dort muendet K05 senkrecht von Suedosten (Abstand zu K02-Steigrohr 506 mm, zum Feinfilter 600 mm)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k05_pct": {
+  "value": 1.5,
+  "unit": "%",
+  "origin": "A",
+  "source": "M10-S2b K05: Gefaelle der Unterflur-Strecken (Schwerkraft, Netz K05; hoechstens 1,5 %, damit der Knick zum Fallrohr innerhalb 1 Grad von 90 Grad bleibt)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k04_y": {
+  "value": 480,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K04 (Pumpe_klein:3 -> Absetzer-Zulauf): Abstand der Hochleitung von der Absetzer-Achse in Bauteil-Y (Plattform reicht bis 353, Tankwand bis 336)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_l2_stub": {
+  "value": 300,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b: Laenge des Linie-2-Zweigstuecks d50 hinter dem T des Bodenablaufs (offenes Ende, S2c setzt dort an)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k05_vor": {
+  "value": 100,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K05: Strecke hinter dem Auslauf-Stutzen des Absetzers bis zum Bogen zusaetzlich zum Bogenradius; das Fallrohr rueckt damit 92 mm von der Bounding-Box der Pumpe_klein:4 ab (Rohr auf Kupplung am Stutzen)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k56_s": {
+  "value": 350,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K56 (Notbypass): Lage des Abzweig-T auf der K01-Grabenstrecke, gemessen vom Pool-Ende; dort ist der Abstand zum Filter-Stamm K06-T am kleinsten (260 mm), das T liegt 350 mm vor dem T des Absetzer-Zulaufs",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k56_tief": {
+  "value": 110,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2b K56: Strecke unter dem Kugelhahn bis zum 90-Grad-Bogen (Tiefleitung Z -158, Band UT); der Bypass unterquert so K01 (Z 150) und den Filter-Stamm (Z 214)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
  }
 }

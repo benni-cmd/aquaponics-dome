@@ -117,7 +117,7 @@ nui, nvi = int((1865 - 2 * P["pot_margin"]) // P["pot_pitch"]) + 1, int((933 - 2
 exp_pots = 8 * nu * nv + 6 * nui * nvi + sum(len(v["pots"]) * n for v, n in zip(json.load(open(os.path.join(ROOT, "data", "nft_pots.json")))["typen"].values(), (10, 6, 8)))
 chk("Netztoepfe: Aussenbeete (8 x %d x %d) + Innenbeete (6 x %d x %d) + Rinnen (nft_pots.json) als Instanzen" % (nu, nv, nui, nvi), n_cls("Netztopf"), exp_pots, n_cls("Netztopf") == exp_pots)
 chk("Netztoepfe Erwartung Runde 60: 960 Aussenbeete + 588 Innenbeete + 674 Rinnen", (8 * nu * nv, 6 * nui * nvi, exp_pots - 8 * nu * nv - 6 * nui * nvi, exp_pots), (960, 588, 674, 2222), (8 * nu * nv, 6 * nui * nvi, exp_pots - 8 * nu * nv - 6 * nui * nvi, exp_pots) == (960, 588, 674, 2222))
-chk("Koerper im Modell (Stand Build 60 laut viewer-Meldung; weicht ab, wenn das Modell sich geaendert hat)", len(B), 4667, len(B) == 4667)
+chk("Info: Koerperzahl im Modell (kein Pruefkriterium; 4667 ist die Instanzzahl der Viewer-Meldung Build 60, nicht die Koerperzahl)", len(B), "Information", True)
 # Neue Bauteile Runde 60: Station T81 ist abgeschaltet (station_an 0) -> fehlt sie, ist das KEIN Fehler; Puffer klein T82 steht dann statt ihrer
 st_an = int(P.get("station_an", 0))
 chk("Puffer: Instanzen (Puffer_Station, Puffer_Klein) je nach station_an=%d (0 -> Station aus, Puffer klein T82)" % st_an, (n_cls("Puffer_Station"), n_cls("Puffer_Klein")), (st_an, 1 - st_an), (n_cls("Puffer_Station"), n_cls("Puffer_Klein")) == (st_an, 1 - st_an))

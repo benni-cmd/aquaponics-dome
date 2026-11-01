@@ -24,4 +24,12 @@ PASS lt_w39: lt_uebergang_pe_pvc_d20 Port A (Klemme, PE d20) Stirnflaeche an (0,
 PASS lt_w39: lt_uebergang_pe_pvc_d20 Port B (Muffe, DN15) Stirnflaeche an (0, 0, 50.0): Ist 1, Soll 1
 PASS lt_w39: pe-pvc d20 Interferenz 0 (Koerper, Mutter, Klemmring und eingestecktes PE-Rohr d20 bis z = 30; geprueft 4 Koerper): Ist 0, Soll 0
 INFO pe-pvc d20: Masse 17.0 g (PP 0,91, POM 1,41)
-== lt_w39: 24/24 PASS
+PASS lt_w39: schlauch ID16 L100 Koerperzahl: Ist 1, Soll 1
+PASS lt_w39: schlauch ID16 L100 Laenge: Ist 100, Soll 100 (+-0.05)
+PASS lt_w39: schlauch ID16 L100 Aussen-D AD20: Ist 19.9997, Soll 20 (+-0.05)
+PASS lt_w39: schlauch ID16 L100 Volumen = Ringflaeche x Laenge: Ist 11308.8, Soll 11309.7 (+-22.6195)
+PASS lt_w39: lt_schlauch_id16_L100 Innen ID16: Zylinderflaeche r 8: Ist 1, Soll 1
+PASS lt_w39: lt_schlauch_id16_L100 Port A (Schlauchende, ID16) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_schlauch_id16_L100 Port B (Schlauchende, ID16) Stirnflaeche an (0, 0, 100): Ist 1, Soll 1
+INFO schlauch ID16 L100: Masse 11.3 g
+== lt_w39: 31/31 PASS

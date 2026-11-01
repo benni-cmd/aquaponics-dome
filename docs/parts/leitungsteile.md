@@ -511,3 +511,29 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Pruefung:** `check_lt_w39.py pe` 14/14 PASS: 3 Koerper, Baulaenge 50, Mutter-Aussen, Volumen je Koerper gegen Rechnung (0,01 %), Anschlag bei z = 30, Eingriff, Gegenbohrung gross genug, Klebemuffen-Zylinder, 2 Port-Stirnflaechen, Interferenz 0 (Koerper, Mutter, Klemmring und ein eingestecktes PE-Rohr d20). **Bild** (Schnitt XZ): `renders/components/leitungsteile/lt_uebergang_pe_pvc_d20.png`.
 
 **Offene Fragen:** Handelsteil, Gewinde (hier nur Hals und Gegenbohrung, kein Gewindeprofil) und Fabrikat offen (N-BESCHAFFUNG); die Klemmverbindung fuer PE d20 gibt es auch als Steckverbinder (Push-Fit), Montage waehlt.
+
+## Schlauch ID16 kurz `lt_schlauch_id16_L100` (T70-SCH-16, Laengenvariante)
+
+**Mini-Plan.** Problem: Je NFT-Rinne liegt zwischen Verteilerstutzen und Tuelle nur ein freier Schlauchabschnitt von 70 mm (`hose_gap` im Tisch-Blatt); die Bibliotheksdatei `lt_schlauch_id16` ist 1000 mm lang (W36 Teil 5). Intent: 76 kurze Schlauchstuecke (38 Rinnen x 2 Linien) als eigenes Bauteil statt zugeschnittener 1000er. Goal: eine Komponente, Schlauch ID16/AD20, Laenge 100 (70 plus Aufsteckenden), Ports wie die Bibliothek, Check gruen. Bau: `leitung.schlauch(16, 100)` unveraendert; der 63er-Check ignoriert Laengenvarianten (Commit 80b61d3), Ports in `leitung_w39.ports()` (die Regel in `leitung.ports()` kennt nur `lt_schlauch_id<n>`).
+
+**Funktion:** kurzes Schlauchstueck fuer den Zulauf je NFT-Rinne (Verteilerstutzen D16 bis Tuelle D16 der Rinne). 76 Stueck (38 Rinnen je Linie, zwei Linien). Die Datei `lt_schlauch_id16` (1000 mm) bleibt unveraendert.
+
+| Merkmal | Wert |
+|---|---|
+| Innen / Aussen | 16 / 20 (Wand 2) |
+| Laenge | 100 (freier Abschnitt 70 plus je 15 Aufsteckende) |
+| Farbe | hellblau (Frischwasser, `hydraulics.md` 5) |
+| Masse | 11,3 g [E aus Volumen, Dichte 1,0] |
+
+**Ports** (Bauteil-KS, mm; Port A im Ursprung, Achse +Z): A Schlauchende ID16 bei 0, 0, 0 Richtung -Z; B Schlauchende ID16 bei 0, 0, 100 Richtung +Z.
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| freier Abschnitt 70 | mm | belegt: Tisch-Blatt `hose_gap` (`docs/parts/nft_tisch.md`) | mittel |
+| Aufsteckenden 2 x 15, Laenge 100 | mm | A | niedrig |
+| Wand 2, ID16/AD20 | mm | Bibliothek (`leitung.schlauch`) | mittel |
+| 76 Stueck | | E: 38 Rinnen x 2 Linien (Netzliste K12/K28) | mittel |
+
+**Montage (L4):** beide Enden auf Tuelle D16 stecken, je eine Schlauchschelle (Teil 5). Werkzeug: Schlauchschere. **Pruefung:** `check_lt_w39.py hose` 7/7 PASS (Koerper, Laenge, AD, Volumen gegen Ringflaeche 0,008 %, Innenzylinder r 8, beide Port-Stirnflaechen). **Bild:** `renders/components/leitungsteile/lt_schlauch_id16_L100.png`. **Offene Fragen:** genaue Laenge entscheidet die Montage (Tuellenabstand je Rinne); kein Katalog offen, da zuschneidbarer Meterschlauch.

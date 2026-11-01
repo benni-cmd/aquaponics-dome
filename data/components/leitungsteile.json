@@ -803,6 +803,54 @@
      "dn": "DN15"
     }
    ]
+  },
+  "lt_schlauch_id16_L100": {
+   "teilenummer": "T70-SCH-16",
+   "komponente": "T70_Schlauch_ID16",
+   "werkstoff": "PVC-Schlauch hellblau (Frischwasser)",
+   "innen_d": 16,
+   "aussen_d": 20,
+   "wand": 2.0,
+   "laenge": 100,
+   "stueck": 76,
+   "variante_von": "lt_schlauch_id16 (Laenge 1000)",
+   "herkunft": {
+    "laenge": "belegt (Tisch-Blatt hose_gap 70 mm plus Aufsteckenden)",
+    "wand 2": "Annahme der Bibliothek",
+    "stueckzahl 76": "gerechnet 38 Rinnen x 2 Linien"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Schlauchende",
+     "dn": "ID16"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      100.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Schlauchende",
+     "dn": "ID16"
+    }
+   ]
   }
  }
 }

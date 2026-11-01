@@ -588,6 +588,30 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_schlauch_id16_L100$",
+      "titel": "Schlauch ID16, kurz (100 mm)",
+      "was": "Kurzes Schlauchstück für den Zulauf je NFT-Rinne zwischen Verteilerstutzen und Tülle; Variante des Schlauchs ID16 der Bibliothek.",
+      "status": "gebaut, Prüfungen mit Volumen und Ports",
+      "ablauf": [
+        "Beide Enden werden auf Tüllen D16 gesteckt und mit je einer Schlauchschelle gesichert.",
+        "76 Stück: 38 Rinnen je Linie, zwei Linien."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "Innen 16, Außen 20, Länge 100",
+            "Farbe hellblau (Frischwasser)"
+          ]
+        }
+      ],
+      "masse": {
+        "Länge": "100 mm"
+      },
+      "grenzen": "Die Länge 100 deckt den freien Abschnitt 70 mm plus Aufsteckenden; genaue Länge entscheidet die Montage.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

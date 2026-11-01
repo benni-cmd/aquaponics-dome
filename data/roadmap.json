@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 01:05: nur R40 laeuft, nichts Neues wird gestartet (Bens Vorgabe)",
+ "stand": "Stand 01.11.2026 01:30: R40 abgenommen, nichts laeuft, wartet auf Bens Freigabe",
  "schritte": [
   {
    "id": "W33",
@@ -166,11 +166,11 @@
   {
    "id": "R40",
    "titel": "Netzliste auf Stand bringen",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Fachrecherche",
-   "notiz": "Fachrecherche-3 arbeitet (Blatt docs/jobs/R40-netzliste-stand.md); nach dem Limit-Stopp um 22:10 neu geweckt. Wird fertig gemacht, danach startet NICHTS Neues (Bens Vorgabe 1.11.)."
+   "notiz": "Commit 8841fa3: Netzliste Version 2 (34 Knoten, 55 Kanten), 17 Kanten technisch geaendert, 6 neu, 2 entfallen; check_netz.py bestanden; 7 Fragen F1-F7 fuer M10 (u. a. Hoehenlage Feinfilter)."
   },
   {
    "id": "M-SETZEN",

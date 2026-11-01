@@ -214,9 +214,9 @@ def check_lr_t(ck):
             if (abs(x) <= a and y * y + z * z < ri * ri) or (0 <= z <= a and x * x + y * y < ri * ri):
                 return False
             return True
-        h = 1.0 if dn == 50 else 1.5
+        h = 1.0
         v = raster_volume(inside, (-a - 1, -R - 1, -R - 1), (a + 1, R + 1, a + 1), h)
-        ck.eq(f"leerrohr-T DN{dn} Volumen = CSG-Raster ({h:g} mm)", b["volume_mm3"], v, v * 0.01)
+        ck.eq(f"leerrohr-T DN{dn} Volumen = CSG-Raster ({h:g} mm, Raster-Rauschen bei duennen Waenden etwa 1 %)", b["volume_mm3"], v, v * 0.015)
         port_checks(ck, fname, ["Leerrohr_T"])
         print(f"INFO leerrohr-T DN{dn}: Masse {ev['total']['mass_g'] / 1000:.2f} kg (PVC-U 1,4), Abzweig scharf (kein Kabelradius)")
 

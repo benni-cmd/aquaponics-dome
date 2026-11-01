@@ -671,3 +671,28 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Pruefung:** `check_lt_w39.py lr_red` 9/9 PASS: ein Koerper, Laenge 130, Muffen-Aussen 123, Volumen gegen Rechnung (0,001 %), Muffenzylinder AD110, Zapfen AD50 passt (Zapfenlaenge >= Muffentiefe 40), Innen-D 46,4, 2 Port-Stirnflaechen. **Bild** (Schnitt XZ): `renders/components/leitungsteile/lt_leerrohr_red_dn100_dn50.png`.
 
 **Offene Fragen:** Handelsteil im Katalog offen; der gestufte Uebergang ist kein Kabelradius (Kabel laufen durch ein Reduzierstueck nur gerade durch).
+
+## Leerrohr-T DN50 und DN100 `lt_leerrohr_t_dn50`, `lt_leerrohr_t_dn100` (T70-LRT-50, T70-LRT-100)
+
+**Mini-Plan.** Problem: Die Kabeltrasse (S6) verzweigt zu mehreren Verbrauchergruppen; die Leerrohr-Teile (W36 Teil 3) haben nur Stange und Bogen, keinen Abzweig. Intent: Abzweig als Normteil wie `lt_t_d*`. Goal: zwei Dateien mit drei Muffen (A -X, B +X, C +Z), gleich gross, Check gruen; der Abzweig ist scharf (kein Kabelradius) und wird im Blatt so vermerkt: Kabel laufen nur mit Zugdose durch. Bau: Lauf plus Abgang aus Zylindern mit Muffen-Aussen (56 / 123), Muffen d (50 / 110) je 40 / 64 tief, Durchgang = Leerrohr-Innen-D, Arm a = t + Muffen-Aussen/2 wie `leitung.t_stueck`; Volumen gegen ein unabhaengiges CSG-Raster.
+
+**Funktion:** Abzweig 90 Grad zwischen drei Leerrohren gleicher Groesse (Lauf X, Abgang +Z), Teilung wie die T-Stuecke der Bibliothek (Arm a = Muffentiefe + Muffen-Aussen/2). **Kabel-Hinweis:** Der Abzweig hat keinen Radius (scharfe Kante im Inneren); die Kabel-Mindestradien (15 x Kabel-d, siehe Leerrohr-Blatt) gelten hier nicht. Kabel laufen durch das T nur gerade im Lauf (A nach B) oder gelangen in den Abgang ueber eine Zugdose (Hand-/Zugschacht); wer ein Kabel um die Ecke fuehren will, nimmt Bogen 90 DN50/DN100 (Radius 300/500), nicht das T.
+
+| Merkmal | DN50 | DN100 |
+|---|---|---|
+| Rohr-AD / Innen-D | 50 / 46,4 | 110 / 103,6 |
+| Muffe (Aussen / Tiefe) | 56 / 40 | 123 / 64 |
+| Arm a | 68 | 125,5 |
+| Lauf (2 a) / Abgangshoehe | 136 / 68 | 251 / 125,5 |
+| Masse (PVC-U 1,4, Messung) | 0,14 kg | 1,18 kg |
+| Werkstoff, Farbe, Routing | PVC-U, orange, `buried` | gleich |
+
+**Ports** (Bauteil-KS, mm; Ursprung = Kreuzung der Achsen, wie `lt_t_d*`): A Muffe bei -a, 0, 0 Richtung -X; B Muffe bei +a, 0, 0 Richtung +X; C Muffe bei 0, 0, +a Richtung +Z; DN50 bzw. DN100. An alle drei Muffen steckt je ein Zapfen (glattes Rohrende) der Nachbarn: Stange A, Bogen B oder Reduzierung B.
+
+**Herkunft:** Muffe, AD, Wand, Tiefe: E aus `lt_leerrohr_dn50/dn100` (W36 Teil 3, Katalognaeherung, niedrig); Arm = t + Muffen-Aussen/2: E wie `leitung.t_stueck` (mittel); Handelsteil Leerrohr-Abzweig/Abzweigstueck im Katalog ueblich, Nachweis N-BESCHAFFUNG.
+
+**Montage (L4):** Zapfen der drei Rohre bis Anschlag in die Muffen schieben (Gleitmittel); Zugdose am Abgang oder Hand-/Zugschacht vor dem Abzweig vorsehen. Werkzeug: Gleitmittel, Saege. Alternative lokale Fertigung: Handels-Abzweig oder Verteilerdose mit zwei Rohreinfuehrungen.
+
+**Pruefung:** `check_lt_w39.py lr_t` 16/16 PASS: je DN ein Koerper, Lauf 2 a, Abgangshoehe a, Muffen-Aussen, Volumen gegen unabhaengiges CSG-Raster 1 mm (DN50 0,26 %, DN100 1,0 %: Raster-Rauschen bei duennen Waenden, Raster mit 1,5 mm liegt mit -1,0 % auf der anderen Seite; Toleranz 1,5 %), je 3 Port-Stirnflaechen. **Bilder:** `renders/components/leitungsteile/lt_leerrohr_t_dn50.png`, `lt_leerrohr_t_dn100.png`.
+
+**Offene Fragen:** (1) Handelsteil im Katalog offen. (2) Ob die Kabeltrasse ueberhaupt Abzweige braucht oder mit Zugdosen/Schaechten arbeitet, entscheidet S6; das T ist dann nur fuer Signalleitungen sinnvoll. (3) Gleich grosse Abzweige DN100/DN50 gemischt sind ein Reduzierstueck (Teil 7) plus T.

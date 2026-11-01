@@ -1375,6 +1375,136 @@
      "dn": "DN50"
     }
    ]
+  },
+  "lt_leerrohr_t_dn50": {
+   "teilenummer": "T70-LRT-50",
+   "komponente": "T70_LeerrohrT_DN50",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 50,
+   "aussen_d": 50.0,
+   "muffentiefe": 40.0,
+   "muffe_aussen": 56.0,
+   "arm": 68.0,
+   "kabel_hinweis": "Abzweig 90 Grad ohne Radius: Kabel (Mindestradius 15 x Kabel-d) laufen nur mit Zugdose im T durch, nicht als Kabelbogen",
+   "routing": "buried",
+   "herkunft": {
+    "Teilung a = t + Muffen-Aussen/2": "E wie lt_t_d* der Bibliothek",
+    "Muffe, AD, Wand": "E aus lt_leerrohr_dn* (W36 Teil 3, Katalognaeherung)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      -68.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    },
+    {
+     "name": "B",
+     "lage": [
+      68.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    },
+    {
+     "name": "C",
+     "lage": [
+      0.0,
+      0.0,
+      68.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    }
+   ]
+  },
+  "lt_leerrohr_t_dn100": {
+   "teilenummer": "T70-LRT-100",
+   "komponente": "T70_LeerrohrT_DN100",
+   "werkstoff": "PVC-U (Kabelschutzrohr)",
+   "farbe": "orange",
+   "dn": 100,
+   "aussen_d": 110.0,
+   "muffentiefe": 64.0,
+   "muffe_aussen": 123.0,
+   "arm": 125.5,
+   "kabel_hinweis": "Abzweig 90 Grad ohne Radius: Kabel (Mindestradius 15 x Kabel-d) laufen nur mit Zugdose im T durch, nicht als Kabelbogen",
+   "routing": "buried",
+   "herkunft": {
+    "Teilung a = t + Muffen-Aussen/2": "E wie lt_t_d* der Bibliothek",
+    "Muffe, AD, Wand": "E aus lt_leerrohr_dn* (W36 Teil 3, Katalognaeherung)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      -125.5,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    },
+    {
+     "name": "B",
+     "lage": [
+      125.5,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    },
+    {
+     "name": "C",
+     "lage": [
+      0.0,
+      0.0,
+      125.5
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    }
+   ]
   }
  }
 }

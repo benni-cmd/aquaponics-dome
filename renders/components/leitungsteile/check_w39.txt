@@ -147,4 +147,22 @@ PASS lt_w39: leerrohr-red Innen-D Zapfen = Leerrohr DN50 innen 46.4: Ist 1, Soll
 PASS lt_w39: lt_leerrohr_red_dn100_dn50 Port A (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
 PASS lt_w39: lt_leerrohr_red_dn100_dn50 Port B (Zapfen, DN50) Stirnflaeche an (0, 0, 130.0): Ist 1, Soll 1
 INFO leerrohr-red: Masse 348 g (PVC-U 1,4)
-== lt_w39: 136/136 PASS
+PASS lt_w39: leerrohr-T DN50 Koerperzahl: Ist 1, Soll 1
+PASS lt_w39: leerrohr-T DN50 Lauf = 2 a = 2 (t + Muffe/2) = 136: Ist 136, Soll 136 (+-0.05)
+PASS lt_w39: leerrohr-T DN50 Abgangshoehe = a = 68: Ist 68, Soll 68 (+-0.05)
+PASS lt_w39: leerrohr-T DN50 Aussen-D Muffe 56: Ist 56, Soll 56 (+-0.05)
+PASS lt_w39: leerrohr-T DN50 Volumen = CSG-Raster (1 mm, Raster-Rauschen bei duennen Waenden etwa 1 %): Ist 99556.2, Soll 99296 (+-1489.44)
+PASS lt_w39: lt_leerrohr_t_dn50 Port A (Muffe, DN50) Stirnflaeche an (-68.0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_leerrohr_t_dn50 Port B (Muffe, DN50) Stirnflaeche an (68.0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_leerrohr_t_dn50 Port C (Muffe, DN50) Stirnflaeche an (0, 0, 68.0): Ist 1, Soll 1
+INFO leerrohr-T DN50: Masse 0.14 kg (PVC-U 1,4), Abzweig scharf (kein Kabelradius)
+PASS lt_w39: leerrohr-T DN100 Koerperzahl: Ist 1, Soll 1
+PASS lt_w39: leerrohr-T DN100 Lauf = 2 a = 2 (t + Muffe/2) = 251: Ist 251, Soll 251 (+-0.05)
+PASS lt_w39: leerrohr-T DN100 Abgangshoehe = a = 125.5: Ist 125.5, Soll 125.5 (+-0.05)
+PASS lt_w39: leerrohr-T DN100 Aussen-D Muffe 123: Ist 123, Soll 123 (+-0.05)
+PASS lt_w39: leerrohr-T DN100 Volumen = CSG-Raster (1 mm, Raster-Rauschen bei duennen Waenden etwa 1 %): Ist 844137, Soll 852316 (+-12784.7)
+PASS lt_w39: lt_leerrohr_t_dn100 Port A (Muffe, DN100) Stirnflaeche an (-125.5, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_leerrohr_t_dn100 Port B (Muffe, DN100) Stirnflaeche an (125.5, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_leerrohr_t_dn100 Port C (Muffe, DN100) Stirnflaeche an (0, 0, 125.5): Ist 1, Soll 1
+INFO leerrohr-T DN100: Masse 1.18 kg (PVC-U 1,4), Abzweig scharf (kein Kabelradius)
+== lt_w39: 152/152 PASS

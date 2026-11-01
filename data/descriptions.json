@@ -740,6 +740,31 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_leerrohr_t_dn",
+      "titel": "Leerrohr-T DN50 und DN100",
+      "was": "Abzweig 90° für Leerrohre mit drei Steckmuffen; der Abzweig hat keinen Kabelradius, Kabel laufen nur mit einer Zugdose hindurch.",
+      "status": "gebaut, Prüfungen mit Volumen gegen unabhängiges Raster und Ports",
+      "ablauf": [
+        "Alle drei Rohr-Zapfen stecken in die Muffen.",
+        "Kabel nie durch den scharfen Abzweig ziehen: Zugdose setzen oder Bögen verwenden."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "DN50: Arm 68, Muffe 56 × 40",
+            "DN100: Arm 125.5, Muffe 123 × 64"
+          ]
+        }
+      ],
+      "masse": {
+        "Arm DN50": "68 mm",
+        "Arm DN100": "125.5 mm"
+      },
+      "grenzen": "Maße aus den Katalognäherungen von W36; Abzweigradius hart (siehe Blatt).",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

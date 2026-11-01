@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 spaet: Heber d75 verlegt und geprueft (PASS mit Auflagen), Werkstatt A2 (W39) laeuft. Neue Regel: eine Sitzung je Arbeitspaket, neues Thema = neue Sitzung. Fragen an dich stehen oben.",
+ "stand": "Stand 02.11.2026 nach Mitternacht: Werkstatt A und A2 fertig (alle Leitungsteile gebaut), Heber d75 verlegt und geprueft. Nichts laeuft. Weiter: Pruefer W36/W39, dann Werkstatt B (W37-1 bis 3) und Montage S3 bis S7. 5-Stunden-Fenster bis 03:20, Woche 80 Prozent bis 06.11. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -558,7 +558,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 7,
    "wer": "Werkstatt",
-   "notiz": "Teile gebaut 01.11. (Rohrschelle Vierkant, Leerrohr DN50/DN100 mit Bogen); offen bleiben Kabel-Sweep (S6) und Leerrohr-Zubehoer (L22). Zugeordnet: W36 (Rohrschelle, Leerrohr), Kabel-Sweep in M10 S6. Bibliotheksklemme ist eine Fussklemme, passt nicht an Vierkantbeine (Befestigung ohne Streben, Plan Regel 7). Leerrohre und Kabel-Sweep brauchen S6."
+   "notiz": "Teile gebaut 01.11. (Rohrschelle Vierkant, Leerrohr DN50/DN100 mit Bogen); offen bleiben Kabel-Sweep (S6) und Leerrohr-Zubehoer (L22). Zugeordnet: W36 (Rohrschelle, Leerrohr), Kabel-Sweep in M10 S6. Bibliotheksklemme ist eine Fussklemme, passt nicht an Vierkantbeine (Befestigung ohne Streben, Plan Regel 7). Leerrohre und Kabel-Sweep brauchen S6. Leerrohr-Zubehoer (Reduzierung, T, Kabeleinfuehrung) seit W39 vorhanden; offen bleibt der Kabel-Sweep in M10 S6."
   },
   {
    "id": "L08",
@@ -889,11 +889,11 @@
   {
    "id": "L22",
    "titel": "Fehlende Kleinteile fuer S3 und S6: Reduzierung d40/d20 oder Reduzier-T (14 Beete), PE-PVC-Verbinder d20, Schlauch ID16 kurz (76 Stueck), Stopfen/Kappe d20 und d50, Schlauchschelle ID16; Leerrohr: Reduzierstueck DN100/DN50, T, Kabeleinfuehrung",
-   "status": "luecke",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 22,
    "wer": "Werkstatt (W39)",
-   "notiz": "Zugeordnet: W39, dann M10 S3 (Beete, Rinnen) und S6 (Leerrohr). Quelle: W36 Teil 5 und Teile 3, docs/workshop-state.md."
+   "notiz": "Geschlossen 02.11. durch W39 (Teile gebaut, Pruefer steht aus). Zugeordnet: W39, dann M10 S3 (Beete, Rinnen) und S6 (Leerrohr). Quelle: W36 Teil 5 und Teile 3, docs/workshop-state.md."
   },
   {
    "id": "L23",
@@ -916,11 +916,11 @@
   {
    "id": "W39",
    "titel": "Werkstatt A2 (Leitungsteile-Kleinteile): Reduzierung d40/d20 oder Reduzier-T, PE-PVC-Verbinder d20, Schlauch ID16 kurz, Stopfen/Kappe d20 und d50, Schlauchschelle ID16, Leerrohr-Reduzierstueck, T, Kabeleinfuehrung",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.9,
    "wer": "Werkstatt (eine Sitzung)",
-   "notiz": "GESTARTET 01.11. spaet (Werkstatt A2, Sitzung werkstatt-w39). Blatt docs/jobs/W39-kleinteile.md vom Planer. Schliesst L22. Gleiche Bibliotheksdateien wie W36, deshalb nach M10-S2R und nicht parallel dazu. Braucht NETZ-R45 (Rinnen-Durchfluss L24). Je Teil Mini-Plan, Check, Blatt, Bild; Handelsteile bevorzugen (W43). Blatt erst beim Start (Aktualitaetspruefung)."
+   "notiz": "Erledigt 02.11. nach Mitternacht, alle 9 Teile einzeln gesichert und gepusht (Commits 4e41a35 bis 288c90e, 15 Dateien lt_*.sc): Reduzierung d40/d20 (48 mm statt Kette 142), Uebergang PE-PVC d20, Schlauch ID16 kurz, Kappen d20/d50, Schlauchschellen ID16/ID25, Rueckschlagventile d40/d25/d20, Leerrohr-Reduzierung DN100/DN50, Leerrohr-T DN50/DN100, Kabeleinfuehrung DN50/DN100. Selbstauskunft: check_lt_w39 152/152, check_leitungsteile 231/231. Pruefer steht aus (PRUEF-W36-W39). Masse sind Annahmen [A], Katalognachweis spaeter (N-BESCHAFFUNG)."
   },
   {
    "id": "SPECS-R45",
@@ -984,6 +984,15 @@
    "reihenfolge": 3.97,
    "wer": "Orchestrator (klein)",
    "notiz": "Heute liest das Skript den Durchmesser nicht aus data/leitungstrassen.json, die Zeile \"Ist\" rechnet mit d63; die 85/88 mm stammen aus einer Variantenzeile mit pauschalem Zusatzverlust 0,3 [A]. Umbau auf echte dn, T d75, Reduziermuffen und Bogen einzeln, danach neu rechnen und die Marge von K01 pruefen (Auflage A2). Vor M10-S7 erledigen, S7 braucht die Zahl."
+  },
+  {
+   "id": "PRUEF-W36-W39",
+   "titel": "Pruefsitzung (Buendel) fuer die Werkstatt-Teile W36 und W39: Verteiler, Schelle, Leerrohr, Schacht, d75, Kleinteile",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.9,
+   "wer": "Pruefer (frische Sitzung)",
+   "notiz": "Ein Pruefer fuer beide Werkstatt-Sitzungen (gleiche Bibliothek, gleiche Skripte): check_lt_w36.py, check_lt_w39.py, check_leitungsteile.py neu laufen lassen, Teile gegen ihre Blaetter, Stichproben der Masse und Ports, Bilder ansehen, Blatt-Pruefpunkte aus docs/jobs/W39-kleinteile.md. Befund nach docs/jobs/pruefung/W36-W39.md. Danach HEBER-SKRIPT und SPECS-R45 (ich), dann W37-1."
   }
  ]
 }

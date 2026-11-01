@@ -9,7 +9,8 @@ Zweck: Schwellen der Kontextregeln aus Daten statt aus Schaetzung nachschaerfen 
 | 01.11. | Montage M10-S2R | Montage | 589 | etwa 33 % | Formel | 75 -> 77 | Build 66, 21 Zuege |
 | 01.11. | Planer W37/W39 | Planer | 159 | etwa 14 % | Formel | 75 -> 77 | 4 Blaetter, 22 Zuege |
 | 01.11. | Pruefer M10-S2R | Pruefer | 102 | etwa 12 % | Formel | 77 -> 77 | PASS mit Auflagen, fand 2 zu optimistische Aussagen |
-| 01.11. | Werkstatt A2 (W39) | Werkstatt | 328 (laufend) | 21 % (214.584 Tokens) | gemessen | 77 -> 79 (mit Orchestrator) | laeuft noch |
+| 01.11. | Werkstatt A2 (W39) | Werkstatt | 557 (Ende) | 21 % bei 328 Nachrichten, 31 % bei etwa 460 (gemessen), Ende etwa 33 % | gemessen und Formel | 77 -> 80 (mit Orchestrator) | 9 Teilgruppen in 15 Dateien, rund 1 Stunde 40 Minuten |
+| 01.11./02.11. | Orchestrator (diese Sitzung) | Orchestrator | etwa 1.100 | 56 % (564.031 Tokens gemessen) | gemessen | 71 -> 80 | Wechsel an eine frische Orchestrator-Sitzung empfohlen (Regel D74 Nr. 7: ab etwa 50 %) |
 
 Konto am 01.11. spaet: 5-Stunden-Fenster von 4 % auf 75 %, Woche von 71 % auf 79 % in etwa fuenf Stunden mit sieben Sub-Sitzungen und dem Orchestrator.
 

@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10-PLAN laeuft (Aktualitaetspruefung ergab: Feinfilter fehlt im Modell); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10-Plan liegt, Feinfilter-Platz offen (E10), Option e wird nachgerechnet; Bens Entscheidungen offen (E10, Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -206,7 +206,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 9,
    "wer": "Montage",
-   "notiz": "Sitzung montage-leitungsplan (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/M10-leitungen.md mit Aktualitaetspruefung (c28e055). Wichtigster neuer Befund: Feinfilter (2 Stueck) steht noch nicht im Modell; Plan sucht zuerst Standorte. Nur Plan, kein Bau; Orchestrator liest gegen."
+   "notiz": "Plan liegt (Commit 53ea31c, docs/packages/m10-leitungen.md). Befund: Kein Feinfilter-Standort mit allseits 500 mm (kleinste Luecke 325 mm West, 181 mm Ost); D71 geht damit zurueck an Ben. Sitzung rechnet gerade Option e (ohne Absetzer, R44 Kandidat A) nach. Danach Gegenlesen und Bens Entscheidung E10 (Feinfilter-Option), dann erst Bau."
   },
   {
    "id": "M10-LEITUNGEN",
@@ -486,6 +486,15 @@
    "reihenfolge": 7,
    "wer": "Montage + Viewer-Sitzung",
    "notiz": "Ben 01.11. (W45, Stufe 2, nach der Skript-Stueckliste): Rechenkern mit Formeln je Bauteil (sofort, ohne CAD), getestet gegen die Modellzaehlung; CAD-Modell nur auf Knopfdruck neu bauen (Build mehrere Minuten); Seite wie Viewer/Roadmap."
+  },
+  {
+   "id": "E10",
+   "titel": "Feinfilter-Standort: Option waehlen (Bedienzone-Regel, Grube begehbar, Gaenge verbessern, D71 neu, ohne Absetzer)",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 10,
+   "wer": "Ben",
+   "notiz": "M10-Plan Abschnitt 2: Kein Standort fuer die 2 Feinfilter mit allseits 500 mm Gang; Optionen a bis d, e (ohne Absetzer) in Pruefung; Empfehlung des Plans: a (Bedienzone 630 x 500, Stirn/Rueck 150)."
   }
  ]
 }

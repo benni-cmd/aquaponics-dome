@@ -9,3 +9,4 @@ Alles andere ist "bei Bedarf", mit Zeilenbereich oder Suchbegriff aus dem Auftra
 - Zustand: `docs/workshop-state.md` (max. 8 Zeilen) nur beim Start; Regeln fuer Leeren/Wecken stehen im Prompt, nicht in Dateien.
 Aufbau jedes Blatts: Ziel in einem Satz · Eingaben (Datei, Zeilen) · Ergebnis (Dateien) · Pruefung · nicht anfassen · danach.
 Fehlt der Sitzung etwas, schreibt sie es als Mangel in `docs/session-notes/orchestrator.md`, statt zu suchen.
+Besonderheiten: Faellt einer Sitzung eine ungewoehnliche Loesung oder ein Vorteil auf, meldet sie in der Kurzmeldung eine Zeile "Besonderheit: ..."; der Orchestrator traegt sie in `docs/pitch-besonderheiten.md` ein (Wunsch W48).

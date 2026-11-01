@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 abends: R45 fertig (Schlammfass, Heber d75, Beet-Sumpf 500 l u. a.), Werkstatt A laeuft; E14 Heber ist jetzt faellig. Spaeter: sauberer Beschaffbarkeits-Nachweis (N-BESCHAFFUNG). Fragen an dich stehen oben.",
+ "stand": "Stand 01.11.2026 spaet: E14 entschieden (d75), Werkstatt A baut d75 nach Teil 5. Besonderheiten-Register fuer den Pitch angelegt. Offene Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -585,7 +585,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Orchestrator + Ben (Zwischencheck)",
-   "notiz": "Zugeordnet: R45, E14, Nachrechnung in M10 S7 und CHECK. Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen. R45 Teil 2: ohne Aenderung keine gedeckte Reserve; Empfehlung d75 durchgehend; Entscheidung E14 jetzt faellig."
+   "notiz": "Zugeordnet: R45, E14, Nachrechnung in M10 S7 und CHECK. Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen. R45 Teil 2: ohne Aenderung keine gedeckte Reserve; Empfehlung d75 durchgehend; Entscheidung E14 jetzt faellig. ENTSCHIEDEN 01.11.: d75; Schliessen mit M10-S2R und Nachrechnung gegen echte Laengen."
   },
   {
    "id": "L11",
@@ -706,12 +706,12 @@
   },
   {
    "id": "E14",
-   "titel": "Heber-Reserve: Rohre K01/K17 auf d75 umbauen (Empfehlung) oder Filtergrube 100 mm tiefer?",
-   "status": "entscheidung",
+   "titel": "Heber-Reserve: Rohre K01/K17 auf d75 umbauen (ENTSCHIEDEN 01.11. von Ben)",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Ben",
-   "notiz": "JETZT FAELLIG (R45 Abschnitt 2). Mit dem verlegten Stand (d63, 4 Boegen, 2 T je Linie) haengt die Reserve fast nur am Bogen-Verlustbeiwert, und der ist fuer verklebte PVC-Boegen nicht belegt: je nach Annahme 56 bis 66 mm, im ungünstigen Fall minus 22 bis minus 11 mm (Grenze 30 mm). Empfehlung: durchgehend d75 (Standardmass), Reserve dann 85 bis 127 mm, keine Hoehenaenderung. Folge: K01 und K17 muessen umgebaut werden, und die Bibliothek hat d75 noch nicht (Groessen d20 bis d110 ohne d75): erst Werkstatt (W38-D75), dann Montage (M10-S2R). Alternative: Filtergrube 100 mm tiefer (78 bis 164 mm), Eingriff in Filter-Stamm und Pumpen-Saugseite. Nicht empfohlen: Pumpe statt Heber oder unveraendert lassen. Blockiert: Umbau K01/K17 und alles, was darauf aufbaut (Luecke L10)."
+   "notiz": "Ben 01.11. abends: d75 durchgehend. Folge: W38-D75 (Bibliothek, Teil 6 der laufenden Werkstatt-A-Sitzung), danach M10-S2R (Umbau). Urspruengliche Vorlage: JETZT FAELLIG (R45 Abschnitt 2). Mit dem verlegten Stand (d63, 4 Boegen, 2 T je Linie) haengt die Reserve fast nur am Bogen-Verlustbeiwert, und der ist fuer verklebte PVC-Boegen nicht belegt: je nach Annahme 56 bis 66 mm, im ungünstigen Fall minus 22 bis minus 11 mm (Grenze 30 mm). Empfehlung: durchgehend d75 (Standardmass), Reserve dann 85 bis 127 mm, keine Hoehenaenderung. Folge: K01 und K17 muessen umgebaut werden, und die Bibliothek hat d75 noch nicht (Groessen d20 bis d110 ohne d75): erst Werkstatt (W38-D75), dann Montage (M10-S2R). Alternative: Filtergrube 100 mm tiefer (78 bis 164 mm), Eingriff in Filter-Stamm und Pumpen-Saugseite. Nicht empfohlen: Pumpe statt Heber oder unveraendert lassen. Blockiert: Umbau K01/K17 und alles, was darauf aufbaut (Luecke L10)."
   },
   {
    "id": "E15",
@@ -843,12 +843,12 @@
   },
   {
    "id": "W38-D75",
-   "titel": "Werkstatt: Rohrbibliothek um d75 erweitern (Rohr, Bogen 90/45, T, Kupplung, Reduziermuffen d75/d63 und d75/d50) (nur wenn E14 = d75)",
-   "status": "geplant",
+   "titel": "Werkstatt: Rohrbibliothek um d75 erweitern (Rohr, Bogen 90/45, T, Kupplung, Reduziermuffen d75/d63 und d75/d50)",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.2,
-   "wer": "Werkstatt A (Sitzung nach W36)",
-   "notiz": "Voraussetzung E14. Standardmass d75 x 3,6 (R45 Abschnitt 2). Gleiche Bibliotheksdateien wie W36, deshalb nach W36 und in derselben Sitzungsart. Je Teil Mini-Plan, Check, Blatt, Bild; Masse als [A] mit Katalogvermerk, Nachweis spaeter in N-BESCHAFFUNG."
+   "wer": "Werkstatt A (Teil 6 der laufenden Sitzung)",
+   "notiz": "FREIGEGEBEN 01.11. (E14 = d75). Als Teil 6 im Blatt docs/jobs/W36-verteiler-d50.md; die laufende Sitzung baut es nach Teil 5 (Nachricht eingereiht). Masse als [A] mit Vermerk Katalog offen. "
   },
   {
    "id": "NETZ-R45",
@@ -861,12 +861,12 @@
   },
   {
    "id": "M10-S2R",
-   "titel": "M10 S2R: Heber-Umbau K01/K17 auf d75 (nur wenn E14 = d75)",
+   "titel": "M10 S2R: Heber-Umbau K01/K17 auf d75",
    "status": "geplant",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.8,
    "wer": "Montage",
-   "notiz": "Braucht E14 und W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
+   "notiz": "Entschieden (E14 = d75). Braucht W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
   },
   {
    "id": "N-BESCHAFFUNG",
@@ -876,6 +876,15 @@
    "reihenfolge": 6,
    "wer": "Fachrecherche + Werkstatt (mehrere Sitzungen nach Teileklassen)",
    "notiz": "Wunsch W47 (Ben 01.11.): ein sauberer Durchgang ueber alle Bauteile und Komponenten; Ausloeser war die Stichprobe L21. Je Teil ein Nachweis: (a) Kaufteil: Hersteller, Typ oder Artikel, Datenblatt/Katalogseite, echte Masse; (b) Kombination aus Kaufteilen: Stueckliste und Verbindungsart; (c) Eigenbau: Rohmaterial als Kaufteil, Werkzeug, Arbeitsschritte, warum realistisch. Nicht belegbar = Designaenderung. Umfang: Schrauben, Muttern, Scheiben, Klemmen, Schellen, Verteiler, Fittings, Rohre, Armaturen, Pumpen, Geblaese, Messtechnik, Elektrik, Tische, Rinnen, Netztoepfe, Beetbehaelter, Tanks, Becken, Filter, Profile, Streben, Knoten, Haut, Tuer, Plane und Folie, Schaltschrank. Zuschnitt nach Teileklassen, etwa sechs Pakete: Normteile; Rohrbibliothek mit Verteilern und Armaturen; Pumpen, Geblaese, Messtechnik, Elektrik; grosse Teile (Tanks, Becken, Filter, Beete); Struktur (Profile, Knoten, Haut, Tuer); Plane. Ergebnis ins Teile-Datenmodell (N-KATALOG), Feld \"bezug\" je Teil, Auswertung per Skript (W45), Liste \"nicht beschaffbar\". Nach N-KATALOG, vor Stueckliste und Bauanleitung, weil der Nachweis Design aendern kann. D69: Beschaffbarkeit ja, Preise und Standort nein. Zwei Quellen je Eintrag: Katalog und Datenblatt, wo es sie gibt."
+  },
+  {
+   "id": "PITCH-REGISTER",
+   "titel": "Besonderheiten-Register fuer den Pitch pflegen (docs/pitch-besonderheiten.md)",
+   "status": "laeuft",
+   "phase": "dauerhaft",
+   "reihenfolge": 4,
+   "wer": "Orchestrator",
+   "notiz": "Wunsch W48 (Ben 01.11.): Besonderheiten des Projekts und Modells immer festhalten, damit man beides pitchen kann. Sitzungen melden \"Besonderheit: ...\" in der Kurzmeldung, ich trage ein, mit ehrlichem Belegstand und dem, was man NICHT behaupten darf. Sieben Eintraege angelegt (Schwerkraft-Kreislauf, Heber, Glockensiphon, zwei Linien mit Reserve, Skript-Teileliste, Schlamm-Wurmkompost, Dunstwasser-Idee)."
   }
  ]
 }

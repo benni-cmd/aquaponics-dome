@@ -2528,5 +2528,65 @@
   "note": "W36 Teil 6",
   "commit": "48c4743",
   "source": "renders/components/leitungsteile/lt_t_d75.png"
+ },
+ {
+  "file": "20261101-231908_montage_leitungen_round-66.png",
+  "sha": "dae33d1213aa1e31",
+  "time": "2026-11-01 23:19:08",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2R Heber d75, Runde 66 (Draufsicht und Grabenschnitt z=165)",
+  "commit": "cdff1da",
+  "source": "renders/round-66.png"
+ },
+ {
+  "file": "20261101-231954_montage_leitungen_section-66.png",
+  "sha": "afda54e8dbe0921a",
+  "time": "2026-11-01 23:19:54",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2R Heber d75, Runde 66 (Draufsicht und Grabenschnitt z=165)",
+  "commit": "cdff1da",
+  "source": "renders/section-66.png"
+ },
+ {
+  "file": "20261101-232123_montage_leitungen_leitungen-s2r-66-heber1.png",
+  "sha": "8d441aaf44b09bd5",
+  "time": "2026-11-01 23:21:23",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2R Heber d75, Runde 66 (Draufsicht und Grabenschnitt z=165)",
+  "commit": "cdff1da",
+  "source": "renders/leitungen-s2r-66-heber1.png"
+ },
+ {
+  "file": "20261101-232209_montage_leitungen_leitungen-s2r-66-heber2.png",
+  "sha": "d0c61c4d6a50c882",
+  "time": "2026-11-01 23:22:09",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2R Heber d75, Runde 66 (Draufsicht und Grabenschnitt z=165)",
+  "commit": "cdff1da",
+  "source": "renders/leitungen-s2r-66-heber2.png"
+ },
+ {
+  "file": "20261101-232357_montage_leitungen_leitungen-s2r-66-graben-schnitt.png",
+  "sha": "c619671fcf966772",
+  "time": "2026-11-01 23:23:57",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2R Heber d75, Runde 66 (Draufsicht und Grabenschnitt z=165)",
+  "commit": "cdff1da",
+  "source": "renders/leitungen-s2r-66-graben-schnitt.png"
+ },
+ {
+  "file": "20261101-232446_montage_leitungen_leitungen-s2r-66-graben-schnitt-l2.png",
+  "sha": "d813dd1b338ec6cf",
+  "time": "2026-11-01 23:24:46",
+  "role": "montage",
+  "subject": "leitungen",
+  "note": "M10-S2R Heber d75, Runde 66 (Draufsicht und Grabenschnitt z=165)",
+  "commit": "cdff1da",
+  "source": "renders/leitungen-s2r-66-graben-schnitt-l2.png"
  }
 ]

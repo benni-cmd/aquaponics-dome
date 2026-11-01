@@ -75,3 +75,7 @@
 - Befund 3 Heber: `scripts/heber_rechnung.py` K17 Verlust 114 bis 161 mm, **Reserve 34 bis 81 mm** gegen 195 mm (T 0,2 bis 0,4; mit den T-Werten aus S2b 39 bis 86 mm), also nicht unter 30 mm. Dasselbe Skript gibt fuer K01 27 bis 74 mm (konservativ) bzw. 31 bis 78 mm: K01 beruehrt die 30-mm-Grenze im schlechtesten Fall.
 - Befund 4 Bau: der Erdflaechen-Schnitt (`erde_fn`) scheiterte an 3 Grabenschnitten (Boolean ohne Ergebnis: deckungsgleiche Seiten-/Bodenflaechen aneinandergereihter Graeben). Behoben in `leitungen.graben` nur fuer Linie 2 (Teile derselben Kante zusammengefasst, je Kante +0,4 mm Breite, 1 mm je Ende, koaxiale Steigschaechte einmal); Linie 1 unveraendert.
 - NAECHSTER SCHRITT: Werkstatt-Auftrag Verteiler d50, danach S3.
+
+## M10-S2R (1.11., Runde 66) — Heber K01/K17 auf d75
+- Fertig: Trassendaten (Reduziermuffe d75/d63 an Pool- und Filterstutzen, T d75 an K05/K21 und K56/K57, K21 Laeufe gedreht), Build 66, Graben Linie 1 und 2 ohne Boolean-Fehler, check_leitungen 0 Verstoesse (dn-Abweichung ueber `dn_abweichung` dokumentiert), check_walkways PASS, r45_heber Reserve ungünstig K01 85 / K17 88 mm. Einzelheiten und Befunde: `docs/packages/m10-leitungen.md` Abschnitt 13.
+- Offen: Netzliste K01/K17 dn 75 (Orchestrator); voller check_latte und check_walkways_voll nicht gelaufen; Muffentiefe d75 [A] (N-BESCHAFFUNG).

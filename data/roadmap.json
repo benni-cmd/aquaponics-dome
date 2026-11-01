@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 abends: PAUSE. Hauptkreislauf beider Linien steht; Verteiler d50 und Werkstatt-Buendel vorbereitet, nichts laeuft; 19 Luecken und E11 (Abnahme) stehen fuer Ben bereit",
+ "stand": "Stand 01.11.2026 abends: PAUSE, nichts laeuft. Der Plan zum Schliessen der 19 Luecken steht in drei Wellen und wartet auf deine Freigabe (E11). Oben stehen alle Fragen und Handlungen, die nur du uebernehmen kannst.",
  "schritte": [
   {
    "id": "W33",
@@ -209,15 +209,6 @@
    "notiz": "Plan Commit 53ea31c + 2e f0a0267 (docs/packages/m10-leitungen.md), vom Orchestrator gegengelesen. Kein Feinfilter-Standort mit 500 mm allseits, auch nicht ohne Absetzer (Paare nur im Tuergang). Mit gelockerter Bedienzone-Regel gibt es Orte (Ost A + West B, Tuergang unveraendert). Bau erst nach Bens Entscheidung E10; Netz-Etiketten Linie 1/2 werden vom Orchestrator bestaetigt (nur Namen)."
   },
   {
-   "id": "M10-LEITUNGEN",
-   "titel": "M10 Leitungen und Kabel inkl. Signalkabel der Messstellen",
-   "status": "geplant",
-   "phase": "vor_zwischencheck",
-   "reihenfolge": 12,
-   "wer": "Montage",
-   "notiz": "PAUSE auf Bens Wunsch (01.11. abends). Teilweise erledigt: S0, S1, S1b, S2a, S2b, S2c (Hauptkreislauf beider Linien bis Verteiler-Eingang, 20 von 55 Kanten, 199 Instanzen, 0 Verstoesse). Stand und Details: docs/packages/m10-abnahme.md und Plan Abschnitt 11. Weiter: W36, S3, Werkstatt-Buendel, S4 bis S7. 19 Luecken L01 bis L19 unten."
-  },
-  {
    "id": "PUFFER-SPECS",
    "titel": "puffer_klein als Standardszenario in system_specs.py",
    "status": "erledigt",
@@ -231,25 +222,25 @@
    "titel": "Viewer: Ebene Messstellen, Plane-Sichtbarkeit, neue Kennzahlen",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 13,
+   "reihenfolge": 10,
    "wer": "Viewer",
-   "notiz": "Wartet auf W35 und die Übersicht mit 346 kg und Puffer 0,16 m³."
+   "notiz": "Wartet auf W35 und die Übersicht mit 346 kg und Puffer 0,16 m³. Schliesst L18 (Viewer-Export 212 MB, Ziel unter 40 MB) mit."
   },
   {
    "id": "CHECK",
    "titel": "EIN check_latte mit allem, Draufsicht und Seitenansicht",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 14,
+   "reihenfolge": 11,
    "wer": "Montage + Orchestrator",
-   "notiz": "Letzter Schritt vor der Pause; heute läuft check_latte seit Plane, Tür und Ringverschiebung nicht mehr."
+   "notiz": "Letzter Schritt vor der Pause; heute läuft check_latte seit Plane, Tür und Ringverschiebung nicht mehr. Schliesst L19 (Koerpernamen, Klassen), prueft L10 und L12 nach."
   },
   {
    "id": "PAUSE",
    "titel": "Zwischencheck mit Ben",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 15,
+   "reihenfolge": 12,
    "wer": "Ben + Orchestrator",
    "notiz": "Ego-Blick durch den Dom, Querstrebe Z 650 prüfen, Bens Entscheidungen einholen."
   },
@@ -348,34 +339,34 @@
    "titel": "Fischmenge: 346 kg akzeptieren oder 450-500 kg verlangen?",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 1,
+   "reihenfolge": 6,
    "wer": "Ben",
-   "notiz": "Dein Wunsch war 450-500 kg; R36 ergibt bei Weg 1 nur 346 kg (308-385). Mehr Fisch braucht mehr Pflanzflaeche (mehr Rinnen/Weg 2b)."
+   "notiz": "Dein Wunsch war 450-500 kg; R36 ergibt bei Weg 1 nur 346 kg (308-385). Mehr Fisch braucht mehr Pflanzflaeche (mehr Rinnen/Weg 2b). Blockiert nichts im Bau, aber Docs und Auslegung rechnen mit 346 kg; spaetestens zum Zwischencheck klaeren."
   },
   {
    "id": "E2",
    "titel": "Puffer klein im Dom (0,16 m³) bestätigen",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 2,
+   "reihenfolge": 4,
    "wer": "Ben",
-   "notiz": "Technikvorbau entfällt (D66); Frischwasser: Aktivkohle oder Zisterne bleibt offen."
+   "notiz": "Technikvorbau entfällt (D66); Frischwasser: Aktivkohle oder Zisterne bleibt offen. Kurz bestaetigen; nichts blockiert, das Modell steht schon so."
   },
   {
    "id": "E3",
    "titel": "Drittbecken 0,4 m³ (Ø 0,8 m) bestätigen",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 3,
+   "reihenfolge": 5,
    "wer": "Ben",
-   "notiz": "Als Quarantäne gedacht; ist in W34 schon gebaut."
+   "notiz": "Als Quarantäne gedacht; ist in W34 schon gebaut. Kurz bestaetigen; nichts blockiert."
   },
   {
    "id": "E4",
    "titel": "Hauptfolie Folitec Folisol clear AF 200 um bestaetigen (R42); Konfektion ab Werk anfragen",
    "status": "entscheidung",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 4,
+   "reihenfolge": 12,
    "wer": "Ben",
    "notiz": "Standort und Beschaffungsregion sind laut D69 egal; nur die Folienwahl bestaetigen. Haendleranfrage erst beim Bauplan."
   },
@@ -384,16 +375,16 @@
    "titel": "Strebenkonzept V1 oder V2c; Verbindungsstück Kugel oder Laschenknoten",
    "status": "entscheidung",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 5,
+   "reihenfolge": 11,
    "wer": "Ben",
-   "notiz": "Laschenknoten erst nach R41 entscheidbar. R41 (8948f77): Variante moeglich, aber Lasche mind. 10 mm; vor Entscheidung beim Chemnitzer Forscher Laschendicke, Schraubengroesse, Rohrmass und Last erfragen (DEINE HANDLUNG)."
+   "notiz": "Laschenknoten erst nach R41 entscheidbar. R41 (8948f77): Variante moeglich, aber Lasche mind. 10 mm; vor Entscheidung beim Chemnitzer Forscher Laschendicke, Schraubengroesse, Rohrmass und Last erfragen (DEINE HANDLUNG). (Frage an den Forscher: E16)"
   },
   {
    "id": "E6",
    "titel": "Weg 2b für Fruchtgemüse in den Beeten",
    "status": "entscheidung",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 6,
+   "reihenfolge": 13,
    "wer": "Ben",
    "notiz": "Nur falls gewünscht."
   },
@@ -402,9 +393,10 @@
    "titel": "Mausblick (Pointer Lock) im echten Browser testen",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 7,
+   "reihenfolge": 9,
    "wer": "Ben",
-   "notiz": "Handlung statt Entscheidung: beim Zwischencheck im Ego-Blick ausprobieren."
+   "notiz": "Handlung statt Entscheidung: beim Zwischencheck im Ego-Blick ausprobieren.",
+   "art": "handlung"
   },
   {
    "id": "R43",
@@ -498,12 +490,12 @@
   },
   {
    "id": "W36",
-   "titel": "Werkstatt: Verteiler d50 fuer die zwei Linien (Voraussetzung fuer M10 S3)",
+   "titel": "Werkstatt A (Leitungsteile): Verteiler d50, Rohrschelle Vierkant, Leerrohr DN50/DN100 mit Bogen, Kugelhahn-Schacht, Pruefung Tropfrohr und Rinnen-Schlauch",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 10,
-   "wer": "Werkstatt",
-   "notiz": "VORBEREITET, nicht gebaut (Ben 01.11.: nur vorbereiten und festhalten): Blatt docs/jobs/W36-verteiler-d50.md (Luecke L02). Sammelrohr d50 mit Abgaengen d40, d32, d50, d20. Blockiert S3. Startet nach Bens Durchsicht und Freigabe, mit Aktualitaetspruefung."
+   "reihenfolge": 3,
+   "wer": "Werkstatt (eine Sitzung)",
+   "notiz": "VORBEREITET, nicht gebaut. Eine Sitzung, weil alle Teile dieselben Bibliotheksdateien schreiben (docs/parts/leitungsteile.md, data/components/leitungsteile.json, scripts/workshop/leitung.py, check_leitungsteile.py); zwei Sitzungen wuerden sich ueberschreiben. Reihenfolge: Verteiler d50 (Blatt docs/jobs/W36-verteiler-d50.md, bereit), Rohrschelle, Leerrohr mit Bogen, Schacht mit Deckel, zuletzt nur Pruefung, ob die Bibliothek fuer Tropfrohr und Rinnen-Schlauch reicht. Je Teil ein Commit; bei vollem Fenster frisch weiter ueber docs/workshop-state.md. Der Kabel-Sweep bleibt in S6. Schliesst L02, L07 (Teile), L16, L17. Je weiteres Teil eigenes Blatt erst beim Start (Aktualitaetspruefung)."
   },
   {
    "id": "L01",
@@ -512,7 +504,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 1,
    "wer": "Werkstatt + Orchestrator",
-   "notiz": "Die Absetzer haben Schlammablass (d40, Kugelhahn), aber nichts nimmt den Schlamm auf: K07 und K23 enden im Nichts. Teil und Standort entscheiden (Behaelter/Kompost, R30 Art 6). Betrifft S5 oder S4."
+   "notiz": "Zugeordnet: E12, dann W37, dann M10 S5. Die Absetzer haben Schlammablass (d40, Kugelhahn), aber nichts nimmt den Schlamm auf: K07 und K23 enden im Nichts. Teil und Standort entscheiden (Behaelter/Kompost, R30 Art 6). Betrifft S5 oder S4."
   },
   {
    "id": "L02",
@@ -521,7 +513,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Werkstatt (W36)",
-   "notiz": "Blatt docs/jobs/W36-verteiler-d50.md. Blockiert S3 (Verteiler, Beete, NFT: K11 bis K13, K27 bis K29, Messkreis K35)."
+   "notiz": "Zugeordnet: W36, dann M10 S3. Blatt docs/jobs/W36-verteiler-d50.md. Blockiert S3 (Verteiler, Beete, NFT: K11 bis K13, K27 bis K29, Messkreis K35)."
   },
   {
    "id": "L03",
@@ -530,7 +522,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3,
    "wer": "Werkstatt + Orchestrator",
-   "notiz": "docs/parts/ibc_beet.md hat Port d25, Netzkanten K14/K30 rechnen d40; bei d25 sind 36 l/min Spitze 1,6 m/s (ueber Grenze 1,5). Klaeren vor S3/S4 (Bauteil aendern oder Netz auf d25/Mehrfachabgang)."
+   "notiz": "Zugeordnet: R45 (Empfehlung), dann M10 S3. docs/parts/ibc_beet.md hat Port d25, Netzkanten K14/K30 rechnen d40; bei d25 sind 36 l/min Spitze 1,6 m/s (ueber Grenze 1,5). Klaeren vor S3/S4 (Bauteil aendern oder Netz auf d25/Mehrfachabgang)."
   },
   {
    "id": "L04",
@@ -539,7 +531,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Werkstatt",
-   "notiz": "Beetablauf liegt 600 mm unter Pool-Spiegel (F3): eingegrabener Sumpf, Schwimmerschalter, begehbarer Deckel, Pumpe ca. 36 W. Neue Verbraucher (2 x 36 W) sind in system_specs.py nicht eingerechnet. Blockiert S4."
+   "notiz": "Zugeordnet: R45, dann W37, dann M10 S4. Beetablauf liegt 600 mm unter Pool-Spiegel (F3): eingegrabener Sumpf, Schwimmerschalter, begehbarer Deckel, Pumpe ca. 36 W. Neue Verbraucher (2 x 36 W) sind in system_specs.py nicht eingerechnet. Blockiert S4."
   },
   {
    "id": "L05",
@@ -548,7 +540,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Werkstatt",
-   "notiz": "Frischwasser (K39 bis K43, K52): Handelsteil-Platzhalter, Fabrikat offen; Wasserversorger-Frage (Chlor/Chloramin, DEINE HANDLUNG) entscheidet die Auslegung. Blockiert S5."
+   "notiz": "Zugeordnet: R45 (E15 nur wenn Standort feststeht), dann W37, dann M10 S5. Frischwasser (K39 bis K43, K52): Handelsteil-Platzhalter, Fabrikat offen; Wasserversorger-Frage (Chlor/Chloramin, DEINE HANDLUNG) entscheidet die Auslegung. Blockiert S5."
   },
   {
    "id": "L06",
@@ -557,7 +549,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 6,
    "wer": "Werkstatt",
-   "notiz": "Luftkanten K44 bis K51 (7 Kanten, d40/d25/d20) haben keine Quelle und keine Enden. Luftbedarf Pool 130 l/min (F4) ist Annahme. Blockiert S5."
+   "notiz": "Zugeordnet: R45, dann W37, dann M10 S5. Luftkanten K44 bis K51 (7 Kanten, d40/d25/d20) haben keine Quelle und keine Enden. Luftbedarf Pool 130 l/min (F4) ist Annahme. Blockiert S5."
   },
   {
    "id": "L07",
@@ -566,7 +558,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 7,
    "wer": "Werkstatt",
-   "notiz": "Bibliotheksklemme ist eine Fussklemme, passt nicht an Vierkantbeine (Befestigung ohne Streben, Plan Regel 7). Leerrohre und Kabel-Sweep brauchen S6."
+   "notiz": "Zugeordnet: W36 (Rohrschelle, Leerrohr), Kabel-Sweep in M10 S6. Bibliotheksklemme ist eine Fussklemme, passt nicht an Vierkantbeine (Befestigung ohne Streben, Plan Regel 7). Leerrohre und Kabel-Sweep brauchen S6."
   },
   {
    "id": "L08",
@@ -575,7 +567,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 8,
    "wer": "Orchestrator + Ben",
-   "notiz": "Komponentendatei vorhanden, nicht gesetzt (Flaeche 0 seit D62/D63). Plan nimmt [A] Az -85 / r 5750 aussen am Fundamentring neben der Tuer, nur fuer die Kabelrechnung. Standort ist offen; Alarm-Zentrale haengt dran."
+   "notiz": "Zugeordnet: E13, dann W37, dann M10 S6. Komponentendatei vorhanden, nicht gesetzt (Flaeche 0 seit D62/D63). Plan nimmt [A] Az -85 / r 5750 aussen am Fundamentring neben der Tuer, nur fuer die Kabelrechnung. Standort ist offen; Alarm-Zentrale haengt dran."
   },
   {
    "id": "L09",
@@ -584,7 +576,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 9,
    "wer": "Montage + Werkstatt",
-   "notiz": "becken_dritt_klein.md: Stutzen nicht modelliert; Zweitbecken entsteht in gen_dome (pool_fn). Kanten K33, K34, K41 bis K43, K49, K51 haengen daran. Blockiert S5."
+   "notiz": "Zugeordnet: W37 (Drittbecken), M10 S5 (Zweitbecken in gen_dome). becken_dritt_klein.md: Stutzen nicht modelliert; Zweitbecken entsteht in gen_dome (pool_fn). Kanten K33, K34, K41 bis K43, K49, K51 haengen daran. Blockiert S5."
   },
   {
    "id": "L10",
@@ -593,7 +585,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Orchestrator + Ben (Zwischencheck)",
-   "notiz": "Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen."
+   "notiz": "Zugeordnet: R45, E14, Nachrechnung in M10 S7 und CHECK. Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen."
   },
   {
    "id": "L11",
@@ -602,7 +594,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 11,
    "wer": "Montage (S4)",
-   "notiz": "Halbringe d110 auf der Wandkrone (Z 660 bis 720) und Sektorsammler d63 sind nur geplant. Kreuzungen von Gaengen nur unterflur oder ueber 2100 mm; Schlauch-Biegeradius 5 x AD ist in engen Tisch-Fugen (d20: 100 mm) nicht immer einzuhalten."
+   "notiz": "Zugeordnet: M10 S4 prueft. Halbringe d110 auf der Wandkrone (Z 660 bis 720) und Sektorsammler d63 sind nur geplant. Kreuzungen von Gaengen nur unterflur oder ueber 2100 mm; Schlauch-Biegeradius 5 x AD ist in engen Tisch-Fugen (d20: 100 mm) nicht immer einzuhalten."
   },
   {
    "id": "L12",
@@ -611,7 +603,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 12,
    "wer": "Montage",
-   "notiz": "Bounding-Box-Pruefung der Rohre gegen Plattformen (K08/K09/K04 >= 60 mm); Grabenschnitt-Boolean scheiterte bei Linie 2 und wurde nur dort behoben (Linie 1 koennte beim naechsten Neubau brechen); K57 hat nur 31 mm Luft zur Filterkastenunterkante."
+   "notiz": "Zugeordnet: M10 S3 und S4 beobachten, CHECK. Bounding-Box-Pruefung der Rohre gegen Plattformen (K08/K09/K04 >= 60 mm); Grabenschnitt-Boolean scheiterte bei Linie 2 und wurde nur dort behoben (Linie 1 koennte beim naechsten Neubau brechen); K57 hat nur 31 mm Luft zur Filterkastenunterkante."
   },
   {
    "id": "L13",
@@ -620,7 +612,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 13,
    "wer": "Orchestrator",
-   "notiz": "D72 verlangt Stirn/Rueck mind. 150 mm; die Gangkarte zeigt zwischen Filter West B und Pumpe_gross:4 etwa 100 mm auf 2,2 m (Auslass-Seite, Raster +-25 bis 50 mm). Im Knie-Schnitt 2 rote und 10 gelbe Engstellen mehr durch die Filter. Beim Bau der Rohre beobachten."
+   "notiz": "Zugeordnet: M10 S3 und S4 beobachten. D72 verlangt Stirn/Rueck mind. 150 mm; die Gangkarte zeigt zwischen Filter West B und Pumpe_gross:4 etwa 100 mm auf 2,2 m (Auslass-Seite, Raster +-25 bis 50 mm). Im Knie-Schnitt 2 rote und 10 gelbe Engstellen mehr durch die Filter. Beim Bau der Rohre beobachten."
   },
   {
    "id": "L14",
@@ -629,7 +621,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 14,
    "wer": "Orchestrator",
-   "notiz": "docs/leitungsnetz-umhaengen.md liegt (E2); data/leitungsnetz.json (Version 2) ist unveraendert: absetzer_1/2 und pumpe_klein_1..4 muessen auf Tank_klein:2/:1 und Pumpe_klein:3,4/:1,2 zeigen, sonst falsche Bauteile in Pruefung und Stueckliste."
+   "notiz": "Zugeordnet: NETZ-ETIKETT. docs/leitungsnetz-umhaengen.md liegt (E2); data/leitungsnetz.json (Version 2) ist unveraendert: absetzer_1/2 und pumpe_klein_1..4 muessen auf Tank_klein:2/:1 und Pumpe_klein:3,4/:1,2 zeigen, sonst falsche Bauteile in Pruefung und Stueckliste."
   },
   {
    "id": "L15",
@@ -638,7 +630,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 15,
    "wer": "Montage (S2 bis S6)",
-   "notiz": "Ca. 40 Messstellen (H_INLINE, H_HAHN, H_DRUCK am Rohr, Tank-Auslass, Fass/Dosierkonsole, Schaltschrank, Kuppel) und 7 Signal-Trunks, 230-V-Leerrohre; Kuppel-Trunk (MS59 bis MS63) erst nach der Statik. Liste mit IDs in docs/loop-state.md (M-SETZEN)."
+   "notiz": "Zugeordnet: M10 S6. Ca. 40 Messstellen (H_INLINE, H_HAHN, H_DRUCK am Rohr, Tank-Auslass, Fass/Dosierkonsole, Schaltschrank, Kuppel) und 7 Signal-Trunks, 230-V-Leerrohre; Kuppel-Trunk (MS59 bis MS63) erst nach der Statik. Liste mit IDs in docs/loop-state.md (M-SETZEN)."
   },
   {
    "id": "L16",
@@ -647,7 +639,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 16,
    "wer": "Montage + Werkstatt",
-   "notiz": "S3 braucht Tropfrohr d20 je Beet und Schlauch ID16/AD20 je Rinne; Zulaufverteiler am Tisch ist Teil der Tisch-Klasse. Vor S3 klaeren, ob die Bibliothek reicht."
+   "notiz": "Zugeordnet: W36 prueft, dann M10 S3. S3 braucht Tropfrohr d20 je Beet und Schlauch ID16/AD20 je Rinne; Zulaufverteiler am Tisch ist Teil der Tisch-Klasse. Vor S3 klaeren, ob die Bibliothek reicht."
   },
   {
    "id": "L17",
@@ -656,7 +648,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 17,
    "wer": "Montage (S6)",
-   "notiz": "Notbypass-Absperrung liegt unterflur; Wartungszugang (Schacht, Deckel) ist nicht modelliert."
+   "notiz": "Zugeordnet: W36 (Teil), M10 S6 (setzen). Notbypass-Absperrung liegt unterflur; Wartungszugang (Schacht, Deckel) ist nicht modelliert."
   },
   {
    "id": "L18",
@@ -665,7 +657,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 18,
    "wer": "Viewer-Sitzung",
-   "notiz": "Seit Runde 60 gemeldet; neue Leitungs-Instanzen (199) erhoehen die Last. Instanz-Export pruefen."
+   "notiz": "Zugeordnet: V-MESS. Seit Runde 60 gemeldet; neue Leitungs-Instanzen (199) erhoehen die Last. Instanz-Export pruefen."
   },
   {
    "id": "L19",
@@ -674,25 +666,144 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 19,
    "wer": "Montage (Schritt CHECK)",
-   "notiz": "Skript ist umgestellt und kompiliert, lief aber noch nie; erst der grosse Lauf nach M10 zeigt, ob Plane/Figuren/Messstellen/Leitungen richtig zugeordnet sind (Leitungen als eigene Klasse ausnehmen oder einbeziehen)."
+   "notiz": "Zugeordnet: CHECK. Skript ist umgestellt und kompiliert, lief aber noch nie; erst der grosse Lauf nach M10 zeigt, ob Plane/Figuren/Messstellen/Leitungen richtig zugeordnet sind (Leitungen als eigene Klasse ausnehmen oder einbeziehen)."
   },
   {
    "id": "E11",
-   "titel": "Verrohrung zur Abnahme: Stand und Luecken ansehen (Schlammablass, Heber, Beet-Ablauf u. a.)",
+   "titel": "Reihenfolge zum Schliessen der Luecken freigeben und die Verrohrung zur Abnahme ansehen",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 11,
+   "reihenfolge": 1,
    "wer": "Ben",
-   "notiz": "Ben schaut sich das spaeter im Detail an. Unterlage: docs/packages/m10-abnahme.md (Stand, Bilder, sechs Punkte mit Optionen: Schlammablass L01, Heber-Reserve L10, Beet-Ablauf d25/d40 L03, Schaltschrank-Standort L08, Filter-Nische West B L13, Beet-Sumpf L04). Danach Freigabe der Reihenfolge W36 -> S3 -> Werkstatt-Buendel -> S4 bis S7."
+   "notiz": "Empfehlung: in drei Wellen freigeben. Welle 1: Netzliste umhaengen (ich), R45 Hydraulik-Auslegung (nur lesen und rechnen, darf parallel laufen) und W36 Werkstatt A (Leitungsteile). Welle 2: W37 Werkstatt B (Anlagenteile) nach E12, E13 und R45. Welle 3: M10 S3 bis S7, jeder Schritt mit seinen Luecken als Pruefauftrag. Nur eine schreibende Sitzung gleichzeitig. Zum Ansehen: docs/packages/m10-abnahme.md (Stand, Bilder, sechs Punkte). Blockiert: alles Weitere, bis du freigibst."
   },
   {
    "id": "W37",
-   "titel": "Werkstatt-Buendel Fehlteile: Beet-Sumpf+Pumpe, Aktivkohle+Schwimmerventil, Geblaese+Luftverteiler, Rohrschelle Vierkant, Leerrohr, Kabel-Bauteil, Schaltschrank, Becken-Stutzen, Schlammsammler",
+   "titel": "Werkstatt B (Anlagenteile): Beet-Sumpf mit Pumpe, Aktivkohle-Gehaeuse mit Schwimmerventil, Geblaese mit Luftverteiler, Schaltschrank, Becken-Stutzen, Schlammsammler",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 11,
-   "wer": "Werkstatt (mehrere Sitzungen)",
-   "notiz": "Luecken L01, L04 bis L09. VORBEREITET, nicht gestartet: je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Schlammsammler (L01) erst nach Bens Entscheidung zum Schlammkonzept (E11). Beet-Sumpf nach Klaerung Beet-Ablauf-DN (L03)."
+   "reihenfolge": 4,
+   "wer": "Werkstatt (eine Sitzung, zwei bei vollem Fenster)",
+   "notiz": "VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung)."
+  },
+  {
+   "id": "E12",
+   "titel": "Schlammkonzept festlegen: wohin mit dem Schlamm der zwei Absetzer?",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2,
+   "wer": "Ben",
+   "notiz": "Kann ich nicht entscheiden, es ist dein Betriebskonzept. Optionen: (a) abgedeckter, beluefteter Kompostbehaelter oder Wurmkompost AUSSERHALB des Kreislaufs [Empfehlung der Recherche R30], (b) Schlamm in ein Beet oder Kompost leiten (so steht es in der Netzliste), (c) Reaktor (R30 raet ab). Dazu der Standort: im Dom (Platz knapp) oder aussen mit Leitung durch Fundamentring und Plane (Frost). Menge etwa 22 bis 28 l je Tag bei 346 kg [E, nicht nachgemessen]. Blockiert: Schlammsammler in W37 und M10 S5 (Luecke L01)."
+  },
+  {
+   "id": "E13",
+   "titel": "Schaltschrank-Standort bestaetigen oder nennen",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3,
+   "wer": "Ben",
+   "notiz": "Meine Annahme: aussen am Fundamentring neben der Tuer (Az -85, r 5750 mm). Haengt dran: Kabelwege, Leerrohre, Alarm-Zentrale. Empfehlung: bestaetigen, wenn aussen fuer dich passt; sonst einen Ort nennen. Blockiert: Schaltschrank in W37 und Kabel in M10 S6 (Luecke L08)."
+  },
+  {
+   "id": "E14",
+   "titel": "Heber-Reserve an den Seitenablaeufen: erst meine Zahlen abwarten, dann Weg waehlen",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Ben (nach R45)",
+   "notiz": "Noch nicht faellig: zuerst liefert R45 die Nachrechnung. Heute nur ein Ueberschlag: Reserve 27 bis 81 mm gegen 195 mm Druckhoehe, Grenze 30 mm. Danach waehlst du: groesseres Rohr, kuerzere Wege, weniger Boegen oder Pumpe statt Heber. Blockiert jetzt nichts; ungeklaert bleibt es ein Risiko bis CHECK (Luecke L10)."
+  },
+  {
+   "id": "E15",
+   "titel": "Wasserversorger fragen: Chlor oder Chloramin im Leitungswasser?",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 8,
+   "wer": "Ben (nur wenn Standort feststeht)",
+   "notiz": "Kann nur du: ich erreiche keinen Versorger. Empfehlung: nicht darauf warten. Der Standort ist laut D69 offen, deshalb legt R45 den Aktivkohle-Filter auf den ungünstigen Fall (Chloramin) aus und nennt die Zisterne als Alternative. Stelle die Frage, sobald ein Standort feststeht. Luecke L05.",
+   "art": "handlung"
+  },
+  {
+   "id": "E16",
+   "titel": "Chemnitzer Forscher fragen: Laschendicke, Schraubengroesse, Rohrmass und Last",
+   "status": "entscheidung",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 10,
+   "wer": "Ben",
+   "notiz": "Kann nur du: ich schreibe den Forscher nicht an. Empfehlung: Fragen vor dem Zwischencheck schicken; R41 sagt, die Lasche braucht mindestens 10 mm. Blockiert: E5 und N-STATIK (nach dem Zwischencheck).",
+   "art": "handlung"
+  },
+  {
+   "id": "M10-S0-S2C",
+   "titel": "M10 S0 bis S2c: Hauptkreislauf beider Linien bis Verteiler-Eingang",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 9,
+   "wer": "Montage",
+   "notiz": "20 von 55 Kanten, 53,6 m Rohr, 199 Instanzen, 0 Verstoesse (check_leitungen), Laufwege A 700 / B 600 / Wandluft 110. Stand und Bilder: docs/packages/m10-abnahme.md."
+  },
+  {
+   "id": "NETZ-ETIKETT",
+   "titel": "Netzliste auf die Modell-Etiketten umhaengen (Luecke L14)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 1,
+   "wer": "Orchestrator",
+   "notiz": "Klein: nur Namen in data/leitungsnetz.json laut docs/leitungsnetz-umhaengen.md (absetzer_1/2 und pumpe_klein_1 bis 4). Danach check_leitungen und Stueckliste neu laufen lassen. Ich erledige es zuerst, weil es klein ist und alle spaeteren Pruefungen die richtigen Bauteile sehen muessen. Wartet auf deine Freigabe (E11)."
+  },
+  {
+   "id": "R45",
+   "titel": "Hydraulik und Auslegung fuer die Luecken: Heber-Reserve, Beet-Ablauf, Beet-Sumpf, Aktivkohle, Luftbedarf",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2,
+   "wer": "Fachrecherche (frische Sitzung)",
+   "notiz": "Eine Sitzung, nur lesen und rechnen: schreibt nur ihre eigene Recherche-Datei und ein Rechenskript, aendert kein Modell, darf deshalb parallel zu W36 laufen. Fuenf Fragen: (1) Heber-Reserve L10 mit zwei Quellen nachrechnen, Varianten Rohr, Weg, Boegen; (2) Beet-Ablauf d25 gegen d40 L03 mit Empfehlung (ich entscheide danach, du siehst es in der Abnahme); (3) Beet-Sumpf L04: Volumen, Pumpe, Schwimmerschalter, Leistung fuer system_specs; (4) Aktivkohle L05 fuer Chlor und Chloramin: Kontaktzeit, Gehaeusegroesse; (5) Luftbedarf L06: Annahme Pool 130 l/min pruefen, Gebaese, Verteiler. Ergebnis: Auslegungsblatt mit Massen fuer W37 und Vorlage fuer E14. Zwei unabhaengige Quellen je Zahl, sonst offen markieren."
+  },
+  {
+   "id": "M10-S3",
+   "titel": "M10 S3: Verteilung auf Beete und NFT je Linie (K11 bis K13, K27 bis K29, Messkreis K35)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 5,
+   "wer": "Montage",
+   "notiz": "Braucht: NETZ-ETIKETT, W36 (Verteiler d50, Tropfrohr-Pruefung L16), Beet-Ablauf-DN aus R45 (L03). Beobachtet: L12 (Grabenschnitt Linie 1 beim Neubau), L13 (Nische West B). Pruefung wie S2, Gangkreuzungen einzeln gelistet."
+  },
+  {
+   "id": "M10-S4",
+   "titel": "M10 S4: Ruecklauf: Halbringe d110, Sektorsammler d63, Beet-Sumpf, Zweitbecken-Teilstrom (K14 bis K16, K30 bis K34)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 6,
+   "wer": "Montage",
+   "notiz": "Braucht: W37 (Beet-Sumpf, L04) und L03. S4a (Halbringe und Sektorsammler) braucht nichts und darf frueher laufen. Prueft: L11 (Einlaeufe am Pool, Gangkreuzungen, Schlauchradius), L12 (Plattformen und Tankstaende mindestens 60 mm, K57 nur 31 mm Luft), L13. Gefaelle mindestens 1 % aus den Koordinaten."
+  },
+  {
+   "id": "M10-S5",
+   "titel": "M10 S5: Drittbecken, Zweitbecken, Belueftung, Frischwasser, Puffer-Messkreis, Dosierleitungen, Schlammablass (K35 bis K55, K07/K23)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Montage",
+   "notiz": "Braucht: W37 komplett (Aktivkohle, Geblaese, Becken-Stutzen, Schlammsammler) und E12. Direkt ohne Werkstatt: K37 Puffer-Messzelle zum Pool, K38 Dosierschlauch. Schliesst im Modell L01, L05, L06, L09; Zweitbecken-Stutzen in gen_dome."
+  },
+  {
+   "id": "M10-S6",
+   "titel": "M10 S6: Kabel, Leerrohre, 230 V, Trunks, Schaltschrank, Messstellen am Rohr",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 8,
+   "wer": "Montage",
+   "notiz": "Braucht: W36 (Rohrschelle, Leerrohr, Schacht), W37 (Schaltschrank), E13. Schliesst L07 (Kabel-Sweep), L08, L15 (ohne Kuppel-Trunk, der wartet auf die Statik), L17 (Schacht und Deckel setzen). Pruefung: check_leitungen, Trunk-Laengen gegen Plan Abschnitt 8."
+  },
+  {
+   "id": "M10-S7",
+   "titel": "M10 S7: Abschluss Verrohrung: Gesamtpruefung, Bilder, Nachrechnung Heber",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 9,
+   "wer": "Montage",
+   "notiz": "check_walkways, volle check_walkways_voll (7,5 min), Kollision, Draufsicht und Seitenansicht ins Bildarchiv, Heber-Nachrechnung L10 gegen die echten Rohrlaengen, Rohr-Stueckliste per Skript, docs/model-description.md und integration-board. Danach Bericht an dich."
   }
  ]
 }

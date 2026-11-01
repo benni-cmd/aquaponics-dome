@@ -81,8 +81,8 @@ def laden():
     return daten.get("stand", ""), schritte
 
 
-def marke(status):
-    return '<span class="marke m-%s">%s</span>' % (status, LABEL[status])
+def marke(status, art=None):
+    return '<span class="marke m-%s">%s</span>' % (status, "Handlung" if art == "handlung" else LABEL[status])
 
 
 def item(s, nr=None):
@@ -94,7 +94,7 @@ def item(s, nr=None):
         '<li class="%s"><span class="nr">%s</span>'
         '<span class="titel">%s%s%s</span>'
         '<span class="meta">%s · %s</span></li>'
-        % (klassen, nummer, kopf, escape(s["titel"]), "" if ist_pause else marke(s["status"]),
+        % (klassen, nummer, kopf, escape(s["titel"]), "" if ist_pause else marke(s["status"], s.get("art")),
            escape(s["wer"]), escape(s["notiz"]))
     )
 
@@ -145,6 +145,11 @@ def bauen():
 <main>
 <h1>Kuppel Roadmap</h1>
 <p class="stand">Stand: %(stand)s · Seite gebaut am %(gebaut)s</p>
+
+<h2>Von dir gebraucht</h2>
+<p class="balkentext">Alles, was nur du entscheiden oder tun kannst. Oben steht, was Arbeit blockiert. Jeder Eintrag nennt meine Empfehlung und was daran hängt.</p>
+%(fragen)s
+
 <div class="zaehler">
 <span>%(n_ok)d erledigt</span><span>%(n_run)d läuft</span><span>%(n_plan)d geplant</span><span>%(n_ask)d Entscheidungen</span><span>%(n_luecke)d Lücken</span>
 </div>
@@ -159,9 +164,6 @@ def bauen():
 
 <h2>Nach dem Zwischencheck</h2>
 %(nach)s
-
-<h2>Deine Entscheidungen</h2>
-%(fragen)s
 
 <h2>Offene Lücken und Risiken (nicht verlieren)</h2>
 <p class="balkentext">Fehlende Teile, ungeklärte Befunde und Risiken aus den Bauschritten. Sie bleiben hier stehen, bis sie geschlossen oder bewusst verworfen sind.</p>

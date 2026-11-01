@@ -149,3 +149,15 @@ Geprueft gegen: `docs/jobs/M10-leitungen.md`, `data/leitungsnetz.json` v2, `docs
 **Kann direkt passieren (nur Bibliotheksteile):** S4a Ruecklauf-Halbringe d110 und Sektorsammler d63 (Rohr, Bogen, T), Pool-Einlaeufe; K37 Puffer-Messzelle -> Pool; Leitungen K38 (Dosierschlauch). Vorher pruefen (Aktualitaetspruefung): Beetanschluss d25/d40.
 **Muss vorher passieren:** W36 Verteiler d50 (dann S3: K11 bis K13, K27 bis K29, K35); Klaerung Beet-Ablauf-DN (L03) und Tropfrohr/Tischzulauf (L16) vor den Beet-Anschluessen; Beet-Sumpf mit Pumpe (L04) vor dem Beet-Rueckfluss; Aktivkohle/Schwimmerventil (L05), Geblaese/Luftverteiler (L06), Zweit-/Drittbecken-Stutzen (L09), Schlammsammler (L01) vor S5; Rohrschelle Vierkant, Leerrohr, Kabel-Sweep, Schaltschrank (L07, L08) vor S6.
 **Alle Luecken** stehen mit Nummer L01 bis L19 in `data/roadmap.json` und auf der Roadmap-Seite unter "Offene Luecken und Risiken".
+
+## 12. Luecken-Zuordnung und Sitzungszuschnitt (Orchestrator, 01.11.2026 abends, wartet auf Bens Freigabe E11)
+Zuschnitt nach gemeinsamen Dateien, nicht nach Teilen: Teile, die dieselben Bibliotheksdateien schreiben, gehoeren in eine Sitzung (zwei Schreiber wuerden sich ueberschreiben); eine Sitzung je Mini-Teil wuerde jedes Mal Konvention und Werkzeug neu einlesen. Lesen und Rechnen darf parallel laufen, schreiben nur eine Sitzung gleichzeitig.
+| Welle | Sitzung | Schliesst | Voraussetzung |
+|---|---|---|---|
+| 1 | NETZ-ETIKETT (Orchestrator, klein) | L14 | Freigabe |
+| 1 | R45 Hydraulik und Auslegung (Fachrecherche, nur lesen und rechnen, parallel erlaubt) | Zahlen fuer L03, L04, L05, L06, L10 | Freigabe |
+| 1 | W36 Werkstatt A: Leitungsteile (Verteiler d50, Rohrschelle, Leerrohr, Schacht, Tropfrohr-Pruefung) | L02, L07 (Teile), L16, L17 | Freigabe |
+| 2 | W37 Werkstatt B: Anlagenteile (Beet-Sumpf, Aktivkohle, Geblaese, Schaltschrank, Becken-Stutzen, Schlammsammler) | L01, L04, L05, L06, L08, L09 | R45, E12, E13 |
+| 3 | M10 S3, S4, S5, S6, S7 (je eine Montage-Sitzung) | L11, L12, L13, L15, L10 (Nachrechnung) | siehe Roadmap je Schritt |
+| danach | V-MESS (L18), CHECK (L19) | L18, L19 | M10 fertig |
+Nicht vorab schliessbar, weil sie erst am fertigen Rohr pruefbar sind: L10 (Nachrechnung), L11, L12, L13, L15, L19; sie stehen als Pruefauftrag im jeweiligen Schritt. Die Fragen, die nur Ben beantworten kann (E11 bis E16), stehen oben auf der Roadmap-Seite.

@@ -2298,5 +2298,45 @@
   "note": "W35 Halter und Sonden-Platzhalter mit Figur 1,80 m",
   "commit": "eb5cee3",
   "source": "renders/components/messstellen/messstellen-03-sonden.png"
+ },
+ {
+  "file": "20261101-053154_montage_laufwege_round-60.png",
+  "sha": "f15bcf8a4453ff1a",
+  "time": "2026-11-01 05:31:54",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "M-SETZEN: Draufsicht, Laufwegkarte Knie/Kopf, Runde 60",
+  "commit": "12a68ca",
+  "source": "renders/round-60.png"
+ },
+ {
+  "file": "20261101-053343_montage_laufwege_walkway-map-knie.png",
+  "sha": "7929174551b30094",
+  "time": "2026-11-01 05:33:43",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "M-SETZEN: Draufsicht, Laufwegkarte Knie/Kopf, Runde 60",
+  "commit": "12a68ca",
+  "source": "renders/walkway-map-knie.png"
+ },
+ {
+  "file": "20261101-053343_montage_laufwege_walkway-map-kopf.png",
+  "sha": "35fa7d08783800c6",
+  "time": "2026-11-01 05:33:43",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "M-SETZEN: Draufsicht, Laufwegkarte Knie/Kopf, Runde 60",
+  "commit": "12a68ca",
+  "source": "renders/walkway-map-kopf.png"
+ },
+ {
+  "file": "20261101-053517_montage_laufwege_top-60.png",
+  "sha": "d3162339fb7cea5f",
+  "time": "2026-11-01 05:35:17",
+  "role": "montage",
+  "subject": "laufwege",
+  "note": "M-SETZEN: Draufsicht, Laufwegkarte Knie/Kopf, Runde 60",
+  "commit": "12a68ca",
+  "source": "renders/top-60.png"
  }
 ]

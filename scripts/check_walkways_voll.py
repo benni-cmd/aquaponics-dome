@@ -44,8 +44,8 @@ for k, m in mv.items():
     else: l = None
     if l:
         pg, _ = poly(m, (-l / 2, -w / 2, 0, l / 2, w / 2, 0)); obst.append((k, pg, FZ, FZ + 1500)); continue
-    if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station"):
-        pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station"}.get(cls, cls.lower())))
+    if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station", "Puffer_Klein"):
+        pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station", "Puffer_Klein": "puffer_klein"}.get(cls, cls.lower())))
         if max(math.hypot(*p) for p in pg) < AP + 200: obst.append((k, pg, za, zb))   # Vorbau ausserhalb der Wand (D62) liegt nicht im Innenraum
 pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))), LAY["pool2"]["d"] / 2 + 60),
          ("Drittbecken", (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))), P["pool3_d"] / 2 + 60)]

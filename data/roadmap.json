@@ -276,7 +276,7 @@
    "titel": "B4 Katalog und B1 Teile-Datenmodell",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 3,
+   "reihenfolge": 4,
    "wer": "Werkstatt",
    "notiz": "Grundlage für Detailansicht und Stückliste."
   },
@@ -285,7 +285,7 @@
    "titel": "B2/B3 Detailansicht",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 4,
+   "reihenfolge": 5,
    "wer": "Viewer",
    "notiz": "Einzelteile im Viewer ansehen."
   },
@@ -294,7 +294,7 @@
    "titel": "B5 Stückliste und Meterware",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 5,
+   "reihenfolge": 6,
    "wer": "Werkstatt",
    "notiz": "Reale standardisierte Teile mit Mengen."
   },
@@ -303,7 +303,7 @@
    "titel": "R31 Materialien, R32 Becken, R33 Beete",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 6,
+   "reihenfolge": 7,
    "wer": "Fachrecherche",
    "notiz": "Recherchen zum Abschluss des Teilekatalogs."
   },
@@ -312,7 +312,7 @@
    "titel": "B10 Bauanleitung",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 7,
+   "reihenfolge": 8,
    "wer": "Orchestrator",
    "notiz": "Baut auf Katalog, Detailansicht und Stückliste auf."
   },
@@ -321,7 +321,7 @@
    "titel": "Farben, Material, Renders und Pflanzenmodelle",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 8,
+   "reihenfolge": 9,
    "wer": "Werkstatt",
    "notiz": "Optische Feinarbeit nach der Technik. ComfyUI-Weg laut R43 (docs/research/R43-comfyui-nutzung.md): V1 Skript photoreal.py + Kamera-Tabelle + Protokoll, V2 Tiefe/saubere Kanten (Download nach Bens Freigabe), V3 Farb-ID, V4 Foto-Latte."
   },
@@ -330,7 +330,7 @@
    "titel": "Notstrom und Alarm konkretisieren",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 9,
+   "reihenfolge": 10,
    "wer": "Fachrecherche + Werkstatt",
    "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39."
   },
@@ -339,7 +339,7 @@
    "titel": "Süßkartoffel-Licht belegen, NFT-Wuchsfläche messen",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 10,
+   "reihenfolge": 11,
    "wer": "Fachrecherche",
    "notiz": "Entscheidet 49,6 gegen 35,1 m² und damit etwa ±80 kg Fisch."
   },
@@ -450,6 +450,15 @@
    "reihenfolge": 9,
    "wer": "Ben",
    "notiz": "Montage (M-SETZEN): Puffer-Optimum 630 mm nur mit Drittbecken auf der D62-Lage; mit beiden gemeinsam am besten 235 mm. Aktuell Puffer an Bedienseite 700 x 650 frei, Drittbecken r 4970/az -30. Varianten stehen in docs/loop-state.md (M-SETZEN)."
+  },
+  {
+   "id": "N-FILTER",
+   "titel": "Filter erneut pruefen (Wiederholung R44 am fertigen Modell)",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 3,
+   "wer": "Fachrecherche (frisch) + Orchestrator",
+   "notiz": "Nach Statik, vor Katalog und Stueckliste: R44 mit dem Stand wiederholen, den es heute nicht gibt: Leitungsplan M10 (echte Stroeme, Siebbedarf im Hauptstrom, ein Biofilter fuer zwei Linien), entschiedene Fischmenge (E1: 346 kg oder 450-500 kg aendert die Last), gewaehlte Filter-Variante (E8), Plane und Heizlast, Volltexte der noch fehlenden Quellen (Timmons/Ebeling, Lennard). Danach filter-konzept.md und Teileliste nachziehen. Beete-Nitrifikation bleibt eine Betriebsmessung, im Modell nicht klaerbar."
   }
  ]
 }

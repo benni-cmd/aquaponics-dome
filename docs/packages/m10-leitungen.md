@@ -161,3 +161,11 @@ Zuschnitt nach gemeinsamen Dateien, nicht nach Teilen: Teile, die dieselben Bibl
 | 3 | M10 S3, S4, S5, S6, S7 (je eine Montage-Sitzung) | L11, L12, L13, L15, L10 (Nachrechnung) | siehe Roadmap je Schritt |
 | danach | V-MESS (L18), CHECK (L19) | L18, L19 | M10 fertig |
 Nicht vorab schliessbar, weil sie erst am fertigen Rohr pruefbar sind: L10 (Nachrechnung), L11, L12, L13, L15, L19; sie stehen als Pruefauftrag im jeweiligen Schritt. Die Fragen, die nur Ben beantworten kann (E11 bis E16), stehen oben auf der Roadmap-Seite.
+
+## 13. M10-S2R Heber K01/K17 auf d75 (Montage, 01.11.2026 spaet; Blatt `docs/jobs/M10-S2R-heber-d75.md`)
+**Problem:** K01/K17 sind mit d63 verlegt (Runde 65); R45 Abschnitt 2: Reserve im ungünstigen Fall -22/-14 mm, Grenze 30 mm. **Intent:** Ben hat E14 = durchgehend d75 entschieden. **Goal:** K01/K17 (je Linie `K01`, `K01-m`, `K01-b`) in d75, Achshoehen Z 740 / 150 / 720 unveraendert, Reserve >= 85 mm im ungünstigen Fall, alle Pruefungen gruen, Runde 66.
+**Mini-Plan (je Schritt ein Pfad-Commit):**
+1. `scripts/trassen_linie.py`: `pool_filter` mit Rohr d75; je Ende Reduziermuffe d75/d63 auf dem d63-Stutzen (kleine Seite B steckt auf dem Stutzen, grosse Seite A nach aussen), danach Rohrstueck 2 t und Bogen d75 (Kreuzungspunkt k = 134 mm hinter Ebene A); Achsen-Z unveraendert, die Senkrechten rutschen waagerecht nach aussen. T4/T12 (Absetzer-Zulauf) und T5/T13 (Notbypass) als T d75 (`leitungen.t_stueck` rechnet Rohrstueck + Reduziermuffe d75/d50 bzw. d75/d63 selbst); Kugelhahn K56/K57 sitzt unter dem verlaengerten Abgang (86,4 + 87,5 mm statt 73,6 mm), Tiefleitung faellt um denselben Betrag (Luft zum Filterkasten wird groesser). `data/leitungstrassen.json` neu erzeugen (Linie 1, dann Linie 2) und gegen den Altstand vergleichen: nur K01/K17-Teile, T4/T5/T12/T13, K05/K21-Enden, Bypass duerfen sich aendern.
+2. Build `scripts/build.sh 5 66`: Platzierung, Graben (`erde_fn`, Formstuecke 84,75 mm; Boolean Linie 1 und 2 gleich behandeln und melden).
+3. Pruefung: `check_leitungen.py` 0 Verstoesse, `check_walkways.py` PASS, `python -X utf8 scripts/r45_heber.py` (Reserve >= 85 mm im ungünstigen Fall), Bild per `archive_render.py --role montage` (Draufsicht, Schnitt durch den Graben).
+**Stand:** Schritt 1 offen.

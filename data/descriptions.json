@@ -665,6 +665,33 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_kabeleinfuehrung_dn",
+      "titel": "Kabeleinführung DN50 und DN100 (Schaltschrank)",
+      "was": "Verbindet das unterirdische Leerrohr mit dem Boden des Schaltschranks: unten die Muffe für das Leerrohr, oben ein Flansch mit Gewindehals, Dichtung und Gegenmutter, der durch den Boden des Schranks geführt wird.",
+      "status": "gebaut, Prüfungen mit Interferenz 0 gegen ein Boden-Blech",
+      "ablauf": [
+        "Das Leerrohr steckt von unten in die Muffe.",
+        "Der Hals geht durch das Loch im Schrankboden; die Dichtung liegt unter dem Boden, die Gegenmutter oben.",
+        "Die Kabel laufen durch das Leerrohr in den Schrank; Abzweige nur mit Zugdose."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "DN50: Muffe 56 × 40, Hals 63, Flansch 93",
+            "DN100: Muffe 123 × 64, Hals 130, Flansch 160",
+            "Boden des Schranks 3 mm"
+          ]
+        }
+      ],
+      "masse": {
+        "Höhe DN50": "64 mm",
+        "Höhe DN100": "88 mm"
+      },
+      "grenzen": "Bauform und Maße angenommen, kein Katalog gelesen; der Standort des Schaltschranks ist offen (Entscheidung E13).",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

@@ -132,7 +132,35 @@ def check_rsv(ck):
         port_checks(ck, fname, ["Rueckschlagventil"])
         print(f"INFO rsv d{d}: Masse {ev['total']['mass_g']:.0f} g (PVC-U 1,4)")
 
-CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose), ("kappe", check_kappe), ("rsv", check_rsv)]
+def check_kabel(ck):
+    for dn in W.KAB_SIZES:
+        fname = f"lt_kabeleinfuehrung_dn{dn}"; g = W.kab_geom(dn); k = W.KAB; t = g["t"]
+        ev = sc.evaluate(path_of(fname)); bb = {x["name"]: x for x in ev["bodies"]}
+        ck.eq(f"kabel DN{dn} Koerperzahl (Koerper, Dichtung, Gegenmutter)", ev["body_count"], 3)
+        mn, mx = sc.bbox_all(ev)
+        ck.eq(f"kabel DN{dn} Hoehe = Muffe {t:g} + Kragen {k['kragen_dicke']:g} + Dichtung + Boden + Mutter + Ueberstand = {g['z_top']:g}", mx[2] - mn[2], g["z_top"], 0.05)
+        ck.eq(f"kabel DN{dn} Kragen-Aussen-D", bb["Koerper"]["bbox"]["max"][0] - bb["Koerper"]["bbox"]["min"][0], g["kragen"], 0.05)
+        exp = PI4 * (g["od_m"] ** 2 * t + g["kragen"] ** 2 * k["kragen_dicke"] + g["hals"] ** 2 * (g["z_top"] - g["z_k1"]) - g["d"] ** 2 * t - g["wi"] ** 2 * (g["z_top"] - t))
+        ck.eq(f"kabel DN{dn} Volumen Koerper", bb["Koerper"]["volume_mm3"], exp, exp * 0.002)
+        exp = PI4 * (g["dichtung_aussen"] ** 2 - g["hals"] ** 2) * k["dichtung"]
+        ck.eq(f"kabel DN{dn} Volumen Dichtung", bb["Dichtung"]["volume_mm3"], exp, exp * 0.002)
+        exp = PI4 * (g["mutter_aussen"] ** 2 - g["hals"] ** 2) * k["mutter"]
+        ck.eq(f"kabel DN{dn} Volumen Gegenmutter", bb["Gegenmutter"]["volume_mm3"], exp, exp * 0.002)
+        ck.eq(f"kabel DN{dn} Kabeldurchgang frei {g['wi']:g} (Leerrohr-Innen-D)", 1 if any(abs(f["cylinder"]["radius"] - g["wi"] / 2) < 0.01 for f in sc.faces(path_of(fname), "Koerper") if f.get("cylinder")) else 0, 1)
+        inner_cyl(ck, fname, "Koerper", g["d"] / 2, "Steckmuffe fuer Leerrohr")
+        ck.eq(f"kabel DN{dn} Muffe passt zum Leerrohr (Aussen {g['od_m']:g}, Tiefe {t:g} wie lt_leerrohr_dn{dn})", 1 if W.W36.LR[dn]["od_m"] == g["od_m"] and W.W36.LR[dn]["t"] == t else 0, 1)
+        ck.eq(f"kabel DN{dn} Gewindeueberstand ueber der Mutter = {k['ueberstand']:g}", g["z_top"] - g["z_m1"], k["ueberstand"], 0.001)
+        port_checks(ck, fname, ["Koerper", "Dichtung"])
+        extra = [{"command": "solid.box", "params": {"length": g["kragen"] + 80, "width": g["kragen"] + 80, "height": k["boden"], "center": [0, 0, g["z_d1"] + k["boden"] / 2], "operation": "new", "name": "T_Boden", "body_name": "Test_Boden"}},
+                 {"command": "solid.cylinder", "params": {"diameter": g["hals"], "height": k["boden"] + 2, "base": [0, 0, g["z_d1"] - 1], "operation": "cut", "targets": ["Test_Boden"], "name": "T_Boden_Loch"}},
+                 {"command": "solid.cylinder", "params": {"diameter": g["d"], "height": 60 + t, "base": [0, 0, -60], "operation": "new", "name": "T_Leerrohr", "body_name": "Test_Leerrohr"}}]
+        bad, res = interference(path_of(fname), extra)
+        ck.eq(f"kabel DN{dn} Interferenz 0 (Koerper, Dichtung, Gegenmutter, Schrankboden {k['boden']:g} mm mit Loch {g['hals']:g}, eingestecktes Leerrohr AD{g['d']:g} bis z = {t:g}; geprueft {res.get('checked', '?')} Koerper)", len(bad), 0)
+        for i in bad:
+            print("   Ueberlappung:", i.get("a"), i.get("b"), i.get("volume_mm3"))
+        print(f"INFO kabel DN{dn}: Masse {ev['total']['mass_g']:.0f} g (PP 0,91, EPDM 1,1), Hoehe {g['z_top']:g}")
+
+CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose), ("kappe", check_kappe), ("rsv", check_rsv), ("kabel", check_kabel)]
 
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))

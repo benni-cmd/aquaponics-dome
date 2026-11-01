@@ -581,3 +581,42 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Montage (L4):** Pfeil beachten (Durchfluss A nach B), Klebemuffen wie der Kugelhahn; bei Luftleitungen Ventil hinter dem Kompressor/Verteiler. Werkzeug: Saege, Entgrater, Kleber. Alternative lokale Fertigung: Handels-Rueckschlagventil (Kugel/Klappe, PVC-U, Klebemuffe) oder fuer Luft ein Membran-Rueckschlagventil.
 
 **Pruefung:** `check_lt_w39.py rsv` 30/30 PASS: je Groesse Koerper, Baulaenge, Laenge = Kugelhahn-Laenge, Gehaeuse-D, Volumen (0,01 %), Muffen- und Durchgangs-Zylinder, Durchflussrichtung der Ports, 2 Port-Stirnflaechen. **Bilder** (Schnitt XZ): `renders/components/leitungsteile/lt_rueckschlagventil_d40.png`, `_d25.png`, `_d20.png`. **Offene Fragen:** Handelsteil, Oeffnungsdruck, Innenteile (Katalog offen); Einbaulage senkrecht abwaerts ist ausgeschlossen, die Montage prueft das an den Sumpf-Leitungen K58/K59.
+
+## Kabeleinfuehrung DN50 und DN100 `lt_kabeleinfuehrung_dn50`, `lt_kabeleinfuehrung_dn100` (T70-KE-50, T70-KE-100)
+
+**Mini-Plan.** Problem: Das Leerrohr (W36 Teil 3) endet am Schaltschrank ohne Einfuehrung (W36-Luecke "Kabeleinfuehrung/Endverschluss"); W37-3 (Schaltschrank, `schaltschrank.sc`) braucht das Teil. Intent: Handelsteil "Kabeleinfuehrung/Wanddurchfuehrung mit Dichtung" statt Eigenbau; Standort des Schranks bleibt offen (Ben, E13), hier nur das Teil. Goal: zwei Dateien mit Port A Steckmuffe fuer das Leerrohr (Masse wie `lt_leerrohr_dn*`) und Port B Flansch-Aufnahme im Boden des Schranks, Dichtung und Gegenmutter modelliert, Check gruen, Interferenz 0 gegen ein Bodenblech 3 mm. Bau: drei Koerper: Koerper (Muffe, Kragen, Gewindehals, Kabeldurchgang = Leerrohr-Innen-D), Dichtung EPDM (unter dem Boden), Gegenmutter (ueber dem Boden); Hals-Aussen = Muffen-Aussen + 7, Kragen = Hals + 30, Gewindelaenge 18 (Dichtung 3, Boden 3, Mutter 8, Ueberstand 4) [A].
+
+**Funktion:** fuehrt das Leerrohr (W36 Teil 3) von unten an den Boden des Schaltschranks (`schaltschrank.sc`, W37-3) und durch das Bodenblech in den Schrank. Der Hals geht durch ein Loch im Boden (Loch = Hals-Aussen), die Dichtung liegt unter dem Boden, die Gegenmutter ueber dem Boden. Das Bodenblech selbst gehoert zum Schrank und ist nicht Teil der Komponente (Luecke von 3 mm zwischen Dichtung und Gegenmutter im Bild). Standort des Schranks bleibt offen (E13).
+
+| Merkmal | DN50 | DN100 |
+|---|---|---|
+| Leerrohr-Muffe (Aussen / Tiefe / Rohr-AD) | 56 / 40 / 50 | 123 / 64 / 110 |
+| Kabeldurchgang (Leerrohr-Innen-D) | 46,4 | 103,6 |
+| Kragen (Aussen / Dicke) | 93 / 6 | 160 / 6 |
+| Gewindehals (Aussen / Gewindelaenge) | 63 / 18 | 130 / 18 |
+| Dichtung EPDM (Aussen / Innen / Dicke) | 83 / 63 / 3 | 150 / 130 / 3 |
+| Gegenmutter (Aussen / Dicke) | 81 / 8 | 148 / 8 |
+| Boden des Schranks (Dicke) | 3 | 3 |
+| Hoehe gesamt (Muffe bis Halsende) | 64 | 88 |
+| Masse (PP 0,91, EPDM 1,1; Messung) | 92 g | 325 g |
+
+**Ports** (Bauteil-KS, mm; Port A im Ursprung, Achse +Z, Leerrohr kommt von unten):
+
+| Port | Art | DN | Lage x, y, z | Richtung |
+|---|---|---|---|---|
+| A | Muffe (Leerrohr einstecken) | DN50 / DN100 | 0, 0, 0 | -Z |
+| B | Flansch-Aufnahme (Unterkante Schrankboden, Boden 3 mm, Loch 63 bzw. 130) | Boden 3 mm | 0, 0, 49 (DN50) bzw. 73 (DN100) | +Z |
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| Muffe (Aussen, Tiefe) und Rohr-AD, Wand | mm | E aus `lt_leerrohr_dn50/dn100` (W36 Teil 3, selbst Katalognaeherung) | niedrig |
+| Bauform Wanddurchfuehrung mit Dichtung und Gegenmutter | | A, Handelsteil, kein Katalog gelesen, kein Fabrikat | niedrig |
+| Hals = Muffe + 7, Kragen = Hals + 30, Kragen 6, Dichtung 3, Mutter 8, Ueberstand 4, Boden 3 | mm | A, Konstruktionspraxis (Gewinde nicht modelliert) | niedrig |
+
+**Montage (L4):** Loch im Schrankboden (Hals-Aussen) bohren, Entgraten; Einfuehrung von unten durchstecken, Dichtung auf den Boden pressen, Gegenmutter oben anziehen; Leerrohr in die Steckmuffe schieben (Gleitmittel); Kabel einziehen, Zugdraht. Werkzeug: Lochsaege/Stufenbohrer, Maulschluessel. Alternative lokale Fertigung: Handels-Kabeleinfuehrungsflansch (Kabelverschraubung oder Einfuehrungsplatte mit Membran, IP65) fuer Rohr DN50/DN100.
+
+**Pruefung:** `check_lt_w39.py kabel` 26/26 PASS: je DN 3 Koerper, Hoehe, Kragen-Aussen, Volumen je Koerper gegen Rechnung (0,002 %), Kabeldurchgang = Leerrohr-Innen-D, Steckmuffen-Zylinder, Muffe passt zum Leerrohr der W36-Teile, Gewindeueberstand, 2 Port-Stirnflaechen, Interferenz 0 gegen Testbodenblech 3 mm mit Loch und eingestecktes Leerrohr. Eine erste Fassung hatte den Kragen 1 mm zu tief (Volumenpruefung schlug an: 80589 gegen 76266 mm3) und wurde korrigiert. **Bilder** (Schnitt XZ): `renders/components/leitungsteile/lt_kabeleinfuehrung_dn50.png`, `lt_kabeleinfuehrung_dn100.png`.
+
+**Offene Fragen:** (1) Standort und Boden-Werkstoff des Schaltschranks (E13, Ben): Lochgroesse und Bodendicke 3 mm sind Annahmen. (2) Handelsteil, Gewinde, IP-Schutzart (Katalog offen, N-BESCHAFFUNG). (3) Ein Kabel braucht je Leerrohr-Abzweig eine Zugdose (siehe Teil 8).

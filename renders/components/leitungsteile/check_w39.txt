@@ -89,4 +89,32 @@ PASS lt_w39: rsv d20 Durchflussrichtung: A ((0, 0, -1)) -> B ((0, 0, 1)) entlang
 PASS lt_w39: lt_rueckschlagventil_d20 Port A (Zulauf) (Muffe, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
 PASS lt_w39: lt_rueckschlagventil_d20 Port B (Abgang) (Muffe, DN15) Stirnflaeche an (0, 0, 82.0): Ist 1, Soll 1
 INFO rsv d20: Masse 80 g (PVC-U 1,4)
-== lt_w39: 83/83 PASS
+PASS lt_w39: kabel DN50 Koerperzahl (Koerper, Dichtung, Gegenmutter): Ist 3, Soll 3
+PASS lt_w39: kabel DN50 Hoehe = Muffe 40 + Kragen 6 + Dichtung + Boden + Mutter + Ueberstand = 64: Ist 64, Soll 64 (+-0.05)
+PASS lt_w39: kabel DN50 Kragen-Aussen-D: Ist 92.9986, Soll 93 (+-0.05)
+PASS lt_w39: kabel DN50 Volumen Koerper: Ist 76259.4, Soll 76266.1 (+-152.532)
+PASS lt_w39: kabel DN50 Volumen Dichtung: Ist 6880.14, Soll 6880.09 (+-13.7602)
+PASS lt_w39: kabel DN50 Volumen Gegenmutter: Ist 16286.3, Soll 16286 (+-32.572)
+PASS lt_w39: kabel DN50 Kabeldurchgang frei 46.4 (Leerrohr-Innen-D): Ist 1, Soll 1
+PASS lt_w39: lt_kabeleinfuehrung_dn50 Steckmuffe fuer Leerrohr: Zylinderflaeche r 25: Ist 1, Soll 1
+PASS lt_w39: kabel DN50 Muffe passt zum Leerrohr (Aussen 56, Tiefe 40 wie lt_leerrohr_dn50): Ist 1, Soll 1
+PASS lt_w39: kabel DN50 Gewindeueberstand ueber der Mutter = 4: Ist 4, Soll 4 (+-0.001)
+PASS lt_w39: lt_kabeleinfuehrung_dn50 Port A (Muffe, DN50) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_kabeleinfuehrung_dn50 Port B (Flansch-Aufnahme, Boden 3 mm, Loch 63) Stirnflaeche an (0, 0, 49.0): Ist 1, Soll 1
+PASS lt_w39: kabel DN50 Interferenz 0 (Koerper, Dichtung, Gegenmutter, Schrankboden 3 mm mit Loch 63, eingestecktes Leerrohr AD50 bis z = 40; geprueft 5 Koerper): Ist 0, Soll 0
+INFO kabel DN50: Masse 92 g (PP 0,91, EPDM 1,1), Hoehe 64
+PASS lt_w39: kabel DN100 Koerperzahl (Koerper, Dichtung, Gegenmutter): Ist 3, Soll 3
+PASS lt_w39: kabel DN100 Hoehe = Muffe 64 + Kragen 6 + Dichtung + Boden + Mutter + Ueberstand = 88: Ist 88, Soll 88 (+-0.05)
+PASS lt_w39: kabel DN100 Kragen-Aussen-D: Ist 159.998, Soll 160 (+-0.05)
+PASS lt_w39: kabel DN100 Volumen Koerper: Ist 309467, Soll 309498 (+-618.996)
+PASS lt_w39: kabel DN100 Volumen Dichtung: Ist 13194.8, Soll 13194.7 (+-26.3894)
+PASS lt_w39: kabel DN100 Volumen Gegenmutter: Ist 31441.1, Soll 31441.1 (+-62.8821)
+PASS lt_w39: kabel DN100 Kabeldurchgang frei 103.6 (Leerrohr-Innen-D): Ist 1, Soll 1
+PASS lt_w39: lt_kabeleinfuehrung_dn100 Steckmuffe fuer Leerrohr: Zylinderflaeche r 55: Ist 1, Soll 1
+PASS lt_w39: kabel DN100 Muffe passt zum Leerrohr (Aussen 123, Tiefe 64 wie lt_leerrohr_dn100): Ist 1, Soll 1
+PASS lt_w39: kabel DN100 Gewindeueberstand ueber der Mutter = 4: Ist 4, Soll 4 (+-0.001)
+PASS lt_w39: lt_kabeleinfuehrung_dn100 Port A (Muffe, DN100) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_kabeleinfuehrung_dn100 Port B (Flansch-Aufnahme, Boden 3 mm, Loch 130) Stirnflaeche an (0, 0, 73.0): Ist 1, Soll 1
+PASS lt_w39: kabel DN100 Interferenz 0 (Koerper, Dichtung, Gegenmutter, Schrankboden 3 mm mit Loch 130, eingestecktes Leerrohr AD110 bis z = 64; geprueft 5 Koerper): Ist 0, Soll 0
+INFO kabel DN100: Masse 325 g (PP 0,91, EPDM 1,1), Hoehe 88
+== lt_w39: 109/109 PASS

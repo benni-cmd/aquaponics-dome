@@ -169,6 +169,53 @@ DESC["rsv"] = [{"match": "^lt_rueckschlagventil_d", "titel": "Rückschlagventil 
     "aufbau": [{"t": "Maße", "p": [f"d40: Länge {rsv_geom(40)['L']:g}, Gehäuse {rsv_geom(40)['ob']:g}", f"d25: Länge {rsv_geom(25)['L']:g}, Gehäuse {rsv_geom(25)['ob']:g}", f"d20: Länge {rsv_geom(20)['L']:g}, Gehäuse {rsv_geom(20)['ob']:g}"]}],
     "masse": {f"d{d}": f"{rsv_vol(d) * 1.4e-3:.0f} g" for d in RSV_SIZES}, "grenzen": "Bauform und Maße angenommen (Kugelhahn ohne Hebel); Handelsteil im Katalog offen.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
 
+# ---------------------------------------------------------------- Teil 9: Kabeleinfuehrung DN50 und DN100 (Leerrohr-Muffe unten, Flansch-Aufnahme im Schaltschrank-Boden oben)
+import leitung_w36 as W36                                     # nur lesen: Leerrohr-Masse LR (Muffentiefe, Muffen-Aussen, AD, Wand)
+KAB_SIZES = (50, 100)
+KAB = dict(kragen_dicke=6.0, dichtung=3.0, boden=3.0, mutter=8.0, ueberstand=4.0, hals_plus=7.0, kragen_plus=30.0, dichtung_minus=10.0, mutter_plus=18.0)   # alle [A]
+
+def kab_geom(dn):
+    q = W36.LR[dn]; t, om = q["t"], q["od_m"]; k = KAB
+    hals = om + k["hals_plus"]; kragen = hals + k["kragen_plus"]
+    z_k1 = t + k["kragen_dicke"]; z_d1 = z_k1 + k["dichtung"]; z_b1 = z_d1 + k["boden"]; z_m1 = z_b1 + k["mutter"]; z_top = z_m1 + k["ueberstand"]
+    return dict(t=t, od_m=om, d=q["d"], wi=q["d"] - 2 * q["wall"], hals=hals, kragen=kragen, dichtung_aussen=kragen - k["dichtung_minus"], mutter_aussen=hals + k["mutter_plus"],
+                z_k1=z_k1, z_d1=z_d1, z_b1=z_b1, z_m1=z_m1, z_top=z_top)
+
+def kabeleinfuehrung(dn):
+    g = kab_geom(dn); k = KAB; t = g["t"]
+    b = sc.Build(); nm = f"T70_Kabeleinfuehrung_DN{dn}"
+    L.setup(b, nm, 20, {"muffentiefe": t, "hals_aussen": g["hals"], "kragen_aussen": g["kragen"], "boden_dicke": k["boden"]})
+    mats(b)
+    b.add("solid.cylinder", diameter=g["od_m"], height=t + 1, base=[0, 0, 0], operation="new", name="Muffe_R", body_name="Koerper")
+    b.add("solid.cylinder", diameter=g["kragen"], height=k["kragen_dicke"], base=[0, 0, t], operation="join", targets=["Koerper"], name="Kragen_R")
+    b.add("solid.cylinder", diameter=g["hals"], height=g["z_top"] - (g["z_k1"] - 1), base=[0, 0, g["z_k1"] - 1], operation="join", targets=["Koerper"], name="Gewindehals_R")
+    b.add("solid.cylinder", diameter=g["d"], height=t + 1, base=[0, 0, -1], operation="cut", targets=["Koerper"], name="Muffe_A")
+    b.add("solid.cylinder", diameter=g["wi"], height=g["z_top"] + 2, base=[0, 0, t - 1], operation="cut", targets=["Koerper"], name="Kabeldurchgang")
+    b.add("solid.cylinder", diameter=g["dichtung_aussen"], height=k["dichtung"], base=[0, 0, g["z_k1"]], operation="new", name="Dichtung_R", body_name="Dichtung")
+    b.add("solid.cylinder", diameter=g["hals"], height=k["dichtung"] + 2, base=[0, 0, g["z_k1"] - 1], operation="cut", targets=["Dichtung"], name="Dichtung_Bohrung")
+    b.add("solid.cylinder", diameter=g["mutter_aussen"], height=k["mutter"], base=[0, 0, g["z_b1"]], operation="new", name="Mutter_R", body_name="Gegenmutter")
+    b.add("solid.cylinder", diameter=g["hals"], height=k["mutter"] + 2, base=[0, 0, g["z_b1"] - 1], operation="cut", targets=["Gegenmutter"], name="Mutter_Bohrung")
+    b.add("material.assign", bodies=["Koerper", "Gegenmutter"], material="LT pp")
+    b.add("material.assign", bodies=["Dichtung"], material="LT epdm")
+    L.meta(b, nm, f"T70-KE-{dn}", f"Kabeleinfuehrung DN{dn} fuer Leerrohr AD{g['d']:g}: A Steckmuffe (Leerrohr), B Flansch-Aufnahme im Schaltschrank-Boden ({k['boden']:g} mm), Dichtung EPDM, Gegenmutter")
+    return b, nm, g
+
+for _dn in KAB_SIZES:
+    reg("kabel", f"lt_kabeleinfuehrung_dn{_dn}", (lambda dn=_dn: kabeleinfuehrung(dn)))
+    PORTS[f"lt_kabeleinfuehrung_dn{_dn}"] = (lambda dn=_dn: [("A", (0, 0, 0), (0, 0, -1), "Muffe", f"DN{dn}"), ("B", (0, 0, kab_geom(dn)["z_d1"]), (0, 0, 1), "Flansch-Aufnahme", f"Boden {KAB['boden']:g} mm, Loch {kab_geom(dn)['hals']:g}")])
+    RENDER[f"lt_kabeleinfuehrung_dn{_dn}"] = dict(yaw=3.14159, pitch=0.0, section="XZ", zoom=2.0)
+JSON["kabel"] = lambda: {f"lt_kabeleinfuehrung_dn{dn}": jent(f"lt_kabeleinfuehrung_dn{dn}", f"T70-KE-{dn}", f"T70_Kabeleinfuehrung_DN{dn}", "PP (Koerper, Gegenmutter), EPDM (Dichtung)", dn=dn, leerrohr_aussen_d=kab_geom(dn)["d"], muffentiefe=kab_geom(dn)["t"], muffe_aussen=kab_geom(dn)["od_m"],
+    kabeldurchgang_d=kab_geom(dn)["wi"], kragen={"aussen_d": kab_geom(dn)["kragen"], "dicke": KAB["kragen_dicke"]}, hals={"aussen_d": kab_geom(dn)["hals"], "gewindelaenge": kab_geom(dn)["z_top"] - kab_geom(dn)["z_k1"]},
+    dichtung={"aussen_d": kab_geom(dn)["dichtung_aussen"], "innen_d": kab_geom(dn)["hals"], "dicke": KAB["dichtung"]}, gegenmutter={"aussen_d": kab_geom(dn)["mutter_aussen"], "dicke": KAB["mutter"]},
+    boden={"dicke": KAB["boden"], "lochdurchmesser": kab_geom(dn)["hals"], "z_unterkante": kab_geom(dn)["z_d1"], "z_oberkante": kab_geom(dn)["z_b1"]}, hoehe=kab_geom(dn)["z_top"],
+    verwendung="Schaltschrank (Teil von W37-3): Leerrohr kommt von unten, Kabel gehen durch den Boden in den Schrank; Standort des Schranks offen (E13)",
+    herkunft={"Bauform Wanddurchfuehrung mit Dichtung und Gegenmutter": "A, Handelsteil, kein Katalog gelesen", "Kragen, Hals, Dichtung, Mutter, Boden 3": "Annahme", "Muffe": "gerechnet aus lt_leerrohr_dn* (W36)", "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"}) for dn in KAB_SIZES}
+DESC["kabel"] = [{"match": "^lt_kabeleinfuehrung_dn", "titel": "Kabeleinführung DN50 und DN100 (Schaltschrank)", "was": "Verbindet das unterirdische Leerrohr mit dem Boden des Schaltschranks: unten die Muffe für das Leerrohr, oben ein Flansch mit Gewindehals, Dichtung und Gegenmutter, der durch den Boden des Schranks geführt wird.",
+    "status": "gebaut, Prüfungen mit Interferenz 0 gegen ein Boden-Blech",
+    "ablauf": ["Das Leerrohr steckt von unten in die Muffe.", "Der Hals geht durch das Loch im Schrankboden; die Dichtung liegt unter dem Boden, die Gegenmutter oben.", "Die Kabel laufen durch das Leerrohr in den Schrank; Abzweige nur mit Zugdose."],
+    "aufbau": [{"t": "Maße", "p": [f"DN50: Muffe 56 × 40, Hals {kab_geom(50)['hals']:g}, Flansch {kab_geom(50)['kragen']:g}", f"DN100: Muffe 123 × 64, Hals {kab_geom(100)['hals']:g}, Flansch {kab_geom(100)['kragen']:g}", "Boden des Schranks 3 mm"]}],
+    "masse": {"Höhe DN50": f"{kab_geom(50)['z_top']:g} mm", "Höhe DN100": f"{kab_geom(100)['z_top']:g} mm"}, "grenzen": "Bauform und Maße angenommen, kein Katalog gelesen; der Standort des Schaltschranks ist offen (Entscheidung E13).", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
+
 # ---------------------------------------------------------------- MARKE-EINFUEGEN (weitere Teile werden oberhalb dieser Zeile ergaenzt)
 
 # ---------------------------------------------------------------- Ausgabe nach JSON und descriptions

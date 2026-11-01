@@ -1072,6 +1072,152 @@
      "dn": "DN15"
     }
    ]
+  },
+  "lt_kabeleinfuehrung_dn50": {
+   "teilenummer": "T70-KE-50",
+   "komponente": "T70_Kabeleinfuehrung_DN50",
+   "werkstoff": "PP (Koerper, Gegenmutter), EPDM (Dichtung)",
+   "dn": 50,
+   "leerrohr_aussen_d": 50.0,
+   "muffentiefe": 40.0,
+   "muffe_aussen": 56.0,
+   "kabeldurchgang_d": 46.4,
+   "kragen": {
+    "aussen_d": 93.0,
+    "dicke": 6.0
+   },
+   "hals": {
+    "aussen_d": 63.0,
+    "gewindelaenge": 18.0
+   },
+   "dichtung": {
+    "aussen_d": 83.0,
+    "innen_d": 63.0,
+    "dicke": 3.0
+   },
+   "gegenmutter": {
+    "aussen_d": 81.0,
+    "dicke": 8.0
+   },
+   "boden": {
+    "dicke": 3.0,
+    "lochdurchmesser": 63.0,
+    "z_unterkante": 49.0,
+    "z_oberkante": 52.0
+   },
+   "hoehe": 64.0,
+   "verwendung": "Schaltschrank (Teil von W37-3): Leerrohr kommt von unten, Kabel gehen durch den Boden in den Schrank; Standort des Schranks offen (E13)",
+   "herkunft": {
+    "Bauform Wanddurchfuehrung mit Dichtung und Gegenmutter": "A, Handelsteil, kein Katalog gelesen",
+    "Kragen, Hals, Dichtung, Mutter, Boden 3": "Annahme",
+    "Muffe": "gerechnet aus lt_leerrohr_dn* (W36)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      49.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Flansch-Aufnahme",
+     "dn": "Boden 3 mm, Loch 63"
+    }
+   ]
+  },
+  "lt_kabeleinfuehrung_dn100": {
+   "teilenummer": "T70-KE-100",
+   "komponente": "T70_Kabeleinfuehrung_DN100",
+   "werkstoff": "PP (Koerper, Gegenmutter), EPDM (Dichtung)",
+   "dn": 100,
+   "leerrohr_aussen_d": 110.0,
+   "muffentiefe": 64.0,
+   "muffe_aussen": 123.0,
+   "kabeldurchgang_d": 103.6,
+   "kragen": {
+    "aussen_d": 160.0,
+    "dicke": 6.0
+   },
+   "hals": {
+    "aussen_d": 130.0,
+    "gewindelaenge": 18.0
+   },
+   "dichtung": {
+    "aussen_d": 150.0,
+    "innen_d": 130.0,
+    "dicke": 3.0
+   },
+   "gegenmutter": {
+    "aussen_d": 148.0,
+    "dicke": 8.0
+   },
+   "boden": {
+    "dicke": 3.0,
+    "lochdurchmesser": 130.0,
+    "z_unterkante": 73.0,
+    "z_oberkante": 76.0
+   },
+   "hoehe": 88.0,
+   "verwendung": "Schaltschrank (Teil von W37-3): Leerrohr kommt von unten, Kabel gehen durch den Boden in den Schrank; Standort des Schranks offen (E13)",
+   "herkunft": {
+    "Bauform Wanddurchfuehrung mit Dichtung und Gegenmutter": "A, Handelsteil, kein Katalog gelesen",
+    "Kragen, Hals, Dichtung, Mutter, Boden 3": "Annahme",
+    "Muffe": "gerechnet aus lt_leerrohr_dn* (W36)",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      73.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Flansch-Aufnahme",
+     "dn": "Boden 3 mm, Loch 130"
+    }
+   ]
   }
  }
 }

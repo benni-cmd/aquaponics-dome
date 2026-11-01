@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: Filter entschieden (D71, bei heute bleiben); nichts laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: S01 Specs und Viewer-Uebersicht laeuft; Filter entschieden (D71); Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -220,11 +220,11 @@
   {
    "id": "PUFFER-SPECS",
    "titel": "puffer_klein als Standardszenario in system_specs.py",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 7,
    "wer": "Fachrecherche",
-   "notiz": "Heute nur zusätzlich; nach der Abnahme von W34 umstellen."
+   "notiz": "Sitzung specs-uebersicht (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/S01-puffer-specs-uebersicht.md (7579bd5): system_specs.py, system-specs.json und Bauteilliste auf Puffer klein 0,16 m3 und Drittbecken klein 0,40 m3; Viewer-Uebersicht zeigt dann den Modellstand."
   },
   {
    "id": "V-MESS",

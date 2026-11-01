@@ -216,6 +216,113 @@ DESC["kabel"] = [{"match": "^lt_kabeleinfuehrung_dn", "titel": "Kabeleinführung
     "aufbau": [{"t": "Maße", "p": [f"DN50: Muffe 56 × 40, Hals {kab_geom(50)['hals']:g}, Flansch {kab_geom(50)['kragen']:g}", f"DN100: Muffe 123 × 64, Hals {kab_geom(100)['hals']:g}, Flansch {kab_geom(100)['kragen']:g}", "Boden des Schranks 3 mm"]}],
     "masse": {"Höhe DN50": f"{kab_geom(50)['z_top']:g} mm", "Höhe DN100": f"{kab_geom(100)['z_top']:g} mm"}, "grenzen": "Bauform und Maße angenommen, kein Katalog gelesen; der Standort des Schaltschranks ist offen (Entscheidung E13).", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
 
+# ---------------------------------------------------------------- Teil 5: Schlauchschelle ID16 und ID25 (Schneckengewinde-Schelle)
+SS = {16: dict(ad=20.0, lo=12.0, hi=22.0), 25: dict(ad=29.0, lo=20.0, hi=32.0)}      # Schlauch-Innen-D -> Aussen-D und Spannbereich (Handelsangabe [A])
+SS_BAND_W, SS_BAND_T = 9.0, 0.7                                # Band 9 breit, 0,7 dick [A]
+SS_GEH = dict(laenge=16.0, hoehe=8.0, spalt=0.2, kanal=5.4, schraube=5.0, kopf=8.0, kopf_l=3.0, schaft_l=18.0)   # Gehaeuse 9 x 16 x 8 [A]
+
+def ss_geom(idd):
+    q = SS[idd]; g = SS_GEH
+    ro = q["ad"] / 2 + SS_BAND_T
+    zb = q["ad"] / 2 + g["spalt"]                              # Gehaeuseunterkante
+    zs = zb + g["hoehe"] / 2                                   # Schraubenachse (Y) in Gehaeusemitte
+    return dict(ad=q["ad"], ro=ro, zb=zb, zs=zs, zt=zb + g["hoehe"], lo=q["lo"], hi=q["hi"])
+
+def schlauchschelle(idd):
+    s = ss_geom(idd); g = SS_GEH; w = SS_BAND_W
+    b = sc.Build(); nm = f"T70_Schlauchschelle_ID{idd}"
+    L.setup(b, nm, 20, {"bandbreite": w, "bandstaerke": SS_BAND_T, "spannbereich_von": s["lo"], "spannbereich_bis": s["hi"]})
+    b.add("solid.cylinder", diameter=2 * s["ro"], height=w, base=[-w / 2, 0, 0], axis=[1, 0, 0], operation="new", name="Band_R", body_name="Schelle")
+    b.add("solid.box", length=w, width=g["laenge"], height=g["hoehe"], center=[0, 0, s["zb"] + g["hoehe"] / 2], operation="join", targets=["Schelle"], name="Gehaeuse_R")
+    b.add("solid.cylinder", diameter=s["ad"], height=w + 2, base=[-w / 2 - 1, 0, 0], axis=[1, 0, 0], operation="cut", targets=["Schelle"], name="Band_Bohrung")
+    b.add("solid.cylinder", diameter=g["kanal"], height=g["laenge"] + 2, base=[0, -g["laenge"] / 2 - 1, s["zs"]], axis=[0, 1, 0], operation="cut", targets=["Schelle"], name="Schneckenkanal")
+    b.add("solid.cylinder", diameter=g["schraube"], height=g["schaft_l"], base=[0, -g["laenge"] / 2 - 1, s["zs"]], axis=[0, 1, 0], operation="new", name="Schaft_R", body_name="Schneckenschraube")
+    b.add("solid.cylinder", diameter=g["kopf"], height=g["kopf_l"] + 1, base=[0, g["laenge"] / 2 - 1 + 1, s["zs"]], axis=[0, 1, 0], operation="join", targets=["Schneckenschraube"], name="Kopf_R")
+    b.add("material.assign", bodies=["Schelle", "Schneckenschraube"], material="LT stahl")
+    L.meta(b, nm, f"T70-SS-{idd}", f"Schlauchschelle (Schneckengewinde) fuer Schlauch ID{idd}/AD{s['ad']:g}, Spannbereich {s['lo']:g} bis {s['hi']:g}, Band {w:g} breit, Achse X")
+    return b, nm, s
+
+for _i in SS:
+    reg("schelle", f"lt_schlauchschelle_id{_i}", (lambda i=_i: schlauchschelle(i)))
+    PORTS[f"lt_schlauchschelle_id{_i}"] = (lambda i=_i: [("Schlauchachse", (0, 0, 0), (1, 0, 0), "Aufnahme", f"AD{SS[i]['ad']:g}")])
+    RENDER[f"lt_schlauchschelle_id{_i}"] = dict(yaw=0.9, pitch=0.5, zoom=2.4)
+JSON["schelle"] = lambda: {f"lt_schlauchschelle_id{i}": jent(f"lt_schlauchschelle_id{i}", f"T70-SS-{i}", f"T70_Schlauchschelle_ID{i}", "Stahl verzinkt (Band, Gehaeuse, Schnecke)", schlauch_id=i, schlauch_aussen_d=SS[i]["ad"], spannbereich=[SS[i]["lo"], SS[i]["hi"]],
+    band={"breite": SS_BAND_W, "dicke": SS_BAND_T, "aussen_d": 2 * ss_geom(i)["ro"]}, gehaeuse={"laenge": SS_GEH["laenge"], "breite": SS_BAND_W, "hoehe": SS_GEH["hoehe"], "unterkante_z": ss_geom(i)["zb"]}, hoehe=ss_geom(i)["zt"],
+    stueckzahl={16: "152 (2 je Schlauch ID16 laut Stueckliste der Bibliothek, 76 kurze Schlaeuche)", 25: "nach Bedarf der Montage"}[i],
+    herkunft={"Bauform Schneckengewinde-Schelle": "A, Handelsteil; kein Katalog gelesen", "Band 9 x 0,7, Gehaeuse 16 x 8, Schraube d5": "Annahme", "Spannbereich": "Handelsangabe [A]", "ID25-Variante": "dieselbe Funktion schlauchschelle(idd), kein Mehraufwand"}) for i in SS}
+DESC["schelle"] = [{"match": "^lt_schlauchschelle_id", "titel": "Schlauchschelle ID16 und ID25", "was": "Schneckengewinde-Schelle, die einen Schlauch auf einer Tülle sichert: ID16 (Außen 20, Spannbereich 12 bis 22) für die Rinnen-Zuläufe, ID25 (Außen 29, Spannbereich 20 bis 32) für die größeren Schläuche.",
+    "status": "gebaut, Prüfungen mit Interferenz 0 gegen den Schlauch",
+    "ablauf": ["Die Schelle wird über den Schlauch auf der Tülle geschoben.", "Mit der Schneckenschraube anziehen; zwei Schellen je Schlauch."],
+    "aufbau": [{"t": "Teile", "p": ["Band 9 × 0,7 mit Gehäuse 16 × 8", "Schneckenschraube Ø5 mit Kopf"]}],
+    "masse": {"Stückzahl ID16": "152 (Stückliste der Bibliothek)"}, "grenzen": "Bauform und Maße angenommen, kein Katalog gelesen; Nachweis später in N-BESCHAFFUNG.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
+
+# ---------------------------------------------------------------- Teil 7: Leerrohr-Reduzierung DN100 auf DN50 (Muffe A DN100, Zapfen B DN50)
+LRR = dict(wand_boden=6.0, neck_d=70.0, neck_l=10.0, zapfen_l=50.0)
+def lrr_geom():
+    q1, q0 = W36.LR[100], W36.LR[50]
+    z1 = q1["t"] + LRR["wand_boden"]; z2 = z1 + LRR["neck_l"]; Ltot = z2 + LRR["zapfen_l"]
+    return dict(q1=q1, q0=q0, z1=z1, z2=z2, L=Ltot, wi=q0["d"] - 2 * q0["wall"])
+
+def leerrohr_red():
+    g = lrr_geom(); q1, q0 = g["q1"], g["q0"]
+    b = sc.Build(); nm = "T70_LeerrohrRed_DN100_DN50"
+    W36.lr_setup(b, nm, 100, {"laenge": g["L"], "d_klein": q0["d"]})
+    b.add("solid.cylinder", diameter=q1["od_m"], height=g["z1"], base=[0, 0, 0], operation="new", name="Muffe_R", body_name="Reduzierung")
+    b.add("solid.cylinder", diameter=LRR["neck_d"], height=LRR["neck_l"] + 1, base=[0, 0, g["z1"] - 1], operation="join", targets=["Reduzierung"], name="Uebergang_R")
+    b.add("solid.cylinder", diameter=q0["d"], height=LRR["zapfen_l"] + 1, base=[0, 0, g["z2"] - 1], operation="join", targets=["Reduzierung"], name="Zapfen_R")
+    b.add("solid.cylinder", diameter=q1["d"], height=q1["t"] + 1, base=[0, 0, -1], operation="cut", targets=["Reduzierung"], name="Muffe_A")
+    b.add("solid.cylinder", diameter=g["wi"], height=g["L"] + 2, base=[0, 0, -1], operation="cut", targets=["Reduzierung"], name="Durchgang")
+    b.add("material.assign", bodies=["Reduzierung"], material="LT leerrohr")
+    b.add("component.activate", component=nm)
+    b.add("component.metadata.set", component=nm, part_number="T70-LRR-100-50", description="Leerrohr-Reduzierung PVC-U DN100 (AD110) auf DN50 (AD50): Muffe A DN100, glattes Ende B DN50 (Zapfen)", revision="A", properties={"Werkstoff": "PVC-U"})
+    return b, nm, g
+
+reg("lr_red", "lt_leerrohr_red_dn100_dn50", leerrohr_red)
+PORTS["lt_leerrohr_red_dn100_dn50"] = lambda: [("A", (0, 0, 0), (0, 0, -1), "Muffe", "DN100"), ("B", (0, 0, lrr_geom()["L"]), (0, 0, 1), "Zapfen", "DN50")]
+RENDER["lt_leerrohr_red_dn100_dn50"] = dict(yaw=3.14159, pitch=0.0, section="XZ", zoom=2.0)
+JSON["lr_red"] = lambda: {"lt_leerrohr_red_dn100_dn50": jent("lt_leerrohr_red_dn100_dn50", "T70-LRR-100-50", "T70_LeerrohrRed_DN100_DN50", "PVC-U (Kabelschutzrohr)", farbe="orange", laenge=lrr_geom()["L"], muffe_a={"dn": 100, "d": 110.0, "aussen_d": 123.0, "tiefe": 64.0},
+    zapfen_b={"dn": 50, "aussen_d": 50.0, "laenge": LRR["zapfen_l"], "innen_d": lrr_geom()["wi"]}, uebergang={"aussen_d": LRR["neck_d"], "laenge": LRR["neck_l"], "form": "gestuft, nicht konisch"}, routing="buried",
+    herkunft={"Muffe A und Zapfen B": "E aus lt_leerrohr_dn100/dn50 (W36 Teil 3, Katalognaeherung)", "Bodenwand 6, Uebergang 70 x 10, Zapfen 50 lang": "Annahme", "Reihenfolge Muffe A / Zapfen B": "wie die Leerrohr-Bogen (Muffe A, Zapfen B)", "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"})}
+DESC["lr_red"] = [{"match": "^lt_leerrohr_red_", "titel": "Leerrohr-Reduzierung DN100 auf DN50", "was": "Wechselt unterirdisch vom Leerrohr DN100 (230-V-Kabel) auf DN50 (Signalkabel); Muffe für das große Rohr, glattes Ende für die Muffe des kleinen.",
+    "status": "gebaut, Prüfungen mit Volumen und Ports",
+    "ablauf": ["Das glatte Ende des Leerrohrs DN100 steckt in die Muffe A.", "Das Zapfenende B (Außen 50) steckt in die Muffe des Leerrohrs DN50 oder eines Bogens."],
+    "aufbau": [{"t": "Maße", "p": ["Länge 130, Muffe 123 × 64, Zapfen AD50 × 50 lang", "Übergang gestuft, nicht konisch"]}],
+    "masse": {"Länge": "130 mm"}, "grenzen": "Der Übergang ist gestuft statt konisch; Maße aus den Katalognäherungen von W36.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
+
+# ---------------------------------------------------------------- Teil 8: Leerrohr-T DN50 und DN100 (Abzweig 90 Grad, gleich gross, drei Muffen)
+def lrt_geom(dn):
+    q = W36.LR[dn]
+    return dict(q=q, a=q["t"] + q["od_m"] / 2, wi=q["d"] - 2 * q["wall"])
+
+def leerrohr_t(dn):
+    g = lrt_geom(dn); q = g["q"]; a = g["a"]; t = q["t"]; om = q["od_m"]
+    b = sc.Build(); nm = f"T70_LeerrohrT_DN{dn}"
+    W36.lr_setup(b, nm, dn, {"arm": round(a, 1)})
+    b.add("solid.cylinder", diameter=om, height=2 * a, base=[-a, 0, 0], axis=[1, 0, 0], operation="new", name="Lauf_R", body_name="Leerrohr_T")
+    b.add("solid.cylinder", diameter=om, height=a, base=[0, 0, 0], axis=[0, 0, 1], operation="join", targets=["Leerrohr_T"], name="Abgang_R")
+    b.add("solid.cylinder", diameter=q["d"], height=t + 1, base=[-a - 1, 0, 0], axis=[1, 0, 0], operation="cut", targets=["Leerrohr_T"], name="Muffe_L")
+    b.add("solid.cylinder", diameter=q["d"], height=t + 1, base=[a - t, 0, 0], axis=[1, 0, 0], operation="cut", targets=["Leerrohr_T"], name="Muffe_R")
+    b.add("solid.cylinder", diameter=q["d"], height=t + 1, base=[0, 0, a - t], axis=[0, 0, 1], operation="cut", targets=["Leerrohr_T"], name="Muffe_Z")
+    b.add("solid.cylinder", diameter=g["wi"], height=2 * a + 2, base=[-a - 1, 0, 0], axis=[1, 0, 0], operation="cut", targets=["Leerrohr_T"], name="Durchgang_X")
+    b.add("solid.cylinder", diameter=g["wi"], height=a + 1, base=[0, 0, 0], axis=[0, 0, 1], operation="cut", targets=["Leerrohr_T"], name="Durchgang_Z")
+    b.add("material.assign", bodies=["Leerrohr_T"], material="LT leerrohr")
+    b.add("component.activate", component=nm)
+    b.add("component.metadata.set", component=nm, part_number=f"T70-LRT-{dn}", description=f"Leerrohr-T PVC-U DN{dn} AD{q['d']:g}, drei Steckmuffen, Abzweig 90 Grad (scharfer Abzweig: Kabel nur mit Zugdose)", revision="A", properties={"Werkstoff": "PVC-U"})
+    return b, nm, g
+
+for _dn in (50, 100):
+    reg("lr_t", f"lt_leerrohr_t_dn{_dn}", (lambda dn=_dn: leerrohr_t(dn)))
+    PORTS[f"lt_leerrohr_t_dn{_dn}"] = (lambda dn=_dn: [("A", (-lrt_geom(dn)["a"], 0, 0), (-1, 0, 0), "Muffe", f"DN{dn}"), ("B", (lrt_geom(dn)["a"], 0, 0), (1, 0, 0), "Muffe", f"DN{dn}"), ("C", (0, 0, lrt_geom(dn)["a"]), (0, 0, 1), "Muffe", f"DN{dn}")])
+    RENDER[f"lt_leerrohr_t_dn{_dn}"] = dict(yaw=0.7, pitch=0.5, zoom=1.8)
+JSON["lr_t"] = lambda: {f"lt_leerrohr_t_dn{dn}": jent(f"lt_leerrohr_t_dn{dn}", f"T70-LRT-{dn}", f"T70_LeerrohrT_DN{dn}", "PVC-U (Kabelschutzrohr)", farbe="orange", dn=dn, aussen_d=lrt_geom(dn)["q"]["d"], muffentiefe=lrt_geom(dn)["q"]["t"], muffe_aussen=lrt_geom(dn)["q"]["od_m"], arm=lrt_geom(dn)["a"],
+    kabel_hinweis="Abzweig 90 Grad ohne Radius: Kabel (Mindestradius 15 x Kabel-d) laufen nur mit Zugdose im T durch, nicht als Kabelbogen", routing="buried",
+    herkunft={"Teilung a = t + Muffen-Aussen/2": "E wie lt_t_d* der Bibliothek", "Muffe, AD, Wand": "E aus lt_leerrohr_dn* (W36 Teil 3, Katalognaeherung)", "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"}) for dn in (50, 100)}
+DESC["lr_t"] = [{"match": "^lt_leerrohr_t_dn", "titel": "Leerrohr-T DN50 und DN100", "was": "Abzweig 90° für Leerrohre mit drei Steckmuffen; der Abzweig hat keinen Kabelradius, Kabel laufen nur mit einer Zugdose hindurch.",
+    "status": "gebaut, Prüfungen mit Volumen gegen unabhängiges Raster und Ports",
+    "ablauf": ["Alle drei Rohr-Zapfen stecken in die Muffen.", "Kabel nie durch den scharfen Abzweig ziehen: Zugdose setzen oder Bögen verwenden."],
+    "aufbau": [{"t": "Maße", "p": [f"DN50: Arm {lrt_geom(50)['a']:g}, Muffe 56 × 40", f"DN100: Arm {lrt_geom(100)['a']:g}, Muffe 123 × 64"]}],
+    "masse": {"Arm DN50": f"{lrt_geom(50)['a']:g} mm", "Arm DN100": f"{lrt_geom(100)['a']:g} mm"}, "grenzen": "Maße aus den Katalognäherungen von W36; Abzweigradius hart (siehe Blatt).", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
+
 # ---------------------------------------------------------------- MARKE-EINFUEGEN (weitere Teile werden oberhalb dieser Zeile ergaenzt)
 
 # ---------------------------------------------------------------- Ausgabe nach JSON und descriptions

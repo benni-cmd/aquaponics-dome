@@ -620,3 +620,29 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Pruefung:** `check_lt_w39.py kabel` 26/26 PASS: je DN 3 Koerper, Hoehe, Kragen-Aussen, Volumen je Koerper gegen Rechnung (0,002 %), Kabeldurchgang = Leerrohr-Innen-D, Steckmuffen-Zylinder, Muffe passt zum Leerrohr der W36-Teile, Gewindeueberstand, 2 Port-Stirnflaechen, Interferenz 0 gegen Testbodenblech 3 mm mit Loch und eingestecktes Leerrohr. Eine erste Fassung hatte den Kragen 1 mm zu tief (Volumenpruefung schlug an: 80589 gegen 76266 mm3) und wurde korrigiert. **Bilder** (Schnitt XZ): `renders/components/leitungsteile/lt_kabeleinfuehrung_dn50.png`, `lt_kabeleinfuehrung_dn100.png`.
 
 **Offene Fragen:** (1) Standort und Boden-Werkstoff des Schaltschranks (E13, Ben): Lochgroesse und Bodendicke 3 mm sind Annahmen. (2) Handelsteil, Gewinde, IP-Schutzart (Katalog offen, N-BESCHAFFUNG). (3) Ein Kabel braucht je Leerrohr-Abzweig eine Zugdose (siehe Teil 8).
+
+## Schlauchschelle ID16 und ID25 `lt_schlauchschelle_id16`, `lt_schlauchschelle_id25` (T70-SS-16, T70-SS-25)
+
+**Mini-Plan.** Problem: Die Stueckliste der Bibliothek fuehrt 152 Schlauchschellen ID16 (2 je kurzem Schlauch, 76 Stueck) nur als Zeile; es gibt kein Bauteil (W36 Teil 5). Intent: ein Handelsteil Schneckengewinde-Schelle mit Spannbereich 12 bis 22 fuer den Schlauch AD20; die Variante ID25 (AD29, Spannbereich 20 bis 32) liefert dieselbe Funktion ohne Mehraufwand. Goal: zwei Dateien mit einem Port Aufnahme (Schlauch, Achse X wie die Klemme), Band 9 breit, Gehaeuse und Schnecke modelliert, Check gruen, Interferenz 0 gegen einen Testschlauch. Bau: Funktion `schlauchschelle(idd)`: Ringband (Aussen = AD + 1,4, Breite 9) mit Gehaeuse 9 x 16 x 8 (0,2 mm ueber dem Schlauch) und Schneckenschraube d5 mit Kopf d8 als eigener Koerper im Kanal d5,4.
+
+**Funktion:** Schneckengewinde-Schlauchschelle, sichert einen Schlauch auf Tuelle oder Stutzen. ID16 (AD20, Spannbereich 12 bis 22) fuer die Rinnen-Zulaeufe: 2 Stueck je kurzem Schlauch `lt_schlauch_id16_L100`, also 152 laut Stueckliste der Bibliothek; ID25 (AD29, Spannbereich 20 bis 32) fuer den Schlauch ID25, Stueckzahl entscheidet die Montage. Dieselbe Funktion `schlauchschelle(idd)` liefert beide.
+
+| Merkmal | ID16 | ID25 |
+|---|---|---|
+| Schlauch Innen / Aussen | 16 / 20 | 25 / 29 |
+| Spannbereich (Handelsangabe [A]) | 12 bis 22 | 20 bis 32 |
+| Band (Breite x Dicke) / Aussen-D | 9 x 0,7 / 21,4 | 9 x 0,7 / 30,4 |
+| Gehaeuse (x Breite x Laenge x Hoehe) | 9 x 16 x 8, Unterkante 0,2 ueber dem Schlauch | gleich |
+| Schneckenschraube | d5, Kopf d8 x 3, im Kanal d5,4 | gleich |
+| Hoehe ueber der Schlauchachse | 18,2 | 22,7 |
+| Masse (Stahl 7,85, Messung) | 13,4 g | 14,8 g |
+
+**Ports** (Bauteil-KS, mm; Schlauchachse = X durch den Ursprung wie die Klemme): ein Port Schlauchachse (Aufnahme, AD20 bzw. AD29) bei 0, 0, 0, Richtung +X. Position entlang des Schlauchs = X der Schelle, Schneckenschraube zeigt in Y.
+
+**Herkunft:** Bauform Schneckengewinde-Schelle A (Handelsteil, kein Katalog gelesen, kein Fabrikat, niedrig); Band 9 x 0,7, Gehaeuse 16 x 8, Schraube d5/d8, Spalt 0,2 Annahme; Spannbereich Handelsangabe [A]; 152 Stueck E aus der Stueckliste der Bibliothek (W36 Teil 5). Katalog offen, Nachweis N-BESCHAFFUNG.
+
+**Montage (L4):** Schelle ueber den Schlauch schieben, Schlauch auf die Tuelle stecken (Schelle ueber der Tuellenrippe), Schnecke mit Schraubendreher SW7 oder Schlitz anziehen. Werkzeug: Schraubendreher. Alternative lokale Fertigung: Handelsschlauchschelle (Schnecke, Edelstahl); fuer ID16 auch Kabelbinder oder Klemmschelle als Notloesung.
+
+**Pruefung:** `check_lt_w39.py schelle` 18/18 PASS: 2 Koerper je Groesse, Bandbreite, Band-Aussen-D, Gehaeuse-Oberkante, Spannbereich enthaelt den Schlauch, Bandbohrung = Schlauch-AD, Volumen groesser als das Ringband, Achse X des Ports, Interferenz 0 gegen einen Testschlauch. Das Volumen wird nur grob geprueft (Gehaeuse und Schnecke ohne eigene Rechnung). **Bilder:** `renders/components/leitungsteile/lt_schlauchschelle_id16.png`, `lt_schlauchschelle_id25.png`.
+
+**Offene Fragen:** Handelsteil und Fabrikat offen (N-BESCHAFFUNG); Gewinde der Schnecke nicht modelliert; ID25-Stueckzahl und -Einbauorte legt die Montage fest.

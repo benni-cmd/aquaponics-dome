@@ -692,6 +692,30 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_schlauchschelle_id",
+      "titel": "Schlauchschelle ID16 und ID25",
+      "was": "Schneckengewinde-Schelle, die einen Schlauch auf einer Tülle sichert: ID16 (Außen 20, Spannbereich 12 bis 22) für die Rinnen-Zuläufe, ID25 (Außen 29, Spannbereich 20 bis 32) für die größeren Schläuche.",
+      "status": "gebaut, Prüfungen mit Interferenz 0 gegen den Schlauch",
+      "ablauf": [
+        "Die Schelle wird über den Schlauch auf der Tülle geschoben.",
+        "Mit der Schneckenschraube anziehen; zwei Schellen je Schlauch."
+      ],
+      "aufbau": [
+        {
+          "t": "Teile",
+          "p": [
+            "Band 9 × 0,7 mit Gehäuse 16 × 8",
+            "Schneckenschraube Ø5 mit Kopf"
+          ]
+        }
+      ],
+      "masse": {
+        "Stückzahl ID16": "152 (Stückliste der Bibliothek)"
+      },
+      "grenzen": "Bauform und Maße angenommen, kein Katalog gelesen; Nachweis später in N-BESCHAFFUNG.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

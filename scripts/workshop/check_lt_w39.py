@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import sc
 import leitung as L
 import leitung_w39 as W
-from check_lt_w36 import interference as _interference
+from check_lt_w36 import interference as _interference, raster_volume
 
 D = os.path.join(sc.ROOT, "designs", "components")
 PI4 = math.pi / 4
@@ -160,7 +160,67 @@ def check_kabel(ck):
             print("   Ueberlappung:", i.get("a"), i.get("b"), i.get("volume_mm3"))
         print(f"INFO kabel DN{dn}: Masse {ev['total']['mass_g']:.0f} g (PP 0,91, EPDM 1,1), Hoehe {g['z_top']:g}")
 
-CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose), ("kappe", check_kappe), ("rsv", check_rsv), ("kabel", check_kabel)]
+def check_schelle(ck):
+    for i in W.SS:
+        fname = f"lt_schlauchschelle_id{i}"; s = W.ss_geom(i); g = W.SS_GEH; w = W.SS_BAND_W
+        ev = sc.evaluate(path_of(fname)); bb = {x["name"]: x for x in ev["bodies"]}
+        ck.eq(f"schelle ID{i} Koerperzahl (Schelle, Schneckenschraube)", ev["body_count"], 2)
+        sb = bb["Schelle"]["bbox"]
+        ck.eq(f"schelle ID{i} Bandbreite", sb["max"][0] - sb["min"][0], w, 0.05)
+        ck.eq(f"schelle ID{i} Band-Aussen-D = Schlauch AD{s['ad']:g} + 2 x {W.SS_BAND_T}", sb["max"][1] - sb["min"][1] if g["laenge"] / 2 < s["ro"] else 2 * s["ro"], 2 * s["ro"], 0.05)
+        ck.eq(f"schelle ID{i} Gehaeuse-Oberkante z = {s['zt']:g}", sb["max"][2], s["zt"], 0.05)
+        ck.eq(f"schelle ID{i} Spannbereich {s['lo']:g} bis {s['hi']:g} enthaelt den Schlauch AD{s['ad']:g}", 1 if s["lo"] <= s["ad"] <= s["hi"] else 0, 1)
+        inner_cyl(ck, fname, "Schelle", s["ad"] / 2, "Bandbohrung = Schlauch-AD")
+        exp_ring = PI4 * ((2 * s["ro"]) ** 2 - s["ad"] ** 2) * w
+        ck.eq(f"schelle ID{i} Volumen Schelle >= Ringband (Band + Gehaeuse)", 1 if bb["Schelle"]["volume_mm3"] > exp_ring else 0, 1)
+        ck.eq(f"{fname} Port Schlauchachse (Aufnahme AD{s['ad']:g}): Bandbohrung Achse X durch den Ursprung", 1 if all(abs(f["cylinder"]["origin"][1]) < 0.01 and abs(f["cylinder"]["origin"][2]) < 0.01 and abs(abs(f["cylinder"]["axis"][0]) - 1) < 1e-6 for f in sc.faces(path_of(fname), "Schelle") if f.get("cylinder") and abs(f["cylinder"]["radius"] - s["ad"] / 2) < 0.01) else 0, 1)
+        extra = [{"command": "solid.cylinder", "params": {"diameter": s["ad"], "height": 60, "base": [-30, 0, 0], "axis": [1, 0, 0], "operation": "new", "name": "T_Schlauch", "body_name": "Test_Schlauch"}}]
+        bad, res = interference(path_of(fname), extra)
+        ck.eq(f"schelle ID{i} Interferenz 0 (Schelle, Schnecke, Testschlauch AD{s['ad']:g}; geprueft {res.get('checked', '?')} Koerper)", len(bad), 0)
+        for b_ in bad:
+            print("   Ueberlappung:", b_.get("a"), b_.get("b"), b_.get("volume_mm3"))
+        print(f"INFO schelle ID{i}: Masse {ev['total']['mass_g']:.1f} g (Stahl 7,85)")
+
+def check_lr_red(ck):
+    fname = "lt_leerrohr_red_dn100_dn50"; g = W.lrr_geom(); q1, q0 = g["q1"], g["q0"]
+    ev = sc.evaluate(path_of(fname)); b = ev["bodies"][0]; bb = b["bbox"]
+    ck.eq("leerrohr-red DN100/DN50 Koerperzahl", ev["body_count"], 1)
+    ck.eq(f"leerrohr-red Laenge = Bodenwand + Uebergang + Zapfen = {g['L']:g}", bb["max"][2] - bb["min"][2], g["L"], 0.05)
+    ck.eq("leerrohr-red Muffe A Aussen-D = Muffe des Leerrohrs DN100 (123)", bb["max"][0] - bb["min"][0], q1["od_m"], 0.05)
+    exp = PI4 * (q1["od_m"] ** 2 * g["z1"] + W.LRR["neck_d"] ** 2 * W.LRR["neck_l"] + q0["d"] ** 2 * W.LRR["zapfen_l"] - q1["d"] ** 2 * q1["t"] - g["wi"] ** 2 * (g["L"] - q1["t"]))
+    ck.eq("leerrohr-red Volumen", b["volume_mm3"], exp, exp * 0.002)
+    inner_cyl(ck, fname, "Reduzierung", q1["d"] / 2, "Muffe A DN100 (AD110)")
+    fs = sc.faces(path_of(fname), "Reduzierung")
+    ck.eq("leerrohr-red Zapfen B: Aussen-D 50 (Passung in die Muffe des Leerrohrs DN50, Tiefe 40 < Zapfenlaenge 50)", 1 if any(f.get("cylinder") and abs(f["cylinder"]["radius"] - q0["d"] / 2) < 0.01 for f in fs) and W.LRR["zapfen_l"] >= q0["t"] else 0, 1)
+    ck.eq(f"leerrohr-red Innen-D Zapfen = Leerrohr DN50 innen {g['wi']:g}", 1 if any(f.get("cylinder") and abs(f["cylinder"]["radius"] - g["wi"] / 2) < 0.01 for f in fs) else 0, 1)
+    port_checks(ck, fname, ["Reduzierung"])
+    print(f"INFO leerrohr-red: Masse {ev['total']['mass_g']:.0f} g (PVC-U 1,4)")
+
+def check_lr_t(ck):
+    for dn in (50, 100):
+        fname = f"lt_leerrohr_t_dn{dn}"; g = W.lrt_geom(dn); q = g["q"]; a, t, R, rd, ri = g["a"], q["t"], q["od_m"] / 2, q["d"] / 2, g["wi"] / 2
+        ev = sc.evaluate(path_of(fname)); b = ev["bodies"][0]; bb = b["bbox"]
+        ck.eq(f"leerrohr-T DN{dn} Koerperzahl", ev["body_count"], 1)
+        ck.eq(f"leerrohr-T DN{dn} Lauf = 2 a = 2 (t + Muffe/2) = {2 * a:g}", bb["max"][0] - bb["min"][0], 2 * a, 0.05)
+        ck.eq(f"leerrohr-T DN{dn} Abgangshoehe = a = {a:g}", bb["max"][2], a, 0.05)
+        ck.eq(f"leerrohr-T DN{dn} Aussen-D Muffe {q['od_m']:g}", bb["max"][1] - bb["min"][1], q["od_m"], 0.05)
+        def inside(x, y, z):
+            if not ((abs(x) <= a and y * y + z * z <= R * R) or (0 <= z <= a and x * x + y * y <= R * R)):
+                return False
+            if (-a <= x <= -a + t or a - t <= x <= a) and y * y + z * z < rd * rd:
+                return False
+            if a - t <= z <= a and x * x + y * y < rd * rd:
+                return False
+            if (abs(x) <= a and y * y + z * z < ri * ri) or (0 <= z <= a and x * x + y * y < ri * ri):
+                return False
+            return True
+        h = 1.0 if dn == 50 else 1.5
+        v = raster_volume(inside, (-a - 1, -R - 1, -R - 1), (a + 1, R + 1, a + 1), h)
+        ck.eq(f"leerrohr-T DN{dn} Volumen = CSG-Raster ({h:g} mm)", b["volume_mm3"], v, v * 0.01)
+        port_checks(ck, fname, ["Leerrohr_T"])
+        print(f"INFO leerrohr-T DN{dn}: Masse {ev['total']['mass_g'] / 1000:.2f} kg (PVC-U 1,4), Abzweig scharf (kein Kabelradius)")
+
+CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose), ("kappe", check_kappe), ("rsv", check_rsv), ("kabel", check_kabel), ("schelle", check_schelle), ("lr_red", check_lr_red), ("lr_t", check_lr_t)]
 
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))

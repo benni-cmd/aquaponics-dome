@@ -117,4 +117,24 @@ PASS lt_w39: lt_kabeleinfuehrung_dn100 Port A (Muffe, DN100) Stirnflaeche an (0,
 PASS lt_w39: lt_kabeleinfuehrung_dn100 Port B (Flansch-Aufnahme, Boden 3 mm, Loch 130) Stirnflaeche an (0, 0, 73.0): Ist 1, Soll 1
 PASS lt_w39: kabel DN100 Interferenz 0 (Koerper, Dichtung, Gegenmutter, Schrankboden 3 mm mit Loch 130, eingestecktes Leerrohr AD110 bis z = 64; geprueft 5 Koerper): Ist 0, Soll 0
 INFO kabel DN100: Masse 325 g (PP 0,91, EPDM 1,1), Hoehe 88
-== lt_w39: 109/109 PASS
+PASS lt_w39: schelle ID16 Koerperzahl (Schelle, Schneckenschraube): Ist 2, Soll 2
+PASS lt_w39: schelle ID16 Bandbreite: Ist 9, Soll 9 (+-0.05)
+PASS lt_w39: schelle ID16 Band-Aussen-D = Schlauch AD20 + 2 x 0.7: Ist 21.3997, Soll 21.4 (+-0.05)
+PASS lt_w39: schelle ID16 Gehaeuse-Oberkante z = 18.2: Ist 18.2, Soll 18.2 (+-0.05)
+PASS lt_w39: schelle ID16 Spannbereich 12 bis 22 enthaelt den Schlauch AD20: Ist 1, Soll 1
+PASS lt_w39: lt_schlauchschelle_id16 Bandbohrung = Schlauch-AD: Zylinderflaeche r 10: Ist 1, Soll 1
+PASS lt_w39: schelle ID16 Volumen Schelle >= Ringband (Band + Gehaeuse): Ist 1, Soll 1
+PASS lt_w39: lt_schlauchschelle_id16 Port Schlauchachse (Aufnahme AD20): Bandbohrung Achse X durch den Ursprung: Ist 1, Soll 1
+PASS lt_w39: schelle ID16 Interferenz 0 (Schelle, Schnecke, Testschlauch AD20; geprueft 3 Koerper): Ist 0, Soll 0
+INFO schelle ID16: Masse 13.4 g (Stahl 7,85)
+PASS lt_w39: schelle ID25 Koerperzahl (Schelle, Schneckenschraube): Ist 2, Soll 2
+PASS lt_w39: schelle ID25 Bandbreite: Ist 9, Soll 9 (+-0.05)
+PASS lt_w39: schelle ID25 Band-Aussen-D = Schlauch AD29 + 2 x 0.7: Ist 30.3995, Soll 30.4 (+-0.05)
+PASS lt_w39: schelle ID25 Gehaeuse-Oberkante z = 22.7: Ist 22.7, Soll 22.7 (+-0.05)
+PASS lt_w39: schelle ID25 Spannbereich 20 bis 32 enthaelt den Schlauch AD29: Ist 1, Soll 1
+PASS lt_w39: lt_schlauchschelle_id25 Bandbohrung = Schlauch-AD: Zylinderflaeche r 14.5: Ist 1, Soll 1
+PASS lt_w39: schelle ID25 Volumen Schelle >= Ringband (Band + Gehaeuse): Ist 1, Soll 1
+PASS lt_w39: lt_schlauchschelle_id25 Port Schlauchachse (Aufnahme AD29): Bandbohrung Achse X durch den Ursprung: Ist 1, Soll 1
+PASS lt_w39: schelle ID25 Interferenz 0 (Schelle, Schnecke, Testschlauch AD29; geprueft 3 Koerper): Ist 0, Soll 0
+INFO schelle ID25: Masse 14.8 g (Stahl 7,85)
+== lt_w39: 127/127 PASS

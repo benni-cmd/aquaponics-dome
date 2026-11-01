@@ -1218,6 +1218,100 @@
      "dn": "Boden 3 mm, Loch 130"
     }
    ]
+  },
+  "lt_schlauchschelle_id16": {
+   "teilenummer": "T70-SS-16",
+   "komponente": "T70_Schlauchschelle_ID16",
+   "werkstoff": "Stahl verzinkt (Band, Gehaeuse, Schnecke)",
+   "schlauch_id": 16,
+   "schlauch_aussen_d": 20.0,
+   "spannbereich": [
+    12.0,
+    22.0
+   ],
+   "band": {
+    "breite": 9.0,
+    "dicke": 0.7,
+    "aussen_d": 21.4
+   },
+   "gehaeuse": {
+    "laenge": 16.0,
+    "breite": 9.0,
+    "hoehe": 8.0,
+    "unterkante_z": 10.2
+   },
+   "hoehe": 18.2,
+   "stueckzahl": "152 (2 je Schlauch ID16 laut Stueckliste der Bibliothek, 76 kurze Schlaeuche)",
+   "herkunft": {
+    "Bauform Schneckengewinde-Schelle": "A, Handelsteil; kein Katalog gelesen",
+    "Band 9 x 0,7, Gehaeuse 16 x 8, Schraube d5": "Annahme",
+    "Spannbereich": "Handelsangabe [A]",
+    "ID25-Variante": "dieselbe Funktion schlauchschelle(idd), kein Mehraufwand"
+   },
+   "ports": [
+    {
+     "name": "Schlauchachse",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Aufnahme",
+     "dn": "AD20"
+    }
+   ]
+  },
+  "lt_schlauchschelle_id25": {
+   "teilenummer": "T70-SS-25",
+   "komponente": "T70_Schlauchschelle_ID25",
+   "werkstoff": "Stahl verzinkt (Band, Gehaeuse, Schnecke)",
+   "schlauch_id": 25,
+   "schlauch_aussen_d": 29.0,
+   "spannbereich": [
+    20.0,
+    32.0
+   ],
+   "band": {
+    "breite": 9.0,
+    "dicke": 0.7,
+    "aussen_d": 30.4
+   },
+   "gehaeuse": {
+    "laenge": 16.0,
+    "breite": 9.0,
+    "hoehe": 8.0,
+    "unterkante_z": 14.7
+   },
+   "hoehe": 22.7,
+   "stueckzahl": "nach Bedarf der Montage",
+   "herkunft": {
+    "Bauform Schneckengewinde-Schelle": "A, Handelsteil; kein Katalog gelesen",
+    "Band 9 x 0,7, Gehaeuse 16 x 8, Schraube d5": "Annahme",
+    "Spannbereich": "Handelsangabe [A]",
+    "ID25-Variante": "dieselbe Funktion schlauchschelle(idd), kein Mehraufwand"
+   },
+   "ports": [
+    {
+     "name": "Schlauchachse",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Aufnahme",
+     "dn": "AD29"
+    }
+   ]
   }
  }
 }

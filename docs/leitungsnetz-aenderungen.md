@@ -2,6 +2,13 @@
 
 Netzliste `data/leitungsnetz.json` von Version 1 (R28) auf den Modellstand gebracht: kleiner Puffer (D66, R37, T82), Drittbecken klein (T14k), Messstellen (D65, R39), Hauptstrom-Feinfilter (D55, W32), Linienteilung (D67). Prüfung: `python scripts/check_netz.py` (Schritt 6). Quelle je Zeile: R-/D-Nummer; Herkunftsbuchstabe wie in der Netzliste (Q/E/A).
 
+## Zusammenfassung (gezählt gegen Version 1, Commit 171ef45)
+- **Kanten:** 51 → 55. Technisch geändert (Ziel, Durchmesser, Durchfluss) **17**: K01, K02, K06, K13, K16, K17, K18, K22, K35, K37, K38, K39, K40, K41, K42, K43, K49. Nur Text/Höhe geändert **9**: K05, K12, K14, K15, K21, K28, K30, K31, K44. **Neu 6**: K52–K55 (Stammlösung, Eisen, Dosierleitungen), K56/K57 (Notüberlauf/Bypass Feinfilter, nur Störfall). **Entfallen 2**: K36 (Stapel), K50 (Belüftung Standwasser).
+- **Knoten:** 32 → 34 (neu `puffer_messzelle`, `puffer_stammfass`, `puffer_eisen`, `aktivkohle`; entfallen `puffer_oben`, `puffer_unten`).
+- **Kabel:** 8 → 23 Zeilen (7 Trunks, 7 Stichleitungs-Bündel, Alarmwähler, Blitzleuchte/Summer; `sonden_signal` entfällt).
+- **Messstellen:** `data/messstellen.json` auf die neuen Knoten umgestellt (MS46–MS49, MS55, MS08, MS11, MS50; Pflichtliste); `scripts/messstellen_plan.py` besteht weiter.
+- **Fragen für M10:** 7 (F1–F7, Block `fragen_m10` in der Netzliste).
+
 ## Schritt 1: Puffer klein (K35–K41, D66, R37 Befund 9, T82)
 Der Stapel aus zwei IBC (Messtank oben, Vorrat unten) entfällt. Im Dom stehen die Messzelle (20 l), das Stammlösungsfass (120 l), der Eisen-Kanister (20 l) und die zwei Schlauchpumpen auf dem Stand T82. Frischwasser läuft über Aktivkohle direkt in den Pool, ohne Standvorrat.
 
@@ -96,3 +103,15 @@ Die Linienwerte der Netzliste (38 l/min NFT je Linie bei 1 l/min je Rinne) bleib
 5. **F5** Trunk-Längen, 24-V-Abfall, Notstrom der Zentrale.
 6. **F6** Aktivkohle: Fabrikat, Kontaktzeit.
 7. **F7** Biofilter-Bett 67 % gegen 68–75 % im Modell.
+
+## Schritt 6: Selbsttest `scripts/check_netz.py`
+Neues Prüfskript (Standardbibliothek, ändert nichts, Exit 1 bei Fehler): IDs und Endknoten, Durchflussbilanz je Knoten (Störfallkanten ausgenommen, Nachspeisen mit Mittelwert), Geschwindigkeit aus dem PVC-PN10-Innendurchmesser gegen den eingetragenen Wert und die Grenzen (Druckseite ≤ 1,5, Saugseite ≤ 1,0 m/s), Linienwerte, Kabelleistungen gegen `data/system-specs.json`, 7 Trunks, Fragen für M10. Der erste Lauf fand drei Bilanzfehler aus R28, die damit korrigiert sind:
+
+| Element | alt | neu | Begründung / Quelle |
+|---|---|---|---|
+| K13 | Bypass Linie 1 17,5 l/min | 14,5 l/min (v 0,16 m/s) | Verteiler 1 gibt zusätzlich den Messkreis K35 (3 l/min) ab: 110 − 54,5 − 38 − 3 = 14,5; Linie 2 bleibt 17,5 (K29) |
+| K16 | Sammelrinne 1 → Pool 110 l/min | 102 l/min (v 0,22 m/s) | Rücklauf 1 erhält 107 l/min (14,5 + 54,5 + 38) und gibt 5 l/min an das Zweitbecken (K33) ab; K34 bringt sie zurück in den Pool |
+| K39, K40 | nur Spitze 10 l/min | zusätzlich `mittel_l_min` 0,47 | Bilanz des Pools mit dem Tagesmittel (0,68 m³/Tag); Dimensionierung bleibt an der Spitze |
+| K41 | | Bemerkung: Ablauf des Wechselwassers (Überlauf zum Abwasser/Pool) offen | Quarantäne-Wasserwechsel braucht einen Ablauf |
+| `bilanz_je_linie_l_min` | Bypass 17,5 | Bypass 17,5 (Linie 2), 14,5 (Linie 1 mit Messkreis), Messkreis 3 | s. K13 |
+| Prüfung | — | `check_netz.py` PASS | Poolbilanz: Abfluss 220 l/min (2 × 97,5 + 2 × 12,5), Zufluss 220,5 (102 + 110 + 5 + 3 + 0,47 + Dosierung) |

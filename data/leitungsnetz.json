@@ -414,10 +414,10 @@
    "nach": "ruecklauf_1",
    "medium": "Wasser",
    "dn": 50,
-   "soll_l_min": 17.5,
+   "soll_l_min": 14.5,
    "quelle": "E",
-   "bemerkung": "Ueberschuss/Bypass (Hauptkreislauf 110 minus Pflanzenbedarf 92,5) direkt zum Ruecklauf, Drossel am Verteiler",
-   "v_m_s": 0.19
+   "bemerkung": "Ueberschuss/Bypass Linie 1 (Hauptkreislauf 110 minus Beete 54,5 minus NFT 38 minus Messkreis 3 = 14,5), direkt zum Ruecklauf, Drossel am Verteiler; Linie 2 ohne Messkreis 17,5 (K29)",
+   "v_m_s": 0.16
   },
   {
    "id": "K14",
@@ -449,10 +449,10 @@
    "nach": "pool",
    "medium": "Wasser",
    "dn": 110,
-   "soll_l_min": 110.0,
+   "soll_l_min": 102.0,
    "quelle": "E",
-   "bemerkung": "Sammelrinne/Sammelrohr Schwerkraft (Gefaelle >= 1 %) in den Pool",
-   "v_m_s": 0.24,
+   "bemerkung": "Sammelrinne/Sammelrohr Schwerkraft (Gefaelle >= 1 %) in den Pool; 107 l/min Zulauf minus 5 l/min Teilstrom zum Zweitbecken (K33)",
+   "v_m_s": 0.22,
    "hoehe": "oberhalb Wasserspiegel Z 515"
   },
   {
@@ -706,7 +706,8 @@
    "soll_l_min": 10.0,
    "quelle": "A",
    "bemerkung": "Frischwasser von aussen zum Aktivkohlefilter; Spitze 10 l/min beim Nachspeisen, Mittel 0,47 l/min (0,68 m3/Tag bei 2 %/Tag, SRAC 454; D66: kein Stehenlassen, kein Vorrat)",
-   "v_m_s": 0.48
+   "v_m_s": 0.48,
+   "mittel_l_min": 0.47
   },
   {
    "id": "K40",
@@ -717,7 +718,8 @@
    "soll_l_min": 10.0,
    "quelle": "A",
    "bemerkung": "Nachspeisung ueber Schwimmerventil am Pool (Spitze 10 l/min, Mittel 0,47 l/min = 0,68 m3/Tag); entchlort ueber Aktivkohle statt 2 Tage Standzeit (D66, R37 Befund 3)",
-   "v_m_s": 0.48
+   "v_m_s": 0.48,
+   "mittel_l_min": 0.47
   },
   {
    "id": "K41",
@@ -727,7 +729,7 @@
    "dn": 20,
    "soll_l_min": 2.0,
    "quelle": "A",
-   "bemerkung": "Wasserwechsel Quarantaene 2 l/min aus der entchlorten Frischwasserleitung (R37 Befund 9); Becken 0,4 m3, 2,8 g TAN/Tag",
+   "bemerkung": "Wasserwechsel Quarantaene 2 l/min aus der entchlorten Frischwasserleitung (R37 Befund 9); Becken 0,4 m3, 2,8 g TAN/Tag; Ablauf des Wechselwassers (Ueberlauf zum Abwasser/Pool) Montage",
    "v_m_s": 0.17
   },
   {
@@ -1109,7 +1111,9 @@
   "absetzer_teilstrom": 12.5,
   "beete_mittel": 54.5,
   "nft": 38.0,
-  "bypass": 17.5
+  "bypass": 17.5,
+  "bypass_linie_1_mit_messkreis": 14.5,
+  "messkreis_linie_1": 3.0
  },
  "fragen_m10": [
   {

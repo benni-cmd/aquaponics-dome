@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10-Bau S0 bis S2b abgenommen, S2c laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10 Hauptkreislauf beider Linien steht (S2c abgenommen); PAUSE nach Bens Vorgabe, nichts laeuft; weiter mit W36 Verteiler d50",
  "schritte": [
   {
    "id": "W33",
@@ -211,11 +211,11 @@
   {
    "id": "M10-LEITUNGEN",
    "titel": "M10 Leitungen und Kabel inkl. Signalkabel der Messstellen",
-   "status": "laeuft",
+   "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 10,
+   "reihenfolge": 11,
    "wer": "Montage",
-   "notiz": "Bau in Schritten nach Plan m10-leitungen.md. Erledigt: S0, S1, S1b, S2a, S2b (cd2ad13: Linie 1 bis Verteiler-Eingang, 99 Instanzen, 0 Verstoesse, Laufwege A 700/B 600/Wandluft 110; K01-Heber-Reserve jetzt 40-75 mm). Jetzt: S2c (Linie 2; Sitzung montage-m10-s2c). Danach Werkstatt-Auftrag Verteiler d50, S3 bis S7."
+   "notiz": "Teilweise erledigt: S0, S1, S1b, S2a, S2b, S2c (9697011: beide Linien des Hauptkreislaufs bis zum Verteiler-Eingang, 199 Instanzen, 0 Verstoesse, Laufwege A 700/B 600/Wandluft 110). RISIKO: Heber-Reserve K01 27-78 mm, K17 34-81 mm gegen 195 mm Druckhoehe (Ueberschlag), an der 30-mm-Grenze. Weiter nach W36 (Verteiler d50): S3 Verteiler/Beete/NFT, S4 Ruecklauf, S5 Becken/Luft/Puffer, S6 Kabel, S7 Abschluss."
   },
   {
    "id": "PUFFER-SPECS",
@@ -231,7 +231,7 @@
    "titel": "Viewer: Ebene Messstellen, Plane-Sichtbarkeit, neue Kennzahlen",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 11,
+   "reihenfolge": 12,
    "wer": "Viewer",
    "notiz": "Wartet auf W35 und die Übersicht mit 346 kg und Puffer 0,16 m³."
   },
@@ -240,7 +240,7 @@
    "titel": "EIN check_latte mit allem, Draufsicht und Seitenansicht",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 12,
+   "reihenfolge": 13,
    "wer": "Montage + Orchestrator",
    "notiz": "Letzter Schritt vor der Pause; heute läuft check_latte seit Plane, Tür und Ringverschiebung nicht mehr."
   },
@@ -249,7 +249,7 @@
    "titel": "Zwischencheck mit Ben",
    "status": "geplant",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 13,
+   "reihenfolge": 14,
    "wer": "Ben + Orchestrator",
    "notiz": "Ego-Blick durch den Dom, Querstrebe Z 650 prüfen, Bens Entscheidungen einholen."
   },
@@ -495,6 +495,15 @@
    "reihenfolge": 10,
    "wer": "Ben",
    "notiz": "Ben 01.11.: Regel akzeptieren. Orte Ost A und West B, Absetzer bleibt, D71 gilt. Ausnahme von 500 mm nur Filterzone."
+  },
+  {
+   "id": "W36",
+   "titel": "Werkstatt: Verteiler d50 fuer die zwei Linien (Voraussetzung fuer M10 S3)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 10,
+   "wer": "Werkstatt",
+   "notiz": "Blatt docs/jobs/W36-verteiler-d50.md: Sammelrohr d50 mit Abgaengen d40 (Beete), d32 (NFT), d50 (Bypass), d20 (Messkreis). Startet nach der Pause auf Freigabe."
   }
  ]
 }

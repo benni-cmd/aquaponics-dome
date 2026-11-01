@@ -205,6 +205,130 @@
      "dn": "DN40"
     }
    ]
+  },
+  "lt_schelle_vk_d32": {
+   "teilenummer": "T70-SVK-32",
+   "komponente": "T70_Schelle_VK40_d32",
+   "werkstoff": "Stahl verzinkt (Ring, Platte, Band), Schrauben M6x16 ISO 4017 und Muttern M6",
+   "rohr_d": 32,
+   "bein": "Rechteckrohr 40x40x3",
+   "ring": {
+    "innen_d": 32,
+    "aussen_d": 38.0,
+    "wand": 3.0,
+    "breite": 20.0
+   },
+   "platte": {
+    "breite": 74.0,
+    "dicke": 4.0,
+    "abstand_zum_rohr": 14.0
+   },
+   "spannband": {
+    "breite": 20.0,
+    "dicke": 3.0,
+    "spiel": 0.5,
+    "lasche": 14.0
+   },
+   "bolzenbild": {
+    "ring_z": 26.0,
+    "band_x": 30.0
+   },
+   "anlageflaeche_y": -34.0,
+   "beinachse_y": -54.0,
+   "ports": [
+    {
+     "name": "Rohrachse",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Aufnahme",
+     "dn": "DN25"
+    },
+    {
+     "name": "Bein",
+     "lage": [
+      0.0,
+      -54.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Aufnahme",
+     "dn": "Vierkant 40x40"
+    }
+   ]
+  },
+  "lt_schelle_vk_d63": {
+   "teilenummer": "T70-SVK-63",
+   "komponente": "T70_Schelle_VK40_d63",
+   "werkstoff": "Stahl verzinkt (Ring, Platte, Band), Schrauben M6x16 ISO 4017 und Muttern M6",
+   "rohr_d": 63,
+   "bein": "Rechteckrohr 40x40x3",
+   "ring": {
+    "innen_d": 63,
+    "aussen_d": 69.0,
+    "wand": 3.0,
+    "breite": 20.0
+   },
+   "platte": {
+    "breite": 74.0,
+    "dicke": 4.0,
+    "abstand_zum_rohr": 14.0
+   },
+   "spannband": {
+    "breite": 20.0,
+    "dicke": 3.0,
+    "spiel": 0.5,
+    "lasche": 14.0
+   },
+   "bolzenbild": {
+    "ring_z": 41.5,
+    "band_x": 30.0
+   },
+   "anlageflaeche_y": -49.5,
+   "beinachse_y": -69.5,
+   "ports": [
+    {
+     "name": "Rohrachse",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Aufnahme",
+     "dn": "DN50"
+    },
+    {
+     "name": "Bein",
+     "lage": [
+      0.0,
+      -69.5,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Aufnahme",
+     "dn": "Vierkant 40x40"
+    }
+   ]
   }
  }
 }

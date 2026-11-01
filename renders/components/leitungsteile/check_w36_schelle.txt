@@ -1,0 +1,33 @@
+PASS lt_w36: schelle d32 Koerperzahl (3 Blechteile + 8 Normteile M6): Ist 11, Soll 11
+PASS lt_w36: schelle d32 Halbschale vorn: Aussenradius (Ring 3 mm): Ist 18.9995, Soll 19 (+-0.05)
+PASS lt_w36: schelle d32 Halbschale vorn: Ohr reicht bis z = ro + 14: Ist 33, Soll 33 (+-0.05)
+PASS lt_w36: schelle d32 Ringbreite: Ist 20, Soll 20 (+-0.05)
+PASS lt_w36: schelle d32 Rueckenplatte Breite: Ist 74, Soll 74 (+-0.05)
+PASS lt_w36: schelle d32 Platte-Rueckseite y_min = Steg + Platte (Anlageflaeche): Ist -34, Soll -34 (+-0.05)
+PASS lt_w36: schelle d32 Anlageflaeche am Bein bei y = -34: Ist -34, Soll -34 (+-0.05)
+PASS lt_w36: schelle d32 Spannband Ruecken liegt 0.5 mm hinter dem Bein (y = -77.5): Ist -77.5, Soll -77.5 (+-0.05)
+PASS lt_w36: schelle d32 Spannband Breite ueber die Laschen: Ist 73, Soll 73 (+-0.05)
+PASS lt_w36: schelle d32 Halbschale vorn: Rohrbohrung = d32: Ist 1, Soll 1
+PASS lt_w36: schelle d32 Halbschale hinten: Rohrbohrung = d32: Ist 1, Soll 1
+PASS lt_w36: lt_schelle_vk_d32 Port Bein (Vierkant 40x40): Anlageflaeche bei y = -34, Beinachse y = -54: Ist 1, Soll 1
+PASS lt_w36: lt_schelle_vk_d32 Port Rohrachse (Aufnahme DN32): Bohrungsachse X durch den Ursprung (y = z = 0): Ist 1, Soll 1
+PASS lt_w36: schelle d32 Abstand Plattenvorderseite zur Rohroberflaeche >= 12 (Mutter + Schraubenende): Ist 1, Soll 1
+PASS lt_w36: schelle d32 Interferenz 0 (alle Koerperpaare inkl. Bein und Rohr; geprueft 13 Koerper, Paare mit Ueberlappung): Ist 0, Soll 0
+INFO schelle d32: Masse 270 g (Stahl verzinkt 7,85), Volumen 34363 mm3
+PASS lt_w36: schelle d63 Koerperzahl (3 Blechteile + 8 Normteile M6): Ist 11, Soll 11
+PASS lt_w36: schelle d63 Halbschale vorn: Aussenradius (Ring 3 mm): Ist 34.5, Soll 34.5 (+-0.05)
+PASS lt_w36: schelle d63 Halbschale vorn: Ohr reicht bis z = ro + 14: Ist 48.5, Soll 48.5 (+-0.05)
+PASS lt_w36: schelle d63 Ringbreite: Ist 20, Soll 20 (+-0.05)
+PASS lt_w36: schelle d63 Rueckenplatte Breite: Ist 74, Soll 74 (+-0.05)
+PASS lt_w36: schelle d63 Platte-Rueckseite y_min = Steg + Platte (Anlageflaeche): Ist -49.5, Soll -49.5 (+-0.05)
+PASS lt_w36: schelle d63 Anlageflaeche am Bein bei y = -49.5: Ist -49.5, Soll -49.5 (+-0.05)
+PASS lt_w36: schelle d63 Spannband Ruecken liegt 0.5 mm hinter dem Bein (y = -93): Ist -93, Soll -93 (+-0.05)
+PASS lt_w36: schelle d63 Spannband Breite ueber die Laschen: Ist 73, Soll 73 (+-0.05)
+PASS lt_w36: schelle d63 Halbschale vorn: Rohrbohrung = d63: Ist 1, Soll 1
+PASS lt_w36: schelle d63 Halbschale hinten: Rohrbohrung = d63: Ist 1, Soll 1
+PASS lt_w36: lt_schelle_vk_d63 Port Bein (Vierkant 40x40): Anlageflaeche bei y = -49.5, Beinachse y = -69.5: Ist 1, Soll 1
+PASS lt_w36: lt_schelle_vk_d63 Port Rohrachse (Aufnahme DN63): Bohrungsachse X durch den Ursprung (y = z = 0): Ist 1, Soll 1
+PASS lt_w36: schelle d63 Abstand Plattenvorderseite zur Rohroberflaeche >= 12 (Mutter + Schraubenende): Ist 1, Soll 1
+PASS lt_w36: schelle d63 Interferenz 0 (alle Koerperpaare inkl. Bein und Rohr; geprueft 13 Koerper, Paare mit Ueberlappung): Ist 0, Soll 0
+INFO schelle d63: Masse 315 g (Stahl verzinkt 7,85), Volumen 40128 mm3
+== lt_w36: 30/30 PASS

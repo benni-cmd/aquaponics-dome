@@ -2468,5 +2468,25 @@
   "note": "W36 Teil 1",
   "commit": "7267517",
   "source": "renders/components/leitungsteile/lt_verteiler_d50.png"
+ },
+ {
+  "file": "20261101-224426_werkstatt_lt-schelle-vk_lt-schelle-vk-d32.png",
+  "sha": "6800ae9c16bbd970",
+  "time": "2026-11-01 22:44:26",
+  "role": "werkstatt",
+  "subject": "lt_schelle_vk",
+  "note": "W36 Teil 2",
+  "commit": "1a37ce5",
+  "source": "renders/components/leitungsteile/lt_schelle_vk_d32.png"
+ },
+ {
+  "file": "20261101-224429_werkstatt_lt-schelle-vk_lt-schelle-vk-d63.png",
+  "sha": "27bfae6cb50d9d1b",
+  "time": "2026-11-01 22:44:29",
+  "role": "werkstatt",
+  "subject": "lt_schelle_vk",
+  "note": "W36 Teil 2",
+  "commit": "1a37ce5",
+  "source": "renders/components/leitungsteile/lt_schelle_vk_d63.png"
  }
 ]

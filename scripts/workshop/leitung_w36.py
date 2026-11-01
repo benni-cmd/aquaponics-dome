@@ -42,8 +42,73 @@ def verteiler_d50():
 
 FILES.append("lt_verteiler_d50")
 
+# ---------------------------------------------------------------- Teil 2: Rohrschelle fuer Vierkant-Tischbein
+LEG = 40.0                                    # Tischbein Rechteckrohr 40 x 40 x 3 (docs/parts/nft_tisch.md, leg_w)
+SCH_SIZES = (32, 63)
+SCH_T, SCH_W = 3.0, 20.0                      # Ringwand und Ringbreite wie lt_klemme (Ring 3, Breite 20)
+SCH_PLATE_T, SCH_PLATE_HALF = 4.0, 37.0       # Rueckenplatte 74 x 20 x 4
+SCH_BAND_T, SCH_SPIEL, SCH_TAB = 3.0, 0.5, 14.0   # Spannband 20 x 3, Spiel zum Bein 0,5, Lasche 14
+SCH_SCREW_X = 30.0                            # Bandschrauben M6x16 bei x = +-30 durch Lasche und Platte (Kopf 11,6 mm ueber Ecken: 24,2 bis 35,8, frei vom Band bei 23,5)
+SCH_STANDOFF = 14.0                           # Plattenvorderseite bis Rohroberflaeche: Platz fuer Mutter M6 (5,2) und Schraubenende (3,8) vor dem Rohr
+
+def sch_geom(d):
+    ro = d / 2 + SCH_T
+    ypf = -d / 2 - SCH_STANDOFF               # Plattenvorderseite (Rohrseite)
+    yf = ypf - SCH_PLATE_T                    # Plattenrueckseite = Anlageflaeche des Beins
+    return dict(ro=ro, ypf=ypf, yf=yf, yb=yf - LEG, ear_z=ro + 7.0, leg_y=yf - LEG / 2)
+
+def schelle(d):
+    g = sch_geom(d)
+    ro, yf, yb = g["ro"], g["yf"], g["yb"]
+    b = sc.Build(); nm = f"T70_Schelle_VK40_d{d}"
+    L.setup(b, nm, d, {"bein": LEG, "ringbreite": SCH_W, "bandbreite": SCH_W})
+    ez = g["ear_z"]
+    for half, ys in (("vorn", 1), ("hinten", -1)):
+        body = f"Halbschale_{half}"
+        b.add("solid.cylinder", diameter=2 * ro, height=SCH_W, base=[-SCH_W / 2, 0, 0], axis=[1, 0, 0], operation="new", name=f"Ring_{half}", body_name=body)
+        b.add("solid.cylinder", diameter=d, height=SCH_W + 2, base=[-SCH_W / 2 - 1, 0, 0], axis=[1, 0, 0], operation="cut", targets=[body], name=f"Bohrung_{half}")
+        b.add("solid.box", length=SCH_W + 2, width=ro + 2, height=2 * ro + 2, center=[0, -ys * (ro + 2) / 2, 0], operation="cut", targets=[body], name=f"Schnitt_{half}")      # andere Haelfte weg
+        for sz in (-1, 1):
+            b.add("solid.box", length=SCH_W, width=4.0, height=14.0 + 1, center=[0, ys * 2.0, sz * (ro + 7 - 0.5)], operation="join", targets=[body], name=f"Ohr_{half}_{sz}")
+        for sz in (-1, 1):
+            b.add("solid.cylinder", diameter=6.4, height=9.0, base=[0, -4.5, sz * ez], axis=[0, 1, 0], operation="cut", targets=[body], name=f"Ohrloch_{half}_{sz}")
+    # Rueckenplatte mit Steg (gehoert zur hinteren Halbschale); der Steg haelt die Platte 14 mm vom Rohr ab, 1 mm Ueberlappung mit Ring und Platte
+    ypf = g["ypf"]
+    b.add("solid.box", length=SCH_W, width=(-ro + 1) - (ypf - 1), height=SCH_W, center=[0, ((ypf - 1) + (-ro + 1)) / 2, 0], operation="join", targets=["Halbschale_hinten"], name="Steg")
+    b.add("solid.box", length=2 * SCH_PLATE_HALF, width=SCH_PLATE_T, height=SCH_W, center=[0, (yf + ypf) / 2, 0], operation="join", targets=["Halbschale_hinten"], name="Platte")
+    for sx in (-1, 1):
+        b.add("solid.cylinder", diameter=6.4, height=SCH_PLATE_T + 2, base=[sx * SCH_SCREW_X, yf - 1, 0], axis=[0, 1, 0], operation="cut", targets=["Halbschale_hinten"], name=f"Plattenloch_{sx}")
+    b.add("material.assign", bodies=["Halbschale_vorn", "Halbschale_hinten"], material="LT stahl")
+    # Spannband um das Bein (U-Form, Spiel 0,5): Ruecken, zwei Seiten, zwei Laschen auf der Plattenrueckseite
+    sp, bt = SCH_SPIEL, SCH_BAND_T
+    xs_in = LEG / 2 + sp
+    b.add("solid.box", length=2 * (xs_in + bt), width=bt, height=SCH_W, center=[0, yb - sp - bt / 2, 0], operation="new", name="Band_Ruecken", body_name="Spannband")
+    for sx in (-1, 1):
+        ymid = ((yb - sp - bt) + yf) / 2
+        b.add("solid.box", length=bt, width=yf - (yb - sp - bt), height=SCH_W, center=[sx * (xs_in + bt / 2), ymid, 0], operation="join", targets=["Spannband"], name=f"Band_Seite_{sx}")
+        b.add("solid.box", length=SCH_TAB, width=bt, height=SCH_W, center=[sx * (xs_in + bt - 1 + SCH_TAB / 2), yf - bt / 2, 0], operation="join", targets=["Spannband"], name=f"Band_Lasche_{sx}")
+        b.add("solid.cylinder", diameter=6.4, height=bt + 2, base=[sx * SCH_SCREW_X, yf - bt - 1, 0], axis=[0, 1, 0], operation="cut", targets=["Spannband"], name=f"Laschenloch_{sx}")
+    b.add("material.assign", bodies=["Spannband"], material="LT stahl")
+    # Normteile: Ringschrauben M6x16 (Kopf vorn, Mutter hinten), Bandschrauben M6x16 (Kopf auf der Lasche, Mutter vor der Platte)
+    for sz in (-1, 1):
+        b.add("parts.insert", family="hex_bolt", size="M6", length=16, point=[0, 4.0, sz * ez], direction=[0, 1, 0], name=f"Ringschraube_{sz}")      # point = Kopfauflage, Kopf liegt in Richtung direction, Schaft entgegen
+        b.add("parts.insert", family="hex_nut", size="M6", point=[0, -4.0, sz * ez], direction=[0, -1, 0], name=f"Ringmutter_{sz}")
+    for sx in (-1, 1):
+        b.add("parts.insert", family="hex_bolt", size="M6", length=16, point=[sx * SCH_SCREW_X, yf - bt, 0], direction=[0, -1, 0], name=f"Bandschraube_{sx}")
+        b.add("parts.insert", family="hex_nut", size="M6", point=[sx * SCH_SCREW_X, yf + SCH_PLATE_T, 0], direction=[0, 1, 0], name=f"Bandmutter_{sx}")
+    L.meta(b, nm, f"T70-SVK-{d}", f"Rohrschelle fuer Rohr d{d} an Vierkant-Tischbein 40x40: 2 Halbschalen mit 2 Schrauben M6x16, Rueckenplatte, Spannband 20x3 um das Bein mit 2 Schrauben M6x16")
+    return b, nm, g
+
+for _d in SCH_SIZES:
+    FILES.append(f"lt_schelle_vk_d{_d}")
+
 def ports(fname, L_rohr=1000):
     """Ports der W36-Teile, Format wie leitung.ports(): [(name, (x,y,z), (dx,dy,dz), art, dn)]."""
+    m = re.match(r"lt_schelle_vk_d(\d+)$", fname)
+    if m:
+        d = int(m.group(1)); g = sch_geom(d)
+        return [("Rohrachse", (0.0, 0.0, 0.0), (1.0, 0.0, 0.0), "Aufnahme", L.DN[d]),
+                ("Bein", (0.0, round(g["leg_y"], 2), 0.0), (0.0, 0.0, 1.0), "Aufnahme", "Vierkant 40x40")]
     if fname == "lt_verteiler_d50":
         g = v50_geom()
         out = [("A", (0.0, 0.0, 0.0), (-1.0, 0.0, 0.0), "Muffe", L.DN[50])]
@@ -61,6 +126,12 @@ def json_entries():
         "teilung": V50_PITCH, "zapfen_hoehe_z": round(g["top"], 2),
         "abgaenge": [{"nr": k, "name": fn, "d": ds, "dn": L.DN[ds], "x": x, "kante": kante, "soll_l_min": q} for k, ((fn, ds, kante, q), x) in enumerate(zip(V50_ABGAENGE, g["xs"]), 1)],
         "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn} for n, p, dr, a, dn in ports("lt_verteiler_d50")]}}
+    for d in SCH_SIZES:
+        g = sch_geom(d)
+        out[f"lt_schelle_vk_d{d}"] = {"teilenummer": f"T70-SVK-{d}", "komponente": f"T70_Schelle_VK40_d{d}", "werkstoff": "Stahl verzinkt (Ring, Platte, Band), Schrauben M6x16 ISO 4017 und Muttern M6",
+            "rohr_d": d, "bein": "Rechteckrohr 40x40x3", "ring": {"innen_d": d, "aussen_d": 2 * g["ro"], "wand": SCH_T, "breite": SCH_W}, "platte": {"breite": 2 * SCH_PLATE_HALF, "dicke": SCH_PLATE_T, "abstand_zum_rohr": SCH_STANDOFF},
+            "spannband": {"breite": SCH_W, "dicke": SCH_BAND_T, "spiel": SCH_SPIEL, "lasche": SCH_TAB}, "bolzenbild": {"ring_z": g["ear_z"], "band_x": SCH_SCREW_X}, "anlageflaeche_y": g["yf"], "beinachse_y": g["leg_y"],
+            "ports": [{"name": n, "lage": list(p), "richtung": list(dr), "art": a, "dn": dn} for n, p, dr, a, dn in ports(f"lt_schelle_vk_d{d}")]}
     return out
 
 def write_json():
@@ -72,6 +143,11 @@ def write_json():
     open(p, "w", encoding="utf-8", newline="").write(txt)
 
 DESCRIPTIONS = [
+    {"match": "^lt_schelle_vk_", "titel": "Rohrschelle für Vierkant-Tischbein", "was": "Hält ein Rohr (d32 oder d63) waagerecht am senkrechten Vierkant-Bein 40 × 40 des Tischs; die Fuß-Klemme der Bibliothek passt nicht an ein Bein.",
+     "status": "gebaut, 30/30 Prüfungen mit Interferenz 0 gegen Bein und Rohr",
+     "ablauf": ["Zwei Halbschalen mit je zwei Schrauben M6 umfassen das Rohr.", "Eine Rückenplatte mit Steg liegt am Bein; ein Spannband um das Bein zieht die Platte mit zwei Schrauben M6 fest.", "Der Steg hält die Platte 14 mm vom Rohr entfernt, damit Muttern und Schraubenenden Platz haben."],
+     "aufbau": [{"t": "Blechteile", "p": ["Halbschalen (Ring 3 mm, Breite 20) mit Ohren", "Rückenplatte 74 × 20 × 4 mit Steg", "Spannband 20 × 3 um das Bein, Spiel 0,5 mm"]}, {"t": "Normteile", "p": ["4 Schrauben M6 × 16 mit 4 Muttern"]}],
+     "masse": {"Gewicht": "d32 270 g, d63 315 g (Stahl)", "Bein": "Rechteckrohr 40 × 40 × 3"}, "grenzen": "Befestigung nur an Tischbeinen, nie an Streben (Plan M10 Regel 7).", "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"},
     {"match": "^lt_verteiler_d50$", "titel": "Verteiler d50 (Hauptkreislauf)", "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",
      "status": "gebaut, 29/29 Prüfungen (Interferenz 0, Volumen gegen CSG-Raster)",
      "ablauf": ["Das Rohr d50 vom Biofilter-Überlauf steckt in die Muffe am Einlauf.", "Vier Abgänge nach oben: Beete d40, NFT d32, Messkreis d20, Bypass d50 (zuletzt, mit Drossel).", "Das Ende ist geschlossen; der Strom nimmt nach jedem Abgang ab."],
@@ -100,10 +176,13 @@ if __name__ == "__main__" and "--json" in sys.argv:
 
 if __name__ == "__main__":
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
-    jobs = {"verteiler": ("lt_verteiler_d50", verteiler_d50)}
-    for key, (fname, fn) in jobs.items():
+    jobs = [("verteiler", "lt_verteiler_d50", verteiler_d50)]
+    jobs += [("schelle", f"lt_schelle_vk_d{d}", (lambda d=d: schelle(d))) for d in SCH_SIZES]
+    for key, fname, fn in jobs:
         if want and key not in want:
             continue
         res = fn()
-        L.save(res[0], res[1], fname)
+        out = L.save(res[0], res[1], fname)
+        if key == "schelle":
+            sc.assign_part_materials(out, "LT stahl")                  # Normteile (Body<n>) tragen sonst die Standarddichte 1,29
         print(fname, res[2])

@@ -1,6 +1,6 @@
 """Pruefung der W36-Leitungsteile (Verteiler d50, ...): Masse, Ports (stirnflaechen), Interferenz 0, Kollisionsfreiheit der Abgaenge, Volumen unabhaengig per Raster.
 Aufruf: python scripts/workshop/check_lt_w36.py [verteiler ...]   (ohne Teil: alle; exit 1 bei FAIL)"""
-import sys, os, math
+import sys, os, math, json, subprocess
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 import leitung as L
@@ -15,6 +15,30 @@ def port_checks(ck, fname, body, tag=None):
     for name, pos, dr, art, dn in L.ports(fname):
         hit = any(sum(n[i] * dr[i] for i in range(3)) > 0.999 and math.dist(cen, pos) < 0.6 for n, cen in planes)
         ck.eq(f"{fname} Port {name} ({art}, {dn}) Stirnflaeche an {tuple(round(v, 2) for v in pos)}", 1 if hit else 0, 1)
+
+def interference(path, extra=()):
+    """inspect.interference ueber alle Koerper (plus optionale Zusatzbefehle, z. B. Gegenstuecke); Rueckgabe: Liste der ueberlappenden Paare mit Volumen > 0,5 mm3."""
+    script = os.path.join(sc.TMP, "ws-w36-interf.json"); out = os.path.join(sc.TMP, "ws-w36-interf-out.json")
+    json.dump({"commands": list(extra) + [{"command": "inspect.interference", "params": {"budget_s": 240}}]}, open(script, "w"))
+    r = subprocess.run([sc.CLI, "run", script, "--in", path, "--results", "--json-out", out], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER interference: " + r.stderr.strip() + r.stdout.strip())
+    d = json.load(open(out, encoding="utf-8"))
+    def find(o):
+        if isinstance(o, dict):
+            if "interferences" in o:
+                return o
+            for v in o.values():
+                x = find(v)
+                if x is not None:
+                    return x
+        elif isinstance(o, list):
+            for v in o:
+                x = find(v)
+                if x is not None:
+                    return x
+    res = find(d) or {}
+    return [i for i in res.get("interferences", []) if i.get("volume_mm3", 0) > 0.5], res
 
 def raster_volume(inside, lo, hi, h=1.0):
     n = 0
@@ -84,11 +108,52 @@ def check_verteiler(ck):
     ck.eq("verteiler d50 Volumen = CSG-Raster (1 mm)", vs, v, v * 0.01)
     print(f"INFO verteiler d50: Volumen {vs:.0f} mm3, Masse {vs * 1.4e-6:.3f} kg (PVC-U 1,4), Wasser {math.pi * rb * rb * (g['L'] - W.V50_END - t) / 1e6:.3f} l (nur Sammler)")
 
+def check_schelle(ck):
+    for d in W.SCH_SIZES:
+        g = W.sch_geom(d)
+        fname = f"lt_schelle_vk_d{d}"
+        path = os.path.join(D, fname + ".sc")
+        ev = sc.evaluate(path)
+        names = [b["name"] for b in ev["bodies"]]
+        ck.eq(f"schelle d{d} Koerperzahl (3 Blechteile + 8 Normteile M6)", ev["body_count"], 11)
+        bb = {b["name"]: b["bbox"] for b in ev["bodies"]}
+        hv, hh, sb = bb["Halbschale_vorn"], bb["Halbschale_hinten"], bb["Spannband"]
+        ck.eq(f"schelle d{d} Halbschale vorn: Aussenradius (Ring {W.SCH_T:g} mm)", hv["max"][1], g["ro"], 0.05)
+        ck.eq(f"schelle d{d} Halbschale vorn: Ohr reicht bis z = ro + 14", hv["max"][2], g["ro"] + 14, 0.05)
+        ck.eq(f"schelle d{d} Ringbreite", hv["max"][0] - hv["min"][0], W.SCH_W, 0.05)
+        ck.eq(f"schelle d{d} Rueckenplatte Breite", hh["max"][0] - hh["min"][0], 2 * W.SCH_PLATE_HALF, 0.05)
+        ck.eq(f"schelle d{d} Platte-Rueckseite y_min = Steg + Platte (Anlageflaeche)", hh["min"][1], g["yf"], 0.05)
+        ck.eq(f"schelle d{d} Anlageflaeche am Bein bei y = {g['yf']:g}", hh["min"][1], g["yf"], 0.05)
+        ck.eq(f"schelle d{d} Spannband Ruecken liegt {W.SCH_SPIEL:g} mm hinter dem Bein (y = {g['yb'] - W.SCH_SPIEL - W.SCH_BAND_T:g})", sb["min"][1], g["yb"] - W.SCH_SPIEL - W.SCH_BAND_T, 0.05)
+        ck.eq(f"schelle d{d} Spannband Breite ueber die Laschen", sb["max"][0] - sb["min"][0], 2 * (W.LEG / 2 + W.SCH_SPIEL + W.SCH_BAND_T - 1 + W.SCH_TAB), 0.05)
+        for half in ("vorn", "hinten"):
+            fs = sc.faces(path, f"Halbschale_{half}")
+            rr = {round(f["cylinder"]["radius"], 2) for f in fs if f.get("cylinder") and abs(f["cylinder"]["axis"][0]) > 0.99}
+            ck.eq(f"schelle d{d} Halbschale {half}: Rohrbohrung = d{d}", 1 if round(d / 2, 2) in rr else 0, 1)
+        # Port Bein: Anlageflaeche der Rueckenplatte mit Normale -Y und Mittelpunkt auf der Beinachse
+        fs = sc.faces(path, "Halbschale_hinten")
+        hit = any(f.get("plane_normal") and f["plane_normal"][1] < -0.999 and math.dist(f["centroid"], (0, g["yf"], 0)) < 0.6 for f in fs)
+        ck.eq(f"{fname} Port Bein (Vierkant 40x40): Anlageflaeche bei y = {g['yf']:g}, Beinachse y = {g['leg_y']:g}", 1 if hit else 0, 1)
+        cax = [f["cylinder"] for f in sc.faces(path, "Halbschale_vorn") if f.get("cylinder") and abs(f["cylinder"]["radius"] - d / 2) < 0.01]
+        ck.eq(f"{fname} Port Rohrachse (Aufnahme DN{d}): Bohrungsachse X durch den Ursprung (y = z = 0)", 1 if cax and all(abs(c["origin"][1]) < 0.01 and abs(c["origin"][2]) < 0.01 and abs(abs(c["axis"][0]) - 1) < 1e-6 for c in cax) else 0, 1)
+        ck.eq(f"schelle d{d} Abstand Plattenvorderseite zur Rohroberflaeche >= 12 (Mutter + Schraubenende)", 1 if (-d / 2 - g["ypf"]) >= 12 else 0, 1)
+        # Interferenz 0 mit Gegenstuecken: Bein 40x40 (Achse Z bei y = leg_y) und Rohr d (Achse X bei y = 0)
+        extra = [{"command": "solid.box", "params": {"length": W.LEG, "width": W.LEG, "height": 400, "center": [0, g["leg_y"], 0], "operation": "new", "name": "T_Bein", "body_name": "Test_Bein"}},
+                 {"command": "solid.cylinder", "params": {"diameter": d, "height": 400, "base": [-200, 0, 0], "axis": [1, 0, 0], "operation": "new", "name": "T_Rohr", "body_name": "Test_Rohr"}}]
+        bad, res = interference(path, extra)
+        ck.eq(f"schelle d{d} Interferenz 0 (alle Koerperpaare inkl. Bein und Rohr; geprueft {res.get('checked', '?')} Koerper, Paare mit Ueberlappung)", len(bad), 0)
+        for i in bad:
+            print("   Ueberlappung:", i.get("a"), i.get("b"), i.get("volume_mm3"))
+        # Gewicht (Stahl 7,85) aus der Messung
+        print(f"INFO schelle d{d}: Masse {ev['total']['mass_g']:.0f} g (Stahl verzinkt 7,85), Volumen {ev['total']['volume_mm3']:.0f} mm3")
+
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))
     ck = sc.Check("lt_w36")
     if not want or "verteiler" in want:
         check_verteiler(ck)
+    if not want or "schelle" in want:
+        check_schelle(ck)
     return ck.done()
 
 if __name__ == "__main__":

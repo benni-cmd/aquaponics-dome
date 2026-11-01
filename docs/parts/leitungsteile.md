@@ -269,3 +269,47 @@ Geschwindigkeiten gerechnet aus den Innendurchmessern der Bibliothek (Wand SDR 2
 **Bild:** `renders/components/leitungsteile/lt_verteiler_d50.png`.
 
 **Offene Fragen:** (1) Stopfen/Kappe d20 und d50 fehlen in der Bibliothek (Linie 2 ohne Messkreis, Reserve): melden, nicht gebaut. (2) Abgang d40 (Beete) gegen Beet-Port d25: Klaerung in R45, hier unveraendert nach Netz. (3) Abstand der Haehne an Linie 1 (Verteilerplatz) gegen die Umgebung wird erst bei der Platzierung (S3) geprueft.
+
+## Rohrschelle fuer Vierkant-Tischbein `lt_schelle_vk_d32`, `lt_schelle_vk_d63` (T70-SVK-32 / T70-SVK-63)
+
+**Mini-Plan.** Problem: Die Bibliotheksklemme `lt_klemme_d*` ist eine Fuss-Klemme (Fuss mit 2 Schrauben M6 in Holz/Duebel) und sitzt nicht an einem Vierkantprofil; der NFT-Strang d32 (K12) und die Rohre d63 muessen aber an den Tischbeinen gehalten werden (Plan `m10-leitungen.md` Abschnitt 4 Regel 7: Befestigung nur an Tischbeinen, nie an Streben). Intent: Rohr d32 und d63 mit einer Standard-Rohrschelle am Rechteckrohr 40 x 40 x 3 befestigen (`nft_tisch.md`, `leg_w`). Goal: zwei Komponenten (d32, d63) mit Ports Rohrachse und Bein, Check gruen, Interferenz 0 gegen Bein und Rohr. Bau: zwei Halbschalen (Ring 3 mm, Breite 20, Teilungsebene durch die Rohrachse, Ohren mit Schrauben M6x16 und Mutter), die hintere Halbschale traegt einen Steg und eine Rueckenplatte 74 x 20 x 4; ein Spannband 20 x 3 (Spiel 0,5 mm) umfasst das Bein und zieht die Platte mit zwei Schrauben M6x16 an. Der Steg haelt die Platte 14 mm vom Rohr entfernt (Mutter 5,2 + Schraubenende 3,8 + Luft); eine erste Fassung mit 4 mm Abstand hatte Muttern im Rohr (Interferenz-Test 6 Treffer) und wurde verworfen.
+
+**Funktion:** haelt ein waagerechtes Rohr (Achse X) im Abstand an einem senkrechten Bein (Achse Z). Ein Bein, ein Rohr je Schelle; Klemmabstand 0,5 bis 1 m (`hydraulics.md` 5). Befestigung nur an Tischbeinen, nie an Streben, Knoten, Haut oder Plane.
+
+| Merkmal | d32 | d63 |
+|---|---|---|
+| Rohr-Aussen-d / DN | 32 / DN25 | 63 / DN50 |
+| Ring (Aussenradius ro) | 19,0 | 34,5 |
+| Ohren (z, Schraube M6x16) | +-26 | +-41,5 |
+| Rueckenplatte | 74 x 20 x 4, Vorderseite 14 mm vor der Rohroberflaeche | gleich |
+| Anlageflaeche am Bein, y | -34 | -49,5 |
+| Beinachse, y | -54 | -69,5 |
+| Spannband | 20 x 3, Innenweite 41 (Bein 40 + 2 x 0,5), Laschen 14, Schrauben x = +-30 | gleich |
+| Masse (Stahl 7,85, Messung) | 270 g | 315 g |
+| Normteile | 4 Schrauben M6x16 ISO 4017, 4 Muttern M6 | gleich |
+
+**Ports** (Bauteil-KS, mm; Ursprung = Rohrachse, Rohr liegt entlang X, Bein senkrecht dahinter bei -Y):
+
+| Port | DN | Art | Lage x, y, z | Richtung |
+|---|---|---|---|---|
+| Rohrachse | DN25 (d32) bzw. DN50 (d63) | Aufnahme | 0, 0, 0 | +X |
+| Bein | Vierkant 40x40 | Aufnahme | 0, -54 (d32) bzw. -69,5 (d63), 0 | +Z (Beinachse) |
+
+Montage: Port Bein auf die Beinachse des Tischs legen (Beinmitte = Mitte der Anlageflaeche + 20 mm in -Y), Port Rohrachse liegt dann 54 bzw. 69,5 mm vor der Beinmitte in +Y; Position entlang des Beins = Z der Schelle. Bei Beinen mit anderer Orientierung die Instanz um Z drehen (yaw).
+
+**Verbindungen:** Halbschalen: 2 x M6x16 + Mutter (Kopf vorn, Mutter hinten). Platte am Bein: Spannband mit 2 x M6x16 + Mutter, Kopf auf der Bandlasche, Mutter vor der Platte; Anzugsmoment nach Schraubenklasse (ca. 8 Nm, [A]). Verzinkt wie die Tischbeine (`nft_tisch.md`: Stahl verzinkt, Farbe #aeb4b8).
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| Beinprofil 40 x 40 x 3 | mm | `docs/parts/nft_tisch.md` (`leg_w` 40, `leg_wall` 3), Quelle dort [A] | mittel |
+| Ring 3 mm, Breite 20, Ohren und Schrauben M6x16 | mm | A, wie `lt_klemme` (Ring 3, Breite 20, M6) | niedrig |
+| Rueckenplatte 74 x 20 x 4, Steg 14, Spannband 20 x 3 mit Spiel 0,5 | mm | A, Konstruktionspraxis (Bandschelle am Vierkant); keine Fabrikat-Vorlage | niedrig |
+| Standardmasse d32 und d63 | Rohr-d der Bibliothek | E | hoch |
+
+**Montage (L4):** (1) Halbschale hinten am Bein anlegen, Spannband um das Bein legen, Laschen auf die Plattenrueckseite schrauben (2 x M6x16, Mutter vor der Platte). (2) Rohr einlegen, Halbschale vorn aufsetzen, 2 x M6x16 mit Mutter anziehen. (3) Abstand 0,5 bis 1 m einhalten; bei Rohr d63 nachkontrollieren, dass die Ohren (z +-41,5) nicht am Querholm des Tisches anliegen. Werkzeug: Schluessel SW10, Maulschluessel/Nuss. Alternative lokale Fertigung: Handelsschelle (Rohrschelle mit Gummieinlage, DIN 3016) plus Winkel und Bandschelle fuer Vierkant.
+
+**Pruefung:** `check_lt_w36.py schelle` 30/30 PASS (beide Groessen): 11 Koerper (3 Blechteile + 8 Normteile), Aussenradius, Ohr, Ringbreite, Plattenbreite, Anlageflaeche, Bandspiel, Bandbreite, Rohrbohrung d, Port Bein (Anlageflaeche), Port Rohrachse (Bohrungsachse), Abstand Platte-Rohr >= 12, Interferenz 0 gegen Bein 40 x 40 und Rohr d (inspect.interference, 13 Koerper). Bild mit Bein und Rohr (durchsichtig): `renders/components/leitungsteile/lt_schelle_vk_d32.png`, `lt_schelle_vk_d63.png`.
+
+**Offene Fragen:** (1) Bandschelle und Rohrschelle sind Bauformen ohne Fabrikat; Anzugsmoment [A]. (2) Kollision mit Winkelhalter T23, Querholm und Diagonalen am Tischbein wird erst bei der Platzierung (S3/S6) geprueft; die Schelle belegt z +-10 (Platte und Band) bzw. +-41,5 (Ohren d63) um ihre Mitte. (3) Beinprofil gilt fuer Mitte/aussen und innen (40 x 40); die Querholme 40 x 60 sind keine Aufnahme.

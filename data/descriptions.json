@@ -571,6 +571,39 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
     },
     {
+      "match": "^lt_schelle_vk_",
+      "titel": "Rohrschelle für Vierkant-Tischbein",
+      "was": "Hält ein Rohr (d32 oder d63) waagerecht am senkrechten Vierkant-Bein 40 × 40 des Tischs; die Fuß-Klemme der Bibliothek passt nicht an ein Bein.",
+      "status": "gebaut, 30/30 Prüfungen mit Interferenz 0 gegen Bein und Rohr",
+      "ablauf": [
+        "Zwei Halbschalen mit je zwei Schrauben M6 umfassen das Rohr.",
+        "Eine Rückenplatte mit Steg liegt am Bein; ein Spannband um das Bein zieht die Platte mit zwei Schrauben M6 fest.",
+        "Der Steg hält die Platte 14 mm vom Rohr entfernt, damit Muttern und Schraubenenden Platz haben."
+      ],
+      "aufbau": [
+        {
+          "t": "Blechteile",
+          "p": [
+            "Halbschalen (Ring 3 mm, Breite 20) mit Ohren",
+            "Rückenplatte 74 × 20 × 4 mit Steg",
+            "Spannband 20 × 3 um das Bein, Spiel 0,5 mm"
+          ]
+        },
+        {
+          "t": "Normteile",
+          "p": [
+            "4 Schrauben M6 × 16 mit 4 Muttern"
+          ]
+        }
+      ],
+      "masse": {
+        "Gewicht": "d32 270 g, d63 315 g (Stahl)",
+        "Bein": "Rechteckrohr 40 × 40 × 3"
+      },
+      "grenzen": "Befestigung nur an Tischbeinen, nie an Streben (Plan M10 Regel 7).",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W36)"
+    },
+    {
       "match": "^lt_",
       "titel": "Leitungsteile",
       "was": "Normteile des Rohrnetzes als Komponenten mit Ports.",

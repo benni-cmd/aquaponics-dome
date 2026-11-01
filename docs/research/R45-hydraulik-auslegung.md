@@ -1,7 +1,7 @@
 # R45: Hydraulik und Auslegung der Lücken L01, L03, L10, L04, L06, L05
 
 **Auftrag:** `docs/jobs/R45-hydraulik-auslegung.md` · **Rolle:** Fachrecherche (liest, rechnet, schreibt nur diese Datei und `scripts/r45_*.py`) · **Begonnen:** 01.11.2026
-**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve ✔ · 3 Beet-Sumpf offen · 4 Belüftung offen · 5 Aktivkohle offen
+**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve ✔ · 3 Beet-Sumpf ✔ · 4 Belüftung offen · 5 Aktivkohle offen
 **Kennzeichnung:** [A] Annahme · [E] Schätzung/Rechnung · [Q] belegt mit Quelle. Koordinaten: Z relativ zum Innenboden (Bauskript Z − 400).
 
 ---
@@ -163,3 +163,59 @@ Die Spanne je Zelle ist neu gegen gealtert. **Befund:** In den zwei ungünstigen
 4. Messung am gebauten Heber (Wasserstandsdifferenz Pool/Filter bei 110 l/min) ersetzt die Rechnung.
 
 **Geprüft gegen:** `scripts/heber_rechnung.py`, `data/leitungstrassen.json` (K01, K01-m, K01-b, K17, K17-m, K17-b), `docs/loop-state.md` (Befund 3), Engineering Toolbox Verlustbeiwerte, MathWorks/Crane-Zusammenfassung, EN 1452-Wandstärken (Engineering Toolbox) · **Rechnung:** `python -X utf8 scripts/r45_heber.py`
+
+---
+
+## 3. Beet-Sumpf (L04, F3)
+
+**Problem:** Der Beet-Ablauf liegt ca. 600 mm unter dem Pool-Spiegel (Beetablauf Z −100, Rücklauf-Sammelrohr oberhalb Z 515); ohne Sumpf mit Pumpe kommt das Beetwasser nicht zurück. **Intent:** Werkstatt (W37) baut den Sumpf, Montage (S4) legt ihn an. **Goal:** Volumen, Pumpe, Förderhöhe, Schwimmerhöhen, Abdeckung und Leistung für `system_specs.py` (nur melden).
+
+### Empfehlung
+
+**Je Linie ein eingegrabener Rundtank 500 l (nicht 300 l), eine Teichpumpe 5300 l/h / 60 W (Hmax 2,8 m) mit Rückschlagventil, drei Schwimmerschalter (AUS, EIN, Alarm), dichter lichtdichter begehbarer Deckel. Die Flutsperre bei „Alarm“ ist Pflicht.**
+
+| Punkt | Wert | Herleitung / Quelle |
+|---|---|---|
+| Volumen | **500 l nutzbar-brutto** (z. B. Ø 0,8 m × 1,0 m, 1 cm Pegel = 5 l); 300 l reichen nur bei einzeln gestaffelten Abläufen | [E] `r45_sumpf.py`: 1 Beet je 4,3 min Spitze 25 l; **2 Beete gleichzeitig** Spitze 168 l; 3 gleichzeitig 405 l; dazu Totvolumen ca. 50 l und Schalthysterese 100 l → 318–590 l je nach Staffelung |
+| Pumpe | Teichpumpe **5300 l/h bei 0 m, Hmax 2,8 m, 60 W**, Korn ≤ 8 mm (Beispiel: OASE AquaMax Eco Classic 5500) | [Q] Händlerangaben ([OBI](https://www.obi.de/p/1358613/oase-filter-und-bachlaufpumpe-aquamax-eco-classic-5500), [topratgeber24](https://www.topratgeber24.de/amp/teichpumpe/oase-51096-filter-und-bachlaufpumpe-aquamax-eco-classic-5500)); Kennlinie nicht gefunden, parabolisch angenommen [A] |
+| Arbeitspunkt | **61 l/min bei 1,47 m** (statisch 1,25 m, Förderleitung d40 4 m, 2 Bögen + Rückschlagventil); Spanne 56–66 l/min für 1,0–1,5 m statisch | [E] Pumpenkennlinie gegen Anlagenkurve (Darcy-Weisbach, `r45_sumpf.py`) |
+| Förderhöhe statisch | 1,0–1,5 m | [A] vom Sumpf-Wasserspiegel bis zum Rücklauf-Sammelrohr oberhalb Z 515; Lage des Rohrs an der Einspeisestelle ist M10 S4 |
+| Leistung elektrisch | **60 W je Pumpe; Laufanteil 90 % → 54 W Mittel je Linie, 108 W beide, 2,6 kWh/Tag** | [E] Netzannahme war 36 W (25 %, 54,5 l/min bei 1,0 m): trägt nur bei η 25 % und ohne Rohrverlust; hier hydraulisch 14,6 W bei 24 % Wirkungsgrad |
+| Förderleitung | PVC-U d40 × 1,9 (v 0,99 m/s), Kugelrückschlagventil d40, ≤ 4 m | EN 1452 (siehe Abschnitt 1) |
+| Schaltspiel | Hysterese 100 l (200 mm) → 3,4 Starts/h, Pumpe 16 min an, 1,8 min aus | [E]; Praxis: Hysterese über Schwimmerkabel/Gewicht einstellbar ([HTWK-Leipzig-Pumpensumpf-Unterlage](https://ing-ebit.htwk-leipzig.de/fileadmin/portal/m_feit_ebit/Bilder/Forschung/Kompetenzen/Elektromedizinische_Technik/Unterlagen-Sammlung/Abpumpanlage.pdf), Forenbeiträge); keine Norm-Grenze für Starts/h gefunden |
+
+### Pegelhöhen (Ø 0,8 m, Pegel über Tankboden)
+
+1. **AUS** bei 120 mm (60 l): Pumpe bleibt eingetaucht, Totvolumen.
+2. **EIN** bei 320 mm (160 l): Hysterese 200 mm = 100 l.
+3. **ALARM / Flutsperre** bei 620 mm (310 l): Steuerung sperrt die Beet-Zufuhr (K11/K27) und meldet; bei Pumpenausfall laufen sonst ca. 705 l in 12 min zu (3 Beete), das ist mehr als der Tank fasst.
+4. Einlauf-Rohrsohle (Sektorsammler) bei 800 mm; **höchster Wasserstand bleibt darunter**, damit nichts zurückstaut in die Beet-Siphons (Gegendruck bremst den Siphon, Abschnitt 1).
+
+Es gibt **keinen Schwerkraft-Notüberlauf** (der Sumpf liegt tiefer als der Pool). Deshalb: Alarmschwimmer an die Steuerung, optional Doppelschwimmer und eine zweite Pumpe als Reserve (50 % Redundanz, +60 W Stillstand) [Empfehlung, Entscheidung Ben].
+
+### Abdeckung (Geruch, Algen)
+
+Deckel dicht, lichtdicht (kein Licht → keine Algen), begehbar (Standard-Pumpenschacht mit Deckel, [A] Handelsmaß nicht gegengeprüft). Verdrängungsluft über Entlüftung d32 mit Insektengitter; wegen Umsatz von 55 l/min bleibt das Wasser frisch, Geruch entsteht nur bei Pumpenausfall. Kabel- und Förderleitungsdurchführung mit Dichtung. Aktivkohle-Entlüftung nicht nötig [E].
+
+### Bauteil-Skizze `beet_sumpf` (je Linie)
+
+| Merkmal | Maß |
+|---|---|
+| Tank | PE rund Ø 0,8 m × H 1,0 m, ca. 500 l; Grube Ø 1,0 m, Tiefe 1,0 m, Deckel bündig oder + 0,05 m |
+| Zulauf | d63 Sektorsammler (M10 S4) bei 800 mm, Gefälle ≥ 1 % [A] |
+| Auslauf | Förderleitung d40 oben aus dem Deckel, Rückschlagventil, Weiterführung zum Sammelrohr (Abschnitt 1 Maße) |
+| Einbauten | 1 Pumpe, 3 Schwimmerschalter an Stange, Kabeldurchführung, Entlüftung d32 |
+| Anschluss Strom | 230 V, 60 W; Steuerung Pegel + Flutsperre (Schaltschrank) |
+
+### Meldung für `scripts/system_specs.py` (nicht geändert)
+
+2 zusätzliche Verbraucher à 60 W (Mittel 54 W), also **108–120 W, 2,6–2,9 kWh/Tag** gegen 72 W in der Netzliste (2 × 36 W).
+
+### Offene Punkte Frage 3
+
+1. Echte Pumpenkennlinie (OASE-Datenblatt) und tatsächliche Förderhöhe (Einspeisehöhe am Sammelrohr): Werkstatt/Montage.
+2. Zwei Beete gleichzeitig ist der Planfall; Steuerung muss die Staffelung erzwingen (max. 2 gleichzeitig).
+3. Redundanz-Pumpe: Entscheidung Ben (Kosten/Verfügbarkeit D69 nicht Thema).
+4. Pumpenschacht-Fabrikat und Deckelklasse: Werkstatt.
+
+**Geprüft gegen:** `data/leitungsnetz.json` (K14/K16/K30/K32, F3), `data/roadmap.json` (L04), `docs/parts/ibc_beet.md`, Abschnitte 1 und 2, Händlerseiten Pumpe, HTWK-Unterlage · **Rechnung:** `python -X utf8 scripts/r45_sumpf.py`

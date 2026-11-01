@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 abends: PAUSE, nichts laeuft. Der Plan zum Schliessen der 19 Luecken steht in drei Wellen und wartet auf deine Freigabe (E11). Oben stehen alle Fragen und Handlungen, die nur du uebernehmen kannst.",
+ "stand": "Stand 01.11.2026 abends: Welle 1 laeuft (R45 Hydraulik mit Schlammkonzept zuerst, W36 Werkstatt A). Weitere Sitzungen nacheinander wegen des Limits. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -491,11 +491,11 @@
   {
    "id": "W36",
    "titel": "Werkstatt A (Leitungsteile): Verteiler d50, Rohrschelle Vierkant, Leerrohr DN50/DN100 mit Bogen, Kugelhahn-Schacht, Pruefung Tropfrohr und Rinnen-Schlauch",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3,
    "wer": "Werkstatt (eine Sitzung)",
-   "notiz": "VORBEREITET, nicht gebaut. Eine Sitzung, weil alle Teile dieselben Bibliotheksdateien schreiben (docs/parts/leitungsteile.md, data/components/leitungsteile.json, scripts/workshop/leitung.py, check_leitungsteile.py); zwei Sitzungen wuerden sich ueberschreiben. Reihenfolge: Verteiler d50 (Blatt docs/jobs/W36-verteiler-d50.md, bereit), Rohrschelle, Leerrohr mit Bogen, Schacht mit Deckel, zuletzt nur Pruefung, ob die Bibliothek fuer Tropfrohr und Rinnen-Schlauch reicht. Je Teil ein Commit; bei vollem Fenster frisch weiter ueber docs/workshop-state.md. Der Kabel-Sweep bleibt in S6. Schliesst L02, L07 (Teile), L16, L17. Je weiteres Teil eigenes Blatt erst beim Start (Aktualitaetspruefung)."
+   "notiz": "GESTARTET 01.11. abends. Blatt docs/jobs/W36-verteiler-d50.md (Teil 1 Verteiler, Teile 2 bis 5 in der Erweiterung). Eine Sitzung, weil alle Teile dieselben Bibliotheksdateien schreiben (docs/parts/leitungsteile.md, data/components/leitungsteile.json, scripts/workshop/leitung.py, check_leitungsteile.py); zwei Sitzungen wuerden sich ueberschreiben. Reihenfolge: Verteiler d50 (Blatt docs/jobs/W36-verteiler-d50.md, bereit), Rohrschelle, Leerrohr mit Bogen, Schacht mit Deckel, zuletzt nur Pruefung, ob die Bibliothek fuer Tropfrohr und Rinnen-Schlauch reicht. Je Teil ein Commit; bei vollem Fenster frisch weiter ueber docs/workshop-state.md. Der Kabel-Sweep bleibt in S6. Schliesst L02, L07 (Teile), L16, L17. Je weiteres Teil eigenes Blatt erst beim Start (Aktualitaetspruefung)."
   },
   {
    "id": "L01",
@@ -675,7 +675,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 1,
    "wer": "Ben",
-   "notiz": "Empfehlung: in drei Wellen freigeben. Welle 1: Netzliste umhaengen (ich), R45 Hydraulik-Auslegung (nur lesen und rechnen, darf parallel laufen) und W36 Werkstatt A (Leitungsteile). Welle 2: W37 Werkstatt B (Anlagenteile) nach E12, E13 und R45. Welle 3: M10 S3 bis S7, jeder Schritt mit seinen Luecken als Pruefauftrag. Nur eine schreibende Sitzung gleichzeitig. Zum Ansehen: docs/packages/m10-abnahme.md (Stand, Bilder, sechs Punkte). Blockiert: alles Weitere, bis du freigibst."
+   "notiz": "Ben 01.11. abends: Luecken direkt an Sitzungen geben, damit sie geloest werden. Welle 1 laeuft deshalb (R45 und W36; Netzliste mache ich selbst). Welle 2 (W37) und Welle 3 (M10 S3 bis S7) folgen nacheinander, mit Beachtung des Limits (Woche 71 Prozent). Empfehlung: in drei Wellen freigeben. Welle 1: Netzliste umhaengen (ich), R45 Hydraulik-Auslegung (nur lesen und rechnen, darf parallel laufen) und W36 Werkstatt A (Leitungsteile). Welle 2: W37 Werkstatt B (Anlagenteile) nach E12, E13 und R45. Welle 3: M10 S3 bis S7, jeder Schritt mit seinen Luecken als Pruefauftrag. Nur eine schreibende Sitzung gleichzeitig. Zum Ansehen: docs/packages/m10-abnahme.md (Stand, Bilder, sechs Punkte). Blockiert: alles Weitere, bis du freigibst."
   },
   {
    "id": "W37",
@@ -693,7 +693,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Ben",
-   "notiz": "Kann ich nicht entscheiden, es ist dein Betriebskonzept. Optionen: (a) abgedeckter, beluefteter Kompostbehaelter oder Wurmkompost AUSSERHALB des Kreislaufs [Empfehlung der Recherche R30], (b) Schlamm in ein Beet oder Kompost leiten (so steht es in der Netzliste), (c) Reaktor (R30 raet ab). Dazu der Standort: im Dom (Platz knapp) oder aussen mit Leitung durch Fundamentring und Plane (Frost). Menge etwa 22 bis 28 l je Tag bei 346 kg [E, nicht nachgemessen]. Blockiert: Schlammsammler in W37 und M10 S5 (Luecke L01)."
+   "notiz": "R45 Teil 0 liefert jetzt eine konkrete Empfehlung (Konzept, Standort, Volumen, Anschluss). Ich setze sie als STANDARDANNAHME, damit die Verrohrung weitergeht; du kannst sie hier ueberstimmen. Kann ich nicht entscheiden, es ist dein Betriebskonzept. Optionen: (a) abgedeckter, beluefteter Kompostbehaelter oder Wurmkompost AUSSERHALB des Kreislaufs [Empfehlung der Recherche R30], (b) Schlamm in ein Beet oder Kompost leiten (so steht es in der Netzliste), (c) Reaktor (R30 raet ab). Dazu der Standort: im Dom (Platz knapp) oder aussen mit Leitung durch Fundamentring und Plane (Frost). Menge etwa 22 bis 28 l je Tag bei 346 kg [E, nicht nachgemessen]. Blockiert: Schlammsammler in W37 und M10 S5 (Luecke L01)."
   },
   {
    "id": "E13",
@@ -754,11 +754,11 @@
   {
    "id": "R45",
    "titel": "Hydraulik und Auslegung fuer die Luecken: Heber-Reserve, Beet-Ablauf, Beet-Sumpf, Aktivkohle, Luftbedarf",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Fachrecherche (frische Sitzung)",
-   "notiz": "Eine Sitzung, nur lesen und rechnen: schreibt nur ihre eigene Recherche-Datei und ein Rechenskript, aendert kein Modell, darf deshalb parallel zu W36 laufen. Fuenf Fragen: (1) Heber-Reserve L10 mit zwei Quellen nachrechnen, Varianten Rohr, Weg, Boegen; (2) Beet-Ablauf d25 gegen d40 L03 mit Empfehlung (ich entscheide danach, du siehst es in der Abnahme); (3) Beet-Sumpf L04: Volumen, Pumpe, Schwimmerschalter, Leistung fuer system_specs; (4) Aktivkohle L05 fuer Chlor und Chloramin: Kontaktzeit, Gehaeusegroesse; (5) Luftbedarf L06: Annahme Pool 130 l/min pruefen, Gebaese, Verteiler. Ergebnis: Auslegungsblatt mit Massen fuer W37 und Vorlage fuer E14. Zwei unabhaengige Quellen je Zahl, sonst offen markieren."
+   "notiz": "GESTARTET 01.11. abends (Ben: Luecken direkt an Sitzungen geben). Blatt docs/jobs/R45-hydraulik-auslegung.md. Reihenfolge: 0 Schlammkonzept zuerst (damit die Verrohrung weitergehen kann), 1 Beet-Ablauf, 2 Heber, 3 Beet-Sumpf, 4 Luft, 5 Aktivkohle. Nur lesen und rechnen. "
   },
   {
    "id": "M10-S3",

@@ -1,7 +1,7 @@
 # R45: Hydraulik und Auslegung der Lücken L01, L03, L10, L04, L06, L05
 
 **Auftrag:** `docs/jobs/R45-hydraulik-auslegung.md` · **Rolle:** Fachrecherche (liest, rechnet, schreibt nur diese Datei und `scripts/r45_*.py`) · **Begonnen:** 01.11.2026
-**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve offen · 3 Beet-Sumpf offen · 4 Belüftung offen · 5 Aktivkohle offen
+**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve ✔ · 3 Beet-Sumpf offen · 4 Belüftung offen · 5 Aktivkohle offen
 **Kennzeichnung:** [A] Annahme · [E] Schätzung/Rechnung · [Q] belegt mit Quelle. Koordinaten: Z relativ zum Innenboden (Bauskript Z − 400).
 
 ---
@@ -114,3 +114,52 @@ Glockensiphon-Faustregeln: Glocke etwa doppelt so groß wie das Standrohr; Zulau
 4. `leitungsnetz.json` K14/K30 auf d50 und Spitze 47–54 l/min: Orchestrator (ich ändere die Datei nicht).
 
 **Geprüft gegen:** `docs/parts/ibc_beet.md` (Standrohr d25, Bulkhead D36, Glocke d75), `data/leitungsnetz.json` K11–K15, F3, EN 1452 (Engineering Toolbox), Bevo-Datenblatt, Siphon-Zusammenfassungen · **Rechnung:** `python -X utf8 scripts/r45_beetablauf.py`
+
+---
+
+## 2. Heber-Reserve K01/K17 (L10)
+
+**Problem:** Der Seitenablauf Pool (Z 740) führt über einen Graben (Z 150) zum Feinfilter-Einlauf (Z 720); `heber_rechnung.py` nennt 27–81 mm Reserve gegen 195 mm Druckhöhe (Grenze 30 mm). **Intent:** Entscheidung für Ben (E14), ob das so gebaut bleibt. **Goal:** Nachrechnung mit dem verlegten Stand, zwei Quellen für die Verlustbeiwerte, Varianten mit Wirkung in mm.
+
+### Ergebnis
+
+**Die Reserve hängt fast allein vom Bogen-Verlustbeiwert ab, und der ist für verklebte PVC-Bögen in keiner meiner Quellen belegt. Bauen auf „es reicht“ ist nicht gedeckt. Empfehlung: durchgehend d75 statt d63 für K01/K17.**
+
+Verlegter Stand (`data/leitungstrassen.json`): K01 3036 mm Rohr (1366 vor, 1671 hinter dem Absetzer-T), K17 2245 mm (1116 + 1130); je Linie **4 Bögen 90°, 2 T im Durchgang**, Strom 97,5 l/min vor und 110 l/min hinter dem Absetzer-T, Rohr d63 × 3,0 (Innen-Ø 57,0 mm), Eintritt 0,5, Austritt 1,0. Rechnung `scripts/r45_heber.py` (Darcy-Weisbach, Swamee-Jain, Rauheit neu 0,0015 mm / gealtert 0,05 mm).
+
+| Fall (Bogen / T) | Quelle | K01 Reserve | K17 Reserve |
+|---|---|---|---|
+| Langbogen flanschgleich 0,2 / T 0,2 | [Q] [Engineering Toolbox](https://www.engineeringtoolbox.com/minor-loss-coefficients-pipes-d_626.html) | 99–102 mm | 107–110 mm |
+| Standardbogen 0,3 / T 0,2 | [Q] Engineering Toolbox | 89–93 mm | 98–100 mm |
+| glatter Bogen 30 fT = 0,57 / T 20 fT = 0,38 | [Q] Crane TP-410 (fT 0,019 [A]; Bogen nach [MathWorks-Doku](https://www.mathworks.com/help/hydro/ref/elbowil.html), T-Wert nicht gegengelesen) | **56–59 mm** | **64–66 mm** |
+| Langbogen gewindet 0,7 / T 0,9 | [Q] Engineering Toolbox | **19–22 mm** | **27–30 mm** |
+| Gehrungsbogen 60 fT = 1,14 / T 0,9 | [Q] Crane (Gehrung), Engineering Toolbox (T) | **−22…−19 mm** | **−14…−11 mm** |
+
+Die Spanne je Zelle ist neu gegen gealtert. **Befund:** In den zwei ungünstigen Fällen (scharfkantige Klebebögen mit großem Beiwert) reicht die Druckhöhe nicht; der Ablauf würde dann weniger als 110 l/min liefern. Die tatsächlichen Beiwerte der gebauten Teile (Klebebögen SDR 21, Innenkante scharf) liegen vermutlich zwischen „glatt“ und „Gehrung“ [A]. Der Herstellerwert (Georg Fischer, PVC-U-Planungsgrundlagen) ist **nicht abrufbar gewesen** (PDF zu groß, Suchtreffer ohne Zahlen) → offen.
+
+### Varianten (Rauheit gealtert, Reserve in mm; „schlecht“ = Gehrungsbogen/T 0,9, „Mittel“ = Crane glatt)
+
+| Variante | K01 schlecht | K01 Mittel | K17 schlecht | K17 Mittel | Aufwand |
+|---|---|---|---|---|---|
+| Ist (d63, 4 Bögen) | −22 | 56 | −14 | 64 | — |
+| **d75 × 3,6 durchgehend** (Innen-Ø 67,8; 2 Reduzierungen d75/d63 an Pool-Stutzen und Filter-Einlauf, K 0,3 [A]) | **85** | **124** | **88** | **127** | Rohr, Bögen, T und Muffen von d63 auf d75 (Standardmaß, Bibliothek d20–d110) |
+| Langbogen (Beiwert 0,2) statt Klebebogen | 66 | 90 | 74 | 99 | gebogene Rohrstücke oder 2 × 45° mit Zwischenstück; mehr Platz im Graben |
+| Filtergrube 100 mm tiefer | 78 | 156 | 86 | 164 | Modelländerung Grube/Filter-Stamm K06; Saugleitung zur Pumpe liegt tiefer |
+| d75 + Langbogen | 129 | 141 | 132 | 145 | beide Aufwände |
+| Pumpe statt Heber | — | — | — | — | ca. 18 W je Linie bei 0,25 m und 25 % Wirkungsgrad [E], dazu Trockenlaufschutz, Steuerung, weitere Fehlerquelle |
+
+### Entscheidungsvorlage für Ben (E14)
+
+1. **Empfohlen: d75 durchgehend.** Reserve ≥ 85 mm auch im ungünstigsten Fall, ändert keine Höhenlage, nur Rohrmaß. d75 ist Standardmaß (W43). Folgen: Reduzierung an Pool-Stutzen (d63) und Feinfilter-Einlauf (d63); K05-T (Absetzer-Zulauf d50) und Notbypass-T K56 werden d75/d50/d75 bzw. d75/d63/d75.
+2. Alternative: Filtergrube 100 mm tiefer, kein neues Rohrmaß, aber Eingriff in Filter-Stamm und Pumpen-Saugseite.
+3. Nicht empfohlen: Pumpe (Energie und Ausfallrisiko ohne Not), unveränderter Bau (ungedeckte Reserve).
+4. Zu beachten: Der Seitenablauf Z 740 bleibt, weil die Überdeckung gegen Wirbel 171 mm bei d63 verlangt (Frage F2 der Netzliste); bei d75 ist der Einlauf langsamer (Fr kleiner), also kein neues Problem.
+
+### Offene Punkte Frage 2
+
+1. Verlustbeiwert verklebter PVC-U-Bögen/T d63 vom Hersteller (Georg Fischer Planungsgrundlagen oder Datenblatt des gekauften Fabrikats): Besitzer Beschaffung/Werkstatt; dieser Wert entscheidet, ob d63 doch reicht.
+2. Crane-Werte nur über Zusammenfassung belegt (MathWorks), T-Durchgang 20 fT unbestätigt.
+3. Grenze 30 mm ist Projektannahme; Spiegelschwankung (Verdunstung, Beet-Flutung) nicht berücksichtigt: 10 mm Spiegelabsenkung kosten 10 mm Reserve.
+4. Messung am gebauten Heber (Wasserstandsdifferenz Pool/Filter bei 110 l/min) ersetzt die Rechnung.
+
+**Geprüft gegen:** `scripts/heber_rechnung.py`, `data/leitungstrassen.json` (K01, K01-m, K01-b, K17, K17-m, K17-b), `docs/loop-state.md` (Befund 3), Engineering Toolbox Verlustbeiwerte, MathWorks/Crane-Zusammenfassung, EN 1452-Wandstärken (Engineering Toolbox) · **Rechnung:** `python -X utf8 scripts/r45_heber.py`

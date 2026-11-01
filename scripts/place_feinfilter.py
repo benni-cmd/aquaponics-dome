@@ -13,6 +13,7 @@ FZ = P["sock_h"]; AP = P["dome_base_d"] / 2 * math.cos(math.radians(18)); DOOR =
 CELL, EXT = 50, 6100; N = 2 * EXT // CELL
 GAP, BACK = float(os.environ.get("FGAP", 500)), float(os.environ.get("FBACK", 150))
 FL, FW = float(os.environ.get("FFL", 770)), float(os.environ.get("FFW", 680))   # Filter-Grundriss mit Stutzen (docs/parts/feinfilter.md: ca. 770 x 680)
+EXCL = set(filter(None, os.environ.get("FEXCL", "").split(",")))   # z.B. FEXCL=Tank_klein,Pumpe_klein = Variante ohne Absetzer (R44 Kandidat A)
 BOX = {k.split(":")[0]: json.loads(json.dumps(v)) for k, v in json.load(open(os.path.join(ROOT, "scripts", ".compbox.json"))).items()}
 
 def poly(m, bx):
@@ -31,7 +32,7 @@ for k, m in mv.items():
         for (x, y) in TG.geometry("innen", tp, td["typen"]["innen"])["legs"]:
             pl_ = [(m[0] * (x + sx * tp["foot_plate"] / 2) + m[1] * (y + sy * tp["foot_plate"] / 2) + m[3], m[4] * (x + sx * tp["foot_plate"] / 2) + m[5] * (y + sy * tp["foot_plate"] / 2) + m[7]) for sx, sy in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
             obst.append((k + " Fuss", pl_, FZ, FZ + 900))
-    elif cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Klein"):
+    elif cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Klein") and cls not in EXCL:
         bx = BOX[cls.lower()]
         pg, (za, zb) = poly(m, bx); obst.append((k, pg, za, zb))
 pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]),

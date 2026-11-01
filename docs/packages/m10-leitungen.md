@@ -34,6 +34,15 @@ Wo West A und der zweite Ost-Treffer (975 / -2675) liegen, ist derselbe Zwickel:
 - b) Grube mit begehbarem Deckel bis Oberkante Flur (Grube 903 statt 496 tief): Filter verschwindet aus dem Knie-Schnitt, Gaenge frei; verlangt Pumpen/Tafeln tiefer oder Pumpe vor dem Filter (Saugstutzen Z 120 muss unter dem Filterspiegel bleiben), Grubenabdichtung und Sumpf. Gewichtiger Eingriff in F1.
 - c) Gaenge verbessern (Tank-Abstand, Puffer schieben): kein Rechenbeleg, braucht eine neue Platzsuche.
 - d) D71 neu oeffnen (R44 Kandidat B: Sieb nur am NFT-Zweig, ein Sieb statt zwei).
+- e) R44 Kandidat A: Absetzer weg (2 x Tank_klein samt 4 x Pumpe_klein samt Tafeln), siehe 2e.
+
+### 2e Rechnung ohne Tank_klein x2 samt Pumpentafeln (R44 Kandidat A, Stand 01.11.)
+Befehle: `FEXCL=Tank_klein,Pumpe_klein python -X utf8 scripts/place_feinfilter.py` (streng), `... scripts/place_feinfilter_zone.py` (Bedienzone), `... scripts/place_feinfilter_paar.py` (Paare); `FEXCL` leer = heutiges Modell. 44 statt 50 Hindernisse; Rest wie Abschnitt 2.
+- **Streng (>= 500 allseits, Rueckseite >= 150): Einzellagen gibt es jetzt** (985 Lagen, 4 Orte ab 400 mm, beste Luecke 671 mm bei x 925 y -4625, 560 bei x 975 y -3675, 497 bei x 2875 y -1975). Ost-Linie: nur 3 Lagen, alle bei x 1125 bis 1175 y -3425 (Az -71, 59 mm neben der Tuerachse); West-Linie: 982 Lagen.
+- **Aber kein gueltiges Paar:** Es gibt 4 Orts-Paare mit >= 500 mm untereinander (z. B. x 925 y -3425 mit x 925 y -4725, Summe Rohr etwa 9,5 m). Sie sitzen im Tuergang: Zellen mit Gang >= 900 mm (D29) sinken von 1226 auf 10 bis 12, Gang-500-Zellen von 6700 auf 5200; das Paar x 1175 y -3425 + x 825 y -4625 versiegelt die Tuer (kein Bauteil mehr erreichbar). **Streng also auch bei Kandidat A: NEIN fuer ein Paar ausserhalb des Tuergangs.**
+- **Bedienzone-Regel mit Kandidat A: ja, deutlich besser.** Ost B x 2575 y -1375, Drehung 30 (Az -28, r 2919; Rohr Pool~640, Pumpe~624, an der Stelle von Tank_klein:2) und West B x -1575 y -3175, Drehung 285 (wie in Abschnitt 2, Pool~1170, Pumpe~904). Zusatzort Ost C x 3175 y -1425, Drehung 0 (Pool~1038, Pumpe~686), West A x 725 y -2875, Drehung 240 (Pool~607). Paar Ost B + West B: alle Bauteile erreichbar, Tuergang 900 unveraendert (1226 Zellen), Gang-500-Zellen 6700 -> 5772 (nur die lokale Filterzone). Ost B + West A kostet Tuergang-Zellen (1226 -> 832): nicht nehmen.
+- **Einordnung:** Kandidat A heisst: Vortex-Absetzer (267 l) und Absetzer-Teilstrom K03 bis K05 entfallen, in D71 nur Kandidat, Quellenlage reicht nicht fuer zwei unabhaengige Quellen. Rohrnetz aendert sich: K03/K04/K05/K07 (und Gegenstuecke Linie 2) entfallen, Pool-Bodenablauf ginge dann ueber ein Sieb/Schlammfang oder direkt in den Feinfilter; das waere eine neue Netzliste, keine Annahme von mir.
+
 Pumpe vor dem Filter (Druckseite) scheidet mit T55 aus: offenes Gehaeuse mit Deckel auf EPDM-Flachdichtung, kein Druckgehaeuse; ein neues Bauteil waere noetig.
 
 **Hoehenlage F1 (Rechnung, gilt fuer jede Variante):** Netzlisten-Z sind auf den Flur bezogen (Beleg Abschnitt 3). Seitenablauf Z 340, Filter-Einlauf muss <= Z 320 liegen: Standflaeche Z -496, also Grube ca. 500 mm unter Flur (Oberkante Behaelter Z +407). Auslauf dann Z -186, Pumpen-Saugstutzen Z 120 liegt im Normalbetrieb (Filterspiegel etwa am Einlauf Z 320) rund 200 mm unter dem Filterspiegel, damit geflutet. Grube etwa 900 x 800 x 500 [A].
@@ -66,7 +75,7 @@ Pumpe vor dem Filter (Druckseite) scheidet mit T55 aus: offenes Gehaeuse mit Dec
 | F5 Signalkabel | 7 Trunks unterflur, Abschnitt 8; Spannungsabfall < 0,6 % bei 0,5 mm2 | Rechnung Abschnitt 8; Notstrom: Zentrale an der 24-V-Batterie, 28 W Messnetz [A] |
 | F6 Aktivkohle | Platzhalter-Gehaeuse Handelsteil (Fabrikat offen) im Frischwasser hinter dem Zulaufrohr, Schwimmerventil am Pool | Kontaktzeit/Wechsel nicht Teil von M10; Bauteil fehlt (Abschnitt 7) |
 | F7 Biofilter-Bett | Netzliste 67 %, Werkstatt gleicht an | beeinflusst keine Rohrstroeme (Pumpen 4 x 55 l/min) |
-Zusatz E1 bis E5 (Entscheidungen fuer Ben): E1 Feinfilter-Option a bis d; E2 Netz-Etiketten Linie 1/2 umhaengen; E3 Beet-Sumpf und neue Verbraucher (2 x 36 W) akzeptieren; E4 Schaltschrank-Standort ([A] aussen am Fundamentring neben der Tuer, Az etwa -85, Kabelrechnung +-2 m); E5 Kuppel-Trunk (mk_kuppel) erst nach N-STATIK, Mast statt Strebe.
+Zusatz E1 bis E5 (Entscheidungen fuer Ben): E1 Feinfilter-Option a bis e; E2 Netz-Etiketten Linie 1/2 umhaengen; E3 Beet-Sumpf und neue Verbraucher (2 x 36 W) akzeptieren; E4 Schaltschrank-Standort ([A] aussen am Fundamentring neben der Tuer, Az etwa -85, Kabelrechnung +-2 m); E5 Kuppel-Trunk (mk_kuppel) erst nach N-STATIK, Mast statt Strebe.
 
 ## 6. Bauschritte (je einzeln committbar, Build nur nach Orchestrator-Gegenlesen)
 | Schritt | Inhalt | Pruefung vor Commit |
@@ -127,7 +136,7 @@ Rechnung: Python im Scratchpad ueber `dome-script.json`-Positionen, 24 V, rho 0,
 8. Schlauchradius 5 x AD in engen Fugen (Tisch d20: 100 mm) kann nicht immer eingehalten werden.
 
 ## 10. Was der Orchestrator gegenlesen muss
-1. Befund Feinfilter: strenger Standort NEIN, kleinste Luecke 325 mm West / 181 mm Ost; Option a bis d an Ben, D71 geht zurueck.
+1. Befund Feinfilter: strenger Standort NEIN, kleinste Luecke 325 mm West / 181 mm Ost; Option a bis e an Ben (e = Kandidat A, Abschnitt 2e), D71 geht zurueck.
 2. Hoehenbezug Flur Z 400 (Netz-Z relativ) und die Grube Z -496 fuer F1.
 3. Linie 1 = Ost, Linie 2 = West (Teilung an der Tuerachse, 12 + 7 je Seite) und das Umhaengen der Netz-Etiketten.
 4. Ruecklaufkonzept (Halbring auf der Wandkrone, Sektorsammler, Kreuzung nur Unterflur oder ueber 2100) und Beet-Sumpf mit zusaetzlicher Pumpe 2 x 36 W.

@@ -11,7 +11,7 @@
     "Tuer": "Der Eingang der Kuppel.",
     "Technik": "Steuerung und Elektrik (Platzhalter).",
     "Hülle (Plane)": "Doppelte PE-Folie über den Streben mit Keilschienen (D39); die Doppelstegplatten sind eine ruhende Variante.",
-    "Puffer-Station": "Zwei gestapelte IBC-Tanks (je 1000 l) mit Messplatz und Dosierkonsole: Messen, Basen und Eisen dosieren, Frischwasser und Notvorrat (D46, R27)."
+    "Puffer-Station": "Variante, im Modell aus (Schalter station_an 0): Zwei gestapelte IBC-Tanks (je 1000 l) mit Messplatz und Dosierkonsole: Messen, Basen und Eisen dosieren, Frischwasser und Notvorrat (D46, R27). Standard ist der kleine Puffer (D66)."
   },
   "bauteile": [
     {
@@ -713,7 +713,7 @@
       "match": "^puffer_klein",
       "titel": "Kleiner Puffer (Option A, R37)",
       "was": "Kompakter Stand im Dom mit Stammlösungsfass 120 l, Messzelle 20 l, Eisenchelat-Kanister 20 l und zwei Dosierpumpen; ersetzt die Puffer-Station (2 IBC) auf 0,49 m² statt 4,65 m².",
-      "status": "Werkstatt W34 (D66), check_puffer_klein 51/51; Variante, die Puffer-Station bleibt bis Bens Entscheidung",
+      "status": "Werkstatt W34 (D66), check_puffer_klein 51/51; Standard seit D66/D70 (eingebaut, M-SETZEN), die Puffer-Station mit 2 IBC (T81) bleibt als abgeschaltete Variante",
       "ablauf": [
         "Ein Messkreis (ca. 3 l/min) fließt durch die durchsichtige Messzelle mit vier Sondenstutzen und läuft zum Pool zurück.",
         "Eine Schlauchpumpe holt Base (KOH/NaHCO₃) aus dem lichtdichten 120-l-Fass und dosiert sie ins System; eine zweite dosiert Eisenchelat aus dem 20-l-Kanister.",
@@ -885,12 +885,12 @@
     {
       "match": "^becken_dritt|^drittbecken|^pool_dritt|^pool3|^pool_3",
       "titel": "Drittbecken",
-      "was": "Kleines Becken (Ø 1,03 × 1,13 m) hinter dem Zweitbecken auf der Türachse: Quarantäne, Krankenbecken und Notbecken.",
-      "status": "Entscheidung D46, Maß aus dem Designer-Modell (Ben bestätigt offen)",
+      "was": "Kleines Becken (Wasser Ø 0,8 × 0,8 m, 402 l) im Dom: Quarantäne und Krankenbecken.",
+      "status": "Entscheidung D66/D70, Drittbecken klein T14k (Platz r 4966 / Azimut −30); Maß von Ben noch zu bestätigen",
       "ablauf": [
         "Neue Fische bleiben hier 45 Tage isoliert, bevor sie zum Gesamtbesatz kommen (FAO 589).",
-        "Kranke oder gestresste Tiere können getrennt behandelt werden; im Notfall nimmt das Becken Fische aus dem Hauptbecken auf.",
-        "Es braucht eigene Belüftung und einen kleinen Biofilter; Wasser kommt aus dem Puffer."
+        "Kranke oder gestresste Tiere können getrennt behandelt werden; für eine Notaufnahme des Pools (346 kg) ist das Becken zu klein.",
+        "Es braucht eigene Belüftung und einen kleinen Biofilter; Nachfüllwasser kommt aus der Quelle über Aktivkohle, im Dom ist kein Vorrat (D66)."
       ],
       "aufbau": [
         {
@@ -902,13 +902,13 @@
         }
       ],
       "masse": {
-        "Durchmesser × Tiefe": "1,03 × 1,13 m",
-        "Wasser": "≈ 0,94 m³",
-        "Besatz Quarantäne (UVI-Dichte)": "72 Fische à 79 g ≈ 5,7 kg (FAO-Maximum 20 kg/m³ ≈ 19 kg)",
-        "Futter und Ammonium": "≈ 171 g Futter/Tag (3 % KG), ≈ 6,4 g Ammonium/Tag",
-        "Wasserwechsel allein": "würde 6,4 m³/Tag brauchen (TAN 1 mg/l), daher Biofilter ca. 85 l Bioballs"
+        "Durchmesser × Tiefe": "0,8 × 0,8 m (Wasser)",
+        "Wasser": "≈ 0,40 m³ (402 l)",
+        "Besatz Quarantäne (UVI-Dichte)": "31 Fische à 79 g ≈ 2,4 kg (FAO-Maximum 20 kg/m³ ≈ 8 kg)",
+        "Futter und Ammonium": "≈ 73 g Futter/Tag (3 % KG), ≈ 2,8 g Ammonium/Tag",
+        "Wasserwechsel allein": "würde 2,8 m³/Tag brauchen (TAN 1 mg/l), daher Biofilter ca. 37 l Bioballs"
       },
-      "grenzen": "Maß 1,03 × 1,13 m stammt aus dem Designer-Modell; Quarantäneverfahren und Besatz sind Vorschläge aus FAO 589 und SRAC 454. Das Zweitbecken (2,4 m³) bleibt Aufzucht (D45 d); beide zählen nicht zum Gesamtbesatz.",
+      "grenzen": "Maß 0,8 × 0,8 m aus R37 Befund 10 und Auftrag W34 (D66); Quarantäneverfahren und Besatz sind Vorschläge aus FAO 589 und SRAC 454. Das Zweitbecken (2,4 m³) bleibt Aufzucht (D45 d); beide zählen nicht zum Gesamtbesatz.",
       "quelle": "docs/research/R27.md, docs/decisions.md D45, D46"
     },
     {

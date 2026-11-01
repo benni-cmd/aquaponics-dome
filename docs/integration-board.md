@@ -13,8 +13,9 @@ Zustaendig: I = Integrator/Montage, W = Werkstatt. Quelle der Anzahl: `data/layo
 | Tank klein (Absetzer) | 2 | W | eingebaut, Stand verkleinert (W30, Plattform 619) | `designs/components/tank_klein.sc` | 31.10. Werkstatt: check_tank 114/114 |
 | Tank gross (Biofilter) | 2 | W | eingebaut, Stand verkleinert (W30, Plattform 821) | `designs/components/tank_gross.sc` | 31.10. Werkstatt: Pumpentafeln jetzt seitlich (D51) |
 | Pumpe (4 gross = Hauptkreislauf, 4 klein = Absetzer-Teilstrom, D38) | 8 | W | eingebaut, Blatt nach D38 (W25) | `designs/components/pumpe.sc` | 31.10. Werkstatt: Tafeln seitlich am Stand setzen (Montage, M10) |
-| Puffer-Station (2 IBC gestapelt, Messplatz, Dosierkonsole) | 1 | W/I | eingebaut (M8, Lage D48/D49), check_latte offen | `designs/components/puffer_station.sc` | 31.10. Montage: Station r 4000, Sektor rechts der Tuer |
-| Drittbecken (Quarantaene, D 1030) | 1 | I | eingebaut (D49), Mass und Rolle von Ben offen | `designs/components/becken_dritt.sc` | 31.10. Montage: Zwickel Tuer/Station |
+| Puffer klein (T82: Fass 120 l, Messzelle 20 l, Kanister 20 l; 0,16 m3, Standard seit D66/D70) | 1 | W/I | eingebaut (M-SETZEN Runde 60), Lage r 2764 / Azimut -51 | `designs/components/puffer_klein.sc` | 01.11. Montage: Vorbau entfaellt (D70); Specs auf Puffer klein umgestellt (S01) |
+| Puffer-Station (T81: 2 IBC gestapelt, Messplatz, Dosierkonsole), Variante | 1 | W/I | aus (Schalter `station_an` 0), Lage D48/D49 bleibt hinterlegt | `designs/components/puffer_station.sc` | 01.11. Montage: ersetzt durch Puffer klein (D70); als Variante erhalten |
+| Drittbecken klein (T14k, Quarantaene, Wasser Ø 800 x 800 = 0,40 m3) | 1 | I | eingebaut (M-SETZEN Runde 60), Lage r 4966 / Azimut -30, Mass von Ben zu bestaetigen | `designs/components/becken_dritt_klein.sc` | 01.11. Montage: ersetzt Drittbecken Ø 1030 (D66/D70); Specs auf 0,40 m3 (S01) |
 | Mensch-Referenz (1,80 m, messen/arbeiten) | 2 | W/I | eingebaut (M9), nicht in check_latte | `designs/components/mensch_referenz_*.sc` | 31.10. Montage: Build 51 |
 | Strebe A / B | 30 / 34 | I | eingebaut (B 34: Tuerfeld teilt die Basisstrebe) | `designs/components/strebe_*.sc` | 31.10. Montage |
 | Knoten 4/5/6-wertig (Kugel mit Steckarmen, D15) | 10 / 6 / 10 | W | eingebaut (26), 135/135 | `designs/components/knoten_*.sc` | 31.10. Montage: Querbolzen x Strebe 517 offen (Bohrungen) |

@@ -2,22 +2,22 @@
  "stand": "31.10.2026",
  "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D61 (Weg 1 nach R36: Tische über den Beeten, Beete nur Blatt/Kräuter, Biomasse 346 kg, Spanne 308–385; D40 hatte 475 kg mit Fruchtgemüse); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
  "wasser": {
-  "gesamt_m3": 37.1,
+  "gesamt_m3": 34.7,
   "teile": [
    [
     "Hauptbecken (Pool)",
     26.15,
-    "71%"
+    "75%"
    ],
    [
     "Zweites Becken",
     2.4,
-    "6%"
+    "7%"
    ],
    [
     "Tanks (2 Absetzer, 2 Biofilter)",
     1.94,
-    "5%"
+    "6%"
    ],
    [
     "Beete (Porenwasser bei Flutung)",
@@ -35,14 +35,14 @@
     "1%"
    ],
    [
-    "Puffertanks (2 IBC gestapelt)",
-    2.0,
-    "5%"
+    "Puffer klein (Fass, Messzelle, Kanister)",
+    0.16,
+    "0%"
    ],
    [
-    "Drittbecken",
-    0.94,
-    "3%"
+    "Drittbecken (Quarantäne, klein)",
+    0.4,
+    "1%"
    ]
   ],
   "in_tanks_m3": 1.94,
@@ -126,14 +126,14 @@
   "pumpe_klein_w": 33,
   "belueftung_w": 204,
   "steuerung_w": 40,
-  "puffer_station_w": 17,
+  "puffer_station_w": 12,
   "geblaese_luftpolster_w": 80,
-  "gesamt_w": 662,
-  "kwh_tag": 15.9,
-  "kwh_monat": 477,
+  "gesamt_w": 656,
+  "kwh_tag": 15.7,
+  "kwh_monat": 472,
   "spanne_w": [
-   380,
-   870
+   370,
+   860
   ],
   "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
   "heizung": {
@@ -156,7 +156,7 @@
    ],
    "dT_k": 30,
    "gradtagzahl_kd": 3500,
-   "wasser_speicher_kwh_je_k": 43.1,
+   "wasser_speicher_kwh_je_k": 40.4,
    "hinweis": "Huelle = Plane PE doppelt luftgepolstert (R24), 208 m2 aus 40 Facetten; Standort offen (Annahme Mitteleuropa -10/20 C), Jahreswert ohne Sonnengewinn, Infiltration und Thermoschirm; nicht in 'gesamt_w' enthalten"
   },
   "tabelle_ben": {
@@ -230,25 +230,28 @@
   "standort": "offen (Frage an Ben)"
  },
  "puffer": {
-  "volumen_m3": 2.0,
-  "anteil_wasser": "5%",
-  "deckt_wasserverlust_tage": 2.9,
+  "volumen_m3": 0.16,
+  "anteil_wasser": "0%",
+  "deckt_wasserverlust_tage": 0.2,
   "wasserverlust_m3_tag": 0.68,
-  "stapel": {
-   "ibc": 2,
-   "hoehe_max_m": 2.5,
-   "obere": "Messtank mit Schwerkraftablauf in die untere IBC",
-   "foerderhoehe_m": 3.0,
+  "deckt_wasserverlust_stunden": 5.6,
+  "nachfuellwasser_quelle": "Quelle über Aktivkohle (R37 Befund 3)",
+  "aufbau": {
+   "modell": "puffer_klein T82 (D66/D70)",
+   "stammloesungsfass_l": 120,
+   "messzelle_l": 20,
+   "eisenkanister_l": 20,
+   "foerderhoehe_m": 1.5,
    "messkreis_l_min": 3.0,
-   "messpumpe_w": 5.9,
-   "umpumpen_l_min": 17.0,
-   "umpumpen_w_mittel": 2.8
+   "messpumpe_w": 2.9,
+   "umpumpen_l_min": 0,
+   "umpumpen_w_mittel": 0.0,
+   "anmerkung": "Umpumpen (FILL_*) entfaellt bei Option A: kein Vorrat im Dom, daher umpumpen_w_mittel 0; die Station mit 2 IBC (T81, D46) ist abgeschaltet (station_an 0)"
   },
   "rollen": [
-   "Messstation (pH, EC, Temperatur, O2, Nitrat)",
-   "Basenzugabe und Naehrstoffausgleich (K, Ca, Fe) wie UVI-Basentank",
-   "Frischwasser stehen lassen (2 Tage) und Wasserwechsel-Reserve",
-   "Notvorrat"
+   "Messstation (pH, EC, Temperatur, O2, Nitrat) in der Messzelle",
+   "Basenzugabe (Stammloesungsfass) und Eisenchelat-Dosierung wie UVI-Basentank",
+   "Nachfuellwasser kommt aus der Quelle ueber Aktivkohle, kein Vorrat und kein Notvorrat im Dom (D66)"
   ],
   "messgroessen": {
    "pH": "7,0-7,5 (UVI, Fort Valley State; FAO-Kompromiss 6-7)",
@@ -271,35 +274,35 @@
     "NaHCO3": 0.78
    },
    "mix_halb_ca_halb_koh_praktisch_kg_tag": 0.43,
-   "eisen": "Fe-Chelat 2 mg/l alle ca. 3 Wochen = 74 g Fe je Gabe, ca. 3.5 g Fe/Tag",
+   "eisen": "Fe-Chelat 2 mg/l alle ca. 3 Wochen = 69 g Fe je Gabe, ca. 3.3 g Fe/Tag",
    "hinweis": "Nitrifikation verbraucht 7,14 g Alkalinitaet je g TAN (Boyd 2016); K-Bedarf der Pflanzen (ca. 0,4 g/m2/Tag, Graber/Junge, Abstract) ist viel kleiner als die KOH-Menge: Verhaeltnis Ca(OH)2/KOH nach Messung (EC, K) einstellen"
   },
   "strom_w": {
    "sensoren": 0.59,
    "rechner": 5.0,
    "dosierpumpen_mittel": 3.0,
-   "messpumpe": 5.9,
-   "umpumpen_mittel": 2.8,
-   "summe": 17.3
+   "messpumpe": 2.9,
+   "umpumpen_mittel": 0.0,
+   "summe": 11.5
   }
  },
  "drittbecken": {
-  "durchmesser_m": 1.03,
-  "tiefe_m": 1.13,
-  "volumen_m3": 0.94,
-  "mass_status": "Designer-Modell, Maß von Ben offen (D46)",
-  "rolle": "Quarantaene und Krankenbecken (Neufische 45 Tage isolieren, FAO 589), zugleich Notbecken; Zweitbecken (2,4 m3) bleibt Aufzucht (D45 d)",
+  "durchmesser_m": 0.8,
+  "tiefe_m": 0.8,
+  "volumen_m3": 0.4,
+  "mass_status": "Drittbecken klein T14k, Wasser Ø 800 x 800 = 402 l (D66/D70)",
+  "rolle": "Quarantaene und Krankenbecken (Neufische 45 Tage isolieren, FAO 589), nur Zuchttiere/Kranke; keine Notaufnahme des Pools (346 kg); Zweitbecken (2,4 m3) bleibt Aufzucht (D45 d)",
   "besatz_uvi": {
-   "fische": 72,
+   "fische": 31,
    "einzelgewicht_g": 79,
-   "kg": 5.7,
-   "fao_max_kg": 18.8
+   "kg": 2.4,
+   "fao_max_kg": 8.0
   },
-  "futter_g_tag": 171,
-  "tan_g_tag": 6.4,
-  "wasserwechsel_m3_tag_ohne_biofilter": 6.4,
-  "biofilter_bioballs_l": 85,
-  "noetig": "eigene Belueftung und kleiner Biofilter, Wasserwechsel aus dem Puffer"
+  "futter_g_tag": 73,
+  "tan_g_tag": 2.8,
+  "wasserwechsel_m3_tag_ohne_biofilter": 2.8,
+  "biofilter_bioballs_l": 37,
+  "noetig": "eigene Belueftung und kleiner Biofilter, Wasserwechsel mit Nachfuellwasser aus der Quelle ueber Aktivkohle (kein Vorrat im Dom, D66)"
  },
  "pflanzmix": {
   "beete": [
@@ -419,7 +422,7 @@
   "hinweis": "Futter je m2 aus FAO 589 (Blatt 40-50), SRAC 454 NFT nur 25 % des Raft-Werts; Beete unter den Tischen nur Blatt/Kraeuter (D61, R36): Tomate, Paprika, Gurke und Suesskartoffel entfallen; Kohlrabi/Sellerie nur als Zwischenkultur"
  },
  "puffer_klein": {
-  "standard": "puffer_station_2_ibc (D46) bis Entscheidung Ben",
+  "standard": "puffer_klein T82 (D66/D70)",
   "pflicht": [
    "Messzelle (Sonden pH, EC, Temperatur, O2, Nitrat) im Messkreis 3 l/min",
    "Stammloesungsfass Base (Ca(OH)2/KOH/NaHCO3)",
@@ -434,7 +437,7 @@
   "bedarf": {
    "verlust_m3_tag_2prozent": 0.68,
    "verlust_m3_tag_1prozent": 0.34,
-   "uvi_anteil_m3": 0.26,
+   "uvi_anteil_m3": 0.24,
    "stammloesung_tage_je_120l": {
     "KOH": 23.1,
     "NaHCO3": 14.8,
@@ -521,7 +524,7 @@
    "grundflaeche_gespart_m2": 0.37,
    "notbecken": "nur Zuchttiere/Kranke (max. 8 kg bei 20 kg/m3); Notaufnahme des Pools (346 kg) nicht moeglich, das Zweitbecken (2,4 m3, max. 48 kg) uebernimmt nur Teile"
   },
-  "hinweis": "Zahlen R37; Fass-Masse und Preise sind Haendlerangaben (Snapshot), Stammloesungs-Konzentrationen KOH/Kalkmilch Annahmen; keine Layoutaenderung, Standard bleibt Puffer-Station 2 IBC bis zur Entscheidung (D63)."
+  "hinweis": "Zahlen R37; Fass-Masse und Preise sind Haendlerangaben (Snapshot), Stammloesungs-Konzentrationen KOH/Kalkmilch Annahmen; Standard ist seit D66/D70 Option A (puffer_klein T82 und becken_dritt_klein T14k im Modell); die Station mit 2 IBC (T81) bleibt als abgeschaltete Variante (Schalter station_an 0)."
  },
  "beete_tische": {
   "standard": "weg1",
@@ -651,7 +654,7 @@
   "Standort und Aussenklima (Heizlast, Jahresenergie)",
   "4. Aussenrinne machbar (W24)?",
   "Fruchtgemuese: ausserhalb der Tische gaebe es keinen Platz (D61 Weg 1); Weg 2b (Mitteltische weg) nur auf Bens Wunsch (R36)",
-  "Drittbecken: Maß 1,03 x 1,13 m bestätigen (D46); Puffer-Station Lage und Stapelhöhe",
+  "Drittbecken klein Ø 0,8 x 0,8 m und Puffer klein: Maße und Wasserquelle (Chlor/Chloramin beim Wasserversorger) bestätigen (D66)",
   "Notstrom und Alarm fuer die Belueftung",
   "Geblaese und Windlast der Plane"
  ],
@@ -707,14 +710,14 @@
    "detail": "204 W liefern bei 1 kg O₂/kWh 4.9 kg/Tag gegen Bedarf 1.3–2.2 kg/Tag (Spitze ×1.5: 3.3)"
   },
   {
-   "pruefung": "Puffertanks decken Wasserverlust und Frischwasser-Ruhe (R27)",
+   "pruefung": "Nachfüllwasser: Quelle benannt, kein Vorrat im Dom (R27, D66)",
    "ok": true,
-   "detail": "2.0 m³ Puffer decken 2.9 Tage Wasserverlust bei 2%/Tag (0.68 m³/Tag, SRAC 454: unter 2 %) und lassen Frischwasser 2 Tage stehen (Chlor, FAO 589); 5 % des Systemwassers (UVI-Sumpf + Basentank: 0,7 %)"
+   "detail": "Nachfüllwasser kommt aus der Quelle über Aktivkohle (R37 Befund 3), im Dom ist kein Vorrat (D66); der Puffer klein (0.16 m³ = Fass + Messzelle + Kanister) wäre nur Mess- und Dosierbehälter und deckte rechnerisch 5.6 h Wasserverlust bei 2%/Tag (0.68 m³/Tag, SRAC 454: unter 2 %); 0.5 % des Systemwassers (UVI-Sumpf + Basentank: 0,7 %); Chlor/Chloramin der Quelle beim Wasserversorger offen (Zisterne aussen = Option C)"
   },
   {
    "pruefung": "Drittbecken als Quarantäne (R27)",
    "ok": false,
-   "detail": "0.94 m³ nehmen nach UVI-Besatz 72 Fische à 79 g (5.7 kg; FAO-Max 19 kg); Futter 171 g/Tag → 6.4 g TAN/Tag: reiner Wasserwechsel bräuchte 6.4 m³/Tag (TAN 1 mg/l), also eigener kleiner Biofilter (ca. 85 l Bioballs) und Belüftung nötig; FAO: Neufische 45 Tage isolieren"
+   "detail": "0.40 m³ nehmen nach UVI-Besatz 31 Fische à 79 g (2.4 kg; FAO-Max 8 kg); Futter 73 g/Tag → 2.8 g TAN/Tag: reiner Wasserwechsel bräuchte 2.8 m³/Tag (TAN 1 mg/l), also eigener kleiner Biofilter (ca. 37 l Bioballs) und Belüftung nötig; FAO: Neufische 45 Tage isolieren"
   },
   {
    "pruefung": "Hülle (Plane, D39) und Heizlast: Standort",

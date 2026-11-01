@@ -75,17 +75,20 @@ DT_DESIGN = 30                                         # K: innen 20, aussen -10
 KEIL_M = 30 * 3.279 + 35 * 3.708                       # Keilschiene auf allen 65 Streben [E]
 BLOWER_FILM_W = (60, 80, 100)                          # Geblaese Luftpolster [A, R24 ohne Datenblatt]
 CONTROL_W = 40                                         # Steuerung [A]
-# D46 (Ben 31.10.): Drittbecken und 2 gestapelte IBC als Puffer-Station (R27)
-PUFFER_N, PUFFER_L = 2, 1000                           # 2 IBC a 1000 l uebereinander, Stapelhoehe <= 2,5 m [D46]
-THIRD_D, THIRD_H = 1.03, 1.13                          # Drittbecken Ø x Tiefe (Designer-Modell, Maß offen) [D46/E]
+# D66/D70 (Ben 31.10./1.11.): Puffer klein (T82) und Drittbecken klein (T14k) statt 2 gestapelter IBC und Drittbecken Ø 1030 (D46)
+PUFFER_L = 120 + 20 + 20                               # Stammloesungsfass 120 l + Messzelle 20 l + Eisenchelat-Kanister 20 l, kein Vorrat [Q docs/parts/puffer_klein.md, D66 Option A]
+THIRD_D, THIRD_H = 0.8, 0.8                            # Drittbecken klein Wasser Ø x Tiefe (402 l) [Q docs/parts/becken_dritt_klein.md, D66/D70]
+THIRD_D_OLD = 1.03                                     # Drittbecken vor D66 (nur fuer die Platzersparnis)
+MEASURE_HEAD_M = 1.5                                   # Messzelle neben dem Verteiler statt 2,5-m-Stapel [A]
+PUFFER_QUELLE = "Quelle über Aktivkohle (R37 Befund 3)"   # Nachfuellwasser, im Dom kein Vorrat (D66)
 SYSTEM_LOSS_PCT_DAY = 0.02                             # Wasserverlust/Tag: weniger als 2 % [Q SRAC 454 / SRAC 451]
 ALK_G_PER_G_TAN = 7.14                                 # g Alkalinitaet (als CaCO3) je g TAN-N nitrifiziert [Q Boyd 2016 (GAA), Timmons u. a. 2018 ueber Suchzusammenfassung]
 ALK_PRACTICAL = 0.5                                    # praktischer Verbrauch gegen Theorie (Brune: 250 gegen 500 g NaHCO3/kg Futter) [A, eine Zusammenfassung]
 EQ_G = {"Ca(OH)2": 37.05, "KOH": 56.11, "NaHCO3": 84.0}   # g je Aequivalent Alkalinitaet
 QUARANTINE_FISH_PER_M3, QUARANTINE_FISH_G = 77, 79     # Besatz UVI Nile-Tilapia (SRAC 454 Tab. 1) [Q]
 JUVENILE_FEED_PCT = 0.03                               # Jungfische 3 % KG/Tag [Q FAO 589]
-SAMPLE_FLOW_L_MIN, STACK_HEAD_M = 3.0, 3.0             # Messkreis ueber den Stapel [A], Foerderhoehe 2,5 m Stapel + Reibung [E]
-FILL_FLOW_L_MIN, FILL_H_PER_DAY = 17.0, 2.0            # Umpumpen/Fuellen 1 m3 in ca. 1 h, zwei Stunden am Tag [A]
+SAMPLE_FLOW_L_MIN = 3.0                                # Messkreis durch die Messzelle [A]
+FILL_FLOW_L_MIN, FILL_H_PER_DAY = 17.0, 2.0            # Umpumpen/Fuellen 1 m3 in ca. 1 h, zwei Stunden am Tag [A]; nur noch Option B (Fass-Station), im Standard entfaellt es (kein Vorrat)
 SENSORS_W = {"pH EZO": 5 * 0.0183, "EC EZO": 5 * 0.050, "DO EZO": 5 * 0.050}   # Atlas Scientific Datenblaetter pH 18,3 mA, EC 50 mA bei 5 V; DO wie EC angenommen [Q/A]
 DOSE_PUMP_W, DOSE_PUMP_N, DOSE_DUTY = 6.0, 2, 0.25     # 12-V-Schlauchpumpe 5-10 W (Kamoer, Haendler), 2 Stueck, 25 % Laufzeit [A]
 PI_W = 5.0                                             # Messrechner/Steuerung der Station [A]
@@ -116,9 +119,9 @@ pipes = PIPE_WATER_L / 1000
 parts = [("Hauptbecken (Pool)", pool), ("Zweites Becken", basin2), ("Tanks (2 Absetzer, 2 Biofilter)", tanks),
          ("Beete (Porenwasser bei Flutung)", beds_water), ("NFT-Rinnen (Wasserfilm)", nft_water), ("Rohre und Schläuche", pipes)]
 total_circuit = sum(v for _, v in parts)                               # Wasser im Kreislauf ohne Puffer und Drittbecken
-puffer_m3 = PUFFER_N * PUFFER_L / 1000
+puffer_m3 = PUFFER_L / 1000
 third_m3 = pi * (THIRD_D / 2) ** 2 * THIRD_H
-parts += [("Puffertanks (2 IBC gestapelt)", puffer_m3), ("Drittbecken", third_m3)]
+parts += [("Puffer klein (Fass, Messzelle, Kanister)", puffer_m3), ("Drittbecken (Quarantäne, klein)", third_m3)]
 total = sum(v for _, v in parts)
 
 # ---- Fische, Futter, Ammonium ----------------------------------------------------------------------------------------
@@ -215,6 +218,7 @@ air_w_by_o2 = o2_total[1] / AIR_KG_O2_PER_KWH * 1000 / 24              # nur aus
 # ---- Puffer-Station und Drittbecken (R27) -----------------------------------------------------------------------------------
 loss_m3_day = total_circuit * SYSTEM_LOSS_PCT_DAY
 puffer_days = puffer_m3 / loss_m3_day                                  # Tage Wasserverlust, die der Puffer deckt
+puffer_hours = puffer_days * 24
 alk_g_day = tan_g * ALK_G_PER_G_TAN                                    # g CaCO3/Tag theoretisch
 alk_eq_day = alk_g_day / 50.0
 alk_eq_pract = alk_eq_day * ALK_PRACTICAL
@@ -228,10 +232,9 @@ third_feed = third_kg * JUVENILE_FEED_PCT
 third_tan_g = third_feed * 1000 * TAN_FRACTION
 third_exchange_m3 = third_tan_g / 1.0                                 # m3/Tag bei TAN-Ziel 1 mg/l (g/m3 = mg/l), reiner Wasserwechsel
 third_biofilter_l = third_feed * 1000 * FEED_RULE_MEDIA_L_PER_G["bioball"]    # l Bioballs nach Faustregel
-puffer_pump_hyd = 1000 * 9.81 * (SAMPLE_FLOW_L_MIN / 60000) * STACK_HEAD_M
+puffer_pump_hyd = 1000 * 9.81 * (SAMPLE_FLOW_L_MIN / 60000) * MEASURE_HEAD_M
 puffer_pump_el = puffer_pump_hyd / PUMP_EFF
-fill_hyd = 1000 * 9.81 * (FILL_FLOW_L_MIN / 60000) * STACK_HEAD_M
-fill_el_avg = fill_hyd / PUMP_EFF * FILL_H_PER_DAY / 24
+fill_el_avg = 0.0                                                      # Umpumpen entfaellt: kein Vorrat im Dom (D66 Option A)
 sensors_w = sum(SENSORS_W.values())
 dose_w_avg = DOSE_PUMP_W * DOSE_PUMP_N * DOSE_DUTY
 puffer_w = sensors_w + PI_W + dose_w_avg + puffer_pump_el + fill_el_avg   # mittlere Leistung der Station
@@ -255,7 +258,7 @@ checks = [
     ("Hauptkreislauf trägt das Futter (TAN-Durchfluss)", pumps_main >= tan_flow_l_min, f"Bedarf {tan_flow_l_min:.0f} l/min bei {feed_kg_day:.1f} kg Futter (TAN {TAN_TARGET_MG_L:g} mg/l, Biofilter {BIOFILTER_EFF:.0%}); {pumps_main} l/min tragen bis {tan_feed_at_main:.1f} kg Futter/Tag; für Bens {TABLE_FEED_KG_DAY:.1f} kg wären {tan_flow_table:.0f} l/min nötig"),
     (f"Absetzer-Verweilzeit mindestens {SETTLER_MIN_RESIDENCE} min (UVI)", resid_small >= SETTLER_MIN_RESIDENCE, f"{t_klein * 1000:.0f} l je Absetzer bei {PUMP_KLEIN_L_MIN:g} l/min (eine kleine Pumpe je Tank) = {resid_small:.0f} min; mit beiden Pumpen {resid_small_both:.0f} min"),
     ("Belüftung deckt den Sauerstoffbedarf", air_supply_kg >= o2_total[2] * O2_PEAK_FACTOR, f"{air_w:.0f} W liefern bei {AIR_KG_O2_PER_KWH:g} kg O₂/kWh {air_supply_kg:.1f} kg/Tag gegen Bedarf {o2_total[0]:.1f}–{o2_total[2]:.1f} kg/Tag (Spitze ×{O2_PEAK_FACTOR:g}: {o2_total[2] * O2_PEAK_FACTOR:.1f})"),
-    ("Puffertanks decken Wasserverlust und Frischwasser-Ruhe (R27)", puffer_days >= 2, f"{puffer_m3:.1f} m³ Puffer decken {puffer_days:.1f} Tage Wasserverlust bei {SYSTEM_LOSS_PCT_DAY:.0%}/Tag ({loss_m3_day:.2f} m³/Tag, SRAC 454: unter 2 %) und lassen Frischwasser 2 Tage stehen (Chlor, FAO 589); {puffer_m3 / total * 100:.0f} % des Systemwassers (UVI-Sumpf + Basentank: 0,7 %)"),
+    ("Nachfüllwasser: Quelle benannt, kein Vorrat im Dom (R27, D66)", bool(PUFFER_QUELLE), f"Nachfüllwasser kommt aus der {PUFFER_QUELLE}, im Dom ist kein Vorrat (D66); der Puffer klein ({puffer_m3:.2f} m³ = Fass + Messzelle + Kanister) wäre nur Mess- und Dosierbehälter und deckte rechnerisch {puffer_hours:.1f} h Wasserverlust bei {SYSTEM_LOSS_PCT_DAY:.0%}/Tag ({loss_m3_day:.2f} m³/Tag, SRAC 454: unter 2 %); {puffer_m3 / total * 100:.1f} % des Systemwassers (UVI-Sumpf + Basentank: 0,7 %); Chlor/Chloramin der Quelle beim Wasserversorger offen (Zisterne aussen = Option C)"),
     ("Drittbecken als Quarantäne (R27)", False, f"{third_m3:.2f} m³ nehmen nach UVI-Besatz {third_fish} Fische à {QUARANTINE_FISH_G} g ({third_kg:.1f} kg; FAO-Max {third_max_kg:.0f} kg); Futter {third_feed * 1000:.0f} g/Tag → {third_tan_g:.1f} g TAN/Tag: reiner Wasserwechsel bräuchte {third_exchange_m3:.1f} m³/Tag (TAN 1 mg/l), also eigener kleiner Biofilter (ca. {third_biofilter_l:.0f} l Bioballs) und Belüftung nötig; FAO: Neufische 45 Tage isolieren"),
     ("Hülle (Plane, D39) und Heizlast: Standort", False, f"PE doppelt {HULL_AREA:.0f} m²: {heat_w_per_k[1] / 1000:.2f} kW je Kelvin ({heat_w_per_k[0] / 1000:.2f}–{heat_w_per_k[2] / 1000:.2f}); bei ΔT {DT_DESIGN} K (Annahme Mitteleuropa −10/20 °C) {heat_kw_dt[1]} kW Spitze, Jahres-Obergrenze {heat_mwh_year[1]} MWh ohne Sonnengewinn; Standort offen, Heizung nicht in den Stromwerten"),
 ]
@@ -267,8 +270,7 @@ BARREL_200 = dict(l=200, d=0.60, h=0.95, raster=0.60)
 STOCK_G_L = {"KOH": 100, "NaHCO3": 96, "Ca(OH)2": 100}   # Arbeitsloesung g/l: NaHCO3 96 g/l Loeslichkeit 20 C [Q Merck SDB]; KOH 100 [A, Loeslichkeit nicht gelesen]; Ca(OH)2 loest nur 1,7 g/l [Q Merck/VWR, Wikipedia] -> Kalkmilch 100 g/l [A]
 DOSE_TANK_L, MEASURE_CELL_L, IRON_L = 120, 20, 20      # Stammloesungsfass, Messzelle (3 l/min -> ca. 7 min Verweilzeit), Eisenchelat-Kanister (74 g Fe je 3 Wochen)
 CISTERN_L = 3000                                       # Erdtank aussen [Q Haendlerpreise 899-1097 EUR nur Tank, 1649-2469 EUR Komplettsets]
-MEASURE_HEAD_M = 1.5                                   # Messzelle neben dem Verteiler statt 2,5-m-Stapel [A]
-third_small_m3 = pi * 0.4 ** 2 * 0.8                   # Drittbecken klein Ø 0,8 x 0,8 m [A]
+third_small_m3 = third_m3                              # Drittbecken klein Ø 0,8 x 0,8 m, seit D66/D70 Standard
 ts_fish = round(QUARANTINE_FISH_PER_M3 * third_small_m3)
 ts_kg = ts_fish * QUARANTINE_FISH_G / 1000
 ts_feed = ts_kg * JUVENILE_FEED_PCT
@@ -291,7 +293,7 @@ def puffer_variant(key, name, fresh_n, cistern_l, rolle):
 
 
 puffer_klein = {
-    "standard": "puffer_station_2_ibc (D46) bis Entscheidung Ben", "pflicht": ["Messzelle (Sonden pH, EC, Temperatur, O2, Nitrat) im Messkreis 3 l/min", "Stammloesungsfass Base (Ca(OH)2/KOH/NaHCO3)", "Eisenchelat-Kanister", "entchlortes Nachfuellwasser (Quelle, nicht Menge)"],
+    "standard": "puffer_klein T82 (D66/D70)", "pflicht": ["Messzelle (Sonden pH, EC, Temperatur, O2, Nitrat) im Messkreis 3 l/min", "Stammloesungsfass Base (Ca(OH)2/KOH/NaHCO3)", "Eisenchelat-Kanister", "entchlortes Nachfuellwasser (Quelle, nicht Menge)"],
     "komfort": ["2 Tage stehendes Frischwasser (FAO 589: 1,4 m3 bei 0,68 m3/Tag)", "Notvorrat ueber Stunden hinaus", "Stapel-Schwerkraft"],
     "bedarf": {"verlust_m3_tag_2prozent": round(loss_m3_day, 2), "verlust_m3_tag_1prozent": round(loss_m3_day / 2, 2), "uvi_anteil_m3": round(0.007 * total, 2), "stammloesung_tage_je_120l": stock_days},
     "optionen": [puffer_variant("A", "A Minimal im Dom: Dosierfass 120 l + Messzelle + Eisen, Nachfuellwasser direkt ueber Aktivkohle", 0, 0, "Mess-, Dosier-, Eisenstation; kein Vorrat"),
@@ -299,9 +301,9 @@ puffer_klein = {
                  puffer_variant("C", "C Minimal im Dom (wie A) + Zisterne 3 m3 aussen (Erdtank, Regenwasser)", 0, CISTERN_L, "wie A + Frischwasser/Notvorrat aussen")],
     "drittbecken_klein": {"durchmesser_m": 0.8, "tiefe_m": 0.8, "volumen_m3": round(third_small_m3, 2), "fische_uvi": ts_fish, "kg": round(ts_kg, 1), "fao_max_kg": round(MAX_FISH_KG_M3 * third_small_m3, 1),
                           "futter_g_tag": round(ts_feed * 1000), "tan_g_tag": round(ts_tan, 1), "wasserwechsel_m3_tag_ohne_biofilter": round(ts_tan, 1), "biofilter_bioballs_l": round(ts_feed * 1000 * FEED_RULE_MEDIA_L_PER_G["bioball"]),
-                          "grundflaeche_m2_mit_60mm": round(pi * (0.4 + 0.06) ** 2, 2), "grundflaeche_gespart_m2": round(pi * (THIRD_D / 2 + 0.06) ** 2 - pi * (0.4 + 0.06) ** 2, 2),
+                          "grundflaeche_m2_mit_60mm": round(pi * (0.4 + 0.06) ** 2, 2), "grundflaeche_gespart_m2": round(pi * (THIRD_D_OLD / 2 + 0.06) ** 2 - pi * (0.4 + 0.06) ** 2, 2),
                           "notbecken": f"nur Zuchttiere/Kranke (max. {MAX_FISH_KG_M3 * third_small_m3:.0f} kg bei 20 kg/m3); Notaufnahme des Pools (346 kg) nicht moeglich, das Zweitbecken (2,4 m3, max. 48 kg) uebernimmt nur Teile"},
-    "hinweis": "Zahlen R37; Fass-Masse und Preise sind Haendlerangaben (Snapshot), Stammloesungs-Konzentrationen KOH/Kalkmilch Annahmen; keine Layoutaenderung, Standard bleibt Puffer-Station 2 IBC bis zur Entscheidung (D63)."}
+    "hinweis": "Zahlen R37; Fass-Masse und Preise sind Haendlerangaben (Snapshot), Stammloesungs-Konzentrationen KOH/Kalkmilch Annahmen; Standard ist seit D66/D70 Option A (puffer_klein T82 und becken_dritt_klein T14k im Modell); die Station mit 2 IBC (T81) bleibt als abgeschaltete Variante (Schalter station_an 0)."}
 
 # ---- Beete unter den Tischen (R36, D60): Weg 1 = Standard, Weg 2 = Pruefszenarien; Rechnung in scripts/bed_table_variants.py ----
 import bed_table_variants as btv
@@ -363,20 +365,22 @@ specs = {
                "lebensdauer_jahre": 4, "lichtdurchlass_prozent": "75-80 (doppelt), 90 (einlagig)", "geblaese_luftpolster_w": list(BLOWER_FILM_W),
                "paneele": "Doppelstegplatten (W19/W20, D35) bleiben als Variante, nicht eingerechnet", "standort": "offen (Frage an Ben)"},
     "puffer": {"volumen_m3": puffer_m3, "anteil_wasser": f"{puffer_m3 / total:.0%}", "deckt_wasserverlust_tage": round(puffer_days, 1), "wasserverlust_m3_tag": round(loss_m3_day, 2),
-               "stapel": {"ibc": PUFFER_N, "hoehe_max_m": 2.5, "obere": "Messtank mit Schwerkraftablauf in die untere IBC", "foerderhoehe_m": STACK_HEAD_M,
-                          "messkreis_l_min": SAMPLE_FLOW_L_MIN, "messpumpe_w": round(puffer_pump_el, 1), "umpumpen_l_min": FILL_FLOW_L_MIN, "umpumpen_w_mittel": round(fill_el_avg, 1)},
-               "rollen": ["Messstation (pH, EC, Temperatur, O2, Nitrat)", "Basenzugabe und Naehrstoffausgleich (K, Ca, Fe) wie UVI-Basentank", "Frischwasser stehen lassen (2 Tage) und Wasserwechsel-Reserve", "Notvorrat"],
+               "deckt_wasserverlust_stunden": round(puffer_hours, 1), "nachfuellwasser_quelle": PUFFER_QUELLE,
+               "aufbau": {"modell": "puffer_klein T82 (D66/D70)", "stammloesungsfass_l": DOSE_TANK_L, "messzelle_l": MEASURE_CELL_L, "eisenkanister_l": IRON_L, "foerderhoehe_m": MEASURE_HEAD_M,
+                          "messkreis_l_min": SAMPLE_FLOW_L_MIN, "messpumpe_w": round(puffer_pump_el, 1), "umpumpen_l_min": 0, "umpumpen_w_mittel": round(fill_el_avg, 1),
+                          "anmerkung": "Umpumpen (FILL_*) entfaellt bei Option A: kein Vorrat im Dom, daher umpumpen_w_mittel 0; die Station mit 2 IBC (T81, D46) ist abgeschaltet (station_an 0)"},
+               "rollen": ["Messstation (pH, EC, Temperatur, O2, Nitrat) in der Messzelle", "Basenzugabe (Stammloesungsfass) und Eisenchelat-Dosierung wie UVI-Basentank", "Nachfuellwasser kommt aus der Quelle ueber Aktivkohle, kein Vorrat und kein Notvorrat im Dom (D66)"],
                "messgroessen": {"pH": "7,0-7,5 (UVI, Fort Valley State; FAO-Kompromiss 6-7)", "Nitrat": "5-150 mg/l (FAO 589)", "O2": "4-8 mg/l", "Nitrit": "unter 0,25 mg/l"},
                "dosierung": {"alkalinitaet_g_caco3_tag_theorie": round(alk_g_day), "aequivalente_tag_theorie": round(alk_eq_day, 1), "praktisch_faktor": ALK_PRACTICAL,
                              "theorie_kg_tag": base_kg, "praktisch_kg_tag": base_kg_pract, "mix_halb_ca_halb_koh_praktisch_kg_tag": base_mix_kg,
                              "eisen": f"Fe-Chelat 2 mg/l alle ca. 3 Wochen = {2 * total:.0f} g Fe je Gabe, ca. {2 * total / 21:.1f} g Fe/Tag",
                              "hinweis": "Nitrifikation verbraucht 7,14 g Alkalinitaet je g TAN (Boyd 2016); K-Bedarf der Pflanzen (ca. 0,4 g/m2/Tag, Graber/Junge, Abstract) ist viel kleiner als die KOH-Menge: Verhaeltnis Ca(OH)2/KOH nach Messung (EC, K) einstellen"},
                "strom_w": {"sensoren": round(sensors_w, 2), "rechner": PI_W, "dosierpumpen_mittel": round(dose_w_avg, 1), "messpumpe": round(puffer_pump_el, 1), "umpumpen_mittel": round(fill_el_avg, 1), "summe": round(puffer_w, 1)}},
-    "drittbecken": {"durchmesser_m": THIRD_D, "tiefe_m": THIRD_H, "volumen_m3": round(third_m3, 2), "mass_status": "Designer-Modell, Maß von Ben offen (D46)",
-                    "rolle": "Quarantaene und Krankenbecken (Neufische 45 Tage isolieren, FAO 589), zugleich Notbecken; Zweitbecken (2,4 m3) bleibt Aufzucht (D45 d)",
+    "drittbecken": {"durchmesser_m": THIRD_D, "tiefe_m": THIRD_H, "volumen_m3": round(third_m3, 2), "mass_status": "Drittbecken klein T14k, Wasser Ø 800 x 800 = 402 l (D66/D70)",
+                    "rolle": "Quarantaene und Krankenbecken (Neufische 45 Tage isolieren, FAO 589), nur Zuchttiere/Kranke; keine Notaufnahme des Pools (346 kg); Zweitbecken (2,4 m3) bleibt Aufzucht (D45 d)",
                     "besatz_uvi": {"fische": third_fish, "einzelgewicht_g": QUARANTINE_FISH_G, "kg": round(third_kg, 1), "fao_max_kg": round(third_max_kg, 1)},
                     "futter_g_tag": round(third_feed * 1000), "tan_g_tag": round(third_tan_g, 1), "wasserwechsel_m3_tag_ohne_biofilter": round(third_exchange_m3, 1), "biofilter_bioballs_l": round(third_biofilter_l),
-                    "noetig": "eigene Belueftung und kleiner Biofilter, Wasserwechsel aus dem Puffer"},
+                    "noetig": "eigene Belueftung und kleiner Biofilter, Wasserwechsel mit Nachfuellwasser aus der Quelle ueber Aktivkohle (kein Vorrat im Dom, D66)"},
     "pflanzmix": {"beete": mix_beete, "beete_pflanzen": sum(m["pflanzen"] for m in mix_beete), "beete_flaeche_m2": round(mix_beete_area, 1),
                   "nft": [{"art": n, "toepfe": k} for n, k in MIX_NFT], "nft_toepfe": mix_nft_pots, "nft_flaeche_m2": round(nft_area_now, 1),
                   "topfplaetze": {"gesamt": POTS_BEDS + POTS_NFT, "bepflanzt": sum(m["pflanzen"] for m in mix_beete) + mix_nft_pots,
@@ -390,7 +394,7 @@ specs = {
                  "hinweis": "aussen4 ist Standard (D43, W24 check_nft_fit 48/48): Rinnenlaengen und Toepfe aus nft_tisch.json; NFT-Flaeche aus Bens Tabellenflaeche (42,41 m2 bei aussen3-Laenge) auf die Rinnenlaenge skaliert [A]",
                  "frucht_blatt_g_m2": [FRUIT_G, LEAF_G], "bens_mix_frucht_anteil": FRUIT_SHARE_MIX},
     "offene_fragen": ["Standort und Aussenklima (Heizlast, Jahresenergie)", "4. Aussenrinne machbar (W24)?", "Fruchtgemuese: ausserhalb der Tische gaebe es keinen Platz (D61 Weg 1); Weg 2b (Mitteltische weg) nur auf Bens Wunsch (R36)",
-                      "Drittbecken: Maß 1,03 x 1,13 m bestätigen (D46); Puffer-Station Lage und Stapelhöhe", "Notstrom und Alarm fuer die Belueftung", "Geblaese und Windlast der Plane"],
+                      "Drittbecken klein Ø 0,8 x 0,8 m und Puffer klein: Maße und Wasserquelle (Chlor/Chloramin beim Wasserversorger) bestätigen (D66)", "Notstrom und Alarm fuer die Belueftung", "Geblaese und Windlast der Plane"],
     "konsistenz": [{"pruefung": n, "ok": bool(ok), "detail": d} for n, ok, d in checks],
     "herkunft": {
         "biomasse_346_kg": "Entscheidung D61 (Weg 1, R36): Pflanzflaeche Mitte der FAO-Werte, Spanne 308-385; frueher D40 475 kg (setzte Fruchtgemuese voraus); Obergrenze Q FAO 589 (20 kg/m3 = 570 kg)",

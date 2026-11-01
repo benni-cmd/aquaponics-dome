@@ -225,7 +225,7 @@
   "used_by": "gen_dome.py, check_walkways.py"
  },
  "pool3_d": {
-  "value": 1030,
+  "value": 800,
   "unit": "mm",
   "origin": "A",
   "source": "D46: Drittbecken Innendurchmesser (Designer-Modell, E; Mass Ben offen)",
@@ -234,7 +234,7 @@
   "used_by": "gen_dome.py, place_m8.py"
  },
  "pool3_depth": {
-  "value": 1130,
+  "value": 920,
   "unit": "mm",
   "origin": "A",
   "source": "D46: Drittbecken Tiefe bis Wasserspiegel (Designer-Modell, E)",
@@ -279,7 +279,7 @@
   "used_by": "gen_dome.py, place_m8.py"
  },
  "mensch_mes_x": {
-  "value": 700,
+  "value": -150,
   "unit": "mm",
   "origin": "A",
   "source": "D47/M9: Figur messen, Station-KS x (Hand x 880 vor der Dosierkonsole 800..1200; bei 1000 stiess der Fuss an das Zweitbecken)",
@@ -288,7 +288,7 @@
   "used_by": "gen_dome.py"
  },
  "mensch_mes_y": {
-  "value": -1040,
+  "value": -680,
   "unit": "mm",
   "origin": "A",
   "source": "D47/M9: Figur messen, Station-KS y (Fuss; Hand erreicht die Konsolenfront)",
@@ -355,6 +355,42 @@
   "unit": "mm",
   "origin": "A",
   "source": "D63: Aussenring (Aussenbeete, Aussentische) radial nach aussen, Laufweg B 500 -> 600; Wandluft 310 -> 110",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "station_an": {
+  "value": 0,
+  "unit": "",
+  "origin": "A",
+  "source": "D66: 1 = alte Puffer-Station T81 als Vorbau (Variante), 0 = aus",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "puffer_r": {
+  "value": 2763,
+  "unit": "mm",
+  "origin": "A",
+  "source": "D68: Puffer klein Mitte, Radius im Modellrahmen (Abstandssuche, Bedienzone 700 x 650 frei)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "puffer_az": {
+  "value": -51,
+  "unit": "deg",
+  "origin": "A",
+  "source": "D68: Puffer klein Mitte, Azimut im Modellrahmen",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "gen_dome.py"
+ },
+ "puffer_front": {
+  "value": -61,
+  "unit": "deg",
+  "origin": "A",
+  "source": "D68: Richtung, in die die Front (Bedienseite) des Puffers zeigt",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"

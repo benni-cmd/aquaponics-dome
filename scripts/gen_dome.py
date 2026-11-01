@@ -109,12 +109,22 @@ def puffer_station(fz):
     x, y, a = station_pose()
     place_instances("Puffer_Station", os.path.join(ROOT, "designs", "components", "puffer_station.sc"), [(round(x, 1), round(y, 1), fz, a - 90.0)], "09_Technik")
 
+def puffer_pose():
+    """D66: Puffer klein (T82, 700 x 700 x 1203) im Dom, Front (lokal -Y, Pumpen/Fass herausziehen) zeigt in Richtung `puffer_front`; Rueckgabe (x, y, yaw, X, Y) mit Achsen im Modellrahmen. Lage aus der Abstandssuche (D68)."""
+    x, y = P["puffer_r"] * math.cos(math.radians(P["puffer_az"])), P["puffer_r"] * math.sin(math.radians(P["puffer_az"])); yaw = P["puffer_front"] + 90.0; a = math.radians(yaw)
+    return x, y, yaw, (math.cos(a), math.sin(a)), (-math.sin(a), math.cos(a))
+
+def puffer_klein(fz):
+    x, y, yaw, _, _ = puffer_pose()
+    place_instances("Puffer_Klein", os.path.join(ROOT, "designs", "components", "puffer_klein.sc"), [(round(x, 1), round(y, 1), fz, yaw)], "09_Technik")
+
 def mensch_referenz(fz):
     """M9 (D47, W29): zwei Referenzfiguren 1,80 m (Fussmitte am Boden, Blick +Y). messen: vor der Dosierkonsole der Puffer-Station (Station-KS), Blick zur Konsole; arbeiten: Laufweg B, Azimut Station + 180, Blick nach aussen zum Aussentisch."""
-    sx, sy, a = station_pose(); ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar))   # Station-KS: X = -t, Y = n
-    mx, my = sx - P["mensch_mes_x"] * t[0] + P["mensch_mes_y"] * n[0], sy - P["mensch_mes_x"] * t[1] + P["mensch_mes_y"] * n[1]
-    place_instances("Mensch_Referenz_messen", os.path.join(ROOT, "designs", "components", "mensch_referenz_messen.sc"), [(round(mx, 1), round(my, 1), fz, a - 90.0)], "11_Referenz")
-    wa = a + 180.0; wr = math.radians(wa)
+    px, py, pyaw, X, Y = puffer_pose() if not P.get("station_an", 0) else (0, 0, 0, (1, 0), (0, 1))
+    if P.get("station_an", 0): sx, sy, a = station_pose(); ar = math.radians(a); n = (math.cos(ar), math.sin(ar)); t = (-math.sin(ar), math.cos(ar)); px, py, pyaw, X, Y = sx, sy, a - 90.0, (-t[0], -t[1]), n
+    mx, my = px + P["mensch_mes_x"] * X[0] + P["mensch_mes_y"] * Y[0], py + P["mensch_mes_x"] * X[1] + P["mensch_mes_y"] * Y[1]   # Puffer-KS: Figur vor der Front (-Y), Blick zur Messzelle (+Y)
+    place_instances("Mensch_Referenz_messen", os.path.join(ROOT, "designs", "components", "mensch_referenz_messen.sc"), [(round(mx, 1), round(my, 1), fz, pyaw)], "11_Referenz")
+    wa = P["door_edge_az"] + 36.0 + 180.0; wr = math.radians(wa)   # gegenueber der alten Station-Flaeche (Laufweg B)
     place_instances("Mensch_Referenz_arbeiten", os.path.join(ROOT, "designs", "components", "mensch_referenz_arbeiten.sc"), [(round(P["mensch_arb_r"] * math.cos(wr), 1), round(P["mensch_arb_r"] * math.sin(wr), 1), fz, wa - 90.0)], "11_Referenz")
 
 def tuer_komplett(segs, base_z):
@@ -261,7 +271,8 @@ def pools(fz):
     """04_Wasserbecken: Zentralpool (T5) und Zweitbecken (T6) als Komponenten; eingelassen, Rand Z 650, Wasserspiegel Z 515."""
     component_file("pool_zentral", "Pool", "04_Wasserbecken", lambda: pool_fn(fz, "Pool", LAYOUT["pool"], P["wall"], P["pool_depth"], "T5_Zentraltank"))
     component_file("zweitbecken", "Zweitbecken", "04_Wasserbecken", lambda: pool_fn(fz, "Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], "T6_Zweitbecken"))
-    component_file("becken_dritt", "Becken_Dritt", "04_Wasserbecken", lambda: pool_fn(fz, "Dritt", POOL3, 60, P["pool3_depth"], "T14_Drittbecken"))   # M8/D46
+    x3, y3, _, zb3, _ = pool_dims(fz, POOL3, 60, P["pool3_depth"], "Dritt")
+    place_instances("Becken_Dritt", os.path.join(ROOT, "designs", "components", "becken_dritt_klein.sc"), [(round(x3, 1), round(y3, 1), round(zb3, 1), 0.0)], "04_Wasserbecken")   # D66: Werkstatt-Komponente becken_dritt_klein (T14k, Z 0 = Unterkante)
 
 def rect_corners(cx, cy, l, w, yaw):
     c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
@@ -407,7 +418,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); puffer_station(P["sock_h"]); mensch_referenz(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); mensch_referenz(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

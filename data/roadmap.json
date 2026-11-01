@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M-SETZEN und R44 abgenommen; es laeuft noch der ComfyUI-Testrender (COMFY-V1, nicht abgenommen); nichts Neues gestartet; Bens Entscheidungen offen (Filter, Puffer-Lage)",
+ "stand": "Stand 01.11.2026: R41 Laschenknoten laeuft (Fachrecherche); M-SETZEN, R44, ComfyUI-Render abgenommen; Bens Entscheidungen offen (Filter, Puffer-Lage, Fischmenge)",
  "schritte": [
   {
    "id": "W33",
@@ -184,11 +184,11 @@
   {
    "id": "R41",
    "titel": "Laschen-Scheiben-Knoten gegen Kugelknoten",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 6,
    "wer": "Fachrecherche (frisch)",
-   "notiz": "Vergleich zum Foto aus Chemnitz; startet parallel, wenn das Limit passt."
+   "notiz": "Sitzung fachrecherche-knoten (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/R41-laschenknoten.md; Ergebnis docs/research/R41.md und scripts/lasche_check.py; aendert das Modell nicht."
   },
   {
    "id": "LATTE-SKRIPT",
@@ -427,11 +427,11 @@
   {
    "id": "COMFY-V1",
    "titel": "ComfyUI Foto-Render Testlauf (Skript photoreal.py, Workflow, Kamera-Tabelle)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 0,
    "wer": "Analyse (Sitzung comfy-analyse, auf Bens direkten Wunsch)",
-   "notiz": "Sitzung baut V1 aus R43: scripts/photoreal.py, scripts/comfy/, data/photoreal.json; Testrender Uebersicht laeuft (Fehler HIP_VISIBLE_DEVICES=1 gefunden und behoben). Noch NICHT committet, noch nicht abgenommen. Aendert nichts am Modell."
+   "notiz": "Commit ea37e96: photoreal.py, Workflow, Kameratabelle, je 2 Ansichten als Foto und Skizze (uebersicht, rueckseite); Modell unveraendert, nur eigene Dateien committet. Bild ist Illustration (Rasen, Umgebung erfunden), kein Modellbeleg. Offen: automatischer Lauf nach Montage-Paketen noch nicht verdrahtet."
   },
   {
    "id": "E8",

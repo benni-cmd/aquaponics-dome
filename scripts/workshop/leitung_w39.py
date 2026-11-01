@@ -131,6 +131,44 @@ DESC["kappe"] = [{"match": "^lt_kappe_d", "titel": "Kappe d20 und d50 (Abgang ve
     "aufbau": [{"t": "Maße", "p": ["d20: Außen 27, Höhe 19", "d50: Außen 58,5, Höhe 34"]}],
     "masse": {"Kappe d20": "8,2 g", "Kappe d50": "42,7 g"}, "grenzen": "Maße aus der Bibliotheksnäherung, Handelsteil im Katalog offen.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
 
+# ---------------------------------------------------------------- Teil 6: Rueckschlagventil d40, d25, d20 (Kugel-/Klappen-Rueckschlagventil, Klebemuffen), Durchfluss A nach B (+Z)
+RSV_SIZES = (40, 25, 20)
+RSV_LB = 50.0                                                 # Gehaeuselaenge wie der Kugelhahn (L = 50 + 2 t)
+def rsv_geom(d):
+    of = L.od_f(d); dp = L.DEPTH[d]; wi = d - 2 * L.wall_p(d)
+    return dict(of=of, ob=of + 12, dp=dp, wi=wi, L=RSV_LB + 2 * dp)
+def rsv_vol(d):
+    g = rsv_geom(d)
+    return math.pi / 4 * (g["of"] ** 2 * 2 * g["dp"] + g["ob"] ** 2 * RSV_LB - d ** 2 * 2 * g["dp"] - g["wi"] ** 2 * RSV_LB)
+
+def rueckschlagventil(d):
+    g = rsv_geom(d); of, ob, dp = g["of"], g["ob"], g["dp"]
+    b = sc.Build(); nm = f"T70_Rueckschlagventil_d{d}_A-B"          # A-B = Pfeil: Durchfluss nur von A nach B (+Z)
+    L.setup(b, nm, d, {"laenge": round(g["L"], 1)})
+    b.add("solid.cylinder", diameter=ob, height=RSV_LB, base=[0, 0, dp], operation="new", name="Gehaeuse_R", body_name="Rueckschlagventil")
+    for z0, nmn in ((0, "A"), (dp + RSV_LB, "B")):
+        b.add("solid.cylinder", diameter=of, height=dp, base=[0, 0, z0], operation="join", targets=["Rueckschlagventil"], name="Stutzen_" + nmn)
+    b.add("solid.cylinder", diameter=d, height=dp + 1, base=[0, 0, -1], operation="cut", targets=["Rueckschlagventil"], name="Muffe_A")
+    b.add("solid.cylinder", diameter=d, height=dp + 1, base=[0, 0, g["L"] - dp], operation="cut", targets=["Rueckschlagventil"], name="Muffe_B")
+    b.add("solid.cylinder", diameter=g["wi"], height=g["L"] + 2, base=[0, 0, -1], operation="cut", targets=["Rueckschlagventil"], name="Durchgang")
+    b.add("material.assign", bodies=["Rueckschlagventil"], material="LT hahn")
+    L.meta(b, nm, f"T70-RSV-{d}", f"Rueckschlagventil PVC-U d{d} ({L.DN[d]}), Klebemuffen, Durchfluss nur von A nach B (+Z) -> ; Einbau waagerecht oder senkrecht aufwaerts")
+    return b, nm, g
+
+for _d in RSV_SIZES:
+    RENDER[f"lt_rueckschlagventil_d{_d}"] = dict(yaw=3.14159, pitch=0.0, section="XZ", zoom=2.0)
+    reg("rsv", f"lt_rueckschlagventil_d{_d}", (lambda d=_d: rueckschlagventil(d)))
+    PORTS[f"lt_rueckschlagventil_d{_d}"] = (lambda d=_d: [("A (Zulauf)", (0, 0, 0), (0, 0, -1), "Muffe", L.DN[d]), ("B (Abgang)", (0, 0, rsv_geom(d)["L"]), (0, 0, 1), "Muffe", L.DN[d])])
+JSON["rsv"] = lambda: {f"lt_rueckschlagventil_d{d}": jent(f"lt_rueckschlagventil_d{d}", f"T70-RSV-{d}", f"T70_Rueckschlagventil_d{d}_A-B", "PVC-U (Klebemuffen), Innenteile nicht modelliert", d=d, laenge=rsv_geom(d)["L"], gehaeuse_aussen_d=rsv_geom(d)["ob"],
+    gehaeuse_laenge=RSV_LB, muffentiefe=L.DEPTH[d], durchgang_d=rsv_geom(d)["wi"], durchfluss="nur von A nach B (+Z)", einbaulage="waagerecht oder senkrecht aufwaerts (Fluss nach oben); nie senkrecht abwaerts",
+    verwendung={40: "Foerderleitung K58/K59 (Sumpf)", 25: "Luft-Hauptverteiler, 6 Abgaenge, und Pool-Verteiler (W37)", 20: "Luft-Hauptverteiler, 6 Abgaenge, und Pool-Verteiler (W37)"}[d],
+    herkunft={"Bauweise": "A, Vorbild leitung.kugelhahn ohne Hebel", "gehaeuse 50 lang, aussen od_f + 12": "Annahme wie Kugelhahn", "handelsteil": "Kugel-/Klappen-Rueckschlagventil, Katalog offen, Nachweis N-BESCHAFFUNG"}) for d in RSV_SIZES}
+DESC["rsv"] = [{"match": "^lt_rueckschlagventil_d", "titel": "Rückschlagventil d40, d25 und d20", "was": "Sperrt die Gegenrichtung der Leitung: Wasser oder Luft fließt nur von A nach B. Gebraucht an den Förderleitungen des Sumpfs (d40) und an den Luftverteilern (d25, d20).",
+    "status": "gebaut, Prüfungen mit Volumen und Ports",
+    "ablauf": ["Einbau in Flussrichtung A nach B; waagerecht oder senkrecht aufwärts, nie senkrecht abwärts.", "Klebemuffen wie der Kugelhahn, Länge 50 plus zwei Muffentiefen.", "Innenteile (Kugel oder Klappe, Feder) sind nicht modelliert."],
+    "aufbau": [{"t": "Maße", "p": [f"d40: Länge {rsv_geom(40)['L']:g}, Gehäuse {rsv_geom(40)['ob']:g}", f"d25: Länge {rsv_geom(25)['L']:g}, Gehäuse {rsv_geom(25)['ob']:g}", f"d20: Länge {rsv_geom(20)['L']:g}, Gehäuse {rsv_geom(20)['ob']:g}"]}],
+    "masse": {f"d{d}": f"{rsv_vol(d) * 1.4e-3:.0f} g" for d in RSV_SIZES}, "grenzen": "Bauform und Maße angenommen (Kugelhahn ohne Hebel); Handelsteil im Katalog offen.", "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"}]
+
 # ---------------------------------------------------------------- MARKE-EINFUEGEN (weitere Teile werden oberhalb dieser Zeile ergaenzt)
 
 # ---------------------------------------------------------------- Ausgabe nach JSON und descriptions

@@ -117,7 +117,22 @@ def check_kappe(ck):
         ck.eq(f"kappe d{d} Zapfenoberkante z = {top:g} liegt am Muffenanschlag der Kappe (Kappenursprung z = {z0:g} + Tiefe {dp:g})", 1 if ob else 0, 1)
         ck.eq(f"kappe d{d} Kappenhoehe {dp + W.KAPPE_BODEN:g} ueber dem Zapfen: Oberkante {z0 + dp + W.KAPPE_BODEN:g} > Zapfenoberkante, Boden {W.KAPPE_BODEN:g} dick", 1 if abs((z0 + dp + W.KAPPE_BODEN) - (top + W.KAPPE_BODEN)) < 1e-6 else 0, 1)
 
-CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose), ("kappe", check_kappe)]
+def check_rsv(ck):
+    for d in W.RSV_SIZES:
+        fname = f"lt_rueckschlagventil_d{d}"; g = W.rsv_geom(d)
+        ev = sc.evaluate(path_of(fname)); b = ev["bodies"][0]; bb = b["bbox"]
+        ck.eq(f"rsv d{d} Koerperzahl (Interferenz 0: ein Koerper)", ev["body_count"], 1)
+        ck.eq(f"rsv d{d} Baulaenge = 50 + 2 t = 50 + 2 x {g['dp']:g} (wie Kugelhahn)", bb["max"][2] - bb["min"][2], 50 + 2 * g["dp"], 0.05)
+        ck.eq(f"rsv d{d} Laenge = Kugelhahn-Laenge L.ports(lt_kugelhahn_d{d})", W.ports(fname)[1][1][2], L.ports(f"lt_kugelhahn_d{d}")[1][1][2], 0.001)
+        ck.eq(f"rsv d{d} Gehaeuse-D = od_f + 12", bb["max"][0] - bb["min"][0], g["ob"], 0.05)
+        ck.eq(f"rsv d{d} Volumen = Gehaeuse + Stutzen - Muffen - Durchgang", b["volume_mm3"], W.rsv_vol(d), W.rsv_vol(d) * 0.002)
+        inner_cyl(ck, fname, "Rueckschlagventil", d / 2, "Muffe")
+        inner_cyl(ck, fname, "Rueckschlagventil", g["wi"] / 2, "Durchgang")
+        ck.eq(f"rsv d{d} Durchflussrichtung: A ({W.ports(fname)[0][2]}) -> B ({W.ports(fname)[1][2]}) entlang +Z", 1 if W.ports(fname)[0][2] == (0, 0, -1) and W.ports(fname)[1][2] == (0, 0, 1) else 0, 1)
+        port_checks(ck, fname, ["Rueckschlagventil"])
+        print(f"INFO rsv d{d}: Masse {ev['total']['mass_g']:.0f} g (PVC-U 1,4)")
+
+CHECKS = [("red", check_red), ("pe", check_pe), ("hose", check_hose), ("kappe", check_kappe), ("rsv", check_rsv)]
 
 def main():
     want = set(a for a in sys.argv[1:] if not a.startswith("--"))

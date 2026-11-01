@@ -56,4 +56,37 @@ PASS lt_w39: kappe d20 Kappenhoehe 19 ueber dem Zapfen: Oberkante 82.25 > Zapfen
 PASS lt_w39: kappe d50 Zapfen Abgang 4 (x = 435): Aussenradius 25 = Muffenradius der Kappe (Passung ohne Spiel und ohne Ueberlappung): Ist 1, Soll 1
 PASS lt_w39: kappe d50 Zapfenoberkante z = 79.25 liegt am Muffenanschlag der Kappe (Kappenursprung z = 48.25 + Tiefe 31): Ist 1, Soll 1
 PASS lt_w39: kappe d50 Kappenhoehe 34 ueber dem Zapfen: Oberkante 82.25 > Zapfenoberkante, Boden 3 dick: Ist 1, Soll 1
-== lt_w39: 53/53 PASS
+PASS lt_w39: rsv d40 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w39: rsv d40 Baulaenge = 50 + 2 t = 50 + 2 x 26 (wie Kugelhahn): Ist 102, Soll 102 (+-0.05)
+PASS lt_w39: rsv d40 Laenge = Kugelhahn-Laenge L.ports(lt_kugelhahn_d40): Ist 102, Soll 102 (+-0.001)
+PASS lt_w39: rsv d40 Gehaeuse-D = od_f + 12: Ist 59.9991, Soll 60 (+-0.05)
+PASS lt_w39: rsv d40 Volumen = Gehaeuse + Stutzen - Muffen - Durchgang: Ist 118652, Soll 118663 (+-237.325)
+PASS lt_w39: lt_rueckschlagventil_d40 Muffe: Zylinderflaeche r 20: Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d40 Durchgang: Zylinderflaeche r 18.1: Ist 1, Soll 1
+PASS lt_w39: rsv d40 Durchflussrichtung: A ((0, 0, -1)) -> B ((0, 0, 1)) entlang +Z: Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d40 Port A (Zulauf) (Muffe, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d40 Port B (Abgang) (Muffe, DN32) Stirnflaeche an (0, 0, 102.0): Ist 1, Soll 1
+INFO rsv d40: Masse 166 g (PVC-U 1,4)
+PASS lt_w39: rsv d25 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w39: rsv d25 Baulaenge = 50 + 2 t = 50 + 2 x 19 (wie Kugelhahn): Ist 88, Soll 88 (+-0.05)
+PASS lt_w39: rsv d25 Laenge = Kugelhahn-Laenge L.ports(lt_kugelhahn_d25): Ist 88, Soll 88 (+-0.001)
+PASS lt_w39: rsv d25 Gehaeuse-D = od_f + 12: Ist 44.2493, Soll 44.25 (+-0.05)
+PASS lt_w39: rsv d25 Volumen = Gehaeuse + Stutzen - Muffen - Durchgang: Ist 71289.8, Soll 71296.5 (+-142.593)
+PASS lt_w39: lt_rueckschlagventil_d25 Muffe: Zylinderflaeche r 12.5: Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d25 Durchgang: Zylinderflaeche r 10.7: Ist 1, Soll 1
+PASS lt_w39: rsv d25 Durchflussrichtung: A ((0, 0, -1)) -> B ((0, 0, 1)) entlang +Z: Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d25 Port A (Zulauf) (Muffe, DN20) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d25 Port B (Abgang) (Muffe, DN20) Stirnflaeche an (0, 0, 88.0): Ist 1, Soll 1
+INFO rsv d25: Masse 100 g (PVC-U 1,4)
+PASS lt_w39: rsv d20 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w39: rsv d20 Baulaenge = 50 + 2 t = 50 + 2 x 16 (wie Kugelhahn): Ist 82, Soll 82 (+-0.05)
+PASS lt_w39: rsv d20 Laenge = Kugelhahn-Laenge L.ports(lt_kugelhahn_d20): Ist 82, Soll 82 (+-0.001)
+PASS lt_w39: rsv d20 Gehaeuse-D = od_f + 12: Ist 38.9994, Soll 39 (+-0.05)
+PASS lt_w39: rsv d20 Volumen = Gehaeuse + Stutzen - Muffen - Durchgang: Ist 57430.5, Soll 57436.2 (+-114.872)
+PASS lt_w39: lt_rueckschlagventil_d20 Muffe: Zylinderflaeche r 10: Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d20 Durchgang: Zylinderflaeche r 8.2: Ist 1, Soll 1
+PASS lt_w39: rsv d20 Durchflussrichtung: A ((0, 0, -1)) -> B ((0, 0, 1)) entlang +Z: Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d20 Port A (Zulauf) (Muffe, DN15) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_rueckschlagventil_d20 Port B (Abgang) (Muffe, DN15) Stirnflaeche an (0, 0, 82.0): Ist 1, Soll 1
+INFO rsv d20: Masse 80 g (PVC-U 1,4)
+== lt_w39: 83/83 PASS

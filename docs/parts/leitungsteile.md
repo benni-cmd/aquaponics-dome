@@ -559,3 +559,25 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Montage (L4):** Zapfen entgraten, Kappe aufkleben bis Anschlag; ein verschlossener Abgang braucht keinen Kugelhahn. Werkzeug: Entgrater, Kleber.
 
 **Pruefung:** `check_lt_w39.py kappe` 22/22 PASS: je Groesse Koerper, Hoehe, Aussen-D, Volumen (0,01 %), Boden geschlossen, Anschlag, Port, Interferenz 0 gegen Testzapfen; zusaetzlich fuer Abgang 3 (d20) und Abgang 4 (d50) des echten `lt_verteiler_d50`: Zapfen-Zylinder mit Radius = Muffenradius der Kappe und Zapfenoberkante z = 79,25 = Kappenursprung + Muffentiefe (Passung, nur Einstecktiefe ueberlappt). Ein Boolean-Interferenztest Kappe gegen den ganzen Verteiler scheitert in SolidCraft (114 s, "boolean Intersect: no result") und ist deshalb durch diese Mass-Pruefung ersetzt. **Bild:** `renders/components/leitungsteile/lt_kappe_d20.png`, `lt_kappe_d50.png`. **Offene Fragen:** Handelsteil Kappe oder Stopfen (Stopfen = innen steckend) im Katalog offen.
+
+## Rueckschlagventil d40, d25, d20 `lt_rueckschlagventil_d40/d25/d20` (T70-RSV-40/25/20)
+
+**Mini-Plan.** Problem: W37 (Sumpf, Luft) braucht ein Rueckschlagventil dreifach: Foerderleitung K58/K59 d40, Luft-Hauptverteiler (6 Abgaenge) und Pool-Verteiler d25/d20 (`leitungsteile.md` Zeile 178 "Rueckschlagventil fehlen"). Intent: Handelsteil Rueckschlagventil mit Klebemuffen statt Eigenbau. Goal: drei Dateien mit A/B Muffe, Durchfluss nur A nach B (+Z) im Komponentennamen (`..._A-B`) und hier im Blatt vermerkt, Laenge wie der Kugelhahn (50 + 2 t), Check gruen. Bau: `leitung.kugelhahn(d)` ohne Spindel und Hebel; Innenleben (Kugel/Klappe, Feder) nicht modelliert; Einbau waagerecht oder senkrecht aufwaerts, nie senkrecht abwaerts.
+
+**Funktion:** Sperrt die Gegenrichtung. **Durchfluss nur von A nach B (+Z)**; im Komponentennamen als Pfeil `..._A-B` und in der Metadatenzeile ("A nach B (+Z)") vermerkt. **Einbaulage:** waagerecht oder senkrecht aufwaerts (Fluss nach oben), nie senkrecht abwaerts. Bedarf (W37): d40 Foerderleitung K58/K59 (Sumpf), d25 und d20 Luft-Hauptverteiler (6 Abgaenge) und Pool-Verteiler; Stueckzahlen legt W37 fest.
+
+| Merkmal | d40 | d25 | d20 |
+|---|---|---|---|
+| Baulaenge L = 50 + 2 t (Kugelhahn-Laenge) | 102 | 88 | 82 |
+| Muffentiefe t / Stutzen-Aussen (Formstueck) | 26 / 48 | 19 / 32,25 | 16 / 27 |
+| Gehaeuse-D (od_f + 12), Laenge 50 | 60 | 44,25 | 39 |
+| Durchgang | 36,2 | 21,4 | 16,4 |
+| Masse (PVC-U 1,4, Messung) | 166 g | 100 g | 80 g |
+
+**Ports** (Bauteil-KS, mm; Port A im Ursprung, Achse +Z): A (Zulauf, Muffe) bei 0, 0, 0 Richtung -Z; B (Abgang, Muffe) bei 0, 0, L Richtung +Z; DN32 / DN20 / DN15.
+
+**Herkunft:** Bauweise A, Vorbild `leitung.kugelhahn(d)` ohne Hebel (Bibliothek, Bauform ohne Quelle, niedrig); Gehaeuse 50 lang und od_f + 12 wie der Hahn (A); Muffentiefen EN 1452-3 gerundet (A). Handelsteil Kugel- oder Klappen-Rueckschlagventil, Katalog offen, Nachweis N-BESCHAFFUNG. Kugel, Klappe und Feder sind nicht modelliert; Oeffnungsdruck und Druckverlust folgen aus dem Katalog.
+
+**Montage (L4):** Pfeil beachten (Durchfluss A nach B), Klebemuffen wie der Kugelhahn; bei Luftleitungen Ventil hinter dem Kompressor/Verteiler. Werkzeug: Saege, Entgrater, Kleber. Alternative lokale Fertigung: Handels-Rueckschlagventil (Kugel/Klappe, PVC-U, Klebemuffe) oder fuer Luft ein Membran-Rueckschlagventil.
+
+**Pruefung:** `check_lt_w39.py rsv` 30/30 PASS: je Groesse Koerper, Baulaenge, Laenge = Kugelhahn-Laenge, Gehaeuse-D, Volumen (0,01 %), Muffen- und Durchgangs-Zylinder, Durchflussrichtung der Ports, 2 Port-Stirnflaechen. **Bilder** (Schnitt XZ): `renders/components/leitungsteile/lt_rueckschlagventil_d40.png`, `_d25.png`, `_d20.png`. **Offene Fragen:** Handelsteil, Oeffnungsdruck, Innenteile (Katalog offen); Einbaulage senkrecht abwaerts ist ausgeschlossen, die Montage prueft das an den Sumpf-Leitungen K58/K59.

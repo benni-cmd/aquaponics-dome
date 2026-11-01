@@ -637,6 +637,34 @@
       "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
     },
     {
+      "match": "^lt_rueckschlagventil_d",
+      "titel": "Rückschlagventil d40, d25 und d20",
+      "was": "Sperrt die Gegenrichtung der Leitung: Wasser oder Luft fließt nur von A nach B. Gebraucht an den Förderleitungen des Sumpfs (d40) und an den Luftverteilern (d25, d20).",
+      "status": "gebaut, Prüfungen mit Volumen und Ports",
+      "ablauf": [
+        "Einbau in Flussrichtung A nach B; waagerecht oder senkrecht aufwärts, nie senkrecht abwärts.",
+        "Klebemuffen wie der Kugelhahn, Länge 50 plus zwei Muffentiefen.",
+        "Innenteile (Kugel oder Klappe, Feder) sind nicht modelliert."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "d40: Länge 102, Gehäuse 60",
+            "d25: Länge 88, Gehäuse 44.25",
+            "d20: Länge 82, Gehäuse 39"
+          ]
+        }
+      ],
+      "masse": {
+        "d40": "166 g",
+        "d25": "100 g",
+        "d20": "80 g"
+      },
+      "grenzen": "Bauform und Maße angenommen (Kugelhahn ohne Hebel); Handelsteil im Katalog offen.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

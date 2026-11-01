@@ -919,6 +919,159 @@
      "dn": "DN40"
     }
    ]
+  },
+  "lt_rueckschlagventil_d40": {
+   "teilenummer": "T70-RSV-40",
+   "komponente": "T70_Rueckschlagventil_d40_A-B",
+   "werkstoff": "PVC-U (Klebemuffen), Innenteile nicht modelliert",
+   "d": 40,
+   "laenge": 102.0,
+   "gehaeuse_aussen_d": 60.0,
+   "gehaeuse_laenge": 50.0,
+   "muffentiefe": 26,
+   "durchgang_d": 36.2,
+   "durchfluss": "nur von A nach B (+Z)",
+   "einbaulage": "waagerecht oder senkrecht aufwaerts (Fluss nach oben); nie senkrecht abwaerts",
+   "verwendung": "Foerderleitung K58/K59 (Sumpf)",
+   "herkunft": {
+    "Bauweise": "A, Vorbild leitung.kugelhahn ohne Hebel",
+    "gehaeuse 50 lang, aussen od_f + 12": "Annahme wie Kugelhahn",
+    "handelsteil": "Kugel-/Klappen-Rueckschlagventil, Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A (Zulauf)",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN32"
+    },
+    {
+     "name": "B (Abgang)",
+     "lage": [
+      0.0,
+      0.0,
+      102.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN32"
+    }
+   ]
+  },
+  "lt_rueckschlagventil_d25": {
+   "teilenummer": "T70-RSV-25",
+   "komponente": "T70_Rueckschlagventil_d25_A-B",
+   "werkstoff": "PVC-U (Klebemuffen), Innenteile nicht modelliert",
+   "d": 25,
+   "laenge": 88.0,
+   "gehaeuse_aussen_d": 44.25,
+   "gehaeuse_laenge": 50.0,
+   "muffentiefe": 19,
+   "durchgang_d": 21.4,
+   "durchfluss": "nur von A nach B (+Z)",
+   "einbaulage": "waagerecht oder senkrecht aufwaerts (Fluss nach oben); nie senkrecht abwaerts",
+   "verwendung": "Luft-Hauptverteiler, 6 Abgaenge, und Pool-Verteiler (W37)",
+   "herkunft": {
+    "Bauweise": "A, Vorbild leitung.kugelhahn ohne Hebel",
+    "gehaeuse 50 lang, aussen od_f + 12": "Annahme wie Kugelhahn",
+    "handelsteil": "Kugel-/Klappen-Rueckschlagventil, Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A (Zulauf)",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN20"
+    },
+    {
+     "name": "B (Abgang)",
+     "lage": [
+      0.0,
+      0.0,
+      88.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN20"
+    }
+   ]
+  },
+  "lt_rueckschlagventil_d20": {
+   "teilenummer": "T70-RSV-20",
+   "komponente": "T70_Rueckschlagventil_d20_A-B",
+   "werkstoff": "PVC-U (Klebemuffen), Innenteile nicht modelliert",
+   "d": 20,
+   "laenge": 82.0,
+   "gehaeuse_aussen_d": 39.0,
+   "gehaeuse_laenge": 50.0,
+   "muffentiefe": 16,
+   "durchgang_d": 16.4,
+   "durchfluss": "nur von A nach B (+Z)",
+   "einbaulage": "waagerecht oder senkrecht aufwaerts (Fluss nach oben); nie senkrecht abwaerts",
+   "verwendung": "Luft-Hauptverteiler, 6 Abgaenge, und Pool-Verteiler (W37)",
+   "herkunft": {
+    "Bauweise": "A, Vorbild leitung.kugelhahn ohne Hebel",
+    "gehaeuse 50 lang, aussen od_f + 12": "Annahme wie Kugelhahn",
+    "handelsteil": "Kugel-/Klappen-Rueckschlagventil, Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A (Zulauf)",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN15"
+    },
+    {
+     "name": "B (Abgang)",
+     "lage": [
+      0.0,
+      0.0,
+      82.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN15"
+    }
+   ]
   }
  }
 }

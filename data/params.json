@@ -372,7 +372,7 @@
   "value": 2763,
   "unit": "mm",
   "origin": "A",
-  "source": "D68: Puffer klein Mitte, Radius im Modellrahmen (Abstandssuche, Bedienzone 700 x 650 frei)",
+  "source": "D70: Puffer klein Mitte, Radius im Modellrahmen (Abstandssuche, Bedienzone 700 x 650 frei)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"
@@ -381,7 +381,7 @@
   "value": -51,
   "unit": "deg",
   "origin": "A",
-  "source": "D68: Puffer klein Mitte, Azimut im Modellrahmen",
+  "source": "D70: Puffer klein Mitte, Azimut im Modellrahmen",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"
@@ -390,7 +390,7 @@
   "value": -61,
   "unit": "deg",
   "origin": "A",
-  "source": "D68: Richtung, in die die Front (Bedienseite) des Puffers zeigt",
+  "source": "D70: Richtung, in die die Front (Bedienseite) des Puffers zeigt",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"

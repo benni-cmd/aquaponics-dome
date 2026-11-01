@@ -110,7 +110,7 @@ def puffer_station(fz):
     place_instances("Puffer_Station", os.path.join(ROOT, "designs", "components", "puffer_station.sc"), [(round(x, 1), round(y, 1), fz, a - 90.0)], "09_Technik")
 
 def puffer_pose():
-    """D66: Puffer klein (T82, 700 x 700 x 1203) im Dom, Front (lokal -Y, Pumpen/Fass herausziehen) zeigt in Richtung `puffer_front`; Rueckgabe (x, y, yaw, X, Y) mit Achsen im Modellrahmen. Lage aus der Abstandssuche (D68)."""
+    """D66: Puffer klein (T82, 700 x 700 x 1203) im Dom, Front (lokal -Y, Pumpen/Fass herausziehen) zeigt in Richtung `puffer_front`; Rueckgabe (x, y, yaw, X, Y) mit Achsen im Modellrahmen. Lage aus der Abstandssuche (D70)."""
     x, y = P["puffer_r"] * math.cos(math.radians(P["puffer_az"])), P["puffer_r"] * math.sin(math.radians(P["puffer_az"])); yaw = P["puffer_front"] + 90.0; a = math.radians(yaw)
     return x, y, yaw, (math.cos(a), math.sin(a)), (-math.sin(a), math.cos(a))
 

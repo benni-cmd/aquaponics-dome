@@ -75,7 +75,7 @@ def gaps(R, skip=()):
     return g
 
 def check():
-    """D66/D68: Lage von Puffer klein (700 x 700 x 1203, Bedienzone 700 x 650 vor der Front) und Drittbecken klein (Ø 800 + 2 x 60) aus den Parametern puffer_r/az/front, pool3_r/az; Exit 0 = Streben >= 100, Tuergang frei, Bedienzone ohne Hindernis, Drittbecken-Luecken >= 500."""
+    """D66/D70: Lage von Puffer klein (700 x 700 x 1203, Bedienzone 700 x 650 vor der Front) und Drittbecken klein (Ø 800 + 2 x 60) aus den Parametern puffer_r/az/front, pool3_r/az; Exit 0 = Streben >= 100, Tuergang frei, Bedienzone ohne Hindernis, Drittbecken-Luecken >= 500."""
     sys.path.insert(0, os.path.join(ROOT, "scripts", "workshop"))
     cp = (P["puffer_r"] * math.cos(math.radians(P["puffer_az"])), P["puffer_r"] * math.sin(math.radians(P["puffer_az"]))); th = math.radians(P["puffer_front"] + 90)
     X, Y = (math.cos(th), math.sin(th)), (-math.sin(th), math.cos(th))
@@ -92,7 +92,7 @@ def check():
     g3 = [AP - max(c3[0] * n[0] + c3[1] * n[1] for n in nrm) - r3, math.dist(c3, p2) - p2r - r3, math.hypot(*c3) - pcr - r3] + [rc_dist(q, c3, r3) for nm, q in rects]
     print("Puffer: Koerper-Luft", round(body), "| Bedienzone frei", round(zone_free), "| Tuergang-Rand", round(tg), "| Drittbecken kleinste Luecke", round(min(g3)), "(Wand/Zweitbecken/Pool/Hindernisse)")
     ok = zone_free >= 0 and body >= 0 and tg >= 0 and min(g3) >= 100
-    print("PASS" if ok else "FAIL", "M8/D68-Lage (Bedienzone frei, Tuergang frei, Drittbecken >= 100 zur Wand)")
+    print("PASS" if ok else "FAIL", "M8/D70-Lage (Bedienzone frei, Tuergang frei, Drittbecken >= 100 zur Wand)")
     return ok
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: M10-Plan liegt, Feinfilter-Platz offen (E10), Option e wird nachgerechnet; Bens Entscheidungen offen (E10, Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: M10-Plan abgenommen; wartet auf Bens Entscheidung E10 (Feinfilter-Standort), danach Bau M10-LEITUNGEN; nichts laeuft",
  "schritte": [
   {
    "id": "W33",
@@ -202,11 +202,11 @@
   {
    "id": "M10-PLAN",
    "titel": "M10 Leitungsplan (Plan vorab, Orchestrator liest gegen)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 9,
    "wer": "Montage",
-   "notiz": "Plan liegt (Commit 53ea31c, docs/packages/m10-leitungen.md). Befund: Kein Feinfilter-Standort mit allseits 500 mm (kleinste Luecke 325 mm West, 181 mm Ost); D71 geht damit zurueck an Ben. Sitzung rechnet gerade Option e (ohne Absetzer, R44 Kandidat A) nach. Danach Gegenlesen und Bens Entscheidung E10 (Feinfilter-Option), dann erst Bau."
+   "notiz": "Plan Commit 53ea31c + 2e f0a0267 (docs/packages/m10-leitungen.md), vom Orchestrator gegengelesen. Kein Feinfilter-Standort mit 500 mm allseits, auch nicht ohne Absetzer (Paare nur im Tuergang). Mit gelockerter Bedienzone-Regel gibt es Orte (Ost A + West B, Tuergang unveraendert). Bau erst nach Bens Entscheidung E10; Netz-Etiketten Linie 1/2 werden vom Orchestrator bestaetigt (nur Namen)."
   },
   {
    "id": "M10-LEITUNGEN",
@@ -489,12 +489,12 @@
   },
   {
    "id": "E10",
-   "titel": "Feinfilter-Standort: Option waehlen (Bedienzone-Regel, Grube begehbar, Gaenge verbessern, D71 neu, ohne Absetzer)",
+   "titel": "Feinfilter-Standort: Bedienzone-Regel (Empfehlung) oder Absetzer entfaellt",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Ben",
-   "notiz": "M10-Plan Abschnitt 2: Kein Standort fuer die 2 Feinfilter mit allseits 500 mm Gang; Optionen a bis d, e (ohne Absetzer) in Pruefung; Empfehlung des Plans: a (Bedienzone 630 x 500, Stirn/Rueck 150)."
+   "notiz": "Empfehlung Orchestrator: Option a, Bedienzone-Regel (vor der Front 630 x 500 frei, Stirn/Rueck je 150 mm), Orte Ost A (3925/825) + West B (-1575/-3175): alle Bauteile erreichbar, Tuergang 900 unveraendert; D71 bleibt. Option e (Absetzer weg) spart nur wenig mehr und braucht neue Netzliste bei duenner Quellenlage. Streng (500 mm ringsum) gibt es in keiner Variante ohne den Tuergang zu verbauen."
   }
  ]
 }

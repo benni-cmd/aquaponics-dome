@@ -36,8 +36,8 @@
      214.0
     ],
     [
-     2650.0,
-     385.7,
+     2653.4,
+     386.6,
      214.0
     ]
    ],
@@ -57,8 +57,8 @@
    ],
    "pfad": [
     [
-     2650.0,
-     385.7,
+     2653.4,
+     386.6,
      214.0
     ],
     [
@@ -516,30 +516,31 @@
     [
      2669.5,
      -2228.5,
-     212.5
+     213.9
     ],
     [
-     4070.1,
-     -1516.5,
-     188.9
+     4185.0,
+     -1295.5,
+     187.2
     ],
     [
-     2894.7,
-     795.7,
+     2886.0,
+     814.4,
      150.0
     ]
    ],
-   "notiz": "Auslauf-Stutzen Tank_klein:2 (d50, Z 1547) -> Bogen -> Fallrohr auf Z 212 -> 1571 mm unterflur nach ENE (Gefaelle 1.5 %) -> 2594 mm senkrecht auf die K01-Grabenstrecke zum T d63 (Zweig d50, Z 150)",
+   "notiz": "Auslauf-Stutzen Tank_klein:2 (d50, Z 1547) -> Bogen -> Fallrohr auf Z 214 -> 1780 mm unterflur nach ENE (Gefaelle 1.5 %) -> 2478 mm senkrecht auf die K01-Grabenstrecke zum T d75 (Zweig d50, Z 150)",
    "linie": 1
   },
   {
    "id": "K01",
    "kante": "K01",
-   "dn": 63,
+   "dn": 75,
    "farbe": "dunkelblau",
-   "start": "stutzen",
+   "start": "r:R_K01_P",
    "ende": "t:T5",
    "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
    "baender": [
     "W",
     "W",
@@ -551,37 +552,38 @@
    ],
    "pfad": [
     [
-     2196.8,
-     462.9,
-     740
-    ],
-    [
-     2270.7,
-     478.5,
+     2245.7,
+     473.2,
      740.0
     ],
     [
-     2270.7,
-     478.5,
+     2376.8,
+     500.9,
+     740.0
+    ],
+    [
+     2376.8,
+     500.9,
      150
     ],
     [
-     2582.7,
-     637.1,
+     2587.9,
+     630.9,
      150.0
     ]
    ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A, Az 11.9) -> Bogen runter -> Graben Z 150 (Heber, Rohr oben 733.5 unter Spiegel 915) -> Bogen hoch -> Bogen in den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2) Hier bis zum T d63 des Absetzer-Zulaufs K05 (Teil 1).",
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A d63, Az 11.9) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2) Hier bis zum T d75 des Absetzer-Zulaufs K05 (Teil 1).",
    "linie": 1
   },
   {
    "id": "K01-m",
    "kante": "K01",
-   "dn": 63,
+   "dn": 75,
    "farbe": "dunkelblau",
    "start": "t:T5",
    "ende": "t:T4",
    "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
    "baender": [
     "U"
    ],
@@ -591,27 +593,28 @@
    ],
    "pfad": [
     [
-     2582.7,
-     637.1,
+     2587.9,
+     630.9,
      150.0
     ],
     [
-     2894.7,
-     795.7,
+     2886.0,
+     814.4,
      150.0
     ]
    ],
-   "notiz": "K01 (Teil 2): vom T d63 des Notbypasses K56 bis zum T d63 des Absetzer-Zulaufs K05 (Heber, Graben Z 150).",
+   "notiz": "K01 (Teil 2): vom T d75 des Notbypasses K56 bis zum T d75 des Absetzer-Zulaufs K05 (Heber, Graben Z 150).",
    "linie": 1
   },
   {
    "id": "K01-b",
    "kante": "K01",
-   "dn": 63,
+   "dn": 75,
    "farbe": "dunkelblau",
    "start": "t:T4",
-   "ende": "stutzen",
+   "ende": "r:R_K01_F",
    "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
    "baender": [
     "U",
     "W",
@@ -623,27 +626,27 @@
    ],
    "pfad": [
     [
-     2894.7,
-     795.7,
+     2886.0,
+     814.4,
      150.0
     ],
     [
-     3808.4,
-     1260.2,
+     3780.3,
+     1365.0,
      150
     ],
     [
-     3808.4,
-     1260.2,
+     3780.3,
+     1365.0,
      720.0
     ],
     [
-     3827.9,
-     1187.2,
-     720
+     3815.0,
+     1235.5,
+     720.0
     ]
    ],
-   "notiz": "K01 (Teil 2): vom T d63 des Absetzer-Zulaufs K05 bis zum Feinfilter-Einlauf (Heber, Graben Z 150).",
+   "notiz": "K01 (Teil 2): vom T d75 des Absetzer-Zulaufs K05 bis zum Feinfilter-Einlauf (Heber, Graben Z 150).",
    "linie": 1
   },
   {
@@ -657,17 +660,17 @@
    "anschluss": [],
    "pfad": [
     [
-     2582.7,
-     637.1,
+     2587.9,
+     630.9,
      150.0
     ],
     [
-     2582.7,
-     637.1,
-     76.4
+     2587.9,
+     630.9,
+     -23.9
     ]
    ],
-   "notiz": "Abzweig vom T d63 auf K01 senkrecht nach unten bis zum Kugelhahn",
+   "notiz": "Abzweig vom T d75 auf K01 senkrecht nach unten bis zum Kugelhahn",
    "linie": 1
   },
   {
@@ -681,27 +684,27 @@
    "anschluss": [],
    "pfad": [
     [
-     2582.7,
-     637.1,
-     -48.6
+     2587.9,
+     630.9,
+     -148.9
     ],
     [
-     2582.7,
-     637.1,
-     -158.6
+     2587.9,
+     630.9,
+     -258.9
     ],
     [
-     2650.0,
-     385.7,
-     -158.6
+     2653.4,
+     386.6,
+     -258.9
     ],
     [
-     2650.0,
-     385.7,
+     2653.4,
+     386.6,
      214.0
     ]
    ],
-   "notiz": "Kugelhahn -> 110 mm abwaerts -> 260 mm Tiefleitung (Z -159) unter K01 und Stamm K06-T -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz K56: Anschluss an die Saugleitung hinter dem Filterauslauf)",
+   "notiz": "Kugelhahn -> 110 mm abwaerts -> 253 mm Tiefleitung (Z -259) unter K01 und Stamm K06-T -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz K56: Anschluss an die Saugleitung hinter dem Filterauslauf)",
    "linie": 1
   },
   {
@@ -732,8 +735,8 @@
      214.0
     ],
     [
-     -864.0,
-     -3708.3,
+     -867.0,
+     -3709.1,
      214.0
     ]
    ],
@@ -753,8 +756,8 @@
    ],
    "pfad": [
     [
-     -864.0,
-     -3708.3,
+     -867.0,
+     -3709.1,
      214.0
     ],
     [
@@ -1170,35 +1173,36 @@
     [
      305.3,
      -3983.2,
-     196.1
+     195.8
     ],
     [
-     305.3,
-     -2679.7,
-     176.6
+     471.4,
+     -2970.8,
+     180.4
     ],
     [
-     -1066.5,
-     -2679.7,
+     -1134.4,
+     -2707.2,
      156.0
     ],
     [
-     -1349.7,
-     -2397.1,
+     -1367.7,
+     -2382.3,
      150.0
     ]
    ],
-   "notiz": "Auslauf-Stutzen Tank_klein:1 (d50, Z 1547) -> Bogen -> Fallrohr auf Z 196 -> 1304 mm nach Norden (Gefaelle 1.5 %) -> 1372 mm nach Westen -> 400 mm unter 45 Grad senkrecht auf die K17-Grabenstrecke zum T d63 (Zweig d50, Z 150)",
+   "notiz": "Auslauf-Stutzen Tank_klein:1 (d50, Z 1547) -> Bogen -> Fallrohr auf Z 196 -> 1026 mm nach Norden (Richtung 80.7 Grad, Gefaelle 1.5 %) -> 1627 mm nach Westen (Richtung 170.7 Grad) -> 400 mm unter 45 Grad senkrecht auf die K17-Grabenstrecke zum T d75 (Zweig d50, Z 150)",
    "linie": 2
   },
   {
    "id": "K17",
    "kante": "K17",
-   "dn": 63,
+   "dn": 75,
    "farbe": "dunkelblau",
-   "start": "stutzen",
+   "start": "r:R_K17_P",
    "ende": "t:T13",
    "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
    "baender": [
     "W",
     "W",
@@ -1210,37 +1214,38 @@
    ],
    "pfad": [
     [
-     -998.2,
-     -2010.9,
-     740
-    ],
-    [
-     -1031.8,
-     -2078.6,
+     -1020.4,
+     -2055.7,
      740.0
     ],
     [
-     -1031.8,
-     -2078.6,
+     -1080.0,
+     -2175.7,
+     740.0
+    ],
+    [
+     -1080.0,
+     -2175.7,
      150
     ],
     [
-     -1243.7,
-     -2290.9,
+     -1245.9,
+     -2294.8,
      150.0
     ]
    ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B, Az -116.4) -> Bogen runter -> Graben Z 150 (Heber, Rohr oben 733.5 unter Spiegel 915) -> Bogen hoch -> Bogen in den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8) Hier bis zum T d63 des Absetzer-Zulaufs K21 (Teil 1).",
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B d63, Az -116.4) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8) Hier bis zum T d75 des Absetzer-Zulaufs K21 (Teil 1).",
    "linie": 2
   },
   {
    "id": "K17-m",
    "kante": "K17",
-   "dn": 63,
+   "dn": 75,
    "farbe": "dunkelblau",
    "start": "t:T13",
    "ende": "t:T12",
    "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
    "baender": [
     "U"
    ],
@@ -1250,27 +1255,28 @@
    ],
    "pfad": [
     [
-     -1243.7,
-     -2290.9,
+     -1245.9,
+     -2294.8,
      150.0
     ],
     [
-     -1349.7,
-     -2397.1,
+     -1367.7,
+     -2382.3,
      150.0
     ]
    ],
-   "notiz": "K17 (Teil 2): vom T d63 des Notbypasses K57 bis zum T d63 des Absetzer-Zulaufs K21 (Heber, Graben Z 150).",
+   "notiz": "K17 (Teil 2): vom T d75 des Notbypasses K57 bis zum T d75 des Absetzer-Zulaufs K21 (Heber, Graben Z 150).",
    "linie": 2
   },
   {
    "id": "K17-b",
    "kante": "K17",
-   "dn": 63,
+   "dn": 75,
    "farbe": "dunkelblau",
    "start": "t:T12",
-   "ende": "stutzen",
+   "ende": "r:R_K17_F",
    "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
    "baender": [
     "U",
     "W",
@@ -1282,27 +1288,27 @@
    ],
    "pfad": [
     [
-     -1349.7,
-     -2397.1,
+     -1367.7,
+     -2382.3,
      150.0
     ],
     [
-     -1691.6,
-     -2739.8,
+     -1719.7,
+     -2635.0,
      150
     ],
     [
-     -1691.6,
-     -2739.8,
+     -1719.7,
+     -2635.0,
      720.0
     ],
     [
-     -1672.1,
-     -2812.8,
-     720
+     -1685.0,
+     -2764.5,
+     720.0
     ]
    ],
-   "notiz": "K17 (Teil 2): vom T d63 des Absetzer-Zulaufs K21 bis zum Feinfilter-Einlauf (Heber, Graben Z 150).",
+   "notiz": "K17 (Teil 2): vom T d75 des Absetzer-Zulaufs K21 bis zum Feinfilter-Einlauf (Heber, Graben Z 150).",
    "linie": 2
   },
   {
@@ -1316,17 +1322,17 @@
    "anschluss": [],
    "pfad": [
     [
-     -1243.7,
-     -2290.9,
+     -1245.9,
+     -2294.8,
      150.0
     ],
     [
-     -1243.7,
-     -2290.9,
-     76.4
+     -1245.9,
+     -2294.8,
+     -23.9
     ]
    ],
-   "notiz": "Abzweig vom T d63 auf K17 senkrecht nach unten bis zum Kugelhahn",
+   "notiz": "Abzweig vom T d75 auf K17 senkrecht nach unten bis zum Kugelhahn",
    "linie": 2
   },
   {
@@ -1340,27 +1346,27 @@
    "anschluss": [],
    "pfad": [
     [
-     -1243.7,
-     -2290.9,
-     -48.6
+     -1245.9,
+     -2294.8,
+     -148.9
     ],
     [
-     -1243.7,
-     -2290.9,
-     -158.6
+     -1245.9,
+     -2294.8,
+     -258.9
     ],
     [
-     -864.0,
-     -3708.3,
-     -158.6
+     -867.0,
+     -3709.1,
+     -258.9
     ],
     [
-     -864.0,
-     -3708.3,
+     -867.0,
+     -3709.1,
      214.0
     ]
    ],
-   "notiz": "Kugelhahn -> 110 mm abwaerts -> 1467 mm Tiefleitung (Z -159) unter K17 und Stamm K22-T -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz K57: Anschluss an die Saugleitung hinter dem Filterauslauf)",
+   "notiz": "Kugelhahn -> 110 mm abwaerts -> 1464 mm Tiefleitung (Z -259) unter K17 und Stamm K22-T -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz K57: Anschluss an die Saugleitung hinter dem Filterauslauf)",
    "linie": 2
   }
  ],
@@ -1452,21 +1458,21 @@
   {
    "id": "T4",
    "pos": [
-    2894.7,
-    795.7,
+    2886.0,
+    814.4,
     150.0
    ],
-   "d": 63,
+   "d": 75,
    "ports": [
     {
      "trasse": "K01-m",
      "ende": "ende",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K01-b",
      "ende": "start",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K05",
@@ -1474,27 +1480,27 @@
      "d": 50
     }
    ],
-   "notiz": "T d63 im Einlauf der K01 (Netz K05: T-Stueck mit Seitenablauf); Zweig d50 mit Rohrstueck d63 + Reduziermuffe d63/d50",
+   "notiz": "T d75 im Einlauf der K01 (Netz K05: T-Stueck mit Seitenablauf); Zweig d50 mit Rohrstueck d75 + Reduziermuffe d75/d50",
    "linie": 1
   },
   {
    "id": "T5",
    "pos": [
-    2582.7,
-    637.1,
+    2587.9,
+    630.9,
     150.0
    ],
-   "d": 63,
+   "d": 75,
    "ports": [
     {
      "trasse": "K01",
      "ende": "ende",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K01-m",
      "ende": "start",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K56-a",
@@ -1502,14 +1508,14 @@
      "d": 63
     }
    ],
-   "notiz": "T d63 auf K01, Zweig senkrecht nach unten (Notbypass K56)",
+   "notiz": "T d75 auf K01, Zweig d63 senkrecht nach unten (Notbypass K56): Rohrstueck d75 + Reduziermuffe d75/d63",
    "linie": 1
   },
   {
    "id": "T6",
    "pos": [
-    2650.0,
-    385.7,
+    2653.4,
+    386.6,
     214.0
    ],
    "d": 63,
@@ -1592,21 +1598,21 @@
   {
    "id": "T12",
    "pos": [
-    -1349.7,
-    -2397.1,
+    -1367.7,
+    -2382.3,
     150.0
    ],
-   "d": 63,
+   "d": 75,
    "ports": [
     {
      "trasse": "K17-m",
      "ende": "ende",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K17-b",
      "ende": "start",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K21",
@@ -1614,27 +1620,27 @@
      "d": 50
     }
    ],
-   "notiz": "T d63 im Einlauf der K17 (Netz K21: T-Stueck mit Seitenablauf); Zweig d50 mit Rohrstueck d63 + Reduziermuffe d63/d50",
+   "notiz": "T d75 im Einlauf der K17 (Netz K21: T-Stueck mit Seitenablauf); Zweig d50 mit Rohrstueck d75 + Reduziermuffe d75/d50",
    "linie": 2
   },
   {
    "id": "T13",
    "pos": [
-    -1243.7,
-    -2290.9,
+    -1245.9,
+    -2294.8,
     150.0
    ],
-   "d": 63,
+   "d": 75,
    "ports": [
     {
      "trasse": "K17",
      "ende": "ende",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K17-m",
      "ende": "start",
-     "d": 63
+     "d": 75
     },
     {
      "trasse": "K57-a",
@@ -1642,14 +1648,14 @@
      "d": 63
     }
    ],
-   "notiz": "T d63 auf K17, Zweig senkrecht nach unten (Notbypass K57)",
+   "notiz": "T d75 auf K17, Zweig d63 senkrecht nach unten (Notbypass K57): Rohrstueck d75 + Reduziermuffe d75/d63",
    "linie": 2
   },
   {
    "id": "T14",
    "pos": [
-    -864.0,
-    -3708.3,
+    -867.0,
+    -3709.1,
     214.0
    ],
    "d": 63,
@@ -1675,6 +1681,38 @@
   }
  ],
  "r_stuecke": [
+  {
+   "id": "R_K01_P",
+   "pos_a": [
+    2245.7,
+    473.2,
+    740.0
+   ],
+   "dir": [
+    -0.978509,
+    -0.206204,
+    -0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 1
+  },
+  {
+   "id": "R_K01_F",
+   "pos_a": [
+    3815.0,
+    1235.5,
+    720.0
+   ],
+   "dir": [
+    0.258819,
+    -0.965926,
+    -0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 1
+  },
   {
    "id": "R_ZUL",
    "pos_a": [
@@ -1743,9 +1781,9 @@
    "id": "KH1",
    "art": "kugelhahn",
    "pos_a": [
-    2582.7,
-    637.1,
-    76.4
+    2587.9,
+    630.9,
+    -23.9
    ],
    "dir": [
     0.0,
@@ -1756,6 +1794,38 @@
    "d_klein": 63,
    "notiz": "Kugelhahn d63 K56 (Normalbetrieb zu, Stoerfall auf); Handrad nicht erreichbar im Graben: Schacht mit Deckel in S6",
    "linie": 1
+  },
+  {
+   "id": "R_K17_P",
+   "pos_a": [
+    -1020.4,
+    -2055.7,
+    740.0
+   ],
+   "dir": [
+    0.444635,
+    0.895712,
+    -0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 2
+  },
+  {
+   "id": "R_K17_F",
+   "pos_a": [
+    -1685.0,
+    -2764.5,
+    720.0
+   ],
+   "dir": [
+    0.258819,
+    -0.965926,
+    -0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 2
   },
   {
    "id": "R_ZUL2",
@@ -1825,9 +1895,9 @@
    "id": "KH2",
    "art": "kugelhahn",
    "pos_a": [
-    -1243.7,
-    -2290.9,
-    76.4
+    -1245.9,
+    -2294.8,
+    -23.9
    ],
    "dir": [
     0.0,

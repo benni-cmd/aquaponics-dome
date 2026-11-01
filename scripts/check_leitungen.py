@@ -15,7 +15,7 @@ EINGABEFORMAT der Trassenliste (JSON, Koordinaten in mm im Modellrahmen, Ursprun
   {"z_bezug": "absolut" | "flur",
    "regeln": {"nah_w": 500},                                  (optional, siehe RULES)
    "trassen": [ {"id": "K01-a", "kante": "K01" | null,        (Kante der Netzliste; null = Kabel/Leerrohr ohne Kante, dann "dn" Pflicht)
-                 "dn": 63,                                    (Aussendurchmesser mm; Standard = dn der Kante, Abweichung wird gemeldet)
+                 "dn": 63,                                    (Aussendurchmesser mm; Standard = dn der Kante, Abweichung wird gemeldet; mit Feld "dn_abweichung": "<Begruendung>" gilt sie als dokumentiert)
                  "pfad": [[x, y, z], [x, y, z], ...],         (Rohrachse als Linienzug, Fliessrichtung = Pfadrichtung)
                  "band": "U" | "W" | "T" | "UE",              (ein Band fuer alle Teilstuecke) ODER "baender": [Band je Teilstueck]
                  "gefaelle_pct": 1.0,                         (optional: Schwerkraftleitung, jedes Teilstueck muss in Pfadrichtung mindestens so fallen)
@@ -190,7 +190,9 @@ def pruefe(w, netz, doc):
         if ks and ks not in kanten: viol.append(("EINGABE", tid, "Kante %s nicht in der Netzliste" % ks)); continue
         dn = t.get("dn") or (kanten[ks]["dn"] if ks else None)
         if not dn: viol.append(("EINGABE", tid, "dn fehlt (Trasse ohne Kante)")); continue
-        if ks and t.get("dn") and float(t["dn"]) != float(kanten[ks]["dn"]): viol.append(("EINGABE", tid, "dn %s weicht von %s d%s ab (Reduzierung dokumentieren)" % (t["dn"], ks, kanten[ks]["dn"])))
+        if ks and t.get("dn") and float(t["dn"]) != float(kanten[ks]["dn"]):
+            if t.get("dn_abweichung"): info.append("dn %s statt Netz-%s d%s dokumentiert (%s): %s" % (t["dn"], ks, kanten[ks]["dn"], tid, t["dn_abweichung"]))   # M10-S2R: dokumentierte Abweichung (E14, Heber d75) ist kein Verstoss
+            else: viol.append(("EINGABE", tid, "dn %s weicht von %s d%s ab (Reduzierung dokumentieren)" % (t["dn"], ks, kanten[ks]["dn"])))
         nseg = len(pts) - 1
         bands = t.get("baender") or [t.get("band")] * nseg
         if len(bands) != nseg or any(b not in BANDS for b in bands): viol.append(("EINGABE", tid, "Band fehlt/unbekannt oder 'baender' hat nicht %d Eintraege" % nseg)); continue

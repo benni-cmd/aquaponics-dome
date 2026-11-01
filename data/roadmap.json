@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: LATTE-SKRIPT (L01) laeuft; S01 abgenommen; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: LATTE-SKRIPT abgenommen, nichts laeuft; naechster Schritt M10-PLAN wartet auf Bens Freigabe; Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -193,11 +193,11 @@
   {
    "id": "LATTE-SKRIPT",
    "titel": "check_latte-Skript umstellen",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 8,
    "wer": "Montage",
-   "notiz": "Sitzung montage-latte (frisch, enger Kontext) seit 01.11.; Blatt docs/jobs/L01-latte-skript-umstellen.md (79caeb4): Tuer_Komplett statt T4_Blatt, Plane und Figuren ausgenommen, Fase, Puffer klein. Kein voller Lauf, kein Build; der grosse Lauf bleibt Schritt CHECK."
+   "notiz": "Commit 91c44bd (L01) + Orchestrator-Korrektur: Tuer_Komplett statt T4_Blatt, Plane/Figuren/Messstellen aus der Kollision genommen, Fase, Puffer klein, Station-Schalter, Erwartung Netztoepfe 2222. py_compile OK, KEIN Lauf: Koerpernamen und Klassenzuordnung sind ungeprueft, erst der Lauf CHECK zeigt es. Koerperzahl-Pruefung war ein Fehlalarm (4667 = Instanzen) und ist nur noch Information."
   },
   {
    "id": "M10-PLAN",

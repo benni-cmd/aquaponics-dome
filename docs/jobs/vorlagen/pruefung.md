@@ -14,6 +14,8 @@ Zweck (Ben 01.11.2026, E18): Der Pruefer ist der Gegenleser einer fertigen Bau-,
 
 **Grenzen:** aendert kein Modell, keine Daten, kein Blatt, nicht `data/roadmap.json`. Schreibt nur `docs/jobs/pruefung/<ID>.md`. Keine Rueckfragen an Ben. Rechenlaeufe ueber zehn Minuten nur im Hintergrund (run_in_background).
 
+**Kontext- und Limitregeln (Ben 01.11.2026, gelten auch fuer den Planer):** (1) Eine Sitzung = ein Arbeitspaket (eine Schritt-ID); ein neues Thema bekommt eine neue Sitzung. (2) Nur die genannten Eingaben, Skripte und Bilder lesen; grosse Dateien mit Grep oder Offset und Limit statt ganz; keine Ordner durchsuchen. (3) Ergebnisse stehen in der Befunddatei, die Chat-Meldung hat hoechstens sechs Zeilen. (4) Ab etwa 60 Prozent Kontextfuellung nach dem letzten Commit den Stand in die Befunddatei schreiben und stoppen; die Fortsetzung macht eine neue Sitzung. (5) Nach der Meldung STOPP, keine Folgeaufgaben.
+
 **Sichern:** `git commit -m "Pruefung <ID>: Befund" -m "Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>" -- docs/jobs/pruefung/<ID>.md` (neue Datei vorher `git add -N`), `git push`.
 
 **Abschluss:** Kurzmeldung, hoechstens sechs Zeilen: Urteil · FAIL-Punkte mit Zahl · nicht belegte Behauptungen · was der Orchestrator tun muss. Dann STOPP.

@@ -17,3 +17,12 @@ Vorlagen: `docs/jobs/vorlagen/planung.md` und `docs/jobs/vorlagen/pruefung.md`; 
 Nicht noetig fuer kleine Orchestrator-Arbeiten (Netzliste, Roadmap) und Wiederanlauf eines schon geplanten Schritts. Eine Sitzung gleichzeitig schreibt; Planer und Pruefer lesen nur und schreiben je eine eigene Datei.
 Sitzungsstart ohne Kontext-Frage (Ben 01.11.2026): Vor jedem `start_session` setzt der Orchestrator die Marke per `node -e "require('fs').writeFileSync(require('os').tmpdir()+'/keel-subsession-marker.json', JSON.stringify({bis: Date.now()+600000}))"` (gilt 10 Minuten); der Hook `.claude/project-context.js` bleibt dann stumm. Zusaetzlich beginnt jeder Start-Prompt mit "PROJEKT: <name>".
 Aenderung 01.11.2026 spaet: Die Kontext-Frage entscheidet jetzt der Hook bei der ERSTEN Nachricht: beginnt der Start-Prompt mit "PROJEKT: <name>", bleibt er stumm, die Marke ist nur noch Rueckfall (Beleg steht aus, bis eine echte Subsession ohne Marke gestartet wurde).
+
+## Kontext- und Limitregeln fuer ALLE Sitzungen (Ben 01.11.2026)
+1. Eine Sitzung = ein Arbeitspaket (eine Schritt-ID oder ein Buendel mit denselben Eingaben). Ein neues Thema bekommt eine NEUE Sitzung, auch wenn eine untaetige Sitzung derselben Rolle existiert; eine bestehende Sitzung wird nur fuer den Wiederanlauf desselben Pakets genutzt (Limit, Build).
+2. Planer und Pruefer arbeiten je Schritt (PLAN-<ID>, PRUEF-<ID>), nie mehrere Schritte nacheinander in einer Sitzung; ein Planer darf mehrere Blaetter schreiben, wenn sie zum selben Buendel gehoeren und dieselben Eingaben teilen (Pilot W37/W39).
+3. Nur die im Blatt genannten Eingaben lesen; grosse Dateien mit Grep oder Offset und Limit; keine Ordner durchsuchen; Bilder nur, wenn ein Pruefpunkt sie nennt.
+4. Ergebnisse stehen in Dateien, die Chat-Meldung hat hoechstens sechs Zeilen; nach der Meldung STOPP, keine Folgeaufgaben.
+5. Ab etwa 60 Prozent Kontextfuellung nach dem letzten Commit den Stand ins Blatt oder in den Zustand schreiben und stoppen; die Fortsetzung macht eine neue Sitzung (Wiederanlauf).
+6. Modell und Aufwand: Planer und Pruefer Sonnet mit Aufwand medium; Bau-Sitzungen mit Geometrie high.
+7. Orchestrator: liest Blatt, Befund und Kurzmeldung, nicht die Recherche-Volltexte; ein Thema, das mehr als wenige Aufrufe braucht, geht in eine neue Sitzung, nicht in die Orchestrator-Sitzung.

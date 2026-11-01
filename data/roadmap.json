@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 spaet: Heber d75 im Modell (Pruefer laeuft), Planer-Blaetter fuer Werkstatt B fertig, Werkstatt A2 (W39) laeuft. Weitere Sitzungen nacheinander. Fragen an dich stehen oben.",
+ "stand": "Stand 01.11.2026 spaet: Heber d75 verlegt und geprueft (PASS mit Auflagen), Werkstatt A2 (W39) laeuft. Neue Regel: eine Sitzung je Arbeitspaket, neues Thema = neue Sitzung. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -585,7 +585,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Orchestrator + Ben (Zwischencheck)",
-   "notiz": "Zugeordnet: R45, E14, Nachrechnung in M10 S7 und CHECK. Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen. R45 Teil 2: ohne Aenderung keine gedeckte Reserve; Empfehlung d75 durchgehend; Entscheidung E14 jetzt faellig. ENTSCHIEDEN 01.11.: d75; Schliessen mit M10-S2R und Nachrechnung gegen echte Laengen."
+   "notiz": "Zugeordnet: R45, E14, Nachrechnung in M10 S7 und CHECK. Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen. R45 Teil 2: ohne Aenderung keine gedeckte Reserve; Empfehlung d75 durchgehend; Entscheidung E14 jetzt faellig. ENTSCHIEDEN 01.11.: d75; Schliessen mit M10-S2R und Nachrechnung gegen echte Laengen. STAND 01.11. spaet: d75 verlegt (M10-S2R, Pruefer PASS mit Auflagen); K01 im ungünstigsten Fall ohne Marge (85 mm), realistischer Fall etwa 124 mm; Nachweis nur durch HEBER-SKRIPT und spaeter Messung am gebauten Heber."
   },
   {
    "id": "L11",
@@ -862,11 +862,11 @@
   {
    "id": "M10-S2R",
    "titel": "M10 S2R: Heber-Umbau K01/K17 auf d75",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.8,
    "wer": "Montage",
-   "notiz": "Montage meldet fertig (Commit f072fb4, Runde 66): K01/K17 in d75, Reserve ungünstig 85 mm (K01) und 88 mm (K17), check_leitungen 0 Verstoesse, check_walkways PASS; nicht gelaufen: volle Gangkarte und check_latte; Reserve ist nur Rechnung, keine Messung. Netzliste K01/K17 d75 schon von mir (b98c4c1). PRUEFUNG LAEUFT (Pruefer pruefer-s2r), erst bei PASS erledigt. GESTARTET 01.11. spaet. Blatt docs/jobs/M10-S2R-heber-d75.md. Entschieden (E14 = d75). Braucht W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
+   "notiz": "Erledigt mit Auflagen 01.11. spaet: Pruefer-Urteil PASS mit Auflagen (docs/jobs/pruefung/M10-S2R.md, Commit ad1f51c). Alle fuenf Pruefpunkte erfuellt (check_leitungen 0 Verstoesse, check_walkways 5/5, 5292 mm Rohr d75 in den sechs Heber-Trassen, Bilder). A1: r45_heber.py rechnet \"Ist\" noch mit d63, die Reserve 85/88 mm ist eine Variantenrechnung, keine Messung; A2: K01 im ungünstigsten Fall ohne Marge (85 gegen Vorgabe 85); A3: Draufsicht zeigt den Heber nicht (liegt unter der Erde). "
   },
   {
    "id": "N-BESCHAFFUNG",
@@ -961,11 +961,11 @@
   {
    "id": "PRUEF-S2R",
    "titel": "Pruefsitzung fuer M10-S2R (Heber d75): Gegenmessung der Montage-Meldung",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.85,
    "wer": "Pruefer (frische Sitzung)",
-   "notiz": "GESTARTET 01.11. spaet (Sitzung pruefer-s2r), Befund kommt nach docs/jobs/pruefung/M10-S2R.md. Nach der Meldung von M10-S2R. Prueft nach: Rohr-Meter d75, Reserve aus r45_heber.py, check_leitungen und check_walkways neu, Graben, Bilder; Vorlage docs/jobs/vorlagen/pruefung.md; Befund docs/jobs/pruefung/M10-S2R.md."
+   "notiz": "Erledigt: Urteil PASS mit Auflagen, Befund docs/jobs/pruefung/M10-S2R.md. Erste echte Pruefsitzung; sie hat zwei zu optimistische Aussagen der Montage-Meldung abgeschwaecht (Reserve nur Rechnung, Heber nur im Grabenschnitt sichtbar)."
   },
   {
    "id": "E19",
@@ -975,6 +975,15 @@
    "reihenfolge": 5.7,
    "wer": "Ben",
    "notiz": "Aus R45 Abschnitt 3 und dem Plan W37-1: Der Beet-Sumpf hat keinen Schwerkraft-Notueberlauf (er liegt tiefer als der Pool). Faellt die Pumpe aus, laufen bei drei Beeten etwa 705 l in 12 min zu, mehr als der Tank fasst; der Alarmschwimmer sperrt zwar die Beet-Zufuhr, aber ohne Reserve steht das Beetsystem still. Option: zweite Pumpe als Reserve (50 Prozent Redundanz, 60 W im Stillstand, ein zweiter Pumpenplatz im Sumpf). Meine Empfehlung: ja, ein Platz fuer die zweite Pumpe wird in jedem Fall vorgesehen (kostet im Bauteil fast nichts); ob sie gekauft wird, entscheidest du spaeter. Blockiert W37-1 nicht."
+  },
+  {
+   "id": "HEBER-SKRIPT",
+   "titel": "scripts/r45_heber.py auf dn aus der JSON und die gebauten Formstuecke umstellen (Auflage A1 des Pruefers)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.97,
+   "wer": "Orchestrator (klein)",
+   "notiz": "Heute liest das Skript den Durchmesser nicht aus data/leitungstrassen.json, die Zeile \"Ist\" rechnet mit d63; die 85/88 mm stammen aus einer Variantenzeile mit pauschalem Zusatzverlust 0,3 [A]. Umbau auf echte dn, T d75, Reduziermuffen und Bogen einzeln, danach neu rechnen und die Marge von K01 pruefen (Auflage A2). Vor M10-S7 erledigen, S7 braucht die Zahl."
   }
  ]
 }

@@ -13,6 +13,8 @@ Zweck (Ben 01.11.2026, E18): Der Planer schreibt das Auftragsblatt fuer einen Ro
 
 **Grenzen:** schreibt nur `docs/jobs/<ID>.md` (und einen Mini-Plan in `docs/packages/<paket>.md`, wenn verlangt). Aendert kein Modell, keine Daten, nicht `data/roadmap.json`. Keine Rueckfragen an Ben, keine AskUserQuestion. Fehlt eine Entscheidung: im Blatt als "OFFEN (Ben)" kennzeichnen und die Teile ohne sie trotzdem planen. Nur die Eingaben lesen, die der Schritt wirklich braucht (Token-Limit).
 
+**Kontext- und Limitregeln (Ben 01.11.2026, gelten auch fuer den Pruefer):** (1) Eine Sitzung = ein Arbeitspaket (eine Schritt-ID oder ein Buendel mit denselben Eingaben); ein neues Thema bekommt eine neue Sitzung. (2) Nur die genannten Eingaben lesen; grosse Dateien mit Grep oder Offset und Limit statt ganz; keine Ordner durchsuchen. (3) Ergebnisse stehen in der Datei, die Chat-Meldung hat hoechstens sechs Zeilen. (4) Ab etwa 60 Prozent Kontextfuellung nach dem letzten Commit den Stand ins Blatt schreiben und stoppen; die Fortsetzung macht eine neue Sitzung. (5) Nach der Meldung STOPP, keine Folgeaufgaben.
+
 **Sichern:** `git commit -m "Plan <ID>: Auftragsblatt" -m "Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>" -- docs/jobs/<ID>.md` (neue Datei vorher `git add -N`), `git push`. Fremde Dateien nie committen.
 
 **Abschluss:** Kurzmeldung, hoechstens sechs Zeilen: Aktualitaet (gueltig/angepasst/obsolet und Grund) · Blattpfad · was Ben noch entscheiden muss · geschaetzte Zahl der Bau-Sitzungen · "Besonderheit: ..." falls etwas auffaellt. Dann STOPP.

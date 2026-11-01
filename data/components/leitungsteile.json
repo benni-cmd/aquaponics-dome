@@ -681,5 +681,63 @@
    "bogenradius": 90.0,
    "herkunft": "A, Katalog offen (N-BESCHAFFUNG)"
   }
+ },
+ "w39_teile": {
+  "lt_reduzierung_d40_d20": {
+   "teilenummer": "T70-RED-40-20",
+   "komponente": "T70_Reduzierung_d40_d20",
+   "werkstoff": "PVC-U (Klebemuffen)",
+   "d_gross": 40,
+   "d_klein": 20,
+   "laenge": 48,
+   "aussen_d": 48.0,
+   "muffentiefe_gross": 26,
+   "muffentiefe_klein": 16,
+   "innen_d": 16.4,
+   "ersetzt": {
+    "kette": "40/32 + 32/25 + 25/20",
+    "laenge_kette": 142,
+    "klebestellen_kette": 6,
+    "klebestellen_neu": 2
+   },
+   "herkunft": {
+    "Bauweise": "belegt (leitung.reduzierung, Bibliothek)",
+    "laenge": "gerechnet t40 + t20 + 6",
+    "muffentiefen": "Annahme EN 1452-3 gerundet",
+    "handelsteil": "Katalog offen, Nachweis N-BESCHAFFUNG"
+   },
+   "ports": [
+    {
+     "name": "A (gross)",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN32"
+    },
+    {
+     "name": "B (klein)",
+     "lage": [
+      0.0,
+      0.0,
+      48.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN15"
+    }
+   ]
+  }
  }
 }

@@ -1,0 +1,12 @@
+PASS lt_w39: red d40/d20 Koerperzahl (Interferenz 0: ein Koerper): Ist 1, Soll 1
+PASS lt_w39: red d40/d20 Baulaenge = t40 + t20 + 6 = 26 + 16 + 6: Ist 48, Soll 48 (+-0.05)
+PASS lt_w39: red d40/d20 Aussen-D = Formstueck d40: Ist 47.9993, Soll 48 (+-0.05)
+PASS lt_w39: red d40/d20 kuerzer als die Kette 40/32 + 32/25 + 25/20 (142 mm): Ist 1, Soll 1
+PASS lt_w39: red d40/d20 Portabstand A-B = Baulaenge: Ist 48, Soll 48 (+-0.05)
+PASS lt_w39: red d40/d20 Volumen = Aussen - Muffen - Durchgang: Ist 47891.2, Soll 47892.2 (+-95.7844)
+PASS lt_w39: lt_reduzierung_d40_d20 Muffe d40: Zylinderflaeche r 20: Ist 1, Soll 1
+PASS lt_w39: lt_reduzierung_d40_d20 Muffe d20: Zylinderflaeche r 10: Ist 1, Soll 1
+PASS lt_w39: lt_reduzierung_d40_d20 Port A (gross) (Muffe, DN32) Stirnflaeche an (0, 0, 0): Ist 1, Soll 1
+PASS lt_w39: lt_reduzierung_d40_d20 Port B (klein) (Muffe, DN15) Stirnflaeche an (0, 0, 48): Ist 1, Soll 1
+INFO red d40/d20: Masse 67 g (PVC-U 1,4), Kette 142 mm mit 6 Klebestellen, neu 48 mm mit 2
+== lt_w39: 10/10 PASS

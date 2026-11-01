@@ -537,6 +537,31 @@
       "rolle": "Schritt 4 (groß, Hauptkreislauf 4 × 55 l/min) und Schritt 2 (klein, Absetzer-Teilstrom 4 × 12,5 l/min, je Tank eine in Betrieb) der Kette; die Netzliste data/leitungsnetz.json hält Anschlüsse Ø50/40 (groß) und Ø40/32 (klein)."
     },
     {
+      "match": "^lt_reduzierung_d40_d20$",
+      "titel": "Reduzierung d40 auf d20 (Beet-Anschluss)",
+      "was": "Eine Reduziermuffe vom Beete-Strang d40 direkt auf das Tropfrohr-Anschlussrohr d20; ersetzt die Kette aus drei Reduziermuffen.",
+      "status": "gebaut, Prüfungen mit Volumen und Ports",
+      "ablauf": [
+        "Das Rohr d40 steckt in die große Muffe, das Rohr d20 in die kleine.",
+        "Eine Klebestelle weniger je Seite: zwei statt sechs je Beet."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "Länge 48 mm (statt 142 mm der Kette)",
+            "Außen 48, Muffentiefe 26 und 16"
+          ]
+        }
+      ],
+      "masse": {
+        "Länge": "48 mm",
+        "Kette bisher": "142 mm, drei Teile"
+      },
+      "grenzen": "Muffentiefen und Außenmaß sind Bibliotheksnäherung; Handelsteil im Katalog offen.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W39)"
+    },
+    {
       "match": "^lt_verteiler_d50$",
       "titel": "Verteiler d50 (Hauptkreislauf)",
       "was": "Sammelrohr am Ende der Hauptleitung einer Linie; verteilt 110 l/min auf Beete, NFT, Messkreis und Bypass.",

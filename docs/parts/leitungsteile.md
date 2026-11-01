@@ -433,3 +433,44 @@ Montage: Schachtmitte auf die Hahnposition der Tiefleitung legen, Rohrachse = Ac
 **Pruefung:** `check_lt_w36.py d75` 36/36 PASS: Rohr Aussen-D, Laenge, Innen-D 67,8, Volumen, Kupplung, Bogen 90/45 (Pappus), T, beide Reduzierungen, je Teil ein Koerper (Interferenz 0), 20 Port-Stirnflaechen. Bild: `renders/components/leitungsteile/lt_t_d75.png`.
 
 **Offene Fragen:** Katalogmasse d75 (Muffentiefe, Formstueck-Aussen) nach N-BESCHAFFUNG nachweisen; Bogen-Radius fuer Heber mit R45 abstimmen.
+
+# Ergaenzung W39 (01.11.2026, Werkstatt A2): Kleinteile der Leitungsbibliothek
+
+Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.py` (nutzt die Helfer aus `leitung.py`; `leitung_w39.ports()` liefert die W39-Ports und fragt sonst `leitung.ports()`), Pruefung `scripts/workshop/check_lt_w39.py` (Ergebnis `renders/components/leitungsteile/check_w39.txt`), maschinenlesbar unter `w39_teile` in `data/components/leitungsteile.json`. Teilenummern T70 fortgefuehrt. Die 63er-Pruefung `check_leitungsteile.py` zaehlt die W39-Dateien nicht mit (Liste `leitung_w39.FILES`). Alle Handelsteil-Masse (Klemmverbinder, Schelle, Rueckschlagventil, Kabeleinfuehrung) sind Annahmen [A]: Katalog offen, Nachweis N-BESCHAFFUNG (L21).
+
+## Reduzierung d40 auf d20 `lt_reduzierung_d40_d20` (T70-RED-40-20)
+
+**Mini-Plan.** Problem: Jedes der 14 Beete braucht den Uebergang vom Beete-Strang d40 auf das Anschlussrohr d20; die Bibliothek hat nur die Kette 40/32, 32/25, 25/20 (142 mm, drei Teile, sechs Klebestellen je Beet). Intent: ein Handelsteil (Reduziermuffe 40/20) statt drei. Goal: eine Komponente mit Muffe A d40 und Muffe B d20, Baulaenge t40 + t20 + 6, Ports im Bibliotheksformat, Check gruen. Bau: `leitung.reduzierung(40, 20)` unveraendert, nur neue Datei; die Ports liefert die vorhandene Regel in `leitung.ports()`.
+
+**Funktion:** Reduziermuffe fuer den Uebergang vom Beete-Strang (T d40 am Verteiler d50, Abgang 1 `lt_verteiler_d50`) auf das Anschlussrohr d20 je Beet (Kugelhahn d20 als Drossel, dann Uebergang PE-PVC, Teil 2). 14 Stueck (7 je Linie).
+
+| Merkmal | Wert |
+|---|---|
+| Baulaenge | 48 mm = t40 (26) + t20 (16) + 6; Kette 40/32 + 32/25 + 25/20 = 54 + 47 + 41 = 142 mm, also 94 mm kuerzer |
+| Aussen-D | 48 (Formstueck d40) |
+| Muffe A / B | d40, Tiefe 26 / d20, Tiefe 16 |
+| Durchgang | d16,4 (Wand 1,8 des Rohrs d20), 6 mm Steg zwischen den Muffen |
+| Klebestellen je Beet | 2 statt 6 |
+| Werkstoff, Masse | PVC-U 1,4 g/cm3, 67 g [E aus Volumen] |
+
+**Ports** (Bauteil-KS, mm; Port A im Ursprung, Achse +Z; aus `leitung.ports()`, Regel `lt_reduzierung_d<g>_d<k>`):
+
+| Port | DN | Art | Lage x, y, z | Richtung |
+|---|---|---|---|---|
+| A (gross) | DN32 (d40) | Muffe | 0, 0, 0 | -Z |
+| B (klein) | DN15 (d20) | Muffe | 0, 0, 48 | +Z |
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| Bauweise (Aussen = Formstueck der grossen Seite, Muffen, Durchgang) | | belegt: `leitung.reduzierung`, Bibliothek | mittel |
+| Muffentiefen 26 / 16, Formstueck-Aussen 48 | mm | A, EN 1452-3 gerundet (Bibliothek) | niedrig |
+| Baulaenge 48 | mm | E aus t40 + t20 + 6 | hoch |
+| Handelsteil Reduziermuffe 40/20 | | im Katalog ueblich [A], Nachweis N-BESCHAFFUNG | niedrig |
+
+**Montage (L4):** Rohr d20 und d40 bis Anschlag einkleben (Klebestelle je Seite). Werkzeug: Saege, Entgrater, Kleber. Alternative lokale Fertigung: die Kette aus drei Reduziermuffen (teurer, laenger, sechs Klebestellen).
+
+**Pruefung:** `check_lt_w39.py red` 10/10 PASS: ein Koerper (Interferenz 0), Baulaenge 48, Aussen-D 48, kuerzer als die Kette, Portabstand, Volumen gegen Rechnung (0,002 %), beide Muffen-Zylinder, 2 Port-Stirnflaechen. **Bild:** `renders/components/leitungsteile/lt_reduzierung_d40_d20.png`.
+
+**Offene Fragen:** Handelsteil im Katalog offen (N-BESCHAFFUNG); das Netz (`leitungsnetz.json`, R40) nennt je Beet d25/d20 am Beet-Port, die Montage entscheidet, ob d40/d20 direkt gesetzt wird.

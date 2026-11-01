@@ -1,7 +1,7 @@
 # R45: Hydraulik und Auslegung der Lücken L01, L03, L10, L04, L06, L05
 
 **Auftrag:** `docs/jobs/R45-hydraulik-auslegung.md` · **Rolle:** Fachrecherche (liest, rechnet, schreibt nur diese Datei und `scripts/r45_*.py`) · **Begonnen:** 01.11.2026
-**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve ✔ · 3 Beet-Sumpf ✔ · 4 Belüftung offen · 5 Aktivkohle offen
+**Stand der Fragen:** 0 Schlammkonzept ✔ · 1 Beet-Ablauf ✔ · 2 Heber-Reserve ✔ · 3 Beet-Sumpf ✔ · 4 Belüftung ✔ · 5 Aktivkohle offen
 **Kennzeichnung:** [A] Annahme · [E] Schätzung/Rechnung · [Q] belegt mit Quelle. Koordinaten: Z relativ zum Innenboden (Bauskript Z − 400).
 
 ---
@@ -219,3 +219,58 @@ Deckel dicht, lichtdicht (kein Licht → keine Algen), begehbar (Standard-Pumpen
 4. Pumpenschacht-Fabrikat und Deckelklasse: Werkstatt.
 
 **Geprüft gegen:** `data/leitungsnetz.json` (K14/K16/K30/K32, F3), `data/roadmap.json` (L04), `docs/parts/ibc_beet.md`, Abschnitte 1 und 2, Händlerseiten Pumpe, HTWK-Unterlage · **Rechnung:** `python -X utf8 scripts/r45_sumpf.py`
+
+---
+
+## 4. Belüftung (L06, K44 bis K51, F4)
+
+**Problem:** F4 der Netzliste hat zwei Rechnungen für den Pool-Luftbedarf, 70–130 l/min (R28) und 25–63 l/min (Gegenrechnung mit OTE 13 %). **Intent:** Gebläse und Verteiler festlegen, ohne dass der Pool bei Ausfall oder Spitze unterversorgt ist. **Goal:** Welche Rechnung stimmt, Gebläseart, Druck, Leistung, Verteiler, Ventile, Ausströmer.
+
+### Ergebnis
+
+**Die 130 l/min für den Pool sind plausibel (Mittelfall), die 25–63 l/min sind zu klein.** Der Fehler der Gegenrechnung: OTE 13 % ist die Reinwasser-Kennzahl (SOTE, 20 °C, 0 mg/l Sauerstoff). Im Fischwasser bei 28 °C und 5 mg/l Sollwert sinkt sie auf ca. 2–4 % (AOTE). Rechnung `scripts/r45_luft.py`:
+
+| Annahme | Wert | Quelle |
+|---|---|---|
+| SOTE feinblasig | 6–7,5 % je m Einblastiefe (Reinwasser, Vollbelegung); Pool-Tiefe 2,17 m → 13–16 % | [Q] [wastewater.com](https://wastewater.com/field-performance-of-fine-and-ultra-fine-bubble-diffusers/); Gegenprobe Default 6 %/m in [aquakin-Doku](https://aquakin.readthedocs.io/en/latest/generated/aquakin.AerationSystem.html) |
+| alpha (Abwasser/Membran) | 0,49 bis 0,8 | [Q] wastewater.com 0,49; Obergrenze 0,8 [A, gereinigte Membran] |
+| Temperatur/Sauerstoff-Korrektur | (β·Cs,28 − 5) / Cs,20 · 1,024⁸ = 0,32 | [A] Cs 7,83/9,09 mg/l (Tabellenwerte, nicht neu gelesen), β 0,95, θ 1,024 (wastewater.com) |
+| Sauerstoff je Liter Luft | 0,27 g | [E] 23,2 % × 1,16 kg/m³ |
+| AOTE | 2,1–4,2 % | [E] |
+
+| Sauerstoffbedarf (system-specs) | Luft Pool l/min | mit Spitze ×1,5 |
+|---|---|---|
+| nur Fisch 0,7 / **1,1** / 1,6 kg/Tag | 43–87 / **67–137** / 97–199 | 64–131 / 101–205 / 146–298 |
+| Fisch + Nitrifikation 1,3 / 1,7 / 2,2 kg/Tag | 79–162 / 104–211 / 134–273 | bis 410 |
+
+Der Pool belüftet den **Fisch** (Nitrifikation läuft in Biofilter und Beeten, die eigene Luft haben). Mittelfall 67–137 l/min, also trägt **130 l/min Planwert**; die Spitze braucht bis 205 l/min. Beide Unsicherheiten (alpha, Cs) sind [A]; der Wert gilt bis zur Messung des Sauerstoffs im Betrieb.
+
+### Empfehlung
+
+1. **Gebläseart:** Linear-Membranpumpe (Teich-/Klärtyp), **nicht** Seitenkanal. Seitenkanalgebläse beginnen bei deutlich größeren Mengen [A, nicht belegt]; Membranpumpen decken 100–250 l/min bei 17–30 kPa, 42–48 dB, ca. 100–250 W ([Hiblow-Daten HP-200 / HP-120LL, Händlerseiten](https://hydrobuilder.com/products/hiblow-hp-200-linear-air-pump-200-liters-per-minute) und [septicsolutions](https://www.septicsolutions.com/septic-parts/pond-aeration/pond-aeration-pumps/hp200p_hiblow-hp-200-linear-air-pump-for-pond-aeration): HP-200 200 l/min bei 20 kPa, 250 W; HP-120LL 120 l/min bei 17,7 kPa, max. 30 kPa, 100 W).
+2. **Zwei Gebläse (N+1), jedes allein für den Pool-Planwert ausreichend.** Ausfall ohne Luft: **0,8–1,2 h** bis 3 mg/l bei 5–6 mg/l Start und 1,7 kg O₂/Tag (28,5 m³) [E], bei Spitze 0,5–0,8 h. Ohne Redundanz und Notstrom ist das ein Totalverlust-Risiko.
+3. **Druck:** statisch 21,3 kPa (2,17 m) + Ausströmer/Leitung 3–5 kPa = **24–26 kPa** [E]. Das liegt **über dem Nennpunkt 20 kPa** der Katalogwerte; die Menge bei 26 kPa ist nicht belegt (Kennlinie nur als Grafik). Elektrisch grob 100–140 W für 130 l/min, 150–215 W für 200 l/min [E, adiabat, Wirkungsgrad 40–50 %] gegen 204 W in `system_specs.py`.
+4. **Auslegung:** zwei Geräte der Klasse 200 l/min bei ≥ 26 kPa. Die Kennlinie bei 26 kPa ist **offen** und entscheidet, ob HP-200 genügt (200 l/min sind bei 20 kPa belegt, bei 26 kPa weniger [A]); falls nicht, nächste Größe oder Ausströmer höher setzen (jeder halbe Meter weniger Tiefe spart 5 kPa, kostet aber SOTE).
+5. **Verteiler:** Hauptverteiler **6-fach** am Gebläse (Pool, Biofilter 1, Biofilter 2, Drittbecken, Zweitbecken, Puffer/Absetzer), je Abgang Kugelhahn und Rückschlagventil; Pool-Verteiler **4-fach** am Becken (vier Scheibenbelüfter, je ca. 33 l/min). Absetzer-Anschlüsse K47/K48 bleiben optional.
+6. **Ausströmer:** EPDM-Membran-Scheibenbelüfter Ø 215–270 mm [A, Handelsmaß] (Pool 4 Stück, Biofilter Rohr-/Plattenbelüfter); Membranausströmer arbeiten feinblasig, wie in der SOTE-Rechnung vorausgesetzt.
+7. **Rückschlagventil und Schleife:** Luftleitung vom Gebläse **über dem höchsten Wasserspiegel** (Z > 515 + Reserve) führen und zusätzlich Rückschlagventil, sonst läuft Wasser bei Stillstand in das Gebläse zurück (Gebläse liegt im Schaltschrankbereich unter dem Spiegel) [A, übliche Regel, zweite Quelle offen].
+
+### Kanten K44–K51 (Vorschlag)
+
+| Kante | heute | Vorschlag |
+|---|---|---|
+| K44 Pool | d40, 120 l/min [A] | d40, **Planwert 130, Spitze 205 l/min** (3,2 m/s bei 200 l/min, Innen-Ø 36,2 mm); Pool-Verteiler 4-fach |
+| K45/K46 Biofilter | d25, offen | **offen**: Nitrifikationsbedarf wird großteils vom Umlauf gedeckt (110 l/min je Linie × 6 mg/l = 0,95 kg O₂/Tag je Linie [E]); Luft dient Durchmischung und Restsauerstoff, Menge nach Trägerhersteller (K1) |
+| K47/K48 Absetzer | d20 optional | optional (Schlammfass-Luftstein siehe Abschnitt 0) |
+| K49 Drittbecken | d20, 2 l/min | bleibt; **Notstrom** (nicht am Hauptgebläse) |
+| K51 Zweitbecken | d20, offen | offen, wenige l/min [A] |
+
+### Offene Punkte Frage 4
+
+1. Kennlinie des gewählten Gebläses bei 26 kPa (Datenblatt): Werkstatt/Beschaffung.
+2. alpha und Cs durch Messung im Betrieb ersetzen (ersten Sauerstoff-Verlauf ohne Gebläse messen).
+3. Biofilter-Luft (K45/K46) und Zweitbecken: Hersteller der Träger.
+4. Notstromkonzept (Batterie/Aggregat) für das Gebläse und das Drittbecken: Ben/Orchestrator.
+5. Zweite Quelle für die Rückschlagventil-Regel.
+
+**Geprüft gegen:** `data/leitungsnetz.json` (K44–K51, F4), `data/system-specs.json` (Sauerstoff, Fischwasser, Leistung), Abschnitt 0–3, wastewater.com, aquakin-Doku, Hiblow-Händlerdaten · **Rechnung:** `python -X utf8 scripts/r45_luft.py`

@@ -122,3 +122,4 @@
 - 01.11. spaet: Ben entschied E14 = d75 (Teil 6 in W36-Blatt, Nachricht an Werkstatt A eingereiht, danach M10-S2R). Register docs/pitch-besonderheiten.md angelegt (W48): Sitzungen melden "Besonderheit: ..." in der Kurzmeldung, ich trage ein.
 - 01.11. spaet: Ben E18: Planer und Pruefer sind Standard (Vorlagen docs/jobs/vorlagen). Netzliste Version 3 (b98c4c1). Pilot Planer W37/W39 gestartet; PRUEF-S2R nach der Montage-Meldung. Start-Prompt: feste Kopfzeile + Schritt-ID + Brief, Vorlage lesen lassen.
 - 01.11. spaet: Kontext-Frage fuer Subsessions abgestellt (Ben): vor JEDEM start_session die Marke setzen (Befehl in docs/jobs/README.md), Prompt beginnt mit "PROJEKT:". Hook .claude/project-context.js (Workspace-Repo) geaendert.
+- 01.11. spaet: Kontext-Frage-Hook umgebaut (Ben): UserPromptSubmit der ersten Nachricht, stumm bei "PROJEKT:"; Marke nur Rueckfall. BELEG PRUEFEN: naechste Subsession ohne Marke starten und sehen, ob sie nicht fragt.

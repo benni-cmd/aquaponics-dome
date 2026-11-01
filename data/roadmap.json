@@ -291,19 +291,19 @@
   },
   {
    "id": "N-STUECKLISTE",
-   "titel": "B5 Stückliste und Meterware",
+   "titel": "B5 Stueckliste und Meterware per Skript aus dem Modell (kein KI-Lauf je Aenderung)",
    "status": "geplant",
    "phase": "nach_zwischencheck",
    "reihenfolge": 6,
    "wer": "Werkstatt",
-   "notiz": "Reale standardisierte Teile mit Mengen."
+   "notiz": "Ben 01.11. (W45): deterministisches Skript scripts/bom.py liest Modellstand (Instanzliste) + Teile-Datenmodell B1 + Katalog B4; Zuschnitt/Meterware per festem Algorithmus (Ausgangspunkt strut_cutting.py); Aenderungen am Modell sieht man direkt in der Teileliste; Test: Summen gleich Modellzaehlung. Reale Standardteile mit Mengen."
   },
   {
    "id": "N-R31-33",
    "titel": "R31 Materialien, R32 Becken, R33 Beete",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 7,
+   "reihenfolge": 8,
    "wer": "Fachrecherche",
    "notiz": "Recherchen zum Abschluss des Teilekatalogs."
   },
@@ -312,7 +312,7 @@
    "titel": "B10 Bauanleitung",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 8,
+   "reihenfolge": 9,
    "wer": "Orchestrator",
    "notiz": "Baut auf Katalog, Detailansicht und Stückliste auf."
   },
@@ -321,7 +321,7 @@
    "titel": "Farben, Material, Renders und Pflanzenmodelle",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 9,
+   "reihenfolge": 10,
    "wer": "Werkstatt",
    "notiz": "Optische Feinarbeit nach der Technik. ComfyUI-Weg laut R43 (docs/research/R43-comfyui-nutzung.md): V1 Skript photoreal.py + Kamera-Tabelle + Protokoll, V2 Tiefe/saubere Kanten (Download nach Bens Freigabe), V3 Farb-ID, V4 Foto-Latte."
   },
@@ -330,7 +330,7 @@
    "titel": "Notstrom und Alarm konkretisieren",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 10,
+   "reihenfolge": 11,
    "wer": "Fachrecherche + Werkstatt",
    "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39."
   },
@@ -339,7 +339,7 @@
    "titel": "Süßkartoffel-Licht belegen, NFT-Wuchsfläche messen",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 11,
+   "reihenfolge": 12,
    "wer": "Fachrecherche",
    "notiz": "Entscheidet 49,6 gegen 35,1 m² und damit etwa ±80 kg Fisch."
   },
@@ -477,6 +477,15 @@
    "reihenfolge": 3,
    "wer": "Orchestrator",
    "notiz": "Ben 01.11.: Vor dem Start jedes Roadmap-Schritts pruefen, ob die Aufgabe noch aktuell ist oder sich durch vorherige Schritte geaendert hat; Ergebnis steht im Auftragsblatt (docs/jobs/README.md)."
+  },
+  {
+   "id": "N-BOM-PARAM",
+   "titel": "B16 Parametrische Teileliste: Parameter einstellen, Teile/Mengen/Schnittmuster rechnen sofort neu",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 7,
+   "wer": "Montage + Viewer-Sitzung",
+   "notiz": "Ben 01.11. (W45, Stufe 2, nach der Skript-Stueckliste): Rechenkern mit Formeln je Bauteil (sofort, ohne CAD), getestet gegen die Modellzaehlung; CAD-Modell nur auf Knopfdruck neu bauen (Build mehrere Minuten); Seite wie Viewer/Roadmap."
   }
  ]
 }

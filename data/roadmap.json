@@ -617,11 +617,11 @@
   {
    "id": "L14",
    "titel": "Netzliste noch nicht auf die Modell-Etiketten umgehaengt",
-   "status": "luecke",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 14,
    "wer": "Orchestrator",
-   "notiz": "Zugeordnet: NETZ-ETIKETT. docs/leitungsnetz-umhaengen.md liegt (E2); data/leitungsnetz.json (Version 2) ist unveraendert: absetzer_1/2 und pumpe_klein_1..4 muessen auf Tank_klein:2/:1 und Pumpe_klein:3,4/:1,2 zeigen, sonst falsche Bauteile in Pruefung und Stueckliste."
+   "notiz": "Geschlossen 01.11. abends durch NETZ-ETIKETT (Feld \"modell\" in der Netzliste). Zugeordnet: NETZ-ETIKETT. docs/leitungsnetz-umhaengen.md liegt (E2); data/leitungsnetz.json (Version 2) ist unveraendert: absetzer_1/2 und pumpe_klein_1..4 muessen auf Tank_klein:2/:1 und Pumpe_klein:3,4/:1,2 zeigen, sonst falsche Bauteile in Pruefung und Stueckliste."
   },
   {
    "id": "L15",
@@ -745,11 +745,11 @@
   {
    "id": "NETZ-ETIKETT",
    "titel": "Netzliste auf die Modell-Etiketten umhaengen (Luecke L14)",
-   "status": "geplant",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 1,
    "wer": "Orchestrator",
-   "notiz": "Klein: nur Namen in data/leitungsnetz.json laut docs/leitungsnetz-umhaengen.md (absetzer_1/2 und pumpe_klein_1 bis 4). Danach check_leitungen und Stueckliste neu laufen lassen. Ich erledige es zuerst, weil es klein ist und alle spaeteren Pruefungen die richtigen Bauteile sehen muessen. Wartet auf deine Freigabe (E11)."
+   "notiz": "Erledigt 01.11. abends: Feld \"modell\" an 12 Knoten von data/leitungsnetz.json (absetzer_1 = Tank_klein:2, absetzer_2 = Tank_klein:1, pumpe_klein_1 bis 4 = Pumpe_klein:3, 4, 1, 2, Biofilter und grosse Pumpen unveraendert); Knotennamen und Linien unveraendert; check_netz.py PASS."
   },
   {
    "id": "R45",

@@ -1,7 +1,7 @@
 {
- "stand": "31.10.2026",
+ "stand": "01.11.2026",
  "version": 2,
- "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe. Version 2 (R40): Puffer klein, Drittbecken klein, Messknoten-Trunks, Hauptstrom-Feinfilter, Linienteilung 12+7 (D67); Aenderungen in docs/leitungsnetz-aenderungen.md.",
+ "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe. Version 2 (R40): Puffer klein, Drittbecken klein, Messknoten-Trunks, Hauptstrom-Feinfilter, Linienteilung 12+7 (D67); Aenderungen in docs/leitungsnetz-aenderungen.md. Stand 01.11.2026 (L14): Feld \"modell\" an den Tank-/Pumpen-Knoten nennt die Modell-Instanz (Etikett im Modell, Linie 1 = Ost, Linie 2 = West); Quelle docs/leitungsnetz-umhaengen.md. Knotennamen und Linien unveraendert.",
  "konventionen": {
   "dn_einheit": "Aussendurchmesser mm der Leitungsteile-Bibliothek (d20-d110)",
   "geschwindigkeit": "Druckseite <= 1,5 m/s (UVI-Hauptleitung ca. 1,4 m/s), Saugseite <= 1,0 m/s [A]",
@@ -19,26 +19,30 @@
    "typ": "Tank",
    "bauteil": "tank_klein",
    "linie": 1,
-   "bemerkung": "Vortex, 267 l, Zulauf Ø50 tangential 250 mm unter Rand, Auslass Ø50 100 mm unter Rand, Schlammablass Kugelhahn an der Kegelspitze"
+   "bemerkung": "Vortex, 267 l, Zulauf Ø50 tangential 250 mm unter Rand, Auslass Ø50 100 mm unter Rand, Schlammablass Kugelhahn an der Kegelspitze",
+   "modell": "Tank_klein:2"
   },
   {
    "id": "absetzer_2",
    "typ": "Tank",
    "bauteil": "tank_klein",
-   "linie": 2
+   "linie": 2,
+   "modell": "Tank_klein:1"
   },
   {
    "id": "biofilter_1",
    "typ": "Tank",
    "bauteil": "tank_gross",
    "linie": 1,
-   "bemerkung": "702 l, lose K1-Traeger 0,47 m3 bei 67 % Fuellung (D55, Schwebebett, belueftet), Zulauf/Auslass Ø50, Ueberlauf, Belueftung Ø16 im Deckel, Schlammablass"
+   "bemerkung": "702 l, lose K1-Traeger 0,47 m3 bei 67 % Fuellung (D55, Schwebebett, belueftet), Zulauf/Auslass Ø50, Ueberlauf, Belueftung Ø16 im Deckel, Schlammablass",
+   "modell": "Tank_gross:1"
   },
   {
    "id": "biofilter_2",
    "typ": "Tank",
    "bauteil": "tank_gross",
-   "linie": 2
+   "linie": 2,
+   "modell": "Tank_gross_t3:1"
   },
   {
    "id": "feinfilter_1",
@@ -195,7 +199,8 @@
    "soll_l_min": 55,
    "saug_d": 50,
    "druck_d": 40,
-   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
+   "modell": "Pumpe_gross:1"
   },
   {
    "id": "pumpe_klein_1",
@@ -205,7 +210,8 @@
    "soll_l_min": 12.5,
    "saug_d": 40,
    "druck_d": 32,
-   "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve"
+   "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve",
+   "modell": "Pumpe_klein:3"
   },
   {
    "id": "pumpe_gross_2",
@@ -215,7 +221,8 @@
    "soll_l_min": 55,
    "saug_d": 50,
    "druck_d": 40,
-   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
+   "modell": "Pumpe_gross:2"
   },
   {
    "id": "pumpe_klein_2",
@@ -225,7 +232,8 @@
    "soll_l_min": 12.5,
    "saug_d": 40,
    "druck_d": 32,
-   "bemerkung": "Reserve"
+   "bemerkung": "Reserve",
+   "modell": "Pumpe_klein:4"
   },
   {
    "id": "pumpe_gross_3",
@@ -235,7 +243,8 @@
    "soll_l_min": 55,
    "saug_d": 50,
    "druck_d": 40,
-   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
+   "modell": "Pumpe_gross:3"
   },
   {
    "id": "pumpe_klein_3",
@@ -245,7 +254,8 @@
    "soll_l_min": 12.5,
    "saug_d": 40,
    "druck_d": 32,
-   "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve"
+   "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve",
+   "modell": "Pumpe_klein:1"
   },
   {
    "id": "pumpe_gross_4",
@@ -255,7 +265,8 @@
    "soll_l_min": 55,
    "saug_d": 50,
    "druck_d": 40,
-   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie"
+   "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
+   "modell": "Pumpe_gross:4"
   },
   {
    "id": "pumpe_klein_4",
@@ -265,7 +276,8 @@
    "soll_l_min": 12.5,
    "saug_d": 40,
    "druck_d": 32,
-   "bemerkung": "Reserve"
+   "bemerkung": "Reserve",
+   "modell": "Pumpe_klein:2"
   }
  ],
  "kanten": [

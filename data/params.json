@@ -736,5 +736,104 @@
   "r_id": "",
   "maturity": 0,
   "used_by": "trassen_linie.py"
+ },
+ "lt_k22_t_x": {
+  "value": -700,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2: T d63/d50/d50 am Filter-Stamm, x (Suche ueber T-Lagen, Zweige frei von Filter, Tank, Rohr-Kreuzungen)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k22_t_y": {
+  "value": -3350,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2: T d63/d50/d50 am Filter-Stamm, y",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k22_l1": {
+  "value": 400,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2: erster Schenkel des Stamms hinter dem 45-Grad-Bogen am Filterauslauf (Richtung -30 Grad), die zwei weiteren Schenkel folgen aus der T-Lage",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k18_l0": {
+  "value": 350,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2: erster Schenkel des Zweigs K18 vom T zum Fusspunkt der Pumpe 4 (dann 45 Grad zur Saugachse)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k57_s": {
+  "value": 300,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2 K57 (Notbypass): Lage des Abzweig-T auf der K17-Grabenstrecke ab Pool-Ende; liegt 150 mm vor dem T des Absetzer-Zulaufs",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k21_s": {
+  "value": 450,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2 K21: Lage des T des Absetzer-Zulaufs auf der K17-Grabenstrecke ab Pool-Ende",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k21_lb": {
+  "value": 400,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2 K21: Laenge des letzten Schenkels (45 Grad zur Graben-Querrichtung) bis zum T; legt die Nordlage der Westleitung fest (y -2680, nord von Fusspunkt K22)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k25_s": {
+  "value": 400,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2 K24/K25: Abstand des T d50 von der Biofilter-Zulaufspitze auf der Stutzenachse nach aussen (Pumpe 4 steht unter dem Stutzen, Plattformrand)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k25_sc": {
+  "value": 650,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2 K25: Steigrohr der Pumpe 4 auf der Stutzenachse in diesem Abstand von der Zulaufspitze (Band W: hoechstens 500 mm vom Pumpenkasten)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k24_n": {
+  "value": 400,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2 K24: Austritt der Pumpe 3 nach Norden unter der Plattform hinaus bis zum Steigrohr",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
+ },
+ "lt_k19_foot": {
+  "value": 700,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S2c Linie 2 K19: Fusspunkt des Steigrohrs auf der Saugachse von Pumpe_klein:1, Abstand vom Saugstutzen (ausserhalb Tank_gross_t3 und Zufahrt K21)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "trassen_linie.py"
  }
 }

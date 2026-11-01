@@ -42,6 +42,9 @@ def ang(v): return math.degrees(math.atan2(v[1], v[0]))
 
 def k90(d): return LT.ports("lt_bogen90_d%d" % d)[1][1][0]          # Schenkel Bogen 90
 def r90(d): return k90(d) - LT.DEPTH[d]                              # Abstand Stutzenspitze -> Kreuzungspunkt bei direkt aufgestecktem Bogen
+def r45(d):                                                          # dasselbe fuer den Bogen 45 (Schenkel wie leitungen.tangent)
+    B = LT.ports("lt_bogen45_d%d" % d)[1]
+    return B[1][2] - B[1][0] / B[2][0] * B[2][2] - LT.DEPTH[d]
 def lred(dg, dk): return LT.ports("lt_reduzierung_d%d_d%d" % (dg, dk))[1][1][2]
 
 def port(inst, klasse, name):
@@ -65,21 +68,26 @@ def schreiben(doc, linie, neu):
     if not doc["r_stuecke"]: del doc["r_stuecke"]
     return doc
 
-def linie1_s2a(L, neu):
-    """K01 Pool -> Feinfilter-Einlauf (unterflur, Heber), Stamm K06-T Filterauslauf -> T, K06/K02 T -> Pumpen-Saugstutzen (M10-S2a, unveraendert)."""
-    ein, ein_o, _ = port(L["filter"], "feinfilter", "ein"); aus, aus_o, _ = port(L["filter"], "feinfilter", "aus")
-    pump = {i: port(L["pumpe_gross"][i - 1], "pumpe_gross", "saug") for i in (1, 2)}
+def pool_filter(L, neu, kid):
+    """K01 (Linie 1) / K17 (Linie 2): Pool-Seitenablauf (d63) -> Feinfilter-Einlauf, unterflur im Heber."""
+    ein, ein_o, _ = port(L["filter"], "feinfilter", "ein")
     sa = [p for p in L["G"].pool_ports(P["sock_h"]) if p["name"] == L["pool_sa"]][0]
     tip_pool, u = sa["ende"], sa["axis"]
     R63 = r90(63)
-    # ---------------- K01: Pool-Seitenablauf (d63) -> Feinfilter-Einlauf, unterflur im Heber
     zu = P["lt_k01_z_u"]
     v1 = add(tip_pool, u, R63)                                              # Bogen 1 direkt auf den Stutzen gesteckt
     c_in = add(ein, ein_o, R63)                                             # Bogen 4 direkt auf den Einlaufstutzen gesteckt
     pf = [tip_pool, v1, (v1[0], v1[1], zu), (c_in[0], c_in[1], zu), c_in, ein]
-    neu["trassen"].append({"id": "K01", "kante": "K01", "dn": 63, "farbe": "dunkelblau", "start": "stutzen", "ende": "stutzen", "heber": True,
+    neu["trassen"].append({"id": kid, "kante": kid, "dn": 63, "farbe": "dunkelblau", "start": "stutzen", "ende": "stutzen", "heber": True,
         "baender": ["W", "W", "U", "W", "W"], "anschluss": ["Zentralpool", L["filter"]], "pfad": [rd(p) for p in pf],
         "notiz": "Seitenablauf Z 740 (Pool-Stutzen %s, Az %.1f) -> Bogen runter -> Graben Z %g (Heber, Rohr oben %.1f unter Spiegel 915) -> Bogen hoch -> Bogen in den Einlauf Z %.0f (Stutzenspitze x %.1f y %.1f)" % (L["pool_sa"], ang(u), zu, 915 - (zu + 31.5), ein[2], ein[0], ein[1])})
+
+def linie1_s2a(L, neu):
+    """K01 Pool -> Feinfilter-Einlauf (unterflur, Heber), Stamm K06-T Filterauslauf -> T, K06/K02 T -> Pumpen-Saugstutzen (M10-S2a, unveraendert)."""
+    aus, aus_o, _ = port(L["filter"], "feinfilter", "aus")
+    pump = {i: port(L["pumpe_gross"][i - 1], "pumpe_gross", "saug") for i in (1, 2)}
+    R63 = r90(63)
+    pool_filter(L, neu, "K01")
     # ---------------- K06-Stamm: Feinfilter-Auslauf (d63) -> T d63/d50/d50 (Z gleich Auslauf), 90 + 45 + 45 + 90 Grad
     z = aus[2]
     v1 = add(aus, aus_o, R63); a0 = ang(aus_o)
@@ -198,59 +206,196 @@ def linie1_absetzer(L, neu):
     neu["t_stuecke"].append({"id": "T4", "pos": rd(t4), "d": 63, "ports": [{"trasse": "K01", "ende": "ende", "d": 63}, {"trasse": "K01-b", "ende": "start", "d": 63}, {"trasse": "K05", "ende": "ende", "d": 50}],
                              "notiz": "T d63 im Einlauf der K01 (Netz K05: T-Stueck mit Seitenablauf); Zweig d50 mit Rohrstueck d63 + Reduziermuffe d63/d50"})
 
-def linie1_bypass(L, neu):
-    """Notbypass K56 (M10-S2b): T d63 auf K01 (Grabenstrecke) -> Kugelhahn d63 (senkrecht nach unten) -> Tiefleitung unter K01 und Filter-Stamm -> senkrecht hoch zu einem T d63 im Stamm K06-T hinter dem Filterauslauf.
-    K01 und K06-T werden an den T-Stuecken geteilt (K01 / K01-m / K01-b, K06-T / K06-T-b)."""
+IDS1 = {"pf": "K01", "pf_m": "K01-m", "st": "K06-T", "st_b": "K06-T-b", "abs": "K05", "t4": "T4", "t1": "T1", "t5": "T5", "t6": "T6", "kh": "KH1", "kante": "K56", "a": "K56-a", "b": "K56-b"}
+
+def bypass(L, neu, I, spar, leg):
+    """Notbypass (K56 Linie 1, K57 Linie 2; M10-S2b/S2c): T d63 auf der Pool-Filter-Leitung (Grabenstrecke) -> Kugelhahn d63 (senkrecht nach unten) -> Tiefleitung unter Leitung und Filter-Stamm -> senkrecht hoch zu einem T d63 im Stamm hinter dem Filterauslauf.
+    Die Pool-Filter-Leitung I["pf"] und der Stamm I["st"] werden an den T-Stuecken geteilt (pf / pf_m / Rest, st / st_b); spar = Parametername der T-Lage auf der Grabenstrecke, leg = Index des Stammschenkels (q[leg] -> q[leg + 1]), auf dem das T im Stamm sitzt."""
     tr = {t["id"]: t for t in neu["trassen"]}; ts = {t["id"]: t for t in neu["t_stuecke"]}
-    k01, kt = tr["K01"], tr["K06-T"]
+    pf, pf_m, st, st_b, kante = I["pf"], I["pf_m"], I["st"], I["st_b"], I["kante"]
+    t4n, t1n, t5n, t6n, khn = I["t4"], I["t1"], I["t5"], I["t6"], I["kh"]
+    k01, kt = tr[pf], tr[st]
     f = [tuple(p) for p in k01["pfad"]]; g0, g1 = f[2], f[3]; zu = g0[2]
     gh = unit((g1[0] - g0[0], g1[1] - g0[1], 0.0))
-    t5 = add(g0, gh, P["lt_k56_s"])
-    q = [tuple(p) for p in kt["pfad"]]; v3, v4 = q[3], q[4]; uu = unit(sub(v3, v4))
+    t5 = add(g0, gh, P[spar])
+    q = [tuple(p) for p in kt["pfad"]]; v3, v4 = q[leg], q[leg + 1]; uu = unit(sub(v3, v4))
     al = dot(sub(t5, v4), uu); t6 = add(v4, uu, al)
     a63 = -LT.ports("lt_t_d63")[0][1][0]; lkh = LT.ports("lt_kugelhahn_d63")[1][1][2]
-    if not (a63 + 120 < al < math.dist(v3, v4) - a63 - 120): raise SystemExit("K56: T im Stamm liegt zu nah an einem Knick (%.0f von %.0f)" % (al, math.dist(v3, v4)))
+    if not (a63 + 120 < al < math.dist(v3, v4) - a63 - 120): raise SystemExit("%s: T im Stamm liegt zu nah an einem Knick (%.0f von %.0f)" % (kante, al, math.dist(v3, v4)))
     down = (0.0, 0.0, -1.0)
     pa = (t5[0], t5[1], zu - a63); pb = add(pa, down, lkh)                  # Kugelhahn: Muffenebene A direkt am Ausgang des T (Rohrstueck 2 t), B darunter
     zc = pb[2] - P["lt_k56_tief"]; ca = (t5[0], t5[1], zc); cb = (t6[0], t6[1], zc)
-    neu["r_stuecke"].append({"id": "KH1", "art": "kugelhahn", "pos_a": rd(pa), "dir": list(down), "d_gross": 63, "d_klein": 63,
-                             "notiz": "Kugelhahn d63 K56 (Normalbetrieb zu, Stoerfall auf); Handrad nicht erreichbar im Graben: Schacht mit Deckel in S6"})
-    # K01 teilen: K01 (Pool -> T5), K01-m (T5 -> T4)
-    kc = dict(k01); kc["pfad"] = [rd(p) for p in f[:3]] + [rd(t5)]; kc["ende"] = "t:T5"; kc["baender"] = ["W", "W", "U"]
-    km = dict(k01); km["id"] = "K01-m"; km["pfad"] = [rd(t5), k01["pfad"][3]]; km["start"] = "t:T5"; km["ende"] = "t:T4"; km["baender"] = ["U"]
-    km["notiz"] = "K01 (Teil 2): vom T d63 des Notbypasses K56 bis zum T d63 des Absetzer-Zulaufs K05 (Heber, Graben Z %g)." % zu
+    neu["r_stuecke"].append({"id": khn, "art": "kugelhahn", "pos_a": rd(pa), "dir": list(down), "d_gross": 63, "d_klein": 63,
+                             "notiz": "Kugelhahn d63 %s (Normalbetrieb zu, Stoerfall auf); Handrad nicht erreichbar im Graben: Schacht mit Deckel in S6" % kante})
+    # Pool-Filter-Leitung teilen: pf (Pool -> T5), pf_m (T5 -> T4)
+    kc = dict(k01); kc["pfad"] = [rd(p) for p in f[:3]] + [rd(t5)]; kc["ende"] = "t:" + t5n; kc["baender"] = ["W", "W", "U"]
+    km = dict(k01); km["id"] = pf_m; km["pfad"] = [rd(t5), k01["pfad"][3]]; km["start"] = "t:" + t5n; km["ende"] = "t:" + t4n; km["baender"] = ["U"]
+    km["notiz"] = "%s (Teil 2): vom T d63 des Notbypasses %s bis zum T d63 des Absetzer-Zulaufs %s (Heber, Graben Z %g)." % (pf, kante, I["abs"], zu)
     neu["trassen"][neu["trassen"].index(k01)] = kc; neu["trassen"].insert(neu["trassen"].index(kc) + 1, km)
-    for p in ts["T4"]["ports"]:
-        if p["trasse"] == "K01": p["trasse"] = "K01-m"
-    # K06-T teilen: K06-T (Filter -> T6), K06-T-b (T6 -> T1)
-    k6 = dict(kt); k6["pfad"] = [rd(p) for p in q[:4]] + [rd(t6)]; k6["ende"] = "t:T6"
-    kb = dict(kt); kb["id"] = "K06-T-b"; kb["pfad"] = [rd(t6)] + [rd(p) for p in q[4:]]; kb["start"] = "t:T6"
-    kb["notiz"] = "K06-T (Teil 2): vom T d63 des Notbypasses K56 bis zum T d63/d50/d50 (T1) vor den Pumpen."
+    for p in ts[t4n]["ports"]:
+        if p["trasse"] == pf: p["trasse"] = pf_m
+    # Stamm teilen: st (Filter -> T6), st_b (T6 -> T1)
+    k6 = dict(kt); k6["pfad"] = [rd(p) for p in q[:leg + 1]] + [rd(t6)]; k6["ende"] = "t:" + t6n
+    kb = dict(kt); kb["id"] = st_b; kb["pfad"] = [rd(t6)] + [rd(p) for p in q[leg + 1:]]; kb["start"] = "t:" + t6n
+    kb["notiz"] = "%s (Teil 2): vom T d63 des Notbypasses %s bis zum T d63/d50/d50 (%s) vor den Pumpen." % (st, kante, t1n)
     neu["trassen"][neu["trassen"].index(kt)] = k6; neu["trassen"].insert(neu["trassen"].index(k6) + 1, kb)
-    for p in ts["T1"]["ports"]:
-        if p["trasse"] == "K06-T": p["trasse"] = "K06-T-b"
+    for p in ts[t1n]["ports"]:
+        if p["trasse"] == st: p["trasse"] = st_b
     neu["trassen"] += [
-        {"id": "K56-a", "kante": "K56", "dn": 63, "farbe": "dunkelblau", "start": "t:T5", "ende": "r:KH1", "band": "UT", "anschluss": [], "pfad": [rd(t5), rd(pa)],
-         "notiz": "Abzweig vom T d63 auf K01 senkrecht nach unten bis zum Kugelhahn"},
-        {"id": "K56-b", "kante": "K56", "dn": 63, "farbe": "dunkelblau", "start": "r:KH1", "ende": "t:T6", "band": "UT", "anschluss": [], "pfad": [rd(pb), rd(ca), rd(cb), rd(t6)],
-         "notiz": "Kugelhahn -> %g mm abwaerts -> %.0f mm Tiefleitung (Z %.0f) unter K01 und Stamm K06-T -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz K56: Anschluss an die Saugleitung hinter dem Filterauslauf)" % (P["lt_k56_tief"], math.dist(ca, cb), zc)}]
+        {"id": I["a"], "kante": kante, "dn": 63, "farbe": "dunkelblau", "start": "t:" + t5n, "ende": "r:" + khn, "band": "UT", "anschluss": [], "pfad": [rd(t5), rd(pa)],
+         "notiz": "Abzweig vom T d63 auf %s senkrecht nach unten bis zum Kugelhahn" % pf},
+        {"id": I["b"], "kante": kante, "dn": 63, "farbe": "dunkelblau", "start": "r:" + khn, "ende": "t:" + t6n, "band": "UT", "anschluss": [], "pfad": [rd(pb), rd(ca), rd(cb), rd(t6)],
+         "notiz": "Kugelhahn -> %g mm abwaerts -> %.0f mm Tiefleitung (Z %.0f) unter %s und Stamm %s -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz %s: Anschluss an die Saugleitung hinter dem Filterauslauf)" % (P["lt_k56_tief"], math.dist(ca, cb), zc, pf, st, kante)}]
     neu["t_stuecke"] += [
-        {"id": "T5", "pos": rd(t5), "d": 63, "ports": [{"trasse": "K01", "ende": "ende", "d": 63}, {"trasse": "K01-m", "ende": "start", "d": 63}, {"trasse": "K56-a", "ende": "start", "d": 63}],
-         "notiz": "T d63 auf K01, Zweig senkrecht nach unten (Notbypass K56)"},
-        {"id": "T6", "pos": rd(t6), "d": 63, "ports": [{"trasse": "K06-T", "ende": "ende", "d": 63}, {"trasse": "K06-T-b", "ende": "start", "d": 63}, {"trasse": "K56-b", "ende": "ende", "d": 63}],
-         "notiz": "T d63 im Filter-Stamm, Zweig senkrecht nach unten (Notbypass K56)"}]
+        {"id": t5n, "pos": rd(t5), "d": 63, "ports": [{"trasse": pf, "ende": "ende", "d": 63}, {"trasse": pf_m, "ende": "start", "d": 63}, {"trasse": I["a"], "ende": "start", "d": 63}],
+         "notiz": "T d63 auf %s, Zweig senkrecht nach unten (Notbypass %s)" % (pf, kante)},
+        {"id": t6n, "pos": rd(t6), "d": 63, "ports": [{"trasse": st, "ende": "ende", "d": 63}, {"trasse": st_b, "ende": "start", "d": 63}, {"trasse": I["b"], "ende": "ende", "d": 63}],
+         "notiz": "T d63 im Filter-Stamm, Zweig senkrecht nach unten (Notbypass %s)" % kante}]
+
+def linie1_bypass(L, neu):
+    bypass(L, neu, IDS1, "lt_k56_s", 3)
+
+IDS2 = {"pf": "K17", "pf_m": "K17-m", "st": "K22-T", "st_b": "K22-T-b", "abs": "K21", "t4": "T12", "t1": "T11", "t5": "T13", "t6": "T14", "kh": "KH2", "kante": "K57", "a": "K57-a", "b": "K57-b"}
+
+def axis_hit(c, hdeg, tip, o):
+    """Strahl c + s * h(hdeg) schneidet die waagerechte Achse des Stutzens (Spitze tip, Oeffnung o): Fusspunkt und Strahllaenge s."""
+    hh = h(hdeg); den = hh[0] * o[1] - hh[1] * o[0]
+    s = ((tip[0] - c[0]) * o[1] - (tip[1] - c[1]) * o[0]) / den
+    if s <= 0: raise SystemExit("Zweig trifft die Saugachse nicht (s %.0f)" % s)
+    return add(c, hh, s), s
+
+def linie2_s2a(L, neu):
+    """K17 Pool -> Feinfilter West B (Heber), Stamm K22-T Filterauslauf -> T d63/d50/d50 (Bogen 45, 45, 90), K22 T -> Pumpe_gross:3 (geradeaus), K18 T -> Pumpe_gross:4 (M10-S2c).
+    Auslauf liegt 24 mm neben der Saugachse von Pumpe 4, aber der Filterkasten steht vor beiden Saugachsen: das T sitzt oestlich des Filters (Suche ueber T-Lagen, siehe lt_k22_*)."""
+    aus, aus_o, _ = port(L["filter"], "feinfilter", "aus")
+    pump = [port(L["pumpe_gross"][i], "pumpe_gross", "saug") for i in (0, 1)]
+    pool_filter(L, neu, "K17")
+    z = aus[2]
+    h0 = ang(aus_o); hs1, hs2, hr = h0 + 45, h0 + 90, h0 + 180
+    v1 = add(aus, aus_o, r45(63))                                           # erster Bogen ist ein 45-Grad-Bogen, direkt auf den Auslaufstutzen gesteckt
+    p2 = add(v1, h(hs1), P["lt_k22_l1"])
+    tt = (P["lt_k22_t_x"], P["lt_k22_t_y"], z)
+    ha, hb = h(hs2), h(hr)
+    det = ha[0] * hb[1] - ha[1] * hb[0]; dx, dy = tt[0] - p2[0], tt[1] - p2[1]
+    l2, l3 = (dx * hb[1] - dy * hb[0]) / det, (ha[0] * dy - ha[1] * dx) / det        # p2 + l2 * h(hs2) + l3 * h(hr) = T
+    p3 = add(p2, ha, l2)
+    neu["trassen"].append({"id": "K22-T", "kante": None, "dn": 63, "farbe": "dunkelblau", "start": "stutzen", "ende": "t:T11", "band": "U", "anschluss": [L["filter"]],
+        "pfad": [rd(p) for p in (aus, v1, p2, p3, tt)], "notiz": "Stamm d63 zwischen Filterauslauf und T (gehoert zu K18 und K22: Netz fuehrt dort d50, T-Stueck d63/d50/d50 laut Netz-Bemerkung K22); Richtungen %.0f / %.0f / %.0f / %.0f Grad, Schenkel %g / %.0f / %.0f mm, um den Filterkasten herum nach Osten" % (h0, hs1, hs2, hr, P["lt_k22_l1"], l2, l3)})
+    # K22: T geradeaus (Richtung hr) auf die Saugachse von Pumpe_gross:3, Riser, Zulauf in den Stutzen
+    tip, o, _ = pump[0]; fp, s = axis_hit(tt, hr, tip, o)
+    r = (fp[0], fp[1], z); up = (fp[0], fp[1], tip[2])
+    neu["trassen"].append({"id": "K22", "kante": "K22", "dn": 50, "farbe": "dunkelblau", "start": "t:T11", "ende": "stutzen", "baender": ["U", "W", "W"], "anschluss": [L["pumpe_gross"][0], L["tank_gross"]], "pfad": [rd(tt), rd(r), rd(up), rd(tip)],
+        "notiz": "T geradeaus %.0f mm (Richtung %.0f Grad) -> Riser auf Saugstutzenhoehe Z %.0f -> %.0f mm Zulauf in den Saugstutzen %s (Stutzenspitze x %.1f y %.1f)" % (s, hr, tip[2], math.dist(up, tip), L["pumpe_gross"][0], tip[0], tip[1])})
+    # K18: T nach links (hr + 90), Schenkel lt_k18_l0, 45 Grad zur Saugachse von Pumpe_gross:4, Riser, Zulauf
+    tip, o, _ = pump[1]; c = add(tt, h(hr + 90), P["lt_k18_l0"]); fp, s = axis_hit(c, hr + 135, tip, o)
+    r = (fp[0], fp[1], z); up = (fp[0], fp[1], tip[2])
+    neu["trassen"].append({"id": "K18", "kante": "K18", "dn": 50, "farbe": "dunkelblau", "start": "t:T11", "ende": "stutzen", "baender": ["U", "U", "W", "W"], "anschluss": [L["pumpe_gross"][1], L["tank_gross"]], "pfad": [rd(tt), rd(c), rd(r), rd(up), rd(tip)],
+        "notiz": "T nach links %g mm (Richtung %.0f Grad) -> 45 Grad weiter %.0f mm bis zur Saugachse -> Riser auf Z %.0f -> %.0f mm Zulauf in den Saugstutzen %s (Stutzenspitze x %.1f y %.1f)" % (P["lt_k18_l0"], hr + 90, s, tip[2], math.dist(up, tip), L["pumpe_gross"][1], tip[0], tip[1])})
+    neu["t_stuecke"].append({"id": "T11", "pos": rd(tt), "d": 63, "ports": [{"trasse": "K22-T", "ende": "ende", "d": 63}, {"trasse": "K22", "ende": "start", "d": 50}, {"trasse": "K18", "ende": "start", "d": 50}],
+                             "notiz": "T d63 aus lt_t_d63 + je Ausgang Rohrstueck d63 (2 t) + Reduziermuffe d63/d50"})
+
+def linie2_biofilter(L, neu):
+    """K25 Pumpe_gross:4 (steht unter dem Zulauf-Stutzen) -> hoch -> unter der Plattform hinaus -> Steigrohr auf der Stutzenachse -> zurueck auf der Achse zum T d50; K24 Pumpe_gross:3 -> hoch -> nach Norden hinaus -> Steigrohr -> um den Tank herum
+    ueber dem Filter -> von der Seite zum T; T d50 -> Stamm d50 -> Reduziermuffe d63/d50 auf den Zulauf-Stutzen; K26 Ueberlauf d63 -> Reduziermuffe -> Rohr d50, offenes Ende am Verteilerplatz (M10-S2c)."""
+    tg = L["tank_gross"]; p3, p4 = (port(L["pumpe_gross"][i], "pumpe_gross", "druck") for i in (0, 1))
+    zt, zo, _ = port(tg, "tank_gross", "zulauf"); ut, uo, _ = port(tg, "tank_gross", "ueberlauf")
+    zh = zt[2]; R40 = r90(40); up = (0.0, 0.0, 1.0)
+    un = (zo[1], -zo[0], 0.0)                                                # waagerecht senkrecht zur Zulauf-Achse, zeigt zur Pumpe-3-Seite
+    t2 = add(zt, zo, P["lt_k25_s"]); pc = add(zt, zo, P["lt_k25_sc"])
+    c1 = add(p4[0], up, R40); k25 = [p4[0], c1, (pc[0], pc[1], c1[2]), (pc[0], pc[1], zh), t2]
+    d1 = add(p3[0], up, R40); n2 = add(p3[0], un, P["lt_k24_n"]); c3 = (n2[0], n2[1], zh)
+    l3 = dot(sub(t2, c3), zo); c4 = add(c3, zo, l3)
+    if l3 <= 0: raise SystemExit("K24: Querschenkel hat keine Laenge (%.0f)" % l3)
+    k24 = [p3[0], d1, (n2[0], n2[1], d1[2]), c3, c4, t2]
+    rz, pb = stutzen_red(zt, zo, 63, 50)
+    neu["r_stuecke"].append(dict(id="R_ZUL2", **rz))
+    neu["trassen"] += [
+        {"id": "K24", "kante": "K24", "dn": 40, "farbe": "dunkelblau", "start": "stutzen", "ende": "t:T15", "baender": ["W", "W", "WH", "WH", "WH"], "anschluss": [L["pumpe_gross"][0], tg],
+         "pfad": [rd(p) for p in k24], "notiz": "Druckstutzen %s (Z %.0f) -> hoch auf Z %.0f -> %g mm nach Norden unter der Plattform hinaus -> Steigrohr auf Zulaufhoehe Z %.0f -> %.0f mm nach WSW um den Tank (ueber dem Filter) -> %.0f mm von der Seite zum T d50 auf der Zulauf-Achse" % (L["pumpe_gross"][0], p3[0][2], d1[2], P["lt_k24_n"], zh, l3, math.dist(c4, t2))},
+        {"id": "K25", "kante": "K25", "dn": 40, "farbe": "dunkelblau", "start": "stutzen", "ende": "t:T15", "baender": ["W", "W", "WH", "WH"], "anschluss": [L["pumpe_gross"][1], tg],
+         "pfad": [rd(p) for p in k25], "notiz": "Druckstutzen %s (Z %.0f, unter dem Zulauf-Stutzen) -> hoch auf Z %.0f -> %.0f mm unter der Plattform hinaus -> Steigrohr bei %g mm vor der Zulaufspitze auf der Achse -> Z %.0f -> %.0f mm auf der Achse zurueck zum T d50" % (L["pumpe_gross"][1], p4[0][2], c1[2], math.dist(k25[1], k25[2]), P["lt_k25_sc"], zh, math.dist(k25[3], t2))},
+        {"id": "K24-K25-Stamm", "kante": None, "dn": 50, "farbe": "dunkelblau", "start": "t:T15", "ende": "r:R_ZUL2", "band": "WH", "anschluss": [tg], "pfad": [rd(t2), rd(pb)],
+         "notiz": "vereinigte Druckleitung d50 (Netz K24/K25: vereinigt vor dem Tank zu d50) vom T auf der Zulauf-Achse bis zur Reduziermuffe d63/d50 auf dem Zulauf-Stutzen d63 des Biofilters (Z %.0f)" % zh}]
+    neu["t_stuecke"].append({"id": "T15", "pos": rd(t2), "d": 50, "ports": [{"trasse": "K25", "ende": "ende", "d": 40}, {"trasse": "K24-K25-Stamm", "ende": "start", "d": 50}, {"trasse": "K24", "ende": "ende", "d": 40}],
+                             "notiz": "T d50: Gerade = K25 und Stamm auf der Zulauf-Achse, Abzweig = K24; Eingaenge d40 mit Rohrstueck d50 + Reduziermuffe d50/d40"})
+    ru, pbu = stutzen_red(ut, uo, 63, 50)
+    neu["r_stuecke"].append(dict(id="R_UEB2", **ru))
+    ende = add(pbu, uo, P["lt_k10_len"])
+    neu["trassen"].append({"id": "K26", "kante": "K26", "dn": 50, "farbe": "dunkelblau", "start": "r:R_UEB2", "ende": "offen", "band": "WH", "anschluss": [tg], "pfad": [rd(pbu), rd(ende)],
+        "notiz": "Ueberlauf-Stutzen d63 (Z %.0f = 1570 relativ) -> Reduziermuffe d63/d50 -> %g mm Rohr d50 nach aussen; das offene Ende (x %.0f y %.0f) ist der Verteiler-Eingang (Verteilerplatz Linie 2, Verteiler d50 in S3)" % (ut[2], P["lt_k10_len"], ende[0], ende[1])})
+
+def linie2_absetzer(L, neu, alt):
+    """Absetzerkreis Linie 2 (M10-S2c): K19 ab dem offenen Linie-2-Stumpf des Bodenablaufs (Linie 1, S2b) unter dem Pool nach Sueden, 45 Grad, Steigrohr auf der Saugachse von Pumpe_klein:1 -> Reduziermuffe d50/d40 -> Saugstutzen;
+    K20 Druckstutzen d32 -> Absetzer-Zulauf (Tank_klein:1, wie K04); K21 Absetzer-Auslass d50 mit Gefaelle -> Fallrohr -> unterflur nach Norden und Westen -> T d63 auf K17."""
+    ab = L["absetzer"]; pk = L["pumpe_klein"][0]
+    st = [t for t in alt.get("trassen", []) if t["id"] == "K03-K19-Stumpf"]
+    if not st: raise SystemExit("Linie 1 fehlt: erst trassen_linie.py 1 laufen lassen (Stumpf K03-K19-Stumpf)")
+    stumpf = tuple(st[0]["pfad"][-1])
+    saug, so, _ = port(pk, "pumpe_klein", "saug"); druck, _, _ = port(pk, "pumpe_klein", "druck")
+    R50, R32 = r90(50), r90(32)
+    # ---- K19: Stumpf (Z -1635, Richtung Sued) -> Ecke 45 Grad -> Fusspunkt unter der Saugachse -> Steigrohr -> Saugachse -> Reduziermuffe d50/d40
+    zt = stumpf[2]; c4 = add(saug, so, P["lt_k19_foot"]); c3 = (c4[0], c4[1], zt)
+    pa_ = (stumpf[0], c3[1] + abs(c3[0] - stumpf[0]), zt)
+    lr = lred(50, 40); pos_a = add(saug, so, lr + 120.0); pos_b = add(saug, so, 120.0)
+    din = tuple(-v for v in so)
+    neu["r_stuecke"].append({"id": "R_K19", "pos_a": rd(pos_a), "dir": [round(v, 6) for v in din], "d_gross": 50, "d_klein": 40})
+    neu["trassen"] += [
+        {"id": "K19-Tief", "kante": None, "dn": 50, "farbe": "dunkelblau", "start": "stutzen", "ende": "r:R_K19", "baender": ["UT", "UT", "UT", "W"], "anschluss": [pk, ab], "pfad": [rd(p) for p in (stumpf, pa_, c3, c4, pos_a)],
+         "notiz": "ab dem Linie-2-Stumpf (Kupplung auf dem offenen Ende, Z %.0f): %.0f mm nach Sueden unter dem Pool -> 45 Grad -> %.0f mm -> Steigrohr bei %g mm vor dem Saugstutzen auf Saughoehe Z %.0f -> zur Reduziermuffe d50/d40" % (zt, math.dist(stumpf, pa_), math.dist(pa_, c3), P["lt_k19_foot"], c4[2])},
+        {"id": "K19", "kante": "K19", "dn": 40, "farbe": "dunkelblau", "start": "r:R_K19", "ende": "stutzen", "band": "W", "anschluss": [pk, ab], "pfad": [rd(pos_b), rd(saug)],
+         "notiz": "Reduziermuffe d50/d40 -> Saugstutzen %s (d40, Z %.0f)" % (pk, saug[2])}]
+    # ---- K20: wie K04 (lt_k04_y)
+    m = MV[ab]; zul, zo, _ = port(ab, "tank_klein", "zulauf")
+    loc = lambda p: (m[0] * (p[0] - m[3]) + m[4] * (p[1] - m[7]), m[1] * (p[0] - m[3]) + m[5] * (p[1] - m[7]))
+    wl = lambda x, y, z: (m[0] * x + m[1] * y + m[3], m[4] * x + m[5] * y + m[7], z)
+    rk, pb = stutzen_red(zul, zo, 50, 32); neu["r_stuecke"].append(dict(id="R_K20", **rk))
+    xd = loc(druck)[0]; xz = loc(zul)[0]; ky = -P["lt_k04_y"]; z1 = druck[2] + R32
+    k20 = [druck, (druck[0], druck[1], z1), wl(xd, ky, z1), wl(xd, ky, zul[2]), wl(xz, ky, zul[2]), pb]
+    neu["trassen"].append({"id": "K20", "kante": "K20", "dn": 32, "farbe": "dunkelblau", "start": "stutzen", "ende": "r:R_K20", "baender": ["W", "W", "WH", "WH", "WH"], "anschluss": [pk, ab], "pfad": [rd(p) for p in k20],
+        "notiz": "Druckstutzen %s (d32, Z %.0f) -> hoch auf Z %.0f -> %.0f mm zur Plattform hinaus -> Steigrohr auf Zulaufhoehe Z %.0f -> %.0f mm an der Tankwand entlang -> Reduziermuffe d50/d32 auf dem Zulauf-Stutzen" % (pk, druck[2], z1, math.dist(k20[1], k20[2]), zul[2], math.dist(k20[3], k20[4]))})
+    # ---- K21: Auslauf-Stutzen d50 -> Bogen -> Fallrohr -> Norden -> Westen -> 45 Grad senkrecht auf die K17-Grabenstrecke, T d63 (Zweig d50); Gefaelle nach hinten gerechnet
+    k17 = [t for t in neu["trassen"] if t["id"] == "K17"][0]; neu["trassen"].remove(k17)
+    f = [tuple(p) for p in k17["pfad"]]; g0, g1 = f[2], f[3]; zu = g0[2]
+    gh = unit((g1[0] - g0[0], g1[1] - g0[1], 0.0)); ph = (-gh[1], gh[0], 0.0)
+    t4 = add(g0, gh, P["lt_k21_s"])
+    aus, ao, _ = port(ab, "tank_klein", "auslauf"); pct = P["lt_k05_pct"] / 100.0; l1 = R50 + P["lt_k05_vor"]; lb = P["lt_k21_lb"]
+    a1 = add(aus, ao, l1); a1 = (a1[0], a1[1], a1[2] - pct * l1)
+    side = 1.0 if dot(sub(a1, t4), ph) > 0 else -1.0
+    cw = add(t4, ph, side * lb); yw = cw[1]
+    ln, lw = yw - a1[1], a1[0] - cw[0]
+    if ln <= 0 or lw <= 0: raise SystemExit("K21: Nord-/Westschenkel haben keine Laenge (%.0f / %.0f)" % (ln, lw))
+    z4 = zu + pct * lb; z3 = z4 + pct * lw; z2 = z3 + pct * ln
+    k21 = [aus, a1, (a1[0], a1[1], z2), (a1[0], yw, z3), (cw[0], yw, z4), t4]
+    neu["trassen"].append({"id": "K21", "kante": "K21", "dn": 50, "farbe": "dunkelblau", "start": "stutzen", "ende": "t:T12", "baender": ["WH", "U", "U", "U", "U"], "gefaelle_pct": 1.0, "anschluss": [ab], "pfad": [rd(p) for p in k21],
+        "notiz": "Auslauf-Stutzen %s (d50, Z %.0f) -> Bogen -> Fallrohr auf Z %.0f -> %.0f mm nach Norden (Gefaelle %.1f %%) -> %.0f mm nach Westen -> %.0f mm unter 45 Grad senkrecht auf die K17-Grabenstrecke zum T d63 (Zweig d50, Z %.0f)" % (ab, aus[2], z2, ln, P["lt_k05_pct"], lw, lb, zu)})
+    kc = dict(k17); kc["id"] = "K17"; kc["pfad"] = [rd(p) for p in f[:3]] + [rd(t4)]; kc["baender"] = ["W", "W", "U"]; kc["ende"] = "t:T12"
+    kc["notiz"] = k17["notiz"] + " Hier bis zum T d63 des Absetzer-Zulaufs K21 (Teil 1)."
+    kd = dict(k17); kd["id"] = "K17-b"; kd["pfad"] = [rd(t4)] + [rd(p) for p in f[3:]]; kd["baender"] = ["U", "W", "W"]; kd["start"] = "t:T12"
+    kd["notiz"] = "K17 (Teil 2): vom T d63 des Absetzer-Zulaufs K21 bis zum Feinfilter-Einlauf (Heber, Graben Z %g)." % zu
+    neu["trassen"] += [kc, kd]
+    neu["t_stuecke"].append({"id": "T12", "pos": rd(t4), "d": 63, "ports": [{"trasse": "K17", "ende": "ende", "d": 63}, {"trasse": "K17-b", "ende": "start", "d": 63}, {"trasse": "K21", "ende": "ende", "d": 50}],
+                             "notiz": "T d63 im Einlauf der K17 (Netz K21: T-Stueck mit Seitenablauf); Zweig d50 mit Rohrstueck d63 + Reduziermuffe d63/d50"})
+
+def linie2_bypass(L, neu):
+    bypass(L, neu, IDS2, "lt_k57_s", 2)
 
 def main(linie):
     if linie not in LINIEN: raise SystemExit("Linie 1 oder 2")
-    if linie == 2: raise SystemExit("Linie 2: Trassen folgen in M10-S2c")
     import gen_dome as G
     L = dict(LINIEN[linie]); L["G"] = G
     neu = {"trassen": [], "t_stuecke": [], "r_stuecke": []}
-    linie1_s2a(L, neu)
-    linie1_biofilter(L, neu)
-    linie1_absetzer(L, neu)
-    linie1_bypass(L, neu)
-    doc = {"z_bezug": "absolut", "regeln": {}, "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost"}
+    if linie == 1:
+        linie1_s2a(L, neu)
+        linie1_biofilter(L, neu)
+        linie1_absetzer(L, neu)
+        linie1_bypass(L, neu)
+    else:
+        alt = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {}
+        linie2_s2a(L, neu)
+        linie2_biofilter(L, neu)
+        linie2_absetzer(L, neu, alt)
+        linie2_bypass(L, neu)
+    doc = {"z_bezug": "absolut", "regeln": {}, "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost, Linie 2 West (je Linie ein Lauf)"}
     doc = schreiben(doc, linie, neu)
     json.dump(doc, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False); open(OUT, "a").write("\n")
     for t in neu["trassen"]:

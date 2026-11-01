@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026 abends: Welle 1 laeuft (R45 Hydraulik mit Schlammkonzept zuerst, W36 Werkstatt A). Weitere Sitzungen nacheinander wegen des Limits. Fragen an dich stehen oben. Neu: Wunsch W46 Dunstwasser (R46, E17, L20).",
+ "stand": "Stand 01.11.2026 abends: R45 fertig (Schlammfass, Heber d75, Beet-Sumpf 500 l u. a.), Werkstatt A laeuft; E14 Heber ist jetzt faellig. Spaeter: sauberer Beschaffbarkeits-Nachweis (N-BESCHAFFUNG). Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -276,7 +276,7 @@
    "titel": "B2/B3 Detailansicht",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 6,
+   "reihenfolge": 7,
    "wer": "Viewer",
    "notiz": "Einzelteile im Viewer ansehen."
   },
@@ -285,7 +285,7 @@
    "titel": "B5 Stueckliste und Meterware per Skript aus dem Modell (kein KI-Lauf je Aenderung)",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 7,
+   "reihenfolge": 8,
    "wer": "Werkstatt",
    "notiz": "Ben 01.11. (W45): deterministisches Skript scripts/bom.py liest Modellstand (Instanzliste) + Teile-Datenmodell B1 + Katalog B4; Zuschnitt/Meterware per festem Algorithmus (Ausgangspunkt strut_cutting.py); Aenderungen am Modell sieht man direkt in der Teileliste; Test: Summen gleich Modellzaehlung. Reale Standardteile mit Mengen."
   },
@@ -294,7 +294,7 @@
    "titel": "R31 Materialien, R32 Becken, R33 Beete",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 9,
+   "reihenfolge": 10,
    "wer": "Fachrecherche",
    "notiz": "Recherchen zum Abschluss des Teilekatalogs."
   },
@@ -303,7 +303,7 @@
    "titel": "B10 Bauanleitung",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 10,
+   "reihenfolge": 11,
    "wer": "Orchestrator",
    "notiz": "Baut auf Katalog, Detailansicht und Stückliste auf."
   },
@@ -312,7 +312,7 @@
    "titel": "Farben, Material, Renders und Pflanzenmodelle",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 11,
+   "reihenfolge": 12,
    "wer": "Werkstatt",
    "notiz": "Optische Feinarbeit nach der Technik. ComfyUI-Weg laut R43 (docs/research/R43-comfyui-nutzung.md): V1 Skript photoreal.py + Kamera-Tabelle + Protokoll, V2 Tiefe/saubere Kanten (Download nach Bens Freigabe), V3 Farb-ID, V4 Foto-Latte."
   },
@@ -321,7 +321,7 @@
    "titel": "Notstrom und Alarm konkretisieren",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 12,
+   "reihenfolge": 13,
    "wer": "Fachrecherche + Werkstatt",
    "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39."
   },
@@ -330,7 +330,7 @@
    "titel": "Süßkartoffel-Licht belegen, NFT-Wuchsfläche messen",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 13,
+   "reihenfolge": 14,
    "wer": "Fachrecherche",
    "notiz": "Entscheidet 49,6 gegen 35,1 m² und damit etwa ±80 kg Fisch."
   },
@@ -339,7 +339,7 @@
    "titel": "Fischmenge: 346 kg akzeptieren oder 450-500 kg verlangen?",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 6,
+   "reihenfolge": 7,
    "wer": "Ben",
    "notiz": "Dein Wunsch war 450-500 kg; R36 ergibt bei Weg 1 nur 346 kg (308-385). Mehr Fisch braucht mehr Pflanzflaeche (mehr Rinnen/Weg 2b). Blockiert nichts im Bau, aber Docs und Auslegung rechnen mit 346 kg; spaetestens zum Zwischencheck klaeren."
   },
@@ -348,7 +348,7 @@
    "titel": "Puffer klein im Dom (0,16 m³) bestätigen",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 4,
+   "reihenfolge": 5,
    "wer": "Ben",
    "notiz": "Technikvorbau entfällt (D66); Frischwasser: Aktivkohle oder Zisterne bleibt offen. Kurz bestaetigen; nichts blockiert, das Modell steht schon so."
   },
@@ -357,7 +357,7 @@
    "titel": "Drittbecken 0,4 m³ (Ø 0,8 m) bestätigen",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 5,
+   "reihenfolge": 6,
    "wer": "Ben",
    "notiz": "Als Quarantäne gedacht; ist in W34 schon gebaut. Kurz bestaetigen; nichts blockiert."
   },
@@ -475,7 +475,7 @@
    "titel": "B16 Parametrische Teileliste: Parameter einstellen, Teile/Mengen/Schnittmuster rechnen sofort neu",
    "status": "geplant",
    "phase": "nach_zwischencheck",
-   "reihenfolge": 8,
+   "reihenfolge": 9,
    "wer": "Montage + Viewer-Sitzung",
    "notiz": "Ben 01.11. (W45, Stufe 2, nach der Skript-Stueckliste): Rechenkern mit Formeln je Bauteil (sofort, ohne CAD), getestet gegen die Modellzaehlung; CAD-Modell nur auf Knopfdruck neu bauen (Build mehrere Minuten); Seite wie Viewer/Roadmap."
   },
@@ -504,7 +504,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 1,
    "wer": "Werkstatt + Orchestrator",
-   "notiz": "Zugeordnet: E12, dann W37, dann M10 S5. Die Absetzer haben Schlammablass (d40, Kugelhahn), aber nichts nimmt den Schlamm auf: K07 und K23 enden im Nichts. Teil und Standort entscheiden (Behaelter/Kompost, R30 Art 6). Betrifft S5 oder S4."
+   "notiz": "Zugeordnet: E12, dann W37, dann M10 S5. Die Absetzer haben Schlammablass (d40, Kugelhahn), aber nichts nimmt den Schlamm auf: K07 und K23 enden im Nichts. Teil und Standort entscheiden (Behaelter/Kompost, R30 Art 6). Betrifft S5 oder S4. R45 Teil 0: Schlammfass 200 bis 220 l je Linie in Grube neben dem Absetzer, Bauteil-Skizze im R45-Abschnitt 0; Netz K07/K23 anpassen (NETZ-R45)."
   },
   {
    "id": "L02",
@@ -522,7 +522,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3,
    "wer": "Werkstatt + Orchestrator",
-   "notiz": "Zugeordnet: R45 (Empfehlung), dann M10 S3. docs/parts/ibc_beet.md hat Port d25, Netzkanten K14/K30 rechnen d40; bei d25 sind 36 l/min Spitze 1,6 m/s (ueber Grenze 1,5). Klaeren vor S3/S4 (Bauteil aendern oder Netz auf d25/Mehrfachabgang)."
+   "notiz": "Zugeordnet: R45 (Empfehlung), dann M10 S3. docs/parts/ibc_beet.md hat Port d25, Netzkanten K14/K30 rechnen d40; bei d25 sind 36 l/min Spitze 1,6 m/s (ueber Grenze 1,5). Klaeren vor S3/S4 (Bauteil aendern oder Netz auf d25/Mehrfachabgang). R45 Teil 1: Beet-Bauteil bleibt d25, Einzelabgang d40, Sammelleitung K14/K30 auf d50, Spitze 47 bis 54 l/min je Beet; Netz anpassen (NETZ-R45)."
   },
   {
    "id": "L04",
@@ -531,7 +531,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Werkstatt",
-   "notiz": "Zugeordnet: R45, dann W37, dann M10 S4. Beetablauf liegt 600 mm unter Pool-Spiegel (F3): eingegrabener Sumpf, Schwimmerschalter, begehbarer Deckel, Pumpe ca. 36 W. Neue Verbraucher (2 x 36 W) sind in system_specs.py nicht eingerechnet. Blockiert S4."
+   "notiz": "Zugeordnet: R45, dann W37, dann M10 S4. Beetablauf liegt 600 mm unter Pool-Spiegel (F3): eingegrabener Sumpf, Schwimmerschalter, begehbarer Deckel, Pumpe ca. 36 W. Neue Verbraucher (2 x 36 W) sind in system_specs.py nicht eingerechnet. Blockiert S4. R45 Teil 3: 500 l je Linie statt 300 l, Pumpe 5300 l/h und 60 W, drei Schwimmer, Flutsperre; Leistung 108 bis 120 W statt 72 W, system_specs nachtragen."
   },
   {
    "id": "L05",
@@ -540,7 +540,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Werkstatt",
-   "notiz": "Zugeordnet: R45 (E15 nur wenn Standort feststeht), dann W37, dann M10 S5. Frischwasser (K39 bis K43, K52): Handelsteil-Platzhalter, Fabrikat offen; Wasserversorger-Frage (Chlor/Chloramin, DEINE HANDLUNG) entscheidet die Auslegung. Blockiert S5."
+   "notiz": "Zugeordnet: R45 (E15 nur wenn Standort feststeht), dann W37, dann M10 S5. Frischwasser (K39 bis K43, K52): Handelsteil-Platzhalter, Fabrikat offen; Wasserversorger-Frage (Chlor/Chloramin, DEINE HANDLUNG) entscheidet die Auslegung. Blockiert S5. R45 Teil 5: katalytische Kohle, 2 x 21 l in Reihe (10 x 35 Zoll), 4 l/min begrenzt, Zisterne als Alternative; Chlor-/Chloramin-Frage bleibt bei dir (E15)."
   },
   {
    "id": "L06",
@@ -549,7 +549,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 6,
    "wer": "Werkstatt",
-   "notiz": "Zugeordnet: R45, dann W37, dann M10 S5. Luftkanten K44 bis K51 (7 Kanten, d40/d25/d20) haben keine Quelle und keine Enden. Luftbedarf Pool 130 l/min (F4) ist Annahme. Blockiert S5."
+   "notiz": "Zugeordnet: R45, dann W37, dann M10 S5. Luftkanten K44 bis K51 (7 Kanten, d40/d25/d20) haben keine Quelle und keine Enden. Luftbedarf Pool 130 l/min (F4) ist Annahme. Blockiert S5. R45 Teil 4: 130 l/min am Pool plausibel (Spitze 205), zwei Membranpumpen N+1 fuer mindestens 26 kPa, Ausfall = 0,8 bis 1,2 h bis Sauerstoffmangel."
   },
   {
    "id": "L07",
@@ -585,7 +585,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 10,
    "wer": "Orchestrator + Ben (Zwischencheck)",
-   "notiz": "Zugeordnet: R45, E14, Nachrechnung in M10 S7 und CHECK. Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen."
+   "notiz": "Zugeordnet: R45, E14, Nachrechnung in M10 S7 und CHECK. Ueberschlag (scripts/heber_rechnung.py): K01 27 bis 78 mm, K17 34 bis 81 mm Reserve gegen 195 mm Druckhoehe, an der 30-mm-Grenze. Entlastung: groesseres Rohr, kuerzere Wege, weniger Boegen. Kein Nachweis; nach Fertigstellung nachrechnen. R45 Teil 2: ohne Aenderung keine gedeckte Reserve; Empfehlung d75 durchgehend; Entscheidung E14 jetzt faellig."
   },
   {
    "id": "L11",
@@ -684,34 +684,34 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Werkstatt (eine Sitzung, zwei bei vollem Fenster)",
-   "notiz": "VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung)."
+   "notiz": "VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
   },
   {
    "id": "E12",
-   "titel": "Schlammkonzept festlegen: wohin mit dem Schlamm der zwei Absetzer?",
+   "titel": "Schlammkonzept: Standardannahme (Schlammfass je Linie, Wurmkompost aussen) bestaetigen oder aendern",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 2,
+   "reihenfolge": 3,
    "wer": "Ben",
-   "notiz": "R45 Teil 0 liefert jetzt eine konkrete Empfehlung (Konzept, Standort, Volumen, Anschluss). Ich setze sie als STANDARDANNAHME, damit die Verrohrung weitergeht; du kannst sie hier ueberstimmen. Kann ich nicht entscheiden, es ist dein Betriebskonzept. Optionen: (a) abgedeckter, beluefteter Kompostbehaelter oder Wurmkompost AUSSERHALB des Kreislaufs [Empfehlung der Recherche R30], (b) Schlamm in ein Beet oder Kompost leiten (so steht es in der Netzliste), (c) Reaktor (R30 raet ab). Dazu der Standort: im Dom (Platz knapp) oder aussen mit Leitung durch Fundamentring und Plane (Frost). Menge etwa 22 bis 28 l je Tag bei 346 kg [E, nicht nachgemessen]. Blockiert: Schlammsammler in W37 und M10 S5 (Luecke L01)."
+   "notiz": "R45 Teil 0 ist da, ich setze es als STANDARDANNAHME, damit die Verrohrung weitergeht: je Linie ein Schlammfass 200 bis 220 l in einer Grube 0,7 bis 0,8 m neben dem Absetzer, woechentlich von Hand geleert, Klarwasser zurueck in den Pool, Dickschlamm in Wurmkompost AUSSERHALB des Kreislaufs, kein Reaktor, Kugelhahn mit Federrueckzug gegen einen leeren Pool. Fuer dich offen: Wo steht die Wurmkiste (Flaechenbedarf 2,5 m2)? Die Netzliste hatte 0,5 l/min fuer K07/K23, das war falsch gegen 11 bis 14 l/Tag je Linie. Blockiert nichts mehr; eine spaetere Aenderung kostet Umbau von Grube und Fass."
   },
   {
    "id": "E13",
    "titel": "Schaltschrank-Standort bestaetigen oder nennen",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 3,
+   "reihenfolge": 4,
    "wer": "Ben",
    "notiz": "Meine Annahme: aussen am Fundamentring neben der Tuer (Az -85, r 5750 mm). Haengt dran: Kabelwege, Leerrohre, Alarm-Zentrale. Empfehlung: bestaetigen, wenn aussen fuer dich passt; sonst einen Ort nennen. Blockiert: Schaltschrank in W37 und Kabel in M10 S6 (Luecke L08)."
   },
   {
    "id": "E14",
-   "titel": "Heber-Reserve an den Seitenablaeufen: erst meine Zahlen abwarten, dann Weg waehlen",
+   "titel": "Heber-Reserve: Rohre K01/K17 auf d75 umbauen (Empfehlung) oder Filtergrube 100 mm tiefer?",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 7,
-   "wer": "Ben (nach R45)",
-   "notiz": "Noch nicht faellig: zuerst liefert R45 die Nachrechnung. Heute nur ein Ueberschlag: Reserve 27 bis 81 mm gegen 195 mm Druckhoehe, Grenze 30 mm. Danach waehlst du: groesseres Rohr, kuerzere Wege, weniger Boegen oder Pumpe statt Heber. Blockiert jetzt nichts; ungeklaert bleibt es ein Risiko bis CHECK (Luecke L10)."
+   "reihenfolge": 2,
+   "wer": "Ben",
+   "notiz": "JETZT FAELLIG (R45 Abschnitt 2). Mit dem verlegten Stand (d63, 4 Boegen, 2 T je Linie) haengt die Reserve fast nur am Bogen-Verlustbeiwert, und der ist fuer verklebte PVC-Boegen nicht belegt: je nach Annahme 56 bis 66 mm, im ungünstigen Fall minus 22 bis minus 11 mm (Grenze 30 mm). Empfehlung: durchgehend d75 (Standardmass), Reserve dann 85 bis 127 mm, keine Hoehenaenderung. Folge: K01 und K17 muessen umgebaut werden, und die Bibliothek hat d75 noch nicht (Groessen d20 bis d110 ohne d75): erst Werkstatt (W38-D75), dann Montage (M10-S2R). Alternative: Filtergrube 100 mm tiefer (78 bis 164 mm), Eingriff in Filter-Stamm und Pumpen-Saugseite. Nicht empfohlen: Pumpe statt Heber oder unveraendert lassen. Blockiert: Umbau K01/K17 und alles, was darauf aufbaut (Luecke L10)."
   },
   {
    "id": "E15",
@@ -754,11 +754,11 @@
   {
    "id": "R45",
    "titel": "Hydraulik und Auslegung fuer die Luecken: Heber-Reserve, Beet-Ablauf, Beet-Sumpf, Aktivkohle, Luftbedarf",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Fachrecherche (frische Sitzung)",
-   "notiz": "GESTARTET 01.11. abends (Ben: Luecken direkt an Sitzungen geben). Blatt docs/jobs/R45-hydraulik-auslegung.md. Reihenfolge: 0 Schlammkonzept zuerst (damit die Verrohrung weitergehen kann), 1 Beet-Ablauf, 2 Heber, 3 Beet-Sumpf, 4 Luft, 5 Aktivkohle. Nur lesen und rechnen. "
+   "notiz": "Erledigt 01.11. abends, sechs Fragen einzeln gesichert (letzter Commit 1f31444): docs/research/R45-hydraulik-auslegung.md. Kurzfassung: (1) Schlamm: Schlammfass 200 bis 220 l je Linie in Grube neben dem Absetzer, woechentlich von Hand, Dickschlamm in Wurmkompost ausserhalb, Federrueckzug-Hahn gegen leeren Pool; (2) Beet-Ablauf: Bauteil bleibt d25, Einzelabgang d40, Sammelleitung K14/K30 auf d50; (3) Heber: d63 hat im ungünstigen Fall keine Reserve, Empfehlung d75 durchgehend; (4) Beet-Sumpf 500 l je Linie, Pumpe 5300 l/h / 60 W; (5) Luft: 130 l/min plausibel, zwei Membranpumpen N+1; (6) Aktivkohle: katalytisch, 2 x 21 l in Reihe, Zisterne als Alternative. Mehrere Zahlen haben nur eine Quelle oder nur Suchzusammenfassungen; das steht im Dokument."
   },
   {
    "id": "M10-S3",
@@ -838,8 +838,44 @@
    "status": "luecke",
    "phase": "vor_zwischencheck",
    "reihenfolge": 21,
-   "wer": "Werkstatt A (Schelle jetzt) + N-KATALOG (Rest)",
-   "notiz": "Stichprobe 01.11. abends (Ben fragt): (1) Rohr, Bogen, T, Kupplung, Reduziermuffe, Kugelhahn sind Handelsteile (PVC-U Klebefittings; Kugelhahn d50 in mehreren Shops gefunden), aber Wandstaerke, Muffentiefe, Bogenradius und Hahnlaenge stehen in docs/parts/leitungsteile.md als [A] \"keine Quelle abgerufen\". Fuer die Mengenliste reicht das, fuer Passmasse noch nicht. (2) Verteiler d50 mit vier Abgaengen verschiedener Groesse: im Handel nicht gefunden; Bauteilblatt nennt selbst die Alternative aus T-Stuecken, Reduzierungen und Kugelhaehnen; Stueckliste \"aus Handelsteilen\" fehlt noch. (3) Rohrschelle fuer Vierkantbein (2 Halbschalen, Rueckenplatte, Spannband, M6-Schrauben) ist eine Eigenkonstruktion; Handelsschellen mit Gummieinlage fuer Rohr 32 bis 63 gibt es, eine Schelle direkt fuer Vierkant nicht. Empfehlung: Handelsschelle plus Standard-Befestigung am Bein (Spannband oder Montageplatte). Zugeordnet: Schelle in W36 (noch nicht gesichert), Masspruefung gegen Katalog in N-KATALOG (B4)."
+   "wer": "N-BESCHAFFUNG (Fachrecherche + Werkstatt)",
+   "notiz": "Stichprobe 01.11. abends (Ben fragt): (1) Rohr, Bogen, T, Kupplung, Reduziermuffe, Kugelhahn sind Handelsteile (PVC-U Klebefittings; Kugelhahn d50 in mehreren Shops gefunden), aber Wandstaerke, Muffentiefe, Bogenradius und Hahnlaenge stehen in docs/parts/leitungsteile.md als [A] \"keine Quelle abgerufen\". Fuer die Mengenliste reicht das, fuer Passmasse noch nicht. (2) Verteiler d50 mit vier Abgaengen verschiedener Groesse: im Handel nicht gefunden; Bauteilblatt nennt selbst die Alternative aus T-Stuecken, Reduzierungen und Kugelhaehnen; Stueckliste \"aus Handelsteilen\" fehlt noch. (3) Rohrschelle fuer Vierkantbein (2 Halbschalen, Rueckenplatte, Spannband, M6-Schrauben) ist eine Eigenkonstruktion; Handelsschellen mit Gummieinlage fuer Rohr 32 bis 63 gibt es, eine Schelle direkt fuer Vierkant nicht. Empfehlung: Handelsschelle plus Standard-Befestigung am Bein (Spannband oder Montageplatte). Zugeordnet: Schelle in W36 (noch nicht gesichert), Masspruefung gegen Katalog in N-KATALOG (B4). Ben 01.11.: erstmal so weiterbauen (Schelle bleibt); der saubere Nachweis kommt als N-BESCHAFFUNG (Wunsch W47)."
+  },
+  {
+   "id": "W38-D75",
+   "titel": "Werkstatt: Rohrbibliothek um d75 erweitern (Rohr, Bogen 90/45, T, Kupplung, Reduziermuffen d75/d63 und d75/d50) (nur wenn E14 = d75)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.2,
+   "wer": "Werkstatt A (Sitzung nach W36)",
+   "notiz": "Voraussetzung E14. Standardmass d75 x 3,6 (R45 Abschnitt 2). Gleiche Bibliotheksdateien wie W36, deshalb nach W36 und in derselben Sitzungsart. Je Teil Mini-Plan, Check, Blatt, Bild; Masse als [A] mit Katalogvermerk, Nachweis spaeter in N-BESCHAFFUNG."
+  },
+  {
+   "id": "NETZ-R45",
+   "titel": "Netzliste nach den R45-Ergebnissen anpassen (Schlammfass, K07/K23, K14/K30, Beet-Sumpf, Luft, Aktivkohle) und system_specs nachtragen",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.5,
+   "wer": "Orchestrator",
+   "notiz": "Klein, vor W37, damit die Werkstatt die Masse aus dem Netz liest: schlammfass_1/_2 statt schlammsammler, K07/K23 d40, 0,7 m, Gefaelle 5 %, 30 l je Spuelung; K14/K30 d50; Beet-Sumpf 500 l mit Pumpe 5300 l/h; Belueftung K44 bis K51 nach Vorschlag; Aktivkohle 2 x 21 l; Leistung 108 bis 120 W. Vorher Aktualitaetspruefung. Der Heber (K01/K17) haengt an E14."
+  },
+  {
+   "id": "M10-S2R",
+   "titel": "M10 S2R: Heber-Umbau K01/K17 auf d75 (nur wenn E14 = d75)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.8,
+   "wer": "Montage",
+   "notiz": "Braucht E14 und W38-D75. Rohre, Boegen, T und zwei Reduzierungen je Linie von d63 auf d75, Hoehenlage unveraendert. Danach check_leitungen, check_walkways und heber_rechnung gegen die echten Laengen (schliesst L10)."
+  },
+  {
+   "id": "N-BESCHAFFUNG",
+   "titel": "Beschaffbarkeits-Nachweis fuer ALLE Bauteile: kaufen oder realistisch selbst bauen (Schrauben und Muttern bis Wassertank, Filter, Plane)",
+   "status": "geplant",
+   "phase": "nach_zwischencheck",
+   "reihenfolge": 6,
+   "wer": "Fachrecherche + Werkstatt (mehrere Sitzungen nach Teileklassen)",
+   "notiz": "Wunsch W47 (Ben 01.11.): ein sauberer Durchgang ueber alle Bauteile und Komponenten; Ausloeser war die Stichprobe L21. Je Teil ein Nachweis: (a) Kaufteil: Hersteller, Typ oder Artikel, Datenblatt/Katalogseite, echte Masse; (b) Kombination aus Kaufteilen: Stueckliste und Verbindungsart; (c) Eigenbau: Rohmaterial als Kaufteil, Werkzeug, Arbeitsschritte, warum realistisch. Nicht belegbar = Designaenderung. Umfang: Schrauben, Muttern, Scheiben, Klemmen, Schellen, Verteiler, Fittings, Rohre, Armaturen, Pumpen, Geblaese, Messtechnik, Elektrik, Tische, Rinnen, Netztoepfe, Beetbehaelter, Tanks, Becken, Filter, Profile, Streben, Knoten, Haut, Tuer, Plane und Folie, Schaltschrank. Zuschnitt nach Teileklassen, etwa sechs Pakete: Normteile; Rohrbibliothek mit Verteilern und Armaturen; Pumpen, Geblaese, Messtechnik, Elektrik; grosse Teile (Tanks, Becken, Filter, Beete); Struktur (Profile, Knoten, Haut, Tuer); Plane. Ergebnis ins Teile-Datenmodell (N-KATALOG), Feld \"bezug\" je Teil, Auswertung per Skript (W45), Liste \"nicht beschaffbar\". Nach N-KATALOG, vor Stueckliste und Bauanleitung, weil der Nachweis Design aendern kann. D69: Beschaffbarkeit ja, Preise und Standort nein. Zwei Quellen je Eintrag: Katalog und Datenblatt, wo es sie gibt."
   }
  ]
 }

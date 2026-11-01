@@ -12,3 +12,12 @@ Zweck: Schwellen der Kontextregeln aus Daten statt aus Schaetzung nachschaerfen 
 | 01.11. | Werkstatt A2 (W39) | Werkstatt | 328 (laufend) | 21 % (214.584 Tokens) | gemessen | 77 -> 79 (mit Orchestrator) | laeuft noch |
 
 Konto am 01.11. spaet: 5-Stunden-Fenster von 4 % auf 75 %, Woche von 71 % auf 79 % in etwa fuenf Stunden mit sieben Sub-Sitzungen und dem Orchestrator.
+
+## Zwischenspeicher-Messung (01.11.2026, `scripts/messung_sitzungs_cache.py`)
+| Abstand zum vorigen Aufruf | Aufrufe | gelesen aus dem Zwischenspeicher | neu geschrieben je Aufruf |
+|---|---|---|---|
+| unter 5 min | 6.370 | 99,2 % | 2.648 |
+| 5 bis 30 min | 373 | 98,1 % | 6.459 |
+| 30 bis 60 min | 45 | 79,1 % (unter 60 min warm, ab 68 min kalt) | 47.877 |
+| ueber 60 min | 81 | 8,8 % | 281.446 |
+Schluss: Der Zwischenspeicher haelt etwa eine Stunde. Wecken nach laengerer Pause (Nacht) kostet einmalig den ganzen Kontext; Regel D74 Nr. 1 (d).

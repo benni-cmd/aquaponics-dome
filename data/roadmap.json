@@ -1,5 +1,5 @@
 {
- "stand": "Stand 01.11.2026: Platz-Szenario fertig; nichts laeuft; Bens Entscheidungen offen (Filter E8 nicht zwingend, Fischmenge, Strebe/Knoten)",
+ "stand": "Stand 01.11.2026: Filter entschieden (D71, bei heute bleiben); nichts laeuft; Bens Entscheidungen offen (Fischmenge, Strebe/Knoten)",
  "schritte": [
   {
    "id": "W33",
@@ -435,12 +435,12 @@
   },
   {
    "id": "E8",
-   "titel": "Filter-Variante waehlen (R44): heute, Kandidat A oder B",
-   "status": "entscheidung",
+   "titel": "Filter-Variante gewaehlt: bei heute bleiben (D71)",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 8,
    "wer": "Ben",
-   "notiz": "Kandidat A: Absetzer entfaellt, Sieb bleibt, ein Biofilter-Tank (spart 1,77 m2). Kandidat B: Absetzer bleibt, Sieb nur am NFT-Zweig, ein Biofilter-Tank. Details docs/research/R44-filter-gegenpruefung.md. 01.11. Stand: Platz-Szenario laeuft bei der Montage (Puffer+Drittbecken ohne Absetzer, ohne einen Biofilter-Tank); Sieb T55 ist schon fuer den Hauptstrom bemessen, nur die Siebbelastung 8 m/h ist unbelegt. Ergebnis Platz-Szenario: Platz ist heute nicht zwingend; ohne Absetzer waechst die Reserve von 132 auf 450 mm. Empfehlung Orchestrator: Status quo behalten, Wiederholung N-FILTER am fertigen Modell."
+   "notiz": "Ben 01.11.: bei heute bleiben (2 Absetzer, 2 Biofilter, 2 Siebe unveraendert). Kandidaten A/B bleiben Kandidaten; Wiederholung am fertigen Modell im Schritt N-FILTER."
   },
   {
    "id": "E9",

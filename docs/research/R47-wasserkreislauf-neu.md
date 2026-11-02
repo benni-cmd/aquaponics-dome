@@ -62,4 +62,33 @@ Stützabstand: kleinerer von zwei Quellen: [Georg Fischer PVC-U Planning Fundame
 
 **Fazit Abschnitt 1:** Technisch möglich, aber der Ring zwingt entweder den Biofilter um 725 mm höher oder die Pumpen auf 2,83 m. Wenn Ring, dann zwei Halbringe, nicht ein Ring.
 
+## 2. Anordnung der Anlagenteile nah am Kreislauf
+
+**Einschätzung: machbar, aber der Spielraum ist klein; der Hauptkreislauf ist schon kompakt.**
+
+**Befund zum verlegten Stand.** Pool → Heber (K01/K17, unterflur) → Feinfilter in der Grube → Pumpen → Biofilter → Überlauf Z 1570 sind die zwei Technikgruppen je Linie bei r ≈ 3,4 m, Absetzerkreis (K03–K05) und Notbypass (K56/K57) daneben; gebaut bis zum Verteiler-Eingang (Runde 66) [Q `loop-state.md`]. Hier gibt es **keine Umleitung zu streichen**, ohne gebaute Teile abzubauen.
+
+**Wo Rohr entsteht (Konzept, Polarkoordinaten, ±25 % [E, Skript Abschnitt 4]; Technikgruppen Linie 2 bei az ≈ −100° aus `loop-state.md`, Linie 1 an der Türachse −54° gespiegelt [A]).**
+
+| Strecke | Länge beide Linien | Hinweis |
+|---|---|---|
+| K11 Verteiler → Beete d40 | 58,9 m | 7 Beete je Linie, Gangkreuzungen unterflur |
+| K12 NFT-Strang d32 | 21,4 m | am Tischbein, kein Graben |
+| K14 Beet-Abläufe → Sumpf d50 | 58,9 m | größter Rücklaufast |
+| K15 Sektorsammler d63 | 32,0 m | 5 je Linie, radial ca. 3,2 m [A] |
+| K16 Halbringe d110 | 12,6 m | Wandkrone Pool |
+| K58/K59 Sumpf → Rücklauf d40 | 8 m | ≤ 4 m je Linie [Q R45] |
+
+**Alternativkonzept (nur Konzept, nicht berechnet gegen das Modell): zwei Sümpfe oder ein Sumpf im Beet-Schwerpunkt.** Liegt der Sumpf im Schwerpunkt der 7 Beete einer Linie statt an der Technikgruppe, sinkt K14 von 58,9 auf 44,4 m (−14,5 m, −25 %) [E]. Der Schwerpunkt fällt aber in die Nähe der Pool/Tisch-Zone (Platz, Gangkarte nicht geprüft): **offen**. Gegenrechnung: die Förderleitung K58 (d40, bis 4 m) wird dort länger.
+
+**Idee „Beet-Sumpf als Saugsumpf der Hauptpumpen“: verworfen.** Sie sparte rechnerisch 2 Teichpumpen (108 W) und K58/K59. Die Hauptpumpen saugen aber auf Z 120 (geflutet vom Pool, Z 320–515), der eingegrabene Sumpf steht tiefer (Pegel unter Z 0): die Pumpen müssten ansaugen; Selbstansaugung der Pumpen ist nirgends belegt. [E/A: eine Prüfung der Pumpenkennlinie fehlt].
+
+**Idee „Absetzerkreis streichen“** ist Gegenstand von R44 (Kandidat A: Absetzer entfällt, ein Biofilter-Tank, spart 1,77 m² Fläche [Q R44 Überblick]); sie ist unabhängig vom Ring und trifft K03–K05, K07, K19–K21, K23 und 4 kleine Pumpen (je 17 W, zwei in Betrieb), die bereits verlegt sind: Rückbau, nicht Einsparung am Bau. Nicht von mir bewertet.
+
+**Schlammfass und Puffer** (W37, K07/K23) hängen an den Absetzern; fällt der Absetzer, entfällt das Fass.
+
+**Vergleich mit B/C.** Der Ring kürzt weder Hauptkreislauf noch Rücklauf. Er ersetzt nur K11/K12 (80,3 m) durch Ring + Abgänge (108,7 m bei B, 80,7 m bei C): B ist 28 m länger.
+
+**Fazit Abschnitt 2:** Verkürzung gibt es nur beim Beet-Rücklauf (Sumpf-Lage), sonst ist der Plan eng. Nächster Schritt wäre ein Platzcheck der Sumpf-Lage in M10 S4 (ICH, wenn Ben A wählt).
+
 <!-- ENDE -->

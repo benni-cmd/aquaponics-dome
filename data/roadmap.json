@@ -767,7 +767,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Montage",
-   "notiz": "A+ (R47 Abschnitt 6.3, wenn E20 = A+): Revisionsstutzen (T mit Stopfen) an vergrabenen Strecken, Schaechte mit Deckel, Absperrhaehne einplanen. GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: NETZ-ETIKETT, W36 (Verteiler d50, Tropfrohr-Pruefung L16), Beet-Ablauf-DN aus R45 (L03). Beobachtet: L12 (Grabenschnitt Linie 1 beim Neubau), L13 (Nische West B). Pruefung wie S2, Gangkreuzungen einzeln gelistet. Netz Version 3: 57 Kanten (K58/K59 neu), K14/K30 d50."
+   "notiz": "HINWEIS Mitgruender 02.11.: Beet-Zuleitung K11 als Strang (Beete in Reihe, T je Beet) statt Stern pruefen; Grobrechnung aus R47-Skript: etwa -13 m Rohr (58,9 auf 45,6 m, Routing-Faktor 1,25 [A], Nachbar-Reihenfolge). Beet-Dosierung braucht je Beet trotzdem einen Hahn. A+ (R47 Abschnitt 6.3, wenn E20 = A+): Revisionsstutzen (T mit Stopfen) an vergrabenen Strecken, Schaechte mit Deckel, Absperrhaehne einplanen. GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: NETZ-ETIKETT, W36 (Verteiler d50, Tropfrohr-Pruefung L16), Beet-Ablauf-DN aus R45 (L03). Beobachtet: L12 (Grabenschnitt Linie 1 beim Neubau), L13 (Nische West B). Pruefung wie S2, Gangkreuzungen einzeln gelistet. Netz Version 3: 57 Kanten (K58/K59 neu), K14/K30 d50."
   },
   {
    "id": "M10-S4",

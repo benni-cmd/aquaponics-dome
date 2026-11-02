@@ -403,3 +403,60 @@ Gegen den Gesamtverbrauch 430 W (R47, 10,3 kWh/Tag) sind das +28 % bzw. +39 %, b
 **Was vom Höhenargument bleibt.** (1) Nicht die Pumpenhöhe, sondern der **Ort des Biofilters**: Der Biofilter steht zwischen Pumpe und Ring. Eine Pumpe, die mit 2,83 m direkt in den Ring drückt, umgeht ihn und verletzt EINHEIT (c); läuft sie durch ihn, muss der Tank druckdicht sein (er ist ein offener PE-Tank mit Deckel und Belüftung). (2) Die Mehrleistung von etwa 120 bis 170 W ist real und bleibt, egal wie man hebt (B1 mit einer Stufe, B2 und B3 in zwei Stufen). (3) Eine **zweite Pumpstufe** ist ein Ausfallpunkt mehr (B2, B3).
 
 **Sicherung.** `scripts/r47_pumpen.py` und dieser Abschnitt, Commit „R47c: Pumpenfrage“.
+
+### 7.2 Ring-Varianten mit einheitlichem Fluss (Frage 2)
+
+**Ausgangslage heute (A+), gegen EINHEIT geprüft [Q `leitungsnetz.json` K06 bis K16, K58/K59].** Pool → Heber K01/K17 → Feinfilter → 2 Pumpen je Linie (K06, K08/K09) → ein Biofilter je Linie (Zulauf 1420, Überlauf 1570) → K10 → Verteiler → Beete (K11) und NFT (K12) und Überschuss (K13) → Rücklauf (K14 bis K16, Beet-Sumpf K58/K59) → Pool. (a) ja: Verteiler hängt nur am Biofilter-Überlauf. (b) ja: alle Rückflüsse münden in den einen Pool (K16). (c) ja: kein Pumpenweg zu Beeten/NFT außer über den Biofilter (der Notbypass K56/K57 führt Pool → Pumpe, nicht zu den Abnehmern). (d) trivial erfüllt: ein Tank je Linie. (e) ja: der Absetzerkreis ist ein Teilstrom Pool → Absetzer → Feinfilter, Beet-Sumpf und Schlammfass hängen am Rücklauf bzw. am Absetzer. **EINHEIT ist heute schon Stand.** Der Ring muss sie nur halten.
+
+**Gemeinsame Randbedingung Ring:** Unterkante Z 2100 (Gang frei, Regel 4.1), Achse 2145, Hochpunkt 2245 (Schwerkraftring mit 1 % Gefälle); Biofilter-Überlauf also **mindestens Z 2295** für Schwerkraft, oder Druckring mit Entlüfter (Hochpunkt dann ≈ 2190 + Entlüfter [A]). Ring als zwei Halbringe je Linie (R47 Abschn. 1).
+
+**B1: Biofilter angehoben (Schwerkraftring).**
+Wasserweg: Pool → Heber → Feinfilter → Pumpen (H 2,73 m) → Biofilter (Zulauf 2145, Überlauf 2295) → Halbring (Gefälle 1 %) → Abnehmer (Beete Tropfrohr 650, Tische 1090) → Rücklauf → Pool.
+EINHEIT: (a) ja. (b) ja. (c) ja. (d) wie heute. (e) wie heute.
+Pumpen: eine Stufe, H 2,73 m (R47: 2,83 m für B; hier ohne Ring-Hochpunkt-Reserve 100 mm: 1,83 m statisch plus 0,9 m Rest) [E].
+
+**B2: Booster nach dem Biofilter (Druckring).**
+Wasserweg: Pool → Heber → Feinfilter → Pumpen (H 2,0 m wie heute) → Biofilter (Überlauf 1570, gebaut) → Saugleitung K10 (heutiges Ende, Z 1970 Skript) → Booster (110 l/min je Linie, H ≈ 1,0 m) → Druck-Halbring (Hochpunkt 2190 mit Entlüfter) → Abnehmer → Rücklauf → Pool.
+EINHEIT: (a) ja, der Booster sitzt hinter dem Biofilter. (b) ja. (c) ja, **sofern der Booster den GANZEN Linienstrom fördert** (R47 Variante C lieferte nur den Beet-Anteil, das war EINHEIT-konform nur, weil der NFT-Strang ebenfalls hinter dem Biofilter hing; bei einem gemeinsamen Ring hängen alle Abnehmer am Booster). (d) wie heute. (e) ja. **Neu: Pegelführung.** Der Biofilter hat einen freien Überlauf; eine Pumpe dahinter braucht entweder einen Puffer (Sammelschacht, dann ein Tank mehr) oder Schwimmerregelung, sonst läuft der Überlauf über, wenn der Booster steht. Der Überlauf bliebe als Notweg in den Rücklauf: das Wasser hat den Biofilter durchlaufen und mündet in den Pool, EINHEIT (c) bleibt gewahrt. Ein Booster-Ausfall stoppt den Ring, nicht den Kreislauf.
+
+**B3: Hochbehälter nach dem Biofilter (Schwerkraftring).**
+Wasserweg: Pool → Heber → Feinfilter → Pumpen (2,0 m) → Biofilter (1570) → Booster (H ≈ 1,4 m) → Hochbehälter (Spiegel ≥ 2295, ≈ 300 l) → Halbring per Schwerkraft → Abnehmer → Rücklauf → Pool.
+EINHEIT: wie B2; zusätzlich ist der Hochbehälter ein Pufferglied im Wasserweg, kein Nebenstrom, solange der Überlauf des Hochbehälters in den Rücklauf geht (e) erfüllt.
+
+**B4 (ergänzend): Ring auf Tischhöhe.** Ringleitung unterhalb 1570 am bestehenden NFT-Strang (Tischbeine, kein Gang), gespeist per Schwerkraft aus dem Biofilter-Überlauf wie K12. Löst die Höhe ohne Mehrleistung. Die Beete (Z 650, Außenring r ≈ 5,2 m) bleiben aber unerreicht ohne Querung der Gänge: das Argument „kein Graben“ entfällt, B4 ist technisch A mit längerem K12 [A, nicht gerechnet, keine Quelle]. Nur zur Vollständigkeit.
+
+| | B1 | B2 | B3 | B4 |
+|---|---|---|---|---|
+| EINHEIT (a) bis (e) | ja | ja, Pegelführung nötig | ja, Hochbehälter im Weg | ja |
+| Pumpstufen für das Linienwasser | 1 | 2 | 2 | 1 |
+| Änderung am Gebauten | K08 bis K10, Plattform, Biofilter | K10-Ende wird Saugleitung | wie B2 | keine |
+| Neue Teile | Ring, Stützen | Ring, Stützen, 2 Booster, Pegel | + Hochbehälter, Konsole | Ring-Strang |
+
+### 7.3 Höhenplan und Bauteile (Frage 3)
+
+**Z-Plan relativ, mm [E aus `leitungsnetz.json`, `docs/parts/tank.md`, R47].**
+
+| Punkt | A+ / heute | B1 | B2 | B3 |
+|---|---|---|---|---|
+| Saugspiegel Feinfilter | 320 | 320 | 320 | 320 |
+| Hauptpumpe saug / druck | 120 / 255 | 120 / 255 | 120 / 255 | 120 / 255 |
+| Biofilter-Zulauf | 1420 | **2145** | 1420 | 1420 |
+| Biofilter-Überlauf | 1570 | **2295** | 1570 | 1570 |
+| Deckel / Belüftung | 1676 | **2401** | 1676 | 1676 |
+| Plattform-Oberkante / Beinlänge | 570 / 1008 | **1295 / 1733** | 570 / 1008 | 570 / 1008 |
+| Booster | – | – | auf Plattform, Saug 1570 | auf Plattform |
+| Hochbehälter-Spiegel | – | – | – | ≥ 2295 (Boden ≈ 1600) |
+| Ring Unterkante / Achse / Hochpunkt | – | 2100 / 2145 / 2245 | 2100 / 2145 / ≈ 2190 + Entlüfter | 2100 / 2145 / 2245 |
+| Abnehmer Beet / Tisch | 650 / 1090 | wie A | wie A | wie A |
+| Rücklauf Halbring | 660 bis 720 | wie A | wie A | wie A |
+
+**Folgen.**
+1. **Gebaute Leitungen K08 bis K10 (Runde 64 bis 66):** B1 verlegt sie vollständig neu (Zulauf 1820 → 2545 im Skript-Z; Überlauf 1970 → 2695), dazu beide Plattformen und Biofilter-Instanzen. B2/B3: K10 bleibt, wird Saugleitung; K08/K09 bleiben. K01 bis K06/K22 sind in allen Varianten unberührt (Heber-Reserve 85/88 mm [Q S2R] unabhängig).
+2. **Tankhöhe (Bauteilblatt `tank.md`):** Tank gross 1444 mm hoch + Randwulst; Biofilter gefüllt ≈ 857 kg [Q tank.md] auf 4 Beinen 40 × 40 × 2,5 mm. Bei B1 wachsen die Beine von 1008 auf 1733 mm (+72 %).
+3. **Statik B1 (Überschlag [E, Annahmen: Stahl E = 210 GPa, Gelenklager, Streben nicht angerechnet]):** Knicklast je Bein ≈ 61 kN (≈ 6,2 t) gegen 214 kg Last je Bein: Faktor ≈ 29, Knicken ist kein Problem. Kippen ist das Thema: Schwerpunkt ≈ 1,7 m über Boden, Standbreite ±390 mm (Fußplatten, je 2 × M8): Kippen ab ≈ 0,23 g Seitenlast [E]; Anstoßlast, Erdbeben und Befüllung bei Schwall sind **nicht bewertet** (offen). Plattform-Bodenlast bleibt gleich (857 kg je Fuß-Quartett).
+4. **Zugang zum Biofilter:** Revisionsöffnung D200 im Deckel (Z 1676 heute, A: bereits erhöht, Tritt nötig); B1: Deckel Z 2401 → Leiter oder Podest, Medienwechsel (K1-Träger) über Kopf, Belüftung Ø16 im Deckel ebenfalls hoch. B2/B3: Zugang wie heute; Booster auf der Plattform (Z 570) leicht erreichbar.
+5. **Kreuzung mit Gang / Ü-Band:** Ring in allen B-Varianten auf Z 2100 bis 2245 (Ü-Band, Stützen 12 Stück [E, R47]); Gangkarte nicht geprüft. B2 braucht zusätzlich einen Aufstieg vom Booster (Plattform Z 570) auf 2190: Steigleitung d63 (110 l/min: v 0,9 m/s [E]) in der Technikgruppe, außerhalb des Gangs [A].
+6. **Deckenhöhe des Doms:** an r = 3,4 m ist die Dom-Innenhöhe nicht in den gelesenen Eingaben; B1 Deckel 2401 und B3 Hochbehälter (oben ≈ 2400) brauchen sie: **offen**, Planer prüft aus dem Modell.
+7. **Plattform B3:** Hochbehälter 300 l + Behälter ≈ 330 kg auf Z 1600 an der Technikgruppe: eigene Konsole oder Standfüße; nicht an Tank- oder Pumpentafeln (Regel 7).
+
+**Sicherung.** Commit „R47c: Ring-Varianten und Höhenplan“.

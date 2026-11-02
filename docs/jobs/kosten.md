@@ -12,6 +12,8 @@ Zweck: Schwellen der Kontextregeln aus Daten statt aus Schaetzung nachschaerfen 
 | 01.11. | Werkstatt A2 (W39) | Werkstatt | 557 (Ende) | 21 % bei 328 Nachrichten, 31 % bei etwa 460 (gemessen), Ende etwa 33 % | gemessen und Formel | 77 -> 80 (mit Orchestrator) | 9 Teilgruppen in 15 Dateien, rund 1 Stunde 40 Minuten |
 | 01.11./02.11. | Orchestrator (diese Sitzung) | Orchestrator | etwa 1.100 | 56 % (564.031 Tokens gemessen) | gemessen | 71 -> 80 | Wechsel an eine frische Orchestrator-Sitzung empfohlen (Regel D74 Nr. 7: ab etwa 50 %) |
 
+| 02.11. | R47 Wasserkreislauf neu | Fachrecherche | 395 | etwa 25 % | Formel | 81 -> 82 (beide Sitzungen zusammen) | 5 Fragen, 39 Zuege |
+| 02.11. | Pruefer W36/W39 | Pruefer | 167 | etwa 14 % | Formel | siehe oben | 22 Zuege, check_leitungsteile lief fast 10 Minuten |
 Konto am 01.11. spaet: 5-Stunden-Fenster von 4 % auf 75 %, Woche von 71 % auf 79 % in etwa fuenf Stunden mit sieben Sub-Sitzungen und dem Orchestrator.
 
 ## Zwischenspeicher-Messung (01.11.2026, `scripts/messung_sitzungs_cache.py`)
@@ -22,3 +24,5 @@ Konto am 01.11. spaet: 5-Stunden-Fenster von 4 % auf 75 %, Woche von 71 % auf 79
 | 30 bis 60 min | 45 | 79,1 % (unter 60 min warm, ab 68 min kalt) | 47.877 |
 | ueber 60 min | 81 | 8,8 % | 281.446 |
 Schluss: Der Zwischenspeicher haelt etwa eine Stunde. Wecken nach laengerer Pause (Nacht) kostet einmalig den ganzen Kontext; Regel D74 Nr. 1 (d).
+
+Konto am 02.11. nachmittags: Zwei Sitzungen (R47 und Pruefer) kosteten das 5-Stunden-Fenster 7 -> 20 Prozent (etwa 6 Punkte je Sitzung), die Woche aber nur 81 -> 82 Prozent. Die Wochenzahl waechst also viel langsamer als das 5-Stunden-Fenster; fuer die Planung zaehlt vor allem das 5-Stunden-Fenster.

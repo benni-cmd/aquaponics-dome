@@ -1,5 +1,5 @@
 {
- "stand": "Stand 02.11.2026: Recherche R47 (Kreislauf neu denken, Flood-and-Drain) und Pruefsitzung fuer die Werkstatt-Teile laufen; Rohrbau und Werkstatt B warten auf deine Entscheidung nach R47 (E20). Woche 81 Prozent bis 06.11. Fragen an dich stehen oben.",
+ "stand": "Stand 02.11.2026 nachmittags: R47 fertig (Empfehlung: heutigen Plan behalten) und Pruefung der Werkstatt-Teile bestanden mit Auflagen. Nichts laeuft. Rohrbau und Werkstatt B warten nur auf deine Entscheidung E20. Woche 82 Prozent bis 06.11. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -839,7 +839,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 21,
    "wer": "N-BESCHAFFUNG (Fachrecherche + Werkstatt)",
-   "notiz": "Stichprobe 01.11. abends (Ben fragt): (1) Rohr, Bogen, T, Kupplung, Reduziermuffe, Kugelhahn sind Handelsteile (PVC-U Klebefittings; Kugelhahn d50 in mehreren Shops gefunden), aber Wandstaerke, Muffentiefe, Bogenradius und Hahnlaenge stehen in docs/parts/leitungsteile.md als [A] \"keine Quelle abgerufen\". Fuer die Mengenliste reicht das, fuer Passmasse noch nicht. (2) Verteiler d50 mit vier Abgaengen verschiedener Groesse: im Handel nicht gefunden; Bauteilblatt nennt selbst die Alternative aus T-Stuecken, Reduzierungen und Kugelhaehnen; Stueckliste \"aus Handelsteilen\" fehlt noch. (3) Rohrschelle fuer Vierkantbein (2 Halbschalen, Rueckenplatte, Spannband, M6-Schrauben) ist eine Eigenkonstruktion; Handelsschellen mit Gummieinlage fuer Rohr 32 bis 63 gibt es, eine Schelle direkt fuer Vierkant nicht. Empfehlung: Handelsschelle plus Standard-Befestigung am Bein (Spannband oder Montageplatte). Zugeordnet: Schelle in W36 (noch nicht gesichert), Masspruefung gegen Katalog in N-KATALOG (B4). Ben 01.11.: erstmal so weiterbauen (Schelle bleibt); der saubere Nachweis kommt als N-BESCHAFFUNG (Wunsch W47)."
+   "notiz": "Stichprobe 01.11. abends (Ben fragt): (1) Rohr, Bogen, T, Kupplung, Reduziermuffe, Kugelhahn sind Handelsteile (PVC-U Klebefittings; Kugelhahn d50 in mehreren Shops gefunden), aber Wandstaerke, Muffentiefe, Bogenradius und Hahnlaenge stehen in docs/parts/leitungsteile.md als [A] \"keine Quelle abgerufen\". Fuer die Mengenliste reicht das, fuer Passmasse noch nicht. (2) Verteiler d50 mit vier Abgaengen verschiedener Groesse: im Handel nicht gefunden; Bauteilblatt nennt selbst die Alternative aus T-Stuecken, Reduzierungen und Kugelhaehnen; Stueckliste \"aus Handelsteilen\" fehlt noch. (3) Rohrschelle fuer Vierkantbein (2 Halbschalen, Rueckenplatte, Spannband, M6-Schrauben) ist eine Eigenkonstruktion; Handelsschellen mit Gummieinlage fuer Rohr 32 bis 63 gibt es, eine Schelle direkt fuer Vierkant nicht. Empfehlung: Handelsschelle plus Standard-Befestigung am Bein (Spannband oder Montageplatte). Zugeordnet: Schelle in W36 (noch nicht gesichert), Masspruefung gegen Katalog in N-KATALOG (B4). Ben 01.11.: erstmal so weiterbauen (Schelle bleibt); der saubere Nachweis kommt als N-BESCHAFFUNG (Wunsch W47). PRUEFER 02.11.: Rohrschelle Vierkant haelt nur ueber Reibschluss (keine Befestigung im Bein, Anschlag fehlt); bei wassergefuelltem d63 (etwa 3,3 kg/m) ein Rutschrisiko, spaeter Anschlag oder Handelsloesung pruefen. Verteiler d50 und Schelle ohne Handelsersatz-Hinweis."
   },
   {
    "id": "W38-D75",
@@ -988,29 +988,38 @@
   {
    "id": "PRUEF-W36-W39",
    "titel": "Pruefsitzung (Buendel) fuer die Werkstatt-Teile W36 und W39: Verteiler, Schelle, Leerrohr, Schacht, d75, Kleinteile",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.9,
    "wer": "Pruefer (frische Sitzung)",
-   "notiz": "GESTARTET 02.11. (Sitzung pruefer-w36-w39), ohne Marke gestartet: Beleg fuer die stumme PROJEKT:-Seite des Hooks. Ein Pruefer fuer beide Werkstatt-Sitzungen (gleiche Bibliothek, gleiche Skripte): check_lt_w36.py, check_lt_w39.py, check_leitungsteile.py neu laufen lassen, Teile gegen ihre Blaetter, Stichproben der Masse und Ports, Bilder ansehen, Blatt-Pruefpunkte aus docs/jobs/W39-kleinteile.md. Befund nach docs/jobs/pruefung/W36-W39.md. Danach HEBER-SKRIPT und SPECS-R45 (ich), dann W37-1."
+   "notiz": "Erledigt 02.11.: Urteil PASS mit Auflagen (docs/jobs/pruefung/W36-W39.md, Commit 9f71615). Gemessen: check_leitungsteile 231/231, check_lt_w36 148/148, check_lt_w39 152/152, 15 Dateien gegen 15 Eintraege, Masse stimmen (d75 Innen 67,8, Reduzierung 48 mm, Verteiler gegen K10 bis K13). Auflagen: A1 Rohrschelle haelt nur durch Reibschluss des Bandes, die Schrauben fassen das Bein nicht (Anzugsmoment 8 Nm und Haltekraft sind Annahmen); A2 Verteiler und Schelle ohne Hinweis auf Handelsersatz (L21); A3 Kappe auf Zapfen nur per Massrechnung, nicht per Boolean gemessen. Alle Handelsmasse sind Annahmen ohne Katalog (N-BESCHAFFUNG). "
   },
   {
    "id": "R47",
    "titel": "Wasserkreislauf und Verteilung neu denken: Machbarkeitspruefung (Ringleitung, Anlagenteile nah am Kreislauf, Schwerkraft, Flood-and-Drain)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2.5,
    "wer": "Fachrecherche (Sitzung recherche-r47)",
-   "notiz": "GESTARTET 02.11. (Wunsch W51). Blatt docs/jobs/R47-wasserkreislauf-neu.md. Fuenf Fragen: haengender Leitungsring auf Stelzen, Anordnung nah am Kreislauf, Schwerkraft, Flood-and-Drain mit Bodenaufbau und verstopfungssicherem Siphon, Gesamturteil mit Varianten A (heutiger Plan optimiert), B (Ring), C (Hybrid). NUR Bericht und Einschaetzung, nichts wird umgesetzt, bevor Ben entschieden hat (E20)."
+   "notiz": "Erledigt 02.11. (Commit 260a017): docs/research/R47-wasserkreislauf-neu.md, Gesamturteil oben. Empfehlung: Variante A (heutiger Plan, gestrafft). Ring teilweise machbar, aber: Biofilter-Ueberlauf (Z 1570) liegt 530 mm unter der Ring-Unterkante (Z 2100), Ring braucht Biofilter 725 mm hoeher oder Pumpenhoehe 2,83 statt 2,0 m; spart keine Teile (38 Abnehmer), 28 m mehr Rohr, Pumpen 548 W gegen 430 W (A); einziger Gewinn: Beete ohne Graben. Flood-and-Drain ist im Bauteil ibc_beet schon erfuellt (Siebboden 8 mm auf 60-mm-Kloetzen, 640 l Wasserraum). Zahlen sind Konzeptrechnungen (Rohrmeter +-25 %), Staenderstatik, Gangkarte mit Staendern und Pumpenkennlinien offen."
   },
   {
    "id": "E20",
-   "titel": "Wasserkreislauf nach dem Bericht R47: Variante A, B oder C waehlen",
+   "titel": "Wasserkreislauf nach R47: Variante A (heutiger Plan, Empfehlung), B (Ring) oder C (Ring nur fuer Beete)?",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
-   "reihenfolge": 2.5,
+   "reihenfolge": 2,
    "wer": "Ben (nach R47)",
-   "notiz": "Noch nicht faellig: erst liefert R47 Einschaetzung und Empfehlung. Dann entscheidest du, ob der heutige Plan bleibt (A), eine Ringleitung kommt (B) oder beides gemischt wird (C). Blockiert: M10 S3 bis S7, W37 und alle Rohr- und Anlagenteile, die vom Kreislauf abhaengen."
+   "notiz": "JETZT FAELLIG. R47 empfiehlt A: der Ring wuerde den Biofilter um 725 mm anheben oder die Pumpen auf 2,83 m zwingen, spart keine Teile und bringt nur Beete ohne Graben (billiger auf andere Weise loesbar). Ausnahme C: nur wenn die Beet-Zuleitungen beim Bau von S3 die Gaenge verschlechtern. Bei A laufen M10 S3 bis S7 und W37 unveraendert weiter (die Teile sind gebaut, K08 bis K10 muessten bei B/C teils neu). Meine Einschaetzung: A. Blockiert: Freigabe von M10 S3 bis S7 und W37 (jetzt gestoppt)."
+  },
+  {
+   "id": "W40-BEET",
+   "titel": "Beet-Bauteil Flood-and-Drain-Feinschliff: Medienschutz-Loecher, Reinigungszugang, Koernung mindestens 12 mm (aus R47 Abschnitt 4)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.7,
+   "wer": "Werkstatt (kleine Sitzung, nach E20)",
+   "notiz": "Drei Kleinigkeiten am Bauteil ibc_beet (R47 Abschnitt 4): Medienschutz-Loecher 12 mm gegen Korn ab 8 mm pruefen und anpassen, Reinigungszugang zum Wasserraum unter dem Siebboden, Koernung des Substrats auf mindestens 12 mm festlegen. Danach muessen die 14 Beete im Modell neu gebaut werden (Montage). Eigenes Blatt vom Planer, erst nach Bens Freigabe; passt zu den Beet-Sumpf-Teilen aus W37-1."
   }
  ]
 }

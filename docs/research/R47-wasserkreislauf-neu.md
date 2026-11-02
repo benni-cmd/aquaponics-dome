@@ -345,3 +345,61 @@ A+ = A plus M1 (Revisionsstutzen), M2 (Schächte), M3 (Absperrhähne), M4 (Bypas
 
 **Geprüft gegen:** `docs/jobs/R47b-wartbarkeit.md`; `data/leitungstrassen.json`; `data/leitungsnetz.json`; `docs/packages/m10-leitungen.md` Abschn. 4; `docs/research/R45-hydraulik-auslegung.md` Abschn. 4 (Luftausfall, aus früherem Lesen); `scripts/r47_zugang.py` (Befehl `python -X utf8 scripts/r47_zugang.py`); Websuchen Iowa SUDAS, PM Engineer, Aquamaof. Nicht gelesen: `docs/walkway-map.md`, `docs/jobs/pruefung/W36-W39.md` nur Schlagwortsuche Rohrschelle.
 **Offen:** siehe oben. DEINE ENTSCHEIDUNG (Ben): A+ (empfohlen) und ob R44 Kandidat A (Absetzerkreis streichen) geprüft wird.
+
+
+---
+
+## 7. Nachtrag R47c: Ring mit einheitlichem Fluss (Rückfrage Mitgründer, 02.11.2026)
+
+**Problem:** Der Mitgründer fragt: (1) Wie würde ein Ring die Höhenunterschiede lösen, ohne den Fluss aufzuteilen (alles Wasser durch die Biofilter, ein Pool, ein Nährstoffkreislauf)? (2) Sind 2,83 m Förderhöhe bei Standardpumpen nicht nur eine Energiefrage? **Intent:** E20 auf einer fairen Gegenüberstellung A+ gegen Ring mit einheitlichem Fluss (EINHEIT) entscheiden. **Goal:** ausgearbeitete Ring-Varianten, ehrliche Neubewertung des Höhenarguments, Gesamtempfehlung. Nichts umgesetzt; Aktualitätsprüfung 02.11.: Stand A+, Gebautes bis Verteiler-Eingang (Runde 66) bleibt.
+Rechnung: `python -X utf8 scripts/r47_pumpen.py`. Z relativ zum Innenboden.
+
+### 7.0 Gesamturteil (zehn Zeilen)
+
+1. **Der Mitgründer hat bei der Pumpe recht:** 2,83 m und 3,2 m bei 55 l/min sind Standardklasse (Oase Aquarius Premium 6000 liefert nach Parabel-Näherung ≈ 3,5 m bei 55 l/min [Q Datenblatt, E]). Mehrleistung nur +119 W (η 25 %) bis +166 W (η 18 %) = 2,9 bis 4,0 kWh/Tag gegen heute. Als Ausschlusskriterium taugt die Höhe nicht.
+2. **Was vom Höhenargument bleibt, ist nicht die Pumpe, sondern der Ort:** Der Biofilter (Überlauf Z 1570) liegt 675 mm unter dem Ring-Hochpunkt (Z 2245). Mit EINHEIT (alles durch den Biofilter, dann Ring) muss das Wasser entweder VOR dem Biofilter auf 2295 oder NACH dem Biofilter um 725 mm gehoben werden. Es gibt keine dritte Möglichkeit.
+3. **Drei Ring-Varianten erfüllen EINHEIT (a) bis (e):** B1 Biofilter 725 mm höher (Pumpen heben auf 2,73 m); B2 Booster nach dem Biofilter in einen Druckring; B3 Hochbehälter nach dem Biofilter, Ring per Schwerkraft. Heute erfüllt A+ EINHEIT schon: Verteiler und Beete hängen nur am Biofilter-Überlauf, alle Rückflüsse münden in den einen Pool.
+4. **B1 ist die sauberste Variante hydraulisch** (eine Pumpstufe, +119 bis 166 W), aber der teuerste Umbau: 857 kg gefüllter Biofilter auf 1733 mm Beinen (statt 1008), Deckel auf Z 2401, K08 bis K10 und beide Plattformen neu.
+5. **B2 lässt das Gebaute stehen** (K10-Ende wird die Saugleitung des Boosters), kostet aber den GANZEN Linienstrom (110 l/min) eine zweite Pumpstufe (+147 bis 205 W) und braucht Pegelregelung am Biofilter.
+6. **B3 ist die schwächste:** B2 plus Hochbehälter auf Z 1600 bis 2400 mit 300 l; mehr Teile, mehr Last in der Höhe, kein Gewinn gegen B2 außer Puffer.
+7. **Der Ring gewinnt weiterhin nur die Gräben zu den Beeten.** Die 30,3 m vergrabenes Rohr (R47b) berührt er nicht. Ein Ring auf Tischhöhe (unterhalb 1570, per Schwerkraft, am NFT-Strang entlang) löst das Höhenproblem ohne Pumpenmehrleistung, spart dann aber die Gräben nicht (Beete bleiben am Boden).
+8. **Verteilung auf mehrere Biofilter:** Heute gibt es EINEN Biofilter je Linie; die Frage stellt sich nur beim dritten Tank (Empfehlung R37) oder zwischen den Linien. Standard: gleiche Zu- und Ablaufhöhen und -längen (Parallelbetrieb) oder Reihe. „Unterschiedlich gut laufen“ ist biologisch, nicht hydraulisch: Der Durchfluss wird von Pumpe und Widerstand bestimmt, nicht von der Leistung des Bettes. Gilt für heute und Ring gleich; belegt nur schwach (Patente, Praxisregel).
+9. **Rangfolge:** A+ > B2 > B1 > B3. „Ring ja oder nein“ bleibt **nein**, aber mit anderer Begründung als in R47: nicht Höhe/Energie, sondern Aufwand (zweite Pumpstufe oder Umbau des Gebauten) bei null Gewinn für Wartbarkeit und Fluss-Einheit, die A+ schon hat.
+10. **Offen:** Pumpenkennlinien nur als Parabel-Näherung aus Nenndaten; zweiter unabhängiger Hersteller nicht belegt (Pontec ist Oase); Biofilter-Verteilung ohne Fachquelle; Statik/Gangkarte/Dome-Höhe nicht gerechnet. Entscheidung Ben.
+
+### 7.1 Pumpenfrage (Frage 1)
+
+**Datenlage.** [Q] Oase Aquarius Universal Premium 6000: 110 W, 6000 l/h, 5,0 m max. (Hersteller-Datenblatt vom 02.08.2017, [teichfolie.de-PDF](https://teichfolie.de/media/products/Produktdatenblatt_Aquarius_Universal_Premium_6000.pdf), gelesen). [Q] Eco Classic 5500: 60 W, 5300 l/h, 2,8 m max.; Pontec PondoMax Eco 5000: 60 W, 5000 l/h, 2,6 m max. (Händlerangaben, [Kaufland-Listung](https://www.kaufland.at/product/221417471/), [koempf24](https://www.koempf24.de/pontec-pondomax-eco-11000)); beide Marken gehören zu Oase: **kein zweiter unabhängiger Hersteller**. Wilo Yonos PARA und Grundfos UPM3 (Heizungspumpen, Datenblätter gefunden, Kurven nicht auslesbar) sind für ein offenes Becken keine Standardwahl und nicht bewertet. **Kennlinien liegen nicht als Tabelle vor:** ich nähere sie als Parabel H = H0·(1 − (Q/Qmax)²) [A].
+
+**Gegenprobe der Näherung.** Eco Classic 5500 bei 61 l/min: Näherung 1,46 m; R45 nennt 1,47 m [E, Skript Abschnitt 1]. Die Näherung trifft den vorhandenen Messpunkt.
+
+| Pumpe (55 l/min = 3300 l/h) | Förderhöhe nach Näherung | passt für 2,0 / 2,83 / 3,2 m? |
+|---|---|---|
+| Aquarius Premium 6000 (110 W Nenn) | 3,49 m | ja / ja / ja (knapp) |
+| Eco Classic 5500 (60 W) | 1,71 m | nein / nein / nein |
+| PondoMax Eco 5000 (60 W) | 1,47 m | nein / nein / nein |
+
+**Folgerung:** Schon die heutigen 2,0 m verlangen die Premium-Klasse (6000 l/h, 5 m), nicht die 60-W-Eco-Klasse; 2,83 und 3,2 m liegen in derselben Pumpenklasse. Der Sprung von 2,0 auf 2,83 m ist ein Größen-, kein Klassensprung. Die Fabrikatsfrage bleibt offen (Netzliste führt „Pumpe_gross“ ohne Fabrikat).
+
+**Leistung je Pumpe bei 55 l/min [E].**
+
+| Förderhöhe | hydraulisch | elektrisch η 18 % | η 25 % | η 30 % |
+|---|---|---|---|---|
+| 2,0 m (heute) | 18,0 W | 100 W | 72 W | 60 W |
+| 2,83 m | 25,4 W | 141 W | 102 W | 85 W |
+| 3,2 m | 28,8 W | 160 W | 115 W | 96 W |
+
+**Wirkungsgrad, Quellenprüfung.** Die 25 % der Netzliste (R47) lassen sich aus den Datenblättern als **bester Punkt** (Qmax/2, 0,75·H0) nachrechnen: Premium 6000 ≈ 28 %, Eco Classic 5500 ≈ 25 %, PondoMax 5000 ≈ 22 % [E]. Abseits des besten Punktes, besonders bei gedrosselter Förderung, sinkt η; 18 % ist die untere Klammer [A]. Damit ist 25 % **nicht falsch, aber optimistisch**; ich gebe beide Klammern an.
+
+**Mehrleistung des Rings gegen heute (4 Hauptpumpen) [E].**
+
+| | η 25 % | η 18 % |
+|---|---|---|
+| H 2,83 m | +119 W = +2,9 kWh/Tag | +166 W = +4,0 kWh/Tag |
+| H 3,2 m | +173 W = +4,1 kWh/Tag | +240 W = +5,8 kWh/Tag |
+
+Gegen den Gesamtverbrauch 430 W (R47, 10,3 kWh/Tag) sind das +28 % bzw. +39 %, bei 2,83 m.
+
+**Was vom Höhenargument bleibt.** (1) Nicht die Pumpenhöhe, sondern der **Ort des Biofilters**: Der Biofilter steht zwischen Pumpe und Ring. Eine Pumpe, die mit 2,83 m direkt in den Ring drückt, umgeht ihn und verletzt EINHEIT (c); läuft sie durch ihn, muss der Tank druckdicht sein (er ist ein offener PE-Tank mit Deckel und Belüftung). (2) Die Mehrleistung von etwa 120 bis 170 W ist real und bleibt, egal wie man hebt (B1 mit einer Stufe, B2 und B3 in zwei Stufen). (3) Eine **zweite Pumpstufe** ist ein Ausfallpunkt mehr (B2, B3).
+
+**Sicherung.** `scripts/r47_pumpen.py` und dieser Abschnitt, Commit „R47c: Pumpenfrage“.

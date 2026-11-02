@@ -1,5 +1,5 @@
 {
- "stand": "Stand 02.11.2026 nach Mitternacht: Werkstatt A und A2 fertig (alle Leitungsteile gebaut), Heber d75 verlegt und geprueft. Nichts laeuft. Weiter: Pruefer W36/W39, dann Werkstatt B (W37-1 bis 3) und Montage S3 bis S7. 5-Stunden-Fenster bis 03:20, Woche 80 Prozent bis 06.11. Fragen an dich stehen oben.",
+ "stand": "Stand 02.11.2026: Recherche R47 (Kreislauf neu denken, Flood-and-Drain) und Pruefsitzung fuer die Werkstatt-Teile laufen; Rohrbau und Werkstatt B warten auf deine Entscheidung nach R47 (E20). Woche 81 Prozent bis 06.11. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -684,7 +684,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Werkstatt (eine Sitzung, zwei bei vollem Fenster)",
-   "notiz": "Zerfaellt in drei Sitzungen nach Blaettern des Planers, nacheinander NACH W39: W37-1 Beet-Sumpf und Schlammfass, W37-2 Aktivkohle mit Schwimmerventil und Becken-Stutzen Drittbecken, W37-3 Geblaese, Luftverteiler und Schaltschrank-Einfuehrung (nur das Bauteil, der Standort bleibt E13). Blaetter in docs/jobs. VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
+   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Zerfaellt in drei Sitzungen nach Blaettern des Planers, nacheinander NACH W39: W37-1 Beet-Sumpf und Schlammfass, W37-2 Aktivkohle mit Schwimmerventil und Becken-Stutzen Drittbecken, W37-3 Geblaese, Luftverteiler und Schaltschrank-Einfuehrung (nur das Bauteil, der Standort bleibt E13). Blaetter in docs/jobs. VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
   },
   {
    "id": "E12",
@@ -767,7 +767,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Montage",
-   "notiz": "Braucht: NETZ-ETIKETT, W36 (Verteiler d50, Tropfrohr-Pruefung L16), Beet-Ablauf-DN aus R45 (L03). Beobachtet: L12 (Grabenschnitt Linie 1 beim Neubau), L13 (Nische West B). Pruefung wie S2, Gangkreuzungen einzeln gelistet. Netz Version 3: 57 Kanten (K58/K59 neu), K14/K30 d50."
+   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: NETZ-ETIKETT, W36 (Verteiler d50, Tropfrohr-Pruefung L16), Beet-Ablauf-DN aus R45 (L03). Beobachtet: L12 (Grabenschnitt Linie 1 beim Neubau), L13 (Nische West B). Pruefung wie S2, Gangkreuzungen einzeln gelistet. Netz Version 3: 57 Kanten (K58/K59 neu), K14/K30 d50."
   },
   {
    "id": "M10-S4",
@@ -776,7 +776,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 6,
    "wer": "Montage",
-   "notiz": "Braucht: W37 (Beet-Sumpf, L04) und L03. S4a (Halbringe und Sektorsammler) braucht nichts und darf frueher laufen. Prueft: L11 (Einlaeufe am Pool, Gangkreuzungen, Schlauchradius), L12 (Plattformen und Tankstaende mindestens 60 mm, K57 nur 31 mm Luft), L13. Gefaelle mindestens 1 % aus den Koordinaten."
+   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: W37 (Beet-Sumpf, L04) und L03. S4a (Halbringe und Sektorsammler) braucht nichts und darf frueher laufen. Prueft: L11 (Einlaeufe am Pool, Gangkreuzungen, Schlauchradius), L12 (Plattformen und Tankstaende mindestens 60 mm, K57 nur 31 mm Luft), L13. Gefaelle mindestens 1 % aus den Koordinaten."
   },
   {
    "id": "M10-S5",
@@ -785,7 +785,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 7,
    "wer": "Montage",
-   "notiz": "Braucht: W37 komplett (Aktivkohle, Geblaese, Becken-Stutzen, Schlammsammler) und E12. Direkt ohne Werkstatt: K37 Puffer-Messzelle zum Pool, K38 Dosierschlauch. Schliesst im Modell L01, L05, L06, L09; Zweitbecken-Stutzen in gen_dome."
+   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: W37 komplett (Aktivkohle, Geblaese, Becken-Stutzen, Schlammsammler) und E12. Direkt ohne Werkstatt: K37 Puffer-Messzelle zum Pool, K38 Dosierschlauch. Schliesst im Modell L01, L05, L06, L09; Zweitbecken-Stutzen in gen_dome."
   },
   {
    "id": "M10-S6",
@@ -794,7 +794,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 8,
    "wer": "Montage",
-   "notiz": "Braucht: W36 (Rohrschelle, Leerrohr, Schacht), W37 (Schaltschrank), E13. Schliesst L07 (Kabel-Sweep), L08, L15 (ohne Kuppel-Trunk, der wartet auf die Statik), L17 (Schacht und Deckel setzen). Pruefung: check_leitungen, Trunk-Laengen gegen Plan Abschnitt 8."
+   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: W36 (Rohrschelle, Leerrohr, Schacht), W37 (Schaltschrank), E13. Schliesst L07 (Kabel-Sweep), L08, L15 (ohne Kuppel-Trunk, der wartet auf die Statik), L17 (Schacht und Deckel setzen). Pruefung: check_leitungen, Trunk-Laengen gegen Plan Abschnitt 8."
   },
   {
    "id": "M10-S7",
@@ -803,7 +803,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 9,
    "wer": "Montage",
-   "notiz": "check_walkways, volle check_walkways_voll (7,5 min), Kollision, Draufsicht und Seitenansicht ins Bildarchiv, Heber-Nachrechnung L10 gegen die echten Rohrlaengen, Rohr-Stueckliste per Skript, docs/model-description.md und integration-board. Danach Bericht an dich."
+   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). check_walkways, volle check_walkways_voll (7,5 min), Kollision, Draufsicht und Seitenansicht ins Bildarchiv, Heber-Nachrechnung L10 gegen die echten Rohrlaengen, Rohr-Stueckliste per Skript, docs/model-description.md und integration-board. Danach Bericht an dich."
   },
   {
    "id": "R46",
@@ -929,7 +929,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.6,
    "wer": "Orchestrator",
-   "notiz": "Klein, vor W37: Leistung Beet-Sumpf-Pumpen 108 bis 120 W statt 72 W, Geblaese zwei Membranpumpen N+1 (Rechnung 100 bis 215 W), Kabelzeilen fuer die zwei Sumpfpumpen in der Netzliste; danach check_netz.py und Leistungsbilanz. Schaltschrank-Auslegung haengt dran (E13)."
+   "notiz": "ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Klein, vor W37: Leistung Beet-Sumpf-Pumpen 108 bis 120 W statt 72 W, Geblaese zwei Membranpumpen N+1 (Rechnung 100 bis 215 W), Kabelzeilen fuer die zwei Sumpfpumpen in der Netzliste; danach check_netz.py und Leistungsbilanz. Schaltschrank-Auslegung haengt dran (E13)."
   },
   {
    "id": "E18",
@@ -983,16 +983,34 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.97,
    "wer": "Orchestrator (klein)",
-   "notiz": "Heute liest das Skript den Durchmesser nicht aus data/leitungstrassen.json, die Zeile \"Ist\" rechnet mit d63; die 85/88 mm stammen aus einer Variantenzeile mit pauschalem Zusatzverlust 0,3 [A]. Umbau auf echte dn, T d75, Reduziermuffen und Bogen einzeln, danach neu rechnen und die Marge von K01 pruefen (Auflage A2). Vor M10-S7 erledigen, S7 braucht die Zahl."
+   "notiz": "ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Heute liest das Skript den Durchmesser nicht aus data/leitungstrassen.json, die Zeile \"Ist\" rechnet mit d63; die 85/88 mm stammen aus einer Variantenzeile mit pauschalem Zusatzverlust 0,3 [A]. Umbau auf echte dn, T d75, Reduziermuffen und Bogen einzeln, danach neu rechnen und die Marge von K01 pruefen (Auflage A2). Vor M10-S7 erledigen, S7 braucht die Zahl."
   },
   {
    "id": "PRUEF-W36-W39",
    "titel": "Pruefsitzung (Buendel) fuer die Werkstatt-Teile W36 und W39: Verteiler, Schelle, Leerrohr, Schacht, d75, Kleinteile",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.9,
    "wer": "Pruefer (frische Sitzung)",
-   "notiz": "Ein Pruefer fuer beide Werkstatt-Sitzungen (gleiche Bibliothek, gleiche Skripte): check_lt_w36.py, check_lt_w39.py, check_leitungsteile.py neu laufen lassen, Teile gegen ihre Blaetter, Stichproben der Masse und Ports, Bilder ansehen, Blatt-Pruefpunkte aus docs/jobs/W39-kleinteile.md. Befund nach docs/jobs/pruefung/W36-W39.md. Danach HEBER-SKRIPT und SPECS-R45 (ich), dann W37-1."
+   "notiz": "GESTARTET 02.11. (Sitzung pruefer-w36-w39), ohne Marke gestartet: Beleg fuer die stumme PROJEKT:-Seite des Hooks. Ein Pruefer fuer beide Werkstatt-Sitzungen (gleiche Bibliothek, gleiche Skripte): check_lt_w36.py, check_lt_w39.py, check_leitungsteile.py neu laufen lassen, Teile gegen ihre Blaetter, Stichproben der Masse und Ports, Bilder ansehen, Blatt-Pruefpunkte aus docs/jobs/W39-kleinteile.md. Befund nach docs/jobs/pruefung/W36-W39.md. Danach HEBER-SKRIPT und SPECS-R45 (ich), dann W37-1."
+  },
+  {
+   "id": "R47",
+   "titel": "Wasserkreislauf und Verteilung neu denken: Machbarkeitspruefung (Ringleitung, Anlagenteile nah am Kreislauf, Schwerkraft, Flood-and-Drain)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2.5,
+   "wer": "Fachrecherche (Sitzung recherche-r47)",
+   "notiz": "GESTARTET 02.11. (Wunsch W51). Blatt docs/jobs/R47-wasserkreislauf-neu.md. Fuenf Fragen: haengender Leitungsring auf Stelzen, Anordnung nah am Kreislauf, Schwerkraft, Flood-and-Drain mit Bodenaufbau und verstopfungssicherem Siphon, Gesamturteil mit Varianten A (heutiger Plan optimiert), B (Ring), C (Hybrid). NUR Bericht und Einschaetzung, nichts wird umgesetzt, bevor Ben entschieden hat (E20)."
+  },
+  {
+   "id": "E20",
+   "titel": "Wasserkreislauf nach dem Bericht R47: Variante A, B oder C waehlen",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2.5,
+   "wer": "Ben (nach R47)",
+   "notiz": "Noch nicht faellig: erst liefert R47 Einschaetzung und Empfehlung. Dann entscheidest du, ob der heutige Plan bleibt (A), eine Ringleitung kommt (B) oder beides gemischt wird (C). Blockiert: M10 S3 bis S7, W37 und alle Rohr- und Anlagenteile, die vom Kreislauf abhaengen."
   }
  ]
 }

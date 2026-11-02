@@ -127,4 +127,43 @@ Mehrverbrauch gegen A: B +118 W (+27 %), C +73 W (+17 %). Rechenweg: Hauptpumpe 
 
 **Fazit Abschnitt 3:** A bleibt die niedrigste Pumpenlast (430 W), und die Schwerkraft-Strecke (Biofilter → Verteiler → Beete/NFT → Rücklauf → Pool) ist bereits vollständig frei.
 
+## 4. Flood-and-Drain für die Substratbeete
+
+**Einschätzung: machbar, und zu 80 % schon im Bauteil `ibc_beet` enthalten.** Nur drei Kleinigkeiten sind zu ändern.
+
+**Was das Bauteil heute hat [Q `docs/parts/ibc_beet.md`].**
+
+| Teil | Heute | Wirkung |
+|---|---|---|
+| Boden | Siebboden PP 8 mm auf 60 × 60-Klötzen (15 innen, 24 außen), Abstand ≤ 420 mm | Medium steht trocken über einem freien Wasserraum (aussen_933: 640 l) |
+| Siphon | Standrohr d25, Glocke d75 × 295 (2 Schlitze 10 × 40, Luftloch 10), Medienschutz d110 × 320 (12 Durchbrüche 12 × 12) | leert bis zur Bodenplatte, Ablauf 234 l in 4,3–6,1 min [Q R45 Abschn. 1] |
+| Zulauf | Tropfrohr d20, 200–500 l/h = 3,3–8,3 l/min | Siphon-Spitze 38–54 l/min, Faktor 4,6–16: der Siphon springt sicher an |
+| Medium | Blähton/Kies 8–20 mm gewaschen, 300 mm tief | Porenraum ca. 40 % [A] |
+
+**Bens Wunsch („Abstandshalter oder Sieb am Boden“) ist damit erfüllt.** Das Bett leert bis zur Bodenplatte, der Raum unter dem Sieb ist frei durchspülbar. Offene Risiken sind andere.
+
+**Befund 1: Löcher zu groß für das kleinste Korn.** Medienschutz-Durchbrüche 12 × 12 mm, Siebboden real D8 (im Modell 12 vereinfacht) gegen Medium ab 8 mm: Körner 8–12 mm fallen durch den Schutz bis in den Siphonbereich und unter den Siebboden. Als Faustregel nennen Hobby-Seiten Korn 10–20 mm und einen Kiesschutz, der Medium aus dem Siphon hält: [Go Green Aquaponics, Gravel](https://gogreenaquaponics.com/blogs/news/how-to-use-gravel-in-aquaponics-systems) (Richtwert 10–20 mm; Feinkorn verstopft den Siphon), [Aquifarm Bell Siphon Physics](https://aquifarm.com/bell-siphon-physics/) (Guard verhindert Eindringen des Mediums; große inerte Medien wie Blähton). Beide sind Hobby-Quellen, also **Kandidat**; die Maße des Schutzlochs gegen das Korn sind eigene Geometrie [E]. **Empfehlung:** Korn 12–20 mm festlegen und Medienschutz-Löcher 8 × 8 mm (oder Siebboden D6) [A]; Bauteil-Parameter `guard_hole` und `grid_hole` ändern. Das ist eine **Bauteiländerung** (Werkstatt), kein Aufbau.
+
+**Befund 2: Schlamm sammelt sich unter dem Sieb.** Feststoffe, die in das Bett laufen (NFT-Anteil wird mechanisch gefiltert, die Beete nicht, vgl. R44), setzen sich im Wasserraum und am Einlauf ab; bei hoher Last bilden sich anaerobe Stellen. Die Quellen sind hobbymäßig und teils gemischt: [Oklahoma State Extension](https://extension.okstate.edu/fact-sheets/recirculating-aquaculture-tank-production-systems-aquaponics-integrating-fish-and-plant-culture) (Sand/Kies verstopfen leicht, Bett-Bearbeitung oder Medienwechsel nötig), [Kentucky State Aquaponics Handbook](https://www.kysu.edu/documents/school-of-agriculture-communities-and-the-environment/aquaponics_handbook_2021_final_022421.pdf) (regelmäßig Feststoffe entfernen); [Upstart University](https://university.upstartfarmers.com/blog/aquaponic-media-surface-area) (große Körnung lässt Feststoffe selten stauen). Bei unserer Last (12,1 kg/m³ Fisch, unter dem FAO-Auslöser 15 [Q R44]) bleibt das Risiko gering, bis NFT nicht mehr filtert. **Gegenmaßnahmen:** (a) Bodenplatte mit 1–2 % Gefälle zum Ablauf: kein Eingriff am IBC-Boden, stattdessen die Stützklötze zum Ablauf hin um 10–20 mm niedriger [A]; (b) Sumpfzone: 30–40 mm tiefe Mulde im Wannenboden um das Standrohr, Medienschutz sitzt darin [A]; (c) **Reinigungszugang:** Steckverbindung (Verschraubung) im Ablauf unter dem Boden, Siphon samt Medienschutz ohne Medienausbau ziehen, Spülstutzen d25 mit Kugelhahn am Sammler.
+
+**Befund 3: Beet-Sumpf unter dem Spiegel.** Der Ablauf (Z −100, Rohrende unter dem Boden) fließt in den Sumpf mit Pumpe. Verstopfung des Siphons wirkt sich aus als „Bett leert nicht“: der Alarmschwimmer (Z 620 mm Pegel) deckt das nicht ab. Zusatz: Bett-Ablaufwächter (Schwimmer im Beet, 12 V) [A].
+
+**Alternativen zum Glockensiphon (Zeitschaltuhr, Dauerstau, Kipp-Mechanik).**
+
+| Option | Vorteil | Nachteil | Fazit |
+|---|---|---|---|
+| Glockensiphon (heute) | passiv, kein Strom | Anspringen hängt an Zulauf/Luft [Q Aquaponics411: Gleichgewichtsfluss, Siphon startet nicht] | behalten |
+| Zeitschaltuhr + Magnetventil im Ablauf | zuverlässig (Foren: „100 %“, ein Nutzer 65.000 Zyklen ohne Ausfall; anekdotisch) | 14 Ventile + Steuerung, bei Stromausfall bleibt Bett voll → Wurzeln ertrinken [Q Foren] | als Rückfall, nicht als Standard |
+| Dauerstau mit Standrohr | einfach | kein Fluten/Entleeren, Algen, kaum Sauerstoff im Medium | verworfen (widerspricht Bens Wunsch) |
+| Kipp-Mechanik | passiv | in der Recherche **kein** Beleg für Substratbeete gefunden | offen, nicht bewertet |
+
+Quellen: [Aquaponics411 Bell Siphon Tuning](https://aquaponics411.com/how-a-bell-siphon-works-in-aquaponics-systems/), [Aquaponic Gardening Forum, Alternativen](https://aquaponicgardening.ning.com/forum/topics/alternatives-to-bell-siphon-systems). Beides schwach (Forum). Die Siphon-Physik für unsere Maße stammt aus R45 (Bernoulli/Darcy-Weisbach).
+
+**Was am Bauteil zu ändern ist, was nur Aufbau ist.**
+
+1. **Bauteiländerung (Werkstatt):** `guard_hole` und `grid_hole` kleiner als das gewählte Korn; Verschraubung im Ablauf (Reinigungszugang); optional Sumpfmulde und Stützklötze mit Gefälle.
+2. **Nur Aufbau (Montage):** Korn 12–20 mm, gewaschen, bis 300 mm; Sicht-/Reinigungsintervall festlegen; Ablaufwächter im Sumpf-Alarm.
+
+**Fazit Abschnitt 4:** Flood-and-Drain gelingt mit dem vorhandenen Bauteil; zwei Maße ändern und einen Reinigungszugang ergänzen. Es hängt nicht an der Frage Ring oder nicht Ring.
+
 <!-- ENDE -->

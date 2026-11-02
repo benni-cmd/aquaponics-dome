@@ -484,3 +484,29 @@ Weitere schwache Hinweise: Gleichmäßiger Bettwiderstand verhindert Kanalbildun
 
 **Sicherung.** Commit „R47c: Biofilter-Verteilung“.
 
+### 7.5 Neubewertung (Frage 5)
+
+Zahlen: Pumpen W gegen R47-Basis 430 W (η 25 %), Klammer η 18 % in Klammern; Mehrleistung aus `scripts/r47_pumpen.py` (Haupt +119/+166, Booster 2 Linien +147/+205 bzw. +198/+275 bei B3). Teilezahlen A+ aus R47b; B-Teile grob [A].
+
+| | A+ | B1 | B2 | B3 |
+|---|---|---|---|---|
+| Pumpenleistung (W) | 430 | 549 (596) | 577 (635) | 628 (705) |
+| Pumpstufen Linienwasser | 1 | 1 | 2 | 2 |
+| Biofilter-/Plattformaufwand | keiner | Biofilter, Plattform, Beine, K08 bis K10 neu | Pegelführung/Notüberlauf | wie B2 + Hochbehälter und Konsole |
+| Zahl der Teile (zusätzlich zu A+) | ≈ 20 Stutzen, 4 bis 6 Schächte | + Ring, 12 Stützen (≈ 14 + 12) | + Ring, 12 Stützen, 2 bis 4 Booster, Pegel, Steigleitung | + Hochbehälter ×2 |
+| Wartung/Erreichbarkeit | Stopfen ziehen | Biofilter und Ring über Kopf | Booster ebenerdig, Ring über Kopf | Hochbehälter und Ring über Kopf |
+| Einheitlichkeit des Flusses | erfüllt | erfüllt | erfüllt, Notüberlauf als Sonderfall | erfüllt, Puffer |
+| Risiko | gering | mittel bis hoch (Kippen, Höhe, Leiter) | mittel (zweite Stufe, Pegelregelung) | hoch |
+| Folgen Gebautes/Geplantes | Zusätze | K08 bis K10, 2 Plattformen neu | K10 wird Saugleitung | wie B2 + Höhe |
+| Gewinn gegen A+ | – | Beete ohne Graben | Beete ohne Graben | Beete ohne Graben + Puffer |
+
+**Empfehlung: A+ bleibt.** Reihenfolge der Alternativen: **B2 vor B1 vor B3.** Begründung: (1) EINHEIT hat A+ bereits; der Ring muss sie nur halten und gewinnt dadurch nichts. (2) Der einzige Gewinn des Rings, Beete ohne Graben, bleibt klein gegenüber +119 bis +205 W und einer zusätzlichen Pumpstufe oder einem Umbau des Gebauten. (3) Wartbarkeit (Bens Sorge R47b): 30,3 m vergraben bleiben in jeder Variante. (4) B2 schont das Gebaute und lässt den Ring später nachrüsten, B1 baut um.
+
+**Ist „Ring ja oder nein“ jetzt anders zu beantworten als in R47 und R47b?** Antwort bleibt **nein**, die Begründung ändert sich: R47 nannte die Höhe als Rückschritt; das trifft nur halb zu (Pumpe: Standardklasse, +119 bis +166 W). Der wahre Preis ist die Lage des Biofilters im Strang: Eine zweite Stufe (B2/B3) oder ein Umbau (B1). Wer den Ring wegen der Gräben dennoch will, nimmt **B2** (Gebautes bleibt, Ring nachrüstbar, Zugang ebenerdig).
+
+**Auslöser für eine neue Prüfung:** (a) Gangkarte zeigt Graben-Kollisionen bei K11; (b) Pegelführung am Biofilter ist ohnehin geplant; (c) Dom-Innenhöhe erlaubt B1 mit Podest.
+
+**Sicherung.** Commit „R47c: Neubewertung“.
+
+**Geprüft gegen:** `docs/jobs/R47c-ring-einheitlicher-fluss.md`; `docs/research/R47-wasserkreislauf-neu.md` (ganz); `data/leitungsnetz.json` (Knoten Biofilter, Pumpe, Absetzer, Schlammfass, Beet-Sumpf; Kanten K06 bis K16, K58/K59); `docs/parts/tank.md` (Grep Biofilter, Plattform, Beine, Gewicht); `docs/research/R44-filter-gegenpruefung.md` (Überblick); `docs/loop-state.md` Abschnitte M10-S2a bis S2R; `scripts/r47_rechnung.py`; `python -X utf8 scripts/r47_pumpen.py`; Oase-Datenblatt Aquarius Premium 6000 (PDF gelesen), Händlerangaben Eco Classic 5500/PondoMax 5000, Patentsuche.
+**Offen:** (1) Zweiter unabhängiger Pumpenhersteller mit Kennlinie, DEINE ENTSCHEIDUNG (Ben/Planer: Fabrikat), bis dahin Parabel-Näherung. (2) Fachquelle für Reverse Return und Biofilter-Verteilung in Aquakultur, ICH (nächste Recherche). (3) Statik B1 Kippen/Anstoß, Gangkarte, Dom-Innenhöhe, ICH nach Freigabe. (4) Pegelführung B2: Fabrikat und Schaltung. (5) Entscheidung E20: A+ (empfohlen) oder B2, DEINE ENTSCHEIDUNG.

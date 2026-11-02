@@ -263,3 +263,54 @@ Bei K03/K19 und den Absetzer-Strecken tragen die Rohre Feststoffe. **Mindestgesc
 **Zeit bis Schaden [Q/E].** Luftausfall 0,8–1,2 h bis 3 mg/l [Q R45 Abschn. 4]. Wasserumlauf steht, Luft läuft: TAN +4,6 mg/l je Tag (130 g/Tag ÷ 28,5 m³) [E, R44-Last D61]; der Grenzwert für Fische ist pH- und temperaturabhängig und hier nicht belegt: **offen**. Biofilter ohne Durchströmung: die Bakterien verbrauchen Sauerstoff weiter, Luft im Biofilter (K45/K46) hält sie am Leben. Bei Pumpenausfall sammelt sich das Wasser im Pool-Filterbereich; das Gesamtrisiko steigt nach Stunden bis Tagen, nicht nach Minuten. Quellenlage: die RAS-Quellen nennen „plötzlichen, katastrophalen Fischverlust“ durch Pumpen- oder Stromausfall [Aquamaof, Redundanz](https://www.aquamaof.com/ras-blog-post/redundancies-and-back-up-systems/) und doppelte Zuleitungen sowie Durchflussmesser je Leitung mit Alarm; Zahlen zu Ammoniak/Nitrit nach Stillstand fand die Suche **nicht**.
 
 **Kritische Einzelpfade zuerst:** (1) Heber je Linie, (2) Filter→Pumpe-Stamm je Linie, (3) Bypass als ungetestete Reserve. Redundanz heute: zwei Linien (Ausfall einer Linie halbiert den Umlauf), zwei Hauptpumpen je Linie, Notbypass.
+
+### 6.3 Maßnahmen mit Standardteilen (Frage 3)
+
+Alle Teile aus der Bibliothek oder PVC-Standard (W43); Abstände sind **[A]**, eine Aquakultur-Quelle zu Reinigungsabständen fand die Suche nicht.
+
+| # | Maßnahme | Wirkung | Teile | Platz | Aufwand Modell | Gangkarte |
+|---|---|---|---|---|---|---|
+| M1 | **Revisionsstutzen** (T mit Stopfen/Kappe) an jedem Bogen ≥ 45° und alle ca. 3 m der vergrabenen Strecken | Rohr ohne Aufgraben spül- und stoßbar | T d50/d63, Kappe d63 (W39) | 0,1 m neben dem Rohr | ca. 1 Instanz je Stutzen | keine |
+| M2 | **Schächte mit Deckel** an Heber-Ende, Bypass-Hahn, Stamm | Hähne und Revision erreichbar | `lt_schacht_kugelhahn_d63` (vorhanden), Deckel trittfest | Schacht ≈ Ø 300 [A] | 1 Schacht je Hahn | trittfest bündig |
+| M3 | **Absperrhähne** am Pumpen-Saug und am Stamm | Pumpe oder Filter tauschbar, ein Pfad isolierbar | Kugelhahn d50/d63 | Bibliothek | 2 je Linie | keine |
+| M4 | **Bypass-Probelauf** (Hahn monatlich öffnen, Durchfluss prüfen) | Totast bleibt funktional | keine, Betriebsregel | – | Doku | keine |
+| M5 | **Durchfluss-/Pegelwächter mit Alarm** je Linie (Pumpen-Druckseite) und Hoch-Schwimmer am Filterkorb | Erkennung in Minuten statt Sichtkontrolle | Handelsteile, Fabrikat offen | Schaltschrank-Signal (E4 offen) | Kabel, 2 Sensoren | keine |
+| M6 | **Bodenkanal mit Gitterrost** statt Erdgraben auf den Strecken unter Gängen | Rohr sichtbar und erreichbar, Gang trittfest | Kanal, Gitterrost bündig | Grabenbreite | neues Bauteil | gleich, wenn bündig |
+| M7 | **Spülstoß:** Kugelhahn-Spülanschluss an den Absetzer-Kanten, Spitzenfluss 133 l/min [Q R45 Abschn. 0] | löst Ablagerungen | T d50 + Hahn | gering | 1 je Kante | keine |
+| M8 | **Zweite parallele Leitung** zum Heber (nicht empfohlen) | verdoppelt Einzelpfad | 2,4 m d75, 2 Muffen | Graben breiter | Rückbau | evtl. eng |
+
+**Zum Gebauten:** Der Stumpf von Linie 2 bei x 0 / y −1649 / Z −1635 (300 mm, offen) kann mit Kappe sofort Revisionsstutzen für K03 werden [Q loop-state S2b]. M1–M3 sind Zusätze an gebauten T und Hähnen, kein Rückbau.
+
+### 6.4 Oberirdisch statt vergraben (Frage 4)
+
+| Strecke | heute | oberirdisch möglich? |
+|---|---|---|
+| Heber K01/K17 | Graben, pipe-voll | **nein**, muss unter dem Spiegel Z 340 bleiben |
+| Bodenablauf K03/K19 | unter dem Pool Z −1635 | **nein**, liegt unter dem Beckenboden |
+| Filter-Stamm K06/K22 | Grube | teilweise: Filterkasten steht in Grube Z −496; Grube mit Deckel statt Verfüllen |
+| Notbypass K56/K57 | Tiefleitung Z −159 | nein (Filter-Unterkante −96) |
+| Absetzer K05/K21 | Gefälle 1,5 % Tiefe | ja, wenn der Absetzer-Auslass höher läge: Rückbau |
+| Verteiler → Beete, NFT | U-Graben / Tischbein | NFT ja (am Tischbein), Beete: Graben oder Brücke Z ≥ 2100 |
+
+**Vergleich Graben / Bodenkanal / Brücke:**
+
+| | Graben (Leerrohr) | Bodenkanal mit Rost | Brücke ab Z 2100 |
+|---|---|---|---|
+| Zugang | Aufgraben | Rost heben | Leiter |
+| Gang | frei | trittfest, 700/600 mm bleiben | frei, aber Stützen im Gang |
+| Rohrlänge | kurz | wie Graben | länger (Ring: +28 m) |
+| Aufwand | gebaut | neues Bauteil | Ring/Stützen |
+
+Gangbreiten A 700 / B 600 / Wandluft 110 mm: Ein bündiger Rost verändert sie nicht, Stützen der Brücke stehen im Gang oder an der Wand und können eine Engstelle verschlechtern (nicht geprüft: Gangkarte nicht gerechnet).
+
+### 6.5 Ring: ehrliche Wartungsbilanz (Frage 5)
+
+| Pro | Contra |
+|---|---|
+| Sichtkontrolle am Ring (Leckage, Bewuchs) | Leiter für jeden Handgriff; Rohr über dem Gang |
+| Elementregler (Kugelhahn) direkt am Beet und Tisch | Leckage tropft auf Gang/Pflanzen |
+| Zulauf ohne Graben | Entlüftung, Kondensat und UV im warmen Dach |
+| | Frost bei Heizungsausfall (Standort offen) |
+| | Stützen: Statik und Gangkarte offen |
+
+**Welche der kritischen Abschnitte aus Frage 1 betrifft der Ring?** Keinen. Alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler. Vergraben bleibt: Heber, Bodenablauf, Filter-Stamm, Bypass, Absetzerkreis, Beet-Sumpf und alle Rücklaufstrecken unter Z 400.

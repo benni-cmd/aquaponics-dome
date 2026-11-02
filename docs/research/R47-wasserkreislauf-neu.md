@@ -166,4 +166,52 @@ Quellen: [Aquaponics411 Bell Siphon Tuning](https://aquaponics411.com/how-a-bell
 
 **Fazit Abschnitt 4:** Flood-and-Drain gelingt mit dem vorhandenen Bauteil; zwei Maße ändern und einen Reinigungszugang ergänzen. Es hängt nicht an der Frage Ring oder nicht Ring.
 
-<!-- ENDE -->
+## 5. Gesamturteil: Varianten A, B, C
+
+**Definition.** **A** = heutiger Plan, gestrafft (Sumpf-Lage prüfen, Beet-Bauteil ändern, Rest unverändert). **B** = ein Ring d90 (Druck) bei Z 2100/2245 für Beete, NFT und Becken-Frischwasser, Biofilter vor dem Ring, Rücklauf wie heute. **C** = zwei Halbringe nur für die 14 Beete, Booster-Pumpe je Linie, NFT-Strang K12 bleibt, Rücklauf wie heute. Zahlen: `python -X utf8 scripts/r47_rechnung.py` (Rohrmeter ±25 %, Polarkoordinaten, nicht aus dem Modell; Teilezahl = Formteile+Armaturen der Zulaufseite, ohne gerade Rohrstücke).
+
+| | A | B | C |
+|---|---|---|---|
+| Pumpen elektrisch (W) | 430 | 548 | 503 |
+| Pumpstufen für Beetwasser | 2 | 2 | 3 |
+| Zulauf-Verteilrohr (m) | 80,3 | 108,7 | 80,7 |
+| Formteile+Armaturen Zulauf | 214 | 220 | 232 |
+| Gangkreuzungen Zulauf | unterflur, ca. 1 je Außenbeet [A] | 0 (Ü-Band) | 0 für Beete, NFT wie A |
+| Stützen im Boden | 0 | 12 | 12 |
+| Rücklauf (K14–K16) | 111,5 m | gleich | gleich |
+| Höhenänderung | keine | Biofilter +725 mm oder Pumpe H 2,83 m | wie B für Booster |
+| Wartung | wie heute | Ring überkopf, Leiter nötig | Halbringe überkopf |
+| Risiko | gering, Planstand | hoch: Stützenstatik, Gangkarte, Frost, UV, Leitungsbruch über Gang | mittel |
+| Aufwand Modell | Beet-Bauteil ändern (Werkstatt) | Ringstück, Stützen, Plattform/Leitungen K08–K10 neu | Halbringstücke, Booster, Stützen |
+
+**Folgen für M10 S3–S7 und W37.**
+
+| Schritt | A | B/C |
+|---|---|---|
+| S3 Verteiler, Beete, NFT (K11–K13, K27–K29) | läuft wie geplant | K11 (B auch K12) entfällt als Rohrstrang, dafür Ring und Abgänge |
+| S4 Rücklauf, Sumpf, Halbringe | Sumpf-Lage prüfen | unverändert |
+| S5, S6 | unverändert | unverändert |
+| S7 Abschluss | unverändert | Gangkarte mit Stützen und Ring zusätzlich |
+| W37 Beet-Sumpf, Schlammfass | bleibt | bleibt (der Sumpf ist unabhängig vom Ring) |
+| Bereits gebaut | nichts betroffen | Biofilter-Anhebung würde K08–K10 (Runde 64–66) und Plattformen treffen |
+
+**Empfehlung: A.** Begründung: (1) Die Schwerkraft-Strecke ist bereits vollständig frei; der Ring macht sie unfreier (Biofilter-Überlauf 530 mm unter Ring-Unterkante). (2) Der Ring spart weder Teile noch Rohr, nur die Gräben zu den Beeten. (3) Mehrleistung +118 W (B) / +73 W (C) gegen 430 W. (4) Er stellt die Stützen-Statik und die Gangkarte zusätzlich offen, während die Regeln (nichts an Streben/Knoten/Haut) schon heute eng sind. (5) Flood-and-Drain braucht keinen Ring und ist im Bauteil fast erledigt.
+
+**Wann C trotzdem sinnvoll wäre:** wenn der Graben-Befund bei S3 zeigt, dass die Beet-Zuleitungen K11 die Gangkarte verschlechtern oder Kollisionen im Graben erzeugen. Dann Halbringe nur für Beete prüfen.
+
+**Zur Idee „Subtanks nah am Kreislauf“:** Absetzerkreis, Schlammfass und Puffer-Station sind schon in der Netzliste; der Hebel liegt bei R44 (Kandidat A), nicht beim Ring.
+
+**Nicht „nicht machbar“.** Keine der Ideen ist physikalisch ausgeschlossen. Der Ring ist machbar mit Mehrkosten in Pumpenhöhe oder Biofilter-Höhe, die der Plan nicht braucht.
+
+**Offene Fragen.**
+
+1. Pumpenkennlinien (Hauptpumpe, Sumpfpumpe): Fabrikat offen [E, `scripts/r47_rechnung.py` rechnet mit η 25 %].
+2. Stützen-Statik und Gangkarte-Lauf `check_walkways.py` mit Stützenorten: nicht gerechnet.
+3. Rohrlängen aus Polarkoordinaten, nicht aus dem Modell; Technikgruppe Linie 1 an der Türachse gespiegelt [A].
+4. Frost und UV: Standort offen, keine Quelle geholt.
+5. Entscheidung Ben: A (empfohlen), B oder C.
+
+**Geprüft gegen:** `docs/jobs/R47-wasserkreislauf-neu.md`, `docs/packages/m10-leitungen.md` Abschn. 3, 4, 7, `docs/hydraulics.md`, `data/leitungsnetz.json` (Kanten K01–K59, Kabel, Bilanz), `docs/layout.md`, `docs/system-concept.md`, `docs/parts/ibc_beet.md`, `docs/research/R45-hydraulik-auslegung.md` Abschn. 1 und 3, `docs/research/R44-filter-gegenpruefung.md` Überblick, `docs/loop-state.md` S2b/S2c/S2R; `python -X utf8 scripts/r47_rechnung.py`; Websuche (Stützabstand PVC-U, Flood-and-Drain, Medienbett). Nicht gelesen: `docs/walkway-map.md` über die ersten 25 Zeilen hinaus.
+
+**Offen:** siehe Liste oben; Besitzer: Entscheidung A/B/C liegt bei Ben; Gangkarte und Statik bei Orchestrator/Montage nach Entscheidung.
+

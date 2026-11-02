@@ -1,5 +1,5 @@
 {
- "stand": "Stand 02.11.2026 nachmittags: R47 fertig (Empfehlung: heutigen Plan behalten) und Pruefung der Werkstatt-Teile bestanden mit Auflagen. Nichts laeuft. Rohrbau und Werkstatt B warten nur auf deine Entscheidung E20. Woche 82 Prozent bis 06.11. Fragen an dich stehen oben.",
+ "stand": "Stand 02.11.2026 nachmittags: R47 fertig, Wartbarkeitsfrage von Ben wird als R47B nachgeprueft (laeuft). Rohrbau und Werkstatt B warten auf E20 nach R47B. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -1010,7 +1010,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Ben (nach R47)",
-   "notiz": "JETZT FAELLIG. R47 empfiehlt A: der Ring wuerde den Biofilter um 725 mm anheben oder die Pumpen auf 2,83 m zwingen, spart keine Teile und bringt nur Beete ohne Graben (billiger auf andere Weise loesbar). Ausnahme C: nur wenn die Beet-Zuleitungen beim Bau von S3 die Gaenge verschlechtern. Bei A laufen M10 S3 bis S7 und W37 unveraendert weiter (die Teile sind gebaut, K08 bis K10 muessten bei B/C teils neu). Meine Einschaetzung: A. Blockiert: Freigabe von M10 S3 bis S7 und W37 (jetzt gestoppt)."
+   "notiz": "ZURUECKGESTELLT bis R47B (Bens Wartbarkeitsfrage 02.11.). R47 empfahl A, hat aber Wartbarkeit und Ausfallsicherheit nur kurz bewertet; R47B bewertet A, B, C und A+ (A mit Zugaenglichkeitsmassnahmen) neu. JETZT FAELLIG. R47 empfiehlt A: der Ring wuerde den Biofilter um 725 mm anheben oder die Pumpen auf 2,83 m zwingen, spart keine Teile und bringt nur Beete ohne Graben (billiger auf andere Weise loesbar). Ausnahme C: nur wenn die Beet-Zuleitungen beim Bau von S3 die Gaenge verschlechtern. Bei A laufen M10 S3 bis S7 und W37 unveraendert weiter (die Teile sind gebaut, K08 bis K10 muessten bei B/C teils neu). Meine Einschaetzung: A. Blockiert: Freigabe von M10 S3 bis S7 und W37 (jetzt gestoppt)."
   },
   {
    "id": "W40-BEET",
@@ -1020,6 +1020,15 @@
    "reihenfolge": 3.7,
    "wer": "Werkstatt (kleine Sitzung, nach E20)",
    "notiz": "Drei Kleinigkeiten am Bauteil ibc_beet (R47 Abschnitt 4): Medienschutz-Loecher 12 mm gegen Korn ab 8 mm pruefen und anpassen, Reinigungszugang zum Wasserraum unter dem Siebboden, Koernung des Substrats auf mindestens 12 mm festlegen. Danach muessen die 14 Beete im Modell neu gebaut werden (Montage). Eigenes Blatt vom Planer, erst nach Bens Freigabe; passt zu den Beet-Sumpf-Teilen aus W37-1."
+  },
+  {
+   "id": "R47B",
+   "titel": "Wartbarkeit und Ausfallsicherheit: vergrabene Rohre, oberirdische Leitungen, Neubewertung A/B/C und A+ (Ergaenzung zu R47)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2.4,
+   "wer": "Fachrecherche (Wiederanlauf recherche-r47)",
+   "notiz": "GESTARTET 02.11. (Wunsch W52). Blatt docs/jobs/R47b-wartbarkeit.md. Ausloeser: Ben sorgt sich um vergrabene Rohre (Verstopfung, Anlage steht, Kreislaeufe kippen). Vorbefund: 30,3 von 54,0 m verlegtem Rohr liegen unter Bodenniveau (Bodenablauf K03/K19, K05, K21, Filter-Stamm K06/K22, Notbypass K56/K57, Heber K01/K17); der Ring wuerde keines davon aendern. Fragen: Inventar, Risiko, Massnahmen mit Standardteilen (Reinigungsstutzen, Schaechte, Bodenkanal mit Gitterrost, Absperrhaehne, Redundanz, Alarm), oberirdisch statt vergraben, Ring-Wartungsbilanz, neue Empfehlung inklusive Variante A+."
   }
  ]
 }

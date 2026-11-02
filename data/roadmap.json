@@ -1,5 +1,5 @@
 {
- "stand": "Stand 02.11.2026 nachmittags: R47 fertig, Wartbarkeitsfrage von Ben wird als R47B nachgeprueft (laeuft). Rohrbau und Werkstatt B warten auf E20 nach R47B. Fragen an dich stehen oben.",
+ "stand": "Stand 02.11.2026 nachmittags: R47 und R47B fertig. Empfehlung: heutigen Plan behalten und die vergrabenen kritischen Stellen erreichbar und meldbar machen (A+). Nichts laeuft. Rohrbau und Werkstatt B warten auf deine Entscheidung E20. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -323,7 +323,7 @@
    "phase": "nach_zwischencheck",
    "reihenfolge": 13,
    "wer": "Fachrecherche + Werkstatt",
-   "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39."
+   "notiz": "Heute nur Platzhalter steuerung_alarm; hängt an den Messstellen aus R39. R47B: Durchfluss- und Pegelwaechter je Linie (Pumpen-Druckseite, Hoch-Schwimmer am Filterkorb) sind der wirksamste Erkennungsschritt fuer vergrabene Verstopfungen (Handelsteile, Fabrikat offen)."
   },
   {
    "id": "N-LICHT",
@@ -684,7 +684,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Werkstatt (eine Sitzung, zwei bei vollem Fenster)",
-   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Zerfaellt in drei Sitzungen nach Blaettern des Planers, nacheinander NACH W39: W37-1 Beet-Sumpf und Schlammfass, W37-2 Aktivkohle mit Schwimmerventil und Becken-Stutzen Drittbecken, W37-3 Geblaese, Luftverteiler und Schaltschrank-Einfuehrung (nur das Bauteil, der Standort bleibt E13). Blaetter in docs/jobs. VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
+   "notiz": "A+: Ablaufwaechter am Beet-Sumpf (R47 4.1 und 6.6). GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Zerfaellt in drei Sitzungen nach Blaettern des Planers, nacheinander NACH W39: W37-1 Beet-Sumpf und Schlammfass, W37-2 Aktivkohle mit Schwimmerventil und Becken-Stutzen Drittbecken, W37-3 Geblaese, Luftverteiler und Schaltschrank-Einfuehrung (nur das Bauteil, der Standort bleibt E13). Blaetter in docs/jobs. VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
   },
   {
    "id": "E12",
@@ -767,7 +767,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Montage",
-   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: NETZ-ETIKETT, W36 (Verteiler d50, Tropfrohr-Pruefung L16), Beet-Ablauf-DN aus R45 (L03). Beobachtet: L12 (Grabenschnitt Linie 1 beim Neubau), L13 (Nische West B). Pruefung wie S2, Gangkreuzungen einzeln gelistet. Netz Version 3: 57 Kanten (K58/K59 neu), K14/K30 d50."
+   "notiz": "A+ (R47 Abschnitt 6.3, wenn E20 = A+): Revisionsstutzen (T mit Stopfen) an vergrabenen Strecken, Schaechte mit Deckel, Absperrhaehne einplanen. GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: NETZ-ETIKETT, W36 (Verteiler d50, Tropfrohr-Pruefung L16), Beet-Ablauf-DN aus R45 (L03). Beobachtet: L12 (Grabenschnitt Linie 1 beim Neubau), L13 (Nische West B). Pruefung wie S2, Gangkreuzungen einzeln gelistet. Netz Version 3: 57 Kanten (K58/K59 neu), K14/K30 d50."
   },
   {
    "id": "M10-S4",
@@ -776,7 +776,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 6,
    "wer": "Montage",
-   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: W37 (Beet-Sumpf, L04) und L03. S4a (Halbringe und Sektorsammler) braucht nichts und darf frueher laufen. Prueft: L11 (Einlaeufe am Pool, Gangkreuzungen, Schlauchradius), L12 (Plattformen und Tankstaende mindestens 60 mm, K57 nur 31 mm Luft), L13. Gefaelle mindestens 1 % aus den Koordinaten."
+   "notiz": "A+ (R47 Abschnitt 6.3, wenn E20 = A+): Revisionsstutzen (T mit Stopfen) an vergrabenen Strecken, Schaechte mit Deckel, Absperrhaehne einplanen. GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: W37 (Beet-Sumpf, L04) und L03. S4a (Halbringe und Sektorsammler) braucht nichts und darf frueher laufen. Prueft: L11 (Einlaeufe am Pool, Gangkreuzungen, Schlauchradius), L12 (Plattformen und Tankstaende mindestens 60 mm, K57 nur 31 mm Luft), L13. Gefaelle mindestens 1 % aus den Koordinaten."
   },
   {
    "id": "M10-S5",
@@ -794,7 +794,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 8,
    "wer": "Montage",
-   "notiz": "GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: W36 (Rohrschelle, Leerrohr, Schacht), W37 (Schaltschrank), E13. Schliesst L07 (Kabel-Sweep), L08, L15 (ohne Kuppel-Trunk, der wartet auf die Statik), L17 (Schacht und Deckel setzen). Pruefung: check_leitungen, Trunk-Laengen gegen Plan Abschnitt 8."
+   "notiz": "A+: Alarmkabel fuer Durchfluss-/Pegelwaechter je Linie (R47 6.3 M5, haengt an E13). GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Braucht: W36 (Rohrschelle, Leerrohr, Schacht), W37 (Schaltschrank), E13. Schliesst L07 (Kabel-Sweep), L08, L15 (ohne Kuppel-Trunk, der wartet auf die Statik), L17 (Schacht und Deckel setzen). Pruefung: check_leitungen, Trunk-Laengen gegen Plan Abschnitt 8."
   },
   {
    "id": "M10-S7",
@@ -1005,12 +1005,12 @@
   },
   {
    "id": "E20",
-   "titel": "Wasserkreislauf nach R47: Variante A (heutiger Plan, Empfehlung), B (Ring) oder C (Ring nur fuer Beete)?",
+   "titel": "Wasserkreislauf: A+ (heutiger Plan plus Zugaenglichkeit, Empfehlung), A, B oder C?",
    "status": "entscheidung",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Ben (nach R47)",
-   "notiz": "ZURUECKGESTELLT bis R47B (Bens Wartbarkeitsfrage 02.11.). R47 empfahl A, hat aber Wartbarkeit und Ausfallsicherheit nur kurz bewertet; R47B bewertet A, B, C und A+ (A mit Zugaenglichkeitsmassnahmen) neu. JETZT FAELLIG. R47 empfiehlt A: der Ring wuerde den Biofilter um 725 mm anheben oder die Pumpen auf 2,83 m zwingen, spart keine Teile und bringt nur Beete ohne Graben (billiger auf andere Weise loesbar). Ausnahme C: nur wenn die Beet-Zuleitungen beim Bau von S3 die Gaenge verschlechtern. Bei A laufen M10 S3 bis S7 und W37 unveraendert weiter (die Teile sind gebaut, K08 bis K10 muessten bei B/C teils neu). Meine Einschaetzung: A. Blockiert: Freigabe von M10 S3 bis S7 und W37 (jetzt gestoppt)."
+   "notiz": "JETZT FAELLIG (nach R47 und R47B). Empfehlung A+: Der Ring aendert an deiner Sorge nichts (alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler), A+ macht die kritischen Stuecke erreichbar und meldbar: Revisionsstutzen an den vergrabenen Strecken, Schaechte mit Deckel an Heber-Ende, Bypass-Hahn und Filter-Stamm, Absperrhaehne an Pumpen-Saug und Stamm, Bypass-Probelauf, Durchfluss- und Pegelwaechter mit Alarm, Spuelanschluss am Absetzerkreis; etwa 20 Stutzen, 4 bis 6 Schaechte, 2 Sensoren [A], alles Standardteile ohne Eingriff in die Hoehen. Unterfrage (optional): Absetzerkreis streichen (R44 Kandidat A) wuerde 17,7 der 30,3 vergrabenen Meter entfernen, ist aber Rueckbau des Gebauten und widerspricht D71; ich empfehle NEIN. Bei Ja zu A+: Planer-Blaetter fuer M10 S3 bis S7 mit den Zugangsteilen, Nachruestung des Gebauten (M10-S2N), Wachter-Alarm haengt an E13 (Schaltschrank). Blockiert: M10 S3 bis S7, W37, W40-BEET."
   },
   {
    "id": "W40-BEET",
@@ -1024,11 +1024,20 @@
   {
    "id": "R47B",
    "titel": "Wartbarkeit und Ausfallsicherheit: vergrabene Rohre, oberirdische Leitungen, Neubewertung A/B/C und A+ (Ergaenzung zu R47)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2.4,
    "wer": "Fachrecherche (Wiederanlauf recherche-r47)",
-   "notiz": "GESTARTET 02.11. (Wunsch W52). Blatt docs/jobs/R47b-wartbarkeit.md. Ausloeser: Ben sorgt sich um vergrabene Rohre (Verstopfung, Anlage steht, Kreislaeufe kippen). Vorbefund: 30,3 von 54,0 m verlegtem Rohr liegen unter Bodenniveau (Bodenablauf K03/K19, K05, K21, Filter-Stamm K06/K22, Notbypass K56/K57, Heber K01/K17); der Ring wuerde keines davon aendern. Fragen: Inventar, Risiko, Massnahmen mit Standardteilen (Reinigungsstutzen, Schaechte, Bodenkanal mit Gitterrost, Absperrhaehne, Redundanz, Alarm), oberirdisch statt vergraben, Ring-Wartungsbilanz, neue Empfehlung inklusive Variante A+."
+   "notiz": "Erledigt 02.11. (Commit 70878d8, Abschnitt 6 in docs/research/R47-wasserkreislauf-neu.md, Skript scripts/r47_zugang.py). Neue Empfehlung A+ (heutiger Plan plus Zugaenglichkeitsmassnahmen). Befund: 30,3 von 54,0 m (56 Prozent) liegen unter Bodenniveau und das stimmt; der Ring betrifft davon 0 m (alles vor dem Verteiler). Kritische Einzelpfade je Linie: Heber K01/K17, Filter-Stamm K06/K22 (0,36 m/s), Notbypass K56/K57 (Totast, nie getestet). Wasserumlauf-Stillstand toetet nicht in Minuten (TAN etwa +4,6 mg/l je Tag [E]); harter Termin ist die Luft (0,8 bis 1,2 h). Massnahmen M1 Revisionsstutzen (T mit Stopfen), M2 Schaechte mit Deckel, M3 Absperrhaehne, M4 Bypass-Probelauf, M5 Durchfluss-/Pegelwaechter mit Alarm, M7 Spuelanschluss; M6 Bodenkanal mit Gitterrost optional. Mindestgeschwindigkeit und Reinigungsabstaende nur aus Abwasserquellen (Kandidat), nicht aus Aquakultur."
+  },
+  {
+   "id": "M10-S2N",
+   "titel": "Nachruestung des Gebauten fuer A+: T mit Stopfen an vorhandenen Boegen, Schaechte an den Bypass-Haehnen, Kappe auf den Linie-2-Stumpf (K03)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.8,
+   "wer": "Montage (kleine Sitzung, nach E20 = A+)",
+   "notiz": "Aus R47 Abschnitt 6.3 und 6.6. Nur Zusaetze an gebaute T und Haehne, kein Rueckbau. Der offene 300-mm-Stumpf von Linie 2 bei x 0 / y -1649 / Z -1635 wird mit Kappe (W39) zum Revisionsstutzen fuer K03. Schacht-Lage gegen den Filterkasten (Luecke L23) beachten. Eigenes Blatt vom Planer, erst nach Bens Freigabe."
   }
  ]
 }

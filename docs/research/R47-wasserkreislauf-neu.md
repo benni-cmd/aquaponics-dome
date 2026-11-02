@@ -314,3 +314,34 @@ Gangbreiten A 700 / B 600 / Wandluft 110 mm: Ein bündiger Rost verändert sie n
 | | Stützen: Statik und Gangkarte offen |
 
 **Welche der kritischen Abschnitte aus Frage 1 betrifft der Ring?** Keinen. Alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler. Vergraben bleibt: Heber, Bodenablauf, Filter-Stamm, Bypass, Absetzerkreis, Beet-Sumpf und alle Rücklaufstrecken unter Z 400.
+
+### 6.6 Neue Empfehlung (Frage 6)
+
+A+ = A plus M1 (Revisionsstutzen), M2 (Schächte), M3 (Absperrhähne), M4 (Bypass-Probelauf), M5 (Durchfluss/Pegel-Alarm), M7 (Spülanschluss).
+
+| | A | B | C | **A+** |
+|---|---|---|---|---|
+| Meter unzugänglich ohne Aufgraben | 30,3 | 30,3 | 30,3 | 30,3 geometrisch, aber mit Revision erreichbar |
+| Meter über Kopf (Leiter) | 0 | 21 (+ Abgänge 85) | 21 + 36 | 0 |
+| Einzelpfade (Zählung Abschnitt 6.2) | 10 | 7, davon einer für beide Linien | 10 | 10, aber mit Bypass-Probe und Alarm |
+| Erkennungszeit | Sichtkontrolle | Sichtkontrolle | Sichtkontrolle | Minuten (Alarm) |
+| Aufwand je Wartung | Aufgraben | Leiter für Ring, sonst Aufgraben | wie B | Stopfen ziehen, Hahn schließen |
+| Zusätzliche Teile | 0 | Ring, Stützen, Booster | Halbringe, Booster | ca. 20 Stutzen, 4–6 Schächte, 2 Sensoren [A] |
+| Pumpenlast | 430 W | 548 | 503 | 430 + Sensoren |
+| Risiko | Verstopfung blind | + Ring | + Ring | niedrig |
+| Folgen Gebautes/Geplantes | – | Biofilter hoch, K08–K10 neu | wie B | Zusätze an vorhandene T |
+
+**Empfehlung: A+.** Begründung: (1) Bens Sorge gilt den vergrabenen Hauptkreislauf-Strecken, der Ring ändert sie nicht. (2) Revisionsstutzen, Schächte und Alarm sind Standardteile ohne Eingriff in die Höhen. (3) Die Erkennungszeit sinkt von „Sichtkontrolle“ auf Minuten. (4) Der Ring blieb in 5.1 aus anderen Gründen unterlegen und fügt hier keinen Vorteil hinzu.
+
+**Optional, Entscheidung Ben:** R44 Kandidat A (Absetzerkreis streichen) entfernt 17,7 der 30,3 vergrabenen Meter und zwei Einzelpfade; Rückbau des in S2b/S2c Gebauten (K03–K05, K19–K21).
+
+**Folgen.**
+1. **M10 S3–S7:** weiter, mit zusätzlichen Instanzen für M1–M3 und Schächten in S3/S4; Alarmkabel in S6.
+2. **W37:** Beet-Sumpf und Schlammfass bleiben; Ablaufwächter am Beet-Sumpf (in 4.1 schon genannt).
+3. **Neue Bauteile (Planer-Blätter):** Revisionsstutzen d50/d63 (T + Kappe, vorhanden), Schacht-Deckel trittfest, Bodenkanal-Rost (nur wenn M6 gewählt), Handelsteile Durchflusswächter.
+4. **Schon Gebautes:** nur Nachrüstung (T mit Stopfen an vorhandenen Bögen, Schächte an Bypass-Hähnen, Kappe auf Linie-2-Stumpf).
+
+**Offen.** (a) Mindestgeschwindigkeit für Aquakultur und Reinigungsabstände sind **nicht** aus Aquakultur-Quellen belegt (Abwasserquellen als Kandidat). (b) Giftgrenze von TAN/Nitrit nach Stillstand nicht belegt. (c) Schaltschrank, Notstrom, Alarm offen (E4). (d) Gangkarte nicht gerechnet. (e) Anzahl und Lage der Stutzen noch nicht geplant (Planer).
+
+**Geprüft gegen:** `docs/jobs/R47b-wartbarkeit.md`; `data/leitungstrassen.json`; `data/leitungsnetz.json`; `docs/packages/m10-leitungen.md` Abschn. 4; `docs/research/R45-hydraulik-auslegung.md` Abschn. 4 (Luftausfall, aus früherem Lesen); `scripts/r47_zugang.py` (Befehl `python -X utf8 scripts/r47_zugang.py`); Websuchen Iowa SUDAS, PM Engineer, Aquamaof. Nicht gelesen: `docs/walkway-map.md`, `docs/jobs/pruefung/W36-W39.md` nur Schlagwortsuche Rohrschelle.
+**Offen:** siehe oben. DEINE ENTSCHEIDUNG (Ben): A+ (empfohlen) und ob R44 Kandidat A (Absetzerkreis streichen) geprüft wird.

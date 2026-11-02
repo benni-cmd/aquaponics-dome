@@ -215,3 +215,51 @@ Quellen: [Aquaponics411 Bell Siphon Tuning](https://aquaponics411.com/how-a-bell
 
 **Offen:** siehe Liste oben; Besitzer: Entscheidung A/B/C liegt bei Ben; Gangkarte und Statik bei Orchestrator/Montage nach Entscheidung.
 
+
+---
+
+## 6. Nachtrag R47b: Wartbarkeit und Ausfallsicherheit (Wunsch W52, 02.11.2026)
+
+**Problem:** Ben sorgt sich: Verstopft ein vergrabenes Rohr, steht die Anlage still und alles kann sterben. **Intent:** E20 auch nach Wartbarkeit und Ausfallsicherheit entscheiden. **Goal:** Inventar, Risiko, Maßnahmen, ehrliche Bilanz Ring gegen heute, neue Empfehlung. Nichts umgesetzt.
+
+### 6.0 Gesamturteil (zehn Zeilen)
+
+1. **Neue Empfehlung: A+ (heutiger Plan plus Zugänglichkeitsmaßnahmen).** Der Ring ändert an Bens Sorge nichts.
+2. **Bens Befund stimmt:** 30,3 m von 54,0 m verlegtem Rohr (56 %) liegen unter Bodenniveau [E, `python -X utf8 scripts/r47_zugang.py`, Z < 400 absolut]. Der Ring betrifft **0 m davon**: alle 30,3 m sind Hauptkreislauf, Absetzerkreis und Notbypass vor dem Verteiler; der Ring ersetzt nur K11/K12 dahinter.
+3. **Größter Block ist nicht der kritischste:** Der Absetzerkreis (K03, K05, K19, K21) liegt mit 17,7 m (58 % des Vergrabenen) bei nur 0,13–0,2 m/s, weit unter 0,6 m/s Selbstreinigung (Kandidat, nur Abwasserquellen). Fällt er aus, fehlt nur der Absetzer-Teilstrom, nicht der Umlauf.
+4. **Kritische Einzelpfade je Linie:** Heber K01/K17 (1,6 und 0,8 m vergraben, pipe-voll), Filter→Pumpe-Stamm K06/K22 (3,4 und 2,1 m, Strömung 0,36 m/s), dazu der Notbypass K56/K57 (3,2 m), der im Normalbetrieb zu ist und als Totast nie getestet wird.
+5. **Ausfallzeit:** Wasserumlauf-Stillstand tötet nicht in Minuten: Luft läuft getrennt; TAN steigt um ca. 4,6 mg/l je Tag bei 130 g/Tag in 28,5 m³ [E, Giftgrenze nicht belegt]. Der harte Termin ist die Luft: 0,8–1,2 h [Q R45 Abschn. 4].
+6. **Wirksamste Einzelmaßnahme:** Revisionsstutzen (T mit Stopfen) und Schächte an den vergrabenen Strecken, Durchflusswächter je Linie. Der offene Linie-2-Stumpf (300 mm, K03) ist schon ein halber Stutzen.
+7. **Alternative mit dem größten Hebel:** R44 Kandidat A (Absetzerkreis streichen) entfernt 17,7 der 30,3 m, ist aber Rückbau des Gebauten und Bens Entscheidung.
+8. **Ring-Bilanz ehrlich:** Vorteil Sichtkontrolle und Elementregler greifbar, Nachteil Leiter, Leckage über dem Gang, Kondensat, UV, Frost. Netto kein Wartungsgewinn für das, was Ben fürchtet.
+9. **Folgen:** M10 S3–S7 laufen weiter, mit zusätzlichen Revisionsteilen; W37 unverändert plus Ablaufwächter; Gebautes bleibt, wird nachgerüstet.
+10. **Offen:** Mindestgeschwindigkeit und Reinigungsstutzen-Abstand für Aquakultur nicht belegt; Notstrom und Alarm-Schaltschrank offen.
+
+### 6.1 Inventar der unzugänglichen Abschnitte (Frage 1)
+
+Nachgeprüft: `python -X utf8 scripts/r47_zugang.py` liest `data/leitungstrassen.json` (Segment-Mitte Z < 400 absolut = unter Bodenniveau), Durchfluss aus `data/leitungsnetz.json`, Geschwindigkeit mit Innendurchmesser PVC-U SDR 21 und dem größten Durchmesser der Kante. Ergebnis deckt sich mit dem Vorbefund: **30,3 m von 54,0 m.**
+
+| Kante | vergraben m | Rohr | Funktion | l/min | v m/s |
+|---|---|---|---|---|---|
+| K03 / K19 | 6,3 / 4,0 | d40–50 | Bodenablauf Pool → kleine Pumpe | 12,5 | ≤ 0,2 |
+| K05 / K21 | 4,3 / 3,1 | d50 | Absetzer → Feinfilter | 12,5 | 0,13 |
+| K06 / K22 | 3,4 / 2,1 | d50–63 | Feinfilter → Hauptpumpe | 55 | 0,36 |
+| K02 / K18 | 0,7 / 0,9 | d50 | Feinfilter → zweite Pumpe | 55 | 0,57 |
+| K56 / K57 | 1,0 / 2,2 | d63 | Notbypass Pool → Pumpe (Normalbetrieb zu) | 110 | 0,72 |
+| K01 / K17 | 1,6 / 0,8 | d75 | Heber Pool → Feinfilter (pipe-voll) | 97,5 | 0,45 |
+
+Bei K03/K19 und den Absetzer-Strecken tragen die Rohre Feststoffe. **Mindestgeschwindigkeit gegen Absetzen:** 2 ft/s ≈ 0,61 m/s Selbstreinigung bei Abwasser: [Iowa SUDAS 3C-1](https://www.iowasudas.org/wp-content/uploads/sites/15/2020/03/3C-1.pdf), [PM Engineer, Sanitary Drainage](https://www.pmmag.com/articles/105924-back-to-basics-sanitary-drainage-systems). Zwei unabhängige Quellen, aber aus der Abwassertechnik, nicht aus der Aquakultur: **Kandidat** für 0,6 m/s. Eine Aquakultur-Quelle fand die Suche nicht. Feste Zusatzbedingung: Das Wasser nach dem Feinfilter (K06, K22) ist feststoffarm (R44), dort ist 0,36 m/s weniger kritisch als am Bodenablauf.
+
+### 6.2 Risiko je Abschnitt (Frage 2)
+
+| Abschnitt | Risiko | Folge bei Ausfall | Pfad | Erkennung heute |
+|---|---|---|---|---|
+| **K01/K17 Heber** | Luftsack, Biofilm, Fremdkörper; Reserve nur 85/88 mm [Q S2R] | Filterkasten läuft leer, Pumpen trocken, Umlauf der Linie steht | Einzelpfad je Linie; Gegenlinie läuft, Bypass K56 | keine (Hoch-Schwimmer am Korb nur geplant) |
+| **K06/K22 Stamm** | Feinfilter-Durchbruch, Biofilm bei 0,36 m/s | Pumpen saugen nichts, Linie steht | Einzelpfad je Linie; K56/K57 umgeht den Filter, nicht den Stamm | keine |
+| K02/K18 | wie Stamm, einseitig | eine von zwei Pumpen fällt aus: halber Umlauf der Linie | parallel | keine |
+| **K56/K57 Bypass** | Totast, Hahn festgesetzt, Biofilm; nie getestet | Notweg im Notfall nicht verfügbar | Redundanz nur auf dem Papier | keine |
+| K03/K19, K05/K21 Absetzerkreis | Verstopfung durch Fest- und Schlammteile bei 0,13–0,2 m/s | Absetzer-Teilstrom fällt aus; Feststoffe nehmen zu | Reserve-Pumpe (K04), sonst Einzelpfad | keine |
+
+**Zeit bis Schaden [Q/E].** Luftausfall 0,8–1,2 h bis 3 mg/l [Q R45 Abschn. 4]. Wasserumlauf steht, Luft läuft: TAN +4,6 mg/l je Tag (130 g/Tag ÷ 28,5 m³) [E, R44-Last D61]; der Grenzwert für Fische ist pH- und temperaturabhängig und hier nicht belegt: **offen**. Biofilter ohne Durchströmung: die Bakterien verbrauchen Sauerstoff weiter, Luft im Biofilter (K45/K46) hält sie am Leben. Bei Pumpenausfall sammelt sich das Wasser im Pool-Filterbereich; das Gesamtrisiko steigt nach Stunden bis Tagen, nicht nach Minuten. Quellenlage: die RAS-Quellen nennen „plötzlichen, katastrophalen Fischverlust“ durch Pumpen- oder Stromausfall [Aquamaof, Redundanz](https://www.aquamaof.com/ras-blog-post/redundancies-and-back-up-systems/) und doppelte Zuleitungen sowie Durchflussmesser je Leitung mit Alarm; Zahlen zu Ammoniak/Nitrit nach Stillstand fand die Suche **nicht**.
+
+**Kritische Einzelpfade zuerst:** (1) Heber je Linie, (2) Filter→Pumpe-Stamm je Linie, (3) Bypass als ungetestete Reserve. Redundanz heute: zwei Linien (Ausfall einer Linie halbiert den Umlauf), zwei Hauptpumpen je Linie, Notbypass.

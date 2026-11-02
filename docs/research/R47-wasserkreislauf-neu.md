@@ -91,4 +91,40 @@ Stützabstand: kleinerer von zwei Quellen: [Georg Fischer PVC-U Planning Fundame
 
 **Fazit Abschnitt 2:** Verkürzung gibt es nur beim Beet-Rücklauf (Sumpf-Lage), sonst ist der Plan eng. Nächster Schritt wäre ein Platzcheck der Sumpf-Lage in M10 S4 (ICH, wenn Ben A wählt).
 
+## 3. Schwerkraft nutzen
+
+**Einschätzung: der heutige Plan nutzt sie schon; der Ring verschlechtert die Bilanz.**
+
+**Höhenbilanz heutiger Plan (Z relativ, mm) [Q `leitungsnetz.json`, `m10-leitungen.md`, R45; E].**
+
+| Stufe | Z | Antrieb |
+|---|---|---|
+| Pool-Spiegel | 515 | Ausgang |
+| Seitenablauf → Feinfilter-Auslauf (Heber K01/K17) | Spiegel am Filter 320 (195 mm Heberverlust) | **frei** (Pipe voll, Reserve 85/88 mm nach S2R) |
+| Hauptpumpen (4 × 55 l/min) | Saug 120, Druck 255 | **gepumpt**, H 2,0 m |
+| Biofilter Zulauf 1420 → Überlauf 1570 | | gepumpt bis hier |
+| Verteiler → NFT (Rinne 1000) | 570 mm Druckkopf | **frei** |
+| Verteiler → Beete (Tropfrohr ~650) | 920 mm Kopf | **frei** |
+| Beetablauf −100 | 615 mm unter Spiegel | Beet-Sumpf, **gepumpt** 1,47 m |
+| Rücklauf Halbring 660–720 → Pool | über Spiegel | **frei** |
+
+Gepumpt wird an zwei Stellen: Hauptpumpen und Beet-Sumpf. Jede weitere Stufe kommt nur durch die Höhenlage, nicht durch Planung. Die Beet-Stufe ist **zwingend**, solange der Beetablauf unter dem Pool-Spiegel liegt [Q R45 Abschnitt 3]. Entfällt sie nur durch Anheben der Beete um ≥ 0,7 m oder Absenken des Spiegels: beides Eingriffe in D26/Dom, nicht Teil dieser Prüfung.
+
+**Pumpenleistung je Variante [E, Skript Abschnitt 3; η 25 %, Netzliste].**
+
+| | A heute | B Ring (Druck) | C Hybrid (Booster Beete) |
+|---|---|---|---|
+| Hauptpumpen 4 × | 72 W (H 2,0 m) = 288 | 102 W (H 2,83 m) = 406 | 288 |
+| Absetzer klein (2 in Betrieb) | 34 | 34 | 34 |
+| Beet-Sumpf 2 × 60 W × 0,9 | 108 | 108 | 108 |
+| Booster Beete (H 1,02 m) | – | – | 2 × 37 = 74 |
+| **Summe** | **430 W** (10,3 kWh/Tag) | **548 W** (13,2) | **503 W** (12,1) |
+| Pumpstufen (Beetwasser) | 2 | 2 | 3 |
+
+Mehrverbrauch gegen A: B +118 W (+27 %), C +73 W (+17 %). Rechenweg: Hauptpumpe A stimmt mit der Netzliste überein (72 W je Pumpe bei 55 l/min, H 2,0 m). Ring-Hochpunkt 2245 + 50 mm Reserve. Hinweis: Die Netzliste nennt H 2,0 m für 1,1 m statischen Anteil; der Rest (0,9 m) ist Reibung plus 20 % Reserve [E]; für den Ring habe ich ihn unverändert übernommen, der Ring hat aber mehr Rohrweg: reale Mehrleistung eher höher.
+
+**Schwerkraft-Variante des Rings.** Biofilter +725 mm: Pumpen bleiben bei H 2,0 m + 0,725 m = 2,73 m (gleiche Größenordnung wie B). Keine Schwerkraft gewonnen, nur verlagert.
+
+**Fazit Abschnitt 3:** A bleibt die niedrigste Pumpenlast (430 W), und die Schwerkraft-Strecke (Biofilter → Verteiler → Beete/NFT → Rücklauf → Pool) ist bereits vollständig frei.
+
 <!-- ENDE -->

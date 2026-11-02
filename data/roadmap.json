@@ -1,5 +1,5 @@
 {
- "stand": "Stand 02.11.2026 abends: R47c (Ring mit einheitlichem Fluss) laeuft; Entscheidung E20 wartet darauf. Fragen an dich stehen oben.",
+ "stand": "Stand 02.11.2026 abends: R47c fertig, Empfehlung bleibt A+ (heutiger Plan plus Zugaenglichkeit). Bericht fuer den Mitgruender aktualisiert. Nichts laeuft. E20 wartet auf deine Entscheidung. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -929,7 +929,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.6,
    "wer": "Orchestrator",
-   "notiz": "ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Klein, vor W37: Leistung Beet-Sumpf-Pumpen 108 bis 120 W statt 72 W, Geblaese zwei Membranpumpen N+1 (Rechnung 100 bis 215 W), Kabelzeilen fuer die zwei Sumpfpumpen in der Netzliste; danach check_netz.py und Leistungsbilanz. Schaltschrank-Auslegung haengt dran (E13)."
+   "notiz": "ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Klein, vor W37: Leistung Beet-Sumpf-Pumpen 108 bis 120 W statt 72 W, Geblaese zwei Membranpumpen N+1 (Rechnung 100 bis 215 W), Kabelzeilen fuer die zwei Sumpfpumpen in der Netzliste; danach check_netz.py und Leistungsbilanz. Schaltschrank-Auslegung haengt dran (E13). NEU aus R47c: Pumpe_gross bei 2,0 m und 55 l/min = Premium-Klasse (Oase Aquarius 6000, 110 W Nennleistung, Eco-Klasse 60 W reicht nicht); Netzliste und Kabelzeile rechnen 72 W bei Wirkungsgrad 25 %: Annahme und Fabrikat nachpruefen."
   },
   {
    "id": "E18",
@@ -1010,7 +1010,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Ben (nach R47)",
-   "notiz": "ZURUECKGESTELLT bis R47C (Rueckfrage des Mitgruenders: einheitlicher Fluss, Foerderhoehe 2 bis 4 m ist normal, das Hoehenargument ist zu schwach formuliert). JETZT FAELLIG (nach R47 und R47B). Empfehlung A+: Der Ring aendert an deiner Sorge nichts (alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler), A+ macht die kritischen Stuecke erreichbar und meldbar: Revisionsstutzen an den vergrabenen Strecken, Schaechte mit Deckel an Heber-Ende, Bypass-Hahn und Filter-Stamm, Absperrhaehne an Pumpen-Saug und Stamm, Bypass-Probelauf, Durchfluss- und Pegelwaechter mit Alarm, Spuelanschluss am Absetzerkreis; etwa 20 Stutzen, 4 bis 6 Schaechte, 2 Sensoren [A], alles Standardteile ohne Eingriff in die Hoehen. Unterfrage (optional): Absetzerkreis streichen (R44 Kandidat A) wuerde 17,7 der 30,3 vergrabenen Meter entfernen, ist aber Rueckbau des Gebauten und widerspricht D71; ich empfehle NEIN. Bei Ja zu A+: Planer-Blaetter fuer M10 S3 bis S7 mit den Zugangsteilen, Nachruestung des Gebauten (M10-S2N), Wachter-Alarm haengt an E13 (Schaltschrank). Blockiert: M10 S3 bis S7, W37, W40-BEET. BERICHT FUER DEN MITGRUENDER (HTML, mit Bildern): docs/berichte/wasserkreislauf-ring-gegen-plan.html."
+   "notiz": "STAND NACH R47C: Empfehlung bleibt A+ (Rangfolge A+ > B2 > B1 > B3), aber die Begruendung gegen den Ring ist jetzt Aufwand statt Hoehe. Bericht (HTML und Artifact) enthaelt die Rueckfrage-Box. JETZT FAELLIG (nach R47 und R47B). Empfehlung A+: Der Ring aendert an deiner Sorge nichts (alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler), A+ macht die kritischen Stuecke erreichbar und meldbar: Revisionsstutzen an den vergrabenen Strecken, Schaechte mit Deckel an Heber-Ende, Bypass-Hahn und Filter-Stamm, Absperrhaehne an Pumpen-Saug und Stamm, Bypass-Probelauf, Durchfluss- und Pegelwaechter mit Alarm, Spuelanschluss am Absetzerkreis; etwa 20 Stutzen, 4 bis 6 Schaechte, 2 Sensoren [A], alles Standardteile ohne Eingriff in die Hoehen. Unterfrage (optional): Absetzerkreis streichen (R44 Kandidat A) wuerde 17,7 der 30,3 vergrabenen Meter entfernen, ist aber Rueckbau des Gebauten und widerspricht D71; ich empfehle NEIN. Bei Ja zu A+: Planer-Blaetter fuer M10 S3 bis S7 mit den Zugangsteilen, Nachruestung des Gebauten (M10-S2N), Wachter-Alarm haengt an E13 (Schaltschrank). Blockiert: M10 S3 bis S7, W37, W40-BEET. BERICHT FUER DEN MITGRUENDER (HTML, mit Bildern): docs/berichte/wasserkreislauf-ring-gegen-plan.html."
   },
   {
    "id": "W40-BEET",
@@ -1042,11 +1042,11 @@
   {
    "id": "R47C",
    "titel": "Ring mit einheitlichem Fluss ausarbeiten, Foerderhoehe 2 bis 4 m neu bewerten (Rueckfrage Mitgruender)",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 2.3,
    "wer": "Fachrecherche (Sitzung recherche-r47c, frisch)",
-   "notiz": "GESTARTET 02.11. (Wunsch W53). Blatt docs/jobs/R47c-ring-einheitlicher-fluss.md. Anforderung EINHEIT: alles Wasser durch die Biofilter, ein Pool, keine Teilstroeme an den Biofiltern vorbei. Varianten B1 Biofilter angehoben, B2 Booster nach dem Biofilter, B3 Hochbehaelter; dazu Pumpenfrage (Standardpumpen 2 bis 4 m, Mehrleistung des Rings etwa +118 W gegen 430 W) und Verteilung auf ungleich laufende Biofilter-Tanks. Ergebnis als Abschnitt 7 in R47. Ohne Marke gestartet: Beleg fuer die Hook-Korrektur."
+   "notiz": "Erledigt 02.11. (vier Commits, Abschnitt 7 in docs/research/R47-wasserkreislauf-neu.md, Skript scripts/r47_pumpen.py). Ergebnis: Foerderhoehe 2,83 m und 3,2 m sind Standardklasse (Mehrleistung nur +119 bis 166 W), als Ausschlusskriterium taugt sie nicht. Mit einheitlichem Fluss braucht ein Ring B1 (Biofilter 725 mm hoeher), B2 (zweite Pumpstufe nach dem Biofilter, +147 bis 205 W, laesst Gebautes stehen) oder B3 (Hochbehaelter). Rangfolge A+ > B2 > B1 > B3; Ring bleibt NEIN, aber wegen Aufwand, nicht wegen Hoehe. A+ erfuellt die Anforderung EINHEIT schon. Offen: Pumpenkennlinien nur Parabel-Naeherung, kein zweiter unabhaengiger Hersteller, Biofilter-Verteilung schwach belegt, Statik und Gangkarte nicht gerechnet. Nebenbefund: schon 2,0 m bei 55 l/min verlangen Premium-Klasse (Oase Aquarius 6000, 110 W Nennleistung), die Netzliste rechnet 72 W."
   }
  ]
 }

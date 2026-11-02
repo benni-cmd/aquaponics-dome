@@ -1,0 +1,288 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Wasserautobahn-Vergleich</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#1c2330;--muted:#5b6475;--line:#d9dde5;--blue:#2a5da8;--gray:#8d9296;--orange:#c8651b;--green:#1b7a3d;--red:#b3261e;--soil:#e7dcc8;--note:#fff6dc;--noteline:#e5c766;--accent:#1750b0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161d;--card:#1b212b;--text:#e8ebf0;--muted:#9aa4b5;--line:#2e3644;--blue:#7ea9f0;--gray:#9aa0a6;--orange:#f0a060;--green:#7fd69a;--red:#ff8a80;--soil:#3a3226;--note:#3b2f0a;--noteline:#8a6a10;--accent:#9cc2ff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12161d;--card:#1b212b;--text:#e8ebf0;--muted:#9aa4b5;--line:#2e3644;--blue:#7ea9f0;--gray:#9aa0a6;--orange:#f0a060;--green:#7fd69a;--red:#ff8a80;--soil:#3a3226;--note:#3b2f0a;--noteline:#8a6a10;--accent:#9cc2ff;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:900px;margin:0 auto;padding-block:16px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:1.6rem;line-height:1.25;margin:12px 0 4px}
+h2{font-size:1.25rem;margin:34px 0 8px;padding-top:6px;border-top:1px solid var(--line)}
+h3{font-size:1.05rem;margin:18px 0 6px}
+.meta{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:12px 0}
+.kern{border-left:5px solid var(--accent)}
+.kern ol{margin:6px 0 0;padding-left:1.3rem}
+.kern li{margin:5px 0}
+.note{background:var(--note);border:1px solid var(--noteline);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:.95rem}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.93rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:rgba(120,130,150,.12)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.best td{background:rgba(27,122,61,.10)}
+.tablewrap{overflow-x:auto}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}
+figcaption{color:var(--muted);font-size:.88rem;padding:4px 6px 2px}
+svg{width:100%;height:auto;display:block}
+svg text{font:12px system-ui,sans-serif;fill:var(--text)}
+svg .mut{fill:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:5px;padding:1px 7px;margin-right:4px}
+.t-ok{background:rgba(27,122,61,.15);color:var(--green)}
+.t-no{background:rgba(179,38,30,.13);color:var(--red)}
+.t-mid{background:rgba(200,101,27,.15);color:var(--orange)}
+.bar{display:flex;height:26px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:8px 0}
+.bar div{overflow:hidden;padding:0 6px;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#fff;white-space:nowrap}
+dl{margin:6px 0}dt{font-weight:600;margin-top:8px}dd{margin:0 0 0 0;color:var(--muted)}
+ul{padding-left:1.2rem}li{margin:3px 0}
+.small{font-size:.88rem;color:var(--muted)}
+footer{margin-top:30px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:10px}
+
+.scroll{overflow-x:auto}.scroll svg{min-width:640px}
+body{background:var(--bg);color:var(--text)}
+</style>
+<main>
+
+<h1>Wasserkreislauf neu denken: &bdquo;Wasserautobahn&ldquo; (Ring) gegen den heutigen Plan</h1>
+<p class="meta">Aquaponics-Dome &middot; Zwischenbericht zur Abstimmung im Gr&uuml;nderteam &middot; Stand 02.11.2026 &middot; Grundlage: Recherchen R45, R47 und R47b (alle Zahlen sind Konzeptrechnungen, siehe Abschnitt 8)</p>
+
+<div class="box kern">
+<strong>Das Wichtigste in f&uuml;nf S&auml;tzen</strong>
+<ol>
+<li><b>Die Ring-Idee</b> (h&auml;ngende Verteilleitung &uuml;ber den Zonenringen, Regler an jedem Beet und Tisch) ist baubar, l&ouml;st aber die zwei Probleme nicht, f&uuml;r die sie gedacht war: weniger Teile und mehr Schwerkraft.</li>
+<li><b>Die H&ouml;he passt nicht:</b> Der Ring h&auml;ngt mit der Unterkante auf 2,10 m. Das Wasser verl&auml;sst den Biofilter aber auf 1,57 m. Wir m&uuml;ssten den Biofilter um 0,73 m anheben oder die Pumpen von 2,0 m auf 2,83 m Foerderh&ouml;he bringen.</li>
+<li><b>Er spart keine Teile:</b> 38 Abnehmer (14 Beete, 24 Tische) brauchen jeder ihren Abzweig, Hahn und Reduzierung. Dazu kommen 28 m mehr Rohr und 12 St&uuml;tzen im Boden.</li>
+<li><b>Die R&uuml;ckl&auml;ufe bleiben in jeder Variante gleich</b> (Schwerkraft mit Gef&auml;lle zum Pool). Der Ring betrifft nur die Zufuhr.</li>
+<li><b>Die Sorge um vergrabene Rohre ist berechtigt:</b> 56 % des bisher verlegten Rohrs liegen unter dem Boden, und der Ring &auml;ndert davon nichts. Die bessere Antwort ist, diese Stellen erreichbar und alarmiert zu machen (Variante A+).</li>
+</ol>
+</div>
+
+<h2>1. Die Ausgangsfrage</h2>
+<p>Ben m&ouml;chte vor dem Weiterbau pr&uuml;fen lassen, ob das Leitungssystem grunds&auml;tzlich anders gedacht werden sollte:</p>
+<ul>
+<li>M&ouml;glichst wenige Teile; Filter, Pumpen und Subtanks m&ouml;glichst nah am Wasserkreislauf, damit weniger umgeleitet werden muss.</li>
+<li>Die Schwerkraft nicht nur beachten, sondern <b>nutzen</b>.</li>
+<li>Eine <b>h&auml;ngende Verteil-&bdquo;Wasserautobahn&ldquo;</b>: ein Leitungsring &uuml;ber den Zonenringen (am besten einer f&uuml;r alle), mit Abzweigen zu Subtanks und NFT-Elementen und Reglern direkt an den Elementen. Der Ring liegt &uuml;ber dem mittleren Ring auf einfachen St&uuml;tzen.</li>
+<li>Flood-and-Drain f&uuml;r die Substratbeete, unten mit Abstandshalter oder Sieb, damit nichts vergammelt und der Siphon nicht verstopft.</li>
+<li>Sp&auml;ter erg&auml;nzt: Ein verstopftes <b>vergrabenes</b> Rohr legt die Anlage still und die Kreisl&auml;ufe kippen. Oberirdische Leitungen w&auml;ren einfacher zu warten.</li>
+</ul>
+
+<h2>2. Wie der Kreislauf heute geplant ist (Variante A)</h2>
+<p>Das Wasser wird <b>nur einmal gepumpt</b>: Pool &rarr; Heber (ohne Pumpe, nur durch den Spiegelunterschied) &rarr; Feinfilter &rarr; Hauptpumpen &rarr; Biofilter. Ab dem &Uuml;berlauf des Biofilters l&auml;uft alles frei mit Schwerkraft: Verteiler &rarr; Beete und NFT-Tische &rarr; R&uuml;cklauf zum Pool. Eine zweite Pumpe gibt es nur im Beet-Sumpf, weil der Beetablauf 0,6 m <i>unter</i> dem Pool-Spiegel liegt.</p>
+
+<figure><div class="scroll"><svg viewBox="0 0 900 430" role="img" aria-label="Seitenansicht des heutigen Kreislaufs mit H&ouml;hen in Millimetern">
+<!-- Boden und Erde -->
+<rect x="0" y="334" width="900" height="96" fill="var(--soil)"/>
+<line x1="0" y1="334" x2="900" y2="334" stroke="var(--muted)" stroke-width="1.5"/>
+<text x="6" y="328" class="mut">Boden (Z 0)</text><text x="6" y="424" class="mut">vergraben / unter dem Boden</text>
+<!-- Pool -->
+<rect x="30" y="262" width="100" height="168" fill="none" stroke="var(--muted)" stroke-width="2"/>
+<rect x="31" y="277" width="98" height="152" fill="var(--blue)" opacity=".28"/>
+<line x1="31" y1="277" x2="129" y2="277" stroke="var(--blue)" stroke-width="2"/>
+<text x="46" y="256" >Pool</text><text x="136" y="274" class="mut">Spiegel Z 515</text>
+<!-- Heber unterflur -->
+<polyline points="130,297 170,297 190,362 290,362 310,299" fill="none" stroke="var(--orange)" stroke-width="4"/>
+<text x="150" y="392" style="fill:var(--orange)">Heber (ohne Pumpe)</text>
+<!-- Feinfilter in Grube -->
+<rect x="310" y="285" width="60" height="104" fill="var(--card)" stroke="var(--muted)" stroke-width="2"/>
+<text x="316" y="333">Fein-</text><text x="316" y="347">filter</text><text x="300" y="404" class="mut">in Grube Z &minus;496</text>
+<!-- Pumpe und Druckleitung (Halo) -->
+<polyline points="370,355 408,355" fill="none" stroke="var(--blue)" stroke-width="4"/>
+<circle cx="418" cy="355" r="12" fill="var(--orange)"/><text x="402" y="383" class="mut">Pumpen</text>
+<!-- R&uuml;cklauf (grau gestrichelt), vor Druckleitung zeichnen -->
+<polyline points="700,236 700,258 135,258" fill="none" stroke="var(--gray)" stroke-width="4" stroke-dasharray="9 5"/>
+<polygon points="135,252 125,258 135,264" fill="var(--gray)"/>
+<text x="560" y="252" style="fill:var(--gray)">R&uuml;cklauf (Gef&auml;lle, Schwerkraft)</text>
+<!-- Druckleitung nach oben -->
+<polyline points="430,355 456,355 456,178 470,178" fill="none" stroke="var(--bg)" stroke-width="9"/>
+<polyline points="430,355 456,355 456,178 470,178" fill="none" stroke="var(--blue)" stroke-width="4"/>
+<!-- Biofilter -->
+<rect x="470" y="150" width="70" height="64" fill="var(--card)" stroke="var(--muted)" stroke-width="2"/>
+<text x="478" y="176">Bio-</text><text x="478" y="190">filter</text>
+<text x="470" y="140" class="mut">&Uuml;berlauf Z 1570</text>
+<!-- &Uuml;berlauf zum Verteiler -->
+<polyline points="540,161 600,161" fill="none" stroke="var(--blue)" stroke-width="4"/>
+<circle cx="600" cy="161" r="6" fill="var(--blue)"/><text x="570" y="152" class="mut">Verteiler</text>
+<!-- NFT -->
+<polyline points="600,161 640,161 640,224" fill="none" stroke="var(--blue)" stroke-width="4"/>
+<rect x="630" y="224" width="130" height="8" fill="var(--green)"/>
+<line x1="640" y1="232" x2="640" y2="334" stroke="var(--muted)" stroke-width="3"/><line x1="750" y1="232" x2="750" y2="334" stroke="var(--muted)" stroke-width="3"/>
+<text x="650" y="216">NFT-Tische (Z 1000)</text>
+<!-- Beete -->
+<polyline points="600,161 600,132 830,132 830,282" fill="none" stroke="var(--blue)" stroke-width="4"/>
+<rect x="785" y="282" width="90" height="70" fill="var(--green)" opacity=".35" stroke="var(--green)" stroke-width="2"/>
+<text x="796" y="306">Beete</text><text x="790" y="322" class="mut">Siphon-Ablauf</text>
+<!-- Beet-Ablauf zum Sumpf und hoch -->
+<polyline points="785,346 700,346" fill="none" stroke="var(--gray)" stroke-width="4"/>
+<rect x="650" y="346" width="50" height="50" fill="var(--card)" stroke="var(--muted)" stroke-width="2"/>
+<text x="652" y="368">Beet-</text><text x="652" y="382">Sumpf</text>
+<polyline points="675,346 675,258" fill="none" stroke="var(--gray)" stroke-width="4"/>
+<circle cx="675" cy="300" r="10" fill="var(--orange)"/>
+<text x="560" y="418" class="mut">Ablauf Z &minus;100: 615 mm unter dem Spiegel &rarr; Pumpe n&ouml;tig</text>
+<!-- Legende -->
+<rect x="480" y="14" width="410" height="52" fill="var(--card)" stroke="var(--line)"/>
+<line x1="490" y1="30" x2="520" y2="30" stroke="var(--blue)" stroke-width="4"/><text x="526" y="34">Zulauf</text>
+<line x1="590" y1="30" x2="620" y2="30" stroke="var(--gray)" stroke-width="4" stroke-dasharray="9 5"/><text x="626" y="34">R&uuml;cklauf</text>
+<circle cx="710" cy="30" r="7" fill="var(--orange)"/><text x="722" y="34">Pumpe / unterirdisch</text>
+<text x="490" y="56" class="mut">schematisch, nicht ma&szlig;stabsgetreu; H&ouml;hen in mm &uuml;ber dem Innenboden</text>
+</svg></div>
+<figcaption>Bild 1: Heutiger Plan (Variante A). Gepumpt wird zweimal, in den Hauptpumpen (2,0 m) und im Beet-Sumpf (1,47 m). Alles andere l&auml;uft mit Schwerkraft.</figcaption>
+</figure>
+
+<h2>3. Die &bdquo;Wasserautobahn&ldquo;: was wir gepr&uuml;ft haben</h2>
+<p>Ein Ring (Rohr d90) auf einfachen St&uuml;tzen &uuml;ber dem mittleren Ring, von dem Abzweige mit Hahn zu jedem Beet und Tisch f&uuml;hren.</p>
+<figure><div class="scroll"><svg viewBox="0 0 900 430" role="img" aria-label="Seitenansicht mit Ring &uuml;ber den Tischen">
+<rect x="0" y="334" width="900" height="96" fill="var(--soil)"/>
+<line x1="0" y1="334" x2="900" y2="334" stroke="var(--muted)" stroke-width="1.5"/>
+<rect x="30" y="262" width="100" height="168" fill="none" stroke="var(--muted)" stroke-width="2"/>
+<rect x="31" y="277" width="98" height="152" fill="var(--blue)" opacity=".28"/>
+<text x="46" y="256">Pool</text>
+<!-- Biofilter und &Uuml;berlauf -->
+<rect x="470" y="150" width="70" height="64" fill="var(--card)" stroke="var(--muted)" stroke-width="2"/>
+<text x="478" y="176">Bio-</text><text x="478" y="190">filter</text>
+<polyline points="540,161 585,161" fill="none" stroke="var(--blue)" stroke-width="4"/>
+<circle cx="585" cy="161" r="6" fill="var(--blue)"/>
+<!-- Ring -->
+<line x1="560" y1="96" x2="880" y2="96" stroke="var(--blue)" stroke-width="9"/>
+<text x="640" y="80">Ring (Rohr d90), Unterkante Z 2100</text>
+<line x1="610" y1="100" x2="610" y2="334" stroke="var(--muted)" stroke-width="3"/><line x1="720" y1="100" x2="720" y2="334" stroke="var(--muted)" stroke-width="3"/><line x1="850" y1="100" x2="850" y2="334" stroke="var(--muted)" stroke-width="3"/>
+<text x="580" y="350" class="mut">St&uuml;tzen im Boden</text>
+<!-- Tische und Beete -->
+<rect x="630" y="224" width="130" height="8" fill="var(--green)"/>
+<line x1="640" y1="232" x2="640" y2="334" stroke="var(--muted)" stroke-width="3"/><line x1="750" y1="232" x2="750" y2="334" stroke="var(--muted)" stroke-width="3"/>
+<rect x="790" y="282" width="80" height="70" fill="var(--green)" opacity=".35" stroke="var(--green)" stroke-width="2"/>
+<!-- Abg&auml;nge mit Hahn -->
+<polyline points="690,100 690,224" fill="none" stroke="var(--blue)" stroke-width="3"/><circle cx="690" cy="160" r="6" fill="var(--bg)" stroke="var(--blue)" stroke-width="2"/>
+<polyline points="830,100 830,282" fill="none" stroke="var(--blue)" stroke-width="3"/><circle cx="830" cy="190" r="6" fill="var(--bg)" stroke="var(--blue)" stroke-width="2"/>
+<text x="700" y="172" class="mut">Hahn am Element</text>
+<!-- L&uuml;cke -->
+<line x1="548" y1="161" x2="548" y2="104" stroke="var(--red)" stroke-width="2"/>
+<polygon points="543,112 548,102 553,112" fill="var(--red)"/><polygon points="543,153 548,163 553,153" fill="var(--red)"/>
+<text x="330" y="124" style="fill:var(--red);font-weight:600">&Uuml;berlauf liegt 530 mm UNTER dem Ring:</text>
+<text x="330" y="140" style="fill:var(--red)">Schwerkraft reicht nicht bis zum Ring</text>
+<!-- R&uuml;cklauf wie heute -->
+<polyline points="700,236 700,258 135,258" fill="none" stroke="var(--gray)" stroke-width="4" stroke-dasharray="9 5"/>
+<polygon points="135,252 125,258 135,264" fill="var(--gray)"/>
+<text x="260" y="276" style="fill:var(--gray)">R&uuml;cklauf: unver&auml;ndert wie in Bild 1</text>
+<!-- Legende -->
+<rect x="30" y="14" width="410" height="40" fill="var(--card)" stroke="var(--line)"/>
+<text x="40" y="32">Zwei Auswege: Biofilter 725 mm h&ouml;her setzen ODER</text><text x="40" y="47">Ring unter Druck speisen (Pumpen 2,0 &rarr; 2,83 m)</text>
+</svg></div>
+<figcaption>Bild 2: Ring &uuml;ber dem mittleren Ring (Variante B). Der Ring ersetzt nur die Zulaufleitungen zu den Beeten und Tischen; der R&uuml;cklauf bleibt wie in Bild 1.</figcaption>
+</figure>
+
+<h3>Ergebnis je Pr&uuml;ffrage</h3>
+<div class="tablewrap"><table>
+<tr><th>Frage</th><th>Ergebnis</th></tr>
+<tr><td>Statik</td><td><span class="tag t-ok">machbar</span> Ring voll Wasser 6,8 kg je Meter, 146 kg gesamt, 12 St&uuml;tzen alle 1,8 m, Durchhang unter 1 cm. Offen: Seitensteifigkeit der St&uuml;tzen (Kragarm 2,2 m) und die Gangkarte mit den St&uuml;tzenorten.</td></tr>
+<tr><td>Gangh&ouml;he und Befestigung</td><td><span class="tag t-mid">eng</span> Gang bleibt nur dann frei (2,10 m), wenn nichts unter dem Rohr h&auml;ngt; befestigt werden darf nur an Tischbeinen, Portalen, Tank- und Pumpentafeln, nie an Streben, Knoten, Haut oder Plane. Tischbeine reichen nur bis etwa 1,4 m, also bleiben eigene St&uuml;tzen im Boden.</td></tr>
+<tr><td>Schwerkraft nutzen</td><td><span class="tag t-no">nicht ohne Mehraufwand</span> &Uuml;berlauf des Biofilters (Z 1570) liegt 530 mm unter der Ring-Unterkante (Z 2100). Mit Pumpe: F&ouml;rderh&ouml;he 2,83 statt 2,0 m, 102 statt 72 W je Pumpe.</td></tr>
+<tr><td>Weniger Teile</td><td><span class="tag t-no">nein</span> 38 Abnehmer brauchen je T, 2 B&ouml;gen, Hahn und Reduzierung. Ring ersetzt nur die zwei Verteilstr&auml;nge je Linie und kostet 28 m mehr Rohr.</td></tr>
+<tr><td>Regler am Element</td><td><span class="tag t-ok">ja</span> Hahn und Durchflussbegrenzer direkt am Beet oder Tisch sind gut zug&auml;nglich (Handelsteile, Fabrikat offen).</td></tr>
+<tr><td>Ein Ring f&uuml;r alle oder zwei?</td><td>Wenn Ring, dann <b>zwei Halbringe</b> (Ost und West): Bei einem Bruch bleibt eine Linie, passt zur Zwei-Linien-Planung und die Durchflussmengen sind klein. Ein gemeinsamer Ring legt beide Linien lahm.</td></tr>
+<tr><td>Frost, UV, Kondensat</td><td><span class="tag t-mid">Risiko</span> Ohne Heizung (Standort offen) friert ein stehender Ring zuerst; PVC altert im Licht unter der Plane; Entl&uuml;ftung und Tiefpunkt zum Entleeren sind zus&auml;tzliche Bauteile.</td></tr>
+</table></div>
+
+<h2>4. Vergleich der Varianten</h2>
+<p><b>A</b> = heutiger Plan. <b>B</b> = ein Ring f&uuml;r alles (unter Druck). <b>C</b> = zwei Halbringe nur f&uuml;r die 14 Beete mit Booster-Pumpe. <b>A+</b> = A plus Zug&auml;nglichkeit und Alarm (siehe Abschnitt 6).</p>
+<div class="tablewrap"><table>
+<tr><th></th><th>A heute</th><th>B Ring</th><th>C Beete-Ring</th><th>A+</th></tr>
+<tr><td>Pumpen elektrisch</td><td class="n">430 W</td><td class="n">548 W</td><td class="n">503 W</td><td class="n">430 W + Sensoren</td></tr>
+<tr><td>Pumpstufen f&uuml;r Beetwasser</td><td class="n">2</td><td class="n">2</td><td class="n">3</td><td class="n">2</td></tr>
+<tr><td>Zulauf-Verteilrohr</td><td class="n">80 m</td><td class="n">109 m</td><td class="n">81 m</td><td class="n">80 m</td></tr>
+<tr><td>Formteile und Armaturen (Zulauf)</td><td class="n">214</td><td class="n">220</td><td class="n">232</td><td class="n">214 + Stutzen</td></tr>
+<tr><td>St&uuml;tzen im Boden</td><td class="n">0</td><td class="n">12</td><td class="n">12</td><td class="n">0</td></tr>
+<tr><td>R&uuml;cklauf (K14 bis K16)</td><td class="n">111,5 m</td><td class="n">gleich</td><td class="n">gleich</td><td class="n">gleich</td></tr>
+<tr><td>H&ouml;hen&auml;nderung</td><td>keine</td><td>Biofilter +725 mm oder Pumpe 2,83 m</td><td>wie B (Booster)</td><td>keine</td></tr>
+<tr><td>Wartung</td><td>Aufgraben</td><td>Leiter f&uuml;r den Ring, Rest vergraben</td><td>wie B</td><td>Stopfen ziehen, Hahn schlie&szlig;en</td></tr>
+<tr><td>Erkennung einer Verstopfung</td><td>Sichtkontrolle</td><td>Sichtkontrolle</td><td>Sichtkontrolle</td><td>Alarm in Minuten</td></tr>
+<tr><td>Folgen f&uuml;r das Gebaute</td><td>keine</td><td>Biofilter hoch, Leitungen neu</td><td>wie B</td><td>nur Zus&auml;tze</td></tr>
+<tr class="best"><td><b>Einsch&auml;tzung</b></td><td>solide</td><td>nicht empfohlen</td><td>nur falls die Gr&auml;ben f&uuml;r die Beete nicht gehen</td><td><b>empfohlen</b></td></tr>
+</table></div>
+<p class="small">Zahlen: Konzeptrechnung mit <code>scripts/r47_rechnung.py</code> aus der Netzliste, Rohrmeter &plusmn;25 %.</p>
+
+<h2>5. Was hat das mit den R&uuml;ckl&auml;ufen zu tun?</h2>
+<p><b>Kurz: Der Ring betrifft die R&uuml;ckl&auml;ufe nicht.</b> Er ist eine Zufuhr (Wasser von der Pumpe zu den Beeten und Tischen). Der R&uuml;cklauf (Wasser von den Beeten und Tischen zur&uuml;ck in den Pool) funktioniert nach einem anderen Prinzip und bleibt in jeder Variante gleich:</p>
+<ul>
+<li><b>Tische (NFT):</b> Die Rinnen haben 1,5 % Gef&auml;lle, das Wasser l&auml;uft in einen Sammler d63 unter den Tischen (Z etwa 0,9 m), von dort in einen Halbring d110 auf der Pool-Wandkrone (Z 0,66 bis 0,72 m) mit mindestens 1 % Gef&auml;lle zu zwei offenen Enden &uuml;ber dem Wasser.</li>
+<li><b>Beete:</b> Der Siphon leert das Beet, die Sammelleitung f&uuml;hrt in den Beet-Sumpf (500 l je Linie), eine Pumpe bringt das Wasser hoch in den R&uuml;cklauf. Der Sumpf ist n&ouml;tig, weil der Beetablauf (Z &minus;100) 615 mm unter dem Pool-Spiegel (Z 515) liegt. Das gilt mit und ohne Ring.</li>
+<li><b>Warum der R&uuml;cklauf niedrig bleibt:</b> Er braucht Gef&auml;lle zum Pool und endet in offenen Enden &uuml;ber dem Poolwasser (Z 0,66 bis 0,72 m). Die H&ouml;he des Rings (2,1 m) &auml;ndert daran nichts.</li>
+</ul>
+<p><b>Wo es doch zusammenh&auml;ngt:</b></p>
+<ul>
+<li><b>Gesamth&ouml;he:</b> Je h&ouml;her die Zufuhr, desto h&ouml;her muss gepumpt werden (2,0 &rarr; 2,83 m) oder der Biofilter muss h&ouml;her stehen.</li>
+<li><b>Ring plus Booster (Variante C)</b> w&uuml;rde eine dritte Pumpstufe in den Kreislauf bringen.</li>
+<li><b>Gangkreuzungen:</b> Heute kreuzt die Zufuhr zu den Au&szlig;enbeeten die G&auml;nge im Graben (etwa eine Kreuzung je Au&szlig;enbeet). Das ist der einzige echte Vorteil des Rings: keine Gr&auml;ben f&uuml;r die Zufuhr. Der R&uuml;cklauf l&auml;uft dagegen an den Tischbeinen und der Wandkrone, also oberirdisch und gut erreichbar.</li>
+</ul>
+
+<h2>6. Wartung und Ausfallsicherheit: vergrabene Rohre</h2>
+<p>Das ist der wichtigste Punkt der Diskussion. Wir haben alle bisher verlegten Rohrabschnitte nach der H&ouml;he ausgewertet (<code>scripts/r47_zugang.py</code>, aus den Leitungsdaten):</p>
+<div class="bar" role="img" aria-label="30,3 von 54,0 Metern vergraben">
+<div style="width:56%;background:var(--orange)">30,3 m unter dem Boden (56 %)</div>
+<div style="width:44%;background:var(--green)">23,7 m oberirdisch</div>
+</div>
+<p><b>Der Ring &auml;ndert an diesen 30,3 m nichts:</b> sie liegen alle vor dem Verteiler (Hauptkreislauf, Absetzerkreis, Notbypass). Der Ring ersetzt erst die Leitungen dahinter.</p>
+<div class="tablewrap"><table>
+<tr><th>Abschnitt</th><th class="n">vergraben</th><th>Funktion</th><th>Risiko</th></tr>
+<tr><td><b>Heber</b> Pool &rarr; Filter</td><td class="n">2,4 m</td><td>Wasser aus dem Pool zum Filter, ohne Pumpe</td><td>Luftsack, Biofilm, Fremdk&ouml;rper; Reserve nur 85 mm (gerechnet)</td></tr>
+<tr><td><b>Filter-Stamm</b> Filter &rarr; Pumpe</td><td class="n">5,5 m</td><td>Wasser zur Hauptpumpe</td><td>bei 0,36 m/s langsam, Biofilm</td></tr>
+<tr><td><b>Notbypass</b></td><td class="n">3,2 m</td><td>Umgehung des Filters im Notfall</td><td>Hahn im Normalbetrieb zu, nie getestet: k&ouml;nnte festsitzen</td></tr>
+<tr><td>Absetzerkreis (Bodenablauf u. a.)</td><td class="n">17,7 m</td><td>Teilstrom durch die Absetzer</td><td>Verstopfung durch Feststoffe bei 0,13 bis 0,2 m/s; f&auml;llt er aus, fehlt nur der Teilstrom</td></tr>
+</table></div>
+<p class="small">Rest der 30,3 m: 1,6 m kurze Zweigst&uuml;cke (zweite Pumpe der Linie). Der gr&ouml;&szlig;te Block ist nicht der kritischste: Der Absetzerkreis macht 58 % des Vergrabenen aus, f&auml;llt er aus, l&auml;uft der Hauptkreislauf weiter.</p>
+<p><b>Wie schnell kippt es?</b> Ein Stillstand des Wasserumlaufs t&ouml;tet nicht in Minuten, solange die Luft l&auml;uft: der Ammoniak steigt nach Rechnung um etwa 4,6 mg/l je Tag (die Giftgrenze ist nicht belegt). Der harte Termin ist ein <b>Luftausfall</b>: dann bleiben etwa 0,8 bis 1,2 Stunden bis Sauerstoffmangel. Gegen beides helfen zwei Linien, zwei Hauptpumpen je Linie, zwei Luftpumpen (N+1) und der Notbypass, aber nur, wenn man einen Ausfall <b>rechtzeitig bemerkt</b>.</p>
+
+<h3>Variante A+: heutiger Plan, aber erreichbar und mit Alarm</h3>
+<ul>
+<li><b>Revisionsstutzen</b> (T-St&uuml;ck mit Stopfen) an den vergrabenen Strecken: das Rohr l&auml;sst sich ohne Aufgraben sp&uuml;len.</li>
+<li><b>Sch&auml;chte mit Deckel</b> am Heber-Ende, am Bypass-Hahn und am Filter-Stamm.</li>
+<li><b>Absperrh&auml;hne</b> an Pumpen-Saugseite und Stamm: eine Pumpe oder ein Filter l&auml;sst sich tauschen, ohne alles abzustellen.</li>
+<li><b>Bypass-Probelauf</b> einmal im Monat (Betriebsregel), damit der Totast funktionsf&auml;hig bleibt.</li>
+<li><b>Durchfluss- und Pegelw&auml;chter mit Alarm</b> je Linie: eine Verstopfung wird in Minuten gemeldet statt bei der n&auml;chsten Sichtkontrolle. Der Alarm h&auml;ngt am Schaltschrank, dessen Standort noch offen ist.</li>
+<li><b>Sp&uuml;lanschluss</b> am Absetzerkreis (Kugelhahn, Sp&uuml;lstoss).</li>
+<li>Optional: <b>Bodenkanal mit Gitterrost</b> statt Erdgraben unter den G&auml;ngen (neues Bauteil, Gang bleibt trittfest).</li>
+</ul>
+<p>Umfang laut Absch&auml;tzung: etwa 20 Stutzen, 4 bis 6 Sch&auml;chte, 2 Sensoren (Annahme). Alles Standardteile ohne Eingriff in die H&ouml;hen; das Gebaute wird nur nachger&uuml;stet.</p>
+
+<h2>7. Flood-and-Drain f&uuml;r die Substratbeete</h2>
+<p>Bens Wunsch ist im Bauteil <b>schon erf&uuml;llt</b>: Unter dem Substrat liegt ein Siebboden (8 mm Lochplatte) auf 60-mm-Kl&ouml;tzen, darunter ein Wasserraum von etwa 640 Litern. Der Siphon leert das Beet bis zum Boden, nichts steht und vergammelt. Offen sind drei Kleinigkeiten:</p>
+<ul>
+<li>Die L&ouml;cher des Medienschutzes (12 mm) passen nicht zu Korn ab 8 mm: pr&uuml;fen und anpassen.</li>
+<li>Ein Reinigungszugang zum Wasserraum unter dem Siebboden fehlt.</li>
+<li>Die K&ouml;rnung des Substrats sollte mindestens 12 mm betragen.</li>
+</ul>
+<p class="small">Die Funktion des Siphons im echten Beet ist nicht gemessen; ein Test am Muster ist n&ouml;tig.</p>
+
+<h2>8. Was belegt ist und was nicht</h2>
+<div class="note">
+<b>Ehrlich eingeordnet:</b> Alle Zahlen sind Konzeptrechnungen aus der Netzliste und dem Modell, Rohrmeter &plusmn;25 %. Dieser Bericht ist eine Entscheidungsgrundlage, keine Bauplanung.
+</div>
+<ul>
+<li><b>Belegt mit Quellen:</b> Rohr-St&uuml;tzabst&auml;nde (Georg Fischer PVC-U Planning Fundamentals und plasticpipeshop.co.uk, beide f&uuml;r 20 &deg;C; im warmen Dom unter der Decke gilt weniger), Mindestgeschwindigkeit gegen Ablagerungen etwa 0,6 m/s (Iowa SUDAS, PM Engineer; beide aus der <i>Abwassertechnik</i>, nicht aus der Aquakultur), Notwendigkeit von Redundanz und Alarm in Kreislaufanlagen (Aquamaof).</li>
+<li><b>Gerechnet, nicht gemessen:</b> Pumpenh&ouml;hen und -leistung (Wirkungsgrad 25 % angenommen, Kennlinien offen), Reserve des Hebers (85 und 88 mm), Rohrmeter.</li>
+<li><b>Offen:</b> Statik der St&uuml;tzen, Gangkarte mit St&uuml;tzenorten und Sch&auml;chten, Giftgrenze f&uuml;r Ammoniak und Nitrit bei Stillstand, Reinigungsabst&auml;nde f&uuml;r Aquakultur, Frost bei Heizungsausfall, Standort des Schaltschranks und Notstrom.</li>
+</ul>
+
+<h2>9. Wie ich es gemacht h&auml;tte und was jetzt zu entscheiden ist</h2>
+<p>Ich w&uuml;rde den <b>heutigen Plan behalten</b> (eine Pumpstufe, dann alles mit Schwerkraft, kurzer Hauptkreislauf, R&uuml;ckl&auml;ufe mit Gef&auml;lle) und gezielt dort investieren, wo es wirklich wehtut: die vergrabenen kritischen Stellen erreichbar machen und alarmieren (A+). Der Ring w&uuml;rde die Wartung nicht verbessern, aber Biofilter-H&ouml;he, Pumpenleistung und Risiken (Leitung &uuml;ber dem Gang, Frost, UV) verschlechtern.</p>
+<p>Offene Entscheidungen f&uuml;r euch:</p>
+<ol>
+<li><b>A+ freigeben?</b> (Empfehlung: ja.) Danach laufen Rohrbau, Anlagenteile und das Nachr&uuml;sten des Gebauten weiter.</li>
+<li><b>Absetzerkreis streichen?</b> Das w&uuml;rde 17,7 der 30,3 vergrabenen Meter entfernen, w&auml;re aber R&uuml;ckbau des Gebauten und widerspricht der Entscheidung, die Filter zu behalten. Empfehlung: nein.</li>
+<li><b>Wo steht der Schaltschrank?</b> Davon h&auml;ngen Alarm und Notstrom ab (Annahme: au&szlig;en am Fundamentring neben der T&uuml;r).</li>
+<li>Falls ihr den Ring trotzdem wollt: zwei Halbringe, und vorher die Gangkarte und die St&uuml;tzenstatik pr&uuml;fen lassen.</li>
+</ol>
+
+<h2>Glossar</h2>
+<dl>
+<dt>Heber</dt><dd>Rohr, das Wasser nur durch den H&ouml;henunterschied der Wasserspiegel von einem Becken ins n&auml;chste leitet; es hebt das Wasser nicht &uuml;ber den Quellspiegel.</dd>
+<dt>Biofilter</dt><dd>Tank mit Tr&auml;gern, auf denen Bakterien Ammoniak abbauen.</dd>
+<dt>NFT</dt><dd>D&uuml;nner Wasserfilm in Rinnen, in denen die Pflanzen wachsen.</dd>
+<dt>Siphon (Glockensiphon)</dt><dd>Selbstt&auml;tiger Ablauf: das Beet f&uuml;llt sich, der Siphon schaltet ein und leert es komplett, ohne Strom und Steuerung.</dd>
+<dt>Z-Werte</dt><dd>H&ouml;hen in Millimetern &uuml;ber dem Innenboden; Pool-Spiegel Z 515 hei&szlig;t 51,5 cm &uuml;ber dem Boden.</dd>
+</dl>
+
+<footer>
+Quellen im Projekt: <code>docs/research/R47-wasserkreislauf-neu.md</code> (Abschnitte 1 bis 6), <code>docs/research/R45-hydraulik-auslegung.md</code>, Skripte <code>scripts/r47_rechnung.py</code> und <code>scripts/r47_zugang.py</code>. Erstellt von Claude (KI-Assistent im Projekt) am 02.11.2026 als Vorbereitung f&uuml;r das Gespr&auml;ch im Gr&uuml;nderteam; noch nicht entschieden.
+</footer>
+</main>

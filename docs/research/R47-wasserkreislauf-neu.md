@@ -460,3 +460,27 @@ EINHEIT: wie B2; zusätzlich ist der Hochbehälter ein Pufferglied im Wasserweg,
 7. **Plattform B3:** Hochbehälter 300 l + Behälter ≈ 330 kg auf Z 1600 an der Technikgruppe: eigene Konsole oder Standfüße; nicht an Tank- oder Pumpentafeln (Regel 7).
 
 **Sicherung.** Commit „R47c: Ring-Varianten und Höhenplan“.
+
+### 7.4 Biofilter-Verteilung (Frage 4)
+
+**Befund zur Lage.** Es gibt heute **einen** Biofilter-Tank je Linie (`tank_gross` ×2, 702 l, zwei Pumpen parallel auf denselben Tank [Q `leitungsnetz.json`]). Die Frage „Tanks laufen unterschiedlich gut“ stellt sich dort, wo mehrere Tanks einen Strom teilen: (i) beim dritten Biofilter (`biofilter_dritt`, Empfehlung R37, nicht im Modell), (ii) zwischen den beiden Linien, falls ein gemeinsamer Ring sie koppelt, (iii) bei R44-Varianten mit geteiltem Biofilter.
+
+**Hydraulik statt Biologie.** „Unterschiedlich gut“ heißt biologisch: ein Tank setzt mehr TAN um. Der Durchfluss hängt aber vom hydraulischen Widerstand ab (Siebverstopfung, Trägerbett, Rohr), nicht von der Umsatzleistung. Ein „besserer“ Tank bekommt dadurch nicht mehr Wasser; ein verstopfter bekommt weniger [E, Hydraulik, A]. Der Ausgleich geschieht über das gemeinsame Becken: beide Linien saugen aus dem Pool und münden in den Pool, die Nährstoffmasse mischt dort [Q Netzliste].
+
+**Standardlösungen.**
+
+| Lösung | Wirkung | Eignung hier |
+|---|---|---|
+| Parallelbetrieb, gleiche Zu- und Ablaufhöhen, gleiche Rohrlängen (Reverse Return / Tichelmann) | gleiche Widerstände, gleiche Teilströme; Praxisregel der Hydronik | Pumpen paarweise je Tank: sehr einfach; ein Sammelverteiler vor 2 Tanks: 2 gleich lange Äste [A, keine Fachquelle geholt] |
+| Gleiche Überlaufhöhe, Querverbindung am Boden (kommunizierende Gefäße) | gleicher Spiegel in allen Tanks | machbar (`tank` hat Schlammablass an der Spitze, Querverbindung dort unsauber) [A] |
+| Überlaufkaskade (Reihe) | jeder Tank bekommt den ganzen Strom, keine Verteilung nötig | erfüllt EINHEIT (a) am stärksten, kostet Höhe je Stufe (≈ 100 bis 150 mm Überlaufabstand) [A] |
+| Ventile je Zweig mit Durchflussanzeige | manuelles Abgleichen | schwach, wartungsintensiv; Patent nennt es für Aquakultur-Filter ([US 9392775](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9392775)) |
+
+Weitere schwache Hinweise: Gleichmäßiger Bettwiderstand verhindert Kanalbildung ([US 4894149](https://patents.google.com/patent/US4894149), [US 6274035](https://patents.google.com/patent/US6274035)). **Beide Treffer sind Patente, keine Fachquellen; die Praxisregel Reverse Return ist hier nicht belegt: Kandidat/offen.**
+
+**Gilt es heute genauso wie beim Ring?** Hydraulisch ja. Zwei Unterschiede: (1) Heute sind die Linien getrennt bis zum Pool, ein Ausfall oder Leistungsunterschied koppelt sich über das Becken. Ein gemeinsamer Ring würde die Linien am Ausgang der Biofilter zusätzlich koppeln, das ist die Querverbindung, die Ihr wollt (d), und zugleich ein gemeinsamer Ausfallpunkt (R47: Leckage nimmt beide Linien). Zwei Halbringe vermeiden das, erfüllen (d) aber nur über den Pool. (2) Beim Ring (B2/B3) sitzt der Booster hinter dem Biofilter: Fällt er aus, staut der Strom im Biofilter und geht über den Überlauf in den Rücklauf; das ist der einzige Fall, in dem nicht alles Wasser durch die Beete geht, dafür aber durch den Biofilter.
+
+**Empfehlung zur Verteilung:** Ein Tank je Linie behalten; ein dritter Tank im Parallelbetrieb mit eigenem Pumpenpaar und gleicher Überlaufhöhe, oder in Reihe. Ein Sammelverteiler mit Reverse Return nur, wenn mehrere Tanks von einer Pumpengruppe gespeist werden.
+
+**Sicherung.** Commit „R47c: Biofilter-Verteilung“.
+

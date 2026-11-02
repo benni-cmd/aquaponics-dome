@@ -1,5 +1,5 @@
 {
- "stand": "Stand 02.11.2026 nachmittags: R47 und R47B fertig. Empfehlung: heutigen Plan behalten und die vergrabenen kritischen Stellen erreichbar und meldbar machen (A+). Nichts laeuft. Rohrbau und Werkstatt B warten auf deine Entscheidung E20. Fragen an dich stehen oben.",
+ "stand": "Stand 02.11.2026 abends: R47c (Ring mit einheitlichem Fluss) laeuft; Entscheidung E20 wartet darauf. Fragen an dich stehen oben.",
  "schritte": [
   {
    "id": "W33",
@@ -1010,7 +1010,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Ben (nach R47)",
-   "notiz": "JETZT FAELLIG (nach R47 und R47B). Empfehlung A+: Der Ring aendert an deiner Sorge nichts (alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler), A+ macht die kritischen Stuecke erreichbar und meldbar: Revisionsstutzen an den vergrabenen Strecken, Schaechte mit Deckel an Heber-Ende, Bypass-Hahn und Filter-Stamm, Absperrhaehne an Pumpen-Saug und Stamm, Bypass-Probelauf, Durchfluss- und Pegelwaechter mit Alarm, Spuelanschluss am Absetzerkreis; etwa 20 Stutzen, 4 bis 6 Schaechte, 2 Sensoren [A], alles Standardteile ohne Eingriff in die Hoehen. Unterfrage (optional): Absetzerkreis streichen (R44 Kandidat A) wuerde 17,7 der 30,3 vergrabenen Meter entfernen, ist aber Rueckbau des Gebauten und widerspricht D71; ich empfehle NEIN. Bei Ja zu A+: Planer-Blaetter fuer M10 S3 bis S7 mit den Zugangsteilen, Nachruestung des Gebauten (M10-S2N), Wachter-Alarm haengt an E13 (Schaltschrank). Blockiert: M10 S3 bis S7, W37, W40-BEET. BERICHT FUER DEN MITGRUENDER (HTML, mit Bildern): docs/berichte/wasserkreislauf-ring-gegen-plan.html."
+   "notiz": "ZURUECKGESTELLT bis R47C (Rueckfrage des Mitgruenders: einheitlicher Fluss, Foerderhoehe 2 bis 4 m ist normal, das Hoehenargument ist zu schwach formuliert). JETZT FAELLIG (nach R47 und R47B). Empfehlung A+: Der Ring aendert an deiner Sorge nichts (alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler), A+ macht die kritischen Stuecke erreichbar und meldbar: Revisionsstutzen an den vergrabenen Strecken, Schaechte mit Deckel an Heber-Ende, Bypass-Hahn und Filter-Stamm, Absperrhaehne an Pumpen-Saug und Stamm, Bypass-Probelauf, Durchfluss- und Pegelwaechter mit Alarm, Spuelanschluss am Absetzerkreis; etwa 20 Stutzen, 4 bis 6 Schaechte, 2 Sensoren [A], alles Standardteile ohne Eingriff in die Hoehen. Unterfrage (optional): Absetzerkreis streichen (R44 Kandidat A) wuerde 17,7 der 30,3 vergrabenen Meter entfernen, ist aber Rueckbau des Gebauten und widerspricht D71; ich empfehle NEIN. Bei Ja zu A+: Planer-Blaetter fuer M10 S3 bis S7 mit den Zugangsteilen, Nachruestung des Gebauten (M10-S2N), Wachter-Alarm haengt an E13 (Schaltschrank). Blockiert: M10 S3 bis S7, W37, W40-BEET. BERICHT FUER DEN MITGRUENDER (HTML, mit Bildern): docs/berichte/wasserkreislauf-ring-gegen-plan.html."
   },
   {
    "id": "W40-BEET",
@@ -1038,6 +1038,15 @@
    "reihenfolge": 3.8,
    "wer": "Montage (kleine Sitzung, nach E20 = A+)",
    "notiz": "Aus R47 Abschnitt 6.3 und 6.6. Nur Zusaetze an gebaute T und Haehne, kein Rueckbau. Der offene 300-mm-Stumpf von Linie 2 bei x 0 / y -1649 / Z -1635 wird mit Kappe (W39) zum Revisionsstutzen fuer K03. Schacht-Lage gegen den Filterkasten (Luecke L23) beachten. Eigenes Blatt vom Planer, erst nach Bens Freigabe."
+  },
+  {
+   "id": "R47C",
+   "titel": "Ring mit einheitlichem Fluss ausarbeiten, Foerderhoehe 2 bis 4 m neu bewerten (Rueckfrage Mitgruender)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2.3,
+   "wer": "Fachrecherche (Sitzung recherche-r47c, frisch)",
+   "notiz": "GESTARTET 02.11. (Wunsch W53). Blatt docs/jobs/R47c-ring-einheitlicher-fluss.md. Anforderung EINHEIT: alles Wasser durch die Biofilter, ein Pool, keine Teilstroeme an den Biofiltern vorbei. Varianten B1 Biofilter angehoben, B2 Booster nach dem Biofilter, B3 Hochbehaelter; dazu Pumpenfrage (Standardpumpen 2 bis 4 m, Mehrleistung des Rings etwa +118 W gegen 430 W) und Verteilung auf ungleich laufende Biofilter-Tanks. Ergebnis als Abschnitt 7 in R47. Ohne Marke gestartet: Beleg fuer die Hook-Korrektur."
   }
  ]
 }

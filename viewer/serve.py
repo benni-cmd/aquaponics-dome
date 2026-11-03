@@ -75,6 +75,10 @@ class H(http.server.SimpleHTTPRequestHandler):
             return os.path.join(ROOT, 'data', 'descriptions.json')
         if p == '/system-specs.json':
             return os.path.join(ROOT, 'data', 'system-specs.json')
+        if p == '/katalog.json':
+            return os.path.join(ROOT, 'data', 'katalog.json')
+        if p.startswith('/parts/') and p.endswith('.json') and '/' not in p[len('/parts/'):] and '..' not in p:
+            return os.path.join(ROOT, 'data', 'parts', p[len('/parts/'):])
         if p == '/history' or p.startswith('/history/'):
             rel = p[len('/history'):].lstrip('/') or 'index.html'
             full = os.path.abspath(os.path.join(ROOT, 'renders', 'history', rel))

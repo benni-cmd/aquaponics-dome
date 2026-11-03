@@ -1,5 +1,5 @@
 {
- "stand": "Stand 03.11.2026 spaet: R50, R51 und Planer N-DETAIL-PILOT fertig. Wartet auf Bens Freigabe: Detail-Pilot (Werkstatt + Viewer), Beet-Teile (Planer W40-BEET/L03/Siphonschutz). M10-S2V geparkt. E20 offen (Empfehlung A+).",
+ "stand": "Stand 03.11.2026 spaet: Ben gibt Bau frei: Detail-Pilot (Werkstatt zuerst) und Beet-Teile (Planer zuerst). Neue Regeln: D76 Kaufteile mindestens in Europa bestellbar, W57 Substratbeete muessen sich ganz leeren. R52 prueft Europa-Bezug der Filterteile. M10-S2V geparkt, E20 offen (Empfehlung A+).",
  "schritte": [
   {
    "id": "W33",
@@ -1018,8 +1018,8 @@
    "status": "geplant",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.7,
-   "wer": "Werkstatt (kleine Sitzung, nach E20)",
-   "notiz": "Drei Kleinigkeiten am Bauteil ibc_beet (R47 Abschnitt 4): Medienschutz-Loecher 12 mm gegen Korn ab 8 mm pruefen und anpassen, Reinigungszugang zum Wasserraum unter dem Siebboden, Koernung des Substrats auf mindestens 12 mm festlegen. Danach muessen die 14 Beete im Modell neu gebaut werden (Montage). Eigenes Blatt vom Planer, erst nach Bens Freigabe; passt zu den Beet-Sumpf-Teilen aus W37-1."
+   "wer": "Planer (Blatt), dann Werkstatt, dann Pruefer",
+   "notiz": "FREIGEGEBEN 03.11. (Ben: 'bau beides'). Erweitert um: (1) Beet muss sich GANZ leeren (W57, Ben): der Siphon darf nicht auf dem Siebboden stehen, sonst bleibt der Wasserraum unter dem Sieb gefuellt (R51 Befund 5a, Pitch B08 korrigiert) und es bildet sich Ploerre; Siphon-Ansaugung bis zum Wannenboden planen. (2) Siphonschutz (Edelstahl-Lochblech), Reduktion 40x25 (L03), Reinigungsschacht d110, Beetablauf-Hoehe (R51 Befund 5b). (3) Alle Kaufteile muessen mindestens in Europa bestellbar sein (D76). Planer schreibt zuerst ein Blatt. Drei Kleinigkeiten am Bauteil ibc_beet (R47 Abschnitt 4): Medienschutz-Loecher 12 mm gegen Korn ab 8 mm pruefen und anpassen, Reinigungszugang zum Wasserraum unter dem Siebboden, Koernung des Substrats auf mindestens 12 mm festlegen. Danach muessen die 14 Beete im Modell neu gebaut werden (Montage). Eigenes Blatt vom Planer, erst nach Bens Freigabe; passt zu den Beet-Sumpf-Teilen aus W37-1."
   },
   {
    "id": "R47B",
@@ -1087,11 +1087,20 @@
   {
    "id": "N-DETAIL-PILOT",
    "titel": "Detailansicht im Viewer als Pilot fuer Feinfilter und Absetzer (B1 mini, B2, B3 MVP), vorgezogen",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.78,
    "wer": "Planer (Blatt), dann Werkstatt + Viewer, dann Pruefer",
-   "notiz": "Ben 03.11.: Detailansicht jetzt fertig machen, damit Filter und danach Subtanks nach Funktion beurteilt werden koennen (D56). Pilot nur fuer feinfilter und tank_klein, Mini-Katalog, Detailmodell nur bei Bedarf laden (L18). Danach Muster fuer Subtank, Siphon, Pumpen. Der volle Katalog bleibt N-KATALOG, die Gesamtansicht N-DETAIL. Planer laeuft (Sitzung local_fb... siehe orchestrator-state). PLANER FERTIG 03.11. (e06bc95): docs/jobs/N-DETAIL-PILOT.md, 3 bis 4 Sitzungen, Aktualitaet angepasst (D75). Bau wartet auf Bens Freigabe."
+   "notiz": "FREIGEGEBEN 03.11. (Ben: 'bau beides'): Werkstatt zuerst (Teiledaten, Mini-Katalog), dann Viewer, dann Pruefer; Biofilter nicht im Pilot. Ben 03.11.: Detailansicht jetzt fertig machen, damit Filter und danach Subtanks nach Funktion beurteilt werden koennen (D56). Pilot nur fuer feinfilter und tank_klein, Mini-Katalog, Detailmodell nur bei Bedarf laden (L18). Danach Muster fuer Subtank, Siphon, Pumpen. Der volle Katalog bleibt N-KATALOG, die Gesamtansicht N-DETAIL. Planer laeuft (Sitzung local_fb... siehe orchestrator-state). PLANER FERTIG 03.11. (e06bc95): docs/jobs/N-DETAIL-PILOT.md, 3 bis 4 Sitzungen, Aktualitaet angepasst (D75). Bau wartet auf Bens Freigabe."
+  },
+  {
+   "id": "R52",
+   "titel": "Europa-Bezug der Filterteile: Kegelboden-Tank (Absetzer), Siebkorb-Gewebe, weitere Teile aus R50 und R51 in Europa bestellbar? (D76)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.79,
+   "wer": "Fachrecherche (frische Sitzung)",
+   "notiz": "R50 fand den Kegelboden-Tank nur bei US-Haendlern. Pruefen: europaeische Bezugsquellen (Spitzbodentank, Konisch-Tank, Trichterboden-Behaelter aus PE, Edelstahlgewebe 100 um, Lochblech) mit Massen und Anschluessen."
   }
  ]
 }

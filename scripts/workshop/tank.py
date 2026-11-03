@@ -1,6 +1,6 @@
 """Tank T40 (klein = Vortex-Absetzer, gross = Biofilter): Kegelboden 45 Grad auf Plattform mit 4 Beinen, tangentialer Zulauf, Leitrohr, Schlammventil an der Spitze.
 Bezugspunkt: Mitte Standflaeche am Boden (Z=0). Aufruf: python scripts/workshop/tank.py [klein] [gross] [--render]"""
-import sys, os, math
+import sys, os, math, re, json, subprocess
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 
@@ -237,12 +237,40 @@ def build(typ):
         b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="B" if T["biofilter"] else "A", properties={"Werkstoff": d["werkstoff"]["name"]})
     return b, G, dict(z_in=z_in, xin=xin, yin=yin)
 
+def name_bolts(out):
+    """parts.insert-Koerper heissen 'Body<n>' (Material Default): nach Lage der Fussplatte benennen (Schraube_<Platte>_<x>, wie der Feature-Name) und Stahl verzinkt zuweisen."""
+    ev = sc.evaluate(out)
+    plates = {}
+    for bd in ev["bodies"]:
+        m = re.fullmatch(r"Fussplatte_(\d+)", bd["name"])
+        if m:
+            plates[int(m.group(1))] = [(bd["bbox"]["min"][i] + bd["bbox"]["max"][i]) / 2 for i in range(2)]
+    cmds, names = [], []
+    for bd in ev["bodies"]:
+        if not re.fullmatch(r"Body\d+", bd["name"]):
+            continue
+        cx, cy = [(bd["bbox"]["min"][i] + bd["bbox"]["max"][i]) / 2 for i in range(2)]
+        i = min(plates, key=lambda k: math.hypot(cx - plates[k][0], cy - plates[k][1]))
+        new = f"Schraube_{i}_{int(round(cx - plates[i][0]))}"
+        cmds.append({"command": "body.rename", "params": {"body": bd["name"], "name": new}})
+        names.append(new)
+    if not cmds:
+        return 0
+    cmds.append({"command": "material.assign", "params": {"bodies": names, "material": "Stahl verzinkt"}})
+    script = os.path.join(sc.TMP, "ws-tank-bolts.json")
+    json.dump({"commands": cmds}, open(script, "w"))
+    r = subprocess.run([sc.CLI, "run", script, "--in", out, "--save", out, "--quiet"], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER name_bolts: " + r.stderr.strip() + r.stdout.strip())
+    return len(names)
+
 if __name__ == "__main__":
     typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["klein", "gross"]
     for typ in typs:
         b, G, extra = build(typ)
         out = os.path.join(sc.ROOT, "designs", "components", f"tank_{typ}.sc")
         sc.run(b.write(f"tank_{typ}"), out)
+        print(typ, "Schrauben benannt:", name_bolts(out))
         ev = sc.evaluate(out)
         print(typ, "Kegelwinkel %.1f Grad" % G["ang"], "Koerper", len(ev["bodies"]), "Masse", round(sum(x["mass_g"] for x in ev["bodies"]) / 1000, 1), "kg")
         if "--render" in sys.argv:

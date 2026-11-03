@@ -1,0 +1,31 @@
+# R48 — Filterreihenfolge und Hoehenprofil (Vortex, Feinfilter, Pumpe, Biofilter)
+
+**Art:** Recherche und Variantenrechnung, KEIN Bau, kein Modell-Umbau. Wunsch W54 (Ben 03.11.2026).
+
+## Problem
+Heute: Pool -> Heber -> Feinfilter (Grube) -> 2 Pumpen -> Biofilter (Ueberlauf Z 1570) -> Verteiler; der Absetzer (Vortex, 267 l) haengt nur am Bodenablauf (11 %) mit kleiner Pumpe und laeuft per Schwerkraft in den Feinfilter-Einlauf. Zwischen Feinfilter und Biofilter sitzen die Pumpen, dort ist kein Ueberlauf moeglich. Ben fragt, ob eine andere Reihenfolge und Hoehenlage besser (wartbarer) ist.
+
+## Intent
+Eine belegte Empfehlung, ob die Filterkette umgebaut werden soll, bevor die Verlegung (M10 S3) startet; Teil der Entscheidung E20/E21.
+
+## Goal
+Ein Bericht `docs/research/R48-filterreihenfolge.md` mit Vergleichstabelle der Varianten, je Variante: Wasserweg mit Hoehen (Z), Foerderhoehe und Pumpenleistung (Annahme kennzeichnen), Wartung (was liegt wo, Zugang, Schlammablass), Ausfallverhalten, Umbauumfang gegen den gebauten Stand, Verstoss gegen den einheitlichen Fluss (alles durch den Biofilter). Am Ende Empfehlung mit Rangfolge. Alles Behauptete mit zwei unabhaengigen Quellen oder als [Annahme] markiert.
+
+## Varianten (mindestens)
+- V0 heute: Feinfilter -> Pumpen -> Biofilter (Absetzerkreis nur Teilstrom).
+- V1 Ben: Pool -> Subtank (Sumpf) mit Pumpe -> Vortex HOCH ueber dem Biofilter -> Ueberlauf -> Biofilter. Wo sitzt dann der Feinfilter? (vor dem Vortex, im Vortex-Auslauf, oder im Subtank als Siebkorb am Einlauf)
+- V2 Vortex zuerst im Hauptstrom, tief (Grube) per Schwerkraft vom Heber, danach Feinfilter, dann Pumpen, dann Biofilter (nur Reihenfolge der gebauten Teile getauscht).
+- V3 Kaskade: einmal pumpen an die hoechste Stelle (Vortex), danach alles per Ueberlauf nach unten (Vortex -> Feinfilter -> Biofilter -> Verteiler).
+- V4 wie V0, aber Feinfilter-Siebkorb im Sumpf statt in der Grube.
+
+## Zu pruefen (Fragen)
+1. Reihenfolge grob vor fein: Ist Vortex vor Feinfilter Stand der Technik in Kreislaufanlagen? Auslegungswerte eines Swirl-Separators im Vollstrom (Verweilzeit bei 110 l/min und 267 l ca. 2,4 min [Rechnung], Abscheidegrad, Mindestdurchfluss), Quellen z. B. Davidson/Summerfelt, Timmons/Ebeling.
+2. Pumpe vor der Feststoffabscheidung: Zerschlagen der Partikel in der Pumpe (Scherung), Verstopfungsrisiko der Pumpe; Regel "Feststoffe vor der Pumpe entfernen" gegen Bens Idee (Pumpe im Sumpf) abwaegen.
+3. Hoehenbilanz je Variante aus `data/leitungsnetz.json` und `scripts/dome-script.json`: Zulauf Biofilter Z 1420, Ueberlauf Z 1570, Plattform Z 570, Feinfilter-Grube Z -496, Heber (Pool 515, Seitenablauf Z 340, Filter-Einlauf Z 320). Foerderhoehe heute 2,0 m; je Variante neu. Bodenablauf Z -1685 (11 %): fliesst per Schwerkraft in einen Sumpf unter Poolspiegel? Dann entfaellt die kleine Pumpe.
+4. Tragfaehigkeit/Aufbau: Vortex 267 l (ca. 270 kg + Tank) ueber dem Biofilter (857 kg gefuellt auf Plattform Z 570): noetig? Konstruktion grob.
+5. Schlammablass: Schlammfass heute in Grube 0,95 m tief (K07). Wird die Grube bei hohem Vortex unnoetig?
+6. Wartung: pro Variante wo ist Zugang (Pumpe, Siebkorb, Vortex, Schlamm), Handgriffe je Woche.
+7. Einheitlicher Fluss (W53): bleibt in jeder Variante alles Wasser durch den Biofilter?
+
+## Grenzen
+Kein Umbau, keine Aenderung an `gen_dome.py` oder `data/*`. Scope D69 beachten (keine Ertrags-, Kosten-, Standort-, Verschattungsrechnung). Ergebnis nur als Bericht plus Eintrag "Besonderheit:" fuer `docs/pitch-besonderheiten.md` falls es eine gibt. Kontextgrenzen nach `docs/arbeitsweise-sitzungen.md` Abschnitt 4. Abschluss mit "Geprueft gegen: ... Offen: ..." und Beschaffbarkeit jedes genannten Teils als Standardteil/Selbstbau.

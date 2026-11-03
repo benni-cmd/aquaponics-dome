@@ -33,3 +33,11 @@ Kein Umbau, keine Aenderung an `gen_dome.py` oder `data/*`. Scope D69 beachten (
 ## Ergaenzung 03.11.2026 (Ben, nach Start der Recherche)
 - Eigene Frage 8: Ist es unsinnig, den Feinfilter VOR den Vortex zu setzen (grob vor fein)? Mit zwei Quellen beantworten. Beachten: heute haengt der Vortex nur am Bodenablauf (11 %), sein Auslauf geht in den Feinfilter-Einlauf; der Hauptstrom (89 %) geht ueber den Heber direkt in den Feinfilter. Gegenargument pruefen: Pumpe vor der Feststoffabscheidung zerschlaegt Partikel.
 - Bewertung: Komplexitaet und Menge des Vergrabenen (Wartung) bei jeder Variante ausdruecklich mitgewichten, nicht nur Foerderhoehe und Strom.
+
+## Stand (03.11.2026, Fachrecherche)
+- **Fertig:** `docs/research/R48-filterreihenfolge.md` (Vergleichstabelle V0 bis V5, 7 Prüffragen, Rangfolge, Beschaffbarkeit, Belegstand je Aussage) und Rechenskript `scripts/r48_rechnung.py`. Kein Bau, `gen_dome.py`, `data/*`, Netzliste und Roadmap unverändert.
+- **Ergebnis:** Rang 1 V0 behalten (Teilstrom-Absetzer am Bodenablauf, Sieb im Hauptstrom vor der Pumpe, entspricht SRAC 453, Davidson/Summerfelt und Khater). Rang 2 V4 (Subtank mit Siebkorb und Tauchpumpen: -7,1 m vergrabenes Rohr, Höhen unverändert), Rang 3 V5 (Bodenablauf per Schwerkraft, kleine Pumpen entfallen), danach V2, V1, V3. Bens V1/V3: Pumpe vor dem Feinfilter (Rohwasser), 2,2 bis 2,4 m Förderhöhe, bis 475 kg in der Höhe; kein Wartungsgewinn.
+- **Subtank gelesen als** Zwischen-/Sumpftank mit Tauchpumpen, Spiegel gleich Heber-Ende (Z 320).
+- **Neuer Befund:** Filterbehälter ohne Rückstausicherung (Oberkante Z 364 gegen Pool 515); Vorschlag: Hoch-Schwimmer schließt den Heber-Absperrhahn.
+- **Grenzen der Belege:** Wirbelabscheider-Auslegung (Veerapen 2005) nicht im Volltext gelesen; Pumpen-Scherung stützt sich auf zwei Dokumente mit gemeinsamem Primärbeleg (McMillan 2003, nicht gelesen).
+- **Offen:** E21 Entscheidung Ben (V0 behalten, V4 als Option); Montage: Heber-Messung und Rückstausicherung; Standort: Grube tiefer als Poolboden nur bei V2/V5.

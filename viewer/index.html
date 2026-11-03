@@ -52,6 +52,21 @@
   #info .ph { color:var(--muted); }
   #fpvx { position:fixed; top:10px; right:10px; z-index:20; display:none; font-size:16px; padding:6px 14px; }
   body.fpv #panel, body.fpv #infopanel { display:none; } body.fpv #fpvx { display:block; }
+  /* Detailansicht: Kontextmenue, Teileliste (ersetzt links das Bedienfeld), Schieber */
+  #ctxmenu { position:fixed; z-index:30; display:none; min-width:190px; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:4px; box-shadow:0 4px 14px #0008; }
+  #ctxmenu .hd { color:var(--muted); font-size:11.5px; padding:3px 8px; }
+  #ctxmenu button { display:block; width:100%; text-align:left; border-color:transparent; background:none; padding:5px 8px; }
+  #ctxmenu button:hover { background:#22303f; border-color:var(--accent); }
+  #toast { position:fixed; left:50%; bottom:18px; transform:translateX(-50%); z-index:40; display:none; max-width:560px; background:#2a2616; border:1px solid #d9c35b; color:#e8d98a; border-radius:6px; padding:8px 12px; }
+  #detailpanel { position:fixed; top:10px; left:10px; width:330px; max-height:calc(100% - 20px); overflow:auto; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px; z-index:6; display:none; }
+  body.detail #detailpanel { display:block; } body.detail #panel { display:none; }
+  #detailpanel h1 { font-size:14px; margin:8px 0 2px; } #detailpanel .sub { color:var(--muted); font-size:12px; }
+  #detailpanel .scale { display:flex; justify-content:space-between; color:var(--muted); font-size:11.5px; }
+  #dlist { font-size:12.5px; user-select:none; }
+  #dlist .nm { flex:1; min-width:0; } #dlist .n1, #dlist .n2 { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #dlist .n2 { color:var(--muted); font-size:11px; }
+  #dlist .cat > .node { font-weight:600; } #dlist .node { align-items:flex-start; }
+  #dlist .node .chev, #dlist .node .sw { margin-top:3px; }
 </style>
 <script type="importmap">
 { "imports": { "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -61,6 +76,8 @@
 <body>
 <div id="view"></div>
 <button id="fpvx" title="FPV beenden (Esc)">X</button>
+<div id="ctxmenu"></div><div id="toast"></div>
+<div id="detailpanel"></div>
 <div id="infopanel"><div id="info"></div></div>
 <div id="panel">
   <h1>Kuppel Live-Viewer</h1>
@@ -76,6 +93,7 @@
   <h2>Bauteile (Hover leuchtet, Klick waehlt)</h2>
   <div class="row"><button id="expandAll">Alle auf</button><button id="collapseAll">Alle zu</button><button id="showAll">Alle zeigen</button><button id="clearSel">Auswahl weg</button></div>
   <div id="sel"></div>
+  <div class="row"><button id="detailbtn" hidden>Detailansicht</button></div>
   <div id="tree"></div>
   <div id="perf" style="color:var(--muted);font-size:11px;margin-top:6px"></div>
   <h2>Bauteil-Stand (Board)</h2>
@@ -343,6 +361,7 @@ function refreshChecks() {                                   // Haken und Teil-Z
 function markSelection() {
   document.querySelectorAll('.node.sel').forEach(n => n.classList.remove('sel'));
   const sl = document.getElementById('sel');
+  document.getElementById('detailbtn').hidden = !(selected && defList[selected.stem]);
   if (!selected || !defList[selected.stem]) { sl.textContent = ''; return; }
   const it = defList[selected.stem][selected.idx], lk = stemLeaf[selected.stem], L = leaves.get(lk);
   sl.textContent = `Auswahl: ${it.n.replace(/_/g, ' ')} — ${L.label} (${L.cat})`;
@@ -356,7 +375,7 @@ function select(s, fromModel) { selected = s; markSelection(); rebuildHighlight(
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2(); let down = null;
 renderer.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
 renderer.domElement.addEventListener('pointerup', e => {
-  if (fpv.on || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5 || !model) return;
+  if (fpv.on || detail.on || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5 || !model) return;
   ptr.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
   const hit = ray.intersectObjects(model.children.filter(o => o.visible), false)[0];
   if (hit && hit.instanceId !== undefined) select({ stem: hit.object.userData.def, idx: hit.instanceId }, true); else select(null, true);
@@ -412,7 +431,7 @@ async function poll() {
     st.innerHTML = `Modell gespeichert <b>${s.design_saved || '-'}</b> · Viewer <b>${s.built || '-'}</b>` +
       (s.busy ? ' · <b>exportiert ...</b>' : '') + (s.error ? '<br>Fehler: ' + s.error.replace(/</g, '&lt;') : '') +
       (extras.bodies ? `<br>${extras.bodies} Instanzen` : '');
-    if (auto && !(window.fpvState && window.fpvState().on) && s.version !== version && s.version > 0) { version = s.version; await load(); }
+    if (auto && !detail.on && !(window.fpvState && window.fpvState().on) && s.version !== version && s.version > 0) { version = s.version; await load(); }
   } catch (e) { st.textContent = 'Server nicht erreichbar'; }
 }
 async function pollBoard() {
@@ -427,6 +446,198 @@ async function pollBoard() {
 }
 setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard();
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+
+// ---- Detailansicht: Teileliste, Explosion, Infokarte (alles aus data/parts/<def>.json und detail/<def>.*; kein Bauteilname im Code) ----
+const detail = { on: false, def: null, group: null, bodies: [], parts: null, meta: null, kat: null, saved: null, sel: null, hov: null, s: 0, anim: 0 };
+const TYP = { profil: 'Profil', platte: 'Platte', rohr: 'Rohr', normteil: 'Normteil', sonderteil: 'Sonderteil', kaufteil: 'Kaufteil' };
+const attr = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+const ctx = document.getElementById('ctxmenu'), toastEl = document.getElementById('toast'), dpanel = document.getElementById('detailpanel');
+let toastT = null;
+function toast(msg) { toastEl.textContent = msg; toastEl.style.display = 'block'; clearTimeout(toastT); toastT = setTimeout(() => { toastEl.style.display = 'none'; }, 6000); }
+function hideMenu() { ctx.style.display = 'none'; }
+function pick(x, y, objs) { ptr.set(x / innerWidth * 2 - 1, -(y / innerHeight) * 2 + 1); ray.setFromCamera(ptr, camera); return ray.intersectObjects(objs, false); }
+
+renderer.domElement.addEventListener('contextmenu', e => {
+  e.preventDefault(); hideMenu();
+  if (fpv.on || detail.on || !model) return;
+  const hits = pick(e.clientX, e.clientY, model.children.filter(o => o.visible)).filter(h => h.instanceId !== undefined);
+  const hit = hits.find(h => !h.object.material.transparent) || hits[0];   // durchsichtige Huellen (Plane, Wasser) ueberspringen
+  if (!hit) return;
+  const stem = hit.object.userData.def; select({ stem, idx: hit.instanceId }, true);
+  ctx.innerHTML = `<div class="hd">${esc(pretty(stem))}</div><button data-act="detail">Detailansicht</button>`;
+  ctx.style.display = 'block';
+  ctx.style.left = Math.min(e.clientX, innerWidth - 210) + 'px'; ctx.style.top = Math.min(e.clientY, innerHeight - 70) + 'px';
+  ctx.querySelector('button').addEventListener('click', () => openDetail(stem));
+});
+addEventListener('pointerdown', e => { if (!ctx.contains(e.target)) hideMenu(); }, true);
+addEventListener('wheel', hideMenu, { passive: true });
+document.getElementById('detailbtn').addEventListener('click', () => { if (selected) openDetail(selected.stem); });
+
+const getJson = async url => { const r = await fetch(url); if (!r.ok) throw new Error(url + ' ' + r.status); return r.json(); };
+async function openDetail(def) {
+  hideMenu(); if (detail.on || fpv.on) return;
+  const v = Date.now();
+  let parts, meta, obj, kat;
+  try {
+    [parts, meta, obj, kat] = await Promise.all([
+      getJson(`/parts/${def}.json?v=${v}`), getJson(`detail/${def}.json?v=${v}`),
+      fetch(`detail/${def}.obj?v=${v}`).then(r => { if (!r.ok) throw new Error('obj ' + r.status); return r.text(); }),
+      getJson(`/katalog.json?v=${v}`).catch(() => null)]);
+  } catch (err) {
+    toast(`Für ${pretty(def)} gibt es noch keine Detailansicht (Teiledaten data/parts/${def}.json oder Detailmodell fehlen; Detailmodell bauen mit: python viewer/export_detail.py ${def}).`); return;
+  }
+  detail.on = true; detail.def = def; detail.parts = parts; detail.meta = meta; detail.kat = kat; detail.sel = null; detail.hov = null; detail.s = 0;
+  const byName = new Map(meta.koerper.map(b => [b.name, b])), partOf = new Map(parts.teile.map(t => [t.id, t]));
+  const g = new THREE.Group(); detail.group = g; detail.bodies = []; detail.ghost = true;
+  loader.parse(obj).traverse(o => {
+    if (!o.isMesh) return;
+    const nm = o.name || o.parent.name, b = byName.get(nm); if (!b) return;
+    const t = partOf.get(b.teil), ref = !t.explosion;
+    const mat = new THREE.MeshStandardMaterial({ color: b.farbe, flatShading: true, side: THREE.DoubleSide, roughness: 0.6, metalness: 0.15, clippingPlanes: [clipPlane] });
+    const m = new THREE.Mesh(o.geometry, mat); m.name = nm;
+    const bb = b.bbox, c = [0, 1, 2].map(i => (bb.min[i] + bb.max[i]) / 2);
+    detail.bodies.push({ mesh: m, b, part: t, ref, c, T: null, base: b.opacity }); g.add(m);
+  });
+  const byPart = id => detail.bodies.filter(x => x.part.id === id);
+  const dir = (x) => {                                       // Richtung x Abstand je Koerper; "radial" = von der Bauteilachse (x=0, y=0) nach aussen
+    const ex = x.part.explosion; if (!ex) return [0, 0, 0];
+    let d = ex.richtung;
+    if (d === 'radial') { const l = Math.hypot(x.c[0], x.c[1]); d = l < 1 ? [1, 0, 0] : [x.c[0] / l, x.c[1] / l, 0]; }
+    else { const l = Math.hypot(...d) || 1; d = d.map(q => q / l); }
+    return d.map(q => q * ex.abstand_mm);
+  };
+  const total = (x, depth = 0) => {                          // eigene Verschiebung plus die des Bezugsteils (`folgt`, naechster Koerper)
+    if (x.T) return x.T;
+    let v = dir(x); const ex = x.part.explosion;
+    if (ex && ex.folgt && depth < 12) {
+      const cand = byPart(ex.folgt).sort((p, q) => Math.hypot(p.c[0] - x.c[0], p.c[1] - x.c[1], p.c[2] - x.c[2]) - Math.hypot(q.c[0] - x.c[0], q.c[1] - x.c[1], q.c[2] - x.c[2]))[0];
+      if (cand) { const w = total(cand, depth + 1); v = v.map((q, i) => q + w[i]); }
+    }
+    x.T = v; return v;
+  };
+  detail.bodies.forEach(x => total(x));
+  // Kamera merken, Gesamtmodell weg, Detailmodell zeigen
+  detail.saved = { pos: camera.position.clone(), target: controls.target.clone(), near: camera.near, clip: clipPlane.constant };
+  model.visible = false; hlGroup.visible = false; clipPlane.constant = 100000; camera.near = 10; camera.updateProjectionMatrix();
+  scene.add(g); document.body.classList.add('detail');
+  applyGhost(); applyExplosion(0); frameDetail();
+  buildDetailPanel(); showDetailCard();
+}
+function applyGhost() {                                      // Bezugsteile (ohne explosion) durchsichtig, damit man hineinsieht
+  detail.bodies.forEach(x => { const m = x.mesh.material, a = detail.ghost && x.ref ? 0.28 : x.base; m.transparent = a < 1; m.opacity = a; m.depthWrite = a >= 1; m.needsUpdate = true; });
+}
+function applyExplosion(s) {
+  detail.s = s;
+  detail.bodies.forEach(x => x.mesh.position.set(x.T[0] * s, x.T[1] * s, x.T[2] * s));
+  const sl = document.getElementById('dslider'); if (sl) sl.value = Math.round(s * 100);
+}
+function frameDetail(s = detail.s) {                          // Kamera auf den Rahmen des Bauteils beim Schieberstand s
+  const box = new THREE.Box3();
+  detail.bodies.forEach(x => { const a = x.b.bbox, o = new THREE.Vector3(...x.T).multiplyScalar(s); box.expandByPoint(new THREE.Vector3(...a.min).add(o)); box.expandByPoint(new THREE.Vector3(...a.max).add(o)); });
+  const sph = box.getBoundingSphere(new THREE.Sphere()), vf = camera.fov * Math.PI / 360;
+  const free = Math.max(0.5, (innerWidth - 760) / innerWidth), hf = Math.atan(Math.tan(vf) * camera.aspect * free);
+  const dist = sph.radius / Math.sin(Math.min(vf, hf)) * 0.95;
+  const d = new THREE.Vector3(0.75, -1.2, 0.65).normalize();
+  controls.target.copy(sph.center); camera.position.copy(sph.center).addScaledVector(d, dist); controls.update();
+}
+function closeDetail() {
+  if (!detail.on) return;
+  cancelAnimationFrame(detail.anim); detail.anim = 0;
+  scene.remove(detail.group); detail.bodies.forEach(x => { x.mesh.material.dispose(); x.mesh.children.slice().forEach(c => x.mesh.remove(c)); }); detail.group.traverse(o => o.geometry && o.geometry.dispose());
+  detail.on = false; detail.group = null; detail.bodies = [];
+  const sv = detail.saved; document.body.classList.remove('detail');
+  model.visible = true; hlGroup.visible = true; clipPlane.constant = sv.clip; camera.near = sv.near; camera.updateProjectionMatrix();
+  camera.position.copy(sv.pos); controls.target.copy(sv.target); controls.update();
+  showInfo(selected ? { kind: 'inst', stem: selected.stem, idx: selected.idx } : pinned);
+}
+addEventListener('keydown', e => { if (e.code === 'Escape') { hideMenu(); if (detail.on) closeDetail(); } });
+
+// Leuchten: Hover gelb, Auswahl cyan (Kind-Netze der Koerper folgen deren Verschiebung)
+function detailHl() {
+  detail.bodies.forEach(x => x.mesh.children.slice().forEach(c => x.mesh.remove(c)));
+  [[detail.hov, hlMat.hover], [detail.sel, hlMat.sel]].forEach(([id, mat]) => {
+    if (!id) return;
+    detail.bodies.filter(x => x.part.id === id).forEach(x => { const o = new THREE.Mesh(x.mesh.geometry, mat); o.renderOrder = 999; o.raycast = () => {}; x.mesh.add(o); });
+  });
+  document.querySelectorAll('#dlist .node').forEach(n => { n.classList.toggle('hov', n.dataset.id === detail.hov); n.classList.toggle('sel', n.dataset.id === detail.sel); });
+}
+function setPart(id) {
+  detail.sel = id; detailHl(); showDetailCard();
+  const row = id && dpanel.querySelector(`.node[data-id="${id}"]`);
+  if (row) { const p = row.closest('.cat'); p && p.classList.add('open'); row.scrollIntoView({ block: 'nearest' }); }
+}
+
+function werkstoffName(id) { const k = detail.kat && (detail.kat.werkstoffe || []).find(w => w.id === id); return k ? k.name : (id || '').replace(/_/g, ' '); }
+function katEntry(id) { const k = detail.kat; return k && id ? ['profile', 'rohre', 'normteile', 'werkstoffe'].flatMap(a => k[a] || []).find(e => e.id === id) : null; }
+function buildDetailPanel() {
+  const P = detail.parts, byId = new Map(P.teile.map(t => [t.id, t])), nb = new Map();
+  detail.bodies.forEach(x => nb.set(x.part.id, x.b.farbe));
+  const row = t => `<div class="node lvl1" data-id="${attr(t.id)}"><span class="chev"></span><span class="sw" style="background:${nb.get(t.id) || '#999'}"></span><div class="nm"><div class="n1" title="${attr(t.name)}">${esc(t.name)}</div><div class="n2" title="${attr(werkstoffName(t.werkstoff))}">${esc(werkstoffName(t.werkstoff))}</div></div><span class="cnt">${t.menge} ×</span></div>`;
+  const used = new Set(), grp = (P.gruppen || []).map(gr => {
+    const ts = gr.teile.map(i => byId.get(i)).filter(Boolean); ts.forEach(t => used.add(t.id));
+    const n = ts.reduce((a, t) => a + t.menge, 0);
+    return `<div class="cat open" data-g="${attr(gr.id)}"><div class="node"><span class="chev">▸</span><span class="name" title="${attr(gr.kurz || '')}">${esc(gr.name)}</span><span class="cnt">(${n})</span></div><div class="kids">${ts.map(row).join('')}</div></div>`;
+  });
+  const rest = P.teile.filter(t => !used.has(t.id));
+  if (rest.length) grp.push(`<div class="cat open"><div class="node"><span class="chev">▸</span><span class="name">Weitere Teile</span><span class="cnt">(${rest.length})</span></div><div class="kids">${rest.map(row).join('')}</div></div>`);
+  dpanel.innerHTML = `<button id="dback">Zurück zum Gesamtmodell</button>
+    <h1>${esc(P.titel || pretty(detail.def))}</h1><div class="sub">${P.teile.length} Teile, ${detail.bodies.length} Körper</div>
+    <h2>Explosionsdarstellung</h2>
+    <input type="range" id="dslider" min="0" max="100" value="0"><div class="scale"><span>Zusammengebaut</span><span>Auseinander</span></div>
+    <div class="row"><button id="danim">Animieren</button><button id="dfit">Ansicht einpassen</button></div>
+    <label class="opt"><input type="checkbox" id="dghost" checked> Bezugsteil durchsichtig</label>
+    <h2>Teileliste (Zeigen = gelb, Klick = Infokarte)</h2><div id="dlist">${grp.join('')}</div>`;
+  dpanel.querySelector('#dback').addEventListener('click', closeDetail);
+  dpanel.querySelector('#dslider').addEventListener('input', e => { cancelAnimationFrame(detail.anim); applyExplosion(+e.target.value / 100); });
+  dpanel.querySelector('#dfit').addEventListener('click', () => frameDetail());
+  dpanel.querySelector('#dghost').addEventListener('change', e => { detail.ghost = e.target.checked; applyGhost(); });
+  dpanel.querySelector('#danim').addEventListener('click', () => {
+    cancelAnimationFrame(detail.anim); const from = detail.s, to = from > 0.5 ? 0 : 1, t0 = performance.now(), dur = 1800;
+    const step = t => { const k = Math.min(1, (t - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; applyExplosion(from + (to - from) * e); if (k < 1) detail.anim = requestAnimationFrame(step); };
+    detail.anim = requestAnimationFrame(step);
+  });
+  dpanel.querySelectorAll('.cat > .node .chev').forEach(c => c.addEventListener('click', e => { c.closest('.cat').classList.toggle('open'); e.stopPropagation(); }));
+  dpanel.querySelectorAll('#dlist .node[data-id]').forEach(n => {
+    n.addEventListener('mouseenter', () => { detail.hov = n.dataset.id; detailHl(); });
+    n.addEventListener('mouseleave', () => { detail.hov = null; detailHl(); });
+    n.addEventListener('click', () => setPart(detail.sel === n.dataset.id ? null : n.dataset.id));
+  });
+}
+function showDetailCard() {
+  const box = document.getElementById('info'), P = detail.parts, t = detail.sel && P.teile.find(x => x.id === detail.sel);
+  if (!t) {
+    box.innerHTML = `<h3>${esc(P.titel || pretty(detail.def))}</h3><div class="sub">${esc(P.teilenummer ? 'Teilenummer ' + P.teilenummer + '. ' : '')}Stand: ${esc(P.stand || '')}</div>
+      <div class="badges"><span class="badge cnt">${P.teile.length} Teile</span><span class="badge">${detail.bodies.length} Körper</span></div>
+      <div>${esc(P.kurz || '')}</div>` + (P.hinweis ? `<div class="note"><b>Hinweis:</b> ${esc(P.hinweis)}</div>` : '') +
+      `<div class="src">Klicke ein Teil in der Liste oder im Modell an: dann steht hier seine Infokarte. Der Schieber zieht das Bauteil auseinander.</div>`; return;
+  }
+  const gram = detail.bodies.filter(x => x.part.id === t.id).reduce((a, x) => a + (x.b.masse_g || 0), 0);
+  const kg = gram >= 1000 ? fm(gram / 1000, 2) + ' kg' : fm(gram, 0) + ' g';
+  const kon = (w, k) => w ? esc(String(w).replace(/^\w/, c => c.toUpperCase())) + (k ? ` <span class="ph">(${esc(k)})</span>` : '') : '';
+  const ke = katEntry(t.katalog);
+  const rows = [['Werkstoff', esc(werkstoffName(t.werkstoff))], ['Maße', esc(t.masse_mm || '')], ['Masse im Modell', t.menge > 1 ? `${kg} (${t.menge} Stück zusammen)` : kg],
+    ['Norm', t.norm ? esc(t.norm) + (t.norm_konfidenz ? ` <span class="ph">(${esc(t.norm_konfidenz)})</span>` : '') : 'keine'],
+    ['Lebensmittelkontakt', kon(t.lebensmittelkontakt, t.lebensmittelkontakt_konfidenz)], ['Belegstand', esc(t.konfidenz || '')],
+    ['Katalogeintrag', ke ? esc(ke.name) : ''], ['Bezug in Europa', esc(t.bezug || '')]].filter(r => r[1]);
+  box.innerHTML = `<h3>${esc(t.name)}</h3><div class="sub">Ein ${esc(TYP[t.typ] || t.typ)}, ${t.menge} Stück im Bauteil.</div>
+    <div class="badges"><span class="badge cnt">${esc(TYP[t.typ] || t.typ)}</span><span class="badge">${t.menge} ×</span><span class="badge">${esc(t.konfidenz || '')}</span></div>
+    <div class="k">Funktion</div><div>${esc(t.funktion || '')}</div>
+    <div class="k">Werkstoff, Maße, Norm</div><table class="kv">${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table>` +
+    (t.eigenschaften && t.eigenschaften.length ? `<div class="k">Eigenschaften</div>${bullets(t.eigenschaften)}` : '') +
+    (t.konfidenz !== 'belegt' ? `<div class="note"><b>Hinweis:</b> Belegstand „${esc(t.konfidenz)}“: nicht alle Werte sind durch eine Quelle belegt; Normverweis und Lebensmittelkontakt gelten als angenommen, bis sie belegt sind.</div>` : '') +
+    (t.quelle ? `<div class="src">Quelle: ${esc(t.quelle)}</div>` : '');
+}
+window.detailState = () => {                                 // Messhilfe fuer die Pruefung: Rahmen der Detailgruppe, Kamera, Sichtbarkeit des Gesamtmodells
+  const box = detail.group ? new THREE.Box3().setFromObject(detail.group) : null;
+  return { on: detail.on, def: detail.def, s: detail.s, bodies: detail.bodies.length, sel: detail.sel, box: box && [box.min.toArray(), box.max.toArray()],
+           cam: camera.position.toArray(), target: controls.target.toArray(), modelVisible: model ? model.visible : null };
+};
+renderer.domElement.addEventListener('pointerup', e => {     // Klick im Detailmodell waehlt das Teil (durchsichtige Bezugsteile nur, wenn nichts dahinter getroffen wird)
+  if (!detail.on || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return;
+  const hits = pick(e.clientX, e.clientY, detail.bodies.map(x => x.mesh)), ghost = h => detail.ghost && detail.bodies.find(x => x.mesh === h.object).ref;
+  const hit = hits.find(h => !ghost(h)) || hits[0];
+  setPart(hit ? detail.bodies.find(x => x.mesh === hit.object).part.id : null);
+});
 
 // ---- FPV: in Augenhoehe 1,68 m durch die Kuppel gehen (Masse in mm) -------------------------------------------------
 let GROUND = 400; const EYE = 1680, WALK = 1400, TURN = 1.6;      // Boden-Z, Augenhoehe, mm/s, rad/s

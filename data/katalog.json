@@ -1,0 +1,229 @@
+{
+  "_hinweis": "Mini-Katalog der Detailansicht (Pilot N-DETAIL-PILOT, 03.11.2026): nur Einträge, die Feinfilter und Absetzer (tank_klein) brauchen. Keine Preise, keine Lagerlängen (das ist N-KATALOG/B4, der diese Datei nur erweitert). Marke: [B] belegt, [E] gerechnet, [A] angenommen; alle Normverweise und Lebensmittelkontakt-Angaben sind [A], bis R31/B6/R50 sie belegen. bezug (Regel D76, 03.11.2026: jedes Kaufteil mindestens in Europa bestellbar): 'offen (R52)' heißt, der europäische Bezug ist noch nicht belegt. sc_material nennt die Werkstoffnamen im .sc, damit die Detailexport-Farbtabelle sie zuordnen kann.",
+  "stand": "pilot",
+  "erzeugt": "2026-11-03",
+  "werkstoffe": [
+    {
+      "id": "pp",
+      "name": "Polypropylen (PP), Platte",
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "dichte_g_cm3": 0.91,
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": ["PP Feinfilter"],
+      "pilot": true,
+      "quelle": "docs/parts/feinfilter.md (Werkstoff: PP 0,91 g/cm3, Handbuchwert); Norm aus Fachwissen, nicht im Repo belegt",
+      "marke": "[A]"
+    },
+    {
+      "id": "pe",
+      "name": "Polyethylen (PE), Tank",
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "dichte_g_cm3": 0.95,
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": ["PE Tank"],
+      "pilot": true,
+      "quelle": "docs/parts/tank.md (Werkstoff: PE 0,95 g/cm3, Handbuchwert; ref-4/ref-5 grüne Kunststofftanks); Norm aus Fachwissen, nicht im Repo belegt",
+      "marke": "[A]"
+    },
+    {
+      "id": "pvc_u",
+      "name": "PVC-U (hart), Rohre und Armaturen",
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "dichte_g_cm3": 1.4,
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": ["PVC Feinfilter", "PVC grau Tank", "Ventil blau"],
+      "pilot": true,
+      "quelle": "docs/parts/tank.md, docs/parts/feinfilter.md (Rohre PVC-U nach DIN 8062/EN 1452, Dichte 1,4 g/cm3)",
+      "marke": "[A]"
+    },
+    {
+      "id": "edelstahl_1_4301",
+      "name": "Edelstahl 1.4301 (V2A)",
+      "norm": "EN 10088-2 [A]",
+      "dichte_g_cm3": 7.9,
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": ["Edelstahl Feinfilter"],
+      "pilot": true,
+      "quelle": "docs/parts/feinfilter.md (Edelstahl 1.4301, Dichte 7,9 g/cm3); Normverweis aus dem Auftragsblatt N-DETAIL-PILOT [A]",
+      "marke": "[A]"
+    },
+    {
+      "id": "edelstahl_gewebe_100um",
+      "name": "Edelstahl-Drahtgewebe, Maschenweite 100 Mikrometer",
+      "norm": "DIN ISO 9044 (Industriedrahtgewebe) [A]",
+      "dichte_g_cm3": 0.55,
+      "dichte_hinweis": "Ersatzdichte der 1-mm-Hülle im Modell, damit die Masse zum echten Gewebe (ca. 0,5 kg/m2) passt; nicht die Werkstoffdichte",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": ["Netz Edelstahl Feinfilter"],
+      "pilot": true,
+      "quelle": "docs/parts/feinfilter.md (mesh_density 0,55 g/cm3, mesh_um 100); docs/research/R30.md (Mortensen 2000: 100 Mikrometer hielten 21 % der Schwebstoffe zurück)",
+      "marke": "[A]"
+    },
+    {
+      "id": "stahl_verzinkt",
+      "name": "Stahl, feuerverzinkt",
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "dichte_g_cm3": 7.85,
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "sc_material": ["Stahl verzinkt", "Stahl verzinkt Feinfilter"],
+      "pilot": true,
+      "quelle": "docs/parts/tank.md, docs/parts/feinfilter.md (Stahl verzinkt, Dichte 7,85 g/cm3); steht nirgends im Wasser, daher kein Lebensmittelkontakt",
+      "marke": "[A]"
+    },
+    {
+      "id": "epdm",
+      "name": "EPDM (Elastomer), Flachdichtung",
+      "norm": "EN 681-1 (Elastomer-Dichtungswerkstoffe) [A]",
+      "dichte_g_cm3": 1.1,
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": ["EPDM Feinfilter"],
+      "pilot": true,
+      "quelle": "docs/parts/feinfilter.md (EPDM-Flachdichtung 3 mm, Dichte 1,1 g/cm3); Trinkwasser-/Lebensmitteleignung der konkreten Mischung offen",
+      "marke": "[A]"
+    }
+  ],
+  "profile": [
+    {
+      "id": "vierkantrohr_40x40x3",
+      "name": "Vierkantrohr 40 x 40 x 3, verzinkt",
+      "werkstoff": "stahl_verzinkt",
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/feinfilter.json (leg 40, leg_wall 3: Standrahmen trägt ca. 200 kg gefüllt)",
+      "marke": "[A]"
+    },
+    {
+      "id": "vierkantrohr_30x30x2",
+      "name": "Vierkantrohr 30 x 30 x 2, verzinkt",
+      "werkstoff": "stahl_verzinkt",
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/tank.json typen.klein (leg_w 30, leg_wall 2; Querschnitt aus oasis-obj-analysis)",
+      "marke": "[A]"
+    }
+  ],
+  "rohre": [
+    {
+      "id": "pvc_u_d25",
+      "name": "PVC-U-Rohr d25 (DN20)",
+      "durchmesser_mm": 25,
+      "wand_mm": 1.8,
+      "werkstoff": "pvc_u",
+      "norm": "DIN 8062 / EN 1452 [A]",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/leitungsteile.json sizes 25",
+      "marke": "[A]"
+    },
+    {
+      "id": "pvc_u_d40",
+      "name": "PVC-U-Rohr d40 (DN32)",
+      "durchmesser_mm": 40,
+      "wand_mm": 1.9,
+      "werkstoff": "pvc_u",
+      "norm": "DIN 8062 / EN 1452 [A]",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/leitungsteile.json sizes 40",
+      "marke": "[A]"
+    },
+    {
+      "id": "pvc_u_d50",
+      "name": "PVC-U-Rohr d50 (DN40)",
+      "durchmesser_mm": 50,
+      "wand_mm": 2.4,
+      "werkstoff": "pvc_u",
+      "norm": "DIN 8062 / EN 1452 [A]",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/leitungsteile.json sizes 50",
+      "marke": "[A]"
+    },
+    {
+      "id": "pvc_u_d63",
+      "name": "PVC-U-Rohr d63 (DN50)",
+      "durchmesser_mm": 63,
+      "wand_mm": 3.0,
+      "werkstoff": "pvc_u",
+      "norm": "DIN 8062 / EN 1452 [A]",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/leitungsteile.json sizes 63",
+      "marke": "[A]"
+    },
+    {
+      "id": "pvc_u_d110",
+      "name": "PVC-U-Rohr d110 (DN100)",
+      "durchmesser_mm": 110,
+      "wand_mm": 5.2,
+      "wand_hinweis": "Bibliothekswert; das Leitrohr des Absetzers ist im Modell als Rohr D110 mit 3 mm Wand gebaut (tank.json guide_wall) [A]",
+      "werkstoff": "pvc_u",
+      "norm": "DIN 8062 / EN 1452 [A]",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/leitungsteile.json sizes 110",
+      "marke": "[A]"
+    }
+  ],
+  "normteile": [
+    {
+      "id": "sechskantschraube_m8x30",
+      "name": "Sechskantschraube M8 x 30",
+      "norm": "ISO 4017",
+      "werkstoff": "stahl_verzinkt",
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "docs/parts/tank.md (Fussplatten-Anker: Schrauben M8x30 ISO 4017, Loch D9, Herkunft Standard [A]); Werkstoff verzinkt: Modell weist Stahl verzinkt zu",
+      "marke": "[A]"
+    },
+    {
+      "id": "kugelhahn_pvc_u",
+      "name": "Kugelhahn PVC-U mit Verschraubung",
+      "norm": "EN ISO 16135 (Kugelhähne aus Thermoplast) [A]",
+      "werkstoff": "pvc_u",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "docs/parts/tank.md (Schlammventil: Kugelhahn PVC-U mit Verschraubung), docs/parts/feinfilter.md (Kugelhahn d40/d25 PVC, Ersatzform); Fabrikat offen",
+      "marke": "[A]"
+    },
+    {
+      "id": "exzenterspanner_edelstahl",
+      "name": "Exzenterspanner mit Haken, Edelstahl",
+      "norm": null,
+      "werkstoff": "edelstahl_1_4301",
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "pilot": true,
+      "bezug": "offen (R52)",
+      "quelle": "data/components/feinfilter.json (latch_w: Handelsteil Exzenterspanner Edelstahl, Fabrikat offen)",
+      "marke": "[A]"
+    }
+  ]
+}

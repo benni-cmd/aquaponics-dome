@@ -1,0 +1,335 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Wasserkreislauf Stationen</title>
+<style>
+/* Layout: eine lange Stationsliste je Gruppe, linker Farbbalken zeigt Reihe, parallel, Abzweig, Notweg oder Rücklauf; Team-Meinung und Notiz direkt an jeder Station */
+:root{--bg:#f4f6f8;--card:#fff;--text:#1b2430;--muted:#59657a;--line:#d6dce5;--accent:#1d4fa8;--accent-fg:#fff;--reihe:#2a5da8;--parallel:#1b7a3d;--abzweig:#0f7c86;--notweg:#c8651b;--ruecklauf:#7b848f;--nebenkreis:#7a4fa3;--idee:#b3261e;--start:#1b2430;--chip:#e9edf3;--warn:#fff3d6;--warnline:#e5c766;--ok:#1b7a3d;--bad:#b3261e;--shadow:0 1px 2px rgba(20,30,50,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161d;--card:#1a212b;--text:#e8ecf2;--muted:#9aa5b8;--line:#2d3644;--accent:#8db4ff;--accent-fg:#0e1622;--reihe:#7ea9f0;--parallel:#7fd69a;--abzweig:#6fd0d8;--notweg:#f0a060;--ruecklauf:#a3acb7;--nebenkreis:#c4a2ec;--idee:#ff8a80;--start:#e8ecf2;--chip:#262f3c;--warn:#3b2f0a;--warnline:#8a6a10;--ok:#7fd69a;--bad:#ff8a80;--shadow:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11161d;--card:#1a212b;--text:#e8ecf2;--muted:#9aa5b8;--line:#2d3644;--accent:#8db4ff;--accent-fg:#0e1622;--reihe:#7ea9f0;--parallel:#7fd69a;--abzweig:#6fd0d8;--notweg:#f0a060;--ruecklauf:#a3acb7;--nebenkreis:#c4a2ec;--idee:#ff8a80;--start:#e8ecf2;--chip:#262f3c;--warn:#3b2f0a;--warnline:#8a6a10;--ok:#7fd69a;--bad:#ff8a80;--shadow:none;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:980px;margin:0 auto;padding-block:16px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:1.45rem;line-height:1.25;margin:6px 0 4px;text-wrap:balance}
+h2{font-size:1.1rem;margin:0;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+h2 .n{font-size:.8rem;font-weight:400;color:var(--muted)}
+h3{font-size:1rem;margin:0}
+.sub{color:var(--muted);margin:0 0 12px;max-width:70ch}
+.strip{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:.9rem}
+.strip b{font-weight:600}.strip .arr{color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;color:var(--muted);margin:8px 0 14px}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block;background:var(--c)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.bar input[type=search]{flex:1 1 200px;min-width:0}
+input,select,textarea,button{font:inherit;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+textarea{width:100%;resize:vertical;min-height:2.6em}
+button{cursor:pointer}
+button.prim{background:var(--accent);color:var(--accent-fg);border-color:var(--accent);font-weight:600}
+button.ghost{background:transparent}
+button.danger{color:var(--bad);border-color:var(--bad)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+button[disabled],select[disabled],textarea[disabled],input[disabled]{opacity:.55;cursor:not-allowed}
+.count{color:var(--muted);font-size:.88rem}
+.note{background:var(--warn);border:1px solid var(--warnline);border-radius:8px;padding:8px 12px;margin:10px 0;font-size:.9rem}
+section.grp{display:grid;gap:8px;margin:22px 0}
+.cards{display:grid;gap:8px}
+.card{--c:var(--ruecklauf);display:grid;gap:8px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:8px;padding:10px 12px;box-shadow:var(--shadow);min-width:0}
+.card[data-sch="Start"]{--c:var(--start)}.card[data-sch="Reihe"]{--c:var(--reihe)}.card[data-sch="parallel"]{--c:var(--parallel)}.card[data-sch="Abzweig"]{--c:var(--abzweig)}.card[data-sch="Notweg"]{--c:var(--notweg)}.card[data-sch="Rücklauf"]{--c:var(--ruecklauf)}.card[data-sch="Nebenkreis"]{--c:var(--nebenkreis)}.card[data-sch="Idee"]{--c:var(--idee);border-style:dashed;border-left-style:solid}
+.sw[data-sch="Start"]{--c:var(--start)}.sw[data-sch="Reihe"]{--c:var(--reihe)}.sw[data-sch="parallel"]{--c:var(--parallel)}.sw[data-sch="Abzweig"]{--c:var(--abzweig)}.sw[data-sch="Notweg"]{--c:var(--notweg)}.sw[data-sch="Rücklauf"]{--c:var(--ruecklauf)}.sw[data-sch="Nebenkreis"]{--c:var(--nebenkreis)}.sw[data-sch="Idee"]{--c:var(--idee)}
+.head{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.nr{font-variant-numeric:tabular-nums;font-weight:700;color:var(--c);min-width:2.4em}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
+.chip{font-size:.76rem;border-radius:999px;background:var(--chip);padding:1px 8px;white-space:nowrap}
+.chip.c{background:transparent;border:1px solid var(--c);color:var(--c);font-weight:600}
+.flow{font-size:.88rem;color:var(--muted)}
+.flow b{color:var(--text);font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px 14px;font-size:.88rem}
+.facts div{min-width:0;overflow-wrap:anywhere}
+.facts .k{color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;display:block}
+.fn{margin:0;max-width:75ch}
+.cl{font-size:.88rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px;margin:0;max-width:78ch}
+.cl b{color:var(--text)}
+.team{display:grid;grid-template-columns:minmax(130px,170px) 1fr;gap:8px;align-items:start;border-top:1px solid var(--line);padding-top:8px}
+.team label{display:grid;gap:3px;font-size:.78rem;color:var(--muted);min-width:0}
+.team .meta{grid-column:1/-1;font-size:.78rem;color:var(--muted)}
+.mein-ok{border-color:var(--ok)}.mein-aendern{border-color:var(--notweg)}.mein-unklar{border-color:var(--accent)}.mein-streichen{border-color:var(--bad)}
+.acts{display:flex;flex-wrap:wrap;gap:6px}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;border-top:1px solid var(--line);padding-top:8px}
+.form label{display:grid;gap:3px;font-size:.78rem;color:var(--muted);min-width:0}
+.form .wide{grid-column:1/-1}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:8px;padding:18px;color:var(--muted)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;max-width:90vw;z-index:20;font-size:.9rem}
+@media (max-width:560px){.team{grid-template-columns:1fr}.chips{margin-left:0}}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}}
+</style>
+
+<main>
+<h1>Wasserkreislauf: Stationen, Funktionen, Reihe oder parallel</h1>
+<p class="sub">Der Wasserkreislauf, wie er heute geplant und zum Teil gebaut ist (Empfehlung A+), eine Station pro Karte. Ihr könnt jede Karte bearbeiten, eine Meinung setzen, eine Notiz schreiben oder einen Kommentar hinterlassen. Claude liest alles von hier aus und arbeitet es ein. Zahlen sind Auslegungswerte aus der Netzliste und den Recherchen R45 bis R47c, keine Messungen.</p>
+
+<div class="strip" aria-label="Weg des Wassers je Linie">
+<b>Pool</b><span class="arr">&rarr;</span><span>Heber</span><span class="arr">&rarr;</span><span>Feinfilter</span><span class="arr">&rarr;</span><span>2 Hauptpumpen</span><span class="arr">&rarr;</span><span>Biofilter</span><span class="arr">&rarr;</span><b>Verteiler</b><span class="arr">&rArr;</span><span>Beete | NFT-Tische | Bypass | Messkreis</span><span class="arr">&rarr;</span><span>Rücklauf (Gefälle)</span><span class="arr">&rarr;</span><b>Pool</b>
+</div>
+<div class="legend" id="legend"></div>
+<div class="note" id="status" hidden></div>
+<div class="bar">
+<input type="search" id="q" placeholder="Suchen (Name, Funktion, Notiz)" aria-label="Suchen">
+<select id="fm" aria-label="Filter Meinung">
+<option value="">alle Stationen</option><option value="__keine">ohne Meinung</option><option value="ok">ok</option><option value="ändern">ändern</option><option value="unklar">unklar</option><option value="streichen">streichen</option>
+</select>
+<button class="prim" id="neu" type="button">+ Station</button>
+<span class="count" id="count"></span>
+</div>
+<div id="neuform"></div>
+<div id="list"><div class="empty">Stationen werden geladen &hellip;</div></div>
+</main>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function () {
+  var SCH = ['Start', 'Reihe', 'parallel', 'Abzweig', 'Notweg', 'Rücklauf', 'Nebenkreis', 'Idee'];
+  var SCH_TXT = {
+    'Start': 'Start und Ende des Kreislaufs',
+    'Reihe': 'in Reihe: das ganze Wasser läuft hindurch',
+    'parallel': 'parallel: Wasser teilt sich auf mehrere gleiche Teile',
+    'Abzweig': 'Abzweig: ein Zweig vom Verteiler',
+    'Notweg': 'Notweg: nur im Störfall',
+    'Rücklauf': 'Rücklauf: Gefälle zurück zum Pool',
+    'Nebenkreis': 'Nebenkreis: Luft, Frischwasser, Schlamm',
+    'Idee': 'Idee oder Entscheidung, noch nicht Plan'
+  };
+  var LAGE = ['oberirdisch', 'vergraben', 'Grube', 'Becken', 'offen'];
+  var STAT = ['gebaut', 'geplant', 'Idee', 'offen'];
+  var MEIN = [['', 'noch keine Meinung'], ['ok', 'ok'], ['ändern', 'ändern'], ['unklar', 'unklar'], ['streichen', 'streichen']];
+  var FIELDS = [['nr', 'Nr.'], ['name', 'Name'], ['gruppe', 'Gruppe'], ['schaltung', 'Schaltung'], ['von', 'kommt von'], ['nach', 'geht nach'], ['menge', 'Menge'], ['rohr', 'Rohr'], ['hoehe', 'Höhe'], ['lage', 'Lage'], ['status', 'Status'], ['funktion', 'Funktion'], ['claude', 'Stand und Beleg (Claude)']];
+
+  var db = null, user = null, comments = null, uid = null, canWrite = null;
+  var rows = [], loaded = false, errMsg = '', editing = null, delAsk = null, deferred = false, timer = null;
+  var filt = { q: '', m: '' };
+  var queue = {};
+  var $ = function (id) { return document.getElementById(id); };
+
+  function el(tag, props) {
+    var e = document.createElement(tag);
+    if (props) for (var k in props) {
+      if (k === 'text') e.textContent = props[k];
+      else if (k === 'class') e.className = props[k];
+      else if (k === 'on') for (var ev in props[k]) e.addEventListener(ev, props[k][ev]);
+      else if (props[k] === true) e.setAttribute(k, '');
+      else if (props[k] !== false && props[k] != null) e.setAttribute(k, props[k]);
+    }
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c == null || c === false) continue;
+      e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    }
+    return e;
+  }
+  function toast(msg) {
+    var t = $('toast'); t.textContent = msg; t.hidden = false;
+    clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true; }, 4500);
+  }
+  function writable() { return canWrite !== false && !!db; }
+  function s(v) { return v == null ? '' : String(v); }
+
+  function legend() {
+    var box = $('legend');
+    SCH.forEach(function (k) { box.appendChild(el('span', null, el('i', { class: 'sw', 'data-sch': k }), SCH_TXT[k])); });
+  }
+
+  // ---------- Speichern: je Dokument nacheinander, nur bei Änderung ----------
+  function save(id, patch, okMsg) {
+    if (!writable()) { toast('Ändern ist nur für Mitwirkende freigeschaltet.'); return Promise.resolve(false); }
+    patch.bearbeitet_von = uid || null;
+    patch.bearbeitet_am = Date.now();
+    var run = function () { return db.doc('stationen/' + id).update(patch).then(function () { if (okMsg) toast(okMsg); return true; }); };
+    queue[id] = (queue[id] || Promise.resolve()).then(run, run).catch(function (e) {
+      toast(e && e.code === 'invalid_argument' ? 'Speichern abgelehnt: dafür fehlen dir die Rechte.' : 'Speichern gescheitert, bitte noch einmal versuchen.');
+      return false;
+    });
+    return queue[id];
+  }
+
+  // ---------- Darstellung ----------
+  function matches(r) {
+    var d = r.d;
+    if (filt.m === '__keine' && s(d.meinung)) return false;
+    if (filt.m && filt.m !== '__keine' && s(d.meinung) !== filt.m) return false;
+    if (filt.q) {
+      var hay = [d.nr, d.name, d.funktion, d.notiz, d.claude, d.von, d.nach, d.gruppe].map(s).join(' ').toLowerCase();
+      if (hay.indexOf(filt.q.toLowerCase()) < 0) return false;
+    }
+    return true;
+  }
+  function fact(k, v) { return v ? el('div', null, el('span', { class: 'k', text: k }), s(v)) : null; }
+  function select(opts, val, onchange, dis, label) {
+    var sel = el('select', { 'aria-label': label || '', disabled: dis });
+    opts.forEach(function (o) {
+      var v = Array.isArray(o) ? o[0] : o, t = Array.isArray(o) ? o[1] : o;
+      var op = el('option', { value: v, text: t }); if (v === val) op.selected = true; sel.appendChild(op);
+    });
+    if (onchange) sel.addEventListener('change', function () { onchange(sel.value); });
+    return sel;
+  }
+
+  function card(r) {
+    var d = r.d, id = r.id, dis = !writable();
+    var c = el('article', { class: 'card', 'data-sch': s(d.schaltung) || 'Reihe', id: 'st-' + id });
+    c.appendChild(el('div', { class: 'head' },
+      el('span', { class: 'nr', text: s(d.nr) }),
+      el('h3', { text: s(d.name) }),
+      el('span', { class: 'chips' },
+        el('span', { class: 'chip c', text: s(d.schaltung) }),
+        d.lage ? el('span', { class: 'chip', text: s(d.lage) }) : null,
+        d.status ? el('span', { class: 'chip', text: s(d.status) }) : null)));
+    if (d.von || d.nach) c.appendChild(el('div', { class: 'flow' }, 'kommt von ', el('b', { text: s(d.von) || '–' }), '  →  geht nach ', el('b', { text: s(d.nach) || '–' })));
+    var facts = el('div', { class: 'facts' }, fact('Menge', d.menge), fact('Rohr', d.rohr), fact('Höhe', d.hoehe));
+    if (facts.children.length) c.appendChild(facts);
+    if (d.funktion) c.appendChild(el('p', { class: 'fn', text: s(d.funktion) }));
+    if (d.claude) c.appendChild(el('p', { class: 'cl' }, el('b', { text: 'Stand und Beleg: ' }), s(d.claude)));
+
+    var sel = select(MEIN, s(d.meinung), function (v) { if (v !== s(d.meinung)) save(id, { meinung: v }, 'Meinung gespeichert'); }, dis, 'Eure Meinung');
+    sel.className = s(d.meinung) ? 'mein-' + (s(d.meinung) === 'ändern' ? 'aendern' : s(d.meinung)) : '';
+    var ta = el('textarea', { rows: '2', placeholder: 'Eure Notiz, Frage oder Änderungswunsch zu dieser Station', 'data-keep': '1', disabled: dis, 'aria-label': 'Notiz' });
+    ta.value = s(d.notiz);
+    var start = ta.value;
+    ta.addEventListener('blur', function () {
+      if (ta.value !== start) { var v = ta.value; save(id, { notiz: v }, 'Notiz gespeichert').then(function (ok) { if (ok) start = v; }); }
+    });
+    var meta = el('div', { class: 'meta' });
+    if (d.bearbeitet_am) {
+      meta.appendChild(document.createTextNode('Zuletzt bearbeitet '));
+      if (d.bearbeitet_von) meta.appendChild(el('span', { 'data-uid': d.bearbeitet_von, text: 'von jemandem' }));
+      meta.appendChild(document.createTextNode(' am ' + new Date(d.bearbeitet_am).toLocaleString('de-DE', { dateStyle: 'short', timeStyle: 'short' })));
+    }
+    c.appendChild(el('div', { class: 'team' }, el('label', null, 'Eure Meinung', sel), el('label', null, 'Notiz', ta), meta));
+
+    var acts = el('div', { class: 'acts' });
+    acts.appendChild(el('button', { type: 'button', class: 'ghost', text: 'Bearbeiten', on: { click: function () { editing = id; delAsk = null; render(true); } } }));
+    if (comments) acts.appendChild(el('button', { type: 'button', class: 'ghost', text: 'Kommentar', on: { click: function () {
+      comments.openComposer({ element: c }).catch(function () { toast('Kommentieren ist hier nicht möglich.'); });
+    } } }));
+    if (delAsk === id) {
+      acts.appendChild(el('span', { class: 'count', text: 'Station wirklich löschen?' }));
+      acts.appendChild(el('button', { type: 'button', class: 'danger', text: 'Ja, löschen', disabled: dis, on: { click: function () {
+        if (!writable()) return;
+        db.doc('stationen/' + id).delete().then(function () { toast('Station gelöscht'); }).catch(function () { toast('Löschen nicht möglich.'); });
+        delAsk = null;
+      } } }));
+      acts.appendChild(el('button', { type: 'button', class: 'ghost', text: 'Abbrechen', on: { click: function () { delAsk = null; render(true); } } }));
+    } else {
+      acts.appendChild(el('button', { type: 'button', class: 'ghost danger', text: 'Löschen', disabled: dis, on: { click: function () { delAsk = id; render(true); } } }));
+    }
+    c.appendChild(acts);
+    if (editing === id) c.appendChild(form(id, d));
+    return c;
+  }
+
+  function form(id, d) {
+    var isNew = id == null, dis = !writable();
+    var f = el('div', { class: 'form' });
+    var inputs = {};
+    FIELDS.forEach(function (fd) {
+      var k = fd[0], lab = fd[1], inp;
+      if (k === 'schaltung') inp = select(SCH, s(d[k]) || 'Reihe', null, dis, lab);
+      else if (k === 'lage') inp = select([''].concat(LAGE), s(d[k]), null, dis, lab);
+      else if (k === 'status') inp = select([''].concat(STAT), s(d[k]), null, dis, lab);
+      else if (k === 'funktion' || k === 'claude') { inp = el('textarea', { rows: '3', disabled: dis, 'aria-label': lab }); inp.value = s(d[k]); }
+      else { inp = el('input', { type: 'text', disabled: dis, 'aria-label': lab }); inp.value = s(d[k]); if (k === 'gruppe') inp.setAttribute('list', 'gruppen'); }
+      inputs[k] = inp;
+      f.appendChild(el('label', { class: (k === 'funktion' || k === 'claude') ? 'wide' : '' }, lab, inp));
+    });
+    var acts = el('div', { class: 'acts wide' });
+    acts.appendChild(el('button', { type: 'button', class: 'prim', text: isNew ? 'Station anlegen' : 'Speichern', disabled: dis, on: { click: function () {
+      var patch = {};
+      FIELDS.forEach(function (fd) { patch[fd[0]] = inputs[fd[0]].value.trim(); });
+      if (!patch.name) { toast('Bitte einen Namen eingeben.'); return; }
+      if (isNew) {
+        var maxOrd = rows.reduce(function (m, r) { return Math.max(m, Number(r.d.ord) || 0); }, 0);
+        patch.ord = maxOrd + 10; patch.meinung = ''; patch.notiz = '';
+        patch.bearbeitet_von = uid || null; patch.bearbeitet_am = Date.now();
+        db.collection('stationen').add(patch).then(function () { toast('Station angelegt'); editing = null; $('neuform').textContent = ''; }).catch(function () { toast('Anlegen nicht möglich.'); });
+      } else {
+        save(id, patch, 'Gespeichert').then(function (ok) { if (ok) { editing = null; render(true); } });
+      }
+    } } }));
+    acts.appendChild(el('button', { type: 'button', class: 'ghost', text: 'Abbrechen', on: { click: function () { editing = null; if (isNew) $('neuform').textContent = ''; else render(true); } } }));
+    f.appendChild(acts);
+    return f;
+  }
+
+  function render(force) {
+    var ae = document.activeElement;
+    if (!force && ae && ae.getAttribute && ae.getAttribute('data-keep') === '1' && $('list').contains(ae)) { deferred = true; return; }
+    deferred = false;
+    var st = $('status');
+    st.hidden = !(errMsg); st.textContent = errMsg;
+    var list = $('list'); list.textContent = '';
+    var dl = document.getElementById('gruppen');
+    if (!dl) { dl = el('datalist', { id: 'gruppen' }); document.body.appendChild(dl); }
+    dl.textContent = '';
+    var seen = {};
+    rows.forEach(function (r) { var g = s(r.d.gruppe); if (g && !seen[g]) { seen[g] = 1; dl.appendChild(el('option', { value: g })); } });
+    if (!loaded) { list.appendChild(el('div', { class: 'empty', text: 'Stationen werden geladen …' })); return; }
+    if (!rows.length) { list.appendChild(el('div', { class: 'empty', text: 'Noch keine Stationen. Claude trägt die Ausgangsfassung ein; bis dahin könnt ihr mit „+ Station“ selbst eine anlegen.' })); updateCount(); return; }
+    var groups = [], idx = {};
+    rows.filter(matches).forEach(function (r) {
+      var g = s(r.d.gruppe) || 'Ohne Gruppe';
+      if (!(g in idx)) { idx[g] = groups.length; groups.push({ g: g, rs: [] }); }
+      groups[idx[g]].rs.push(r);
+    });
+    if (!groups.length) list.appendChild(el('div', { class: 'empty', text: 'Keine Station passt zu Suche und Filter.' }));
+    groups.forEach(function (gr) {
+      var sec = el('section', { class: 'grp' }, el('h2', null, gr.g, el('span', { class: 'n', text: gr.rs.length + ' Stationen' })));
+      var cards = el('div', { class: 'cards' });
+      gr.rs.forEach(function (r) { cards.appendChild(card(r)); });
+      sec.appendChild(cards); list.appendChild(sec);
+    });
+    updateCount(); fillNames();
+  }
+  function updateCount() {
+    var n = rows.length, c = { ok: 0, 'ändern': 0, unklar: 0, streichen: 0 }, k = 0;
+    rows.forEach(function (r) { var m = s(r.d.meinung); if (m in c) c[m]++; else k++; });
+    $('count').textContent = n + ' Stationen · ' + c.ok + ' ok · ' + c['ändern'] + ' ändern · ' + c.unklar + ' unklar · ' + c.streichen + ' streichen · ' + k + ' ohne Meinung';
+  }
+  function fillNames() {
+    if (!user) return;
+    var spans = Array.prototype.slice.call(document.querySelectorAll('[data-uid]'));
+    if (!spans.length) return;
+    var ids = []; spans.forEach(function (sp) { var u = sp.getAttribute('data-uid'); if (ids.indexOf(u) < 0) ids.push(u); });
+    user.profiles(ids).then(function (ps) {
+      spans.forEach(function (sp) { var p = ps[sp.getAttribute('data-uid')]; sp.textContent = 'von ' + ((p && (p.isMe ? 'dir' : p.name)) || 'jemandem'); });
+    });
+  }
+
+  // ---------- Start ----------
+  function bind() {
+    $('q').addEventListener('input', function (e) { filt.q = e.target.value; render(true); });
+    $('fm').addEventListener('change', function (e) { filt.m = e.target.value; render(true); });
+    $('neu').addEventListener('click', function () {
+      var box = $('neuform'); box.textContent = '';
+      editing = '__neu';
+      box.appendChild(el('div', { class: 'card', 'data-sch': 'Idee' }, el('h3', { text: 'Neue Station' }), form(null, { schaltung: 'Reihe' })));
+    });
+    document.addEventListener('focusout', function () { if (deferred) setTimeout(function () { if (deferred) render(true); }, 0); });
+  }
+
+  async function init() {
+    legend(); bind(); render(true);
+    try { db = await claude.use('db'); } catch (e) { db = null; }
+    try { user = await claude.use('user'); } catch (e) { user = null; }
+    try { comments = await claude.use('comments'); } catch (e) { comments = null; }
+    if (user) { try { uid = await user.id(); } catch (e) {} try { canWrite = await user.can('data.write'); } catch (e) {} }
+    if (!db) { loaded = true; errMsg = 'Die gemeinsamen Daten sind nur nach Anmeldung verfügbar. Bitte den Link in claude.ai öffnen.'; render(true); return; }
+    timer = setTimeout(function () { if (!loaded) { errMsg = 'Die Daten sind noch nicht erreichbar. Die Seite lädt weiter.'; render(true); } }, 10000);
+    db.collection('stationen').orderBy('ord').onSnapshot(function (snap) {
+      clearTimeout(timer); loaded = true; errMsg = '';
+      rows = snap.docs.map(function (dd) { return { id: dd.id, d: dd.data() || {} }; });
+      if (canWrite === false) errMsg = 'Du kannst die Liste lesen und kommentieren. Zum Bearbeiten braucht ihr die Rolle „Mitwirkende“ in der Freigabe.';
+      render(false);
+    }, function (e) {
+      clearTimeout(timer); loaded = true; errMsg = 'Die Liste konnte nicht geladen werden (' + (e && e.code ? e.code : 'Fehler') + ').'; render(true);
+    });
+  }
+  init();
+})();
+</script>

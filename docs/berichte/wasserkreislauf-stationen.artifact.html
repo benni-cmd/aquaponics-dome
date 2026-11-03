@@ -60,12 +60,139 @@ section.grp{display:grid;gap:8px;margin:22px 0}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;max-width:90vw;z-index:20;font-size:.9rem}
 @media (max-width:560px){.team{grid-template-columns:1fr}.chips{margin-left:0}}
 @media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}}
+
+.plan{margin:6px 0 14px}.plan h2{margin-bottom:4px}
+.plan figure{margin:8px 0;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px}
+.plan figcaption{font-size:.82rem;color:var(--muted);padding:6px 6px 2px;display:block}
+.plan .scroll{overflow-x:auto}.plan svg{width:100%;height:auto;display:block;min-width:620px}
+.plan svg text{font:11px system-ui,sans-serif;fill:var(--text)}.plan svg text.mut{fill:var(--muted)}
+.plan .lg{display:inline-flex;gap:5px;align-items:center;margin-right:12px}.plan .lg i{display:inline-block;width:16px;height:5px;border-radius:2px}
+.badge{cursor:pointer}.badge:hover circle,.badge:focus circle{fill:var(--chip)}.badge:focus-visible{outline:2px solid var(--accent)}
+.card.flash{outline:3px solid var(--accent);outline-offset:2px}
 </style>
 
 <main>
 <h1>Wasserkreislauf: Stationen, Funktionen, Reihe oder parallel</h1>
 <p class="sub">Der Wasserkreislauf, wie er heute geplant und zum Teil gebaut ist (Empfehlung A+), eine Station pro Karte. Ihr könnt jede Karte bearbeiten, eine Meinung setzen, eine Notiz schreiben oder einen Kommentar hinterlassen. Claude liest alles von hier aus und arbeitet es ein. Zahlen sind Auslegungswerte aus der Netzliste und den Recherchen R45 bis R47c, keine Messungen.</p>
 
+<section class="plan" aria-label="Draufsicht">
+<h2>Draufsicht: der Wasserweg in der Kuppel</h2>
+<p class="sub">Blick von oben, Norden oben, Maße aus dem Modell (Runde 66). Die Zahlen sind die Stationen aus der Liste darunter; ein Klick auf eine Zahl springt zur Karte. Eingezeichnet ist der Weg einer Linie, die andere (West) ist gespiegelt gleich.</p>
+<figure><div class="scroll"><svg viewBox="0 0 900 900" role="img" aria-label="Draufsicht der Kuppel mit dem Wasserweg"><defs><marker id="ar-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--reihe)"/></marker><marker id="ar-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ruecklauf)"/></marker><marker id="ar-o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--notweg)"/></marker></defs><rect width="900" height="900" fill="var(--card)"/><path d="M450.0,450.0 L696.9,789.8 A420.0,420.0 0 0 0 789.8,203.1 A420.0,420.0 0 0 0 203.1,110.2 Z" fill="var(--parallel)" opacity=".07"/>
+<path d="M450.0,450.0 L203.1,110.2 A420.0,420.0 0 0 0 110.2,696.9 A420.0,420.0 0 0 0 696.9,789.8 Z" fill="var(--abzweig)" opacity=".07"/>
+<circle cx="450.0" cy="450.0" r="420.0" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="450.0" y1="450.0" x2="696.9" y2="789.8" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="450.0" y1="450.0" x2="203.1" y2="110.2" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="450.0" y="24.0" class="mut" text-anchor="middle">Fundamentring, Ø 12 m</text>
+<text x="578.1" y="87.5" font-weight="700" style="fill:var(--parallel)">Linie 1 (Ost)</text>
+<text x="38.0" y="614.5" font-weight="700" style="fill:var(--abzweig)">Linie 2 (West)</text>
+<g transform="translate(161.6 242.7) rotate(125.7)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(94.8 451.9) rotate(89.7)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(163.7 660.3) rotate(53.7)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(342.0 788.4) rotate(17.7)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(805.2 448.1) rotate(-90.3)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(736.3 239.7) rotate(-126.3)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(558.0 111.6) rotate(-162.3)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(338.5 112.8) rotate(161.7)"><rect x="-92.4" y="-28.0" width="184.8" height="56.0" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(258.0 312.1) rotate(125.7)"><rect x="-65.2" y="-32.6" width="130.6" height="65.3" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(213.6 451.2) rotate(89.7)"><rect x="-65.2" y="-32.6" width="130.6" height="65.3" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(259.5 589.9) rotate(53.7)"><rect x="-65.2" y="-32.6" width="130.6" height="65.3" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(640.5 310.1) rotate(-126.3)"><rect x="-65.2" y="-32.6" width="130.6" height="65.3" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(521.9 224.8) rotate(-162.3)"><rect x="-65.2" y="-32.6" width="130.6" height="65.3" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<g transform="translate(375.8 225.6) rotate(161.7)"><rect x="-65.2" y="-32.6" width="130.6" height="65.3" rx="2" fill="var(--parallel)" opacity=".28" stroke="var(--parallel)" stroke-width="1"/></g>
+<circle cx="450.0" cy="450.0" r="136.2" fill="var(--reihe)" opacity=".22" stroke="var(--reihe)" stroke-width="2"/>
+<circle cx="648.3" cy="723.0" r="61.1" fill="var(--reihe)" opacity=".18" stroke="var(--reihe)" stroke-width="1.5"/>
+<circle cx="751.3" cy="624.0" r="28.0" fill="var(--reihe)" opacity=".18" stroke="var(--reihe)" stroke-width="1.5"/>
+<text x="450.0" y="480.0" class="mut" text-anchor="middle">Pool Ø 3,9 m</text>
+<text x="648.3" y="737.0" class="mut" text-anchor="middle">Zweitbecken</text>
+<text x="751.3" y="646.0" class="mut" text-anchor="middle">Drittbecken</text>
+<rect x="560.4" y="825.9" width="26" height="8" fill="var(--text)" transform="rotate(-18.0 573.4 829.9)"/>
+<text x="573.4" y="817.9" class="mut" text-anchor="middle">Tür</text>
+<rect x="479.1" y="845.0" width="12" height="12" fill="none" stroke="var(--notweg)" stroke-dasharray="2 2"/><text x="475.1" y="855.0" class="mut" text-anchor="end">Schaltschrank (Annahme)</text>
+<text x="22" y="40" font-weight="700">N ↑</text>
+<rect x="547.2" y="575.8" width="49.0" height="49.0" fill="var(--nebenkreis)" opacity=".3" stroke="var(--nebenkreis)" transform="rotate(-29.0 571.7 600.3)"/><text x="599.7" y="604.3" class="mut">Puffer</text>
+<polyline points="813.4,566.0 596.7,496.8" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="812.2,330.2 596.2,401.6" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="672.6,140.2 539.9,324.9" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="448.0,68.5 449.2,296.0" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="224.1,142.5 358.8,325.9" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="86.6,334.0 303.3,403.2" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="87.8,569.8 303.8,498.4" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="227.4,759.8 360.1,575.1" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="452.0,831.5 450.8,604.0" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<polyline points="675.9,757.5 541.2,574.1" fill="none" stroke="var(--ruecklauf)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)" stroke-linejoin="round"/>
+<path d="M538.5,571.8 A150.5,150.5 0 0 0 361.5,328.2" fill="none" stroke="var(--ruecklauf)" stroke-width="5" stroke-dasharray="9 5"/>
+<path d="M361.5,328.2 A150.5,150.5 0 0 0 538.5,571.8" fill="none" stroke="var(--ruecklauf)" stroke-width="5" stroke-dasharray="9 5"/>
+<polyline points="587.3,421.1 702.1,397.0" fill="none" stroke="var(--notweg)" stroke-width="4" marker-end="url(#ar-o)" stroke-linejoin="round"/>
+<polyline points="450.0,450.0 649.1,540.1" fill="none" stroke="var(--notweg)" stroke-width="2" stroke-dasharray="6 4" stroke-linejoin="round"/>
+<polyline points="649.1,540.1 649.0,551.6" fill="none" stroke="var(--notweg)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ar-o)" stroke-linejoin="round"/>
+<polyline points="648.9,565.6 715.5,413.4" fill="none" stroke="var(--notweg)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ar-o)" stroke-linejoin="round"/>
+<polyline points="724.8,392.2 692.7,430.3" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="686.0,438.4 686.0,446.5" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="724.8,392.2 689.6,493.6" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="686.1,503.6 686.1,495.5" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="686.0,471.0 742.6,471.0" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="751.0,471.0 723.7,469.1" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-linejoin="round"/>
+<path d="M723.7,469.1 A274.4,274.4 0 0 1 622.7,663.2" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)"/>
+<path d="M723.7,469.1 A274.4,274.4 0 0 0 300.6,219.9" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)"/>
+<polyline points="751.0,471.0 760.7,471.7" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-linejoin="round"/>
+<path d="M760.7,471.7 A311.5,311.5 0 0 1 646.0,692.1" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#ar-b)"/>
+<path d="M760.7,471.7 A311.5,311.5 0 0 0 280.3,188.8" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#ar-b)"/>
+<polyline points="387.6,575.7 350.0,651.6" fill="none" stroke="var(--notweg)" stroke-width="4" marker-end="url(#ar-o)" stroke-linejoin="round"/>
+<polyline points="450.0,450.0 521.3,701.9" fill="none" stroke="var(--notweg)" stroke-width="2" stroke-dasharray="6 4" stroke-linejoin="round"/>
+<polyline points="521.3,701.9 517.8,712.8" fill="none" stroke="var(--notweg)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ar-o)" stroke-linejoin="round"/>
+<polyline points="513.4,726.1 361.8,679.1" fill="none" stroke="var(--notweg)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ar-o)" stroke-linejoin="round"/>
+<polyline points="339.8,672.2 417.8,654.7" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="428.1,652.4 425.6,660.1" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="339.8,672.2 399.0,708.8" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="407.9,714.3 410.4,706.7" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="417.9,683.4 438.4,745.7" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)" stroke-linejoin="round"/>
+<polyline points="441.0,753.7 441.9,724.3" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-linejoin="round"/>
+<path d="M441.9,724.3 A274.4,274.4 0 0 1 277.3,236.8" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)"/>
+<path d="M441.9,724.3 A274.4,274.4 0 0 0 599.4,680.1" fill="none" stroke="var(--reihe)" stroke-width="3" marker-end="url(#ar-b)"/>
+<polyline points="441.0,753.7 440.8,761.4" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-linejoin="round"/>
+<path d="M440.8,761.4 A311.5,311.5 0 0 1 254.0,207.9" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#ar-b)"/>
+<path d="M440.8,761.4 A311.5,311.5 0 0 0 619.7,711.2" fill="none" stroke="var(--reihe)" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#ar-b)"/>
+<rect x="702.0" y="377.6" width="45.5" height="29.4" fill="var(--card)" stroke="var(--muted)" stroke-width="1.5" transform="rotate(75.0 724.8 392.2)"/>
+<circle cx="686.0" cy="438.4" r="10.4" fill="var(--notweg)" stroke="var(--card)" stroke-width="1"/>
+<circle cx="686.1" cy="503.6" r="10.4" fill="var(--notweg)" stroke="var(--card)" stroke-width="1"/>
+<circle cx="686.0" cy="471.0" r="23.8" fill="var(--card)" stroke="var(--muted)" stroke-width="1.5"/>
+<circle cx="648.9" cy="565.6" r="19.6" fill="var(--card)" stroke="var(--muted)" stroke-width="1.5"/>
+<circle cx="649.1" cy="540.1" r="9.7" fill="var(--notweg)" stroke="var(--card)" stroke-width="1"/>
+<rect x="743.0" y="463.0" width="16.0" height="16.0" fill="var(--card)" stroke="var(--reihe)" stroke-width="2" stroke-dasharray="3 2"/>
+<rect x="317.0" y="657.5" width="45.5" height="29.4" fill="var(--card)" stroke="var(--muted)" stroke-width="1.5" transform="rotate(75.0 339.8 672.2)"/>
+<circle cx="428.1" cy="652.4" r="10.4" fill="var(--notweg)" stroke="var(--card)" stroke-width="1"/>
+<circle cx="407.9" cy="714.3" r="10.4" fill="var(--notweg)" stroke="var(--card)" stroke-width="1"/>
+<circle cx="417.9" cy="683.4" r="23.8" fill="var(--card)" stroke="var(--muted)" stroke-width="1.5"/>
+<circle cx="513.4" cy="726.1" r="19.6" fill="var(--card)" stroke="var(--muted)" stroke-width="1.5"/>
+<circle cx="521.3" cy="701.9" r="9.7" fill="var(--notweg)" stroke="var(--card)" stroke-width="1"/>
+<rect x="433.0" y="745.7" width="16.0" height="16.0" fill="var(--card)" stroke="var(--reihe)" stroke-width="2" stroke-dasharray="3 2"/>
+<g class="badge" data-nr="H1" tabindex="0" role="button" aria-label="Station H1"><circle cx="450.0" cy="450.0" r="11" fill="var(--card)" stroke="var(--start)" stroke-width="2"/><text x="450.0" y="453.4" text-anchor="middle" font-size="9.5" font-weight="700">H1</text></g>
+<g class="badge" data-nr="H2" tabindex="0" role="button" aria-label="Station H2"><circle cx="656.0" cy="406.7" r="11" fill="var(--card)" stroke="var(--notweg)" stroke-width="2"/><text x="656.0" y="410.1" text-anchor="middle" font-size="9.5" font-weight="700">H2</text></g>
+<g class="badge" data-nr="H3" tabindex="0" role="button" aria-label="Station H3"><circle cx="675.5" cy="572.6" r="11" fill="var(--card)" stroke="var(--notweg)" stroke-width="2"/><text x="675.5" y="576.0" text-anchor="middle" font-size="9.5" font-weight="700">H3</text></g>
+<g class="badge" data-nr="H4" tabindex="0" role="button" aria-label="Station H4"><circle cx="724.8" cy="365.6" r="11" fill="var(--card)" stroke="var(--notweg)" stroke-width="2"/><text x="724.8" y="369.0" text-anchor="middle" font-size="9.5" font-weight="700">H4</text></g>
+<g class="badge" data-nr="H7" tabindex="0" role="button" aria-label="Station H7"><circle cx="709.1" cy="430.0" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="709.1" y="433.4" text-anchor="middle" font-size="9.5" font-weight="700">H7</text></g>
+<g class="badge" data-nr="H9" tabindex="0" role="button" aria-label="Station H9"><circle cx="658.0" cy="471.0" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="658.0" y="474.4" text-anchor="middle" font-size="9.5" font-weight="700">H9</text></g>
+<g class="badge" data-nr="H10" tabindex="0" role="button" aria-label="Station H10"><circle cx="774.1" cy="471.0" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="774.1" y="474.4" text-anchor="middle" font-size="9.5" font-weight="700">H10</text></g>
+<g class="badge" data-nr="Z2" tabindex="0" role="button" aria-label="Station Z2"><circle cx="626.4" cy="239.8" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="626.4" y="243.2" text-anchor="middle" font-size="9.5" font-weight="700">Z2</text></g>
+<g class="badge" data-nr="Z1" tabindex="0" role="button" aria-label="Station Z1"><circle cx="624.2" cy="191.8" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="624.2" y="195.2" text-anchor="middle" font-size="9.5" font-weight="700">Z1</text></g>
+<g class="badge" data-nr="R4" tabindex="0" role="button" aria-label="Station R4"><circle cx="586.4" cy="386.4" r="11" fill="var(--card)" stroke="var(--ruecklauf)" stroke-width="2"/><text x="586.4" y="389.8" text-anchor="middle" font-size="9.5" font-weight="700">R4</text></g>
+<g class="badge" data-nr="R3" tabindex="0" role="button" aria-label="Station R3"><circle cx="593.0" cy="251.0" r="11" fill="var(--card)" stroke="var(--ruecklauf)" stroke-width="2"/><text x="593.0" y="254.4" text-anchor="middle" font-size="9.5" font-weight="700">R3</text></g>
+<g class="badge" data-nr="H2" tabindex="0" role="button" aria-label="Station H2"><circle cx="363.7" cy="624.0" r="11" fill="var(--card)" stroke="var(--notweg)" stroke-width="2"/><text x="363.7" y="627.4" text-anchor="middle" font-size="9.5" font-weight="700">H2</text></g>
+<g class="badge" data-nr="H3" tabindex="0" role="button" aria-label="Station H3"><circle cx="540.0" cy="733.1" r="11" fill="var(--card)" stroke="var(--notweg)" stroke-width="2"/><text x="540.0" y="736.5" text-anchor="middle" font-size="9.5" font-weight="700">H3</text></g>
+<g class="badge" data-nr="H4" tabindex="0" role="button" aria-label="Station H4"><circle cx="316.6" cy="663.9" r="11" fill="var(--card)" stroke="var(--notweg)" stroke-width="2"/><text x="316.6" y="667.2" text-anchor="middle" font-size="9.5" font-weight="700">H4</text></g>
+<g class="badge" data-nr="H7" tabindex="0" role="button" aria-label="Station H7"><circle cx="405.0" cy="641.9" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="405.0" y="645.3" text-anchor="middle" font-size="9.5" font-weight="700">H7</text></g>
+<g class="badge" data-nr="H9" tabindex="0" role="button" aria-label="Station H9"><circle cx="447.3" cy="683.4" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="447.3" y="686.8" text-anchor="middle" font-size="9.5" font-weight="700">H9</text></g>
+<g class="badge" data-nr="H10" tabindex="0" role="button" aria-label="Station H10"><circle cx="441.0" cy="776.8" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="441.0" y="780.2" text-anchor="middle" font-size="9.5" font-weight="700">H10</text></g>
+<g class="badge" data-nr="Z2" tabindex="0" role="button" aria-label="Station Z2"><circle cx="225.2" cy="607.4" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="225.2" y="610.8" text-anchor="middle" font-size="9.5" font-weight="700">Z2</text></g>
+<g class="badge" data-nr="Z1" tabindex="0" role="button" aria-label="Station Z1"><circle cx="214.9" cy="654.4" r="11" fill="var(--card)" stroke="var(--reihe)" stroke-width="2"/><text x="214.9" y="657.8" text-anchor="middle" font-size="9.5" font-weight="700">Z1</text></g>
+<g class="badge" data-nr="R4" tabindex="0" role="button" aria-label="Station R4"><circle cx="313.6" cy="513.6" r="11" fill="var(--card)" stroke="var(--ruecklauf)" stroke-width="2"/><text x="313.6" y="517.0" text-anchor="middle" font-size="9.5" font-weight="700">R4</text></g>
+<g class="badge" data-nr="R3" tabindex="0" role="button" aria-label="Station R3"><circle cx="307.0" cy="649.0" r="11" fill="var(--card)" stroke="var(--ruecklauf)" stroke-width="2"/><text x="307.0" y="652.4" text-anchor="middle" font-size="9.5" font-weight="700">R3</text></g>
+<g class="badge" data-nr="R5" tabindex="0" role="button" aria-label="Station R5"><circle cx="621.7" cy="690.1" r="11" fill="var(--card)" stroke="var(--ruecklauf)" stroke-width="2"/><text x="621.7" y="693.5" text-anchor="middle" font-size="9.5" font-weight="700">R5</text></g>
+<g class="badge" data-nr="N4" tabindex="0" role="button" aria-label="Station N4"><circle cx="751.3" cy="592.5" r="11" fill="var(--card)" stroke="var(--nebenkreis)" stroke-width="2"/><text x="751.3" y="595.9" text-anchor="middle" font-size="9.5" font-weight="700">N4</text></g></svg></div>
+<figcaption><span class="lg"><i style="background:var(--notweg)"></i>vergraben (Heber, Absetzerkreis)</span><span class="lg"><i style="background:var(--reihe)"></i>Zulauf (Pumpe, Biofilter, Verteiler, NFT-Strang und Beet-Zweige)</span><span class="lg"><i style="background:var(--ruecklauf)"></i>Rücklauf (Sektorsammler und Halbring auf der Poolkrone)</span><span class="lg"><i style="background:var(--parallel);opacity:.5"></i>Beete (14), darüber die NFT-Tische</span>
+<br>Nicht eingezeichnet, weil sie direkt an den Anlagenteilen liegen oder noch keinen festen Ort haben: Filter-Stamm (H5), Notbypass (H6), Druckleitung (H8), Bypass und Messkreis (Z3, Z4), Beet-Ablauf und Beet-Sumpf (R1, R2), Luft, Frischwasser, Schlamm. Der Verteiler (gestrichelt) und die Zweige sind schematisch: Lage und Bogenverlauf stehen noch nicht fest, Tische und Innentische am Poolrand sind der Übersicht halber weggelassen.</figcaption></figure>
+</section>
 <div class="strip" aria-label="Weg des Wassers je Linie">
 <b>Pool</b><span class="arr">&rarr;</span><span>Heber</span><span class="arr">&rarr;</span><span>Feinfilter</span><span class="arr">&rarr;</span><span>2 Hauptpumpen</span><span class="arr">&rarr;</span><span>Biofilter</span><span class="arr">&rarr;</span><b>Verteiler</b><span class="arr">&rArr;</span><span>Beete | NFT-Tische | Bypass | Messkreis</span><span class="arr">&rarr;</span><span>Rücklauf (Gefälle)</span><span class="arr">&rarr;</span><b>Pool</b>
 </div>
@@ -330,6 +457,17 @@ section.grp{display:grid;gap:8px;margin:22px 0}
       clearTimeout(timer); loaded = true; errMsg = 'Die Liste konnte nicht geladen werden (' + (e && e.code ? e.code : 'Fehler') + ').'; render(true);
     });
   }
+
+  function jump(nr) {
+    var hit = null;
+    Array.prototype.forEach.call(document.querySelectorAll('#list .card .nr'), function (n) { if (!hit && n.textContent === nr) hit = n.closest('.card'); });
+    if (!hit) { toast('Station ' + nr + ' ist gerade nicht in der Liste (Suche oder Filter prüfen).'); return; }
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    hit.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
+    hit.classList.add('flash'); setTimeout(function () { hit.classList.remove('flash'); }, 1800);
+  }
+  document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.badge'); if (b) jump(b.getAttribute('data-nr')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { var b = e.target.closest && e.target.closest('.badge'); if (b) { e.preventDefault(); jump(b.getAttribute('data-nr')); } } });
   init();
 })();
 </script>

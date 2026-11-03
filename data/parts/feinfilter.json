@@ -1,0 +1,1009 @@
+{
+  "komponente": "feinfilter",
+  "datei": "designs/components/feinfilter.sc",
+  "teilenummer": "T55",
+  "stand": "pilot",
+  "titel": "Feinfilter (Hauptstrom, Siebkorb 100 Mikrometer)",
+  "kurz": "Der Behälter nimmt das Wasser einer Linie auf (110 l/min). Es läuft durch den Siebkorb, der Schwebstoffe ab 100 Mikrometer zurückhält, und fließt unter dem Korb zur Pumpe ab. Alle 1 bis 2 Wochen wird der Korb herausgehoben und ausgespült.",
+  "hinweis": "Texte und Zahlen aus docs/parts/feinfilter.md und data/components/feinfilter.json. Normverweise und Lebensmittelkontakt sind angenommen, bis R31/B6/R50 sie belegen; der europäische Bezug der Kaufteile ist offen (R52, Regel D76).",
+  "koerperzahl": 55,
+  "gruppen": [
+    {
+      "id": "standrahmen",
+      "name": "Standrahmen",
+      "kurz": "Trägt den Behälter 250 mm über dem Boden.",
+      "teile": [
+        "bein",
+        "fussplatte",
+        "ringsteg",
+        "quersteg",
+        "auflagesteg"
+      ]
+    },
+    {
+      "id": "behaelter",
+      "name": "Behälter",
+      "kurz": "Nimmt das Wasser auf und trägt den Korb.",
+      "teile": [
+        "behaelter"
+      ]
+    },
+    {
+      "id": "siebkorb",
+      "name": "Siebkorb",
+      "kurz": "Hält Schwebstoffe ab 100 Mikrometer zurück.",
+      "teile": [
+        "korbgewebe",
+        "korbflansch",
+        "korbstab",
+        "korbrahmen",
+        "korbgriff"
+      ]
+    },
+    {
+      "id": "deckel",
+      "name": "Deckel",
+      "kurz": "Verschließt den Behälter oben.",
+      "teile": [
+        "dichtung",
+        "deckel",
+        "deckelgriff"
+      ]
+    },
+    {
+      "id": "spannverschluss",
+      "name": "Spannverschluss",
+      "kurz": "Vier Exzenterspanner pressen den Deckel auf die Dichtung.",
+      "teile": [
+        "spannbock",
+        "spannhebel"
+      ]
+    },
+    {
+      "id": "einlauf",
+      "name": "Einlauf",
+      "kurz": "Führt das Wasser in den Korb.",
+      "teile": [
+        "einlaufrohr"
+      ]
+    },
+    {
+      "id": "auslauf",
+      "name": "Auslauf",
+      "kurz": "Führt das gefilterte Wasser zur Pumpe.",
+      "teile": [
+        "auslaufrohr",
+        "auslauf_flansch_innen",
+        "auslauf_mutter_aussen"
+      ]
+    },
+    {
+      "id": "ablass",
+      "name": "Ablass",
+      "kurz": "Entleert den Behälter.",
+      "teile": [
+        "ablassstutzen",
+        "kugelhahn_ablass",
+        "kugelhahn_hebel",
+        "schlauchtuelle"
+      ]
+    },
+    {
+      "id": "spuelanschluss",
+      "name": "Spülanschluss",
+      "kurz": "Spült den Korb mit Schlauchwasser.",
+      "teile": [
+        "spuelstutzen",
+        "kugelhahn_spuelen",
+        "kugelhahn_spuelen_hebel",
+        "spuel_tuelle",
+        "spritzrohr"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "bein",
+      "name": "Bein des Standrahmens",
+      "koerper": [
+        "Bein_1",
+        "Bein_2",
+        "Bein_3",
+        "Bein_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Vierkantrohr 40 x 40 x 3, Länge 244 mm (Parameter leg, leg_wall, foot_h)",
+      "funktion": "Die vier Beine tragen den Behälter 250 mm über dem Boden, damit ein Eimer unter den Ablass-Kugelhahn passt und das Wasser mit Gefälle zur Saugseite der Pumpen fließen kann.",
+      "eigenschaften": [
+        "Vierkantrohr 40 x 40 mm mit 3 mm Wand, verzinkt.",
+        "Der Standrahmen trägt den Behälter gefüllt mit etwa 200 kg (Überschlag).",
+        "Standhöhe bis Behälterunterkante 250 mm; die Höhenlage im Gelände legt die Montage fest."
+      ],
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (leg 40, leg_wall 3, foot_h 250: [A])",
+      "katalog": "vierkantrohr_40x40x3",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
+    },
+    {
+      "id": "fussplatte",
+      "name": "Fußplatte des Standrahmens",
+      "koerper": [
+        "Fussplatte_1",
+        "Fussplatte_2",
+        "Fussplatte_3",
+        "Fussplatte_4"
+      ],
+      "menge": 4,
+      "typ": "platte",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Platte 80 x 80 x 6 (Parameter plate, plate_t)",
+      "funktion": "Jede Fußplatte verteilt die Last ihres Beins auf den Untergrund und lässt das Gerät mit der Wasserwaage ausrichten und befestigen.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 mm, 6 mm dick, verzinkt.",
+        "Im Betrieb trägt jede Platte rund 44 kg (175 kg Betriebsgewicht durch vier, gerechnet)."
+      ],
+      "norm": "Stahl feuerverzinkt nach EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (plate 80, plate_t 6: [A]; Betriebsgewicht 175 kg: [E])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "bein"
+      }
+    },
+    {
+      "id": "ringsteg",
+      "name": "Ringsteg unter dem Behälterrand",
+      "koerper": [
+        "Ring_X_v",
+        "Ring_X_h",
+        "Ring_Y_l",
+        "Ring_Y_r"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Vierkantrohr 40 x 40 x 3; zwei Stege 550 mm, zwei Stege 360 mm lang (Behältermaß minus zwei Rohrbreiten)",
+      "funktion": "Die vier Ringstege verbinden die Beine oben zu einem Rechteck, auf dem der Behälterboden liegt.",
+      "eigenschaften": [
+        "Zwei lange Stege (550 mm) und zwei kurze Stege (360 mm) bilden den Rahmen.",
+        "Die Oberkante der Stege liegt bei 250 mm, genau an der Behälterunterkante."
+      ],
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (leg, leg_wall: [A])",
+      "katalog": "vierkantrohr_40x40x3",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
+    },
+    {
+      "id": "quersteg",
+      "name": "Quersteg des Standrahmens",
+      "koerper": [
+        "Steg_X_v",
+        "Steg_X_h"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Vierkantrohr 40 x 40 x 3, Länge 550 mm, Mitte 110 mm über dem Boden (Parameter brace_z)",
+      "funktion": "Die zwei unteren Querstege verbinden die Beine auf den langen Seiten und halten den Rahmen gegen Verwinden.",
+      "eigenschaften": [
+        "Zwei Stege à 550 mm Länge, Mitte 110 mm über dem Boden."
+      ],
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (brace_z 110: [A])",
+      "katalog": "vierkantrohr_40x40x3",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
+    },
+    {
+      "id": "auflagesteg",
+      "name": "Auflagesteg für den Behälterboden",
+      "koerper": [
+        "Auflage_Y_1",
+        "Auflage_Y_2",
+        "Auflage_Y_3",
+        "Auflage_Y_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Vierkantrohr 40 x 40 x 3, Länge 360 mm, Abstand 118 mm von Mitte zu Mitte (Parameter bar_n, bar_pitch, bar_dx)",
+      "funktion": "Die vier Auflagestege stützen den PP-Boden zwischen den Endringen, damit er sich unter dem Wasser nicht durchbiegt.",
+      "eigenschaften": [
+        "Die Spannweite des Behälterbodens bleibt höchstens 125 mm.",
+        "Die Biegespannung im PP-Boden liegt rechnerisch bei etwa 2,5 MPa bei 5,5 kPa Wasserdruck (Überschlag, kein Festigkeitsnachweis)."
+      ],
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "gerechnet",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (bar_dx 125, bar_n 4, bar_pitch 118: [E])",
+      "katalog": "vierkantrohr_40x40x3",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
+    },
+    {
+      "id": "behaelter",
+      "name": "Behälter mit Auflageleisten",
+      "koerper": [
+        "Behaelter"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pp",
+      "masse_mm": "630 x 440 x 610, Wand 10 mm, innen 610 x 420 x 600 (Parameter tank_l, tank_w, tank_h, wall)",
+      "funktion": "Der Behälter nimmt das Wasser einer Linie auf und trägt den Siebkorb auf zwei angeschweißten Auflageleisten; unter dem Korb liegt die 115 mm hohe Ablaufkammer, aus der der Auslauf zur Pumpe führt.",
+      "eigenschaften": [
+        "Geschweißte PP-Platte, 10 mm Wand; Wandbiegung bei 525 mm Wasserhöhe etwa 5 MPa ohne Rippen (Überschlag), reale Behälter bekommen Rippen.",
+        "Im Betrieb steht das Wasser bis zur Unterkante des Einlaufs (z 785 mm), das sind etwa 135 Liter.",
+        "Die Auflageleisten (12 x 12 mm) sind im Modell mit dem Behälter verschmolzen und kein eigener Körper."
+      ],
+      "norm": "PP nach EN ISO 1873-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "gerechnet",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (tank_*: [E]; wall 10: [A])"
+    },
+    {
+      "id": "korbflansch",
+      "name": "Flansch des Siebkorbs",
+      "koerper": [
+        "Korbflansch"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "edelstahl_1_4301",
+      "masse_mm": "604 x 414 x 3, Randbreite 22 mm (Parameter flange_t, flange_ring)",
+      "funktion": "Der Flansch ist der Rand des Korbs; er liegt auf den Auflageleisten im Behälter und trägt den Korb samt Schmutz.",
+      "eigenschaften": [
+        "Edelstahl 3 mm dick, Rand 22 mm breit.",
+        "Zur Behälterwand bleiben 3 mm Spalt je Seite, damit der Korb ohne Klemmen herausgehoben werden kann."
+      ],
+      "norm": "Werkstoff 1.4301 nach EN 10088-2 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (flange_t 3, flange_ring 22, flange_gap 3: [A])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 1000
+      }
+    },
+    {
+      "id": "korbgewebe",
+      "name": "Siebgewebe des Korbs",
+      "koerper": [
+        "Korbgewebe"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "edelstahl_gewebe_100um",
+      "masse_mm": "560 x 370 x 400 (Parameter basket_l, basket_w, basket_d)",
+      "funktion": "Das Gewebe hält Schwebstoffe ab 100 Mikrometer zurück; das Wasser tritt durch Boden und Seitenwände in die Ablaufkammer, der Schmutz bleibt im Korb.",
+      "eigenschaften": [
+        "Benetzte Siebfläche 0,840 m2 bei Soll 0,825 m2 (Strom 110 l/min, Siebbelastung 7,86 m/h).",
+        "Maschenweite 100 Mikrometer; im Versuch von Mortensen hielt das Gewebe 21 Prozent der Schwebstoffe zurück (R30).",
+        "Im Modell eine 1-mm-Hülle mit Ersatzdichte 0,55 g/cm3, damit die Masse zum echten Gewebe (0,5 kg/m2) passt.",
+        "Die Siebbelastung von 8 m/h ist angenommen; ein belegter Auslegungswert fehlt (R30)."
+      ],
+      "norm": "Drahtgewebe nach DIN ISO 9044 (Maschenweite 100 Mikrometer) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "gerechnet",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md, docs/research/R30.md (basket_*, mesh_*)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 60,
+        "folgt": "korbflansch"
+      }
+    },
+    {
+      "id": "korbstab",
+      "name": "Eckstab des Korbrahmens",
+      "koerper": [
+        "Korbstab_1",
+        "Korbstab_2",
+        "Korbstab_3",
+        "Korbstab_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "edelstahl_1_4301",
+      "masse_mm": "Stab 8 x 8, Länge 399 mm (Parameter rod)",
+      "funktion": "Die vier Eckstäbe halten das weiche Gewebe in Form, damit der Korb beim Herausheben nicht einknickt.",
+      "eigenschaften": [
+        "Edelstahl 1.4301, Querschnitt 8 x 8 mm, in jeder Ecke des Korbs."
+      ],
+      "norm": "Werkstoff 1.4301 nach EN 10088-2 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (rod 8: [A])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "korbgewebe"
+      }
+    },
+    {
+      "id": "korbrahmen",
+      "name": "Bodenrahmen des Korbs",
+      "koerper": [
+        "Korbrahmen_X_v",
+        "Korbrahmen_X_h",
+        "Korbrahmen_Y_l",
+        "Korbrahmen_Y_r"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "edelstahl_1_4301",
+      "masse_mm": "Stab 8 x 8; zwei Stäbe 542 mm, zwei Stäbe 352 mm lang (Parameter rod)",
+      "funktion": "Der Bodenrahmen aus vier Stäben spannt das Gewebe am Korbboden auf und verbindet die Eckstäbe unten zu einem Rechteck.",
+      "eigenschaften": [
+        "Zwei lange Stäbe (542 mm) und zwei kurze Stäbe (352 mm), Querschnitt 8 x 8 mm."
+      ],
+      "norm": "Werkstoff 1.4301 nach EN 10088-2 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (rod 8: [A])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 260,
+        "folgt": "korbgewebe"
+      }
+    },
+    {
+      "id": "korbgriff",
+      "name": "Bügelgriff des Korbs",
+      "koerper": [
+        "Korbgriff_v",
+        "Korbgriff_h"
+      ],
+      "menge": 2,
+      "typ": "sonderteil",
+      "werkstoff": "edelstahl_1_4301",
+      "masse_mm": "Bügel 210 x 40 mm über dem Flansch, Pfosten Rundstab 8, Bügel Rundstab 10 (Parameter handle_h, handle_d, handle_dx)",
+      "funktion": "Mit den zwei Bügelgriffen wird der Korb zum Reinigen herausgehoben und über dem Behälter ausgespült.",
+      "eigenschaften": [
+        "Ein Griff je lange Seite, 40 mm hoch, Pfosten 100 mm links und rechts der Mitte.",
+        "Zum Herausheben braucht der Korb etwa 460 mm Hub über dem Deckel."
+      ],
+      "norm": "Werkstoff 1.4301 nach EN 10088-2 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (handle_*: [A]; Hub 460 mm aus docs/parts/feinfilter.md)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100,
+        "folgt": "korbflansch"
+      }
+    },
+    {
+      "id": "dichtung",
+      "name": "Flachdichtung des Deckels",
+      "koerper": [
+        "Dichtung"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "epdm",
+      "masse_mm": "Rahmen 630 x 440, 3 mm dick, etwa 10 mm breit (Parameter gasket_t)",
+      "funktion": "Die Flachdichtung liegt umlaufend auf dem Behälterrand und dichtet den Deckel ab, damit kein Spritzwasser austritt und kein Schmutz hineinfällt.",
+      "eigenschaften": [
+        "EPDM, 3 mm dick, Modellmasse 69 g."
+      ],
+      "norm": "EPDM-Dichtungswerkstoff nach EN 681-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (gasket_t 3: [A])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      }
+    },
+    {
+      "id": "deckel",
+      "name": "Deckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "pp",
+      "masse_mm": "638 x 448 x 6 (Parameter lid_t, lid_over)",
+      "funktion": "Der Deckel verschließt den Behälter oben; die vier Spannverschlüsse pressen ihn auf die Dichtung.",
+      "eigenschaften": [
+        "PP-Platte 6 mm dick, steht auf jeder Seite 4 mm über den Behälter über."
+      ],
+      "norm": "PP nach EN ISO 1873-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (lid_t 6, lid_over 4: [A])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300
+      }
+    },
+    {
+      "id": "deckelgriff",
+      "name": "Griff des Deckels",
+      "koerper": [
+        "Deckelgriff"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pp",
+      "masse_mm": "114 x 20 x 34",
+      "funktion": "Am Griff wird der Deckel nach dem Öffnen der Spannverschlüsse abgehoben.",
+      "eigenschaften": [
+        "Aus PP, in der Mitte des Deckels; höchster Punkt des Geräts bei 903 mm."
+      ],
+      "norm": "PP nach EN ISO 1873-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (Gesamthöhe 903 mm: Messung)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 40,
+        "folgt": "deckel"
+      }
+    },
+    {
+      "id": "spannbock",
+      "name": "Haken des Spannverschlusses",
+      "koerper": [
+        "Spannbock_1",
+        "Spannbock_2",
+        "Spannbock_3",
+        "Spannbock_4"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "edelstahl_1_4301",
+      "masse_mm": "30 x 14 x 24 (Parameter latch_w, latch_t, latch_h)",
+      "funktion": "Der Haken sitzt außen am Behälterrand und ist das Gegenstück des Spannhebels; zusammen pressen sie den Deckel auf die Dichtung.",
+      "eigenschaften": [
+        "Vier Stück, je zwei an den langen Seiten, 205 mm links und rechts der Mitte.",
+        "Im Modell eine Ersatzform; ein Handelsteil (Exzenterspanner Edelstahl), Fabrikat offen."
+      ],
+      "norm": "keine Norm (Handelsteil, Fabrikat offen)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (latch_*: [A])",
+      "katalog": "exzenterspanner_edelstahl",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 100
+      }
+    },
+    {
+      "id": "spannhebel",
+      "name": "Spannhebel des Deckels",
+      "koerper": [
+        "Spannhebel_1",
+        "Spannhebel_2",
+        "Spannhebel_3",
+        "Spannhebel_4"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "edelstahl_1_4301",
+      "masse_mm": "24 x 6 x 44 (Parameter latch_w, latch_h)",
+      "funktion": "Der Exzenterhebel zieht den Deckel beim Umlegen auf die Dichtung und öffnet sich zum Abnehmen des Deckels wieder.",
+      "eigenschaften": [
+        "Vier Stück, gegenüber den Haken am Behälter; der Hebel ragt 20 mm über die Hakenoberkante.",
+        "Im Modell eine Ersatzform; ein Handelsteil, Fabrikat offen."
+      ],
+      "norm": "keine Norm (Handelsteil, Fabrikat offen)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (latch_*: [A])",
+      "katalog": "exzenterspanner_edelstahl",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 160,
+        "folgt": "deckel"
+      }
+    },
+    {
+      "id": "einlaufrohr",
+      "name": "Einlaufwinkel",
+      "koerper": [
+        "Einlaufrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d63 (DN50), Wand 3,0 mm; waagerecht durch die Seitenwand, dann senkrecht in den Korb (Parameter inlet_d, inlet_z, inlet_in, inlet_down)",
+      "funktion": "Das Rohr führt das Wasser einer Linie durch die Seitenwand und über einen Winkel von oben in den Siebkorb; es endet 120 mm unter der Einlaufmitte.",
+      "eigenschaften": [
+        "Strom 110 l/min je Linie bei 0,72 m/s im Rohr (Innen 57 mm), unter dem Grenzwert 1,0 m/s der Saugseite.",
+        "Die Rohrmitte liegt 10 mm über dem Korbflansch plus Rohrradius.",
+        "Die Durchführung durch die PP-Wand (Schweißstutzen oder Tankdurchführung) ist nicht modelliert, Hersteller offen."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "belegt",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (inlet_d 63, q_lmin 110: [Q] D55/W32; inlet_out, inlet_in, inlet_down: [A])",
+      "katalog": "pvc_u_d63",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 300
+      }
+    },
+    {
+      "id": "auslaufrohr",
+      "name": "Auslaufrohr",
+      "koerper": [
+        "Auslaufrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d63 (DN50), Wand 3,0 mm, 85 mm lang (Parameter outlet_d, outlet_z, outlet_out)",
+      "funktion": "Das Rohr führt das gefilterte Wasser aus der Ablaufkammer unter dem Korb durch die Wand zur Saugseite der großen Pumpen.",
+      "eigenschaften": [
+        "Rohr d63 mit 3,0 mm Wand, Mitte 60 mm über dem Behälterboden.",
+        "Es führt dieselbe Strömung wie der Einlauf (110 l/min bei 0,72 m/s)."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "belegt",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (outlet_d 63: [Q] W32; outlet_z: [E]; outlet_out: [A])",
+      "katalog": "pvc_u_d63",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 200
+      }
+    },
+    {
+      "id": "auslauf_flansch_innen",
+      "name": "Innerer Dichtflansch des Auslaufs",
+      "koerper": [
+        "Auslauf_Flansch_innen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Scheibe D90 x 5 (Parameter outlet_collar_d, outlet_collar_t)",
+      "funktion": "Der innere Flansch sitzt auf der Wandinnenseite und bildet mit der Gegenmutter außen eine dichte Durchführung des Auslaufrohrs durch die PP-Wand.",
+      "eigenschaften": [
+        "Durchmesser 90 mm, 5 mm dick; die Flachdichtung dazwischen ist nicht modelliert.",
+        "Der Flansch bleibt mindestens 15 mm unter dem Korbboden."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (outlet_collar_*: [A])",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
+    },
+    {
+      "id": "auslauf_mutter_aussen",
+      "name": "Gegenmutter des Auslaufs",
+      "koerper": [
+        "Auslauf_Mutter_aussen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Scheibe D90 x 5 (Parameter outlet_collar_d, outlet_collar_t)",
+      "funktion": "Die Gegenmutter zieht von außen den inneren Flansch gegen die Wand und presst die Dichtung.",
+      "eigenschaften": [
+        "Durchmesser 90 mm, 5 mm dick, außen an der Seitenwand."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (outlet_collar_*: [A])",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 80
+      }
+    },
+    {
+      "id": "ablassstutzen",
+      "name": "Ablassstutzen",
+      "koerper": [
+        "Ablassstutzen"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d40 (DN32), Wand 1,9 mm, 55 mm lang (Parameter drain_d, drain_in, drain_stub)",
+      "funktion": "Der Stutzen sitzt unten in der Vorderwand und führt das Wasser aus dem Behälter zum Kugelhahn, wenn der Filter entleert wird.",
+      "eigenschaften": [
+        "Er ragt 5 mm in den Behälter, damit nur wenig Restwasser stehen bleibt.",
+        "Mitte 35 mm über dem Behälterboden; ein Eimer passt unter den Hahn."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (drain_*: [A], drain_z/drain_x: [E])",
+      "katalog": "pvc_u_d40",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 100
+      }
+    },
+    {
+      "id": "kugelhahn_ablass",
+      "name": "Kugelhahn des Ablasses",
+      "koerper": [
+        "Kugelhahn_Ablass"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Gehäuse D56 x 50, Durchgang 28 mm (Parameter valve_d, valve_l)",
+      "funktion": "Der Kugelhahn sperrt den Ablass; mit dem Hebel quer zur Durchflussrichtung ist er zu.",
+      "eigenschaften": [
+        "PVC-U-Kugelhahn für Rohr d40, Gehäuse D56.",
+        "Im Modell eine Ersatzform; Fabrikat offen."
+      ],
+      "norm": "Kugelhahn aus Thermoplast nach EN ISO 16135 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (valve_d 56, valve_l 50: [A])",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200
+      }
+    },
+    {
+      "id": "kugelhahn_hebel",
+      "name": "Hebel des Ablass-Kugelhahns",
+      "koerper": [
+        "Kugelhahn_Hebel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "90 x 10 x 8 (Parameter valve_lever)",
+      "funktion": "Der Hebel dreht die Kugel im Hahn; quer zur Durchflussrichtung ist der Ablass zu.",
+      "eigenschaften": [
+        "Länge 90 mm; im Modell aus verzinktem Stahl als Ersatzform, am echten Hahn meist aus Kunststoff."
+      ],
+      "norm": "Teil des Kugelhahns, keine eigene Norm",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (valve_lever 90: [A])",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60,
+        "folgt": "kugelhahn_ablass"
+      }
+    },
+    {
+      "id": "schlauchtuelle",
+      "name": "Schlauchtülle des Ablasses",
+      "koerper": [
+        "Schlauchtuelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d40, 30 mm lang (Parameter barb_l)",
+      "funktion": "An die Tülle wird ein Schlauch gesteckt, der das Ablasswasser in einen Eimer oder ins Beet führt.",
+      "eigenschaften": [
+        "Länge 30 mm, Durchmesser wie der Stutzen (40 mm)."
+      ],
+      "norm": "keine Norm (Handelsteil, Fabrikat offen)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (barb_l 30: [A])",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 300
+      }
+    },
+    {
+      "id": "spuelstutzen",
+      "name": "Spülstutzen",
+      "koerper": [
+        "Spuelstutzen"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d25 (DN20), Wand 1,8 mm, 55 mm lang (Parameter spray_d, spray_stub)",
+      "funktion": "Der Stutzen sitzt oben in der Rückwand und führt das Spülwasser aus dem Schlauch durch die Wand zum Spritzrohr.",
+      "eigenschaften": [
+        "Mitte 30 mm unter dem Behälterrand, rechts neben den Korbgriffen."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "belegt",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (spray_d 25: [Q] W32; spray_stub, spray_x/z: [A]/[E])",
+      "katalog": "pvc_u_d25",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 100
+      }
+    },
+    {
+      "id": "kugelhahn_spuelen",
+      "name": "Kugelhahn des Spülanschlusses",
+      "koerper": [
+        "Kugelhahn_Spuelen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Gehäuse D40 x 40, Durchgang 16 mm (Parameter spray_valve_d, spray_valve_l)",
+      "funktion": "Der Kugelhahn schaltet das Spülwasser zu oder ab.",
+      "eigenschaften": [
+        "PVC-U-Kugelhahn für Rohr d25, Gehäuse D40.",
+        "Im Modell eine Ersatzform; Fabrikat offen."
+      ],
+      "norm": "Kugelhahn aus Thermoplast nach EN ISO 16135 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (spray_valve_*: [A])",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 200
+      }
+    },
+    {
+      "id": "kugelhahn_spuelen_hebel",
+      "name": "Hebel des Spül-Kugelhahns",
+      "koerper": [
+        "Kugelhahn_Spuelen_Hebel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "60 x 10 x 8",
+      "funktion": "Der Hebel dreht die Kugel im Hahn und öffnet oder schließt den Spülanschluss.",
+      "eigenschaften": [
+        "Länge 60 mm; im Modell aus verzinktem Stahl als Ersatzform."
+      ],
+      "norm": "Teil des Kugelhahns, keine eigene Norm",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (Ersatzform)",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60,
+        "folgt": "kugelhahn_spuelen"
+      }
+    },
+    {
+      "id": "spuel_tuelle",
+      "name": "Schlauchtülle des Spülanschlusses",
+      "koerper": [
+        "Spuel_Tuelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d25, 25 mm lang (Parameter barb_l)",
+      "funktion": "An die Tülle wird der Spülschlauch gesteckt.",
+      "eigenschaften": [
+        "Länge 25 mm, Durchmesser wie der Stutzen (25 mm)."
+      ],
+      "norm": "keine Norm (Handelsteil, Fabrikat offen)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (barb_l: [A])",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 300
+      }
+    },
+    {
+      "id": "spritzrohr",
+      "name": "Spritzrohr",
+      "koerper": [
+        "Spritzrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d25 (DN20), Wand 1,8 mm, 325 mm lang (Parameter spray_d, spray_reach)",
+      "funktion": "Das Rohr verteilt beim Spülen das Schlauchwasser quer über den Korb und löst den Schmutz vom Gewebe.",
+      "eigenschaften": [
+        "Es liegt 30 mm unter dem Behälterrand und läuft quer über den Korb.",
+        "Die Spritzdüsen sind nicht modelliert; das Rohr ist ein Platzhalter dafür."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (spray_reach -120, spray_z 580: [A]/[E])",
+      "katalog": "pvc_u_d25",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      }
+    }
+  ]
+}

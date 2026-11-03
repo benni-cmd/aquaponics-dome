@@ -1,5 +1,5 @@
 {
- "stand": "Stand 03.11.2026: R48 und R49 fertig; E21 entschieden (Subtank V4 ja, Ben). Naechster Schritt: Planer fuer M10-S2V. E20 (A+ oder Ring) offen, Empfehlung A+. Nichts anderes laeuft. ",
+ "stand": "Stand 03.11.2026 abends: E21 = Subtank ja (D75), Bau M10-S2V GEPARKT bis Bens Freigabe. Laeuft: R50 (Fein- und Vortexfilter, Standardgeraete), R51 (Beet-Siphon und Schutzgitter). E20 offen (Empfehlung A+). Wasserplan-unabhaengige Teile zuerst.",
  "schritte": [
   {
    "id": "W33",
@@ -1064,7 +1064,25 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.75,
    "wer": "Planer (Blatt), dann Montage/Werkstatt, dann Pruefer",
-   "notiz": "Aus R48 (V4, Abschnitt 2 und 3) und R49 (Abschnitt 4), Entscheidung E21 = ja (Ben 03.11.). Gebaute Kanten vor dem Biofilter werden entfernt oder neu: K02, K06, K18, K22, K56/K57 (Notbypass) entfallen, K05/K21 direkt in den Subtank, K08/K09 neu an die Tauchpumpen. Heber K01/K17 bleibt, spaeter in Kanal mit Rost. Aktualitaetspruefung vor dem Start, Planer schreibt docs/jobs/M10-S2V.md. Beruehrt M10-S2N (Schaechte an Bypass-Haehnen entfallen) und W37-1 (Schlammfass)."
+   "notiz": "GEPARKT 03.11. (Ben: 'merk dir das erstmal fuer spaeter'): Blatt docs/jobs/M10-S2V.md fertig (100e0ef), Bau NICHT freigegeben. Erst Fein- und Vortexfilter (R50) und Standardgeraete beurteilen, dann Freigabe. Aus R48 (V4, Abschnitt 2 und 3) und R49 (Abschnitt 4), Entscheidung E21 = ja (Ben 03.11.). Gebaute Kanten vor dem Biofilter werden entfernt oder neu: K02, K06, K18, K22, K56/K57 (Notbypass) entfallen, K05/K21 direkt in den Subtank, K08/K09 neu an die Tauchpumpen. Heber K01/K17 bleibt, spaeter in Kanal mit Rost. Aktualitaetspruefung vor dem Start, Planer schreibt docs/jobs/M10-S2V.md. Beruehrt M10-S2N (Schaechte an Bypass-Haehnen entfallen) und W37-1 (Schlammfass)."
+  },
+  {
+   "id": "R50",
+   "titel": "Fein- und Vortexfilter ausarbeiten, Standardgeraete finden und Modell-Spezifikation (Wunsch Ben 03.11.)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.76,
+   "wer": "Fachrecherche (Sitzung local_238c9c77-b7c8-45c6-b3de-1b6198d3b710)",
+   "notiz": "Ben will beide Filterarten genauer sehen und kaufbare Standardgeraete, Selbstbau nur wenn super simpel; danach Planer, Werkstatt (Nachbau im Modell), Pruefer. Beurteilungsgrundlage vor der Freigabe von M10-S2V."
+  },
+  {
+   "id": "R51",
+   "titel": "Beet-Siphon (Standardgeraete) und Siphon-Schutzgitter, unabhaengig vom Wasserplan (Wunsch Ben 03.11.)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.77,
+   "wer": "Fachrecherche (Sitzung local_aae47556-bef2-4363-9fad-8d78ba8c5af5)",
+   "notiz": "Loest Teile von W40-BEET und L03 (d25 gegen d40). Danach Planer fuer W40-BEET erweitert, Werkstatt, Pruefer."
   }
  ]
 }

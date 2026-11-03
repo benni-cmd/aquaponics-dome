@@ -1,5 +1,5 @@
 {
- "stand": "Stand 02.11.2026 abends: R47c fertig, Empfehlung bleibt A+ (heutiger Plan plus Zugaenglichkeit). Bericht fuer den Mitgruender aktualisiert. Nichts laeuft. E20 wartet auf deine Entscheidung. Fragen an dich stehen oben.",
+ "stand": "Stand 03.11.2026: R48 und R49 fertig; E21 entschieden (Subtank V4 ja, Ben). Naechster Schritt: Planer fuer M10-S2V. E20 (A+ oder Ring) offen, Empfehlung A+. Nichts anderes laeuft. ",
  "schritte": [
   {
    "id": "W33",
@@ -1037,7 +1037,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.8,
    "wer": "Montage (kleine Sitzung, nach E20 = A+)",
-   "notiz": "Aus R47 Abschnitt 6.3 und 6.6. Nur Zusaetze an gebaute T und Haehne, kein Rueckbau. Der offene 300-mm-Stumpf von Linie 2 bei x 0 / y -1649 / Z -1635 wird mit Kappe (W39) zum Revisionsstutzen fuer K03. Schacht-Lage gegen den Filterkasten (Luecke L23) beachten. Eigenes Blatt vom Planer, erst nach Bens Freigabe."
+   "notiz": "Aus R47 Abschnitt 6.3 und 6.6. Nur Zusaetze an gebaute T und Haehne, kein Rueckbau. Der offene 300-mm-Stumpf von Linie 2 bei x 0 / y -1649 / Z -1635 wird mit Kappe (W39) zum Revisionsstutzen fuer K03. Schacht-Lage gegen den Filterkasten (Luecke L23) beachten. Eigenes Blatt vom Planer, erst nach Bens Freigabe. ANPASSUNG 03.11. (E21 = Subtank): Schaechte an den Bypass-Haehnen und T-Stuecke am Filter-Stamm entfallen mit dem Subtank (M10-S2V); uebrig bleiben Kappe/Revisionsstutzen am Linie-2-Stumpf (K03) und Revision am Bodenablauf-Kreis. Der Planer von M10-S2V klaert die Reihenfolge."
   },
   {
    "id": "R47C",
@@ -1047,6 +1047,24 @@
    "reihenfolge": 2.3,
    "wer": "Fachrecherche (Sitzung recherche-r47c, frisch)",
    "notiz": "Erledigt 02.11. (vier Commits, Abschnitt 7 in docs/research/R47-wasserkreislauf-neu.md, Skript scripts/r47_pumpen.py). Ergebnis: Foerderhoehe 2,83 m und 3,2 m sind Standardklasse (Mehrleistung nur +119 bis 166 W), als Ausschlusskriterium taugt sie nicht. Mit einheitlichem Fluss braucht ein Ring B1 (Biofilter 725 mm hoeher), B2 (zweite Pumpstufe nach dem Biofilter, +147 bis 205 W, laesst Gebautes stehen) oder B3 (Hochbehaelter). Rangfolge A+ > B2 > B1 > B3; Ring bleibt NEIN, aber wegen Aufwand, nicht wegen Hoehe. A+ erfuellt die Anforderung EINHEIT schon. Offen: Pumpenkennlinien nur Parabel-Naeherung, kein zweiter unabhaengiger Hersteller, Biofilter-Verteilung schwach belegt, Statik und Gangkarte nicht gerechnet. Nebenbefund: schon 2,0 m bei 55 l/min verlangen Premium-Klasse (Oase Aquarius 6000, 110 W Nennleistung), die Netzliste rechnet 72 W."
+  },
+  {
+   "id": "E21",
+   "titel": "Subtank (V4: Siebkorb am Einlauf, Tauchpumpen im Subtank, kein Filter-Stamm, kein Notbypass) in den Plan? (ENTSCHIEDEN 03.11. von Ben: JA)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 2.1,
+   "wer": "Ben",
+   "notiz": "Ben 03.11.2026: 'Ja, Subtank rein'. Grundlage R48 (V4) und R49 (Abschnitt 4 und 5). Gilt unabhaengig von E20: die Filterkette vor dem Biofilter aendert sich mit oder ohne Ring nicht. Folge: M10-S2V (Planer, dann Bau, dann Pruefer). Offen bleiben Tiefe des Subtanks, Tauchpumpen-Typ, Siebkorb-Masse (Annahmen), Fachfrage Pool-Durchsatz (nur Tiefsumpf T)."
+  },
+  {
+   "id": "M10-S2V",
+   "titel": "Subtank-Umbau (V4): Siebkorb und Tauchpumpen im Subtank, Absetzer-Auslauf direkt, Filter-Stamm, Zweigstuecke und Notbypass entfallen",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.75,
+   "wer": "Planer (Blatt), dann Montage/Werkstatt, dann Pruefer",
+   "notiz": "Aus R48 (V4, Abschnitt 2 und 3) und R49 (Abschnitt 4), Entscheidung E21 = ja (Ben 03.11.). Gebaute Kanten vor dem Biofilter werden entfernt oder neu: K02, K06, K18, K22, K56/K57 (Notbypass) entfallen, K05/K21 direkt in den Subtank, K08/K09 neu an die Tauchpumpen. Heber K01/K17 bleibt, spaeter in Kanal mit Rost. Aktualitaetspruefung vor dem Start, Planer schreibt docs/jobs/M10-S2V.md. Beruehrt M10-S2N (Schaechte an Bypass-Haehnen entfallen) und W37-1 (Schlammfass)."
   }
  ]
 }

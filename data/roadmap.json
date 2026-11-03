@@ -1083,6 +1083,15 @@
    "reihenfolge": 3.77,
    "wer": "Fachrecherche (Sitzung local_aae47556-bef2-4363-9fad-8d78ba8c5af5)",
    "notiz": "Loest Teile von W40-BEET und L03 (d25 gegen d40). Danach Planer fuer W40-BEET erweitert, Werkstatt, Pruefer."
+  },
+  {
+   "id": "N-DETAIL-PILOT",
+   "titel": "Detailansicht im Viewer als Pilot fuer Feinfilter und Absetzer (B1 mini, B2, B3 MVP), vorgezogen",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.78,
+   "wer": "Planer (Blatt), dann Werkstatt + Viewer, dann Pruefer",
+   "notiz": "Ben 03.11.: Detailansicht jetzt fertig machen, damit Filter und danach Subtanks nach Funktion beurteilt werden koennen (D56). Pilot nur fuer feinfilter und tank_klein, Mini-Katalog, Detailmodell nur bei Bedarf laden (L18). Danach Muster fuer Subtank, Siphon, Pumpen. Der volle Katalog bleibt N-KATALOG, die Gesamtansicht N-DETAIL. Planer laeuft (Sitzung local_fb... siehe orchestrator-state)."
   }
  ]
 }

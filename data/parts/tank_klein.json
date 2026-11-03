@@ -1,0 +1,501 @@
+{
+  "komponente": "tank_klein",
+  "datei": "designs/components/tank_klein.sc",
+  "teilenummer": "T40",
+  "stand": "pilot",
+  "titel": "Absetzer (Vortex-Absetzer, kleiner Tank)",
+  "kurz": "Das Wasser tritt tangential in den Kegeltank ein und dreht sich um das Leitrohr. Feststoffe sinken zur Kegelspitze und werden dort über den Kugelhahn abgelassen; das geklärte Wasser verlässt den Tank oben über den Auslauf.",
+  "hinweis": "Texte und Zahlen aus docs/parts/tank.md und data/components/tank.json (Typ klein). Rohrmaße, Leitrohr und Auslauf sind angenommen (R09, Konfidenz niedrig). Normverweise und Lebensmittelkontakt sind angenommen, bis R31/B6/R50 sie belegen; der europäische Bezug der Kaufteile ist offen (R52, Regel D76).",
+  "koerperzahl": 33,
+  "gruppen": [
+    {
+      "id": "tank",
+      "name": "Tank",
+      "kurz": "Der Behälter mit Kegelboden, in dem sich der Schlamm absetzt.",
+      "teile": [
+        "tank",
+        "deckel"
+      ]
+    },
+    {
+      "id": "leitungen",
+      "name": "Leitungen",
+      "kurz": "Zulauf tangential, Leitrohr in der Mitte, Auslauf oben.",
+      "teile": [
+        "zulaufrohr",
+        "leitrohr",
+        "auslaufrohr"
+      ]
+    },
+    {
+      "id": "schlammablass",
+      "name": "Schlammablass",
+      "kurz": "Lässt den abgesetzten Schlamm an der Kegelspitze ab.",
+      "teile": [
+        "schlammstutzen",
+        "kugelhahn",
+        "ablaufstutzen"
+      ]
+    },
+    {
+      "id": "gestell",
+      "name": "Gestell",
+      "kurz": "Plattform und vier Beine tragen den gefüllten Tank.",
+      "teile": [
+        "plattform",
+        "bein",
+        "fussplatte",
+        "schraube",
+        "strebe",
+        "diagonale"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "tank",
+      "name": "Tankkörper mit Kegelboden",
+      "koerper": [
+        "Tank"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pe",
+      "masse_mm": "Außendurchmesser 673 inkl. Randwulst 25 x 40, Höhe 1075 (Spitze z 172, Rand z 1247), Wand 4 (Parameter R, H, z0, wall, rim_w, rim_h)",
+      "funktion": "Der Tank ist ein Vortex-Absetzer: Das Wasser tritt tangential ein und dreht sich um das Leitrohr, Feststoffe sinken im Wirbel zur Kegelspitze und werden dort abgelassen.",
+      "eigenschaften": [
+        "Zylinder über Kegel; der Kegel liegt mit 48,7 Grad gegen die Waagerechte im Soll von 45 bis 60 Grad (Scope-Card).",
+        "Fassungsvermögen bis zum Rand 254 Liter (Zylinder 222 Liter, Kegel 33 Liter).",
+        "Wand 4 mm, gerollter Randwulst 25 x 40 mm; die Revisionsöffnung im Deckel misst D200.",
+        "Das Prinzip (tangentialer Zulauf, Schlamm zur Spitze) ist belegt (Open Source Ecology); Maße und Wanddicke sind angenommen (R09, Konfidenz niedrig)."
+      ],
+      "norm": "PE nach EN ISO 17855-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md, docs/research/R09.md (Durchmesser, Höhe, Spitze: OBJ/layout.json; Wand: [A])"
+    },
+    {
+      "id": "deckel",
+      "name": "Deckel mit Revisionsöffnung",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "pe",
+      "masse_mm": "D673 x 6, bündig mit dem Randwulst, Revisionsöffnung D200 (Parameter lid_t, lid_over, rev_d)",
+      "funktion": "Der Deckel schließt den Tank oben ab; durch die Revisionsöffnung kommt man ans Innere, und das Leitrohr ragt hindurch.",
+      "eigenschaften": [
+        "PE, 6 mm dick, liegt auf dem Rand bei z 1247 mm.",
+        "Das Leitrohr D110 ragt 70 mm über den Deckel."
+      ],
+      "norm": "PE nach EN ISO 17855-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (lid_t 6, rev_d 200: [A])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 350
+      }
+    },
+    {
+      "id": "zulaufrohr",
+      "name": "Zulaufrohr, tangential",
+      "koerper": [
+        "Zulaufrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d50 (DN40), Wand 3 mm, 260 mm lang, Achse parallel zur Y-Achse (Parameter inlet_d, pipe_wall, inlet_below_top)",
+      "funktion": "Das Rohr führt das Wasser tangential an der Innenwand in den Tank, damit es sich dreht und Feststoffe zur Kegelspitze sinken.",
+      "eigenschaften": [
+        "Es liegt 250 mm unter dem Tankrand (z 997 mm).",
+        "Die Rohrkante liegt bei x 307,5 mm und berührt die Innenwand tangential (Körperradius 311,5 mm minus 4 mm Wand).",
+        "Die Durchführung durch die Wand (Bulkhead mit Dichtung) ist nicht modelliert; im Modell nur Durchbruch und Rohr."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md, docs/research/R09.md (Zulauf-DN und Höhe: [A], Konfidenz niedrig)",
+      "katalog": "pvc_u_d50",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 250
+      }
+    },
+    {
+      "id": "leitrohr",
+      "name": "Leitrohr in der Tankmitte",
+      "koerper": [
+        "Leitrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr D110, Wand 3 mm, 903 mm lang (z 420 bis 1323) (Parameter guide_d, guide_wall, guide_bottom_f)",
+      "funktion": "Das Mittelrohr trennt den drehenden Außenbereich vom ruhigen Innenbereich; durch das Rohr steigt das geklärte Wasser zum Auslauf.",
+      "eigenschaften": [
+        "Es endet 420 mm über der Kegelspitze, etwa ein Drittel der Zylinderhöhe (R09).",
+        "Es reicht 70 mm über den Deckel hinaus.",
+        "Die Wand ist im Modell 3 mm; das PVC-U-Rohr d110 der Bibliothek hat 5,2 mm Wand.",
+        "Die Rolle des Mittelrohrs ist dem Vortex-Biofilter von Open Source Ecology nachgebaut (R09, angenommen)."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md, docs/research/R09.md (Leitrohr: [A], Konfidenz niedrig)",
+      "katalog": "pvc_u_d110",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 900
+      }
+    },
+    {
+      "id": "auslaufrohr",
+      "name": "Auslaufrohr",
+      "koerper": [
+        "Auslaufrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d50 (DN40), Wand 3 mm, 387 mm lang, Achse parallel zur X-Achse (Parameter outlet_d, outlet_below_top)",
+      "funktion": "Das Rohr führt das Wasser vom Leitrohr durch die Tankwand nach außen zur nächsten Station.",
+      "eigenschaften": [
+        "Mitte 100 mm unter dem Tankrand (z 1147 mm), Öffnung zeigt nach +X.",
+        "Es reicht vom Leitrohr (x 55 mm) bis x 442 mm, also 105 mm über die Tankwand (Radius 336,5 mm) hinaus; die Wanddurchführung ist nicht modelliert."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md, docs/research/R09.md (Auslauf 100 mm unter dem Rand: [A])",
+      "katalog": "pvc_u_d50",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 200,
+        "folgt": "leitrohr"
+      }
+    },
+    {
+      "id": "schlammstutzen",
+      "name": "Schlammstutzen an der Kegelspitze",
+      "koerper": [
+        "Schlammstutzen"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d40 (DN32), kurzes Stück in der Kegelspitze (Parameter valve_d)",
+      "funktion": "Der Stutzen sitzt in der Kegelspitze und lässt den abgesetzten Schlamm nach unten in den Kugelhahn laufen.",
+      "eigenschaften": [
+        "Er sitzt 2 mm tief in der Kegelspitze (gewollter Sitz, Überschneidung 858 mm3)."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (Schlammventil d40: OBJ-Fittings 30 bis 56 mm, R09)",
+      "katalog": "pvc_u_d40",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 80
+      }
+    },
+    {
+      "id": "kugelhahn",
+      "name": "Kugelhahn des Schlammablasses",
+      "koerper": [
+        "Kugelhahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Gehäuse etwa 56 breit, 40 lang (z 120 bis 160), Hebel nach +X bis x 133 (Parameter valve_len, valve_d)",
+      "funktion": "Der Kugelhahn sperrt den Schlammablass; zum Ablassen wird der Hebel geöffnet und der Schlamm läuft nach unten ab.",
+      "eigenschaften": [
+        "PVC-U-Kugelhahn mit Verschraubung für das Rohr d40.",
+        "Im Modell eine Ersatzform; Fabrikat offen."
+      ],
+      "norm": "Kugelhahn aus Thermoplast nach EN ISO 16135 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (valve_len 40: [A])",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 160
+      }
+    },
+    {
+      "id": "ablaufstutzen",
+      "name": "Ablaufstutzen unter dem Hahn",
+      "koerper": [
+        "Ablaufstutzen"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d40 (DN32), 40 mm lang (z 80 bis 120)",
+      "funktion": "Der Stutzen unter dem Kugelhahn nimmt den abgelassenen Schlamm auf und führt ihn in ein Ablaufrohr oder einen Eimer.",
+      "eigenschaften": [
+        "Durchmesser gleich dem Ventil (40 mm), Öffnung zeigt nach -Z."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (Schlammablass d40: [A])",
+      "katalog": "pvc_u_d40",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 240
+      }
+    },
+    {
+      "id": "plattform",
+      "name": "Plattform mit Kegelsitz",
+      "koerper": [
+        "Plattform"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "619 x 619 x 73, Blech 4 mm, innen hohl (z 428 bis 501) (Parameter plat_l, plat_w, plat_t, plat_z0)",
+      "funktion": "Die Plattform trägt den gefüllten Tank in ihrem Kegelsitz und gibt die Last an die vier Beine weiter.",
+      "eigenschaften": [
+        "Kegelsitz mit 2 mm Spiel zum Tank, Eckenaussparungen für die Beine.",
+        "Das Maß folgt aus dem Konusdurchmesser auf der Plattform-Unterkante plus 2 x 60 mm Rand (Entscheidung D50, 31.10.2026).",
+        "Blechkasten mit 4 mm Wand ist eine Annahme; die Plattform im OBJ ist 706 x 707 x 73 mm."
+      ],
+      "norm": "Stahl feuerverzinkt nach EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "gerechnet",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (plat_*: [E], Blech 4 mm: [A])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
+    },
+    {
+      "id": "bein",
+      "name": "Bein des Tankgestells",
+      "koerper": [
+        "Bein_1",
+        "Bein_2",
+        "Bein_3",
+        "Bein_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Vierkantrohr 30 x 30 x 2, 745 mm lang (z 6 bis 751) (Parameter leg_w, leg_wall, leg_h)",
+      "funktion": "Die vier Beine tragen die Plattform samt gefülltem Tank (etwa 300 kg) und stellen sie auf den Boden.",
+      "eigenschaften": [
+        "Sie laufen durch die Eckenaussparungen der Plattform bis 751 mm Höhe und sind angeschweißt (MAG), danach verzinkt.",
+        "Die innere Beinkante liegt 396 mm von der Tankachse entfernt, mehr als Tankradius 336,5 mm plus 20 mm, die Beine stehen also frei neben dem Randwulst."
+      ],
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (Beinquerschnitt: OBJ; leg_wall 2: [A])",
+      "katalog": "vierkantrohr_30x30x2",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 400,
+        "folgt": "plattform"
+      }
+    },
+    {
+      "id": "fussplatte",
+      "name": "Fußplatte mit Schraublöchern",
+      "koerper": [
+        "Fussplatte_1",
+        "Fussplatte_2",
+        "Fussplatte_3",
+        "Fussplatte_4"
+      ],
+      "menge": 4,
+      "typ": "platte",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Platte 100 x 100 x 6, zwei Löcher D9 (Parameter foot_plate, foot_t, foot_hole)",
+      "funktion": "Jede Fußplatte verteilt die Last ihres Beins auf den Boden und nimmt zwei Schrauben auf.",
+      "eigenschaften": [
+        "Stahlplatte 100 x 100 mm, 6 mm dick, verzinkt.",
+        "Zwei Durchgangslöcher D9 für die Schrauben M8, je 35 mm diagonal aus der Plattenmitte versetzt."
+      ],
+      "norm": "Stahl feuerverzinkt nach EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (foot_plate 100, foot_t 6: [A]; foot_hole 9: [E])",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "bein"
+      }
+    },
+    {
+      "id": "schraube",
+      "name": "Verankerungsschraube M8 x 30",
+      "koerper": [
+        "Schraube_1_-35",
+        "Schraube_1_35",
+        "Schraube_2_-35",
+        "Schraube_2_35",
+        "Schraube_3_-35",
+        "Schraube_3_35",
+        "Schraube_4_-35",
+        "Schraube_4_35"
+      ],
+      "menge": 8,
+      "typ": "normteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantschraube M8 x 30, ISO 4017; Schraubenende 24 mm unter dem Boden (z -24 bis 11)",
+      "funktion": "Die acht Schrauben verankern die Fußplatten über Dübel im Boden oder in einem Betonpunkt, damit der gefüllte Tank nicht rutscht oder kippt.",
+      "eigenschaften": [
+        "Zwei Schrauben je Fußplatte, 8 Stück insgesamt.",
+        "Modellmasse je Schraube 17,9 g (verzinkter Stahl); vor dem Umbenennen am 03.11.2026 trugen sie das Material Default mit 3 g.",
+        "Das Gegenstück im Boden ist ein Dübel M8 oder ein Betonpunkt; es ist nicht modelliert."
+      ],
+      "norm": "Sechskantschraube nach ISO 4017 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (Fußplatten-Anker: Schrauben M8x30 ISO 4017, Herkunft Standard [A])",
+      "katalog": "sechskantschraube_m8x30",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "fussplatte"
+      }
+    },
+    {
+      "id": "strebe",
+      "name": "Querstrebe des Gestells",
+      "koerper": [
+        "Strebe_1",
+        "Strebe_2",
+        "Strebe_3",
+        "Strebe_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Vierkantrohr 30 x 30 x 2, 559 mm lang, auf Höhe z 250 (Parameter strut_z, leg_w)",
+      "funktion": "Die vier Querstreben verbinden die Beine auf halber Höhe zu einem Rechteck und halten die Beine in Abstand.",
+      "eigenschaften": [
+        "Mitte der Streben bei 250 mm über dem Boden.",
+        "Zusammen mit den Diagonalen sichern sie das Gestell gegen Verwinden."
+      ],
+      "norm": "EN 10219-2 (kaltgeformte Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (strut_z 250, Querstreben mit Diagonalen: Bild ref-4/ref-5 und [A])",
+      "katalog": "vierkantrohr_30x30x2",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 100,
+        "folgt": "bein"
+      }
+    },
+    {
+      "id": "diagonale",
+      "name": "Diagonale des Gestells",
+      "koerper": [
+        "Diagonale_1",
+        "Diagonale_2",
+        "Diagonale_3",
+        "Diagonale_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Flachstahl 25 x 3, etwa 563 mm lang, ein Stück je Seite außerhalb der Beinfläche (Parameter diag_w)",
+      "funktion": "Die vier Diagonalen steifen die Seitenflächen des Gestells aus und nehmen seitliche Kräfte auf.",
+      "eigenschaften": [
+        "Je Seite eine Diagonale von der Strebe (z 267) schräg hinauf bis z 396, an den Beinkanten gekürzt.",
+        "Flachstahl 25 mm breit, 3 mm dick."
+      ],
+      "norm": "Stahl feuerverzinkt nach EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md (diag_w 25: [A]; Diagonalen: Bild ref-4/ref-5)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 180,
+        "folgt": "bein"
+      }
+    }
+  ]
+}

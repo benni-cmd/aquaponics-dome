@@ -29,3 +29,7 @@ Ein Bericht `docs/research/R48-filterreihenfolge.md` mit Vergleichstabelle der V
 
 ## Grenzen
 Kein Umbau, keine Aenderung an `gen_dome.py` oder `data/*`. Scope D69 beachten (keine Ertrags-, Kosten-, Standort-, Verschattungsrechnung). Ergebnis nur als Bericht plus Eintrag "Besonderheit:" fuer `docs/pitch-besonderheiten.md` falls es eine gibt. Kontextgrenzen nach `docs/arbeitsweise-sitzungen.md` Abschnitt 4. Abschluss mit "Geprueft gegen: ... Offen: ..." und Beschaffbarkeit jedes genannten Teils als Standardteil/Selbstbau.
+
+## Ergaenzung 03.11.2026 (Ben, nach Start der Recherche)
+- Eigene Frage 8: Ist es unsinnig, den Feinfilter VOR den Vortex zu setzen (grob vor fein)? Mit zwei Quellen beantworten. Beachten: heute haengt der Vortex nur am Bodenablauf (11 %), sein Auslauf geht in den Feinfilter-Einlauf; der Hauptstrom (89 %) geht ueber den Heber direkt in den Feinfilter. Gegenargument pruefen: Pumpe vor der Feststoffabscheidung zerschlaegt Partikel.
+- Bewertung: Komplexitaet und Menge des Vergrabenen (Wartung) bei jeder Variante ausdruecklich mitgewichten, nicht nur Foerderhoehe und Strom.

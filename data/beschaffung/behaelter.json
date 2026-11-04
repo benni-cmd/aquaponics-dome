@@ -1,0 +1,30 @@
+{
+  "klasse": "2C",
+  "typen": ["BEH", "PMP"],
+  "stand": "2026-11-04",
+  "hinweis": "Preise brutto (inkl. 19 % MwSt bei DE/AT-Shops), grob, ohne Versand. konfidenz: Q = Seite selbst geoeffnet und gelesen, Q-Treffer = nur Suchtreffer (Kandidat), E = gerechnet, A = angenommen. UK gilt als Europa OFFEN und ist mit land UK gekennzeichnet. Kein Kauf, keine Anmeldung. Geblaese stehen nicht im Katalog dieser Klasse (kein Artikel BEH/PMP).",
+  "artikel": {
+    "PMP-pumpe-gross": {
+      "bemerkung_artikel": "Soll 55 l/min je Pumpe bei kleiner Foerderhoehe, je Linie 144 W elektrisch fuer 2 Pumpen (data/system-specs.json leistung). Eheim Universal 3400: 3400 l/h = 56,7 l/min, 80 W, Foerderhoehe 3,6 m [Q]. Kennlinie bei der realen Anlagen-Foerderhoehe nicht geprueft.",
+      "angebote": [
+        {"preis_eur": 233.79, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Green Aqua (greenaqua.hu)", "land": "HU", "url": "https://greenaqua.hu/en/eheim-universal-3400.html", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Eheim Universal 3400. Seite: 'We ship to all EU countries', Versand DE nicht beziffert; MwSt-Angabe fehlt; Bestand widerspruechlich (in stock / backorder 5-10 Tage)."},
+        {"preis_eur": 299.00, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Hornbach Oesterreich", "land": "AT", "url": "https://www.hornbach.at/p/universal-pumpe-eheim-3400-3-adriger-schukostecker-mit-1-7-m-kabel-80-w/8888958/", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Eheim Universal 3400, Art. 8888958, 299 EUR inkl. MwSt zzgl. Versand; Lieferung nach DE auf der Seite nicht genannt."}
+      ],
+      "alternative": "Aquaforte DM-3500 (toppy.nl NL, 146,95 EUR, 25 W): Leistung faellt von 3500 l/h bei 0 m auf 2400 l/h bei 1 m und 700 l/h bei 2 m; bei Anlagenhoehe zu schwach [Q, https://www.toppy.nl/product/2888/aquaforte-dm-3500-vijverpomp.html, aktuell nicht lieferbar]."
+    },
+    "PMP-pumpe-klein": {
+      "bemerkung_artikel": "Soll 12,5 l/min (750 l/h), beide Absetzerpumpen zusammen 33 W (je ca. 16 W). Eheim Universal 1200 ist groesser (1200 l/h, 28 W, 2 m); eine kleinere Eheim Universal 600 oder Drosselung waere zu pruefen [A]. Auswahl der Groesse ist Planerentscheidung.",
+      "angebote": [
+        {"preis_eur": 95.90, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "aquacomputer.de", "land": "DE", "url": "https://shop.aquacomputer.de/Wasserkuehlung/Pumpen-Zub/Pumpen/Eheim-1250-Eheim-universal-1200-Version-Deutschland-Pumpe-1250219::1276.html", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Eheim Universal 1200 (1250219), 95,90 EUR inkl. MwSt zzgl. Versand; aktuell 'nicht am Lager', Lieferzeit bis 90 Tage."},
+        {"preis_eur": 130.11, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Green Aqua (greenaqua.hu)", "land": "HU", "url": "https://greenaqua.hu/en/eheim-universal-1200-pump-1250-828w-1200-lph.html", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Eheim Universal 1200; 'We ship to all EU countries'; MwSt-Angabe fehlt; Bestand widerspruechlich."}
+      ]
+    },
+    "PMP-dosierpumpe": {
+      "bemerkung_artikel": "Schlauchpumpe 12 V, Dosierung Naehrloesung/Saeure; Durchfluss und Schlauch je Fabrikat sehr unterschiedlich, Auswahl durch Planer.",
+      "angebote": [
+        {"preis_eur": 15.65, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Funduino", "land": "DE", "url": "https://funduino.com/es/products/peristaltikpumpe-dosierpumpe-12v-60-150ml", "lieferung_de": "unbekannt", "konfidenz": "Q-Treffer", "bemerkung": "12 V, 60-150 ml/min; nur Suchtreffer (Seite lieferte 429); Herkunftsland angenommen."},
+        {"preis_eur": 42.92, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "ManoMano", "land": "FR", "url": "https://www.manomano.de/p/12v-schlauchpumpe-fur-aquarien-labore-und-chemische-analysen-im-heimwerkerbereich-gruner-kopf-35-229357427", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "12 V Schlauchpumpe Aquarium/Labor; Seite 403, nur Suchtreffer; manomano.de liefert nach DE (Marktplatz, Verkaeufer variiert)."}
+      ]
+    }
+  }
+}

@@ -4,7 +4,8 @@
   "stand": "2026-11-04",
   "preise": "brutto (inkl. MwSt.)",
   "regel": "D76 Europa; UK offen (Kennzeichen status_ben OFFEN (Ben)); Konfidenz Q gelesen | Q-Treffer | E gerechnet | A angenommen",
-  "quelle_artikel": "data/katalog.json Commit 39e6323 (Typen PRF WNK BLE SRB)"
+  "quelle_artikel": "data/katalog.json Commit 39e6323 (Typen PRF WNK BLE SRB)",
+  "stand_preispruefung": "2026-11-05"
  },
  "artikel": {
   "PRF-st-rr40x40x3": {
@@ -1096,29 +1097,29 @@
    "bezug_einheit": "m",
    "angebote": [
     {
-     "preis_eur": 8.28,
+     "preis_eur": 8.41,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "Hornbach",
-     "land": "DE",
-     "url": "https://www.hornbach.de/p/roth-lange-kabelkanal-bxh-110-x-60-mm-reinweiss-2-m/4685465/",
+     "stand": "2026-11-05",
+     "haendler": "GrowKing24",
+     "land": "EU",
+     "url": "https://growking24.com/urban-hydro-nft-rinne-100x50-mm-ohne-loch-1-lagig-innen-weiss-290-cm/",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "ERSATZ (A): PVC-Kabelkanal 110x60 mm, 2 m, reinweiss, offenes Profil mit Deckel; 16,55 EUR brutto/2 m = 8,275 EUR/m; nicht 130x100, nicht NFT-/lebensmittelgeeignet belegt"
+     "bemerkung": "Echter NFT-Kanal Urban Hydro 100x50 mm, 290 cm, innen weiss, UPVC 'ungiftig' (kein Normbeleg, Wandstaerke nicht genannt). 24,40 EUR inkl. MwSt je 290 cm = 8,41 EUR/m; Versand frei ab 100 EUR nach DE, auf Lager, 3-5 Tage. Seite widerspricht sich bei Loechern (Titel 'ohne Loch', Text 'vorgebohrte Loecher'). Land des Haendlers nicht geprueft; Kundenbewertung nennt Lieferung aus Tschechien (EU)."
     },
     {
-     "preis_eur": 10.99,
+     "preis_eur": 7.16,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "OBI",
-     "land": "DE",
-     "url": "https://www.obi.de/p/2191181407035/edo-kabelkanal-100x60-mm-weiss-2-m-mit-klappdeckel-zur-schraubmontage",
+     "stand": "2026-11-05",
+     "haendler": "Golden Green Club",
+     "land": "EU",
+     "url": "https://goldengreenclub.de/produkt/urban-hydro-nft-rinne-100x50-mm-mit-loch-1-lagig-innen-weiss-290-cm/",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "ERSATZ (A): EDO Kabelkanal 100x60 mm, 2 m, weiss, Klappdeckel; 21,99 EUR brutto/2 m = 10,995 EUR/m; nicht 130x100"
+     "bemerkung": "Gleicher Kanal (Urban Hydro, Art.-Nr. 23644) mit vorgebohrten Loechern fuer Hydrokoerbe, 100x50 mm, 290 cm in 125-cm-Segmenten mit Verbindern, UPVC 'gesundheitlich unbedenklich' (kein Normbeleg). 20,77 EUR je 290 cm = 7,16 EUR/m (MwSt-Angabe fehlt auf der Seite, als brutto angenommen); Footer 'Versand aus der EU'; vorraetig."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass - echte NFT-Kanaele gibt es 100x50 (alt: 100x80 mit 2 Schichten, 41,10 EUR/250 cm), kein 130x100 gefunden. OFFEN (Quelle): Lebensmitteleignung nicht belegt (nur Herstellerwort 'ungiftiges UPVC'). OFFEN (Quelle): Lagerlaenge real 2,9 m, Zeile rechnet 7 m."
   },
   "BLE-pp-siebboden-beet": {
    "bezug_einheit": "m2",

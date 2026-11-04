@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_reduzierung_d75_d50.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt reduzierung d75 d50",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "PVC-U-Reduzierung d75 auf d50",
+  "kurz": "Die Reduzierung verbindet ein Rohr d75 mit einem Rohr d50 und passt so die Leitung an die Anschlussgröße an.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "reduzierung"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "reduzierung",
-      "name": "Reduzierung",
+      "name": "PVC-U-Reduzierung d75 auf d50",
       "koerper": [
         "Reduzierung"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT pvc",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 268.8 g, Einzelkoerper 81.0 x 84.7 x 84.7 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-red-d75_d50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Reduzierung verbindet ein Rohr d75 mit einem Rohr d50 und passt so die Leitung an die Anschlussgröße an.",
+      "eigenschaften": [
+        "PVC-U-Klebereduzierung kurz, Muffe d75, Stutzen oder Muffe d50, PN16 (Richtwert) [A].",
+        "Verbindung durch Kleben (Klebemuffe, PVC-U-Kleber nach DIN EN 14814)."
+      ],
+      "norm": "EN 1452-3 (PVC-U-Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_reduzierung_d75_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 4,09 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     }
   ]
 }

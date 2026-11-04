@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_kupplung_d63.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt kupplung d63",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "PVC-U-Kupplung d63",
+  "kurz": "Die Kupplung verbindet zwei Rohrenden d63 gerade miteinander, zum Beispiel beim Verlängern oder Reparieren.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "kupplung"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "kupplung",
-      "name": "Kupplung",
+      "name": "PVC-U-Kupplung d63",
       "koerper": [
         "Kupplung"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT pvc",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 114.9 g, Einzelkoerper 72.1 x 72.1 x 81.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kupplung-d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Kupplung verbindet zwei Rohrenden d63 gerade miteinander, zum Beispiel beim Verlängern oder Reparieren.",
+      "eigenschaften": [
+        "PVC-U-Klebemuffe d63 (Doppelmuffe), PN16 (Richtwert) [A].",
+        "Verbindung durch Kleben (Klebemuffe, PVC-U-Kleber nach DIN EN 14814)."
+      ],
+      "norm": "EN 1452-3 (PVC-U-Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kupplung_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 3,22 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     }
   ]
 }

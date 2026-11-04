@@ -3,16 +3,16 @@
   "datei": "designs/components/sonde_co2_scd41.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "sonde co2 scd41",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "CO₂-Sensor SCD41",
+  "kurz": "Der Sensor misst den Kohlendioxidgehalt der Luft im Gewächshaus, damit Lüftung und Pflanzenwachstum zusammenpassen.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "messtechnik",
-      "name": "Messtechnik",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "sonde"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "sonde",
-      "name": "Sonde",
+      "name": "CO₂-Sensor SCD41",
       "koerper": [
         "Sonde"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Platine gruen",
+      "werkstoff": "leiterplatte_fr4",
       "masse_mm": "Masse 7.7 g, Einzelkoerper 10.0 x 17.0 x 25.0 mm (Modell-Bounding-Box)",
       "artikel_id": "MES-co2-scd41",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Sensor misst den Kohlendioxidgehalt der Luft im Gewächshaus, damit Lüftung und Pflanzenwachstum zusammenpassen.",
+      "eigenschaften": [
+        "Photoakustischer Sensor SCD41 auf Platine, misst CO₂, Temperatur und Luftfeuchte [A].",
+        "Messbereich bis 5000 ppm (Herstellerangabe) [A]."
+      ],
+      "norm": "Herstellerdatenblatt SCD41 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/sonde_co2_scd41.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)"
     }
   ]
 }

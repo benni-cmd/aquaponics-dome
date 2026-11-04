@@ -3,24 +3,24 @@
   "datei": "designs/components/luft_scheibenbelueftung.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "luft scheibenbelueftung",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Scheibenbelüfter",
+  "kurz": "Baugruppe aus 4 Teilen (Luftstutzen, Stützfuß, Tragteller, Membran). Der Stutzen führt Luft von unten in die Belüftungsscheibe.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 4,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "stutzen"
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "stuetzfuss",
         "tragteller",
@@ -31,33 +31,60 @@
   "teile": [
     {
       "id": "stutzen",
-      "name": "Stutzen",
+      "name": "Luftstutzen",
       "koerper": [
         "Stutzen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LV PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 10.5 g, Einzelkoerper 25.0 x 25.0 x 40.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-stutzen-d25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Stutzen führt Luft von unten in die Belüftungsscheibe.",
+      "eigenschaften": [
+        "PP-Stutzen d25 [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/luft_scheibenbelueftung.sc (Maße aus der Modell-Bounding-Box), docs/parts/luft_scheibenbelueftung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "stuetzfuss",
-      "name": "Stuetzfuss",
+      "name": "Stützfuß",
       "koerper": [
         "Stuetzfuss"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "LV PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 166.0 g, Einzelkoerper 50.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-scheibenbelueftung-270",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Fuß hält die Scheibe über dem Beckenboden.",
+      "eigenschaften": [
+        "PP, 50 x 70 mm [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/luft_scheibenbelueftung.sc (Maße aus der Modell-Bounding-Box), docs/parts/luft_scheibenbelueftung.md; Normverweis und Werkstoff aus Fachwissen [A]"
     },
     {
       "id": "tragteller",
@@ -67,12 +94,29 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "LV PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 893.3 g, Einzelkoerper 20.0 x 250.0 x 250.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-scheibenbelueftung-270",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Teller trägt die Membran und verteilt die Luft darunter gleichmäßig.",
+      "eigenschaften": [
+        "PP, Durchmesser 250 mm, 20 mm hoch [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/luft_scheibenbelueftung.sc (Maße aus der Modell-Bounding-Box), docs/parts/luft_scheibenbelueftung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60
+      }
     },
     {
       "id": "membran",
@@ -82,12 +126,30 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "LV EPDM",
+      "werkstoff": "epdm",
       "masse_mm": "Masse 395.0 g, Einzelkoerper 6.0 x 270.0 x 270.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-scheibenbelueftung-270",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die gelochte Membran lässt feine Luftblasen austreten und gibt dem Wasser Sauerstoff.",
+      "eigenschaften": [
+        "EPDM, Durchmesser 270 mm, 6 mm dick [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/luft_scheibenbelueftung.sc (Maße aus der Modell-Bounding-Box), docs/parts/luft_scheibenbelueftung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120,
+        "folgt": "tragteller"
+      }
     }
   ]
 }

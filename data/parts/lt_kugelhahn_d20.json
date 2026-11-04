@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_kugelhahn_d20.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt kugelhahn d20",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Kugelhahn-Gehäuse d20",
+  "kurz": "Baugruppe aus 3 Teilen (Kugelhahn-Gehäuse d20, Spindel, Hebel). Das Gehäuse trägt die Kugel mit Bohrung; Dichtringe und Klebemuffen d20 binden den Hahn in die Leitung ein.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 3,
   "gruppen": [
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "kugelhahn",
         "spindel",
@@ -23,18 +23,29 @@
   "teile": [
     {
       "id": "kugelhahn",
-      "name": "Kugelhahn",
+      "name": "Kugelhahn-Gehäuse d20",
       "koerper": [
         "Kugelhahn"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 80.4 g, Einzelkoerper 39.0 x 39.0 x 82.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kugelhahn-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das Gehäuse trägt die Kugel mit Bohrung; Dichtringe und Klebemuffen d20 binden den Hahn in die Leitung ein.",
+      "eigenschaften": [
+        "PVC-U-Kugelhahn d20, beidseitig Klebemuffe, PN16 (Richtwert) [A].",
+        "Das Gehäuse im Modell umfasst Muffen, Körper und Überwurf in einem Körper."
+      ],
+      "norm": "EN ISO 16135 (Kugelhähne aus Thermoplasten) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kugelhahn_d20.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Bevo (NL), rund 23,53 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     },
     {
       "id": "spindel",
@@ -44,12 +55,31 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 10.7 g, Einzelkoerper 14.0 x 14.0 x 49.5 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kugelhahn-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Spindel überträgt die Drehung des Hebels auf die Kugel.",
+      "eigenschaften": [
+        "Kunststoffspindel, 90 Grad Drehweg von offen bis zu.",
+        "Im Modell als dünner Zylinder über dem Gehäuse."
+      ],
+      "norm": "EN ISO 16135 (Kugelhähne aus Thermoplasten) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kugelhahn_d20.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Bevo (NL), rund 23,53 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60
+      }
     },
     {
       "id": "hebel",
@@ -59,12 +89,31 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 17.2 g, Einzelkoerper 8.0 x 14.0 x 110.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kugelhahn-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Hebel öffnet und schließt den Hahn; steht er quer zur Leitung, ist der Hahn zu.",
+      "eigenschaften": [
+        "Griffhebel aus Kunststoff; Stellung längs der Leitung bedeutet offen."
+      ],
+      "norm": "EN ISO 16135 (Kugelhähne aus Thermoplasten) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kugelhahn_d20.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Bevo (NL), rund 23,53 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60,
+        "folgt": "spindel"
+      }
     }
   ]
 }

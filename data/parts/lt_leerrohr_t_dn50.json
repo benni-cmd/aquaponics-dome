@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_leerrohr_t_dn50.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt leerrohr t dn50",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Leerrohr-T-Stück DN50",
+  "kurz": "Das T-Stück zweigt vom Kabelschutzrohr DN50 ein Rohr ab.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "leerrohr_t"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "leerrohr_t",
-      "name": "Leerrohr T",
+      "name": "Leerrohr-T-Stück DN50",
       "koerper": [
         "Leerrohr_T"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT leerrohr",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 139.4 g, Einzelkoerper 56.0 x 96.0 x 136.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-leerrohr-t-dn50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das T-Stück zweigt vom Kabelschutzrohr DN50 ein Rohr ab.",
+      "eigenschaften": [
+        "Kabelschutzrohr aus Kunststoff (KG- oder HT-Rohr, PVC-U oder PP), glatt, Steckmuffe mit Lippendichtung [A].",
+        "Kein Druckrohr: es führt nur Kabel, kein Wasser."
+      ],
+      "norm": "EN 1401-1 (Rohre für drucklose Entwässerung, PVC-U) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_leerrohr_t_dn50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     }
   ]
 }

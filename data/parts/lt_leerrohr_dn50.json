@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_leerrohr_dn50.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt leerrohr dn50",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Leerrohr DN50",
+  "kurz": "Das Leerrohr DN50 schützt Kabel auf ihrem Weg im Erdreich oder an der Wand.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
       "id": "rohre",
       "name": "Rohre",
-      "kurz": "",
+      "kurz": "Rohrstücke aus Meterware.",
       "teile": [
         "leerrohr"
       ]
@@ -21,18 +21,28 @@
   "teile": [
     {
       "id": "leerrohr",
-      "name": "Leerrohr",
+      "name": "Leerrohr DN50",
       "koerper": [
         "Leerrohr"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "LT leerrohr",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 1157.0 g, Einzelkoerper 56.0 x 56.0 x 3000.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-leerrohr-dn50",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 3.0,
-      "geruest": true
+      "funktion": "Das Leerrohr DN50 schützt Kabel auf ihrem Weg im Erdreich oder an der Wand.",
+      "eigenschaften": [
+        "Kabelschutzrohr aus Kunststoff (KG- oder HT-Rohr, PVC-U oder PP), glatt, Steckmuffe mit Lippendichtung [A].",
+        "Kein Druckrohr: es führt nur Kabel, kein Wasser."
+      ],
+      "norm": "EN 1401-1 (Rohre für drucklose Entwässerung, PVC-U) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_leerrohr_dn50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]"
     }
   ]
 }

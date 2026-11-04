@@ -3,45 +3,38 @@
   "datei": "designs/components/schrank_einfuehrung.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "schrank einfuehrung",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Schrankeinführung für Kabel und Leerrohre",
+  "kurz": "Baugruppe aus 9 Teilen (Schrankboden, Schrankwand, Kabeleinführung DN100, Körper, Dichtung, Gegenmutter u. a.). Der Boden trägt die Einführungen von unten in den Schrank.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 10,
   "gruppen": [
     {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
+      "id": "platten",
+      "name": "Platten und Bleche",
+      "kurz": "Flache Teile aus Blech oder Platte.",
       "teile": [
         "schrankboden"
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "schrankwand"
       ]
     },
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "koerper",
         "dichtung",
         "gegenmutter",
         "koerper_arm_kabeleinfuehrung_dn50",
-        "dichtung_arm_kabeleinfuehrung_dn50"
-      ]
-    },
-    {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
-      "teile": [
+        "dichtung_arm_kabeleinfuehrung_dn50",
         "leerrohrbogen",
         "leerrohrbogen_fit_leerrohr_bogen90_dn50"
       ]
@@ -56,12 +49,21 @@
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "SE Blech",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 9034.1 g, Einzelkoerper 3.0 x 500.0 x 800.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BLE-schrankboden-3x500x800",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Boden trägt die Einführungen von unten in den Schrank.",
+      "eigenschaften": [
+        "Stahlblech 3 mm, 500 x 800 mm [A]."
+      ],
+      "norm": "EN 10346 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]"
     },
     {
       "id": "schrankwand",
@@ -71,27 +73,62 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "SE Blech",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 4069.4 g, Einzelkoerper 100.0 x 500.0 x 800.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-schrankwand-500x800",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Wand zeigt die Schrankseite, an der Kabel und Leerrohre ankommen.",
+      "eigenschaften": [
+        "Stahlblech, 500 x 800 mm Fläche [A]."
+      ],
+      "norm": "EN 10346 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "koerper",
-      "name": "Koerper",
+      "name": "Kabeleinführung DN100, Körper",
       "koerper": [
         "Koerper"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 399.2 g, Einzelkoerper 88.0 x 160.0 x 160.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn100",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Körper führt das Leerrohr DN100 durch den Schrankboden.",
+      "eigenschaften": [
+        "Kunststoff mit Gewinde [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "dichtung",
@@ -101,12 +138,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 17.0 g, Einzelkoerper 3.0 x 150.0 x 150.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn100",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Dichtung dichtet die Einführung gegen den Boden ab.",
+      "eigenschaften": [
+        "Flachdichtung [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 60
+      }
     },
     {
       "id": "gegenmutter",
@@ -117,72 +172,162 @@
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 61.6 g, Einzelkoerper 8.0 x 148.0 x 148.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Gegenmutter zieht die Einführung von innen fest.",
+      "eigenschaften": [
+        "Zwei Stück [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60
+      }
     },
     {
       "id": "koerper_arm_kabeleinfuehrung_dn50",
-      "name": "Koerper",
+      "name": "Kabeleinführung DN50, Körper",
       "koerper": [
         "Koerper (2)"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 98.4 g, Einzelkoerper 64.0 x 93.0 x 93.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Körper führt das Leerrohr DN50 durch den Schrankboden.",
+      "eigenschaften": [
+        "Kunststoff mit Gewinde [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "dichtung_arm_kabeleinfuehrung_dn50",
-      "name": "Dichtung",
+      "name": "Dichtung DN50",
       "koerper": [
         "Dichtung (2)"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 8.9 g, Einzelkoerper 3.0 x 83.0 x 83.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Dichtung dichtet die DN50-Einführung ab.",
+      "eigenschaften": [
+        "Flachdichtung [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 50
+      }
     },
     {
       "id": "leerrohrbogen",
-      "name": "Leerrohrbogen",
+      "name": "Leerrohrbogen DN100",
       "koerper": [
         "Leerrohrbogen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 1428.3 g, Einzelkoerper 123.0 x 639.0 x 645.5 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-leerrohr-bogen90-dn100",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Bogen führt das Leerrohr DN100 in den Boden.",
+      "eigenschaften": [
+        "Bogen 90 Grad, Kabelschutzrohr [A]."
+      ],
+      "norm": "EN 1401-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      }
     },
     {
       "id": "leerrohrbogen_fit_leerrohr_bogen90_dn50",
-      "name": "Leerrohrbogen",
+      "name": "Leerrohrbogen DN50",
       "koerper": [
         "Leerrohrbogen (2)"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 219.6 g, Einzelkoerper 56.0 x 385.0 x 388.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-leerrohr-bogen90-dn50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Bogen führt das Leerrohr DN50 in den Boden.",
+      "eigenschaften": [
+        "Bogen 90 Grad, Kabelschutzrohr [A]."
+      ],
+      "norm": "EN 1401-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schrank_einfuehrung.sc (Maße aus der Modell-Bounding-Box), docs/parts/schrank_einfuehrung.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 160
+      }
     }
   ]
 }

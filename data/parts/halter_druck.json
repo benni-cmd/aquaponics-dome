@@ -3,25 +3,18 @@
   "datei": "designs/components/halter_druck.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "halter druck",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halter Druckmessstelle",
+  "kurz": "Baugruppe aus 2 Teilen (Anbohrschelle, Gewindenippel). Die Anbohrschelle schafft einen Anschluss für das Manometer an einer bestehenden Rohrleitung, ohne sie umzubauen.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 2,
   "gruppen": [
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
-        "anbohrschelle"
-      ]
-    },
-    {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
-      "teile": [
+        "anbohrschelle",
         "gewindenippel"
       ]
     }
@@ -35,12 +28,22 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 91.4 g, Einzelkoerper 40.0 x 50.0 x 60.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-anbohrschelle",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Anbohrschelle schafft einen Anschluss für das Manometer an einer bestehenden Rohrleitung, ohne sie umzubauen.",
+      "eigenschaften": [
+        "PVC-U-Schelle mit Anschlussgewinde [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_druck.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     },
     {
       "id": "gewindenippel",
@@ -50,12 +53,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Edelstahl",
+      "werkstoff": "edelstahl_1_4301",
       "masse_mm": "Masse 37.1 g, Einzelkoerper 19.0 x 19.0 x 27.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-gewindenippel-edelstahl",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Nippel nimmt das Druckmessgerät auf.",
+      "eigenschaften": [
+        "Edelstahl, Gewinde ¼ bis ½ Zoll [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_druck.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 80
+      }
     }
   ]
 }

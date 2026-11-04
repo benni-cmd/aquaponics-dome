@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_verteiler_d32_n2.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt verteiler d32 n2",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "PVC-U-Verteiler d32, 2 Abgänge",
+  "kurz": "Der Verteiler teilt den Zulauf d32 auf 2 Abgänge auf, damit mehrere Verbraucher gleichmäßig versorgt werden.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "verteiler"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "verteiler",
-      "name": "Verteiler",
+      "name": "PVC-U-Verteiler d32, 2 Abgänge",
       "koerper": [
         "Verteiler"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT pvc",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 103.4 g, Einzelkoerper 32.0 x 82.0 x 360.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-verteiler-d32_n2",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Verteiler teilt den Zulauf d32 auf 2 Abgänge auf, damit mehrere Verbraucher gleichmäßig versorgt werden.",
+      "eigenschaften": [
+        "Aus PVC-U-Rohr und Abzweigen gefertigt oder als Formstück gekauft; Anschlüsse als Klebemuffen [A].",
+        "Verbindung durch Kleben (Klebemuffe, PVC-U-Kleber nach DIN EN 14814)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Druckrohrsystem, Rohre und Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_verteiler_d32_n2.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     }
   ]
 }

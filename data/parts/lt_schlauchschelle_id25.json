@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_schlauchschelle_id25.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt schlauchschelle id25",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Schlauchschelle ID25",
+  "kurz": "Baugruppe aus 2 Teilen (Schlauchschelle ID25, Schneckenschraube). Die Schelle presst den Schlauch ID25 auf die Tülle und macht die Verbindung dicht.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 2,
   "gruppen": [
     {
-      "id": "schlauch_und_schellen",
-      "name": "Schlauch und Schellen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "schelle",
         "schneckenschraube"
@@ -22,18 +22,28 @@
   "teile": [
     {
       "id": "schelle",
-      "name": "Schelle",
+      "name": "Schlauchschelle ID25",
       "koerper": [
         "Schelle"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 10.6 g, Einzelkoerper 9.0 x 30.4 x 37.9 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-schlauchschelle-id25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Schelle presst den Schlauch ID25 auf die Tülle und macht die Verbindung dicht.",
+      "eigenschaften": [
+        "Edelstahlband mit Schneckenverzahnung [A]."
+      ],
+      "norm": "DIN 3017 (Schlauchschellen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schlauchschelle_id25.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 0,65 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     },
     {
       "id": "schneckenschraube",
@@ -43,12 +53,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 4.2 g, Einzelkoerper 8.0 x 8.0 x 21.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-schlauchschelle-id25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Schneckenschraube spannt das Band der Schlauchschelle.",
+      "eigenschaften": [
+        "Gehört zur Schelle; im Modell ein eigener Körper."
+      ],
+      "norm": "DIN 3017 (Schlauchschellen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schlauchschelle_id25.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 0,65 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 40
+      }
     }
   ]
 }

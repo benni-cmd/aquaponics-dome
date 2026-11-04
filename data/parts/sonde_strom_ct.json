@@ -3,16 +3,16 @@
   "datei": "designs/components/sonde_strom_ct.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "sonde strom ct",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Stromwandler",
+  "kurz": "Der Stromwandler misst den Strom einer Pumpe, ohne die Leitung aufzutrennen; Ausfälle werden so früh bemerkt.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "messtechnik",
-      "name": "Messtechnik",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "sonde"
       ]
@@ -21,18 +21,28 @@
   "teile": [
     {
       "id": "sonde",
-      "name": "Sonde",
+      "name": "Stromwandler",
       "koerper": [
         "Sonde"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Sonde schwarz",
+      "werkstoff": "sonde_gehaeuse",
       "masse_mm": "Masse 16.8 g, Einzelkoerper 13.0 x 30.0 x 36.0 mm (Modell-Bounding-Box)",
       "artikel_id": "MES-strom-ct",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Stromwandler misst den Strom einer Pumpe, ohne die Leitung aufzutrennen; Ausfälle werden so früh bemerkt.",
+      "eigenschaften": [
+        "Klappbarer Wandler, Gehäuse 13 x 30 x 36 mm (Modellkörper) [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/sonde_strom_ct.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)"
     }
   ]
 }

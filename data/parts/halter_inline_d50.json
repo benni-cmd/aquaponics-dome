@@ -3,25 +3,25 @@
   "datei": "designs/components/halter_inline_d50.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "halter inline d50",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halter Messstrecke d50",
+  "kurz": "Baugruppe aus 6 Teilen (Verschraubung A, Verschraubung B, Vorfilter, Sieb, Beruhigungsstrecke u. a.). Die Verschraubung verbindet die Messstrecke mit der Leitung und lässt sie ausbauen.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 6,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "verschraubung_a",
         "verschraubung_b"
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "vorfilter",
         "sieb",
@@ -31,7 +31,7 @@
     {
       "id": "rohre",
       "name": "Rohre",
-      "kurz": "",
+      "kurz": "Rohrstücke aus Meterware.",
       "teile": [
         "beruhigungsstrecke"
       ]
@@ -46,12 +46,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 103.6 g, Einzelkoerper 30.0 x 72.0 x 72.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-verschraubung-d75",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Verschraubung verbindet die Messstrecke mit der Leitung und lässt sie ausbauen.",
+      "eigenschaften": [
+        "PVC-U-Verschraubung, Klebemuffe [A]."
+      ],
+      "norm": "EN ISO 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_inline_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "verschraubung_b",
@@ -61,12 +79,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 103.6 g, Einzelkoerper 30.0 x 72.0 x 72.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-verschraubung-d75",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die zweite Verschraubung schließt die Messstrecke auf der anderen Seite an.",
+      "eigenschaften": [
+        "PVC-U-Verschraubung, Klebemuffe [A]."
+      ],
+      "norm": "EN ISO 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_inline_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "vorfilter",
@@ -76,12 +112,29 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 530.0 g, Einzelkoerper 70.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-halter-inline-d50-vorfilter",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Vorfilter hält groben Schmutz zurück, bevor das Wasser die Sensoren erreicht.",
+      "eigenschaften": [
+        "PVC-Gehäuse mit Siebeinsatz [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_inline_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "sieb",
@@ -91,12 +144,30 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Edelstahl",
+      "werkstoff": "edelstahl_1_4301",
       "masse_mm": "Masse 70.3 g, Einzelkoerper 30.0 x 39.0 x 39.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-halter-inline-d50-sieb",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das Sieb im Vorfilter fängt Partikel und lässt sich zum Reinigen herausnehmen.",
+      "eigenschaften": [
+        "Edelstahlsieb [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_inline_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100,
+        "folgt": "vorfilter"
+      }
     },
     {
       "id": "beruhigungsstrecke",
@@ -106,12 +177,29 @@
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 922.8 g, Einzelkoerper 70.0 x 70.0 x 200.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d75",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.2,
-      "geruest": true
+      "funktion": "Die gerade Strecke beruhigt den Strom vor dem Sensorblock.",
+      "eigenschaften": [
+        "PVC-U-Rohr [A]."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Druckrohrsystem, Rohre und Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_inline_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "sensorblock",
@@ -121,12 +209,29 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 465.8 g, Einzelkoerper 70.0 x 95.0 x 100.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-halter-inline-d50-sensorblock",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Im Sensorblock sitzen die Sonden, die Wasserwerte in der Leitung messen.",
+      "eigenschaften": [
+        "PVC-Block mit Sondenaufnahmen [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_inline_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 100
+      }
     }
   ]
 }

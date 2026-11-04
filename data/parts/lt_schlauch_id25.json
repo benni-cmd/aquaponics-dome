@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_schlauch_id25.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt schlauch id25",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Schlauch ID25",
+  "kurz": "Der Schlauch ID25 leitet Wasser flexibel zwischen zwei Anschlüssen, wo ein starres Rohr nicht passt.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "schlauch_und_schellen",
-      "name": "Schlauch und Schellen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "schlauch"
       ]
@@ -21,18 +21,30 @@
   "teile": [
     {
       "id": "schlauch",
-      "name": "Schlauch",
+      "name": "Schlauch ID25",
       "koerper": [
         "Schlauch"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT dunkelblau",
+      "werkstoff": "pvc_p_schlauch",
       "masse_mm": "Masse 169.6 g, Einzelkoerper 29.0 x 29.0 x 1000.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-schlauch-id25",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Schlauch ID25 leitet Wasser flexibel zwischen zwei Anschlüssen, wo ein starres Rohr nicht passt.",
+      "eigenschaften": [
+        "Weicher PVC-Schlauch, Innendurchmesser 25 mm [A].",
+        "Auf Schlauchtüllen mit Schlauchschellen gesichert.",
+        "Länge laut Modellstück; Kaufmenge in Metern."
+      ],
+      "norm": "Herstellerangabe (Trinkwassertauglichkeit nicht belegt) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schlauch_id25.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     }
   ]
 }

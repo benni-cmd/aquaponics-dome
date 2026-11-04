@@ -3,32 +3,32 @@
   "datei": "designs/components/halter_tauch.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "halter tauch",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halter Tauchrohr",
+  "kurz": "Baugruppe aus 3 Teilen (Tauchrohr, Abschlusskappe, Haltebügel). Das Tauchrohr trägt eine Sonde bis in das Wasser des Tanks.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 3,
   "gruppen": [
     {
       "id": "rohre",
       "name": "Rohre",
-      "kurz": "",
+      "kurz": "Rohrstücke aus Meterware.",
       "teile": [
         "tauchrohr"
       ]
     },
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "kappe"
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "klemme"
       ]
@@ -43,42 +43,86 @@
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 317.5 g, Einzelkoerper 40.0 x 40.0 x 1000.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d40",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das Tauchrohr trägt eine Sonde bis in das Wasser des Tanks.",
+      "eigenschaften": [
+        "PVC-U-Rohr d40, 1000 mm [A]."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Druckrohrsystem, Rohre und Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_tauch.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]"
     },
     {
       "id": "kappe",
-      "name": "Kappe",
+      "name": "Abschlusskappe",
       "koerper": [
         "Kappe"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PA schwarz",
+      "werkstoff": "pa",
       "masse_mm": "Masse 33.5 g, Einzelkoerper 20.0 x 44.0 x 44.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kappe-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Kappe schützt das obere Rohrende.",
+      "eigenschaften": [
+        "Polyamid-Kappe [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_tauch.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 1,24 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "klemme",
-      "name": "Klemme",
+      "name": "Haltebügel",
       "koerper": [
         "Klemme"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1414.9 g, Einzelkoerper 52.0 x 100.0 x 242.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tauchklemme",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Bügel hält das Tauchrohr am Tankrand.",
+      "eigenschaften": [
+        "Stahl verzinkt, 52 x 100 x 242 mm [A]."
+      ],
+      "norm": "EN 10346 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_tauch.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 100
+      }
     }
   ]
 }

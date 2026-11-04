@@ -3,16 +3,16 @@
   "datei": "designs/components/sonde_ph.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "sonde ph",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "pH-Sonde",
+  "kurz": "Die Sonde misst den pH-Wert des Wassers, damit Fische und Pflanzen im richtigen Bereich bleiben.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "messtechnik",
-      "name": "Messtechnik",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "sonde"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "sonde",
-      "name": "Sonde",
+      "name": "pH-Sonde",
       "koerper": [
         "Sonde"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Sonde grau",
+      "werkstoff": "sonde_gehaeuse",
       "masse_mm": "Masse 27.1 g, Einzelkoerper 12.0 x 12.0 x 150.0 mm (Modell-Bounding-Box)",
       "artikel_id": "MES-ph",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Sonde misst den pH-Wert des Wassers, damit Fische und Pflanzen im richtigen Bereich bleiben.",
+      "eigenschaften": [
+        "Glaselektrode im Schaft 12 mm, Länge 150 mm (Modellkörper), mit Kabel [A].",
+        "Braucht regelmäßiges Kalibrieren."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/sonde_ph.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)"
     }
   ]
 }

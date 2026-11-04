@@ -3,34 +3,27 @@
   "datei": "designs/components/halter_box.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "halter box",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halter Elektronikbox",
+  "kurz": "Baugruppe aus 5 Teilen (Gehäuse, Klardeckel, Hutschiene, Kabelverschraubung, Wandlasche). Das Gehäuse schützt die Elektronik der Messstelle vor Spritzwasser.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 9,
   "gruppen": [
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "gehaeuse",
-        "deckel"
-      ]
-    },
-    {
-      "id": "elektrik",
-      "name": "Elektrik",
-      "kurz": "",
-      "teile": [
+        "deckel",
         "hutschiene",
         "verschraubung"
       ]
     },
     {
-      "id": "winkel_flachstahl_halter",
-      "name": "Winkel, Flachstahl, Halter",
-      "kurz": "",
+      "id": "profile",
+      "name": "Profile",
+      "kurz": "Profilteile.",
       "teile": [
         "wandlasche"
       ]
@@ -39,33 +32,61 @@
   "teile": [
     {
       "id": "gehaeuse",
-      "name": "Gehaeuse",
+      "name": "Gehäuse",
       "koerper": [
         "Gehaeuse"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PS grau",
+      "werkstoff": "ps",
       "masse_mm": "Masse 400.5 g, Einzelkoerper 100.0 x 150.0 x 200.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BEH-halter-box-gehaeuse",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das Gehäuse schützt die Elektronik der Messstelle vor Spritzwasser.",
+      "eigenschaften": [
+        "Gehäuse aus Polystyrol, 100 x 150 x 200 mm (Modellkörper) [A]."
+      ],
+      "norm": "EN 60529 (Schutzart IP) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_box.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)"
     },
     {
       "id": "deckel",
-      "name": "Deckel",
+      "name": "Klardeckel",
       "koerper": [
         "Deckel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Acryl klar",
+      "werkstoff": "pmma",
       "masse_mm": "Masse 142.8 g, Einzelkoerper 4.0 x 150.0 x 200.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BEH-halter-box-gehaeuse",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der klare Deckel lässt die Anzeigen ablesen, ohne das Gehäuse zu öffnen.",
+      "eigenschaften": [
+        "Acryl, 4 mm dick [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_box.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "hutschiene",
@@ -75,16 +96,34 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 309.1 g, Einzelkoerper 7.5 x 35.0 x 150.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ELE-hutschiene-35",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Auf der Hutschiene sitzen die Klemmen und Module im Gehäuse.",
+      "eigenschaften": [
+        "Hutschiene 35 mm, Länge 150 mm [A]."
+      ],
+      "norm": "EN 60715 (Hutschiene 35 mm) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_box.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 60
+      }
     },
     {
       "id": "verschraubung",
-      "name": "Verschraubung",
+      "name": "Kabelverschraubung",
       "koerper": [
         "Verschraubung_1",
         "Verschraubung_2",
@@ -93,12 +132,30 @@
       ],
       "menge": 4,
       "typ": "kaufteil",
-      "werkstoff": "PA schwarz",
+      "werkstoff": "pa",
       "masse_mm": "Masse 12.9 g, Einzelkoerper 12.0 x 20.0 x 20.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ELE-kabelverschraubung-pg",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "funktion": "Die vier Verschraubungen führen die Kabel dicht ins Gehäuse.",
+      "eigenschaften": [
+        "PG-Verschraubungen aus Polyamid [A]."
+      ],
+      "norm": "EN 62444 (Kabelverschraubungen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_box.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 60
+      }
     },
     {
       "id": "wandlasche",
@@ -109,12 +166,29 @@
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 41.1 g, Einzelkoerper 3.0 x 30.0 x 30.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-wandlasche-30x30x3",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "funktion": "Die zwei Laschen befestigen das Gehäuse an der Wand.",
+      "eigenschaften": [
+        "Stahl 3 mm, verzinkt [A]."
+      ],
+      "norm": "EN 10346 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_box.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 60
+      }
     }
   ]
 }

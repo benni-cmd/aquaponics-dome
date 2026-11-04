@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_rueckschlagventil_d20.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt rueckschlagventil d20",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "PVC-U-Rückschlagventil d20",
+  "kurz": "Das Rückschlagventil lässt das Wasser nur in eine Richtung fließen und verhindert Rücklauf, etwa bei Pumpenstillstand.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "rueckschlagventil"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "rueckschlagventil",
-      "name": "Rueckschlagventil",
+      "name": "PVC-U-Rückschlagventil d20",
       "koerper": [
         "Rueckschlagventil"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 80.4 g, Einzelkoerper 39.0 x 39.0 x 82.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-rsv-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das Rückschlagventil lässt das Wasser nur in eine Richtung fließen und verhindert Rücklauf, etwa bei Pumpenstillstand.",
+      "eigenschaften": [
+        "PVC-U-Rückschlagventil d20 mit Klebemuffen, PN10 bis PN16 je Hersteller [A].",
+        "Einbaulage und Pfeil auf dem Gehäuse beachten; der Modellkörper bildet die Außenform ab."
+      ],
+      "norm": "EN ISO 16137 (Rückflussverhinderer aus Thermoplasten) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_rueckschlagventil_d20.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 15,67 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     }
   ]
 }

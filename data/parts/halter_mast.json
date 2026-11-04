@@ -3,16 +3,16 @@
   "datei": "designs/components/halter_mast.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "halter mast",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halter Mast für Luftsensoren",
+  "kurz": "Baugruppe aus 3 Teilen (Fußplatte, Mastrohr, Strahlungsschutz). Die Fußplatte steht am Boden und trägt den Mast.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 3,
   "gruppen": [
     {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
+      "id": "platten",
+      "name": "Platten und Bleche",
+      "kurz": "Flache Teile aus Blech oder Platte.",
       "teile": [
         "fussplatte"
       ]
@@ -20,15 +20,15 @@
     {
       "id": "rohre",
       "name": "Rohre",
-      "kurz": "",
+      "kurz": "Rohrstücke aus Meterware.",
       "teile": [
         "mastrohr"
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "strahlungsschutz"
       ]
@@ -37,18 +37,27 @@
   "teile": [
     {
       "id": "fussplatte",
-      "name": "Fussplatte",
+      "name": "Fußplatte",
       "koerper": [
         "Fussplatte"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 471.0 g, Einzelkoerper 6.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BLE-fussplatte-100x100x6",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Fußplatte steht am Boden und trägt den Mast.",
+      "eigenschaften": [
+        "Stahl 6 mm, 100 x 100 mm, verzinkt [A]."
+      ],
+      "norm": "EN 10346 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_mast.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]"
     },
     {
       "id": "mastrohr",
@@ -58,12 +67,29 @@
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 404.8 g, Einzelkoerper 32.0 x 32.0 x 1694.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d32",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.694,
-      "geruest": true
+      "funktion": "Das Mastrohr trägt die Sensoren auf Messhöhe über den Pflanzen.",
+      "eigenschaften": [
+        "PVC-U-Rohr d32, 1694 mm hoch [A]."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Druckrohrsystem, Rohre und Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_mast.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200
+      }
     },
     {
       "id": "strahlungsschutz",
@@ -73,12 +99,30 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "PP weiss",
+      "werkstoff": "pp",
       "masse_mm": "Masse 59.8 g, Einzelkoerper 36.0 x 90.0 x 90.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-strahlungsschutz-par",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Strahlungsschutz hält Sonnenlicht vom Temperaturfühler fern, damit er die Lufttemperatur misst.",
+      "eigenschaften": [
+        "Weißes PP, Lamellenform [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_mast.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "mastrohr"
+      }
     }
   ]
 }

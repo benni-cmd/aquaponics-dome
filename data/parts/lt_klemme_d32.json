@@ -3,25 +3,25 @@
   "datei": "designs/components/lt_klemme_d32.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt klemme d32",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Klemmenfuß",
+  "kurz": "Baugruppe aus 3 Teilen (Klemmenfuß, Klemmenring d32, Schraube M6 x 20). Der Fuß trägt die Rohrklemme und wird an der Unterlage verschraubt.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 4,
   "gruppen": [
     {
-      "id": "schlauch_und_schellen",
-      "name": "Schlauch und Schellen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "klemmenfuss",
         "klemmenring"
       ]
     },
     {
-      "id": "schrauben",
-      "name": "Schrauben",
-      "kurz": "",
+      "id": "normteile",
+      "name": "Normteile",
+      "kurz": "Schrauben und Muttern nach Norm.",
       "teile": [
         "schraube_m6x20"
       ]
@@ -30,49 +30,97 @@
   "teile": [
     {
       "id": "klemmenfuss",
-      "name": "Klemmenfuss",
+      "name": "Klemmenfuß",
       "koerper": [
         "Klemmenfuss"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 102.2 g, Einzelkoerper 4.0 x 44.0 x 74.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-rohrschelle-d32",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Fuß trägt die Rohrklemme und wird an der Unterlage verschraubt.",
+      "eigenschaften": [
+        "Stahlfuß, verzinkt, 4 mm Blech, zwei Schraubenlöcher."
+      ],
+      "norm": "EN 10346 (Stahlband, schmelztauchveredelt) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_klemme_d32.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 0,79 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     },
     {
       "id": "klemmenring",
-      "name": "Klemmenring",
+      "name": "Klemmenring d32",
       "koerper": [
         "Klemmenring"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 51.8 g, Einzelkoerper 20.0 x 38.0 x 38.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-rohrschelle-d32",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Ring umfasst das Rohr d32 und hält es am Fuß; die Schrauben ziehen ihn fest.",
+      "eigenschaften": [
+        "Halbring aus verzinktem Stahl, Innendurchmesser passend zu Rohr d32.",
+        "Das Rohr wird nicht eingeklemmt, sondern von der Schelle geführt (Längsausdehnung bleibt möglich)."
+      ],
+      "norm": "EN 10346 (Stahlband, schmelztauchveredelt) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_klemme_d32.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 0,79 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "schraube_m6x20",
-      "name": "Schraube M6x20",
+      "name": "Schraube M6 x 20",
       "koerper": [
         "Body1",
         "Body2"
       ],
       "menge": 2,
       "typ": "normteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 2.4 g, Einzelkoerper 10.0 x 11.5 x 24.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m6x20",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "funktion": "Die zwei Schrauben M6 x 20 spannen den Ring auf dem Fuß.",
+      "eigenschaften": [
+        "Sechskantschraube M6 x 20, Stahl verzinkt oder A2 [A]."
+      ],
+      "norm": "ISO 4017 (Sechskantschrauben) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_klemme_d32.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 140,
+        "folgt": "klemmenring"
+      }
     }
   ]
 }

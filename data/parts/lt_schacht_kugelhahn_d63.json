@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_schacht_kugelhahn_d63.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt schacht kugelhahn d63",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Schachtwanne",
+  "kurz": "Baugruppe aus 4 Teilen (Schachtwanne, Dichtung A, Dichtung B, Schachtdeckel). Die Wanne fasst den Kugelhahn d63 im Boden und schützt ihn vor Erde; von oben bedient man den Hahn.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 4,
   "gruppen": [
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "schachtwanne",
         "dichtung_a",
@@ -30,12 +30,22 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "LT pehd",
+      "werkstoff": "pe",
       "masse_mm": "Masse 5880.5 g, Einzelkoerper 295.0 x 416.0 x 416.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-schacht-kugelhahn-d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Wanne fasst den Kugelhahn d63 im Boden und schützt ihn vor Erde; von oben bedient man den Hahn.",
+      "eigenschaften": [
+        "PE-HD, rund 295 mm tief, 416 mm Kantenmaß (Modellkörper) [A].",
+        "Zwei Rohrdurchführungen mit Dichtungen."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schacht_kugelhahn_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]"
     },
     {
       "id": "dichtung_a",
@@ -45,12 +55,29 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "LT epdm",
+      "werkstoff": "epdm",
       "masse_mm": "Masse 11.3 g, Einzelkoerper 14.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-schacht-kugelhahn-d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Dichtung dichtet die Rohrdurchführung auf der Zulaufseite ab.",
+      "eigenschaften": [
+        "EPDM, Lippendichtung [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schacht_kugelhahn_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "dichtung_b",
@@ -60,27 +87,61 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "LT epdm",
+      "werkstoff": "epdm",
       "masse_mm": "Masse 11.3 g, Einzelkoerper 14.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-schacht-kugelhahn-d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Dichtung dichtet die Rohrdurchführung auf der Ablaufseite ab.",
+      "eigenschaften": [
+        "EPDM, Lippendichtung [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schacht_kugelhahn_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "deckel",
-      "name": "Deckel",
+      "name": "Schachtdeckel",
       "koerper": [
         "Deckel"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "LT pehd",
+      "werkstoff": "pe",
       "masse_mm": "Masse 4941.9 g, Einzelkoerper 30.0 x 420.0 x 420.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-schacht-kugelhahn-d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Deckel schließt den Schacht und lässt sich zum Bedienen des Hahns abnehmen.",
+      "eigenschaften": [
+        "PE-HD, 30 mm dick, begehbar nicht ausgelegt [A]."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schacht_kugelhahn_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250
+      }
     }
   ]
 }

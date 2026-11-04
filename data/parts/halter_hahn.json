@@ -3,26 +3,19 @@
   "datei": "designs/components/halter_hahn.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "halter hahn",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halter Probenahmehahn",
+  "kurz": "Baugruppe aus 3 Teilen (Anbohrschelle, Probenahmehahn, Schlauchtülle). Die Schelle schafft eine Probenahmestelle an der Leitung.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 3,
   "gruppen": [
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "anbohrschelle",
-        "kugelhahn"
-      ]
-    },
-    {
-      "id": "schlauch_und_schellen",
-      "name": "Schlauch und Schellen",
-      "kurz": "",
-      "teile": [
+        "kugelhahn",
         "schlauchtuelle"
       ]
     }
@@ -36,42 +29,89 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 91.4 g, Einzelkoerper 40.0 x 50.0 x 60.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-anbohrschelle",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Schelle schafft eine Probenahmestelle an der Leitung.",
+      "eigenschaften": [
+        "PVC-U-Schelle mit Anschlussgewinde [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_hahn.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     },
     {
       "id": "kugelhahn",
-      "name": "Kugelhahn",
+      "name": "Probenahmehahn",
       "koerper": [
         "Kugelhahn"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 44.2 g, Einzelkoerper 30.0 x 49.0 x 80.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kugelhahn-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der kleine Kugelhahn öffnet die Probenahmestelle für eine Wasserprobe.",
+      "eigenschaften": [
+        "PVC-U-Kugelhahn d20 [A]."
+      ],
+      "norm": "EN ISO 16135 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_hahn.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Bevo (NL), rund 23,53 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "schlauchtuelle",
-      "name": "Schlauchtuelle",
+      "name": "Schlauchtülle",
       "koerper": [
         "Schlauchtuelle"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 5.8 g, Einzelkoerper 14.0 x 14.0 x 40.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-schlauchtuelle-d12",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Tülle nimmt einen Schlauch für die Probe auf.",
+      "eigenschaften": [
+        "PVC-Tülle für Schlauch 12 mm [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_hahn.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 1,33 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 140,
+        "folgt": "kugelhahn"
+      }
     }
   ]
 }

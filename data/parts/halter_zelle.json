@@ -3,34 +3,27 @@
   "datei": "designs/components/halter_zelle.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "halter zelle",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halter Messzelle",
+  "kurz": "Baugruppe aus 4 Teilen (Messzelle, Zulaufanschluss, Ablaufanschluss, Absperrhahn). Die Messzelle führt Wasser an der Sonde vorbei und misst dessen Werte im Nebenstrom.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 4,
   "gruppen": [
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "zellkoerper"
       ]
     },
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "anschluss_zulauf",
-        "anschluss_ablauf"
-      ]
-    },
-    {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
-      "teile": [
+        "anschluss_ablauf",
         "absperrhahn"
       ]
     }
@@ -38,48 +31,93 @@
   "teile": [
     {
       "id": "zellkoerper",
-      "name": "Zellkoerper",
+      "name": "Messzelle",
       "koerper": [
         "Zellkoerper"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 435.9 g, Einzelkoerper 44.0 x 74.0 x 220.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-halter-zelle-zellkoerper",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Messzelle führt Wasser an der Sonde vorbei und misst dessen Werte im Nebenstrom.",
+      "eigenschaften": [
+        "PVC-Gehäuse 44 x 74 x 220 mm [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_zelle.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]"
     },
     {
       "id": "anschluss_zulauf",
-      "name": "Anschluss Zulauf",
+      "name": "Zulaufanschluss",
       "koerper": [
         "Anschluss_Zulauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 6.7 g, Einzelkoerper 20.0 x 20.0 x 30.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-stutzen-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Anschluss speist Wasser in die Messzelle ein.",
+      "eigenschaften": [
+        "PVC-Stutzen d20 [A]."
+      ],
+      "norm": "EN 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_zelle.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 1,98 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "anschluss_ablauf",
-      "name": "Anschluss Ablauf",
+      "name": "Ablaufanschluss",
       "koerper": [
         "Anschluss_Ablauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 6.7 g, Einzelkoerper 20.0 x 20.0 x 30.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-stutzen-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Anschluss führt das Wasser aus der Zelle zurück.",
+      "eigenschaften": [
+        "PVC-Stutzen d20 [A]."
+      ],
+      "norm": "EN 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_zelle.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 1,98 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "absperrhahn",
@@ -89,12 +127,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 40.8 g, Einzelkoerper 40.0 x 46.0 x 70.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kugelhahn-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Hahn sperrt die Zelle ab, wenn die Sonde gewechselt wird.",
+      "eigenschaften": [
+        "PVC-U-Kugelhahn d20 [A]."
+      ],
+      "norm": "EN ISO 16135 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/halter_zelle.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Bevo (NL), rund 23,53 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      }
     }
   ]
 }

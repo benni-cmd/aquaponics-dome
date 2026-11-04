@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_kappe_d50.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt kappe d50",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "PVC-U-Kappe d50",
+  "kurz": "Die Kappe verschließt ein Rohrende d50 dicht, zum Beispiel an einem Verteiler oder einer Reserveleitung.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "kappe"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "kappe",
-      "name": "Kappe",
+      "name": "PVC-U-Kappe d50",
       "koerper": [
         "Kappe"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT pvc",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 42.7 g, Einzelkoerper 34.0 x 58.5 x 58.5 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kappe-d50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die Kappe verschließt ein Rohrende d50 dicht, zum Beispiel an einem Verteiler oder einer Reserveleitung.",
+      "eigenschaften": [
+        "PVC-U-Klebekappe d50, PN16 (Richtwert) [A].",
+        "Aufgeklebt dauerhaft dicht; ein späteres Öffnen heißt Absägen."
+      ],
+      "norm": "EN 1452-3 (PVC-U-Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kappe_d50.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Bevo (NL), rund 2,92 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     }
   ]
 }

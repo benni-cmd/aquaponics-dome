@@ -3,74 +3,70 @@
   "datei": "designs/components/geblaese_luft.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "geblaese luft",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Gebläse für die Belüftung",
+  "kurz": "Baugruppe aus 7 Teilen (Gebläse, Gummifüße, Netzkabel, Luftstutzen, Rohrschleife u. a.). Das Gebläse drückt Luft in die Belüftungsleitung und versorgt das Fischwasser mit Sauerstoff.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 10,
   "gruppen": [
     {
-      "id": "pumpen",
-      "name": "Pumpen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "pumpe",
-        "netzkabel"
+        "netzkabel",
+        "stutzen_luft",
+        "rueckschlagventil"
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
+      "id": "sonderteile",
       "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "gummifuss"
       ]
     },
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
-      "teile": [
-        "stutzen_luft"
-      ]
-    },
-    {
       "id": "rohre",
       "name": "Rohre",
-      "kurz": "",
+      "kurz": "Rohrstücke aus Meterware.",
       "teile": [
         "rohrschleife",
         "rohr_austritt"
-      ]
-    },
-    {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
-      "teile": [
-        "rueckschlagventil"
       ]
     }
   ],
   "teile": [
     {
       "id": "pumpe",
-      "name": "Pumpe",
+      "name": "Gebläse",
       "koerper": [
         "Pumpe"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "GL Pumpe",
+      "werkstoff": "geraete_gehaeuse",
       "masse_mm": "Masse 9999.6 g, Einzelkoerper 180.0 x 230.0 x 240.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PMP-geblaese-luft",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das Gebläse drückt Luft in die Belüftungsleitung und versorgt das Fischwasser mit Sauerstoff.",
+      "eigenschaften": [
+        "Membran- oder Seitenkanalgebläse, Außenmaß 180 x 230 x 240 mm (Modellkörper) [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/geblaese_luft.sc (Maße aus der Modell-Bounding-Box), docs/parts/geblaese_luft.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)"
     },
     {
       "id": "gummifuss",
-      "name": "Gummifuss",
+      "name": "Gummifüße",
       "koerper": [
         "Gummifuss_1",
         "Gummifuss_2",
@@ -79,12 +75,29 @@
       ],
       "menge": 4,
       "typ": "sonderteil",
-      "werkstoff": "GL Fuss",
+      "werkstoff": "epdm",
       "masse_mm": "Masse 90.5 g, Einzelkoerper 15.0 x 40.0 x 40.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-gummifuss-40",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "funktion": "Die vier Gummifüße dämpfen die Schwingung des Gebläses und halten es rutschfest.",
+      "eigenschaften": [
+        "Vier Füße, je 15 x 40 mm [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/geblaese_luft.sc (Maße aus der Modell-Bounding-Box), docs/parts/geblaese_luft.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 40
+      }
     },
     {
       "id": "netzkabel",
@@ -94,27 +107,63 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "GL Kabel",
+      "werkstoff": "geraete_gehaeuse",
       "masse_mm": "Masse 6.5 g, Einzelkoerper 8.0 x 8.0 x 100.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PMP-geblaese-luft",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Das Netzkabel versorgt das Gebläse mit Strom.",
+      "eigenschaften": [
+        "Kabel mit Schutzkontaktstecker; im Modell ein 100 mm langer Stummel [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/geblaese_luft.sc (Maße aus der Modell-Bounding-Box), docs/parts/geblaese_luft.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "stutzen_luft",
-      "name": "Stutzen Luft",
+      "name": "Luftstutzen",
       "koerper": [
         "Stutzen_Luft"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "GL PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 5.8 g, Einzelkoerper 20.0 x 20.0 x 40.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-stutzen-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Stutzen führt die Luft aus dem Gebläse in die Rohrleitung.",
+      "eigenschaften": [
+        "PVC-Stutzen d20 [A]."
+      ],
+      "norm": "EN 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/geblaese_luft.sc (Maße aus der Modell-Bounding-Box), docs/parts/geblaese_luft.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 1,98 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "rohrschleife",
@@ -124,42 +173,97 @@
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "GL PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 89.4 g, Einzelkoerper 20.0 x 240.0 x 435.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d20",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.733,
-      "geruest": true
+      "funktion": "Die Rohrschleife führt die Luft über eine Schleife oberhalb des Wasserstands, damit kein Wasser zurück ins Gebläse läuft.",
+      "eigenschaften": [
+        "PVC-Rohr d20 [A]."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Druckrohrsystem, Rohre und Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/geblaese_luft.sc (Maße aus der Modell-Bounding-Box), docs/parts/geblaese_luft.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 140,
+        "folgt": "stutzen_luft"
+      }
     },
     {
       "id": "rueckschlagventil",
-      "name": "Rueckschlagventil",
+      "name": "Rückschlagventil Luft",
       "koerper": [
         "Rueckschlagventil"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "GL Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 85.0 g, Einzelkoerper 39.0 x 39.0 x 82.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-rsv-d20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das Ventil lässt die Luft nur zum Wasser hin strömen und schützt das Gebläse.",
+      "eigenschaften": [
+        "Rückschlagventil für Luft, 39 x 82 mm [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/geblaese_luft.sc (Maße aus der Modell-Bounding-Box), docs/parts/geblaese_luft.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 15,67 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 220,
+        "folgt": "rohrschleife"
+      }
     },
     {
       "id": "rohr_austritt",
-      "name": "Rohr Austritt",
+      "name": "Austrittsrohr",
       "koerper": [
         "Rohr_Austritt"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "GL PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 14.4 g, Einzelkoerper 20.0 x 20.0 x 100.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d20",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.1,
-      "geruest": true
+      "funktion": "Das Rohr führt die Luft zum Luftverteiler.",
+      "eigenschaften": [
+        "PVC-Rohr d20, 100 mm lang [A]."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Druckrohrsystem, Rohre und Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/geblaese_luft.sc (Maße aus der Modell-Bounding-Box), docs/parts/geblaese_luft.md; Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "rueckschlagventil"
+      }
     }
   ]
 }

@@ -3,16 +3,16 @@
   "datei": "designs/components/schaltschrank.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "schaltschrank",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Schaltschrank",
+  "kurz": "Der Schaltschrank enthält die Steuerung und Sicherungen der Anlage und schützt sie vor Nässe und Staub.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "elektrik",
-      "name": "Elektrik",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "t_schaltschrank"
       ]
@@ -21,18 +21,28 @@
   "teile": [
     {
       "id": "t_schaltschrank",
-      "name": "T Schaltschrank",
+      "name": "Schaltschrank",
       "koerper": [
         "T11_Schaltschrank"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 619200.0 g, Einzelkoerper 500.0 x 800.0 x 1200.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ELE-schaltschrank-500x800x1200",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Schaltschrank enthält die Steuerung und Sicherungen der Anlage und schützt sie vor Nässe und Staub.",
+      "eigenschaften": [
+        "Wandschrank 500 x 800 x 1200 mm (Modellkörper) [A]."
+      ],
+      "norm": "EN 61439 (Schaltgerätekombinationen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/schaltschrank.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)"
     }
   ]
 }

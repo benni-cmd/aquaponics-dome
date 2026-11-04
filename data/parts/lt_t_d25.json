@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_t_d25.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt t d25",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "PVC-U-T-Stück d25",
+  "kurz": "Das T-Stück teilt einen Strom d25 in zwei Richtungen oder führt zwei Ströme zusammen; alle drei Anschlüsse sind Klebemuffen.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "t_stueck"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "t_stueck",
-      "name": "T Stueck",
+      "name": "PVC-U-T-Stück d25",
       "koerper": [
         "T_Stueck"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT pvc",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 45.9 g, Einzelkoerper 32.2 x 51.2 x 70.3 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-t-d25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Das T-Stück teilt einen Strom d25 in zwei Richtungen oder führt zwei Ströme zusammen; alle drei Anschlüsse sind Klebemuffen.",
+      "eigenschaften": [
+        "PVC-U-Klebe-T-Stück 90 Grad, drei Muffen d25, PN16 (Richtwert) [A].",
+        "Verbindung durch Kleben (Klebemuffe, PVC-U-Kleber nach DIN EN 14814)."
+      ],
+      "norm": "EN 1452-3 (PVC-U-Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_t_d25.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "Europa bestellbar: Schwarte-Shop (DE), rund 1,86 EUR brutto je Stk, Stand 2026-11-04; Lieferung nach DE: ja; Details in data/beschaffung/leitung.json"
     }
   ]
 }

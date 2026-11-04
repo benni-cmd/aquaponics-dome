@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_rohr_d50_L1543.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt rohr d50 L1543",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "PVC-U-Druckrohr d50 (1543 mm)",
+  "kurz": "Das Rohr d50 führt das Wasser auf 1543 mm Länge zwischen zwei Bauteilen; seine Enden stecken in Klebemuffen der Fittings.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
       "id": "rohre",
       "name": "Rohre",
-      "kurz": "",
+      "kurz": "Rohrstücke aus Meterware.",
       "teile": [
         "rohr"
       ]
@@ -21,18 +21,29 @@
   "teile": [
     {
       "id": "rohr",
-      "name": "Rohr",
+      "name": "PVC-U-Druckrohr d50",
       "koerper": [
         "Rohr"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "LT pvc",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 775.2 g, Einzelkoerper 50.0 x 50.0 x 1543.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d50",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.543,
-      "geruest": true
+      "funktion": "Das Rohr d50 führt das Wasser auf 1543 mm Länge zwischen zwei Bauteilen; seine Enden stecken in Klebemuffen der Fittings.",
+      "eigenschaften": [
+        "PVC-U-Druckrohr, Außendurchmesser 50 mm, Wand 3,7 mm (PN16, Richtwert) [A]. Länge 1543 mm laut Bauteilname.",
+        "Nur Rohr: Muffen und Fittings sind eigene Bauteile.",
+        "Die Länge im Modell ist ein Zuschnittmaß; die Einkaufsmenge kommt aus der Stückliste (Stangen zu 5 m)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Druckrohrsystem, Rohre und Formstücke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_rohr_d50_L1543.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]"
     }
   ]
 }

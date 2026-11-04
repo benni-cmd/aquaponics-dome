@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_schelle_vk_d63.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt schelle vk d63",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Halbschale vorn",
+  "kurz": "Baugruppe aus 5 Teilen (Halbschale vorn, Halbschale hinten, Spannband, Schraube M6 x 16, Mutter M6). Die vordere Halbschale legt sich von vorn um das Rohr d63.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 11,
   "gruppen": [
     {
-      "id": "schlauch_und_schellen",
-      "name": "Schlauch und Schellen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "halbschale_vorn",
         "halbschale_hinten",
@@ -20,17 +20,17 @@
       ]
     },
     {
-      "id": "schrauben",
-      "name": "Schrauben",
-      "kurz": "",
+      "id": "normteile",
+      "name": "Normteile",
+      "kurz": "Schrauben und Muttern nach Norm.",
       "teile": [
         "schraube_m6x16"
       ]
     },
     {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
+      "id": "sonderteile",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
       "teile": [
         "mutter_m6"
       ]
@@ -45,12 +45,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 64.5 g, Einzelkoerper 20.0 x 34.5 x 97.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-rohrschelle-vk-vk_d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Die vordere Halbschale legt sich von vorn um das Rohr d63.",
+      "eigenschaften": [
+        "Verzinkter Stahl, Innenform passend zum Rohr [A]."
+      ],
+      "norm": "EN 10346 (Stahlband, schmelztauchveredelt) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schelle_vk_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "halbschale_hinten",
@@ -60,12 +78,22 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 144.9 g, Einzelkoerper 49.5 x 74.0 x 97.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-rohrschelle-vk-vk_d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die hintere Halbschale trägt die Schelle an der Unterlage und nimmt das Rohr auf.",
+      "eigenschaften": [
+        "Verzinkter Stahl; fest mit der Unterlage verbunden [A]."
+      ],
+      "norm": "EN 10346 (Stahlband, schmelztauchveredelt) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schelle_vk_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     },
     {
       "id": "spannband",
@@ -75,16 +103,34 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 71.0 g, Einzelkoerper 20.0 x 43.5 x 73.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-rohrschelle-vk-vk_d63",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Das Spannband hält die beiden Halbschalen zusammen und sichert das Rohr gegen Abheben.",
+      "eigenschaften": [
+        "Verzinktes Stahlband mit Schraublasche [A]."
+      ],
+      "norm": "EN 10346 (Stahlband, schmelztauchveredelt) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schelle_vk_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "schraube_m6x16",
-      "name": "Schraube M6x16",
+      "name": "Schraube M6 x 16",
       "koerper": [
         "Body1",
         "Body3",
@@ -93,12 +139,31 @@
       ],
       "menge": 4,
       "typ": "normteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 25.1 g, Einzelkoerper 10.0 x 11.5 x 20.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m6x16",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "funktion": "Vier Schrauben M6 x 16 verbinden Halbschalen und Spannband.",
+      "eigenschaften": [
+        "Sechskantschraube M6 x 16, Stahl verzinkt [A]."
+      ],
+      "norm": "ISO 4017 (Sechskantschrauben) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schelle_vk_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "halbschale_vorn"
+      }
     },
     {
       "id": "mutter_m6",
@@ -111,13 +176,30 @@
       ],
       "menge": 4,
       "typ": "sonderteil",
-      "werkstoff": "LT stahl",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 9.5 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true
+      "funktion": "Vier Muttern M6 sichern die Schrauben.",
+      "eigenschaften": [
+        "Sechskantmutter M6, Stahl verzinkt [A]."
+      ],
+      "norm": "ISO 4032 (Sechskantmuttern) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schelle_vk_d63.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 120
+      }
     }
   ]
 }

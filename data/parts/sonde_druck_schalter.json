@@ -3,16 +3,16 @@
   "datei": "designs/components/sonde_druck_schalter.sc",
   "bauteilgruppe": "Messtechnik und Elektrik",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "sonde druck schalter",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Druckschalter",
+  "kurz": "Der Druckschalter schaltet bei zu niedrigem oder zu hohem Leitungsdruck, etwa wenn ein Filter verstopft.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "messtechnik",
-      "name": "Messtechnik",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "sonde"
       ]
@@ -21,18 +21,28 @@
   "teile": [
     {
       "id": "sonde",
-      "name": "Sonde",
+      "name": "Druckschalter",
       "koerper": [
         "Sonde"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Edelstahl",
+      "werkstoff": "edelstahl_1_4301",
       "masse_mm": "Masse 349.4 g, Einzelkoerper 32.0 x 32.0 x 55.0 mm (Modell-Bounding-Box)",
       "artikel_id": "MES-druck-schalter",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Druckschalter schaltet bei zu niedrigem oder zu hohem Leitungsdruck, etwa wenn ein Filter verstopft.",
+      "eigenschaften": [
+        "Edelstahlgehäuse, Außenmaß 32 x 55 mm (Modellkörper), Gewindeanschluss [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/sonde_druck_schalter.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: Beschaffung läuft in N-STUECKLISTE Paket 2 (data/beschaffung/*.json, Regel D76)"
     }
   ]
 }

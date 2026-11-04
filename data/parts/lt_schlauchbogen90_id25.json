@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_schlauchbogen90_id25.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt schlauchbogen90 id25",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Schlauchbogen 90° ID25",
+  "kurz": "Der Schlauchbogen führt den Schlauch ID25 knickfrei um 90 Grad herum.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "schlauch_und_schellen",
-      "name": "Schlauch und Schellen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "schlauchbogen"
       ]
@@ -21,18 +21,28 @@
   "teile": [
     {
       "id": "schlauchbogen",
-      "name": "Schlauchbogen",
+      "name": "Schlauchbogen 90° ID25",
       "koerper": [
         "Schlauchbogen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT dunkelblau",
+      "werkstoff": "pvc_p_schlauch",
       "masse_mm": "Masse 72.6 g, Einzelkoerper 29.0 x 259.5 x 259.5 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-schlauchbogen90-id25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Schlauchbogen führt den Schlauch ID25 knickfrei um 90 Grad herum.",
+      "eigenschaften": [
+        "Formstück mit zwei Schlauchtüllen für ID25 [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_schlauchbogen90_id25.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     }
   ]
 }

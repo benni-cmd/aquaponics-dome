@@ -3,16 +3,16 @@
   "datei": "designs/components/lt_kabeleinfuehrung_dn100.sc",
   "bauteilgruppe": "Leitungen",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "lt kabeleinfuehrung dn100",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "5a",
+  "titel": "Kabeleinführung DN100, Körper",
+  "kurz": "Baugruppe aus 3 Teilen (Kabeleinführung DN100, Körper, Dichtung, Gegenmutter). Der Körper führt Kabel oder ein Schutzrohr DN100 durch eine Wand und sitzt mit Flansch auf der Wandseite.",
+  "hinweis": "W60 5a: Texte und Normverweise aus Fachwissen, alle als angenommen [A] markiert; Maße aus dem Modell. Bezug der Kaufteile aus data/beschaffung/leitung.json (Stand 04.11.2026) oder offen.",
   "koerperzahl": 3,
   "gruppen": [
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
       "teile": [
         "koerper",
         "dichtung",
@@ -23,18 +23,28 @@
   "teile": [
     {
       "id": "koerper",
-      "name": "Koerper",
+      "name": "Kabeleinführung DN100, Körper",
       "koerper": [
         "Koerper"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT pp",
+      "werkstoff": "pp",
       "masse_mm": "Masse 281.6 g, Einzelkoerper 88.0 x 160.0 x 160.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn100",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Körper führt Kabel oder ein Schutzrohr DN100 durch eine Wand und sitzt mit Flansch auf der Wandseite.",
+      "eigenschaften": [
+        "Kunststoffkörper PP mit Gewinde [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kabeleinfuehrung_dn100.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)"
     },
     {
       "id": "dichtung",
@@ -44,12 +54,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT epdm",
+      "werkstoff": "epdm",
       "masse_mm": "Masse 14.5 g, Einzelkoerper 3.0 x 150.0 x 150.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn100",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Dichtung dichtet den Flansch gegen die Wand ab.",
+      "eigenschaften": [
+        "EPDM-Flachdichtung [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kabeleinfuehrung_dn100.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 40
+      }
     },
     {
       "id": "gegenmutter",
@@ -59,12 +87,30 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "LT pp",
+      "werkstoff": "pp",
       "masse_mm": "Masse 28.6 g, Einzelkoerper 8.0 x 148.0 x 148.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-kabeleinfuehrung-dn100",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Die Gegenmutter zieht den Körper von der anderen Wandseite fest.",
+      "eigenschaften": [
+        "PP-Mutter mit Gewinde [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs/components/lt_kabeleinfuehrung_dn100.sc (Maße aus der Modell-Bounding-Box); Normverweis und Werkstoff aus Fachwissen [A]",
+      "bezug": "offen: kein europäisches Angebot gelesen (data/beschaffung/leitung.json, Regel D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60
+      }
     }
   ]
 }

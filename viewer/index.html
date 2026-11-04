@@ -444,6 +444,7 @@ const Lade = {
   },
   tick(name) { this.zeichen = performance.now(); if (name) this.letzte = name; ladeWarn.hidden = true; },
   chunk(n, name) { this.bytes += n; this.tick(name); this.zeige(); },
+  retry(name, v) { this.tick(name); ladeWarn.hidden = false; ladeWarn.textContent = `${name} nicht lesbar, Wiederholung ${v} von 2 ...`; },
   hinweis(text) {                                            // einmalige Meldung ohne Balken (z. B. nichts nachzuladen)
     clearTimeout(this.weg); clearInterval(this.timer); this.phase = 3; ladeEl.hidden = false; ladeEl.classList.add('fertig'); ladeBar.style.width = '100%';
     ladePhase.textContent = 'Kleinteile'; ladeText.textContent = ''; ladeFehler.innerHTML = ''; ladeWarn.hidden = false; ladeWarn.textContent = text;
@@ -473,6 +474,10 @@ async function fetchText(url, onChunk) {
   for (;;) { const { done, value } = await rd.read(); if (done) break; s += dec.decode(value, { stream: true }); onChunk(value.length); }
   return s + dec.decode();
 }
+const warte = ms => new Promise(r => setTimeout(r, ms));
+async function getJsonWdh(url) {                          // JSON mit bis zu zwei Wiederholungen (Export kann gerade eine Datei ersetzen)
+  for (let v = 0; ; v++) { try { return await getJson(url); } catch (e) { if (v >= 2) throw e; await warte(800 * (v + 1)); } }
+}
 async function ladeDateien(files) {                         // files: [{name, url, bytes, key}] -> defCache; Fehler je Datei sichtbar statt still
   const todo = [];
   files.forEach(f => { if (defCache.has(f.key)) { Lade.bytes += f.bytes; Lade.files++; } else todo.push(f); });
@@ -481,8 +486,12 @@ async function ladeDateien(files) {                         // files: [{name, ur
   await Promise.all(Array.from({ length: Math.min(6, todo.length) }, async () => {
     while (next < todo.length) {
       const f = todo[next++]; Lade.aktiv.add(f.name); Lade.tick(f.name); let n = 0;
-      try { defCache.set(f.key, await fetchText(f.url, c => { n += c; Lade.chunk(c, f.name); })); }
-      catch (e) { Lade.bytes += Math.max(0, f.bytes - n); Lade.fehlerMelden(`${f.name}: ${e.message}`); }
+      let ok = false, fehl = null;
+      for (let v = 0; v < 3 && !ok; v++) {                    // fehlgeschlagene Datei bis zu zweimal wiederholen, erst danach als Fehler zeigen
+        try { n = 0; defCache.set(f.key, await fetchText(f.url, c => { n += c; Lade.chunk(c, f.name); })); ok = true; }
+        catch (e) { fehl = e; Lade.bytes = Math.max(0, Lade.bytes - n); if (v < 2) { Lade.retry(f.name, v + 1); await warte(800 * (v + 1)); } }
+      }
+      if (!ok) { Lade.bytes += f.bytes; Lade.fehlerMelden(`${f.name}: ${fehl.message} (nach 3 Versuchen)`); }
       Lade.aktiv.delete(f.name); Lade.files++; Lade.zeige();
     }
   }));
@@ -677,7 +686,7 @@ async function load() {
   try {
     Lade.begin('Modell', 'Definition', 0, 0); Lade.letzte = 'instances.json'; Lade.zeige();
     let inst, ex;
-    try { [inst, ex] = await Promise.all([getJson('instances.json?v=' + v), getJson('extras.json?v=' + v)]); }
+    try { [inst, ex] = await Promise.all([getJsonWdh('instances.json?v=' + v), getJsonWdh('extras.json?v=' + v)]); }
     catch (e) { Lade.fehlerMelden('Modellverzeichnis nicht lesbar: ' + e.message); Lade.ende(); return; }
     extras = ex; GROUND = Number.isFinite(inst.walk_z) ? inst.walk_z : 400;   // begehbarer Boden = Sockelhoehe sock_h
     DEFS_INFO = inst.defs; MIN_DIAG_MM = inst.min_diag || 150; POT = topfzahlen(inst); topfPatch();
@@ -708,6 +717,11 @@ document.getElementById('wire').addEventListener('change', applyWire);
 document.getElementById('clip').addEventListener('input', e => { clipPlane.constant = +e.target.value; });
 document.querySelectorAll('[data-cam]').forEach(b => b.addEventListener('click', () => setCam(b.dataset.cam)));
 
+let exportHinweisAn = false;
+function exportHinweis(busy) {                             // Export laeuft: nichts laden, sondern sagen warum
+  if (busy && !loadBusy && !kleinBusy) { exportHinweisAn = true; clearTimeout(Lade.weg); clearInterval(Lade.timer); Lade.phase = 3; ladeEl.hidden = false; ladeEl.classList.remove('fertig'); ladeBar.style.width = '0%'; ladePhase.textContent = 'Export läuft'; ladeText.textContent = ''; ladeFehler.innerHTML = ''; ladeWarn.hidden = false; ladeWarn.textContent = 'Der Export läuft, das Modell wird danach automatisch neu geladen.'; }
+  else if (!busy && exportHinweisAn) { exportHinweisAn = false; if (!loadBusy) ladeEl.hidden = true; }
+}
 async function poll() {
   const st = document.getElementById('status');
   try {
@@ -716,7 +730,8 @@ async function poll() {
     st.innerHTML = `Modell gespeichert <b>${s.design_saved || '-'}</b> · Viewer <b>${s.built || '-'}</b>` +
       (s.busy ? ' · <b>exportiert ...</b>' : '') + (s.error ? '<br>Fehler: ' + s.error.replace(/</g, '&lt;') : '') +
       (extras.bodies ? `<br>${extras.bodies} Instanzen` : '');
-    if (auto && !detail.on && !(window.fpvState && window.fpvState().on) && s.version !== version && s.version > 0) { version = s.version; await load(); }
+    exportHinweis(s.busy);
+    if (auto && !s.busy && !detail.on && !(window.fpvState && window.fpvState().on) && s.version !== version && s.version > 0) { version = s.version; await load(); }
   } catch (e) { st.textContent = 'Server nicht erreichbar'; }
 }
 async function pollBoard() {

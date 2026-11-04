@@ -26,6 +26,9 @@ def do_export():
 
 def watch():
     last = None
+    try:   # Start: nur exportieren, wenn dome.sc neuer ist als der letzte Export (sonst Export ohne Anlass, W66)
+        if os.path.exists(_INST) and os.path.getmtime(_INST) >= os.path.getmtime(DESIGN): last = os.path.getmtime(DESIGN)
+    except OSError: pass
     while True:
         try:
             m = os.path.getmtime(DESIGN)

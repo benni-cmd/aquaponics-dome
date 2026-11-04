@@ -16,6 +16,10 @@ FORMAT = 'v2'    # Cache-Schluessel: v2 = Kleinteile in <stem>.klein.obj statt v
 KEEP_ALL = ('netztopf', 'salatkopf')   # Pflanzenteile sind klein, aber als Instanzen billig: alle Koerper behalten
 fw = lambda p: os.path.abspath(p).replace(chr(92), '/')
 
+def json_atomar(obj, pfad):   # Temp-Datei, dann umbenennen: der Browser sieht nie eine halb geschriebene JSON
+    with open(pfad + '.tmp', 'w', encoding='utf-8') as f: json.dump(obj, f)
+    os.replace(pfad + '.tmp', pfad)
+
 def find(o, key):
     if isinstance(o, dict):
         if key in o and isinstance(o[key], list): return o[key]
@@ -69,7 +73,7 @@ for cls, path in ins.items():
         cache[stem] = key; exported += 1
     defs[stem] = {'cls': cls, 'kb': round(os.path.getsize(out) / 1024), 'klein_kb': round(os.path.getsize(out_k) / 1024) if os.path.exists(out_k) else 0}
 if os.path.exists(tmp): os.remove(tmp)
-json.dump(cache, open(cache_p, 'w'))
+json_atomar(cache, cache_p)
 
 IDENT = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]
 insts = []
@@ -82,7 +86,7 @@ for f in os.listdir(HERE):   # Altlast: das fruehere Gesamt-OBJ
     if f.startswith('model') and f.endswith('.obj'): os.remove(os.path.join(HERE, f))
 try: walk_z = json.load(open(os.path.join(ROOT, 'data', 'params.json'), encoding='utf-8'))['sock_h']['value']   # begehbarer Boden fuer den FPV-Modus
 except Exception: walk_z = 400
-json.dump({'built': built, 'min_diag': MIN_DIAG, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, open(os.path.join(HERE, 'instances.json'), 'w'))
-json.dump({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, open(os.path.join(HERE, 'extras.json'), 'w'))
+json_atomar({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, os.path.join(HERE, 'extras.json'))
+json_atomar({'built': built, 'min_diag': MIN_DIAG, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, os.path.join(HERE, 'instances.json'))   # zuletzt: erst jetzt zeigt das Modellverzeichnis auf den neuen Stand
 size = sum(d['kb'] for d in defs.values()) / 1024; size_k = sum(d['klein_kb'] for d in defs.values()) / 1024
 print(f'export {time.time()-t0:.0f}s defs={len(defs)} (neu {exported}) = {size:.1f} MB + Kleinteile {size_k:.1f} MB, instanzen={len(insts)}')

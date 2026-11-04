@@ -26,6 +26,10 @@
 - Messung im Browser (Testserver ohne Auto-Export): Laden + Aufbauen ohne Kleinteile 12,7 s (vorher 19 s mit den alten Dateien); Kleinteile nachladen 78 Dateien, 198,9 MB, 8 s (Server lokal); `tuer_komplett` 12 + 15 = 27 sichtbare Koerper mit Haken. Screenshot beim Nachladen: "Kleinteile, Schritt 1 von 3: Laden, Datei 5 von 78, 23,0 MB von 198,9 MB, aktuell knoten_6_n01.klein.obj".
 - `viewer/defs/` und `viewer/instances.json` sind in `.gitignore`: sie liegen nur lokal. Wer `serve.py` startet, bekommt den Export beim naechsten Speichern von `dome.sc` selbst.
 
+04.11.2026 — Nachbesserung "Failed to fetch" (Seite lud waehrend eines laufenden Exports): `export_model.py` schreibt `instances.json`, `extras.json` und `.cache.json` jetzt per Temp-Datei und `os.replace`, `instances.json` zuletzt (OBJ-Dateien waren schon so); `serve.py` exportiert beim Start nur, wenn `dome.sc` neuer ist als `viewer/instances.json`; der Viewer laedt nicht, solange `/api/state` `busy` meldet, und zeigt "Export laeuft, das Modell wird danach automatisch neu geladen"; fehlgeschlagene Dateien werden bis zu zweimal wiederholt (0,8 s und 1,6 s Pause), `instances.json` und `extras.json` ebenso, erst danach Fehlerzeile "nach 3 Versuchen". Grenze: Windows kann eine Datei, die der Server gerade liest, nicht atomar ersetzen; die Wiederholung faengt diesen Rest ab.
+- Gemessen am Muster (Scratchpad-Kopie, Port 4469): Start mit aelterer `dome.sc`: `busy` false, kein Export; `dome.sc` anfassen: Export laeuft (`busy` true), Seite zeigt den Hinweis (Screenshot), nach dem Export laedt sie selbst, 0 Fehlerzeilen; Datei `tuer_komplett.klein.obj` 3 s entfernt: Meldungen "Wiederholung 1 von 2" und "2 von 2", dritter Versuch gelingt, `tuer_komplett` 12 + 15 Koerper, 0 Fehlerzeilen.
+- Hinweis: Ein laufender `serve.py` (Port 4410) hat den alten Code im Speicher; neu starten, damit der Start ohne Export und der Export mit atomaren JSON-Dateien gelten.
+
 ## Definition of Done
 
 Geprueft gegen: Screenshots Balken/Menue/Tuer mit Klinke; `du -sh viewer/defs` vorher/nachher; Ladezeit ohne/mit Kleinteilen; `export_model.py` Exit 0 am Muster; Koerperzahl `tuer_komplett` 27

@@ -3,16 +3,8 @@
  "stand": "2026-11-04",
  "paket": "2D",
  "bearbeitung": {
-  "stand": "alle 20 Artikel haben mindestens ein Angebot; nur 11 mit selbst geoeffneter Seite (Q), Rest Suchtreffer",
-  "nachpruefen": [
-   "Suchtreffer oeffnen, Lieferung nach DE im Warenkorb",
-   "Schaltschrank 500x800x1200 exakt nicht gefunden",
-   "EC K 0,1 gegen K1,0",
-   "zweite EU-Quelle fuer ph, ec, do-ind, o2",
-   "flow-12 Atlas gegen YF-S201 klaeren",
-   "flow-gross passende Groesse (DN32) europaeisch finden",
-   "MES-temperatur/o2: Sondentyp der Station festlegen"
-  ]
+  "stand": "N-PREIS-PRUEF 1D 05.11.2026",
+  "notiz": "docs/session-notes/n-preis-pruef-mess.md"
  },
  "artikel": {
   "MES-ph": {
@@ -21,27 +13,17 @@
     {
      "preis_eur": 94.59,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "RobotShop EU (Atlas ENV-40-pH, SKU RB-Atl-39)",
      "land": "EU (Lager nicht genannt)",
      "url": "https://eu.robotshop.com/de/products/atlas-scientific-ph-probe",
      "lieferung_de": "unbekannt",
-     "konfidenz": "Q",
-     "bemerkung": "Auflage A3 (04.11.): Lagerland nicht ermittelbar: Seite und Versandseite (403) nennen es nicht; RobotShop-Pressemitteilung 2017 nennt nur einen DE-Shop und ein europaeisches Logistikzentrum. Seite gelesen; Status Nachbestellung (backorder); Versandziele nicht genannt"
-    },
-    {
-     "preis_eur": null,
-     "preis_usd": 99.99,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Atlas Scientific (Hersteller)",
-     "land": "US",
-     "url": "https://atlas-scientific.com/probes/ph-probe/",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q",
-     "bemerkung": "Seite gelesen; US-Hersteller, nicht europaeisch (D76 nur als Preisreferenz); Zoll/Versand offen"
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "von Hand NICHT lesbar 05.11.: eu.robotshop.com zeigt Bot-Pruefung (403); Preis 94,59 EUR und \"nur 1 Stk\" nur aus Suchtreffer. DigiKey ENV-40-PH (digikey.nl/.de) gelesen: \"no longer available\""
     }
-   ]
+   ],
+   "luecke": "OFFEN (Quelle): zweite EU-Quelle fehlt (DigiKey nicht mehr lieferbar, Atlas direkt nur US); RobotShop-Seite von Hand nicht lesbar",
+   "pruefung": "2026-11-05"
   },
   "MES-ec": {
    "zweites_angebot": "fehlt",
@@ -49,46 +31,37 @@
     {
      "preis_eur": 195.47,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "DigiKey FI (Atlas ENV-40-EC-K1.0)",
      "land": "FI",
      "url": "https://www.digikey.fi/en/products/detail/atlas-scientific/ENV-40-EC-K1-0/16002997",
      "lieferung_de": "unbekannt",
      "konfidenz": "Q",
-     "bemerkung": "Seite (DE-Schwesterseite) gelesen: 164,26 EUR netto = 195,47 brutto; Lagerbestand 0, Lieferzeit Hersteller 3 Wochen; ACHTUNG Zellkonstante K1.0, R39 plant K 0,1 (Beschreibung der Seite nennt beides) — Pruefer klaeren"
+     "bemerkung": "von Hand gelesen 05.11. (digikey.fi): 164,26 EUR netto, 195,47 EUR mit 19 % (DE), Lagerbestand 0, Lieferzeit Hersteller 3 Wochen. WIDERSPRUCH auf der Seite: Beschreibung \"K 0.1\", Artikelnummer ENV-40-EC-K1.0 und Datenblatt \"Probe K 1.0\". Atlas direkt: K 0.1 = ENV-40-EC-K0.1, 177,99 USD (nur US)"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Ben): Zellkonstante. R39 plant K 0,1, in EU lieferbar ist nur ENV-40-EC-K1.0 (DigiKey, Bestand 0); K 0,1 nur direkt bei Atlas (USD). Zweite EU-Quelle fehlt",
+   "pruefung": "2026-11-05"
   },
   "MES-do-ind": {
    "zweites_angebot": "fehlt (kein EUR-Haendler fuer ENV-50-DO gefunden)",
-   "angebote": [
-    {
-     "preis_eur": null,
-     "preis_usd": 329.99,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Atlas Scientific (Hersteller)",
-     "land": "US",
-     "url": "https://atlas-scientific.com/probes/industrial-dissolved-oxygen-probe/",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "nur Suchtreffer (R39 las 349,99 USD); US, nicht europaeisch"
-    }
-   ]
+   "angebote": [],
+   "luecke": "OFFEN (Quelle): kein EUR-Haendler fuer Atlas ENV-50-DO in Europa gefunden (nur Atlas direkt, US, ca. 330-350 USD; Zoll/Versand offen). Seite hatte kein Link-Urteil, in dieser Sitzung nicht von Hand gelesen",
+   "pruefung": "2026-11-05"
   },
   "MES-do-mini": {
-   "zweites_angebot": "Kandidat: RobotShop UK (UK = Europa OFFEN), nicht geoeffnet",
+   "zweites_angebot": "fehlt: RobotShop UK hinter Bot-Pruefung, nicht lesbar; UK = Europa OFFEN (D76)",
    "angebote": [
     {
      "preis_eur": 285.72,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "DigiKey NL (Atlas ENV-20-DOX)",
      "land": "NL",
      "url": "https://www.digikey.nl/en/products/detail/atlas-scientific/ENV-20-DOX/16003119",
      "lieferung_de": "unbekannt",
      "konfidenz": "Q",
-     "bemerkung": "Seite gelesen: 236,13 netto = 285,72 brutto, 11 auf Lager; Suchtreffer anderer DigiKey-Laender nannten ca. 200 EUR netto (abweichend, nicht bestaetigt)"
+     "bemerkung": "von Hand gelesen 05.11.: ENV-20-DOX, Atlas Mini Lab Grade DO, 450 mm, Status Active, 11 auf Lager, 236,13 EUR netto = 285,72 EUR mit 21 % MwSt. (NL), Lieferzeit Hersteller 3 Wochen"
     },
     {
      "preis_eur": null,
@@ -101,20 +74,21 @@
      "konfidenz": "Q-Treffer",
      "bemerkung": "Kandidat, Preis nicht gelesen; UK-Angebot"
     }
-   ]
+   ],
+   "pruefung": "2026-11-05"
   },
   "MES-temp-ds": {
    "angebote": [
     {
      "preis_eur": 4.07,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Domoticx (DS18B20, Kabel 1-2 m, SKU SEN-4003-DS18M2)",
      "land": "NL",
      "url": "https://domoticx.net/webshop/temperatuur-sensor-digitaal-1-wire-dallas-waterdicht-ds18b20-2m-kabel/",
      "lieferung_de": "unbekannt",
      "konfidenz": "Q",
-     "bemerkung": "Seite gelesen, 43 auf Lager; Kabellaenge widerspruechlich (Titel 2 m, Text 100 cm)"
+     "bemerkung": "von Hand gelesen 05.11.: 4,07 EUR inkl. BTW, 43 auf Lager, SKU SEN-4003-DS18M2, DS18B20 waterdicht, RVS; Kabel widerspruechlich (Titel 2 m, Text 100 cm)"
     },
     {
      "preis_eur": 7.59,
@@ -127,59 +101,55 @@
      "konfidenz": "Q",
      "bemerkung": "Seite gelesen; Nachbestellung (backorder)"
     }
-   ]
+   ],
+   "zweites_angebot": "RobotShop EU gesperrt (Bot-Pruefung), nicht lesbar; Botland/Robomaterial nur Suchtreffer",
+   "pruefung": "2026-11-05"
   },
   "MES-level-float": {
    "angebote": [
     {
      "preis_eur": 44.9,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "aquariumcomputer.com (GHL Niveau-Sensor Schwimmer v2, PL-1889)",
      "land": "DE",
      "url": "https://www.aquariumcomputer.com/de/?p=87440",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Seite gelesen, sofort lieferbar, Versand extra; 3 m Kabel, Mini-DIN (fuer Aquariensteuerung, vertikal), Pflicht-Pegel kein Industrietyp"
-    },
-    {
-     "preis_eur": 4.01,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "eBay.de Verkaeufer (PP-Schwimmerschalter 12/24 V)",
-     "land": "CN (ueber eBay.de)",
-     "url": "https://www.ebay.de/itm/336049204033",
-     "lieferung_de": "ja",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "nur Suchtreffer; Direktimport aus China, nicht europaeisch (D76: nur Preisuntergrenze); Qualitaet fuer Pflicht-Messstelle fraglich"
+     "bemerkung": "von Hand gelesen 05.11.: GHL PL-1889, 44,90 EUR inkl. 19 % MwSt. zzgl. Versand, sofort lieferbar, Schwimmerschalter, 3 m Kabel, Mini-DIN/PS2-Stecker, nur vertikale Montage; fuer ProfiLux-Steuerung, Anschluss an eigenen Messknoten OFFEN"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Quelle): zweite EU-Quelle fehlt (eBay-China-Angebot entfernt, nicht europaeisch); Schnittstelle Mini-DIN zum Messknoten klaeren",
+   "pruefung": "2026-11-05"
   },
   "MES-leck": {
    "angebote": [
     {
-     "preis_eur": 7.09,
+     "preis_eur": 34.9,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "eBay.de (Wassermelder Pad-Typ)",
-     "land": "unbekannt",
-     "url": "https://www.ebay.de/p/19070007052",
-     "lieferung_de": "ja",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Spanne 6-14 EUR laut Suchtreffern; Seil-Sensor nicht belegt"
+     "stand": "2026-11-05",
+     "haendler": "Shelly Europe (Shelly Flood Gen4 mit Leck-Sensorkabel)",
+     "land": "EU (Versand aus der EU laut Seite)",
+     "url": "https://www.shelly.com/de/products/leak-sensor-cable",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q",
+     "bemerkung": "von Hand gelesen 05.11.: Flood Gen4 34,90 EUR inkl. MwSt., Sensorkabel bis 150 m verlaengerbar (Zusatzkabel 7,90 EUR), WLAN/Bluetooth/Zigbee/Matter; Anbindung an den Messknoten (Schnittstelle, kein potentialfreier Kontakt belegt) OFFEN"
     },
     {
-     "preis_eur": 49.95,
+     "preis_eur": 35.28,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Homematic IP Wassersensor (ueber eBay.de)",
-     "land": "DE",
-     "url": "https://www.ebay.de/itm/156958983111",
-     "lieferung_de": "ja",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Markenvergleich; bei Bedarf potentialfreier Kontakt noetig, Typ klaeren"
+     "stand": "2026-11-05",
+     "haendler": "Domadoo (Shelly Flood Gen4, REF SHELLYFLOODGEN4)",
+     "land": "FR",
+     "url": "https://www.domadoo.fr/de/smart-home-produkte/8387-shelly-wassersensor-wifi-bluetooth-zigbee-matter-gen4-flood-4-3800238071714.html?domid=8",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q",
+     "bemerkung": "von Hand gelesen 05.11.: 35,28 EUR brutto, auf Lager (mehr als 20), verlaengerbares Sensorkabel"
     }
-   ]
+   ],
+   "luecke": "ersetzt: eBay SEBSON GS153 ist ein Einzelwarnmelder ohne Signalausgang, passt nicht. OFFEN (Quelle): Schnittstelle Shelly zum Messknoten (R39) klaeren",
+   "zweites_angebot": "vorhanden (Shelly, Domadoo)",
+   "pruefung": "2026-11-05"
   },
   "MES-temperatur": {
    "zweites_angebot": "Annahme",
@@ -187,15 +157,16 @@
     {
      "preis_eur": 4.07,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Annahme: wie MES-temp-ds (DS18B20 Domoticx NL)",
      "land": "NL",
      "url": "https://domoticx.net/webshop/temperatuur-sensor-digitaal-1-wire-dallas-waterdicht-ds18b20-2m-kabel/",
      "lieferung_de": "unbekannt",
      "konfidenz": "A",
-     "bemerkung": "Stationssonde Typ offen (R39: in EC/DO eingebaut oder DS18B20); A"
+     "bemerkung": "Annahme wie MES-temp-ds; Seite von Hand gelesen 05.11. (4,07 EUR, 43 auf Lager); Sondentyp der Station offen"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Ben): Sondentyp Stationsmessplatz (DS18B20 oder in EC/DO eingebaut)"
   },
   "MES-o2": {
    "zweites_angebot": "Annahme",
@@ -211,7 +182,8 @@
      "konfidenz": "A",
      "bemerkung": "Stationssonde Typ offen; A"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Ben): Sondentyp Stationsmessplatz; Annahme wie MES-do-mini (DigiKey NL ENV-20-DOX gelesen 05.11.)"
   },
   "MES-co2-scd41": {
    "angebote": [
@@ -224,7 +196,7 @@
      "url": "https://www.soselectronic.com/en-us/products/sensirion/scd41-d-r2-347342",
      "lieferung_de": "unbekannt",
      "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer: 25,90 netto, brutto mit 19 % gerechnet (E); 23 auf Lager"
+     "bemerkung": "Suchtreffer: 25,90 netto, brutto mit 19 % gerechnet (E); 23 auf Lager | Linkpruefung 05.11.: Seite erreichbar, Titel SCD41-D-R2 Sensirion passt (VERDACHT-Meldung \"39\" ist Filterartefakt); Preis nicht von Hand gelesen"
     },
     {
      "preis_eur": null,
@@ -237,7 +209,8 @@
      "konfidenz": "Q-Treffer",
      "bemerkung": "Suchtreffer, Preis nicht gelesen; Lieferzeit Hersteller 10 Wochen, 190 lagernd"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Quelle): zweites Angebot (DigiKey DE) nicht geoeffnet"
   },
   "MES-druck-schalter": {
    "angebote": [
@@ -263,7 +236,8 @@
      "konfidenz": "Q-Treffer",
      "bemerkung": "Suchtreffer; Bereich/Gewinde nicht bestaetigt, 230-V-Pumpenschalter, fuer Signalzweck pruefen"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Quelle): beide Angebote (eBay, Kaufland) 403, in dieser Sitzung nicht von Hand gelesen; Gewinde und Bereich unbestaetigt"
   },
   "MES-flow-12": {
    "angebote": [
@@ -289,60 +263,19 @@
      "konfidenz": "Q-Treffer",
      "bemerkung": "Suchtreffer: 7,75 netto, brutto mit 19 % gerechnet (E)"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Ben): YF-S201 (Hobby-Sensor) statt Atlas 1/2 Zoll, Genauigkeit und Dauerbetrieb im Fischwasser nicht belegt; Domoticx-Seite erreichbar (VERDACHT wegen Ersatz-Bemerkung), nicht von Hand gelesen"
   },
   "MES-flow-gross": {
    "zweites_angebot": "nur Direktimport; Atlas 3/4 Zoll nicht lieferbar und zu klein (bis 114 l/min)",
-   "angebote": [
-    {
-     "preis_eur": 41.95,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "ManoMano DE (Hall-Durchflusssensor G3/4, 1-30 l/min)",
-     "land": "DE",
-     "url": "https://www.manomano.de/p/g3-4-1-30-l-min-hall-effekt-durchflusssensor-fur-wasser-zur-messung-und-steuerung-des-durchflusses-95793126",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer; Groesse passt NICHT (110 l/min noetig)"
-    },
-    {
-     "preis_eur": 47.66,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "eBay.de (DN32 Edelstahl Hall-Turbine, 1-120 l/min)",
-     "land": "CN (ueber eBay.de)",
-     "url": "https://www.ebay.de/itm/317435429058",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer; Direktimport China, nicht europaeisch; Preis aus USD umgerechnet (E)"
-    }
-   ]
+   "angebote": [],
+   "luecke": "OFFEN (Quelle): ManoMano G3/4 (1-30 l/min) deckt 110 l/min nicht ab, eBay-Angebot ist Direktimport CN (D76); beide entfernt. Kein EU-Angebot DN32 bis 120 l/min gefunden",
+   "pruefung": "2026-11-05"
   },
   "MES-level-druck": {
-   "angebote": [
-    {
-     "preis_eur": 39.99,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "eBay.de (Tauchdrucksonde Edelstahl 304, 4-20 mA, ab 0-1 m)",
-     "land": "unbekannt",
-     "url": "https://www.ebay.de/itm/388519357627",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer; Qualitaet/Zertifikat offen"
-    },
-    {
-     "preis_eur": null,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "RS Online AT (RS PRO Niveaufuehler 0-1 mH2O, 4-20 mA, 3 m Kabel)",
-     "land": "AT",
-     "url": "https://at.rs-online.com/web/p/fullstandssensoren/2726968",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer, Preis nicht gelesen"
-    }
-   ]
+   "angebote": [],
+   "luecke": "OFFEN (Quelle): eBay-Angebot beendet (BEENDET, Sonde 0-2 m, nicht 0-1 m). Kein EU-Angebot 0-1 mH2O, 4-20 mA mit Preis gelesen; Kandidat RS AT 2726968 hinter Bot-Pruefung, Hersteller Barksdale/Tecson/Aplisens nur Datenblatt",
+   "pruefung": "2026-11-05"
   },
   "MES-par": {
    "angebote": [
@@ -356,19 +289,9 @@
      "lieferung_de": "unbekannt",
      "konfidenz": "Q-Treffer",
      "bemerkung": "Suchtreffer; SQ-520 statt SQ-500 (USB statt analog); Preis inkl. MwSt. zzgl. Versand"
-    },
-    {
-     "preis_eur": 641.55,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "gotogarden.com (Apogee SQ-520)",
-     "land": "CZ",
-     "url": "https://gotogarden.com/products/apogee-instruments-sq-520-sonda-pro-mereni-parppfd",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer; EU-Lieferung 3 Tage laut Treffer"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Ben): Apogee SQ-520 (USB) statt SQ-500 (analog); zweite Quelle gotogarden entfernt (Link HTTP 402)"
   },
   "MES-strom-ct": {
    "zweites_angebot": "vorhanden (zwei Treffer), beide nicht geoeffnet",
@@ -395,7 +318,8 @@
      "konfidenz": "Q-Treffer",
      "bemerkung": "Suchtreffer; 7,57 netto, Preisdarstellung unklar"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Quelle): Tinytronics 403, nicht von Hand gelesen; CDR-Seite erreichbar (Titel SCT-013-030 passt), Preis unklar"
   },
   "ELE-hutschiene-35": {
    "zweites_angebot": "vorhanden, nicht geoeffnet",
@@ -422,33 +346,40 @@
      "konfidenz": "Q-Treffer",
      "bemerkung": "Suchtreffer; hoeheres Profil 15 mm"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Quelle): zweites Angebot RS 403, nicht gelesen; elektromax24-Link liefert laut Linkpruefung 05.11. HTTP 200, Titel OBO 2069 2M passt"
   },
   "ELE-kabelverschraubung-pg": {
    "angebote": [
     {
-     "preis_eur": 1.14,
+     "preis_eur": 0.485,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "RS Online DE (HellermannTyton NGM M20, Nylon, 10er Beutel, mit Mutter)",
-     "land": "DE",
-     "url": "https://de.rs-online.com/web/p/kabelverschraubungen/8188114",
+     "stand": "2026-11-05",
+     "haendler": "el12 (HAUPA 250086, M20 IP68 schwarz, 10er-Pack)",
+     "land": "PL",
+     "url": "https://el12.com/en/switchboards-and-enclosures/gland-m-20-metric-ip-68-black-10-pcs-250086,i207068",
      "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer: 11,40 brutto je 10 Stk (E: 1,14/Stk), Einheit Stk"
+     "konfidenz": "Q",
+     "bemerkung": "von Hand gelesen 05.11.: 4,85 EUR brutto je 10er-Pack, Kabel 10-14 mm, Gewinde M20, IP68; Kontermutter nicht genannt",
+     "preis_pack_eur": 4.85,
+     "pack": 10
     },
     {
-     "preis_eur": 4.41,
+     "preis_eur": 1.4,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "RS Online DE (Lapp SKINTOP M20 grau, 7-13 mm, IP68)",
-     "land": "DE",
-     "url": "https://de.rs-online.com/web/p/products/104010",
+     "stand": "2026-11-05",
+     "haendler": "Tameson (OBO 2022887, M20 PA IP68 schwarz, 10er-Pack)",
+     "land": "NL",
+     "url": "https://tameson.com/products/m20-ip68-metric-cable-gland-with-strain-relief-black-2022887-10-pieces",
      "lieferung_de": "unbekannt",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Suchtreffer: 44,10 brutto je 10 Stk (E), Kontermutter extra"
+     "konfidenz": "Q",
+     "bemerkung": "von Hand gelesen 05.11.: 16,19 USD netto je 10er-Pack (Seite zeigte USD; EUR gerechnet, E), Polyamid, IP68, Kontermutter NICHT enthalten, nur Firmenkunden",
+     "preis_pack_usd": 16.19,
+     "pack": 10
     }
-   ]
+   ],
+   "zweites_angebot": "vorhanden (el12, Tameson)",
+   "pruefung": "2026-11-05"
   },
   "ELE-kabelkanal-30x60": {
    "angebote": [
@@ -474,34 +405,36 @@
      "konfidenz": "Q-Treffer",
      "bemerkung": "Suchtreffer; Waehrung/Land unklar"
     }
-   ]
+   ],
+   "luecke": "bestaetigt per Linkpruefung 05.11. (beide Seiten HTTP 200, Titel Hager 30x60); Preise nicht von Hand gelesen, el12 Waehrung unklar"
   },
   "ELE-schaltschrank-500x800x1200": {
    "zweites_angebot": "fehlt: exakte Groesse 500x800x1200 nicht gefunden; Treffer sind Nachbargroessen",
    "angebote": [
     {
-     "preis_eur": 433.03,
+     "preis_eur": 469.97,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "elektromax24 (Rittal AX Kompaktschrank 800x1200x400, 1-tuerig)",
+     "stand": "2026-11-05",
+     "haendler": "Galaxus.de (Rittal AX 1281.000, 800x1200x400, 1-tuerig, RAL 7035)",
      "land": "DE",
-     "url": "https://www.elektromax24.de/rittal-kompakt-schaltschrank-1tuerig-800x1200x400mm",
+     "url": "https://www.galaxus.de/en/s4/product/rittal-ax-1281000-switch-cabinet-800-x-1200-x-400-sheet-steel-light-grey-ral-7035-1pce-electrical-en-23688527",
      "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Link liefert beim Abruf 404, Artikel evtl. nicht mehr gelistet. Suchtreffer; Nachbargroesse (T 400 statt 500); als Preisreferenz, Typ klaeren"
-    },
-    {
-     "preis_eur": 188.91,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Proshop DE (Eldon Wandschrank 800x400x300, IP66)",
-     "land": "DE",
-     "url": "https://www.proshop.de/Schaltkaesten-und-Schraenke/ELDON-Wall-mounted-800x400x300/2757478",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "Suchtreffer; deutlich kleiner, nur Untergrenze"
+     "konfidenz": "Q",
+     "bemerkung": "von Hand gelesen 05.11.: 469,97 EUR inkl. MwSt., nur 1 Stk beim Lieferanten, Lieferung ab 06.11., kostenloser Versand. Nachbargroesse (T 400 statt 500), Preisreferenz"
     }
-   ]
+   ],
+   "luecke": "OFFEN (Ben): Mass. Exakt 500x800x1200 nicht gefunden; Rittal AX 800x1200x400 (469,97 EUR) als Vorschlag, zweite Quelle fehlt. elektromax24-Link (404) und Eldon 800x400x300 (zu klein) entfernt",
+   "pruefung": "2026-11-05"
+  },
+  "BLE-schrankboden-3x500x800": {
+   "angebote": [],
+   "luecke": "OFFEN (Quelle): Eigenbau-Zuschnitt (Stahlblech 3 mm, Zuschnitt 800x500 (Schrankboden)), nicht platziert, kein Preis; Zuschnitt-Shop in Gruppe Stahl, hier nicht gesucht",
+   "pruefung": "2026-11-05"
+  },
+  "SON-schrankwand-500x800": {
+   "angebote": [],
+   "luecke": "OFFEN (Quelle): Eigenbau-Zuschnitt (Schrankwand 500x800 (Eigenbau)), nicht platziert, kein Preis; Zuschnitt-Shop in Gruppe Stahl, hier nicht gesucht",
+   "pruefung": "2026-11-05"
   }
  }
 }

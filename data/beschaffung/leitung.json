@@ -1,6 +1,6 @@
 {
  "_hinweis": "N-STUECKLISTE 2B Wasserleitung, Stand 2026-11-04. Preise brutto je Bezugseinheit; Bevo-Preise netto gelesen x1,19. UK = Europa OFFEN (kein UK-Angebot enthalten). Kein Kauf. Katalogstand 39e6323.",
- "stufe": 5,
+ "stufe": 6,
  "artikel": [
   {
    "id": "ROH-pvcu-d63",
@@ -364,9 +364,32 @@
    "bezeichnung": "PVC-U-Verschraubung (Rohrverbinder)",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OK (2 Quellen)",
+   "angebote": [
+    {
+     "preis_eur": 13.2,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-rohrverschraubung-50-mm-2-1-4",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Art.-Nr. 75036"
+    },
+    {
+     "preis_eur": 6.99,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "voelkner (Marktplatz-Anbieter HAJUS AG)",
+     "land": "DE/CH (Anbieterland nicht gelesen)",
+     "url": "https://www.voelkner.de/products/12814009/PVC-U-Verschraubung-Klebemuffe-x-Klebemuffe-50-mm.html",
+     "lieferung_de": "unbekannt (Seite nennt Lieferzeit 2-3 Tage, Zielland nicht)",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. MwSt gelesen, zzgl. Versand; Cepex, Art.-Nr. R09571722"
+    }
+   ],
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "ROH-pvcu-d50",
@@ -847,9 +870,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 5.99,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "voelkner (Marktplatz-Anbieter HAJUS AG)",
+     "land": "DE/CH (Anbieterland nicht gelesen)",
+     "url": "https://www.voelkner.de/products/12813981/PVC-U-90-Bogen-20-mm-PN16.html",
+     "lieferung_de": "unbekannt (Seite nennt Lieferzeit 2-3 Tage, Zielland nicht)",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. MwSt gelesen, zzgl. Versand; Cepex, Art.-Nr. R09968722; Markenteil, teurer als Schwarte"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-bogen90-d25",
@@ -1580,9 +1614,22 @@
    "bezeichnung": "Leerrohr DN100 (Kabelschutz, Meterware)",
    "einheit": "m",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 3.85,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/kg-rohr-dn-110-1000-mm/267298/",
+     "lieferung_de": "ja (Online-Lieferung ca. 4 Werktage, Sperrgut-Kosten nicht gelesen)",
+     "konfidenz": "Q",
+     "bemerkung": "NAEHERUNG: KG-Rohr DN110 (orange, SN4, 1 m) als Kabelschutz-Leerrohr; ab 86 Stk 3,35 EUR; Hornbach LU 2-m-Stange 6,35 EUR = 3,18 EUR/m (Q-Treffer)"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ROH-leerrohr-dn50",

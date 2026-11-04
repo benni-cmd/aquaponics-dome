@@ -1,5 +1,5 @@
 {
- "stand": "Stand 04.11.2026 Pause (Zwischenstand): Beete im Dom neu und geprueft (Runde 68 PASS), Luft am Pool gebaut (Runde 69, check_latte-Neulauf laeuft), Einkaufsliste + Seite + Teiledaten aller 308 Komponenten, Viewer mit Ladeanzeige, Kleinteile-Schalter und Ansicht Visuell/Technisch, R54 Venturi nein. Offen: Strebe Vierkant + Werkstoffe (N-MODELL-KOMPLETT), 5b Preis/Link, Tabelle W65, Entscheidungen E13, E20, E22.",
+ "stand": "Stand 04.11.2026 Pause (Zwischenstand): Beete im Dom neu und geprueft (Runde 68 PASS), Luft am Pool gebaut (Runde 69, check_latte-Neulauf laeuft), Einkaufsliste + Seite + Teiledaten aller 308 Komponenten, Viewer mit Ladeanzeige, Kleinteile-Schalter und Ansicht Visuell/Technisch, R54 Venturi nein. Offen: Strebe Vierkant + Werkstoffe (N-MODELL-KOMPLETT), 5b Preis/Link, Tabelle W65, Entscheidungen E13, E20, E22. Neu 05.11.: Einzelteilpruefung der Preisliste (N-PREIS-PRUEF, W69).",
  "schritte": [
   {
    "id": "W33",
@@ -1182,6 +1182,15 @@
    "reihenfolge": 3.72,
    "wer": "Ben",
    "notiz": "Nachtentscheidung des Orchestrators (D79), Ben bestaetigt. Ebenso zu bestaetigen: D78, Preise brutto, keine Pflanzgut/Fisch/Beton/Aushub in der Einkaufsliste, Strebe-Wand 3 mm bis N-STATIK, tuer.sc behalten."
+  },
+  {
+   "id": "N-PREIS-PRUEF",
+   "titel": "Einzelteilpruefung der Preisliste: jeder Link erreichbar, jeder Artikel passt zum Bauteil (W69)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.94,
+   "wer": "Planer, Fachrecherche (parallel je Gruppe), Werkstatt, Pruefer",
+   "notiz": "Ben 05.11.: Einkaufsliste enthaelt 404-Links und unpassende Artikel, Beleg: NFT-Rinne PRF-pvcu-rinne-130x100 ist mit einem Kabelkanal 110x60 belegt (data/beschaffung/stahl.json Zeile 1104-1118). Plan: (1) Skript prueft alle Links (HTTP-Status, Weiterleitung auf Startseite oder Suche = Fehler), nichts kaufen, nirgends anmelden; (2) je Zeile Abgleich Artikel gegen Bauteil: Funktion, Mass, Einheit, Werkstoff, Lebensmitteleignung wo Wasser/Pflanzen beruehrt, Europa-Bezug (D76); (3) falsche Zeilen ersetzen mit zwei unabhaengigen Quellen, sonst OFFEN mit Grund; (4) Einkaufsliste neu erzeugen, check_bom Exit 0; (5) fremder Pruefer mit eigenen Stichproben. Vor W65-TABELLE, weil die Tabelle auf einer sauberen Liste aufsetzt."
   }
  ]
 }

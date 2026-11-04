@@ -125,3 +125,8 @@
 | W67 | ERLEDIGT: R54, Venturi kein Ersatz, nur Ergaenzung am Beckenzulauf | 4799431 |
 | W68 | ERLEDIGT: Ansicht Visuell / Technisch; offen Leitungsart statt Rohrgroesse | a040967 |
 | Luft im Dom (Nacht, W60-Nachtrag) | TEIL A GEBAUT Runde 69, Pruefung laeuft; Teil B wartet auf E13 | ad3e978 |
+
+## Nachtrag 05.11.2026
+| Nr | Wunsch | Quelle | Status | Wo |
+|---|---|---|---|---|
+| W69 | Einzelteilpruefung der Preisliste in die Roadmap: heute stehen 404-Links und unsinnige Artikel drin, z. B. Kabelkanaele statt NFT-Rohre (Beleg: NFT-Rinne mit Kabelkanal 110x60 belegt, `data/beschaffung/stahl.json` Zeile 1104) | Ben 05.11.2026 | GEPLANT: Roadmap N-PREIS-PRUEF, vor der Ausfuell-Tabelle W65 | N-PREIS-PRUEF, W59, W65 |

@@ -1,0 +1,293 @@
+{
+ "_kopf": {
+  "paket": "N-STUECKLISTE 2A Stahl",
+  "stand": "2026-11-04",
+  "preise": "brutto (inkl. MwSt.)",
+  "regel": "D76 Europa; UK offen (Kennzeichen status_ben OFFEN (Ben)); Konfidenz Q gelesen | Q-Treffer | E gerechnet | A angenommen",
+  "quelle_artikel": "data/katalog.json Commit 39e6323 (Typen PRF WNK BLE SRB)"
+ },
+ "artikel": {
+  "PRF-st-rr40x40x3": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 12.65,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-40x40x3mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    },
+    {
+     "preis_eur": 15.05,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahlshop.de (Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/verz-vierkantrohr-40-x-40-x-3-0-detail",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "gerechnet: 3.42 kg/m x 4,40 EUR/kg brutto (Staffel 15-30 kg Warenkorb, Seite gelesen); Stange 6 m; Schnittenden unverzinkt; Versand extra, Versand nach DE im Warenkorb. Theorie-Gewicht mit 2 % Eckenabzug."
+    },
+    {
+     "preis_eur": 78.9,
+     "bezug_einheit": "Stange",
+     "stand": "2026-11-04",
+     "haendler": "metallparadies.de",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/vierkantrohr-stahl-40x40x3-0-mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Seite geoeffnet, schema.org-Spanne 0 bis 78,90 EUR; hoechster Wert vermutlich 6000 mm (13,15 EUR/m), Zuordnung nicht belegt; Lieferzeit 8-10 Werktage, Verzinken ueber Partner +14 Werktage."
+    }
+   ],
+   "luecke": ""
+  },
+  "PRF-st-rr40x40x2": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 9.04,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-40x40x2mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    }
+   ],
+   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+  },
+  "PRF-st-rr40x40x2.5": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 10.85,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-40x40x3mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "Wand 2,5 mm nicht im Sortiment: Mittel aus 40x40x2 (9,04) und 40x40x3 (12,65); Wand im Modell nur gerechnet [E] - 3 mm als Ersatz kaufbar (12,65)."
+    }
+   ],
+   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar); Wand 2,5 mm gibt es nicht als Handelsware"
+  },
+  "PRF-st-rr40x60x3": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 16.26,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Rechteckrohr-Feuerverzinkt-60x40x3mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Katalog 40x60x3 = Handelsname 60x40x3. Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    },
+    {
+     "preis_eur": 19.1,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahlshop.de (Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/verz-vierkantrohr-40-x-40-x-3-0-detail",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "gerechnet: 4.34 kg/m x 4,40 EUR/kg brutto (Staffel 15-30 kg Warenkorb, Seite gelesen); Stange 6 m; Schnittenden unverzinkt; Versand extra, Versand nach DE im Warenkorb. Theorie-Gewicht mit 2 % Eckenabzug; 6 m = 26,6 kg."
+    }
+   ],
+   "luecke": ""
+  },
+  "PRF-st-rr30x30x2": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 6.65,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-30x30x2mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    }
+   ],
+   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+  },
+  "PRF-st-rr60x60x3": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 19.76,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-60x60x3mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    }
+   ],
+   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+  },
+  "PRF-st-rr25x25x2": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 5.47,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-25x25x2mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    }
+   ],
+   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+  },
+  "PRF-st-rund20": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 11.25,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Rundstahl-verzinkt-20mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Rundstahl verzinkt 20 mm. Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, "
+    }
+   ],
+   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+  },
+  "PRF-st-strebe30x30": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 9.12,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-30x30x3mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Wand im Modell offen (N-STATIK): 30x30x3 gewaehlt, 30x30x2 kostet 6,65. Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    },
+    {
+     "preis_eur": 10.96,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahlshop.de (Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/verz-vierkantrohr-40-x-40-x-3-0-detail",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "gerechnet: 2.49 kg/m x 4,40 EUR/kg brutto (Staffel 15-30 kg Warenkorb, Seite gelesen); Stange 6 m; Schnittenden unverzinkt; Versand extra, Versand nach DE im Warenkorb. Wand 3 mm angenommen."
+    }
+   ],
+   "luecke": ""
+  },
+  "WNK-flach-14x3": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 1.33,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Flachstahl-verzinkt-30x3mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "Ersatz: Breite 14 mm nicht im Sortiment; gerechnet aus 30x3 verzinkt (2,85 EUR/m) x 14/30. Kaufbar real: 30x3 oder 20x5 (3,15)."
+    }
+   ],
+   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar); 14x3 nicht als Handelsware gefunden"
+  },
+  "WNK-flach-3mm-diagonale": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 2.85,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Flachstahl-verzinkt-30x3mm-1000mm",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "Breite aus Modell nicht ableitbar: 30x3 verzinkt als Platzhalter, Bezug je m; Katalogeinheit Stk (Zuschnitt)."
+    }
+   ],
+   "luecke": "Breite offen; zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+  },
+  "BLE-blech-st-3": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 54.81,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Stahl-Blech-300x1500x3mm",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "gerechnet: Stahl-Blech 3 mm, Preis je m2 aus Rastermass 300x1500x3mm (stahl-shop24.de) = 111.87 EUR/m2 x 0.490 m2 (700x700). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
+    }
+   ],
+   "luecke": "zweite Quelle offen; Raster-Preis, kein Massschnitt-Preis; verzinkt nicht belegt"
+  },
+  "BLE-blech-st-5": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 62.64,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Stahl-Blech-200x1500x5mm",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "gerechnet: Stahl-Blech 5 mm, Preis je m2 aus Rastermass 200x1500x5mm (stahl-shop24.de) = 186.43 EUR/m2 x 0.336 m2 (840x400). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
+    }
+   ],
+   "luecke": "wie BLE-blech-st-3"
+  },
+  "BLE-blech-st-6": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 176.48,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Stahl-Blech-300x1500x6mm",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "gerechnet: Stahl-Blech 6 mm, Preis je m2 aus Rastermass 300x1500x6mm (stahl-shop24.de) = 223.73 EUR/m2 x 0.789 m2 (1360x580). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
+    }
+   ],
+   "luecke": "wie BLE-blech-st-3"
+  }
+ }
+}

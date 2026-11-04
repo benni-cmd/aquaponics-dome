@@ -1,6 +1,6 @@
 {
  "_hinweis": "N-STUECKLISTE 2B Wasserleitung, Stand 2026-11-04. Preise brutto je Bezugseinheit; Bevo-Preise netto gelesen x1,19. UK = Europa OFFEN (kein UK-Angebot enthalten). Kein Kauf. Katalogstand 39e6323.",
- "stufe": 4,
+ "stufe": 5,
  "artikel": [
   {
    "id": "ROH-pvcu-d63",
@@ -111,6 +111,17 @@
      "lieferung_de": "unbekannt (Versandseite nicht gelesen)",
      "konfidenz": "Q (Netto gelesen), brutto E",
      "bemerkung": "netto 24,60 EUR (29,77 brutto laut Seite); nur in 25er-Packung (615 EUR netto), Lieferung \"auf Anfrage\" -> fuer Einzelkauf ungeeignet"
+    },
+    {
+     "preis_eur": 44.97,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 37.79 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1"
     }
    ],
    "luecke": "zwei unabhaengige Angebote"
@@ -179,9 +190,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 28.04,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 23.56 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-kappe-d20",
@@ -299,9 +321,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 23.53,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 19.77 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "SCH-schlauchtuelle-d12",
@@ -655,9 +688,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 7.53,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/profec-long-bend-45-pvc-u-90-mm-glue-socket-16bar-grey-type-made-from-tubing-0110231",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 6.33 EUR; Profec Langbogen 45 Grad (aus Rohr gefertigt, Langradius), 16 bar"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-bogen45-d50",
@@ -678,9 +722,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 8.06,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/profec-long-bend-45-pvc-u-90-mm-glue-socket-16bar-grey-type-made-from-tubing-0110231",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 6.77 EUR; Profec Langbogen 45 Grad (aus Rohr gefertigt, Langradius), 16 bar"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-bogen45-d63",
@@ -701,9 +756,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 12.19,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/profec-long-bend-45-pvc-u-90-mm-glue-socket-16bar-grey-type-made-from-tubing-0110231",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 10.24 EUR; Profec Langbogen 45 Grad (aus Rohr gefertigt, Langradius), 16 bar"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-bogen45-d75",
@@ -724,9 +790,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 16.96,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/profec-long-bend-45-pvc-u-90-mm-glue-socket-16bar-grey-type-made-from-tubing-0110231",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 14.25 EUR; Profec Langbogen 45 Grad (aus Rohr gefertigt, Langradius), 16 bar"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-bogen90-d110",
@@ -1154,9 +1231,22 @@
    "bezeichnung": "PVC-U-Kugelhahn d110",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 323.86,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 272.15 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; nur 10 bar"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ARM-kugelhahn-d32",
@@ -1177,9 +1267,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 35.34,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 29.70 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "ARM-kugelhahn-d50",
@@ -1200,9 +1301,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 53.47,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 44.93 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "ARM-kugelhahn-d63",
@@ -1223,9 +1335,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 79.02,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 66.40 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-kupplung-d110",
@@ -1543,9 +1666,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 0.8,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 0.67 EUR; Reduzierstutzen 25x20 (Stutzen x Muffe), Mindestmenge 10 Stk"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-red-d32_d25",
@@ -1612,9 +1746,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 1.25,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 1.05 EUR; Reduzierstutzen 40x32 (Stutzen x Muffe), Mindestmenge 10 Stk"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-red-d50_d32",
@@ -1635,9 +1780,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 1.67,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 1.40 EUR; Reduzierstutzen 50x32 (Stutzen x Muffe), Mindestmenge 10 Stk"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-red-d50_d40",
@@ -1658,9 +1814,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 1.73,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 1.45 EUR; Reduzierstutzen 50x40 (Stutzen x Muffe), Mindestmenge 10 Stk"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-red-d63_d50",
@@ -1681,9 +1848,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 2.14,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 1.80 EUR; Reduzierstutzen 63x50 (Stutzen x Muffe), Mindestmenge 10 Stk"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-red-d75_d50",
@@ -1704,9 +1882,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 4.96,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 4.17 EUR; Reduzierstutzen 75x50 (Stutzen x Muffe), Mindestmenge 10 Stk"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "FIT-red-d75_d63",
@@ -1727,9 +1916,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 5.01,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Versandkosten nicht gelesen, frei ab 350 EUR)",
+     "konfidenz": "Q (Netto gelesen), brutto E (x1,19)",
+     "bemerkung": "netto 4.21 EUR; Reduzierstutzen 75x63 (Stutzen x Muffe), Mindestmenge 10 Stk"
     }
    ],
-   "luecke": "nur ein Angebot, zweite Quelle fehlt"
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "ARM-rsv-d20",

@@ -9,13 +9,31 @@
 ## Plan
 1. [x] Aktualitaetspruefung (04.11.): E20 blockiert die Luft nicht; E13 blockiert die Technikbereich-Gruppe
 2. [x] Blatt `docs/jobs/M10-S5-LUFT.md` mit Teilen A, B, C und fuenf Pruefpunkten
-3. [ ] Montage Teil A (Pool-Verteiler, 4 Scheiben, Schwimmerventil, Enden-Tabelle)
+3. [x] Montage Teil A (Pool-Verteiler, 4 Scheiben, Schwimmerventil, Luftrohre K44-S1..S4, Enden-Tabelle): Runde 69, 04.11.2026
 4. [ ] Montage Teil B, nur auf Bens Ja zum vorlaeufigen Technikbereich-Ort
 5. [ ] Teil C nach E20 (05.11.)
 
 ## Status
 04.11.2026 (Planer) - Befund: teilweise ja. Teil A freigegeben; Teil B haengt an Bens Ja (vorlaeufiger Ort am heutigen Schrank-Ort, verschiebbare Gruppe); Teil C OFFEN (E20): Zulauf K40, K45 bis K48, Kabelzahl. OFFEN (E13): Standort Technikbereich.
 
+04.11.2026 (Montage, Runde 69): **Teil A gebaut.** Skript `scripts/trassen_luft.py` (Lagen als Annahmen [A], Trassen K44-S1..S4 nach `data/leitungstrassen.json`, `linie: luft`, Farbe gruen), `gen_dome.luft_a()`, `leitungen.py` (Farbe gruen, kein Graben fuer Luftrohre). Build `sh scripts/build.sh 5 69` Exit 0.
+Rohrfuehrung je Scheibe: Abgang des Verteilers -> Bogen direkt auf dem Zapfen -> ueber den Beckenrand (Z 1180 abs) -> Bogen -> an der Innenwand hinab -> Bogen -> auf dem Beckenboden (Z -1237 abs) zur Scheibe -> Bogen direkt unter dem Anschluss -> Zapfen der Scheibe. Abgang->Scheibe 1-2-4-3, kleinster Rohrabstand 106 mm. Messwerte (aus `dome-script.json`, Instanzmatrizen): 1 `Luftverteiler_4` (Port A x 1938,5 / y -622,6 / z 1074), 4 `Luft_Scheibenbelueftung` (Abstand zur Beckenmitte 1000 < 1810; Membran-Oberkante Z -1089 abs < Spiegel 915), 1 `Schwimmerventil_Pool` (Rohrachse Z 1110 abs = **710 relativ zum Flur**, Kugelmitte Z 935 abs = **535 relativ**, Kugel 1710 mm von der Beckenmitte, im Wasser), 4 Rohre d25 (Bogen sitzt je direkt auf dem Zapfen, Toleranz 0,6 mm erzwingt `leitungen.bauen`).
+Pruefung: `check_leitungen.py` EINGABE/KOLL/BAND/GANG/GEFAELLE 0 Verstoesse (dn 25 statt K44 d40 dokumentiert); `check_walkways.py` PASS gleich Runde 66 (A 700 / B 600 / Wandluft 110 / Nachbarportale 307 / Tuer-Gang 3177); Viewer-Export Exit 0 (2. Lauf, 164 Definitionen, 4914 Instanzen; der erste Lauf scheiterte an `puffer_klein` unter paralleler CLI-Last).
+**`check_latte` 29/31, KOLL 669 statt 115 (Runde 67/68): nicht erfuellt, Ursachen getrennt:** (a) 509 Treffer Strebe x Schraube/Mutter/Scheibe: die Zeile "OFFEN M2b" steht jetzt auf 0 statt 517; der Filter in `check_latte.py` (`base(a).startswith("knoten_")`) greift nicht mehr, weil eine andere Sitzung (N-STUECKLISTE, `scripts/workshop/normteile_benennen.py`) Knoten-Teile umbenannt hat: Filter-Namensfehler, kein Luft-Befund. (b) 45 Treffer von Teil A: 17 T5_Wasser x (Stutzen, Stuetzfuss, Tragteller, Membran x 4, Hebelarm_mit_Kugel), 16 Bogen/Rohr d25 x T5_Wasser (Rohre im Wasser), 8 Bogen x Rohr und 4 Bogen x Stutzen (Steckverbindung Muffe/Zapfen, gleiche Klasse wie 101 Altbefunde). (c) 115 Altbestand Leitungen unveraendert. Ausgabe `renders/check_latte-69.txt`. Vorschlag: Wasserkoerper aus der Kollision nehmen wie Messstellen (Ueberlappung gewollt), Filter M2b an die neuen Namen anpassen (Orchestrator/Werkstatt).
+
+### Port-Tabelle der Enden (Teil A, Modellrahmen, Z absolut; relativ zum Flur = minus 400)
+| Ende | Kante | Lage x / y / z | Richtung | Stand |
+|---|---|---|---|---|
+| Drittbecken Stutzen K41 (Frischwasser, d20 Muffe) | K41 | 4834,1 / -2485,0 / 1080 | +X | gemessen (Instanz `Becken_Dritt:1`) |
+| Drittbecken Stutzen K42 (Entnahme Biofilter, d25 Muffe) | K42 | 4304,1 / -1955,0 / 1080 | +Y | gemessen |
+| Drittbecken Stutzen K43 (Rueckfluss, d25 Muffe) | K43 | 3774,1 / -2485,0 / 1080 | -X | gemessen |
+| Drittbecken Stutzen K49 (Luft, Tuelle ID16) | K49 | 4304,1 / -3015,0 / 1080 | -Y | gemessen; Gebläse und Leitung: OFFEN (E13) |
+| Zweitbecken K51 (Luft d20) und Frischwasser | K51 | Annahme [A]: Rand zur Kuppelmitte, Radius 933,5 vom Beckenmittelpunkt (2833 / -3900), Z 1080 | zur Kuppelmitte | Stutzen nicht gebaut (`gen_dome.py` Zweitbecken-Stutzen nur nach Rueckfrage); OFFEN (E13) |
+| Schwimmerventil Port A (Zulauf K40) | K40 | 2038,5 / -359,4 / 1110 | nach aussen (-X lokal) | gesetzt; Zulauf OFFEN (E20) |
+| Luftverteiler Port A (Einlauf K44) | K44 | 1938,5 / -622,6 / 1074 | Muffe zeigt Richtung Technikbereich (Az 0) | gesetzt; Anschluss an den Hauptverteiler OFFEN (E13) |
+
+**Nicht gebaut, OFFEN:** Teil B (Technikbereich-Gruppe, Geblaese, Hauptverteiler, Aktivkohle-Station, Schrank-Einfuehrung) OFFEN (E13), Bens Ja zum vorlaeufigen Ort fehlt; K40-Zulauf aus Station oder Ring OFFEN (E20); K45 bis K48 (Biofilter, Absetzer) OFFEN (E20); Kabelzahl der Einfuehrung OFFEN (E20); Standort Schaltschrank OFFEN (E13).
+
 ## Definition of Done
 Geprueft gegen: `git log`, Roadmap M10-S5, Netz Version 3 K39 bis K52, `docs/packages/w37-2-3-frischwasser-luft.md`, `gen_dome.py` und `params.json` per Lesen
-Offen: Montage Teil A (ICH, naechste Sitzung); Bens Ja zu Teil B (DEINE ENTSCHEIDUNG); E13 Standort; E20 am 05.11.
+Offen: Pruefer Teil A (Orchestrator); check_latte-Filter (M2b-Namen) und Wasserkoerper-Ausnahme (Orchestrator/Werkstatt); Bens Ja zu Teil B (DEINE ENTSCHEIDUNG); E13 Standort; E20 am 05.11.

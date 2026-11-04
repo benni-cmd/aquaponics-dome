@@ -96,7 +96,7 @@ Handelsteil (Sanitaer/Garten, Schwimmerventil 3/4 Zoll, max. 22 l/min).
 
 ## Pruefung
 
-- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt).
+- Gauntlet-Urteil: Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.
 - scripts/workshop/check_schwimmerventil_pool.py (Ergebnis renders/components/schwimmerventil_pool/check.txt): Masse, Port, Kugelmitte auf Spiegelhoehe, Interferenz 0
 
 ## Offene Fragen

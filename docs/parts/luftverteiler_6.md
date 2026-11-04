@@ -100,7 +100,7 @@ Handelsteile (T-Stuecke, Reduzierungen, Kappe) aus dem Katalog; Eigenbau aus Roh
 
 ## Pruefung
 
-- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).
+- Gauntlet-Urteil: Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.
 - scripts/workshop/check_luft_verteiler.py luftverteiler_6 (Ergebnis renders/components/luftverteiler_6/check.txt): Koerper, Aussen-Ø, Laenge, Muffe A, Abgaenge (Zahl, Ø, Bohrung, Port-Stirnflaechen) und DN je Abgang gegen das Netz K44 bis K51, Geschwindigkeit im Sammler, Interferenz 0
 
 ## Offene Fragen

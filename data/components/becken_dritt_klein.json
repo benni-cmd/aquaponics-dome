@@ -57,6 +57,6 @@
    "Stutzen: Azimut je Stutzen (winkel_*) vorlaeufig 0/90/180/270 Grad, Biofilter-Seite legt die Montage fest; Wasserweg ueber die Kante, Tauchrohr fuer K42 und Ueberlauf des Wechselwassers: Montage",
    "Wasserwechsel 2 l/min aus der Frischwasserleitung bzw. Zisterne (R37 Befund 9), Frischwasserquelle klaert Ben beim Versorger"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W34: Selbstcheck)."
+  "kritiker": "Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md."
  }
 }

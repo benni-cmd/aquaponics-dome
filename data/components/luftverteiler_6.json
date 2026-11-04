@@ -159,7 +159,7 @@
    "Standort des Hauptverteilers im Schaltschrankbereich OFFEN (E13)",
    "Kreislaufvariante E20 beruehrt die Luft nicht (Variantenbefund, Luft laeuft getrennt vom Wasserumlauf)"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).",
+  "kritiker": "Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.",
   "teileliste": [
    [
     "T-Stueck 40x25x40 und 40x20x40, Reduzierung 40x25 und 40x20",

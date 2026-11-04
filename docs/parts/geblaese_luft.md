@@ -111,7 +111,7 @@ Handelsteil (Pumpe); Schleife aus Rohr d20 oder Formbogen.
 
 ## Pruefung
 
-- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).
+- Gauntlet-Urteil: Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.
 - scripts/workshop/check_geblaese_luft.py (Ergebnis renders/components/geblaese_luft/check.txt): 10 Koerper, Pumpe 240 x 180 x 230 und 10 kg, Fuesse auf Z 0, Schleife Rohrachse Z 710 (Reserve 195 ueber Spiegel, +60 ueber Pool-Rand), Volumen der Schleife nach Pappus, Rueckschlagventil, Stoss-Kontakte, Ports (Luftaustritt +X, Strom -Y), Interferenz 0
 
 ## Offene Fragen

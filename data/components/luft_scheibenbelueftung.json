@@ -95,7 +95,7 @@
    "Biofilter-Rohr- und Plattenbelueftungsteile: nur Platzhalter-Hinweis (Menge nach Traegerhersteller, K1), nicht modelliert",
    "Anschluss d25 vs. 3/4 Zoll Gewinde der Handelsscheibe: Uebergang offen"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).",
+  "kritiker": "Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.",
   "teileliste": [
    [
     "Scheibenbelueftung 270 EPDM, Anschluss 3/4 Zoll bzw. d25 (Klebe/Gewinde)",

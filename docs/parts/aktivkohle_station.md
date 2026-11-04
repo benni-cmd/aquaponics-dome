@@ -140,7 +140,7 @@ Kompositbehaelter und Sedimentgehaeuse sind Handelsteile (Wasseraufbereitung); V
 
 ## Pruefung
 
-- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt).
+- Gauntlet-Urteil: Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.
 - scripts/workshop/check_aktivkohle_station.py (Ergebnis renders/components/aktivkohle_station/check.txt): Behaelter-Mass, Bett 21 l, Kontaktzeit 10,5 min, Ports, Koerperzahl, Interferenz 0
 
 ## Offene Fragen

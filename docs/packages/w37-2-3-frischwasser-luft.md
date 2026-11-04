@@ -20,7 +20,7 @@
 8. [x] Bau W37-2 Teil 2 `schwimmerventil_pool` (T84): Check 15/15 PASS, Blatt, Bild; Zulauf "OFFEN (E20)" vermerkt
 9. [x] Bau W37-2 Teil 3 Stutzen Drittbecken (`becken_dritt_klein` erweitert): Check 40/40 PASS, Wanne unveraendert (231314 cm3), Blatt nachgefuehrt
 10. [x] Bau W37-3 Belueftung (Werkstatt, 04.11.2026): `luftverteiler_6` T86 (check 34/34), `luftverteiler_4` T87 (28/28), `luft_scheibenbelueftung` T88 (15/15), `geblaese_luft` T85 (26/26), `schrank_einfuehrung` T89 (30/30); Blaetter, Beschreibungen, Bilder
-11. [ ] Pruefer W37-2/W37-3 (gebuendelt, naechste Sitzung)
+11. [x] Pruefer W37-2/W37-3: PASS mit Auflagen, docs/jobs/pruefung/W37-2-W37-3.md
 
 ## Status
 

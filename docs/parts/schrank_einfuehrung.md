@@ -104,7 +104,7 @@ Handelsteile; Einfuehrungsplatte als Blech nach Mass.
 
 ## Pruefung
 
-- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).
+- Gauntlet-Urteil: Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.
 - scripts/workshop/check_schrank_einfuehrung.py (Ergebnis renders/components/schrank_einfuehrung/check.txt): Boden gegen params.json (cab_x, cab_y), beide Einfuehrungen mit Loch, Dichtung und Mutter, Achsabstand 300 und EMV-Abstand 210,5 mm, Leerrohr-Enden, Ports, Interferenz 0 inklusive Schrankwand; schaltschrank.sc und gen_dome.py unveraendert
 
 ## Offene Fragen

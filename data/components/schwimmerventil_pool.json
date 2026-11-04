@@ -146,7 +146,7 @@
    "Befestigung am Beckenrand und Hoehe ueber dem Rand: Montage",
    "Schwimmerventil am Zweitbecken: eigenes Bauteil Montage (nicht Teil dieses Auftrags)"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt).",
+  "kritiker": "Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.",
   "teileliste": [
    [
     "Schwimmerventil 3/4 Zoll",

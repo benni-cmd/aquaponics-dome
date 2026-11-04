@@ -96,7 +96,7 @@ Fertigbecken PE Ø 920 oder Betonring DN 800 mit Bodenplatte; Rand 135 mm ueber 
 
 ## Pruefung
 
-- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W34: Selbstcheck).
+- Gauntlet-Urteil: Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.
 - scripts/workshop/check_becken_dritt_klein.py (Ergebnis renders/components/becken_dritt_klein/check.txt): Durchmesser, Ring, Tiefe, Volumen 0,4 m3, Grundflaeche 0,66 m2, Rand, Wannenvolumen unveraendert, 4 Stutzen mit Ports K41 d20, K42 d25, K43 d25, K49 d20, Interferenz 0
 
 ## Offene Fragen

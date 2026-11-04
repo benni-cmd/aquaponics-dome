@@ -323,7 +323,7 @@
    "Zisterne als Alternative: nicht gebaut (D69)",
    "Standort der Station (E13), Wandhalterung und Auffangwanne: Montage"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt).",
+  "kritiker": "Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.",
   "teileliste": [
    [
     "Kompositbehaelter 10 x 35 mit Kopf (2 Stueck)",

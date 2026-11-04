@@ -123,7 +123,7 @@
    "DN100-Bogen R 500 liegt tiefer (Z -654) als die Plantiefe -400 (Plan nannte Z -100 bis -400): Entscheidung Montage/Planer, kleinerer Bogen oder zwei 45-Grad-Boegen",
    "Einfuehrungsplatte Handelsartikel (Rittal SZ 8800.100) und Schrankserie offen (N-BESCHAFFUNG W47)"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).",
+  "kritiker": "Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.",
   "teileliste": [
    [
     "Kabelschutzrohr 110 mm (DN100)",

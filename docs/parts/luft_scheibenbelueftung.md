@@ -91,7 +91,7 @@ Handelsteil (Teichbelueftung, EPDM-Scheibe 215 bis 270 mm).
 
 ## Pruefung
 
-- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).
+- Gauntlet-Urteil: Pruefer-Lauf: PASS, Befund in docs/jobs/pruefung/W37-2-W37-3.md.
 - scripts/workshop/check_luft_verteiler.py luft_scheibenbelueftung (Ergebnis renders/components/luft_scheibenbelueftung/check.txt): vier Koerper, Stutzen-, Fuss-, Teller- und Membran-Maße, Stapelhoehe 116, Port A, Volumen Membran und Stutzen gegen Rechnung, Interferenz 0
 
 ## Offene Fragen

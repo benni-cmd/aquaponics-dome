@@ -29,7 +29,7 @@ def tube(b, name, od, wall, base, axis, height, op="new", targets=None):
     b.add("solid.cylinder", diameter=od - 2 * wall, height=height + 2, base=[base[i] - axis[i] for i in range(3)], axis=axis, operation="cut", targets=[nb], name="B_" + name)
 
 def shaft_cell(L, W, u_ziel):
-    """M-BEET-TAUSCH 0c: Lage (x, y) des Reinigungsschachts auf einer ZELLMITTE des Netztopf-Rasters (gen_dome.bed_pot_grid: pot_pitch, pot_margin aus data/params.json, Raster symmetrisch zur Beetmitte, (u laengs, v quer)):
+    """M-BEET-TAUSCH 0c (Schacht) und -fix (Siphon/Medienschutz, D79): Lage (x, y) auf einer ZELLMITTE des Netztopf-Rasters (gen_dome.bed_pot_grid: pot_pitch, pot_margin aus data/params.json, Raster symmetrisch zur Beetmitte, (u laengs, v quer)):
     je vier Toepfe im Abstand pitch*sqrt(2)/2 (92 mm, Soll >= Schachtradius 55 + Kragenradius 32 = 87). u: Zellmitte nahe u_ziel (alte Lage -Li/2 + 250); v: Zellmitte nahe 0 (ungerade Zeilenzahl: +pitch/2)."""
     P = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))
     pitch, mar = P["pot_pitch"]["value"], P["pot_margin"]["value"]
@@ -56,7 +56,7 @@ def build(typ):
     z_ms = H - p["rim_gap"]                      # Medienoberflaeche
     z_m0 = z_ms - p["media_depth"]               # Medienunterkante = Oberkante Siebboden
     z_g0 = z_m0 - p["grid_t"]                    # Unterkante Siebboden
-    x_sp = Li / 2 - 200                          # Siphon nahe dem Ablaufende (+X)
+    x_sp, y_sp = shaft_cell(L, W, Li / 2 - 200)  # Siphon nahe dem Ablaufende (+X), auf einer Zellmitte des Topfrasters (M-BEET-TAUSCH-fix, D79; vorher y = 0: Topf in Schutzrohr und Kappe)
     x_sh, y_sh = shaft_cell(L, W, -Li / 2 + 250)  # Reinigungsschacht am Zulaufende (T30e-5), auf einer Zellmitte des Topfrasters (M-BEET-TAUSCH 0c; vorher x = -Li/2 + 250, y = 0: Toepfe in der Schachtwand)
     y_in, z_in = -(Wi / 2 - 50), H - p["inflow_below_rim"]
     if fase:                                     # Zulauf durch die gerade Stirnwand: y_in vor dem Beginn der Eckenfase (Befund Spec-Pruefer W26: bei y -392 lag die Wand schraeg und das Rohr ohne Loch)
@@ -80,7 +80,7 @@ def build(typ):
     b.add("solid.extrude", distance=rh, operation="join", targets=["Wanne"], name="Randwulst")
     rr(b, ft, Wi, Li, cr, "Innenraum"); b.add("sketch.finish")
     b.add("solid.extrude", distance=H - ft + 1, operation="cut", targets=["Wanne"], name="Innenraum_Ausschnitt")
-    b.add("solid.cylinder", diameter=p["bulkhead_d"], height=ft + 2, base=[x_sp, 0, -1], operation="cut", targets=["Wanne"], name="Bohrung_Bulkhead")
+    b.add("solid.cylinder", diameter=p["bulkhead_d"], height=ft + 2, base=[x_sp, y_sp, -1], operation="cut", targets=["Wanne"], name="Bohrung_Bulkhead")
     b.add("solid.cylinder", diameter=p["inflow_d"] + 2, height=wl + 4, base=[-Lw / 2 - 2, y_in, z_in], axis=[1, 0, 0], operation="cut", targets=["Wanne"], name="Durchfuehrung_Zulauf")
     b.add("material.assign", bodies=["Wanne"], material="HDPE weiss")
     # --- Stuetzen (Klotz 60 x 60 unter dem Siebboden), Raster nx x 2
@@ -98,14 +98,14 @@ def build(typ):
     rr(b, z_g0, Wi - 2 * g, Li - 2 * g, cr - g, "Siebboden_Kontur"); b.add("sketch.finish")
     b.add("solid.extrude", distance=p["grid_t"], name="Siebblech", body_name="Siebboden")
     # W40-BEET V3 (D77): Sperrboden OHNE Lochung (kein Wasserraum unter dem Medium); einzige Oeffnung = Durchfuehrung d36 fuer die Plattenhuelse
-    b.add("solid.cylinder", diameter=p["bulkhead_d"], height=p["grid_t"] + 2, base=[x_sp, 0, z_g0 - 1], operation="cut", targets=["Siebboden"], name="Sieb_Standrohr")
+    b.add("solid.cylinder", diameter=p["bulkhead_d"], height=p["grid_t"] + 2, base=[x_sp, y_sp, z_g0 - 1], operation="cut", targets=["Siebboden"], name="Sieb_Standrohr")
     b.add("material.assign", bodies=["Siebboden"], material="PP grau")
     # --- Medium: EIN Koerper, Oberflaeche z_ms, Tiefe media_depth, Loch fuer den Medienschutz
     b.add("component.activate", component=root)
     b.add("component.create", name="T30d_Medium")
     rr(b, z_m0, Wi - 2 * g, Li - 2 * g, cr - g, "Medium_Kontur"); b.add("sketch.finish")
     b.add("solid.extrude", distance=p["media_depth"], name="Mediumblock", body_name="Medium")
-    b.add("solid.cylinder", diameter=p["guard_d"], height=p["media_depth"] + 2, base=[x_sp, 0, z_m0 - 1], operation="cut", targets=["Medium"], name="Medium_Schutzloch")
+    b.add("solid.cylinder", diameter=p["guard_d"], height=p["media_depth"] + 2, base=[x_sp, y_sp, z_m0 - 1], operation="cut", targets=["Medium"], name="Medium_Schutzloch")
     b.add("solid.cylinder", diameter=p["shaft_d"], height=p["media_depth"] + 2, base=[x_sh, y_sh, z_m0 - 1], operation="cut", targets=["Medium"], name="Medium_Schachtloch")
     b.add("material.assign", bodies=["Medium"], material="Medium Blaehton")
     # --- Glockensiphon
@@ -115,48 +115,48 @@ def build(typ):
     # Bulkhead: Huelse unter dem Boden bis Flansch auf dem Boden, Standrohr steckt darin
     # D77: Tankverbinder (Klebemuffe d32) mit Reduzierhuelse 32/25 fuer das Standrohr d25; Tankverbinder bleibt D36 mit Flansch D50
     bid, bd = p["bulkhead_id"], p["bulkhead_d"]
-    tube(b, "Bulkhead", bd, (bd - bid) / 2, [x_sp, 0, -30], [0, 0, 1], 30 + ft + 4)
-    b.add("solid.cylinder", diameter=p["bulkhead_flange"], height=4, base=[x_sp, 0, ft], operation="join", targets=["Bulkhead"], name="Flansch")
-    b.add("solid.cylinder", diameter=bid, height=34 + ft + 4 + 1, base=[x_sp, 0, -31], operation="cut", targets=["Bulkhead"], name="Bulkhead_Sitz")
+    tube(b, "Bulkhead", bd, (bd - bid) / 2, [x_sp, y_sp, -30], [0, 0, 1], 30 + ft + 4)
+    b.add("solid.cylinder", diameter=p["bulkhead_flange"], height=4, base=[x_sp, y_sp, ft], operation="join", targets=["Bulkhead"], name="Flansch")
+    b.add("solid.cylinder", diameter=bid, height=34 + ft + 4 + 1, base=[x_sp, y_sp, -31], operation="cut", targets=["Bulkhead"], name="Bulkhead_Sitz")
     b.add("material.assign", bodies=["Bulkhead"], material="PVC grau Beet")
-    tube(b, "Reduzierhuelse_Boden", bid, (bid - p["standpipe_d"]) / 2, [x_sp, 0, -30], [0, 0, 1], 30 + ft + 4)
+    tube(b, "Reduzierhuelse_Boden", bid, (bid - p["standpipe_d"]) / 2, [x_sp, y_sp, -30], [0, 0, 1], 30 + ft + 4)
     b.add("material.assign", bodies=["Reduzierhuelse_Boden"], material="PVC grau Beet")
     # Plattenhuelse im Sperrboden: gleicher Tankverbinder, Flansch D50 auf der Wasserseite (Plattenoberkante), 3 mm Gewinde unter der Platte fuer die Kontermutter
     zp0, zp1 = z_g0 - 3, z_m0 + 4
-    tube(b, "Plattenhuelse", bd, (bd - bid) / 2, [x_sp, 0, zp0], [0, 0, 1], zp1 - zp0)
-    b.add("solid.cylinder", diameter=p["bulkhead_flange"], height=4, base=[x_sp, 0, z_m0], operation="join", targets=["Plattenhuelse"], name="Flansch_Platte")
-    b.add("solid.cylinder", diameter=bid, height=zp1 - zp0 + 2, base=[x_sp, 0, zp0 - 1], operation="cut", targets=["Plattenhuelse"], name="Plattenhuelse_Sitz")
+    tube(b, "Plattenhuelse", bd, (bd - bid) / 2, [x_sp, y_sp, zp0], [0, 0, 1], zp1 - zp0)
+    b.add("solid.cylinder", diameter=p["bulkhead_flange"], height=4, base=[x_sp, y_sp, z_m0], operation="join", targets=["Plattenhuelse"], name="Flansch_Platte")
+    b.add("solid.cylinder", diameter=bid, height=zp1 - zp0 + 2, base=[x_sp, y_sp, zp0 - 1], operation="cut", targets=["Plattenhuelse"], name="Plattenhuelse_Sitz")
     b.add("material.assign", bodies=["Plattenhuelse"], material="PVC grau Beet")
-    tube(b, "Reduzierhuelse_Platte", bid, (bid - p["standpipe_d"]) / 2, [x_sp, 0, zp0], [0, 0, 1], zp1 - zp0)
+    tube(b, "Reduzierhuelse_Platte", bid, (bid - p["standpipe_d"]) / 2, [x_sp, y_sp, zp0], [0, 0, 1], zp1 - zp0)
     b.add("material.assign", bodies=["Reduzierhuelse_Platte"], material="PVC grau Beet")
     # Reduktion kurz d40 x d25 (T30e-3): Klebemuffe d25 oben (Port z -30), Stutzen d40 unten; Bauhoehe 50 mm [A], Kaufmass pruefen
     rz = p["reduktion_h"]
-    tube(b, "Reduktion", 34, (34 - p["standpipe_d"]) / 2, [x_sp, 0, -30 - 20], [0, 0, 1], 20)
-    b.add("solid.cylinder", diameter=46, height=15, base=[x_sp, 0, -30 - 35], operation="join", targets=["Reduktion"], name="Reduktion_Uebergang")
-    b.add("solid.cylinder", diameter=p["reduktion_stutzen_d"], height=rz - 35, base=[x_sp, 0, -30 - rz], operation="join", targets=["Reduktion"], name="Reduktion_Stutzen")
-    b.add("solid.cylinder", diameter=22, height=rz + 2, base=[x_sp, 0, -30 - rz - 1], operation="cut", targets=["Reduktion"], name="Reduktion_Bohrung")
+    tube(b, "Reduktion", 34, (34 - p["standpipe_d"]) / 2, [x_sp, y_sp, -30 - 20], [0, 0, 1], 20)
+    b.add("solid.cylinder", diameter=46, height=15, base=[x_sp, y_sp, -30 - 35], operation="join", targets=["Reduktion"], name="Reduktion_Uebergang")
+    b.add("solid.cylinder", diameter=p["reduktion_stutzen_d"], height=rz - 35, base=[x_sp, y_sp, -30 - rz], operation="join", targets=["Reduktion"], name="Reduktion_Stutzen")
+    b.add("solid.cylinder", diameter=22, height=rz + 2, base=[x_sp, y_sp, -30 - rz - 1], operation="cut", targets=["Reduktion"], name="Reduktion_Bohrung")
     b.add("material.assign", bodies=["Reduktion"], material="PVC grau Beet")
-    tube(b, "Standrohr", p["standpipe_d"], p["standpipe_wall"], [x_sp, 0, -30], [0, 0, 1], z_top + 30)
+    tube(b, "Standrohr", p["standpipe_d"], p["standpipe_wall"], [x_sp, y_sp, -30], [0, 0, 1], z_top + 30)
     b.add("material.assign", bodies=["Standrohr"], material="PVC grau Beet")
     # Glocke: oben geschlossen, 2 Schlitze 10 x 40, Luftloch D10
-    tube(b, "Glocke", p["bell_d"], p["bell_wall"], [x_sp, 0, z_m0], [0, 0, 1], p["bell_h"])
-    b.add("solid.cylinder", diameter=p["bell_d"], height=p["bell_wall"], base=[x_sp, 0, z_m0 + p["bell_h"] - p["bell_wall"]], operation="join", targets=["Glocke"], name="Glockendeckel")
+    tube(b, "Glocke", p["bell_d"], p["bell_wall"], [x_sp, y_sp, z_m0], [0, 0, 1], p["bell_h"])
+    b.add("solid.cylinder", diameter=p["bell_d"], height=p["bell_wall"], base=[x_sp, y_sp, z_m0 + p["bell_h"] - p["bell_wall"]], operation="join", targets=["Glocke"], name="Glockendeckel")
     # V3: 4 Kerben 10 x 12 am Fuss (z_m0 bis z_m0 + 12) statt 2 hoher Schlitze; Box beginnt 1 mm unter der Platte (Schnitt nur im Ziel Glocke)
     kh, kz = p["bell_slot_h"], p["bell_slot_z"]
     for k, (dx, dy) in enumerate(((1, 0), (-1, 0), (0, 1), (0, -1))):
         b.add("solid.box", length=(p["bell_slot_w"] if dx == 0 else p["bell_wall"] + 8), width=(p["bell_slot_w"] if dy == 0 else p["bell_wall"] + 8), height=kh + 1,
-              center=[x_sp + dx * (p["bell_d"] / 2 - p["bell_wall"] / 2), dy * (p["bell_d"] / 2 - p["bell_wall"] / 2), z_m0 + kz - 1 + (kh + 1) / 2], operation="cut", targets=["Glocke"], name=f"Kerbe_{k}")
-    b.add("solid.box", length=p["air_hole"], width=p["bell_wall"] + 6, height=p["air_hole"], center=[x_sp, -(p["bell_d"] / 2 - p["bell_wall"] / 2), z_m0 + 50], operation="cut", targets=["Glocke"], name="Luftloch")
+              center=[x_sp + dx * (p["bell_d"] / 2 - p["bell_wall"] / 2), y_sp + dy * (p["bell_d"] / 2 - p["bell_wall"] / 2), z_m0 + kz - 1 + (kh + 1) / 2], operation="cut", targets=["Glocke"], name=f"Kerbe_{k}")
+    b.add("solid.box", length=p["air_hole"], width=p["bell_wall"] + 6, height=p["air_hole"], center=[x_sp, y_sp - (p["bell_d"] / 2 - p["bell_wall"] / 2), z_m0 + 50], operation="cut", targets=["Glocke"], name="Luftloch")
     b.add("material.assign", bodies=["Glocke"], material="PVC grau Beet")
     # Medienschutz S-A (R51 T30e-4, D77 Lochblech 5 mm vom Metallbauer): Rohr d110 x 1,5 V2A, h 320, lose Kappe.
     # Modellvereinfachung: real Rundloch d5 Teilung 8 (35 % offen); im Modell 2 Ringe x 12 Schlitze 5 x 50 (6000 mm2 = 15,8 x Standrohr). Box durch die Wand, dann kreisfoermig gemustert.
-    tube(b, "Medienschutz", p["guard_d"], p["guard_wall"], [x_sp, 0, z_m0], [0, 0, 1], p["guard_h"])
+    tube(b, "Medienschutz", p["guard_d"], p["guard_wall"], [x_sp, y_sp, z_m0], [0, 0, 1], p["guard_h"])
     for ri, zr in enumerate((p["guard_ring_z1"], p["guard_ring_z2"])):
-        b.add("solid.box", length=p["guard_wall"] + 6, width=p["guard_slot_w"], height=p["guard_slot_h"], center=[x_sp + p["guard_d"] / 2 - p["guard_wall"] / 2, 0, z_m0 + zr + p["guard_slot_h"] / 2],
+        b.add("solid.box", length=p["guard_wall"] + 6, width=p["guard_slot_w"], height=p["guard_slot_h"], center=[x_sp + p["guard_d"] / 2 - p["guard_wall"] / 2, y_sp, z_m0 + zr + p["guard_slot_h"] / 2],
               operation="cut", targets=["Medienschutz"], name=f"Schutzschlitz_{ri}")
-        b.add("solid.pattern.circular", features=[f"Schutzschlitz_{ri}"], axis={"origin": [x_sp, 0, 0], "dir": [0, 0, 1]}, count=int(p["guard_slot_n"]))
+        b.add("solid.pattern.circular", features=[f"Schutzschlitz_{ri}"], axis={"origin": [x_sp, y_sp, 0], "dir": [0, 0, 1]}, count=int(p["guard_slot_n"]))
     b.add("material.assign", bodies=["Medienschutz"], material="V2A Lochblech")
-    b.add("solid.cylinder", diameter=p["guard_d"], height=p["cap_h"], base=[x_sp, 0, z_m0 + p["guard_h"]], operation="new", name="Kappe_Schutz", body_name="Schutzkappe")
+    b.add("solid.cylinder", diameter=p["guard_d"], height=p["cap_h"], base=[x_sp, y_sp, z_m0 + p["guard_h"]], operation="new", name="Kappe_Schutz", body_name="Schutzkappe")
     b.add("material.assign", bodies=["Schutzkappe"], material="PVC grau Beet")
     # --- Zulaufrohr (Tropfrohr) laengs, durch die Stirnwand
     b.add("component.activate", component=root)
@@ -186,7 +186,7 @@ def build(typ):
                        ("T30c_Siebboden", "T30c", "Sperrboden PP 8 mm ohne Lochung (V3, D77), Durchfuehrung d36 fuer die Plattenhuelse"), ("T30d_Medium", "T30d", "Medium Blaehton/Kies als ein Koerper"),
                        ("T30e_Siphon", "T30e", "Glockensiphon: Tankverbinder mit Reduzierhuelse 32/25 (Boden und Platte), Standrohr d25, Reduktion d40 x d25, Glocke d75 mit 4 Kerben, Medienschutz Lochblech d110 mit Kappe"), ("T30f_Zulauf", "T30f", "Zulauf-Tropfrohr d20"), ("T30g_Schacht", "T30g", "Reinigungsschacht d110 mit Kappe")):
         b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
-    info = dict(L=L, W=W, H=H, z_ms=z_ms, z_m0=z_m0, z_g0=z_g0, x_sp=x_sp, x_sh=x_sh, y_sh=y_sh, y_in=y_in, z_in=z_in, n_dr=n_dr, nx=nx)
+    info = dict(L=L, W=W, H=H, z_ms=z_ms, z_m0=z_m0, z_g0=z_g0, x_sp=x_sp, y_sp=y_sp, x_sh=x_sh, y_sh=y_sh, y_in=y_in, z_in=z_in, n_dr=n_dr, nx=nx)
     return b, info
 
 def render(typ, path, info):
@@ -194,12 +194,12 @@ def render(typ, path, info):
     os.makedirs(r, exist_ok=True)
     L, H = info["L"], info["H"]
     Lw_ = L - 2 * 20
-    views = {"01-iso": ([0, 0, H / 3], 0.6, 0.45, L * 1.25), "02-siphon": ([info["x_sp"], 0, info["z_m0"] + 120], 0.7, 0.5, 700),
+    views = {"01-iso": ([0, 0, H / 3], 0.6, 0.45, L * 1.25), "02-siphon": ([info["x_sp"], info["y_sp"], info["z_m0"] + 120], 0.7, 0.5, 700),
              "03-zulauf": ([-Lw_ / 2 + 150, info["y_in"], info["z_in"]], 0.9, 0.4, 700), "04-medium": ([0, 0, info["z_ms"]], 0.3, 0.8, L * 0.9)}
     for n, (t, yaw, pitch, dist) in views.items():
         sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-{n}.png"), t, yaw, pitch, dist, w=1000, h=650)
-    sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-05-schnitt.png"), [info["x_sp"] - 100, 0, H / 2], 3.14159, 0.0, 1300, w=1000, h=650, section="XZ")
-    sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-06-schnitt-quer.png"), [info["x_sp"], 0, H / 2], 1.5708, 0.0, info["W"] * 2.0, w=900, h=650, section="x=%d,flip" % int(info["x_sp"]))
+    sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-05-schnitt.png"), [info["x_sp"] - 100, info["y_sp"], H / 2], 3.14159, 0.0, 1300, w=1000, h=650, section="XZ")
+    sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-06-schnitt-quer.png"), [info["x_sp"], info["y_sp"], H / 2], 1.5708, 0.0, info["W"] * 2.0, w=900, h=650, section="x=%d,flip" % int(info["x_sp"]))
 
 if __name__ == "__main__":
     typs = [a for a in sys.argv[1:] if not a.startswith("--")] or ["aussen_933", "aussen_993", "aussen_800", "innen_933"]

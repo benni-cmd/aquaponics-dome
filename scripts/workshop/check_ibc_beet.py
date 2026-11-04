@@ -1,4 +1,5 @@
 """Vorpruefung IBC-Beet gegen die Scope-Card (docs/scope-cards.md) und R03: Aussenmass = layout.json, Wand, Medium EIN Koerper (Oberflaeche Z 400 absolut, Tiefe 300), Siebboden, Standrohr/Glocke/Medienschutz-Masse, Ports.
+M-BEET-TAUSCH-fix (D79): Abstand Medienschutz-Achse zu jedem Netztopf, alle vier Typen.
 Aufruf: python scripts/workshop/check_ibc_beet.py [typ ...] [--no-interf]   (exit 1 bei FAIL; Interferenz je Typ etwa 80 s)
 W40-BEET V3 (D77): Sperrboden ungelocht, Kerben, Lochblech-Medienschutz, Reinigungsschacht, Reduktion, Reduzierhuelsen."""
 import sys, os, json, math, re, subprocess, tempfile
@@ -111,6 +112,16 @@ def main(typs):
         dmin = min(math.hypot(sx_ - u, sy_ - v) for u, v in grid)
         ck.eq(f"{typ} Reinigungsschacht in der Naehe der alten Lage -Li/2 + 250 (hoechstens ein Rasterschritt {pitch})", 1 if abs(sx_ - (-Li_ / 2 + 250)) <= pitch else 0, 1)
         ck.eq(f"{typ} Abstand Schachtachse zu jedem Netztopf des Rasters {dmin:.1f} mm >= 87 (Schachtradius 55 + Kragenradius 32; Raster {nu_} x {nv_}, {len(grid)} Toepfe)", 1 if dmin >= 87 else 0, 1)
+        # M-BEET-TAUSCH-fix (D79, Pruefer-Auflage 1): Siphon samt Medienschutz auf einer Zellmitte; Abstand der Schutzachse zu JEDEM Netztopf >= 87 (Schutzradius 55 + Kragenradius 32)
+        msb = B["Medienschutz"]["bbox"]
+        px_, py_ = (msb["min"][0] + msb["max"][0]) / 2, (msb["min"][1] + msb["max"][1]) / 2
+        dmin_g = min(math.hypot(px_ - u, py_ - v) for u, v in grid)
+        ck.eq(f"{typ} Abstand Medienschutz-Achse zu jedem Netztopf des Rasters {dmin_g:.1f} mm >= 87 (Schutzradius 55 + Kragenradius 32; Achse x {px_:.1f}, y {py_:.1f}; {len(grid)} Toepfe)", 1 if dmin_g >= 87 else 0, 1)
+        ck.eq(f"{typ} Medienschutz-Achse in der Naehe der alten Lage Li/2 - 200 (hoechstens ein Rasterschritt {pitch})", 1 if abs(px_ - (Li_ / 2 - 200)) <= pitch else 0, 1)
+        gx_, gy_ = (B["Glocke"]["bbox"]["min"][0] + B["Glocke"]["bbox"]["max"][0]) / 2, (B["Glocke"]["bbox"]["min"][1] + B["Glocke"]["bbox"]["max"][1]) / 2
+        ck.eq(f"{typ} Glocke und Medienschutz konzentrisch (Versatz {math.hypot(gx_ - px_, gy_ - py_):.2f} mm)", math.hypot(gx_ - px_, gy_ - py_), 0, 0.1)
+        sx2_, sy2_ = (B["Standrohr"]["bbox"]["min"][0] + B["Standrohr"]["bbox"]["max"][0]) / 2, (B["Standrohr"]["bbox"]["min"][1] + B["Standrohr"]["bbox"]["max"][1]) / 2
+        ck.eq(f"{typ} Standrohr in der Achse des Medienschutzes (Versatz {math.hypot(sx2_ - px_, sy2_ - py_):.2f} mm)", math.hypot(sx2_ - px_, sy2_ - py_), 0, 0.1)
         ck.eq(f"{typ} Schachtkappe sitzt auf dem Schacht", B["Schachtkappe"]["bbox"]["min"][2], rs["max"][2], 0.01)
         # Reduktion d40 x d25 unter dem Port, Reduzierhuelsen 32/25 in Boden- und Plattenhuelse
         rd = B["Reduktion"]["bbox"]

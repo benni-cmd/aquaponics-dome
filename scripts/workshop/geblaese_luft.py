@@ -95,6 +95,6 @@ if __name__ == "__main__":
     if "--render" in sys.argv:
         rd = os.path.join(sc.ROOT, "renders", "components", "geblaese_luft")
         os.makedirs(rd, exist_ok=True)
-        sc.snapshot(out, os.path.join(rd, "geblaese_luft-01-schraeg.png"), [200, 0, 360], 0.6, 0.35, 2000, w=1100, h=760)
-        sc.snapshot(out, os.path.join(rd, "geblaese_luft-02-seite.png"), [200, 0, 360], 0.0, 0.0, 2000, w=1100, h=760)
-        sc.snapshot(out, os.path.join(rd, "geblaese_luft-03-schnitt.png"), [200, 0, 360], 0.0, 0.0, 2000, w=1100, h=760, section="y=0")
+        sc.snapshot(out, os.path.join(rd, "geblaese_luft-01-schraeg.png"), [200, 0, 370], 0.6, 0.35, 1500, w=1100, h=760)
+        sc.snapshot(out, os.path.join(rd, "geblaese_luft-02-seite.png"), [200, 0, 370], 0.0, 0.0, 1500, w=1100, h=760)
+        sc.snapshot(out, os.path.join(rd, "geblaese_luft-03-schnitt.png"), [200, 0, 370], 3.14159, 0.0, 1500, w=1100, h=760, section="XZ")

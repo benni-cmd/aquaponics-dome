@@ -1300,6 +1300,167 @@
       "rolle": "Messnetz der Anlage (R39): 72 Sonden und Fühler an 67 Messstellen; Alarm in drei Stufen (lokal, GSM-Wähler, Software)."
     },
     {
+      "match": "^luftverteiler_6",
+      "titel": "Luft-Hauptverteiler (6-fach)",
+      "was": "Teilt die Druckluft der Gebläse auf Pool, beide Biofilter, Drittbecken, Zweitbecken und Absetzer auf.",
+      "status": "gebaut (Werkstatt W37-3), Prüfung 34/34; Handelsteile (Hahn, Rückschlagventil) Katalog offen; gilt in jeder Kreislaufvariante",
+      "ablauf": [
+        "Das Rohr d40 aus der Gebläse-Baugruppe steckt in die Muffe am Einlauf.",
+        "Sechs Abgänge nach oben: Pool (d40, 130 l/min, Spitze 205), Biofilter 1 und 2 (d25), Drittbecken, Zweitbecken und Absetzer (je d20).",
+        "Jeder Abgang bekommt später ein Rückschlagventil und einen Kugelhahn; das Ende ist geschlossen."
+      ],
+      "aufbau": [
+        {
+          "t": "Sammler",
+          "p": [
+            "Formstück d40, 48 mm außen, Länge 710",
+            "Einlauf als Klebemuffe d40"
+          ]
+        },
+        {
+          "t": "Abgänge",
+          "p": [
+            "6 Zapfen, 50 mm Überstand, Teilung 120",
+            "Platz für Hähne und Rückschlagventile ohne Kollision"
+          ]
+        }
+      ],
+      "masse": {
+        "Leergewicht": "0,82 kg (PVC-U)",
+        "Einlauf": "137 l/min (Pool 130, Drittbecken 2, Zweitbecken 5) plus Biofilter und Absetzer offen",
+        "Geschwindigkeit": "2,2 m/s im Sammler bei 137 l/min (Spitze 205 l/min: 3,3 m/s)"
+      },
+      "grenzen": "Menge für Biofilter und Absetzer, Öffnungsdruck der Rückschlagventile für Luft und die Pumpen-Kennlinie bei 26 kPa sind offen.",
+      "quelle": "docs/parts/luftverteiler_6.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 4"
+    },
+    {
+      "match": "^luftverteiler_4",
+      "titel": "Pool-Luftverteiler (4-fach)",
+      "was": "Verteilt die Pool-Luft auf vier Scheibenbelüftungsteile.",
+      "status": "gebaut (Werkstatt W37-3), Prüfung 28/28; gilt in jeder Kreislaufvariante",
+      "ablauf": [
+        "Die Pool-Leitung d40 (K44, Planwert 130 l/min) steckt in die Muffe am Einlauf.",
+        "Vier Abgänge d25 mit je 33 l/min gehen an die vier Scheiben; das Ende ist geschlossen."
+      ],
+      "aufbau": [
+        {
+          "t": "Sammler",
+          "p": [
+            "Formstück d40, 48 mm außen, Länge 470",
+            "Einlauf als Klebemuffe d40"
+          ]
+        },
+        {
+          "t": "Abgänge",
+          "p": [
+            "4 Zapfen d25, Teilung 120"
+          ]
+        }
+      ],
+      "masse": {
+        "Leergewicht": "0,55 kg (PVC-U)",
+        "Summe der Abgänge": "132 l/min gegen Planwert 130 (1,5 %)",
+        "Geschwindigkeit": "1,5 m/s je Abgang, 2,1 m/s im Sammler"
+      },
+      "grenzen": "33 l/min je Abgang ist eine Annahme (130 geteilt durch 4); Befestigung am Beckenrand ist Montage.",
+      "quelle": "docs/parts/luftverteiler_4.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 4"
+    },
+    {
+      "match": "^luft_scheibenbelueftung",
+      "titel": "Scheibenbelüftungsteil (Pool)",
+      "was": "Gibt die Luft als feine Blasen ins Pool-Wasser ab; vier Stück am Pool-Verteiler.",
+      "status": "gebaut (Werkstatt W37-3), Prüfung 15/15; Handelsmaße als Platzhalter, Fabrikat offen",
+      "ablauf": [
+        "Die Luft kommt über das Rohr d25 von unten in den Stützfuß.",
+        "Durch den Tragteller drückt sie sich durch die EPDM-Membran (Ø 270) und steigt als feine Blasen auf."
+      ],
+      "aufbau": [
+        {
+          "t": "Teile",
+          "p": [
+            "Anschlussstutzen d25",
+            "Stützfuß Ø 70 × 50",
+            "Tragteller Ø 250",
+            "EPDM-Membran Ø 270 × 6"
+          ]
+        }
+      ],
+      "masse": {
+        "Höhe": "116 mm",
+        "Membran": "Ø 270 (Parameter d, auch kleiner als Luftstein-Variante für das Drittbecken)",
+        "Masse": "ca. 1,5 kg"
+      },
+      "grenzen": "Membran-Schlitze, Hersteller-Kennlinie und der Anschluss d25 gegen 3/4 Zoll der Handelsscheibe sind offen.",
+      "quelle": "docs/parts/luft_scheibenbelueftung.md, docs/research/R53-europa-frischwasser-luft.md"
+    },
+    {
+      "match": "^geblaese",
+      "titel": "Gebläse-Baugruppe Luft (N+1)",
+      "was": "Eine Luftpumpe mit Luftleitung über den höchsten Wasserspiegel; zwei Stück, eine läuft, die zweite ist Reserve.",
+      "status": "gebaut (Werkstatt W37-3), Prüfung 26/26; Pumpentyp nicht gewählt, Kennlinie bei 26 kPa offen; gilt in jeder Kreislaufvariante",
+      "ablauf": [
+        "Die Linear-Membranpumpe (Platzhalterquader 240 × 180 × 230) bläst durch einen Stutzen d20 nach oben.",
+        "Das Rohr steigt bis Z 710 über den höchsten Wasserspiegel (Pool-Rand Z 650 plus 60) und biegt waagerecht ab; so läuft kein Wasser in die Pumpe zurück.",
+        "Ein Rückschlagventil d20 ist die zweite Sperre; danach folgt der Luftaustritt zum Hauptverteiler."
+      ],
+      "aufbau": [
+        {
+          "t": "Pumpe",
+          "p": [
+            "Gehäuse 240 × 180 × 230, 10 kg (Beispiel)",
+            "4 Gummifüße, Stutzen d20, Netzkabel"
+          ]
+        },
+        {
+          "t": "Luftleitung",
+          "p": [
+            "Rohr d20 mit Bogen R80, Scheitel Z 710",
+            "Rückschlagventil d20, Austrittsrohr"
+          ]
+        }
+      ],
+      "masse": {
+        "Masse": "ca. 10,3 kg",
+        "Scheitel der Schleife": "195 mm über dem Spiegel Z 515",
+        "Luftmenge": "Klasse 200 l/min bei mindestens 26 kPa; bei 26 kPa grob 176 l/min (Fortschreibung)"
+      },
+      "grenzen": "Pumpentyp und Kennlinie bei 26 kPa offen (R53); die Spitze 205 l/min trägt nur der Parallellauf beider Pumpen; Notstrom und Standort (E13) offen.",
+      "quelle": "docs/parts/geblaese_luft.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 4, docs/research/R53-europa-frischwasser-luft.md"
+    },
+    {
+      "match": "^schrank_einfuehrung",
+      "titel": "Schaltschrank-Einführung (Leerrohre)",
+      "was": "Boden-Einführungsplatte des Schaltschranks mit zwei Kabeleinführungen (230 V DN100, Signal DN50) und je einem Leerrohr-Bogen nach unten.",
+      "status": "gebaut (Werkstatt W37-3), Prüfung 30/30; nur das Bauteil, Standort OFFEN (E13), Kabelzahl OFFEN (E20)",
+      "ablauf": [
+        "Die Kabel laufen unterirdisch durch Leerrohre (DN100 für 230 V, DN50 für Signal) zum Schrank.",
+        "Der Bogen führt das Rohr von der Seite nach oben in die Einführung; deren Hals geht durch den Schrankboden, Dichtung unten, Gegenmutter oben.",
+        "Die beiden Stämme liegen 300 mm auseinander (Abstand der Muffen 210 mm, Mindestmaß 200 mm gegen Störungen)."
+      ],
+      "aufbau": [
+        {
+          "t": "Platte",
+          "p": [
+            "Boden 800 × 500 × 3 mit zwei Ausschnitten"
+          ]
+        },
+        {
+          "t": "Einführungen",
+          "p": [
+            "DN100 (Ø 130 Hals) und DN50 (Ø 63 Hals) aus W39",
+            "Leerrohr-Bogen R500 und R300 aus W36"
+          ]
+        }
+      ],
+      "masse": {
+        "Boden": "800 × 500 × 3",
+        "Tiefe unterflur": "DN50 bis 397 mm, DN100 bis 654 mm unter dem Schrankboden",
+        "Masse": "ca. 15,3 kg (mit Wandstummel)"
+      },
+      "grenzen": "Standort des Schranks (E13), Kabelzahl und Füllgrad (E20) sind offen; der DN100-Bogen liegt tiefer als die Plantiefe von 400 mm.",
+      "quelle": "docs/parts/schrank_einfuehrung.md, docs/jobs/W37-3-luft-schaltschrank.md"
+    },
+    {
       "match": "^puffer",
       "titel": "Puffer-Station (2 IBC gestapelt)",
       "was": "Zwei übereinander gestellte IBC-Tanks (je 1000 l) mit Messplatz und Dosierkonsole: Messstation, Basenzugabe, Frischwasser- und Notvorrat.",

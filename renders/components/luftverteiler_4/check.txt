@@ -1,0 +1,31 @@
+PASS luftverteiler_4: Koerperzahl (ein Koerper Verteiler): Ist 1, Soll 1
+PASS luftverteiler_4: Sammler Aussen-Ø = Formstueck d40 (48): Ist 47.9993, Soll 48 (+-0.1)
+PASS luftverteiler_4: Laenge 470 (letzter Abgang + 25 + Endkappe): Ist 470, Soll 470 (+-0.1)
+PASS luftverteiler_4: Zapfenende 74 ueber der Achse: Ist 74, Soll 74 (+-0.1)
+PASS luftverteiler_4: Muffe A d40: Zylinderflaeche r 20: Ist 1, Soll 1
+PASS luftverteiler_4: Sammlerbohrung: Zylinderflaeche r 18.1 (Innen-Ø 36.2): Ist 1, Soll 1
+PASS luftverteiler_4: Port A Muffe d40: Stirnflaeche im Ursprung, Oeffnung -X: Ist 1, Soll 1
+PASS luftverteiler_4: Abgaenge: 4 Zapfen-Stirnflaechen bei Z 74: Ist 4, Soll 4
+PASS luftverteiler_4: Abgang 1 Scheibe 1 (K44 (Teil)): Stirnflaeche bei X 75: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 1 Zapfen Ø 25: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 1 Bohrung Ø 21.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 2 Scheibe 2 (K44 (Teil)): Stirnflaeche bei X 195: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 2 Zapfen Ø 25: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 2 Bohrung Ø 21.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 3 Scheibe 3 (K44 (Teil)): Stirnflaeche bei X 315: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 3 Zapfen Ø 25: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 3 Bohrung Ø 21.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 4 Scheibe 4 (K44 (Teil)): Stirnflaeche bei X 435: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 4 Zapfen Ø 25: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 4 Bohrung Ø 21.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_4: Pool-Verteiler: Zulauf d40 = Netz K44: Ist 40, Soll 40
+PASS luftverteiler_4: Summe Abgangsstroeme 132 l/min gegen Planwert 130 (Abweichung unter 2 Prozent): Ist 1.53846, Soll 0 (+-2)
+PASS luftverteiler_4: Abgang 1: 33 l/min im Innen-Ø 21.4 = 1.53 m/s (unter 2 m/s): Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 2: 33 l/min im Innen-Ø 21.4 = 1.53 m/s (unter 2 m/s): Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 3: 33 l/min im Innen-Ø 21.4 = 1.53 m/s (unter 2 m/s): Ist 1, Soll 1
+PASS luftverteiler_4: Abgang 4: 33 l/min im Innen-Ø 21.4 = 1.53 m/s (unter 2 m/s): Ist 1, Soll 1
+PASS luftverteiler_4: Sammler Innen-Ø 36.2: 130 l/min = 2.11 m/s: Ist 2.10516, Soll 2.1 (+-0.05)
+INFO Spitze 205 l/min im Sammler: 3.32 m/s (R45: d40 bei 200 l/min 3,2 m/s)
+PASS luftverteiler_4: Interferenzen (Volumen > 0,5 mm3, ungeprueft zaehlt): Ist 0, Soll 0
+INFO Masse 545 g
+== luftverteiler_4: 28/28 PASS

@@ -1,0 +1,33 @@
+PASS schrank_einfuehrung: Koerperzahl (Boden, Wandstummel, 2 x (Einfuehrung, Dichtung, Mutter), 2 Leerrohr-Boegen): Ist 10, Soll 10
+PASS schrank_einfuehrung: Boden-Breite 800 = params.json cab_x: Ist 800, Soll 800 (+-0.01)
+PASS schrank_einfuehrung: Boden-Tiefe 500 = params.json cab_y: Ist 500, Soll 500 (+-0.01)
+PASS schrank_einfuehrung: Boden Blech 3 mm: Ist 3, Soll 3 (+-0.01)
+PASS schrank_einfuehrung: Boden-Unterkante liegt auf Z 0: Ist 0, Soll 0 (+-0.01)
+PASS schrank_einfuehrung: Boden: Loch DN100 Ø 130 bei X -150: Ist 1, Soll 1
+PASS schrank_einfuehrung: Boden: Loch DN50 Ø 63 bei X 150: Ist 1, Soll 1
+PASS schrank_einfuehrung: Einfuehrung DN100: Kragen Ø 160: Ist 159.998, Soll 160 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN100: Achse bei X -150: Ist -150, Soll -150 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN100: Dichtung liegt unter dem Boden (Oberkante Z 0): Ist -2.84217e-14, Soll 0 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN100: Gegenmutter liegt auf dem Boden (Unterkante Z 3): Ist 3, Soll 3 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN100: Hoehe ueber dem Boden = Gewindehals 15: Ist 15, Soll 15 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN100: Muffe unter dem Boden bis Z -73: Ist -73, Soll -73 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN50: Kragen Ø 93: Ist 93, Soll 93 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN50: Achse bei X 150: Ist 150, Soll 150 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN50: Dichtung liegt unter dem Boden (Oberkante Z 0): Ist -2.13163e-14, Soll 0 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN50: Gegenmutter liegt auf dem Boden (Unterkante Z 3): Ist 3, Soll 3 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN50: Hoehe ueber dem Boden = Gewindehals 15: Ist 15, Soll 15 (+-0.05)
+PASS schrank_einfuehrung: Einfuehrung DN50: Muffe unter dem Boden bis Z -49: Ist -49, Soll -49 (+-0.05)
+PASS schrank_einfuehrung: Achsabstand 300 mm (mindestens 200 EMV): Ist 1, Soll 1
+PASS schrank_einfuehrung: freier Abstand der Muffen am Boden 210.5 mm (mindestens 200): Ist 1, Soll 1
+PASS schrank_einfuehrung: kleinster X-Abstand der Leerrohr-Boegen 220 mm (mindestens 200; die Boegen laufen auseinander): Ist 1, Soll 1
+PASS schrank_einfuehrung: Leerrohr-Bogen DN100: Ende B stoesst an die Muffe (Oberkante Z -9): Ist -9, Soll -9 (+-0.05)
+PASS schrank_einfuehrung: Port Leerrohr DN100 (Muffe A, -X): Stirnflaeche bei X -734, Z -593: Ist 1, Soll 1
+PASS schrank_einfuehrung: Port Kabel DN100 nach oben in den Schrank: Stirnflaeche bei Z 15: Ist 1, Soll 1
+PASS schrank_einfuehrung: Leerrohr-Bogen DN50: Ende B stoesst an die Muffe (Oberkante Z -9): Ist -9, Soll -9 (+-0.05)
+PASS schrank_einfuehrung: Port Leerrohr DN50 (Muffe A, +X): Stirnflaeche bei X 510, Z -369: Ist 1, Soll 1
+PASS schrank_einfuehrung: Port Kabel DN50 nach oben in den Schrank: Stirnflaeche bei Z 15: Ist 1, Soll 1
+PASS schrank_einfuehrung: Leerrohr DN50 unterflur: tiefster Punkt -397 (Plan Z -100 bis -400): Ist 1, Soll 1
+INFO Leerrohr DN100 tiefster Punkt Z -654.5 (Biegeradius 500): tiefer als die Plantiefe -400 (offen, Hinweis im Blatt)
+PASS schrank_einfuehrung: Interferenzen (Volumen > 0,5 mm3, ungeprueft zaehlt): Ist 0, Soll 0
+INFO Masse gesamt 15336 g
+== schrank_einfuehrung: 30/30 PASS

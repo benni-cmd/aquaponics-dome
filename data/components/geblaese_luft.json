@@ -101,5 +101,127 @@
   "soll": "2 Stueck (N+1: eine Pumpe laeuft, die zweite ist Reserve; Spitze 205 l/min nur mit beiden)",
   "quelle": "R45 Abschnitt 4 Empfehlung 3 und 4; D45 e (Reserve-Geblaese)"
  },
- "bezugspunkt": "Mitte der Standflaeche der Pumpe am Boden (Z 0 = Aufstellflaeche); X zeigt zum Luftaustritt, Y quer (Netzkabel -Y), Z hoch; Rohrachse der Schleife bei Z 710, Port Luftaustritt am Ende des Austrittsrohrs (+X)"
+ "bezugspunkt": "Mitte der Standflaeche der Pumpe am Boden (Z 0 = Aufstellflaeche); X zeigt zum Luftaustritt, Y quer (Netzkabel -Y), Z hoch; Rohrachse der Schleife bei Z 710, Port Luftaustritt am Ende des Austrittsrohrs (+X)",
+ "blatt": {
+  "funktion": "Eine Luftpumpe samt Luftleitung: die Linear-Membranpumpe (Platzhalterquader) blaest durch einen Stutzen d20, die Leitung steigt senkrecht auf Z 710 ueber den hoechsten Wasserspiegel (Pool-Rand Z 650 plus 60, Spiegel Z 515), biegt waagerecht ab und fuehrt durch ein Rueckschlagventil d20 zum Luftaustritt. Zwei Stueck (N+1: eine laeuft, die zweite ist Reserve; die Spitze 205 l/min braucht beide). Die Schleife ueber dem Spiegel ist der Hauptschutz gegen Rueckfluss von Wasser in die Pumpe, das Ventil die zweite Sperre. Gilt in jeder Kreislaufvariante (E20): Luft laeuft getrennt vom Wasserumlauf, Luftausfall ist der harte Termin (0,8 bis 1,2 h bis 3 mg/l, R45)",
+  "querschnitt": "Pumpe 240 x 180 x 230 auf vier Gummifuessen Ø 40 x 15; Stutzen d20 x 1,8 (40 lang) oben; Rohrschleife d20 mit Biegeradius 80, senkrechter Schenkel bis Z 710 (Mitte), waagerecht 150; Rueckschlagventil d20 (Gehaeuse Ø 39, Laenge 82); Austrittsrohr 100. Netzkabel Ø 8 an der Rueckseite (-Y).",
+  "toleranzen": "Rohre stossen stumpf an das Rueckschlagventil (Muffentiefe 16 nicht modelliert); Pumpe als Vollquader, Dichte so gesetzt, dass die Pumpe 10,0 kg wiegt ([A], Beispiel Secoh JDK-S-200 laut BIBUS).",
+  "ports": [
+   [
+    "Luftaustritt (Zapfen)",
+    "PVC-U d20 (DN15), Zapfen, Austrittsrohr",
+    "x 412, y 0, z 710 (Mitte der Stirnflaeche)",
+    "Oeffnung zeigt +X; weiter ueber Reduzierung d20 auf d25 und T-Stueck d25 beider Pumpen in Port A des Hauptverteilers (luftverteiler_6)"
+   ],
+   [
+    "Stromanschluss (Kabelende)",
+    "230 V, 1 Ader-Stueck laut Netz (204 W Fischwasser-Belueftung)",
+    "x -80, y -190, z 130",
+    "Stirnflaeche zeigt -Y; Kabel zur Kabeleinfuehrung DN100 des Schaltschranks (schrank_einfuehrung); Kabelrechnung Orchestrator, hier nicht berechnet"
+   ]
+  ],
+  "verbindungen": [
+   "Port Luftaustritt: Rohr d20 zur Reduzierung d20/d25, dann T-Stueck d25 zu Luftverteiler 6 (Hauptverteiler Port A)",
+   "Befestigung: Pumpe auf Gummifuessen im Schaltschrankbereich (Standort E13 OFFEN); Netzkabel 230 V zur Einfuehrung",
+   "Schleife: Scheitel (Rohrachse) Z 710, Reserve 195 mm ueber dem Spiegel Z 515 und 60 mm ueber dem Pool-Rand Z 650"
+  ],
+  "abweichung": "Kein OBJ-Bestand (Geblaese fehlte, L06).",
+  "montage": [
+   "Pumpe im Schaltschrankbereich auf ebener Flaeche aufstellen (Standort E13 OFFEN); Aufstellflaeche gilt als Z 0 im Bauteil, bei anderer Hoehe die Schleife anpassen: Scheitel absolut auf Z 710 halten",
+   "Stutzen d20 mit der Rohrschleife verkleben, Rueckschlagventil in Flussrichtung (nach +X) einkleben, Austrittsrohr anschliessen",
+   "Zwei Baugruppen nebeneinander; beide Austritte ueber T-Stueck d25 und Reduzierung auf d40 in den Hauptverteiler (Port A) fuehren",
+   "Netzkabel mit Reserve zur Kabeleinfuehrung DN100 fuehren (230-V-Stamm)"
+  ],
+  "werkzeug": "Rohrschneider, Heissluft zum Biegen (oder Formbogen aus der Bibliothek), Klebstoff PVC",
+  "stueckliste": [
+   "2 Linear-Membranpumpen der Klasse 200 l/min bei mindestens 26 kPa (Typ nicht gewaehlt)",
+   "2 Rueckschlagventile d20",
+   "2 Rohrschleifen d20 (Rohr d20, Biegung R80) mit Austrittsrohr",
+   "2 Reduzierungen d25/d20 und 1 T-Stueck d25 zum Hauptverteiler"
+  ],
+  "lokal": "Handelsteil (Pumpe); Schleife aus Rohr d20 oder Formbogen.",
+  "massen_getrennt": [],
+  "gewicht_gefuellt": "Luft fuehrend; Pumpe 10 kg [A, Beispiel]",
+  "pruefung": [
+   "scripts/workshop/check_geblaese_luft.py (Ergebnis renders/components/geblaese_luft/check.txt): 10 Koerper, Pumpe 240 x 180 x 230 und 10 kg, Fuesse auf Z 0, Schleife Rohrachse Z 710 (Reserve 195 ueber Spiegel, +60 ueber Pool-Rand), Volumen der Schleife nach Pappus, Rueckschlagventil, Stoss-Kontakte, Ports (Luftaustritt +X, Strom -Y), Interferenz 0"
+  ],
+  "offen": [
+   "Pumpentyp NICHT gewaehlt: Kennlinie bei 26 kPa OFFEN (R53: Hiblow HP-200 200 l/min nur bei 20 kPa, Fortschreibung 176 l/min bei 26 kPa [E, Vorbehalt]); DEINE HANDLUNG (Ben): Kennlinie bei BIBUS, Hiblow France oder Nitto Kohki Europe anfragen",
+   "Spitze 205 l/min traegt nur eine Pumpe nicht: N+1 faellt bei Parallellauf weg (Auslegungsfrage Ben/Planung)",
+   "Rueckschlagventil: Luft nicht freigegeben (Seite nennt Wasser, PN16), Oeffnungsdruck bei 130 l/min ungeprueft; Regel Schleife ueber dem Spiegel zweite Quelle nur teilweise (R53 Abschnitt 5), Hoehe Z 710 bleibt [A]",
+   "Notstromkonzept fuer die Pumpen OFFEN (Ben/Orchestrator; R45 Abschnitt 4)",
+   "Standort Schaltschrankbereich OFFEN (E13)"
+  ],
+  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).",
+  "teileliste": [
+   [
+    "Linear-Membranpumpe 200 l/min",
+    "Klasse 200 l/min bei mindestens 26 kPa, 100 bis 250 W, 42 bis 48 dB",
+    "Hiblow HP-200: Hiblow France S.A.S. und Spain S.L., Katalog 2015 gelesen [Q R53], Haendler eBay.de [Q-Treffer]; Secoh JDK-S-200: BIBUS (HU/NL) [Q R53] und tanks.ie (IE, SKU 0022090, 372,70 EUR netto) [Q R53]",
+    "beschaffbar als Geraet (Secoh: zwei europaeische Haendler; Hiblow: Hersteller-Niederlassungen); Kennlinie bei 26 kPa OFFEN, Fortschreibung 176 l/min [E, Vorbehalt]; Typ NICHT gewaehlt"
+   ],
+   [
+    "Rueckschlagventil d40, d25, d20 (Klebemuffe)",
+    "d20, PVC-U Klebemuffe",
+    "Baenninger Art. 75328, 75326, 75325 (schwarte-shop, DE), 15,67 bis 35,93 EUR [Q-Treffer, R53 Abschnitt 5, aus dem Blatt W37-3 uebernommen]; zweite Quelle (Bevo) Zuordnung ungeprueft",
+    "nur eine Quelle; Luft nicht freigegeben (Seite nennt Wasser, PN16), Oeffnungsdruck bei 130 l/min ungeprueft; Ersatz fuer kleine Leitungen Luftschlauch-Rueckschlagventile (Tetra CV4 u. a. [Q-Treffer R53]), fuer d40 keine belegt"
+   ],
+   [
+    "Rohr d20 PVC-U (Schleife, Austritt)",
+    "d20 x 1,8",
+    "Katalog offen, N-BESCHAFFUNG (W47)",
+    "offen"
+   ],
+   [
+    "Reduzierung d25/d20 am Austritt",
+    "PVC-U Klebemuffen",
+    "Bevo Profec (NL), schwarte-shop (DE), Artikel d25/d20 nicht geoeffnet [A]",
+    "offen bis Artikel; Bibliotheksteil lt_reduzierung_d25_d20 vorhanden"
+   ]
+  ]
+ },
+ "herkunft_tabelle": [
+  [
+   "Pumpenklasse",
+   "200 l/min bei mindestens 26 kPa, N+1",
+   "E",
+   "R45 Abschnitt 4 Empfehlung 3 und 4; Planwert 130, Spitze 205 l/min",
+   "mittel"
+  ],
+  [
+   "Pumpenmasse",
+   "240 x 180 x 230, 10 kg",
+   "A",
+   "Beispielreihe Secoh JDK-S-200 (BIBUS: 240 x 180 x 230,5, 10,0 kg [Q R53]); Typ nicht gewaehlt",
+   "niedrig"
+  ],
+  [
+   "Kennlinie bei 26 kPa",
+   "176 l/min (Fortschreibung)",
+   "E",
+   "R53 Abschnitt 4: 200 - 20 x (260-200)/50, nur Fortschreibung der Secoh-Tabelle; Hiblow HP-200 200 l/min bei 20 kPa, Bereich bis 35,3 kPa [Q]",
+   "niedrig"
+  ],
+  [
+   "Schleife ueber dem Spiegel",
+   "Rohrachse Z 710",
+   "E",
+   "R45 Empfehlung 7, params.json pool_rim 650 + 60 (wie Schwimmerventil); layout pool2.water_z 515 (nur gelesen)",
+   "mittel"
+  ],
+  [
+   "Rueckschlagventil d20",
+   "Laenge 82, Gehaeuse Ø 39",
+   "A",
+   "Muster lt_rueckschlagventil_d20 (W39); Katalog offen",
+   "niedrig"
+  ],
+  [
+   "Leistung",
+   "204 W (Netz-Kabeleintrag)",
+   "Q",
+   "data/leitungsnetz.json kabel schaltschrank -> geblaese_fisch (nur gelesen, nicht berechnet)",
+   "mittel"
+  ]
+ ]
 }

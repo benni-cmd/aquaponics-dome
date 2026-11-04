@@ -2628,5 +2628,95 @@
   "note": "W37-2 Frischwasser",
   "commit": "d719bff",
   "source": "renders/components/aktivkohle_station/aktivkohle_station-02-oben.png"
+ },
+ {
+  "file": "20261104-030553_werkstatt_w37-3-luftverteiler-6_luftverteiler-6-01-schraeg.png",
+  "sha": "66a4537c6f4a67e7",
+  "time": "2026-11-04 03:05:53",
+  "role": "werkstatt",
+  "subject": "w37-3_luftverteiler-6",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/luftverteiler_6/luftverteiler_6-01-schraeg.png"
+ },
+ {
+  "file": "20261104-030703_werkstatt_w37-3-luftverteiler-6_luftverteiler-6-03-schnitt.png",
+  "sha": "98feb4331ba6c4fa",
+  "time": "2026-11-04 03:07:03",
+  "role": "werkstatt",
+  "subject": "w37-3_luftverteiler-6",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/luftverteiler_6/luftverteiler_6-03-schnitt.png"
+ },
+ {
+  "file": "20261104-030754_werkstatt_w37-3-luftverteiler-4_luftverteiler-4-01-schraeg.png",
+  "sha": "c29d2d6313c06dc8",
+  "time": "2026-11-04 03:07:54",
+  "role": "werkstatt",
+  "subject": "w37-3_luftverteiler-4",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/luftverteiler_4/luftverteiler_4-01-schraeg.png"
+ },
+ {
+  "file": "20261104-030842_werkstatt_w37-3-schrank-einfuehrung_schrank-einfuehrung-01-schraeg.png",
+  "sha": "bd54fae2b1fddf6b",
+  "time": "2026-11-04 03:08:42",
+  "role": "werkstatt",
+  "subject": "w37-3_schrank-einfuehrung",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/schrank_einfuehrung/schrank_einfuehrung-01-schraeg.png"
+ },
+ {
+  "file": "20261104-030844_werkstatt_w37-3-schrank-einfuehrung_schrank-einfuehrung-02-seite.png",
+  "sha": "da96844d0e942935",
+  "time": "2026-11-04 03:08:44",
+  "role": "werkstatt",
+  "subject": "w37-3_schrank-einfuehrung",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/schrank_einfuehrung/schrank_einfuehrung-02-seite.png"
+ },
+ {
+  "file": "20261104-030914_werkstatt_w37-3-scheibenbelueftung_luft-scheibenbelueftung-01-schraeg.png",
+  "sha": "07feec3dbd9137c4",
+  "time": "2026-11-04 03:09:14",
+  "role": "werkstatt",
+  "subject": "w37-3_scheibenbelueftung",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/luft_scheibenbelueftung/luft_scheibenbelueftung-01-schraeg.png"
+ },
+ {
+  "file": "20261104-030915_werkstatt_w37-3-scheibenbelueftung_luft-scheibenbelueftung-02-schnitt.png",
+  "sha": "afac3e229070f922",
+  "time": "2026-11-04 03:09:15",
+  "role": "werkstatt",
+  "subject": "w37-3_scheibenbelueftung",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/luft_scheibenbelueftung/luft_scheibenbelueftung-02-schnitt.png"
+ },
+ {
+  "file": "20261104-030920_werkstatt_w37-3-geblaese-luft_geblaese-luft-01-schraeg.png",
+  "sha": "86c4aac2bc76c211",
+  "time": "2026-11-04 03:09:20",
+  "role": "werkstatt",
+  "subject": "w37-3_geblaese-luft",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/geblaese_luft/geblaese_luft-01-schraeg.png"
+ },
+ {
+  "file": "20261104-030924_werkstatt_w37-3-geblaese-luft_geblaese-luft-03-schnitt.png",
+  "sha": "a9feeec2d18289d7",
+  "time": "2026-11-04 03:09:24",
+  "role": "werkstatt",
+  "subject": "w37-3_geblaese-luft",
+  "note": "",
+  "commit": "409cd82",
+  "source": "renders/components/geblaese_luft/geblaese_luft-03-schnitt.png"
  }
 ]

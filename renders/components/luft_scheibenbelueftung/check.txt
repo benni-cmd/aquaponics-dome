@@ -1,0 +1,17 @@
+PASS luft_scheibenbelueftung: Koerperzahl (Stutzen, Stuetzfuss, Tragteller, Membran): Ist 4, Soll 4
+PASS luft_scheibenbelueftung: Stutzen Ø = Anschluss d25: Ist 24.9996, Soll 25 (+-0.1)
+PASS luft_scheibenbelueftung: Stutzen Laenge 40: Ist 40, Soll 40 (+-0.1)
+PASS luft_scheibenbelueftung: Stuetzfuss Ø 70: Ist 69.9989, Soll 70 (+-0.1)
+PASS luft_scheibenbelueftung: Stuetzfuss Hoehe 50: Ist 50, Soll 50 (+-0.1)
+PASS luft_scheibenbelueftung: Tragteller Ø 250: Ist 249.996, Soll 250 (+-0.1)
+PASS luft_scheibenbelueftung: Membran Ø 270 (Parameter d): Ist 269.996, Soll 270 (+-0.1)
+PASS luft_scheibenbelueftung: Membran Dicke 6: Ist 6, Soll 6 (+-0.1)
+PASS luft_scheibenbelueftung: Gesamthoehe 116 (Stutzen + Fuss + Teller + Membran): Ist 116, Soll 116 (+-0.1)
+PASS luft_scheibenbelueftung: Port A d25: Stirnflaeche im Ursprung, Oeffnung -Z (nach unten): Ist 1, Soll 1
+PASS luft_scheibenbelueftung: Luftkanal Ø 16: Zylinderflaeche r 8 im Stutzen: Ist 1, Soll 1
+PASS luft_scheibenbelueftung: Membran-Volumen = Kreisscheibe (mm3): Ist 343512, Soll 343533 (+-687.066)
+PASS luft_scheibenbelueftung: Stutzen-Volumen = Ringflaeche x Laenge (mm3): Ist 11591.5, Soll 11592.5 (+-23.185)
+PASS luft_scheibenbelueftung: Membran-Ø 270 (Bauteil rund um die Achse): Ist 1, Soll 1
+PASS luft_scheibenbelueftung: Interferenzen (Volumen > 0,5 mm3, ungeprueft zaehlt): Ist 0, Soll 0
+INFO Masse 1465 g
+== luft_scheibenbelueftung: 15/15 PASS

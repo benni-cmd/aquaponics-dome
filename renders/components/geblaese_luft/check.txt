@@ -1,0 +1,28 @@
+PASS geblaese_luft: Koerperzahl (Pumpe, 4 Fuesse, Kabel, Stutzen, Schleife, Rueckschlagventil, Austrittsrohr): Ist 10, Soll 10
+PASS geblaese_luft: Pumpe 240 x 180 x 230: X: Ist 240, Soll 240 (+-0.1)
+PASS geblaese_luft: Pumpe Y: Ist 180, Soll 180 (+-0.1)
+PASS geblaese_luft: Pumpe Z: Ist 230, Soll 230 (+-0.1)
+PASS geblaese_luft: Pumpenmasse 10,0 kg (Beispiel Secoh JDK-S-200, Platzhalter): Ist 9999.59, Soll 10000 (+-100)
+PASS geblaese_luft: Standflaeche: alle 4 Fuesse unten auf Z 0: Ist 4, Soll 4
+PASS geblaese_luft: Fuesse Ø 40 x 15: Ist 54.9994, Soll 55 (+-0.2)
+PASS geblaese_luft: Pumpe sitzt auf den Fuessen: Unterkante Z 15: Ist 15, Soll 15 (+-0.01)
+PASS geblaese_luft: Stutzen d20 Aussen-Ø: Ist 19.9997, Soll 20 (+-0.1)
+PASS geblaese_luft: Stutzen steht auf dem Gehaeuse: Z 245: Ist 245, Soll 245 (+-0.01)
+PASS geblaese_luft: Schleife beginnt am Stutzenende (Stoss, Z): Ist 285, Soll 285 (+-0.01)
+PASS geblaese_luft: Schleife: Oberkante des waagerechten Schenkels = Rohrachse 710 + 10: Ist 720, Soll 720 (+-0.05)
+PASS geblaese_luft: Schleife: waagerechtes Ende bei X 230: Ist 230, Soll 230 (+-0.05)
+PASS geblaese_luft: Schleife: Volumen = Ringflaeche x Mittellinie (Pappus, mm3): Ist 63871.8, Soll 63877.8 (+-255.511)
+PASS geblaese_luft: Rohrachse 710 liegt 195 ueber dem Spiegel Z 515 (Reserve mindestens 150): Ist 1, Soll 1
+PASS geblaese_luft: Rohrachse 710 liegt ueber dem Pool-Rand Z 650 (+ 60 wie Schwimmerventil): Ist 710, Soll 710 (+-0.01)
+PASS geblaese_luft: Rueckschlagventil: Laenge 82 (50 + 2 x Muffentiefe 16): Ist 82, Soll 82 (+-0.1)
+PASS geblaese_luft: Rueckschlagventil beginnt am Schleifenende (Stoss, X): Ist 230, Soll 230 (+-0.01)
+PASS geblaese_luft: Rueckschlagventil Gehaeuse Ø 39: Ist 38.9994, Soll 39 (+-0.1)
+PASS geblaese_luft: Austrittsrohr beginnt am Ventilende (Stoss, X): Ist 312, Soll 312 (+-0.01)
+PASS geblaese_luft: Rueckschlagventil: Durchgang Ø 16,4 (Zylinderflaeche r 8,2): Ist 1, Soll 1
+PASS geblaese_luft: Port Luftaustritt d20: Stirnflaeche bei X 412, Z 710, Oeffnung +X: Ist 1, Soll 1
+PASS geblaese_luft: Port Netzkabel: Stirnflaeche bei Y -190, Richtung -Y: Ist 1, Soll 1
+PASS geblaese_luft: Netzkabel sitzt an der Gehaeuserueckseite (Y): Ist -90, Soll -90 (+-0.01)
+PASS geblaese_luft: Gesamthoehe 729.5 (Rueckschlagventil-Gehaeuse oben): Ist 729.499, Soll 729.5 (+-0.05)
+PASS geblaese_luft: Interferenzen (Volumen > 0,5 mm3, ungeprueft zaehlt): Ist 0, Soll 0
+INFO Masse gesamt 10291 g; Leistung 204 W je Pumpe laut Netz-Kabeleintrag (nur Hinweis, Kabelrechnung Orchestrator)
+== geblaese_luft: 26/26 PASS

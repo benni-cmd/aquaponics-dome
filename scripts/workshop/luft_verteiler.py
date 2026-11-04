@@ -94,7 +94,7 @@ def main():
             os.makedirs(rd, exist_ok=True)
             if name == "luft_scheibenbelueftung":
                 sc.snapshot(out, os.path.join(rd, name + "-01-schraeg.png"), [0, 0, 60], 0.7, 0.45, 650, w=1000, h=700)
-                sc.snapshot(out, os.path.join(rd, name + "-02-schnitt.png"), [0, 0, 60], 0.0, 0.0, 650, w=1000, h=700, section="y=0")
+                sc.snapshot(out, os.path.join(rd, name + "-02-schnitt.png"), [0, 0, 50], 3.14159, 0.0, 480, w=1000, h=700, section="XZ")
             else:
                 cx = g["L"] / 2
                 dist = g["L"] * 1.6

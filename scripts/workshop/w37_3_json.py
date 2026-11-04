@@ -120,6 +120,8 @@ SPECS = {"schrank_einfuehrung": spec_schrank, "geblaese_luft": spec_geblaese, "l
 
 def write(name, extra=None):
     d = SPECS[name]()
+    import w37_3_blatt
+    d.update(w37_3_blatt.BLATT[name]())
     if extra:
         d.update(extra)
     path = os.path.join(sc.ROOT, "data", "components", name + ".json")
@@ -132,6 +134,25 @@ def write(name, extra=None):
     json.dump(d, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("geschrieben", path)
 
+
+def write_descriptions():
+    """Fuegt die W37-3-Eintraege vor dem Eintrag '^puffer' in data/descriptions.json ein (Viewer nimmt den ersten Treffer; keine Mustergleichheit mit ^schaltschrank); idempotent."""
+    import w37_3_blatt
+    p = os.path.join(sc.ROOT, "data", "descriptions.json")
+    txt = open(p, "rb").read().decode("utf-8")
+    anchor = '    {\r\n      "match": "^puffer",'
+    assert txt.count(anchor) == 1
+    for e in w37_3_blatt.DESC:
+        if json.dumps(e["match"], ensure_ascii=False) in txt:
+            continue
+        body = json.dumps(e, indent=2, ensure_ascii=False).replace("\n", "\n    ").replace("\n", "\r\n")
+        txt = txt.replace(anchor, "    " + body + ",\r\n" + anchor)
+    json.loads(txt)
+    open(p, "wb").write(txt.encode("utf-8"))
+    print("descriptions.json: W37-3-Eintraege vorhanden")
+
 if __name__ == "__main__":
-    for n in (sys.argv[1:] or list(SPECS)):
+    for n in ([a for a in sys.argv[1:] if not a.startswith("--")] or list(SPECS)):
         write(n)
+    if "--descriptions" in sys.argv:
+        write_descriptions()

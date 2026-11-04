@@ -1,0 +1,112 @@
+# Bauteilblatt T86 luftverteiler_6 (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/luftverteiler_6.json` und `designs/components/luftverteiler_6.sc`, nicht von Hand aendern)
+
+**Funktion:** Teilt die Druckluft beider Geblaese-Pumpen (N+1) auf: Pool (d40, K44), Biofilter 1 und 2 (d25, K45/K46), Drittbecken (d20, K49), Zweitbecken (d20, K51) und die optionalen Absetzer (d20, K47/K48). Sammler d40 mit Klebemuffe am Einlauf, sechs Zapfen nach oben (je Abgang spaeter Rueckschlagventil und Kugelhahn), Ende geschlossen. Formstueck-Verteiler nach dem Muster lt_verteiler_d50 (W36). Gilt in jeder Kreislaufvariante (E20), die Luft laeuft getrennt vom Wasserumlauf
+
+**Datei:** `designs/components/luftverteiler_6.sc` · **Teilenummer:** T86 · **Revision:** A · **Bezugspunkt:** Port A (Mitte der Muffenoeffnung d40, Einlauf) im Ursprung; Sammlerachse +X (Muffe oeffnet nach -X), Abgaenge zeigen nach +Z (Zapfen-Ende 74 ueber der Achse), Ende B bei X = Laenge geschlossen
+
+**Anzahl (Instanzen):** 1 Hauptverteiler am Geblaese (Quelle: R45 Abschnitt 4 Empfehlung 4 und 5; Netz Version 3)
+
+## Masse und Parameter
+
+| Parameter | Wert | Einheit | Herkunft |
+|---|---|---|---|
+| `pipe_d` | 40 | mm | [E] Netz K44: Hauptleitung d40 (R45 Abschnitt 4: d40 bei 200 l/min 3,2 m/s, Innen-Ø 36,2) |
+| `pitch` | 120 | mm | [A] Teilung wie lt_verteiler_d50 (Kugelhahn-Gehaeuse d25 = 43,25 plus Hebel; Ventil d40 = 60 mm) |
+| `x0` | 75 | mm | [A] erster Abgang: Muffe A d40 (Tiefe 26) plus Abgangsbohrung d40 (Radius 18,1) plus Steg |
+| `end_cap` | 10 | mm | [A] integrierte Endkappe (Wand) am Ende B wie lt_verteiler_d50 |
+
+Gesamt-Box (Messung): X -0.0 bis 710.0, Y -24.0 bis 24.0, Z -24.0 bis 74.0 mm; Koerper: 1.
+
+**Toleranzen / Spiel:** Der Pool-Abgang d40 des Hauptverteilers ist 0,25 mm duenner, seine Bohrung 0,2 mm kleiner als der Sammler (sonst braucht der Kernel 60 s je Schnitt, W37-2); fuer die Montage bedeutungslos (Handelsteile).
+
+## Werkstoff und Gewicht
+
+- Werkstoff: PVC-U (Formstueck, Sammler und Zapfen aus einem Koerper), Dichte 1.4 g/cm3, Farbe #3d6f9e ([A] wie lt_verteiler_d50 (W36))
+- Volumen (Messung, `solidcraft-cli eval`): 584.6 cm3 · Masse leer: 818 g (0.82 kg)
+- Gefuellt/in Betrieb: Luft fuehrend, keine Fuellmasse; Masse leer siehe Messung
+
+## Querschnitt / Profil
+
+Sammler Aussen 48 (Formstueck d40: 40 + 2 x 4), Innen-Ø 36.2 (Wand 1,9), Muffe A d40 Tiefe 26; Zapfen Aussen-Ø = d (Pool-Abgang 39,75), Zapfenende 74 ueber der Achse; Teilung 120, Laenge 710, Ende B mit 10 mm Endkappe geschlossen.
+
+## Ports (Anschluesse)
+
+| Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
+|---|---|---|---|
+| A Einlauf (Muffe) | PVC-U d40 (DN32), Klebemuffe, Einstecktiefe 26 | x 0, y 0, z 0 (Mitte der Oeffnung) | Oeffnung zeigt -X; Rohr d40 vom Geblaese (zwei Pumpen ueber Rueckschlagventil, T-Stueck d25 und Reduzierungen d25/d32, d32/d40 aus der Bibliothek) |
+| Abgang 1 Pool (K44) | PVC-U d40 (DN32), Zapfen, Aussen-Ø 39.75, Bohrung 36.0 | x 75, y 0, z 74 | zeigt +Z; Rohr oder Ventil wird aufgeklebt (Zapfen steckt in die Muffe) |
+| Abgang 2 Biofilter 1 (K45) | PVC-U d25 (DN20), Zapfen, Aussen-Ø 25, Bohrung 21.4 | x 195, y 0, z 74 | zeigt +Z; Rohr oder Ventil wird aufgeklebt (Zapfen steckt in die Muffe) |
+| Abgang 3 Biofilter 2 (K46) | PVC-U d25 (DN20), Zapfen, Aussen-Ø 25, Bohrung 21.4 | x 315, y 0, z 74 | zeigt +Z; Rohr oder Ventil wird aufgeklebt (Zapfen steckt in die Muffe) |
+| Abgang 4 Drittbecken (K49) | PVC-U d20 (DN15), Zapfen, Aussen-Ø 20, Bohrung 16.4 | x 435, y 0, z 74 | zeigt +Z; Rohr oder Ventil wird aufgeklebt (Zapfen steckt in die Muffe) |
+| Abgang 5 Zweitbecken (K51) | PVC-U d20 (DN15), Zapfen, Aussen-Ø 20, Bohrung 16.4 | x 555, y 0, z 74 | zeigt +Z; Rohr oder Ventil wird aufgeklebt (Zapfen steckt in die Muffe) |
+| Abgang 6 Absetzer (optional) (K47/K48) | PVC-U d20 (DN15), Zapfen, Aussen-Ø 20, Bohrung 16.4 | x 675, y 0, z 74 | zeigt +Z; Rohr oder Ventil wird aufgeklebt (Zapfen steckt in die Muffe) |
+
+## Verbindungen und Befestigungen
+
+- Einlauf: Pool 130 + Drittbecken 2 + Zweitbecken 5 = 137 l/min [E, Planwerte] plus Reserve fuer Biofilter 1/2 (K45/K46) und Absetzer (K47/K48); deren Menge ist OFFEN (Traegerhersteller, K1). Die Pumpe traegt bei 26 kPa grob 176 l/min [E R53, Vorbehalt]: Reserve 39 l/min
+- Sammler Innen-Ø 36.2: 137 l/min = 2.22 m/s; Pool-Abgang d40 (Bohrung 36.0) 130 l/min = 2.13 m/s; Spitze 205 l/min = 3.32 m/s
+- Drittbecken d20 (Bohrung 16.4) 2 l/min = 0.16 m/s; Zweitbecken d20 5 l/min = 0.39 m/s [E]
+
+## Herkunft (docs/provenance.md)
+
+| Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
+|---|---|---|---|---|
+| Hauptleitung d40 / Sammler | d40, Innen-Ø 36,2 | E | Netz K44 (R45 Abschnitt 4): d40 bei 200 l/min 3,2 m/s | hoch |
+| Abgaenge | 6 Zapfen: d40 (K44), d25 (K45), d25 (K46), d20 (K49), d20 (K51), d20 (K47/K48) | E | Netz K44 bis K51 (Hauptverteiler); Pool-Verteiler 4 Abgaenge d25 aus dem Auftrag W37-3 [A] | hoch |
+| Teilung 120, Zapfenueberstand 50, Endkappe 10 | wie lt_verteiler_d50 | A | docs/parts/leitungsteile.md Verteiler d50 (W36) | mittel |
+| Strom je Abgang | Pool 130 (Spitze 205), Dritt 2, Zweit 5, Biofilter und Absetzer offen | E/A | R45 Abschnitt 4; Netz K49 2 l/min; Zweitbecken 5 [A] | mittel |
+| Handelsteile (T, Reduzierung, Hahn, Rueckschlagventil) | Europa-Teileliste im Blatt | Q-Treffer | R52, R53, Auftrag W37-3 Europa-Teileliste | niedrig |
+
+## Referenz und Abweichung zum OBJ
+
+- Referenzbild: reference/ref-6-grow-tables-detail.jpg
+- Quelle der Masse: docs/research/R45-hydraulik-auslegung.md Abschnitt 4 (Zeilen 225 bis 279); data/leitungsnetz.json Version 3 K44 bis K51 (nur gelesen); docs/parts/leitungsteile.md Verteiler d50 (W36); scripts/workshop/leitung.py (od_f, wall_p, DEPTH)
+- Abweichung zum OBJ: Kein OBJ-Bestand (Luftverteiler fehlte, L06).
+
+## Montage (L4)
+
+1. Hauptverteiler am Geblaese im Schaltschrankbereich aufstellen (Standort E13 OFFEN); Rohr d40 aus der Geblaese-Baugruppe (T-Stueck d25 beider Pumpen, Reduzierungen d25/d32 und d32/d40) in Muffe A kleben
+2. Je Abgang Rueckschlagventil (Fluss von A nach B, nach oben) und Kugelhahn aufkleben, dann Rohr zum Verbraucher: Pool d40 (K44 zum Pool-Verteiler), Biofilter 1/2 d25 (K45/K46), Drittbecken d20 (K49), Zweitbecken d20 (K51), Absetzer d20 (K47/K48, optional)
+3. Jeden Abgang einzeln mit dem Hahn abgleichen und den Pool-Zulauf messen
+
+**Werkzeug:** Rohrschneider, Klebstoff PVC, Entgrater
+
+## Stueckliste-Zeile
+
+- Sammler d40 aus Handelsteilen (L21): 1 T-Stueck 40x40x40 (Pool), 2 T-Stuecke 40x25x40 (Biofilter), 3 T-Stuecke 40x20x40 (Drittbecken, Zweitbecken, Absetzer), 5 Rohrstuecke d40 zwischen den T-Stuecken, 1 Endkappe d40
+- je Abgang 1 Kugelhahn und 1 Rueckschlagventil (Pool d40; Biofilter d25; Drittbecken, Zweitbecken, Absetzer d20) aus der Bibliothek (lt_kugelhahn_d*, lt_rueckschlagventil_d* aus W39)
+- Das Modell ist der Formstueck-Verteiler des W36-Musters (ein Koerper); der Nachbau aus T-Stuecken ist die Beschaffungsvariante (Teilung 120 groesser als die T-Stueck-Laenge 100)
+
+## Teileliste mit Bezug in Europa (D76)
+
+Marke: [Q] Seite/Ausschnitt gelesen (nur Katalogzeile, Preise nicht geprueft), [R51] aus R51 uebernommen, [A] Annahme. Artikel vor der Bestellung gegen Mass und PN pruefen.
+
+| Teil | Mass | Europaeische Quelle (Hersteller/Haendler, Artikel) | Status |
+|---|---|---|---|
+| T-Stueck 40x25x40 und 40x20x40, Reduzierung 40x25 und 40x20 | PVC-U Klebemuffen | Bevo Profec (NL); schwarte-shop (DE); Weinmann-Schanz (DE) Art. 93 049 64 Reduktion 40 x 25 [Q-Treffer R52, Seite beim Abruf 404]; Vanmarcke GF 40 x 25 (BE) [Q R52] | beschaffbar (zwei Quellen fuer 40 x 25 nach R52); 40 x 20 nur ueber Reduzierungen aus der Bibliothek, Artikel offen |
+| Rueckschlagventil d40, d25, d20 (Klebemuffe) | d40 / d25 / d20, PVC-U | Baenninger Art. 75328, 75326, 75325 (schwarte-shop, DE), 15,67 bis 35,93 EUR [Q-Treffer, R53 Abschnitt 5, aus dem Blatt W37-3 uebernommen]; zweite Quelle (Bevo) Zuordnung ungeprueft | nur eine Quelle; Luft nicht freigegeben (Seite nennt Wasser, PN16), Oeffnungsdruck bei 130 l/min ungeprueft; Ersatz fuer kleine Leitungen Luftschlauch-Rueckschlagventile (Tetra CV4 u. a. [Q-Treffer R53]), fuer d40 keine belegt |
+| Kugelhahn d40 / d25 / d20 | PVC-U Klebemuffe, Hebel | d40: Bevo VDL Typ EIL d40 DN32 (NL) und Profec Typ 2000 [Q-Treffer R52]; d25, d20: Georg Fischer Typ 546 (RS-Seiten, AT/DE/NL) [Q-Treffer], Zuordnung d25/d20 ungeprueft | d40 beschaffbar (R52); d25 und d20 offen bis Datenblatt |
+| Endkappe d40 | PVC-U Klebekappe | Katalog offen, N-BESCHAFFUNG (W47); W39 baute nur Kappen d20 und d50 | offen |
+
+## Alternative lokale Fertigung
+
+Handelsteile (T-Stuecke, Reduzierungen, Kappe) aus dem Katalog; Eigenbau aus Rohr d40 mit Anbohrung und aufgeschweissten Abgaengen nur als Notloesung.
+
+## Renders
+
+- `renders/components/luftverteiler_6/luftverteiler_6-01-schraeg.png`
+- `renders/components/luftverteiler_6/luftverteiler_6-02-oben.png`
+- `renders/components/luftverteiler_6/luftverteiler_6-03-schnitt.png`
+
+## Pruefung
+
+- Gauntlet-Urteil: Kein Pruefer-Lauf (Auftrag W37-3: Selbstcheck; gebuendelter Pruefer W37-2/W37-3 folgt).
+- scripts/workshop/check_luft_verteiler.py luftverteiler_6 (Ergebnis renders/components/luftverteiler_6/check.txt): Koerper, Aussen-Ø, Laenge, Muffe A, Abgaenge (Zahl, Ø, Bohrung, Port-Stirnflaechen) und DN je Abgang gegen das Netz K44 bis K51, Geschwindigkeit im Sammler, Interferenz 0
+
+## Offene Fragen
+
+- Biofilter-Luft K45/K46 und Absetzer K47/K48: Menge OFFEN (Traegerhersteller, R45 Abschnitt 4); Einlaufstrom im Blatt nur 137 l/min plus Reserve
+- Rueckschlagventile: Luft nicht freigegeben (Seite nennt Wasser, PN16), Oeffnungsdruck bei 130 l/min ungeprueft
+- Kennlinie der Pumpe bei 26 kPa OFFEN (R53): Spitze 205 l/min nur mit beiden Pumpen
+- Standort des Hauptverteilers im Schaltschrankbereich OFFEN (E13)
+- Kreislaufvariante E20 beruehrt die Luft nicht (Variantenbefund, Luft laeuft getrennt vom Wasserumlauf)

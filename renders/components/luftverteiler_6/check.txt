@@ -1,0 +1,38 @@
+PASS luftverteiler_6: Koerperzahl (ein Koerper Verteiler): Ist 1, Soll 1
+PASS luftverteiler_6: Sammler Aussen-Ø = Formstueck d40 (48): Ist 47.9993, Soll 48 (+-0.1)
+PASS luftverteiler_6: Laenge 710 (letzter Abgang + 25 + Endkappe): Ist 710, Soll 710 (+-0.1)
+PASS luftverteiler_6: Zapfenende 74 ueber der Achse: Ist 74, Soll 74 (+-0.1)
+PASS luftverteiler_6: Muffe A d40: Zylinderflaeche r 20: Ist 1, Soll 1
+PASS luftverteiler_6: Sammlerbohrung: Zylinderflaeche r 18.1 (Innen-Ø 36.2): Ist 1, Soll 1
+PASS luftverteiler_6: Port A Muffe d40: Stirnflaeche im Ursprung, Oeffnung -X: Ist 1, Soll 1
+PASS luftverteiler_6: Abgaenge: 6 Zapfen-Stirnflaechen bei Z 74: Ist 6, Soll 6
+PASS luftverteiler_6: Abgang 1 Pool (K44): Stirnflaeche bei X 75: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 1 Zapfen Ø 39.75: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 1 Bohrung Ø 36: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 1 K44: DN d40 = Netz (40): Ist 40, Soll 40
+PASS luftverteiler_6: Abgang 2 Biofilter 1 (K45): Stirnflaeche bei X 195: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 2 Zapfen Ø 25: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 2 Bohrung Ø 21.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 2 K45: DN d25 = Netz (25): Ist 25, Soll 25
+PASS luftverteiler_6: Abgang 3 Biofilter 2 (K46): Stirnflaeche bei X 315: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 3 Zapfen Ø 25: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 3 Bohrung Ø 21.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 3 K46: DN d25 = Netz (25): Ist 25, Soll 25
+PASS luftverteiler_6: Abgang 4 Drittbecken (K49): Stirnflaeche bei X 435: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 4 Zapfen Ø 20: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 4 Bohrung Ø 16.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 4 K49: DN d20 = Netz (20): Ist 20, Soll 20
+PASS luftverteiler_6: Abgang 5 Zweitbecken (K51): Stirnflaeche bei X 555: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 5 Zapfen Ø 20: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 5 Bohrung Ø 16.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 5 K51: DN d20 = Netz (20): Ist 20, Soll 20
+PASS luftverteiler_6: Abgang 6 Absetzer (optional) (K47/K48): Stirnflaeche bei X 675: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 6 Zapfen Ø 20: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 6 Bohrung Ø 16.4: Zylinderflaeche: Ist 1, Soll 1
+PASS luftverteiler_6: Abgang 6 K47/K48: DN d20 = Netz (20): Ist 20, Soll 20
+PASS luftverteiler_6: Sammler Innen-Ø 36.2: 130 l/min = 2.11 m/s: Ist 2.10516, Soll 2.1 (+-0.05)
+INFO Spitze 205 l/min im Sammler: 3.32 m/s (R45: d40 bei 200 l/min 3,2 m/s)
+INFO Einlauf Hauptverteiler: Pool 130 + Drittbecken 2 + Zweitbecken 5 = 137 l/min plus Biofilter 1/2 und Absetzer (offen); 2.22 m/s im Sammler
+PASS luftverteiler_6: Interferenzen (Volumen > 0,5 mm3, ungeprueft zaehlt): Ist 0, Soll 0
+INFO Masse 818 g
+== luftverteiler_6: 34/34 PASS

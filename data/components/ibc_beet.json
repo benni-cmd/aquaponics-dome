@@ -102,9 +102,9 @@
    "herkunft": "Orchestrator 29.10.: standpipe_h = media_depth - 35 mm = 265 ueber der Medienunterkante (Wasserstand 35 mm unter der Oberflaeche, dazwischen SRAC 1 Zoll = 25 mm / R03 trockene Zone 2-5 cm); Variante FarmHub 220 (R03 Befund 5, widerspricht Befund 4); Gesamtlaenge ab Bulkhead = Stuetzhoehe + 265 [E]"
   },
   "standpipe_wall": {
-   "wert": 2,
+   "wert": 1.5,
    "einheit": "mm",
-   "herkunft": "[A] PVC-Rohr d25"
+   "herkunft": "Bevo PVC-U Druckrohr 25 x 1,5 PN10 Art. 0309025 [R51/R45]: ID 22,0, Querschnitt 380 mm2 (W40-BEET Auflage 4, M-BEET-TAUSCH 0b; vorher [A] 2 mm = 346 mm2)"
   },
   "bell_d": {
    "wert": 75,
@@ -447,26 +447,26 @@
    [
     "Reinigungsschacht d110",
     "KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm ab Platte",
-    "Ostendorf/Wavin/Funke KG- oder HT-Rohr DN100 (Baumarkt-/Baustoffhandel) [Q nur Stopfen gesehen]",
-    "beschaffbar; Rohr-Artikel beim Kauf eintragen"
+    "Artikel nicht nachgewiesen: KG-Rohr DN/OD 110 gibt es als Ostendorf KG 2000 (DN/OD 110 bis 630, 1000 mm, Muffe) [Q-Treffer ebay.de/crassus.de, kein Artikel gelesen]; Hersteller und Artikelnummer beim Kauf eintragen (Wavin/Funke/Ostendorf)",
+    "beschaffbar (Rohrklasse); Artikel nicht nachgewiesen; Laenge 320 mm ab Platte (Modell z 262 bis 582 lokal fuer 300 mm Medium + 20)"
    ],
    [
     "Tankverbinder (Wannenboden und Sperrboden)",
     "PVC-U Tankverbinder 32 mm x 1 Zoll, Klebemuffe d32 x Aussengewinde, 10 bar; im Modell D36 mit Flansch D50 [A]",
     "Georg Fischer/VDL ueber Bevo Art. 7018227 [Q]; Koi-Breeder PVC-U tank bushing [Q]",
-    "beschaffbar; Flanschmass [A] gegen Datenblatt pruefen"
+    "beschaffbar; Flanschmass D50 [A]: Datenblatt nicht gelesen (M-BEET-TAUSCH Auflage 5); Hinweis: VDL fuehrt 32 mm x 1 1/4 Zoll (Bevo 0100560), ein 32 x 1 Zoll Verbinder ist ueber Epco/Pipestock (UK) belegt, nicht ueber Bevo"
    ],
    [
     "Reduzierhuelse 32 x 25 (im Tankverbinder, je Beet 2 Stueck)",
     "PVC-U Klebefitting Reduktion kurz 32 x 25, Stutzen 32 / Muffe 25, 16 bar",
     "Schwarte (DE) Art. 75208; Bevo (NL/BE) VDL reducer bush PVC-U 32 x 25 mm Art. 7002656, Baulaenge 22 mm [Bevo-Katalogzeile, Datenblatt nicht gelesen]",
-    "beschaffbar (zwei unabhaengige Haendler); Baulaenge 22 mm gegen Huelsenlaenge Platte 15 mm / Boden 39 mm im Modell noch abzugleichen"
+    "beschaffbar (zwei Haendler); Baulaenge 22 mm: Bevo-Katalogzeile und Georg-Fischer-Angabe 'Length 22 mm' ueber RS-Suchtreffer (Seite 403, nicht gelesen); Auflage 5 M-BEET-TAUSCH: Datenblatt nicht gelesen, [A]; Modell Huelse Platte 15 / Boden 39 mm (Abweichung siehe docs/packages/m-beet-tausch.md)"
    ],
    [
     "Dichtband Plattenrand",
     "EPDM-Zellkautschuk geschlossenzellig, selbstklebend; Spalt 2 mm",
     "Steinbach & Vollmann (stuv.de, DE) EPDM-Zellkautschuk selbstklebend, wasserdicht laut Datenblatt; Graf-Dichtungen (DE) Moosgummi Vierkant 10 x 10 mm Z0701 ist NICHT selbstklebend (selbstklebend erst 10 x 20)",
-    "Werkstoff beschaffbar; Mass offen (z. B. 10 x 3 mm verpresst oder 10 x 20 Graf), Mass vor Bau festlegen; Quelle: Bezugsquellen-Nachtrag W40-BEET.md"
+    "nicht beschafft (Mass offen); Werkstoff EPDM-Zellkautschuk geschlossenzellig, selbstklebend, beschaffbar; Mass z. B. 10 x 3 mm verpresst oder 10 x 20 Graf vor Bau festlegen; Quelle: Bezugsquellen-Nachtrag W40-BEET.md"
    ],
    [
     "Kleber PVC-U",

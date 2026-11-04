@@ -103,7 +103,14 @@ def main(typs):
         ck.eq(f"{typ} Reinigungsschacht D", rs["max"][0] - rs["min"][0], p["shaft_d"], 0.1)
         ck.eq(f"{typ} Reinigungsschacht steht auf dem Sperrboden", rs["min"][2], sb["bbox"]["max"][2], 0.01)
         ck.eq(f"{typ} Reinigungsschacht Oberkante ueber Medienoberflaeche", rs["max"][2] - m["max"][2], p["shaft_over"], 0.5)
-        ck.eq(f"{typ} Reinigungsschacht Lage x = -Li/2 + 250", (rs["min"][0] + rs["max"][0]) / 2, -Li_ / 2 + 250, 0.5)
+        # M-BEET-TAUSCH 0c: Schacht auf einer Zellmitte des Netztopf-Rasters; Soll hier unabhaengig aus params.json (pot_pitch, pot_margin) gerechnet, nicht aus dem Generator
+        prm = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8")); pitch, mar = prm["pot_pitch"]["value"], prm["pot_margin"]["value"]
+        nu_, nv_ = int((L - 2 * mar) // pitch) + 1, int((W - 2 * mar) // pitch) + 1
+        grid = [((i - (nu_ - 1) / 2) * pitch, (j - (nv_ - 1) / 2) * pitch) for i in range(nu_) for j in range(nv_)]
+        sx_, sy_ = (rs["min"][0] + rs["max"][0]) / 2, (rs["min"][1] + rs["max"][1]) / 2
+        dmin = min(math.hypot(sx_ - u, sy_ - v) for u, v in grid)
+        ck.eq(f"{typ} Reinigungsschacht in der Naehe der alten Lage -Li/2 + 250 (hoechstens ein Rasterschritt {pitch})", 1 if abs(sx_ - (-Li_ / 2 + 250)) <= pitch else 0, 1)
+        ck.eq(f"{typ} Abstand Schachtachse zu jedem Netztopf des Rasters {dmin:.1f} mm >= 87 (Schachtradius 55 + Kragenradius 32; Raster {nu_} x {nv_}, {len(grid)} Toepfe)", 1 if dmin >= 87 else 0, 1)
         ck.eq(f"{typ} Schachtkappe sitzt auf dem Schacht", B["Schachtkappe"]["bbox"]["min"][2], rs["max"][2], 0.01)
         # Reduktion d40 x d25 unter dem Port, Reduzierhuelsen 32/25 in Boden- und Plattenhuelse
         rd = B["Reduktion"]["bbox"]

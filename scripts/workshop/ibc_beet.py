@@ -1,6 +1,6 @@
 """IBC-Beet T30 (aussen_933 / aussen_993 / aussen_800 / innen_933): Wanne, Stuetzen, Sperrboden (V3, ungelocht), Medium (EIN Koerper), Glockensiphon mit Kerben, Medienschutz, Reinigungsschacht, Reduktion, Zulaufrohr.
 Bezugspunkt: Mitte Wannenunterseite. Aufruf: python scripts/workshop/ibc_beet.py [typ ...] [--render]"""
-import sys, os, math
+import sys, os, math, json
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 
@@ -28,6 +28,18 @@ def tube(b, name, od, wall, base, axis, height, op="new", targets=None):
     nb = name if op == "new" else targets[0]
     b.add("solid.cylinder", diameter=od - 2 * wall, height=height + 2, base=[base[i] - axis[i] for i in range(3)], axis=axis, operation="cut", targets=[nb], name="B_" + name)
 
+def shaft_cell(L, W, u_ziel):
+    """M-BEET-TAUSCH 0c: Lage (x, y) des Reinigungsschachts auf einer ZELLMITTE des Netztopf-Rasters (gen_dome.bed_pot_grid: pot_pitch, pot_margin aus data/params.json, Raster symmetrisch zur Beetmitte, (u laengs, v quer)):
+    je vier Toepfe im Abstand pitch*sqrt(2)/2 (92 mm, Soll >= Schachtradius 55 + Kragenradius 32 = 87). u: Zellmitte nahe u_ziel (alte Lage -Li/2 + 250); v: Zellmitte nahe 0 (ungerade Zeilenzahl: +pitch/2)."""
+    P = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))
+    pitch, mar = P["pot_pitch"]["value"], P["pot_margin"]["value"]
+    nu, nv = int((L - 2 * mar) // pitch) + 1, int((W - 2 * mar) // pitch) + 1
+    us = [(i - (nu - 1) / 2) * pitch + pitch / 2 for i in range(nu - 1)]      # Zellmitten laengs
+    vs = [(j - (nv - 1) / 2) * pitch + pitch / 2 for j in range(nv - 1)]      # Zellmitten quer
+    u = min(us, key=lambda x: (abs(x - u_ziel), x))
+    v = min(vs, key=lambda x: (abs(x), -x))
+    return u, v
+
 def build(typ):
     p, d = sc.load_params("ibc_beet")
     T = d["typen"][typ]
@@ -45,7 +57,7 @@ def build(typ):
     z_m0 = z_ms - p["media_depth"]               # Medienunterkante = Oberkante Siebboden
     z_g0 = z_m0 - p["grid_t"]                    # Unterkante Siebboden
     x_sp = Li / 2 - 200                          # Siphon nahe dem Ablaufende (+X)
-    x_sh = -Li / 2 + 250                         # Reinigungsschacht am Zulaufende (T30e-5)
+    x_sh, y_sh = shaft_cell(L, W, -Li / 2 + 250)  # Reinigungsschacht am Zulaufende (T30e-5), auf einer Zellmitte des Topfrasters (M-BEET-TAUSCH 0c; vorher x = -Li/2 + 250, y = 0: Toepfe in der Schachtwand)
     y_in, z_in = -(Wi / 2 - 50), H - p["inflow_below_rim"]
     if fase:                                     # Zulauf durch die gerade Stirnwand: y_in vor dem Beginn der Eckenfase (Befund Spec-Pruefer W26: bei y -392 lag die Wand schraeg und das Rohr ohne Loch)
         y_in = -(Ww / 2 - (fase - ((W - Ww) / 2.0) * (2 - math.sqrt(2))) - 40)
@@ -94,7 +106,7 @@ def build(typ):
     rr(b, z_m0, Wi - 2 * g, Li - 2 * g, cr - g, "Medium_Kontur"); b.add("sketch.finish")
     b.add("solid.extrude", distance=p["media_depth"], name="Mediumblock", body_name="Medium")
     b.add("solid.cylinder", diameter=p["guard_d"], height=p["media_depth"] + 2, base=[x_sp, 0, z_m0 - 1], operation="cut", targets=["Medium"], name="Medium_Schutzloch")
-    b.add("solid.cylinder", diameter=p["shaft_d"], height=p["media_depth"] + 2, base=[x_sh, 0, z_m0 - 1], operation="cut", targets=["Medium"], name="Medium_Schachtloch")
+    b.add("solid.cylinder", diameter=p["shaft_d"], height=p["media_depth"] + 2, base=[x_sh, y_sh, z_m0 - 1], operation="cut", targets=["Medium"], name="Medium_Schachtloch")
     b.add("material.assign", bodies=["Medium"], material="Medium Blaehton")
     # --- Glockensiphon
     b.add("component.activate", component=root)
@@ -161,20 +173,20 @@ def build(typ):
     b.add("component.activate", component=root)
     b.add("component.create", name="T30g_Schacht")
     sh_h = p["media_depth"] + p["shaft_over"]
-    tube(b, "Reinigungsschacht", p["shaft_d"], p["shaft_wall"], [x_sh, 0, z_m0], [0, 0, 1], sh_h)
+    tube(b, "Reinigungsschacht", p["shaft_d"], p["shaft_wall"], [x_sh, y_sh, z_m0], [0, 0, 1], sh_h)
     sk = p["shaft_kerbe"]
     for k, sg in enumerate((1, -1)):
-        b.add("solid.box", length=sk, width=p["shaft_wall"] + 8, height=sk + 1, center=[x_sh, sg * (p["shaft_d"] / 2 - p["shaft_wall"] / 2), z_m0 - 1 + (sk + 1) / 2],
+        b.add("solid.box", length=sk, width=p["shaft_wall"] + 8, height=sk + 1, center=[x_sh, y_sh + sg * (p["shaft_d"] / 2 - p["shaft_wall"] / 2), z_m0 - 1 + (sk + 1) / 2],
               operation="cut", targets=["Reinigungsschacht"], name=f"Schachtkerbe_{k}")
     b.add("material.assign", bodies=["Reinigungsschacht"], material="PVC grau Beet")
-    b.add("solid.cylinder", diameter=p["shaft_d"], height=p["cap_h"], base=[x_sh, 0, z_m0 + sh_h], operation="new", name="Kappe_Schacht", body_name="Schachtkappe")
+    b.add("solid.cylinder", diameter=p["shaft_d"], height=p["cap_h"], base=[x_sh, y_sh, z_m0 + sh_h], operation="new", name="Kappe_Schacht", body_name="Schachtkappe")
     b.add("material.assign", bodies=["Schachtkappe"], material="PVC grau Beet")
     b.add("component.activate", component=root)
     for nm, pn, ds in ((root, "T30", d["beschreibung"]), ("T30a_Wanne", "T30a", "Wanne halbe IBC mit Randwulst, Bohrungen"), ("T30b_Stuetzen", "T30b", "Stuetzklotz 60x60 unter dem Siebboden"),
                        ("T30c_Siebboden", "T30c", "Sperrboden PP 8 mm ohne Lochung (V3, D77), Durchfuehrung d36 fuer die Plattenhuelse"), ("T30d_Medium", "T30d", "Medium Blaehton/Kies als ein Koerper"),
                        ("T30e_Siphon", "T30e", "Glockensiphon: Tankverbinder mit Reduzierhuelse 32/25 (Boden und Platte), Standrohr d25, Reduktion d40 x d25, Glocke d75 mit 4 Kerben, Medienschutz Lochblech d110 mit Kappe"), ("T30f_Zulauf", "T30f", "Zulauf-Tropfrohr d20"), ("T30g_Schacht", "T30g", "Reinigungsschacht d110 mit Kappe")):
         b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
-    info = dict(L=L, W=W, H=H, z_ms=z_ms, z_m0=z_m0, z_g0=z_g0, x_sp=x_sp, x_sh=x_sh, y_in=y_in, z_in=z_in, n_dr=n_dr, nx=nx)
+    info = dict(L=L, W=W, H=H, z_ms=z_ms, z_m0=z_m0, z_g0=z_g0, x_sp=x_sp, x_sh=x_sh, y_sh=y_sh, y_in=y_in, z_in=z_in, n_dr=n_dr, nx=nx)
     return b, info
 
 def render(typ, path, info):

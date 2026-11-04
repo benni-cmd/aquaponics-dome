@@ -23,7 +23,7 @@
 | `post_nx` | 8 |  | [A] Stuetzen in Laengsrichtung: aussen 8, innen 5; 3 Reihen (y = +-(Wi/2-100) und 0) |
 | `standpipe_d` | 25 | mm | R03: Standrohr D25 (FarmHub 2,5 cm PVC) |
 | `standpipe_over` | 265 | mm | Orchestrator 29.10.: standpipe_h = media_depth - 35 mm = 265 ueber der Medienunterkante (Wasserstand 35 mm unter der Oberflaeche, dazwischen SRAC 1 Zoll = 25 mm / R03 trockene Zone 2-5 cm); Variante FarmHub 220 (R03 Befund 5, widerspricht Befund 4); Gesamtlaenge ab Bulkhead = Stuetzhoehe + 265 [E] |
-| `standpipe_wall` | 2 | mm | [A] PVC-Rohr d25 |
+| `standpipe_wall` | 1.5 | mm | Bevo PVC-U Druckrohr 25 x 1,5 PN10 Art. 0309025 [R51/R45]: ID 22,0, Querschnitt 380 mm2 (W40-BEET Auflage 4, M-BEET-TAUSCH 0b; vorher [A] 2 mm = 346 mm2) |
 | `bell_d` | 75 | mm | R03: Glocke D75 |
 | `bell_h` | 295 | mm | [E] Glocke = Standrohrhoehe + 30 mm (R03: 250 bei Standrohr 220); oben verschlossen |
 | `bell_wall` | 3 | mm | [A] PVC-Rohr d75 |
@@ -69,11 +69,11 @@ Gesamt-Box (Messung, Variante ibc_beet_aussen_933): X -1516.5 bis 1476.5, Y -466
 ## Werkstoff und Gewicht
 
 - Werkstoff: HDPE weiss (Wanne), PVC grau (Rohre), Kies/Blaehton (Medium), Dichte 0.95 g/cm3, Farbe #e9ebe8 (ref-5/ref-6 weisse Wannen (HDPE IBC-Innenbehaelter 0,95 g/cm3); Siebboden/Stuetzen PP 0,91, Rohre PVC-U 1,4 g/cm3)
-- Volumen (Messung, Variante ibc_beet_aussen_933, `solidcraft-cli eval`): 77510.2 cm3 · Masse leer (ohne Medium): 73606 g (73.61 kg)
-- Variante `ibc_beet_aussen_933`: 73.61 kg leer (ohne Medium)
-- Variante `ibc_beet_aussen_993`: 76.02 kg leer (ohne Medium)
-- Variante `ibc_beet_aussen_800`: 63.69 kg leer (ohne Medium)
-- Variante `ibc_beet_innen_933`: 48.79 kg leer (ohne Medium)
+- Volumen (Messung, Variante ibc_beet_aussen_933, `solidcraft-cli eval`): 77491.4 cm3 · Masse leer (ohne Medium): 73579 g (73.58 kg)
+- Variante `ibc_beet_aussen_933`: 73.58 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_993`: 76.00 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_800`: 63.67 kg leer (ohne Medium)
+- Variante `ibc_beet_innen_933`: 48.77 kg leer (ohne Medium)
 - Gefuellt/in Betrieb: aussen_933: leer ohne Medium 73.6 kg; Medium 761 l = 685 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 269 l = 269 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 1027 kg | aussen_993: leer ohne Medium 76.0 kg; Medium 813 l = 732 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 287 l = 287 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 1095 kg | aussen_800: leer ohne Medium 63.7 kg; Medium 575 l = 517 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 203 l = 203 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 784 kg | innen_933: leer ohne Medium 48.8 kg; Medium 467 l = 420 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 165 l = 165 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 634 kg
 
 ## Querschnitt / Profil
@@ -178,10 +178,10 @@ Marke: [Q] Seite/Ausschnitt gelesen (nur Katalogzeile, Preise nicht geprueft), [
 | Glocke d75 | PVC-U Rohr d75 (2,9 oder 3,6 mm) plus Klebekappe d75, Laenge 295 mm saegen, 4 Kerben 10 x 12 saegen | Bevo Druckrohr PVC-U 75 mm x 2,9 mm Art. 7027594 bzw. x 3,6 mm Art. 0309175 [Q]; Kappe Bevo Art. 0160592 [Q], Klebefitting-Kappen auch bei Schwarte (DE) | beschaffbar; Modell rechnet Wand 3 mm: auf 2,9 oder 3,6 mm abstimmen |
 | Schutzkorb Lochblech | Edelstahl 1.4301, 1,5 mm, Rundloch 5 mm, Teilung 8, Zuschnitt etwa 366 x 340 mm, gerollt, genietet | ehorst.de (DE) Lochblech Edelstahl 1.4301 RV 5-8 1,50 1000 x 2000 mm DIN 24041, Art. 1003438 [R51]; Zuschnitt und Rollen beim Metallbauer (Entscheidung Ben 04.11.2026, D77) | beschaffbar als Tafelware; Anfrage Metallbauer: Ben (offen) |
 | Kappe Schutzkorb und Schacht (lose) | Muffenstopfen DN110, PVC-U/PP | Ostendorf (DE) KG Muffenstopfen DN/OD 110, Art. 220620 und HT-Safe M Muffenstopfen PP D110 (ueber Vanmarcke) [Q]; Hornbach Art. 267389/267185 [Q] | beschaffbar |
-| Reinigungsschacht d110 | KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm ab Platte | Ostendorf/Wavin/Funke KG- oder HT-Rohr DN100 (Baumarkt-/Baustoffhandel) [Q nur Stopfen gesehen] | beschaffbar; Rohr-Artikel beim Kauf eintragen |
-| Tankverbinder (Wannenboden und Sperrboden) | PVC-U Tankverbinder 32 mm x 1 Zoll, Klebemuffe d32 x Aussengewinde, 10 bar; im Modell D36 mit Flansch D50 [A] | Georg Fischer/VDL ueber Bevo Art. 7018227 [Q]; Koi-Breeder PVC-U tank bushing [Q] | beschaffbar; Flanschmass [A] gegen Datenblatt pruefen |
-| Reduzierhuelse 32 x 25 (im Tankverbinder, je Beet 2 Stueck) | PVC-U Klebefitting Reduktion kurz 32 x 25, Stutzen 32 / Muffe 25, 16 bar | Schwarte (DE) Art. 75208; Bevo (NL/BE) VDL reducer bush PVC-U 32 x 25 mm Art. 7002656, Baulaenge 22 mm [Bevo-Katalogzeile, Datenblatt nicht gelesen] | beschaffbar (zwei unabhaengige Haendler); Baulaenge 22 mm gegen Huelsenlaenge Platte 15 mm / Boden 39 mm im Modell noch abzugleichen |
-| Dichtband Plattenrand | EPDM-Zellkautschuk geschlossenzellig, selbstklebend; Spalt 2 mm | Steinbach & Vollmann (stuv.de, DE) EPDM-Zellkautschuk selbstklebend, wasserdicht laut Datenblatt; Graf-Dichtungen (DE) Moosgummi Vierkant 10 x 10 mm Z0701 ist NICHT selbstklebend (selbstklebend erst 10 x 20) | Werkstoff beschaffbar; Mass offen (z. B. 10 x 3 mm verpresst oder 10 x 20 Graf), Mass vor Bau festlegen; Quelle: Bezugsquellen-Nachtrag W40-BEET.md |
+| Reinigungsschacht d110 | KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm ab Platte | Artikel nicht nachgewiesen: KG-Rohr DN/OD 110 gibt es als Ostendorf KG 2000 (DN/OD 110 bis 630, 1000 mm, Muffe) [Q-Treffer ebay.de/crassus.de, kein Artikel gelesen]; Hersteller und Artikelnummer beim Kauf eintragen (Wavin/Funke/Ostendorf) | beschaffbar (Rohrklasse); Artikel nicht nachgewiesen; Laenge 320 mm ab Platte (Modell z 262 bis 582 lokal fuer 300 mm Medium + 20) |
+| Tankverbinder (Wannenboden und Sperrboden) | PVC-U Tankverbinder 32 mm x 1 Zoll, Klebemuffe d32 x Aussengewinde, 10 bar; im Modell D36 mit Flansch D50 [A] | Georg Fischer/VDL ueber Bevo Art. 7018227 [Q]; Koi-Breeder PVC-U tank bushing [Q] | beschaffbar; Flanschmass D50 [A]: Datenblatt nicht gelesen (M-BEET-TAUSCH Auflage 5); Hinweis: VDL fuehrt 32 mm x 1 1/4 Zoll (Bevo 0100560), ein 32 x 1 Zoll Verbinder ist ueber Epco/Pipestock (UK) belegt, nicht ueber Bevo |
+| Reduzierhuelse 32 x 25 (im Tankverbinder, je Beet 2 Stueck) | PVC-U Klebefitting Reduktion kurz 32 x 25, Stutzen 32 / Muffe 25, 16 bar | Schwarte (DE) Art. 75208; Bevo (NL/BE) VDL reducer bush PVC-U 32 x 25 mm Art. 7002656, Baulaenge 22 mm [Bevo-Katalogzeile, Datenblatt nicht gelesen] | beschaffbar (zwei Haendler); Baulaenge 22 mm: Bevo-Katalogzeile und Georg-Fischer-Angabe 'Length 22 mm' ueber RS-Suchtreffer (Seite 403, nicht gelesen); Auflage 5 M-BEET-TAUSCH: Datenblatt nicht gelesen, [A]; Modell Huelse Platte 15 / Boden 39 mm (Abweichung siehe docs/packages/m-beet-tausch.md) |
+| Dichtband Plattenrand | EPDM-Zellkautschuk geschlossenzellig, selbstklebend; Spalt 2 mm | Steinbach & Vollmann (stuv.de, DE) EPDM-Zellkautschuk selbstklebend, wasserdicht laut Datenblatt; Graf-Dichtungen (DE) Moosgummi Vierkant 10 x 10 mm Z0701 ist NICHT selbstklebend (selbstklebend erst 10 x 20) | nicht beschafft (Mass offen); Werkstoff EPDM-Zellkautschuk geschlossenzellig, selbstklebend, beschaffbar; Mass z. B. 10 x 3 mm verpresst oder 10 x 20 Graf vor Bau festlegen; Quelle: Bezugsquellen-Nachtrag W40-BEET.md |
 | Kleber PVC-U | Klebstoff nach DIN EN 14814 | Henkel Tangit PVC-U Plus (Technisches Merkblatt, DIN EN 14814, EN 1452); toom Rohrklebstoff PVC-U Plus 125 g, Art. 8150236 | beschaffbar |
 
 ## Alternative lokale Fertigung

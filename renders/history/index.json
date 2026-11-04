@@ -2588,5 +2588,45 @@
   "note": "M10-S2R Heber d75, Runde 66 (Draufsicht und Grabenschnitt z=165)",
   "commit": "cdff1da",
   "source": "renders/leitungen-s2r-66-graben-schnitt-l2.png"
+ },
+ {
+  "file": "20261104-024256_werkstatt_w37-2_schwimmerventil-pool-01-schraeg.png",
+  "sha": "dd1372787339494d",
+  "time": "2026-11-04 02:42:56",
+  "role": "werkstatt",
+  "subject": "w37-2",
+  "note": "W37-2 Frischwasser",
+  "commit": "d719bff",
+  "source": "renders/components/schwimmerventil_pool/schwimmerventil_pool-01-schraeg.png"
+ },
+ {
+  "file": "20261104-024337_werkstatt_w37-2_becken-dritt-klein-03-stutzen.png",
+  "sha": "233c5828687f3087",
+  "time": "2026-11-04 02:43:37",
+  "role": "werkstatt",
+  "subject": "w37-2",
+  "note": "W37-2 Frischwasser",
+  "commit": "d719bff",
+  "source": "renders/components/becken_dritt_klein/becken_dritt_klein-03-stutzen.png"
+ },
+ {
+  "file": "20261104-024527_werkstatt_w37-2_aktivkohle-station-01-schraeg.png",
+  "sha": "63cc26841c7d08a8",
+  "time": "2026-11-04 02:45:27",
+  "role": "werkstatt",
+  "subject": "w37-2",
+  "note": "W37-2 Frischwasser",
+  "commit": "d719bff",
+  "source": "renders/components/aktivkohle_station/aktivkohle_station-01-schraeg.png"
+ },
+ {
+  "file": "20261104-024540_werkstatt_w37-2_aktivkohle-station-02-oben.png",
+  "sha": "212b9ed2bf4bce65",
+  "time": "2026-11-04 02:45:40",
+  "role": "werkstatt",
+  "subject": "w37-2",
+  "note": "W37-2 Frischwasser",
+  "commit": "d719bff",
+  "source": "renders/components/aktivkohle_station/aktivkohle_station-02-oben.png"
  }
 ]

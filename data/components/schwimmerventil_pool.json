@@ -5,50 +5,161 @@
  "beschreibung": "Schwimmerventil am Pool (W37-2, K40, R45 Abschnitt 5): Handelsteil 3/4 Zoll mit Klebemuffen-Uebergang d25, Hebelarm und Schwimmerkugel; Kugel schwimmt auf dem Wasserspiegel Z 515. Masse Platzhalter, Fabrikat und Schliessdruck mit Drossel offen. Zulauf OFFEN (E20): in Variante B speist ggf. der Ring statt der Filterstation",
  "quelle_masse": "docs/research/R45-hydraulik-auslegung.md Abschnitt 5 (Spitze 10 l/min, offener Punkt 4: Schliessdruck); docs/research/R53-europa-frischwasser-luft.md (Schwimmerventil 3/4: R+M Suttner 701403, Pegler Yorkshire; Q); data/layout.json pool2.water_z 515 (nur gelesen), data/params.json pool_rim 650",
  "parameter": {
-  "pipe_d": {"wert": 25, "einheit": "mm", "herkunft": "[E] Netz K40: Zulauf d25"},
-  "uebergang_l": {"wert": 40, "einheit": "mm", "herkunft": "[A] Klebemuffe d25 (Tiefe 19) plus Gewindeteil 3/4 Zoll; Platzhalter"},
-  "ventil_d": {"wert": 38, "einheit": "mm", "herkunft": "[A] Ventilgehaeuse 3/4 Zoll Kunststoff (R+M Suttner 701403, R53; Maß nicht aus dem Datenblatt gelesen)"},
-  "ventil_l": {"wert": 80, "einheit": "mm", "herkunft": "[A] Ventilgehaeuse Laenge (Platzhalter)"},
-  "hebel_x": {"wert": 100, "einheit": "mm", "herkunft": "[A] Lage des Drehpunkts hinter dem Uebergang"},
-  "wange_t": {"wert": 4, "einheit": "mm", "herkunft": "[A] Wange der Hebelaufnahme (zwei Wangen links und rechts des Arms)"},
-  "arm_d": {"wert": 8, "einheit": "mm", "herkunft": "[A] Hebelarm Ø 8"},
-  "arm_dx": {"wert": 260, "einheit": "mm", "herkunft": "[A] Horizontaler Abstand Drehpunkt bis Kugelmitte"},
-  "kugel_d": {"wert": 110, "einheit": "mm", "herkunft": "[A] Schwimmerkugel Ø 110 (PE, Handelsmass offen)"},
-  "ventil_h": {"wert": 195, "einheit": "mm", "herkunft": "[E] Rohrachse ueber dem Wasserspiegel: Rand Z 650 minus Spiegel Z 515 = 135, plus 60 Montagehoehe ueber dem Rand [A]"},
-  "kugel_auf": {"wert": 20, "einheit": "mm", "herkunft": "[A] Kugelmitte liegt 20 mm ueber dem Wasserspiegel (Kugel schwimmt zu ca. 60 Prozent eingetaucht, Ventil geschlossen)"},
-  "water_z": {"wert": 515, "einheit": "mm", "herkunft": "[E] data/layout.json pool2.water_z (nur gelesen); Einbau: Rohrachse bei Z 515 + ventil_h = 710"}
+  "pipe_d": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[E] Netz K40: Zulauf d25"
+  },
+  "uebergang_l": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Klebemuffe d25 (Tiefe 19) plus Gewindeteil 3/4 Zoll; Platzhalter"
+  },
+  "ventil_d": {
+   "wert": 38,
+   "einheit": "mm",
+   "herkunft": "[A] Ventilgehaeuse 3/4 Zoll Kunststoff (R+M Suttner 701403, R53; Maß nicht aus dem Datenblatt gelesen)"
+  },
+  "ventil_l": {
+   "wert": 80,
+   "einheit": "mm",
+   "herkunft": "[A] Ventilgehaeuse Laenge (Platzhalter)"
+  },
+  "hebel_x": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Lage des Drehpunkts hinter dem Uebergang"
+  },
+  "wange_t": {
+   "wert": 4,
+   "einheit": "mm",
+   "herkunft": "[A] Wange der Hebelaufnahme (zwei Wangen links und rechts des Arms)"
+  },
+  "arm_d": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A] Hebelarm Ø 8"
+  },
+  "arm_dx": {
+   "wert": 260,
+   "einheit": "mm",
+   "herkunft": "[A] Horizontaler Abstand Drehpunkt bis Kugelmitte"
+  },
+  "kugel_d": {
+   "wert": 110,
+   "einheit": "mm",
+   "herkunft": "[A] Schwimmerkugel Ø 110 (PE, Handelsmass offen)"
+  },
+  "ventil_h": {
+   "wert": 195,
+   "einheit": "mm",
+   "herkunft": "[E] Rohrachse ueber dem Wasserspiegel: Rand Z 650 minus Spiegel Z 515 = 135, plus 60 Montagehoehe ueber dem Rand [A]"
+  },
+  "kugel_auf": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Kugelmitte liegt 20 mm ueber dem Wasserspiegel (Kugel schwimmt zu ca. 60 Prozent eingetaucht, Ventil geschlossen)"
+  },
+  "water_z": {
+   "wert": 515,
+   "einheit": "mm",
+   "herkunft": "[E] data/layout.json pool2.water_z (nur gelesen); Einbau: Rohrachse bei Z 515 + ventil_h = 710"
+  }
  },
- "werkstoff": {"name": "Kunststoff PP (Gehaeuse, Hebelarm, Kugel), PVC-U (Uebergang)", "dichte_g_cm3": 0.91, "farbe": "#e8e5d8", "herkunft": "[A] Handelsteil, Werkstoff nach Katalog offen"},
- "anzahl": {"soll": "1 Schwimmerventil am Pool (Zweitbecken: eigenes, Montage)", "quelle": "Netz Version 3: K40 nach pool; R45 Abschnitt 5"},
+ "werkstoff": {
+  "name": "Kunststoff PP (Gehaeuse, Hebelarm, Kugel), PVC-U (Uebergang)",
+  "dichte_g_cm3": 0.91,
+  "farbe": "#e8e5d8",
+  "herkunft": "[A] Handelsteil, Werkstoff nach Katalog offen"
+ },
+ "anzahl": {
+  "soll": "1 Schwimmerventil am Pool (Zweitbecken: eigenes, Montage)",
+  "quelle": "Netz Version 3: K40 nach pool; R45 Abschnitt 5"
+ },
  "bezugspunkt": "Port A (Mitte der Muffenoeffnung) im Ursprung; Rohrachse +X (Zulauf kommt aus -X), Z hoch, Hebelarm zeigt nach unten zum Wasser; Einbau: Rohrachse bei Z 710 im Modellrahmen (Spiegel 515 + 195)",
  "herkunft_tabelle": [
-  ["Schwimmerventil 3/4 Zoll, Spitze 10 l/min", "Ventilgehaeuse Ø 38 x 80", "A", "R53 Abschnitt Europa-Teileliste: R+M Suttner Art. 701403 (Kunststoff, max. 22 l/min, Q), Pegler Yorkshire 3/4 Messing; Katalog offen, N-BESCHAFFUNG", "niedrig"],
-  ["Rohrachse ueber dem Wasserspiegel", "195 mm", "E", "data/params.json pool_rim 650 minus layout pool2.water_z 515 = 135, plus 60 [A]", "mittel"],
-  ["Schwimmerkugel auf Spiegel", "Mitte 20 mm ueber Z 515", "A", "Schwimmerventil-Praxis; Kugel Ø 110", "niedrig"],
-  ["Schliessdruck mit Drossel", "offen", "offen", "R45 offener Punkt 4: Verhalten des Durchflussbegrenzers (4 l/min) mit Schwimmerventil, Fabrikat offen", "-"]
+  [
+   "Schwimmerventil 3/4 Zoll, Spitze 10 l/min",
+   "Ventilgehaeuse Ø 38 x 80",
+   "A",
+   "R53 Abschnitt Europa-Teileliste: R+M Suttner Art. 701403 (Kunststoff, max. 22 l/min, Q), Pegler Yorkshire 3/4 Messing; Katalog offen, N-BESCHAFFUNG",
+   "niedrig"
+  ],
+  [
+   "Rohrachse ueber dem Wasserspiegel",
+   "195 mm",
+   "E",
+   "data/params.json pool_rim 650 minus layout pool2.water_z 515 = 135, plus 60 [A]",
+   "mittel"
+  ],
+  [
+   "Schwimmerkugel auf Spiegel",
+   "Mitte 20 mm ueber Z 515",
+   "A",
+   "Schwimmerventil-Praxis; Kugel Ø 110",
+   "niedrig"
+  ],
+  [
+   "Schliessdruck mit Drossel",
+   "offen",
+   "offen",
+   "R45 offener Punkt 4: Verhalten des Durchflussbegrenzers (4 l/min) mit Schwimmerventil, Fabrikat offen",
+   "-"
+  ]
  ],
  "blatt": {
   "funktion": "Haelt den Wasserspiegel im Pool auf Z 515: sinkt der Spiegel (Verdunstung, Wasserwechsel), kippt die Schwimmerkugel nach unten, das Ventil oeffnet und das entchlorte Frischwasser aus der Aktivkohle-Station (K40, Spitze 10 l/min, Mittel 0,47 l/min) laeuft nach; steigt der Spiegel, schliesst es. Handelsteil, keine Eigenkonstruktion. Zulauf OFFEN (E20): In Variante B speist der Ring (d90, Z 2100/2245) auch das Becken-Frischwasser (R47 Definition B); ob K40 dann aus dem Ring statt aus der Filterstation kommt, ist OFFEN (E20). Das Bauteil selbst gilt in jeder Variante, die Aktivkohle-Station bleibt davor.",
   "querschnitt": "Klebemuffe d25 (Aussen 32,25, Tiefe 19) mit Gewindeteil, Ventilgehaeuse Ø 38 x 80 liegend, Hebelarm Ø 8 mit Wangenhalter, Schwimmerkugel Ø 110; Hebelarm 260 mm horizontal, Kugelmitte 175 mm unter der Rohrachse.",
   "toleranzen": "Hebelarm und Kugel sind ein Koerper (Arm 5 mm in die Kugel gesteckt); Maße Platzhalter.",
   "ports": [
-   ["A Zulauf K40 (Muffe)", "PVC-U d25 (DN20), Klebemuffe, Einstecktiefe 19", "x 0, y 0, z 0 (Mitte der Oeffnung)", "Oeffnung zeigt -X; das Rohr d25 von der Aktivkohle-Station wird eingesteckt. Zulauf OFFEN (E20)"]
+   [
+    "A Zulauf K40 (Muffe)",
+    "PVC-U d25 (DN20), Klebemuffe, Einstecktiefe 19",
+    "x 0, y 0, z 0 (Mitte der Oeffnung)",
+    "Oeffnung zeigt -X; das Rohr d25 von der Aktivkohle-Station wird eingesteckt. Zulauf OFFEN (E20)"
+   ]
   ],
-  "verbindungen": ["Port A: Rohr d25 in die Klebemuffe", "Befestigung des Ventils am Beckenrand: Halter nicht modelliert (Montage)"],
+  "verbindungen": [
+   "Port A: Rohr d25 in die Klebemuffe",
+   "Befestigung des Ventils am Beckenrand: Halter nicht modelliert (Montage)"
+  ],
   "abweichung": "Kein OBJ-Bestand.",
-  "montage": ["Ventil so ans Rohrende kleben, dass die Rohrachse 195 mm ueber dem Spiegel liegt (Z 710)", "Hebelarm einstellen: Ventil schliesst bei Kugelmitte Z 535, Wasserspiegel Z 515", "Aktivkohle-Station liegt vor dem Ventil; Begrenzer 4 l/min vor dem Ventil pruefen (Schliessdruck offen)"],
+  "montage": [
+   "Ventil so ans Rohrende kleben, dass die Rohrachse 195 mm ueber dem Spiegel liegt (Z 710)",
+   "Hebelarm einstellen: Ventil schliesst bei Kugelmitte Z 535, Wasserspiegel Z 515",
+   "Aktivkohle-Station liegt vor dem Ventil; Begrenzer 4 l/min vor dem Ventil pruefen (Schliessdruck offen)"
+  ],
   "werkzeug": "Rohrschneider, Klebstoff PVC",
-  "stueckliste": ["1 Schwimmerventil 3/4 Zoll mit Hebelarm und Kugel (z. B. Kunststoff)", "1 Uebergang Klebemuffe d25 auf 3/4 Zoll Aussengewinde"],
+  "stueckliste": [
+   "1 Schwimmerventil 3/4 Zoll mit Hebelarm und Kugel (z. B. Kunststoff)",
+   "1 Uebergang Klebemuffe d25 auf 3/4 Zoll Aussengewinde"
+  ],
   "lokal": "Handelsteil (Sanitaer/Garten, Schwimmerventil 3/4 Zoll, max. 22 l/min).",
   "massen_getrennt": [],
   "gewicht_gefuellt": "Kugel zu 60 Prozent eingetaucht schwimmt auf; Masse leer siehe Messung",
-  "pruefung": ["scripts/workshop/check_schwimmerventil_pool.py (Ergebnis renders/components/schwimmerventil_pool/check.txt): Masse, Port, Kugelmitte auf Spiegelhoehe, Interferenz 0"],
+  "pruefung": [
+   "scripts/workshop/check_schwimmerventil_pool.py (Ergebnis renders/components/schwimmerventil_pool/check.txt): Masse, Port, Kugelmitte auf Spiegelhoehe, Interferenz 0"
+  ],
   "offen": [
    "Zulauf OFFEN (E20): Variante B kann K40 aus dem Ring speisen (R47 Definition B); entschieden wird am 05.11.2026",
    "Fabrikat und Schliessdruck mit Drossel (R45 offener Punkt 4): Katalog offen, N-BESCHAFFUNG",
    "Befestigung am Beckenrand und Hoehe ueber dem Rand: Montage",
    "Schwimmerventil am Zweitbecken: eigenes Bauteil Montage (nicht Teil dieses Auftrags)"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt)."
+  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt).",
+  "teileliste": [
+   [
+    "Schwimmerventil 3/4 Zoll",
+    "Spitze 10 l/min, max. 22 l/min",
+    "R+M Suttner Art. 701403, Kunststoff (DE) [Q]; Pegler Yorkshire 3/4 Messing, RS Art. 0197867 (UK-Marke) [Q-Treffer]",
+    "beschaffbar (zwei Quellen); Schliessdruck mit Drossel offen; Zulauf OFFEN (E20)"
+   ],
+   [
+    "Uebergang Klebemuffe d25 auf 3/4 Zoll",
+    "PVC-U",
+    "Katalog offen, N-BESCHAFFUNG (W47)",
+    "offen"
+   ]
+  ]
  }
 }

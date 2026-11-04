@@ -12,10 +12,18 @@
   "wasser_spiel": {"wert": 10, "einheit": "mm", "herkunft": "[E] Bestand gen_dome.py pool_fn: Wasserkoerper Ø d - 10 (5 mm Luft zur Wand, keine Beruehrung)"},
   "rand_ueber_wasser": {"wert": 135, "einheit": "mm", "herkunft": "[E] data/params.json pool_rim 650 minus data/layout.json pool2.water_z 515 (Rand Z 650, Wasserspiegel Z 515, wie Pool und Zweitbecken)"},
   "pool3_d_neu": {"wert": 800, "einheit": "mm", "herkunft": "[R] Wert fuer data/params.json pool3_d (Montage setzt ihn; vorher 1030)"},
-  "pool3_depth_neu": {"wert": 920, "einheit": "mm", "herkunft": "[R] Wert fuer data/params.json pool3_depth (Tiefe bis Wasserspiegel einschliesslich Boden 120: 800 + 120; vorher 1130)"}
+  "pool3_depth_neu": {"wert": 920, "einheit": "mm", "herkunft": "[R] Wert fuer data/params.json pool3_depth (Tiefe bis Wasserspiegel einschliesslich Boden 120: 800 + 120; vorher 1130)"},
+  "stutzen_h": {"wert": 60, "einheit": "mm", "herkunft": "[A] W37-2 Teil 3: Hoehe der Anschlussbloecke auf der Rand-Oberkante (Z 1055 bis 1115); Stutzenachse 30 mm darueber"},
+  "stutzen_blk_r": {"wert": 60, "einheit": "mm", "herkunft": "[E] Blockbreite radial = Ringbreite 60 (liegt auf der ebenen Rand-Oberkante)"},
+  "stutzen_blk_t": {"wert": 90, "einheit": "mm", "herkunft": "[A] Blockbreite tangential"},
+  "stutzen_len": {"wert": 70, "einheit": "mm", "herkunft": "[A] Stutzenrohr ausserhalb des Rings (Muffentiefe d25 = 19, d20 = 16)"},
+  "winkel_k41": {"wert": 0, "einheit": "deg", "herkunft": "[A] Azimut Stutzen K41 (Frischwasser d20); Vielfache von 90 Grad, endgueltige Lage Montage (Biofilter-Seite offen)"},
+  "winkel_k42": {"wert": 90, "einheit": "deg", "herkunft": "[A] Azimut Stutzen K42 (Entnahme zum Biofilter d25)"},
+  "winkel_k43": {"wert": 180, "einheit": "deg", "herkunft": "[A] Azimut Stutzen K43 (Rueckfluss vom Biofilter d25)"},
+  "winkel_k49": {"wert": 270, "einheit": "deg", "herkunft": "[A] Azimut Stutzen K49 (Luftschlauch ID16/AD20, Notstrom)"}
  },
  "werkstoff": {"name": "Beton (Platzhalter fuer die Ringwand)", "dichte_g_cm3": 2.4, "farbe": "#9a9a96", "herkunft": "[A] Wandwerkstoff nicht entschieden (Bestand ohne Material, Standarddichte); Beton als Platzhalter fuer eingelassene Becken"},
- "anzahl": {"soll": "1 Drittbecken", "quelle": "D46/D49 (Lage Zwickel Tuer/Station, Platzierung Montage); D66: klein"},
+ "anzahl": {"soll": "1 Drittbecken mit 4 Stutzen", "quelle": "D46/D49 (Lage Zwickel Tuer/Station, Platzierung Montage); D66: klein"},
  "bezugspunkt": "Mitte der Beckenunterkante (Z 0 = Unterkante Boden); Z hoch; Einbau: Z 0 liegt bei Wasserspiegel Z 515 minus 920 = Z -405 im Modellrahmen",
  "herkunft_tabelle": [
   ["Drittbecken 0,4 m3: Wasser Ø 800 x 800 tief", "402 l Nennvolumen", "E", "R37 Befund 10 (Quarantaene, 31 Fische, 2,4 kg, 37-l-Biofilter); Auftrag W34", "mittel"],
@@ -28,19 +36,25 @@
   "funktion": "Drittbecken als Quarantaene- und Notbecken fuer Zuchttiere oder Kranke (R37 Befund 10): 0,4 m3 Wasser, eingelassen in den Boden wie Pool und Zweitbecken. Der Pool (346 kg Fisch) laesst sich in keinem Becken auffangen. Eigener Biofilter (37 l Bioballs) und Belueftung sind noetig und liegen ausserhalb dieses Bauteils.",
   "querschnitt": "Zylinderwanne: Aussen Ø 920, Hohlraum Ø 800 ab 120 mm ueber der Unterkante, Gesamthoehe 1055 mm (Boden 120 + Wassertiefe 800 + Rand 135). Wasserkoerper Ø 790 x 800.",
   "toleranzen": "Rand 135 mm ueber dem Wasserspiegel; 5 mm Luft zwischen Wasserkoerper und Wand.",
-  "ports": [],
-  "verbindungen": ["Anschluesse und Stutzen sind im Bestand nicht modelliert (gen_dome.py pool_fn erzeugt nur Wanne und Wasser); Zu- und Ablaufstutzen liefert das Leitungsnetz (Montage). Stutzen wie bisher: keine."],
+  "ports": [
+   ["K41 Frischwasser-Zulauf (aus der Aktivkohle-Station)", "PVC-U d20 (DN15), Klebemuffe aussen, Einstecktiefe 16", "x 530, y 0, z 1085 (Mitte der Oeffnung)", "Oeffnung zeigt +X (Azimut 0 Grad, Parameter winkel_k41); Wasserwechsel 2 l/min"],
+   ["K42 Entnahme zum Biofilter", "PVC-U d25 (DN20), Klebemuffe aussen, Einstecktiefe 19", "x 0, y 530, z 1085", "Oeffnung zeigt +Y (Azimut 90 Grad, winkel_k42); Umlauf 5 l/min"],
+   ["K43 Rueckfluss vom Biofilter", "PVC-U d25 (DN20), Klebemuffe aussen, Einstecktiefe 19", "x -530, y 0, z 1085", "Oeffnung zeigt -X (Azimut 180 Grad, winkel_k43); 5 l/min"],
+   ["K49 Luftschlauch (Belueftung, Notstrom)", "Schlauchtuelle Aussen-Ø 20, Bohrung Ø 16 (Schlauch ID16/AD20)", "x 0, y -530, z 1085", "Oeffnung zeigt -Y (Azimut 270 Grad, winkel_k49); Luft 2 l/min, Geblaese in W37-3"]
+  ],
+  "verbindungen": ["Wanne unveraendert (W34). Neu W37-2 Teil 3: vier Anschluss-Stutzen K41, K42, K43, K49 als eigene Koerper (Block 60 x 90 x 60 auf der ebenen Rand-Oberkante, radiales Stutzenrohr 70 mm nach aussen), keine Boolean-Operation an der Ringwand", "Die Stutzen sind Anschlusspunkte aussen am Rand; der Wasserweg ueber die Kante ins Becken (Tauchrohr/Saugkorb fuer K42, Einlauf K41/K43) ist Montage und nicht modelliert", "Ueberlauf/Ablauf des Wechselwassers: Montage, nicht Teil"],
   "abweichung": "Bestand: Innen Ø 1030, Wassertiefe 1010 (pool3_depth 1130 bis Wasserspiegel), 825 l Wasser, Grundflaeche 1,04 m2. Neu: Innen Ø 800, Wassertiefe 800, 402 l Nennvolumen, Grundflaeche 0,66 m2. Der Bestand `designs/components/becken_dritt.sc` bleibt unveraendert (Montage-Datei, von gen_dome.py erzeugt).",
   "montage": ["Grube Ø 920, Tiefe 1055 minus 135 Rand ueber Gelaende (Wasserspiegel Z 515, Rand Z 650)", "Becken einsetzen, Wasserspiegel auf Z 515 einstellen"],
   "werkzeug": "Bagger oder Spaten, Wasserwaage",
-  "stueckliste": ["T14k Drittbecken klein: 1 Wanne Ø 920 x 1055 (Ringwand 60, Boden 120)"],
+  "stueckliste": ["T14k Drittbecken klein: 1 Wanne Ø 920 x 1055 (Ringwand 60, Boden 120)", "4 Anschluss-Stutzen (K41 d20, K42 d25, K43 d25 Klebemuffen; K49 Schlauchtuelle ID16) auf dem Rand"],
   "lokal": "Fertigbecken PE Ø 920 oder Betonring DN 800 mit Bodenplatte; Rand 135 mm ueber dem Wasserspiegel.",
   "massen_getrennt": ["Wasser"],
   "gewicht_gefuellt": "Wasser 392 l ca. 392 kg [E, Dichte 1]",
-  "pruefung": ["scripts/workshop/check_becken_dritt_klein.py (Ergebnis renders/components/becken_dritt_klein/check.txt): Durchmesser, Ring, Tiefe, Volumen 0,4 m3, Grundflaeche 0,66 m2, Rand, Interferenz 0"],
+  "pruefung": ["scripts/workshop/check_becken_dritt_klein.py (Ergebnis renders/components/becken_dritt_klein/check.txt): Durchmesser, Ring, Tiefe, Volumen 0,4 m3, Grundflaeche 0,66 m2, Rand, Wannenvolumen unveraendert, 4 Stutzen mit Ports K41 d20, K42 d25, K43 d25, K49 d20, Interferenz 0"],
   "offen": [
    "Montage: data/params.json pool3_d 800 und pool3_depth 920 setzen (oder die neue Komponente verknuepfen); Lage D49 (Zwickel Tuer/Station) mit dem kleineren Becken neu pruefen (place_m8.py, Laufwegkarte)",
-   "Wandwerkstoff (Beton oder PE) offen; Stutzen, Biofilter 37 l und Belueftung nicht modelliert (Leitungsnetz K35-K41: Montage)",
+   "Wandwerkstoff (Beton oder PE) offen; Biofilter 37 l und Belueftung nicht modelliert (Leitungsnetz K35-K41: Montage)",
+   "Stutzen: Azimut je Stutzen (winkel_*) vorlaeufig 0/90/180/270 Grad, Biofilter-Seite legt die Montage fest; Wasserweg ueber die Kante, Tauchrohr fuer K42 und Ueberlauf des Wechselwassers: Montage",
    "Wasserwechsel 2 l/min aus der Frischwasserleitung bzw. Zisterne (R37 Befund 9), Frischwasserquelle klaert Ben beim Versorger"
   ],
   "kritiker": "Kein Pruefer-Lauf (Auftrag W34: Selbstcheck)."

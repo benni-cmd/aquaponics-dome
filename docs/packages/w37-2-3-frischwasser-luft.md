@@ -16,6 +16,10 @@
 4. [x] Blatt W37-2 nachfuehren (Aktualitaetspruefung neu, Europa-Teileliste, Pruefpunkte, OFFEN-Marken)
 5. [x] Blatt W37-3 nachfuehren (dito)
 6. [x] Pfad-Commit und Push (nur Blaetter und dieses Paket)
+7. [x] Bau W37-2 Teil 1 `aktivkohle_station` (T83): Generator, Check 40/40 PASS, Blatt, Bilder (Werkstatt, 04.11.2026)
+8. [x] Bau W37-2 Teil 2 `schwimmerventil_pool` (T84): Check 15/15 PASS, Blatt, Bild; Zulauf "OFFEN (E20)" vermerkt
+9. [x] Bau W37-2 Teil 3 Stutzen Drittbecken (`becken_dritt_klein` erweitert): Check 40/40 PASS, Wanne unveraendert (231314 cm3), Blatt nachgefuehrt
+10. [ ] Bau W37-3 Belueftung (naechste Werkstatt-Sitzung), Pruefer W37-2/W37-3
 
 ## Status
 
@@ -23,7 +27,9 @@
 
 04.11.2026 (spaeter) — beide Blaetter nachgefuehrt (Aktualitaetspruefung neu, Variantenbefund, Europa-Teileliste, Pruefpunkte 6 und 7). Recherche: zwei Agenten, viele Treffer nur [Q-Treffer], daher kaum "beschaffbar" mit zwei Quellen.
 
+04.11.2026 (Werkstatt, Bau W37-2) — drei Teile gebaut und gesichert (Commits d719bff, f79371e und Abschluss-Commit): `aktivkohle_station` (43 Koerper, 2 x 21 l Bett = 10,5 min bei 4 l/min, 5 Ports, check_aktivkohle_station 40/40), `schwimmerventil_pool` (5 Koerper, check 15/15), Drittbecken-Stutzen K41/K42/K43/K49 (6 Koerper, check 40/40). Befund Kernel: T-Stuecke mit gleichen Durchmessern von Lauf und Abgang brauchten 60 s je Schnitt (Bau 209 s); Abgang 0,25 mm duenner und Abgangsbohrung 0,2 mm kleiner: 10 s. Europa (R53): Kohle nur UK, Behaelter mit Kopf nur UK, Begrenzer eine Quelle (Kobold KM-020A), Probehahn G 1/4 beschaffbar; Kohle und Begrenzer im Blatt nach R53 geführt (Begrenzer nicht mehr 'nicht beschaffbar'; Pruefpunkt 6 zaehlt 2 Treffer, einer davon ein Zitat der alten Fuehrung).
+
 ## Definition of Done
 
 Geprueft gegen: beide Blaetter enthalten Abschnitt "Aktualitaetspruefung (04.11.2026, W44)", Europa-Teileliste, ergaenzte Pruefpunkte; `git diff HEAD --stat` zeigt nur Blaetter und dieses Paket
-Offen: Bau (Werkstatt, nach W40-BEET), Pruefer; E20 (Ben 05.11.); E13 (Schaltschrank-Standort); E15 (Chlor/Chloramin, Ben) mit Folge: katalytische Kohle in Europa nicht belegt; Kennlinie Luftpumpe bei 26 kPa; Rueckschlagventil-Regel ohne zweite Quelle; Kohle-Standzeit; Durchflussbegrenzer 4 l/min und Probehahn d12 nicht beschaffbar/gefunden
+Offen: Bau W37-3 (Werkstatt), Pruefer W37-2/W37-3; E20 (Ben 05.11.); E13 (Schaltschrank-Standort); E15 (Chlor/Chloramin, Ben) mit Folge: katalytische Kohle in Europa nicht belegt; Kennlinie Luftpumpe bei 26 kPa; Rueckschlagventil-Regel ohne zweite Quelle; Kohle-Standzeit; Durchflussbegrenzer 4 l/min und Probehahn d12 nicht beschaffbar/gefunden

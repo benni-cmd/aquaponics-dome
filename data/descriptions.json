@@ -1100,6 +1100,75 @@
       "quelle": "docs/research/R24.md, docs/decisions.md D39"
     },
     {
+      "match": "^aktivkohle",
+      "titel": "Aktivkohle-Station (Frischwasser)",
+      "was": "Entchlort das Frischwasser vor dem Pool und der Quarantäne: Vorfilter, zwei Kohle-Behälter in Reihe, Probehahn, Durchflussbegrenzer 4 l/min und drei Abgänge.",
+      "status": "gebaut (Werkstatt W37-2), Prüfung 40/40; Handelsmaße als Platzhalter, Fabrikat offen; gilt in jeder Kreislaufvariante",
+      "ablauf": [
+        "Frischwasser von außen (K39) läuft über einen Absperrhahn in den Sedimentfilter (20 µm) und dann durch zwei Behälter mit katalytischer Kohle (je 21 l Bett, zusammen 10,5 min Kontaktzeit bei 4 l/min).",
+        "Zwischen den Behältern zeigt ein Probehahn den Chlor-Durchbruch (Test einmal pro Woche).",
+        "Ein Durchflussbegrenzer hält 4 l/min; dahinter gehen K40 (zum Pool, über das Schwimmerventil), K41 (Quarantäne, d20) und K52 (Stammlösung von Hand, d25) ab, jeder mit Kugelhahn."
+      ],
+      "aufbau": [
+        {
+          "t": "Vorfilter",
+          "p": [
+            "Sedimentgehäuse 10 Zoll mit Patrone 20 µm auf Konsole"
+          ]
+        },
+        {
+          "t": "Behälter",
+          "p": [
+            "2 Kompositbehälter 10 × 35 Zoll mit Kopf",
+            "je 21 l Kohlebett (9,3 kg)"
+          ]
+        },
+        {
+          "t": "Verrohrung",
+          "p": [
+            "PVC-U d25 und d20, 4 Kugelhähne, 3 T-Stücke",
+            "Probehahn, Durchflussbegrenzer"
+          ]
+        }
+      ],
+      "masse": {
+        "Behälter": "Ø 254 × 889 mm",
+        "Kohle": "2 × 21 l, Kontaktzeit 10,5 min",
+        "Länge × Breite": "1700 × 500 mm",
+        "Leitung": "d25, Achse Z 839,5"
+      },
+      "grenzen": "Kohle (katalytisch, 12 × 40) und Behälter mit Kopf sind für das EU-Festland nicht belegt (nur UK, R53); Chlor oder Chloramin (E15) ist nicht geklärt (bei Chlor genügt ein Behälter); Kohle-Standzeit nur gerechnet.",
+      "quelle": "docs/parts/aktivkohle_station.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 5, docs/research/R53-europa-frischwasser-luft.md"
+    },
+    {
+      "match": "^schwimmerventil",
+      "titel": "Schwimmerventil am Pool",
+      "was": "Hält den Wasserspiegel im Pool auf Z 515: sinkt er, öffnet die Schwimmerkugel das Ventil und entchlortes Frischwasser läuft nach.",
+      "status": "gebaut (Werkstatt W37-2), Prüfung 15/15; Handelsteil, Maße Platzhalter; Zulauf OFFEN (E20)",
+      "ablauf": [
+        "Das Rohr d25 aus der Aktivkohle-Station (K40) steckt in die Klebemuffe des Ventils.",
+        "Die Schwimmerkugel (Ø 110) liegt auf dem Wasserspiegel; fällt der Spiegel, kippt der Hebelarm und öffnet das Ventil.",
+        "Steigt der Spiegel wieder, schließt das Ventil."
+      ],
+      "aufbau": [
+        {
+          "t": "Teile",
+          "p": [
+            "Klebemuffe d25 mit Übergang",
+            "Ventilgehäuse Ø 38 × 80",
+            "Hebelarm mit Schwimmerkugel"
+          ]
+        }
+      ],
+      "masse": {
+        "Rohrachse über dem Spiegel": "195 mm (Z 710)",
+        "Hebelarm": "260 mm horizontal",
+        "Masse": "ca. 360 g"
+      },
+      "grenzen": "Fabrikat und Schließdruck mit Drossel offen; ob in Variante B der Ring statt der Filterstation speist, ist OFFEN (E20).",
+      "quelle": "docs/parts/schwimmerventil_pool.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 5"
+    },
+    {
       "match": "^puffer_klein",
       "titel": "Kleiner Puffer (Option A, R37)",
       "was": "Kompakter Stand im Dom mit Stammlösungsfass 120 l, Messzelle 20 l, Eisenchelat-Kanister 20 l und zwei Dosierpumpen; ersetzt die Puffer-Station (2 IBC) auf 0,49 m² statt 4,65 m².",
@@ -1287,7 +1356,8 @@
           "t": "Körper",
           "p": [
             "Rundbecken, teilweise im Boden",
-            "Wasserscheibe"
+            "Wasserscheibe",
+            "4 Anschluss-Stutzen auf dem Rand (K41 Frischwasser, K42 Entnahme, K43 Rückfluss, K49 Luft)"
           ]
         }
       ],

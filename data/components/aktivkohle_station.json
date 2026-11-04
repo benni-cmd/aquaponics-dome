@@ -5,74 +5,315 @@
  "beschreibung": "Aktivkohle-Station Frischwasser (L05, W37-2, D66, R45 Abschnitt 5): Sedimentvorfilter 20 um, zwei Kompositbehaelter 10 x 35 Zoll in Reihe mit katalytischer Kohle (je 21 l Bett), Probehahn zwischen den Behaeltern, Durchflussbegrenzer 4 l/min, Abzweige K41 (d20, Quarantaene) und K52 (d25, Stammloesung) hinter dem Filter; alles Handelsteile mit Handelsmass-Platzhaltern",
  "quelle_masse": "docs/research/R45-hydraulik-auslegung.md Abschnitt 5 (Zeilen 280-329); docs/research/R53-europa-frischwasser-luft.md (Europa-Bezug); data/leitungsnetz.json Version 3 (K39, K40, K41, K52); Handelsmasse Platzhalter, Katalog offen, N-BESCHAFFUNG (W47)",
  "parameter": {
-  "behaelter": {"wert": 2, "einheit": "", "herkunft": "[A] R45 Empfehlung: 2 Behaelter in Reihe (Auslegung auf Chloramin); bei Chlor genuegt 1 (Wert 1 laesst Behaelter 2 samt Kopf weg)"},
-  "vessel_d": {"wert": 254, "einheit": "mm", "herkunft": "[A] Handelsmass Kompositbehaelter 10 x 35 Zoll (R45 Zeile 316: Ø 254 x 889); Fabrikat offen"},
-  "vessel_h": {"wert": 889, "einheit": "mm", "herkunft": "[A] Handelsmass 10 x 35 Zoll: 889 mm Gesamthoehe einschliesslich Kopf (R45: stehend 0,9 m hoch)"},
-  "head_h": {"wert": 99, "einheit": "mm", "herkunft": "[A] Hoehe des Kopfes mit Bypass-/Absperrhahn; Mantelhoehe = vessel_h - head_h"},
-  "head_w": {"wert": 120, "einheit": "mm", "herkunft": "[A] Kopfblock Breite und Tiefe, Anschluss d25 an den Seitenflaechen"},
-  "vessel_wall": {"wert": 5, "einheit": "mm", "herkunft": "[A] Wand Komposit/PE-Liner; Handelswerte schwanken"},
-  "bed_d": {"wert": 240, "einheit": "mm", "herkunft": "[A] Innen-Ø 244 abzgl. 4 mm Spiel; Bett Ø 240"},
-  "bed_l": {"wert": 464, "einheit": "mm", "herkunft": "[E] Bettvolumen 21 l = pi x 120^2 x 464 (R45: je Behaelter ca. 21 l Bett)"},
-  "bed_z0": {"wert": 10, "einheit": "mm", "herkunft": "[A] Bett steht 10 mm ueber dem Boden (Drainagekopf/Rost nicht modelliert)"},
-  "vessel_pitch": {"wert": 330, "einheit": "mm", "herkunft": "[A] Achsabstand der Behaelter (76 mm Luft zwischen den Mantelflaechen)"},
-  "sed_d": {"wert": 112, "einheit": "mm", "herkunft": "[A] Handelsmass Sedimentgehaeuse 10 Zoll (Slim-Line): Ø ca. 112 (Q-Treffer R53, Fabrikat offen)"},
-  "sed_h": {"wert": 290, "einheit": "mm", "herkunft": "[A] Gehaeusehoehe 10 Zoll ohne Kopf"},
-  "sed_wall": {"wert": 4, "einheit": "mm", "herkunft": "[A] Wand Gehaeuse"},
-  "sed_cart_d": {"wert": 63, "einheit": "mm", "herkunft": "[A] Patrone PP 20 um, 10 Zoll: Ø 63 x 250 (Handelsmass)"},
-  "sed_cart_h": {"wert": 250, "einheit": "mm", "herkunft": "[A] Patronenlaenge 10 Zoll"},
-  "sed_stand": {"wert": 160, "einheit": "mm", "herkunft": "[A] Konsole unter dem Sedimentgehaeuse: Kantenlaenge; Hoehe = Mantelhoehe der Behaelter - Gehaeusehoehe (Kopf auf gleicher Hoehe)"},
-  "pipe_d": {"wert": 25, "einheit": "mm", "herkunft": "[E] R45 / Netz: K39, K40, K52 d25"},
-  "pipe_d_abz": {"wert": 20, "einheit": "mm", "herkunft": "[E] Netz: K41 d20"},
-  "hahn_l": {"wert": 50, "einheit": "mm", "herkunft": "[A] Baulaenge Kugelhahn (Bibliothek lt_kugelhahn: 50 zwischen den Muffen); hier Platzhalter-Koerper"},
-  "lim_d": {"wert": 32, "einheit": "mm", "herkunft": "[A] Durchflussbegrenzer G 3/4 (Kobold KM-020A, R53 Abschnitt 2: G 3/4 aussen, DN 20): Koerper Ø 32; Fabrikat nur Datenblatt, Katalog offen"},
-  "lim_l": {"wert": 60, "einheit": "mm", "herkunft": "[A] Baulaenge Begrenzer einschliesslich Gewinde-Uebergaenge (Platzhalter)"},
-  "tap_d": {"wert": 24, "einheit": "mm", "herkunft": "[A] Probehahn Rotguss (Kemper 1870000600 / SYR 6705.10.050, R53 Abschnitt 3: D 48 bzw. 86 x 144, G 1/4): Koerper Ø 24 als Platzhalter"},
-  "tap_l": {"wert": 55, "einheit": "mm", "herkunft": "[A] Hahnkoerper Laenge (Platzhalter)"},
-  "spout_d": {"wert": 12, "einheit": "mm", "herkunft": "[E] R45 Zeile 305: Probehahn d12 (Auslauf-Tuelle); Anschluss des Handelshahns ist G 1/4 (R53), 'd12' = Tuellenmass"},
-  "spout_l": {"wert": 30, "einheit": "mm", "herkunft": "[A] Tuelle Laenge"},
-  "x_in": {"wert": -800, "einheit": "mm", "herkunft": "[A] Lage Eingangsrohrende (Port K39)"},
-  "t1_x": {"wert": 165, "einheit": "mm", "herkunft": "[E] Mitte zwischen Behaelter 1 (Ausgang x 60) und Behaelter 2 (Eingang x 270): Probehahn-T"},
-  "lim_x": {"wert": 410, "einheit": "mm", "herkunft": "[A] Anfang des Begrenzers 20 mm hinter Behaelter 2 (Ausgang x 390)"},
-  "t2_x": {"wert": 560, "einheit": "mm", "herkunft": "[A] Abzweig K41 (+Y) hinter dem Begrenzer"},
-  "t3_x": {"wert": 700, "einheit": "mm", "herkunft": "[A] Abzweig K52 (-Y) hinter K41"},
-  "x_out": {"wert": 900, "einheit": "mm", "herkunft": "[A] Lage Ausgangsrohrende (Port K40)"},
-  "abz_y": {"wert": 250, "einheit": "mm", "herkunft": "[A] Abzweigrohre enden bei y = +-250"},
-  "tap_y": {"wert": 120, "einheit": "mm", "herkunft": "[A] Probehahn-Tuelle endet bei y = 120"}
+  "behaelter": {
+   "wert": 2,
+   "einheit": "",
+   "herkunft": "[A] R45 Empfehlung: 2 Behaelter in Reihe (Auslegung auf Chloramin); bei Chlor genuegt 1 (Wert 1 laesst Behaelter 2 samt Kopf weg)"
+  },
+  "vessel_d": {
+   "wert": 254,
+   "einheit": "mm",
+   "herkunft": "[A] Handelsmass Kompositbehaelter 10 x 35 Zoll (R45 Zeile 316: Ø 254 x 889); Fabrikat offen"
+  },
+  "vessel_h": {
+   "wert": 889,
+   "einheit": "mm",
+   "herkunft": "[A] Handelsmass 10 x 35 Zoll: 889 mm Gesamthoehe einschliesslich Kopf (R45: stehend 0,9 m hoch)"
+  },
+  "head_h": {
+   "wert": 99,
+   "einheit": "mm",
+   "herkunft": "[A] Hoehe des Kopfes mit Bypass-/Absperrhahn; Mantelhoehe = vessel_h - head_h"
+  },
+  "head_w": {
+   "wert": 120,
+   "einheit": "mm",
+   "herkunft": "[A] Kopfblock Breite und Tiefe, Anschluss d25 an den Seitenflaechen"
+  },
+  "vessel_wall": {
+   "wert": 5,
+   "einheit": "mm",
+   "herkunft": "[A] Wand Komposit/PE-Liner; Handelswerte schwanken"
+  },
+  "bed_d": {
+   "wert": 240,
+   "einheit": "mm",
+   "herkunft": "[A] Innen-Ø 244 abzgl. 4 mm Spiel; Bett Ø 240"
+  },
+  "bed_l": {
+   "wert": 464,
+   "einheit": "mm",
+   "herkunft": "[E] Bettvolumen 21 l = pi x 120^2 x 464 (R45: je Behaelter ca. 21 l Bett)"
+  },
+  "bed_z0": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "[A] Bett steht 10 mm ueber dem Boden (Drainagekopf/Rost nicht modelliert)"
+  },
+  "vessel_pitch": {
+   "wert": 330,
+   "einheit": "mm",
+   "herkunft": "[A] Achsabstand der Behaelter (76 mm Luft zwischen den Mantelflaechen)"
+  },
+  "sed_d": {
+   "wert": 112,
+   "einheit": "mm",
+   "herkunft": "[A] Handelsmass Sedimentgehaeuse 10 Zoll (Slim-Line): Ø ca. 112 (Q-Treffer R53, Fabrikat offen)"
+  },
+  "sed_h": {
+   "wert": 290,
+   "einheit": "mm",
+   "herkunft": "[A] Gehaeusehoehe 10 Zoll ohne Kopf"
+  },
+  "sed_wall": {
+   "wert": 4,
+   "einheit": "mm",
+   "herkunft": "[A] Wand Gehaeuse"
+  },
+  "sed_cart_d": {
+   "wert": 63,
+   "einheit": "mm",
+   "herkunft": "[A] Patrone PP 20 um, 10 Zoll: Ø 63 x 250 (Handelsmass)"
+  },
+  "sed_cart_h": {
+   "wert": 250,
+   "einheit": "mm",
+   "herkunft": "[A] Patronenlaenge 10 Zoll"
+  },
+  "sed_stand": {
+   "wert": 160,
+   "einheit": "mm",
+   "herkunft": "[A] Konsole unter dem Sedimentgehaeuse: Kantenlaenge; Hoehe = Mantelhoehe der Behaelter - Gehaeusehoehe (Kopf auf gleicher Hoehe)"
+  },
+  "pipe_d": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[E] R45 / Netz: K39, K40, K52 d25"
+  },
+  "pipe_d_abz": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[E] Netz: K41 d20"
+  },
+  "hahn_l": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "[A] Baulaenge Kugelhahn (Bibliothek lt_kugelhahn: 50 zwischen den Muffen); hier Platzhalter-Koerper"
+  },
+  "lim_d": {
+   "wert": 32,
+   "einheit": "mm",
+   "herkunft": "[A] Durchflussbegrenzer G 3/4 (Kobold KM-020A, R53 Abschnitt 2: G 3/4 aussen, DN 20): Koerper Ø 32; Fabrikat nur Datenblatt, Katalog offen"
+  },
+  "lim_l": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[A] Baulaenge Begrenzer einschliesslich Gewinde-Uebergaenge (Platzhalter)"
+  },
+  "tap_d": {
+   "wert": 24,
+   "einheit": "mm",
+   "herkunft": "[A] Probehahn Rotguss (Kemper 1870000600 / SYR 6705.10.050, R53 Abschnitt 3: D 48 bzw. 86 x 144, G 1/4): Koerper Ø 24 als Platzhalter"
+  },
+  "tap_l": {
+   "wert": 55,
+   "einheit": "mm",
+   "herkunft": "[A] Hahnkoerper Laenge (Platzhalter)"
+  },
+  "spout_d": {
+   "wert": 12,
+   "einheit": "mm",
+   "herkunft": "[E] R45 Zeile 305: Probehahn d12 (Auslauf-Tuelle); Anschluss des Handelshahns ist G 1/4 (R53), 'd12' = Tuellenmass"
+  },
+  "spout_l": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] Tuelle Laenge"
+  },
+  "x_in": {
+   "wert": -800,
+   "einheit": "mm",
+   "herkunft": "[A] Lage Eingangsrohrende (Port K39)"
+  },
+  "t1_x": {
+   "wert": 165,
+   "einheit": "mm",
+   "herkunft": "[E] Mitte zwischen Behaelter 1 (Ausgang x 60) und Behaelter 2 (Eingang x 270): Probehahn-T"
+  },
+  "lim_x": {
+   "wert": 410,
+   "einheit": "mm",
+   "herkunft": "[A] Anfang des Begrenzers 20 mm hinter Behaelter 2 (Ausgang x 390)"
+  },
+  "t2_x": {
+   "wert": 560,
+   "einheit": "mm",
+   "herkunft": "[A] Abzweig K41 (+Y) hinter dem Begrenzer"
+  },
+  "t3_x": {
+   "wert": 700,
+   "einheit": "mm",
+   "herkunft": "[A] Abzweig K52 (-Y) hinter K41"
+  },
+  "x_out": {
+   "wert": 900,
+   "einheit": "mm",
+   "herkunft": "[A] Lage Ausgangsrohrende (Port K40)"
+  },
+  "abz_y": {
+   "wert": 250,
+   "einheit": "mm",
+   "herkunft": "[A] Abzweigrohre enden bei y = +-250"
+  },
+  "tap_y": {
+   "wert": 120,
+   "einheit": "mm",
+   "herkunft": "[A] Probehahn-Tuelle endet bei y = 120"
+  }
  },
- "werkstoff": {"name": "PVC-U grau (Verrohrung), Komposit (Behaelter), Messing (Begrenzer)", "dichte_g_cm3": 1.4, "farbe": "#8d9296", "herkunft": "[A] Verrohrung PVC-U wie Bibliothek; Behaelterwerkstoff Handelsangabe offen"},
- "anzahl": {"soll": "1 Station (2 Behaelter, 1 Vorfilter)", "quelle": "Netz Version 3: Knoten aktivkohle (K39, K40, K41, K52); D66"},
+ "werkstoff": {
+  "name": "PVC-U grau (Verrohrung), Komposit (Behaelter), Messing (Begrenzer)",
+  "dichte_g_cm3": 1.4,
+  "farbe": "#8d9296",
+  "herkunft": "[A] Verrohrung PVC-U wie Bibliothek; Behaelterwerkstoff Handelsangabe offen"
+ },
+ "anzahl": {
+  "soll": "1 Station (2 Behaelter, 1 Vorfilter)",
+  "quelle": "Netz Version 3: Knoten aktivkohle (K39, K40, K41, K52); D66"
+ },
  "bezugspunkt": "Mitte der Standflaeche von Behaelter 1 am Boden (Z 0); X Laengsachse (Sedimentgehaeuse -X, Behaelter 2 +X, Eingang -X, Ausgang +X), Y quer (K41 +Y, K52 -Y, Probehahn +Y), Z hoch; Leitungsachse Z 839,5",
  "herkunft_tabelle": [
-  ["Katalytische Kohle 12 x 40, 2 x 21 l Bett", "Bett Ø 240 x 464 = 21 l je Behaelter", "R", "scripts/r45_kohle.py: 42 l bei 4 l/min = 10,5 min; R45 Abschnitt 5; Handelswerte Haendler-/Verbandsmaterial, keine Fachartikel", "mittel"],
-  ["Kohle-Schuettdichte 0,441 kg/l", "9,3 kg je Bett", "A", "R53 Abschnitt 6: 27,5 lb/ft3 aus Handelsangabe Centaur 12x40 (Q-Treffer)", "niedrig"],
-  ["Kompositbehaelter 10 x 35 Zoll", "Ø 254 x 889", "A", "Handelsmass R45; Fabrikat offen; PWG-Vessel/Clack-Kopf nur UK, eine Quelle (R53)", "niedrig"],
-  ["Sedimentgehaeuse 10 Zoll, Patrone 20 um", "Ø 112 x 290; Patrone Ø 63 x 250", "A", "Handelsmass; wasserfilter-berlin 32420234, Ecosoft INL-FPV34ECO (Q-Treffer, R53)", "niedrig"],
-  ["Probehahn zwischen den Behaeltern", "Tuelle Ø 12, Gewinde G 1/4", "A", "R45 Zeile 305; R53 Abschnitt 3: Kemper 1870000600 und SYR 6705.10.050 [Q] (G 1/4 statt d12)", "mittel"],
-  ["Durchflussbegrenzer 4 l/min", "Ø 32 x 60 Platzhalter", "A", "R53 Abschnitt 2: Kobold KM-020A (Datenblatt, eine Quelle, 4 l/min gelistet); Katalog offen", "niedrig"],
-  ["Abzweige K41 d20 und K52 d25 hinter dem Filter", "Lage x 560 und x 700", "E", "Netz Version 3 (K41, K52); R45 Zeile 307", "hoch"],
-  ["Kugelhaehne d25 / d20 (Absperrung Eingang, Ausgang, K41, K52)", "Platzhalterkoerper L 50", "A", "bevo Profec Safe 600/525 (Q-Treffer, R53/W37-2-Blatt); Katalog offen", "niedrig"],
-  ["Chlor oder Chloramin im Leitungswasser (E15)", "offen", "offen", "Entscheidung Ben: beim Versorger klaeren; entscheidet ueber Behaelter 2 und ueber die Kohlebeschaffung", "-"]
+  [
+   "Katalytische Kohle 12 x 40, 2 x 21 l Bett",
+   "Bett Ø 240 x 464 = 21 l je Behaelter",
+   "R",
+   "scripts/r45_kohle.py: 42 l bei 4 l/min = 10,5 min; R45 Abschnitt 5; Handelswerte Haendler-/Verbandsmaterial, keine Fachartikel",
+   "mittel"
+  ],
+  [
+   "Kohle-Schuettdichte 0,441 kg/l",
+   "9,3 kg je Bett",
+   "A",
+   "R53 Abschnitt 6: 27,5 lb/ft3 aus Handelsangabe Centaur 12x40 (Q-Treffer)",
+   "niedrig"
+  ],
+  [
+   "Kompositbehaelter 10 x 35 Zoll",
+   "Ø 254 x 889",
+   "A",
+   "Handelsmass R45; Fabrikat offen; PWG-Vessel/Clack-Kopf nur UK, eine Quelle (R53)",
+   "niedrig"
+  ],
+  [
+   "Sedimentgehaeuse 10 Zoll, Patrone 20 um",
+   "Ø 112 x 290; Patrone Ø 63 x 250",
+   "A",
+   "Handelsmass; wasserfilter-berlin 32420234, Ecosoft INL-FPV34ECO (Q-Treffer, R53)",
+   "niedrig"
+  ],
+  [
+   "Probehahn zwischen den Behaeltern",
+   "Tuelle Ø 12, Gewinde G 1/4",
+   "A",
+   "R45 Zeile 305; R53 Abschnitt 3: Kemper 1870000600 und SYR 6705.10.050 [Q] (G 1/4 statt d12)",
+   "mittel"
+  ],
+  [
+   "Durchflussbegrenzer 4 l/min",
+   "Ø 32 x 60 Platzhalter",
+   "A",
+   "R53 Abschnitt 2: Kobold KM-020A (Datenblatt, eine Quelle, 4 l/min gelistet); Katalog offen",
+   "niedrig"
+  ],
+  [
+   "Abzweige K41 d20 und K52 d25 hinter dem Filter",
+   "Lage x 560 und x 700",
+   "E",
+   "Netz Version 3 (K41, K52); R45 Zeile 307",
+   "hoch"
+  ],
+  [
+   "Kugelhaehne d25 / d20 (Absperrung Eingang, Ausgang, K41, K52)",
+   "Platzhalterkoerper L 50",
+   "A",
+   "bevo Profec Safe 600/525 (Q-Treffer, R53/W37-2-Blatt); Katalog offen",
+   "niedrig"
+  ],
+  [
+   "Chlor oder Chloramin im Leitungswasser (E15)",
+   "offen",
+   "offen",
+   "Entscheidung Ben: beim Versorger klaeren; entscheidet ueber Behaelter 2 und ueber die Kohlebeschaffung",
+   "-"
+  ]
  ],
  "blatt": {
   "funktion": "Entchlort das Frischwasser (D66) vor dem Pool und der Quarantaene: Wasser von aussen (K39) laeuft ueber Absperrhahn, Sedimentvorfilter 20 um und zwei Kompositbehaelter mit katalytischer Kohle in Reihe (je 21 l Bett, 10,5 min Kontaktzeit bei 4 l/min), ein Probehahn zwischen den Behaeltern zeigt den Durchbruch (Chlortest DPD), ein Durchflussbegrenzer haelt 4 l/min. Hinter dem Begrenzer gehen K40 (zum Pool, d25), K41 (zur Quarantaene, d20) und K52 (Ansatz der Stammloesung von Hand, d25) ab; jeder Abgang hat einen Kugelhahn. Handelsteile, kein Eigenbau-Behaelter, keine Vorratsflaeche.",
   "querschnitt": "Leitungsachse d25 (PVC-U, Wand 1,8) auf Z 839,5; Sedimentgehaeuse (Ø 112) auf Konsole, zwei Behaelter Ø 254 stehend auf dem Boden, jeder Kopf 120 x 120 x 99 mit Seitenanschluessen; Hoehe aller Koepfe 889.",
   "toleranzen": "Handelsmass-Platzhalter ohne Katalog; Bett 4 mm Spiel zur Innenwand; Rohre stossen stumpf an die Koepfe und Formstuecke (Muffeneinstecktiefe nicht modelliert).",
   "ports": [
-   ["Eingang K39 (Frischwasser von aussen)", "PVC-U d25 (DN20), Zapfen, Absperrhahn d25 dahinter", "x -800, y 0, z 839,5 (Rohrende, Mitte)", "Oeffnung zeigt -X; 4 l/min begrenzt, Spitze 10 l/min vor dem Begrenzer"],
-   ["Ausgang K40 (zum Pool, Schwimmerventil)", "PVC-U d25 (DN20), Zapfen, Kugelhahn d25", "x 900, y 0, z 839,5", "Oeffnung zeigt +X; Zulauf zum Schwimmerventil am Pool"],
-   ["Abzweig K41 (Quarantaene, 2 l/min)", "PVC-U d20 (DN15), Zapfen, Kugelhahn d20, Reduzierung d25 auf d20", "x 560, y 250, z 839,5", "Oeffnung zeigt +Y; Wasserwechsel Drittbecken"],
-   ["Abzweig K52 (Stammloesung von Hand)", "PVC-U d25 (DN20), Zapfen, Kugelhahn d25", "x 700, y -250, z 839,5", "Oeffnung zeigt -Y; kein Dauerfluss"],
-   ["Probehahn (zwischen Behaelter 1 und 2)", "Tuelle Ø 12 (Handelshahn G 1/4, Rotguss)", "x 165, y 120, z 839,5", "Oeffnung zeigt +Y; Wasserprobe fuer den woechentlichen Chlortest (DPD)"]
+   [
+    "Eingang K39 (Frischwasser von aussen)",
+    "PVC-U d25 (DN20), Zapfen, Absperrhahn d25 dahinter",
+    "x -800, y 0, z 839,5 (Rohrende, Mitte)",
+    "Oeffnung zeigt -X; 4 l/min begrenzt, Spitze 10 l/min vor dem Begrenzer"
+   ],
+   [
+    "Ausgang K40 (zum Pool, Schwimmerventil)",
+    "PVC-U d25 (DN20), Zapfen, Kugelhahn d25",
+    "x 900, y 0, z 839,5",
+    "Oeffnung zeigt +X; Zulauf zum Schwimmerventil am Pool"
+   ],
+   [
+    "Abzweig K41 (Quarantaene, 2 l/min)",
+    "PVC-U d20 (DN15), Zapfen, Kugelhahn d20, Reduzierung d25 auf d20",
+    "x 560, y 250, z 839,5",
+    "Oeffnung zeigt +Y; Wasserwechsel Drittbecken"
+   ],
+   [
+    "Abzweig K52 (Stammloesung von Hand)",
+    "PVC-U d25 (DN20), Zapfen, Kugelhahn d25",
+    "x 700, y -250, z 839,5",
+    "Oeffnung zeigt -Y; kein Dauerfluss"
+   ],
+   [
+    "Probehahn (zwischen Behaelter 1 und 2)",
+    "Tuelle Ø 12 (Handelshahn G 1/4, Rotguss)",
+    "x 165, y 120, z 839,5",
+    "Oeffnung zeigt +Y; Wasserprobe fuer den woechentlichen Chlortest (DPD)"
+   ]
   ],
-  "verbindungen": ["Rohrenden d25/d20 werden mit der Muffe der Gegenseite verklebt (Port-Art Zapfen, Bibliotheksformat docs/parts/leitungsteile.md)", "Koepfe der Behaelter und Sedimentgehaeuse: Handelsanschluss, im Modell stumpf angesetztes Rohr d25", "Begrenzer und Probehahn haben Gewinde (G 3/4 bzw. G 1/4): Uebergangsstuecke als Katalogteile offen [A]"],
+  "verbindungen": [
+   "Rohrenden d25/d20 werden mit der Muffe der Gegenseite verklebt (Port-Art Zapfen, Bibliotheksformat docs/parts/leitungsteile.md)",
+   "Koepfe der Behaelter und Sedimentgehaeuse: Handelsanschluss, im Modell stumpf angesetztes Rohr d25",
+   "Begrenzer und Probehahn haben Gewinde (G 3/4 bzw. G 1/4): Uebergangsstuecke als Katalogteile offen [A]"
+  ],
   "abweichung": "Kein OBJ-Bestand: Knoten aktivkohle hatte bauteil null (Netz Version 3).",
-  "montage": ["Station frostfrei auf Boden oder Regalboden, wandnah (Standort Montage, E13/R45)", "Sedimentgehaeuse auf der Konsole, beide Behaelter mit Kopf nach oben stellen", "Verrohrung d25 verkleben, Abzweige K41/K52 hinter dem Begrenzer", "Bett vor Gebrauch spuelen (R45 Betrieb)"],
+  "montage": [
+   "Station frostfrei auf Boden oder Regalboden, wandnah (Standort Montage, E13/R45)",
+   "Sedimentgehaeuse auf der Konsole, beide Behaelter mit Kopf nach oben stellen",
+   "Verrohrung d25 verkleben, Abzweige K41/K52 hinter dem Begrenzer",
+   "Bett vor Gebrauch spuelen (R45 Betrieb)"
+  ],
   "werkzeug": "Rohrschneider, Klebstoff PVC, Schraubenschluessel fuer Kopf und Begrenzer",
-  "stueckliste": ["2 Kompositbehaelter 10 x 35 mit Kopf (Bypass-/Absperrhahn)", "1 Sedimentgehaeuse 10 Zoll mit Patrone 20 um", "2 x 21 l katalytische Kohle 12 x 40 (9,3 kg je Bett)", "1 Probehahn G 1/4 mit Tuelle", "1 Durchflussbegrenzer 4 l/min G 3/4", "4 Kugelhaehne (3 x d25, 1 x d20)", "2 T-Stuecke d25, 1 T-Stueck d25 fuer den Probehahn, 1 Reduzierung d25/d20", "Rohr PVC-U d25 und d20"],
+  "stueckliste": [
+   "2 Kompositbehaelter 10 x 35 mit Kopf (Bypass-/Absperrhahn)",
+   "1 Sedimentgehaeuse 10 Zoll mit Patrone 20 um",
+   "2 x 21 l katalytische Kohle 12 x 40 (9,3 kg je Bett)",
+   "1 Probehahn G 1/4 mit Tuelle",
+   "1 Durchflussbegrenzer 4 l/min G 3/4",
+   "4 Kugelhaehne (3 x d25, 1 x d20)",
+   "2 T-Stuecke d25, 1 T-Stueck d25 fuer den Probehahn, 1 Reduzierung d25/d20",
+   "Rohr PVC-U d25 und d20"
+  ],
   "lokal": "Kompositbehaelter und Sedimentgehaeuse sind Handelsteile (Wasseraufbereitung); Verrohrung PVC-U d25 Standard.",
-  "massen_getrennt": ["Kohlebett"],
+  "massen_getrennt": [
+   "Kohlebett"
+  ],
   "gewicht_gefuellt": "2 Betten trocken je 9,3 kg; nass Bett 21 l Kohle + Porenwasser rund 10 l je Behaelter [A]",
-  "pruefung": ["scripts/workshop/check_aktivkohle_station.py (Ergebnis renders/components/aktivkohle_station/check.txt): Behaelter-Mass, Bett 21 l, Kontaktzeit 10,5 min, Ports, Koerperzahl, Interferenz 0"],
+  "pruefung": [
+   "scripts/workshop/check_aktivkohle_station.py (Ergebnis renders/components/aktivkohle_station/check.txt): Behaelter-Mass, Bett 21 l, Kontaktzeit 10,5 min, Ports, Koerperzahl, Interferenz 0"
+  ],
   "offen": [
    "E15 (DEINE ENTSCHEIDUNG Ben): Chlor oder Chloramin im Leitungswasser; bei Chlor genuegt Behaelter 1 (Parameter behaelter = 1)",
    "Katalytische Kohle nur UK (Ecosoft CENT1240, Eurocarb/Haycarb RWAC), EU-Festland nicht belegt (R53 Abschnitt 1); Centaur ist Steinkohle, nicht Kokos; Zuordnung nach Bens Entscheidung zu UK als Europa (R52 Abschnitt 4)",
@@ -82,6 +323,50 @@
    "Zisterne als Alternative: nicht gebaut (D69)",
    "Standort der Station (E13), Wandhalterung und Auffangwanne: Montage"
   ],
-  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt)."
+  "kritiker": "Kein Pruefer-Lauf (Auftrag W37-2: Selbstcheck; Pruefer folgt).",
+  "teileliste": [
+   [
+    "Kompositbehaelter 10 x 35 mit Kopf (2 Stueck)",
+    "Ø 254 x 889, ca. 38 l",
+    "PWG-Vessel 10x35 mit Clack-Handrueckspuelkopf 1 Zoll, Art. Q-1035-A9 (GAPS, UK) [Q-Treffer]",
+    "nur UK, eine Quelle; Bypass nicht genannt; EU-Festland offen"
+   ],
+   [
+    "Sedimentgehaeuse 10 Zoll",
+    "Ø 112 x 290",
+    "Gehaeuse EKO 3/4 Zoll Messing, Art. 32420234 (wasserfilter-berlin, DE); Ecosoft INL-FPV34ECO-3/4 (BE, unsicher) [Q-Treffer]",
+    "beschaffbar (schwach, nicht geoeffnet)"
+   ],
+   [
+    "Patrone PP 20 um, 10 Zoll",
+    "Ø 63 x 250",
+    "ALFILTRA Filterkerze PP 20 um (DE) [Q-Treffer]",
+    "nur eine Quelle"
+   ],
+   [
+    "Katalytische Kohle 12 x 40 (2 x 21 l, 9,3 kg je Bett)",
+    "Schuettgut",
+    "Ecosoft Centaur 12x40, Art. CENT1240 (Steinkohle, UK-Shop in GBP, derzeit nicht lieferbar) [Q]; Haycarb RWAC ueber Eurocarb (Bristol, UK) [Q Broschuere]; Jacobi AquaSorb CX-MCA nur US-Shops [Q-Treffer]",
+    "nur UK; EU-Festland nicht beschaffbar belegt (Chloramin-Fall, E15); bei Chlor genuegt Standardkohle (Jacobi AquaSorb CS 12x40)"
+   ],
+   [
+    "Durchflussbegrenzer 4 l/min",
+    "G 3/4 aussen, DN 20",
+    "Kobold KM-020A (Datenblatt gelesen, Hersteller aus Dateiname/Suche) [Q]; Kemper FG 68499001 (Set 4/10/20 l/min, DE) [Q-Treffer]",
+    "eine Quelle; das Blatt vom 04.11. fuehrte 'nicht beschaffbar' (Kemper-Set), R53 korrigiert auf Kobold; Fabrikat nicht gewaehlt"
+   ],
+   [
+    "Kugelhahn d25 (3 Stueck) und d20 (1 Stueck)",
+    "PVC-U",
+    "bevo Profec Safe 600 Art. 0112135 (d25) und Safe 525 Art. 0112140 (d20) (DE/NL); GF Typ 546 via RS [Q-Treffer]",
+    "beschaffbar (nicht geoeffnet)"
+   ],
+   [
+    "Probehahn zwischen den Behaeltern",
+    "G 1/4, Rotguss",
+    "Kemper 1870000600 (DE) [Q]; SYR 6705.10.050 (DE) [Q]",
+    "beschaffbar (R53); Anschluss G 1/4 statt d12; Abzweig mit Innengewinde nicht belegt [A]"
+   ]
+  ]
  }
 }

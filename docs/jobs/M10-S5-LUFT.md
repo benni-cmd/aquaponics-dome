@@ -45,7 +45,7 @@ Teil A im Dom gesetzt (Verteiler, 4 Scheiben, Schwimmerventil, Rohre Verteiler z
 1. Pool-Verteiler und Scheiben: genau 1 Instanz `luftverteiler_4` und 4 Instanzen `luft_scheibenbelueftung` im Dom (`solidcraft-cli eval designs/dome.sc`, Komponentennamen zaehlen; Soll 1 und 4); jede Scheibenmitte liegt innerhalb des Pools (Abstand zur Beckenmitte unter 1945 minus 135 = 1810 mm) und die Membran-Oberkante unter Z 515.
 2. Schwimmerventil: Rohrachse Z 710 (+-1 mm) und Kugelmitte Z 535 (+-1 mm) im Dom gemessen (Bbox der Komponente).
 3. Rohre Verteiler zu Scheiben: 4 Rohre d25, Enden fluchten mit den Ports (Abstand Port zu Rohrende unter 1 mm); `scripts/check_leitungen.py` 0 Verstoesse; `inspect.interference` ueber die neuen Komponenten: 0 neue Treffer.
-4. Variantenbefund im Blatt und im Paket: jede Kante mit E20- oder E13-Bezug steht als "OFFEN (E20)" oder "OFFEN (E13)" (`grep -c "OFFEN (E20)\|OFFEN (E13)" docs/packages/m10-s5-luft.md`, Soll mindestens 4); keine Leitung zu K40-Zulauf, K45 bis K48 gebaut.
+4. Variantenbefund im Blatt und im Paket: jede Kante mit E20- oder E13-Bezug steht als "OFFEN (E20)" oder "OFFEN (E13)" (`grep -c "OFFEN (E20)|OFFEN (E13)" docs/jobs/M10-S5-LUFT.md`, Soll mindestens 4\|OFFEN (E13)" docs/packages/m10-s5-luft.md`, Soll mindestens 4); keine Leitung zu K40-Zulauf, K45 bis K48 gebaut.
 5. Nichts Fremdes veraendert: `git diff HEAD --stat` zeigt nur die im Blatt genannten Pfade; `git hash-object designs/components/schaltschrank.sc scripts/gen_dome.py data/params.json data/leitungsnetz.json` gleich dem Stand vor der Sitzung.
 
 ## Start-Hinweis fuer die Montage-Sitzung

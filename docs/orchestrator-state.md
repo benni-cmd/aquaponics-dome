@@ -168,3 +168,4 @@
   4. Planer N-STUECKLISTE (local_18962fb7, W59 inkl. Nachtrag Seite + Desktop-Verknuepfung) -> Bau-Pakete laut Blatt -> Pruefer.
   5. Bericht E20 kompakt (local_994a3bc8) -> Link in den Gesamtbericht.
   Nicht anfassen: alles, was von E20 abhaengt (W37-1, M10-S2N, S3 bis S5), M10-S2V geparkt. Limit 01:28: 5h 13 %, Woche 3 %. Regel: Bau-Sitzung nicht bei 5h > 90 % starten.
+  6. (Ben 04.11. nachts, W60/Belueftung) Nach W37-3: pruefen, ob die Luftleitungen K44 bis K51 und das Setzen von Geblaese/Aktivkohle ohne E20 gehen (Planer-Befund 30b4845: Luft variantenunabhaengig). Wenn ja: Planer fuer einen abgetrennten Montage-Schritt M10-S5-LUFT, dann Montage, dann Pruefer. Rest von M10-S5 bleibt bis E20 gestoppt.

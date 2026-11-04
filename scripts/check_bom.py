@@ -6,7 +6,7 @@ Aufruf:
   python -X utf8 scripts/check_bom.py --ohne-live  # ohne CLI-Gegenprobe
 
 Liest data/stueckliste.json (erzeugt von scripts/bom.py), viewer/instances.json, data/bom_koerper.json, data/katalog.json.
-Der Aenderungstest laeuft in einer Kopie im Temp-Ordner (BOM_ROOT), das Repo bleibt unveraendert.
+Determinismus und Aenderungstest laufen in einer Kopie im Temp-Ordner (BOM_ROOT), das Repo bleibt unveraendert.
 """
 import glob
 import hashlib
@@ -36,6 +36,22 @@ def check(nr, text, ok, detail=""):
 
 def jl(p):
     return json.load(open(p, encoding="utf-8"))
+
+
+def hash_ohne_stempel(pfad):
+    d = jl(pfad)
+    d["kopf"].pop("modell_aktuell", None)
+    d["kopf"].pop("drift", None)
+    return hashlib.sha256(json.dumps(d, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def kopie_anlegen(tmp):
+    for rel in ("data/bom_koerper.json", "data/katalog.json", "data/bom_regeln.json", "viewer/instances.json"):
+        os.makedirs(os.path.join(tmp, os.path.dirname(rel)), exist_ok=True)
+        shutil.copy(os.path.join(ROOT, rel), os.path.join(tmp, rel))
+    shutil.copytree(os.path.join(ROOT, "data", "beschaffung"), os.path.join(tmp, "data", "beschaffung"))
+    os.makedirs(os.path.join(tmp, "docs"), exist_ok=True)
+    os.makedirs(os.path.join(tmp, "designs", "components"), exist_ok=True)
 
 
 def main():
@@ -129,11 +145,18 @@ def main():
             if not str(z["status"]).startswith("OFFEN") or not z.get("status_grund"):
                 leer.append((z["artikel_id"], "OFFEN ohne Grund"))
     check(11, "Preiszeilen: Preis mit allen Feldern in Europa oder OFFEN mit Grund (leere Felder 0)", not leer, str(leer[:4]))
-    # ---- Punkt 4: Determinismus und Aenderungstest (Kopie)
-    h1 = hashlib.sha256(open(BOM.OUT_JSON, "rb").read()).hexdigest()
-    BOM.main()
-    h2 = hashlib.sha256(open(BOM.OUT_JSON, "rb").read()).hexdigest()
-    check(12, "Determinismus: bom.py erneut, sha256 data/stueckliste.json gleich", h1 == h2, h1[:12])
+    # ---- Punkt 4: Determinismus in einer Kopie (BOM_ROOT); das Repo wird nicht geschrieben (Auflage A2)
+    tmp = tempfile.mkdtemp()
+    try:
+        kopie_anlegen(tmp)
+        hs = []
+        for _ in range(2):
+            subprocess.run([sys.executable, "-X", "utf8", os.path.join(HERE, "bom.py")], env=dict(os.environ, BOM_ROOT=tmp), capture_output=True, text=True)
+            hs.append(hash_ohne_stempel(os.path.join(tmp, "data", "stueckliste.json")))
+        gleich_repo = jl(os.path.join(tmp, "data", "stueckliste.json"))["zeilen"] == sl["zeilen"]
+        check(12, "Determinismus: bom.py zweimal in einer Kopie, sha256 data/stueckliste.json (ohne Drift-Stempel) gleich", hs[0] == hs[1], hs[0][:12] + (", Zeilen = Repo" if gleich_repo else ", Zeilen weichen vom Repo ab (Modelldrift oder Liste nicht neu erzeugt)"))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
     aenderungstest()
     nf = [e for e in ERG if not e[2]]
     print(f"\n{len(ERG) - len(nf)} von {len(ERG)} Pruefungen PASS")
@@ -143,12 +166,7 @@ def main():
 def aenderungstest():
     tmp = tempfile.mkdtemp()
     try:
-        for rel in ("data/bom_koerper.json", "data/katalog.json", "data/bom_regeln.json", "viewer/instances.json"):
-            os.makedirs(os.path.join(tmp, os.path.dirname(rel)), exist_ok=True)
-            shutil.copy(os.path.join(ROOT, rel), os.path.join(tmp, rel))
-        shutil.copytree(os.path.join(ROOT, "data", "beschaffung"), os.path.join(tmp, "data", "beschaffung"))
-        os.makedirs(os.path.join(tmp, "docs"), exist_ok=True)
-        os.makedirs(os.path.join(tmp, "designs", "components"), exist_ok=True)
+        kopie_anlegen(tmp)
         cache = jl(os.path.join(tmp, "data", "bom_koerper.json"))
         inst = Counter(i["d"] for i in jl(os.path.join(tmp, "viewer", "instances.json"))["instances"])
         kandidaten = [c for c, v in sorted(cache["komponenten"].items()) if c.startswith("lt_rohr_d") and inst.get(c, 0) > 0]

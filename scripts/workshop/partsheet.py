@@ -72,6 +72,11 @@ def main(name):
     if bl.get("stueckliste"):
         L.append("\n## Stueckliste-Zeile\n")
         L += [f"- {x}" for x in bl["stueckliste"]]
+    if bl.get("teileliste"):
+        L.append("\n## Teileliste mit Bezug in Europa (D76)\n\nMarke: [Q] Seite/Ausschnitt gelesen (nur Katalogzeile, Preise nicht geprueft), [R51] aus R51 uebernommen, [A] Annahme. Artikel vor der Bestellung gegen Mass und PN pruefen.\n")
+        L.append("| Teil | Mass | Europaeische Quelle (Hersteller/Haendler, Artikel) | Status |\n|---|---|---|---|")
+        for r in bl["teileliste"]:
+            L.append("| " + " | ".join(r) + " |")
     if bl.get("lokal"):
         L.append(f"\n## Alternative lokale Fertigung\n\n{bl['lokal']}")
     L.append("\n## Renders\n")

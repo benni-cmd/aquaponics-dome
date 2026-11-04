@@ -1,38 +1,53 @@
 {
-  "komponente": "strebe_a",
-  "datei": "designs/components/strebe_a.sc",
-  "bauteilgruppe": "Kuppel",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "strebe a",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
-  "koerperzahl": 1,
-  "gruppen": [
-    {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
-      "teile": [
-        "t_strebe_a"
-      ]
-    }
-  ],
-  "teile": [
-    {
-      "id": "t_strebe_a",
-      "name": "T Strebe A",
-      "koerper": [
-        "T1_Strebe_A"
-      ],
-      "menge": 1,
-      "typ": "profil",
-      "werkstoff": "Default",
-      "masse_mm": "Masse 24747.9 g, Einzelkoerper 90.0 x 90.0 x 3039.0 mm (Modell-Bounding-Box)",
-      "artikel_id": "PRF-st-strebe30x30",
-      "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 3.039,
-      "geruest": true
-    }
-  ]
+ "komponente": "strebe_a",
+ "datei": "designs/components/strebe_a.sc",
+ "bauteilgruppe": "Kuppel",
+ "teilenummer": "T1",
+ "stand": "geruest",
+ "titel": "Kuppelstrebe A (Knoten-zu-Knoten 3279 mm)",
+ "kurz": "Ein Stahlrohr 30 × 30 mm, das zwei Knoten der Kuppel verbindet; Typ A kommt 30-mal vor.",
+ "hinweis": "Handfelder gefüllt (W60 5a). Die Komponentendatei trägt fremde, nicht committete Änderungen und das Material 'Default', das keinem Katalog-Werkstoff zugeordnet ist: darum bleibt das Teil als Gerüst markiert und der Werkstoff steht als 'Default' (Soll: stahl_verzinkt). Profil, Wand und Norm sind angenommen.",
+ "koerperzahl": 1,
+ "gruppen": [
+  {
+   "id": "strebe",
+   "name": "Strebe",
+   "kurz": "Das Stahlrohr zwischen zwei Knoten.",
+   "teile": [
+    "t_strebe_a"
+   ]
+  }
+ ],
+ "teile": [
+  {
+   "id": "t_strebe_a",
+   "name": "Kuppelstrebe A",
+   "koerper": [
+    "T1_Strebe_A"
+   ],
+   "menge": 1,
+   "typ": "profil",
+   "werkstoff": "Default",
+   "masse_mm": "Platzhalter-Rundstab Ø 90 mm, Länge 3039 mm, Masse 24,75 kg (Standarddichte 1,29, nicht Stahl)",
+   "artikel_id": "PRF-st-strebe30x30",
+   "artikel_einheit": "m",
+   "artikel_menge_je_instanz": 3.039,
+   "geruest": true,
+   "werkstoff_soll": "stahl_verzinkt",
+   "masse_g": 24747.9,
+   "funktion": "Die Strebe ist ein Stab der Kuppel: Sie verbindet zwei Knoten und trägt zusammen mit den anderen Streben das Dach.",
+   "eigenschaften": [
+    "Knoten-zu-Knoten-Maß 3279 mm, abzüglich 2 × 120 mm Endversatz ergibt die Teillänge 3039 mm.",
+    "Das Modell enthält 30 Streben dieses Typs.",
+    "Im Modell ist die Strebe ein sichtbarer Platzhalter-Rundstab Ø 90 mm; das echte Profil ist 30 × 30 mm (Referenzbild), Wand und Güte sind offen (N-STATIK).",
+    "An jedem Ende sitzt eine runde Steckaufnahme Ø 34 × 80 mm für den Steckarm des Knotens, gesichert mit einem Querbolzen M10."
+   ],
+   "norm": "Rechteckhohlprofil 30 × 30 nach EN 10219-2, Feuerverzinkung nach EN ISO 1461 [A]; Profil und Wand offen",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/components/strebe.py, data/params.json (strut_r 45: Platzhalter, strut_end_offset 120, strut_pocket 34), data/layout.json dome.strut_len_mm, docs/parts/knoten.md (Steckmaß 80)"
+  }
+ ]
 }

@@ -1,144 +1,219 @@
 {
-  "komponente": "knoten_6_n09",
-  "datei": "designs/components/knoten_6_n09.sc",
-  "bauteilgruppe": "Kuppel",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "knoten 6 n09",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
-  "koerperzahl": 31,
-  "gruppen": [
-    {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
-      "teile": [
-        "knotenkugel",
-        "arm"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
-        "scheibe_m10",
-        "mutter_m10"
-      ]
-    },
-    {
-      "id": "schrauben",
-      "name": "Schrauben",
-      "kurz": "",
-      "teile": [
-        "schraube_m10x60"
-      ]
-    }
-  ],
-  "teile": [
-    {
-      "id": "knotenkugel",
-      "name": "Knotenkugel",
-      "koerper": [
-        "Knotenkugel"
-      ],
-      "menge": 1,
-      "typ": "sonderteil",
-      "werkstoff": "Stahl Knoten",
-      "masse_mm": "Masse 4110.0 g, Einzelkoerper 100.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
-      "artikel_id": "SON-knotenkugel-d100",
-      "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
-    },
-    {
-      "id": "arm",
-      "name": "Arm",
-      "koerper": [
-        "Arm_1",
-        "Arm_2",
-        "Arm_3",
-        "Arm_4",
-        "Arm_5",
-        "Arm_6"
-      ],
-      "menge": 6,
-      "typ": "sonderteil",
-      "werkstoff": "Stahl Knoten",
-      "masse_mm": "Masse 1545.8 g, Einzelkoerper 26.8 x 101.9 x 145.9 mm (Modell-Bounding-Box)",
-      "artikel_id": "SON-knotenarm-23x23x3",
-      "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 6.0,
-      "geruest": true
-    },
-    {
-      "id": "scheibe_m10",
-      "name": "Scheibe M10",
-      "koerper": [
-        "Body1",
-        "Body3",
-        "Body5",
-        "Body7",
-        "Body9",
-        "Body11",
-        "Body13",
-        "Body15",
-        "Body17",
-        "Body19",
-        "Body21",
-        "Body23"
-      ],
-      "menge": 12,
-      "typ": "sonderteil",
-      "werkstoff": "Stahl Knoten",
-      "masse_mm": "Masse 42.9 g, Einzelkoerper 10.7 x 19.2 x 19.9 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
-      "artikel_einheit": null,
-      "artikel_menge_je_instanz": 0,
-      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true
-    },
-    {
-      "id": "schraube_m10x60",
-      "name": "Schraube M10x60",
-      "koerper": [
-        "Body2",
-        "Body6",
-        "Body10",
-        "Body14",
-        "Body18",
-        "Body22"
-      ],
-      "menge": 6,
-      "typ": "normteil",
-      "werkstoff": "Stahl Knoten",
-      "masse_mm": "Masse 270.3 g, Einzelkoerper 26.9 x 36.7 x 60.8 mm (Modell-Bounding-Box)",
-      "artikel_id": "SRB-satz-m10x60",
-      "artikel_einheit": "Satz",
-      "artikel_menge_je_instanz": 6.0,
-      "geruest": true
-    },
-    {
-      "id": "mutter_m10",
-      "name": "Mutter M10",
-      "koerper": [
-        "Body4",
-        "Body8",
-        "Body12",
-        "Body16",
-        "Body20",
-        "Body24"
-      ],
-      "menge": 6,
-      "typ": "sonderteil",
-      "werkstoff": "Stahl Knoten",
-      "masse_mm": "Masse 56.6 g, Einzelkoerper 14.7 x 17.7 x 20.2 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
-      "artikel_einheit": null,
-      "artikel_menge_je_instanz": 0,
-      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true
-    }
-  ]
+ "komponente": "knoten_6_n09",
+ "datei": "designs/components/knoten_6_n09.sc",
+ "bauteilgruppe": "Kuppel",
+ "teilenummer": "T60",
+ "stand": "5a",
+ "titel": "Kuppelknoten sechswertig, Knoten n09",
+ "kurz": "Eine Stahlkugel mit 6 Steckarmen verbindet 6 Streben der Kuppel: Jede Strebe wird 80 mm auf einen Arm geschoben und mit einer Schraube gesichert.",
+ "hinweis": "Texte und Zahlen aus docs/parts/knoten.md, knoten-ports.md und data/components/knoten_arme.json. Alle Maße sind Annahmen (Konfidenz niedrig); Stahlgüte, Armmaße und Schraubenlänge warten auf die Statik (N-STATIK). Die Explosion zieht Arme und Schrauben vom Knoten weg; in Wirklichkeit wird die Schraube quer durch Strebe und Arm gezogen, die Darstellung zeigt nur die Zusammengehörigkeit. Der europäische Bezug der Kaufteile ist offen (Regel D76).",
+ "koerperzahl": 31,
+ "gruppen": [
+  {
+   "id": "knotenkoerper",
+   "name": "Knotenkörper",
+   "kurz": "Die geschweißte Stahlbaugruppe: Kugel und Steckarme, auf die die Streben kommen.",
+   "teile": [
+    "knotenkugel",
+    "arm"
+   ]
+  },
+  {
+   "id": "verschraubung",
+   "name": "Verschraubung",
+   "kurz": "Schraube, Scheiben und Mutter sichern je eine Strebe auf ihrem Steckarm.",
+   "teile": [
+    "schraube_m10x60",
+    "scheibe_m10",
+    "mutter_m10"
+   ]
+  }
+ ],
+ "teile": [
+  {
+   "id": "knotenkugel",
+   "name": "Knotenkugel",
+   "koerper": [
+    "Knotenkugel"
+   ],
+   "menge": 1,
+   "typ": "sonderteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "Vollkugel Ø 100 mm, Masse 4,11 kg",
+   "artikel_id": "SON-knotenkugel-d100",
+   "artikel_einheit": "Stk",
+   "artikel_menge_je_instanz": 1.0,
+   "masse_g": 4110.0,
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "funktion": "Die Kugel ist die Mitte des Knotens: An ihr hängen die Steckarme, auf die die Streben der Kuppel geschoben werden.",
+   "eigenschaften": [
+    "Vollkugel aus Stahl, Ø 100 mm.",
+    "Eine Kugel statt zweier Knotenplatten, weil die Streben um 16 bis 18 Grad gegen die Berührungsebene geneigt sind; flache Platten würden die Arme durchdringen.",
+    "Die Arme stecken 4 mm tief in der Kugel und werden dort angeschweißt; danach wird der ganze Knoten feuerverzinkt.",
+    "Maße sind angenommen; zu Kugel und Naben nennt die Recherche keine Vorbilder."
+   ],
+   "norm": "Baustahl S235, Feuerverzinkung nach EN ISO 1461 [A]",
+   "norm_konfidenz": "angenommen",
+   "quelle": "docs/parts/knoten.md, docs/parts/knoten-ports.md, data/components/knoten.json (Kugel D100: Annahme; R02 nennt kein Nabenmaß)"
+  },
+  {
+   "id": "arm",
+   "name": "Steckarm",
+   "koerper": [
+    "Arm_1",
+    "Arm_2",
+    "Arm_3",
+    "Arm_4",
+    "Arm_5",
+    "Arm_6"
+   ],
+   "menge": 6,
+   "typ": "sonderteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "6 Steckarme, Rechteckrohr 23 × 23 × 3 mm, Länge 154 mm (reicht bis 200 mm von der Knotenmitte), zusammen 1,55 kg",
+   "artikel_id": "SON-knotenarm-23x23x3",
+   "artikel_einheit": "Stk",
+   "artikel_menge_je_instanz": 6.0,
+   "masse_g": 1545.8,
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "funktion": "Jeder Steckarm trägt eine Strebe: Die Strebe wird 80 mm auf den Arm geschoben und mit einem Querbolzen gesichert.",
+   "eigenschaften": [
+    "Jeder Arm zeigt zum Nachbarknoten (Abweichung unter 0,5 Grad) und ist 16 bis 18 Grad gegen die Berührungsebene der Kugel gekippt.",
+    "Querloch Ø 11 mm für den Bolzen, 50 mm hinter dem Strebenende.",
+    "Der Arm ist 0,5 mm je Seite schmaler als das Innenmaß der Strebe (24 mm): Platz für Zink und Schweißverzug.",
+    "Der Knoten hat 6 Arme (Wertigkeit 6)."
+   ],
+   "norm": "Rechteckhohlprofil, kaltgeformt, nach EN 10219-2; Feuerverzinkung nach EN ISO 1461 [A]",
+   "norm_konfidenz": "angenommen",
+   "quelle": "docs/parts/knoten.md, docs/parts/knoten-ports.md, data/components/knoten.json, data/components/knoten_arme.json (Richtungen und Längen je Knoten)",
+   "explosion": {
+    "richtung": "radial",
+    "abstand_mm": 200
+   }
+  },
+  {
+   "id": "scheibe_m10",
+   "name": "Scheibe M10",
+   "koerper": [
+    "ScheibeO_1",
+    "ScheibeU_1",
+    "ScheibeO_2",
+    "ScheibeU_2",
+    "ScheibeO_3",
+    "ScheibeU_3",
+    "ScheibeO_4",
+    "ScheibeU_4",
+    "ScheibeO_5",
+    "ScheibeU_5",
+    "ScheibeO_6",
+    "ScheibeU_6"
+   ],
+   "menge": 12,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "12 Scheiben M10, rund 2 mm dick, zusammen 0,04 kg",
+   "artikel_id": null,
+   "artikel_einheit": null,
+   "artikel_menge_je_instanz": 0,
+   "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+   "masse_g": 42.9,
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "funktion": "Die Scheibe verteilt den Druck von Schraubenkopf und Mutter auf die dünne Wand der Strebe.",
+   "eigenschaften": [
+    "Zwei Scheiben je Schraube: eine unter dem Kopf, eine unter der Mutter.",
+    "Gehört zum Schraubensatz; kein eigener Artikel in der Stückliste."
+   ],
+   "norm": "Scheibe ISO 7089, verzinkt [A]",
+   "norm_konfidenz": "angenommen",
+   "bezug": "Im Schraubensatz M10 × 60 enthalten (Katalog SRB-satz-m10x60); Bezug in Europa offen [A]",
+   "quelle": "docs/parts/knoten.md, docs/parts/knoten-ports.md, data/components/knoten.json (Scheibe ISO 7089, Bibliotheksteil)",
+   "explosion": {
+    "richtung": "radial",
+    "abstand_mm": 60,
+    "folgt": "schraube_m10x60"
+   }
+  },
+  {
+   "id": "schraube_m10x60",
+   "name": "Sechskantschraube M10",
+   "koerper": [
+    "Schraube_1",
+    "Schraube_2",
+    "Schraube_3",
+    "Schraube_4",
+    "Schraube_5",
+    "Schraube_6"
+   ],
+   "menge": 6,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "6 Schrauben M10, im Modell 55 mm lang, zusammen 0,27 kg",
+   "artikel_id": "SRB-satz-m10x60",
+   "artikel_einheit": "Satz",
+   "artikel_menge_je_instanz": 6.0,
+   "masse_g": 270.3,
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "funktion": "Die Schraube geht quer durch Strebe und Steckarm und hält die Strebe auf dem Arm fest.",
+   "eigenschaften": [
+    "Im Modell M10 × 55; der Katalogartikel ist der Schraubensatz M10 × 60 (Schraube, Mutter, zwei Scheiben): Der Längenunterschied von 5 mm ist noch abzugleichen (N-STATIK).",
+    "Je Strebe ein Bolzen, 50 mm hinter dem Strebenende; Richtwert Anzugsmoment 49 Nm bei Festigkeit 8.8.",
+    "Die Normteile kommen aus der SolidCraft-Bibliothek, nicht aus einem Herstellerkatalog."
+   ],
+   "norm": "Sechskantschraube ISO 4017 (DIN 933), Festigkeitsklasse 8.8 nach ISO 898-1, verzinkt [A]",
+   "norm_konfidenz": "angenommen",
+   "bezug": "Schraubensatz M10 × 60 im Katalog (SRB-satz-m10x60); Händler und Bezug in Europa offen (N-BESCHAFFUNG), Normteil im Standardkatalog [A]",
+   "quelle": "docs/parts/knoten.md, docs/parts/knoten-ports.md, data/components/knoten.json (Querbolzen M10x55 ISO 4017: Annahme)",
+   "explosion": {
+    "richtung": "radial",
+    "abstand_mm": 120,
+    "folgt": "arm"
+   }
+  },
+  {
+   "id": "mutter_m10",
+   "name": "Mutter M10",
+   "koerper": [
+    "Mutter_1",
+    "Mutter_2",
+    "Mutter_3",
+    "Mutter_4",
+    "Mutter_5",
+    "Mutter_6"
+   ],
+   "menge": 6,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "6 Muttern M10, zusammen 0,06 kg",
+   "artikel_id": null,
+   "artikel_einheit": null,
+   "artikel_menge_je_instanz": 0,
+   "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+   "masse_g": 56.6,
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "funktion": "Die Mutter zieht die Schraube fest und klemmt die Strebe auf den Steckarm.",
+   "eigenschaften": [
+    "Sechskantmutter M10, sitzt auf der Gegenseite des Schraubenkopfes.",
+    "Gehört zum Schraubensatz; kein eigener Artikel in der Stückliste."
+   ],
+   "norm": "Sechskantmutter ISO 4032, Festigkeitsklasse 8, verzinkt [A]",
+   "norm_konfidenz": "angenommen",
+   "bezug": "Im Schraubensatz M10 × 60 enthalten (Katalog SRB-satz-m10x60); Bezug in Europa offen [A]",
+   "quelle": "docs/parts/knoten.md, docs/parts/knoten-ports.md, data/components/knoten.json (Mutter ISO 4032, Bibliotheksteil)",
+   "explosion": {
+    "richtung": "radial",
+    "abstand_mm": 100,
+    "folgt": "schraube_m10x60"
+   }
+  }
+ ]
 }

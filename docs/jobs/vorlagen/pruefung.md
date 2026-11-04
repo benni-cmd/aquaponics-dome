@@ -19,3 +19,5 @@ Zweck (Ben 01.11.2026, E18): Der Pruefer ist der Gegenleser einer fertigen Bau-,
 **Sichern:** `git commit -m "Pruefung <ID>: Befund" -m "Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>" -- docs/jobs/pruefung/<ID>.md` (neue Datei vorher `git add -N`), `git push`.
 
 **Abschluss:** Kurzmeldung, hoechstens sechs Zeilen: Urteil · FAIL-Punkte mit Zahl · nicht belegte Behauptungen · was der Orchestrator tun muss. Dann STOPP.
+
+**Checks seriell starten** [Pruefer W37-2/W37-3, 04.11.2026, Auflage A4]: Bei acht gleichzeitig gestarteten Check-Skripten scheiterten zwei mit `FEHLER faces ... no body`, einer lieferte nichts; einzeln liefen alle PASS. Vermutete Ursache: gemeinsamer Zwischenordner `TMP` in `scripts/workshop/sc.py`. Deshalb Checks nacheinander starten oder je Lauf eine eigene `WORKSHOP_TMP` setzen.

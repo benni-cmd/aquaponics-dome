@@ -89,3 +89,6 @@ Je Teil: `designs/components/<name>.sc` bzw. erweiterte `becken_dritt_klein.sc`,
 3. Boolean mit duennem Zylindermantel scheitert: Stutzen als eigener Koerper oder auf Bloecke setzen.
 4. Behaelter-Masse sind Handelsmass-Annahmen; Kontaktzeit, Standzeit und Kohle-Kapazitaet fehlen als Quelle (R45), im Blatt als [A] fuehren.
 5. Limit: drei kleine Teile in einer Sitzung ist die Obergrenze; bei Kontext ueber 60 Prozent Stand in `docs/workshop-state.md` und stoppen.
+
+## Nachtrag Pruefpunkt 6 (Orchestrator, 04.11.2026, Pruefer-Auflage A1)
+Das Soll von Pruefpunkt 6 ist durch R53 ueberholt. Neues Soll: Kohle "nicht beschaffbar (EU-Festland)" (nur UK), Durchflussbegrenzer "eine Quelle" (Kobold KM-020A); zweite EU-Quelle fuer den Begrenzer und Kohle vom Festland (Eurocarb, Ecosoft DE/BE) bleiben offen (Auflage A2, N-BESCHAFFUNG).

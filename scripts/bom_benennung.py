@@ -14,7 +14,7 @@ import json
 import os
 import re
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("BOM_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # BOM_ROOT: Testkopie (check_bom.py)
 REGELN = os.path.join(ROOT, "data", "bom_regeln.json")
 
 _cache = {}

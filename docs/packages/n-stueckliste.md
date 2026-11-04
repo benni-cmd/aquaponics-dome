@@ -6,9 +6,9 @@
 
 ## Plan
 1. [x] Werkstatt 1a: Typ-Index und Artikelliste aus allen Komponenten-`.sc` (Preise leer), sofort committen (04.11.2026, `scripts/bom_artikel.py`, `data/katalog.json`)
-2. [ ] Werkstatt 1b: `data/bom_regeln.json`, unbenannte Koerper (`Body<n>`) benennen
-3. [ ] Werkstatt 1c: `scripts/bom.py` (Zaehlung, Zuschnitt 1D) und `scripts/check_bom.py`
-4. [ ] Werkstatt 1d: `data/stueckliste.json`, `docs/stueckliste.md`
+2. [x] Werkstatt 1b: `data/bom_regeln.json`, unbenannte Koerper (`Body<n>`) benennen (04.11.2026, a83f21a; Benennung per Regel in der Stueckliste, `.sc` unveraendert)
+3. [x] Werkstatt 1c: `scripts/bom.py` (Zaehlung, Zuschnitt 1D) und `scripts/check_bom.py` (04.11.2026, check_bom 13 von 13 PASS)
+4. [x] Werkstatt 1d: `data/stueckliste.json`, `docs/stueckliste.md` (04.11.2026)
 5. [ ] Recherche 2A Stahl und Normteile (`data/beschaffung/stahl.json`)
 6. [ ] Recherche 2B Wasserleitung, L21 (`data/beschaffung/leitung.json`; E20-abhaengig: OFFEN (E20))
 7. [ ] Recherche 2C Behaelter, Becken, Pumpen (`data/beschaffung/behaelter.json`; Subtank: OFFEN (Subtank))
@@ -29,6 +29,14 @@ Reihenfolge: 1a vor 2A bis 2E (Artikelliste); 2A bis 2E parallel; 10 nach 1d und
 
 04.11.2026, Werkstatt 1a gebaut: `data/katalog.json` traegt zusaetzlich `typen` (17 Kuerzel), `artikel` (239 Zeilen, Preise leer, Status OFFEN (Quelle)), `artikel_ausnahmen`, `artikel_ungeklaert` (0), `artikel_stempel`. Messung: 301 `.sc` per `solidcraft-cli eval` (`python -X utf8 scripts/bom_artikel.py --messen`, rund 15 min) -> 2349 Koerper, Cache `data/bom_koerper.json`. Stempel: instances `built` 2026-11-04 01:33:42, sc_sha256 38162d73c8f590cb, `ibc_beet*` 41f3f1c81fe299e5 (W40-BEET-Stand). Typen: FIT 73, SON 31, BLE 17, BEH 16, MES 16, ARM 16, SCH 18, PRF 14, ROH 12, TOP 3, SRB 4, WNK 6, ELE 4, PMP 3, FOL 5, GEW 1 (`python -c` ueber `katalog.json` `artikel`). 112 von 239 Artikeln kommen nur in Komponenten ohne Instanz im Modellstand vor (`ohne_instanz_im_modell`), z. B. Haut, Keilschiene, Halter, Dosierstation. Ausgenommen (Entscheidung 04.11.): Salat 98 Koerper, Massfigur 43, Wasserkoerper 7, Beton 2, Aushub 1. Unbenannte Koerper (`Body<n>`) sind den Artikeln `SRB-*` und `BLE-platte-30x30x3` mit Hinweis `unbenannt` zugeordnet (Zahl nach Namensregeln folgt in 1b).
 Bekannte Naeherungen fuer 1b/2A: Profilwand aus Modellmasse gerechnet [E] (z. B. 40x40: Wand 2,5 und 3 mm gemischt, vereinheitlichen); Strebenprofil als Platzhalterkoerper (Laenge aus Bbox, Profil 30x30 laut strut_cutting); Diagonalen als Flachstahl 3 mm ohne Breite; IBC-Gebinde als ein Artikel; Rohr-Laengen aus Bbox (L-Stuecke ungenau); Kugelhahn-Nennweite je Bauteil angenommen [A].
+
+04.11.2026, Werkstatt 1b bis 1d gebaut (Messbefehle: `python -X utf8 scripts/check_bom.py`, `python -X utf8 scripts/bom.py`):
+- Benennung: 740 unbenannte Koerper, alle per Gestalt-Regel (`scripts/bom_benennung.py`, Daten `data/bom_regeln.json` `benennung`) als Schraube, Mutter oder Scheibe benannt, 0 ungeklaert. Mutter und Scheibe zaehlen im Schraubensatz (Schraube + Mutter + 2 Scheiben, Einheit Satz, IDs `SRB-satz-<gewinde>x<laenge>`). Die `.sc` bleiben unveraendert: Abweichung vom Blatt (dort: Benennung im Werkstatt-Skript je Komponente), Grund: 45 Komponenten aus rund 20 Skripten, Rebuild-Risiko, andere Sitzungen bauen parallel; die Regel wirkt auch nach jedem Rebuild.
+- Neu mitgezaehlt: 7 Komponenten aus W37-2/W37-3 (`classify_w37` in `scripts/bom_artikel.py`, Annahmen mit [A] und Hinweis `w37_annahme`), Nachmessung per `bom_artikel.py --ergaenzen`; Katalog jetzt 260 Artikel, 0 ungeklaert.
+- Ausgabe: 260 Zeilen, Summe der platzierten Zeilen mit Preis 28.510,25 EUR brutto; 37 platzierte Zeilen ohne Preis (benannter Grund je Zeile); `data/stueckliste.json` erzeugt in zwei Laeufen identisch (sha256 636750845d9e).
+- Befund (Entscheidung noetig): 130 von 260 Zeilen stehen nur in Komponenten OHNE Instanz im Modell (`viewer/instances.json`), darunter Huelle (Haut, Tuer, Keilschiene), Messtechnik, Puffer-Station, Aktivkohle. Sie zaehlen Menge 0 und nicht in die Summe; je 1 Stueck gerechnet waeren es weitere 2.279,02 EUR (36 Zeilen, ohne lt_-Bibliothek). Davon 105 Komponenten lt_* sind ungenutzte Bibliotheksvarianten.
+- Befund fuer Recherche 2A: Preise unter `SRB-m8x35`, `SRB-knoten-klein`, `SRB-pumpe-klein`, `BLE-platte-30x30x3` haben keinen Katalogartikel mehr (Schrauben jetzt je Gewinde und Laenge). `SRB-satz-m6x20` erbt den Preis ueber `preis_alias`; neu zu bepreisen: `SRB-satz-m5x12`, `m6x16`, `m6x40`, `m6x55`, `m8x30`, `m10x60`, `m12x55`, `m16x300`.
+- Nicht Teil von 1b bis 1d, offen: Geruestdateien `data/parts/<komp>.json` fuer alle Komponenten (W60, Blatt Paket 5), Seite `docs/einkaufsliste.html` (Paket 3).
 
 ## DoD
 Dateien aus dem Blatt vorhanden; `check_bom.py` gruen; fuenf Pruefpunkte vom Pruefer gemessen; Seite per Screenshot geprueft; Entscheidungen der Offen-Liste in `docs/decisions.md`; Wunschbuch W59 nachgefuehrt; Commit und Push je Teilschritt.

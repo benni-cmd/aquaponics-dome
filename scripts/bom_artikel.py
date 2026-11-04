@@ -24,7 +24,7 @@ from collections import OrderedDict, defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bom_benennung  # noqa: E402
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("BOM_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # BOM_ROOT: Testkopie (check_bom.py)
 CLI = r"C:\Program Files\SolidCraft\solidcraft-cli.exe"
 COMP_DIR = os.path.join(ROOT, "designs", "components")
 CACHE = os.path.join(ROOT, "data", "bom_koerper.json")

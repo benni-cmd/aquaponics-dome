@@ -412,8 +412,8 @@
       "id": "schraube_m6x20",
       "name": "Schraube M6 x 20",
       "koerper": [
-        "Body1",
-        "Body3"
+        "Schraube_K_-1",
+        "Schraube_K_1"
       ],
       "menge": 2,
       "typ": "normteil",
@@ -447,8 +447,8 @@
       "id": "mutter_m6",
       "name": "Mutter M6",
       "koerper": [
-        "Body2",
-        "Body4"
+        "Schraube_Mutter_K_-1",
+        "Schraube_Mutter_K_1"
       ],
       "menge": 2,
       "typ": "sonderteil",

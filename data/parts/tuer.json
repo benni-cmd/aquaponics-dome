@@ -272,5 +272,11 @@
       },
       "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     }
-  ]
+  ],
+  "abgeloest": {
+    "durch": "tuer_komplett",
+    "stand": "2026-11-04",
+    "grund": "Altmodell T4 (9 Koerper, Werkstoff Default) ohne Instanz im Gesamtmodell; Tuer im Modell ist tuer_komplett (T50, 27 Koerper, Feld BBB 149,2, D36). Datei bleibt erhalten (Entscheidung Orchestrator 04.11.2026).",
+    "einkaufsliste": "nicht doppelt gezaehlt: data/stueckliste.json SON-tuer-modellvariante bedarf 0, nicht_platziert, Hinweis altmodell"
+  }
 }

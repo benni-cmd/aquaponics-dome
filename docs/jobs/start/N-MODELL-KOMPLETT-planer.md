@@ -1,0 +1,9 @@
+# Start-Auftrag: Planer N-MODELL-KOMPLETT (W63, W65)
+
+PROJEKT: aquaponics-dome (user-projects/aquaponics-dome). Rolle: Planer, nur lesen und das Auftragsblatt schreiben. Kontext mit Fenster 1.000.000 Token rechnen; ueber 35 % melden statt anfangen.
+
+1. Problem: Im Gesamtmodell stehen noch einfache Platzhalter, obwohl genaue Komponenten existieren oder das Mass bekannt ist. Belege von Ben: Streben sind ein Rundstab (params `strut_r`), Einkaufsliste fuehrt Vierkantrohr 30x30 (`PRF-st-strebe30x30`); Tuer im Modell ohne Klinke, obwohl eine genaue Tuer-Komponente existiert (`designs/components/tuer.sc` gegen `tuer_komplett.sc`, Einbau `scripts/gen_dome.py` `tuer_komplett()`).
+2. Intent: Alle Bauteile genau im Modell, damit Detailansicht, Einkaufsliste und das spaetere gemeinsame Ausfuell-Artefakt (W65) auf dem echten Modell stehen.
+3. Aufgaben: (a) Inventur: jede Komponente in `designs/components/` gegen das, was `gen_dome.py` einsetzt; Liste "Platzhalter im Modell, genaue Komponente vorhanden oder Mass bekannt". (b) Strebe: Annahme Vierkantrohr 30x30 (Wand aus Einkaufsliste/Katalog), passend zum Knoten-Steckarm 23x23x3, Ausrichtung zur Kuppelflaeche; Folgen fuer Folie/Plane, Knoten, Kollisionen benennen. N-STATIK darf spaeter aendern (Wunsch W43). (c) Tuer: welche Komponente die genaue ist, Einbau statt Platzhalter. (d) Werkstoffe: 39 Teile Huelle/Tuer/Fundament ohne Katalog-Werkstoff und `strebe_a/b` Material 'Default' auf Katalog-IDs.
+4. Ergebnis: `docs/jobs/N-MODELL-KOMPLETT.md` (Vorlage `docs/jobs/vorlagen/`), Schritte je Rolle (Werkstatt, Montage, Viewer, Pruefer) mit Messbefehlen; Paket `docs/packages/n-modell-komplett.md` (PIG, Plan, Stand, DoD). Reihenfolge-Hinweis: Montage erst nach Montage Luft Teil A (M10-S5-LUFT), nur eine schreibende Modell-Sitzung zugleich.
+5. Die Sperrliste "fremde Aenderungen" ist aufgehoben (Ben 04.11., gesichert 8d1c29d). Commits nur per Pfad, Push. Danach STOPP.

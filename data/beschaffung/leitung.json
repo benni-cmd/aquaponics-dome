@@ -1,6 +1,6 @@
 {
  "_hinweis": "N-STUECKLISTE 2B Wasserleitung, Stand 2026-11-04. Preise brutto je Bezugseinheit; Bevo-Preise netto gelesen x1,19. UK = Europa OFFEN (kein UK-Angebot enthalten). Kein Kauf. Katalogstand 39e6323.",
- "stufe": 1,
+ "stufe": 2,
  "artikel": [
   {
    "id": "ROH-pvcu-d63",
@@ -44,7 +44,7 @@
    "bedarf": 2,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "ROH-pvcu-d40",
@@ -75,9 +75,33 @@
    "bezeichnung": "PVC-U-Kugelhahn d40",
    "einheit": "Stk",
    "bedarf": 4,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 62.15,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-kugelhahn-40-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    },
+    {
+     "preis_eur": 29.27,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-40-mm-glue-socket-16bar-dn32-grey-type-eil-7018363",
+     "lieferung_de": "unbekannt (Versandseite nicht gelesen)",
+     "konfidenz": "Q (Netto gelesen), brutto E",
+     "bemerkung": "netto 24,60 EUR (29,77 brutto laut Seite); nur in 25er-Packung (615 EUR netto), Lieferung \"auf Anfrage\" -> fuer Einzelkauf ungeeignet"
+    }
+   ],
+   "luecke": "zwei unabhaengige Angebote"
   },
   {
    "id": "SCH-schlauchtuelle-d25",
@@ -86,8 +110,20 @@
    "einheit": "Stk",
    "bedarf": 4,
    "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "angebote": [
+    {
+     "preis_eur": 2.95,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-druckschlauchtuelle-25-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ROH-pvcu-d25",
@@ -118,9 +154,22 @@
    "bezeichnung": "PVC-U-Kugelhahn d25",
    "einheit": "Stk",
    "bedarf": 2,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 42.49,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-kugelhahn-25-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "FIT-kappe-d20",
@@ -197,7 +246,7 @@
    "bedarf": 4,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "ARM-anbohrschelle",
@@ -207,7 +256,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "FIT-gewindenippel-edelstahl",
@@ -225,9 +274,22 @@
    "bezeichnung": "PVC-U-Kugelhahn d20",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 37.46,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-kugelhahn-20-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-schlauchtuelle-d12",
@@ -236,8 +298,20 @@
    "einheit": "Stk",
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "angebote": [
+    {
+     "preis_eur": 1.33,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-druckschlauchtuelle-12-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "FIT-verschraubung-d50",
@@ -346,7 +420,7 @@
    "bedarf": 14,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "FIT-reduktion-d32",
@@ -853,7 +927,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "ARM-kabeleinfuehrung-dn50",
@@ -863,7 +937,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "FIT-kappe-d50",
@@ -907,7 +981,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-rohrschelle-d20",
@@ -917,7 +991,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-rohrschelle-d25",
@@ -927,7 +1001,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-rohrschelle-d32",
@@ -937,7 +1011,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-rohrschelle-d40",
@@ -947,7 +1021,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-rohrschelle-d50",
@@ -957,7 +1031,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "ARM-kugelhahn-d110",
@@ -967,7 +1041,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "ARM-kugelhahn-d32",
@@ -975,9 +1049,22 @@
    "bezeichnung": "PVC-U-Kugelhahn d32",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 52.66,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-kugelhahn-32-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ARM-kugelhahn-d50",
@@ -985,9 +1072,22 @@
    "bezeichnung": "PVC-U-Kugelhahn d50",
    "einheit": "Stk",
    "bedarf": 2,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 87.68,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-kugelhahn-50-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ARM-kugelhahn-d63",
@@ -995,9 +1095,22 @@
    "bezeichnung": "PVC-U-Kugelhahn d63",
    "einheit": "Stk",
    "bedarf": 2,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 135.9,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-kugelhahn-63-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "FIT-kupplung-d110",
@@ -1509,9 +1622,22 @@
    "bezeichnung": "PVC-U-Rueckschlagventil d20",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 15.67,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-rueckschlagventil-20-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ARM-rsv-d25",
@@ -1519,9 +1645,22 @@
    "bezeichnung": "PVC-U-Rueckschlagventil d25",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 18.81,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-rueckschlagventil-25-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ARM-rsv-d40",
@@ -1529,9 +1668,22 @@
    "bezeichnung": "PVC-U-Rueckschlagventil d40",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 35.93,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-rueckschlagventil-40-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-rohrschelle-vk-vk_d32",
@@ -1541,7 +1693,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-rohrschelle-vk-vk_d63",
@@ -1551,7 +1703,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-schlauch-id16",
@@ -1561,7 +1713,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-schlauch-id25",
@@ -1571,7 +1723,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-schlauchbogen90-id16",
@@ -1581,7 +1733,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-schlauchbogen90-id25",
@@ -1591,7 +1743,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-schlauchschelle-id16",
@@ -1601,7 +1753,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "SCH-schlauchschelle-id25",
@@ -1611,7 +1763,7 @@
    "bedarf": 0,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "FIT-t-d110",
@@ -2006,7 +2158,7 @@
    "bedarf": 76,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "ARM-bulkhead-pool",
@@ -2016,7 +2168,7 @@
    "bedarf": 3,
    "status": "OFFEN (Quelle)",
    "angebote": [],
-   "luecke": "in dieser Stufe nicht bearbeitet"
+   "luecke": "noch kein Angebot gelesen"
   },
   {
    "id": "FIT-stutzen-d63",

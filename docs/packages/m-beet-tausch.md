@@ -1,0 +1,32 @@
+# Work package: M-BEET-TAUSCH die 14 Beete im Dom auf `ibc_beet` (V3 Sperrboden)
+
+**Problem:** Der Dom (Build Runde 66) enthaelt die 14 Beete noch im Bauteilstand vor W40-BEET (Siebboden mit Wasserraum, Schlitz-Glocke); die Werkstatt hat `ibc_beet_{aussen_800,innen_933}.sc` auf V3 umgebaut, Pruefer PASS mit Auflagen (2dd81ff).
+**Intent:** Modell und Messungen zeigen das Beet, das Ben gewaehlt hat (D77, Beet leert sich ganz); die Folgen (Gaenge, Kollision, Wasserbilanz) sind belegt.
+**Goal:** Neuer Build Stufe 5 mit 8 `Beet_aussen_800` + 6 `Beet_innen_933`; `check_walkways` PASS auf den Runde-66-Werten; `check_latte` 0 echte Kollisionen (auch Netztopf x Reinigungsschacht); Viewer-Export neu; Bilanz-Folgen (6280 l) mit Eigentuemer benannt. Blatt: `docs/jobs/M-BEET-TAUSCH.md`.
+
+## Plan
+
+1. [ ] Werkstatt-Vorlauf 0a: Bauteilblatt-Artikel Schachtrohr DN100 und Dichtband "nicht beschafft (Mass offen)" (Auflage 3)
+2. [ ] Werkstatt-Vorlauf 0b: Check-Text Standrohrflaeche 346 auf 380 mm2 / Schachtlaenge im Blatt (Auflage 4)
+3. [ ] Werkstatt-Vorlauf 0c: Schacht auf Topfraster-Zellmitte legen (Befund Netztopf x Schacht), Check-Zeile Abstand >= 87 mm
+4. [ ] Pruefung Auflage 5: Reduzierhuelse 22 mm und Flansch D50 gegen Datenblatt und Modell
+5. [ ] Montage: Neubau Runde 67 (Nummer aus `renders/` ablesen), `check_walkways`, `check_latte`, `check_walkways_voll`, Renders
+6. [ ] Montage: Viewer-Export (`viewer/export_model.py`), `loop-state.md`-Abschnitt
+7. [ ] Pruefer: `docs/jobs/pruefung/M-BEET-TAUSCH.md` nach fuenf Pruefpunkten
+8. [ ] Orchestrator: Bilanz-Dateien nachfuehren (Liste im Blatt, Schritt 3)
+
+## Stand
+
+04.11.2026 (Nacht), Planer (Sonnet 5.5): Blatt geschrieben. Aktualitaet: **angepasst**. Kernbefunde: (1) `t9()` setzt die Komponenten schon unter dem Namen `ibc_beet_aussen_800/innen_933`, der Tausch ist ein Neubau, kein Skript-Umbau; (2) Aussenmasse unveraendert, Erdtasche (200 mm unter Wanne) deckt die `Reduktion` bis Z -80, Gangwerte also erwartbar unveraendert; (3) **Netztoepfe liegen im Reinigungsschacht** (Gerechnet: 2 Toepfe je Aussenbeet, 1 bis 2 je Innenbeet, Abstand 76 / 36 mm gegen Soll 87; Groessenordnung 22 Kollisionen), Werkstatt-Check und Pruefer haben das nicht erfasst, weil Toepfe in `10_Pflanzen` liegen; Planer-Entscheidung: Schacht auf Zellmitte verschieben (Schritt 0c), Topfzahl 2222 bleibt. Nicht gebaut, nichts am Modell geaendert.
+
+OFFEN (E20, Entscheidung 05.11.): Ablaufleitungen K14/K30, Beet-Sumpf-Einlauf, Anschluss der `Reduktion` (offenes Ende bleibt). Nicht geplant.
+
+## Definition of Done
+
+Geprueft gegen: `docs/jobs/W40-BEET.md`, `docs/jobs/pruefung/W40-BEET.md`, `docs/packages/w40-beet.md`, `scripts/gen_dome.py` (Grep Beet-Stellen), `data/layout.json` `ibc_beds`, `docs/loop-state.md`, D77/D78, Python-Abstandsrechnung Topf/Schacht.
+Offen:
+1. Werkstatt-Vorlauf 0a bis 0c, Pruefung Auflage 5, Montage, Pruefer: Orchestrator startet die Sitzungen in dieser Reihenfolge.
+2. Topf-Schacht-Kollision ist gerechnet, nicht gemessen: Montage/`check_latte`.
+3. Bilanz-Dateien nachfuehren (6280 l, Gewichte): Orchestrator.
+4. Ablaufleitungen und Beet-Sumpf: OFFEN (E20), Ben 05.11.
+5. Dichtband-Mass, Metallbauer-Anfrage Schutzkorb, Datenblaetter: Ben.

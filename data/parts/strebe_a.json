@@ -3,10 +3,10 @@
  "datei": "designs/components/strebe_a.sc",
  "bauteilgruppe": "Kuppel",
  "teilenummer": "T1",
- "stand": "geruest",
+ "stand": "5a",
  "titel": "Kuppelstrebe A (Knoten-zu-Knoten 3279 mm)",
  "kurz": "Ein Stahlrohr 30 × 30 mm, das zwei Knoten der Kuppel verbindet; Typ A kommt 30-mal vor.",
- "hinweis": "Handfelder gefüllt (W60 5a). Die Komponentendatei trägt fremde, nicht committete Änderungen und das Material 'Default', das keinem Katalog-Werkstoff zugeordnet ist: darum bleibt das Teil als Gerüst markiert und der Werkstoff steht als 'Default' (Soll: stahl_verzinkt). Profil, Wand und Norm sind angenommen.",
+ "hinweis": "Vierkantrohr 30 × 30 × 3 seit 05.11.2026 (N-MODELL-KOMPLETT Schritt 2, scripts/components/strebe.py). Profil und Wand stehen als Parameter strut_profile und strut_wall in data/params.json; die Statik (N-STATIK) darf sie ändern, z. B. auf 40 × 40. Die Drehlage um die eigene Achse setzt erst die Montage (gen_dome.py, Schritt 3); bis dahin steht im Gesamtmodell noch der alte Rundstab.",
  "koerperzahl": 1,
  "gruppen": [
   {
@@ -27,27 +27,26 @@
    ],
    "menge": 1,
    "typ": "profil",
-   "werkstoff": "Default",
-   "masse_mm": "Platzhalter-Rundstab Ø 90 mm, Länge 3039 mm, Masse 24,75 kg (Standarddichte 1,29, nicht Stahl)",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "Vierkantrohr 30 × 30 × 3 mm, Länge 3039 mm, Querschnitt 324 mm², Masse 7,73 kg",
    "artikel_id": "PRF-st-strebe30x30",
    "artikel_einheit": "m",
    "artikel_menge_je_instanz": 3.039,
-   "geruest": true,
-   "werkstoff_soll": "stahl_verzinkt",
-   "masse_g": 24747.9,
+   "masse_g": 7729.4,
    "funktion": "Die Strebe ist ein Stab der Kuppel: Sie verbindet zwei Knoten und trägt zusammen mit den anderen Streben das Dach.",
    "eigenschaften": [
     "Knoten-zu-Knoten-Maß 3279 mm, abzüglich 2 × 120 mm Endversatz ergibt die Teillänge 3039 mm.",
     "Das Modell enthält 30 Streben dieses Typs.",
-    "Im Modell ist die Strebe ein sichtbarer Platzhalter-Rundstab Ø 90 mm; das echte Profil ist 30 × 30 mm (Referenzbild), Wand und Güte sind offen (N-STATIK).",
-    "An jedem Ende sitzt eine runde Steckaufnahme Ø 34 × 80 mm für den Steckarm des Knotens, gesichert mit einem Querbolzen M10."
+    "Quadratisches Stahlrohr 30 × 30 mm mit 3 mm Wand; innen bleiben 24 × 24 mm frei.",
+    "Der Steckarm des Knotens (23 × 23 mm) wird an jedem Ende 80 mm tief eingeschoben; je Seite bleiben 0,5 mm Luft für Zinkschicht und Schweißverzug. Ein Querbolzen M10 sichert die Strebe.",
+    "Wand 3 mm ist eine Annahme bis zur Statik (N-STATIK); ein 30 × 30 × 2 gilt dort als zu schwach."
    ],
-   "norm": "Rechteckhohlprofil 30 × 30 nach EN 10219-2, Feuerverzinkung nach EN ISO 1461 [A]; Profil und Wand offen",
+   "norm": "Rechteckhohlprofil 30 × 30 × 3 nach EN 10219-2, Feuerverzinkung nach EN ISO 1461 [A]",
    "norm_konfidenz": "angenommen",
    "lebensmittelkontakt": "nein",
    "lebensmittelkontakt_konfidenz": "angenommen",
    "konfidenz": "angenommen",
-   "quelle": "scripts/components/strebe.py, data/params.json (strut_r 45: Platzhalter, strut_end_offset 120, strut_pocket 34), data/layout.json dome.strut_len_mm, docs/parts/knoten.md (Steckmaß 80)"
+   "quelle": "scripts/components/strebe.py, data/params.json (strut_profile 30, strut_wall 3, strut_end_offset 120), data/components/knoten.json (Steckarm 23, Innenmaß 24), data/layout.json dome.strut_len_mm; CAD-Probe Steckarm 23 im Rohr: Interferenz 0 (05.11.2026)"
   }
  ]
 }

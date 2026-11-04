@@ -6,7 +6,7 @@
 
 ## Plan
 1. [x] Werkstatt A (04.11., a2efae2): Inventur-Skript `scripts/model_inventar.py`, `docs/model-inventar.md`
-2. [ ] Werkstatt B: Strebe als Vierkantrohr (`scripts/components/strebe.py`, Parameter, Bauteilblatt, `data/parts`)
+2. [~] Werkstatt B (05.11.): Strebe als Vierkantrohr gebaut und gemessen (`scripts/components/strebe.py`, Parameter, Bauteilblatt `docs/parts/strebe.md`, `data/parts`); offen nur `strebe_a/b.sc` ins Repo nach "check_latte fertig"
 3. [ ] Montage (nach M10-S5-LUFT, einzige Modell-Schreibsitzung): `place_struts` mit Rollwinkel, `strut_r` aus Basisringhoehe entkoppeln, `dome.sc` neu bauen
 4. [~] Werkstatt C (04.11.): `tuer.sc` gekennzeichnet (erledigt); Werkstoffe: Skript `scripts/workshop/default_werkstoffe.py` fertig und auf Kopien geprueft, Anwendung nach Modell-Build durch Montage, `check_parts.py`
 5. [ ] Viewer: Kleinteil-Ausnahme in `export_model.py`, Screenshot Tuer und Strebe
@@ -26,6 +26,13 @@ Reihenfolge: 2 und 5 duerfen vor Schritt 3 laufen (kein `dome.sc`-Neubau); 3 nac
 - **Nicht erreicht:** Soll 0. Grund: Die fuenf inline-Komponenten werden bei jedem Build von `gen_dome.py` neu geschrieben und tragen dort keinen Werkstoff; `gen_dome.py`, `build.sh` und die fremd geaenderten `.sc` sind laut Auftrag tabu. Loesung bereit: `python -X utf8 scripts/workshop/default_werkstoffe.py --apply` weist Beton, PE Tank [A], PVC grau [A], Wasser, Stahl verzinkt [A] zu (auf Kopien geprueft, alle Koerper danach ohne Default). Die Montage ruft es nach `gen_dome.py` auf (oder uebernimmt die Zuordnung in `component_file`). Pool-/Zweitbeckenwerkstoff PE ist Platzhalter bis R32.
 - **check_parts, gemessen 04.11. 12:35:** `python -X utf8 scripts/workshop/check_parts.py` Exit 0, 308 Komponenten, 0 FAIL, Teile offen fuer 5a: 43 (fremde Gruppen).
 - **Folgen fuer andere Sitzungen:** Strebe (Schritt 2) setzt `Stahl verzinkt` selbst; Tische-Sitzung setzt Werkstoff fuer `nft_tisch_innen` Rinnenprofil/Kappen (Katalog: `PVC grau Beet`) und prueft die Tische aussen/mitte.
+
+## Stand 05.11.2026 Werkstatt B (Schritt 2, Strebe Vierkant)
+- **Gebaut:** `scripts/components/strebe.py` baut hohles Vierkantrohr aus `strut_profile` 30 und `strut_wall` 3 (neu in `data/params.json`, [A] Knotenblatt); `strut_r` 45 bleibt (genutzt von `gen_dome.py:250`, `check_latte.py:75`, `place_m8.py:11`, `check_huelle.py:144`); `strut_pocket` als nicht mehr benutzt markiert. Werkstoff `Stahl verzinkt`, Koerper `T1_Strebe_A`/`_B`. Bauteilblatt `docs/parts/strebe.md` neu; `data/parts/strebe_a/b.json` auf Stand 5a, Werkstoff `stahl_verzinkt`.
+- **Gemessen (Scratchpad-Kopie, `solidcraft-cli.exe eval <sc> --json-out`):** A: 1 Koerper, bbox 30 x 30 x 3039, Volumen 984 636 mm3, Masse 7,729 kg, closed wahr, Material `Stahl verzinkt`. B: 1 Koerper, bbox 30 x 30 x 3468, Volumen 1 123 632 mm3, Masse 8,821 kg, closed wahr, Material `Stahl verzinkt`. Alle Soll-Werte aus Schritt 2 getroffen (Abweichung unter 0,1 %).
+- **Passung:** CAD-Probe Steckarm 23 x 23 x 3, 80 mm tief an beiden Enden, `inspect.interference`: 0 Interferenzen (A und B, je 2 Paare per Boolean geprueft). Gegenprobe Arm 25 x 25: 2 Interferenzen je 3920 mm3 (Probe trennt).
+- **check_parts:** `python -X utf8 scripts/workshop/check_parts.py strebe_a strebe_b` mit Umleitung der zwei `.sc` auf die Scratchpad-Kopie: 22/22 je Komponente, Exit 0.
+- **Offen:** `designs/components/strebe_a.sc`/`strebe_b.sc` im Repo schreiben (`python -X utf8 scripts/components/strebe.py`) erst nach "check_latte fertig" vom Orchestrator; danach `check_parts.py strebe_a strebe_b` ohne Umleitung. Folge fuer Schritt 3: Rohr-Aussenkante 15 statt 45 mm von der Achse, Folienabstand in `check_huelle.py` waechst.
 
 ## DoD
 Dateien aus dem Blatt vorhanden; fuenf Pruefpunkte vom Pruefer gemessen; Screenshot Tuer mit Klinke und Streben-Nahansicht gegen `docs/ui-standard.md`; Vorher/Nachher-Werte (Basisknoten-Z, defs-Summe) im Paket; Entscheidungen in `docs/decisions.md`; Commit und Push je Teilschritt.

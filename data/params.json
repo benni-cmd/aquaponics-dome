@@ -48,10 +48,28 @@
   "value": 45,
   "unit": "mm",
   "origin": "A",
-  "source": "Platzhalter: OBJ 30x30 mm Profil, wirkt in Bild unsichtbar; Statik offen",
+  "source": "Rundstab-Platzhalter bis N-MODELL-KOMPLETT Schritt 3; Strebe ist seit 05.11.2026 Vierkant (strut_profile/strut_wall); gen_dome.py:250 rechnet damit noch die Basisringhoehe, nicht aendern",
   "r_id": "R01",
   "maturity": 0,
   "used_by": "gen_dome.py"
+ },
+ "strut_profile": {
+  "value": 30,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Knotenblatt data/components/knoten.json: Strebe Rechteckhohlprofil 30 x 30 (Einkaufsliste PRF-st-strebe30x30); N-STATIK darf auf 40/50 aendern (W43)",
+  "r_id": "R01",
+  "maturity": 0,
+  "used_by": "scripts/components/strebe.py"
+ },
+ "strut_wall": {
+  "value": 3,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Knotenblatt data/components/knoten.json (Steckarm 23 in Innenmass 24); Orchestrator 05.11.2026: Wand 3 mm bis N-STATIK",
+  "r_id": "R01",
+  "maturity": 0,
+  "used_by": "scripts/components/strebe.py"
  },
  "door_w": {
   "value": 1000,
@@ -213,7 +231,7 @@
   "source": "Runde Steckaufnahme D34 x 80 an jedem Strebenende (Steckarm 23 x 23 hat 32,5 mm Diagonale, Rollwinkel beliebig; quadratische 24er Aufnahme gab 604 Kollisionen)",
   "r_id": "R02",
   "maturity": 0,
-  "used_by": "scripts/components/strebe.py"
+  "used_by": "nicht mehr benutzt (05.11.2026: Vierkantrohr, Steckarm im Innenmass strut_profile - 2 x strut_wall)"
  },
  "pool2_r_factor": {
   "value": 1.07,

@@ -22,11 +22,11 @@
           "bezug_einheit": "m2",
           "stand": "2026-10-31",
           "haendler": "AGRIplus UV5 200 um (stretchfolie.eu / dm-folien.com)",
-          "land": "EU (Haendler laut R42)",
+          "land": "DE",
           "url": "https://stretchfolie.eu",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "Aus R42 (gelesen am 31.10.): 1,62 EUR/m2 netto bei Zuschnitt = 1,93 brutto (E); ganze Rolle 10x25 m 179,50 netto = 0,86 brutto je m2. Heute nicht neu geoeffnet."
+          "bemerkung": "Auflage A3 (04.11.): Seite gelesen: Enzensberger GmbH (Telefon +49), Lieferungen innerhalb Deutschland versandkostenfrei; 200 um und UV5 stehen auf der Startseite nicht, nur laut R42. Aus R42 (gelesen am 31.10.): 1,62 EUR/m2 netto bei Zuschnitt = 1,93 brutto (E); ganze Rolle 10x25 m 179,50 netto = 0,86 brutto je m2. Heute nicht neu geoeffnet."
         },
         {
           "preis_eur": 2.12,
@@ -210,8 +210,8 @@
           "land": "DE",
           "url": "https://www.ebay.de/p/1257460901",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Preis fuer 150 um und 75 um aus Suchausschnitt, 100 um nicht gelistet; 100 um in dieser Spanne interpoliert: ca. 40 bis 45 EUR/m2 (E)."
+          "konfidenz": "E",
+          "bemerkung": "Auflage A1 (04.11.): Seite zeigt nur 25-um-Gewebe, ausverkauft, kein 100-um-Angebot belegt; Preis gerechnet, nicht gelesen. Preis fuer 150 um und 75 um aus Suchausschnitt, 100 um nicht gelistet; 100 um in dieser Spanne interpoliert: ca. 40 bis 45 EUR/m2 (E)."
         },
         {
           "preis_eur": null,
@@ -344,8 +344,8 @@
           "land": "DE",
           "url": "https://www.ebay.de/itm/388621401549",
           "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "1,29 EUR laut Suchausschnitt, Preis je Laenge/Durchmesser nicht aufgeloest."
+          "konfidenz": "A",
+          "bemerkung": "Auflage A1 (04.11.): eBay antwortet auf Abruf mit 403, Preis nicht pruefbar (A), Durchmesser 2 mm nicht belegt. 1,29 EUR laut Suchausschnitt, Preis je Laenge/Durchmesser nicht aufgeloest."
         },
         {
           "preis_eur": 1.0,
@@ -355,8 +355,8 @@
           "land": "DE",
           "url": "https://www.ebay.de/itm/267458417642",
           "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Preis nicht gelesen; 1 EUR/m ist A."
+          "konfidenz": "A",
+          "bemerkung": "Auflage A1 (04.11.): eBay antwortet auf Abruf mit 403, Preis nicht pruefbar (A), Durchmesser 2 mm nicht belegt. Preis nicht gelesen; 1 EUR/m ist A."
         }
       ],
       "empfehlung_grob_eur": 1.5,

@@ -179,4 +179,4 @@
   E. Zum Schluss: Viewer-Export auf den neuen Stand, Roadmap/Wunschbuch nachfuehren, Gesamtbericht.
   Reihenfolge Bau: W40 -> N-STUECKLISTE 1a -> W37-2 -> W37-3 -> N-STUECKLISTE 1b-1d -> Montage Beete -> Montage Luft -> W60 Teiledaten -> Viewer (Seite + Detailansicht).
 
-- 04.11. nachts: Waechter-Auftrag dome-night-wake-orchestrator (halbstuendlich :07/:37 bis 05.11. 10:00, Auto-Modus) weckt diese Sitzung local_a8d12d64 nur, wenn 40 min kein Commit und Limit frei. Ende der Nacht: Zeile "GESAMTBERICHT GESCHRIEBEN" hier eintragen, dann schweigt er.
+- 04.11. nachts: Waechter-Auftrag dome-night-wake-orchestrator (halbstuendlich :25/:55 bis 05.11. 10:00, Auto-Modus) weckt diese Sitzung local_a8d12d64 nur, wenn 40 min kein Commit und Limit frei. Ende der Nacht: Zeile "GESAMTBERICHT GESCHRIEBEN" hier eintragen, dann schweigt er.

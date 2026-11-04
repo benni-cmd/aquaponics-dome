@@ -1,0 +1,60 @@
+{
+ "klasse": "luft_scheibenbelueftung",
+ "teilenummer": "T88",
+ "revision": "A",
+ "beschreibung": "EPDM-Scheibenbelueftungsteil Ø 270 (W37-3, R45 Abschnitt 4): Anschlussstutzen d25 senkrecht nach unten, Stuetzfuss, Tragteller und EPDM-Membran; 4 Stueck im Pool, am Pool-Verteiler. Parameter d (Standard 270) und pipe_d (25, Variante Drittbecken K49 d20 mit d 100) bilden die Luftstein-Variante ohne eigenes Bauteil ab. Handelsmass-Platzhalter, Fabrikat offen (N-BESCHAFFUNG)",
+ "quelle_masse": "docs/research/R45-hydraulik-auslegung.md Abschnitt 4; docs/research/R53-europa-frischwasser-luft.md (Jaeger JetFlex HD 270 [Q-Treffer], Disque diffuseur 270 EPDM Ref. DD-0270-EPDM-HCS [Q]); data/leitungsnetz.json K44, K49",
+ "parameter": {
+  "d": {
+   "wert": 270,
+   "einheit": "mm",
+   "herkunft": "[A] Membran-Ø Handelsmass 215 bis 270 (Auftrag W37-3); Standard 270 (R53: JetFlex HD 270, Disque diffuseur 270)"
+  },
+  "pipe_d": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Anschlussstutzen d25 (Pool-Verteiler d25, Auftrag W37-3); Variante Drittbecken K49: 20"
+  },
+  "stutzen_l": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Anschlussstutzen Laenge: Rohr steckt in die Muffe der Zuleitung (Tiefe 19)"
+  },
+  "fuss_h": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "[A] Stuetzfuss: Hoehe von der Stutzenoberkante bis zum Tragteller"
+  },
+  "teller_h": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Tragteller PP"
+  },
+  "teller_rand": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Tragteller Ø = d minus 20 (Membranrand liegt ueber)"
+  },
+  "membran_h": {
+   "wert": 6,
+   "einheit": "mm",
+   "herkunft": "[A] EPDM-Membran, nicht geschlitzt modelliert (Schlitze nicht modelliert)"
+  },
+  "luft_bohrung": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] Luftkanal Ø 16 durch Stutzen und Stuetzfuss (Kanal im Tragteller nicht modelliert)"
+  }
+ },
+ "werkstoff": {
+  "name": "PP (Stutzen, Stuetzfuss, Tragteller), EPDM (Membran)",
+  "dichte_g_cm3": 0.91,
+  "farbe": "#e8e5d8",
+  "herkunft": "[A] Handelsteil, Werkstoff nach Katalog offen"
+ },
+ "anzahl": {
+  "soll": "4 Stueck im Pool (Pool-Verteiler 4-fach); 1 Luftstein-Variante im Drittbecken (K49) als Parameter",
+  "quelle": "Auftrag W37-3 Teil 3; Netz K44, K49"
+ },
+ "bezugspunkt": "Port A (Ende des Anschlussstutzens, Mitte) im Ursprung; Oeffnung zeigt -Z (nach unten), Stutzen, Stuetzfuss, Tragteller und Membran stehen auf der Achse +Z"
+}

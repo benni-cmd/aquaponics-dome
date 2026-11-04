@@ -1,0 +1,70 @@
+{
+ "klasse": "luftverteiler_4",
+ "teilenummer": "T87",
+ "revision": "A",
+ "beschreibung": "Luftverteiler 4-fach d40 (W37-3, R45 Abschnitt 4, Netz K44 bis K51): Pool-Verteiler am Becken: nimmt die Pool-Luft (K44, Planwert 130 l/min) in Port A auf und gibt sie an vier Scheibenbelueftungsteile weiter. Sammler d40 mit Muffe A, 4 Zapfen nach oben, Teilung 120, Ende B geschlossen; Masse nach W36-Muster, Handelsteile (Hahn, Rueckschlagventil, T-Stuecke) Katalog offen",
+ "quelle_masse": "docs/research/R45-hydraulik-auslegung.md Abschnitt 4 (Zeilen 225 bis 279); data/leitungsnetz.json Version 3 K44 bis K51 (nur gelesen); docs/parts/leitungsteile.md Verteiler d50 (W36); scripts/workshop/leitung.py (od_f, wall_p, DEPTH)",
+ "parameter": {
+  "pipe_d": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[E] Netz K44: Hauptleitung d40 (R45 Abschnitt 4: d40 bei 200 l/min 3,2 m/s, Innen-Ø 36,2)"
+  },
+  "pitch": {
+   "wert": 120,
+   "einheit": "mm",
+   "herkunft": "[A] Teilung wie lt_verteiler_d50 (Kugelhahn-Gehaeuse d25 = 43,25 plus Hebel; Ventil d40 = 60 mm)"
+  },
+  "x0": {
+   "wert": 75,
+   "einheit": "mm",
+   "herkunft": "[A] erster Abgang: Muffe A d40 (Tiefe 26) plus Abgangsbohrung d40 (Radius 18,1) plus Steg"
+  },
+  "end_cap": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "[A] integrierte Endkappe (Wand) am Ende B wie lt_verteiler_d50"
+  }
+ },
+ "abgaenge": [
+  [
+   "Scheibe 1",
+   25,
+   "K44 (Teil)",
+   "33",
+   "A: 130 l/min Planwert / 4 = 32,5, gerundet 33 l/min je Abgang"
+  ],
+  [
+   "Scheibe 2",
+   25,
+   "K44 (Teil)",
+   "33",
+   "A: 130 l/min Planwert / 4 = 32,5, gerundet 33 l/min je Abgang"
+  ],
+  [
+   "Scheibe 3",
+   25,
+   "K44 (Teil)",
+   "33",
+   "A: 130 l/min Planwert / 4 = 32,5, gerundet 33 l/min je Abgang"
+  ],
+  [
+   "Scheibe 4",
+   25,
+   "K44 (Teil)",
+   "33",
+   "A: 130 l/min Planwert / 4 = 32,5, gerundet 33 l/min je Abgang"
+  ]
+ ],
+ "werkstoff": {
+  "name": "PVC-U (Formstueck, Sammler und Zapfen aus einem Koerper)",
+  "dichte_g_cm3": 1.4,
+  "farbe": "#3d6f9e",
+  "herkunft": "[A] wie lt_verteiler_d50 (W36)"
+ },
+ "anzahl": {
+  "soll": "1 Pool-Verteiler am Becken",
+  "quelle": "R45 Abschnitt 4 Empfehlung 4 und 5; Netz Version 3"
+ },
+ "bezugspunkt": "Port A (Mitte der Muffenoeffnung d40, Einlauf) im Ursprung; Sammlerachse +X (Muffe oeffnet nach -X), Abgaenge zeigen nach +Z (Zapfen-Ende 74 ueber der Achse), Ende B bei X = Laenge geschlossen"
+}

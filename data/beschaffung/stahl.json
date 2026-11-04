@@ -14,35 +14,35 @@
     {
      "preis_eur": 12.65,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-40x40x3mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+     "bemerkung": "40x40x3 mm, Art. ZQR108-1, 1000 mm = 12,65 EUR, 3,33 kg. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 15.05,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahlshop.de (Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/verz-vierkantrohr-40-x-40-x-3-0-detail",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "gerechnet: 3.42 kg/m x 4,40 EUR/kg brutto (Staffel 15-30 kg Warenkorb, Seite gelesen); Stange 6 m; Schnittenden unverzinkt; Versand extra, Versand nach DE im Warenkorb. Theorie-Gewicht mit 2 % Eckenabzug."
+     "bemerkung": "Seite geoeffnet: 40x40x3,0, S235JRH, feuerverzinkt, Fixschnitte 20-6000 mm (Schnittenden unverzinkt), Abrechnung nach kg, Staffel 15-30 kg Warenkorb = 4,40 EUR/kg brutto zzgl. Versand. Gewicht/m steht nicht eindeutig auf der Seite (Feld leer, Zahl 2,52 unbeschriftet); Rechnung mit Theoriegewicht 3,42 kg/m (Shop24 nennt 3,33 kg/m): 3,42 x 4,40 = 15,05 EUR/m."
     },
     {
-     "preis_eur": 78.9,
-     "bezug_einheit": "Stange",
-     "stand": "2026-11-04",
-     "haendler": "metallparadies.de",
+     "preis_eur": 20.23,
+     "bezug_einheit": "m",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://www.metallparadies.de/vierkantrohr-stahl-40x40x3-0-mm.html",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "Seite geoeffnet, schema.org-Spanne 0 bis 78,90 EUR; hoechster Wert vermutlich 6000 mm (13,15 EUR/m), Zuordnung nicht belegt; Lieferzeit 8-10 Werktage, Verzinken ueber Partner +14 Werktage."
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Quadratrohr 40x40x3,0 S235JR, 6 m = 121,41 EUR, Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 11,81 EUR/m (70,89 EUR je 6 m). Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
    "luecke": ""
@@ -53,24 +53,24 @@
     {
      "preis_eur": 9.04,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-40x40x2mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+     "bemerkung": "40x40x2 mm, Art. ZQR107-1, 1000 mm = 9,04 EUR. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 15.4,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Quadratrohr 40x40x2,0 S235JR feuerverzinkt, 6 m = 92.37 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 9.38 EUR/m."
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Quadratrohr 40x40x2,0 S235JR, 6 m = 92,37 EUR, Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 9,38 EUR/m (56,25 EUR je 6 m). Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
    "luecke": ""
@@ -79,29 +79,29 @@
    "bezug_einheit": "m",
    "angebote": [
     {
-     "preis_eur": 10.85,
+     "preis_eur": 12.65,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-40x40x3mm-1000mm",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Wand 2,5 mm nicht im Sortiment: Mittel aus 40x40x2 (9,04) und 40x40x3 (12,65); Wand im Modell nur gerechnet [E] - 3 mm als Ersatz kaufbar (12,65)."
+     "konfidenz": "Q",
+     "bemerkung": "Ersatz: 40x40x3 mm (Wand 2,5 mm bei Shop24 nicht im Sortiment: gelistet sind 40x40x2 und 40x40x3); Seite 40x40x3 geoeffnet, 1000 mm = 12,65 EUR. Alte Mittelwert-Interpolation 10,85 EUR entfernt (kein kaufbarer Artikel). Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 20.23,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Quadratrohr 40x40x3,0 (Ersatz, Wand 2,5 nicht im Sortiment) S235JR feuerverzinkt, 6 m = 121.41 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 11.81 EUR/m. Wand 2,5 mm nicht angeboten, daher 40x40x3,0."
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Ersatz Quadratrohr 40x40x3,0 S235JR (Wand 2,5 nicht im 40x40-Sortiment: 2,0/3,0/4,0/5,0), 6 m = 121,41 EUR, Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 11,81 EUR/m. Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass Wand 2,5 mm bei 40x40 nicht marktueblich (Shop24 und Metallparadies fuehren 2,0/3,0); 3,0 mm als kaufbarer Ersatz, Modell nicht geaendert. Lagerlaenge im Modell 6500 mm, marktueblich 6000 mm."
   },
   "PRF-st-rr40x60x3": {
    "bezug_einheit": "m",
@@ -109,24 +109,24 @@
     {
      "preis_eur": 16.26,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Rechteckrohr-Feuerverzinkt-60x40x3mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Katalog 40x60x3 = Handelsname 60x40x3. Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+     "bemerkung": "Katalog 40x60x3 = Handelsname 60x40x3, Art. ZRR112-1, 4,28 kg, 1000 mm = 16,26 EUR. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
-     "preis_eur": 19.1,
+     "preis_eur": 26.85,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "stahlshop.de (Krefeld)",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://stahlshop.de/verz-vierkantrohr-40-x-40-x-3-0-detail",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "gerechnet: 4.34 kg/m x 4,40 EUR/kg brutto (Staffel 15-30 kg Warenkorb, Seite gelesen); Stange 6 m; Schnittenden unverzinkt; Versand extra, Versand nach DE im Warenkorb. Theorie-Gewicht mit 2 % Eckenabzug; 6 m = 26,6 kg."
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Rechteckrohr 60x40x3 S235JR, 6 m = 161,08 EUR (Konfigurator 162,58 EUR inkl. 1,50 EUR Entgraten), Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 16,32 EUR/m (97,95 EUR je 6 m inkl. Entgraten, 96,45 ohne = 16,08 EUR/m). Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
    "luecke": ""
@@ -137,24 +137,24 @@
     {
      "preis_eur": 6.65,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-30x30x2mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+     "bemerkung": "30x30x2 mm, Art. ZQR104-1, 1,75 kg, 1000 mm = 6,65 EUR. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 11.97,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Quadratrohr 30x30x2,0 S235JR feuerverzinkt, 6 m = 71.85 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 7.27 EUR/m."
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Quadratrohr 30x30x2,0 S235JR, 6 m = 71,85 EUR, Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 7,27 EUR/m (43,65 EUR je 6 m). Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
    "luecke": ""
@@ -165,24 +165,24 @@
     {
      "preis_eur": 19.76,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-60x60x3mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+     "bemerkung": "60x60x3 mm, Art. ZQR113-1, 5,2 kg, 1000 mm = 19,76 EUR. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 30.55,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Quadratrohr 60x60x3,0 S235JR feuerverzinkt, 6 m = 183.33 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 17.53 EUR/m."
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Quadratrohr 60x60x3,0 S235JR, 6 m = 183,33 EUR, Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 17,53 EUR/m (105,16 EUR je 6 m). Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
    "luecke": ""
@@ -193,24 +193,24 @@
     {
      "preis_eur": 5.47,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-25x25x2mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+     "bemerkung": "25x25x2 mm, Art. ZQR103-1, 1,44 kg, 1000 mm = 5,47 EUR. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 10.09,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Quadratrohr 25x25x2,0 S235JR feuerverzinkt, 6 m = 60.55 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 6.14 EUR/m."
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Quadratrohr 25x25x2,0 S235JR, 6 m = 60,55 EUR, Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 6,14 EUR/m (36,81 EUR je 6 m). Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
    "luecke": ""
@@ -221,35 +221,24 @@
     {
      "preis_eur": 11.25,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Rundstahl-verzinkt-20mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Rundstahl verzinkt 20 mm. Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, "
+     "bemerkung": "Rundstahl verzinkt 20 mm, Art. ZRD105-1, S235JR+AR, 2,5 kg, 1000 mm = 11,25 EUR. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 14.7,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-vollmaterial-rundstahl.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Rundstahl 20 mm S235JR feuerverzinkt (Option nachtraeglich feuerverzinkt +14 Werktage), 6 m = 88,19 EUR brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten."
-    },
-    {
-     "preis_eur": 8.18,
-     "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "Metallparadies (metallparadies.de)",
-     "land": "DE",
-     "url": "https://www.metallparadies.de/stahl-vollmaterial-rundstahl.html",
-     "lieferung_de": "ja",
-     "konfidenz": "Q",
-     "bemerkung": "Rundstahl 20 mm S235JR ROH (nicht verzinkt), 6 m = 49,05 EUR brutto inkl. 19% MwSt zzgl. Versand, je lfm inkl. Schnittkosten."
+     "bemerkung": "Konfigurator gelesen: Rundstahl 20 mm S235JR, 6000 mm, nachtraeglich feuerverzinkt (+14 Werktage) = 88,19 EUR brutto inkl. 19% MwSt zzgl. Versand = 14,70 EUR/m (Roh 49,05 EUR je 6 m = 8,18 EUR/m). ACHTUNG: 6 m laut Seite nur Selbstabholung, Versand bis 3000 mm; 3000-mm-Stueck verzinkt/Versand liegt bei 15,42 EUR/m (Konfigurator, roh+verz Stand letzte Eingabe 46,27 EUR je 3 m)."
     }
    ],
    "luecke": ""
@@ -260,55 +249,55 @@
     {
      "preis_eur": 9.12,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Quadratrohr-Feuerverzinkt-30x30x3mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Wand im Modell offen (N-STATIK): 30x30x3 gewaehlt, 30x30x2 kostet 6,65. Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+     "bemerkung": "30x30x3 mm gezielt geprueft, Art. ZQR105-1, 2,4 kg, 1000 mm = 9,12 EUR (30x30x2 = 6,65). Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
-     "preis_eur": 10.96,
+     "preis_eur": 15.37,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "stahlshop.de (Krefeld)",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://stahlshop.de/verz-vierkantrohr-40-x-40-x-3-0-detail",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "gerechnet: 2.49 kg/m x 4,40 EUR/kg brutto (Staffel 15-30 kg Warenkorb, Seite gelesen); Stange 6 m; Schnittenden unverzinkt; Versand extra, Versand nach DE im Warenkorb. Wand 3 mm angenommen."
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator gelesen (nicht abgeschickt): Quadratrohr 30x30x3,0 S235JR, 6 m = 92,23 EUR (Konfigurator 93,73 EUR inkl. 1,50 EUR Entgraten), Laenge 6000 mm, Option nachtraeglich feuerverzinkt (+14 Werktage, externer Partner), Preis brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten; Roh zum Vergleich 9,13 EUR/m (54,81 EUR je 6 m). Zusatz Kanten entgraten (+1,50 EUR) nicht eingerechnet."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass Wand/Profil der Kuppelstrebe laut Zeile offen (N-STATIK V1/V2c); 30x30x3 als Annahme. Modell-Lagerlaenge 7000 mm, marktueblich max 6000 mm."
   },
   "WNK-flach-14x3": {
    "bezug_einheit": "m",
    "angebote": [
     {
-     "preis_eur": 1.33,
+     "preis_eur": 2.85,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Flachstahl-verzinkt-30x3mm-1000mm",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Ersatz: Breite 14 mm nicht im Sortiment; gerechnet aus 30x3 verzinkt (2,85 EUR/m) x 14/30. Kaufbar real: 30x3 oder 20x5 (3,15)."
+     "konfidenz": "Q",
+     "bemerkung": "Kein 14x3: Seite geoeffnet, Flachstahl verzinkt 30x3 (Art. ZFL104-1) 1000 mm = 2,85 EUR; 14x3/15x3/20x3 nicht gelistet (naechstkleiner: 20x5). Alte Rechenwert 1,33 (30x3 x 14/30) entfernt, nicht kaufbar. 30x3 als kaufbarer Ersatz; Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 2.94,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-flacheisen-s235jr-558.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "Ersatz Flachstahl 15x3 mm S235JR feuerverzinkt (14x3 nicht im Sortiment), 6 m = 17,64 EUR brutto inkl. 19% MwSt zzgl. Versand, Option nachtraeglich feuerverzinkt +14 Werktage, je lfm inkl. Schnittkosten."
+     "bemerkung": "Konfigurator gelesen: Flachstahl 15x3 S235JR (14x3 nicht im Sortiment), 6000 mm, nachtraeglich feuerverzinkt (+14 Werktage) = 17,64 EUR brutto inkl. 19% MwSt zzgl. Versand = 2,94 EUR/m (Roh 9,60 EUR je 6 m = 1,60 EUR/m)."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass 14x3 nicht marktueblich; 15x3 verzinkt nur bei Metallparadies gefunden (zweite Quelle fehlt, Suche ohne Treffer), 30x3 bei beiden Haendlern kaufbar. Modell nicht geaendert."
   },
   "WNK-flach-3mm-diagonale": {
    "bezug_einheit": "m",
@@ -316,27 +305,27 @@
     {
      "preis_eur": 2.85,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Flachstahl-verzinkt-30x3mm-1000mm",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "Breite aus Modell nicht ableitbar: 30x3 verzinkt als Platzhalter, Bezug je m; Katalogeinheit Stk (Zuschnitt)."
+     "bemerkung": "Platzhalter Breite 30 mm (Breite im Modell nicht ableitbar): Flachstahl verzinkt 30x3, 1000 mm = 2,85 EUR/m, Seite geoeffnet. Zeile fuehrt Einheit Stk (Zuschnitt), Angebot ist je m; Umrechnung Stk erst mit Zuschnittlaenge moeglich. Preis brutto (Shop: inkl. MwSt.), Versand extra (Seite nennt GLS/DHL, Betrag nicht auf Produktseite; frueher gelesen: pauschal 8,90 EUR/Bestellung DE), feuerverzinkt S235JR, Zuschnitt 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
     },
     {
      "preis_eur": 5.8,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahl-flacheisen-s235jr-558.html",
      "lieferung_de": "ja",
-     "konfidenz": "Q",
-     "bemerkung": "Flachstahl 30x3 mm S235JR feuerverzinkt, 6 m = 34,78 EUR brutto inkl. 19% MwSt zzgl. Versand, je lfm inkl. Schnittkosten. Roh: 3,54 EUR/m (21,27 EUR je 6 m)."
+     "konfidenz": "E",
+     "bemerkung": "Platzhalter Breite 30 mm: Konfigurator gelesen, Flachstahl 30x3 S235JR, 6000 mm, nachtraeglich feuerverzinkt (+14 Werktage) = 34,78 EUR brutto inkl. 19% MwSt zzgl. Versand = 5,80 EUR/m (Roh 21,27 EUR je 6 m = 3,54 EUR/m)."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass Breite und Zuschnittlaenge der 3-mm-Diagonale nicht aus Modell ableitbar; Zeile in Stk, Angebote je m (30x3 nur Platzhalter)."
   },
   "BLE-blech-st-3": {
    "bezug_einheit": "Stk",

@@ -418,6 +418,8 @@ def main():
         return out
     json.dump(out, open(OUT_JSON, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     schreibe_md(out)
+    import bom_seite
+    bom_seite.schreibe_seite(out)
     k = out["kopf"]
     print(f"Zeilen {k['zeilen']} (ohne Preis {k['zeilen_ohne_preis_platziert']}, nicht platziert {k['zeilen_nicht_platziert']}), Summe {k['summe_eur_platziert']} EUR, ungeklaert {len(ungeklaert)}, drift {k['drift']}")
     return out

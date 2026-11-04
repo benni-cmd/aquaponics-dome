@@ -9,11 +9,11 @@
   },
   "modell_aktuell": {
    "instances_built": "2026-11-04 01:33:42",
-   "sc_sha256": "4233d5287fa031b5",
-   "ibc_beet_sha256": "41f3f1c81fe299e5",
+   "sc_sha256": "1d0876dadfc6ba7a",
+   "ibc_beet_sha256": "b6eb0762e886d869",
    "anzahl_sc": 308
   },
-  "drift": false,
+  "drift": true,
   "instanzen": 4880,
   "definitionen": 152,
   "zeilen": 260,

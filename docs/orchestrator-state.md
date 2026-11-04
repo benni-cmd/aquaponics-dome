@@ -186,3 +186,12 @@
 - 04.11. ~03:20 APP-GRENZE: Die App startet seit Bens letzter Nachricht keine neuen Sitzungen mehr (10 Auto-Starts erreicht; Zaehler setzt erst mit Bens naechster Nachricht zurueck). Ab jetzt nur Weckrufe an vorhandene, verwandte Sitzungen; Inhalt als Start-Auftrag in `docs/jobs/start/<schritt>-<rolle>.md`. Zuordnung: Planer M10-S5-LUFT -> werkstatt-w37-3 (gesendet, 91e6569); Montage Beete + Montage Luft -> werkstatt-w40-beet bzw. werkstatt-w37-2 (nacheinander); Pruefer Montage -> pruefer-w40-beet / pruefer-w37-2-3 (nie die Bau-Sitzung); W60 Teiledaten -> werkstatt-stueckliste-1a; Seite Einkaufsliste + Detailansicht-Viewer -> bericht-e20-kompakt (HTML) bzw. Viewer-Erfahrung aus pruefer-detail-pilot nur als Pruefer; Pruefer N-STUECKLISTE -> pruefer-detail-pilot. Laufen jetzt: Pruefer W37-2/3, Werkstatt N-STUECKLISTE 1b-1d, Recherche 2E, Planer M10-S5-LUFT.
 
 - 04.11. ca. 05:25: Montage Beete Runde 67 gebaut (290fe89, b47fc56); Pruefer Einkaufsliste PASS mit Auflagen (ff27b81, Link-Stichprobe 6-7/10). Gestartet: Pruefer Montage Beete (pruefer-w40-beet) und Werkstatt Auflagen Einkaufsliste (werkstatt-stueckliste-1b), Briefs 0b39ff5. A5 entschieden: Desktop-Verknuepfung bleibt (W59). Danach: Bilanz-Dateien (Orchestrator, nach Pruefer), Montage Luft Teil A, W60 Teiledaten.
+
+## 04.11.2026 10:15 Nachtauftrag erweitert (Ben, W61 bis W65)
+Warteschlange in dieser Reihenfolge:
+1. Pruefer Beete Runde 68 (laeuft; Viewer-Export Runde 68 lief 10:05, gesichert 8d1c29d).
+2. Planer N-MODELL-KOMPLETT (laeuft, planer-stueckliste): Inventur Platzhalter, Strebe Vierkant 30x30, Tuer mit Klinke, Werkstoffe 39 Teile.
+3. Nach PASS Beete: 5a Gruppe Tische, Rinnen, Beete, Toepfe (nur Daten) und Montage Luft Teil A, danach Pruefer Luft.
+4. Danach Werkstatt/Montage/Viewer/Pruefer N-MODELL-KOMPLETT, dann 5b Viewer Preis/Link/Menge, Pruefpunkt 7.
+5. Danach Artefakt mit gemeinsamer Tabelle fuer Ben und Partner (W65, Annahmen [A] vorab), dann Gesamtbericht.
+Sperrliste "fremde Aenderungen" aufgehoben (Ben 04.11.: nur geoeffnet).

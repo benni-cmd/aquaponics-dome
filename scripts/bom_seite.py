@@ -6,6 +6,7 @@ Regel W45: gleiche Eingabe, gleiche Ausgabe (kein Laufzeit-Zeitstempel).
 """
 import json
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -13,6 +14,28 @@ ROOT = os.environ.get("BOM_ROOT") or os.path.dirname(HERE)
 OUT_HTML = os.path.join(ROOT, "docs", "einkaufsliste.html")
 
 GRUPPEN_REIHENFOLGE = ["Kuppel", "Fundament", "Becken und Tanks", "Filter", "Tische und Beete", "Leitungen", "Huelle", "Messtechnik und Elektrik"]
+
+# A4: Anzeigetexte mit echten Umlauten; Coding-Namen (Artikel-IDs, Komponenten) bleiben ASCII.
+UML = {w.split("=")[0]: w.split("=")[1] for w in (
+    "Ausruestung=Ausrüstung Beetfuellung=Beetfüllung Behaelter=Behälter Behaelterdurchfuehrung=Behälterdurchführung "
+    "Behaelterfuellung=Behälterfüllung Belueftungsgitter=Belüftungsgitter Blaehton=Blähton Druckbehaelter=Druckbehälter "
+    "Durchfuehrung=Durchführung Flaeche=Fläche Fuellkoerper=Füllkörper Fussplatte=Fußplatte Geblaese=Gebläse Gehaeuse=Gehäuse "
+    "Gewaechshaus=Gewächshaus Gitterkaefig=Gitterkäfig Grosspackung=Großpackung Gummifuss=Gummifuß Haendler=Händler "
+    "Haustuer=Haustür Hoehe=Höhe Huelle=Hülle Huelse=Hülse Kabeleinfuehrung=Kabeleinführung Laenge=Länge Lagerlaenge=Lagerlänge "
+    "Mass=Maß Membrangeblaese=Membrangebläse Oesterreich=Österreich Rueckschlagventil=Rückschlagventil "
+    "Scheibenbelueftung=Scheibenbelüftung Schlauchtuelle=Schlauchtülle Stueck=Stück Stueckzahl=Stückzahl Stuetze=Stütze "
+    "Stuetzfuss=Stützfuß Stuetzrippe=Stützrippe Tuelle=Tülle Tuer=Tür Tuerblatt=Türblatt Tuerdichtung=Türdichtung "
+    "Tuerdruecker=Türdrücker Tuerscharnier=Türscharnier Tuerzarge=Türzarge Uebergang=Übergang Verbindungsstueck=Verbindungsstück "
+    "Verkaeufer=Verkäufer Zellkoerper=Zellkörper bestaendig=beständig fuer=für ueber=über gross=groß weiss=weiß tuerig=türig "
+    "Anschweissband=Anschweißband tuerdruecker=türdrücker").split()}
+_WORT = re.compile(r"[A-Za-z]+")
+
+
+def uml(t):
+    """Ersetzt ASCII-Umschreibungen ganzer Woerter durch echte Umlaute (nur Anzeige)."""
+    if not isinstance(t, str):
+        return t
+    return _WORT.sub(lambda m: UML.get(m.group(0), m.group(0)), t)
 
 
 def daten(out):
@@ -37,24 +60,24 @@ def daten(out):
                 komp_je_gruppe.setdefault(u["gruppe"], []).append(u["komponente"])
         gr = []
         for g in sorted(je_gruppe, key=lambda x: (GRUPPEN_REIHENFOLGE.index(x) if x in GRUPPEN_REIHENFOLGE else 99, x)):
-            gr.append({"g": g, "menge": round(je_gruppe[g], 4), "preis": (round(gp * je_gruppe[g] / tot, 4) if (gp is not None and not z["nicht_platziert"]) else None),
+            gr.append({"g": uml(g), "menge": round(je_gruppe[g], 4), "preis": (round(gp * je_gruppe[g] / tot, 4) if (gp is not None and not z["nicht_platziert"]) else None),
                        "komp": sorted(set(komp_je_gruppe[g]))})
         kauf = z["kauf"]
         zeilen.append({
-            "id": z["artikel_id"], "typ": z["typ"], "bez": z["bezeichnung"], "einheit": z["einheit"], "bedarf": z["bedarf"],
+            "id": z["artikel_id"], "typ": z["typ"], "bez": uml(z["bezeichnung"]), "einheit": z["einheit"], "bedarf": z["bedarf"],
             "np": z["nicht_platziert"], "einmal": z["bedarf_wenn_je_komponente_einmal"],
             "kauf": kauf.get("kauf_menge"), "stangen": kauf.get("stangen"), "lager": kauf.get("lagerlaenge_mm"), "vq": kauf.get("verschnitt_quote"),
-            "art": z["beschaffung_art"], "status": z["status"], "grund": z["status_grund"],
-            "p": ({"e": p["einzelpreis_eur"], "b": p["bezug_einheit"], "g": p["gesamtpreis_eur"], "h": p["haendler"], "l": p["land"], "u": p["url"],
+            "art": z["beschaffung_art"], "status": z["status"], "grund": uml(z["status_grund"]),
+            "p": ({"e": p["einzelpreis_eur"], "b": p["bezug_einheit"], "g": p["gesamtpreis_eur"], "h": uml(p["haendler"]), "l": p["land"], "u": p["url"],
                    "s": p["stand"], "k": p["konfidenz"], "d": p["lieferung_de"], "a": p.get("alias_von")} if p else None),
-            "alt": len(z["alternativen"]), "gr": gr, "hin": z["hinweise"],
+            "alt": len(z["alternativen"]), "gr": gr, "hin": [uml(x) for x in z["hinweise"]],
             "pe": z.get("preis_wenn_je_komponente_einmal_eur"),
         })
     return {"kopf": {"summe": k["summe_eur_platziert"], "zeilen": k["zeilen"], "ohne_preis": k["zeilen_ohne_preis_platziert"], "np": k["zeilen_nicht_platziert"],
                      "np_einmal": k["nicht_platziert_je_einmal"], "modell": k["modell"]["instances_built"], "sc": k["modell"]["sc_sha256"], "drift": k["drift"],
                      "instanzen": k["instanzen"], "stand_preise": max(staende) if staende else None,
-                     "summe_typ": k["summe_je_typ"], "summe_gruppe": k["summe_je_gruppe"]},
-            "typen": out["typen"], "gruppen": [g for g in GRUPPEN_REIHENFOLGE if g in k["summe_je_gruppe"]] + [g for g in k["summe_je_gruppe"] if g not in GRUPPEN_REIHENFOLGE],
+                     "summe_typ": k["summe_je_typ"], "summe_gruppe": {uml(a): b for a, b in k["summe_je_gruppe"].items()}},
+            "typen": {a: uml(b) for a, b in out["typen"].items()}, "gruppen": [uml(g) for g in GRUPPEN_REIHENFOLGE if g in k["summe_je_gruppe"]] + [uml(g) for g in k["summe_je_gruppe"] if g not in GRUPPEN_REIHENFOLGE],
             "zeilen": zeilen}
 
 

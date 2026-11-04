@@ -14,6 +14,17 @@
   #panel h1 { font-size:14px; margin:0 0 6px; }
   #status { color:var(--muted); font-size:12px; margin-bottom:8px; }
   #status b { color:var(--accent); font-weight:600; }
+  #lade { margin:0 0 8px; padding:7px 8px; border:1px solid var(--line); border-radius:6px; background:#121b25; }
+  #lade[hidden] { display:none; }
+  #ladephase { font-size:12px; font-weight:600; margin-bottom:5px; }
+  #lade .bar { height:8px; border-radius:4px; background:#223142; overflow:hidden; }
+  #lade .bar i { display:block; height:100%; width:0; background:var(--sel); transition:width .15s; }
+  #lade.fertig .bar i { background:var(--accent); }
+  #ladetext { font-size:12px; color:var(--muted); margin-top:5px; word-break:break-word; font-variant-numeric:tabular-nums; }
+  #ladewarn { margin-top:5px; padding:4px 6px; border-radius:4px; background:#3a3320; border:1px solid var(--hover); font-size:12px; }
+  #ladewarn::before { content:'Hinweis: '; font-weight:600; }
+  #ladefehler { margin:5px 0 0; padding:0 0 0 16px; font-size:12px; color:#ff9b8a; word-break:break-word; }
+  #ladefehler:empty { display:none; }
   .row { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
   button { background:#223142; color:var(--text); border:1px solid var(--line); border-radius:5px; padding:4px 8px; cursor:pointer; font:inherit; }
   button:hover { border-color:var(--accent); }
@@ -82,12 +93,20 @@
 <div id="panel">
   <h1>Kuppel Live-Viewer</h1>
   <div id="status">verbinde ...</div>
+  <div id="lade" hidden aria-live="polite">
+    <div id="ladephase"></div>
+    <div class="bar"><i id="ladebalken"></i></div>
+    <div id="ladetext"></div>
+    <div id="ladewarn" hidden></div>
+    <ul id="ladefehler"></ul>
+  </div>
   <div class="row">
     <button data-cam="iso">Ansicht ref-4</button><button data-cam="top">Oben</button>
     <button data-cam="side">Seite</button><button data-cam="pool">Pool</button><button id="fpv">FPV</button> <a href="/history/" target="_blank" style="color:inherit">Bildverlauf</a>
   </div>
   <label class="opt"><input type="checkbox" id="wire"> Drahtgitter</label>
   <label class="opt"><input type="checkbox" id="auto" checked> Auto-Update</label>
+  <label class="opt" title="Schrauben, Scharniere, Klinken und andere Koerper unter 15 cm Diagonale; werden erst beim Einschalten nachgeladen"><input type="checkbox" id="klein"> Kleinteile unter 15 cm zeigen</label>
   <h2>Schnitt (Hoehe)</h2>
   <input type="range" id="clip" min="0" max="7000" value="7000">
   <h2>Bauteile (Hover leuchtet, Klick waehlt)</h2>
@@ -196,7 +215,7 @@ function applyInstVisibility(stem, idx) {
 }
 function setLeafVisible(key, on) {
   on ? hiddenLeaf.delete(key) : hiddenLeaf.add(key);
-  leaves.get(key).stems.forEach(stem => defMeshes[stem].forEach(im => { im.visible = on; }));
+  leaves.get(key).stems.forEach(stem => defMeshes[stem].forEach(im => { im.visible = meshVisible(im, on); }));
 }
 function itemsOf(kind, key) {                               // alle {stem, idx} einer Kategorie / Gruppe
   const out = [];
@@ -235,7 +254,7 @@ function setHover(items, node, o) {                          // entprellt: kein 
 
 // ---- Beschreibungen (data/descriptions.json) --------------------------------------------------------------------
 let DESC = { kategorien: {}, bauteile: [] };
-fetch('/descriptions.json?v=' + Date.now()).then(r => r.json()).then(d => { DESC = d; }).catch(() => {});
+fetch('/descriptions.json?v=' + Date.now()).then(r => r.json()).then(d => { DESC = d; topfPatch(); }).catch(() => {});
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 function descOf(stem) { return DESC.bauteile.find(b => new RegExp(b.match).test(stem)); }
 const steps = a => `<ol>${a.map(x => `<li>${esc(x)}</li>`).join('')}</ol>`;
@@ -243,7 +262,7 @@ const bullets = a => `<ul>${a.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
 const grouped = a => a.map(g => typeof g === 'string' ? bullets([g]) : `<div class="g">${esc(g.t)}</div>${bullets(g.p)}`).join('');
 const kv = o => `<table class="kv">${Object.entries(o).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</table>`;
 let SPEC = null;
-fetch('/system-specs.json?v=' + Date.now()).then(r => r.json()).then(d => { SPEC = d; if (!pinned && !selected) showInfo(null); }).catch(() => {});
+fetch('/system-specs.json?v=' + Date.now()).then(r => r.json()).then(d => { SPEC = d; topfPatch(); if (!pinned && !selected) showInfo(null); }).catch(() => {});
 const fm = (x, n = 1) => Number(x).toLocaleString('de-DE', { maximumFractionDigits: n });
 const has = x => x !== undefined && x !== null;
 const kvx = o => kv(Object.fromEntries(Object.entries(o).filter(([, v]) => v)));   // Zeilen ohne Wert (fehlender Schluessel) entfallen
@@ -385,38 +404,197 @@ document.getElementById('showAll').addEventListener('click', () => { hiddenInst.
 document.getElementById('expandAll').addEventListener('click', () => document.querySelectorAll('#tree .cat, #tree .leaf').forEach(p => { p.classList.add('open'); openNodes.add(p.dataset.key); }));
 document.getElementById('collapseAll').addEventListener('click', () => document.querySelectorAll('#tree .cat, #tree .leaf').forEach(p => { p.classList.remove('open'); openNodes.delete(p.dataset.key); }));
 
-// ---- Laden ----------------------------------------------------------------------------------------------------------
-async function load() {
-  const v = Date.now();
-  const [inst, ex] = await Promise.all([fetch('instances.json?v=' + v).then(r => r.json()), fetch('extras.json?v=' + v).then(r => r.json())]);
-  extras = ex; GROUND = Number.isFinite(inst.walk_z) ? inst.walk_z : 400;   // begehbarer Boden = Sockelhoehe sock_h
-  const m = new THREE.Group(); const t0 = performance.now();
-  await Promise.all(Object.entries(inst.defs).map(async ([stem, d]) => {
-    const key = stem + '|' + d.kb;                          // Groesse als Versionsmerkmal der Definition
-    if (!defCache.has(key)) defCache.set(key, await fetch(`defs/${stem}.obj?k=${d.kb}`).then(r => r.text()));
+// ---- Laden mit Fortschrittsanzeige (W66) ---------------------------------------------------------------------------
+// Phasen: Laden (Dateien holen) -> Aufbauen (Meshes bauen) -> fertig. Gilt fuer das erste Laden, das Auto-Update und das Nachladen der Kleinteile.
+const mb = b => (b / 1048576).toFixed(1).replace('.', ',') + ' MB';
+const ladeEl = document.getElementById('lade'), ladeBar = document.getElementById('ladebalken'), ladeText = document.getElementById('ladetext'),
+      ladeWarn = document.getElementById('ladewarn'), ladeFehler = document.getElementById('ladefehler'), ladePhase = document.getElementById('ladephase');
+const HAENGER_S = 20;
+const Lade = {
+  titel: '', nomen: 'Definition', phase: 0, files: 0, totalFiles: 0, bytes: 0, totalBytes: 0, aktiv: new Set(), letzte: '', t0: 0, zeichen: 0, fehler: [], timer: null, weg: null,
+  begin(titel, nomen, totalFiles, totalBytes) {
+    clearTimeout(this.weg); Object.assign(this, { titel, nomen, files: 0, totalFiles, bytes: 0, totalBytes, letzte: '', fehler: [], t0: performance.now(), zeichen: performance.now() });
+    this.aktiv.clear(); ladeEl.hidden = false; ladeEl.classList.remove('fertig'); ladeWarn.hidden = true; ladeFehler.innerHTML = '';
+    clearInterval(this.timer); this.timer = setInterval(() => this.wache(), 1000);
+    this.setPhase(1); this.zeige();
+  },
+  setPhase(p) { this.phase = p; ladePhase.textContent = `${this.titel}, Schritt ${p} von 3: ${['', 'Laden', 'Aufbauen', 'fertig'][p]}`; },
+  sek() { return Math.round((performance.now() - this.t0) / 1000); },
+  zeige() {
+    const laden = this.phase === 1;
+    const anteil = laden ? (this.totalBytes ? this.bytes / this.totalBytes : 0) : (this.totalFiles ? this.files / this.totalFiles : 1);
+    ladeBar.style.width = Math.min(100, Math.round(anteil * 100)) + '%';
+    ladeText.textContent = laden
+      ? `${this.nomen} ${Math.min(this.files + (this.aktiv.size ? 1 : 0), this.totalFiles)} von ${this.totalFiles}, ${mb(this.bytes)} von ${mb(this.totalBytes)}, aktuell ${this.letzte || '-'}, ${this.sek()} s`
+      : this.phase === 2 ? `Aufbauen: ${this.nomen} ${this.files} von ${this.totalFiles}, aktuell ${this.letzte || '-'}, ${this.sek()} s`
+      : `Fertig: ${this.totalFiles} ${this.nomen === 'Definition' ? 'Definitionen' : 'Dateien'}, ${mb(this.totalBytes)}, ${this.sek()} s`;
+  },
+  tick(name) { this.zeichen = performance.now(); if (name) this.letzte = name; ladeWarn.hidden = true; },
+  chunk(n, name) { this.bytes += n; this.tick(name); this.zeige(); },
+  fehlerMelden(text) {
+    this.fehler.push(text); const li = document.createElement('li'); li.textContent = text; ladeFehler.appendChild(li); ladeEl.hidden = false; console.error('Viewer:', text);
+  },
+  wache() {
+    if (this.phase === 3) return;
+    const still = (performance.now() - this.zeichen) / 1000;
+    if (still >= HAENGER_S) { ladeWarn.hidden = false; ladeWarn.textContent = `Keine Antwort seit ${Math.round(still)} s bei ${[...this.aktiv].slice(0, 2).join(', ') || this.letzte || 'dem Server'}. Der Server antwortet nicht oder die Datei ist zu gross.`; }
+    this.zeige();
+  },
+  ende() {
+    this.setPhase(3); this.totalFiles = this.files || this.totalFiles; clearInterval(this.timer); ladeWarn.hidden = true;
+    ladeBar.style.width = '100%'; ladeEl.classList.add('fertig'); this.zeige();
+    if (this.fehler.length) ladeText.textContent += `, ${this.fehler.length} ${this.fehler.length === 1 ? 'Datei fehlerhaft' : 'Dateien fehlerhaft'}`;
+    else this.weg = setTimeout(() => { ladeEl.hidden = true; }, 6000);
+  },
+};
+async function fetchText(url, onChunk) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  if (!r.body || !r.body.getReader) { const t = await r.text(); onChunk(t.length); return t; }
+  const rd = r.body.getReader(), dec = new TextDecoder(); let s = '';
+  for (;;) { const { done, value } = await rd.read(); if (done) break; s += dec.decode(value, { stream: true }); onChunk(value.length); }
+  return s + dec.decode();
+}
+async function ladeDateien(files) {                         // files: [{name, url, bytes, key}] -> defCache; Fehler je Datei sichtbar statt still
+  const todo = [];
+  files.forEach(f => { if (defCache.has(f.key)) { Lade.bytes += f.bytes; Lade.files++; } else todo.push(f); });
+  Lade.zeige();
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(6, todo.length) }, async () => {
+    while (next < todo.length) {
+      const f = todo[next++]; Lade.aktiv.add(f.name); Lade.tick(f.name); let n = 0;
+      try { defCache.set(f.key, await fetchText(f.url, c => { n += c; Lade.chunk(c, f.name); })); }
+      catch (e) { Lade.bytes += Math.max(0, f.bytes - n); Lade.fehlerMelden(`${f.name}: ${e.message}`); }
+      Lade.aktiv.delete(f.name); Lade.files++; Lade.zeige();
+    }
   }));
-  const byDef = {}; inst.instances.forEach(i => (byDef[i.d] || (byDef[i.d] = [])).push(i));
-  defMeshes = {}; defMats = {}; defList = {}; defCol = {};
-  for (const [stem, list] of Object.entries(byDef)) {
-    const g = loader.parse(defCache.get(stem + '|' + inst.defs[stem].kb));
-    const mxs = list.map(i => new THREE.Matrix4().set(...i.m, 0, 0, 0, 1));
-    defMats[stem] = mxs; defList[stem] = list; defMeshes[stem] = [];
-    g.traverse(o => {
-      if (!o.isMesh) return;
-      const name = o.name || o.parent.name, mat = colorFor(name, stem);
-      const im = new THREE.InstancedMesh(o.geometry, mat, list.length);
-      mxs.forEach((mx, i) => im.setMatrixAt(i, mx));
-      im.frustumCulled = false; im.name = name; im.userData.def = stem; m.add(im); defMeshes[stem].push(im);
-      if (!defCol[stem]) defCol[stem] = '#' + mat.color.getHexString();
-    });
+}
+const yieldUi = () => new Promise(r => setTimeout(r, 0));
+async function bauePhase(eintraege, fn) {                   // Meshes bauen, dabei der Seite Luft zum Zeichnen lassen
+  Lade.setPhase(2); Lade.files = 0; Lade.totalFiles = eintraege.length; Lade.zeige(); let t = performance.now();
+  await yieldUi();
+  for (const e of eintraege) {
+    Lade.tick(e.name);
+    try { fn(e); } catch (err) { Lade.fehlerMelden(`${e.name}: Aufbau fehlgeschlagen (${err.message})`); }
+    Lade.files++;
+    if (performance.now() - t > 40) { Lade.zeige(); await yieldUi(); t = performance.now(); }
   }
-  if (model) { scene.remove(model); model.traverse(o => o.geometry && !o.isInstancedMesh && o.geometry.dispose()); }
-  model = m; scene.add(model);
-  Object.keys(defList).forEach(stem => { if (hiddenLeaf.has(leafKeyOf(stem))) defMeshes[stem].forEach(im => { im.visible = false; }); });
-  hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
-  if (selected && !defList[selected.stem]) selected = null;
-  document.getElementById('perf').textContent = `${inst.instances.length} Instanzen, ${Object.keys(inst.defs).length} Definitionen, ${(Object.values(inst.defs).reduce((s, d) => s + d.kb, 0) / 1024).toFixed(1)} MB, Aufbau ${((performance.now() - t0) / 1000).toFixed(1)} s, Kleinteile < ${inst.min_diag} mm ausgeblendet`;
-  buildTree(inst); applyWire(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
+}
+
+// Kleinteile unter 15 cm (W66): eigene Dateien defs/<stem>.klein.obj, erst beim Einschalten geladen
+const LS_KLEIN = 'viewer.kleinteile';
+let kleinOn = false; try { kleinOn = localStorage.getItem(LS_KLEIN) === '1'; } catch (e) {}
+document.getElementById('klein').checked = kleinOn;
+let DEFS_INFO = {}, MIN_DIAG_MM = 150, kleinBuilt = false, kleinBusy = false, loadBusy = false;
+const meshVisible = (im, leafOn) => leafOn && (!im.userData.klein || kleinOn);
+function setKleinVisible() {
+  if (!model) return;
+  Object.keys(defMeshes).forEach(stem => {
+    const leafOn = !hiddenLeaf.has(stemLeaf[stem]);
+    defMeshes[stem].forEach(im => { if (im.userData.klein) im.visible = meshVisible(im, leafOn); });
+  });
+  rebuildHighlight(); perfText();
+}
+async function syncKlein() {
+  if (!model) return;
+  if (!kleinOn || kleinBuilt) { setKleinVisible(); return; }
+  if (kleinBusy) return; kleinBusy = true;
+  try {
+    const todo = Object.entries(DEFS_INFO).filter(([s, d]) => d.klein_kb > 0 && defList[s]);
+    if (!todo.length) { kleinBuilt = true; return; }
+    const files = todo.map(([s, d]) => ({ name: `${s}.klein.obj`, url: `defs/${s}.klein.obj?k=${d.klein_kb}`, bytes: d.klein_kb * 1024, key: `klein|${s}|${d.klein_kb}`, stem: s }));
+    Lade.begin('Kleinteile', 'Datei', files.length, files.reduce((a, f) => a + f.bytes, 0));
+    await ladeDateien(files);
+    await bauePhase(files.filter(f => defCache.has(f.key)), f => baueDef(f.stem, defCache.get(f.key), model, true));
+    kleinBuilt = true; Lade.ende();
+  } catch (e) { Lade.fehlerMelden('Kleinteile: ' + e.message); Lade.ende(); }
+  finally { kleinBusy = false; }
+  setKleinVisible();
+}
+document.getElementById('klein').addEventListener('change', e => {
+  kleinOn = e.target.checked; try { localStorage.setItem(LS_KLEIN, kleinOn ? '1' : '0'); } catch (err) {}
+  if (loadBusy) return;                                       // load() ruft syncKlein am Ende selbst
+  syncKlein();
+});
+function perfText() {
+  if (!DEFS_INFO || !model) return;
+  const defs = Object.values(DEFS_INFO), nI = Object.values(defList).reduce((s, l) => s + l.length, 0);
+  document.getElementById('perf').textContent = `${nI} Instanzen, ${defs.length} Definitionen, ${mb(defs.reduce((s, d) => s + d.kb * 1024, 0))}, Aufbau ${perfAufbau} s, ` +
+    (kleinOn && kleinBuilt ? `Kleinteile unter ${MIN_DIAG_MM / 10} cm sichtbar (${mb(defs.reduce((s, d) => s + (d.klein_kb || 0) * 1024, 0))})` : `Kleinteile unter ${MIN_DIAG_MM / 10} cm ausgeblendet`);
+}
+let perfAufbau = '0.0';
+window.viewerStand = () => Object.fromEntries(Object.entries(defMeshes).map(([stem, ms]) => [stem, { koerper: ms.filter(m => !m.userData.klein && m.visible).length, kleinteile: ms.filter(m => m.userData.klein && m.visible).length }]));   // Messhaken: sichtbare Koerper je Definition
+
+// Topfzahlen aus dem Modell ableiten (nicht von Hand): Beet-Toepfe und NFT-Toepfe liegen in zwei klar getrennten Hoehen
+let POT = null;
+function topfzahlen(inst) {
+  const z = inst.instances.filter(i => i.d === 'netztopf').map(i => i.m[11]).sort((a, b) => a - b);
+  if (z.length < 2) return null;
+  let gap = 0, at = 0; for (let k = 1; k < z.length; k++) if (z[k] - z[k - 1] > gap) { gap = z[k] - z[k - 1]; at = k; }
+  return gap < 200 ? null : { gesamt: z.length, beet: at, nft: z.length - at };
+}
+function topfText(o) {                                      // ersetzt nur Zahlen, die direkt vor "Topf..." stehen
+  if (typeof o === 'string') return o.replace(/\b2834(?= Topf)/g, POT.gesamt).replace(/\b2160(?= Topf)/g, POT.beet);
+  if (Array.isArray(o)) return o.map(topfText);
+  if (o && typeof o === 'object') { for (const k of Object.keys(o)) o[k] = topfText(o[k]); }
+  return o;
+}
+function topfPatch() {
+  if (!POT) return;
+  if (SPEC && SPEC.__pot !== POT.gesamt + '/' + POT.beet) {
+    topfText(SPEC); const p = SPEC.pflanzen; if (p) { p.beete = POT.beet; p.nft = POT.nft; p.gesamt = POT.gesamt; }
+    if (SPEC.pflanzmix && SPEC.pflanzmix.topfplaetze) SPEC.pflanzmix.topfplaetze.gesamt = POT.gesamt;
+    SPEC.__pot = POT.gesamt + '/' + POT.beet;
+  }
+  if (DESC && DESC.__pot !== POT.gesamt + '/' + POT.beet) { topfText(DESC); DESC.__pot = POT.gesamt + '/' + POT.beet; }
+  if (!pinned && !selected) showInfo(null);
+}
+
+function baueDef(stem, text, m, klein) {                    // eine Definition (oder ihre Kleinteile) als InstancedMesh je Koerper
+  const list = defList[stem], mxs = defMats[stem], g = loader.parse(text);
+  if (!defMeshes[stem]) defMeshes[stem] = [];
+  const leafOn = !hiddenLeaf.has(leafKeyOf(stem));
+  g.traverse(o => {
+    if (!o.isMesh) return;
+    const name = o.name || o.parent.name, mat = colorFor(name, stem);
+    const im = new THREE.InstancedMesh(o.geometry, mat, list.length);
+    mxs.forEach((mx, i) => im.setMatrixAt(i, mx));
+    im.frustumCulled = false; im.name = name; im.userData.def = stem; if (klein) im.userData.klein = true;
+    im.visible = meshVisible(im, leafOn); m.add(im); defMeshes[stem].push(im);
+    if (!defCol[stem]) defCol[stem] = '#' + mat.color.getHexString();
+  });
+  if (klein) hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (s === stem) applyInstVisibility(s, +i); });
+}
+
+async function load() {
+  if (loadBusy) return; loadBusy = true;
+  const v = Date.now();
+  try {
+    Lade.begin('Modell', 'Definition', 0, 0); Lade.letzte = 'instances.json'; Lade.zeige();
+    let inst, ex;
+    try { [inst, ex] = await Promise.all([getJson('instances.json?v=' + v), getJson('extras.json?v=' + v)]); }
+    catch (e) { Lade.fehlerMelden('Modellverzeichnis nicht lesbar: ' + e.message); Lade.ende(); return; }
+    extras = ex; GROUND = Number.isFinite(inst.walk_z) ? inst.walk_z : 400;   // begehbarer Boden = Sockelhoehe sock_h
+    DEFS_INFO = inst.defs; MIN_DIAG_MM = inst.min_diag || 150; POT = topfzahlen(inst); topfPatch();
+    const t0 = performance.now(), m = new THREE.Group();
+    const files = Object.entries(inst.defs).map(([stem, d]) => ({ name: `${stem}.obj`, url: `defs/${stem}.obj?k=${d.kb}`, bytes: d.kb * 1024, key: stem + '|' + d.kb, stem }));
+    Lade.begin('Modell', 'Definition', files.length, files.reduce((a, f) => a + f.bytes, 0));
+    await ladeDateien(files);
+    const byDef = {}; inst.instances.forEach(i => (byDef[i.d] || (byDef[i.d] = [])).push(i));
+    defMeshes = {}; defMats = {}; defList = {}; defCol = {}; kleinBuilt = false;
+    const bau = files.filter(f => byDef[f.stem] && defCache.has(f.key));
+    bau.forEach(f => { defMats[f.stem] = byDef[f.stem].map(i => new THREE.Matrix4().set(...i.m, 0, 0, 0, 1)); defList[f.stem] = byDef[f.stem]; defMeshes[f.stem] = []; });
+    await bauePhase(bau, f => baueDef(f.stem, defCache.get(f.key), m, false));
+    if (model) { scene.remove(model); model.traverse(o => o.geometry && !o.isInstancedMesh && o.geometry.dispose()); }
+    model = m; scene.add(model);
+    hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
+    if (selected && !defList[selected.stem]) selected = null;
+    perfAufbau = ((performance.now() - t0) / 1000).toFixed(1);
+    buildTree(inst); applyWire(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
+    perfText(); Lade.ende();
+  } catch (e) { Lade.fehlerMelden('Aufbau abgebrochen: ' + e.message); Lade.ende(); }
+  finally { loadBusy = false; }
+  await syncKlein();
 }
 function applyWire() { const w = document.getElementById('wire').checked; mats.forEach(m => m.wireframe = w); }
 document.getElementById('wire').addEventListener('change', applyWire);

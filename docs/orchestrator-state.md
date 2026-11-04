@@ -160,3 +160,11 @@
 - 03.11. nacht: Viewer-Sitzung N-DETAIL-PILOT fertig (152f740, 383a611, 89237cd): Detailansicht Feinfilter + Absetzer, selbst gemessen. Pruefer gestartet (local_18b007ab-7938-4252-a5e1-99c5de80af4c) mit Bericht docs/jobs/pruefung/N-DETAIL-PILOT.md. Oeffnen fuer Ben: `python viewer/serve.py`, http://localhost:4410/ (laufenden Viewer vorher neu starten). Wenn Pruefer PASS: Roadmap N-DETAIL-PILOT erledigt, V-MESS kann folgen; naechste Komponenten ins gleiche Datenmodell (Subtank, Siphon, Pumpen). Beet-Bau wartet weiter auf Bens Ja zu V3 Sperrboden.
 
 - 04.11.: Ben entscheidet W40-BEET (D77, 47f6158): V3 Sperrboden, Standrohr d25 + Reduzierhuelse 32/25, Lochblech 5 mm vom Metallbauer (Anfrage Ben). Werkstatt W40-BEET gestartet (local_a141e348-0fd2-4f1d-9e15-9352df4203a7, Name werkstatt-w40-beet), danach Pruefer. Bezugsquellen-Nachtrag im Blatt (Reduzierhuelse, Kleber belegt; Dichtband-Mass 10 x 10 offen). OFFEN fuer Orchestrator nach dem Bau: (1) Netz K14/K30 `hoehe` von Z -100 auf Achse etwa -260 (aussen) / -290 (innen) setzen und Sumpf-Einlauf gegenpruefen (Blatt Abschnitt "Befund Z -100"); (2) Wasserbilanz und Gewichte ohne Wasserraum (rund 6400 l weniger); (3) Montage baut 14 Beete neu. N-DETAIL-PILOT-Pruefer (local_18b007ab) lief, Befund `docs/jobs/pruefung/N-DETAIL-PILOT.md` fehlt noch (list_sessions 04.11.: keine laufende Sitzung).
+
+- 04.11. ~01:30 NACHTAUFTRAG (Ben, ohne weitere Bestaetigung): alle laufenden Pakete und ihre Folgeschritte (Planer -> Bau -> Pruefer) durchziehen, erst am Ende EIN Gesamtbericht. Warteschlange, nur eine schreibende Bau-Sitzung gleichzeitig:
+  1. Werkstatt W40-BEET (local_a141e348) -> Pruefer W40-BEET (frisch).
+  2. Pruefer N-DETAIL-PILOT: Befund fehlt -> neuen Pruefer starten.
+  3. R53 Europa Frischwasser/Luft (local_456ecbe2) -> Ergebnis in W37-Blaetter (kleiner Planer-Nachtrag) -> Werkstatt W37-2 -> Werkstatt W37-3 -> Pruefer W37-2/3 (gebuendelt).
+  4. Planer N-STUECKLISTE (local_18962fb7, W59 inkl. Nachtrag Seite + Desktop-Verknuepfung) -> Bau-Pakete laut Blatt -> Pruefer.
+  5. Bericht E20 kompakt (local_994a3bc8) -> Link in den Gesamtbericht.
+  Nicht anfassen: alles, was von E20 abhaengt (W37-1, M10-S2N, S3 bis S5), M10-S2V geparkt. Limit 01:28: 5h 13 %, Woche 3 %. Regel: Bau-Sitzung nicht bei 5h > 90 % starten.

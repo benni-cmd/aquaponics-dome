@@ -1,5 +1,5 @@
 {
- "stand": "Stand 03.11.2026 spaet: Ben gibt Bau frei: Detail-Pilot (Werkstatt zuerst) und Beet-Teile (Planer zuerst). Neue Regeln: D76 Kaufteile mindestens in Europa bestellbar, W57 Substratbeete muessen sich ganz leeren. R52 prueft Europa-Bezug der Filterteile. M10-S2V geparkt, E20 offen (Empfehlung A+).",
+ "stand": "Stand 04.11.2026 Pause (Zwischenstand): Beete im Dom neu und geprueft (Runde 68 PASS), Luft am Pool gebaut (Runde 69, check_latte-Neulauf laeuft), Einkaufsliste + Seite + Teiledaten aller 308 Komponenten, Viewer mit Ladeanzeige, Kleinteile-Schalter und Ansicht Visuell/Technisch, R54 Venturi nein. Offen: Strebe Vierkant + Werkstoffe (N-MODELL-KOMPLETT), 5b Preis/Link, Tabelle W65, Entscheidungen E13, E20, E22.",
  "schritte": [
   {
    "id": "W33",
@@ -265,29 +265,29 @@
   {
    "id": "N-KATALOG",
    "titel": "B4 Katalog und B1 Teile-Datenmodell",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "nach_zwischencheck",
    "reihenfolge": 5,
    "wer": "Werkstatt",
-   "notiz": "Grundlage für Detailansicht und Stückliste. Dazu L21: Masse der Rohrbibliothek gegen Herstellerkatalog pruefen (Wandstaerke, Muffentiefe, Bogenradius, Kugelhahn), Eigenkonstruktionen als Stueckliste aus Handelsteilen schreiben."
+   "notiz": "Katalog data/katalog.json mit Werkstoffen erweitert (Gruppen-Sitzungen 04.11.); Teile-Datenmodell data/parts fuer 308 Komponenten. Rest mit N-STUECKLISTE 5b. | Vorher: Grundlage für Detailansicht und Stückliste. Dazu L21: Masse der Rohrbibliothek gegen Herstellerkatalog pruefen (Wandstaerke, Muffentiefe, Bogenradius, Kugelhahn), Eigenkonstruktionen als Stueckliste aus Handelsteilen schreiben."
   },
   {
    "id": "N-DETAIL",
    "titel": "B2/B3 Detailansicht",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "nach_zwischencheck",
    "reihenfolge": 7,
    "wer": "Viewer",
-   "notiz": "Einzelteile im Viewer ansehen."
+   "notiz": "Teiledaten aller 308 Komponenten gefuellt (5a), Detail-OBJ je Komponente; offen 5b (Preis/Link) und Pruefer. | Vorher: Einzelteile im Viewer ansehen."
   },
   {
    "id": "N-STUECKLISTE",
    "titel": "B5 Stueckliste und Meterware per Skript aus dem Modell (kein KI-Lauf je Aenderung)",
-   "status": "geplant",
+   "status": "laeuft",
    "phase": "nach_zwischencheck",
    "reihenfolge": 8,
    "wer": "Werkstatt",
-   "notiz": "Ben 01.11. (W45): deterministisches Skript scripts/bom.py liest Modellstand (Instanzliste) + Teile-Datenmodell B1 + Katalog B4; Zuschnitt/Meterware per festem Algorithmus (Ausgangspunkt strut_cutting.py); Aenderungen am Modell sieht man direkt in der Teileliste; Test: Summen gleich Modellzaehlung. Reale Standardteile mit Mengen."
+   "notiz": "LAEUFT (vorgezogen, W59/W60): Einkaufsliste per Skript gebaut, interaktive Seite docs/einkaufsliste.html + Desktop-Verknuepfung, Pruefer PASS mit Auflagen (ff27b81), Auflagen erledigt (bb85549, 7ecab2f, bc8c837). 5-0 Teile-Geruest 308 Komponenten (6ee3466); 5a Teiledaten alle 5 Gruppen gefuellt (zuletzt 5340b4b, 1.069 Teile). OFFEN: 5b Preis/Link/Menge in der Detailansicht + Pilot-Auflagen A1-A3, Leitungsart je Leitungsteil, Pruefpunkt 7. | Vorher: Ben 01.11. (W45): deterministisches Skript scripts/bom.py liest Modellstand (Instanzliste) + Teile-Datenmodell B1 + Katalog B4; Zuschnitt/Meterware per festem Algorithmus (Ausgangspunkt strut_cutting.py); Aenderungen am Modell sieht man direkt in der Teileliste; Test: Summen gleich Modellzaehlung. R"
   },
   {
    "id": "N-R31-33",
@@ -536,20 +536,20 @@
   {
    "id": "L05",
    "titel": "Aktivkohle-Gehaeuse und Schwimmerventil fehlen",
-   "status": "luecke",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 5,
    "wer": "Werkstatt",
-   "notiz": "Zugeordnet: R45 (E15 nur wenn Standort feststeht), dann W37, dann M10 S5. Frischwasser (K39 bis K43, K52): Handelsteil-Platzhalter, Fabrikat offen; Wasserversorger-Frage (Chlor/Chloramin, DEINE HANDLUNG) entscheidet die Auslegung. Blockiert S5. R45 Teil 5: katalytische Kohle, 2 x 21 l in Reihe (10 x 35 Zoll), 4 l/min begrenzt, Zisterne als Alternative; Chlor-/Chloramin-Frage bleibt bei dir (E15). Netz angepasst (Version 3, 01.11.)."
+   "notiz": "Bauteile gebaut (W37-2, Pruefer PASS mit Auflagen); Schwimmerventil im Dom gesetzt (M10-S5-LUFT Teil A, Runde 69); Aktivkohle-Ort haengt an E13. | Vorher: Zugeordnet: R45 (E15 nur wenn Standort feststeht), dann W37, dann M10 S5. Frischwasser (K39 bis K43, K52): Handelsteil-Platzhalter, Fabrikat offen; Wasserversorger-Frage (Chlor/Chloramin, DEINE HANDLUNG) entscheidet die Auslegung. Blockiert S5. R45 Teil 5: katalytische Kohle, 2 x 21 l in Reihe (10 x"
   },
   {
    "id": "L06",
    "titel": "Belueftung: Geblaese, Luftverteiler 4- und 6-fach, Rueckschlagventil, Membranausstroemer fehlen",
-   "status": "luecke",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 6,
    "wer": "Werkstatt",
-   "notiz": "Zugeordnet: R45, dann W37, dann M10 S5. Luftkanten K44 bis K51 (7 Kanten, d40/d25/d20) haben keine Quelle und keine Enden. Luftbedarf Pool 130 l/min (F4) ist Annahme. Blockiert S5. R45 Teil 4: 130 l/min am Pool plausibel (Spitze 205), zwei Membranpumpen N+1 fuer mindestens 26 kPa, Ausfall = 0,8 bis 1,2 h bis Sauerstoffmangel. Netz angepasst (Version 3, 01.11.)."
+   "notiz": "Bauteile gebaut (W37-3); Pool-Verteiler, 4 Scheiben, Luftrohre im Dom (Runde 69); Geblaese-Ort (Teil B) haengt an E13. R54: Venturi kein Ersatz. | Vorher: Zugeordnet: R45, dann W37, dann M10 S5. Luftkanten K44 bis K51 (7 Kanten, d40/d25/d20) haben keine Quelle und keine Enden. Luftbedarf Pool 130 l/min (F4) ist Annahme. Blockiert S5. R45 Teil 4: 130 l/min am Pool plausibel (Spitze 205), zwei Membranpumpen N+1 fuer mindestens 26 kPa, Ausfall = 0,8 bis "
   },
   {
    "id": "L07",
@@ -657,16 +657,16 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 18,
    "wer": "Viewer-Sitzung",
-   "notiz": "Zugeordnet: V-MESS. Seit Runde 60 gemeldet; neue Leitungs-Instanzen (199) erhoehen die Last. Instanz-Export pruefen. STAND 01.11. spaet: Export jetzt 272,5 MB (152 Definitionen, 4880 Instanzen, Aufbau 11,2 s im Browser) statt 212 MB. Ursache fuer \"Modell erscheint nicht\" nach Server-Neustart war etwas anderes (serve.py, behoben 02.11.)."
+   "notiz": "Stand 04.11.: Haupt-Export 256 MB, Kleinteile 199 MB getrennt und nur auf Wunsch (N-VIEWER-LADEN). Ziel unter 40 MB weiter offen. | Vorher: Zugeordnet: V-MESS. Seit Runde 60 gemeldet; neue Leitungs-Instanzen (199) erhoehen die Last. Instanz-Export pruefen. STAND 01.11. spaet: Export jetzt 272,5 MB (152 Definitionen, 4880 Instanzen, Aufbau 11,2 s im Browser) statt 212 MB. Ursache fuer \"Modell erscheint nicht\" nach Server-Neustart war etw"
   },
   {
    "id": "L19",
    "titel": "check_latte: Koerpernamen und Klassenzuordnung nach L01-Umstellung ungeprueft",
-   "status": "luecke",
+   "status": "laeuft",
    "phase": "vor_zwischencheck",
    "reihenfolge": 19,
    "wer": "Montage (Schritt CHECK)",
-   "notiz": "Zugeordnet: CHECK. Skript ist umgestellt und kompiliert, lief aber noch nie; erst der grosse Lauf nach M10 zeigt, ob Plane/Figuren/Messstellen/Leitungen richtig zugeordnet sind (Leitungen als eigene Klasse ausnehmen oder einbeziehen)."
+   "notiz": "04.11.: Filter nach Knoten-Umbenennung repariert (e0d60d9), Teil-A-Kontakte eng benannt; Neulauf 69 laeuft. | Vorher: Zugeordnet: CHECK. Skript ist umgestellt und kompiliert, lief aber noch nie; erst der grosse Lauf nach M10 zeigt, ob Plane/Figuren/Messstellen/Leitungen richtig zugeordnet sind (Leitungen als eigene Klasse ausnehmen oder einbeziehen)."
   },
   {
    "id": "E11",
@@ -680,11 +680,11 @@
   {
    "id": "W37",
    "titel": "Werkstatt B (Anlagenteile): Beet-Sumpf mit Pumpe, Aktivkohle-Gehaeuse mit Schwimmerventil, Geblaese mit Luftverteiler, Schaltschrank, Becken-Stutzen, Schlammsammler",
-   "status": "geplant",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 4,
    "wer": "Werkstatt (eine Sitzung, zwei bei vollem Fenster)",
-   "notiz": "A+: Ablaufwaechter am Beet-Sumpf (R47 4.1 und 6.6). GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Zerfaellt in drei Sitzungen nach Blaettern des Planers, nacheinander NACH W39: W37-1 Beet-Sumpf und Schlammfass, W37-2 Aktivkohle mit Schwimmerventil und Becken-Stutzen Drittbecken, W37-3 Geblaese, Luftverteiler und Schaltschrank-Einfuehrung (nur das Bauteil, der Standort bleibt E13). Blaetter in docs/jobs. VORBEREITET, nicht gestartet. Nach Welle 1. Voraussetzungen: R45 (Masse), E12 (Schlammsammler), E13 (Schaltschrank). Ohne Ben-Antwort schon baubar: Beet-Sumpf, Geblaese (nach R45), Becken-Stutzen Drittbecken. Zweitbecken-Stutzen entstehen in gen_dome durch Montage in S5. Schliesst L01, L04, L05, L06, L08, L09. Ich trage die Beet-Pumpen (2 x 36 W) in system_specs nach. Je Teil eigenes Blatt erst beim Start (Aktualitaetspruefung). Masse aus R45: Beet-Sumpf 500 l mit Pumpe 5300 l/h und 60 W, Aktivkohle 2 x 21 l (10 x 35 Zoll), zwei Membranpumpen fuer Luft, Schlammfass 200 bis 220 l mit Grube, je zwei Stueck (Linie 1 und 2)."
+   "notiz": "ERLEDIGT 04.11. fuer W37-2 (Aktivkohle, Stutzen) und W37-3 (Belueftung, Schrank-Einfuehrung): Pruefer PASS mit Auflagen (docs/jobs/pruefung/W37-2-W37-3.md). W37-1 (Beet-Sumpf) haengt an E20. | Vorher: A+: Ablaufwaechter am Beet-Sumpf (R47 4.1 und 6.6). GESTOPPT 02.11. bis zur Entscheidung E20 (Aktualitaetspruefung: der Wasserkreislauf wird neu gedacht, R47; Konzeptaenderung moeglich, dann Blaetter neu). Zerfaellt in drei Sitzungen nach Blaettern des Planers, nacheinander NACH W39: W37-1 Beet-Sump"
   },
   {
    "id": "E12",
@@ -1015,11 +1015,11 @@
   {
    "id": "W40-BEET",
    "titel": "Beet-Bauteil Flood-and-Drain-Feinschliff: Medienschutz-Loecher, Reinigungszugang, Koernung mindestens 12 mm (aus R47 Abschnitt 4)",
-   "status": "geplant",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.7,
    "wer": "Planer (Blatt), dann Werkstatt, dann Pruefer",
-   "notiz": "PLANER FERTIG 03.11. (5199534): docs/jobs/W40-BEET.md, Wahl V3 ungelochter Sperrboden, Wasserraum entfaellt (6400 l Systemvolumen weg). Wartet auf Bens Bestaetigung V3, Schutzkorb kaufen, Standrohr d25 mit Reduzierhuelse oder d32. FREIGEGEBEN 03.11. (Ben: 'bau beides'). Erweitert um: (1) Beet muss sich GANZ leeren (W57, Ben): der Siphon darf nicht auf dem Siebboden stehen, sonst bleibt der Wasserraum unter dem Sieb gefuellt (R51 Befund 5a, Pitch B08 korrigiert) und es bildet sich Ploerre; Siphon-Ansaugung bis zum Wannenboden planen. (2) Siphonschutz (Edelstahl-Lochblech), Reduktion 40x25 (L03), Reinigungsschacht d110, Beetablauf-Hoehe (R51 Befund 5b). (3) Alle Kaufteile muessen mindestens in Europa bestellbar sein (D76). Planer schreibt zuerst ein Blatt. Drei Kleinigkeiten am Bauteil ibc_beet (R47 Abschnitt 4): Medienschutz-Loecher 12 mm gegen Korn ab 8 mm pruefen und anpassen, Reinigungszugang zum Wasserraum unter dem Siebboden, Koernung des Substrats auf mindestens 12 mm festlegen. Danach muessen die 14 Beete im Modell neu gebaut werden (Montage). Eigenes Blatt vom Planer, erst nach Bens Freigabe; passt zu den Beet-Sumpf-Teilen aus W37-1."
+   "notiz": "ERLEDIGT 04.11.: Werkstatt gebaut (V3 Sperrboden, D77), Pruefer PASS mit Auflagen (docs/jobs/pruefung/W40-BEET.md). Einbau im Dom ueber M-BEET-TAUSCH. | Vorher: PLANER FERTIG 03.11. (5199534): docs/jobs/W40-BEET.md, Wahl V3 ungelochter Sperrboden, Wasserraum entfaellt (6400 l Systemvolumen weg). Wartet auf Bens Bestaetigung V3, Schutzkorb kaufen, Standrohr d25 mit Reduzierhuelse oder d32. FREIGEGEBEN 03.11. (Ben: 'bau beides'). Erweitert um: (1) Beet muss s"
   },
   {
    "id": "R47B",
@@ -1087,11 +1087,11 @@
   {
    "id": "N-DETAIL-PILOT",
    "titel": "Detailansicht im Viewer als Pilot fuer Feinfilter und Absetzer (B1 mini, B2, B3 MVP), vorgezogen",
-   "status": "laeuft",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.78,
    "wer": "Planer (Blatt), dann Werkstatt + Viewer, dann Pruefer",
-   "notiz": "WERKSTATT FERTIG 03.11. (b7fba5f, 38 von 38 Pruefpunkten); VIEWER-SITZUNG laeuft (Schritte 2 bis 4), danach Pruefer. FREIGEGEBEN 03.11. (Ben: 'bau beides'): Werkstatt zuerst (Teiledaten, Mini-Katalog), dann Viewer, dann Pruefer; Biofilter nicht im Pilot. Ben 03.11.: Detailansicht jetzt fertig machen, damit Filter und danach Subtanks nach Funktion beurteilt werden koennen (D56). Pilot nur fuer feinfilter und tank_klein, Mini-Katalog, Detailmodell nur bei Bedarf laden (L18). Danach Muster fuer Subtank, Siphon, Pumpen. Der volle Katalog bleibt N-KATALOG, die Gesamtansicht N-DETAIL. Planer laeuft (Sitzung local_fb... siehe orchestrator-state). PLANER FERTIG 03.11. (e06bc95): docs/jobs/N-DETAIL-PILOT.md, 3 bis 4 Sitzungen, Aktualitaet angepasst (D75). Bau wartet auf Bens Freigabe."
+   "notiz": "ERLEDIGT 04.11.: Pruefer PASS mit Auflagen (45751de); Auflagen A1-A3 (Anzeigetexte) gehen in N-STUECKLISTE Schritt 5b. | Vorher: WERKSTATT FERTIG 03.11. (b7fba5f, 38 von 38 Pruefpunkten); VIEWER-SITZUNG laeuft (Schritte 2 bis 4), danach Pruefer. FREIGEGEBEN 03.11. (Ben: 'bau beides'): Werkstatt zuerst (Teiledaten, Mini-Katalog), dann Viewer, dann Pruefer; Biofilter nicht im Pilot. Ben 03.11.: Detailansicht jetzt fertig machen"
   },
   {
    "id": "R52",
@@ -1101,6 +1101,87 @@
    "reihenfolge": 3.79,
    "wer": "Fachrecherche (frische Sitzung)",
    "notiz": "FERTIG 03.11. (5d8e7ef): docs/research/R52-europa-bezug.md. Kegelboden-Tank: UK Enduramaxx 250 l passt fast, EU nur CGK NL (Anfrage); fertiger Siebkorb nicht beschaffbar (Selbstbau aus Gewebe); Rest beschaffbar. Ben: UK als Europa? R50 fand den Kegelboden-Tank nur bei US-Haendlern. Pruefen: europaeische Bezugsquellen (Spitzbodentank, Konisch-Tank, Trichterboden-Behaelter aus PE, Edelstahlgewebe 100 um, Lochblech) mit Massen und Anschluessen."
+  },
+  {
+   "id": "M-BEET-TAUSCH",
+   "titel": "Beete im Dom ersetzen (14 Beete, Topf auf Medienoberkante, Schutz auf Rasterzellmitte, D79)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.71,
+   "wer": "Planer, Montage, Pruefer",
+   "notiz": "ERLEDIGT 04.11.: Runde 67 FAIL (Topf x Medienschutz), Nachbesserung Runde 68 (089bc33), Nachpruefung PASS mit Auflagen (bb3de13): 91,9 mm Abstand in 14 Beeten, 2222 Toepfe, check_latte ohne neue Kollision. Offen: Ablaufport-Versatz bei E20 (K14/K30), Wasserbilanz -6280 l nach E20, Ben bestaetigt D79."
+  },
+  {
+   "id": "M10-S5-LUFT",
+   "titel": "Luft und Frischwasser im Dom setzen (abgetrennt von M10-S5): Teil A Pool, Teil B Technikbereich",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7.1,
+   "wer": "Planer, Montage, Pruefer",
+   "notiz": "Teil A gebaut Runde 69 (ad3e978): Verteiler, 4 Scheiben, Schwimmerventil, 4 Rohre d25. check_latte zeigte 669 statt 115 (509 Filter nach Knoten-Umbenennung, 45 gewollte Kontakte); Filter repariert (e0d60d9), Neulauf 69 laeuft. Danach Pruefer (pruefer-w37-2-3). Teil B wartet auf Bens Ja (E13)."
+  },
+  {
+   "id": "N-MODELL-KOMPLETT",
+   "titel": "Platzhalter im Gesamtmodell durch genaue Bauteile ersetzen: Strebe Vierkant 30x30x3, Werkstoffe, Tuer (W63)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.9,
+   "wer": "Planer, Werkstatt, Montage, Pruefer",
+   "notiz": "Blatt docs/jobs/N-MODELL-KOMPLETT.md (f4647b9). Erledigt: Inventur (a2efae2, docs/model-inventar.md), tuer.sc als abgeloest gekennzeichnet (ec08df3), Werkstoff-Skript default_werkstoffe.py (b03e91c). Tuer mit Klinke war schon eingebaut, fehlte nur im Export (geloest durch N-VIEWER-LADEN). OFFEN: Strebe-Werkstatt (strebe.py Vierkant) und Montage (Rollwinkel, Achshoehe, Werkstoffe anwenden) erst nach Ende check_latte 69 und Pruefer Luft; dann Pruefer."
+  },
+  {
+   "id": "N-VIEWER-LADEN",
+   "titel": "Viewer: Ladeanzeige mit Haenger-Erkennung, Schalter Kleinteile unter 15 cm (W66)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.91,
+   "wer": "Viewer",
+   "notiz": "ERLEDIGT 04.11.: 02cbf11, 0410a20, 9294033 (Export 78 Kleinteil-Dateien), 56b29e0 (atomar schreiben, kein Export beim Serverstart, Wiederholung). Nachgestellt: 164 Definitionen in 27 s, Kleinteile 9 s, 0 Fehler. Ohne fremden Pruefer."
+  },
+  {
+   "id": "N-VIEWER-ANSICHT",
+   "titel": "Viewer: Schalter Visuell (nach Werkstoff) / Technisch (ohne Menschfiguren, nach Bauteilgruppe) (W68)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.92,
+   "wer": "Viewer",
+   "notiz": "ERLEDIGT 04.11. (a040967), Screenshots beider Ansichten. Offen: Leitungen nach Leitungsart statt Rohrgroesse (mit N-STUECKLISTE 5b), 5 Teile ohne Werkstoff, Nahansicht Tisch."
+  },
+  {
+   "id": "R53",
+   "titel": "Europa-Bezug Frischwasser und Luft (Aktivkohle, Schwimmerventil, Geblaese, Scheiben)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.8,
+   "wer": "Fachrecherche",
+   "notiz": "ERLEDIGT 04.11.: docs/research/R53-europa-frischwasser-luft.md, Eingabe fuer W37-2/W37-3."
+  },
+  {
+   "id": "R54",
+   "titel": "Venturi-Belueftung an Filtern, Sumpf, Leitungen pruefen (W67)",
+   "status": "erledigt",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.93,
+   "wer": "Fachrecherche",
+   "notiz": "ERLEDIGT 04.11. (4799431): docs/research/R54-venturi-belueftung.md. Nein als Ersatz (Scheiben 2-3 kg O2/kWh, Venturi ein Bruchteil; Sauerstoff muss unabhaengig von der Pumpe sein). Nur als Ergaenzung am Beckenzulauf, spaeter Sumpf. Geblaese bleibt."
+  },
+  {
+   "id": "W65-TABELLE",
+   "titel": "Gemeinsame Ausfuell-Tabelle als Artefakt fuer Ben und Partner (offene Felder der Einkaufsliste, Annahmen [A] vorab)",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.95,
+   "wer": "Orchestrator",
+   "notiz": "Wunsch W65: startet, wenn alle Bauteile genau im Modell sind (nach N-MODELL-KOMPLETT); gemeinsame Datenbank, Eintraege beider sichtbar."
+  },
+  {
+   "id": "E22",
+   "titel": "D79 bestaetigen: Topf auf Medienoberkante, Schutz/Schacht auf Rasterzellmitte, Topfzahl 2222 bleibt",
+   "status": "entscheidung",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.72,
+   "wer": "Ben",
+   "notiz": "Nachtentscheidung des Orchestrators (D79), Ben bestaetigt. Ebenso zu bestaetigen: D78, Preise brutto, keine Pflanzgut/Fisch/Beton/Aushub in der Einkaufsliste, Strebe-Wand 3 mm bis N-STATIK, tuer.sc behalten."
   }
  ]
 }

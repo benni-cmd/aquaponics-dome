@@ -109,3 +109,19 @@
 | W66 | Viewer: Fortschrittsanzeige beim Laden des Modells (dauert lange, man soll sehen, ob er haengt); Checkbox im linken Menue: alle Bauteile zeigen oder die unter 15 cm ausfiltern, alle Details muessen sichtbar gemacht werden koennen | Ben 04.11.2026 | IN ARBEIT: Start-Auftrag `docs/jobs/start/N-VIEWER-LADEN-viewer.md`; ersetzt N-MODELL-KOMPLETT Schritt 5 (Ausnahmeliste) durch Kleinteile-Schalter | N-MODELL-KOMPLETT, W63 |
 | W67 | Venturi-Injektoren (Venturi-Duesen) zur Belueftung an verschiedenen Stellen im System pruefen (Filter, Sumpf, Leitungen usw.): ist das eine einheitliche, effiziente Loesung statt oder neben Geblaese und Belueftungsscheiben? | Ben 04.11.2026 | IN ARBEIT: Recherche R54 (`docs/jobs/start/R54-venturi-recherche.md`), danach Entscheidung an Ben | R54, M10-S5-LUFT, E13, E20 |
 | W68 | Viewer-Schalter "Visuell / Technisch": visuell alle Materialien und Bauteile lebendig nach Werkstoff gefaerbt; technisch ohne Referenzfiguren (Menschfiguren), Bauteile grau oder nach Bauteilgruppen gefaerbt | Ben 04.11.2026 | IN ARBEIT: Start-Auftrag `docs/jobs/start/N-VIEWER-ANSICHT-viewer.md` | N-VIEWER-LADEN, W66 |
+
+## Statusstand 04.11.2026 Pause (Zwischenstand)
+| Nr | Status jetzt | Beleg |
+|---|---|---|
+| W56 | ERLEDIGT: Detailansicht-Pilot (Feinfilter, Absetzer) PASS mit Auflagen; Beet-Siphon mit Schutzkorb gebaut | 45751de, W40-BEET |
+| W57 | ERLEDIGT: Beet leert sich ganz (V3 Sperrboden, D77), im Dom eingebaut, Runde 68 PASS | bb3de13 |
+| W58 | ERLEDIGT fuer Detail-Pilot und Beete; Europa-Bezug laeuft in jeder Recherche mit (D76) | R52, R53 |
+| W59 | ERLEDIGT bis auf Feinschliff: Einkaufsliste per Skript, Seite `docs/einkaufsliste.html`, Desktop-Verknuepfung, Pruefer PASS mit Auflagen, Auflagen erledigt | ff27b81, bc8c837 |
+| W60 | IN ARBEIT: Teiledaten aller 308 Komponenten gefuellt (5a); offen 5b Preis/Link/Menge in der Detailansicht, Pruefer | 5340b4b |
+| W61 | IN ARBEIT: Liste "nicht von allein geloest" abgearbeitet bis auf Strebe-Profil und Werkstoff-Anwendung (N-MODELL-KOMPLETT) | orchestrator-state |
+| W63 | IN ARBEIT: Inventur, Tuer gekennzeichnet, Werkstoff-Skript fertig; Strebe Vierkant und Montage offen | a2efae2, ec08df3, b03e91c |
+| W65 | GEPLANT: Roadmap W65-TABELLE, nach N-MODELL-KOMPLETT | data/roadmap.json |
+| W66 | ERLEDIGT: Ladeanzeige, Kleinteile-Schalter, robustes Laden | 02cbf11, 9294033, 56b29e0 |
+| W67 | ERLEDIGT: R54, Venturi kein Ersatz, nur Ergaenzung am Beckenzulauf | 4799431 |
+| W68 | ERLEDIGT: Ansicht Visuell / Technisch; offen Leitungsart statt Rohrgroesse | a040967 |
+| Luft im Dom (Nacht, W60-Nachtrag) | TEIL A GEBAUT Runde 69, Pruefung laeuft; Teil B wartet auf E13 | ad3e978 |

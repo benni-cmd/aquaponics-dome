@@ -195,3 +195,10 @@ Warteschlange in dieser Reihenfolge:
 4. Danach Werkstatt/Montage/Viewer/Pruefer N-MODELL-KOMPLETT, dann 5b Viewer Preis/Link/Menge, Pruefpunkt 7.
 5. Danach Artefakt mit gemeinsamer Tabelle fuer Ben und Partner (W65, Annahmen [A] vorab), dann Gesamtbericht.
 Sperrliste "fremde Aenderungen" aufgehoben (Ben 04.11.: nur geoeffnet).
+
+## 04.11.2026 ~14:00 PAUSE (Ben: sauberer Zwischenstand)
+- Waechter dome-night-wake-orchestrator DEAKTIVIERT (Pause). Bei Wiederaufnahme wieder einschalten oder ersetzen.
+- Laeuft noch von selbst: check_latte 69 im Hintergrund (Sitzung werkstatt-stueckliste-1a, local_5bc81d07); sie schreibt Befund und Commit selbst, `renders/check_latte-69.txt` bis dahin ungesichert. Keine andere Sitzung arbeitet.
+- Roadmap nachgefuehrt (data/roadmap.json, roadmap/index.html), Wunschbuch Statusstand, siehe dort.
+- Wiederaufnahme in dieser Reihenfolge: (1) Ergebnis check_latte 69 lesen; (2) Pruefer Luft Teil A (pruefer-w37-2-3, nie die Bau-Sitzung); (3) N-MODELL-KOMPLETT Strebe-Werkstatt (strebe.py Vierkant 30x30x3) -> Montage (Rollwinkel, Achshoehe, default_werkstoffe.py --apply) -> Viewer-Export -> Pruefer; (4) N-STUECKLISTE 5b (Preis/Link/Menge in der Detailansicht, Pilot-Auflagen A1-A3, Leitungsart) -> Pruefer Punkt 7; (5) W65-Tabelle (Artefakt); (6) Gesamtbericht.
+- Kontext-Stand der Sitzungen: werkstatt-w37-2 55 % und werkstatt-w37-3 45 % NICHT wiederverwenden. Ben-Entscheidungen offen: E13 (Teil B Geblaese/Aktivkohle), E20 (Kreislauf, 05.11.), E22 (Nachtentscheidungen bestaetigen), E15, Metallbauer Lochblech, Bevo-Datenblaetter, Dichtband-Mass.

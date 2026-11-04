@@ -1,7 +1,7 @@
 {
  "klasse": "ibc_beet",
  "teilenummer": "T30",
- "beschreibung": "Substratbeet aus halber IBC: IBC-Wanne (Sondermass nach OBJ) mit Randsims, Stuetzen und Siebboden, Medium als EIN Koerper, Glockensiphon (Standrohr, Glocke, Medienschutz), Ablauf-Bulkhead, Zulauf-Tropfrohr",
+ "beschreibung": "Substratbeet aus halber IBC: IBC-Wanne (Sondermass nach OBJ) mit Randsims und Stuetzen, ungelochtem Sperrboden (V3, D77), Medium als EIN Koerper, Glockensiphon mit Kerben (Standrohr d25, Tankverbinder mit Reduzierhuelse 32/25, Reduktion d40 x d25, Medienschutz Lochblech), stehendem Reinigungsschacht d110, Zulauf-Tropfrohr",
  "quelle_masse": "data/layout.json ibc_beds (Laenge, Breite, Hoehe, Z-Unterkante), docs/research/R03.md (Beetaufbau), docs/scope-cards.md ibc_beet; ref-5/ref-6: weisse Wannen mit Rand und Erde/Kies",
  "typen": {
   "aussen_933": {
@@ -79,22 +79,7 @@
   "grid_t": {
    "wert": 8,
    "einheit": "mm",
-   "herkunft": "[A] Siebboden 8 mm (PP-Lochplatte), Stuetzenabstand <= 420 mm (Bild-Kritiker: Traglast Medium)"
-  },
-  "grid_hole": {
-   "wert": 12,
-   "einheit": "mm",
-   "herkunft": "[A] Lochdurchmesser Siebboden, vereinfacht (real Lochblech D8, kleiner als Korn 8-20)"
-  },
-  "grid_nx": {
-   "wert": 20,
-   "einheit": "",
-   "herkunft": "[A] Loecher je Reihe (vereinfacht)"
-  },
-  "grid_ny": {
-   "wert": 5,
-   "einheit": "",
-   "herkunft": "[A] Lochreihen (vereinfacht)"
+   "herkunft": "[A] Sperrboden 8 mm (PP-Platte, ungelocht, V3/D77), Stuetzenabstand <= 420 mm (Traglast Medium)"
   },
   "post": {
    "wert": 60,
@@ -142,14 +127,14 @@
    "herkunft": "R03: zwei Schlitze 10 x 40 mm"
   },
   "bell_slot_h": {
-   "wert": 40,
+   "wert": 12,
    "einheit": "mm",
-   "herkunft": "R03"
+   "herkunft": "W40-BEET V3 (D77): Kerbenhoehe 12 mm = Restfilm 12 mm; 4 Kerben 10 x 12 = 480 mm2 >= Standrohrflaeche 380 mm2 (R03 hatte 2 Schlitze 10 x 40)"
   },
   "bell_slot_z": {
-   "wert": 15,
+   "wert": 0,
    "einheit": "mm",
-   "herkunft": "R03: Schlitze 15 mm ueber der Glockenunterkante"
+   "herkunft": "W40-BEET V3: Kerben beginnen am Glockenfuss (Oberkante Kerbe = Plattenoberkante + 12)"
   },
   "air_hole": {
    "wert": 10,
@@ -167,19 +152,14 @@
    "herkunft": "R03: Medienschutz 320 hoch"
   },
   "guard_wall": {
-   "wert": 3,
+   "wert": 1.5,
    "einheit": "mm",
-   "herkunft": "[A] PVC-Rohr d110"
-  },
-  "guard_hole": {
-   "wert": 12,
-   "einheit": "mm",
-   "herkunft": "R03: kleine Seitenloecher; modelliert als 12 x 12 mm Durchbrueche, 12 Stueck (3 Ringe x 4) [A]"
+   "herkunft": "W40-BEET (D77): Lochblech Edelstahl 1.4301 1,5 mm, Rundloch 5 mm Teilung 8 (R51 T30e-4), Zuschnitt und Rollen beim Metallbauer"
   },
   "bulkhead_d": {
    "wert": 36,
    "einheit": "mm",
-   "herkunft": "[A] Durchfuehrung fuer Standrohr d25 (Gewindehuelse D36)"
+   "herkunft": "[A] Tankverbinder-Aussen D36 (Gewinde 1 Zoll), fuer Wannenboden und Sperrboden; darin Reduzierhuelse 32/25 (D77)"
   },
   "bulkhead_flange": {
    "wert": 50,
@@ -210,6 +190,71 @@
    "wert": 200,
    "einheit": "mm",
    "herkunft": "[A] Tropflochabstand"
+  },
+  "guard_slot_w": {
+   "wert": 5,
+   "einheit": "mm",
+   "herkunft": "Modellvereinfachung Lochblech: Schlitz 5 mm breit (real Rundloch d5, Teilung 8)"
+  },
+  "guard_slot_h": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "Modellvereinfachung Lochblech: Schlitz 50 mm hoch"
+  },
+  "guard_slot_n": {
+   "wert": 12,
+   "einheit": "",
+   "herkunft": "Schlitze je Ring (kreisfoermiges Muster)"
+  },
+  "guard_ring_z1": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "Ring 1 ab 10 mm ueber der Plattenoberkante (R51 T30e-4: z 272 bis 322)"
+  },
+  "guard_ring_z2": {
+   "wert": 80,
+   "einheit": "mm",
+   "herkunft": "Ring 2 ab 80 mm ueber der Plattenoberkante (R51: z 342 bis 392); 24 x 5 x 50 = 6000 mm2 = 15,8 x Standrohr"
+  },
+  "cap_h": {
+   "wert": 15,
+   "einheit": "mm",
+   "herkunft": "Hoehe der losen Kappen (Muffenstopfen DN110) auf Medienschutz und Reinigungsschacht [A]"
+  },
+  "shaft_d": {
+   "wert": 110,
+   "einheit": "mm",
+   "herkunft": "W40-BEET T30e-5: Reinigungsschacht KG/HT-Rohr DN100 (Aussen-D 110)"
+  },
+  "shaft_wall": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "[A] KG-Rohr DN100 (Wand 3,2 mm real)"
+  },
+  "shaft_over": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "Oberkante 20 mm ueber der Medienoberflaeche (R51 T30e-5)"
+  },
+  "shaft_kerbe": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "2 Kerben 30 x 30 am Schachtfuss: Wasser und Schlamm vom Plattenfilm in den Schacht (absaugbar, Saugschlauch d <= 75)"
+  },
+  "bulkhead_id": {
+   "wert": 32,
+   "einheit": "mm",
+   "herkunft": "D77: Tankverbinder mit Klebemuffe d32; darin Reduzierhuelse 32/25 fuer das Standrohr d25 (Innen d32)"
+  },
+  "reduktion_h": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "R51 T30e-3: Reduktion kurz d40 x d25, Bauhoehe etwa 50 mm [A], Kaufmass pruefen"
+  },
+  "reduktion_stutzen_d": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "Klebestutzen d40 unten"
   }
  },
  "werkstoff": {

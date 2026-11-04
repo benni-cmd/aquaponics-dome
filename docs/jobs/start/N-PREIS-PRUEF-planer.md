@@ -1,0 +1,9 @@
+# Start-Auftrag: Planer N-PREIS-PRUEF (W69, Einzelteilpruefung der Preisliste)
+
+PROJEKT: aquaponics-dome (user-projects/aquaponics-dome). Rolle: Planer, nur lesen und das Auftragsblatt schreiben; ein Messlauf ueber alle Links ist erlaubt (nur abrufen, nichts kaufen, nirgends anmelden, keine Formulare). Kontext mit Fenster 1.000.000 Token rechnen; ueber 35 % melden statt anfangen.
+
+1. Problem (Ben 05.11.): Die Einkaufsliste (`docs/einkaufsliste.html`, `data/stueckliste.json`, 260 Zeilen, 172 mit Link, Bezug in `data/beschaffung/*.json`) enthaelt 404-Links und unpassende Artikel. Beleg: NFT-Rinne `PRF-pvcu-rinne-130x100` ist mit einem Kabelkanal 110x60 belegt (`data/beschaffung/stahl.json` Zeile 1104 bis 1118).
+2. Intent: Jede Zeile soll ein real bestellbares, zum Bauteil passendes Teil sein, damit die Liste und die spaetere Ausfuell-Tabelle (W65) belastbar sind.
+3. Messlauf: Skript `scripts/check_links.py` (Standardbibliothek) prueft jeden Link: HTTP-Status, Weiterleitung auf Startseite/Suche/Kategorie = Fehler, Seite nennt den Artikel nicht = Verdacht; Ergebnis als Tabelle `docs/preis-pruefung-links.md`. Dazu eine Plausibilitaetsliste je Zeile: Funktion, Mass, Einheit, Werkstoff, Lebensmitteleignung (Wasser/Pflanzen), Europa-Bezug (D76).
+4. Auftragsblatt `docs/jobs/N-PREIS-PRUEF.md` (Vorlage `docs/jobs/vorlagen/`): Fachrecherche parallel je Bauteilgruppe (fuenf Gruppen wie in `docs/packages/n-stueckliste.md`, je Gruppe eine Sitzung, nur `data/beschaffung/<gruppe>.json` schreiben; Ersatz mit zwei unabhaengigen Quellen, sonst OFFEN mit Grund), danach Werkstatt (Liste neu erzeugen, `check_bom.py` Exit 0), dann fremder Pruefer mit eigenen Stichproben. Pruefpunkte messbar. Paket `docs/packages/n-preis-pruef.md` (PIG, Plan, Stand, DoD).
+5. Commits nur per Pfad, Push. Danach STOPP.

@@ -1,30 +1,330 @@
 {
   "klasse": "2C",
-  "typen": ["BEH", "PMP"],
+  "typen": [
+    "BEH",
+    "PMP"
+  ],
   "stand": "2026-11-04",
   "hinweis": "Preise brutto (inkl. 19 % MwSt bei DE/AT-Shops), grob, ohne Versand. konfidenz: Q = Seite selbst geoeffnet und gelesen, Q-Treffer = nur Suchtreffer (Kandidat), E = gerechnet, A = angenommen. UK gilt als Europa OFFEN und ist mit land UK gekennzeichnet. Kein Kauf, keine Anmeldung. Geblaese stehen nicht im Katalog dieser Klasse (kein Artikel BEH/PMP).",
   "artikel": {
     "PMP-pumpe-gross": {
       "bemerkung_artikel": "Soll 55 l/min je Pumpe bei kleiner Foerderhoehe, je Linie 144 W elektrisch fuer 2 Pumpen (data/system-specs.json leistung). Eheim Universal 3400: 3400 l/h = 56,7 l/min, 80 W, Foerderhoehe 3,6 m [Q]. Kennlinie bei der realen Anlagen-Foerderhoehe nicht geprueft.",
       "angebote": [
-        {"preis_eur": 233.79, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Green Aqua (greenaqua.hu)", "land": "HU", "url": "https://greenaqua.hu/en/eheim-universal-3400.html", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Eheim Universal 3400. Seite: 'We ship to all EU countries', Versand DE nicht beziffert; MwSt-Angabe fehlt; Bestand widerspruechlich (in stock / backorder 5-10 Tage)."},
-        {"preis_eur": 299.00, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Hornbach Oesterreich", "land": "AT", "url": "https://www.hornbach.at/p/universal-pumpe-eheim-3400-3-adriger-schukostecker-mit-1-7-m-kabel-80-w/8888958/", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Eheim Universal 3400, Art. 8888958, 299 EUR inkl. MwSt zzgl. Versand; Lieferung nach DE auf der Seite nicht genannt."}
+        {
+          "preis_eur": 233.79,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Green Aqua (greenaqua.hu)",
+          "land": "HU",
+          "url": "https://greenaqua.hu/en/eheim-universal-3400.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Eheim Universal 3400. Seite: 'We ship to all EU countries', Versand DE nicht beziffert; MwSt-Angabe fehlt; Bestand widerspruechlich (in stock / backorder 5-10 Tage)."
+        },
+        {
+          "preis_eur": 299,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Hornbach Oesterreich",
+          "land": "AT",
+          "url": "https://www.hornbach.at/p/universal-pumpe-eheim-3400-3-adriger-schukostecker-mit-1-7-m-kabel-80-w/8888958/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "Eheim Universal 3400, Art. 8888958, 299 EUR inkl. MwSt zzgl. Versand; Lieferung nach DE auf der Seite nicht genannt."
+        }
       ],
       "alternative": "Aquaforte DM-3500 (toppy.nl NL, 146,95 EUR, 25 W): Leistung faellt von 3500 l/h bei 0 m auf 2400 l/h bei 1 m und 700 l/h bei 2 m; bei Anlagenhoehe zu schwach [Q, https://www.toppy.nl/product/2888/aquaforte-dm-3500-vijverpomp.html, aktuell nicht lieferbar]."
     },
     "PMP-pumpe-klein": {
       "bemerkung_artikel": "Soll 12,5 l/min (750 l/h), beide Absetzerpumpen zusammen 33 W (je ca. 16 W). Eheim Universal 1200 ist groesser (1200 l/h, 28 W, 2 m); eine kleinere Eheim Universal 600 oder Drosselung waere zu pruefen [A]. Auswahl der Groesse ist Planerentscheidung.",
       "angebote": [
-        {"preis_eur": 95.90, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "aquacomputer.de", "land": "DE", "url": "https://shop.aquacomputer.de/Wasserkuehlung/Pumpen-Zub/Pumpen/Eheim-1250-Eheim-universal-1200-Version-Deutschland-Pumpe-1250219::1276.html", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Eheim Universal 1200 (1250219), 95,90 EUR inkl. MwSt zzgl. Versand; aktuell 'nicht am Lager', Lieferzeit bis 90 Tage."},
-        {"preis_eur": 130.11, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Green Aqua (greenaqua.hu)", "land": "HU", "url": "https://greenaqua.hu/en/eheim-universal-1200-pump-1250-828w-1200-lph.html", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Eheim Universal 1200; 'We ship to all EU countries'; MwSt-Angabe fehlt; Bestand widerspruechlich."}
+        {
+          "preis_eur": 95.9,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "aquacomputer.de",
+          "land": "DE",
+          "url": "https://shop.aquacomputer.de/Wasserkuehlung/Pumpen-Zub/Pumpen/Eheim-1250-Eheim-universal-1200-Version-Deutschland-Pumpe-1250219::1276.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Eheim Universal 1200 (1250219), 95,90 EUR inkl. MwSt zzgl. Versand; aktuell 'nicht am Lager', Lieferzeit bis 90 Tage."
+        },
+        {
+          "preis_eur": 130.11,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Green Aqua (greenaqua.hu)",
+          "land": "HU",
+          "url": "https://greenaqua.hu/en/eheim-universal-1200-pump-1250-828w-1200-lph.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Eheim Universal 1200; 'We ship to all EU countries'; MwSt-Angabe fehlt; Bestand widerspruechlich."
+        }
       ]
     },
     "PMP-dosierpumpe": {
       "bemerkung_artikel": "Schlauchpumpe 12 V, Dosierung Naehrloesung/Saeure; Durchfluss und Schlauch je Fabrikat sehr unterschiedlich, Auswahl durch Planer.",
       "angebote": [
-        {"preis_eur": 15.65, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Funduino", "land": "DE", "url": "https://funduino.com/es/products/peristaltikpumpe-dosierpumpe-12v-60-150ml", "lieferung_de": "unbekannt", "konfidenz": "Q-Treffer", "bemerkung": "12 V, 60-150 ml/min; nur Suchtreffer (Seite lieferte 429); Herkunftsland angenommen."},
-        {"preis_eur": 42.92, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "ManoMano", "land": "FR", "url": "https://www.manomano.de/p/12v-schlauchpumpe-fur-aquarien-labore-und-chemische-analysen-im-heimwerkerbereich-gruner-kopf-35-229357427", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "12 V Schlauchpumpe Aquarium/Labor; Seite 403, nur Suchtreffer; manomano.de liefert nach DE (Marktplatz, Verkaeufer variiert)."}
+        {
+          "preis_eur": 15.65,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Funduino",
+          "land": "DE",
+          "url": "https://funduino.com/es/products/peristaltikpumpe-dosierpumpe-12v-60-150ml",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "12 V, 60-150 ml/min; nur Suchtreffer (Seite lieferte 429); Herkunftsland angenommen."
+        },
+        {
+          "preis_eur": 42.92,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "ManoMano",
+          "land": "FR",
+          "url": "https://www.manomano.de/p/12v-schlauchpumpe-fur-aquarien-labore-und-chemische-analysen-im-heimwerkerbereich-gruner-kopf-35-229357427",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "12 V Schlauchpumpe Aquarium/Labor; Seite 403, nur Suchtreffer; manomano.de liefert nach DE (Marktplatz, Verkaeufer variiert)."
+        }
       ]
+    },
+    "BEH-tank-pe-673x1075": {
+      "bemerkung_artikel": "Soll Kegelboden-Tank Durchm. 673 x 1075 mm. Kein Europa-Tank mit genau diesem Mass gefunden; naechste Groesse als Kandidat. Tanksdirekt 200 l: 568 x 568 x 975, 1 Zoll BSP, Schraubdeckel Durchm. 200 enthalten. Mass muss vom Planer gegen das Modell abgeglichen werden.",
+      "angebote": [
+        {
+          "preis_eur": 354.62,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "tanksdirekt.de (Rotterdam Plastics)",
+          "land": "DE",
+          "url": "https://tanksdirekt.de/en/200-litre-conical-watertank",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "200 l Konustank, 354,62 inkl. Steuer (= 298 netto x 1,19); Seite listet DE als Standort; Bestand teils ab 05.11.2026 / 26.11.2026; zu klein gegenueber 673 x 1075."
+        },
+        {
+          "preis_eur": null,
+          "preis_gbp_netto": 344.35,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Kingfisher Direct (Enduramaxx 250 l 45 Grad)",
+          "land": "UK",
+          "url": "https://kingfisherdirect.co.uk/enduramaxx-250-litre-45-degree-cone-tank",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "UK, Europa OFFEN. Durchm. 609 x 1562 mit Gestell; UK-Lieferung ab 150 GBP + MwSt; Lieferung ins Ausland nicht genannt. Achtung: Seite enthielt einen Textblock, der KI-Einkaufsassistenten Anweisungen gab (Warenkorb-Links); ignoriert."
+        }
+      ],
+      "status_vorschlag": "Mass nicht gedeckt: nur naechste Groesse; Quelle fuer Masspassung OFFEN"
+    },
+    "BEH-tank-pe-673-deckel": {
+      "bemerkung_artikel": "Bei den gefundenen Kegeltanks ist der Schraubdeckel (Durchm. 200) im Tank enthalten; ein separater Grossdeckel 673 mm gehoert nur zu offenen Tanks. Kein Angebot gefunden.",
+      "angebote": []
+    },
+    "BEH-tank-pe-930x1444": {
+      "bemerkung_artikel": "Soll Kegelboden-Tank Durchm. 930 x 1444 mm (ca. 750 bis 900 l). In Europa kein Tank mit diesem Mass gefunden. Enduramaxx 900 l 60 Grad Kegel (UK) ist Durchm. 1400 x 1660 (offen, 2 Zoll BSP), 216 GBP inkl. VAT: Mass passt nicht. Eigenbau oder Sonderanfertigung bei Rotationsformer (Rotterdam Plastics) ist Planerentscheidung.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "preis_gbp_brutto": 216,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Enduramaxx (Hersteller)",
+          "land": "UK",
+          "url": "https://enduramaxx.co.uk/enduramaxx/900-litre-open-top-cone-tank-60-degree-cone/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "UK, Europa OFFEN; Durchm. 1400 x 1660, offen, 60 Grad; Mass weicht stark ab; Lieferländer auf Seite nicht genannt."
+        }
+      ],
+      "status_vorschlag": "OFFEN (Quelle): kein europaeischer Treffer in Mass 930 x 1444"
+    },
+    "BEH-tank-pe-930-deckel": {
+      "bemerkung_artikel": "Kein Angebot gefunden; bei offenen Tanks (Enduramaxx) Deckel als Zubehoer, Mass 930 nicht belegt.",
+      "angebote": []
+    },
+    "BEH-ibc-1000l": {
+      "bemerkung_artikel": "IBC 1000 l mit Gitterkaefig/Palette (Puffer). Gebraucht ca. 110 bis 200 EUR, neu ca. 390 bis 535 EUR. Gebrauchte: Gefahrgut-Vorgeschichte und Reinigung pruefen (Restanhaftungen).",
+      "angebote": [
+        {
+          "preis_eur": 109.99,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Monopoel GmbH",
+          "land": "DE",
+          "url": "https://www.monopoel.de/catalog/container-1000-usage-p-525.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "gebraucht, 2. Wahl mit Restanhaftungen, PE natur auf diversen Paletten, 1200x1000x1160; Versand zzgl. auf Anfrage (Paketversand nicht moeglich); Gitterkaefig nicht genannt."
+        },
+        {
+          "preis_eur": 389.95,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Hornbach",
+          "land": "DE",
+          "url": "https://www.hornbach.de/p/ibc-tank-transportcontainer-graf-1-000-l-mit-un-kennzeichnung-geeignet-fuer-gefahrgueter-auf-kunststoff-palette/10230578/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "GRAF 1000 l neu, Kunststoffpalette (keine Stahlkufe/Gitterkaefig); Preis aus Kategorieseite gelesen, Versand zzgl. Alternative mit Stahlkufe 494,95 EUR (hornbach.de/p/ibc-1000-stahlkufe-150-80/12199205/)."
+        }
+      ]
+    },
+    "BEH-ibc-beetwanne": {
+      "bemerkung_artikel": "Wird aus IBC-Behaeltern geschnitten (Bbox 637 x 800 x 2640 mm, 14 Stk); die Wanne ist kein eigenes Handelsprodukt. Beschaffung = gebrauchter oder neuer IBC; wie viele Wannen aus einem IBC entstehen, ist Planerfrage.",
+      "angebote": [
+        {
+          "preis_eur": 109.99,
+          "bezug_einheit": "Stk (je IBC)",
+          "stand": "2026-11-04",
+          "haendler": "Monopoel GmbH",
+          "land": "DE",
+          "url": "https://www.monopoel.de/catalog/container-1000-usage-p-525.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "gebrauchter IBC, Rohstoff fuer Wanne."
+        },
+        {
+          "preis_eur": 389.95,
+          "bezug_einheit": "Stk (je IBC)",
+          "stand": "2026-11-04",
+          "haendler": "Hornbach",
+          "land": "DE",
+          "url": "https://www.hornbach.de/p/ibc-tank-transportcontainer-graf-1-000-l-mit-un-kennzeichnung-geeignet-fuer-gefahrgueter-auf-kunststoff-palette/10230578/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "neuer IBC als Rohstoff."
+        }
+      ]
+    },
+    "BEH-fass-hdpe": {
+      "bemerkung_artikel": "HDPE-Fass 500 mm Durchm. (Mischfass), blaues 220-l-Deckelfass ca. 595 x 1010 (Keller & Kalmbach E820343); 500 mm Durchm. nicht eindeutig belegt.",
+      "angebote": [
+        {
+          "preis_eur": 69.12,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Kanister-Vertrieb (Kaufland)",
+          "land": "DE",
+          "url": "https://www.kaufland.de/product/564471148/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "220 l blau Deckelfass mit Spannring, laut Suchtreffer 46,60 bis 69,12 EUR mit kostenlosem Versand; Seite nicht geoeffnet."
+        },
+        {
+          "preis_eur": 52.55,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "billiger.de (Preisvergleich plasteo 220 l Weithalsfass blau)",
+          "land": "DE",
+          "url": "https://www.billiger.de/pricelist/4814918053-plasteo-120-liter-weithalsfass-mit-deckel-blau",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "ab etwa 52,55 EUR; Seite nicht geoeffnet; Titel nennt 120 l, Treffertext 220 l: pruefen."
+        }
+      ]
+    },
+    "BEH-kanister-hdpe": {
+      "bemerkung_artikel": "Dosiervorrat; Gewinde DIN 61 oder DIN 60 je Modell, auf Auslaufhahn abstimmen.",
+      "angebote": [
+        {
+          "preis_eur": 21.99,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "eBay.de-Haendler (Huenersdorff Industriekanister 20 l natur, UN)",
+          "land": "DE",
+          "url": "https://www.ebay.de/p/14014263492",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "kostenloser Versand laut Suchtreffer; Seite nicht geoeffnet."
+        },
+        {
+          "preis_eur": 15.85,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Kaufland-Verkaeufer (Leerkanister DIN 61 natur 20 l)",
+          "land": "DE",
+          "url": "https://www.kaufland.de/product/454580769/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Verkaeufer im Suchtreffer nicht eindeutig; Seite nicht geoeffnet."
+        }
+      ]
+    },
+    "BEH-messbecher-pp": {
+      "bemerkung_artikel": "Messbecher PP 160 x 310: kein Handelsmass gefunden; naechste Becher 5 l mit Durchm. 196 bis 203 x Hoehe 257 bis 270.",
+      "angebote": [
+        {
+          "preis_eur": 13.49,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Bueromarkt-AG (Huenersdorff 939000, 5 l)",
+          "land": "DE",
+          "url": "https://www.bueromarkt-ag.de/messbecher_huenersdorff_939000_aus_kunststoff,p-939000.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "13,49 EUR (1 Stk), Durchm. 20,3 x 25,7, PP, sofort lieferbar; Mass weicht ab."
+        },
+        {
+          "preis_eur": 13.09,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "barstuff.de",
+          "land": "DE",
+          "url": "https://www.barstuff.de/messbecher-mit-100ml-skalierung-polypropylen-5-liter-12896",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "13,09 EUR inkl. MwSt zzgl. Versand, 19,6 x 27, PP, Lieferzeit 2-4 Werktage."
+        }
+      ]
+    },
+    "BEH-halter-box-gehaeuse": {
+      "bemerkung_artikel": "Anschlussbox PS 200 x 150 x 100 mit Acryldeckel: kein Handelsmass gefunden; Kandidat Spelsberg AK Compact 200 x 200 x 122 mit transparentem Deckel (IP65, Polystyrol), 65,47 EUR netto bei RS (Seite lieferte 403, nur Suchtreffer).",
+      "angebote": [
+        {
+          "preis_eur": 77.91,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "RS Components Irland",
+          "land": "IE",
+          "url": "https://ie.rs-online.com/web/p/products/5337739",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Spelsberg AK Compact 200 x 200 x 122; 65,47 netto; 77,91 gerechnet mit 19 Prozent (E, irische MwSt weicht ab); nur Suchtreffer."
+        }
+      ],
+      "status_vorschlag": "zweites Angebot und Mass-Abgleich OFFEN"
+    },
+    "BEH-feinfilter-pp-630x440x610": {
+      "bemerkung_artikel": "PP-Behaelter 630 x 440 x 610 (Eigenbau/Kaufteil offen): kein Handelsmass; Euronorm-Behaelter 600 x 400 sind max. 320 bis 425 hoch. Kandidaten Kaiserkraft, Rotom, Transoplast ohne Preis in den Treffern.",
+      "angebote": [],
+      "status_vorschlag": "OFFEN (Quelle)"
+    },
+    "BEH-messzelle-acryl": {
+      "bemerkung_artikel": "Messzelle Acryl 315 x 315 x 260 ist Eigenbau (Art c): Rohmaterial Acrylglas-Zuschnitt; nicht recherchiert.",
+      "angebote": [],
+      "status_vorschlag": "OFFEN (Quelle)"
+    },
+    "BEH-pool-zentral": {
+      "bemerkung_artikel": "Zentralpool, Eigenbau/Sonderanfertigung, Bbox 2475 x 4190 x 4190 mm; Werkstoff nicht festgelegt. Ohne Werkstoffentscheidung keine Preisrecherche moeglich.",
+      "angebote": [],
+      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart"
+    },
+    "BEH-zweitbecken": {
+      "bemerkung_artikel": "Zweitbecken, Eigenbau/Sonderanfertigung, Bbox 1135 x 1867 x 1867; Werkstoff offen.",
+      "angebote": [],
+      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart"
+    },
+    "BEH-becken-dritt": {
+      "bemerkung_artikel": "Drittbecken (Sonderanfertigung), Bbox 1150 x 1150 x 1265; ohne Instanz im Modell; Werkstoff offen.",
+      "angebote": [],
+      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart"
+    },
+    "BEH-drittbecken-klein": {
+      "bemerkung_artikel": "Drittbecken klein, Wanne 920 x 920 x 1055, Werkstoff Beton fraglich; kein Kaufteil recherchiert.",
+      "angebote": [],
+      "status_vorschlag": "OFFEN (Ben): Werkstoff"
     }
   }
 }

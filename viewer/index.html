@@ -785,13 +785,24 @@ addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; cam
 // ---- Detailansicht: Teileliste, Explosion, Infokarte (alles aus data/parts/<def>.json und detail/<def>.*; kein Bauteilname im Code) ----
 const detail = { on: false, def: null, group: null, bodies: [], parts: null, meta: null, kat: null, saved: null, sel: null, hov: null, s: 0, anim: 0 };
 // Anzeigetext ohne Register-Kuerzel und Parameternamen (Pilot-Auflage A1): Klammern mit Kuerzel (R52, D76, ...) oder "Parameter ..." und Saetze mit internen Pfaden oder "Regel D.." fallen weg
+// ASCII-Schreibung aus Katalog und Teiledaten -> Umlaute (nur Wortstaemme dieser Daten, kein pauschales ue->ü; "Queue" bleibt)
+const UML = [['Stueck', 'Stück'], ['stueck', 'stück'], ['Huelle', 'Hülle'], ['Huelse', 'Hülse'], ['Flaeche', 'Fläche'], ['Fussplatte', 'Fußplatte'], ['fuss', 'fuß'], ['Tuer', 'Tür'], ['Druecker', 'Drücker'],
+  ['Rueckschlag', 'Rückschlag'], ['Behaelter', 'Behälter'], ['Gehaeuse', 'Gehäuse'], ['Tuelle', 'Tülle'], ['koerper', 'körper'], ['Koerper', 'Körper'], ['Stuetz', 'Stütz'],
+  ['Hoehe', 'Höhe'], ['Blaeh', 'Bläh'], ['laenge', 'länge'], ['Laenge', 'Länge'], ['kaefig', 'käfig'], ['Belueftung', 'Belüftung'], ['Ausruestung', 'Ausrüstung'], ['Uebergang', 'Übergang'],
+  ['geblaese', 'gebläse'], ['fuer', 'für'], ['ueber', 'über'], ['Durchfuehr', 'Durchführ'], ['einfuehr', 'einführ'], ['Geraet', 'Gerät'], ['Waerme', 'Wärme'], ['Staerke', 'Stärke']];
+const umlaute = s => UML.reduce((a, [x, y]) => a.split(x).join(y), s);
+const dezKomma = s => s.replace(/(\d)\.(\d)/g, '$1,$2');
 const klartext = s => {
   if (typeof s !== 'string') return s;
+  s = umlaute(s).replace(/\s*\[(?:A|E|Q)\]/g, '').replace(/\s*[\(\[][^()\[\]]*\b[a-z]+(?:_[a-z0-9]+)+\b[^()\[\]]*[\)\]]/g, '').replace(/\s+[a-z]+(?:_[a-z0-9]+)+\b/g, '')
+    .replace(/\s*[\(\[][^()\[\]]*\bN-[A-Z]+ [A-Z]\d{1,2}\b[^()\[\]]*[\)\]]/g, '');
   const t = s.replace(/\s*[\(\[][^()\[\]]*\b(?:[RDBTWE]\d{1,2}|Parameter\w*)\b[^()\[\]]*[\)\]]/g, '')
     .split(/(?<=[.!?])\s+/).filter(x => !/\b(?:data|scripts|docs)\/|\.py\b|\.json\b|\bRegel [A-Z]\d{2}\b|\b(?:R\d{2}|W\d{2}|E\d{2}|B\d)\b/.test(x)).join(' ');
   return t.replace(/\s{2,}/g, ' ').replace(/\s+([.,;:])/g, '$1').trim();
 };
 const kt = s => esc(klartext(s));
+const masseText = s => kt(dezKomma(String(s || '')));            // "Masse 312.6 g, Einzelkoerper 84.1 x ..." -> Dezimalkomma, Umlaut
+const bez = s => esc(klartext(s || ''));                        // Katalog-Bezeichnung (Einkaufsliste) fuer die Anzeige
 const teilWort = n => `${n} ${n === 1 ? 'Teil' : 'Teile'}`, koerperWort = n => `${n} ${n === 1 ? 'Körper' : 'Körper'}`;
 const TYP = { profil: 'Profil', platte: 'Platte', rohr: 'Rohr', normteil: 'Normteil', sonderteil: 'Sonderteil', kaufteil: 'Kaufteil' };
 const attr = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
@@ -832,8 +843,8 @@ const EINH = { Stk: 'Stück', Satz: 'Satz', m: 'm', m2: 'm²', m3: 'm³' };
 function teilPreis(t) {                                     // Zeilen der Tabelle "Einkauf" fuer ein Teil (oder null)
   if (!SL || !t.artikel_id) return null;
   const z = SL.by.get(t.artikel_id); if (!z) return [['Artikel', esc(t.artikel_id) + ' (nicht in der Einkaufsliste)']];
-  const e = EINH[z.einheit] || z.einheit, m = t.artikel_menge_je_instanz, p = z.preis, rows = [['Artikel', esc(z.bezeichnung)]];
-  rows.push(['Menge im Bauteil', m ? `${fm(m, 2)} ${esc(e)}` : '']);
+  const e = EINH[z.einheit] || z.einheit, m = t.artikel_menge_je_instanz, p = z.preis, rows = [['Artikel', bez(z.bezeichnung)]];
+  rows.push(['Menge im Bauteil', m ? `${fm(m, 2)} ${esc(e)}` : imKaufteil(t) ? 'im Kaufteil enthalten' : '']);
   if (!p) { rows.push(['Preis', `noch offen (${esc(z.status_grund || z.status)})`]); return rows.filter(r => r[1]); }
   rows.push(['Stückpreis', `${eur(p.einzelpreis_eur)} je ${esc(EINH[p.bezug_einheit] || p.bezug_einheit)}`]);
   if (m) rows.push(['Preis im Bauteil', eur(p.einzelpreis_eur * m) + ' <span class="ph">(anteilig, ohne Verschnitt)</span>']);
@@ -844,23 +855,26 @@ function teilPreis(t) {                                     // Zeilen der Tabell
 }
 function preisZeile(t) {                                    // kleine Zeile unter dem Teilnamen in der Teileliste
   if (!SL || !t.artikel_id) return '';
-  const z = SL.by.get(t.artikel_id), m = t.artikel_menge_je_instanz; if (!z || !m) return '';
+  const z = SL.by.get(t.artikel_id), m = t.artikel_menge_je_instanz; if (!z) return ''; if (!m) return imKaufteil(t) ? '<div class="n2">im Kaufteil enthalten</div>' : '';
   const e = EINH[z.einheit] || z.einheit, p = z.preis;
   return `<div class="n2">${esc(fm(m, 2))} ${esc(e)}${p ? ' · ' + esc(eur(p.einzelpreis_eur)) + ' je ' + esc(EINH[p.bezug_einheit] || p.bezug_einheit) : ' · Preis offen'}</div>`;
 }
+// Teil ohne eigene Menge, dessen Artikel ein anderes Teil derselben Datei schon traegt (Spindel/Hebel im Hahn, Deckel im Behaelter): im Preis des Kaufteils enthalten (A3)
+const imKaufteil = t => !!t.artikel_id && !t.artikel_menge_je_instanz && detail.parts.teile.some(x => x !== t && x.artikel_id === t.artikel_id && x.artikel_menge_je_instanz);
 function bauteilSumme() {                                   // Preis aller Kaufteile einer Einheit des Bauteils (anteilig), Teile ohne Preis gezaehlt
   if (!SL) return null;
   let summe = 0, mit = 0, ohne = 0;
   detail.parts.teile.forEach(t => {
     if (!t.artikel_id) return; const z = SL.by.get(t.artikel_id), m = t.artikel_menge_je_instanz;
-    if (z && z.preis && m) { summe += z.preis.einzelpreis_eur * m; mit++; } else ohne++;
+    if (z && z.preis && m) { summe += z.preis.einzelpreis_eur * m; mit++; } else if (!imKaufteil(t)) ohne++;
   });
   const k = SL.komp && SL.komp[detail.def], n = k ? k.instanzen : (defList[detail.def] || []).length;
   return { summe, mit, ohne, n };
 }
 function bauteilPreis(klein) {
   const s = bauteilSumme(); if (!s || (!s.mit && !s.ohne)) return '';
-  const satz = `Die Kaufteile eines Bauteils kosten anteilig ${eur(s.summe)}${s.ohne ? `; ${s.ohne === 1 ? 'ein Teil hat' : s.ohne + ' Teile haben'} noch keinen Preis` : ''}. Im Modell stehen ${s.n} ${s.n === 1 ? 'Bauteil' : 'Bauteile'}${s.n > 1 ? `, zusammen ${eur(s.summe * s.n)}` : ''}.`;
+  const satz = !s.mit ? `Für die Kaufteile dieses Bauteils gibt es noch keinen Preis. Im Modell stehen ${s.n} ${s.n === 1 ? 'Bauteil' : 'Bauteile'}.`
+    : `Die Kaufteile eines Bauteils kosten anteilig ${eur(s.summe)}${s.ohne ? `; ${s.ohne === 1 ? 'ein Teil hat' : s.ohne + ' Teile haben'} noch keinen Preis` : ''}. Im Modell stehen ${s.n} ${s.n === 1 ? 'Bauteil' : 'Bauteile'}${s.n > 1 ? `, zusammen ${eur(s.summe * s.n)}` : ''}.`;
   return klein ? `<div class="note"><b>Einkauf:</b> ${esc(satz)}</div>` : `<div class="sub">${esc(satz)}</div>`;
 }
 async function openDetail(def) {
@@ -1005,10 +1019,10 @@ function showDetailCard() {
   const kg = gram >= 1000 ? fm(gram / 1000, 2) + ' kg' : fm(gram, 0) + ' g';
   const kon = (w, k) => w ? esc(String(w).replace(/^\w/, c => c.toUpperCase())) + (k ? ` <span class="ph">(${esc(k)})</span>` : '') : '';
   const ke = katEntry(t.katalog);
-  const rows = [['Werkstoff', esc(werkstoffName(t.werkstoff))], ['Maße', kt(t.masse_mm || '')], ['Masse im Modell', t.menge > 1 ? `${kg} (${t.menge} Stück zusammen)` : kg],
-    ['Norm', t.norm ? esc(t.norm) + (t.norm_konfidenz ? ` <span class="ph">(${esc(t.norm_konfidenz)})</span>` : '') : 'keine'],
+  const rows = [['Werkstoff', esc(werkstoffName(t.werkstoff))], ['Maße', masseText(t.masse_mm)], ['Masse im Modell', t.menge > 1 ? `${kg} (${t.menge} Stück zusammen)` : kg],
+    ['Norm', klartext(t.norm || '') ? kt(t.norm) + (t.norm_konfidenz ? ` <span class="ph">(${esc(t.norm_konfidenz)})</span>` : '') : 'keine'],
     ['Lebensmittelkontakt', kon(t.lebensmittelkontakt, t.lebensmittelkontakt_konfidenz)], ['Belegstand', esc(t.konfidenz || '')],
-    ['Katalogeintrag', ke ? esc(ke.name) : ''], ['Bezug in Europa', kt(t.bezug || '')]].filter(r => r[1]);
+    ['Katalogeintrag', ke ? bez(ke.name) : ''], ['Bezug in Europa', kt(t.bezug || '')]].filter(r => r[1]);
   const pz = teilPreis(t);
   box.innerHTML = `<h3>${esc(t.name)}</h3><div class="sub">Ein ${esc(TYP[t.typ] || t.typ)}, ${t.menge} Stück im Bauteil.</div>
     <div class="badges"><span class="badge cnt">${esc(TYP[t.typ] || t.typ)}</span><span class="badge">${t.menge} ×</span><span class="badge">${esc(t.konfidenz || '')}</span></div>

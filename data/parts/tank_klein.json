@@ -75,7 +75,9 @@
       "lebensmittelkontakt_konfidenz": "angenommen",
       "konfidenz": "angenommen",
       "quelle": "data/components/tank.json (typen.klein), docs/parts/tank.md, docs/research/R09.md (Durchmesser, Höhe, Spitze: OBJ/layout.json; Wand: [A])",
-      "artikel_id": "BEH-tank-pe-673x1075"
+      "artikel_id": "BEH-tank-pe-673x1075",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "deckel",
@@ -106,7 +108,9 @@
         ],
         "abstand_mm": 350
       },
-      "artikel_id": "BEH-tank-pe-673-deckel"
+      "artikel_id": "BEH-tank-pe-673-deckel",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "zulaufrohr",
@@ -139,7 +143,9 @@
         ],
         "abstand_mm": 250
       },
-      "artikel_id": "ROH-pvcu-d50"
+      "artikel_id": "ROH-pvcu-d50",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.26
     },
     {
       "id": "leitrohr",
@@ -173,7 +179,9 @@
         ],
         "abstand_mm": 900
       },
-      "artikel_id": "ROH-pvcu-d110"
+      "artikel_id": "ROH-pvcu-d110",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.903
     },
     {
       "id": "auslaufrohr",
@@ -206,7 +214,9 @@
         "abstand_mm": 200,
         "folgt": "leitrohr"
       },
-      "artikel_id": "ROH-pvcu-d50"
+      "artikel_id": "ROH-pvcu-d50",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.386
     },
     {
       "id": "schlammstutzen",
@@ -237,7 +247,9 @@
         ],
         "abstand_mm": 80
       },
-      "artikel_id": "FIT-stutzen-d16"
+      "artikel_id": "FIT-stutzen-d16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kugelhahn",
@@ -270,7 +282,9 @@
         ],
         "abstand_mm": 160
       },
-      "artikel_id": "ARM-kugelhahn-d40"
+      "artikel_id": "ARM-kugelhahn-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "ablaufstutzen",
@@ -301,7 +315,9 @@
         ],
         "abstand_mm": 240
       },
-      "artikel_id": "FIT-stutzen-d40"
+      "artikel_id": "FIT-stutzen-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "plattform",
@@ -333,7 +349,9 @@
         ],
         "abstand_mm": 150
       },
-      "artikel_id": "SON-plattform-619x619"
+      "artikel_id": "SON-plattform-619x619",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "bein",
@@ -369,7 +387,9 @@
         "abstand_mm": 400,
         "folgt": "plattform"
       },
-      "artikel_id": "PRF-st-rr30x30x2"
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.98
     },
     {
       "id": "fussplatte",
@@ -404,7 +424,9 @@
         "abstand_mm": 100,
         "folgt": "bein"
       },
-      "artikel_id": "BLE-fussplatte-100x100x6"
+      "artikel_id": "BLE-fussplatte-100x100x6",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0
     },
     {
       "id": "schraube",
@@ -446,7 +468,9 @@
         "abstand_mm": 150,
         "folgt": "fussplatte"
       },
-      "artikel_id": "SRB-satz-m8x30"
+      "artikel_id": "SRB-satz-m8x30",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 8.0
     },
     {
       "id": "strebe",
@@ -478,7 +502,9 @@
         "abstand_mm": 100,
         "folgt": "bein"
       },
-      "artikel_id": "PRF-st-rr30x30x2"
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.236
     },
     {
       "id": "diagonale",
@@ -509,7 +535,9 @@
         "abstand_mm": 180,
         "folgt": "bein"
       },
-      "artikel_id": "WNK-flach-3mm-diagonale"
+      "artikel_id": "WNK-flach-3mm-diagonale",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0
     }
   ]
 }

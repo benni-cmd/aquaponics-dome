@@ -14,6 +14,10 @@ _INST = os.path.join(HERE, 'instances.json')
 if os.path.exists(_INST):
     state['version'] = 1
     state['built'] = time.strftime('%H:%M:%S', time.localtime(os.path.getmtime(_INST)))
+    try:   # "Modell gespeichert": ohne Export seit dem Start die Zeit aus instances.json zeigen (A6), Datum nur wenn nicht heute
+        _b = str(json.load(open(_INST, encoding='utf-8')).get('built', ''))
+        if _b: state['design_saved'] = _b[11:19] if _b[:10] == time.strftime('%Y-%m-%d') else f'{_b[8:10]}.{_b[5:7]}. {_b[11:19]}'
+    except (OSError, ValueError): pass
 
 def do_export():
     state['busy'] = True

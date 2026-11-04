@@ -169,3 +169,12 @@
   5. Bericht E20 kompakt (local_994a3bc8) -> Link in den Gesamtbericht.
   Nicht anfassen: alles, was von E20 abhaengt (W37-1, M10-S2N, S3 bis S5), M10-S2V geparkt. Limit 01:28: 5h 13 %, Woche 3 %. Regel: Bau-Sitzung nicht bei 5h > 90 % starten.
   6. (Ben 04.11. nachts, W60/Belueftung) Nach W37-3: pruefen, ob die Luftleitungen K44 bis K51 und das Setzen von Geblaese/Aktivkohle ohne E20 gehen (Planer-Befund 30b4845: Luft variantenunabhaengig). Wenn ja: Planer fuer einen abgetrennten Montage-Schritt M10-S5-LUFT, dann Montage, dann Pruefer. Rest von M10-S5 bleibt bis E20 gestoppt.
+
+- 04.11. nachts, PRAEZISIERUNG Ben: Der Nachtauftrag umfasst je Paket ALLE zustaendigen Sitzungsarten (Planer, Fachrecherche, Werkstatt, Montage, Viewer, Pruefer) samt aller Folgeschritte, nicht nur Bau+Pruefer. Nacht-Entscheidungen nach Empfehlung, morgen zur Bestaetigung vorlegen: Preise brutto; Pflanzgut/Fisch/Beton/Aushub nicht in die Einkaufsliste; UK als Europa OFFEN (beide Varianten fuehren); Desktop-Verknuepfung ist von Ben ausdruecklich gewuenscht (W59), also anlegen.
+  Gesamtkette (schreibende Bau-Sitzungen strikt nacheinander, Recherche/Planer/Pruefer parallel):
+  A. Beet: Werkstatt W40 (laeuft) -> Pruefer W40 -> Orchestrator Netz K14/K30 Hoehe + Wasserbilanz -> Planer Montage "Beete im Dom ersetzen" (nur Bauteil-Tausch, Ablaufleitungen bleiben E20) -> Montage -> Pruefer.
+  B. Detailansicht: Pruefer Pilot (laeuft) -> W60 laut N-STUECKLISTE Paket 5 (Werkstatt Teiledaten 5 Gruppen, Viewer Preis/Link) -> Pruefer.
+  C. Frischwasser/Luft: Werkstatt W37-2 -> Werkstatt W37-3 (R53 als Eingabe) -> Pruefer -> Planer M10-S5-LUFT (wenn E20-frei) -> Montage -> Pruefer.
+  D. Einkaufsliste N-STUECKLISTE: Werkstatt 1a -> Recherchen 2A bis 2E parallel -> Werkstatt 1b bis 1d -> Seite 3/3b + Verknuepfung -> Pruefer.
+  E. Zum Schluss: Viewer-Export auf den neuen Stand, Roadmap/Wunschbuch nachfuehren, Gesamtbericht.
+  Reihenfolge Bau: W40 -> N-STUECKLISTE 1a -> W37-2 -> W37-3 -> N-STUECKLISTE 1b-1d -> Montage Beete -> Montage Luft -> W60 Teiledaten -> Viewer (Seite + Detailansicht).

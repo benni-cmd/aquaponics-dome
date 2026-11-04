@@ -524,9 +524,31 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 70x70x5 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (70x70 mm = 0.0049 m2 x 189.21 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    },
+    {
+     "preis_eur": 1.65,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR roh (NICHT verzinkt), 70x70x5 mm, 0.192 kg x 2.85 EUR/kg netto x1,19 inkl. 1,00 EUR Mindermengenaufschlag (Preis<1,20); E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+    },
+    {
+     "preis_eur": 3.96,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 70x70x5 mm, 0.192 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 3.00 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "BLE-fussplatte-80x80x6": {
    "bezug_einheit": "Stk",
@@ -541,9 +563,31 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 80x80x6 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (80x80 mm = 0.0064 m2 x 232.19 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    },
+    {
+     "preis_eur": 1.36,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR roh (NICHT verzinkt), 80x80x8 mm, 0.402 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche; ERSATZ-Dicke 8 mm statt 6 mm (6 mm nicht waehlbar)"
+    },
+    {
+     "preis_eur": 4.96,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 80x80x6 mm, 0.301 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 3.45 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "BLE-fussplatte-80x80x8": {
    "bezug_einheit": "Stk",
@@ -558,9 +602,31 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 80x80x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (80x80 mm = 0.0064 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    },
+    {
+     "preis_eur": 1.36,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR roh (NICHT verzinkt), 80x80x8 mm, 0.402 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+    },
+    {
+     "preis_eur": 6.18,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 80x80x8 mm, 0.402 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 4.17 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "BLE-fussplatte-100x100x6": {
    "bezug_einheit": "Stk",
@@ -575,9 +641,31 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 100x100x6 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (100x100 mm = 0.0100 m2 x 232.19 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    },
+    {
+     "preis_eur": 2.13,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR roh (NICHT verzinkt), 100x100x8 mm, 0.628 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche; ERSATZ-Dicke 8 mm statt 6 mm (6 mm nicht waehlbar)"
+    },
+    {
+     "preis_eur": 5.8,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 100x100x6 mm, 0.471 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 3.45 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "BLE-fussplatte-150x150x8": {
    "bezug_einheit": "Stk",
@@ -592,9 +680,31 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 150x150x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (150x150 mm = 0.0225 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    },
+    {
+     "preis_eur": 4.79,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR roh (NICHT verzinkt), 150x150x8 mm, 1.413 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+    },
+    {
+     "preis_eur": 11.23,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 150x150x8 mm, 1.413 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 4.17 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "BLE-fussplatte-200x200x8": {
    "bezug_einheit": "Stk",
@@ -609,9 +719,31 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 200x200x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (200x200 mm = 0.0400 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    },
+    {
+     "preis_eur": 8.52,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR roh (NICHT verzinkt), 200x200x8 mm, 2.512 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+    },
+    {
+     "preis_eur": 16.73,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 200x200x8 mm, 2.512 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 4.17 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "BLE-platte-30x30x3": {
    "bezug_einheit": "Stk",
@@ -626,9 +758,31 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 40x40x3 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (40x40 mm = 0.0016 m2 x 168.36 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk. Mindestmass des Shops 40 mm, daher 40x40 gerechnet statt 30x30 (A)."
+    },
+    {
+     "preis_eur": 1.13,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "ERSATZ: 40x40x3 mm (Mindestmass 40 mm, 30 mm nicht moeglich), S235JR roh, 0.038 kg x 2,85 EUR/kg x1,19 inkl. 1,00 EUR Mindermengenaufschlag (Preis<1,20); E; ohne Bohrung/Biegung"
+    },
+    {
+     "preis_eur": 3.18,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "ERSATZ: 30x30x5 mm (min. Dicke 5 mm), S235JR+AR roh, 0.035 kg x 5.00 EUR/kg + Schnitt 3.00 EUR; E; ohne Bohrung/Biegung"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "WNK-wandlasche-30x30x3": {
    "bezug_einheit": "Stk",
@@ -643,14 +797,59 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "E: Zuschnitt 40x40x3 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (40x40 mm = 0.0016 m2 x 168.36 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk. Mindestmass des Shops 40 mm, daher 40x40 gerechnet statt 30x30 (A); Ersatz fuer Wandlasche, roh."
+    },
+    {
+     "preis_eur": 1.13,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "ERSATZ: 40x40x3 mm (Mindestmass 40 mm, 30 mm nicht moeglich), S235JR roh, 0.038 kg x 2,85 EUR/kg x1,19 inkl. 1,00 EUR Mindermengenaufschlag (Preis<1,20); E; ohne Bohrung/Biegung"
+    },
+    {
+     "preis_eur": 3.18,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "ERSATZ: 30x30x5 mm (min. Dicke 5 mm), S235JR+AR roh, 0.035 kg x 5.00 EUR/kg + Schnitt 3.00 EUR; E; ohne Bohrung/Biegung"
     }
    ],
-   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+   "luecke": ""
   },
   "BLE-platte-250x250x15": {
    "bezug_einheit": "Stk",
-   "angebote": [],
-   "luecke": "Kein Angebot mit Preis gelesen: Metallshopper bietet nur bis 8 mm Blech; eBay/Kaufland per curl gesperrt, Suchtreffer ohne Preis. Laserzuschnitt-Anfrage noetig."
+   "angebote": [
+    {
+     "preis_eur": 32.32,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR roh (NICHT verzinkt), 250x250x15 mm, 7.359 kg x 3.69 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+    },
+    {
+     "preis_eur": 39.98,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "land": "DE",
+     "url": "https://stahlshop.de/stahlplatten",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 250x250x15 mm, 7.359 kg x 4.64 EUR/kg (Staffel brutto) + Schnitt 5.83 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+    }
+   ],
+   "luecke": ""
   },
   "WNK-winkel-36x60x60": {
    "bezug_einheit": "Stk",
@@ -695,7 +894,7 @@
      "bemerkung": "E, Ersatz: Winkelprofil 30x30x3 roh, Zuschnitt 40 mm: 0,04 m x 7.69 EUR/m netto + 5,35 EUR Gebuehr = 5.66 netto, x1,19. Roh, nicht verzinkt; Mass 25x25 nicht verfuegbar (A)."
     }
    ],
-   "luecke": "Nur ein Haendler (Metallshopper, Ersatzprofil 30x30x3)."
+   "luecke": "Artikel nicht eindeutig bestimmbar, kein belegtes Angebot gefunden"
   },
   "WNK-pumpenkonsole": {
    "bezug_einheit": "Stk",
@@ -811,23 +1010,115 @@
   },
   "PRF-alu-haut-profil": {
    "bezug_einheit": "m",
-   "angebote": [],
-   "luecke": "Kein belastbarer Meterpreis gefunden: Profil nicht eindeutig spezifiziert/gesucht ohne passende Treffer (keine Haendlerseite mit passender Geometrie und gelesenem Preis). Nur generische Treffer (Baumarkt-Alu-U-/Winkelprofile, Kederschiene ~29 EUR/m ebay Planenscout 21x50, Reimo Klappenprofil) - nicht passend, daher nicht aufgenommen. Alu: Metallshopper/Profile-Metall als Kandidaten fuer Folgesuche."
+   "angebote": [
+    {
+     "preis_eur": 7.47,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/u-profil-alu-20x20x1-5-mm-2-m/6368193/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ERSATZ (A): Alu-U-Profil 20x20x1,5 mm, 2 m, natur; Stueckpreis 14,95 EUR brutto (schema.org) / 2 m = 7,475 EUR/m; DE-Baumarkt, Versand/Abholung; kein Kappenprofil"
+    },
+    {
+     "preis_eur": 9.14,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "OBI",
+     "land": "DE",
+     "url": "https://www.obi.de/p/8750010/u-profil-aluminium-20-mm-x-20-mm-x-2-000-mm-silber",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ERSATZ (A): Alu-U-Profil 20x20 mm, 2 m, silber eloxiert; 18,29 EUR brutto/2 m = 9,145 EUR/m; kein Kappenprofil"
+    }
+   ],
+   "luecke": ""
   },
   "PRF-alu-keilschiene": {
    "bezug_einheit": "m",
-   "angebote": [],
-   "luecke": "Kein belastbarer Meterpreis gefunden: Profil nicht eindeutig spezifiziert/gesucht ohne passende Treffer (keine Haendlerseite mit passender Geometrie und gelesenem Preis). Nur generische Treffer (Baumarkt-Alu-U-/Winkelprofile, Kederschiene ~29 EUR/m ebay Planenscout 21x50, Reimo Klappenprofil) - nicht passend, daher nicht aufgenommen. Alu: Metallshopper/Profile-Metall als Kandidaten fuer Folgesuche."
+   "angebote": [
+    {
+     "preis_eur": 14.0,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Norhage",
+     "land": "DE",
+     "url": "https://norhage.de/produkt/aluminium-klemmprofil-fuer-kunststofffolie-einzeln/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ERSATZ (A): Alu-Klemmprofil einfach fuer Gewaechshausfolie (Alu-Basis + Kunststoffclips), Schraubmontage, Masse 25x15 nicht belegt; 10 m = 140,00 EUR brutto (display_price, netto 117,65) = 14,00 EUR/m; Lieferzeit 1-2 Wochen; Versand DE nicht separat gelesen"
+    },
+    {
+     "preis_eur": 11.49,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Wegner24",
+     "land": "DE",
+     "url": "https://www.wegner24.eu/Klemmprofil_Netze_Planen",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ERSATZ (A): Klemmprofil 2 m (Klemmleiste fuer Folien-/Netzbefestigung, Art. 1KL100AK); 22,99 EUR inkl. 19 % USt / 2 m = 11,495 EUR/m; plus 14 EUR Versandaufschlag je Stueck; Lieferzeit 2-3 Werktage DE; Masse 25x15 nicht belegt"
+    }
+   ],
+   "luecke": ""
   },
   "PRF-alu-klemmleiste": {
    "bezug_einheit": "m",
-   "angebote": [],
-   "luecke": "Kein belastbarer Meterpreis gefunden: Profil nicht eindeutig spezifiziert/gesucht ohne passende Treffer (keine Haendlerseite mit passender Geometrie und gelesenem Preis). Nur generische Treffer (Baumarkt-Alu-U-/Winkelprofile, Kederschiene ~29 EUR/m ebay Planenscout 21x50, Reimo Klappenprofil) - nicht passend, daher nicht aufgenommen. Alu: Metallshopper/Profile-Metall als Kandidaten fuer Folgesuche."
+   "angebote": [
+    {
+     "preis_eur": 3.73,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/flachstange-alu-natur-30x2-mm-2-m/757620/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Alu-Flachstange natur 30x2 mm, 2 m = 7,45 EUR brutto (3,725 EUR/m); ERSATZ (A) fuer Klemmleiste (Flachprofil)"
+    },
+    {
+     "preis_eur": 7.19,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "OBI",
+     "land": "DE",
+     "url": "https://www.obi.de/profile/arcansas-flachstange-aluminium-silber-eloxiert-1-000-x-30-x-2-mm/p/4973244",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Arcansas Alu-Flachstange silber eloxiert 30x2x1000 mm = 7,19 EUR brutto/m; ERSATZ (A) fuer Klemmleiste"
+    }
+   ],
+   "luecke": ""
   },
   "PRF-pvcu-rinne-130x100": {
    "bezug_einheit": "m",
-   "angebote": [],
-   "luecke": "Keine 130x100-PVC-U-Rinne im Handel gefunden (nur Hydroponik-Rohrkanaele 32 mm, halbrunde Dachrinnen 130 mm, CropKing 10-Zoll-Kanal US); Kunststoffprofil-Strangpresser/Sonderanfertigung wahrscheinlich."
+   "angebote": [
+    {
+     "preis_eur": 8.28,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/roth-lange-kabelkanal-bxh-110-x-60-mm-reinweiss-2-m/4685465/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ERSATZ (A): PVC-Kabelkanal 110x60 mm, 2 m, reinweiss, offenes Profil mit Deckel; 16,55 EUR brutto/2 m = 8,275 EUR/m; nicht 130x100, nicht NFT-/lebensmittelgeeignet belegt"
+    },
+    {
+     "preis_eur": 10.99,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "OBI",
+     "land": "DE",
+     "url": "https://www.obi.de/p/2191181407035/edo-kabelkanal-100x60-mm-weiss-2-m-mit-klappdeckel-zur-schraubmontage",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ERSATZ (A): EDO Kabelkanal 100x60 mm, 2 m, weiss, Klappdeckel; 21,99 EUR brutto/2 m = 10,995 EUR/m; nicht 130x100"
+    }
+   ],
+   "luecke": ""
   },
   "BLE-pp-siebboden-beet": {
    "bezug_einheit": "m2",

@@ -431,6 +431,11 @@ const Lade = {
   },
   tick(name) { this.zeichen = performance.now(); if (name) this.letzte = name; ladeWarn.hidden = true; },
   chunk(n, name) { this.bytes += n; this.tick(name); this.zeige(); },
+  hinweis(text) {                                            // einmalige Meldung ohne Balken (z. B. nichts nachzuladen)
+    clearTimeout(this.weg); clearInterval(this.timer); this.phase = 3; ladeEl.hidden = false; ladeEl.classList.add('fertig'); ladeBar.style.width = '100%';
+    ladePhase.textContent = 'Kleinteile'; ladeText.textContent = ''; ladeFehler.innerHTML = ''; ladeWarn.hidden = false; ladeWarn.textContent = text;
+    this.weg = setTimeout(() => { ladeEl.hidden = true; }, 20000);
+  },
   fehlerMelden(text) {
     this.fehler.push(text); const li = document.createElement('li'); li.textContent = text; ladeFehler.appendChild(li); ladeEl.hidden = false; console.error('Viewer:', text);
   },
@@ -501,7 +506,12 @@ async function syncKlein() {
   if (kleinBusy) return; kleinBusy = true;
   try {
     const todo = Object.entries(DEFS_INFO).filter(([s, d]) => d.klein_kb > 0 && defList[s]);
-    if (!todo.length) { kleinBuilt = true; return; }
+    if (!todo.length) {                                       // nie still bleiben: sagen, warum nichts erscheint
+      const alt = Object.values(DEFS_INFO).every(d => d.klein_kb === undefined);
+      Lade.hinweis(alt ? `Es gibt keine Kleinteile-Dateien (defs/*.klein.obj): der letzte Export stammt aus einer Version ohne Kleinteile. Bitte den Export neu starten (python viewer/export_model.py).`
+                       : `Der aktuelle Export enthält keine Körper unter ${MIN_DIAG_MM / 10} cm, es gibt nichts nachzuladen.`);
+      return;
+    }
     const files = todo.map(([s, d]) => ({ name: `${s}.klein.obj`, url: `defs/${s}.klein.obj?k=${d.klein_kb}`, bytes: d.klein_kb * 1024, key: `klein|${s}|${d.klein_kb}`, stem: s }));
     Lade.begin('Kleinteile', 'Datei', files.length, files.reduce((a, f) => a + f.bytes, 0));
     await ladeDateien(files);

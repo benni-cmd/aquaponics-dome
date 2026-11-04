@@ -1,0 +1,10 @@
+# Start-Auftrag: Werkstatt W60 Schritt 5a, Teiledaten je Bauteilgruppe
+
+PROJEKT: aquaponics-dome (user-projects/aquaponics-dome). Rolle: Werkstatt. Deine Gruppe steht in der Weckmeldung. Kontext mit Fenster 1.000.000 Token rechnen; ab 40 % kein neues Teilstueck, ab 50 % Stand ins Paket schreiben und stoppen.
+
+1. Grundlage: `docs/jobs/N-STUECKLISTE.md` Punkt 5a und Pruefpunkt 7; Geruest und Gruppentabelle aus Schritt 5-0 (6ee3466) in `docs/packages/n-stueckliste.md`; Muster mit fertigen Handfeldern: `data/parts/feinfilter.json`, `data/parts/tank_klein.json`; `docs/detail-standard.md`.
+2. Je Teil deiner Gruppe die Handfelder fuellen: Funktion, Erklaertext (deutsch, Anzeigetext mit Umlauten, ohne Register-Kuerzel und Parameternamen), Explosionsrichtung, Gruppen. `artikel_id` und Menge kommen aus dem Geruest und bleiben.
+3. Unbenannte Koerper (`Body<n>`): per Werkstatt-Skript benennen und nur diese Komponente neu aufbauen. AUSNAHME: Diese Komponenten tragen fremde, nicht committete Aenderungen und werden NICHT neu aufgebaut oder umbenannt (dort Body-Liste als "offen, fremde Aenderung" ins Paket): `becken_dritt`, `erdflaeche`, `fundamentring`, `haut_paneel_BBB`, `pool_zentral`, `schaltschrank`, `strebe_a`, `strebe_b`, `tuer`, `zulaufrohr`, `zweitbecken`.
+4. Detail-OBJ per `viewer/export_detail.py` nur fuer deine Komponenten (schreibt `viewer/detail/<komp>.*`). Lehnt das Berechtigungssystem einen Schritt ab: nicht umgehen, im Paket als offen nennen, weitermachen.
+5. Messen: `python -X utf8 scripts/workshop/check_parts.py` fuer deine Komponenten Exit 0; fehlende Verweise `artikel_id`: 0. Stand im Paket `docs/packages/n-stueckliste.md` als eigene Zeile deiner Gruppe (Teile gefuellt / gesamt, Body offen).
+6. Parallel arbeiten vier weitere Gruppen-Sitzungen und ein Pruefer. Nur Dateien deiner Gruppe anfassen; `gen_dome.py`, `data/layout.json`, `data/leitungsnetz.json`, `viewer/` (ausser `viewer/detail/<deine komp>`), `viewer/extras.json` nie. Commits nur per Pfad, je Teilstueck, Push; WIP-Commit spaetestens alle 20 Minuten. Bei Konflikt im Paket: `git pull --rebase`, nur eigene Zeile. Danach STOPP.

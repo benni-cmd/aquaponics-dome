@@ -46,3 +46,23 @@ Offen:
 3. Bilanz-Dateien nachfuehren (6280 l, Gewichte): Orchestrator.
 4. Ablaufleitungen und Beet-Sumpf: OFFEN (E20), Ben 05.11.
 5. Dichtband-Mass, Metallbauer-Anfrage Schutzkorb, Datenblaetter: Ben.
+
+## Nachbesserung nach Pruefer-FAIL (Werkstatt/Montage, 04.11.2026, Runde 68, D79)
+
+**Problem:** Pruefer 1a8d57f: Netztopf schneidet Medienschutz und Kappe in allen 8 Aussenbeeten (Topf 65,6 mm neben der Schutzachse, CAD 350 und 1058 mm2); im Innenbeet nur knapp, weil die Toepfe 40 mm ueber dem Medium schweben. **Intent:** Das Beet im Modell stimmt mit dem realen Beet ueberein (Topf steht auf dem Medium, Schutz und Schacht stoeren keine Pflanze). **Goal:** Abstand Schutzachse und Schachtachse zu jedem Netztopf >= 87 mm in allen 14 Beeten, Topf auf der Medienoberkante je Beet, 0 Interferenz-Paare Netztopf x Bauteil.
+
+Aenderungen (Commits 7ddff23, 3fbcc3e, fa99e8f):
+1. **Auflage 1 (Medienschutz):** `ibc_beet.py`: Siphon samt Standrohr, Glocke, Reduktion, Huelsen und Medienschutz auf eine Zellmitte des Topfrasters (gleiche Funktion `shaft_cell` wie der Schacht, 0c). Neue Lage: aussen_800 x 1040 / y 0 (vorher 1096 / 0), innen_933 x 650 / y 65 (vorher 708,5 / 0), aussen_933 und aussen_993 x 1300 / y 65 (vorher 1252 / 0). **Der Ablaufport (Standrohrende z -30) wandert damit um bis zu 56 mm in x und 65 mm in y; Netz K14/K30 und der Beet-Sumpf-Anschluss sind noch nicht gebaut (E20), Orchestrator beim Anschluss beachten.** Topfzahl bleibt 2222, kein Topf gestrichen, keine Entscheidung von Ben noetig.
+2. **Check:** `check_ibc_beet.py` neue Zeilen je Typ (alle vier): "Abstand Medienschutz-Achse zu jedem Netztopf >= 87", Medienschutz-Achse nahe Li/2 - 200, Glocke und Standrohr konzentrisch zur Schutzachse. Lauf: **Exit 0, 211 PASS, 0 FAIL**, Interferenz je Typ 0.
+3. **Auflage 2 (Topfhoehe):** `gen_dome.py` `pots()`: Topf-Boden je Beet = `fz + z0 + height - rim_gap` (rim_gap aus `data/components/ibc_beet.json`); NFT-Toepfe unveraendert; sonst nichts am Generator geaendert. Gemessen aus `scripts/dome-script.json`: Beet-Toepfe aussen 960 bei Z 800; innen 98 je Beet bei Z 765 / 780 / 780 / 801 / 802 / 804 (Medienoberkante je Beet).
+
+Messungen (selbst, 04.11.2026):
+1. CAD-Probe `inspect.interference`, Bauteil plus je 8 Netztoepfe (4 um Schutzachse, 4 um Schachtachse, Topf auf Medienoberkante lokal z 562 aussen / 574 innen): **aussen_800 0 Paare, innen_933 0 Paare**. Gegenprobe mit einem Topf 65,6 mm neben der Schutzachse (alter Fehler): 2 Paare (Netztopf x Medienschutz 96 mm2, Netztopf x Schutzkappe 699 mm2), die Probe erkennt den Fehler also. Probe: `scratchpad/probe.py` (Befehle wie im Befund 3c).
+2. Neubau `sh scripts/build.sh 5 68`: Exit 0. Zaehlung `scripts/dome-script.json`: 8 `Beet_aussen_800`, 6 `Beet_innen_933`, Netztopf 2222, Salatkopf 2222.
+3. `python -X utf8 scripts/check_walkways.py`: PASS, A 700, B 600, Wandluft 110, Nachbarportale 307, Tuer-Gang 3177 (gleich Runde 67).
+4. Abstand aus den Instanzmatrizen des Doms: Schutzachse und Schachtachse zu jedem Netztopf, alle 14 Beete **91,9 mm** (Soll >= 87).
+
+Nicht gemessen oder nicht ausgefuehrt:
+1. **Viewer-Export** (`python viewer/export_model.py`): nicht gelaufen. Er ueberschreibt `viewer/extras.json`, auf der eine fremde, nicht committete Aenderung liegt; die Sicherung der Datei vor dem Lauf wurde vom Berechtigungssystem abgelehnt und nicht umgangen. DEINE ENTSCHEIDUNG: Export freigeben (Sicherung von `extras.json` im Scratchpad erlauben) oder die fremde Aenderung zuerst sichern.
+2. **`check_latte`** (67 min): nicht gelaufen (Zeit); `check_walkways_voll` nicht gelaufen.
+3. Medienschutz-Abstand ist im Dom aus Matrizen und per CAD-Probe am Bauteil gemessen, nicht im Dom-Modell selbst (`check_latte` nimmt Pflanzen aus).

@@ -1,0 +1,86 @@
+{
+  "_hinweis": "N-STUECKLISTE Paket 2E (Huelle und Pflanzbereich, Typen FOL TOP GEW SON BET). Stand 2026-11-04, Zwischenstand Untergruppe 1 (Folie, Substrat, Biomedium, Dichtband, Siebgewebe, Netztopf). Preise brutto in EUR inkl. MwSt. (DE 19 %), ohne Versand ausser vermerkt. Konfidenz: Q = Seite selbst gelesen | Q-Treffer = nur Suchtreffer/Seite nicht abrufbar | E = gerechnet | A = angenommen. Kein Kauf, keine Anmeldung. UK-Angebote sind gekennzeichnet (UK als Europa OFFEN). Nacht-Regel: Pflanzgut, Fisch, Beton, Aushub nicht in der Liste.",
+  "paket": "2E",
+  "stand": "2026-11-04",
+  "artikel": {
+    "FOL-pe-plane": {
+      "bezug_einheit": "m2",
+      "angebote": [
+        {"preis_eur": 2.05, "bezug_einheit": "m2", "stand": "2026-11-04", "haendler": "Aquagart (auch OBI Marktplatz, Manomano, OTTO)", "land": "DE", "url": "https://www.billiger.de/pricelist/4320529950-aquagart-8m-gartenfolie-gewaechshausfolie-uv-5-fruehbeetfolie-treibhausfolie-8m-breit", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Rolle 8 m x 8 m = 131,30 EUR frei Haus (Preisvergleichsseite gelesen, Haendlerseite nicht). Dicke auf der Seite nicht genannt (Suchtreffer: 190 um), 200-um-Anforderung (R42) ungeprueft."},
+        {"preis_eur": 1.93, "bezug_einheit": "m2", "stand": "2026-10-31", "haendler": "AGRIplus UV5 200 um (stretchfolie.eu / dm-folien.com)", "land": "EU (Haendler laut R42)", "url": "https://stretchfolie.eu", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Aus R42 (gelesen am 31.10.): 1,62 EUR/m2 netto bei Zuschnitt = 1,93 brutto (E); ganze Rolle 10x25 m 179,50 netto = 0,86 brutto je m2. Heute nicht neu geoeffnet."},
+        {"preis_eur": 2.12, "bezug_einheit": "m2", "stand": "2026-10-31", "haendler": "Lirsa Tristar (norhage.de)", "land": "EU (laut R42)", "url": "https://www.norhage.de", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "R42: 1,78 EUR/m2 netto = 2,12 brutto (E); Lieferzeit 1-3 Wochen."},
+        {"preis_eur": null, "bezug_einheit": "m2", "stand": "2026-11-04", "haendler": "Folitec Folisol clear AF 200 um (Haupt-Produkt R42)", "land": "DE", "url": "https://www.folitec.de/gewaechshausfolien", "lieferung_de": "unbekannt", "konfidenz": "Q-Treffer", "bemerkung": "Seite heute nicht abrufbar (Zertifikatsfehler), Preis nur auf Anfrage. Kandidat, Anfrage noetig (DEINE HANDLUNG)."}
+      ],
+      "empfehlung_grob_eur": 2.0,
+      "bemerkung": "Bedarf 1015,8 m2 laut Katalog (inkl. beide Lagen) -> grob 2000 EUR; Verschnitt aus R42 (16,7 bis 21,9 %) steckt in der Kaufmenge, nicht im Stueckpreis."
+    },
+    "TOP-blaehton": {
+      "bezug_einheit": "m3",
+      "angebote": [
+        {"preis_eur": 618, "bezug_einheit": "m3", "stand": "2026-11-04", "haendler": "OSCAR.ehandel (eBay.de), Plagron Euro Pebbles 8-16 mm", "land": "DE", "url": "https://www.ebay.de/p/1646269961", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "45 l = 27,80 EUR, Versand frei; umgerechnet 618 EUR/m3 (E). Sackware, fuer 7,5 m3 zu teuer."},
+        {"preis_eur": 330, "bezug_einheit": "m3", "stand": "2026-11-04", "haendler": "Baumarkt/Haendler 80-l-Sack (Suchtreffer)", "land": "DE", "url": "https://www.kaufland.de/product/533277187/", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "80 l = 26,29 bis 29,48 EUR (Suchausschnitt), 330 bis 370 EUR/m3 (E)."},
+        {"preis_eur": null, "bezug_einheit": "m3", "stand": "2026-11-04", "haendler": "baustoffshop.de Conluto Blaehton-Leichtlehm Big Bag 1000 kg", "land": "DE", "url": "https://www.baustoffshop.de/conluto-blahton-leichtlehm-1000-kg-bigbag-n129-00004-grp.html", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "Big-Bag-Weg fuer 7,5 m3; Preis und Korngroesse 8-16 nicht gelesen. Ansatz Grosspartie 100 bis 200 EUR/m3 ist A."}
+      ],
+      "empfehlung_grob_eur": 330,
+      "bemerkung": "Bedarf 7,52 m3 -> Sackware ca. 2500 EUR, Big Bag/Palette vermutlich ca. 1000 EUR (A). Anfrage beim Blaehton-Hersteller (Liapor, Leca) noetig."
+    },
+    "TOP-biomedium": {
+      "bezug_einheit": "m3",
+      "angebote": [
+        {"preis_eur": 1200, "bezug_einheit": "m3", "stand": "2026-11-04", "haendler": "Wiltec, Unique Koi K1 Media 50 l", "land": "DE", "url": "https://wiltec.de/en/unique-koi-k1-media-50l-4-paths-moving-bed-filtermedium-media-beads/7050058", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "59,99 EUR je 50 l (Suchausschnitt) = 1200 EUR/m3 (E); Seite beim Abruf 404, Suchausschnitt meldet nicht mehr lieferbar."},
+        {"preis_eur": 1900, "bezug_einheit": "m3", "stand": "2026-11-04", "haendler": "Absolute Koi (UK), Evolution Aqua K1 50 l", "land": "UK", "url": "https://absolute-koi.com/prod2430.html", "lieferung_de": "unbekannt", "konfidenz": "Q-Treffer", "bemerkung": "UK, Europa-Status OFFEN. 74,95 GBP je 50 l, ca. 1900 EUR/m3 (E, Kurs A 1,27). Zweites UK-Angebot Pondkeeper 85,95 GBP."}
+      ],
+      "empfehlung_grob_eur": 1200,
+      "bemerkung": "Bedarf 1,29 m3 -> ca. 1500 EUR (E). Medienart (K1 oder anderes) ist im Modell nicht festgelegt; Annahme K1."
+    },
+    "FOL-epdm-schaumband": {
+      "bezug_einheit": "m",
+      "angebote": [
+        {"preis_eur": 2.29, "bezug_einheit": "m", "stand": "2026-11-04", "haendler": "Buerklin Elektronik, Essentra 14L2406 EPDM-Schaumdichtband 25x3 mm, 10 m", "land": "DE", "url": "https://www.buerklin.com/en/p/essentra-components/adhesive-tapes/1200325001/14L2406/", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "22,87 EUR je 10 m (Suchausschnitt), Netto/Brutto unklar, derzeit nicht auf Lager; Seite beim Abruf 403."},
+        {"preis_eur": 0.5, "bezug_einheit": "m", "stand": "2026-11-04", "haendler": "Fugendichtband24 / eBay-Haendler (EPDM Zellkautschuk selbstklebend, 15x2 mm 10 m = 5,15 EUR)", "land": "DE", "url": "https://www.ebay.de/p/1258844086", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "Ersatzmass 15x2; 25x3 bei eBay-Haendlern nur 1-5 m Stuecke (Preis nicht gelesen)."}
+      ],
+      "empfehlung_grob_eur": 2.3,
+      "bemerkung": "Mass 25x3 nur ueber Buerklin belegt; Bedarf im Katalog 0 (keilschiene ohne Instanz im Modell)."
+    },
+    "FOL-epdm-dichtband-zarge": {
+      "bezug_einheit": "m",
+      "angebote": [
+        {"preis_eur": 0.5, "bezug_einheit": "m", "stand": "2026-11-04", "haendler": "Steinbach & Vollmann (stuv.de), EPDM-Zellkautschuk selbstklebend", "land": "DE", "url": "https://stuv.de/api/de-DE/datasheet/V07800940", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "Datenblatt erscheint in Suche (aus W40-BEET Nachtrag bekannt); Preis nicht gelesen. 0,5 EUR/m ist A nach Vergleich 15x2 bei Fugendichtband24."},
+        {"preis_eur": 0.5, "bezug_einheit": "m", "stand": "2026-11-04", "haendler": "Fugendichtband24 (15x2 mm, 10 m = 5,15 EUR)", "land": "DE", "url": "https://www.ebay.de/p/1258844086", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "Ersatzmass."}
+      ],
+      "empfehlung_grob_eur": 1.0,
+      "bemerkung": "Mass fuer Zarge nicht festgelegt (W40-BEET: Maß offen). Gleiche Quellen gelten fuer FOL-epdm-tuerdichtung."
+    },
+    "FOL-epdm-tuerdichtung": {
+      "bezug_einheit": "m",
+      "angebote": [
+        {"preis_eur": 1.5, "bezug_einheit": "m", "stand": "2026-11-04", "haendler": "wie FOL-epdm-dichtband-zarge (stuv.de, Fugendichtband24)", "land": "DE", "url": "https://stuv.de/api/de-DE/datasheet/V07700400", "lieferung_de": "ja", "konfidenz": "A", "bemerkung": "Profil unbekannt; Preis angenommen, nicht belegt."}
+      ],
+      "empfehlung_grob_eur": 1.5,
+      "bemerkung": "Offen: Profilart (Lippen-/Hohlkammerprofil) vor Preis klaeren."
+    },
+    "GEW-v2a-100um": {
+      "bezug_einheit": "m2",
+      "angebote": [
+        {"preis_eur": 39, "bezug_einheit": "m2", "stand": "2026-11-04", "haendler": "eBay.de-Haendler Edelstahl-Filtergewebe 150 um (200x60 cm = 47 EUR; 75 um = 52 EUR)", "land": "DE", "url": "https://www.ebay.de/p/1257460901", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "Preis fuer 150 um und 75 um aus Suchausschnitt, 100 um nicht gelistet; 100 um in dieser Spanne interpoliert: ca. 40 bis 45 EUR/m2 (E)."},
+        {"preis_eur": null, "bezug_einheit": "m2", "stand": "2026-10-31", "haendler": "Metallwaren-Riffert (AT), MW-0,10 1.4301 Leinwand", "land": "AT", "url": "https://www.metallwaren-riffert.at/siebgewebe.htm", "lieferung_de": "unbekannt", "konfidenz": "Q-Treffer", "bemerkung": "Aus R52; Seite heute nicht erneut geoeffnet; Preis nicht bekannt. Zweiter Kandidat Beissermetall (DE, auf Anfrage)."}
+      ],
+      "empfehlung_grob_eur": 42,
+      "bemerkung": "Bedarf 2,02 m2 (Flaeche geschaetzt) -> ca. 90 EUR (E)."
+    },
+    "TOP-netztopf-64": {
+      "bezug_einheit": "Stk",
+      "angebote": [
+        {"preis_eur": 0.15, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "keiner belegt (Annahme aus Kleinpackungen: 10 Stk 35 mm ca. 0,27 EUR/Stk, Grosspackung deutlich billiger)", "land": null, "url": null, "lieferung_de": "unbekannt", "konfidenz": "A", "bemerkung": "Kein europaeisches Angebot fuer 64 mm Aussendurchmesser gefunden. Naechste Treffer: 2 Zoll (50,8 mm) 100er/500er-Packs ueber Marktplaetze (desertcart, eBay.de 388638502275, Seite 403), 42 mm 50er (ManoMano UK), 60x35 mm 50er (Australien). Passende Staffelware 2222 Stk ist Anfrage bei Hydroponik-Grosshaendler oder Hersteller."}
+      ],
+      "empfehlung_grob_eur": 0.15,
+      "bemerkung": "OFFEN: 64 mm vs 2-Zoll-Marktware (50 bis 60 mm) im Modell pruefen (ICH/Planer); Bedarf 2222 Stk -> grob 330 EUR (A)."
+    }
+  },
+  "nicht_recherchiert": {
+    "_hinweis": "Stand dieser Datei: Untergruppe 1 abgeschlossen mit Kennzeichnung der Luecken. Folgende Katalogartikel meiner Typen haben noch KEIN Angebot (Kontext-Limit erreicht).",
+    "SON": ["SON-korbgriff-v2a", "SON-spannverschluss-edelstahl", "SON-ankergabel-80x140", "SON-polycarbonat-paneel", "SON-pp-stuetze-60x60", "SON-federdraht-d2", "SON-tuerblatt-1000x2000", "SON-tuerscharnier", "SON-tuerdruecker", "SON-zarge-aufsatzrahmen", "SON-plattform-821x821", "SON-plattform-619x619", "SON-holz-stuetzrippe", "SON-tanksieb-stahl", "SON-belueftungsgitter-460", "SON-knotenkugel-d100", "SON-knotenarm-23x23x3", "SON-ankerlasche", "SON-schacht-kugelhahn-d63", "SON-tauchklemme", "SON-strahlungsschutz-par", "SON-halter-inline-d32-*", "SON-halter-inline-d50-*", "SON-halter-zelle-zellkoerper", "SON-sondenhalter-36"],
+    "FOL": ["FOL-epdm-dichtung-630x440"],
+    "BET": []
+  }
+}

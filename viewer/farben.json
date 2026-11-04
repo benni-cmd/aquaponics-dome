@@ -1,0 +1,57 @@
+{
+  "_hinweis": "Farbtabelle des Viewers (W68). Visuell: Farbe je Werkstoff des Teils (Quelle data/parts/<komp>.json, Feld werkstoff; Treffer ueber 'match', erster gewinnt). Technisch: Farbe je Bauteilgruppe (Feld bauteilgruppe der gleichen Datei), Leitungen nach Nennweite aus dem Komponentennamen (…_d32…). Werkstoffe ohne Eintrag und 'unbestimmt_modell'/'Default' fallen auf die bisherigen Regeln im Viewer zurueck. Farben als #rrggbb; deckkraft 1 = undurchsichtig; glanz = Metallanteil 0..1; rauheit 0..1.",
+  "mensch_komponente": "^mensch_referenz",
+  "durchsichtig_komponente": "^huelle",
+  "rueckfall_werkstoffe": ["^unbestimmt_modell$", "^Default$"],
+  "werkstoffe": [
+    { "match": "^stahl_verzinkt$",            "name": "Stahl verzinkt",            "farbe": "#b3b9bf", "glanz": 0.75, "rauheit": 0.42 },
+    { "match": "^(Stahl Anker|Federstahl.*)$", "name": "Stahl (Anker, Feder)",      "farbe": "#8f969d", "glanz": 0.8,  "rauheit": 0.45 },
+    { "match": "^edelstahl_gewebe",           "name": "Edelstahlgewebe",           "farbe": "#c4c8cb", "glanz": 0.6,  "rauheit": 0.5, "deckkraft": 0.7 },
+    { "match": "^edelstahl",                  "name": "Edelstahl",                 "farbe": "#d2d6d9", "glanz": 0.95, "rauheit": 0.22 },
+    { "match": "^Aluminium",                  "name": "Aluminium",                 "farbe": "#d6dadd", "glanz": 0.85, "rauheit": 0.3 },
+    { "match": "^messing$",                   "name": "Messing",                   "farbe": "#c9a24a", "glanz": 0.9,  "rauheit": 0.3 },
+    { "match": "^holz",                       "name": "Holz",                      "farbe": "#c19a62", "glanz": 0,    "rauheit": 0.85 },
+    { "match": "^(beton|Beton)",              "name": "Beton",                     "farbe": "#a3a39d", "glanz": 0,    "rauheit": 0.95 },
+    { "match": "^blaehton$",                  "name": "Blähton",                  "farbe": "#b9774a", "glanz": 0,    "rauheit": 0.95 },
+    { "match": "^biomedium$",                 "name": "Biomedium",                 "farbe": "#8a6f4d", "glanz": 0,    "rauheit": 0.9 },
+    { "match": "^aktivkohle$",                "name": "Aktivkohle",                "farbe": "#2b2b2b", "glanz": 0,    "rauheit": 0.95 },
+    { "match": "^salat$",                     "name": "Pflanze",                   "farbe": "#4c9a3c", "glanz": 0,    "rauheit": 0.8 },
+    { "match": "^wasser$",                    "name": "Wasser",                    "farbe": "#3c8ed0", "glanz": 0,    "rauheit": 0.15, "deckkraft": 0.5 },
+    { "match": "^PE Folie$",                  "name": "Folie",                     "farbe": "#d6ecff", "glanz": 0,    "rauheit": 0.2,  "deckkraft": 0.14 },
+    { "match": "^(pmma|Polycarbonat)$",       "name": "Klarkunststoff",            "farbe": "#d4ebf6", "glanz": 0,    "rauheit": 0.2,  "deckkraft": 0.4 },
+    { "match": "^pvc_u$",                     "name": "PVC-U (grau)",              "farbe": "#8c9298", "glanz": 0.05, "rauheit": 0.55 },
+    { "match": "^pvc_p_schlauch$",            "name": "PVC-Schlauch",              "farbe": "#6f8fa8", "glanz": 0.05, "rauheit": 0.5 },
+    { "match": "^kabel_pvc$",                 "name": "Kabel",                     "farbe": "#232323", "glanz": 0,    "rauheit": 0.6 },
+    { "match": "^(epdm|EPDM.*|Schaumband EPDM)$", "name": "EPDM (schwarz)",        "farbe": "#1e1e1e", "glanz": 0,    "rauheit": 0.8 },
+    { "match": "^(pp|hdpe|pe|ps)$",           "name": "PP, PE, PS (hell)",         "farbe": "#e4e6e1", "glanz": 0,    "rauheit": 0.5 },
+    { "match": "^(pa|pom)$",                  "name": "PA, POM",                   "farbe": "#e6e1d2", "glanz": 0,    "rauheit": 0.45 },
+    { "match": "^gfk_komposit$",              "name": "GFK",                       "farbe": "#a6bfa8", "glanz": 0,    "rauheit": 0.55 },
+    { "match": "^pumpengehaeuse$",            "name": "Pumpengehäuse",            "farbe": "#2a5da8", "glanz": 0.1,  "rauheit": 0.45 },
+    { "match": "^(sonde_gehaeuse|Geraet dunkel)$", "name": "Sonde, Gerät (dunkel)", "farbe": "#363b41", "glanz": 0.1, "rauheit": 0.5 },
+    { "match": "^geraete_gehaeuse$",          "name": "Gerätegehäuse",           "farbe": "#5d646b", "glanz": 0.1,  "rauheit": 0.5 },
+    { "match": "^leiterplatte_fr4$",          "name": "Leiterplatte",              "farbe": "#2f6b3b", "glanz": 0,    "rauheit": 0.6 },
+    { "match": "^Tuerblatt",                  "name": "Türblatt",                 "farbe": "#d8cfba", "glanz": 0,    "rauheit": 0.6 },
+    { "match": "^Haut$",                      "name": "Haut (Figur)",              "farbe": "#e0b392", "glanz": 0,    "rauheit": 0.8 },
+    { "match": "^Kleidung blau$",             "name": "Kleidung (Figur)",          "farbe": "#2f5fa8", "glanz": 0,    "rauheit": 0.85 },
+    { "match": "^Weste orange$",              "name": "Weste (Figur)",             "farbe": "#ee7d1a", "glanz": 0,    "rauheit": 0.85 }
+  ],
+  "stamm_rueckfall": [
+    { "stamm": "^erdflaeche", "name": "Erde", "farbe": "#6b4f35", "glanz": 0, "rauheit": 0.95 }
+  ],
+  "technisch": {
+    "gruppen": {
+      "Kuppel":                   { "farbe": "#7f95ab" },
+      "Fundament":                { "farbe": "#9b9082" },
+      "Huelle":                   { "farbe": "#8fb7d0", "deckkraft": 0.14, "anzeige": "Hülle" },
+      "Filter":                   { "farbe": "#86a678" },
+      "Becken und Tanks":         { "farbe": "#6d9bb5" },
+      "Tische und Beete":         { "farbe": "#b49b66" },
+      "Messtechnik und Elektrik": { "farbe": "#a8829f" },
+      "Leitungen":                { "farbe": "#8a98a4" }
+    },
+    "leitungen_nennweite": {
+      "16": "#c28f6a", "20": "#c9a063", "25": "#b6ad5f", "32": "#8db26d", "40": "#62b08a", "50": "#4fa6a6", "63": "#5b8fc2", "75": "#7b7fcb", "90": "#9a74c0", "110": "#b96aa3"
+    },
+    "durchsichtig_werkstoffe": ["^wasser$", "^PE Folie$"]
+  }
+}

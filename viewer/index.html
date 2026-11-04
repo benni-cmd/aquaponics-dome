@@ -25,6 +25,14 @@
   #ladewarn::before { content:'Hinweis: '; font-weight:600; }
   #ladefehler { margin:5px 0 0; padding:0 0 0 16px; font-size:12px; color:#ff9b8a; word-break:break-word; }
   #ladefehler:empty { display:none; }
+  .seg { display:flex; align-items:center; gap:4px; margin:6px 0; }
+  .seg > span { color:var(--muted); font-size:12px; margin-right:2px; }
+  .seg button[aria-pressed=true] { background:#16384a; border-color:var(--sel); }
+  #legende { font-size:12px; margin:4px 0 6px; padding:6px 8px; border:1px solid var(--line); border-radius:6px; background:#121b25; }
+  #legende[hidden] { display:none; }
+  #legende .lz { display:flex; align-items:center; gap:6px; padding:1px 0; }
+  #legende .lz.sub { margin-left:16px; color:var(--muted); }
+  #legende .kopf { color:var(--muted); margin-bottom:3px; }
   .row { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
   button { background:#223142; color:var(--text); border:1px solid var(--line); border-radius:5px; padding:4px 8px; cursor:pointer; font:inherit; }
   button:hover { border-color:var(--accent); }
@@ -104,6 +112,11 @@
     <button data-cam="iso">Ansicht ref-4</button><button data-cam="top">Oben</button>
     <button data-cam="side">Seite</button><button data-cam="pool">Pool</button><button id="fpv">FPV</button> <a href="/history/" target="_blank" style="color:inherit">Bildverlauf</a>
   </div>
+  <div class="seg" id="ansicht" role="group" aria-label="Ansicht"><span>Ansicht:</span>
+    <button type="button" data-ansicht="visuell" aria-pressed="true" title="Nach Werkstoff gefärbt, mit Menschfiguren">Visuell</button>
+    <button type="button" data-ansicht="technisch" aria-pressed="false" title="Nach Bauteilgruppe gefärbt, ohne Menschfiguren">Technisch</button>
+  </div>
+  <div id="legende" hidden></div>
   <label class="opt"><input type="checkbox" id="wire"> Drahtgitter</label>
   <label class="opt"><input type="checkbox" id="auto" checked> Auto-Update</label>
   <label class="opt" title="Schrauben, Scharniere, Klinken und andere Koerper unter 15 cm Diagonale; werden erst beim Einschalten nachgeladen"><input type="checkbox" id="klein"> Kleinteile unter 15 cm zeigen</label>
@@ -491,7 +504,7 @@ const LS_KLEIN = 'viewer.kleinteile';
 let kleinOn = false; try { kleinOn = localStorage.getItem(LS_KLEIN) === '1'; } catch (e) {}
 document.getElementById('klein').checked = kleinOn;
 let DEFS_INFO = {}, MIN_DIAG_MM = 150, kleinBuilt = false, kleinBusy = false, loadBusy = false;
-const meshVisible = (im, leafOn) => leafOn && (!im.userData.klein || kleinOn);
+const meshVisible = (im, leafOn) => leafOn && (!im.userData.klein || kleinOn) && (!im.userData.mensch || ansicht === 'visuell');
 function setKleinVisible() {
   if (!model) return;
   Object.keys(defMeshes).forEach(stem => {
@@ -560,14 +573,96 @@ function topfPatch() {
   if (!pinned && !selected) showInfo(null);
 }
 
+// ---- Ansicht Visuell / Technisch (W68): Farben aus viewer/farben.json, Werkstoff und Bauteilgruppe aus data/parts/<komp>.json ----
+const LS_ANSICHT = 'viewer.ansicht';
+let ansicht = 'visuell'; try { if (localStorage.getItem(LS_ANSICHT) === 'technisch') ansicht = 'technisch'; } catch (e) {}
+let FARBEN = null; const PARTS = {};
+function farbenLesen(f) {                                   // Regeln einmal in RegExp uebersetzen
+  f._w = f.werkstoffe.map(e => Object.assign({ re: new RegExp(e.match, 'i') }, e));
+  f._rf = f.rueckfall_werkstoffe.map(r => new RegExp(r)); f._stamm = f.stamm_rueckfall.map(e => Object.assign({ re: new RegExp(e.stamm) }, e));
+  f._mensch = new RegExp(f.mensch_komponente); f._durch = new RegExp(f.durchsichtig_komponente); f._tdw = f.technisch.durchsichtig_werkstoffe.map(r => new RegExp(r, 'i'));
+  return f;
+}
+function matPBR(farbe, opacity, metal, rough) {
+  const key = `pbr|${farbe}|${opacity}|${metal}|${rough}`;
+  if (!mats.has(key)) mats.set(key, new THREE.MeshStandardMaterial({ color: farbe, flatShading: true, side: THREE.DoubleSide, roughness: rough, metalness: metal,
+    transparent: opacity < 1, opacity, clippingPlanes: [clipPlane], depthWrite: opacity >= 1 }));
+  return mats.get(key);
+}
+const pbrVon = e => matPBR(e.farbe, e.deckkraft || 1, e.glanz || 0, e.rauheit == null ? 0.65 : e.rauheit);
+async function ladeTeile(stems) {                           // Werkstoff je Koerper und Bauteilgruppe je Definition; fehlende Dateien -> Rueckfall auf die bisherigen Regeln
+  Object.keys(PARTS).forEach(k => delete PARTS[k]); let n = 0;
+  await Promise.all(Array.from({ length: 8 }, async () => {
+    while (n < stems.length) {
+      const stem = stems[n++];
+      try {
+        const d = await getJson(`/parts/${stem}.json?v=${Date.now()}`), w = {};
+        (d.teile || []).forEach(t => (t.koerper || []).forEach(k => { w[k] = t.werkstoff; }));
+        PARTS[stem] = { gruppe: d.bauteilgruppe || null, werkstoff: w };
+      } catch (e) { PARTS[stem] = null; }
+    }
+  }));
+}
+function nennweite(stem) { const m = /(?:^|_)d(\d{2,3})(?:_|$)/.exec(stem); return m ? m[1] : null; }
+function materialienFuer(stem, name) {                      // { vis, tech, mensch } je Koerper
+  const fb = colorFor(name, stem), P = PARTS[stem], base = baseName(name);
+  let w = P ? (P.werkstoff[name] !== undefined ? P.werkstoff[name] : P.werkstoff[base]) : undefined;
+  if (typeof w !== 'string') w = null;
+  let vis = fb, dichtVis = false;
+  if (FARBEN) {
+    if (w && !FARBEN._rf.some(r => r.test(w))) { const e = FARBEN._w.find(x => x.re.test(w)); if (e) vis = pbrVon(e); }
+    if (vis === fb) { const e = FARBEN._stamm.find(x => x.re.test(stem)); if (e) vis = pbrVon(e); }
+    dichtVis = FARBEN._durch.test(stem) || (w !== null && FARBEN._tdw.some(r => r.test(w)));
+  }
+  let tech = fb;
+  if (FARBEN) {
+    const g = P && P.gruppe, t = FARBEN.technisch;
+    if (dichtVis) tech = vis;
+    else if (g === 'Leitungen') { const c = t.leitungen_nennweite[nennweite(stem)] || t.gruppen.Leitungen.farbe; tech = matPBR(c, 1, 0, 0.7); }
+    else if (g && t.gruppen[g]) tech = matPBR(t.gruppen[g].farbe, t.gruppen[g].deckkraft || 1, 0, 0.7);
+  }
+  return { vis, tech, mensch: !!(FARBEN && FARBEN._mensch.test(stem)), werkstoff: w };
+}
+function legendeBauen() {
+  const el = document.getElementById('legende');
+  if (ansicht !== 'technisch' || !FARBEN) { el.hidden = true; return; }
+  const t = FARBEN.technisch, gruppen = new Set(), dn = new Set();
+  Object.keys(defList).forEach(stem => { const P = PARTS[stem]; if (P && P.gruppe) { gruppen.add(P.gruppe); if (P.gruppe === 'Leitungen' && nennweite(stem)) dn.add(nennweite(stem)); } });
+  const sw = c => `<span class="sw" style="background:${c}"></span>`, z = [`<div class="kopf">Bauteilgruppen (gedämpfte Farben; Wasser und Folie durchsichtig)</div>`];
+  Object.keys(t.gruppen).filter(g => gruppen.has(g)).forEach(g => {
+    z.push(`<div class="lz">${sw(t.gruppen[g].farbe)}<span>${esc(t.gruppen[g].anzeige || g)}${g === 'Leitungen' ? ' (nach Nennweite)' : ''}</span></div>`);
+    if (g === 'Leitungen') [...dn].sort((a, b) => a - b).forEach(d => { if (t.leitungen_nennweite[d]) z.push(`<div class="lz sub">${sw(t.leitungen_nennweite[d])}<span>d${d}</span></div>`); });
+  });
+  z.push(`<div class="lz sub"><span>Menschfiguren sind ausgeblendet.</span></div>`);
+  el.innerHTML = z.join(''); el.hidden = false;
+}
+function applyAnsicht() {                                   // nur Materialien tauschen und Sichtbarkeit setzen, keine Geometrie neu laden
+  document.querySelectorAll('[data-ansicht]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ansicht === ansicht)));
+  Object.keys(defMeshes).forEach(stem => {
+    const leafOn = !hiddenLeaf.has(leafKeyOf(stem));
+    defMeshes[stem].forEach(im => { im.material = ansicht === 'visuell' ? im.userData.matVis : im.userData.matTech; im.visible = meshVisible(im, leafOn); });
+  });
+  legendeBauen(); rebuildHighlight(); applyWire();
+}
+document.querySelectorAll('[data-ansicht]').forEach(b => b.addEventListener('click', () => {
+  ansicht = b.dataset.ansicht; try { localStorage.setItem(LS_ANSICHT, ansicht); } catch (e) {}
+  applyAnsicht();
+}));
+window.ansichtStand = () => {                               // Messhaken: Materialzaehlung je Ansicht
+  const out = { ansicht, koerper: 0, mitWerkstoff: 0, sichtbar: 0, mensch: 0, farben: {} };
+  Object.values(defMeshes).forEach(ms => ms.forEach(im => { out.koerper++; if (im.userData.werkstoff) out.mitWerkstoff++; if (im.visible) out.sichtbar++; if (im.userData.mensch) out.mensch++; out.farben[im.material.color.getHexString()] = 1; }));
+  out.farben = Object.keys(out.farben).length; return out;
+};
+
 function baueDef(stem, text, m, klein) {                    // eine Definition (oder ihre Kleinteile) als InstancedMesh je Koerper
   const list = defList[stem], mxs = defMats[stem], g = loader.parse(text);
   if (!defMeshes[stem]) defMeshes[stem] = [];
   const leafOn = !hiddenLeaf.has(leafKeyOf(stem));
   g.traverse(o => {
     if (!o.isMesh) return;
-    const name = o.name || o.parent.name, mat = colorFor(name, stem);
+    const name = o.name || o.parent.name, mt = materialienFuer(stem, name), mat = ansicht === 'visuell' ? mt.vis : mt.tech;
     const im = new THREE.InstancedMesh(o.geometry, mat, list.length);
+    im.userData.matVis = mt.vis; im.userData.matTech = mt.tech; im.userData.mensch = mt.mensch; im.userData.werkstoff = mt.werkstoff;
     mxs.forEach((mx, i) => im.setMatrixAt(i, mx));
     im.frustumCulled = false; im.name = name; im.userData.def = stem; if (klein) im.userData.klein = true;
     im.visible = meshVisible(im, leafOn); m.add(im); defMeshes[stem].push(im);
@@ -586,10 +681,12 @@ async function load() {
     catch (e) { Lade.fehlerMelden('Modellverzeichnis nicht lesbar: ' + e.message); Lade.ende(); return; }
     extras = ex; GROUND = Number.isFinite(inst.walk_z) ? inst.walk_z : 400;   // begehbarer Boden = Sockelhoehe sock_h
     DEFS_INFO = inst.defs; MIN_DIAG_MM = inst.min_diag || 150; POT = topfzahlen(inst); topfPatch();
+    try { FARBEN = farbenLesen(await getJson('farben.json?v=' + v)); } catch (e) { FARBEN = null; Lade.fehlerMelden('farben.json nicht lesbar, es gelten die bisherigen Farben: ' + e.message); }
+    const teileP = ladeTeile(Object.keys(inst.defs));
     const t0 = performance.now(), m = new THREE.Group();
     const files = Object.entries(inst.defs).map(([stem, d]) => ({ name: `${stem}.obj`, url: `defs/${stem}.obj?k=${d.kb}`, bytes: d.kb * 1024, key: stem + '|' + d.kb, stem }));
     Lade.begin('Modell', 'Definition', files.length, files.reduce((a, f) => a + f.bytes, 0));
-    await ladeDateien(files);
+    await ladeDateien(files); await teileP;
     const byDef = {}; inst.instances.forEach(i => (byDef[i.d] || (byDef[i.d] = [])).push(i));
     defMeshes = {}; defMats = {}; defList = {}; defCol = {}; kleinBuilt = false;
     const bau = files.filter(f => byDef[f.stem] && defCache.has(f.key));
@@ -600,7 +697,7 @@ async function load() {
     hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
     if (selected && !defList[selected.stem]) selected = null;
     perfAufbau = ((performance.now() - t0) / 1000).toFixed(1);
-    buildTree(inst); applyWire(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
+    buildTree(inst); applyAnsicht(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
     perfText(); Lade.ende();
   } catch (e) { Lade.fehlerMelden('Aufbau abgebrochen: ' + e.message); Lade.ende(); }
   finally { loadBusy = false; }

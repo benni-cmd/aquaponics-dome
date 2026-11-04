@@ -93,7 +93,30 @@ def spec_geblaese():
         "bezugspunkt": "Mitte der Standflaeche der Pumpe am Boden (Z 0 = Aufstellflaeche); X zeigt zum Luftaustritt, Y quer (Netzkabel -Y), Z hoch; Rohrachse der Schleife bei Z 710, Port Luftaustritt am Ende des Austrittsrohrs (+X)",
     }
 
-SPECS = {"geblaese_luft": spec_geblaese, "luftverteiler_6": lambda: spec_verteiler("luftverteiler_6"), "luftverteiler_4": lambda: spec_verteiler("luftverteiler_4"), "luft_scheibenbelueftung": spec_scheibe}
+
+# ------------------------------------------------------------------ Schrank-Einfuehrung
+def spec_schrank():
+    return {
+        "klasse": "schrank_einfuehrung", "teilenummer": "T89", "revision": "A",
+        "beschreibung": "Schrank-Einfuehrung (W37-3 Teil 4, L08): Einfuehrungsplatte am Boden des Schaltschranks (800 x 500, Blech 3 mm) mit Kabeleinfuehrung DN100 (230-V-Stamm) und DN50 (Signal-Stamm) aus W39 und je einem Leerrohr-Bogen 90 Grad aus W36 darunter. Nur das Bauteil, lokale Koordinaten: Standort des Schranks OFFEN (E13); Kabelzahl und Fuellgrad OFFEN (E20); Tauchpumpen im Subtank OFFEN (D75, geparkt)",
+        "quelle_masse": "data/params.json cab_x 800, cab_y 500, cab_z 1200 ([A] ref-5 geschaetzt, nur gelesen); docs/parts/leitungsteile.md (Ergaenzung W39: Kabeleinfuehrung DN50/DN100; W36: Leerrohr-Bogen); scripts/workshop/leitung_w39.py (kab_geom) und leitung_w36.py (LR); docs/jobs/W37-3-luft-schaltschrank.md Teil 4 (EMV-Abstand 200 mm, Plan Abschnitt 4 Regel 9)",
+        "parameter": {
+            "cab_x": P(800, "mm", "[E] data/params.json cab_x (Schrankbreite, gelesen); [A] ref-5 geschaetzt"),
+            "cab_y": P(500, "mm", "[E] data/params.json cab_y (Schranktiefe, gelesen)"),
+            "boden_t": P(3, "mm", "[A] Blech 3 mm wie lt_kabeleinfuehrung (Boden der Einfuehrung, W39 KAB boden)"),
+            "wand_t": P(2, "mm", "[A] Schrankwand-Stummel 2 mm (nur fuer die Interferenzpruefung)"),
+            "wand_h": P(100, "mm", "[A] Hoehe des Wandstummels ueber dem Boden (Schrank 1200 hoch, hier nur der Fussbereich)"),
+            "x_dn100": P(-150, "mm", "[A] Achse der Einfuehrung DN100 (230 V); Abstand der beiden Achsen 300: freier Abstand der Muffen 300 - 61,5 - 28 = 210,5 mm gegen 200 mm EMV"),
+            "x_dn50": P(150, "mm", "[A] Achse der Einfuehrung DN50 (Signal)"),
+            "y_achse": P(0, "mm", "[A] beide Achsen auf der Mittellinie der Schranktiefe"),
+            "emv_min": P(200, "mm", "[E] Plan Abschnitt 4 Regel 9: Abstand 230 V gegen Signal mindestens 200 mm (Auftrag W37-3)"),
+        },
+        "werkstoff": {"name": "Stahlblech (Boden, Wandstummel), PP und EPDM (Kabeleinfuehrung), PVC-U (Leerrohr-Bogen)", "dichte_g_cm3": 7.85, "farbe": "#9aa0a4", "herkunft": "[A] Platzhalter; Blech Stahl, Rest aus den Bibliotheksteilen"},
+        "anzahl": {"soll": "1 am Schaltschrank", "quelle": "Auftrag W37-3 Teil 4; Netz-Kabeleintraege (Schaltschrank)"},
+        "bezugspunkt": "Mitte der Boden-Unterkante des Schaltschranks (Z 0 = Unterkante Schrankboden, Boden Z 0 bis 3); X Schrankbreite, Y Schranktiefe, Z nach oben in den Schrank; Leerrohre darunter bei negativem Z. Standort im Modell: NICHT enthalten (OFFEN E13)",
+    }
+
+SPECS = {"schrank_einfuehrung": spec_schrank, "geblaese_luft": spec_geblaese, "luftverteiler_6": lambda: spec_verteiler("luftverteiler_6"), "luftverteiler_4": lambda: spec_verteiler("luftverteiler_4"), "luft_scheibenbelueftung": spec_scheibe}
 
 def write(name, extra=None):
     d = SPECS[name]()

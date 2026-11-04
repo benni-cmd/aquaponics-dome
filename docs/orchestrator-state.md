@@ -202,3 +202,9 @@ Sperrliste "fremde Aenderungen" aufgehoben (Ben 04.11.: nur geoeffnet).
 - Roadmap nachgefuehrt (data/roadmap.json, roadmap/index.html), Wunschbuch Statusstand, siehe dort.
 - Wiederaufnahme in dieser Reihenfolge: (1) Ergebnis check_latte 69 lesen; (2) Pruefer Luft Teil A (pruefer-w37-2-3, nie die Bau-Sitzung); (3) N-MODELL-KOMPLETT Strebe-Werkstatt (strebe.py Vierkant 30x30x3) -> Montage (Rollwinkel, Achshoehe, default_werkstoffe.py --apply) -> Viewer-Export -> Pruefer; (4) N-STUECKLISTE 5b (Preis/Link/Menge in der Detailansicht, Pilot-Auflagen A1-A3, Leitungsart) -> Pruefer Punkt 7; (5) W65-Tabelle (Artefakt); (6) Gesamtbericht.
 - Kontext-Stand der Sitzungen: werkstatt-w37-2 55 % und werkstatt-w37-3 45 % NICHT wiederverwenden. Ben-Entscheidungen offen: E13 (Teil B Geblaese/Aktivkohle), E20 (Kreislauf, 05.11.), E22 (Nachtentscheidungen bestaetigen), E15, Metallbauer Lochblech, Bevo-Datenblaetter, Dichtband-Mass.
+
+## 05.11.2026 ~00:45 Warteschlange (D80, bis 5 Sitzungen)
+Laufen: check_latte 69 (werkstatt-stueckliste-1a, Hintergrund), Recherche Preisliste 1A Stahl, 1B Leitung, 1C Behaelter, 1D Mess (Sonnet hoch, frisch).
+Fertig: Strebe Vierkant (1c966cd, .sc nur im Scratchpad bis check_latte fertig), Planer N-PREIS-PRUEF (d23125f), Pruefer Detailansicht W60 PASS mit Auflagen A1-A6 (2206c26).
+Naechste, sobald Platz: (1) Recherche 1E Huelle/Pflanze (huelle_pflanze.json); (2) nach check_latte: werkstatt-strebe "check_latte fertig" -> .sc schreiben, dann Pruefer Luft (pruefer-w37-2-3); (3) Auflagen Detailansicht A1-A5 (Daten + Viewer, Sonnet hoch, neue Sitzung); (4) Montage Strebe (Opus mittel) nach Pruefer Luft; (5) N-PREIS-PRUEF Werkstatt Schritt 2 nach 1A-1E, dann Pruefer; (6) W65-Tabelle; (7) Gesamtbericht.
+Vorlaeufig entschieden fuer N-PREIS-PRUEF (Ben bestaetigt): Lebensmittelbeleg nur fuer Teile im Fischwasser; Massvorschlag nur als Notiz.

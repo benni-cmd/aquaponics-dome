@@ -1,6 +1,6 @@
 {
  "_hinweis": "N-STUECKLISTE 2B Wasserleitung, Stand 2026-11-04. Preise brutto je Bezugseinheit; Bevo-Preise netto gelesen x1,19. UK = Europa OFFEN (kein UK-Angebot enthalten). Kein Kauf. Katalogstand 39e6323.",
- "stufe": 2,
+ "stufe": 3,
  "artikel": [
   {
    "id": "ROH-pvcu-d63",
@@ -979,9 +979,22 @@
    "bezeichnung": "Rohrschelle (Klemme, Stahl) d110",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 2.58,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/fischer-zweischrauben-schellen-verzinkt-dn-100-4-108-116-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Zweischrauben-Schelle verzinkt, Spannbereich 108-116 mm (Rohr-AD 110 mm)"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-rohrschelle-d20",
@@ -989,9 +1002,22 @@
    "bezeichnung": "Rohrschelle (Klemme, Stahl) d20",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 0.83,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/fischer-zweischrauben-schellen-verzinkt-1-2-20-24-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Zweischrauben-Schelle verzinkt, Spannbereich 20-24 mm (Rohr-AD 20 mm)"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-rohrschelle-d25",
@@ -999,9 +1025,22 @@
    "bezeichnung": "Rohrschelle (Klemme, Stahl) d25",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 0.84,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/zweischrauben-schellen-verzinkt-3-4-25-30-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Zweischrauben-Schelle verzinkt, Spannbereich 25-30 mm (Rohr-AD 25 mm)"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-rohrschelle-d32",
@@ -1009,9 +1048,22 @@
    "bezeichnung": "Rohrschelle (Klemme, Stahl) d32",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 0.79,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/fischer-zweischrauben-schellen-verzinkt-1-32-37-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Zweischrauben-Schelle verzinkt, Spannbereich 32-37 mm (Rohr-AD 32 mm)"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-rohrschelle-d40",
@@ -1019,9 +1071,22 @@
    "bezeichnung": "Rohrschelle (Klemme, Stahl) d40",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 1.13,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/fischer-zweischrauben-schellen-verzinkt-dn32-1-1-4-40-45-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Zweischrauben-Schelle verzinkt, Spannbereich 40-45 mm (Rohr-AD 40 mm)"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-rohrschelle-d50",
@@ -1029,9 +1094,22 @@
    "bezeichnung": "Rohrschelle (Klemme, Stahl) d50",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 1.27,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/fischer-zweischrauben-schellen-verzinkt-dn40-1-1-2-48-54-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Zweischrauben-Schelle verzinkt, Spannbereich 48-54 mm (Rohr-AD 50 mm)"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "ARM-kugelhahn-d110",
@@ -1751,9 +1829,22 @@
    "bezeichnung": "Schlauchschelle id16",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 0.63,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/schlauchschelle-edelstahl-w4-bandbreite-9mm-spannbereich-12-20-mm-1-2",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Edelstahl W4, Spannbereich 12-20 mm"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "SCH-schlauchschelle-id25",
@@ -1761,9 +1852,22 @@
    "bezeichnung": "Schlauchschelle id25",
    "einheit": "Stk",
    "bedarf": 0,
-   "status": "OFFEN (Quelle)",
-   "angebote": [],
-   "luecke": "noch kein Angebot gelesen"
+   "status": "OFFEN (E20)",
+   "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
+   "angebote": [
+    {
+     "preis_eur": 0.65,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/schlauchschelle-edelstahl-w4-bandbreite-9mm-spannbereich-16-25-mm-3-4",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Edelstahl W4, Spannbereich 16-25 mm"
+    }
+   ],
+   "luecke": "nur ein Angebot, zweite Quelle fehlt"
   },
   {
    "id": "FIT-t-d110",

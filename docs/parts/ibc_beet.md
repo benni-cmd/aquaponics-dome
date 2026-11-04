@@ -84,18 +84,18 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 
 | Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
 |---|---|---|---|
-| aussen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1252, y 0, z -30 | Wasser verlaesst das Beet nach unten (Oeffnung zeigt -Z; Beet ist eingelassen, Ablauf unter dem Wannenboden) |
+| aussen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1300, y 65, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1252, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
 | aussen_933: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1516, y -392, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
-| aussen_993: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1252, y 0, z -30 | Wasser verlaesst das Beet nach unten (Oeffnung zeigt -Z; Beet ist eingelassen, Ablauf unter dem Wannenboden) |
+| aussen_993: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1300, y 65, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1252, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
 | aussen_993: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1516, y -422, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
-| innen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 708, y 0, z -30 | Wasser verlaesst das Beet nach unten (Oeffnung zeigt -Z; Beet ist eingelassen, Ablauf unter dem Wannenboden) |
+| innen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 650, y 65, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 708, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
 | innen_933: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -972, y -392, z 624 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
-| aussen_800: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1096, y 0, z -30 | Wasser verlaesst das Beet nach unten; Lage aus der Messung (Siphon 200 mm vor dem Ablaufende) |
+| aussen_800: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1040, y 0, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1096, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
 | aussen_800: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1360, y -326, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Lage aus der Messung (Rohr 50 mm von der Innenwand) |
-| aussen_933: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1202.5, y 0, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
-| aussen_993: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1202.5, y 0, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
-| aussen_800: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1046.0, y 0, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
-| innen_933: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -658.5, y 0, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
+| aussen_933: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1170, y 65, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
+| aussen_993: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1170, y 65, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
+| aussen_800: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1040, y 0, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
+| innen_933: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -650, y 65, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
 
 ## Verbindungen und Befestigungen
 
@@ -130,11 +130,12 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 | Sperrboden 8 mm ungelocht (V3) | 8 mm, 0 Loecher | Ben D77 + R51 | docs/jobs/W40-BEET.md (Variante V3, D77 04.11.2026); R51 Befund 5a (stehendes Wasser unter dem Siebboden) | mittel |
 | Glocke d75 x 295 mit 4 Kerben 10 x 12 am Fuss, Luftloch 10 | d75 x 295; 4 x 10 x 12 | R03 + W40 | R03: d75, Luftloch 10; Kerben statt Schlitzen 10 x 40 (W40-BEET V3, Kerbenflaeche 480 mm2 >= Standrohr 380 mm2) | mittel |
 | Medienschutz Lochblech V2A d110 x 1,5 x 320, lose Kappe | d110 x 320 | R51 + Ben D77 | R51 T30e-4 (Rundloch d5, Teilung 8, 35 % offen); Modell 2 Ringe x 12 Schlitze 5 x 50 = 6000 mm2 = 15,8 x Standrohr; Zuschnitt und Rollen beim Metallbauer | mittel |
-| Reinigungsschacht d110 x 3 stehend auf dem Sperrboden, Kappe, 2 Kerben 30 x 30 | d110 x 320 | R51 + W40 | R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4) | mittel |
+| Reinigungsschacht d110 x 3 stehend auf dem Sperrboden, Kappe, 2 Kerben 30 x 30 | d110 x 320 | R51 + W40 | R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4); Lage auf Zellmitte des Topfrasters (M-BEET-TAUSCH 0c) | mittel |
 | Reduktion d40 x d25, Bauhoehe 50 mm | d40 / d25 / 50 | R51 + A | R51 T30e-3; Bauhoehe [A], Kaufmass pruefen | niedrig |
 | Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 (Boden und Platte) | D36 / D50 / 32/25 | Ben D77 + A | D77: Standrohr d25 mit Reduzierhuelse 32/25 im Tankverbinder; Tankverbinder-Maße [A] (Bevo Art. 7018227 [Q], Reduzierhuelse Bevo 7002656 / Schwarte 75208) | niedrig |
 | Wandstaerken Rohre: Standrohr 2, Glocke 3, Schacht 3, Lochblech 1,5, Tropfrohr 2 | 2 / 3 / 3 / 1,5 / 2 mm | A | PVC-U/PE Rohre Normwanddicken ungefaehr; Lochblech 1,5 mm laut R51/ehorst Art. 1003438 | niedrig |
 | Gewichtsrechnung: leer ohne Medium, Medium 0,9, Wasser nur Porenwasser bis Standrohrkante (40 % Poren) | siehe Gewicht | E | Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme; kein Wasserraum unter dem Sperrboden | niedrig |
+| Siphon (Standrohr, Glocke, Medienschutz) auf Zellmitte des Topfrasters | x 1040 / y 0 (aussen_800); x 650 / y 65 (innen_933) | D79 + Pruefer M-BEET-TAUSCH | docs/jobs/pruefung/M-BEET-TAUSCH.md Abschnitt 3c (Topf 65,6 mm neben der Schutzachse = Kollision), Auflage 1; Abstand >= 87 mm (Schutzradius 55 + Kragenradius 32), gemessen 91,9 mm | mittel |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -190,6 +191,12 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 
 ## Renders
 
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-01-iso.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-02-siphon.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-03-zulauf.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-04-medium.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-05-schnitt.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-06-schnitt-quer.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-01-iso.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-02-siphon.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-03-zulauf.png`

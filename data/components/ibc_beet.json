@@ -282,8 +282,8 @@
    [
     "aussen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden)",
     "Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25",
-    "x 1252, y 0, z -30",
-    "Wasser verlaesst das Beet nach unten (Oeffnung zeigt -Z; Beet ist eingelassen, Ablauf unter dem Wannenboden)"
+    "x 1300, y 65, z -30",
+    "Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1252, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf"
    ],
    [
     "aussen_933: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand)",
@@ -294,8 +294,8 @@
    [
     "aussen_993: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden)",
     "Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25",
-    "x 1252, y 0, z -30",
-    "Wasser verlaesst das Beet nach unten (Oeffnung zeigt -Z; Beet ist eingelassen, Ablauf unter dem Wannenboden)"
+    "x 1300, y 65, z -30",
+    "Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1252, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf"
    ],
    [
     "aussen_993: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand)",
@@ -306,8 +306,8 @@
    [
     "innen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden)",
     "Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25",
-    "x 708, y 0, z -30",
-    "Wasser verlaesst das Beet nach unten (Oeffnung zeigt -Z; Beet ist eingelassen, Ablauf unter dem Wannenboden)"
+    "x 650, y 65, z -30",
+    "Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 708, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf"
    ],
    [
     "innen_933: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand)",
@@ -318,8 +318,8 @@
    [
     "aussen_800: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden)",
     "Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25",
-    "x 1096, y 0, z -30",
-    "Wasser verlaesst das Beet nach unten; Lage aus der Messung (Siphon 200 mm vor dem Ablaufende)"
+    "x 1040, y 0, z -30",
+    "Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1096, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf"
    ],
    [
     "aussen_800: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand)",
@@ -330,25 +330,25 @@
    [
     "aussen_933: Reinigungszugang (Reinigungsschacht d110 mit Kappe)",
     "Rohr d110 (KG/HT DN100), Saugschlauch d <= 75",
-    "x -1202.5, y 0, z Plattenoberkante bis Medium + 20",
+    "x -1170, y 65, z Plattenoberkante bis Medium + 20",
     "Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht"
    ],
    [
     "aussen_993: Reinigungszugang (Reinigungsschacht d110 mit Kappe)",
     "Rohr d110 (KG/HT DN100), Saugschlauch d <= 75",
-    "x -1202.5, y 0, z Plattenoberkante bis Medium + 20",
+    "x -1170, y 65, z Plattenoberkante bis Medium + 20",
     "Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht"
    ],
    [
     "aussen_800: Reinigungszugang (Reinigungsschacht d110 mit Kappe)",
     "Rohr d110 (KG/HT DN100), Saugschlauch d <= 75",
-    "x -1046.0, y 0, z Plattenoberkante bis Medium + 20",
+    "x -1040, y 0, z Plattenoberkante bis Medium + 20",
     "Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht"
    ],
    [
     "innen_933: Reinigungszugang (Reinigungsschacht d110 mit Kappe)",
     "Rohr d110 (KG/HT DN100), Saugschlauch d <= 75",
-    "x -658.5, y 0, z Plattenoberkante bis Medium + 20",
+    "x -650, y 65, z Plattenoberkante bis Medium + 20",
     "Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht"
    ]
   ],
@@ -628,7 +628,7 @@
    "Reinigungsschacht d110 x 3 stehend auf dem Sperrboden, Kappe, 2 Kerben 30 x 30",
    "d110 x 320",
    "R51 + W40",
-   "R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4)",
+   "R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4); Lage auf Zellmitte des Topfrasters (M-BEET-TAUSCH 0c)",
    "mittel"
   ],
   [
@@ -658,6 +658,13 @@
    "E",
    "Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme; kein Wasserraum unter dem Sperrboden",
    "niedrig"
+  ],
+  [
+   "Siphon (Standrohr, Glocke, Medienschutz) auf Zellmitte des Topfrasters",
+   "x 1040 / y 0 (aussen_800); x 650 / y 65 (innen_933)",
+   "D79 + Pruefer M-BEET-TAUSCH",
+   "docs/jobs/pruefung/M-BEET-TAUSCH.md Abschnitt 3c (Topf 65,6 mm neben der Schutzachse = Kollision), Auflage 1; Abstand >= 87 mm (Schutzradius 55 + Kragenradius 32), gemessen 91,9 mm",
+   "mittel"
   ]
  ]
 }

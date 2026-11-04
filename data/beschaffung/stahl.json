@@ -59,9 +59,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    },
+    {
+     "preis_eur": 15.4,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Quadratrohr 40x40x2,0 S235JR feuerverzinkt, 6 m = 92.37 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 9.38 EUR/m."
     }
    ],
-   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+   "luecke": ""
   },
   "PRF-st-rr40x40x2.5": {
    "bezug_einheit": "m",
@@ -76,9 +87,20 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "Wand 2,5 mm nicht im Sortiment: Mittel aus 40x40x2 (9,04) und 40x40x3 (12,65); Wand im Modell nur gerechnet [E] - 3 mm als Ersatz kaufbar (12,65)."
+    },
+    {
+     "preis_eur": 20.23,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Quadratrohr 40x40x3,0 (Ersatz, Wand 2,5 nicht im Sortiment) S235JR feuerverzinkt, 6 m = 121.41 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 11.81 EUR/m. Wand 2,5 mm nicht angeboten, daher 40x40x3,0."
     }
    ],
-   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar); Wand 2,5 mm gibt es nicht als Handelsware"
+   "luecke": ""
   },
   "PRF-st-rr40x60x3": {
    "bezug_einheit": "m",
@@ -121,9 +143,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    },
+    {
+     "preis_eur": 11.97,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Quadratrohr 30x30x2,0 S235JR feuerverzinkt, 6 m = 71.85 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 7.27 EUR/m."
     }
    ],
-   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+   "luecke": ""
   },
   "PRF-st-rr60x60x3": {
    "bezug_einheit": "m",
@@ -138,9 +171,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    },
+    {
+     "preis_eur": 30.55,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Quadratrohr 60x60x3,0 S235JR feuerverzinkt, 6 m = 183.33 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 17.53 EUR/m."
     }
    ],
-   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+   "luecke": ""
   },
   "PRF-st-rr25x25x2": {
    "bezug_einheit": "m",
@@ -155,9 +199,20 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, Zuschnitt in 500/1000/1500/2000 mm; Meterpreis aus 1000-mm-Stueck, Stange 6 m nicht gelistet."
+    },
+    {
+     "preis_eur": 10.09,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-vierkantrohr.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Quadratrohr 25x25x2,0 S235JR feuerverzinkt, 6 m = 60.55 EUR brutto. Preis brutto (Shop-Anzeige inkl. 19% MwSt, zzgl. Versand), im Konfigurator Option nachtraeglich feuerverzinkt (+14 Werktage), Zuschnitt 6000 mm: Gesamtpreis/6 m = Grundpreis je lfm, enthaelt Schnittkosten. Roh (ohne Verzinkung) zum Vergleich: 6.14 EUR/m."
     }
    ],
-   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+   "luecke": ""
   },
   "PRF-st-rund20": {
    "bezug_einheit": "m",
@@ -172,9 +227,31 @@
      "lieferung_de": "ja",
      "konfidenz": "Q",
      "bemerkung": "Rundstahl verzinkt 20 mm. Preis brutto (Shop nennt inkl. MwSt.), Versand pauschal 8,90 EUR je Bestellung in DE (Zahlung-und-Versand gelesen), feuerverzinkt, "
+    },
+    {
+     "preis_eur": 14.7,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-vollmaterial-rundstahl.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Rundstahl 20 mm S235JR feuerverzinkt (Option nachtraeglich feuerverzinkt +14 Werktage), 6 m = 88,19 EUR brutto inkl. 19% MwSt zzgl. Versand, Grundpreis je lfm inkl. Schnittkosten."
+    },
+    {
+     "preis_eur": 8.18,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-vollmaterial-rundstahl.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Rundstahl 20 mm S235JR ROH (nicht verzinkt), 6 m = 49,05 EUR brutto inkl. 19% MwSt zzgl. Versand, je lfm inkl. Schnittkosten."
     }
    ],
-   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+   "luecke": ""
   },
   "PRF-st-strebe30x30": {
    "bezug_einheit": "m",
@@ -217,9 +294,20 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "Ersatz: Breite 14 mm nicht im Sortiment; gerechnet aus 30x3 verzinkt (2,85 EUR/m) x 14/30. Kaufbar real: 30x3 oder 20x5 (3,15)."
+    },
+    {
+     "preis_eur": 2.94,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-flacheisen-s235jr-558.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Ersatz Flachstahl 15x3 mm S235JR feuerverzinkt (14x3 nicht im Sortiment), 6 m = 17,64 EUR brutto inkl. 19% MwSt zzgl. Versand, Option nachtraeglich feuerverzinkt +14 Werktage, je lfm inkl. Schnittkosten."
     }
    ],
-   "luecke": "zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar); 14x3 nicht als Handelsware gefunden"
+   "luecke": ""
   },
   "WNK-flach-3mm-diagonale": {
    "bezug_einheit": "m",
@@ -234,9 +322,20 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "Breite aus Modell nicht ableitbar: 30x3 verzinkt als Platzhalter, Bezug je m; Katalogeinheit Stk (Zuschnitt)."
+    },
+    {
+     "preis_eur": 5.8,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahl-flacheisen-s235jr-558.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Flachstahl 30x3 mm S235JR feuerverzinkt, 6 m = 34,78 EUR brutto inkl. 19% MwSt zzgl. Versand, je lfm inkl. Schnittkosten. Roh: 3,54 EUR/m (21,27 EUR je 6 m)."
     }
    ],
-   "luecke": "Breite offen; zweite unabhaengige Quelle offen (stahl-shop24.de belegt; stahlshop.de nur Staffel 15-30 kg lesbar)"
+   "luecke": ""
   },
   "BLE-blech-st-3": {
    "bezug_einheit": "Stk",
@@ -251,9 +350,20 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "gerechnet: Stahl-Blech 3 mm, Preis je m2 aus Rastermass 300x1500x3mm (stahl-shop24.de) = 111.87 EUR/m2 x 0.490 m2 (700x700). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
+    },
+    {
+     "preis_eur": 35.96,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ROH (schwarz, NICHT verzinkt) S235JR 3 mm Zuschnitt 700x700. Metallparadies Stahlblech-Zuschnitt (Konfigurator, Laenge/Breite in mm per Eingabefeld). Preis brutto inkl. 19% MwSt zzgl. Versand. Option Verzinken im Konfigurator nicht vorhanden."
     }
    ],
-   "luecke": "zweite Quelle offen; Raster-Preis, kein Massschnitt-Preis; verzinkt nicht belegt"
+   "luecke": ""
   },
   "BLE-blech-st-5": {
    "bezug_einheit": "Stk",
@@ -268,9 +378,20 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "gerechnet: Stahl-Blech 5 mm, Preis je m2 aus Rastermass 200x1500x5mm (stahl-shop24.de) = 186.43 EUR/m2 x 0.336 m2 (840x400). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
+    },
+    {
+     "preis_eur": 39.99,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ROH (schwarz, NICHT verzinkt) S235JR 5 mm Zuschnitt 840x400. Metallparadies Stahlblech-Zuschnitt (Konfigurator, Laenge/Breite in mm per Eingabefeld). Preis brutto inkl. 19% MwSt zzgl. Versand. Option Verzinken im Konfigurator nicht vorhanden."
     }
    ],
-   "luecke": "wie BLE-blech-st-3"
+   "luecke": ""
   },
   "BLE-blech-st-6": {
    "bezug_einheit": "Stk",
@@ -285,9 +406,20 @@
      "lieferung_de": "ja",
      "konfidenz": "E",
      "bemerkung": "gerechnet: Stahl-Blech 6 mm, Preis je m2 aus Rastermass 300x1500x6mm (stahl-shop24.de) = 223.73 EUR/m2 x 0.789 m2 (1360x580). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
+    },
+    {
+     "preis_eur": 106.74,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "ROH (schwarz, NICHT verzinkt) S235JR 6 mm Zuschnitt 1360x580. Metallparadies Stahlblech-Zuschnitt (Konfigurator, Laenge/Breite in mm per Eingabefeld). Preis brutto inkl. 19% MwSt zzgl. Versand. Option Verzinken im Konfigurator nicht vorhanden."
     }
    ],
-   "luecke": "wie BLE-blech-st-3"
+   "luecke": ""
   },
   "SRB-m8x35": {
    "bezug_einheit": "Satz",

@@ -62,6 +62,15 @@ Marke: [Q] Seite/Ausschnitt dieser Sitzung gelesen (nur Katalogzeile, kein Daten
 
 Selbstbau, alles super simpel: Standrohr, Glocke und Schacht sägen, Kappe kleben, 4 Kerben sägen; **nicht** simpel: Schutzkorb rollen und nieten (Metallbauer) und die Plattenabdichtung (Muster entscheidet).
 
+## Bezugsquellen-Nachtrag (Orchestrator, 04.11.2026)
+Suche dieser Sitzung (Websuche, nur Katalog- und Datenblattausschnitte, Preise nicht geprüft). In die Teileliste des Bauteilblatts übernehmen.
+
+| Teil | Quelle 1 | Quelle 2 | Status |
+|---|---|---|---|
+| Reduzierhülse 32 × 25 (Tankverbinder-Muffe d32 auf Standrohr d25) | Schwarte (DE) „PVC-U Klebefitting Reduktion kurz 32 mm × 25 mm“, Art. 75208, Stutzen 32, Muffe 25, 16 bar | Bevo (NL/BE) „VDL reducer bush PVC-U 32 mm × 25 mm glue spigot × glue socket 16 bar grey“, Art. 7002656, Länge 22 mm | beschaffbar (zwei unabhängige Händler); Baulänge 22 mm aus Bevo-Katalogzeile, Datenblatt nicht gelesen |
+| Kleber PVC-U | Henkel Tangit PVC-U Plus, Technisches Merkblatt (datasheets.tdx.henkel.com): erfüllt DIN EN 14814, für EN 1452, Trinkwasserkontakt | Baumarkt-Handel: toom „Rohrklebstoff PVC-U Plus 125 g“ (Art. 8150236), Kaufland/ewm-sales Tangit PVC-U 125 g | beschaffbar |
+| Dichtband Plattenrand | Graf-Dichtungen (DE) Moosgummi Vierkant 10 × 10 mm (Z0701): laut Datenblatt zum Einnuten, **nicht** selbstklebend; selbstklebend erst 10 × 20 mm | Steinbach & Vollmann (stuv.de, DE) EPDM-Zellkautschuk geschlossenzellig, selbstklebend, wasserdicht laut Datenblatt; Maße 10 × 3 bis 15 × 2 mm auch bei Marktplatz-Händlern | **Maß 10 × 10 selbstklebend nicht nachgewiesen.** Werkstoff (EPDM-Zellkautschuk, geschlossenzellig) beschaffbar. Werkstatt führt im Bauteilblatt: „EPDM-Zellkautschuk geschlossenzellig, selbstklebend; Maß vor Bau festlegen (Spalt 2 mm: z. B. 10 × 3 mm verpresst oder 10 × 20 Graf)“, Status „Maß offen“ |
+
 ## Schritte (einzeln committbar; Rolle)
 **Schritt 1, Werkstatt (1 Sitzung, Sonnet):**
 - 1a. `scripts/w40_beet_rechnung.py` schreiben und laufen lassen (Plan oben); Ausgabe ins Paket. Commit `scripts/w40_beet_rechnung.py`.

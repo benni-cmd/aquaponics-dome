@@ -3,115 +3,176 @@
   "datei": "designs/components/pool_zentral.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "pool zentral",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Zentralpool",
+  "kurz": "Das Hauptbecken der Anlage mit zwei Seitenabläufen und einem Bodenablauf. Das Modell ist eine Hüllform aus dem Layout; Werkstoff und Bauart sind offen.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 5,
   "gruppen": [
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "pool",
+      "name": "Pool und Wasser",
+      "kurz": "Das Becken mit der Wasserfüllung.",
       "teile": [
-        "t_zentraltank"
+        "t_zentraltank",
+        "t_wasser"
       ]
     },
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "anschluesse",
+      "name": "Wanddurchführungen",
+      "kurz": "Seitenablauf und Bodenablauf leiten das Wasser aus dem Pool.",
       "teile": [
         "t_stutzen_sa_ost_a",
         "t_stutzen_sa_west_b",
         "t_stutzen_ba_mitte"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
-        "t_wasser"
       ]
     }
   ],
   "teile": [
     {
       "id": "t_zentraltank",
-      "name": "T Zentraltank",
+      "name": "Zentralpool",
       "koerper": [
         "T5_Zentraltank"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 7916565.4 g, Einzelkoerper 2475.0 x 4190.0 x 4190.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Zentralpool ist das Hauptbecken der Anlage, in dem die Fische leben.",
+      "eigenschaften": [
+        "Außenmaß rund 4190 x 4190 x 2475 mm.",
+        "In den Boden eingelassen; Werkstoff im Modell nicht zugewiesen."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
+      "bezug": "offen (R52)",
       "artikel_id": "BEH-pool-zentral",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "t_stutzen_sa_ost_a",
-      "name": "T Stutzen SA Ost A",
+      "name": "Seitenablauf-Durchführung",
       "koerper": [
         "T5_Stutzen_SA_Ost_A"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 218.8 g, Einzelkoerper 63.0 x 123.5 x 306.5 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen führt das Wasser seitlich aus dem Pool zum Filter.",
+      "eigenschaften": [
+        "PVC-Stutzen d63 durch die Poolwand."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 400,
+        "folgt": "t_zentraltank"
+      },
       "artikel_id": "ARM-bulkhead-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "t_stutzen_sa_west_b",
-      "name": "T Stutzen SA West B",
+      "name": "Seitenablauf-Durchführung",
       "koerper": [
         "T5_Stutzen_SA_West_B"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 218.8 g, Einzelkoerper 63.0 x 189.8 x 296.7 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen führt das Wasser seitlich aus dem Pool zum Filter.",
+      "eigenschaften": [
+        "PVC-Stutzen d63 durch die Poolwand."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 400,
+        "folgt": "t_zentraltank"
+      },
       "artikel_id": "ARM-bulkhead-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "t_stutzen_ba_mitte",
-      "name": "T Stutzen BA Mitte",
+      "name": "Bodenablauf-Durchführung",
       "koerper": [
         "T5_Stutzen_BA_Mitte"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 125.0 g, Einzelkoerper 50.0 x 50.0 x 270.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen leitet feststoffreiches Wasser aus der Poolmitte ab.",
+      "eigenschaften": [
+        "PVC-Stutzen d50 am Poolboden."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300,
+        "folgt": "t_zentraltank"
+      },
       "artikel_id": "ARM-bulkhead-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "t_wasser",
-      "name": "T Wasser",
+      "name": "Wasserfüllung (nur Darstellung)",
       "koerper": [
         "T5_Wasser"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 33857912.8 g, Einzelkoerper 2220.0 x 3879.9 x 3879.9 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Der Körper zeigt die Wasserfüllung; er ist kein Bauteil.",
+      "eigenschaften": [
+        "Reines Darstellungsvolumen."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Wasserkoerper, kein Bauteil",
-      "geruest": true
+      "ausnahme": "Wasserkoerper, kein Bauteil"
     }
   ]
 }

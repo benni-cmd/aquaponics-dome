@@ -3,25 +3,18 @@
   "datei": "designs/components/becken_dritt.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "becken dritt",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Drittbecken",
+  "kurz": "Quarantäne- und Notbecken im Boden. Das Modell ist eine Hüllform aus dem Layout; Werkstoff und Bauart sind offen.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 2,
   "gruppen": [
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "becken",
+      "name": "Becken und Wasser",
+      "kurz": "Das Becken mit der Wasserfüllung.",
       "teile": [
-        "t_drittbecken"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
+        "t_drittbecken",
         "t_wasser"
       ]
     }
@@ -29,34 +22,53 @@
   "teile": [
     {
       "id": "t_drittbecken",
-      "name": "T Drittbecken",
+      "name": "Drittbecken",
       "koerper": [
         "T14_Drittbecken"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 464211.6 g, Einzelkoerper 1150.0 x 1150.0 x 1265.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Drittbecken dient als Quarantäne- und Notbecken für Fische.",
+      "eigenschaften": [
+        "Außenmaß 1150 x 1150 x 1265 mm.",
+        "Eigenbau oder Sonderanfertigung; Werkstoff im Modell nicht zugewiesen."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
+      "bezug": "offen (R52)",
       "artikel_id": "BEH-becken-dritt",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "t_wasser",
-      "name": "T Wasser",
+      "name": "Wasserfüllung (nur Darstellung)",
       "koerper": [
         "T14_Wasser"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 1064516.3 g, Einzelkoerper 1010.0 x 1020.0 x 1020.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Der Körper zeigt die Wasserfüllung; er ist kein Bauteil.",
+      "eigenschaften": [
+        "Reines Darstellungsvolumen."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Wasserkoerper, kein Bauteil",
-      "geruest": true
+      "ausnahme": "Wasserkoerper, kein Bauteil"
     }
   ]
 }

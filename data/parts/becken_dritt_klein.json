@@ -3,32 +3,25 @@
   "datei": "designs/components/becken_dritt_klein.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "becken dritt klein",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Drittbecken klein (Quarantäne- und Notbecken)",
+  "kurz": "Eine in den Boden eingelassene Wanne mit 0,4 m³ Wasser für kranke Tiere oder Zuchttiere.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 6,
   "gruppen": [
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "becken",
+      "name": "Wanne und Wasser",
+      "kurz": "Die Wanne fasst 0,4 m³ Wasser; sie wird in den Boden eingelassen.",
       "teile": [
-        "t_wanne"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
+        "t_wanne",
         "wasser"
       ]
     },
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "anschluss",
+      "name": "Anschlüsse",
+      "kurz": "Vier Stutzen verbinden das Becken mit den Leitungen.",
       "teile": [
         "stutzen_k"
       ]
@@ -37,38 +30,57 @@
   "teile": [
     {
       "id": "t_wanne",
-      "name": "T Wanne",
+      "name": "Wanne des Drittbeckens",
       "koerper": [
         "T14k_Wanne"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Beton",
+      "werkstoff": "beton",
       "masse_mm": "Masse 555154.8 g, Einzelkoerper 920.0 x 920.0 x 1055.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Wanne ist das Quarantäne- und Notbecken für kranke Tiere oder Zuchttiere.",
+      "eigenschaften": [
+        "Rund 920 x 920 x 1055 mm.",
+        "In den Boden eingelassen wie Pool und Zweitbecken."
+      ],
+      "norm": "EN 206 (Beton) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/becken_dritt_klein.md, data/components/becken_dritt_klein.json, docs/research/R37 (Befund 10)",
+      "bezug": "offen (R52)",
       "artikel_id": "BEH-drittbecken-klein",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "wasser",
-      "name": "Wasser",
+      "name": "Wasserfüllung (nur Darstellung)",
       "koerper": [
         "Wasser"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Wasser",
+      "werkstoff": "wasser",
       "masse_mm": "Masse 392089.3 g, Einzelkoerper 790.0 x 790.0 x 800.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Der Körper zeigt die Wasserfüllung von rund 0,4 m³; er ist kein Bauteil.",
+      "eigenschaften": [
+        "Reines Darstellungsvolumen."
+      ],
+      "norm": "keine (kein Bauteil)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/becken_dritt_klein.md, data/components/becken_dritt_klein.json, docs/research/R37 (Befund 10)",
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Wasserkoerper, kein Bauteil",
-      "geruest": true
+      "ausnahme": "Wasserkoerper, kein Bauteil"
     },
     {
       "id": "stutzen_k",
-      "name": "Stutzen K",
+      "name": "Wanddurchführung",
       "koerper": [
         "Stutzen_K41",
         "Stutzen_K42",
@@ -77,12 +89,27 @@
       ],
       "menge": 4,
       "typ": "kaufteil",
-      "werkstoff": "Stutzen PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 2008.8 g, Einzelkoerper 60.0 x 90.0 x 130.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Durchführungen leiten Wasser durch die Wand zum Biofilter und zur Belüftung.",
+      "eigenschaften": [
+        "PVC-Stutzen d63, vier Stück."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/becken_dritt_klein.md, data/components/becken_dritt_klein.json, docs/research/R37 (Befund 10)",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 300,
+        "folgt": "t_wanne"
+      },
       "artikel_id": "ARM-bulkhead-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 4.0
     }
   ]
 }

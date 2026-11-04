@@ -3,72 +3,65 @@
   "datei": "designs/components/puffer_klein.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "puffer klein",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Kleiner Puffer (Fass, Messzelle, Dosierung)",
+  "kurz": "Ein Fass für die Stammlösung, eine Messzelle mit vier Sondenstutzen und zwei Schlauchpumpen auf einem Gestell mit Regalboden.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 32,
   "gruppen": [
     {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
+      "id": "gestell",
+      "name": "Gestell mit Regalboden",
+      "kurz": "Vier Pfosten mit Riegeln tragen den Regalboden mit Auffangrand.",
       "teile": [
         "fussplatte_mm",
-        "fussplatte_mp",
-        "fussplatte_pm",
-        "fussplatte_pp",
-        "regalboden",
-        "auffangrand_v",
-        "auffangrand_h",
-        "auffangrand_l",
-        "auffangrand_r",
-        "blende"
-      ]
-    },
-    {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
-      "teile": [
         "pfosten_mm",
+        "fussplatte_mp",
         "pfosten_mp",
+        "fussplatte_pm",
         "pfosten_pm",
+        "fussplatte_pp",
         "pfosten_pp",
         "riegel_oben_x",
         "riegel_oben_y",
         "riegel_unten_y",
         "riegel_oben_quer",
-        "riegel_unten_hinten"
+        "riegel_unten_hinten",
+        "regalboden",
+        "auffangrand_v",
+        "auffangrand_h",
+        "auffangrand_l",
+        "auffangrand_r"
       ]
     },
     {
-      "id": "elektrik",
-      "name": "Elektrik",
-      "kurz": "",
-      "teile": [
-        "kabelverschraubung"
-      ]
-    },
-    {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "vorrat",
+      "name": "Fass und Stammlösung",
+      "kurz": "120-Liter-Fass mit Entnahmestutzen für die Basenlösung.",
       "teile": [
         "fass",
         "fass_entnahmestutzen",
-        "fass_deckel",
-        "messzelle",
-        "messzelle_deckel",
-        "kanister",
-        "kanister_schraubdeckel"
+        "fass_deckel"
       ]
     },
     {
-      "id": "pumpen",
-      "name": "Pumpen",
-      "kurz": "",
+      "id": "messung",
+      "name": "Messzelle",
+      "kurz": "Acrylzelle mit Deckel und Blende für den Messkreis.",
       "teile": [
+        "kabelverschraubung",
+        "messzelle",
+        "messzelle_deckel",
+        "blende"
+      ]
+    },
+    {
+      "id": "dosierung",
+      "name": "Kanister und Pumpen",
+      "kurz": "Eisenchelat-Kanister und zwei Schlauchpumpen.",
+      "teile": [
+        "kanister",
+        "kanister_schraubdeckel",
         "pumpe_base",
         "pumpe_eisen"
       ]
@@ -77,201 +70,411 @@
   "teile": [
     {
       "id": "fussplatte_mm",
-      "name": "Fussplatte mm",
+      "name": "Fußplatte",
       "koerper": [
         "Fussplatte_mm"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Pfostens.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 6 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x6",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "pfosten_mm",
-      "name": "Pfosten mm",
+      "name": "Pfosten",
       "koerper": [
         "Pfosten_mm"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Pfosten tragen das Regal.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 889 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.889,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.889
     },
     {
       "id": "fussplatte_mp",
-      "name": "Fussplatte mp",
+      "name": "Fußplatte",
       "koerper": [
         "Fussplatte_mp"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Pfostens.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 6 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x6",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "pfosten_mp",
-      "name": "Pfosten mp",
+      "name": "Pfosten",
       "koerper": [
         "Pfosten_mp"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Pfosten tragen das Regal.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 889 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.889,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.889
     },
     {
       "id": "fussplatte_pm",
-      "name": "Fussplatte pm",
+      "name": "Fußplatte",
       "koerper": [
         "Fussplatte_pm"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Pfostens.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 6 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x6",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "pfosten_pm",
-      "name": "Pfosten pm",
+      "name": "Pfosten",
       "koerper": [
         "Pfosten_pm"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Pfosten tragen das Regal.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 889 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.889,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.889
     },
     {
       "id": "fussplatte_pp",
-      "name": "Fussplatte pp",
+      "name": "Fußplatte",
       "koerper": [
         "Fussplatte_pp"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Pfostens.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 6 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x6",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "pfosten_pp",
-      "name": "Pfosten pp",
+      "name": "Pfosten",
       "koerper": [
         "Pfosten_pp"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Pfosten tragen das Regal.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 889 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.889,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.889
     },
     {
       "id": "riegel_oben_x",
-      "name": "Riegel oben x",
+      "name": "Riegel",
       "koerper": [
         "Riegel_oben_x1",
         "Riegel_oben_x2"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1979.5 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Riegel verbinden die Pfosten und steifen das Gestell aus.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 590 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.18,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.18
     },
     {
       "id": "riegel_oben_y",
-      "name": "Riegel oben y",
+      "name": "Riegel",
       "koerper": [
         "Riegel_oben_y1",
         "Riegel_oben_y2"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1979.5 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Riegel verbinden die Pfosten und steifen das Gestell aus.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 590 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.18,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.18
     },
     {
       "id": "riegel_unten_y",
-      "name": "Riegel unten y",
+      "name": "Riegel",
       "koerper": [
         "Riegel_unten_y1",
         "Riegel_unten_y2"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1979.5 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Riegel verbinden die Pfosten und steifen das Gestell aus.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 590 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.18,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.18
     },
     {
       "id": "riegel_oben_quer",
-      "name": "Riegel oben quer",
+      "name": "Riegel",
       "koerper": [
         "Riegel_oben_quer"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 989.7 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Riegel verbinden die Pfosten und steifen das Gestell aus.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 590 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.59,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.59
     },
     {
       "id": "riegel_unten_hinten",
-      "name": "Riegel unten hinten",
+      "name": "Riegel",
       "koerper": [
         "Riegel_unten_hinten"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 989.7 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Riegel verbinden die Pfosten und steifen das Gestell aus.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 590 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.59,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.59
     },
     {
       "id": "regalboden",
@@ -281,72 +484,162 @@
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 11539.5 g, Einzelkoerper 3.0 x 700.0 x 700.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Boden trägt Messzelle, Kanister und Pumpen über dem Fass.",
+      "eigenschaften": [
+        "Stahlblech 3 mm, 700 x 700 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "pfosten_mm"
+      },
       "artikel_id": "BLE-blech-st-3",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "auffangrand_v",
-      "name": "Auffangrand v",
+      "name": "Auffangrand",
       "koerper": [
         "Auffangrand_v"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 329.7 g, Einzelkoerper 3.0 x 20.0 x 700.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Rand hält verschüttete Flüssigkeit auf dem Boden zurück.",
+      "eigenschaften": [
+        "Stahlblech 3 mm, 20 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "regalboden"
+      },
       "artikel_id": "BLE-blech-st-3",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "auffangrand_h",
-      "name": "Auffangrand h",
+      "name": "Auffangrand",
       "koerper": [
         "Auffangrand_h"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 329.7 g, Einzelkoerper 3.0 x 20.0 x 700.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Rand hält verschüttete Flüssigkeit auf dem Boden zurück.",
+      "eigenschaften": [
+        "Stahlblech 3 mm, 20 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "regalboden"
+      },
       "artikel_id": "BLE-blech-st-3",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "auffangrand_l",
-      "name": "Auffangrand l",
+      "name": "Auffangrand",
       "koerper": [
         "Auffangrand_l"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 326.9 g, Einzelkoerper 3.0 x 20.0 x 694.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Rand hält verschüttete Flüssigkeit auf dem Boden zurück.",
+      "eigenschaften": [
+        "Stahlblech 3 mm, 20 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "regalboden"
+      },
       "artikel_id": "BLE-blech-st-3",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "auffangrand_r",
-      "name": "Auffangrand r",
+      "name": "Auffangrand",
       "koerper": [
         "Auffangrand_r"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 326.9 g, Einzelkoerper 3.0 x 20.0 x 694.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Rand hält verschüttete Flüssigkeit auf dem Boden zurück.",
+      "eigenschaften": [
+        "Stahlblech 3 mm, 20 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "regalboden"
+      },
       "artikel_id": "BLE-blech-st-3",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kabelverschraubung",
@@ -356,57 +649,132 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PA schwarz",
+      "werkstoff": "pa",
       "masse_mm": "Masse 4.6 g, Einzelkoerper 20.0 x 20.0 x 20.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Verschraubung führt das Sondenkabel dicht durch den Deckel.",
+      "eigenschaften": [
+        "Kunststoff PG, Größe 20 mm."
+      ],
+      "norm": "EN ISO 1874-1 (PA-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "messzelle_deckel"
+      },
       "artikel_id": "ELE-kabelverschraubung-pg",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "fass",
-      "name": "Fass",
+      "name": "Fass für die Stammlösung",
       "koerper": [
         "Fass"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "HDPE blau",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 4234.3 g, Einzelkoerper 500.0 x 500.0 x 788.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das lichtdichte Fass nimmt die Stammlösung mit Basen (KOH, NaHCO3) auf.",
+      "eigenschaften": [
+        "HDPE blau, 120 Liter, undurchsichtig gegen Algen."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 500
+      },
       "artikel_id": "BEH-fass-hdpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "fass_entnahmestutzen",
-      "name": "Fass Entnahmestutzen",
+      "name": "Entnahmestutzen des Fasses",
       "koerper": [
         "Fass_Entnahmestutzen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "HDPE blau",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 9.6 g, Einzelkoerper 25.0 x 25.0 x 35.0 mm (Modell-Bounding-Box)",
+      "funktion": "Am Stutzen wird die Lösung zur Pumpe entnommen.",
+      "eigenschaften": [
+        "Stutzen 25 mm."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 650,
+        "folgt": "fass"
+      },
       "artikel_id": "BEH-fass-hdpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "fass_deckel",
-      "name": "Fass Deckel",
+      "name": "Fassdeckel",
       "koerper": [
         "Fass_Deckel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "HDPE blau",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 2243.2 g, Einzelkoerper 47.0 x 500.0 x 500.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Deckel verschließt das Fass.",
+      "eigenschaften": [
+        "HDPE blau, 500 mm."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "fass"
+      },
       "artikel_id": "BEH-fass-hdpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "messzelle",
@@ -416,27 +784,65 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Acryl klar",
+      "werkstoff": "pmma",
       "masse_mm": "Masse 2239.7 g, Einzelkoerper 260.0 x 315.0 x 315.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Zelle führt das Wasser an vier Sondenstutzen vorbei; so werden pH und Leitwert gemessen.",
+      "eigenschaften": [
+        "Acryl klar, 20 Liter, Messkreis 3 l/min."
+      ],
+      "norm": "EN ISO 7823-1 (PMMA-Platten) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "regalboden"
+      },
       "artikel_id": "BEH-messzelle-acryl",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "messzelle_deckel",
-      "name": "Messzelle Deckel",
+      "name": "Deckel der Messzelle",
       "koerper": [
         "Messzelle_Deckel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Acryl klar",
+      "werkstoff": "pmma",
       "masse_mm": "Masse 550.8 g, Einzelkoerper 45.0 x 290.0 x 290.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Deckel hält die Sonden in der Zelle.",
+      "eigenschaften": [
+        "Acryl klar, 45 mm."
+      ],
+      "norm": "EN ISO 7823-1 (PMMA-Platten) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "messzelle"
+      },
       "artikel_id": "BEH-messzelle-acryl",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "blende",
@@ -446,72 +852,166 @@
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "PP schwarz",
+      "werkstoff": "pp",
       "masse_mm": "Masse 205.8 g, Einzelkoerper 3.0 x 260.0 x 290.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Blende schirmt Licht von der Messzelle ab.",
+      "eigenschaften": [
+        "PP schwarz, 3 mm."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200,
+        "folgt": "messzelle"
+      },
       "artikel_id": "BLE-pp-blende-290x260",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kanister",
-      "name": "Kanister",
+      "name": "Eisenchelat-Kanister",
       "koerper": [
         "Kanister"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Kanister HDPE",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 1292.6 g, Einzelkoerper 250.0 x 285.0 x 300.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Kanister bevorratet das Eisenchelat zur Düngung.",
+      "eigenschaften": [
+        "HDPE, 20 Liter."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 400,
+        "folgt": "regalboden"
+      },
       "artikel_id": "BEH-kanister-hdpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kanister_schraubdeckel",
-      "name": "Kanister Schraubdeckel",
+      "name": "Schraubdeckel des Kanisters",
       "koerper": [
         "Kanister_Schraubdeckel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Kanister HDPE",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 53.7 g, Einzelkoerper 20.0 x 60.0 x 60.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Deckel verschließt den Kanister.",
+      "eigenschaften": [
+        "HDPE, 60 mm."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "kanister"
+      },
       "artikel_id": "BEH-kanister-hdpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pumpe_base",
-      "name": "Pumpe Base",
+      "name": "Schlauchpumpe Base",
       "koerper": [
         "Pumpe_Base"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Pumpe Schlauch",
+      "werkstoff": "pumpengehaeuse",
       "masse_mm": "Masse 2526.8 g, Einzelkoerper 100.0 x 140.0 x 160.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pumpe dosiert die Basenlösung aus dem Fass.",
+      "eigenschaften": [
+        "Schlauchpumpe, Fördermenge einstellbar."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "regalboden"
+      },
       "artikel_id": "PMP-dosierpumpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "pumpe_eisen",
-      "name": "Pumpe Eisen",
+      "name": "Schlauchpumpe Eisen",
       "koerper": [
         "Pumpe_Eisen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Pumpe Schlauch",
+      "werkstoff": "pumpengehaeuse",
       "masse_mm": "Masse 2526.8 g, Einzelkoerper 100.0 x 140.0 x 160.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pumpe dosiert das Eisenchelat aus dem Kanister.",
+      "eigenschaften": [
+        "Schlauchpumpe, Fördermenge einstellbar."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_klein.md, data/components/puffer_klein.json; Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 450,
+        "folgt": "regalboden"
+      },
       "artikel_id": "PMP-dosierpumpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     }
   ]
 }

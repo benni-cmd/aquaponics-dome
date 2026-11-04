@@ -3,45 +3,63 @@
   "datei": "designs/components/aktivkohle_station.sc",
   "bauteilgruppe": "Filter",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "aktivkohle station",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Aktivkohle-Station (Entchlorung des Frischwassers)",
+  "kurz": "Das Frischwasser läuft über einen Absperrhahn, einen Sedimentvorfilter und zwei Kohlebehälter in Reihe. Ein Probehahn zeigt den Durchbruch, ein Durchflussbegrenzer hält 4 Liter je Minute.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 43,
   "gruppen": [
     {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "id": "vorfilter",
+      "name": "Sedimentvorfilter",
+      "kurz": "Der Vorfilter hält Sand und Schwebstoffe zurück, bevor das Wasser in die Kohle geht.",
       "teile": [
-        "konsole_sediment"
+        "konsole_sediment",
+        "sedimentgehaeuse",
+        "sedimentpatrone",
+        "kopf_sediment"
       ]
     },
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "kohle",
+      "name": "Kohlebehälter",
+      "kurz": "Zwei Behälter in Reihe mit katalytischer Kohle entfernen Chlor und Chloramin.",
       "teile": [
-        "sedimentgehaeuse",
-        "sedimentpatrone",
-        "kopf_sediment",
         "behaelter",
+        "kohlebett",
         "kopf",
         "kopf_hebel"
       ]
     },
     {
-      "id": "toepfe_und_substrat",
-      "name": "Toepfe und Substrat",
-      "kurz": "",
+      "id": "hahn",
+      "name": "Absperrhähne",
+      "kurz": "Kugelhähne am Eingang und an den Abgängen.",
       "teile": [
-        "kohlebett"
+        "hahn_eingang",
+        "hahn_eingang_spindel",
+        "hahn_eingang_hebel",
+        "hahn_k",
+        "hahn_k_spindel",
+        "hahn_k_hebel",
+        "hahn_k_arm_kugelhahn_d20"
       ]
     },
     {
-      "id": "rohre",
-      "name": "Rohre",
-      "kurz": "",
+      "id": "messung",
+      "name": "Probehahn und Durchflussbegrenzer",
+      "kurz": "Der Probehahn zeigt den Durchbruch; der Begrenzer hält 4 Liter je Minute.",
+      "teile": [
+        "t_probehahn",
+        "probehahn",
+        "probehahn_griff",
+        "begrenzer"
+      ]
+    },
+    {
+      "id": "leitung",
+      "name": "Rohre und Fittings",
+      "kurz": "Rohre, T-Stücke und eine Reduzierung verbinden die Stationen.",
       "teile": [
         "rohr_eingang",
         "rohr_hahn_sediment",
@@ -50,78 +68,82 @@
         "rohr_t_b",
         "rohr_b_begrenzer",
         "rohr_begrenzer_t",
+        "t_k",
         "rohr_t_t",
         "rohr_t_hahn",
         "rohr_ausgang_k",
+        "reduzierung_k",
         "rohr_k",
         "rohr_k_roh_pvcu_d25"
-      ]
-    },
-    {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
-      "teile": [
-        "hahn_eingang",
-        "probehahn",
-        "begrenzer",
-        "hahn_k",
-        "hahn_k_arm_kugelhahn_d20"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
-        "hahn_eingang_spindel",
-        "hahn_eingang_hebel",
-        "probehahn_griff",
-        "hahn_k_spindel",
-        "hahn_k_hebel"
-      ]
-    },
-    {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
-      "teile": [
-        "t_probehahn",
-        "t_k",
-        "reduzierung_k"
       ]
     }
   ],
   "teile": [
     {
       "id": "konsole_sediment",
-      "name": "Konsole Sediment",
+      "name": "Konsole unter dem Sedimentfilter",
       "koerper": [
         "Konsole_Sediment"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "AK Konsole",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 12160.0 g, Einzelkoerper 160.0 x 160.0 x 500.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Konsole hebt das Sedimentgehäuse auf die Höhe der Behälterköpfe.",
+      "eigenschaften": [
+        "Stahlkonsole 160 x 160 mm, 500 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "SON-ak-konsole",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sedimentgehaeuse",
-      "name": "Sedimentgehaeuse",
+      "name": "Sedimentgehäuse",
       "koerper": [
         "Sedimentgehaeuse"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 389.0 g, Einzelkoerper 112.0 x 112.0 x 290.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Gehäuse nimmt die Filterpatrone auf und leitet das Wasser durch sie.",
+      "eigenschaften": [
+        "Gehäuse 10 Zoll, 112 mm Durchmesser."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250,
+        "folgt": "konsole_sediment"
+      },
       "artikel_id": "BEH-ak-sedimentfilter",
       "artikel_einheit": "Satz",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sedimentpatrone",
@@ -131,43 +153,99 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 709.1 g, Einzelkoerper 63.0 x 63.0 x 250.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Patrone filtert Partikel größer als 20 Mikrometer aus dem Frischwasser.",
+      "eigenschaften": [
+        "PP-Patrone 10 Zoll, 20 Mikrometer."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "sedimentgehaeuse"
+      },
       "artikel_id": "BEH-ak-sedimentfilter",
       "artikel_einheit": "Satz",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "kopf_sediment",
-      "name": "Kopf Sediment",
+      "name": "Kopf des Sedimentgehäuses",
       "koerper": [
         "Kopf_Sediment"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK Kopf",
+      "werkstoff": "pp",
       "masse_mm": "Masse 1568.2 g, Einzelkoerper 99.0 x 120.0 x 120.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Kopf schließt das Gehäuse und trägt die Anschlüsse.",
+      "eigenschaften": [
+        "Anschluss d25."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "sedimentgehaeuse"
+      },
       "artikel_id": "BEH-ak-sedimentfilter",
       "artikel_einheit": "Satz",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "behaelter",
-      "name": "Behaelter",
+      "name": "Kompositbehälter",
       "koerper": [
         "Behaelter_1",
         "Behaelter_2"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "AK Komposit",
+      "werkstoff": "gfk_komposit",
       "masse_mm": "Masse 9970.3 g, Einzelkoerper 254.0 x 254.0 x 790.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Behälter nimmt das Kohlebett auf; das Wasser fließt durch die Kohle.",
+      "eigenschaften": [
+        "Komposit mit PE-Liner, 10 x 35 Zoll, 254 mm Durchmesser."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300
+      },
       "artikel_id": "BEH-ak-kompositbehaelter-254x790",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "kohlebett",
@@ -178,166 +256,363 @@
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "AK Kohle",
+      "werkstoff": "aktivkohle",
       "masse_mm": "Masse 18511.6 g, Einzelkoerper 240.0 x 240.0 x 464.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die katalytische Kohle bindet Chlor und Chloramin aus dem Wasser.",
+      "eigenschaften": [
+        "Rund 21 Liter je Behälter.",
+        "Kontaktzeit etwa 10,5 Minuten bei 4 l/min."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 600,
+        "folgt": "behaelter"
+      },
       "artikel_id": "TOP-aktivkohle",
       "artikel_einheit": "m3",
-      "artikel_menge_je_instanz": 0.042,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.042
     },
     {
       "id": "kopf",
-      "name": "Kopf",
+      "name": "Behälterkopf",
       "koerper": [
         "Kopf_1",
         "Kopf_2"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "AK Kopf",
+      "werkstoff": "pp",
       "masse_mm": "Masse 3136.3 g, Einzelkoerper 99.0 x 120.0 x 120.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Kopf verteilt das Wasser auf das Bett und trägt Absperrhahn und Anschlüsse.",
+      "eigenschaften": [
+        "Kopfblock 120 mm, Anschlüsse d25."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "behaelter"
+      },
       "artikel_id": "BEH-ak-kompositbehaelter-254x790",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "kopf_hebel",
-      "name": "Kopf Hebel",
+      "name": "Hebel des Behälterkopfs",
       "koerper": [
         "Kopf_1_Hebel",
         "Kopf_2_Hebel"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "AK Kopf",
+      "werkstoff": "pp",
       "masse_mm": "Masse 27.6 g, Einzelkoerper 20.0 x 20.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Am Hebel wird der Kopf zwischen Betrieb und Umgehung umgestellt.",
+      "eigenschaften": [
+        "Kunststoffhebel 40 mm."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100,
+        "folgt": "kopf"
+      },
       "artikel_id": "BEH-ak-kompositbehaelter-254x790",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rohr_eingang",
-      "name": "Rohr Eingang",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_Eingang"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 20.2 g, Einzelkoerper 25.0 x 25.0 x 110.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.11,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.11
     },
     {
       "id": "hahn_eingang",
-      "name": "Hahn Eingang",
+      "name": "Eingangshahn",
       "koerper": [
         "Hahn_Eingang"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 82.5 g, Einzelkoerper 44.2 x 44.2 x 50.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Hahn sperrt das Frischwasser am Eingang der Station ab.",
+      "eigenschaften": [
+        "Kugelhahn PVC d25."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "ARM-kugelhahn-d25",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "hahn_eingang_spindel",
-      "name": "Hahn Eingang Spindel",
+      "name": "Spindel des Eingangshahns",
       "koerper": [
         "Hahn_Eingang_Spindel"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "AK Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 6.5 g, Einzelkoerper 14.0 x 14.0 x 30.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Die Spindel überträgt die Drehung des Hebels auf die Kugel.",
+      "eigenschaften": [
+        "Im Hahnartikel enthalten."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 80,
+        "folgt": "hahn_eingang"
+      },
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
-      "geruest": true
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten"
     },
     {
       "id": "hahn_eingang_hebel",
-      "name": "Hahn Eingang Hebel",
+      "name": "Hebel des Eingangshahns",
       "koerper": [
         "Hahn_Eingang_Hebel"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "AK Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 9.9 g, Einzelkoerper 8.0 x 8.0 x 110.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Am Hebel wird der Hahn geöffnet und geschlossen.",
+      "eigenschaften": [
+        "Im Hahnartikel enthalten."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "hahn_eingang"
+      },
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
-      "geruest": true
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten"
     },
     {
       "id": "rohr_hahn_sediment",
-      "name": "Rohr Hahn Sediment",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_Hahn_Sediment"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 45.9 g, Einzelkoerper 25.0 x 25.0 x 250.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.25,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.25
     },
     {
       "id": "rohr_sediment_b",
-      "name": "Rohr Sediment B",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_Sediment_B1"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 38.6 g, Einzelkoerper 25.0 x 25.0 x 210.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.21,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.21
     },
     {
       "id": "rohr_b_t",
-      "name": "Rohr B T",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_B1_T1"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.9 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.07,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.07
     },
     {
       "id": "t_probehahn",
-      "name": "T Probehahn",
+      "name": "T-Stück am Probehahn",
       "koerper": [
         "T_Probehahn"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 56.2 g, Einzelkoerper 32.2 x 51.2 x 70.3 mm (Modell-Bounding-Box)",
+      "funktion": "Das T-Stück zweigt zum Probehahn zwischen den Behältern ab.",
+      "eigenschaften": [
+        "PVC-T-Stück d25."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "FIT-t-d25",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "probehahn",
@@ -347,154 +622,330 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK Messing",
+      "werkstoff": "messing",
       "masse_mm": "Masse 227.1 g, Einzelkoerper 24.0 x 24.0 x 85.0 mm (Modell-Bounding-Box)",
+      "funktion": "Aus dem Probehahn wird Wasser für den Chlortest entnommen; so erkennt man den Durchbruch.",
+      "eigenschaften": [
+        "Rotguss, Anschluss G 1/4."
+      ],
+      "norm": "EN 12165 (Schmiedemessing) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "t_probehahn"
+      },
       "artikel_id": "ARM-probehahn-messing",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "probehahn_griff",
-      "name": "Probehahn Griff",
+      "name": "Griff des Probehahns",
       "koerper": [
         "Probehahn_Griff"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "AK Messing",
+      "werkstoff": "messing",
       "masse_mm": "Masse 21.8 g, Einzelkoerper 8.0 x 8.0 x 40.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Am Griff wird der Probehahn geöffnet.",
+      "eigenschaften": [
+        "Im Hahnartikel enthalten."
+      ],
+      "norm": "EN 12165 (Schmiedemessing) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100,
+        "folgt": "probehahn"
+      },
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
-      "geruest": true
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten"
     },
     {
       "id": "rohr_t_b",
-      "name": "Rohr T B",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_T1_B2"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.9 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.07,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.07
     },
     {
       "id": "rohr_b_begrenzer",
-      "name": "Rohr B Begrenzer",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_B2_Begrenzer"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 3.7 g, Einzelkoerper 20.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.025,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.025
     },
     {
       "id": "begrenzer",
-      "name": "Begrenzer",
+      "name": "Durchflussbegrenzer",
       "koerper": [
         "Begrenzer"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK Messing",
+      "werkstoff": "messing",
       "masse_mm": "Masse 226.7 g, Einzelkoerper 32.0 x 32.0 x 60.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Begrenzer hält den Durchfluss bei 4 Liter je Minute, damit die Kontaktzeit stimmt.",
+      "eigenschaften": [
+        "Messing, G 3/4."
+      ],
+      "norm": "EN 12165 (Schmiedemessing) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "ARM-durchflussbegrenzer-messing",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "rohr_begrenzer_t",
-      "name": "Rohr Begrenzer T",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_Begrenzer_T2"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 10.1 g, Einzelkoerper 25.0 x 25.0 x 54.9 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.055,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.055
     },
     {
       "id": "t_k",
-      "name": "T K",
+      "name": "T-Stück am Abgang",
       "koerper": [
         "T_K41",
         "T_K52"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 112.4 g, Einzelkoerper 32.2 x 51.2 x 70.3 mm (Modell-Bounding-Box)",
+      "funktion": "Das T-Stück zweigt einen Abgang vom Hauptstrang ab.",
+      "eigenschaften": [
+        "PVC-T-Stück d25."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "FIT-t-d25",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "rohr_t_t",
-      "name": "Rohr T T",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_T2_T3"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.8 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.07,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.07
     },
     {
       "id": "rohr_t_hahn",
-      "name": "Rohr T Hahn",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_T3_Hahn"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 8.3 g, Einzelkoerper 25.0 x 25.0 x 45.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.045,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.045
     },
     {
       "id": "hahn_k",
-      "name": "Hahn K",
+      "name": "Absperrhahn der Abgänge",
       "koerper": [
         "Hahn_K40",
         "Hahn_K52"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "AK Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 164.9 g, Einzelkoerper 44.2 x 44.2 x 50.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Hahn sperrt einen Abgang (Pool oder Stammlösung) ab.",
+      "eigenschaften": [
+        "Kugelhahn PVC d25."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "ARM-kugelhahn-d25",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "hahn_k_spindel",
-      "name": "Hahn K Spindel",
+      "name": "Spindel der Abgangshähne",
       "koerper": [
         "Hahn_K40_Spindel",
         "Hahn_K41_Spindel",
@@ -502,17 +953,34 @@
       ],
       "menge": 3,
       "typ": "sonderteil",
-      "werkstoff": "AK Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 19.4 g, Einzelkoerper 14.0 x 14.0 x 30.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Die Spindel überträgt die Drehung des Hebels auf die Kugel.",
+      "eigenschaften": [
+        "Im Hahnartikel enthalten."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 80,
+        "folgt": "hahn_k"
+      },
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
-      "geruest": true
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten"
     },
     {
       "id": "hahn_k_hebel",
-      "name": "Hahn K Hebel",
+      "name": "Hebel der Abgangshähne",
       "koerper": [
         "Hahn_K40_Hebel",
         "Hahn_K41_Hebel",
@@ -520,88 +988,193 @@
       ],
       "menge": 3,
       "typ": "sonderteil",
-      "werkstoff": "AK Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 29.6 g, Einzelkoerper 8.0 x 8.0 x 110.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Am Hebel werden die Hähne geöffnet und geschlossen.",
+      "eigenschaften": [
+        "Im Hahnartikel enthalten."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "hahn_k"
+      },
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
-      "geruest": true
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten"
     },
     {
       "id": "rohr_ausgang_k",
-      "name": "Rohr Ausgang K",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_Ausgang_K40"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.9 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.07,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.07
     },
     {
       "id": "reduzierung_k",
-      "name": "Reduzierung K",
+      "name": "Reduzierung d32 auf d25",
       "koerper": [
         "Reduzierung_K41"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 34.8 g, Einzelkoerper 32.2 x 32.2 x 41.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Reduzierung passt den Abgang auf den kleineren Rohrdurchmesser an.",
+      "eigenschaften": [
+        "PVC-Reduzierung."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "FIT-red-d32-d25",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "hahn_k_arm_kugelhahn_d20",
-      "name": "Hahn K",
+      "name": "Absperrhahn zur Quarantäne",
       "koerper": [
         "Hahn_K41"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "AK Hahn",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 68.8 g, Einzelkoerper 39.0 x 39.0 x 50.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Hahn sperrt den Abgang zur Quarantäne ab.",
+      "eigenschaften": [
+        "Kugelhahn PVC d20."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "ARM-kugelhahn-d20",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "rohr_k",
-      "name": "Rohr K",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_K41"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 17.8 g, Einzelkoerper 20.0 x 20.0 x 123.9 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d20",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.124,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.124
     },
     {
       "id": "rohr_k_roh_pvcu_d25",
-      "name": "Rohr K",
+      "name": "Rohrstück",
       "koerper": [
         "Rohr_K52"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "AK PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 30.3 g, Einzelkoerper 25.0 x 25.0 x 164.9 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohrstück verbindet die benachbarten Bauteile der Station.",
+      "eigenschaften": [
+        "PVC-U-Rohr d25 (bei der Quarantäne d20)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/aktivkohle_station.md, data/components/aktivkohle_station.json, docs/research/R45 und R53; Handelsmaße, Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.165,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.165
     }
   ]
 }

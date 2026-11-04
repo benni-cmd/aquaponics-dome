@@ -3,16 +3,16 @@
   "datei": "designs/components/zulaufrohr.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "zulaufrohr",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Zulaufrohr zum Pool",
+  "kurz": "Ein langes Rohr d160 führt Wasser zum Zentralpool. Das Modell ist eine Hüllform aus dem Layout.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "rohre",
-      "name": "Rohre",
-      "kurz": "",
+      "id": "rohr",
+      "name": "Zulaufrohr",
+      "kurz": "Das lange Rohr führt Wasser zum Pool.",
       "teile": [
         "t_zulaufrohr"
       ]
@@ -21,18 +21,28 @@
   "teile": [
     {
       "id": "t_zulaufrohr",
-      "name": "T Zulaufrohr",
+      "name": "Zulaufrohr zum Pool",
       "koerper": [
         "T10_Zulaufrohr"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 130053.5 g, Einzelkoerper 161.0 x 4150.2 x 4402.8 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohr führt das Wasser zum Zentralpool.",
+      "eigenschaften": [
+        "PVC-U-Druckrohr d160.",
+        "Länge aus dem Modell geschätzt (rund 4,4 m); Werkstoff im Modell nicht zugewiesen."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
       "artikel_id": "ROH-pvcu-d160",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 4.403,
-      "geruest": true
+      "artikel_menge_je_instanz": 4.403
     }
   ]
 }

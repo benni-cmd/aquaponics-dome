@@ -3,25 +3,18 @@
   "datei": "designs/components/schwimmerventil_pool.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "schwimmerventil pool",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Schwimmerventil des Pools",
+  "kurz": "Hält den Wasserspiegel im Pool: sinkt er, öffnet die Schwimmerkugel das Ventil und Frischwasser läuft nach.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 5,
   "gruppen": [
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "ventil",
+      "name": "Ventil mit Schwimmer",
+      "kurz": "Gehäuse mit Wangen und Hebelarm mit Schwimmerkugel; der Übergang führt zur Leitung.",
       "teile": [
-        "uebergang"
-      ]
-    },
-    {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
-      "teile": [
+        "uebergang",
         "ventilgehaeuse",
         "wange_l",
         "wange_r",
@@ -32,78 +25,172 @@
   "teile": [
     {
       "id": "uebergang",
-      "name": "Uebergang",
+      "name": "Übergang zur Leitung",
       "koerper": [
         "Uebergang"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "SV PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 26.8 g, Einzelkoerper 32.2 x 32.2 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Übergang verbindet das Ventil mit der Frischwasserleitung.",
+      "eigenschaften": [
+        "PVC-Stutzen d32."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerventil_pool.md, data/components/schwimmerventil_pool.json; Handelsteil, Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "FIT-stutzen-d32",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "ventilgehaeuse",
-      "name": "Ventilgehaeuse",
+      "name": "Ventilgehäuse",
       "koerper": [
         "Ventilgehaeuse"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "SV PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 82.6 g, Einzelkoerper 38.0 x 38.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Gehäuse enthält den Sitz, den der Hebel öffnet und schließt.",
+      "eigenschaften": [
+        "PP-Gehäuse, 38 mm Durchmesser, 80 mm lang."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerventil_pool.md, data/components/schwimmerventil_pool.json; Handelsteil, Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "ARM-schwimmerventil-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "wange_l",
-      "name": "Wange L",
+      "name": "Wange des Hebellagers",
       "koerper": [
         "Wange_L"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "SV PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 1.2 g, Einzelkoerper 4.0 x 16.0 x 21.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Wangen halten den Drehpunkt des Hebelarms.",
+      "eigenschaften": [
+        "PP, 4 mm dick."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerventil_pool.md, data/components/schwimmerventil_pool.json; Handelsteil, Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 80,
+        "folgt": "ventilgehaeuse"
+      },
       "artikel_id": "ARM-schwimmerventil-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "wange_r",
-      "name": "Wange R",
+      "name": "Wange des Hebellagers",
       "koerper": [
         "Wange_R"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "SV PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 1.2 g, Einzelkoerper 4.0 x 16.0 x 21.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Wangen halten den Drehpunkt des Hebelarms.",
+      "eigenschaften": [
+        "PP, 4 mm dick."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerventil_pool.md, data/components/schwimmerventil_pool.json; Handelsteil, Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 80,
+        "folgt": "ventilgehaeuse"
+      },
       "artikel_id": "ARM-schwimmerventil-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "hebelarm_mit_kugel",
-      "name": "Hebelarm mit Kugel",
+      "name": "Hebelarm mit Schwimmerkugel",
       "koerper": [
         "Hebelarm_mit_Kugel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "SV Kugel",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 248.2 g, Einzelkoerper 110.0 x 203.5 x 316.9 mm (Modell-Bounding-Box)",
+      "funktion": "Sinkt der Wasserspiegel, kippt die Kugel nach unten und öffnet das Ventil; steigt er, schließt es.",
+      "eigenschaften": [
+        "Hebel mit Kugel, rund 317 mm lang.",
+        "Hält den Pegel im Pool auf der Soll-Höhe."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerventil_pool.md, data/components/schwimmerventil_pool.json; Handelsteil, Maße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200,
+        "folgt": "ventilgehaeuse"
+      },
       "artikel_id": "ARM-schwimmerventil-pool",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     }
   ]
 }

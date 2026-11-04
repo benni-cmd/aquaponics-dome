@@ -3,98 +3,56 @@
   "datei": "designs/components/tank_gross_t3.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "tank gross t3",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Biofilter-Tank mit Schwebebett (großer Tank), Tank 3",
+  "kurz": "Das Wasser tritt tangential in den Kegeltank ein; lose Träger im belüfteten Wasser tragen die Bakterien, die Ammonium abbauen. Das Wasser verlässt den Tank oben über den Überlauf, Schlamm wird unten abgelassen. Variante mit gedrehtem Rippenmuster (Tank 3).",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 42,
   "gruppen": [
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "tank",
+      "name": "Tank und Deckel",
+      "kurz": "Der Behälter mit Kegelboden, der das Schwebebett und das Wasser fasst.",
       "teile": [
         "tank",
         "deckel"
       ]
     },
     {
-      "id": "rohre",
-      "name": "Rohre",
-      "kurz": "",
+      "id": "fuellung",
+      "name": "Schwebebett und Belüftung",
+      "kurz": "Lose Biomedium-Träger, die von unten belüftet und durch zwei Siebe im Tank gehalten werden.",
       "teile": [
-        "zulaufrohr",
-        "belueftungsrohr"
+        "biomedium",
+        "belueftungsgitter",
+        "belueftungsrohr",
+        "zulaufsieb",
+        "auslaufsieb"
       ]
     },
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "anschluesse",
+      "name": "Zulauf, Überlauf und Schlammablass",
+      "kurz": "Wasser kommt tangential herein, läuft oben seitlich über; Schlamm wird an der Kegelspitze abgelassen.",
       "teile": [
+        "zulaufrohr",
         "ueberlauf",
         "schlammstutzen",
+        "kugelhahn",
         "ablaufstutzen"
       ]
     },
     {
-      "id": "toepfe_und_substrat",
-      "name": "Toepfe und Substrat",
-      "kurz": "",
+      "id": "gestell",
+      "name": "Plattform und Gestell",
+      "kurz": "Die Plattform trägt den gefüllten Tank auf vier Beinen; Rippen stützen den Kegel.",
       "teile": [
-        "biomedium"
-      ]
-    },
-    {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
-      "teile": [
-        "belueftungsgitter",
-        "zulaufsieb",
-        "auslaufsieb",
         "plattform",
-        "stuetzrippe"
-      ]
-    },
-    {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
-      "teile": [
-        "kugelhahn"
-      ]
-    },
-    {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
-      "teile": [
+        "stuetzrippe",
         "bein",
-        "strebe"
-      ]
-    },
-    {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
-      "teile": [
-        "fussplatte"
-      ]
-    },
-    {
-      "id": "winkel_flachstahl_halter",
-      "name": "Winkel, Flachstahl, Halter",
-      "kurz": "",
-      "teile": [
-        "diagonale"
-      ]
-    },
-    {
-      "id": "schrauben",
-      "name": "Schrauben",
-      "kurz": "",
-      "teile": [
+        "fussplatte",
+        "strebe",
+        "diagonale",
         "schraube_m8x30"
       ]
     }
@@ -102,18 +60,30 @@
   "teile": [
     {
       "id": "tank",
-      "name": "Tank",
+      "name": "Tankkörper mit Kegelboden",
       "koerper": [
         "Tank"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PE Tank",
+      "werkstoff": "pe",
       "masse_mm": "Masse 19861.5 g, Einzelkoerper 930.0 x 930.0 x 1444.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Tank ist der Biofilter: In ihm schwebt das Biomedium im Wasser, Bakterien auf den Trägern bauen Ammonium zu Nitrat ab.",
+      "eigenschaften": [
+        "Zylinder über Kegel, Außendurchmesser 930 mm, Höhe 1444 mm.",
+        "PE, gerollter Randwulst, Revisionsöffnung im Deckel.",
+        "Maße aus dem Layout; Wanddicke und Fassungsvermögen sind angenommen."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "bezug": "offen (R52)",
       "artikel_id": "BEH-tank-pe-930x1444",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "deckel",
@@ -123,87 +93,198 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PE Tank",
+      "werkstoff": "pe",
       "masse_mm": "Masse 3635.6 g, Einzelkoerper 6.0 x 930.0 x 930.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Deckel schließt den Tank oben ab, hält das Belüftungsrohr und lässt sich für Wartung abnehmen.",
+      "eigenschaften": [
+        "PE-Platte 6 mm, bündig mit dem Randwulst.",
+        "Durchführung für das Belüftungsrohr."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 350
+      },
       "artikel_id": "BEH-tank-pe-930-deckel",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "zulaufrohr",
-      "name": "Zulaufrohr",
+      "name": "Zulaufrohr, tangential",
       "koerper": [
         "Zulaufrohr"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau Tank",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 205.8 g, Einzelkoerper 63.0 x 63.0 x 260.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohr führt das Wasser tangential an die Innenwand; so entsteht eine Drehströmung, die das Biomedium in Bewegung hält.",
+      "eigenschaften": [
+        "PVC-U-Rohr d63, 260 mm lang, Achse parallel zur Y-Achse.",
+        "Berührt die Innenwand tangential."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 250
+      },
       "artikel_id": "ROH-pvcu-d63",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.26,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.26
     },
     {
       "id": "ueberlauf",
-      "name": "Ueberlauf",
+      "name": "Überlaufstutzen",
       "koerper": [
         "Ueberlauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Tank",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 122.7 g, Einzelkoerper 63.0 x 63.0 x 155.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen lässt das Wasser oben seitlich aus dem Tank ablaufen und hält so den Wasserstand konstant.",
+      "eigenschaften": [
+        "PVC-U-Stutzen d63 (DN50), 100 mm unter dem Rand.",
+        "Das Auslaufsieb davor hält das Biomedium im Tank."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 250
+      },
       "artikel_id": "FIT-stutzen-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "biomedium",
-      "name": "Biomedium",
+      "name": "Biomedium (Schwebebett)",
       "koerper": [
         "Biomedium"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Biomedium",
+      "werkstoff": "biomedium",
       "masse_mm": "Masse 70550.3 g, Einzelkoerper 864.0 x 864.0 x 864.1 mm (Modell-Bounding-Box)",
+      "funktion": "Die losen Kunststoffträger bieten Bakterien viel Oberfläche; sie schweben im belüfteten Wasser und scheuern sich gegenseitig sauber.",
+      "eigenschaften": [
+        "Schüttung als Hüllkörper modelliert, etwa 470 Liter.",
+        "Füllgrad rund zwei Drittel des Tankvolumens; Fabrikat offen."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 1100
+      },
       "artikel_id": "TOP-biomedium",
       "artikel_einheit": "m3",
-      "artikel_menge_je_instanz": 0.645,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.645
     },
     {
       "id": "belueftungsgitter",
-      "name": "Belueftungsgitter",
+      "name": "Belüftungsgitter am Konus",
       "koerper": [
         "Belueftungsgitter"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "PVC grau Tank",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 903.2 g, Einzelkoerper 20.0 x 460.0 x 460.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Gitter am Kegel verteilt die Luft feinblasig im Tank und hält das Biomedium dadurch in Schwebe.",
+      "eigenschaften": [
+        "PVC-Gitter 460 x 460 mm, 20 mm hoch.",
+        "Luftzufuhr über das Belüftungsrohr von oben."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 500
+      },
       "artikel_id": "SON-belueftungsgitter-460",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "belueftungsrohr",
-      "name": "Belueftungsrohr",
+      "name": "Belüftungsrohr",
       "koerper": [
         "Belueftungsrohr"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau Tank",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 357.1 g, Einzelkoerper 16.0 x 16.0 x 1269.1 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohr bringt die Druckluft vom Deckel zum Gitter am Kegelboden.",
+      "eigenschaften": [
+        "PVC-U-Rohr d16, 1269 mm lang.",
+        "Luftanschluss im Deckel."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 700
+      },
       "artikel_id": "ROH-pvcu-d16",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.269,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.269
     },
     {
       "id": "zulaufsieb",
@@ -213,12 +294,31 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 64.1 g, Einzelkoerper 4.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Sieb am Zulauf fängt grobe Teile ab, bevor sie ins Schwebebett gelangen.",
+      "eigenschaften": [
+        "Stahlsieb 63 mm Durchmesser, 4 mm dick.",
+        "Sitzt im Zulaufrohr."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 400,
+        "folgt": "zulaufrohr"
+      },
       "artikel_id": "SON-tanksieb-stahl",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "auslaufsieb",
@@ -228,42 +328,99 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 715.1 g, Einzelkoerper 70.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Sieb vor dem Überlauf hält das Biomedium im Tank zurück.",
+      "eigenschaften": [
+        "Stahlsieb als Korb vor dem Überlaufstutzen, 110 x 110 mm.",
+        "Muss regelmäßig gereinigt werden."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 400,
+        "folgt": "ueberlauf"
+      },
       "artikel_id": "SON-tanksieb-stahl",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "schlammstutzen",
-      "name": "Schlammstutzen",
+      "name": "Schlammstutzen an der Kegelspitze",
       "koerper": [
         "Schlammstutzen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Tank",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 11.3 g, Einzelkoerper 14.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen sitzt an der tiefsten Stelle und sammelt den abgesetzten Schlamm.",
+      "eigenschaften": [
+        "PVC-U-Stutzen d16."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 80
+      },
       "artikel_id": "FIT-stutzen-d16",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kugelhahn",
-      "name": "Kugelhahn",
+      "name": "Kugelhahn des Schlammablasses",
       "koerper": [
         "Kugelhahn"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Ventil blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 123.0 g, Einzelkoerper 40.0 x 66.0 x 171.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Hahn sperrt den Schlammablass; zum Ablassen wird er geöffnet.",
+      "eigenschaften": [
+        "PVC-U-Kugelhahn d50 mit Verschraubung.",
+        "Im Modell eine Ersatzform; Fabrikat offen."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 160
+      },
       "artikel_id": "ARM-kugelhahn-d50",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "ablaufstutzen",
@@ -273,31 +430,67 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Tank",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 32.4 g, Einzelkoerper 40.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen führt den abgelassenen Schlamm weiter in die Entleerleitung.",
+      "eigenschaften": [
+        "PVC-U-Stutzen d40."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 240
+      },
       "artikel_id": "FIT-stutzen-d40",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "plattform",
-      "name": "Plattform",
+      "name": "Plattform mit Kegelsitz",
       "koerper": [
         "Plattform"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 18867.4 g, Einzelkoerper 98.0 x 821.0 x 821.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Plattform trägt den gefüllten Tank; der Kegel sitzt in einer Aussparung und die Last verteilt sich auf die Rippen.",
+      "eigenschaften": [
+        "Stahlplattform 821 x 821 mm, 98 mm hoch.",
+        "Kegelsitz mit 2 mm Spiel."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "SON-plattform-821x821",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "stuetzrippe",
-      "name": "Stuetzrippe",
+      "name": "Stützrippe aus Holz",
       "koerper": [
         "Stuetzrippe_1",
         "Stuetzrippe_2",
@@ -307,16 +500,31 @@
       ],
       "menge": 5,
       "typ": "sonderteil",
-      "werkstoff": "Holz Fichte",
+      "werkstoff": "holz_fichte",
       "masse_mm": "Masse 5475.1 g, Einzelkoerper 222.1 x 279.3 x 321.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Rippen stützen den Kegel von unten gegen die Plattform ab.",
+      "eigenschaften": [
+        "Fichtenholz, fünf Rippen radial unter dem Kegel.",
+        "Holz im Außenbereich: Schutzanstrich nötig."
+      ],
+      "norm": "EN 338 (Festigkeitsklassen Bauholz) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 60,
+        "folgt": "plattform"
+      },
       "artikel_id": "SON-holz-stuetzrippe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 5.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 5.0
     },
     {
       "id": "bein",
-      "name": "Bein",
+      "name": "Standbein",
       "koerper": [
         "Bein_1",
         "Bein_2",
@@ -325,16 +533,34 @@
       ],
       "menge": 4,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 11292.2 g, Einzelkoerper 40.0 x 40.0 x 1002.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Beine tragen Plattform und Tank und stehen auf Fußplatten.",
+      "eigenschaften": [
+        "Vierkantrohr 40 x 40 x 2,5 mm, rund 1002 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 400,
+        "folgt": "plattform"
+      },
       "artikel_id": "PRF-st-rr40x40x2.5",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 4.008,
-      "geruest": true
+      "artikel_menge_je_instanz": 4.008
     },
     {
       "id": "fussplatte",
-      "name": "Fussplatte",
+      "name": "Fußplatte",
       "koerper": [
         "Fussplatte_1",
         "Fussplatte_2",
@@ -343,16 +569,34 @@
       ],
       "menge": 4,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1860.0 g, Einzelkoerper 6.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Fußplatte verteilt die Last des Beins auf den Boden und nimmt die Schrauben auf.",
+      "eigenschaften": [
+        "Stahlplatte 100 x 100 x 6 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "bein"
+      },
       "artikel_id": "BLE-fussplatte-100x100x6",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 4.0
     },
     {
       "id": "strebe",
-      "name": "Strebe",
+      "name": "Querstrebe zwischen den Beinen",
       "koerper": [
         "Strebe_1",
         "Strebe_2",
@@ -361,12 +605,26 @@
       ],
       "menge": 4,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 8350.8 g, Einzelkoerper 40.0 x 40.0 x 741.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Streben verbinden die Beine und steifen das Gestell gegen Kippen.",
+      "eigenschaften": [
+        "Vierkantrohr 40 x 40 x 2,5 mm, 741 mm lang."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 100,
+        "folgt": "bein"
+      },
       "artikel_id": "PRF-st-rr40x40x2.5",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 2.964,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.964
     },
     {
       "id": "diagonale",
@@ -379,16 +637,30 @@
       ],
       "menge": 4,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1766.7 g, Einzelkoerper 3.0 x 210.3 x 733.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Diagonalen halten das Gestell rechtwinklig und nehmen seitliche Kräfte auf.",
+      "eigenschaften": [
+        "Flachstahl 3 mm, rund 733 mm lang."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 180,
+        "folgt": "bein"
+      },
       "artikel_id": "WNK-flach-3mm-diagonale",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 4.0
     },
     {
       "id": "schraube_m8x30",
-      "name": "Schraube M8x30",
+      "name": "Schraube M8 x 30 an der Fußplatte",
       "koerper": [
         "Body1",
         "Body2",
@@ -401,12 +673,32 @@
       ],
       "menge": 8,
       "typ": "normteil",
-      "werkstoff": "Default",
+      "werkstoff": "unbestimmt_modell",
       "masse_mm": "Masse 23.6 g, Einzelkoerper 13.0 x 15.0 x 35.3 mm (Modell-Bounding-Box)",
+      "funktion": "Die Schrauben halten die Fußplatten am Untergrund.",
+      "eigenschaften": [
+        "Sechskantschraube M8 x 30, verzinkt.",
+        "Im Modell ohne Mutter und Scheibe."
+      ],
+      "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tank.md, data/components/tank.json (typen.gross), docs/research/R09.md; Maße im Modell, Rohr- und Wandmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "fussplatte"
+      },
       "artikel_id": "SRB-satz-m8x30",
       "artikel_einheit": "Satz",
-      "artikel_menge_je_instanz": 8.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 8.0
     }
   ]
 }

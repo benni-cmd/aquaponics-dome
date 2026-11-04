@@ -3,16 +3,26 @@
   "datei": "designs/components/puffer_ibc.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "puffer ibc",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Puffertank (IBC 1000 Liter)",
+  "kurz": "Der Container nimmt rund 900 Liter Wasser auf; Zulauf und Überlauf liegen oben, der Ablauf mit Kugelhahn unten.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 77,
   "gruppen": [
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "behaelter",
+      "name": "Blase und Deckel",
+      "kurz": "Die Kunststoffblase hält das Wasser; der Deckel schließt die Einfüllöffnung.",
+      "teile": [
+        "blase",
+        "deckel",
+        "wasser"
+      ]
+    },
+    {
+      "id": "kaefig",
+      "name": "Gitterkäfig und Palette",
+      "kurz": "Der verzinkte Gitterkäfig schützt die Blase und steht auf einer Kunststoffpalette.",
       "teile": [
         "kufe",
         "deckplatte",
@@ -35,46 +45,29 @@
         "stab_s_a",
         "stab_t_a",
         "stab_s_b",
-        "stab_t_b",
-        "blase",
-        "deckel"
+        "stab_t_b"
       ]
     },
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "anschluesse",
+      "name": "Stutzen und Ablaufhahn",
+      "kurz": "Zulauf, Überlauf, Belüftung, Sensor und der Ablauf mit Kugelhahn.",
       "teile": [
         "zulauf",
         "ueberlauf",
         "belueftung",
         "sensorstutzen",
         "ablauf_stutzen",
-        "ablauf_zapfen"
-      ]
-    },
-    {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
-      "teile": [
         "kugelhahn",
-        "hahn_hebel"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
-        "wasser"
+        "hahn_hebel",
+        "ablauf_zapfen"
       ]
     }
   ],
   "teile": [
     {
       "id": "kufe",
-      "name": "Kufe",
+      "name": "Palettenkufe",
       "koerper": [
         "Kufe_1",
         "Kufe_2",
@@ -82,211 +75,447 @@
       ],
       "menge": 3,
       "typ": "kaufteil",
-      "werkstoff": "HDPE Palette",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 14745.6 g, Einzelkoerper 128.0 x 160.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Kufen tragen den Container und lassen sich mit Gabelstapler oder Hubwagen anheben.",
+      "eigenschaften": [
+        "Kunststoff, drei Kufen, 1200 mm lang."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "deckplatte",
-      "name": "Deckplatte",
+      "name": "Palettendeckplatte",
       "koerper": [
         "Deckplatte"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "HDPE Palette",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 5280.0 g, Einzelkoerper 22.0 x 1000.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte liegt auf den Kufen und trägt die Blase.",
+      "eigenschaften": [
+        "Kunststoff, 22 mm dick, 1000 x 1200 mm."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_xm",
-      "name": "Rahmen u xm",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_xm1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_ym",
-      "name": "Rahmen u ym",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_ym1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_xp",
-      "name": "Rahmen u xp",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_xp1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_yp",
-      "name": "Rahmen u yp",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_yp1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_xm",
-      "name": "Rahmen o xm",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_xm1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_ym",
-      "name": "Rahmen o ym",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_ym1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_xp",
-      "name": "Rahmen o xp",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_xp1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_yp",
-      "name": "Rahmen o yp",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_yp1"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_mm",
-      "name": "Pfosten mm",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_mm"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_mp",
-      "name": "Pfosten mp",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_mp"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_pm",
-      "name": "Pfosten pm",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_pm"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_pp",
-      "name": "Pfosten pp",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_pp"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_v_v",
-      "name": "Stab V v",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_V_v",
         "Stab_V_v (2)",
@@ -296,16 +525,31 @@
       ],
       "menge": 5,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1902.6 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_h_v",
-      "name": "Stab H v",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_H_v",
         "Stab_H_v (2)",
@@ -318,16 +562,31 @@
       ],
       "menge": 8,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3627.3 g, Einzelkoerper 8.0 x 8.0 x 1150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_v_h",
-      "name": "Stab V h",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_V_h",
         "Stab_V_h (2)",
@@ -337,16 +596,31 @@
       ],
       "menge": 5,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1902.6 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_h_h",
-      "name": "Stab H h",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_H_h",
         "Stab_H_h (2)",
@@ -359,16 +633,31 @@
       ],
       "menge": 8,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3627.3 g, Einzelkoerper 8.0 x 8.0 x 1150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_s_a",
-      "name": "Stab S a",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_S_a",
         "Stab_S_a (2)",
@@ -377,16 +666,31 @@
       ],
       "menge": 4,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1522.1 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_t_a",
-      "name": "Stab T a",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_T_a",
         "Stab_T_a (2)",
@@ -399,16 +703,31 @@
       ],
       "menge": 8,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2996.8 g, Einzelkoerper 8.0 x 8.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_s_b",
-      "name": "Stab S b",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_S_b",
         "Stab_S_b (2)",
@@ -417,16 +736,31 @@
       ],
       "menge": 4,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1522.1 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_t_b",
-      "name": "Stab T b",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_T_b",
         "Stab_T_b (2)",
@@ -439,87 +773,189 @@
       ],
       "menge": 8,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2996.8 g, Einzelkoerper 8.0 x 8.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "blase",
-      "name": "Blase",
+      "name": "Innenblase (Tank)",
       "koerper": [
         "Blase"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PE Blase",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 14844.7 g, Einzelkoerper 940.0 x 1010.0 x 1140.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Blase aus Kunststoff nimmt das Wasser auf; sie ist der eigentliche Behälter des 1000-Liter-Containers.",
+      "eigenschaften": [
+        "Nenninhalt 1000 Liter, nutzbar etwa 900 Liter.",
+        "PE, im Käfig gestützt."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "deckel",
-      "name": "Deckel",
+      "name": "Einfülldeckel",
       "koerper": [
         "Deckel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PE Blase",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 206.0 g, Einzelkoerper 5.0 x 235.0 x 235.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Schraubdeckel schließt die große Öffnung oben auf der Blase.",
+      "eigenschaften": [
+        "Öffnung rund 235 mm."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "blase"
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "zulauf",
-      "name": "Zulauf",
+      "name": "Zulaufstutzen",
       "koerper": [
         "Zulauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 77.8 g, Einzelkoerper 63.0 x 63.0 x 75.0 mm (Modell-Bounding-Box)",
+      "funktion": "Über den Stutzen läuft Wasser seitlich oben in die Blase.",
+      "eigenschaften": [
+        "PVC-Stutzen d63 (DN50)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "ueberlauf",
-      "name": "Ueberlauf",
+      "name": "Überlaufstutzen",
       "koerper": [
         "Ueberlauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 77.8 g, Einzelkoerper 63.0 x 63.0 x 75.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen leitet überschüssiges Wasser ab, sobald die Blase voll ist.",
+      "eigenschaften": [
+        "PVC-Stutzen d63 (DN50) gegenüber dem Zulauf."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "belueftung",
-      "name": "Belueftung",
+      "name": "Belüftungsstutzen",
       "koerper": [
         "Belueftung"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 14.6 g, Einzelkoerper 32.0 x 32.0 x 45.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen lässt beim Befüllen und Leeren Luft aus und ein.",
+      "eigenschaften": [
+        "PVC-Stutzen d32 auf dem Blasendach."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d32",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sensorstutzen",
@@ -529,88 +965,192 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 46.7 g, Einzelkoerper 45.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen nimmt eine Messsonde auf, ohne dass der Deckel geöffnet werden muss.",
+      "eigenschaften": [
+        "PVC-Stutzen d40."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d40",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "ablauf_stutzen",
-      "name": "Ablauf Stutzen",
+      "name": "Ablaufstutzen",
       "koerper": [
         "Ablauf_Stutzen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 36.3 g, Einzelkoerper 35.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen führt das Wasser unten aus der Blase zum Ablaufhahn.",
+      "eigenschaften": [
+        "PVC-Stutzen d32."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d32",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kugelhahn",
-      "name": "Kugelhahn",
+      "name": "Kugelhahn des Ablaufs",
       "koerper": [
         "Kugelhahn"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 377.1 g, Einzelkoerper 70.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Hahn sperrt den Ablauf unten ab; zum Entleeren wird er geöffnet.",
+      "eigenschaften": [
+        "PVC-Kugelhahn d63 (DN50)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 400,
+        "folgt": "ablauf_stutzen"
+      },
       "artikel_id": "ARM-kugelhahn-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "hahn_hebel",
-      "name": "Hahn Hebel",
+      "name": "Hebel des Ablaufhahns",
       "koerper": [
         "Hahn_Hebel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 26.2 g, Einzelkoerper 8.0 x 18.0 x 130.0 mm (Modell-Bounding-Box)",
+      "funktion": "Am Hebel wird der Hahn geöffnet und geschlossen.",
+      "eigenschaften": [
+        "Kunststoffhebel 130 mm lang."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "kugelhahn"
+      },
       "artikel_id": "ARM-kugelhahn-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "ablauf_zapfen",
-      "name": "Ablauf Zapfen",
+      "name": "Ablaufzapfen",
       "koerper": [
         "Ablauf_Zapfen"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 41.5 g, Einzelkoerper 40.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Zapfen nimmt einen Schlauch oder ein Rohr zum Entleeren auf.",
+      "eigenschaften": [
+        "PVC-Stutzen d40."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 550,
+        "folgt": "kugelhahn"
+      },
       "artikel_id": "FIT-stutzen-d40",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "wasser",
-      "name": "Wasser",
+      "name": "Wasserfüllung (nur Darstellung)",
       "koerper": [
         "Wasser"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Wasser",
+      "werkstoff": "wasser",
       "masse_mm": "Masse 899998.4 g, Einzelkoerper 850.4 x 935.0 x 1135.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Der Körper zeigt die Wasserfüllung für die Ansicht; er ist kein Bauteil und wird nicht gekauft.",
+      "eigenschaften": [
+        "Reines Darstellungsvolumen, etwa 900 Liter."
+      ],
+      "norm": "keine (kein Bauteil)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_ibc.md, data/components/puffer_ibc.json; Normmaße des 1000-l-Containers, Fabrikat offen",
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Wasserkoerper, kein Bauteil",
-      "geruest": true
+      "ausnahme": "Wasserkoerper, kein Bauteil"
     }
   ]
 }

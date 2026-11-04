@@ -3,36 +3,29 @@
   "datei": "designs/components/pumpe_gross.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "pumpe gross",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Pumpenmodul groß (Hauptkreislauf)",
+  "kurz": "Eine Kreiselpumpe auf einer Montagetafel: Wasser tritt axial in den Saugstutzen ein und verlässt die Pumpe nach oben durch den Druckstutzen.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 15,
   "gruppen": [
     {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
+      "id": "tafel",
+      "name": "Montagetafel und Konsole",
+      "kurz": "Die Tafel trägt die Pumpe; Winkel halten sie senkrecht und die Konsole nimmt die Pumpe auf.",
       "teile": [
-        "montagetafel"
-      ]
-    },
-    {
-      "id": "winkel_flachstahl_halter",
-      "name": "Winkel, Flachstahl, Halter",
-      "kurz": "",
-      "teile": [
+        "montagetafel",
         "standwinkel_l",
         "standwinkel_r",
-        "konsole"
+        "konsole",
+        "pumpensockel"
       ]
     },
     {
-      "id": "pumpen",
-      "name": "Pumpen",
-      "kurz": "",
+      "id": "pumpe",
+      "name": "Pumpe",
+      "kurz": "Motor und Pumpenkopf mit Saug- und Druckstutzen sowie Stromanschluss.",
       "teile": [
-        "pumpensockel",
         "motor",
         "pumpenkopf",
         "saugstutzen",
@@ -42,18 +35,11 @@
       ]
     },
     {
-      "id": "schrauben",
+      "id": "befestigung",
       "name": "Schrauben",
-      "kurz": "",
+      "kurz": "Die Schrauben halten die Konsole an der Tafel.",
       "teile": [
-        "schraube_m6x20"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
+        "schraube_m6x20",
         "mutter_m6"
       ]
     }
@@ -67,57 +53,121 @@
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "PP Tafel",
+      "werkstoff": "pp",
       "masse_mm": "Masse 2043.9 g, Einzelkoerper 7.0 x 463.0 x 693.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Tafel trägt die ganze Pumpeneinheit senkrecht und lässt sich als Modul versetzen.",
+      "eigenschaften": [
+        "PP-Platte, stehend auf zwei Standwinkeln.",
+        "Maße entsprechen dem Layout."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
       "artikel_id": "BLE-pp-tafel-693x463x7",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "standwinkel_l",
-      "name": "Standwinkel L",
+      "name": "Standwinkel",
       "koerper": [
         "Standwinkel_L"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl Pumpe",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 343.4 g, Einzelkoerper 50.0 x 80.0 x 100.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Winkel stellt die Tafel aufrecht und leitet das Gewicht in den Boden.",
+      "eigenschaften": [
+        "Stahlwinkel 50 x 100 x 5 mm, hinten an der Tafel."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120,
+        "folgt": "montagetafel"
+      },
       "artikel_id": "WNK-pumpenkonsole",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "standwinkel_r",
-      "name": "Standwinkel R",
+      "name": "Standwinkel",
       "koerper": [
         "Standwinkel_R"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl Pumpe",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 343.4 g, Einzelkoerper 50.0 x 80.0 x 100.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Winkel stellt die Tafel aufrecht und leitet das Gewicht in den Boden.",
+      "eigenschaften": [
+        "Stahlwinkel 50 x 100 x 5 mm, hinten an der Tafel."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120,
+        "folgt": "montagetafel"
+      },
       "artikel_id": "WNK-pumpenkonsole",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "konsole",
-      "name": "Konsole",
+      "name": "Pumpenkonsole",
       "koerper": [
         "Konsole"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl Pumpe",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1012.6 g, Einzelkoerper 40.0 x 137.0 x 150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Konsole trägt die Pumpe vor der Tafel und hält sie auf Höhe der Achse.",
+      "eigenschaften": [
+        "Stahlwinkel 5 mm, an der Tafel verschraubt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 200,
+        "folgt": "montagetafel"
+      },
       "artikel_id": "WNK-pumpenkonsole",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "pumpensockel",
@@ -127,27 +177,66 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Stahl Pumpe",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 718.1 g, Einzelkoerper 11.0 x 66.0 x 126.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Sockel hebt den Motor an und gibt dem Pumpenkopf Luft zur Konsole.",
+      "eigenschaften": [
+        "Stahlsockel 11 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100,
+        "folgt": "konsole"
+      },
       "artikel_id": "PMP-pumpe-gross",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "motor",
-      "name": "Motor",
+      "name": "Pumpenmotor",
       "koerper": [
         "Motor"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Pumpe blau",
+      "werkstoff": "pumpengehaeuse",
       "masse_mm": "Masse 2565.6 g, Einzelkoerper 110.0 x 110.0 x 180.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Motor treibt das Laufrad im Pumpenkopf an.",
+      "eigenschaften": [
+        "Zylindrische Hüllform; reale Pumpen wiegen mehr.",
+        "230 V Wechselstrom."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "konsole"
+      },
       "artikel_id": "PMP-pumpe-gross",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "pumpenkopf",
@@ -157,12 +246,31 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Pumpe",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 1486.5 g, Einzelkoerper 80.0 x 130.0 x 130.0 mm (Modell-Bounding-Box)",
+      "funktion": "Im Pumpenkopf fördert das Laufrad das Wasser vom Saug- zum Druckstutzen.",
+      "eigenschaften": [
+        "Kunststoffgehäuse, Saugstutzen axial, Druckstutzen nach oben."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "motor"
+      },
       "artikel_id": "PMP-pumpe-gross",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "saugstutzen",
@@ -172,12 +280,31 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Pumpe",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 43.4 g, Einzelkoerper 50.0 x 50.0 x 70.0 mm (Modell-Bounding-Box)",
+      "funktion": "Über den Stutzen saugt die Pumpe Wasser an.",
+      "eigenschaften": [
+        "PVC-U-Stutzen, Öffnung zeigt nach +X."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 350,
+        "folgt": "pumpenkopf"
+      },
       "artikel_id": "PMP-pumpe-gross",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "druckstutzen",
@@ -187,58 +314,134 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Pumpe",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 36.1 g, Einzelkoerper 40.0 x 40.0 x 74.0 mm (Modell-Bounding-Box)",
+      "funktion": "Über den Stutzen drückt die Pumpe das Wasser in die Leitung.",
+      "eigenschaften": [
+        "PVC-U-Stutzen, Öffnung zeigt nach oben."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250,
+        "folgt": "pumpenkopf"
+      },
       "artikel_id": "PMP-pumpe-gross",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "kabel",
-      "name": "Kabel",
+      "name": "Anschlusskabel",
       "koerper": [
         "Kabel"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Kabel schwarz",
+      "werkstoff": "kabel_pvc",
       "masse_mm": "Masse 9.0 g, Einzelkoerper 8.0 x 8.0 x 150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Kabel führt den Strom vom Stecker zum Motor.",
+      "eigenschaften": [
+        "Kabel 3 x 1,5 mm², im Modell 150 mm, real 1,5 bis 3 m."
+      ],
+      "norm": "VDE 0281 / H05VV-F [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "motor"
+      },
       "artikel_id": "PMP-pumpe-gross",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stecker",
-      "name": "Stecker",
+      "name": "Schutzkontaktstecker",
       "koerper": [
         "Stecker"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Kabel schwarz",
+      "werkstoff": "kabel_pvc",
       "masse_mm": "Masse 118.8 g, Einzelkoerper 40.0 x 45.0 x 55.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stecker verbindet die Pumpe mit der Steckdose.",
+      "eigenschaften": [
+        "230 V Schutzkontaktstecker."
+      ],
+      "norm": "VDE 0281 / H05VV-F [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 350,
+        "folgt": "kabel"
+      },
       "artikel_id": "PMP-pumpe-gross",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "schraube_m6x20",
-      "name": "Schraube M6x20",
+      "name": "Schraube M6 x 20",
       "koerper": [
         "Body1",
         "Body3"
       ],
       "menge": 2,
       "typ": "normteil",
-      "werkstoff": "Stahl Pumpe",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 14.3 g, Einzelkoerper 10.0 x 11.5 x 24.1 mm (Modell-Bounding-Box)",
+      "funktion": "Die Schrauben halten die Konsole an der Tafel.",
+      "eigenschaften": [
+        "Sechskantschraube M6 x 20 nach ISO 4017, je Konsole zwei."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "konsole"
+      },
       "artikel_id": "SRB-satz-m6x20",
       "artikel_einheit": "Satz",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "mutter_m6",
@@ -249,13 +452,31 @@
       ],
       "menge": 2,
       "typ": "sonderteil",
-      "werkstoff": "Stahl Pumpe",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 4.8 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Die Mutter sichert die Schraube auf der Rückseite der Tafel.",
+      "eigenschaften": [
+        "Sechskantmutter M6 nach ISO 4032.",
+        "Im Schraubensatz enthalten."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/pumpe.md, data/components/pumpe.json, docs/research/R47 (Pumpenauslegung); Fabrikat offen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "montagetafel"
+      },
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten"
     }
   ]
 }

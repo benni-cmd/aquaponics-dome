@@ -3,94 +3,38 @@
   "datei": "designs/components/puffer_station.sc",
   "bauteilgruppe": "Becken und Tanks",
   "teilenummer": "",
-  "stand": "geruest",
-  "titel": "puffer station",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "stand": "teiledaten",
+  "titel": "Puffer-Station (zwei IBC, Messplatz, Dosierung)",
+  "kurz": "Zwei IBC stehen übereinander: oben Zulauf und Messung, unten der Vorrat. Ein Messplatz misst pH, Leitwert, Temperatur und Sauerstoff; zwei Schlauchpumpen dosieren Nährstoffe und pH-Puffer.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
   "koerperzahl": 230,
   "gruppen": [
     {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
+      "id": "rahmen",
+      "name": "Stapelrahmen",
+      "kurz": "Vier Beine, Stirnbalken und Träger heben die obere IBC über die untere.",
       "teile": [
         "fussplatte_mm",
-        "fussplatte_mp",
-        "fussplatte_pm",
-        "fussplatte_pp",
-        "mess_fussplatte",
-        "kon_fussplatte_m",
-        "kon_fussplatte_p",
-        "kon_boden",
-        "plat_fuss_mv",
-        "plat_fuss_mh",
-        "plat_fuss_pv",
-        "plat_fuss_ph",
-        "plat_boden"
-      ]
-    },
-    {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
-      "teile": [
         "bein_mm",
+        "fussplatte_mp",
         "bein_mp",
+        "fussplatte_pm",
         "bein_pm",
+        "fussplatte_pp",
         "bein_pp",
         "stirnbalken_m",
         "stirnbalken_p",
         "traeger",
-        "mess_staender",
-        "mess_tellerarm",
-        "mess_haltearm",
-        "mess_querarm",
-        "kon_pfosten_m",
-        "kon_pfosten_p",
-        "kon_traeger",
-        "plat_bein_mv",
-        "plat_bein_mh",
-        "plat_arm_m",
-        "plat_bein_pv",
-        "plat_bein_ph",
-        "plat_arm_p",
-        "plat_quer",
-        "gel_pfosten",
-        "gel_pfosten_prf_st_rr25x25x2",
-        "gel_seite_m",
-        "gel_hinten_m",
-        "gel_seite_p",
-        "gel_hinten_p",
-        "leiter_holm_m",
-        "leiter_holm_p",
-        "leiter_sprosse"
-      ]
-    },
-    {
-      "id": "winkel_flachstahl_halter",
-      "name": "Winkel, Flachstahl, Halter",
-      "kurz": "",
-      "teile": [
         "diagonale_m",
-        "diagonale_p"
-      ]
-    },
-    {
-      "id": "rohre",
-      "name": "Rohre",
-      "kurz": "",
-      "teile": [
+        "diagonale_p",
         "verbindungsrohr"
       ]
     },
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "ibc",
+      "name": "Zwei IBC (oben und unten)",
+      "kurz": "Die obere IBC nimmt Zulauf und Messung auf, die untere hält den Vorrat.",
       "teile": [
-        "messbecher",
-        "kanister_m",
-        "kanister_p",
         "kufe",
         "deckplatte",
         "rahmen_u_xm",
@@ -114,233 +58,408 @@
         "stab_s_b",
         "stab_t_b",
         "blase",
-        "deckel"
-      ]
-    },
-    {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
-      "teile": [
-        "sondenhalter_ph",
-        "sondenhalter_ec",
-        "sondenhalter_temperatur",
-        "sondenhalter_o"
-      ]
-    },
-    {
-      "id": "messtechnik",
-      "name": "Messtechnik",
-      "kurz": "",
-      "teile": [
-        "sonde_ph",
-        "sonde_ec",
-        "sonde_temperatur",
-        "sonde_o"
-      ]
-    },
-    {
-      "id": "elektrik",
-      "name": "Elektrik",
-      "kurz": "",
-      "teile": [
-        "kabelkanal"
-      ]
-    },
-    {
-      "id": "pumpen",
-      "name": "Pumpen",
-      "kurz": "",
-      "teile": [
-        "dosierpumpe_m",
-        "dosierpumpe_p"
-      ]
-    },
-    {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
-      "teile": [
+        "deckel",
         "zulauf",
         "ueberlauf",
         "belueftung",
         "sensorstutzen",
         "ablauf_stutzen",
-        "ablauf_zapfen"
-      ]
-    },
-    {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
-      "teile": [
         "kugelhahn",
-        "hahn_hebel"
+        "hahn_hebel",
+        "ablauf_zapfen",
+        "wasser"
       ]
     },
     {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
+      "id": "messplatz",
+      "name": "Messplatz",
+      "kurz": "Ständer mit Becher und vier Sonden für pH, Leitwert, Temperatur und Sauerstoff.",
       "teile": [
-        "wasser"
+        "mess_fussplatte",
+        "mess_staender",
+        "mess_tellerarm",
+        "mess_haltearm",
+        "mess_querarm",
+        "messbecher",
+        "sondenhalter_ph",
+        "sonde_ph",
+        "sondenhalter_ec",
+        "sonde_ec",
+        "sondenhalter_temperatur",
+        "sonde_temperatur",
+        "sondenhalter_o",
+        "sonde_o",
+        "kabelkanal"
+      ]
+    },
+    {
+      "id": "dosierung",
+      "name": "Dosierkonsole",
+      "kurz": "Zwei Kanister mit Schlauchpumpen dosieren Nährstoffe und pH-Puffer.",
+      "teile": [
+        "kon_fussplatte_m",
+        "kon_pfosten_m",
+        "kon_fussplatte_p",
+        "kon_pfosten_p",
+        "kon_traeger",
+        "kon_boden",
+        "kanister_m",
+        "dosierpumpe_m",
+        "kanister_p",
+        "dosierpumpe_p"
+      ]
+    },
+    {
+      "id": "zugang",
+      "name": "Plattform, Geländer und Leiter",
+      "kurz": "Der Standplatz oben am Stapel mit Absturzsicherung und Leiter.",
+      "teile": [
+        "plat_fuss_mv",
+        "plat_bein_mv",
+        "plat_fuss_mh",
+        "plat_bein_mh",
+        "plat_arm_m",
+        "plat_fuss_pv",
+        "plat_bein_pv",
+        "plat_fuss_ph",
+        "plat_bein_ph",
+        "plat_arm_p",
+        "plat_quer",
+        "plat_boden",
+        "gel_pfosten",
+        "gel_pfosten_prf_st_rr25x25x2",
+        "gel_seite_m",
+        "gel_hinten_m",
+        "gel_seite_p",
+        "gel_hinten_p",
+        "leiter_holm_m",
+        "leiter_holm_p",
+        "leiter_sprosse"
       ]
     }
   ],
   "teile": [
     {
       "id": "fussplatte_mm",
-      "name": "Fussplatte mm",
+      "name": "Fußplatte des Stapelrahmens",
       "koerper": [
         "Fussplatte_mm"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Beins auf den Boden.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "bein_mm",
-      "name": "Bein mm",
+      "name": "Bein des Stapelrahmens",
       "koerper": [
         "Bein_mm"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5846.3 g, Einzelkoerper 60.0 x 60.0 x 1127.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Beine tragen die gefüllte obere IBC außerhalb des unteren Käfigs.",
+      "eigenschaften": [
+        "Rechteckrohr 60 x 60 x 3 mm, 1127 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300
+      },
       "artikel_id": "PRF-st-rr60x60x3",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.127,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.127
     },
     {
       "id": "fussplatte_mp",
-      "name": "Fussplatte mp",
+      "name": "Fußplatte des Stapelrahmens",
       "koerper": [
         "Fussplatte_mp"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Beins auf den Boden.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "bein_mp",
-      "name": "Bein mp",
+      "name": "Bein des Stapelrahmens",
       "koerper": [
         "Bein_mp"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5846.3 g, Einzelkoerper 60.0 x 60.0 x 1127.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Beine tragen die gefüllte obere IBC außerhalb des unteren Käfigs.",
+      "eigenschaften": [
+        "Rechteckrohr 60 x 60 x 3 mm, 1127 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300
+      },
       "artikel_id": "PRF-st-rr60x60x3",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.127,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.127
     },
     {
       "id": "fussplatte_pm",
-      "name": "Fussplatte pm",
+      "name": "Fußplatte des Stapelrahmens",
       "koerper": [
         "Fussplatte_pm"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Beins auf den Boden.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "bein_pm",
-      "name": "Bein pm",
+      "name": "Bein des Stapelrahmens",
       "koerper": [
         "Bein_pm"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5846.3 g, Einzelkoerper 60.0 x 60.0 x 1127.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Beine tragen die gefüllte obere IBC außerhalb des unteren Käfigs.",
+      "eigenschaften": [
+        "Rechteckrohr 60 x 60 x 3 mm, 1127 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300
+      },
       "artikel_id": "PRF-st-rr60x60x3",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.127,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.127
     },
     {
       "id": "fussplatte_pp",
-      "name": "Fussplatte pp",
+      "name": "Fußplatte des Stapelrahmens",
       "koerper": [
         "Fussplatte_pp"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Beins auf den Boden.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "bein_pp",
-      "name": "Bein pp",
+      "name": "Bein des Stapelrahmens",
       "koerper": [
         "Bein_pp"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5846.3 g, Einzelkoerper 60.0 x 60.0 x 1127.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die vier Beine tragen die gefüllte obere IBC außerhalb des unteren Käfigs.",
+      "eigenschaften": [
+        "Rechteckrohr 60 x 60 x 3 mm, 1127 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300
+      },
       "artikel_id": "PRF-st-rr60x60x3",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.127,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.127
     },
     {
       "id": "stirnbalken_m",
-      "name": "Stirnbalken m",
+      "name": "Stirnbalken",
       "koerper": [
         "Stirnbalken_m"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5913.7 g, Einzelkoerper 60.0 x 60.0 x 1140.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Balken verbindet zwei Beine an der Stirnseite und steift den Rahmen aus.",
+      "eigenschaften": [
+        "Rechteckrohr 60 x 60 x 3 mm, 1140 mm lang."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "PRF-st-rr60x60x3",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.14,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.14
     },
     {
       "id": "stirnbalken_p",
-      "name": "Stirnbalken p",
+      "name": "Stirnbalken",
       "koerper": [
         "Stirnbalken_p"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5913.7 g, Einzelkoerper 60.0 x 60.0 x 1140.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Balken verbindet zwei Beine an der Stirnseite und steift den Rahmen aus.",
+      "eigenschaften": [
+        "Rechteckrohr 60 x 60 x 3 mm, 1140 mm lang."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "PRF-st-rr60x60x3",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.14,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.14
     },
     {
       "id": "traeger",
-      "name": "Traeger",
+      "name": "Längsträger",
       "koerper": [
         "Traeger_1",
         "Traeger_2",
@@ -348,132 +467,285 @@
       ],
       "menge": 3,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 20853.2 g, Einzelkoerper 60.0 x 60.0 x 1340.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die drei Träger liegen unter den Kufen der oberen Palette und tragen sie.",
+      "eigenschaften": [
+        "Rechteckrohr 60 x 60 x 3 mm, 1340 mm lang.",
+        "Tragen im gefüllten Zustand rund eine Tonne."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "PRF-st-rr60x60x3",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 4.02,
-      "geruest": true
+      "artikel_menge_je_instanz": 4.02
     },
     {
       "id": "diagonale_m",
-      "name": "Diagonale m",
+      "name": "Diagonale",
       "koerper": [
         "Diagonale_m"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2385.4 g, Einzelkoerper 30.0 x 947.8 x 1099.5 mm (Modell-Bounding-Box)",
+      "funktion": "Die Diagonale hält den Stapelrahmen an der Stirnseite rechtwinklig.",
+      "eigenschaften": [
+        "Flachstahl 3 mm, rund 1100 mm lang."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 250,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "WNK-flach-3mm-diagonale",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "diagonale_p",
-      "name": "Diagonale p",
+      "name": "Diagonale",
       "koerper": [
         "Diagonale_p"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2385.4 g, Einzelkoerper 30.0 x 947.8 x 1099.5 mm (Modell-Bounding-Box)",
+      "funktion": "Die Diagonale hält den Stapelrahmen an der Stirnseite rechtwinklig.",
+      "eigenschaften": [
+        "Flachstahl 3 mm, rund 1100 mm lang."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 250,
+        "folgt": "bein_mm"
+      },
       "artikel_id": "WNK-flach-3mm-diagonale",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "verbindungsrohr",
-      "name": "Verbindungsrohr",
+      "name": "Verbindungsrohr zwischen den IBC",
       "koerper": [
         "Verbindungsrohr"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 2354.4 g, Einzelkoerper 63.0 x 146.5 x 433.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Rohr leitet das Wasser vom Ablauf der oberen zum Zulauf der unteren IBC.",
+      "eigenschaften": [
+        "PVC-U-Rohr d63 (DN50) mit Kugelhahn."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 300
+      },
       "artikel_id": "ROH-pvcu-d63",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.433,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.433
     },
     {
       "id": "mess_fussplatte",
-      "name": "Mess Fussplatte",
+      "name": "Fußplatte des Messständers",
       "koerper": [
         "Mess_Fussplatte"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2512.0 g, Einzelkoerper 8.0 x 200.0 x 200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte steht den Messständer sicher auf dem Boden.",
+      "eigenschaften": [
+        "Stahlplatte 200 x 200 x 8 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "mess_staender"
+      },
       "artikel_id": "BLE-fussplatte-200x200x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "mess_staender",
-      "name": "Mess Staender",
+      "name": "Messständer",
       "koerper": [
         "Mess_Staender"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2978.7 g, Einzelkoerper 40.0 x 40.0 x 1292.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Ständer trägt Messbecher und Sonden in Arbeitshöhe.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1292 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.292,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.292
     },
     {
       "id": "mess_tellerarm",
-      "name": "Mess Tellerarm",
+      "name": "Tellerarm",
       "koerper": [
         "Mess_Tellerarm"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 230.6 g, Einzelkoerper 40.0 x 40.0 x 100.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Arm hält den Messbecher.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 100 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "mess_staender"
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.1,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.1
     },
     {
       "id": "mess_haltearm",
-      "name": "Mess Haltearm",
+      "name": "Haltearm",
       "koerper": [
         "Mess_Haltearm"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 184.4 g, Einzelkoerper 40.0 x 40.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Arm trägt die Sondenhalter.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 80 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "mess_staender"
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.08,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.08
     },
     {
       "id": "mess_querarm",
-      "name": "Mess Querarm",
+      "name": "Querarm",
       "koerper": [
         "Mess_Querarm"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 461.1 g, Einzelkoerper 40.0 x 40.0 x 200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Arm verbindet Ständer und Halterung der Sonden.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 200 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "mess_staender"
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.2,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.2
     },
     {
       "id": "messbecher",
@@ -483,132 +755,299 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Becher PP",
+      "werkstoff": "pp",
       "masse_mm": "Masse 767.2 g, Einzelkoerper 160.0 x 160.0 x 310.0 mm (Modell-Bounding-Box)",
+      "funktion": "Im Becher wird das Wasser für die Messung aufgefangen.",
+      "eigenschaften": [
+        "PP-Becher, 160 mm Durchmesser, 310 mm hoch."
+      ],
+      "norm": "EN ISO 1873-1 (PP-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "mess_tellerarm"
+      },
       "artikel_id": "BEH-messbecher-pp",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sondenhalter_ph",
-      "name": "Sondenhalter pH",
+      "name": "Sondenhalter",
       "koerper": [
         "Sondenhalter_pH"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Kanal PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 47.1 g, Einzelkoerper 36.0 x 36.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Halter führt die Sonde ins Wasser und hält sie in der gewünschten Höhe.",
+      "eigenschaften": [
+        "PVC-Halter für Sonden mit 12 mm Schaft."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "SON-sondenhalter-36",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sonde_ph",
-      "name": "Sonde pH",
+      "name": "pH-Sonde",
       "koerper": [
         "Sonde_pH"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Sonde",
+      "werkstoff": "sonde_gehaeuse",
       "masse_mm": "Masse 60.3 g, Einzelkoerper 14.0 x 14.0 x 245.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Sonde misst den pH-Wert des Wassers.",
+      "eigenschaften": [
+        "Glaselektrode, Messung im Becher."
+      ],
+      "norm": "Herstellerangabe, Werkstoff nicht belegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "MES-ph",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sondenhalter_ec",
-      "name": "Sondenhalter EC",
+      "name": "Sondenhalter",
       "koerper": [
         "Sondenhalter_EC"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Kanal PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 47.1 g, Einzelkoerper 36.0 x 36.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Halter führt die Sonde ins Wasser und hält sie in der gewünschten Höhe.",
+      "eigenschaften": [
+        "PVC-Halter für Sonden mit 12 mm Schaft."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "SON-sondenhalter-36",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sonde_ec",
-      "name": "Sonde EC",
+      "name": "Leitwert-Sonde",
       "koerper": [
         "Sonde_EC"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Sonde",
+      "werkstoff": "sonde_gehaeuse",
       "masse_mm": "Masse 60.3 g, Einzelkoerper 14.0 x 14.0 x 245.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Sonde misst den Leitwert und zeigt damit den Salzgehalt des Wassers.",
+      "eigenschaften": [
+        "Elektrode für die Leitfähigkeit."
+      ],
+      "norm": "Herstellerangabe, Werkstoff nicht belegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "MES-ec",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sondenhalter_temperatur",
-      "name": "Sondenhalter Temperatur",
+      "name": "Sondenhalter",
       "koerper": [
         "Sondenhalter_Temperatur"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Kanal PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 47.1 g, Einzelkoerper 36.0 x 36.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Halter führt die Sonde ins Wasser und hält sie in der gewünschten Höhe.",
+      "eigenschaften": [
+        "PVC-Halter für Sonden mit 12 mm Schaft."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "SON-sondenhalter-36",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sonde_temperatur",
-      "name": "Sonde Temperatur",
+      "name": "Temperatursonde",
       "koerper": [
         "Sonde_Temperatur"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Sonde",
+      "werkstoff": "sonde_gehaeuse",
       "masse_mm": "Masse 60.3 g, Einzelkoerper 14.0 x 14.0 x 245.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Sonde misst die Wassertemperatur.",
+      "eigenschaften": [
+        "Temperaturfühler."
+      ],
+      "norm": "Herstellerangabe, Werkstoff nicht belegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "MES-temperatur",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sondenhalter_o",
-      "name": "Sondenhalter O",
+      "name": "Sondenhalter",
       "koerper": [
         "Sondenhalter_O2"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Kanal PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 47.1 g, Einzelkoerper 36.0 x 36.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Halter führt die Sonde ins Wasser und hält sie in der gewünschten Höhe.",
+      "eigenschaften": [
+        "PVC-Halter für Sonden mit 12 mm Schaft."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "SON-sondenhalter-36",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "sonde_o",
-      "name": "Sonde O",
+      "name": "Sauerstoffsonde",
       "koerper": [
         "Sonde_O2"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Sonde",
+      "werkstoff": "sonde_gehaeuse",
       "masse_mm": "Masse 60.3 g, Einzelkoerper 14.0 x 14.0 x 245.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Sonde misst den gelösten Sauerstoff im Wasser.",
+      "eigenschaften": [
+        "Optische oder elektrochemische Sonde."
+      ],
+      "norm": "Herstellerangabe, Werkstoff nicht belegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450,
+        "folgt": "mess_haltearm"
+      },
       "artikel_id": "MES-o2",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kabelkanal",
@@ -618,348 +1057,753 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Kanal PVC",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 2520.0 g, Einzelkoerper 30.0 x 60.0 x 1000.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Kanal führt die Sondenkabel am Ständer entlang zur Auswertung.",
+      "eigenschaften": [
+        "PVC-Kanal 30 x 60 mm, 1 m."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 200,
+        "folgt": "mess_staender"
+      },
       "artikel_id": "ELE-kabelkanal-30x60",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kon_fussplatte_m",
-      "name": "Kon Fussplatte m",
+      "name": "Fußplatte der Dosierkonsole",
       "koerper": [
         "Kon_Fussplatte_m"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1413.0 g, Einzelkoerper 8.0 x 150.0 x 150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte steht den Pfosten auf dem Boden.",
+      "eigenschaften": [
+        "Stahlplatte 150 x 150 x 8 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "kon_pfosten_m"
+      },
       "artikel_id": "BLE-fussplatte-150x150x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kon_pfosten_m",
-      "name": "Kon Pfosten m",
+      "name": "Pfosten der Dosierkonsole",
       "koerper": [
         "Kon_Pfosten_m"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2978.7 g, Einzelkoerper 40.0 x 40.0 x 1292.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pfosten tragen Träger und Boden der Konsole.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1292 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.292,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.292
     },
     {
       "id": "kon_fussplatte_p",
-      "name": "Kon Fussplatte p",
+      "name": "Fußplatte der Dosierkonsole",
       "koerper": [
         "Kon_Fussplatte_p"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1413.0 g, Einzelkoerper 8.0 x 150.0 x 150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte steht den Pfosten auf dem Boden.",
+      "eigenschaften": [
+        "Stahlplatte 150 x 150 x 8 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "kon_pfosten_m"
+      },
       "artikel_id": "BLE-fussplatte-150x150x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kon_pfosten_p",
-      "name": "Kon Pfosten p",
+      "name": "Pfosten der Dosierkonsole",
       "koerper": [
         "Kon_Pfosten_p"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2978.7 g, Einzelkoerper 40.0 x 40.0 x 1292.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pfosten tragen Träger und Boden der Konsole.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1292 mm hoch."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.292,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.292
     },
     {
       "id": "kon_traeger",
-      "name": "Kon Traeger",
+      "name": "Träger der Dosierkonsole",
       "koerper": [
         "Kon_Traeger_1",
         "Kon_Traeger_2"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3873.3 g, Einzelkoerper 40.0 x 40.0 x 840.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Träger verbindet die Pfosten und stützt den Boden.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 840 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "kon_pfosten_m"
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.68,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.68
     },
     {
       "id": "kon_boden",
-      "name": "Kon Boden",
+      "name": "Boden der Dosierkonsole",
       "koerper": [
         "Kon_Boden_1",
         "Kon_Boden_2"
       ],
       "menge": 2,
       "typ": "platte",
-      "werkstoff": "Blech",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 26376.0 g, Einzelkoerper 5.0 x 400.0 x 840.0 mm (Modell-Bounding-Box)",
+      "funktion": "Auf dem Boden stehen Kanister und Dosierpumpen.",
+      "eigenschaften": [
+        "Stahlblech 5 mm, 400 x 840 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250,
+        "folgt": "kon_pfosten_m"
+      },
       "artikel_id": "BLE-blech-st-5",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "kanister_m",
-      "name": "Kanister m",
+      "name": "Kanister für die Dosierlösung",
       "koerper": [
         "Kanister_m"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Kanister HDPE",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 19950.0 g, Einzelkoerper 250.0 x 280.0 x 300.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Kanister bevorratet Nährstoff- oder Pufferlösung.",
+      "eigenschaften": [
+        "HDPE-Kanister 20 Liter."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 350,
+        "folgt": "kon_boden"
+      },
       "artikel_id": "BEH-kanister-hdpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "dosierpumpe_m",
-      "name": "Dosierpumpe m",
+      "name": "Schlauchpumpe",
       "koerper": [
         "Dosierpumpe_m"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Pumpe Schlauch",
+      "werkstoff": "pumpengehaeuse",
       "masse_mm": "Masse 2016.0 g, Einzelkoerper 100.0 x 120.0 x 140.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pumpe fördert die Lösung aus dem Kanister in die Station.",
+      "eigenschaften": [
+        "Schlauchpumpe, Fördermenge einstellbar."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "kon_boden"
+      },
       "artikel_id": "PMP-dosierpumpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "kanister_p",
-      "name": "Kanister p",
+      "name": "Kanister für die Dosierlösung",
       "koerper": [
         "Kanister_p"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Kanister HDPE",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 19950.0 g, Einzelkoerper 250.0 x 280.0 x 300.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Kanister bevorratet Nährstoff- oder Pufferlösung.",
+      "eigenschaften": [
+        "HDPE-Kanister 20 Liter."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 350,
+        "folgt": "kon_boden"
+      },
       "artikel_id": "BEH-kanister-hdpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "dosierpumpe_p",
-      "name": "Dosierpumpe p",
+      "name": "Schlauchpumpe",
       "koerper": [
         "Dosierpumpe_p"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Pumpe Schlauch",
+      "werkstoff": "pumpengehaeuse",
       "masse_mm": "Masse 2016.0 g, Einzelkoerper 100.0 x 120.0 x 140.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pumpe fördert die Lösung aus dem Kanister in die Station.",
+      "eigenschaften": [
+        "Schlauchpumpe, Fördermenge einstellbar."
+      ],
+      "norm": "Herstellerangabe, Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "kon_boden"
+      },
       "artikel_id": "PMP-dosierpumpe",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "plat_fuss_mv",
-      "name": "Plat Fuss mv",
+      "name": "Fußplatte der Plattform",
       "koerper": [
         "Plat_Fuss_mv"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Plattformbeins.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "plat_bein_mv",
-      "name": "Plat Bein mv",
+      "name": "Bein der Plattform",
       "koerper": [
         "Plat_Bein_mv"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3347.6 g, Einzelkoerper 40.0 x 40.0 x 1452.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Beine tragen die Wartungsplattform.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1452 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.452,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.452
     },
     {
       "id": "plat_fuss_mh",
-      "name": "Plat Fuss mh",
+      "name": "Fußplatte der Plattform",
       "koerper": [
         "Plat_Fuss_mh"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Plattformbeins.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "plat_bein_mh",
-      "name": "Plat Bein mh",
+      "name": "Bein der Plattform",
       "koerper": [
         "Plat_Bein_mh"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3347.6 g, Einzelkoerper 40.0 x 40.0 x 1452.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Beine tragen die Wartungsplattform.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1452 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.452,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.452
     },
     {
       "id": "plat_arm_m",
-      "name": "Plat Arm m",
+      "name": "Tragarm der Plattform",
       "koerper": [
         "Plat_Arm_m"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1291.1 g, Einzelkoerper 40.0 x 40.0 x 560.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Arm verbindet die Plattformbeine mit der Station.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 560 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.56,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.56
     },
     {
       "id": "plat_fuss_pv",
-      "name": "Plat Fuss pv",
+      "name": "Fußplatte der Plattform",
       "koerper": [
         "Plat_Fuss_pv"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Plattformbeins.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "plat_bein_pv",
-      "name": "Plat Bein pv",
+      "name": "Bein der Plattform",
       "koerper": [
         "Plat_Bein_pv"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3347.6 g, Einzelkoerper 40.0 x 40.0 x 1452.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Beine tragen die Wartungsplattform.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1452 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.452,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.452
     },
     {
       "id": "plat_fuss_ph",
-      "name": "Plat Fuss ph",
+      "name": "Fußplatte der Plattform",
       "koerper": [
         "Plat_Fuss_ph"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 401.9 g, Einzelkoerper 8.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte verteilt die Last des Plattformbeins.",
+      "eigenschaften": [
+        "Stahlplatte 80 x 80 x 8 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "BLE-fussplatte-80x80x8",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "plat_bein_ph",
-      "name": "Plat Bein ph",
+      "name": "Bein der Plattform",
       "koerper": [
         "Plat_Bein_ph"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3347.6 g, Einzelkoerper 40.0 x 40.0 x 1452.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Beine tragen die Wartungsplattform.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1452 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.452,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.452
     },
     {
       "id": "plat_arm_p",
-      "name": "Plat Arm p",
+      "name": "Tragarm der Plattform",
       "koerper": [
         "Plat_Arm_p"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1291.1 g, Einzelkoerper 40.0 x 40.0 x 560.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Arm verbindet die Plattformbeine mit der Station.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 560 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.56,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.56
     },
     {
       "id": "plat_quer",
-      "name": "Plat Quer",
+      "name": "Querträger der Plattform",
       "koerper": [
         "Plat_Quer"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2858.8 g, Einzelkoerper 40.0 x 40.0 x 1240.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Träger verbindet die beiden Plattformseiten.",
+      "eigenschaften": [
+        "Rechteckrohr 40 x 40 x 2 mm, 1240 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "PRF-st-rr40x40x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.24,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.24
     },
     {
       "id": "plat_boden",
-      "name": "Plat Boden",
+      "name": "Plattformboden",
       "koerper": [
         "Plat_Boden"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Blech",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 37152.5 g, Einzelkoerper 6.0 x 580.0 x 1360.0 mm (Modell-Bounding-Box)",
+      "funktion": "Auf dem Boden steht, wer die obere IBC wartet.",
+      "eigenschaften": [
+        "Stahlblech 6 mm, 580 x 1360 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "plat_bein_mv"
+      },
       "artikel_id": "BLE-blech-st-6",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "gel_pfosten",
-      "name": "Gel Pfosten -",
+      "name": "Geländerpfosten",
       "koerper": [
         "Gel_Pfosten_-660_640",
         "Gel_Pfosten_-660_1185",
@@ -967,16 +1811,34 @@
       ],
       "menge": 3,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3681.4 g, Einzelkoerper 25.0 x 25.0 x 900.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pfosten tragen das Geländer.",
+      "eigenschaften": [
+        "Rechteckrohr 25 x 25 x 2 mm, 900 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250,
+        "folgt": "plat_boden"
+      },
       "artikel_id": "PRF-st-rr25x25x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 2.7,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.7
     },
     {
       "id": "gel_pfosten_prf_st_rr25x25x2",
-      "name": "Gel Pfosten",
+      "name": "Geländerpfosten",
       "koerper": [
         "Gel_Pfosten_660_640",
         "Gel_Pfosten_660_1185",
@@ -984,110 +1846,222 @@
       ],
       "menge": 3,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3681.4 g, Einzelkoerper 25.0 x 25.0 x 900.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pfosten tragen das Geländer.",
+      "eigenschaften": [
+        "Rechteckrohr 25 x 25 x 2 mm, 900 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250,
+        "folgt": "plat_boden"
+      },
       "artikel_id": "PRF-st-rr25x25x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 2.7,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.7
     },
     {
       "id": "gel_seite_m",
-      "name": "Gel Seite m",
+      "name": "Geländerholm",
       "koerper": [
         "Gel_Seite_1_m",
         "Gel_Seite_2_m"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1418.0 g, Einzelkoerper 25.0 x 25.0 x 520.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Holm sichert die Plattform gegen Absturz.",
+      "eigenschaften": [
+        "Rechteckrohr 25 x 25 x 2 mm.",
+        "Höhe 900 mm, Regel ab 1 m Absturzhöhe: 1000 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200,
+        "folgt": "plat_boden"
+      },
       "artikel_id": "PRF-st-rr25x25x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.04,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.04
     },
     {
       "id": "gel_hinten_m",
-      "name": "Gel Hinten m",
+      "name": "Geländerholm",
       "koerper": [
         "Gel_Hinten_1_m",
         "Gel_Hinten_2_m"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 913.5 g, Einzelkoerper 25.0 x 25.0 x 335.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Holm sichert die Plattform gegen Absturz.",
+      "eigenschaften": [
+        "Rechteckrohr 25 x 25 x 2 mm.",
+        "Höhe 900 mm, Regel ab 1 m Absturzhöhe: 1000 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200,
+        "folgt": "plat_boden"
+      },
       "artikel_id": "PRF-st-rr25x25x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.67,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.67
     },
     {
       "id": "gel_seite_p",
-      "name": "Gel Seite p",
+      "name": "Geländerholm",
       "koerper": [
         "Gel_Seite_1_p",
         "Gel_Seite_2_p"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1418.0 g, Einzelkoerper 25.0 x 25.0 x 520.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Holm sichert die Plattform gegen Absturz.",
+      "eigenschaften": [
+        "Rechteckrohr 25 x 25 x 2 mm.",
+        "Höhe 900 mm, Regel ab 1 m Absturzhöhe: 1000 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200,
+        "folgt": "plat_boden"
+      },
       "artikel_id": "PRF-st-rr25x25x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.04,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.04
     },
     {
       "id": "gel_hinten_p",
-      "name": "Gel Hinten p",
+      "name": "Geländerholm",
       "koerper": [
         "Gel_Hinten_1_p",
         "Gel_Hinten_2_p"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 913.5 g, Einzelkoerper 25.0 x 25.0 x 335.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Holm sichert die Plattform gegen Absturz.",
+      "eigenschaften": [
+        "Rechteckrohr 25 x 25 x 2 mm.",
+        "Höhe 900 mm, Regel ab 1 m Absturzhöhe: 1000 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200,
+        "folgt": "plat_boden"
+      },
       "artikel_id": "PRF-st-rr25x25x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 0.67,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.67
     },
     {
       "id": "leiter_holm_m",
-      "name": "Leiter Holm m",
+      "name": "Leiterholm",
       "koerper": [
         "Leiter_Holm_m"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3159.6 g, Einzelkoerper 30.0 x 30.0 x 1892.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Holm trägt die Sprossen der Leiter.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 1892 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 250
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.892,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.892
     },
     {
       "id": "leiter_holm_p",
-      "name": "Leiter Holm p",
+      "name": "Leiterholm",
       "koerper": [
         "Leiter_Holm_p"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3159.6 g, Einzelkoerper 30.0 x 30.0 x 1892.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Holm trägt die Sprossen der Leiter.",
+      "eigenschaften": [
+        "Rechteckrohr 30 x 30 x 2 mm, 1892 mm."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 250
+      },
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 1.892,
-      "geruest": true
+      "artikel_menge_je_instanz": 1.892
     },
     {
       "id": "leiter_sprosse",
-      "name": "Leiter Sprosse",
+      "name": "Leitersprosse",
       "koerper": [
         "Leiter_Sprosse_1",
         "Leiter_Sprosse_2",
@@ -1097,16 +2071,34 @@
       ],
       "menge": 5,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5794.5 g, Einzelkoerper 20.0 x 20.0 x 470.0 mm (Modell-Bounding-Box)",
+      "funktion": "Auf den Sprossen steigt man zur Plattform.",
+      "eigenschaften": [
+        "Rundrohr 20 mm, 470 mm lang."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "leiter_holm_m"
+      },
       "artikel_id": "PRF-st-rund20",
       "artikel_einheit": "m",
-      "artikel_menge_je_instanz": 2.35,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.35
     },
     {
       "id": "kufe",
-      "name": "Kufe",
+      "name": "Palettenkufe",
       "koerper": [
         "Kufe_1",
         "Kufe_2",
@@ -1117,224 +2109,460 @@
       ],
       "menge": 6,
       "typ": "kaufteil",
-      "werkstoff": "HDPE Palette",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 29491.2 g, Einzelkoerper 128.0 x 160.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Kufen tragen den Container und lassen sich mit Gabelstapler oder Hubwagen anheben.",
+      "eigenschaften": [
+        "Kunststoff, drei Kufen, 1200 mm lang."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "deckplatte",
-      "name": "Deckplatte",
+      "name": "Palettendeckplatte",
       "koerper": [
         "Deckplatte",
         "Deckplatte (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "HDPE Palette",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 10560.0 g, Einzelkoerper 22.0 x 1000.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Platte liegt auf den Kufen und trägt die Blase.",
+      "eigenschaften": [
+        "Kunststoff, 22 mm dick, 1000 x 1200 mm."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_xm",
-      "name": "Rahmen u xm",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_xm1",
         "Rahmen_u_xm1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2537.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_ym",
-      "name": "Rahmen u ym",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_ym1",
         "Rahmen_u_ym1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2016.6 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_xp",
-      "name": "Rahmen u xp",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_xp1",
         "Rahmen_u_xp1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2537.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_u_yp",
-      "name": "Rahmen u yp",
+      "name": "Rahmenrohr unten",
       "koerper": [
         "Rahmen_u_yp1",
         "Rahmen_u_yp1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2016.6 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das untere Rahmenrohr bildet den Fuß des Gitterkäfigs.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 120
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_xm",
-      "name": "Rahmen o xm",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_xm1",
         "Rahmen_o_xm1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2537.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_ym",
-      "name": "Rahmen o ym",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_ym1",
         "Rahmen_o_ym1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2016.6 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_xp",
-      "name": "Rahmen o xp",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_xp1",
         "Rahmen_o_xp1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2537.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "rahmen_o_yp",
-      "name": "Rahmen o yp",
+      "name": "Rahmenrohr oben",
       "koerper": [
         "Rahmen_o_yp1",
         "Rahmen_o_yp1 (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2016.6 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das obere Rahmenrohr schließt den Gitterkäfig oben ab und hält die Stäbe.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_mm",
-      "name": "Pfosten mm",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_mm",
         "Pfosten_mm (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2048.4 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_mp",
-      "name": "Pfosten mp",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_mp",
         "Pfosten_mp (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2048.4 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_pm",
-      "name": "Pfosten pm",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_pm",
         "Pfosten_pm (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2048.4 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "pfosten_pp",
-      "name": "Pfosten pp",
+      "name": "Eckpfosten",
       "koerper": [
         "Pfosten_pp",
         "Pfosten_pp (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2048.4 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Eckpfosten verbinden unteren und oberen Rahmen und tragen die Stapellast.",
+      "eigenschaften": [
+        "Stahlrohr 25 x 25 mm, 965 mm lang, verzinkt."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 150
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_v_v",
-      "name": "Stab V v",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_V_v",
         "Stab_V_v (2)",
@@ -1349,16 +2577,31 @@
       ],
       "menge": 10,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3801.8 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_h_v",
-      "name": "Stab H v",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_H_v",
         "Stab_H_v (2)",
@@ -1379,16 +2622,31 @@
       ],
       "menge": 16,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 7249.1 g, Einzelkoerper 8.0 x 8.0 x 1150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_v_h",
-      "name": "Stab V h",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_V_h",
         "Stab_V_h (2)",
@@ -1403,16 +2661,31 @@
       ],
       "menge": 10,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3801.8 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_h_h",
-      "name": "Stab H h",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_H_h",
         "Stab_H_h (2)",
@@ -1433,16 +2706,31 @@
       ],
       "menge": 16,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 7249.1 g, Einzelkoerper 8.0 x 8.0 x 1150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_s_a",
-      "name": "Stab S a",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_S_a",
         "Stab_S_a (2)",
@@ -1455,16 +2743,31 @@
       ],
       "menge": 8,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3041.5 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_t_a",
-      "name": "Stab T a",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_T_a",
         "Stab_T_a (2)",
@@ -1485,16 +2788,31 @@
       ],
       "menge": 16,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5995.2 g, Einzelkoerper 8.0 x 8.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_s_b",
-      "name": "Stab S b",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_S_b",
         "Stab_S_b (2)",
@@ -1507,16 +2825,31 @@
       ],
       "menge": 8,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3041.5 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "stab_t_b",
-      "name": "Stab T b",
+      "name": "Gitterstab",
       "koerper": [
         "Stab_T_b",
         "Stab_T_b (2)",
@@ -1537,92 +2870,194 @@
       ],
       "menge": 16,
       "typ": "kaufteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 5995.2 g, Einzelkoerper 8.0 x 8.0 x 950.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stäbe bilden das Gitter und schützen die Blase vor Stößen.",
+      "eigenschaften": [
+        "Rundstahl 8 mm, verzinkt.",
+        "Lage senkrecht, waagerecht oder als Seitenstab."
+      ],
+      "norm": "EN ISO 1461 (Feuerverzinken) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 200
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "blase",
-      "name": "Blase",
+      "name": "Innenblase (Tank)",
       "koerper": [
         "Blase",
         "Blase (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PE Blase",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 29689.5 g, Einzelkoerper 940.0 x 1010.0 x 1140.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Blase aus Kunststoff nimmt das Wasser auf; sie ist der eigentliche Behälter des 1000-Liter-Containers.",
+      "eigenschaften": [
+        "Nenninhalt 1000 Liter, nutzbar etwa 900 Liter.",
+        "PE, im Käfig gestützt."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "deckel",
-      "name": "Deckel",
+      "name": "Einfülldeckel",
       "koerper": [
         "Deckel",
         "Deckel (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PE Blase",
+      "werkstoff": "hdpe",
       "masse_mm": "Masse 412.0 g, Einzelkoerper 5.0 x 235.0 x 235.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Schraubdeckel schließt die große Öffnung oben auf der Blase.",
+      "eigenschaften": [
+        "Öffnung rund 235 mm."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "blase"
+      },
       "artikel_id": "BEH-ibc-1000l",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "zulauf",
-      "name": "Zulauf",
+      "name": "Zulaufstutzen",
       "koerper": [
         "Zulauf",
         "Zulauf (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 155.7 g, Einzelkoerper 63.0 x 63.0 x 75.0 mm (Modell-Bounding-Box)",
+      "funktion": "Über den Stutzen läuft Wasser seitlich oben in die Blase.",
+      "eigenschaften": [
+        "PVC-Stutzen d63 (DN50)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "ueberlauf",
-      "name": "Ueberlauf",
+      "name": "Überlaufstutzen",
       "koerper": [
         "Ueberlauf",
         "Ueberlauf (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 155.7 g, Einzelkoerper 63.0 x 63.0 x 75.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen leitet überschüssiges Wasser ab, sobald die Blase voll ist.",
+      "eigenschaften": [
+        "PVC-Stutzen d63 (DN50) gegenüber dem Zulauf."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 250,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "belueftung",
-      "name": "Belueftung",
+      "name": "Belüftungsstutzen",
       "koerper": [
         "Belueftung",
         "Belueftung (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 29.2 g, Einzelkoerper 32.0 x 32.0 x 45.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen lässt beim Befüllen und Leeren Luft aus und ein.",
+      "eigenschaften": [
+        "PVC-Stutzen d32 auf dem Blasendach."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d32",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "sensorstutzen",
@@ -1633,93 +3068,197 @@
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 93.4 g, Einzelkoerper 45.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen nimmt eine Messsonde auf, ohne dass der Deckel geöffnet werden muss.",
+      "eigenschaften": [
+        "PVC-Stutzen d40."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d40",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "ablauf_stutzen",
-      "name": "Ablauf Stutzen",
+      "name": "Ablaufstutzen",
       "koerper": [
         "Ablauf_Stutzen",
         "Ablauf_Stutzen (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 72.7 g, Einzelkoerper 35.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen führt das Wasser unten aus der Blase zum Ablaufhahn.",
+      "eigenschaften": [
+        "PVC-Stutzen d32."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "blase"
+      },
       "artikel_id": "FIT-stutzen-d32",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "kugelhahn",
-      "name": "Kugelhahn",
+      "name": "Kugelhahn des Ablaufs",
       "koerper": [
         "Kugelhahn",
         "Kugelhahn (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 754.2 g, Einzelkoerper 70.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Hahn sperrt den Ablauf unten ab; zum Entleeren wird er geöffnet.",
+      "eigenschaften": [
+        "PVC-Kugelhahn d63 (DN50)."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "katalog": "kugelhahn_pvc_u",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 400,
+        "folgt": "ablauf_stutzen"
+      },
       "artikel_id": "ARM-kugelhahn-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "hahn_hebel",
-      "name": "Hahn Hebel",
+      "name": "Hebel des Ablaufhahns",
       "koerper": [
         "Hahn_Hebel",
         "Hahn_Hebel (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 52.4 g, Einzelkoerper 8.0 x 18.0 x 130.0 mm (Modell-Bounding-Box)",
+      "funktion": "Am Hebel wird der Hahn geöffnet und geschlossen.",
+      "eigenschaften": [
+        "Kunststoffhebel 130 mm lang."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "kugelhahn"
+      },
       "artikel_id": "ARM-kugelhahn-d63",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 0.0
     },
     {
       "id": "ablauf_zapfen",
-      "name": "Ablauf Zapfen",
+      "name": "Ablaufzapfen",
       "koerper": [
         "Ablauf_Zapfen",
         "Ablauf_Zapfen (2)"
       ],
       "menge": 2,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
+      "werkstoff": "pvc_u",
       "masse_mm": "Masse 83.0 g, Einzelkoerper 40.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Zapfen nimmt einen Schlauch oder ein Rohr zum Entleeren auf.",
+      "eigenschaften": [
+        "PVC-Stutzen d40."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 550,
+        "folgt": "kugelhahn"
+      },
       "artikel_id": "FIT-stutzen-d40",
       "artikel_einheit": "Stk",
-      "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "artikel_menge_je_instanz": 2.0
     },
     {
       "id": "wasser",
-      "name": "Wasser",
+      "name": "Wasserfüllung (nur Darstellung)",
       "koerper": [
         "Wasser",
         "Wasser (2)"
       ],
       "menge": 2,
       "typ": "sonderteil",
-      "werkstoff": "Wasser",
+      "werkstoff": "wasser",
       "masse_mm": "Masse 1799998.2 g, Einzelkoerper 850.4 x 935.0 x 1135.0 mm (Modell-Bounding-Box)",
-      "artikel_id": null,
+      "funktion": "Der Körper zeigt die Wasserfüllung für die Ansicht; er ist kein Bauteil und wird nicht gekauft.",
+      "eigenschaften": [
+        "Reines Darstellungsvolumen, etwa 900 Liter."
+      ],
+      "norm": "keine (kein Bauteil)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/puffer_station.md, data/components/puffer_station.json; Profilmaße angenommen",
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
-      "ausnahme": "Wasserkoerper, kein Bauteil",
-      "geruest": true
+      "ausnahme": "Wasserkoerper, kein Bauteil"
     }
   ]
 }

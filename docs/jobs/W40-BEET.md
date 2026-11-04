@@ -85,9 +85,9 @@ Fremde Dateien (Liste oben), `data/roadmap.json`, `data/leitungsnetz.json` (Meld
 5. **Europa-Bezug:** jede Zeile der Teileliste im Bauteilblatt hat Hersteller/Händler und Artikel; Blocker (Plattenhülse, Dichtband, Kleber) stehen im Blatt als „nicht beschafft“.
 
 ## Offene Entscheidungen
-- **OFFEN (Ben):** V3 (Sperrboden, Wasserraum entfällt, 6400 l Systemvolumen weg) bestätigen; Alternative IBC kürzen wäre Layout-Eingriff.
-- **OFFEN (Ben):** Schutzkorb kaufen und rollen lassen (Lochblech 5 mm, Metallbauer) oder gebohrtes PVC-Rohr als Muster; Körnung nach V3 nur noch Wahl, Blähton 8–16 reicht (Schutz 5 mm), Mindestkörnung 12 mm nicht mehr nötig.
-- **OFFEN (Ben):** Standrohr bleibt d25 (mit Reduzierhülse 32/25 im Tankverbinder) oder wechselt auf d32 (Zeiten 2,6 bis 3,8 min, Spitze 68 bis 97 l/min).
+- **ENTSCHIEDEN (Ben, 04.11.2026, D77):** V3 Sperrboden bestätigt (Wasserraum entfällt, 6400 l Systemvolumen weg).
+- **ENTSCHIEDEN (Ben, 04.11.2026, D77):** Schutzkorb aus Lochblech 5 mm, Zuschnitt und Rollen beim Metallbauer (Anfrage: Ben); im Modell und Bauteilblatt so führen. Ursprüngliche Frage: Schutzkorb kaufen und rollen lassen (Lochblech 5 mm, Metallbauer) oder gebohrtes PVC-Rohr als Muster; Körnung nach V3 nur noch Wahl, Blähton 8–16 reicht (Schutz 5 mm), Mindestkörnung 12 mm nicht mehr nötig.
+- **ENTSCHIEDEN (Ben, 04.11.2026, D77):** Standrohr bleibt d25 mit Reduzierhülse 32/25 im Tankverbinder (Kaufteil Reduzierhülse in die Teileliste, Quelle in Europa suchen). Ursprüngliche Frage: Standrohr bleibt d25 (mit Reduzierhülse 32/25 im Tankverbinder) oder wechselt auf d32 (Zeiten 2,6 bis 3,8 min, Spitze 68 bis 97 l/min).
 - **OFFEN (Montage/Orchestrator):** K14/K30 Höhe und Sumpf-Einlauf, Systemwasserbilanz ohne Wasserräume.
 
 ## Start-Hinweis für die Werkstatt-Sitzung (fünf Zeilen)

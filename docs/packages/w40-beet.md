@@ -16,6 +16,8 @@
 
 03.11.2026: Planer-Blatt geschrieben, Aktualität angepasst. Gewählt V3 Sperrboden; V1 (Schacht bis Boden) verworfen, weil ein Zyklus 649 l den Beet-Sumpf (500 l) sprengt. Nichts gebaut. Offen (Ben): V3 bestätigen, Schutzkorb beim Metallbauer, Standrohr d25 mit Reduzierhülse oder d32.
 
+04.11.2026, Ben entscheidet (D77): V3 Sperrboden ja (Wasserraum und rund 6400 l Systemvolumen entfallen); Standrohr bleibt d25 mit Reduzierhuelse 32/25 im Tankverbinder; Schutzkorb Lochblech 5 mm, Zuschnitt und Rollen beim Metallbauer (Anfrage macht Ben). Werkstatt-Sitzung gestartet (Schritte 1a bis 1c).
+
 ## Definition of Done
 
 Geprüft gegen: `python -X utf8 scripts/w40_beet_rechnung.py`, `python scripts/workshop/check_ibc_beet.py` (Exit 0), `solidcraft-cli.exe eval` je Typ (Körpernamen, Siebboden ohne Lochabzug), Teileliste mit Hersteller und Artikel im Bauteilblatt.

@@ -2,7 +2,9 @@
 
 Pruefer: Sonnet 5.5, nach `docs/jobs/vorlagen/pruefung.md` und `docs/jobs/start/M-BEET-TAUSCH-pruefer.md`. Gegenstand: Blatt `docs/jobs/M-BEET-TAUSCH.md` (Pruefpunkte 1 bis 5), Paket `docs/packages/m-beet-tausch.md`, Commits b361159, fa95a9f, 9ddb8b5, 290fe89, b47fc56, c0de8d9, `docs/loop-state.md` Runde 67. Die Selbstauskunft wurde als Behauptung behandelt. Gemessen in einer Kopie im Scratchpad (`scratchpad/mb`: `scripts/`, `data/`, `designs/`, `docs/` kopiert; Repo und fremde Aenderungen im Arbeitsbaum unberuehrt); Viewer auf eigenem Port 4432 (danach beendet).
 
-## Urteil: FAIL (Punkt 3), Punkte 1, 2, 4, 5 PASS
+## Urteil (Stand Runde 67, Erstpruefung): FAIL (Punkt 3), Punkte 1, 2, 4, 5 PASS
+
+**Neues Urteil nach Nachpruefung Runde 68: PASS mit Auflagen** (Abschnitt "Nachpruefung Runde 68" am Ende). Der Text dazwischen ist der Erstbefund und bleibt als Beleg stehen.
 
 Die Montage ist sauber gebaut und die Gaenge, Zaehlungen und der Schacht-Abstand stimmen. Aber: Im Aussenbeet schneidet das Topfraster den Medienschutz und seine Kappe. Das Blatt-Ziel "keine echte Kollision der Beete" ist damit in 8 von 14 Beeten nicht erfuellt, und die Montage hat es als "aussen_800 ohne Treffer" gemeldet, ohne es zu messen (`check_latte` nimmt Pflanzen aus, die Abstandszeile `check_ibc_beet.py` prueft nur den Schacht, nicht den Medienschutz). Die Behebung ist klein (siehe Auflagen), danach Punkt 3 neu messen.
 
@@ -59,3 +61,44 @@ Warum entgangen: (1) `check_latte` nimmt Pflanzen aus (219 978 Koerper, Montage-
 
 Geprueft gegen: `python scripts/gen_dome.py 5` (identisch nach Pfad-Normalisierung), `python -X utf8 scripts/check_walkways.py` (Exit 0), `python scripts/check_latte.py 67` in der Kopie (Exit 1, 29/31, 115 und 71, KOLL-Liste identisch), `python -X utf8 scripts/workshop/check_ibc_beet.py` (Exit 0, 194/194), Instanzmatrizen aus `scripts/dome-script.json`, `solidcraft-cli.exe eval` und `run` mit `inspect.interference` (Netztopf-Proben), `viewer/instances.json`, Viewer-Bild Port 4432, `git show --name-only` der sechs Commits.
 Offen: Auflagen 1 bis 5 (Owner je Auflage genannt; Auflage 1 ist die einzige, die das Urteil ändert); nicht gemessen: CAD-Neubau Exit 0, `check_walkways_voll`, `export_model.py`, Vergleichslauf Runde 66, Schachtkappe-Zuordnung im Viewer.
+
+## Nachpruefung Runde 68 (Pruefer, 04.11.2026)
+
+Gegenstand: Commits 7ddff23, 3fbcc3e, fa99e8f, 089bc33 (D79: Medienschutz auf Rasterzellmitte, Topf auf Medienoberkante je Beet). Alle Messungen in dieser Sitzung neu, in einer Kopie des Stands 089bc33 (`git archive 089bc33` im Scratchpad); der Arbeitsbaum des Repos blieb unberuehrt, geschrieben ist nur diese Datei.
+
+### Urteil: PASS mit Auflagen
+
+Der Fehler aus Punkt 3 ist behoben: In allen 14 Beeten liegt der naechste Netztopf 91,9 mm von Schutz- und Schachtachse (Soll >= 87); die CAD-Probe auf der neuen Topfhoehe findet 0 Kollisionen, die Gegenprobe mit dem alten Abstand findet sie. `check_latte` 68 zeigt keine neue Kollision. Auflagen betreffen nur noch Nebenpunkte (unten).
+
+| # | Soll | Befehl | Messwert | Urteil |
+|---|---|---|---|---|
+| 1 | 8 aussen_800 + 6 innen_933, 2222 Netztoepfe, 2222 Salatkoepfe | `python scripts/components/strebe.py; python scripts/gen_dome.py 5 scripts/dome-script.json`; Zaehlung der `occurrence.move` je Namensanfang (eigenes Skript, Scratchpad `m68_geo.py`); `check_latte.py 68` Zeilen "Netztoepfe" | 14 Beet-Verschiebungen (8 + 6), 2222 Netztopf-, 2222 Salatkopf-Verschiebungen, 10098 Befehle; davon 1548 Beet-Toepfe (8 x 120 + 6 x 98) + 674 Rinnen; `check_latte` PASS "Netztoepfe 2222" und "Erwartung (960, 588, 674, 2222)" | PASS |
+| 2 | `check_walkways` unveraendert | `python -X utf8 scripts/check_walkways.py` (Kopie); `python -X utf8 scripts/check_walkways_voll.py` (Kopie) | A 700 / B 600 / Wandluft 110 / Nachbarportale 307 / Tuer-Gang 3177, alle PASS (gleich Runde 67); voll: knie rot 60 / gelb 82, kopf rot 2 / gelb 4, erzeugte `docs/walkway-map.md` per `diff` gleich der im Repo | PASS |
+| 3 | Netztopf x Medienschutz und Schacht, aussen und innen, auf der NEUEN Topfhoehe, 0 echte Kollisionen | Instanzmatrizen: `dome-script.json` -> Topf-Mitte in Beet-Koordinaten (Rueckrechnung ueber die Beet-Matrix), Abstand zu Schutz- und Schachtachse (aus `solidcraft-cli.exe eval ibc_beet_<typ>.sc` gemessen: aussen x +-1040 / y 0, innen x +-650 / y 65). CAD: `solidcraft-cli.exe run n68_<x>.json --in designs/components/ibc_beet_<typ>.sc --results` mit eingesetztem `netztopf.sc` am naechstgelegenen Raster-Topf je Achse (4 Proben) plus `inspect.interference` | Abstand aussen und innen in allen 14 Beeten 91,9 mm (Soll >= 87). Topfhoehe: Topf-Boden lokal z 562 (aussen) bzw. 574 (innen) = Oberkante `Medium` (eval: 562 / 574), also Luft 0 statt 40 mm; gilt fuer alle 14 Beete (Beet-z0 innen 191 bis 230, Topf folgt). CAD: 4 von 4 Proben `count 0` (checked 41 bzw. 32 Paare); Kontrollprobe mit dem alten Abstand (65,6 mm, gleiche Topfhoehe aussen): 1 Treffer Netztopf x Schutzkappe 1062 mm2, die Probe erkennt den Fehler also | PASS |
+| 4 | Viewer-Export Runde 68 | `export_model.py` nicht gelaufen | nicht gebaut, Berechtigungssystem lehnte ab, Ben entscheidet (laut Start-Auftrag) | offen, nicht Fehlerpunkt |
+| 5 | Bauteil-Check und Nachfuehrung | `python -X utf8 scripts/workshop/check_ibc_beet.py` (Kopie) | Exit 0, Schlusszeile "== ibc_beet: 210/210 PASS", 0 Zeilen ohne PASS; je Typ neue Zeile "Abstand Medienschutz-Achse zu jedem Netztopf" 91,9 mm (8 Zeilen Abstand, 4 Typen); Interferenz Ist 0 und "alle Koerper benannt" in 4 von 4 | PASS (Zahl siehe Auflage 1) |
+
+### Zusatzmessungen (Wunsch des Start-Auftrags)
+
+1. `check_latte.py 68` in der Kopie auf dem committeten `designs/dome.sc`: 29/31, 115 KOLL, 71 Paare nicht vollstaendig. Die sortierte KOLL-Liste ist Zeile fuer Zeile gleich `renders/check_latte-67.txt` (115 = 115, `sorted(a)==sorted(b)`); 0 Zeilen mit Beet, Schacht, Siphon, Medienschutz, Netztopf, Salat, Reduktion oder Erde; "EXAKT Erde 542 Koerper, noch offen 0". Der Befund "Leitungs-Altbestand, kein Beet-Thema" ist damit durch einen Vergleichslauf belegt (in der Erstpruefung nur ueber den Generatorstand).
+2. `check_walkways_voll` siehe Punkt 2.
+3. `designs/dome.sc` wurde in fa99e8f geaendert (15 625 398 -> 15 595 090 Byte) und ist im Arbeitsbaum unveraendert (`git diff HEAD --stat -- designs/dome.sc` leer).
+
+### Nicht gemessen
+
+1. CAD-Neubau selbst (`build.sh 5 68`, Exit 0): nicht neu gebaut; die Aussage "Exit 0" stuetzt sich auf das committete `dome.sc`, das `check_latte` fehlerfrei einliest, und auf das identisch regenerierte `dome-script.json`. Schliesst einen Build-Fehler nicht formal aus.
+2. Pflanzen in `check_latte`: weiter ausgenommen (219 978 Koerper); Topf x Beet ruht auf der CAD-Probe und der Matrixrechnung oben, nicht auf `check_latte`. Probe deckt nur Topf gegen das Beet-Bauteil, nicht Topf/Salatkopf gegen Portale, Tische oder Streben.
+3. Das Paar Medium x Medienschutz bleibt in `inspect.interference` "unchecked" (Boolean liefert kein Ergebnis); trat auch im Erstbefund auf und betrifft nicht den Topf.
+4. Viewer-Export Runde 68 und Viewer-Texte (Auflage 5 der Erstpruefung).
+
+### Auflagen (neu geordnet)
+
+1. Paket und Commit 3fbcc3e nennen "211 PASS"; gemessen 210/210 (die 211 entsteht, wenn die Schlusszeile mitgezaehlt wird, gleicher Fehler wie in W40-BEET Auflage 1). Zahl in `docs/packages/m-beet-tausch.md` und `docs/loop-state.md` auf 210 korrigieren. Owner: Werkstatt/Orchestrator.
+2. `check_latte` um eine Pflanzen-Teilpruefung ergaenzen oder `check_ibc_beet.py` ausdruecklich als Pflicht fuer "Beet x Pflanze" fuehren (Auflage 3 der Erstpruefung, unveraendert offen). Owner: Orchestrator.
+3. Viewer-Export Runde 68 und Texte in `viewer/extras.json` (Netztopf/Salatkopf 1634, Toepfe 2834, Beete 2160 gegen 2222) nachziehen. Owner: Ben (Entscheidung zur fremden Aenderung an der Datei).
+4. Ablaufport der Beete wandert (aussen_800 x -56 mm, innen_933 y +65 mm, Angabe des Pakets, nicht nachgemessen): beim Anschluss K14/K30 (E20) beachten. Owner: Planer.
+5. Der Sollwert Salatkoepfe 2222 steht im Blatt jetzt richtig (Zeile 39); keine Handlung.
+
+Geprueft gegen: `gen_dome.py 5` (Zaehlung 14 Beete / 2222 / 2222), `check_walkways.py`, `check_walkways_voll.py` (`diff` gleich Repo), `check_ibc_beet.py` (210/210), `check_latte.py 68` (115 KOLL identisch zu Runde 67), Rueckrechnung aller Topf-Mitten auf Beet-Koordinaten, 4 CAD-Interferenzproben plus Kontrollprobe, `eval` der Beet-Bauteile, `git show --stat` der Commits.
+Offen: Auflagen 1 bis 4; nicht gemessen: CAD-Neubau Exit 0, Topf/Salatkopf gegen Portale/Tische/Streben, Viewer-Export (Ben).
+

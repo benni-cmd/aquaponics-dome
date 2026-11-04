@@ -6,10 +6,10 @@
 
 ## Plan
 
-1. [ ] Werkstatt-Vorlauf 0a: Bauteilblatt-Artikel Schachtrohr DN100 und Dichtband "nicht beschafft (Mass offen)" (Auflage 3)
-2. [ ] Werkstatt-Vorlauf 0b: Check-Text Standrohrflaeche 346 auf 380 mm2 / Schachtlaenge im Blatt (Auflage 4)
-3. [ ] Werkstatt-Vorlauf 0c: Schacht auf Topfraster-Zellmitte legen (Befund Netztopf x Schacht), Check-Zeile Abstand >= 87 mm
-4. [ ] Pruefung Auflage 5: Reduzierhuelse 22 mm und Flansch D50 gegen Datenblatt und Modell
+1. [x] Werkstatt-Vorlauf 0a: Bauteilblatt-Artikel Schachtrohr DN100 und Dichtband "nicht beschafft (Mass offen)" (Auflage 3)
+2. [x] Werkstatt-Vorlauf 0b: Check-Text Standrohrflaeche 346 auf 380 mm2 / Schachtlaenge im Blatt (Auflage 4)
+3. [x] Werkstatt-Vorlauf 0c: Schacht auf Topfraster-Zellmitte legen (Befund Netztopf x Schacht), Check-Zeile Abstand >= 87 mm
+4. [x] Pruefung Auflage 5: Reduzierhuelse 22 mm und Flansch D50 gegen Datenblatt und Modell
 5. [ ] Montage: Neubau Runde 67 (Nummer aus `renders/` ablesen), `check_walkways`, `check_latte`, `check_walkways_voll`, Renders
 6. [ ] Montage: Viewer-Export (`viewer/export_model.py`), `loop-state.md`-Abschnitt
 7. [ ] Pruefer: `docs/jobs/pruefung/M-BEET-TAUSCH.md` nach fuenf Pruefpunkten
@@ -18,6 +18,17 @@
 ## Stand
 
 04.11.2026 (Nacht), Planer (Sonnet 5.5): Blatt geschrieben. Aktualitaet: **angepasst**. Kernbefunde: (1) `t9()` setzt die Komponenten schon unter dem Namen `ibc_beet_aussen_800/innen_933`, der Tausch ist ein Neubau, kein Skript-Umbau; (2) Aussenmasse unveraendert, Erdtasche (200 mm unter Wanne) deckt die `Reduktion` bis Z -80, Gangwerte also erwartbar unveraendert; (3) **Netztoepfe liegen im Reinigungsschacht** (Gerechnet: 2 Toepfe je Aussenbeet, 1 bis 2 je Innenbeet, Abstand 76 / 36 mm gegen Soll 87; Groessenordnung 22 Kollisionen), Werkstatt-Check und Pruefer haben das nicht erfasst, weil Toepfe in `10_Pflanzen` liegen; Planer-Entscheidung: Schacht auf Zellmitte verschieben (Schritt 0c), Topfzahl 2222 bleibt. Nicht gebaut, nichts am Modell geaendert.
+
+04.11.2026 (Werkstatt/Montage-Sitzung): **Schritt 0 fertig** (Commit b361159): 0a Artikelzeile Schachtrohr "Artikel nicht nachgewiesen" (KG-Rohr DN/OD 110, Ostendorf KG 2000 nur als Treffer), Dichtband "nicht beschafft (Mass offen)"; 0b Standrohr 25 x 1,5 (ID 22,0, 380 mm2, Bevo Art. 0309025), Check-Text zieht den Wert aus dem Parameter, `grep -c 346 check_ibc_beet.py` = 0; 0c Schacht auf Zellmitte des Topfrasters (Abstand Schachtachse zu jedem Topf 91,9 mm, Soll >= 87; x aussen_800 / innen_933 auf Rasterzelle nahe der alten Lage, y 65 bzw. 65), `check_ibc_beet.py` 194/194 PASS (190 + 4 Zeilen).
+
+### Auflage 5 (Schritt 1, Ergebnis)
+Quellen: Bevo-Katalogzeile Art. 7002656 und Georg-Fischer-Reduzierstueck 32 x 25 "Length 22 mm" (RS-Suchtreffer, Seite 403, nicht gelesen); Royal Brinkman, Epco, Pipestock, Bevo VDL 0100560 (Tankverbinder). **Kein Datenblatt gelesen** (Bevo-Datenblatt zu 7002656 nicht auffindbar; Tankverbinder-Flanschmass in keiner Quelle).
+| Mass | Modell | Quelle | Ergebnis |
+|---|---|---|---|
+| Reduzierhuelse 32/25 Baulaenge | Platte 15 mm, Boden 39 mm | 22 mm (Bevo-Zeile, GF-Treffer: zwei Quellen, beide nur Katalogzeile) | Platte weicht um 7 mm ab, Boden um 17 mm (Modell Boden laenger): **ueber 3 mm**, aber nur Katalogzeile: Status "Datenblatt nicht gelesen, [A]", **kein Blocker** (1c) |
+| Flansch D50 des Tankverbinders | D50 [A] | nicht gefunden (Royal Brinkman 32 x 1 1/2 Zoll: D 54, anderes Teil) | **offen, [A]** |
+| Tankverbinder-Typ | 32 mm x 1 Zoll | VDL/Bevo fuehrt 32 mm x 1 1/4 Zoll (0100560); 32 x 1 Zoll nur UK (Epco, Pipestock) | **Risiko**: Bevo-Art. 7018227 gegen Katalog pruefen |
+**DEINE ENTSCHEIDUNG/HANDLUNG (Ben oder N-BESCHAFFUNG):** Datenblaetter Tankverbinder (Flansch, Gewinde 1 Zoll oder 1 1/4 Zoll) und Reduzierhuelse beim Bevo-Kundendienst anfordern; bei Abweichung ueber 3 mm Nachbesserung `ibc_beet.py` (Huelsenlaengen).
 
 OFFEN (E20, Entscheidung 05.11.): Ablaufleitungen K14/K30, Beet-Sumpf-Einlauf, Anschluss der `Reduktion` (offenes Ende bleibt). Nicht geplant.
 

@@ -21,3 +21,6 @@ Zweck (Ben 01.11.2026, E18): Der Pruefer ist der Gegenleser einer fertigen Bau-,
 **Abschluss:** Kurzmeldung, hoechstens sechs Zeilen: Urteil · FAIL-Punkte mit Zahl · nicht belegte Behauptungen · was der Orchestrator tun muss. Dann STOPP.
 
 **Checks seriell starten** [Pruefer W37-2/W37-3, 04.11.2026, Auflage A4]: Bei acht gleichzeitig gestarteten Check-Skripten scheiterten zwei mit `FEHLER faces ... no body`, einer lieferte nichts; einzeln liefen alle PASS. Vermutete Ursache: gemeinsamer Zwischenordner `TMP` in `scripts/workshop/sc.py`. Deshalb Checks nacheinander starten oder je Lauf eine eigene `WORKSHOP_TMP` setzen.
+
+## Pflanzen gegen Bauteile pruefen (Pruefer-Auflage M-BEET-TAUSCH, 04.11.2026)
+`check_latte` nimmt Pflanzen (Netztoepfe, Salatkoepfe) aus. Wer Beete, Tische oder Rinnen prueft, misst Beet x Pflanze eigens: `python -X utf8 scripts/workshop/check_ibc_beet.py` (Abstandszeilen Schacht UND Medienschutz zu jedem Netztopf) und eine CAD-Probe `inspect.interference` mit einem `netztopf.sc` am naechsten Topf. "Ohne Treffer" gilt nur mit dieser Messung.

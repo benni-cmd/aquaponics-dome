@@ -1,0 +1,10 @@
+# Start-Auftrag: Werkstatt und Montage M-BEET-TAUSCH, Nachbesserung nach Pruefer-FAIL
+
+PROJEKT: aquaponics-dome (user-projects/aquaponics-dome). Rolle: Werkstatt, danach Montage (eine Sitzung). Vorher eigenen Kontext mit dem Fenster 1.000.000 Token rechnen; ueber 35 % melden statt anfangen.
+
+1. Grundlage: `docs/jobs/pruefung/M-BEET-TAUSCH.md` (1a8d57f), Auflagen 1 und 2; Entscheidung D79 in `docs/decisions.md`.
+2. Topfhoehe (Auflage 2, D79): In `scripts/gen_dome.py` `pots()` steht der Netztopf je Beet auf der Medienoberkante dieses Beets (aussen 800, innen 765 abs.), nicht auf einer gemeinsamen Hoehe. Nur die Beet-Toepfe; NFT-Toepfe unveraendert. Das ist die einzige erlaubte Aenderung an `gen_dome.py`.
+3. Medienschutz (Auflage 1, D79): Schacht und Medienschutz auf Rasterzellmitten, Abstand Achse zu jedem Netztopf >= 87 mm, in beiden Bauteilen `ibc_beet_aussen_800` und `ibc_beet_innen_933`. Geht das nicht ohne Layout-Eingriff auf: je Beet den kollidierenden Topf streichen und die neue Topfzahl im Paket nennen (Ben bestaetigt die Zahl). `check_ibc_beet.py` um die Zeile "Abstand Medienschutz-Achse zu jedem Netztopf" fuer alle vier Typen ergaenzen.
+4. Messen: `check_ibc_beet.py` Exit 0; CAD-Probe `inspect.interference` mit `netztopf.sc` am naechsten Topf, aussen und innen, auf der neuen Topfhoehe: 0 Paare (Befehl im Befund 3c); Neubau `sh scripts/build.sh 5 68`, `check_walkways.py` PASS auf den Werten von Runde 67, Zaehlung Beete 8 + 6 und Topfzahl; `check_latte` nur, wenn Zeit bleibt (67 min), sonst als offen nennen; Viewer-Export.
+5. Nachfuehren: `docs/packages/m-beet-tausch.md`, `docs/loop-state.md` Runde 68. Nicht anfassen: fremde, nicht committete Aenderungen im Arbeitsbaum (`becken_dritt.sc`, `erdflaeche.sc`, `fundamentring.sc`, `haut_paneel_BBB.sc`, `pool_zentral.sc`, `schaltschrank.sc`, `strebe_a.sc`, `strebe_b.sc`, `tuer.sc`, `zulaufrohr.sc`, `zweitbecken.sc`, `viewer/extras.json`, `viewer/detail/`, Renders), `data/parts/` (laeuft parallel in einer anderen Sitzung).
+6. Commits nur per Pfad, je Teilschritt, Push; WIP-Commit spaetestens alle 20 Minuten. Danach STOPP.

@@ -1,0 +1,17 @@
+PASS schwimmerventil_pool: Koerperzahl (Uebergang, Gehaeuse, 2 Wangen, Hebelarm mit Kugel): Ist 5, Soll 5
+PASS schwimmerventil_pool: Uebergang: Aussen-Ø = Formstueck d25 (32,25): Ist 32.2495, Soll 32.25 (+-0.1)
+PASS schwimmerventil_pool: Uebergang: Laenge 40: Ist 40, Soll 40 (+-0.1)
+PASS schwimmerventil_pool: Ventilgehaeuse: Ø 38 x 80: Ist 80, Soll 80 (+-0.1)
+PASS schwimmerventil_pool: Ventilgehaeuse Ø 38: Ist 37.9994, Soll 38 (+-0.1)
+PASS schwimmerventil_pool: Port A Muffe d25: Stirnflaeche im Ursprung, Oeffnung -X: Ist 1, Soll 1
+PASS schwimmerventil_pool: Muffe d25: Zylinderflaeche r 12,5: Ist 1, Soll 1
+PASS schwimmerventil_pool: Kugelmitte -175.0 = Spiegel + 20 (Kugel schwimmt, Ventil geschlossen): Ist -175, Soll -175 (+-0.5)
+PASS schwimmerventil_pool: Kugel-Unterkante -230.0 unter dem Spiegel (taucht ein): Ist 1, Soll 1
+PASS schwimmerventil_pool: Kugeldurchmesser 110 (x-Ausdehnung des Koerpers ab Kugelmitte): Ist 55, Soll 55 (+-0.5)
+PASS schwimmerventil_pool: Parameter water_z = layout.json pool2.water_z (nur gelesen): Ist 515, Soll 515
+PASS schwimmerventil_pool: Rohrachse liegt 195 ueber dem Spiegel: Rand 650 - Spiegel 515 + 60: Ist 195, Soll 195
+PASS schwimmerventil_pool: Hebelarm laeuft zwischen den Wangen (y-Ausdehnung Arm im Bereich Wange <= 8): Ist 1, Soll 1
+PASS schwimmerventil_pool: Gesamt-Box X -0 bis 415: Ist 1, Soll 1
+PASS schwimmerventil_pool: Interferenzen (Volumen > 0,5 mm3, ungeprueft zaehlt): Ist 0, Soll 0
+INFO Masse gesamt 360 g
+== schwimmerventil_pool: 15/15 PASS

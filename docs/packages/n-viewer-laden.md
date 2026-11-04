@@ -11,7 +11,7 @@
 3. [x] `index.html`: Kleinteile-Schalter (localStorage, Nachladen, Ausblenden)
 4. [x] Topfzahlen aus dem Modell ableiten (SPEC und DESC)
 5. [x] Screenshots im Browser-Pane gegen `docs/ui-standard.md`, Messwerte
-6. [ ] Voller Export erst nach "Montage fertig" des Orchestrators, dann `export_model.py` und Viewer-Dateien committen
+6. [x] Voller Export erst nach "Montage fertig" des Orchestrators, dann `export_model.py` und Viewer-Dateien committen
 
 ## Status
 
@@ -22,9 +22,11 @@
 - Kleinteile-Schalter: Standard aus, `localStorage` `viewer.kleinteile` (try/catch), Reload merkt den Haken; mit Haken `window.viewerStand()` meldet `tuer_komplett` 12 + 15 = 27 sichtbare Koerper, ohne Haken 12 + 0; Wiedereinschalten ohne neues Laden.
 - Topfzahlen: Viewer leitet sie aus `netztopf`-Instanzen ab (groesste Hoehenluecke trennt Beet und NFT): Seite zeigt 2.222 gesamt, 1.548 / 674; keine Handzahl im Code.
 - Baseline (alte Definitionen, kein Kleinteile-Export, echter Viewer-Ordner, Testserver ohne Auto-Export): 164 Definitionen, 282,1 MB, Laden + Aufbauen 19 s (`Fertig`-Zeile der Seite); `du -sh viewer/defs` 312 MB vor dem Neuexport.
-Offen: voller Export und Messung nach "Montage fertig" (Groesse nachher, Ladezeit mit Kleinteilen).
+04.11.2026 — Voller Export nach "Montage fertig" (dome.sc 10:33): `python -X utf8 viewer/export_model.py` Exit 0, 1686 s, 164 Definitionen alle neu, 4914 Instanzen, 256,0 MB Hauptdateien + 198,9 MB Kleinteile in 78 `*.klein.obj`; `du -sh viewer/defs` 312 MB vorher, 485 MB nachher (alte Dateien ohne Kleinteile waren 282 MB laut Seite). Hinweis statt Stille eingebaut (0410a20): ohne Kleinteile-Dateien nennt der Viewer den Grund und den Befehl.
+- Messung im Browser (Testserver ohne Auto-Export): Laden + Aufbauen ohne Kleinteile 12,7 s (vorher 19 s mit den alten Dateien); Kleinteile nachladen 78 Dateien, 198,9 MB, 8 s (Server lokal); `tuer_komplett` 12 + 15 = 27 sichtbare Koerper mit Haken. Screenshot beim Nachladen: "Kleinteile, Schritt 1 von 3: Laden, Datei 5 von 78, 23,0 MB von 198,9 MB, aktuell knoten_6_n01.klein.obj".
+- `viewer/defs/` und `viewer/instances.json` sind in `.gitignore`: sie liegen nur lokal. Wer `serve.py` startet, bekommt den Export beim naechsten Speichern von `dome.sc` selbst.
 
 ## Definition of Done
 
 Geprueft gegen: Screenshots Balken/Menue/Tuer mit Klinke; `du -sh viewer/defs` vorher/nachher; Ladezeit ohne/mit Kleinteilen; `export_model.py` Exit 0 am Muster; Koerperzahl `tuer_komplett` 27
-Offen: Plan-Punkt 6 (voller Export nach "Montage fertig", Messung nachher); Beschreibungstexte in `data/descriptions.json` und `data/system-specs.json` nennen weitere von 2160 abgeleitete Werte (79 je m2, 24 %), die der Viewer nicht umschreibt
+Offen: Screenshot der Tuer mit Klinke (Koerperzahl belegt, Bild fehlt); Beschreibungstexte in `data/descriptions.json` und `data/system-specs.json` nennen weitere von 2160 abgeleitete Werte (79 je m2, 24 %), die der Viewer nicht umschreibt

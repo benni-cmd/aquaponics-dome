@@ -408,32 +408,525 @@
       ],
       "empfehlung_grob_eur": 25,
       "bemerkung": "Bedarf 2 Stk. Einzelstueck am besten aus Zuschnitt beim Kautschukhaendler."
+    },
+    "SON-korbgriff-v2a": {
+      "bezug_einheit": "Stk",
+      "angebote": [
+        {
+          "preis_eur": 10.2,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "toolteam.com, Halder 24310.0710 Buegelgriff d12x125 rostfrei",
+          "land": "DE",
+          "url": "https://toolteam.com/en-GB/halder-normalien-buegelgriff-o-12-x-125-rostfreier-stahl-24310-0710-t-997832-4030618269892.html",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "8,61 EUR netto laut Suchausschnitt = 10,2 brutto (E); Seite nicht geoeffnet; Mass 125 statt 160 mm."
+        },
+        {
+          "preis_eur": 32.93,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Leschhorn, EO-20-160 Oval-Griff 1.4307",
+          "land": "DE",
+          "url": "https://www.leschhorn.de/de/detail/0199737fd8cc73e9b26b275285143dc7",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "ab 32,93 EUR (bis 11 Stk), netto/brutto unklar; Werkstoff 1.4307."
+        }
+      ],
+      "beschaffung_art": "b",
+      "empfehlung_grob_eur": 12.0,
+      "bemerkung": "Katalog nennt Eigenbau; Normgriff aus Edelstahl ersetzt ihn (Planer klaeren). 4 Stk -> ca. 50 EUR."
+    },
+    "SON-ankergabel-80x140": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 8,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial Flach-/Rundstahl, Zuschnitt",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 8,
+      "bemerkung": "20 Stk -> ca. 160 EUR (A). Fundamentanker, Statik offen."
+    },
+    "SON-halter-inline-d32-vorfilter": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 5,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial PVC-U Rohr/Platte",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 5,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-halter-inline-d32-sieb": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 3,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial Edelstahl-Siebgewebe-Rest (siehe GEW-v2a-100um)",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 3,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-halter-inline-d32-sensorblock": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 5,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial PVC-U Block",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 5,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-halter-inline-d50-vorfilter": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 6,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial PVC-U Rohr/Platte",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 6,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-halter-inline-d50-sieb": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 3,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial Edelstahl-Siebgewebe-Rest",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 3,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-halter-inline-d50-sensorblock": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 6,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial PVC-U Block",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 6,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-strahlungsschutz-par": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 15,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial PP weiss, Platte/Rohr",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 15,
+      "bemerkung": "Bedarf im Modell 0. Fertige Strahlungsschutz-Schalen (Wetterstationen) als Alternative nicht geprueft."
+    },
+    "SON-tauchklemme": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 3,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial verzinkter Stahlstreifen",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 3,
+      "bemerkung": "3 Stk -> ca. 9 EUR (A)."
+    },
+    "SON-halter-zelle-zellkoerper": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 8,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial PVC-U Block",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 8,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-sondenhalter-36": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 4,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial PVC Kanal-Rest",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 4,
+      "bemerkung": "Bedarf im Modell 0."
+    },
+    "SON-knotenkugel-d100": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "eBay.de-Haendler (Happy Parts, HomeDIYer): Lagerstahl-Vollkugeln 7 bis 100 mm",
+          "land": "DE",
+          "url": "https://www.ebay.de/itm/405808793628",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Listung ab 1,39 EUR, 100-mm-Preis nicht gelesen (Seite nicht geoeffnet); Masse ca. 4 kg, ungehaertet."
+        },
+        {
+          "preis_eur": 5.35,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Kaufland.at, 20 Edelstahlkugeln 10 cm = 106,95 EUR",
+          "land": "AT",
+          "url": "https://www.kaufland.at/product/479387815/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Zuordnung unsicher (Seitenaufbau unuebersichtlich), Preis je Stueck unplausibel niedrig fuer 100-mm-Edelstahl-Vollkugel; nicht verwenden."
+        }
+      ],
+      "empfehlung_grob_eur": 40,
+      "bemerkung": "40 EUR/Stk ist A (Rohstahl ca. 4 kg + Bearbeitung/Bohrungen). 26 Stk -> ca. 1040 EUR. N-STATIK W43 offen; Hohlkugel oder Rohrknoten koennten sie ersetzen."
+    },
+    "SON-knotenarm-23x23x3": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 2.5,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial Vierkantrohr 23x23x3 Zuschnitt (Preis ueber Paket 2A)",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 2.5,
+      "bemerkung": "130 Stk -> ca. 325 EUR (A). N-STATIK W43 offen."
+    },
+    "SON-ankerlasche": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 4,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial Flachstahl/Blech Zuschnitt",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 4,
+      "bemerkung": "10 Stk -> ca. 40 EUR (A)."
+    },
+    "SON-schacht-kugelhahn-d63": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "a",
+      "angebote": [
+        {
+          "preis_eur": 45,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner belegt (PE-HD-Schachtsysteme nicht gesucht)",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Nicht recherchiert; Bedarf im Modell 0; OFFEN (Quelle)."
+        }
+      ],
+      "empfehlung_grob_eur": 45,
+      "bemerkung": "Preis nur A."
+    },
+    "SON-pflanztisch-platte": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "a",
+      "angebote": [],
+      "empfehlung_grob_eur": null,
+      "bemerkung": "Altmodell, nicht verbaut (Katalog-Hinweis 'altmodell'); kein Preis, Zeile nicht in die Einkaufsliste uebernehmen (Bedarf 0)."
+    },
+    "SON-tuer-modellvariante": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "a",
+      "angebote": [],
+      "empfehlung_grob_eur": null,
+      "bemerkung": "Altmodell, nicht verbaut; kein Preis, Bedarf 0."
+    },
+    "SON-belueftungsgitter-460": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Marley Kanalgitter PVC-U 225x225 / Hornbach.ch Stahlblechgitter 435x435 = 33,90 CHF",
+          "land": "DE/CH",
+          "url": "https://marley.de/en/products/luftungsgitter-fur-kanale-aus-kunststoff",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Kein Gitter 460x460 aus PVC gefunden; Naechstes: Marley 225 (zu klein), Hornbach CH Stahl 435 (Metall, CH). Sonderanfertigung oder Zuschnitt PVC-Gitterplatte."
+        }
+      ],
+      "empfehlung_grob_eur": 15,
+      "bemerkung": "15 EUR/Stk ist A; 2 Stk -> ca. 30 EUR."
+    },
+    "SON-tanksieb-stahl": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 8,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial verzinktes Blech/Streckmetall",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 8,
+      "bemerkung": "4 Stk -> ca. 32 EUR (A)."
+    },
+    "SON-plattform-821x821": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 60,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial verzinkter Stahl (Winkel/Blech, Preis ueber Paket 2A)",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 60,
+      "bemerkung": "2 Stk -> ca. 120 EUR (A)."
+    },
+    "SON-plattform-619x619": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 40,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial verzinkter Stahl (Winkel/Blech, Preis ueber Paket 2A)",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 40,
+      "bemerkung": "2 Stk -> ca. 80 EUR (A)."
+    },
+    "SON-holz-stuetzrippe": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 4,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial Fichte Kantholz, Zuschnitt",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 4,
+      "bemerkung": "10 Stk -> ca. 40 EUR (A)."
+    },
+    "SON-tuerscharnier": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "a",
+      "angebote": [
+        {
+          "preis_eur": 2.59,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Hornbach (AT), verzinktes Tuerband 80x45, 10er-Pack 25,90 EUR",
+          "land": "AT",
+          "url": "https://www.hornbach.at/c/eisenwaren/beschlaege/tuerbaender/S31814/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Suchausschnitt, Seite nicht geoeffnet; Lieferung nach DE ungeklaert."
+        },
+        {
+          "preis_eur": 4.75,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Bauhaus (AT), Stabilit Anschweissband 75x45",
+          "land": "AT",
+          "url": "https://www.bauhaus.at/torbaender/c/10002806",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Suchausschnitt 4,75 EUR; Anschweissvariante."
+        }
+      ],
+      "empfehlung_grob_eur": 5.0,
+      "bemerkung": "3 Stk -> ca. 15 EUR (E). Entfaellt, wenn Komplett-Tuer gewaehlt wird (siehe SON-tuerblatt-1000x2000)."
+    },
+    "SON-tuerdruecker": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "a",
+      "angebote": [
+        {
+          "preis_eur": 30.33,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "eBay.de-Haendler, Hoppe Paris/Amsterdam Wechselgarnitur Edelstahl matt",
+          "land": "DE",
+          "url": "https://www.ebay.de/p/2254304591",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "30,33 EUR brutto + 4,90 EUR Versand laut Suchausschnitt; Seite nicht geoeffnet."
+        },
+        {
+          "preis_eur": 29,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Hornbach (AT), Intersteel Tuerdruecker auf Rosette (2er-Set)",
+          "land": "AT",
+          "url": "https://www.hornbach.at/c/eisenwaren/beschlaege/tuerdruecker/tuerdruecker-rosetten/S2611/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "ca. 28 bis 30 EUR je Set; Lieferung nach DE ungeklaert."
+        }
+      ],
+      "empfehlung_grob_eur": 30,
+      "bemerkung": "Katalog Bedarf 2 Stk (Aussen/Innen); eine Wechselgarnitur = 1 Satz -> ca. 30 bis 60 EUR."
+    },
+    "SON-zarge-aufsatzrahmen": {
+      "bezug_einheit": "Stk",
+      "beschaffung_art": "c",
+      "angebote": [
+        {
+          "preis_eur": 40,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "keiner: Eigenbau, Rohmaterial Aluminium-Winkel/Flachprofil, Zuschnitt",
+          "land": null,
+          "url": null,
+          "lieferung_de": "unbekannt",
+          "konfidenz": "A",
+          "bemerkung": "Angenommener Rohmaterialpreis, kein Angebot belegt. Stahl-/Kunststoff-Rohmaterial wird ueber die Pakete 2A (Profile, Bleche) und 2B (PVC-U) gepreist; hier nur Richtwert."
+        }
+      ],
+      "empfehlung_grob_eur": 40,
+      "bemerkung": "Bedarf im Modell 0."
     }
   },
   "nicht_recherchiert": {
-    "_hinweis": "Untergruppe 2 (SON-Kaufteile: Polycarbonat, Tuerblatt, Spannverschluss, Federdraht, PP-Stuetze, EPDM-Flachdichtung) eingetragen. Restliche Katalogartikel meiner Typen noch ohne Angebot.",
-    "SON": [
-      "SON-korbgriff-v2a",
-      "SON-ankergabel-80x140",
-      "SON-tuerscharnier",
-      "SON-tuerdruecker",
-      "SON-zarge-aufsatzrahmen",
-      "SON-plattform-821x821",
-      "SON-plattform-619x619",
-      "SON-holz-stuetzrippe",
-      "SON-tanksieb-stahl",
-      "SON-belueftungsgitter-460",
-      "SON-knotenkugel-d100",
-      "SON-knotenarm-23x23x3",
-      "SON-ankerlasche",
-      "SON-schacht-kugelhahn-d63",
-      "SON-tauchklemme",
-      "SON-strahlungsschutz-par",
-      "SON-halter-inline-d32-*",
-      "SON-halter-inline-d50-*",
-      "SON-halter-zelle-zellkoerper",
-      "SON-sondenhalter-36"
-    ],
+    "_hinweis": "Alle 40 Katalogartikel der Typen FOL TOP GEW SON BET haben einen Eintrag. Davon belegt (Q/Q-Treffer) nur wenige; Eigenbau-Zeilen tragen Konfidenz A (Rohmaterial-Richtwert).",
+    "SON": [],
     "FOL": [],
     "BET": []
   }

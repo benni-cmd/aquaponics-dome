@@ -3,20 +3,16 @@
  "stand": "2026-11-04",
  "paket": "2D",
  "bearbeitung": {
-  "stand": "Untergruppe 2/3 teilweise: strom-ct, hutschiene, schaltschrank als Q-Treffer (keine Seite selbst geoeffnet)",
-  "offen": [
-   "MES-temperatur",
-   "MES-o2",
-   "MES-co2-scd41",
-   "MES-druck-schalter",
-   "MES-flow-12",
-   "MES-flow-gross",
-   "MES-level-druck",
-   "MES-par",
-   "ELE-kabelverschraubung-pg",
-   "ELE-kabelkanal-30x60"
-  ],
-  "nachpruefen": "Q-Treffer oeffnen; Lieferung nach DE im Warenkorb pruefen; Schaltschrank-Groesse klaeren; EC K0,1 vs K1,0; zweite EU-Quellen fuer ph, ec, do-ind"
+  "stand": "alle 20 Artikel haben mindestens ein Angebot; nur 11 mit selbst geoeffneter Seite (Q), Rest Suchtreffer",
+  "nachpruefen": [
+   "Suchtreffer oeffnen, Lieferung nach DE im Warenkorb",
+   "Schaltschrank 500x800x1200 exakt nicht gefunden",
+   "EC K 0,1 gegen K1,0",
+   "zweite EU-Quelle fuer ph, ec, do-ind, o2",
+   "flow-12 Atlas gegen YF-S201 klaeren",
+   "flow-gross passende Groesse (DN32) europaeisch finden",
+   "MES-temperatur/o2: Sondentyp der Station festlegen"
+  ]
  },
  "artikel": {
   "MES-ph": {
@@ -186,36 +182,193 @@
    ]
   },
   "MES-temperatur": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "zweites_angebot": "Annahme",
+   "angebote": [
+    {
+     "preis_eur": 4.07,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Annahme: wie MES-temp-ds (DS18B20 Domoticx NL)",
+     "land": "NL",
+     "url": "https://domoticx.net/webshop/temperatuur-sensor-digitaal-1-wire-dallas-waterdicht-ds18b20-2m-kabel/",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "A",
+     "bemerkung": "Stationssonde Typ offen (R39: in EC/DO eingebaut oder DS18B20); A"
+    }
+   ]
   },
   "MES-o2": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "zweites_angebot": "Annahme",
+   "angebote": [
+    {
+     "preis_eur": 285.72,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Annahme: wie MES-do-mini (DigiKey NL ENV-20-DOX)",
+     "land": "NL",
+     "url": "https://www.digikey.nl/en/products/detail/atlas-scientific/ENV-20-DOX/16003119",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "A",
+     "bemerkung": "Stationssonde Typ offen; A"
+    }
+   ]
   },
   "MES-co2-scd41": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "angebote": [
+    {
+     "preis_eur": 30.820999999999998,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "SOS electronic (Sensirion SCD41-D-R2 Referenzdesign)",
+     "land": "CZ/SK",
+     "url": "https://www.soselectronic.com/en-us/products/sensirion/scd41-d-r2-347342",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer: 25,90 netto, brutto mit 19 % gerechnet (E); 23 auf Lager"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "DigiKey DE (Sensirion SCD41-D-R1)",
+     "land": "DE",
+     "url": "https://www.digikey.de/en/products/detail/sensirion-ag/SCD41-D-R1/13684000",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer, Preis nicht gelesen; Lieferzeit Hersteller 10 Wochen, 190 lagernd"
+    }
+   ]
   },
   "MES-druck-schalter": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "angebote": [
+    {
+     "preis_eur": 20.4,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "eBay.de (einstellbarer Druckschalter 0-10 bar, 1/4 Zoll)",
+     "land": "unbekannt",
+     "url": "https://www.ebay.de/itm/397635686182",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; Gewinde 1/4 Zoll nicht bestaetigt"
+    },
+    {
+     "preis_eur": 13.79,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Kaufland AT (KOTARBAU BSK 2 1/4)",
+     "land": "AT",
+     "url": "https://www.kaufland.at/product/466406546/",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; Bereich/Gewinde nicht bestaetigt, 230-V-Pumpenschalter, fuer Signalzweck pruefen"
+    }
+   ]
   },
   "MES-flow-12": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "angebote": [
+    {
+     "preis_eur": 7.42,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Domoticx (YF-S201, G1/2, 1-30 l/min)",
+     "land": "NL",
+     "url": "https://domoticx.net/webshop/water-flow-meter-1-30lmin-12-dn15-kunststof-3-pin-jst-sm-yf-s201",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; 47 auf Lager; Ersatz fuer Atlas 1/2 Zoll (145,99 USD): Genauigkeit und Dauerbetrieb im Fischwasser nicht belegt"
+    },
+    {
+     "preis_eur": 9.22,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Farnell ES (DFRobot SEN0217, 1/2 Zoll)",
+     "land": "ES",
+     "url": "https://es.farnell.com/dfrobot/sen0217/sensor-flujo-agua-0-5-placa-arduino/dp/3517923",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer: 7,75 netto, brutto mit 19 % gerechnet (E)"
+    }
+   ]
   },
   "MES-flow-gross": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "zweites_angebot": "nur Direktimport; Atlas 3/4 Zoll nicht lieferbar und zu klein (bis 114 l/min)",
+   "angebote": [
+    {
+     "preis_eur": 41.95,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "ManoMano DE (Hall-Durchflusssensor G3/4, 1-30 l/min)",
+     "land": "DE",
+     "url": "https://www.manomano.de/p/g3-4-1-30-l-min-hall-effekt-durchflusssensor-fur-wasser-zur-messung-und-steuerung-des-durchflusses-95793126",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; Groesse passt NICHT (110 l/min noetig)"
+    },
+    {
+     "preis_eur": 47.66,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "eBay.de (DN32 Edelstahl Hall-Turbine, 1-120 l/min)",
+     "land": "CN (ueber eBay.de)",
+     "url": "https://www.ebay.de/itm/317435429058",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; Direktimport China, nicht europaeisch; Preis aus USD umgerechnet (E)"
+    }
+   ]
   },
   "MES-level-druck": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "angebote": [
+    {
+     "preis_eur": 39.99,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "eBay.de (Tauchdrucksonde Edelstahl 304, 4-20 mA, ab 0-1 m)",
+     "land": "unbekannt",
+     "url": "https://www.ebay.de/itm/388519357627",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; Qualitaet/Zertifikat offen"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "RS Online AT (RS PRO Niveaufuehler 0-1 mH2O, 4-20 mA, 3 m Kabel)",
+     "land": "AT",
+     "url": "https://at.rs-online.com/web/p/fullstandssensoren/2726968",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer, Preis nicht gelesen"
+    }
+   ]
   },
   "MES-par": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 2"
+   "angebote": [
+    {
+     "preis_eur": 605.0,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "shop-meeresaquaristik.de (Apogee SQ-520, USB)",
+     "land": "DE",
+     "url": "https://www.shop-meeresaquaristik.de/Measurement-control-technology/PAR-measuring-devices-quantum-meters/Apogee-SQ-520-Quantum-Sensor-with-USB-output::18462.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; SQ-520 statt SQ-500 (USB statt analog); Preis inkl. MwSt. zzgl. Versand"
+    },
+    {
+     "preis_eur": 641.55,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "gotogarden.com (Apogee SQ-520)",
+     "land": "CZ",
+     "url": "https://gotogarden.com/products/apogee-instruments-sq-520-sonda-pro-mereni-parppfd",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; EU-Lieferung 3 Tage laut Treffer"
+    }
+   ]
   },
   "MES-strom-ct": {
    "zweites_angebot": "vorhanden (zwei Treffer), beide nicht geoeffnet",
@@ -272,12 +425,56 @@
    ]
   },
   "ELE-kabelverschraubung-pg": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 3"
+   "angebote": [
+    {
+     "preis_eur": 1.14,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "RS Online DE (HellermannTyton NGM M20, Nylon, 10er Beutel, mit Mutter)",
+     "land": "DE",
+     "url": "https://de.rs-online.com/web/p/kabelverschraubungen/8188114",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer: 11,40 brutto je 10 Stk (E: 1,14/Stk), Einheit Stk"
+    },
+    {
+     "preis_eur": 4.41,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "RS Online DE (Lapp SKINTOP M20 grau, 7-13 mm, IP68)",
+     "land": "DE",
+     "url": "https://de.rs-online.com/web/p/products/104010",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer: 44,10 brutto je 10 Stk (E), Kontermutter extra"
+    }
+   ]
   },
   "ELE-kabelkanal-30x60": {
-   "angebote": [],
-   "bemerkung": "offen, Untergruppe 3"
+   "angebote": [
+    {
+     "preis_eur": 9.24,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "zaehlerschrank24 (Hager LF3006009016, 2-m-Einheit)",
+     "land": "DE",
+     "url": "https://www.zaehlerschrank24.de/hager-kabelkanal-lf3006009016-pvc-30x60-mm-verkehrsweiss.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; je Meter brutto, Lieferzeit 3-4 Werktage"
+    },
+    {
+     "preis_eur": 4.58,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "el12.com (Hager LF3006009016)",
+     "land": "unbekannt (23 % MwSt.)",
+     "url": "https://el12.com/en/running-cables-and-wires/pvc-kabelkanal-30x60mm-weiss-lf3006009016,i428060",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchtreffer; Waehrung/Land unklar"
+    }
+   ]
   },
   "ELE-schaltschrank-500x800x1200": {
    "zweites_angebot": "fehlt: exakte Groesse 500x800x1200 nicht gefunden; Treffer sind Nachbargroessen",

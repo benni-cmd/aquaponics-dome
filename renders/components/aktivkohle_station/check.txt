@@ -1,0 +1,42 @@
+PASS aktivkohle_station: Behaelter 1: Aussen-Ø 254 (Handelsmass 10 Zoll): Ist 253.996, Soll 254 (+-0.2)
+PASS aktivkohle_station: Behaelter 1: Mantelhoehe 790 (889 - Kopf 99): Ist 790, Soll 790 (+-0.2)
+PASS aktivkohle_station: Kopf 1: Oberkante Z 889 (Handelsmass 35 Zoll): Ist 889, Soll 889 (+-0.2)
+PASS aktivkohle_station: Behaelter 1: Innenvolumen 36.7 l in 34..40 (Handel 10x35: 38 l, R53; keine Vorratsflaeche): Ist 1, Soll 1
+PASS aktivkohle_station: Kohlebett 1: 21.0 l = 21 l (R45): Ist 20.9882, Soll 21 (+-0.3)
+PASS aktivkohle_station: Kohlebett 1: Masse 9.26 kg = 9,3 kg (0,441 kg/l, R53 Abschnitt 6): Ist 9.25578, Soll 9.3 (+-0.3)
+PASS aktivkohle_station: Kohlebett 1 liegt im Innenraum (Ø 240 < 244, Boden > 5): Ist 1, Soll 1
+PASS aktivkohle_station: Behaelter 2: Aussen-Ø 254 (Handelsmass 10 Zoll): Ist 253.996, Soll 254 (+-0.2)
+PASS aktivkohle_station: Behaelter 2: Mantelhoehe 790 (889 - Kopf 99): Ist 790, Soll 790 (+-0.2)
+PASS aktivkohle_station: Kopf 2: Oberkante Z 889 (Handelsmass 35 Zoll): Ist 889, Soll 889 (+-0.2)
+PASS aktivkohle_station: Behaelter 2: Innenvolumen 36.7 l in 34..40 (Handel 10x35: 38 l, R53; keine Vorratsflaeche): Ist 1, Soll 1
+PASS aktivkohle_station: Kohlebett 2: 21.0 l = 21 l (R45): Ist 20.9882, Soll 21 (+-0.3)
+PASS aktivkohle_station: Kohlebett 2: Masse 9.26 kg = 9,3 kg (0,441 kg/l, R53 Abschnitt 6): Ist 9.25578, Soll 9.3 (+-0.3)
+PASS aktivkohle_station: Kohlebett 2 liegt im Innenraum (Ø 240 < 244, Boden > 5): Ist 1, Soll 1
+PASS aktivkohle_station: Kontaktzeit 10.5 min = Betten 42.0 l / 4 l/min (scripts/r45_kohle.py: 42 l -> 10,5 min): Ist 10.4941, Soll 10.5 (+-0.2)
+PASS aktivkohle_station: Sedimentgehaeuse: Ø 112 (10 Zoll Slim-Line, Handelsmass): Ist 111.998, Soll 112 (+-0.2)
+PASS aktivkohle_station: Sedimentgehaeuse Oberkante = Behaelter-Mantelhoehe 790 (Koepfe auf gleicher Hoehe): Ist 790, Soll 790 (+-0.2)
+PASS aktivkohle_station: Sedimentpatrone 20 um: 10 Zoll (250 mm) in der Hohlbohrung: Ist 250, Soll 250 (+-0.2)
+PASS aktivkohle_station: Kopf Sediment: Oberkante Z 889: Ist 889, Soll 889 (+-0.2)
+PASS aktivkohle_station: Reihenfolge Hahn, Vorfilter, Behaelter 1, Probehahn, [Behaelter 2], Begrenzer, K41, K52, Hahn K40 (x steigend): Ist 1, Soll 1
+PASS aktivkohle_station: Probehahn-T liegt zwischen Behaelter 1 und 2 (R45: Probehahn zwischen den Behaeltern): Ist 1, Soll 1
+PASS aktivkohle_station: Abzweige K41 und K52 hinter dem Begrenzer (R45 Zeile 307): Ist 1, Soll 1
+PASS aktivkohle_station: Begrenzer hinter Behaelter 2 (R45 Zeile 305): Ist 1, Soll 1
+PASS aktivkohle_station: Port K39 Eingang d25: Stirnflaeche an (-800, 0, 839.5): Ist 1, Soll 1
+PASS aktivkohle_station: Port K40 Ausgang d25: Stirnflaeche an (900, 0, 839.5): Ist 1, Soll 1
+PASS aktivkohle_station: Port K41 Abzweig d20: Stirnflaeche an (560, 250, 839.5): Ist 1, Soll 1
+PASS aktivkohle_station: Port K52 Abzweig d25: Stirnflaeche an (700, -250, 839.5): Ist 1, Soll 1
+PASS aktivkohle_station: Port Probehahn Tuelle d12: Stirnflaeche an (165, 120, 839.5): Ist 1, Soll 1
+PASS aktivkohle_station: Blatt nennt 5 Ports: Ist 5, Soll 5
+PASS aktivkohle_station: Blatt-Port K39 vorhanden: Ist 1, Soll 1
+PASS aktivkohle_station: Blatt-Port K40 vorhanden: Ist 1, Soll 1
+PASS aktivkohle_station: Blatt-Port K41 vorhanden: Ist 1, Soll 1
+PASS aktivkohle_station: Blatt-Port K52 vorhanden: Ist 1, Soll 1
+PASS aktivkohle_station: Rohr Eingang: Aussen-Ø 25: Ist 24.9996, Soll 25 (+-0.1)
+PASS aktivkohle_station: Rohr K41: Aussen-Ø 20: Ist 19.9997, Soll 20 (+-0.1)
+PASS aktivkohle_station: Leitungsachse Z 839,5 (Kopfmitte): Ist 839.5, Soll 839.5 (+-0.1)
+PASS aktivkohle_station: Gesamt-Box X -800 bis 900 (Eingang -800 bis Ausgang 900): Ist 1, Soll 1
+PASS aktivkohle_station: Gesamt-Box Y -250 bis 250 (K52 -250 bis K41 +250): Ist 1, Soll 1
+PASS aktivkohle_station: Keine Vorratsflaeche: kein Koerper ueber 45 l Volumen ausser Konsole: Ist 0, Soll 0
+PASS aktivkohle_station: Interferenzen (Volumen > 0,5 mm3, ungeprueft zaehlt): Ist 0, Soll 0
+INFO Koerper 43, Masse gesamt 47.8 kg (davon Kohle 18.5 kg)
+== aktivkohle_station: 40/40 PASS

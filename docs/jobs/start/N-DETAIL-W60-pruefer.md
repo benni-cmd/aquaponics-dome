@@ -1,0 +1,8 @@
+# Start-Auftrag: Pruefer Detailansicht W60 und Viewer-Neuerungen
+
+PROJEKT: aquaponics-dome (user-projects/aquaponics-dome). Rolle: Pruefer, nur lesen und messen (du hast keinen dieser Bauschritte gebaut). Kontext mit Fenster 1.000.000 Token rechnen; ueber 35 % melden statt anfangen. Vorlage `docs/jobs/vorlagen/pruefung.md`.
+
+1. Gegenstand: `docs/jobs/N-STUECKLISTE.md` Pruefpunkte 6 und 7 (Teiledaten 5a aller 308 Komponenten, 5b Einkauf in der Detailansicht, 70a6e7f) sowie die Viewer-Pakete ohne bisherigen Pruefer: `docs/packages/n-viewer-laden.md` (Ladeanzeige, Kleinteile-Schalter, robustes Laden) und `docs/packages/n-viewer-ansicht.md` (Visuell/Technisch).
+2. Messen statt glauben: `check_parts.py` ueber alle Komponenten Exit 0; fehlende `artikel_id`-Verweise 0; eigene Stichproben (mindestens 5, nicht die drei der Bau-Sitzung) Menge/Preis/Link gegen `data/stueckliste.json` und `docs/einkaufsliste.html`; Anzeigetexte auf Register-Kuerzel und Parameternamen (Stichprobe 20 Teile, Deutsch mit Umlauten); Rueckverweis aus der Einkaufsliste; Laden mit und ohne Kleinteile (Zeit, Fehlerzeilen 0, Tuer zeigt Klinke); Umschalten Visuell/Technisch (Figuren aus in Technisch, Legende); Texte der Leitungsteile fachlich gegenlesen (sind sie richtig, nicht nur vorhanden).
+3. Viewer per eigenem Port starten (`python viewer/serve.py <port>`, startet keinen Export, wenn `dome.sc` nicht neuer ist), Screenshots im Browser-Pane gegen `..\..\docs\ui-standard.md`. Parallel laeuft `check_latte 69`: nichts bauen, nichts exportieren.
+4. Ergebnis: `docs/jobs/pruefung/N-DETAIL-W60.md`, Urteil PASS / PASS mit Auflagen / FAIL, Befehl neben jeder Zahl. Commit nur dieser Datei per Pfad, Push. Danach STOPP.

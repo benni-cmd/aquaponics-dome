@@ -88,5 +88,6 @@
 
 ## M-BEET-TAUSCH-fix (4.11., Runde 68) — Nachbesserung nach Pruefer-FAIL (D79)
 - Build `sh scripts/build.sh 5 68` Exit 0: 8 `Beet_aussen_800`, 6 `Beet_innen_933`, Netztoepfe 2222, Salatkoepfe 2222. Siphon samt Medienschutz auf Rasterzellmitte (aussen_800 x 1040 / y 0, innen_933 x 650 / y 65), Topf auf der Medienoberkante je Beet (aussen Z 800, innen Z 765 bis 804). Abstand Schutz- und Schachtachse zu jedem Netztopf in allen 14 Beeten 91,9 mm (Soll >= 87).
-- `check_ibc_beet` 211 PASS Exit 0 (neue Zeilen Abstand Medienschutz-Achse), CAD-Probe Netztopf x Bauteil 0 Paare (aussen und innen), Gegenprobe mit altem Abstand 65,6 mm: 2 Paare. `check_walkways` PASS (700 / 600 / 110 / 307 / 3177).
+- `check_ibc_beet` 210/210 PASS Exit 0 (Pruefer bb3de13) (neue Zeilen Abstand Medienschutz-Achse), CAD-Probe Netztopf x Bauteil 0 Paare (aussen und innen), Gegenprobe mit altem Abstand 65,6 mm: 2 Paare. `check_walkways` PASS (700 / 600 / 110 / 307 / 3177).
 - Offen: Viewer-Export nicht gelaufen (ueberschreibt `viewer/extras.json` mit fremder Aenderung; Sicherung abgelehnt), `check_latte` 68 und `check_walkways_voll` nicht gelaufen; Ablaufport der Beete wandert (aussen_800 x -56 mm, innen_933 y +65 mm): beim Anschluss K14/K30 (E20) beachten.
+- Runde 68 Nachpruefung (04.11.2026, bb3de13): PASS mit Auflagen. Viewer-Export Runde 68 gelaufen 10:05 (8d1c29d). Offen: Viewer-Seitentexte Topfzahlen (1634/2834/2160 gegen 2222), Pflanzen-Teilpruefung in check_latte (Vorlage pruefung.md fuehrt check_ibc_beet als Pflicht), Ablaufport-Versatz bei E20.

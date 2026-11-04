@@ -53,7 +53,7 @@ Offen:
 
 Aenderungen (Commits 7ddff23, 3fbcc3e, fa99e8f):
 1. **Auflage 1 (Medienschutz):** `ibc_beet.py`: Siphon samt Standrohr, Glocke, Reduktion, Huelsen und Medienschutz auf eine Zellmitte des Topfrasters (gleiche Funktion `shaft_cell` wie der Schacht, 0c). Neue Lage: aussen_800 x 1040 / y 0 (vorher 1096 / 0), innen_933 x 650 / y 65 (vorher 708,5 / 0), aussen_933 und aussen_993 x 1300 / y 65 (vorher 1252 / 0). **Der Ablaufport (Standrohrende z -30) wandert damit um bis zu 56 mm in x und 65 mm in y; Netz K14/K30 und der Beet-Sumpf-Anschluss sind noch nicht gebaut (E20), Orchestrator beim Anschluss beachten.** Topfzahl bleibt 2222, kein Topf gestrichen, keine Entscheidung von Ben noetig.
-2. **Check:** `check_ibc_beet.py` neue Zeilen je Typ (alle vier): "Abstand Medienschutz-Achse zu jedem Netztopf >= 87", Medienschutz-Achse nahe Li/2 - 200, Glocke und Standrohr konzentrisch zur Schutzachse. Lauf: **Exit 0, 211 PASS, 0 FAIL**, Interferenz je Typ 0.
+2. **Check:** `check_ibc_beet.py` neue Zeilen je Typ (alle vier): "Abstand Medienschutz-Achse zu jedem Netztopf >= 87", Medienschutz-Achse nahe Li/2 - 200, Glocke und Standrohr konzentrisch zur Schutzachse. Lauf: **Exit 0, 210/210 PASS (Pruefer Runde 68; 211 zaehlte die Schlusszeile mit), 0 FAIL**, Interferenz je Typ 0.
 3. **Auflage 2 (Topfhoehe):** `gen_dome.py` `pots()`: Topf-Boden je Beet = `fz + z0 + height - rim_gap` (rim_gap aus `data/components/ibc_beet.json`); NFT-Toepfe unveraendert; sonst nichts am Generator geaendert. Gemessen aus `scripts/dome-script.json`: Beet-Toepfe aussen 960 bei Z 800; innen 98 je Beet bei Z 765 / 780 / 780 / 801 / 802 / 804 (Medienoberkante je Beet).
 
 Messungen (selbst, 04.11.2026):

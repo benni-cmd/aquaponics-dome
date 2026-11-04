@@ -19,7 +19,7 @@ def main():
     pb = B["Ankerplatte"]["bbox"]
     ck.eq("Ankerplatte steht auf dem Beton", pb["min"][2], bb["max"][2], 0.01)
     ck.eq("Ankerplatte Seite", pb["max"][0] - pb["min"][0], p["plate_s"], 0.1)
-    anchors = [b for k, b in B.items() if k.startswith("Body") and abs((b["bbox"]["max"][2] - b["bbox"]["min"][2]) - (p["anchor_len"] + 10)) < 25]
+    anchors = [b for k, b in B.items() if k.startswith(("Body", "Anker_")) and abs((b["bbox"]["max"][2] - b["bbox"]["min"][2]) - (p["anchor_len"] + 10)) < 25]
     ck.eq("Verbundanker M16 (2 Stueck)", len(anchors), 2)
     ck.eq("Anker reichen in den Beton", min(b["bbox"]["min"][2] for b in anchors) < bb["max"][2] - 250, True) if False else ck.eq("Anker reichen mind. 250 mm in den Beton", 1 if all(bb["max"][2] - b["bbox"]["min"][2] >= 250 for b in anchors) else 0, 1)
     # Schnittstelle zum Knoten: Lochhoehe, Spalt, Loch-D
@@ -32,8 +32,8 @@ def main():
     ck.eq("Gabelhoehe ueber der Lochmitte (Gabel reicht ueber das Loch)", 1 if ga["max"][2] > p["lug_hole_z"] + 30 else 0, 1)
     ck.eq("Lochdurchmesser = Loch der Knotenlasche D14", p["bolt_hole"], pk["lug_hole"], 0.01)
     ck.eq("Gabelbreite >= Lasche + Spiel", 1 if ga["max"][0] - ga["min"][0] >= pk["lug_w"] else 0, 1)
-    qb = [b for k, b in B.items() if k.startswith("Body") and abs((b["bbox"]["max"][1] - b["bbox"]["min"][1]) - 45) < 25 and (b["bbox"]["max"][2] - b["bbox"]["min"][2]) < 40]
-    ck.eq("Querbolzen M12 vorhanden (durch beide Laschen)", 1 if any(b["bbox"]["min"][1] < gi["min"][1] and b["bbox"]["max"][1] > ga["max"][1] for b in B.values() if b["name"].startswith("Body")) else 0, 1)
+    qb = [b for k, b in B.items() if k.startswith(("Body", "Querbolzen")) and abs((b["bbox"]["max"][1] - b["bbox"]["min"][1]) - 45) < 25 and (b["bbox"]["max"][2] - b["bbox"]["min"][2]) < 40]
+    ck.eq("Querbolzen M12 vorhanden (durch beide Laschen)", 1 if any(b["bbox"]["min"][1] < gi["min"][1] and b["bbox"]["max"][1] > ga["max"][1] for b in B.values() if b["name"].startswith(("Body", "Querbolzen"))) else 0, 1)
     return ck.done()
 
 def dk_ball_r(pk):

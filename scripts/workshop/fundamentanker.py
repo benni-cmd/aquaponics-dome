@@ -55,11 +55,29 @@ def build():
         b.add("component.metadata.set", component=nm, part_number=pn, description=ds, revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
     return b, dict(z_top=z_top, z_pl0=z_pl0)
 
+
+def name_normteile(out):
+    """parts.insert-Koerper heissen 'Body<n>': in Einfuegereihenfolge (wie die Feature-Namen im build) benennen, sonst bleibt der Name nur in der Stueckliste."""
+    import re, json, subprocess
+    ev = sc.evaluate(out)
+    bodies = sorted((int(re.fullmatch(r"Body(\d+)", b["name"]).group(1)), b["name"]) for b in ev["bodies"] if re.fullmatch(r"Body\d+", b["name"]))
+    ziel = ["ScheibeA_1", "Anker_1", "ScheibeA_2", "Anker_2", "ScheibeQ_O", "Querbolzen", "ScheibeQ_U", "MutterQ"]
+    if len(bodies) != len(ziel):
+        return 0
+    cmds = [{"command": "body.rename", "params": {"body": alt, "name": neu}} for (_, alt), neu in zip(bodies, ziel)]
+    script = os.path.join(sc.TMP, "ws-anker-names.json")
+    json.dump({"commands": cmds}, open(script, "w"))
+    r = subprocess.run([sc.CLI, "run", script, "--in", out, "--save", out, "--quiet"], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER name_normteile: " + r.stderr.strip() + r.stdout.strip())
+    return len(cmds)
+
 if __name__ == "__main__":
     b, info = build()
     out = os.path.join(sc.ROOT, "designs", "components", "fundamentanker.sc")
     sc.run(b.write("fundamentanker"), out)
     sc.assign_part_materials(out, "Stahl Anker")                       # Normteile (Body<n>) auf Stahl
+    name_normteile(out)
     ev = sc.evaluate(out)
     for x in ev["bodies"]:
         print(x["name"], round(x["mass_g"] / 1000, 2), "kg", [round(v) for v in x["bbox"]["min"]], [round(v) for v in x["bbox"]["max"]])

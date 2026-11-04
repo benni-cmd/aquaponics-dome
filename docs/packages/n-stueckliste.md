@@ -5,7 +5,7 @@
 **Goal:** `python -X utf8 scripts/bom.py` erzeugt `data/stueckliste.json` und `docs/einkaufsliste.html`; Summen gleich Modellzaehlung (`scripts/check_bom.py` Exit 0); jede Zeile mit Preis, Datum, Quelle, Land, Link oder mit benanntem OFFEN-Grund. Blatt: `docs/jobs/N-STUECKLISTE.md`
 
 ## Plan
-1. [ ] Werkstatt 1a: Typ-Index und Artikelliste aus allen Komponenten-`.sc` (Preise leer), sofort committen
+1. [x] Werkstatt 1a: Typ-Index und Artikelliste aus allen Komponenten-`.sc` (Preise leer), sofort committen (04.11.2026, `scripts/bom_artikel.py`, `data/katalog.json`)
 2. [ ] Werkstatt 1b: `data/bom_regeln.json`, unbenannte Koerper (`Body<n>`) benennen
 3. [ ] Werkstatt 1c: `scripts/bom.py` (Zaehlung, Zuschnitt 1D) und `scripts/check_bom.py`
 4. [ ] Werkstatt 1d: `data/stueckliste.json`, `docs/stueckliste.md`
@@ -26,6 +26,9 @@ Reihenfolge: 1a vor 2A bis 2E (Artikelliste); 2A bis 2E parallel; 10 nach 1d und
 04.11.2026, Planer (Sonnet 5.5): Blatt geschrieben, Aktualitaet **angepasst** (B1 liegt nur fuer 2 von 25 Komponenten vor, deshalb Namensregeln statt voller B1; D69 durch W59 auf grobe Preise erweitert; E20 und Subtank als OFFEN-Status gefuehrt). Messung unbenannter Koerper: `nft_tisch_mitte.sc` 40 von 124; Messung ueber alle Komponenten folgt in 1a. OFFEN (Ben): Preise brutto oder netto (Empfehlung brutto); UK als Europa; Pflanzgut/Fisch/Beton/Aushub in die Liste (Empfehlung nein).
 
 04.11.2026, Nachtraege eingearbeitet: W59 (interaktive Seite, Sortieren, Gruppieren mit Gruppenpreis, Desktop-Verknuepfung) als Paket 3b; W60 (Detailansicht aller Bauteile, verknuepft mit Einkaufsliste) als Paket 5 mit gemeinsamem Datenmodell `data/parts` + `artikel_id`; Pruefpunkte 6 und 7. Zusatz: 6 bis 7 Sitzungen. Empfehlung: Einkaufsliste zuerst, W60 danach.
+
+04.11.2026, Werkstatt 1a gebaut: `data/katalog.json` traegt zusaetzlich `typen` (17 Kuerzel), `artikel` (239 Zeilen, Preise leer, Status OFFEN (Quelle)), `artikel_ausnahmen`, `artikel_ungeklaert` (0), `artikel_stempel`. Messung: 301 `.sc` per `solidcraft-cli eval` (`python -X utf8 scripts/bom_artikel.py --messen`, rund 15 min) -> 2349 Koerper, Cache `data/bom_koerper.json`. Stempel: instances `built` 2026-11-04 01:33:42, sc_sha256 38162d73c8f590cb, `ibc_beet*` 41f3f1c81fe299e5 (W40-BEET-Stand). Typen: FIT 73, SON 31, BLE 17, BEH 16, MES 16, ARM 16, SCH 18, PRF 14, ROH 12, TOP 3, SRB 4, WNK 6, ELE 4, PMP 3, FOL 5, GEW 1 (`python -c` ueber `katalog.json` `artikel`). 112 von 239 Artikeln kommen nur in Komponenten ohne Instanz im Modellstand vor (`ohne_instanz_im_modell`), z. B. Haut, Keilschiene, Halter, Dosierstation. Ausgenommen (Entscheidung 04.11.): Salat 98 Koerper, Massfigur 43, Wasserkoerper 7, Beton 2, Aushub 1. Unbenannte Koerper (`Body<n>`) sind den Artikeln `SRB-*` und `BLE-platte-30x30x3` mit Hinweis `unbenannt` zugeordnet (Zahl nach Namensregeln folgt in 1b).
+Bekannte Naeherungen fuer 1b/2A: Profilwand aus Modellmasse gerechnet [E] (z. B. 40x40: Wand 2,5 und 3 mm gemischt, vereinheitlichen); Strebenprofil als Platzhalterkoerper (Laenge aus Bbox, Profil 30x30 laut strut_cutting); Diagonalen als Flachstahl 3 mm ohne Breite; IBC-Gebinde als ein Artikel; Rohr-Laengen aus Bbox (L-Stuecke ungenau); Kugelhahn-Nennweite je Bauteil angenommen [A].
 
 ## DoD
 Dateien aus dem Blatt vorhanden; `check_bom.py` gruen; fuenf Pruefpunkte vom Pruefer gemessen; Seite per Screenshot geprueft; Entscheidungen der Offen-Liste in `docs/decisions.md`; Wunschbuch W59 nachgefuehrt; Commit und Push je Teilschritt.

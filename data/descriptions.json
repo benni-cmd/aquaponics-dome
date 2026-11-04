@@ -177,35 +177,36 @@
       "match": "^ibc_beet",
       "titel": "Substratbeet",
       "was": "Beet aus einer halbierten IBC-Wanne mit Kies oder Blähton; Fluten und Entleeren per Glockensiphon.",
-      "status": "abgenommen; Außenbeet wird nach D29 schmaler (800 mm)",
+      "status": "abgenommen; W40-BEET (04.11.2026, D77): Sperrboden, Beet leert sich ganz; Außenbeet 800 mm (D29)",
       "ablauf": [
         "Wasser läuft über ein Tropfrohr gleichmäßig auf das Substrat.",
-        "Das Beet füllt sich bis zur Höhe des Standrohrs.",
+        "Das Beet füllt sich bis zur Kante des Standrohrs (35 mm unter der Oberfläche).",
         "Dann springt der Glockensiphon an und entleert das Beet schlagartig (Fluten und Entleeren).",
-        "Die Wurzeln bekommen so abwechselnd Wasser und Luft.",
-        "Das Substrat ist zugleich Biofilterfläche: Bakterien wandeln dort Ammonium um."
+        "Unter dem Medium liegt ein dichter Sperrboden: das Beet leert sich bis auf einen Film von etwa 9 l, kein stehendes Wasser im Dunkeln.",
+        "Die Wurzeln bekommen so abwechselnd Wasser und Luft; das Substrat ist zugleich Biofilterfläche."
       ],
       "aufbau": [
         {
           "t": "Wanne und Medium",
           "p": [
             "Wanne, Wand 3–4 mm",
-            "Medium (Kies/Blähton) als ein Körper, 300 mm tief, Oberfläche auf Z 400",
-            "Siebboden"
+            "Medium (Kies/Blähton) als ein Körper, 300 mm tief",
+            "Sperrboden PP 8 mm ohne Löcher, ringsum abgedichtet (Dichtband EPDM-Zellkautschuk)"
           ]
         },
         {
           "t": "Siphon",
           "p": [
-            "Standrohr Ø25 × 220 mm",
-            "Glocke Ø75 × 250 mm mit Schlitzen und Luftloch",
-            "Medienschutz Ø110 × 320 mm"
+            "Standrohr Ø25 mit Reduzierhülse 32/25 im Tankverbinder",
+            "Glocke Ø75 mit 4 Kerben 10 × 12 mm am Fuß und Luftloch",
+            "Schutzkorb Ø110 aus Edelstahl-Lochblech 5 mm (Metallbauer)"
           ]
         },
         {
-          "t": "Anschlüsse",
+          "t": "Anschlüsse und Wartung",
           "p": [
-            "Ablauf-Durchführung",
+            "Reinigungsschacht Ø110 mit Kappe, steht auf dem Sperrboden",
+            "Reduktion d40 × d25 unter dem Ablauf",
             "Zulauf-Tropfrohr",
             "Ports"
           ]
@@ -223,10 +224,12 @@
         "Pflanzfläche": "27,3 m² nach Modellmaßen (Bens Tabelle 37,97 m²); Futter je m² 25–65 g/Tag (SRAC 454 / FAO 589)",
         "Pflanzdichte": "2160 Topfplätze sind Kapazität (79 je m²); im Pflanzmix (D61) werden ca. 523 Blatt- und Kräuterpflanzen gesetzt (19 je m², FAO Blatt 20–25)",
         "Tragfähigkeit Fisch": "8,2 m³ Substrat tragen nach SRAC 454 (Fisch : Kies = 1 : 2) etwa 250 kg Fisch; die übrigen ca. 95 kg der Auslegung (346 kg) tragen die NFT-Flächen",
-        "Pflanzmix Beete (D61)": "Salat 202 (9,0 m², 22,5/m²), Mangold 105 (6,0 m², 17,5/m²), Spinat 86 (4,3 m², 20/m²), Petersilie 50 (4,0 m², 12,5/m²), Kräuter 80 (4,0 m², 20/m² [Annahme]) = 523 Pflanzen; Futterbedarf 40–50 g/m²/Tag, 1,2 kg/Tag bei 45 g (D61, R36)"
+        "Pflanzmix Beete (D61)": "Salat 202 (9,0 m², 22,5/m²), Mangold 105 (6,0 m², 17,5/m²), Spinat 86 (4,3 m², 20/m²), Petersilie 50 (4,0 m², 12,5/m²), Kräuter 80 (4,0 m², 20/m² [Annahme]) = 523 Pflanzen; Futterbedarf 40–50 g/m²/Tag, 1,2 kg/Tag bei 45 g (D61, R36)",
+        "Restwasser nach Entleerung": "Film 9,3 l (außen 800), 7,6 l (innen 933); vorher 485 / 420 l stehendes Wasser unter dem Sieb",
+        "Entleerzeit": "außen 800: 3,6–5,1 min, innen 933: 2,9–4,2 min (Siphon d25, h 0,30–0,60 m)"
       },
       "grenzen": "Siphonmaße aus der Scope-Card, nicht gegen die fertige Datei gemessen; Topfraster der neuen Außenbeete rechnet die Montage (D34). Pflanzmix R26: Süßkartoffel in Aquaponik nicht belegt, Beettiefe 30 cm ist für Knollen die Untergrenze.",
-      "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md",
+      "quelle": "docs/parts/ibc_beet.md, docs/research/R03.md, docs/jobs/W40-BEET.md, docs/jobs/pruefung/W40-BEET.md",
       "rolle": "Art 4 der Filterarten (docs/filter-konzept.md, R30): Substratbeet als zweiter Netz- und Biofilter. 8,2 m³ Medium (Brutto-Fläche 2255 m², Simulator zählt 25 % = 564 m²) tragen je nach Rate 68–330 % des Ammoniums; Faustregel 8,2 kg Futter/Tag, FAO-Tabelle 19–31. Ohne Sieb im Hauptstrom verstopft das Medium zuerst; Flutung staffeln (alle Beete zugleich = 0,28 m Absenkung im Pool)."
     },
     {

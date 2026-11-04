@@ -1,5 +1,5 @@
 {
- "stand": "01.11.2026",
+ "stand": "04.11.2026",
  "version": 3,
  "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe. Version 2 (R40): Puffer klein, Drittbecken klein, Messknoten-Trunks, Hauptstrom-Feinfilter, Linienteilung 12+7 (D67); Aenderungen in docs/leitungsnetz-aenderungen.md. Stand 01.11.2026 (L14): Feld \"modell\" an den Tank-/Pumpen-Knoten nennt die Modell-Instanz (Etikett im Modell, Linie 1 = Ost, Linie 2 = West); Quelle docs/leitungsnetz-umhaengen.md. Knotennamen und Linien unveraendert. Version 3 (R45, Ben E14/E12): K01/K17 d75, Schlammfass je Linie statt Schlammsammler, Beet-Sumpf mit Foerderleitung K58/K59 (57 Kanten), K14/K30 d50, Aktivkohle 4 l/min, Luft 130 l/min; Aenderungen in docs/leitungsnetz-aenderungen.md.",
  "konventionen": {
@@ -468,9 +468,9 @@
    "dn": 50,
    "soll_l_min": 54.5,
    "quelle": "E",
-   "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (234 l in 4,3-6,1 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K58 mit Pumpe (R45 Abschnitt 3)",
+   "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (je Typ nach W40-BEET/D78: aussen_800 194 l in 3,6-5,1 min, innen_933 158 l in 2,9-4,2 min, aussen_933 256 l in 4,8-6,8 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K58 mit Pumpe (R45 Abschnitt 3)",
    "v_m_s": 0.6,
-   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515",
+   "hoehe": "Beetboden Z -162 (aussen), -209 bis -173 (innen); Rohrende Bulkhead abs -192 (aussen), -239 bis -203 (innen); Achse Einzelabgang nach Reduktion d40 x d25 und Bogen etwa Z -260 (aussen) / -290 (innen) [W40-BEET, gerechnet aus Bauteil, ersetzt Annahme Z -100]; Sumpf-Einlauf muss darunter liegen: OFFEN (Montage, E20); Pool-Spiegel Z 515",
    "spitze_l_min": 54
   },
   {
@@ -659,9 +659,9 @@
    "dn": 50,
    "soll_l_min": 54.5,
    "quelle": "E",
-   "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (234 l in 4,3-6,1 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K59 mit Pumpe (R45 Abschnitt 3)",
+   "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (je Typ nach W40-BEET/D78: aussen_800 194 l in 3,6-5,1 min, innen_933 158 l in 2,9-4,2 min, aussen_933 256 l in 4,8-6,8 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K59 mit Pumpe (R45 Abschnitt 3)",
    "v_m_s": 0.6,
-   "hoehe": "Beetboden Z -162, Medium Z 400, Beetablauf ca. Z -100 [A]; Pool-Spiegel Z 515",
+   "hoehe": "Beetboden Z -162 (aussen), -209 bis -173 (innen); Rohrende Bulkhead abs -192 (aussen), -239 bis -203 (innen); Achse Einzelabgang nach Reduktion d40 x d25 und Bogen etwa Z -260 (aussen) / -290 (innen) [W40-BEET, gerechnet aus Bauteil, ersetzt Annahme Z -100]; Sumpf-Einlauf muss darunter liegen: OFFEN (Montage, E20); Pool-Spiegel Z 515",
    "spitze_l_min": 54
   },
   {

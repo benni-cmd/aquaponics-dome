@@ -129,3 +129,6 @@ Neues Prüfskript (Standardbibliothek, ändert nichts, Exit 1 bei Fehler): IDs u
 | K44 | 120 l/min, Widerspruch offen | 130 l/min, Spitze 205, Widerspruch geloest | R45 Abschnitt 4 |
 | K12, K28 | nur Bemerkung | Auslegung 1 l/min je Rinne, Betrieb 0,5 (19 l/min) vermerkt | L24, R06 |
 | Pruefung | - | `check_netz.py` PASS (57 Kanten) | |
+
+## 04.11.2026 (Orchestrator, W40-BEET)
+- K14, K30: `hoehe` von Annahme "Beetablauf ca. Z -100" auf Bauteil-Werte (Achse Einzelabgang etwa Z -260 aussen / -290 innen); Sumpf-Einlauf darunter OFFEN (Montage, E20). `bemerkung`: Entleerzeit je Beettyp (D78). `stand` 04.11.2026, Version bleibt 3 (keine Kante neu). `check_netz.py` bestanden.

@@ -28,7 +28,7 @@
 
 1. **Restwasser:** `python -X utf8 scripts/w40_beet_rechnung.py` → aussen_800 **9,3 l** (≤ 10 ✓), innen_933 **7,6 l** (≤ 8 ✓). Modell: `Siebboden` aussen_800 15,4685 l = Fläche × 8 mm minus Durchführung d36 (keine Löcher; `check_ibc_beet.py` PASS, Toleranz ±0,02 l; innen_933 12,5943 l). Kerben-Oberkante z 274 (aussen_800) und z 286 (innen_933) = Plattenoberkante + 12 ✓.
 2. **Entleerzeit:** d25, h 0,30 / 0,45 / 0,60 m → 38,1 / 46,9 / 54,4 l/min. aussen_800 **3,6 bis 5,1 min** ✓ (Ablaufvolumen **194 l** nach R45-Definition, 196 l nach V3-Geometrie; das Blatt nennt 195 l, Differenz von 1 l kommt aus der gerundeten Fläche 1,95 m² gegen 1,936 m² gemessener Kontur). **Abweichung zu R45 4,3 bis 6,1 min ausgewiesen:** R45 setzt fest 234 l an (Herkunft nicht nachvollzogen), die Rechnung nimmt die Beetfläche; aussen_933 mit eigener Fläche 256 l → 4,7 bis 6,7 min; innen_933 158 l → 2,9 bis 4,1 min. Sollbereich R45 unverändert Maßstab.
-3. **Check:** `python -X utf8 scripts/workshop/check_ibc_beet.py` → Exit 0, 191 PASS, 0 FAIL (vier Typen, inklusive Interferenz); danach `--no-interf` erneut: Exit 0, 187 PASS (Stand nach 1c).
+3. **Check:** `python -X utf8 scripts/workshop/check_ibc_beet.py` → Exit 0, 190/190 PASS, 0 FAIL (vier Typen, inklusive Interferenz); danach `--no-interf` erneut: Exit 0, 187 PASS (Stand nach 1c).
 4. **Körper und Interferenz:** `inspect.interference` je Typ (in `check_ibc_beet.py`): aussen_933 0, aussen_993 0, aussen_800 0, innen_933 0. Alle Körper benannt, keine `Body<n>` (Check PASS); `Reduktion`, `Reinigungsschacht`, `Medienschutz`, `Schutzkappe`, `Schachtkappe`, `Plattenhuelse`, `Reduzierhuelse_Boden`, `Reduzierhuelse_Platte` vorhanden; Gesamt-Box aussen_933 Z −80 bis 637, 40 Körper.
 5. **Europa-Bezug:** `docs/parts/ibc_beet.md` Abschnitt „Teileliste mit Bezug in Europa (D76)“, 10 Zeilen. Durch den Bezugsquellen-Nachtrag (Orchestrator, 04.11.) sind Reduzierhülse 32/25 (Schwarte 75208, Bevo 7002656) und Kleber (Tangit PVC-U Plus, toom 8150236) „beschaffbar“; **nicht beschafft bleibt nur das Dichtband-Maß** („Maß offen“, Werkstoff EPDM-Zellkautschuk selbstklebend bei stuv.de; Zeile hat keinen Artikel). Das weicht vom Wortlaut des Prüfpunkts („Plattenhülse, Dichtband, Kleber als nicht beschafft“) ab, weil der Nachtrag die Blocker gelöst hat. Schutzkorb: Anfrage Metallbauer liegt bei Ben.
 
@@ -50,10 +50,12 @@ Nachlaufbohrung d4 (nur falls nötig): 1,02 l/min (Cd 0,6) bis 0,51 l/min (Cd 0,
 
 ## Definition of Done
 
-Geprüft gegen: `python -X utf8 scripts/w40_beet_rechnung.py`, `python -X utf8 scripts/workshop/check_ibc_beet.py` (Exit 0, 191 PASS inkl. Interferenz 0 je Typ), `solidcraft-cli.exe eval` über `sc.evaluate` je Typ (Siebboden-Volumen ohne Lochabzug, Körpernamen), Teileliste mit Hersteller und Artikel im Bauteilblatt, Bezugsquellen-Nachtrag im Blatt.
+Geprüft gegen: `python -X utf8 scripts/w40_beet_rechnung.py`, `python -X utf8 scripts/workshop/check_ibc_beet.py` (Exit 0, 190/190 PASS inkl. Interferenz 0 je Typ), `solidcraft-cli.exe eval` über `sc.evaluate` je Typ (Siebboden-Volumen ohne Lochabzug, Körpernamen), Teileliste mit Hersteller und Artikel im Bauteilblatt, Bezugsquellen-Nachtrag im Blatt.
 Offen:
 1. Prüfer (frische Sitzung) misst die fünf Prüfpunkte selbst: Orchestrator startet ihn.
 2. Dichtheit des Sperrbodens und Anspringen bei 3,3 l/min nur am Muster prüfbar: Ben/Montage.
 3. Dichtband-Maß (EPDM-Zellkautschuk, Spalt 2 mm) festlegen; Anfrage Metallbauer für den Schutzkorb: Ben.
 4. Datenblätter der Kaufteile (Flansch D50, Reduktion 50 mm, Reduzierhülse 22 mm Baulänge) nicht gelesen: Annahmen [A].
 5. Orchestrator/Montage: Netz K14/K30 `hoehe` und Sumpf-Einlauf, Wasserbilanz ohne Wasserräume (6280 l weniger), Montage baut 14 Beete neu, `data/descriptions.json` (Beet-Text nennt Schlitze, Siebboden, Standrohr 220) nachziehen.
+
+04.11.2026 nachts, Pruefer: PASS mit Auflagen (2dd81ff). Orchestrator: Auflage 1 korrigiert (190/190), Auflage 2 entschieden (D78, Sollbereich je Typ), Netz K14/K30 Hoehe und Text nachgefuehrt, Beschreibung Substratbeet nachgefuehrt. Auflagen 3 und 4 (Bauteilblatt-Artikel, Check-Text) und 5 (Huelsenlaenge, Flansch) gehen in den Montage-Schritt Beete (Werkstatt-Vorlauf).

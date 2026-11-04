@@ -2,99 +2,99 @@
   "komponente": "ibc_beet_aussen_993",
   "datei": "designs/components/ibc_beet_aussen_993.sc",
   "bauteilgruppe": "Tische und Beete",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "ibc beet aussen 993",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "teilenummer": "T30",
+  "stand": "5a",
+  "titel": "Substratbeet aus halbem IBC, Außenbeet 993 × 2953 mm (Variante, nicht verbaut)",
+  "kurz": "Ein halber IBC-Container als Flut-und-Ebbe-Beet: Blähton über einem ungelochten Sperrboden, Wasser über das Tropfrohr, Entleeren per Glockensiphon bis auf 12 mm Restfilm.",
+  "hinweis": "Texte aus docs/parts/ibc_beet.md und data/components/ibc_beet.json (Beet mit ungelochtem Sperrboden, Medienschutz und Reinigungsschacht). Rohrwandstärken, Flansch D50 und Reduktionshöhe sind angenommen; Datenblätter der Kaufteile nicht gelesen. Die Artikelzuordnung von Plattenhülse, Reduzierhülse und den drei Kappen kommt aus der Gestaltregel der Stückliste und ist grob (Kappe d16, Reduktion d16/d32/d50): Korrektur gehört in die Regeln der Stückliste. Netztöpfe und Pflanzen sind Instanzen des Domes, nicht Teil des Beets.",
   "koerperzahl": 40,
   "gruppen": [
     {
-      "id": "behaelter_und_becken",
-      "name": "Behaelter und Becken",
-      "kurz": "",
+      "id": "wanne_und_boden",
+      "name": "Wanne und Boden",
+      "kurz": "Die Wanne mit den Stützen und dem Sperrboden trägt das Medium.",
       "teile": [
-        "wanne"
+        "wanne",
+        "stuetze",
+        "siebboden"
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
-      "teile": [
-        "stuetze"
-      ]
-    },
-    {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
-      "teile": [
-        "siebboden",
-        "medienschutz"
-      ]
-    },
-    {
-      "id": "toepfe_und_substrat",
-      "name": "Toepfe und Substrat",
-      "kurz": "",
+      "id": "medium",
+      "name": "Medium",
+      "kurz": "Der Blähton, in dem die Pflanzen wurzeln.",
       "teile": [
         "medium"
       ]
     },
     {
-      "id": "armaturen",
-      "name": "Armaturen",
-      "kurz": "",
+      "id": "ablauf",
+      "name": "Ablauf mit Siphon",
+      "kurz": "Tankverbinder, Standrohr, Glocke und Medienschutz entleeren das Beet im Takt.",
       "teile": [
-        "bulkhead"
-      ]
-    },
-    {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
-      "teile": [
-        "reduzierhuelse_boden",
+        "bulkhead",
         "plattenhuelse",
+        "reduzierhuelse_boden",
         "reduzierhuelse_platte",
         "reduktion",
-        "schutzkappe",
-        "endstopfen_zulauf",
-        "schachtkappe"
+        "standrohr",
+        "glocke",
+        "medienschutz",
+        "schutzkappe"
       ]
     },
     {
-      "id": "rohre",
-      "name": "Rohre",
-      "kurz": "",
+      "id": "zulauf",
+      "name": "Zulauf",
+      "kurz": "Das Tropfrohr bringt das Wasser ins Beet.",
       "teile": [
-        "standrohr",
-        "glocke",
         "tropfrohr",
-        "reinigungsschacht"
+        "endstopfen_zulauf"
+      ]
+    },
+    {
+      "id": "reinigung",
+      "name": "Reinigung",
+      "kurz": "Der Schacht zum Absaugen des Schlamms.",
+      "teile": [
+        "reinigungsschacht",
+        "schachtkappe"
       ]
     }
   ],
   "teile": [
     {
       "id": "wanne",
-      "name": "Wanne",
+      "name": "Beetwanne",
       "koerper": [
         "Wanne"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "HDPE weiss",
-      "masse_mm": "Masse 33582.9 g, Einzelkoerper 637.0 x 993.0 x 2953.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "hdpe",
+      "masse_mm": "HDPE, Wand 4 mm, aus IBC geschnitten; Masse 33582.9 g, Einzelkoerper 637.0 x 993.0 x 2953.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BEH-ibc-beetwanne",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 33582.9,
+      "funktion": "Die Wanne trägt das ganze Beet: Sie hält Medium, Wasser und Pflanzen und ist aus einem halben IBC-Container geschnitten.",
+      "eigenschaften": [
+        "Gebrauchter IBC (1000 l) aus HDPE, passend gesägt, Wand 4 mm, Innenradius der Ecken 40 mm.",
+        "Länge und Breite je Beettyp; Randsims 20 × 14 mm; die Medienoberfläche liegt 75 mm unter dem Rand.",
+        "Der Wannenboden hat eine Bohrung für den Tankverbinder des Ablaufs.",
+        "Eingelassen in die Grube und waagerecht ausgerichtet."
+      ],
+      "norm": "HDPE nach EN ISO 17855-1 [A]; gebrauchter IBC ohne Lebensmittelnachweis des Vornutzers [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Monopoel GmbH (DE), 109,99 EUR je Stk, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)"
     },
     {
       "id": "stuetze",
-      "name": "Stuetze",
+      "name": "Stützklotz",
       "koerper": [
         "Stuetze",
         "Stuetze (2)",
@@ -123,117 +123,286 @@
       ],
       "menge": 24,
       "typ": "sonderteil",
-      "werkstoff": "PP grau",
-      "masse_mm": "Masse 19577.4 g, Einzelkoerper 60.0 x 60.0 x 249.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pp",
+      "masse_mm": "Klotz 60 × 60 mm; Masse 19577.4 g, Einzelkoerper 60.0 x 60.0 x 249.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-pp-stuetze-60x60",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 24.0,
-      "geruest": true
+      "masse_g": 19577.4,
+      "funktion": "Die Stützklötze tragen den Sperrboden und das Medium auf dem Wannenboden.",
+      "eigenschaften": [
+        "Klotz 60 × 60 mm aus PP, drei Reihen unter dem Sperrboden, Abstand höchstens 420 mm.",
+        "Hält rund 500 bis 700 kg Medium.",
+        "Die Höhe passt den Sperrboden an den Rand der Wanne an; darunter bleibt eine ungenutzte, trockene Luftkammer."
+      ],
+      "norm": "Polypropylen, Herstellerangabe offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "siebboden",
-      "name": "Siebboden",
+      "name": "Sperrboden",
       "koerper": [
         "Siebboden"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "PP grau",
-      "masse_mm": "Masse 19856.8 g, Einzelkoerper 8.0 x 941.0 x 2901.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pp",
+      "masse_mm": "PP-Platte 8 mm, ungelocht; Masse 19856.8 g, Einzelkoerper 8.0 x 941.0 x 2901.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BLE-pp-siebboden-beet",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 19856.8,
+      "funktion": "Der Sperrboden trennt das Medium vom Wannenboden, sodass unter dem Medium kein Wasser stehen bleibt; das Wasser läuft über ihn zum Siphon.",
+      "eigenschaften": [
+        "PP-Platte 8 mm, ungelocht; nur eine Durchführung Ø 36 mm für die Plattenhülse des Siphons.",
+        "Der Name „Siebboden“ im Modell ist ein Altname: Die Platte ist seit der Umstellung nicht mehr gelocht.",
+        "Rand mit selbstklebendem EPDM-Zellkautschuk abgedichtet (Spalt 2 mm; Maß des Bandes offen).",
+        "Dichtheit am Muster zu prüfen: Leckwasser unter der Platte wäre wieder stehendes Wasser."
+      ],
+      "norm": "Polypropylen, Platte [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md (Entscheidung Sperrboden)",
+      "bezug": "Händler offen: Angebote in anderer Bezugseinheit (m2), Umrechnung offen; Richtpreis 35,49 EUR je m2 als Annahme [A] (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300
+      }
     },
     {
       "id": "medium",
-      "name": "Medium",
+      "name": "Medium (Blähton)",
       "koerper": [
         "Medium"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "Medium Blaehton",
-      "masse_mm": "Masse 731590.9 g, Einzelkoerper 300.0 x 941.0 x 2901.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "blaehton",
+      "masse_mm": "Schüttung 300 mm hoch; Masse 731590.9 g, Einzelkoerper 300.0 x 941.0 x 2901.0 mm (Modell-Bounding-Box)",
       "artikel_id": "TOP-blaehton",
       "artikel_einheit": "m3",
       "artikel_menge_je_instanz": 0.819,
-      "geruest": true
+      "masse_g": 731590.9,
+      "funktion": "Das Medium trägt die Wurzeln der Pflanzen und ist Biofilter für das Wasser.",
+      "eigenschaften": [
+        "Blähton 8 bis 16 mm, gewaschen, 300 mm hoch; reicht bei Medienschutz 5 mm.",
+        "Menge je Beettyp: 467 bis 813 Liter (Schüttdichte 0,9 [A]).",
+        "Das Wasser steht nur in den Poren (rund 40 Prozent), nicht darunter.",
+        "Die Netztöpfe der Pflanzen stehen auf der Oberfläche, 75 mm unter dem Rand."
+      ],
+      "norm": "Blähton, Körnung 8–16 mm, Herstellerangabe offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Baumarkt/Haendler 80-l-Sack (Suchtreffer) (DE), 330,00 EUR je m3, Stand 2026-11-04, Konfidenz Q-Treffer; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 700
+      }
     },
     {
       "id": "bulkhead",
-      "name": "Bulkhead",
+      "name": "Tankverbinder (Wannenboden)",
       "koerper": [
         "Bulkhead"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 17.0 g, Einzelkoerper 39.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Tankverbinder 32 mm × 1 Zoll, Flansch Ø 50; Masse 17.0 g, Einzelkoerper 39.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ARM-bulkhead-d40",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 17.0,
+      "funktion": "Der Tankverbinder führt das Wasser dicht durch den Wannenboden aus dem Beet heraus.",
+      "eigenschaften": [
+        "Kunststoff-Wanddurchführung 32 mm × 1 Zoll mit Flansch (Modell: Ø 36, Flansch Ø 50), mit Dichtung und Kontermutter.",
+        "Im Ablaufloch des Wannenbodens, darin die Reduzierhülse 32/25.",
+        "Flanschmaß ist angenommen; Datenblatt nicht gelesen."
+      ],
+      "norm": "PVC-U-Tankverbinder, Klebemuffe, 10 bar [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Bevo (NL), 35,77 EUR je Stk, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
     },
     {
       "id": "reduzierhuelse_boden",
-      "name": "Reduzierhuelse Boden",
+      "name": "Reduzierhülse 32/25 (Wannenboden)",
       "koerper": [
         "Reduzierhuelse_Boden"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 17.1 g, Einzelkoerper 32.0 x 32.0 x 39.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Hülse Ø 32 × 39 mm; Masse 17.1 g, Einzelkoerper 32.0 x 32.0 x 39.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-reduktion-d32",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 17.1,
+      "funktion": "Die Hülse passt das Standrohr d25 in den Tankverbinder 32 mm ein.",
+      "eigenschaften": [
+        "Klebefitting, Stutzen 32 mm, Muffe 25 mm; Baulänge im Modell 39 mm, nach Katalog 22 mm (Abweichung offen).",
+        "Wird in den Tankverbinder geklebt."
+      ],
+      "norm": "PVC-U-Reduzierung 32 × 25 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 80,
+        "folgt": "bulkhead"
+      }
     },
     {
       "id": "plattenhuelse",
-      "name": "Plattenhuelse",
+      "name": "Plattenhülse (Tankverbinder im Sperrboden)",
       "koerper": [
         "Plattenhuelse"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 9.8 g, Einzelkoerper 15.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Hülse Ø 50 × 15 mm; Masse 9.8 g, Einzelkoerper 15.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-reduktion-d16",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 9.8,
+      "funktion": "Die Plattenhülse dichtet den Durchgang des Siphons im Sperrboden ab, damit kein Wasser unter die Platte läuft.",
+      "eigenschaften": [
+        "Tankverbinder wie im Wannenboden, hier durch die Bohrung Ø 36 mm im Sperrboden gesteckt und gekontert.",
+        "Darin sitzt eine Reduzierhülse 32/25 für das Standrohr."
+      ],
+      "norm": "PVC-U-Tankverbinder [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250
+      }
     },
     {
       "id": "reduzierhuelse_platte",
-      "name": "Reduzierhuelse Platte",
+      "name": "Reduzierhülse 32/25 (Sperrboden)",
       "koerper": [
         "Reduzierhuelse_Platte"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 6.6 g, Einzelkoerper 15.0 x 32.0 x 32.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Hülse Ø 32 × 15 mm; Masse 6.6 g, Einzelkoerper 15.0 x 32.0 x 32.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-reduktion-d16",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 6.6,
+      "funktion": "Die Hülse passt das Standrohr d25 in die Plattenhülse ein.",
+      "eigenschaften": [
+        "Klebefitting 32 auf 25 mm; Baulänge im Modell 15 mm.",
+        "Sitzt im Tankverbinder des Sperrbodens, das Standrohr steckt darin."
+      ],
+      "norm": "PVC-U-Reduzierung 32 × 25 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 80,
+        "folgt": "plattenhuelse"
+      }
     },
     {
       "id": "reduktion",
-      "name": "Reduktion",
+      "name": "Reduktion unter dem Boden",
       "koerper": [
         "Reduktion"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 57.0 g, Einzelkoerper 46.0 x 46.0 x 50.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Reduktion 40 × 25 mm, rund 50 mm hoch; Masse 57.0 g, Einzelkoerper 46.0 x 46.0 x 50.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-reduktion-d50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 57.0,
+      "funktion": "Die Reduktion setzt den Ablauf unter dem Wannenboden vom Standrohr d25 auf das größere Rohr der Leitung (d40) um.",
+      "eigenschaften": [
+        "Kurze Reduzierung d40 auf d25, Bauhöhe etwa 50 mm, unter dem Boden aufgeklebt.",
+        "Hier schließt das Leitungsnetz an; der Ablaufport liegt etwa 30 mm unter dem Wannenboden.",
+        "Der Katalogartikel führt sie als Reduktion d50 (Bezeichnung zu klären)."
+      ],
+      "norm": "PVC-U-Klebefitting [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md (Port Ablauf)",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 250
+      }
     },
     {
       "id": "standrohr",
@@ -243,87 +412,214 @@
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 86.3 g, Einzelkoerper 25.0 x 25.0 x 557.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d25 × 1,5 mm; Masse 86.3 g, Einzelkoerper 25.0 x 25.0 x 557.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d25",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.557,
-      "geruest": true
+      "masse_g": 86.3,
+      "funktion": "Das Standrohr bestimmt den Wasserstand im Beet: Steigt das Wasser darüber, springt der Siphon an und entleert das Beet.",
+      "eigenschaften": [
+        "PVC-U-Druckrohr d25 × 1,5 mm, rund 560 mm lang ab dem Boden.",
+        "Das Wasser steht bis zur Rohrkante, 35 mm unter der Medienoberfläche.",
+        "Die Glocke steht konzentrisch darüber."
+      ],
+      "norm": "PVC-U-Druckrohr PN10, ISO 4422 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Bevo (NL), 5,19 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 400
+      }
     },
     {
       "id": "glocke",
-      "name": "Glocke",
+      "name": "Glocke (Siphon)",
       "koerper": [
         "Glocke"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 293.5 g, Einzelkoerper 75.0 x 75.0 x 295.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d75 × 295 mm, 4 Kerben 10 × 12; Masse 293.5 g, Einzelkoerper 75.0 x 75.0 x 295.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d75",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.295,
-      "geruest": true
+      "masse_g": 293.5,
+      "funktion": "Die Glocke deckt das Standrohr ab: Sie macht das Beet zum Flut-und-Ebbe-Beet, weil sie das Wasser bei Überschreiten des Standes in einem Zug durch das Standrohr zieht.",
+      "eigenschaften": [
+        "Rohr d75 mit Deckel, 295 mm lang, vier Kerben 10 × 12 mm am Fuß: Der Restfilm bleibt höchstens 12 mm hoch.",
+        "Die Kerben haben zusammen 480 mm², das Standrohr 380 mm²: Es läuft genug nach.",
+        "Das Anspringen bei 3,3 l/min ist nur am Muster prüfbar."
+      ],
+      "norm": "PVC-U-Rohr d75 nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Bevo (NL), 44,40 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 650
+      }
     },
     {
       "id": "medienschutz",
-      "name": "Medienschutz",
+      "name": "Medienschutz (Lochblech)",
       "koerper": [
         "Medienschutz"
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "V2A Lochblech",
-      "masse_mm": "Masse 1222.1 g, Einzelkoerper 110.0 x 110.0 x 320.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "edelstahl_1_4301",
+      "masse_mm": "Zylinder Ø 110 × 320 mm, Blech 1,5 mm; Masse 1222.1 g, Einzelkoerper 110.0 x 110.0 x 320.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BLE-v2a-lochblech-medienschutz",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 1222.1,
+      "funktion": "Der Medienschutz hält den Blähton von der Glocke fern, damit der Siphon nicht verstopft.",
+      "eigenschaften": [
+        "Lochblech aus Edelstahl 1.4301, 1,5 mm, Rundloch 5 mm, Teilung 8 mm; im Modell als zwei Ringe aus 12 Schlitzen vereinfacht (6000 mm²).",
+        "Zylinder Ø 110 × 320 mm, gerollt und genietet (Zuschnitt etwa 366 × 340 mm).",
+        "Steht auf dem Sperrboden, oben mit loser Kappe.",
+        "Anfrage beim Metallbauer für Zuschnitt und Rollen liegt bei Ben."
+      ],
+      "norm": "Lochblech DIN 24041, Edelstahl 1.4301 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md (Entscheidung Schutzkorb)",
+      "bezug": "Amazon.de (Verkaeufer Schloegel) (DE), 3,96 EUR je Stk, Stand 2026-11-04, Konfidenz E; Lieferung nach Deutschland: unbekannt (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 900
+      }
     },
     {
       "id": "schutzkappe",
-      "name": "Schutzkappe",
+      "name": "Kappe Medienschutz",
       "koerper": [
         "Schutzkappe"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 199.6 g, Einzelkoerper 15.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Stopfen DN110; Masse 199.6 g, Einzelkoerper 15.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kappe-d16",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 199.6,
+      "funktion": "Die Kappe verschließt den Medienschutz oben, damit kein Blähton hineinfällt.",
+      "eigenschaften": [
+        "Muffenstopfen DN110, lose aufgesetzt.",
+        "Lässt sich zum Reinigen abnehmen."
+      ],
+      "norm": "Muffenstopfen DN110, PVC-U oder PP [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Schwarte-Shop (DE), 1,19 EUR je Stk, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 1100,
+        "folgt": "medienschutz"
+      }
     },
     {
       "id": "tropfrohr",
-      "name": "Tropfrohr",
+      "name": "Zulauf-Tropfrohr",
       "koerper": [
         "Tropfrohr"
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 421.7 g, Einzelkoerper 20.0 x 20.0 x 2669.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d20, rund 2,36 m lang; Masse 421.7 g, Einzelkoerper 20.0 x 20.0 x 2669.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d20",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.669,
-      "geruest": true
+      "masse_g": 421.7,
+      "funktion": "Das Tropfrohr verteilt das Zulaufwasser über die Länge des Beets.",
+      "eigenschaften": [
+        "Rohr d20 (PE, Modell PVC), liegt längs im Beet, 50 mm von der Innenwand; Länge je Beettyp (Außenbeet 800: 2,36 m).",
+        "Durchfluss 200 bis 500 l/h; Tropflöcher sind im Modell quadratisch vereinfacht, real rund.",
+        "Das offene Ende reicht durch die Stirnwand nach außen; die Wanddurchführung ist nicht modelliert."
+      ],
+      "norm": "PE-Rohr nach DIN 8074 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md (Port Zulauf)",
+      "bezug": "Bevo (NL), 4,77 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 500
+      }
     },
     {
       "id": "endstopfen_zulauf",
-      "name": "Endstopfen Zulauf",
+      "name": "Endstopfen Tropfrohr",
       "koerper": [
         "Endstopfen_Zulauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 5.4 g, Einzelkoerper 15.6 x 15.6 x 20.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Stopfen d20; Masse 5.4 g, Einzelkoerper 15.6 x 15.6 x 20.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kappe-d16",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 5.4,
+      "funktion": "Der Stopfen verschließt das hintere Ende des Tropfrohrs, damit das Wasser aus den Tropflöchern austritt.",
+      "eigenschaften": [
+        "Passt in das Rohr d20.",
+        "Wird gesteckt oder geklebt."
+      ],
+      "norm": "Kappe d20 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Schwarte-Shop (DE), 1,19 EUR je Stk, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "tropfrohr"
+      }
     },
     {
       "id": "reinigungsschacht",
@@ -333,27 +629,68 @@
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 444.0 g, Einzelkoerper 110.0 x 110.0 x 320.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr Ø 110 × 320 mm; Masse 444.0 g, Einzelkoerper 110.0 x 110.0 x 320.0 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d110",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.32,
-      "geruest": true
+      "masse_g": 444.0,
+      "funktion": "Der Reinigungsschacht erlaubt, Schlamm vom Sperrboden abzusaugen, ohne das Medium auszuräumen.",
+      "eigenschaften": [
+        "Rohr DN100 (Außen-Ø 110) steht senkrecht auf dem Sperrboden, rund 320 mm hoch.",
+        "Zwei Kerben 30 × 30 mm am Fuß lassen Wasser und Schlamm in den Schacht fließen.",
+        "Das Medium wird um den Schacht herum eingefüllt; Saugschlauch bis 75 mm Ø passt hinein."
+      ],
+      "norm": "KG- oder HT-Rohr DN100 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Bevo (NL), 79,83 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 900
+      }
     },
     {
       "id": "schachtkappe",
-      "name": "Schachtkappe",
+      "name": "Kappe Reinigungsschacht",
       "koerper": [
         "Schachtkappe"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau Beet",
-      "masse_mm": "Masse 199.6 g, Einzelkoerper 15.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Stopfen DN110; Masse 199.6 g, Einzelkoerper 15.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kappe-d16",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 199.6,
+      "funktion": "Die Kappe verschließt den Reinigungsschacht oben und wird zum Reinigen abgenommen.",
+      "eigenschaften": [
+        "Muffenstopfen DN110, lose aufgesetzt."
+      ],
+      "norm": "Muffenstopfen DN110 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/ibc_beet.md, data/components/ibc_beet.json (blatt), docs/jobs/W40-BEET.md",
+      "bezug": "Schwarte-Shop (DE), 1,19 EUR je Stk, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 1100,
+        "folgt": "reinigungsschacht"
+      }
     }
   ]
 }

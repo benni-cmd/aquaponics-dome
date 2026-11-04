@@ -42,6 +42,8 @@ if __name__ == "__main__":
     out = os.path.join(sc.ROOT, "designs", "components", "winkelhalter.sc")
     sc.run(b.write("winkelhalter"), out)
     sc.assign_part_materials(out, "Stahl verzinkt")
+    import normteile_benennen   # W60 5a: Normteile Body<n> -> Schraube_M6x16_k usw. (Gestalt), Teiledaten data/parts/winkelhalter.json
+    normteile_benennen.benennen(out)
     ev = sc.evaluate(out)
     for x in ev["bodies"]:
         print(x["name"], x["faces"], round(x["mass_g"], 1), "g", [round(v, 1) for v in x["bbox"]["min"]], [round(v, 1) for v in x["bbox"]["max"]])

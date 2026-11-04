@@ -2,17 +2,17 @@
   "komponente": "salatkopf",
   "datei": "designs/components/salatkopf.sc",
   "bauteilgruppe": "Tische und Beete",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "salatkopf",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "teilenummer": "T12",
+  "stand": "5a",
+  "titel": "Salatkopf (Darstellung)",
+  "kurz": "Ein Kopfsalat als Rosette aus 96 Blättern auf einem Herz und einem Hals; nur Darstellung, kein Kaufteil.",
+  "hinweis": "Pflanzenmodell nur für das Bild; Werkstoff und Gewicht sind Näherungen. Kein Bezug nötig.",
   "koerperzahl": 98,
   "gruppen": [
     {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
+      "id": "pflanze",
+      "name": "Pflanze",
+      "kurz": "Herz, Blätter und Hals bilden den Kopf.",
       "teile": [
         "herz",
         "blatt",
@@ -29,17 +29,36 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Salat",
-      "masse_mm": "Masse 6.5 g, Einzelkoerper 20.0 x 31.4 x 31.4 mm (Modell-Bounding-Box)",
+      "werkstoff": "salat",
+      "masse_mm": "Achteck-Prisma, 20 mm hoch; Masse 6.5 g, Einzelkoerper 20.0 x 31.4 x 31.4 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Pflanze (Salat), nicht kaufbar",
-      "geruest": true
+      "masse_g": 6.5,
+      "funktion": "Das Herz ist die Mitte der Salatrosette, aus der die inneren Blätter wachsen.",
+      "eigenschaften": [
+        "Niedriges Achteck-Prisma, rund 20 mm hoch.",
+        "Reine Darstellung: Der Salat ist kein Kaufteil."
+      ],
+      "norm": "-",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/salatkopf.md",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 40
+      }
     },
     {
       "id": "blatt",
-      "name": "Blatt",
+      "name": "Blätter",
       "koerper": [
         "Blatt_01",
         "Blatt_02",
@@ -140,29 +159,68 @@
       ],
       "menge": 96,
       "typ": "sonderteil",
-      "werkstoff": "Salat",
-      "masse_mm": "Masse 17.6 g, Einzelkoerper 13.7 x 17.3 x 18.2 mm (Modell-Bounding-Box)",
+      "werkstoff": "salat",
+      "masse_mm": "96 Blätter, je 2 mm dick; Masse 17.6 g, Einzelkoerper 13.7 x 17.3 x 18.2 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Pflanze (Salat), nicht kaufbar",
-      "geruest": true
+      "masse_g": 17.6,
+      "funktion": "Die Blätter bilden die sichtbare Rosette des Kopfsalats.",
+      "eigenschaften": [
+        "96 ebene Blätter, je 2 mm dick, auf einem Halbellipsoid angeordnet; Anstellwinkel steigt von flach am Rand bis steil in der Mitte.",
+        "Größe: Standardkopf 100 mm; kleiner (70) und größer (130) sind Größenvarianten.",
+        "Reine Darstellung für das Bild, nicht kaufbar."
+      ],
+      "norm": "-",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/salatkopf.md",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 80
+      }
     },
     {
       "id": "hals",
-      "name": "Hals",
+      "name": "Wurzelhals",
       "koerper": [
         "Hals"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Salat",
-      "masse_mm": "Masse 2.4 g, Einzelkoerper 16.0 x 16.0 x 30.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "salat",
+      "masse_mm": "Zylinder Ø 16 × 25 mm; Masse 2.4 g, Einzelkoerper 16.0 x 16.0 x 30.0 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Pflanze (Salat), nicht kaufbar",
-      "geruest": true
+      "masse_g": 2.4,
+      "funktion": "Der Hals steckt im Netztopf und trägt den Kopf.",
+      "eigenschaften": [
+        "Zylinder Ø 16 mm, 25 mm lang nach unten in den Topf.",
+        "Reine Darstellung; echte Pflanzen haben Wurzeln, hier keine."
+      ],
+      "norm": "-",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/salatkopf.md",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 60
+      }
     }
   ]
 }

@@ -2,17 +2,17 @@
   "komponente": "pflanztisch",
   "datei": "designs/components/pflanztisch.sc",
   "bauteilgruppe": "Tische und Beete",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "pflanztisch",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "teilenummer": "T8",
+  "stand": "5a",
+  "titel": "Pflanztisch (Altmodell)",
+  "kurz": "Eine einzelne Platte als frühe Ansicht des Pflanztischs; im Dom nicht verbaut.",
+  "hinweis": "Altmodell ohne Instanz im Dom; kein Kaufteil, Stückliste führt es als Altmodell (Menge 0).",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "id": "platte",
+      "name": "Platte",
+      "kurz": "Die einzelne Tischplatte.",
       "teile": [
         "t_platte"
       ]
@@ -21,18 +21,32 @@
   "teile": [
     {
       "id": "t_platte",
-      "name": "T Platte",
+      "name": "Pflanztischplatte (Altmodell)",
       "koerper": [
         "T8_Platte"
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Default",
-      "masse_mm": "Masse 177334.3 g, Einzelkoerper 900.0 x 975.0 x 2300.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "unbestimmt_modell",
+      "masse_mm": "Platte 2300 × 975 × 900 mm (Altmodell); Masse 177334.3 g, Einzelkoerper 900.0 x 975.0 x 2300.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-pflanztisch-platte",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 177334.3,
+      "funktion": "Die Platte war eine frühe Ansicht des Pflanztischs; sie ist ein Altmodell und im Dom nicht verbaut.",
+      "eigenschaften": [
+        "Ein einziger Körper 2300 × 975 × 900 mm ohne Beine, Löcher und Rinnen.",
+        "Ersetzt durch den NFT-Tisch mit Rinnen; kein Kaufteil, im Katalog als Altmodell geführt.",
+        "Material im Modell: Standard (ohne Zuordnung)."
+      ],
+      "norm": "-",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "scripts/workshop/pflanztisch.py, docs/components.md",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "werkstoff_soll": "holz_fichte"
     }
   ]
 }

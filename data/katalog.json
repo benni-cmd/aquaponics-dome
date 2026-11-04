@@ -21,7 +21,9 @@
         "PP Tafel",
         "PP schwarz",
         "SV PP",
-        "AK Kopf"
+        "AK Kopf",
+        "PP",
+        "PP grau"
       ],
       "pilot": true,
       "quelle": "docs/parts/feinfilter.md (Werkstoff: PP 0,91 g/cm3, Handbuchwert); Norm aus Fachwissen, nicht im Repo belegt",
@@ -67,7 +69,9 @@
         "PVC grau Pumpe",
         "Stutzen PVC",
         "SV PVC",
-        "Kanal PVC"
+        "Kanal PVC",
+        "PVC-U weiss",
+        "PVC grau Beet"
       ],
       "pilot": true,
       "quelle": "docs/parts/tank.md, docs/parts/feinfilter.md (Rohre PVC-U nach DIN 8062/EN 1452, Dichte 1,4 g/cm3)",
@@ -82,7 +86,8 @@
       "konfidenz": "angenommen",
       "sc_material": [
         "Edelstahl Feinfilter",
-        "Edelstahl"
+        "Edelstahl",
+        "V2A Lochblech"
       ],
       "pilot": true,
       "quelle": "docs/parts/feinfilter.md (Edelstahl 1.4301, Dichte 7,9 g/cm3); Normverweis aus dem Auftragsblatt N-DETAIL-PILOT [A]",
@@ -150,7 +155,8 @@
       "konfidenz": "angenommen",
       "sc_material": [
         "LT hellblau",
-        "LT dunkelblau"
+        "LT dunkelblau",
+        "Schlauch hellblau"
       ],
       "pilot": false,
       "quelle": "W60 5a Leitungen/Messstellen/Halter (Fachwissen, nicht im Repo belegt)",
@@ -286,7 +292,8 @@
         "HDPE blau",
         "Kanister HDPE",
         "PE Blase",
-        "SV Kugel"
+        "SV Kugel",
+        "HDPE weiss"
       ],
       "pilot": false,
       "quelle": "Handbuchwert HDPE 0,95 g/cm3; IBC-Blase, Palette, Kanister und Fass sind HDPE",
@@ -417,6 +424,34 @@
       ],
       "pilot": false,
       "quelle": "docs/parts/pumpe.md (Pumpe Kunststoffgehäuse 1,5 g/cm3); Hüllform",
+      "marke": "[A]"
+    },
+    {
+      "id": "blaehton",
+      "name": "Blähton (Substrat, Schüttgut 8–16 mm)",
+      "norm": "Herstellerangabe, gewaschen, Körnung 8–16 mm [A]",
+      "dichte_g_cm3": 0.9,
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Medium Blaehton"
+      ],
+      "pilot": false,
+      "quelle": "Schüttdichte 0,9 g/cm3 laut docs/parts/ibc_beet.md [A]; im Modell ein Volumenkörper (Medium)",
+      "marke": "[A]"
+    },
+    {
+      "id": "salat",
+      "name": "Kopfsalat (Pflanze, kein Bauteil)",
+      "norm": "-",
+      "dichte_g_cm3": 0.4,
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Salat"
+      ],
+      "pilot": false,
+      "quelle": "docs/parts/salatkopf.md: Bulk-Dichte 0,4 g/cm3 nur Näherung für die Gewichtsangabe; nicht kaufbar",
       "marke": "[A]"
     }
   ],

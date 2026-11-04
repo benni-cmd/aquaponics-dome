@@ -207,6 +207,8 @@ if __name__ == "__main__":
         out = os.path.join(sc.ROOT, "designs", "components", f"nft_tisch_{typ}.sc")
         sc.run(b.write(f"nft_tisch_{typ}"), out)
         sc.assign_part_materials(out, "Stahl verzinkt", r"Body\d+|Winkel( \(\d+\))?|winkelhalter( \(\d+\))?")      # Normteile und Winkelhalter-Instanzen tragen sonst Default 1,29 g/cm3
+        import normteile_benennen   # W60 5a: Normteile Body<n> -> Schraube_M8x30_k usw. (Gestalt); Teiledaten data/parts/nft_tisch_<typ>.json folgen
+        normteile_benennen.benennen(out)
         ev = sc.evaluate(out)
         mass = sum(x["mass_g"] for x in ev["bodies"])
         mn, mx = sc.bbox_all(ev)

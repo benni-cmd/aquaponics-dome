@@ -2,26 +2,19 @@
   "komponente": "nft_rinne_aussen_r1",
   "datei": "designs/components/nft_rinne_aussen_r1.sc",
   "bauteilgruppe": "Tische und Beete",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "nft rinne aussen r1",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "teilenummer": "T20",
+  "stand": "5a",
+  "titel": "NFT-Rinne (Reihe aussen r1)",
+  "kurz": "Hohlkammerrinne 130 × 100 mm mit einer Lochreihe für Netztöpfe, Zulaufkappe mit Schlauchtülle und Ablaufkappe mit Stutzen.",
+  "hinweis": "Texte aus docs/parts/nft_rinne.md. Das Material der Rinne ist im Modell PVC-U weiß; Länge je Reihe aus dem Tischentwurf. Der europäische Bezug steht nur, wo die Stückliste ihn belegt.",
   "koerperzahl": 3,
   "gruppen": [
     {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
+      "id": "rinne",
+      "name": "Rinne",
+      "kurz": "Das Profil mit den Endkappen.",
       "teile": [
-        "rinnenprofil"
-      ]
-    },
-    {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
-      "teile": [
+        "rinnenprofil",
         "kappezulauf",
         "kappeablauf"
       ]
@@ -30,48 +23,115 @@
   "teile": [
     {
       "id": "rinnenprofil",
-      "name": "Rinnenprofil",
+      "name": "Rinne",
       "koerper": [
         "Rinnenprofil"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "PVC-U weiss",
-      "masse_mm": "Masse 4906.9 g, Einzelkoerper 100.0 x 130.0 x 2986.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Profil 130 × 100 mm, Länge je Reihe; Masse 4906.9 g, Einzelkoerper 100.0 x 130.0 x 2986.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-pvcu-rinne-130x100",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.986,
-      "geruest": true
+      "masse_g": 4906.9,
+      "funktion": "Die Rinne führt einen dünnen Wasserfilm an den Wurzeln der Pflanzen entlang; die Pflanzen stehen in Netztöpfen in den Löchern der Oberseite.",
+      "eigenschaften": [
+        "Hohlkammerprofil 130 × 100 mm; die Rinne selbst ist gerade, das Gefälle von 1,5 % entsteht durch die Böcke.",
+        "Jede Reihe hat ihre eigene Länge (rund 760 bis 2990 mm), eine Lochreihe in der Mitte, Lochabstand 200 mm; benachbarte Rinnen sind um 100 mm versetzt (Zickzack).",
+        "Zulaufende links, Ablaufende rechts; Wasser rund 10 mm hoch.",
+        "Im Tischmodell hat die Rinne kein Material (Standard), im Rinnenmodell PVC-U weiß: Der Katalog führt sie als PVC-U-Profil."
+      ],
+      "norm": "PVC-U, UV-stabilisiert (alternativ PP) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_rinne.md, data/components/nft_rinne.json",
+      "bezug": "Hornbach (DE), 8,28 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "werkstoff_soll": "pvc_u",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 500
+      }
     },
     {
       "id": "kappezulauf",
-      "name": "KappeZulauf",
+      "name": "Endkappe Zulauf",
       "koerper": [
         "KappeZulauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC-U weiss",
-      "masse_mm": "Masse 108.9 g, Einzelkoerper 43.0 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Kappe für Profil 130 × 100 mm; Masse 108.9 g, Einzelkoerper 43.0 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-rinne-kappe-zulauf",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 108.9,
+      "funktion": "Die Zulaufkappe schließt die Rinne am Zulaufende ab und trägt die Tülle, auf die der Schlauch gesteckt wird.",
+      "eigenschaften": [
+        "Tülle Ø 16 mm, Achse 70 mm über dem Rinnenboden.",
+        "Auf die Rinne gesteckt und mit einer Dichtleiste abgedichtet; real aus 4-mm-PVC-Platte oder Spritzguss."
+      ],
+      "norm": "PVC-U [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_rinne.md, data/components/nft_rinne.json",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "werkstoff_soll": "pvc_u",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "rinnenprofil"
+      }
     },
     {
       "id": "kappeablauf",
-      "name": "KappeAblauf",
+      "name": "Endkappe Ablauf",
       "koerper": [
         "KappeAblauf"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC-U weiss",
-      "masse_mm": "Masse 109.4 g, Einzelkoerper 48.0 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Kappe für Profil 130 × 100 mm; Masse 109.4 g, Einzelkoerper 48.0 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-rinne-kappe-ablauf",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 109.4,
+      "funktion": "Die Ablaufkappe schließt die Rinne am Ablaufende ab und trägt den Stutzen, über den das Wasser ins Sammelrohr fließt.",
+      "eigenschaften": [
+        "Stutzen d32, Achse 20 mm über dem Rinnenboden: Es bleibt ein Restfilm in der Rinne.",
+        "Auf die Rinne gesteckt und abgedichtet."
+      ],
+      "norm": "PVC-U [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_rinne.md, data/components/nft_rinne.json",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "werkstoff_soll": "pvc_u",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "rinnenprofil"
+      }
     }
   ]
 }

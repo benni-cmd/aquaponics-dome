@@ -2,17 +2,17 @@
   "komponente": "netztopf",
   "datei": "designs/components/netztopf.sc",
   "bauteilgruppe": "Tische und Beete",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "netztopf",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "teilenummer": "T10",
+  "stand": "5a",
+  "titel": "Netztopf (Pflanzkorb)",
+  "kurz": "Ein konischer Kunststoffkorb mit Schlitzen: Er hält die Pflanze, die Wurzeln wachsen durch die Schlitze ins Wasser.",
+  "hinweis": "Maße aus dem Modell (63 × Ø 64 mm). Die Zahl der Instanzen kommt aus dem Dom (2222); Fabrikat und Bezug in Europa sind offen.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "toepfe_und_substrat",
-      "name": "Toepfe und Substrat",
-      "kurz": "",
+      "id": "topf",
+      "name": "Topf",
+      "kurz": "Der Korb selbst.",
       "teile": [
         "netztopf"
       ]
@@ -27,12 +27,34 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PP",
-      "masse_mm": "Masse 16.8 g, Einzelkoerper 63.0 x 64.0 x 64.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pp",
+      "masse_mm": "Korb Ø 64 × 63 mm, Wand 1,5 mm; Masse 16.8 g, Einzelkoerper 63.0 x 64.0 x 64.0 mm (Modell-Bounding-Box)",
       "artikel_id": "TOP-netztopf-64",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 16.8,
+      "funktion": "Der Netztopf hält die Pflanze im Beet (Blähton) oder in der Rinne und lässt die Wurzeln durch die Schlitze zum Wasser wachsen.",
+      "eigenschaften": [
+        "Konischer Korb aus PP, 63 mm hoch, Kragen Ø 64 mm, Korpus oben Ø 50 mm, unten Ø 34 mm, Wand 1,5 mm.",
+        "Acht Schlitze 3 × 38 mm am Umfang, Boden mit Loch Ø 10 mm.",
+        "Steckt lose im Loch der Rinne (Loch Ø 52 mm, Kragen liegt auf) oder im Medium des Beets.",
+        "2222 Stück im Dom (Beete und Rinnen zusammen), ein Katalogartikel."
+      ],
+      "norm": "Polypropylen, Spritzguss [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/netztopf.md, data/components/netztopf.json",
+      "bezug": "Händler offen: kein Angebot in Europa mit bekanntem Land; Richtpreis 0,15 EUR je Stk als Annahme [A] (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      }
     }
   ]
 }

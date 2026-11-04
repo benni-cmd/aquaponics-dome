@@ -2,97 +2,76 @@
   "komponente": "nft_tisch_aussen",
   "datei": "designs/components/nft_tisch_aussen.sc",
   "bauteilgruppe": "Tische und Beete",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "nft tisch aussen",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "teilenummer": "T22",
+  "stand": "5a",
+  "titel": "NFT-Tisch Außentisch (Portal, 4 Rinnen)",
+  "kurz": "Zwei Portalböcke aus Rechteckrohr tragen vier Rinnen neben dem Außenbeet; Zulaufverteiler und Sammelrohr liegen schräg entlang der Sektorgrenze. Im Modell 8-mal.",
+  "hinweis": "Texte und Zahlen aus docs/parts/nft_tisch.md, nft_rinne.md und winkelhalter.md. Maße sind überwiegend angenommen (Statik der Böcke nicht nachgewiesen); Katalogartikel führen die Rohre mit 2,5 mm Wand, das Modell mit 3 mm. Die Rinnen des Tischmodells tragen das Material Standard (ohne Zuordnung), der Katalog führt sie als PVC-U. Der europäische Bezug steht nur, wo die Stückliste ihn belegt.",
   "koerperzahl": 124,
   "gruppen": [
     {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
+      "id": "gestell",
+      "name": "Gestell",
+      "kurz": "Beine, Holme und Streben tragen die Rinnen und stehen neben dem Beet.",
       "teile": [
         "bein",
+        "fussplatte",
         "holm",
         "querstrebe",
         "laengs",
-        "rinnenprofil"
-      ]
-    },
-    {
-      "id": "bleche_und_platten",
-      "name": "Bleche und Platten",
-      "kurz": "",
-      "teile": [
-        "fussplatte"
-      ]
-    },
-    {
-      "id": "winkel_flachstahl_halter",
-      "name": "Winkel, Flachstahl, Halter",
-      "kurz": "",
-      "teile": [
         "diagonale",
+        "ldiag"
+      ]
+    },
+    {
+      "id": "verbindungen",
+      "name": "Verbindungen",
+      "kurz": "Winkelhalter und Schrauben halten die Teile lösbar zusammen.",
+      "teile": [
+        "winkel",
+        "winkelhalter",
+        "schraube_m8x30",
+        "schraube_m6x40",
+        "mutter_m6"
+      ]
+    },
+    {
+      "id": "rinnenhalter",
+      "name": "Rinnenhalter",
+      "kurz": "Die Halter fixieren jede Rinne auf dem Holm.",
+      "teile": [
         "halter_rinne_l",
         "halter_rinne_r",
-        "ldiag",
-        "winkel"
+        "schraube_m5x12"
       ]
     },
     {
-      "id": "fittings",
-      "name": "Fittings",
-      "kurz": "",
+      "id": "rinnen",
+      "name": "Rinnen",
+      "kurz": "Die Rinnen mit ihren Endkappen, in denen die Pflanzen stehen.",
       "teile": [
-        "verteiler",
-        "endstopfen_verteiler",
-        "endstopfen_sammelrohr",
+        "rinnenprofil",
         "kappezulauf",
         "kappeablauf"
       ]
     },
     {
-      "id": "schlauch_und_schellen",
-      "name": "Schlauch und Schellen",
-      "kurz": "",
+      "id": "wasserfuehrung",
+      "name": "Wasserführung",
+      "kurz": "Verteiler, Schläuche und Sammelrohr bringen das Wasser zu den Rinnen und wieder heraus.",
       "teile": [
-        "schlauch_rinne"
-      ]
-    },
-    {
-      "id": "rohre",
-      "name": "Rohre",
-      "kurz": "",
-      "teile": [
-        "sammelrohr"
-      ]
-    },
-    {
-      "id": "schrauben",
-      "name": "Schrauben",
-      "kurz": "",
-      "teile": [
-        "schraube_m8x30",
-        "winkelhalter",
-        "schraube_m6x40",
-        "schraube_m5x12"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
-        "mutter_m6"
+        "verteiler",
+        "endstopfen_verteiler",
+        "schlauch_rinne",
+        "sammelrohr",
+        "endstopfen_sammelrohr"
       ]
     }
   ],
   "teile": [
     {
       "id": "bein",
-      "name": "Bein",
+      "name": "Bein (Pfosten)",
       "koerper": [
         "Bein_1A",
         "Bein_1B",
@@ -101,16 +80,30 @@
       ],
       "menge": 4,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 12354.9 g, Einzelkoerper 40.0 x 40.0 x 950.4 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Rechteckrohr 40 × 40 × 3 mm, rund 940 mm lang; Masse 12354.9 g, Einzelkoerper 40.0 x 40.0 x 950.4 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr40x40x2.5",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 3.74,
-      "geruest": true
+      "masse_g": 12354.9,
+      "funktion": "Die Beine tragen den Tisch: Je zwei Beine bilden mit dem Querholm einen Portalbock, der neben dem Beet auf dem Boden steht (beim Innentisch ein Pfosten außerhalb des Beckenrands).",
+      "eigenschaften": [
+        "Rechteckrohr aus verzinktem Stahl, unten an die Fußplatte geschweißt (MAG), danach feuerverzinkt.",
+        "Die Beine stehen außerhalb der Beete: Die Fußplattenkante hat 45 mm Abstand zur Beetkante (innen 30 mm zum Beckenrand).",
+        "Länge = Höhe der Rinnenunterkante (1000 mm) minus Holmhöhe 60 mm minus Fußplatte 5 mm, also rund 940 mm.",
+        "Im Modell Wand 3 mm; der Katalogartikel ist ein Rohr mit 2,5 mm Wand: Abgleich offen."
+      ],
+      "norm": "Rechteckhohlprofil, kaltgeformt, EN 10219-2 (Stahl S235); Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py, docs/research/R35.md (Rinnenhöhe)",
+      "bezug": "stahl-shop24.de (DE), 10,85 EUR je m, Stand 2026-11-04, Konfidenz E; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)"
     },
     {
       "id": "fussplatte",
-      "name": "Fussplatte",
+      "name": "Fußplatte",
       "koerper": [
         "Fussplatte_1A",
         "Fussplatte_1B",
@@ -119,28 +112,71 @@
       ],
       "menge": 4,
       "typ": "platte",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 749.3 g, Einzelkoerper 5.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Blech 70 × 70 × 5 mm, Löcher Ø 9 mm; Masse 749.3 g, Einzelkoerper 5.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BLE-fussplatte-70x70x5",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "masse_g": 749.3,
+      "funktion": "Die Fußplatte verteilt die Last des Beins auf den Boden und wird mit zwei Schrauben M8 an Boden oder Betonpunkt befestigt.",
+      "eigenschaften": [
+        "Blech 70 × 70 × 5 mm mit zwei Löchern Ø 9 mm für M8, diagonal angeordnet, 15 mm Randabstand.",
+        "Am Bein angeschweißt; Bohrungen vor dem Feuerverzinken.",
+        "Beim Innentisch muss der Pfosten wegen des Kippmoments des Kragarms mit Verbundankern gesichert werden; die Statik ist nicht nachgewiesen."
+      ],
+      "norm": "Stahlblech S235, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "Kemper GbR (kempergbr.de) (DE), 1,65 EUR je Stk, Stand 2026-11-04, Konfidenz E; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
     },
     {
       "id": "holm",
-      "name": "Holm",
+      "name": "Querholm",
       "koerper": [
         "Holm_1",
         "Holm_2"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 8490.9 g, Einzelkoerper 40.0 x 60.0 x 1000.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Rechteckrohr 60 × 40 × 3 mm; Masse 8490.9 g, Einzelkoerper 40.0 x 60.0 x 1000.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr40x60x3",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "masse_g": 8490.9,
+      "funktion": "Der Querholm liegt quer über dem Bock und trägt die Rinnen: Auf seiner Oberkante liegen die Rinnen, an ihm sitzen die Rinnenhalter.",
+      "eigenschaften": [
+        "Rechteckrohr 60 mm hoch und 40 mm breit, so lang wie die Beet-Außenbreite plus Beine.",
+        "Die Oberkante ist die Rinnenunterkante (Prüfmaß ±1 mm); die Höhe folgt dem Gefälle der Rinne von 1,5 %.",
+        "Nicht an die Beine geschweißt, sondern über je einen Winkelhalter angeschraubt, damit der Tisch lösbar bleibt.",
+        "Biegung: 50 kg mittig auf 1,2 m Spannweite ergeben 150 Nm, rund 15 N/mm² gegen 235 N/mm² Streckgrenze [E]."
+      ],
+      "norm": "Rechteckhohlprofil, kaltgeformt, EN 10219-2 (Stahl S235); Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "stahl-shop24.de (DE), 16,26 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250
+      }
     },
     {
       "id": "querstrebe",
@@ -151,16 +187,37 @@
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 6078.4 g, Einzelkoerper 40.0 x 40.0 x 920.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Rechteckrohr 40 × 40 × 3 mm; Masse 6078.4 g, Einzelkoerper 40.0 x 40.0 x 920.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr40x40x2.5",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.84,
-      "geruest": true
+      "masse_g": 6078.4,
+      "funktion": "Die Querstrebe verbindet die beiden Beine eines Bocks auf halber Höhe und steift ihn quer aus.",
+      "eigenschaften": [
+        "Rechteckrohr 40 × 40 mm auf Höhe 650 mm (Unterkante 630 mm): so tief, wie die Pflanzen es erlauben (Pflanzen reichen bis etwa 560 mm).",
+        "An den Enden an die Beine geschweißt.",
+        "Im Modell Wand 3 mm; Katalogartikel 2,5 mm."
+      ],
+      "norm": "Rechteckhohlprofil, kaltgeformt, EN 10219-2 (Stahl S235); Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py (Höhe: Auftrag W33)",
+      "bezug": "stahl-shop24.de (DE), 10,85 EUR je m, Stand 2026-11-04, Konfidenz E; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      }
     },
     {
       "id": "diagonale",
-      "name": "Diagonale",
+      "name": "Diagonale (Portalbock)",
       "koerper": [
         "Diagonale_1a",
         "Diagonale_1b",
@@ -169,16 +226,37 @@
       ],
       "menge": 4,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 2336.5 g, Einzelkoerper 3.0 x 289.5 x 966.7 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Flachstahl 25 × 3 mm; Masse 2336.5 g, Einzelkoerper 3.0 x 289.5 x 966.7 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-flach-3mm-diagonale",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "masse_g": 2336.5,
+      "funktion": "Die beiden gekreuzten Diagonalen steifen den Portalbock gegen seitliches Verschieben aus.",
+      "eigenschaften": [
+        "Flachstahl 3 mm dick (Breite 25 mm), außen an den Beinen, je Bock zwei gekreuzt.",
+        "Der Winkel zur Waagerechten liegt bei 12,5 bis 15,5 Grad; steiler geht nicht, weil die Strebe unter den Pflanzen liegt.",
+        "Jedes Ende ist mit einer Schraube M6 × 40 und Mutter durch das Bein gesichert."
+      ],
+      "norm": "Flachstahl S235, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py (Bild-Kritiker W16, Höhe W33)",
+      "bezug": "Händler offen: Angebote in anderer Bezugseinheit (m), Umrechnung offen; Richtpreis 2,85 EUR je m als Annahme [A] (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "halter_rinne_l",
-      "name": "Halter Rinne L",
+      "name": "Rinnenhalter links",
       "koerper": [
         "Halter_1_Rinne_1_L",
         "Halter_1_Rinne_2_L",
@@ -191,16 +269,37 @@
       ],
       "menge": 8,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 216.9 g, Einzelkoerper 25.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "L-Blech 25 × 25 × 25 mm, 3 mm dick; Masse 216.9 g, Einzelkoerper 25.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-rinnenhalter-25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 8.0,
-      "geruest": true
+      "masse_g": 216.9,
+      "funktion": "Der Rinnenhalter hält die Rinne seitlich auf dem Holm: Je Rinne und Bock sitzt ein L-Blech links und eines rechts an der Rinnenwand.",
+      "eigenschaften": [
+        "L-Blech 3 mm dick, 25 mm breit und 25 mm hoch, aus verzinktem Stahl.",
+        "Mit einer Schraube M5 × 12 auf dem Holm befestigt.",
+        "Der linke und der rechte Halter sind spiegelgleich; im Katalog ein Artikel."
+      ],
+      "norm": "Blech S235, 3 mm, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md (Rinnenhalter: Bild und Annahme)",
+      "bezug": "Metallshopper (Metaalshopper) (NL), 6,73 EUR je Stk, Stand 2026-11-04, Konfidenz E; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250
+      }
     },
     {
       "id": "halter_rinne_r",
-      "name": "Halter Rinne R",
+      "name": "Rinnenhalter rechts",
       "koerper": [
         "Halter_1_Rinne_1_R",
         "Halter_1_Rinne_2_R",
@@ -213,59 +312,144 @@
       ],
       "menge": 8,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 216.9 g, Einzelkoerper 25.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "L-Blech 25 × 25 × 25 mm, 3 mm dick; Masse 216.9 g, Einzelkoerper 25.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-rinnenhalter-25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 8.0,
-      "geruest": true
+      "masse_g": 216.9,
+      "funktion": "Der Rinnenhalter hält die Rinne seitlich auf dem Holm: Je Rinne und Bock sitzt ein L-Blech links und eines rechts an der Rinnenwand.",
+      "eigenschaften": [
+        "L-Blech 3 mm dick, 25 mm breit und 25 mm hoch, aus verzinktem Stahl.",
+        "Mit einer Schraube M5 × 12 auf dem Holm befestigt.",
+        "Der linke und der rechte Halter sind spiegelgleich; im Katalog ein Artikel."
+      ],
+      "norm": "Blech S235, 3 mm, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md (Rinnenhalter: Bild und Annahme)",
+      "bezug": "Metallshopper (Metaalshopper) (NL), 6,73 EUR je Stk, Stand 2026-11-04, Konfidenz E; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250
+      }
     },
     {
       "id": "laengs",
-      "name": "Laengs",
+      "name": "Längsstrebe",
       "koerper": [
         "Laengs_1",
         "Laengs_2"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 13332.6 g, Einzelkoerper 40.0 x 40.0 x 2018.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Rechteckrohr 40 × 40 × 3 mm; Masse 13332.6 g, Einzelkoerper 40.0 x 40.0 x 2018.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr40x40x2.5",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 4.036,
-      "geruest": true
+      "masse_g": 13332.6,
+      "funktion": "Die Längsstrebe verbindet die beiden Böcke in Längsrichtung und steift den Tisch längs aus.",
+      "eigenschaften": [
+        "Rechteckrohr 40 × 40 mm, liegt an den Beinen auf Höhe 650 mm (beim Innentisch auf 400 mm unter dem Kragarm).",
+        "Je Beinseite eine Strebe, das Portal hat zwei, der Innentisch eine.",
+        "Im Modell Wand 3 mm; Katalogartikel 2,5 mm."
+      ],
+      "norm": "Rechteckhohlprofil, kaltgeformt, EN 10219-2 (Stahl S235); Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "stahl-shop24.de (DE), 10,85 EUR je m, Stand 2026-11-04, Konfidenz E; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      }
     },
     {
       "id": "ldiag",
-      "name": "LDiag",
+      "name": "Längsdiagonale",
       "koerper": [
         "LDiag_1",
         "LDiag_2"
       ],
       "menge": 2,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 2438.3 g, Einzelkoerper 3.0 x 254.4 x 2060.8 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Flachstahl 25 × 3 mm; Masse 2438.3 g, Einzelkoerper 3.0 x 254.4 x 2060.8 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-flach-3mm-diagonale",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "masse_g": 2438.3,
+      "funktion": "Die Längsdiagonale steift den Tisch in Längsrichtung zwischen den beiden Böcken aus.",
+      "eigenschaften": [
+        "Flachstahl 25 × 3 mm, außen an den Beinen, je Beinseite eine.",
+        "Eingeführt nach dem Befund, dass das Gestell längs sonst nur über den unteren Riegel gehalten wird.",
+        "Befestigung wie die Diagonalen mit M6-Schrauben durch das Bein."
+      ],
+      "norm": "Flachstahl S235, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py (Bild-Kritiker W16)",
+      "bezug": "Händler offen: Angebote in anderer Bezugseinheit (m), Umrechnung offen; Richtpreis 2,85 EUR je m als Annahme [A] (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "verteiler",
-      "name": "Verteiler",
+      "name": "Zulaufverteiler",
       "koerper": [
         "Verteiler"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
-      "masse_mm": "Masse 297.7 g, Einzelkoerper 25.0 x 323.6 x 917.7 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d25, Wand 3 mm; Masse 297.7 g, Einzelkoerper 25.0 x 323.6 x 917.7 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-verteiler-d25-nft",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 297.7,
+      "funktion": "Der Zulaufverteiler verteilt das Wasser vom Zulauf auf alle Rinnen des Tischs: An jeder Rinne zweigt ein Stutzen ab, auf den ein Schlauch zur Rinne gesteckt wird.",
+      "eigenschaften": [
+        "PVC-Rohr d25, Wand 3 mm, schräg entlang der Sektorgrenze (18 Grad zur Querachse), damit jede Reihe denselben Abstand zur Ecke hat.",
+        "Ein Stutzen Ø 16 mm je Rinne, Richtung +X.",
+        "Durchfluss 0,5 l/min je Rinne.",
+        "Der Verteiler im Modell ist ein Einzelkörper; real aus Rohr, Stutzen und Klebefittings geklebt oder geschweißt."
+      ],
+      "norm": "PVC-U-Rohr DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py, docs/research/R06.md (Durchfluss)",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 350
+      }
     },
     {
       "id": "endstopfen_verteiler",
@@ -275,16 +459,37 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC blau",
-      "masse_mm": "Masse 7.6 g, Einzelkoerper 18.6 x 23.9 x 24.8 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Kappe d25; Masse 7.6 g, Einzelkoerper 18.6 x 23.9 x 24.8 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kappe-d25",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 7.6,
+      "funktion": "Der Stopfen verschließt das freie Ende des Zulaufverteilers, damit das Wasser nur über die Stutzen zu den Rinnen fließt.",
+      "eigenschaften": [
+        "Passt in das Verteilerrohr d25.",
+        "Wird eingeklebt."
+      ],
+      "norm": "PVC-U-Kappe d25 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "Schwarte-Shop (DE), 1,33 EUR je Stk, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "verteiler"
+      }
     },
     {
       "id": "schlauch_rinne",
-      "name": "Schlauch Rinne",
+      "name": "Schlauch zur Rinne",
       "koerper": [
         "Schlauch_Rinne_1",
         "Schlauch_Rinne_2",
@@ -293,12 +498,33 @@
       ],
       "menge": 4,
       "typ": "kaufteil",
-      "werkstoff": "Schlauch hellblau",
-      "masse_mm": "Masse 49.8 g, Einzelkoerper 20.0 x 20.0 x 110.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_p_schlauch",
+      "masse_mm": "Schlauch ID 16 / AD 20 mm; Masse 49.8 g, Einzelkoerper 20.0 x 20.0 x 110.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SCH-schlauch-rinne-id16",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "masse_g": 49.8,
+      "funktion": "Der Schlauch führt das Wasser vom Stutzen des Verteilers zur Tülle am Zulaufende einer Rinne.",
+      "eigenschaften": [
+        "Innen Ø 16 mm, außen Ø 20 mm, hellblau; ein Schlauch je Rinne.",
+        "Zwischen Stutzen und Tülle bleiben 70 mm frei, in denen der Schlauch sichtbar ist.",
+        "Auf Stutzen und Tülle gesteckt, ohne Schelle im Modell."
+      ],
+      "norm": "Schlauch nach Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 200
+      }
     },
     {
       "id": "sammelrohr",
@@ -308,12 +534,33 @@
       ],
       "menge": 1,
       "typ": "rohr",
-      "werkstoff": "PVC grau",
-      "masse_mm": "Masse 629.4 g, Einzelkoerper 50.0 x 343.2 x 925.5 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d50, Wand 3 mm; Masse 629.4 g, Einzelkoerper 50.0 x 343.2 x 925.5 mm (Modell-Bounding-Box)",
       "artikel_id": "ROH-pvcu-d50",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.343,
-      "geruest": true
+      "masse_g": 629.4,
+      "funktion": "Das Sammelrohr fängt das Wasser am Ablaufende aller Rinnen auf und führt es aus dem Tisch heraus.",
+      "eigenschaften": [
+        "PVC-Rohr d50, Wand 3 mm, schräg entlang der Sektorgrenze.",
+        "Je Rinne eine Muffe d40 mit Bohrung d32 für den Ablaufstutzen.",
+        "Das Gefälle zum Anschluss ist im Modell nicht ausgeführt; das Rohr liegt waagerecht."
+      ],
+      "norm": "PVC-U-Rohr DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "Bevo (NL), 23,66 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 350
+      }
     },
     {
       "id": "endstopfen_sammelrohr",
@@ -323,38 +570,80 @@
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "PVC grau",
-      "masse_mm": "Masse 41.8 g, Einzelkoerper 32.5 x 43.6 x 47.7 mm (Modell-Bounding-Box)",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Kappe d50; Masse 41.8 g, Einzelkoerper 32.5 x 43.6 x 47.7 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-kappe-d50",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 41.8,
+      "funktion": "Der Stopfen verschließt das freie Ende des Sammelrohrs.",
+      "eigenschaften": [
+        "Passt in das Sammelrohr d50.",
+        "Wird eingeklebt."
+      ],
+      "norm": "PVC-U-Kappe d50 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "Bevo (NL), 2,92 EUR je Stk, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "sammelrohr"
+      }
     },
     {
       "id": "schraube_m8x30",
-      "name": "Schraube M8x30",
+      "name": "Schraube M8 × 30 (Fußplatte)",
       "koerper": [
-        "Body21",
-        "Body22",
-        "Body23",
-        "Body24",
-        "Body1",
-        "Body2",
-        "Body3",
-        "Body4"
+        "Schraube_M8x30_1",
+        "Schraube_M8x30_2",
+        "Schraube_M8x30_3",
+        "Schraube_M8x30_4",
+        "Schraube_M8x30_5",
+        "Schraube_M8x30_6",
+        "Schraube_M8x30_7",
+        "Schraube_M8x30_8"
       ],
       "menge": 8,
       "typ": "normteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 143.4 g, Einzelkoerper 13.0 x 15.0 x 35.3 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantschraube M8 × 30; Masse 143.4 g, Einzelkoerper 13.0 x 15.0 x 35.3 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m8x30",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 8.0,
-      "geruest": true
+      "masse_g": 143.4,
+      "funktion": "Die Schraube hält die Fußplatte am Boden bzw. am Betonpunkt.",
+      "eigenschaften": [
+        "Zwei Schrauben je Fußplatte durch die Löcher Ø 9 mm.",
+        "Im Modell steckt sie im Blech; real kommt unter die Platte ein Dübel oder Verbundanker (Statik offen).",
+        "Zählt im Katalog als Schraubensatz (Schraube, Mutter, zwei Scheiben)."
+      ],
+      "norm": "Sechskantschraube ISO 4017 (DIN 933), Festigkeitsklasse 8.8 nach ISO 898-1, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md (Verbindungen), data/components/nft_tisch.json",
+      "bezug": "offen: kein Eintrag in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 250
+      }
     },
     {
       "id": "winkel",
-      "name": "Winkel",
+      "name": "Winkel des Winkelhalters",
       "koerper": [
         "Winkel (3)",
         "Winkel (4)",
@@ -363,16 +652,37 @@
       ],
       "menge": 4,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 507.3 g, Einzelkoerper 36.0 x 60.0 x 60.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Winkel 36 × 60 × 60 × 4 mm; Masse 507.3 g, Einzelkoerper 36.0 x 60.0 x 60.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-winkel-36x60x60",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "masse_g": 507.3,
+      "funktion": "Der Winkel verbindet Bein und Holm (beim Innentisch Pfosten und Kragarm) als lösbare Schraubverbindung.",
+      "eigenschaften": [
+        "Stahlwinkel 36 × 60 × 60 × 4 mm; ein Schenkel liegt an der Beininnenseite, der andere unter dem Holm.",
+        "36 mm Breite: 2 mm schmaler als Bein und Holm, damit die Diagonalen frei bleiben.",
+        "Je Bein ein Winkel; er trägt je zwei Löcher Ø 6,6 mm für M6 in beiden Schenkeln."
+      ],
+      "norm": "Winkelstahl S235, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/winkelhalter.md, docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "Hornbach (DE), 0,80 EUR je Stk, Stand 2026-11-04, Konfidenz Q-Treffer; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "winkelhalter",
-      "name": "winkelhalter",
+      "name": "Schrauben und Muttern der Winkelhalter",
       "koerper": [
         "winkelhalter (13)",
         "winkelhalter (14)",
@@ -401,91 +711,174 @@
       ],
       "menge": 24,
       "typ": "normteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 188.6 g, Einzelkoerper 10.0 x 11.5 x 20.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Normteile M6; Masse 188.6 g, Einzelkoerper 10.0 x 11.5 x 20.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-halter-klein-12x10x20",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 24.0,
-      "geruest": true
+      "masse_g": 188.6,
+      "funktion": "Diese Kleinteile schrauben die Winkelhalter fest: je Winkel zwei Schrauben M6 × 55 mit Muttern durch das Bein und zwei Schrauben M6 × 16 unter dem Holm.",
+      "eigenschaften": [
+        "Sechs Normteile je Winkelhalter (vier Schrauben, zwei Muttern); im Modell haben sie keine einzelnen Namen mehr.",
+        "Die Schrauben unter dem Holm greifen in Blindnietmuttern M6, die nicht modelliert sind.",
+        "Der Katalog führt sie als Sammelartikel „Kleinteil am Winkelhalter“; die Maße 12 × 10 × 20 gelten genau für die kurzen Schrauben."
+      ],
+      "norm": "Sechskantschraube ISO 4017 (DIN 933), Festigkeitsklasse 8.8 nach ISO 898-1, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/winkelhalter.md",
+      "bezug": "Händler offen: Angebote in anderer Bezugseinheit (Satz), Umrechnung offen; Richtpreis 0,14 EUR je Satz als Annahme [A] (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "winkel"
+      }
     },
     {
       "id": "schraube_m6x40",
-      "name": "Schraube M6x40",
+      "name": "Schraube M6 × 40 (Diagonale)",
       "koerper": [
-        "Body25",
-        "Body27",
-        "Body29",
-        "Body31",
-        "Body5",
-        "Body7",
-        "Body9",
-        "Body11"
+        "Schraube_M6x40_1",
+        "Schraube_M6x40_2",
+        "Schraube_M6x40_3",
+        "Schraube_M6x40_4",
+        "Schraube_M6x40_5",
+        "Schraube_M6x40_6",
+        "Schraube_M6x40_7",
+        "Schraube_M6x40_8"
       ],
       "menge": 8,
       "typ": "normteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 92.8 g, Einzelkoerper 10.0 x 11.5 x 44.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantschraube M6 × 40; Masse 92.8 g, Einzelkoerper 10.0 x 11.5 x 44.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m6x40",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 8.0,
-      "geruest": true
+      "masse_g": 92.8,
+      "funktion": "Die Schraube sichert je ein Ende der Diagonale am Bein.",
+      "eigenschaften": [
+        "Je Diagonalenende eine Schraube M6 × 40 quer durch das Bein, Mutter auf der Innenseite.",
+        "Der Kopf sitzt auf der Außenseite der Diagonale."
+      ],
+      "norm": "Sechskantschraube ISO 4017 (DIN 933), Festigkeitsklasse 8.8 nach ISO 898-1, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md (Verbindungen)",
+      "bezug": "offen: kein Eintrag in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "mutter_m6",
-      "name": "Mutter M6",
+      "name": "Mutter M6 (Diagonale)",
       "koerper": [
-        "Body26",
-        "Body28",
-        "Body30",
-        "Body32",
-        "Body6",
-        "Body8",
-        "Body10",
-        "Body12"
+        "Schraube_Mutter_M6_1",
+        "Schraube_Mutter_M6_2",
+        "Schraube_Mutter_M6_3",
+        "Schraube_Mutter_M6_4",
+        "Schraube_Mutter_M6_5",
+        "Schraube_Mutter_M6_6",
+        "Schraube_Mutter_M6_7",
+        "Schraube_Mutter_M6_8"
       ],
       "menge": 8,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 19.0 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantmutter M6; Masse 19.0 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true
+      "masse_g": 19.0,
+      "funktion": "Die Mutter zieht die Schraube der Diagonale am Bein fest.",
+      "eigenschaften": [
+        "Sechskantmutter M6, sitzt innen am Bein.",
+        "Gehört zum Schraubensatz; kein eigener Artikel in der Stückliste."
+      ],
+      "norm": "Sechskantmutter ISO 4032, Festigkeitsklasse 8, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md (Verbindungen)",
+      "bezug": "Im Schraubensatz M6 × 40 enthalten (Katalog SRB-satz-m6x40) [A]",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "schraube_m5x12",
-      "name": "Schraube M5x12",
+      "name": "Schraube M5 × 12 (Rinnenhalter)",
       "koerper": [
-        "Body33",
-        "Body34",
-        "Body35",
-        "Body36",
-        "Body37",
-        "Body38",
-        "Body39",
-        "Body40",
-        "Body13",
-        "Body14",
-        "Body15",
-        "Body16",
-        "Body17",
-        "Body18",
-        "Body19",
-        "Body20"
+        "Schraube_M5x12_1",
+        "Schraube_M5x12_2",
+        "Schraube_M5x12_3",
+        "Schraube_M5x12_4",
+        "Schraube_M5x12_5",
+        "Schraube_M5x12_6",
+        "Schraube_M5x12_7",
+        "Schraube_M5x12_8",
+        "Schraube_M5x12_9",
+        "Schraube_M5x12_10",
+        "Schraube_M5x12_11",
+        "Schraube_M5x12_12",
+        "Schraube_M5x12_13",
+        "Schraube_M5x12_14",
+        "Schraube_M5x12_15",
+        "Schraube_M5x12_16"
       ],
       "menge": 16,
       "typ": "normteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 54.0 g, Einzelkoerper 8.0 x 9.2 x 15.5 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantschraube M5 × 12; Masse 54.0 g, Einzelkoerper 8.0 x 9.2 x 15.5 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m5x12",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 16.0,
-      "geruest": true
+      "masse_g": 54.0,
+      "funktion": "Die Schraube befestigt einen Rinnenhalter am Holm.",
+      "eigenschaften": [
+        "Je Rinnenhalter eine Schraube M5 × 12 durch das Blech in den Holm.",
+        "Zählt im Katalog als Schraubensatz."
+      ],
+      "norm": "Sechskantschraube ISO 4017 (DIN 933), Festigkeitsklasse 8.8 nach ISO 898-1, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_tisch.md (Verbindungen)",
+      "bezug": "offen: kein Eintrag in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100,
+        "folgt": "halter_rinne_l"
+      }
     },
     {
       "id": "rinnenprofil",
-      "name": "Rinnenprofil",
+      "name": "Rinne",
       "koerper": [
         "Rinnenprofil",
         "Rinnenprofil (2)",
@@ -494,16 +887,39 @@
       ],
       "menge": 4,
       "typ": "profil",
-      "werkstoff": "Default",
-      "masse_mm": "Masse 16782.3 g, Einzelkoerper 130.0 x 144.5 x 2987.1 mm (Modell-Bounding-Box)",
+      "werkstoff": "unbestimmt_modell",
+      "masse_mm": "Profil 130 × 100 mm, Länge je Reihe; Masse 16782.3 g, Einzelkoerper 130.0 x 144.5 x 2987.1 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-pvcu-rinne-130x100",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 11.093,
-      "geruest": true
+      "masse_g": 16782.3,
+      "funktion": "Die Rinne führt einen dünnen Wasserfilm an den Wurzeln der Pflanzen entlang; die Pflanzen stehen in Netztöpfen in den Löchern der Oberseite.",
+      "eigenschaften": [
+        "Hohlkammerprofil 130 × 100 mm; die Rinne selbst ist gerade, das Gefälle von 1,5 % entsteht durch die Böcke.",
+        "Jede Reihe hat ihre eigene Länge (rund 760 bis 2990 mm), eine Lochreihe in der Mitte, Lochabstand 200 mm; benachbarte Rinnen sind um 100 mm versetzt (Zickzack).",
+        "Zulaufende links, Ablaufende rechts; Wasser rund 10 mm hoch.",
+        "Im Tischmodell hat die Rinne kein Material (Standard), im Rinnenmodell PVC-U weiß: Der Katalog führt sie als PVC-U-Profil."
+      ],
+      "norm": "PVC-U, UV-stabilisiert (alternativ PP) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_rinne.md, data/components/nft_rinne.json",
+      "bezug": "Hornbach (DE), 8,28 EUR je m, Stand 2026-11-04, Konfidenz Q; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "werkstoff_soll": "pvc_u",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 500
+      }
     },
     {
       "id": "kappezulauf",
-      "name": "KappeZulauf",
+      "name": "Endkappe Zulauf",
       "koerper": [
         "KappeZulauf",
         "KappeZulauf (2)",
@@ -512,16 +928,38 @@
       ],
       "menge": 4,
       "typ": "kaufteil",
-      "werkstoff": "Default",
-      "masse_mm": "Masse 401.5 g, Einzelkoerper 43.5 x 100.1 x 130.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "unbestimmt_modell",
+      "masse_mm": "Kappe für Profil 130 × 100 mm; Masse 401.5 g, Einzelkoerper 43.5 x 100.1 x 130.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-rinne-kappe-zulauf",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "masse_g": 401.5,
+      "funktion": "Die Zulaufkappe schließt die Rinne am Zulaufende ab und trägt die Tülle, auf die der Schlauch gesteckt wird.",
+      "eigenschaften": [
+        "Tülle Ø 16 mm, Achse 70 mm über dem Rinnenboden.",
+        "Auf die Rinne gesteckt und mit einer Dichtleiste abgedichtet; real aus 4-mm-PVC-Platte oder Spritzguss."
+      ],
+      "norm": "PVC-U [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_rinne.md, data/components/nft_rinne.json",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "werkstoff_soll": "pvc_u",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "rinnenprofil"
+      }
     },
     {
       "id": "kappeablauf",
-      "name": "KappeAblauf",
+      "name": "Endkappe Ablauf",
       "koerper": [
         "KappeAblauf",
         "KappeAblauf (2)",
@@ -530,12 +968,34 @@
       ],
       "menge": 4,
       "typ": "kaufteil",
-      "werkstoff": "Default",
-      "masse_mm": "Masse 403.2 g, Einzelkoerper 48.5 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "unbestimmt_modell",
+      "masse_mm": "Kappe für Profil 130 × 100 mm; Masse 403.2 g, Einzelkoerper 48.5 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
       "artikel_id": "FIT-rinne-kappe-ablauf",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0,
-      "geruest": true
+      "masse_g": 403.2,
+      "funktion": "Die Ablaufkappe schließt die Rinne am Ablaufende ab und trägt den Stutzen, über den das Wasser ins Sammelrohr fließt.",
+      "eigenschaften": [
+        "Stutzen d32, Achse 20 mm über dem Rinnenboden: Es bleibt ein Restfilm in der Rinne.",
+        "Auf die Rinne gesteckt und abgedichtet."
+      ],
+      "norm": "PVC-U [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nft_rinne.md, data/components/nft_rinne.json",
+      "bezug": "offen: kein Angebot mit Preis in data/beschaffung (N-BESCHAFFUNG)",
+      "werkstoff_soll": "pvc_u",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 150,
+        "folgt": "rinnenprofil"
+      }
     }
   ]
 }

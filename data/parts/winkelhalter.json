@@ -2,17 +2,17 @@
   "komponente": "winkelhalter",
   "datei": "designs/components/winkelhalter.sc",
   "bauteilgruppe": "Tische und Beete",
-  "teilenummer": "",
-  "stand": "geruest",
-  "titel": "winkelhalter",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "teilenummer": "T23",
+  "stand": "5a",
+  "titel": "Winkelhalter (Bein an Holm)",
+  "kurz": "Ein Stahlwinkel mit vier Schrauben und zwei Muttern verbindet das Bein eines Tischs lösbar mit dem Holm.",
+  "hinweis": "Texte aus docs/parts/winkelhalter.md. Die Schrauben unter dem Holm greifen in Blindnietmuttern, die nicht modelliert sind.",
   "koerperzahl": 7,
   "gruppen": [
     {
-      "id": "winkel_flachstahl_halter",
-      "name": "Winkel, Flachstahl, Halter",
-      "kurz": "",
+      "id": "winkel",
+      "name": "Winkel",
+      "kurz": "Der Stahlwinkel.",
       "teile": [
         "winkel"
       ]
@@ -20,17 +20,10 @@
     {
       "id": "schrauben",
       "name": "Schrauben",
-      "kurz": "",
+      "kurz": "Schrauben und Muttern.",
       "teile": [
         "schraube_m6x16",
-        "schraube_m6x55"
-      ]
-    },
-    {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
-      "teile": [
+        "schraube_m6x55",
         "mutter_m6"
       ]
     }
@@ -38,67 +31,148 @@
   "teile": [
     {
       "id": "winkel",
-      "name": "Winkel",
+      "name": "Winkel des Winkelhalters",
       "koerper": [
         "Winkel"
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 126.8 g, Einzelkoerper 36.0 x 60.0 x 60.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Winkel 36 × 60 × 60 × 4 mm; Masse 126.8 g, Einzelkoerper 36.0 x 60.0 x 60.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-winkel-36x60x60",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "masse_g": 126.8,
+      "funktion": "Der Winkel verbindet Bein und Holm (beim Innentisch Pfosten und Kragarm) als lösbare Schraubverbindung.",
+      "eigenschaften": [
+        "Stahlwinkel 36 × 60 × 60 × 4 mm; ein Schenkel liegt an der Beininnenseite, der andere unter dem Holm.",
+        "36 mm Breite: 2 mm schmaler als Bein und Holm, damit die Diagonalen frei bleiben.",
+        "Je Bein ein Winkel; er trägt je zwei Löcher Ø 6,6 mm für M6 in beiden Schenkeln."
+      ],
+      "norm": "Winkelstahl S235, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/winkelhalter.md, docs/parts/nft_tisch.md, data/components/nft_tisch.json, scripts/workshop/nft_tisch.py",
+      "bezug": "Hornbach (DE), 0,80 EUR je Stk, Stand 2026-11-04, Konfidenz Q-Treffer; Lieferung nach Deutschland: ja (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "schraube_m6x16",
-      "name": "Schraube M6x16",
+      "name": "Schraube M6 × 16 (unter dem Holm)",
       "koerper": [
-        "Body1",
-        "Body2"
+        "Schraube_M6x16_1",
+        "Schraube_M6x16_2"
       ],
       "menge": 2,
       "typ": "normteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 12.5 g, Einzelkoerper 10.0 x 11.5 x 20.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantschraube M6 × 16; Masse 12.5 g, Einzelkoerper 10.0 x 11.5 x 20.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m6x16",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "masse_g": 12.5,
+      "funktion": "Die Schraube hält den Winkel am Holm bzw. Kragarm.",
+      "eigenschaften": [
+        "Zwei Schrauben M6 × 16 durch den waagerechten Schenkel in die Blindnietmuttern im Holm.",
+        "Zählt im Katalog als Schraubensatz."
+      ],
+      "norm": "Sechskantschraube ISO 4017 (DIN 933), Festigkeitsklasse 8.8 nach ISO 898-1, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/winkelhalter.md",
+      "bezug": "offen: kein Eintrag in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "schraube_m6x55",
-      "name": "Schraube M6x55",
+      "name": "Schraube M6 × 55 (am Bein)",
       "koerper": [
-        "Body3",
-        "Body5"
+        "Schraube_M6x55_1",
+        "Schraube_M6x55_2"
       ],
       "menge": 2,
       "typ": "normteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 29.9 g, Einzelkoerper 10.0 x 11.5 x 59.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantschraube M6 × 55; Masse 29.9 g, Einzelkoerper 10.0 x 11.5 x 59.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m6x55",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "masse_g": 29.9,
+      "funktion": "Die Schraube hält den Winkel am Bein.",
+      "eigenschaften": [
+        "Zwei Schrauben M6 × 55 durch den senkrechten Schenkel und das Bein, Mutter auf der Außenseite.",
+        "Zählt im Katalog als Schraubensatz."
+      ],
+      "norm": "Sechskantschraube ISO 4017 (DIN 933), Festigkeitsklasse 8.8 nach ISO 898-1, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/winkelhalter.md",
+      "bezug": "offen: kein Eintrag in data/beschaffung (N-BESCHAFFUNG)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 120
+      }
     },
     {
       "id": "mutter_m6",
-      "name": "Mutter M6",
+      "name": "Mutter M6 (am Bein)",
       "koerper": [
-        "Body4",
-        "Body6"
+        "Schraube_Mutter_M6_1",
+        "Schraube_Mutter_M6_2"
       ],
       "menge": 2,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
-      "masse_mm": "Masse 4.8 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Sechskantmutter M6; Masse 4.8 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true
+      "masse_g": 4.8,
+      "funktion": "Die Mutter zieht die Schraube durch das Bein fest.",
+      "eigenschaften": [
+        "Sechskantmutter M6 auf der Außenseite des Beins.",
+        "Gehört zum Schraubensatz; kein eigener Artikel in der Stückliste."
+      ],
+      "norm": "Sechskantmutter ISO 4032, Festigkeitsklasse 8, verzinkt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/winkelhalter.md",
+      "bezug": "Im Schraubensatz M6 × 55 enthalten (Katalog SRB-satz-m6x55) [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      }
     }
   ]
 }

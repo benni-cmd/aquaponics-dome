@@ -4,6 +4,7 @@ Wird von scripts/bom.py nach dem Schreiben von data/stueckliste.json aufgerufen 
 Einzeln: python -X utf8 scripts/bom_seite.py   (liest data/stueckliste.json)
 Regel W45: gleiche Eingabe, gleiche Ausgabe (kein Laufzeit-Zeitstempel).
 """
+import glob
 import json
 import os
 import re
@@ -38,8 +39,25 @@ def uml(t):
     return _WORT.sub(lambda m: UML.get(m.group(0), m.group(0)), t)
 
 
+def teile_je_artikel():
+    """artikel_id -> [(komponente, teil_id, teil_name)] aus data/parts (Rueckverweis auf die Detailansicht des Viewers)."""
+    res = {}
+    for f in sorted(glob.glob(os.path.join(ROOT, "data", "parts", "*.json"))):
+        with open(f, encoding="utf-8") as fh:
+            d = json.load(fh)
+        komp = os.path.splitext(os.path.basename(f))[0]
+        for t in d.get("teile", []):
+            if t.get("artikel_id"):
+                res.setdefault(t["artikel_id"], []).append((komp, t["id"], (t.get("name") or t["id"]) + " in " + (d.get("titel") or komp).split(" (")[0]))
+    return res
+
+
 def daten(out):
     k = out["kopf"]
+    je_art = teile_je_artikel()
+    platziert = {c["komponente"] for c in out.get("komponenten", [])
+                 if isinstance(c, dict) and c.get("instanzen")} if isinstance(out.get("komponenten"), list) else {
+        n for n, c in out.get("komponenten", {}).items() if c.get("instanzen")}
     zeilen = []
     staende = []
     for z in out["zeilen"]:
@@ -71,6 +89,7 @@ def daten(out):
             "p": ({"e": p["einzelpreis_eur"], "b": p["bezug_einheit"], "g": p["gesamtpreis_eur"], "h": uml(p["haendler"]), "l": p["land"], "u": p["url"],
                    "s": p["stand"], "k": p["konfidenz"], "d": p["lieferung_de"], "a": p.get("alias_von")} if p else None),
             "alt": len(z["alternativen"]), "gr": gr, "hin": [uml(x) for x in z["hinweise"]],
+            "teile": [{"k": a, "t": b, "n": uml(c)} for a, b, c in sorted(je_art.get(z["artikel_id"], []), key=lambda x: (x[0] not in platziert, x[0], x[1]))[:6]],
             "pe": z.get("preis_wenn_je_komponente_einmal_eur"),
         })
     return {"kopf": {"summe": k["summe_eur_platziert"], "zeilen": k["zeilen"], "ohne_preis": k["zeilen_ohne_preis_platziert"], "np": k["zeilen_nicht_platziert"],

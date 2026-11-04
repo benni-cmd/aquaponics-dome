@@ -45,6 +45,18 @@ def watch():
                 do_export(); last = m
         time.sleep(1)
 
+def ansicht_pruefen():
+    # viewer/ansicht.json (Werkstoff, Gruppe, Leitungsart) neu erzeugen, wenn sie fehlt oder aelter ist als instances.json oder eine Teiledatei
+    ziel = os.path.join(HERE, 'ansicht.json')
+    try:
+        jung = os.path.getmtime(ziel) if os.path.exists(ziel) else 0
+        stand = max([os.path.getmtime(_INST), os.path.getmtime(os.path.join(ROOT, 'data', 'leitungstrassen.json')), os.path.getmtime(os.path.join(ROOT, 'data', 'leitungsnetz.json'))] +
+                    [e.stat().st_mtime for e in os.scandir(os.path.join(ROOT, 'data', 'parts')) if e.name.endswith('.json')])
+        if jung < stand:
+            subprocess.run([sys.executable, '-I', os.path.join(HERE, 'export_ansicht.py')], capture_output=True, text=True, timeout=60)
+    except Exception:
+        pass
+
 def board():
     rows = []
     try:
@@ -78,6 +90,11 @@ class H(http.server.SimpleHTTPRequestHandler):
             return os.path.join(ROOT, 'data', 'descriptions.json')
         if p == '/system-specs.json':
             return os.path.join(ROOT, 'data', 'system-specs.json')
+        if p == '/stueckliste.json':
+            return os.path.join(ROOT, 'data', 'stueckliste.json')
+        if p == '/ansicht.json':
+            ansicht_pruefen()
+            return os.path.join(HERE, 'ansicht.json')
         if p == '/katalog.json':
             return os.path.join(ROOT, 'data', 'katalog.json')
         if p.startswith('/parts/') and p.endswith('.json') and '/' not in p[len('/parts/'):] and '..' not in p:

@@ -9,6 +9,7 @@ renders/score.json
 viewer/model.obj
 viewer/defs/
 viewer/instances.json
+viewer/ansicht.json
 scripts/.latte-cache.json
 __pycache__/
 scripts/.segs.json

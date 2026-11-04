@@ -67,6 +67,8 @@ tr.block .summe{font-variant-numeric:tabular-nums;color:var(--akzent)}
 tr.nicht-platziert td{color:var(--text2)}
 .teil .id{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:var(--text2)}
 .teil .bez{font-weight:550}
+.teil .detail{display:block;font-size:12px;color:var(--text2);margin-top:2px}
+.teil .detail a{color:var(--akzent);text-decoration:underline;text-underline-offset:2px;margin-right:8px;white-space:nowrap}
 .chip{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:650;white-space:nowrap}
 .chip svg{width:13px;height:13px;flex:none}
 .chip.ok{background:var(--ok-bg);color:var(--ok)}
@@ -146,6 +148,11 @@ var ICON = {
 };
 var EINH = {"Stk":"Stück","Satz":"Satz","m":"m","m2":"m²","m3":"m³"};
 var state = {modus:"gruppe", key:null, dir:"asc", q:"", typ:"", gruppe:"", ohne:false, np:false};
+var VIEWER = 'http://localhost:4410/';
+function detailLinks(z){
+  if(!z.teile||!z.teile.length) return '';
+  return '<span class="detail">In der Detailansicht des Viewers: '+z.teile.slice(0,3).map(function(t){return '<a href="'+VIEWER+'#detail='+encodeURIComponent(t.k)+'&teil='+encodeURIComponent(t.t)+'" target="_blank" rel="noopener" title="Öffnet den Viewer (python viewer/serve.py muss laufen)">'+esc(t.n)+'</a>';}).join('')+(z.teile.length>3?'und weitere':'')+'</span>';
+}
 var SPALTEN = [
   {k:"id", t:"Teilenummer", zahl:false},
   {k:"bez", t:"Teil", zahl:false},
@@ -240,7 +247,7 @@ function render(){
     var stat = '<span class="chip '+code+'">'+ICON[code]+wort+'</span>'+(z.status!=="OK"? '<span class="grund">'+esc(z.status)+(p&&z.status!=="OK"?' – Preis gilt für die heutige Variante':'')+'</span>':'');
     return '<tr'+cls+idAttr+'>'
       +'<td class="teil" data-label="Teilenummer"><span class="id">'+esc(z.id)+'</span></td>'
-      +'<td class="teil" data-label="Teil"><span class="bez">'+esc(z.bez)+'</span></td>'
+      +'<td class="teil" data-label="Teil"><span class="bez">'+esc(z.bez)+'</span>'+detailLinks(z)+'</td>'
       +'<td data-label="Typ">'+esc(z.typ)+'</td>'
       +'<td data-label="Gruppe">'+esc(r.gruppe)+'</td>'
       +'<td class="zahl" data-label="Menge">'+menge+'</td>'

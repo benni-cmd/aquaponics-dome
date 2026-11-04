@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Farbtabelle des Viewers (W68). Visuell: Farbe je Werkstoff des Teils (Quelle data/parts/<komp>.json, Feld werkstoff; Treffer ueber 'match', erster gewinnt). Technisch: Farbe je Bauteilgruppe (Feld bauteilgruppe der gleichen Datei), Leitungen nach Nennweite aus dem Komponentennamen (…_d32…). Werkstoffe ohne Eintrag und 'unbestimmt_modell'/'Default' fallen auf die bisherigen Regeln im Viewer zurueck. Farben als #rrggbb; deckkraft 1 = undurchsichtig; glanz = Metallanteil 0..1; rauheit 0..1.",
+  "_hinweis": "Farbtabelle des Viewers (W68). Leitungen werden in der Ansicht Technisch nach Leitungsart gefaerbt (viewer/ansicht.json, erzeugt von viewer/export_ansicht.py), ohne diese Daten nach Nennweite. Visuell: Farbe je Werkstoff des Teils (Quelle data/parts/<komp>.json, Feld werkstoff; Treffer ueber 'match', erster gewinnt). Technisch: Farbe je Bauteilgruppe (Feld bauteilgruppe der gleichen Datei), Leitungen nach Nennweite aus dem Komponentennamen (…_d32…). Werkstoffe ohne Eintrag und 'unbestimmt_modell'/'Default' fallen auf die bisherigen Regeln im Viewer zurueck. Farben als #rrggbb; deckkraft 1 = undurchsichtig; glanz = Metallanteil 0..1; rauheit 0..1.",
   "mensch_komponente": "^mensch_referenz",
   "durchsichtig_komponente": "^huelle",
   "rueckfall_werkstoffe": ["^unbestimmt_modell$", "^Default$"],
@@ -48,6 +48,13 @@
       "Tische und Beete":         { "farbe": "#b49b66" },
       "Messtechnik und Elektrik": { "farbe": "#a8829f" },
       "Leitungen":                { "farbe": "#8a98a4" }
+    },
+    "leitungsart": {
+      "Zulauf":       { "farbe": "#4f86c6", "anzeige": "Zulauf (Pool, Filter, Pumpen bis zu den Pflanzen)" },
+      "Ruecklauf":    { "farbe": "#8a74c4", "anzeige": "Rücklauf (zurück zum Pool)" },
+      "Luft":         { "farbe": "#6fb38f", "anzeige": "Luft" },
+      "Frischwasser": { "farbe": "#3fb0c4", "anzeige": "Frischwasser" },
+      "Kabel":        { "farbe": "#c98d52", "anzeige": "Kabel" }
     },
     "leitungen_nennweite": {
       "16": "#c28f6a", "20": "#c9a063", "25": "#b6ad5f", "32": "#8db26d", "40": "#62b08a", "50": "#4fa6a6", "63": "#5b8fc2", "75": "#7b7fcb", "90": "#9a74c0", "110": "#b96aa3"

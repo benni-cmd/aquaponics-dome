@@ -88,5 +88,6 @@ try: walk_z = json.load(open(os.path.join(ROOT, 'data', 'params.json'), encoding
 except Exception: walk_z = 400
 json_atomar({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, os.path.join(HERE, 'extras.json'))
 json_atomar({'built': built, 'min_diag': MIN_DIAG, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, os.path.join(HERE, 'instances.json'))   # zuletzt: erst jetzt zeigt das Modellverzeichnis auf den neuen Stand
+subprocess.run([sys.executable, '-I', os.path.join(HERE, 'export_ansicht.py')], capture_output=True, text=True)   # Nebendatei Werkstoff/Gruppe/Leitungsart passend zu diesem Export
 size = sum(d['kb'] for d in defs.values()) / 1024; size_k = sum(d['klein_kb'] for d in defs.values()) / 1024
 print(f'export {time.time()-t0:.0f}s defs={len(defs)} (neu {exported}) = {size:.1f} MB + Kleinteile {size_k:.1f} MB, instanzen={len(insts)}')

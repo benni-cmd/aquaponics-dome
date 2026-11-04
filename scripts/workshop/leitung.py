@@ -1,7 +1,7 @@
 """Leitungsteile-Bibliothek T70 (W10): Rohr, Kupplung, Bogen 90/45, T-Stueck, Kugelhahn, Schlauch gerade/Bogen, Rohrklemme, Verteiler als Komponenten mit Ports.
 Konvention: Teile liegen mit Port A im Ursprung; Ports siehe docs/parts/leitungsteile.md (Name, DN, Lage, Richtung). Masse PVC-U nach DIN 8062/EN 1452 (Naeherung).
 Aufruf: python scripts/workshop/leitung.py [teil ...]   (ohne Teil: alle)"""
-import sys, os, math, json
+import sys, os, math, json, re, subprocess
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 
@@ -243,9 +243,39 @@ def verteiler(d, n, ds=25, pitch=120):
     meta(b, nm, f"T70-V-{d}-{n}", f"Verteiler d{d} mit {n} Abgaengen d{ds}, Teilung {pitch}")
     return b, nm, dict(L=L, xs=xs, ds=ds, top=d / 2 + 50)
 
+def name_inserts(out, fname):
+    """parts.insert-Koerper heissen 'Body<n>' (W60 5a): nach Lage und Art benennen (Schraube/Mutter, Seite) und Stahl zuweisen; Muster name_bolts() aus tank.py."""
+    ev = sc.evaluate(out)
+    cmds, names = [], []
+    ms = [x["mass_g"] for x in ev["bodies"] if re.fullmatch(r"Body\d+", x["name"])]
+    mid = (max(ms) + min(ms)) / 2 if ms else 0                     # Schrauben sind schwerer als Muttern, unabhaengig von der Dichte
+    for bd in ev["bodies"]:
+        if not re.fullmatch(r"Body\d+", bd["name"]):
+            continue
+        c = [(bd["bbox"]["min"][i] + bd["bbox"]["max"][i]) / 2 for i in range(3)]
+        if fname.startswith("lt_klemme"):
+            new = "Schraube_y" + ("p" if c[1] > 0 else "m")
+        else:                                                      # lt_schelle_vk: Ring- und Bandschrauben samt Muttern, Muttern sind leichter
+            art = "schraube" if bd["mass_g"] > mid else "mutter"
+            ring = abs(c[0]) < 1.0
+            new = ("Ring" if ring else "Band") + art + "_" + ("z" if ring else "x") + ("p" if c[2 if ring else 0] > 0 else "m")
+        cmds.append({"command": "body.rename", "params": {"body": bd["name"], "name": new}})
+        names.append(new)
+    if not cmds:
+        return 0
+    cmds.append({"command": "material.assign", "params": {"bodies": names, "material": "LT stahl"}})
+    script = os.path.join(sc.TMP, "ws-lt-inserts.json")
+    json.dump({"commands": cmds}, open(script, "w"))
+    r = subprocess.run([sc.CLI, "run", script, "--in", out, "--save", out, "--quiet"], capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit("FEHLER name_inserts: " + r.stderr.strip() + r.stdout.strip())
+    return len(names)
+
 def save(b, name, fname):
     out = os.path.join(sc.ROOT, "designs", "components", fname + ".sc")
     sc.run(b.write(fname), out)
+    if fname.startswith(("lt_klemme", "lt_schelle_vk")):
+        print(fname, "Einsatzteile benannt:", name_inserts(out, fname))
     return out
 
 if __name__ == "__main__":

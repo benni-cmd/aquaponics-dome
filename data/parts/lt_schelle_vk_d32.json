@@ -132,10 +132,10 @@
       "id": "schraube_m6x16",
       "name": "Schraube M6 x 16",
       "koerper": [
-        "Body1",
-        "Body3",
-        "Body5",
-        "Body7"
+        "Ringschraube_zm",
+        "Ringschraube_zp",
+        "Bandschraube_xm",
+        "Bandschraube_xp"
       ],
       "menge": 4,
       "typ": "normteil",
@@ -169,10 +169,10 @@
       "id": "mutter_m6",
       "name": "Mutter M6",
       "koerper": [
-        "Body2",
-        "Body4",
-        "Body6",
-        "Body8"
+        "Ringmutter_zm",
+        "Ringmutter_zp",
+        "Bandmutter_xm",
+        "Bandmutter_xp"
       ],
       "menge": 4,
       "typ": "sonderteil",

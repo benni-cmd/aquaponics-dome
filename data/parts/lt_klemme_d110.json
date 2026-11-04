@@ -91,12 +91,12 @@
       "id": "schraube_m6x20",
       "name": "Schraube M6 x 20",
       "koerper": [
-        "Body1",
-        "Body2"
+        "Schraube_ym",
+        "Schraube_yp"
       ],
       "menge": 2,
       "typ": "normteil",
-      "werkstoff": "unbestimmt_modell",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 2.4 g, Einzelkoerper 10.0 x 11.5 x 24.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m6x20",
       "artikel_einheit": "Satz",

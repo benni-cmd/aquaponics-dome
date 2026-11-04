@@ -101,6 +101,9 @@ if d:
     chk("Tuerzugang: Abstand Tuer_Komplett-Bett (bbox) [mm]", round(tg), ">= 1000", tg >= 1000)
 t5 = B["T5_Zentraltank"]["bbox"]; t5d = t5["max"][0] - t5["min"][0]
 def base(n): return re.sub(r" \(\d+\)", "", re.sub(r" \([^()]*:\d+\)", "", n))   # Ordinal/Pfad-Suffix der Instanzkoerper abtrennen
+# Knoten-Normteile heissen seit Commit cd60551 ScheibeO_k, Schraube_k, ScheibeU_k, Mutter_k (frueher knoten_*): nur wenn der Koerper in einer Komponente Knoten_* liegt (nicht breiter als vorher)
+KNOTEN_NORM = re.compile(r"(Schraube|ScheibeO|ScheibeU|Mutter)_\d+")
+def knoten_teil(n): return base(n).startswith("knoten_") or bool(KNOTEN_NORM.fullmatch(base(n)) and klasse(n).startswith("Knoten_"))
 tanks = [n for n in B if base(n) == "Tank" and klasse(n) not in PUFFER_CLS]   # Werkstatt-Komponenten tank_*: je Instanz ein Koerper 'Tank' (Puffer-Koerper zaehlen nicht mit)
 pumps = [n for n in B if base(n) == "Montagetafel" and klasse(n) not in PUFFER_CLS]   # Werkstatt-Komponenten pumpe_*
 chk("OBJ Tanks (4 Instanzen) + Zweitbecken T6 (1) + Pumpentafeln (8)", (len(tanks), len(pre("T6_Zweit")), len(pumps)), (4, 1, 8), (len(tanks), len(pre("T6_Zweit")), len(pumps)) == (4, 1, 8))
@@ -192,7 +195,7 @@ chk("W-M3 Tisch-Tisch-Abstand an den Ecken >= corner_gap (Umrisspunkte, Verletzu
 print("GEOMETRIE kleinster Fussplatte-Beet-Abstand", round(mingap), "mm | kleinster Tisch-Tisch-Abstand", round(min(tmin.values())) if tmin else None, "mm | Verletzungen Bein/Beet, Pool, Tisch/Tisch:", len(legbad), poolbad, len(tbad), tbad[:3], legbad[:3])
 
 # --- 2) Exakte Kollisionspruefung fuer Paare, die nicht schon Geometrie/Verankerung abdeckt; getrennte Laeufe nach Klassen (Knotenarm x Fundamentring braucht Minuten je Paar, ist aber verankert und erlaubt) ---
-cand = []; openm = {"W-M1": [], "M2b": [], "Fuss-Erde": []}
+cand = []; openm = {"W-M1": [], "M2b": [], "Fuss-Erde": [], "Teil-A-gewollt": []}
 for i, a in enumerate(names):
     amin, amax = bb[a]
     for b in names[i + 1:]:
@@ -202,7 +205,7 @@ for i, a in enumerate(names):
         if not all(amin[k] < bmax[k] and bmin[k] < amax[k] for k in range(3)): continue
         cs = {G[a][0], G[b][0]}
         if all(c.startswith("Beet_") for c in cs): continue   # Beete untereinander: reine Geometrie (bedrects, siehe unten)
-        if "T1_Strebe" in a + b and (base(a).startswith("knoten_") or base(b).startswith("knoten_")): openm["M2b"].append((a, b)); continue   # Querbolzen/Muttern x Strebe: Bohrungen fehlen (offen, M2b), Bounding-Box-Kandidaten
+        if "T1_Strebe" in a + b and (knoten_teil(a) or knoten_teil(b)): openm["M2b"].append((a, b)); continue   # Querbolzen/Muttern x Strebe: Bohrungen fehlen (offen, M2b), Bounding-Box-Kandidaten
         if "T3_Sockel" in (a, b) and max(math.hypot(x, y) for n in (a, b) if n != "T3_Sockel" for x in (B[n]["bbox"]["min"][0], B[n]["bbox"]["max"][0]) for y in (B[n]["bbox"]["min"][1], B[n]["bbox"]["max"][1])) < 5600: continue   # Fundamentring nur am Rand
         if all(c.startswith(("Tisch_", "Beet_")) for c in cs) and any(c.startswith("Tisch_") for c in cs): continue   # Tisch x Beet/Tisch: Geometrie oben
         if any(c.startswith(("Knoten_", "Fundamentanker")) for c in cs) and ({a, b} & {"T3_Sockel", "T13_Erde"}): continue   # Knoten/Anker sind im Fundamentring bzw. Erdreich verankert
@@ -246,13 +249,19 @@ for it in inter:
     if "T13_Erde" in (a, b) and (cs - {"Erdflaeche"}) <= set(PUFFER_CLS): openm["Fuss-Erde"].append((a, b)); continue   # Puffer klein/Station: Fuesse im Boden, nur gezaehlt (Tiefe nicht bewertet)
     if {a.split("_")[0], b.split("_")[0]} & {"T10"} and ({a.split("_")[0], b.split("_")[0]} <= {"T10", "T1", "T5", "T7"}): continue
     if all(c.startswith(("Pumpe_", "Tank_")) for c in cs) and any(c.startswith("Pumpe_") for c in cs): openm["W-M1"].append((a, b)); continue   # offener Werkstatt-Mangel W-M1: Tank-Rahmenstreben x OBJ-Pumpentafeln
-    if "T1_Strebe" in a + b and (base(a).startswith("knoten_") or base(b).startswith("knoten_")): openm["M2b"].append((a, b)); continue   # Querbolzen/Scheiben/Muttern des Knotens durch die Strebe: Bohrungen fehlen (offen, M2b)
+    if "T1_Strebe" in a + b and (knoten_teil(a) or knoten_teil(b)): openm["M2b"].append((a, b)); continue   # Querbolzen/Scheiben/Muttern des Knotens durch die Strebe: Bohrungen fehlen (offen, M2b)
+    # Runde 69 Teil A (M10-S5-LUFT): gewollter Kontakt, eng benannt; der Rest bleibt KOLL
+    vol = it.get("volume_mm3", it.get("volume", 0)); ka, kb = klasse(a).lower(), klasse(b).lower()
+    if "T5_Wasser" in (a, b) and (kb if a == "T5_Wasser" else ka).startswith(("luft_scheibenbelueftung", "lt_bogen90_d25", "lt_rohr_d25", "schwimmerventil")):
+        openm["Teil-A-gewollt"].append((a, b)); continue   # Wasserkoerper ist kein Bauteil: Luftleitung d25 und Belueftungsscheiben liegen im Becken, die Schwimmerkugel schwimmt darin
+    if vol <= 50 and "lt_bogen90_d25" in (ka, kb) and ({ka, kb} - {"lt_bogen90_d25"}) <= {"lt_rohr_d25", "luft_scheibenbelueftung"} | {k_ for k_ in (ka, kb) if k_.startswith("lt_rohr_d25_")}:
+        openm["Teil-A-gewollt"].append((a, b)); continue   # Steckverbindung Luftleitung d25: Rohr/Stutzen steckt im Bogen, Ueberschneidung hoechstens 3 mm3 (Passungsspiel)
     print("KOLL", a, b)
     bad.append((a, b, round(it.get("volume_mm3", it.get("volume", 0)))))
 chk("L6 Kollisionen (exakt; ohne verankerte Teile, Rohr/Schlauch, offenen Mangel W-M1)", len(bad), 0, len(bad) == 0)
 res.append({"info": "Kollisionen", "pairs": bad[:20]})
 chk("L6 Kollisionspruefung vollstaendig (alle Kandidatenpaare exakt geschnitten)", len(unch), 0, len(unch) == 0)
-print("OFFEN W-M1 (Pumpentafel x Tankrahmen, Werkstatt):", len(openm["W-M1"]), "| M2b (Knoten-Querbolzen x Strebe, Bohrungen fehlen, Montage):", len(openm["M2b"]), "| Fuss-Erde Puffer (gezaehlt, nicht bewertet):", len(openm["Fuss-Erde"]), "| exakt geprueft: Paare", len(cand))
+print("OFFEN W-M1 (Pumpentafel x Tankrahmen, Werkstatt):", len(openm["W-M1"]), "| M2b (Knoten-Querbolzen x Strebe, Bohrungen fehlen, Montage):", len(openm["M2b"]), "| Fuss-Erde Puffer (gezaehlt, nicht bewertet):", len(openm["Fuss-Erde"]), "| Teil-A gewollt (Wasserkoerper, Steckverbindung Luft d25):", len(openm["Teil-A-gewollt"]), "| exakt geprueft: Paare", len(cand))
 inst = lambda *pf: sum(1 for x in cmds if x["command"] == "occurrence.move" and str(x["params"].get("occurrence", "")).startswith(pf))
 print("NICHT GEPRUEFT (aus der Kollision genommen): Plane %d Koerper / %d Instanzen, Figuren %d / %d, Messstellen %d / %d, Pflanzen %d / %d (Koerper / Instanzen)" % (
     len(skipped["Plane"]), inst(*PLANE_CLS), len(skipped["Figuren"]), inst(*FIGUR_CLS), len(skipped["Messstellen"]), inst(*MESS_CLS), len(skipped["Pflanzen"]), inst(*PLANT_CLS)))

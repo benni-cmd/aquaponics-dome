@@ -1,0 +1,70 @@
+{
+  "_hinweis": "N-STUECKLISTE 1b. Regeln fuer scripts/bom_artikel.py, scripts/bom_benennung.py und scripts/bom.py. Von Hand gepflegt (Regeln), nie Mengen oder Preise. Namensregeln fuer benannte Koerper stehen als getesteter Code in scripts/bom_artikel.py (classify, classify_late, classify_lt); hier stehen die Daten: Benennung unbenannter Koerper (Body<n>), Bauteilgruppen, Ausnahmen, Zuschnitt, Preis-Aliase.",
+  "version": 1,
+  "stand": "2026-11-04",
+
+  "benennung": {
+    "_hinweis": "Unbenannte Koerper (Body<n>) bekommen ihren Namen aus der Gestalt (bbox sortiert d0<=d1<=d2). Benennung gilt in der Stueckliste (Feld name_vergeben); die .sc-Dateien bleiben unveraendert (Entscheidung 04.11.2026, siehe docs/packages/n-stueckliste.md). Mutter und Scheibe zaehlen im Schraubensatz (Schraube + Mutter + Scheiben) und haben keine eigene Zeile.",
+    "sechskant_faktor": 1.155,
+    "toleranz": 0.05,
+    "scheibe_max_hoehe_anteil": 0.35,
+    "scheibe_rund_toleranz": 0.03,
+    "sw_zu_gewinde": {"8": "M5", "10": "M6", "13": "M8", "17": "M10", "18": "M12", "19": "M12", "24": "M16"},
+    "kopfhoehe_mm": {"M5": 3.5, "M6": 4.0, "M8": 5.3, "M10": 6.4, "M12": 7.5, "M16": 10.0},
+    "scheibe_od_zu_gewinde": {"10": "M5", "12": "M6", "16": "M8", "20": "M10", "24": "M12", "30": "M16"},
+    "knoten_nach_masse": {
+      "_hinweis": "Knotenbauteile (Stahl Knoten): Sechskantform ist durch die Drehung der Bbox nicht messbar, deshalb Masseklassen [A]: 4 g Scheibe, 9 g Mutter, 45 g Schraube, je Knotenarm ein Satz.",
+      "komponenten_praefix": "knoten",
+      "klassen": [
+        {"masse_g_ab": 30.0, "kind": "schraube", "gewinde": "M10", "laenge_mm": 60},
+        {"masse_g_ab": 6.5, "kind": "mutter", "gewinde": "M10"},
+        {"masse_g_ab": 0.0, "kind": "scheibe", "gewinde": "M10"}
+      ]
+    }
+  },
+
+  "gruppen": {
+    "_hinweis": "Bauteilgruppe je Komponente (erste passende Regel gewinnt, Regex auf den Komponentennamen). Grundlage fuer die gruppierte Einkaufsliste (W59-Nachtrag).",
+    "regeln": [
+      ["^(strebe_a|strebe_b|knoten.*)$", "Kuppel"],
+      ["^(fundamentanker|fundamentring|erdflaeche)$", "Fundament"],
+      ["^(haut_.*|huelle_.*|tuer.*|keilschiene)$", "Huelle"],
+      ["^(feinfilter|aktivkohle_station)$", "Filter"],
+      ["^(tank_.*|becken_.*|zweitbecken|pool_zentral|puffer_.*|pumpe_.*|zulaufrohr|schwimmerventil_pool)$", "Becken und Tanks"],
+      ["^(nft_.*|ibc_beet.*|pflanztisch|netztopf|salatkopf|winkelhalter)$", "Tische und Beete"],
+      ["^(lt_.*|luftverteiler_.*|geblaese_luft|luft_scheibenbelueftung)$", "Leitungen"],
+      ["^(sonde_.*|halter_.*|schaltschrank|schrank_einfuehrung)$", "Messtechnik und Elektrik"],
+      ["^(mensch_referenz.*)$", "Massfigur"]
+    ]
+  },
+
+  "ausnahmen": {
+    "_hinweis": "Nicht in der Einkaufsliste (Entscheidung Orchestrator 04.11.2026, Ben bestaetigt 05.11.). Die Erkennung steht in scripts/bom_artikel.py `ausnahme()`; hier die Gruende als Anzeigetexte.",
+    "gruende": [
+      "Pflanze (Salat), nicht kaufbar",
+      "Massfigur, kein Bauteil",
+      "Aushub und Erde (Entscheidung 04.11.2026)",
+      "Beton nach Menge (Entscheidung 04.11.2026)",
+      "Wasserkoerper, kein Bauteil",
+      "Mutter/Scheibe im Schraubensatz enthalten"
+    ]
+  },
+
+  "zuschnitt": {
+    "_hinweis": "1D-Zuschnitt fuer Meterware (Einheit m: PRF, WNK, ROH). Saegeschnitt wie scripts/strut_cutting.py. Lagerlaengen [A] Handel; die Recherche (Paket 2) kann sie je Artikel in data/katalog.json `lagerlaengen_mm` ueberschreiben.",
+    "saegeschnitt_mm": 3,
+    "lagerlaengen_mm": {"PRF": [3000, 3500, 4000, 6000, 6500, 7000], "WNK": [3000, 6000], "ROH": [5000], "SCH": [25000], "FOL": [25000], "ELE": [2000]},
+    "min_reststueck_mm": 0,
+    "verfahren": "Je Artikel: jede passende Lagerlaenge einzeln mit First-Fit-Decreasing packen, die Lagerlaenge mit der kleinsten gekauften Gesamtlaenge gewinnt (Gleichstand: weniger Stangen). Stuecke laenger als die groesste Lagerlaenge werden geteilt und im Artikel vermerkt."
+  },
+
+  "aufschlag": {
+    "_hinweis": "Prozentaufschlag auf die Bedarfsmenge fuer Artikel ohne Zuschnitt (Kleinteile, Flaechen). 0 = keiner. Zuschnitt-Artikel haben ihren Verschnitt aus dem Zuschnitt.",
+    "je_einheit": {"Stk": 0, "m": 0, "m2": 10, "m3": 5, "Satz": 0}
+  },
+
+  "preis_alias": {
+    "_hinweis": "Gleiche Spezifikation unter anderer Artikel-ID: der Preis des Alias gilt auch fuer den Schluessel (nur wenn Grosse, Norm und Einheit uebereinstimmen). Die Angebote werden in der Stueckliste mit `alias_von` gekennzeichnet.",
+    "SRB-satz-m6x20": "SRB-halter-klein-12x10x20"
+  }
+}

@@ -1,6 +1,7 @@
 """N-STUECKLISTE 1a: Typ-Index und Artikelliste aus den Koerpern aller Komponenten-.sc (Preise leer).
 
 Aufruf:
+  python -X utf8 scripts/bom_artikel.py --ergaenzen # misst nur neue und seit dem Cache geaenderte .sc nach
   python -X utf8 scripts/bom_artikel.py            # liest data/bom_koerper.json (Cache), schreibt data/katalog.json
   python -X utf8 scripts/bom_artikel.py --messen   # misst zuerst alle designs/components/*.sc neu (rund 15 min)
 
@@ -19,6 +20,9 @@ import re
 import subprocess
 import sys
 from collections import OrderedDict, defaultdict
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bom_benennung  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CLI = r"C:\Program Files\SolidCraft\solidcraft-cli.exe"
@@ -64,12 +68,15 @@ def modellstempel():
             "anzahl_sc": len(glob.glob(os.path.join(COMP_DIR, "*.sc")))}
 
 
-def messen():
+def messen(nur=None):
+    """nur: Menge von Komponentennamen (Teilmessung, ergaenzt den Cache); None = alle"""
     import tempfile
     tmp = tempfile.mkdtemp()
-    res = {}
+    res = json.load(open(CACHE, encoding="utf-8"))["komponenten"] if nur is not None else {}
     for f in sorted(glob.glob(os.path.join(COMP_DIR, "*.sc"))):
         comp = os.path.basename(f)[:-3]
+        if nur is not None and comp not in nur:
+            continue
         out = os.path.join(tmp, comp + ".json")
         subprocess.run([CLI, "eval", f, "--json-out", out], capture_output=True, text=True)
         if not os.path.exists(out):
@@ -210,20 +217,7 @@ def classify(comp, b):
     m = b["material"] or ""
     d = dims(b)
     stahl = m.startswith("Stahl")
-    # ---- unbenannte Koerper (Body<n>): nach Masse/Gestalt
-    if re.match(r"body\d+$", nl):
-        key = tuple(d)
-        if comp.startswith("lt_klemme"):
-            return Art("SRB-klemme-schraube", "SRB", "Schraube klein (Rohrschelle, Body<n>) [A]", teil_von=False, flag="unbenannt")
-        if comp.startswith("knoten"):
-            return Art("SRB-knoten-klein", "SRB", "Schraube/Nietbolzen klein am Knoten (Body<n>) [A]", flag="unbenannt")
-        if comp == "fundamentanker":
-            return Art("BLE-platte-30x30x3", "BLE", "Stahlplatte 30x30x3 mm (Anker-Beilage, Body<n>) [A]", werkstoff="Stahl", flag="unbenannt")
-        if comp.startswith("pumpe"):
-            return Art("SRB-pumpe-klein", "SRB", "Schraube klein an der Pumpenkonsole (Body<n>) [A]", flag="unbenannt")
-        return Art("SRB-m8x35", "SRB", "Sechskantschraube M8x35 mit Mutter (Body<n>, SW13) [A]", werkstoff="Stahl verzinkt", flag="unbenannt")
-    if re.match(r"schraube_", nl):
-        return Art("SRB-m8x35", "SRB", "Sechskantschraube M8x35 mit Mutter (Body<n>, SW13) [A]", werkstoff="Stahl verzinkt")
+    # unbenannte Koerper und Schrauben: Benennung nach Gestalt in zuordnen() (bom_benennung, data/bom_regeln.json)
     # ---- Knoten
     if comp.startswith("knoten"):
         if nl == "knotenkugel":
@@ -496,15 +490,108 @@ def classify_late(comp, b):
     return None
 
 
+W37_KOMP = ("aktivkohle_station", "geblaese_luft", "luft_scheibenbelueftung", "luftverteiler_4", "luftverteiler_6", "schrank_einfuehrung", "schwimmerventil_pool")
+
+
+def classify_w37(comp, b):
+    """Komponenten aus W37-2/W37-3 (Aktivkohle, Geblaese, Scheibenbelueftung, Luftverteiler, Schrank-Einfuehrung, Schwimmerventil, Drittbecken-Stutzen).
+    Zuordnungen nach Bauteilblatt und Gestalt; Annahmen mit [A] im Text, Flag `w37_annahme`."""
+    n = (b["name"] or "")
+    nl = re.sub(r" \(\d+\)", "", n.lower())
+    d = dims(b)
+    F = "w37_annahme"
+    if comp == "becken_dritt_klein" and nl.startswith("stutzen_"):
+        return Art("ARM-bulkhead-pool", "ARM", "Pool-Durchfuehrung d63 (Stutzen Pool-Wand)", "Stk", "a", "PVC-U", {"durchmesser_mm": 63})
+    if comp == "aktivkohle_station":
+        if nl.startswith("konsole"):
+            return Art("SON-ak-konsole", "SON", "Konsole Sedimentfilter (Stahl, Eigenbau) [A]", "Stk", "c", "Stahl", flag=F)
+        if nl in ("sedimentgehaeuse", "sedimentpatrone", "kopf_sediment"):
+            return Art("BEH-ak-sedimentfilter", "BEH", "Sedimentfilter-Set (Gehaeuse, Kopf, Patrone) [A]", "Satz", "a", "PP", teil_von=(nl != "sedimentgehaeuse"), flag=F)
+        if nl.startswith("behaelter_"):
+            return Art("BEH-ak-kompositbehaelter-254x790", "BEH", "Aktivkohle-Druckbehaelter Komposit 254x790 mm mit Steuerkopf [A]", "Stk", "a", "Komposit", {"bbox_mm": d}, flag=F)
+        if re.match(r"kopf_\d", nl):
+            return Art("BEH-ak-kompositbehaelter-254x790", "BEH", "Aktivkohle-Druckbehaelter Komposit 254x790 mm mit Steuerkopf [A]", "Stk", "a", "Komposit", teil_von=True, flag=F)
+        if nl.startswith("kohlebett"):
+            return Art("TOP-aktivkohle", "TOP", "Aktivkohle-Granulat (Behaelterfuellung)", "m3", "a", "Aktivkohle", menge=(3.14159 / 4 * d[0] * d[1] * d[2]) / 1e9, flag=F)
+        if nl.startswith("rohr_"):
+            dd = snap_d(d[1])
+            return Art(f"ROH-pvcu-d{dd}", "ROH", f"PVC-U-Druckrohr d{dd} (Meterware)", "m", "a", "PVC-U", {"durchmesser_mm": dd}, menge=d[2] / 1000.0, flag=F)
+        if nl.startswith("t_"):
+            return Art("FIT-t-d25", "FIT", "PVC-U-T-Stueck d25", "Stk", "a", "PVC-U", {"groesse": "d25"}, flag=F)
+        if nl.startswith("hahn_") and not nl.endswith(("spindel", "hebel")):
+            dd = 25 if d[0] >= 42 else 20
+            return Art(f"ARM-kugelhahn-d{dd}", "ARM", f"PVC-U-Kugelhahn d{dd}", "Stk", "a", "PVC-U", {"durchmesser_mm": dd}, flag=F)
+        if nl.startswith("hahn_") or nl.startswith("probehahn_griff"):
+            return None
+        if nl == "probehahn":
+            return Art("ARM-probehahn-messing", "ARM", "Probierhahn Messing 1/2 Zoll [A]", "Stk", "a", "Messing", flag=F)
+        if nl == "begrenzer":
+            return Art("ARM-durchflussbegrenzer-messing", "ARM", "Durchflussbegrenzer Messing [A]", "Stk", "a", "Messing", flag=F)
+        if nl.startswith("reduzierung"):
+            return Art("FIT-red-d32-d25", "FIT", "PVC-U-Reduzierung d32 auf d25", "Stk", "a", "PVC-U", {"groesse": "d32_d25"}, flag=F)
+    if comp == "geblaese_luft":
+        if nl == "pumpe":
+            return Art("PMP-geblaese-luft", "PMP", "Membrangeblaese Luft (Leistung offen, Bauteilblatt geblaese_luft)", "Stk", "a", None, {"bbox_mm": d}, flag=F)
+        if nl.startswith("gummifuss"):
+            return Art("SON-gummifuss-40", "SON", "Gummifuss 40x40x15", "Stk", "a", "Gummi", flag=F)
+        if nl == "netzkabel":
+            return Art("PMP-geblaese-luft", "PMP", "Membrangeblaese Luft", "Stk", "a", None, teil_von=True, flag=F)
+        if nl == "stutzen_luft":
+            return Art("FIT-stutzen-d20", "FIT", "PVC-U-Stutzen d20 (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": 20}, flag=F)
+        if nl == "rohrschleife":
+            return Art("ROH-pvcu-d20", "ROH", "PVC-U-Druckrohr d20 (Meterware)", "m", "a", "PVC-U", {"durchmesser_mm": 20}, menge=b["mass_g"] / 0.122 / 1000.0, flag="laenge_aus_masse")
+        if nl == "rueckschlagventil":
+            return Art("ARM-rsv-d20", "ARM", "PVC-U-Rueckschlagventil d20", "Stk", "a", "PVC-U", {"groesse": "d20"}, flag=F)
+        if nl == "rohr_austritt":
+            return Art("ROH-pvcu-d20", "ROH", "PVC-U-Druckrohr d20 (Meterware)", "m", "a", "PVC-U", {"durchmesser_mm": 20}, menge=d[2] / 1000.0, flag=F)
+    if comp == "luft_scheibenbelueftung":
+        if nl == "stutzen":
+            return Art("FIT-stutzen-d25", "FIT", "PVC-U-Stutzen d25 (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": 25}, flag=F)
+        return Art("SON-scheibenbelueftung-270", "SON", "Scheibenbelueftung d270 (Tragteller, Stuetzfuss, EPDM-Membran) [A]", "Stk", "a", "PP/EPDM",
+                   teil_von=(nl != "membran"), flag=F)
+    if comp in ("luftverteiler_4", "luftverteiler_6") and nl == "verteiler":
+        k = comp[-1]
+        return Art(f"SON-luftverteiler-{k}", "SON", f"Luftverteiler {k}-fach (PVC, Eigenbau) [A]", "Stk", "c", "PVC", {"bbox_mm": d}, flag=F)
+    if comp == "schrank_einfuehrung":
+        if nl == "schrankboden":
+            return Art("BLE-schrankboden-3x500x800", "BLE", "Stahlblech 3 mm, Zuschnitt 800x500 (Schrankboden) [A]", "Stk", "c", "Stahl", flag=F)
+        if nl == "schrankwand":
+            return Art("SON-schrankwand-500x800", "SON", "Schrankwand 500x800 (Eigenbau, Werkstoff offen) [A]", "Stk", "c", "Stahl", flag=F)
+        big = d[2] >= 150
+        sz = "dn100" if big else "dn50"
+        if nl in ("koerper", "dichtung", "gegenmutter"):
+            return Art(f"ARM-kabeleinfuehrung-{sz}", "ARM", f"Kabeleinfuehrung {sz.upper()} (Koerper, Dichtung, Gegenmutter)", "Stk", "a", "PP", teil_von=(nl != "koerper"), flag=F)
+        if nl == "leerrohrbogen":
+            bz = "dn100" if d[2] > 500 else "dn50"
+            return Art(f"FIT-leerrohr-bogen90-{bz}", "FIT", f"Leerrohr-Bogen 90 Grad {bz}", "Stk", "a", "PVC/PP", flag=F)
+    if comp == "schwimmerventil_pool":
+        return Art("ARM-schwimmerventil-pool", "ARM", "Schwimmerventil Pool (Gehaeuse, Wangen, Hebelarm mit Kugel) [A]", "Stk", "a", "PP", teil_von=(nl != "ventilgehaeuse"), flag=F)             if nl != "uebergang" else Art("FIT-stutzen-d32", "FIT", "PVC-U-Stutzen d32 (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": 32}, flag=F)
+    return None
+
+
 def zuordnen(comp, b):
     ex = ausnahme(comp, b)
     if ex:
         return None, ex
-    if comp.startswith("lt_"):
+    if comp.startswith("lt_") and not bom_benennung.ist_unbenannt(b["name"]):
         return None, None  # eigene Behandlung
+    nl = re.sub(r" \(\d+\)", "", (b["name"] or "").lower())
+    if bom_benennung.ist_unbenannt(b["name"]) or nl.startswith("schraube_"):
+        bn = bom_benennung.benenne(comp, b)
+        if bn is None:
+            return None, None  # ungeklaert -> check_bom meldet
+        if bn["kind"] != "schraube":
+            return None, "Mutter/Scheibe im Schraubensatz enthalten"
+        g, l = bn["gewinde"], bn["laenge"]
+        return Art(bn["art_id"], "SRB", f"Schraubensatz {g}x{l} (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)", "Satz", "a",
+                   "Stahl verzinkt", {"gewinde": g, "laenge_mm": l}, flag="name_vergeben" if bom_benennung.ist_unbenannt(b["name"]) else None), None
     a = classify(comp, b)
     if a is None:
+        a = classify_w37(comp, b)
+    if a is None and comp not in W37_KOMP:
         a = classify_late(comp, b)
+    if a is None and comp == "aktivkohle_station" and re.match(r"(hahn_.*(spindel|hebel)|probehahn_griff)", re.sub(r" \(\d+\)", "", (b["name"] or "").lower())):
+        return None, "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten"
     return a, None
 
 
@@ -512,6 +599,13 @@ def zuordnen(comp, b):
 def main():
     if "--messen" in sys.argv or not os.path.exists(CACHE):
         messen()
+    elif "--ergaenzen" in sys.argv:
+        alt = json.load(open(CACHE, encoding="utf-8"))
+        t0 = os.path.getmtime(CACHE)
+        neu = {os.path.basename(f)[:-3] for f in glob.glob(os.path.join(COMP_DIR, "*.sc"))
+               if os.path.basename(f)[:-3] not in alt["komponenten"] or os.path.getmtime(f) > t0}
+        print("Nachmessung:", sorted(neu))
+        messen(neu)
     cache = json.load(open(CACHE, encoding="utf-8"))
     comps = cache["komponenten"]
     inst = defaultdict(int)
@@ -535,14 +629,24 @@ def main():
     for comp, v in comps.items():
         agg = defaultdict(lambda: [0, 0.0, None])  # id -> [stueck, menge, Art]
         if comp.startswith("lt_"):
-            ex = ausnahme(comp, v["bodies"][0]) if v["bodies"] else None
-            a = classify_lt(comp, v["bodies"])
+            a = classify_lt(comp, [b for b in v["bodies"] if not bom_benennung.ist_unbenannt(b["name"])] or v["bodies"])
             if a is None:
                 ungeklaert.append((comp, "lt-Art unbekannt"))
                 continue
             agg[a.id][0] += 1
             agg[a.id][1] += a.menge
             agg[a.id][2] = a
+            for b in v["bodies"]:
+                if bom_benennung.ist_unbenannt(b["name"]):
+                    a2, ex2 = zuordnen(comp, b)
+                    if ex2:
+                        ausn[ex2][comp] += 1
+                    elif a2 is None:
+                        ungeklaert.append((comp, f"{b['name']} / {b['material']} / {dims(b)}"))
+                    else:
+                        agg[a2.id][0] += 1
+                        agg[a2.id][1] += a2.menge
+                        agg[a2.id][2] = agg[a2.id][2] or a2
         else:
             for b in v["bodies"]:
                 a, ex = zuordnen(comp, b)

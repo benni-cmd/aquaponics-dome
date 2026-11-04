@@ -180,3 +180,5 @@
   Reihenfolge Bau: W40 -> N-STUECKLISTE 1a -> W37-2 -> W37-3 -> N-STUECKLISTE 1b-1d -> Montage Beete -> Montage Luft -> W60 Teiledaten -> Viewer (Seite + Detailansicht).
 
 - 04.11. nachts: Waechter-Auftrag dome-night-wake-orchestrator (halbstuendlich :25/:55 bis 05.11. 10:00, Auto-Modus) weckt diese Sitzung local_a8d12d64 nur, wenn 40 min kein Commit und Limit frei. Ende der Nacht: Zeile "GESAMTBERICHT GESCHRIEBEN" hier eintragen, dann schweigt er.
+
+- 04.11. nachts: Pilot-Pruefer N-DETAIL-PILOT PASS mit Auflagen (45751de): A1 Register-Kuerzel/Parameternamen in Anzeigetexten, A2 "1 Teile", A3 Schieber 1 -> in den Viewer-Schritt W60 aufnehmen. Hook-Fix gegen die Projekt-Frage in Subsessions: Werkbank 0f64b31; zusaetzlich vor jedem start_session die Marke keel-subsession-marker.json (10 min) schreiben.

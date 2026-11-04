@@ -4,15 +4,15 @@
   "bauteilgruppe": "Fundament",
   "teilenummer": "",
   "stand": "geruest",
-  "titel": "erdflaeche",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "titel": "Erdfläche (Boden um die Kuppel)",
+  "kurz": "Die Bodenfläche, auf der Kuppel und Fundament stehen. Sie ist Modellhintergrund, kein Kaufteil.",
+  "hinweis": "Texte und Zahlen aus docs/parts/erdflaeche.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
+      "id": "boden",
+      "name": "Boden",
+      "kurz": "Die Erdfläche.",
       "teile": [
         "t_erde"
       ]
@@ -33,7 +33,27 @@
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Aushub und Erde (Entscheidung 04.11.2026)",
-      "geruest": true
+      "geruest": true,
+      "funktion": "Die Erdfläche zeigt den Baugrund im Modell. Aushub und Erde werden nicht als Teil bestellt.",
+      "eigenschaften": [
+        "15 x 15 m, 2,6 m dick (Modell-Bounding-Box).",
+        "Entscheidung 04.11.2026: Aushub und Erde stehen nicht in der Einkaufsliste."
+      ],
+      "norm": "Keine Norm (Modell-Bodenfläche)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/erdflaeche.json",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 0
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     }
   ]
 }

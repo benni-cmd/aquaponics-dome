@@ -4,15 +4,15 @@
   "bauteilgruppe": "Huelle",
   "teilenummer": "",
   "stand": "geruest",
-  "titel": "tuer",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "titel": "Tür, Altmodell (nicht verbaut)",
+  "kurz": "Frühere Fassung der Tür mit Pfosten, Sturz, Schwelle, Blatt, Scharnieren und Griff. Das Gesamtmodell verwendet stattdessen die Tür mit Zarge.",
+  "hinweis": "Texte und Zahlen aus docs/parts/tuer.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
   "koerperzahl": 9,
   "gruppen": [
     {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "id": "altmodell",
+      "name": "Altmodell",
+      "kurz": "Alle Teile der früheren Tür.",
       "teile": [
         "t_pfosten_l",
         "t_pfosten_r",
@@ -38,7 +38,27 @@
       "artikel_id": "SON-tuer-modellvariante",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Altmodell der Tür, im Gesamtmodell nicht verbaut (ersetzt durch die Tür mit Zarge). Linker Pfosten, 113 x 113 x 2100 mm.",
+      "eigenschaften": [
+        "Nur als Rest im Modell; nicht in die Einkaufsliste übernehmen.",
+        "Maße aus der Modell-Bounding-Box."
+      ],
+      "norm": "Keine Norm (Altmodell)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer.md, data/components/tuer.json (Altmodell T4, ersetzt durch tuer_komplett)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 150
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "t_pfosten_r",
@@ -53,7 +73,27 @@
       "artikel_id": "SON-tuer-modellvariante",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Altmodell der Tür, im Gesamtmodell nicht verbaut (ersetzt durch die Tür mit Zarge). Rechter Pfosten, 113 x 113 x 2100 mm.",
+      "eigenschaften": [
+        "Nur als Rest im Modell; nicht in die Einkaufsliste übernehmen.",
+        "Maße aus der Modell-Bounding-Box."
+      ],
+      "norm": "Keine Norm (Altmodell)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer.md, data/components/tuer.json (Altmodell T4, ersetzt durch tuer_komplett)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 150
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "t_sturz",
@@ -68,7 +108,27 @@
       "artikel_id": "SON-tuer-modellvariante",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Altmodell der Tür, im Gesamtmodell nicht verbaut (ersetzt durch die Tür mit Zarge). Sturz über dem Blatt.",
+      "eigenschaften": [
+        "Nur als Rest im Modell; nicht in die Einkaufsliste übernehmen.",
+        "Maße aus der Modell-Bounding-Box."
+      ],
+      "norm": "Keine Norm (Altmodell)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer.md, data/components/tuer.json (Altmodell T4, ersetzt durch tuer_komplett)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "t_schwelle",
@@ -83,7 +143,27 @@
       "artikel_id": "SON-tuer-modellvariante",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Altmodell der Tür, im Gesamtmodell nicht verbaut (ersetzt durch die Tür mit Zarge). Schwelle unter dem Blatt.",
+      "eigenschaften": [
+        "Nur als Rest im Modell; nicht in die Einkaufsliste übernehmen.",
+        "Maße aus der Modell-Bounding-Box."
+      ],
+      "norm": "Keine Norm (Altmodell)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer.md, data/components/tuer.json (Altmodell T4, ersetzt durch tuer_komplett)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "t_blatt",
@@ -98,7 +178,27 @@
       "artikel_id": "SON-tuerblatt-1000x2000",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Altmodell der Tür, im Gesamtmodell nicht verbaut (ersetzt durch die Tür mit Zarge). Türblatt etwa 965 x 1960 mm.",
+      "eigenschaften": [
+        "Nur als Rest im Modell; nicht in die Einkaufsliste übernehmen.",
+        "Maße aus der Modell-Bounding-Box."
+      ],
+      "norm": "Keine Norm (Altmodell)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer.md, data/components/tuer.json (Altmodell T4, ersetzt durch tuer_komplett)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 300
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "t_scharnier",
@@ -115,7 +215,27 @@
       "artikel_id": "SON-tuerscharnier",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 3.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Altmodell der Tür, im Gesamtmodell nicht verbaut (ersetzt durch die Tür mit Zarge). Drei Scharniere.",
+      "eigenschaften": [
+        "Nur als Rest im Modell; nicht in die Einkaufsliste übernehmen.",
+        "Maße aus der Modell-Bounding-Box."
+      ],
+      "norm": "Keine Norm (Altmodell)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer.md, data/components/tuer.json (Altmodell T4, ersetzt durch tuer_komplett)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "t_griff",
@@ -130,7 +250,27 @@
       "artikel_id": "SON-tuerdruecker",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Altmodell der Tür, im Gesamtmodell nicht verbaut (ersetzt durch die Tür mit Zarge). Türgriff.",
+      "eigenschaften": [
+        "Nur als Rest im Modell; nicht in die Einkaufsliste übernehmen.",
+        "Maße aus der Modell-Bounding-Box."
+      ],
+      "norm": "Keine Norm (Altmodell)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer.md, data/components/tuer.json (Altmodell T4, ersetzt durch tuer_komplett)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 150
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     }
   ]
 }

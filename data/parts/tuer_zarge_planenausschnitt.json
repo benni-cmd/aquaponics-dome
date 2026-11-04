@@ -4,32 +4,25 @@
   "bauteilgruppe": "Huelle",
   "teilenummer": "",
   "stand": "geruest",
-  "titel": "tuer zarge planenausschnitt",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "titel": "Zargen-Aufsatz am Türfeld (Planenausschnitt)",
+  "kurz": "Der Übergang von der Türzarge zur Folie: Ein Aluminium-Aufsatzrahmen hebt einen Kragen auf Folienhöhe, die Folienkante liegt auf einem Dichtband und wird von einer Klemmleiste gehalten.",
+  "hinweis": "Texte und Zahlen aus docs/parts/tuer.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
   "koerperzahl": 3,
   "gruppen": [
     {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "id": "rahmen",
+      "name": "Rahmen",
+      "kurz": "Trägt Dichtband und Folie.",
       "teile": [
         "aufsatzrahmen"
       ]
     },
     {
-      "id": "folien_und_dichtungen",
-      "name": "Folien und Dichtungen",
-      "kurz": "",
+      "id": "abdichtung",
+      "name": "Abdichtung",
+      "kurz": "Dichtet und klemmt die Folienkante.",
       "teile": [
-        "dichtband"
-      ]
-    },
-    {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
-      "teile": [
+        "dichtband",
         "klemmleiste"
       ]
     }
@@ -48,7 +41,27 @@
       "artikel_id": "SON-zarge-aufsatzrahmen",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Der Rahmen steht mit seinem Steg auf dem Zargenrohr und trägt mit dem Kragen die Folienkante auf Höhe der Folienebene. Um die Scharnierlaschen ist der Steg ausgeklinkt.",
+      "eigenschaften": [
+        "Aluminium 3 mm Wand, Kragen 40 mm breit und 3 mm dick (5 mm Überstand je Seite über das 30er Zargenrohr).",
+        "Ausklinkung mit 2 mm Luft um die Scharnier-Zargenlasche."
+      ],
+      "norm": "Aluminiumblech/Profil EN AW-5754 oder 6060 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_zarge_planenausschnitt.md, data/components/tuer_zarge_planenausschnitt.json (web_t 3, collar_w 40, seal 20 x 2, clamp 30 x 3)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "dichtband",
@@ -63,7 +76,29 @@
       "artikel_id": "FOL-epdm-dichtband-zarge",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.043,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Das Dichtband liegt auf dem Kragen unter der Folienkante und dichtet gegen Wasser, das an der Zarge entlangläuft.",
+      "eigenschaften": [
+        "EPDM-Zellkautschuk 20 x 2 mm, selbstklebend, 2043 mm Länge.",
+        "Das Maß ist noch nicht verbindlich festgelegt (siehe Abschnitt Dichtband im Katalog)."
+      ],
+      "norm": "EPDM-Zellkautschuk, geschlossenzellig; keine Norm festgelegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_zarge_planenausschnitt.md, data/components/tuer_zarge_planenausschnitt.json (web_t 3, collar_w 40, seal 20 x 2, clamp 30 x 3)",
+      "bezug": "offen: Profil nicht festgelegt, Zellkautschuk beschaffbar in Deutschland (stuv.de, Fugendichtband24; data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "aufsatzrahmen"
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "klemmleiste",
@@ -78,7 +113,28 @@
       "artikel_id": "PRF-alu-klemmleiste",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.043,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Die Klemmleiste presst die Folienkante auf das Dichtband und den Kragen. Sie wird im Raster von 150 Millimeter mit dem Kragen verschraubt.",
+      "eigenschaften": [
+        "Aluminium-Flachprofil 30 x 3 mm, Länge 2043 mm.",
+        "Verschraubung M5 Edelstahl im Raster 150 mm ist im Modell nicht abgebildet."
+      ],
+      "norm": "Aluminium-Flachprofil, gezogen/gepresst, EN AW-6060 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_zarge_planenausschnitt.md, data/components/tuer_zarge_planenausschnitt.json (web_t 3, collar_w 40, seal 20 x 2, clamp 30 x 3)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 220,
+        "folgt": "dichtband"
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     }
   ]
 }

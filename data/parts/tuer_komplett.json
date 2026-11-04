@@ -4,15 +4,15 @@
   "bauteilgruppe": "Huelle",
   "teilenummer": "",
   "stand": "geruest",
-  "titel": "tuer komplett",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "titel": "Tür mit Zarge (Normmaß 1000 x 2000)",
+  "kurz": "Eine Stahlzarge aus Vierkantrohr mit Anschlagblech und Dichtungen trägt ein 40 Millimeter dickes Türblatt an drei Scharnieren. Innen und außen sitzt je ein Türdrücker auf einer Rosette.",
+  "hinweis": "Texte und Zahlen aus docs/parts/tuer.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
   "koerperzahl": 27,
   "gruppen": [
     {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
+      "id": "zarge",
+      "name": "Zarge",
+      "kurz": "Rahmen der Tür aus Vierkantrohr.",
       "teile": [
         "schwelle",
         "pfosten_links",
@@ -21,41 +21,48 @@
       ]
     },
     {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "id": "anschlag",
+      "name": "Anschlag und Dichtung",
+      "kurz": "Anschlagblech und Dichtungen rund um das Blatt.",
       "teile": [
-        "tuerblatt",
+        "anschlag_links",
+        "anschlag_rechts",
+        "anschlag_sturz",
+        "dichtung_links",
+        "dichtung_rechts",
+        "dichtung_sturz",
+        "dichtung_schwelle"
+      ]
+    },
+    {
+      "id": "blatt",
+      "name": "Türblatt",
+      "kurz": "Das bewegliche Blatt.",
+      "teile": [
+        "tuerblatt"
+      ]
+    },
+    {
+      "id": "scharnier",
+      "name": "Scharniere",
+      "kurz": "Drei Bänder aus Zargenlasche, Blattlasche und Bolzen.",
+      "teile": [
         "scharnier_zargenlasche",
         "scharnier_blattlasche",
-        "scharnier_bolzen",
+        "scharnier_bolzen"
+      ]
+    },
+    {
+      "id": "beschlag",
+      "name": "Beschlag",
+      "kurz": "Türdrücker innen und außen.",
+      "teile": [
         "rosette_aussen",
         "druecker_hals_aussen",
         "druecker_hebel_aussen",
         "rosette_innen",
         "druecker_hals_innen",
         "druecker_hebel_innen"
-      ]
-    },
-    {
-      "id": "winkel_flachstahl_halter",
-      "name": "Winkel, Flachstahl, Halter",
-      "kurz": "",
-      "teile": [
-        "anschlag_links",
-        "anschlag_rechts",
-        "anschlag_sturz"
-      ]
-    },
-    {
-      "id": "folien_und_dichtungen",
-      "name": "Folien und Dichtungen",
-      "kurz": "",
-      "teile": [
-        "dichtung_links",
-        "dichtung_rechts",
-        "dichtung_sturz",
-        "dichtung_schwelle"
       ]
     }
   ],
@@ -68,12 +75,30 @@
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1804.5 g, Einzelkoerper 30.0 x 30.0 x 1076.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.076,
-      "geruest": true
+      "funktion": "Die Schwelle gehört zum Zargenrahmen: sie begrenzt die Tür unten.",
+      "eigenschaften": [
+        "Vierkantrohr 30 x 30 x 2 mm, verzinkt.",
+        "Zarge außen 1076 x 2068 mm; das lichte Maß des Blattes (1000 mm) bleibt frei."
+      ],
+      "norm": "Kaltgeformte Hohlprofile EN 10219-2, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "pfosten_links",
@@ -83,12 +108,30 @@
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3353.3 g, Einzelkoerper 30.0 x 30.0 x 2008.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.008,
-      "geruest": true
+      "funktion": "Der linke Pfosten gehört zum Zargenrahmen: er trägt die Scharnier-Zargenlaschen.",
+      "eigenschaften": [
+        "Vierkantrohr 30 x 30 x 2 mm, verzinkt.",
+        "Zarge außen 1076 x 2068 mm; das lichte Maß des Blattes (1000 mm) bleibt frei."
+      ],
+      "norm": "Kaltgeformte Hohlprofile EN 10219-2, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 150
+      }
     },
     {
       "id": "pfosten_rechts",
@@ -98,12 +141,30 @@
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 3353.3 g, Einzelkoerper 30.0 x 30.0 x 2008.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.008,
-      "geruest": true
+      "funktion": "Der rechte Pfosten gehört zum Zargenrahmen: er trägt das Schließblech des Drückers.",
+      "eigenschaften": [
+        "Vierkantrohr 30 x 30 x 2 mm, verzinkt.",
+        "Zarge außen 1076 x 2068 mm; das lichte Maß des Blattes (1000 mm) bleibt frei."
+      ],
+      "norm": "Kaltgeformte Hohlprofile EN 10219-2, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 150
+      }
     },
     {
       "id": "sturz",
@@ -113,12 +174,30 @@
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 1804.5 g, Einzelkoerper 30.0 x 30.0 x 1076.0 mm (Modell-Bounding-Box)",
       "artikel_id": "PRF-st-rr30x30x2",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.076,
-      "geruest": true
+      "funktion": "Der Sturz gehört zum Zargenrahmen: er schließt die Tür oben ab.",
+      "eigenschaften": [
+        "Vierkantrohr 30 x 30 x 2 mm, verzinkt.",
+        "Zarge außen 1076 x 2068 mm; das lichte Maß des Blattes (1000 mm) bleibt frei."
+      ],
+      "norm": "Kaltgeformte Hohlprofile EN 10219-2, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 100
+      }
     },
     {
       "id": "tuerblatt",
@@ -133,7 +212,28 @@
       "artikel_id": "SON-tuerblatt-1000x2000",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Das Türblatt verschließt die Öffnung und lässt sich an den Bändern aufschwenken.",
+      "eigenschaften": [
+        "Sandwichblatt 1000 x 2000 mm, 40 mm dick, etwa 25 kg.",
+        "Der Markt bietet meist komplette Türen mit Rahmen; ob Blatt einzeln oder Komplett-Tür gekauft wird, ist offen."
+      ],
+      "norm": "Türblatt-Maße nach DIN 18101 (1000 x 2000) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Komplett-Türen in Deutschland und Österreich, Preise nur als Suchtreffer (data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 400
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "anschlag_links",
@@ -143,12 +243,31 @@
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 662.0 g, Einzelkoerper 3.0 x 14.0 x 2008.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-flach-14x3",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.008,
-      "geruest": true
+      "funktion": "Das Anschlagblech links bildet die Anlagefläche für das geschlossene Blatt und trägt die Dichtung.",
+      "eigenschaften": [
+        "Flachstahl 14 x 3 mm, verzinkt.",
+        "Aufgeschweißt oder verschraubt an der Zarge; Verbindung nicht modelliert."
+      ],
+      "norm": "Flachstahl warmgewalzt EN 10058, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 220,
+        "folgt": "pfosten_links"
+      }
     },
     {
       "id": "anschlag_rechts",
@@ -158,12 +277,31 @@
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 662.0 g, Einzelkoerper 3.0 x 14.0 x 2008.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-flach-14x3",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.008,
-      "geruest": true
+      "funktion": "Das Anschlagblech rechts bildet die Anlagefläche für das geschlossene Blatt und trägt die Dichtung.",
+      "eigenschaften": [
+        "Flachstahl 14 x 3 mm, verzinkt.",
+        "Aufgeschweißt oder verschraubt an der Zarge; Verbindung nicht modelliert."
+      ],
+      "norm": "Flachstahl warmgewalzt EN 10058, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 220,
+        "folgt": "pfosten_rechts"
+      }
     },
     {
       "id": "anschlag_sturz",
@@ -173,12 +311,31 @@
       ],
       "menge": 1,
       "typ": "profil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 325.7 g, Einzelkoerper 3.0 x 14.0 x 988.0 mm (Modell-Bounding-Box)",
       "artikel_id": "WNK-flach-14x3",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.988,
-      "geruest": true
+      "funktion": "Das Anschlagblech oben bildet die Anlagefläche für das geschlossene Blatt und trägt die Dichtung.",
+      "eigenschaften": [
+        "Flachstahl 14 x 3 mm, verzinkt.",
+        "Aufgeschweißt oder verschraubt an der Zarge; Verbindung nicht modelliert."
+      ],
+      "norm": "Flachstahl warmgewalzt EN 10058, Feuerverzinkung EN ISO 1461 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200,
+        "folgt": "sturz"
+      }
     },
     {
       "id": "dichtung_links",
@@ -193,7 +350,29 @@
       "artikel_id": "FOL-epdm-tuerdichtung",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Die Dichtung links schließt den Spalt zwischen Blatt und Zarge gegen Zugluft und Regen.",
+      "eigenschaften": [
+        "EPDM-Profil, schwarz; Länge je Seite aus dem Modell.",
+        "Profilform ist im Modell vereinfacht (Rechteck), Fabrikat offen."
+      ],
+      "norm": "EPDM-Profil; keine Norm festgelegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Profil nicht festgelegt, Zellkautschuk beschaffbar in Deutschland (stuv.de, Fugendichtband24; data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "anschlag_links"
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "dichtung_rechts",
@@ -208,7 +387,29 @@
       "artikel_id": "FOL-epdm-tuerdichtung",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Die Dichtung rechts schließt den Spalt zwischen Blatt und Zarge gegen Zugluft und Regen.",
+      "eigenschaften": [
+        "EPDM-Profil, schwarz; Länge je Seite aus dem Modell.",
+        "Profilform ist im Modell vereinfacht (Rechteck), Fabrikat offen."
+      ],
+      "norm": "EPDM-Profil; keine Norm festgelegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Profil nicht festgelegt, Zellkautschuk beschaffbar in Deutschland (stuv.de, Fugendichtband24; data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 300,
+        "folgt": "anschlag_rechts"
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "dichtung_sturz",
@@ -223,7 +424,29 @@
       "artikel_id": "FOL-epdm-tuerdichtung",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.988,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Die Dichtung oben schließt den Spalt zwischen Blatt und Zarge gegen Zugluft und Regen.",
+      "eigenschaften": [
+        "EPDM-Profil, schwarz; Länge je Seite aus dem Modell.",
+        "Profilform ist im Modell vereinfacht (Rechteck), Fabrikat offen."
+      ],
+      "norm": "EPDM-Profil; keine Norm festgelegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Profil nicht festgelegt, Zellkautschuk beschaffbar in Deutschland (stuv.de, Fugendichtband24; data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300,
+        "folgt": "anschlag_sturz"
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "dichtung_schwelle",
@@ -238,7 +461,29 @@
       "artikel_id": "FOL-epdm-tuerdichtung",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Die Dichtung unten schließt den Spalt zwischen Blatt und Zarge gegen Zugluft und Regen.",
+      "eigenschaften": [
+        "EPDM-Profil, schwarz; Länge je Seite aus dem Modell.",
+        "Profilform ist im Modell vereinfacht (Rechteck), Fabrikat offen."
+      ],
+      "norm": "EPDM-Profil; keine Norm festgelegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Profil nicht festgelegt, Zellkautschuk beschaffbar in Deutschland (stuv.de, Fugendichtband24; data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 200,
+        "folgt": "schwelle"
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "scharnier_zargenlasche",
@@ -250,12 +495,31 @@
       ],
       "menge": 3,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 406.9 g, Einzelkoerper 4.0 x 48.0 x 90.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerscharnier",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 3.0,
-      "geruest": true
+      "funktion": "Zargenlasche, Blattlasche und Bolzen bilden zusammen ein Band; drei Bänder tragen das Blatt. Die Zargenlasche ist an der Zarge befestigt.",
+      "eigenschaften": [
+        "Stahl verzinkt, 4 mm dick, 48 x 90 mm, drei Stück."
+      ],
+      "norm": "Bänder nach EN 1935 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Türbänder in Deutschland/Österreich als Suchtreffer (data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 200,
+        "folgt": "pfosten_links"
+      }
     },
     {
       "id": "scharnier_blattlasche",
@@ -267,12 +531,31 @@
       ],
       "menge": 3,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 406.9 g, Einzelkoerper 4.0 x 48.0 x 90.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerscharnier",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Zargenlasche, Blattlasche und Bolzen bilden zusammen ein Band; drei Bänder tragen das Blatt. Die Blattlasche sitzt am Blatt.",
+      "eigenschaften": [
+        "Stahl verzinkt, 4 mm dick, 48 x 90 mm, drei Stück."
+      ],
+      "norm": "Bänder nach EN 1935 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: wie Zargenlasche",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "tuerblatt"
+      }
     },
     {
       "id": "scharnier_bolzen",
@@ -284,12 +567,31 @@
       ],
       "menge": 3,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 166.4 g, Einzelkoerper 10.0 x 10.0 x 90.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerscharnier",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Zargenlasche, Blattlasche und Bolzen bilden zusammen ein Band; drei Bänder tragen das Blatt. Der Bolzen verbindet beide Laschen als Drehachse.",
+      "eigenschaften": [
+        "Durchmesser 10 mm, Länge 90 mm, Stahl verzinkt, drei Stück."
+      ],
+      "norm": "Bänder nach EN 1935 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: wie Zargenlasche",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150,
+        "folgt": "scharnier_zargenlasche"
+      }
     },
     {
       "id": "rosette_aussen",
@@ -299,12 +601,31 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 61.6 g, Einzelkoerper 4.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerdruecker",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Türdrücker besteht aus Rosette, Hals und Hebel; je einer innen und außen. Die Rosette außen deckt das Bohrloch im Blatt ab.",
+      "eigenschaften": [
+        "Rund, 50 mm Durchmesser, 4 mm dick, Stahl verzinkt (Modell)."
+      ],
+      "norm": "Türdrücker nach EN 1906 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Wechselgarnitur Edelstahl ab etwa 30 EUR (eBay.de, Suchtreffer 04.11.2026)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 310,
+        "folgt": "tuerblatt"
+      }
     },
     {
       "id": "druecker_hals_aussen",
@@ -314,12 +635,31 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 43.9 g, Einzelkoerper 18.0 x 18.0 x 22.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerdruecker",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Türdrücker besteht aus Rosette, Hals und Hebel; je einer innen und außen. Der Hals außen verbindet Rosette und Hebel.",
+      "eigenschaften": [
+        "18 x 18 x 22 mm, Stahl verzinkt (Modell)."
+      ],
+      "norm": "Türdrücker nach EN 1906 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: wie Rosette",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "rosette_aussen"
+      }
     },
     {
       "id": "druecker_hebel_aussen",
@@ -329,12 +669,31 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 330.6 g, Einzelkoerper 18.0 x 18.0 x 130.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerdruecker",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Türdrücker besteht aus Rosette, Hals und Hebel; je einer innen und außen. Der Hebel außen wird mit der Hand gedrückt und zieht die Falle zurück.",
+      "eigenschaften": [
+        "18 x 18 x 130 mm, Stahl verzinkt (Modell); real meist Edelstahl."
+      ],
+      "norm": "Türdrücker nach EN 1906 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: wie Rosette",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 60,
+        "folgt": "druecker_hals_aussen"
+      }
     },
     {
       "id": "rosette_innen",
@@ -344,12 +703,31 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 61.6 g, Einzelkoerper 4.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerdruecker",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Türdrücker besteht aus Rosette, Hals und Hebel; je einer innen und außen. Die Rosette innen deckt das Bohrloch im Blatt ab.",
+      "eigenschaften": [
+        "Rund, 50 mm Durchmesser, 4 mm dick, Stahl verzinkt (Modell)."
+      ],
+      "norm": "Türdrücker nach EN 1906 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: Wechselgarnitur Edelstahl ab etwa 30 EUR (eBay.de, Suchtreffer 04.11.2026)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 310,
+        "folgt": "tuerblatt"
+      }
     },
     {
       "id": "druecker_hals_innen",
@@ -359,12 +737,31 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 43.9 g, Einzelkoerper 18.0 x 18.0 x 22.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerdruecker",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 0.0,
-      "geruest": true
+      "funktion": "Der Türdrücker besteht aus Rosette, Hals und Hebel; je einer innen und außen. Der Hals innen verbindet Rosette und Hebel.",
+      "eigenschaften": [
+        "18 x 18 x 22 mm, Stahl verzinkt (Modell)."
+      ],
+      "norm": "Türdrücker nach EN 1906 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: wie Rosette",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 120,
+        "folgt": "rosette_innen"
+      }
     },
     {
       "id": "druecker_hebel_innen",
@@ -374,12 +771,31 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl verzinkt",
+      "werkstoff": "stahl_verzinkt",
       "masse_mm": "Masse 330.6 g, Einzelkoerper 18.0 x 18.0 x 130.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-tuerdruecker",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "funktion": "Der Türdrücker besteht aus Rosette, Hals und Hebel; je einer innen und außen. Der Hebel innen wird mit der Hand gedrückt und zieht die Falle zurück.",
+      "eigenschaften": [
+        "18 x 18 x 130 mm, Stahl verzinkt (Modell); real meist Edelstahl."
+      ],
+      "norm": "Türdrücker nach EN 1906 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tuer_komplett.md, data/components/tuer_komplett.json (D36: eine Tür, Normmaß 1000 x 2000)",
+      "bezug": "offen: wie Rosette",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 60,
+        "folgt": "druecker_hals_innen"
+      }
     }
   ]
 }

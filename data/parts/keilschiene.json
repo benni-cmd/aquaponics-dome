@@ -4,32 +4,25 @@
   "bauteilgruppe": "Huelle",
   "teilenummer": "",
   "stand": "geruest",
-  "titel": "keilschiene",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "titel": "Keilschiene (Folienbefestigung je Strebe)",
+  "kurz": "Ein Aluminium-Kanal auf der Strebe hält die Folienkante: Ein Federdraht drückt die Folie in den Kanal und klemmt sie. Ein Schaumband unter dem Kanal dichtet zur Strebe.",
+  "hinweis": "Texte und Zahlen aus docs/parts/keilschiene.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
   "koerperzahl": 3,
   "gruppen": [
     {
-      "id": "folien_und_dichtungen",
-      "name": "Folien und Dichtungen",
-      "kurz": "",
+      "id": "unterlage",
+      "name": "Unterlage",
+      "kurz": "Dichtet die Schiene zur Strebe.",
       "teile": [
         "schaumband"
       ]
     },
     {
-      "id": "stahl_und_alu_profile",
-      "name": "Stahl- und Alu-Profile",
-      "kurz": "",
+      "id": "kanal",
+      "name": "Kanal",
+      "kurz": "Nimmt Folie und Draht auf.",
       "teile": [
-        "kanal"
-      ]
-    },
-    {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
-      "teile": [
+        "kanal",
         "federdraht"
       ]
     }
@@ -48,7 +41,28 @@
       "artikel_id": "FOL-epdm-schaumband",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 3.019,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Das Schaumband liegt zwischen Strebe und Kanal. Es gleicht Unebenheiten aus und verhindert Wassereintritt unter die Schiene.",
+      "eigenschaften": [
+        "EPDM-Zellkautschuk, 25 mm breit, 3 mm dick, selbstklebend.",
+        "Länge wie der Kanal (3019 mm beim kurzen Typ)."
+      ],
+      "norm": "EPDM-Zellkautschuk, geschlossenzellig; keine Norm festgelegt [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/keilschiene.md, data/components/keilschiene.json (ch_w 25, ch_h 15, foam_t 3, wire_d 2; R24)",
+      "bezug": "ja: 25 x 3 mm bei Bürklin (DE), Suchtreffer 04.11.2026; weiteres Angebot offen (data/beschaffung/huelle_pflanze.json)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 80
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "kanal",
@@ -63,7 +77,28 @@
       "artikel_id": "PRF-alu-keilschiene",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 3.019,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Der Kanal sitzt auf dem Schaumband und hält die Folienkante. Die Folie wird mit dem Federdraht in die Öffnung gedrückt und klemmt dort ohne Tacker oder Schrauben.",
+      "eigenschaften": [
+        "Aluminium-Strangpressprofil 25 x 15 mm, 1,5 mm Wand, Lippe 4 mm je Seite, Maulweite 17 mm.",
+        "Länge = Knotenabstand minus 2 x 130 mm Freiraum an den Knoten (3019 mm beim kurzen Typ).",
+        "Beim Folienwechsel lässt sich die Folie lösen, ohne den Kanal abzubauen."
+      ],
+      "norm": "Aluminium-Strangpressprofil EN AW-6063 nach EN 755-2 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/keilschiene.md, data/components/keilschiene.json (ch_w 25, ch_h 15, foam_t 3, wire_d 2; R24)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     },
     {
       "id": "federdraht",
@@ -78,7 +113,28 @@
       "artikel_id": "SON-federdraht-d2",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 2.979,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Der Federdraht drückt die Folienkante in den Kanal und hält sie durch Federkraft fest. Zum Lösen wird er herausgezogen.",
+      "eigenschaften": [
+        "Durchmesser 2 mm, endet 20 mm vor jedem Kanalende (Einziehhilfe).",
+        "Katalog nennt Federstahl; Marktware ist meist Edelstahl 304 (Preisrecherche), Werkstoff vor Bestellung klären."
+      ],
+      "norm": "Federstahldraht nach EN 10270-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/keilschiene.md, data/components/keilschiene.json (ch_w 25, ch_h 15, foam_t 3, wire_d 2; R24)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 220,
+        "folgt": "kanal"
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     }
   ]
 }

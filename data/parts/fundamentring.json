@@ -4,15 +4,15 @@
   "bauteilgruppe": "Fundament",
   "teilenummer": "",
   "stand": "geruest",
-  "titel": "fundamentring",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "titel": "Fundamentring (Betonsockel unter dem Zehneck)",
+  "kurz": "Ein flacher Betonring am Basis-Zehneck trägt die Streben, die Anker sind darin eingelassen. Beton wird nach Menge bestellt, nicht als Bauteil gekauft.",
+  "hinweis": "Texte und Zahlen aus docs/parts/fundamentring.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "nicht_kaufbar_ausnahme",
-      "name": "Nicht kaufbar (Ausnahme)",
-      "kurz": "",
+      "id": "sockel",
+      "name": "Sockel",
+      "kurz": "Der Betonring.",
       "teile": [
         "t_sockel"
       ]
@@ -33,7 +33,28 @@
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Beton nach Menge (Entscheidung 04.11.2026)",
-      "geruest": true
+      "geruest": true,
+      "funktion": "Der Betonring verteilt die Last der Kuppel auf den Boden und nimmt die Fundamentanker auf.",
+      "eigenschaften": [
+        "Außenmaß etwa 12,5 x 11,9 m, 250 mm hoch (Modell-Bounding-Box).",
+        "Masse etwa 2,8 Tonnen im Modell (Rechenwert, Ring ohne Armierung).",
+        "Entscheidung 04.11.2026: Beton wird nach Menge geliefert und steht nicht in der Einkaufsliste."
+      ],
+      "norm": "Beton nach EN 206 [A]; Bemessung offen (N-STATIK)",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/components/fundamentring.json, docs/parts/fundamentring.md",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     }
   ]
 }

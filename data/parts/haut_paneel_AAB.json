@@ -4,15 +4,15 @@
   "bauteilgruppe": "Huelle",
   "teilenummer": "",
   "stand": "geruest",
-  "titel": "haut paneel AAB",
-  "kurz": "",
-  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "titel": "Hautpaneel Typ AAB (Kuppelfeld mit zwei kurzen Kanten)",
+  "kurz": "Dreieckiges Polycarbonat-Paneel für die 30 Felder mit den Kanten 3279, 3279 und 3708 Millimeter. Es liegt auf den Kappen der drei Streben und wird dort geklemmt.",
+  "hinweis": "Texte und Zahlen aus docs/parts/haut.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
   "koerperzahl": 1,
   "gruppen": [
     {
-      "id": "sonderteile_eigenbau",
-      "name": "Sonderteile (Eigenbau)",
-      "kurz": "",
+      "id": "paneel",
+      "name": "Paneel",
+      "kurz": "Die durchsichtige Fläche des Feldes.",
       "teile": [
         "paneel"
       ]
@@ -32,7 +32,28 @@
       "artikel_id": "SON-polycarbonat-paneel",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true
+      "geruest": true,
+      "funktion": "Das Paneel schließt ein Dreiecksfeld der Kuppel ab: Es hält Wind und Regen ab und lässt Licht zu den Pflanzen durch. Es liegt mit 15 Millimeter Auflage je Seite auf den Aluminium-Kappen der Streben.",
+      "eigenschaften": [
+        "Doppelstegplatte aus Polycarbonat, 8 mm dick, UV-Schutz auf der Sonnenseite.",
+        "Zuschnitt dreieckig, Kanten 3279, 3279 und 3708 mm, Masse etwa 7,6 kg.",
+        "Die Dehnung bei Wärme (etwa 0,07 mm je Meter und Kelvin) ist im Modell nicht abgebildet; die Klemmung durch die Kappe gleicht sie aus."
+      ],
+      "norm": "Polycarbonat-Stegplatten nach EN 16153 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/haut_paneel.md, data/components/haut_paneel.json (panel_t 8, Doppelstegplatte D35, R11)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200
+      },
+      "werkstoff_katalog": "offen (nicht unter den 7 Pilot-Werkstoffen)"
     }
   ]
 }

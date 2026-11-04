@@ -1,0 +1,68 @@
+{
+  "_hinweis": "Paket 2D N-STUECKLISTE (Messtechnik MES, Elektrik ELE). Preise brutto EUR je Bezugseinheit, grob, Stand 2026-11-04. konfidenz: Q = Seite selbst geoeffnet und gelesen | Q-Treffer = nur Suchtreffer | E gerechnet | A angenommen. lieferung_de: unbekannt, wo die Seite keine Lieferziele nennt (Pflicht-Pruefung im Warenkorb, kein Kauf). land UK = Europa OFFEN (D76). Ein Artikel ohne zweites europaeisches Angebot traegt 'zweites_angebot: fehlt'.",
+  "stand": "2026-11-04",
+  "paket": "2D",
+  "bearbeitung": {
+    "untergruppe_1_sonden_wasser": "begonnen: ph, ec, do-ind, do-mini, temp-ds, level-float, leck",
+    "offen": ["MES-temperatur", "MES-o2", "MES-co2-scd41", "MES-druck-schalter", "MES-flow-12", "MES-flow-gross", "MES-level-druck", "MES-par", "MES-strom-ct", "ELE-hutschiene-35", "ELE-kabelverschraubung-pg", "ELE-kabelkanal-30x60", "ELE-schaltschrank-500x800x1200"]
+  },
+  "artikel": {
+    "MES-ph": {
+      "zweites_angebot": "fehlt (DigiKey: ENV-40-PH nicht mehr lieferbar)",
+      "angebote": [
+        {"preis_eur": 94.59, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "RobotShop EU (Atlas ENV-40-pH, SKU RB-Atl-39)", "land": "EU", "url": "https://eu.robotshop.com/de/products/atlas-scientific-ph-probe", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Seite gelesen; Status Nachbestellung (backorder); Versandziele nicht genannt"},
+        {"preis_eur": null, "preis_usd": 99.99, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Atlas Scientific (Hersteller)", "land": "US", "url": "https://atlas-scientific.com/probes/ph-probe/", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Seite gelesen; US-Hersteller, nicht europaeisch (D76 nur als Preisreferenz); Zoll/Versand offen"}
+      ]
+    },
+    "MES-ec": {
+      "zweites_angebot": "fehlt",
+      "angebote": [
+        {"preis_eur": 195.47, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "DigiKey FI (Atlas ENV-40-EC-K1.0)", "land": "FI", "url": "https://www.digikey.fi/en/products/detail/atlas-scientific/ENV-40-EC-K1-0/16002997", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Seite (DE-Schwesterseite) gelesen: 164,26 EUR netto = 195,47 brutto; Lagerbestand 0, Lieferzeit Hersteller 3 Wochen; ACHTUNG Zellkonstante K1.0, R39 plant K 0,1 (Beschreibung der Seite nennt beides) — Pruefer klaeren"}
+      ]
+    },
+    "MES-do-ind": {
+      "zweites_angebot": "fehlt (kein EUR-Haendler fuer ENV-50-DO gefunden)",
+      "angebote": [
+        {"preis_eur": null, "preis_usd": 329.99, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Atlas Scientific (Hersteller)", "land": "US", "url": "https://atlas-scientific.com/probes/industrial-dissolved-oxygen-probe/", "lieferung_de": "unbekannt", "konfidenz": "Q-Treffer", "bemerkung": "nur Suchtreffer (R39 las 349,99 USD); US, nicht europaeisch"}
+      ]
+    },
+    "MES-do-mini": {
+      "zweites_angebot": "Kandidat: RobotShop UK (UK = Europa OFFEN), nicht geoeffnet",
+      "angebote": [
+        {"preis_eur": 285.72, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "DigiKey NL (Atlas ENV-20-DOX)", "land": "NL", "url": "https://www.digikey.nl/en/products/detail/atlas-scientific/ENV-20-DOX/16003119", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Seite gelesen: 236,13 netto = 285,72 brutto, 11 auf Lager; Suchtreffer anderer DigiKey-Laender nannten ca. 200 EUR netto (abweichend, nicht bestaetigt)"},
+        {"preis_eur": null, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "RobotShop UK", "land": "UK", "url": "https://uk.robotshop.com/products/atlas-scientific-mini-lab-grade-dissolved-oxygen-probe", "lieferung_de": "unbekannt", "konfidenz": "Q-Treffer", "bemerkung": "Kandidat, Preis nicht gelesen; UK-Angebot"}
+      ]
+    },
+    "MES-temp-ds": {
+      "angebote": [
+        {"preis_eur": 4.07, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Domoticx (DS18B20, Kabel 1-2 m, SKU SEN-4003-DS18M2)", "land": "NL", "url": "https://domoticx.net/webshop/temperatuur-sensor-digitaal-1-wire-dallas-waterdicht-ds18b20-2m-kabel/", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Seite gelesen, 43 auf Lager; Kabellaenge widerspruechlich (Titel 2 m, Text 100 cm)"},
+        {"preis_eur": 7.59, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "RobotShop EU (DFRobot DS18B20, RB-Dfr-270)", "land": "EU", "url": "https://eu.robotshop.com/de/products/ds18b20-waterproof-digital-temperature-sensor", "lieferung_de": "unbekannt", "konfidenz": "Q", "bemerkung": "Seite gelesen; Nachbestellung (backorder)"}
+      ]
+    },
+    "MES-level-float": {
+      "angebote": [
+        {"preis_eur": 44.90, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "aquariumcomputer.com (GHL Niveau-Sensor Schwimmer v2, PL-1889)", "land": "DE", "url": "https://www.aquariumcomputer.com/de/?p=87440", "lieferung_de": "ja", "konfidenz": "Q", "bemerkung": "Seite gelesen, sofort lieferbar, Versand extra; 3 m Kabel, Mini-DIN (fuer Aquariensteuerung, vertikal), Pflicht-Pegel kein Industrietyp"},
+        {"preis_eur": 4.01, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "eBay.de Verkaeufer (PP-Schwimmerschalter 12/24 V)", "land": "CN (ueber eBay.de)", "url": "https://www.ebay.de/itm/336049204033", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "nur Suchtreffer; Direktimport aus China, nicht europaeisch (D76: nur Preisuntergrenze); Qualitaet fuer Pflicht-Messstelle fraglich"}
+      ]
+    },
+    "MES-leck": {
+      "angebote": [
+        {"preis_eur": 7.09, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "eBay.de (Wassermelder Pad-Typ)", "land": "unbekannt", "url": "https://www.ebay.de/p/19070007052", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "Spanne 6-14 EUR laut Suchtreffern; Seil-Sensor nicht belegt"},
+        {"preis_eur": 49.95, "bezug_einheit": "Stk", "stand": "2026-11-04", "haendler": "Homematic IP Wassersensor (ueber eBay.de)", "land": "DE", "url": "https://www.ebay.de/itm/156958983111", "lieferung_de": "ja", "konfidenz": "Q-Treffer", "bemerkung": "Markenvergleich; bei Bedarf potentialfreier Kontakt noetig, Typ klaeren"}
+      ]
+    },
+    "MES-temperatur": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-o2": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-co2-scd41": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-druck-schalter": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-flow-12": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-flow-gross": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-level-druck": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-par": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "MES-strom-ct": {"angebote": [], "bemerkung": "offen, Untergruppe 2"},
+    "ELE-hutschiene-35": {"angebote": [], "bemerkung": "offen, Untergruppe 3"},
+    "ELE-kabelverschraubung-pg": {"angebote": [], "bemerkung": "offen, Untergruppe 3"},
+    "ELE-kabelkanal-30x60": {"angebote": [], "bemerkung": "offen, Untergruppe 3"},
+    "ELE-schaltschrank-500x800x1200": {"angebote": [], "bemerkung": "offen, Untergruppe 3"}
+  }
+}

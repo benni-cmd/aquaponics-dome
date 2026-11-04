@@ -461,13 +461,15 @@ def bed_pot_grid(l=None, w=None):
     nu, nv = int((l - 2*P["pot_margin"]) // P["pot_pitch"]) + 1, int((w - 2*P["pot_margin"]) // P["pot_pitch"]) + 1
     return [((i - (nu - 1)/2) * P["pot_pitch"], (j - (nv - 1)/2) * P["pot_pitch"]) for i in range(nu) for j in range(nv)]
 
+BED_RIM_GAP = json.load(open(os.path.join(ROOT, "data", "components", "ibc_beet.json"), encoding="utf-8"))["parameter"]["rim_gap"]["wert"]   # Medienoberkante = Wannenhoehe - rim_gap (75)
 def pots(fz, with_heads):
     pots_, heads = [], []
     for k, b in enumerate(LAYOUT["ibc_beds"]):
         grid = bed_pot_grid() if "plants" in b else bed_pot_grid(b["length"], b["width"])   # D52: auch die 6 Innenbeete tragen Toepfe
         cx, cy = bed_xy(b); yaw = bed_yaw(b); c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
         for u, v in grid:
-            x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1); zb = round(fz + P["pot_base_z"], 1)
+            x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1)
+            zb = round(fz + b["z0"] + b["height"] - BED_RIM_GAP, 1)   # D79: Topf steht auf der Medienoberkante DIESES Beets (aussen 800, innen 765 bis 801 abs.); NFT-Toepfe unveraendert
             pots_.append((x, y, zb, 0)); heads.append((x, y, zb + 63, 0))
     for x, y, zb in NFT_POTS: pots_.append((x, y, zb, 0)); heads.append((x, y, round(zb + 63, 1), 0))   # Rinnen-Toepfe (D33: 586, Lochabstand 200)
     place_instances("Netztopf", os.path.join(ROOT, "designs", "components", "netztopf.sc"), pots_, "10_Pflanzen")

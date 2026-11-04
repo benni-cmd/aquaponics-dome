@@ -14,9 +14,9 @@
 7. [ ] Recherche 2C Behaelter, Becken, Pumpen (`data/beschaffung/behaelter.json`; Subtank: OFFEN (Subtank))
 8. [ ] Recherche 2D Messtechnik und Elektrik (`data/beschaffung/mess_elektrik.json`)
 9. [ ] Recherche 2E Huelle, Toepfe, Substrat, Gewebe (`data/beschaffung/huelle_pflanze.json`)
-10. [ ] Zusammenfuehrung und Seite `docs/einkaufsliste.html`, Screenshot-Abnahme
+10. [x] Zusammenfuehrung und Seite `docs/einkaufsliste.html`, Screenshot-Abnahme (04.11.2026; Desktop und 390 px im Browser-Pane)
 11. [ ] Pruefer: `docs/jobs/pruefung/N-STUECKLISTE.md` nach fuenf Pruefpunkten
-11b. [ ] Seite interaktiv, Gruppieren/Sortieren, Desktop-Verknuepfung (W59-Nachtrag; Verknuepfung auf Bens Desktop nur nach seinem Ja)
+11b. [x] Seite interaktiv, Gruppieren/Sortieren, Desktop-Verknuepfung (04.11.2026; lnk nach Bens ausdruecklichem Wunsch W59 angelegt: Desktop, Datei Einkaufsliste Kuppel.lnk)
 11c. [ ] W60: Teiledaten fuer alle Bauteile in 5 Gruppen (Werkstatt, parallel nach 1b), dann Viewer-Anbindung Preis/Link, Pruefer (Pruefpunkte 6 und 7 im Blatt)
 12. [ ] Orchestrator: Roadmap nachfuehren (N-KATALOG, N-STUECKLISTE, N-BESCHAFFUNG gebuendelt, N-BOM-PARAM bleibt)
 
@@ -37,6 +37,8 @@ Bekannte Naeherungen fuer 1b/2A: Profilwand aus Modellmasse gerechnet [E] (z. B.
 - Befund (Entscheidung noetig): 130 von 260 Zeilen stehen nur in Komponenten OHNE Instanz im Modell (`viewer/instances.json`), darunter Huelle (Haut, Tuer, Keilschiene), Messtechnik, Puffer-Station, Aktivkohle. Sie zaehlen Menge 0 und nicht in die Summe; je 1 Stueck gerechnet waeren es weitere 2.279,02 EUR (36 Zeilen, ohne lt_-Bibliothek). Davon 105 Komponenten lt_* sind ungenutzte Bibliotheksvarianten.
 - Befund fuer Recherche 2A: Preise unter `SRB-m8x35`, `SRB-knoten-klein`, `SRB-pumpe-klein`, `BLE-platte-30x30x3` haben keinen Katalogartikel mehr (Schrauben jetzt je Gewinde und Laenge). `SRB-satz-m6x20` erbt den Preis ueber `preis_alias`; neu zu bepreisen: `SRB-satz-m5x12`, `m6x16`, `m6x40`, `m6x55`, `m8x30`, `m10x60`, `m12x55`, `m16x300`.
 - Nicht Teil von 1b bis 1d, offen: Geruestdateien `data/parts/<komp>.json` fuer alle Komponenten (W60, Blatt Paket 5), Seite `docs/einkaufsliste.html` (Paket 3).
+
+04.11.2026, Werkstatt Paket 3 und 3b: `scripts/bom_seite.py` + `scripts/bom_seite_vorlage.html` erzeugen `docs/einkaufsliste.html` (eine Datei, offline, wird von `bom.py` mitgeschrieben); `scripts/open_einkaufsliste.bat`, `scripts/make_shortcut.ps1`. Gemessen im Browser: Summe Seite = Summe Datei 28.510,25 EUR; Summe der 8 Gruppenpreise 28.510,25; Preis absteigend erste Zeile 2.607,00 = Maximum, aufsteigend 1,08 = Minimum; 16 von 16 Typen mit Sprungpunkt; Zaehler Preis fehlt 37 = 37; externe Requests 0; schmale Breite 390 px ohne waagerechtes Scrollen. Anzeige-Entscheidung: nicht platzierte Komponenten sind standardmaessig ausgeblendet (Haken zeigt sie), nicht in der Summe. Seite zeigt Drift-Hinweis, wenn sich die `.sc` seit der Messung geaendert haben (aktuell ja: W40-BEET).
 
 ## DoD
 Dateien aus dem Blatt vorhanden; `check_bom.py` gruen; fuenf Pruefpunkte vom Pruefer gemessen; Seite per Screenshot geprueft; Entscheidungen der Offen-Liste in `docs/decisions.md`; Wunschbuch W59 nachgefuehrt; Commit und Push je Teilschritt.

@@ -1,0 +1,190 @@
+<title>Welche Kreislaufvariante?</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Public+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: eine Spalte zum Lesen, die vier Schemata als 2x2-Raster gleicher Bauart, Tabelle mit hervorgehobener Empfehlungs-Spalte */
+:root {
+  --bg: #f4f6f5; --surface: #ffffff; --fg: #17221e; --muted: #5a6964; --line: #cdd6d2;
+  --buried: #c2560c; --overhead: #6a46c4; --water: #d4e6f3; --earth: #e8e1d3; --bed: #cfe1c4;
+  --rec: #1d7550; --rec-soft: #e3f2ea; --signal: #c62f3a;
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --surface: #1a221f; --fg: #e4ebe7; --muted: #9aa9a3; --line: #34413c;
+  --buried: #f08a3e; --overhead: #a892f2; --water: #1d3a50; --earth: #2b2720; --bed: #2c4227;
+  --rec: #4cc08a; --rec-soft: #183428; --signal: #ff6b74; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #121815; --surface: #1a221f; --fg: #e4ebe7; --muted: #9aa9a3; --line: #34413c;
+  --buried: #f08a3e; --overhead: #a892f2; --water: #1d3a50; --earth: #2b2720; --bed: #2c4227;
+  --rec: #4cc08a; --rec-soft: #183428; --signal: #ff6b74; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--body); }
+.page { max-width: 1160px; margin: 0 auto; padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 36px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(26px, 4vw, 38px); line-height: 1.15; font-weight: 700; max-width: 30ch; }
+h2 { font-size: 20px; font-weight: 700; }
+h3 { font-size: 17px; font-weight: 700; }
+.eyebrow { font: 600 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+header { display: grid; gap: 12px; }
+header p { margin: 0; max-width: 68ch; color: var(--muted); }
+section { display: grid; gap: 14px; min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.lg { width: 34px; height: 12px; }
+.lg.sq { width: 20px; height: 20px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.card { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px 14px 8px; display: grid; grid-template-rows: auto 1fr; gap: 8px; min-width: 0; }
+.card.rec { border: 2px solid var(--rec); }
+.card-head { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; min-height: 4.6em; }
+.card-head p { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+.badge { font: 700 18px/1 var(--display); min-width: 40px; height: 40px; display: grid; place-items: center; border-radius: 4px; background: var(--bg); border: 1px solid var(--line); }
+.rec .badge { background: var(--rec); color: var(--surface); border-color: var(--rec); }
+.chip { font: 600 11px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--rec); border: 1px solid var(--rec); border-radius: 3px; padding: 3px 6px; vertical-align: 3px; margin-left: 6px; white-space: nowrap; }
+.svgwrap { overflow-x: auto; align-self: end; }
+.schema { display: block; width: 100%; height: auto; min-width: 520px; }
+/* SVG-Klassen */
+.earth { fill: var(--earth); }
+.ground { stroke: var(--muted); stroke-width: 1.2; }
+.water { fill: var(--water); }
+.vessel { fill: none; stroke: var(--fg); stroke-width: 1.6; }
+.vessel-f { fill: var(--surface); stroke: var(--fg); stroke-width: 1.6; }
+.lid { stroke: var(--fg); stroke-width: 2.4; }
+.sieve { fill: none; stroke: var(--fg); stroke-width: 1.2; stroke-dasharray: 3 2.5; }
+.leg { stroke: var(--muted); stroke-width: 1.4; }
+.tick { stroke: var(--muted); stroke-width: 1.4; }
+.table { fill: var(--muted); }
+.bed { fill: var(--bed); stroke: var(--fg); stroke-width: 1.6; }
+.node { fill: var(--fg); }
+.pump { fill: var(--surface); stroke: var(--fg); stroke-width: 1.6; }
+.pump-tri { fill: var(--fg); }
+.p-n { fill: none; stroke: var(--fg); stroke-width: 2.2; stroke-linejoin: round; }
+.p-o { fill: none; stroke: var(--buried); stroke-width: 5; stroke-linejoin: round; }
+.p-v { fill: none; stroke: var(--overhead); stroke-width: 5; stroke-linejoin: round; }
+.mk-n { fill: var(--fg); } .mk-o { fill: var(--buried); } .mk-v { fill: var(--overhead); }
+.acc-line { stroke: var(--rec); stroke-width: 2; }
+.acc-cap { fill: var(--rec); }
+.sens { fill: var(--signal); }
+.sens-t { fill: #fff; font: 700 11px var(--body); text-anchor: middle; }
+.t { fill: var(--fg); font: 600 13px var(--body); }
+.ts { fill: var(--muted); font: 400 12px var(--body); }
+.tss { fill: var(--muted); font: 400 10.5px var(--body); }
+.ts.vio { fill: var(--overhead); font-weight: 600; }
+.ts.sig { fill: var(--signal); font-weight: 600; }
+.note { margin: 0; font-size: 13px; color: var(--muted); }
+.narrow { display: none; }
+@media (max-width: 600px) { .narrow { display: inline; } }
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; min-width: 680px; font-size: 14px; table-layout: fixed; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+thead th { font: 700 15px var(--display); }
+tbody th { font-weight: 600; width: 22%; }
+@media (max-width: 600px) { tbody th, thead th:first-child { position: sticky; left: 0; background: var(--surface); z-index: 1; width: 120px; } }
+td.rec, th.rec { background: var(--rec-soft); }
+thead th.rec { color: var(--rec); }
+.verdict { background: var(--rec-soft); border-left: 4px solid var(--rec); padding: 16px 18px; border-radius: 0 6px 6px 0; display: grid; gap: 8px; }
+.verdict p { margin: 0; max-width: 72ch; }
+.verdict strong { color: var(--rec); }
+ul.same { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 76ch; }
+.fine { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 4px; }
+.fine p { margin: 0; max-width: 100ch; }
+</style>
+
+<main class="page">
+  <header>
+    <span class="eyebrow">Aquaponik-Kuppel · Entscheidung am 05.11.2026</span>
+    <h1>Wie kommt das Wasser vom Biofilter zu den 14 Beeten?</h1>
+    <p>Durch Gräben unter den Gängen wie heute geplant (A, oder A+ mit Zugang und Alarm) oder über einen Ring 2,1 m über den Gängen (B für alles, C nur für die Beete)?</p>
+  </header>
+
+  <section aria-labelledby="h-bilder">
+    <h2 id="h-bilder">Die vier Varianten im gleichen Schnitt</h2>
+    <div class="legend">
+      <span><svg viewBox="0 0 34 12" class="lg"><line x1="2" y1="6" x2="32" y2="6" class="p-o"/></svg> Rohr vergraben</span>
+      <span><svg viewBox="0 0 34 12" class="lg"><line x1="2" y1="6" x2="32" y2="6" class="p-v"/></svg> Rohr über Kopf, Arbeit nur mit Leiter</span>
+      <span><svg viewBox="0 0 34 12" class="lg"><line x1="2" y1="6" x2="32" y2="6" class="p-n"/></svg> Rohr frei erreichbar</span>
+      <span><svg viewBox="0 0 24 24" class="lg sq"><circle cx="12" cy="12" r="9" class="pump"/><polygon points="8,16 16,16 12,8" class="pump-tri"/></svg> Pumpe</span>
+      <span><svg viewBox="0 0 24 24" class="lg sq"><line x1="12" y1="22" x2="12" y2="10" class="acc-line"/><rect x="6" y="6" width="12" height="6" class="acc-cap"/></svg> Revisionsstutzen, von oben zu öffnen</span>
+      <span><svg viewBox="0 0 24 24" class="lg sq"><circle cx="12" cy="12" r="7" class="sens"/><text x="12" y="16" class="sens-t">!</text></svg> Wächter mit Alarm</span>
+    </div>
+    <p class="note">Seitenschnitt einer Linie, nicht maßstäblich; die zweite Linie ist gleich. Links bis zum Biofilter ist alles in den vier Bildern gleich, der Unterschied liegt rechts davon.<span class="narrow"> Auf dem Handy zeigt jedes Bild zuerst die rechte Seite; zur Seite wischen zeigt Pool und Subtank.</span></p>
+    <div class="grid">
+    <figure class="card">
+      <div class="card-head">
+        <span class="badge">A</span>
+        <div><h3>Heutiger Plan</h3>
+        <p>Der Zulauf zu den Beeten liegt im Graben unter dem Gang.</p></div>
+      </div>
+      <div class="svgwrap"><svg viewBox="0 0 640 300" role="img" aria-label="Schema Variante A: Biofilter läuft frei über den Verteiler zum Tisch und im Graben unter dem Gang zum Beet." class="schema"><defs><marker id="A-an" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-n"/></marker><marker id="A-ao" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-o"/></marker><marker id="A-av" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-v"/></marker></defs><rect x="0" y="190" width="640" height="110" class="earth"/><line x1="0" y1="190" x2="640" y2="190" class="ground"/><text x="8" y="296" class="ts" text-anchor="start">Boden</text><rect x="16" y="152" width="96" height="118" class="water"/><path d="M16 142 V270 H112 V142" class="vessel"/><text x="64" y="214" class="t" text-anchor="middle">Pool</text><line x1="504" y1="184" x2="504" y2="190" class="tick"/><line x1="548" y1="184" x2="548" y2="190" class="tick"/><text x="526" y="183" class="ts" text-anchor="middle">Gang</text><path d="M112 205 H202" class="p-o" marker-end="url(#A-ao)"/><text x="155" y="226" class="ts" text-anchor="middle">Heber</text><path d="M64 270 V284 H300 V190" class="p-o"/><path d="M300 190 V173" class="p-n" marker-end="url(#A-an)"/><text x="122" y="279" class="ts" text-anchor="start">Bodenablauf</text><line x1="289" y1="112" x2="287" y2="190" class="leg"/><line x1="311" y1="112" x2="313" y2="190" class="leg"/><path d="M282 96 V112 L300 170 L318 112 V96 Z" class="vessel-f"/><text x="300" y="89" class="t" text-anchor="middle">Absetzer</text><path d="M282 104 H262 V158" class="p-n" marker-end="url(#A-an)"/><rect x="196" y="166" width="74" height="84" class="water"/><path d="M196 160 V250 H270 V160" class="vessel"/><line x1="192" y1="160" x2="274" y2="160" class="lid"/><rect x="202" y="176" width="28" height="56" class="sieve"/><text x="216" y="224" class="tss" text-anchor="middle">Sieb</text><circle cx="252" cy="234" r="9" class="pump"/><polygon points="248,238 256,238 252,230" class="pump-tri"/><text x="233" y="266" class="ts" text-anchor="middle">Subtank</text><path d="M252 225 V72 H330" class="p-n" marker-end="url(#A-an)"/><text x="244" y="96" class="ts" text-anchor="end">hebt 2,0 m</text><line x1="340" y1="148" x2="340" y2="190" class="leg"/><line x1="390" y1="148" x2="390" y2="190" class="leg"/><line x1="332" y1="148" x2="398" y2="148" class="leg"/><rect x="332" y="64" width="66" height="84" rx="3" class="vessel-f"/><text x="365" y="110" class="t" text-anchor="middle">Biofilter</text><rect x="444" y="115" width="50" height="5" class="table"/><line x1="450" y1="120" x2="450" y2="190" class="leg"/><line x1="488" y1="120" x2="488" y2="190" class="leg"/><text x="469" y="140" class="ts" text-anchor="middle">Tisch</text><rect x="558" y="150" width="70" height="48" class="bed"/><text x="593" y="179" class="t" text-anchor="middle">Beet</text><path d="M614 198 V230" class="p-o" marker-end="url(#A-ao)"/><rect x="576" y="242" width="52" height="32" class="water"/><path d="M576 232 V274 H628 V232" class="vessel"/><circle cx="596" cy="258" r="9" class="pump"/><polygon points="592,262 600,262 596,254" class="pump-tri"/><path d="M587 258 H534" class="p-n" marker-end="url(#A-an)"/><text x="528" y="262" class="ts" text-anchor="end">zum Pool</text><text x="602" y="290" class="ts" text-anchor="middle">Sumpf</text><path d="M398 74 H412 V188" class="p-n"/><circle cx="412" cy="188" r="3.5" class="node"/><text x="406" y="207" class="ts" text-anchor="end">Verteiler</text><path d="M412 188 H450 V122" class="p-n" marker-end="url(#A-an)"/><path d="M412 188 V216 H552 V190" class="p-o"/><path d="M552 190 V142 H598 V147" class="p-n" marker-end="url(#A-an)"/><text x="482" y="236" class="ts" text-anchor="middle">Graben unter dem Gang</text></svg></div>
+    </figure>
+    <figure class="card rec">
+      <div class="card-head">
+        <span class="badge">A+</span>
+        <div><h3>Heutiger Plan mit Zugang und Alarm <span class="chip">Empfehlung</span></h3>
+        <p>Wie A, dazu Revisionsstutzen an den vergrabenen Rohren und Wächter, die eine Verstopfung melden.</p></div>
+      </div>
+      <div class="svgwrap"><svg viewBox="0 0 640 300" role="img" aria-label="Schema Variante A+: wie A, zusätzlich Revisionsstutzen am Heber und am Bodenablauf und zwei Alarm-Wächter." class="schema"><defs><marker id="Ap-an" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-n"/></marker><marker id="Ap-ao" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-o"/></marker><marker id="Ap-av" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-v"/></marker></defs><rect x="0" y="190" width="640" height="110" class="earth"/><line x1="0" y1="190" x2="640" y2="190" class="ground"/><text x="8" y="296" class="ts" text-anchor="start">Boden</text><rect x="16" y="152" width="96" height="118" class="water"/><path d="M16 142 V270 H112 V142" class="vessel"/><text x="64" y="214" class="t" text-anchor="middle">Pool</text><line x1="504" y1="184" x2="504" y2="190" class="tick"/><line x1="548" y1="184" x2="548" y2="190" class="tick"/><text x="526" y="183" class="ts" text-anchor="middle">Gang</text><path d="M112 205 H202" class="p-o" marker-end="url(#Ap-ao)"/><text x="155" y="226" class="ts" text-anchor="middle">Heber</text><path d="M64 270 V284 H300 V190" class="p-o"/><path d="M300 190 V173" class="p-n" marker-end="url(#Ap-an)"/><text x="122" y="279" class="ts" text-anchor="start">Bodenablauf</text><line x1="289" y1="112" x2="287" y2="190" class="leg"/><line x1="311" y1="112" x2="313" y2="190" class="leg"/><path d="M282 96 V112 L300 170 L318 112 V96 Z" class="vessel-f"/><text x="300" y="89" class="t" text-anchor="middle">Absetzer</text><path d="M282 104 H262 V158" class="p-n" marker-end="url(#Ap-an)"/><rect x="196" y="166" width="74" height="84" class="water"/><path d="M196 160 V250 H270 V160" class="vessel"/><line x1="192" y1="160" x2="274" y2="160" class="lid"/><rect x="202" y="176" width="28" height="56" class="sieve"/><text x="216" y="224" class="tss" text-anchor="middle">Sieb</text><circle cx="252" cy="234" r="9" class="pump"/><polygon points="248,238 256,238 252,230" class="pump-tri"/><text x="233" y="266" class="ts" text-anchor="middle">Subtank</text><path d="M252 225 V72 H330" class="p-n" marker-end="url(#Ap-an)"/><text x="244" y="96" class="ts" text-anchor="end">hebt 2,0 m</text><line x1="340" y1="148" x2="340" y2="190" class="leg"/><line x1="390" y1="148" x2="390" y2="190" class="leg"/><line x1="332" y1="148" x2="398" y2="148" class="leg"/><rect x="332" y="64" width="66" height="84" rx="3" class="vessel-f"/><text x="365" y="110" class="t" text-anchor="middle">Biofilter</text><rect x="444" y="115" width="50" height="5" class="table"/><line x1="450" y1="120" x2="450" y2="190" class="leg"/><line x1="488" y1="120" x2="488" y2="190" class="leg"/><text x="469" y="140" class="ts" text-anchor="middle">Tisch</text><rect x="558" y="150" width="70" height="48" class="bed"/><text x="593" y="179" class="t" text-anchor="middle">Beet</text><path d="M614 198 V230" class="p-o" marker-end="url(#Ap-ao)"/><rect x="576" y="242" width="52" height="32" class="water"/><path d="M576 232 V274 H628 V232" class="vessel"/><circle cx="596" cy="258" r="9" class="pump"/><polygon points="592,262 600,262 596,254" class="pump-tri"/><path d="M587 258 H534" class="p-n" marker-end="url(#Ap-an)"/><text x="528" y="262" class="ts" text-anchor="end">zum Pool</text><text x="602" y="290" class="ts" text-anchor="middle">Sumpf</text><path d="M398 74 H412 V188" class="p-n"/><circle cx="412" cy="188" r="3.5" class="node"/><text x="406" y="207" class="ts" text-anchor="end">Verteiler</text><path d="M412 188 H450 V122" class="p-n" marker-end="url(#Ap-an)"/><path d="M412 188 V216 H552 V190" class="p-o"/><path d="M552 190 V142 H598 V147" class="p-n" marker-end="url(#Ap-an)"/><text x="482" y="236" class="ts" text-anchor="middle">Graben unter dem Gang</text><line x1="150" y1="205" x2="150" y2="190" class="acc-line"/><rect x="144" y="185" width="12" height="6" class="acc-cap"/><line x1="278" y1="284" x2="278" y2="190" class="acc-line"/><rect x="272" y="185" width="12" height="6" class="acc-cap"/><circle cx="252" cy="124" r="7" class="sens"/><text x="252" y="128" class="sens-t">!</text><text x="240" y="128" class="ts sig" text-anchor="end">Alarm</text><circle cx="216" cy="172" r="7" class="sens"/><text x="216" y="176" class="sens-t">!</text></svg></div>
+    </figure>
+    <figure class="card">
+      <div class="card-head">
+        <span class="badge">B</span>
+        <div><h3>Ring für alles</h3>
+        <p>Ein Ring über dem Gang versorgt Beete und Tische. Eine zweite Pumpe hinter dem Biofilter hebt das Wasser hinauf. Ohne zweite Pumpe ginge es nur mit einem um 0,73 m höheren Biofilter.</p></div>
+      </div>
+      <div class="svgwrap"><svg viewBox="0 0 640 300" role="img" aria-label="Schema Variante B: zweite Pumpe hinter dem Biofilter drückt in einen Ring 2,1 m über dem Gang, von dort zu Tisch und Beet." class="schema"><defs><marker id="B-an" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-n"/></marker><marker id="B-ao" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-o"/></marker><marker id="B-av" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-v"/></marker></defs><rect x="0" y="190" width="640" height="110" class="earth"/><line x1="0" y1="190" x2="640" y2="190" class="ground"/><text x="8" y="296" class="ts" text-anchor="start">Boden</text><rect x="16" y="152" width="96" height="118" class="water"/><path d="M16 142 V270 H112 V142" class="vessel"/><text x="64" y="214" class="t" text-anchor="middle">Pool</text><line x1="504" y1="184" x2="504" y2="190" class="tick"/><line x1="548" y1="184" x2="548" y2="190" class="tick"/><text x="526" y="183" class="ts" text-anchor="middle">Gang</text><path d="M112 205 H202" class="p-o" marker-end="url(#B-ao)"/><text x="155" y="226" class="ts" text-anchor="middle">Heber</text><path d="M64 270 V284 H300 V190" class="p-o"/><path d="M300 190 V173" class="p-n" marker-end="url(#B-an)"/><text x="122" y="279" class="ts" text-anchor="start">Bodenablauf</text><line x1="289" y1="112" x2="287" y2="190" class="leg"/><line x1="311" y1="112" x2="313" y2="190" class="leg"/><path d="M282 96 V112 L300 170 L318 112 V96 Z" class="vessel-f"/><text x="300" y="89" class="t" text-anchor="middle">Absetzer</text><path d="M282 104 H262 V158" class="p-n" marker-end="url(#B-an)"/><rect x="196" y="166" width="74" height="84" class="water"/><path d="M196 160 V250 H270 V160" class="vessel"/><line x1="192" y1="160" x2="274" y2="160" class="lid"/><rect x="202" y="176" width="28" height="56" class="sieve"/><text x="216" y="224" class="tss" text-anchor="middle">Sieb</text><circle cx="252" cy="234" r="9" class="pump"/><polygon points="248,238 256,238 252,230" class="pump-tri"/><text x="233" y="266" class="ts" text-anchor="middle">Subtank</text><path d="M252 225 V72 H330" class="p-n" marker-end="url(#B-an)"/><text x="244" y="96" class="ts" text-anchor="end">hebt 2,0 m</text><line x1="340" y1="148" x2="340" y2="190" class="leg"/><line x1="390" y1="148" x2="390" y2="190" class="leg"/><line x1="332" y1="148" x2="398" y2="148" class="leg"/><rect x="332" y="64" width="66" height="84" rx="3" class="vessel-f"/><text x="365" y="110" class="t" text-anchor="middle">Biofilter</text><rect x="444" y="115" width="50" height="5" class="table"/><line x1="450" y1="120" x2="450" y2="190" class="leg"/><line x1="488" y1="120" x2="488" y2="190" class="leg"/><text x="469" y="140" class="ts" text-anchor="middle">Tisch</text><rect x="558" y="150" width="70" height="48" class="bed"/><text x="593" y="179" class="t" text-anchor="middle">Beet</text><path d="M614 198 V230" class="p-o" marker-end="url(#B-ao)"/><rect x="576" y="242" width="52" height="32" class="water"/><path d="M576 232 V274 H628 V232" class="vessel"/><circle cx="596" cy="258" r="9" class="pump"/><polygon points="592,262 600,262 596,254" class="pump-tri"/><path d="M587 258 H534" class="p-n" marker-end="url(#B-an)"/><text x="528" y="262" class="ts" text-anchor="end">zum Pool</text><text x="602" y="290" class="ts" text-anchor="middle">Sumpf</text><path d="M398 74 H419" class="p-n"/><circle cx="428" cy="74" r="9" class="pump"/><polygon points="424,78 432,78 428,70" class="pump-tri"/><text x="418" y="52" class="ts" text-anchor="end">2. Pumpe</text><path d="M428 65 V32 H624" class="p-v"/><path d="M598 32 V146" class="p-v" marker-end="url(#B-av)"/><path d="M470 32 V112" class="p-v" marker-end="url(#B-av)"/><text x="530" y="24" class="ts vio" text-anchor="middle">Ring 2,1 m über dem Gang</text></svg></div>
+    </figure>
+    <figure class="card">
+      <div class="card-head">
+        <span class="badge">C</span>
+        <div><h3>Ring nur für die Beete</h3>
+        <p>Halbringe über dem Gang versorgen nur die Beete, mit einer Zusatzpumpe. Die Tische bleiben wie heute.</p></div>
+      </div>
+      <div class="svgwrap"><svg viewBox="0 0 640 300" role="img" aria-label="Schema Variante C: Tisch wie heute über den Verteiler, Beet über Zusatzpumpe und Halbring 2,1 m über dem Gang." class="schema"><defs><marker id="C-an" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-n"/></marker><marker id="C-ao" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-o"/></marker><marker id="C-av" viewBox="0 0 6 6" refX="5" refY="3" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" class="mk-v"/></marker></defs><rect x="0" y="190" width="640" height="110" class="earth"/><line x1="0" y1="190" x2="640" y2="190" class="ground"/><text x="8" y="296" class="ts" text-anchor="start">Boden</text><rect x="16" y="152" width="96" height="118" class="water"/><path d="M16 142 V270 H112 V142" class="vessel"/><text x="64" y="214" class="t" text-anchor="middle">Pool</text><line x1="504" y1="184" x2="504" y2="190" class="tick"/><line x1="548" y1="184" x2="548" y2="190" class="tick"/><text x="526" y="183" class="ts" text-anchor="middle">Gang</text><path d="M112 205 H202" class="p-o" marker-end="url(#C-ao)"/><text x="155" y="226" class="ts" text-anchor="middle">Heber</text><path d="M64 270 V284 H300 V190" class="p-o"/><path d="M300 190 V173" class="p-n" marker-end="url(#C-an)"/><text x="122" y="279" class="ts" text-anchor="start">Bodenablauf</text><line x1="289" y1="112" x2="287" y2="190" class="leg"/><line x1="311" y1="112" x2="313" y2="190" class="leg"/><path d="M282 96 V112 L300 170 L318 112 V96 Z" class="vessel-f"/><text x="300" y="89" class="t" text-anchor="middle">Absetzer</text><path d="M282 104 H262 V158" class="p-n" marker-end="url(#C-an)"/><rect x="196" y="166" width="74" height="84" class="water"/><path d="M196 160 V250 H270 V160" class="vessel"/><line x1="192" y1="160" x2="274" y2="160" class="lid"/><rect x="202" y="176" width="28" height="56" class="sieve"/><text x="216" y="224" class="tss" text-anchor="middle">Sieb</text><circle cx="252" cy="234" r="9" class="pump"/><polygon points="248,238 256,238 252,230" class="pump-tri"/><text x="233" y="266" class="ts" text-anchor="middle">Subtank</text><path d="M252 225 V72 H330" class="p-n" marker-end="url(#C-an)"/><text x="244" y="96" class="ts" text-anchor="end">hebt 2,0 m</text><line x1="340" y1="148" x2="340" y2="190" class="leg"/><line x1="390" y1="148" x2="390" y2="190" class="leg"/><line x1="332" y1="148" x2="398" y2="148" class="leg"/><rect x="332" y="64" width="66" height="84" rx="3" class="vessel-f"/><text x="365" y="110" class="t" text-anchor="middle">Biofilter</text><rect x="444" y="115" width="50" height="5" class="table"/><line x1="450" y1="120" x2="450" y2="190" class="leg"/><line x1="488" y1="120" x2="488" y2="190" class="leg"/><text x="469" y="140" class="ts" text-anchor="middle">Tisch</text><rect x="558" y="150" width="70" height="48" class="bed"/><text x="593" y="179" class="t" text-anchor="middle">Beet</text><path d="M614 198 V230" class="p-o" marker-end="url(#C-ao)"/><rect x="576" y="242" width="52" height="32" class="water"/><path d="M576 232 V274 H628 V232" class="vessel"/><circle cx="596" cy="258" r="9" class="pump"/><polygon points="592,262 600,262 596,254" class="pump-tri"/><path d="M587 258 H534" class="p-n" marker-end="url(#C-an)"/><text x="528" y="262" class="ts" text-anchor="end">zum Pool</text><text x="602" y="290" class="ts" text-anchor="middle">Sumpf</text><path d="M398 74 H419" class="p-n"/><circle cx="428" cy="74" r="9" class="pump"/><polygon points="424,78 432,78 428,70" class="pump-tri"/><text x="418" y="52" class="ts" text-anchor="end">2. Pumpe</text><path d="M428 65 V32 H624" class="p-v"/><path d="M598 32 V146" class="p-v" marker-end="url(#C-av)"/><path d="M412 74 V188" class="p-n"/><circle cx="412" cy="74" r="3" class="node"/><circle cx="412" cy="188" r="3.5" class="node"/><text x="406" y="207" class="ts" text-anchor="end">Verteiler</text><path d="M412 188 H450 V122" class="p-n" marker-end="url(#C-an)"/><text x="530" y="24" class="ts vio" text-anchor="middle">Halbring 2,1 m über dem Gang</text></svg></div>
+    </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-vergleich">
+    <h2 id="h-vergleich">Vergleich</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col"></th><th scope="col">A</th><th scope="col" class="rec">A+ (Empfehlung)</th><th scope="col">B</th><th scope="col">C</th></tr></thead>
+        <tbody><tr><th scope="row">Rohr unter dem Gang zu den Außenbeeten</th><td>ja, etwa 1 Querung je Außenbeet</td><td class="rec">ja, wie A</td><td>keins</td><td>keins</td></tr><tr><th scope="row">Rohr über Kopf (Arbeit nur mit Leiter)</th><td>0 m</td><td class="rec">0 m</td><td>21 m Ring + 85 m Abzweige</td><td>21 m Halbringe + 36 m Abzweige</td></tr><tr><th scope="row">Strom im Dauerbetrieb</th><td>430 W</td><td class="rec">430 W + Wächter</td><td>549 bis 635 W</td><td>503 W</td></tr><tr><th scope="row">Verstopfung wird bemerkt</th><td>erst beim Hinsehen</td><td class="rec"><b>in Minuten (Alarm)</b></td><td>erst beim Hinsehen</td><td>erst beim Hinsehen</td></tr><tr><th scope="row">Umbau und neue Teile</th><td>nichts</td><td class="rec">nur Zusätze am Gebauten: etwa 20 Stutzen, 4 bis 6 Schächte, 2 Wächter</td><td>Ring, 12 Stützen, 38 Abzweige mit Hahn, 2. Pumpe mit Pegelregelung; ohne 2. Pumpe: Biofilter höher und 3 gebaute Leitungen neu</td><td>Halbringe, 12 Stützen, 1 Zusatzpumpe je Linie; Gebautes bleibt</td></tr><tr><th scope="row">Risiko (Einschätzung)</th><td>gering, aber Verstopfung bleibt unbemerkt</td><td class="rec"><b>niedrig</b></td><td>mittel bis hoch: Stützen, Leck über dem Gang, eine Pumpe mehr</td><td>mittel</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-empf">
+    <h2 id="h-empf">Empfehlung</h2>
+    <div class="verdict">
+      <p><strong>A+.</strong> Der Ring spart nur die Gräben zu den Beeten, kostet aber 73 bis 205 W mehr und eine zweite Pumpe oder einen Umbau, während A+ die vergrabenen Rohre erreichbar macht und eine Verstopfung in Minuten meldet.</p>
+      <p>Wollt ihr den Ring trotzdem: B mit zweiter Pumpe, weil dabei das Gebaute stehen bleibt.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-gleich">
+    <h2 id="h-gleich">In jeder Variante gleich</h2>
+    <ul class="same">
+      <li>Subtank mit Sieb und Tauchpumpen statt Filtergrube (beschlossen 03.11., Bau noch geparkt).</li>
+      <li>12,7 m Rohr bleiben vergraben: Heber 2,4 m und Bodenablauf 10,2 m. Der Ring berührt keinen Meter davon.</li>
+      <li>Alles Wasser läuft durch den Biofilter und zurück in den einen Pool.</li>
+      <li>Die Beete leeren sich ganz (Sperrboden, beschlossen 04.11.); ihr Wasser sammelt sich im Sumpf und wird in den Pool zurückgepumpt.</li>
+      <li>Der Absetzer bleibt (beschlossen 01.11.).</li>
+    </ul>
+  </section>
+
+  <footer class="fine">
+    <p><b>Quellen.</b> Strom: Rechnung, keine Messung. A 430 W und C 503 W aus R47 Abschnitt 5 (Pumpen-Wirkungsgrad 25 %); B 549 bis 635 W aus R47c Abschnitt 7.5 (Wirkungsgrad 25 % bis 18 %, mit Biofilter höher oder zweiter Pumpe). Mehrverbrauch 73 W (C) bis 205 W (B mit zweiter Pumpe, 18 %) aus R47 und R47c.</p>
+    <p>Rohr über Kopf, Erkennung der Verstopfung, Teile für A+ (etwa 20 Stutzen, 4 bis 6 Schächte, 2 Wächter, gezählt vor dem Subtank-Beschluss): R47b Abschnitt 6.6. Querungen unter dem Gang: R47 Abschnitt 5, Annahme, Länge noch nicht ermittelt. Ring, 12 Stützen, 38 Abzweige (14 Beete, 24 Tische), Biofilter 0,73 m höher: R47 und R47c Abschnitt 7.2. Risiko: Einschätzung aus R47 und R47c.</p>
+    <p>Vergrabene 12,7 m und Subtank: R49 Abschnitt 5 und Entscheidung D75 (03.11.). Sperrboden: D77 (04.11.). Absetzer: D71 (01.11.). Rangfolge A+ vor B mit zweiter Pumpe vor B mit höherem Biofilter: R47c Abschnitt 7.5.</p>
+  </footer>
+</main>
+<script>
+/* Auf schmalen Bildschirmen zuerst den rechten Teil zeigen: dort liegt der Unterschied der Varianten. */
+function showDiff() { document.querySelectorAll('.svgwrap').forEach(function (w) { w.scrollLeft = w.scrollWidth; }); }
+showDiff(); window.addEventListener('load', showDiff);
+</script>

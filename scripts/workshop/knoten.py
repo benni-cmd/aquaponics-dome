@@ -84,6 +84,10 @@ def build(i, N, nb, p, d):
         b.add("parts.insert", family="hex_bolt", size="M10", length=p["bolt_len"], point=[round(x, 4) for x in vadd(top, ax, p["washer_t"])], direction=[round(x, 6) for x in ax], name=f"Schraube_{k}")
         b.add("parts.insert", family="washer", size="M10", point=[round(x, 4) for x in bot], direction=[round(-x, 6) for x in ax], name=f"ScheibeU_{k}")
         b.add("parts.insert", family="hex_nut", size="M10", point=[round(x, 4) for x in vadd(bot, ax, -p["washer_t"])], direction=[round(-x, 6) for x in ax], name=f"Mutter_{k}")
+        # W60 5a: parts.insert benennt nur die Komponente, die Koerper heissen Body<n> (je Arm 4 Stueck in der Einfuegereihenfolge) -> sprechende Koerpernamen + Material
+        for j, nm in enumerate((f"ScheibeO_{k}", f"Schraube_{k}", f"ScheibeU_{k}", f"Mutter_{k}")):
+            b.add("body.rename", body=f"Body{4 * k - 3 + j}", name=nm)
+        b.add("material.assign", bodies=[f"ScheibeO_{k}", f"Schraube_{k}", f"ScheibeU_{k}", f"Mutter_{k}"], material="Stahl Knoten")
     # --- Ankerlasche (nur Basisknoten, Wertigkeit 4): Platte nach unten, Loch D14 fuer M12
     if val == 4:
         b.add("component.activate", component=root)

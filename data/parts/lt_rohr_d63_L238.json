@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_rohr_d63_L238",
+  "datei": "designs/components/lt_rohr_d63_L238.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt rohr d63 L238",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "rohr"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "rohr",
+      "name": "Rohr",
+      "koerper": [
+        "Rohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 188.4 g, Einzelkoerper 63.0 x 63.0 x 238.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d63",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.238,
+      "geruest": true
+    }
+  ]
+}

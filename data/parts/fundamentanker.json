@@ -1,0 +1,194 @@
+{
+  "komponente": "fundamentanker",
+  "datei": "designs/components/fundamentanker.sc",
+  "bauteilgruppe": "Fundament",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "fundamentanker",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 12,
+  "gruppen": [
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "betonpunkt",
+        "scheibe_m16",
+        "scheibe_m12",
+        "mutter_m12"
+      ]
+    },
+    {
+      "id": "bleche_und_platten",
+      "name": "Bleche und Platten",
+      "kurz": "",
+      "teile": [
+        "ankerplatte"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "gabelaussen",
+        "gabelinnen"
+      ]
+    },
+    {
+      "id": "schrauben",
+      "name": "Schrauben",
+      "kurz": "",
+      "teile": [
+        "schraube_m16x300",
+        "schraube_m12x55"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "betonpunkt",
+      "name": "Betonpunkt",
+      "koerper": [
+        "Betonpunkt"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Beton C25",
+      "masse_mm": "Masse 230053.8 g, Einzelkoerper 400.0 x 400.0 x 600.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Beton nach Menge (Entscheidung 04.11.2026)",
+      "geruest": true
+    },
+    {
+      "id": "ankerplatte",
+      "name": "Ankerplatte",
+      "koerper": [
+        "Ankerplatte"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 7302.7 g, Einzelkoerper 15.0 x 250.0 x 250.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-platte-250x250x15",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "gabelaussen",
+      "name": "GabelAussen",
+      "koerper": [
+        "GabelAussen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 867.1 g, Einzelkoerper 10.0 x 80.0 x 140.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-ankergabel-80x140",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "gabelinnen",
+      "name": "GabelInnen",
+      "koerper": [
+        "GabelInnen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 867.1 g, Einzelkoerper 10.0 x 80.0 x 140.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-ankergabel-80x140",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "scheibe_m16",
+      "name": "Scheibe M16",
+      "koerper": [
+        "Body1",
+        "Body3"
+      ],
+      "menge": 2,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 22.6 g, Einzelkoerper 3.0 x 30.0 x 30.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    },
+    {
+      "id": "schraube_m16x300",
+      "name": "Schraube M16x300",
+      "koerper": [
+        "Body2",
+        "Body4"
+      ],
+      "menge": 2,
+      "typ": "normteil",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 1025.1 g, Einzelkoerper 24.0 x 27.7 x 310.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m16x300",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    },
+    {
+      "id": "scheibe_m12",
+      "name": "Scheibe M12",
+      "koerper": [
+        "Body5",
+        "Body7"
+      ],
+      "menge": 2,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 12.5 g, Einzelkoerper 2.5 x 24.0 x 24.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    },
+    {
+      "id": "schraube_m12x55",
+      "name": "Schraube M12x55",
+      "koerper": [
+        "Body6"
+      ],
+      "menge": 1,
+      "typ": "normteil",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 65.3 g, Einzelkoerper 18.0 x 20.8 x 62.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m12x55",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "mutter_m12",
+      "name": "Mutter M12",
+      "koerper": [
+        "Body8"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Anker",
+      "masse_mm": "Masse 14.2 g, Einzelkoerper 10.8 x 18.0 x 20.8 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    }
+  ]
+}

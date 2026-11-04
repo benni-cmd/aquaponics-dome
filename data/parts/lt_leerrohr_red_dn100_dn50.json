@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_leerrohr_red_dn100_dn50",
+  "datei": "designs/components/lt_leerrohr_red_dn100_dn50.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt leerrohr red dn100 dn50",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "reduzierung"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "reduzierung",
+      "name": "Reduzierung",
+      "koerper": [
+        "Reduzierung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT leerrohr",
+      "masse_mm": "Masse 348.1 g, Einzelkoerper 123.0 x 123.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-leerrohr-red-dn100_dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

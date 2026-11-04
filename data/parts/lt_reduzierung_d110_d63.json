@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_reduzierung_d110_d63",
+  "datei": "designs/components/lt_reduzierung_d110_d63.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt reduzierung d110 d63",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "reduzierung"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "reduzierung",
+      "name": "Reduzierung",
+      "koerper": [
+        "Reduzierung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 699.5 g, Einzelkoerper 104.5 x 121.5 x 121.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-red-d110_d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

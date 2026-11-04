@@ -1,0 +1,541 @@
+{
+  "komponente": "nft_tisch_mitte",
+  "datei": "designs/components/nft_tisch_mitte.sc",
+  "bauteilgruppe": "Tische und Beete",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "nft tisch mitte",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 124,
+  "gruppen": [
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "bein",
+        "holm",
+        "querstrebe",
+        "laengs",
+        "rinnenprofil"
+      ]
+    },
+    {
+      "id": "bleche_und_platten",
+      "name": "Bleche und Platten",
+      "kurz": "",
+      "teile": [
+        "fussplatte"
+      ]
+    },
+    {
+      "id": "winkel_flachstahl_halter",
+      "name": "Winkel, Flachstahl, Halter",
+      "kurz": "",
+      "teile": [
+        "diagonale",
+        "halter_rinne_l",
+        "halter_rinne_r",
+        "ldiag",
+        "winkel"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "verteiler",
+        "endstopfen_verteiler",
+        "endstopfen_sammelrohr",
+        "kappezulauf",
+        "kappeablauf"
+      ]
+    },
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "schlauch_rinne"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "sammelrohr"
+      ]
+    },
+    {
+      "id": "schrauben",
+      "name": "Schrauben",
+      "kurz": "",
+      "teile": [
+        "schraube_m8x30",
+        "winkelhalter",
+        "schraube_m6x40",
+        "schraube_m5x12"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "mutter_m6"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "bein",
+      "name": "Bein",
+      "koerper": [
+        "Bein_1A",
+        "Bein_1B",
+        "Bein_2A",
+        "Bein_2B"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 12354.9 g, Einzelkoerper 40.0 x 40.0 x 942.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr40x40x2.5",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 3.74,
+      "geruest": true
+    },
+    {
+      "id": "fussplatte",
+      "name": "Fussplatte",
+      "koerper": [
+        "Fussplatte_1A",
+        "Fussplatte_1B",
+        "Fussplatte_2A",
+        "Fussplatte_2B"
+      ],
+      "menge": 4,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 749.3 g, Einzelkoerper 5.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-fussplatte-70x70x5",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "holm",
+      "name": "Holm",
+      "koerper": [
+        "Holm_1",
+        "Holm_2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 9620.2 g, Einzelkoerper 40.0 x 60.0 x 1133.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr40x60x3",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.266,
+      "geruest": true
+    },
+    {
+      "id": "querstrebe",
+      "name": "Querstrebe",
+      "koerper": [
+        "Querstrebe_1",
+        "Querstrebe_2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 6957.1 g, Einzelkoerper 40.0 x 40.0 x 1053.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr40x40x2.5",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.106,
+      "geruest": true
+    },
+    {
+      "id": "diagonale",
+      "name": "Diagonale",
+      "koerper": [
+        "Diagonale_1a",
+        "Diagonale_1b",
+        "Diagonale_2a",
+        "Diagonale_2b"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 2640.5 g, Einzelkoerper 3.0 x 281.9 x 1098.7 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-flach-3mm-diagonale",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "halter_rinne_l",
+      "name": "Halter Rinne L",
+      "koerper": [
+        "Halter_1_Rinne_1_L",
+        "Halter_1_Rinne_2_L",
+        "Halter_1_Rinne_3_L",
+        "Halter_1_Rinne_4_L",
+        "Halter_2_Rinne_1_L",
+        "Halter_2_Rinne_2_L",
+        "Halter_2_Rinne_3_L",
+        "Halter_2_Rinne_4_L"
+      ],
+      "menge": 8,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 216.9 g, Einzelkoerper 25.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-rinnenhalter-25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 8.0,
+      "geruest": true
+    },
+    {
+      "id": "halter_rinne_r",
+      "name": "Halter Rinne R",
+      "koerper": [
+        "Halter_1_Rinne_1_R",
+        "Halter_1_Rinne_2_R",
+        "Halter_1_Rinne_3_R",
+        "Halter_1_Rinne_4_R",
+        "Halter_2_Rinne_1_R",
+        "Halter_2_Rinne_2_R",
+        "Halter_2_Rinne_3_R",
+        "Halter_2_Rinne_4_R"
+      ],
+      "menge": 8,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 216.9 g, Einzelkoerper 25.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-rinnenhalter-25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 8.0,
+      "geruest": true
+    },
+    {
+      "id": "laengs",
+      "name": "Laengs",
+      "koerper": [
+        "Laengs_1",
+        "Laengs_2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 6375.7 g, Einzelkoerper 40.0 x 40.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr40x40x2.5",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.93,
+      "geruest": true
+    },
+    {
+      "id": "ldiag",
+      "name": "LDiag",
+      "koerper": [
+        "LDiag_1",
+        "LDiag_2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1216.0 g, Einzelkoerper 3.0 x 261.8 x 1010.7 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-flach-3mm-diagonale",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    },
+    {
+      "id": "verteiler",
+      "name": "Verteiler",
+      "koerper": [
+        "Verteiler"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 337.1 g, Einzelkoerper 25.0 x 365.8 x 1046.7 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-verteiler-d25-nft",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "endstopfen_verteiler",
+      "name": "Endstopfen Verteiler",
+      "koerper": [
+        "Endstopfen_Verteiler"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 7.6 g, Einzelkoerper 18.6 x 23.9 x 24.8 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "schlauch_rinne",
+      "name": "Schlauch Rinne",
+      "koerper": [
+        "Schlauch_Rinne_1",
+        "Schlauch_Rinne_2",
+        "Schlauch_Rinne_3",
+        "Schlauch_Rinne_4"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "Schlauch hellblau",
+      "masse_mm": "Masse 49.8 g, Einzelkoerper 20.0 x 20.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-schlauch-rinne-id16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "sammelrohr",
+      "name": "Sammelrohr",
+      "koerper": [
+        "Sammelrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 713.9 g, Einzelkoerper 50.0 x 385.1 x 1054.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d50",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.385,
+      "geruest": true
+    },
+    {
+      "id": "endstopfen_sammelrohr",
+      "name": "Endstopfen Sammelrohr",
+      "koerper": [
+        "Endstopfen_Sammelrohr"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 41.8 g, Einzelkoerper 32.5 x 43.6 x 47.7 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "schraube_m8x30",
+      "name": "Schraube M8x30",
+      "koerper": [
+        "Body21",
+        "Body22",
+        "Body23",
+        "Body24",
+        "Body1",
+        "Body2",
+        "Body3",
+        "Body4"
+      ],
+      "menge": 8,
+      "typ": "normteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 143.4 g, Einzelkoerper 13.0 x 15.0 x 35.3 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m8x30",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 8.0,
+      "geruest": true
+    },
+    {
+      "id": "winkel",
+      "name": "Winkel",
+      "koerper": [
+        "Winkel (3)",
+        "Winkel (4)",
+        "Winkel",
+        "Winkel (2)"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 507.3 g, Einzelkoerper 36.0 x 60.0 x 60.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-winkel-36x60x60",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "winkelhalter",
+      "name": "winkelhalter",
+      "koerper": [
+        "winkelhalter (13)",
+        "winkelhalter (14)",
+        "winkelhalter (15)",
+        "winkelhalter (16)",
+        "winkelhalter (17)",
+        "winkelhalter (18)",
+        "winkelhalter (19)",
+        "winkelhalter (20)",
+        "winkelhalter (21)",
+        "winkelhalter (22)",
+        "winkelhalter (23)",
+        "winkelhalter (24)",
+        "winkelhalter",
+        "winkelhalter (2)",
+        "winkelhalter (3)",
+        "winkelhalter (4)",
+        "winkelhalter (5)",
+        "winkelhalter (6)",
+        "winkelhalter (7)",
+        "winkelhalter (8)",
+        "winkelhalter (9)",
+        "winkelhalter (10)",
+        "winkelhalter (11)",
+        "winkelhalter (12)"
+      ],
+      "menge": 24,
+      "typ": "normteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 188.6 g, Einzelkoerper 10.0 x 11.5 x 20.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-halter-klein-12x10x20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 24.0,
+      "geruest": true
+    },
+    {
+      "id": "schraube_m6x40",
+      "name": "Schraube M6x40",
+      "koerper": [
+        "Body25",
+        "Body27",
+        "Body29",
+        "Body31",
+        "Body5",
+        "Body7",
+        "Body9",
+        "Body11"
+      ],
+      "menge": 8,
+      "typ": "normteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 92.8 g, Einzelkoerper 10.0 x 11.5 x 44.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m6x40",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 8.0,
+      "geruest": true
+    },
+    {
+      "id": "mutter_m6",
+      "name": "Mutter M6",
+      "koerper": [
+        "Body26",
+        "Body28",
+        "Body30",
+        "Body32",
+        "Body6",
+        "Body8",
+        "Body10",
+        "Body12"
+      ],
+      "menge": 8,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 19.0 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    },
+    {
+      "id": "schraube_m5x12",
+      "name": "Schraube M5x12",
+      "koerper": [
+        "Body33",
+        "Body34",
+        "Body35",
+        "Body36",
+        "Body37",
+        "Body38",
+        "Body39",
+        "Body40",
+        "Body13",
+        "Body14",
+        "Body15",
+        "Body16",
+        "Body17",
+        "Body18",
+        "Body19",
+        "Body20"
+      ],
+      "menge": 16,
+      "typ": "normteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 54.0 g, Einzelkoerper 8.0 x 9.2 x 15.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m5x12",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 16.0,
+      "geruest": true
+    },
+    {
+      "id": "rinnenprofil",
+      "name": "Rinnenprofil",
+      "koerper": [
+        "Rinnenprofil",
+        "Rinnenprofil (2)",
+        "Rinnenprofil (3)",
+        "Rinnenprofil (4)"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 10681.1 g, Einzelkoerper 129.9 x 130.0 x 2019.2 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-pvcu-rinne-130x100",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 7.05,
+      "geruest": true
+    },
+    {
+      "id": "kappezulauf",
+      "name": "KappeZulauf",
+      "koerper": [
+        "KappeZulauf",
+        "KappeZulauf (2)",
+        "KappeZulauf (3)",
+        "KappeZulauf (4)"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 401.5 g, Einzelkoerper 43.4 x 100.1 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-rinne-kappe-zulauf",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "kappeablauf",
+      "name": "KappeAblauf",
+      "koerper": [
+        "KappeAblauf",
+        "KappeAblauf (2)",
+        "KappeAblauf (3)",
+        "KappeAblauf (4)"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 403.2 g, Einzelkoerper 48.5 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-rinne-kappe-ablauf",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    }
+  ]
+}

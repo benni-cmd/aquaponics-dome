@@ -1,0 +1,77 @@
+{
+  "komponente": "halter_hahn",
+  "datei": "designs/components/halter_hahn.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter hahn",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "anbohrschelle",
+        "kugelhahn"
+      ]
+    },
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "schlauchtuelle"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "anbohrschelle",
+      "name": "Anbohrschelle",
+      "koerper": [
+        "Anbohrschelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 91.4 g, Einzelkoerper 40.0 x 50.0 x 60.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-anbohrschelle",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kugelhahn",
+      "name": "Kugelhahn",
+      "koerper": [
+        "Kugelhahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 44.2 g, Einzelkoerper 30.0 x 49.0 x 80.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "schlauchtuelle",
+      "name": "Schlauchtuelle",
+      "koerper": [
+        "Schlauchtuelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 5.8 g, Einzelkoerper 14.0 x 14.0 x 40.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-schlauchtuelle-d12",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

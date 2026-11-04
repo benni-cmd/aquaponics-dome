@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_t_d110",
+  "datei": "designs/components/lt_t_d110.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt t d110",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "t_stueck"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_stueck",
+      "name": "T Stueck",
+      "koerper": [
+        "T_Stueck"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 1130.1 g, Einzelkoerper 121.5 x 182.5 x 243.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-t-d110",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

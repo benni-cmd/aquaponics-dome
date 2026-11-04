@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_kappe_d50",
+  "datei": "designs/components/lt_kappe_d50.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt kappe d50",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "kappe"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "kappe",
+      "name": "Kappe",
+      "koerper": [
+        "Kappe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 42.7 g, Einzelkoerper 34.0 x 58.5 x 58.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

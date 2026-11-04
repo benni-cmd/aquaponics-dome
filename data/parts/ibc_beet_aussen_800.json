@@ -1,0 +1,359 @@
+{
+  "komponente": "ibc_beet_aussen_800",
+  "datei": "designs/components/ibc_beet_aussen_800.sc",
+  "bauteilgruppe": "Tische und Beete",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "ibc beet aussen 800",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 40,
+  "gruppen": [
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "wanne"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "stuetze"
+      ]
+    },
+    {
+      "id": "bleche_und_platten",
+      "name": "Bleche und Platten",
+      "kurz": "",
+      "teile": [
+        "siebboden",
+        "medienschutz"
+      ]
+    },
+    {
+      "id": "toepfe_und_substrat",
+      "name": "Toepfe und Substrat",
+      "kurz": "",
+      "teile": [
+        "medium"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "bulkhead"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "reduzierhuelse_boden",
+        "plattenhuelse",
+        "reduzierhuelse_platte",
+        "reduktion",
+        "schutzkappe",
+        "endstopfen_zulauf",
+        "schachtkappe"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "standrohr",
+        "glocke",
+        "tropfrohr",
+        "reinigungsschacht"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "wanne",
+      "name": "Wanne",
+      "koerper": [
+        "Wanne"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "HDPE weiss",
+      "masse_mm": "Masse 27083.3 g, Einzelkoerper 637.0 x 800.0 x 2640.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-beetwanne",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "stuetze",
+      "name": "Stuetze",
+      "koerper": [
+        "Stuetze",
+        "Stuetze (2)",
+        "Stuetze (3)",
+        "Stuetze (4)",
+        "Stuetze (5)",
+        "Stuetze (6)",
+        "Stuetze (7)",
+        "Stuetze (8)",
+        "Stuetze (9)",
+        "Stuetze (10)",
+        "Stuetze (11)",
+        "Stuetze (12)",
+        "Stuetze (13)",
+        "Stuetze (14)",
+        "Stuetze (15)",
+        "Stuetze (16)",
+        "Stuetze (17)",
+        "Stuetze (18)",
+        "Stuetze (19)",
+        "Stuetze (20)",
+        "Stuetze (21)",
+        "Stuetze (22)",
+        "Stuetze (23)",
+        "Stuetze (24)"
+      ],
+      "menge": 24,
+      "typ": "sonderteil",
+      "werkstoff": "PP grau",
+      "masse_mm": "Masse 19577.4 g, Einzelkoerper 60.0 x 60.0 x 249.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-pp-stuetze-60x60",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 24.0,
+      "geruest": true
+    },
+    {
+      "id": "siebboden",
+      "name": "Siebboden",
+      "koerper": [
+        "Siebboden"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "PP grau",
+      "masse_mm": "Masse 14076.4 g, Einzelkoerper 8.0 x 748.0 x 2588.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-pp-siebboden-beet",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "medium",
+      "name": "Medium",
+      "koerper": [
+        "Medium"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Medium Blaehton",
+      "masse_mm": "Masse 517206.2 g, Einzelkoerper 300.0 x 748.0 x 2588.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "TOP-blaehton",
+      "artikel_einheit": "m3",
+      "artikel_menge_je_instanz": 0.5807,
+      "geruest": true
+    },
+    {
+      "id": "bulkhead",
+      "name": "Bulkhead",
+      "koerper": [
+        "Bulkhead"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 17.0 g, Einzelkoerper 39.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-bulkhead-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "reduzierhuelse_boden",
+      "name": "Reduzierhuelse Boden",
+      "koerper": [
+        "Reduzierhuelse_Boden"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 17.1 g, Einzelkoerper 32.0 x 32.0 x 39.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-reduktion-d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "plattenhuelse",
+      "name": "Plattenhuelse",
+      "koerper": [
+        "Plattenhuelse"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 9.8 g, Einzelkoerper 15.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-reduktion-d16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "reduzierhuelse_platte",
+      "name": "Reduzierhuelse Platte",
+      "koerper": [
+        "Reduzierhuelse_Platte"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 6.6 g, Einzelkoerper 15.0 x 32.0 x 32.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-reduktion-d16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "reduktion",
+      "name": "Reduktion",
+      "koerper": [
+        "Reduktion"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 57.0 g, Einzelkoerper 46.0 x 46.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-reduktion-d50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "standrohr",
+      "name": "Standrohr",
+      "koerper": [
+        "Standrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 86.3 g, Einzelkoerper 25.0 x 25.0 x 557.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.557,
+      "geruest": true
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "koerper": [
+        "Glocke"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 293.5 g, Einzelkoerper 75.0 x 75.0 x 295.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d75",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.295,
+      "geruest": true
+    },
+    {
+      "id": "medienschutz",
+      "name": "Medienschutz",
+      "koerper": [
+        "Medienschutz"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "V2A Lochblech",
+      "masse_mm": "Masse 1222.1 g, Einzelkoerper 110.0 x 110.0 x 320.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-v2a-lochblech-medienschutz",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "schutzkappe",
+      "name": "Schutzkappe",
+      "koerper": [
+        "Schutzkappe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 199.6 g, Einzelkoerper 15.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "tropfrohr",
+      "name": "Tropfrohr",
+      "koerper": [
+        "Tropfrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 372.3 g, Einzelkoerper 20.0 x 20.0 x 2356.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d20",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.356,
+      "geruest": true
+    },
+    {
+      "id": "endstopfen_zulauf",
+      "name": "Endstopfen Zulauf",
+      "koerper": [
+        "Endstopfen_Zulauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 5.4 g, Einzelkoerper 15.6 x 15.6 x 20.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "reinigungsschacht",
+      "name": "Reinigungsschacht",
+      "koerper": [
+        "Reinigungsschacht"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 444.0 g, Einzelkoerper 110.0 x 110.0 x 320.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d110",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.32,
+      "geruest": true
+    },
+    {
+      "id": "schachtkappe",
+      "name": "Schachtkappe",
+      "koerper": [
+        "Schachtkappe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Beet",
+      "masse_mm": "Masse 199.6 g, Einzelkoerper 15.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

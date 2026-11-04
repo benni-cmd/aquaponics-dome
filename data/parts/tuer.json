@@ -1,0 +1,136 @@
+{
+  "komponente": "tuer",
+  "datei": "designs/components/tuer.sc",
+  "bauteilgruppe": "Huelle",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "tuer",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 9,
+  "gruppen": [
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "t_pfosten_l",
+        "t_pfosten_r",
+        "t_sturz",
+        "t_schwelle",
+        "t_blatt",
+        "t_scharnier",
+        "t_griff"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_pfosten_l",
+      "name": "T Pfosten L",
+      "koerper": [
+        "T4_Pfosten_L"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 21942.9 g, Einzelkoerper 113.4 x 113.4 x 2100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuer-modellvariante",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "t_pfosten_r",
+      "name": "T Pfosten R",
+      "koerper": [
+        "T4_Pfosten_R"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 21942.9 g, Einzelkoerper 113.4 x 113.4 x 2100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuer-modellvariante",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "t_sturz",
+      "name": "T Sturz",
+      "koerper": [
+        "T4_Sturz"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 12329.8 g, Einzelkoerper 90.0 x 450.2 x 1150.1 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuer-modellvariante",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "t_schwelle",
+      "name": "T Schwelle",
+      "koerper": [
+        "T4_Schwelle"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 6697.7 g, Einzelkoerper 40.0 x 469.3 x 1156.2 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuer-modellvariante",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "t_blatt",
+      "name": "T Blatt",
+      "koerper": [
+        "T4_Blatt"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 19783.4 g, Einzelkoerper 351.8 x 965.0 x 1960.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerblatt-1000x2000",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "t_scharnier",
+      "name": "T Scharnier",
+      "koerper": [
+        "T4_Scharnier_1",
+        "T4_Scharnier_2",
+        "T4_Scharnier_3"
+      ],
+      "menge": 3,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 262.1 g, Einzelkoerper 28.0 x 28.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerscharnier",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 3.0,
+      "geruest": true
+    },
+    {
+      "id": "t_griff",
+      "name": "T Griff",
+      "koerper": [
+        "T4_Griff"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 166.0 g, Einzelkoerper 32.0 x 79.9 x 162.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerdruecker",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    }
+  ]
+}

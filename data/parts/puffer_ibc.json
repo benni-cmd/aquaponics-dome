@@ -1,0 +1,616 @@
+{
+  "komponente": "puffer_ibc",
+  "datei": "designs/components/puffer_ibc.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "puffer ibc",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 77,
+  "gruppen": [
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "kufe",
+        "deckplatte",
+        "rahmen_u_xm",
+        "rahmen_u_ym",
+        "rahmen_u_xp",
+        "rahmen_u_yp",
+        "rahmen_o_xm",
+        "rahmen_o_ym",
+        "rahmen_o_xp",
+        "rahmen_o_yp",
+        "pfosten_mm",
+        "pfosten_mp",
+        "pfosten_pm",
+        "pfosten_pp",
+        "stab_v_v",
+        "stab_h_v",
+        "stab_v_h",
+        "stab_h_h",
+        "stab_s_a",
+        "stab_t_a",
+        "stab_s_b",
+        "stab_t_b",
+        "blase",
+        "deckel"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "zulauf",
+        "ueberlauf",
+        "belueftung",
+        "sensorstutzen",
+        "ablauf_stutzen",
+        "ablauf_zapfen"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "kugelhahn",
+        "hahn_hebel"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "wasser"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "kufe",
+      "name": "Kufe",
+      "koerper": [
+        "Kufe_1",
+        "Kufe_2",
+        "Kufe_3"
+      ],
+      "menge": 3,
+      "typ": "kaufteil",
+      "werkstoff": "HDPE Palette",
+      "masse_mm": "Masse 14745.6 g, Einzelkoerper 128.0 x 160.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "deckplatte",
+      "name": "Deckplatte",
+      "koerper": [
+        "Deckplatte"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "HDPE Palette",
+      "masse_mm": "Masse 5280.0 g, Einzelkoerper 22.0 x 1000.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_u_xm",
+      "name": "Rahmen u xm",
+      "koerper": [
+        "Rahmen_u_xm1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_u_ym",
+      "name": "Rahmen u ym",
+      "koerper": [
+        "Rahmen_u_ym1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_u_xp",
+      "name": "Rahmen u xp",
+      "koerper": [
+        "Rahmen_u_xp1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_u_yp",
+      "name": "Rahmen u yp",
+      "koerper": [
+        "Rahmen_u_yp1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_o_xm",
+      "name": "Rahmen o xm",
+      "koerper": [
+        "Rahmen_o_xm1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_o_ym",
+      "name": "Rahmen o ym",
+      "koerper": [
+        "Rahmen_o_ym1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_o_xp",
+      "name": "Rahmen o xp",
+      "koerper": [
+        "Rahmen_o_xp1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1271.4 g, Einzelkoerper 25.0 x 25.0 x 1200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rahmen_o_yp",
+      "name": "Rahmen o yp",
+      "koerper": [
+        "Rahmen_o_yp1"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1008.3 g, Einzelkoerper 25.0 x 25.0 x 950.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_mm",
+      "name": "Pfosten mm",
+      "koerper": [
+        "Pfosten_mm"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_mp",
+      "name": "Pfosten mp",
+      "koerper": [
+        "Pfosten_mp"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_pm",
+      "name": "Pfosten pm",
+      "koerper": [
+        "Pfosten_pm"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_pp",
+      "name": "Pfosten pp",
+      "koerper": [
+        "Pfosten_pp"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1024.2 g, Einzelkoerper 25.0 x 25.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_v_v",
+      "name": "Stab V v",
+      "koerper": [
+        "Stab_V_v",
+        "Stab_V_v (2)",
+        "Stab_V_v (3)",
+        "Stab_V_v (4)",
+        "Stab_V_v (5)"
+      ],
+      "menge": 5,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1902.6 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_h_v",
+      "name": "Stab H v",
+      "koerper": [
+        "Stab_H_v",
+        "Stab_H_v (2)",
+        "Stab_H_v (3)",
+        "Stab_H_v (4)",
+        "Stab_H_v (5)",
+        "Stab_H_v (6)",
+        "Stab_H_v (7)",
+        "Stab_H_v (8)"
+      ],
+      "menge": 8,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 3627.3 g, Einzelkoerper 8.0 x 8.0 x 1150.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_v_h",
+      "name": "Stab V h",
+      "koerper": [
+        "Stab_V_h",
+        "Stab_V_h (2)",
+        "Stab_V_h (3)",
+        "Stab_V_h (4)",
+        "Stab_V_h (5)"
+      ],
+      "menge": 5,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1902.6 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_h_h",
+      "name": "Stab H h",
+      "koerper": [
+        "Stab_H_h",
+        "Stab_H_h (2)",
+        "Stab_H_h (3)",
+        "Stab_H_h (4)",
+        "Stab_H_h (5)",
+        "Stab_H_h (6)",
+        "Stab_H_h (7)",
+        "Stab_H_h (8)"
+      ],
+      "menge": 8,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 3627.3 g, Einzelkoerper 8.0 x 8.0 x 1150.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_s_a",
+      "name": "Stab S a",
+      "koerper": [
+        "Stab_S_a",
+        "Stab_S_a (2)",
+        "Stab_S_a (3)",
+        "Stab_S_a (4)"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1522.1 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_t_a",
+      "name": "Stab T a",
+      "koerper": [
+        "Stab_T_a",
+        "Stab_T_a (2)",
+        "Stab_T_a (3)",
+        "Stab_T_a (4)",
+        "Stab_T_a (5)",
+        "Stab_T_a (6)",
+        "Stab_T_a (7)",
+        "Stab_T_a (8)"
+      ],
+      "menge": 8,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 2996.8 g, Einzelkoerper 8.0 x 8.0 x 950.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_s_b",
+      "name": "Stab S b",
+      "koerper": [
+        "Stab_S_b",
+        "Stab_S_b (2)",
+        "Stab_S_b (3)",
+        "Stab_S_b (4)"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1522.1 g, Einzelkoerper 8.0 x 8.0 x 965.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stab_t_b",
+      "name": "Stab T b",
+      "koerper": [
+        "Stab_T_b",
+        "Stab_T_b (2)",
+        "Stab_T_b (3)",
+        "Stab_T_b (4)",
+        "Stab_T_b (5)",
+        "Stab_T_b (6)",
+        "Stab_T_b (7)",
+        "Stab_T_b (8)"
+      ],
+      "menge": 8,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 2996.8 g, Einzelkoerper 8.0 x 8.0 x 950.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "blase",
+      "name": "Blase",
+      "koerper": [
+        "Blase"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PE Blase",
+      "masse_mm": "Masse 14844.7 g, Einzelkoerper 940.0 x 1010.0 x 1140.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "deckel",
+      "name": "Deckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PE Blase",
+      "masse_mm": "Masse 206.0 g, Einzelkoerper 5.0 x 235.0 x 235.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ibc-1000l",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "zulauf",
+      "name": "Zulauf",
+      "koerper": [
+        "Zulauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 77.8 g, Einzelkoerper 63.0 x 63.0 x 75.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "ueberlauf",
+      "name": "Ueberlauf",
+      "koerper": [
+        "Ueberlauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 77.8 g, Einzelkoerper 63.0 x 63.0 x 75.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "belueftung",
+      "name": "Belueftung",
+      "koerper": [
+        "Belueftung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 14.6 g, Einzelkoerper 32.0 x 32.0 x 45.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "sensorstutzen",
+      "name": "Sensorstutzen",
+      "koerper": [
+        "Sensorstutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 46.7 g, Einzelkoerper 45.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "ablauf_stutzen",
+      "name": "Ablauf Stutzen",
+      "koerper": [
+        "Ablauf_Stutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 36.3 g, Einzelkoerper 35.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kugelhahn",
+      "name": "Kugelhahn",
+      "koerper": [
+        "Kugelhahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 377.1 g, Einzelkoerper 70.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "hahn_hebel",
+      "name": "Hahn Hebel",
+      "koerper": [
+        "Hahn_Hebel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 26.2 g, Einzelkoerper 8.0 x 18.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "ablauf_zapfen",
+      "name": "Ablauf Zapfen",
+      "koerper": [
+        "Ablauf_Zapfen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 41.5 g, Einzelkoerper 40.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "wasser",
+      "name": "Wasser",
+      "koerper": [
+        "Wasser"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Wasser",
+      "masse_mm": "Masse 899998.4 g, Einzelkoerper 850.4 x 935.0 x 1135.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Wasserkoerper, kein Bauteil",
+      "geruest": true
+    }
+  ]
+}

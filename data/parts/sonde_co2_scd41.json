@@ -1,0 +1,38 @@
+{
+  "komponente": "sonde_co2_scd41",
+  "datei": "designs/components/sonde_co2_scd41.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "sonde co2 scd41",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "messtechnik",
+      "name": "Messtechnik",
+      "kurz": "",
+      "teile": [
+        "sonde"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "sonde",
+      "name": "Sonde",
+      "koerper": [
+        "Sonde"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Platine gruen",
+      "masse_mm": "Masse 7.7 g, Einzelkoerper 10.0 x 17.0 x 25.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "MES-co2-scd41",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

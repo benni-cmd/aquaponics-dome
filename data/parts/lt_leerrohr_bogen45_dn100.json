@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_leerrohr_bogen45_dn100",
+  "datei": "designs/components/lt_leerrohr_bogen45_dn100.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt leerrohr bogen45 dn100",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "leerrohrbogen"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "leerrohrbogen",
+      "name": "Leerrohrbogen",
+      "koerper": [
+        "Leerrohrbogen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT leerrohr",
+      "masse_mm": "Masse 959.7 g, Einzelkoerper 123.0 x 306.2 x 535.8 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-leerrohr-bogen45-dn100",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

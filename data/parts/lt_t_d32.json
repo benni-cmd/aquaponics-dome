@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_t_d32",
+  "datei": "designs/components/lt_t_d32.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt t d32",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "t_stueck"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_stueck",
+      "name": "T Stueck",
+      "koerper": [
+        "T_Stueck"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 70.9 g, Einzelkoerper 39.6 x 61.6 x 83.6 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-t-d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

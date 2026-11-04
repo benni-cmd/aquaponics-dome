@@ -1,0 +1,123 @@
+{
+  "komponente": "lt_schelle_vk_d32",
+  "datei": "designs/components/lt_schelle_vk_d32.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt schelle vk d32",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 11,
+  "gruppen": [
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "halbschale_vorn",
+        "halbschale_hinten",
+        "spannband"
+      ]
+    },
+    {
+      "id": "schrauben",
+      "name": "Schrauben",
+      "kurz": "",
+      "teile": [
+        "schraube_m6x16"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "mutter_m6"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "halbschale_vorn",
+      "name": "Halbschale vorn",
+      "koerper": [
+        "Halbschale_vorn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT stahl",
+      "masse_mm": "Masse 41.6 g, Einzelkoerper 19.0 x 20.0 x 66.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-rohrschelle-vk-vk_d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "halbschale_hinten",
+      "name": "Halbschale hinten",
+      "koerper": [
+        "Halbschale_hinten"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT stahl",
+      "masse_mm": "Masse 122.5 g, Einzelkoerper 34.0 x 66.0 x 74.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-rohrschelle-vk-vk_d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "spannband",
+      "name": "Spannband",
+      "koerper": [
+        "Spannband"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT stahl",
+      "masse_mm": "Masse 71.0 g, Einzelkoerper 20.0 x 43.5 x 73.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-rohrschelle-vk-vk_d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "schraube_m6x16",
+      "name": "Schraube M6x16",
+      "koerper": [
+        "Body1",
+        "Body3",
+        "Body5",
+        "Body7"
+      ],
+      "menge": 4,
+      "typ": "normteil",
+      "werkstoff": "LT stahl",
+      "masse_mm": "Masse 25.1 g, Einzelkoerper 10.0 x 11.5 x 20.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m6x16",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "mutter_m6",
+      "name": "Mutter M6",
+      "koerper": [
+        "Body2",
+        "Body4",
+        "Body6",
+        "Body8"
+      ],
+      "menge": 4,
+      "typ": "sonderteil",
+      "werkstoff": "LT stahl",
+      "masse_mm": "Masse 9.5 g, Einzelkoerper 5.2 x 10.0 x 11.5 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    }
+  ]
+}

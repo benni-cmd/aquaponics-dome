@@ -1,0 +1,38 @@
+{
+  "komponente": "haut_profil",
+  "datei": "designs/components/haut_profil.sc",
+  "bauteilgruppe": "Huelle",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "haut profil",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "kappe"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "kappe",
+      "name": "Kappe",
+      "koerper": [
+        "Kappe"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Aluminium",
+      "masse_mm": "Masse 743.7 g, Einzelkoerper 8.0 x 30.0 x 3279.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-alu-haut-profil",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 3.279,
+      "geruest": true
+    }
+  ]
+}

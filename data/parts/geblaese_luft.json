@@ -1,0 +1,165 @@
+{
+  "komponente": "geblaese_luft",
+  "datei": "designs/components/geblaese_luft.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "geblaese luft",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 10,
+  "gruppen": [
+    {
+      "id": "pumpen",
+      "name": "Pumpen",
+      "kurz": "",
+      "teile": [
+        "pumpe",
+        "netzkabel"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "gummifuss"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "stutzen_luft"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "rohrschleife",
+        "rohr_austritt"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "rueckschlagventil"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "pumpe",
+      "name": "Pumpe",
+      "koerper": [
+        "Pumpe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "GL Pumpe",
+      "masse_mm": "Masse 9999.6 g, Einzelkoerper 180.0 x 230.0 x 240.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PMP-geblaese-luft",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "gummifuss",
+      "name": "Gummifuss",
+      "koerper": [
+        "Gummifuss_1",
+        "Gummifuss_2",
+        "Gummifuss_3",
+        "Gummifuss_4"
+      ],
+      "menge": 4,
+      "typ": "sonderteil",
+      "werkstoff": "GL Fuss",
+      "masse_mm": "Masse 90.5 g, Einzelkoerper 15.0 x 40.0 x 40.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-gummifuss-40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "netzkabel",
+      "name": "Netzkabel",
+      "koerper": [
+        "Netzkabel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "GL Kabel",
+      "masse_mm": "Masse 6.5 g, Einzelkoerper 8.0 x 8.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PMP-geblaese-luft",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "stutzen_luft",
+      "name": "Stutzen Luft",
+      "koerper": [
+        "Stutzen_Luft"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "GL PVC",
+      "masse_mm": "Masse 5.8 g, Einzelkoerper 20.0 x 20.0 x 40.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "rohrschleife",
+      "name": "Rohrschleife",
+      "koerper": [
+        "Rohrschleife"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "GL PVC",
+      "masse_mm": "Masse 89.4 g, Einzelkoerper 20.0 x 240.0 x 435.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d20",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.733,
+      "geruest": true
+    },
+    {
+      "id": "rueckschlagventil",
+      "name": "Rueckschlagventil",
+      "koerper": [
+        "Rueckschlagventil"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "GL Hahn",
+      "masse_mm": "Masse 85.0 g, Einzelkoerper 39.0 x 39.0 x 82.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-rsv-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "rohr_austritt",
+      "name": "Rohr Austritt",
+      "koerper": [
+        "Rohr_Austritt"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "GL PVC",
+      "masse_mm": "Masse 14.4 g, Einzelkoerper 20.0 x 20.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d20",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.1,
+      "geruest": true
+    }
+  ]
+}

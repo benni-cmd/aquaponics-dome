@@ -1,0 +1,93 @@
+{
+  "komponente": "luft_scheibenbelueftung",
+  "datei": "designs/components/luft_scheibenbelueftung.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "luft scheibenbelueftung",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 4,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "stutzen"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "stuetzfuss",
+        "tragteller",
+        "membran"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "stutzen",
+      "name": "Stutzen",
+      "koerper": [
+        "Stutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LV PP",
+      "masse_mm": "Masse 10.5 g, Einzelkoerper 25.0 x 25.0 x 40.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "stuetzfuss",
+      "name": "Stuetzfuss",
+      "koerper": [
+        "Stuetzfuss"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "LV PP",
+      "masse_mm": "Masse 166.0 g, Einzelkoerper 50.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-scheibenbelueftung-270",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "tragteller",
+      "name": "Tragteller",
+      "koerper": [
+        "Tragteller"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "LV PP",
+      "masse_mm": "Masse 893.3 g, Einzelkoerper 20.0 x 250.0 x 250.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-scheibenbelueftung-270",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "membran",
+      "name": "Membran",
+      "koerper": [
+        "Membran"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "LV EPDM",
+      "masse_mm": "Masse 395.0 g, Einzelkoerper 6.0 x 270.0 x 270.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-scheibenbelueftung-270",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

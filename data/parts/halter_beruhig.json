@@ -1,0 +1,101 @@
+{
+  "komponente": "halter_beruhig",
+  "datei": "designs/components/halter_beruhig.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter beruhig",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 5,
+  "gruppen": [
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "rohr"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "bodenkappe",
+        "deckelkappe"
+      ]
+    },
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "schelle"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "rohr",
+      "name": "Rohr",
+      "koerper": [
+        "Rohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 426.4 g, Einzelkoerper 63.0 x 63.0 x 600.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d63",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.6,
+      "geruest": true
+    },
+    {
+      "id": "bodenkappe",
+      "name": "Bodenkappe",
+      "koerper": [
+        "Bodenkappe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 107.7 g, Einzelkoerper 20.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "deckelkappe",
+      "name": "Deckelkappe",
+      "koerper": [
+        "Deckelkappe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 152.1 g, Einzelkoerper 30.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "schelle",
+      "name": "Schelle",
+      "koerper": [
+        "Schelle_1",
+        "Schelle_2"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 487.1 g, Einzelkoerper 15.0 x 75.0 x 105.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-rohrschelle-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    }
+  ]
+}

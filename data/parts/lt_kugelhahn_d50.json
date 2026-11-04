@@ -1,0 +1,70 @@
+{
+  "komponente": "lt_kugelhahn_d50",
+  "datei": "designs/components/lt_kugelhahn_d50.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt kugelhahn d50",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "kugelhahn",
+        "spindel",
+        "hebel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "kugelhahn",
+      "name": "Kugelhahn",
+      "koerper": [
+        "Kugelhahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT hahn",
+      "masse_mm": "Masse 223.8 g, Einzelkoerper 70.5 x 70.5 x 112.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "spindel",
+      "name": "Spindel",
+      "koerper": [
+        "Spindel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT hahn",
+      "masse_mm": "Masse 14.1 g, Einzelkoerper 14.0 x 14.0 x 65.2 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "hebel",
+      "name": "Hebel",
+      "koerper": [
+        "Hebel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT hahn",
+      "masse_mm": "Masse 21.6 g, Einzelkoerper 10.0 x 14.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    }
+  ]
+}

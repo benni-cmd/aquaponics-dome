@@ -1,0 +1,277 @@
+{
+  "komponente": "mensch_referenz_messen",
+  "datei": "designs/components/mensch_referenz_messen.sc",
+  "bauteilgruppe": "Massfigur",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "mensch referenz messen",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 15,
+  "gruppen": [
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "rumpf",
+        "kopf",
+        "arm_r_ober",
+        "arm_r_unter",
+        "hand_r",
+        "arm_l_ober",
+        "arm_l_unter",
+        "hand_l",
+        "messgeraet",
+        "bein_r_ober",
+        "bein_r_unter",
+        "fuss_r",
+        "bein_l_ober",
+        "bein_l_unter",
+        "fuss_l"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "rumpf",
+      "name": "Rumpf",
+      "koerper": [
+        "Rumpf"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Weste orange",
+      "masse_mm": "Masse 46965.1 g, Einzelkoerper 316.5 x 466.2 x 550.5 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "kopf",
+      "name": "Kopf",
+      "koerper": [
+        "Kopf"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Haut",
+      "masse_mm": "Masse 4579.2 g, Einzelkoerper 190.0 x 194.8 x 363.2 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "arm_r_ober",
+      "name": "Arm R Ober",
+      "koerper": [
+        "Arm_R_Ober"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 1304.7 g, Einzelkoerper 135.5 x 209.0 x 298.4 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "arm_r_unter",
+      "name": "Arm R Unter",
+      "koerper": [
+        "Arm_R_Unter"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 721.6 g, Einzelkoerper 115.8 x 119.5 x 257.9 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "hand_r",
+      "name": "Hand R",
+      "koerper": [
+        "Hand_R"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Haut",
+      "masse_mm": "Masse 569.1 g, Einzelkoerper 104.0 x 106.4 x 183.3 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "arm_l_ober",
+      "name": "Arm L Ober",
+      "koerper": [
+        "Arm_L_Ober"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 1304.7 g, Einzelkoerper 134.0 x 177.8 x 305.9 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "arm_l_unter",
+      "name": "Arm L Unter",
+      "koerper": [
+        "Arm_L_Unter"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 721.6 g, Einzelkoerper 66.1 x 147.4 x 257.1 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "hand_l",
+      "name": "Hand L",
+      "koerper": [
+        "Hand_L"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Haut",
+      "masse_mm": "Masse 569.1 g, Einzelkoerper 70.8 x 124.5 x 183.7 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "messgeraet",
+      "name": "Messgeraet",
+      "koerper": [
+        "Messgeraet"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Geraet dunkel",
+      "masse_mm": "Masse 292.3 g, Einzelkoerper 30.0 x 70.0 x 160.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "bein_r_ober",
+      "name": "Bein R Ober",
+      "koerper": [
+        "Bein_R_Ober"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 6778.9 g, Einzelkoerper 150.0 x 150.0 x 441.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "bein_r_unter",
+      "name": "Bein R Unter",
+      "koerper": [
+        "Bein_R_Unter"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 2963.6 g, Einzelkoerper 100.0 x 100.0 x 433.8 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "fuss_r",
+      "name": "Fuss R",
+      "koerper": [
+        "Fuss_R"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Geraet dunkel",
+      "masse_mm": "Masse 1866.4 g, Einzelkoerper 79.2 x 99.0 x 273.6 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "bein_l_ober",
+      "name": "Bein L Ober",
+      "koerper": [
+        "Bein_L_Ober"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 6778.9 g, Einzelkoerper 150.0 x 150.0 x 441.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "bein_l_unter",
+      "name": "Bein L Unter",
+      "koerper": [
+        "Bein_L_Unter"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Kleidung blau",
+      "masse_mm": "Masse 2963.6 g, Einzelkoerper 100.0 x 100.0 x 433.8 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "fuss_l",
+      "name": "Fuss L",
+      "koerper": [
+        "Fuss_L"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Geraet dunkel",
+      "masse_mm": "Masse 1866.4 g, Einzelkoerper 79.2 x 99.0 x 273.6 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Massfigur, kein Bauteil",
+      "geruest": true
+    }
+  ]
+}

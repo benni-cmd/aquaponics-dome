@@ -1,0 +1,70 @@
+{
+  "komponente": "lt_kabeleinfuehrung_dn50",
+  "datei": "designs/components/lt_kabeleinfuehrung_dn50.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt kabeleinfuehrung dn50",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "koerper",
+        "dichtung",
+        "gegenmutter"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "koerper",
+      "name": "Koerper",
+      "koerper": [
+        "Koerper"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pp",
+      "masse_mm": "Masse 69.4 g, Einzelkoerper 64.0 x 93.0 x 93.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtung",
+      "name": "Dichtung",
+      "koerper": [
+        "Dichtung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT epdm",
+      "masse_mm": "Masse 7.6 g, Einzelkoerper 3.0 x 83.0 x 83.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "gegenmutter",
+      "name": "Gegenmutter",
+      "koerper": [
+        "Gegenmutter"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pp",
+      "masse_mm": "Masse 14.8 g, Einzelkoerper 8.0 x 81.0 x 81.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    }
+  ]
+}

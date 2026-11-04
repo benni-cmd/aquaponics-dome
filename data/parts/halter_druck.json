@@ -1,0 +1,61 @@
+{
+  "komponente": "halter_druck",
+  "datei": "designs/components/halter_druck.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter druck",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 2,
+  "gruppen": [
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "anbohrschelle"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "gewindenippel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "anbohrschelle",
+      "name": "Anbohrschelle",
+      "koerper": [
+        "Anbohrschelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 91.4 g, Einzelkoerper 40.0 x 50.0 x 60.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-anbohrschelle",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "gewindenippel",
+      "name": "Gewindenippel",
+      "koerper": [
+        "Gewindenippel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Edelstahl",
+      "masse_mm": "Masse 37.1 g, Einzelkoerper 19.0 x 19.0 x 27.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-gewindenippel-edelstahl",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

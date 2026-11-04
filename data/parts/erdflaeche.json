@@ -1,0 +1,39 @@
+{
+  "komponente": "erdflaeche",
+  "datei": "designs/components/erdflaeche.sc",
+  "bauteilgruppe": "Fundament",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "erdflaeche",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "t_erde"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_erde",
+      "name": "T Erde",
+      "koerper": [
+        "T13_Erde"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 701782103.2 g, Einzelkoerper 2600.0 x 15000.0 x 15000.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Aushub und Erde (Entscheidung 04.11.2026)",
+      "geruest": true
+    }
+  ]
+}

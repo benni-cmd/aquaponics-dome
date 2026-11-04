@@ -135,7 +135,8 @@
           -1
         ],
         "abstand_mm": 150
-      }
+      },
+      "artikel_id": "PRF-st-rr40x40x3"
     },
     {
       "id": "fussplatte",
@@ -169,7 +170,8 @@
         ],
         "abstand_mm": 100,
         "folgt": "bein"
-      }
+      },
+      "artikel_id": "BLE-fussplatte-80x80x6"
     },
     {
       "id": "ringsteg",
@@ -203,7 +205,8 @@
           -1
         ],
         "abstand_mm": 150
-      }
+      },
+      "artikel_id": "PRF-st-rr40x40x3"
     },
     {
       "id": "quersteg",
@@ -234,7 +237,8 @@
           -1
         ],
         "abstand_mm": 150
-      }
+      },
+      "artikel_id": "PRF-st-rr40x40x3"
     },
     {
       "id": "auflagesteg",
@@ -268,7 +272,8 @@
           -1
         ],
         "abstand_mm": 150
-      }
+      },
+      "artikel_id": "PRF-st-rr40x40x3"
     },
     {
       "id": "behaelter",
@@ -291,7 +296,8 @@
       "lebensmittelkontakt": "ja",
       "lebensmittelkontakt_konfidenz": "angenommen",
       "konfidenz": "gerechnet",
-      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (tank_*: [E]; wall 10: [A])"
+      "quelle": "data/components/feinfilter.json, docs/parts/feinfilter.md (tank_*: [E]; wall 10: [A])",
+      "artikel_id": "BEH-feinfilter-pp-630x440x610"
     },
     {
       "id": "korbflansch",
@@ -321,7 +327,8 @@
           1
         ],
         "abstand_mm": 1000
-      }
+      },
+      "artikel_id": "BLE-v2a-3mm-korbflansch"
     },
     {
       "id": "korbgewebe",
@@ -354,7 +361,8 @@
         ],
         "abstand_mm": 60,
         "folgt": "korbflansch"
-      }
+      },
+      "artikel_id": "GEW-v2a-100um"
     },
     {
       "id": "korbstab",
@@ -387,7 +395,8 @@
         ],
         "abstand_mm": 150,
         "folgt": "korbgewebe"
-      }
+      },
+      "artikel_id": "PRF-v2a-voll8x8"
     },
     {
       "id": "korbrahmen",
@@ -420,7 +429,8 @@
         ],
         "abstand_mm": 260,
         "folgt": "korbgewebe"
-      }
+      },
+      "artikel_id": "PRF-v2a-voll8x8"
     },
     {
       "id": "korbgriff",
@@ -452,7 +462,8 @@
         ],
         "abstand_mm": 100,
         "folgt": "korbflansch"
-      }
+      },
+      "artikel_id": "SON-korbgriff-v2a"
     },
     {
       "id": "dichtung",
@@ -481,7 +492,8 @@
           1
         ],
         "abstand_mm": 150
-      }
+      },
+      "artikel_id": "FOL-epdm-dichtung-630x440"
     },
     {
       "id": "deckel",
@@ -510,7 +522,8 @@
           1
         ],
         "abstand_mm": 300
-      }
+      },
+      "artikel_id": "BEH-feinfilter-pp-630x440x610"
     },
     {
       "id": "deckelgriff",
@@ -540,7 +553,8 @@
         ],
         "abstand_mm": 40,
         "folgt": "deckel"
-      }
+      },
+      "artikel_id": "BEH-feinfilter-pp-630x440x610"
     },
     {
       "id": "spannbock",
@@ -571,7 +585,8 @@
       "explosion": {
         "richtung": "radial",
         "abstand_mm": 100
-      }
+      },
+      "artikel_id": "SON-spannverschluss-edelstahl"
     },
     {
       "id": "spannhebel",
@@ -603,7 +618,8 @@
         "richtung": "radial",
         "abstand_mm": 160,
         "folgt": "deckel"
-      }
+      },
+      "artikel_id": "SON-spannverschluss-edelstahl"
     },
     {
       "id": "einlaufrohr",
@@ -635,7 +651,8 @@
           0
         ],
         "abstand_mm": 300
-      }
+      },
+      "artikel_id": "ROH-pvcu-d63"
     },
     {
       "id": "auslaufrohr",
@@ -666,7 +683,8 @@
           0
         ],
         "abstand_mm": 200
-      }
+      },
+      "artikel_id": "ROH-pvcu-d63"
     },
     {
       "id": "auslauf_flansch_innen",
@@ -696,7 +714,8 @@
           0
         ],
         "abstand_mm": 120
-      }
+      },
+      "artikel_id": "ARM-bulkhead-d63"
     },
     {
       "id": "auslauf_mutter_aussen",
@@ -725,7 +744,8 @@
           0
         ],
         "abstand_mm": 80
-      }
+      },
+      "artikel_id": "ARM-bulkhead-d63"
     },
     {
       "id": "ablassstutzen",
@@ -756,7 +776,8 @@
           0
         ],
         "abstand_mm": 100
-      }
+      },
+      "artikel_id": "ROH-pvcu-d40"
     },
     {
       "id": "kugelhahn_ablass",
@@ -788,7 +809,8 @@
           0
         ],
         "abstand_mm": 200
-      }
+      },
+      "artikel_id": "ARM-kugelhahn-d40"
     },
     {
       "id": "kugelhahn_hebel",
@@ -819,7 +841,8 @@
         ],
         "abstand_mm": 60,
         "folgt": "kugelhahn_ablass"
-      }
+      },
+      "artikel_id": "ARM-kugelhahn-d40"
     },
     {
       "id": "schlauchtuelle",
@@ -849,7 +872,8 @@
           0
         ],
         "abstand_mm": 300
-      }
+      },
+      "artikel_id": "SCH-schlauchtuelle-d25"
     },
     {
       "id": "spuelstutzen",
@@ -879,7 +903,8 @@
           0
         ],
         "abstand_mm": 100
-      }
+      },
+      "artikel_id": "ROH-pvcu-d25"
     },
     {
       "id": "kugelhahn_spuelen",
@@ -911,7 +936,8 @@
           0
         ],
         "abstand_mm": 200
-      }
+      },
+      "artikel_id": "ARM-kugelhahn-d25"
     },
     {
       "id": "kugelhahn_spuelen_hebel",
@@ -942,7 +968,8 @@
         ],
         "abstand_mm": 60,
         "folgt": "kugelhahn_spuelen"
-      }
+      },
+      "artikel_id": "ARM-kugelhahn-d25"
     },
     {
       "id": "spuel_tuelle",
@@ -972,7 +999,8 @@
           0
         ],
         "abstand_mm": 300
-      }
+      },
+      "artikel_id": "SCH-schlauchtuelle-d25"
     },
     {
       "id": "spritzrohr",
@@ -1003,7 +1031,8 @@
           1
         ],
         "abstand_mm": 120
-      }
+      },
+      "artikel_id": "ROH-pvcu-d25"
     }
   ]
 }

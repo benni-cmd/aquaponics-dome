@@ -1,0 +1,109 @@
+{
+  "komponente": "schwimmerventil_pool",
+  "datei": "designs/components/schwimmerventil_pool.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "schwimmerventil pool",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 5,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "uebergang"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "ventilgehaeuse",
+        "wange_l",
+        "wange_r",
+        "hebelarm_mit_kugel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "uebergang",
+      "name": "Uebergang",
+      "koerper": [
+        "Uebergang"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "SV PVC",
+      "masse_mm": "Masse 26.8 g, Einzelkoerper 32.2 x 32.2 x 40.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "ventilgehaeuse",
+      "name": "Ventilgehaeuse",
+      "koerper": [
+        "Ventilgehaeuse"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "SV PP",
+      "masse_mm": "Masse 82.6 g, Einzelkoerper 38.0 x 38.0 x 80.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-schwimmerventil-pool",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "wange_l",
+      "name": "Wange L",
+      "koerper": [
+        "Wange_L"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "SV PP",
+      "masse_mm": "Masse 1.2 g, Einzelkoerper 4.0 x 16.0 x 21.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-schwimmerventil-pool",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "wange_r",
+      "name": "Wange R",
+      "koerper": [
+        "Wange_R"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "SV PP",
+      "masse_mm": "Masse 1.2 g, Einzelkoerper 4.0 x 16.0 x 21.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-schwimmerventil-pool",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "hebelarm_mit_kugel",
+      "name": "Hebelarm mit Kugel",
+      "koerper": [
+        "Hebelarm_mit_Kugel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "SV Kugel",
+      "masse_mm": "Masse 248.2 g, Einzelkoerper 110.0 x 203.5 x 316.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-schwimmerventil-pool",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    }
+  ]
+}

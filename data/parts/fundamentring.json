@@ -1,0 +1,39 @@
+{
+  "komponente": "fundamentring",
+  "datei": "designs/components/fundamentring.sc",
+  "bauteilgruppe": "Fundament",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "fundamentring",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "t_sockel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_sockel",
+      "name": "T Sockel",
+      "koerper": [
+        "T3_Sockel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 2810654.6 g, Einzelkoerper 250.0 x 11888.2 x 12500.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Beton nach Menge (Entscheidung 04.11.2026)",
+      "geruest": true
+    }
+  ]
+}

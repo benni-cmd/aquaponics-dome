@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_reduzierung_d40_d32",
+  "datei": "designs/components/lt_reduzierung_d40_d32.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt reduzierung d40 d32",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "reduzierung"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "reduzierung",
+      "name": "Reduzierung",
+      "koerper": [
+        "Reduzierung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 61.0 g, Einzelkoerper 48.0 x 48.0 x 54.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-red-d40_d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

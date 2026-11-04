@@ -1,0 +1,38 @@
+{
+  "komponente": "sonde_druck_schalter",
+  "datei": "designs/components/sonde_druck_schalter.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "sonde druck schalter",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "messtechnik",
+      "name": "Messtechnik",
+      "kurz": "",
+      "teile": [
+        "sonde"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "sonde",
+      "name": "Sonde",
+      "koerper": [
+        "Sonde"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Edelstahl",
+      "masse_mm": "Masse 349.4 g, Einzelkoerper 32.0 x 32.0 x 55.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "MES-druck-schalter",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

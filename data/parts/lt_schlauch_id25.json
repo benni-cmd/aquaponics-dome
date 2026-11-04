@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_schlauch_id25",
+  "datei": "designs/components/lt_schlauch_id25.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt schlauch id25",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "schlauch"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "schlauch",
+      "name": "Schlauch",
+      "koerper": [
+        "Schlauch"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT dunkelblau",
+      "masse_mm": "Masse 169.6 g, Einzelkoerper 29.0 x 29.0 x 1000.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-schlauch-id25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

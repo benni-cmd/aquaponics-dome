@@ -1,0 +1,62 @@
+{
+  "komponente": "zweitbecken",
+  "datei": "designs/components/zweitbecken.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "zweitbecken",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 2,
+  "gruppen": [
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "t_zweitbecken"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "t_wasser"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_zweitbecken",
+      "name": "T Zweitbecken",
+      "koerper": [
+        "T6_Zweitbecken"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 869774.3 g, Einzelkoerper 1135.0 x 1866.9 x 1867.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-zweitbecken",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "t_wasser",
+      "name": "T Wasser",
+      "koerper": [
+        "T6_Wasser"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 2689849.0 g, Einzelkoerper 880.0 x 1736.9 x 1737.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Wasserkoerper, kein Bauteil",
+      "geruest": true
+    }
+  ]
+}

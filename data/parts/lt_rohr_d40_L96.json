@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_rohr_d40_L96",
+  "datei": "designs/components/lt_rohr_d40_L96.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt rohr d40 L96",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "rohr"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "rohr",
+      "name": "Rohr",
+      "koerper": [
+        "Rohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 30.6 g, Einzelkoerper 40.0 x 40.0 x 96.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d40",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.096,
+      "geruest": true
+    }
+  ]
+}

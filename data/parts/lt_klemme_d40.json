@@ -1,0 +1,78 @@
+{
+  "komponente": "lt_klemme_d40",
+  "datei": "designs/components/lt_klemme_d40.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt klemme d40",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 4,
+  "gruppen": [
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "klemmenfuss",
+        "klemmenring"
+      ]
+    },
+    {
+      "id": "schrauben",
+      "name": "Schrauben",
+      "kurz": "",
+      "teile": [
+        "schraube_m6x20"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "klemmenfuss",
+      "name": "Klemmenfuss",
+      "koerper": [
+        "Klemmenfuss"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT stahl",
+      "masse_mm": "Masse 113.3 g, Einzelkoerper 4.0 x 44.0 x 82.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-rohrschelle-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "klemmenring",
+      "name": "Klemmenring",
+      "koerper": [
+        "Klemmenring"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT stahl",
+      "masse_mm": "Masse 63.6 g, Einzelkoerper 20.0 x 46.0 x 46.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-rohrschelle-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "schraube_m6x20",
+      "name": "Schraube M6x20",
+      "koerper": [
+        "Body1",
+        "Body2"
+      ],
+      "menge": 2,
+      "typ": "normteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 2.4 g, Einzelkoerper 10.0 x 11.5 x 24.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m6x20",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    }
+  ]
+}

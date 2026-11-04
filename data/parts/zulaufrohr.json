@@ -1,0 +1,38 @@
+{
+  "komponente": "zulaufrohr",
+  "datei": "designs/components/zulaufrohr.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "zulaufrohr",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "t_zulaufrohr"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_zulaufrohr",
+      "name": "T Zulaufrohr",
+      "koerper": [
+        "T10_Zulaufrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 130053.5 g, Einzelkoerper 161.0 x 4150.2 x 4402.8 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d160",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 4.403,
+      "geruest": true
+    }
+  ]
+}

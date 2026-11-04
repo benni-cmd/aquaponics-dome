@@ -1,0 +1,517 @@
+{
+  "komponente": "puffer_klein",
+  "datei": "designs/components/puffer_klein.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "puffer klein",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 32,
+  "gruppen": [
+    {
+      "id": "bleche_und_platten",
+      "name": "Bleche und Platten",
+      "kurz": "",
+      "teile": [
+        "fussplatte_mm",
+        "fussplatte_mp",
+        "fussplatte_pm",
+        "fussplatte_pp",
+        "regalboden",
+        "auffangrand_v",
+        "auffangrand_h",
+        "auffangrand_l",
+        "auffangrand_r",
+        "blende"
+      ]
+    },
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "pfosten_mm",
+        "pfosten_mp",
+        "pfosten_pm",
+        "pfosten_pp",
+        "riegel_oben_x",
+        "riegel_oben_y",
+        "riegel_unten_y",
+        "riegel_oben_quer",
+        "riegel_unten_hinten"
+      ]
+    },
+    {
+      "id": "elektrik",
+      "name": "Elektrik",
+      "kurz": "",
+      "teile": [
+        "kabelverschraubung"
+      ]
+    },
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "fass",
+        "fass_entnahmestutzen",
+        "fass_deckel",
+        "messzelle",
+        "messzelle_deckel",
+        "kanister",
+        "kanister_schraubdeckel"
+      ]
+    },
+    {
+      "id": "pumpen",
+      "name": "Pumpen",
+      "kurz": "",
+      "teile": [
+        "pumpe_base",
+        "pumpe_eisen"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "fussplatte_mm",
+      "name": "Fussplatte mm",
+      "koerper": [
+        "Fussplatte_mm"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-fussplatte-80x80x6",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_mm",
+      "name": "Pfosten mm",
+      "koerper": [
+        "Pfosten_mm"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.889,
+      "geruest": true
+    },
+    {
+      "id": "fussplatte_mp",
+      "name": "Fussplatte mp",
+      "koerper": [
+        "Fussplatte_mp"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-fussplatte-80x80x6",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_mp",
+      "name": "Pfosten mp",
+      "koerper": [
+        "Pfosten_mp"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.889,
+      "geruest": true
+    },
+    {
+      "id": "fussplatte_pm",
+      "name": "Fussplatte pm",
+      "koerper": [
+        "Fussplatte_pm"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-fussplatte-80x80x6",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_pm",
+      "name": "Pfosten pm",
+      "koerper": [
+        "Pfosten_pm"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.889,
+      "geruest": true
+    },
+    {
+      "id": "fussplatte_pp",
+      "name": "Fussplatte pp",
+      "koerper": [
+        "Fussplatte_pp"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 301.4 g, Einzelkoerper 6.0 x 80.0 x 80.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-fussplatte-80x80x6",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_pp",
+      "name": "Pfosten pp",
+      "koerper": [
+        "Pfosten_pp"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1491.3 g, Einzelkoerper 30.0 x 30.0 x 889.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.889,
+      "geruest": true
+    },
+    {
+      "id": "riegel_oben_x",
+      "name": "Riegel oben x",
+      "koerper": [
+        "Riegel_oben_x1",
+        "Riegel_oben_x2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1979.5 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.18,
+      "geruest": true
+    },
+    {
+      "id": "riegel_oben_y",
+      "name": "Riegel oben y",
+      "koerper": [
+        "Riegel_oben_y1",
+        "Riegel_oben_y2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1979.5 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.18,
+      "geruest": true
+    },
+    {
+      "id": "riegel_unten_y",
+      "name": "Riegel unten y",
+      "koerper": [
+        "Riegel_unten_y1",
+        "Riegel_unten_y2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1979.5 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.18,
+      "geruest": true
+    },
+    {
+      "id": "riegel_oben_quer",
+      "name": "Riegel oben quer",
+      "koerper": [
+        "Riegel_oben_quer"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 989.7 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.59,
+      "geruest": true
+    },
+    {
+      "id": "riegel_unten_hinten",
+      "name": "Riegel unten hinten",
+      "koerper": [
+        "Riegel_unten_hinten"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 989.7 g, Einzelkoerper 30.0 x 30.0 x 590.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.59,
+      "geruest": true
+    },
+    {
+      "id": "regalboden",
+      "name": "Regalboden",
+      "koerper": [
+        "Regalboden"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 11539.5 g, Einzelkoerper 3.0 x 700.0 x 700.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-blech-st-3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "auffangrand_v",
+      "name": "Auffangrand v",
+      "koerper": [
+        "Auffangrand_v"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 329.7 g, Einzelkoerper 3.0 x 20.0 x 700.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-blech-st-3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "auffangrand_h",
+      "name": "Auffangrand h",
+      "koerper": [
+        "Auffangrand_h"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 329.7 g, Einzelkoerper 3.0 x 20.0 x 700.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-blech-st-3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "auffangrand_l",
+      "name": "Auffangrand l",
+      "koerper": [
+        "Auffangrand_l"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 326.9 g, Einzelkoerper 3.0 x 20.0 x 694.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-blech-st-3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "auffangrand_r",
+      "name": "Auffangrand r",
+      "koerper": [
+        "Auffangrand_r"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 326.9 g, Einzelkoerper 3.0 x 20.0 x 694.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-blech-st-3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kabelverschraubung",
+      "name": "Kabelverschraubung",
+      "koerper": [
+        "Kabelverschraubung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PA schwarz",
+      "masse_mm": "Masse 4.6 g, Einzelkoerper 20.0 x 20.0 x 20.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ELE-kabelverschraubung-pg",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "fass",
+      "name": "Fass",
+      "koerper": [
+        "Fass"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "HDPE blau",
+      "masse_mm": "Masse 4234.3 g, Einzelkoerper 500.0 x 500.0 x 788.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-fass-hdpe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "fass_entnahmestutzen",
+      "name": "Fass Entnahmestutzen",
+      "koerper": [
+        "Fass_Entnahmestutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "HDPE blau",
+      "masse_mm": "Masse 9.6 g, Einzelkoerper 25.0 x 25.0 x 35.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-fass-hdpe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "fass_deckel",
+      "name": "Fass Deckel",
+      "koerper": [
+        "Fass_Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "HDPE blau",
+      "masse_mm": "Masse 2243.2 g, Einzelkoerper 47.0 x 500.0 x 500.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-fass-hdpe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "messzelle",
+      "name": "Messzelle",
+      "koerper": [
+        "Messzelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Acryl klar",
+      "masse_mm": "Masse 2239.7 g, Einzelkoerper 260.0 x 315.0 x 315.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-messzelle-acryl",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "messzelle_deckel",
+      "name": "Messzelle Deckel",
+      "koerper": [
+        "Messzelle_Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Acryl klar",
+      "masse_mm": "Masse 550.8 g, Einzelkoerper 45.0 x 290.0 x 290.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-messzelle-acryl",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "blende",
+      "name": "Blende",
+      "koerper": [
+        "Blende"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "PP schwarz",
+      "masse_mm": "Masse 205.8 g, Einzelkoerper 3.0 x 260.0 x 290.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-pp-blende-290x260",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kanister",
+      "name": "Kanister",
+      "koerper": [
+        "Kanister"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Kanister HDPE",
+      "masse_mm": "Masse 1292.6 g, Einzelkoerper 250.0 x 285.0 x 300.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-kanister-hdpe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kanister_schraubdeckel",
+      "name": "Kanister Schraubdeckel",
+      "koerper": [
+        "Kanister_Schraubdeckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Kanister HDPE",
+      "masse_mm": "Masse 53.7 g, Einzelkoerper 20.0 x 60.0 x 60.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-kanister-hdpe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "pumpe_base",
+      "name": "Pumpe Base",
+      "koerper": [
+        "Pumpe_Base"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Pumpe Schlauch",
+      "masse_mm": "Masse 2526.8 g, Einzelkoerper 100.0 x 140.0 x 160.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PMP-dosierpumpe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "pumpe_eisen",
+      "name": "Pumpe Eisen",
+      "koerper": [
+        "Pumpe_Eisen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Pumpe Schlauch",
+      "masse_mm": "Masse 2526.8 g, Einzelkoerper 100.0 x 140.0 x 160.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PMP-dosierpumpe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    }
+  ]
+}

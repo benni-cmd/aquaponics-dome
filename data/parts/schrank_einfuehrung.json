@@ -1,0 +1,188 @@
+{
+  "komponente": "schrank_einfuehrung",
+  "datei": "designs/components/schrank_einfuehrung.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "schrank einfuehrung",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 10,
+  "gruppen": [
+    {
+      "id": "bleche_und_platten",
+      "name": "Bleche und Platten",
+      "kurz": "",
+      "teile": [
+        "schrankboden"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "schrankwand"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "koerper",
+        "dichtung",
+        "gegenmutter",
+        "koerper_arm_kabeleinfuehrung_dn50",
+        "dichtung_arm_kabeleinfuehrung_dn50"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "leerrohrbogen",
+        "leerrohrbogen_fit_leerrohr_bogen90_dn50"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "schrankboden",
+      "name": "Schrankboden",
+      "koerper": [
+        "Schrankboden"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "SE Blech",
+      "masse_mm": "Masse 9034.1 g, Einzelkoerper 3.0 x 500.0 x 800.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-schrankboden-3x500x800",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "schrankwand",
+      "name": "Schrankwand",
+      "koerper": [
+        "Schrankwand"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "SE Blech",
+      "masse_mm": "Masse 4069.4 g, Einzelkoerper 100.0 x 500.0 x 800.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-schrankwand-500x800",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "koerper",
+      "name": "Koerper",
+      "koerper": [
+        "Koerper"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 399.2 g, Einzelkoerper 88.0 x 160.0 x 160.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn100",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtung",
+      "name": "Dichtung",
+      "koerper": [
+        "Dichtung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 17.0 g, Einzelkoerper 3.0 x 150.0 x 150.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn100",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "gegenmutter",
+      "name": "Gegenmutter",
+      "koerper": [
+        "Gegenmutter",
+        "Gegenmutter (2)"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 61.6 g, Einzelkoerper 8.0 x 148.0 x 148.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "koerper_arm_kabeleinfuehrung_dn50",
+      "name": "Koerper",
+      "koerper": [
+        "Koerper (2)"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 98.4 g, Einzelkoerper 64.0 x 93.0 x 93.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtung_arm_kabeleinfuehrung_dn50",
+      "name": "Dichtung",
+      "koerper": [
+        "Dichtung (2)"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 8.9 g, Einzelkoerper 3.0 x 83.0 x 83.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kabeleinfuehrung-dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "leerrohrbogen",
+      "name": "Leerrohrbogen",
+      "koerper": [
+        "Leerrohrbogen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 1428.3 g, Einzelkoerper 123.0 x 639.0 x 645.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-leerrohr-bogen90-dn100",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "leerrohrbogen_fit_leerrohr_bogen90_dn50",
+      "name": "Leerrohrbogen",
+      "koerper": [
+        "Leerrohrbogen (2)"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 219.6 g, Einzelkoerper 56.0 x 385.0 x 388.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-leerrohr-bogen90-dn50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_schlauchbogen90_id25",
+  "datei": "designs/components/lt_schlauchbogen90_id25.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt schlauchbogen90 id25",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "schlauchbogen"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "schlauchbogen",
+      "name": "Schlauchbogen",
+      "koerper": [
+        "Schlauchbogen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT dunkelblau",
+      "masse_mm": "Masse 72.6 g, Einzelkoerper 29.0 x 259.5 x 259.5 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-schlauchbogen90-id25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

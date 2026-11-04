@@ -1,0 +1,84 @@
+{
+  "komponente": "halter_mast",
+  "datei": "designs/components/halter_mast.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter mast",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "bleche_und_platten",
+      "name": "Bleche und Platten",
+      "kurz": "",
+      "teile": [
+        "fussplatte"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "mastrohr"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "strahlungsschutz"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "fussplatte",
+      "name": "Fussplatte",
+      "koerper": [
+        "Fussplatte"
+      ],
+      "menge": 1,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 471.0 g, Einzelkoerper 6.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-fussplatte-100x100x6",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "mastrohr",
+      "name": "Mastrohr",
+      "koerper": [
+        "Mastrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 404.8 g, Einzelkoerper 32.0 x 32.0 x 1694.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d32",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.694,
+      "geruest": true
+    },
+    {
+      "id": "strahlungsschutz",
+      "name": "Strahlungsschutz",
+      "koerper": [
+        "Strahlungsschutz"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "PP weiss",
+      "masse_mm": "Masse 59.8 g, Einzelkoerper 36.0 x 90.0 x 90.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-strahlungsschutz-par",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

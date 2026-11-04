@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_rohr_d50_L2417",
+  "datei": "designs/components/lt_rohr_d50_L2417.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt rohr d50 L2417",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "rohr"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "rohr",
+      "name": "Rohr",
+      "koerper": [
+        "Rohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 1214.3 g, Einzelkoerper 50.0 x 50.0 x 2417.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d50",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.417,
+      "geruest": true
+    }
+  ]
+}

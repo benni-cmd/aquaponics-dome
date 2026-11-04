@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_bogen90_d75",
+  "datei": "designs/components/lt_bogen90_d75.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt bogen90 d75",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "bogen"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "bogen",
+      "name": "Bogen",
+      "koerper": [
+        "Bogen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 392.8 g, Einzelkoerper 84.7 x 176.4 x 176.4 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-bogen90-d75",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

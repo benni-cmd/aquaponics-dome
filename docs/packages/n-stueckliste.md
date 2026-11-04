@@ -17,7 +17,7 @@
 10. [x] Zusammenfuehrung und Seite `docs/einkaufsliste.html`, Screenshot-Abnahme (04.11.2026; Desktop und 390 px im Browser-Pane)
 11. [ ] Pruefer: `docs/jobs/pruefung/N-STUECKLISTE.md` nach fuenf Pruefpunkten
 11b. [x] Seite interaktiv, Gruppieren/Sortieren, Desktop-Verknuepfung (04.11.2026; lnk nach Bens ausdruecklichem Wunsch W59 angelegt: Desktop, Datei Einkaufsliste Kuppel.lnk)
-11c. [ ] W60: Teiledaten fuer alle Bauteile in 5 Gruppen (Werkstatt, parallel nach 1b), dann Viewer-Anbindung Preis/Link, Pruefer (Pruefpunkte 6 und 7 im Blatt)
+11c. [~] W60 (5-0 Geruest gebaut 05.11.2026, 5a/5b offen): Teiledaten fuer alle Bauteile in 5 Gruppen (Werkstatt, parallel nach 1b), dann Viewer-Anbindung Preis/Link, Pruefer (Pruefpunkte 6 und 7 im Blatt)
 12. [ ] Orchestrator: Roadmap nachfuehren (N-KATALOG, N-STUECKLISTE, N-BESCHAFFUNG gebuendelt, N-BOM-PARAM bleibt)
 
 Reihenfolge: 1a vor 2A bis 2E (Artikelliste); 2A bis 2E parallel; 10 nach 1d und 2A bis 2E; 11 zuletzt. Eine Sitzung = ein Schritt (D74).
@@ -46,6 +46,21 @@ Bekannte Naeherungen fuer 1b/2A: Profilwand aus Modellmasse gerechnet [E] (z. B.
 - A3: `FOL-pe-plane` Land `DE` (stretchfolie.eu = Enzensberger GmbH, Lieferung innerhalb DE versandkostenfrei, Seite gelesen); `MES-ph` bleibt `EU (Lager nicht genannt)` (Seite und Versandseite nennen das Lager nicht, Versandseite 403); `metallshopper.de` Land `NL` (Adresse Eindhoven); `stahl-shop24` Lieferung `ja` (Sitz DE, GLS/DHL). Rest der 29 Zeilen mit `lieferung_de: unbekannt` bleibt unbekannt, weil die Seiten kein Zielgebiet nennen (s-polytec, metallshopper, elektromax24 liefert 404); vor der Bestellung zu klaeren.
 - A4: Anzeigetexte der Seite mit echten Umlauten (Wortliste `UML` in `scripts/bom_seite.py`, Gruppe "Hülle", Typ-Namen, Bezeichnungen, Gruende, Haendler-Texte); Artikel-IDs und Komponentennamen bleiben ASCII.
 - Neuerzeugung nach Montage der Beete (Nachmessung 12 `.sc`, `bom_artikel.py --ergaenzen`, dann `bom.py`): Summe alt 28.510,25 EUR, neu 28.510,25 EUR (unveraendert); 260 Zeilen, 37 ohne Preis, 130 nicht platziert, 4880 Instanzen, Drift nein; Masse 765.325,3 kg auf 765.324,9 kg. Die Messung enthaelt auch noch nicht committete `.sc` anderer Sitzungen (Arbeitsbaum).
+
+05.11.2026, W60 Schritt 5-0 (Teile-Geruest): `python -X utf8 scripts/parts_geruest.py` erzeugt `data/parts/<komp>.json` fuer alle 308 Komponenten des Messcaches (2427 Koerper, 1069 Teile; Auto-Felder: Teil-ID, Name, Koerper, Menge, Typ, Werkstoff, Masse, `artikel_id`, Artikelmenge je Instanz, `ausnahme`). Pilotdateien `feinfilter` und `tank_klein`: Diff nur neue `artikel_id`-Felder. Teile mit `geruest: true` sind fuer 5a offen; 5a entfernt den Marker nach dem Ausfuellen. Messung: `python -X utf8 scripts/workshop/check_parts.py` (ohne Argument = alle) ueber 308 Komponenten: 0 FAIL, 1026 Teile offen fuer 5a (Handfelder), 740 Koerper `Body<n>` im `.sc` (Name nur in der Stueckliste, Entscheidung 04.11.2026). `artikel_id` nicht im Katalog: 0, nicht in `stueckliste.json`: 0. Zweiter Lauf: sha256 ueber `data/parts/*.json` identisch.
+Zahlen je Gruppe der fuenf 5a-Sitzungen (Messung: `python -c` ueber `data/parts/*.json`, Gruppe aus `bauteilgruppe`; `feinfilter` zu Filter, `tank_klein` zu Becken; 308 Dateien enthalten 100 Rohr- und 100+ Leitungsvarianten, die sich je Familie in einer Sitzung abarbeiten lassen):
+
+| Gruppe (5a-Sitzung) | Komponenten-Dateien | Koerper | Teile | Teile mit offenen Handfeldern | unbenannte Koerper (Body<n>) | Teile ohne Artikel (Ausnahme) |
+|---|---|---|---|---|---|---|
+| - Massfigur (ausgenommen) | 3 | 43 | 43 | 43 | 0 | 43 |
+| Kuppel, Knoten, Streben, Anker | 31 | 767 | 158 | 158 | 580 | 58 |
+| Tische, Rinnen, Beete, Toepfe | 28 | 611 | 193 | 193 | 98 | 6 |
+| Becken, Tanks, Filter, Pumpen, Puffer | 16 | 605 | 313 | 270 | 24 | 13 |
+| Leitungen, Messstellen, Halter | 216 | 335 | 307 | 307 | 30 | 2 |
+| Huelle, Tuer, Fundament | 14 | 66 | 55 | 55 | 8 | 6 |
+| **Summe** | 308 | 2427 | 1069 | 1026 | 740 | 128 |
+
+Hinweise fuer die 5a-Sitzungen: Gruppen je Teil sind Geruestgruppen nach Artikeltyp (nur Platzhalter, 5a ersetzt sie); Werkstoff steht als `.sc`-Materialname und wird in 5a auf Katalog-IDs gemappt (Katalog hat 7 Pilot-Werkstoffe); `Teile ohne Artikel` sind Massfigur, Salat/Wasser/Beton (`ausnahme`) und Mutter/Scheibe im Schraubensatz.
 
 ## DoD
 Dateien aus dem Blatt vorhanden; `check_bom.py` gruen; fuenf Pruefpunkte vom Pruefer gemessen; Seite per Screenshot geprueft; Entscheidungen der Offen-Liste in `docs/decisions.md`; Wunschbuch W59 nachgefuehrt; Commit und Push je Teilschritt.

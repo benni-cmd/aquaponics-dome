@@ -1,0 +1,144 @@
+{
+  "komponente": "knoten_6_n05",
+  "datei": "designs/components/knoten_6_n05.sc",
+  "bauteilgruppe": "Kuppel",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "knoten 6 n05",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 31,
+  "gruppen": [
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "knotenkugel",
+        "arm"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "scheibe_m10",
+        "mutter_m10"
+      ]
+    },
+    {
+      "id": "schrauben",
+      "name": "Schrauben",
+      "kurz": "",
+      "teile": [
+        "schraube_m10x60"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "knotenkugel",
+      "name": "Knotenkugel",
+      "koerper": [
+        "Knotenkugel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 4110.0 g, Einzelkoerper 100.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-knotenkugel-d100",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "arm",
+      "name": "Arm",
+      "koerper": [
+        "Arm_1",
+        "Arm_2",
+        "Arm_3",
+        "Arm_4",
+        "Arm_5",
+        "Arm_6"
+      ],
+      "menge": 6,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 1545.8 g, Einzelkoerper 26.8 x 121.5 x 133.6 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-knotenarm-23x23x3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 6.0,
+      "geruest": true
+    },
+    {
+      "id": "scheibe_m10",
+      "name": "Scheibe M10",
+      "koerper": [
+        "Body1",
+        "Body3",
+        "Body5",
+        "Body7",
+        "Body9",
+        "Body11",
+        "Body13",
+        "Body15",
+        "Body17",
+        "Body19",
+        "Body21",
+        "Body23"
+      ],
+      "menge": 12,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 42.9 g, Einzelkoerper 10.7 x 19.5 x 19.7 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    },
+    {
+      "id": "schraube_m10x60",
+      "name": "Schraube M10x60",
+      "koerper": [
+        "Body2",
+        "Body6",
+        "Body10",
+        "Body14",
+        "Body18",
+        "Body22"
+      ],
+      "menge": 6,
+      "typ": "normteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 270.3 g, Einzelkoerper 30.7 x 34.1 x 61.1 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m10x60",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 6.0,
+      "geruest": true
+    },
+    {
+      "id": "mutter_m10",
+      "name": "Mutter M10",
+      "koerper": [
+        "Body4",
+        "Body8",
+        "Body12",
+        "Body16",
+        "Body20",
+        "Body24"
+      ],
+      "menge": 6,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 56.6 g, Einzelkoerper 15.3 x 18.5 x 19.8 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "komponente": "halter_box",
+  "datei": "designs/components/halter_box.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter box",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 9,
+  "gruppen": [
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "gehaeuse",
+        "deckel"
+      ]
+    },
+    {
+      "id": "elektrik",
+      "name": "Elektrik",
+      "kurz": "",
+      "teile": [
+        "hutschiene",
+        "verschraubung"
+      ]
+    },
+    {
+      "id": "winkel_flachstahl_halter",
+      "name": "Winkel, Flachstahl, Halter",
+      "kurz": "",
+      "teile": [
+        "wandlasche"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "gehaeuse",
+      "name": "Gehaeuse",
+      "koerper": [
+        "Gehaeuse"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PS grau",
+      "masse_mm": "Masse 400.5 g, Einzelkoerper 100.0 x 150.0 x 200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-halter-box-gehaeuse",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "deckel",
+      "name": "Deckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Acryl klar",
+      "masse_mm": "Masse 142.8 g, Einzelkoerper 4.0 x 150.0 x 200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-halter-box-gehaeuse",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "hutschiene",
+      "name": "Hutschiene",
+      "koerper": [
+        "Hutschiene"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 309.1 g, Einzelkoerper 7.5 x 35.0 x 150.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ELE-hutschiene-35",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "verschraubung",
+      "name": "Verschraubung",
+      "koerper": [
+        "Verschraubung_1",
+        "Verschraubung_2",
+        "Verschraubung_3",
+        "Verschraubung_4"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "PA schwarz",
+      "masse_mm": "Masse 12.9 g, Einzelkoerper 12.0 x 20.0 x 20.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ELE-kabelverschraubung-pg",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "wandlasche",
+      "name": "Wandlasche",
+      "koerper": [
+        "Wandlasche_1",
+        "Wandlasche_2"
+      ],
+      "menge": 2,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 41.1 g, Einzelkoerper 3.0 x 30.0 x 30.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-wandlasche-30x30x3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    }
+  ]
+}

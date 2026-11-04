@@ -1,0 +1,84 @@
+{
+  "komponente": "tuer_zarge_planenausschnitt",
+  "datei": "designs/components/tuer_zarge_planenausschnitt.sc",
+  "bauteilgruppe": "Huelle",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "tuer zarge planenausschnitt",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "aufsatzrahmen"
+      ]
+    },
+    {
+      "id": "folien_und_dichtungen",
+      "name": "Folien und Dichtungen",
+      "kurz": "",
+      "teile": [
+        "dichtband"
+      ]
+    },
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "klemmleiste"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "aufsatzrahmen",
+      "name": "Aufsatzrahmen",
+      "koerper": [
+        "Aufsatzrahmen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Aluminium Zarge",
+      "masse_mm": "Masse 3464.1 g, Einzelkoerper 47.0 x 1086.0 x 2043.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-zarge-aufsatzrahmen",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtband",
+      "name": "Dichtband",
+      "koerper": [
+        "Dichtband"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "EPDM Dichtband Zarge",
+      "masse_mm": "Masse 224.9 g, Einzelkoerper 2.0 x 1066.0 x 2043.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FOL-epdm-dichtband-zarge",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.043,
+      "geruest": true
+    },
+    {
+      "id": "klemmleiste",
+      "name": "Klemmleiste",
+      "koerper": [
+        "Klemmleiste"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Aluminium Zarge",
+      "masse_mm": "Masse 1239.8 g, Einzelkoerper 3.0 x 1076.0 x 2043.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-alu-klemmleiste",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.043,
+      "geruest": true
+    }
+  ]
+}

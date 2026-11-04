@@ -1,0 +1,70 @@
+{
+  "komponente": "lt_uebergang_pe_pvc_d20",
+  "datei": "designs/components/lt_uebergang_pe_pvc_d20.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt uebergang pe pvc d20",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "koerper",
+        "mutter",
+        "klemmring"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "koerper",
+      "name": "Koerper",
+      "koerper": [
+        "Koerper"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pp",
+      "masse_mm": "Masse 10.2 g, Einzelkoerper 30.0 x 30.0 x 38.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-uebergang-pe-pvc-pe_pvc_d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "mutter",
+      "name": "Mutter",
+      "koerper": [
+        "Mutter"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pp",
+      "masse_mm": "Masse 5.6 g, Einzelkoerper 18.0 x 32.0 x 32.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-uebergang-pe-pvc-pe_pvc_d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "klemmring",
+      "name": "Klemmring",
+      "koerper": [
+        "Klemmring"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT pom",
+      "masse_mm": "Masse 1.2 g, Einzelkoerper 5.0 x 24.8 x 24.8 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-uebergang-pe-pvc-pe_pvc_d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    }
+  ]
+}

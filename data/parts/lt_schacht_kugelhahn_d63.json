@@ -1,0 +1,86 @@
+{
+  "komponente": "lt_schacht_kugelhahn_d63",
+  "datei": "designs/components/lt_schacht_kugelhahn_d63.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt schacht kugelhahn d63",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 4,
+  "gruppen": [
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "schachtwanne",
+        "dichtung_a",
+        "dichtung_b",
+        "deckel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "schachtwanne",
+      "name": "Schachtwanne",
+      "koerper": [
+        "Schachtwanne"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "LT pehd",
+      "masse_mm": "Masse 5880.5 g, Einzelkoerper 295.0 x 416.0 x 416.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-schacht-kugelhahn-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtung_a",
+      "name": "Dichtung A",
+      "koerper": [
+        "Dichtung_A"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "LT epdm",
+      "masse_mm": "Masse 11.3 g, Einzelkoerper 14.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-schacht-kugelhahn-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtung_b",
+      "name": "Dichtung B",
+      "koerper": [
+        "Dichtung_B"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "LT epdm",
+      "masse_mm": "Masse 11.3 g, Einzelkoerper 14.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-schacht-kugelhahn-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "deckel",
+      "name": "Deckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "LT pehd",
+      "masse_mm": "Masse 4941.9 g, Einzelkoerper 30.0 x 420.0 x 420.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-schacht-kugelhahn-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "komponente": "becken_dritt_klein",
+  "datei": "designs/components/becken_dritt_klein.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "becken dritt klein",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 6,
+  "gruppen": [
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "t_wanne"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "wasser"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "stutzen_k"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_wanne",
+      "name": "T Wanne",
+      "koerper": [
+        "T14k_Wanne"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Beton",
+      "masse_mm": "Masse 555154.8 g, Einzelkoerper 920.0 x 920.0 x 1055.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-drittbecken-klein",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "wasser",
+      "name": "Wasser",
+      "koerper": [
+        "Wasser"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Wasser",
+      "masse_mm": "Masse 392089.3 g, Einzelkoerper 790.0 x 790.0 x 800.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Wasserkoerper, kein Bauteil",
+      "geruest": true
+    },
+    {
+      "id": "stutzen_k",
+      "name": "Stutzen K",
+      "koerper": [
+        "Stutzen_K41",
+        "Stutzen_K42",
+        "Stutzen_K43",
+        "Stutzen_K49"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "Stutzen PVC",
+      "masse_mm": "Masse 2008.8 g, Einzelkoerper 60.0 x 90.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-bulkhead-pool",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    }
+  ]
+}

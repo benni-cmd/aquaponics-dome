@@ -1,0 +1,38 @@
+{
+  "komponente": "sonde_flow_12",
+  "datei": "designs/components/sonde_flow_12.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "sonde flow 12",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "messtechnik",
+      "name": "Messtechnik",
+      "kurz": "",
+      "teile": [
+        "sonde"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "sonde",
+      "name": "Sonde",
+      "koerper": [
+        "Sonde"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Sonde schwarz",
+      "masse_mm": "Masse 192.0 g, Einzelkoerper 40.0 x 50.0 x 80.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "MES-flow-12",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

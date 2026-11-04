@@ -1,0 +1,38 @@
+{
+  "komponente": "strebe_b",
+  "datei": "designs/components/strebe_b.sc",
+  "bauteilgruppe": "Kuppel",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "strebe b",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "t_strebe_b"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_strebe_b",
+      "name": "T Strebe B",
+      "koerper": [
+        "T1_Strebe_B"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 28266.6 g, Einzelkoerper 90.0 x 90.0 x 3468.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-strebe30x30",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 3.468,
+      "geruest": true
+    }
+  ]
+}

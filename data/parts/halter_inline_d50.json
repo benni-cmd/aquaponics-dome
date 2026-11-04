@@ -1,0 +1,132 @@
+{
+  "komponente": "halter_inline_d50",
+  "datei": "designs/components/halter_inline_d50.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter inline d50",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 6,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "verschraubung_a",
+        "verschraubung_b"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "vorfilter",
+        "sieb",
+        "sensorblock"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "beruhigungsstrecke"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "verschraubung_a",
+      "name": "Verschraubung A",
+      "koerper": [
+        "Verschraubung_A"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 103.6 g, Einzelkoerper 30.0 x 72.0 x 72.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-verschraubung-d75",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "verschraubung_b",
+      "name": "Verschraubung B",
+      "koerper": [
+        "Verschraubung_B"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 103.6 g, Einzelkoerper 30.0 x 72.0 x 72.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-verschraubung-d75",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "vorfilter",
+      "name": "Vorfilter",
+      "koerper": [
+        "Vorfilter"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 530.0 g, Einzelkoerper 70.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-halter-inline-d50-vorfilter",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "sieb",
+      "name": "Sieb",
+      "koerper": [
+        "Sieb"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Edelstahl",
+      "masse_mm": "Masse 70.3 g, Einzelkoerper 30.0 x 39.0 x 39.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-halter-inline-d50-sieb",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "beruhigungsstrecke",
+      "name": "Beruhigungsstrecke",
+      "koerper": [
+        "Beruhigungsstrecke"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 922.8 g, Einzelkoerper 70.0 x 70.0 x 200.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d75",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.2,
+      "geruest": true
+    },
+    {
+      "id": "sensorblock",
+      "name": "Sensorblock",
+      "koerper": [
+        "Sensorblock"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 465.8 g, Einzelkoerper 70.0 x 95.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-halter-inline-d50-sensorblock",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

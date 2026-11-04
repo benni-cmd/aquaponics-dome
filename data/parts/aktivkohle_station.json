@@ -1,0 +1,607 @@
+{
+  "komponente": "aktivkohle_station",
+  "datei": "designs/components/aktivkohle_station.sc",
+  "bauteilgruppe": "Filter",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "aktivkohle station",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 43,
+  "gruppen": [
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "konsole_sediment"
+      ]
+    },
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "sedimentgehaeuse",
+        "sedimentpatrone",
+        "kopf_sediment",
+        "behaelter",
+        "kopf",
+        "kopf_hebel"
+      ]
+    },
+    {
+      "id": "toepfe_und_substrat",
+      "name": "Toepfe und Substrat",
+      "kurz": "",
+      "teile": [
+        "kohlebett"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "rohr_eingang",
+        "rohr_hahn_sediment",
+        "rohr_sediment_b",
+        "rohr_b_t",
+        "rohr_t_b",
+        "rohr_b_begrenzer",
+        "rohr_begrenzer_t",
+        "rohr_t_t",
+        "rohr_t_hahn",
+        "rohr_ausgang_k",
+        "rohr_k",
+        "rohr_k_roh_pvcu_d25"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "hahn_eingang",
+        "probehahn",
+        "begrenzer",
+        "hahn_k",
+        "hahn_k_arm_kugelhahn_d20"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "hahn_eingang_spindel",
+        "hahn_eingang_hebel",
+        "probehahn_griff",
+        "hahn_k_spindel",
+        "hahn_k_hebel"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "t_probehahn",
+        "t_k",
+        "reduzierung_k"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "konsole_sediment",
+      "name": "Konsole Sediment",
+      "koerper": [
+        "Konsole_Sediment"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "AK Konsole",
+      "masse_mm": "Masse 12160.0 g, Einzelkoerper 160.0 x 160.0 x 500.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-ak-konsole",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "sedimentgehaeuse",
+      "name": "Sedimentgehaeuse",
+      "koerper": [
+        "Sedimentgehaeuse"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK PP",
+      "masse_mm": "Masse 389.0 g, Einzelkoerper 112.0 x 112.0 x 290.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ak-sedimentfilter",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "sedimentpatrone",
+      "name": "Sedimentpatrone",
+      "koerper": [
+        "Sedimentpatrone"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK PP",
+      "masse_mm": "Masse 709.1 g, Einzelkoerper 63.0 x 63.0 x 250.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ak-sedimentfilter",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "kopf_sediment",
+      "name": "Kopf Sediment",
+      "koerper": [
+        "Kopf_Sediment"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK Kopf",
+      "masse_mm": "Masse 1568.2 g, Einzelkoerper 99.0 x 120.0 x 120.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ak-sedimentfilter",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "behaelter",
+      "name": "Behaelter",
+      "koerper": [
+        "Behaelter_1",
+        "Behaelter_2"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "AK Komposit",
+      "masse_mm": "Masse 9970.3 g, Einzelkoerper 254.0 x 254.0 x 790.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ak-kompositbehaelter-254x790",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    },
+    {
+      "id": "kohlebett",
+      "name": "Kohlebett",
+      "koerper": [
+        "Kohlebett_1",
+        "Kohlebett_2"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "AK Kohle",
+      "masse_mm": "Masse 18511.6 g, Einzelkoerper 240.0 x 240.0 x 464.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "TOP-aktivkohle",
+      "artikel_einheit": "m3",
+      "artikel_menge_je_instanz": 0.042,
+      "geruest": true
+    },
+    {
+      "id": "kopf",
+      "name": "Kopf",
+      "koerper": [
+        "Kopf_1",
+        "Kopf_2"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "AK Kopf",
+      "masse_mm": "Masse 3136.3 g, Einzelkoerper 99.0 x 120.0 x 120.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ak-kompositbehaelter-254x790",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "kopf_hebel",
+      "name": "Kopf Hebel",
+      "koerper": [
+        "Kopf_1_Hebel",
+        "Kopf_2_Hebel"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "AK Kopf",
+      "masse_mm": "Masse 27.6 g, Einzelkoerper 20.0 x 20.0 x 40.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-ak-kompositbehaelter-254x790",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rohr_eingang",
+      "name": "Rohr Eingang",
+      "koerper": [
+        "Rohr_Eingang"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 20.2 g, Einzelkoerper 25.0 x 25.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.11,
+      "geruest": true
+    },
+    {
+      "id": "hahn_eingang",
+      "name": "Hahn Eingang",
+      "koerper": [
+        "Hahn_Eingang"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK Hahn",
+      "masse_mm": "Masse 82.5 g, Einzelkoerper 44.2 x 44.2 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "hahn_eingang_spindel",
+      "name": "Hahn Eingang Spindel",
+      "koerper": [
+        "Hahn_Eingang_Spindel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "AK Hahn",
+      "masse_mm": "Masse 6.5 g, Einzelkoerper 14.0 x 14.0 x 30.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
+      "geruest": true
+    },
+    {
+      "id": "hahn_eingang_hebel",
+      "name": "Hahn Eingang Hebel",
+      "koerper": [
+        "Hahn_Eingang_Hebel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "AK Hahn",
+      "masse_mm": "Masse 9.9 g, Einzelkoerper 8.0 x 8.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
+      "geruest": true
+    },
+    {
+      "id": "rohr_hahn_sediment",
+      "name": "Rohr Hahn Sediment",
+      "koerper": [
+        "Rohr_Hahn_Sediment"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 45.9 g, Einzelkoerper 25.0 x 25.0 x 250.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.25,
+      "geruest": true
+    },
+    {
+      "id": "rohr_sediment_b",
+      "name": "Rohr Sediment B",
+      "koerper": [
+        "Rohr_Sediment_B1"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 38.6 g, Einzelkoerper 25.0 x 25.0 x 210.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.21,
+      "geruest": true
+    },
+    {
+      "id": "rohr_b_t",
+      "name": "Rohr B T",
+      "koerper": [
+        "Rohr_B1_T1"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.07,
+      "geruest": true
+    },
+    {
+      "id": "t_probehahn",
+      "name": "T Probehahn",
+      "koerper": [
+        "T_Probehahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 56.2 g, Einzelkoerper 32.2 x 51.2 x 70.3 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-t-d25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "probehahn",
+      "name": "Probehahn",
+      "koerper": [
+        "Probehahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK Messing",
+      "masse_mm": "Masse 227.1 g, Einzelkoerper 24.0 x 24.0 x 85.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-probehahn-messing",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "probehahn_griff",
+      "name": "Probehahn Griff",
+      "koerper": [
+        "Probehahn_Griff"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "AK Messing",
+      "masse_mm": "Masse 21.8 g, Einzelkoerper 8.0 x 8.0 x 40.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
+      "geruest": true
+    },
+    {
+      "id": "rohr_t_b",
+      "name": "Rohr T B",
+      "koerper": [
+        "Rohr_T1_B2"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.07,
+      "geruest": true
+    },
+    {
+      "id": "rohr_b_begrenzer",
+      "name": "Rohr B Begrenzer",
+      "koerper": [
+        "Rohr_B2_Begrenzer"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 3.7 g, Einzelkoerper 20.0 x 25.0 x 25.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.025,
+      "geruest": true
+    },
+    {
+      "id": "begrenzer",
+      "name": "Begrenzer",
+      "koerper": [
+        "Begrenzer"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK Messing",
+      "masse_mm": "Masse 226.7 g, Einzelkoerper 32.0 x 32.0 x 60.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-durchflussbegrenzer-messing",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "rohr_begrenzer_t",
+      "name": "Rohr Begrenzer T",
+      "koerper": [
+        "Rohr_Begrenzer_T2"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 10.1 g, Einzelkoerper 25.0 x 25.0 x 54.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.055,
+      "geruest": true
+    },
+    {
+      "id": "t_k",
+      "name": "T K",
+      "koerper": [
+        "T_K41",
+        "T_K52"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 112.4 g, Einzelkoerper 32.2 x 51.2 x 70.3 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-t-d25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    },
+    {
+      "id": "rohr_t_t",
+      "name": "Rohr T T",
+      "koerper": [
+        "Rohr_T2_T3"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.8 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.07,
+      "geruest": true
+    },
+    {
+      "id": "rohr_t_hahn",
+      "name": "Rohr T Hahn",
+      "koerper": [
+        "Rohr_T3_Hahn"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 8.3 g, Einzelkoerper 25.0 x 25.0 x 45.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.045,
+      "geruest": true
+    },
+    {
+      "id": "hahn_k",
+      "name": "Hahn K",
+      "koerper": [
+        "Hahn_K40",
+        "Hahn_K52"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "AK Hahn",
+      "masse_mm": "Masse 164.9 g, Einzelkoerper 44.2 x 44.2 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    },
+    {
+      "id": "hahn_k_spindel",
+      "name": "Hahn K Spindel",
+      "koerper": [
+        "Hahn_K40_Spindel",
+        "Hahn_K41_Spindel",
+        "Hahn_K52_Spindel"
+      ],
+      "menge": 3,
+      "typ": "sonderteil",
+      "werkstoff": "AK Hahn",
+      "masse_mm": "Masse 19.4 g, Einzelkoerper 14.0 x 14.0 x 30.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
+      "geruest": true
+    },
+    {
+      "id": "hahn_k_hebel",
+      "name": "Hahn K Hebel",
+      "koerper": [
+        "Hahn_K40_Hebel",
+        "Hahn_K41_Hebel",
+        "Hahn_K52_Hebel"
+      ],
+      "menge": 3,
+      "typ": "sonderteil",
+      "werkstoff": "AK Hahn",
+      "masse_mm": "Masse 29.6 g, Einzelkoerper 8.0 x 8.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Teil eines Hahns (Griff/Spindel/Hebel) im Hahn-Artikel enthalten",
+      "geruest": true
+    },
+    {
+      "id": "rohr_ausgang_k",
+      "name": "Rohr Ausgang K",
+      "koerper": [
+        "Rohr_Ausgang_K40"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 12.8 g, Einzelkoerper 25.0 x 25.0 x 69.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.07,
+      "geruest": true
+    },
+    {
+      "id": "reduzierung_k",
+      "name": "Reduzierung K",
+      "koerper": [
+        "Reduzierung_K41"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 34.8 g, Einzelkoerper 32.2 x 32.2 x 41.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-red-d32-d25",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "hahn_k_arm_kugelhahn_d20",
+      "name": "Hahn K",
+      "koerper": [
+        "Hahn_K41"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "AK Hahn",
+      "masse_mm": "Masse 68.8 g, Einzelkoerper 39.0 x 39.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "rohr_k",
+      "name": "Rohr K",
+      "koerper": [
+        "Rohr_K41"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 17.8 g, Einzelkoerper 20.0 x 20.0 x 123.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d20",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.124,
+      "geruest": true
+    },
+    {
+      "id": "rohr_k_roh_pvcu_d25",
+      "name": "Rohr K",
+      "koerper": [
+        "Rohr_K52"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "AK PVC",
+      "masse_mm": "Masse 30.3 g, Einzelkoerper 25.0 x 25.0 x 164.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d25",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.165,
+      "geruest": true
+    }
+  ]
+}

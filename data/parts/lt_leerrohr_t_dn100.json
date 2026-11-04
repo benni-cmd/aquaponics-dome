@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_leerrohr_t_dn100",
+  "datei": "designs/components/lt_leerrohr_t_dn100.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt leerrohr t dn100",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "leerrohr_t"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "leerrohr_t",
+      "name": "Leerrohr T",
+      "koerper": [
+        "Leerrohr_T"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT leerrohr",
+      "masse_mm": "Masse 1181.8 g, Einzelkoerper 123.0 x 187.0 x 251.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-leerrohr-t-dn100",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

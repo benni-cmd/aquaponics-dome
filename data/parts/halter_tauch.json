@@ -1,0 +1,84 @@
+{
+  "komponente": "halter_tauch",
+  "datei": "designs/components/halter_tauch.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter tauch",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "tauchrohr"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "kappe"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "klemme"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "tauchrohr",
+      "name": "Tauchrohr",
+      "koerper": [
+        "Tauchrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 317.5 g, Einzelkoerper 40.0 x 40.0 x 1000.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d40",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kappe",
+      "name": "Kappe",
+      "koerper": [
+        "Kappe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PA schwarz",
+      "masse_mm": "Masse 33.5 g, Einzelkoerper 20.0 x 44.0 x 44.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-kappe-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "klemme",
+      "name": "Klemme",
+      "koerper": [
+        "Klemme"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1414.9 g, Einzelkoerper 52.0 x 100.0 x 242.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tauchklemme",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

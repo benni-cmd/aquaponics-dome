@@ -1,0 +1,412 @@
+{
+  "komponente": "tank_gross",
+  "datei": "designs/components/tank_gross.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "tank gross",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 42,
+  "gruppen": [
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "tank",
+        "deckel"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "zulaufrohr",
+        "belueftungsrohr"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "ueberlauf",
+        "schlammstutzen",
+        "ablaufstutzen"
+      ]
+    },
+    {
+      "id": "toepfe_und_substrat",
+      "name": "Toepfe und Substrat",
+      "kurz": "",
+      "teile": [
+        "biomedium"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "belueftungsgitter",
+        "zulaufsieb",
+        "auslaufsieb",
+        "plattform",
+        "stuetzrippe"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "kugelhahn"
+      ]
+    },
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "bein",
+        "strebe"
+      ]
+    },
+    {
+      "id": "bleche_und_platten",
+      "name": "Bleche und Platten",
+      "kurz": "",
+      "teile": [
+        "fussplatte"
+      ]
+    },
+    {
+      "id": "winkel_flachstahl_halter",
+      "name": "Winkel, Flachstahl, Halter",
+      "kurz": "",
+      "teile": [
+        "diagonale"
+      ]
+    },
+    {
+      "id": "schrauben",
+      "name": "Schrauben",
+      "kurz": "",
+      "teile": [
+        "schraube_m8x30"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "tank",
+      "name": "Tank",
+      "koerper": [
+        "Tank"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PE Tank",
+      "masse_mm": "Masse 19861.5 g, Einzelkoerper 930.0 x 930.0 x 1444.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-tank-pe-930x1444",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "deckel",
+      "name": "Deckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PE Tank",
+      "masse_mm": "Masse 3635.6 g, Einzelkoerper 6.0 x 930.0 x 930.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-tank-pe-930-deckel",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "zulaufrohr",
+      "name": "Zulaufrohr",
+      "koerper": [
+        "Zulaufrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau Tank",
+      "masse_mm": "Masse 205.8 g, Einzelkoerper 63.0 x 63.0 x 260.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d63",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.26,
+      "geruest": true
+    },
+    {
+      "id": "ueberlauf",
+      "name": "Ueberlauf",
+      "koerper": [
+        "Ueberlauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Tank",
+      "masse_mm": "Masse 122.7 g, Einzelkoerper 63.0 x 63.0 x 155.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d63",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "biomedium",
+      "name": "Biomedium",
+      "koerper": [
+        "Biomedium"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Biomedium",
+      "masse_mm": "Masse 70550.3 g, Einzelkoerper 864.0 x 864.0 x 864.1 mm (Modell-Bounding-Box)",
+      "artikel_id": "TOP-biomedium",
+      "artikel_einheit": "m3",
+      "artikel_menge_je_instanz": 0.645,
+      "geruest": true
+    },
+    {
+      "id": "belueftungsgitter",
+      "name": "Belueftungsgitter",
+      "koerper": [
+        "Belueftungsgitter"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "PVC grau Tank",
+      "masse_mm": "Masse 903.2 g, Einzelkoerper 20.0 x 460.0 x 460.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-belueftungsgitter-460",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "belueftungsrohr",
+      "name": "Belueftungsrohr",
+      "koerper": [
+        "Belueftungsrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "PVC grau Tank",
+      "masse_mm": "Masse 357.1 g, Einzelkoerper 16.0 x 16.0 x 1269.1 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d16",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.269,
+      "geruest": true
+    },
+    {
+      "id": "zulaufsieb",
+      "name": "Zulaufsieb",
+      "koerper": [
+        "Zulaufsieb"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 64.1 g, Einzelkoerper 4.0 x 63.0 x 63.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tanksieb-stahl",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "auslaufsieb",
+      "name": "Auslaufsieb",
+      "koerper": [
+        "Auslaufsieb"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 715.1 g, Einzelkoerper 70.0 x 110.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tanksieb-stahl",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "schlammstutzen",
+      "name": "Schlammstutzen",
+      "koerper": [
+        "Schlammstutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Tank",
+      "masse_mm": "Masse 11.3 g, Einzelkoerper 14.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d16",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kugelhahn",
+      "name": "Kugelhahn",
+      "koerper": [
+        "Kugelhahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Ventil blau",
+      "masse_mm": "Masse 123.0 g, Einzelkoerper 40.0 x 66.0 x 171.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d50",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "ablaufstutzen",
+      "name": "Ablaufstutzen",
+      "koerper": [
+        "Ablaufstutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau Tank",
+      "masse_mm": "Masse 32.4 g, Einzelkoerper 40.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d40",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "plattform",
+      "name": "Plattform",
+      "koerper": [
+        "Plattform"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 18867.4 g, Einzelkoerper 98.0 x 821.0 x 821.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-plattform-821x821",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "stuetzrippe",
+      "name": "Stuetzrippe",
+      "koerper": [
+        "Stuetzrippe_1",
+        "Stuetzrippe_2",
+        "Stuetzrippe_3",
+        "Stuetzrippe_4",
+        "Stuetzrippe_5"
+      ],
+      "menge": 5,
+      "typ": "sonderteil",
+      "werkstoff": "Holz Fichte",
+      "masse_mm": "Masse 5475.1 g, Einzelkoerper 103.2 x 317.2 x 321.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-holz-stuetzrippe",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 5.0,
+      "geruest": true
+    },
+    {
+      "id": "bein",
+      "name": "Bein",
+      "koerper": [
+        "Bein_1",
+        "Bein_2",
+        "Bein_3",
+        "Bein_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 11292.2 g, Einzelkoerper 40.0 x 40.0 x 1002.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr40x40x2.5",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 4.008,
+      "geruest": true
+    },
+    {
+      "id": "fussplatte",
+      "name": "Fussplatte",
+      "koerper": [
+        "Fussplatte_1",
+        "Fussplatte_2",
+        "Fussplatte_3",
+        "Fussplatte_4"
+      ],
+      "menge": 4,
+      "typ": "platte",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1860.0 g, Einzelkoerper 6.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BLE-fussplatte-100x100x6",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "strebe",
+      "name": "Strebe",
+      "koerper": [
+        "Strebe_1",
+        "Strebe_2",
+        "Strebe_3",
+        "Strebe_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 8350.8 g, Einzelkoerper 40.0 x 40.0 x 741.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr40x40x2.5",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.964,
+      "geruest": true
+    },
+    {
+      "id": "diagonale",
+      "name": "Diagonale",
+      "koerper": [
+        "Diagonale_1",
+        "Diagonale_2",
+        "Diagonale_3",
+        "Diagonale_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1766.7 g, Einzelkoerper 3.0 x 210.3 x 733.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-flach-3mm-diagonale",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "schraube_m8x30",
+      "name": "Schraube M8x30",
+      "koerper": [
+        "Body1",
+        "Body2",
+        "Body3",
+        "Body4",
+        "Body5",
+        "Body6",
+        "Body7",
+        "Body8"
+      ],
+      "menge": 8,
+      "typ": "normteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 23.6 g, Einzelkoerper 13.0 x 15.0 x 35.3 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m8x30",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 8.0,
+      "geruest": true
+    }
+  ]
+}

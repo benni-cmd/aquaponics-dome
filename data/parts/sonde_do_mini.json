@@ -1,0 +1,38 @@
+{
+  "komponente": "sonde_do_mini",
+  "datei": "designs/components/sonde_do_mini.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "sonde do mini",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "messtechnik",
+      "name": "Messtechnik",
+      "kurz": "",
+      "teile": [
+        "sonde"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "sonde",
+      "name": "Sonde",
+      "koerper": [
+        "Sonde"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Sonde blau",
+      "masse_mm": "Masse 19.9 g, Einzelkoerper 12.0 x 12.0 x 110.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "MES-do-mini",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_rohr_d75_L65",
+  "datei": "designs/components/lt_rohr_d75_L65.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt rohr d75 L65",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "",
+      "teile": [
+        "rohr"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "rohr",
+      "name": "Rohr",
+      "koerper": [
+        "Rohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "LT pvc",
+      "masse_mm": "Masse 73.5 g, Einzelkoerper 65.0 x 75.0 x 75.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ROH-pvcu-d75",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.075,
+      "geruest": true
+    }
+  ]
+}

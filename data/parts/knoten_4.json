@@ -1,0 +1,150 @@
+{
+  "komponente": "knoten_4",
+  "datei": "designs/components/knoten_4.sc",
+  "bauteilgruppe": "Kuppel",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "knoten 4",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 22,
+  "gruppen": [
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "knotenkugel",
+        "arm",
+        "ankerlasche"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "scheibe_m10",
+        "mutter_m10"
+      ]
+    },
+    {
+      "id": "schrauben",
+      "name": "Schrauben",
+      "kurz": "",
+      "teile": [
+        "schraube_m10x60"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "knotenkugel",
+      "name": "Knotenkugel",
+      "koerper": [
+        "Knotenkugel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 4110.0 g, Einzelkoerper 100.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-knotenkugel-d100",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "arm",
+      "name": "Arm",
+      "koerper": [
+        "Arm_1",
+        "Arm_2",
+        "Arm_3",
+        "Arm_4"
+      ],
+      "menge": 4,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 1030.5 g, Einzelkoerper 58.1 x 101.5 x 141.2 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-knotenarm-23x23x3",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "ankerlasche",
+      "name": "Ankerlasche",
+      "koerper": [
+        "Ankerlasche"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 694.4 g, Einzelkoerper 15.4 x 60.7 x 150.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-ankerlasche",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "scheibe_m10",
+      "name": "Scheibe M10",
+      "koerper": [
+        "Body1",
+        "Body3",
+        "Body5",
+        "Body7",
+        "Body9",
+        "Body11",
+        "Body13",
+        "Body15"
+      ],
+      "menge": 8,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 28.6 g, Einzelkoerper 6.7 x 19.9 x 20.1 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    },
+    {
+      "id": "schraube_m10x60",
+      "name": "Schraube M10x60",
+      "koerper": [
+        "Body2",
+        "Body6",
+        "Body10",
+        "Body14"
+      ],
+      "menge": 4,
+      "typ": "normteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 180.2 g, Einzelkoerper 18.8 x 27.2 x 62.9 mm (Modell-Bounding-Box)",
+      "artikel_id": "SRB-satz-m10x60",
+      "artikel_einheit": "Satz",
+      "artikel_menge_je_instanz": 4.0,
+      "geruest": true
+    },
+    {
+      "id": "mutter_m10",
+      "name": "Mutter M10",
+      "koerper": [
+        "Body4",
+        "Body8",
+        "Body12",
+        "Body16"
+      ],
+      "menge": 4,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl Knoten",
+      "masse_mm": "Masse 37.8 g, Einzelkoerper 12.5 x 18.0 x 18.9 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
+      "geruest": true
+    }
+  ]
+}

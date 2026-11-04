@@ -1,0 +1,54 @@
+{
+  "komponente": "huelle_folie_AAB",
+  "datei": "designs/components/huelle_folie_AAB.sc",
+  "bauteilgruppe": "Huelle",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "huelle folie AAB",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 2,
+  "gruppen": [
+    {
+      "id": "folien_und_dichtungen",
+      "name": "Folien und Dichtungen",
+      "kurz": "",
+      "teile": [
+        "folie_innen",
+        "folie_aussen"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "folie_innen",
+      "name": "Folie innen",
+      "koerper": [
+        "Folie_innen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PE Folie",
+      "masse_mm": "Masse 840.9 g, Einzelkoerper 0.2 x 3371.5 x 3614.7 mm (Modell-Bounding-Box)",
+      "artikel_id": "FOL-pe-plane",
+      "artikel_einheit": "m2",
+      "artikel_menge_je_instanz": 12.1862,
+      "geruest": true
+    },
+    {
+      "id": "folie_aussen",
+      "name": "Folie aussen",
+      "koerper": [
+        "Folie_aussen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PE Folie",
+      "masse_mm": "Masse 840.9 g, Einzelkoerper 0.2 x 3371.5 x 3614.7 mm (Modell-Bounding-Box)",
+      "artikel_id": "FOL-pe-plane",
+      "artikel_einheit": "m2",
+      "artikel_menge_je_instanz": 12.1862,
+      "geruest": true
+    }
+  ]
+}

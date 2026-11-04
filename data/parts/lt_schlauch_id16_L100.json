@@ -1,0 +1,38 @@
+{
+  "komponente": "lt_schlauch_id16_L100",
+  "datei": "designs/components/lt_schlauch_id16_L100.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "lt schlauch id16 L100",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "schlauch_und_schellen",
+      "name": "Schlauch und Schellen",
+      "kurz": "",
+      "teile": [
+        "schlauch"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "schlauch",
+      "name": "Schlauch",
+      "koerper": [
+        "Schlauch"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "LT hellblau",
+      "masse_mm": "Masse 11.3 g, Einzelkoerper 20.0 x 20.0 x 100.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SCH-schlauch-id16",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.1,
+      "geruest": true
+    }
+  ]
+}

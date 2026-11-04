@@ -1,0 +1,385 @@
+{
+  "komponente": "tuer_komplett",
+  "datei": "designs/components/tuer_komplett.sc",
+  "bauteilgruppe": "Huelle",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "tuer komplett",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 27,
+  "gruppen": [
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "schwelle",
+        "pfosten_links",
+        "pfosten_rechts",
+        "sturz"
+      ]
+    },
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "tuerblatt",
+        "scharnier_zargenlasche",
+        "scharnier_blattlasche",
+        "scharnier_bolzen",
+        "rosette_aussen",
+        "druecker_hals_aussen",
+        "druecker_hebel_aussen",
+        "rosette_innen",
+        "druecker_hals_innen",
+        "druecker_hebel_innen"
+      ]
+    },
+    {
+      "id": "winkel_flachstahl_halter",
+      "name": "Winkel, Flachstahl, Halter",
+      "kurz": "",
+      "teile": [
+        "anschlag_links",
+        "anschlag_rechts",
+        "anschlag_sturz"
+      ]
+    },
+    {
+      "id": "folien_und_dichtungen",
+      "name": "Folien und Dichtungen",
+      "kurz": "",
+      "teile": [
+        "dichtung_links",
+        "dichtung_rechts",
+        "dichtung_sturz",
+        "dichtung_schwelle"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "schwelle",
+      "name": "Schwelle",
+      "koerper": [
+        "Schwelle"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1804.5 g, Einzelkoerper 30.0 x 30.0 x 1076.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.076,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_links",
+      "name": "Pfosten links",
+      "koerper": [
+        "Pfosten_links"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 3353.3 g, Einzelkoerper 30.0 x 30.0 x 2008.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.008,
+      "geruest": true
+    },
+    {
+      "id": "pfosten_rechts",
+      "name": "Pfosten rechts",
+      "koerper": [
+        "Pfosten_rechts"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 3353.3 g, Einzelkoerper 30.0 x 30.0 x 2008.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.008,
+      "geruest": true
+    },
+    {
+      "id": "sturz",
+      "name": "Sturz",
+      "koerper": [
+        "Sturz"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 1804.5 g, Einzelkoerper 30.0 x 30.0 x 1076.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-st-rr30x30x2",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.076,
+      "geruest": true
+    },
+    {
+      "id": "tuerblatt",
+      "name": "Tuerblatt",
+      "koerper": [
+        "Tuerblatt"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Tuerblatt Sandwich",
+      "masse_mm": "Masse 24800.0 g, Einzelkoerper 40.0 x 1000.0 x 2000.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerblatt-1000x2000",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "anschlag_links",
+      "name": "Anschlag links",
+      "koerper": [
+        "Anschlag_links"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 662.0 g, Einzelkoerper 3.0 x 14.0 x 2008.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-flach-14x3",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.008,
+      "geruest": true
+    },
+    {
+      "id": "anschlag_rechts",
+      "name": "Anschlag rechts",
+      "koerper": [
+        "Anschlag_rechts"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 662.0 g, Einzelkoerper 3.0 x 14.0 x 2008.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-flach-14x3",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.008,
+      "geruest": true
+    },
+    {
+      "id": "anschlag_sturz",
+      "name": "Anschlag Sturz",
+      "koerper": [
+        "Anschlag_Sturz"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 325.7 g, Einzelkoerper 3.0 x 14.0 x 988.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "WNK-flach-14x3",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.988,
+      "geruest": true
+    },
+    {
+      "id": "dichtung_links",
+      "name": "Dichtung links",
+      "koerper": [
+        "Dichtung_links"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "EPDM schwarz",
+      "masse_mm": "Masse 13.2 g, Einzelkoerper 1.0 x 6.0 x 2000.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FOL-epdm-tuerdichtung",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtung_rechts",
+      "name": "Dichtung rechts",
+      "koerper": [
+        "Dichtung_rechts"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "EPDM schwarz",
+      "masse_mm": "Masse 13.2 g, Einzelkoerper 1.0 x 6.0 x 2000.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FOL-epdm-tuerdichtung",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 2.0,
+      "geruest": true
+    },
+    {
+      "id": "dichtung_sturz",
+      "name": "Dichtung Sturz",
+      "koerper": [
+        "Dichtung_Sturz"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "EPDM schwarz",
+      "masse_mm": "Masse 8.7 g, Einzelkoerper 1.0 x 8.0 x 988.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FOL-epdm-tuerdichtung",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 0.988,
+      "geruest": true
+    },
+    {
+      "id": "dichtung_schwelle",
+      "name": "Dichtung Schwelle",
+      "koerper": [
+        "Dichtung_Schwelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "EPDM schwarz",
+      "masse_mm": "Masse 88.0 g, Einzelkoerper 2.0 x 40.0 x 1000.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FOL-epdm-tuerdichtung",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "scharnier_zargenlasche",
+      "name": "Scharnier Zargenlasche",
+      "koerper": [
+        "Scharnier1_Zargenlasche",
+        "Scharnier2_Zargenlasche",
+        "Scharnier3_Zargenlasche"
+      ],
+      "menge": 3,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 406.9 g, Einzelkoerper 4.0 x 48.0 x 90.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerscharnier",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 3.0,
+      "geruest": true
+    },
+    {
+      "id": "scharnier_blattlasche",
+      "name": "Scharnier Blattlasche",
+      "koerper": [
+        "Scharnier1_Blattlasche",
+        "Scharnier2_Blattlasche",
+        "Scharnier3_Blattlasche"
+      ],
+      "menge": 3,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 406.9 g, Einzelkoerper 4.0 x 48.0 x 90.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerscharnier",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "scharnier_bolzen",
+      "name": "Scharnier Bolzen",
+      "koerper": [
+        "Scharnier1_Bolzen",
+        "Scharnier2_Bolzen",
+        "Scharnier3_Bolzen"
+      ],
+      "menge": 3,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 166.4 g, Einzelkoerper 10.0 x 10.0 x 90.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerscharnier",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "rosette_aussen",
+      "name": "Rosette aussen",
+      "koerper": [
+        "Rosette_aussen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 61.6 g, Einzelkoerper 4.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerdruecker",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "druecker_hals_aussen",
+      "name": "Druecker Hals aussen",
+      "koerper": [
+        "Druecker_Hals_aussen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 43.9 g, Einzelkoerper 18.0 x 18.0 x 22.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerdruecker",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "druecker_hebel_aussen",
+      "name": "Druecker Hebel aussen",
+      "koerper": [
+        "Druecker_Hebel_aussen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 330.6 g, Einzelkoerper 18.0 x 18.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerdruecker",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "rosette_innen",
+      "name": "Rosette innen",
+      "koerper": [
+        "Rosette_innen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 61.6 g, Einzelkoerper 4.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerdruecker",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "druecker_hals_innen",
+      "name": "Druecker Hals innen",
+      "koerper": [
+        "Druecker_Hals_innen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 43.9 g, Einzelkoerper 18.0 x 18.0 x 22.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerdruecker",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 0.0,
+      "geruest": true
+    },
+    {
+      "id": "druecker_hebel_innen",
+      "name": "Druecker Hebel innen",
+      "koerper": [
+        "Druecker_Hebel_innen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Stahl verzinkt",
+      "masse_mm": "Masse 330.6 g, Einzelkoerper 18.0 x 18.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-tuerdruecker",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

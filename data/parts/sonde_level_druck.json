@@ -1,0 +1,38 @@
+{
+  "komponente": "sonde_level_druck",
+  "datei": "designs/components/sonde_level_druck.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "sonde level druck",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 1,
+  "gruppen": [
+    {
+      "id": "messtechnik",
+      "name": "Messtechnik",
+      "kurz": "",
+      "teile": [
+        "sonde"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "sonde",
+      "name": "Sonde",
+      "koerper": [
+        "Sonde"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Edelstahl",
+      "masse_mm": "Masse 347.4 g, Einzelkoerper 20.0 x 20.0 x 140.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "MES-level-druck",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

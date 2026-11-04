@@ -1,0 +1,100 @@
+{
+  "komponente": "halter_zelle",
+  "datei": "designs/components/halter_zelle.sc",
+  "bauteilgruppe": "Messtechnik und Elektrik",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "halter zelle",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 4,
+  "gruppen": [
+    {
+      "id": "sonderteile_eigenbau",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "",
+      "teile": [
+        "zellkoerper"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "anschluss_zulauf",
+        "anschluss_ablauf"
+      ]
+    },
+    {
+      "id": "armaturen",
+      "name": "Armaturen",
+      "kurz": "",
+      "teile": [
+        "absperrhahn"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "zellkoerper",
+      "name": "Zellkoerper",
+      "koerper": [
+        "Zellkoerper"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 435.9 g, Einzelkoerper 44.0 x 74.0 x 220.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "SON-halter-zelle-zellkoerper",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "anschluss_zulauf",
+      "name": "Anschluss Zulauf",
+      "koerper": [
+        "Anschluss_Zulauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 6.7 g, Einzelkoerper 20.0 x 20.0 x 30.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "anschluss_ablauf",
+      "name": "Anschluss Ablauf",
+      "koerper": [
+        "Anschluss_Ablauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC grau",
+      "masse_mm": "Masse 6.7 g, Einzelkoerper 20.0 x 20.0 x 30.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-stutzen-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "absperrhahn",
+      "name": "Absperrhahn",
+      "koerper": [
+        "Absperrhahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC blau",
+      "masse_mm": "Masse 40.8 g, Einzelkoerper 40.0 x 46.0 x 70.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "komponente": "nft_rinne_k_a",
+  "datei": "designs/components/nft_rinne_k_a.sc",
+  "bauteilgruppe": "Tische und Beete",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "nft rinne k a",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "stahl_und_alu_profile",
+      "name": "Stahl- und Alu-Profile",
+      "kurz": "",
+      "teile": [
+        "rinnenprofil"
+      ]
+    },
+    {
+      "id": "fittings",
+      "name": "Fittings",
+      "kurz": "",
+      "teile": [
+        "kappezulauf",
+        "kappeablauf"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "rinnenprofil",
+      "name": "Rinnenprofil",
+      "koerper": [
+        "Rinnenprofil"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "PVC-U weiss",
+      "masse_mm": "Masse 2140.5 g, Einzelkoerper 100.0 x 130.0 x 1304.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "PRF-pvcu-rinne-130x100",
+      "artikel_einheit": "m",
+      "artikel_menge_je_instanz": 1.304,
+      "geruest": true
+    },
+    {
+      "id": "kappezulauf",
+      "name": "KappeZulauf",
+      "koerper": [
+        "KappeZulauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC-U weiss",
+      "masse_mm": "Masse 108.9 g, Einzelkoerper 43.0 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-rinne-kappe-zulauf",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "kappeablauf",
+      "name": "KappeAblauf",
+      "koerper": [
+        "KappeAblauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "PVC-U weiss",
+      "masse_mm": "Masse 109.4 g, Einzelkoerper 48.0 x 100.0 x 130.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "FIT-rinne-kappe-ablauf",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "komponente": "becken_dritt",
+  "datei": "designs/components/becken_dritt.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "geruest",
+  "titel": "becken dritt",
+  "kurz": "",
+  "hinweis": "Geruest aus scripts/parts_geruest.py (W60 5-0): Koerper, Typ, artikel_id, Menge automatisch; Funktion, Erklaertext, Explosion und Gruppen folgen in 5a. Teile mit geruest: true sind noch nicht ausgefuellt.",
+  "koerperzahl": 2,
+  "gruppen": [
+    {
+      "id": "behaelter_und_becken",
+      "name": "Behaelter und Becken",
+      "kurz": "",
+      "teile": [
+        "t_drittbecken"
+      ]
+    },
+    {
+      "id": "nicht_kaufbar_ausnahme",
+      "name": "Nicht kaufbar (Ausnahme)",
+      "kurz": "",
+      "teile": [
+        "t_wasser"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_drittbecken",
+      "name": "T Drittbecken",
+      "koerper": [
+        "T14_Drittbecken"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 464211.6 g, Einzelkoerper 1150.0 x 1150.0 x 1265.0 mm (Modell-Bounding-Box)",
+      "artikel_id": "BEH-becken-dritt",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "geruest": true
+    },
+    {
+      "id": "t_wasser",
+      "name": "T Wasser",
+      "koerper": [
+        "T14_Wasser"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "Default",
+      "masse_mm": "Masse 1064516.3 g, Einzelkoerper 1010.0 x 1020.0 x 1020.0 mm (Modell-Bounding-Box)",
+      "artikel_id": null,
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Wasserkoerper, kein Bauteil",
+      "geruest": true
+    }
+  ]
+}

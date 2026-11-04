@@ -288,6 +288,310 @@
     }
    ],
    "luecke": "wie BLE-blech-st-3"
+  },
+  "SRB-m8x35": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.23,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x40-mm-galv-verzinkt-100-stueck/10316856/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "M8x35 bei Hornbach nicht gelistet; E: Mittel aus Reyher DIN 933 M8x30 (10,10 EUR/100 St, .../10316631/) und M8x40 (11,55 EUR/100 St) = 0,108/St, + Mutter DIN 934 M8 (5,15/100, .../10316615/) + 2 Scheiben DIN 125 8,4 (3,45/100, .../10317026/). Preise brutto, Packungen je 100 St, Versand zzgl."
+    },
+    {
+     "preis_eur": 0.44,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-04",
+     "haendler": "Mister Agri",
+     "land": "NL",
+     "url": "https://www.misteragri.com/pl/51073372-zeskantbout-din-933-m8x35-verzinkt-staal-8-8",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Schraube DIN 933 M8x35 8.8 verz. Q-gelesen 0,19 netto (0,23 mit NL-USt) x1,19 = 0,226 + Mutter M8 DIN 934 Kl.8 verz. (https://www.misteragri.com/40000624-moer-kl8-din934-m8-verz, 0,12 netto x1,19 = 0,143) + 2 Scheiben M8 mit 0,069 aus Hornbach-Preis ANGENOMMEN (Mister Agri-Scheibenseite nicht gefunden). Einzelstueckpreis, Staffel ab 50 St. Netto x1,19 gerechnet."
+    }
+   ],
+   "luecke": ""
+  },
+  "SRB-knoten-klein": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.14,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "A: Ersatzartikel M6x20. E: Reyher DIN 933 M6x20 (6,50 EUR/100 St) + Mutter DIN 934 M6 (3,20/100, .../10316557/) + 2 Scheiben DIN 125 6,4 (2,20/100, .../10316978/). Brutto, Packungen je 100 St, Versand zzgl."
+    }
+   ],
+   "luecke": "Nur ein Haendler (Hornbach, Ersatzartikel M6x20 als Satz). Mister Agri hat keine M6x20-Seite gefunden; ehorst ohne oeffentliche Preise (Login)."
+  },
+  "SRB-halter-klein-12x10x20": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.14,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "A: Ersatzartikel M6x20. E: Reyher DIN 933 M6x20 (6,50 EUR/100 St) + Mutter DIN 934 M6 (3,20/100, .../10316557/) + 2 Scheiben DIN 125 6,4 (2,20/100, .../10316978/). Brutto, Packungen je 100 St, Versand zzgl."
+    }
+   ],
+   "luecke": "Nur ein Haendler (Hornbach, Ersatzartikel M6x20 als Satz). Mister Agri hat keine M6x20-Seite gefunden; ehorst ohne oeffentliche Preise (Login)."
+  },
+  "SRB-pumpe-klein": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.21,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x20-mm-galv-verzinkt-100-stueck/10316836/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "A: Ersatzartikel M8x20. E: Reyher DIN 933 M8x20 (9,25 EUR/100 St) + Mutter M8 (5,15/100) + 2 Scheiben 8,4 (3,45/100). Brutto, je 100 St, Versand zzgl."
+    },
+    {
+     "preis_eur": 0.39,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-04",
+     "haendler": "Mister Agri",
+     "land": "NL",
+     "url": "https://www.misteragri.com/51032041-zeskantbout-din-933-m8-x-20-staal-8-8-o-d-8mm-spoed-1-25mm",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "A: Ersatzartikel M8x20. E: Schraube DIN 933 M8x20 8.8 Q-gelesen 0,15 netto (0,18 mit NL-USt) x1,19 = 0,179 + Mutter M8 (0,12 netto x1,19 = 0,143) + 2 Scheiben 0,069 aus Hornbach ANGENOMMEN."
+    }
+   ],
+   "luecke": ""
+  },
+  "BLE-fussplatte-70x70x5": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 12.75,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-5-mm-warmgewalzt-540903/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 70x70x5 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (70x70 mm = 0.0049 m2 x 189.21 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "BLE-fussplatte-80x80x6": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 13.42,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-6-mm-warmgewalzt-815795/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 80x80x6 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (80x80 mm = 0.0064 m2 x 232.19 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "BLE-fussplatte-80x80x8": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 13.71,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-8-mm-warmgewalzt-750482/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 80x80x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (80x80 mm = 0.0064 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "BLE-fussplatte-100x100x6": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 14.41,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-6-mm-warmgewalzt-815795/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 100x100x6 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (100x100 mm = 0.0100 m2 x 232.19 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "BLE-fussplatte-150x150x8": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 18.9,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-8-mm-warmgewalzt-750482/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 150x150x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (150x150 mm = 0.0225 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "BLE-fussplatte-200x200x8": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 24.54,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-8-mm-warmgewalzt-750482/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 200x200x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (200x200 mm = 0.0400 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "BLE-platte-30x30x3": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 11.97,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-3-mm-warmgewalzt-894229/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 40x40x3 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (40x40 mm = 0.0016 m2 x 168.36 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk. Mindestmass des Shops 40 mm, daher 40x40 gerechnet statt 30x30 (A)."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "WNK-wandlasche-30x30x3": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 11.97,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahlblech-3-mm-warmgewalzt-894229/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E: Zuschnitt 40x40x3 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (40x40 mm = 0.0016 m2 x 168.36 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk. Mindestmass des Shops 40 mm, daher 40x40 gerechnet statt 30x30 (A); Ersatz fuer Wandlasche, roh."
+    }
+   ],
+   "luecke": "Nur ein Haendler gefunden (Metallshopper, roh, ungelocht, Verzinken/Bohren extra); Laser-/eBay-Haendler per curl gesperrt (eBay/Kaufland 403), john-steel nur Konfigurator ohne Festpreis."
+  },
+  "BLE-platte-250x250x15": {
+   "bezug_einheit": "Stk",
+   "angebote": [],
+   "luecke": "Kein Angebot mit Preis gelesen: Metallshopper bietet nur bis 8 mm Blech; eBay/Kaufland per curl gesperrt, Suchtreffer ohne Preis. Laserzuschnitt-Anfrage noetig."
+  },
+  "WNK-winkel-36x60x60": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 7.37,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahl-winkelprofil-warmgewalzt-60x60x6-mm-384238/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E, Ersatz: Winkelprofil 60x60x6 roh warmgewalzt, Zuschnitt 40 mm (Shop-Minimum, statt 36 mm): 0,04 m x 21.04 EUR/m netto + 5,35 EUR Bearbeitungsgebuehr = 6.19 netto, x1,19. NICHT verzinkt; Gebuehr verteilt sich bei mehreren Stk."
+    },
+    {
+     "preis_eur": 0.8,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/winkelverbinder-60-x-60-x-45-mm-sendzimirverzinkt-1-stueck/3375551/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "A, Ersatz: Winkelverbinder 60x60x45 mm sendzimirverzinkt (duenn, kein 36x60x60-Vollwinkel). Brutto 0,80 EUR/Stk gelesen. [Preis von Suchergebnisseite, Produktseite nicht selbst geoeffnet]"
+    }
+   ],
+   "luecke": ""
+  },
+  "WNK-rinnenhalter-25": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 6.73,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahl-winkelprofil-warmgewalzt-30x30x3-mm-712809/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E, Ersatz: Winkelprofil 30x30x3 roh, Zuschnitt 40 mm: 0,04 m x 7.69 EUR/m netto + 5,35 EUR Gebuehr = 5.66 netto, x1,19. Roh, nicht verzinkt; Mass 25x25 nicht verfuegbar (A)."
+    }
+   ],
+   "luecke": "Nur ein Haendler (Metallshopper, Ersatzprofil 30x30x3)."
+  },
+  "WNK-pumpenkonsole": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 1.25,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/schwerlast-winkelverbinder-m-sicke-90-x-90-x-65-mm-sendzimirverzinkt-1-stueck/738910/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "A, Ersatz: Schwerlast-Winkelverbinder 90x90x65 mm sendzimirverzinkt als Standwinkel. Brutto 1,25 EUR/Stk gelesen. [Preis von Suchergebnisseite, Produktseite nicht selbst geoeffnet]"
+    },
+    {
+     "preis_eur": 7.37,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (Metaalshopper)",
+     "land": "DE",
+     "url": "https://www.metallshopper.de/p/stahl-winkelprofil-warmgewalzt-60x60x6-mm-384238/",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "E, Ersatz: Winkelprofil 60x60x6 roh, angenommener Zuschnitt 40 mm (Konsolenmass unbekannt): 0,04 m x 21.04 EUR/m netto + 5,35 EUR Gebuehr = 6.19 netto, x1,19. Roh."
+    }
+   ],
+   "luecke": ""
   }
  }
 }

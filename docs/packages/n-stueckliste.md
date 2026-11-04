@@ -16,12 +16,16 @@
 9. [ ] Recherche 2E Huelle, Toepfe, Substrat, Gewebe (`data/beschaffung/huelle_pflanze.json`)
 10. [ ] Zusammenfuehrung und Seite `docs/einkaufsliste.html`, Screenshot-Abnahme
 11. [ ] Pruefer: `docs/jobs/pruefung/N-STUECKLISTE.md` nach fuenf Pruefpunkten
+11b. [ ] Seite interaktiv, Gruppieren/Sortieren, Desktop-Verknuepfung (W59-Nachtrag; Verknuepfung auf Bens Desktop nur nach seinem Ja)
+11c. [ ] W60: Teiledaten fuer alle Bauteile in 5 Gruppen (Werkstatt, parallel nach 1b), dann Viewer-Anbindung Preis/Link, Pruefer (Pruefpunkte 6 und 7 im Blatt)
 12. [ ] Orchestrator: Roadmap nachfuehren (N-KATALOG, N-STUECKLISTE, N-BESCHAFFUNG gebuendelt, N-BOM-PARAM bleibt)
 
 Reihenfolge: 1a vor 2A bis 2E (Artikelliste); 2A bis 2E parallel; 10 nach 1d und 2A bis 2E; 11 zuletzt. Eine Sitzung = ein Schritt (D74).
 
 ## Stand
 04.11.2026, Planer (Sonnet 5.5): Blatt geschrieben, Aktualitaet **angepasst** (B1 liegt nur fuer 2 von 25 Komponenten vor, deshalb Namensregeln statt voller B1; D69 durch W59 auf grobe Preise erweitert; E20 und Subtank als OFFEN-Status gefuehrt). Messung unbenannter Koerper: `nft_tisch_mitte.sc` 40 von 124; Messung ueber alle Komponenten folgt in 1a. OFFEN (Ben): Preise brutto oder netto (Empfehlung brutto); UK als Europa; Pflanzgut/Fisch/Beton/Aushub in die Liste (Empfehlung nein).
+
+04.11.2026, Nachtraege eingearbeitet: W59 (interaktive Seite, Sortieren, Gruppieren mit Gruppenpreis, Desktop-Verknuepfung) als Paket 3b; W60 (Detailansicht aller Bauteile, verknuepft mit Einkaufsliste) als Paket 5 mit gemeinsamem Datenmodell `data/parts` + `artikel_id`; Pruefpunkte 6 und 7. Zusatz: 6 bis 7 Sitzungen. Empfehlung: Einkaufsliste zuerst, W60 danach.
 
 ## DoD
 Dateien aus dem Blatt vorhanden; `check_bom.py` gruen; fuenf Pruefpunkte vom Pruefer gemessen; Seite per Screenshot geprueft; Entscheidungen der Offen-Liste in `docs/decisions.md`; Wunschbuch W59 nachgefuehrt; Commit und Push je Teilschritt.

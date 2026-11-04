@@ -62,7 +62,38 @@ def spec_scheibe():
         "bezugspunkt": "Port A (Ende des Anschlussstutzens, Mitte) im Ursprung; Oeffnung zeigt -Z (nach unten), Stutzen, Stuetzfuss, Tragteller und Membran stehen auf der Achse +Z",
     }
 
-SPECS = {"luftverteiler_6": lambda: spec_verteiler("luftverteiler_6"), "luftverteiler_4": lambda: spec_verteiler("luftverteiler_4"), "luft_scheibenbelueftung": spec_scheibe}
+
+# ------------------------------------------------------------------ Geblaese
+def spec_geblaese():
+    return {
+        "klasse": "geblaese_luft", "teilenummer": "T85", "revision": "A",
+        "beschreibung": "Geblaese-Baugruppe Luft (W37-3 Teil 1, R45 Abschnitt 4, R53 Abschnitt 4 und 5): Linear-Membranpumpe der Klasse 200 l/min bei mindestens 26 kPa als Platzhalterquader mit Gummifuessen, Stutzen d20, Netzkabel, dazu die Luftleitung ueber den hoechsten Wasserspiegel (Schleife) mit Rueckschlagventil d20. Zwei Stueck (N+1). Pumpentyp NICHT gewaehlt (Beispielreihe Hiblow HP-200, Secoh JDK-S-200), Kennlinie bei 26 kPa OFFEN; Standort Schaltschrankbereich OFFEN (E13)",
+        "quelle_masse": "docs/research/R45-hydraulik-auslegung.md Abschnitt 4 (Empfehlung 3, 4, 7); docs/research/R53-europa-frischwasser-luft.md Abschnitt 4 (Secoh JDK-S-200: 240 x 180 x 230,5 mm, 10,0 kg, BIBUS [Q]) und 5; data/leitungsnetz.json Kabel schaltschrank -> geblaese_fisch 204 W (nur gelesen); data/layout.json pool2.water_z 515 und data/params.json pool_rim 650 (nur gelesen)",
+        "parameter": {
+            "box_x": P(240, "mm", "[A] Platzhalter nach Beispielreihe Secoh JDK-S-200 (BIBUS, R53: 240 x 180 x 230,5); Typ nicht gewaehlt, aus Katalog nachzumessen"),
+            "box_y": P(180, "mm", "[A] wie box_x"),
+            "box_z": P(230, "mm", "[A] wie box_x"),
+            "pump_mass_g": P(10000, "", "[A] 10,0 kg (Secoh JDK-S-200, BIBUS [Q] R53; Hiblow HP-200 8,5 bis 9 kg); Gehaeuse als Vollquader, Dichte so gesetzt, dass die Pumpe 10 kg wiegt"),
+            "foot_d": P(40, "mm", "[A] Gummifuss Ø 40"),
+            "foot_h": P(15, "mm", "[A] Gummifuss Hoehe 15"),
+            "foot_x": P(90, "mm", "[A] Fussmitte x (innerhalb der 240er Grundflaeche)"),
+            "foot_y": P(60, "mm", "[A] Fussmitte y (innerhalb der 180er Grundflaeche)"),
+            "out_d": P(20, "mm", "[A] Luftaustritt d20 (Auftrag W37-3 Teil 1; R45: d20/d25); weiter ueber Reduzierung auf d25 zum Verteiler"),
+            "out_l": P(40, "mm", "[A] Stutzen Laenge ueber dem Gehaeuse"),
+            "bend_r": P(80, "mm", "[A] Biegeradius der Rohrschleife (4 x d, warm gebogen)"),
+            "apex_z": P(710, "mm", "[E] Rohrachse der Schleife ueber der Aufstellflaeche: Pool-Rand Z 650 (params pool_rim) + 60 wie Schwimmerventil = Z 710; Wasserspiegel Z 515 (layout pool2.water_z) -> Reserve 195 mm. R45 Empfehlung 7: 'ueber dem hoechsten Wasserspiegel'; Aufstellflaeche Z 0 angenommen (E13 offen)"),
+            "arm_l": P(150, "mm", "[A] waagerechter Schenkel nach dem Bogen bis zum Rueckschlagventil"),
+            "out_tube_l": P(100, "mm", "[A] Austrittsrohr hinter dem Rueckschlagventil bis Port Luftaustritt"),
+            "cable_d": P(8, "mm", "[A] Netzkabel Ø 8 (Stummel Platzhalter)"),
+            "cable_l": P(100, "mm", "[A] Netzkabel-Stummel Laenge"),
+            "cable_x": P(-80, "mm", "[A] Netzkabel x-Lage an der Rueckseite"),
+        },
+        "werkstoff": {"name": "Gehaeuse Aluminium/Kunststoff (Platzhalter), Fuesse Gummi, Luftleitung PVC-U", "dichte_g_cm3": 1.0, "farbe": "#2f3a44", "herkunft": "[A] Platzhalter; Dichte des Quaders so, dass 10,0 kg erreicht werden ([Q] Secoh JDK-S-200)"},
+        "anzahl": {"soll": "2 Stueck (N+1: eine Pumpe laeuft, die zweite ist Reserve; Spitze 205 l/min nur mit beiden)", "quelle": "R45 Abschnitt 4 Empfehlung 3 und 4; D45 e (Reserve-Geblaese)"},
+        "bezugspunkt": "Mitte der Standflaeche der Pumpe am Boden (Z 0 = Aufstellflaeche); X zeigt zum Luftaustritt, Y quer (Netzkabel -Y), Z hoch; Rohrachse der Schleife bei Z 710, Port Luftaustritt am Ende des Austrittsrohrs (+X)",
+    }
+
+SPECS = {"geblaese_luft": spec_geblaese, "luftverteiler_6": lambda: spec_verteiler("luftverteiler_6"), "luftverteiler_4": lambda: spec_verteiler("luftverteiler_4"), "luft_scheibenbelueftung": spec_scheibe}
 
 def write(name, extra=None):
     d = SPECS[name]()

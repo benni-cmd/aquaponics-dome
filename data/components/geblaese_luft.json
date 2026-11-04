@@ -1,0 +1,105 @@
+{
+ "klasse": "geblaese_luft",
+ "teilenummer": "T85",
+ "revision": "A",
+ "beschreibung": "Geblaese-Baugruppe Luft (W37-3 Teil 1, R45 Abschnitt 4, R53 Abschnitt 4 und 5): Linear-Membranpumpe der Klasse 200 l/min bei mindestens 26 kPa als Platzhalterquader mit Gummifuessen, Stutzen d20, Netzkabel, dazu die Luftleitung ueber den hoechsten Wasserspiegel (Schleife) mit Rueckschlagventil d20. Zwei Stueck (N+1). Pumpentyp NICHT gewaehlt (Beispielreihe Hiblow HP-200, Secoh JDK-S-200), Kennlinie bei 26 kPa OFFEN; Standort Schaltschrankbereich OFFEN (E13)",
+ "quelle_masse": "docs/research/R45-hydraulik-auslegung.md Abschnitt 4 (Empfehlung 3, 4, 7); docs/research/R53-europa-frischwasser-luft.md Abschnitt 4 (Secoh JDK-S-200: 240 x 180 x 230,5 mm, 10,0 kg, BIBUS [Q]) und 5; data/leitungsnetz.json Kabel schaltschrank -> geblaese_fisch 204 W (nur gelesen); data/layout.json pool2.water_z 515 und data/params.json pool_rim 650 (nur gelesen)",
+ "parameter": {
+  "box_x": {
+   "wert": 240,
+   "einheit": "mm",
+   "herkunft": "[A] Platzhalter nach Beispielreihe Secoh JDK-S-200 (BIBUS, R53: 240 x 180 x 230,5); Typ nicht gewaehlt, aus Katalog nachzumessen"
+  },
+  "box_y": {
+   "wert": 180,
+   "einheit": "mm",
+   "herkunft": "[A] wie box_x"
+  },
+  "box_z": {
+   "wert": 230,
+   "einheit": "mm",
+   "herkunft": "[A] wie box_x"
+  },
+  "pump_mass_g": {
+   "wert": 10000,
+   "einheit": "",
+   "herkunft": "[A] 10,0 kg (Secoh JDK-S-200, BIBUS [Q] R53; Hiblow HP-200 8,5 bis 9 kg); Gehaeuse als Vollquader, Dichte so gesetzt, dass die Pumpe 10 kg wiegt"
+  },
+  "foot_d": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Gummifuss Ø 40"
+  },
+  "foot_h": {
+   "wert": 15,
+   "einheit": "mm",
+   "herkunft": "[A] Gummifuss Hoehe 15"
+  },
+  "foot_x": {
+   "wert": 90,
+   "einheit": "mm",
+   "herkunft": "[A] Fussmitte x (innerhalb der 240er Grundflaeche)"
+  },
+  "foot_y": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[A] Fussmitte y (innerhalb der 180er Grundflaeche)"
+  },
+  "out_d": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Luftaustritt d20 (Auftrag W37-3 Teil 1; R45: d20/d25); weiter ueber Reduzierung auf d25 zum Verteiler"
+  },
+  "out_l": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Stutzen Laenge ueber dem Gehaeuse"
+  },
+  "bend_r": {
+   "wert": 80,
+   "einheit": "mm",
+   "herkunft": "[A] Biegeradius der Rohrschleife (4 x d, warm gebogen)"
+  },
+  "apex_z": {
+   "wert": 710,
+   "einheit": "mm",
+   "herkunft": "[E] Rohrachse der Schleife ueber der Aufstellflaeche: Pool-Rand Z 650 (params pool_rim) + 60 wie Schwimmerventil = Z 710; Wasserspiegel Z 515 (layout pool2.water_z) -> Reserve 195 mm. R45 Empfehlung 7: 'ueber dem hoechsten Wasserspiegel'; Aufstellflaeche Z 0 angenommen (E13 offen)"
+  },
+  "arm_l": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[A] waagerechter Schenkel nach dem Bogen bis zum Rueckschlagventil"
+  },
+  "out_tube_l": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Austrittsrohr hinter dem Rueckschlagventil bis Port Luftaustritt"
+  },
+  "cable_d": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A] Netzkabel Ø 8 (Stummel Platzhalter)"
+  },
+  "cable_l": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Netzkabel-Stummel Laenge"
+  },
+  "cable_x": {
+   "wert": -80,
+   "einheit": "mm",
+   "herkunft": "[A] Netzkabel x-Lage an der Rueckseite"
+  }
+ },
+ "werkstoff": {
+  "name": "Gehaeuse Aluminium/Kunststoff (Platzhalter), Fuesse Gummi, Luftleitung PVC-U",
+  "dichte_g_cm3": 1.0,
+  "farbe": "#2f3a44",
+  "herkunft": "[A] Platzhalter; Dichte des Quaders so, dass 10,0 kg erreicht werden ([Q] Secoh JDK-S-200)"
+ },
+ "anzahl": {
+  "soll": "2 Stueck (N+1: eine Pumpe laeuft, die zweite ist Reserve; Spitze 205 l/min nur mit beiden)",
+  "quelle": "R45 Abschnitt 4 Empfehlung 3 und 4; D45 e (Reserve-Geblaese)"
+ },
+ "bezugspunkt": "Mitte der Standflaeche der Pumpe am Boden (Z 0 = Aufstellflaeche); X zeigt zum Luftaustritt, Y quer (Netzkabel -Y), Z hoch; Rohrachse der Schleife bei Z 710, Port Luftaustritt am Ende des Austrittsrohrs (+X)"
+}

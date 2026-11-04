@@ -1,0 +1,195 @@
+PASS ibc_beet: aussen_933 Anzahl laut layout.json: Ist 5, Soll 5
+PASS ibc_beet: aussen_933 Wanne Laenge: Ist 2953, Soll 2953 (+-0.5)
+PASS ibc_beet: aussen_933 Wanne Breite: Ist 933, Soll 933 (+-0.5)
+PASS ibc_beet: aussen_933 Wanne Hoehe: Ist 637, Soll 637 (+-0.5)
+PASS ibc_beet: aussen_933 Medium Koerperzahl: Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Medium Oberflaeche lokal: Ist 562, Soll 562 (+-0.5)
+PASS ibc_beet: aussen_933 Medium Tiefe: Ist 300, Soll 300 (+-0.5)
+PASS ibc_beet: aussen_933 Medium Oberflaeche absolut (z0 -162): Ist 400, Soll 400 (+-15)
+PASS ibc_beet: aussen_933 Siebboden Dicke: Ist 8, Soll 8 (+-0.01)
+PASS ibc_beet: aussen_933 Siebboden Volumen (Liter) = Flaeche x 8 mm minus Durchfuehrung d36 (ungelocht, kein Lochabzug): Ist 20.4282, Soll 20.4282 (+-0.02)
+PASS ibc_beet: aussen_933 Medium-Volumen (Liter) gegen Flaechenrechnung (Loecher Schutz d110 und Schacht d110): Ist 760.661, Soll 760.66 (+-0.5)
+PASS ibc_beet: aussen_933 keine Siebloch-Koerper (Sperrboden): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Kerben-Oberkante z 274 (Plattenoberkante 262 + 12) hoechstens +12: Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Kerbenflaeche 4 x 10 x 12 = 480 mm2 >= Standrohrflaeche 380: Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Glocke Volumen: 4 Kerben + Luftloch herausgeschnitten (1.03 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Medienschutz Volumen: 2 x 12 Schlitze herausgeschnitten (0.99 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Medienschutz Schlitzflaeche 6000 mm2 >= 15 x Standrohr: Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Schutzkappe sitzt auf dem Medienschutz: Ist 582, Soll 582 (+-0.01)
+PASS ibc_beet: aussen_933 Reinigungsschacht D: Ist 109.994, Soll 110 (+-0.1)
+PASS ibc_beet: aussen_933 Reinigungsschacht steht auf dem Sperrboden: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_933 Reinigungsschacht Oberkante ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: aussen_933 Reinigungsschacht in der Naehe der alten Lage -Li/2 + 250 (hoechstens ein Rasterschritt 130): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Abstand Schachtachse zu jedem Netztopf des Rasters 91.9 mm >= 87 (Schachtradius 55 + Kragenradius 32; Raster 22 x 7, 154 Toepfe): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Schachtkappe sitzt auf dem Schacht: Ist 582, Soll 582 (+-0.01)
+PASS ibc_beet: aussen_933 Reduktion Oberkante = Port z -30: Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: aussen_933 Reduktion Bauhoehe: Ist 50, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_933 Reduktion groesster D (Uebergang): Ist 45.9993, Soll 46 (+-0.1)
+PASS ibc_beet: aussen_933 Bulkhead Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_933 Plattenhuelse Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_933 Reduzierhuelse_Boden Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: aussen_933 Reduzierhuelse_Platte Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: aussen_933 Plattenhuelse: Flansch auf Plattenoberkante: Ist 266, Soll 266 (+-0.01)
+PASS ibc_beet: aussen_933 alle Koerper benannt (keine Body<n>): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Interferenzen (inspect.interference): Ist 0, Soll 0
+PASS ibc_beet: aussen_933 Siebboden Oberkante = Medienunterkante: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_933 Standrohr Hoehe ueber Medienunterkante: Ist 265, Soll 265 (+-0.5)
+PASS ibc_beet: aussen_933 Standrohr D: Ist 24.9996, Soll 25 (+-0.1)
+PASS ibc_beet: aussen_933 Glocke D: Ist 75, Soll 75 (+-0.1)
+PASS ibc_beet: aussen_933 Glocke Hoehe: Ist 295, Soll 295 (+-0.1)
+PASS ibc_beet: aussen_933 Medienschutz D: Ist 110, Soll 110 (+-0.1)
+PASS ibc_beet: aussen_933 Medienschutz Hoehe: Ist 320, Soll 320 (+-0.1)
+PASS ibc_beet: aussen_933 Medienschutz ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: aussen_933 Standrohr unter Glockendecke (Luft >= 20): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Ablaufport z (Rohrende unter Boden): Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: aussen_933 Zulaufport ausserhalb der Wanne (x < -L/2): Ist 1, Soll 1
+PASS ibc_beet: aussen_933 Zulaufhoehe lokal: Ist 612, Soll 612 (+-0.5)
+PASS ibc_beet: aussen_933 Zulauf absolut (z0 -162): Ist 450, Soll 450 (+-25)
+PASS ibc_beet: aussen_933 Glocke steht auf dem Siebboden: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_993 Anzahl laut layout.json: Ist 3, Soll 3
+PASS ibc_beet: aussen_993 Wanne Laenge: Ist 2953, Soll 2953 (+-0.5)
+PASS ibc_beet: aussen_993 Wanne Breite: Ist 993, Soll 993 (+-0.5)
+PASS ibc_beet: aussen_993 Wanne Hoehe: Ist 637, Soll 637 (+-0.5)
+PASS ibc_beet: aussen_993 Medium Koerperzahl: Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Medium Oberflaeche lokal: Ist 562, Soll 562 (+-0.5)
+PASS ibc_beet: aussen_993 Medium Tiefe: Ist 300, Soll 300 (+-0.5)
+PASS ibc_beet: aussen_993 Medium Oberflaeche absolut (z0 -162): Ist 400, Soll 400 (+-15)
+PASS ibc_beet: aussen_993 Siebboden Dicke: Ist 8, Soll 8 (+-0.01)
+PASS ibc_beet: aussen_993 Siebboden Volumen (Liter) = Flaeche x 8 mm minus Durchfuehrung d36 (ungelocht, kein Lochabzug): Ist 21.8207, Soll 21.8207 (+-0.02)
+PASS ibc_beet: aussen_993 Medium-Volumen (Liter) gegen Flaechenrechnung (Loecher Schutz d110 und Schacht d110): Ist 812.879, Soll 812.878 (+-0.5)
+PASS ibc_beet: aussen_993 keine Siebloch-Koerper (Sperrboden): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Kerben-Oberkante z 274 (Plattenoberkante 262 + 12) hoechstens +12: Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Kerbenflaeche 4 x 10 x 12 = 480 mm2 >= Standrohrflaeche 380: Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Glocke Volumen: 4 Kerben + Luftloch herausgeschnitten (1.03 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Medienschutz Volumen: 2 x 12 Schlitze herausgeschnitten (0.99 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Medienschutz Schlitzflaeche 6000 mm2 >= 15 x Standrohr: Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Schutzkappe sitzt auf dem Medienschutz: Ist 582, Soll 582 (+-0.01)
+PASS ibc_beet: aussen_993 Reinigungsschacht D: Ist 109.994, Soll 110 (+-0.1)
+PASS ibc_beet: aussen_993 Reinigungsschacht steht auf dem Sperrboden: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_993 Reinigungsschacht Oberkante ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: aussen_993 Reinigungsschacht in der Naehe der alten Lage -Li/2 + 250 (hoechstens ein Rasterschritt 130): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Abstand Schachtachse zu jedem Netztopf des Rasters 91.9 mm >= 87 (Schachtradius 55 + Kragenradius 32; Raster 22 x 7, 154 Toepfe): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Schachtkappe sitzt auf dem Schacht: Ist 582, Soll 582 (+-0.01)
+PASS ibc_beet: aussen_993 Reduktion Oberkante = Port z -30: Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: aussen_993 Reduktion Bauhoehe: Ist 50, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_993 Reduktion groesster D (Uebergang): Ist 45.9993, Soll 46 (+-0.1)
+PASS ibc_beet: aussen_993 Bulkhead Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_993 Plattenhuelse Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_993 Reduzierhuelse_Boden Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: aussen_993 Reduzierhuelse_Platte Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: aussen_993 Plattenhuelse: Flansch auf Plattenoberkante: Ist 266, Soll 266 (+-0.01)
+PASS ibc_beet: aussen_993 alle Koerper benannt (keine Body<n>): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Interferenzen (inspect.interference): Ist 0, Soll 0
+PASS ibc_beet: aussen_993 Siebboden Oberkante = Medienunterkante: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_993 Standrohr Hoehe ueber Medienunterkante: Ist 265, Soll 265 (+-0.5)
+PASS ibc_beet: aussen_993 Standrohr D: Ist 24.9996, Soll 25 (+-0.1)
+PASS ibc_beet: aussen_993 Glocke D: Ist 75, Soll 75 (+-0.1)
+PASS ibc_beet: aussen_993 Glocke Hoehe: Ist 295, Soll 295 (+-0.1)
+PASS ibc_beet: aussen_993 Medienschutz D: Ist 110, Soll 110 (+-0.1)
+PASS ibc_beet: aussen_993 Medienschutz Hoehe: Ist 320, Soll 320 (+-0.1)
+PASS ibc_beet: aussen_993 Medienschutz ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: aussen_993 Standrohr unter Glockendecke (Luft >= 20): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Ablaufport z (Rohrende unter Boden): Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: aussen_993 Zulaufport ausserhalb der Wanne (x < -L/2): Ist 1, Soll 1
+PASS ibc_beet: aussen_993 Zulaufhoehe lokal: Ist 612, Soll 612 (+-0.5)
+PASS ibc_beet: aussen_993 Zulauf absolut (z0 -162): Ist 450, Soll 450 (+-25)
+PASS ibc_beet: aussen_993 Glocke steht auf dem Siebboden: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_800 Anzahl laut layout.json (Aussenbeete, Mass erst nach M7): Ist 8, Soll 8
+PASS ibc_beet: aussen_800 Wanne Laenge: Ist 2640, Soll 2640 (+-0.5)
+PASS ibc_beet: aussen_800 Wanne Breite: Ist 800, Soll 800 (+-0.5)
+PASS ibc_beet: aussen_800 Wanne Hoehe: Ist 637, Soll 637 (+-0.5)
+PASS ibc_beet: aussen_800 Medium Koerperzahl: Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Medium Oberflaeche lokal: Ist 562, Soll 562 (+-0.5)
+PASS ibc_beet: aussen_800 Medium Tiefe: Ist 300, Soll 300 (+-0.5)
+PASS ibc_beet: aussen_800 Medium Oberflaeche absolut (z0 -162): Ist 400, Soll 400 (+-15)
+PASS ibc_beet: aussen_800 Siebboden Dicke: Ist 8, Soll 8 (+-0.01)
+PASS ibc_beet: aussen_800 Siebboden Volumen (Liter) = Flaeche x 8 mm minus Durchfuehrung d36 (ungelocht, kein Lochabzug): Ist 15.4685, Soll 15.4685 (+-0.02)
+PASS ibc_beet: aussen_800 Medium-Volumen (Liter) gegen Flaechenrechnung (Loecher Schutz d110 und Schacht d110): Ist 574.674, Soll 574.673 (+-0.5)
+PASS ibc_beet: aussen_800 keine Siebloch-Koerper (Sperrboden): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Kerben-Oberkante z 274 (Plattenoberkante 262 + 12) hoechstens +12: Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Kerbenflaeche 4 x 10 x 12 = 480 mm2 >= Standrohrflaeche 380: Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Glocke Volumen: 4 Kerben + Luftloch herausgeschnitten (1.03 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Medienschutz Volumen: 2 x 12 Schlitze herausgeschnitten (0.99 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Medienschutz Schlitzflaeche 6000 mm2 >= 15 x Standrohr: Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Schutzkappe sitzt auf dem Medienschutz: Ist 582, Soll 582 (+-0.01)
+PASS ibc_beet: aussen_800 Reinigungsschacht D: Ist 109.994, Soll 110 (+-0.1)
+PASS ibc_beet: aussen_800 Reinigungsschacht steht auf dem Sperrboden: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_800 Reinigungsschacht Oberkante ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: aussen_800 Reinigungsschacht in der Naehe der alten Lage -Li/2 + 250 (hoechstens ein Rasterschritt 130): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Abstand Schachtachse zu jedem Netztopf des Rasters 91.9 mm >= 87 (Schachtradius 55 + Kragenradius 32; Raster 20 x 6, 120 Toepfe): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Schachtkappe sitzt auf dem Schacht: Ist 582, Soll 582 (+-0.01)
+PASS ibc_beet: aussen_800 Reduktion Oberkante = Port z -30: Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: aussen_800 Reduktion Bauhoehe: Ist 50, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_800 Reduktion groesster D (Uebergang): Ist 45.9993, Soll 46 (+-0.1)
+PASS ibc_beet: aussen_800 Bulkhead Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_800 Plattenhuelse Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: aussen_800 Reduzierhuelse_Boden Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: aussen_800 Reduzierhuelse_Platte Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: aussen_800 Plattenhuelse: Flansch auf Plattenoberkante: Ist 266, Soll 266 (+-0.01)
+PASS ibc_beet: aussen_800 alle Koerper benannt (keine Body<n>): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Interferenzen (inspect.interference): Ist 0, Soll 0
+PASS ibc_beet: aussen_800 Siebboden Oberkante = Medienunterkante: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: aussen_800 Standrohr Hoehe ueber Medienunterkante: Ist 265, Soll 265 (+-0.5)
+PASS ibc_beet: aussen_800 Standrohr D: Ist 24.9996, Soll 25 (+-0.1)
+PASS ibc_beet: aussen_800 Glocke D: Ist 75, Soll 75 (+-0.1)
+PASS ibc_beet: aussen_800 Glocke Hoehe: Ist 295, Soll 295 (+-0.1)
+PASS ibc_beet: aussen_800 Medienschutz D: Ist 110, Soll 110 (+-0.1)
+PASS ibc_beet: aussen_800 Medienschutz Hoehe: Ist 320, Soll 320 (+-0.1)
+PASS ibc_beet: aussen_800 Medienschutz ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: aussen_800 Standrohr unter Glockendecke (Luft >= 20): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Ablaufport z (Rohrende unter Boden): Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: aussen_800 Zulaufport ausserhalb der Wanne (x < -L/2): Ist 1, Soll 1
+PASS ibc_beet: aussen_800 Zulaufhoehe lokal: Ist 612, Soll 612 (+-0.5)
+PASS ibc_beet: aussen_800 Zulauf absolut (z0 -162): Ist 450, Soll 450 (+-25)
+PASS ibc_beet: aussen_800 Glocke steht auf dem Siebboden: Ist 262, Soll 262 (+-0.01)
+PASS ibc_beet: innen_933 Anzahl laut layout.json: Ist 6, Soll 6
+PASS ibc_beet: innen_933 Wanne Laenge: Ist 1865, Soll 1865 (+-0.5)
+PASS ibc_beet: innen_933 Wanne Breite: Ist 933, Soll 933 (+-0.5)
+PASS ibc_beet: innen_933 Wanne Hoehe: Ist 649, Soll 649 (+-0.5)
+PASS ibc_beet: innen_933 Medium Koerperzahl: Ist 1, Soll 1
+PASS ibc_beet: innen_933 Medium Oberflaeche lokal: Ist 574, Soll 574 (+-0.5)
+PASS ibc_beet: innen_933 Medium Tiefe: Ist 300, Soll 300 (+-0.5)
+PASS ibc_beet: innen_933 Medium-Volumen (Liter) mit Eckenfase 120 (Medium-Fase 104.8) gegen Flaechenrechnung: Ist 466.889, Soll 466.888 (+-0.5)
+PASS ibc_beet: innen_933 Zulauf-Tropfrohr: |y| 308 liegt vor dem Fasenbeginn 338 (Rohr trifft die gerade Stirnwand): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Medium Oberflaeche absolut (z0 -209): Ist 365, Soll 400 (+-40)
+PASS ibc_beet: innen_933 Siebboden Dicke: Ist 8, Soll 8 (+-0.01)
+PASS ibc_beet: innen_933 Siebboden Volumen (Liter) = Flaeche x 8 mm minus Durchfuehrung d36 (ungelocht, kein Lochabzug): Ist 12.5943, Soll 12.5943 (+-0.02)
+PASS ibc_beet: innen_933 Medium-Volumen (Liter) gegen Flaechenrechnung (Loecher Schutz d110 und Schacht d110): Ist 466.889, Soll 466.888 (+-0.5)
+PASS ibc_beet: innen_933 keine Siebloch-Koerper (Sperrboden): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Kerben-Oberkante z 286 (Plattenoberkante 274 + 12) hoechstens +12: Ist 1, Soll 1
+PASS ibc_beet: innen_933 Kerbenflaeche 4 x 10 x 12 = 480 mm2 >= Standrohrflaeche 380: Ist 1, Soll 1
+PASS ibc_beet: innen_933 Glocke Volumen: 4 Kerben + Luftloch herausgeschnitten (1.03 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Medienschutz Volumen: 2 x 12 Schlitze herausgeschnitten (0.99 x erwartet): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Medienschutz Schlitzflaeche 6000 mm2 >= 15 x Standrohr: Ist 1, Soll 1
+PASS ibc_beet: innen_933 Schutzkappe sitzt auf dem Medienschutz: Ist 594, Soll 594 (+-0.01)
+PASS ibc_beet: innen_933 Reinigungsschacht D: Ist 109.994, Soll 110 (+-0.1)
+PASS ibc_beet: innen_933 Reinigungsschacht steht auf dem Sperrboden: Ist 274, Soll 274 (+-0.01)
+PASS ibc_beet: innen_933 Reinigungsschacht Oberkante ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: innen_933 Reinigungsschacht in der Naehe der alten Lage -Li/2 + 250 (hoechstens ein Rasterschritt 130): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Abstand Schachtachse zu jedem Netztopf des Rasters 91.9 mm >= 87 (Schachtradius 55 + Kragenradius 32; Raster 14 x 7, 98 Toepfe): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Schachtkappe sitzt auf dem Schacht: Ist 594, Soll 594 (+-0.01)
+PASS ibc_beet: innen_933 Reduktion Oberkante = Port z -30: Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: innen_933 Reduktion Bauhoehe: Ist 50, Soll 50 (+-0.1)
+PASS ibc_beet: innen_933 Reduktion groesster D (Uebergang): Ist 45.9993, Soll 46 (+-0.1)
+PASS ibc_beet: innen_933 Bulkhead Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: innen_933 Plattenhuelse Flansch D: Ist 49.9992, Soll 50 (+-0.1)
+PASS ibc_beet: innen_933 Reduzierhuelse_Boden Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: innen_933 Reduzierhuelse_Platte Aussen-D = Tankverbinder-Innen d32: Ist 31.9995, Soll 32 (+-0.1)
+PASS ibc_beet: innen_933 Plattenhuelse: Flansch auf Plattenoberkante: Ist 278, Soll 278 (+-0.01)
+PASS ibc_beet: innen_933 alle Koerper benannt (keine Body<n>): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Interferenzen (inspect.interference): Ist 0, Soll 0
+PASS ibc_beet: innen_933 Siebboden Oberkante = Medienunterkante: Ist 274, Soll 274 (+-0.01)
+PASS ibc_beet: innen_933 Standrohr Hoehe ueber Medienunterkante: Ist 265, Soll 265 (+-0.5)
+PASS ibc_beet: innen_933 Standrohr D: Ist 24.9996, Soll 25 (+-0.1)
+PASS ibc_beet: innen_933 Glocke D: Ist 75, Soll 75 (+-0.1)
+PASS ibc_beet: innen_933 Glocke Hoehe: Ist 295, Soll 295 (+-0.1)
+PASS ibc_beet: innen_933 Medienschutz D: Ist 110, Soll 110 (+-0.1)
+PASS ibc_beet: innen_933 Medienschutz Hoehe: Ist 320, Soll 320 (+-0.1)
+PASS ibc_beet: innen_933 Medienschutz ueber Medienoberflaeche: Ist 20, Soll 20 (+-0.5)
+PASS ibc_beet: innen_933 Standrohr unter Glockendecke (Luft >= 20): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Ablaufport z (Rohrende unter Boden): Ist -30, Soll -30 (+-0.1)
+PASS ibc_beet: innen_933 Zulaufport ausserhalb der Wanne (x < -L/2): Ist 1, Soll 1
+PASS ibc_beet: innen_933 Zulaufhoehe lokal: Ist 624, Soll 624 (+-0.5)
+PASS ibc_beet: innen_933 Zulauf absolut (z0 -209): Ist 415, Soll 450 (+-50)
+PASS ibc_beet: innen_933 Glocke steht auf dem Siebboden: Ist 274, Soll 274 (+-0.01)
+== ibc_beet: 194/194 PASS

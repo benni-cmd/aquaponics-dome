@@ -2718,5 +2718,45 @@
   "note": "",
   "commit": "409cd82",
   "source": "renders/components/geblaese_luft/geblaese_luft-03-schnitt.png"
+ },
+ {
+  "file": "20261104-035309_montage_m-beet-tausch_round-67.png",
+  "sha": "82e014093ee5940c",
+  "time": "2026-11-04 03:53:09",
+  "role": "montage",
+  "subject": "m-beet-tausch",
+  "note": "Runde 67 Beete V3",
+  "commit": "ff27b81",
+  "source": "renders/round-67.png"
+ },
+ {
+  "file": "20261104-035357_montage_m-beet-tausch_section-67.png",
+  "sha": "afc88bfcf928ce10",
+  "time": "2026-11-04 03:53:57",
+  "role": "montage",
+  "subject": "m-beet-tausch",
+  "note": "Runde 67 Beete V3",
+  "commit": "ff27b81",
+  "source": "renders/section-67.png"
+ },
+ {
+  "file": "20261104-051154_montage_m-beet-tausch_ibc-beet-aussen-800-05-schnitt.png",
+  "sha": "f202f509ecccf5e1",
+  "time": "2026-11-04 05:11:54",
+  "role": "montage",
+  "subject": "m-beet-tausch",
+  "note": "Runde 67 Beete V3",
+  "commit": "ff27b81",
+  "source": "renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-05-schnitt.png"
+ },
+ {
+  "file": "20261104-051456_montage_m-beet-tausch_ibc-beet-innen-933-04-medium.png",
+  "sha": "96809f5437ee6850",
+  "time": "2026-11-04 05:14:56",
+  "role": "montage",
+  "subject": "m-beet-tausch",
+  "note": "Runde 67 Beete V3",
+  "commit": "ff27b81",
+  "source": "renders/components/ibc_beet_innen_933/ibc_beet_innen_933-04-medium.png"
  }
 ]

@@ -10,8 +10,8 @@
 2. [x] Werkstatt-Vorlauf 0b: Check-Text Standrohrflaeche 346 auf 380 mm2 / Schachtlaenge im Blatt (Auflage 4)
 3. [x] Werkstatt-Vorlauf 0c: Schacht auf Topfraster-Zellmitte legen (Befund Netztopf x Schacht), Check-Zeile Abstand >= 87 mm
 4. [x] Pruefung Auflage 5: Reduzierhuelse 22 mm und Flansch D50 gegen Datenblatt und Modell
-5. [ ] Montage: Neubau Runde 67 (Nummer aus `renders/` ablesen), `check_walkways`, `check_latte`, `check_walkways_voll`, Renders
-6. [ ] Montage: Viewer-Export (`viewer/export_model.py`), `loop-state.md`-Abschnitt
+5. [x] Montage: Neubau Runde 67 (Nummer aus `renders/` ablesen), `check_walkways`, `check_latte`, `check_walkways_voll`, Renders
+6. [x] Montage: Viewer-Export (`viewer/export_model.py`), `loop-state.md`-Abschnitt
 7. [ ] Pruefer: `docs/jobs/pruefung/M-BEET-TAUSCH.md` nach fuenf Pruefpunkten
 8. [ ] Orchestrator: Bilanz-Dateien nachfuehren (Liste im Blatt, Schritt 3)
 
@@ -30,14 +30,19 @@ Quellen: Bevo-Katalogzeile Art. 7002656 und Georg-Fischer-Reduzierstueck 32 x 25
 | Tankverbinder-Typ | 32 mm x 1 Zoll | VDL/Bevo fuehrt 32 mm x 1 1/4 Zoll (0100560); 32 x 1 Zoll nur UK (Epco, Pipestock) | **Risiko**: Bevo-Art. 7018227 gegen Katalog pruefen |
 **DEINE ENTSCHEIDUNG/HANDLUNG (Ben oder N-BESCHAFFUNG):** Datenblaetter Tankverbinder (Flansch, Gewinde 1 Zoll oder 1 1/4 Zoll) und Reduzierhuelse beim Bevo-Kundendienst anfordern; bei Abweichung ueber 3 mm Nachbesserung `ibc_beet.py` (Huelsenlaengen).
 
+04.11.2026 (Montage, Runde 67): **Schritt 2 fertig**, Details in `docs/loop-state.md` Abschnitt M-BEET-TAUSCH. Messwerte: Build Exit 0; 8 + 6 Beete, 2222 Netztoepfe; `check_walkways` unveraendert PASS; `check_walkways_voll` 60/82/2/4 unveraendert; `check_latte` 29/31 mit 115 KOLL nur Leitungsteile (nicht Beete), Netztopf x Schacht 91,9 mm gemessen (0 Verstoesse); Viewer-Export neu.
+**Befund an die Werkstatt:** Medienschutz im Innenbeet (6 Beete): ein Netztopf sitzt 6,5 mm neben der Schutzachse, 5 mm Z-Luft (Kappe Z 800, Topfboden Z 805). Keine Kollision, aber unglaubwuerdig; Loesung wie 0c waere Siphon-x auf Zellmitte, beruehrt den Ablauf (E20), daher nicht still geaendert.
+**Befund Orchestrator:** `check_latte` FAIL L6 (115 KOLL Leitungen M10, 71 Paare nicht vollstaendig geprueft) ist ein Leitungs-Thema, kein Beet-Thema; Salatkoepfe 2222 statt 2626 im Blatt.
+
 OFFEN (E20, Entscheidung 05.11.): Ablaufleitungen K14/K30, Beet-Sumpf-Einlauf, Anschluss der `Reduktion` (offenes Ende bleibt). Nicht geplant.
 
 ## Definition of Done
 
 Geprueft gegen: `docs/jobs/W40-BEET.md`, `docs/jobs/pruefung/W40-BEET.md`, `docs/packages/w40-beet.md`, `scripts/gen_dome.py` (Grep Beet-Stellen), `data/layout.json` `ibc_beds`, `docs/loop-state.md`, D77/D78, Python-Abstandsrechnung Topf/Schacht.
 Offen:
-1. Werkstatt-Vorlauf 0a bis 0c, Pruefung Auflage 5, Montage, Pruefer: Orchestrator startet die Sitzungen in dieser Reihenfolge.
-2. Topf-Schacht-Kollision ist gerechnet, nicht gemessen: Montage/`check_latte`.
+1. Pruefer M-BEET-TAUSCH (Pruefpunkte 1 bis 5): Orchestrator.
+2. Medienschutz x Netztopf innen_933 (6,5 mm, 5 mm Z-Luft): Werkstatt, Entscheidung wegen E20.
+3. Datenblaetter Reduzierhuelse und Tankverbinder (Auflage 5): Ben/N-BESCHAFFUNG.
 3. Bilanz-Dateien nachfuehren (6280 l, Gewichte): Orchestrator.
 4. Ablaufleitungen und Beet-Sumpf: OFFEN (E20), Ben 05.11.
 5. Dichtband-Mass, Metallbauer-Anfrage Schutzkorb, Datenblaetter: Ben.

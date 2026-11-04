@@ -331,85 +331,85 @@
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 54.81,
+     "preis_eur": 35.96,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator selbst bedient (nicht abgeschickt): 3,0 mm S235JR 'schwarz' (warmgewalzt, Zunder), 700x700 = 35,96 EUR brutto inkl. 19% MwSt. zzgl. Versand = 73,38 EUR/m2 x 0,49 m2. Versand laut Lieferland-Menue DE und viele EU-Laender. Verzinkt gibt es nur bis 4 mm (DX51, Dicken 0,75/1/1,5/2/4 mm), NICHT 3 mm."
+    },
+    {
+     "preis_eur": 54.82,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Stahl-Blech-300x1500x3mm",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "gerechnet: Stahl-Blech 3 mm, Preis je m2 aus Rastermass 300x1500x3mm (stahl-shop24.de) = 111.87 EUR/m2 x 0.490 m2 (700x700). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
-    },
-    {
-     "preis_eur": 35.96,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallparadies (metallparadies.de)",
-     "land": "DE",
-     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
-     "lieferung_de": "ja",
-     "konfidenz": "Q",
-     "bemerkung": "ROH (schwarz, NICHT verzinkt) S235JR 3 mm Zuschnitt 700x700. Metallparadies Stahlblech-Zuschnitt (Konfigurator, Laenge/Breite in mm per Eingabefeld). Preis brutto inkl. 19% MwSt zzgl. Versand. Option Verzinken im Konfigurator nicht vorhanden."
+     "bemerkung": "Seite geoeffnet: Blech 300x1500x3 mm S235JR+N roh (nicht verzinkt), 50,34 EUR inkl. MwSt. zzgl. Versand = 111,87 EUR/m2 x 0,49 m2 (700x700) = 54,82. Nur Rastermass, kein Zuschnitt; Preis ist proportionale Hochrechnung."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt - Zeile verlangt verzinkt, Marktstandard fuer Zuschnitt 3 mm ist roh S235JR; verzinkte Zuschnitte nur bis 4 mm (Metallparadies). Verzinken-Mehrpreis nur grob belegt (hausjournal.net: Feuerverzinken ab ca. 0,50-0,70 EUR/kg, Schleuderverzinken Kleinteile/Privat ab 1,50 EUR/kg; 700x700x3 = 11,5 kg => ca. 6-8 EUR zzgl. Grundpreis, konfidenz A, nur eine Quelle)."
   },
   "BLE-blech-st-5": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
+     "preis_eur": 39.99,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator (Dicke 5 mm S235JR schwarz waehlbar, nicht abgeschickt): 840x400 = 39,99 EUR brutto inkl. MwSt. zzgl. Versand = 119,03 EUR/m2 x 0,336 m2. Roh, kein Verzinken im Konfigurator."
+    },
+    {
      "preis_eur": 62.64,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Stahl-Blech-200x1500x5mm",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "gerechnet: Stahl-Blech 5 mm, Preis je m2 aus Rastermass 200x1500x5mm (stahl-shop24.de) = 186.43 EUR/m2 x 0.336 m2 (840x400). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
-    },
-    {
-     "preis_eur": 39.99,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallparadies (metallparadies.de)",
-     "land": "DE",
-     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
-     "lieferung_de": "ja",
-     "konfidenz": "Q",
-     "bemerkung": "ROH (schwarz, NICHT verzinkt) S235JR 5 mm Zuschnitt 840x400. Metallparadies Stahlblech-Zuschnitt (Konfigurator, Laenge/Breite in mm per Eingabefeld). Preis brutto inkl. 19% MwSt zzgl. Versand. Option Verzinken im Konfigurator nicht vorhanden."
+     "bemerkung": "Seite geoeffnet: 200x1500x5 mm S235JR+N roh, 55,93 EUR inkl. MwSt. zzgl. Versand = 186,43 EUR/m2 x 0,336 m2 (840x400) = 62,64. Nur Rastermass, kein Zuschnitt."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt - verzinkt als Zuschnitt nur bis 4 mm lieferbar, 5 mm nur roh S235JR. Mehrpreis Verzinken siehe BLE-blech-st-3 (ca. 0,5-0,7 EUR/kg, 13,2 kg Blech => ca. 7-9 EUR, nur eine Quelle). Bedarf 0."
   },
   "BLE-blech-st-6": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 176.48,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "stahl-shop24.de",
-     "land": "DE",
-     "url": "https://www.stahl-shop24.de/Stahl-Blech-300x1500x6mm",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "gerechnet: Stahl-Blech 6 mm, Preis je m2 aus Rastermass 300x1500x6mm (stahl-shop24.de) = 223.73 EUR/m2 x 0.789 m2 (1360x580). Blech ROH (nicht verzinkt) - Katalog verlangt verzinkt; Zuschnitt auf Mass nicht im Raster. Preis brutto, Versand 8,90 EUR/Bestellung."
-    },
-    {
      "preis_eur": 106.74,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
      "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "ROH (schwarz, NICHT verzinkt) S235JR 6 mm Zuschnitt 1360x580. Metallparadies Stahlblech-Zuschnitt (Konfigurator, Laenge/Breite in mm per Eingabefeld). Preis brutto inkl. 19% MwSt zzgl. Versand. Option Verzinken im Konfigurator nicht vorhanden."
+     "bemerkung": "Konfigurator (Dicke 6 mm, nicht abgeschickt): 1360x580 = 106,74 EUR brutto inkl. MwSt. zzgl. Versand = 135,32 EUR/m2 x 0,7888 m2. Roh (schwarz), kein Verzinken."
+    },
+    {
+     "preis_eur": 176.48,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Stahl-Blech-300x1500x6mm",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "Seite geoeffnet: 300x1500x6 mm S235JR+N roh, 100,68 EUR inkl. MwSt. zzgl. Versand = 223,73 EUR/m2 x 0,7888 m2 (1360x580) = 176,48. Nur Rastermass; Hochrechnung."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt - 6 mm nur roh. Mehrpreis Verzinken ca. 0,5-0,7 EUR/kg (37 kg => ca. 19-26 EUR, nur eine Quelle hausjournal.net). Bedarf 0."
   },
   "SRB-m8x35": {
    "bezug_einheit": "Satz",
@@ -505,235 +505,213 @@
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 12.75,
+     "preis_eur": 3.54,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper (Metaalshopper)",
-     "land": "NL",
-     "url": "https://www.metallshopper.de/p/stahlblech-5-mm-warmgewalzt-540903/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Zuschnitt 70x70x5 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (70x70 mm = 0.0049 m2 x 189.21 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
-    },
-    {
-     "preis_eur": 1.65,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Kemper GbR (kempergbr.de)",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "S235JR roh (NICHT verzinkt), 70x70x5 mm, 0.192 kg x 2.85 EUR/kg netto x1,19 inkl. 1,00 EUR Mindermengenaufschlag (Preis<1,20); E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator 5 mm, 70x70 = 3,54 EUR brutto je Stk (1 Stk und bei Menge 76 unveraendert angezeigt; Rabattstufen existieren, nicht gelesen). Roh S235JR, ungelocht, Schnitttoleranz +-2 mm."
     },
     {
      "preis_eur": 3.96,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Stahlshop (stahlshop.de, Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/stahlplatten",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 70x70x5 mm, 0.192 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 3.00 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+     "bemerkung": "Seite geoeffnet: Dicke 5 mm, max 500x300; 0,192 kg (70x70x5x7,85) x 5,00 EUR/kg brutto (Staffel 0-5 kg) = 0,96 + Schnitt 3,00 = 3,96. Bei 76 Stk (ca. 14,6 kg Warenkorb) sinkt kg-Preis auf 4,40 => ca. 3,84. Roh; 'Verzinken' dort nur Zinkstaubfarbe auf den Schnittkanten."
+    },
+    {
+     "preis_eur": 1.65,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Kemper GbR (kempergbr.de)",
+     "land": "DE",
+     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "lieferung_de": "ja",
+     "konfidenz": "E",
+     "bemerkung": "Seite geoeffnet: Dicken 2-20 mm, Mass 40-1000x800, ab 3,19 EUR/kg brutto, Mindermengenaufschlag je Stk (Betrag nicht lesbar), roh. Wert 1,65 aus frueherer Rechnung (0,192 kg x 2,85 netto x1,19 + 1,00 Aufschlag), kg-Preis nicht neu gelesen."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt - alle drei Haendler liefern Zuschnitt nur roh; verzinkte Platten 5 mm als Zuschnitt nicht gefunden (Metallparadies verzinkt nur bis 4 mm). Mehrpreis Verzinken: 0,192 kg x 0,5-1,5 EUR/kg = ca. 0,10-0,29 EUR/Stk plus Grundpreis der Verzinkerei (hausjournal.net, nur eine Quelle, 'Privat: ab 1,50 EUR/kg Schleuderverzinken'); Wirtschaftlichkeit eher als Sammelauftrag 76 Stk."
   },
   "BLE-fussplatte-80x80x6": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 13.42,
+     "preis_eur": 3.84,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper (Metaalshopper)",
-     "land": "NL",
-     "url": "https://www.metallshopper.de/p/stahlblech-6-mm-warmgewalzt-815795/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Zuschnitt 80x80x6 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (80x80 mm = 0.0064 m2 x 232.19 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
-    },
-    {
-     "preis_eur": 1.36,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Kemper GbR (kempergbr.de)",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "S235JR roh (NICHT verzinkt), 80x80x8 mm, 0.402 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche; ERSATZ-Dicke 8 mm statt 6 mm (6 mm nicht waehlbar)"
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator 6 mm, 80x80 = 3,84 EUR brutto inkl. MwSt. zzgl. Versand. Roh S235JR."
     },
     {
      "preis_eur": 4.96,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Stahlshop (stahlshop.de, Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/stahlplatten",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 80x80x6 mm, 0.301 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 3.45 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+     "bemerkung": "Seite geoeffnet: 0,301 kg x 5,00 EUR/kg (Staffel 0-5 kg, brutto) = 1,51 + Schnitt 3,45 (6 mm, ein Schnitt) = 4,96. Staffel faellt bei groesserem Warenkorb. Roh."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt - Marktstandard roh; Kemper fuehrt 6 mm nicht (Dicken 5/8), daher 6 mm nur bei Metallparadies/Stahlshop. Mehrpreis Verzinken siehe Fussplatte 70x70x5 (nur grob belegt)."
   },
   "BLE-fussplatte-80x80x8": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 13.71,
+     "preis_eur": 4.25,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper (Metaalshopper)",
-     "land": "NL",
-     "url": "https://www.metallshopper.de/p/stahlblech-8-mm-warmgewalzt-750482/",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Zuschnitt 80x80x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (80x80 mm = 0.0064 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator 8 mm, 80x80 = 4,25 EUR brutto inkl. MwSt. zzgl. Versand. Roh S235JR."
     },
     {
      "preis_eur": 1.36,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Kemper GbR (kempergbr.de)",
      "land": "DE",
      "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR roh (NICHT verzinkt), 80x80x8 mm, 0.402 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+     "bemerkung": "Seite geoeffnet (8 mm waehlbar, Mass ab 40 mm, ab 3,19 EUR/kg brutto, 1 Woche Lieferzeit). 0,402 kg x 2,85 netto x1,19 = 1,36; kg-Preis aus frueherer Rechnung, nicht neu gelesen; Mindermengenaufschlag ggf. zusaetzlich."
     },
     {
      "preis_eur": 6.18,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Stahlshop (stahlshop.de, Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/stahlplatten",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 80x80x8 mm, 0.402 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 4.17 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+     "bemerkung": "0,402 kg x 5,00 EUR/kg = 2,01 + Schnitt 4,17 (8 mm) = 6,18. Roh."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt. Bedarf 0."
   },
   "BLE-fussplatte-100x100x6": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 14.41,
+     "preis_eur": 4.32,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper (Metaalshopper)",
-     "land": "NL",
-     "url": "https://www.metallshopper.de/p/stahlblech-6-mm-warmgewalzt-815795/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Zuschnitt 100x100x6 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (100x100 mm = 0.0100 m2 x 232.19 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
-    },
-    {
-     "preis_eur": 2.13,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Kemper GbR (kempergbr.de)",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "S235JR roh (NICHT verzinkt), 100x100x8 mm, 0.628 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche; ERSATZ-Dicke 8 mm statt 6 mm (6 mm nicht waehlbar)"
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator 6 mm, 100x100 = 4,32 EUR brutto inkl. MwSt. zzgl. Versand. Roh S235JR."
     },
     {
-     "preis_eur": 5.8,
+     "preis_eur": 5.81,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Stahlshop (stahlshop.de, Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/stahlplatten",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 100x100x6 mm, 0.471 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 3.45 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+     "bemerkung": "0,471 kg x 5,00 EUR/kg = 2,36 + Schnitt 3,45 (6 mm) = 5,81. Staffel faellt bei groesserem Warenkorb (16 Stk ca. 7,5 kg => 4,64/kg). Roh."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt. Kemper fuehrt 6 mm nicht (nur 5/8 mm)."
   },
   "BLE-fussplatte-150x150x8": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 18.9,
+     "preis_eur": 7.38,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper (Metaalshopper)",
-     "land": "NL",
-     "url": "https://www.metallshopper.de/p/stahlblech-8-mm-warmgewalzt-750482/",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Zuschnitt 150x150x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (150x150 mm = 0.0225 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator 8 mm, 150x150 = 7,38 EUR brutto inkl. MwSt. zzgl. Versand. Roh S235JR."
     },
     {
      "preis_eur": 4.79,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Kemper GbR (kempergbr.de)",
      "land": "DE",
      "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR roh (NICHT verzinkt), 150x150x8 mm, 1.413 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+     "bemerkung": "1,413 kg x 2,85 netto x1,19 = 4,79; kg-Preis aus frueherer Rechnung, Seite nennt 'ab 3,19 EUR/kg brutto'; Mindermengen-/Schwerplattenzuschlag ggf. zusaetzlich."
     },
     {
      "preis_eur": 11.23,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Stahlshop (stahlshop.de, Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/stahlplatten",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 150x150x8 mm, 1.413 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 4.17 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+     "bemerkung": "1,413 kg x 5,00 = 7,07 + Schnitt 4,17 (8 mm) = 11,23. Roh."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt. Bedarf 0."
   },
   "BLE-fussplatte-200x200x8": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 24.54,
+     "preis_eur": 10.79,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper (Metaalshopper)",
-     "land": "NL",
-     "url": "https://www.metallshopper.de/p/stahlblech-8-mm-warmgewalzt-750482/",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Zuschnitt 200x200x8 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (200x200 mm = 0.0400 m2 x 270.75 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk."
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator 8 mm, 200x200 = 10,79 EUR brutto inkl. MwSt. zzgl. Versand. Roh S235JR."
     },
     {
      "preis_eur": 8.52,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Kemper GbR (kempergbr.de)",
      "land": "DE",
      "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR roh (NICHT verzinkt), 200x200x8 mm, 2.512 kg x 2.85 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+     "bemerkung": "2,512 kg x 2,85 netto x1,19 = 8,52; kg-Preis aus frueherer Rechnung, nicht neu gelesen."
     },
     {
      "preis_eur": 16.73,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Stahlshop (stahlshop.de, Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/stahlplatten",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 200x200x8 mm, 2.512 kg x 5.00 EUR/kg (Staffel brutto) + Schnitt 4.17 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+     "bemerkung": "2,512 kg x 5,00 = 12,56 + Schnitt 4,17 = 16,73. Roh."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): roh statt verzinkt. Bedarf 0."
   },
   "BLE-platte-30x30x3": {
    "bezug_einheit": "Stk",
@@ -778,141 +756,174 @@
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 11.97,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper (Metaalshopper)",
-     "land": "NL",
-     "url": "https://www.metallshopper.de/p/stahlblech-3-mm-warmgewalzt-894229/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Zuschnitt 40x40x3 mm roh warmgewalzt (NICHT verzinkt, ungelocht): (40x40 mm = 0.0016 m2 x 168.36 EUR/m2 netto + 9,79 EUR Bearbeitungsgebuehr netto, Menge 1) x1,19. Seite nennt Preise zzgl. MwSt.; Gebuehr verteilt sich bei mehreren Stk. Mindestmass des Shops 40 mm, daher 40x40 gerechnet statt 30x30 (A); Ersatz fuer Wandlasche, roh."
-    },
-    {
      "preis_eur": 1.13,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Kemper GbR (kempergbr.de)",
      "land": "DE",
      "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "ERSATZ: 40x40x3 mm (Mindestmass 40 mm, 30 mm nicht moeglich), S235JR roh, 0.038 kg x 2,85 EUR/kg x1,19 inkl. 1,00 EUR Mindermengenaufschlag (Preis<1,20); E; ohne Bohrung/Biegung"
+     "bemerkung": "ERSATZ 40x40x3 (Seite: Mindestmass 40x40, 3 mm waehlbar), S235JR roh, 0,038 kg x 2,85 netto x1,19 + 1,00 Mindermengenaufschlag; kg-Preis und Aufschlag aus frueherer Rechnung, nicht neu gelesen. Ohne Bohrung/Biegung."
     },
     {
-     "preis_eur": 3.18,
+     "preis_eur": 3.17,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Stahlshop (stahlshop.de, Krefeld)",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://stahlshop.de/stahlplatten",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "ERSATZ: 30x30x5 mm (min. Dicke 5 mm), S235JR+AR roh, 0.035 kg x 5.00 EUR/kg + Schnitt 3.00 EUR; E; ohne Bohrung/Biegung"
+     "konfidenz": "Q",
+     "bemerkung": "ERSATZ 50x50x3 (Konfigurator min 50x50, Dicke 3 mm): 3,17 EUR brutto je Stk inkl. MwSt. zzgl. Versand. Roh. Bohrungen waehlbar (+3 Werktage)."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass 30x30x3 nicht kaufbar (Mindestmass Kemper 40x40, Metallparadies 50x50, Stahlshop min. 5 mm Dicke); Ersatz roh 40x40x3 oder 50x50x3. Bedarf 0."
   },
   "BLE-platte-250x250x15": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
+     "preis_eur": 70.97,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/stahlblech-3mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator 15 mm, 250x250 = 70,97 EUR brutto inkl. MwSt. zzgl. Versand (7,36 kg, ca. 9,6 EUR/kg - deutlich teurer als Kemper/Stahlshop)."
+    },
+    {
      "preis_eur": 32.32,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Kemper GbR (kempergbr.de)",
      "land": "DE",
      "url": "https://kempergbr.de/stahlplatte-zuschnitt-2-20mm-s235jr-stahlblech-blechplatte-blech-stahl::1.html",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR roh (NICHT verzinkt), 250x250x15 mm, 7.359 kg x 3.69 EUR/kg netto x1,19; E gerechnet aus Preisdaten der Produktseite (Rechner), zzgl. Versand, frei ab 100 EUR; Lieferzeit 1 Woche"
+     "bemerkung": "15 mm waehlbar; 7,359 kg x 3,69 netto x1,19 = 32,32; kg-Preis aus frueherer Rechnung, nicht neu gelesen; Schwerplatten-/Mindermengenzuschlag ggf. zusaetzlich."
     },
     {
      "preis_eur": 39.98,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Stahlshop (stahlshop.de, Krefeld)",
      "land": "DE",
      "url": "https://stahlshop.de/stahlplatten",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "S235JR+AR roh (NICHT verzinkt), 250x250x15 mm, 7.359 kg x 4.64 EUR/kg (Staffel brutto) + Schnitt 5.83 EUR (ein Schnitt, Breite Lagerbreite); E aus Seiten-JS (Preisstaffel/Optionspreise), Gesamtmenge im Warenkorb kann Staffel aendern; Schnittkosten-Brutto/Netto nicht eindeutig; Paket 2-4 AT"
+     "bemerkung": "7,359 kg x 4,64 EUR/kg brutto (Staffel 5-10 kg) = 34,15 + Schnitt 5,83 (15 mm) = 39,98; bei 10 Stk (ca. 74 kg) Staffel 3,69 => ca. 33,0. Roh."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Ankerplatte roh - Zeile nennt Werkstoff 'Stahl Anker' ohne Verzinkung; roh S235JR 250x250x15 ist marktueblich, Verzinken optional."
   },
   "WNK-winkel-36x60x60": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
+     "preis_eur": 3.41,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/winkelstahl-25x25x3-mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator Winkelstahl 60x60x6 warmgewalzt roh, Zuschnittlaenge min 50 mm (statt 36): 3,41 EUR brutto je Stk (68,10 EUR/lfm bei 50 mm; bei 60 mm 3,59). Dropdown der Profilgroesse auf derselben Seite. ERSATZ-Mass 60x60x6x50, roh."
+    },
+    {
      "preis_eur": 7.37,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallshopper (Metaalshopper)",
      "land": "NL",
      "url": "https://www.metallshopper.de/p/stahl-winkelprofil-warmgewalzt-60x60x6-mm-384238/",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E, Ersatz: Winkelprofil 60x60x6 roh warmgewalzt, Zuschnitt 40 mm (Shop-Minimum, statt 36 mm): 0,04 m x 21.04 EUR/m netto + 5,35 EUR Bearbeitungsgebuehr = 6.19 netto, x1,19. NICHT verzinkt; Gebuehr verteilt sich bei mehreren Stk."
+     "bemerkung": "Seite geoeffnet: Winkel 60x60x6 roh, 21,04 EUR/m netto, Schnitt min 40 mm, Firmensitz Eindhoven (NL, EU). 0,04 m x 21,04 + 5,35 (unbeschriftete Gebuehr) = 6,19 netto x1,19 = 7,37; 0,84 'pro Stueck' laut Seite zusaetzlich unklar."
     },
     {
      "preis_eur": 0.8,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Hornbach",
      "land": "DE",
      "url": "https://www.hornbach.de/p/winkelverbinder-60-x-60-x-45-mm-sendzimirverzinkt-1-stueck/3375551/",
      "lieferung_de": "ja",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "A, Ersatz: Winkelverbinder 60x60x45 mm sendzimirverzinkt (duenn, kein 36x60x60-Vollwinkel). Brutto 0,80 EUR/Stk gelesen. [Preis von Suchergebnisseite, Produktseite nicht selbst geoeffnet]"
+     "konfidenz": "Q",
+     "bemerkung": "Produktseite geoeffnet: Winkelverbinder 60x60x45 mm, Materialstaerke 2,5 mm, sendzimirverzinkt, 0,092 kg, 0,80 EUR/Stk inkl. MwSt. zzgl. Versand, Lieferzeit ca. 4 Werktage. Duenner Verbinder, kein Vollwinkel."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass 36x60x60 nicht marktueblich (kein Normwinkel); naechstes Standardprofil 60x60x6 (Zuschnitt min 40/50 mm, roh). Verzinkt nur als duenner Verbinder (Hornbach 2,5 mm). Funktion (Rinnenhalter, Belastung) klaeren."
   },
   "WNK-rinnenhalter-25": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
+     "preis_eur": 1.56,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
+     "land": "DE",
+     "url": "https://www.metallparadies.de/winkelstahl-25x25x3-mm.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator Winkelstahl 25x25x3 roh, Zuschnittlaenge min 50 mm: 1,56 EUR brutto je Stk (31,22 EUR/lfm bei 50 mm; 1,60 bei 60 mm). Rabattstufen vorhanden, nicht gelesen (Bedarf 304 Stk). ERSATZ Mass: Winkel statt unklarem 'Kleinteil 25'."
+    },
+    {
      "preis_eur": 6.73,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallshopper (Metaalshopper)",
      "land": "NL",
      "url": "https://www.metallshopper.de/p/stahl-winkelprofil-warmgewalzt-30x30x3-mm-712809/",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E, Ersatz: Winkelprofil 30x30x3 roh, Zuschnitt 40 mm: 0,04 m x 7.69 EUR/m netto + 5,35 EUR Gebuehr = 5.66 netto, x1,19. Roh, nicht verzinkt; Mass 25x25 nicht verfuegbar (A)."
+     "bemerkung": "Winkel 30x30x3 roh, Zuschnitt 40 mm: 0,04 m x 7,69 EUR/m netto + 5,35 Gebuehr = 5,66 netto x1,19; Seite 30x30x3 selbst nicht neu geoeffnet, Gebuehr unbeschriftet."
     }
    ],
-   "luecke": "Artikel nicht eindeutig bestimmbar, kein belegtes Angebot gefunden"
+   "luecke": "OFFEN (Ben): Mass/Form 'Rinnenhalter 25' undefiniert (Winkel 25x25x3 oder flache Lasche 25x25?); Zuschnitt mind. 50 mm (Metallparadies) bzw. 40 mm; verzinkt nicht erhaeltlich. Zweites Angebot ist anderes Profil (30x30x3)."
   },
   "WNK-pumpenkonsole": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 1.25,
+     "preis_eur": 3.59,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Hornbach",
+     "stand": "2026-11-05",
+     "haendler": "Metallparadies (metallparadies.de)",
      "land": "DE",
-     "url": "https://www.hornbach.de/p/schwerlast-winkelverbinder-m-sicke-90-x-90-x-65-mm-sendzimirverzinkt-1-stueck/738910/",
+     "url": "https://www.metallparadies.de/winkelstahl-25x25x3-mm.html",
      "lieferung_de": "ja",
-     "konfidenz": "Q-Treffer",
-     "bemerkung": "A, Ersatz: Schwerlast-Winkelverbinder 90x90x65 mm sendzimirverzinkt als Standwinkel. Brutto 1,25 EUR/Stk gelesen. [Preis von Suchergebnisseite, Produktseite nicht selbst geoeffnet]"
+     "konfidenz": "Q",
+     "bemerkung": "Konfigurator Winkelstahl 60x60x6 roh, angenommene Laenge 60 mm (Konsolenmass unbekannt): 3,59 EUR brutto je Stk (59,77 EUR/lfm)."
     },
     {
      "preis_eur": 7.37,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallshopper (Metaalshopper)",
      "land": "NL",
      "url": "https://www.metallshopper.de/p/stahl-winkelprofil-warmgewalzt-60x60x6-mm-384238/",
      "lieferung_de": "ja",
      "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E, Ersatz: Winkelprofil 60x60x6 roh, angenommener Zuschnitt 40 mm (Konsolenmass unbekannt): 0,04 m x 21.04 EUR/m netto + 5,35 EUR Gebuehr = 6.19 netto, x1,19. Roh."
+     "bemerkung": "Winkel 60x60x6 roh, 21,04 EUR/m netto, Zuschnitt 40 mm angenommen: (0,04 x 21,04 + 5,35) x1,19 = 7,37; Gebuehr unbeschriftet."
+    },
+    {
+     "preis_eur": 1.25,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/schwerlast-winkelverbinder-m-sicke-90-x-90-x-65-mm-sendzimirverzinkt-1-stueck/738910/",
+     "lieferung_de": "ja",
+     "konfidenz": "A",
+     "bemerkung": "Schwerlast-Winkelverbinder 90x90x65 verzinkt, 1,25 EUR/Stk (Preis aus frueherer Suche, Produktseite jetzt nicht neu geoeffnet)."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass der Pumpenkonsole/Standwinkel nicht definiert (Zeile ohne Masse); Preisnaeherung ueber 60x60x6-Winkel, roh."
   },
   "PRF-v2a-voll8x8": {
    "bezug_einheit": "m",

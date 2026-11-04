@@ -592,6 +592,222 @@
     }
    ],
    "luecke": ""
+  },
+  "PRF-v2a-voll8x8": {
+   "bezug_einheit": "m",
+   "angebote": [
+    {
+     "preis_eur": 6.12,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Edelstahl-Vierkant-8x8mm-1000mm",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q",
+     "bemerkung": "Edelstahl Vierkant 8x8 1.4301 blank gezogen, 1000 mm Stueck 6,12 EUR inkl. MwSt zzgl. Versand (2000-mm-Stueck 12,24 EUR); 3-m-Stange dort nicht gelistet, Stueck Zuschnitt in 0,5-2 m."
+    },
+    {
+     "preis_eur": 11.61,
+     "bezug_einheit": "m",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper (NL-Fertigung, .de-Shop)",
+     "land": "DE",
+     "url": "https://metallshopper.de/Edelstahl-vollmaterial-vierkant-8-mm",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q",
+     "bemerkung": "Seitenpreis 11,61 EUR/m (Ansicht Standardlaenge) zzgl. Bearbeitungsgebuehr 5,35 EUR je Zuschnitt; Edelstahl 304 (=1.4301), bis 3000 mm; MwSt-Angabe der Seite nicht eindeutig (Suchsnippet nannte 'ab 9,42 EUR/m inkl. MwSt' bei Mengenstaffel). Bezug nach Mass."
+    }
+   ],
+   "luecke": "Voss Edelstahl (DE) fuehrt 8x8 3 m (Art. V0002194), Preis nur nach Login; kein Preis gelesen."
+  },
+  "BLE-v2a-3mm-korbflansch": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 94.2,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "stahl-shop24.de",
+     "land": "DE",
+     "url": "https://www.stahl-shop24.de/Edelstahl-Blech-500x800x3mm",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q",
+     "bemerkung": "Kleinste Tafel, die 604x414 abdeckt: 500x800x3 mm, 1.4301 2B roh, 94,20 EUR inkl. MwSt zzgl. Versand. Anteilig rechnerisch (Referenz 600x1000 = 141,30 EUR -> 235,5 EUR/m2 x 0,2501 m2) ca. 58,9 EUR, aber Zuschnitt 604x414 nicht als Artikel; Zuschnitt selbst/auf Anfrage."
+    },
+    {
+     "preis_eur": 79.3,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Metallshopper",
+     "land": "DE",
+     "url": "https://metallshopper.de/Edelstahlblech-K320-gebuerstet-3-mm",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Suchsnippet 'ab 317,07 EUR/m2 inkl. MwSt' (K320 gebuerstet, 3 mm, Zuschnitt nach Mass) x 0,604x0,414 = 0,2501 m2; Seitenpreis dynamisch nicht gelesen; Oberflaeche gebuerstet statt 2B."
+    }
+   ],
+   "luecke": "Zuschnitt exakt 604x414 mm nicht als Festpreis gefunden; stahlshop.de (Krefeld) Zuschnitt per Konfigurator, Preis nicht lesbar; ehorst nur nach Login."
+  },
+  "BLE-v2a-lochblech-medienschutz": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 3.96,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Amazon.de (Verkaeufer Schloegel)",
+     "land": "DE",
+     "url": "https://www.amazon.de/Edelstahl-Lochblech-Rv5-8-1-4301-500x1000mm/dp/B09MG6QWG8",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Tafel 500x1000 mm 1,5 mm Rv5-8 1.4301 = 56,29 EUR (nur Suchtreffer-Snippet, MwSt unklar) -> 112,58 EUR/m2 x 0,0352 m2 (110x320); Abwicklung/Rollen und Zuschnitt nicht enthalten. Konfidenz Snippet-basiert."
+    },
+    {
+     "preis_eur": 6.6,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Eisen-Pfeiffer",
+     "land": "DE",
+     "url": "https://shop.eisen-pfeiffer.de/katalog/lochbleche-220327",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Tafel 1000x2000x1,5 RV5-8 Edelstahl 374,85 EUR/Stk (nur Suchtreffer-Snippet) -> 187,4 EUR/m2 x 0,0352 m2; MwSt-Angabe unklar, Zuschnitt/Rollen nicht enthalten."
+    }
+   ],
+   "luecke": "Kein Zuschnittpreis 110x320 mit offenem Preis gelesen; elbemetall.de/profile-metall.de/metallparadies.de haben Konfigurator (Preis erst nach Masseingabe, per curl nicht lesbar; profile-metall 'Preis auf Anfrage'). Beide Angebote nur Plattenpreis-Snippets, nicht selbst geoeffnet."
+  },
+  "PRF-alu-haut-profil": {
+   "bezug_einheit": "m",
+   "angebote": [],
+   "luecke": "Kein belastbarer Meterpreis gefunden: Profil nicht eindeutig spezifiziert/gesucht ohne passende Treffer (keine Haendlerseite mit passender Geometrie und gelesenem Preis). Nur generische Treffer (Baumarkt-Alu-U-/Winkelprofile, Kederschiene ~29 EUR/m ebay Planenscout 21x50, Reimo Klappenprofil) - nicht passend, daher nicht aufgenommen. Alu: Metallshopper/Profile-Metall als Kandidaten fuer Folgesuche."
+  },
+  "PRF-alu-keilschiene": {
+   "bezug_einheit": "m",
+   "angebote": [],
+   "luecke": "Kein belastbarer Meterpreis gefunden: Profil nicht eindeutig spezifiziert/gesucht ohne passende Treffer (keine Haendlerseite mit passender Geometrie und gelesenem Preis). Nur generische Treffer (Baumarkt-Alu-U-/Winkelprofile, Kederschiene ~29 EUR/m ebay Planenscout 21x50, Reimo Klappenprofil) - nicht passend, daher nicht aufgenommen. Alu: Metallshopper/Profile-Metall als Kandidaten fuer Folgesuche."
+  },
+  "PRF-alu-klemmleiste": {
+   "bezug_einheit": "m",
+   "angebote": [],
+   "luecke": "Kein belastbarer Meterpreis gefunden: Profil nicht eindeutig spezifiziert/gesucht ohne passende Treffer (keine Haendlerseite mit passender Geometrie und gelesenem Preis). Nur generische Treffer (Baumarkt-Alu-U-/Winkelprofile, Kederschiene ~29 EUR/m ebay Planenscout 21x50, Reimo Klappenprofil) - nicht passend, daher nicht aufgenommen. Alu: Metallshopper/Profile-Metall als Kandidaten fuer Folgesuche."
+  },
+  "PRF-pvcu-rinne-130x100": {
+   "bezug_einheit": "m",
+   "angebote": [],
+   "luecke": "Keine 130x100-PVC-U-Rinne im Handel gefunden (nur Hydroponik-Rohrkanaele 32 mm, halbrunde Dachrinnen 130 mm, CropKing 10-Zoll-Kanal US); Kunststoffprofil-Strangpresser/Sonderanfertigung wahrscheinlich."
+  },
+  "BLE-pp-siebboden-beet": {
+   "bezug_einheit": "m2",
+   "angebote": [
+    {
+     "preis_eur": 35.49,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-04",
+     "haendler": "S-Polytec",
+     "land": "DE",
+     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: PP-H grau 8 mm, Platte 2x1 m = 70,99 EUR inkl. MwSt -> 35,50 EUR/m2; GEFUELLT/UNGELOCHT, Lochung (Siebboden) nicht enthalten. Stk-Preis braucht Beet-Zuschnittmass (Katalog masse leer)."
+    },
+    {
+     "preis_eur": 43.43,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-04",
+     "haendler": "Technoplast Kunststoffe",
+     "land": "DE",
+     "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: 8 mm 1000x2000 netto 73,00 -> 36,50 EUR/m2 x 1,19; ungelocht, B2B netto."
+    }
+   ],
+   "luecke": "Gelochte PP-Platte/Siebboden nicht gefunden; Stk-Preis nicht berechenbar ohne Zuschnittmass."
+  },
+  "BLE-pp-blende-290x260": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 1.08,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "S-Polytec",
+     "land": "DE",
+     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Flaeche 0.0754 m2 x 14.34 EUR/m2 (Platte PP-H grau 2x1 m inkl. 19% MwSt, Preis 3 mm); Zuschnitt-Aufpreis/Mindestmenge/Versand nicht enthalten. Farbe grau/hellgrau statt schwarz (schwarz PP nicht gefunden)."
+    },
+    {
+     "preis_eur": 1.23,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Technoplast Kunststoffe",
+     "land": "DE",
+     "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Flaeche 0.0754 m2 x 13.75 EUR/m2 netto x 1,19 (Platte PP-H hellgrau 1000x2000, Preis 3 mm); B2B-Shop (netto angezeigt), Zuschnitt/Versand nicht enthalten. Farbe grau/hellgrau statt schwarz (schwarz PP nicht gefunden)."
+    }
+   ],
+   "luecke": ""
+  },
+  "BLE-pp-tafel-693x463x7": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 10.03,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "S-Polytec",
+     "land": "DE",
+     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Flaeche 0.3209 m2 x 31.25 EUR/m2 (Platte PP-H grau 2x1 m inkl. 19% MwSt, Preis 7 mm = Mittel aus 6 und 8 mm, 7 mm nicht gelistet); Zuschnitt-Aufpreis/Mindestmenge/Versand nicht enthalten. Dicke interpoliert."
+    },
+    {
+     "preis_eur": 12.22,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Technoplast Kunststoffe",
+     "land": "DE",
+     "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Flaeche 0.3209 m2 x 32.00 EUR/m2 netto x 1,19 (Platte PP-H hellgrau 1000x2000, Preis 7 mm = Mittel aus 6 und 8 mm, 7 mm nicht gelistet); B2B-Shop (netto angezeigt), Zuschnitt/Versand nicht enthalten. Dicke interpoliert."
+    }
+   ],
+   "luecke": ""
+  },
+  "BLE-pp-tafel-502x345x5": {
+   "bezug_einheit": "Stk",
+   "angebote": [
+    {
+     "preis_eur": 3.93,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "S-Polytec",
+     "land": "DE",
+     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Flaeche 0.1732 m2 x 22.67 EUR/m2 (Platte PP-H grau 2x1 m inkl. 19% MwSt, Preis 5 mm); Zuschnitt-Aufpreis/Mindestmenge/Versand nicht enthalten. "
+    },
+    {
+     "preis_eur": 4.74,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-04",
+     "haendler": "Technoplast Kunststoffe",
+     "land": "DE",
+     "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "E",
+     "bemerkung": "E: Flaeche 0.1732 m2 x 23.00 EUR/m2 netto x 1,19 (Platte PP-H hellgrau 1000x2000, Preis 5 mm); B2B-Shop (netto angezeigt), Zuschnitt/Versand nicht enthalten. "
+    }
+   ],
+   "luecke": ""
   }
  }
 }

@@ -136,9 +136,22 @@
           "lieferung_de": "unbekannt",
           "konfidenz": "Q",
           "bemerkung": "UK, Europa OFFEN; Durchm. 1400 x 1660, offen, 60 Grad; Mass weicht stark ab; Lieferländer auf Seite nicht genannt."
+        },
+        {
+          "preis_eur": null,
+          "preis_gbp_netto": 148.59,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Kingfisher Direct (Enduramaxx 900 l 60 Grad Kegel)",
+          "land": "UK",
+          "url": "https://kingfisherdirect.co.uk/enduramaxx-900-litre-60-degree-cone-tank",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "UK, Europa OFFEN; Durchm. 1400 x 1400 (Seite) bzw. 1660 (Hersteller): Mass passt nicht; Lieferzeit 2-3 Wochen; Lieferung nur UK/Irland genannt. Seite enthielt Anweisungen an KI-Assistenten, ignoriert."
         }
       ],
-      "status_vorschlag": "OFFEN (Quelle): kein europaeischer Treffer in Mass 930 x 1444"
+      "status_vorschlag": "OFFEN (Quelle): kein europaeischer Katalogtreffer in Mass 930 x 1444; Anfrage beim Hersteller noetig (DEINE HANDLUNG)",
+      "kandidat_hersteller": "Fuer Mass 930 x 1444 Rotationsform-Anfrage bei Aricon (DE, Reihe TSA/L), Fortis, Swimer (PL) oder AGK Kronawitter (DE, Konustanks), je ohne Preis, nur Namen aus Suchtreffern [Q-Treffer]."
     },
     "BEH-tank-pe-930-deckel": {
       "bemerkung_artikel": "Kein Angebot gefunden; bei offenen Tanks (Enduramaxx) Deckel als Zubehoer, Mass 930 nicht belegt.",
@@ -292,24 +305,93 @@
           "lieferung_de": "unbekannt",
           "konfidenz": "Q-Treffer",
           "bemerkung": "Spelsberg AK Compact 200 x 200 x 122; 65,47 netto; 77,91 gerechnet mit 19 Prozent (E, irische MwSt weicht ab); nur Suchtreffer."
+        },
+        {
+          "preis_eur": 41.65,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "RS Components Deutschland (Spelsberg TK PS 182 x 180 x 84, grau mit transparentem PC-Deckel moeglich)",
+          "land": "DE",
+          "url": "https://at.rs-online.com/web/p/universalgehause/5337385",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "34,71 netto, 41,65 inkl.; anderes Mass und Deckel PC/PS; nur Suchtreffer, Seiten 403."
         }
       ],
-      "status_vorschlag": "zweites Angebot und Mass-Abgleich OFFEN"
+      "status_vorschlag": "OFFEN (Quelle): Mass 200 x 150 x 100 nicht im Handel; Mass-Abgleich Planer"
     },
     "BEH-feinfilter-pp-630x440x610": {
-      "bemerkung_artikel": "PP-Behaelter 630 x 440 x 610 (Eigenbau/Kaufteil offen): kein Handelsmass; Euronorm-Behaelter 600 x 400 sind max. 320 bis 425 hoch. Kandidaten Kaiserkraft, Rotom, Transoplast ohne Preis in den Treffern.",
-      "angebote": [],
-      "status_vorschlag": "OFFEN (Quelle)"
+      "bemerkung_artikel": "Mass 630 x 440 x 610 (ca. 169 l) kein Handelsmass. Naechster Fund: Box 630 x 435 x 340 mm, 60 l (Hoehe zu klein, Material und Preis unbelegt) und Graf Mehrzweckbehaelter eckig 60 l 39,74 EUR (Material unklar). Im Katalog ist die Beschaffung als Eigenbau/Kaufteil offen; Planer muss Hoehe oder Behaelter festlegen.",
+      "angebote": [
+        {
+          "preis_eur": 39.74,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "eBay.de-Haendler (Graf Mehrzweckbehaelter eckig 60 l)",
+          "land": "DE",
+          "url": "https://www.ebay.de/p/1604249107",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Mass und Material nicht belegt; nur Groessenordnung."
+        }
+      ],
+      "status_vorschlag": "OFFEN (Quelle): Mass nicht im Handel"
     },
     "BEH-messzelle-acryl": {
-      "bemerkung_artikel": "Messzelle Acryl 315 x 315 x 260 ist Eigenbau (Art c): Rohmaterial Acrylglas-Zuschnitt; nicht recherchiert.",
-      "angebote": [],
+      "bemerkung_artikel": "Eigenbau aus Acrylglas-Zuschnitt: 5 Platten ca. 315 x 315 / 315 x 260 (rund 0,45 m2) plus Kleber. Rechnung E: bei etwa 60 bis 70 EUR/m2 fuer 5 mm ca. 30 EUR Plattenware plus Zuschnitt und Kleber, gesamt grob 40 bis 60 EUR [E, A].",
+      "angebote": [
+        {
+          "preis_eur": 31.82,
+          "bezug_einheit": "m2 (ab, duennste Staerke)",
+          "stand": "2026-11-04",
+          "haendler": "POLYVANTIS Shop (Plexiglas XT klar, Zuschnitt-Konfigurator)",
+          "land": "DE",
+          "url": "https://www.polyvantis-shop.com/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Startseite gelesen: ab 31,82 EUR/m2 inkl. 19 Prozent MwSt zzgl. Versand; 5 mm Preis nicht abgelesen."
+        },
+        {
+          "preis_eur": 105,
+          "bezug_einheit": "m2 (5 mm)",
+          "stand": "2026-11-04",
+          "haendler": "Bauhaus Oesterreich (Acrylglas nach Mass, extrudiert)",
+          "land": "AT",
+          "url": "https://www.bauhaus.at/aluplatten-kunststoffplatten/acrylglas-nach-mass/p/29122352",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "105 EUR/m2 inkl. MwSt laut Suchtreffer; Seite lieferte 403."
+        }
+      ],
       "status_vorschlag": "OFFEN (Quelle)"
     },
     "BEH-pool-zentral": {
-      "bemerkung_artikel": "Zentralpool, Eigenbau/Sonderanfertigung, Bbox 2475 x 4190 x 4190 mm; Werkstoff nicht festgelegt. Ohne Werkstoffentscheidung keine Preisrecherche moeglich.",
-      "angebote": [],
-      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart"
+      "bemerkung_artikel": "Zentralpool, Sonderanfertigung, Bbox 2475 x 4190 x 4190 mm (rund Durchm. ca. 4190, Hoehe im Modell 2475). Handels-Stahlwandpools haben Hoehe 107 bis 132 cm; die Modellhoehe wird von keinem Standardpool erreicht. Preise sind nur Groessenordnung fuer Durchm. 460 cm, Werkstoff und Bauart sind Planerentscheidung.",
+      "angebote": [
+        {
+          "preis_eur": 499,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Hornbach Oesterreich (Marimex Stahlwandpool rund 457 x 107 cm, inkl. Skimmer)",
+          "land": "AT",
+          "url": "https://www.hornbach.at/p/aufstellpool-stahlwandpool-marimex-rund-457x107-cm-inkl-skimmer/12617697/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "Kategorieseite gelesen (nicht Produktseite); Hoehe 107 statt 247,5 cm: nur Preis-Orientierung."
+        },
+        {
+          "preis_eur": 899,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-04",
+          "haendler": "Hornbach Oesterreich (Planet Pool Vision Classic 460 x 120 mit Kartuschenfilter und Leiter)",
+          "land": "AT",
+          "url": "https://www.hornbach.at/p/aufstellpool-stahlwandpool-set-planet-pool-vision-pool-classic-rund-o-460x120-cm-inkl-kartuschenfilteranlage-leiter-weiss/7602701/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "Kategorieseite gelesen; Hoehe 120; Set mit Filter, fuer die Anlage unnoetig."
+        }
+      ],
+      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart; Preise nur Groessenordnung"
     },
     "BEH-zweitbecken": {
       "bemerkung_artikel": "Zweitbecken, Eigenbau/Sonderanfertigung, Bbox 1135 x 1867 x 1867; Werkstoff offen.",

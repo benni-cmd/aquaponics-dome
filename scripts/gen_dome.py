@@ -496,6 +496,15 @@ def schrank_fn():
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
     rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), P["sock_h"], az+90, P["cab_x"], P["cab_y"], P["cab_z"])
 
+def luft_a(fz):
+    """M10-S5-LUFT Teil A: Pool-Verteiler luftverteiler_4 (T87) auf dem Beckenrand, 4 Scheibenbelueftungen (T88) auf dem Beckenboden, Schwimmerventil (T84) am Rand; Lagen (Annahmen [A]) aus scripts/trassen_luft.py, die Rohre d25 kommen als Trassen K44-S1..S4 aus data/leitungstrassen.json."""
+    import trassen_luft as TL
+    g = TL.geometrie(fz, LAYOUT["pool"]["d"], P["wall"], P["pool_rim"], LAYOUT["pool"]["water_z"], P["pool_depth"], POOL_BODEN)
+    comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
+    place_instances("Luftverteiler_4", comp("luftverteiler_4"), [tuple(round(v, 2) for v in g["verteiler"])], "09_Technik")
+    place_instances("Luft_Scheibenbelueftung", comp("luft_scheibenbelueftung"), [(round(x, 2), round(y, 2), round(z, 2), 0.0) for x, y, z in g["scheiben"]], "04_Wasserbecken")
+    place_instances("Schwimmerventil_Pool", comp("schwimmerventil_pool"), [tuple(round(v, 2) for v in g["ventil"])], "04_Wasserbecken")
+
 def t10_t11(fz):
     component_file("zulaufrohr", "Zulaufrohr", "08_Leitungen", rohr_fn)
     component_file("schaltschrank", "Schaltschrank", "09_Technik", schrank_fn)
@@ -510,7 +519,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); luft_a(P["sock_h"]); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

@@ -20,7 +20,7 @@ import leitung as LT
 
 TRASSEN = os.path.join(ROOT, "data", "leitungstrassen.json")
 COMP = os.path.join(ROOT, "designs", "components")
-FARBEN = {"dunkelblau": "#2a5da8", "hellblau": "#7fc4ea", "grau": "#8d9296"}   # Plan 4 Regel 8: Filterlinie dunkelblau, Frischwasser hellblau, Ruecklauf grau
+FARBEN = {"dunkelblau": "#2a5da8", "hellblau": "#7fc4ea", "grau": "#8d9296", "gruen": "#4c9a5a"}   # Plan 4 Regel 8: Filterlinie dunkelblau, Frischwasser hellblau, Ruecklauf grau
 TOL = 0.6   # mm, Passung "Bogen direkt auf dem Stutzen"
 
 def laden():
@@ -173,6 +173,7 @@ def graben(doc, fz):
     except (OSError, KeyError): pass
     k2 = {}
     for tr in _graben_trassen(doc["trassen"]):
+        if tr.get("linie") == "luft": continue                      # M10-S5-LUFT: Luftrohre liegen im Becken (kein Graben in der Erde)
         d = float(tr["dn"]); w = d + zus; pts = [tuple(float(v) for v in p) for p in tr["pfad"]]
         ex = 0.0 if tr.get("linie", 1) == 1 else 1.0               # M10-S2c: Linie 2 je Ende 1 mm laenger: an 90-Grad-Ecken und Steigleitungen fiel sonst die Stirnflaeche in die Seitenflaeche des Nachbarn (Boolean-Schnitt ohne Ergebnis)
         if ex:                                                      # Linie 2: je Netzkante (Teilstuecke derselben Kante teilen die Breite, wie koaxiale Steigleitungen) eine eigene Breite, +0,4 mm je Kante: sonst deckungsgleiche Seiten- und Bodenflaechen verschiedener Nachbarn

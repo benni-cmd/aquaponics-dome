@@ -1368,6 +1368,218 @@
    ],
    "notiz": "Kugelhahn -> 110 mm abwaerts -> 1464 mm Tiefleitung (Z -259) unter K17 und Stamm K22-T -> senkrecht hoch zum T d63 im Stamm hinter dem Filterauslauf (Netz K57: Anschluss an die Saugleitung hinter dem Filterauslauf)",
    "linie": 2
+  },
+  {
+   "id": "K44-S1",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1906.81,
+     -690.55,
+     1148.0
+    ],
+    [
+     1906.81,
+     -690.55,
+     1180.25
+    ],
+    [
+     1791.16,
+     -648.67,
+     1180.25
+    ],
+    [
+     1791.16,
+     -648.67,
+     -1237.25
+    ],
+    [
+     707.11,
+     707.11,
+     -1237.25
+    ],
+    [
+     707.11,
+     707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "Luft Pool-Verteiler Abgang 1 -> Scheibe 1 (Az 45), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
+  },
+  {
+   "id": "K44-S2",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1856.1,
+     -799.31,
+     1148.0
+    ],
+    [
+     1856.1,
+     -799.31,
+     1180.25
+    ],
+    [
+     1749.66,
+     -753.47,
+     1180.25
+    ],
+    [
+     1749.66,
+     -753.47,
+     -1237.25
+    ],
+    [
+     -707.11,
+     707.11,
+     -1237.25
+    ],
+    [
+     -707.11,
+     707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "Luft Pool-Verteiler Abgang 2 -> Scheibe 2 (Az 135), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
+  },
+  {
+   "id": "K44-S3",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1805.38,
+     -908.07,
+     1148.0
+    ],
+    [
+     1805.38,
+     -908.07,
+     1180.25
+    ],
+    [
+     1701.85,
+     -855.99,
+     1180.25
+    ],
+    [
+     1701.85,
+     -855.99,
+     -1237.25
+    ],
+    [
+     707.11,
+     -707.11,
+     -1237.25
+    ],
+    [
+     707.11,
+     -707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "Luft Pool-Verteiler Abgang 3 -> Scheibe 4 (Az 315), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
+  },
+  {
+   "id": "K44-S4",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1754.67,
+     -1016.82,
+     1148.0
+    ],
+    [
+     1754.67,
+     -1016.82,
+     1180.25
+    ],
+    [
+     1648.24,
+     -955.15,
+     1180.25
+    ],
+    [
+     1648.24,
+     -955.15,
+     -1237.25
+    ],
+    [
+     -707.11,
+     -707.11,
+     -1237.25
+    ],
+    [
+     -707.11,
+     -707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "Luft Pool-Verteiler Abgang 4 -> Scheibe 3 (Az 225), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
   }
  ],
  "t_stuecke": [

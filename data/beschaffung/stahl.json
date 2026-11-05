@@ -415,26 +415,26 @@
    "bezug_einheit": "Satz",
    "angebote": [
     {
-     "preis_eur": 0.23,
+     "preis_eur": 0.14,
      "bezug_einheit": "Satz",
-     "stand": "2026-11-04",
-     "haendler": "Hornbach",
-     "land": "DE",
-     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x40-mm-galv-verzinkt-100-stueck/10316856/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "M8x35 bei Hornbach nicht gelistet; E: Mittel aus Reyher DIN 933 M8x30 (10,10 EUR/100 St, .../10316631/) und M8x40 (11,55 EUR/100 St) = 0,108/St, + Mutter DIN 934 M8 (5,15/100, .../10316615/) + 2 Scheiben DIN 125 8,4 (3,45/100, .../10317026/). Preise brutto, Packungen je 100 St, Versand zzgl."
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M8-x-35mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001113",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m8x35 verz. 8,16 EUR (https://www.schraubenking.at/M8-x-35mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001113) + Mutter DIN 934 M8 2,48 EUR (https://www.schraubenking.at/M8-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000444) + 2 Scheiben DIN 125 je 1,61 EUR (https://www.schraubenking.at/84mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000478). Rechnung: (8,16 + 2,48 + 2x1,61)/100 = 0,1386 EUR/Satz."
     },
     {
-     "preis_eur": 0.44,
+     "preis_eur": 0.23,
      "bezug_einheit": "Satz",
-     "stand": "2026-11-04",
-     "haendler": "Mister Agri",
-     "land": "NL",
-     "url": "https://www.misteragri.com/pl/51073372-zeskantbout-din-933-m8x35-verzinkt-staal-8-8",
-     "lieferung_de": "unbekannt",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x30-mm-galv-verzinkt-100-stueck/10316631/",
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
      "konfidenz": "E",
-     "bemerkung": "E: Schraube DIN 933 M8x35 8.8 verz. Q-gelesen 0,19 netto (0,23 mit NL-USt) x1,19 = 0,226 + Mutter M8 DIN 934 Kl.8 verz. (https://www.misteragri.com/40000624-moer-kl8-din934-m8-verz, 0,12 netto x1,19 = 0,143) + 2 Scheiben M8 mit 0,069 aus Hornbach-Preis ANGENOMMEN (Mister Agri-Scheibenseite nicht gefunden). Einzelstueckpreis, Staffel ab 50 St. Netto x1,19 gerechnet."
+     "bemerkung": "E: M8x35 bei Hornbach nicht gelistet; Mittel aus Reyher DIN 933 M8x30 (10,10 EUR/100, .../10316631/) und M8x40 (11,55 EUR/100, .../10316856/) = 0,10825 EUR/St + Mutter M8 5,15/100 (.../10316615/) + 2 Scheiben 8,4 je 3,45/100 (.../10317026/) = 0,2288 EUR/Satz. Seiten 05.11. geoeffnet."
     }
    ],
    "luecke": ""
@@ -445,16 +445,27 @@
     {
      "preis_eur": 0.14,
      "bezug_einheit": "Satz",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Hornbach",
      "land": "DE",
      "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "A: Ersatzartikel M6x20. E: Reyher DIN 933 M6x20 (6,50 EUR/100 St) + Mutter DIN 934 M6 (3,20/100, .../10316557/) + 2 Scheiben DIN 125 6,4 (2,20/100, .../10316978/). Brutto, Packungen je 100 St, Versand zzgl."
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m6x20 verz. 6,50 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/) + Mutter DIN 934 M6 3,20 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m6-galv-verzinkt-100-stueck/10316557/) + 2 Scheiben DIN 125 6,4 je 2,20 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-6-4-mm-galv-verzinkt-100-stueck/10316978/). Rechnung: (6,50 + 3,20 + 2x2,20)/100 = 0,1410 EUR/Satz. [A] Ersatzartikel M6x20 fuer \"klein\"."
+    },
+    {
+     "preis_eur": 0.07,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M6-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001095",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m6x20 verz. 3,48 EUR (https://www.schraubenking.at/M6-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001095) + Mutter DIN 934 M6 1,49 EUR (https://www.schraubenking.at/M6-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000443) + 2 Scheiben DIN 125 je 1,25 EUR (https://www.schraubenking.at/64mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000477). Rechnung: (3,48 + 1,49 + 2x1,25)/100 = 0,0747 EUR/Satz. [A] Ersatzartikel M6x20."
     }
    ],
-   "luecke": "Nur ein Haendler (Hornbach, Ersatzartikel M6x20 als Satz). Mister Agri hat keine M6x20-Seite gefunden; ehorst ohne oeffentliche Preise (Login)."
+   "luecke": ""
   },
   "SRB-halter-klein-12x10x20": {
    "bezug_einheit": "Satz",
@@ -462,16 +473,27 @@
     {
      "preis_eur": 0.14,
      "bezug_einheit": "Satz",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Hornbach",
      "land": "DE",
      "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "A: Ersatzartikel M6x20. E: Reyher DIN 933 M6x20 (6,50 EUR/100 St) + Mutter DIN 934 M6 (3,20/100, .../10316557/) + 2 Scheiben DIN 125 6,4 (2,20/100, .../10316978/). Brutto, Packungen je 100 St, Versand zzgl."
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m6x20 verz. 6,50 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/) + Mutter DIN 934 M6 3,20 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m6-galv-verzinkt-100-stueck/10316557/) + 2 Scheiben DIN 125 6,4 je 2,20 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-6-4-mm-galv-verzinkt-100-stueck/10316978/). Rechnung: (6,50 + 3,20 + 2x2,20)/100 = 0,1410 EUR/Satz. [A] Ersatzartikel M6x20 fuer Winkelhalter-Kleinteil 12x10x20."
+    },
+    {
+     "preis_eur": 0.07,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M6-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001095",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m6x20 verz. 3,48 EUR (https://www.schraubenking.at/M6-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001095) + Mutter DIN 934 M6 1,49 EUR (https://www.schraubenking.at/M6-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000443) + 2 Scheiben DIN 125 je 1,25 EUR (https://www.schraubenking.at/64mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000477). Rechnung: (3,48 + 1,49 + 2x1,25)/100 = 0,0747 EUR/Satz. [A] Ersatzartikel M6x20."
     }
    ],
-   "luecke": "Nur ein Haendler (Hornbach, Ersatzartikel M6x20 als Satz). Mister Agri hat keine M6x20-Seite gefunden; ehorst ohne oeffentliche Preise (Login)."
+   "luecke": ""
   },
   "SRB-pumpe-klein": {
    "bezug_einheit": "Satz",
@@ -479,24 +501,24 @@
     {
      "preis_eur": 0.21,
      "bezug_einheit": "Satz",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Hornbach",
      "land": "DE",
      "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x20-mm-galv-verzinkt-100-stueck/10316836/",
-     "lieferung_de": "ja",
-     "konfidenz": "E",
-     "bemerkung": "A: Ersatzartikel M8x20. E: Reyher DIN 933 M8x20 (9,25 EUR/100 St) + Mutter M8 (5,15/100) + 2 Scheiben 8,4 (3,45/100). Brutto, je 100 St, Versand zzgl."
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m8x20 verz. 9,25 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x20-mm-galv-verzinkt-100-stueck/10316836/) + Mutter DIN 934 M8 5,15 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m8-galv-verzinkt-100-stueck/10316615/) + 2 Scheiben DIN 125 8,4 je 3,45 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-8-4-mm-galv-verzinkt-100-stueck/10317026/). Rechnung: (9,25 + 5,15 + 2x3,45)/100 = 0,2130 EUR/Satz. [A] Ersatzartikel M8x20."
     },
     {
-     "preis_eur": 0.39,
+     "preis_eur": 0.12,
      "bezug_einheit": "Satz",
-     "stand": "2026-11-04",
-     "haendler": "Mister Agri",
-     "land": "NL",
-     "url": "https://www.misteragri.com/51032041-zeskantbout-din-933-m8-x-20-staal-8-8-o-d-8mm-spoed-1-25mm",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "A: Ersatzartikel M8x20. E: Schraube DIN 933 M8x20 8.8 Q-gelesen 0,15 netto (0,18 mit NL-USt) x1,19 = 0,179 + Mutter M8 (0,12 netto x1,19 = 0,143) + 2 Scheiben 0,069 aus Hornbach ANGENOMMEN."
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M8-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001105",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m8x20 verz. 6,24 EUR (https://www.schraubenking.at/M8-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001105) + Mutter DIN 934 M8 2,48 EUR (https://www.schraubenking.at/M8-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000444) + 2 Scheiben DIN 125 je 1,61 EUR (https://www.schraubenking.at/84mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000478). Rechnung: (6,24 + 2,48 + 2x1,61)/100 = 0,1194 EUR/Satz. [A] Ersatzartikel M8x20."
     }
    ],
    "luecke": ""
@@ -931,27 +953,27 @@
     {
      "preis_eur": 6.12,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Edelstahl-Vierkant-8x8mm-1000mm",
-     "lieferung_de": "ja (Sitz Crinitzberg DE, Versand GLS/DHL; Versandkosten extra, Zielgebiet nicht ausdruecklich)",
+     "lieferung_de": "ja (Versand GLS/DHL, Preise inkl. MwSt. zzgl. Versand; Zielgebiet auf der Seite nicht aufgelistet)",
      "konfidenz": "Q",
-     "bemerkung": "Edelstahl Vierkant 8x8 1.4301 blank gezogen, 1000 mm Stueck 6,12 EUR inkl. MwSt zzgl. Versand (2000-mm-Stueck 12,24 EUR); 3-m-Stange dort nicht gelistet, Stueck Zuschnitt in 0,5-2 m."
+     "bemerkung": "Seite 05.11. geoeffnet: Edelstahl Vierkant 8x8 mm, 1.4301 (X5CrNi18-10), blank gezogen EN 10278, Art. VVK102-1, Stueck 1000 mm = 6,12 EUR inkl. MwSt. -> 6,12 EUR/m (Optionen 500/1000/1500/2000 mm, 0,51 kg)."
     },
     {
      "preis_eur": 11.61,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Metallshopper (NL-Fertigung, .de-Shop)",
      "land": "NL",
      "url": "https://metallshopper.de/Edelstahl-vollmaterial-vierkant-8-mm",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "Q",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. Seitenpreis 11,61 EUR/m (Ansicht Standardlaenge) zzgl. Bearbeitungsgebuehr 5,35 EUR je Zuschnitt; Edelstahl 304 (=1.4301), bis 3000 mm; MwSt-Angabe der Seite nicht eindeutig (Suchsnippet nannte 'ab 9,42 EUR/m inkl. MwSt' bei Mengenstaffel). Bezug nach Mass."
+     "lieferung_de": "unbekannt (Versandlaender nicht gelistet; Seite verlinkt BE/NL-Shopversionen)",
+     "konfidenz": "E",
+     "bemerkung": "Seite 05.11. geoeffnet: Edelstahl 304 vollmaterial vierkant 8 mm, roh, 11,61 EUR/m \"exkl. Bearbeitungsgebuehren\"; MwSt-Ausweis der Seite nicht eindeutig, Bearbeitungsgebuehr/Zuschnitt nicht eindeutig gelabelt -> E."
     }
    ],
-   "luecke": "Voss Edelstahl (DE) fuehrt 8x8 3 m (Art. V0002194), Preis nur nach Login; kein Preis gelesen."
+   "luecke": "OFFEN (Ben): Mass Lagerlaenge 7000 mm im Modell; Handel liefert Stuecke 0,5-3 m (stahl-shop24 bis 2 m, Metallshopper bis 3 m). Preis je m unveraendert, Verschnitt/Saegeschnitt/Stangenzahl neu rechnen."
   },
   "BLE-v2a-3mm-korbflansch": {
    "bezug_einheit": "Stk",
@@ -959,111 +981,122 @@
     {
      "preis_eur": 94.2,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "stahl-shop24.de",
      "land": "DE",
      "url": "https://www.stahl-shop24.de/Edelstahl-Blech-500x800x3mm",
-     "lieferung_de": "unbekannt",
+     "lieferung_de": "ja (GLS/DHL, Preis inkl. MwSt. zzgl. Versand; Zielgebiet nicht aufgelistet)",
      "konfidenz": "Q",
-     "bemerkung": "Kleinste Tafel, die 604x414 abdeckt: 500x800x3 mm, 1.4301 2B roh, 94,20 EUR inkl. MwSt zzgl. Versand. Anteilig rechnerisch (Referenz 600x1000 = 141,30 EUR -> 235,5 EUR/m2 x 0,2501 m2) ca. 58,9 EUR, aber Zuschnitt 604x414 nicht als Artikel; Zuschnitt selbst/auf Anfrage."
+     "bemerkung": "Seite 05.11. geoeffnet: Edelstahl Blech 500x800x3 mm, 1.4301 kaltgewalzt 2B, Art. VBL139-5, 94,20 EUR inkl. MwSt., 9,42 kg. Ganze Tafel; 604x414 passt gedreht (604<800, 414<500) -> 1 Tafel je Flansch, kein Zuschnittpreis."
     },
     {
-     "preis_eur": 79.3,
+     "preis_eur": 67.53,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Metallshopper",
-     "land": "NL",
-     "url": "https://metallshopper.de/Edelstahlblech-K320-gebuerstet-3-mm",
-     "lieferung_de": "unbekannt",
+     "stand": "2026-11-05",
+     "haendler": "Feld Maschinenbau (feld-eitorf.de)",
+     "land": "DE",
+     "url": "https://www.feld-eitorf.de/edelstahlblech-gebuerstet-staerke-3-0-mm",
+     "lieferung_de": "nur Versand in Deutschland (Seite: \"Nur fuer Versand in Deutschland\"), Lieferzeit 5-7 Werktage",
      "konfidenz": "E",
-     "bemerkung": "Auflage A3 (04.11.): Seite nennt als Firmenadresse Eindhoven (NL), deutschsprachiger Shop; Zielgebiet nicht ausdruecklich. E: Suchsnippet 'ab 317,07 EUR/m2 inkl. MwSt' (K320 gebuerstet, 3 mm, Zuschnitt nach Mass) x 0,604x0,414 = 0,2501 m2; Seitenpreis dynamisch nicht gelesen; Oberflaeche gebuerstet statt 2B."
+     "bemerkung": "Konfigurator gelesen, nicht abgeschickt. Rechnung: 604x414 mm = 0,2501 m2; Material 279,46 EUR/m2 inkl. 19 % MwSt., ab 0,10 m2 -10 % = 251,51 EUR/m2 -> 62,89 EUR + Zuschnitt 4,64 EUR = 67,53 EUR. Gegenprobe Seite: 0,25 m2 = 67,52 EUR. Oberflaeche einseitig gebuerstet (nicht 2B), V2A 1.4301, Zuschnitt max 1500x600 mm."
+    },
+    {
+     "preis_eur": 126.28,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Edelstahl-Saegezentrum",
+     "land": "DE",
+     "url": "https://www.edelstahl-saegezentrum.de/bleche/edelstahlblech-0-3-3mm-blech-platte-v2a-1-4301-2b-zuschnitt-groesse-nach-wahl_197_8070",
+     "lieferung_de": "Deutschland Festland Standard (7,90 EUR Paket); EU nur auf Anfrage per E-Mail",
+     "konfidenz": "E",
+     "bemerkung": "Konfigurator gelesen, nicht abgeschickt. Rechnung: 0,2501 m2 x 505,00 EUR/m2 (inkl. MwSt., Zuschnitt inklusive) = 126,28 EUR. 1.4301 2B, 3 mm waehlbar, Zuschnitt 100x100 bis 2000x500 mm; Seite weist Preis nicht nach Staerke aus."
     }
    ],
-   "luecke": "Zuschnitt exakt 604x414 mm nicht als Festpreis gefunden; stahlshop.de (Krefeld) Zuschnitt per Konfigurator, Preis nicht lesbar; ehorst nur nach Login."
+   "luecke": ""
   },
   "BLE-v2a-lochblech-medienschutz": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 3.96,
+     "preis_eur": 10.42,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Amazon.de (Verkaeufer Schloegel)",
+     "stand": "2026-11-05",
+     "haendler": "Feld Maschinenbau (feld-eitorf.de)",
      "land": "DE",
-     "url": "https://www.amazon.de/Edelstahl-Lochblech-Rv5-8-1-4301-500x1000mm/dp/B09MG6QWG8",
-     "lieferung_de": "unbekannt",
+     "url": "https://www.feld-eitorf.de/edelstahl-lochblech-staerke-1-5-mm-rundloch-o-5-mm-rv-5-8",
+     "lieferung_de": "nur Versand in Deutschland, Lieferzeit 5-7 Arbeitstage",
      "konfidenz": "E",
-     "bemerkung": "E: Tafel 500x1000 mm 1,5 mm Rv5-8 1.4301 = 56,29 EUR (nur Suchtreffer-Snippet, MwSt unklar) -> 112,58 EUR/m2 x 0,0352 m2 (110x320); Abwicklung/Rollen und Zuschnitt nicht enthalten. Konfidenz Snippet-basiert."
-    },
-    {
-     "preis_eur": 6.6,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "Eisen-Pfeiffer",
-     "land": "DE",
-     "url": "https://shop.eisen-pfeiffer.de/katalog/lochbleche-220327",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "E: Tafel 1000x2000x1,5 RV5-8 Edelstahl 374,85 EUR/Stk (nur Suchtreffer-Snippet) -> 187,4 EUR/m2 x 0,0352 m2; MwSt-Angabe unklar, Zuschnitt/Rollen nicht enthalten."
+     "bemerkung": "Konfigurator gelesen, nicht abgeschickt. Rechnung: 110x320 mm = 0,0352 m2 x 183,46 EUR/m2 (Material inkl. 19 % MwSt., Edelstahl 1.4301, Rundloch d5 Rv5-8, 1,5 mm) = 6,46 EUR + Zuschnitt 3,96 EUR/Stk = 10,42 EUR. Gegenprobe Seite: 0,25 m2 = 49,83 EUR. Rabatte (Material -10 % ab 0,30 m2, Zuschnitt -10 % ab 3 Stk) nicht angerechnet. WICHTIG: \"Zuschnitt mit geschlossenem Rand nicht moeglich\" -> offene Lochreihen am Rand."
     }
    ],
-   "luecke": "Kein Zuschnittpreis 110x320 mit offenem Preis gelesen; elbemetall.de/profile-metall.de/metallparadies.de haben Konfigurator (Preis erst nach Masseingabe, per curl nicht lesbar; profile-metall 'Preis auf Anfrage'). Beide Angebote nur Plattenpreis-Snippets, nicht selbst geoeffnet."
+   "luecke": "OFFEN (Quelle): nur EINE gelesene Quelle mit Preis (Feld Maschinenbau). Amazon-Link 404/503 (nicht erreichbar), Eisen-Pfeiffer 403 (nicht oeffnbar), ehorst Preis nur nach Login, bestell-dein-lochblech.de (Rv5-8 1,5 mm, kostenloser Zuschnitt) ausverkauft und Preis nicht auf 110x320 zuordenbar (12,14 EUR bei 485,60 EUR/m2, Groesse unklar), online-bleche.de Preis/m2 unplausibel (3.800 EUR/m2), zuschnittprofi Staerke nicht ausgewiesen. Zusatz: Randloch-Hinweis pruefen (Rollenform/Abwicklung)."
   },
   "PRF-alu-haut-profil": {
    "bezug_einheit": "m",
    "angebote": [
     {
-     "preis_eur": 7.47,
+     "preis_eur": 7.48,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Hornbach",
      "land": "DE",
      "url": "https://www.hornbach.de/p/u-profil-alu-20x20x1-5-mm-2-m/6368193/",
-     "lieferung_de": "ja",
+     "lieferung_de": "ja (Online-Lieferung ca. 4-5 Werktage, Versand zzgl.)",
      "konfidenz": "Q",
-     "bemerkung": "ERSATZ (A): Alu-U-Profil 20x20x1,5 mm, 2 m, natur; Stueckpreis 14,95 EUR brutto (schema.org) / 2 m = 7,475 EUR/m; DE-Baumarkt, Versand/Abholung; kein Kappenprofil"
+     "bemerkung": "Seite 05.11. geoeffnet: U-Profil Alu 20x20x1,5 mm, 2 m, blank, 14,95 EUR inkl. MwSt. / 2 m = 7,475 EUR/m. Ersatz [A], kein Kappenprofil."
     },
     {
-     "preis_eur": 9.14,
+     "preis_eur": 4.39,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "OBI",
+     "stand": "2026-11-05",
+     "haendler": "alu-verkauf.de (Hildesheim)",
      "land": "DE",
-     "url": "https://www.obi.de/p/8750010/u-profil-aluminium-20-mm-x-20-mm-x-2-000-mm-silber",
-     "lieferung_de": "ja",
+     "url": "https://alu-verkauf.de/en/products/aluminium-profile-u-profile",
+     "lieferung_de": "ja (Paket/Spedition, zzgl. Versand; Zielgebiete nicht gelistet)",
      "konfidenz": "Q",
-     "bemerkung": "ERSATZ (A): Alu-U-Profil 20x20 mm, 2 m, silber eloxiert; 18,29 EUR brutto/2 m = 9,145 EUR/m; kein Kappenprofil"
+     "bemerkung": "Seite 05.11. geoeffnet: U-Profil 20x20x20x1,5 mm AlMgSi0,5 walzblank 4,39 EUR/m inkl. MwSt., zugeschnitten ab 10 mm bis 6 m (eloxiert 9,30 EUR/m; 2 mm Wand 5,67 EUR/m). Ersatz [A]."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Zeile heisst \"Kappenprofil der Haut\" (Mass leer, nicht platziert, Bedarf 0); belegt ist nur ein U-Profil 20x20x1,5 mm als Platzhalter."
   },
   "PRF-alu-keilschiene": {
    "bezug_einheit": "m",
    "angebote": [
     {
-     "preis_eur": 14.0,
+     "preis_eur": 7.32,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "Norhage",
+     "stand": "2026-11-05",
+     "haendler": "alu-verkauf.de (Hildesheim)",
      "land": "DE",
-     "url": "https://norhage.de/produkt/aluminium-klemmprofil-fuer-kunststofffolie-einzeln/",
-     "lieferung_de": "ja",
+     "url": "https://alu-verkauf.de/en/products/aluminium-profile-u-profile",
+     "lieferung_de": "ja (Paket/Spedition, zzgl. Versand; Zielgebiete nicht gelistet)",
      "konfidenz": "Q",
-     "bemerkung": "ERSATZ (A): Alu-Klemmprofil einfach fuer Gewaechshausfolie (Alu-Basis + Kunststoffclips), Schraubmontage, Masse 25x15 nicht belegt; 10 m = 140,00 EUR brutto (display_price, netto 117,65) = 14,00 EUR/m; Lieferzeit 1-2 Wochen; Versand DE nicht separat gelesen"
+     "bemerkung": "Seite 05.11. geoeffnet: U-Profil 25x25x2 mm AlMgSi0,5 ab 7,32 EUR/m inkl. MwSt. (3-mm-Wand 10,43 EUR/m); 25x15 NICHT im Konfigurator. Naechstes Mass 25x25."
+    },
+    {
+     "preis_eur": 8.48,
+     "bezug_einheit": "m",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/s/Alu%20U%20Profil",
+     "lieferung_de": "ja (Online-Versand/Abholung)",
+     "konfidenz": "Q",
+     "bemerkung": "Suchseite 05.11. geoeffnet: U-Profil Alu silber 25x25x2 mm, 2 m, Kaiserthal, 16,95 EUR inkl. MwSt. = 8,475 EUR/m. 25x15 nicht gelistet."
     },
     {
      "preis_eur": 11.49,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Wegner24",
      "land": "DE",
      "url": "https://www.wegner24.eu/Klemmprofil_Netze_Planen",
-     "lieferung_de": "ja",
+     "lieferung_de": "ja (Versandaufschlag 14 EUR je Stueck, Zielgebiete nicht gelistet)",
      "konfidenz": "Q",
-     "bemerkung": "ERSATZ (A): Klemmprofil 2 m (Klemmleiste fuer Folien-/Netzbefestigung, Art. 1KL100AK); 22,99 EUR inkl. 19 % USt / 2 m = 11,495 EUR/m; plus 14 EUR Versandaufschlag je Stueck; Lieferzeit 2-3 Werktage DE; Masse 25x15 nicht belegt"
+     "bemerkung": "Funktionsersatz Klemmprofil (Alu + 2 weisse Kunststoffprofile, Art. 1KL100AK): 22,99 EUR inkl. 19 % USt / 2 m = 11,495 EUR/m zzgl. 14 EUR Versandaufschlag; Querschnittsmasse nicht angegeben (Gewicht 0,68 kg/Set)."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass Kanal 25x15 nicht marktueblich/nicht gefunden (U-Profile 25x25x2, 20x20, 15x22 u. a.); Zeile \"Keilschiene\" (Kanal fuer Keil/Klemmung) hat kein Handels-Standardprofil. Modell nicht geaendert."
   },
   "PRF-alu-klemmleiste": {
    "bezug_einheit": "m",
@@ -1071,24 +1104,24 @@
     {
      "preis_eur": 3.73,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Hornbach",
      "land": "DE",
      "url": "https://www.hornbach.de/p/flachstange-alu-natur-30x2-mm-2-m/757620/",
-     "lieferung_de": "ja",
+     "lieferung_de": "ja (Lieferzeit ca. 4 Werktage, Versand zzgl.)",
      "konfidenz": "Q",
-     "bemerkung": "Alu-Flachstange natur 30x2 mm, 2 m = 7,45 EUR brutto (3,725 EUR/m); ERSATZ (A) fuer Klemmleiste (Flachprofil)"
+     "bemerkung": "Seite 05.11. geoeffnet: Flachstange Alu natur 30x2 mm, 2 m, 7,45 EUR inkl. MwSt. / 2 = 3,725 EUR/m."
     },
     {
-     "preis_eur": 7.19,
+     "preis_eur": 3.29,
      "bezug_einheit": "m",
-     "stand": "2026-11-04",
-     "haendler": "OBI",
+     "stand": "2026-11-05",
+     "haendler": "alu-verkauf.de (Hildesheim)",
      "land": "DE",
-     "url": "https://www.obi.de/profile/arcansas-flachstange-aluminium-silber-eloxiert-1-000-x-30-x-2-mm/p/4973244",
-     "lieferung_de": "ja",
+     "url": "https://alu-verkauf.de/en/products/aluminium-profile-flach",
+     "lieferung_de": "ja (Versand separat berechnet; Zielgebiete nicht gelistet)",
      "konfidenz": "Q",
-     "bemerkung": "Arcansas Alu-Flachstange silber eloxiert 30x2x1000 mm = 7,19 EUR brutto/m; ERSATZ (A) fuer Klemmleiste"
+     "bemerkung": "Seite 05.11. geoeffnet: Flachstange 30x2 mm AlMgSi0,5 (EN AW 6060) walzblank 3,29 EUR/m inkl. MwSt. (eloxiert 5,48 EUR/m), Zuschnitt 0,64 EUR/Schnitt, Laenge 10-6000 mm."
     }
    ],
    "luecke": ""
@@ -1125,110 +1158,316 @@
    "bezug_einheit": "m2",
    "angebote": [
     {
-     "preis_eur": 35.49,
-     "bezug_einheit": "m2",
-     "stand": "2026-11-04",
-     "haendler": "S-Polytec",
-     "land": "DE",
-     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "E: PP-H grau 8 mm, Platte 2x1 m = 70,99 EUR inkl. MwSt -> 35,50 EUR/m2; GEFUELLT/UNGELOCHT, Lochung (Siebboden) nicht enthalten. Stk-Preis braucht Beet-Zuschnittmass (Katalog masse leer)."
-    },
-    {
      "preis_eur": 43.43,
      "bezug_einheit": "m2",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Technoplast Kunststoffe",
      "land": "DE",
      "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
-     "lieferung_de": "unbekannt",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
      "konfidenz": "E",
-     "bemerkung": "E: 8 mm 1000x2000 netto 73,00 -> 36,50 EUR/m2 x 1,19; ungelocht, B2B netto."
+     "bemerkung": "E: PP-H hellgrau 8 mm, 1000x2000 = 73,00 EUR netto -> 36,50 EUR/m2 x 1,19 = 43,44 EUR/m2; UNGELOCHT, B2B netto angezeigt, Zuschnitt/Versand nicht enthalten. Lebensmittel/Fischwasser: auf dieser Seite kein Beleg; einzig gelesener Beleg ist die Haendleraussage von S-Polytec (EU 10/2011, FDA, BfR, Zuschnitt 3-15 mm, Preise dort 05.11. nicht lesbar = 0,00 EUR) - Herstellerdatenblatt fehlt."
+    },
+    {
+     "preis_eur": 55.63,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-05",
+     "haendler": "plastx24",
+     "land": "DE",
+     "url": "https://www.plastx24.de/pp/pp/",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
+     "konfidenz": "E",
+     "bemerkung": "E: PP grau 8 mm, 2000x1000 = 93,50 EUR zzgl. MwSt. -> 46,75 EUR/m2 x 1,19 = 55,63 EUR/m2; UNGELOCHT, Zuschnitt grau 8 mm (Art. 34678) ohne Preis, Versand nicht enthalten. Lebensmittel/Fischwasser: auf dieser Seite kein Beleg; einzig gelesener Beleg ist die Haendleraussage von S-Polytec (EU 10/2011, FDA, BfR, Zuschnitt 3-15 mm, Preise dort 05.11. nicht lesbar = 0,00 EUR) - Herstellerdatenblatt fehlt."
     }
    ],
-   "luecke": "Gelochte PP-Platte/Siebboden nicht gefunden; Stk-Preis nicht berechenbar ohne Zuschnittmass."
+   "luecke": "OFFEN (Quelle): gelochte PP-Platte 8 mm (Siebboden) nicht gefunden; Lochung/Zuschnitt je Beet nicht bepreisbar, Stk-Preis braucht Zuschnittmass (Katalog masse leer). Preise oben nur Plattenmaterial je m2. Fischwasser-Eignung: Herstellerbeleg zur Lebensmitteleignung offen."
   },
   "BLE-pp-blende-290x260": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 1.08,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "S-Polytec",
-     "land": "DE",
-     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "E: Flaeche 0.0754 m2 x 14.34 EUR/m2 (Platte PP-H grau 2x1 m inkl. 19% MwSt, Preis 3 mm); Zuschnitt-Aufpreis/Mindestmenge/Versand nicht enthalten. Farbe grau/hellgrau statt schwarz (schwarz PP nicht gefunden)."
-    },
-    {
      "preis_eur": 1.23,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Technoplast Kunststoffe",
      "land": "DE",
      "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
-     "lieferung_de": "unbekannt",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
      "konfidenz": "E",
-     "bemerkung": "E: Flaeche 0.0754 m2 x 13.75 EUR/m2 netto x 1,19 (Platte PP-H hellgrau 1000x2000, Preis 3 mm); B2B-Shop (netto angezeigt), Zuschnitt/Versand nicht enthalten. Farbe grau/hellgrau statt schwarz (schwarz PP nicht gefunden)."
+     "bemerkung": "E: 0,0754 m2 x 13,75 EUR/m2 netto (3 mm: 27,50 EUR je 1000x2000) x 1,19 = 1,23 EUR; Zuschnitt/Versand nicht enthalten; Farbe hellgrau statt schwarz (schwarz nicht gefunden). Werkstoff PP-H, Weichmacherfrei (Homopolymer), Blende nicht im Fischwasser."
+    },
+    {
+     "preis_eur": 1.61,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "plastx24",
+     "land": "DE",
+     "url": "https://www.plastx24.de/pp/pp/",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
+     "konfidenz": "E",
+     "bemerkung": "E: 0,0754 m2 x 17,95 EUR/m2 netto (3 mm: 35,90 EUR je 2000x1000) x 1,19 = 1,61 EUR; Zuschnitt grau 3 mm (Art. 36051) ohne Preis; Farbe grau statt schwarz."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Farbe schwarz nicht gefunden (grau/hellgrau belegt); schwarzes PP 3 mm nur als eBay-Treffer ohne Beleg."
   },
   "BLE-pp-tafel-693x463x7": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 10.03,
+     "preis_eur": 13.94,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "S-Polytec",
-     "land": "DE",
-     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "E: Flaeche 0.3209 m2 x 31.25 EUR/m2 (Platte PP-H grau 2x1 m inkl. 19% MwSt, Preis 7 mm = Mittel aus 6 und 8 mm, 7 mm nicht gelistet); Zuschnitt-Aufpreis/Mindestmenge/Versand nicht enthalten. Dicke interpoliert."
-    },
-    {
-     "preis_eur": 12.22,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Technoplast Kunststoffe",
      "land": "DE",
      "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
-     "lieferung_de": "unbekannt",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
      "konfidenz": "E",
-     "bemerkung": "E: Flaeche 0.3209 m2 x 32.00 EUR/m2 netto x 1,19 (Platte PP-H hellgrau 1000x2000, Preis 7 mm = Mittel aus 6 und 8 mm, 7 mm nicht gelistet); B2B-Shop (netto angezeigt), Zuschnitt/Versand nicht enthalten. Dicke interpoliert."
+     "bemerkung": "E: 7 mm nicht gelistet (3/5/6/8/10 mm) -> naechstgroesser 8 mm: 0,3209 m2 x 36,50 EUR/m2 netto x 1,19 = 13,94 EUR (6 mm waere 10,50 EUR); Zuschnitt/Versand nicht enthalten. PP-H, Weichmacherfrei; Montagetafel, kein Fischwasser angenommen."
+    },
+    {
+     "preis_eur": 17.85,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "plastx24",
+     "land": "DE",
+     "url": "https://www.plastx24.de/pp/pp/",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
+     "konfidenz": "E",
+     "bemerkung": "E: 7 mm nicht gelistet (3/5/6/8 mm) -> 8 mm: 0,3209 m2 x 46,75 EUR/m2 netto x 1,19 = 17,85 EUR (6 mm waere 13,50 EUR); Zuschnitt ohne Preis."
     }
    ],
-   "luecke": ""
+   "luecke": "OFFEN (Ben): Mass Dicke 7 mm nicht marktueblich (6 oder 8 mm); Preise fuer 8 mm. Modell nicht geaendert."
   },
   "BLE-pp-tafel-502x345x5": {
    "bezug_einheit": "Stk",
    "angebote": [
     {
-     "preis_eur": 3.93,
-     "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
-     "haendler": "S-Polytec",
-     "land": "DE",
-     "url": "https://www.s-polytec.de/pp-h-polypropylen-platten-grau-2x1meter.html",
-     "lieferung_de": "unbekannt",
-     "konfidenz": "E",
-     "bemerkung": "E: Flaeche 0.1732 m2 x 22.67 EUR/m2 (Platte PP-H grau 2x1 m inkl. 19% MwSt, Preis 5 mm); Zuschnitt-Aufpreis/Mindestmenge/Versand nicht enthalten. "
-    },
-    {
      "preis_eur": 4.74,
      "bezug_einheit": "Stk",
-     "stand": "2026-11-04",
+     "stand": "2026-11-05",
      "haendler": "Technoplast Kunststoffe",
      "land": "DE",
      "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
-     "lieferung_de": "unbekannt",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
      "konfidenz": "E",
-     "bemerkung": "E: Flaeche 0.1732 m2 x 23.00 EUR/m2 netto x 1,19 (Platte PP-H hellgrau 1000x2000, Preis 5 mm); B2B-Shop (netto angezeigt), Zuschnitt/Versand nicht enthalten. "
+     "bemerkung": "E: 0,1732 m2 x 23,00 EUR/m2 netto (5 mm: 46,00 EUR je 1000x2000) x 1,19 = 4,74 EUR; Zuschnitt/Versand nicht enthalten. PP-H, Weichmacherfrei; Montagetafel."
+    },
+    {
+     "preis_eur": 6.11,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "plastx24",
+     "land": "DE",
+     "url": "https://www.plastx24.de/pp/pp/",
+     "lieferung_de": "unbekannt (Versandkosten-/Laenderseite nicht gelesen; .de-Shop)",
+     "konfidenz": "E",
+     "bemerkung": "E: 0,1732 m2 x 29,65 EUR/m2 netto (5 mm: 59,30 EUR je 2000x1000) x 1,19 = 6,11 EUR; Zuschnitt grau 5 mm (Art. 34828) ohne Preis."
+    }
+   ],
+   "luecke": ""
+  },
+  "SRB-satz-m5x12": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.12,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m5x12-mm-galv-verzinkt-100-stueck/10316540/",
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m5x12 verz. 5,50 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m5x12-mm-galv-verzinkt-100-stueck/10316540/) + Mutter DIN 934 M5 2,85 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m5-galv-verzinkt-100-stueck/10317012/) + 2 Scheiben DIN 125 5,3 je 1,65 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-5-3-mm-galv-verzinkt-100-stueck/10316899/). Rechnung: (5,50 + 2,85 + 2x1,65)/100 = 0,1165 EUR/Satz."
+    },
+    {
+     "preis_eur": 0.06,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M5-x-12mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P003196",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m5x12 verz. 3,31 EUR (https://www.schraubenking.at/M5-x-12mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P003196) + Mutter DIN 934 M5 1,14 EUR (https://www.schraubenking.at/M5-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P002611) + 2 Scheiben DIN 125 je 1,02 EUR (https://www.schraubenking.at/53mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000476). Rechnung: (3,31 + 1,14 + 2x1,02)/100 = 0,0649 EUR/Satz."
+    }
+   ],
+   "luecke": ""
+  },
+  "SRB-satz-m6x16": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.13,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x16-mm-galv-verzinkt-100-stueck/10317081/",
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m6x16 verz. 5,75 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x16-mm-galv-verzinkt-100-stueck/10317081/) + Mutter DIN 934 M6 3,20 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m6-galv-verzinkt-100-stueck/10316557/) + 2 Scheiben DIN 125 6,4 je 2,20 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-6-4-mm-galv-verzinkt-100-stueck/10316978/). Rechnung: (5,75 + 3,20 + 2x2,20)/100 = 0,1335 EUR/Satz."
+    },
+    {
+     "preis_eur": 0.07,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M6-x-16mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001093",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m6x16 verz. 3,24 EUR (https://www.schraubenking.at/M6-x-16mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001093) + Mutter DIN 934 M6 1,49 EUR (https://www.schraubenking.at/M6-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000443) + 2 Scheiben DIN 125 je 1,25 EUR (https://www.schraubenking.at/64mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000477). Rechnung: (3,24 + 1,49 + 2x1,25)/100 = 0,0723 EUR/Satz."
+    }
+   ],
+   "luecke": ""
+  },
+  "SRB-satz-m6x40": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.16,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x40-mm-galv-verzinkt-100-stueck/10316704/",
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m6x40 verz. 8,00 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x40-mm-galv-verzinkt-100-stueck/10316704/) + Mutter DIN 934 M6 3,20 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m6-galv-verzinkt-100-stueck/10316557/) + 2 Scheiben DIN 125 6,4 je 2,20 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-6-4-mm-galv-verzinkt-100-stueck/10316978/). Rechnung: (8,00 + 3,20 + 2x2,20)/100 = 0,1560 EUR/Satz."
+    },
+    {
+     "preis_eur": 0.09,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M6-x-40mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001100",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m6x40 verz. 5,28 EUR (https://www.schraubenking.at/M6-x-40mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001100) + Mutter DIN 934 M6 1,49 EUR (https://www.schraubenking.at/M6-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000443) + 2 Scheiben DIN 125 je 1,25 EUR (https://www.schraubenking.at/64mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000477). Rechnung: (5,28 + 1,49 + 2x1,25)/100 = 0,0927 EUR/Satz."
+    }
+   ],
+   "luecke": ""
+  },
+  "SRB-satz-m8x30": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.22,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x30-mm-galv-verzinkt-100-stueck/10316631/",
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m8x30 verz. 10,10 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x30-mm-galv-verzinkt-100-stueck/10316631/) + Mutter DIN 934 M8 5,15 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m8-galv-verzinkt-100-stueck/10316615/) + 2 Scheiben DIN 125 8,4 je 3,45 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-8-4-mm-galv-verzinkt-100-stueck/10317026/). Rechnung: (10,10 + 5,15 + 2x3,45)/100 = 0,2215 EUR/Satz."
+    },
+    {
+     "preis_eur": 0.13,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M8-x-30mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001112",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m8x30 verz. 6,84 EUR (https://www.schraubenking.at/M8-x-30mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001112) + Mutter DIN 934 M8 2,48 EUR (https://www.schraubenking.at/M8-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000444) + 2 Scheiben DIN 125 je 1,61 EUR (https://www.schraubenking.at/84mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000478). Rechnung: (6,84 + 2,48 + 2x1,61)/100 = 0,1254 EUR/Satz."
+    }
+   ],
+   "luecke": ""
+  },
+  "SRB-satz-m6x55": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.18,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x60-mm-galv-verzinkt-100-stueck/10316892/",
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m6x60 verz. 10,70 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x60-mm-galv-verzinkt-100-stueck/10316892/) + Mutter DIN 934 M6 3,20 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m6-galv-verzinkt-100-stueck/10316557/) + 2 Scheiben DIN 125 6,4 je 2,20 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-6-4-mm-galv-verzinkt-100-stueck/10316978/). Rechnung: (10,70 + 3,20 + 2x2,20)/100 = 0,1830 EUR/Satz. ERSATZ M6x60 fuer M6x55 (M6x55 bei Hornbach nur M6x50/60 gelistet, bei Schraubenking nur Laengen 45/60 gefunden)."
+    },
+    {
+     "preis_eur": 0.11,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M6-x-60mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P000266",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m6x60 verz. 7,32 EUR (https://www.schraubenking.at/M6-x-60mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P000266) + Mutter DIN 934 M6 1,49 EUR (https://www.schraubenking.at/M6-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000443) + 2 Scheiben DIN 125 je 1,25 EUR (https://www.schraubenking.at/64mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000477). Rechnung: (7,32 + 1,49 + 2x1,25)/100 = 0,1131 EUR/Satz. ERSATZ M6x60 fuer M6x55."
+    }
+   ],
+   "luecke": "OFFEN (Ben): Mass M6x55 nicht im Handel gefunden (nur M6x50 und M6x60; ISO 4017 kennt 55, Hornbach 9,45 EUR/100 fuer M6x50); Preise gelten fuer M6x60."
+  },
+  "SRB-satz-m10x60": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.29,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M10-x-60mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P000274",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m10x60 verz. 18,84 EUR (https://www.schraubenking.at/M10-x-60mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P000274) + Mutter DIN 934 M10 4,92 EUR (https://www.schraubenking.at/M10-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000035) + 2 Scheiben DIN 125 je 2,56 EUR (https://www.schraubenking.at/105mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000492). Rechnung: (18,84 + 4,92 + 2x2,56)/100 = 0,2888 EUR/Satz."
+    },
+    {
+     "preis_eur": 0.79,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Mister Agri",
+     "land": "NL",
+     "url": "https://www.misteragri.com/it/51073987-zeskantbout-m10x60-din-933-verzinkt-staal-8-8",
+     "lieferung_de": "unbekannt (Seite nennt keine Versandlaender; deutschsprachige Shopversion vorhanden)",
+     "konfidenz": "E",
+     "bemerkung": "E: Schraube DIN 933 M10x60 8.8 verz. 0,56 EUR inkl. NL-USt Einzelstueck (Staffel ab 50 St 0,51 EUR; Seite https://www.misteragri.com/it/51073987-zeskantbout-m10x60-din-933-verzinkt-staal-8-8) + Mutter M10 DIN 934 Kl. 8 verz. 0,18 EUR (https://www.misteragri.com/40000625-moer-kl8-din934-m10-verz, Kategorieseite gelesen) + 2 Scheiben M10 2x0,0256 EUR von Schraubenking (Mister Agri fuehrt keine M10-DIN-125-Seite gefunden). Rechnung: 0,56 + 0,18 + 0,0512 = 0,7912 EUR. Einzelstueckpreise, deutlich ueber dem 100er-Preis."
+    }
+   ],
+   "luecke": ""
+  },
+  "SRB-satz-m12x55": {
+   "bezug_einheit": "Stk",
+   "angebote": [],
+   "luecke": "OFFEN (Quelle): M12x55 DIN 933 verzinkt: kein EU-Preis gelesen. Hornbach fuehrt DIN 933 nur bis M12x30 verzinkt (sonst DIN 931 M12x80+), Schraubenking nur M12x60 (P001142), Fabory-Seite 404, SFS (CH, nicht EU) nennt CHF 34/100 nur im Suchsnippet, Mister Agri keine M12x55-Seite. Nuss/Scheibe M12 belegt: Hornbach Mutter 13,35 und Scheibe 13 mm 8,30 EUR je 100, Schraubenking Mutter 5,88 und Scheibe 3,84 EUR je 100."
+  },
+  "SRB-satz-m16x300": {
+   "bezug_einheit": "Stk",
+   "angebote": [],
+   "luecke": "OFFEN (Ben): Mass M16x300 als DIN 933 (Vollgewinde) nicht marktueblich (Handel fuehrt M16 DIN 933 nur bis ca. 120-260 mm, SFS M16x260); lange Schrauben dieser Art sind ueblicherweise DIN 931 (Teilgewinde). OFFEN (Quelle): kein M16x300-Preis gelesen; Hornbach fuehrt nur DIN 931 M10/M12 bis 140, Schraubenking/Mister Agri keine M16x300-Seite. Nuss M16: Hornbach 32,25 EUR/100, Schraubenking 11,16 EUR/100; Scheibe 17 mm Hornbach 11,90 EUR/100, Schraubenking 5,64 EUR/100."
+  },
+  "SRB-satz-m6x20": {
+   "bezug_einheit": "Satz",
+   "angebote": [
+    {
+     "preis_eur": 0.14,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/",
+     "lieferung_de": "ja (Online 1-2 Werktage, Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Packungen je 100 St, brutto: Reyher DIN 933 m6x20 verz. 6,50 EUR (https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m6x20-mm-galv-verzinkt-100-stueck/10317037/) + Mutter DIN 934 M6 3,20 EUR (https://www.hornbach.de/p/reyher-sechskantmutter-din-934-m6-galv-verzinkt-100-stueck/10316557/) + 2 Scheiben DIN 125 6,4 je 2,20 EUR (https://www.hornbach.de/p/reyher-unterlegscheibe-din-125-o-6-4-mm-galv-verzinkt-100-stueck/10316978/). Rechnung: (6,50 + 3,20 + 2x2,20)/100 = 0,1410 EUR/Satz."
+    },
+    {
+     "preis_eur": 0.07,
+     "bezug_einheit": "Satz",
+     "stand": "2026-11-05",
+     "haendler": "Schraubenking (schraubenking.at)",
+     "land": "AT",
+     "url": "https://www.schraubenking.at/M6-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001095",
+     "lieferung_de": "ja (Seite: versandkostenfrei ab 99 EUR nach AT/DE, sonst Versand zzgl.)",
+     "konfidenz": "Q",
+     "bemerkung": "Seiten 05.11. geoeffnet, Preise je 100 St bei Abnahme 100 St, inkl. 20 % AT-USt (DE-Brutto ca. +/-1 % nicht umgerechnet): Schraube DIN 933 8.8 m6x20 verz. 3,48 EUR (https://www.schraubenking.at/M6-x-20mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001095) + Mutter DIN 934 M6 1,49 EUR (https://www.schraubenking.at/M6-Sechskantmuttern-DIN934-Stahl-verzinkt-FKL8-P000443) + 2 Scheiben DIN 125 je 1,25 EUR (https://www.schraubenking.at/64mm-Unterlegscheiben-DIN125-Stahl-verzinkt-P000477). Rechnung: (3,48 + 1,49 + 2x1,25)/100 = 0,0747 EUR/Satz."
     }
    ],
    "luecke": ""

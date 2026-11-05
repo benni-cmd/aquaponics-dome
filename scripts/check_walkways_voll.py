@@ -52,6 +52,10 @@ for k, m in mv.items():
     if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station", "Puffer_Klein", "Feinfilter"):   # Feinfilter (M10-S1): Box Z -96 bis 807 abs, im Knie-Schnitt (700) ein Hindernis
         pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station", "Puffer_Klein": "puffer_klein"}.get(cls, cls.lower())))
         if max(math.hypot(*p) for p in pg) < AP + 200: obst.append((k, pg, za, zb))   # Vorbau ausserhalb der Wand (D62) liegt nicht im Innenraum
+    elif cls in ("Pegelschacht_Podest", "Pegelschacht", "Booster_gross"):   # N-AUTOBAHN-V2 R1c (nur ring_b2): Einspeisung je Linie steht am Boden
+        pg, (za, zb) = poly(m, comp_box({"Pegelschacht_Podest": "pegelschacht_podest", "Pegelschacht": "pegelschacht", "Booster_gross": "pumpe_gross"}[cls])); obst.append((k, pg, za, zb))
+    elif cls == "Ringstuetze_d75_B":   # R1a: eigene Stelze; bis Kopfhoehe nur Fussplatte 200 x 200 und Pfosten (Kragarm liegt ueber Z 2100 rel)
+        pg, _ = poly(m, (-100, -100, 0, 100, 100, 0)); obst.append((k, pg, FZ, FZ + 2100))
 pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))), LAY["pool2"]["d"] / 2 + 60),
          ("Drittbecken", (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))), P["pool3_d"] / 2 + 60)]
 for nm, c, r in pools: obst.append((nm, ("circle",) + c + (r,), -1e9, 1e9))

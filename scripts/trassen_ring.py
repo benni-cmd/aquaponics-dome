@@ -312,18 +312,26 @@ def leitungen_eintraege():
     return dict(trassen=tr, t_stuecke=ts, r_stuecke=rs, teile=te), ein, feeds, bel
 
 # ------------------------------------------------------------------ Schellen (R6 Ring <= 1000 mm): Scheitel jeder Ecke + je Seite auf der Geraden
+def _s_schelle():
+    """Lage der Eck-Schelle je Ecke (Bogenlaenge ab Scheitel): im Scheitel; haengt an der Ecke ein Mitte-Abnehmer, sitzt dort der Beet-Abzweig, die Schelle rueckt zur Seite davor."""
+    mit = {_ecke_idx(math.degrees(math.atan2(m[7], m[3])) - 18.0) for n, m in MV.items() if n.split(":")[0] in ("Tisch_mitte", "Beet_innen_933")}
+    return {k: (-(T75 + 5.0 + 25.0) if k in mit else 0.0) for k in range(N)}
+S_SCHELLE = _s_schelle()
+
 def schellen(bel):
     out = []
     for k in range(N):
         sp = stp_by_k()[k]
-        p, t = bogen_pt(k, 0.0)
+        p, t = bogen_pt(k, S_SCHELLE[k]) if sp["art"] == "joch" else bogen_pt(k, 0.0)
         out.append(("lt_klemme_d75_stelze" if sp["art"] == "stelze" else "lt_klemme_d75_ecke", mat(p, t, (0, 0, 1)), k, "scheitel"))
-    for k in range(N):
-        frei = [EC["ecke_bis_port"] + 40, SEITE - EC["ecke_bis_port"] - 40]
+    for k in range(N):                                                    # je Seite zwei Schellen an der Schiene (Gerade 609..1585 ab Ecke): Laufabstand Scheitel-Schelle zu Schelle <= 1000
+        t0 = EC["tangente"] + 20; t1 = SEITE - EC["tangente"] - 20
         belegt = [(s - 115, s + 115) if a != "kupplung" else (s - 260, s + 260) for s, a, _ in bel[k]]
-        cand = [SEITE / 2 + d for d in (0, -60, 60, -120, 120, -180, 180, -240, 240, -280, 280)]
-        s = next(c for c in cand if frei[0] <= c <= frei[1] and all(not (a <= c <= b) for a, b in belegt))
-        out.append(("lt_klemme_d75", mat(seite_pt(k, s), U[k], (0, 0, 1)), k, s))
+        for ziel in (EC["tangente"] + 250, SEITE - EC["tangente"] - 250):
+            cand = sorted((ziel + d for d in range(-230, 231, 5)), key=lambda c: abs(c - ziel))
+            s = next(c for c in cand if t0 <= c <= t1 and all(not (a <= c <= b) for a, b in belegt))
+            belegt.append((s - 40, s + 40))
+            out.append(("lt_klemme_d75", mat(seite_pt(k, s), U[k], (0, 0, 1)), k, s))
     return out
 
 _STP = None
@@ -359,7 +367,185 @@ def tragwerk(runde="r1"):
         for s in sp:
             for seite, (o, d, lg) in s["ausleger"].items(): au.setdefault(lg, []).append(ausleger_matrix(o, d))
         for lg, ms in sorted(au.items()): out.append((f"Ausleger_Schlauch_{lg}", comp(f"ausleger_schlauch_{lg}"), ms, "09_Technik"))
+        fl = fallleitungen()
+        for dk in (40, 32):
+            out.append((f"Ring_Abzweig_d{dk}", comp(f"ring_abzweig_d{dk}"), [f["m_t"] for f in fl if f["dk"] == dk], "08_Leitungen"))
+        out.append(("Ring_B2_Schlaeuche", comp(SCHLAUCH_DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"))
     return out
+
+# ================================================================== R2: 38 Abzweige und Schlauch-Fallleitungen
+import autobahn_s as AS
+SCHLAUCH_DATEI = "ring_b2_schlaeuche"
+ZONE = {"Tisch_innen": ("innen", "tisch"), "Tisch_mitte": ("mitte", "tisch"), "Tisch_aussen": ("aussen", "tisch"), "Beet_innen_933": ("mitte", "beet"), "Beet_aussen_800": ("aussen", "beet")}
+PORT = {"Tisch_innen": ((-449.0, 256.0, 1076.0), "t"), "Tisch_mitte": ((-823.0, 520.0, 1083.0), "t"), "Tisch_aussen": ((-1349.0, 497.0, 1091.0), "t"),
+        "Beet_innen_933": ((-972.0, -392.0, 624.0), "b"), "Beet_aussen_800": ((-1360.0, -326.0, 612.0), "b")}   # [Q] docs/parts/nft_tisch.md Ports, docs/parts/ibc_beet.md Ports
+LINIE1_SEKT = (0, 36, 72, 108); LINIE2_SEKT = (144, 180, -144, -108); INNEN_EXTRA = {1: -36, 2: -72}   # wie scripts/n_autobahn_rechnung.py (Blatt 1.5)
+Y_CLIP = TW["teile"]["ausleger_schlauch_1020"]["ports"][1]["lage"][1]   # 42,5 seitlich der Armachse
+T_HALB = T75 + 5.0                                                       # T-Laenge/2 + Luft
+def _sekt(a): a = round(a); a = (a + 180) % 360 - 180; return 180 if a == -180 else a
+
+def abnehmer():
+    out = []
+    for n, m in sorted(MV.items()):
+        cls = n.split(":")[0]
+        if cls not in ZONE: continue
+        zone, art = ZONE[cls]; a = _sekt(math.degrees(math.atan2(m[7], m[3])))
+        l = 1 if (a in LINIE1_SEKT or (zone == "innen" and a == INNEN_EXTRA[1])) else 2 if (a in LINIE2_SEKT or (zone == "innen" and a == INNEN_EXTRA[2])) else 0
+        if not l: continue
+        k = _ecke_idx(math.degrees(math.atan2(m[7], m[3])) - 18.0)
+        pl, typ = PORT[cls]
+        if typ == "t": d_o = unit(wdir(m, (math.tan(math.radians(18.0)), 1.0, 0.0)))   # Oeffnung +Y, 18 Grad geneigt (Sektorgrenze)
+        else: d_o = unit(wdir(m, (-1.0, 0.0, 0.0)))
+        out.append(dict(name=n, cls=cls, zone=zone, art=art, linie=l, k=k, port=world(m, pl), d_o=(d_o[0], d_o[1], 0.0), idd=25 if art == "beet" else 19, dk=40 if art == "beet" else 32))
+    return out
+
+def ring_pt(k, s):
+    """Ringachse bei Ecke k, s = Lauflaenge ab Scheitel (+ Richtung Seite k); jenseits des Bogens auf der Geraden."""
+    hb = EC["bogen_l"] / 2
+    if abs(s) <= hb: return bogen_pt(k, s)
+    p, t = bogen_pt(k, math.copysign(hb, s)); return add(p, t, s - math.copysign(hb, s)), t
+
+def _s_lateral(k, o, x, lam):
+    """s auf dem Ring der Ecke k, an dem der Abstand zur Linie (o, Richtung senkrecht x) entlang x gleich lam ist (Bisektion)."""
+    f = lambda s: dot(sub(ring_pt(k, s)[0], o), x) - lam
+    lo, hi = -1300.0, 1300.0
+    if f(lo) > f(hi): lo, hi = hi, lo
+    for _ in range(60):
+        mid = (lo + hi) / 2
+        if f(mid) < 0: lo = mid
+        else: hi = mid
+    return (lo + hi) / 2
+
+def _jog_min(idd): return 2 * AS.hose_R(idd) * math.tan(math.radians(22.5)) / math.sqrt(2) + 2.0
+
+_FL = None
+def fallleitungen():
+    """Je Abnehmer: Lage des Abzweigs (Matrix m_t), Ausleger-Zuordnung und Schlauchweg (Weltpunkte). Platzierung je Ecke ohne Ueberlappung der T-Stuecke,
+    ohne Scheitel-Schelle und Entluefter; Schlauch auf dem Ausleger in der Clip-Linie (seitlicher 45-Grad-Versatz, wenn der Abzweig daneben sitzt)."""
+    global _FL
+    if _FL is not None: return _FL
+    ab = abnehmer(); stp = stp_by_k(); out = []
+    sperr = {}
+    for k in range(N): sperr[k] = [(S_SCHELLE[k] - 15.0, S_SCHELLE[k] + 15.0)]          # Scheitel-Schelle ring_b 30
+    _, _, _, bel = leitungen_eintraege()
+    hb = EC["bogen_l"] / 2; tg = EC["tangente"]
+    def _sperr_seite(k, d, halb):                                             # Lage auf Seite k (ab Ecke k) in die Lauflaenge beider Ecken umrechnen
+        sperr[k].append((d - tg + hb - halb, d - tg + hb + halb)); k2 = (k + 1) % N; d2 = SEITE - d
+        sperr[k2].append((-(d2 - tg + hb) - halb, -(d2 - tg + hb) + halb))
+    for f, m, k, sl in schellen(bel):
+        if sl != "scheitel": _sperr_seite(k, sl, 15.0 + 5.0)
+    for k in range(N):
+        for sl, art, _ in bel[k]: _sperr_seite(k, sl, (T75 + 10.0) if art != "kupplung" else 260.0)
+    for m in entluefter():
+        p = (m[3], m[7], m[11]); k = min(range(N), key=lambda i: math.dist(p, bogen_pt(i, 0)[0]))
+        s = min((x for x in range(-700, 701, 2)), key=lambda x: math.dist(ring_pt(k, x)[0], p)); sperr[k].append((s - 2 * T_HALB, s + 2 * T_HALB))
+    for k in range(N):
+        sp = stp[k]; belegt = list(sperr[k]); liste = [a for a in ab if a["k"] == k]
+        # Clip-Seite: Tisch links (+y), Beet rechts (-y); allein auf dem Ausleger: links
+        for a in liste:
+            if a["zone"] == "mitte": a["seite"] = None; continue
+            seite = a["zone"]; o, d, lg = sp["ausleger"][seite]
+            a["ausleger"] = dict(o=o, d=d, lg=lg, seite=seite, m=ausleger_matrix(o, d))
+            yv = (-d[1], d[0], 0.0); allein = sum(1 for b in liste if b["zone"] == a["zone"]) == 1
+            a["y_clip"] = Y_CLIP if (a["art"] == "tisch" or allein) else -Y_CLIP; a["yv"] = yv
+        for a in sorted(liste, key=lambda a: (a["zone"] == "mitte", a["art"])):
+            if a["zone"] == "mitte":
+                tgt = [0.0]; xref = None
+            else:
+                au = a["ausleger"]; s0 = _s_lateral(k, au["o"], a["yv"], a["y_clip"]); tgt = [s0]
+            jm = _jog_min(a["idd"])
+            cand = sorted({round(t + d_, 1) for t in tgt for d_ in [0.0] + [sg * (jm + 5 * i) for i in range(0, 120) for sg in (1, -1)]}, key=lambda s: abs(s - tgt[0]))
+            if a["zone"] == "mitte": cand = [0.0] + [5.0 * i for i in range(1, 220)] if a["art"] == "beet" else [5.0 * i for i in range(1, 220)]
+            s = next(c for c in cand if all(c + T_HALB <= b0 or c - T_HALB >= b1 for b0, b1 in belegt) and abs(c) < 1100)
+            belegt.append((s - T_HALB, s + T_HALB)); a["s"] = s
+            p, t = ring_pt(k, s)
+            if a["zone"] == "mitte":
+                a["m_t"] = mat(p, t, (0, 0, 1)); a["abgang"] = add(p, (0, 0, -1), AS.abz_len(a["dk"])); a["u0"] = (0.0, 0.0, -1.0)
+            else:
+                dd = a["ausleger"]["d"]; a["m_t"] = mat(p, t, mul(dd, -1)); a["abgang"] = add(p, dd, AS.abz_len(a["dk"])); a["u0"] = dd
+                a["lam"] = dot(sub(p, a["ausleger"]["o"]), a["yv"]) - a["y_clip"]
+            out.append(a)
+    for a in out: a["weg"] = schlauch_weg(a)
+    _FL = out
+    return out
+
+Z_ARM = AT.Z["platte_o"] / 2 + AT.Z["traeger_o"] / 2 + FZ            # 2677 abs
+def schlauch_weg(a):
+    """Weltpunkte des Schlauchs (s1 bis Regelhahn, Zwischenschlauch, s3 bis Anschluss) und Lage von Hahn, Kupplung, Endstueck (Masse aus autobahn_s)."""
+    idd, Rb = a["idd"], AS.hose_R(a["idd"]); tl = AS.FT["tuelle"][idd]; kr = AS.FT["kragen"]
+    u0 = a["u0"]; A0 = a["abgang"]
+    z_h = AS.FT["z_hahn"][a["art"]] + FZ; hl = AS.FT["hahn_lb"][idd]; z_ht = z_h + hl / 2; z_hb = z_ht - hl
+    if a["zone"] == "mitte":                                                 # Fall senkrecht unter dem Abzweig (Beet: in der Fuge auf der Sektorgrenze)
+        D = (A0[0], A0[1]); s1 = [add(A0, u0, kr), (D[0], D[1], z_ht)]
+    else:
+        au = a["ausleger"]; d = au["d"]; yv = a["yv"]; up = (0.0, 0.0, 1.0)
+        x1 = kr + tl + Rb * math.tan(math.pi / 8) + 5; dz = Z_ARM - A0[2]
+        P1 = add(A0, d, x1); P2 = add(add(P1, d, dz), up, dz)
+        fall = world(au["m"], (au["lg"] + AT.AU["biege_r"], a["y_clip"], 0.0))       # Fall-Linie am Endbuegel (WA-T Port 'Fall')
+        D = (fall[0], fall[1]); lam = a["lam"]
+        pts = [add(A0, u0, kr), P1, P2]
+        if abs(lam) > 0.5:
+            P3 = add(P2, d, 2 * Rb * math.tan(math.pi / 8) + 5); P4 = add(add(P3, d, abs(lam)), yv, -lam); pts += [P3, P4]
+        pts += [fall, (D[0], D[1], z_ht)]
+        s1 = pts
+    k_d = AS.SK[idd]; z_kt = z_hb - (2 * tl + 20); z_kb = z_kt - (k_d["dose_l"] + k_d["st_l"])
+    la = AS.FT["anschl_l"][a["art"]]; E = add(a["port"], a["d_o"], la); zE = a["port"][2]
+    s3 = None
+    for Lc in (Rb + 40, 2 * Rb, 3 * Rb, 4 * Rb, 6 * Rb):
+        C = add(E, a["d_o"], Lc); C = (C[0], C[1], zE)
+        cand = [(D[0], D[1], z_kb), (D[0], D[1], zE), C, (E[0], E[1], zE)]
+        if math.hypot(C[0] - D[0], C[1] - D[1]) < 1.0: cand = [cand[0], cand[1], cand[3]]
+        try: AS.hose_layout(cand, Rb); s3 = cand; break
+        except ValueError: continue
+    if s3 is None:                                                           # Fall-Linie liegt fast ueber dem Port: Schlaufe seitlich (zwei Ecken), Ende waagerecht in den Port
+        n_ = (-a["d_o"][1], a["d_o"][0], 0.0)
+        for f in (2.2, 3.0, 4.0):
+            for sg in (1, -1):
+                C2 = add(E, a["d_o"], f * Rb); C1 = add(C2, n_, sg * f * Rb)
+                cand = [(D[0], D[1], z_kb), (D[0], D[1], zE), (C1[0], C1[1], zE), (C2[0], C2[1], zE), (E[0], E[1], zE)]
+                try: AS.hose_layout(cand, Rb); s3 = cand; break
+                except ValueError: continue
+            if s3: break
+    if s3 is None: raise SystemExit("%s: kein Schlauchweg unten" % a["name"])
+    return dict(Rb=Rb, ad=AS.HOSE[idd]["ad"], tl=tl, kr=kr, s1=s1, z_ht=z_ht, z_hb=z_hb, z_kt=z_kt, z_kb=z_kb, D=D, s2=[(D[0], D[1], z_hb), (D[0], D[1], z_kt)], s3=s3, E=E, la=la)
+
+def schlauch_bauen(out_sc=None):
+    """Eine Komponente mit allen 38 Fallleitungen in Weltlage (Instanz im Ursprung): Tuelle, Schlauch, Regelhahn, Zwischenschlauch, Schnellkupplung, Schlauch, Endstueck."""
+    import sc
+    b = sc.Build(); nm = "R2_Ring_B2_Schlaeuche"
+    AS.mats(b, ["SCH schwarz", "LT pp", "LT pvc", "LT v2a", "LT hahn"]); b.add("component.create", name=nm, grounded=True)
+    laengen = []
+    for i, a in enumerate(fallleitungen(), 1):
+        w = a["weg"]; idd, dk, tl, kr = a["idd"], a["dk"], w["tl"], w["kr"]; u0 = a["u0"]; A0 = a["abgang"]; pre = f"F{i:02d}"
+        tu = pre + "_Tuelle_oben"
+        AS.cyl_ax(b, tu + "_Zapfen", dk, list(add(A0, u0, -LT.DEPTH[dk])), list(u0), LT.DEPTH[dk], body=tu)
+        AS.cyl_ax(b, tu + "_Kragen", LT.od_f(dk), list(A0), list(u0), kr, op="join", targets=[tu])
+        AS.cyl_ax(b, tu + "_T", idd, list(add(A0, u0, kr)), list(u0), tl, op="join", targets=[tu])
+        AS.cyl_ax(b, tu + "_Bohrung", idd - 5, list(add(A0, u0, -LT.DEPTH[dk] - 1)), list(u0), LT.DEPTH[dk] + kr + tl + 2, op="cut", targets=[tu])
+        b.add("material.assign", bodies=[tu], material="LT pvc")
+        _, l1, _ = AS.hose_path(b, pre + "_S1", [list(p) for p in w["s1"]], w["Rb"], w["ad"], idd)
+        D = w["D"]; dn = [0, 0, -1]; hn = pre + "_Regelhahn"; zt, zb = w["z_ht"], w["z_hb"]
+        AS.cyl_ax(b, hn + "_To", idd, [D[0], D[1], zt + tl], dn, tl, body=hn)
+        AS.cyl_ax(b, hn + "_G", AS.FT["hahn_ob"][idd], [D[0], D[1], zt], dn, AS.FT["hahn_lb"][idd], op="join", targets=[hn])
+        AS.cyl_ax(b, hn + "_Tu", idd, [D[0], D[1], zb], dn, tl, op="join", targets=[hn])
+        AS.cyl_ax(b, hn + "_B", idd - 5, [D[0], D[1], zt + tl + 1], dn, AS.FT["hahn_lb"][idd] + 2 * tl + 2, op="cut", targets=[hn])
+        b.add("material.assign", bodies=[hn], material="LT hahn")
+        _, l2, _ = AS.hose_path(b, pre + "_S2", [list(p) for p in w["s2"]], w["Rb"], w["ad"], idd)
+        AS.add_kupplung(b, pre + "_Kupplung", [D[0], D[1], w["z_kt"] + AS.SK[idd]["tl"]], dn, idd, wulst=False)
+        _, l3, _ = AS.hose_path(b, pre + "_S3", [list(p) for p in w["s3"]], w["Rb"], w["ad"], idd)
+        ed = mul(a["d_o"], -1); la = w["la"]; p_e0 = w["E"]; an = pre + "_Anschluss"; dz_a = AS.ANSCHLUSS[a["art"]][1]
+        AS.cyl_ax(b, an + "_Tu", idd, list(sub(p_e0, mul(ed, tl))), list(ed), tl, body=an)
+        AS.cyl_ax(b, an + "_K", AS.FT["anschl_od"][a["art"]], list(p_e0), list(ed), la, op="join", targets=[an])
+        AS.cyl_ax(b, an + "_M", dz_a, list(add(p_e0, mul(ed, la - 22))), list(ed), 23, op="cut", targets=[an])
+        AS.cyl_ax(b, an + "_B", idd - 5, list(sub(p_e0, mul(ed, tl + 1))), list(ed), tl + la + 2, op="cut", targets=[an])
+        b.add("material.assign", bodies=[an], material="LT pvc" if a["art"] == "tisch" else "LT pp")
+        laengen.append((a["name"], l1 + l2 + l3))
+    b.add("component.activate", component=nm)
+    b.add("component.metadata.set", component=nm, part_number="R2-SCHLAEUCHE", revision="A", properties={"Werkstoff": "Schlauch REHAU RAUAQUA T-Flex ID19/ID25 schwarz (D85), Tuellen PVC-U/PP, Regelhahn PVC-U, Kupplung Edelstahl"},
+          description="Montage R2 Ring B2: 38 Schlauch-Fallleitungen in Weltlage (trassen_ring.py), je Abnehmer Tuelle -> Schlauch (Ausleger + freier Fall) -> Regelhahn -> Schnellkupplung -> Endstueck am Tisch-Zulaufverteiler bzw. Tropfrohr")
+    out_sc = out_sc or comp(SCHLAUCH_DATEI)
+    sc.run(b.write("ring_b2_schlaeuche"), out_sc)
+    return laengen
 
 def entluefter():
     """Je Linie ein Entluefter d75 am Linien-Ende (Bogen der End-Ecke, 450 mm hinter dem Bogenanfang: dort liegt das Rohr seitlich neben der Schiene)."""
@@ -386,7 +572,7 @@ def schreiben():
     doc = json.load(open(p, encoding="utf-8"))
     for key in ("trassen", "t_stuecke", "r_stuecke", "teile"):
         doc[key] = [e for e in doc.get(key, []) if e.get("quelle") != QUELLE] + eint[key]
-    json.dump(doc, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(doc, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(p, "a").write("\n")
     print("geschrieben:", {k: len(v) for k, v in eint.items()})
 
 def bericht():
@@ -402,6 +588,18 @@ def bericht():
     print("Schellen:", len(kl))
     print({k: len(v) for k, v in eint.items()})
 
+def bericht_r2():
+    fl = fallleitungen()
+    from collections import Counter
+    print("Fallleitungen:", len(fl), Counter((a["zone"], a["art"]) for a in fl), "je Linie", Counter((a["linie"], a["art"]) for a in fl))
+    for a in fl:
+        w = a["weg"]
+        try: L = "%5.0f" % sum(AS.hose_length(AS.hose_layout([list(p) for p in s], w["Rb"]), w["Rb"]) for s in (w["s1"], w["s2"], w["s3"]))
+        except ValueError as e: L = "FEHLER " + str(e)
+        print("  %-18s Ecke %6.1f s %7.1f lam %6.1f ID%d L %s" % (a["name"], ECKEN_AZ[a["k"]], a["s"], a.get("lam", 0.0), a["idd"], L))
+
 if __name__ == "__main__":
+    if "--r2" in sys.argv: bericht_r2()
+    if "--schlauch-bauen" in sys.argv: print(schlauch_bauen())
     if "--schreiben" in sys.argv: schreiben()
     if "--bericht" in sys.argv or len(sys.argv) == 1: bericht()

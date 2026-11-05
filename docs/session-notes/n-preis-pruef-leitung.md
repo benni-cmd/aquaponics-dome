@@ -30,3 +30,8 @@ Bevo bietet je Familie eine Variantentabelle; der Titel der Familienseite zeigt 
 
 ## OFFEN (Ben)
 Keine neue Massabweichung in Gruppe 1B gefunden.
+
+## Auflagen aus der Pruefung (101277e), Nachtrag 05.11.2026
+1. **Auflage 3, T-Stuecke:** Von Hand gelesen 05.11.: Schwarte-T-Stuecke sind laut Seitentext "T-Stueck 90 Grad reduziert" (Baenninger). Gemessen ueber alle acht Zeilen (`FIT-t-d20` bis `d110`), nicht nur d50/d63. Bevo-Varianten (gleich grosses T, KIWA, 16 bar) sind jetzt Hauptangebot, Schwarte bleibt als Preisvergleich mit Warnhinweis. Zweite gleichwertige Quelle: OFFEN (Quelle).
+2. **Auflage 4, Preisbasis:** Jedes Bevo-Angebot (48) traegt jetzt "preis_eur = brutto = netto x 1,19"; Bevo-Seiten zeigen netto und brutto (Beispiel T d50: 3,43 netto, 4,15 brutto laut Seite). Die Schraubensaetze gehoeren zur Gruppe Stahl.
+3. **Auflage 5, Lebensmitteleignung:** OFFEN (Quelle): Eignung nicht angegeben fuer alle Teile im Fischwasser dieser Gruppe: Rohre (ROH), Fittings (FIT), Armaturen (ARM: Kugelhaehne, Bulkheads, Rueckschlagventile). Hinweis: Bevo-T-Stuecke tragen KIWA im Titel (Trinkwasser-Pruefzeichen); das ist kein Beleg fuer die Armaturen. Entscheidung OFFEN (Ben) 1 steht weiter, nichts deshalb ersetzt.

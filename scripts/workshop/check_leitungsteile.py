@@ -12,9 +12,9 @@ def vol(path):
 def main():
     ck = sc.Check("leitungsteile")
     D = os.path.join(sc.ROOT, "designs", "components")
-    import leitung_w36 as W36, leitung_w39 as W39, leitung_w37 as W37   # W36-/W39-/W37-Teile gehoeren nicht zu den 63 Bibliotheksteilen (eigene Pruefungen check_lt_w36.py, check_lt_w39.py, check_lt_w37.py)
+    import leitung_w36 as W36, leitung_w39 as W39, leitung_w37 as W37, leitung_w71 as W71   # W36-/W39-/W37-/W71-Teile gehoeren nicht zu den 63 Bibliotheksteilen (eigene Pruefungen check_lt_w36.py, check_lt_w39.py, check_lt_w37.py)
     import re
-    lib = [f for f in glob.glob(os.path.join(D, "lt_*.sc")) if os.path.basename(f)[:-3] not in W36.FILES + W39.FILES + W37.FILES and not re.search(r"_L\d+$", os.path.basename(f)[:-3])]      # Laengenvarianten lt_rohr_d*_L<mm> der Montage gehoeren nicht zu den 63 Bibliotheksteilen
+    lib = [f for f in glob.glob(os.path.join(D, "lt_*.sc")) if os.path.basename(f)[:-3] not in W36.FILES + W39.FILES + W37.FILES + W71.FILES and not re.search(r"_L\d+$", os.path.basename(f)[:-3])]      # Laengenvarianten lt_rohr_d*_L<mm> der Montage gehoeren nicht zu den 63 Bibliotheksteilen
     ck.eq("Dateien lt_*.sc (7 Groessen x 7 Teile + 7 Reduzierungen + 4 Schlauch + 3 Verteiler)", len(lib), 7 * 7 + 7 + 4 + 3)
     for d in L.SIZES:
         A = math.pi / 4 * (d * d - (d - 2 * L.wall_p(d)) ** 2)

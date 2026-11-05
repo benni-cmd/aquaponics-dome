@@ -1565,5 +1565,171 @@
     }
    ]
   }
+ },
+ "w71_teile": {
+  "lt_sammler_d110": {
+   "teilenummer": "T70-S-110-4",
+   "komponente": "T70_Sammler_d110",
+   "werkstoff": "PVC-U",
+   "farbe": "grau (Ruecklauf)",
+   "netz_knoten": [
+    "ruecklauf_1",
+    "ruecklauf_2"
+   ],
+   "sammler": {
+    "d": 110,
+    "wand": 5.2,
+    "innen_d": 99.6,
+    "formstueck_aussen": 121.5,
+    "laenge": 530.0,
+    "muffentiefe_A": 61,
+    "ende": "geschlossen (integrierte Kappe 10 mm)"
+   },
+   "teilung": 120,
+   "gefaelle": ">= 1 % zum Auslauf A (setzt die Montage)",
+   "anschluesse": [
+    {
+     "nr": 1,
+     "name": "Zweitbecken",
+     "d": 50,
+     "dn": "DN40",
+     "x": 120,
+     "lage": "unten",
+     "art": "Zapfen",
+     "kanten": "K33 (nur Linie 1)",
+     "soll_l_min": {
+      "linie_1": 5.0,
+      "linie_2": 0.0
+     }
+    },
+    {
+     "nr": 2,
+     "name": "NFT",
+     "d": 63,
+     "dn": "DN50",
+     "x": 240,
+     "lage": "oben",
+     "art": "Muffe",
+     "kanten": "K15/K31",
+     "soll_l_min": {
+      "linie_1": 38.0,
+      "linie_2": 38.0
+     }
+    },
+    {
+     "nr": 3,
+     "name": "Bypass",
+     "d": 50,
+     "dn": "DN40",
+     "x": 360,
+     "lage": "oben",
+     "art": "Muffe",
+     "kanten": "K13/K29",
+     "soll_l_min": {
+      "linie_1": 14.5,
+      "linie_2": 17.5
+     }
+    },
+    {
+     "nr": 4,
+     "name": "Beet-Sumpf",
+     "d": 40,
+     "dn": "DN32",
+     "x": 480,
+     "lage": "oben",
+     "art": "Muffe",
+     "kanten": "K58/K59",
+     "soll_l_min": {
+      "linie_1": 54.5,
+      "linie_2": 54.5
+     }
+    }
+   ],
+   "auslauf": {
+    "kanten": "K16/K32",
+    "soll_l_min": {
+     "linie_1": 102.0,
+     "linie_2": 110.0
+    }
+   },
+   "linie_2": "Abgang Zweitbecken mit lt_kappe_d50 verschliessen",
+   "ports": [
+    {
+     "name": "A Auslauf",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN100"
+    },
+    {
+     "name": "Abgang 1 Zweitbecken",
+     "lage": [
+      120.0,
+      0.0,
+      -110.75
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Zapfen",
+     "dn": "DN40"
+    },
+    {
+     "name": "Zulauf 2 NFT",
+     "lage": [
+      240.0,
+      0.0,
+      103.25
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    },
+    {
+     "name": "Zulauf 3 Bypass",
+     "lage": [
+      360.0,
+      0.0,
+      96.75
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN40"
+    },
+    {
+     "name": "Zulauf 4 Beet-Sumpf",
+     "lage": [
+      480.0,
+      0.0,
+      91.75
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN32"
+    }
+   ]
+  }
  }
 }

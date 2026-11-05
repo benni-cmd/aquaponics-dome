@@ -1,0 +1,51 @@
+{
+ "komponente": "lt_sammler_d110",
+ "datei": "designs/components/lt_sammler_d110.sc",
+ "bauteilgruppe": "Leitungen",
+ "teilenummer": "T70-S-110-4",
+ "stand": "5a",
+ "titel": "Rücklauf-Sammler d110",
+ "kurz": "Ein dickes Kunststoffrohr, in das das Wasser von NFT-Tischen, Bypass und Beet-Sumpf fließt; von dort läuft es mit Gefälle zurück in den Pool.",
+ "hinweis": "Gebaut 05.11.2026 (N-REWORK B, Mangel M02) für die Netz-Knoten ruecklauf_1 und ruecklauf_2. Maße aus der Rohrbibliothek (SDR 21, Annahme); Gefälle und Lage setzt die Montage. Linie 2 verschließt den Abgang zum Zweitbecken mit einer Kappe d50.",
+ "koerperzahl": 1,
+ "gruppen": [
+  {
+   "id": "sammler",
+   "name": "Sammler",
+   "kurz": "Das Sammelrohr mit seinen Anschlüssen.",
+   "teile": [
+    "sammler"
+   ]
+  }
+ ],
+ "teile": [
+  {
+   "id": "sammler",
+   "name": "Rücklauf-Sammler d110",
+   "koerper": [
+    "Sammler"
+   ],
+   "menge": 1,
+   "typ": "sonderteil",
+   "werkstoff": "pvc_u",
+   "masse_mm": "Sammelrohr d110 (Formstück außen 121,5), Länge 530 mm, Höhe 214 mm mit Stutzen und Zapfen; Masse 2,85 kg (PVC-U 1,4 g/cm³)",
+   "masse_g": 2846.9,
+   "funktion": "Der Sammler nimmt das Rücklaufwasser einer Linie auf (NFT-Tische, Bypass vom Verteiler, Pumpe des Beet-Sumpfs) und leitet es per Schwerkraft durch ein Rohr d110 in den Pool; in Linie 1 zweigt unten ein kleiner Teilstrom zum Zweitbecken ab.",
+   "eigenschaften": [
+    "Sammelrohr d110, innen 99,6 mm, Wand 5,2 mm (SDR 21 der Bibliothek); ein Ende geschlossen, das andere Ende ist eine Klebemuffe d110 für das Rohr zum Pool.",
+    "Drei Zuläufe oben als Klebemuffen: d63 vom NFT-Sammelrohr (38 l/min), d50 vom Bypass des Verteilers (14,5 bzw. 17,5 l/min), d40 von der Beet-Sumpf-Pumpe (54,5 l/min).",
+    "Unten ein Zapfen d50 zum Zweitbecken (5 l/min, nur Linie 1); in Linie 2 kommt eine Kappe d50 darauf.",
+    "Bei 1 % Gefälle fasst das Rohr vollgefüllt rund 440 l/min, gebraucht werden höchstens 110 l/min.",
+    "Abstand der Anschlüsse 120 mm, damit Muffen und Rohre einander nicht berühren."
+   ],
+   "norm": "PVC-U-Formstücke nach DIN 8062 / EN 1452, Klebeverbindung mit PVC-U-Kleber nach DIN EN 14814 [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/leitung_w71.py, scripts/workshop/check_lt_w71.py, data/leitungsnetz.json (K13, K15, K16, K29, K31, K32, K33, K58, K59), docs/parts/leitungsteile.md (Rohrbibliothek SDR 21)",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+   "bezug": "offen: Sonderteil aus Rohr d110 und Abzweigen (Klebe-T, Reduzierungen) zu fertigen oder als Sammler zu bestellen; kein europäisches Angebot gelesen (D76)"
+  }
+ ]
+}

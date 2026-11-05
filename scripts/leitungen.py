@@ -226,6 +226,8 @@ def graben(doc, fz):
         zus = float(json.load(open(os.path.join(ROOT, "data", "params.json"), encoding="utf-8"))["lt_graben_zuschlag"]["value"])
     except (OSError, KeyError): pass
     k2 = {}
+    for tr in _graben_trassen(doc["trassen"]):                         # M10-S2N: Breiten-Nummer zuerst fuer den Bestand (gleiche Reihenfolge wie vor S2N), neue S2N-Trassen danach;
+        if tr.get("linie") != "luft" and (tr.get("kante") or not tr.get("s2n")): k2.setdefault(tr.get("kante") or tr["id"], len(k2) + 1)   # sonst verschiebt jede neue Trasse die Breiten aller spaeteren Graeben (Build Runde 75: K46 deckungsgleich)
     for tr in _graben_trassen(doc["trassen"]):
         if tr.get("linie") == "luft": continue                      # M10-S5-LUFT: Luftrohre liegen im Becken (kein Graben in der Erde)
         d = float(tr["dn"]); w = d + zus; pts = [tuple(float(v) for v in p) for p in tr["pfad"]]

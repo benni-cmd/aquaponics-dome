@@ -4,6 +4,3375 @@
  "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost, Linie 2 West (je Linie ein Lauf)",
  "trassen": [
   {
+   "id": "K01",
+   "kante": "K01",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "r:R_K01_P",
+   "ende": "t:T5",
+   "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
+   "baender": [
+    "W",
+    "W",
+    "U"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     2245.7,
+     473.2,
+     740.0
+    ],
+    [
+     2376.8,
+     500.9,
+     740.0
+    ],
+    [
+     2376.8,
+     500.9,
+     150
+    ],
+    [
+     2587.9,
+     630.9,
+     150.0
+    ]
+   ],
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A d63, Az 11.9) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
+   "korridor": [
+    "KH",
+    "KS",
+    "KG"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K01-m",
+   "kante": "K01",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:T5",
+   "ende": "t:T4",
+   "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
+   "baender": [
+    "U"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     2587.9,
+     630.9,
+     150.0
+    ],
+    [
+     2886.0,
+     814.4,
+     150.0
+    ]
+   ],
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A d63, Az 11.9) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
+   "korridor": [
+    "KG"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K01-b",
+   "kante": "K01",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:T4",
+   "ende": "r:R_K01_F",
+   "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
+   "baender": [
+    "U",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     2886.0,
+     814.4,
+     150.0
+    ],
+    [
+     3780.3,
+     1365.0,
+     150
+    ],
+    [
+     3780.3,
+     1365.0,
+     720.0
+    ],
+    [
+     3815.0,
+     1235.5,
+     720.0
+    ]
+   ],
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A d63, Az 11.9) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
+   "korridor": [
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K06-T-1",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:KS1",
+   "korridor": [
+    "KG",
+    "KS",
+    "KG"
+   ],
+   "anschluss": [
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     4024.6,
+     453.1,
+     214
+    ],
+    [
+     4044.2,
+     380.1,
+     214.0
+    ],
+    [
+     4044.2,
+     380.1,
+     14.0
+    ],
+    [
+     3839.8,
+     380.1,
+     14.0
+    ]
+   ],
+   "notiz": "Filterauslauf (Az -75) -> Bogen d63 direkt auf dem Stutzen lotrecht -> Etage auf Z 14 -> nach -X zum T6 (Bypass)",
+   "baender": [
+    "U",
+    "U",
+    "U"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "K06-T",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:KS1",
+   "ende": "t:T6",
+   "korridor": [
+    "KG"
+   ],
+   "anschluss": [
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     3714.8,
+     380.1,
+     14.0
+    ],
+    [
+     3550.0,
+     380.1,
+     14.0
+    ]
+   ],
+   "notiz": "Filterauslauf (Az -75) -> Bogen d63 direkt auf dem Stutzen lotrecht -> Etage auf Z 14 -> nach -X zum T6 (Bypass)",
+   "baender": [
+    "U"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K06-T-b",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T6",
+   "ende": "t:T1",
+   "korridor": [
+    "KG",
+    "KG"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     3550.0,
+     380.1,
+     14.0
+    ],
+    [
+     3000.0,
+     380.1,
+     14.0
+    ],
+    [
+     3000.0,
+     89.6,
+     14.0
+    ]
+   ],
+   "notiz": "T6 -> -X bis x 3000 -> -Y zum T1 (Abgaenge K06 geradeaus, K02 lotrecht)",
+   "baender": [
+    "U",
+    "U"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K06",
+   "kante": "K06",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T1",
+   "ende": "r:KP1_1",
+   "korridor": [
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:1"
+   ],
+   "pfad": [
+    [
+     3000.0,
+     89.6,
+     14.0
+    ],
+    [
+     3000.0,
+     -841.4,
+     14.0
+    ],
+    [
+     3000.0,
+     -841.4,
+     520
+    ],
+    [
+     3095.7,
+     -841.4,
+     520.0
+    ]
+   ],
+   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
+   "baender": [
+    "U",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K02",
+   "kante": "K02",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T1",
+   "ende": "r:KP1_2",
+   "korridor": [
+    "KS",
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:2",
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3000.0,
+     89.6,
+     14.0
+    ],
+    [
+     3000.0,
+     89.6,
+     520
+    ],
+    [
+     3094.5,
+     89.6,
+     520.0
+    ]
+   ],
+   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
+   "baender": [
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K56-a",
+   "kante": "K56",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T5",
+   "ende": "r:KH1",
+   "korridor": [
+    "KS"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     2587.9,
+     630.9,
+     150.0
+    ],
+    [
+     2587.9,
+     630.9,
+     -23.9
+    ]
+   ],
+   "notiz": "Abzweig vom T d75 auf K01 lotrecht nach unten bis zum Kugelhahn",
+   "baender": [
+    "U"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K56-b",
+   "kante": "K56",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:KH1",
+   "ende": "t:T6",
+   "korridor": [
+    "KS",
+    "KG",
+    "KG",
+    "KS",
+    "KG"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     2587.9,
+     630.9,
+     -148.9
+    ],
+    [
+     2587.9,
+     630.9,
+     -258.9
+    ],
+    [
+     2587.9,
+     180.1,
+     -258.9
+    ],
+    [
+     3550.0,
+     180.1,
+     -258.9
+    ],
+    [
+     3550.0,
+     180.1,
+     14.0
+    ],
+    [
+     3550.0,
+     380.1,
+     14.0
+    ]
+   ],
+   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter dem Stamm durch, +X bis x 3550 -> lotrecht auf Z 14 -> 200 mm +Y in T6",
+   "baender": [
+    "U",
+    "UT",
+    "UT",
+    "U",
+    "U"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K08",
+   "kante": "K08",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T2",
+   "korridor": [
+    "KS",
+    "KH",
+    "KH",
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:1"
+   ],
+   "pfad": [
+    [
+     3282.7,
+     -841.3,
+     655
+    ],
+    [
+     3282.7,
+     -841.3,
+     900.0
+    ],
+    [
+     2770.0,
+     -841.3,
+     900.0
+    ],
+    [
+     2770.0,
+     348.2,
+     900.0
+    ],
+    [
+     3085.4,
+     348.2,
+     900.0
+    ]
+   ],
+   "notiz": "Druckstutzen -> Z 900 -> -X westlich am Biofilter-Tank vorbei -> +Y -> +X ins T2",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "W"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K09",
+   "kante": "K09",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T2",
+   "korridor": [
+    "KS",
+    "KH",
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:2",
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3281.5,
+     89.7,
+     655
+    ],
+    [
+     3281.5,
+     89.7,
+     900.0
+    ],
+    [
+     3281.5,
+     348.2,
+     900.0
+    ],
+    [
+     3085.4,
+     348.2,
+     900.0
+    ]
+   ],
+   "notiz": "Druckstutzen -> Z 900 ueber die Montagetafel -> +Y unter dem Plattformrand hinaus -> -X ins T2",
+   "baender": [
+    "W",
+    "W",
+    "W"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K08-K09-Stamm",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T2",
+   "ende": "r:R_ZUL",
+   "korridor": [
+    "KS",
+    "KH"
+   ],
+   "anschluss": [
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3085.4,
+     348.2,
+     900.0
+    ],
+    [
+     3085.4,
+     348.2,
+     1820.0
+    ],
+    [
+     3057.1,
+     200.9,
+     1820.0
+    ]
+   ],
+   "notiz": "T2 -> lotrecht auf Zulaufhoehe Z 1820 -> 150 mm in Zulauf-Richtung zur Reduziermuffe d63/d50",
+   "baender": [
+    "W",
+    "WH"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K10",
+   "kante": "K10",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:R_UEB",
+   "ende": "muffe",
+   "korridor": [
+    "KH"
+   ],
+   "anschluss": [
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     2775.6,
+     -184.8,
+     1970.0
+    ],
+    [
+     2677.4,
+     -165.9,
+     1970.0
+    ]
+   ],
+   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)",
+   "baender": [
+    "WH"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K03-Tief",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T3",
+   "korridor": [
+    "KS",
+    "KG"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     0.0,
+     0.0,
+     -1575
+    ],
+    [
+     0.0,
+     0.0,
+     -1635.0
+    ],
+    [
+     0.0,
+     -1350.2,
+     -1635.0
+    ]
+   ],
+   "notiz": "Bodenablauf -> Bogen -> unter dem Pool nach Sueden zum T d50",
+   "baender": [
+    "U",
+    "UT"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K03-Steig-1-1",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T3",
+   "ende": "t:TR1_1",
+   "korridor": [
+    "KG"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     0.0,
+     -1350.2,
+     -1635.0
+    ],
+    [
+     2065.5,
+     -1350.2,
+     -1635.0
+    ]
+   ],
+   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
+   "baender": [
+    "UT"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "K03-Steig-1",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TR1_1",
+   "ende": "t:TSP1_1",
+   "korridor": [
+    "KG",
+    "KS"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     2065.5,
+     -1350.2,
+     -1635.0
+    ],
+    [
+     2400,
+     -1350.2,
+     -1635.0
+    ],
+    [
+     2400,
+     -1350.2,
+     520
+    ]
+   ],
+   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
+   "baender": [
+    "UT",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "K03-Steig",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TSP1_1",
+   "ende": "r:R_K03",
+   "korridor": [
+    "KH"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     2400,
+     -1350.2,
+     520
+    ],
+    [
+     2484.4,
+     -1350.2,
+     520
+    ]
+   ],
+   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
+   "baender": [
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K03",
+   "kante": "K03",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "r:R_K03",
+   "ende": "stutzen",
+   "korridor": [
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_klein:3",
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2547.4,
+     -1350.2,
+     520
+    ],
+    [
+     2667.4,
+     -1350.2,
+     520
+    ]
+   ],
+   "notiz": "Reduziermuffe d50/d40 -> Saugstutzen Pumpe_klein:3",
+   "baender": [
+    "W"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K03-K19-Stumpf",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T3",
+   "ende": "offen",
+   "korridor": [
+    "KG"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     0.0,
+     -1350.2,
+     -1635.0
+    ],
+    [
+     0.0,
+     -1650.2,
+     -1635.0
+    ]
+   ],
+   "notiz": "Linie-2-Zweig bis zur Abzweigung (Netz K19)",
+   "baender": [
+    "UT"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K04",
+   "kante": "K04",
+   "dn": 32,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:R_K04",
+   "korridor": [
+    "KS",
+    "KH",
+    "KH",
+    "KS",
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_klein:3",
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2768.4,
+     -1350.7,
+     645
+    ],
+    [
+     2768.4,
+     -1350.7,
+     780.0
+    ],
+    [
+     2253.8,
+     -1350.7,
+     780.0
+    ],
+    [
+     2253.8,
+     -1771.2,
+     780.0
+    ],
+    [
+     2253.8,
+     -1771.2,
+     1397.0
+    ],
+    [
+     2397.6,
+     -1814.1,
+     1397.0
+    ]
+   ],
+   "notiz": "Druckstutzen -> Z 780 -> -X -> -Y -> lotrecht auf Zulaufhoehe Z 1397 -> 150 mm in Port-Richtung zur Reduziermuffe d50/d32 (tangentialer Zulauf)",
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "W",
+    "W"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K05-1",
+   "kante": "K05",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:TSP1_2",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KH",
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2715.2,
+     -2075.2,
+     1547
+    ],
+    [
+     2669.5,
+     -2228.5,
+     1544.6
+    ],
+    [
+     2669.5,
+     -2228.5,
+     950.0
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
+   "baender": [
+    "WH",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "K05-2",
+   "kante": "K05",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TSP1_2",
+   "ende": "t:TR1_2",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KS",
+    "KG"
+   ],
+   "anschluss": [
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2669.5,
+     -2228.5,
+     950.0
+    ],
+    [
+     2669.5,
+     -2228.5,
+     -40.0
+    ],
+    [
+     2860.7,
+     -2228.5,
+     -42.9
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
+   "baender": [
+    "W",
+    "UT"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 1,
+   "s2n": true
+  },
+  {
+   "id": "K05-3",
+   "kante": "K05",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TR1_2",
+   "ende": "t:TR1_3",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KG",
+    "KG"
+   ],
+   "anschluss": [
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2860.7,
+     -2228.5,
+     -42.9
+    ],
+    [
+     3260.0,
+     -2228.5,
+     -48.9
+    ],
+    [
+     3260.0,
+     537.4,
+     -90.3
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
+   "baender": [
+    "UT",
+    "UT"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 1,
+   "s2n": true
+  },
+  {
+   "id": "K05",
+   "kante": "K05",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TR1_3",
+   "ende": "t:T4",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KG",
+    "KG",
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     3260.0,
+     537.4,
+     -90.3
+    ],
+    [
+     3260.0,
+     814.4,
+     -94.5
+    ],
+    [
+     2886.0,
+     814.4,
+     -100.1
+    ],
+    [
+     2886.0,
+     814.4,
+     150.0
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
+   "baender": [
+    "UT",
+    "UT",
+    "U"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K07",
+   "kante": "K07",
+   "dn": 40,
+   "farbe": "grau",
+   "start": "muffe",
+   "ende": "muffe",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KS",
+    "KG",
+    "KG",
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_klein:2",
+    "schlammfass_1"
+   ],
+   "pfad": [
+    [
+     2841.5,
+     -1651.6,
+     404.0
+    ],
+    [
+     2841.5,
+     -1651.6,
+     230.0
+    ],
+    [
+     3925.0,
+     -1651.6,
+     213.7
+    ],
+    [
+     3925.0,
+     -1461.0,
+     210.9
+    ],
+    [
+     3925.0,
+     -1461.0,
+     86.9
+    ]
+   ],
+   "notiz": "Schlammablass: Federhahn -> lotrecht in den Graben (Z 230) -> 1084 + 191 mm mit 1.5 % Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses",
+   "baender": [
+    "W",
+    "U",
+    "U",
+    "U"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "KB1-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KB1",
+   "ende": "muffe",
+   "korridor": [
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3371.6,
+     -299.6,
+     453.0
+    ],
+    [
+     3371.6,
+     -299.6,
+     443.0
+    ]
+   ],
+   "notiz": "Rohrstueck d50 zwischen Kugelhahn und Kappe (Wartungsablass)",
+   "baender": [
+    "W"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K06",
+   "kante": "K06",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T1",
+   "ende": "stutzen",
+   "korridor": [
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:1"
+   ],
+   "pfad": [
+    [
+     3000.0,
+     89.6,
+     14.0
+    ],
+    [
+     3000.0,
+     -841.4,
+     14.0
+    ],
+    [
+     3000.0,
+     -841.4,
+     520
+    ],
+    [
+     3176.7,
+     -841.4,
+     520
+    ]
+   ],
+   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
+   "baender": [
+    "U",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 1
+  },
+  {
+   "id": "K02",
+   "kante": "K02",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T1",
+   "ende": "stutzen",
+   "korridor": [
+    "KS",
+    "KH"
+   ],
+   "anschluss": [
+    "Pumpe_gross:2",
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3000.0,
+     89.6,
+     14.0
+    ],
+    [
+     3000.0,
+     89.6,
+     520
+    ],
+    [
+     3175.5,
+     89.6,
+     520
+    ]
+   ],
+   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
+   "baender": [
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 1
+  },
+  {
+   "id": "K06-T",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T6",
+   "korridor": [
+    "KG",
+    "KS",
+    "KG"
+   ],
+   "anschluss": [
+    "Feinfilter:1"
+   ],
+   "pfad": [
+    [
+     4024.6,
+     453.1,
+     214
+    ],
+    [
+     4044.2,
+     380.1,
+     214.0
+    ],
+    [
+     4044.2,
+     380.1,
+     14.0
+    ],
+    [
+     3550.0,
+     380.1,
+     14.0
+    ]
+   ],
+   "notiz": "Filterauslauf (Az -75) -> Bogen d63 direkt auf dem Stutzen lotrecht -> Etage auf Z 14 -> nach -X zum T6 (Bypass)",
+   "baender": [
+    "U",
+    "U",
+    "U"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 1
+  },
+  {
+   "id": "K03-Steig",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T3",
+   "ende": "r:R_K03",
+   "korridor": [
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     0.0,
+     -1350.2,
+     -1635.0
+    ],
+    [
+     2400,
+     -1350.2,
+     -1635.0
+    ],
+    [
+     2400,
+     -1350.2,
+     520
+    ],
+    [
+     2484.4,
+     -1350.2,
+     520
+    ]
+   ],
+   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
+   "baender": [
+    "UT",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 1
+  },
+  {
+   "id": "SP1-1",
+   "dn": 50,
+   "ende": "r:KSP1_1",
+   "pfad": [
+    [
+     2400,
+     -1350.2,
+     520
+    ],
+    [
+     2400.0,
+     -1350.2,
+     620.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "notiz": "am Steigerkopf K03-Steig (Absetzer-Saug, lotrecht in den Steiger)",
+   "start": "t:TSP1_1",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "KSP1_1-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KSP1_1",
+   "ende": "muffe",
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     2400.0,
+     -1350.2,
+     732.0
+    ],
+    [
+     2400.0,
+     -1350.2,
+     742.0
+    ]
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
+   "linie": 1
+  },
+  {
+   "id": "K05",
+   "kante": "K05",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T4",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KH",
+    "KS",
+    "KG",
+    "KG",
+    "KG",
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_klein:2"
+   ],
+   "pfad": [
+    [
+     2715.2,
+     -2075.2,
+     1547
+    ],
+    [
+     2669.5,
+     -2228.5,
+     1544.6
+    ],
+    [
+     2669.5,
+     -2228.5,
+     -40.0
+    ],
+    [
+     3260.0,
+     -2228.5,
+     -48.9
+    ],
+    [
+     3260.0,
+     814.4,
+     -94.5
+    ],
+    [
+     2886.0,
+     814.4,
+     -100.1
+    ],
+    [
+     2886.0,
+     814.4,
+     150.0
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
+   "baender": [
+    "WH",
+    "W",
+    "UT",
+    "UT",
+    "UT",
+    "U"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 1
+  },
+  {
+   "id": "SP1-2",
+   "dn": 50,
+   "ende": "r:KSP1_2",
+   "pfad": [
+    [
+     2669.5,
+     -2228.5,
+     950.0
+    ],
+    [
+     2569.5,
+     -2228.5,
+     950.0
+    ]
+   ],
+   "korridor": [
+    "KH"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "notiz": "am Fallrohr K05 (Absetzer-Auslauf, Z 950)",
+   "start": "t:TSP1_2",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "KSP1_2-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KSP1_2",
+   "ende": "muffe",
+   "korridor": [
+    "KH"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     2457.5,
+     -2228.5,
+     950.0
+    ],
+    [
+     2447.5,
+     -2228.5,
+     950.0
+    ]
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
+   "linie": 1
+  },
+  {
+   "id": "REV1-1",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     2065.5,
+     -1350.2,
+     -1635.0
+    ],
+    [
+     2065.5,
+     -1350.2,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K03-Steig-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR1_1",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "REV1-2",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     2860.7,
+     -2228.5,
+     -42.9
+    ],
+    [
+     2867.0,
+     -2228.5,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K05: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR1_2",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "REV1-3",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     3260.0,
+     537.4,
+     -90.3
+    ],
+    [
+     3260.0,
+     544.4,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K05: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR1_3",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 1
+  },
+  {
+   "id": "K17",
+   "kante": "K17",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "r:R_K17_P",
+   "ende": "t:T13",
+   "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
+   "baender": [
+    "W",
+    "W",
+    "U"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:2"
+   ],
+   "pfad": [
+    [
+     -1020.4,
+     -2055.7,
+     740.0
+    ],
+    [
+     -1080.0,
+     -2175.7,
+     740.0
+    ],
+    [
+     -1080.0,
+     -2175.7,
+     150
+    ],
+    [
+     -1245.9,
+     -2294.8,
+     150.0
+    ]
+   ],
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B d63, Az -116.4) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8)",
+   "korridor": [
+    "KH",
+    "KS",
+    "KG"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K17-m",
+   "kante": "K17",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:T13",
+   "ende": "t:T12",
+   "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
+   "baender": [
+    "U"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:2"
+   ],
+   "pfad": [
+    [
+     -1245.9,
+     -2294.8,
+     150.0
+    ],
+    [
+     -1367.7,
+     -2382.3,
+     150.0
+    ]
+   ],
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B d63, Az -116.4) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8)",
+   "korridor": [
+    "KG"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K17-b",
+   "kante": "K17",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:T12",
+   "ende": "r:R_K17_F",
+   "heber": true,
+   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
+   "baender": [
+    "U",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Zentralpool",
+    "Feinfilter:2"
+   ],
+   "pfad": [
+    [
+     -1367.7,
+     -2382.3,
+     150.0
+    ],
+    [
+     -1719.7,
+     -2635.0,
+     150
+    ],
+    [
+     -1719.7,
+     -2635.0,
+     720.0
+    ],
+    [
+     -1685.0,
+     -2764.5,
+     720.0
+    ]
+   ],
+   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B d63, Az -116.4) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8)",
+   "korridor": [
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K22-T-1",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:KS2",
+   "anschluss": [
+    "Feinfilter:2"
+   ],
+   "pfad": [
+    [
+     -1475.4,
+     -3546.9,
+     214
+    ],
+    [
+     -1455.8,
+     -3619.9,
+     214.0
+    ],
+    [
+     -1455.8,
+     -3619.9,
+     14.0
+    ],
+    [
+     -1455.8,
+     -3822.4,
+     14.0
+    ]
+   ],
+   "notiz": "Filterauslauf (Az -75) -> Bogen d63 auf dem Stutzen lotrecht -> Etage auf Z 14 -> -Y auf die Suedspur y -4150 -> +X zum T14 (Bypass)",
+   "korridor": [
+    "KG",
+    "KS",
+    "KG"
+   ],
+   "baender": [
+    "U",
+    "U",
+    "U"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "K22-T",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:KS2",
+   "ende": "t:T14",
+   "anschluss": [
+    "Feinfilter:2"
+   ],
+   "pfad": [
+    [
+     -1455.8,
+     -3947.4,
+     14.0
+    ],
+    [
+     -1455.8,
+     -4150.0,
+     14.0
+    ],
+    [
+     -1245.9,
+     -4150.0,
+     14.0
+    ]
+   ],
+   "notiz": "Filterauslauf (Az -75) -> Bogen d63 auf dem Stutzen lotrecht -> Etage auf Z 14 -> -Y auf die Suedspur y -4150 -> +X zum T14 (Bypass)",
+   "korridor": [
+    "KG",
+    "KG"
+   ],
+   "baender": [
+    "U",
+    "U"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K22-T-b-1",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T14",
+   "ende": "t:TR2_1",
+   "anschluss": [],
+   "pfad": [
+    [
+     -1245.9,
+     -4150.0,
+     14.0
+    ],
+    [
+     -953.8,
+     -4150.0,
+     14.0
+    ]
+   ],
+   "notiz": "T14 -> +X bis x -713 (Spur der Pumpe-3-Steiger) -> +Y zum T11 (K22 geradeaus, K18 nach Westen)",
+   "korridor": [
+    "KG"
+   ],
+   "baender": [
+    "U"
+   ],
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true
+  },
+  {
+   "id": "K22-T-b",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:TR2_1",
+   "ende": "t:T11",
+   "anschluss": [],
+   "pfad": [
+    [
+     -953.8,
+     -4150.0,
+     14.0
+    ],
+    [
+     -712.7,
+     -4150.0,
+     14.0
+    ],
+    [
+     -712.7,
+     -3400.0,
+     14.0
+    ]
+   ],
+   "notiz": "T14 -> +X bis x -713 (Spur der Pumpe-3-Steiger) -> +Y zum T11 (K22 geradeaus, K18 nach Westen)",
+   "korridor": [
+    "KG",
+    "KG"
+   ],
+   "baender": [
+    "U",
+    "U"
+   ],
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
+  },
+  {
+   "id": "K22",
+   "kante": "K22",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T11",
+   "ende": "r:KP2_1",
+   "anschluss": [
+    "Pumpe_gross:3",
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -712.7,
+     -3400.0,
+     14.0
+    ],
+    [
+     -712.7,
+     -2840.5,
+     14.0
+    ],
+    [
+     -712.7,
+     -2840.5,
+     520
+    ],
+    [
+     -599.6,
+     -2877.4,
+     520.0
+    ]
+   ],
+   "notiz": "T11 -> +Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (161,9 Grad, Ausnahme 2) in den Stutzen Pumpe_gross:3",
+   "korridor": [
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "baender": [
+    "U",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K18",
+   "kante": "K18",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T11",
+   "ende": "r:KP2_2",
+   "anschluss": [
+    "Pumpe_gross:4",
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -712.7,
+     -3400.0,
+     14.0
+    ],
+    [
+     -1001.3,
+     -3400.0,
+     14.0
+    ],
+    [
+     -1001.3,
+     -3725.7,
+     14.0
+    ],
+    [
+     -1001.3,
+     -3725.7,
+     520
+    ],
+    [
+     -888.2,
+     -3762.6,
+     520.0
+    ]
+   ],
+   "notiz": "T11 -> -X 289 mm -> -Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht -> in Port-Richtung in den Stutzen Pumpe_gross:4; Achsabstand zur Stamm-Nordspur 289 mm",
+   "korridor": [
+    "KG",
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "baender": [
+    "U",
+    "U",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K57-a",
+   "kante": "K57",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T13",
+   "ende": "r:KH2",
+   "anschluss": [],
+   "pfad": [
+    [
+     -1245.9,
+     -2294.8,
+     150.0
+    ],
+    [
+     -1245.9,
+     -2294.8,
+     -23.9
+    ]
+   ],
+   "notiz": "Abzweig vom T d75 auf K17 lotrecht nach unten bis zum Kugelhahn",
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K57-b",
+   "kante": "K57",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:KH2",
+   "ende": "t:T14",
+   "anschluss": [],
+   "pfad": [
+    [
+     -1245.9,
+     -2294.8,
+     -148.9
+    ],
+    [
+     -1245.9,
+     -2294.8,
+     -258.9
+    ],
+    [
+     -1245.9,
+     -4150.0,
+     -258.9
+    ],
+    [
+     -1245.9,
+     -4150.0,
+     14.0
+    ]
+   ],
+   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter der Filtergrube bis y -4150 -> lotrecht von unten in T14 (Z 14)",
+   "korridor": [
+    "KS",
+    "KG",
+    "KS"
+   ],
+   "baender": [
+    "U",
+    "UT",
+    "U"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K24",
+   "kante": "K24",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T15",
+   "anschluss": [
+    "Pumpe_gross:3",
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -421.9,
+     -2935.6,
+     655
+    ],
+    [
+     -421.9,
+     -2935.6,
+     900.0
+    ],
+    [
+     -1267.5,
+     -2935.6,
+     900.0
+    ],
+    [
+     -1267.5,
+     -3442.5,
+     900.0
+    ],
+    [
+     -1017.5,
+     -3442.5,
+     900.0
+    ]
+   ],
+   "notiz": "Druckstutzen -> Z 900 -> -X bis x -1267 -> -Y -> +X ins T15",
+   "korridor": [
+    "KS",
+    "KH",
+    "KH",
+    "KH"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "W"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K25",
+   "kante": "K25",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T15",
+   "anschluss": [
+    "Pumpe_gross:4",
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -710.5,
+     -3820.8,
+     655
+    ],
+    [
+     -710.5,
+     -3820.8,
+     900.0
+    ],
+    [
+     -710.5,
+     -3442.5,
+     900.0
+    ],
+    [
+     -1017.5,
+     -3442.5,
+     900.0
+    ]
+   ],
+   "notiz": "Druckstutzen (unter dem Zulauf-Stutzen) -> Z 900 -> +Y 378 mm -> -X 307 mm ins T15",
+   "korridor": [
+    "KS",
+    "KH",
+    "KH"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K24-K25-Stamm",
+   "kante": null,
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T15",
+   "ende": "r:R_ZUL2",
+   "anschluss": [
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -1017.5,
+     -3442.5,
+     900.0
+    ],
+    [
+     -1017.5,
+     -3442.5,
+     1320.0
+    ],
+    [
+     -1017.5,
+     -3942.5,
+     1320.0
+    ],
+    [
+     -1017.5,
+     -3942.5,
+     1820.0
+    ],
+    [
+     -742.0,
+     -3851.9,
+     1820.0
+    ]
+   ],
+   "notiz": "T15 -> lotrecht auf Z 1320 -> 500 mm -Y -> lotrecht auf Zulaufhoehe Z 1820 -> 290 mm gegen die Port-Richtung (-161,8 Grad, Ausnahme 2) zur Reduziermuffe d63/d50",
+   "korridor": [
+    "KS",
+    "KH",
+    "KS",
+    "KH"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "WH"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K26",
+   "kante": "K26",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:R_UEB2",
+   "ende": "muffe",
+   "anschluss": [
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -268.0,
+     -3910.3,
+     1970.0
+    ],
+    [
+     -236.8,
+     -4005.3,
+     1970.0
+    ]
+   ],
+   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)",
+   "korridor": [
+    "KH"
+   ],
+   "baender": [
+    "WH"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K19-1-1",
+   "kante": "K19",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:TR2_2",
+   "anschluss": [
+    "Pumpe_klein:1",
+    "Tank_klein:1"
+   ],
+   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
+   "pfad": [
+    [
+     0.0,
+     -1650.2,
+     -1635.0
+    ],
+    [
+     0.0,
+     -2810.4,
+     -1635.0
+    ]
+   ],
+   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
+   "korridor": [
+    "KG"
+   ],
+   "baender": [
+    "UT"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "K19-1-2",
+   "kante": "K19",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TR2_2",
+   "ende": "t:TR2_3",
+   "anschluss": [
+    "Pumpe_klein:1",
+    "Tank_klein:1"
+   ],
+   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
+   "pfad": [
+    [
+     0.0,
+     -2810.4,
+     -1635.0
+    ],
+    [
+     0.0,
+     -3514.1,
+     -1635.0
+    ],
+    [
+     216.2,
+     -3514.1,
+     -1635.0
+    ]
+   ],
+   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
+   "korridor": [
+    "KG",
+    "KG"
+   ],
+   "baender": [
+    "UT",
+    "UT"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "K19-1",
+   "kante": "K19",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TR2_3",
+   "ende": "t:TSP2_1",
+   "anschluss": [
+    "Pumpe_klein:1",
+    "Tank_klein:1"
+   ],
+   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
+   "pfad": [
+    [
+     216.2,
+     -3514.1,
+     -1635.0
+    ],
+    [
+     556.6,
+     -3514.1,
+     -1635.0
+    ],
+    [
+     556.6,
+     -3514.1,
+     520.0
+    ]
+   ],
+   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
+   "korridor": [
+    "KG",
+    "KS"
+   ],
+   "baender": [
+    "UT",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "K19",
+   "kante": "K19",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TSP2_1",
+   "ende": "r:R_K19",
+   "anschluss": [
+    "Pumpe_klein:1",
+    "Tank_klein:1"
+   ],
+   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
+   "pfad": [
+    [
+     556.6,
+     -3514.1,
+     520.0
+    ],
+    [
+     797.1,
+     -3592.7,
+     520.0
+    ]
+   ],
+   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
+   "korridor": [
+    "KH"
+   ],
+   "baender": [
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K20",
+   "kante": "K20",
+   "dn": 32,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:R_K20",
+   "anschluss": [
+    "Pumpe_klein:1",
+    "Tank_klein:1"
+   ],
+   "pfad": [
+    [
+     928.2,
+     -3635.5,
+     645
+    ],
+    [
+     928.2,
+     -3635.5,
+     780.0
+    ],
+    [
+     590.0,
+     -3635.5,
+     780.0
+    ],
+    [
+     590.0,
+     -3434.7,
+     780.0
+    ],
+    [
+     590.0,
+     -3434.7,
+     1397.0
+    ],
+    [
+     599.6,
+     -3584.4,
+     1397.0
+    ]
+   ],
+   "notiz": "Druckstutzen -> Z 780 -> -X -> +Y -> lotrecht auf Zulaufhoehe Z 1397 -> 150 mm in Port-Richtung zur Reduziermuffe d50/d32",
+   "korridor": [
+    "KS",
+    "KH",
+    "KH",
+    "KS",
+    "KH"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "W",
+    "W"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K21-1",
+   "kante": "K21",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:TSP2_2",
+   "gefaelle_pct": 1.5,
+   "anschluss": [
+    "Tank_klein:1"
+   ],
+   "pfad": [
+    [
+     464.9,
+     -3972.9,
+     1547
+    ],
+    [
+     305.3,
+     -3983.2,
+     1544.6
+    ],
+    [
+     305.3,
+     -3983.2,
+     950.0
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
+   "korridor": [
+    "KH",
+    "KS"
+   ],
+   "baender": [
+    "WH",
+    "W"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "K21-2",
+   "kante": "K21",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TSP2_2",
+   "ende": "t:TR2_4",
+   "gefaelle_pct": 1.5,
+   "anschluss": [
+    "Tank_klein:1"
+   ],
+   "pfad": [
+    [
+     305.3,
+     -3983.2,
+     950.0
+    ],
+    [
+     305.3,
+     -3983.2,
+     -40.0
+    ],
+    [
+     305.3,
+     -3692.0,
+     -44.4
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
+   "korridor": [
+    "KS",
+    "KG"
+   ],
+   "baender": [
+    "W",
+    "UT"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 2,
+   "s2n": true
+  },
+  {
+   "id": "K21-3",
+   "kante": "K21",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TR2_4",
+   "ende": "t:TR2_5",
+   "gefaelle_pct": 1.5,
+   "anschluss": [
+    "Tank_klein:1"
+   ],
+   "pfad": [
+    [
+     305.3,
+     -3692.0,
+     -44.4
+    ],
+    [
+     305.3,
+     -2382.3,
+     -64.0
+    ],
+    [
+     14.1,
+     -2382.3,
+     -68.4
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
+   "korridor": [
+    "KG",
+    "KG"
+   ],
+   "baender": [
+    "UT",
+    "UT"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 2,
+   "s2n": true
+  },
+  {
+   "id": "K21",
+   "kante": "K21",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:TR2_5",
+   "ende": "t:T12",
+   "gefaelle_pct": 1.5,
+   "anschluss": [
+    "Tank_klein:1"
+   ],
+   "pfad": [
+    [
+     14.1,
+     -2382.3,
+     -68.4
+    ],
+    [
+     -1367.7,
+     -2382.3,
+     -89.1
+    ],
+    [
+     -1367.7,
+     -2382.3,
+     150.0
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
+   "korridor": [
+    "KG",
+    "KS"
+   ],
+   "baender": [
+    "UT",
+    "U"
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K23",
+   "kante": "K23",
+   "dn": 40,
+   "farbe": "grau",
+   "start": "muffe",
+   "ende": "muffe",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KS",
+    "KG",
+    "KG",
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_klein:1",
+    "schlammfass_2"
+   ],
+   "pfad": [
+    [
+     906.0,
+     -3944.4,
+     404.0
+    ],
+    [
+     906.0,
+     -3944.4,
+     230.0
+    ],
+    [
+     906.0,
+     -3083.0,
+     217.1
+    ],
+    [
+     1307.5,
+     -3083.0,
+     211.1
+    ],
+    [
+     1307.5,
+     -3083.0,
+     87.1
+    ]
+   ],
+   "notiz": "Schlammablass: Federhahn -> lotrecht in den Graben (Z 230) -> 861 + 402 mm mit 1.5 % Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses",
+   "baender": [
+    "W",
+    "U",
+    "U",
+    "U"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "KB2-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KB2",
+   "ende": "muffe",
+   "korridor": [
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -457.6,
+     -3333.7,
+     453.0
+    ],
+    [
+     -457.6,
+     -3333.7,
+     443.0
+    ]
+   ],
+   "notiz": "Rohrstueck d50 zwischen Kugelhahn und Kappe (Wartungsablass)",
+   "baender": [
+    "W"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K22",
+   "kante": "K22",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T11",
+   "ende": "stutzen",
+   "anschluss": [
+    "Pumpe_gross:3",
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -712.7,
+     -3400.0,
+     14.0
+    ],
+    [
+     -712.7,
+     -2840.5,
+     14.0
+    ],
+    [
+     -712.7,
+     -2840.5,
+     520
+    ],
+    [
+     -522.6,
+     -2902.6,
+     520
+    ]
+   ],
+   "notiz": "T11 -> +Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (161,9 Grad, Ausnahme 2) in den Stutzen Pumpe_gross:3",
+   "korridor": [
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "baender": [
+    "U",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 2
+  },
+  {
+   "id": "K18",
+   "kante": "K18",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "t:T11",
+   "ende": "stutzen",
+   "anschluss": [
+    "Pumpe_gross:4",
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -712.7,
+     -3400.0,
+     14.0
+    ],
+    [
+     -1001.3,
+     -3400.0,
+     14.0
+    ],
+    [
+     -1001.3,
+     -3725.7,
+     14.0
+    ],
+    [
+     -1001.3,
+     -3725.7,
+     520
+    ],
+    [
+     -811.2,
+     -3787.8,
+     520
+    ]
+   ],
+   "notiz": "T11 -> -X 289 mm -> -Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht -> in Port-Richtung in den Stutzen Pumpe_gross:4; Achsabstand zur Stamm-Nordspur 289 mm",
+   "korridor": [
+    "KG",
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "baender": [
+    "U",
+    "U",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 2
+  },
+  {
+   "id": "K22-T",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T14",
+   "anschluss": [
+    "Feinfilter:2"
+   ],
+   "pfad": [
+    [
+     -1475.4,
+     -3546.9,
+     214
+    ],
+    [
+     -1455.8,
+     -3619.9,
+     214.0
+    ],
+    [
+     -1455.8,
+     -3619.9,
+     14.0
+    ],
+    [
+     -1455.8,
+     -4150.0,
+     14.0
+    ],
+    [
+     -1245.9,
+     -4150.0,
+     14.0
+    ]
+   ],
+   "notiz": "Filterauslauf (Az -75) -> Bogen d63 auf dem Stutzen lotrecht -> Etage auf Z 14 -> -Y auf die Suedspur y -4150 -> +X zum T14 (Bypass)",
+   "korridor": [
+    "KG",
+    "KS",
+    "KG",
+    "KG"
+   ],
+   "baender": [
+    "U",
+    "U",
+    "U",
+    "U"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 2
+  },
+  {
+   "id": "K19",
+   "kante": "K19",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:R_K19",
+   "anschluss": [
+    "Pumpe_klein:1",
+    "Tank_klein:1"
+   ],
+   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
+   "pfad": [
+    [
+     0.0,
+     -1650.2,
+     -1635.0
+    ],
+    [
+     0.0,
+     -3514.1,
+     -1635.0
+    ],
+    [
+     556.6,
+     -3514.1,
+     -1635.0
+    ],
+    [
+     556.6,
+     -3514.1,
+     520.0
+    ],
+    [
+     797.1,
+     -3592.7,
+     520.0
+    ]
+   ],
+   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
+   "korridor": [
+    "KG",
+    "KG",
+    "KS",
+    "KH"
+   ],
+   "baender": [
+    "UT",
+    "UT",
+    "W",
+    "W"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 2
+  },
+  {
+   "id": "SP2-1",
+   "dn": 50,
+   "ende": "r:KSP2_1",
+   "pfad": [
+    [
+     556.6,
+     -3514.1,
+     520.0
+    ],
+    [
+     556.6,
+     -3514.1,
+     620.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "notiz": "am Steigerkopf K19 (Absetzer-Saug, lotrecht in den Steiger)",
+   "start": "t:TSP2_1",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "KSP2_1-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KSP2_1",
+   "ende": "muffe",
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     556.6,
+     -3514.1,
+     732.0
+    ],
+    [
+     556.6,
+     -3514.1,
+     742.0
+    ]
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
+   "linie": 2
+  },
+  {
+   "id": "K21",
+   "kante": "K21",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "t:T12",
+   "gefaelle_pct": 1.5,
+   "anschluss": [
+    "Tank_klein:1"
+   ],
+   "pfad": [
+    [
+     464.9,
+     -3972.9,
+     1547
+    ],
+    [
+     305.3,
+     -3983.2,
+     1544.6
+    ],
+    [
+     305.3,
+     -3983.2,
+     -40.0
+    ],
+    [
+     305.3,
+     -2382.3,
+     -64.0
+    ],
+    [
+     -1367.7,
+     -2382.3,
+     -89.1
+    ],
+    [
+     -1367.7,
+     -2382.3,
+     150.0
+    ]
+   ],
+   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
+   "korridor": [
+    "KH",
+    "KS",
+    "KG",
+    "KG",
+    "KS"
+   ],
+   "baender": [
+    "WH",
+    "W",
+    "UT",
+    "UT",
+    "U"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true,
+   "linie": 2
+  },
+  {
+   "id": "SP2-2",
+   "dn": 50,
+   "ende": "r:KSP2_2",
+   "pfad": [
+    [
+     305.3,
+     -3983.2,
+     950.0
+    ],
+    [
+     305.3,
+     -4083.2,
+     950.0
+    ]
+   ],
+   "korridor": [
+    "KH"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "notiz": "am Fallrohr K21 (Absetzer-Auslauf, Z 950)",
+   "start": "t:TSP2_2",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "KSP2_2-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KSP2_2",
+   "ende": "muffe",
+   "korridor": [
+    "KH"
+   ],
+   "baender": [
+    "W"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     305.3,
+     -4195.2,
+     950.0
+    ],
+    [
+     305.3,
+     -4205.2,
+     950.0
+    ]
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true,
+   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
+   "linie": 2
+  },
+  {
+   "id": "K22-T-b",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:T14",
+   "ende": "t:T11",
+   "anschluss": [],
+   "pfad": [
+    [
+     -1245.9,
+     -4150.0,
+     14.0
+    ],
+    [
+     -712.7,
+     -4150.0,
+     14.0
+    ],
+    [
+     -712.7,
+     -3400.0,
+     14.0
+    ]
+   ],
+   "notiz": "T14 -> +X bis x -713 (Spur der Pumpe-3-Steiger) -> +Y zum T11 (K22 geradeaus, K18 nach Westen)",
+   "korridor": [
+    "KG",
+    "KG"
+   ],
+   "baender": [
+    "U",
+    "U"
+   ],
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true
+  },
+  {
+   "id": "REV2-1",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     -953.8,
+     -4150.0,
+     14.0
+    ],
+    [
+     -953.8,
+     -4150.0,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K22-T-b: T d63, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR2_1",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "REV2-2",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     0.0,
+     -2810.4,
+     -1635.0
+    ],
+    [
+     0.0,
+     -2810.4,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K19-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR2_2",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "REV2-3",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     216.2,
+     -3514.1,
+     -1635.0
+    ],
+    [
+     216.2,
+     -3514.1,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K19-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR2_3",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "REV2-4",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     305.3,
+     -3692.0,
+     -44.4
+    ],
+    [
+     305.3,
+     -3685.7,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K21: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR2_4",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "REV2-5",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
+     14.1,
+     -2382.3,
+     -68.4
+    ],
+    [
+     7.4,
+     -2382.3,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K21: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR2_5",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
    "id": "K44-S1",
    "kante": "K44",
    "dn": 25,
@@ -1050,3375 +4419,9 @@
    ],
    "linie": "frisch",
    "notiz": "Frischwasser Hausanschluss (Ende Platzhalter T10_Zulaufrohr, Az -58) -> Aktivkohle-Station Eingang, Graben Z 140"
-  },
-  {
-   "id": "K01",
-   "kante": "K01",
-   "dn": 75,
-   "farbe": "dunkelblau",
-   "start": "r:R_K01_P",
-   "ende": "t:T5",
-   "heber": true,
-   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
-   "baender": [
-    "W",
-    "W",
-    "U"
-   ],
-   "anschluss": [
-    "Zentralpool",
-    "Feinfilter:1"
-   ],
-   "pfad": [
-    [
-     2245.7,
-     473.2,
-     740.0
-    ],
-    [
-     2376.8,
-     500.9,
-     740.0
-    ],
-    [
-     2376.8,
-     500.9,
-     150
-    ],
-    [
-     2587.9,
-     630.9,
-     150.0
-    ]
-   ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A d63, Az 11.9) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
-   "korridor": [
-    "KH",
-    "KS",
-    "KG"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K01-m",
-   "kante": "K01",
-   "dn": 75,
-   "farbe": "dunkelblau",
-   "start": "t:T5",
-   "ende": "t:T4",
-   "heber": true,
-   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
-   "baender": [
-    "U"
-   ],
-   "anschluss": [
-    "Zentralpool",
-    "Feinfilter:1"
-   ],
-   "pfad": [
-    [
-     2587.9,
-     630.9,
-     150.0
-    ],
-    [
-     2886.0,
-     814.4,
-     150.0
-    ]
-   ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A d63, Az 11.9) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
-   "korridor": [
-    "KG"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K01-b",
-   "kante": "K01",
-   "dn": 75,
-   "farbe": "dunkelblau",
-   "start": "t:T4",
-   "ende": "r:R_K01_F",
-   "heber": true,
-   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K01 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
-   "baender": [
-    "U",
-    "W",
-    "W"
-   ],
-   "anschluss": [
-    "Zentralpool",
-    "Feinfilter:1"
-   ],
-   "pfad": [
-    [
-     2886.0,
-     814.4,
-     150.0
-    ],
-    [
-     3780.3,
-     1365.0,
-     150
-    ],
-    [
-     3780.3,
-     1365.0,
-     720.0
-    ],
-    [
-     3815.0,
-     1235.5,
-     720.0
-    ]
-   ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_Ost_A d63, Az 11.9) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x 3827.9 y 1187.2)",
-   "korridor": [
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K06-T-1",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:KS1",
-   "korridor": [
-    "KG",
-    "KS",
-    "KG"
-   ],
-   "anschluss": [
-    "Feinfilter:1"
-   ],
-   "pfad": [
-    [
-     4024.6,
-     453.1,
-     214
-    ],
-    [
-     4044.2,
-     380.1,
-     214.0
-    ],
-    [
-     4044.2,
-     380.1,
-     14.0
-    ],
-    [
-     3839.8,
-     380.1,
-     14.0
-    ]
-   ],
-   "notiz": "Filterauslauf (Az -75) -> Bogen d63 direkt auf dem Stutzen lotrecht -> Etage auf Z 14 -> nach -X zum T6 (Bypass)",
-   "baender": [
-    "U",
-    "U",
-    "U"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K06-T",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "r:KS1",
-   "ende": "t:T6",
-   "korridor": [
-    "KG"
-   ],
-   "anschluss": [
-    "Feinfilter:1"
-   ],
-   "pfad": [
-    [
-     3714.8,
-     380.1,
-     14.0
-    ],
-    [
-     3550.0,
-     380.1,
-     14.0
-    ]
-   ],
-   "notiz": "Filterauslauf (Az -75) -> Bogen d63 direkt auf dem Stutzen lotrecht -> Etage auf Z 14 -> nach -X zum T6 (Bypass)",
-   "baender": [
-    "U"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K06-T-b",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "t:T6",
-   "ende": "t:T1",
-   "korridor": [
-    "KG",
-    "KG"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     3550.0,
-     380.1,
-     14.0
-    ],
-    [
-     3000.0,
-     380.1,
-     14.0
-    ],
-    [
-     3000.0,
-     89.6,
-     14.0
-    ]
-   ],
-   "notiz": "T6 -> -X bis x 3000 -> -Y zum T1 (Abgaenge K06 geradeaus, K02 lotrecht)",
-   "baender": [
-    "U",
-    "U"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K06",
-   "kante": "K06",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T1",
-   "ende": "r:KP1_1",
-   "korridor": [
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_gross:1"
-   ],
-   "pfad": [
-    [
-     3000.0,
-     89.6,
-     14.0
-    ],
-    [
-     3000.0,
-     -841.4,
-     14.0
-    ],
-    [
-     3000.0,
-     -841.4,
-     520
-    ],
-    [
-     3095.7,
-     -841.4,
-     520.0
-    ]
-   ],
-   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
-   "baender": [
-    "U",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K02",
-   "kante": "K02",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T1",
-   "ende": "r:KP1_2",
-   "korridor": [
-    "KS",
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_gross:2",
-    "Tank_gross:1"
-   ],
-   "pfad": [
-    [
-     3000.0,
-     89.6,
-     14.0
-    ],
-    [
-     3000.0,
-     89.6,
-     520
-    ],
-    [
-     3094.5,
-     89.6,
-     520.0
-    ]
-   ],
-   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
-   "baender": [
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K56-a",
-   "kante": "K56",
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "t:T5",
-   "ende": "r:KH1",
-   "korridor": [
-    "KS"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     2587.9,
-     630.9,
-     150.0
-    ],
-    [
-     2587.9,
-     630.9,
-     -23.9
-    ]
-   ],
-   "notiz": "Abzweig vom T d75 auf K01 lotrecht nach unten bis zum Kugelhahn",
-   "baender": [
-    "U"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K56-b",
-   "kante": "K56",
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "r:KH1",
-   "ende": "t:T6",
-   "korridor": [
-    "KS",
-    "KG",
-    "KG",
-    "KS",
-    "KG"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     2587.9,
-     630.9,
-     -148.9
-    ],
-    [
-     2587.9,
-     630.9,
-     -258.9
-    ],
-    [
-     2587.9,
-     180.1,
-     -258.9
-    ],
-    [
-     3550.0,
-     180.1,
-     -258.9
-    ],
-    [
-     3550.0,
-     180.1,
-     14.0
-    ],
-    [
-     3550.0,
-     380.1,
-     14.0
-    ]
-   ],
-   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter dem Stamm durch, +X bis x 3550 -> lotrecht auf Z 14 -> 200 mm +Y in T6",
-   "baender": [
-    "U",
-    "UT",
-    "UT",
-    "U",
-    "U"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K08",
-   "kante": "K08",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T2",
-   "korridor": [
-    "KS",
-    "KH",
-    "KH",
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_gross:1"
-   ],
-   "pfad": [
-    [
-     3282.7,
-     -841.3,
-     655
-    ],
-    [
-     3282.7,
-     -841.3,
-     900.0
-    ],
-    [
-     2770.0,
-     -841.3,
-     900.0
-    ],
-    [
-     2770.0,
-     348.2,
-     900.0
-    ],
-    [
-     3085.4,
-     348.2,
-     900.0
-    ]
-   ],
-   "notiz": "Druckstutzen -> Z 900 -> -X westlich am Biofilter-Tank vorbei -> +Y -> +X ins T2",
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "W"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K09",
-   "kante": "K09",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T2",
-   "korridor": [
-    "KS",
-    "KH",
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_gross:2",
-    "Tank_gross:1"
-   ],
-   "pfad": [
-    [
-     3281.5,
-     89.7,
-     655
-    ],
-    [
-     3281.5,
-     89.7,
-     900.0
-    ],
-    [
-     3281.5,
-     348.2,
-     900.0
-    ],
-    [
-     3085.4,
-     348.2,
-     900.0
-    ]
-   ],
-   "notiz": "Druckstutzen -> Z 900 ueber die Montagetafel -> +Y unter dem Plattformrand hinaus -> -X ins T2",
-   "baender": [
-    "W",
-    "W",
-    "W"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K08-K09-Stamm",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T2",
-   "ende": "r:R_ZUL",
-   "korridor": [
-    "KS",
-    "KH"
-   ],
-   "anschluss": [
-    "Tank_gross:1"
-   ],
-   "pfad": [
-    [
-     3085.4,
-     348.2,
-     900.0
-    ],
-    [
-     3085.4,
-     348.2,
-     1820.0
-    ],
-    [
-     3057.1,
-     200.9,
-     1820.0
-    ]
-   ],
-   "notiz": "T2 -> lotrecht auf Zulaufhoehe Z 1820 -> 150 mm in Zulauf-Richtung zur Reduziermuffe d63/d50",
-   "baender": [
-    "W",
-    "WH"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K10",
-   "kante": "K10",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:R_UEB",
-   "ende": "muffe",
-   "korridor": [
-    "KH"
-   ],
-   "anschluss": [
-    "Tank_gross:1"
-   ],
-   "pfad": [
-    [
-     2775.6,
-     -184.8,
-     1970.0
-    ],
-    [
-     2677.4,
-     -165.9,
-     1970.0
-    ]
-   ],
-   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)",
-   "baender": [
-    "WH"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K03-Tief",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T3",
-   "korridor": [
-    "KS",
-    "KG"
-   ],
-   "anschluss": [
-    "Zentralpool"
-   ],
-   "pfad": [
-    [
-     0.0,
-     0.0,
-     -1575
-    ],
-    [
-     0.0,
-     0.0,
-     -1635.0
-    ],
-    [
-     0.0,
-     -1350.2,
-     -1635.0
-    ]
-   ],
-   "notiz": "Bodenablauf -> Bogen -> unter dem Pool nach Sueden zum T d50",
-   "baender": [
-    "U",
-    "UT"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K03-Steig-1-1",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T3",
-   "ende": "t:TR1_1",
-   "korridor": [
-    "KG"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     0.0,
-     -1350.2,
-     -1635.0
-    ],
-    [
-     2065.5,
-     -1350.2,
-     -1635.0
-    ]
-   ],
-   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
-   "baender": [
-    "UT"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K03-Steig-1",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TR1_1",
-   "ende": "t:TSP1_1",
-   "korridor": [
-    "KG",
-    "KS"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     2065.5,
-     -1350.2,
-     -1635.0
-    ],
-    [
-     2400,
-     -1350.2,
-     -1635.0
-    ],
-    [
-     2400,
-     -1350.2,
-     520
-    ]
-   ],
-   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
-   "baender": [
-    "UT",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K03-Steig",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TSP1_1",
-   "ende": "r:R_K03",
-   "korridor": [
-    "KH"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     2400,
-     -1350.2,
-     520
-    ],
-    [
-     2484.4,
-     -1350.2,
-     520
-    ]
-   ],
-   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
-   "baender": [
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K03",
-   "kante": "K03",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "r:R_K03",
-   "ende": "stutzen",
-   "korridor": [
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_klein:3",
-    "Tank_klein:2"
-   ],
-   "pfad": [
-    [
-     2547.4,
-     -1350.2,
-     520
-    ],
-    [
-     2667.4,
-     -1350.2,
-     520
-    ]
-   ],
-   "notiz": "Reduziermuffe d50/d40 -> Saugstutzen Pumpe_klein:3",
-   "baender": [
-    "W"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K03-K19-Stumpf",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T3",
-   "ende": "offen",
-   "korridor": [
-    "KG"
-   ],
-   "anschluss": [
-    "Zentralpool"
-   ],
-   "pfad": [
-    [
-     0.0,
-     -1350.2,
-     -1635.0
-    ],
-    [
-     0.0,
-     -1650.2,
-     -1635.0
-    ]
-   ],
-   "notiz": "Linie-2-Zweig bis zur Abzweigung (Netz K19)",
-   "baender": [
-    "UT"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K04",
-   "kante": "K04",
-   "dn": 32,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:R_K04",
-   "korridor": [
-    "KS",
-    "KH",
-    "KH",
-    "KS",
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_klein:3",
-    "Tank_klein:2"
-   ],
-   "pfad": [
-    [
-     2768.4,
-     -1350.7,
-     645
-    ],
-    [
-     2768.4,
-     -1350.7,
-     780.0
-    ],
-    [
-     2253.8,
-     -1350.7,
-     780.0
-    ],
-    [
-     2253.8,
-     -1771.2,
-     780.0
-    ],
-    [
-     2253.8,
-     -1771.2,
-     1397.0
-    ],
-    [
-     2397.6,
-     -1814.1,
-     1397.0
-    ]
-   ],
-   "notiz": "Druckstutzen -> Z 780 -> -X -> -Y -> lotrecht auf Zulaufhoehe Z 1397 -> 150 mm in Port-Richtung zur Reduziermuffe d50/d32 (tangentialer Zulauf)",
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "W",
-    "W"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K05-1",
-   "kante": "K05",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:TSP1_2",
-   "gefaelle_pct": 1.5,
-   "korridor": [
-    "KH",
-    "KS"
-   ],
-   "anschluss": [
-    "Tank_klein:2"
-   ],
-   "pfad": [
-    [
-     2715.2,
-     -2075.2,
-     1547
-    ],
-    [
-     2669.5,
-     -2228.5,
-     1544.6
-    ],
-    [
-     2669.5,
-     -2228.5,
-     950.0
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
-   "baender": [
-    "WH",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K05-2",
-   "kante": "K05",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TSP1_2",
-   "ende": "t:TR1_2",
-   "gefaelle_pct": 1.5,
-   "korridor": [
-    "KS",
-    "KG"
-   ],
-   "anschluss": [
-    "Tank_klein:2"
-   ],
-   "pfad": [
-    [
-     2669.5,
-     -2228.5,
-     950.0
-    ],
-    [
-     2669.5,
-     -2228.5,
-     -40.0
-    ],
-    [
-     2860.7,
-     -2228.5,
-     -42.9
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
-   "baender": [
-    "W",
-    "UT"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K05-3",
-   "kante": "K05",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TR1_2",
-   "ende": "t:TR1_3",
-   "gefaelle_pct": 1.5,
-   "korridor": [
-    "KG",
-    "KG"
-   ],
-   "anschluss": [
-    "Tank_klein:2"
-   ],
-   "pfad": [
-    [
-     2860.7,
-     -2228.5,
-     -42.9
-    ],
-    [
-     3260.0,
-     -2228.5,
-     -48.9
-    ],
-    [
-     3260.0,
-     537.4,
-     -90.3
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
-   "baender": [
-    "UT",
-    "UT"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K05",
-   "kante": "K05",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TR1_3",
-   "ende": "t:T4",
-   "gefaelle_pct": 1.5,
-   "korridor": [
-    "KG",
-    "KG",
-    "KS"
-   ],
-   "anschluss": [
-    "Tank_klein:2"
-   ],
-   "pfad": [
-    [
-     3260.0,
-     537.4,
-     -90.3
-    ],
-    [
-     3260.0,
-     814.4,
-     -94.5
-    ],
-    [
-     2886.0,
-     814.4,
-     -100.1
-    ],
-    [
-     2886.0,
-     814.4,
-     150.0
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
-   "baender": [
-    "UT",
-    "UT",
-    "U"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K07",
-   "kante": "K07",
-   "dn": 40,
-   "farbe": "grau",
-   "start": "muffe",
-   "ende": "muffe",
-   "gefaelle_pct": 1.5,
-   "korridor": [
-    "KS",
-    "KG",
-    "KG",
-    "KS"
-   ],
-   "anschluss": [
-    "Tank_klein:2",
-    "schlammfass_1"
-   ],
-   "pfad": [
-    [
-     2841.5,
-     -1651.6,
-     404.0
-    ],
-    [
-     2841.5,
-     -1651.6,
-     230.0
-    ],
-    [
-     3925.0,
-     -1651.6,
-     213.7
-    ],
-    [
-     3925.0,
-     -1461.0,
-     210.9
-    ],
-    [
-     3925.0,
-     -1461.0,
-     86.9
-    ]
-   ],
-   "notiz": "Schlammablass: Federhahn -> lotrecht in den Graben (Z 230) -> 1084 + 191 mm mit 1.5 % Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses",
-   "baender": [
-    "W",
-    "U",
-    "U",
-    "U"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "KB1-Kappe",
-   "kante": null,
-   "dn": 50,
-   "farbe": "grau",
-   "start": "r:KB1",
-   "ende": "muffe",
-   "korridor": [
-    "KS"
-   ],
-   "anschluss": [
-    "Tank_gross:1"
-   ],
-   "pfad": [
-    [
-     3371.6,
-     -299.6,
-     453.0
-    ],
-    [
-     3371.6,
-     -299.6,
-     443.0
-    ]
-   ],
-   "notiz": "Rohrstueck d50 zwischen Kugelhahn und Kappe (Wartungsablass)",
-   "baender": [
-    "W"
-   ],
-   "linie": 1
-  },
-  {
-   "id": "K06",
-   "kante": "K06",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T1",
-   "ende": "stutzen",
-   "korridor": [
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_gross:1"
-   ],
-   "pfad": [
-    [
-     3000.0,
-     89.6,
-     14.0
-    ],
-    [
-     3000.0,
-     -841.4,
-     14.0
-    ],
-    [
-     3000.0,
-     -841.4,
-     520
-    ],
-    [
-     3176.7,
-     -841.4,
-     520
-    ]
-   ],
-   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
-   "baender": [
-    "U",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 1
-  },
-  {
-   "id": "K02",
-   "kante": "K02",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T1",
-   "ende": "stutzen",
-   "korridor": [
-    "KS",
-    "KH"
-   ],
-   "anschluss": [
-    "Pumpe_gross:2",
-    "Tank_gross:1"
-   ],
-   "pfad": [
-    [
-     3000.0,
-     89.6,
-     14.0
-    ],
-    [
-     3000.0,
-     89.6,
-     520
-    ],
-    [
-     3175.5,
-     89.6,
-     520
-    ]
-   ],
-   "notiz": "T1 -> Steiger bei x 3000 auf Saughoehe Z 520 -> waagerecht +X in den Saugstutzen",
-   "baender": [
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 1
-  },
-  {
-   "id": "K06-T",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T6",
-   "korridor": [
-    "KG",
-    "KS",
-    "KG"
-   ],
-   "anschluss": [
-    "Feinfilter:1"
-   ],
-   "pfad": [
-    [
-     4024.6,
-     453.1,
-     214
-    ],
-    [
-     4044.2,
-     380.1,
-     214.0
-    ],
-    [
-     4044.2,
-     380.1,
-     14.0
-    ],
-    [
-     3550.0,
-     380.1,
-     14.0
-    ]
-   ],
-   "notiz": "Filterauslauf (Az -75) -> Bogen d63 direkt auf dem Stutzen lotrecht -> Etage auf Z 14 -> nach -X zum T6 (Bypass)",
-   "baender": [
-    "U",
-    "U",
-    "U"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 1
-  },
-  {
-   "id": "K03-Steig",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T3",
-   "ende": "r:R_K03",
-   "korridor": [
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     0.0,
-     -1350.2,
-     -1635.0
-    ],
-    [
-     2400,
-     -1350.2,
-     -1635.0
-    ],
-    [
-     2400,
-     -1350.2,
-     520
-    ],
-    [
-     2484.4,
-     -1350.2,
-     520
-    ]
-   ],
-   "notiz": "T -> +X unter dem Pool hinaus -> Steiger auf Saughoehe -> Reduziermuffe d50/d40",
-   "baender": [
-    "UT",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 1
-  },
-  {
-   "id": "SP1-1",
-   "dn": 50,
-   "ende": "r:KSP1_1",
-   "pfad": [
-    [
-     2400,
-     -1350.2,
-     520
-    ],
-    [
-     2400.0,
-     -1350.2,
-     620.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "notiz": "am Steigerkopf K03-Steig (Absetzer-Saug, lotrecht in den Steiger)",
-   "start": "t:TSP1_1",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 1
-  },
-  {
-   "id": "KSP1_1-Kappe",
-   "kante": null,
-   "dn": 50,
-   "farbe": "grau",
-   "start": "r:KSP1_1",
-   "ende": "muffe",
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     2400.0,
-     -1350.2,
-     732.0
-    ],
-    [
-     2400.0,
-     -1350.2,
-     742.0
-    ]
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
-   "linie": 1
-  },
-  {
-   "id": "K05",
-   "kante": "K05",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T4",
-   "gefaelle_pct": 1.5,
-   "korridor": [
-    "KH",
-    "KS",
-    "KG",
-    "KG",
-    "KG",
-    "KS"
-   ],
-   "anschluss": [
-    "Tank_klein:2"
-   ],
-   "pfad": [
-    [
-     2715.2,
-     -2075.2,
-     1547
-    ],
-    [
-     2669.5,
-     -2228.5,
-     1544.6
-    ],
-    [
-     2669.5,
-     -2228.5,
-     -40.0
-    ],
-    [
-     3260.0,
-     -2228.5,
-     -48.9
-    ],
-    [
-     3260.0,
-     814.4,
-     -94.5
-    ],
-    [
-     2886.0,
-     814.4,
-     -100.1
-    ],
-    [
-     2886.0,
-     814.4,
-     150.0
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +X 590, +Y 3043, -X 374 mm mit 1.5 % Gefaelle -> lotrecht hoch in T4 auf dem Heber",
-   "baender": [
-    "WH",
-    "W",
-    "UT",
-    "UT",
-    "UT",
-    "U"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 1
-  },
-  {
-   "id": "SP1-2",
-   "dn": 50,
-   "ende": "r:KSP1_2",
-   "pfad": [
-    [
-     2669.5,
-     -2228.5,
-     950.0
-    ],
-    [
-     2569.5,
-     -2228.5,
-     950.0
-    ]
-   ],
-   "korridor": [
-    "KH"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "notiz": "am Fallrohr K05 (Absetzer-Auslauf, Z 950)",
-   "start": "t:TSP1_2",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 1
-  },
-  {
-   "id": "KSP1_2-Kappe",
-   "kante": null,
-   "dn": 50,
-   "farbe": "grau",
-   "start": "r:KSP1_2",
-   "ende": "muffe",
-   "korridor": [
-    "KH"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     2457.5,
-     -2228.5,
-     950.0
-    ],
-    [
-     2447.5,
-     -2228.5,
-     950.0
-    ]
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
-   "linie": 1
-  },
-  {
-   "id": "REV1-1",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     2065.5,
-     -1350.2,
-     -1635.0
-    ],
-    [
-     2065.5,
-     -1350.2,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K03-Steig-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR1_1",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 1
-  },
-  {
-   "id": "REV1-2",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     2860.7,
-     -2228.5,
-     -42.9
-    ],
-    [
-     2867.0,
-     -2228.5,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K05: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR1_2",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 1
-  },
-  {
-   "id": "REV1-3",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     3260.0,
-     537.4,
-     -90.3
-    ],
-    [
-     3260.0,
-     544.4,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K05: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR1_3",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 1
-  },
-  {
-   "id": "K17",
-   "kante": "K17",
-   "dn": 75,
-   "farbe": "dunkelblau",
-   "start": "r:R_K17_P",
-   "ende": "t:T13",
-   "heber": true,
-   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
-   "baender": [
-    "W",
-    "W",
-    "U"
-   ],
-   "anschluss": [
-    "Zentralpool",
-    "Feinfilter:2"
-   ],
-   "pfad": [
-    [
-     -1020.4,
-     -2055.7,
-     740.0
-    ],
-    [
-     -1080.0,
-     -2175.7,
-     740.0
-    ],
-    [
-     -1080.0,
-     -2175.7,
-     150
-    ],
-    [
-     -1245.9,
-     -2294.8,
-     150.0
-    ]
-   ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B d63, Az -116.4) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8)",
-   "korridor": [
-    "KH",
-    "KS",
-    "KG"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K17-m",
-   "kante": "K17",
-   "dn": 75,
-   "farbe": "dunkelblau",
-   "start": "t:T13",
-   "ende": "t:T12",
-   "heber": true,
-   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
-   "baender": [
-    "U"
-   ],
-   "anschluss": [
-    "Zentralpool",
-    "Feinfilter:2"
-   ],
-   "pfad": [
-    [
-     -1245.9,
-     -2294.8,
-     150.0
-    ],
-    [
-     -1367.7,
-     -2382.3,
-     150.0
-    ]
-   ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B d63, Az -116.4) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8)",
-   "korridor": [
-    "KG"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K17-b",
-   "kante": "K17",
-   "dn": 75,
-   "farbe": "dunkelblau",
-   "start": "t:T12",
-   "ende": "r:R_K17_F",
-   "heber": true,
-   "dn_abweichung": "E14 (01.11.2026): Heber durchgehend d75 gebaut, Netz-Kante K17 fuehrt noch d63 (Netzliste gehoert dem Orchestrator)",
-   "baender": [
-    "U",
-    "W",
-    "W"
-   ],
-   "anschluss": [
-    "Zentralpool",
-    "Feinfilter:2"
-   ],
-   "pfad": [
-    [
-     -1367.7,
-     -2382.3,
-     150.0
-    ],
-    [
-     -1719.7,
-     -2635.0,
-     150
-    ],
-    [
-     -1719.7,
-     -2635.0,
-     720.0
-    ],
-    [
-     -1685.0,
-     -2764.5,
-     720.0
-    ]
-   ],
-   "notiz": "Seitenablauf Z 740 (Pool-Stutzen SA_West_B d63, Az -116.4) -> Reduziermuffe d75/d63 -> Bogen runter -> Graben Z 150 (Heber d75, Rohr oben 727.5 unter Spiegel 915) -> Bogen hoch -> Reduziermuffe d75/d63 auf den Einlauf Z 720 (Stutzenspitze x -1672.1 y -2812.8)",
-   "korridor": [
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K22-T-1",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:KS2",
-   "anschluss": [
-    "Feinfilter:2"
-   ],
-   "pfad": [
-    [
-     -1475.4,
-     -3546.9,
-     214
-    ],
-    [
-     -1455.8,
-     -3619.9,
-     214.0
-    ],
-    [
-     -1455.8,
-     -3619.9,
-     14.0
-    ],
-    [
-     -1455.8,
-     -3822.4,
-     14.0
-    ]
-   ],
-   "notiz": "Filterauslauf (Az -75) -> Bogen d63 auf dem Stutzen lotrecht -> Etage auf Z 14 -> -Y auf die Suedspur y -4150 -> +X zum T14 (Bypass)",
-   "korridor": [
-    "KG",
-    "KS",
-    "KG"
-   ],
-   "baender": [
-    "U",
-    "U",
-    "U"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K22-T",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "r:KS2",
-   "ende": "t:T14",
-   "anschluss": [
-    "Feinfilter:2"
-   ],
-   "pfad": [
-    [
-     -1455.8,
-     -3947.4,
-     14.0
-    ],
-    [
-     -1455.8,
-     -4150.0,
-     14.0
-    ],
-    [
-     -1245.9,
-     -4150.0,
-     14.0
-    ]
-   ],
-   "notiz": "Filterauslauf (Az -75) -> Bogen d63 auf dem Stutzen lotrecht -> Etage auf Z 14 -> -Y auf die Suedspur y -4150 -> +X zum T14 (Bypass)",
-   "korridor": [
-    "KG",
-    "KG"
-   ],
-   "baender": [
-    "U",
-    "U"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K22-T-b-1",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "t:T14",
-   "ende": "t:TR2_1",
-   "anschluss": [],
-   "pfad": [
-    [
-     -1245.9,
-     -4150.0,
-     14.0
-    ],
-    [
-     -953.8,
-     -4150.0,
-     14.0
-    ]
-   ],
-   "notiz": "T14 -> +X bis x -713 (Spur der Pumpe-3-Steiger) -> +Y zum T11 (K22 geradeaus, K18 nach Westen)",
-   "korridor": [
-    "KG"
-   ],
-   "baender": [
-    "U"
-   ],
-   "linie": 2,
-   "varianten": [
-    "a_plus"
-   ]
-  },
-  {
-   "id": "K22-T-b",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "t:TR2_1",
-   "ende": "t:T11",
-   "anschluss": [],
-   "pfad": [
-    [
-     -953.8,
-     -4150.0,
-     14.0
-    ],
-    [
-     -712.7,
-     -4150.0,
-     14.0
-    ],
-    [
-     -712.7,
-     -3400.0,
-     14.0
-    ]
-   ],
-   "notiz": "T14 -> +X bis x -713 (Spur der Pumpe-3-Steiger) -> +Y zum T11 (K22 geradeaus, K18 nach Westen)",
-   "korridor": [
-    "KG",
-    "KG"
-   ],
-   "baender": [
-    "U",
-    "U"
-   ],
-   "linie": 2,
-   "varianten": [
-    "a_plus"
-   ]
-  },
-  {
-   "id": "K22",
-   "kante": "K22",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T11",
-   "ende": "r:KP2_1",
-   "anschluss": [
-    "Pumpe_gross:3",
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -712.7,
-     -3400.0,
-     14.0
-    ],
-    [
-     -712.7,
-     -2840.5,
-     14.0
-    ],
-    [
-     -712.7,
-     -2840.5,
-     520
-    ],
-    [
-     -599.6,
-     -2877.4,
-     520.0
-    ]
-   ],
-   "notiz": "T11 -> +Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (161,9 Grad, Ausnahme 2) in den Stutzen Pumpe_gross:3",
-   "korridor": [
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "baender": [
-    "U",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K18",
-   "kante": "K18",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T11",
-   "ende": "r:KP2_2",
-   "anschluss": [
-    "Pumpe_gross:4",
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -712.7,
-     -3400.0,
-     14.0
-    ],
-    [
-     -1001.3,
-     -3400.0,
-     14.0
-    ],
-    [
-     -1001.3,
-     -3725.7,
-     14.0
-    ],
-    [
-     -1001.3,
-     -3725.7,
-     520
-    ],
-    [
-     -888.2,
-     -3762.6,
-     520.0
-    ]
-   ],
-   "notiz": "T11 -> -X 289 mm -> -Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht -> in Port-Richtung in den Stutzen Pumpe_gross:4; Achsabstand zur Stamm-Nordspur 289 mm",
-   "korridor": [
-    "KG",
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "baender": [
-    "U",
-    "U",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K57-a",
-   "kante": "K57",
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "t:T13",
-   "ende": "r:KH2",
-   "anschluss": [],
-   "pfad": [
-    [
-     -1245.9,
-     -2294.8,
-     150.0
-    ],
-    [
-     -1245.9,
-     -2294.8,
-     -23.9
-    ]
-   ],
-   "notiz": "Abzweig vom T d75 auf K17 lotrecht nach unten bis zum Kugelhahn",
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K57-b",
-   "kante": "K57",
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "r:KH2",
-   "ende": "t:T14",
-   "anschluss": [],
-   "pfad": [
-    [
-     -1245.9,
-     -2294.8,
-     -148.9
-    ],
-    [
-     -1245.9,
-     -2294.8,
-     -258.9
-    ],
-    [
-     -1245.9,
-     -4150.0,
-     -258.9
-    ],
-    [
-     -1245.9,
-     -4150.0,
-     14.0
-    ]
-   ],
-   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter der Filtergrube bis y -4150 -> lotrecht von unten in T14 (Z 14)",
-   "korridor": [
-    "KS",
-    "KG",
-    "KS"
-   ],
-   "baender": [
-    "U",
-    "UT",
-    "U"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K24",
-   "kante": "K24",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T15",
-   "anschluss": [
-    "Pumpe_gross:3",
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -421.9,
-     -2935.6,
-     655
-    ],
-    [
-     -421.9,
-     -2935.6,
-     900.0
-    ],
-    [
-     -1267.5,
-     -2935.6,
-     900.0
-    ],
-    [
-     -1267.5,
-     -3442.5,
-     900.0
-    ],
-    [
-     -1017.5,
-     -3442.5,
-     900.0
-    ]
-   ],
-   "notiz": "Druckstutzen -> Z 900 -> -X bis x -1267 -> -Y -> +X ins T15",
-   "korridor": [
-    "KS",
-    "KH",
-    "KH",
-    "KH"
-   ],
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "W"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K25",
-   "kante": "K25",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T15",
-   "anschluss": [
-    "Pumpe_gross:4",
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -710.5,
-     -3820.8,
-     655
-    ],
-    [
-     -710.5,
-     -3820.8,
-     900.0
-    ],
-    [
-     -710.5,
-     -3442.5,
-     900.0
-    ],
-    [
-     -1017.5,
-     -3442.5,
-     900.0
-    ]
-   ],
-   "notiz": "Druckstutzen (unter dem Zulauf-Stutzen) -> Z 900 -> +Y 378 mm -> -X 307 mm ins T15",
-   "korridor": [
-    "KS",
-    "KH",
-    "KH"
-   ],
-   "baender": [
-    "W",
-    "W",
-    "W"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K24-K25-Stamm",
-   "kante": null,
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T15",
-   "ende": "r:R_ZUL2",
-   "anschluss": [
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -1017.5,
-     -3442.5,
-     900.0
-    ],
-    [
-     -1017.5,
-     -3442.5,
-     1320.0
-    ],
-    [
-     -1017.5,
-     -3942.5,
-     1320.0
-    ],
-    [
-     -1017.5,
-     -3942.5,
-     1820.0
-    ],
-    [
-     -742.0,
-     -3851.9,
-     1820.0
-    ]
-   ],
-   "notiz": "T15 -> lotrecht auf Z 1320 -> 500 mm -Y -> lotrecht auf Zulaufhoehe Z 1820 -> 290 mm gegen die Port-Richtung (-161,8 Grad, Ausnahme 2) zur Reduziermuffe d63/d50",
-   "korridor": [
-    "KS",
-    "KH",
-    "KS",
-    "KH"
-   ],
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "WH"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K26",
-   "kante": "K26",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:R_UEB2",
-   "ende": "muffe",
-   "anschluss": [
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -268.0,
-     -3910.3,
-     1970.0
-    ],
-    [
-     -236.8,
-     -4005.3,
-     1970.0
-    ]
-   ],
-   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)",
-   "korridor": [
-    "KH"
-   ],
-   "baender": [
-    "WH"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K19-1-1",
-   "kante": "K19",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:TR2_2",
-   "anschluss": [
-    "Pumpe_klein:1",
-    "Tank_klein:1"
-   ],
-   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
-   "pfad": [
-    [
-     0.0,
-     -1650.2,
-     -1635.0
-    ],
-    [
-     0.0,
-     -2810.4,
-     -1635.0
-    ]
-   ],
-   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
-   "korridor": [
-    "KG"
-   ],
-   "baender": [
-    "UT"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K19-1-2",
-   "kante": "K19",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TR2_2",
-   "ende": "t:TR2_3",
-   "anschluss": [
-    "Pumpe_klein:1",
-    "Tank_klein:1"
-   ],
-   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
-   "pfad": [
-    [
-     0.0,
-     -2810.4,
-     -1635.0
-    ],
-    [
-     0.0,
-     -3514.1,
-     -1635.0
-    ],
-    [
-     216.2,
-     -3514.1,
-     -1635.0
-    ]
-   ],
-   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
-   "korridor": [
-    "KG",
-    "KG"
-   ],
-   "baender": [
-    "UT",
-    "UT"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K19-1",
-   "kante": "K19",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TR2_3",
-   "ende": "t:TSP2_1",
-   "anschluss": [
-    "Pumpe_klein:1",
-    "Tank_klein:1"
-   ],
-   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
-   "pfad": [
-    [
-     216.2,
-     -3514.1,
-     -1635.0
-    ],
-    [
-     556.6,
-     -3514.1,
-     -1635.0
-    ],
-    [
-     556.6,
-     -3514.1,
-     520.0
-    ]
-   ],
-   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
-   "korridor": [
-    "KG",
-    "KS"
-   ],
-   "baender": [
-    "UT",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K19",
-   "kante": "K19",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TSP2_1",
-   "ende": "r:R_K19",
-   "anschluss": [
-    "Pumpe_klein:1",
-    "Tank_klein:1"
-   ],
-   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
-   "pfad": [
-    [
-     556.6,
-     -3514.1,
-     520.0
-    ],
-    [
-     797.1,
-     -3592.7,
-     520.0
-    ]
-   ],
-   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
-   "korridor": [
-    "KH"
-   ],
-   "baender": [
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K20",
-   "kante": "K20",
-   "dn": 32,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:R_K20",
-   "anschluss": [
-    "Pumpe_klein:1",
-    "Tank_klein:1"
-   ],
-   "pfad": [
-    [
-     928.2,
-     -3635.5,
-     645
-    ],
-    [
-     928.2,
-     -3635.5,
-     780.0
-    ],
-    [
-     590.0,
-     -3635.5,
-     780.0
-    ],
-    [
-     590.0,
-     -3434.7,
-     780.0
-    ],
-    [
-     590.0,
-     -3434.7,
-     1397.0
-    ],
-    [
-     599.6,
-     -3584.4,
-     1397.0
-    ]
-   ],
-   "notiz": "Druckstutzen -> Z 780 -> -X -> +Y -> lotrecht auf Zulaufhoehe Z 1397 -> 150 mm in Port-Richtung zur Reduziermuffe d50/d32",
-   "korridor": [
-    "KS",
-    "KH",
-    "KH",
-    "KS",
-    "KH"
-   ],
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "W",
-    "W"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K21-1",
-   "kante": "K21",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:TSP2_2",
-   "gefaelle_pct": 1.5,
-   "anschluss": [
-    "Tank_klein:1"
-   ],
-   "pfad": [
-    [
-     464.9,
-     -3972.9,
-     1547
-    ],
-    [
-     305.3,
-     -3983.2,
-     1544.6
-    ],
-    [
-     305.3,
-     -3983.2,
-     950.0
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
-   "korridor": [
-    "KH",
-    "KS"
-   ],
-   "baender": [
-    "WH",
-    "W"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K21-2",
-   "kante": "K21",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TSP2_2",
-   "ende": "t:TR2_4",
-   "gefaelle_pct": 1.5,
-   "anschluss": [
-    "Tank_klein:1"
-   ],
-   "pfad": [
-    [
-     305.3,
-     -3983.2,
-     950.0
-    ],
-    [
-     305.3,
-     -3983.2,
-     -40.0
-    ],
-    [
-     305.3,
-     -3692.0,
-     -44.4
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
-   "korridor": [
-    "KS",
-    "KG"
-   ],
-   "baender": [
-    "W",
-    "UT"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K21-3",
-   "kante": "K21",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TR2_4",
-   "ende": "t:TR2_5",
-   "gefaelle_pct": 1.5,
-   "anschluss": [
-    "Tank_klein:1"
-   ],
-   "pfad": [
-    [
-     305.3,
-     -3692.0,
-     -44.4
-    ],
-    [
-     305.3,
-     -2382.3,
-     -64.0
-    ],
-    [
-     14.1,
-     -2382.3,
-     -68.4
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
-   "korridor": [
-    "KG",
-    "KG"
-   ],
-   "baender": [
-    "UT",
-    "UT"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K21",
-   "kante": "K21",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:TR2_5",
-   "ende": "t:T12",
-   "gefaelle_pct": 1.5,
-   "anschluss": [
-    "Tank_klein:1"
-   ],
-   "pfad": [
-    [
-     14.1,
-     -2382.3,
-     -68.4
-    ],
-    [
-     -1367.7,
-     -2382.3,
-     -89.1
-    ],
-    [
-     -1367.7,
-     -2382.3,
-     150.0
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
-   "korridor": [
-    "KG",
-    "KS"
-   ],
-   "baender": [
-    "UT",
-    "U"
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K23",
-   "kante": "K23",
-   "dn": 40,
-   "farbe": "grau",
-   "start": "muffe",
-   "ende": "muffe",
-   "gefaelle_pct": 1.5,
-   "korridor": [
-    "KS",
-    "KG",
-    "KG",
-    "KS"
-   ],
-   "anschluss": [
-    "Tank_klein:1",
-    "schlammfass_2"
-   ],
-   "pfad": [
-    [
-     906.0,
-     -3944.4,
-     404.0
-    ],
-    [
-     906.0,
-     -3944.4,
-     230.0
-    ],
-    [
-     906.0,
-     -3083.0,
-     217.1
-    ],
-    [
-     1307.5,
-     -3083.0,
-     211.1
-    ],
-    [
-     1307.5,
-     -3083.0,
-     87.1
-    ]
-   ],
-   "notiz": "Schlammablass: Federhahn -> lotrecht in den Graben (Z 230) -> 861 + 402 mm mit 1.5 % Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses",
-   "baender": [
-    "W",
-    "U",
-    "U",
-    "U"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "KB2-Kappe",
-   "kante": null,
-   "dn": 50,
-   "farbe": "grau",
-   "start": "r:KB2",
-   "ende": "muffe",
-   "korridor": [
-    "KS"
-   ],
-   "anschluss": [
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -457.6,
-     -3333.7,
-     453.0
-    ],
-    [
-     -457.6,
-     -3333.7,
-     443.0
-    ]
-   ],
-   "notiz": "Rohrstueck d50 zwischen Kugelhahn und Kappe (Wartungsablass)",
-   "baender": [
-    "W"
-   ],
-   "linie": 2
-  },
-  {
-   "id": "K22",
-   "kante": "K22",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T11",
-   "ende": "stutzen",
-   "anschluss": [
-    "Pumpe_gross:3",
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -712.7,
-     -3400.0,
-     14.0
-    ],
-    [
-     -712.7,
-     -2840.5,
-     14.0
-    ],
-    [
-     -712.7,
-     -2840.5,
-     520
-    ],
-    [
-     -522.6,
-     -2902.6,
-     520
-    ]
-   ],
-   "notiz": "T11 -> +Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (161,9 Grad, Ausnahme 2) in den Stutzen Pumpe_gross:3",
-   "korridor": [
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "baender": [
-    "U",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 2
-  },
-  {
-   "id": "K18",
-   "kante": "K18",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "t:T11",
-   "ende": "stutzen",
-   "anschluss": [
-    "Pumpe_gross:4",
-    "Tank_gross_t3:1"
-   ],
-   "pfad": [
-    [
-     -712.7,
-     -3400.0,
-     14.0
-    ],
-    [
-     -1001.3,
-     -3400.0,
-     14.0
-    ],
-    [
-     -1001.3,
-     -3725.7,
-     14.0
-    ],
-    [
-     -1001.3,
-     -3725.7,
-     520
-    ],
-    [
-     -811.2,
-     -3787.8,
-     520
-    ]
-   ],
-   "notiz": "T11 -> -X 289 mm -> -Y zum Steiger 200 mm vor dem Saugstutzen -> lotrecht -> in Port-Richtung in den Stutzen Pumpe_gross:4; Achsabstand zur Stamm-Nordspur 289 mm",
-   "korridor": [
-    "KG",
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "baender": [
-    "U",
-    "U",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 2
-  },
-  {
-   "id": "K22-T",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T14",
-   "anschluss": [
-    "Feinfilter:2"
-   ],
-   "pfad": [
-    [
-     -1475.4,
-     -3546.9,
-     214
-    ],
-    [
-     -1455.8,
-     -3619.9,
-     214.0
-    ],
-    [
-     -1455.8,
-     -3619.9,
-     14.0
-    ],
-    [
-     -1455.8,
-     -4150.0,
-     14.0
-    ],
-    [
-     -1245.9,
-     -4150.0,
-     14.0
-    ]
-   ],
-   "notiz": "Filterauslauf (Az -75) -> Bogen d63 auf dem Stutzen lotrecht -> Etage auf Z 14 -> -Y auf die Suedspur y -4150 -> +X zum T14 (Bypass)",
-   "korridor": [
-    "KG",
-    "KS",
-    "KG",
-    "KG"
-   ],
-   "baender": [
-    "U",
-    "U",
-    "U",
-    "U"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 2
-  },
-  {
-   "id": "K19",
-   "kante": "K19",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:R_K19",
-   "anschluss": [
-    "Pumpe_klein:1",
-    "Tank_klein:1"
-   ],
-   "dn_abweichung": "M10-UMBAU: Zulauf d50 wie K03-Steig (Linie 1), Reduziermuffe d50/d40 direkt auf dem Saugstutzen; Netz-Kante K19 fuehrt d40",
-   "pfad": [
-    [
-     0.0,
-     -1650.2,
-     -1635.0
-    ],
-    [
-     0.0,
-     -3514.1,
-     -1635.0
-    ],
-    [
-     556.6,
-     -3514.1,
-     -1635.0
-    ],
-    [
-     556.6,
-     -3514.1,
-     520.0
-    ],
-    [
-     797.1,
-     -3592.7,
-     520.0
-    ]
-   ],
-   "notiz": "ab dem Linie-2-Stumpf (Kupplung, Z -1635): -Y unter dem Pool hinaus -> +X zum Steiger 290 mm vor dem Saugstutzen -> lotrecht auf Z 520 -> in Port-Richtung (Ausnahme 2) zur Reduziermuffe d50/d40 auf dem Saugstutzen Pumpe_klein:1",
-   "korridor": [
-    "KG",
-    "KG",
-    "KS",
-    "KH"
-   ],
-   "baender": [
-    "UT",
-    "UT",
-    "W",
-    "W"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 2
-  },
-  {
-   "id": "SP2-1",
-   "dn": 50,
-   "ende": "r:KSP2_1",
-   "pfad": [
-    [
-     556.6,
-     -3514.1,
-     520.0
-    ],
-    [
-     556.6,
-     -3514.1,
-     620.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "notiz": "am Steigerkopf K19 (Absetzer-Saug, lotrecht in den Steiger)",
-   "start": "t:TSP2_1",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 2
-  },
-  {
-   "id": "KSP2_1-Kappe",
-   "kante": null,
-   "dn": 50,
-   "farbe": "grau",
-   "start": "r:KSP2_1",
-   "ende": "muffe",
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     556.6,
-     -3514.1,
-     732.0
-    ],
-    [
-     556.6,
-     -3514.1,
-     742.0
-    ]
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
-   "linie": 2
-  },
-  {
-   "id": "K21",
-   "kante": "K21",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "t:T12",
-   "gefaelle_pct": 1.5,
-   "anschluss": [
-    "Tank_klein:1"
-   ],
-   "pfad": [
-    [
-     464.9,
-     -3972.9,
-     1547
-    ],
-    [
-     305.3,
-     -3983.2,
-     1544.6
-    ],
-    [
-     305.3,
-     -3983.2,
-     -40.0
-    ],
-    [
-     305.3,
-     -2382.3,
-     -64.0
-    ],
-    [
-     -1367.7,
-     -2382.3,
-     -89.1
-    ],
-    [
-     -1367.7,
-     -2382.3,
-     150.0
-    ]
-   ],
-   "notiz": "Auslauf -> Bogen -> Fallrohr auf Z -40 -> +Y 1601, -X 1673 mm mit 1.5 % Gefaelle -> lotrecht hoch in T12 auf dem Heber",
-   "korridor": [
-    "KH",
-    "KS",
-    "KG",
-    "KG",
-    "KS"
-   ],
-   "baender": [
-    "WH",
-    "W",
-    "UT",
-    "UT",
-    "U"
-   ],
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true,
-   "linie": 2
-  },
-  {
-   "id": "SP2-2",
-   "dn": 50,
-   "ende": "r:KSP2_2",
-   "pfad": [
-    [
-     305.3,
-     -3983.2,
-     950.0
-    ],
-    [
-     305.3,
-     -4083.2,
-     950.0
-    ]
-   ],
-   "korridor": [
-    "KH"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "notiz": "am Fallrohr K21 (Absetzer-Auslauf, Z 950)",
-   "start": "t:TSP2_2",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 2
-  },
-  {
-   "id": "KSP2_2-Kappe",
-   "kante": null,
-   "dn": 50,
-   "farbe": "grau",
-   "start": "r:KSP2_2",
-   "ende": "muffe",
-   "korridor": [
-    "KH"
-   ],
-   "baender": [
-    "W"
-   ],
-   "anschluss": [],
-   "pfad": [
-    [
-     305.3,
-     -4195.2,
-     950.0
-    ],
-    [
-     305.3,
-     -4205.2,
-     950.0
-    ]
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "notiz": "Rohrstueck zwischen Spuelhahn und Kappe",
-   "linie": 2
-  },
-  {
-   "id": "K22-T-b",
-   "kante": null,
-   "dn": 63,
-   "farbe": "dunkelblau",
-   "start": "t:T14",
-   "ende": "t:T11",
-   "anschluss": [],
-   "pfad": [
-    [
-     -1245.9,
-     -4150.0,
-     14.0
-    ],
-    [
-     -712.7,
-     -4150.0,
-     14.0
-    ],
-    [
-     -712.7,
-     -3400.0,
-     14.0
-    ]
-   ],
-   "notiz": "T14 -> +X bis x -713 (Spur der Pumpe-3-Steiger) -> +Y zum T11 (K22 geradeaus, K18 nach Westen)",
-   "korridor": [
-    "KG",
-    "KG"
-   ],
-   "baender": [
-    "U",
-    "U"
-   ],
-   "linie": 2,
-   "varianten": [
-    "ring_b2"
-   ],
-   "s2n_basis": true
-  },
-  {
-   "id": "REV2-1",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     -953.8,
-     -4150.0,
-     14.0
-    ],
-    [
-     -953.8,
-     -4150.0,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K22-T-b: T d63, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR2_1",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 2
-  },
-  {
-   "id": "REV2-2",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     0.0,
-     -2810.4,
-     -1635.0
-    ],
-    [
-     0.0,
-     -2810.4,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K19-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR2_2",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 2
-  },
-  {
-   "id": "REV2-3",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     216.2,
-     -3514.1,
-     -1635.0
-    ],
-    [
-     216.2,
-     -3514.1,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K19-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR2_3",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 2
-  },
-  {
-   "id": "REV2-4",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     305.3,
-     -3692.0,
-     -44.4
-    ],
-    [
-     305.3,
-     -3685.7,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K21: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR2_4",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 2
-  },
-  {
-   "id": "REV2-5",
-   "dn": 50,
-   "ende": "muffe",
-   "revision": true,
-   "pfad": [
-    [
-     14.1,
-     -2382.3,
-     -68.4
-    ],
-    [
-     7.4,
-     -2382.3,
-     376.0
-    ]
-   ],
-   "korridor": [
-    "KS"
-   ],
-   "baender": [
-    "U"
-   ],
-   "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K21: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR2_5",
-   "varianten": [
-    "a_plus"
-   ],
-   "kante": null,
-   "farbe": "grau",
-   "linie": 2
   }
  ],
  "t_stuecke": [
-  {
-   "id": "TG",
-   "pos": [
-    -1650.0,
-    -6860.0,
-    1110.0
-   ],
-   "d": 20,
-   "ports": [
-    {
-     "trasse": "K44-GA",
-     "ende": "ende",
-     "d": 20
-    },
-    {
-     "trasse": "K44-GB",
-     "ende": "ende",
-     "d": 20
-    },
-    {
-     "trasse": "K44-GT",
-     "ende": "start",
-     "d": 20
-    }
-   ],
-   "linie": "luft_b"
-  },
   {
    "id": "T1",
    "pos": [
@@ -5168,85 +5171,36 @@
    ],
    "notiz": "Revisions-T an K21 (knick 1)",
    "linie": 2
+  },
+  {
+   "id": "TG",
+   "pos": [
+    -1650.0,
+    -6860.0,
+    1110.0
+   ],
+   "d": 20,
+   "ports": [
+    {
+     "trasse": "K44-GA",
+     "ende": "ende",
+     "d": 20
+    },
+    {
+     "trasse": "K44-GB",
+     "ende": "ende",
+     "d": 20
+    },
+    {
+     "trasse": "K44-GT",
+     "ende": "start",
+     "d": 20
+    }
+   ],
+   "linie": "luft_b"
   }
  ],
  "r_stuecke": [
-  {
-   "id": "RSV_G1",
-   "art": "teil",
-   "datei": "lt_rueckschlagventil_d20",
-   "pos_a": [
-    -1904.0,
-    -6460.0,
-    1110.0
-   ],
-   "dir": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "d_gross": 20,
-   "d_klein": 20,
-   "farbe": "gruen",
-   "linie": "luft_b",
-   "notiz": "Rueckschlagventil d20 auf dem Geblaese-Austritt A (N+1: stehendes Geblaese zieht keine Luft zurueck)"
-  },
-  {
-   "id": "RSV_G2",
-   "art": "teil",
-   "datei": "lt_rueckschlagventil_d20",
-   "pos_a": [
-    -1904.0,
-    -6860.0,
-    1110.0
-   ],
-   "dir": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "d_gross": 20,
-   "d_klein": 20,
-   "farbe": "gruen",
-   "linie": "luft_b",
-   "notiz": "Rueckschlagventil d20 auf dem Geblaese-Austritt B (N+1: stehendes Geblaese zieht keine Luft zurueck)"
-  },
-  {
-   "id": "RED_G",
-   "pos_a": [
-    -1500.0,
-    -6860.0,
-    1110.0
-   ],
-   "dir": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "d_gross": 40,
-   "d_klein": 20,
-   "farbe": "gruen",
-   "linie": "luft_b"
-  },
-  {
-   "id": "KH_K52",
-   "art": "kugelhahn",
-   "pos_a": [
-    1990.9010025280952,
-    -2602.102247712486,
-    1300.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "d_gross": 25,
-   "d_klein": 25,
-   "farbe": "hellblau",
-   "linie": "frisch",
-   "notiz": "Zapfhahn d25 vor dem Puffer: Fass wird von Hand mit Schlauch gefuellt (Netz K52, kein Dauerfluss)"
-  },
   {
    "id": "R_K01_P",
    "pos_a": [
@@ -5735,31 +5689,85 @@
    ],
    "notiz": "Kugelhahn Spuelanschluss am Fallrohr K21 (Absetzer-Auslauf, Z 950)",
    "linie": 2
-  }
- ],
- "teile": [
+  },
   {
-   "id": "KAPPE_V6_6",
-   "datei": "lt_kappe_d20",
-   "pos": [
-    -865.0,
-    -6860.0,
-    1052.0
+   "id": "RSV_G1",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d20",
+   "pos_a": [
+    -1904.0,
+    -6460.0,
+    1110.0
    ],
-   "z": [
-    0.0,
-    0.0,
-    -1.0
-   ],
-   "x": [
+   "dir": [
     1.0,
     0.0,
     0.0
    ],
+   "d_gross": 20,
+   "d_klein": 20,
    "farbe": "gruen",
    "linie": "luft_b",
-   "notiz": "Kappe auf Abgang 6 (K47/K48 optional, Absetzer ohne Luftanschluss im Bauteil: OFFEN Werkstatt)"
+   "notiz": "Rueckschlagventil d20 auf dem Geblaese-Austritt A (N+1: stehendes Geblaese zieht keine Luft zurueck)"
   },
+  {
+   "id": "RSV_G2",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d20",
+   "pos_a": [
+    -1904.0,
+    -6860.0,
+    1110.0
+   ],
+   "dir": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "d_gross": 20,
+   "d_klein": 20,
+   "farbe": "gruen",
+   "linie": "luft_b",
+   "notiz": "Rueckschlagventil d20 auf dem Geblaese-Austritt B (N+1: stehendes Geblaese zieht keine Luft zurueck)"
+  },
+  {
+   "id": "RED_G",
+   "pos_a": [
+    -1500.0,
+    -6860.0,
+    1110.0
+   ],
+   "dir": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "d_gross": 40,
+   "d_klein": 20,
+   "farbe": "gruen",
+   "linie": "luft_b"
+  },
+  {
+   "id": "KH_K52",
+   "art": "kugelhahn",
+   "pos_a": [
+    1990.9010025280952,
+    -2602.102247712486,
+    1300.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "d_gross": 25,
+   "d_klein": 25,
+   "farbe": "hellblau",
+   "linie": "frisch",
+   "notiz": "Zapfhahn d25 vor dem Puffer: Fass wird von Hand mit Schlauch gefuellt (Netz K52, kein Dauerfluss)"
+  }
+ ],
+ "teile": [
   {
    "id": "FH1",
    "datei": "lt_kugelhahn_feder_d40",
@@ -6437,6 +6445,28 @@
    ],
    "notiz": "Kappe d50 buendig im Flur, Revisionsstutzen REV2-5",
    "linie": 2
+  },
+  {
+   "id": "KAPPE_V6_6",
+   "datei": "lt_kappe_d20",
+   "pos": [
+    -865.0,
+    -6860.0,
+    1052.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "farbe": "gruen",
+   "linie": "luft_b",
+   "notiz": "Kappe auf Abgang 6 (K47/K48 optional, Absetzer ohne Luftanschluss im Bauteil: OFFEN Werkstatt)"
   }
  ],
  "gruben": [

@@ -76,7 +76,9 @@ def schreiben(doc, linie, neu):
     alt = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {"z_bezug": "absolut", "regeln": {}, "trassen": []}
     gehoert = lambda e: e.get("linie", 1) == linie and (not (e.get("varianten") and "a_plus" not in e["varianten"]) or e.get("s2n_basis"))   # S2N: ring_b2-Kopien geteilter Trassen erzeugt dieser Lauf neu   # V1b: Eintraege nur fuer ring_b2 (scripts/trassen_ring.py) bleiben stehen
     for key in ("trassen", "t_stuecke", "r_stuecke", "teile", "gruben"):
-        doc[key] = [e for e in alt.get(key, []) if not gehoert(e)] + neu.get(key, [])
+        al = alt.get(key, []); pos = next((k for k, e in enumerate(al) if gehoert(e)), len(al))   # M10-S2N: Linie bleibt an ihrer Stelle in der Liste (Reihenfolge bestimmt die Grabenbreiten, leitungen.graben)
+        rest = [e for e in al if not gehoert(e)]; vor = sum(1 for e in al[:pos] if not gehoert(e))
+        doc[key] = rest[:vor] + neu.get(key, []) + rest[vor:]
         for e in neu.get(key, []): e["linie"] = linie
     if not doc["r_stuecke"]: del doc["r_stuecke"]
     return doc
@@ -758,7 +760,7 @@ def s2n_split(neu, tid, qa, qb, tag_a, tag_b):
     pa = [p for p in P[:i + 1]] + ([qa] if math.dist(P[i], qa) > 0.5 else [])
     pb = ([qb] if math.dist(P[i + 1], qb) > 0.5 else []) + [p for p in P[i + 1:]]
     if math.dist(pb[0], qb) > 0.5: pb = [qb] + pb
-    A = json.loads(json.dumps(tr)); A["id"] = aid; A["pfad"] = [rd(p) for p in pa]; A["ende"] = tag_a
+    A = json.loads(json.dumps(tr)); A["id"] = aid; A["pfad"] = [rd(p) for p in pa]; A["ende"] = tag_a; A["s2n"] = True
     tr["pfad"] = [rd(p) for p in pb]; tr["start"] = tag_b
     for key in ("baender", "korridor"):
         if key in tr: A[key] = tr[key][:len(pa) - 1]; tr[key] = tr[key][len(tr[key]) - (len(pb) - 1):]
@@ -784,7 +786,7 @@ def s2n_t(neu, tid, q, tsid, abzweig, notiz):
     aid = s2n_split(neu, tid, q, q, "t:" + tsid, "t:" + tsid)
     neu["t_stuecke"].append({"id": tsid, "pos": rd(q), "d": d, "ports": [{"trasse": aid, "ende": "ende", "d": d}, {"trasse": tid, "ende": "start", "d": d},
                              {"trasse": abzweig["id"], "ende": "start", "d": int(abzweig["dn"])}], "varianten": S2N_AP, "notiz": notiz})
-    abzweig.update({"start": "t:" + tsid, "varianten": S2N_AP, "kante": None, "farbe": abzweig.get("farbe", "grau")})
+    abzweig.update({"start": "t:" + tsid, "varianten": S2N_AP, "kante": None, "farbe": abzweig.get("farbe", "grau"), "s2n": True})
     neu["trassen"].append(abzweig)
 
 def s2n_spuel(neu, tid, q, h, nr, linie, notiz):
@@ -795,7 +797,7 @@ def s2n_spuel(neu, tid, q, h, nr, linie, notiz):
                             "baender": ["W"], "anschluss": [], "notiz": notiz}, notiz)
     neu["r_stuecke"].append({"id": hid, "art": "kugelhahn", "pos_a": rd(pa), "dir": [round(v, 6) for v in h], "d_gross": 50, "d_klein": 50, "varianten": S2N_AP, "notiz": "Kugelhahn Spuelanschluss " + notiz})
     neu["trassen"].append({"id": hid + "-Kappe", "kante": None, "dn": 50, "farbe": "grau", "start": "r:" + hid, "ende": "muffe", "korridor": ["KS" if abs(h[2]) > 0.9 else "KH"], "baender": ["W"],
-                           "anschluss": [], "pfad": [rd(pb), rd(pk)], "varianten": S2N_AP, "notiz": "Rohrstueck zwischen Spuelhahn und Kappe"})
+                           "anschluss": [], "pfad": [rd(pb), rd(pk)], "varianten": S2N_AP, "s2n": True, "notiz": "Rohrstueck zwischen Spuelhahn und Kappe"})
     neu["teile"].append({"id": hid + "-Kappe", "datei": "lt_kappe_d50", "pos": rd(pk), "z": [round(v, 6) for v in h], "x": [1.0, 0.0, 0.0] if abs(h[0]) < 0.9 else [0.0, 1.0, 0.0],
                          "farbe": "grau", "varianten": S2N_AP, "notiz": "Kappe d50 Spuelanschluss " + notiz})
 

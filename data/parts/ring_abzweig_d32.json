@@ -1,0 +1,170 @@
+{
+  "komponente": "ring_abzweig_d32",
+  "datei": "designs/components/ring_abzweig_d32.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "T97-32",
+  "stand": "5a",
+  "titel": "Ring-Abzweig d75 auf d32",
+  "kurz": "Baugruppe aus 9 Koerpern. Abzweig vom Halbring d75 zu einem Tisch: T, zwei Reduziermuffen, Rohrstuecke und Kugelhahn d32 als Regler; nur Bibliotheksteile.",
+  "hinweis": "Werkstatt 05.11.2026 (M10-S2N Vorbedingung, N-VARIANTEN V2): Masse aus dem Modell; Texte, Normverweise und Bezug aus Fachwissen, alle angenommen [A].",
+  "koerperzahl": 9,
+  "gruppen": [
+    {
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
+      "teile": [
+        "t_stueck",
+        "reduzierung_75_50",
+        "reduzierung_50_32",
+        "kugelhahn"
+      ]
+    },
+    {
+      "id": "rohre",
+      "name": "Rohre",
+      "kurz": "Rohr, auf Laenge geschnitten.",
+      "teile": [
+        "rohrstuecke"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_stueck",
+      "name": "T d75",
+      "koerper": [
+        "T_d75"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 448.9 g, Einzelkoerper 172.8 x 128.7 x 84.7 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Das T sitzt im Halbring; sein Abgang zeigt nach unten zum Abnehmer.",
+      "eigenschaften": [
+        "Bibliotheksteil lt_t_d75, PVC-U [A]."
+      ],
+      "norm": "EN 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ring_abzweig_d32.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "rohrstuecke",
+      "name": "Rohrstuecke",
+      "koerper": [
+        "Rohrstueck_d75",
+        "Rohrstueck_d50",
+        "Rohrstueck_d32"
+      ],
+      "menge": 3,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 110.8 g, Einzelkoerper 98.0 x 75.0 x 75.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Kurze Rohrstuecke verbinden Muffe mit Muffe (je zwei Muffentiefen plus 10 mm).",
+      "eigenschaften": [
+        "PVC-U SDR 21 [A]."
+      ],
+      "norm": "EN 1452-2 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ring_abzweig_d32.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
+    },
+    {
+      "id": "reduzierung_75_50",
+      "name": "Reduziermuffe d75/d50",
+      "koerper": [
+        "Reduzierung_75_50"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 268.8 g, Einzelkoerper 84.7 x 84.7 x 81.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Reduziert vom Ring d75 auf d50.",
+      "eigenschaften": [
+        "Bibliotheksteil lt_reduzierung_d75_d50 [A]."
+      ],
+      "norm": "EN 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ring_abzweig_d32.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "reduzierung_50_32",
+      "name": "Reduziermuffe d50/d32",
+      "koerper": [
+        "Reduzierung_50_32"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 106.7 g, Einzelkoerper 59.0 x 58.5 x 58.5 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Reduziert auf den Abnehmer-Durchmesser d32.",
+      "eigenschaften": [
+        "Bibliotheksteil lt_reduzierung_d50_d32 [A]."
+      ],
+      "norm": "EN 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ring_abzweig_d32.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "kugelhahn",
+      "name": "Kugelhahn d32 (Regler)",
+      "koerper": [
+        "Kugelhahn_d32",
+        "Kugelhahn_d32_Spindel",
+        "Kugelhahn_d32_Hebel"
+      ],
+      "menge": 3,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 128.4 g, Einzelkoerper 94.0 x 51.6 x 51.6 mm (Modell-Bounding-Box)",
+      "artikel_id": "ARM-kugelhahn-d32",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0,
+      "funktion": "Der Hahn stellt den Strom je Abnehmer ein und sperrt ihn bei Wartung.",
+      "eigenschaften": [
+        "Bibliotheksteil lt_kugelhahn_d32, PVC-U [A]."
+      ],
+      "norm": "EN ISO 16135 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ring_abzweig_d32.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
+    }
+  ]
+}

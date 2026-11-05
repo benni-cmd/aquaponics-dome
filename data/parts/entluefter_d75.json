@@ -1,0 +1,110 @@
+{
+  "komponente": "entluefter_d75",
+  "datei": "designs/components/entluefter_d75.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "T96",
+  "stand": "5a",
+  "titel": "Entluefter d75",
+  "kurz": "Baugruppe aus 3 Koerpern. Automatische Entlueftung am Hochpunkt jedes Halbrings: T d75 mit Abgang d25, Uebergangsnippel und Schwimmer-Schnellentlueftungsventil 1 Zoll.",
+  "hinweis": "Werkstatt 05.11.2026 (M10-S2N Vorbedingung, N-VARIANTEN V2): Masse aus dem Modell; Texte, Normverweise und Bezug aus Fachwissen, alle angenommen [A].",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
+      "teile": [
+        "t_stueck",
+        "nippel",
+        "ventil"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_stueck",
+      "name": "T d75 mit Abgang d25",
+      "koerper": [
+        "Entlueftungs_T"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 436.1 g, Einzelkoerper 172.8 x 124.7 x 84.7 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Das T sitzt im Ring am Hochpunkt; Luft sammelt sich im Abgang.",
+      "eigenschaften": [
+        "PVC-U, Klebemuffen d75, reduzierter Abgang d25 [A]."
+      ],
+      "norm": "EN 1452-3 (Formstuecke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\entluefter_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "nippel",
+      "name": "Uebergangsnippel d25 auf 1 Zoll",
+      "koerper": [
+        "Uebergangsnippel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 43.6 g, Einzelkoerper 51.6 x 40.0 x 40.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Verbindet die Klebemuffe d25 mit dem Gewinde des Ventils.",
+      "eigenschaften": [
+        "PVC-U, Zapfen d25, Aussengewinde 1 Zoll [A]."
+      ],
+      "norm": "EN 1452-3 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\entluefter_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 60
+      }
+    },
+    {
+      "id": "ventil",
+      "name": "Schnellentlueftungsventil 1 Zoll",
+      "koerper": [
+        "Entlueftungsventil"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "messing",
+      "masse_mm": "Masse 979.1 g, Einzelkoerper 115.0 x 52.0 x 52.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Der Schwimmer im Ventil laesst gesammelte Luft ab und schliesst bei Wasser.",
+      "eigenschaften": [
+        "Messing, Innengewinde 1 Zoll, PN10 [A]."
+      ],
+      "norm": "EN 1074-4 (Be- und Entlueftungsventile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\entluefter_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      }
+    }
+  ]
+}

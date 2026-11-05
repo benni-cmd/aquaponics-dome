@@ -46,9 +46,9 @@
     "fass_oberkante": 520.0
    },
    "volumen_l": {
-    "aus_bis_ein": 10861.9,
-    "ein_bis_ueberlauf": 8629.2,
-    "boden_bis_ueberlauf": 49059.4
+    "aus_bis_ein": 10.9,
+    "ein_bis_ueberlauf": 8.6,
+    "boden_bis_ueberlauf": 49.1
    },
    "ports": [
     {

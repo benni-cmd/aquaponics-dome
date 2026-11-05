@@ -21,6 +21,10 @@ def interf(ck, tag, path, extra=(), own=None):
     bad, res = C.interference(path, list(extra))
     if own is not None:
         bad = [i for i in bad if i.get("a") in own or i.get("b") in own]
+    lib = [i for i in bad if str(i.get("a", "")).startswith("Kugelhahn_d") and str(i.get("b", "")).startswith("Kugelhahn_d")]
+    if lib:
+        print(f"INFO {tag}: {len(lib)} Ueberlappungen innerhalb des Bibliotheks-Kugelhahns (Spindel steckt bauartbedingt in Gehaeuse und Hebel, leitung.kugelhahn), nicht gezaehlt")
+    bad = [i for i in bad if i not in lib]
     ck.eq(f"{tag} Interferenz 0 ({res.get('checked', '?')} Koerper inkl. Gegenstuecke)", len(bad), 0)
     for i in bad:
         print("   Ueberlappung:", i.get("a"), i.get("b"), round(i.get("volume_mm3", 0), 1))
@@ -36,7 +40,9 @@ def check_pegelschacht(ck):
     ck.eq("pegelschacht Fass Hoehe", f["bbox"]["max"][2] - f["bbox"]["min"][2], p["fass_h"], 0.1)
     v_brutto = math.pi * g["ri"] ** 2 * (p["fass_h"] - p["boden"]) / 1e6
     ck.eq(f"pegelschacht Nenninhalt Fass {v_brutto:.1f} l (Handelsgroesse 60 l, +-10 %)", v_brutto, 60.0, 6.0)
-    port_faces(ck, "pegelschacht", path, ["Zulaufstutzen", "Saugstutzen_A", "Saugstutzen_B", "Notueberlauf", "Kabelverschraubung", "Deckel"], R.ps_ports())
+    port_faces(ck, "pegelschacht", path, ["Zulaufstutzen", "Saugstutzen_A", "Saugstutzen_B", "Notueberlauf", "Kabelverschraubung"], [x for x in R.ps_ports() if x[0] != "Entlueftung"])
+    ent = [x for x in R.ps_ports() if x[0] == "Entlueftung"][0]
+    ck.eq(f"pegelschacht Port Entlueftung: Bohrung d{p['entl_d']:g} im Deckel bei {ent[1][:2]}", 1 if any(f.get("cylinder") and abs(f["cylinder"]["radius"] - p["entl_d"] / 2) < 0.01 and math.hypot(f["cylinder"]["origin"][0] - ent[1][0], f["cylinder"]["origin"][1] - ent[1][1]) < 0.01 for f in sc.faces(path, "Deckel")) else 0, 1)
     interf(ck, "pegelschacht", path)
     # Pegel und Hydraulik
     di = p["saug_d"] - 2 * L.wall_p(p["saug_d"]); q = 55 / 60000; v = q / (math.pi / 4 * (di / 1000) ** 2); fr = v / math.sqrt(G * di / 1000)
@@ -51,10 +57,10 @@ def check_pegelschacht(ck):
     dii = (p["ueberlauf_d"] - 2 * L.wall_p(p["ueberlauf_d"])) / 1000; Rh = dii / 4; qn = (1 / 0.009) * Rh ** (2 / 3) * 0.02 ** 0.5 * math.pi / 4 * dii ** 2 * 60000
     d50 = (50 - 2 * L.wall_p(50)) / 1000; q50 = (1 / 0.009) * (d50 / 4) ** (2 / 3) * 0.02 ** 0.5 * math.pi / 4 * d50 ** 2 * 60000
     ck.eq(f"pegelschacht Notueberlauf d{p['ueberlauf_d']} traegt {qn:.0f} l/min >= Zulauf 110 l/min (2 % Gefaelle; d50 waere nur {q50:.0f})", 1 if qn >= 110 else 0, 1)
-    ck.eq(f"pegelschacht Schaltpuffer AUS-EIN {g['vol_aus_ein_l'] * 1000:.1f} l >= 10 l (Booster-Takt bei 110 l/min Ueberschuss >= 5 s)", 1 if g["vol_aus_ein_l"] * 1000 >= 10 else 0, 1)
+    ck.eq(f"pegelschacht Schaltpuffer AUS-EIN {g['vol_aus_ein_l']:.1f} l >= 10 l (Booster-Takt bei 110 l/min Ueberschuss >= 5 s)", 1 if g["vol_aus_ein_l"] >= 10 else 0, 1)
     ring_l = math.pi / 4 * 0.0678 ** 2 * 10.7 * 1000
-    print(f"INFO pegelschacht: Reserve EIN bis Ueberlauf {g['vol_ein_ueberlauf_l'] * 1000:.1f} l < Rueckfluss eines Halbrings d75 x 10,7 m {ring_l:.1f} l -> bei Booster-Stopp laeuft der Rest ueber den Notueberlauf in den Ruecklauf (kein Wasserverlust); "
-          f"Inhalt bis Ueberlauf {g['vol_bis_ueberlauf_l'] * 1000:.1f} l; Masse leer {ev['total']['mass_g'] / 1000:.2f} kg")
+    print(f"INFO pegelschacht: Reserve EIN bis Ueberlauf {g['vol_ein_ueberlauf_l']:.1f} l < Rueckfluss eines Halbrings d75 x 10,7 m {ring_l:.1f} l -> bei Booster-Stopp laeuft der Rest ueber den Notueberlauf in den Ruecklauf (kein Wasserverlust); "
+          f"Inhalt bis Ueberlauf {g['vol_bis_ueberlauf_l']:.1f} l; Masse leer {ev['total']['mass_g'] / 1000:.2f} kg")
 
 def check_ringstuetze(ck):
     p, g = R.RS, R.rs_geom(); path = os.path.join(D, "ringstuetze_d75.sc"); ev = sc.evaluate(path)

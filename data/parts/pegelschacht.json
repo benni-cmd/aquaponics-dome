@@ -1,0 +1,259 @@
+{
+  "komponente": "pegelschacht",
+  "datei": "designs/components/pegelschacht.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "T94",
+  "stand": "5a",
+  "titel": "Pegelschacht Ring B2",
+  "kurz": "Baugruppe aus 10 Koerpern. Kleines Fass zwischen Biofilter-Ueberlauf und den zwei Boostern des Rings; entkoppelt Zulauf und Pumpen, Schwimmer schalten die Booster, Notueberlauf fuehrt Ueberschuss in den Ruecklauf.",
+  "hinweis": "Werkstatt 05.11.2026 (M10-S2N Vorbedingung, N-VARIANTEN V2): Masse aus dem Modell; Texte, Normverweise und Bezug aus Fachwissen, alle angenommen [A].",
+  "koerperzahl": 10,
+  "gruppen": [
+    {
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
+      "teile": [
+        "fass",
+        "deckel",
+        "saugstutzen",
+        "notueberlauf",
+        "schwimmerstange",
+        "schwimmer"
+      ]
+    },
+    {
+      "id": "sonderteile",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
+      "teile": [
+        "zulaufstutzen"
+      ]
+    },
+    {
+      "id": "normteile",
+      "name": "Normteile",
+      "kurz": "Schrauben, Muttern, Verschraubungen.",
+      "teile": [
+        "kabelverschraubung"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "fass",
+      "name": "Fass 60 l",
+      "koerper": [
+        "Fass"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 2995.4 g, Einzelkoerper 520.0 x 400.0 x 400.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Das Fass sammelt das Wasser aus dem Biofilter-Ueberlauf, aus dem die Booster saugen.",
+      "eigenschaften": [
+        "Weithalsfass PE-HD, 60 l Nenninhalt, aussen 400 x 520 [A].",
+        "Lebensmitteltaugliches PE angenommen."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "deckel",
+      "name": "Fassdeckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 1834.6 g, Einzelkoerper 410.0 x 410.0 x 15.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Der Deckel haelt Licht und Schmutz fern und traegt Zulauf, Schwimmerstange, Kabel und Entlueftung.",
+      "eigenschaften": [
+        "PE-HD 15 mm, Bohrungen vor Ort [A]."
+      ],
+      "norm": "EN ISO 17855-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200
+      }
+    },
+    {
+      "id": "zulaufstutzen",
+      "name": "Zulaufstutzen d50",
+      "koerper": [
+        "Zulaufstutzen"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 137.4 g, Einzelkoerper 85.0 x 78.5 x 78.5 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Der Stutzen fuehrt K10/K26 vom Biofilter frei fallend ins Fass (kein Rueckstau).",
+      "eigenschaften": [
+        "PVC-U d50 mit Klebemuffe und Kragen [A]."
+      ],
+      "norm": "EN 1452 (PVC-U Druckrohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300
+      }
+    },
+    {
+      "id": "saugstutzen",
+      "name": "Tankdurchfuehrung Saug d50",
+      "koerper": [
+        "Saugstutzen_A",
+        "Saugstutzen_B"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 166.0 g, Einzelkoerper 98.5 x 92.3 x 78.5 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Je ein Saugstutzen versorgt einen Booster (pumpe_gross) geflutet von unten.",
+      "eigenschaften": [
+        "Tankdurchfuehrung PVC d50 mit Flansch und Mutter [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": "radial",
+        "abstand_mm": 120
+      }
+    },
+    {
+      "id": "notueberlauf",
+      "name": "Tankdurchfuehrung Notueberlauf d63",
+      "koerper": [
+        "Notueberlauf"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 214.7 g, Einzelkoerper 92.1 x 92.1 x 80.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Der Notueberlauf fuehrt den ganzen Zulauf in den Ruecklauf, wenn die Booster stehen.",
+      "eigenschaften": [
+        "Tankdurchfuehrung PVC d63; d63 statt d50, weil d50 bei 2 % Gefaelle nur rund 75 l/min traegt [E]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 120
+      }
+    },
+    {
+      "id": "schwimmerstange",
+      "name": "Schwimmerstange",
+      "koerper": [
+        "Schwimmerstange"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 114.0 g, Einzelkoerper 405.0 x 16.0 x 16.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Stange fuehrt die zwei Schwimmerschalter senkrecht.",
+      "eigenschaften": [
+        "PVC Rundstab d16 [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "schwimmer",
+      "name": "Schwimmerschalter AUS/EIN",
+      "koerper": [
+        "Schwimmer_AUS",
+        "Schwimmer_EIN"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 61.5 g, Einzelkoerper 50.0 x 50.0 x 40.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "AUS schuetzt die Booster vor Trockenlauf, EIN gibt sie wieder frei.",
+      "eigenschaften": [
+        "Ring-Schwimmerschalter PP, Reedkontakt 24 V [A].",
+        "AUS bei 250 mm, EIN bei 340 mm ueber Fassboden."
+      ],
+      "norm": "EN 60730-1 (Regel- und Steuergeraete) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "kabelverschraubung",
+      "name": "Kabelverschraubung M20",
+      "koerper": [
+        "Kabelverschraubung"
+      ],
+      "menge": 1,
+      "typ": "normteil",
+      "werkstoff": "pa",
+      "masse_mm": "Masse 9.2 g, Einzelkoerper 24.0 x 24.0 x 20.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Fuehrt das Schwimmerkabel dicht durch den Deckel.",
+      "eigenschaften": [
+        "PA, M20, IP68 [A]."
+      ],
+      "norm": "EN 62444 (Kabelverschraubungen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\pegelschacht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    }
+  ]
+}

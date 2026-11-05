@@ -52,7 +52,7 @@ def ps_geom():
     zt = p["fass_h"]
     of_s, of_u = L.od_f(p["saug_d"]), L.od_f(p["ueberlauf_d"])
     bore_u = p["ueberlauf_d"] - 2 * L.wall_p(p["ueberlauf_d"])
-    A = math.pi * (ri / 1000) ** 2                     # m2 Innenquerschnitt
+    A = math.pi * (ri / 1000) ** 2                     # m2 Innenquerschnitt; A [m2] x Hoehe [mm] = Liter
     sohle_u = p["ueberlauf_z"] - bore_u / 2
     g = dict(ri=ri, ro=p["fass_d"] / 2, z_deckel=zt, z_deckel_top=zt + p["deckel_t"], of_s=of_s, of_u=of_u, bore_u=bore_u, A=A, sohle_ueberlauf=sohle_u,
              vol_aus_ein_l=A * (p["pegel_ein"] - p["pegel_aus"]), vol_ein_ueberlauf_l=A * (sohle_u - p["pegel_ein"]), vol_bis_ueberlauf_l=A * (sohle_u - p["boden"]),
@@ -334,7 +334,7 @@ def json_data():
             "teile": {
                 "pegelschacht": {"teilenummer": "T94", "parameter": PS, "ks": "Mitte Fassboden aussen, Z hoch",
                                  "pegel": {"saug_achse": PS["saug_z"], "aus": PS["pegel_aus"], "ein": PS["pegel_ein"], "sohle_notueberlauf": round(pg["sohle_ueberlauf"], 1), "fass_oberkante": PS["fass_h"]},
-                                 "volumen_l": {"aus_bis_ein": round(pg["vol_aus_ein_l"] * 1000, 1), "ein_bis_ueberlauf": round(pg["vol_ein_ueberlauf_l"] * 1000, 1), "boden_bis_ueberlauf": round(pg["vol_bis_ueberlauf_l"] * 1000, 1)},
+                                 "volumen_l": {"aus_bis_ein": round(pg["vol_aus_ein_l"], 1), "ein_bis_ueberlauf": round(pg["vol_ein_ueberlauf_l"], 1), "boden_bis_ueberlauf": round(pg["vol_bis_ueberlauf_l"], 1)},
                                  "ports": P(ps_ports())},
                 "ringstuetze_d75": {"teilenummer": "T95", "parameter": RS, "ks": "Mitte Fussplatte unten = Innenboden, Rohr entlang Y", "unterkante_schelle": round(rg["z_unten"], 1), "hoehe_gesamt": round(rg["z_top"] + RS["mutter_h"] + 5, 1),
                                     "hinweis": "achse_h und ausladung sind Parameter: ringstuetze(dict(RS, achse_h=..., ausladung=...)) erzeugt die Variante", "ports": P(rs_ports())},

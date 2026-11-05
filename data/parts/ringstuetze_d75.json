@@ -1,0 +1,236 @@
+{
+  "komponente": "ringstuetze_d75",
+  "datei": "designs/components/ringstuetze_d75.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "T95",
+  "stand": "5a",
+  "titel": "Ringstuetze d75",
+  "kurz": "Baugruppe aus 10 Koerpern. Bodenstuetze fuer den Druck-Halbring d75 unter dem Dach: Pfosten mit Kragarm, das Rohr haengt in einer Schelle; unter dem Rohr bleibt der Gang frei.",
+  "hinweis": "Werkstatt 05.11.2026 (M10-S2N Vorbedingung, N-VARIANTEN V2): Masse aus dem Modell; Texte, Normverweise und Bezug aus Fachwissen, alle angenommen [A].",
+  "koerperzahl": 10,
+  "gruppen": [
+    {
+      "id": "sonderteile",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
+      "teile": [
+        "fussplatte"
+      ]
+    },
+    {
+      "id": "normteile",
+      "name": "Normteile",
+      "kurz": "Schrauben, Muttern, Verschraubungen.",
+      "teile": [
+        "anker",
+        "gewindestange"
+      ]
+    },
+    {
+      "id": "profile",
+      "name": "Profile",
+      "kurz": "Stahlprofile, auf Laenge geschnitten.",
+      "teile": [
+        "pfosten",
+        "kragarm"
+      ]
+    },
+    {
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
+      "teile": [
+        "rohrschelle",
+        "einlage"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "fussplatte",
+      "name": "Fussplatte",
+      "koerper": [
+        "Fussplatte"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 3104.5 g, Einzelkoerper 200.0 x 200.0 x 10.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Platte verteilt die Last auf den Innenboden und nimmt vier Anker auf.",
+      "eigenschaften": [
+        "Stahl verzinkt 200 x 200 x 10, 4 Bohrungen 12 [A]."
+      ],
+      "norm": "EN 10025-2 (S235) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ringstuetze_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]"
+    },
+    {
+      "id": "anker",
+      "name": "Anker M10",
+      "koerper": [
+        "Anker_1",
+        "Anker_2",
+        "Anker_3",
+        "Anker_4"
+      ],
+      "menge": 4,
+      "typ": "normteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 82.1 g, Einzelkoerper 118.0 x 17.0 x 17.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Anker halten die Stuetze im Boden gegen Kippen.",
+      "eigenschaften": [
+        "Gewindeanker M10 x 110 mit Mutter, verzinkt [A]."
+      ],
+      "norm": "ISO 4032 (Mutter), Anker Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ringstuetze_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 150
+      }
+    },
+    {
+      "id": "pfosten",
+      "name": "Pfosten",
+      "koerper": [
+        "Pfosten"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 10125.5 g, Einzelkoerper 2287.0 x 50.0 x 50.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Der Pfosten traegt Kragarm und Rohr bis auf Ringhoehe.",
+      "eigenschaften": [
+        "Quadratrohr 50 x 50 x 3, verzinkt [A].",
+        "Biegespannung unter 5 MPa (Check)."
+      ],
+      "norm": "EN 10219 (Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ringstuetze_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]"
+    },
+    {
+      "id": "kragarm",
+      "name": "Kragarm",
+      "koerper": [
+        "Kragarm"
+      ],
+      "menge": 1,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 988.9 g, Einzelkoerper 285.0 x 40.0 x 40.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Der Arm kragt ueber den Gang aus und haelt den Haenger ueber dem Rohr.",
+      "eigenschaften": [
+        "Quadratrohr 40 x 40 x 3, an den Pfosten geschweisst [A]."
+      ],
+      "norm": "EN 10219 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ringstuetze_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]"
+    },
+    {
+      "id": "gewindestange",
+      "name": "Haenger M10",
+      "koerper": [
+        "Gewindestange"
+      ],
+      "menge": 1,
+      "typ": "normteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 87.1 g, Einzelkoerper 111.0 x 17.0 x 17.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Gewindestange haengt die Schelle an den Arm; die Hoehe ist ueber die Muttern einstellbar.",
+      "eigenschaften": [
+        "Gewindestange M10 mit 2 Muttern, verzinkt [A]."
+      ],
+      "norm": "DIN 976-1 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ringstuetze_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)"
+    },
+    {
+      "id": "rohrschelle",
+      "name": "Rohrschelle d75",
+      "koerper": [
+        "Rohrschelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 237.7 g, Einzelkoerper 97.5 x 87.0 x 30.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Schelle umfasst das Rohr d75 von oben.",
+      "eigenschaften": [
+        "Stahl verzinkt mit Anschweissmutter M10 [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ringstuetze_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          1,
+          0
+        ],
+        "abstand_mm": 120
+      }
+    },
+    {
+      "id": "einlage",
+      "name": "Schelleneinlage EPDM",
+      "koerper": [
+        "Schelleneinlage"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "epdm",
+      "masse_mm": "Masse 24.3 g, Einzelkoerper 81.0 x 81.0 x 30.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Einlage daempft und schuetzt das PVC-Rohr gegen die Stahlschelle.",
+      "eigenschaften": [
+        "EPDM 3 mm [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\ringstuetze_d75.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          -1,
+          0
+        ],
+        "abstand_mm": 120
+      }
+    }
+  ]
+}

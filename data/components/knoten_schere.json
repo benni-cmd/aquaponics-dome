@@ -56,12 +56,12 @@
   "link_w": {
    "wert": 20,
    "einheit": "mm",
-   "herkunft": "R56 Lasche 20 x 5 [A]; OFFEN Ben: Laschendicke 5 oder 8"
+   "herkunft": "R56 Lasche 20 breit [A]; Dicke 8 mm nach D91"
   },
   "link_t": {
-   "wert": 5,
+   "wert": 8,
    "einheit": "mm",
-   "herkunft": "R56 [A]; OFFEN Ben (8 mm traegt am Knick 11,8 statt 4,6 kN)"
+   "herkunft": "D91 (Ben 05.11.2026): Laschen 8 mm nach R56-Engpass (Knick traegt 11,8 statt 4,6 kN)"
   },
   "bend_r": {
    "wert": 63,
@@ -2067,7 +2067,7 @@
    "knotenpunkt_bis_rohrende_mm": 102.24,
    "rohr_mm": 3503.5
   },
-  "platte_unterkante_z_mm": -15.469,
-  "untere_platte_oberkante_z_mm": -25.469
+  "platte_unterkante_z_mm": -12.469,
+  "untere_platte_oberkante_z_mm": -28.469
  }
 }

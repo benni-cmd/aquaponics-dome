@@ -25,7 +25,8 @@ P, DOC = sc.load_params("knoten_schere")
 UNIT = {k: v["einheit"] for k, v in DOC["parameter"].items()}
 DES = os.path.join(sc.ROOT, "designs", "components")
 OUT = {"platte": os.path.join(DES, "knoten_schere_platte.sc"), "A": os.path.join(DES, "knoten_schere_arm_a.sc"),
-       "B": os.path.join(DES, "knoten_schere_arm_b.sc"), "detail": os.path.join(DES, "knoten_schere.sc")}
+       "B": os.path.join(DES, "knoten_schere_arm_b.sc"), "detail": os.path.join(DES, "knoten_schere.sc"),
+       "A_montage": os.path.join(DES, "knoten_schere_arm_a_montage.sc"), "B_montage": os.path.join(DES, "knoten_schere_arm_b_montage.sc")}   # D91: Arm ohne Probe-Rohrstueck, das Rohr ist die Strebe (gen_dome.py)
 MAT, MATB, MATR = "Stahl Laserteil", "Stahl Schraube", "Stahl verzinkt"
 Y = [0.0, 1.0, 0.0]
 add = lambda a, b, s=1.0: [a[i] + s * b[i] for i in range(3)]
@@ -92,7 +93,7 @@ def build_plate(b, z_bot, pre="", nm="Lochplatte"):
     return [nm]
 
 
-def build_arm(b, g, pre=""):
+def build_arm(b, g, pre="", tube_on=True):
     """Zwei Laschen, Rohrende mit zwei Gegenloechern; gibt (Koerper, Normteile) zurueck. Normteile werden danach umbenannt."""
     t, w2 = P["link_t"], P["link_w"] / 2
     bodies = []
@@ -126,14 +127,15 @@ def build_arm(b, g, pre=""):
         b.add("solid.cylinder", diameter=P["pivot_hole"], height=40, base=r4(g.pt(g.s_pivot, -20)), axis=r4(g.nrm), operation="cut", targets=[body], name=f"{pre}Drehloch_{k}")
         b.add("material.assign", bodies=[body], material=MAT)
     tube = f"{pre}Rohrstueck"
-    bodies.append(tube)
-    b.add("solid.cylinder", diameter=P["tube_d"], height=P["tube_len"], base=r4(g.tube0), axis=r4(g.u), operation="new", name=pre + "Rohr_F", body_name=tube)
-    b.add("solid.cylinder", diameter=round(P["tube_d"] - 2 * P["tube_t"], 4), height=P["tube_len"] + 2, base=r4(add(g.tube0, g.u, -1)), axis=r4(g.u), operation="cut", targets=[tube], name=pre + "Rohr_innen")
-    for k, side in ((1, -1), (2, 1)):                          # Gegenloch je Lasche, auf deren Mittelebene
-        c = g.pt(g.s_nose, -t / 2 if k == 1 else t / 2)
-        b.add("solid.cylinder", diameter=P["wall_hole"], height=P["tube_t"] + 4, base=r4(add(c, Y, side * (P["tube_d"] / 2 - P["tube_t"] - 2))),
-              axis=[0, side, 0], operation="cut", targets=[tube], name=f"{pre}Gegenloch_{k}")
-    b.add("material.assign", bodies=[tube], material=MATR)
+    if tube_on:                                                # Montage-Arm ohne Rohr (D91): Rohr und Gegenloecher gehoeren zur Strebe
+        bodies.append(tube)
+        b.add("solid.cylinder", diameter=P["tube_d"], height=P["tube_len"], base=r4(g.tube0), axis=r4(g.u), operation="new", name=pre + "Rohr_F", body_name=tube)
+        b.add("solid.cylinder", diameter=round(P["tube_d"] - 2 * P["tube_t"], 4), height=P["tube_len"] + 2, base=r4(add(g.tube0, g.u, -1)), axis=r4(g.u), operation="cut", targets=[tube], name=pre + "Rohr_innen")
+        for k, side in ((1, -1), (2, 1)):                          # Gegenloch je Lasche, auf deren Mittelebene
+            c = g.pt(g.s_nose, -t / 2 if k == 1 else t / 2)
+            b.add("solid.cylinder", diameter=P["wall_hole"], height=P["tube_t"] + 4, base=r4(add(c, Y, side * (P["tube_d"] / 2 - P["tube_t"] - 2))),
+                  axis=[0, side, 0], operation="cut", targets=[tube], name=f"{pre}Gegenloch_{k}")
+        b.add("material.assign", bodies=[tube], material=MATR)
     # Normteile: Plattenschraube M10 (Kopf auf der Platte), Drehpunkt M8
     wt10, wt8, nut10, nut8 = 2.0, 1.6, 8.4, 6.8
     top = [P["bolt_circle_r"], 0, g.z_plate_bot + P["plate_t"]]
@@ -169,7 +171,7 @@ def meta(b, comp, pn, desc):
 
 
 def design(which, explode=None):
-    """which: 'platte' | 'A' | 'B' | 'detail'; explode: {koerper: [dx,dy,dz]} verschiebt Koerper (nur fuer Bilder)."""
+    """which: 'platte' | 'A' | 'B' | 'detail' | 'A_montage' | 'B_montage' (Arm ohne Probe-Rohr, D91: fuer das Gesamtmodell); explode: {koerper: [dx,dy,dz]} verschiebt Koerper (nur fuer Bilder)."""
     b = sc.Build()
     materials(b)
     b.params_to_design({k: v for k, v in P.items() if UNIT.get(k) in ("mm", "")}, DOC, UNIT)
@@ -181,14 +183,16 @@ def design(which, explode=None):
         bodies = build_plate(b, gB.z_plate_bot) + build_plate(b, gB.z_plate2_bot, nm="Lochplatte_unten")
         parts = []
     else:
-        typ = "B" if which == "detail" else which
+        mont = which.endswith("_montage")
+        typ = "B" if which == "detail" else which[0]
         g = Geo(typ)
         root = "60S_Knoten_Schere" if which == "detail" else f"60S_Knoten_Schere_Arm_{typ}"
         b.add("component.create", name=root)
+        rohr = ("ohne Rohr (Montage, D91: das Rohr ist die Strebe T1)" if mont else
+                f"Rohrende Rund {P['tube_d']:g} x {P['tube_t']:g} ({P['tube_len']:g} mm Probestueck) mit 2 Gegenloechern D{P['wall_hole']:g}")
         meta(b, root, "T60S" if which == "detail" else f"T60S-{typ}",
-             f"Scherenarm {typ}: 2 Laschen {P['link_w']:g} x {P['link_t']:g} mit Knick {g.deg:.1f} Grad, Nasen ausgefahren, M10-Plattenschraube, M8-Drehpunkt, "
-             f"Rohrende Rund {P['tube_d']:g} x {P['tube_t']:g} ({P['tube_len']:g} mm Probestueck) mit 2 Gegenloechern D{P['wall_hole']:g}")
-        bodies, parts, _ = build_arm(b, g)
+             f"Scherenarm {typ}: 2 Laschen {P['link_w']:g} x {P['link_t']:g} mit Knick {g.deg:.1f} Grad, Nasen ausgefahren, M10-Plattenschraube, M8-Drehpunkt, " + rohr)
+        bodies, parts, _ = build_arm(b, g, tube_on=not mont)
         if which == "detail":
             bodies += build_plate(b, g.z_plate_bot) + build_plate(b, g.z_plate2_bot, nm="Lochplatte_unten")
         rename_parts(b, parts)
@@ -326,7 +330,7 @@ def write_parts():
     teile.append(dict(common, id="rohrende", name="Rohrende der Strebe (Probestueck)", koerper=["Rohrstueck"], menge=1, typ="rohr", werkstoff="stahl_verzinkt",
                       masse_mm=f"Rundrohr {P['tube_d']:g} x {P['tube_t']:g}, Probestueck {P['tube_len']:g} mm, 2 Gegenloecher D {P['wall_hole']:g} gegenueber, {g.s_nose - g.s_tube:.0f} mm hinter dem Rohrmund",
                       funktion="Das Rohr ist die Strebe. In seinen zwei Gegenloechern sitzen die Nasen der Schere; ueber die Lochraender laeuft die Strebenkraft in die Laschen.",
-                      eigenschaften=["Rund 42,4 x 2,6 verzinkt ist die Empfehlung aus R56 (offen bei Ben).",
+                      eigenschaften=["Rund 42,4 x 2,6 verzinkt (R56-Empfehlung, entschieden D91).",
                                      f"Rohrlaenge in der Kuppel: A {P['strut_a'] - 2 * Geo('A').node_to_tube:.0f} mm, B {P['strut_b'] - 2 * g.node_to_tube:.0f} mm.",
                                      "Gegenloecher mit Bohrlehre (Prisma) bohren."],
                       norm="EN 10255 (Gewinderohr verzinkt) [A]", quelle="R56 Abschnitte 3 und 5", explosion=explo("Rohrstueck")))
@@ -345,7 +349,7 @@ def write_parts():
     out = {"komponente": "knoten_schere", "datei": "designs/components/knoten_schere.sc", "teilenummer": "T60S", "stand": "pilot",
            "titel": "Scherenknoten (Plattenpaar + Schere je Strebe), Detailmodell mit einem Arm B",
            "kurz": "Zwei Lochplatten (oben und unten) verbinden die Streben eines Knotens; die Laschenaugen liegen dazwischen. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch; die zwei Nasen der Schere stehen durch zwei Gegenloecher im Rohr. Die Montage setzt je Knoten ein Plattenpaar und 4, 5 oder 6 Arme.",
-           "hinweis": "Abnahme-Vorlage fuer Ben (N-VERBINDER). Alle Kopfmasse sind Annahmen aus dem Foto ohne Massstab (R56). Offen bei Ben: Rundrohr statt Vierkant, Laschendicke 5 oder 8 mm, Lochbild der 5-wertigen Knoten.",
+           "hinweis": "Abnahme-Vorlage fuer Ben (N-VERBINDER). Alle Kopfmasse sind Annahmen aus dem Foto ohne Massstab (R56). Entschieden D91: Rundrohr 42,4 x 2,6, Laschen 8 mm, eine 6-Loch-Platte fuer alle Knoten (5-wertig bis 15 mm Achsversatz).",
            "koerperzahl": 13,
            "gruppen": [{"id": "platte", "name": "Plattenpaar", "kurz": "Obere und untere Platte, ein Paar je Knoten (W83).", "teile": ["lochplatte", "lochplatte_unten", "plattenschraube", "plattenscheibe_oben", "plattenscheibe_unten", "plattenmutter"]},
                        {"id": "schere", "name": "Schere", "kurz": "Zwei Laschen mit Nasen und Drehpunkt; eine je Strebenende.", "teile": ["lasche_1", "lasche_2", "drehschraube", "drehscheibe_oben", "drehscheibe_unten", "drehmutter"]},
@@ -364,7 +368,7 @@ if __name__ == "__main__":
     write_parts()
     if "--table" in sys.argv:
         sys.exit(0)
-    for which in ("platte", "A", "B", "detail"):
+    for which in ("platte", "A", "B", "detail", "A_montage", "B_montage"):
         b, names = design(which)
         sc.run(b.write(f"knoten-schere-{which}"), OUT[which])
         print("gespeichert", OUT[which], len(names), "Koerper")

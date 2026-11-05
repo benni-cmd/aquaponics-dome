@@ -5,7 +5,7 @@
  "stand": "pilot",
  "titel": "Scherenknoten (Plattenpaar + Schere je Strebe), Detailmodell mit einem Arm B",
  "kurz": "Zwei Lochplatten (oben und unten) verbinden die Streben eines Knotens; die Laschenaugen liegen dazwischen. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch; die zwei Nasen der Schere stehen durch zwei Gegenloecher im Rohr. Die Montage setzt je Knoten ein Plattenpaar und 4, 5 oder 6 Arme.",
- "hinweis": "Abnahme-Vorlage fuer Ben (N-VERBINDER). Alle Kopfmasse sind Annahmen aus dem Foto ohne Massstab (R56). Offen bei Ben: Rundrohr statt Vierkant, Laschendicke 5 oder 8 mm, Lochbild der 5-wertigen Knoten.",
+ "hinweis": "Abnahme-Vorlage fuer Ben (N-VERBINDER). Alle Kopfmasse sind Annahmen aus dem Foto ohne Massstab (R56). Entschieden D91: Rundrohr 42,4 x 2,6, Laschen 8 mm, eine 6-Loch-Platte fuer alle Knoten (5-wertig bis 15 mm Achsversatz).",
  "koerperzahl": 13,
  "gruppen": [
   {
@@ -63,7 +63,7 @@
    "eigenschaften": [
     "Eine Platte fuer alle 26 Knoten (4-, 5- und 6-wertig).",
     "Laserteil S235, feuerverzinkt.",
-    "Liegt wie auf dem Foto OBEN auf den Laschen; Unterkante 15.5 mm unter dem Knotenpunkt."
+    "Liegt wie auf dem Foto OBEN auf den Laschen; Unterkante 12.5 mm unter dem Knotenpunkt."
    ],
    "norm": "EN 10025-2 S235 (Blech) [A]",
    "quelle": "Blatt N-VERBINDER, R56 Abschnitt 2 (Foto ohne Massstab)",
@@ -94,7 +94,7 @@
    "funktion": "Die untere Platte (W83, Ben) klemmt die Laschenaugen von unten. Mit der oberen Platte bildet sie ein Paar: jede Plattenschraube geht durch beide Platten und beide Augen, die Augen sind zweischnittig gefasst.",
    "eigenschaften": [
     "Gleiches Laserteil wie die obere Platte (ein Zuschnitt, 52 Stueck fuer 26 Knoten).",
-    "Oberkante 25.5 mm unter dem Knotenpunkt; der Laschenknick liegt ausserhalb beider Platten (r 63 bzw. 72 gegen Plattenrand r 55)."
+    "Oberkante 28.5 mm unter dem Knotenpunkt; der Laschenknick liegt ausserhalb beider Platten (r 63 bzw. 72 gegen Plattenrand r 55)."
    ],
    "norm": "EN 10025-2 S235 (Blech) [A]",
    "quelle": "Wunschbuch W83 (Ben 05.11.); Masse wie obere Platte [A]",
@@ -121,7 +121,7 @@
    "menge": 1,
    "typ": "sonderteil",
    "werkstoff": "stahl_verzinkt",
-   "masse_mm": "Flachstahl 20 x 5, Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Knick 18.0 Grad (Arm A 15.9 Grad)",
+   "masse_mm": "Flachstahl 20 x 8, Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Knick 18.0 Grad (Arm A 15.9 Grad)",
    "funktion": "Zwei gekreuzte Laschen bilden die Schere. Liegen beide Augen deckungsgleich auf der Platte und sind verschraubt, stehen die Nasen durch die Gegenloecher aus dem Rohr: die Strebe ist eingerastet.",
    "eigenschaften": [
     "Nase zeigt nach +Y quer zur Rohrachse und steht 3 mm ueber die Rohraussenwand.",
@@ -153,7 +153,7 @@
    "menge": 1,
    "typ": "sonderteil",
    "werkstoff": "stahl_verzinkt",
-   "masse_mm": "Flachstahl 20 x 5, Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Knick 18.0 Grad (Arm A 15.9 Grad)",
+   "masse_mm": "Flachstahl 20 x 8, Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Knick 18.0 Grad (Arm A 15.9 Grad)",
    "funktion": "Zwei gekreuzte Laschen bilden die Schere. Liegen beide Augen deckungsgleich auf der Platte und sind verschraubt, stehen die Nasen durch die Gegenloecher aus dem Rohr: die Strebe ist eingerastet.",
    "eigenschaften": [
     "Nase zeigt nach -Y quer zur Rohrachse und steht 3 mm ueber die Rohraussenwand.",
@@ -188,7 +188,7 @@
    "masse_mm": "Rundrohr 42.4 x 2.6, Probestueck 250 mm, 2 Gegenloecher D 13 gegenueber, 46 mm hinter dem Rohrmund",
    "funktion": "Das Rohr ist die Strebe. In seinen zwei Gegenloechern sitzen die Nasen der Schere; ueber die Lochraender laeuft die Strebenkraft in die Laschen.",
    "eigenschaften": [
-    "Rund 42,4 x 2,6 verzinkt ist die Empfehlung aus R56 (offen bei Ben).",
+    "Rund 42,4 x 2,6 verzinkt (R56-Empfehlung, entschieden D91).",
     "Rohrlaenge in der Kuppel: A 3075 mm, B 3504 mm.",
     "Gegenloecher mit Bohrlehre (Prisma) bohren."
    ],
@@ -205,14 +205,14 @@
   },
   {
    "id": "plattenschraube",
-   "name": "Plattenschraube M10 x 45",
+   "name": "Plattenschraube M10 x 50",
    "koerper": [
     "Platte_Schraube"
    ],
    "menge": 1,
    "typ": "normteil",
    "werkstoff": "stahl_verzinkt",
-   "masse_mm": "M10 x 45",
+   "masse_mm": "M10 x 50",
    "funktion": "Schraubt beide Laschenaugen auf ein Loch der Platte; traegt die ganze Strebenkraft (einschnittig).",
    "eigenschaften": [
     "Angezogen kann sich die Schere nicht mehr oeffnen."
@@ -329,14 +329,14 @@
   },
   {
    "id": "drehschraube",
-   "name": "Drehpunktschraube M8 x 25",
+   "name": "Drehpunktschraube M8 x 30",
    "koerper": [
     "Dreh_Schraube"
    ],
    "menge": 1,
    "typ": "normteil",
    "werkstoff": "stahl_verzinkt",
-   "masse_mm": "M8 x 25",
+   "masse_mm": "M8 x 30",
    "funktion": "Haelt die zwei Laschen als Schere zusammen; traegt planmaessig nichts.",
    "eigenschaften": [
     "Sitzt 12 mm vor dem Rohrmund ausserhalb des Rohrs."

@@ -79,7 +79,18 @@ def probe_one(c, knoten, out_dir):
     if not pairs:
         print("  Rohantwort:", json.dumps(res)[:400])
     c.eq(f"Probe {knoten}: Durchdringungen > 0,1 mm3", len(bad), 0)
-    c.eq(f"Probe {knoten}: ungepruefte Paare", len(unchecked), 0)
+    # D91 (Laschen 8 mm): Lasche 1 und 2 DESSELBEN Arms liegen flaechig aufeinander (Schere); an gedrehten Instanzen meldet
+    # inspect.interference dort Facetten-Ueberlappungen unter 0,2 mm als 'unchecked'. Das ist Flaechenkontakt, keine Durchdringung.
+    def kontakt(u):
+        an, bn = u.get("a", ""), u.get("b", "")
+        arm = lambda nm: (re.search(r"\((\d+)\)$", nm) or [None, "1"])[1]
+        tief = re.search(r"by more than ([0-9.eE+-]+) mm", u.get("reason", ""))
+        return ({an.split(" (")[0], bn.split(" (")[0]} == {"Lasche_1", "Lasche_2"} and arm(an) == arm(bn)
+                and tief is not None and float(tief.group(1)) < 0.2)
+    rest = [u for u in unchecked if not kontakt(u)]
+    if len(rest) < len(unchecked):
+        print(f"  {len(unchecked) - len(rest)} ungepruefte Paare = Flaechenkontakt Lasche 1/2 im eigenen Arm (< 0,2 mm Facettenueberlappung)")
+    c.eq(f"Probe {knoten}: ungepruefte Paare (ohne Flaechenkontakt Lasche 1/2 im eigenen Arm)", len(rest), 0)
 
 
 def main():

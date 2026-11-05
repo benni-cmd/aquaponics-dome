@@ -965,7 +965,8 @@ def s2n(neu, linie):
     if stoer:
         log.append("SCHACHT %s NICHT GESETZT: %s liegt %.0f mm in/an der Schachthuelle (Soll >= 10 mm Luft)" % (I["kh"], min(stoer)[1], min(stoer)[0]))
         neu["teile"].pop(); stoer = None
-    if stoer is not None: neu.setdefault("gruben", []).append({"id": "SCH-" + I["kh"], "x": round(c[0], 1), "y": round(c[1], 1), "d": 480.0, "sohle": round(400.0 - 581.4 - 10.0, 1), "varianten": S2N_AP})
+    if stoer is not None: neu.setdefault("gruben", []).append({"id": "SCH-" + I["kh"], "art": "box", "x": round(c[0], 1), "y": round(c[1], 1), "az": round(math.degrees(math.atan2(xs[1], xs[0])), 3),
+                                                              "l": 204.0 + 50.6, "b": 416.0 + 50.6, "d": 480.0, "sohle": round(400.0 - 581.4 - 12.3, 1), "varianten": S2N_AP})   # Kasten Schacht aussen + 25 je Seite
     if stoer is not None: log.append("SCH-%s Schacht Hahnmitte %s" % (I["kh"], rd(hm)))
     # M1 Revisionsstutzen
     s2n_revision(neu, linie, S2NWelt(neu, linie), log)

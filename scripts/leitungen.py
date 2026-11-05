@@ -252,6 +252,8 @@ def graben(doc, fz):
                 z = (a[2] + b[2]) / 2; z0 = min(a[2], b[2]) - w / 2
                 out.append(("box", name, round((a[0] + b[0]) / 2, 1), round((a[1] + b[1]) / 2, 1), round(z0, 1), round(math.degrees(math.atan2(b[1] - a[1], b[0] - a[0])), 3), round(dxy + w + 2 * ex, 1), round(w, 1), round(fz + 1 - z0, 1)))
     for g in doc.get("gruben", []):                                   # M10-UMBAU Schritt 5: Grube Schlammfass (Zylinder bis Flur + 1)
+        if g.get("art") == "box":                                     # M10-S2N: Schachtgrube als gedrehter Kasten (Zylinder d480 an KH1 scheiterte im Boolean, Build Runde 75)
+            out.append(("box", "T93_Grube_%s" % g["id"].replace("-", "_"), round(g["x"], 1), round(g["y"], 1), round(g["sohle"], 1), round(g["az"], 3), round(g["l"], 1), round(g["b"], 1), round(fz + 1 - g["sohle"], 1))); continue
         out.append(("zyl", "T93_Grube_%s" % g["id"].replace("-", "_"), round(g["x"], 1), round(g["y"], 1), round(g["sohle"], 1), round(g["d"], 1), round(fz + 1 - g["sohle"], 1)))
     return out
 

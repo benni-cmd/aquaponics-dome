@@ -6,7 +6,7 @@
   "titel": "Absetzer (Vortex-Absetzer, kleiner Tank)",
   "kurz": "Das Wasser tritt tangential in den Kegeltank ein und dreht sich um das Leitrohr. Feststoffe sinken zur Kegelspitze und werden dort über den Kugelhahn abgelassen; das geklärte Wasser verlässt den Tank oben über den Auslauf.",
   "hinweis": "Texte und Zahlen aus docs/parts/tank.md und data/components/tank.json (Typ klein). Rohrmaße, Leitrohr und Auslauf sind angenommen (R09, Konfidenz niedrig). Normverweise und Lebensmittelkontakt sind angenommen, bis R31/B6/R50 sie belegen; der europäische Bezug der Kaufteile ist offen (R52, Regel D76).",
-  "koerperzahl": 33,
+  "koerperzahl": 34,
   "gruppen": [
     {
       "id": "tank",
@@ -20,11 +20,12 @@
     {
       "id": "leitungen",
       "name": "Leitungen",
-      "kurz": "Zulauf tangential, Leitrohr in der Mitte, Auslauf oben.",
+      "kurz": "Zulauf tangential, Leitrohr in der Mitte, Auslauf oben, Luftstutzen im Deckel.",
       "teile": [
         "zulaufrohr",
         "leitrohr",
-        "auslaufrohr"
+        "auslaufrohr",
+        "luftstutzen"
       ]
     },
     {
@@ -217,6 +218,42 @@
       "artikel_id": "ROH-pvcu-d50",
       "artikel_einheit": "m",
       "artikel_menge_je_instanz": 0.386
+    },
+    {
+      "id": "luftstutzen",
+      "name": "Luftstutzen im Deckel",
+      "koerper": [
+        "Luftstutzen"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Rohr d20, Wand 1,5 mm, 96 mm lang (z 1227 bis 1323), bei x 155,75 / y 0 (Parameter settler_air_d, settler_air_wall, settler_air_below)",
+      "funktion": "Der Stutzen führt die Luftleitung K47 bzw. K48 vom Gebläse durch den Deckel in den Absetzer.",
+      "eigenschaften": [
+        "Er reicht 20 mm unter den Deckel und endet oben bündig mit dem Leitrohr (z 1323 mm).",
+        "Der Luftschlauch im Tank und ein Ausströmer sind nicht modelliert; ob und wo der Absetzer belüftet wird, ist offen (Leitungsnetz: K47/K48 optional).",
+        "Nachgerüstet am 05.11.2026 nach Auflage A1 der Prüfung M10-S5-LUFT-B."
+      ],
+      "norm": "Rohr PVC-U nach DIN 8062 / EN 1452 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "data/leitungsnetz.json (K47/K48 dn 20), docs/jobs/pruefung/M10-S5-LUFT-B.md (Auflage A1), data/components/tank.json (settler_air_*: [A])",
+      "bezug": "offen (R52)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 500,
+        "folgt": "deckel"
+      },
+      "artikel_id": "FIT-stutzen-d20",
+      "artikel_einheit": "Stk",
+      "artikel_menge_je_instanz": 1.0
     },
     {
       "id": "schlammstutzen",

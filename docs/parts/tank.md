@@ -24,6 +24,9 @@
 | `inlet_below_top` | 250 | mm | [A] Zulauf tangential 250 mm unter dem Tankrand |
 | `valve_len` | 40 | mm | [A] Kugelhahn Baulaenge 40 (OBJ-Fittings Z 143-177 nur 34 mm Bandbreite: Verschraubungen) |
 | `air_d` | 16 | mm | [A] Belueftungsanschluss im Deckel (Biofilter) |
+| `settler_air_d` | 20 | mm | [A] Absetzer: Luftstutzen PVC-U d20 im Deckel fuer K47/K48 (Leitungsnetz dn 20; Pruefung M10-S5-LUFT-B Auflage A1, 05.11.2026) |
+| `settler_air_wall` | 1.5 | mm | [A] Wand d20 PVC-U (Druckrohr PN10 nach DIN 8062, Handbuchwert) |
+| `settler_air_below` | 20 | mm | [A] Luftstutzen reicht 20 mm unter den Deckel; Schlauch zum Ausstroemer im Tank nicht modelliert |
 | `diag_w` | 25 | mm | [A] Diagonale Flachstahl 25 x 3 |
 | `rim_w` | 25 | mm | Bild: ref-5 dicker gerollter Randwulst; 25 mm nach aussen, Aussenmass D laut OBJ inkl. Wulst [A] |
 | `rim_h` | 40 | mm | Bild: ref-5 dicker gerollter Randwulst (Bild-Kritiker Luecke 2: Wulst zu schmal); 40 mm hoch [A] |
@@ -53,7 +56,7 @@
 | gross | 465 | 1444 | 226 | 821 | 821 | 98 | 570 | 40 | 1008 | 2.5 | 5 | 28 | 300 | 50 | 63 | 1 | 1 | layout.json tanks 2 und 3: D930, H1441-1444, Spitze Z 226-229, Plattform 977x976x98 auf Z 570-572, Beine 4 x h1006-1008, Fittings 41-56 an der Spitze; Hahn d50 (Norm) statt OBJ-Fitting 55 [A]; Stuetzrippen: layout.json tanks 2/3 modules 384 x 44 x 419 (Orchestrator-Entscheidung 29.10.: Rippen/Konsolen der Plattform, Klasse Tank) | 2 | 977 | 976 | W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert | 11.0 |
 | gross_t3 | 465 | 1444 | 226 | 821 | 821 | 98 | 570 | 40 | 1008 | 2.5 | 5 | 28 | 300 | 50 | 63 | 1 | 1 | Tank 3 (Azimut 107,8): wie gross, Rippenmuster um 42,6 Grad gedreht (Rippenwinkel relativ zur Plattformdrehung 53,6 statt 11,0 Grad) | 2 | 977 | 976 | W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert | 53.6 |
 
-Gesamt-Box (Messung, Variante tank_klein): X -344.5 bis 441.5, Y -351.2 bis 344.5, Z -24.0 bis 1323.0 mm; Koerper: 33.
+Gesamt-Box (Messung, Variante tank_klein): X -344.5 bis 441.5, Y -351.2 bis 344.5, Z -24.0 bis 1323.0 mm; Koerper: 34.
 
 - Box (Messung) klein: X -388 bis 442, Y -388 bis 388, Z -24 (Schraubenenden 24 mm im Boden) bis 1323
 - Box (Messung) gross: X -518 bis 570, Y -518 bis 518, Z -24 (Schraubenenden 24 mm im Boden) bis 1750
@@ -63,10 +66,10 @@ Gesamt-Box (Messung, Variante tank_klein): X -344.5 bis 441.5, Y -351.2 bis 344.
 ## Werkstoff und Gewicht
 
 - Werkstoff: PE (Tank), Stahl verzinkt (Plattform, Beine), PVC (Rohre, Ventil), Dichte 0.95 g/cm3, Farbe #9db89c (ref-4/ref-5: gruene Kunststofftanks mit Randwulst; PE-Dichte 0,95 g/cm3 Handbuchwert; Stahl 7,85; PVC-U 1,4)
-- Volumen (Messung, Variante tank_klein, `solidcraft-cli eval`): 15923.5 cm3 · Masse leer (ohne Biomedium): 37237 g (37.24 kg)
-- Variante `tank_klein`: 37.24 kg leer (ohne Biomedium)
-- Variante `tank_gross`: 73.67 kg leer (ohne Biomedium)
-- Variante `tank_gross_t3`: 73.67 kg leer (ohne Biomedium)
+- Volumen (Messung, Variante tank_klein, `solidcraft-cli eval`): 15930.0 cm3 · Masse leer (ohne Biomedium): 37367 g (37.37 kg)
+- Variante `tank_klein`: 37.37 kg leer (ohne Biomedium)
+- Variante `tank_gross`: 73.79 kg leer (ohne Biomedium)
+- Variante `tank_gross_t3`: 73.79 kg leer (ohne Biomedium)
 - Gefuellt/in Betrieb: klein: leer 46 kg; Wasserfuellung bis Rand 254 l = 254 kg (Zylinder 222 l + Kegel 33 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt 300 kg | gross: leer 103 kg, Biomedium (K1-Schuettung 470 l x 0,15 g/cm3) 71 kg; Wasserfuellung bis Rand 683 l = 683 kg (Zylinder 596 l + Kegel 88 l; Wasserfuellung gehoert zu DRAUSSEN, nur Gewichtsangabe) [E]; gefuellt gesamt ca. 857 kg (ohne Abzug des Traegervolumens)
 
 ## Querschnitt / Profil
@@ -81,6 +84,7 @@ Tank PE: Zylinder ueber Kegel, gerollter Randwulst 25 x 40 mm, Wand 4/5 mm, Deck
 | klein: Auslauf (Auslaufrohr vom Leitrohr durch die Tankwand) | PVC-U d50 (DN40) | x 442, y 0, z 1147 (100 mm unter dem Rand, R09) | Wasser verlaesst den Absetzer nach +X (Oeffnung zeigt +X) |
 | klein: Schlammablass (Kugelhahn an der Kegelspitze) | PVC-U d40 (DN30), Kugelhahn mit Verschraubung | x 0, y 0, z 80 (Stutzenende); Kegelspitze z 172 | Schlamm laeuft nach unten ab (Oeffnung zeigt -Z), Hebel +X |
 | klein: Fussplatten-Anker (4 Fuesse, je 2 x M8) | Schrauben M8x30 ISO 4017, Loch D9, Platte 100 x 100 x 6; im Boden Duebel/Betonpunkt M8 | x +-294, y +-294, z 6 (Diagonalversatz +-35); Schraubenenden z -24 | Befestigung auf Boden/Betonpunkt, Richtung -Z |
+| klein: Luftanschluss im Deckel (K47/K48) | PVC-U-Stutzen d20 (Wand 1,5), Deckeldurchfuehrung | x 155.75, y 0, z 1323 (Stutzenende oben); Stutzen z 1227 bis 1323, Deckel z 1247 bis 1253 | Luft tritt ein, Oeffnung zeigt +Z; Schlauch innen zum Ausstroemer nicht modelliert [A] |
 | gross: Zulauf tangential (Rohr d63, DN50) | PVC-U d63 nach DIN 8062 (DN50), Wand 3 | x 403.5, y -395, z 1420 (Rohrachse parallel Y, Rohrende aussen) | Wasser tritt ein, Oeffnung zeigt -Y; Rohr beruehrt die Innenwand tangential (Drall) |
 | gross: Ueberlauf (Auslauf) | PVC-U d63 (DN50) | x 570, y 0, z 1570 (100 mm unter dem Rand, R09) | Wasser verlaesst den Biofilter nach +X (Oeffnung zeigt +X) |
 | gross: Belueftungsanschluss im Deckel | Rohr d16 (Luftschlauch 16 mm, etwa DN10) | x 220, y 0, z 1676 | Luft tritt ein, Oeffnung zeigt +Z |
@@ -143,7 +147,7 @@ Tank PE: Zylinder ueber Kegel, gerollter Randwulst 25 x 40 mm, Wand 4/5 mm, Deck
 
 ## Stueckliste-Zeile
 
-- klein (je Tank): Tank PE (4 mm Wand, Aussen-D673 x H1075, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d50 1 + Bulkhead mit Dichtung 1; Leitrohr d110 mit Auslaufrohr d50 1 + Bulkhead mit Dichtung 1; Kugelhahn d40 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 30x30 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8
+- klein (je Tank): Tank PE (4 mm Wand, Aussen-D673 x H1075, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d50 1 + Bulkhead mit Dichtung 1; Leitrohr d110 mit Auslaufrohr d50 1 + Bulkhead mit Dichtung 1; Luftstutzen d20 im Deckel 1 (K47/K48); Kugelhahn d40 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 30x30 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8
 - gross (je Tank): Tank PE (5 mm Wand, Aussen-D930 x H1444, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d63 1 + Bulkhead mit Dichtung 1; Ueberlauf d63 1 + Bulkhead mit Dichtung 1, Schwebebett K1-Traeger (470 l Schuettvolumen, ca. 71 kg) 1, Belueftungsgitter D20 mit Steigrohr d16 1, Zulaufsieb 1, Auslaufsieb 1; 5 Stuetzrippen Kantholz 44 (Dreiecksknaggen radial unter dem Kegel, Fichte, T40g) 1 Satz; Kugelhahn d50 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 40x40 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8
 - Tanks gesamt: klein 2, gross 2 (Azimute 123/213 und 108/229, layout.json); Normschrauben: M8x30 ISO 4017, M6x40 ISO 4017, Muttern ISO 4032
 
@@ -191,3 +195,4 @@ Tank: handelsueblicher Konus-Boden-Tank (Kunststoff, 500-1000 l); Plattform/Bein
 - K1-Traeger Fabrikat, Abmessungen (D9 x 7 mm, 500 m2/m3) und die Schwebewirkung bei der Belueftung sind [A]/R30 (Datenblatt nicht gelesen); die Traeger sind nicht einzeln modelliert; Siebschlitze (5 mm) und Belueftungsbohrungen nicht modelliert; Luftmenge/Gebläse nicht gerechnet
 - Schlammstutzen sitzt 2 mm in der Kegelspitze (gewollter Sitz, 857,8 mm3 Ueberdeckung, unveraendert gegen den Stand vor W32); der Check nimmt diese eine Paarung aus
 - Die frueheren Interferenzen Tank/Konsolen und Zulaufrohr/Biomediumkorb (Stand vor W32) entfallen mit dem Schwebebett
+- Absetzer-Luftstutzen d20 (A1, 05.11.2026): nur Deckeldurchfuehrung modelliert; ob die Luft im Absetzer ueber einen Ausstroemer eingeblasen wird (stoert den Vortex) oder nur den Kopfraum belueftet, ist offen (Leitungsnetz K47/K48: optional) [A]

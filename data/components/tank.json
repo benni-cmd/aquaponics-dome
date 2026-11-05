@@ -150,6 +150,21 @@
    "einheit": "mm",
    "herkunft": "[A] Belueftungsanschluss im Deckel (Biofilter)"
   },
+  "settler_air_d": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Absetzer: Luftstutzen PVC-U d20 im Deckel fuer K47/K48 (Leitungsnetz dn 20; Pruefung M10-S5-LUFT-B Auflage A1, 05.11.2026)"
+  },
+  "settler_air_wall": {
+   "wert": 1.5,
+   "einheit": "mm",
+   "herkunft": "[A] Wand d20 PVC-U (Druckrohr PN10 nach DIN 8062, Handbuchwert)"
+  },
+  "settler_air_below": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[A] Luftstutzen reicht 20 mm unter den Deckel; Schlauch zum Ausstroemer im Tank nicht modelliert"
+  },
   "diag_w": {
    "wert": 25,
    "einheit": "mm",
@@ -302,6 +317,12 @@
     "Befestigung auf Boden/Betonpunkt, Richtung -Z"
    ],
    [
+    "klein: Luftanschluss im Deckel (K47/K48)",
+    "PVC-U-Stutzen d20 (Wand 1,5), Deckeldurchfuehrung",
+    "x 155.75, y 0, z 1323 (Stutzenende oben); Stutzen z 1227 bis 1323, Deckel z 1247 bis 1253",
+    "Luft tritt ein, Oeffnung zeigt +Z; Schlauch innen zum Ausstroemer nicht modelliert [A]"
+   ],
+   [
     "gross: Zulauf tangential (Rohr d63, DN50)",
     "PVC-U d63 nach DIN 8062 (DN50), Wand 3",
     "x 403.5, y -395, z 1420 (Rohrachse parallel Y, Rohrende aussen)",
@@ -350,7 +371,7 @@
   ],
   "werkzeug": "Lochsaege (d63/d50), Bohrer, Schluessel M6/M8, Wasserwaage, Schweissgeraet (Rahmen) oder Winkelverbinder",
   "stueckliste": [
-   "klein (je Tank): Tank PE (4 mm Wand, Aussen-D673 x H1075, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d50 1 + Bulkhead mit Dichtung 1; Leitrohr d110 mit Auslaufrohr d50 1 + Bulkhead mit Dichtung 1; Kugelhahn d40 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 30x30 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8",
+   "klein (je Tank): Tank PE (4 mm Wand, Aussen-D673 x H1075, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d50 1 + Bulkhead mit Dichtung 1; Leitrohr d110 mit Auslaufrohr d50 1 + Bulkhead mit Dichtung 1; Luftstutzen d20 im Deckel 1 (K47/K48); Kugelhahn d40 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 30x30 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8",
    "gross (je Tank): Tank PE (5 mm Wand, Aussen-D930 x H1444, Randwulst) 1; Deckel mit Revisionsoeffnung D200 1 (Revisionsdeckel nicht modelliert, 1 Stueck); Zulaufrohr d63 1 + Bulkhead mit Dichtung 1; Ueberlauf d63 1 + Bulkhead mit Dichtung 1, Schwebebett K1-Traeger (470 l Schuettvolumen, ca. 71 kg) 1, Belueftungsgitter D20 mit Steigrohr d16 1, Zulaufsieb 1, Auslaufsieb 1; 5 Stuetzrippen Kantholz 44 (Dreiecksknaggen radial unter dem Kegel, Fichte, T40g) 1 Satz; Kugelhahn d50 mit Verschraubung und 2 Stutzen 1; Plattform 1; Beine 40x40 4; Streben 4; Diagonalen 25x3 4 (je 2 Schrauben M6x40 ISO 4017 + Mutter ISO 4032, nicht modelliert); Fussplatten 4 mit 8 Schrauben M8x30 ISO 4017 und 8 Duebeln M8",
    "Tanks gesamt: klein 2, gross 2 (Azimute 123/213 und 108/229, layout.json); Normschrauben: M8x30 ISO 4017, M6x40 ISO 4017, Muttern ISO 4032"
   ],
@@ -388,7 +409,8 @@
    "W32 (D55, 31.10.): Das Schwebebett ist ein Koerper mit 470 l Schuettvolumen (0,67 x 702 l, Z 489..1353); das Tankprofil fasst bis zum Rand nur 687 l und bis zum Ueberlauf-Mittelpunkt 628 l: Das Bett fuellt damit 68 % (Rand) bzw. 75 % (Ueberlauf) des Modellwassers; K1-Betten werden meist auf hoechstens 67-70 % ausgelegt. Entscheidung offen: Ueberlauf tiefer oder Fuellung 0,67 x 628 l = 421 l (Orchestrator/Ben)",
    "K1-Traeger Fabrikat, Abmessungen (D9 x 7 mm, 500 m2/m3) und die Schwebewirkung bei der Belueftung sind [A]/R30 (Datenblatt nicht gelesen); die Traeger sind nicht einzeln modelliert; Siebschlitze (5 mm) und Belueftungsbohrungen nicht modelliert; Luftmenge/Gebläse nicht gerechnet",
    "Schlammstutzen sitzt 2 mm in der Kegelspitze (gewollter Sitz, 857,8 mm3 Ueberdeckung, unveraendert gegen den Stand vor W32); der Check nimmt diese eine Paarung aus",
-   "Die frueheren Interferenzen Tank/Konsolen und Zulaufrohr/Biomediumkorb (Stand vor W32) entfallen mit dem Schwebebett"
+   "Die frueheren Interferenzen Tank/Konsolen und Zulaufrohr/Biomediumkorb (Stand vor W32) entfallen mit dem Schwebebett",
+   "Absetzer-Luftstutzen d20 (A1, 05.11.2026): nur Deckeldurchfuehrung modelliert; ob die Luft im Absetzer ueber einen Ausstroemer eingeblasen wird (stoert den Vortex) oder nur den Kopfraum belueftet, ist offen (Leitungsnetz K47/K48: optional) [A]"
   ]
  },
  "herkunft_tabelle": [

@@ -85,7 +85,14 @@ def build(typ):
     b.add("solid.cylinder", diameter=p["rev_d"], height=p["lid_t"] + 2, base=[-R / 2, 0, z_top - 1], operation="cut", targets=["Deckel"], name="Deckel_Revision")
     if T["biofilter"]:
         b.add("solid.cylinder", diameter=p["air_d"], height=p["lid_t"] + 2, base=[R / 2, 0, z_top - 1], operation="cut", targets=["Deckel"], name="Deckel_Belueftung")
+    else:                                                 # Absetzer: Luftanschluss d20 fuer K47/K48 (Pruefung M10-S5-LUFT-B, Auflage A1)
+        b.add("solid.cylinder", diameter=p["settler_air_d"], height=p["lid_t"] + 2, base=[R / 2, 0, z_top - 1], operation="cut", targets=["Deckel"], name="Deckel_Luftanschluss")
     b.add("material.assign", bodies=["Deckel"], material="PE Tank")
+    if not T["biofilter"]:                                # Luftstutzen PVC-U d20 durch den Deckel: 20 mm unter den Deckel, oben buendig mit dem Leitrohr
+        sa0, sa1 = z_top - p["settler_air_below"], z_top + p["lid_t"] + 70
+        b.add("solid.cylinder", diameter=p["settler_air_d"], height=sa1 - sa0, base=[R / 2, 0, sa0], operation="new", name="Luftstutzen_R", body_name="Luftstutzen")
+        b.add("solid.cylinder", diameter=p["settler_air_d"] - 2 * p["settler_air_wall"], height=sa1 - sa0 + 2, base=[R / 2, 0, sa0 - 1], operation="cut", targets=["Luftstutzen"], name="Luftstutzen_Bohrung")
+        b.add("material.assign", bodies=["Luftstutzen"], material="PVC grau Tank")
     # --- Zulaufrohr (tangential)
     b.add("component.activate", component=root)
     b.add("component.create", name="T40b_Zulauf")

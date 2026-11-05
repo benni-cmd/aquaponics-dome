@@ -147,6 +147,18 @@ def main(typs):
             ck.eq(f"{typ} Auslaufrohr 100 mm unter dem Rand (R09)", T["z0"] + T["H"] - (al["min"][2] + al["max"][2]) / 2, p["outlet_below_top"], 0.5)
             ck.eq(f"{typ} Auslaufrohr ausserhalb des Tanks (x_max > R)", 1 if al["max"][0] > R else 0, 1)
             ck.eq(f"{typ} Auslaufrohr D", al["max"][2] - al["min"][2], p["outlet_d"], 0.2)
+            # Luftanschluss d20 im Deckel fuer K47/K48 (Pruefung M10-S5-LUFT-B, Auflage A1)
+            ls_ = B["Luftstutzen"]
+            lsb = ls_["bbox"]
+            z_top_ = T["z0"] + T["H"]
+            ck.eq(f"{typ} Luftstutzen D20 (K47/K48 dn 20)", lsb["max"][0] - lsb["min"][0], p["settler_air_d"], 0.2)
+            ck.eq(f"{typ} Luftstutzen Volumen = Rohr d20 x Wand {p['settler_air_wall']} x Laenge", ls_["volume_mm3"], math.pi / 4 * (p["settler_air_d"] ** 2 - (p["settler_air_d"] - 2 * p["settler_air_wall"]) ** 2) * (lsb["max"][2] - lsb["min"][2]), 5.0)
+            ck.eq(f"{typ} Luftstutzen geht durch den Deckel ({p['settler_air_below']:.0f} mm darunter, oben ueber dem Deckel)", 1 if abs(lsb["min"][2] - (z_top_ - p["settler_air_below"])) < 0.2 and lsb["max"][2] > z_top_ + p["lid_t"] else 0, 1)
+            ck.eq(f"{typ} Luftstutzen bei x = Koerperradius/2, y = 0", math.hypot((lsb["min"][0] + lsb["max"][0]) / 2 - Rb / 2, (lsb["min"][1] + lsb["max"][1]) / 2), 0, 0.2)
+            ck.eq(f"{typ} Luftstutzen ueber dem Auslaufrohr (Abstand >= 20 mm)", 1 if lsb["min"][2] - al["max"][2] >= 20 else 0, 1)
+            ck.eq(f"{typ} Luftstutzen frei vom Leitrohr (Abstand Rohrkanten >= 50 mm)", 1 if lsb["min"][0] - lr["max"][0] >= 50 else 0, 1)
+            ck.eq(f"{typ} Luftstutzen frei von der Revisionsoeffnung (andere Deckelseite)", 1 if lsb["min"][0] > 0 else 0, 1)
+            ck.eq(f"{typ} Luftstutzen nicht ueber der Gesamthoehe (oben <= Leitrohr-Oberkante)", 1 if lsb["max"][2] <= lr["max"][2] + 0.1 else 0, 1)
         if T["biofilter"]:
             ribs = [b for k, b in B.items() if k.startswith("Stuetzrippe_")]
             rw = d["rippenwinkel"]["wert"]

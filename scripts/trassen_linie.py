@@ -74,7 +74,7 @@ def s_alt(neu, kid, g0, gh, s):
 def schreiben(doc, linie, neu):
     """Mischt die Trassen der Linie in die bestehende Liste (Trassen der anderen Linie bleiben); S2a-Eintraege ohne Feld linie gelten als Linie 1."""
     alt = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {"z_bezug": "absolut", "regeln": {}, "trassen": []}
-    gehoert = lambda e: e.get("linie", 1) == linie and not (e.get("varianten") and "a_plus" not in e["varianten"])   # V1b: Eintraege nur fuer ring_b2 (scripts/trassen_ring.py) bleiben stehen
+    gehoert = lambda e: e.get("linie", 1) == linie and (not (e.get("varianten") and "a_plus" not in e["varianten"]) or e.get("s2n_basis"))   # S2N: ring_b2-Kopien geteilter Trassen erzeugt dieser Lauf neu   # V1b: Eintraege nur fuer ring_b2 (scripts/trassen_ring.py) bleiben stehen
     for key in ("trassen", "t_stuecke", "r_stuecke", "teile", "gruben"):
         doc[key] = [e for e in alt.get(key, []) if not gehoert(e)] + neu.get(key, [])
         for e in neu.get(key, []): e["linie"] = linie
@@ -719,6 +719,219 @@ def schlamm_verteiler(L, neu, linie):
     for t in neu["trassen"]:
         if not t.get("baender") and not t.get("band"): t["baender"] = baender_auto(t["pfad"])
 
+# ---------------- M10-S2N (A+, R47 M1/M2/M3/M7): Zugaenge am vergrabenen Hauptkreislauf, Blatt docs/jobs/M10-S2N.md
+# Alle S2N-Teile gelten nur fuer die Variante a_plus (N-VARIANTEN V1b). Eine geteilte Bestandstrasse bleibt fuer ring_b2 ungeteilt stehen (Kopie mit Feld s2n_basis);
+# das letzte Teilstueck behaelt die Trassen-ID, davor liegende Teilstuecke heissen <id>-1, <id>-2 ...
+S2N_AP, S2N_B2 = ["a_plus"], ["ring_b2"]
+KAPPE_H = 34.0                     # lt_kappe_d50 Hoehe gesamt (docs/parts/leitungsteile.md Kappe)
+REV_ZOEFF = 410.0 - KAPPE_H        # Kappenoeffnung = Rohrende im Steigrohr; Kappen-Oberkante Z 410 (Blatt M1: 400 bis 420)
+REV_LUFT = 20.0                    # lichter Abstand Steigrohr zu fremder Leitung [A]
+REV_ROHR = 120.0                   # Rohr zwischen Revisions-T und Nachbar-Formstueck (R4: kuerzere Rohre nur im Formstueck-Zusammenbau)
+REV_ROHR_KURZ = 40.0               # Notfall: Rohr am Revisions-T im Formstueck-Zusammenbau (R4-Ausnahme T-Anschluss), wenn mit 120 kein Platz ist
+REV_BODEN = 60.0                   # Kappe im Grundriss so weit frei von Bauteil-, Becken-, Beet- und Tischfuss-Grundriss [A]
+SP_ROHR = 100.0                    # Spuelanschluss: T-Mitte bis Hahn-Muffe A
+SCHACHT_S = "lt_schacht_kugelhahn_d63_tief_senkrecht"
+MAX_KNICK_S2N = 950.0              # Stutzen hoechstens so weit vom Knick (Pruefpunkt 1: <= 1000)
+
+def hl(d): return LT.ports("lt_kugelhahn_d%d" % d)[1][1][2]
+
+def _gehoert_s2n(e, linie): return e.get("linie", 1) == linie and e.get("s2n_basis")
+
+def _teil_seg(P, q):
+    """Index i des Teilstuecks P[i] -> P[i+1], auf dem q liegt (Abstand < 0,5 mm)."""
+    for i in range(len(P) - 1):
+        a, b = P[i], P[i + 1]; v = sub(b, a); L2 = dot(v, v)
+        s = max(0.0, min(1.0, dot(sub(q, a), v) / L2)) if L2 else 0.0
+        if math.dist(add(a, v, s), q) < 0.5: return i
+    raise SystemExit("S2N: Punkt %s liegt auf keiner Strecke" % rd(q))
+
+def s2n_split(neu, tid, qa, qb, tag_a, tag_b):
+    """Teilt Trasse tid zwischen qa (Ende Teil A, tag_a) und qb (Anfang Teil B, tag_b); qa, qb auf derselben Strecke. Gibt die ID von Teil A zurueck (Teil B behaelt tid)."""
+    tr = [t for t in neu["trassen"] if t["id"] == tid][0]
+    P = [tuple(p) for p in tr["pfad"]]; i = _teil_seg(P, qa)
+    if not tr.get("varianten"):                                          # ring_b2 behaelt die ungeteilte Trasse
+        neu["trassen"].append(dict(json.loads(json.dumps(tr)), varianten=S2N_B2, s2n_basis=True))
+        tr["varianten"] = S2N_AP
+    n = 1
+    while any(t["id"] == "%s-%d" % (tid, n) for t in neu["trassen"]): n += 1
+    aid = "%s-%d" % (tid, n)
+    pa = [p for p in P[:i + 1]] + ([qa] if math.dist(P[i], qa) > 0.5 else [])
+    pb = ([qb] if math.dist(P[i + 1], qb) > 0.5 else []) + [p for p in P[i + 1:]]
+    if math.dist(pb[0], qb) > 0.5: pb = [qb] + pb
+    A = json.loads(json.dumps(tr)); A["id"] = aid; A["pfad"] = [rd(p) for p in pa]; A["ende"] = tag_a
+    tr["pfad"] = [rd(p) for p in pb]; tr["start"] = tag_b
+    for key in ("baender", "korridor"):
+        if key in tr: A[key] = tr[key][:len(pa) - 1]; tr[key] = tr[key][len(tr[key]) - (len(pb) - 1):]
+    neu["trassen"].insert(neu["trassen"].index(tr), A)
+    for ts in list(neu["t_stuecke"]):                                    # T am Anfang von tid zeigt jetzt auf Teil A
+        if not any(p["trasse"] == tid and p["ende"] == "start" for p in ts["ports"]) or ts.get("s2n_basis"): continue
+        if not ts.get("varianten"):
+            neu["t_stuecke"].append(dict(json.loads(json.dumps(ts)), varianten=S2N_B2, s2n_basis=True)); ts["varianten"] = S2N_AP
+        for p in ts["ports"]:
+            if p["trasse"] == tid and p["ende"] == "start": p["trasse"] = aid
+    return aid
+
+def s2n_hahn(neu, tid, q, d, hid, notiz):
+    """Kugelhahn d (Doppelmuffe) mit Mitte q auf einer Geraden der Trasse tid."""
+    tr = [t for t in neu["trassen"] if t["id"] == tid][0]; P = [tuple(p) for p in tr["pfad"]]; i = _teil_seg(P, q)
+    u = unit(sub(P[i + 1], P[i])); L = hl(d); pa = add(q, u, -L / 2); pb = add(q, u, L / 2)
+    s2n_split(neu, tid, pa, pb, "r:" + hid, "r:" + hid)
+    neu["r_stuecke"].append({"id": hid, "art": "kugelhahn", "pos_a": rd(pa), "dir": [round(v, 6) for v in u], "d_gross": d, "d_klein": d, "varianten": S2N_AP, "notiz": notiz})
+
+def s2n_t(neu, tid, q, tsid, abzweig, notiz):
+    """T an q auf Trasse tid (Gerade oder Knick: am Knick wird der Bogen durch das T ersetzt), Abzweig-Trasse abzweig (Pfad beginnt bei q, Anfang t:tsid)."""
+    tr = [t for t in neu["trassen"] if t["id"] == tid][0]; d = int(tr["dn"])
+    aid = s2n_split(neu, tid, q, q, "t:" + tsid, "t:" + tsid)
+    neu["t_stuecke"].append({"id": tsid, "pos": rd(q), "d": d, "ports": [{"trasse": aid, "ende": "ende", "d": d}, {"trasse": tid, "ende": "start", "d": d},
+                             {"trasse": abzweig["id"], "ende": "start", "d": int(abzweig["dn"])}], "varianten": S2N_AP, "notiz": notiz})
+    abzweig.update({"start": "t:" + tsid, "varianten": S2N_AP, "kante": None, "farbe": abzweig.get("farbe", "grau")})
+    neu["trassen"].append(abzweig)
+
+def s2n_spuel(neu, tid, q, h, nr, linie, notiz):
+    """Spuelanschluss (R47 M7): T an q, Abzweig in Richtung h, Rohr, Kugelhahn d50, Rohrstueck, Kappe d50."""
+    ts, hid = "TSP%d_%d" % (linie, nr), "KSP%d_%d" % (linie, nr)
+    pa = add(q, h, SP_ROHR); pb = add(pa, h, hl(50)); pk = add(pb, h, K_GAP)
+    s2n_t(neu, tid, q, ts, {"id": "SP%d-%d" % (linie, nr), "dn": 50, "ende": "r:" + hid, "pfad": [rd(q), rd(pa)], "korridor": ["KS" if abs(h[2]) > 0.9 else "KH"],
+                            "baender": ["W"], "anschluss": [], "notiz": notiz}, notiz)
+    neu["r_stuecke"].append({"id": hid, "art": "kugelhahn", "pos_a": rd(pa), "dir": [round(v, 6) for v in h], "d_gross": 50, "d_klein": 50, "varianten": S2N_AP, "notiz": "Kugelhahn Spuelanschluss " + notiz})
+    neu["trassen"].append({"id": hid + "-Kappe", "kante": None, "dn": 50, "farbe": "grau", "start": "r:" + hid, "ende": "muffe", "korridor": ["KS" if abs(h[2]) > 0.9 else "KH"], "baender": ["W"],
+                           "anschluss": [], "pfad": [rd(pb), rd(pk)], "varianten": S2N_AP, "notiz": "Rohrstueck zwischen Spuelhahn und Kappe"})
+    neu["teile"].append({"id": hid + "-Kappe", "datei": "lt_kappe_d50", "pos": rd(pk), "z": [round(v, 6) for v in h], "x": [1.0, 0.0, 0.0] if abs(h[0]) < 0.9 else [0.0, 1.0, 0.0],
+                         "farbe": "grau", "varianten": S2N_AP, "notiz": "Kappe d50 Spuelanschluss " + notiz})
+
+class S2NWelt:
+    """Hindernisse (scripts/check_leitungen.load_world) und alle Leitungsstrecken (andere Linie aus der Datei, eigene aus neu) fuer die Steigrohr-Pruefung."""
+    def __init__(self, neu, linie):
+        import check_leitungen as CL
+        self.CL, self.w, self.neu, self.linie = CL, CL.load_world(), neu, linie
+        alt = json.load(open(OUT, encoding="utf-8"))
+        self.fremd = [t for t in alt["trassen"] if t.get("linie", 1) != linie and not (t.get("varianten") and "a_plus" not in t["varianten"])]
+        self.fremd_gruben = [g for g in alt.get("gruben", []) if g.get("linie", 1) != linie]
+    def segs(self):
+        for t in self.fremd + [t for t in self.neu["trassen"] if not t.get("s2n_basis")]:
+            P = [tuple(p) for p in t["pfad"]]
+            for i in range(len(P) - 1): yield t["id"], float(t["dn"]), P[i], P[i + 1]
+    def steig_ok(self, q, top, own):
+        CL, w = self.CL, self.w
+        if not CL.in_dome(w, top[0], top[1]): return "ausserhalb"
+        for o in w.obst:
+            if CL.near_bb(o, top[0], top[1], REV_BODEN + 40) and CL.dist_xy(o, top[0], top[1]) < REV_BODEN + 29: return "Grundriss " + o["name"]
+        if any(CL.poly_dist(top[0], top[1], pg) < REV_BODEN for _, pg in w.tables): return "unter Tisch"
+        for tid, dn, a, b in self.segs():
+            d, c1, c2 = CL.seg_seg(q, top, a, b)
+            if d >= 25 + dn / 2 + REV_LUFT: continue
+            if tid in own and math.dist(c1, q) < 250: continue
+            return "Leitung %s (%.0f mm)" % (tid, d)
+        for g in self.neu.get("gruben", []) + self.fremd_gruben:
+            if math.hypot(top[0] - g["x"], top[1] - g["y"]) < g["d"] / 2 + 25 + 40: return "Grube " + g["id"]
+        for e in self.neu.get("teile", []):
+            if e["datei"].startswith("lt_schacht") and math.hypot(top[0] - e["pos"][0], top[1] - e["pos"][1]) < 330: return "Schacht " + e["id"]
+        return None
+
+def s2n_revision(neu, linie, welt, log):
+    """R47 M1: Revisionsstutzen (T, Steigrohr d50, Kappe d50 buendig) bis check_revision fuer die Linie 0 Verstoesse meldet; Stutzen so nah wie moeglich am Knick bzw. an der schlechtesten Stelle."""
+    import check_revision as CR
+    nr = 0
+    for runde in range(40):
+        doc = {"trassen": [t for t in neu["trassen"] if not t.get("s2n_basis")], "t_stuecke": [t for t in neu["t_stuecke"] if not t.get("s2n_basis")],
+               "r_stuecke": neu["r_stuecke"], "teile": neu.get("teile", [])}
+        for e in doc["trassen"] + doc["t_stuecke"] + doc["r_stuecke"]: e.setdefault("linie", linie)
+        vs, vk, _ = CR.pruefen(doc, linie)
+        if not vs and not vk: return
+        ziele = [(tid, i, p, "knick") for tid, i, m, p in vk] + [(tid, i, p, "strecke") for tid, i, m, p in vs]
+        gesetzt = False
+        for tid, i, p, art in ziele:
+            tr = [t for t in neu["trassen"] if t["id"] == tid and not t.get("s2n_basis")][0]
+            if tr.get("heber"): continue                                     # Heber: keine neuen Formstuecke (Blatt, Ausnahme 1)
+            d = int(tr["dn"]); P = [tuple(x) for x in tr["pfad"]]; n = len(P)
+            kand, gruende = [], {}
+            if art == "knick":                                               # Blatt M1: Knick durch T ersetzen, gerader Durchgang lotrecht nach oben (Steiger darunter, Abgang waagerecht)
+                for unten, quer in ((i - 1, i + 1), (i + 1, i - 1)):
+                    if 0 <= unten < n and 0 <= quer < n and math.hypot(P[unten][0] - P[i][0], P[unten][1] - P[i][1]) < 1 and P[unten][2] < P[i][2] and abs(P[quer][2] - P[i][2]) < 0.01:
+                        kand.append((-1.0, P[i], (0.0, 0.0, 0.0)))
+            for j in ((i - 1, i) if art == "knick" else (i,)):
+                if j < 0 or j >= n - 1: continue
+                a, b = P[j], P[j + 1]; L = math.dist(a, b); u = unit(sub(b, a))
+                if L < 1 or abs(u[2]) > 0.05 or (a[2] + b[2]) / 2 >= 400: continue
+                def belegt(k, rohr):                                         # Platz am Ende k (0 = a, 1 = b) bis zur T-Mitte
+                    innen = (j > 0) if k == 0 else (j + 1 < n - 1)
+                    if innen: return k90(d) + rohr + ta(d)
+                    tag = tr.get("start" if k == 0 else "ende", "stutzen")
+                    return (ta(d) + 80 if tag.startswith("t:") else 60) + rohr + ta(d)
+                s0, s1 = belegt(0, REV_ROHR_KURZ), L - belegt(1, REV_ROHR_KURZ)
+                ref = math.dist(a, p) if art == "strecke" else (L if math.dist(b, p) < 1 else 0.0)
+                s = s0
+                while s <= s1:
+                    kurz = 1000.0 if (s < belegt(0, REV_ROHR) or s > L - belegt(1, REV_ROHR)) else 0.0     # kurzes Rohr am T nur, wenn sonst kein Platz
+                    if art == "strecke" or abs(s - ref) <= MAX_KNICK_S2N: kand.append((kurz + abs(s - ref), add(a, u, s), u))
+                    s += 25.0
+            for _, q, u in sorted(kand, key=lambda k: k[0]):
+                up = unit(sub((0.0, 0.0, 1.0), tuple(dot((0.0, 0.0, 1.0), u) * v for v in u))) if any(u) else (0.0, 0.0, 1.0)
+                top = add(q, up, (REV_ZOEFF - q[2]) / up[2])
+                own = {t["id"] for t in neu["trassen"] if t.get("kante") == tr.get("kante") and tr.get("kante")} | {tid, "%s-1" % tid}
+                grund = welt.steig_ok(q, top, own)
+                if grund: gruende[grund] = gruende.get(grund, 0) + 1; continue
+                nr += 1; rid = "REV%d-%d" % (linie, nr)
+                s2n_t(neu, tid, q, "TR%d_%d" % (linie, nr), {"id": rid, "dn": 50, "ende": "muffe", "revision": True, "pfad": [rd(q), rd(top)], "korridor": ["KS"], "baender": ["U"], "anschluss": [],
+                       "notiz": "Revisionsstutzen (R47 M1) an %s: T d%d, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z %.0f)" % (tid, d, REV_ZOEFF + KAPPE_H)},
+                       "Revisions-T an %s (%s %d)" % (tid, art, i))
+                neu["teile"].append({"id": rid + "-Kappe", "datei": "lt_kappe_d50", "pos": rd(top), "z": [round(v, 6) for v in up], "x": [1.0, 0.0, 0.0], "farbe": "grau", "varianten": S2N_AP,
+                                     "notiz": "Kappe d50 buendig im Flur, Revisionsstutzen " + rid})
+                log.append("%s an %s %s %d, T %s" % (rid, tid, art, i, rd(q))); gesetzt = True
+                break
+            if gesetzt: break
+            log.append("KEIN PLATZ: %s %s %d bei %s (%d Kandidaten; %s)" % (tid, art, i, rd(p), len(kand), "; ".join("%s x%d" % kv for kv in sorted(gruende.items(), key=lambda kv: -kv[1])[:3])))
+        if not gesetzt: return
+
+def s2n(neu, linie):
+    """M10-S2N je Linie: Pumpen-Saug-Haehne, Stamm-Hahn, Spuelanschluesse, Schacht an KH1/KH2, Revisionsstutzen."""
+    neu.setdefault("teile", []); log = []
+    I = {1: {"saug": ("K06", "K02"), "stamm": "K06-T", "steig": ("K03-Steig", 2), "fall": "K05", "kh": "KH1", "hm": ("T5", "T4")},
+         2: {"saug": ("K22", "K18"), "stamm": "K22-T", "steig": ("K19", 3), "fall": "K21", "kh": "KH2", "hm": ("T13", "T12")}}[linie]
+    T = lambda tid: [t for t in neu["trassen"] if t["id"] == tid and not t.get("s2n_basis")][0]
+    # M3 Pumpen-Saug: Kugelhahn d50 mit Muffe A direkt auf dem Saugstutzen (wie Federhahn FH auf dem Absetzer), Trasse endet an Muffe B
+    for k, tid in enumerate(I["saug"], 1):
+        tr = T(tid); P = [tuple(p) for p in tr["pfad"]]; tip = P[-1]; o = unit(sub(P[-2], tip)); hid = "KP%d_%d" % (linie, k)
+        pa = add(tip, o, -LT.DEPTH[50]); pb = add(pa, o, hl(50))
+        if math.dist(P[-2], pb) < k90(50) + 2: raise SystemExit("S2N %s: kein Platz fuer den Saug-Hahn (%.0f mm)" % (tid, math.dist(P[-2], pb)))
+        if not tr.get("varianten"): neu["trassen"].append(dict(json.loads(json.dumps(tr)), varianten=S2N_B2, s2n_basis=True)); tr["varianten"] = S2N_AP
+        tr["pfad"][-1] = rd(pb); tr["ende"] = "r:" + hid
+        neu["r_stuecke"].append({"id": hid, "art": "kugelhahn", "pos_a": rd(pa), "dir": [round(v, 6) for v in o], "d_gross": 50, "d_klein": 50, "varianten": S2N_AP, "auf_stutzen": True,
+                                 "notiz": "R47 M3: Absperrhahn d50 am Saugstutzen %s (Muffe A auf dem Stutzen, Ausnahme 2), Pumpe tauschbar" % tr["anschluss"][0]})
+        log.append("%s Saug-Hahn %s" % (hid, rd(pa)))
+    # M3 Stamm: Kugelhahn d63 auf der Stamm-Geraden zwischen Filterauslauf und Bypass-T (Filter tauschbar, Bypass K56/K57 versorgt die Pumpen)
+    tr = T(I["stamm"]); P = [tuple(p) for p in tr["pfad"]]
+    best = None
+    for j in range(len(P) - 1):
+        a, b = P[j], P[j + 1]; L = math.dist(a, b)
+        if abs(b[2] - a[2]) > 1 or L < 1: continue
+        e0 = k90(63) if j > 0 else 0; e1 = k90(63) if j + 1 < len(P) - 1 else ta(63)
+        frei = L - e0 - e1
+        if frei >= hl(63) + 60 and (not best or frei > best[0]): best = (frei, add(a, unit(sub(b, a)), e0 + frei / 2))
+    if not best: raise SystemExit("S2N: keine Stamm-Gerade fuer den Hahn d63 auf %s" % I["stamm"])
+    s2n_hahn(neu, I["stamm"], best[1], 63, "KS%d" % linie, "R47 M3: Absperrhahn d63 im Stamm %s (Filter tauschbar; Schacht OFFEN Werkstatt: waagerechte Bauform fuer Achse Z 14)" % I["stamm"])
+    log.append("KS%d Stamm-Hahn %s, freie Gerade %.0f mm" % (linie, rd(best[1]), best[0]))
+    # M7 Spuelanschluss 1: Steiger-Kopf (Bogen oben ersetzt durch T, Abzweig lotrecht nach oben: gerader Durchgang in den Steiger)
+    tid, j = I["steig"]; tr = T(tid); q = tuple(tr["pfad"][j])
+    s2n_spuel(neu, tid, q, (0.0, 0.0, 1.0), 1, linie, "am Steigerkopf %s (Absetzer-Saug, lotrecht in den Steiger)" % tid)
+    # M7 Spuelanschluss 2: Fallrohr des Absetzer-Auslaufs, T auf Z 950, Abzweig waagerecht vom Tank weg
+    tr = T(I["fall"]); P = [tuple(p) for p in tr["pfad"]]
+    h = unit((P[1][0] - P[0][0], P[1][1] - P[0][1], 0.0)); q = (P[1][0], P[1][1], 950.0)
+    s2n_spuel(neu, I["fall"], q, h, 2, linie, "am Fallrohr %s (Absetzer-Auslauf, Z 950)" % I["fall"])
+    # M2 Schacht an KH1/KH2 (Bauform senkrecht, Einbau docs/parts/schacht_kugelhahn_tief.md)
+    kh = [r for r in neu["r_stuecke"] if r["id"] == I["kh"]][0]; hm = add(tuple(kh["pos_a"]), tuple(kh["dir"]), hl(63) / 2)
+    tp = {t["id"]: t["pos"] for t in neu["t_stuecke"]}; xs = unit((tp[I["hm"][1]][0] - tp[I["hm"][0]][0], tp[I["hm"][1]][1] - tp[I["hm"][0]][1], 0.0)); ys = (-xs[1], xs[0], 0.0)
+    neu["teile"].append({"id": "SCH-" + I["kh"], "datei": SCHACHT_S, "pos": rd(hm), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xs], "varianten": S2N_AP,
+                         "notiz": "R47 M2: Ventilschacht senkrecht an %s, Ursprung Hahnmitte, Schacht-X = Richtung %s->%s" % (I["kh"], *I["hm"])})
+    c = add(add(hm, xs, -8.0), ys, 35.0)
+    neu.setdefault("gruben", []).append({"id": "SCH-" + I["kh"], "x": round(c[0], 1), "y": round(c[1], 1), "d": 480.0, "sohle": round(400.0 - 581.4 - 10.0, 1), "varianten": S2N_AP})
+    log.append("SCH-%s Schacht Hahnmitte %s" % (I["kh"], rd(hm)))
+    # M1 Revisionsstutzen
+    s2n_revision(neu, linie, S2NWelt(neu, linie), log)
+    for t in neu["trassen"]:
+        if not t.get("baender") and not t.get("band"): t["baender"] = baender_auto(t["pfad"])
+    for z in dict.fromkeys(log): print("S2N", z)
+
 def main(linie):
     if linie not in LINIEN: raise SystemExit("Linie 1 oder 2")
     import gen_dome as G
@@ -727,10 +940,12 @@ def main(linie):
     if linie == 1:
         linie1_ordnung(L, neu)   # M10-UMBAU: ersetzt linie1_s2a/_biofilter/_absetzer/_bypass (bleiben als Vorlage fuer Linie 2 stehen)
         schlamm_verteiler(L, neu, 1)
+        s2n(neu, 1)   # M10-S2N (A+)
     else:
         alt = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {}
         linie2_ordnung(L, neu, alt)   # M10-UMBAU Schritt 4: ersetzt linie2_s2a/_biofilter/_absetzer/_bypass (bleiben als Vorlage stehen)
         schlamm_verteiler(L, neu, 2)
+        s2n(neu, 2)   # M10-S2N (A+)
     doc = {"z_bezug": "absolut", "regeln": {}, "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost, Linie 2 West (je Linie ein Lauf)"}
     doc = schreiben(doc, linie, neu)
     json.dump(doc, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False); open(OUT, "a").write("\n")

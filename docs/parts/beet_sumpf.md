@@ -1,0 +1,147 @@
+# Bauteilblatt T92 beet_sumpf (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/beet_sumpf.json` und `designs/components/beet_sumpf.sc`, nicht von Hand aendern)
+
+**Funktion:** Sammelt das Ablaufwasser der Beete einer Linie (Glockensiphons, K14/K30), weil der Beetablauf unter dem Pool-Spiegel liegt, und pumpt es ueber die Foerderleitung d40 (K58/K59) zurueck zum Ruecklauf. Die Schwimmer schalten die Pumpe (EIN 320, AUS 120 mm) und sperren bei ALARM (620 mm) die Beet-Zufuhr K11/K27. Kein Schwerkraft-Notueberlauf; die zweite Pumpe ist Reserve (E19).
+
+**Datei:** `designs/components/beet_sumpf.sc` · **Teilenummer:** T92 · **Revision:** A · **Bezugspunkt:** Mitte Tankboden aussen (Z 0), Z hoch; Zulauf -X; Pumpen +X; Schwimmerstange -X. Einbau: Tankboden flur-relativ Z -1200 (Modell Z -800), Deckeloberkante dann flur-relativ +40
+
+**Anzahl (Instanzen):** 2 (je Linie: beet_sumpf_1, beet_sumpf_2) (Quelle: data/leitungsnetz.json Knoten beet_sumpf_1/2; Standort setzt die Montage (M10 S4))
+
+## Masse und Parameter
+
+| Parameter | Wert | Einheit | Herkunft |
+|---|---|---|---|
+| `tank_d` | 800 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3: Rundtank PE Oe 0,8 m x 1,0 m, ca. 500 l (r45_sumpf.py); Handelsmass [A] nicht gegengeprueft |
+| `tank_h` | 1000 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3 |
+| `tank_wall` | 6 | mm | [A] Wandstaerke PE-Rundtank (kein Datenblatt gelesen) |
+| `tank_floor` | 6 | mm | [A] Bodenstaerke wie Wand |
+| `oeffnung_d` | 580 | mm | [A] Domoeffnung oben (Schulterring 110 mm breit), traegt den Schachtaufsatz |
+| `aufsatz_d` | 600 | mm | [A] Schachtaufsatz PE (Teleskop-/Domschacht wie bei Zisternen), Aussen-Oe |
+| `aufsatz_wall` | 6 | mm | [A] |
+| `aufsatz_h` | 200 | mm | [E] Aktualitaetspruefung 05.11. Punkt 6: Einlaufsohle flur-relativ <= -375 (Beetablauf-Achse -290, halbes d50, 1 % auf 6 m [A]); gewaehlt -400 -> Tankboden -1200, Tankoberkante -200, Aufsatz 200 bis Flur |
+| `deckel_d` | 700 | mm | [A] begehbarer Deckel (Last-Platzhalter), liegt auf dem Aufsatz |
+| `deckel_t` | 40 | mm | [A] |
+| `zulauf_d` | 50 | mm | [E] data/leitungsnetz.json Version 3, K14/K30 dn 50 (Blatt nannte d63 aus R45; Netz gilt) |
+| `zulauf_sohle` | 800 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3: Einlauf-Rohrsohle 800 mm ueber Tankboden, hoechster Wasserstand darunter |
+| `pumpen` | 2 |  | [A] D81 Annahme E19: zweite Pumpe als Reserve ja; 1 baut eine Pumpe |
+| `pumpe_l` | 300 | mm | [A] Platzhalter-Quader Teichpumpe 5300 l/h, Fabrikat offen (R45 Frage 3 Nr. 1) |
+| `pumpe_w` | 200 | mm | [A] Platzhalter |
+| `pumpe_h` | 180 | mm | [A] Platzhalter |
+| `pumpe_x` | 100 | mm | [A] Lage Pumpenmitte |
+| `pumpe_dy` | 170 | mm | [A] Abstand Pumpenmitte von y 0 (bei 2 Pumpen) |
+| `foerder_d` | 40 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3: Foerderleitung PVC-U d40 (v 0,94 m/s), K58/K59 |
+| `rsv_z` | 300 | mm | [A] Unterkante Rueckschlagventil d40 (W39, lt_rueckschlagventil_d40) im Steigrohr |
+| `sammel_z` | 1120 | mm | [A] Achse Sammelrohr d40 der beiden Steigrohre, im Schachtaufsatz |
+| `pegel_aus` | 120 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3 Pegelhoehen 1 |
+| `pegel_ein` | 320 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3 Pegelhoehen 2 |
+| `pegel_alarm` | 620 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3 Pegelhoehen 3 (Flutsperre K11/K27) |
+| `stange_x` | -200 | mm | [A] Schwimmerstange Lage |
+| `stange_d` | 20 | mm | [A] |
+| `schwimmer_d` | 70 | mm | [A] Schwimmerschalter Platzhalter |
+| `schwimmer_h` | 60 | mm | [A] |
+| `entl_d` | 32 | mm | [E] docs/research/R45-hydraulik-auslegung.md Abschnitt 3: Entlueftung d32 mit Insektengitter |
+| `kabel_d` | 33 | mm | [A] Kabelverschraubung M25, Aussen 33 |
+
+Gesamt-Box (Messung): X -451.0 bis 400.0, Y -400.0 bis 400.0, Z -0.0 bis 1320.0 mm; Koerper: 23.
+
+**Toleranzen / Spiel:** Pumpen-Ecken 26 mm vor der Tankwand (Radius 368 gegen 394 innen); Steigrohre und Sammelrohr liegen innerhalb der Domoeffnung und des Aufsatzes (Radius <= 215 gegen 290/294); Einlauf-Sohle 180 mm ueber ALARM.
+
+## Werkstoff und Gewicht
+
+- Werkstoff: PE (Tank, Aufsatz, Deckel), PVC-U (Leitungen), Pumpen als Platzhalter, Dichte 0.95 g/cm3, Farbe #3b3f44 ([A]; PE schwarz/dunkel lichtdicht (Algen, R45 Abdeckung))
+- Volumen (Messung, `solidcraft-cli eval`): 60466.1 cm3 · Masse leer: 46337 g (46.34 kg)
+- Gefuellt/in Betrieb: Bis ALARM 620 mm ca. 300 l Wasser, bis Tankoberkante ca. 485 l [E, Dichte 1]; eingegraben, Auftrieb bei leerem Tank und hohem Grundwasser nicht gerechnet [A]
+
+## Querschnitt / Profil
+
+Tank Oe 800 x 1000, Wand und Boden 6, Domoeffnung oben Oe 580; Schachtaufsatz Oe 600 x 200, Wand 6, auf dem Schulterring; Deckel Oe 700 x 40 auf dem Aufsatz mit vier Durchbruechen (Foerderleitung d40, Entlueftung d32, 2 Kabelverschraubungen M25). Innen: 2 Pumpen-Quader 300 x 200 x 180 auf dem Boden, je Steigrohr d40 mit Rueckschlagventil, Sammelrohr d40 bei Z 1120, Steigrohr zur Deckeldurchfuehrung; Schwimmerstange Oe 20 mit drei Schwimmern.
+
+## Ports (Anschluesse)
+
+| Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
+|---|---|---|---|
+| Zulauf Beetablaeufe (K14 Linie 1 / K30 Linie 2) | Muffe d50 (Tankverbinder), Sohle 800 ueber Tankboden | x -451, y 0, z 825 | -X |
+| Foerderleitung zum Ruecklauf (K58 Linie 1 / K59 Linie 2) | Muffe d40, hinter 2 Rueckschlagventilen d40 | x 100, y 0, z 1280 | +Z |
+| Entlueftung mit Insektengitter | d32 | x -150, y -200, z 1320 | +Z |
+| Kabeldurchfuehrung 1 (Pumpen 230 V, 3 Schwimmer) | Kabelverschraubung M25 | x -150, y 170, z 1270 | +Z |
+| Kabeldurchfuehrung 2 (Ablaufwaechter der Beete 12 V, A+ R47 4.1) | Kabelverschraubung M25 | x -30, y 240, z 1270 | +Z |
+
+## Verbindungen und Befestigungen
+
+- Tank und Aufsatz: Aufsatz steht auf dem Schulterring, Dichtung/Verschweissung nicht modelliert [A]
+- Deckel aufgelegt, verschraubt oder verriegelt (nicht modelliert), Dichtung lichtdicht [A]
+- Zulauf: Tankverbinder d50 durch die Wand (Dichtung nicht modelliert); Leitungen PVC-U geklebt
+- Pumpen stehen frei auf dem Boden; Steigrohre ueber Verschraubung an den Pumpenstutzen (nicht modelliert)
+
+## Herkunft (docs/provenance.md)
+
+| Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
+|---|---|---|---|---|
+| Tank Oe 800 x 1000, ca. 500 l | Oe 800 x 1000 | gerechnet + Annahme | R45 Abschnitt 3 (r45_sumpf.py: Spitze 2 Beete 168 l + Totvolumen + Hysterese); Handelsmass nicht gegengeprueft | mittel |
+| Pegel AUS / EIN / ALARM | 120 / 320 / 620 mm | gerechnet | R45 Abschnitt 3 Pegelhoehen (Oe 0,8 m, 1 cm = 5 l) | mittel |
+| Einlauf-Rohrsohle | 800 mm ueber Tankboden | gerechnet | R45 Abschnitt 3 Punkt 4 | mittel |
+| Zulauf DN | d50 | belegt (Netz) | data/leitungsnetz.json V3 K14/K30 dn 50 | hoch |
+| Einbautiefe Tankboden | flur-relativ -1200 | gerechnet | Aktualitaetspruefung 05.11. Punkt 6 aus Beet-Matrizen (dome-script.json) und K14 hoehe; Sammlerlaenge 6 m angenommen | mittel |
+| Schachtaufsatz | Oe 600 x 200 | Annahme | Folge der Einbautiefe; Handelsteil nicht gegengeprueft | niedrig |
+| Deckel begehbar | Oe 700 x 40 | Annahme | R45 Abdeckung; Deckelklasse offen (R45 Frage 3 Nr. 4) | niedrig |
+| Pumpe Teichpumpe 5300 l/h, 60 W, Hmax 2,8 m | Quader 300 x 200 x 180, Dichte 0,4 (ca. 4 kg) | Annahme (Mass), belegt nur Haendlerdaten (Leistung) | R45 Abschnitt 3 Tabelle (Haendlerseiten; ein Beispiel-Fabrikat dort genannt); Kennlinie und Abmessung offen | niedrig |
+| Zweite Pumpe (Reserve) | 2 | Annahme | D81 Annahme E19 | mittel |
+| Rueckschlagventil d40 | L 102, Oe 60 | Annahme (Bibliothek) | W39 lt_rueckschlagventil_d40 (rsv_geom) | mittel |
+| Foerderleitung | d40 | gerechnet | R45 Abschnitt 3 (v 0,94 m/s) | mittel |
+| Schwimmer, Stange | Oe 70 x 60, Stange Oe 20 | Annahme | Platzhalter, kein Fabrikat | niedrig |
+| Entlueftung | d32 mit Gitterkappe | gerechnet (DN) / Annahme (Kappe) | R45 Abdeckung | mittel |
+| Kabeldurchfuehrungen | 2 x M25 | Annahme | R45 (Kabel), R47 4.1 Befund 3 (Ablaufwaechter, A+) | niedrig |
+
+## Referenz und Abweichung zum OBJ
+
+- Referenzbild: reference/ref-6-grow-tables-detail.jpg
+- Quelle der Masse: docs/research/R45-hydraulik-auslegung.md Abschnitt 3 (Bauteil-Skizze, Pegel), data/leitungsnetz.json Version 3 (K14/K30, K58/K59), docs/research/R47-wasserkreislauf-neu.md 4.1/6.6 (Ablaufwaechter), docs/jobs/W37-1-sumpf-schlammfass.md (Aktualitaetspruefung 05.11.)
+- Abweichung zum OBJ: Keine OBJ-Vorgabe; Bauteil nach R45 Abschnitt 3 (Bauteil-Skizze), Einbautiefe nach Aktualitaetspruefung 05.11. (Beet-Tausch).
+
+## Montage (L4)
+
+1. Grube Oe 1,0 m, Tiefe 1,25 m (Tankboden flur-relativ -1200 plus 50 Sandbett); Tank waagerecht setzen, lagenweise verfuellen
+2. Schachtaufsatz aufsetzen, Zulauf d50 mit >= 1 % Gefaelle zum Sumpf anschliessen (Sohle 800 ueber Tankboden = flur-relativ -400)
+3. Pumpen einsetzen, Steigrohre mit Rueckschlagventil, Sammelrohr und Deckeldurchfuehrung kleben; Schwimmerstange einhaengen, Hoehen 120/320/620 einstellen
+4. Kabel durch die Verschraubungen, Deckel auflegen und sichern
+
+**Werkzeug:** Spaten/Bagger, Wasserwaage, Lochsaege fuer Tankverbinder, PVC-Kleber, Schluesselsatz
+
+## Stueckliste-Zeile
+
+- T92 Beet-Sumpf je Linie: 1 PE-Rundtank Oe 800 x 1000 (ca. 500 l), 1 Schachtaufsatz Oe 600 x 200, 1 begehbarer Deckel Oe 700, 1 Tankverbinder d50, 2 Teichpumpen 5300 l/h (60 W, Hmax 2,8 m; Fabrikat offen), 2 Rueckschlagventile d40, Rohr d40 ca. 2,2 m mit Formstuecken, 3 Schwimmerschalter, 1 Stange, 1 Entlueftung d32 mit Insektengitter, 2 Kabelverschraubungen M25
+- Leistung: 60 W je Pumpe im Betrieb (Laufanteil 90 %, Mittel 54 W je Linie, R45); Reservepumpe 0 W im Normalbetrieb [A]; beide Linien 108 bis 120 W
+
+## Teileliste mit Bezug in Europa (D76)
+
+Marke: [Q] Seite/Ausschnitt gelesen (nur Katalogzeile, Preise nicht geprueft), [R51] aus R51 uebernommen, [A] Annahme. Artikel vor der Bestellung gegen Mass und PN pruefen.
+
+| Teil | Mass | Europaeische Quelle (Hersteller/Haendler, Artikel) | Status |
+|---|---|---|---|
+| PE-Rundtank 500 l mit Domoeffnung | Oe 800 x 1000 | offen (Zisternen-/Pumpenschacht-Handel, z. B. Hersteller in DE) | offen [A] |
+| Schachtaufsatz Oe 600 | 200 mm | offen | offen [A] |
+| Teichpumpe 5300 l/h, 60 W | Hmax 2,8 m | Haendlerangabe in R45 (OBI/topratgeber24, nur Beispiel) | offen, Datenblatt nicht gelesen |
+| Rueckschlagventil PVC-U d40 | Klebemuffe | offen (N-BESCHAFFUNG) | offen [A] |
+| Schwimmerschalter (3) | Kabel | offen | offen [A] |
+
+## Alternative lokale Fertigung
+
+Tank und Aufsatz aus dem Zisternen-/Kleinklaeranlagen-Handel; Deckel alternativ aus PE-Platte 20 mm mit Rippen (Kunststoffhandel).
+
+## Renders
+
+- `renders/components/beet_sumpf/beet_sumpf-01-schraeg.png`
+- `renders/components/beet_sumpf/beet_sumpf-02-schnitt.png`
+- `renders/components/beet_sumpf/beet_sumpf-03-schnitt-x.png`
+
+## Pruefung
+
+- Gauntlet-Urteil: Kein Pruefer-Lauf (Pruefpunkte fuer den Pruefer im Blatt W37-1).
+- scripts/workshop/check_beet_sumpf.py (Ergebnis renders/components/beet_sumpf/check.txt): Tank Mass, Volumen bis ALARM und bis Oberkante gegen R45, Pegelhoehen, Ports (Lage und Richtung), Pumpenzahl, Interferenz 0
+
+## Offene Fragen
+
+- Statische Foerderhoehe steigt mit der Einbautiefe auf 1,40 bis 1,60 m (R45: 1,0 bis 1,5 m); Arbeitspunkt der Pumpe nachrechnen (r45_sumpf.py, Planer/Orchestrator)
+- Sammlerlaenge 6 m und 1 % Gefaelle angenommen; die echte Trasse legt M10 S4 fest; bei laengerem Sammler Aufsatz hoeher (Parameter aufsatz_h)
+- Pumpenfabrikat, Kennlinie und Abmessung offen (R45 Frage 3 Nr. 1); Quader ist Platzhalter
+- Auftriebssicherung des leeren Tanks bei hohem Grundwasser nicht geprueft
+- Deckelklasse (begehbar) und Schachtfabrikat offen (R45 Frage 3 Nr. 4)

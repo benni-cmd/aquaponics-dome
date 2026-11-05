@@ -1,0 +1,475 @@
+{
+  "komponente": "beet_sumpf",
+  "datei": "designs/components/beet_sumpf.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "teiledaten",
+  "titel": "Beet-Sumpf (Ablauf der Beete, je Linie)",
+  "kurz": "Der eingegrabene Tank sammelt das Ablaufwasser der Beete; Pumpen mit Rueckschlagventil foerdern es zurueck, drei Schwimmer schalten und sperren bei Hochwasser die Beet-Zufuhr.",
+  "hinweis": "Texte und Masse aus dem Bauteilblatt und den Parametern des Bauteils. Pumpe, Schwimmer und Deckel sind Platzhalter; Fabrikate und europaeischer Bezug der Kaufteile sind offen (Regel D76).",
+  "koerperzahl": 23,
+  "gruppen": [
+    {
+      "id": "behaelter",
+      "name": "Behaelter",
+      "kurz": "Tank, Schachtaufsatz und Deckel.",
+      "teile": [
+        "tank",
+        "schachtaufsatz",
+        "deckel"
+      ]
+    },
+    {
+      "id": "zulauf",
+      "name": "Zulauf",
+      "kurz": "Tankverbinder der Beetablaeufe.",
+      "teile": [
+        "zulauf"
+      ]
+    },
+    {
+      "id": "pumpen",
+      "name": "Pumpen und Foerderleitung",
+      "kurz": "Zwei Pumpen mit Rueckschlagventil auf eine Foerderleitung d40.",
+      "teile": [
+        "pumpe",
+        "rueckschlagventil",
+        "foerderleitung",
+        "durchfuehrung_foerder"
+      ]
+    },
+    {
+      "id": "steuerung",
+      "name": "Schwimmer, Lueftung, Kabel",
+      "kurz": "Schaltpegel, Entlueftung und Kabeldurchfuehrungen.",
+      "teile": [
+        "schwimmerstange",
+        "schwimmer",
+        "entlueftung",
+        "insektengitter",
+        "kabelverschraubung"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "tank",
+      "name": "PE-Rundtank 500 l",
+      "koerper": [
+        "Tank"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 18256.5 g, Einzelkoerper 800.0 x 800.0 x 1000.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Tank nimmt das Ablaufwasser der Beete einer Linie auf (Puffer fuer zwei gleichzeitig leerende Beete).",
+      "eigenschaften": [
+        "Aussen 800 x 1000 mm, Wand 6 mm [A].",
+        "Domoeffnung oben 580 mm.",
+        "Bis ALARM 620 mm etwa 300 l, bis Oberkante 482 l (Modell)."
+      ],
+      "norm": "EN 12566-1 / Zisternen-Handelsware [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3; Handelsmass nicht gegengeprueft",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "schachtaufsatz",
+      "name": "Schachtaufsatz",
+      "koerper": [
+        "Schachtaufsatz"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 2127.4 g, Einzelkoerper 600.0 x 600.0 x 200.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Aufsatz hebt den Deckel bis zum Flur, weil der Tank tiefer sitzt als der Beetablauf.",
+      "eigenschaften": [
+        "Aussen 600 mm, Hoehe 200 mm (Parameter aufsatz_h).",
+        "Hoehe folgt der Einbautiefe (Aktualitaetspruefung 05.11.)."
+      ],
+      "norm": "Herstellerangabe Domschacht [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 150
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "deckel",
+      "name": "Begehbarer Deckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 14443.5 g, Einzelkoerper 700.0 x 700.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Deckel schliesst den Sumpf dicht und lichtdicht ab und traegt die Durchfuehrungen.",
+      "eigenschaften": [
+        "Oe 700 x 40 mm, vier Durchbrueche.",
+        "Lichtdicht gegen Algen (R45)."
+      ],
+      "norm": "Deckelklasse offen (R45 Frage 3 Nr. 4) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "zulauf",
+      "name": "Tankverbinder d50 (Zulauf)",
+      "koerper": [
+        "Zulauf_Tankverbinder"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 70.9 g, Einzelkoerper 57.0 x 58.5 x 58.5 mm (Modell-Bounding-Box)",
+      "funktion": "Der Tankverbinder fuehrt die Sammelleitung der Beetablaeufe (K14/K30) durch die Tankwand.",
+      "eigenschaften": [
+        "Muffe d50, Sohle 800 mm ueber Tankboden.",
+        "Dichtung nicht modelliert."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 150
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "pumpe",
+      "name": "Teichpumpe 5300 l/h (Platzhalter)",
+      "koerper": [
+        "Pumpe_1",
+        "Pumpe_2"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "pumpengehaeuse",
+      "masse_mm": "Masse 8640.0 g, Einzelkoerper 300.0 x 200.0 x 180.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Pumpen foerdern das Wasser ueber die Foerderleitung d40 zum Ruecklauf; die zweite ist Reserve (E19).",
+      "eigenschaften": [
+        "Platzhalter-Quader 300 x 200 x 180 mm.",
+        "60 W, Hmax 2,8 m (Haendlerangabe R45), Kennlinie offen."
+      ],
+      "norm": "Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3; Pumpenfabrikat offen (R45 Frage 3 Nr. 1)",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 900
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "rueckschlagventil",
+      "name": "Rueckschlagventil d40",
+      "koerper": [
+        "Rueckschlagventil_1",
+        "Rueckschlagventil_2"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 513.5 g, Einzelkoerper 60.0 x 60.0 x 102.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Ventil haelt die Foerderleitung gefuellt und verhindert Rueckfluss in die stehende Pumpe.",
+      "eigenschaften": [
+        "Masse wie lt_rueckschlagventil_d40 (W39): Laenge 102, Gehaeuse 60."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3, docs/parts/leitungsteile.md (W39)",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 700
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "foerderleitung",
+      "name": "Steig- und Sammelrohr d40",
+      "koerper": [
+        "Sammelrohr",
+        "Steigrohr_1_oben",
+        "Steigrohr_1_unten",
+        "Steigrohr_2_oben",
+        "Steigrohr_2_unten",
+        "Steigrohr_Deckel"
+      ],
+      "menge": 6,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 657.1 g, Einzelkoerper 40.0 x 380.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Rohre fuehren das Wasser von den Pumpen zur Deckeldurchfuehrung.",
+      "eigenschaften": [
+        "PVC-U d40, Wand 1,9 mm.",
+        "Zwei Steigrohre werden unter dem Deckel zusammengefuehrt."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 600
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "durchfuehrung_foerder",
+      "name": "Deckeldurchfuehrung d40",
+      "koerper": [
+        "Durchfuehrung_Foerder"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 61.9 g, Einzelkoerper 48.0 x 48.0 x 80.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Durchfuehrung fuehrt die Foerderleitung K58/K59 durch den Deckel (Port).",
+      "eigenschaften": [
+        "Muffe d40 oben."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 400
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "schwimmerstange",
+      "name": "Schwimmerstange",
+      "koerper": [
+        "Schwimmerstange"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 524.9 g, Einzelkoerper 20.0 x 20.0 x 1194.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Stange traegt die drei Schwimmerschalter auf den Schaltpegeln.",
+      "eigenschaften": [
+        "Oe 20 mm, vom Boden bis unter den Deckel."
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 500
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "schwimmer",
+      "name": "Schwimmerschalter AUS, EIN, ALARM",
+      "koerper": [
+        "Schwimmer_AUS",
+        "Schwimmer_EIN",
+        "Schwimmer_ALARM"
+      ],
+      "menge": 3,
+      "typ": "kaufteil",
+      "werkstoff": "pa",
+      "masse_mm": "Masse 789.6 g, Einzelkoerper 70.0 x 70.0 x 60.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Schwimmer schalten die Pumpe (EIN 320, AUS 120 mm) und sperren bei ALARM 620 mm die Beet-Zufuhr.",
+      "eigenschaften": [
+        "Platzhalter Oe 70 x 60 mm.",
+        "Kabel nicht modelliert."
+      ],
+      "norm": "Fabrikat offen [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 600
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "entlueftung",
+      "name": "Entlueftung d32",
+      "koerper": [
+        "Entlueftung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 83.7 g, Einzelkoerper 39.6 x 39.6 x 100.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Entlueftung laesst die Verdraengungsluft aus dem Sumpf entweichen.",
+      "eigenschaften": [
+        "Rohr d32 durch den Deckel, 100 mm hoch."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 350
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "insektengitter",
+      "name": "Insektengitter-Kappe",
+      "koerper": [
+        "Insektengitter_Kappe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pa",
+      "masse_mm": "Masse 63.6 g, Einzelkoerper 59.6 x 59.6 x 20.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Kappe mit Gitter haelt Insekten aus der Entlueftung fern.",
+      "eigenschaften": [
+        "Oe 60 x 20 mm, Gitter als Vollkoerper vereinfacht."
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 450
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "kabelverschraubung",
+      "name": "Kabelverschraubung M25",
+      "koerper": [
+        "Kabelverschraubung_1",
+        "Kabelverschraubung_2"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "pa",
+      "masse_mm": "Masse 104.4 g, Einzelkoerper 33.0 x 33.0 x 70.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Verschraubungen fuehren die Kabel von Pumpen, Schwimmern und Ablaufwaechter (A+) dicht durch den Deckel.",
+      "eigenschaften": [
+        "M25, Aussen 33 mm, Klemmbereich 16 mm [A]."
+      ],
+      "norm": "EN 62444 (Kabelverschraubungen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/beet_sumpf.md, data/components/beet_sumpf.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 3",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 350
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    }
+  ]
+}

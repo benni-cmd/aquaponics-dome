@@ -1169,6 +1169,37 @@
       "quelle": "docs/parts/schwimmerventil_pool.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 5"
     },
     {
+      "match": "^beet_sumpf",
+      "titel": "Beet-Sumpf (je Linie)",
+      "was": "Eingegrabener 500-l-Tank, in den die Beete einer Linie leerlaufen; zwei Teichpumpen mit Rückschlagventil fördern das Wasser zurück zum Rücklauf, drei Schwimmer schalten.",
+      "status": "gebaut (Werkstatt W37-1), Prüfung 33/33; Pumpen, Schwimmer und Deckel sind Platzhalter; Standort setzt die Montage (M10 S4)",
+      "ablauf": [
+        "Die Sammelleitung d50 der Beetabläufe (K14/K30) läuft mit Gefälle in den Tankverbinder, Sohle 800 mm über dem Tankboden.",
+        "Steigt der Pegel auf 320 mm, schaltet die Pumpe ein, bei 120 mm aus.",
+        "Bei 620 mm (ALARM) sperrt die Steuerung die Beet-Zufuhr und meldet; die zweite Pumpe ist Reserve.",
+        "Die Förderleitung d40 (K58/K59) führt durch den Deckel zum Rücklauf über dem Pool-Spiegel."
+      ],
+      "aufbau": [
+        {
+          "t": "Teile",
+          "p": [
+            "PE-Rundtank Ø 800 × 1000 mit Schachtaufsatz 200 mm und begehbarem Deckel Ø 700",
+            "Tankverbinder d50 (Zulauf)",
+            "2 Teichpumpen mit je Rückschlagventil d40, Sammelrohr, Deckeldurchführung",
+            "Schwimmerstange mit 3 Schwimmern, Entlüftung d32 mit Gitter, 2 Kabelverschraubungen M25"
+          ]
+        }
+      ],
+      "masse": {
+        "Inhalt bis ALARM": "ca. 300 l",
+        "Tankinhalt": "482 l",
+        "Einbau": "Tankboden 1200 mm unter Flur",
+        "Leistung": "60 W je Pumpe im Betrieb"
+      },
+      "grenzen": "Die Einbautiefe folgt aus dem Beetablauf (Sammler 6 m mit 1 % angenommen); die statische Förderhöhe steigt dadurch auf 1,4 bis 1,6 m, der Arbeitspunkt der Pumpe ist nachzurechnen. Fabrikate offen.",
+      "quelle": "docs/parts/beet_sumpf.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 3, docs/jobs/W37-1-sumpf-schlammfass.md"
+    },
+    {
       "match": "^puffer_klein",
       "titel": "Kleiner Puffer (Option A, R37)",
       "was": "Kompakter Stand im Dom mit Stammlösungsfass 120 l, Messzelle 20 l, Eisenchelat-Kanister 20 l und zwei Dosierpumpen; ersetzt die Puffer-Station (2 IBC) auf 0,49 m² statt 4,65 m².",

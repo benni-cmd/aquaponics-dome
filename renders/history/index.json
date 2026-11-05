@@ -2788,5 +2788,35 @@
   "note": "Runde 69 Luft Teil A",
   "commit": "4799431",
   "source": "renders/luft-a-69-pool-oben.png"
+ },
+ {
+  "file": "20261105-012805_werkstatt_beet-sumpf_beet-sumpf-01-schraeg.png",
+  "sha": "3630561830d6d51a",
+  "time": "2026-11-05 01:28:05",
+  "role": "werkstatt",
+  "subject": "beet_sumpf",
+  "note": "W37-1 Teil 1",
+  "commit": "e33a1f4",
+  "source": "renders/components/beet_sumpf/beet_sumpf-01-schraeg.png"
+ },
+ {
+  "file": "20261105-012811_werkstatt_beet-sumpf_beet-sumpf-02-schnitt.png",
+  "sha": "fa2c19014084ec31",
+  "time": "2026-11-05 01:28:11",
+  "role": "werkstatt",
+  "subject": "beet_sumpf",
+  "note": "W37-1 Teil 1",
+  "commit": "e33a1f4",
+  "source": "renders/components/beet_sumpf/beet_sumpf-02-schnitt.png"
+ },
+ {
+  "file": "20261105-012817_werkstatt_beet-sumpf_beet-sumpf-03-schnitt-x.png",
+  "sha": "7415b1da6fbb77ee",
+  "time": "2026-11-05 01:28:17",
+  "role": "werkstatt",
+  "subject": "beet_sumpf",
+  "note": "W37-1 Teil 1",
+  "commit": "e33a1f4",
+  "source": "renders/components/beet_sumpf/beet_sumpf-03-schnitt-x.png"
  }
 ]

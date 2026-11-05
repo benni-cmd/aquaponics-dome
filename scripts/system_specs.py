@@ -43,6 +43,13 @@ PUMP_EFF = 0.25                                        # Netz-zu-Wasser Kleinpum
 PUMP_GROSS_N, PUMP_GROSS_L_MIN = 4, 55                 # D38: je 55-60 l/min
 PUMP_KLEIN_N, PUMP_KLEIN_L_MIN = 4, 12.5               # D38: 12-13 l/min
 PUMP_KLEIN_IN_BETRIEB = 2                              # eine je Absetzer-Tank, die zweite Pumpe als Reserve [A]
+PUMP_GROSS_NENN_W = 110                                # Oase Aquarius Universal Premium 6000, Nennleistung [Q R47 7.1, Hersteller-Datenblatt]: Premium-Klasse noetig, Eco 60 W schafft 55 l/min bei 2,0 m nicht; Fabrikat in der Netzliste offen
+# R45 Abschnitt 3 + D81 (E19 ja): Beet-Sumpf je Linie, Teichpumpe 5300 l/h / 60 W mit Rueckschlagventil; je Linie eine zweite als Reserve (steht still)
+BED_SUMP_LINES, BED_SUMP_PUMP_W, BED_SUMP_DUTY = 2, 60, 0.9   # Linien (je eine laufende Pumpe), Nennleistung je Pumpe, Laufanteil 90 % [Q R45 Abschnitt 3: 54 W Mittel je Linie]
+BED_SUMP_RESERVE_N = 2                                 # Reservepumpen (E19, D81), nur Anschlusswert, im Betrieb 0 W
+BED_SUMP_Q_L_MIN, BED_SUMP_HEAD_M = 61, 1.47           # Arbeitspunkt Eco Classic 5500 [E R45 Abschnitt 3; R47 7.1 Gegenprobe 1,46 m]
+BLOWER_FISH_N = 2                                      # Fischgeblaese: zwei Membranpumpen N+1, eine in Betrieb [Q R45 Frage 6: Empfehlung 2, jedes allein ausreichend]
+BLOWER_FISH_W_R45 = (100, 215)                         # elektrisch 130 l/min ca. 100-140 W, 200 l/min 150-215 W bei 24-26 kPa [E R45 Frage 6]
 
 # Fische und Futter: Auslegung aus der Pflanzflaeche (R20), Bens Tabelle als Vergleich
 FISH_KG_DESIGN = 346                                   # D61 (Ben): Weg 1 nach R36, Spanne 308-385 kg (untere / obere FAO-Werte); D40 hatte 475 kg mit Fruchtgemuese in den Beeten
@@ -239,10 +246,14 @@ sensors_w = sum(SENSORS_W.values())
 dose_w_avg = DOSE_PUMP_W * DOSE_PUMP_N * DOSE_DUTY
 puffer_w = sensors_w + PI_W + dose_w_avg + puffer_pump_el + fill_el_avg   # mittlere Leistung der Station
 blower_w = BLOWER_FILM_W[1]                                            # Geblaese Luftpolster der Doppelfolie
-power_w = p_el_main + p_el_small + air_w + CONTROL_W + blower_w + puffer_w
+p_el_bed = BED_SUMP_LINES * BED_SUMP_PUMP_W * BED_SUMP_DUTY            # W Mittel, Beet-Sumpf-Pumpen (108 W, R45 Abschnitt 3)
+p_hyd_bed = BED_SUMP_LINES * 1000 * 9.81 * (BED_SUMP_Q_L_MIN / 60000) * BED_SUMP_HEAD_M   # W hydraulisch
+bed_reserve_w = BED_SUMP_RESERVE_N * BED_SUMP_PUMP_W                  # W Anschlusswert der Reservepumpen (nicht im Dauerbetrieb)
+main_nenn_w = PUMP_GROSS_N * PUMP_GROSS_NENN_W                         # Anschlusswert der vier Hauptpumpen (Premium-Klasse)
+power_w = p_el_main + p_el_small + p_el_bed + air_w + CONTROL_W + blower_w + puffer_w
 p_hyd_small = 1000 * 9.81 * (settler_flow / 60000) * HEAD_M
-power_lo = (p_hyd_main + p_hyd_small) / 0.33 + o2_total[0] / 2.0 * 1000 / 24 + CONTROL_W + BLOWER_FILM_W[0] + puffer_w * 0.5      # Pumpen 33 %, SAE 2,0
-power_hi = (p_hyd_main + p_hyd_small) / 0.16 + max(air_w, o2_total[2] * O2_PEAK_FACTOR / AIR_KG_O2_PER_KWH * 1000 / 24) + CONTROL_W + BLOWER_FILM_W[2] + puffer_w * 1.5   # Pumpen 16 %
+power_lo = (p_hyd_main + p_hyd_small) / 0.33 + p_hyd_bed / 0.33 * BED_SUMP_DUTY + o2_total[0] / 2.0 * 1000 / 24 + CONTROL_W + BLOWER_FILM_W[0] + puffer_w * 0.5      # Pumpen 33 %, SAE 2,0
+power_hi = (p_hyd_main + p_hyd_small) / 0.16 + BED_SUMP_LINES * BED_SUMP_PUMP_W + max(air_w, o2_total[2] * O2_PEAK_FACTOR / AIR_KG_O2_PER_KWH * 1000 / 24) + CONTROL_W + BLOWER_FILM_W[2] + puffer_w * 1.5   # Pumpen 16 %
 heat_w_per_k = tuple(round(HULL_AREA * u) for u in HULL_U)             # Doppelfolie: IR-Sperre, Mitte, oben
 heat_kw_dt = [round(w * DT_DESIGN / 1000, 1) for w in heat_w_per_k]
 heat_mwh_year = [round(w / 1000 * 24 * GT_KD / 1000) for w in heat_w_per_k]
@@ -317,7 +328,7 @@ beete_tische = {"standard": "weg1", "szenarien": [
     "hinweis": "Planungsstand Weg 1 (D60). Futter je m2 aus R26 (obere / Mitte / untere FAO-Werte), NFT-Flaeche wie R26 aus Bens Tabelle skaliert; mit Rinnenraster als NFT-Flaeche 20-25 % weniger Fisch in allen Varianten (R36). Seit D61 gilt Weg 1: Pflanzmix, Fischmenge (346 kg) und Konsistenzpruefungen rechnen mit Beeten Blatt/Kraeuter; die Zeile D40-Annahme (475 kg) bleibt als Vergleich."}
 
 specs = {
-    "stand": "31.10.2026",
+    "stand": "05.11.2026",
     "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D61 (Weg 1 nach R36: Tische über den Beeten, Beete nur Blatt/Kräuter, Biomasse 346 kg, Spanne 308–385; D40 hatte 475 kg mit Fruchtgemüse); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
     "wasser": {"gesamt_m3": round(total, 1), "teile": [(n, round(v, 2), f"{v / total:.0%}") for n, v in parts], "in_tanks_m3": round(tanks, 2), "im_kreislauf_m3": round(total_circuit, 1),
                "tabelle_systemwasser_m3": 25, "fischwasser_m3": round(fish_water, 1)},
@@ -340,9 +351,12 @@ specs = {
                 "tan_durchfluss_l_min": round(tan_flow_l_min), "tan_durchfluss_tabelle_l_min": round(tan_flow_table),
                 "tabelle_ben": {"kreislauf_modell_l_min": 143, "hinweis": "Bens Tabelle nennt nur 2 Pumpen ohne Daten; 143 l/min war die erste Rechnung (NFT 0,5 l/min)"}},
     "leistung": {"pumpe_hydraulisch_w": round(p_hyd_main / 2), "pumpe_elektrisch_w": round(p_el_main / 2), "pumpe_klein_w": round(p_el_small),
+                 "beet_sumpf_w": round(p_el_bed), "beet_sumpf_nenn_w_je_pumpe": BED_SUMP_PUMP_W, "beet_sumpf_hydraulisch_w": round(p_hyd_bed, 1),
+                 "beet_sumpf_reserve_anschluss_w": bed_reserve_w, "pumpe_gross_nenn_w": PUMP_GROSS_NENN_W, "pumpen_gross_anschluss_w": main_nenn_w,
+                 "belueftung_n_plus_1": {"geraete": BLOWER_FISH_N, "in_betrieb": 1, "spanne_w_r45": list(BLOWER_FISH_W_R45), "rechenwert_w": round(air_w), "anschluss_w_beide": 2 * BLOWER_FISH_W_R45[1]},
                  "belueftung_w": round(air_w), "steuerung_w": CONTROL_W, "puffer_station_w": round(puffer_w), "geblaese_luftpolster_w": blower_w,
                  "gesamt_w": round(power_w), "kwh_tag": round(power_w * 24 / 1000, 1), "kwh_monat": round(power_w * 24 * 30 / 1000),
-                 "spanne_w": [int(round(power_lo, -1)), int(round(power_hi, -1))], "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
+                 "spanne_w": [int(round(power_lo, -1)), int(round(power_hi, -1))], "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen; 'beet_sumpf_w' = 2 laufende Beet-Sumpf-Pumpen mit Laufanteil 90 % (R45), die 2 Reservepumpen (E19/D81) stehen still; 'pumpe_elektrisch_w' rechnet mit Wirkungsgrad 25 %, Nennleistung der Premium-Pumpe 110 W (R47) steht in 'pumpe_gross_nenn_w'; Belueftung: Rechenwert 0,59 W/kg (UVI) liegt in der R45-Spanne, zwei Membrangeraete N+1",
                  "heizung": {"huelle_m2": round(HULL_AREA), "w_je_k": list(heat_w_per_k), "w_je_k_reihenfolge": "IR-Sperre, Mitte, oben",
                              "beispiel_dT30_kw": heat_kw_dt, "jahr_obergrenze_mwh": heat_mwh_year, "dT_k": DT_DESIGN, "gradtagzahl_kd": GT_KD,
                              "wasser_speicher_kwh_je_k": round(total * 1.163, 1),

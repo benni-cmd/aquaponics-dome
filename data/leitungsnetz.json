@@ -977,7 +977,7 @@
    "medium": "Strom",
    "adern_stueck": 4,
    "leistung_w": 72,
-   "bemerkung": "je 72 W (Wirkungsgrad 25 %), 230 V, 3 x 1,5 mm2",
+   "bemerkung": "je 72 W Mittel (Wirkungsgrad 25 %, 55 l/min bei 2,0 m), 230 V, 3 x 1,5 mm2; Anschlusswert (Auslegung Leitung und Schaltschrank): Premium-Klasse (Oase Aquarius Premium 6000) Nennleistung 110 W, Eco 60 W reicht bei 2,0 m nicht (R47 7.1, SPECS-R45); Fabrikat offen",
    "quelle": "E R21"
   },
   {
@@ -991,11 +991,29 @@
   },
   {
    "von": "schaltschrank",
+   "nach": "pumpe_beet_sumpf_1..2",
+   "medium": "Strom",
+   "adern_stueck": 2,
+   "leistung_w": 54,
+   "bemerkung": "Beet-Sumpf je Linie (K58/K59), Teichpumpe 60 W Nennleistung, Laufanteil 90 % = 54 W Mittel je Pumpe, 108 W beide (statt 72 W der alten Netzannahme 2 x 36 W); 230 V, 3 x 1,5 mm2 mit Pegelsteuerung (3 Schwimmer, Flutsperre bei Alarm); Anschlusswert 60 W je Pumpe (SPECS-R45, R45 Abschnitt 3)",
+   "quelle": "E R45"
+  },
+  {
+   "von": "schaltschrank",
+   "nach": "pumpe_beet_sumpf_reserve_1..2",
+   "medium": "Strom",
+   "adern_stueck": 2,
+   "leistung_w": 0,
+   "bemerkung": "Reservepumpe je Beet-Sumpf (E19, Annahme D81), steht im Normalbetrieb still (0 W), Anschlusswert 60 W je Pumpe, beide Reserven 120 W; schaltet bei Ausfall oder Alarm der Hauptpumpe des Sumpfes zu",
+   "quelle": "E R45 / D81"
+  },
+  {
+   "von": "schaltschrank",
    "nach": "geblaese_fisch",
    "medium": "Strom",
    "adern_stueck": 1,
    "leistung_w": 204,
-   "bemerkung": "Belueftung Fischwasser, UVI 0,59 W/kg x 346 kg (D61); vorher 280 W bei 475 kg; Reserve-Geblaese (D45 e)",
+   "bemerkung": "Belueftung Fischwasser, UVI 0,59 W/kg x 346 kg (D61); vorher 280 W bei 475 kg; Fischmenge 346 kg wie gebaut (D81 E1). Zwei Membrangeraete N+1, eines in Betrieb, jedes allein fuer den Pool-Planwert 130 l/min (R45 Frage 6): elektrisch 100-215 W je Geraet, Rechenwert 204 W liegt in der Spanne; Anschlusswert beide 430 W (2 x 215 W); je Geraet eigene Zuleitung",
    "quelle": "Q R22"
   },
   {

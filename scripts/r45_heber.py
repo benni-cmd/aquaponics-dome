@@ -85,6 +85,59 @@ def strecken(namen):
     return vor, hint
 
 
+DI_SDR21 = {50: 0.0452, 63: 0.057, 75: 0.0678}   # Innen-Durchmesser PVC-U SDR 21 (d50 x 2,4 [A], d63 x 3,0, d75 x 3,6)
+
+
+def trasse(tid):
+    return next(x for x in TR["trassen"] if x["id"] == tid)
+
+
+def gebaut_info(namen):
+    """Liest dn je Teilstueck und die Formstuecke der Linie aus data/leitungstrassen.json (HEBER-SKRIPT, Auflage A1 des Pruefers M10-S2R).
+    Rueckgabe: Laengen je Teilstueck vor/hinter dem Absetzer-T mit dn, Reduziermuffen (R_*_P Pool, R_*_F Filter), T-Stuecke der Linie."""
+    ids = LINIEN[namen]
+    vor, hint, seen = [], [], False
+    for tid in ids:
+        t = trasse(tid)
+        (hint if seen else vor).append((tid, laenge(t), int(t["dn"])))
+        if tid == ABS_T[namen]:
+            seen = True
+    ts = [x for x in TR["t_stuecke"] if any(p["trasse"] in ids for p in x["ports"]) and x["d"] >= 63]
+    kn = namen.split()[0]
+    red = {x["id"][-1]: x for x in TR["r_stuecke"] if x["id"].startswith("R_" + kn + "_")}
+    return vor, hint, ts, red
+
+
+def verlust_gebaut(namen, q1, q2, kb, kt, rau, n90):
+    """Verlust in mm fuer den gebauten Heber mit echten dn: Reibung je Teilstueck mit dessen dn, Eintritt am d63-Pool-Stutzen,
+    Reduziermuffe d63->d75 (Borda-Erweiterung, bezogen auf v63), n90 Boegen (je Haelfte vor/hinter dem Absetzer-T) und T Durchgang mit dem dn aus der JSON,
+    Reduziermuffe d75->d63 (ploetzliche Verengung 0,5 (1 - A63/A75)) und Austritt 1,0 am d63-Filterstutzen. Muffentiefe und d63-Stutzenstuecke als Reibung ignoriert [A]."""
+    vor, hint, ts, red = gebaut_info(namen)
+    def hv(dn, q):
+        a = math.pi * DI_SDR21[dn] ** 2 / 4
+        v = q / a
+        return v, v * v / (2 * G) * 1000
+    parts = {"Reibung": 0.0}
+    for lst, q in ((vor, q1 / 60000), (hint, q2 / 60000)):
+        for _, l, dn in lst:
+            v, h = hv(dn, q)
+            parts["Reibung"] += lam(v * DI_SDR21[dn] / NU, DI_SDR21[dn], rau) / DI_SDR21[dn] * l / 1000 * h
+    d_p, d_f = int(red["P"]["d_klein"]), int(red["F"]["d_klein"])
+    gp, gf = int(red["P"]["d_gross"]), int(red["F"]["d_gross"])
+    beta = lambda gross, klein: (DI_SDR21[klein] / DI_SDR21[gross]) ** 2
+    parts["Eintritt"] = 0.5 * hv(d_p, q1 / 60000)[1]
+    parts["Red Pool d63>d75"] = (1 - beta(gp, d_p)) ** 2 * hv(d_p, q1 / 60000)[1]
+    dn_b = vor[0][2]
+    assert all(dn == dn_b for _, _, dn in vor + hint), "Boegen mit einheitlichem dn gerechnet"
+    parts["Boegen"] = (n90 / 2) * kb * hv(dn_b, q1 / 60000)[1] + (n90 / 2) * kb * hv(dn_b, q2 / 60000)[1]
+    assert len(ts) == 2, f"zwei T Durchgang je Linie erwartet, gefunden {[x['id'] for x in ts]}"
+    t1, t2 = ts
+    parts["T"] = kt * hv(int(t1["d"]), q1 / 60000)[1] + kt * hv(int(t2["d"]), q2 / 60000)[1]
+    parts["Red Filter d75>d63"] = 0.5 * (1 - beta(gf, d_f)) * hv(d_f, q2 / 60000)[1]
+    parts["Austritt"] = 1.0 * hv(d_f, q2 / 60000)[1]
+    return sum(parts.values()), parts
+
+
 FT = 0.019  # fT Crane fuer 2 Zoll [A]
 FAELLE = [
     # Name, Kb, Kt
@@ -97,6 +150,7 @@ FAELLE = [
 
 if __name__ == "__main__":
     d63, d75 = 0.057, 0.0678
+    gebaut_schlecht = {}
     print(f"Druckhoehe {SPIEGEL - EINLAUF:.0f} mm (Spiegel {SPIEGEL:.0f} - Einlaufachse {EINLAUF:.0f}); Grenze Reserve 30 mm [A, loop-state]")
     for namen, ids in LINIEN.items():
         n90, n45 = zaehle_boegen(ids)
@@ -109,16 +163,27 @@ if __name__ == "__main__":
                 res = SPIEGEL - EINLAUF - v
                 print(f"   {fname:44s} Verlust {v:5.0f} mm  Reserve {res:5.0f} mm{'  <-- unter 30' if res < 30 else ''}")
 
+        print("  -- GEBAUT (dn, Reduziermuffen, T aus data/leitungstrassen.json; Rauheit gealtert k 0,05) --")
+        for label, kb, kt in (("schlecht (Crane Gehrung/T 0,9)", 60 * FT, 0.9), ("Mittel (Crane glatt)", 30 * FT, 20 * FT), ("Langbogen 0,2 / T 0,2", 0.2, 0.2)):
+            v, teile = verlust_gebaut(namen, 97.5, 110.0, kb, kt, 0.05, n90)
+            res = SPIEGEL - EINLAUF - v
+            print(f"   [gebaut {label:30s}] Verlust {v:5.0f} mm  Reserve {res:5.0f} mm  " + ", ".join(f"{k} {x:.0f}" for k, x in teile.items()))
+            if label.startswith("schlecht"):
+                gebaut_schlecht[namen] = res
         print("  -- Varianten, Rauheit gealtert, schlechtester Fall (Crane Gehrung/T 0,9) und Mittel (Crane glatt) --")
         for label, kw in (("schlecht", dict(kb=60 * FT, kt=0.9)), ("Mittel", dict(kb=30 * FT, kt=20 * FT))):
             def res(di=d63, kb=kw["kb"], kt=kw["kt"], n=n90, extra=0.0, head_plus=0.0):
                 v, _ = verlust((vor, hint), di, 97.5, 110.0, kb, kt, n, 0.05, extra_k=extra)
                 return SPIEGEL - EINLAUF + head_plus - v
-            print(f"   [{label}] Ist                                   {res():5.0f} mm")
+            print(f"   [{label}] Alt: d63 durchgehend (Vorgaenger)    {res():5.0f} mm")
             print(f"   [{label}] d75 durchgehend (+2 Reduzierstuecke)  {res(di=d75, extra=0.3):5.0f} mm")
             print(f"   [{label}] Langbogen 0,2 statt Kb               {res(kb=0.2):5.0f} mm")
             print(f"   [{label}] Filter-Grube +100 mm tiefer          {res(head_plus=100):5.0f} mm")
             print(f"   [{label}] d75 + Langbogen 0,2                  {res(di=d75, kb=0.2, extra=0.3):5.0f} mm")
+
+    print("\n== Marge gegen Vorgabe >= 85 mm (Auflage A2 M10-S2R; Grenze Reserve 30 mm), schlechter Fall, GEBAUT ==")
+    for namen, res in gebaut_schlecht.items():
+        print(f"  {namen}: Reserve {res:.0f} mm, Marge gegen 85 mm {res - 85:+.0f} mm, gegen 30 mm {res - 30:+.0f} mm -> {'OK' if res >= 85 else 'UNTER 85 mm'}")
 
     print("\n== Pumpe statt Heber (Leistung fuer die Foerderhoehe 0,25 m, Wirkungsgrad 25 % wie Netz R21) ==")
     q = 110 / 60000

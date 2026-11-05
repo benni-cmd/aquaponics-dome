@@ -1,5 +1,5 @@
 {
- "stand": "31.10.2026",
+ "stand": "05.11.2026",
  "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D61 (Weg 1 nach R36: Tische über den Beeten, Beete nur Blatt/Kräuter, Biomasse 346 kg, Spanne 308–385; D40 hatte 475 kg mit Fruchtgemüse); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
  "wasser": {
   "gesamt_m3": 34.7,
@@ -124,18 +124,34 @@
   "pumpe_hydraulisch_w": 36,
   "pumpe_elektrisch_w": 144,
   "pumpe_klein_w": 33,
+  "beet_sumpf_w": 108,
+  "beet_sumpf_nenn_w_je_pumpe": 60,
+  "beet_sumpf_hydraulisch_w": 29.3,
+  "beet_sumpf_reserve_anschluss_w": 120,
+  "pumpe_gross_nenn_w": 110,
+  "pumpen_gross_anschluss_w": 440,
+  "belueftung_n_plus_1": {
+   "geraete": 2,
+   "in_betrieb": 1,
+   "spanne_w_r45": [
+    100,
+    215
+   ],
+   "rechenwert_w": 204,
+   "anschluss_w_beide": 430
+  },
   "belueftung_w": 204,
   "steuerung_w": 40,
   "puffer_station_w": 12,
   "geblaese_luftpolster_w": 80,
-  "gesamt_w": 656,
-  "kwh_tag": 15.7,
-  "kwh_monat": 472,
+  "gesamt_w": 764,
+  "kwh_tag": 18.3,
+  "kwh_monat": 550,
   "spanne_w": [
-   370,
-   860
+   450,
+   980
   ],
-  "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen",
+  "hinweis_pumpe": "je Linie (2 Linien), 'pumpe_klein_w' = beide Absetzerpumpen zusammen; 'beet_sumpf_w' = 2 laufende Beet-Sumpf-Pumpen mit Laufanteil 90 % (R45), die 2 Reservepumpen (E19/D81) stehen still; 'pumpe_elektrisch_w' rechnet mit Wirkungsgrad 25 %, Nennleistung der Premium-Pumpe 110 W (R47) steht in 'pumpe_gross_nenn_w'; Belueftung: Rechenwert 0,59 W/kg (UVI) liegt in der R45-Spanne, zwei Membrangeraete N+1",
   "heizung": {
    "huelle_m2": 208,
    "w_je_k": [

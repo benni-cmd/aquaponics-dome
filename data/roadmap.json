@@ -925,11 +925,11 @@
   {
    "id": "SPECS-R45",
    "titel": "system_specs.py und Kabelzeilen nach R45 nachtragen (Beet-Pumpen 2 x 60 W, Geblaese N+1, Leistung)",
-   "status": "geplant",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.6,
    "wer": "Orchestrator",
-   "notiz": "ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Klein, vor W37: Leistung Beet-Sumpf-Pumpen 108 bis 120 W statt 72 W, Geblaese zwei Membranpumpen N+1 (Rechnung 100 bis 215 W), Kabelzeilen fuer die zwei Sumpfpumpen in der Netzliste; danach check_netz.py und Leistungsbilanz. Schaltschrank-Auslegung haengt dran (E13). NEU aus R47c: Pumpe_gross bei 2,0 m und 55 l/min = Premium-Klasse (Oase Aquarius 6000, 110 W Nennleistung, Eco-Klasse 60 W reicht nicht); Netzliste und Kabelzeile rechnen 72 W bei Wirkungsgrad 25 %: Annahme und Fabrikat nachpruefen."
+   "notiz": "ERLEDIGT 05.11. (Werkstatt): system_specs.py + Kabelzeilen nach R45/D81 nachgetragen; Details im Paket bis-zwischencheck, Stand 05.11. | Vorher: ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Klein, vor W37: Leistung Beet-Sumpf-Pumpen 108 bis 120 W statt 72 W, Geblaese zwei Membranpumpen N+1 (Rechnung 100 bis 215 W), Kabelzeilen fuer die zwei Sumpfpumpen in der Netzliste; danach check_netz.py und Leistungsbilanz. Schaltschrank-Auslegung haengt dran (E13). NEU aus R47c: Pumpe_gross bei 2,0 m und 55 l/min = Premium-Klasse (Oase Aquarius 6000, 110 W Nennleistung, Eco-Klasse 60 W reicht nicht); Netzliste und Kabelzeile rechnen 72 W bei Wirkungsgrad 25 %: Annahme und Fabrikat nachpruefen."
   },
   {
    "id": "E18",
@@ -979,11 +979,11 @@
   {
    "id": "HEBER-SKRIPT",
    "titel": "scripts/r45_heber.py auf dn aus der JSON und die gebauten Formstuecke umstellen (Auflage A1 des Pruefers)",
-   "status": "geplant",
+   "status": "erledigt",
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.97,
    "wer": "Orchestrator (klein)",
-   "notiz": "ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Heute liest das Skript den Durchmesser nicht aus data/leitungstrassen.json, die Zeile \"Ist\" rechnet mit d63; die 85/88 mm stammen aus einer Variantenzeile mit pauschalem Zusatzverlust 0,3 [A]. Umbau auf echte dn, T d75, Reduziermuffen und Bogen einzeln, danach neu rechnen und die Marge von K01 pruefen (Auflage A2). Vor M10-S7 erledigen, S7 braucht die Zahl."
+   "notiz": "ERLEDIGT 05.11. (Werkstatt): r45_heber.py liest dn/T/Reduziermuffen aus der JSON; gebaut schlecht K01 65 mm, K17 68 mm (unter alter Vorgabe 85 mm, ueber Grenze 30 mm): Befund an Orchestrator, Paket bis-zwischencheck. | Vorher: ZURUECKGESTELLT 02.11. bis R47-Ergebnis: Hoehen, Pumpen und Leistung koennen sich mit dem Kreislaufkonzept aendern. Heute liest das Skript den Durchmesser nicht aus data/leitungstrassen.json, die Zeile \"Ist\" rechnet mit d63; die 85/88 mm stammen aus einer Variantenzeile mit pauschalem Zusatzverlust 0,3 [A]. Umbau auf echte dn, T d75, Reduziermuffen und Bogen einzeln, danach neu rechnen und die Marge von K01 pruefen (Auflage A2). Vor M10-S7 erledigen, S7 braucht die Zahl."
   },
   {
    "id": "PRUEF-W36-W39",

@@ -222,3 +222,8 @@ Naechste: nach 1C -> N-PREIS-PRUEF Werkstatt Schritt 2 (bom.py), dann Pruefer; n
 ## 05.11.2026 NACHTMODUS (Ben, D82): PC laeuft durch, Roadmap weiter bis Zwischencheck
 Pause aufgehoben. Waechter wieder an. Bis 5 Sitzungen, hoechstens 2 schwere SolidCraft-Laeufe, freier RAM >= 10 GB vor schwerem Start. Warteschlange: docs/packages/bis-zwischencheck.md.
 - 05.11. Nacht: Runde 70 Strebe gebaut (24a5ee8, 5c8baef). Aus Waechter-Zuegen darf die App KEINE neuen Sitzungen starten, nur vorhandene wecken: Maengel-Inventur -> pruefer-detail-pilot, Pruefer N-MODELL-KOMPLETT -> pruefer-w37-2-3 (Pruefer Luft A spaeter dann frische oder andere Pruefer-Sitzung), A4 + nft_tisch_innen -> auflagen-detail-w60. Modell-Slot frei bis Leitungsordnung geplant (Planer nach Inventur).
+
+## 05.11.2026 ~10:15 WARTET AUF BEN (Nachtlauf beendet mangels freier Sitzungen)
+- Waechter deaktiviert: alle vorhandenen Sitzungen stehen ueber 35 % Kontext oder lehnen den Rollenwechsel ab (planer-w37-2-3: Rollenwechsel Planer->Werkstatt ohne Bens Anweisung abgelehnt); neue Sitzungen startet die App erst nach Bens naechster Nachricht.
+- Gebaut in der Nacht: Runde 70 (Strebe), 71-73 (Umbau nach Leitungsordnung, Nachpruefung PASS mit Auflagen), 74 (Technikgruppe aussen, Pruefer FAIL gegen Blatt, Auflagen entschieden), V1a/V1b/VV (Varianten), Viewer-Export 74 (eaf7442).
+- Naechste nach Bens Nachricht (frische Sitzungen): Werkstatt A1 Absetzer-Luftstutzen, Montage M10-S2N, S3, S4, S5, S6, S7 (je Pruefer), Ring R1/R2, CHECK je Variante, W65-Tabelle, Zwischencheck-Bericht.

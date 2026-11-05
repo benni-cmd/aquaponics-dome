@@ -55,7 +55,7 @@ Kosten: kleinster belegter Preis in `data/beschaffung/*.json` (Stand 04./05.11.)
 | G7 | Notbypass K56/K57, Kugelhähne d63, 4 Schächte | Umgeht den verstopften Korb | **streichen** | Antwort auf W79: Der tiefe Schacht gibt es nur, weil Bypass- und Stamm-Hahn 186 bis 424 mm unter Flur liegen (M10-S2N). Ohne Saugseite gibt es keinen Bypass; läuft der Korb über, fällt das Wasser in den Biofilter | −150 € Rohr d63 (4,6 m), −316 € Hähne, −180 € Schächte | kein ungetesteter Totast mehr (R47b 6.2) |
 | G8 | Hauptpumpen 4 (2 je Linie) | einzige Hebestufe | **behalten, als Tauchpumpen im Pool** | Zahl gleich; Kennlinie muss 55 l/min bei 2,28 m schaffen. Die heutige Eheim 3400 liefert rechnerisch schon bei 2,0 m nur 38 l/min | 0 € Mehrzahl; neue Kennlinie ohne Preis; +344 € Schlauch 40 mm lebensmittelecht (24 m) | Pumpe am Seil ziehen statt Leitung trennen; kein Rückschlagventil; Pegel-tief-Schalter schaltet ab (FAO 589: Wasserverlust ist eine der häufigsten Katastrophen) |
 | G9 | Biofilter 2 (K1, belüftet) | Nitrifikation, Höhenquelle der Schwerkraft | **behalten** (D55) | trägt den Siebkorb; Kegelboden-Ablass wird Schlammweg | 0 € | wie heute |
-| G10 | Verteiler, K11/K12/K13 | teilt den Strom auf Beete, NFT, Überlauf | **behalten, als Wasserstation je Linie** (W82) | Der Verteiler ist physikalisch der einzige Ort, an dem sich jeder Strom einer Linie teilt. Dort sitzen alle Hähne beschriftet nebeneinander. Eine einzige Station für beide Linien verlängert die Wege: die Biofilter stehen 4,9 m auseinander (`docs/leitungsnetz-umhaengen.md`) [E] | 0 € | ein Ort je Linie für alle Hähne; Strom (Schrank) getrennt |
+| G10 | Verteiler, K11/K12/K13 | teilt den Strom auf Beete, NFT, Überlauf | **behalten, als Wasserstation je Linie** (W82) | Der Verteiler ist physikalisch der einzige Ort, an dem sich jeder Strom einer Linie teilt. Dort sitzen alle Hähne beschriftet nebeneinander. Eine einzige Station für beide Linien senkt den Druckkopf zum NFT-Tisch auf 398 mm, unter das Soll von 500 mm (Abschnitt 2a) [E] | 0 € | ein Ort je Linie für alle Hähne; Strom (Schrank) getrennt |
 | G11 | Beete 14 mit Glockensiphon | Pflanzen, Medienfilter, Nitrifikation | **behalten, auf den Flur stellen statt einlassen** | Ablauf steigt von Z −100 auf +62. Der Beetrand liegt dann bei Z 637 statt 475, also bessere Arbeitshöhe. Die Kopffreiheit über den Außenbeeten sinkt von 1343 auf 1181 mm, das reicht für das Blattgemüse nach D61. Kompostwürmer im Medium als natürliche Verwertung (Abschnitt 7) | 0 €; 5,3 m³ Aushub weniger | Beet ohne Grube tauschbar |
 | G12 | Beet-Rücklauf K14/K30 | Siphonwasser zurück | **vereinfachen:** Schlauch oder Rohr frei auf dem Flur entlang der Beetfüße (Art C), nur die Einmündung am Pool flach unter Flur | 58,9 m Graben (R49) werden 46,5 m oberirdisch plus 2 × 3 m flacher Kanal [A]. HT- oder KG-Rohr wäre billiger (2 bis 4 €/m), ist aber nur als Abwasserrohr ausgewiesen und scheidet nach D85 aus | −1394 € Rohr d50, +702 € Schlauch 50 mm | ausspülbar am Tiefpunkt (Ordnung v2, Zugang) |
 | G13 | Beet-Sumpf 2 × 500 l, 4 Teichpumpen, 6 Schwimmer, 2 Rückschlagventile, K58/K59 | hebt Beetwasser über den Pool-Spiegel | **streichen** | nur wegen der Höhenlücke nötig (R49 Abschn. 3); im Zielbild läuft das Beet frei in den Pool | −882 € Pumpen, −269 € Schwimmer, −123 € Rohr; Tanks und Ventile ohne Preis; −108 W | keine Flutsperre mehr nötig (R45: Pflicht wegen Überlaufgefahr) |
@@ -71,6 +71,25 @@ Kosten: kleinster belegter Preis in `data/beschaffung/*.json` (Stand 04./05.11.)
 | G23 | Zwei Linien | Ausfallsicherheit | **behalten** (D67) | Ausfall einer Linie halbiert nur | 0 € | – |
 
 **Summe der Gruppen mit Preis:** heute 6039 €, Zielbild S 2242 €, also 3797 € weniger. Darin fehlen 4 Artikel ohne belegten Preis, die alle entfallen (Absetzer-Tanks, Sumpf-Tanks, Feinfilter-Kästen, Rückschlagventile d40); die Einsparung ist damit eher größer. Nicht enthalten sind die Mehrkosten der stärkeren Tauchpumpe [E, `r57_rechnung.py kosten`]. Stückzahl dieser Gruppen ohne Meterware: 40 → 10.
+
+## 2a. Wasserstation (W82): ja, eine je Linie am Biofilter, keine zentrale
+
+**Empfehlung: zwei Wasserstationen, je eine pro Linie direkt am Biofilter, dazu der Stromschrank als getrennter Ort.** Eine einzige zentrale Station für beide Linien verwerfe ich aus physikalischen Gründen.
+
+| Variante | Wasserwege | Urteil |
+|---|---|---|
+| **je Linie am Biofilter** | Der Verteiler sitzt unter dem Biofilter-Auslauf, dem einzigen Punkt, an dem sich der Strom einer Linie teilt. An einem Ort liegen: Siebkorb, alle Abgangshähne zu Beeten und Tischen, Überlauf, Messkreis-Abgang, Schlammhahn, Durchflusswächter. Druckkopf zum NFT-Tisch 510 mm (Soll ≥ 500 mm, Netz K12) [Q R49 2.1] | **empfohlen**; beschriftet und auf einer Tafel, siehe unten |
+| zentral für beide Linien | Die Biofilter stehen 4,9 m auseinander. Eine Station in der Mitte verlängert jede Linie um 2,4 m d50 bei 1,14 m/s. Der Verlust beträgt 112 mm, der Druckkopf zum NFT-Tisch sinkt auf 398 mm, also unter das Soll von 500 mm. Die NFT-Tische laufen dann nicht mehr frei, nötig wäre ein höherer Biofilter oder eine Pumpe [E, `python -X utf8 scripts/r57_rechnung.py station`] | **verworfen** |
+| verteilt (heute, Hähne an Beet und Tisch) | jeder Hahn an seinem Abnehmer; kurze Wege, aber 38 Stellen im ganzen Dom | **nicht nötig**; nur Feinregelung am Beet bleibt möglich |
+
+**Was in die Station je Linie gehört:**
+1. Siebkorb im Biofilter-Deckel
+2. Verteilerbalken mit einem beschrifteten Kugelhahn je Abgang (7 Beete, 12 Tische, Überlauf, Messkreis)
+3. Durchflusswächter der Linie
+4. Schlammhahn am Biofilter-Kegelboden mit Abgang des Schlammschlauchs
+5. Schild mit Fließbild der Linie
+
+Strom (Pumpen, Gebläse, Sensoren) läuft im Schaltschrank-Kasten (D87) zusammen. So gibt es einen Ort für Strom und zwei gleiche Orte für Wasser. Die Station ist kein neues Bauteil, sondern eine Anordnung am vorhandenen Biofilter; die Werkstatt braucht nur eine Hahntafel. Gilt sinngemäß auch für A+.
 
 ## 3. Natürliche Kreisläufe und Ausgleich (W76)
 
@@ -184,6 +203,6 @@ Nicht verwertbar (geöffnet, gescheitert): McMillan 2003 und Davidson/Summerfelt
 Geprüft gegen:
 1. `data/leitungstrassen.json` (Variante A+ über `scripts/leitungen.laden_variante()`), `data/leitungsnetz.json`, `data/system-specs.json`, `data/params.json`, `data/beschaffung/*.json`
 2. `docs/research/R44`, `R45`, `R47` (mit R47b/c), `R49`, `R50`, `R51`, `R53`, `R54`, `R55`; `docs/model-maengel.md`, `docs/hydraulics.md`, `docs/system-concept.md`, `docs/packages/n-technik-innen.md`, `docs/decisions.md` D26, D55, D61, D67, D71, D72, D75, D77, D81, D84 bis D87
-3. Befehle: `python -X utf8 scripts/r57_rechnung.py` (alle Abschnitte), `python -X utf8 scripts/check_leitungsordnung.py` (Bestand und Testtrassen)
+3. Befehle: `python -X utf8 scripts/r57_rechnung.py` (alle Abschnitte, einschließlich `station`), `python -X utf8 scripts/check_leitungsordnung.py` (Bestand und Testtrassen)
 
 Offen: siehe Abschnitt 8 und 9.

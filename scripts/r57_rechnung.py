@@ -1,5 +1,5 @@
 """R57 Systemreview (N-MINIMAL, W75/W76/W79): Rechnung heute (A+ wie gebaut und geplant) gegen Zielbild S (schlank).
-Nur lesen. Aufruf: python -X utf8 scripts/r57_rechnung.py [abschnitt]   abschnitt = vergraben | aushub | pegel | pumpen | kosten | alle (Standard)
+Nur lesen. Aufruf: python -X utf8 scripts/r57_rechnung.py [abschnitt]   abschnitt = vergraben | aushub | pegel | pumpen | kosten | station | alle (Standard)
 Eingaben: data/leitungstrassen.json (ueber scripts/leitungen.laden_variante(), Variante A+), data/leitungsnetz.json, data/system-specs.json,
 data/beschaffung/*.json (kleinster belegter Preis je Artikel, Stand 04./05.11.2026), docs/research/R45, R47, R49 (zitierte Zahlen, unten je Wert benannt).
 Herkunft je Zahl: [Q] Datei/Quelle gelesen, [E] hier gerechnet, [A] Annahme dieses Skripts. Keine fachliche Freigabe.
@@ -219,9 +219,24 @@ def kosten():
     print("  Stueckzahl dieser Gruppen (ohne Meterware): heute %d, S %d [E]" % (stueck_h, stueck_s))
     return dict(heute=sh, s=ss, offen=sorted(offen))
 
+
+# ------------------------------------------------------------------ 6 Wasserstation (W82): zentral gegen je Linie
+def station():
+    kopf("6 Wasserstation (W82): Verteiler am Biofilter je Linie gegen eine zentrale Station fuer beide Linien")
+    abstand = math.dist((3372, -300), (-458, -3334)) / 1000      # Biofilter Tank_gross:1 und Tank_gross_t3:1 [Q docs/leitungsnetz-umhaengen.md]
+    L = abstand / 2                                              # zentrale Station in der Mitte: je Linie halber Abstand zusaetzlich [E]
+    q = 110 / 60000; di = 0.050 - 2 * 0.0024                     # d50 SDR 21 [Q params pool_bd_wand]
+    v = q / (math.pi / 4 * di ** 2); f = 0.02                    # Reibungszahl glattes PVC [A]
+    hf = f * L / di * v ** 2 / 19.62 + 2 * 0.3 * v ** 2 / 19.62  # Rohr plus 2 Boegen 90 Grad (zeta 0,3 [A])
+    kopf_nft = 1600 - 1090                                       # Biofilter-Spiegel Z 1600 minus Tisch-Zulauf Z 1090 [Q R49 2.1]
+    print("  Biofilter-Abstand %.1f m; zentrale Station verlaengert jede Linie um %.1f m d50 bei %.2f m/s [E]" % (abstand, L, v))
+    print("  Verlust %.0f mm; Druckkopf NFT-Tisch %d mm -> %.0f mm (Soll >= 500 mm, Netz K12) [E]" % (hf * 1000, kopf_nft, kopf_nft - hf * 1000))
+    return dict(abstand=abstand, hf=hf, kopf=kopf_nft - hf * 1000)
+
 if __name__ == "__main__":
     if ARG in ("vergraben", "alle"): vergraben.cache = vergraben()
     if ARG in ("aushub", "alle"): aushub()
     if ARG in ("pegel", "alle"): pegel()
     if ARG in ("pumpen", "alle"): pumpen()
     if ARG in ("kosten", "alle"): kosten()
+    if ARG in ("station", "alle"): station()

@@ -1379,5 +1379,652 @@
     ]
    }
   }
+ },
+ "wa_s": {
+  "quelle": "scripts/workshop/autobahn_s.py --json",
+  "blatt": "docs/jobs/N-AUTOBAHN-V2.md Abschnitt 3",
+  "teileblatt": "docs/parts/autobahn.md Abschnitt WA-S",
+  "schlauch": {
+   "19": {
+    "ad": 26.6,
+    "r_hersteller": 90.0,
+    "biegeradius": 160
+   },
+   "25": {
+    "ad": 34.6,
+    "r_hersteller": 110.0,
+    "biegeradius": 210
+   },
+   "50": {
+    "ad": 64.0,
+    "r_hersteller": 250.0,
+    "biegeradius": 385
+   }
+  },
+  "teile": {
+   "lt_schnellkupplung_id19": {
+    "teil": "WA6",
+    "teilenummer": "WA6-19",
+    "schlauch_id": 19,
+    "laenge_gekuppelt": 136.0,
+    "masse": {
+     "tl": 35.0,
+     "rib": 1.0,
+     "dose_d": 44.0,
+     "dose_l": 48.0,
+     "nase_d": 28.0,
+     "nase_l": 31.0,
+     "st_d": 36.0,
+     "st_l": 18.0,
+     "bore": 16.0
+    },
+    "werkstoff": "Edelstahl 1.4401 (Kamlok Typ C/E), Dichtung EPDM lebensmittelecht (D85)",
+    "ports": [
+     {
+      "name": "A (Tuelle Dose, Zulauf)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchtuelle",
+      "dn": "ID19"
+     },
+     {
+      "name": "B (Tuelle Stecker, Abgang)",
+      "lage": [
+       0.0,
+       0.0,
+       136.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Schlauchtuelle",
+      "dn": "ID19"
+     }
+    ],
+    "stueckzahl": 24,
+    "bemerkung": "24 Tische"
+   },
+   "lt_schnellkupplung_id25": {
+    "teil": "WA6",
+    "teilenummer": "WA6-25",
+    "schlauch_id": 25,
+    "laenge_gekuppelt": 155.0,
+    "masse": {
+     "tl": 40.0,
+     "rib": 1.5,
+     "dose_d": 50.0,
+     "dose_l": 54.0,
+     "nase_d": 34.0,
+     "nase_l": 36.5,
+     "st_d": 42.0,
+     "st_l": 21.0,
+     "bore": 21.0
+    },
+    "werkstoff": "Edelstahl 1.4401 (Kamlok Typ C/E), Dichtung EPDM lebensmittelecht (D85)",
+    "ports": [
+     {
+      "name": "A (Tuelle Dose, Zulauf)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchtuelle",
+      "dn": "ID25"
+     },
+     {
+      "name": "B (Tuelle Stecker, Abgang)",
+      "lage": [
+       0.0,
+       0.0,
+       155.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Schlauchtuelle",
+      "dn": "ID25"
+     }
+    ],
+    "stueckzahl": 14,
+    "bemerkung": "14 Beete"
+   },
+   "lt_rueckschlagventil_d50": {
+    "teil": "WA8",
+    "teilenummer": "WA8",
+    "d": 50,
+    "laenge": 157.0,
+    "gehaeuse_aussen_d": 97.0,
+    "muffentiefe": 31,
+    "stueckzahl": 4,
+    "werkstoff": "PVC-U, Dichtung EPDM (GF 562; Zulassungen ACS, KIWA, FDA, DIBt)",
+    "bauart": "GF Typ 562 mit Feder",
+    "einbaulage": "jede Lage",
+    "ports": [
+     {
+      "name": "A (Zulauf, Booster)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Muffe",
+      "dn": "DN40"
+     },
+     {
+      "name": "B (Abgang, Steigleitung)",
+      "lage": [
+       0.0,
+       0.0,
+       157.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Muffe",
+      "dn": "DN40"
+     }
+    ]
+   },
+   "schlauch_fall_id19_mitte": {
+    "teil": "WA5",
+    "typ": "id19_mitte",
+    "art": "tisch",
+    "zone": "mitte",
+    "schlauch_id": 19,
+    "schlauch_ad": 26.6,
+    "biegeradius": 160,
+    "abzweig": "ring_abzweig_d32",
+    "abzweig_lage": "nach unten (wie T97)",
+    "ursprung_z_rel": 1794.625,
+    "regelhahn_z_rel": 1500.0,
+    "ziel_z_rel": 1090,
+    "waagerecht_ab_ringachse": 0.0,
+    "laenge_rechnung": 1355.0,
+    "endstueck_waagerecht": 368.7,
+    "ports": [
+     {
+      "name": "Oben (Muffe B Abzweig-Hahn)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -0.0,
+       -0.0,
+       1.0
+      ],
+      "art": "Klebezapfen",
+      "dn": "d32"
+     },
+     {
+      "name": "Unten (Abnehmer)",
+      "lage": [
+       0.0,
+       368.673,
+       -704.625
+      ],
+      "richtung": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "art": "Muffe",
+      "dn": "d25"
+     }
+    ],
+    "pfad_schlauch_1": [
+     [
+      0.0,
+      0.0,
+      -10.0
+     ],
+     [
+      0.0,
+      0.0,
+      -239.625
+     ]
+    ],
+    "pfad_schlauch_3": [
+     [
+      0.0,
+      0.0,
+      -505.625
+     ],
+     [
+      0.0,
+      0.0,
+      -704.625
+     ],
+     [
+      0.0,
+      328.673,
+      -704.625
+     ]
+    ]
+   },
+   "schlauch_fall_id19_innen": {
+    "teil": "WA5",
+    "typ": "id19_innen",
+    "art": "tisch",
+    "zone": "innen",
+    "schlauch_id": 19,
+    "schlauch_ad": 26.6,
+    "biegeradius": 160,
+    "abzweig": "ring_abzweig_d32",
+    "abzweig_lage": "um die Ringachse 90 Grad gedreht, Abgang waagerecht radial",
+    "ursprung_z_rel": 2145.0,
+    "regelhahn_z_rel": 1500.0,
+    "ziel_z_rel": 1090,
+    "waagerecht_ab_ringachse": 1485.7,
+    "laenge_rechnung": 2840.7,
+    "endstueck_waagerecht": 451.1,
+    "ports": [
+     {
+      "name": "Oben (Muffe B Abzweig-Hahn)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -1.0,
+       -0.0,
+       -0.0
+      ],
+      "art": "Klebezapfen",
+      "dn": "d32"
+     },
+     {
+      "name": "Unten (Abnehmer)",
+      "lage": [
+       1135.341,
+       451.114,
+       -1055.0
+      ],
+      "richtung": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "art": "Muffe",
+      "dn": "d25"
+     }
+    ],
+    "pfad_schlauch_1": [
+     [
+      10.0,
+      0.0,
+      0.0
+     ],
+     [
+      116.274,
+      0.0,
+      0.0
+     ],
+     [
+      248.274,
+      0.0,
+      132.0
+     ],
+     [
+      1135.341,
+      0.0,
+      132.0
+     ],
+     [
+      1135.341,
+      0.0,
+      -590.0
+     ]
+    ],
+    "pfad_schlauch_3": [
+     [
+      1135.341,
+      0.0,
+      -856.0
+     ],
+     [
+      1135.341,
+      0.0,
+      -1055.0
+     ],
+     [
+      1135.341,
+      411.114,
+      -1055.0
+     ]
+    ]
+   },
+   "schlauch_fall_id19_aussen": {
+    "teil": "WA5",
+    "typ": "id19_aussen",
+    "art": "tisch",
+    "zone": "aussen",
+    "schlauch_id": 19,
+    "schlauch_ad": 26.6,
+    "biegeradius": 160,
+    "abzweig": "ring_abzweig_d32",
+    "abzweig_lage": "um die Ringachse 90 Grad gedreht, Abgang waagerecht radial",
+    "ursprung_z_rel": 2145.0,
+    "regelhahn_z_rel": 1500.0,
+    "ziel_z_rel": 1090,
+    "waagerecht_ab_ringachse": 1679.2,
+    "laenge_rechnung": 3034.2,
+    "endstueck_waagerecht": 451.1,
+    "ports": [
+     {
+      "name": "Oben (Muffe B Abzweig-Hahn)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -1.0,
+       -0.0,
+       -0.0
+      ],
+      "art": "Klebezapfen",
+      "dn": "d32"
+     },
+     {
+      "name": "Unten (Abnehmer)",
+      "lage": [
+       1328.81,
+       451.114,
+       -1055.0
+      ],
+      "richtung": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "art": "Muffe",
+      "dn": "d25"
+     }
+    ],
+    "pfad_schlauch_1": [
+     [
+      10.0,
+      0.0,
+      0.0
+     ],
+     [
+      116.274,
+      0.0,
+      0.0
+     ],
+     [
+      248.274,
+      0.0,
+      132.0
+     ],
+     [
+      1328.81,
+      0.0,
+      132.0
+     ],
+     [
+      1328.81,
+      0.0,
+      -590.0
+     ]
+    ],
+    "pfad_schlauch_3": [
+     [
+      1328.81,
+      0.0,
+      -856.0
+     ],
+     [
+      1328.81,
+      0.0,
+      -1055.0
+     ],
+     [
+      1328.81,
+      411.114,
+      -1055.0
+     ]
+    ]
+   },
+   "schlauch_fall_id25_mitte": {
+    "teil": "WA5",
+    "typ": "id25_mitte",
+    "art": "beet",
+    "zone": "mitte",
+    "schlauch_id": 25,
+    "schlauch_ad": 34.6,
+    "biegeradius": 210,
+    "abzweig": "ring_abzweig_d40",
+    "abzweig_lage": "nach unten (wie T97)",
+    "ursprung_z_rel": 1782.625,
+    "regelhahn_z_rel": 1150.0,
+    "ziel_z_rel": 650,
+    "waagerecht_ab_ringachse": 0.0,
+    "laenge_rechnung": 1795.0,
+    "endstueck_waagerecht": 390.1,
+    "ports": [
+     {
+      "name": "Oben (Muffe B Abzweig-Hahn)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -0.0,
+       -0.0,
+       1.0
+      ],
+      "art": "Klebezapfen",
+      "dn": "d40"
+     },
+     {
+      "name": "Unten (Abnehmer)",
+      "lage": [
+       0.0,
+       390.133,
+       -1132.625
+      ],
+      "richtung": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "art": "Klemmverbinder",
+      "dn": "d20"
+     }
+    ],
+    "pfad_schlauch_1": [
+     [
+      0.0,
+      0.0,
+      -10.0
+     ],
+     [
+      0.0,
+      0.0,
+      -577.625
+     ]
+    ],
+    "pfad_schlauch_3": [
+     [
+      0.0,
+      0.0,
+      -872.625
+     ],
+     [
+      0.0,
+      0.0,
+      -1132.625
+     ],
+     [
+      0.0,
+      345.133,
+      -1132.625
+     ]
+    ]
+   },
+   "schlauch_fall_id25_aussen": {
+    "teil": "WA5",
+    "typ": "id25_aussen",
+    "art": "beet",
+    "zone": "aussen",
+    "schlauch_id": 25,
+    "schlauch_ad": 34.6,
+    "biegeradius": 210,
+    "abzweig": "ring_abzweig_d40",
+    "abzweig_lage": "um die Ringachse 90 Grad gedreht, Abgang waagerecht radial",
+    "ursprung_z_rel": 2145.0,
+    "regelhahn_z_rel": 1150.0,
+    "ziel_z_rel": 650,
+    "waagerecht_ab_ringachse": 1679.2,
+    "laenge_rechnung": 3474.2,
+    "endstueck_waagerecht": 498.3,
+    "ports": [
+     {
+      "name": "Oben (Muffe B Abzweig-Hahn)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -1.0,
+       -0.0,
+       -0.0
+      ],
+      "art": "Klebezapfen",
+      "dn": "d40"
+     },
+     {
+      "name": "Unten (Abnehmer)",
+      "lage": [
+       1316.81,
+       498.338,
+       -1495.0
+      ],
+      "richtung": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "art": "Klemmverbinder",
+      "dn": "d20"
+     }
+    ],
+    "pfad_schlauch_1": [
+     [
+      10.0,
+      0.0,
+      0.0
+     ],
+     [
+      146.985,
+      0.0,
+      0.0
+     ],
+     [
+      278.985,
+      0.0,
+      132.0
+     ],
+     [
+      1316.81,
+      0.0,
+      132.0
+     ],
+     [
+      1316.81,
+      0.0,
+      -940.0
+     ]
+    ],
+    "pfad_schlauch_3": [
+     [
+      1316.81,
+      0.0,
+      -1235.0
+     ],
+     [
+      1316.81,
+      0.0,
+      -1495.0
+     ],
+     [
+      1316.81,
+      453.338,
+      -1495.0
+     ]
+    ]
+   },
+   "ruecklauf_rinne": {
+    "teil": "WA9",
+    "element_laenge": 2000.0,
+    "breite_innen": 100.0,
+    "hoehe": 55.0,
+    "konsolen_abstand": 1450.0,
+    "langloch": 60.0,
+    "gefaelle_max_pct": 4.14,
+    "werkstoff": "Kabelrinne Edelstahl 1.4301 oder verzinkt; Wasserkontakt nur ueber den Schlauch"
+   },
+   "bodenrinne_rost_ganga": {
+    "teil": "WA9",
+    "gang": "A",
+    "gangbreite": 600.0,
+    "laenge": 1200.0,
+    "breite_innen": 100.0,
+    "tiefe_innen": 150.0,
+    "rost_dicke": 20.0,
+    "stueckzahl": 4,
+    "werkstoff": "PP/PE-Rinne, Rost verzinkt/Edelstahl; Wasserkontakt nur ueber den Schlauch"
+   },
+   "bodenrinne_rost_gangb": {
+    "teil": "WA9",
+    "gang": "B",
+    "gangbreite": 500.0,
+    "laenge": 1100.0,
+    "breite_innen": 100.0,
+    "tiefe_innen": 150.0,
+    "rost_dicke": 20.0,
+    "stueckzahl": 2,
+    "werkstoff": "PP/PE-Rinne, Rost verzinkt/Edelstahl; Wasserkontakt nur ueber den Schlauch"
+   },
+   "lt_schlauch_d50": {
+    "teil": "WA9",
+    "schlauch_id": 50,
+    "schlauch_ad": 64.0,
+    "biegeradius": 385,
+    "meterware_m": 53.2,
+    "werkstoff": "EPDM-Lebensmittelschlauch NW50 (Semperit LM1S), AD 64, R 250"
+   }
+  }
  }
 }

@@ -19,7 +19,7 @@ def ev_bodies(path):
 def ext(bb, i): return bb["bbox"]["max"][i] - bb["bbox"]["min"][i]
 
 def check_kupplung(ck):
-    for i in (16, 25):
+    for i in (19, 25):
         tag = f"kupplung ID{i}"; path = os.path.join(D, f"lt_schnellkupplung_id{i}.sc"); ev, bb = ev_bodies(path)
         ck.eq(f"{tag} Koerper = Dose + Stecker (2)", len(set(bb) ^ {"Kupplung_Dose", "Kupplung_Stecker"}), 0)
         lz = max(b["bbox"]["max"][2] for b in bb.values()) - min(b["bbox"]["min"][2] for b in bb.values())
@@ -27,7 +27,7 @@ def check_kupplung(ck):
         port_faces(ck, tag, path, ["Kupplung_Dose", "Kupplung_Stecker"], A.kupplung_ports(i))
         interf(ck, tag, path)
         dens = [b["mass_g"] / b["volume_mm3"] * 1000 for b in bb.values()]
-        ck.eq(f"{tag} Werkstoff PP (Dichte 0,91 g/cm3, kein Messing)", max(abs(x - 0.91) for x in dens), 0.0, 0.005)
+        ck.eq(f"{tag} Werkstoff Edelstahl 1.4401 (Dichte 7,95 g/cm3, kein Messing)", max(abs(x - 7.95) for x in dens), 0.0, 0.01)
 
 def check_rsv(ck):
     path = os.path.join(D, "lt_rueckschlagventil_d50.sc"); ev, bb = ev_bodies(path); g = A.rsv_geom()
@@ -60,9 +60,14 @@ def check_fall(ck):
         hb = hose_bodies(bb); area = math.pi / 4 * (ad ** 2 - idd ** 2)
         l_hose = sum(b["volume_mm3"] for b in hb.values()) / area
         bends = {n: b for n, b in hb.items() if re.search(r"_B\d+$", n)}
-        n_b_soll = 2 if g["fall"] else 3
-        ck.eq(f"{tag} Schlauchboegen ({'unten 1' if g['fall'] else 'Auslegerende 1, unten 1'} + 0 Zwischen) = {n_b_soll - 1}", len(bends), n_b_soll - 1)
-        r_ist = [b["volume_mm3"] / area / (math.pi / 2) for b in bends.values()]
+        n_b_soll = 1 if g["fall"] else 4
+        ck.eq(f"{tag} Schlauchboegen ({'unten 1' if g['fall'] else 'Anstieg 2 x 45 Grad, Auslegerende 1, unten 1'}) = {n_b_soll}", len(bends), n_b_soll)
+        th = {}
+        for pre, pts in (("Schlauch_1", g["s1"]), ("Schlauch_3", g["s3"])):
+            for n, sg in enumerate(A.hose_layout(pts, Rb), 1):
+                if sg[0] == "B":
+                    th[f"{pre}_B{n}"] = sg[6]
+        r_ist = [b["volume_mm3"] / area / th[n] for n, b in bends.items()]
         r_min = max(6 * ad, A.HOSE[idd]["r_hersteller"])
         ck.eq(f"{tag} Biegeradius aus Bogenvolumen min {min(r_ist):.1f} >= max(6 x AD {6 * ad:g}, Hersteller {A.HOSE[idd]['r_hersteller']:g}) (R14)", 1 if min(r_ist) >= r_min - 0.5 else 0, 1)
         # Weg Ring-Achse -> Abnehmer-Port: Abzweig-Kette (T97) + Kragen + Schlaeuche + Koerper der Glieder entlang der Achse
@@ -70,7 +75,7 @@ def check_fall(ck):
         kup_l = (max(bb["Kupplung_Dose"]["bbox"]["max"][2], bb["Kupplung_Stecker"]["bbox"]["max"][2]) - min(bb["Kupplung_Dose"]["bbox"]["min"][2], bb["Kupplung_Stecker"]["bbox"]["min"][2])) - 2 * g["tl"]
         an = bb["Anschluss"]; an_l = (ext(an, 1) if abs(g["end_dir"][1]) > 0.5 else ext(an, 0)) - g["tl"]
         weg = g["al"] + A.FT["kragen"] + l_hose + reg_l + kup_l + an_l
-        ck.eq(f"{tag} Weg Ring-Achse bis Abnehmer {weg:.0f} = Rechnung {g['soll']:.0f} (+-50; Abzweig {g['al']:.0f} + Schlauch {l_hose:.0f} + Glieder {A.FT['kragen'] + reg_l + kup_l + an_l:.0f})", weg, g["soll"], 50)
+        ck.eq(f"{tag} Weg Ring-Achse bis Abnehmer {weg:.0f} = Rechnung {g['soll']:.0f} + Anstieg zum Ausleger {g['soll_korr'] - g['soll']:.0f} = {g['soll_korr']:.0f} (+-50; Abzweig {g['al']:.0f} + Schlauch {l_hose:.0f} + Glieder {A.FT['kragen'] + reg_l + kup_l + an_l:.0f})", weg, g["soll_korr"], 50)
         # Port-Lage aus dem gebauten Anschluss: Stirnflaeche auf Ziel-Hoehe
         z_port_rel = (an["bbox"]["min"][2] + an["bbox"]["max"][2]) / 2 + g["z0"]
         ck.eq(f"{tag} Anschluss-Achse auf Ziel-Hoehe Z {g['z_ziel']:g} rel ({'Tisch-Zulaufverteiler' if g['art'] == 'tisch' else 'Beet-Tropfrohr'})", z_port_rel, g["z_ziel"], 0.5)
@@ -87,10 +92,10 @@ def check_fall(ck):
             ck.eq(f"{tag} Gang {gang} (lokal x {lx0:.0f}..{lx1:.0f}): tiefster Punkt Z {z_low:.1f} rel >= {A.Z_UK:g}", 1 if z_low >= A.Z_UK - 1e-6 else 0, 1)
             x_bogen = g["x_v"] - Rb
             ck.eq(f"{tag} Bogen am Auslegerende beginnt hinter dem Gang (x {x_bogen:.0f} >= {lx1:.0f})", 1 if x_bogen >= lx1 else 0, 1)
-            halter = [g["kragen_x"] + k * 400 for k in range(int((x_bogen - 10) // 400) + 1)] + [x_bogen]
+            halter = [A.FT["kragen"] + k * 400 for k in range(int((x_bogen - 10) // 400) + 1)] + [x_bogen]
             gaps = [halter[k + 1] - halter[k] for k in range(len(halter) - 1)]
-            print(f"INFO {tag}: Schlauchhalter am Ausleger (WA-T) bei lokal x {[round(h) for h in halter]} (groesste Luecke {max(gaps):.0f} <= 400); Achse auf Z {A.Z_ACHSE:g} rel, seitlich neben dem Ausleger")
-            fall_l = g["x_v"] and (A.Z_ACHSE - Rb) - (g["z_ziel"] + Rb)
+            print(f"INFO {tag}: Schlauchhalter am Ausleger (WA-T) bei lokal x {[round(h) for h in halter]} (groesste Luecke {max(gaps):.0f} <= 400); Achse auf Z {A.Z_AUSLEGER:g} rel (Armmitte), seitlich in den Clips des Auslegers")
+            fall_l = (A.Z_AUSLEGER - Rb) - (g["z_ziel"] + Rb)
         else:
             corner_r = A.R_ECKE
             ok = all(not (lo <= corner_r <= hi) for lo, hi in ((2195 / math.cos(A.NR.HALB), 2695 / math.cos(A.NR.HALB)), (3858 / math.cos(A.NR.HALB), 4359 / math.cos(A.NR.HALB))))
@@ -140,7 +145,7 @@ def check_d85(ck):
     """Lebensmitteleignung (D85) im Teileblatt belegt: je Zeile der WA-S-Werkstofftabelle zwei Quellen (URL)."""
     txt = open(BLATT, encoding="utf-8").read() if os.path.exists(BLATT) else ""
     sec = txt.split("<!-- WA-S Anfang -->")[-1].split("<!-- WA-S Ende -->")[0] if "<!-- WA-S Anfang -->" in txt else ""
-    for key in ("Schlauch ID16", "Schlauch ID25", "Schlauch d50", "Schnellkupplung", "Rueckschlagventil d50", "Regelhahn"):
+    for key in ("Schlauch ID19", "Schlauch ID25", "Schlauch d50", "Schnellkupplung", "Rueckschlagventil d50", "Regelhahn"):
         rows = [ln for ln in sec.splitlines() if ln.startswith("|") and key in ln and "D85" in ln]
         n = max((len(set(re.findall(r"https?://[^\s|)]+", ln))) for ln in rows), default=0)
         ck.eq(f"d85 Teileblatt: {key} lebensmittelecht mit >= 2 Quellen", 1 if n >= 2 else 0, 1)

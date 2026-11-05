@@ -1,5 +1,5 @@
 """Werkstatt WA-S (docs/jobs/N-AUTOBAHN-V2.md Abschnitt 3): Schlauchteile der Wasserautobahn (Ring B2).
-WA5 Schlauch-Fallleitung (fuenf Typen je Abnehmer-Zone), WA6 Schnellkupplung ID16/ID25, WA8 Rueckschlagventil d50,
+WA5 Schlauch-Fallleitung (fuenf Typen je Abnehmer-Zone), WA6 Schnellkupplung ID19/ID25, WA8 Rueckschlagventil d50,
 WA9 Ruecklauf-Rinne am Tischbein, Bodenrinne mit Rost, Schlauch d50. Dazu der Schlauch-Baustein hose_path() (Polylinie mit
 Biegeradius, Leitungsordnung v2 R14), den die Montage R2 (trassen_ring.py) fuer Fall- und Ruecklauf-Schlaeuche benutzt.
 Z-Werte in Kommentaren relativ zum Innenboden (absolut = relativ + 400); Teile-KS siehe docs/parts/autobahn.md Abschnitt WA-S.
@@ -16,7 +16,8 @@ import n_autobahn_rechnung as NR
 DC = os.path.join(sc.ROOT, "designs", "components")
 RENDER_DIR = os.path.join(sc.ROOT, "renders", "components", "autobahn")
 MAT = {"SCH schwarz": (1.25, "#1c1c1c"),      # Schlauch PVC/EPDM schwarz, lichtdicht (D85, Leitungsordnung Art B/C)
-       "LT pp": (0.91, "#3d6b9c"),            # PP blau (Kupplung, Regelhahn)
+       "LT pp": (0.91, "#3d6b9c"),            # PP blau (Klemmverbinder Beet)
+       "LT v2a": (7.95, "#c9cdd0"),           # Edelstahl 1.4401 (Kamlok-Kupplung)
        "LT pvc": (1.4, "#8d9296"), "LT hahn": (1.4, "#2a5da8"), "LT stahl": (7.85, "#aeb4b8"), "LT epdm": (1.1, "#1a1a1a"),
        "RIN pp": (0.91, "#5a5f63"), "RIN v2a": (7.9, "#c9cdd0")}
 
@@ -113,14 +114,18 @@ def hose_path(b, prefix, pts, R, ad, idd, mat="SCH schwarz"):
     return segs, hose_length(segs, R), names
 
 # ------------------------------------------------------------------ Schlauch-Masse (Recherche WA-S, docs/parts/autobahn.md; [A] bis belegt)
-HOSE = {16: dict(ad=24.0, r_hersteller=110.0), 25: dict(ad=33.0, r_hersteller=150.0), 50: dict(ad=60.0, r_hersteller=270.0)}
+# ID19/ID25: REHAU RAUAQUA T-Flex (lichtundurchlaessig, KTW-BWGL, W270, EU 10/2011); ID16 gibt es lichtdicht mit Trinkwasser-Nachweis nicht -> Tische ID19.
+# Herstellerradius T-Flex nicht angegeben: Analogwert FITT Pure [A]. d50: Semperit LM1S-EPDM NW50 (ID 50, Wand 7, AD 64, R 250, BfR/FDA/1935-2004).
+HOSE = {19: dict(ad=26.6, r_hersteller=90.0), 25: dict(ad=34.6, r_hersteller=110.0), 50: dict(ad=64.0, r_hersteller=250.0)}
 def hose_R(idd):
     """Biegeradius nach R14: >= 6 x Aussendurchmesser und >= Herstellerwert; auf 5 mm aufgerundet."""
     h = HOSE[idd]; return 5 * math.ceil(max(6 * h["ad"], h["r_hersteller"]) / 5)
 
-# ------------------------------------------------------------------ WA6 Schnellkupplung ID16 / ID25 (Kupplungsdose + Stecker mit Schlauchtuellen, PP)
-SK = {16: dict(tl=30.0, rib=1.0, dose_d=36.0, dose_l=45.0, nase_d=22.0, nase_l=25.0, st_d=30.0, st_l=20.0, bore=11.0),
-      25: dict(tl=40.0, rib=1.5, dose_d=50.0, dose_l=60.0, nase_d=32.0, nase_l=32.0, st_d=42.0, st_l=25.0, bore=19.0)}
+# ------------------------------------------------------------------ WA6 Schnellkupplung ID19 / ID25 (Kamlok: Kupplungsdose + Stecker mit Schlauchtuellen, Edelstahl)
+# Kamlok Typ C (Kupplung mit Schlauchtuelle) + Typ E (Stecker mit Schlauchtuelle), Edelstahl 1.4401, PN16 (Riegler): ID25 Muffe 94, Stecker 97,5;
+# gekuppelt 155 = 94 + 97,5 - Nase 36,5 [A]; ID19 (3/4 Zoll) mit Faktor 0,85 skaliert [A]
+SK = {19: dict(tl=35.0, rib=1.0, dose_d=44.0, dose_l=48.0, nase_d=28.0, nase_l=31.0, st_d=36.0, st_l=18.0, bore=16.0),
+      25: dict(tl=40.0, rib=1.5, dose_d=50.0, dose_l=54.0, nase_d=34.0, nase_l=36.5, st_d=42.0, st_l=21.0, bore=21.0)}
 
 def sk_len(idd):
     k = SK[idd]; return 2 * k["tl"] + k["dose_l"] + k["st_l"]
@@ -142,17 +147,17 @@ def add_kupplung(b, prefix, p0, u, idd, wulst=True):
     if wulst:
         cyl_ax(b, ns + "_Wulst", idd + 2 * k["rib"], add(p0, mul(u, z1 + k["st_l"] + tl - 8)), u, 4, op="join", targets=[ns])
     cyl_ax(b, ns + "_Bohrung", k["bore"], add(p0, mul(u, z1 - k["nase_l"] - 1)), u, k["nase_l"] + k["st_l"] + tl + 2, op="cut", targets=[ns])
-    b.add("material.assign", bodies=[nd, ns], material="LT pp")
+    b.add("material.assign", bodies=[nd, ns], material="LT v2a")
     return [nd, ns], add(p0, mul(u, sk_len(idd)))
 
 def kupplung(idd):
     b = sc.Build(); nm = f"WA6_Schnellkupplung_ID{idd}"
-    mats(b, ["LT pp"]); b.add("component.create", name=nm, grounded=True)
+    mats(b, ["LT v2a"]); b.add("component.create", name=nm, grounded=True)
     for kk, v in SK[idd].items():
         b.add("parameters.add", name=kk, expression=f"{v} mm")
     add_kupplung(b, "Kupplung", [0, 0, 0], [0, 0, 1], idd)
     b.add("component.activate", component=nm)
-    b.add("component.metadata.set", component=nm, part_number=f"WA6-{idd}", revision="A", properties={"Werkstoff": "PP lebensmittelecht (EU 10/2011), Dichtung EPDM/NBR lebensmittelecht"},
+    b.add("component.metadata.set", component=nm, part_number=f"WA6-{idd}", revision="A", properties={"Werkstoff": "Edelstahl 1.4401 (Kamlok Typ C/E), Dichtung EPDM lebensmittelecht statt Serien-NBR"},
           description=f"Schnellkupplung fuer Schlauch ID{idd}: Kupplungsdose und Stecker mit Schlauchtuellen, gekuppelt {sk_len(idd):g} lang; Abnehmer ohne Werkzeug abtrennbar")
     return b, nm
 
@@ -161,7 +166,7 @@ def kupplung_ports(idd):
             ("B (Tuelle Stecker, Abgang)", (0.0, 0.0, sk_len(idd)), (0.0, 0.0, 1.0), "Schlauchtuelle", f"ID{idd}")]
 
 # ------------------------------------------------------------------ WA8 Rueckschlagventil d50 (Kugel-Rueckschlagventil PVC-U, Klebemuffen)
-RSV = dict(d=50, L=172.0, ob=92.0, kugel_d=56.0)     # Baulaenge und Gehaeuse: Recherche WA-S (Herstellerblatt), bis dahin [A]
+RSV = dict(d=50, L=157.0, ob=97.0, kugel_d=56.0)     # GF Typ 562 PVC-U d50 (mit Feder, dicht in jeder Lage): D 97, L 157, z 95 (GF-Datenblatt)
 
 def rsv_geom():
     p = RSV; d = p["d"]; dp = L.DEPTH[d]
@@ -183,7 +188,7 @@ def rueckschlagventil_d50():
     b.add("material.assign", bodies=["Rueckschlagventil"], material="LT hahn")
     b.add("component.activate", component=nm)
     b.add("component.metadata.set", component=nm, part_number="WA8", revision="A", properties={"Werkstoff": "PVC-U, Dichtung EPDM (Trinkwasser), Kugel PVC/PE"},
-          description=f"Kugel-Rueckschlagventil PVC-U d50 (DN40), Klebemuffen, Baulaenge {p['L']:g}, Gehaeuse {p['ob']:g}; Durchfluss nur A nach B (+Z); hinter jedem Booster, Einbau waagerecht oder senkrecht aufwaerts")
+          description=f"Rueckschlagventil PVC-U d50 (DN40, Bauart GF 562 mit Feder), Klebemuffen, Baulaenge {p['L']:g}, Gehaeuse {p['ob']:g}; Durchfluss nur A nach B (+Z); hinter jedem Booster, Einbau in jeder Lage (Feder)")
     return b, nm
 
 def rsv_ports():
@@ -195,16 +200,17 @@ def rsv_ports():
 # Ringachse 90 Grad gedreht, Abgang waagerecht radial auf Ring-Achshoehe; Schlauch liegt auf dem Ausleger bis zu dessen Ende, faellt dann frei.
 Z_ACHSE = NR.Z_RING_ACHSE                    # 2145 rel
 Z_UK = NR.Z_RING_UK                          # 2100 rel
+Z_AUSLEGER = 2277.0                          # Armmitte Ausleger rel (WA-T autobahn_t.py: Querriegel/Ausleger 2257..2297)
 R_ECKE = NR.AP["mitte"] / math.cos(NR.HALB)  # 3446
 R_INLET = {z: NR.AP[z] / math.cos(NR.HALB) for z in NR.AP}
-FT = dict(kragen=10.0, tuelle={16: 35.0, 25: 45.0}, wulst=1.0,          # Tuelle oben: Klebezapfen d32/d40 in Muffe B des Hahns, Kragen, Schlauchtuelle
-          hahn_lb={16: 60.0, 25: 75.0}, hahn_ob={16: 40.0, 25: 52.0}, hebel=90.0,      # Regelhahn PP mit zwei Tuellen (Kugelhahn fuer Schlauch)
+FT = dict(kragen=10.0, tuelle={19: 35.0, 25: 45.0}, wulst=1.0,          # Tuelle oben: Klebezapfen d32/d40 in Muffe B des Hahns, Kragen, Schlauchtuelle
+          hahn_lb={19: 110.0, 25: 110.0}, hahn_ob={19: 58.0, 25: 58.0}, hebel=90.0,    # Regelhahn GF 546 Pro PVC-U d25 (L 110, D 58) mit zwei Schlauchtuellen
           anschl_l={"tisch": 40.0, "beet": 45.0}, anschl_od={"tisch": 33.0, "beet": 34.0},  # Endstueck: Tuelle + Klebemuffe d25 (Tisch) bzw. Klemmverbinder d20 PE (Beet)
           z_hahn={"tisch": 1500.0, "beet": 1150.0})                                    # Regelhahn-Mitte rel (Greifhoehe [A])
 TYPES = {
-    "id16_mitte":  dict(art="tisch", zone="mitte",  idd=16, dk=32, mode="fall"),
-    "id16_innen":  dict(art="tisch", zone="innen",  idd=16, dk=32, mode="ausleger"),
-    "id16_aussen": dict(art="tisch", zone="aussen", idd=16, dk=32, mode="ausleger"),
+    "id19_mitte":  dict(art="tisch", zone="mitte",  idd=19, dk=32, mode="fall"),
+    "id19_innen":  dict(art="tisch", zone="innen",  idd=19, dk=32, mode="ausleger"),
+    "id19_aussen": dict(art="tisch", zone="aussen", idd=19, dk=32, mode="ausleger"),
     "id25_mitte":  dict(art="beet",  zone="mitte",  idd=25, dk=40, mode="fall"),
     "id25_aussen": dict(art="beet",  zone="aussen", idd=25, dk=40, mode="ausleger"),
 }
@@ -233,7 +239,13 @@ def fall_geom(t):
     tuelle_ende = mul(u0, kr)                            # Schlauch 1 beginnt am Kragen und deckt die Tuelle
     hb, hl = FT["hahn_ob"][idd], FT["hahn_lb"][idd]
     z_h_top = zl(FT["z_hahn"][art]) + hl / 2; z_h_bot = z_h_top - hl
-    s1 = [tuelle_ende, [x_v, 0.0, z_h_top]] if fall else [tuelle_ende, [x_v, 0.0, 0.0], [x_v, 0.0, z_h_top]]
+    # Ausleger (WA-T autobahn_t.py): Armmitte Z 2277 rel, Schlauch seitlich in Clips auf Armmitten-Hoehe; der Abzweig-Abgang liegt auf der
+    # Ring-Achse 2145 -> Schlauch steigt unter 45 Grad um dz_au, laeuft auf dem Ausleger und faellt am Endbuegel (Sattel R = Biegeradius).
+    dz_au = Z_AUSLEGER - Z_ACHSE
+    x1 = kr + tl + Rb * math.tan(math.pi / 8) + 5        # Gerade nach der Tuelle bis zum ersten 45-Grad-Bogen
+    s1 = [tuelle_ende, [x_v, 0.0, z_h_top]] if fall else [tuelle_ende, [x1, 0.0, 0.0], [x1 + dz_au, 0.0, dz_au], [x_v, 0.0, dz_au], [x_v, 0.0, z_h_top]]
+    soll_korr = soll + (0.0 if fall else dz_au * math.sqrt(2))   # Rechnung legte den Schlauch auf Ring-Achshoehe; Mehrweg Anstieg 45 Grad
+    loss1 = sum(2 * Rb * math.tan(s[6] / 2) - Rb * s[6] for s in hose_layout(s1, Rb) if s[0] == "B")   # Bogenverkuerzung gegen die Polylinie
     z_k_top = z_h_bot - (2 * tl + 20)                    # Zwischenschlauch Hahn -> Kupplung deckt beide Tuellen + 20
     z_k_bot = z_k_top - (SK[idd]["dose_l"] + SK[idd]["st_l"])
     # Kupplung: Tuellen ragen in die Schlaeuche; Koerper von z_k_top bis z_k_bot
@@ -241,14 +253,13 @@ def fall_geom(t):
     zz = zl(z_ziel); la = FT["anschl_l"][art]
     base = abs(z_k_bot - zz) + Rb                        # kuerzester Weg Kupplung -> Port ohne Schlaufe (Ecke + Tangente)
     # Wegsumme bis zur Ecke unten; Schlaufe: Endstueck waagerecht = SCHLAUFE + Bogenverkuerzungen
-    n_b = 1 if fall else 2
-    loss = n_b * Rb * (2 - math.pi / 2)
+    loss = loss1 + Rb * (2 - math.pi / 2)                # alle Boegen in Schlauch 1 plus der Bogen unten (Schlauch 3)
     a = NR.SCHLAUFE + loss                               # Ecke unten bis Port (inkl. Endstueck la)
     corner = [x_v, 0.0, zz]
     port = add(corner, mul(end_dir, a))
     s3 = [[x_v, 0.0, z_k_bot - tl * 0 ], corner, sub(port, mul(end_dir, la))]
     s3[0] = [x_v, 0.0, z_k_bot]
-    g = dict(T=T, idd=idd, dk=dk, art=art, soll=soll, horiz=horiz, z_ziel=z_ziel, al=al, Rb=Rb, ad=ad, tl=tl, z0=z0, x_v=x_v, u0=u0,
+    g = dict(T=T, idd=idd, dk=dk, art=art, soll=soll, soll_korr=soll_korr, dz_au=0.0 if fall else dz_au, horiz=horiz, z_ziel=z_ziel, al=al, Rb=Rb, ad=ad, tl=tl, z0=z0, x_v=x_v, u0=u0,
              s1=s1, z_h_top=z_h_top, z_h_bot=z_h_bot, z_k_top=z_k_top, z_k_bot=z_k_bot, s2=[[x_v, 0.0, z_h_bot], [x_v, 0.0, z_k_top]], s3=s3,
              port=port, end_dir=end_dir, la=la, a=a, loss=loss, fall=fall, ring_achse=[0.0, 0.0, al] if fall else [-al, 0.0, 0.0])
     return g
@@ -256,7 +267,7 @@ def fall_geom(t):
 def fallleitung(t):
     g = fall_geom(t); idd, art = g["idd"], g["art"]
     b = sc.Build(); nm = f"WA5_Schlauch_Fall_{t}"
-    mats(b, ["SCH schwarz", "LT pp", "LT pvc"]); b.add("component.create", name=nm, grounded=True)
+    mats(b, ["SCH schwarz", "LT pp", "LT pvc", "LT v2a", "LT hahn"]); b.add("component.create", name=nm, grounded=True)
     for kk in ("horiz", "z_ziel", "Rb", "a"):
         b.add("parameters.add", name=kk, expression=f"{round(g[kk], 3)} mm")
     u0, dk, tl, kr = g["u0"], g["dk"], g["tl"], FT["kragen"]
@@ -275,7 +286,7 @@ def fallleitung(t):
     cyl_ax(b, "Hahn_Tuelle_unten", idd, [xv, 0, zb], dn, tl, op="join", targets=["Regelhahn"])
     bx(b, "Hahn_Hebel", 10, FT["hebel"], 12, [xv, FT["hahn_ob"][idd] / 2 + FT["hebel"] / 2 - 2, (zt + zb) / 2], op="join", targets=["Regelhahn"])
     cyl_ax(b, "Hahn_Bohrung", idd - 5, [xv, 0, zt + tl + 1], dn, FT["hahn_lb"][idd] + 2 * tl + 2, op="cut", targets=["Regelhahn"])
-    b.add("material.assign", bodies=["Regelhahn"], material="LT pp")
+    b.add("material.assign", bodies=["Regelhahn"], material="LT hahn")
     # Zwischenschlauch und Schnellkupplung
     _, l2, n2 = hose_path(b, "Schlauch_2", g["s2"], g["Rb"], g["ad"], idd)
     kb, _ = add_kupplung(b, "Kupplung", [xv, 0, g["z_k_top"] + tl], dn, idd, wulst=False)
@@ -310,12 +321,12 @@ def schlauch50():
     cyl_ax(b, "Bohrung", 50, [-1, 0, 0], [1, 0, 0], S50_L + 2, op="cut", targets=["Schlauch"])
     b.add("material.assign", bodies=["Schlauch"], material="SCH schwarz")
     b.add("component.activate", component=nm)
-    b.add("component.metadata.set", component=nm, part_number="WA9-S50", revision="A", properties={"Werkstoff": "PVC-Spiralschlauch glatt innen, lebensmittelecht (EU 10/2011), schwarz/lichtdicht"},
+    b.add("component.metadata.set", component=nm, part_number="WA9-S50", revision="A", properties={"Werkstoff": "EPDM-Lebensmittelschlauch NW50 (Semperit LM1S, BfR/FDA/1935-2004)"},
           description=f"Ruecklauf-Schlauch ID50 / AD{h['ad']:g} (Art C), Meterware; Stueck {S50_L:g} als Muster; Biegeradius {hose_R(50):g}")
     return b, nm
 
 # Tragrinne: Kabelrinne 100 breit (innen), Seitenhoehe 60, Blech 1,5 [A bis Recherche]; zwei Konsolen mit Langloch am Tischbein 40x40
-RR = dict(L=2000.0, b_innen=100.0, h=60.0, t=1.5, kons_abstand=1600.0, kons_platte=(5.0, 80.0, 160.0), langloch=60.0, arm_l=150.0, arm_b=40.0, arm_t=4.0,
+RR = dict(L=2000.0, b_innen=100.0, h=55.0, t=1.5, kons_abstand=1450.0, kons_platte=(5.0, 80.0, 160.0), langloch=60.0, arm_l=150.0, arm_b=40.0, arm_t=4.0,
           bein=40.0, stuetz_max=1500.0)
 
 def rr_geom():
@@ -344,7 +355,7 @@ def ruecklauf_rinne():
     b.add("material.assign", bodies=["Konsole_1", "Konsole_2"], material="LT stahl")
     b.add("component.activate", component=nm)
     b.add("component.metadata.set", component=nm, part_number="WA9-RR", revision="A", properties={"Werkstoff": "Kabelrinne Edelstahl/verzinkt, Konsolen Stahl verzinkt"},
-          description=f"Ruecklauf-Tragrinne {p['b_innen']:g} x {p['h']:g}, Element {p['L']:g}, zwei Konsolen mit Langloch {p['langloch']:g} am Tischbein 40x40 (Gefaelle einstellbar); Schlauch d50 liegt auf (R6 aufliegend)")
+          description=f"Ruecklauf-Tragrinne (Gitterrinne OBO GRM 55 100 VA4301) {p['b_innen']:g} x {p['h']:g}, Element {p['L']:g}, Konsolen mit Langloch {p['langloch']:g} am Tischbein 40x40 (Gefaelle einstellbar); Schlauch d50 liegt auf (R6 aufliegend)")
     return b, nm
 
 # Bodenrinne mit Gitterrost, buendig im Boden (Rost-Oberkante = Innenboden z 0), Laenge = Gangbreite + 2 x 300
@@ -376,7 +387,7 @@ def bodenrinne(gang):
 
 # ------------------------------------------------------------------ Register, Speichern, Teiledaten, Bilder
 def jobs():
-    out = [("kupplung", f"lt_schnellkupplung_id{i}", (lambda i=i: kupplung(i))) for i in (16, 25)]
+    out = [("kupplung", f"lt_schnellkupplung_id{i}", (lambda i=i: kupplung(i))) for i in (19, 25)]
     out.append(("rsv", "lt_rueckschlagventil_d50", rueckschlagventil_d50))
     out += [("fall", f"schlauch_fall_{t}", (lambda t=t: fallleitung(t))) for t in TYPES]
     out.append(("rinne", "ruecklauf_rinne", ruecklauf_rinne))
@@ -384,7 +395,7 @@ def jobs():
     out.append(("schlauch50", "lt_schlauch_d50", schlauch50))
     return out
 
-RENDER = {"lt_schnellkupplung_id16": dict(yaw=0.8, pitch=0.3, zoom=1.8, section="XZ"), "lt_schnellkupplung_id25": dict(yaw=0.8, pitch=0.3, zoom=1.8, section="XZ"),
+RENDER = {"lt_schnellkupplung_id19": dict(yaw=0.8, pitch=0.3, zoom=1.8, section="XZ"), "lt_schnellkupplung_id25": dict(yaw=0.8, pitch=0.3, zoom=1.8, section="XZ"),
           "lt_rueckschlagventil_d50": dict(yaw=0.8, pitch=0.2, zoom=1.8, section="XZ"), "ruecklauf_rinne": dict(yaw=0.6, pitch=0.35, zoom=0.9),
           "bodenrinne_rost_ganga": dict(yaw=0.6, pitch=0.6, zoom=1.0), "bodenrinne_rost_gangb": dict(yaw=0.6, pitch=0.6, zoom=1.0), "lt_schlauch_d50": dict(yaw=0.6, pitch=0.3, zoom=1.0)}
 
@@ -402,13 +413,13 @@ def json_entries():
     E = {}
     def ent(fname, **kw):
         E[fname] = kw
-    for i in (16, 25):
+    for i in (19, 25):
         ent(f"lt_schnellkupplung_id{i}", teil="WA6", teilenummer=f"WA6-{i}", schlauch_id=i, laenge_gekuppelt=sk_len(i), masse=SK[i],
-            werkstoff="PP lebensmittelecht, Dichtung EPDM/NBR lebensmittelecht (D85)", ports=[dict(name=n, lage=pr(p), richtung=pr(d), art=a, dn=dn) for n, p, d, a, dn in kupplung_ports(i)],
-            stueckzahl=38 if i == 16 else 0, bemerkung="ID16: 24 Tische; ID25: 14 Beete (zusammen 38 Abnehmer, Blatt 2.4)" if i == 16 else "14 Beete")
-    E["lt_schnellkupplung_id16"]["stueckzahl"] = 24; E["lt_schnellkupplung_id25"]["stueckzahl"] = 14
+            werkstoff="Edelstahl 1.4401 (Kamlok Typ C/E), Dichtung EPDM lebensmittelecht (D85)", ports=[dict(name=n, lage=pr(p), richtung=pr(d), art=a, dn=dn) for n, p, d, a, dn in kupplung_ports(i)],
+            stueckzahl=24 if i == 19 else 14, bemerkung="24 Tische" if i == 19 else "14 Beete")
+    E["lt_schnellkupplung_id19"]["stueckzahl"] = 24; E["lt_schnellkupplung_id25"]["stueckzahl"] = 14
     ent("lt_rueckschlagventil_d50", teil="WA8", teilenummer="WA8", d=50, laenge=RSV["L"], gehaeuse_aussen_d=RSV["ob"], muffentiefe=L.DEPTH[50], stueckzahl=4,
-        werkstoff="PVC-U, Dichtung EPDM Trinkwasser (D85)", einbaulage="waagerecht oder senkrecht aufwaerts", ports=[dict(name=n, lage=pr(p), richtung=pr(d), art=a, dn=dn) for n, p, d, a, dn in rsv_ports()])
+        werkstoff="PVC-U, Dichtung EPDM (GF 562; Zulassungen ACS, KIWA, FDA, DIBt)", bauart="GF Typ 562 mit Feder", einbaulage="jede Lage", ports=[dict(name=n, lage=pr(p), richtung=pr(d), art=a, dn=dn) for n, p, d, a, dn in rsv_ports()])
     for t in TYPES:
         g = fall_geom(t)
         ent(f"schlauch_fall_{t}", teil="WA5", typ=t, art=g["art"], zone=g["T"]["zone"], schlauch_id=g["idd"], schlauch_ad=g["ad"], biegeradius=g["Rb"], abzweig=f"ring_abzweig_d{g['dk']}",
@@ -421,7 +432,7 @@ def json_entries():
     for gg in ("A", "B"):
         ent(f"bodenrinne_rost_gang{gg.lower()}", teil="WA9", gang=gg, gangbreite=BR["gang"][gg], laenge=br_len(gg), breite_innen=BR["b_innen"], tiefe_innen=BR["h_innen"], rost_dicke=BR["rost_t"],
             stueckzahl=4 if gg == "A" else 2, werkstoff="PP/PE-Rinne, Rost verzinkt/Edelstahl; Wasserkontakt nur ueber den Schlauch")
-    ent("lt_schlauch_d50", teil="WA9", schlauch_id=50, schlauch_ad=HOSE[50]["ad"], biegeradius=hose_R(50), meterware_m=53.2, werkstoff="PVC-Spiralschlauch glatt innen lebensmittelecht, schwarz")
+    ent("lt_schlauch_d50", teil="WA9", schlauch_id=50, schlauch_ad=HOSE[50]["ad"], biegeradius=hose_R(50), meterware_m=53.2, werkstoff="EPDM-Lebensmittelschlauch NW50 (Semperit LM1S), AD 64, R 250")
     return E
 
 def write_json():

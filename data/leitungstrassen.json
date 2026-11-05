@@ -2044,12 +2044,12 @@
    "linie": 2
   },
   {
-   "id": "K57-b",
+   "id": "K57-b-1",
    "kante": "K57",
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "r:KH2",
-   "ende": "t:T14",
+   "ende": "t:TR2_2",
    "anschluss": [],
    "pfad": [
     [
@@ -2060,6 +2060,41 @@
     [
      -1245.9,
      -2294.8,
+     -258.9
+    ],
+    [
+     -1245.9,
+     -2621.5,
+     -258.9
+    ]
+   ],
+   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter der Filtergrube bis y -4150 -> lotrecht von unten in T14 (Z 14)",
+   "korridor": [
+    "KS",
+    "KG"
+   ],
+   "baender": [
+    "U",
+    "UT"
+   ],
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ],
+   "s2n": true
+  },
+  {
+   "id": "K57-b",
+   "kante": "K57",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:TR2_2",
+   "ende": "t:T14",
+   "anschluss": [],
+   "pfad": [
+    [
+     -1245.9,
+     -2621.5,
      -258.9
     ],
     [
@@ -2075,16 +2110,17 @@
    ],
    "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter der Filtergrube bis y -4150 -> lotrecht von unten in T14 (Z 14)",
    "korridor": [
-    "KS",
     "KG",
     "KS"
    ],
    "baender": [
-    "U",
     "UT",
     "U"
    ],
-   "linie": 2
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K24",
@@ -2274,7 +2310,7 @@
    "dn": 50,
    "farbe": "dunkelblau",
    "start": "stutzen",
-   "ende": "t:TR2_2",
+   "ende": "t:TR2_3",
    "anschluss": [
     "Pumpe_klein:1",
     "Tank_klein:1"
@@ -2310,8 +2346,8 @@
    "kante": "K19",
    "dn": 50,
    "farbe": "dunkelblau",
-   "start": "t:TR2_2",
-   "ende": "t:TR2_3",
+   "start": "t:TR2_3",
+   "ende": "t:TR2_4",
    "anschluss": [
     "Pumpe_klein:1",
     "Tank_klein:1"
@@ -2354,7 +2390,7 @@
    "kante": "K19",
    "dn": 50,
    "farbe": "dunkelblau",
-   "start": "t:TR2_3",
+   "start": "t:TR2_4",
    "ende": "t:TSP2_1",
    "anschluss": [
     "Pumpe_klein:1",
@@ -2538,7 +2574,7 @@
    "dn": 50,
    "farbe": "dunkelblau",
    "start": "t:TSP2_2",
-   "ende": "t:TR2_4",
+   "ende": "t:TR2_5",
    "gefaelle_pct": 1.5,
    "anschluss": [
     "Tank_klein:1"
@@ -2580,8 +2616,8 @@
    "kante": "K21",
    "dn": 50,
    "farbe": "dunkelblau",
-   "start": "t:TR2_4",
-   "ende": "t:TR2_5",
+   "start": "t:TR2_5",
+   "ende": "t:TR2_6",
    "gefaelle_pct": 1.5,
    "anschluss": [
     "Tank_klein:1"
@@ -2623,7 +2659,7 @@
    "kante": "K21",
    "dn": 50,
    "farbe": "dunkelblau",
-   "start": "t:TR2_5",
+   "start": "t:TR2_6",
    "ende": "t:T12",
    "gefaelle_pct": 1.5,
    "anschluss": [
@@ -3237,19 +3273,66 @@
    "linie": 2
   },
   {
+   "id": "K57-b",
+   "kante": "K57",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:KH2",
+   "ende": "t:T14",
+   "anschluss": [],
+   "pfad": [
+    [
+     -1245.9,
+     -2294.8,
+     -148.9
+    ],
+    [
+     -1245.9,
+     -2294.8,
+     -258.9
+    ],
+    [
+     -1245.9,
+     -4150.0,
+     -258.9
+    ],
+    [
+     -1245.9,
+     -4150.0,
+     14.0
+    ]
+   ],
+   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter der Filtergrube bis y -4150 -> lotrecht von unten in T14 (Z 14)",
+   "korridor": [
+    "KS",
+    "KG",
+    "KS"
+   ],
+   "baender": [
+    "U",
+    "UT",
+    "U"
+   ],
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "s2n_basis": true
+  },
+  {
    "id": "REV2-2",
    "dn": 50,
    "ende": "muffe",
    "revision": true,
    "pfad": [
     [
-     0.0,
-     -2810.4,
-     -1635.0
+     -1245.9,
+     -2621.5,
+     -258.9
     ],
     [
-     0.0,
-     -2810.4,
+     -1245.9,
+     -2621.5,
      376.0
     ]
    ],
@@ -3260,7 +3343,7 @@
     "U"
    ],
    "anschluss": [],
-   "notiz": "Revisionsstutzen (R47 M1) an K19-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "notiz": "Revisionsstutzen (R47 M1) an K57-b: T d63, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
    "start": "t:TR2_2",
    "varianten": [
     "a_plus"
@@ -3277,13 +3360,13 @@
    "revision": true,
    "pfad": [
     [
-     216.2,
-     -3514.1,
+     0.0,
+     -2810.4,
      -1635.0
     ],
     [
-     216.2,
-     -3514.1,
+     0.0,
+     -2810.4,
      376.0
     ]
    ],
@@ -3311,6 +3394,40 @@
    "revision": true,
    "pfad": [
     [
+     216.2,
+     -3514.1,
+     -1635.0
+    ],
+    [
+     216.2,
+     -3514.1,
+     376.0
+    ]
+   ],
+   "korridor": [
+    "KS"
+   ],
+   "baender": [
+    "U"
+   ],
+   "anschluss": [],
+   "notiz": "Revisionsstutzen (R47 M1) an K19-1: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
+   "start": "t:TR2_4",
+   "varianten": [
+    "a_plus"
+   ],
+   "kante": null,
+   "farbe": "grau",
+   "s2n": true,
+   "linie": 2
+  },
+  {
+   "id": "REV2-5",
+   "dn": 50,
+   "ende": "muffe",
+   "revision": true,
+   "pfad": [
+    [
      305.3,
      -3692.0,
      -44.4
@@ -3329,7 +3446,7 @@
    ],
    "anschluss": [],
    "notiz": "Revisionsstutzen (R47 M1) an K21: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR2_4",
+   "start": "t:TR2_5",
    "varianten": [
     "a_plus"
    ],
@@ -3339,7 +3456,7 @@
    "linie": 2
   },
   {
-   "id": "REV2-5",
+   "id": "REV2-6",
    "dn": 50,
    "ende": "muffe",
    "revision": true,
@@ -3363,7 +3480,7 @@
    ],
    "anschluss": [],
    "notiz": "Revisionsstutzen (R47 M1) an K21: T d50, Steigrohr d50 bis Flur, Kappe d50 buendig (Oberkante Z 410)",
-   "start": "t:TR2_5",
+   "start": "t:TR2_6",
    "varianten": [
     "a_plus"
    ],
@@ -5051,6 +5168,37 @@
   {
    "id": "TR2_2",
    "pos": [
+    -1245.9,
+    -2621.5,
+    -258.9
+   ],
+   "d": 63,
+   "ports": [
+    {
+     "trasse": "K57-b-1",
+     "ende": "ende",
+     "d": 63
+    },
+    {
+     "trasse": "K57-b",
+     "ende": "start",
+     "d": 63
+    },
+    {
+     "trasse": "REV2-2",
+     "ende": "start",
+     "d": 50
+    }
+   ],
+   "varianten": [
+    "a_plus"
+   ],
+   "notiz": "Revisions-T an K57-b (knick 1)",
+   "linie": 2
+  },
+  {
+   "id": "TR2_3",
+   "pos": [
     0.0,
     -2810.4,
     -1635.0
@@ -5068,7 +5216,7 @@
      "d": 50
     },
     {
-     "trasse": "REV2-2",
+     "trasse": "REV2-3",
      "ende": "start",
      "d": 50
     }
@@ -5080,7 +5228,7 @@
    "linie": 2
   },
   {
-   "id": "TR2_3",
+   "id": "TR2_4",
    "pos": [
     216.2,
     -3514.1,
@@ -5099,7 +5247,7 @@
      "d": 50
     },
     {
-     "trasse": "REV2-3",
+     "trasse": "REV2-4",
      "ende": "start",
      "d": 50
     }
@@ -5111,7 +5259,7 @@
    "linie": 2
   },
   {
-   "id": "TR2_4",
+   "id": "TR2_5",
    "pos": [
     305.3,
     -3692.0,
@@ -5130,7 +5278,7 @@
      "d": 50
     },
     {
-     "trasse": "REV2-4",
+     "trasse": "REV2-5",
      "ende": "start",
      "d": 50
     }
@@ -5142,7 +5290,7 @@
    "linie": 2
   },
   {
-   "id": "TR2_5",
+   "id": "TR2_6",
    "pos": [
     14.1,
     -2382.3,
@@ -5161,7 +5309,7 @@
      "d": 50
     },
     {
-     "trasse": "REV2-5",
+     "trasse": "REV2-6",
      "ende": "start",
      "d": 50
     }
@@ -6298,30 +6446,6 @@
    "linie": 2
   },
   {
-   "id": "SCH-KH2",
-   "datei": "lt_schacht_kugelhahn_d63_tief_senkrecht",
-   "pos": [
-    -1245.9,
-    -2294.8,
-    -86.4
-   ],
-   "z": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "x": [
-    -0.812154,
-    -0.583444,
-    0.0
-   ],
-   "varianten": [
-    "a_plus"
-   ],
-   "notiz": "R47 M2: Ventilschacht senkrecht an KH2, Ursprung Hahnmitte, Schacht-X = Richtung T13->T12",
-   "linie": 2
-  },
-  {
    "id": "REV2-1-Kappe",
    "datei": "lt_kappe_d50",
    "pos": [
@@ -6350,8 +6474,8 @@
    "id": "REV2-2-Kappe",
    "datei": "lt_kappe_d50",
    "pos": [
-    0.0,
-    -2810.4,
+    -1245.9,
+    -2621.5,
     376.0
    ],
    "z": [
@@ -6375,8 +6499,8 @@
    "id": "REV2-3-Kappe",
    "datei": "lt_kappe_d50",
    "pos": [
-    216.2,
-    -3514.1,
+    0.0,
+    -2810.4,
     376.0
    ],
    "z": [
@@ -6400,6 +6524,31 @@
    "id": "REV2-4-Kappe",
    "datei": "lt_kappe_d50",
    "pos": [
+    216.2,
+    -3514.1,
+    376.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "farbe": "grau",
+   "varianten": [
+    "a_plus"
+   ],
+   "notiz": "Kappe d50 buendig im Flur, Revisionsstutzen REV2-4",
+   "linie": 2
+  },
+  {
+   "id": "REV2-5-Kappe",
+   "datei": "lt_kappe_d50",
+   "pos": [
     305.3,
     -3685.7,
     376.0
@@ -6418,11 +6567,11 @@
    "varianten": [
     "a_plus"
    ],
-   "notiz": "Kappe d50 buendig im Flur, Revisionsstutzen REV2-4",
+   "notiz": "Kappe d50 buendig im Flur, Revisionsstutzen REV2-5",
    "linie": 2
   },
   {
-   "id": "REV2-5-Kappe",
+   "id": "REV2-6-Kappe",
    "datei": "lt_kappe_d50",
    "pos": [
     7.4,
@@ -6443,7 +6592,7 @@
    "varianten": [
     "a_plus"
    ],
-   "notiz": "Kappe d50 buendig im Flur, Revisionsstutzen REV2-5",
+   "notiz": "Kappe d50 buendig im Flur, Revisionsstutzen REV2-6",
    "linie": 2
   },
   {
@@ -6495,17 +6644,6 @@
    "y": -3083.0,
    "d": 800.0,
    "sohle": -902.9,
-   "linie": 2
-  },
-  {
-   "id": "SCH-KH2",
-   "x": -1219.0,
-   "y": -2318.6,
-   "d": 480.0,
-   "sohle": -191.4,
-   "varianten": [
-    "a_plus"
-   ],
    "linie": 2
   }
  ]

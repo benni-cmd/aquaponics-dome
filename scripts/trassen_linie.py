@@ -952,8 +952,21 @@ def s2n(neu, linie):
     neu["teile"].append({"id": "SCH-" + I["kh"], "datei": SCHACHT_S, "pos": rd(hm), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xs], "varianten": S2N_AP,
                          "notiz": "R47 M2: Ventilschacht senkrecht an %s, Ursprung Hahnmitte, Schacht-X = Richtung %s->%s" % (I["kh"], *I["hm"])})
     c = add(add(hm, xs, -8.0), ys, 35.0)
-    neu.setdefault("gruben", []).append({"id": "SCH-" + I["kh"], "x": round(c[0], 1), "y": round(c[1], 1), "d": 480.0, "sohle": round(400.0 - 581.4 - 10.0, 1), "varianten": S2N_AP})
-    log.append("SCH-%s Schacht Hahnmitte %s" % (I["kh"], rd(hm)))
+    stoer = []                                                           # Huelle 204 x 416, Z -181,4 bis 400; fremde Leitungen >= 10 mm (Heber und Bypass derselben Linie laufen durch Dichtungen)
+    for t in neu["trassen"]:
+        if t.get("s2n_basis") or t.get("kante") in ("K01", "K17", "K56", "K57"): continue
+        Pt = [tuple(p) for p in t["pfad"]]
+        for a, b in zip(Pt, Pt[1:]):
+            for k in range(41):
+                pp = add(a, sub(b, a), k / 40); v = sub(pp, c)
+                dx, dy = abs(dot(v, xs)) - 102.0, abs(dot(v, ys)) - 208.0; dz = max(-181.4 - pp[2], pp[2] - 400.0)
+                g = math.sqrt(sum(max(x, 0.0) ** 2 for x in (dx, dy, dz))) if max(dx, dy, dz) > 0 else max(dx, dy, dz)
+                if g - float(t["dn"]) / 2 < 10.0: stoer.append((g - float(t["dn"]) / 2, t["id"])); break
+    if stoer:
+        log.append("SCHACHT %s NICHT GESETZT: %s liegt %.0f mm in/an der Schachthuelle (Soll >= 10 mm Luft)" % (I["kh"], min(stoer)[1], min(stoer)[0]))
+        neu["teile"].pop(); stoer = None
+    if stoer is not None: neu.setdefault("gruben", []).append({"id": "SCH-" + I["kh"], "x": round(c[0], 1), "y": round(c[1], 1), "d": 480.0, "sohle": round(400.0 - 581.4 - 10.0, 1), "varianten": S2N_AP})
+    if stoer is not None: log.append("SCH-%s Schacht Hahnmitte %s" % (I["kh"], rd(hm)))
     # M1 Revisionsstutzen
     s2n_revision(neu, linie, S2NWelt(neu, linie), log)
     for t in neu["trassen"]:

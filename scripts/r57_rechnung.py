@@ -68,6 +68,7 @@ def aushub():
         ("Graeben A+ geplant (K14, K58/59, K11 = 78,9 m) 0,3 x 0,5 m [A]", 78.9 * 0.3 * 0.5, 0.0),
         ("Zielbild S: Pool-Einmuendung Beet-Ruecklauf 2 x 3 m Kanal 0,3 x 0,3 m [A]", 0.0, 6.0 * 0.3 * 0.3),
         ("Zielbild S: Leerrohr-Querungen 12 m, 0,3 x 0,4 m [A]", 0.0, 12.0 * 0.3 * 0.4),
+        ("Zielbild S nach D88: Poolgrube 665 mm tiefer, nur Wasserflaeche 11,88 m2 [E]", 0.0, AREA * 0.665),
     ]
     v = vergraben.__dict__.get("cache") or {}
     unt = v.get("heute_gebaut")
@@ -91,8 +92,10 @@ FISCH_KG = 346         # [Q D61]
 FISCHWASSER = 28.5     # m3 [Q system-specs wasser.fischwasser_m3]
 AREA = math.pi / 4 * POOL_D ** 2
 
+def p_w(q_lmin, h_m, eta=0.25): return 1000 * 9.81 * q_lmin / 60000 * h_m / eta
+
 def pegel():
-    kopf("3 Poolpegel im Zielbild S (Pool als tiefster Punkt)")
+    kopf("3 Poolpegel im Zielbild S nach D88 (Pool als tiefster Punkt, gleich gross, tiefer eingelassen)")
     anhebung_beet = 162                             # Beete auf Flur statt Beetboden Z -162 (aussen) [Q K14]; innen -209..-173 heben 173..209
     ablauf = -100 + anhebung_beet                   # Beetablauf heute Z -100 [Q K14, R47/R49]
     # Regel R49 Abschn. 3.1: Ablauf >= Einlauf + Gefaelle x Laenge + Rohr-d + 50; Einlauf = Pegel + 25
@@ -104,19 +107,25 @@ def pegel():
         print("  %-42s Pegel hoechstens Z %5.0f [E]" % (n, p))
     ruhe = -150                                     # gewaehlter Ruhepegel [A], <= alle Grenzen
     assert ruhe <= min(lim) + 1
-    dh = SPIEGEL_HEUTE - ruhe; dv = AREA * dh / 1000
-    pool_heute = AREA * TIEFE / 1000
-    fw = FISCHWASSER - dv
+    dh = SPIEGEL_HEUTE - ruhe
+    pool_v = AREA * TIEFE / 1000
     flut = 2 * 2 * BEET_FLUT_L / 1000 / AREA * 1000     # beide Linien je 2 Beete gleichzeitig (R45 Planfall) [Q R45 Abschn. 3]
     flut1 = 2 * 1 * BEET_FLUT_L / 1000 / AREA * 1000
-    alle_beete = 14 * BEET_FLUT_L / 1000 / AREA * 1000  # Stromausfall, alle Beete laufen in den Pool zurueck
-    print("  Beetablauf auf Flur Z %d, gewaehlter Ruhepegel Z %d, Absenkung %d mm [E]" % (ablauf, ruhe, dh))
-    print("  Poolflaeche %.2f m2, Volumen heute %.1f m3 (Rechnung, system-specs 26,15), weniger %.1f m3 [E]" % (AREA, pool_heute, dv))
-    print("  Fischwasser %.1f -> %.1f m3, Besatz %.1f -> %.1f kg/m3 (FAO-Grenze 20, R44) [E]" % (FISCHWASSER, fw, FISCH_KG / FISCHWASSER, FISCH_KG / fw))
+    alle_beete = 14 * BEET_FLUT_L / 1000 / AREA * 1000  # Stoerfall: alle 14 Beete voll und laufen in den Pool zurueck
+    real = (4 * BEET_FLUT_L / 1000 + 0.15 + 0.23) / AREA * 1000   # Stromausfall im Planfall: 4 Beete voll + NFT 0,15 + Rohre/Schlaeuche 0,23 m3 [Q system-specs wasser]
+    print("  Beetablauf auf Flur Z %d, gewaehlter Ruhepegel Z %d, %d mm unter dem heutigen Spiegel [E]" % (ablauf, ruhe, dh))
+    print("  D88 (Ben 05.11.): Pool gleich gross (Flaeche %.2f m2, Wassertiefe %d mm, %.1f m3) und tiefer eingelassen, kein Volumenverlust [Q D88, E]" % (AREA, TIEFE, pool_v))
+    boden_alt, boden_neu = SPIEGEL_HEUTE - TIEFE, ruhe - TIEFE
+    print("  Beckenboden (Wasser) Z %d -> Z %d, also %d mm tiefer; Mehraushub %.1f m3 nur Wasserflaeche (Wand und Arbeitsraum dazu) [E]" % (boden_alt, boden_neu, boden_alt - boden_neu, AREA * (boden_alt - boden_neu) / 1000))
+    print("  Fischwasser %.1f m3, Besatz %.1f kg/m3 unveraendert; Waermespeicher 40,4 kWh/K unveraendert [Q system-specs, E]" % (FISCHWASSER, FISCH_KG / FISCHWASSER))
     print("  Pegelschwankung durch Flutung: je Linie 1 Beet %.0f mm, je Linie 2 Beete %.0f mm [E]" % (flut1, flut))
-    print("  Freibord Rand Z %d - Ruhepegel = %d mm; Stromausfall, alle 14 Beete leer laufen: +%.0f mm, Rest %.0f mm [E]" % (RAND, RAND - ruhe, alle_beete, RAND - ruhe - alle_beete))
-    print("  Waermespeicher Wasser 40,4 kWh/K [Q system-specs] -> %.1f kWh/K [E]" % (40.4 * (34.7 - dv) / 34.7))
-    return dict(ruhe=ruhe, dh=dh, dv=dv, fw=fw, dichte=FISCH_KG / fw, flut=flut, freibord=RAND - ruhe)
+    print("  Anstieg bei Stromausfall: Planfall (4 Beete voll, NFT, Leitungen) +%.0f mm; Stoerfall alle 14 Beete voll +%.0f mm [E]" % (real, alle_beete))
+    for rand, txt in ((0, "Rand ebenerdig Z 0"), (150, "Rand mit Aufkantung Z +150 [A]")):
+        fb = rand - ruhe
+        print("  %-32s Freibord %d mm; Rest im Planfall %d mm, im Stoerfall %d mm [E]" % (txt, fb, fb - real, fb - alle_beete))
+    print("  Alternative ohne Aufkantung: Ruhepegel Z -300 gibt 300 mm Freibord, kostet +0,15 m Foerderhoehe (+%.0f W beide Linien) [E]" % (2 * p_w(110, 0.15)))
+    print("  Einlauf ueber den Rand: freier Fall Rand/Einlauf Z 150..200 bis Pegel = %d..%d mm (R55 Planwert 300..500) [E]" % (150 - ruhe, 200 - ruhe))
+    return dict(ruhe=ruhe, dh=dh, flut=flut, real=real, alle=alle_beete, mehraushub=AREA * (boden_alt - boden_neu) / 1000)
 
 # ------------------------------------------------------------------ 4 Pumpen und Strom
 def p_w(q_lmin, h_m, eta=0.25): return 1000 * 9.81 * q_lmin / 60000 * h_m / eta

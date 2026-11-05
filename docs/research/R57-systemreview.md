@@ -6,7 +6,28 @@
 **Intent:** Schlank und natürlich: Schwerkraft statt Pumpen, wenig graben, kurze Wege, Technik innen, Schlamm draußen, dazu Sensorik und Ausgleich (W76).
 **Goal:** Tabelle behalten / vereinfachen / streichen je Bauteil- und Leitungsgruppe mit Kostenwirkung, eine Empfehlung für Ben und Leon, Leitungsordnung v2.
 
-## 0. Antwort (fünf Punkte)
+## Nachtrag D88 (05.11.2026): Zielbild S mit eingelassenem Pool gleicher Größe
+
+**Ben hat Zielbild S angenommen, mit einer Änderung: kein Volumenverlust.** Der Pool behält Durchmesser 3,89 m und Wassertiefe 2,2 m (26,1 m³). Er wird um 665 mm tiefer eingelassen: Rand etwa auf Flurhöhe, kein Bodenablauf, Pumpen saugen vom Boden, Geländer gegen Hineinfallen (D88). Neu gerechnet mit `python -X utf8 scripts/r57_rechnung.py pegel | aushub | pumpen`:
+
+| Größe | S (erste Fassung) | S nach D88 |
+|---|---|---|
+| Fischwasser, Besatz | 20,6 m³, 16,8 kg/m³ | **28,5 m³, 12,1 kg/m³ (wie heute)** |
+| Wärmespeicher Wasser | 31,2 kWh/K | **40,4 kWh/K (wie heute)** |
+| Beckenboden (Wasser) | Z −1685 | **Z −2350**, 665 mm tiefer |
+| Aushub ohne heutige Poolgrube | 2,0 m³ | **9,9 m³** (davon 7,9 m³ tiefere Poolgrube, nur Wasserfläche; Wand und Arbeitsraum kommen dazu) |
+| Freibord | 800 mm (Rand Z 650) | **150 mm bei Rand Z 0, 300 mm mit 150 mm Aufkantung** |
+| freier Fall am Einlauf | 0,8 m | **0,30 bis 0,35 m** (Einlauf über den Rand bei Z 150 bis 200; R55-Planwert 0,3 bis 0,5 m) |
+| Pegelschwankung, Förderhöhe, Strom | 39 bis 79 mm, 2,28 m, 328 W | unverändert |
+
+**Folgen, die ihr kennen müsst:**
+1. **Rand ganz ebenerdig reicht nicht.** Bei Stromausfall laufen im Planfall 4 volle Beete, NFT und Leitungen in den Pool: +111 mm. Fallen alle 14 Beete voll leer (Störfall, Staffelung versagt): +276 mm. Bei Rand Z 0 bleiben 150 mm Freibord, der Störfall läuft 125 mm über. **Empfehlung: 150 mm Aufkantung als Rand** (trägt das Geländer, hält Schmutzwasser vom Flur fern [A]); Freibord dann 300 mm, Rest im Störfall 24 mm. Alternative ohne Aufkantung: Ruhepegel Z −300, kostet 0,15 m Förderhöhe (+22 W) [E].
+2. **Die Halbringe K16/K32 verlieren ihren Ort:** Sie lagen auf der Pool-Wandkrone (Z 650 bis 730 rel). Neu münden NFT- und Beet-Rücklauf über die Aufkantung (Korridor KW neu, `docs/leitungsordnung.md`).
+3. **Tiefer graben am Pool:** 665 mm mehr Grubentiefe (Beckenboden Z −2350 relativ zum Flur). Grundwasser und Baugrund sind offen (Standort D69); Bauweise und Auftrieb des leeren Beckens prüft die Statik.
+4. **Geländer** ist ein neues Bauteil (Höhe und Norm nicht recherchiert [A]); es ersetzt die heutige Wand über Flur als Absturzschutz.
+5. **Was gleich bleibt:** Streichliste (Abschnitt 2 ohne G1-Volumen), eine Pumpstufe, die zwei Bedingungen (Pegel-tief-Abschaltung, Siebmessung mit Vortex-Rückfall), Teilekosten 6039 → 2242 €, 12 → 4 Pumpen.
+
+## 0. Antwort (fünf Punkte, erste Fassung vor D88; Abweichungen im Nachtrag oben)
 
 1. **Ein Hebel löst fast alles: Der Pool wird der tiefste Punkt des Kreislaufs.** Wird der Ruhepegel um 665 mm abgesenkt (Z +515 auf Z −150) und stehen die Beete auf dem Flur statt eingelassen, dann fließt jedes Beet, jede NFT-Rinne und jeder Überlauf frei in den Pool zurück. Dann bleibt eine einzige Pumpstufe: Tauchpumpen im Pool heben über einen Schlauch in den Siebkorb auf dem Biofilter [E, `r57_rechnung.py pegel`].
 2. **Entfallen würden:**
@@ -26,12 +47,12 @@
 ## 1. Zielbild S in einem Bild (je Linie, zwei gleiche Linien nach D67)
 
 ```
-Pool (tiefster Punkt, Ruhepegel Z -150, Rand Z 650)
+Pool (tiefster Punkt, gleich groß, Ruhepegel Z -150, Rand Z +150 mit Geländer, D88)
   └─ 2 Tauchpumpen am Poolboden (Ansaugkorb) ── Druckschlauch über den Rand ──► Siebkorb 100 µm oben im Biofilter
                                                                                    │
 Biofilter (K1-Schwebebett, belüftet, Spiegel Z 1600) ──► Verteiler mit allen Hähnen (Wasserstation, W82)
   ├─► 7 Beete auf dem Flur (Glockensiphon) ── Schlauch, Gefälle ≥ 1 % ──► Pool (freier Fall)
-  ├─► 12 NFT-Tische ── Sektorsammler ── Halbring an der Wandkrone ──► Pool (freier Fall 0,8 m)
+  ├─► 12 NFT-Tische ── Sektorsammler ── Halbring an der Aufkantung ──► Pool (freier Fall 0,30 bis 0,35 m)
   ├─► Überlauf (heute K13) ──► Pool
   └─► Messkreis 3 l/min ──► Messzelle ──► Pool
 Schlamm: Siebkorb-Spülwanne und Biofilter-Kegelboden ── Schlauch ── Durchführung Fundamentring ──► Fass über dem Boden draußen
@@ -46,7 +67,7 @@ Kosten: kleinster belegter Preis in `data/beschaffung/*.json` (Stand 04./05.11.)
 
 | Nr | Gruppe | Funktion im Kreislauf | Urteil | Begründung | Kostenwirkung (belegt) | Wartung und Rückbau |
 |---|---|---|---|---|---|---|
-| G1 | Pool, Pegel | Fischwasser, Wärmespeicher, Sammelpunkt | **vereinfachen:** Ruhepegel Z −150 statt +515 | Höhenkette Biofilter > Beete/NFT > Pool schließt sich ohne zweite Pumpstufe [E pegel] | 0 € (Becken bleibt) | Freibord 800 mm; bei Stromausfall steigt der Pool um höchstens 276 mm und läuft nicht über [E pegel] |
+| G1 | Pool, Pegel | Fischwasser, Wärmespeicher, Sammelpunkt | **vereinfachen:** Ruhepegel Z −150 statt +515; nach D88 gleich groß und 665 mm tiefer eingelassen, Rand mit Aufkantung Z +150 [A], Geländer | Höhenkette Biofilter > Beete/NFT > Pool schließt sich ohne zweite Pumpstufe [E pegel] | Becken gleich; Mehraushub 7,9 m³, Aufkantung und Geländer ohne Preis | Freibord 300 mm; Stromausfall +111 mm (Planfall) bis +276 mm (Störfall) [E pegel] |
 | G2 | Heber K01/K17, 2 Durchführungen in der Poolwand | Seitenablauf Pool → Feinfilter, voll laufend | **streichen** | im Zielbild saugen die Pumpen im Pool; zwei Wanddurchführungen unter Wasser (Leckstelle) fallen weg | −235 € Rohr d75 (5,3 m), −98 € Durchführungen | kein Heber-Luftsack mehr (R47b 6.2: Einzelpfad ohne Erkennung) |
 | G3 | Absetzerkreis: Bodenablauf K03/K19, 4 Kleinpumpen, 2 Absetzer, K04/K05/K20/K21, Revisionsstutzen | Teilstrom 12,5 l/min je Linie durch Wirbelabscheider | **streichen** (öffnet D71) | Ein Swirl fängt rund 23 % der Feststoffmasse, ein Sieb im Vollstrom 40 bis 45 % (Davidson/Summerfelt, R44/R45). Die Tauchpumpe am Poolboden nimmt die Bodenfracht im Vollstrom mit. Gegenrede, belegt: Die Pumpe vor dem Sieb zerkleinert Partikel (Bregnballe 2015, Sindilariu 2009); um wie viel, ist nicht gelesen. Rückfall: Absetzer als Vollstrom-Vortex vor dem Sieb nachrüsten (Teich-Vortex 4 bis 40 m³/h, R50 3.2), wenn der Korb öfter als einmal am Tag voll ist | −384 € Pumpen, −774 € Rohr d50/d32 (34,6 m); Tanks ohne Preis | entfällt: 30,5 m Strecke unter Flur mit 0,13 m/s (R47b: Absetzgefahr) |
 | G4 | Schlammfass in der Grube, K07/K23 | Schlamm lagern, Klarwasser von Hand zurück | **streichen, ersetzen durch Schlamm draußen über dem Boden** (W79) | Schlamm fließt per Schlauch aus Siebkorb-Spülwanne und Biofilter-Kegelboden durch den Fundamentring in ein Fass draußen; der Kreislauf bleibt innen. Das Fass ist ein Kurzzeitlager: höchstens eine Woche, dann auf Kompost oder Wurmkiste. Belegt ist: Schlamm ohne Luft bildet Schwefelwasserstoff und Ammoniak (FAO 589, KSU); wer länger lagern oder mineralisieren will, braucht einen belüfteten Behälter mit 5 bis 10 % des Systemvolumens (KSU), hier 1,5 bis 3 m³. Das Wasser (20 bis 40 l je Spülung, R45) taugt draußen als Gießwasser | −150 € Fässer, −59 € Hähne, −48 € Rohr; neu +198 € (2 Fässer 220 l lebensmittelecht, Einzelquelle) und +110 € Schlauch 32 mm | Fass von außen leeren, keine Grube, kein Eimer durch die Halle; Frost unbelegt: Schlauch läuft nach jeder Spülung leer (Gefälle R11) [A] |
@@ -59,7 +80,7 @@ Kosten: kleinster belegter Preis in `data/beschaffung/*.json` (Stand 04./05.11.)
 | G11 | Beete 14 mit Glockensiphon | Pflanzen, Medienfilter, Nitrifikation | **behalten, auf den Flur stellen statt einlassen** | Ablauf steigt von Z −100 auf +62. Der Beetrand liegt dann bei Z 637 statt 475, also bessere Arbeitshöhe. Die Kopffreiheit über den Außenbeeten sinkt von 1343 auf 1181 mm, das reicht für das Blattgemüse nach D61. Kompostwürmer im Medium als natürliche Verwertung (Abschnitt 7) | 0 €; 5,3 m³ Aushub weniger | Beet ohne Grube tauschbar |
 | G12 | Beet-Rücklauf K14/K30 | Siphonwasser zurück | **vereinfachen:** Schlauch oder Rohr frei auf dem Flur entlang der Beetfüße (Art C), nur die Einmündung am Pool flach unter Flur | 58,9 m Graben (R49) werden 46,5 m oberirdisch plus 2 × 3 m flacher Kanal [A]. HT- oder KG-Rohr wäre billiger (2 bis 4 €/m), ist aber nur als Abwasserrohr ausgewiesen und scheidet nach D85 aus | −1394 € Rohr d50, +702 € Schlauch 50 mm | ausspülbar am Tiefpunkt (Ordnung v2, Zugang) |
 | G13 | Beet-Sumpf 2 × 500 l, 4 Teichpumpen, 6 Schwimmer, 2 Rückschlagventile, K58/K59 | hebt Beetwasser über den Pool-Spiegel | **streichen** | nur wegen der Höhenlücke nötig (R49 Abschn. 3); im Zielbild läuft das Beet frei in den Pool | −882 € Pumpen, −269 € Schwimmer, −123 € Rohr; Tanks und Ventile ohne Preis; −108 W | keine Flutsperre mehr nötig (R45: Pflicht wegen Überlaufgefahr) |
-| G14 | NFT 24 Tische, K12/K15, Halbringe K16/K32 | Pflanzen, Rücklauf | **behalten** | läuft heute schon frei; Fallhöhe am Pool steigt von etwa 0,15 auf 0,8 m, gratis Sauerstoff (R55: 10 bis 15 % des Bedarfs bei 0,5 m, Einzelquelle) [E] | 0 € | wie heute |
+| G14 | NFT 24 Tische, K12/K15, Halbringe K16/K32 | Pflanzen, Rücklauf | **behalten** | läuft heute schon frei; Fallhöhe am Pool steigt von etwa 0,15 auf 0,30 bis 0,35 m (D88), gratis Sauerstoff (R55: 10 bis 15 % des Bedarfs bei 0,5 m, Einzelquelle) [E]; Halbring sitzt auf der Aufkantung statt auf der Wandkrone | 0 € | wie heute |
 | G15 | Zweitbecken, K33/K34 | Aufzucht | **behalten** | sein Überlauf in den Pool fällt jetzt 665 mm tiefer, der eigene Pegel bleibt | 0 € | wie heute |
 | G16 | Drittbecken mit eigenem Biofilter und Luft | Quarantäne (45 Tage, FAO 589) | **behalten** | eigenes Wasser ist der Zweck | 0 € | wie heute |
 | G17 | Messzelle, Stammlösung, Eisen, Dosierpumpen | Ausgleich pH, Eisen; Messung | **behalten** | das ist der „Ausgleich“ aus W76 | 0 € | wie heute; Messkreis als Schlauch |
@@ -96,7 +117,7 @@ Strom (Pumpen, Gebläse, Sensoren) läuft im Schaltschrank-Kasten (D87) zusammen
 1. **Selbstregelnde Wasserbilanz:** Im Zielbild endet jeder Weg im Pool. Fällt eine Pumpe, ein Siphon oder der Strom aus, läuft alles dorthin zurück. Kein Behälter kann überlaufen, eine Flutsperre ist nicht nötig, und ein Schwimmerventil hält den Stand [E pegel].
 2. **Nährstoffkette:** Fischkot und Ammonium gehen über den Siebkorb (grob) in den Biofilter (Nitrifikation), von dort in Beete und NFT (Nitrat-Aufnahme) und zurück. Die Beete sind zugleich Medienfilter und Nitrifizierer (R44).
 3. **Würmer im Beet, Schlamm im Garten:** Kompostwürmer im Medium bauen Kot ab und mindern Verstopfung (FAO 589, Hallam; belegt, qualitativ). Allein filtern können die Beete die Last aber nicht: Nach beiden Faustregeln (50 g Futter oder 5 kg Fisch je m²) bräuchte es etwa 69 m² Medienbett, die 14 Beete haben rund 30 m² [E: 14 × 0,80 × 2,64 m]. Siebkorb und Biofilter bleiben deshalb. Der abgetrennte Schlamm geht als Dünger und Gießwasser nach draußen (Wurmkiste 1,25 bis 2,5 m² nach R45).
-4. **Freier Fall belüftet gratis:** Die Einläufe fallen 0,8 m statt etwa 0,15 m tief [E]; R55 rechnet bei 0,5 m 10 bis 15 % des Sauerstoffbedarfs (Einzelquelle). Das Gebläse bleibt die Grundlast.
+4. **Freier Fall belüftet gratis:** Die Einläufe fallen nach D88 0,30 bis 0,35 m statt etwa 0,15 m tief [E]; R55 rechnet bei 0,5 m 10 bis 15 % des Sauerstoffbedarfs (Einzelquelle). Das Gebläse bleibt die Grundlast.
 5. **Sensorik und Ausgleich:**
    - Messzelle mit pH, EC, O₂ und Temperatur
    - Dosierung von Base und Eisen
@@ -111,11 +132,11 @@ Strom (Pumpen, Gebläse, Sensoren) läuft im Schaltschrank-Kasten (D87) zusammen
 | geplante Gräben A+ (K14, K58/59, K11) | 78,9 m | – | dito, Werte R49 Abschn. 4 |
 | unter Flur gesamt | 230,1 m | 18,0 m [A: 2 × 3 m Pool-Einmündung, 10 Querungen × 1,2 m] | dito |
 | davon Luft und Frischwasser (A+) | 105,9 m | 0 (Schlauch über Flur, Querungen enthalten) | dito |
-| Aushub ohne Poolgrube | 43,7 m³ | 2,0 m³ | `r57_rechnung.py aushub` |
+| Aushub ohne heutige Poolgrube | 43,7 m³ | 9,9 m³ (D88: 7,9 m³ davon tiefere Poolgrube) | `r57_rechnung.py aushub` |
 | Pumpen gesamt (inkl. Reserve) | 12 | 4 | `r57_rechnung.py pumpen` |
 | Dauerstrom Pumpen | 429 W = 10,3 kWh/Tag | 328 W = 7,9 kWh/Tag | dito (Wirkungsgrad 25 %) |
-| Fischwasser, Besatz | 28,5 m³, 12,1 kg/m³ | 20,6 m³, 16,8 kg/m³ | `r57_rechnung.py pegel` |
-| Wärmespeicher Wasser | 40,4 kWh/K | 31,2 kWh/K | dito |
+| Fischwasser, Besatz | 28,5 m³, 12,1 kg/m³ | 28,5 m³, 12,1 kg/m³ (D88) | `r57_rechnung.py pegel` |
+| Wärmespeicher Wasser | 40,4 kWh/K | 40,4 kWh/K (D88) | dito |
 | Pegelschwankung im Pool | 0 | 39 mm (1 Beet je Linie), 79 mm (2 Beete je Linie) | dito |
 | Belegte Teilekosten der Gruppen G2 bis G13, G20 | 6039 € | 2242 € | `r57_rechnung.py kosten` |
 
@@ -125,7 +146,7 @@ Zwischenvariante **A+ nach Ordnung v2** (Topologie bleibt, nur Luft und Frischwa
 
 | Nr | Risiko | Wirkung | Gegenmaßnahme |
 |---|---|---|---|
-| K1 | Besatz 16,8 kg/m³ näher an der FAO-Grenze 20 | weniger Puffer bei Störung | Besatz schrittweise erhöhen (D61 sagt das schon); Grenze bleibt eingehalten |
+| K1 | (erledigt durch D88) Freibord nur 150 mm bei ebenerdigem Rand | Störfall läuft 125 mm über | Aufkantung 150 mm (Freibord 300) oder Ruhepegel Z −300 (+22 W) [E pegel]; tiefere Grube: Grundwasser und Auftrieb offen |
 | K2 | Pegelschwankung 39 bis 79 mm (alle 14 Beete gleichzeitig: 276 mm) | widerspricht der belegten Regel „Fischbecken konstant“ (FAO 589, Hallam); eine zulässige Schwankung nennt keine Quelle | Flutungen staffeln (höchstens 2 Beete je Linie, Steuerung wie heute); Pumpe am Boden mit 2 m Überdeckung; Schwimmerventil auf den tiefen Stand |
 | K3 | Pumpe vor dem Sieb zerkleinert Kot (belegt: Bregnballe 2015, Sindilariu 2009) | mehr Feinanteil geht an Biofilter, Beete und NFT; Maß nicht gelesen | langsam laufende Teichpumpe mit grobem Ansaugkorb; Korb- und Trübungsmessung im ersten Monat; Rückfall Vortex vor dem Sieb (G3) |
 | K7 | Leck auf der Druckseite oder in einem Beet pumpt den Pool leer | Fischverlust (FAO 589 nennt Wasserverlust eine der häufigsten Katastrophen) | Pegel-tief-Schalter schaltet die Pumpen ab, bevor mehr als der Flutstand fehlt; Alarm; das ist Bedingung 1 von S |

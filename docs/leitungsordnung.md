@@ -31,7 +31,7 @@ Trassen ohne Feld `art` gelten als **Bestand v1** (Art A); fuer sie gelten R1 bi
 | Kuerzel | Korridor | Hoehe (absolut) | Rahmen | Arten |
 |---|---|---|---|---|
 | KH | Technikturm, Pumpen, Biofilter, Verteiler, Schrank | Z 400 bis 2400 | Welt | A, B, D |
-| KW | Pool-Wandkrone und Beckenaussenwand | Z 1050 bis 1130 | Welt, Halbring als halbes Achteck (0/45/90 Grad) | A, C |
+| KW | Pool-Aufkantung, Gelaenderpfosten und Beckenaussenwand (D88: Rand etwa Z +150 rel = 550 absolut [A]; vor D88 Wandkrone Z 1050 bis 1130) | Z 400 bis 1400 | Welt, Halbring als halbes Achteck (0/45/90 Grad) | A, C |
 | KT | unter den NFT-Rinnen am Tischbein | Z 1300 bis 1500 | Sektor | A, C |
 | KF | frei am Bauteil: auf dem Flur entlang Beet- und Tischfuss, am Beetrand, an der Beckenaussenwand, ueber den Beckenrand | Z 400 bis 2100, ausserhalb der Gaenge | frei (jede waagerechte Richtung) | B, C, D |
 | KS | Steiger senkrecht | beliebig | lotrecht | A, B, D |

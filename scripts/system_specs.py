@@ -421,5 +421,48 @@ specs = {
         "o2_je_g_tan_4_57": "A Stoechiometrie, nicht aus Quelle gelesen", "heizung": "E aus Purdue CEA / KSU U-Werten fuer die Plane (R24), 208 m2, Standort offen",
         "tabelle_ben": "B reference/Kuppelberechnung-neu-2.xlsx (R15)"},
 }
-(ROOT / "data" / "system-specs.json").write_text(json.dumps(specs, ensure_ascii=False, indent=1), encoding="utf-8")
+
+# ---- Block kreislauf (N-VARIANTEN V1a, Blatt docs/jobs/N-VARIANTEN.md 3.1): Kennzahlen je Kreislauf-Variante -------------------------
+# Feste Werte [Q] aus docs/research/R47-wasserkreislauf-neu.md (Tabelle Abschnitt 7, Zeile "Pumpenleistung") und R47c 7.2/7.5;
+# gemessene Werte [E] aus den Trassen der aktiven Variante (data/leitungstrassen.json, Filter variante.gilt). Der A+-Rest der Datei bleibt unveraendert.
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import variante as _V
+_VAR = _V.aktiv()
+_FEST = {
+    "a_plus": {"pumpstufen_linienwasser": 1, "pumpenleistung_el_w_eta25": 430, "pumpenleistung_el_w_eta18": None,
+               "foerderhoehe_hauptpumpe_m": 2.0, "foerderhoehe_booster_m": None, "graeben_zulauf_beete": True,
+               "ring_nennlaenge_ueber_kopf_m": 0.0},
+    "ring_b2": {"pumpstufen_linienwasser": 2, "pumpenleistung_el_w_eta25": 577, "pumpenleistung_el_w_eta18": 635,
+                "foerderhoehe_hauptpumpe_m": 2.0, "foerderhoehe_booster_m": 1.0, "graeben_zulauf_beete": False,
+                "ring_nennlaenge_ueber_kopf_m": 21.4},   # 2 x 10,7 m Halbring [Q R47b 6.6]
+}
+
+
+def _trassen_kennzahlen(v):
+    tr = json.loads((ROOT / "data" / "leitungstrassen.json").read_text(encoding="utf-8"))["trassen"]
+    tr = [t for t in tr if _V.gilt(t, v)]
+    je_dn, ueber_kopf, wasser_l = {}, 0.0, 0.0
+    for t in tr:
+        p = t["pfad"]
+        l = sum(math.dist(a, b) for a, b in zip(p, p[1:])) / 1000.0
+        je_dn[t["dn"]] = je_dn.get(t["dn"], 0.0) + l
+        ueber_kopf += sum(math.dist(a, b) for a, b in zip(p, p[1:]) if min(a[2], b[2]) >= 2100) / 1000.0   # Z absolut >= 2100: ueber Kopfhoehe [A]
+        wand = max(1.5, t["dn"] / 21.0)                                       # PVC-U etwa SDR 21 (PN10), Mindestwand 1,5 mm [A]
+        wasser_l += math.pi / 4 * ((t["dn"] - 2 * wand) / 1000.0) ** 2 * l * 1000.0
+    return {"trassen": len(tr), "rohrlaenge_m": round(sum(je_dn.values()), 1), "rohrlaenge_je_dn_m": {str(k): round(x, 1) for k, x in sorted(je_dn.items())},
+            "rohr_ueber_kopf_gemessen_m": round(ueber_kopf, 1), "wasser_in_rohren_l": round(wasser_l, 1)}
+
+
+specs["kreislauf"] = {
+    "variante": _VAR,
+    **_FEST[_VAR],
+    **_trassen_kennzahlen(_VAR),
+    "herkunft": {"pumpenleistung": "Q docs/research/R47-wasserkreislauf-neu.md Tabelle Pumpenleistung (A+ 430 W, Ring B2 577 W bei eta 25 %, 635 W bei 18 %), Rechnung scripts/r47_pumpen.py",
+                 "foerderhoehe": "Q R47c 7.2 (Hauptpumpe 2,0 m, Booster etwa 1,0 m)", "ring_nennlaenge": "Q R47b 6.6 (2 x 10,7 m)",
+                 "rohrlaenge, rohr_ueber_kopf, wasser_in_rohren": "E Summe der Trassen der Variante (data/leitungstrassen.json, Filter scripts/variante.py gilt); Wandstaerke PVC-U SDR 21 [A]; 'ueber Kopf' = Z >= 2100 [A]",
+                 "hinweis": "Solange V1b die Trassen nicht mit `varianten` markiert hat, sind die gemessenen Werte beider Varianten gleich; der Ring (Trassen ring_b2) entsteht erst mit Schritt R1."},
+}
+_out = Path(_V.pfad("system_specs", _VAR, root=str(ROOT)))
+_out.write_text(json.dumps(specs, ensure_ascii=False, indent=1), encoding="utf-8")
 print(json.dumps(specs, ensure_ascii=False, indent=1)[:6500])

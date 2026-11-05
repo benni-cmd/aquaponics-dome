@@ -3,13 +3,17 @@
 Warum so: Ein Gesamt-OBJ expandiert jede Instanz voll (14 Tische + 4 Tanks + 14 Beete = 320 MB). Definitionen einmal + Matrizen (three.js InstancedMesh) halten den Viewer klein.
 Kleinteile (Koerper mit Bounding-Box-Diagonale < MIN_DIAG mm: Schrauben, Kappen, Lochkanten) kommen nicht in die Definition-OBJ; sie treiben die Dreieckszahl (Tesselierung richtet sich nach der Koerpergroesse). Sie stehen in einer eigenen Datei defs/<datei>.klein.obj, die der Viewer erst beim Einschalten von "Kleinteile unter 15 cm zeigen" laedt (W66). Das Modell selbst (dome.sc) bleibt unveraendert.
 Definitionen werden zwischengespeichert (viewer/defs/.cache.json: Aenderungszeit der .sc + MIN_DIAG + FORMAT).
-Aufruf: python viewer/export_model.py   (liest scripts/dome-script.json fuer Einbau und Matrizen, designs/components/*.sc fuer die Geometrie)
+Aufruf: python viewer/export_model.py [--variante ring_b2]   (liest scripts/dome-script.json fuer Einbau und Matrizen, designs/components/*.sc fuer die Geometrie)
 """
 import json, math, os, re, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
 CLI = r'C:\Program Files\SolidCraft\solidcraft-cli.exe'
-SCRIPT = os.path.join(ROOT, 'scripts', 'dome-script.json')
+sys.path.insert(0, os.path.join(ROOT, 'scripts'))
+import variante as V   # N-VARIANTEN V1a: --variante <v> / KREISLAUF_VARIANTE, Standard a_plus (= heutige Pfade)
+VAR = V.aktiv()
+SCRIPT = V.pfad('dome_script', VAR, root=ROOT)
+OUT_DIR = V.pfad('viewer_dir', VAR, root=ROOT)   # a_plus: viewer/, ring_b2: viewer/varianten/ring_b2/ (defs/ und detail/ bleiben gemeinsam)
 DEFS = os.path.join(HERE, 'defs')
 MIN_DIAG = 150   # mm
 FORMAT = 'v3'    # Cache-Schluessel: v2 = Kleinteile in <stem>.klein.obj statt verworfen, v3 = Anschlussteile bleiben im Hauptexport
@@ -90,8 +94,9 @@ for f in os.listdir(HERE):   # Altlast: das fruehere Gesamt-OBJ
     if f.startswith('model') and f.endswith('.obj'): os.remove(os.path.join(HERE, f))
 try: walk_z = json.load(open(os.path.join(ROOT, 'data', 'params.json'), encoding='utf-8'))['sock_h']['value']   # begehbarer Boden fuer den FPV-Modus
 except Exception: walk_z = 400
-json_atomar({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, os.path.join(HERE, 'extras.json'))
-json_atomar({'built': built, 'min_diag': MIN_DIAG, 'anschluss_immer_sichtbar': True, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, os.path.join(HERE, 'instances.json'))   # zuletzt: erst jetzt zeigt das Modellverzeichnis auf den neuen Stand
-subprocess.run([sys.executable, '-I', os.path.join(HERE, 'export_ansicht.py')], capture_output=True, text=True)   # Nebendatei Werkstoff/Gruppe/Leitungsart passend zu diesem Export
+os.makedirs(OUT_DIR, exist_ok=True)
+json_atomar({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, os.path.join(OUT_DIR, 'extras.json'))
+json_atomar({'built': built, 'min_diag': MIN_DIAG, 'anschluss_immer_sichtbar': True, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, os.path.join(OUT_DIR, 'instances.json'))   # zuletzt: erst jetzt zeigt das Modellverzeichnis auf den neuen Stand
+subprocess.run([sys.executable, '-I', os.path.join(HERE, 'export_ansicht.py'), '--variante', VAR], capture_output=True, text=True)   # Nebendatei Werkstoff/Gruppe/Leitungsart passend zu diesem Export
 size = sum(d['kb'] for d in defs.values()) / 1024; size_k = sum(d['klein_kb'] for d in defs.values()) / 1024
 print(f'export {time.time()-t0:.0f}s defs={len(defs)} (neu {exported}) = {size:.1f} MB + Kleinteile {size_k:.1f} MB, instanzen={len(insts)}')

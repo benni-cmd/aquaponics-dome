@@ -757,5 +757,34 @@
   "o2_je_g_tan_4_57": "A Stoechiometrie, nicht aus Quelle gelesen",
   "heizung": "E aus Purdue CEA / KSU U-Werten fuer die Plane (R24), 208 m2, Standort offen",
   "tabelle_ben": "B reference/Kuppelberechnung-neu-2.xlsx (R15)"
+ },
+ "kreislauf": {
+  "variante": "a_plus",
+  "pumpstufen_linienwasser": 1,
+  "pumpenleistung_el_w_eta25": 430,
+  "pumpenleistung_el_w_eta18": null,
+  "foerderhoehe_hauptpumpe_m": 2.0,
+  "foerderhoehe_booster_m": null,
+  "graeben_zulauf_beete": true,
+  "ring_nennlaenge_ueber_kopf_m": 0.0,
+  "trassen": 40,
+  "rohrlaenge_m": 72.4,
+  "rohrlaenge_je_dn_m": {
+   "25": 18.4,
+   "32": 3.1,
+   "40": 11.1,
+   "50": 27.9,
+   "63": 6.7,
+   "75": 5.3
+  },
+  "rohr_ueber_kopf_gemessen_m": 0.0,
+  "wasser_in_rohren_l": 101.4,
+  "herkunft": {
+   "pumpenleistung": "Q docs/research/R47-wasserkreislauf-neu.md Tabelle Pumpenleistung (A+ 430 W, Ring B2 577 W bei eta 25 %, 635 W bei 18 %), Rechnung scripts/r47_pumpen.py",
+   "foerderhoehe": "Q R47c 7.2 (Hauptpumpe 2,0 m, Booster etwa 1,0 m)",
+   "ring_nennlaenge": "Q R47b 6.6 (2 x 10,7 m)",
+   "rohrlaenge, rohr_ueber_kopf, wasser_in_rohren": "E Summe der Trassen der Variante (data/leitungstrassen.json, Filter scripts/variante.py gilt); Wandstaerke PVC-U SDR 21 [A]; 'ueber Kopf' = Z >= 2100 [A]",
+   "hinweis": "Solange V1b die Trassen nicht mit `varianten` markiert hat, sind die gemessenen Werte beider Varianten gleich; der Ring (Trassen ring_b2) entsteht erst mit Schritt R1."
+  }
  }
 }

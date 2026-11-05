@@ -862,5 +862,15 @@
   "r_id": "",
   "maturity": 0,
   "used_by": "trassen_linie.py"
+ },
+ "kreislauf_variante": {
+  "value": "a_plus",
+  "unit": "-",
+  "origin": "A",
+  "source": "D81 / W70 (N-VARIANTEN): Standard der Kreislauf-Variante; gebaut wird nie durch Aendern dieser Datei, sondern mit --variante oder KREISLAUF_VARIANTE",
+  "r_id": "",
+  "maturity": 0,
+  "werte": ["a_plus", "ring_b2"],
+  "used_by": "scripts/variante.py"
  }
 }

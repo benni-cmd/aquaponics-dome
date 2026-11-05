@@ -25,6 +25,10 @@ sys.path.insert(0, HERE)
 import bom as BOM  # noqa: E402
 import bom_artikel as BA  # noqa: E402
 import bom_benennung as BN  # noqa: E402
+import variante as V  # noqa: E402
+
+VAR = V.aktiv()   # N-VARIANTEN V1a: --variante <v> (Standard a_plus); Kindprozesse erben ueber KREISLAUF_VARIANTE
+ENV_VAR = {"KREISLAUF_VARIANTE": VAR}
 
 ERG = []
 
@@ -46,7 +50,7 @@ def hash_ohne_stempel(pfad):
 
 
 def kopie_anlegen(tmp):
-    for rel in ("data/bom_koerper.json", "data/katalog.json", "data/bom_regeln.json", "viewer/instances.json"):
+    for rel in ("data/bom_koerper.json", "data/katalog.json", "data/bom_regeln.json", os.path.relpath(V.pfad("instances", VAR), ROOT)):
         os.makedirs(os.path.join(tmp, os.path.dirname(rel)), exist_ok=True)
         shutil.copy(os.path.join(ROOT, rel), os.path.join(tmp, rel))
     shutil.copytree(os.path.join(ROOT, "data", "beschaffung"), os.path.join(tmp, "data", "beschaffung"))
@@ -55,7 +59,7 @@ def kopie_anlegen(tmp):
 
 
 def main():
-    sl = jl(os.path.join(ROOT, "data", "stueckliste.json"))
+    sl = jl(V.pfad("stueckliste_json", VAR))
     inst = jl(BA.INST)
     cache = jl(BA.CACHE)
     kat = jl(BA.KATALOG)
@@ -151,9 +155,9 @@ def main():
         kopie_anlegen(tmp)
         hs = []
         for _ in range(2):
-            subprocess.run([sys.executable, "-X", "utf8", os.path.join(HERE, "bom.py")], env=dict(os.environ, BOM_ROOT=tmp), capture_output=True, text=True)
-            hs.append(hash_ohne_stempel(os.path.join(tmp, "data", "stueckliste.json")))
-        gleich_repo = jl(os.path.join(tmp, "data", "stueckliste.json"))["zeilen"] == sl["zeilen"]
+            subprocess.run([sys.executable, "-X", "utf8", os.path.join(HERE, "bom.py")], env=dict(os.environ, BOM_ROOT=tmp, **ENV_VAR), capture_output=True, text=True)
+            hs.append(hash_ohne_stempel(V.pfad("stueckliste_json", VAR, root=tmp)))
+        gleich_repo = jl(V.pfad("stueckliste_json", VAR, root=tmp))["zeilen"] == sl["zeilen"]
         check(12, "Determinismus: bom.py zweimal in einer Kopie, sha256 data/stueckliste.json (ohne Drift-Stempel) gleich", hs[0] == hs[1], hs[0][:12] + (", Zeilen = Repo" if gleich_repo else ", Zeilen weichen vom Repo ab (Modelldrift oder Liste nicht neu erzeugt)"))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
@@ -168,9 +172,9 @@ def aenderungstest():
     try:
         kopie_anlegen(tmp)
         cache = jl(os.path.join(tmp, "data", "bom_koerper.json"))
-        inst = Counter(i["d"] for i in jl(os.path.join(tmp, "viewer", "instances.json"))["instances"])
+        inst = Counter(i["d"] for i in jl(V.pfad("instances", VAR, root=tmp))["instances"])
         kandidaten = [c for c, v in sorted(cache["komponenten"].items()) if c.startswith("lt_rohr_d") and inst.get(c, 0) > 0]
-        alt = jl(os.path.join(ROOT, "data", "stueckliste.json"))
+        alt = jl(V.pfad("stueckliste_json", VAR))
         orig = json.dumps(cache)
 
         def lauf(ziel, plus_mm):
@@ -178,8 +182,8 @@ def aenderungstest():
             bb = max(c2["komponenten"][ziel]["bodies"], key=lambda x: x["mass_g"])
             bb["bbox_max"][2] += plus_mm
             json.dump(c2, open(os.path.join(tmp, "data", "bom_koerper.json"), "w", encoding="utf-8"), ensure_ascii=False)
-            r = subprocess.run([sys.executable, "-X", "utf8", os.path.join(HERE, "bom.py")], env=dict(os.environ, BOM_ROOT=tmp), capture_output=True, text=True)
-            neu = jl(os.path.join(tmp, "data", "stueckliste.json"))
+            r = subprocess.run([sys.executable, "-X", "utf8", os.path.join(HERE, "bom.py")], env=dict(os.environ, BOM_ROOT=tmp, **ENV_VAR), capture_output=True, text=True)
+            neu = jl(V.pfad("stueckliste_json", VAR, root=tmp))
             aid = "ROH-pvcu-d%d" % int(re.match(r"lt_rohr_d(\d+)", ziel).group(1))
             return r.returncode == 0, aid, next(z for z in alt["zeilen"] if z["artikel_id"] == aid), next(z for z in neu["zeilen"] if z["artikel_id"] == aid), neu
 

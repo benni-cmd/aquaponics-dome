@@ -12,7 +12,11 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.environ.get("BOM_ROOT") or os.path.dirname(HERE)
-OUT_HTML = os.path.join(ROOT, "docs", "einkaufsliste.html")
+sys.path.insert(0, HERE)
+import variante as V  # noqa: E402
+
+VARIANTE = V.aktiv()
+OUT_HTML = V.pfad("einkaufsliste", VARIANTE, root=ROOT)
 
 GRUPPEN_REIHENFOLGE = ["Kuppel", "Fundament", "Becken und Tanks", "Filter", "Tische und Beete", "Leitungen", "Huelle", "Messtechnik und Elektrik"]
 
@@ -112,5 +116,5 @@ def schreibe_seite(out):
 VORLAGE = open(os.path.join(HERE, "bom_seite_vorlage.html"), encoding="utf-8").read() if os.path.exists(os.path.join(HERE, "bom_seite_vorlage.html")) else ""
 
 if __name__ == "__main__":
-    schreibe_seite(json.load(open(os.path.join(ROOT, "data", "stueckliste.json"), encoding="utf-8")))
+    schreibe_seite(json.load(open(V.pfad("stueckliste_json", VARIANTE, root=ROOT), encoding="utf-8")))
     print("geschrieben:", OUT_HTML)

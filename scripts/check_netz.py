@@ -11,8 +11,14 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import variante as V  # noqa: E402  (N-VARIANTEN V1a: Schalter --variante <v>, Standard a_plus)
+
+VAR = V.aktiv()
 NETZ = json.loads((ROOT / "data" / "leitungsnetz.json").read_text(encoding="utf-8"))
-SPEC = json.loads((ROOT / "data" / "system-specs.json").read_text(encoding="utf-8"))
+NETZ["knoten"] = V.filtere(NETZ["knoten"], VAR)   # Eintraege ohne Feld `varianten` gelten fuer beide Varianten
+NETZ["kanten"] = V.filtere(NETZ["kanten"], VAR)
+SPEC = json.loads(Path(V.pfad("system_specs", VAR, root=str(ROOT))).read_text(encoding="utf-8"))
 
 # Innendurchmesser mm je Aussendurchmesser (PVC PN10, aus den Geschwindigkeiten der Netzliste zurueckgerechnet, R28/R40)
 ID = {9: 6.0, 12: 8.0, 16: 12.0, 20: 16.0, 25: 21.0, 32: 28.0, 40: 35.0, 50: 44.0, 63: 55.7, 75: 67.0, 90: 80.0, 110: 98.6}

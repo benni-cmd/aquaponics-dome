@@ -7,7 +7,7 @@
 Auftragsblatt mit Architektur, Netz-Delta, Pruefpunkten: `docs/jobs/N-VARIANTEN.md`.
 
 ## Plan
-1. V1a Werkstatt Skripte/Daten (sofort, parallel): `scripts/variante.py`, Schalter in `params.json`, Ausgabepfade in BOM, Einkaufsliste, Kennzahlen, Viewer-Export, `check_varianten.py`, Vergleichsseite.
+1. [x] V1a Werkstatt Skripte/Daten (05.11.2026, siehe Stand): `scripts/variante.py`, Schalter in `params.json`, Ausgabepfade in BOM, Einkaufsliste, Kennzahlen, Viewer-Export, `check_varianten.py`, Vergleichsseite.
 2. V2 Werkstatt Bauteile (sofort, parallel): Pegelschacht, Ringstuetze, Entluefter, Ring-Abzweig; Booster = `pumpe_gross`.
 3. VV Viewer-Schalter (nach V1a, parallel).
 4. V1b Varianten-Weiche in `gen_dome.py`, `build.sh`, `leitungen.py`, Pruefskripten (EIN Slot der Modell-Kette); danach markiert die A+-Kette A+-only-Teile mit `varianten: ["a_plus"]`.
@@ -24,6 +24,16 @@ Auftragsblatt mit Architektur, Netz-Delta, Pruefpunkten: `docs/jobs/N-VARIANTEN.
   - Entluefter `entluefter_d75` (T96): T d75 + Nippel + Schnellentlueftungsventil 1 Zoll, Oberkante 215 ueber Achse.
   - Ring-Abzweig `ring_abzweig_d40` / `_d32` (T97): nur Bibliotheksteile (Volumen = Bibliotheks-.sc belegt), Abgang 362,4 / 350,4 unter der T-Achse.
   - Artikel stehen nicht in Katalog/Stueckliste (`ausnahme` in den Teiledaten): Aufnahme durch N-STUECKLISTE.
+
+- 05.11.2026: **V1a Werkstatt Skripte/Daten gebaut und gemessen** (kein Bau, kein `gen_dome.py`, kein `designs/dome.sc`).
+  - Neu: `scripts/variante.py` (Schalter `--variante`/`KREISLAUF_VARIANTE`/`params.json`, `gilt`, `filtere`, `pfad`), `scripts/check_varianten.py`, `scripts/bom_vergleich.py` -> `docs/varianten-vergleich.md`. `data/params.json`: Eintrag `kreislauf_variante` (Standard `a_plus`).
+  - Schalter eingebaut in `bom.py`, `bom_artikel.py` (Pfad der Instanzen), `bom_seite.py`, `check_bom.py`, `check_netz.py` (Filter `varianten` an Knoten und Kanten), `system_specs.py` (Block `kreislauf`, Datei je Variante), `viewer/export_model.py` und `viewer/export_ansicht.py` (Ausgabe nach `viewer/varianten/ring_b2/`, `defs/` gemeinsam).
+  - P1 (A+ unveraendert), Messung vom 05.11.2026:
+    1. `python -X utf8 scripts/check_varianten.py --a-plus-gleich`: 11 PASS, 1 OFFEN (Ring B2 noch nicht gebaut), 0 FAIL, Exit 0. `bom.py` ohne Schalter und mit `--variante a_plus` erzeugen in einer Kopie `stueckliste.json`, `stueckliste.md` und `einkaufsliste.html` byte-gleich.
+    2. `data/system-specs.json`: alle Schluessel ausser dem neuen Block `kreislauf` gleich dem Stand `HEAD` (Vergleich per `python -c`, `a == old` nach `pop('kreislauf')`).
+    3. `viewer/export_ansicht.py`: altes Skript (`git show HEAD:...`) und neues Skript auf denselben Eingaben, `sha256sum` der `ansicht.json` gleich (cccb1ffc55...).
+    4. `python -X utf8 scripts/check_bom.py`: Exit 0, 14 von 14 PASS. `check_netz.py` und `check_netz.py --variante ring_b2`: bestanden.
+  - Grenzen: (a) `viewer/export_model.py` ist nur auf Syntax und Pfade geprueft, nicht gelaufen (voller Export macht die naechste Montage; Ring B2 hat noch kein `dome-script-ring_b2.json`). (b) `data/stueckliste.json` der Kopie weicht vom Repo nur im Modellstempel ab, weil eine parallele Sitzung eine `.sc` ergaenzt hat. (c) Die Einkaufsliste von Ring B2 traegt kein sichtbares Variantenetikett (Vorlage `bom_seite_vorlage.html` bleibt fuer A+ byte-gleich); nur das Feld `kopf.variante` steht in `stueckliste-ring_b2.json`. (d) Die gemessenen Kennzahlen (Rohrlaenge, Wasser in Rohren) sind in beiden Varianten gleich, bis V1b die Trassen mit `varianten` markiert.
 
 ## DoD
 1. P1 bis P5 aus `docs/jobs/N-VARIANTEN.md` Abschnitt 5 von fremden Pruefern als PASS belegt (`docs/jobs/pruefung/N-VARIANTEN-1.md`, `-2.md`).

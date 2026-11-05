@@ -8,13 +8,16 @@ Leitungsart (Zulauf, Ruecklauf, Luft, Frischwasser): Die Instanz liegt auf der M
   medium Luft -> Luft; Kante beginnt an frischwasser oder aktivkohle -> Frischwasser; Kante endet an pool, ruecklauf_*, beet_sumpf_* oder zweitbecken -> Ruecklauf
   (ausser sie beginnt am pool: Ablauf aus dem Pool zum Filter = Zulauf); alle uebrigen Kanten (Pool, Filter, Pumpen bis zu den Pflanzen) -> Zulauf.
 Kabel haben keine Rohrteile; der Viewer faerbt sie ueber den Werkstoff kabel_pvc.
-Aufruf: python viewer/export_ansicht.py   (wird von export_model.py am Ende und von serve.py bei veralteter Datei aufgerufen)
+Aufruf: python viewer/export_ansicht.py [--variante ring_b2]   (wird von export_model.py am Ende und von serve.py bei veralteter Datei aufgerufen)
 """
 import glob, json, math, os, re, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.environ.get('ANSICHT_ROOT') or os.path.abspath(os.path.join(HERE, '..'))
-VIEWER = os.environ.get('ANSICHT_VIEWER') or HERE
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.join(HERE, '..')), 'scripts'))
+import variante as V   # N-VARIANTEN V1a
+VAR = V.aktiv()
+VIEWER = os.environ.get('ANSICHT_VIEWER') or V.pfad('viewer_dir', VAR, root=os.path.abspath(os.path.join(HERE, '..')))   # a_plus: viewer/, ring_b2: viewer/varianten/ring_b2/
 ABSTAND_MAX_MM = 150   # weiter von jeder Trasse entfernt: Art unbekannt (None)
 
 
@@ -58,7 +61,8 @@ def bauen():
         komp[os.path.splitext(os.path.basename(f))[0]] = {'gruppe': d.get('bauteilgruppe'), 'werkstoff': w}
     inst = jl(os.path.join(VIEWER, 'instances.json'))
     netz = jl(os.path.join(ROOT, 'data', 'leitungsnetz.json'))
-    trassen = jl(os.path.join(ROOT, 'data', 'leitungstrassen.json'))['trassen']
+    netz['kanten'] = V.filtere(netz['kanten'], VAR)   # Eintraege ohne Feld `varianten` gelten fuer beide
+    trassen = V.filtere(jl(os.path.join(ROOT, 'data', 'leitungstrassen.json'))['trassen'], VAR)
     art_von_kante = kanten_art(netz)
     pfade = []
     for t in trassen:

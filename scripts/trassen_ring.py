@@ -370,12 +370,12 @@ def tragwerk(runde="r1"):
         fl = fallleitungen()
         for dk in (40, 32):
             out.append((f"Ring_Abzweig_d{dk}", comp(f"ring_abzweig_d{dk}"), [f["m_t"] for f in fl if f["dk"] == dk], "08_Leitungen"))
-        out.append(("Ring_B2_Schlaeuche", comp(SCHLAUCH_DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"))
+        out.append(("Ring_B2_Schlauchwege", comp(SCHLAUCH_DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"))
     return out
 
 # ================================================================== R2: 38 Abzweige und Schlauch-Fallleitungen
 import autobahn_s as AS
-SCHLAUCH_DATEI = "ring_b2_schlaeuche"
+SCHLAUCH_DATEI = "ring_b2_schlauchwege"   # neuer Name: alte 622-MB-Definition ring_b2_schlaeuche blieb im Viewer gesperrt
 ZONE = {"Tisch_innen": ("innen", "tisch"), "Tisch_mitte": ("mitte", "tisch"), "Tisch_aussen": ("aussen", "tisch"), "Beet_innen_933": ("mitte", "beet"), "Beet_aussen_800": ("aussen", "beet")}
 PORT = {"Tisch_innen": ((-449.0, 256.0, 1076.0), "t"), "Tisch_mitte": ((-823.0, 520.0, 1083.0), "t"), "Tisch_aussen": ((-1349.0, 497.0, 1091.0), "t"),
         "Beet_innen_933": ((-972.0, -392.0, 624.0), "b"), "Beet_aussen_800": ((-1360.0, -326.0, 612.0), "b")}   # [Q] docs/parts/nft_tisch.md Ports, docs/parts/ibc_beet.md Ports

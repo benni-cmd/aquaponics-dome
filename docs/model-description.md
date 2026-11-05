@@ -50,6 +50,8 @@ Jede Zahl im Bauteilblatt traegt eine Herkunftsmarke: **Q** (Quelle), **E** (aus
 | Haut-Paneele (T40) | 40 Dreiecke, 2 Typen (AAB, BBB), Doppelstegplatte 8 mm, Rand 15 mm vor der Strebenachse, Alu-Kappe 30 x 8 als Randprofil (W19, noch nicht im Gesamtmodell) | check_haut 27/27 (nachgemessen), Spec-Pruefer und Bild-Kritiker fehlen | 30.10. 00:00 |
 | Tuer, Rohrnetz | offen | - | - |
 
+**Betriebsregel Leitungen (R47 M4, M10-S2N):** Der Notbypass K56/K57 (Hahn KH1/KH2 im Schacht) wird einmal im Monat probeweise geoeffnet und durchgespuelt, damit die Reserve nicht ungetestet verschlammt.
+
 ## 6. Wie genau ist das Modell?
 - **Anzahlen** stimmen mit Bens OBJ und Tabelle ueberein: 14 Beete (8 x 2953, 6 x 1865), 4 Tanks, 24 NFT-Tische, 2160 Beetpflanzen (Tabelle verlangt mindestens 152) und 586 Rinnenpflanzen (Tabelle verlangt mindestens 459). Die NFT-Mindestzahl ist die bindende Grenze.
 - **Positionen** folgen dem OBJ; dessen Beetlage ist nur auf etwa 100 mm genau (D21), Tankplattformen ueberlappen dort teils (D22).

@@ -86,7 +86,7 @@ Hinweise fuer die 5a-Sitzungen: Gruppen je Teil sind Geruestgruppen nach Artikel
 - A3: Teile ohne eigene Menge, deren Artikel ein anderes Teil derselben Datei traegt, zaehlen nicht als "ohne Preis" (`lt_kugelhahn_d63`: 79,02 EUR, kein Fehlsatz); Zeile "im Kaufteil enthalten".
 - A4: NICHT erledigt, Grund: Marker `geruest` in 14 Dateien (erdflaeche, fundamentanker, fundamentring, haut_paneel_*, haut_profil, huelle_folie_*, keilschiene, tuer, tuer_komplett, tuer_zarge_planenausschnitt) nachgezogen ergab 28 FAIL in `check_parts` (Werkstoff ausserhalb des Katalogs, .sc-Material passt nicht); zurueckgenommen. Loesung braucht Katalog-Werkstoffe und .sc-Aenderung (`designs/`). Menschfiguren bleiben bewusst Geruest.
 - A6: `viewer/serve.py` setzt `design_saved` beim Start aus `instances.json` (`built`), Kopfzeile zeigt "Modell gespeichert 04.11. 13:32:32".
-- Zwischenstand `python -X utf8 scripts/workshop/check_parts.py` (alle Komponenten, Lauf nicht beendet bei Sitzungsende): 299 von 308 Komponenten durchlaufen, 6558 PASS, 0 FAIL. Rest und Exit-Code offen.
+- Zwischenstand `python -X utf8 scripts/workshop/check_parts.py` (alle Komponenten): Lauf beendet nach Sitzungsende: Exit 0, 308 von 308 Komponenten, 6759 PASS, 0 FAIL (strebe_a/b gruen durch die neue Strebe der Sitzung werkstatt-strebe).
 
 ## DoD
 Dateien aus dem Blatt vorhanden; `check_bom.py` gruen; fuenf Pruefpunkte vom Pruefer gemessen; Seite per Screenshot geprueft; Entscheidungen der Offen-Liste in `docs/decisions.md`; Wunschbuch W59 nachgefuehrt; Commit und Push je Teilschritt.

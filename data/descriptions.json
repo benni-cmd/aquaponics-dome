@@ -540,6 +540,30 @@
       "rolle": "Schritt 4 (groß, Hauptkreislauf 4 × 55 l/min) und Schritt 2 (klein, Absetzer-Teilstrom 4 × 12,5 l/min, je Tank eine in Betrieb) der Kette; die Netzliste data/leitungsnetz.json hält Anschlüsse Ø50/40 (groß) und Ø40/32 (klein)."
     },
     {
+      "match": "^lt_kugelhahn_feder_d",
+      "titel": "Kugelhahn d40 mit Federrückzug",
+      "was": "Absperrhahn am Schlammablass der Absetzer: Er ist nur offen, solange die Hand den Hebel hält; lässt man los, schließt die Feder. Schützt den Pool vor dem Leerlaufen.",
+      "status": "gebaut (Werkstatt W37-1); Bauform wie der Kugelhahn d40, Fabrikat nicht geprüft",
+      "ablauf": [
+        "Hebel gegen die Feder in Rohrrichtung drehen: der Hahn öffnet, 20 bis 40 l Schlammwasser laufen ins Schlammfass.",
+        "Hebel loslassen: die Feder dreht ihn quer zur Rohrachse, der Hahn ist zu."
+      ],
+      "aufbau": [
+        {
+          "t": "Maße",
+          "p": [
+            "Länge 102, Gehäuse Ø 60",
+            "Federgehäuse Ø 36 × 22, Hebel 110 (Ruhelage quer = zu)"
+          ]
+        }
+      ],
+      "masse": {
+        "Länge": "102 mm"
+      },
+      "grenzen": "Fabrikat und Verfügbarkeit im Standardmaß nicht geprüft; Feder und Kugel nicht modelliert.",
+      "quelle": "docs/parts/leitungsteile.md (Ergänzung W37), docs/research/R45-hydraulik-auslegung.md Abschnitt 0"
+    },
+    {
       "match": "^lt_reduzierung_d40_d20$",
       "titel": "Reduzierung d40 auf d20 (Beet-Anschluss)",
       "was": "Eine Reduziermuffe vom Beete-Strang d40 direkt auf das Tropfrohr-Anschlussrohr d20; ersetzt die Kette aus drei Reduziermuffen.",
@@ -1198,6 +1222,33 @@
       },
       "grenzen": "Die Einbautiefe folgt aus dem Beetablauf (Sammler 6 m mit 1 % angenommen); die statische Förderhöhe steigt dadurch auf 1,4 bis 1,6 m, der Arbeitspunkt der Pumpe ist nachzurechnen. Fabrikate offen.",
       "quelle": "docs/parts/beet_sumpf.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 3, docs/jobs/W37-1-sumpf-schlammfass.md"
+    },
+    {
+      "match": "^schlammfass",
+      "titel": "Schlammfass (je Linie)",
+      "was": "Spannringfass 220 l in einer Grube neben dem Absetzer; nimmt den Schlamm der Absetzer-Spülung auf und wird wöchentlich von Hand geleert.",
+      "status": "gebaut (Werkstatt W37-1); Handelsmaß angenommen; Standort und Grube setzt die Montage (M10 S5)",
+      "ablauf": [
+        "Alle 2 bis 3 Tage wird der Federrückzug-Kugelhahn am Absetzer kurz geöffnet; 20 bis 40 l Spülwasser laufen über K07/K23 in den Stutzen d40 des Deckels.",
+        "Im Fass setzt sich der Schlamm ab; einmal pro Woche wird das Klarwasser abgehoben (zurück in den Pool) und der Dickschlamm zum Wurmkompost gebracht.",
+        "Es gibt keinen Auslass; entleert wird von oben."
+      ],
+      "aufbau": [
+        {
+          "t": "Teile",
+          "p": [
+            "Spannringfass PE mit Deckel und Spannring",
+            "Einlaufstutzen d40 in der Deckelmitte",
+            "Bohrung Ø 8 für einen Luftschlauch, Entlüftung Ø 20"
+          ]
+        }
+      ],
+      "masse": {
+        "Grube": "Ø 0,8 m, Tiefe 0,95 m",
+        "Wochenmenge": "70 bis 105 l je Linie"
+      },
+      "grenzen": "Fassmaß als Handelsmaß angenommen; die Konzentration des Schlamms ist erst im Betrieb messbar.",
+      "quelle": "docs/parts/schlammfass.md, docs/research/R45-hydraulik-auslegung.md Abschnitt 0"
     },
     {
       "match": "^puffer_klein",

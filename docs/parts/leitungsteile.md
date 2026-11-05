@@ -696,3 +696,15 @@ Auftrag `docs/jobs/W39-kleinteile.md`. Generator `scripts/workshop/leitung_w39.p
 **Pruefung:** `check_lt_w39.py lr_t` 16/16 PASS: je DN ein Koerper, Lauf 2 a, Abgangshoehe a, Muffen-Aussen, Volumen gegen unabhaengiges CSG-Raster 1 mm (DN50 0,26 %, DN100 1,0 %: Raster-Rauschen bei duennen Waenden, Raster mit 1,5 mm liegt mit -1,0 % auf der anderen Seite; Toleranz 1,5 %), je 3 Port-Stirnflaechen. **Bilder:** `renders/components/leitungsteile/lt_leerrohr_t_dn50.png`, `lt_leerrohr_t_dn100.png`.
 
 **Offene Fragen:** (1) Handelsteil im Katalog offen. (2) Ob die Kabeltrasse ueberhaupt Abzweige braucht oder mit Zugdosen/Schaechten arbeitet, entscheidet S6; das T ist dann nur fuer Signalleitungen sinnvoll. (3) Gleich grosse Abzweige DN100/DN50 gemischt sind ein Reduzierstueck (Teil 7) plus T.
+
+# Ergaenzung W37 (05.11.2026, Werkstatt): Kugelhahn d40 mit Federrueckzug
+
+Auftrag `docs/jobs/W37-1-sumpf-schlammfass.md` (Teil 2). Generator `scripts/workshop/leitung_w37.py` (Helfer aus `leitung.py`; `leitung_w37.ports()` liefert die W37-Ports und fragt sonst `leitung_w39.ports()`), Pruefung `scripts/workshop/check_lt_w37.py` (Ergebnis `renders/components/leitungsteile/check_lt_w37.txt`, 11/11), maschinenlesbar unter `w37_teile` in `data/components/leitungsteile.json`. Die 63er-Pruefung `check_leitungsteile.py` zaehlt die Datei nicht mit (Liste `leitung_w37.FILES`).
+
+## Kugelhahn d40 mit Federrueckzug `lt_kugelhahn_feder_d40` (T70-KHF-40)
+
+- Zweck: Schlammablass an der Kegelspitze der Absetzer (K07 Linie 1, K23 Linie 2, je 1). Offen nur, solange die Hand den Hebel haelt; die Feder schliesst. Schutz gegen leeren Pool: Pumpe_klein foerdert 12,5 l/min, ein offener d40-Hahn leert den Absetzer in etwa 2 min (R45 Abschnitt 0, Gefahr und Absicherung).
+- Masse: wie `lt_kugelhahn_d40` (Laenge 102, Gehaeuse Oe 60 x 50, Muffen d40 x 26, Durchgang 36,2); dazu Federgehaeuse Oe 36 x 22 auf der Spindel (+X) und Hebel 110 mm in Ruhelage GESCHLOSSEN (quer zur Rohrachse, +Y).
+- Ports: A (0, 0, 0) Richtung -Z, Muffe DN32 (d40); B (0, 0, 102) Richtung +Z, Muffe DN32 (d40) — gleich der Bibliothek.
+- Herkunft: Bauweise [E] wie Kugelhahn der Bibliothek; Federgehaeuse und Hebel [A]. **Fabrikat und Verfuegbarkeit eines Kugelhahns d40 mit Federrueckzug im Standardmass NICHT geprueft [A]** (R45 Offene Punkte Frage 0 Nr. 3); Ersatz, falls nicht erhaeltlich: Kugelhahn mit Totmann-Hebel oder Magnetventil stromlos zu (Steuerung).
+- Bild: `renders/components/leitungsteile/lt_kugelhahn_feder_d40.png`.

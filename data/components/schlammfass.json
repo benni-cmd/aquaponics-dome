@@ -1,0 +1,201 @@
+{
+ "klasse": "schlammfass",
+ "teilenummer": "T93",
+ "revision": "A",
+ "beschreibung": "Schlammfass je Linie (L01, R45 Abschnitt 0, E12): Spannringfass PE 220 l Oe 580 x 880 in einer Grube Oe 0,8 m, Tiefe 0,95 m neben dem Absetzer; Deckel mit Einlaufstutzen d40 in der Mitte (K07/K23), Luftschlauch-Bohrung Oe 8, Entlueftung Oe 20, kein Auslass; woechentlich von Hand geleert",
+ "quelle_masse": "docs/research/R45-hydraulik-auslegung.md Abschnitt 0 (Bauteil-Skizze, Zahlen), data/leitungsnetz.json Version 3 (K07/K23, Knoten schlammfass_1/2)",
+ "parameter": {
+  "fass_d": {
+   "wert": 580,
+   "einheit": "mm",
+   "herkunft": "[A] docs/research/R45-hydraulik-auslegung.md Abschnitt 0: Spannringfass PE 200-220 l, Oe 0,58-0,60 m (Handelsmass, nicht gegengeprueft)"
+  },
+  "fass_h": {
+   "wert": 880,
+   "einheit": "mm",
+   "herkunft": "[A] docs/research/R45-hydraulik-auslegung.md Abschnitt 0: H 0,88-0,92 m inklusive Deckel"
+  },
+  "fass_wall": {
+   "wert": 4,
+   "einheit": "mm",
+   "herkunft": "[A] Wandstaerke PE-Fass (kein Datenblatt gelesen)"
+  },
+  "fass_floor": {
+   "wert": 5,
+   "einheit": "mm",
+   "herkunft": "[A]"
+  },
+  "deckel_t": {
+   "wert": 15,
+   "einheit": "mm",
+   "herkunft": "[A] Deckel mit Spannring"
+  },
+  "ring_b": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "[A] Spannring radial"
+  },
+  "ring_h": {
+   "wert": 35,
+   "einheit": "mm",
+   "herkunft": "[A] Spannring hoch"
+  },
+  "stutzen_d": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[E] docs/research/R45-hydraulik-auslegung.md Abschnitt 0: Deckel mit Stutzen d40 Mitte; K07/K23 d40 (Netz V3)"
+  },
+  "luft_d": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[E] docs/research/R45-hydraulik-auslegung.md Abschnitt 0: Bohrung Oe 8 fuer Luftschlauch (Luftstein optional, Frage 4)"
+  },
+  "luft_x": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[A] Lage Luftbohrung"
+  },
+  "entl_d": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "[E] docs/research/R45-hydraulik-auslegung.md Abschnitt 0: Entlueftung Oe 20"
+  },
+  "entl_x": {
+   "wert": -150,
+   "einheit": "mm",
+   "herkunft": "[A] Lage Entlueftung"
+  },
+  "grube_d": {
+   "wert": 800,
+   "einheit": "mm",
+   "herkunft": "[E] docs/research/R45-hydraulik-auslegung.md Abschnitt 0 Bauteil-Skizze: Grube Oe 0,8 m (baut die Montage)"
+  },
+  "grube_t": {
+   "wert": 950,
+   "einheit": "mm",
+   "herkunft": "[E] docs/research/R45-hydraulik-auslegung.md Abschnitt 0: Tiefe etwa 0,95 m; Fassoberkante etwa Flur 0 bis +20 bei 70 mm Sandbett"
+  }
+ },
+ "werkstoff": {
+  "name": "PE (Fass, Deckel), Stahl verzinkt (Spannring), PVC-U (Stutzen)",
+  "dichte_g_cm3": 0.95,
+  "farbe": "#2a4f8f",
+  "herkunft": "[A]"
+ },
+ "anzahl": {
+  "soll": "2 (je Linie: schlammfass_1, schlammfass_2)",
+  "quelle": "data/leitungsnetz.json Knoten schlammfass_1/2; Standort 0,7-0,8 m neben dem Kegelspitzen-Hahn setzt die Montage (M10 S5)"
+ },
+ "bezugspunkt": "Mitte Fassboden aussen (Z 0), Z hoch; Luftbohrung +X, Entlueftung -X. Einbau: Fassboden flur-relativ -880 auf 70 mm Sandbett (Grubensohle -950), Fassoberkante Flur 0",
+ "herkunft_tabelle": [
+  [
+   "Fass 220 l, Oe 580 x 880",
+   "Oe 580 x 880",
+   "Annahme (Handelsmass)",
+   "docs/research/R45-hydraulik-auslegung.md Abschnitt 0 Bauteil-Skizze (Oe 0,58-0,60, H 0,88-0,92); nicht gegengeprueft",
+   "mittel"
+  ],
+  [
+   "Fassung 105 l/Woche plus Reserve",
+   "220 l nominal",
+   "gerechnet",
+   "docs/research/R45-hydraulik-auslegung.md Abschnitt 0 Zahlen: 70-105 l je Linie und Woche (Spanne 47-140)",
+   "mittel"
+  ],
+  [
+   "Stutzen d40 Mitte Deckel",
+   "d40",
+   "belegt (Netz) / gerechnet",
+   "data/leitungsnetz.json V3 K07/K23 dn 40; R45 Einlauf",
+   "hoch"
+  ],
+  [
+   "Luftbohrung Oe 8, Entlueftung Oe 20",
+   "Oe 8 / Oe 20",
+   "gerechnet (R45-Skizze)",
+   "docs/research/R45-hydraulik-auslegung.md Abschnitt 0 Entlueftung/Luft",
+   "mittel"
+  ],
+  [
+   "Grube Oe 800, Tiefe 950",
+   "800 / 950",
+   "gerechnet (R45-Skizze)",
+   "docs/research/R45-hydraulik-auslegung.md Abschnitt 0 Bauteil-Skizze; Kollision mit eingegrabenen Rohren prueft die Montage (Frage 0 Nr. 5)",
+   "mittel"
+  ],
+  [
+   "Wand 4, Boden 5, Deckel 15, Spannring 10 x 35",
+   "mm",
+   "Annahme",
+   "kein Datenblatt gelesen",
+   "niedrig"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Nimmt den Schlamm auf, den der Absetzer alle 2 bis 3 Tage ueber den Federrueckzug-Kugelhahn und K07/K23 ablaesst (20 bis 40 l je Spuelung). Der Schlamm setzt sich ab; einmal pro Woche wird Klarwasser abgehoben (zurueck in den Pool) und Dickschlamm zum Wurmkompost gebracht. Kein Reaktor, kein Auslass.",
+  "querschnitt": "Fass Oe 580 x 865 (Wand 4, Boden 5) mit Deckel Oe 580 x 15 und Spannring 600 x 35; Einlaufstutzen d40 (Muffe) in der Deckelmitte, Bohrung Oe 8 bei x +150, Entlueftungsstutzen Oe 20 bei x -150.",
+  "toleranzen": "Grube Oe 800 laesst 100 mm Ringspalt um das Fass (Verfuellung); Fassoberkante Flur 0, Stutzen-Muffe bis Flur +40.",
+  "verbindungen": [
+   "Deckel mit Spannring (Schnellverschluss) auf dem Fass; Dichtung nicht modelliert [A]",
+   "Einlaufstutzen d40 in den Deckel eingeklebt oder per Tankverbinder [A]; K07/K23 steckt mit dem Fallrohr in die Muffe"
+  ],
+  "abweichung": "Keine OBJ-Vorgabe; Bauteil nach R45 Abschnitt 0 (Bauteil-Skizze).",
+  "montage": [
+   "Grube Oe 0,8 m, Tiefe 0,95 m neben dem Absetzer (0,7-0,8 m Mitte zu Mitte vom Kegelspitzen-Hahn), Sandbett 70 mm",
+   "Fass einsetzen, Oberkante auf Flur 0 ausrichten, Ringspalt verfuellen",
+   "Deckel mit Stutzen aufsetzen, Spannring schliessen; K07/K23 (d40, 5 % Gefaelle, Bogen 90, Fallrohr 0,1 m) in die Muffe stecken"
+  ],
+  "werkzeug": "Spaten, Wasserwaage, Lochsaege, PVC-Kleber",
+  "stueckliste": [
+   "T93 Schlammfass je Linie: 1 Spannringfass PE 220 l mit Deckel und Spannring, 1 Einlaufstutzen d40 (Tankverbinder oder Klebemuffe), 1 Entlueftungsstutzen Oe 20; Federrueckzug-Kugelhahn d40 am Absetzer siehe lt_kugelhahn_feder_d40"
+  ],
+  "teileliste": [
+   [
+    "Spannringfass PE 220 l",
+    "Oe 580 x 880",
+    "offen (Fasshandel in DE/EU)",
+    "offen [A]"
+   ],
+   [
+    "Tankverbinder/Stutzen d40",
+    "Klebemuffe",
+    "offen (N-BESCHAFFUNG)",
+    "offen [A]"
+   ]
+  ],
+  "lokal": "Gebrauchtes Lebensmittel-Spannringfass (gereinigt) aus dem regionalen Fasshandel.",
+  "massen_getrennt": [],
+  "gewicht_gefuellt": "Bis 105 l Schlammwasser ca. 105 kg, voll ca. 220 kg [E, Dichte 1]; Entleerung von Hand (Heber/Tauchpumpe, Eimer)",
+  "pruefung": [
+   "scripts/workshop/check_schlammfass.py (Ergebnis renders/components/schlammfass/check.txt): Fassmass, Volumen 200-220 l (+-5 %) aus Oe und H und aus dem Modell, Stutzen d40 Mitte Deckel, Bohrungen, Ports, Gruben-Parameter, Interferenz 0"
+  ],
+  "offen": [
+   "Fassfabrikat und Mass im Handel nicht gegengeprueft [A]",
+   "Kollision der Grube mit eingegrabenen Rohren: Montage mit check_leitungen.py (R45 Frage 0 Nr. 5)",
+   "Luftstein/Luftmenge optional, Menge offen (R45 Frage 4)",
+   "Schlammkonzentration im Betrieb messen (R45 Frage 0 Nr. 1)",
+   "M10-S2V (Subtank, GEPARKT) beruehrt die Schlammfuehrung; bei Freigabe pruefen"
+  ],
+  "kritiker": "Kein Pruefer-Lauf (Pruefpunkte fuer den Pruefer im Blatt W37-1).",
+  "ports": [
+   [
+    "Einlauf Schlamm (K07 Linie 1 / K23 Linie 2, vom Federrueckzug-Kugelhahn des Absetzers)",
+    "Muffe d40, Mitte Deckel",
+    "x 0, y 0, z 920",
+    "+Z"
+   ],
+   [
+    "Luftschlauch (optional Luftstein)",
+    "Bohrung Oe 8 im Deckel",
+    "x 150, y 0, z 880",
+    "+Z"
+   ],
+   [
+    "Entlueftung",
+    "Stutzen Oe 20 innen",
+    "x -150, y 0, z 900",
+    "+Z"
+   ]
+  ]
+ }
+}

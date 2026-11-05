@@ -1506,5 +1506,64 @@
     }
    ]
   }
+ },
+ "w37_teile": {
+  "lt_kugelhahn_feder_d40": {
+   "teilenummer": "T70-KHF-40",
+   "komponente": "T70_Kugelhahn_Feder_d40",
+   "werkstoff": "PVC-U (Klebemuffen), Feder Edelstahl (nicht modelliert)",
+   "d": 40,
+   "laenge": 102.0,
+   "gehaeuse_aussen_d": 60.0,
+   "gehaeuse_laenge": 50.0,
+   "muffentiefe": 26,
+   "federgehaeuse": {
+    "d": 36.0,
+    "laenge": 22.0
+   },
+   "hebel": {
+    "laenge": 110.0,
+    "ruhelage": "geschlossen, quer zur Rohrachse (+Y)"
+   },
+   "funktion": "Schlammablass Absetzer K07/K23: offen nur bei Handkraft, Feder schliesst (Schutz gegen leeren Pool, R45 Abschnitt 0: 12,5 l/min Zulauf, offener d40-Hahn leert den Absetzer in 2 min)",
+   "verwendung": "Absetzer-Kegelspitze Linie 1 und 2 (K07, K23), je 1",
+   "herkunft": {
+    "Bauweise": "E wie lt_kugelhahn_d40 (leitung.kugelhahn)",
+    "Federgehaeuse 36 x 22, Hebel 110": "Annahme",
+    "handelsteil": "Kugelhahn mit Federrueckzug d40: Fabrikat und Verfuegbarkeit im Standardmass nicht geprueft [A] (R45 Frage 0 Nr. 3)"
+   },
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN32"
+    },
+    {
+     "name": "B",
+     "lage": [
+      0.0,
+      0.0,
+      102.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN32"
+    }
+   ]
+  }
  }
 }

@@ -1,0 +1,12 @@
+PASS lt_w37: Koerper (Kugelhahn, Federgehaeuse, Spindel, Hebel): Ist 4, Soll 4
+PASS lt_w37: Baulaenge = lt_kugelhahn_d40 (50 + 2 x 26): Ist 102, Soll 102 (+-0.1)
+PASS lt_w37: Gehaeusevolumen = lt_kugelhahn_d40: Ist 118652, Soll 118652 (+-1)
+PASS lt_w37: Hebel quer zur Rohrachse (Laenge in Y 110 > Hoehe in Z): Ist 1, Soll 1
+PASS lt_w37: Hebel-Laenge in Y: Ist 110, Soll 110 (+-0.1)
+PASS lt_w37: Federgehaeuse Laenge: Ist 22, Soll 22 (+-0.1)
+PASS lt_w37: Port A wie Bibliothek (Lage, Richtung, DN): Ist 1, Soll 1
+PASS lt_w37: Port B wie Bibliothek (Lage, Richtung, DN): Ist 1, Soll 1
+PASS lt_w37: leitungsteile.json w37_teile Eintrag mit 2 Ports: Ist 2, Soll 2
+PASS lt_w37: descriptions: erster Treffer ist der eigene Eintrag (^lt_kugelhahn_feder_d): Ist 1, Soll 1
+PASS lt_w37: Interferenz (Paare): Ist 0, Soll 0
+== lt_w37: 11/11 PASS

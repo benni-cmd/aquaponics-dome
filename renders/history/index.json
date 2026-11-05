@@ -2818,5 +2818,35 @@
   "note": "W37-1 Teil 1",
   "commit": "e33a1f4",
   "source": "renders/components/beet_sumpf/beet_sumpf-03-schnitt-x.png"
+ },
+ {
+  "file": "20261105-013304_werkstatt_schlammfass_schlammfass-01-schraeg.png",
+  "sha": "95cc393cff1b23aa",
+  "time": "2026-11-05 01:33:04",
+  "role": "werkstatt",
+  "subject": "schlammfass",
+  "note": "W37-1 Teil 2",
+  "commit": "78c17a9",
+  "source": "renders/components/schlammfass/schlammfass-01-schraeg.png"
+ },
+ {
+  "file": "20261105-013307_werkstatt_schlammfass_schlammfass-02-schnitt.png",
+  "sha": "24ddf28c0d832204",
+  "time": "2026-11-05 01:33:07",
+  "role": "werkstatt",
+  "subject": "schlammfass",
+  "note": "W37-1 Teil 2",
+  "commit": "78c17a9",
+  "source": "renders/components/schlammfass/schlammfass-02-schnitt.png"
+ },
+ {
+  "file": "20261105-013331_werkstatt_schlammfass_lt-kugelhahn-feder-d40.png",
+  "sha": "0788e18a3c12867a",
+  "time": "2026-11-05 01:33:31",
+  "role": "werkstatt",
+  "subject": "schlammfass",
+  "note": "W37-1 Teil 2",
+  "commit": "78c17a9",
+  "source": "renders/components/leitungsteile/lt_kugelhahn_feder_d40.png"
  }
 ]

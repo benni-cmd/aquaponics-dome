@@ -1,0 +1,191 @@
+{
+  "komponente": "schlammfass",
+  "datei": "designs/components/schlammfass.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "",
+  "stand": "teiledaten",
+  "titel": "Schlammfass (je Linie)",
+  "kurz": "Das eingegrabene Fass nimmt den Schlamm aus dem Absetzer auf; einmal pro Woche wird Klarwasser abgehoben und der Dickschlamm zum Wurmkompost gebracht.",
+  "hinweis": "Texte und Masse aus dem Bauteilblatt und den Parametern des Bauteils. Pumpe, Schwimmer und Deckel sind Platzhalter; Fabrikate und europaeischer Bezug der Kaufteile sind offen (Regel D76).",
+  "koerperzahl": 5,
+  "gruppen": [
+    {
+      "id": "fass",
+      "name": "Fass",
+      "kurz": "Fass, Deckel und Spannring.",
+      "teile": [
+        "fass",
+        "deckel",
+        "spannring"
+      ]
+    },
+    {
+      "id": "anschluesse",
+      "name": "Anschluesse",
+      "kurz": "Einlaufstutzen d40 und Entlueftung.",
+      "teile": [
+        "einlaufstutzen",
+        "entlueftung"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "fass",
+      "name": "Spannringfass PE 220 l",
+      "koerper": [
+        "Fass"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 7167.8 g, Einzelkoerper 580.0 x 580.0 x 865.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Fass nimmt den abgelassenen Schlamm der Absetzer-Spuelung auf; der Schlamm setzt sich ab.",
+      "eigenschaften": [
+        "Aussen 580 x 865 mm ohne Deckel, Wand 4, Boden 5 [A].",
+        "Innenraum 221 l (Modell)."
+      ],
+      "norm": "Handelsware Spannringfass [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlammfass.md, data/components/schlammfass.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 0; Handelsmass nicht gegengeprueft",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 300
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "deckel",
+      "name": "Fassdeckel mit Durchbruechen",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 3730.9 g, Einzelkoerper 580.0 x 580.0 x 15.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Deckel deckt das Fass ab und traegt Einlaufstutzen, Luftbohrung und Entlueftung.",
+      "eigenschaften": [
+        "Oe 580 x 15 mm.",
+        "Durchbrueche 48 (Stutzen), 8 (Luftschlauch), 26 (Entlueftung)."
+      ],
+      "norm": "Handelsware [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlammfass.md, data/components/schlammfass.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 0",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 200
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "spannring",
+      "name": "Spannring",
+      "koerper": [
+        "Spannring"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 5092.5 g, Einzelkoerper 600.0 x 600.0 x 35.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Spannring haelt den Deckel dicht auf dem Fass.",
+      "eigenschaften": [
+        "Stahl verzinkt, 10 x 35 mm [A]."
+      ],
+      "norm": "Handelsware [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlammfass.md, data/components/schlammfass.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 0",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 120
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "einlaufstutzen",
+      "name": "Einlaufstutzen d40",
+      "koerper": [
+        "Einlaufstutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 51.8 g, Einzelkoerper 48.0 x 48.0 x 55.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen nimmt das Fallrohr der Schlammleitung K07/K23 auf (Port).",
+      "eigenschaften": [
+        "Muffe d40 in der Deckelmitte."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlammfass.md, data/components/schlammfass.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 0",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 300
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    },
+    {
+      "id": "entlueftung",
+      "name": "Entlueftungsstutzen Oe 20",
+      "koerper": [
+        "Entlueftungsstutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 10.6 g, Einzelkoerper 26.0 x 26.0 x 35.0 mm (Modell-Bounding-Box)",
+      "funktion": "Der Stutzen laesst Luft aus dem Fass, wenn Schlammwasser einlaeuft.",
+      "eigenschaften": [
+        "Bohrung Oe 20, 20 mm hoch."
+      ],
+      "norm": "DIN 8062 / EN 1452 (PVC-U-Rohre) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlammfass.md, data/components/schlammfass.json, docs/research/R45-hydraulik-auslegung.md Abschnitt 0",
+      "bezug": "offen (D76)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250
+      },
+      "ausnahme": "Kaufteil/Handelsteil nicht im Katalog (data/katalog.json, N-STUECKLISTE); Artikel offen (D76, N-BESCHAFFUNG)"
+    }
+  ]
+}

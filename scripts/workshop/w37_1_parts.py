@@ -50,7 +50,20 @@ def spec_sumpf(names):
     kopf = dict(bauteilgruppe="Becken und Tanks", titel="Beet-Sumpf (Ablauf der Beete, je Linie)", kurz="Der eingegrabene Tank sammelt das Ablaufwasser der Beete; Pumpen mit Rueckschlagventil foerdern es zurueck, drei Schwimmer schalten und sperren bei Hochwasser die Beet-Zufuhr.")
     return kopf, gruppen, teile
 
-SPECS = {"beet_sumpf": spec_sumpf}
+def spec_fass(names):
+    teile = [
+        T("fass", "Spannringfass PE 220 l", ["Fass"], "kaufteil", "pe", "Das Fass nimmt den abgelassenen Schlamm der Absetzer-Spuelung auf; der Schlamm setzt sich ab.", ["Aussen 580 x 865 mm ohne Deckel, Wand 4, Boden 5 [A].", "Innenraum 221 l (Modell)."], "Handelsware Spannringfass [A]", "ja", "angenommen", Q_F + "; Handelsmass nicht gegengeprueft", expl=([0, 0, -1], 300)),
+        T("deckel", "Fassdeckel mit Durchbruechen", ["Deckel"], "kaufteil", "pe", "Der Deckel deckt das Fass ab und traegt Einlaufstutzen, Luftbohrung und Entlueftung.", ["Oe 580 x 15 mm.", "Durchbrueche 48 (Stutzen), 8 (Luftschlauch), 26 (Entlueftung)."], "Handelsware [A]", "nein", "angenommen", Q_F, expl=([0, 0, 1], 200)),
+        T("spannring", "Spannring", ["Spannring"], "kaufteil", "stahl_verzinkt", "Der Spannring haelt den Deckel dicht auf dem Fass.", ["Stahl verzinkt, 10 x 35 mm [A]."], "Handelsware [A]", "nein", "angenommen", Q_F, expl=([0, 0, 1], 120)),
+        T("einlaufstutzen", "Einlaufstutzen d40", ["Einlaufstutzen"], "kaufteil", "pvc_u", "Der Stutzen nimmt das Fallrohr der Schlammleitung K07/K23 auf (Port).", ["Muffe d40 in der Deckelmitte."], PVCN, "ja", "angenommen", Q_F, expl=([0, 0, 1], 300)),
+        T("entlueftung", "Entlueftungsstutzen Oe 20", ["Entlueftungsstutzen"], "kaufteil", "pvc_u", "Der Stutzen laesst Luft aus dem Fass, wenn Schlammwasser einlaeuft.", ["Bohrung Oe 20, 20 mm hoch."], PVCN, "nein", "angenommen", Q_F, expl=([0, 0, 1], 250)),
+    ]
+    gruppen = [{"id": "fass", "name": "Fass", "kurz": "Fass, Deckel und Spannring.", "teile": ["fass", "deckel", "spannring"]},
+               {"id": "anschluesse", "name": "Anschluesse", "kurz": "Einlaufstutzen d40 und Entlueftung.", "teile": ["einlaufstutzen", "entlueftung"]}]
+    kopf = dict(bauteilgruppe="Becken und Tanks", titel="Schlammfass (je Linie)", kurz="Das eingegrabene Fass nimmt den Schlamm aus dem Absetzer auf; einmal pro Woche wird Klarwasser abgehoben und der Dickschlamm zum Wurmkompost gebracht.")
+    return kopf, gruppen, teile
+
+SPECS = {"beet_sumpf": spec_sumpf, "schlammfass": spec_fass}
 
 def write(komp):
     path = os.path.join(sc.ROOT, "designs", "components", komp + ".sc")

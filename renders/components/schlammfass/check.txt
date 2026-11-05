@@ -1,0 +1,22 @@
+PASS schlammfass: Koerper (Fass, Deckel, Spannring, Einlaufstutzen, Entlueftungsstutzen): Ist 5, Soll 5
+PASS schlammfass: Fass Oe = 580 (R45: 580-600): Ist 579.991, Soll 580 (+-0.2)
+PASS schlammfass: Fass H mit Deckel = 880 (R45: 880-920): Ist 880, Soll 880 (+-0.2)
+INFO schlammfass: Volumen aus Aussen-Oe und H (Huellzylinder inkl. Wand und Deckel) 232.5 l; Nennvolumen = Innenraum (naechste Zeilen)
+PASS schlammfass: Innenvolumen Rechnung 221.0 l im Band 190-231: Ist 1, Soll 1
+PASS schlammfass: Innenvolumen aus Modell 221.0 l = Rechnung: Ist 220.988, Soll 220.987 (+-0.5)
+PASS schlammfass: Fassung >= 105 l/Woche plus Reserve (Innen 221 l): Ist 1, Soll 1
+PASS schlammfass: Stutzen Mitte Deckel x: Ist 3.21521e-13, Soll 0 (+-0.1)
+PASS schlammfass: Stutzen Mitte Deckel y: Ist 1.34648e-12, Soll 0 (+-0.1)
+PASS schlammfass: Stutzen Aussen-Oe = od_f(40) 48: Ist 47.9993, Soll 48 (+-0.2)
+PASS schlammfass: Deckel: drei Durchbrueche (Stutzen 48, Luft 8, Entlueftung 26) aus Volumen: Ist 3.92723e+06, Soll 3.92714e+06 (+-3927.23)
+PASS schlammfass: Kein Auslass: Fasskoerper ohne Durchbruch (Volumen = Mantel + Boden): Ist 7.54505e+06, Soll 7.54578e+06 (+-7545.05)
+PASS schlammfass: Port Einlauf d40: Ist 1, Soll 1
+PASS schlammfass: Port Einlauf z = Oberkante Stutzen: Ist 920, Soll 920 (+-0.6)
+PASS schlammfass: Port Einlauf Richtung +Z: Ist 1, Soll 1
+PASS schlammfass: Port Einlauf nennt K07 und K23: Ist 1, Soll 1
+PASS schlammfass: Port Entlueftung z = Oberkante Stutzen: Ist 900, Soll 900 (+-0.6)
+PASS schlammfass: Gruben-Parameter grube_d = 800: Ist 800, Soll 800
+PASS schlammfass: Gruben-Parameter grube_t = 950: Ist 950, Soll 950
+PASS schlammfass: Fassoberkante flur-relativ 0 im Band 0 bis +20 (Sandbett 70): Ist 1, Soll 1
+PASS schlammfass: Interferenz (Paare): Ist 0, Soll 0
+== schlammfass: 20/20 PASS

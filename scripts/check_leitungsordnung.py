@@ -1,7 +1,7 @@
 """Pruefskript Leitungsordnung (docs/leitungsordnung.md, M10-UMBAU Schritt 1): R1 bis R9 plus R10 Abdeckung, nur lesen.
 Eingaben: data/leitungstrassen.json (Pfade, ueber leitungen.bauen() in Instanzen mit Trassen-Zuordnung umgerechnet), scripts/dome-script.json (Halter-Instanzen,
 Bogen-Klassen), scripts/.segs.json (Strebenachsen), viewer/instances.json + data/bom_koerper.json (Bauteil-Kaesten fuer R9), data/leitungsnetz.json (R10).
-Aufruf: python -X utf8 scripts/check_leitungsordnung.py [--json <aus.json>]   (Exit 1 bei Verstoss in R1 bis R9)
+Aufruf: python -X utf8 scripts/check_leitungsordnung.py [--json <aus.json>] [--trassen <andere Trassenliste, z. B. Vorher-Stand>]   (Exit 1 bei Verstoss in R1 bis R9)
 Messgrenzen: R7 prueft Halterhoehe (< Z 2500) und Abstand >= 150 mm zu jeder Strebenachse, nicht den Kontakt zum Befestigungsgrund;
 R9 wertet Probepunkte ueber Flur (Z 400 bis 2500) als Gang, wenn sie ausserhalb von Pool, Beet-Portalen und 250 mm um jedes Bauteil liegen (Naeherung der Gangkarte)."""
 import collections, json, math, os, sys
@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import leitungen as LG
 
 FZ, KOPF = 400.0, 2500.0
-DOC = LG.laden()
+DOC = json.load(open(sys.argv[sys.argv.index("--trassen") + 1], encoding="utf-8")) if "--trassen" in sys.argv else LG.laden()
 KANTEN = json.load(open(os.path.join(ROOT, "data", "leitungsnetz.json"), encoding="utf-8"))["kanten"]
 CMDS = json.load(open(os.path.join(ROOT, "scripts", "dome-script.json")))["commands"]
 MV = {c["params"]["occurrence"]: c["params"]["matrix"] for c in CMDS if c["command"] == "occurrence.move"}
@@ -44,13 +44,15 @@ viol = collections.defaultdict(list); info = {}
 trs = DOC["trassen"]
 # ---------------- R1, R3, R4, R5 je Trasse (Pfadsegmente), Ausnahmen 1 (Heber) und 2 (schraeger Port, erstes/letztes Stueck <= 300 mm)
 azs = set(); n_seg = 0
+AUF = {r["id"] for r in DOC.get("r_stuecke", []) if r.get("auf_stutzen")}   # Reduziermuffe direkt auf einem Bauteil-Stutzen: zaehlt fuer Ausnahme 2 wie der Stutzen
+def am_port(e): return e == "stutzen" or (e.startswith("r:") and e[2:] in AUF)
 for tr in trs:
     pts = [tuple(map(float, p)) for p in tr["pfad"]]; d = float(tr["dn"]); heber = bool(tr.get("heber"))
     L = [nrm(sub(pts[i + 1], pts[i])) for i in range(len(pts) - 1)]
     for i in range(len(pts) - 1):
         tr["_i"] = i; a, b = pts[i], pts[i + 1]; u = unit(sub(b, a)); kor = korridor(tr, a, b); n_seg += 1
         aw, ng = richtung(u, kor)
-        rand = (i == 0 and tr.get("start", "stutzen") == "stutzen") or (i == len(pts) - 2 and tr.get("ende", "stutzen") == "stutzen")
+        rand = (i == 0 and am_port(tr.get("start", "stutzen"))) or (i == len(pts) - 2 and am_port(tr.get("ende", "stutzen")))
         if heber or (rand and L[i] <= 300.0 + 1e-6): continue
         if ng < 89.0 and ng <= 2.0 and aw <= 1.0:
             if ng < 2.0: azs.add(round(math.degrees(math.atan2(u[1], u[0])) / 5) * 5 % 360)
@@ -80,7 +82,7 @@ info["Boegen"] = sum(len(l) for k, l in T.items.items() if k[0].startswith("boge
 bad = [k for k in T.items if k[0].startswith("bogen") and k[0] not in ("bogen90", "bogen45")]
 bad += sorted({c["params"]["name"] for c in CMDS if c["command"] == "component.insert_design" and c["params"].get("name", "").startswith("LT_Bogen") and not c["params"]["name"].startswith(("LT_Bogen90", "LT_Bogen45"))})
 for k in bad: viol["R2"].append("Bogenklasse %s" % (k,))
-# R4 Bogenkette wie die Inventur (renders/maengel/inventur.py): Bauteile Bogen, Rohr <= 300 mm, Kupplung, Reduzierung; verbunden, wenn Anschlusspunkte <= 25 mm plus groesste Muffentiefe (Rohr steckt t in der Muffe); >= 3 Boegen je Verbund
+# R4 Bogenkette wie die Inventur (renders/maengel/inventur.py): Bauteile Bogen, Rohr <= 300 mm, Kupplung, Reduzierung; verbunden, wenn Anschlusspunkte <= Muffentiefe t (kleinerer Durchmesser) + 10 mm (Rohr steckt t in der Muffe); >= 3 Boegen je Verbund
 glied = []
 for (art, d, Lr), liste in T.items.items():
     for m, _, tid in liste:
@@ -88,17 +90,17 @@ for (art, d, Lr), liste in T.items.items():
         if art.startswith("bogen"):
             k = LG.tangent(art, d); c = tuple(o[i] + z[i] * k for i in range(3))
             dout = x if art == "bogen90" else unit(tuple(z[i] + x[i] for i in range(3)))
-            glied.append((True, [o, tuple(c[i] + dout[i] * k for i in range(3))], tid))
+            glied.append((True, [o, tuple(c[i] + dout[i] * k for i in range(3))], tid, d))
         elif art == "rohr" and Lr <= 300 or art in ("kupplung", "reduzierung"):
             ln = Lr if art == "rohr" else LG.LT.ports("lt_kupplung_d%d" % d if art == "kupplung" else "lt_reduzierung_d%d_d%d" % (d, Lr))[1][1][2]
-            glied.append((False, [o, tuple(o[i] + z[i] * ln for i in range(3))], tid))
+            glied.append((False, [o, tuple(o[i] + z[i] * ln for i in range(3))], tid, d))
 grp = list(range(len(glied)))
 def wurzel(i):
     while grp[i] != i: grp[i] = grp[grp[i]]; i = grp[i]
     return i
 for i in range(len(glied)):
     for j in range(i + 1, len(glied)):
-        if any(nrm(sub(p, q)) <= 25.0 + max(LG.LT.DEPTH.values()) for p in glied[i][1] for q in glied[j][1]): grp[wurzel(i)] = wurzel(j)
+        if any(nrm(sub(p, q)) <= 10.0 + LG.LT.DEPTH[min(glied[i][3], glied[j][3])] for p in glied[i][1] for q in glied[j][1]): grp[wurzel(i)] = wurzel(j)
 verb = collections.defaultdict(list)
 for i, g in enumerate(glied): verb[wurzel(i)].append(g)
 for v in verb.values():

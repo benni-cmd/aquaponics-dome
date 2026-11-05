@@ -218,3 +218,6 @@ Naechste: nach 1C -> N-PREIS-PRUEF Werkstatt Schritt 2 (bom.py), dann Pruefer; n
 - Waechter deaktiviert. Allen arbeitenden Sitzungen "WIP committen, pushen, STOPP" geschickt (w37-1, preis-werkstatt-2, schacht-ring: in deren Warteschlange; auflagen-detail-w60, werkstatt-stueckliste-1a: zugestellt).
 - check_latte 69 (Kopie im Scratchpad) bricht beim Herunterfahren ab; Neustart morgen in Kopie, Cache scripts/.latte-cache.json beschleunigt.
 - Wiederaufnahme: (1) Arbeitsbaum pruefen, fremde WIP-Reste der Sitzungen committen lassen; (2) Warteschlange in docs/packages/bis-zwischencheck.md ab "Montage Strebe" fuellen, bis 7 Sitzungen (D80), Orchestrator-Takt beachten; (3) Waechter wieder einschalten.
+
+## 05.11.2026 NACHTMODUS (Ben, D82): PC laeuft durch, Roadmap weiter bis Zwischencheck
+Pause aufgehoben. Waechter wieder an. Bis 5 Sitzungen, hoechstens 2 schwere SolidCraft-Laeufe, freier RAM >= 10 GB vor schwerem Start. Warteschlange: docs/packages/bis-zwischencheck.md.

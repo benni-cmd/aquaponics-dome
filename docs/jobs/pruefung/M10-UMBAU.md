@@ -3,7 +3,9 @@
 Pruefer: frische Sitzung, hat nichts davon gebaut. 05.11.2026. Start-Auftrag `docs/jobs/start/M10-UMBAU-LUFT-pruefer.md` (8e27b6b). Gegenstand: Build e881f56 und Vorlaeufer 45af03b, e71e9dd; Blatt `docs/jobs/M10-UMBAU.md` Pruefpunkte 1 bis 5 gegen `docs/leitungsordnung.md` R1 bis R9; Blatt `docs/jobs/M10-S5-LUFT.md` Teil A Pruefpunkte 1 bis 5; Maengel M03 bis M10 aus `docs/model-maengel.md`.
 Nur diese Befund-Datei geschrieben. Schwere Laeufe (Viewer-Export, `check_latte 71`) in einer Scratchpad-Kopie (`git archive HEAD` plus `scripts/dome-script.json`), freier RAM vorher 19,7 GB. Alle Befehle aus `user-projects/aquaponics-dome`.
 
-## Urteil
+## Urteil (Stand Runde 71, Erstpruefung)
+
+**Neues Urteil nach Nachpruefung Runde 73: PASS mit Auflagen** (Abschnitt "Nachpruefung Runde 73" am Ende). Der Text dazwischen ist der Erstbefund und bleibt als Beleg stehen.
 
 | Blatt / Teil | Urteil | Begruendung |
 |---|---|---|
@@ -91,3 +93,74 @@ Eigener Port 4522 aus der Kopie, kein Export (Export war vorher beendet). Gemess
 
 Geprueft gegen: `check_leitungsordnung.py`, `check_leitungen.py`, `check_walkways.py`, `r45_heber.py`, `renders/maengel/inventur.py` auf neuem Export, `check_latte.py 71` in der Kopie (29/31, 94 KOLL), Zaehlskript ueber `scripts/dome-script.json`, Bauteil-Evals (Scheibe, Schwimmerventil, Pool), `git show --stat e881f56`, `git diff` der Guard-Dateien, Paket 14b.
 Offen: A1 bis A9 (siehe oben); Screenshots der umgebauten Strecken und der Luft am Pool nicht belegt.
+
+
+## Nachpruefung Runde 73 (Pruefer, 05.11.2026)
+
+Gegenstand: Build Runde 72 (c8be3f4) und Runde 73 (ab3d425), Folge-Commits d1e415d und 6f0bdd0; Start-Auftrag `docs/jobs/start/M10-UMBAU-LUFT-pruefer.md` (Wiederanlauf). Alle Messungen in dieser Sitzung neu, in einer Kopie des Stands 6f0bdd0 (`git archive 6f0bdd0` im Scratchpad, `scripts/dome-script.json` per `gen_dome.py 5` neu erzeugt: 10400 Befehle, gleich der Montage-Zahl). Schwere Laeufe (Viewer-Export, `check_latte`) liefen nur in der Kopie, freier RAM vorher 22 GB. Der Arbeitsbaum des Repos blieb unberuehrt; geschrieben ist nur diese Datei. Ich habe nichts davon gebaut.
+
+### Urteil: PASS mit Auflagen (Teilziel erreicht, Blatt nicht voll)
+
+M10-UMBAU ist gegenueber Runde 71 deutlich weiter: R1 und R6 sind 0, `frei_ins_leere` 0, alle vier Ablaufstutzen 0 mm, die Instanzen stehen im Soll, Laufwege PASS. Nicht erfuellt nach Wortlaut des Blatts bleiben der Schlammstutzen-Abstand (49 bis 54 mm gegen <= 25), Heber-Reserve, `check_leitungen` (3 Verstoesse), R4 K20, R9 K24-K25 und `check_latte` (86 Kollisionen, davon 3 neu am Verteiler und an der Klemme d50). Pruefpunkt 5 Stamm-Gerade Linie 1 meldet die Montage selbst als nicht erfuellt.
+
+### Messung je Pruefpunkt (Blatt M10-UMBAU)
+
+| Nr | Pruefpunkt | Befehl | Messwert | Soll | Ergebnis |
+|---|---|---|---|---|---|
+| 1 | Leitungsordnung | `python -X utf8 scripts/check_leitungsordnung.py` (Exit 1) | R1 0, R2 0, R3 0, R4 **1** (3 Boegen K20 bei 928/-3636/718), R5 0, R6 0, R7 0, R8 0, R9 **1** (K24-K25-Stamm Rohr d50 bei -1018/-3942/1443 frei im Gang; ohne `viewer/instances.json` nur "nicht messbar", mit dem neuen Export gemessen); R10 34 Kanten ohne Trasse (K11 bis K16, K27 bis K35, K37 bis K43, K45 bis K49, K51 bis K55, K58, K59); schraege Rohre 21, Boegen 95, Halter 14 | R1 bis R9 0; R10 genau 34 | R1, R2, R3, R5, R6, R7, R8 PASS; R10 PASS (34); R4 und R9 FAIL (je 1) |
+| 2a | Rohrenden ins Leere | `python -I -X utf8 renders/maengel/inventur.py . <aus.json>` auf dem neuen Export (`viewer/export_model.py`, Exit 0, "export 2287s defs=195 instanzen=4988") | `frei_ins_leere` **0**; `rohrenden_gesamt` 86, davon 86 an Leitungsteil (vorher 1 frei) | 0 | PASS |
+| 2b | Tank-Anschluesse | gleiche Inventur, Schluessel `tank_anschluesse` | Ablaufstutzen aller vier Tanks **0 mm** (Kugelhahn Feder d40 bzw. Kugelhahn d50); Schlammstutzen **54, 54, 49, 49 mm** zum naechsten Leitungsteil (Hahn); Zulauf 62 bis 64 mm (nicht im Soll) | Schlamm/Ablauf aller vier Tanks <= 25 mm | Ablauf PASS; Schlamm nach Wortlaut FAIL. Die Montage deutet den Schlammstutzen als tankeigenen inneren Stutzen zum Hahn, "kein Leitungsanschluss"; das ist plausibel, steht aber nicht im Blatt (Auflage A10) |
+| 3 | Heber | `python -X utf8 scripts/r45_heber.py` | K01 1322 + 1754 = 3076 mm, 4 Boegen; K17 1078 + 1137 = 2216 mm, 4 Boegen; Reserve gebaut, schlechter Fall: K01 **65 mm**, K17 **68 mm** | Reserve >= 85 / >= 88; Laenge <= 3076 / 2216 | Laenge PASS; Reserve FAIL (unveraendert seit Bestand) |
+| 4a | Leitungen | `python -X utf8 scripts/check_leitungen.py` (Exit 1) | **3** Verstoesse: KOLL K08 (Rohr d40 trifft `Tank_gross:1`, etwa 360 mm), GEFAELLE K05 (Teilstueck 6 steigt 250 mm) und K21 (Teilstueck 5 steigt 239 mm); EINGABE, BAND, GANG 0; Kanten mit Trasse 23 von 57 | 0 | FAIL (gleich Montage-Zahl; vorher 2) |
+| 4b | Gaenge | `python -X utf8 scripts/check_walkways.py` (Exit 0) | A 700, B 600, Wandluft 110, Nachbarportale 307, Tuer-Gang 3177 | A >= 700, B >= 600, Wandluft >= 110 | PASS |
+| 5a | Instanzen | Zaehlung der `occurrence.move` je Namen ueber `scripts/dome-script.json` (Skript im Scratchpad) | `Schlammfass` 2, `LT_Kugelhahn_Feder_d40` 2, `LT_Verteiler_d50` 2; dazu `LT_Kappe_d20` 2, `LT_Kappe_d50` 4, `LT_Klemme_d32` 4, `LT_Klemme_d40` 4, `LT_Klemme_d50` 6 (Halter 14, gleich Inventur) | je 2 | PASS |
+| 5b | Gerade je Stamm >= 262 mm mit >= 100 mm Luft | nicht nachgemessen; Montage-Angabe (Paket 14b): Linie 2 K22-T-b 164 mm, Linie 1 hoechstens 67 mm | >= 100 mm | Linie 1 nach Montage selbst FAIL; Linie 2 nicht belegt |
+
+### Weitere Messungen
+
+1. `python -X utf8 scripts/check_latte.py 73` in der Kopie, Laufzeit rund 3 h wegen Parallellauf des Exports, Exit 1: 29 PASS, 2 FAIL (Kollisionen **86**, Soll 0; Vollstaendigkeit **64** Paare ungeprueft). Vorher: Runde 71 94, Runde 69 115. Aufschluesselung der 86: 41 Bogen, 16 Rohr, 8 Kupplung, 7 Reduzierung, 5 Druckstutzen, 4 Saugstutzen, 2 Einlaufrohr, 2 Klemmenring, 1 T10_Zulaufrohr; 11 mit Tank-Rahmenstreben (`Strebe_`), 0 mit `T1_Strebe`. Offen gezaehlt: W-M1 49, M2b 504, "Teil-A gewollt" 47; exakt geprueft 2555 Paare, "EXAKT Erde 617 Paare, Fundamentring offen 0".
+2. **Neu gegenueber Runde 69 (Normalisierung der Zeilen, `Counter`-Differenz):** `Rohr x Verteiler` 1, `Klemmenring x Rohr` 2 (Klemme d50 auf `LT_Rohr_d50_L162`, beide am neuen Verteiler), dazu mehrere Leitung-gegen-Tank-Zeilen (Bogen/Rohr x `Tank`, `Biomedium`, `Stuetzrippe_5`, `Diagonale_4`, `Bein_3`); die Tank-Zeilen gehoeren zu K08 (Rohr d40 im Grobkasten von `Tank_gross:1`, gleiche Stelle wie `check_leitungen`). Weggefallen sind 29 Bogen x Rohr, 11 Reduzierung x Rohr, 5 Rohr x T-Stueck, 7 Montagetafel-Treffer und weitere (Altbestand der Linie 1 und 2 nach Neuverlegung).
+3. **Luft K44 (M07):** Inventur `rohre_durch_bauteile` 6: die vier Luft-Steiger `LT_Rohr_d25_L2353` laufen weiter durch `Pool:1` (je 54 Proben) und `Tisch_innen:6` (je 18 Proben) sowie die zwei Heber-Steiger d75 durch `Tisch_mitte:4` und `:3` (je 5 Proben). Die Leitungsordnung Ausnahme 3 erlaubt Luft im Wasser, verbietet aber Durchfuehrung durch Poolwand oder Poolboden; ob die Steiger die Wand durchstossen, ist hier nicht belegt (siehe Auflage A12).
+4. **Viewer-Bilder:** Die drei Montage-Bilder (`renders/m10-umbau-absetzer-fass-73.png`, `m10-umbau-poolrand-luft-73.png`, `m10-umbau-draufsicht-73.png`) habe ich angesehen: Fass in der Grube neben dem Absetzer mit durchsichtiger Erde, vier rechtwinklige Luftstraenge am Poolboden ohne Kreuzung. Es sind Montage-Aufnahmen, keine eigenen; ein eigener Viewer-Screenshot gegen `docs/ui-standard.md` wurde nicht gemacht (Kamerafunktion fehlt weiter, Auflage A6 aus dem Erstbefund).
+
+### Maengel M03 bis M10 nach Runde 73
+
+| Mangel | Gegenstand | Befund Runde 73 | Behoben? |
+|---|---|---|---|
+| M03 | Schlammablass endet blind | Ablaufstutzen 0 mm, Schlammfass 2 mit Federhahn 2, K07/K23 mit Trasse; Schlammstutzen 49 bis 54 mm zum Hahn | ja fuer den Ablass, Schlammstutzen offen (A10) |
+| M04 | kein Halter | 14 Klemmen (`halter_leitung_instanzen`), R6 0; Konsole oder Staender nicht modelliert (Montage B7) | teilweise (Klemme ja, Auflager nein) |
+| M05 | wirre Verlegung | schraege Rohre 21 (vorher 54, Bestand 74), Boegen 95, waagerechte Richtungen 4; alle 21 laut Montage in Ausnahme 1 und 2 | weitgehend (die 21 sind nicht einzeln nachgemessen) |
+| M06 | Bogenketten | `bogenketten_ab3` 2 (beide unterirdisch an den Heber-T, d50/d63/d75, Ausnahme 1), R4 1 (K20) | teilweise |
+| M07 | Luft K44 im Poolvolumen | Luft laeuft weiter im Pool (Ausnahme 3), neue Fuehrung nur X/Y am Boden; Wanddurchfuehrung offen | nicht eindeutig (A12) |
+| M08 | Ueberlauf K10/K26 frei | `frei_ins_leere` 0, Verteiler 2 gesetzt; Abgaenge 1 und 2 (d40, d32) offene Zapfen bis S3 (B5) | ja (K10/K26 geschlossen), Abgaenge offen |
+| M09 | Rohr d75 im Tisch-Kasten | Inventur zeigt weiter 2 Rohre mit je 5 Proben im Kasten; Montage-Abstand 609 und 492 mm zu den naechsten Tischkoerpern (Kasten hohl); `check_latte` meldet keinen Treffer Rohr d75 x Tisch | geschlossen nach `check_latte`, Montage-Abstand nicht nachgemessen |
+| M10 | Bogenkette d25 am Tisch | 4 Luft-Steiger durch `Tisch_innen:6`; `bogenketten_ab3` meldet nur noch 2 Ketten (beide d50/d63/d75), also keine d25-Kette | ja (nach Inventur) |
+
+### Stichproben
+
+1. **Zahl aus der Meldung gegen die Messung:** Montage meldet R1 0, R6 0, R4 1, R9 1, R10 34, schraege Rohre 21, `check_leitungen` 3, Heber 65 mm, `frei_ins_leere` 0, Ablaufstutzen 0 mm, Halter 14, Instanzen 2/2/2: alle gleich gemessen. PASS.
+2. **Meldung gegen Datei:** loop-state schreibt "check_walkways PASS (gleich)" und "Viewer-Export Exit 0": gemessen PASS (700/600/110/307/3177) und Export Exit 0 mit 195 Definitionen und 4988 Instanzen (Montage nennt dieselben Zahlen). PASS.
+3. **Teil gegen sein Blatt:** Blatt-Pruefpunkt 2 nennt "Schlamm/Ablauf aller vier Tanks <= 25 mm"; gemessen Schlamm 49 bis 54 mm: im Paket als "innerer Stutzen" gerechtfertigt, im Blatt nicht definiert. Teilweise.
+4. **Kollisionen:** Die Montage-Meldung (loop-state, Paket 14b) nennt keinen `check_latte`-Lauf fuer Runde 72 oder 73; gemessen 86, davon 3 neu am Verteiler. Dass die uebrigen 83 Altbestand sind, folgt nur aus dem Vergleich der Typen mit Runde 69.
+
+### Nicht belegt
+
+1. Pruefpunkt 5b (Stamm-Gerade): Linie 1 und Linie 2 nicht nachgemessen; Montage-Angaben 67 mm und 164 mm.
+2. Die 21 schraegen Rohre als "Ausnahme 1 und 2": nicht einzeln gegen Heber und Ports geprueft.
+3. Wanddurchfuehrung der Luft-Steiger durch Poolwand oder Poolboden.
+4. Eigene Viewer-Screenshots der umgebauten Strecken.
+5. Rohrenden-Fluchtung Luft Teil A (< 1 mm) und `check_leitungen` 0 fuer Teil A: wie im Erstbefund nicht gemessen; `check_leitungen` bleibt bei 3 Verstoessen ohne Bezug zu Teil A.
+
+### Auflagen (Nachpruefung)
+
+| Nr | Auflage | Owner |
+|---|---|---|
+| A10 | Blatt M10-UMBAU Pruefpunkt 2b praezisieren: Schlammstutzen (innerer Stutzen zum tankeigenen Hahn) ausnehmen oder Hahn naeher an den Stutzen legen; bis dahin "FAIL nach Wortlaut" | ICH (Planer) |
+| A11 | Die 3 neuen Kollisionen am Verteiler (`Rohr x Verteiler`, `Klemmenring d50 x Rohr L162` zweimal) einzeln klaeren: Einstecktiefe der Muffe A und Klemmen-Bohrung d50 gegen Rohr-Aussen-d; entweder Bauteil oder Check (Steckverbindung als gewollt fuehren, wie bei Luft d25) anpassen | ICH (Werkstatt, Montage) |
+| A12 | M07: pruefen, ob die vier Luft-Steiger Poolwand oder Poolboden durchstossen (Ausnahme 3 verbietet das); Messung per CAD (`inspect.interference` Rohr gegen `Pool:1` mit Wandkoerper) oder Trassen-Z gegen Wand | ICH (Montage) |
+| A13 | Rest aus Runde 71 bleibt: Heber-Reserve 65/68 mm (A2), K05/K21-Gefaelle (A3), K08-Grobkasten (A5), R4 K20, R9 K24-K25; Halter-Konsole (B7), Kappen d40/d32 (B5), Schlammfass tiefer als im Bauteilblatt (B4) laut Paket | Entscheidungen bei Ben (A2, A3), Rest Montage/Werkstatt |
+| A14 | Pruefpunkt 5b mit Befehl nachweisen (Skript der Montage ins Repo, `scripts/` oder `docs/`), damit ein Pruefer die Stamm-Gerade nachmessen kann | ICH (Montage) |
+| A15 | `check_latte` auf 0 Kollisionen: 86 sind noch zu klaeren; Prioritaet die 11 Tank-Rahmenstreben (B1) und die 3 am Verteiler | ICH (Montage, Werkstatt Pumpentafel) |
+
+Geprueft gegen: `check_leitungsordnung.py`, `check_leitungen.py`, `check_walkways.py`, `r45_heber.py`, `renders/maengel/inventur.py` auf neuem Export (Kopie), `check_latte.py 73` (Kopie, 29/31, 86 KOLL), Zaehlung ueber `scripts/dome-script.json`, Differenz der KOLL-Zeilen gegen `renders/check_latte-69.txt`, Montage-Bilder, Paket 14b, `docs/leitungsordnung.md`, `docs/model-maengel.md`.
+Offen: Auflagen A10 bis A15; nicht belegt: Stamm-Gerade, Wanddurchfuehrung Luft, eigene Viewer-Screenshots.

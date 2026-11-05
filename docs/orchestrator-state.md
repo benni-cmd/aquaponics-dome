@@ -208,3 +208,8 @@ Laufen: check_latte 69 (werkstatt-stueckliste-1a, Hintergrund), Recherche Preisl
 Fertig: Strebe Vierkant (1c966cd, .sc nur im Scratchpad bis check_latte fertig), Planer N-PREIS-PRUEF (d23125f), Pruefer Detailansicht W60 PASS mit Auflagen A1-A6 (2206c26).
 Naechste, sobald Platz: (1) Recherche 1E Huelle/Pflanze (huelle_pflanze.json); (2) nach check_latte: werkstatt-strebe "check_latte fertig" -> .sc schreiben, dann Pruefer Luft (pruefer-w37-2-3); (3) Auflagen Detailansicht A1-A5 (Daten + Viewer, Sonnet hoch, neue Sitzung); (4) Montage Strebe (Opus mittel) nach Pruefer Luft; (5) N-PREIS-PRUEF Werkstatt Schritt 2 nach 1A-1E, dann Pruefer; (6) W65-Tabelle; (7) Gesamtbericht.
 Vorlaeufig entschieden fuer N-PREIS-PRUEF (Ben bestaetigt): Lebensmittelbeleg nur fuer Teile im Fischwasser; Massvorschlag nur als Notiz.
+
+## 05.11.2026 ~01:10 DAUERAUFTRAG bis Zwischencheck (Ben, D81)
+Fehlende Ben-Entscheidungen = Annahme (D81) oder naechster Schritt; weiter bis Roadmap PAUSE. Plan: docs/packages/bis-zwischencheck.md.
+Laufen (7): check_latte 69 (werkstatt-stueckliste-1a), preis-1c-behaelter, auflagen-detail-w60, planer-m10-aplus, werkstatt-w37-1, daten-specs-heber; fertig: preis-1a/1b/1d/1e.
+Naechste: nach 1C -> N-PREIS-PRUEF Werkstatt Schritt 2 (bom.py), dann Pruefer; nach check_latte -> werkstatt-strebe "check_latte fertig", Pruefer Luft A, Montage Strebe; danach Modell-Kette laut Paket.

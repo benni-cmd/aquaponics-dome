@@ -13,7 +13,7 @@
 ## Warteschlange (bereit wenn -> starten; Orchestrator fuellt bis 7 Plaetze)
 | Schritt | bereit wenn | Rolle, Modell | Stand |
 |---|---|---|---|
-| Montage Strebe + Werkstoffe (N-MODELL-KOMPLETT 3) | Strebe-.sc im Repo (bdaccb4) | Montage, Opus mittel | GESTARTET 05.11. |
+| Montage Strebe + Werkstoffe (N-MODELL-KOMPLETT 3) | Strebe-.sc im Repo (bdaccb4) | Montage, Opus mittel | bereit, als Erstes nach der Pause |
 | Pruefer N-MODELL-KOMPLETT | Montage Strebe fertig | Pruefer, Sonnet hoch | wartet |
 | Pruefer Luft A (M10-S5-LUFT) | check_latte 69 in Kopie fertig | Pruefer, Sonnet hoch | wartet |
 | Pruefer N-PREIS-PRUEF | Werkstatt Schritt 2 fertig | Pruefer, Sonnet hoch | wartet |

@@ -213,3 +213,8 @@ Vorlaeufig entschieden fuer N-PREIS-PRUEF (Ben bestaetigt): Lebensmittelbeleg nu
 Fehlende Ben-Entscheidungen = Annahme (D81) oder naechster Schritt; weiter bis Roadmap PAUSE. Plan: docs/packages/bis-zwischencheck.md.
 Laufen (7): check_latte 69 (werkstatt-stueckliste-1a), preis-1c-behaelter, auflagen-detail-w60, planer-m10-aplus, werkstatt-w37-1, daten-specs-heber; fertig: preis-1a/1b/1d/1e.
 Naechste: nach 1C -> N-PREIS-PRUEF Werkstatt Schritt 2 (bom.py), dann Pruefer; nach check_latte -> werkstatt-strebe "check_latte fertig", Pruefer Luft A, Montage Strebe; danach Modell-Kette laut Paket.
+
+## 05.11.2026 PAUSE Feierabend (Ben)
+- Waechter deaktiviert. Allen arbeitenden Sitzungen "WIP committen, pushen, STOPP" geschickt (w37-1, preis-werkstatt-2, schacht-ring: in deren Warteschlange; auflagen-detail-w60, werkstatt-stueckliste-1a: zugestellt).
+- check_latte 69 (Kopie im Scratchpad) bricht beim Herunterfahren ab; Neustart morgen in Kopie, Cache scripts/.latte-cache.json beschleunigt.
+- Wiederaufnahme: (1) Arbeitsbaum pruefen, fremde WIP-Reste der Sitzungen committen lassen; (2) Warteschlange in docs/packages/bis-zwischencheck.md ab "Montage Strebe" fuellen, bis 7 Sitzungen (D80), Orchestrator-Takt beachten; (3) Waechter wieder einschalten.

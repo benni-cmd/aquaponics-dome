@@ -444,9 +444,14 @@ def verteiler_a_plus():
     return [e["id"] for key in LTG.VAR_LISTEN for e in doc.get(key, []) if e.get("varianten") == ["a_plus"]]
 
 def ring_b2(fz):
-    """N-VARIANTEN V1b: Setzungen nur in Ring B2 (Pegelschacht, Booster, Steigleitung, Ringstuetzen, Entluefter). Leer bis R1/R2 (Montage Ring B2);
-    Ring-Trassen kommen spaeter als Eintraege mit `varianten: ["ring_b2"]` ueber leitungen()."""
-    return []
+    """N-AUTOBAHN-V2 R1/R2: Setzungen nur in Ring B2 aus scripts/trassen_ring.py (Lage aus Instanzmatrizen und Port-Tabellen): Joche, Stelzen, Montageschienen,
+    Verbinder, Schellen, Ring-Ecken, Podeste, Pegelschaechte, Booster, Entluefter (R1), ab R2 Ausleger, Abzweige und Fallleitungen.
+    Rohre, Formstuecke und Haehne kommen als Eintraege mit `varianten: ["ring_b2"]` ueber leitungen(). Runde ueber Umgebung AUTOBAHN_RUNDE (r1 | r2, Standard r2)."""
+    import trassen_ring as TRR
+    gesetzt = []
+    for cls, path, mats, asm in TRR.tragwerk(os.environ.get("AUTOBAHN_RUNDE", "r2")):
+        if mats: place_matrices(cls, path, mats, asm); gesetzt.append((cls, len(mats)))
+    return gesetzt
 
 # T9: 14 halbe IBC-Wannen (layout.json) als Instanzen der Werkstatt-Komponenten ibc_beet_{aussen_933,aussen_993,innen_933}; Ursprung = Mitte Wannenunterseite
 def t9(fz):

@@ -4536,6 +4536,1664 @@
    ],
    "linie": "frisch",
    "notiz": "Frischwasser Hausanschluss (Ende Platzhalter T10_Zulaufrohr, Az -58) -> Aktivkohle-Station Eingang, Graben Z 140"
+  },
+  {
+   "id": "RB1-K60",
+   "kante": "K60",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "muffe",
+   "pfad": [
+    [
+     2647.0,
+     -160.0,
+     1970.0
+    ],
+    [
+     2588.0,
+     -148.7,
+     1970.0
+    ],
+    [
+     2588.0,
+     -148.7,
+     1795.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Biofilter-Ueberlauf (Tank_gross:1) frei fallend in den Pegelschacht: Bogen 90 d50 auf dem Ende von K10, senkrecht in die Zulauf-Muffe im Fassdeckel (Z 1395 rel)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-K61",
+   "kante": "K61",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "muffe",
+   "ende": "stutzen",
+   "pfad": [
+    [
+     2651.0,
+     -483.1,
+     1320.0
+    ],
+    [
+     2716.4,
+     -672.1,
+     1320.0
+    ],
+    [
+     2716.4,
+     -672.1,
+     520.0
+    ],
+    [
+     2824.5,
+     -983.9,
+     520.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT",
+    "KT",
+    "KT"
+   ],
+   "notiz": "Pegelschacht Saugstutzen A -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 1a (geflutet)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-K62",
+   "kante": "K62",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "muffe",
+   "ende": "stutzen",
+   "pfad": [
+    [
+     2405.5,
+     -435.9,
+     1320.0
+    ],
+    [
+     2274.5,
+     -587.1,
+     1320.0
+    ],
+    [
+     2274.5,
+     -587.1,
+     520.0
+    ],
+    [
+     2058.5,
+     -836.5,
+     520.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT",
+    "KT",
+    "KT"
+   ],
+   "notiz": "Pegelschacht Saugstutzen B -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 1b (geflutet)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-Da1",
+   "kante": "K63",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:RB1-REDa",
+   "pfad": [
+    [
+     2859.1,
+     -1084.1,
+     655.0
+    ],
+    [
+     2859.1,
+     -1084.1,
+     775.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Druckstutzen Booster 1a d40 -> Kupplung -> Reduziermuffe d50/d40",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-Da2",
+   "kante": "K63",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB1-REDa",
+   "ende": "r:RB1-RSVa",
+   "pfad": [
+    [
+     2859.1,
+     -1084.1,
+     838.0
+    ],
+    [
+     2859.1,
+     -1084.1,
+     898.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Rohr d50 zum Rueckschlagventil",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-Da3",
+   "kante": "K63",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB1-RSVa",
+   "ende": "t:RB1-TB",
+   "pfad": [
+    [
+     2859.1,
+     -1084.1,
+     1055.0
+    ],
+    [
+     2859.1,
+     -1084.1,
+     1255.0
+    ],
+    [
+     2424.1,
+     -1000.4,
+     1255.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-Db1",
+   "kante": "K63",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:RB1-REDb",
+   "pfad": [
+    [
+     1989.1,
+     -916.6,
+     655.0
+    ],
+    [
+     1989.1,
+     -916.6,
+     775.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Druckstutzen Booster 1b d40 -> Kupplung -> Reduziermuffe d50/d40",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-Db2",
+   "kante": "K63",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB1-REDb",
+   "ende": "r:RB1-RSVb",
+   "pfad": [
+    [
+     1989.1,
+     -916.6,
+     838.0
+    ],
+    [
+     1989.1,
+     -916.6,
+     898.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Rohr d50 zum Rueckschlagventil",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-Db3",
+   "kante": "K63",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB1-RSVb",
+   "ende": "t:RB1-TB",
+   "pfad": [
+    [
+     1989.1,
+     -916.6,
+     1055.0
+    ],
+    [
+     1989.1,
+     -916.6,
+     1255.0
+    ],
+    [
+     2424.1,
+     -1000.4,
+     1255.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-K60",
+   "kante": "K68",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "muffe",
+   "pfad": [
+    [
+     -227.1,
+     -4034.8,
+     1970.0
+    ],
+    [
+     -208.4,
+     -4091.8,
+     1970.0
+    ],
+    [
+     -208.4,
+     -4091.8,
+     1795.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Biofilter-Ueberlauf (Tank_gross_t3:1) frei fallend in den Pegelschacht: Bogen 90 d50 auf dem Ende von K26, senkrecht in die Zulauf-Muffe im Fassdeckel (Z 1395 rel)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-K69",
+   "kante": "K69",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "muffe",
+   "ende": "stutzen",
+   "pfad": [
+    [
+     -470.1,
+     -4309.3,
+     1320.0
+    ],
+    [
+     -603.5,
+     -4458.3,
+     1320.0
+    ],
+    [
+     -603.5,
+     -4458.3,
+     520.0
+    ],
+    [
+     -823.5,
+     -4704.3,
+     520.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT",
+    "KT",
+    "KT"
+   ],
+   "notiz": "Pegelschacht Saugstutzen A -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 2a (geflutet)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-K70",
+   "kante": "K70",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "muffe",
+   "ende": "stutzen",
+   "pfad": [
+    [
+     -548.1,
+     -4071.8,
+     1320.0
+    ],
+    [
+     -743.9,
+     -4030.8,
+     1320.0
+    ],
+    [
+     -743.9,
+     -4030.8,
+     520.0
+    ],
+    [
+     -1066.9,
+     -3963.2,
+     520.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT",
+    "KT",
+    "KT"
+   ],
+   "notiz": "Pegelschacht Saugstutzen B -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 2b (geflutet)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-Da1",
+   "kante": "K71",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:RB2-REDa",
+   "pfad": [
+    [
+     -894.2,
+     -4783.3,
+     655.0
+    ],
+    [
+     -894.2,
+     -4783.3,
+     775.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Druckstutzen Booster 2a d40 -> Kupplung -> Reduziermuffe d50/d40",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-Da2",
+   "kante": "K71",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB2-REDa",
+   "ende": "r:RB2-RSVa",
+   "pfad": [
+    [
+     -894.2,
+     -4783.3,
+     838.0
+    ],
+    [
+     -894.2,
+     -4783.3,
+     898.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Rohr d50 zum Rueckschlagventil",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-Da3",
+   "kante": "K71",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB2-RSVa",
+   "ende": "t:RB2-TB",
+   "pfad": [
+    [
+     -894.2,
+     -4783.3,
+     1055.0
+    ],
+    [
+     -894.2,
+     -4783.3,
+     1255.0
+    ],
+    [
+     -1032.4,
+     -4362.4,
+     1255.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-Db1",
+   "kante": "K71",
+   "dn": 40,
+   "farbe": "dunkelblau",
+   "start": "stutzen",
+   "ende": "r:RB2-REDb",
+   "pfad": [
+    [
+     -1170.6,
+     -3941.5,
+     655.0
+    ],
+    [
+     -1170.6,
+     -3941.5,
+     775.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Druckstutzen Booster 2b d40 -> Kupplung -> Reduziermuffe d50/d40",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-Db2",
+   "kante": "K71",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB2-REDb",
+   "ende": "r:RB2-RSVb",
+   "pfad": [
+    [
+     -1170.6,
+     -3941.5,
+     838.0
+    ],
+    [
+     -1170.6,
+     -3941.5,
+     898.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT"
+   ],
+   "notiz": "Rohr d50 zum Rueckschlagventil",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-Db3",
+   "kante": "K71",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "r:RB2-RSVb",
+   "ende": "t:RB2-TB",
+   "pfad": [
+    [
+     -1170.6,
+     -3941.5,
+     1055.0
+    ],
+    [
+     -1170.6,
+     -3941.5,
+     1255.0
+    ],
+    [
+     -1032.4,
+     -4362.4,
+     1255.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-K63",
+   "kante": "K63",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:RB1-TB",
+   "ende": "t:RB-T3-feed",
+   "pfad": [
+    [
+     2424.1,
+     -1000.4,
+     1255.0
+    ],
+    [
+     2424.1,
+     -1000.4,
+     2545.0
+    ],
+    [
+     2196.2,
+     -1317.5,
+     2545.0
+    ],
+    [
+     2865.9,
+     -1798.8,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT",
+    "KR",
+    "KR"
+   ],
+   "notiz": "Steigleitung d63: T der Booster -> senkrecht auf Ringachse Z 2145 rel -> parallel zur Ringseite -> senkrecht in den Einspeise-T d75",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-K67",
+   "kante": "K67",
+   "dn": 63,
+   "farbe": "grau",
+   "start": "muffe",
+   "ende": "offen",
+   "pfad": [
+    [
+     2616.4,
+     -1.4,
+     1660.0
+    ],
+    [
+     2654.2,
+     195.0,
+     1660.0
+    ],
+    [
+     2654.2,
+     195.0,
+     460.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Notueberlauf d63 des Pegelschachts (Booster-Stillstand) -> senkrecht auf Flur; Anschluss an den Ruecklauf OFFEN (Montage R2c / Planer)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-K63",
+   "kante": "K71",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:RB2-TB",
+   "ende": "t:RB-T1-feed",
+   "pfad": [
+    [
+     -1032.4,
+     -4362.4,
+     1255.0
+    ],
+    [
+     -1032.4,
+     -4362.4,
+     2545.0
+    ],
+    [
+     -1490.0,
+     -4216.3,
+     2545.0
+    ],
+    [
+     -1157.8,
+     -3175.3,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT",
+    "KR",
+    "KR"
+   ],
+   "notiz": "Steigleitung d63: T der Booster -> senkrecht auf Ringachse Z 2145 rel -> parallel zur Ringseite -> senkrecht in den Einspeise-T d75",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-K67",
+   "kante": "K75",
+   "dn": 63,
+   "farbe": "grau",
+   "start": "muffe",
+   "ende": "offen",
+   "pfad": [
+    [
+     -65.9,
+     -4045.0,
+     1660.0
+    ],
+    [
+     124.1,
+     -3982.5,
+     1660.0
+    ],
+    [
+     124.1,
+     -3982.5,
+     460.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KT",
+    "KT"
+   ],
+   "notiz": "Notueberlauf d63 des Pegelschachts (Booster-Stillstand) -> senkrecht auf Flur; Anschluss an den Ruecklauf OFFEN (Montage R2c / Planer)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S0-1",
+   "kante": "K72",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     -2921.7,
+     -1726.8,
+     2545.0
+    ],
+    [
+     -2521.5,
+     -2271.7,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 0 bis Ecke 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S1-1",
+   "kante": "K72",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "t:RB-T1-feed",
+   "halter": false,
+   "pfad": [
+    [
+     -1348.8,
+     -3114.4,
+     2545.0
+    ],
+    [
+     -1157.8,
+     -3175.3,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 1 bis feed-T",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S1-2",
+   "kante": "K72",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T1-feed",
+   "ende": "t:RB-T1-ringende",
+   "halter": false,
+   "pfad": [
+    [
+     -1157.8,
+     -3175.3,
+     2545.0
+    ],
+    [
+     -815.6,
+     -3284.5,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 1 bis ringende-T",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T1-ringende-ab",
+   "kante": "K74",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T1-ringende",
+   "ende": "r:RB-H1-ringende",
+   "pfad": [
+    [
+     -815.6,
+     -3284.5,
+     2545.0
+    ],
+    [
+     -815.6,
+     -3284.5,
+     2223.1
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Abgang d63 zum Kugelhahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H1-ringende-ab",
+   "kante": "K74",
+   "dn": 63,
+   "farbe": "grau",
+   "start": "r:RB-H1-ringende",
+   "ende": "offen",
+   "pfad": [
+    [
+     -815.6,
+     -3284.5,
+     2098.1
+    ],
+    [
+     -815.6,
+     -3284.5,
+     1948.1
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Auslauf unter dem Hahn; Anschluss an den Ruecklauf OFFEN (R2c / Planer)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S1-3",
+   "kante": "K72",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T1-ringende",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     -815.6,
+     -3284.5,
+     2545.0
+    ],
+    [
+     -704.7,
+     -3319.9,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 1 bis Ecke 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S2-1",
+   "kante": "K76",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "r:RB-K2-RA",
+   "halter": false,
+   "pfad": [
+    [
+     739.4,
+     -3312.4,
+     2545.0
+    ],
+    [
+     837.2,
+     -3280.0,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 bis Reduziermuffe der Kupplungsstrecke",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K2-a",
+   "kante": "K76",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:RB-K2-RA",
+   "ende": "r:RB-K2-H",
+   "pfad": [
+    [
+     920.3,
+     -3252.5,
+     2545.0
+    ],
+    [
+     1001.0,
+     -3225.8,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Rohrstueck d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K2-b",
+   "kante": "K76",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:RB-K2-H",
+   "ende": "r:RB-K2-RB",
+   "pfad": [
+    [
+     1119.7,
+     -3186.6,
+     2545.0
+    ],
+    [
+     1200.4,
+     -3159.9,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Rohrstueck d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S2-2",
+   "kante": "K76",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "r:RB-K2-RB",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     1283.5,
+     -3132.4,
+     2545.0
+    ],
+    [
+     1381.3,
+     -3100.1,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 2 bis Ecke 3",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S3-1",
+   "kante": "K64",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "t:RB-T3-ringende",
+   "halter": false,
+   "pfad": [
+    [
+     2545.2,
+     -2245.1,
+     2545.0
+    ],
+    [
+     2613.1,
+     -2150.6,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 3 bis ringende-T",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T3-ringende-ab",
+   "kante": "K66",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T3-ringende",
+   "ende": "r:RB-H3-ringende",
+   "pfad": [
+    [
+     2613.1,
+     -2150.6,
+     2545.0
+    ],
+    [
+     2613.1,
+     -2150.6,
+     2223.1
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Abgang d63 zum Kugelhahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H3-ringende-ab",
+   "kante": "K66",
+   "dn": 63,
+   "farbe": "grau",
+   "start": "r:RB-H3-ringende",
+   "ende": "offen",
+   "pfad": [
+    [
+     2613.1,
+     -2150.6,
+     2098.1
+    ],
+    [
+     2613.1,
+     -2150.6,
+     1948.1
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Auslauf unter dem Hahn; Anschluss an den Ruecklauf OFFEN (R2c / Planer)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S3-2",
+   "kante": "K64",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T3-ringende",
+   "ende": "t:RB-T3-feed",
+   "halter": false,
+   "pfad": [
+    [
+     2613.1,
+     -2150.6,
+     2545.0
+    ],
+    [
+     2865.9,
+     -1798.8,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 3 bis feed-T",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S3-3",
+   "kante": "K64",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T3-feed",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     2865.9,
+     -1798.8,
+     2545.0
+    ],
+    [
+     2939.7,
+     -1696.1,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 3 bis Ecke 4",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S4-1",
+   "kante": "K64",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     3378.7,
+     -320.3,
+     2545.0
+    ],
+    [
+     3375.2,
+     355.7,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 4 bis Ecke 5",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S5-1",
+   "kante": "K64",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     2921.7,
+     1726.8,
+     2545.0
+    ],
+    [
+     2521.5,
+     2271.7,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 5 bis Ecke 6",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S6-1",
+   "kante": "K64",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "t:RB-T6-entleerung",
+   "halter": false,
+   "pfad": [
+    [
+     1348.8,
+     3114.4,
+     2545.0
+    ],
+    [
+     815.6,
+     3284.5,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 6 bis entleerung-T",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T6-entleerung-ab",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T6-entleerung",
+   "ende": "r:RB-H6-entleerung",
+   "pfad": [
+    [
+     815.6,
+     3284.5,
+     2545.0
+    ],
+    [
+     815.6,
+     3284.5,
+     2223.1
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Abgang d63 zum Kugelhahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H6-entleerung-ab",
+   "kante": null,
+   "dn": 63,
+   "farbe": "grau",
+   "start": "r:RB-H6-entleerung",
+   "ende": "offen",
+   "pfad": [
+    [
+     815.6,
+     3284.5,
+     2098.1
+    ],
+    [
+     815.6,
+     3284.5,
+     1948.1
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Auslauf unter dem Hahn; Anschluss an den Ruecklauf OFFEN (R2c / Planer)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S6-2",
+   "kante": "K64",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T6-entleerung",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     815.6,
+     3284.5,
+     2545.0
+    ],
+    [
+     704.7,
+     3319.9,
+     2545.0
+    ]
+   ],
+   "linie": 1,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 6 bis Ecke 7",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S7-1",
+   "kante": "K76",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "r:RB-K7-RA",
+   "halter": false,
+   "pfad": [
+    [
+     -739.4,
+     3312.4,
+     2545.0
+    ],
+    [
+     -837.2,
+     3280.0,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 bis Reduziermuffe der Kupplungsstrecke",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K7-a",
+   "kante": "K76",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:RB-K7-RA",
+   "ende": "r:RB-K7-H",
+   "pfad": [
+    [
+     -920.3,
+     3252.5,
+     2545.0
+    ],
+    [
+     -1001.0,
+     3225.8,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Rohrstueck d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K7-b",
+   "kante": "K76",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "r:RB-K7-H",
+   "ende": "r:RB-K7-RB",
+   "pfad": [
+    [
+     -1119.7,
+     3186.6,
+     2545.0
+    ],
+    [
+     -1200.4,
+     3159.9,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Rohrstueck d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S7-2",
+   "kante": "K76",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "r:RB-K7-RB",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     -1283.5,
+     3132.4,
+     2545.0
+    ],
+    [
+     -1381.3,
+     3100.1,
+     2545.0
+    ]
+   ],
+   "linie": 0,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 7 bis Ecke 8",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S8-1",
+   "kante": "K72",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "t:RB-T8-entleerung",
+   "halter": false,
+   "pfad": [
+    [
+     -2545.2,
+     2245.1,
+     2545.0
+    ],
+    [
+     -2613.1,
+     2150.6,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 8 bis entleerung-T",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T8-entleerung-ab",
+   "kante": null,
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T8-entleerung",
+   "ende": "r:RB-H8-entleerung",
+   "pfad": [
+    [
+     -2613.1,
+     2150.6,
+     2545.0
+    ],
+    [
+     -2613.1,
+     2150.6,
+     2223.1
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Abgang d63 zum Kugelhahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H8-entleerung-ab",
+   "kante": null,
+   "dn": 63,
+   "farbe": "grau",
+   "start": "r:RB-H8-entleerung",
+   "ende": "offen",
+   "pfad": [
+    [
+     -2613.1,
+     2150.6,
+     2098.1
+    ],
+    [
+     -2613.1,
+     2150.6,
+     1948.1
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "halter": false,
+   "notiz": "Auslauf unter dem Hahn; Anschluss an den Ruecklauf OFFEN (R2c / Planer)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S8-2",
+   "kante": "K72",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "t:RB-T8-entleerung",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     -2613.1,
+     2150.6,
+     2545.0
+    ],
+    [
+     -2939.7,
+     1696.1,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 8 bis Ecke 9",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-S9-1",
+   "kante": "K72",
+   "dn": 75,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "halter": false,
+   "pfad": [
+    [
+     -3378.7,
+     320.3,
+     2545.0
+    ],
+    [
+     -3375.2,
+     -355.7,
+     2545.0
+    ]
+   ],
+   "linie": 2,
+   "korridor": [
+    "KR"
+   ],
+   "notiz": "Ring d75 Seite 9 bis Ecke 0",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
   }
  ],
  "t_stuecke": [
@@ -5346,6 +7004,262 @@
     }
    ],
    "linie": "luft_b"
+  },
+  {
+   "id": "RB1-TB",
+   "pos": [
+    2424.1,
+    -1000.4,
+    1255.0
+   ],
+   "d": 63,
+   "ports": [
+    {
+     "trasse": "RB1-Da3",
+     "ende": "ende",
+     "d": 50
+    },
+    {
+     "trasse": "RB1-Db3",
+     "ende": "ende",
+     "d": 50
+    },
+    {
+     "trasse": "RB1-K63",
+     "ende": "start",
+     "d": 63
+    }
+   ],
+   "linie": 1,
+   "notiz": "T d63: zwei Booster-Druckleitungen d50 vereinigt, Abgang Steigleitung nach oben",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-TB",
+   "pos": [
+    -1032.4,
+    -4362.4,
+    1255.0
+   ],
+   "d": 63,
+   "ports": [
+    {
+     "trasse": "RB2-Da3",
+     "ende": "ende",
+     "d": 50
+    },
+    {
+     "trasse": "RB2-Db3",
+     "ende": "ende",
+     "d": 50
+    },
+    {
+     "trasse": "RB2-K63",
+     "ende": "start",
+     "d": 63
+    }
+   ],
+   "linie": 2,
+   "notiz": "T d63: zwei Booster-Druckleitungen d50 vereinigt, Abgang Steigleitung nach oben",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T1-feed",
+   "pos": [
+    -1157.8,
+    -3175.3,
+    2545.0
+   ],
+   "d": 75,
+   "ports": [
+    {
+     "trasse": "RB-S1-1",
+     "ende": "ende",
+     "d": 75
+    },
+    {
+     "trasse": "RB-S1-2",
+     "ende": "start",
+     "d": 75
+    },
+    {
+     "trasse": "RB2-K63",
+     "ende": "ende",
+     "d": 63
+    }
+   ],
+   "linie": 2,
+   "notiz": "Einspeise-T d75 der Linie 2 (Steigleitung d63 von der Seite)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T1-ringende",
+   "pos": [
+    -815.6,
+    -3284.5,
+    2545.0
+   ],
+   "d": 75,
+   "ports": [
+    {
+     "trasse": "RB-S1-2",
+     "ende": "ende",
+     "d": 75
+    },
+    {
+     "trasse": "RB-S1-3",
+     "ende": "start",
+     "d": 75
+    },
+    {
+     "trasse": "RB-T1-ringende-ab",
+     "ende": "start",
+     "d": 63
+    }
+   ],
+   "linie": 2,
+   "notiz": "Ring-Ende der Linie 2: T d75, Abgang nach unten d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T3-ringende",
+   "pos": [
+    2613.1,
+    -2150.6,
+    2545.0
+   ],
+   "d": 75,
+   "ports": [
+    {
+     "trasse": "RB-S3-1",
+     "ende": "ende",
+     "d": 75
+    },
+    {
+     "trasse": "RB-S3-2",
+     "ende": "start",
+     "d": 75
+    },
+    {
+     "trasse": "RB-T3-ringende-ab",
+     "ende": "start",
+     "d": 63
+    }
+   ],
+   "linie": 1,
+   "notiz": "Ring-Ende der Linie 1: T d75, Abgang nach unten d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T3-feed",
+   "pos": [
+    2865.9,
+    -1798.8,
+    2545.0
+   ],
+   "d": 75,
+   "ports": [
+    {
+     "trasse": "RB-S3-2",
+     "ende": "ende",
+     "d": 75
+    },
+    {
+     "trasse": "RB-S3-3",
+     "ende": "start",
+     "d": 75
+    },
+    {
+     "trasse": "RB1-K63",
+     "ende": "ende",
+     "d": 63
+    }
+   ],
+   "linie": 1,
+   "notiz": "Einspeise-T d75 der Linie 1 (Steigleitung d63 von der Seite)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T6-entleerung",
+   "pos": [
+    815.6,
+    3284.5,
+    2545.0
+   ],
+   "d": 75,
+   "ports": [
+    {
+     "trasse": "RB-S6-1",
+     "ende": "ende",
+     "d": 75
+    },
+    {
+     "trasse": "RB-S6-2",
+     "ende": "start",
+     "d": 75
+    },
+    {
+     "trasse": "RB-T6-entleerung-ab",
+     "ende": "start",
+     "d": 63
+    }
+   ],
+   "linie": 1,
+   "notiz": "Entleerung der Linie 1: T d75, Abgang nach unten d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-T8-entleerung",
+   "pos": [
+    -2613.1,
+    2150.6,
+    2545.0
+   ],
+   "d": 75,
+   "ports": [
+    {
+     "trasse": "RB-S8-1",
+     "ende": "ende",
+     "d": 75
+    },
+    {
+     "trasse": "RB-S8-2",
+     "ende": "start",
+     "d": 75
+    },
+    {
+     "trasse": "RB-T8-entleerung-ab",
+     "ende": "start",
+     "d": 63
+    }
+   ],
+   "linie": 2,
+   "notiz": "Entleerung der Linie 2: T d75, Abgang nach unten d63",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
   }
  ],
  "r_stuecke": [
@@ -5913,6 +7827,396 @@
    "farbe": "hellblau",
    "linie": "frisch",
    "notiz": "Zapfhahn d25 vor dem Puffer: Fass wird von Hand mit Schlauch gefuellt (Netz K52, kein Dauerfluss)"
+  },
+  {
+   "id": "RB1-REDa",
+   "pos_a": [
+    2859.1,
+    -1084.1,
+    838.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 50,
+   "d_klein": 40,
+   "linie": 1,
+   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-RSVa",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d50",
+   "pos_a": [
+    2859.1,
+    -1084.1,
+    898.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "d_gross": 50,
+   "linie": 1,
+   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 1a",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-REDb",
+   "pos_a": [
+    1989.1,
+    -916.6,
+    838.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 50,
+   "d_klein": 40,
+   "linie": 1,
+   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB1-RSVb",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d50",
+   "pos_a": [
+    1989.1,
+    -916.6,
+    898.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "d_gross": 50,
+   "linie": 1,
+   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 1b",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-REDa",
+   "pos_a": [
+    -894.2,
+    -4783.3,
+    838.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 50,
+   "d_klein": 40,
+   "linie": 2,
+   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-RSVa",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d50",
+   "pos_a": [
+    -894.2,
+    -4783.3,
+    898.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "d_gross": 50,
+   "linie": 2,
+   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 2a",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-REDb",
+   "pos_a": [
+    -1170.6,
+    -3941.5,
+    838.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 50,
+   "d_klein": 40,
+   "linie": 2,
+   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB2-RSVb",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d50",
+   "pos_a": [
+    -1170.6,
+    -3941.5,
+    898.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "d_gross": 50,
+   "linie": 2,
+   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 2b",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H1-ringende",
+   "art": "kugelhahn",
+   "pos_a": [
+    -815.6,
+    -3284.5,
+    2223.1
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 63,
+   "d_klein": 63,
+   "linie": 2,
+   "notiz": "Ring-Ende-Hahn d63 (Ueberschuss in den Ruecklauf, ersetzt K13/K29) Linie 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K2-RA",
+   "pos_a": [
+    837.2,
+    -3280.0,
+    2545.0
+   ],
+   "dir": [
+    0.949425,
+    0.313992,
+    0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 0,
+   "notiz": "Reduziermuffe d75/d63 vor dem Kupplungshahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K2-H",
+   "art": "kugelhahn",
+   "pos_a": [
+    1001.0,
+    -3225.8,
+    2545.0
+   ],
+   "dir": [
+    0.949425,
+    0.313992,
+    0.0
+   ],
+   "d_gross": 63,
+   "d_klein": 63,
+   "linie": 0,
+   "normal": "zu",
+   "notiz": "Kupplungshahn d63 zwischen den Linien (K76), im Betrieb geschlossen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K2-RB",
+   "pos_a": [
+    1283.5,
+    -3132.4,
+    2545.0
+   ],
+   "dir": [
+    -0.949425,
+    -0.313992,
+    -0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 0,
+   "notiz": "Reduziermuffe d63/d75 hinter dem Kupplungshahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H3-ringende",
+   "art": "kugelhahn",
+   "pos_a": [
+    2613.1,
+    -2150.6,
+    2223.1
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 63,
+   "d_klein": 63,
+   "linie": 1,
+   "notiz": "Ring-Ende-Hahn d63 (Ueberschuss in den Ruecklauf, ersetzt K13/K29) Linie 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H6-entleerung",
+   "art": "kugelhahn",
+   "pos_a": [
+    815.6,
+    3284.5,
+    2223.1
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 63,
+   "d_klein": 63,
+   "linie": 1,
+   "notiz": "Entleerungshahn d63 (Ring leer, Frost) Linie 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K7-RA",
+   "pos_a": [
+    -837.2,
+    3280.0,
+    2545.0
+   ],
+   "dir": [
+    -0.949425,
+    -0.313992,
+    0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 0,
+   "notiz": "Reduziermuffe d75/d63 vor dem Kupplungshahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K7-H",
+   "art": "kugelhahn",
+   "pos_a": [
+    -1001.0,
+    3225.8,
+    2545.0
+   ],
+   "dir": [
+    -0.949425,
+    -0.313992,
+    0.0
+   ],
+   "d_gross": 63,
+   "d_klein": 63,
+   "linie": 0,
+   "normal": "zu",
+   "notiz": "Kupplungshahn d63 zwischen den Linien (K76), im Betrieb geschlossen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-K7-RB",
+   "pos_a": [
+    -1283.5,
+    3132.4,
+    2545.0
+   ],
+   "dir": [
+    0.949425,
+    0.313992,
+    -0.0
+   ],
+   "d_gross": 75,
+   "d_klein": 63,
+   "linie": 0,
+   "notiz": "Reduziermuffe d63/d75 hinter dem Kupplungshahn",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
+  },
+  {
+   "id": "RB-H8-entleerung",
+   "art": "kugelhahn",
+   "pos_a": [
+    -2613.1,
+    2150.6,
+    2223.1
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 63,
+   "d_klein": 63,
+   "linie": 2,
+   "notiz": "Entleerungshahn d63 (Ring leer, Frost) Linie 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_ring"
   }
  ],
  "teile": [

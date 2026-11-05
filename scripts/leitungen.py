@@ -144,12 +144,12 @@ def bauen(doc):
     for e in doc.get("teile", []):                                    # M10-UMBAU: weitere Bauteile ohne Trasse (Schlammfass, Federhahn, Verteiler, Kappen, Klemmen von Hand)
         kl = e["datei"].startswith("lt_klemme_d")                    # Klemmen von Hand teilen die Klasse mit den Klemmen aus halter() (eine Definition je Durchmesser)
         T.put("klemme" if kl else "teil:" + e["datei"], int(e["datei"][11:]) if kl else 0, 0, tuple(e["pos"]), tuple(e["z"]), tuple(e.get("x", (1.0, 0.0, 0.0))), FARBEN.get(e.get("farbe")), e["id"])
-    if not doc.get("halter_aus"): halter(T, bericht)
+    if not doc.get("halter_aus"): halter(T, bericht, {t["id"] for t in doc["trassen"] if t.get("halter") is False})   # N-AUTOBAHN-V2: Trassen mit eigenem Halter (Ring an der Schiene)
     return T, bericht
 
 def abst_halter(d): return 600.0 if d <= 32 else 800.0 if d <= 63 else 1000.0   # docs/leitungsordnung.md R6 [A]
 
-def halter(T, bericht):
+def halter(T, bericht, ohne=()):
     """M10-UMBAU Schritt 9 (R6): je Rohr ueber Flur (beide Enden Z > 400) Rohrklemmen lt_klemme_d<d> in gleichen Abstaenden, Abstand <= R6 (senkrecht x 1,5); Rohre < 300 mm
     gelten als Formstueck-Zusammenbau (Halter am Nachbarrohr). Waagerechte Rohre: Klemmenfuss unten (Konsole/Boden); senkrechte: Fuss in -X (Wand/Tafel) [A].
     Fehlt die Klemme fuer den Durchmesser (d75), steht das Rohr im Bericht als OFFEN (Werkstatt: Halter)."""
@@ -157,6 +157,7 @@ def halter(T, bericht):
     for (art, d, L), liste in list(T.items.items()):
         if art != "rohr" or L < 300: continue
         for m, farbe, tid in liste:
+            if tid in ohne: continue
             z = (m[2], m[6], m[10]); A = (m[3], m[7], m[11]); B = add(A, z, L)
             if min(A[2], B[2]) <= 400.0: continue
             vert = abs(z[2]) > 0.999; smax = abst_halter(d) * (1.5 if vert else 1.0)

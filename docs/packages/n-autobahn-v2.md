@@ -31,6 +31,14 @@ Auftragsblatt: `docs/jobs/N-AUTOBAHN-V2.md`. Rechnung: `python -X utf8 scripts/n
 
 **Stand WA-S 05.11.2026:** 12 Teile gebaut, Check 101/102 PASS (`python -X utf8 scripts/workshop/check_autobahn_s.py`); einziger FAIL: Regelhahn GF 546 Pro nur eine Quelle fuer D85. Befunde im Teileblatt: Tische ID19 statt ID16, Anstieg auf Ausleger Z 2277, Bodenrinne unter Pool-Spiegel (Planer-Frage), Handels-Bodenrinne zu flach.
 
+### Montage R1/R2 (05.11.2026, Plan)
+**Problem:** Die Bauteile von WA-T und WA-S liegen vor, im Modell `designs/dome-ring_b2.sc` fehlt die Autobahn. **Intent:** Ben und Leon schalten im Viewer zwischen A+ und Autobahn um und sehen sie so, wie sie gebaut wuerde. **Goal:** `sh scripts/build.sh 5 <runde> ring_b2` baut Ring, Stuetzpunkte, Einspeisung (R1) und Ausleger, Fallleitungen, Ruecklauf (R2); die Pruefpunkte aus Blatt Abschnitt 4 und 6 sind gemessen und hier eingetragen; A+ (`scripts/dome-script.json`) bleibt byte-gleich.
+1. `scripts/trassen_ring.py`: alle Lagen aus Instanzmatrizen und Port-Tabellen (Ring, Joche, Stelzen, Schienen, Schellen, Einspeisung, Ausleger, Abzweige, Fallleitungen); Trassen mit `quelle: trassen_ring` und `varianten: ["ring_b2"]` in `data/leitungstrassen.json`.
+2. `gen_dome.ring_b2()` setzt die Bauteile; `leitungen.halter()` laesst Trassen mit `halter: false` aus (Ring haengt an eigenen Schellen).
+3. R1: Bau, Interferenz, `check_walkways*`, `check_leitungen`, `check_leitungsordnung`, Bilder Draufsicht und Schnitt.
+4. R2: Ausleger, 38 Abzweige und Fallleitungen, Ruecklauf; Bau, alle Pruefungen, Viewer-Export, Screenshots.
+5. A+-Pruefsumme vorher (13:34, `sha256sum` der Ausgabe von `gen_dome.py 5 <scratch>/a.json`): `1a3e4ac0d0b8b468204d5434a6b4d099a6bbc92e5b6a05ed80fae23b19c7d7b9`.
+
 ## DoD
 1. Pruefpunkte 1 bis 5 aus dem Blatt von einem fremden Pruefer als PASS belegt (`docs/jobs/pruefung/N-AUTOBAHN-V2.md`).
 2. Viewer-Screenshot beider Varianten im echten Browser, Ring mit Schlaeuchen nur in Ring B2.

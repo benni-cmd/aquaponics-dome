@@ -140,7 +140,7 @@ GF Typ 562 PVC-U d50 mit Feder, Klebemuffen: Gehaeuse D 97, Baulaenge L 157, z 9
 | Schlauch d50 (D85) | Semperit LM1S-EPDM NW50 | EPDM-Lebensmittelschlauch; BfR, FDA, 1935/2004 | https://hoses.semperitgroup.com/de/produkte/industrieschlaeuche/lebensmittel/lm1s-epdm?type=9101 https://shop.reiff-tp.de/en/gi-bierschl-lm1s-epdm-m.-sp.-nw-50/10049412 |
 | Schnellkupplung (D85) | Riegler Kamlok Typ C/E, 1.4401 | Edelstahl, kein Messing; Dichtung EPDM statt Serien-NBR [A] | https://www.riegler.de/de/en/kamlok-quick-connect-socket-c-type-1-4401-hose-i-d-25-108100.html https://ehorst.de/nl/Kupplungsmuffe-Typ-C-DN-25-Stutzen-27-mm-Kamlok-Edelstahl-1117590.html |
 | Rueckschlagventil d50 (D85) | GF Typ 562 PVC-U d50 | PVC-U, EPDM; ACS, KIWA, FDA, DIBt (zwei Herstellerblaetter) | https://www.gfps.com/content/dam/gfps/com/datasheets/de/gfps-datasheet-561-562-check-valve-de.pdf https://siags-energy.de/out/media/datasheet_306567.pdf |
-| Regelhahn (D85) | GF Kugelhahn Typ 546 Pro PVC-U d25 (L 110, D 58) mit Schlauchtuellen | WRAS, ACS, NSF, FDA laut Hersteller; nur eine Quelle, Haendlerlisten nennen keine Zulassung | https://www.gfps.com/content/dam/gfps/com/datasheets/de/gfps-datasheet-546-pro-ball-valve-de.pdf |
+| Regelhahn (D85) | GF Kugelhahn Typ 546 Pro PVC-U d25 (L 110, D 58) mit Schlauchtuellen | WRAS, ACS, NSF, FDA laut GF-Datenblatt DE; NSF 61 (PVC-Gehaeuse) und FDA (EPDM-/FPM-Dichtung) laut GF-Datenblatt USA. Zwei Hersteller-Dokumente, kein unabhaengiger Haendler (Haendlerseite Pipestock sperrt automatische Abrufe); Zulassung gilt fuer die Baureihe, Zertifikat je Artikelnummer d25 bei GF anfragen | https://www.gfps.com/content/dam/gfps/com/datasheets/de/gfps-datasheet-546-pro-ball-valve-de.pdf https://s3.amazonaws.com/zcom-media/sites/a0i0L00000VJ0SJQA1/media/mediamanager/gfps-us-1334-datasheet-Type-546-Data-Sheet-en.pdf |
 | Tuellen | Baenninger Druckschlauchtuelle PVC-U, KTW-BWGL, L 54 bis 80 | Tuellen-Durchmesser etwa gleich Rohr-d: d32 passt nicht auf ID19, d40 nicht auf ID25 -> Reduzier-Tuelle [A] | https://www.schwarte-shop.de/pvc-u-klebefitting-druckschlauchtuelle-32-mm?pdf=true |
 
 Gitterrinne, Bodenrinne und Rost beruehren kein Wasser (der Schlauch liegt darin); D85 gilt dort nicht.
@@ -154,10 +154,10 @@ Q1 bis Q28 aus der Recherche WA-S (05.11.2026); die oben genutzten:
 - Q21 ACO Produktinformation Self; Q22 baustoffshop ACO Euroline; Q23 bauschnell ACO Hexaline; Q25 OBO Datenblatt 6001072; Q26 OBO Broschuere Gitterrinnen 2018; Q27 OBO Datenblatt 6001442.
 
 ### Pruefung (05.11.2026)
-`python -X utf8 scripts/workshop/check_autobahn_s.py`: 101/102 PASS, Ausgabe `renders/components/autobahn/check_autobahn_s.txt`. Einziger FAIL: Regelhahn hat nur eine Quelle fuer die Lebensmitteleignung (Offen 1).
+`python -X utf8 scripts/workshop/check_autobahn_s.py`: 101/102 PASS (05.11.); nach Auflage A1 (zweite Quelle Regelhahn) `check_autobahn_s.py d85` 6/6, Ausgabe `renders/components/autobahn/check_autobahn_s.txt`.
 
 ### Offen (WA-S)
-1. Regelhahn: zweite Quelle fuer die Trinkwasser-Zulassung des GF 546 Pro fehlt; ein Kugelhahn mit angeformten Tuellen und Nachweis wurde nicht gefunden.
+1. Regelhahn: zweite Quelle nachgetragen (GF-Datenblatt USA, Auflage A1 der Pruefung); offen bleibt das Zertifikat der konkreten Artikelnummer d25 (Anfrage bei GF, Beschaffung N-PREIS-PRUEF). Ein Kugelhahn mit angeformten Tuellen und Nachweis wurde nicht gefunden.
 2. Biegeradius T-Flex nennt REHAU nicht (Analogwert FITT Pure 90/110 [A]); im Modell gilt ohnehin 6 x AD.
 3. Kamlok: gekuppelte Laenge und EPDM-Konformitaet beim Hersteller anfragen.
 4. Schlauchschelle fuer AD 34,6 (ID25) fehlt in der Bibliothek.

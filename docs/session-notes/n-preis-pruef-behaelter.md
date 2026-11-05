@@ -65,5 +65,27 @@ Platzierte Zeilen der Gruppe (Bedarf > 0), deren altes Hauptangebot VERDACHT ode
 2. Preise ohne `preis_eur` (Aricon, CGK, TME, Polyvantis) erscheinen in der Einkaufsliste weiter als "Preis fehlt"; das ist gewollt.
 3. Konfidenz `E` steht nur dort, wo ich Netto x 1,19 oder die irische MwSt gerechnet habe.
 
+## Nachtrag 05.11.2026: Auflage 7 und Bezug fuer beet_sumpf, schlammfass, biofilter_dritt
+Auftrag: Pruefbefund `docs/jobs/pruefung/N-PREIS-PRUEF.md` (bdfbe93). `behaelter.json` hat jetzt 36 Zeilen (8 neu).
+
+Auflage 7 (erledigt, Commit 1a51f88):
+1. `BEH-drittbecken-klein`: beide Angebote tragen jetzt "ERSATZ (Abweichung: PE-Rundbehaelter 500 l statt Beton-Wanne ...)".
+2. `BEH-ibc-1000l`, `BEH-ibc-beetwanne`: Rekubik steht auf `lieferung_de: nein` mit "NICHT BESTELLBAR am 05.11.2026"; `bom.py` waehlt es damit nicht.
+
+Neu, bestaetigt:
+1. `PMP-teichpumpe-5300` (2 Stk, Beet-Sumpf): Oase AquaMax Eco Classic 5500. OBI DE 220,49, Galaxus DE 365,15. Die Kennlinie bei 2 m Foerderhoehe liegt laut UK-Seite nur bei 1500 l/h; Hydraulik R45 gegen diese Kennlinie pruefen (DEINE ENTSCHEIDUNG / Planer).
+2. `BEH-tank-pe-580x865` (Schlammfass): Rekubik DE 74,99 (580 x 980, lebensmittelecht ja), faesser.de-Datenblatt, toom/Graf. OFFEN (Ben): Mass 580 x 980 statt 580 x 865; alle 220-l-Faesser sind 978 bis 980 hoch.
+3. `BEH-fass-pe-60l` (neu, Biofilter Drittbecken): Graf 824410 (d398 x 615, passt zur Massskizze). richter & hess DE 39,07 (gerechnet), eBay-Haendler DE 39,36. Verschluss ist ein Spannring, kein Schraubdeckel.
+
+Neu, OFFEN:
+1. `BEH-tank-pe-800x1000` (Beet-Sumpf-Tank): kein 500-l-Erdtank d800 x 1000. Naechstes Handelsmass tanksdirekt RPV 500 l, 700 x 700 x 1460 (281,79), nur eine Quelle, nur fuer stehende Aufstellung beschrieben. OFFEN (Ben): Mass oder Sonderanfertigung.
+2. `BEH-pe-schachtaufsatz-600x200`: nur ein Haendler (Rewatec VS 20, baustoffshop.de 144,95 plus 49 Versand), Hoehe 200 oder 250 widerspruechlich. OFFEN (Ben): Mass.
+3. `BEH-tank-pe-700-deckel`: kein Handelsdeckel d700 x 40 mit vier Durchbruechen. Vorschlag Standard-Domdeckel d600 mit selbst gesetzten Durchbruechen.
+4. `BEH-tank-pe-580-deckel`, `BEH-fass-pe-60l-deckel`: im Fass-Satz enthalten; Spannring-Werkstoff nicht belegt.
+
+Hinweise an die Werkstatt und die Gruppe E:
+1. `BEH-fass-pe-60l` und `BEH-fass-pe-60l-deckel` sind neue Artikel-IDs von mir und stehen noch nicht in `data/stueckliste.json`; `bom.py` muss danach neu laufen und die Komponente `biofilter_dritt` den IDs zuordnen.
+2. Bioballs (`TOP-biomedium`) liegen in `huelle_pflanze.json` (Gruppe E), nicht hier. Befund der Recherche: Bioballs in Litergebinden sind nicht zu finden; Vorschlag Oase Hel-X 13 Biomedium (baustoffshop.de DE 25 l = 43,40 plus 6,90 Versand, vijverleven.nl NL 100 l = 209). Das ist Bewegtbett-Medium statt starrer Bioballs; das Volumen 37 l ist neu zu bewerten, Lebensmitteleignung nicht belegt. Weitergabe an Gruppe E durch den Orchestrator.
+
 Geprueft gegen: `data/beschaffung/behaelter.json` per Skript (28 Zeilen, jede mit Angebot oder `luecke`), drei Agentenberichte mit geoeffneten Seiten, `docs/jobs/N-PREIS-PRUEF.md`, D76
 Offen: siehe Listen oben

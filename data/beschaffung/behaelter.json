@@ -485,6 +485,124 @@
       "bemerkung_artikel": "Stahlkonsole 160 x 160 x 500, 12,16 kg, verzinkt (Eigenbau, data/parts/aktivkohle_station.json). Kein Handelsteil gefunden. Aufbau aus Normprofilen: z. B. 2 Winkel 40x40x4 verzinkt je 500 mm mit Fuss- und Kopfplatte; Belege und Preise in data/beschaffung/stahl.json (Sitzung Stahl).",
       "angebote": [],
       "luecke": "OFFEN (Quelle): Eigenbau aus Normprofilen, kein Kaufteil; Preis aus stahl.json zu uebernehmen"
+    },
+    "PMP-teichpumpe-5300": {
+      "bemerkung_artikel": "Beet-Sumpf, 2 Stk je Linie: Teichpumpe ca. 5300 l/h, 60 W, Hmax 2,8 m. Oase AquaMax Eco Classic 5500 (5300 l/h, 60 W, Hmax 2,8 m, EAN 4010052510965). Die Kennlinie bei 2 m Foerderhoehe liegt laut einer UK-Haendlerseite (UK = OFFEN) nur bei 1500 l/h: Hydraulik-Auslegung R45 gegen diese Kennlinie pruefen. Dauerbetrieb und Trinkwassereignung nicht ausdruecklich belegt (oase.com lieferte 429, OFFEN (Quelle)). Kein Aquaforte-Modell mit diesen Werten gefunden.",
+      "angebote": [
+        {
+          "preis_eur": 220.49,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "OBI.de",
+          "land": "DE",
+          "url": "https://www.obi.de/p/1358613/oase-filter-und-bachlaufpumpe-aquamax-eco-classic-5500",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "220,49 brutto, versandkostenfrei, Paket ca. 13.11.; Anschluss 1,5\", 3,2 kg (Angaben teils aus billiger.de-Preisliste)."
+        },
+        {
+          "preis_eur": 365.15,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "Galaxus.de (Marktplatz)",
+          "land": "DE",
+          "url": "https://www.galaxus.de/en/s4/product/oase-eco-classic-5500-fountain-garden-pond-6185872",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "365,15 brutto, Lieferung 03.12.2026 bis 07.01.2027; Marktplatz-Verkaeufer."
+        }
+      ]
+    },
+    "BEH-tank-pe-800x1000": {
+      "bemerkung_artikel": "Beet-Sumpf, eingegrabener PE-Rundtank ca. 500 l, Aussen d800 x H1000, Wand 6, Domoeffnung d580. Ein 500-l-Rundtank in diesem Mass zum Eingraben ist nicht als Handelsware gefunden; Erdtanks beginnen bei ca. 1000 l. Naechstes Handelsmass: tanksdirekt.de RPV 500 l, 700 x 700 x 1460, Wand 6, LLDPE, konform nach EU 10/2011 und 1935/2004, 281,79 brutto, Lieferung DE 3-7 Tage; nur fuer stehende Aufstellung beschrieben, nur Deckel d300, kein zweiter Haendler (Aricon, CGK, Roth, Graf, Mauser, Garantia nicht einzeln belegt). OFFEN (Ben): Mass (700 x 700 x 1460 stehend statt d800 x 1000 eingegraben) oder Sonderanfertigung.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein Kaufteil in d800 x 1000; Handelsmass nur mit einer Quelle",
+      "alternative": "tanksdirekt.de RPV 500 l 281,79 [Q, https://tanksdirekt.de/en/500-litre-storage-tank-round-upright-rpv-series]; eine Quelle, nicht fuer Erdeinbau belegt."
+    },
+    "BEH-pe-schachtaufsatz-600x200": {
+      "bemerkung_artikel": "Schachtaufsatz (Dom) d600 x H200, PE. Rewatec Schachtverlaengerung VS 20 (d600, PE, mit Dichtring) bei baustoffshop.de 144,95 plus 49 Versand, Lieferung DE ja [Q, https://www.baustoffshop.de/rewatec-schachtverlangerung-vs-20.html]; Hoehe auf der Seite widerspruechlich (Titel 20 cm, Text 250 mm), kuerzbar. Nur ein Haendler. OFFEN (Ben): Mass 250 mm oder auf 200 kuerzen.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): zweiter Haendler oder Herstellerdatenblatt fehlt"
+    },
+    "BEH-tank-pe-700-deckel": {
+      "bemerkung_artikel": "Begehbarer Deckel d700 x 40 mit vier Durchbruechen, lichtdicht. Handelsdeckel in diesem Mass nicht gefunden; begehbare Domdeckel gibt es von 4rain, Graf und Marley, aber nur als Suchtreffer ohne geoeffnete Seite mit Mass oder Preis. Vorschlag: Standard-Domdeckel d600 kaufen, Durchbrueche selbst setzen. OFFEN (Ben): Mass.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein Handelsdeckel d700 x 40 belegt"
+    },
+    "BEH-tank-pe-580x865": {
+      "bemerkung_artikel": "Schlammfass, eingegraben: PE-Spannringfass 220 l, Modell d580 x H865 (Innenraum 221 l). Alle gefundenen 220-l-PE-Deckelfaesser (UN, lebensmittelzugelassen) sind H978 bis 980. Rekubik (Kyritz DE) 74,99: 580 x 980, Oeffnung 465, HDPE, 'Lebensmittelecht: Ja'. faesser.de-Datenblatt (Toenisvorst DE): 590 x 978, Lebensmittelzulassung ja, Preis nicht gelesen. toom/Graf 220 l: d600 x H980. Wandstaerke 4/5 nirgends angegeben (OFFEN (Quelle)). OFFEN (Ben): Mass 580 x 980 statt 580 x 865.",
+      "angebote": [
+        {
+          "preis_eur": 74.99,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "Rekubik GmbH",
+          "land": "DE",
+          "url": "https://www.rekubik.de/kanister-faesser/faesser/220-l-weithalsfass-kunststoffdeckelfass-mit-spannring-blau-un-zulassung",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "220 l Weithalsfass mit Spannring, blau, UN; 580 x 980, Oeffnung 465, 'Lebensmittelecht: Ja', 1-2 Werktage."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "faesser.de (Datenblatt)",
+          "land": "DE",
+          "url": "https://www.faesser.de/product-datasheet/e759d495a4a54cd8a28b4cba268bda25/create",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "Datenblatt: 590 x 978, Lebensmittelzulassung ja; Lieferumfang Deckel, Gummidichtung, Spannring; Preis nicht gelesen."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "toom (Graf 220 l)",
+          "land": "DE",
+          "url": "https://toom.de/p/kunststoff-weithalsfass-220-l-blau-lebensmittelecht-mit-un-kennzeichnung/10486802",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "d600 x H980, lebensmittelecht, UN; Preis nicht gelesen."
+        }
+      ]
+    },
+    "BEH-tank-pe-580-deckel": {
+      "bemerkung_artikel": "Fassdeckel d580 mit Durchbruechen (48/8/26 mm selbst bohren) samt Spannring: im Fass-Satz enthalten (faesser.de-Datenblatt: Deckel, Gummidichtung, Spannring; Graf/toom gleich). Spannring 'Stahl verzinkt 10 x 35' nennt keine Seite (Werkstoff und Querschnitt OFFEN (Quelle)).",
+      "angebote": [],
+      "luecke": "Im Fass-Satz BEH-tank-pe-580x865 enthalten; Werkstoff des Spannrings OFFEN (Quelle)"
+    },
+    "BEH-fass-pe-60l": {
+      "bemerkung_artikel": "NEU (Biofilter Drittbecken, data/parts/biofilter_dritt.json): Weithalsfass PE 60 l, d398 x H615 (mit Deckel 625), Boden d370, Wand 3. Graf 824410, Herstellermassskizze: d398, Boden d370, H615: passt [Q, https://www.graf.info/fileadmin/Files_All_General/Documents/Dimension_drawing/Massskizze_Weithalsfass_60l.pdf]. Rekubik 60 l ist nicht als lebensmittelecht ausgewiesen: nicht verwendet. Wand 3 mm nirgends belegt (OFFEN (Quelle)). Verschluss ist ein Spannring, kein Schraubdeckel (OFFEN (Ben): Deckel als Spannringdeckel d398 im Satz).",
+      "angebote": [
+        {
+          "preis_eur": 39.07,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "richter & hess Verpackungen",
+          "land": "DE",
+          "url": "https://shop.richter-hess.de/standarddeckelfass-60-l-aus-kunststoff-105d60rkbxs.html",
+          "lieferung_de": "ja",
+          "konfidenz": "E",
+          "bemerkung": "105D60RKBXS, d400 x H620, lebensmittel- und FDA-zugelassen; 39,07 = 32,83 netto x 1,19 gerechnet."
+        },
+        {
+          "preis_eur": 39.36,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "eBay-Haendler Loechel (Graf 60 l)",
+          "land": "DE",
+          "url": "https://www.ebay.de/p/1104222431",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "39,36 plus 6,49 Versand; Verkaeufer-Angebot, Seite nur als Treffer gelesen; toom fuehrt dasselbe Fass (https://toom.de/p/kunststoff-weithalsfass-60-l-blau-lebensmittelecht-mit-un-kennzeichnung/10486871)."
+        }
+      ]
+    },
+    "BEH-fass-pe-60l-deckel": {
+      "bemerkung_artikel": "Deckel des 60-l-Fasses (Biofilter Drittbecken): Spannringdeckel d398 im Satz laut toom und Graf-Skizze, kein Schraubdeckel (Modell: Schraubdeckel d398 x 10, Bohrungen Zulauf d32 und Luftschlauch d8). OFFEN (Ben): Deckel als Spannringdeckel benennen.",
+      "angebote": [],
+      "luecke": "Im Fass-Satz BEH-fass-pe-60l enthalten; OFFEN (Ben): Spannring statt Schraubdeckel"
     }
   }
 }

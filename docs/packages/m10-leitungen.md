@@ -183,3 +183,15 @@ Nicht vorab schliessbar, weil sie erst am fertigen Rohr pruefbar sind: L10 (Nach
 - Waagerecht: innen 240 x 400, Rohrachse 186 unter Flur.
 - **Befund fuer S2N (Stamm-Haehne):** Auf K06-T-b/K22-T-b (Plan M3) ist keine Gerade lang genug (frei hoechstens 148 mm, Bedarf 262 mm). Linie 1 passt auf K06-T[2], Hahnmitte 3626,0 / 458,2 / 214,0, 99,5 mm Luft (Hahn sperrt dann den Filterauslauf; Bypass K56 versorgt die Pumpen). Linie 2 hat keinen Platz: K18 laeuft 68 mm neben K22-T, die Schachtwand laege 25 mm im Rohr. Optionen im Blatt; Entscheidung Montage/Orchestrator.
 - Einbau-Lage (Achsen, Hahn-Drehung) und Ports: Blatt `docs/parts/schacht_kugelhahn_tief.md`.
+
+## 14b. M10-UMBAU Bestand nach der Leitungsordnung neu verlegen (Montage, 05.11.2026; Blatt `docs/jobs/M10-UMBAU.md`, Runde 71)
+**Problem:** 21 gebaute Kanten liegen schraeg, in Bogenketten und ohne Halter; Schlammablaesse blind, Ueberlauf K10/K26 frei, Luft K44 in Bogenketten. **Intent:** saubere, realistische Leitungen als Grundlage fuer S2N bis S7 (Ben, W71). **Goal:** `check_leitungsordnung.py` R1 bis R9 0 Verstoesse, R10 34, Heber-Reserve >= 85/88 mm, Instanzen Schlammfass 2, Federhahn 2, Verteiler 2.
+
+**Plan (Reihenfolge laut Blatt):** (1) Pruefskript, (2) Router Manhattan im Welt-Rahmen, (3) Linie 1, Bild, (4) Linie 2, (5) Schlammfass K07/K23, (6) Verteiler K10/K26, (7) Luft K44, (8) M09, (9) Halter, (10) Build Runde 71 und Messung.
+
+**Schritt 1 erledigt:** `scripts/check_leitungsordnung.py` (R1 bis R9, R10 als Info; R4 wie die Inventur instanzbasiert; R7 und R9 als Naeherung, siehe Skriptkopf). **Vorher (Bestand Runde 70), Befehl `python -X utf8 scripts/check_leitungsordnung.py`, Exit 1:**
+- Rohr-Instanzen 114, davon schraeg > 3 Grad **74**; Boegen **79**; Halter **0**; waagerechte Richtungen (5-Grad-Klassen, ohne Heber/Port-Ausnahme) 4.
+- R1 **51** Pfadsegmente neben der Achse; R2 0; R3 0; R4 **4** Bogenketten (K02/K06-T-b, K18/K22-T, K01/K56-b, K17/K21/K57-b; gleich der Inventur); R5 0; R6 **21** Rohre ueber Flur ohne ausreichende Halter; R7 0 (keine Halter); R8 **1** (K06/K08 138 mm licht); R9 **11** Probepunkte frei im Gang (K08, K10, K24, K25, K26, T15).
+- R10 **36** Netz-Kanten ohne Trasse (K07, K11 bis K16, K23, K27 bis K35, K37 bis K43, K45 bis K49, K51 bis K55, K58, K59).
+
+**Befund Router (Messung `TL.port()` ueber alle Bauteil-Ports der Linien 1 und 2):** 16 von 28 waagerechten Ports liegen 3,7 bis 18,2 Grad neben den Weltachsen (Feinfilter 15,0; Absetzer Linie 1 16,6, Linie 2 3,7; Biofilter-Tank 10,9 / 18,2; Pumpen Linie 2 18,1; Pumpen Linie 1 0,1 bis 0,3). Weg ohne Sonderbogen: Port -> Rohr in Port-Richtung (<= 300 mm, Ausnahme 2) -> 90-Grad-Bogen lotrecht -> Steiger -> 90-Grad-Bogen in eine Weltachse (der Steiger entkoppelt das Azimut; Etage nach R3).

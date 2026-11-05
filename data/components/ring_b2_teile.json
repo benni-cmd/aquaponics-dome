@@ -1,0 +1,492 @@
+{
+ "quelle": "scripts/workshop/ring_b2.py",
+ "auftrag": "docs/jobs/N-VARIANTEN.md Abschnitt 4 Schritt V2",
+ "variante": "ring_b2",
+ "booster": "pumpe_gross (vorhandenes Bauteil, kein neues Teil; Ports scripts/trassen_linie.py PORTS pumpe_gross)",
+ "teile": {
+  "pegelschacht": {
+   "teilenummer": "T94",
+   "parameter": {
+    "fass_d": 400.0,
+    "fass_h": 520.0,
+    "wand": 4.0,
+    "boden": 5.0,
+    "deckel_d": 410.0,
+    "deckel_t": 15.0,
+    "zulauf_d": 50,
+    "zulauf_x": -100.0,
+    "saug_d": 50,
+    "saug_z": 100.0,
+    "saug_winkel": 30.0,
+    "ueberlauf_d": 63,
+    "ueberlauf_z": 440.0,
+    "stutzen_r0": 170.0,
+    "stutzen_r1": 250.0,
+    "flansch_d_zu": 10.0,
+    "stange_d": 16.0,
+    "stange_x": 100.0,
+    "stange_unten": 150.0,
+    "schwimmer_d": 50.0,
+    "schwimmer_h": 40.0,
+    "schwimmer_bohrung": 18.0,
+    "pegel_aus": 250.0,
+    "pegel_ein": 340.0,
+    "kabel_d": 24.0,
+    "kabel_x": 100.0,
+    "kabel_y": 120.0,
+    "entl_d": 20.0,
+    "entl_y": -120.0
+   },
+   "ks": "Mitte Fassboden aussen, Z hoch",
+   "pegel": {
+    "saug_achse": 100.0,
+    "aus": 250.0,
+    "ein": 340.0,
+    "sohle_notueberlauf": 411.5,
+    "fass_oberkante": 520.0
+   },
+   "volumen_l": {
+    "aus_bis_ein": 10861.9,
+    "ein_bis_ueberlauf": 8629.2,
+    "boden_bis_ueberlauf": 49059.4
+   },
+   "ports": [
+    {
+     "name": "Zulauf (K10/K26)",
+     "lage": [
+      -100.0,
+      0.0,
+      575.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN40"
+    },
+    {
+     "name": "Saug A (K61/K69)",
+     "lage": [
+      216.51,
+      125.0,
+      100.0
+     ],
+     "richtung": [
+      0.866,
+      0.5,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN40"
+    },
+    {
+     "name": "Saug B (K62/K70)",
+     "lage": [
+      216.51,
+      -125.0,
+      100.0
+     ],
+     "richtung": [
+      0.866,
+      -0.5,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN40"
+    },
+    {
+     "name": "Notueberlauf (K67/K75)",
+     "lage": [
+      -250.0,
+      0.0,
+      440.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN50"
+    },
+    {
+     "name": "Kabel Schwimmer",
+     "lage": [
+      100.0,
+      120.0,
+      555.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Kabelverschraubung",
+     "dn": "M20"
+    },
+    {
+     "name": "Entlueftung",
+     "lage": [
+      0.0,
+      -120.0,
+      535.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Oeffnung",
+     "dn": "d20"
+    }
+   ]
+  },
+  "ringstuetze_d75": {
+   "teilenummer": "T95",
+   "parameter": {
+    "achse_h": 2145.0,
+    "ausladung": 250.0,
+    "pfosten_b": 50.0,
+    "pfosten_w": 3.0,
+    "arm_b": 40.0,
+    "arm_w": 3.0,
+    "arm_ueber": 60.0,
+    "platte_b": 200.0,
+    "platte_t": 10.0,
+    "anker_d": 10.0,
+    "anker_l": 100.0,
+    "anker_abstand": 150.0,
+    "rohr_d": 75.0,
+    "einlage_t": 3.0,
+    "ring_t": 3.0,
+    "ring_b": 30.0,
+    "nabe_b": 20.0,
+    "nabe_h": 12.0,
+    "stange_d": 10.0,
+    "mutter_d": 17.0,
+    "mutter_h": 8.0,
+    "stange_frei": 50.0
+   },
+   "ks": "Mitte Fussplatte unten = Innenboden, Rohr entlang Y",
+   "unterkante_schelle": 2101.5,
+   "hoehe_gesamt": 2310.0,
+   "hinweis": "achse_h und ausladung sind Parameter: ringstuetze(dict(RS, achse_h=..., ausladung=...)) erzeugt die Variante",
+   "ports": [
+    {
+     "name": "Rohrachse (Ring d75)",
+     "lage": [
+      250.0,
+      0.0,
+      2145.0
+     ],
+     "richtung": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "art": "Aufnahme",
+     "dn": "DN65"
+    },
+    {
+     "name": "Fuss (Innenboden)",
+     "lage": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Auflage + 4 Anker M10",
+     "dn": "200x200"
+    }
+   ]
+  },
+  "entluefter_d75": {
+   "teilenummer": "T96",
+   "parameter": {
+    "d": 75,
+    "abgang_d": 25,
+    "abgang_od": 40.0,
+    "nippel_kopf_d": 40.0,
+    "nippel_kopf_h": 17.6,
+    "gewinde_d": 33.0,
+    "gewinde_h": 15.0,
+    "ventil_d": 52.0,
+    "ventil_h": 100.0,
+    "kappe_d": 30.0,
+    "kappe_h": 15.0,
+    "luftloch_d": 4.0
+   },
+   "ks": "wie lt_t_d75: Lauf X, Abgang +Z (oben)",
+   "hoehe_ueber_achse": 215.0,
+   "ports": [
+    {
+     "name": "A",
+     "lage": [
+      -86.375,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN65"
+    },
+    {
+     "name": "B",
+     "lage": [
+      86.375,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN65"
+    },
+    {
+     "name": "Luftaustritt",
+     "lage": [
+      0.0,
+      0.0,
+      214.97
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Oeffnung",
+     "dn": "d4"
+    }
+   ]
+  },
+  "ring_abzweig_d40": {
+   "teilenummer": "T97-40",
+   "kette": [
+    {
+     "art": "t",
+     "teil": "lt_t_d75",
+     "d": 75,
+     "z_oben": 0.0,
+     "z_unten": -86.375,
+     "laenge": 86.375
+    },
+    {
+     "art": "rohr",
+     "teil": null,
+     "d": 75,
+     "z_oben": -42.375,
+     "z_unten": -140.375,
+     "laenge": 98.0
+    },
+    {
+     "art": "red",
+     "teil": "lt_reduzierung_d75_d50",
+     "d": 50,
+     "z_oben": -96.375,
+     "z_unten": -177.375,
+     "laenge": 81.0
+    },
+    {
+     "art": "rohr",
+     "teil": null,
+     "d": 50,
+     "z_oben": -146.375,
+     "z_unten": -218.375,
+     "laenge": 72.0
+    },
+    {
+     "art": "red",
+     "teil": "lt_reduzierung_d50_d40",
+     "d": 40,
+     "z_oben": -187.375,
+     "z_unten": -250.375,
+     "laenge": 63.0
+    },
+    {
+     "art": "rohr",
+     "teil": null,
+     "d": 40,
+     "z_oben": -224.375,
+     "z_unten": -286.375,
+     "laenge": 62.0
+    },
+    {
+     "art": "hahn",
+     "teil": "lt_kugelhahn_d40",
+     "d": 40,
+     "z_oben": -260.375,
+     "z_unten": -362.375,
+     "laenge": 102.0
+    }
+   ],
+   "ports": [
+    {
+     "name": "A (Ring)",
+     "lage": [
+      -86.375,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN65"
+    },
+    {
+     "name": "B (Ring)",
+     "lage": [
+      86.375,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN65"
+    },
+    {
+     "name": "Abgang d40 (Fallleitung)",
+     "lage": [
+      0.0,
+      0.0,
+      -362.375
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN32"
+    }
+   ]
+  },
+  "ring_abzweig_d32": {
+   "teilenummer": "T97-32",
+   "kette": [
+    {
+     "art": "t",
+     "teil": "lt_t_d75",
+     "d": 75,
+     "z_oben": 0.0,
+     "z_unten": -86.375,
+     "laenge": 86.375
+    },
+    {
+     "art": "rohr",
+     "teil": null,
+     "d": 75,
+     "z_oben": -42.375,
+     "z_unten": -140.375,
+     "laenge": 98.0
+    },
+    {
+     "art": "red",
+     "teil": "lt_reduzierung_d75_d50",
+     "d": 50,
+     "z_oben": -96.375,
+     "z_unten": -177.375,
+     "laenge": 81.0
+    },
+    {
+     "art": "rohr",
+     "teil": null,
+     "d": 50,
+     "z_oben": -146.375,
+     "z_unten": -218.375,
+     "laenge": 72.0
+    },
+    {
+     "art": "red",
+     "teil": "lt_reduzierung_d50_d32",
+     "d": 32,
+     "z_oben": -187.375,
+     "z_unten": -246.375,
+     "laenge": 59.0
+    },
+    {
+     "art": "rohr",
+     "teil": null,
+     "d": 32,
+     "z_oben": -224.375,
+     "z_unten": -278.375,
+     "laenge": 54.0
+    },
+    {
+     "art": "hahn",
+     "teil": "lt_kugelhahn_d32",
+     "d": 32,
+     "z_oben": -256.375,
+     "z_unten": -350.375,
+     "laenge": 94.0
+    }
+   ],
+   "ports": [
+    {
+     "name": "A (Ring)",
+     "lage": [
+      -86.375,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN65"
+    },
+    {
+     "name": "B (Ring)",
+     "lage": [
+      86.375,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Muffe",
+     "dn": "DN65"
+    },
+    {
+     "name": "Abgang d32 (Fallleitung)",
+     "lage": [
+      0.0,
+      0.0,
+      -350.375
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Muffe",
+     "dn": "DN25"
+    }
+   ]
+  }
+ }
+}

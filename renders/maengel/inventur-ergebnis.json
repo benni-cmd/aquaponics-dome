@@ -1,0 +1,1999 @@
+{
+ "pipes": 114,
+ "fittings": 125,
+ "rohrenden_gesamt": 228,
+ "an_lt_stueck": 226,
+ "an_bauteil": {},
+ "frei_ins_leere": [
+  {
+   "rohr": "LT_Rohr_d50_L481:1",
+   "d": "lt_rohr_d50_L481",
+   "ende": "B",
+   "ort": [
+    2334,
+    -100,
+    1970
+   ],
+   "laenge": 481
+  },
+  {
+   "rohr": "LT_Rohr_d50_L481:2",
+   "d": "lt_rohr_d50_L481",
+   "ende": "B",
+   "ort": [
+    -127,
+    -4338,
+    1970
+   ],
+   "laenge": 481
+  }
+ ],
+ "formstuecke_isoliert": null,
+ "formstuecke_zu_wenig_nachbarn": [
+  {
+   "teil": "LT_Bogen45_d63:3",
+   "d": "lt_bogen45_d63",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    -1448,
+    -3575,
+    214
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d25:4",
+   "d": "lt_bogen90_d25",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    718,
+    693,
+    -1220
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d25:8",
+   "d": "lt_bogen90_d25",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    -692,
+    698,
+    -1220
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d25:12",
+   "d": "lt_bogen90_d25",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    724,
+    -710,
+    -1220
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d25:16",
+   "d": "lt_bogen90_d25",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    -690,
+    -709,
+    -1220
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d32:1",
+   "d": "lt_bogen90_d32",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    2748,
+    -1345,
+    664
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d32:5",
+   "d": "lt_bogen90_d32",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    927,
+    -3615,
+    664
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d40:1",
+   "d": "lt_bogen90_d40",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    3258,
+    -841,
+    678
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d40:5",
+   "d": "lt_bogen90_d40",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    3286,
+    114,
+    678
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d40:8",
+   "d": "lt_bogen90_d40",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    -430,
+    -2912,
+    678
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d40:12",
+   "d": "lt_bogen90_d40",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    -734,
+    -3829,
+    678
+   ]
+  },
+  {
+   "teil": "LT_Bogen90_d50:5",
+   "d": "lt_bogen90_d50",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    0,
+    -31,
+    -1604
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d40:1",
+   "d": "lt_kupplung_d40",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    2664,
+    -1350,
+    520
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d40:2",
+   "d": "lt_kupplung_d40",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    829,
+    -3603,
+    520
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d50:1",
+   "d": "lt_kupplung_d50",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    3174,
+    -841,
+    520
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d50:2",
+   "d": "lt_kupplung_d50",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    3172,
+    90,
+    520
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d50:3",
+   "d": "lt_kupplung_d50",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    2714,
+    -2078,
+    1547
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d50:4",
+   "d": "lt_kupplung_d50",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    -525,
+    -2902,
+    520
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d50:5",
+   "d": "lt_kupplung_d50",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    -814,
+    -3787,
+    520
+   ]
+  },
+  {
+   "teil": "LT_Kupplung_d50:7",
+   "d": "lt_kupplung_d50",
+   "nachbarn": 1,
+   "soll": 2,
+   "ort": [
+    462,
+    -3973,
+    1547
+   ]
+  },
+  {
+   "teil": "LT_Reduzierung_d50_d32:1",
+   "d": "lt_reduzierung_d50_d32",
+   "nachbarn": 0,
+   "soll": 2,
+   "ort": [
+    2426,
+    -1822,
+    1397
+   ]
+  },
+  {
+   "teil": "LT_Reduzierung_d50_d32:2",
+   "d": "lt_reduzierung_d50_d32",
+   "nachbarn": 0,
+   "soll": 2,
+   "ort": [
+    601,
+    -3614,
+    1397
+   ]
+  },
+  {
+   "teil": "LT_Reduzierung_d63_d50:5",
+   "d": "lt_reduzierung_d63_d50",
+   "nachbarn": 0,
+   "soll": 2,
+   "ort": [
+    3050,
+    164,
+    1820
+   ]
+  },
+  {
+   "teil": "LT_Reduzierung_d63_d50:6",
+   "d": "lt_reduzierung_d63_d50",
+   "nachbarn": 0,
+   "soll": 2,
+   "ort": [
+    2812,
+    -192,
+    1970
+   ]
+  },
+  {
+   "teil": "LT_Reduzierung_d63_d50:7",
+   "d": "lt_reduzierung_d63_d50",
+   "nachbarn": 0,
+   "soll": 2,
+   "ort": [
+    -707,
+    -3840,
+    1820
+   ]
+  },
+  {
+   "teil": "LT_Reduzierung_d63_d50:8",
+   "d": "lt_reduzierung_d63_d50",
+   "nachbarn": 0,
+   "soll": 2,
+   "ort": [
+    -280,
+    -3875,
+    1970
+   ]
+  },
+  {
+   "teil": "LT_T_d50:2",
+   "d": "lt_t_d50",
+   "nachbarn": 2,
+   "soll": 3,
+   "ort": [
+    16,
+    -1349,
+    -1635
+   ]
+  },
+  {
+   "teil": "LT_T_d63:2",
+   "d": "lt_t_d63",
+   "nachbarn": 2,
+   "soll": 3,
+   "ort": [
+    2653,
+    387,
+    195
+   ]
+  },
+  {
+   "teil": "LT_T_d63:4",
+   "d": "lt_t_d63",
+   "nachbarn": 2,
+   "soll": 3,
+   "ort": [
+    -867,
+    -3709,
+    195
+   ]
+  }
+ ],
+ "bogenketten_ab3": [
+  {
+   "boegen": 5,
+   "teile": 15,
+   "von": [
+    -1036,
+    -3456,
+    214
+   ],
+   "d": [
+    "lt_bogen45_d50",
+    "lt_bogen45_d63",
+    "lt_bogen90_d50",
+    "lt_bogen90_d63"
+   ],
+   "ort": [
+    -1022,
+    -3632,
+    275
+   ]
+  },
+  {
+   "boegen": 3,
+   "teile": 12,
+   "von": [
+    -1134,
+    -2692,
+    156
+   ],
+   "d": [
+    "lt_bogen45_d50",
+    "lt_bogen90_d63",
+    "lt_bogen90_d75"
+   ],
+   "ort": [
+    -1162,
+    -2409,
+    44
+   ]
+  },
+  {
+   "boegen": 3,
+   "teile": 11,
+   "von": [
+    2715,
+    82,
+    245
+   ],
+   "d": [
+    "lt_bogen90_d50",
+    "lt_bogen90_d63"
+   ],
+   "ort": [
+    2622,
+    148,
+    316
+   ]
+  },
+  {
+   "boegen": 3,
+   "teile": 12,
+   "von": [
+    2598,
+    594,
+    -220
+   ],
+   "d": [
+    "lt_bogen90_d63",
+    "lt_bogen90_d75"
+   ],
+   "ort": [
+    2552,
+    514,
+    -82
+   ]
+  }
+ ],
+ "boegen_gesamt": 79,
+ "rohre_durch_bauteile": [
+  {
+   "rohr": "LT_Rohr_d25_L51:1",
+   "bauteile": {
+    "Tisch_innen:6": 1
+   },
+   "d": "lt_rohr_d25_L51"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L51:2",
+   "bauteile": {
+    "Tisch_innen:6": 1
+   },
+   "d": "lt_rohr_d25_L51"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L58:1",
+   "bauteile": {
+    "Tisch_innen:6": 1
+   },
+   "d": "lt_rohr_d25_L58"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L59:1",
+   "bauteile": {
+    "Tisch_innen:6": 1
+   },
+   "d": "lt_rohr_d25_L59"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L941:1",
+   "bauteile": {
+    "Pool:1": 22
+   },
+   "d": "lt_rohr_d25_L941"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L1671:1",
+   "bauteile": {
+    "Pool:1": 40
+   },
+   "d": "lt_rohr_d25_L1671"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L2304:1",
+   "bauteile": {
+    "Pool:1": 56
+   },
+   "d": "lt_rohr_d25_L2304"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L2353:1",
+   "bauteile": {
+    "Tisch_innen:6": 18,
+    "Pool:1": 54
+   },
+   "d": "lt_rohr_d25_L2353"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L2353:2",
+   "bauteile": {
+    "Tisch_innen:6": 18,
+    "Pool:1": 54
+   },
+   "d": "lt_rohr_d25_L2353"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L2353:3",
+   "bauteile": {
+    "Tisch_innen:6": 18,
+    "Pool:1": 54
+   },
+   "d": "lt_rohr_d25_L2353"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L2353:4",
+   "bauteile": {
+    "Tisch_innen:6": 18,
+    "Pool:1": 54
+   },
+   "d": "lt_rohr_d25_L2353"
+  },
+  {
+   "rohr": "LT_Rohr_d25_L2794:1",
+   "bauteile": {
+    "Pool:1": 68
+   },
+   "d": "lt_rohr_d25_L2794"
+  },
+  {
+   "rohr": "LT_Rohr_d32_L94:1",
+   "bauteile": {
+    "Pumpe_klein:1": 1
+   },
+   "d": "lt_rohr_d32_L94"
+  },
+  {
+   "rohr": "LT_Rohr_d32_L245:1",
+   "bauteile": {
+    "Pumpe_klein:3": 2
+   },
+   "d": "lt_rohr_d32_L245"
+  },
+  {
+   "rohr": "LT_Rohr_d40_L99:1",
+   "bauteile": {
+    "Tank_gross:1": 1,
+    "Pumpe_gross:2": 1
+   },
+   "d": "lt_rohr_d40_L99"
+  },
+  {
+   "rohr": "LT_Rohr_d40_L304:2",
+   "bauteile": {
+    "Pumpe_gross:3": 2
+   },
+   "d": "lt_rohr_d40_L304"
+  },
+  {
+   "rohr": "LT_Rohr_d40_L547:1",
+   "bauteile": {
+    "Pumpe_gross:1": 4
+   },
+   "d": "lt_rohr_d40_L547"
+  },
+  {
+   "rohr": "LT_Rohr_d50_L277:1",
+   "bauteile": {
+    "Pumpe_gross:3": 2
+   },
+   "d": "lt_rohr_d50_L277"
+  },
+  {
+   "rohr": "LT_Rohr_d50_L312:1",
+   "bauteile": {
+    "Pumpe_gross:4": 2
+   },
+   "d": "lt_rohr_d50_L312"
+  },
+  {
+   "rohr": "LT_Rohr_d50_L365:1",
+   "bauteile": {
+    "Tank_gross:1": 3,
+    "Pumpe_gross:2": 2
+   },
+   "d": "lt_rohr_d50_L365"
+  },
+  {
+   "rohr": "LT_Rohr_d50_L475:1",
+   "bauteile": {
+    "Pumpe_gross:1": 2
+   },
+   "d": "lt_rohr_d50_L475"
+  },
+  {
+   "rohr": "LT_Rohr_d63_L455:1",
+   "bauteile": {
+    "Feinfilter:1": 1
+   },
+   "d": "lt_rohr_d63_L455"
+  },
+  {
+   "rohr": "LT_Rohr_d75_L390:1",
+   "bauteile": {
+    "Tisch_mitte:4": 5
+   },
+   "d": "lt_rohr_d75_L390"
+  },
+  {
+   "rohr": "LT_Rohr_d75_L390:2",
+   "bauteile": {
+    "Tisch_mitte:3": 5
+   },
+   "d": "lt_rohr_d75_L390"
+  }
+ ],
+ "halter_leitung_instanzen": 0,
+ "halter_sonstige_instanzen": {
+  "halter_beruhig": 2,
+  "halter_tauch": 3
+ },
+ "rohre_hoeher_600": [
+  {
+   "rohr": "LT_Rohr_d25_L51:1",
+   "z": 1180,
+   "ort": [
+    1803,
+    -776,
+    1180
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d25_L51:2",
+   "z": 1180,
+   "ort": [
+    1754,
+    -882,
+    1180
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d25_L58:1",
+   "z": 1180,
+   "ort": [
+    1849,
+    -670,
+    1180
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d25_L59:1",
+   "z": 1180,
+   "ort": [
+    1701,
+    -986,
+    1180
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L83:1",
+   "z": 1397,
+   "ort": [
+    2379,
+    -1808,
+    1397
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L83:2",
+   "z": 1397,
+   "ort": [
+    598,
+    -3565,
+    1397
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L94:1",
+   "z": 685,
+   "ort": [
+    923,
+    -3549,
+    685
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L245:1",
+   "z": 685,
+   "ort": [
+    2613,
+    -1304,
+    685
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L245:2",
+   "z": 1397,
+   "ort": [
+    755,
+    -3473,
+    1397
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L471:1",
+   "z": 1397,
+   "ort": [
+    2379,
+    -1522,
+    1397
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L633:1",
+   "z": 724,
+   "ort": [
+    2458,
+    -1258,
+    1041
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d32_L633:2",
+   "z": 724,
+   "ort": [
+    917,
+    -3463,
+    1041
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L96:1",
+   "z": 1820,
+   "ort": [
+    3224,
+    299,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L99:1",
+   "z": 703,
+   "ort": [
+    3300,
+    185,
+    703
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L105:1",
+   "z": 1820,
+   "ort": [
+    -1229,
+    -4012,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L304:1",
+   "z": 1820,
+   "ort": [
+    2836,
+    374,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L304:2",
+   "z": 703,
+   "ort": [
+    -484,
+    -2746,
+    703
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L547:1",
+   "z": 703,
+   "ort": [
+    2961,
+    -841,
+    703
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L557:1",
+   "z": 703,
+   "ort": [
+    -1017,
+    -3932,
+    703
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L857:1",
+   "z": 1820,
+   "ort": [
+    -999,
+    -2704,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L1021:1",
+   "z": 751,
+   "ort": [
+    2640,
+    412,
+    1262
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L1021:2",
+   "z": 751,
+   "ort": [
+    3318,
+    281,
+    1262
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L1021:3",
+   "z": 751,
+   "ort": [
+    -547,
+    -2556,
+    1262
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L1021:4",
+   "z": 751,
+   "ort": [
+    -1324,
+    -4043,
+    1262
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L1025:1",
+   "z": 1820,
+   "ort": [
+    -1277,
+    -3386,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d40_L1157:1",
+   "z": 703,
+   "ort": [
+    2640,
+    -215,
+    703
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:1",
+   "z": 1820,
+   "ort": [
+    3022,
+    338,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:2",
+   "z": 1820,
+   "ort": [
+    3140,
+    315,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:3",
+   "z": 1820,
+   "ort": [
+    -1144,
+    -3984,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:4",
+   "z": 1820,
+   "ort": [
+    -1106,
+    -3908,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L94:1",
+   "z": 1545,
+   "ort": [
+    2700,
+    -2126,
+    1546
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L94:2",
+   "z": 1545,
+   "ort": [
+    412,
+    -3976,
+    1546
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L130:1",
+   "z": 1820,
+   "ort": [
+    3064,
+    234,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L365:2",
+   "z": 1820,
+   "ort": [
+    -886,
+    -3899,
+    1820
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L481:1",
+   "z": 1970,
+   "ort": [
+    2570,
+    -145,
+    1970
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d50_L481:2",
+   "z": 1970,
+   "ort": [
+    -203,
+    -4109,
+    1970
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:5",
+   "z": 740,
+   "ort": [
+    2246,
+    473,
+    740
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:6",
+   "z": 720,
+   "ort": [
+    3815,
+    1236,
+    720
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:7",
+   "z": 740,
+   "ort": [
+    -1020,
+    -2056,
+    740
+   ]
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:8",
+   "z": 720,
+   "ort": [
+    -1685,
+    -2764,
+    720
+   ]
+  }
+ ],
+ "kanten_gesamt": 57,
+ "kanten_ohne_trasse": [
+  {
+   "kante": "K07",
+   "von": "absetzer_1",
+   "nach": "schlammfass_1",
+   "medium": "Wasser",
+   "dn": 40
+  },
+  {
+   "kante": "K11",
+   "von": "verteiler_1",
+   "nach": "beete_linie_1",
+   "medium": "Wasser",
+   "dn": 40
+  },
+  {
+   "kante": "K12",
+   "von": "verteiler_1",
+   "nach": "nft_linie_1",
+   "medium": "Wasser",
+   "dn": 32
+  },
+  {
+   "kante": "K13",
+   "von": "verteiler_1",
+   "nach": "ruecklauf_1",
+   "medium": "Wasser",
+   "dn": 50
+  },
+  {
+   "kante": "K14",
+   "von": "beete_linie_1",
+   "nach": "beet_sumpf_1",
+   "medium": "Wasser",
+   "dn": 50
+  },
+  {
+   "kante": "K15",
+   "von": "nft_linie_1",
+   "nach": "ruecklauf_1",
+   "medium": "Wasser",
+   "dn": 63
+  },
+  {
+   "kante": "K16",
+   "von": "ruecklauf_1",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 110
+  },
+  {
+   "kante": "K23",
+   "von": "absetzer_2",
+   "nach": "schlammfass_2",
+   "medium": "Wasser",
+   "dn": 40
+  },
+  {
+   "kante": "K27",
+   "von": "verteiler_2",
+   "nach": "beete_linie_2",
+   "medium": "Wasser",
+   "dn": 40
+  },
+  {
+   "kante": "K28",
+   "von": "verteiler_2",
+   "nach": "nft_linie_2",
+   "medium": "Wasser",
+   "dn": 32
+  },
+  {
+   "kante": "K29",
+   "von": "verteiler_2",
+   "nach": "ruecklauf_2",
+   "medium": "Wasser",
+   "dn": 50
+  },
+  {
+   "kante": "K30",
+   "von": "beete_linie_2",
+   "nach": "beet_sumpf_2",
+   "medium": "Wasser",
+   "dn": 50
+  },
+  {
+   "kante": "K31",
+   "von": "nft_linie_2",
+   "nach": "ruecklauf_2",
+   "medium": "Wasser",
+   "dn": 63
+  },
+  {
+   "kante": "K32",
+   "von": "ruecklauf_2",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 110
+  },
+  {
+   "kante": "K33",
+   "von": "ruecklauf_1",
+   "nach": "zweitbecken",
+   "medium": "Wasser",
+   "dn": 50
+  },
+  {
+   "kante": "K34",
+   "von": "zweitbecken",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 63
+  },
+  {
+   "kante": "K35",
+   "von": "verteiler_1",
+   "nach": "puffer_messzelle",
+   "medium": "Wasser",
+   "dn": 20
+  },
+  {
+   "kante": "K37",
+   "von": "puffer_messzelle",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 25
+  },
+  {
+   "kante": "K38",
+   "von": "dosierkonsole",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 9
+  },
+  {
+   "kante": "K39",
+   "von": "frischwasser",
+   "nach": "aktivkohle",
+   "medium": "Wasser",
+   "dn": 25
+  },
+  {
+   "kante": "K40",
+   "von": "aktivkohle",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 25
+  },
+  {
+   "kante": "K41",
+   "von": "aktivkohle",
+   "nach": "drittbecken",
+   "medium": "Wasser",
+   "dn": 20
+  },
+  {
+   "kante": "K42",
+   "von": "drittbecken",
+   "nach": "biofilter_dritt",
+   "medium": "Wasser",
+   "dn": 25
+  },
+  {
+   "kante": "K43",
+   "von": "biofilter_dritt",
+   "nach": "drittbecken",
+   "medium": "Wasser",
+   "dn": 25
+  },
+  {
+   "kante": "K45",
+   "von": "belueftung",
+   "nach": "biofilter_1",
+   "medium": "Luft",
+   "dn": 25
+  },
+  {
+   "kante": "K46",
+   "von": "belueftung",
+   "nach": "biofilter_2",
+   "medium": "Luft",
+   "dn": 25
+  },
+  {
+   "kante": "K47",
+   "von": "belueftung",
+   "nach": "absetzer_1",
+   "medium": "Luft",
+   "dn": 20
+  },
+  {
+   "kante": "K48",
+   "von": "belueftung",
+   "nach": "absetzer_2",
+   "medium": "Luft",
+   "dn": 20
+  },
+  {
+   "kante": "K49",
+   "von": "belueftung",
+   "nach": "drittbecken",
+   "medium": "Luft",
+   "dn": 20
+  },
+  {
+   "kante": "K51",
+   "von": "belueftung",
+   "nach": "zweitbecken",
+   "medium": "Luft",
+   "dn": 20
+  },
+  {
+   "kante": "K52",
+   "von": "aktivkohle",
+   "nach": "puffer_stammfass",
+   "medium": "Wasser",
+   "dn": 25
+  },
+  {
+   "kante": "K53",
+   "von": "puffer_stammfass",
+   "nach": "dosierkonsole",
+   "medium": "Wasser",
+   "dn": 12
+  },
+  {
+   "kante": "K54",
+   "von": "puffer_eisen",
+   "nach": "dosierkonsole",
+   "medium": "Wasser",
+   "dn": 12
+  },
+  {
+   "kante": "K55",
+   "von": "dosierkonsole",
+   "nach": "pool",
+   "medium": "Wasser",
+   "dn": 9
+  },
+  {
+   "kante": "K58",
+   "von": "beet_sumpf_1",
+   "nach": "ruecklauf_1",
+   "medium": "Wasser",
+   "dn": 40
+  },
+  {
+   "kante": "K59",
+   "von": "beet_sumpf_2",
+   "nach": "ruecklauf_2",
+   "medium": "Wasser",
+   "dn": 40
+  }
+ ],
+ "knoten_ohne_instanz": [
+  {
+   "id": "pool",
+   "bauteil": "pool",
+   "typ": "Becken",
+   "instanz": false
+  },
+  {
+   "id": "verteiler_1",
+   "bauteil": "lt_verteiler",
+   "typ": "Verteiler",
+   "instanz": false
+  },
+  {
+   "id": "verteiler_2",
+   "bauteil": "lt_verteiler",
+   "typ": "Verteiler",
+   "instanz": false
+  },
+  {
+   "id": "nft_linie_1",
+   "bauteil": "nft_tisch",
+   "typ": "NFT",
+   "instanz": false
+  },
+  {
+   "id": "nft_linie_2",
+   "bauteil": "nft_tisch",
+   "typ": "NFT",
+   "instanz": false
+  },
+  {
+   "id": "beete_linie_1",
+   "bauteil": "ibc_beet",
+   "typ": "Beete",
+   "instanz": false
+  },
+  {
+   "id": "beete_linie_2",
+   "bauteil": "ibc_beet",
+   "typ": "Beete",
+   "instanz": false
+  },
+  {
+   "id": "ruecklauf_1",
+   "bauteil": "lt_rohr",
+   "typ": "Sammler",
+   "instanz": false
+  },
+  {
+   "id": "ruecklauf_2",
+   "bauteil": "lt_rohr",
+   "typ": "Sammler",
+   "instanz": false
+  },
+  {
+   "id": "biofilter_dritt",
+   "bauteil": null,
+   "typ": "Filter",
+   "instanz": false
+  },
+  {
+   "id": "belueftung",
+   "bauteil": "geblaese",
+   "typ": "Luft",
+   "instanz": false
+  },
+  {
+   "id": "aktivkohle",
+   "bauteil": null,
+   "typ": "Filter",
+   "instanz": false
+  },
+  {
+   "id": "schlammfass_1",
+   "bauteil": "schlammfass",
+   "typ": "Behaelter",
+   "instanz": false
+  },
+  {
+   "id": "schlammfass_2",
+   "bauteil": "schlammfass",
+   "typ": "Behaelter",
+   "instanz": false
+  },
+  {
+   "id": "beet_sumpf_1",
+   "bauteil": "beet_sumpf",
+   "typ": "Behaelter",
+   "instanz": false
+  },
+  {
+   "id": "beet_sumpf_2",
+   "bauteil": "beet_sumpf",
+   "typ": "Behaelter",
+   "instanz": false
+  }
+ ],
+ "trassen_abdeckung": [
+  {
+   "id": "K06-T",
+   "kante": null,
+   "dn": 63,
+   "proben": 34,
+   "abgedeckt": 34,
+   "anteil": 1.0,
+   "pfadlaenge": 1569
+  },
+  {
+   "id": "K06-T-b",
+   "kante": null,
+   "dn": 63,
+   "proben": 14,
+   "abgedeckt": 14,
+   "anteil": 1.0,
+   "pfadlaenge": 645
+  },
+  {
+   "id": "K06",
+   "kante": "K06",
+   "dn": 50,
+   "proben": 36,
+   "abgedeckt": 36,
+   "anteil": 1.0,
+   "pfadlaenge": 1718
+  },
+  {
+   "id": "K02",
+   "kante": "K02",
+   "dn": 50,
+   "proben": 23,
+   "abgedeckt": 23,
+   "anteil": 1.0,
+   "pfadlaenge": 1083
+  },
+  {
+   "id": "K08",
+   "kante": "K08",
+   "dn": 40,
+   "proben": 73,
+   "abgedeckt": 73,
+   "anteil": 1.0,
+   "pfadlaenge": 3510
+  },
+  {
+   "id": "K09",
+   "kante": "K09",
+   "dn": 40,
+   "proben": 34,
+   "abgedeckt": 34,
+   "anteil": 1.0,
+   "pfadlaenge": 1601
+  },
+  {
+   "id": "K08-K09-Stamm",
+   "kante": null,
+   "dn": 50,
+   "proben": 3,
+   "abgedeckt": 3,
+   "anteil": 1.0,
+   "pfadlaenge": 128
+  },
+  {
+   "id": "K10",
+   "kante": "K10",
+   "dn": 50,
+   "proben": 10,
+   "abgedeckt": 10,
+   "anteil": 1.0,
+   "pfadlaenge": 450
+  },
+  {
+   "id": "K03-Tief",
+   "kante": null,
+   "dn": 50,
+   "proben": 29,
+   "abgedeckt": 29,
+   "anteil": 1.0,
+   "pfadlaenge": 1409
+  },
+  {
+   "id": "K03-Steig",
+   "kante": null,
+   "dn": 50,
+   "proben": 95,
+   "abgedeckt": 95,
+   "anteil": 1.0,
+   "pfadlaenge": 4639
+  },
+  {
+   "id": "K03",
+   "kante": "K03",
+   "dn": 40,
+   "proben": 3,
+   "abgedeckt": 3,
+   "anteil": 1.0,
+   "pfadlaenge": 120
+  },
+  {
+   "id": "K03-K19-Stumpf",
+   "kante": null,
+   "dn": 50,
+   "proben": 7,
+   "abgedeckt": 7,
+   "anteil": 1.0,
+   "pfadlaenge": 300
+  },
+  {
+   "id": "K04",
+   "kante": "K04",
+   "dn": 32,
+   "proben": 38,
+   "abgedeckt": 38,
+   "anteil": 1.0,
+   "pfadlaenge": 1727
+  },
+  {
+   "id": "K05",
+   "kante": "K05",
+   "dn": 50,
+   "proben": 117,
+   "abgedeckt": 117,
+   "anteil": 1.0,
+   "pfadlaenge": 5749
+  },
+  {
+   "id": "K01",
+   "kante": "K01",
+   "dn": 75,
+   "proben": 20,
+   "abgedeckt": 20,
+   "anteil": 1.0,
+   "pfadlaenge": 972
+  },
+  {
+   "id": "K01-m",
+   "kante": "K01",
+   "dn": 75,
+   "proben": 8,
+   "abgedeckt": 8,
+   "anteil": 1.0,
+   "pfadlaenge": 350
+  },
+  {
+   "id": "K01-b",
+   "kante": "K01",
+   "dn": 75,
+   "proben": 37,
+   "abgedeckt": 37,
+   "anteil": 1.0,
+   "pfadlaenge": 1754
+  },
+  {
+   "id": "K56-a",
+   "kante": "K56",
+   "dn": 63,
+   "proben": 4,
+   "abgedeckt": 4,
+   "anteil": 1.0,
+   "pfadlaenge": 174
+  },
+  {
+   "id": "K56-b",
+   "kante": "K56",
+   "dn": 63,
+   "proben": 19,
+   "abgedeckt": 19,
+   "anteil": 1.0,
+   "pfadlaenge": 836
+  },
+  {
+   "id": "K22-T",
+   "kante": null,
+   "dn": 63,
+   "proben": 16,
+   "abgedeckt": 16,
+   "anteil": 1.0,
+   "pfadlaenge": 694
+  },
+  {
+   "id": "K22-T-b",
+   "kante": null,
+   "dn": 63,
+   "proben": 13,
+   "abgedeckt": 13,
+   "anteil": 1.0,
+   "pfadlaenge": 558
+  },
+  {
+   "id": "K22",
+   "kante": "K22",
+   "dn": 50,
+   "proben": 26,
+   "abgedeckt": 26,
+   "anteil": 1.0,
+   "pfadlaenge": 1222
+  },
+  {
+   "id": "K18",
+   "kante": "K18",
+   "dn": 50,
+   "proben": 29,
+   "abgedeckt": 29,
+   "anteil": 1.0,
+   "pfadlaenge": 1299
+  },
+  {
+   "id": "K24",
+   "kante": "K24",
+   "dn": 40,
+   "proben": 78,
+   "abgedeckt": 78,
+   "anteil": 1.0,
+   "pfadlaenge": 3689
+  },
+  {
+   "id": "K25",
+   "kante": "K25",
+   "dn": 40,
+   "proben": 45,
+   "abgedeckt": 45,
+   "anteil": 1.0,
+   "pfadlaenge": 2068
+  },
+  {
+   "id": "K24-K25-Stamm",
+   "kante": null,
+   "dn": 50,
+   "proben": 8,
+   "abgedeckt": 8,
+   "anteil": 1.0,
+   "pfadlaenge": 363
+  },
+  {
+   "id": "K26",
+   "kante": "K26",
+   "dn": 50,
+   "proben": 9,
+   "abgedeckt": 9,
+   "anteil": 1.0,
+   "pfadlaenge": 450
+  },
+  {
+   "id": "K19-Tief",
+   "kante": null,
+   "dn": 50,
+   "proben": 92,
+   "abgedeckt": 92,
+   "anteil": 1.0,
+   "pfadlaenge": 4479
+  },
+  {
+   "id": "K19",
+   "kante": "K19",
+   "dn": 40,
+   "proben": 3,
+   "abgedeckt": 3,
+   "anteil": 1.0,
+   "pfadlaenge": 120
+  },
+  {
+   "id": "K20",
+   "kante": "K20",
+   "dn": 32,
+   "proben": 31,
+   "abgedeckt": 31,
+   "anteil": 1.0,
+   "pfadlaenge": 1351
+  },
+  {
+   "id": "K21",
+   "kante": "K21",
+   "dn": 50,
+   "proben": 94,
+   "abgedeckt": 94,
+   "anteil": 1.0,
+   "pfadlaenge": 4562
+  },
+  {
+   "id": "K17",
+   "kante": "K17",
+   "dn": 75,
+   "proben": 20,
+   "abgedeckt": 20,
+   "anteil": 1.0,
+   "pfadlaenge": 928
+  },
+  {
+   "id": "K17-m",
+   "kante": "K17",
+   "dn": 75,
+   "proben": 3,
+   "abgedeckt": 3,
+   "anteil": 1.0,
+   "pfadlaenge": 150
+  },
+  {
+   "id": "K17-b",
+   "kante": "K17",
+   "dn": 75,
+   "proben": 24,
+   "abgedeckt": 24,
+   "anteil": 1.0,
+   "pfadlaenge": 1137
+  },
+  {
+   "id": "K57-a",
+   "kante": "K57",
+   "dn": 63,
+   "proben": 4,
+   "abgedeckt": 4,
+   "anteil": 1.0,
+   "pfadlaenge": 174
+  },
+  {
+   "id": "K57-b",
+   "kante": "K57",
+   "dn": 63,
+   "proben": 43,
+   "abgedeckt": 43,
+   "anteil": 1.0,
+   "pfadlaenge": 2047
+  },
+  {
+   "id": "K44-S1",
+   "kante": "K44",
+   "dn": 25,
+   "proben": 91,
+   "abgedeckt": 91,
+   "anteil": 1.0,
+   "pfadlaenge": 4341
+  },
+  {
+   "id": "K44-S2",
+   "kante": "K44",
+   "dn": 25,
+   "proben": 114,
+   "abgedeckt": 114,
+   "anteil": 1.0,
+   "pfadlaenge": 5456
+  },
+  {
+   "id": "K44-S3",
+   "kante": "K44",
+   "dn": 25,
+   "proben": 77,
+   "abgedeckt": 77,
+   "anteil": 1.0,
+   "pfadlaenge": 3604
+  },
+  {
+   "id": "K44-S4",
+   "kante": "K44",
+   "dn": 25,
+   "proben": 104,
+   "abgedeckt": 104,
+   "anteil": 1.0,
+   "pfadlaenge": 4973
+  }
+ ],
+ "rohre_unter_120mm": [
+  {
+   "rohr": "LT_Rohr_d25_L51:1",
+   "laenge": 51
+  },
+  {
+   "rohr": "LT_Rohr_d25_L51:2",
+   "laenge": 51
+  },
+  {
+   "rohr": "LT_Rohr_d25_L58:1",
+   "laenge": 58
+  },
+  {
+   "rohr": "LT_Rohr_d25_L59:1",
+   "laenge": 59
+  },
+  {
+   "rohr": "LT_Rohr_d32_L83:1",
+   "laenge": 83
+  },
+  {
+   "rohr": "LT_Rohr_d32_L83:2",
+   "laenge": 83
+  },
+  {
+   "rohr": "LT_Rohr_d32_L94:1",
+   "laenge": 94
+  },
+  {
+   "rohr": "LT_Rohr_d40_L96:1",
+   "laenge": 96
+  },
+  {
+   "rohr": "LT_Rohr_d40_L99:1",
+   "laenge": 99
+  },
+  {
+   "rohr": "LT_Rohr_d40_L105:1",
+   "laenge": 105
+  },
+  {
+   "rohr": "LT_Rohr_d50_L55:1",
+   "laenge": 55
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:1",
+   "laenge": 62
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:2",
+   "laenge": 62
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:3",
+   "laenge": 62
+  },
+  {
+   "rohr": "LT_Rohr_d50_L62:4",
+   "laenge": 62
+  },
+  {
+   "rohr": "LT_Rohr_d50_L94:1",
+   "laenge": 94
+  },
+  {
+   "rohr": "LT_Rohr_d50_L94:2",
+   "laenge": 94
+  },
+  {
+   "rohr": "LT_Rohr_d63_L72:1",
+   "laenge": 72
+  },
+  {
+   "rohr": "LT_Rohr_d63_L72:2",
+   "laenge": 72
+  },
+  {
+   "rohr": "LT_Rohr_d63_L75:1",
+   "laenge": 75
+  },
+  {
+   "rohr": "LT_Rohr_d63_L75:2",
+   "laenge": 75
+  },
+  {
+   "rohr": "LT_Rohr_d63_L75:3",
+   "laenge": 75
+  },
+  {
+   "rohr": "LT_Rohr_d63_L75:4",
+   "laenge": 75
+  },
+  {
+   "rohr": "LT_Rohr_d63_L75:5",
+   "laenge": 75
+  },
+  {
+   "rohr": "LT_Rohr_d63_L75:6",
+   "laenge": 75
+  },
+  {
+   "rohr": "LT_Rohr_d63_L93:1",
+   "laenge": 93
+  },
+  {
+   "rohr": "LT_Rohr_d63_L102:1",
+   "laenge": 102
+  },
+  {
+   "rohr": "LT_Rohr_d75_L65:1",
+   "laenge": 65
+  },
+  {
+   "rohr": "LT_Rohr_d75_L72:1",
+   "laenge": 72
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:1",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:2",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:3",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:4",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:5",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:6",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:7",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L88:8",
+   "laenge": 88
+  },
+  {
+   "rohr": "LT_Rohr_d75_L116:1",
+   "laenge": 116
+  }
+ ],
+ "tank_anschluesse": [
+  {
+   "tank": "Tank_klein:1",
+   "anschluss": "Zulauf",
+   "ort": [
+    521,
+    -3681,
+    1397
+   ],
+   "naechstes_lt": "LT_Reduzierung_d50_d32:2",
+   "abstand_mm": 64
+  },
+  {
+   "tank": "Tank_klein:1",
+   "anschluss": "Auslauf",
+   "ort": [
+    465,
+    -3973,
+    1547
+   ],
+   "naechstes_lt": "LT_Kupplung_d50:7",
+   "abstand_mm": 0
+  },
+  {
+   "tank": "Tank_klein:1",
+   "anschluss": "Schlammstutzen",
+   "ort": [
+    906,
+    -3944,
+    560
+   ],
+   "naechstes_lt": "LT_Bogen90_d32:5",
+   "abstand_mm": 295
+  },
+  {
+   "tank": "Tank_klein:1",
+   "anschluss": "Ablaufstutzen",
+   "ort": [
+    906,
+    -3944,
+    480
+   ],
+   "naechstes_lt": "LT_Kupplung_d40:2",
+   "abstand_mm": 315
+  },
+  {
+   "tank": "Tank_klein:2",
+   "anschluss": "Zulauf",
+   "ort": [
+    2461,
+    -1922,
+    1397
+   ],
+   "naechstes_lt": "LT_Reduzierung_d50_d32:1",
+   "abstand_mm": 64
+  },
+  {
+   "tank": "Tank_klein:2",
+   "anschluss": "Auslauf",
+   "ort": [
+    2715,
+    -2075,
+    1547
+   ],
+   "naechstes_lt": "LT_Kupplung_d50:3",
+   "abstand_mm": 0
+  },
+  {
+   "tank": "Tank_klein:2",
+   "anschluss": "Schlammstutzen",
+   "ort": [
+    2842,
+    -1652,
+    560
+   ],
+   "naechstes_lt": "LT_Bogen90_d32:1",
+   "abstand_mm": 290
+  },
+  {
+   "tank": "Tank_klein:2",
+   "anschluss": "Ablaufstutzen",
+   "ort": [
+    2842,
+    -1652,
+    480
+   ],
+   "naechstes_lt": "LT_Kupplung_d40:1",
+   "abstand_mm": 315
+  },
+  {
+   "tank": "Tank_gross:1",
+   "anschluss": "Zulauf",
+   "ort": [
+    2950,
+    111,
+    1820
+   ],
+   "naechstes_lt": "LT_Reduzierung_d63_d50:5",
+   "abstand_mm": 62
+  },
+  {
+   "tank": "Tank_gross:1",
+   "anschluss": "Schlammstutzen",
+   "ort": [
+    3372,
+    -300,
+    614
+   ],
+   "naechstes_lt": "LT_Bogen90_d40:5",
+   "abstand_mm": 368
+  },
+  {
+   "tank": "Tank_gross:1",
+   "anschluss": "Ablaufstutzen",
+   "ort": [
+    3372,
+    -300,
+    534
+   ],
+   "naechstes_lt": "LT_Rohr_d50_L2282:1",
+   "abstand_mm": 379
+  },
+  {
+   "tank": "Tank_gross_t3:1",
+   "anschluss": "Zulauf",
+   "ort": [
+    -611,
+    -3901,
+    1820
+   ],
+   "naechstes_lt": "LT_Reduzierung_d63_d50:7",
+   "abstand_mm": 62
+  },
+  {
+   "tank": "Tank_gross_t3:1",
+   "anschluss": "Schlammstutzen",
+   "ort": [
+    -458,
+    -3334,
+    614
+   ],
+   "naechstes_lt": "LT_Bogen90_d40:8",
+   "abstand_mm": 369
+  },
+  {
+   "tank": "Tank_gross_t3:1",
+   "anschluss": "Ablaufstutzen",
+   "ort": [
+    -458,
+    -3334,
+    534
+   ],
+   "naechstes_lt": "LT_T_d63:3",
+   "abstand_mm": 349
+  }
+ ]
+}

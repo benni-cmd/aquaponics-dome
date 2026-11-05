@@ -1,0 +1,60 @@
+# Maengel-Inventur des Modells (Pruefer, 05.11.2026, Modell Runde 70)
+
+Auftrag: `docs/jobs/start/N-REWORK-inventur-pruefer.md` (W71). Anlass (Ben, 05.11.): Durchbrueche am Absetzer ohne Rohr, wirre Rohrleitungen in Bogenketten, grosse Teile der Wasserversorgung fehlen. Pruefer: nur gelesen, gemessen, Bilder gemacht; kein Modellbau, kein Export, kein CAD-Lauf.
+
+**Stand der Messung:** `viewer/instances.json` gebaut 02:12:59 (4914 Instanzen, 164 Definitionen, davon 114 Rohre und 125 Formstuecke `lt_*`), gestempelt gegen `designs/dome.sc` 02:06. Datenquellen: `viewer/instances.json`, `data/bom_koerper.json` (Koerper-Boxen je Komponente), `data/leitungsnetz.json` (57 Kanten, 37 Knoten), `data/leitungstrassen.json` (40 Trassen), `data/stueckliste.json`. Messskript und Rohergebnis liegen in `renders/maengel/inventur.py` und `renders/maengel/inventur-ergebnis.json` (Aufruf: `python -I -X utf8 renders/maengel/inventur.py <Repo-Wurzel> <Ausgabe.json>`, 4 Sekunden). Viewer: `python viewer/serve.py 4434` (Testport, kein Export).
+
+**Grenzen der Messung (ehrlich):** Die Teile haben keine Anschlussdefinition (Ports) in den Daten. Darum gilt als "Rohrende verbunden", wenn ein Rohrende innerhalb 25 mm eines anderen Leitungsteils (Rohr: Achse minus Radius, Formstueck: Koerper-Kasten) liegt; Formstuecke mit zu wenigen Nachbarn sind nur Kandidaten. Kasten statt echter Form: Boxen von Pumpen, Tanks und Tischen sind hohl bzw. gross, "Rohr durch Bauteil" sind deshalb nur Kandidaten fuer eine Sichtpruefung. Bilder: nur Bildschirmaufnahmen aus dem Viewer (siehe unten); die Kamerasteuerung im Browser-Pane war fuer Nahaufnahmen unbrauchbar, deshalb gibt es kein Nahbild am Kegelboden.
+
+## Zusammenfassung
+
+1. **Wasserversorgung fehlt zu zwei Dritteln.** Von 57 Netz-Kanten haben 36 weder Trasse noch gebautes Rohr; 15 von 37 Netz-Knoten haben keine Instanz im Modell (Verteiler, Ruecklauf-Sammler, Schlammfaesser, Beet-Suempfe, Belueftung, Aktivkohle, Drittbecken-Biofilter). Gebaut ist nur der Pool-Filter-Pumpen-Tank-Teil (K01 bis K06, K08 bis K10, K17 bis K22, K24 bis K26, K56, K57) und die Luft K44.
+2. **Die "Loecher ohne Rohr" am Absetzer sind die Schlammablaesse:** Kugelhahn und Ablaufstutzen am Kegelboden enden blind, das naechste Leitungsteil ist 290 bis 379 mm entfernt (4 von 4 Tanks), weil K07 und K23 samt Schlammfass nicht gebaut sind. Im Viewer verschaerft das der Standard "Kleinteile unter 15 cm ausgeblendet": am Absetzer fehlen damit 14 von 33 Koerpern, darunter Schlammstutzen und Ablaufstutzen am Kegelboden (`data/bom_koerper.json`, Diagonale unter 150 mm), so dass dort vermutlich ein Durchbruch ohne Stutzen sichtbar wird (am Bild nicht bestaetigt, siehe Grenzen). Die Deckeloeffnungen der Tanks erscheinen im Viewer mit braunem Grund (Bild m01); die Ursache dafuer habe ich nicht geklaert.
+3. **Rohre wirken wirr, weil 65 % schraeg und mit 79 Boegen verlegt sind:** 74 von 114 Rohren liegen mehr als 3 Grad schief zu allen Achsen, die waagerechten Rohre laufen in 31 verschiedenen Richtungen, 38 Rohre sind kuerzer als 120 mm (Boegen-Stummel), 4 Bogenketten mit mindestens 3 Boegen. Ursache ist das 15-Grad-Raster der Trassenableitung (`data/leitungstrassen.json`, `scripts/trassen_linie.py`).
+4. **Kein einziges Rohr hat einen Halter:** 0 Rohrschellen oder Klemmen im Modell, 101 Leitungsvarianten (`lt_*`) sind als Bibliothek vorhanden, aber nicht platziert; 40 Rohre liegen auf 1180 bis 1970 mm Hoehe ohne Auflager.
+5. **Was die A+-Kette (M10-S2N bis S7) ohnehin schliesst:** M01 teilweise (S3 bis S5 decken K11 bis K16, K27 bis K35, K37 bis K55; nicht genannt sind K07, K23, K58, K59), M02 und M04 laut `docs/packages/m10-abnahme.md` als Werkstatt-Buendel geplant, M05/M06 betrifft nur die Strecken K02, K06, K18, K22, K56, K57, die M10-S2V (Subtank) laut Roadmap entfernt oder neu verlegt. **Eigene Fixes noetig:** M03, M05 fuer die uebrigen Strecken (Leitungsordnung), M07 bis M10, M12.
+
+## Maengel
+
+Schwere: A = Funktion oder Plan verfehlt, B = Qualitaet, C = Hinweis/Kandidat. Ort in mm (Weltkoordinaten, x/y/z), gemessen aus `viewer/instances.json`.
+
+| ID | Bauteil | Art | Ort x/y/z | Bild | Vorschlag | Zustaendig |
+|---|---|---|---|---|---|---|
+| M01 (A) | Leitungsnetz | 36 von 57 Kanten ohne gebautes Rohr: K07, K11 bis K16, K23, K27 bis K35, K37 bis K43, K45 bis K49, K51 bis K55, K58, K59 (Schlammabzug, Verteilung, Beete, NFT, Ruecklauf, Zweit- und Drittbecken, Aktivkohle, Dosierung, Luft zu Tanks und Becken) | Netz, kein Ort | m03 | A+-Kette S3 bis S5 bauen; K07, K23 (Schlammabzug) und K58, K59 (Beet-Sumpf-Ruecklauf) in einen der Schritte aufnehmen | Planer (Leitungsordnung), Montage |
+| M02 (A) | Netz-Knoten ohne Bauteil | 15 Knoten ohne Instanz: `verteiler_1/2` (Komponente `lt_verteiler` existiert nicht), `ruecklauf_1/2` (Sammler, `lt_rohr`), `schlammfass_1/2`, `beet_sumpf_1/2`, `aktivkohle`, `belueftung`, `biofilter_dritt`, `nft_linie_1/2`, `beete_linie_1/2` (NFT und Beete stehen im Modell, sind aber nicht angeschlossen). Dazu 54 Komponenten ohne Instanz (darunter echte Lieferteile: `aktivkohle_station`, `geblaese_luft`, `schlammfass`, `beet_sumpf`, `puffer_ibc`, `puffer_station`, `becken_dritt`, `schrank_einfuehrung`, `luftverteiler_6`, `sonde_*`, `halter_*`) | – | m03 | Werkstatt-Buendel nach `docs/packages/m10-abnahme.md` bauen; Verteiler d50 (`docs/jobs/W36-verteiler-d50.md`) zuerst | Werkstatt, dann Montage |
+| M03 (A) | Tank_klein:1, :2, Tank_gross:1, Tank_gross_t3:1 | Schlammablass endet blind: Kugelhahn/Ablaufstutzen am Kegelboden ohne Rohr, naechstes Leitungsteil 290 bis 379 mm entfernt | Tank_klein:1 906/-3944/480 bis 560; Tank_klein:2 2842/-1652/480 bis 560; Tank_gross:1 3372/-300/534 bis 614; Tank_gross_t3 -458/-3334/534 bis 614 | m01, m02 | Mit K07/K23 und Schlammfass bauen; Kegelspitze im Viewer mit den Kleinteilen pruefen | Werkstatt (Schlammfass), Montage |
+| M04 (A) | alle Leitungen | Kein Halter: 0 `lt_schelle*`, 0 `lt_klemme*` in 4914 Instanzen; 239 Leitungsteile ohne Auflager, davon 40 Rohre hoeher als 600 mm (z 1180 bis 1970) | z 1180 bis 1970, 40 Rohre (Liste in `inventur-ergebnis.json`, Schluessel `rohre_hoeher_600`) | m01 | Rohrschelle und Klemmen platzieren (Werkstatt-Buendel nennt "Rohrschelle fuer Vierkantbeine") | Werkstatt, Montage |
+| M05 (A) | Leitungsverlegung | Wirre Verlegung: 74 von 114 Rohren nicht achsparallel (>3 Grad), waagerechte Rohre in 31 Azimuten, 79 Boegen, 38 Rohre unter 120 mm | ueber das ganze Netz | m03 | Trassen im Gang orthogonal ordnen (nur Achsen), Boegen auf 90 Grad, Mindestlaenge zwischen Boegen; Raster 15 Grad in `trassen_linie.py` abschaffen oder auf 90 Grad beschraenken | Planer (Leitungsordnung), Montage |
+| M06 (B) | Bogenketten | 4 Ketten mit mindestens 3 Boegen und Zwischenstuecken bis 300 mm: Kette 1 mit 5 Boegen (15 Teile, d50/d63) bei -1022/-3632/275 (naechste Trasse K18, 165 mm); Kette 2 mit 3 Boegen bei -1162/-2409/44 (K57-a); Kette 3 mit 3 Boegen bei 2622/148/316 (K02); Kette 4 mit 3 Boegen bei 2552/514/-82 (K56-a) | siehe links | m03 | Alle vier liegen an Strecken, die M10-S2V (Subtank) entfernt oder neu verlegt (K02, K18, K56, K57); mit dem Subtank-Umbau neu planen, nicht einzeln flicken | Planer (M10-S2V), Montage |
+| M07 (B) | Luft K44 (d25) | Sechs d25-Rohre und eine senkrechte Strecke laufen im Poolvolumen: Steiger `LT_Rohr_d25_L2353` ×4 von z 1148 auf z -1205 (erster bei 1791/-649); `L941`, `L1671`, `L2304`, `L2794` waagerecht auf z etwa -1237 bis -1205; die Boxpruefung liegt 22 bis 68 Proben je Rohr im Poolvolumen | 1791/-649/1148 bis -1205; 739/-712/-1237 bis 1670/-851/-1237 | m03 | Planer prueft, ob die Luftleitung durch den Poolrand und Poolboden fuehren soll (Durchfuehrung, Dichtung) oder ausserhalb verlegt wird | Planer |
+| M08 (B) | Biofilter-Ueberlauf K10, K26 | Ueberlaufrohr `LT_Rohr_d50_L481` ×2 endet frei in 1970 mm Hoehe (445 mm vom naechsten Formstueck): Wasser faellt aufs Erdreich, weil der Verteiler (K10/K26 zielen auf `verteiler_1/2`) fehlt | 2334/-100/1970 und -127/-4338/1970 | m03 | Mit S3 (Verteiler) schliessen; bis dahin als offene Absicht markieren | Montage (S3) |
+| M09 (C) | Rohr d75 | Senkrechte Rohrstuecke `LT_Rohr_d75_L390` ×2 liegen in den Kasten von Tisch_mitte:4 bzw. :3 (je 5 Proben): Kandidat fuer Kollision | 3780/1365/240 bis 630 und -1720/-2635/240 bis 630 | – | Mit `check_walkways.py` und Sichtpruefung klaeren (Kasten ist hohl) | Montage |
+| M10 (C) | Rohre d25 am Tisch innen | Vier Rohrstuecke 51 bis 59 mm zwischen d25-Boegen (Bogenkette) in Tisch_innen:6, 1180 mm hoch | 1826/-787/1180 | – | Zusammenlegen, Bogenkette aufloesen | Planer, Montage |
+| M11 (C) | Deckel der Tanks | Deckeloeffnung zeigt im Viewer braunen Grund statt Tankinnenraum (Draufsicht) | siehe m01, Tanks bei 906/-3944 und 2842/-1652 | m01 | Ursache klaeren: Tankkoerper im Modell offen am Kegelboden, oder Viewer-Darstellung der Innenflaechen | Werkstatt (Tankkoerper), Viewer |
+| M12 (C) | Viewer, Standard "Kleinteile ausgeblendet" | Loecher und Stumpfenden erscheinen vermutlich "ohne Rohr", weil Stutzen unter 150 mm Diagonale im Standard fehlen (Absetzer 14 von 33 Koerpern, Biofilter 15 von 42); Ben sieht damit scheinbare Durchbrueche | alle Tanks | m01 | Kleinteile-Schalter fuer Tanks und Leitungsbauteile standardmaessig an, oder Stutzen/Hahn als Gruppe von der Schwelle ausnehmen | Viewer |
+
+## Gemessene Zahlen (jede mit Befehl)
+
+| Zahl | Wert | Befehl |
+|---|---|---|
+| Rohrenden gesamt | 228 (114 Rohre) | `python -I -X utf8 renders/maengel/inventur.py <Wurzel> <aus.json>`, Schluessel `rohrenden_gesamt` |
+| Rohrenden an Leitungsteil (25 mm) | 226 | Schluessel `an_lt_stueck` |
+| Rohrenden frei ins Leere | 2 (Ueberlauf K10/K26, M08) | Schluessel `frei_ins_leere` |
+| Formstuecke mit zu wenig Nachbarn | 29 von 125 (Kandidaten; Boegen und Kupplungen an Tanks, Pumpen, Pool, Reduzierungen an Tank-Stutzen) | Schluessel `formstuecke_zu_wenig_nachbarn` |
+| Kanten gebaut/Soll | 21 mit Trasse von 57, 36 ohne | Schluessel `kanten_ohne_trasse` |
+| Trassen gebaut | 40 Trassen, jede zu 100 % abgedeckt (Abstand 60 mm, Proben alle 50 mm) | Schluessel `trassen_abdeckung` |
+| Boegen gesamt | 79 | Schluessel `boegen_gesamt` |
+| Schraege Rohre | 74 von 114 | Gegenrechnung im Pruefer-Scratchpad (nicht in `inventur.py`): Drehmatrix je `lt_rohr_*`-Instanz, lokale z-Achse gegen die naechste Weltachse, Grenze 3 Grad; Azimute der waagerechten Rohre gerundet |
+| Tank-Anschluesse | 14 gemessen, Zulauf-Stutzen 62 bis 64 mm vom naechsten Formstueck, Schlamm/Ablauf 290 bis 379 mm | Schluessel `tank_anschluesse` |
+
+Was ich geprueft und als in Ordnung befunden habe: 226 von 228 Rohrenden beruehren ein Leitungsteil; alle 40 gebauten Trassen sind zu 100 % durch Teile abgedeckt; die Zulauf- und Auslaufstutzen der Tanks fuehren in ein Formstueck (Auslauf: Kupplung d50 beruehrt den Stutzen, Abstand 0).
+
+## Bilder (`renders/maengel/`)
+
+- `m01-oben-tanks-leitungen.jpg`: Draufsicht Visuell, nur Tanks, Rohre, Becken. Sichtbar: Rohrbuendel um die zwei Absetzer und zwei Biofilter, Deckeloeffnungen mit braunem Grund.
+- `m02-detailansicht-absetzer.jpg`: Detailansicht des Absetzers: Zulauf- und Auslaufstutzen enden knapp ausserhalb der Wand, der Schlammablass mit Kugelhahn sitzt am Kegelboden.
+- `m03-technisch-oben-leitungsart.jpg`: Draufsicht Technisch, Leitungsart farbig (Zulauf blau, Luft gruen); zeigt die Bogenketten um die Tanks und die Luftleitungen am Pool.
+- Fehlt: Nahaufnahme der Kegelspitze im Gesamtmodell mit und ohne Kleinteile. Grund: Kamerasteuerung im Browser-Pane (Schwenken per Skript) ungenau, Bild nicht erreicht.
+
+Geprueft gegen: `viewer/instances.json` (Runde 70, 02:12:59), `data/bom_koerper.json`, `data/leitungsnetz.json`, `data/leitungstrassen.json`, `data/stueckliste.json`, `docs/packages/m10-leitungen.md`, `docs/packages/m10-abnahme.md`, `data/roadmap.json` (M10-S2N, M10-S2V); Skript `renders/maengel/inventur.py`; Viewer auf Port 4434 mit drei Bildschirmaufnahmen.
+Offen: M01 bis M12; Nahbild der Kegelspitze (Pruefer, nach Bens Wunsch); Ursache der braunen Deckeloeffnung (M11).

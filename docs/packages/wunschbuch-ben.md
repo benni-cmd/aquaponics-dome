@@ -130,3 +130,4 @@
 | Nr | Wunsch | Quelle | Status | Wo |
 |---|---|---|---|---|
 | W69 | Einzelteilpruefung der Preisliste in die Roadmap: heute stehen 404-Links und unsinnige Artikel drin, z. B. Kabelkanaele statt NFT-Rohre (Beleg: NFT-Rinne mit Kabelkanal 110x60 belegt, `data/beschaffung/stahl.json` Zeile 1104) | Ben 05.11.2026 | GEPLANT: Roadmap N-PREIS-PRUEF, vor der Ausfuell-Tabelle W65 | N-PREIS-PRUEF, W59, W65 |
+| W70 | Empfohlenen Wasserkreislauf (A+) komplett einbauen, auch mit Zuleitungen; zusaetzlich die beste Variante der Wasserautobahn (Ring, laut R47 B2) einbauen; zwischen beiden wechseln koennen, nicht nur im Viewer, sondern im ganzen Projekt | Ben 05.11.2026 | IN ARBEIT: A+ ueber planer-m10-aplus und Modell-Kette; Varianten-Architektur und Ring B2 ueber Planer N-VARIANTEN | N-VARIANTEN, M10-S2N bis S7, E20, D81 |

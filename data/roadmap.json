@@ -1010,7 +1010,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 2,
    "wer": "Ben (nach R47)",
-   "notiz": "STAND NACH R47C: Empfehlung bleibt A+ (Rangfolge A+ > B2 > B1 > B3), aber die Begruendung gegen den Ring ist jetzt Aufwand statt Hoehe. Bericht (HTML und Artifact) enthaelt die Rueckfrage-Box. JETZT FAELLIG (nach R47 und R47B). Empfehlung A+: Der Ring aendert an deiner Sorge nichts (alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler), A+ macht die kritischen Stuecke erreichbar und meldbar: Revisionsstutzen an den vergrabenen Strecken, Schaechte mit Deckel an Heber-Ende, Bypass-Hahn und Filter-Stamm, Absperrhaehne an Pumpen-Saug und Stamm, Bypass-Probelauf, Durchfluss- und Pegelwaechter mit Alarm, Spuelanschluss am Absetzerkreis; etwa 20 Stutzen, 4 bis 6 Schaechte, 2 Sensoren [A], alles Standardteile ohne Eingriff in die Hoehen. Unterfrage (optional): Absetzerkreis streichen (R44 Kandidat A) wuerde 17,7 der 30,3 vergrabenen Meter entfernen, ist aber Rueckbau des Gebauten und widerspricht D71; ich empfehle NEIN. Bei Ja zu A+: Planer-Blaetter fuer M10 S3 bis S7 mit den Zugangsteilen, Nachruestung des Gebauten (M10-S2N), Wachter-Alarm haengt an E13 (Schaltschrank). Blockiert: M10 S3 bis S7, W37, W40-BEET. BERICHT FUER DEN MITGRUENDER (HTML, mit Bildern): docs/berichte/wasserkreislauf-ring-gegen-plan.html."
+   "notiz": "ANNAHME D81: A+ wird gebaut; zusaetzlich Ring B2 als umschaltbare Variante (W70, N-VARIANTEN). Ben bestaetigt beim Zwischencheck. | STAND NACH R47C: Empfehlung bleibt A+ (Rangfolge A+ > B2 > B1 > B3), aber die Begruendung gegen den Ring ist jetzt Aufwand statt Hoehe. Bericht (HTML und Artifact) enthaelt die Rueckfrage-Box. JETZT FAELLIG (nach R47 und R47B). Empfehlung A+: Der Ring aendert an deiner Sorge nichts (alle 30,3 m vergrabenes Rohr liegen vor dem Verteiler), A+ macht die kritischen Stuecke erreichbar und meldbar: Revi"
   },
   {
    "id": "W40-BEET",
@@ -1191,6 +1191,15 @@
    "reihenfolge": 3.94,
    "wer": "Planer, Fachrecherche (parallel je Gruppe), Werkstatt, Pruefer",
    "notiz": "Ben 05.11.: Einkaufsliste enthaelt 404-Links und unpassende Artikel, Beleg: NFT-Rinne PRF-pvcu-rinne-130x100 ist mit einem Kabelkanal 110x60 belegt (data/beschaffung/stahl.json Zeile 1104-1118). Plan: (1) Skript prueft alle Links (HTTP-Status, Weiterleitung auf Startseite oder Suche = Fehler), nichts kaufen, nirgends anmelden; (2) je Zeile Abgleich Artikel gegen Bauteil: Funktion, Mass, Einheit, Werkstoff, Lebensmitteleignung wo Wasser/Pflanzen beruehrt, Europa-Bezug (D76); (3) falsche Zeilen ersetzen mit zwei unabhaengigen Quellen, sonst OFFEN mit Grund; (4) Einkaufsliste neu erzeugen, check_bom Exit 0; (5) fremder Pruefer mit eigenen Stichproben. Vor W65-TABELLE, weil die Tabelle auf einer sauberen Liste aufsetzt."
+  },
+  {
+   "id": "N-VARIANTEN",
+   "titel": "Kreislauf A+ komplett und Wasserautobahn Ring B2 als umschaltbare Projekt-Varianten (W70)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 9.5,
+   "wer": "Planer, Werkstatt, Montage, Viewer, Pruefer",
+   "notiz": "Ben 05.11.: beide Varianten im Modell, Wechsel im ganzen Projekt (Modell, Einkaufsliste, Kennzahlen, Viewer, Pruefskripte). A+ ueber M10-S2N bis S7, Ring B2 (R47 Rangfolge A+ > B2 > B1 > B3) als Delta. Planer gestartet (docs/jobs/start/N-VARIANTEN-planer.md)."
   }
  ]
 }

@@ -90,6 +90,30 @@
   #dlist .n2 { color:var(--muted); font-size:11px; }
   #dlist .cat > .node { font-weight:600; } #dlist .node { align-items:flex-start; }
   #dlist .node .chev, #dlist .node .sw { margin-top:3px; }
+  /* ---- Mobilansicht (N-VIEWER-MOBIL): alles unter .mobil, Desktop bleibt unberuehrt ---- */
+  #mbtn, #mjoy, #mnote { display:none; }
+  .mobil body { touch-action:none; -webkit-user-select:none; user-select:none; }
+  .mobil #mbtn { display:block; position:fixed; top:10px; left:10px; z-index:12; min-height:44px; padding:8px 16px; font-size:15px; font-weight:600; border-radius:22px; background:var(--panel); }
+  .mobil body.fpv #mbtn { display:none; }
+  .mobil #panel { display:none; top:64px; left:10px; width:min(88vw, 340px); max-height:calc(100% - 74px); font-size:14px; z-index:11; touch-action:pan-y; overscroll-behavior:contain; }
+  .mobil body.menue-offen #panel { display:block; }
+  .mobil body.fpv #panel, .mobil body.detail #panel { display:none; }
+  .mobil #panel h1 { display:none; }
+  .mobil #panel button { min-height:42px; padding:8px 12px; }
+  .mobil #panel label.opt { min-height:38px; }
+  .mobil #panel input[type=checkbox] { width:20px; height:20px; }
+  .mobil #panel input[type=range] { height:34px; }
+  .mobil #panel .mnicht { display:none !important; }
+  .mobil #variantenetikett { display:none; }
+  .mobil #infopanel, .mobil #ctxmenu, .mobil #detailpanel { display:none !important; }
+  .mobil #lade { position:fixed; left:50%; bottom:14px; transform:translateX(-50%); width:min(92vw, 380px); z-index:15; margin:0; background:var(--panel); }
+  .mobil body.fpv #lade { bottom:auto; top:10px; }
+  .mobil #mnote { display:block; color:var(--muted); font-size:12px; margin:0 0 4px 28px; }
+  .mobil #fpvx { top:10px; right:10px; min-width:56px; min-height:48px; font-size:20px; }
+  .mobil body.fpv #mjoy { display:block; }
+  #mjoy { position:fixed; left:22px; bottom:26px; width:140px; height:140px; border-radius:50%; background:#17212ccc; border:2px solid var(--line); z-index:14; touch-action:none; }
+  #mjoy i { position:absolute; left:50%; top:50%; width:60px; height:60px; margin:-30px 0 0 -30px; border-radius:50%; background:#4cc38acc; border:2px solid #e6edf3aa; pointer-events:none; }
+  #mjoy::after { content:'Laufen'; position:absolute; left:0; right:0; top:-22px; text-align:center; color:var(--muted); font-size:12px; pointer-events:none; }
 </style>
 <script>
 // Statischer Modus (N-VIEWER-HOSTING): scripts/viewer_dist.py schreibt <meta name="viewer-modus" content="statisch"> in dist/index.html.
@@ -111,6 +135,15 @@
     return orig(p, opt);
   };
 })();
+</script>
+<script>
+// Mobilansicht (N-VIEWER-MOBIL): nur Touch-Geraet UND schmale Seite (kleinere Fensterseite <= 600 px). Ohne die Klasse "mobil" gilt keine Mobil-Regel.
+// Touch erkannt an Beruehrungspunkten, grobem Zeiger oder mobiler Browser-Kennung. Mit ?mobil=1 erzwingbar, mit ?mobil=0 abschaltbar.
+(function () { try {
+  const q = new URLSearchParams(location.search).get('mobil');
+  const touch = navigator.maxTouchPoints > 0 || matchMedia('(pointer: coarse)').matches || /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
+  if (q === '1' || (q !== '0' && touch && Math.min(innerWidth, innerHeight) <= 600)) document.documentElement.classList.add('mobil');
+} catch (e) {} })();
 </script>
 <script type="importmap">
 { "imports": { "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -169,6 +202,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
+const MOBIL = document.documentElement.classList.contains('mobil');   // Touch-Geraet mit schmaler Seite (siehe Kopf)
 const view = document.getElementById('view');
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -557,6 +591,7 @@ async function bauePhase(eintraege, fn) {                   // Meshes bauen, dab
 // Kleinteile unter 15 cm (W66): eigene Dateien defs/<stem>.klein.obj, erst beim Einschalten geladen
 const LS_KLEIN = 'viewer.kleinteile';
 let kleinOn = false; try { kleinOn = localStorage.getItem(LS_KLEIN) === '1'; } catch (e) {}
+if (MOBIL) kleinOn = false;                                   // mobil standardmaessig ohne Kleinteile (Datenmenge, Speicher)
 document.getElementById('klein').checked = kleinOn;
 let inst_anschluss = false;
 let DEFS_INFO = {}, MIN_DIAG_MM = 150, kleinBuilt = false, kleinBusy = false, loadBusy = false;
@@ -820,6 +855,7 @@ async function load() {
     const bau = files.filter(f => byDef[f.stem] && defCache.has(f.key));
     bau.forEach(f => { defMats[f.stem] = byDef[f.stem].map(i => new THREE.Matrix4().set(...i.m, 0, 0, 0, 1)); defList[f.stem] = byDef[f.stem]; defMeshes[f.stem] = []; });
     await bauePhase(bau, f => baueDef(f.stem, defCache.get(f.key), m, false));
+    if (MOBIL) defCache.clear();                              // mobil: Rohtext (317 MB) nach dem Aufbau freigeben
     if (model) { scene.remove(model); model.traverse(o => o.geometry && !o.isInstancedMesh && o.geometry.dispose()); }
     model = m; scene.add(model);
     hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
@@ -1221,6 +1257,62 @@ renderer.domElement.addEventListener('pointerdown', e => { if (!fpv.on) return; 
 addEventListener('pointerup', () => { fpv.drag = false; });
 addEventListener('pointermove', e => { if (fpv.on && (document.pointerLockElement || fpv.drag)) fpvLook(e.movementX || 0, e.movementY || 0); });
 window.fpvState = () => ({ on: fpv.on, x: fpv.x, y: fpv.y, z: camera.position.z, yaw: fpv.yaw, pitch: fpv.pitch });
+// ---- Mobilansicht (N-VIEWER-MOBIL): kleines Menue, Touch-Steuerung fuer FPV. Nur bei MOBIL; der FPV-Code oben bleibt unveraendert. ----
+if (MOBIL) {
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5)); renderer.setSize(innerWidth, innerHeight);   // weniger Pixel, fluessiger auf dem Handy
+  const panel = document.getElementById('panel');
+  const mbtn = document.createElement('button'); mbtn.id = 'mbtn'; mbtn.type = 'button'; mbtn.textContent = 'Menü'; mbtn.setAttribute('aria-expanded', 'false');
+  document.body.appendChild(mbtn);
+  const menue = an => { document.body.classList.toggle('menue-offen', an); mbtn.textContent = an ? 'Menü schließen' : 'Menü'; mbtn.setAttribute('aria-expanded', String(an)); };
+  mbtn.addEventListener('click', () => menue(!document.body.classList.contains('menue-offen')));
+  renderer.domElement.addEventListener('pointerdown', () => menue(false));
+  document.getElementById('fpv').addEventListener('click', () => menue(false));
+  document.body.appendChild(document.getElementById('lade'));            // Ladebalken bleibt bei geschlossenem Menue sichtbar
+  // Menue klein halten: Bauteilbaum, Auswahl, Drahtgitter, Messstellen, Deckkraft, Kreislauf, Board und Messtext ausblenden
+  const weg = el => el && el.classList.add('mnicht');
+  ['variante'].forEach(id => weg(document.getElementById(id)));
+  ['wire', 'mess'].forEach(id => weg(document.getElementById(id).closest('label')));
+  weg(document.getElementById('planeop').parentElement);
+  ['tree', 'sel', 'perf', 'board', 'detailbtn', 'expandAll'].forEach(id => { const e = document.getElementById(id); weg(e); if (id === 'expandAll' || id === 'detailbtn') weg(e.parentElement); });
+  panel.querySelectorAll('h2').forEach((h, i) => { if (i > 0) weg(h); });         // "Schnitt (Hoehe)" bleibt, Bauteile und Board gehen
+  const kl = document.getElementById('klein'), klLabel = kl.closest('label'), note = document.createElement('div');
+  note.id = 'mnote'; note.textContent = 'Lädt zusätzlich etwa 30 MB und braucht viel Speicher.'; klLabel.after(note);
+  klLabel.lastChild.textContent = ' Kleinteile zeigen';
+  hlGroup.visible = false;                                              // kein Auswahl-Leuchten ohne Infopanel
+  for (const c of Object.values(CAMS)) c.pos = c.pos.map((v, i) => c.target[i] + (v - c.target[i]) * 1.7);   // Hochformat: weiter weg, damit die Kuppel ins Bild passt
+  setCam('iso');
+
+  // Joystick: analog laufen. Die Bewegung geht auf fpv.x/fpv.y; fpvStep ruft danach fpvApply auf.
+  const joy = document.createElement('div'), knob = document.createElement('i'); joy.id = 'mjoy'; joy.appendChild(knob); document.body.appendChild(joy);
+  let jid = null, jx = 0, jy = 0, jt = 0; const R = 50;
+  const jset = e => { const r = joy.getBoundingClientRect(); let dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2); const d = Math.hypot(dx, dy); if (d > R) { dx *= R / d; dy *= R / d; }
+    jx = dx / R; jy = dy / R; knob.style.transform = `translate(${dx}px,${dy}px)`; };
+  const jend = e => { if (e.pointerId !== jid) return; jid = null; jx = jy = 0; knob.style.transform = ''; };
+  joy.addEventListener('pointerdown', e => { if (jid !== null) return; jid = e.pointerId; try { joy.setPointerCapture(jid); } catch (_) {} jset(e); e.preventDefault(); e.stopPropagation(); });
+  joy.addEventListener('pointermove', e => { if (e.pointerId === jid) jset(e); });
+  joy.addEventListener('pointerup', jend); joy.addEventListener('pointercancel', jend);
+  (function joyLoop(t) {
+    const dt = jt ? Math.min((t - jt) / 1000, 0.1) : 0; jt = t;
+    if (fpv.on && (jx || jy)) {
+      const fw = -jy, st = jx, sp = WALK * dt;                       // oben = vor, rechts = seitlich rechts (wie W/D)
+      fpv.x += (Math.cos(fpv.yaw) * fw + Math.sin(fpv.yaw) * st) * sp;
+      fpv.y += (Math.sin(fpv.yaw) * fw - Math.cos(fpv.yaw) * st) * sp;
+    }
+    requestAnimationFrame(joyLoop);
+  })(0);
+  // Umschauen: ein Finger auf der Szene wischt den Blick (Joystick-Finger zaehlt nicht)
+  let lid = null, lx = 0, ly = 0;
+  renderer.domElement.addEventListener('pointerdown', e => { if (fpv.on && e.pointerType !== 'mouse' && lid === null) { lid = e.pointerId; lx = e.clientX; ly = e.clientY; } });
+  addEventListener('pointermove', e => {
+    if (!fpv.on || e.pointerType === 'mouse' || e.target === joy) return;
+    if (e.pointerId === lid) { fpvLook((e.clientX - lx) * 1.4, (e.clientY - ly) * 1.4); lx = e.clientX; ly = e.clientY; }
+    e.stopImmediatePropagation();                                         // der Desktop-Zweig liest movementX und wuerde sonst doppelt drehen
+  }, true);
+  const lend = e => { if (e.pointerId === lid) lid = null; };
+  addEventListener('pointerup', lend, true); addEventListener('pointercancel', e => { lend(e); fpv.drag = false; }, true);
+  document.getElementById('fpvx').addEventListener('click', () => { jid = null; jx = jy = 0; knob.style.transform = ''; lid = null; hlGroup.visible = false; });
+  window.mobilStand = () => ({ mobil: true, menueOffen: document.body.classList.contains('menue-offen'), klein: kleinOn, cacheGroesse: defCache.size });   // Messhaken
+}
 (function loop(t) {
   const p = 0.45 + 0.25 * Math.sin(t / 220); hlMat.hover.opacity = p; hlMat.sel.opacity = 0.35 + 0.25 * Math.sin(t / 300 + 1);
   if (fpv.on) fpvStep(t); else controls.update();

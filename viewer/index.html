@@ -41,6 +41,8 @@
   button { background:#223142; color:var(--text); border:1px solid var(--line); border-radius:5px; padding:4px 8px; cursor:pointer; font:inherit; }
   button:hover { border-color:var(--accent); }
   label.opt { display:flex; align-items:center; gap:6px; padding:1px 0; cursor:pointer; }
+  #kreisinfo { font-size:12px; color:var(--muted); margin:2px 0 4px; }
+  #kreisinfo:empty { display:none; }
   .sw { width:10px; height:10px; border-radius:2px; border:1px solid #0006; flex:none; }
   input[type=range] { width:100%; }
   h2 { font-size:12px; margin:10px 0 4px; color:var(--muted); font-weight:600; }
@@ -182,6 +184,12 @@
   <div id="legende" hidden></div>
   <label class="opt"><input type="checkbox" id="wire"> Drahtgitter</label>
   <label class="opt" title="Markiert alle Halter und Sonden des Messstellenplans im Modell mit rosa Kugeln"><input type="checkbox" id="mess"> Messstellen zeigen</label>
+  <div id="kreise" role="group" aria-label="Kreisläufe hervorheben">
+    <label class="opt" title="Hebt Wasserleitungen und alle Teile im Wasserweg blau hervor, alles andere wird blass"><input type="checkbox" id="kr_wasser"> <span class="sw" style="background:#2f8cff"></span> Wasserkreislauf</label>
+    <label class="opt" title="Hebt Luftschläuche, Verteiler, Belüfter und das Gebläse grün hervor, alles andere wird blass"><input type="checkbox" id="kr_luft"> <span class="sw" style="background:#3ddc97"></span> Luftkreislauf</label>
+    <label class="opt" title="Hebt Schaltschrank, Kabel und alle Teile am Strom orange hervor, alles andere wird blass"><input type="checkbox" id="kr_strom"> <span class="sw" style="background:#ffb02e"></span> Stromkreislauf</label>
+    <div id="kreisinfo"></div>
+  </div>
   <label class="opt" title="Blendet die Plane (Hülle) aus"><input type="checkbox" id="plane" checked> Plane zeigen</label>
   <div class="row" style="align-items:center;flex-wrap:nowrap"><span style="color:var(--muted);font-size:12px;white-space:nowrap">Deckkraft Plane</span><input type="range" id="planeop" min="0" max="60" value="14" style="flex:1"><span id="planeopzahl" style="font-size:12px;min-width:34px;text-align:right"></span></div>
   <label class="opt nur-live"><input type="checkbox" id="auto" checked> Auto-Update</label>
@@ -293,10 +301,12 @@ const zero = new THREE.Matrix4().makeScale(0, 0, 0);
 function applyInstVisibility(stem, idx) {
   const hide = hiddenInst.has(stem + '#' + idx) || hiddenLeaf.has(stemLeaf[stem]);
   defMeshes[stem].forEach(im => { im.setMatrixAt(idx, hide ? zero : defMats[stem][idx]); im.instanceMatrix.needsUpdate = true; });
+  kreisPlan();
 }
 function setLeafVisible(key, on) {
   on ? hiddenLeaf.delete(key) : hiddenLeaf.add(key);
   leaves.get(key).stems.forEach(stem => defMeshes[stem].forEach(im => { im.visible = meshVisible(im, on); }));
+  kreisPlan();
 }
 function itemsOf(kind, key) {                               // alle {stem, idx} einer Kategorie / Gruppe
   const out = [];
@@ -683,12 +693,12 @@ function matPBR(farbe, opacity, metal, rough) {
 }
 const pbrVon = e => matPBR(e.farbe, e.deckkraft || 1, e.glanz || 0, e.rauheit == null ? 0.65 : e.rauheit);
 async function ladeAnsichtDaten(inst) {                     // eine Nebendatei statt je Definition ein Abruf (viewer/ansicht.json); ohne sie: Einzelabrufe
-  ARTEN = {};
+  ARTEN = {}; KREISL = null;
   try {
     const a = await getJsonWdh(varOrdner() + 'ansicht.json?v=' + Date.now());
     Object.keys(PARTS).forEach(k => delete PARTS[k]);
     Object.entries(a.komponenten).forEach(([k, v]) => { PARTS[k] = v; });
-    if (a.built === inst.built) ARTEN = a.leitungsart || {};          // Art je Instanz nur, wenn die Datei zum selben Export gehoert
+    if (a.built === inst.built) { ARTEN = a.leitungsart || {}; KREISL = a.kreislauf || null; }          // Art je Instanz nur, wenn die Datei zum selben Export gehoert
     return;
   } catch (e) { Lade.fehlerMelden('ansicht.json nicht lesbar, Werkstoffe kommen aus den Einzeldateien: ' + e.message); }
   await ladeTeile(Object.keys(inst.defs));
@@ -707,6 +717,7 @@ async function ladeTeile(stems) {                           // Werkstoff je Koer
   }));
 }
 function nennweite(stem) { const m = /(?:^|_)d(\d{2,3})(?:_|$)/.exec(stem); return m ? m[1] : null; }
+let KREISL = null;                                           // Kreislauf-Zuordnung aus ansicht.json (instanz, stamm, koerper; N-VIEWER-KREISLAEUFE)
 let ARTEN = {};                                              // Leitungsart je Instanz aus ansicht.json (nur wenn zum aktuellen Export passend)
 function materialienFuer(stem, name) {                      // { vis, tech, mensch } je Koerper
   const fb = colorFor(name, stem), P = PARTS[stem], base = baseName(name);
@@ -749,9 +760,9 @@ function applyAnsicht() {                                   // nur Materialien t
   Object.keys(defMeshes).forEach(stem => {
     const leafOn = !hiddenLeaf.has(leafKeyOf(stem));
     defMeshes[stem].forEach(im => {
-      im.material = ansicht === 'visuell' ? im.userData.matVis : im.userData.matTech; im.visible = meshVisible(im, leafOn);
+      im.material = kreisAktiv() ? paleMat : (ansicht === 'visuell' ? im.userData.matVis : im.userData.matTech); im.visible = meshVisible(im, leafOn);
       const art = im.userData.art;                            // Leitungsart: je Instanz eine Farbe, nur in der Ansicht Technisch
-      if (art && ansicht === 'technisch' && FARBEN) {
+      if (art && ansicht === 'technisch' && FARBEN && !kreisAktiv()) {
         const tab = FARBEN.technisch.leitungsart, c = new THREE.Color();
         art.forEach((a, i) => { c.set(a && tab[a] ? tab[a].farbe : FARBEN.technisch.gruppen.Leitungen.farbe); im.setColorAt(i, c); });
         im.instanceColor.needsUpdate = true;
@@ -812,6 +823,61 @@ document.getElementById('planeopzahl').textContent = planeOp + ' %';
 window.messStand = () => ({ an: messOn, halter: Object.keys(defList).filter(s => /^halter_/.test(s)).reduce((a, s) => a + defList[s].length, 0), sonden: Object.keys(defList).filter(s => /^sonde_/.test(s)).reduce((a, s) => a + defList[s].length, 0), geplant: MESS ? MESS.messstellen.length : null, markierungen: messGroup.children.length, sichtbar: messGroup.visible,
   plane: { an: planeOn, deckkraft: planeOp, netze: Object.keys(defMeshes).filter(s => /^huelle/.test(s)).reduce((a, s) => a + defMeshes[s].filter(m => m.visible).length, 0) } });
 
+// ---- Ebenen Wasser-, Luft- und Stromkreislauf (N-VIEWER-KREISLAEUFE, W87) --------------------------------------------
+// Zuordnung nur aus ansicht.json (`kreislauf`, geschrieben von export_ansicht.py aus leitungsnetz, leitungstrassen und data/parts).
+// Ein Schalter an: alle Koerper werden blass (paleMat), die Teile des Kreislaufs liegen als farbige Kopie darueber (wie bei den Messstellen).
+const KREISE = [['wasser', 'Wasser', 0x2f8cff], ['luft', 'Luft', 0x3ddc97], ['strom', 'Strom', 0xffb02e]];
+const kreisOn = { wasser: lsAn('viewer.kreis.wasser') === '1', luft: lsAn('viewer.kreis.luft') === '1', strom: lsAn('viewer.kreis.strom') === '1' };
+const kreisGroup = new THREE.Group(); kreisGroup.renderOrder = 997; scene.add(kreisGroup);
+const paleMat = new THREE.MeshStandardMaterial({ color: 0x8ea0b4, roughness: 0.9, metalness: 0, transparent: true, opacity: 0.07, depthWrite: false, side: THREE.DoubleSide, clippingPlanes: [clipPlane] });
+const kreisMat = {}; KREISE.forEach(([k, , c]) => { kreisMat[k] = new THREE.MeshStandardMaterial({ color: c, emissive: c, emissiveIntensity: 0.45, roughness: 0.55, metalness: 0.1, side: THREE.DoubleSide, clippingPlanes: [clipPlane] }); });
+const kreisAktiv = () => kreisOn.wasser || kreisOn.luft || kreisOn.strom;
+let kreisZaehl = { wasser: 0, luft: 0, strom: 0 }, kreisT = null;
+function kreisPlan() { if (!kreisAktiv() && !kreisGroup.children.length) return; clearTimeout(kreisT); kreisT = setTimeout(kreisAnwenden, 60); }   // entprellt: Baum-Aenderungen kommen in Schueben
+function kreisAnwenden() { applyAnsicht(); kreisBauen(); }
+function kreisBauen() {                                    // farbige Kopie je Koerper und Kreislauf; verborgene Teile bleiben verborgen
+  kreisGroup.children.slice().forEach(o => { kreisGroup.remove(o); o.dispose && o.dispose(); });
+  kreisZaehl = { wasser: 0, luft: 0, strom: 0 };
+  if (!model || !KREISL || !kreisAktiv()) { kreisInfoZeigen(); return; }
+  const aktiv = KREISE.map(k => k[0]).filter(k => kreisOn[k]);
+  const erster = ks => ['strom', 'luft', 'wasser'].find(k => aktiv.includes(k) && ks && ks.includes(k)) || null;     // Teil in zwei Kreislaeufen (Pumpe: Wasser und Strom): die seltenere Farbe gewinnt
+  Object.keys(defMeshes).forEach(stem => {
+    const inst = KREISL.instanz && KREISL.instanz[stem], st = KREISL.stamm && KREISL.stamm[stem], kb = KREISL.koerper && KREISL.koerper[stem], list = defList[stem];
+    if (!list || !(inst || st || kb)) return;
+    const leafAus = hiddenLeaf.has(stemLeaf[stem]);
+    const aus = i => leafAus || hiddenInst.has(stem + '#' + i);
+    if (defMeshes[stem].length) aktiv.forEach(c => { kreisZaehl[c] += list.filter((_, i) => !aus(i) && (inst ? inst[i] === c : !!(st && st.includes(c)))).length; });         // Zaehlung je Teil, auch wenn die Farbe ein anderer Kreislauf bekommt
+    const perInst = list.map((_, i) => aus(i) ? null : (inst ? (aktiv.includes(inst[i]) ? inst[i] : null) : erster(st)));
+    defMeshes[stem].forEach(base => {
+      const nurKoerper = !inst && !erster(st) && kb && kb[base.name] && aktiv.includes('strom');                // nur Kabel und Stecker eines sonst fremden Teils
+      const idx = []; perInst.forEach((c, i) => { if (c) idx.push([i, c]); else if (nurKoerper && !aus(i)) idx.push([i, 'strom']); });
+      if (!idx.length) return;
+      ['wasser', 'luft', 'strom'].forEach(c => {
+        const sel = idx.filter(x => x[1] === c); if (!sel.length) return;
+        const im = new THREE.InstancedMesh(base.geometry, kreisMat[c], sel.length);
+        sel.forEach(([ix], j) => im.setMatrixAt(j, defMats[stem][ix]));
+        im.frustumCulled = false; im.renderOrder = 997; im.raycast = () => {}; im.userData.basis = base; kreisGroup.add(im);
+      });
+    });
+  });
+  kreisInfoZeigen();
+}
+function kreisSicht() { for (const im of kreisGroup.children) { const b = im.userData.basis; im.visible = !!b && b.visible; } }       // Schnitt wirkt ueber das Material, Baum und Kleinteile ueber die Basis
+function kreisInfoZeigen() {
+  const el = document.getElementById('kreisinfo'); if (!el) return;
+  if (!kreisAktiv()) { el.textContent = ''; return; }
+  if (!KREISL) { el.textContent = 'Für diesen Stand gibt es keine Kreislauf-Zuordnung (ansicht.json fehlt oder gehört zu einem älteren Export).'; return; }
+  const t = KREISE.filter(k => kreisOn[k[0]]).map(k => `${kreisZaehl[k[0]]} ${k[1]}teile`);
+  el.textContent = `Hervorgehoben: ${t.join(', ')}. Alle anderen Teile sind blass.` + (kleinOn ? '' : ' Teile unter 15 cm erscheinen erst mit dem Haken Kleinteile.');
+}
+KREISE.forEach(([k]) => {
+  const cb = document.getElementById('kr_' + k); cb.checked = kreisOn[k];
+  cb.addEventListener('change', e => { kreisOn[k] = e.target.checked; lsAn('viewer.kreis.' + k, kreisOn[k] ? '1' : '0'); kreisAnwenden(); });
+});
+window.kreisStand = () => ({ an: { ...kreisOn }, daten: !!KREISL, kopien: kreisGroup.children.length, sichtbar: kreisGroup.children.filter(m => m.visible).length, teile: { ...kreisZaehl },
+  blass: Object.values(defMeshes).reduce((a, ms) => a + ms.filter(m => m.material === paleMat).length, 0), koerper: Object.values(defMeshes).reduce((a, ms) => a + ms.length, 0),
+  stamm: KREISL ? Object.keys(KREISL.stamm || {}).length : 0 });
+
 function baueDef(stem, text, m, klein) {                    // eine Definition (oder ihre Kleinteile) als InstancedMesh je Koerper
   const list = defList[stem], mxs = defMats[stem], g = loader.parse(text);
   if (!defMeshes[stem]) defMeshes[stem] = [];
@@ -828,6 +894,7 @@ function baueDef(stem, text, m, klein) {                    // eine Definition (
     if (!defCol[stem]) defCol[stem] = '#' + mat.color.getHexString();
   });
   if (klein) hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (s === stem) applyInstVisibility(s, +i); });
+  if (klein) kreisPlan();
 }
 
 async function load() {
@@ -861,7 +928,7 @@ async function load() {
     hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
     if (selected && !defList[selected.stem]) selected = null;
     perfAufbau = ((performance.now() - t0) / 1000).toFixed(1);
-    buildTree(inst); applyAnsicht(); messBauen(); planeAnwenden(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
+    buildTree(inst); applyAnsicht(); messBauen(); kreisBauen(); planeAnwenden(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
     perfText(); ladeGelungen = true; Lade.ende();
   } catch (e) { Lade.fehlerMelden('Aufbau abgebrochen: ' + e.message); Lade.ende(); }
   finally { loadBusy = false; }
@@ -1316,7 +1383,7 @@ if (MOBIL) {
 (function loop(t) {
   const p = 0.45 + 0.25 * Math.sin(t / 220); hlMat.hover.opacity = p; hlMat.sel.opacity = 0.35 + 0.25 * Math.sin(t / 300 + 1);
   if (fpv.on) fpvStep(t); else controls.update();
-  renderer.render(scene, camera); requestAnimationFrame(loop);
+  kreisSicht(); renderer.render(scene, camera); requestAnimationFrame(loop);
 })(0);
 </script>
 </body>

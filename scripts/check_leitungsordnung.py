@@ -1,7 +1,9 @@
-"""Pruefskript Leitungsordnung (docs/leitungsordnung.md, M10-UMBAU Schritt 1): R1 bis R9 plus R10 Abdeckung, nur lesen.
+"""Pruefskript Leitungsordnung v2 (docs/leitungsordnung.md, D86/W75; v1 aus M10-UMBAU Schritt 1): R1 bis R9, R11 bis R14 plus R10 Abdeckung, nur lesen.
 Eingaben: data/leitungstrassen.json (Pfade, ueber leitungen.bauen() in Instanzen mit Trassen-Zuordnung umgerechnet), scripts/dome-script.json (Halter-Instanzen,
 Bogen-Klassen), scripts/.segs.json (Strebenachsen), viewer/instances.json + data/bom_koerper.json (Bauteil-Kaesten fuer R9), data/leitungsnetz.json (R10).
-Aufruf: python -X utf8 scripts/check_leitungsordnung.py [--json <aus.json>] [--trassen <andere Trassenliste, z. B. Vorher-Stand>]   (Exit 1 bei Verstoss in R1 bis R9)
+Aufruf: python -X utf8 scripts/check_leitungsordnung.py [--json <aus.json>] [--trassen <andere Trassenliste, z. B. Vorher-Stand>] [--nur-v2]   (Exit 1 bei Verstoss in R1 bis R9, R11 bis R14)
+v2: Feld "art" je Trasse (A Druck starr, B Druckschlauch, C Schwerkraft frei, D Luft, E Heber/Siphon, F Leerrohr/Kanal); ohne "art" = Bestand v1 (wie A).
+Schlauch- und Leerrohr-Trassen (B, C, D, F) gehen NICHT in leitungen.bauen() (beliebige Knickwinkel) und nicht in R1 bis R5/R8; fuer sie gelten R6 (Schlauch), R9, R11 bis R14.
 Messgrenzen: R7 prueft Halterhoehe (< Z 2500) und Abstand >= 150 mm zu jeder Strebenachse, nicht den Kontakt zum Befestigungsgrund;
 R9 wertet Probepunkte ueber Flur (Z 400 bis 2500) als Gang, wenn sie ausserhalb von Pool, Beet-Portalen und 250 mm um jedes Bauteil liegen (Naeherung der Gangkarte)."""
 import collections, json, math, os, sys
@@ -12,6 +14,11 @@ import leitungen as LG
 
 FZ, KOPF = 400.0, 2500.0
 DOC = json.load(open(sys.argv[sys.argv.index("--trassen") + 1], encoding="utf-8")) if "--trassen" in sys.argv else LG.laden_variante()   # M10-S2N: Variante filtern (geteilte Trassen haben eine ring_b2-Kopie)
+FREI = ("B", "C", "D", "F")                                    # v2: frei gefuehrte Arten (Schlauch, Leerrohr)
+ALLE = DOC["trassen"]
+if "--nur-v2" in sys.argv: ALLE = [t for t in ALLE if t.get("art")]
+V2 = [t for t in ALLE if t.get("art")]                        # R11 bis R14
+DOC = dict(DOC); DOC["trassen"] = [t for t in ALLE if t.get("art") not in FREI]   # R1 bis R8 und bauen(): Art A, E und Bestand
 KANTEN = json.load(open(os.path.join(ROOT, "data", "leitungsnetz.json"), encoding="utf-8"))["kanten"]
 CMDS = json.load(open(os.path.join(ROOT, "scripts", "dome-script.json")))["commands"]
 MV = {c["params"]["occurrence"]: c["params"]["matrix"] for c in CMDS if c["command"] == "occurrence.move"}
@@ -173,15 +180,81 @@ try:
     info["R9 Kaesten"] = len(kast)
 except FileNotFoundError as e:
     viol["R9"].append("nicht messbar: %s" % e)
+# ---------------- R9 fuer frei gefuehrte Trassen (Schlauch auf dem Flur zaehlt auch: Z ab 0 rel)
+try:
+    for tr in [t for t in V2 if t.get("art") in ("B", "C", "D")]:
+        pts = [tuple(map(float, p)) for p in tr["pfad"]]
+        for a, b in zip(pts, pts[1:]):
+            hit = None
+            for k in range(1, 6):
+                p = tuple(a[i] + (b[i] - a[i]) * k / 6 for i in range(3))
+                if not FZ - 1 <= p[2] < KOPF or math.hypot(p[0], p[1]) < 2095 + 50: continue
+                if max(p[0] * math.cos(math.radians(-72 + 36 * j)) + p[1] * math.sin(math.radians(-72 + 36 * j)) for j in range(10)) > 6000 * math.cos(math.radians(18)): continue
+                if not any(nah(p, m, lo, hi, 250.0) for m, lo, hi in kast): hit = p; break
+            if hit: viol["R9"].append("%s (Art %s) bei %s frei im Gang" % (tr["id"], tr["art"], rd(hit))); break
+except NameError:
+    pass
+# ---------------- R11 Gefaelle, R12 Hochpunkt, R13 Vergraben mit Grund, R14 Schlauchbiegung (v2, nur Trassen mit "art")
+unter_m = 0.0
+for tr in ALLE:                                               # Summe unter Flur (alle Trassen, Info)
+    pts = [tuple(map(float, p)) for p in tr["pfad"]]
+    unter_m += sum(nrm(sub(b, a)) for a, b in zip(pts, pts[1:]) if (a[2] + b[2]) / 2 < FZ) / 1000.0
+info["R13 Summe unter Flur (alle Trassen) m"] = round(unter_m, 1)
+info["v2-Trassen (Feld art)"] = len(V2)
+for tr in V2:
+    pts = [tuple(map(float, p)) for p in tr["pfad"]]; d = float(tr["dn"]); art = tr["art"]
+    if art == "C":
+        smin = 0.005 if d >= 75 else 0.01
+        for i, (a, b) in enumerate(zip(pts, pts[1:])):
+            lh = math.hypot(b[0] - a[0], b[1] - a[1])
+            if lh < 1.0:
+                if b[2] > a[2] + 0.5: viol["R11"].append("%s Teilstueck %d steigt senkrecht um %.0f mm" % (tr["id"], i + 1, b[2] - a[2]))
+                continue
+            g = (a[2] - b[2]) / lh
+            if g < smin - 1e-9: viol["R11"].append("%s Teilstueck %d: Gefaelle %.2f %% (Soll >= %.1f %%) bei %s" % (tr["id"], i + 1, 100 * g, 100 * smin, rd(a)))
+        top = max(p[2] for p in pts[1:])
+        if top > pts[0][2] + 0.5: viol["R12"].append("%s: Hochpunkt Z %.0f ueber Start Z %.0f (Art C darf nicht steigen)" % (tr["id"], top, pts[0][2]))
+    if art in ("C", "E") and tr.get("quelle_spiegel") is not None:
+        top = max(p[2] for p in pts)
+        if top > float(tr["quelle_spiegel"]) and tr.get("siphon") not in ("entlueftet", "anfahrhilfe"):
+            viol["R12"].append("%s: steigt auf Z %.0f ueber den Quellspiegel Z %.0f ohne Feld siphon" % (tr["id"], top, float(tr["quelle_spiegel"])))
+    for i, (a, b) in enumerate(zip(pts, pts[1:])):
+        L = nrm(sub(b, a))
+        if (a[2] + b[2]) / 2 < FZ:
+            if art != "F" and tr.get("grund") not in ("gangquerung", "pool_einmuendung", "unter_wasserspiegel"):
+                viol["R13"].append("%s Teilstueck %d (Art %s) unter Flur ohne Grund bei %s" % (tr["id"], i + 1, art, rd(a)))
+            if L > 3000 and not tr.get("kanal"):
+                viol["R13"].append("%s Teilstueck %d: %.1f m unter Flur ohne Zugang (Soll <= 3 m oder Feld kanal)" % (tr["id"], i + 1, L / 1000))
+    if art in ("B", "C", "D"):
+        r = 6.0 * d                                       # Planwert 6 x d: Spiralschlauch 40 mm 260, 51 mm 270 mm Biegeradius (esska), R57 Abschn. 7
+        for i in range(1, len(pts) - 1):
+            u1 = unit(sub(pts[i], pts[i - 1])); u2 = unit(sub(pts[i + 1], pts[i]))
+            w = deg(dot(u1, u2))
+            if w < 1.0: continue
+            t = r * math.tan(math.radians(w) / 2)
+            l1, l2 = nrm(sub(pts[i], pts[i - 1])), nrm(sub(pts[i + 1], pts[i]))
+            if t > min(l1 if i == 1 else l1 / 2, l2 if i == len(pts) - 2 else l2 / 2) + 1e-6:
+                viol["R14"].append("%s Ecke %d: Knick %.0f Grad braucht %.0f mm Gerade (Radius %.0f), vorhanden %.0f" % (tr["id"], i, w, t, r, min(l1, l2)))
+    if art in ("B", "C", "D") and not tr.get("aufliegend"):  # R6 fuer Schlauch: Schlauchschellen <= 400 mm
+        hs = [p for n, p in halter if n.startswith("LT_Schlauchschelle")]
+        for i, (a, b) in enumerate(zip(pts, pts[1:])):
+            if min(a[2], b[2]) <= FZ: continue
+            L = nrm(sub(b, a)); u = unit(sub(b, a))
+            st = sorted(dot(sub(p, a), u) for p in hs if -50 <= dot(sub(p, a), u) <= L + 50 and nrm(sub(sub(p, a), tuple(u[k] * dot(sub(p, a), u) for k in range(3)))) <= d / 2 + 60)
+            pk = [0.0] + [max(0.0, min(L, x)) for x in st] + [L]
+            gap = max(pk[k + 1] - pk[k] for k in range(len(pk) - 1))
+            if gap > 400:
+                luecken += 1; viol["R6"].append("%s Schlauch Teilstueck %d: Schellenabstand %.0f mm (Soll <= 400 oder Feld aufliegend)" % (tr["id"], i + 1, gap))
+info["Rohre ueber Flur ohne ausreichende Halter (R6)"] = luecken
 # ---------------- R10 Abdeckung (Info, kein Exit)
-gebaut = {t.get("kante") for t in trs if t.get("kante")} | {t["id"].split("-")[0] for t in trs}
+gebaut = {t.get("kante") for t in ALLE if t.get("kante")} | {t["id"].split("-")[0] for t in ALLE}
 ohne = [k["id"] for k in KANTEN if k["id"] not in gebaut]
 info["R10 Netz-Kanten ohne Trasse"] = "%d: %s" % (len(ohne), ", ".join(ohne))
 
 print("Leitungsordnung (docs/leitungsordnung.md) | Trassen %d" % len(trs))
 for k, v in info.items(): print("  %s: %s" % (k, v))
 fehler = 0
-for r in ("R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9"):
+for r in ("R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R11", "R12", "R13", "R14"):
     v = viol.get(r, []); n = len(v) if r != "R6" else luecken; fehler += n
     print("%s %s: %d Verstoesse" % ("PASS" if not n else "FAIL", r, n))
     for z in v[:12]: print("    " + z)

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Systemreview Kuppel</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#1c2330;--muted:#5b6475;--line:#d9dde5;--blue:#2a5da8;--gray:#8d9296;--orange:#c8651b;--green:#1b7a3d;--red:#b3261e;--note:#fff6dc;--noteline:#e5c766;--accent:#1750b0;--water:#3d7fd6;--soil:#e7dcc8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161d;--card:#1b212b;--text:#e8ebf0;--muted:#9aa4b5;--line:#2e3644;--blue:#7ea9f0;--gray:#9aa0a6;--orange:#f0a060;--green:#7fd69a;--red:#ff8a80;--note:#3b2f0a;--noteline:#8a6a10;--accent:#9cc2ff;--water:#6aa5ff;--soil:#3a3226;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12161d;--card:#1b212b;--text:#e8ebf0;--muted:#9aa4b5;--line:#2e3644;--blue:#7ea9f0;--gray:#9aa0a6;--orange:#f0a060;--green:#7fd69a;--red:#ff8a80;--note:#3b2f0a;--noteline:#8a6a10;--accent:#9cc2ff;--water:#6aa5ff;--soil:#3a3226;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:900px;margin:0 auto;padding:16px 16px 48px}
+h1{font-size:1.6rem;line-height:1.25;margin:12px 0 4px}
+h2{font-size:1.25rem;margin:32px 0 8px;padding-top:6px;border-top:1px solid var(--line)}
+.meta{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:12px 0}
+.kern{border-left:5px solid var(--accent)}
+.kern p{margin:6px 0}
+.note{background:var(--note);border:1px solid var(--noteline);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:.95rem}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.93rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:rgba(120,130,150,.12)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tablewrap{overflow-x:auto}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:5px;padding:1px 7px;white-space:nowrap}
+.t-ok{background:rgba(27,122,61,.15);color:var(--green)}
+.t-no{background:rgba(179,38,30,.13);color:var(--red)}
+.t-mid{background:rgba(200,101,27,.15);color:var(--orange)}
+figure{margin:12px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}
+figcaption{color:var(--muted);font-size:.88rem;padding:4px 6px 2px}
+.scroll{overflow-x:auto}.scroll svg{min-width:660px}
+svg{width:100%;height:auto;display:block}
+svg text{font:12px system-ui,sans-serif;fill:var(--text)}
+svg .mut{fill:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+.cols .box h3{margin:0 0 6px;font-size:1.05rem}
+ol,ul{padding-left:1.3rem}li{margin:4px 0}
+.small{font-size:.88rem;color:var(--muted)}
+footer{margin-top:30px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:10px}
+</style>
+</head>
+<body>
+<main>
+<h1>Systemreview: weniger Teile, weniger graben</h1>
+<p class="meta">Für Ben und Leon · 05.11.2026 · Wünsche W75, W76, W79, W82 · Langfassung mit allen Zahlen und Befehlen: <code>docs/research/R57-systemreview.md</code></p>
+
+<div class="box kern">
+<p><strong>Empfehlung: Den Pool zum tiefsten Punkt machen.</strong> Der Wasserspiegel sinkt dafür um 665 mm (von 515 mm über dem Flur auf 150 mm darunter), und die Beete stehen auf dem Flur statt eingelassen. Dann fließt jedes Beet und jede Rinne von selbst in den Pool zurück, und es bleibt eine einzige Pumpstufe.</p>
+<p>Dadurch entfallen die Beet-Sümpfe mit Reservepumpen, der Heber, die Filtergruben, der Notbypass mit seinen Schächten, der Absetzerkreis und die Schlammfass-Gruben. Der Schlamm geht per Schlauch nach draußen in ein Fass über dem Boden.</p>
+<p>Zwei Lehrbuchregeln sprechen dagegen, darum gilt die Empfehlung nur mit zwei Bedingungen (unten). Zu entscheiden ist eine Frage: <strong>Zielbild „schlank“ ja oder nein.</strong></p>
+</div>
+
+<h2>Was sich ändert, in Zahlen</h2>
+<div class="tablewrap">
+<table>
+<tr><th>Größe</th><th>heute (A+)</th><th>schlank</th></tr>
+<tr><td>Leitung unter dem Flur (gebaut und geplant)</td><td class="n">230 m</td><td class="n">18 m</td></tr>
+<tr><td>Aushub ohne die Poolgrube</td><td class="n">43,7 m³</td><td class="n">2,0 m³</td></tr>
+<tr><td>Pumpen einschließlich Reserve</td><td class="n">12</td><td class="n">4</td></tr>
+<tr><td>Dauerstrom aller Wasserpumpen</td><td class="n">429 W</td><td class="n">328 W</td></tr>
+<tr><td>Teile in den betroffenen Gruppen (ohne Rohr und Schlauch)</td><td class="n">40</td><td class="n">10</td></tr>
+<tr><td>Belegte Teilekosten dieser Gruppen</td><td class="n">6039 €</td><td class="n">2242 €</td></tr>
+<tr><td>Fischwasser und Besatz (FAO-Grenze 20 kg/m³)</td><td class="n">28,5 m³ · 12,1 kg/m³</td><td class="n">20,6 m³ · 16,8 kg/m³</td></tr>
+<tr><td>Pegelschwankung im Pool durch das Fluten der Beete</td><td class="n">0 mm</td><td class="n">39 bis 79 mm</td></tr>
+</table>
+</div>
+<p class="small">Alle Werte rechnet <code>python -X utf8 scripts/r57_rechnung.py</code>. Die Kosten nehmen den kleinsten belegten Preis aus <code>data/beschaffung</code>. Teile ohne belegten Preis (Absetzer-, Sumpf- und Filterkästen) fehlen in der Summe; die Einsparung ist also eher größer. Die 18 m unter Flur sind geschätzt: zwei kurze Einmündungen am Pool und zehn Gangquerungen im Leerrohr.</p>
+
+<h2>So fließt das Wasser im Zielbild</h2>
+<figure>
+<div class="scroll">
+<svg viewBox="0 0 700 300" role="img" aria-label="Höhenschnitt: Biofilter oben, Beete und Rinnen in der Mitte, Pool unten; Pumpe im Pool hebt zum Biofilter, alles andere fließt frei zurück">
+  <line x1="10" y1="200" x2="690" y2="200" stroke="var(--muted)" stroke-dasharray="4 4"/>
+  <text x="14" y="194" class="mut">Flur</text>
+  <rect x="30" y="200" width="170" height="90" fill="var(--soil)" stroke="var(--line)"/>
+  <rect x="34" y="216" width="162" height="70" fill="var(--water)" opacity=".35"/>
+  <line x1="34" y1="216" x2="196" y2="216" stroke="var(--water)" stroke-width="2"/>
+  <text x="42" y="240">Pool, tiefster Punkt</text>
+  <text x="42" y="256" class="mut">Spiegel 150 mm</text>
+  <text x="42" y="270" class="mut">unter dem Flur</text>
+  <rect x="160" y="268" width="26" height="14" rx="3" fill="var(--orange)"/>
+  <path d="M173 268 V150 Q173 130 193 130 H320" fill="none" stroke="var(--orange)" stroke-width="3"/>
+  <text x="96" y="118">Tauchpumpe, Schlauch über den Rand</text>
+  <rect x="320" y="60" width="90" height="110" fill="var(--card)" stroke="var(--text)"/>
+  <rect x="324" y="76" width="82" height="90" fill="var(--water)" opacity=".35"/>
+  <rect x="338" y="62" width="54" height="22" fill="none" stroke="var(--orange)" stroke-dasharray="3 2"/>
+  <text x="300" y="50">Siebkorb im Biofilter</text>
+  <text x="330" y="130">Biofilter</text>
+  <text x="418" y="88">Verteiler</text>
+  <path d="M410 100 H500 V160" fill="none" stroke="var(--blue)" stroke-width="3"/>
+  <path d="M410 120 H600 V110" fill="none" stroke="var(--blue)" stroke-width="3"/>
+  <rect x="470" y="160" width="70" height="40" fill="var(--soil)" stroke="var(--text)"/>
+  <text x="482" y="185">Beet</text>
+  <rect x="570" y="100" width="80" height="10" fill="var(--card)" stroke="var(--text)"/>
+  <text x="572" y="94">NFT-Rinne</text>
+  <path d="M470 196 Q330 206 200 214" fill="none" stroke="var(--gray)" stroke-width="3"/>
+  <path d="M650 110 Q672 150 610 150 Q330 150 196 208" fill="none" stroke="var(--gray)" stroke-width="3"/>
+  <text x="208" y="238" class="mut">frei zurück mit Gefälle</text>
+  <path d="M365 170 V262 H690" fill="none" stroke="var(--green)" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="420" y="254">Schlamm nach draußen in ein Fass</text>
+</svg>
+</div>
+<figcaption>Höhenschnitt, nicht maßstäblich: Orange ist die einzige gepumpte Leitung, Grau läuft durch Schwerkraft zurück, Grün gestrichelt ist der Schlammweg nach draußen.</figcaption>
+</figure>
+
+<h2>Je Bauteilgruppe</h2>
+<div class="tablewrap">
+<table>
+<tr><th>Gruppe</th><th>Urteil</th><th>Warum</th></tr>
+<tr><td>Beet-Sumpf (2 Behälter, 4 Teichpumpen, 6 Schwimmer, 2 Rückschlagventile)</td><td><span class="tag t-no">streichen</span></td><td>Er war nur nötig, weil die Beete tiefer ablaufen als der Pool steht. Im Zielbild laufen sie frei in den Pool.</td></tr>
+<tr><td>Heber, Filtergruben, Filter-Stamm</td><td><span class="tag t-no">streichen</span></td><td>Die Pumpen saugen direkt im Pool. Damit fallen auch zwei Durchführungen in der Poolwand unter Wasser weg.</td></tr>
+<tr><td>Notbypass und tiefe Schächte für Kugelhähne</td><td><span class="tag t-no">streichen</span></td><td>Die Schächte gibt es nur, weil Bypass- und Stamm-Hahn 186 bis 424 mm unter dem Flur liegen. Ohne Saugleitung gibt es weder Bypass noch Schacht.</td></tr>
+<tr><td>Absetzerkreis (Bodenablauf, 4 Kleinpumpen, 2 Absetzer)</td><td><span class="tag t-no">streichen</span></td><td>Das Sieb im ganzen Strom fängt etwa doppelt so viel wie der Absetzer im Teilstrom. Bens Entscheidung D71 („bei heute bleiben“) wird damit neu gefragt. Der Absetzer lässt sich vor dem Sieb nachrüsten, falls der Korb öfter als einmal am Tag voll ist.</td></tr>
+<tr><td>Schlammfass in der Grube</td><td><span class="tag t-mid">ersetzen</span></td><td>Der Schlamm fließt per Schlauch durch den Fundamentring in ein Fass draußen über dem Boden, so wie Ben es vorgeschlagen hat. Der Kreislauf selbst bleibt innen. Das Fass ist nur ein Wochenlager für Kompost oder Wurmkiste, denn Schlamm ohne Luft bildet Schwefelwasserstoff (FAO 589, Kentucky State University).</td></tr>
+<tr><td>Feinfilter</td><td><span class="tag t-mid">vereinfachen</span></td><td>Nur der Edelstahl-Siebkorb bleibt; er hängt oben im Biofilter. Der Kasten und die Grube entfallen.</td></tr>
+<tr><td>Beete</td><td><span class="tag t-mid">vereinfachen</span></td><td>Sie stehen auf dem Flur statt eingelassen. Der Rand liegt dann 162 mm höher, was eine bessere Arbeitshöhe ergibt. Über den Außenbeeten bleiben 1,18 m Kopffreiheit für das Blattgemüse.</td></tr>
+<tr><td>Rückläufe, Luft, Frischwasser</td><td><span class="tag t-mid">vereinfachen</span></td><td>Sie werden frei geführte Schläuche über dem Flur statt Rohre im Graben. Allein Luft und Frischwasser sind heute 106 m im Graben.</td></tr>
+<tr><td>Verteiler mit allen Hähnen</td><td><span class="tag t-ok">behalten</span></td><td>Er wird die „Wasserstation“ aus W82, eine je Linie am Biofilter. Physikalisch ist das der einzige Ort, an dem sich jeder Strom teilt. Eine einzige Station für beide Linien würde die Wege verlängern, weil die Biofilter 4,9 m auseinanderstehen.</td></tr>
+<tr><td>Hauptpumpen, Biofilter, NFT, Zweit- und Drittbecken, Messzelle mit Dosierung, Gebläse, Schaltschrank innen, zwei Linien</td><td><span class="tag t-ok">behalten</span></td><td>Jedes dieser Teile hat eine Aufgabe, die sonst keines übernimmt. Die Pumpen werden Tauchpumpen im Pool. Das Gebläse bleibt, denn Venturi ist kein Ersatz (R54, R55).</td></tr>
+</table>
+</div>
+
+<h2>Was dagegen spricht, mit Quellen</h2>
+<div class="box">
+<p><strong>Regel 1: Den Pegel im Fischbecken konstant halten.</strong> FAO 589 und Murray Hallam (CHOP) empfehlen, die Pumpe in einen eigenen, tiefsten Sumpf zu setzen. Ihr Grund: Lecks und Flutschwankungen treffen dann den Sumpf, nicht den Fisch. Im Zielbild schwankt der Pool um 4 bis 8 cm, und ein Leck könnte ihn leer pumpen. Eine zulässige Schwankung nennt keine Quelle.</p>
+<p><strong>Regel 2: Das Sieb gehört vor die Pumpe.</strong> Bregnballe (FAO/Eurofish 2015) und eine Forellenfarm-Studie (Sindilariu 2009) belegen, dass die Pumpe den Kot zerkleinert. Wie stark, war nicht lesbar.</p>
+<p><strong>Warum trotzdem:</strong> Der Aufbau entspricht dem Bumina-System in FAO 589, in dem ein Becken in einen Kopfbehälter mit Filter pumpt; dafür gibt es allerdings nur diese eine Quelle. Pumpgespeiste Filter sind bei Teichen üblich. Die lehrbuchtreue Alternative aus R49 (Sumpf mit Sieb vor den Pumpen) behält den Heber, braucht Sumpfgruben und halbiert den Durchfluss durch den Pool, außer man fährt 50 % mehr Pumpenstrom.</p>
+<p><strong>Die zwei Bedingungen:</strong></p>
+<ol>
+<li>Ein Pegelschalter schaltet die Pumpen ab, bevor mehr als der Flutstand fehlt; das ist Pflicht und hat Alarm.</li>
+<li>Die Siebleistung wird im ersten Betriebsmonat gemessen; reicht sie nicht, kommt ein Vortex vor das Sieb.</li>
+</ol>
+</div>
+
+<h2>Was es kostet und wer es trägt</h2>
+<div class="cols">
+<div class="box"><h3>Nachteile</h3>
+<ul>
+<li>Im Pool stehen 7,9 m³ weniger Wasser. Damit gibt es weniger Puffer und 23 % weniger Wärmespeicher.</li>
+<li>Der Pegel schwankt beim Fluten um 4 bis 8 cm.</li>
+<li>Die Pumpen müssen 2,28 m statt 2,0 m heben. Die heute gewählte Pumpe schafft rechnerisch schon die 2,0 m nicht, die Pumpenwahl ist also ohnehin offen.</li>
+<li>Was im Modell schon an Saug- und Absetzerleitungen gebaut ist, muss wieder heraus. Auf der Baustelle ist noch nichts gebaut.</li>
+</ul></div>
+<div class="box"><h3>Vorteile</h3>
+<ul>
+<li>Jeder Weg endet im Pool. Fällt der Strom aus, läuft nichts über; der Pool steigt um höchstens 276 mm und hat 800 mm Rand.</li>
+<li>Ein Pegel überwacht die ganze Anlage.</li>
+<li>Das Wasser fällt am Einlauf 0,8 m tief und belüftet dabei kostenlos mit.</li>
+<li>Wo Absetzer und Kleinpumpe standen, wird Platz für den Schaltschrank-Kasten innen frei (D87).</li>
+</ul></div>
+</div>
+
+<h2>Leitungsordnung v2</h2>
+<p>Rechtwinklig und starr bleibt nur, was gebündelt, verteilt oder unter Druck steht: Technikturm, Verteiler, Tischstrang, Halbring am Poolrand. Alles andere wird frei geführt. Für diese Leitungen gelten vier neue, messbare Regeln:</p>
+<ol>
+<li>Jedes Teilstück fällt mindestens 1 % in Fließrichtung.</li>
+<li>Eine Schwerkraftleitung hat keinen Hochpunkt.</li>
+<li>Unter den Flur kommt eine Leitung nur, um einen Gang zu queren oder in den Pool zu münden, und dann höchstens 3 m bis zum nächsten Zugang.</li>
+<li>Ein Schlauch biegt sich nie enger als sechs Durchmesser und nie enger, als der Hersteller erlaubt.</li>
+</ol>
+<p>Das Prüfskript <code>scripts/check_leitungsordnung.py</code> misst diese Regeln. Am heutigen Modell meldet es dieselben 11 Verstöße wie vorher, an sieben Testleitungen schlägt jede neue Regel an.</p>
+
+<div class="note"><strong>Wenn ihr Nein sagt:</strong> Dann bleibt A+, aber nach Ordnung v2 verlegt. Luft und Frischwasser kommen aus dem Graben; das ergibt 124 m statt 230 m unter Flur. Alle 12 Pumpen, die Sümpfe und die Gruben bleiben.</div>
+
+<h2>Eure Entscheidung</h2>
+<div class="box kern">
+<p><strong>Zielbild „schlank“ mit den zwei Bedingungen übernehmen?</strong> Darin stecken drei Teilfragen:</p>
+<ol>
+<li>Poolspiegel 150 mm unter dem Flur.</li>
+<li>Absetzer streichen (D71 neu).</li>
+<li>Beete auf den Flur stellen.</li>
+</ol>
+<p>Die Alternativen sind die Sumpf-Variante aus R49 (lehrbuchtreu, mehr Gruben und Strom) oder A+ nach Ordnung v2.</p>
+<p><strong>Empfehlung: Ja zu allen dreien.</strong> Danach plant der Orchestrator Netzliste und Montage neu, bevor der Zulauf zu Beeten und NFT (M10-S3) gebaut wird.</p>
+</div>
+
+<footer>Grundlagen: <code>docs/research/R57-systemreview.md</code>, <code>docs/leitungsordnung.md</code>, <code>scripts/r57_rechnung.py</code>, R44, R45, R47, R49, R50, R54, R55. Keine fachliche Freigabe.</footer>
+</main>
+</body>
+</html>

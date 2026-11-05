@@ -88,3 +88,8 @@ Zu tun: neue Montage-Sitzung mit `docs/jobs/M10-UMBAU.md` ab Schritt 4 starten.
 Montage M10-UMBAU Schritte 4 bis 9 (Runde 72) NICHT uebernommen: Kontext dieser Sitzung liegt nach zwei Werkstatt-Paketen weit ueber der 35-%-Grenze — fuer dich: frische Montage-Sitzung starten.
 Beleg: docs/jobs/M10-UMBAU.md Start-Hinweis 5; Werkstatt gepusht 0462ec8 (Schacht tief 46/46, Paket m10-leitungen 14a), 721b607 (Ring B2 56/56, Paket n-varianten); Stamm-Hahn Linie 2 braucht >= 245 mm Achsabstand K18/K22-T (docs/parts/schacht_kugelhahn_tief.md); Notueberlauf K67/K75 d63 (docs/parts/ring_b2.md).
 Zu tun: neue Montage-Sitzung fuer M10-UMBAU Runde 72 starten.
+
+## 2026-11-05 — von Montage M10-UMBAU (Runden 72 und 73)
+Schritte 4 bis 9 sind gebaut: Runde 72 mit Linie 2, Runde 73 mit Schlammfass, Biofilter-Ablass, Verteiler, Luft und 14 Haltern. R1 und R6 stehen auf 0, R10 auf 34, die Laufwege sind PASS und die Inventur meldet 0 freie Rohrenden. Fuer dich aendert sich: Pruefpunkt 5 ist fuer Linie 1 nicht erfuellt (Stamm-Gerade 67 statt 100 mm Luft), und es gibt vier neue Befunde zum Zuordnen: B4 Fass tiefer mit Grubenabdeckung, B5 Kappe d40/d32 fehlt, B6 Biofilter-Ablass ohne Netz-Knoten, B7 Halter-Konsolen fehlen.
+Beleg: c8be3f4, ab3d425, d1e415d; docs/packages/m10-leitungen.md Abschnitt 14b (Tabelle vorher/nachher)
+Zu tun: fremden Pruefer M10-UMBAU starten

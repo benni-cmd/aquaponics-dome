@@ -47,4 +47,4 @@ Stand 05.11.2026, Viewer-Werkstatt. Status: statische Ausgabe gebaut und lokal g
 - [x] Größen vorher und nachher mit Befehl
 - [x] Lokal getestet mit Screenshot
 - [ ] Ring B2 in der statischen Ausgabe geprüft (wartet auf Export)
-- [ ] Deployment (wartet auf Login und Entscheidung zum Tarif)
+- [x] Deployment 05.11.: Ben waehlt oeffentlichen Link; Projekt benknaute/aquaponics-dome-viewer, https://aquaponics-dome-viewer.vercel.app (Befehle `npx.cmd --yes vercel@59.5.0 link --yes --project aquaponics-dome-viewer`, `... deploy --prod --yes` in viewer/dist; `.vercelignore` schliesst .env* und .vercel aus). Im Browser geprueft: 'Fertig: 296 Definitionen, 317,2 MB, 15 s'. Aktualisieren: `python -X utf8 scripts/viewer_dist.py`, dann deploy erneut.

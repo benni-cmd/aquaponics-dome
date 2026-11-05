@@ -1200,6 +1200,15 @@
    "reihenfolge": 9.5,
    "wer": "Planer, Werkstatt, Montage, Viewer, Pruefer",
    "notiz": "Ben 05.11.: beide Varianten im Modell, Wechsel im ganzen Projekt (Modell, Einkaufsliste, Kennzahlen, Viewer, Pruefskripte). A+ ueber M10-S2N bis S7, Ring B2 (R47 Rangfolge A+ > B2 > B1 > B3) als Delta. Planer gestartet (docs/jobs/start/N-VARIANTEN-planer.md)."
+  },
+  {
+   "id": "N-REWORK",
+   "titel": "Ueberarbeitung der Kuppel-Bauteile und Leitungsordnung (W71): Loecher ohne Rohr, wirre Rohrfuehrung, fehlende Wasserversorgung",
+   "status": "geplant",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 4.5,
+   "wer": "Pruefer (Maengel-Inventur), Planer (Leitungsordnung), Werkstatt, Montage",
+   "notiz": "Ben 05.11. mit drei Viewer-Bildern: Absetzer/Vortex-Tank mit Durchbruechen ohne Rohr, Rohrleitungen unuebersichtlich und unrealistisch, Wasserversorgung grossteils fehlend. Plan: (1) Maengel-Inventur im Viewer je Bauteil (Durchbrueche ohne Rohr, schwebende Teile, Rohre durch Teile, Bogen-Ketten) als docs/model-maengel.md; (2) Leitungsordnung als Standard vor M10-S3 (Trassen entlang fester Korridore, gebuendelt, rechtwinklig, Rohrhalter, wenige Boegen, Gaenge frei) und Umbau der gebauten Strecken S0 bis S2; (3) Bauteil-Fixes in der Werkstatt mit Teiledaten und Einkaufsliste; (4) A+ komplett ueber M10-S2N bis S7."
   }
  ]
 }

@@ -24,6 +24,10 @@
 | Montage M10-S3, S4, S5, S6, S7 | jeweils Vorgaenger + dessen Pruefer gestartet | Montage, Opus mittel | wartet |
 | Viewer VV Varianten-Schalter | V1a fertig | Viewer, Sonnet hoch | wartet |
 | Montage Ring R1, R2 | M10-S7 fertig, V2-Bauteile gebaut | Montage, Opus mittel | wartet |
+| Maengel-Inventur N-REWORK im Viewer (W71) | naechster freier Platz (leicht, nur Viewer und Screenshots) | Pruefer, Sonnet hoch | wartet, Prioritaet 1 |
+| Planer Leitungsordnung + Umbau S0-S2 (W71), Nachtrag zu planer-m10-aplus | Maengel-Inventur fertig | Planer, Opus mittel | wartet |
+| Werkstatt Bauteil-Fixes aus Maengel-Inventur (Absetzer-Durchbrueche u. a.) | Maengel-Inventur fertig | Werkstatt, Opus mittel | wartet |
+| Auflage A4 Detailansicht (Stand geruest in 19 Dateien) | freier leichter Platz | Daten, Sonnet hoch | wartet |
 | CHECK je Variante, V-MESS, W65-Tabelle, Zwischencheck-Bericht | Kette fertig | gemischt | wartet |
 
 ## Stand

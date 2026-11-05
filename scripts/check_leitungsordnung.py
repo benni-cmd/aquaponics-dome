@@ -45,7 +45,7 @@ trs = DOC["trassen"]
 # ---------------- R1, R3, R4, R5 je Trasse (Pfadsegmente), Ausnahmen 1 (Heber) und 2 (schraeger Port, erstes/letztes Stueck <= 300 mm)
 azs = set(); n_seg = 0
 AUF = {r["id"] for r in DOC.get("r_stuecke", []) if r.get("auf_stutzen")}   # Reduziermuffe direkt auf einem Bauteil-Stutzen: zaehlt fuer Ausnahme 2 wie der Stutzen
-def am_port(e): return e == "stutzen" or (e.startswith("r:") and e[2:] in AUF)
+def am_port(e): return e in ("stutzen", "muffe") or (e.startswith("r:") and e[2:] in AUF)   # "muffe": Bauteil-Muffe (M10-S5-LUFT-B)
 for tr in trs:
     pts = [tuple(map(float, p)) for p in tr["pfad"]]; d = float(tr["dn"]); heber = bool(tr.get("heber"))
     L = [nrm(sub(pts[i + 1], pts[i])) for i in range(len(pts) - 1)]
@@ -71,6 +71,7 @@ if len(azs) > 8: viol["R1"].append("waagerechte Richtungen %d (Soll <= 8 Welt)" 
 # ---------------- Instanzen aus der Trassenliste (wie gen_dome sie setzt): schraege Rohre (Vergleich Inventur), R2, R6
 T, _ = LG.bauen(DOC)
 heber_ids = {t["id"] for t in trs if t.get("heber")}
+schwan_ids = {t["id"] for t in trs if t.get("schwanenhals")}
 rohre = []
 for (art, d, Lr), liste in T.items.items():
     if art == "rohr":
@@ -105,7 +106,7 @@ verb = collections.defaultdict(list)
 for i, g in enumerate(glied): verb[wurzel(i)].append(g)
 for v in verb.values():
     b = [g for g in v if g[0]]
-    if len(b) >= 3 and not all(g[2] in heber_ids for g in b):
+    if len(b) >= 3 and not all(g[2] in heber_ids for g in b) and not all(g[2] in schwan_ids for g in b):   # Ausnahme 5: Schwanenhals ueber einen Beckenrand (Feld "schwanenhals")
         viol["R4"].append("%d Boegen (%s) bei %s" % (len(b), ", ".join(sorted({g[2] for g in b})), rd(b[0][1][0])))
 # R6 Halter: Instanzen LT_Klemme*/LT_Schelle* im Modell
 halter = [(n, (m[3], m[7], m[11])) for n, m in MV.items() if n.split(":")[0].startswith(("LT_Klemme", "LT_Schelle", "LT_Schlauchschelle"))]
@@ -135,11 +136,12 @@ for tr in trs:
     pts = [tuple(map(float, p)) for p in tr["pfad"]]
     for i in range(len(pts) - 1):
         tr["_i"] = i; a, b = pts[i], pts[i + 1]; u = unit(sub(b, a))
-        if abs(u[2]) < 0.035 and nrm(sub(b, a)) > 200: segs.append((tr["id"], tr.get("kante") or tr["id"], float(tr["dn"]), a, b, u, korridor(tr, a, b)))
+        if abs(u[2]) < 0.035 and nrm(sub(b, a)) > 200: segs.append((tr["id"], tr.get("kante") or tr["id"], float(tr["dn"]), a, b, u, korridor(tr, a, b), tr.get("buendel")))
 for x in range(len(segs)):
     for y in range(x + 1, len(segs)):
         s1, s2 = segs[x], segs[y]
         if s1[1] == s2[1] or s1[6] != s2[6] or abs(abs(dot(s1[5], s2[5])) - 1) > 1e-3: continue
+        if s1[7] and s1[7] == s2[7]: continue                   # Ausnahme 4: Abgaenge eines Verteilers behalten dessen Teilung (Feld "buendel")
         t0, t1 = sorted((dot(sub(s2[3], s1[3]), s1[5]), dot(sub(s2[4], s1[3]), s1[5])))
         if min(t1, nrm(sub(s1[4], s1[3]))) - max(t0, 0) < 200: continue
         w = sub(s2[3], s1[3]); q = nrm(sub(w, tuple(s1[5][i] * dot(w, s1[5]) for i in range(3))))
@@ -165,6 +167,7 @@ try:
         for k in range(1, 6):
             p = tuple(r["A"][i] + (r["B"][i] - r["A"][i]) * k / 6 for i in range(3))
             if not FZ < p[2] < KOPF or math.hypot(p[0], p[1]) < 2095 + 50: continue
+            if max(p[0] * math.cos(math.radians(-72 + 36 * k)) + p[1] * math.sin(math.radians(-72 + 36 * k)) for k in range(10)) > 6000 * math.cos(math.radians(18)): continue   # R9 gilt im Dom (Zehneck, Apothem 5706); aussen kein Gang
             if not any(nah(p, m, lo, hi, 250.0) for m, lo, hi in kast):
                 g9 += 1; viol["R9"].append("%s Rohr d%d bei %s frei im Gang" % (r["tid"], r["d"], rd(p))); break
     info["R9 Kaesten"] = len(kast)

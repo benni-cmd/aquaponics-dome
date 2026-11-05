@@ -38,7 +38,7 @@ import json, math, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NETZ = os.path.join(ROOT, "data", "leitungsnetz.json")
 DEFAULT_TRASSEN = os.path.join(ROOT, "data", "leitungstrassen.json")
-BANDS = {"U": (-400.0, -100.0), "W": (0.0, 1000.0), "T": (900.0, 1100.0), "UE": (2100.0, 1e9), "WH": (0.0, 2100.0), "UT": (-2600.0, -400.0)}   # Z relativ zum Flur (Plan 4.1); WH und UT neu in M10-S2b
+BANDS = {"U": (-400.0, -100.0), "W": (0.0, 1000.0), "T": (900.0, 1100.0), "UE": (2100.0, 1e9), "WH": (0.0, 2100.0), "UT": (-2600.0, -400.0), "AU": (0.0, 2100.0)}   # Z relativ zum Flur (Plan 4.1); WH und UT neu in M10-S2b; AU = aussen vor dem Fundamentring (M10-S5-LUFT-B, Technikgruppe E13), nur ausserhalb des Zehnecks erlaubt
 RULES = {"nah_w": 500.0, "gang_z_max": 2100.0, "tol": 2.0, "step": 10.0, "gang_step": 50.0, "junction": 150.0, "steig_xy": 20.0, "min_xy": 100.0}
 TECH = ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Klein", "Feinfilter")   # M10-S2a: Feinfilter ergaenzt (S1 stellte ihn ins Modell)
 
@@ -214,7 +214,7 @@ def pruefe(w, netz, doc):
                         h = hit.setdefault(o["name"], [p, 0]); h[1] += 1
         for name, (p, n) in hit.items(): viol.append(("KOLL", tid, "Rohr d%g trifft %s, erste Stelle %s Z %.0f, etwa %d mm Achslaenge" % (2 * r, name, az_r(p[0], p[1]), p[2], n * R["step"])))
         # BAND, GANG, GEFAELLE je Teilstueck
-        gang, bad_near, bad_tab = [], [], []
+        gang, bad_near, bad_tab, bad_au = [], [], [], []
         for i in range(len(pts) - 1):
             a, b = pts[i], pts[i + 1]; b_ = t["bands"][i]; dxy = math.hypot(b[0] - a[0], b[1] - a[1]); steig = dxy < R["steig_xy"] and abs(b[2] - a[2]) >= R["steig_xy"]
             lo, hi = BANDS[b_]
@@ -223,6 +223,7 @@ def pruefe(w, netz, doc):
                     if not (lo - R["tol"] <= z - w.fz <= hi + R["tol"]): viol.append(("BAND", tid, "Teilstueck %d Band %s: Z rel %.0f ausserhalb %g..%g" % (i + 1, b_, z - w.fz, lo, hi if hi < 1e8 else float("inf")))); break
             for p in samples(a, b, R["gang_step"]):
                 zr = p[2] - w.fz
+                if b_ == "AU" and in_dome(w, p[0], p[1]): bad_au.append(p); continue
                 if not steig and b_ in ("W", "WH") and not near_tech(w, p[0], p[1], nah): bad_near.append(p)
                 if not steig and b_ == "T" and not under_table(w, p[0], p[1]): bad_tab.append(p)
                 if 0.0 <= zr < R["gang_z_max"] and free_floor(w, p[0], p[1]):
@@ -234,6 +235,7 @@ def pruefe(w, netz, doc):
                     if dz > R["tol"] / 2: viol.append(("GEFAELLE", tid, "Teilstueck %d steigt um %.0f mm gegen die Fliessrichtung (%s)" % (i + 1, dz, az_r(a[0], a[1]))))
                 elif -dz < t["pct"] / 100 * dxy - 0.5: viol.append(("GEFAELLE", tid, "Teilstueck %d: Gefaelle %.2f %% (%.0f mm auf %.0f mm), verlangt %.2f %%" % (i + 1, -dz / dxy * 100, -dz, dxy, t["pct"])))
         if bad_near: viol.append(("BAND", tid, "Band W: %d Punkte weiter als %.0f mm vom Bauteil, erste Stelle %s" % (len(bad_near), nah, az_r(bad_near[0][0], bad_near[0][1]))))
+        if bad_au: viol.append(("BAND", tid, "Band AU: %d Punkte innerhalb des Zehnecks, erste Stelle %s" % (len(bad_au), az_r(bad_au[0][0], bad_au[0][1]))))
         if bad_tab: viol.append(("BAND", tid, "Band T: %d Punkte nicht unter einem Tisch, erste Stelle %s" % (len(bad_tab), az_r(bad_tab[0][0], bad_tab[0][1]))))
         if gang: viol.append(("GANG", tid, "%d Punkte (etwa %.1f m) quer auf freiem Boden zwischen Z 0 und %.0f, erste Stelle %s Z %.0f" % (len(gang), len(gang) * R["gang_step"] / 1000, R["gang_z_max"], az_r(gang[0][0], gang[0][1]), gang[0][2] - w.fz)))
     # Rohr gegen Rohr

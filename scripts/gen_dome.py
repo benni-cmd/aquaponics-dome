@@ -56,7 +56,7 @@ def component_file(fname, cls, assembly, fn):
     os.remove(tmp)
     act(assembly); add("component.insert_design", path=out.replace("\\", "/"), name=cls)
 
-ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen", "11_Referenz", "12_Huelle", "13_Messstellen"]
+ASSEMBLIES = ["01_Layout", "02_Gelaende", "03_Kuppel", "04_Wasserbecken", "05_Beete", "06_NFT", "07_Tanks", "08_Leitungen", "09_Technik", "10_Pflanzen", "11_Referenz", "12_Huelle", "13_Messstellen", "14_Technik_E13"]   # 14: Technikgruppe "vorlaeufig, E13" (M10-S5-LUFT-B, D81)
 
 def act(name):
     """Baugruppe aktivieren: neue Koerper/Instanzen entstehen darin (Wurzel bleibt frei von losen Koerpern)."""
@@ -501,9 +501,21 @@ def rohr_fn():
     seg(P1, P2, "T10_Zulaufrohr_2", "join", targets=["T10_Zulaufrohr"])
 
 def schrank_fn():
+    if "technik_x" in P:   # M10-S5-LUFT-B (D81, E13 vorlaeufig): Schrank in der Technikgruppe aussen neben der Tuer, achsparallel (Breite cab_x in X)
+        rect_body("T11_Schaltschrank", P["technik_x"], P["technik_y"], P["sock_h"], 0, P["cab_x"], P["cab_y"], P["cab_z"]); return
     az = 0; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))   # D62: Schaltschrank neben den Vorbau (Flaeche 0 statt -36)
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
     rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), P["sock_h"], az+90, P["cab_x"], P["cab_y"], P["cab_z"])
+
+def technik_e13(fz):
+    """M10-S5-LUFT-B: Technikgruppe "vorlaeufig, E13" aussen vor dem Fundamentring (Lage aus scripts/technik_e13.py, Ursprung technik_x/technik_y): Schrank-Einfuehrung T89,
+    Geblaese T85 x2, Hauptverteiler luftverteiler_6 T86 (Abgaenge nach unten), Aktivkohle-Station T83; alle in 14_Technik_E13. Leitungen kommen aus data/leitungstrassen.json (linie luft_b, frisch)."""
+    import technik_e13 as TE
+    g = TE.gruppe(P); comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
+    place_instances("Schrank_Einfuehrung", comp("schrank_einfuehrung"), [g["einfuehrung"]], "14_Technik_E13")
+    place_instances("Geblaese_Luft", comp("geblaese_luft"), g["geblaese"], "14_Technik_E13")
+    place_matrices("Luftverteiler_6", comp("luftverteiler_6"), [TE.verteiler_matrix(g["vert"])], "14_Technik_E13")
+    place_instances("Aktivkohle_Station", comp("aktivkohle_station"), [g["station"]], "14_Technik_E13")
 
 def luft_a(fz):
     """M10-S5-LUFT Teil A: Pool-Verteiler luftverteiler_4 (T87) auf dem Beckenrand, 4 Scheibenbelueftungen (T88) auf dem Beckenboden, Schwimmerventil (T84) am Rand; Lagen (Annahmen [A]) aus scripts/trassen_luft.py, die Rohre d25 kommen als Trassen K44-S1..S4 aus data/leitungstrassen.json."""
@@ -516,7 +528,7 @@ def luft_a(fz):
 
 def t10_t11(fz):
     component_file("zulaufrohr", "Zulaufrohr", "08_Leitungen", rohr_fn)
-    component_file("schaltschrank", "Schaltschrank", "09_Technik", schrank_fn)
+    component_file("schaltschrank", "Schaltschrank", "14_Technik_E13" if "technik_x" in P else "09_Technik", schrank_fn)
 
 if __name__ == "__main__":
     stage = int(sys.argv[1]); out = sys.argv[2]
@@ -528,7 +540,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); luft_a(P["sock_h"]); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

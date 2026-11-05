@@ -11,7 +11,9 @@ T-Stueck ("t:<id>", M10-S2b allgemein): T der Groesse d + je Port mit kleinerem 
   Eintrag in "t_stuecke": {"id", "pos", "d", "ports": [{"trasse", "ende": "start"|"ende", "d"}, ...]}; zwei Ports muessen auf einer Geraden liegen, der dritte steht senkrecht (beliebige Richtung, auch senkrecht).
 Reduziermuffe ("r:<id>", M10-S2b): Eintrag in "r_stuecke": {"id", "pos_a", "dir", "d_gross", "d_klein"}; pos_a = Muffenebene A (grosse Seite), dir von A nach B; die Trasse beginnt/endet auf der Muffenebene B.
   Mit "art": "kugelhahn" steht derselbe Eintrag fuer einen Kugelhahn (lt_kugelhahn_d<d_gross>, Doppelmuffe, Laenge aus der Bibliothek); die Trassen davor/dahinter enden/beginnen auf den Muffenebenen A/B.
-Offenes Ende ("offen"): das Rohr endet am Trassenpunkt, kein Fitting."""
+Offenes Ende ("offen"): das Rohr endet am Trassenpunkt, kein Fitting.
+Muffe eines Bauteils ("muffe", M10-S5-LUFT-B): der Trassenpunkt ist die Muffenoeffnung des Bauteils, das Rohr steckt t tief darin.
+Doppelmuffe aus der Bibliothek ("r:<id>" mit "art": "teil", "datei": "lt_..."): wie der Kugelhahn, Muffenebene A in pos_a, Achse dir."""
 import json, math, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -93,6 +95,7 @@ def bauen(doc):
     tk = {}
     for ts in doc.get("t_stuecke", []): tk[ts["id"]] = t_stueck(T, ts, doc, FARBEN[[t for t in doc["trassen"] if t["id"] == ts["ports"][0]["trasse"]][0].get("farbe", "dunkelblau")])
     for r in doc.get("r_stuecke", []):
+        if r.get("art") == "teil": T.put("teil:" + r["datei"], 0, 0, tuple(r["pos_a"]), tuple(r["dir"]), (1.0, 0.0, 0.0), FARBEN[r.get("farbe", "dunkelblau")], r["id"]); continue   # M10-S5-LUFT-B: Doppelmuffe aus der Bibliothek (z. B. Rueckschlagventil), Muffenebene A im Ursprung, Laenge = Port B
         if r.get("art") == "kugelhahn": T.put("kugelhahn", int(r["d_gross"]), 0, tuple(r["pos_a"]), tuple(r["dir"]), (1.0, 0.0, 0.0), FARBEN[r.get("farbe", "dunkelblau")], r["id"])   # Doppelmuffe L = 50 + 2 t
         else: T.put("reduzierung", int(r["d_gross"]), int(r["d_klein"]), tuple(r["pos_a"]), tuple(r["dir"]), (1.0, 0.0, 0.0), FARBEN[r.get("farbe", "dunkelblau")], r["id"])
     for tr in doc["trassen"]:
@@ -109,6 +112,8 @@ def bauen(doc):
         s0 = [ks[i] - t for i in range(n - 1)]; s1 = [D[i] - ke[i] + t for i in range(n - 1)]   # Rohr von s0 bis s1 entlang des Teilstuecks (ab Anfangspunkt)
         if start == "offen": s0[0] = 0.0                              # offenes Ende: Rohr endet am Trassenpunkt
         if ende == "offen": s1[-1] = D[-1]
+        if start == "muffe": s0[0] = -t                               # M10-S5-LUFT-B: Muffe eines Bauteils (Trassenpunkt = Muffenoeffnung), Rohr steckt t tief
+        if ende == "muffe": s1[-1] = D[-1] + t
         kein = set()                                                  # Teilstuecke ohne Rohr: Bogen sitzt direkt auf dem Stutzen
         for lage, tipp, o, i in (("start", pts[0], dirs[0], 0), ("ende", pts[-1], dirs[-1], n - 2)):
             if (start if lage == "start" else ende) != "stutzen": continue

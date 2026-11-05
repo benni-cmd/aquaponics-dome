@@ -2025,6 +2025,765 @@
    ],
    "linie": "luft",
    "notiz": "M10-UMBAU Schritt 7: Abgang 4 -> Scheibe 3 (Az 225): Bogen auf dem Zapfen, -X ueber die Krone, lotrecht an der Innenwand, 2 Bodenstrecke(n) in X/Y (Leitungsordnung KB), Bogen unter der Scheibe"
+  },
+  {
+   "id": "K44-GA",
+   "kante": "K44",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "r:RSV_G1",
+   "ende": "t:TG",
+   "baender": [
+    "AU",
+    "AU"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     -1822.0,
+     -6460.0,
+     1110.0
+    ],
+    [
+     -1650.0,
+     -6460.0,
+     1110.0
+    ],
+    [
+     -1650.0,
+     -6860.0,
+     1110.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Geblaese A: Rueckschlagventil -> T d20",
+   "dn_abweichung": "Geblaese-Austritt d20 (Bauteilblatt geblaese_luft), zwei Straenge ueber T d20, dann Reduziermuffe d40/d20 auf die Hauptleitung d40 (K44)"
+  },
+  {
+   "id": "K44-GB",
+   "kante": "K44",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "r:RSV_G2",
+   "ende": "t:TG",
+   "baender": [
+    "AU"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     -1822.0,
+     -6860.0,
+     1110.0
+    ],
+    [
+     -1650.0,
+     -6860.0,
+     1110.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Geblaese B: Rueckschlagventil -> T d20 (Durchgang)",
+   "dn_abweichung": "Geblaese-Austritt d20 (Bauteilblatt geblaese_luft), zwei Straenge ueber T d20, dann Reduziermuffe d40/d20 auf die Hauptleitung d40 (K44)"
+  },
+  {
+   "id": "K44-GT",
+   "kante": "K44",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "t:TG",
+   "ende": "r:RED_G",
+   "baender": [
+    "AU"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     -1650.0,
+     -6860.0,
+     1110.0
+    ],
+    [
+     -1548.0,
+     -6860.0,
+     1110.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "T d20 -> Reduziermuffe d40/d20",
+   "dn_abweichung": "Geblaese-Austritt d20 (Bauteilblatt geblaese_luft), zwei Straenge ueber T d20, dann Reduziermuffe d40/d20 auf die Hauptleitung d40 (K44)"
+  },
+  {
+   "id": "K44-GV",
+   "kante": "K44",
+   "dn": 40,
+   "farbe": "gruen",
+   "start": "r:RED_G",
+   "ende": "muffe",
+   "baender": [
+    "AU"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     -1500.0,
+     -6860.0,
+     1110.0
+    ],
+    [
+     -1300.0,
+     -6860.0,
+     1110.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Reduziermuffe -> Muffe A Hauptverteiler luftverteiler_6 (Schleife Z 1110 ueber dem Spiegel)"
+  },
+  {
+   "id": "K44-V",
+   "kante": "K44",
+   "dn": 40,
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "muffe",
+   "baender": [
+    "AU",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "W",
+    "W",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     -1225.0,
+     -6860.0,
+     1036.0
+    ],
+    [
+     -1225.0,
+     -6860.0,
+     290.0
+    ],
+    [
+     -1225.0,
+     -5856.32,
+     290.0
+    ],
+    [
+     1655.3,
+     -5856.32,
+     290.0
+    ],
+    [
+     1655.3,
+     -3447.49,
+     290.0
+    ],
+    [
+     1903.6,
+     -3447.49,
+     290.0
+    ],
+    [
+     1903.6,
+     -1640.87,
+     290.0
+    ],
+    [
+     2151.9,
+     -1640.87,
+     290.0
+    ],
+    [
+     2151.9,
+     -486.63,
+     290.0
+    ],
+    [
+     2151.9,
+     -486.63,
+     1260.0
+    ],
+    [
+     2001.9,
+     -486.63,
+     1260.0
+    ],
+    [
+     2001.9,
+     -486.63,
+     1074.0
+    ],
+    [
+     1938.51,
+     -622.58,
+     1074.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Luft Hauptverteiler Abgang 1 -> Pool-Verteiler Muffe A (Port-Stueck 150 mm, ueber den Rand)",
+   "buendel": "V6",
+   "schwanenhals": true
+  },
+  {
+   "id": "K45",
+   "kante": "K45",
+   "dn": 25,
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "offen",
+   "baender": [
+    "AU",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "WH",
+    "WH",
+    "WH"
+   ],
+   "anschluss": [
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     -1105.0,
+     -6860.0,
+     1036.0
+    ],
+    [
+     -1105.0,
+     -6860.0,
+     290.0
+    ],
+    [
+     -1105.0,
+     -5959.73,
+     290.0
+    ],
+    [
+     4876.34,
+     -5959.73,
+     290.0
+    ],
+    [
+     4876.34,
+     -1558.39,
+     290.0
+    ],
+    [
+     4423.97,
+     -1558.39,
+     290.0
+    ],
+    [
+     4423.97,
+     -258.0,
+     290.0
+    ],
+    [
+     2865.81,
+     -258.0,
+     290.0
+    ],
+    [
+     2865.81,
+     -258.0,
+     2250.0
+    ],
+    [
+     3155.57,
+     -258.0,
+     2250.0
+    ],
+    [
+     3155.57,
+     -258.0,
+     2096.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Luft -> Biofilter 1 Deckel (Uebergang d25 auf Luftschlauch 16 offen: Tuellen-Reduzierung fehlt, Werkstatt)",
+   "buendel": "V6"
+  },
+  {
+   "id": "K46",
+   "kante": "K46",
+   "dn": 25,
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "offen",
+   "baender": [
+    "AU",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "WH",
+    "WH",
+    "WH"
+   ],
+   "anschluss": [
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -985.0,
+     -6860.0,
+     1036.0
+    ],
+    [
+     -985.0,
+     -6860.0,
+     240.0
+    ],
+    [
+     -985.0,
+     -5854.76,
+     240.0
+    ],
+    [
+     202.84,
+     -5854.76,
+     240.0
+    ],
+    [
+     202.84,
+     -4246.36,
+     240.0
+    ],
+    [
+     4.87,
+     -4246.36,
+     240.0
+    ],
+    [
+     4.87,
+     -3542.69,
+     240.0
+    ],
+    [
+     4.87,
+     -3542.69,
+     2250.0
+    ],
+    [
+     -388.89,
+     -3542.69,
+     2250.0
+    ],
+    [
+     -388.89,
+     -3542.69,
+     2096.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Luft -> Biofilter 2 Deckel (Uebergang d25 auf Luftschlauch 16 offen: Tuellen-Reduzierung fehlt, Werkstatt)",
+   "buendel": "V6"
+  },
+  {
+   "id": "K51",
+   "kante": "K51",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "offen",
+   "baender": [
+    "AU",
+    "U",
+    "U",
+    "U",
+    "W",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Zweitbecken"
+   ],
+   "pfad": [
+    [
+     -745.0,
+     -6860.0,
+     1036.0
+    ],
+    [
+     -745.0,
+     -6860.0,
+     240.0
+    ],
+    [
+     -745.0,
+     -5956.78,
+     240.0
+    ],
+    [
+     1749.62,
+     -5956.78,
+     240.0
+    ],
+    [
+     1749.62,
+     -3899.46,
+     240.0
+    ],
+    [
+     1749.62,
+     -3899.46,
+     1150.0
+    ],
+    [
+     2149.62,
+     -3899.46,
+     1150.0
+    ],
+    [
+     2149.62,
+     -3899.46,
+     615.0
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Luft -> Zweitbecken: ueber den Rand, offenes Ende 300 mm unter dem Spiegel (Ausstroemer-Platzhalter fehlt, Werkstatt)",
+   "buendel": "V6"
+  },
+  {
+   "id": "K49",
+   "kante": "K49",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "baender": [
+    "AU",
+    "U",
+    "U",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Drittbecken"
+   ],
+   "pfad": [
+    [
+     -625.0,
+     -6860.0,
+     1036.0
+    ],
+    [
+     -625.0,
+     -6860.0,
+     240.0
+    ],
+    [
+     4304.1,
+     -6860.0,
+     240.0
+    ],
+    [
+     4304.1,
+     -3265.0,
+     240.0
+    ],
+    [
+     4304.1,
+     -3265.0,
+     1080
+    ],
+    [
+     4304.1,
+     -3015.0,
+     1080
+    ]
+   ],
+   "linie": "luft_b",
+   "notiz": "Luft -> Drittbecken Tuelle ID16 (d20 statt Schlauch, Uebergang wie Bauteil)",
+   "buendel": "V6"
+  },
+  {
+   "id": "K40",
+   "kante": "K40",
+   "dn": 25,
+   "farbe": "hellblau",
+   "start": "stutzen",
+   "ende": "muffe",
+   "baender": [
+    "AU",
+    "AU",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "U",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     -300.0,
+     -7000.0,
+     1239.5
+    ],
+    [
+     -300.0,
+     -6800.0,
+     1239.5
+    ],
+    [
+     -300.0,
+     -6800.0,
+     190.0
+    ],
+    [
+     -350.27,
+     -6800.0,
+     190.0
+    ],
+    [
+     -350.27,
+     -5851.2,
+     190.0
+    ],
+    [
+     655.22,
+     -5851.2,
+     190.0
+    ],
+    [
+     655.22,
+     -2105.93,
+     190.0
+    ],
+    [
+     2515.4,
+     -2105.93,
+     190.0
+    ],
+    [
+     2515.4,
+     -408.07,
+     190.0
+    ],
+    [
+     2314.3,
+     -408.07,
+     190.0
+    ],
+    [
+     2314.3,
+     -408.07,
+     1110.0
+    ],
+    [
+     2038.55,
+     -359.45,
+     1110.0
+    ]
+   ],
+   "linie": "frisch",
+   "notiz": "Frischwasser Station -> Schwimmerventil Port A (Port-Stueck 280 mm)"
+  },
+  {
+   "id": "K41",
+   "kante": "K41",
+   "dn": 20,
+   "farbe": "hellblau",
+   "start": "stutzen",
+   "ende": "muffe",
+   "baender": [
+    "AU",
+    "AU",
+    "U",
+    "U",
+    "U",
+    "U",
+    "W",
+    "W"
+   ],
+   "anschluss": [
+    "Drittbecken"
+   ],
+   "pfad": [
+    [
+     -550.0,
+     -7340.0,
+     1239.5
+    ],
+    [
+     -750.0,
+     -7340.0,
+     1239.5
+    ],
+    [
+     -750.0,
+     -7340.0,
+     190.0
+    ],
+    [
+     -750.0,
+     -7540.21,
+     190.0
+    ],
+    [
+     5283.56,
+     -7540.21,
+     190.0
+    ],
+    [
+     5283.56,
+     -2485.0,
+     190.0
+    ],
+    [
+     5084.1,
+     -2485.0,
+     190.0
+    ],
+    [
+     5084.1,
+     -2485.0,
+     1080
+    ],
+    [
+     4834.1,
+     -2485.0,
+     1080
+    ]
+   ],
+   "linie": "frisch",
+   "notiz": "Frischwasser Station -> Drittbecken Stutzen K41"
+  },
+  {
+   "id": "K52",
+   "kante": "K52",
+   "dn": 25,
+   "farbe": "hellblau",
+   "start": "stutzen",
+   "ende": "r:KH_K52",
+   "baender": [
+    "AU",
+    "AU",
+    "U",
+    "U",
+    "U",
+    "U",
+    "W"
+   ],
+   "anschluss": [
+    "Puffer_Klein:1"
+   ],
+   "pfad": [
+    [
+     -50.0,
+     -7200.0,
+     1239.5
+    ],
+    [
+     150.0,
+     -7200.0,
+     1239.5
+    ],
+    [
+     150.0,
+     -7200.0,
+     190.0
+    ],
+    [
+     3881.56,
+     -7200.0,
+     190.0
+    ],
+    [
+     3881.56,
+     -2851.99,
+     190.0
+    ],
+    [
+     1990.9,
+     -2851.99,
+     190.0
+    ],
+    [
+     1990.9,
+     -2602.1,
+     190.0
+    ],
+    [
+     1990.9,
+     -2602.1,
+     1300.0
+    ]
+   ],
+   "linie": "frisch",
+   "notiz": "Frischwasser Station -> Zapfhahn vor dem Puffer"
+  },
+  {
+   "id": "K39",
+   "kante": "K39",
+   "dn": 25,
+   "farbe": "hellblau",
+   "start": "offen",
+   "ende": "stutzen",
+   "baender": [
+    "AU",
+    "U",
+    "U",
+    "AU",
+    "AU"
+   ],
+   "anschluss": [],
+   "pfad": [
+    [
+     3243.11,
+     -5190.05,
+     470.0
+    ],
+    [
+     3243.11,
+     -5190.05,
+     140.0
+    ],
+    [
+     3243.11,
+     -8900.0,
+     140.0
+    ],
+    [
+     -300.0,
+     -8900.0,
+     140.0
+    ],
+    [
+     -300.0,
+     -8900.0,
+     1239.5
+    ],
+    [
+     -300.0,
+     -8700.0,
+     1239.5
+    ]
+   ],
+   "linie": "frisch",
+   "notiz": "Frischwasser Hausanschluss (Ende Platzhalter T10_Zulaufrohr, Az -58) -> Aktivkohle-Station Eingang, Graben Z 140"
   }
  ],
  "t_stuecke": [
@@ -2335,6 +3094,33 @@
    ],
    "notiz": "T d75 im Heber, Zweig d50 (K21) lotrecht von unten: Rohrstueck d75 + Reduziermuffe d75/d50",
    "linie": 2
+  },
+  {
+   "id": "TG",
+   "pos": [
+    -1650.0,
+    -6860.0,
+    1110.0
+   ],
+   "d": 20,
+   "ports": [
+    {
+     "trasse": "K44-GA",
+     "ende": "ende",
+     "d": 20
+    },
+    {
+     "trasse": "K44-GB",
+     "ende": "ende",
+     "d": 20
+    },
+    {
+     "trasse": "K44-GT",
+     "ende": "start",
+     "d": 20
+    }
+   ],
+   "linie": "luft_b"
   }
  ],
  "r_stuecke": [
@@ -2612,6 +3398,82 @@
    "d_klein": 50,
    "notiz": "Kugelhahn d50 am Schlammablass des Biofilter-Tanks Tank_gross_t3:1 (Wartungsablass, kein Netz-Knoten: Befund an den Orchestrator)",
    "linie": 2
+  },
+  {
+   "id": "RSV_G1",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d20",
+   "pos_a": [
+    -1904.0,
+    -6460.0,
+    1110.0
+   ],
+   "dir": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "d_gross": 20,
+   "d_klein": 20,
+   "farbe": "gruen",
+   "linie": "luft_b",
+   "notiz": "Rueckschlagventil d20 auf dem Geblaese-Austritt A (N+1: stehendes Geblaese zieht keine Luft zurueck)"
+  },
+  {
+   "id": "RSV_G2",
+   "art": "teil",
+   "datei": "lt_rueckschlagventil_d20",
+   "pos_a": [
+    -1904.0,
+    -6860.0,
+    1110.0
+   ],
+   "dir": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "d_gross": 20,
+   "d_klein": 20,
+   "farbe": "gruen",
+   "linie": "luft_b",
+   "notiz": "Rueckschlagventil d20 auf dem Geblaese-Austritt B (N+1: stehendes Geblaese zieht keine Luft zurueck)"
+  },
+  {
+   "id": "RED_G",
+   "pos_a": [
+    -1500.0,
+    -6860.0,
+    1110.0
+   ],
+   "dir": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "d_gross": 40,
+   "d_klein": 20,
+   "farbe": "gruen",
+   "linie": "luft_b"
+  },
+  {
+   "id": "KH_K52",
+   "art": "kugelhahn",
+   "pos_a": [
+    1990.9010025280952,
+    -2602.102247712486,
+    1300.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "d_gross": 25,
+   "d_klein": 25,
+   "farbe": "hellblau",
+   "linie": "frisch",
+   "notiz": "Zapfhahn d25 vor dem Puffer: Fass wird von Hand mit Schlauch gefuellt (Netz K52, kein Dauerfluss)"
   }
  ],
  "teile": [
@@ -2920,6 +3782,28 @@
    "farbe": "grau",
    "notiz": "Rohrklemme d50 50 mm vor dem Verteiler (Konsole an der Tank-Plattform: OFFEN Werkstatt Halter)",
    "linie": 2
+  },
+  {
+   "id": "KAPPE_V6_6",
+   "datei": "lt_kappe_d20",
+   "pos": [
+    -865.0,
+    -6860.0,
+    1052.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "farbe": "gruen",
+   "linie": "luft_b",
+   "notiz": "Kappe auf Abgang 6 (K47/K48 optional, Absetzer ohne Luftanschluss im Bauteil: OFFEN Werkstatt)"
   }
  ],
  "gruben": [

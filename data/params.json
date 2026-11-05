@@ -872,5 +872,32 @@
   "maturity": 0,
   "werte": ["a_plus", "ring_b2"],
   "used_by": "scripts/variante.py"
+ },
+ "technik_az": {
+  "value": -85,
+  "unit": "deg",
+  "origin": "A",
+  "source": "D81 Annahme E13: Schrankmitte Az -85 (Bezug; Lage selbst = technik_x/technik_y)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "scripts/technik_e13.py"
+ },
+ "technik_x": {
+  "value": 500,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S5-LUFT-B Runde 74: Technikgruppe 'vorlaeufig, E13' AUSSEN vor dem Fundamentring neben der Tuer (D81); innen zwischen Tuer Az -72 und Ecke Az -90 kein Platz (Befund im Paket m10-s5-luft); Schrankmitte x (Az -85,6, r 6509)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "scripts/gen_dome.py, scripts/technik_e13.py"
+ },
+ "technik_y": {
+  "value": -6490,
+  "unit": "mm",
+  "origin": "A",
+  "source": "M10-S5-LUFT-B Runde 74: Technikgruppe 'vorlaeufig, E13' AUSSEN vor dem Fundamentring neben der Tuer (D81); innen zwischen Tuer Az -72 und Ecke Az -90 kein Platz (Befund im Paket m10-s5-luft); Schrankmitte y (Rueckwand 20 mm vor der Fundamentring-Aussenkante)",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "scripts/gen_dome.py, scripts/technik_e13.py"
  }
 }

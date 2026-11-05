@@ -105,3 +105,10 @@ Methode: Drei parallele Recherche-Agenten (Profile, Bleche/Winkel, Edelstahl/Alu
 - Von Hand gelesen 05.11.2026: PRF-st-rr40x40x3, 40x40x2, 30x30x2, 60x60x3, 25x25x2, rund20 (Block 1), je mit Seitenbeleg in der `bemerkung`.
 - Lebensmitteleignung: Beleg nur als Haendler-/Herstellerwort (NFT-Kanal, PP-Platten); kein Normbeleg gefunden. Gilt laut vorlaeufiger Entscheidung als 'OFFEN (Quelle): Eignung nicht angegeben'.
 - Das Modell wurde nicht geaendert. Massvorschlaege (NFT 100x50, Rohr 40x40x3 statt 2,5, Winkel 60x60x6) stehen oben als OFFEN (Ben).
+
+## Auflagen aus dem Pruefer-Befund (101277e), Stand 05.11.2026
+
+1. **Auflage 2 (NFT-Zeile):** Im Angebot ergaenzt: Lieferlaenge 2,9 m, 154 m Bedarf = 54 Stueck a 2,9 m. OFFEN (Ben): Bezeichnung 'PVC-U 130x100' und Kauf 22 Stangen a 7 m in der Stueckliste passen nicht zum Angebot; Anpassung in `bom.py`/Katalog (Werkstatt) erst nach der Massentscheidung.
+2. **Auflage 4 (Schraubensaetze):** Alle Satz-Angebote gegen die Einzelpreise der Seiten (je 100 St) nachgerechnet. Die Preise waren auf 2 Stellen gerundet (Abweichung bis 8 %, zum Beispiel M5x12 Hornbach 0,12 statt 0,1165). Jetzt steht der Satzpreis mit 4 Stellen aus der Rechnung in der `bemerkung`. Preisbasis: Hornbach brutto DE; Schraubenking inkl. 20 % AT-USt (DE-Brutto etwa plus/minus 1 %, nicht umgerechnet); Mister Agri inkl. NL-USt. Es gibt in der Stahl-Datei keine Bevo-Angebote.
+3. **Auflage 5 (Lebensmittel-Hinweis):** Stahlprofile, Bleche, Schrauben (verzinkter Stahl, Edelstahl 1.4301, Alu) tragen in dieser Datei keinen Eignungsbeleg. Nach der vorlaeufigen Entscheidung (a) genuegt fuer Teile ausserhalb des Fischwassers die Werkstoffangabe. OFFEN (Quelle): Eignung nicht angegeben fuer die Teile mit Wasserkontakt: NFT-Kanal (UPVC, nur Haendlerwort 'ungiftig'), PP-Platten und PP-Siebboden (nur Haendleraussage S-Polytec), Edelstahl-Lochblech Medienschutz. Entscheidung OFFEN (Ben) 1 steht weiter.
+4. **Auflage 7, Spannverschluss:** `SON-spannverschluss-edelstahl` liegt in `huelle_pflanze.json`, nicht in `stahl.json`; Gruppe 1E, nicht angefasst.

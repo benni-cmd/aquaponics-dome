@@ -28,6 +28,9 @@ Stand 05.11.2026, Viewer-Sitzung. Wunsch W87 (`docs/packages/wunschbuch-ben.md`)
 8. [x] `python -X utf8 scripts/viewer_dist.py` laufen lassen und die statische Ausgabe testen
 9. [x] Paket nachführen, Wunschbuch W87 auf "gebaut" setzen, Commit per Pfad, Push
 
+## Nachtrag W87b (05.11.2026): Tische und Beete nicht im Wasserkreislauf
+Der Wasserschalter hebt die NFT-Tische (`nft_tisch_*`) und Substratbeete (`ibc_beet_*`) selbst nicht mehr hervor, nur ihre Zuläufe, Abläufe und Siphons. Regel in `export_ansicht.py`: Für Teile der Bauteilgruppe "Tische und Beete" gilt Wasser nur für einzelne Körper, nämlich Werkstoff `pvc_u` oder `pvc_p_schlauch` oder ein Name mit zulauf, ablauf, siphon, glocke, standrohr, bulkhead, sammelrohr, verteiler, tropfrohr. Beispiele: Verteiler, Schläuche, Sammelrohr, KappeZulauf, KappeAblauf (Tische); Bulkhead, Standrohr, Glocke, Tropfrohr (Beete). Wanne, Siebboden, Medium, Stützen, Rinnenprofil, Beine bleiben blass. Der Viewer liest dafür das Feld `koerper` mit Kreislauf-Liste (vorher nur Strom). Beleg: Screenshot Draufsicht A+ nur Wasser, Tische und Beete blass; `koerper` enthält 5 Definitionen, `stamm` Wasser nur noch 13 statt 18 (`python -X utf8 viewer/export_ansicht.py`).
+
 ## Messung (Browser-Pane, lokaler Server `viewer/serve.py 4431 --kein-export` und statische Ausgabe auf Port 4432, 05.11.2026)
 Alle Zahlen kommen aus `python -X utf8 viewer/export_ansicht.py [--variante ring_b2]` (Zeile `kreislauf:`) und aus `window.kreisStand()` im Viewer; beide stimmen überein.
 

@@ -846,11 +846,13 @@ function kreisBauen() {                                    // farbige Kopie je K
     if (!list || !(inst || st || kb)) return;
     const leafAus = hiddenLeaf.has(stemLeaf[stem]);
     const aus = i => leafAus || hiddenInst.has(stem + '#' + i);
+    if (defMeshes[stem].length && kb && !inst) aktiv.forEach(c => { if (!(st && st.includes(c)) && Object.values(kb).some(v => v.includes(c))) kreisZaehl[c] += list.filter((_, i) => !aus(i)).length; });
     if (defMeshes[stem].length) aktiv.forEach(c => { kreisZaehl[c] += list.filter((_, i) => !aus(i) && (inst ? inst[i] === c : !!(st && st.includes(c)))).length; });         // Zaehlung je Teil, auch wenn die Farbe ein anderer Kreislauf bekommt
     const perInst = list.map((_, i) => aus(i) ? null : (inst ? (aktiv.includes(inst[i]) ? inst[i] : null) : erster(st)));
     defMeshes[stem].forEach(base => {
-      const nurKoerper = !inst && !erster(st) && kb && kb[base.name] && aktiv.includes('strom');                // nur Kabel und Stecker eines sonst fremden Teils
-      const idx = []; perInst.forEach((c, i) => { if (c) idx.push([i, c]); else if (nurKoerper && !aus(i)) idx.push([i, 'strom']); });
+      const kc = !inst && kb && kb[base.name] && ['strom', 'luft', 'wasser'].find(k => aktiv.includes(k) && kb[base.name].includes(k));      // einzelne Koerper (Kabel, Zulauf, Siphon) eines Teils
+      const nurKoerper = !!kc && !erster(st);
+      const idx = []; perInst.forEach((c, i) => { if (c) idx.push([i, c]); else if (nurKoerper && !aus(i)) idx.push([i, kc]); });
       if (!idx.length) return;
       ['wasser', 'luft', 'strom'].forEach(c => {
         const sel = idx.filter(x => x[1] === c); if (!sel.length) return;

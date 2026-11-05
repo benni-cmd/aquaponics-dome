@@ -12,7 +12,7 @@ kreislauf (N-VIEWER-KREISLAEUFE, W87): welche Teile zu Wasser-, Luft- und Stromk
   instanz[<lt_*-Definition>] = [ "wasser" | "luft" | null je Instanz ]   aus leitungsart; fehlt sie: Feld `linie` des naechsten Eintrags `teile` in leitungstrassen.json
   stamm[<Definition>]        = [ Kreislaeufe, zu denen alle Instanzen gehoeren ]   Tanks, Pumpen, Filter ...: Knoten (bauteil/id) an Kanten mit Medium Wasser oder Luft in leitungsnetz.json;
                                Strom: Kabelliste (Medium Strom) in leitungsnetz.json und Teiletitel mit "Kabel"; Gruppe Leitungen ohne Knoten: naechste Trasse
-  koerper[<Definition>]      = { <Koerpername>: [ "strom" ] }   Kabel, Stecker (Werkstoff kabel_pvc oder Name) in Teilen, die sonst nicht am Strom haengen
+  koerper[<Definition>]      = { <Koerpername>: [ Kreislaeufe ] }   einzelne Koerper eines Teils: Kabel, Stecker (strom); an NFT-Tischen und Substratbeeten (Gruppe Tische und Beete) nur Zulauf, Ablauf, Siphon, Rohre (wasser, W87b)
 Aufruf: python viewer/export_ansicht.py [--variante ring_b2]   (wird von export_model.py am Ende und von serve.py bei veralteter Datei aufgerufen)
 """
 import glob, json, math, os, re, sys, tempfile
@@ -56,6 +56,8 @@ def punkt_strecke(p, a, b):
     return math.dist(p, [a[i] + u * ab[i] for i in range(3)])
 
 KREISE = ('wasser', 'luft', 'strom')
+ROHR_WERKSTOFF = ('pvc_u', 'pvc_p_schlauch')                       # W87b: an Tischen und Beeten zaehlen nur Rohre, Schlaeuche und Anschluesse zum Wasserweg
+WASSER_KOERPER = re.compile(r'zulauf|ablauf|siphon|glocke|standrohr|bulkhead|sammelrohr|verteiler|tropfrohr', re.I)
 KABEL_KOERPER = re.compile(r'^(netz)?kabel(_\d+)?$|^stecker', re.I)   # Kabel und Stecker, nicht Kabelverschraubung
 
 
@@ -127,12 +129,21 @@ def kreislauf_bauen(inst, netz, trassen_roh, komp, arten, pfade):
             if any(res):
                 naechste_trasse[stem] = res
                 continue
+        kb = {}
+        if P.get('gruppe') == 'Tische und Beete' and 'wasser' in k:
+            # W87b: NFT-Tische und Substratbeete selbst gehoeren nicht zum Wasserkreislauf, nur ihre Zulaeufe, Ablaeufe, Siphons (Glocke, Standrohr) und Rohre
+            k.discard('wasser')
+            for n, w in P.get('werkstoff', {}).items():
+                if w in ROHR_WERKSTOFF or WASSER_KOERPER.search(n):
+                    kb[n] = ['wasser']
         if k:
             stamm[stem] = [c for c in KREISE if c in k]
         if 'strom' not in k:
-            kb = {n: ['strom'] for n, w in P.get('werkstoff', {}).items() if w == 'kabel_pvc' or KABEL_KOERPER.search(n)}
-            if kb:
-                koerper[stem] = kb
+            for n, w in P.get('werkstoff', {}).items():
+                if w == 'kabel_pvc' or KABEL_KOERPER.search(n):
+                    kb[n] = kb.get(n, []) + ['strom']
+        if kb:
+            koerper[stem] = kb
     teile = [(t['datei'], t['pos'], t.get('linie')) for t in trassen_roh.get('teile', []) if t.get('datei') and t.get('pos')]
     zaehl = {c: 0 for c in KREISE}
     ohne = 0
@@ -165,6 +176,10 @@ def kreislauf_bauen(inst, netz, trassen_roh, komp, arten, pfade):
     for stem, ks in stamm.items():
         for c in ks:
             zaehl[c] += n_inst.get(stem, 0)
+    for stem, kb in koerper.items():
+        for c in KREISE:
+            if c not in stamm.get(stem, []) and any(c in v for v in kb.values()):
+                zaehl[c] += n_inst.get(stem, 0)
     return ({'instanz': instanz, 'stamm': stamm, 'koerper': koerper},
             {'instanzen_je_kreis': zaehl, 'rohrteile_ohne_zuordnung': ohne,
              'stamm_definitionen': {c: sum(1 for v in stamm.values() if c in v) for c in KREISE}})

@@ -164,7 +164,7 @@ def ausleger(lg):
     bx(b, "Endbuegel", lg, lg + 5, -sb / 2, sb / 2, -h, h)
     cyl(b, "Sattel_R", 2 * g["rs"], sb, [lg, -sb / 2, zc], [0, 1, 0], op="join", targets=["Endbuegel"])
     cyl(b, "Sattel_Innen", 2 * ri, sb + 2, [lg, -sb / 2 - 1, zc], [0, 1, 0], op="cut", targets=["Endbuegel"])
-    bx(b, "Sattel_Cut_x", lg - g["rs"] - 10, lg, -sb / 2 - 2, sb / 2 + 2, zc - g["rs"] - 10, -h - 0.01, op="cut", targets=["Endbuegel"])
+    bx(b, "Sattel_Cut_x", lg - g["rs"] - 10, lg, -sb / 2 - 2, sb / 2 + 2, zc - g["rs"] - 10, zc + g["rs"] + 10, op="cut", targets=["Endbuegel"])
     bx(b, "Sattel_Cut_z", lg - g["rs"] - 10, lg + g["rs"] + 10, -sb / 2 - 2, sb / 2 + 2, zc - g["rs"] - 10, zc, op="cut", targets=["Endbuegel"])
     bodies.append("Endbuegel")
     b.add("material.assign", bodies=bodies, material="AB stahl")
@@ -424,10 +424,17 @@ def lagen():
         need = {"innen": norm(e) in {norm(a) for a in innen}, "aussen": norm(e) in {norm(a) for a in aussen}}
         if cand:
             d, n, s, t = min(cand, key=lambda c: c[0])
-            out.append(dict(ecke_az=e, art="joch", teil=f"portal_joch_mitte_{s}", tisch=n, bock=s, abstand_ecke=round(d, 1), matrix_tisch=t["matrix"], ausleger=need))
+            out.append(dict(ecke_az=e, art="joch", teil=f"portal_joch_mitte_{s}", tisch=n, bock=s, abstand_ecke=round(d, 1), matrix_tisch=t["matrix"], ausleger=need,
+                            ausleger_laenge={"innen": AUSL["joch_innen"], "aussen": AUSL["joch_aussen"]}))
         else:
-            out.append(dict(ecke_az=e, art="stelze", teil="ringstuetze_d75_b", ausleger=need,
-                            vorschlag=f"Pfosten radial aussen vor der Ecke (r {R_ECKE + R.RS['ausladung']:.0f}), Kragarm +X zeigt zur Kuppelmitte; Standort darf 300 mm entlang der Ringseite wandern (Blatt 2.3)"))
+            innen_pf = not need["aussen"]
+            r_sch = R_ECKE - ec_geom()["stich"]
+            r_pf = r_sch - R.RS["ausladung"] - ec_geom()["stich"] if innen_pf else r_sch + R.RS["ausladung"] + ec_geom()["stich"]
+            al = {"innen": AUSL["stelze_innen_pfosten_innen"] if innen_pf else AUSL["stelze_innen_pfosten_aussen"]}
+            if need["aussen"]: al["aussen"] = AUSL["stelze_aussen_pfosten_aussen"]
+            out.append(dict(ecke_az=e, art="stelze", teil="ringstuetze_d75_b", ausleger=need, pfosten="innen" if innen_pf else "aussen", r_pfosten=round(r_pf, 1), ausleger_laenge=al,
+                            vorschlag=f"Pfosten auf der Winkelhalbierenden der Ecke bei r {r_pf:.0f}, Kragarm +X zeigt {'nach aussen' if innen_pf else 'zur Kuppelmitte'} zum Bogenscheitel; "
+                                      f"Innen-Ausleger am {'Gegenarm -X' if innen_pf else 'Kragarm +X'}{', Aussen-Ausleger am Gegenarm -X' if need['aussen'] else ''}"))
     return out
 
 def ausleger_laengen():
@@ -436,7 +443,10 @@ def ausleger_laengen():
     return {"joch_innen": AUSL_ZIEL["innen"] - yj, "joch_aussen": AUSL_ZIEL["aussen"] - yj,
             "stelze_innen": AUSL_ZIEL["innen"] - (st["x_plus"] - st["x_scheitel"]), "stelze_aussen": AUSL_ZIEL["aussen"] - (st["x_scheitel"] - st["x_minus"])}
 
-AUSL = {k: round(v / 10) * 10 for k, v in ausleger_laengen().items()} if __name__ != "__never__" else {}
+# Gewaehlte Laengen (3 Varianten): Stelze mit nur Innen-Ausleger steht mit dem Pfosten INNEN (Gegenarm -X zeigt zur Mitte), damit Ring und Ausleger sich am Pfosten
+# ausgleichen (Kopfverschiebung, check_stelze); Stelze mit Innen- und Aussen-Ausleger (-17,7) steht mit dem Pfosten AUSSEN. Saettel liegen ausserhalb der Gaenge (check_ausleger).
+AUSL = {"joch_innen": round(ausleger_laengen()["joch_innen"] / 10) * 10, "joch_aussen": round(ausleger_laengen()["joch_aussen"] / 10) * 10}
+AUSL.update({"stelze_innen_pfosten_innen": AUSL["joch_innen"], "stelze_innen_pfosten_aussen": 1370, "stelze_aussen_pfosten_aussen": 1370})
 
 # =========================================================================== Ausgabe
 def jobs(want):
@@ -452,7 +462,7 @@ def jobs(want):
     return j
 
 CAM = {"portal_joch_mitte_a": ([-502, 0, 1200], 2.2, 0.25, 4200), "portal_joch_mitte_b": ([592, 0, 1200], 0.95, 0.25, 4200), "ringstuetze_d75_b": ([150, 0, 1150], 2.4, 0.15, 3600),
-       "lt_klemme_d75": ([0, 0, 20], 0.8, 0.3, 450), "lt_klemme_d75_ecke": ([0, 0, 40], 0.8, 0.3, 500), "lt_klemme_d75_stelze": ([0, 0, 60], 0.8, 0.3, 600), "schienenverbinder_36": ([0, 40, 0], 0.6, 0.9, 700), "ring_ecke_d75": ([150, 0, 700], 1.5708, 0.0, 2200),
+       "lt_klemme_d75": ([0, 0, 20], 0.8, 0.3, 450), "lt_klemme_d75_ecke": ([0, 0, 40], 0.8, 0.3, 500), "lt_klemme_d75_stelze": ([0, 0, 60], 0.8, 0.3, 600), "schienenverbinder_36": ([0, 40, 0], 0.6, 0.9, 700), "ring_ecke_d75": ([220, 0, 690], 0.0, 0.1, 2000),
        "pegelschacht_podest": ([0, 0, 420], 0.7, 0.3, 2200)}
 
 def render(fname):

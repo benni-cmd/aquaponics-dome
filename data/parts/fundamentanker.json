@@ -3,7 +3,7 @@
   "datei": "designs/components/fundamentanker.sc",
   "bauteilgruppe": "Fundament",
   "teilenummer": "",
-  "stand": "geruest",
+  "stand": "teiledaten",
   "titel": "Fundamentanker (Verbindung Knoten zu Beton, 10 Stück)",
   "kurz": "Ein Betonpunkt im Boden trägt eine Ankerplatte mit zwei Gabeln. Vier M16-Anker halten die Platte im Beton, ein M12-Querbolzen verbindet die Gabeln mit der Ankerlasche des Knotens.",
   "hinweis": "Texte und Zahlen aus docs/parts/fundamentanker.md und den Komponentendaten; Normverweise sind angenommen, Lebensmittelkontakt ist nein (Hülle, Tür, Fundament berühren weder Wasser noch Futter). Preise und Bezug: data/beschaffung/huelle_pflanze.json.",
@@ -49,13 +49,12 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Beton C25",
+      "werkstoff": "beton",
       "masse_mm": "Masse 230053.8 g, Einzelkoerper 400.0 x 400.0 x 600.0 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Beton nach Menge (Entscheidung 04.11.2026)",
-      "geruest": true,
       "funktion": "Der Betonpunkt nimmt die Zugkräfte des Knotens auf und gibt sie an den Boden ab.",
       "eigenschaften": [
         "400 x 400 x 600 mm mit vier Bohrungen für die M16-Anker.",
@@ -85,12 +84,11 @@
       ],
       "menge": 1,
       "typ": "platte",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 7302.7 g, Einzelkoerper 15.0 x 250.0 x 250.0 mm (Modell-Bounding-Box)",
       "artikel_id": "BLE-platte-250x250x15",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true,
       "funktion": "Die Ankerplatte verteilt die Last auf den Beton und trägt die beiden Gabeln.",
       "eigenschaften": [
         "Stahl 250 x 250 x 15 mm, vier Bohrungen für M16, etwa 7,3 kg."
@@ -119,12 +117,11 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 867.1 g, Einzelkoerper 10.0 x 80.0 x 140.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-ankergabel-80x140",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true,
       "funktion": "Die äußere Gabel hält mit der inneren zusammen den Querbolzen und fasst die Ankerlasche des Knotens.",
       "eigenschaften": [
         "Stahl 80 x 140 mm, 10 mm dick, Bohrung für M12, etwa 0,87 kg."
@@ -154,12 +151,11 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 867.1 g, Einzelkoerper 10.0 x 80.0 x 140.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SON-ankergabel-80x140",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true,
       "funktion": "Die innere Gabel liegt gegenüber der äußeren; zwischen beiden sitzt die Ankerlasche.",
       "eigenschaften": [
         "Stahl 80 x 140 mm, 10 mm dick, Bohrung für M12, etwa 0,87 kg."
@@ -190,13 +186,12 @@
       ],
       "menge": 2,
       "typ": "sonderteil",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 22.6 g, Einzelkoerper 3.0 x 30.0 x 30.0 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true,
       "funktion": "Die Scheibe verteilt den Druck der Mutter auf die Ankerplatte.",
       "eigenschaften": [
         "Scheibe für M16, 30 mm außen, 3 mm dick; im Schraubensatz enthalten."
@@ -227,12 +222,11 @@
       ],
       "menge": 2,
       "typ": "normteil",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 1025.1 g, Einzelkoerper 24.0 x 27.7 x 310.0 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m16x300",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 2.0,
-      "geruest": true,
       "funktion": "Die M16-Anker halten die Ankerplatte im Betonpunkt. Je Fundament zwei Stück (Satz mit Mutter und Scheibe).",
       "eigenschaften": [
         "Sechskantschraube M16 x 300, etwa 0,5 kg je Stück."
@@ -264,13 +258,12 @@
       ],
       "menge": 2,
       "typ": "sonderteil",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 12.5 g, Einzelkoerper 2.5 x 24.0 x 24.0 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true,
       "funktion": "Die Scheibe schützt die Gabelfläche unter Schraubenkopf und Mutter.",
       "eigenschaften": [
         "Scheibe für M12, 24 mm außen, 2,5 mm dick; im Schraubensatz enthalten."
@@ -300,12 +293,11 @@
       ],
       "menge": 1,
       "typ": "normteil",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 65.3 g, Einzelkoerper 18.0 x 20.8 x 62.5 mm (Modell-Bounding-Box)",
       "artikel_id": "SRB-satz-m12x55",
       "artikel_einheit": "Satz",
       "artikel_menge_je_instanz": 1.0,
-      "geruest": true,
       "funktion": "Der M12-Querbolzen verbindet beide Gabeln mit der Ankerlasche des Knotens.",
       "eigenschaften": [
         "Sechskantschraube M12 x 55, Satz mit Mutter und Scheiben."
@@ -336,13 +328,12 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "Stahl Anker",
+      "werkstoff": "stahl_anker",
       "masse_mm": "Masse 14.2 g, Einzelkoerper 10.8 x 18.0 x 20.8 mm (Modell-Bounding-Box)",
       "artikel_id": null,
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Mutter/Scheibe im Schraubensatz enthalten",
-      "geruest": true,
       "funktion": "Die Mutter sichert den Querbolzen.",
       "eigenschaften": [
         "Sechskantmutter M12; im Schraubensatz enthalten."

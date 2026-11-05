@@ -1209,6 +1209,15 @@
    "reihenfolge": 4.5,
    "wer": "Pruefer (Maengel-Inventur), Planer (Leitungsordnung), Werkstatt, Montage",
    "notiz": "Ben 05.11. mit drei Viewer-Bildern: Absetzer/Vortex-Tank mit Durchbruechen ohne Rohr, Rohrleitungen unuebersichtlich und unrealistisch, Wasserversorgung grossteils fehlend. Plan: (1) Maengel-Inventur im Viewer je Bauteil (Durchbrueche ohne Rohr, schwebende Teile, Rohre durch Teile, Bogen-Ketten) als docs/model-maengel.md; (2) Leitungsordnung als Standard vor M10-S3 (Trassen entlang fester Korridore, gebuendelt, rechtwinklig, Rohrhalter, wenige Boegen, Gaenge frei) und Umbau der gebauten Strecken S0 bis S2; (3) Bauteil-Fixes in der Werkstatt mit Teiledaten und Einkaufsliste; (4) A+ komplett ueber M10-S2N bis S7."
+  },
+  {
+   "id": "N-TECHNIK-INNEN",
+   "titel": "Technikgruppe und Schaltschrank in die Kuppel, Rohrwege kurz (W72, D84)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 7.2,
+   "wer": "Planer, Montage, Pruefer",
+   "notiz": "Ben 05.11.: Technik gehoert nach innen, Wege kurz; Runde 74 stellte die Gruppe aussen auf. Planer bestimmt Platz innen (Gaenge, Brandlast Schrank), Montage verlegt um, Kennzahlen Rohrlaenge/Pumpenleistung vorher/nachher."
   }
  ]
 }

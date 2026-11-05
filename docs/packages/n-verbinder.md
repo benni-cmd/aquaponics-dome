@@ -18,6 +18,15 @@
 05.11.2026: Plan angelegt. Rechnung Selbsttest 6/6. R56 geschrieben. Prototyp gebaut, Check 6/6, 5 Renders angesehen, Bauteilblatt `docs/parts/knoten_schere_proto.md`. Wartet auf Bens Abnahme (R56 Abschnitt 6, fuenf Fragen). Gesamtmodell unveraendert.
 Nachtrag 05.11.: Ben trennt Recherche, Planer und Werkstatt; Knoten wird EINMAL als Bauteil gebaut, Montage setzt Instanzen (Scherenzahl und Drehung). Auftragsblatt `docs/jobs/N-VERBINDER.md` geschrieben; der Prototyp `knoten_schere_proto` gilt als Vorentwurf fuer die Werkstatt.
 
+Werkstatt 05.11.2026 (Blatt `docs/jobs/N-VERBINDER.md`): Scherenknoten EINMAL gebaut, `designs/components/knoten_schere_platte.sc`, `knoten_schere_arm_a.sc`, `knoten_schere_arm_b.sc` (+ Detailmodell `knoten_schere.sc`), Generator `scripts/workshop/knoten_schere.py`, Knotentabelle `data/components/knoten_schere.json` (26 Knoten, 130 Arme, Loch und zwei Drehwinkel je Arm), Bauteilblatt `docs/parts/knoten_schere.md`, 8 Bilder `renders/components/knoten_schere/`, Viewer-Detailansicht `#detail=knoten_schere`. Vorentwurf `knoten_schere_proto` geloescht (Begruendung im Bauteilblatt).
+Pruefpunkte des Blatts gemessen:
+1. `python -X utf8 scripts/workshop/check_knoten_schere.py` → 29/29 PASS, Exit 0 (Koerper geschlossen, Nasen 24,2 = 21,2 + 3,0 mm, Rohrachse 0,004 / 0,001 mm vom Knotenpunkt).
+2. Probe-Knoten n01 (Platte + 6 verknuepfte Instanzen): `inspect.interference` 6 Paare, alle Drehpunktschraube/Mutter 0,025 mm3 (Gewinde), 0 ueber 0,1 mm3.
+3. Tabelle 26 Knoten, 10 x 4 / 6 x 5 / 10 x 6, 130 Arme, A 60 / B 70.
+4. Groesster Achsversatz 15,07 mm (n02, 5-wertig, 24 Grad Drehung) → BEFUND an Ben: 5-Loch-Platte fuer die 6 fuenfwertigen Knoten; 4- und 6-wertig 1,1 mm.
+5. 8 Bilder inkl. 2 Explosionsbilder, angesehen und gegen das Foto verglichen; Teiledaten `check_parts.py knoten_schere` 22/22.
+Abweichung vom Blatt: A und B unterscheiden sich auch in der Lage der Knicklinie (A r 72,1, B r 63,0), weil die gemeinsame Platte eine gemeinsame Hoehe erzwingt; Zuschnitt gleich. Naechster Schritt: fremder Pruefer, dann Ben-Abnahme.
+
 ## DoD
 - R56 enthaelt alle sechs Abschnitte des Auftrags mit [A]/[E]/[Q]-Kennzeichnung.
 - Prototyp: Check-Skript besteht (Koerper geschlossen, Nasen ragen durch die Wand, keine Durchdringung Lasche/Rohr ausser in den Wandloechern).

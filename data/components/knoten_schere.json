@@ -1,0 +1,2072 @@
+{
+ "klasse": "knoten_schere",
+ "teilenummer": "T60S",
+ "revision": "A",
+ "beschreibung": "Scherenknoten (W74): Lochplatte + je Strebenende eine Schere aus zwei gekreuzten Laschen mit Drehpunktschraube; die Nasen stehen durch zwei Gegenloecher im Rohr. Ein Bauteil, die Montage setzt Instanzen (1 Platte + 4/5/6 Arme je Knoten).",
+ "quelle_masse": "docs/research/R56-scherenknoten.md (Kopfmasse [A] aus Foto reference/chemnitz/laschenknoten-foto.jpg ohne Massstab), Blatt docs/jobs/N-VERBINDER.md, data/layout.json (Kuppelradius, Strebenlaengen)",
+ "werkstoff": {
+  "name": "S235 Laserteil feuerverzinkt; Rohr EN 10255 verzinkt; Schrauben 8.8 verzinkt"
+ },
+ "parameter": {
+  "dome_r": {
+   "wert": 6000,
+   "einheit": "mm",
+   "herkunft": "data/layout.json (Kuppelradius)"
+  },
+  "strut_a": {
+   "wert": 3279,
+   "einheit": "mm",
+   "herkunft": "data/layout.json strut_len_mm A (Knoten zu Knoten)"
+  },
+  "strut_b": {
+   "wert": 3708,
+   "einheit": "mm",
+   "herkunft": "data/layout.json strut_len_mm B (Knoten zu Knoten)"
+  },
+  "plate_d": {
+   "wert": 110,
+   "einheit": "mm",
+   "herkunft": "Blatt N-VERBINDER Bauteil-Aufbau 1 [A, R56]"
+  },
+  "plate_t": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "Blatt N-VERBINDER [A, R56]"
+  },
+  "holes": {
+   "wert": 6,
+   "einheit": "",
+   "herkunft": "Foto: 6 Loecher auf dem Lochkreis; eine Platte fuer alle 26 Knoten (Blatt)"
+  },
+  "bolt_circle_r": {
+   "wert": 37,
+   "einheit": "mm",
+   "herkunft": "Blatt [A, R56]"
+  },
+  "plate_hole": {
+   "wert": 11,
+   "einheit": "mm",
+   "herkunft": "Blatt; Durchgangsloch M10 mittel (ISO 273)"
+  },
+  "center_hole": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "Blatt [A, R56]"
+  },
+  "link_w": {
+   "wert": 20,
+   "einheit": "mm",
+   "herkunft": "R56 Lasche 20 x 5 [A]; OFFEN Ben: Laschendicke 5 oder 8"
+  },
+  "link_t": {
+   "wert": 5,
+   "einheit": "mm",
+   "herkunft": "R56 [A]; OFFEN Ben (8 mm traegt am Knick 11,8 statt 4,6 kN)"
+  },
+  "bend_r": {
+   "wert": 63,
+   "einheit": "mm",
+   "herkunft": "Vorentwurf 927d171: Knicklinie B ab Knotenachse; A folgt aus der gemeinsamen Plattenhoehe"
+  },
+  "a_plate_to_pivot": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "R56 Auge bis Drehpunkt [A]"
+  },
+  "b_pivot_to_nose": {
+   "wert": 58,
+   "einheit": "mm",
+   "herkunft": "R56 Drehpunkt bis Nase [A]"
+  },
+  "nose_w": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "R56 Nase 10 breit [A]"
+  },
+  "nose_out": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "R56 Nase 3 mm ueber Rohraussenwand [A]"
+  },
+  "tip_past_nose": {
+   "wert": 3,
+   "einheit": "mm",
+   "herkunft": "Vorentwurf (Laschenende 3 mm hinter der Nase)"
+  },
+  "pivot_hole": {
+   "wert": 9,
+   "einheit": "mm",
+   "herkunft": "Durchgangsloch M8 mittel (ISO 273)"
+  },
+  "tube_d": {
+   "wert": 42.4,
+   "einheit": "mm",
+   "herkunft": "R56 Empfehlung Rund 42,4 x 2,6 EN 10255; OFFEN Ben"
+  },
+  "tube_t": {
+   "wert": 2.6,
+   "einheit": "mm",
+   "herkunft": "R56; OFFEN Ben"
+  },
+  "tube_len": {
+   "wert": 250,
+   "einheit": "mm",
+   "herkunft": "Blatt: Probestueck 250 mm"
+  },
+  "pivot_out": {
+   "wert": 12,
+   "einheit": "mm",
+   "herkunft": "R56 Drehpunkt 12 mm vor dem Rohrmund [A]"
+  },
+  "wall_hole": {
+   "wert": 13,
+   "einheit": "mm",
+   "herkunft": "R56 Gegenloch D 13 [A]"
+  }
+ },
+ "knoten": [
+  {
+   "knoten": "n01",
+   "wertigkeit": 6,
+   "ursprung": [
+    -3142,
+    -284,
+    5090
+   ],
+   "normale": [
+    -0.5236,
+    -0.0473,
+    0.8506
+   ],
+   "x_richtung": [
+    0.8472,
+    0.0765,
+    0.5258
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 2,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 180.001,
+     "drehung_um_plattenschraube_grad": 0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 3,
+     "typ": "B",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 238.286,
+     "drehung_um_plattenschraube_grad": -1.714,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 4,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 0.003,
+     "drehung_um_plattenschraube_grad": 0.003,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 4,
+     "nachbar": 5,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 301.718,
+     "drehung_um_plattenschraube_grad": 1.718,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 5,
+     "nachbar": 7,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 121.716,
+     "drehung_um_plattenschraube_grad": 1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 9,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 58.282,
+     "drehung_um_plattenschraube_grad": -1.718,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.718,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n02",
+   "wertigkeit": 5,
+   "ursprung": [
+    -5345,
+    -483,
+    2669
+   ],
+   "normale": [
+    -0.8908,
+    -0.0805,
+    0.4472
+   ],
+   "x_richtung": [
+    -0.1447,
+    -0.8826,
+    -0.4472
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 1,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 119.999,
+     "drehung_um_plattenschraube_grad": -0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 3,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 48.005,
+     "drehung_um_plattenschraube_grad": -11.995,
+     "achsversatz_mm": 7.69
+    },
+    {
+     "arm": 3,
+     "nachbar": 7,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 191.997,
+     "drehung_um_plattenschraube_grad": 11.997,
+     "achsversatz_mm": 7.69
+    },
+    {
+     "arm": 4,
+     "nachbar": 22,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 336.003,
+     "drehung_um_plattenschraube_grad": -23.997,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 5,
+     "nachbar": 23,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 263.997,
+     "drehung_um_plattenschraube_grad": 23.997,
+     "achsversatz_mm": 15.07
+    }
+   ],
+   "groesste_drehung_grad": 23.997,
+   "groesster_achsversatz_mm": 15.07
+  },
+  {
+   "knoten": "n03",
+   "wertigkeit": 6,
+   "ursprung": [
+    -3842,
+    -3359,
+    3140
+   ],
+   "normale": [
+    -0.6404,
+    -0.5599,
+    0.5257
+   ],
+   "x_richtung": [
+    0.0137,
+    0.6761,
+    0.7367
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 1,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.721,
+     "drehung_um_plattenschraube_grad": 1.721,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 2,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 60.007,
+     "drehung_um_plattenschraube_grad": 0.007,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 5,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 298.279,
+     "drehung_um_plattenschraube_grad": -1.721,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 6,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 240.002,
+     "drehung_um_plattenschraube_grad": 0.002,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 22,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.284,
+     "drehung_um_plattenschraube_grad": -1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 24,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.715,
+     "drehung_um_plattenschraube_grad": 1.715,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.721,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n04",
+   "wertigkeit": 5,
+   "ursprung": [
+    0,
+    0,
+    5986
+   ],
+   "normale": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x_richtung": [
+    -0.7333,
+    0.6799,
+    0.0
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 1,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 48.003,
+     "drehung_um_plattenschraube_grad": -11.997,
+     "achsversatz_mm": 7.69
+    },
+    {
+     "arm": 2,
+     "nachbar": 5,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.0,
+     "drehung_um_plattenschraube_grad": -0.0,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 9,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 336.005,
+     "drehung_um_plattenschraube_grad": -23.995,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 4,
+     "nachbar": 10,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 263.995,
+     "drehung_um_plattenschraube_grad": 23.995,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 5,
+     "nachbar": 13,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 191.996,
+     "drehung_um_plattenschraube_grad": 11.996,
+     "achsversatz_mm": 7.69
+    }
+   ],
+   "groesste_drehung_grad": 23.995,
+   "groesster_achsversatz_mm": 15.07
+  },
+  {
+   "knoten": "n05",
+   "wertigkeit": 6,
+   "ursprung": [
+    -701,
+    -3076,
+    5090
+   ],
+   "normale": [
+    -0.1168,
+    -0.5126,
+    0.8506
+   ],
+   "x_richtung": [
+    0.1889,
+    0.8294,
+    0.5258
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 1,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 58.28,
+     "drehung_um_plattenschraube_grad": -1.72,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 3,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 121.71,
+     "drehung_um_plattenschraube_grad": 1.71,
+     "achsversatz_mm": 1.1
+    },
+    {
+     "arm": 3,
+     "nachbar": 4,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 359.996,
+     "drehung_um_plattenschraube_grad": -0.004,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 4,
+     "nachbar": 6,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 180.002,
+     "drehung_um_plattenschraube_grad": 0.002,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 13,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 301.72,
+     "drehung_um_plattenschraube_grad": 1.72,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 16,
+     "typ": "B",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 238.28,
+     "drehung_um_plattenschraube_grad": -1.72,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.72,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n06",
+   "wertigkeit": 5,
+   "ursprung": [
+    -1192,
+    -5232,
+    2669
+   ],
+   "normale": [
+    -0.1987,
+    -0.8721,
+    0.4472
+   ],
+   "x_richtung": [
+    -0.3058,
+    0.4887,
+    0.8171
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 3,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 48.004,
+     "drehung_um_plattenschraube_grad": -11.996,
+     "achsversatz_mm": 7.69
+    },
+    {
+     "arm": 2,
+     "nachbar": 5,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 336.008,
+     "drehung_um_plattenschraube_grad": -23.992,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 3,
+     "nachbar": 16,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 263.992,
+     "drehung_um_plattenschraube_grad": 23.992,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 4,
+     "nachbar": 17,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 192.001,
+     "drehung_um_plattenschraube_grad": 12.001,
+     "achsversatz_mm": 7.7
+    },
+    {
+     "arm": 5,
+     "nachbar": 24,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 119.996,
+     "drehung_um_plattenschraube_grad": -0.004,
+     "achsversatz_mm": 0.0
+    }
+   ],
+   "groesste_drehung_grad": 23.992,
+   "groesster_achsversatz_mm": 15.07
+  },
+  {
+   "knoten": "n07",
+   "wertigkeit": 6,
+   "ursprung": [
+    -4382,
+    2616,
+    3140
+   ],
+   "normale": [
+    -0.7304,
+    0.436,
+    0.5257
+   ],
+   "x_richtung": [
+    0.6472,
+    0.1959,
+    0.7367
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 1,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 298.28,
+     "drehung_um_plattenschraube_grad": -1.72,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 2,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 239.997,
+     "drehung_um_plattenschraube_grad": -0.003,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 8,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 60.005,
+     "drehung_um_plattenschraube_grad": 0.005,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 4,
+     "nachbar": 9,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.716,
+     "drehung_um_plattenschraube_grad": 1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 5,
+     "nachbar": 23,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.72,
+     "drehung_um_plattenschraube_grad": 1.72,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 25,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.281,
+     "drehung_um_plattenschraube_grad": -1.719,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.72,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n08",
+   "wertigkeit": 5,
+   "ursprung": [
+    -2111,
+    4934,
+    2669
+   ],
+   "normale": [
+    -0.3518,
+    0.8223,
+    0.4472
+   ],
+   "x_richtung": [
+    0.896,
+    0.4342,
+    -0.0935
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 7,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 192.005,
+     "drehung_um_plattenschraube_grad": 12.005,
+     "achsversatz_mm": 7.7
+    },
+    {
+     "arm": 2,
+     "nachbar": 9,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 263.999,
+     "drehung_um_plattenschraube_grad": 23.999,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 3,
+     "nachbar": 11,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 336.001,
+     "drehung_um_plattenschraube_grad": -23.999,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 4,
+     "nachbar": 25,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.002,
+     "drehung_um_plattenschraube_grad": 0.002,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 26,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 48.0,
+     "drehung_um_plattenschraube_grad": -12.0,
+     "achsversatz_mm": 7.7
+    }
+   ],
+   "groesste_drehung_grad": 23.999,
+   "groesster_achsversatz_mm": 15.07
+  },
+  {
+   "knoten": "n09",
+   "wertigkeit": 6,
+   "ursprung": [
+    -1241,
+    2900,
+    5090
+   ],
+   "normale": [
+    -0.2068,
+    0.4833,
+    0.8507
+   ],
+   "x_richtung": [
+    0.3346,
+    -0.7821,
+    0.5257
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 1,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 301.717,
+     "drehung_um_plattenschraube_grad": 1.717,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 4,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 0.006,
+     "drehung_um_plattenschraube_grad": 0.006,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 7,
+     "typ": "B",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 238.282,
+     "drehung_um_plattenschraube_grad": -1.718,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 8,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 179.999,
+     "drehung_um_plattenschraube_grad": -0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 10,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 58.284,
+     "drehung_um_plattenschraube_grad": -1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 11,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 121.718,
+     "drehung_um_plattenschraube_grad": 1.718,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.718,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n10",
+   "wertigkeit": 6,
+   "ursprung": [
+    2375,
+    2076,
+    5090
+   ],
+   "normale": [
+    0.3958,
+    0.346,
+    0.8507
+   ],
+   "x_richtung": [
+    -0.6405,
+    -0.5598,
+    0.5257
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 4,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 359.999,
+     "drehung_um_plattenschraube_grad": -0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 9,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 301.722,
+     "drehung_um_plattenschraube_grad": 1.722,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 11,
+     "typ": "B",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 238.286,
+     "drehung_um_plattenschraube_grad": -1.714,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 12,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 180.008,
+     "drehung_um_plattenschraube_grad": 0.008,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 13,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 58.278,
+     "drehung_um_plattenschraube_grad": -1.722,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 14,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 121.722,
+     "drehung_um_plattenschraube_grad": 1.722,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.722,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n11",
+   "wertigkeit": 6,
+   "ursprung": [
+    1134,
+    4976,
+    3140
+   ],
+   "normale": [
+    0.189,
+    0.8294,
+    0.5257
+   ],
+   "x_richtung": [
+    0.3863,
+    -0.555,
+    0.7367
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 8,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 239.998,
+     "drehung_um_plattenschraube_grad": -0.002,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 9,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 298.282,
+     "drehung_um_plattenschraube_grad": -1.718,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 10,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.718,
+     "drehung_um_plattenschraube_grad": 1.718,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 12,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.999,
+     "drehung_um_plattenschraube_grad": -0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 21,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.279,
+     "drehung_um_plattenschraube_grad": -1.721,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 26,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.721,
+     "drehung_um_plattenschraube_grad": 1.721,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.721,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n12",
+   "wertigkeit": 5,
+   "ursprung": [
+    4040,
+    3532,
+    2669
+   ],
+   "normale": [
+    0.6734,
+    0.5887,
+    0.4472
+   ],
+   "x_richtung": [
+    -0.0398,
+    -0.5751,
+    0.8171
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 10,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 336.003,
+     "drehung_um_plattenschraube_grad": -23.997,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 2,
+     "nachbar": 11,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 263.997,
+     "drehung_um_plattenschraube_grad": 23.997,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 3,
+     "nachbar": 14,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 48.0,
+     "drehung_um_plattenschraube_grad": -12.0,
+     "achsversatz_mm": 7.7
+    },
+    {
+     "arm": 4,
+     "nachbar": 20,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.0,
+     "drehung_um_plattenschraube_grad": -0.0,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 21,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 191.997,
+     "drehung_um_plattenschraube_grad": 11.997,
+     "achsversatz_mm": 7.69
+    }
+   ],
+   "groesste_drehung_grad": 23.997,
+   "groesster_achsversatz_mm": 15.07
+  },
+  {
+   "knoten": "n13",
+   "wertigkeit": 6,
+   "ursprung": [
+    2708,
+    -1617,
+    5090
+   ],
+   "normale": [
+    0.4513,
+    -0.2695,
+    0.8507
+   ],
+   "x_richtung": [
+    -0.8091,
+    -0.5256,
+    0.2628
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 4,
+     "typ": "A",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 299.992,
+     "drehung_um_plattenschraube_grad": -0.008,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 5,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 358.286,
+     "drehung_um_plattenschraube_grad": -1.714,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 10,
+     "typ": "B",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 241.706,
+     "drehung_um_plattenschraube_grad": 1.706,
+     "achsversatz_mm": 1.1
+    },
+    {
+     "arm": 4,
+     "nachbar": 14,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 178.272,
+     "drehung_um_plattenschraube_grad": -1.728,
+     "achsversatz_mm": 1.12
+    },
+    {
+     "arm": 5,
+     "nachbar": 15,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.001,
+     "drehung_um_plattenschraube_grad": 0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 6,
+     "nachbar": 16,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 61.728,
+     "drehung_um_plattenschraube_grad": 1.728,
+     "achsversatz_mm": 1.12
+    }
+   ],
+   "groesste_drehung_grad": 1.728,
+   "groesster_achsversatz_mm": 1.12
+  },
+  {
+   "knoten": "n14",
+   "wertigkeit": 6,
+   "ursprung": [
+    5083,
+    459,
+    3140
+   ],
+   "normale": [
+    0.8472,
+    0.0765,
+    0.5257
+   ],
+   "x_richtung": [
+    -0.4084,
+    -0.539,
+    0.7367
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 10,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 298.281,
+     "drehung_um_plattenschraube_grad": -1.719,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 12,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 239.997,
+     "drehung_um_plattenschraube_grad": -0.003,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 13,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.707,
+     "drehung_um_plattenschraube_grad": 1.707,
+     "achsversatz_mm": 1.1
+    },
+    {
+     "arm": 4,
+     "nachbar": 15,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.999,
+     "drehung_um_plattenschraube_grad": -0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 19,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.282,
+     "drehung_um_plattenschraube_grad": -1.718,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 20,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.719,
+     "drehung_um_plattenschraube_grad": 1.719,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.719,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n15",
+   "wertigkeit": 5,
+   "ursprung": [
+    4608,
+    -2751,
+    2669
+   ],
+   "normale": [
+    0.768,
+    -0.4585,
+    0.4472
+   ],
+   "x_richtung": [
+    0.6359,
+    0.629,
+    -0.4472
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 13,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.005,
+     "drehung_um_plattenschraube_grad": 0.005,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 14,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 48.001,
+     "drehung_um_plattenschraube_grad": -11.999,
+     "achsversatz_mm": 7.7
+    },
+    {
+     "arm": 3,
+     "nachbar": 16,
+     "typ": "A",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 192.007,
+     "drehung_um_plattenschraube_grad": 12.007,
+     "achsversatz_mm": 7.7
+    },
+    {
+     "arm": 4,
+     "nachbar": 18,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 263.996,
+     "drehung_um_plattenschraube_grad": 23.996,
+     "achsversatz_mm": 15.07
+    },
+    {
+     "arm": 5,
+     "nachbar": 19,
+     "typ": "A",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 336.004,
+     "drehung_um_plattenschraube_grad": -23.996,
+     "achsversatz_mm": 15.07
+    }
+   ],
+   "groesste_drehung_grad": 23.996,
+   "groesster_achsversatz_mm": 15.07
+  },
+  {
+   "knoten": "n16",
+   "wertigkeit": 6,
+   "ursprung": [
+    2008,
+    -4693,
+    3140
+   ],
+   "normale": [
+    0.3347,
+    -0.7821,
+    0.5256
+   ],
+   "x_richtung": [
+    -0.6387,
+    0.2219,
+    0.7368
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 5,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.722,
+     "drehung_um_plattenschraube_grad": 1.722,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 6,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.993,
+     "drehung_um_plattenschraube_grad": -0.007,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 13,
+     "typ": "B",
+     "loch": 6,
+     "drehwinkel_loch_grad": 300.0,
+     "azimut_grad": 298.298,
+     "drehung_um_plattenschraube_grad": -1.702,
+     "achsversatz_mm": 1.1
+    },
+    {
+     "arm": 4,
+     "nachbar": 15,
+     "typ": "A",
+     "loch": 5,
+     "drehwinkel_loch_grad": 240.0,
+     "azimut_grad": 240.006,
+     "drehung_um_plattenschraube_grad": 0.006,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 5,
+     "nachbar": 17,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.278,
+     "drehung_um_plattenschraube_grad": -1.722,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 6,
+     "nachbar": 18,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.72,
+     "drehung_um_plattenschraube_grad": 1.72,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.722,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n17",
+   "wertigkeit": 4,
+   "ursprung": [
+    540,
+    -5976,
+    -14
+   ],
+   "normale": [
+    0.09,
+    -0.9959,
+    0.0
+   ],
+   "x_richtung": [
+    0.9955,
+    0.0899,
+    0.0299
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 6,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.001,
+     "drehung_um_plattenschraube_grad": 0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 16,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 61.714,
+     "drehung_um_plattenschraube_grad": 1.714,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 18,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 358.286,
+     "drehung_um_plattenschraube_grad": -1.714,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 24,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 178.286,
+     "drehung_um_plattenschraube_grad": -1.714,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.714,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n18",
+   "wertigkeit": 4,
+   "ursprung": [
+    3949,
+    -4517,
+    -14
+   ],
+   "normale": [
+    0.6582,
+    -0.7529,
+    0.0
+   ],
+   "x_richtung": [
+    0.7525,
+    0.6579,
+    -0.03
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 15,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.994,
+     "drehung_um_plattenschraube_grad": -0.006,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 16,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.283,
+     "drehung_um_plattenschraube_grad": -1.717,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 17,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.717,
+     "drehung_um_plattenschraube_grad": 1.717,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 19,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.717,
+     "drehung_um_plattenschraube_grad": 1.717,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.717,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n19",
+   "wertigkeit": 4,
+   "ursprung": [
+    5850,
+    -1333,
+    -14
+   ],
+   "normale": [
+    0.975,
+    -0.2222,
+    0.0
+   ],
+   "x_richtung": [
+    0.2221,
+    0.9746,
+    0.03
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 14,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 61.719,
+     "drehung_um_plattenschraube_grad": 1.719,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 15,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.003,
+     "drehung_um_plattenschraube_grad": 0.003,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 18,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 178.281,
+     "drehung_um_plattenschraube_grad": -1.719,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 20,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 358.281,
+     "drehung_um_plattenschraube_grad": -1.719,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.719,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n20",
+   "wertigkeit": 4,
+   "ursprung": [
+    5516,
+    2360,
+    -14
+   ],
+   "normale": [
+    0.9194,
+    0.3934,
+    0.0
+   ],
+   "x_richtung": [
+    -0.3932,
+    0.919,
+    -0.0299
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 12,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.998,
+     "drehung_um_plattenschraube_grad": -0.002,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 14,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.286,
+     "drehung_um_plattenschraube_grad": -1.714,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 19,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.714,
+     "drehung_um_plattenschraube_grad": 1.714,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 21,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.714,
+     "drehung_um_plattenschraube_grad": 1.714,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.714,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n21",
+   "wertigkeit": 4,
+   "ursprung": [
+    3076,
+    5152,
+    -14
+   ],
+   "normale": [
+    0.5126,
+    0.8586,
+    0.0
+   ],
+   "x_richtung": [
+    -0.8582,
+    0.5124,
+    0.0299
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 11,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 61.716,
+     "drehung_um_plattenschraube_grad": 1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 12,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.001,
+     "drehung_um_plattenschraube_grad": 0.001,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 20,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 178.284,
+     "drehung_um_plattenschraube_grad": -1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 26,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 358.284,
+     "drehung_um_plattenschraube_grad": -1.716,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.716,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n22",
+   "wertigkeit": 4,
+   "ursprung": [
+    -5516,
+    -2360,
+    -14
+   ],
+   "normale": [
+    -0.9194,
+    -0.3934,
+    0.0
+   ],
+   "x_richtung": [
+    0.3932,
+    -0.919,
+    0.03
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 2,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.003,
+     "drehung_um_plattenschraube_grad": 0.003,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 3,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 61.718,
+     "drehung_um_plattenschraube_grad": 1.718,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 23,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 178.282,
+     "drehung_um_plattenschraube_grad": -1.718,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 24,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 358.282,
+     "drehung_um_plattenschraube_grad": -1.718,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.718,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n23",
+   "wertigkeit": 4,
+   "ursprung": [
+    -5850,
+    1333,
+    -14
+   ],
+   "normale": [
+    -0.975,
+    0.2222,
+    0.0
+   ],
+   "x_richtung": [
+    -0.2221,
+    -0.9746,
+    -0.03
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 2,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.996,
+     "drehung_um_plattenschraube_grad": -0.004,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 7,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.283,
+     "drehung_um_plattenschraube_grad": -1.717,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 22,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.717,
+     "drehung_um_plattenschraube_grad": 1.717,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 25,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.717,
+     "drehung_um_plattenschraube_grad": 1.717,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.717,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n24",
+   "wertigkeit": 4,
+   "ursprung": [
+    -3076,
+    -5152,
+    -14
+   ],
+   "normale": [
+    -0.5126,
+    -0.8586,
+    0.0
+   ],
+   "x_richtung": [
+    0.8582,
+    -0.5124,
+    -0.03
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 3,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.281,
+     "drehung_um_plattenschraube_grad": -1.719,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 6,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.994,
+     "drehung_um_plattenschraube_grad": -0.006,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 17,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.719,
+     "drehung_um_plattenschraube_grad": 1.719,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 22,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.719,
+     "drehung_um_plattenschraube_grad": 1.719,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.719,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n25",
+   "wertigkeit": 4,
+   "ursprung": [
+    -3949,
+    4517,
+    -14
+   ],
+   "normale": [
+    -0.6582,
+    0.7529,
+    0.0
+   ],
+   "x_richtung": [
+    -0.7525,
+    -0.6579,
+    0.0299
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 7,
+     "typ": "B",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 61.716,
+     "drehung_um_plattenschraube_grad": 1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 2,
+     "nachbar": 8,
+     "typ": "A",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 120.002,
+     "drehung_um_plattenschraube_grad": 0.002,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 3,
+     "nachbar": 23,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 358.284,
+     "drehung_um_plattenschraube_grad": -1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 26,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 178.284,
+     "drehung_um_plattenschraube_grad": -1.716,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.716,
+   "groesster_achsversatz_mm": 1.11
+  },
+  {
+   "knoten": "n26",
+   "wertigkeit": 4,
+   "ursprung": [
+    -540,
+    5976,
+    -14
+   ],
+   "normale": [
+    -0.09,
+    0.9959,
+    0.0
+   ],
+   "x_richtung": [
+    -0.9955,
+    -0.0899,
+    -0.0299
+   ],
+   "arme": [
+    {
+     "arm": 1,
+     "nachbar": 8,
+     "typ": "A",
+     "loch": 2,
+     "drehwinkel_loch_grad": 60.0,
+     "azimut_grad": 59.995,
+     "drehung_um_plattenschraube_grad": -0.005,
+     "achsversatz_mm": 0.0
+    },
+    {
+     "arm": 2,
+     "nachbar": 11,
+     "typ": "B",
+     "loch": 3,
+     "drehwinkel_loch_grad": 120.0,
+     "azimut_grad": 118.284,
+     "drehung_um_plattenschraube_grad": -1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 3,
+     "nachbar": 21,
+     "typ": "B",
+     "loch": 4,
+     "drehwinkel_loch_grad": 180.0,
+     "azimut_grad": 181.716,
+     "drehung_um_plattenschraube_grad": 1.716,
+     "achsversatz_mm": 1.11
+    },
+    {
+     "arm": 4,
+     "nachbar": 25,
+     "typ": "B",
+     "loch": 1,
+     "drehwinkel_loch_grad": 0.0,
+     "azimut_grad": 1.716,
+     "drehung_um_plattenschraube_grad": 1.716,
+     "achsversatz_mm": 1.11
+    }
+   ],
+   "groesste_drehung_grad": 1.716,
+   "groesster_achsversatz_mm": 1.11
+  }
+ ],
+ "auswertung": {
+  "knoten": 26,
+  "arme": 130,
+  "typ_a": 60,
+  "typ_b": 70,
+  "groesster_achsversatz_mm": 15.07,
+  "bei_knoten": "n02",
+  "groesste_drehung_grad": 23.999,
+  "je_wertigkeit": {
+   "4": {
+    "knoten": 10,
+    "groesste_drehung_grad": 1.719,
+    "groesster_achsversatz_mm": 1.11
+   },
+   "5": {
+    "knoten": 6,
+    "groesste_drehung_grad": 23.999,
+    "groesster_achsversatz_mm": 15.07
+   },
+   "6": {
+    "knoten": 10,
+    "groesste_drehung_grad": 1.728,
+    "groesster_achsversatz_mm": 1.12
+   }
+  },
+  "soll_achsversatz_mm": 5.0,
+  "befehl": "python -X utf8 scripts/workshop/knoten_schere.py --table"
+ },
+ "geometrie": {
+  "A": {
+   "neigung_grad": 15.858,
+   "knicklinie_r_mm": 72.06,
+   "drehpunkt_hinter_knick_mm": 14.94,
+   "knotenpunkt_bis_rohrende_mm": 101.85,
+   "rohr_mm": 3075.3
+  },
+  "B": {
+   "neigung_grad": 17.999,
+   "knicklinie_r_mm": 63.0,
+   "drehpunkt_hinter_knick_mm": 24.0,
+   "knotenpunkt_bis_rohrende_mm": 102.24,
+   "rohr_mm": 3503.5
+  },
+  "platte_unterkante_z_mm": -15.469
+ }
+}

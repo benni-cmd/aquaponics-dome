@@ -1,0 +1,423 @@
+{
+ "komponente": "knoten_schere",
+ "datei": "designs/components/knoten_schere.sc",
+ "teilenummer": "T60S",
+ "stand": "pilot",
+ "titel": "Scherenknoten (Lochplatte + Schere je Strebe), Detailmodell mit einem Arm B",
+ "kurz": "Die Lochplatte verbindet die Streben eines Knotens. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch; die zwei Nasen der Schere stehen durch zwei Gegenloecher im Rohr. Die Montage setzt je Knoten eine Platte und 4, 5 oder 6 Arme.",
+ "hinweis": "Abnahme-Vorlage fuer Ben (N-VERBINDER). Alle Kopfmasse sind Annahmen aus dem Foto ohne Massstab (R56). Offen bei Ben: Rundrohr statt Vierkant, Laschendicke 5 oder 8 mm, Lochbild der 5-wertigen Knoten.",
+ "koerperzahl": 12,
+ "gruppen": [
+  {
+   "id": "platte",
+   "name": "Lochplatte",
+   "kurz": "Eine je Knoten.",
+   "teile": [
+    "lochplatte",
+    "plattenschraube",
+    "plattenscheibe_oben",
+    "plattenscheibe_unten",
+    "plattenmutter"
+   ]
+  },
+  {
+   "id": "schere",
+   "name": "Schere",
+   "kurz": "Zwei Laschen mit Nasen und Drehpunkt; eine je Strebenende.",
+   "teile": [
+    "lasche_1",
+    "lasche_2",
+    "drehschraube",
+    "drehscheibe_oben",
+    "drehscheibe_unten",
+    "drehmutter"
+   ]
+  },
+  {
+   "id": "rohr",
+   "name": "Rohrende",
+   "kurz": "Strebe mit zwei Gegenloechern.",
+   "teile": [
+    "rohrende"
+   ]
+  }
+ ],
+ "teile": [
+  {
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "id": "lochplatte",
+   "name": "Lochplatte",
+   "koerper": [
+    "Lochplatte"
+   ],
+   "menge": 1,
+   "typ": "platte",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "Scheibe D 110 x 8, 6 Loecher D 11 auf Lochkreis r 37, Mittelbohrung D 20",
+   "funktion": "Die Platte verbindet alle Streben eines Knotens. Jede Schere wird mit einer Schraube auf ein Loch geschraubt; solange die Schraube locker ist, dreht sich die Strebe um sie.",
+   "eigenschaften": [
+    "Eine Platte fuer alle 26 Knoten (4-, 5- und 6-wertig).",
+    "Laserteil S235, feuerverzinkt.",
+    "Liegt wie auf dem Foto OBEN auf den Laschen; Unterkante 15.5 mm unter dem Knotenpunkt."
+   ],
+   "norm": "EN 10025-2 S235 (Blech) [A]",
+   "quelle": "Blatt N-VERBINDER, R56 Abschnitt 2 (Foto ohne Massstab)",
+   "explosion": {
+    "richtung": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "abstand_mm": 170.0
+   }
+  },
+  {
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "id": "lasche_2",
+   "name": "Lasche 2 (oben, an der Platte)",
+   "koerper": [
+    "Lasche_2"
+   ],
+   "menge": 1,
+   "typ": "sonderteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "Flachstahl 20 x 5, Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Knick 18.0 Grad (Arm A 15.9 Grad)",
+   "funktion": "Zwei gekreuzte Laschen bilden die Schere. Liegen beide Augen deckungsgleich auf der Platte und sind verschraubt, stehen die Nasen durch die Gegenloecher aus dem Rohr: die Strebe ist eingerastet.",
+   "eigenschaften": [
+    "Nase zeigt nach +Y quer zur Rohrachse und steht 3 mm ueber die Rohraussenwand.",
+    "Gleicher Zuschnitt fuer A und B; nur Lage und Winkel des Knicks unterscheiden sich.",
+    "Der Knick ist der statische Engpass (R56: 4,6 kN bei 5 mm, 11,8 kN bei 8 mm)."
+   ],
+   "norm": "EN 10025-2 S235, Laserzuschnitt, abgekantet [A]",
+   "quelle": "R56 Abschnitte 1, 2 und 4",
+   "explosion": {
+    "richtung": [
+     0.0,
+     0.8412,
+     0.5408
+    ],
+    "abstand_mm": 83.2
+   }
+  },
+  {
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "id": "lasche_1",
+   "name": "Lasche 1 (unten)",
+   "koerper": [
+    "Lasche_1"
+   ],
+   "menge": 1,
+   "typ": "sonderteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "Flachstahl 20 x 5, Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Knick 18.0 Grad (Arm A 15.9 Grad)",
+   "funktion": "Zwei gekreuzte Laschen bilden die Schere. Liegen beide Augen deckungsgleich auf der Platte und sind verschraubt, stehen die Nasen durch die Gegenloecher aus dem Rohr: die Strebe ist eingerastet.",
+   "eigenschaften": [
+    "Nase zeigt nach -Y quer zur Rohrachse und steht 3 mm ueber die Rohraussenwand.",
+    "Gleicher Zuschnitt fuer A und B; nur Lage und Winkel des Knicks unterscheiden sich.",
+    "Der Knick ist der statische Engpass (R56: 4,6 kN bei 5 mm, 11,8 kN bei 8 mm)."
+   ],
+   "norm": "EN 10025-2 S235, Laserzuschnitt, abgekantet [A]",
+   "quelle": "R56 Abschnitte 1, 2 und 4",
+   "explosion": {
+    "richtung": [
+     0.0,
+     -0.9191,
+     -0.3939
+    ],
+    "abstand_mm": 76.2
+   }
+  },
+  {
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "id": "rohrende",
+   "name": "Rohrende der Strebe (Probestueck)",
+   "koerper": [
+    "Rohrstueck"
+   ],
+   "menge": 1,
+   "typ": "rohr",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "Rundrohr 42.4 x 2.6, Probestueck 250 mm, 2 Gegenloecher D 13 gegenueber, 46 mm hinter dem Rohrmund",
+   "funktion": "Das Rohr ist die Strebe. In seinen zwei Gegenloechern sitzen die Nasen der Schere; ueber die Lochraender laeuft die Strebenkraft in die Laschen.",
+   "eigenschaften": [
+    "Rund 42,4 x 2,6 verzinkt ist die Empfehlung aus R56 (offen bei Ben).",
+    "Rohrlaenge in der Kuppel: A 3075 mm, B 3504 mm.",
+    "Gegenloecher mit Bohrlehre (Prisma) bohren."
+   ],
+   "norm": "EN 10255 (Gewinderohr verzinkt) [A]",
+   "quelle": "R56 Abschnitte 3 und 5",
+   "explosion": {
+    "richtung": [
+     0.9511,
+     0.0,
+     -0.309
+    ],
+    "abstand_mm": 230.0
+   }
+  },
+  {
+   "id": "plattenschraube",
+   "name": "Plattenschraube M10 x 35",
+   "koerper": [
+    "Platte_Schraube"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "M10 x 35",
+   "funktion": "Schraubt beide Laschenaugen auf ein Loch der Platte; traegt die ganze Strebenkraft (einschnittig).",
+   "eigenschaften": [
+    "Angezogen kann sich die Schere nicht mehr oeffnen."
+   ],
+   "norm": "ISO 4017 M10, 8.8 verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "abstand_mm": 285.0
+   }
+  },
+  {
+   "id": "plattenscheibe_oben",
+   "name": "Scheibe M10 oben",
+   "koerper": [
+    "Platte_ScheibeO"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "10,5 x 20 x 2",
+   "funktion": "Liegt unter dem Schraubenkopf auf der Platte.",
+   "eigenschaften": [
+    "Flache Scheibe."
+   ],
+   "norm": "ISO 7089 10, verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "abstand_mm": 225.0
+   }
+  },
+  {
+   "id": "plattenscheibe_unten",
+   "name": "Scheibe M10 unten",
+   "koerper": [
+    "Platte_ScheibeU"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "10,5 x 20 x 2",
+   "funktion": "Liegt unter Lasche 1 vor der Mutter.",
+   "eigenschaften": [
+    "Flache Scheibe."
+   ],
+   "norm": "ISO 7089 10, verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     0.0,
+     0.0,
+     -1.0
+    ],
+    "abstand_mm": 70.0
+   }
+  },
+  {
+   "id": "plattenmutter",
+   "name": "Mutter M10",
+   "koerper": [
+    "Platte_Mutter"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "M10",
+   "funktion": "Haelt die Plattenschraube.",
+   "eigenschaften": [
+    "Sechskantmutter."
+   ],
+   "norm": "ISO 4032 M10, 8 verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     0.0,
+     0.0,
+     -1.0
+    ],
+    "abstand_mm": 110.0
+   }
+  },
+  {
+   "id": "drehschraube",
+   "name": "Drehpunktschraube M8 x 25",
+   "koerper": [
+    "Dreh_Schraube"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "M8 x 25",
+   "funktion": "Haelt die zwei Laschen als Schere zusammen; traegt planmaessig nichts.",
+   "eigenschaften": [
+    "Sitzt 12 mm vor dem Rohrmund ausserhalb des Rohrs."
+   ],
+   "norm": "ISO 4017 M8, 8.8 verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     0.309,
+     0.0,
+     0.9511
+    ],
+    "abstand_mm": 90.0
+   }
+  },
+  {
+   "id": "drehscheibe_oben",
+   "name": "Scheibe M8 oben",
+   "koerper": [
+    "Dreh_ScheibeO"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "8,4 x 16 x 1,6",
+   "funktion": "Liegt unter dem Kopf der Drehpunktschraube.",
+   "eigenschaften": [
+    "Flache Scheibe."
+   ],
+   "norm": "ISO 7089 8, verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     0.309,
+     0.0,
+     0.9511
+    ],
+    "abstand_mm": 45.0
+   }
+  },
+  {
+   "id": "drehscheibe_unten",
+   "name": "Scheibe M8 unten",
+   "koerper": [
+    "Dreh_ScheibeU"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "8,4 x 16 x 1,6",
+   "funktion": "Liegt vor der Mutter der Drehpunktschraube.",
+   "eigenschaften": [
+    "Flache Scheibe."
+   ],
+   "norm": "ISO 7089 8, verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     -0.309,
+     -0.0,
+     -0.9511
+    ],
+    "abstand_mm": 50.0
+   }
+  },
+  {
+   "id": "drehmutter",
+   "name": "Mutter M8",
+   "koerper": [
+    "Dreh_Mutter"
+   ],
+   "menge": 1,
+   "typ": "normteil",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "M8",
+   "funktion": "Haelt die Drehpunktschraube.",
+   "eigenschaften": [
+    "Sechskantmutter."
+   ],
+   "norm": "ISO 4032 M8, 8 verzinkt",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
+   "bezug": "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "explosion": {
+    "richtung": [
+     -0.309,
+     -0.0,
+     -0.9511
+    ],
+    "abstand_mm": 85.0
+   }
+  }
+ ]
+}

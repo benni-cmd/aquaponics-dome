@@ -1,6 +1,7 @@
 # R56 Scherenknoten mit Lochplatte (W74): Funktion, Teile, Rohrform, Statik, Bezug
 
 Stand 05.11.2026 · Paket `docs/packages/n-verbinder.md` · Rechnung `python -X utf8 scripts/r56_scherenknoten.py` (Selbsttest 6/6) · Prototyp `designs/components/knoten_schere_proto.sc` (Check 6/6) · **Gesamtmodell unveraendert.**
+**Nachtrag Werkstatt 05.11.2026:** Der Prototyp `knoten_schere_proto` ist ersetzt durch das Bauteil `knoten_schere` (Platte + Arm A/B, `docs/parts/knoten_schere.md`); der Vorentwurf bleibt in Git (927d171).
 Kennzeichnung: **[Q]** Quelle · **[E]** eigene Rechnung oder Beobachtung im Foto · **[A]** Annahme.
 
 ## Kurzantwort

@@ -1,0 +1,115 @@
+PASS autobahn_s: kupplung ID19 Koerper = Dose + Stecker (2): Ist 0, Soll 0
+PASS autobahn_s: kupplung ID19 Baulaenge gekuppelt: Ist 136, Soll 136 (+-0.05)
+PASS autobahn_s: kupplung ID19 Port A (Tuelle Dose, Zulauf) (Schlauchtuelle, ID19): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: kupplung ID19 Port B (Tuelle Stecker, Abgang) (Schlauchtuelle, ID19): Stirnflaeche bei (0.0, 0.0, 136.0): Ist 1, Soll 1
+PASS autobahn_s: kupplung ID19 Interferenz 0 (2 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+PASS autobahn_s: kupplung ID19 Werkstoff Edelstahl 1.4401 (Dichte 7,95 g/cm3, kein Messing): Ist 0, Soll 0 (+-0.01)
+PASS autobahn_s: kupplung ID25 Koerper = Dose + Stecker (2): Ist 0, Soll 0
+PASS autobahn_s: kupplung ID25 Baulaenge gekuppelt: Ist 155, Soll 155 (+-0.05)
+PASS autobahn_s: kupplung ID25 Port A (Tuelle Dose, Zulauf) (Schlauchtuelle, ID25): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: kupplung ID25 Port B (Tuelle Stecker, Abgang) (Schlauchtuelle, ID25): Stirnflaeche bei (0.0, 0.0, 155.0): Ist 1, Soll 1
+PASS autobahn_s: kupplung ID25 Interferenz 0 (2 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+PASS autobahn_s: kupplung ID25 Werkstoff Edelstahl 1.4401 (Dichte 7,95 g/cm3, kein Messing): Ist 0, Soll 0 (+-0.01)
+PASS autobahn_s: rsv Koerper = Rueckschlagventil (1): Ist 0, Soll 0
+PASS autobahn_s: rsv Baulaenge = Herstellerwert 157: Ist 157, Soll 157 (+-0.05)
+PASS autobahn_s: rsv Gehaeuse aussen = Herstellerwert 97: Ist 96.9985, Soll 97 (+-0.05)
+PASS autobahn_s: rsv Port A (Zulauf, Booster) (Muffe, DN40): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: rsv Port B (Abgang, Steigleitung) (Muffe, DN40): Stirnflaeche bei (0.0, 0.0, 157.0): Ist 1, Soll 1
+PASS autobahn_s: rsv Interferenz 0 (3 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+INFO rsv: Muffentiefe 31, Durchgang d45.2, Masse 704 g; 4 Stueck (je Booster eines, Blatt 2.1)
+PASS autobahn_s: fall id19_mitte Glieder vorhanden: Tuelle, Regelhahn, Kupplung (2), Anschluss: Ist 0, Soll 0
+PASS autobahn_s: fall id19_mitte Schlauchboegen (unten 1) = 1: Ist 1, Soll 1
+PASS autobahn_s: fall id19_mitte Biegeradius aus Bogenvolumen min 160.0 >= max(6 x AD 159.6, Hersteller 90) (R14): Ist 1, Soll 1
+PASS autobahn_s: fall id19_mitte Weg Ring-Achse bis Abnehmer 1355 = Rechnung 1355 + Anstieg zum Ausleger 0 = 1355 (+-50; Abzweig 350 + Schlauch 779 + Glieder 226): Ist 1354.93, Soll 1355 (+-50)
+PASS autobahn_s: fall id19_mitte Anschluss-Achse auf Ziel-Hoehe Z 1090 rel (Tisch-Zulaufverteiler): Ist 1090, Soll 1090 (+-0.5)
+PASS autobahn_s: fall id19_mitte Port Oben (Muffe B Abzweig-Hahn) (Klebezapfen, d32): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: fall id19_mitte Port Unten (Abnehmer) (Muffe, d25): Stirnflaeche bei (0.0, 368.7, -704.6): Ist 1, Soll 1
+PASS autobahn_s: fall id19_mitte Regelhahn-Mitte Z 1500 rel in Greifhoehe 1000..1600: Ist 1, Soll 1
+PASS autobahn_s: fall id19_mitte faellt an der Ringecke r 3446 (kein Gang darunter): Ist 1, Soll 1
+PASS autobahn_s: fall id19_mitte freier Fall ohne Halter 535 mm <= 1500 (Blatt 2.6 Punkt 3; unten haelt der Abnehmer-Anschluss): Ist 1, Soll 1
+PASS autobahn_s: fall id19_mitte Interferenz 0 (10 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+INFO fall id19_mitte: Schlauch ID19/AD26.6 Zuschnitt 779 mm (Rechnung zaehlte 1355 als Schlauch), Biegeradius 160, Endstueck waagerecht 369 (Schlaufe 300 + Bogenverkuerzung 69), Masse 1.42 kg
+PASS autobahn_s: fall id19_innen Glieder vorhanden: Tuelle, Regelhahn, Kupplung (2), Anschluss: Ist 0, Soll 0
+PASS autobahn_s: fall id19_innen Schlauchboegen (Anstieg 2 x 45 Grad, Auslegerende 1, unten 1) = 4: Ist 4, Soll 4
+PASS autobahn_s: fall id19_innen Biegeradius aus Bogenvolumen min 160.0 >= max(6 x AD 159.6, Hersteller 90) (R14): Ist 1, Soll 1
+PASS autobahn_s: fall id19_innen Weg Ring-Achse bis Abnehmer 3027 = Rechnung 2841 + Anstieg zum Ausleger 187 = 3027 (+-50; Abzweig 350 + Schlauch 2451 + Glieder 226): Ist 3027.18, Soll 3027.39 (+-50)
+PASS autobahn_s: fall id19_innen Anschluss-Achse auf Ziel-Hoehe Z 1090 rel (Tisch-Zulaufverteiler): Ist 1090, Soll 1090 (+-0.5)
+PASS autobahn_s: fall id19_innen Port Oben (Muffe B Abzweig-Hahn) (Klebezapfen, d32): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: fall id19_innen Port Unten (Abnehmer) (Muffe, d25): Stirnflaeche bei (1135.3, 451.1, -1055.0): Ist 1, Soll 1
+PASS autobahn_s: fall id19_innen Regelhahn-Mitte Z 1500 rel in Greifhoehe 1000..1600: Ist 1, Soll 1
+PASS autobahn_s: fall id19_innen Gang A (lokal x 262..787): tiefster Punkt Z 2220.7 rel >= 2100: Ist 1, Soll 1
+PASS autobahn_s: fall id19_innen Bogen am Auslegerende beginnt hinter dem Gang (x 975 >= 787): Ist 1, Soll 1
+INFO fall id19_innen: Schlauchhalter am Ausleger (WA-T) bei lokal x [10, 410, 810, 975] (groesste Luecke 400 <= 400); Achse auf Z 2277 rel (Armmitte), seitlich in den Clips des Auslegers
+PASS autobahn_s: fall id19_innen freier Fall ohne Halter 867 mm <= 1500 (Blatt 2.6 Punkt 3; unten haelt der Abnehmer-Anschluss): Ist 1, Soll 1
+PASS autobahn_s: fall id19_innen Interferenz 0 (16 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+INFO fall id19_innen: Schlauch ID19/AD26.6 Zuschnitt 2451 mm (Rechnung zaehlte 2841 als Schlauch), Biegeradius 160, Endstueck waagerecht 451 (Schlaufe 300 + Bogenverkuerzung 151), Masse 1.99 kg
+PASS autobahn_s: fall id19_aussen Glieder vorhanden: Tuelle, Regelhahn, Kupplung (2), Anschluss: Ist 0, Soll 0
+PASS autobahn_s: fall id19_aussen Schlauchboegen (Anstieg 2 x 45 Grad, Auslegerende 1, unten 1) = 4: Ist 4, Soll 4
+PASS autobahn_s: fall id19_aussen Biegeradius aus Bogenvolumen min 160.0 >= max(6 x AD 159.6, Hersteller 90) (R14): Ist 1, Soll 1
+PASS autobahn_s: fall id19_aussen Weg Ring-Achse bis Abnehmer 3221 = Rechnung 3034 + Anstieg zum Ausleger 187 = 3221 (+-50; Abzweig 350 + Schlauch 2644 + Glieder 226): Ist 3220.65, Soll 3220.86 (+-50)
+PASS autobahn_s: fall id19_aussen Anschluss-Achse auf Ziel-Hoehe Z 1090 rel (Tisch-Zulaufverteiler): Ist 1090, Soll 1090 (+-0.5)
+PASS autobahn_s: fall id19_aussen Port Oben (Muffe B Abzweig-Hahn) (Klebezapfen, d32): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: fall id19_aussen Port Unten (Abnehmer) (Muffe, d25): Stirnflaeche bei (1328.8, 451.1, -1055.0): Ist 1, Soll 1
+PASS autobahn_s: fall id19_aussen Regelhahn-Mitte Z 1500 rel in Greifhoehe 1000..1600: Ist 1, Soll 1
+PASS autobahn_s: fall id19_aussen Gang B (lokal x 261..787): tiefster Punkt Z 2220.7 rel >= 2100: Ist 1, Soll 1
+PASS autobahn_s: fall id19_aussen Bogen am Auslegerende beginnt hinter dem Gang (x 1169 >= 787): Ist 1, Soll 1
+INFO fall id19_aussen: Schlauchhalter am Ausleger (WA-T) bei lokal x [10, 410, 810, 1169] (groesste Luecke 400 <= 400); Achse auf Z 2277 rel (Armmitte), seitlich in den Clips des Auslegers
+PASS autobahn_s: fall id19_aussen freier Fall ohne Halter 867 mm <= 1500 (Blatt 2.6 Punkt 3; unten haelt der Abnehmer-Anschluss): Ist 1, Soll 1
+PASS autobahn_s: fall id19_aussen Interferenz 0 (16 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+INFO fall id19_aussen: Schlauch ID19/AD26.6 Zuschnitt 2644 mm (Rechnung zaehlte 3034 als Schlauch), Biegeradius 160, Endstueck waagerecht 451 (Schlaufe 300 + Bogenverkuerzung 151), Masse 2.05 kg
+PASS autobahn_s: fall id25_mitte Glieder vorhanden: Tuelle, Regelhahn, Kupplung (2), Anschluss: Ist 0, Soll 0
+PASS autobahn_s: fall id25_mitte Schlauchboegen (unten 1) = 1: Ist 1, Soll 1
+PASS autobahn_s: fall id25_mitte Biegeradius aus Bogenvolumen min 210.0 >= max(6 x AD 207.6, Hersteller 110) (R14): Ist 1, Soll 1
+PASS autobahn_s: fall id25_mitte Weg Ring-Achse bis Abnehmer 1785 = Rechnung 1795 + Anstieg zum Ausleger 0 = 1795 (+-50; Abzweig 362 + Schlauch 1193 + Glieder 230): Ist 1784.89, Soll 1795 (+-50)
+PASS autobahn_s: fall id25_mitte Anschluss-Achse auf Ziel-Hoehe Z 650 rel (Beet-Tropfrohr): Ist 650, Soll 650 (+-0.5)
+PASS autobahn_s: fall id25_mitte Port Oben (Muffe B Abzweig-Hahn) (Klebezapfen, d40): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: fall id25_mitte Port Unten (Abnehmer) (Klemmverbinder, d20): Stirnflaeche bei (0.0, 390.1, -1132.6): Ist 1, Soll 1
+PASS autobahn_s: fall id25_mitte Regelhahn-Mitte Z 1150 rel in Greifhoehe 1000..1600: Ist 1, Soll 1
+PASS autobahn_s: fall id25_mitte faellt an der Ringecke r 3446 (kein Gang darunter): Ist 1, Soll 1
+PASS autobahn_s: fall id25_mitte freier Fall ohne Halter 913 mm <= 1500 (Blatt 2.6 Punkt 3; unten haelt der Abnehmer-Anschluss): Ist 1, Soll 1
+PASS autobahn_s: fall id25_mitte Interferenz 0 (10 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+INFO fall id25_mitte: Schlauch ID25/AD34.6 Zuschnitt 1193 mm (Rechnung zaehlte 1795 als Schlauch), Biegeradius 210, Endstueck waagerecht 390 (Schlaufe 300 + Bogenverkuerzung 90), Masse 2.12 kg
+PASS autobahn_s: fall id25_aussen Glieder vorhanden: Tuelle, Regelhahn, Kupplung (2), Anschluss: Ist 0, Soll 0
+PASS autobahn_s: fall id25_aussen Schlauchboegen (Anstieg 2 x 45 Grad, Auslegerende 1, unten 1) = 4: Ist 4, Soll 4
+PASS autobahn_s: fall id25_aussen Biegeradius aus Bogenvolumen min 210.0 >= max(6 x AD 207.6, Hersteller 110) (R14): Ist 1, Soll 1
+PASS autobahn_s: fall id25_aussen Weg Ring-Achse bis Abnehmer 3651 = Rechnung 3474 + Anstieg zum Ausleger 187 = 3661 (+-50; Abzweig 362 + Schlauch 3058 + Glieder 230): Ist 3650.6, Soll 3660.86 (+-50)
+PASS autobahn_s: fall id25_aussen Anschluss-Achse auf Ziel-Hoehe Z 650 rel (Beet-Tropfrohr): Ist 650, Soll 650 (+-0.5)
+PASS autobahn_s: fall id25_aussen Port Oben (Muffe B Abzweig-Hahn) (Klebezapfen, d40): Stirnflaeche bei (0.0, 0.0, 0.0): Ist 1, Soll 1
+PASS autobahn_s: fall id25_aussen Port Unten (Abnehmer) (Klemmverbinder, d20): Stirnflaeche bei (1316.8, 498.3, -1495.0): Ist 1, Soll 1
+PASS autobahn_s: fall id25_aussen Regelhahn-Mitte Z 1150 rel in Greifhoehe 1000..1600: Ist 1, Soll 1
+PASS autobahn_s: fall id25_aussen Gang B (lokal x 249..775): tiefster Punkt Z 2203.3 rel >= 2100: Ist 1, Soll 1
+PASS autobahn_s: fall id25_aussen Bogen am Auslegerende beginnt hinter dem Gang (x 1107 >= 775): Ist 1, Soll 1
+INFO fall id25_aussen: Schlauchhalter am Ausleger (WA-T) bei lokal x [10, 410, 810, 1107] (groesste Luecke 400 <= 400); Achse auf Z 2277 rel (Armmitte), seitlich in den Clips des Auslegers
+PASS autobahn_s: fall id25_aussen freier Fall ohne Halter 1207 mm <= 1500 (Blatt 2.6 Punkt 3; unten haelt der Abnehmer-Anschluss): Ist 1, Soll 1
+PASS autobahn_s: fall id25_aussen Interferenz 0 (16 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+INFO fall id25_aussen: Schlauch ID25/AD34.6 Zuschnitt 3058 mm (Rechnung zaehlte 3474 als Schlauch), Biegeradius 210, Endstueck waagerecht 498 (Schlaufe 300 + Bogenverkuerzung 198), Masse 3.17 kg
+PASS autobahn_s: rinne Koerper = Rinne + 2 Konsolen: Ist 0, Soll 0
+PASS autobahn_s: rinne Breite innen 100 (Schlauch d50 AD 64 passt): Ist 1, Soll 1
+PASS autobahn_s: rinne Interferenz 0 (6 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+PASS autobahn_s: rinne Gefaelle einstellbar bis 4.14 % (Langloch 60 / Konsolenabstand 1450) >= 1 % (R11): Ist 1, Soll 1
+PASS autobahn_s: rinne Konsolenabstand 1450 <= Stuetzabstand Hersteller 1500: Ist 1, Soll 1
+INFO rinne: Rechnung Abschn. 4: Gefaellebedarf laengster Weg 128 mm bei 1 %, verfuegbar >= 225 mm; Schlauch liegt auf (R6 'aufliegend'); Masse 6.22 kg je 2000
+PASS autobahn_s: bodenrinne Gang A Koerper = Rinnenkoerper + Gitterrost: Ist 0, Soll 0
+PASS autobahn_s: bodenrinne Gang A Rost-Oberkante = Boden Z 0 rel (+-2): Ist 2.84217e-14, Soll 0 (+-2)
+PASS autobahn_s: bodenrinne Gang A Rinnenkoerper-Oberkante = Boden Z 0 rel (+-2): Ist 2.84217e-14, Soll 0 (+-2)
+PASS autobahn_s: bodenrinne Gang A Laenge 1200 >= Gang 600 + 2 x 300: Ist 1, Soll 1
+PASS autobahn_s: bodenrinne Gang A Interferenz 0 (3 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+PASS autobahn_s: bodenrinne Gang A Schlauch mit 1 % passt: tiefster Punkt -98 >= Rinnensohle -150: Ist 1, Soll 1
+INFO bodenrinne Gang A: Schlauch-Sohle am Ende Z -98 rel liegt unter dem Pool-Spiegel Z 515 rel -> Weiterfuehrung nur als Einmuendung unter Wasser (Wanddurchfuehrung, grund 'pool_einmuendung'), nicht ueber den Halbring K16/K32 auf der Krone; Masse 14.55 kg
+PASS autobahn_s: bodenrinne Gang B Koerper = Rinnenkoerper + Gitterrost: Ist 0, Soll 0
+PASS autobahn_s: bodenrinne Gang B Rost-Oberkante = Boden Z 0 rel (+-2): Ist 2.13163e-14, Soll 0 (+-2)
+PASS autobahn_s: bodenrinne Gang B Rinnenkoerper-Oberkante = Boden Z 0 rel (+-2): Ist 0, Soll 0 (+-2)
+PASS autobahn_s: bodenrinne Gang B Laenge 1100 >= Gang 500 + 2 x 300: Ist 1, Soll 1
+PASS autobahn_s: bodenrinne Gang B Interferenz 0 (3 Koerper inkl. Gegenstuecke): Ist 0, Soll 0
+PASS autobahn_s: bodenrinne Gang B Schlauch mit 1 % passt: tiefster Punkt -97 >= Rinnensohle -150: Ist 1, Soll 1
+INFO bodenrinne Gang B: Schlauch-Sohle am Ende Z -97 rel liegt unter dem Pool-Spiegel Z 515 rel -> Weiterfuehrung nur als Einmuendung unter Wasser (Wanddurchfuehrung, grund 'pool_einmuendung'), nicht ueber den Halbring K16/K32 auf der Krone; Masse 13.29 kg
+PASS autobahn_s: schlauch50 Aussen-D: Ist 63.999, Soll 64 (+-0.05)
+PASS autobahn_s: schlauch50 Innen-D 50 aus Volumen: Ist 50.0015, Soll 50 (+-0.1)
+PASS autobahn_s: schlauch50 Biegeradius 385 >= max(6 x AD, Hersteller) (R14): Ist 1, Soll 1
+PASS autobahn_s: d85 Teileblatt: Schlauch ID19 lebensmittelecht mit >= 2 Quellen: Ist 1, Soll 1
+PASS autobahn_s: d85 Teileblatt: Schlauch ID25 lebensmittelecht mit >= 2 Quellen: Ist 1, Soll 1
+PASS autobahn_s: d85 Teileblatt: Schlauch d50 lebensmittelecht mit >= 2 Quellen: Ist 1, Soll 1
+PASS autobahn_s: d85 Teileblatt: Schnellkupplung lebensmittelecht mit >= 2 Quellen: Ist 1, Soll 1
+PASS autobahn_s: d85 Teileblatt: Rueckschlagventil d50 lebensmittelecht mit >= 2 Quellen: Ist 1, Soll 1
+FAIL autobahn_s: d85 Teileblatt: Regelhahn lebensmittelecht mit >= 2 Quellen: Ist 0, Soll 1
+== autobahn_s: 101/102 PASS

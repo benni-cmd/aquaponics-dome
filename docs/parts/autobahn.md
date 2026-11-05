@@ -17,8 +17,8 @@ Generator `scripts/workshop/autobahn_s.py`, Pruefung `scripts/workshop/check_aut
 ### Befunde fuer Planer, Montage und Beschaffung
 1. **Tische mit ID19 statt ID16.** Einen lichtdichten Schlauch mit Trinkwasser-Nachweis gibt es in ID16 nicht; der Markt fuehrt 12,8 / 19 / 25 mm [Q1, Q2]. Die Fallleitungen der Tische nutzen deshalb REHAU RAUAQUA T-Flex ID19 (AD 26,6). Die Schlauchmenge ID16 aus der Rechnung (60,8 m) gilt fuer ID19.
 2. **Ausleger auf Z 2277.** WA-T legt die Ausleger auf Armmitte Z 2277 rel, denn der Ring haengt unter der Montageschiene. Der Schlauch steigt deshalb nach dem waagerechten Abzweig (Z 2145) unter 45 Grad um 132 mm an. Je Ausleger-Abnehmer kommen 187 mm Weg hinzu; der Check vergleicht gegen Rechnung plus diesen Mehrweg.
-3. **Rechnung zaehlte Formstuecke als Schlauch.** Vom Weg Ring-Achse bis Abnehmer sind 350 bis 362 mm Abzweig-Kette und etwa 250 mm Regelhahn, Kupplung und Endstueck. Die Schlauch-Zuschnitte im Check sind deshalb je Abnehmer etwa 0,6 m kuerzer als die Rechnung; der Check gibt sie als INFO aus.
-4. **Bodenrinne liegt unter dem Pool-Spiegel.** Ein Schlauch, der einen Gang in der Bodenrinne quert, liegt danach bei etwa Z -110 rel, also unter dem Pool-Spiegel Z 515. Er kann nicht mehr frei fallend auf den Halbring K16/K32 an der Poolkrone (Z 650 bis 730) laufen, wie Blatt 2.5 Punkt 1 annimmt. Moeglich ist nur eine Einmuendung unter Wasser durch die Poolwand (Leitungsordnung R13, Feld `grund` = `pool_einmuendung`). Das ist eine Planer-Frage, keine Teil-Frage.
+3. **Rechnung zaehlte Formstuecke als Schlauch.** Vom Weg Ring-Achse bis Abnehmer sind 350 bis 362 mm Abzweig-Kette und etwa 250 mm Regelhahn, Kupplung und Endstueck. Die Schlauch-Zuschnitte im Check sind deshalb je Abnehmer 0,39 bis 0,60 m kuerzer als die Rechnung. Summe gemessen: ID19 50,3 m statt 60,8 m, ID25 31,6 m statt 38,6 m (Zuschnitte aus dem Check x Stueckzahl 6/10/8 bzw. 6/8).
+4. **Bodenrinne liegt unter dem Pool-Spiegel.** Ein Schlauch, der einen Gang in der Bodenrinne quert, liegt am Rinnenende bei Z -98 rel (Check, Schlauchsohle), also unter dem Pool-Spiegel Z 515. Er kann nicht mehr frei fallend auf den Halbring K16/K32 an der Poolkrone (Z 650 bis 730) laufen, wie Blatt 2.5 Punkt 1 annimmt. Moeglich ist nur eine Einmuendung unter Wasser durch die Poolwand (Leitungsordnung R13, Feld `grund` = `pool_einmuendung`). Das ist eine Planer-Frage, keine Teil-Frage.
 5. **Handels-Bodenrinne zu flach.** ACO Self Hexaline 2.0 NW100 ist 82 mm hoch [Q21, Q23], Euroline 2.0 97 bis 100 mm [Q21, Q22]. Ein Schlauch d50 (AD 64) mit 1 % Gefaelle ueber 1,2 m und Rost braucht mindestens 98 mm lichte Tiefe (Rost 20 + Luft 2 + AD 64 + Gefaelle 12) [E]. Das Modell nutzt 150 mm [A]; ein passendes Handelsteil ist offen.
 
 ### WA5 Schlauch-Fallleitung `schlauch_fall_<typ>` (5 Typen)
@@ -75,6 +75,9 @@ Q1 bis Q28 aus der Recherche WA-S (05.11.2026); die oben genutzten:
 - Q10 ehorst Kamlok Typ C DN25; Q11 Riegler Kamlok Typ C 1.4401 ID25; Q12 Riegler Katalogblatt P 5-87; Q13 ehorst Kamlok Typ E DN25.
 - Q15 GF Datenblatt 561/562 (07/2026); Q16 GF Datenblatt 561 PVC-U; Q19 GF Datenblatt 546 Pro (04/2026); Q20 Schwarte-Shop Baenninger-Tuellen.
 - Q21 ACO Produktinformation Self; Q22 baustoffshop ACO Euroline; Q23 bauschnell ACO Hexaline; Q25 OBO Datenblatt 6001072; Q26 OBO Broschuere Gitterrinnen 2018; Q27 OBO Datenblatt 6001442.
+
+### Pruefung (05.11.2026)
+`python -X utf8 scripts/workshop/check_autobahn_s.py`: 101/102 PASS, Ausgabe `renders/components/autobahn/check_autobahn_s.txt`. Einziger FAIL: Regelhahn hat nur eine Quelle fuer die Lebensmitteleignung (Offen 1).
 
 ### Offen (WA-S)
 1. Regelhahn: zweite Quelle fuer die Trinkwasser-Zulassung des GF 546 Pro fehlt; ein Kugelhahn mit angeformten Tuellen und Nachweis wurde nicht gefunden.

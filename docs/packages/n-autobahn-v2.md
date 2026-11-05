@@ -29,6 +29,8 @@ Auftragsblatt: `docs/jobs/N-AUTOBAHN-V2.md`. Rechnung: `python -X utf8 scripts/n
 2. Werkstoffe D85 mit zwei Quellen (Recherche-Agent, Ergebnis ins Teileblatt).
 3. Check, Teiledaten `data/components/autobahn_teile.json` (Abschnitt `wa_s`), Bilder `renders/components/autobahn/`, Teileblatt `docs/parts/autobahn.md` Abschnitt WA-S.
 
+**Stand WA-S 05.11.2026:** 12 Teile gebaut, Check 101/102 PASS (`python -X utf8 scripts/workshop/check_autobahn_s.py`); einziger FAIL: Regelhahn GF 546 Pro nur eine Quelle fuer D85. Befunde im Teileblatt: Tische ID19 statt ID16, Anstieg auf Ausleger Z 2277, Bodenrinne unter Pool-Spiegel (Planer-Frage), Handels-Bodenrinne zu flach.
+
 ## DoD
 1. Pruefpunkte 1 bis 5 aus dem Blatt von einem fremden Pruefer als PASS belegt (`docs/jobs/pruefung/N-AUTOBAHN-V2.md`).
 2. Viewer-Screenshot beider Varianten im echten Browser, Ring mit Schlaeuchen nur in Ring B2.

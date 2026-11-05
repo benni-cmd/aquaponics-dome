@@ -289,7 +289,7 @@ def fallleitung(t):
     b.add("material.assign", bodies=["Regelhahn"], material="LT hahn")
     # Zwischenschlauch und Schnellkupplung
     _, l2, n2 = hose_path(b, "Schlauch_2", g["s2"], g["Rb"], g["ad"], idd)
-    kb, _ = add_kupplung(b, "Kupplung", [xv, 0, g["z_k_top"] + tl], dn, idd, wulst=False)
+    kb, _ = add_kupplung(b, "Kupplung", [xv, 0, g["z_k_top"] + SK[idd]["tl"]], dn, idd, wulst=False)   # Tuellenlaenge der Kupplung, nicht die der Fittings
     # Schlauch 3: freier Fall bis Ziel-Hoehe, Bogen, waagerecht zum Anschluss
     _, l3, n3 = hose_path(b, "Schlauch_3", [[xv, 0, g["z_k_bot"]]] + g["s3"][1:], g["Rb"], g["ad"], idd)
     # Endstueck: Tuelle + Kragen + Muffe (Tisch d25) bzw. Klemmverbinder d20 (Beet), Port an der Stirnflaeche
@@ -349,7 +349,7 @@ def ruecklauf_rinne():
         k = f"Konsole_{i}"
         yb = g["y_bein"]; yp = yb + p["bein"] / 2 + kt / 2      # Klemmplatte liegt an der Beinflaeche zur Rinne
         # Arm (Flachstahl 40 x 4) unter der Rinne, von der Klemmplatte bis unter die Rinnen-Aussenkante
-        bx(b, k + "_Arm", p["arm_b"], (bo / 2 + 5) - (yp + kt / 2) + bo / 2 + 5, p["arm_t"], [x, ((yp + kt / 2) + (bo / 2 + 5)) / 2, -p["arm_t"] / 2], body=k)
+        bx(b, k + "_Arm", p["arm_b"], (bo / 2 + 5) - (yp + kt / 2), p["arm_t"], [x, ((yp + kt / 2) + (bo / 2 + 5)) / 2, -p["arm_t"] / 2], body=k)
         bx(b, k + "_Platte", kw, kt, kh, [x, yp, -kh / 2 + 20], op="join", targets=[k])
         bx(b, k + "_Langloch", 10, kt + 2, p["langloch"], [x, yp, -kh / 2 + 20], op="cut", targets=[k])
     b.add("material.assign", bodies=["Konsole_1", "Konsole_2"], material="LT stahl")

@@ -23,6 +23,7 @@ Blatt: `docs/jobs/W37-1-sumpf-schlammfass.md` (Aktualitaetspruefung 05.11.2026: 
 05.11.2026: Schritt 1 erledigt (Blatt-Abschnitt "Aktualitaetspruefung (05.11.2026, Werkstatt)", Commit 431b6c6).
 05.11.2026: Teil 1 `beet_sumpf` T92 (a725eb1), Teil 2 `schlammfass` T93 und `lt_kugelhahn_feder_d40` T70-KHF-40 (f7fd740). Teilenummer T83 aus dem Mini-Plan war belegt (aktivkohle_station), daher T92/T93.
 05.11.2026 (Pause, Ben Feierabend): `check_leitungsteile.py` nach dem Ausnehmen von `leitung_w37.FILES` neu gestartet, Ergebnis lag bei der Pause noch nicht vor (vorher FAIL 64 statt 63 Dateien, Ursache der neue Hahn). WIEDERANLAUF: `python -X utf8 scripts/workshop/check_leitungsteile.py` laufen lassen (ueber 10 min), Ergebnis hier eintragen.
+05.11.2026 Nachtrag: Neulauf beendet, Exit 1 nach 87 PASS, 0 FAIL: Abbruch `FEHLER faces: no body Dichtung_B`. Ursache NICHT W37: zwei fremde, nicht committete Dateien `designs/components/lt_schacht_kugelhahn_d63_tief_senkrecht.sc` und `..._waagerecht.sc` (Sitzung werkstatt-schacht-ring, `schacht_tief.py`) stehen in keiner FILES-Ausnahmeliste; ohne sie zaehlt die Pruefung 63 (W37 ist ausgenommen). Owner: werkstatt-schacht-ring (Ausnahmeliste ergaenzen), danach Neulauf.
 
 ## DoD
 Pruefpunkte 1 bis 5 des Blatts mit Befehl und Messwert in der Tabelle unten.

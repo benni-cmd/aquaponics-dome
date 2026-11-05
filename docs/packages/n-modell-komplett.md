@@ -34,5 +34,10 @@ Reihenfolge: 2 und 5 duerfen vor Schritt 3 laufen (kein `dome.sc`-Neubau); 3 nac
 - **check_parts:** `python -X utf8 scripts/workshop/check_parts.py strebe_a strebe_b` mit Umleitung der zwei `.sc` auf die Scratchpad-Kopie: 22/22 je Komponente, Exit 0.
 - **Im Repo (nach "check_latte fertig"):** `python -X utf8 scripts/components/strebe.py` schrieb `designs/components/strebe_a.sc`/`strebe_b.sc`; `eval` im Repo gleich der Scratchpad-Messung (7729 g / 8821 g, bbox 30 x 30 x 3039/3468, closed, `Stahl verzinkt`); `python -X utf8 scripts/workshop/check_parts.py strebe_a strebe_b` ohne Umleitung 22/22 je Teil, Exit 0. Folge fuer Schritt 3: Rohr-Aussenkante 15 statt 45 mm von der Achse, Folienabstand in `check_huelle.py` waechst.
 
+## Stand 05.11.2026 Montage (Schritt 3, Runde 70)
+- **Plan:** (1) Vorher-Werte aus Runde 69 sichern; (2) `place_struts`: lokale Y-Achse jeder Strebe = `bolzenachse` des Steckarms aus `data/components/knoten_arme.json` (um `ROT` gedreht, senkrecht zur Achse projiziert), Muster 5 Streben messen; (3) `gen_dome.py:250` `strut_r + 30` durch Parameter `base_axis_h` 75 ersetzen; (4) `sh scripts/build.sh 5 70`, danach `default_werkstoffe.py --apply`; (5) `check_walkways.py`, `check_huelle.py`, `viewer/export_model.py`; Messwerte hier.
+- **Vorher (Runde 69, `scripts/.segs.json` 04.11. 10:30):** 64 Streben, Basisknoten-Z 475,0 mm (10 Knoten). Befehl: `python -c "import json;s=json.load(open('scripts/.segs.json'));print(min(p[2] for g in s for p in g))"`.
+- **Muster Rollwinkel (vor Umbau, Skript im Scratchpad `roll_test.py`):** Streben 0-4 (Knoten 22-23, 22-2, 22-3, 22-24, 23-2): Achse gegen Steckarm 0,081 bis 0,169 Grad, Rollrichtung beider Enden gleich (0,000 Grad); ueber alle 64 hoechstens 0,178 Grad (Soll unter 1 Grad).
+
 ## DoD
 Dateien aus dem Blatt vorhanden; fuenf Pruefpunkte vom Pruefer gemessen; Screenshot Tuer mit Klinke und Streben-Nahansicht gegen `docs/ui-standard.md`; Vorher/Nachher-Werte (Basisknoten-Z, defs-Summe) im Paket; Entscheidungen in `docs/decisions.md`; Commit und Push je Teilschritt.

@@ -67,12 +67,19 @@ def place_struts(segs):
     for key, fct in (("A", 0.5465), ("B", 0.6180)):
         add("component.insert_design", path=os.path.join(ROOT, "designs", "components", f"strebe_{key.lower()}.sc").replace("\\", "/"), name=f"Strebe_{key}")
     moves = {"A": [], "B": []}
+    # Rollwinkel (N-MODELL-KOMPLETT Schritt 3): Rohrflaechen parallel zu den Steckarmen; lokale Y = Bolzenachse des Arms aus knoten_arme.json (layout-Rahmen, um ROT gedreht)
+    KA = json.load(open(os.path.join(ROOT, "data", "components", "knoten_arme.json"), encoding="utf-8"))
+    ra = math.radians(ROT)
+    NM = [rot(n["x"], n["y"], ra) for n in LAYOUT["dome"]["nodes_list"]]
+    def nid(p): return min(range(len(NM)), key=lambda i: math.hypot(NM[i][0] - p[0], NM[i][1] - p[1])) + 1
     for A, B in segs:
         d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [x/L for x in d]
         key = "A" if abs(L - 0.5465*R) < abs(L - 0.6180*R) else "B"
-        h = [1, 0, 0] if abs(u[0]) < 0.9 else [0, 1, 0]
-        x = [h[1]*u[2]-h[2]*u[1], h[2]*u[0]-h[0]*u[2], h[0]*u[1]-h[1]*u[0]]; xl = math.sqrt(sum(q*q for q in x)); x = [q/xl for q in x]
-        y = [u[1]*x[2]-u[2]*x[1], u[2]*x[0]-u[0]*x[2], u[0]*x[1]-u[1]*x[0]]
+        ia, ib = nid(A), nid(B)
+        ba = next(a["bolzenachse"] for a in KA[str(ia)]["arme"] if a["nachbar"] == ib)
+        bx, by = rot(ba[0], ba[1], ra); b3 = [bx, by, ba[2]]
+        bu = sum(b3[i]*u[i] for i in range(3)); y = [b3[i] - bu*u[i] for i in range(3)]; yl = math.sqrt(sum(q*q for q in y)); y = [q/yl for q in y]
+        x = [y[1]*u[2]-y[2]*u[1], y[2]*u[0]-y[0]*u[2], y[0]*u[1]-y[1]*u[0]]   # x = y kreuz u, damit (x, y, u) rechtshaendig
         o = P["strut_end_offset"]   # Strebe beginnt 120 mm hinter dem Knoten (Komponente = Knoten-Knoten minus 2 x Endversatz)
         moves[key].append([round(v, 9) for v in (x[0], y[0], u[0], A[0] + u[0]*o, x[1], y[1], u[1], A[1] + u[1]*o, x[2], y[2], u[2], A[2] + u[2]*o)])
     for key in ("A", "B"):   # erst alle Kopien (alle am Ursprung), dann jede Instanz absolut platzieren
@@ -247,7 +254,7 @@ def t1_t3_t4(sock_z):
     # Radius so, dass der Basisring-Umkreis = dome_base_d/2
     R = (P["dome_base_d"]/2) / math.sqrt(1 - zb*zb)
     zsq = P['dome_h']/((1-zb)*R)   # Hoehe/Breite = 0,5: Kuppel in Z gestaucht
-    cz = sock_z + P['strut_r'] + 30 - zb*R*zsq   # Basisring liegt auf dem Sockel
+    cz = sock_z + P['base_axis_h'] - zb*R*zsq   # Basisring liegt auf dem Sockel (Achshoehe 75 = alter Rundstab strut_r 45 + 30, seit Schritt 3 entkoppelt)
     # Basisring auf gleiche Hoehe setzen; Drehung: Basisknoten bei Azimut 0
     base = [k for k in keep if abs(pts[k][2]) < 1e-3]
     a0 = math.atan2(pts[base[0]][1], pts[base[0]][0])

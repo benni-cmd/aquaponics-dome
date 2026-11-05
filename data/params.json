@@ -48,7 +48,16 @@
   "value": 45,
   "unit": "mm",
   "origin": "A",
-  "source": "Rundstab-Platzhalter bis N-MODELL-KOMPLETT Schritt 3; Strebe ist seit 05.11.2026 Vierkant (strut_profile/strut_wall); gen_dome.py:250 rechnet damit noch die Basisringhoehe, nicht aendern",
+  "source": "Alter Rundstab-Radius; Strebe ist seit 05.11.2026 Vierkant (strut_profile/strut_wall). Seit Schritt 3 (Runde 70) nicht mehr im Modellbau: Basisringhoehe kommt aus base_axis_h. Nur noch Abstandsrechnungen (check_latte, place_m8, check_huelle), konservativ",
+  "r_id": "R01",
+  "maturity": 0,
+  "used_by": "check_latte.py, place_m8.py, check_huelle.py"
+ },
+ "base_axis_h": {
+  "value": 75,
+  "unit": "mm",
+  "origin": "A",
+  "source": "Achshoehe der Basisknoten ueber dem Sockel (Z 400 -> 475); Wert aus dem alten Rundstab (strut_r 45 + 30) uebernommen, damit Basisring, Tuer und Fundament unveraendert bleiben (N-MODELL-KOMPLETT Schritt 3, 05.11.2026)",
   "r_id": "R01",
   "maturity": 0,
   "used_by": "gen_dome.py"

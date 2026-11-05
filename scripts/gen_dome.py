@@ -29,6 +29,7 @@ def pol(r, az): a = math.radians(az); return (r*math.cos(a), r*math.sin(a))
 
 def params():
     for k, v in P.items():
+        if isinstance(v, bool) or not isinstance(v, (int, float)): continue   # Text-Schalter (z. B. kreislauf_variante "a_plus", d0819fe) sind keine CAD-Ausdruecke
         add("parameters.add", name=k, expression=str(v), comment="dome-build Parameter")
 
 def rect_body(name, cx, cy, z0, az_deg, along, across, h, op="new", targets=None):

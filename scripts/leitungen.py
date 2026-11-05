@@ -148,14 +148,14 @@ def _graben_trassen(trs):
     Aneinandergereihte gleichbreite Kaesten mit deckungsgleichen Seiten- und Bodenflaechen liessen den Boolean-Schnitt (Erdflaeche) mit einem querenden Graben scheitern. Linie 1 bleibt unveraendert."""
     out = []
     for tr in trs:
-        if tr.get("linie", 1) != 2:
+        if tr.get("linie", 1) not in (1, 2):   # M10-UMBAU: Linie 1 wie Linie 2 (neue Grabenlagen schnitten sonst deckungsgleich, Build Runde 71)
             out.append(tr); continue
         v = out[-1] if out else None
-        if v and v.get("linie", 1) == 2 and tr.get("kante") and v.get("kante") == tr["kante"] and v["dn"] == tr["dn"] and math.dist(v["pfad"][-1], tr["pfad"][0]) < 0.6:
+        if v and v.get("linie", 1) == tr.get("linie", 1) and tr.get("kante") and v.get("kante") == tr["kante"] and v["dn"] == tr["dn"] and math.dist(v["pfad"][-1], tr["pfad"][0]) < 0.6:
             out[-1] = dict(v, pfad=[list(p) for p in v["pfad"]] + [list(p) for p in tr["pfad"][1:]])
         else: out.append(dict(tr, pfad=[list(p) for p in tr["pfad"]]))
     for tr in out:
-        if tr.get("linie", 1) != 2: continue
+        if tr.get("linie", 1) not in (1, 2): continue
         pf = tr["pfad"]; keep = [pf[0]]
         for i in range(1, len(pf) - 1):
             a, b, c = keep[-1], pf[i], pf[i + 1]
@@ -175,7 +175,7 @@ def graben(doc, fz):
     for tr in _graben_trassen(doc["trassen"]):
         if tr.get("linie") == "luft": continue                      # M10-S5-LUFT: Luftrohre liegen im Becken (kein Graben in der Erde)
         d = float(tr["dn"]); w = d + zus; pts = [tuple(float(v) for v in p) for p in tr["pfad"]]
-        ex = 0.0 if tr.get("linie", 1) == 1 else 1.0               # M10-S2c: Linie 2 je Ende 1 mm laenger: an 90-Grad-Ecken und Steigleitungen fiel sonst die Stirnflaeche in die Seitenflaeche des Nachbarn (Boolean-Schnitt ohne Ergebnis)
+        ex = 1.0                                                    # M10-UMBAU: auch Linie 1 (vorher 0)               # M10-S2c: Linie 2 je Ende 1 mm laenger: an 90-Grad-Ecken und Steigleitungen fiel sonst die Stirnflaeche in die Seitenflaeche des Nachbarn (Boolean-Schnitt ohne Ergebnis)
         if ex:                                                      # Linie 2: je Netzkante (Teilstuecke derselben Kante teilen die Breite, wie koaxiale Steigleitungen) eine eigene Breite, +0,4 mm je Kante: sonst deckungsgleiche Seiten- und Bodenflaechen verschiedener Nachbarn
             w += 0.4 * k2.setdefault(tr.get("kante") or tr["id"], len(k2) + 1)
         for i in range(len(pts) - 1):

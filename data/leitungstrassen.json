@@ -1039,7 +1039,7 @@
      14.0
     ],
     [
-     3400.0,
+     3550.0,
      380.1,
      14.0
     ]
@@ -1066,7 +1066,7 @@
    "anschluss": [],
    "pfad": [
     [
-     3400.0,
+     3550.0,
      380.1,
      14.0
     ],
@@ -1212,7 +1212,8 @@
     "KS",
     "KG",
     "KG",
-    "KS"
+    "KS",
+    "KG"
    ],
    "anschluss": [],
    "pfad": [
@@ -1228,25 +1229,31 @@
     ],
     [
      2587.9,
-     380.1,
+     180.1,
      -258.9
     ],
     [
-     3400.0,
-     380.1,
+     3550.0,
+     180.1,
      -258.9
     ],
     [
-     3400.0,
+     3550.0,
+     180.1,
+     14.0
+    ],
+    [
+     3550.0,
      380.1,
      14.0
     ]
    ],
-   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter den Stamm, +X bis x 3400 -> lotrecht hoch in T6",
+   "notiz": "Kugelhahn -> Tiefleitung Z -259 -Y unter dem Stamm durch, +X bis x 3550 -> lotrecht auf Z 14 -> 200 mm +Y in T6",
    "baender": [
     "U",
     "UT",
     "UT",
+    "U",
     "U"
    ],
    "linie": 1
@@ -1890,7 +1897,7 @@
   {
    "id": "T6",
    "pos": [
-    3400.0,
+    3550.0,
     380.1,
     14.0
    ],
@@ -1912,7 +1919,7 @@
      "d": 63
     }
    ],
-   "notiz": "T d63 im Filter-Stamm, Zweig lotrecht nach unten (Notbypass K56)",
+   "notiz": "T d63 im Filter-Stamm, Zweig waagerecht nach Sueden (Notbypass K56)",
    "linie": 1
   },
   {

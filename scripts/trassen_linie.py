@@ -411,7 +411,7 @@ def linie2_bypass(L, neu):
 # K05 und der Bypass K56 schliessen lotrecht von unten an seine T-Stuecke an. Lagen und Hoehen der Lagen-Konstanten unten: Montage M10-UMBAU [A].
 U1 = {"z_stamm": 14.0,            # Grabensohle Stamm K06-T (Rohrachse): Filterauslauf Z 214 minus Etage 200 (2 Boegen d63 + Rohrstueck)
       "x_steig": 3000.0,          # x der Pumpen-Saugsteiger K06/K02 (186 mm vor den Saugstutzen, ausserhalb der Standwinkel)
-      "x_t6": 3400.0,             # T6 (Bypass-Anschluss) auf der Stamm-Strecke y = Filter-Etage
+      "x_t6": 3550.0,             # T6 (Bypass-Anschluss) auf der Stamm-Strecke y = Filter-Etage
       "z_druck": 900.0,           # K08/K09 waagerecht ueber der Pumpen-Montagetafel (Oberkante Z 863)
       "x_k08": 2770.0,            # K08 laeuft westlich am Biofilter-Tank vorbei (Tank-Radius 465, Bein bei x 2915; Grobkasten check_leitungen)
       "l_zul": 150.0,             # Stamm zum Tank-Zulauf: Laenge in Port-Richtung vor dem Bogen
@@ -463,16 +463,17 @@ def linie1_ordnung(L, neu):
     pa = (t5[0], t5[1], zu - abz); pb = add(pa, (0.0, 0.0, -1.0), lkh); zc = pb[2] - P["lt_k56_tief"]
     neu["r_stuecke"].append({"id": "KH1", "art": "kugelhahn", "pos_a": rd(pa), "dir": [0.0, 0.0, -1.0], "d_gross": 63, "d_klein": 63,
                              "notiz": "Kugelhahn d63 K56 (Normalbetrieb zu, Stoerfall auf); Schacht in S2N/S6"})
-    k56 = [pb, (t5[0], t5[1], zc), (t5[0], ys, zc), (t6[0], ys, zc), t6]   # erst -Y unter den Stamm, dann +X (>= 250 mm Achsabstand zu K05)
+    yk = ys - 200.0   # Tiefleitung 200 mm suedlich des Stamms: eigener Graben (unter dem Stamm fielen die Grabenflaechen zusammen, Erdflaechen-Schnitt ohne Ergebnis, Build 71)
+    k56 = [pb, (t5[0], t5[1], zc), (t5[0], yk, zc), (t6[0], yk, zc), (t6[0], yk, z0), t6]   # -Y unter dem Stamm durch, +X, lotrecht hoch, +Y waagerecht in T6
     neu["trassen"] += [
         {"id": "K56-a", "kante": "K56", "dn": 63, "farbe": "dunkelblau", "start": "t:T5", "ende": "r:KH1", "korridor": ["KS"], "anschluss": [], "pfad": [rd(t5), rd(pa)], "notiz": "Abzweig vom T d75 auf K01 lotrecht nach unten bis zum Kugelhahn"},
-        {"id": "K56-b", "kante": "K56", "dn": 63, "farbe": "dunkelblau", "start": "r:KH1", "ende": "t:T6", "korridor": ["KS", "KG", "KG", "KS"], "anschluss": [], "pfad": [rd(p) for p in k56],
-         "notiz": "Kugelhahn -> Tiefleitung Z %.0f -Y unter den Stamm, +X bis x %g -> lotrecht hoch in T6" % (zc, t6[0])}]
+        {"id": "K56-b", "kante": "K56", "dn": 63, "farbe": "dunkelblau", "start": "r:KH1", "ende": "t:T6", "korridor": ["KS", "KG", "KG", "KS", "KG"], "anschluss": [], "pfad": [rd(p) for p in k56],
+         "notiz": "Kugelhahn -> Tiefleitung Z %.0f -Y unter dem Stamm durch, +X bis x %g -> lotrecht auf Z %g -> 200 mm +Y in T6" % (zc, t6[0], z0)}]
     neu["t_stuecke"] += [
         {"id": "T5", "pos": rd(t5), "d": HD, "ports": [{"trasse": "K01", "ende": "ende", "d": HD}, {"trasse": "K01-m", "ende": "start", "d": HD}, {"trasse": "K56-a", "ende": "start", "d": 63}],
          "notiz": "T d75 auf K01, Zweig d63 lotrecht nach unten (Notbypass K56): Rohrstueck d75 + Reduziermuffe d75/d63"},
         {"id": "T6", "pos": rd(t6), "d": 63, "ports": [{"trasse": "K06-T", "ende": "ende", "d": 63}, {"trasse": "K06-T-b", "ende": "start", "d": 63}, {"trasse": "K56-b", "ende": "ende", "d": 63}],
-         "notiz": "T d63 im Filter-Stamm, Zweig lotrecht nach unten (Notbypass K56)"}]
+         "notiz": "T d63 im Filter-Stamm, Zweig waagerecht nach Sueden (Notbypass K56)"}]
     # ---------------- Biofilter: K08/K09 Druckstutzen -> Z z_druck -> T2 neben dem Tank; Stamm lotrecht zur Zulaufhoehe -> l_zul in Port-Richtung -> Reduziermuffe
     tg = L["tank_gross"]; zh = U1["z_druck"]
     p8, _, _ = port(L["pumpe_gross"][0], "pumpe_gross", "druck"); p9, _, _ = port(L["pumpe_gross"][1], "pumpe_gross", "druck")

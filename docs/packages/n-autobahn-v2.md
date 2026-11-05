@@ -23,6 +23,12 @@ Auftragsblatt: `docs/jobs/N-AUTOBAHN-V2.md`. Rechnung: `python -X utf8 scripts/n
   4. Teile Zulauf 540 gegen 267; Mehrkosten mindestens 2.769 EUR (6 Posten ohne Preis); Graben Zulauf 0 gegen 4,6 bis 29,6 m.
   5. Empfehlung: A+ bleibt Bau-Empfehlung; Autobahn wird als vollwertige Anschauungs-Variante gebaut. Umkehr-Ausloeser stehen im Blatt Abschnitt 5.
 
+### WA-S Schlauch (Werkstatt, 05.11.2026, Plan)
+**Problem:** Fallleitungen, Kupplungen, Rueckschlagventil d50 und Schlauch-Ruecklauf gibt es nicht als Bauteile. **Intent:** R2 setzt nur fertige Teile, die Koordinaten kommen aus einer Schlauch-Funktion statt von Hand. **Goal:** Die WA-S-Pruefpunkte aus Blatt Abschnitt 3 sind in `scripts/workshop/check_autobahn_s.py` gemessen (Exit 0).
+1. Generator `scripts/workshop/autobahn_s.py`: Schlauch-Pfad (Polylinie mit Biegeradius, R14), WA6 Schnellkupplung ID16/ID25, WA8 Rueckschlagventil d50, WA5 fuenf Fallleitungs-Typen (Tisch innen/mitte/aussen, Beet innen/aussen), WA9 Ruecklauf-Rinne, Bodenrinne mit Rost, Schlauch d50.
+2. Werkstoffe D85 mit zwei Quellen (Recherche-Agent, Ergebnis ins Teileblatt).
+3. Check, Teiledaten `data/components/autobahn_teile.json` (Abschnitt `wa_s`), Bilder `renders/components/autobahn/`, Teileblatt `docs/parts/autobahn.md` Abschnitt WA-S.
+
 ## DoD
 1. Pruefpunkte 1 bis 5 aus dem Blatt von einem fremden Pruefer als PASS belegt (`docs/jobs/pruefung/N-AUTOBAHN-V2.md`).
 2. Viewer-Screenshot beider Varianten im echten Browser, Ring mit Schlaeuchen nur in Ring B2.

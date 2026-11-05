@@ -262,3 +262,45 @@ Nicht vorab schliessbar, weil sie erst am fertigen Rohr pruefbar sind: L10 (Nach
 - **B6 Biofilter-Ablass ohne Netz-Knoten:** KB1/KB2 (Kugelhahn d50 + Kappe) haben keine Kante in `data/leitungsnetz.json`.
 - **B7 Halter ohne Konsole:** Die Klemmen sitzen an der Rohrachse; Konsole oder Staender zum Boden/Tafel sind nicht modelliert (OFFEN Werkstatt: Halter). `lt_klemme_d75` fehlt weiter (oberirdisch derzeit kein d75-Rohr ueber Flur).
 - **Unveraendert offen:** R4 K20 (Versatz Druckstutzen Pumpe_klein:1 zu Zulauf Tank_klein:1 laesst kein 300-mm-Rohr zwischen drei Boegen; nur mit Bauteil-Lage loesbar), R9 K24-K25-Stamm (Naeherung "Gang", `check_walkways` PASS), B1 (Strebe ueber Pumpen-Druckstutzen), B2 (K05/K21 Gefaelle, Entscheidung), B3 (Heber-Reserve 65 mm schon im Bestand).
+
+## 14. M10-S2N A+-Zugaenge am vergrabenen Hauptkreislauf (Montage, 05.11.2026; Blatt `docs/jobs/M10-S2N.md`, Runde 75)
+**Problem:** Der vergrabene Hauptkreislauf ist ohne Aufgraben weder spuel- noch absperrbar. **Intent:** D81, E20 = A+: Revisionsstutzen, Schaechte, Absperrhaehne und Spuelanschluesse ohne Rueckbau. **Goal:** Pruefpunkte 1 bis 5 des Blatts gemessen.
+
+**Werkzeug (Blatt Schritt 1):**
+- `scripts/check_revision.py`: Netz aus Trassen, T- und Hahn-Eintraegen. Gemessen wird der Abstand entlang der Achse zum naechsten Zugang.
+- Zugaenge sind: Hahn ueber Flur oder im Schacht, Revisions-T, Port ueber Flur, Feinfilter-Grube und Pool-Bodenablauf [A].
+- Ein Hahn unter Flur ohne Schacht zaehlt nicht.
+- `scripts/trassen_linie.py` Funktion `s2n()`: setzt alle Teile und teilt dabei Trassen. Die geteilte Trasse bleibt fuer ring_b2 ungeteilt stehen (Feld `s2n_basis`); alle S2N-Teile tragen `varianten: ["a_plus"]`.
+- `leitungen.graben`: Grabenbreiten-Nummer zuerst fuer den Bestand; Schachtgrube als gedrehter Kasten.
+- `check_leitungsordnung.py`: liest die Variante gefiltert.
+
+**Gesetzt (Lagen in `data/leitungstrassen.json`):**
+- **Revisionsstutzen 9** (T, Steigrohr d50, Kappe d50, Oberkante Z 410):
+  - Linie 1: REV1-1 an K03-Steig (2066 / -1350, Achse Z -1635); REV1-2 und REV1-3 an K05 (2861 / -2229 und 3260 / 537).
+  - Linie 2: REV2-1 an K22-T-b (-954 / -4150); REV2-2 an K57-b (-1246 / -2622, Ersatz fuer den fehlenden Schacht KH2); REV2-3 und REV2-4 an K19 (0 / -2810 und 216 / -3514, Z -1635); REV2-5 und REV2-6 an K21 (305 / -3692 und 14 / -2382).
+  - Wo mit 120 mm Rohr am T kein Platz war, sitzt das T mit 40 mm Rohr im Formstueck-Zusammenbau (REV2-1, REV2-4).
+- **Absperrhaehne:**
+  - d50 je Pumpen-Saugstutzen (KP1_1/KP1_2/KP2_1/KP2_2), Muffe A direkt auf dem Stutzen.
+  - d63 im Stamm zwischen Filter und Bypass-T (KS1 3777 / 380, KS2 -1456 / -3885, Z 14).
+- **Spuelanschluesse 4** (T, Rohr, Kugelhahn d50, Kappe d50):
+  - Am Steigerkopf von K03 und K19 (der obere Bogen ist durch ein T ersetzt; gerader Durchgang nach unten in den Steiger).
+  - Am Fallrohr von K05 und K21 auf Z 950 (Abzweig in einer Weltachse am Bauteil).
+- **Schacht** `lt_schacht_kugelhahn_d63_tief_senkrecht` an KH1 (Hahnmitte 2587,9 / 630,9 / -86,4).
+- **Betriebsregel M4** in `docs/model-description.md`.
+
+**Messung Runde 75** (Build `sh scripts/build.sh 5 75` Exit 0, 11:31 min, Lauf 3; Lauf 1 und 2 scheiterten an der Erdflaeche, Ursachen oben behoben):
+
+| Pruefpunkt | Befehl | Soll | Ist |
+|---|---|---|---|
+| 1 Zugaenge | `python -X utf8 scripts/check_revision.py` | 0 Verstoesse | Strecken 0 (groesster Abstand 2011 mm); Knicke **1 von 32**: K56-b bei 3550 / 180 / -259, 1118 mm (vorher 17 Knicke und 4 Strecken) |
+| 2 Instanzen | Zaehlung `occurrence.move` in `scripts/dome-script.json` gegen Runde 74 (`viewer/instances.json` vor dem Export) | d63 +2, d50 +8, Kappe >= Stutzen + 5 | `LT_Kugelhahn_d63` 2 -> **4**, `LT_Kugelhahn_d50` 2 -> **10**, `LT_Kappe_d50` 4 -> **17** (+13 = 9 Stutzen + 4 Spuel); Kappe am Stumpf **entfaellt** (Befund B8) |
+| 3 Heber | Python-Vergleich der 6 Heber-Pfade; `python -X utf8 scripts/r45_heber.py` | Pfade gleich; >= 85 / 88 mm | Pfade **gleich**; K01 3076 mm, K17 2216 mm, je 4 Boegen; Reserve 65 / 68 mm (**unveraendert**, Befund B3 seit Runde 70) |
+| 4 Pruefskripte | `check_leitungen.py`, `check_leitungsordnung.py`, `check_walkways.py` | 0 / 0 / PASS | `check_leitungen` 3 (dieselben wie vorher: K08 Grobkasten, Gefaelle K05 und K21 = B2); Leitungsordnung R1/R2/R3/R6/R7 0, Rest **gleich Runde 74** (R4 K20, R5 4 Luft, R8 5 Luft, R9 K24-K25-Stamm); Laufwege PASS (A 700, B 600, Wandluft 110) |
+| 5 Schaechte | Zaehlung wie oben | 2 senkrecht + 2 waagerecht, Deckel Z 400 +- 30 | senkrecht **1** (KH1, Deckel Z 400 nach Bauteilblatt), waagerecht **0** (Befunde B9, B10) |
+
+**Befunde (an den Orchestrator):**
+- **B8 Stumpf-Kappe entfaellt:** K19 steckt seit Runde 72 mit einer Kupplung auf dem Ende von `K03-K19-Stumpf` (Absetzer-Zulauf Linie 2). Eine Kappe dort wuerde Linie 2 sperren; R47 M1 "Stumpf mit Kappe" gilt nicht mehr.
+- **B9 Waagerechter Schacht zu flach:** Der Schacht ist fuer eine Rohrachse 186 mm unter Flur gebaut (`data/components/lt_schacht_tief.json`, `z_top` 186). Der Stamm liegt seit M10-UMBAU auf Z 14, also 386 mm unter Flur. Die Haehne KS1 und KS2 sitzen deshalb ohne Schacht und zaehlen nicht als Zugang. **OFFEN Werkstatt:** Bauform fuer Achstiefe 386.
+- **B10 Schacht KH2 kollidiert mit K21:** K21 laeuft seit M10-UMBAU 87,5 mm neben der Hahnachse. Gemessen: die Rohrhuelle liegt 13 mm in der Schachtwand (`check_schacht_tief.py`: -25 mm). Fuer Pruefpunkt 1 ersetzt REV2-2 den Schacht. Loesung braucht einen neuen Weg fuer K21 oder eine Durchfuehrung im Schacht (Planer oder Werkstatt).
+- **B11 Rest-Knick K56-b unter Tank_gross:1:** Die Bypass-Tiefleitung Linie 1 liegt im Grundriss des Biofilter-Tanks; kein Stutzen kann dort nach oben. Mit dem Schacht an KS1 (B9) sinkt der Abstand auf etwa 640 mm.
+- **B12 Fremdstand im Build:** Runde 75 enthaelt `designs/components/tank_klein.sc` im ungesicherten Arbeitsstand der Werkstatt-Sitzung absetzer-luft (Luftstutzen d20 im Deckel).

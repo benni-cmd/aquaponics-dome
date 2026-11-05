@@ -89,6 +89,16 @@ Befunde (Montage):
 4. Pruefung: `python -X utf8 scripts/check_autobahn_montage.py r2`; A+-Pruefsumme siehe Plan Punkt 5.
 5. Fallen: Schlauch-Komponente heisst `ring_b2_schlauchwege.sc`; Gesamt-Interferenz ist bei 20.000 Paaren abgeschnitten, gezielt mit `params.bodies` pruefen; Exit-Code von `viewer/export_model.py` nicht hinter `| tail` verstecken.
 
+### FIX-a und W88 (Montage, 05.11.2026 abends, Blatt `docs/jobs/N-AUTOBAHN-FIX.md`): WIP, unterbrochen durch PC-Pause
+**Problem:** Aussen-Ausleger ragten durch die Kuppelhaut; Innen-Schlaeuche fielen ueber dem Pool und schlugen unten freie Schlaufen in der Luft (W88). **Intent:** Die Autobahn im Viewer so, wie sie gebaut wuerde. **Goal:** Abstand Ausleger und Schlauch zur Haut >= 100 mm, kein Umweg unten, Halter <= 400 mm, A+ byte-gleich.
+1. Gebaut: Aussen-Ausleger 540 (Joch) / 650 (Stelze), Innen 540 / 710 / 1060 (`scripts/workshop/autobahn_t.py`, `check_autobahn_t.py` 95/95 PASS, Sattel-Pruefung jetzt nach Schlauch-Unterkante ueber dem Gang). Innen faellt der Schlauch bei r ~2120 am Innentisch-Pfosten neben Gang A.
+2. `scripts/trassen_ring.py`: rechtwinkliger Versatz bei kurzen Armen; Winkeltuelle 90 Grad nach oben am Port, wenn der Port vom Fall weg zeigt oder der Fall fast darueber liegt (24 Abnehmer), statt der Schlaufe; Halter je <= 400 mm auf waagerechten Strecken (22). Regelhahn an Innen- und Mitteltischen dadurch auf Z 1717 rel statt 1500 (offene Frage an Ben).
+3. Messung `python -X utf8 scripts/check_autobahn_montage.py r2`: 23 PASS, 4 FAIL. PASS: Haut-Abstand Ausleger 442 mm, Schlauch 168 mm (Facetten aus `scripts/.segs.json`, Rohr 42,4), Fallachse aussen r 4725, kein Umweg unten. FAIL: Pegelschacht im Gang (2, FIX-b nach Z2) und Clips (2, eigene Frage).
+4. A+: `gen_dome.py 5` = `scripts/dome-script.json` byte-gleich (SHA 09271860...).
+5. Bau: `--schlauch-bauen` und `gen_dome.py 5 ... --variante ring_b2` (AUTOBAHN_RUNDE=r2) Exit 0 (11784 Befehle); `solidcraft-cli run ... --save designs/dome-ring_b2.sc` schrieb die Datei um 20:50, endete aber um 20:58 mit Exit 127 ohne Ausgabe. **Ungeprueft, ob das Modell vollstaendig ist.**
+
+**Fortsetzungspunkt (naechste Sitzung):** (1) CLI-Lauf wiederholen: `"/c/Program Files/SolidCraft/solidcraft-cli.exe" run scripts/dome-script-ring_b2.json --save designs/dome-ring_b2.sc` (etwa 18 min, vorher pruefen, dass kein anderer schwerer SolidCraft-Lauf arbeitet; 20:40 liefen zwei check_latte-Laeufe anderer Sitzungen mit 17 GB). (2) Bilder: `solidcraft-cli snapshot designs/dome-ring_b2.sc --out renders/ring_b2/fix-a-innen.png --camera '{"target":[0,-1900,1700],"yaw":1.2,"pitch":0.35,"distance":4200}'` und aussen `{"target":[4600,-1500,2000],"yaw":-0.3,"pitch":0.2,"distance":4500}`. (3) Gezielte Interferenz Ausleger und Schlaeuche gegen Tische, Beete, Streben, Folie (Blatt P2, alle Paare). (4) Viewer-Export `python -X utf8 viewer/export_model.py --variante ring_b2` und Screenshot im Browser. (5) Wunschbuch W88 und Blatt-Pruefpunkte nachtragen, Commit, Push.
+
 ### WA-T Tragwerk (Werkstatt, 05.11.2026)
 **Problem:** Joch, Ausleger, Schiene mit Schelle, Ring-Ecke und Podest fehlen als Bauteile. **Intent:** R1/R2 setzen nur fertige Teile. **Goal:** Die WA-T-Pruefpunkte aus Blatt Abschnitt 3 sind in `scripts/workshop/check_autobahn_t.py` gemessen (Exit 0).
 

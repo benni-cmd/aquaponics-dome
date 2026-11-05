@@ -10,10 +10,20 @@ Auftragsblatt mit Architektur, Netz-Delta, Pruefpunkten: `docs/jobs/N-VARIANTEN.
 1. [x] V1a Werkstatt Skripte/Daten (05.11.2026, siehe Stand): `scripts/variante.py`, Schalter in `params.json`, Ausgabepfade in BOM, Einkaufsliste, Kennzahlen, Viewer-Export, `check_varianten.py`, Vergleichsseite.
 2. V2 Werkstatt Bauteile (sofort, parallel): Pegelschacht, Ringstuetze, Entluefter, Ring-Abzweig; Booster = `pumpe_gross`.
 3. VV Viewer-Schalter (nach V1a, parallel).
-4. V1b Varianten-Weiche in `gen_dome.py`, `build.sh`, `leitungen.py`, Pruefskripten (EIN Slot der Modell-Kette); danach markiert die A+-Kette A+-only-Teile mit `varianten: ["a_plus"]`.
+4. [x] V1b Varianten-Weiche in `gen_dome.py`, `build.sh`, `leitungen.py`, Pruefskripten (EIN Slot der Modell-Kette); danach markiert die A+-Kette A+-only-Teile mit `varianten: ["a_plus"]`.
 5. O1 Orchestrator: Netz-Delta K60..K75 in `data/leitungsnetz.json`.
 6. R1/R2 Montage Ring B2 Linie 1 und 2 (nach M10-S7, vor CHECK).
 7. Pruefer PV1 (nach V1a/V1b/VV), PV2 (nach R2); CHECK laeuft fuer beide Varianten.
+
+## V1b Plan (Werkstatt, 05.11.2026)
+**Problem:** `gen_dome.py`, Leitungsbau, Graeben und Pruefskripte kennen keine Variante; ein B2-Bau ist nicht moeglich, und ein B2-Lauf wuerde A+-Dateien (`designs/components/erdflaeche.sc` u. a.) ueberschreiben.
+**Intent:** Die Modell-Kette baut A+ weiter wie heute, und R1/R2 koennen Ring B2 in eigene Dateien bauen.
+**Goal:** `gen_dome.py --variante ring_b2` erzeugt `scripts/dome-script-ring_b2.json`, das sich nur durch die A+-eigenen Teile unterscheidet; ohne Schalter ist `scripts/dome-script.json` byte-gleich (Ausgangs-SHA-256 `39930b22...` aus `python -X utf8 scripts/gen_dome.py 5 <scratch>/a_vorher.json`, gleich dem eingecheckten Skript).
+1. `scripts/leitungen.py`: `laden_variante(v)` filtert `trassen`, `t_stuecke`, `r_stuecke`, `teile`, `gruben` ueber `variante.gilt`; `laden()` bleibt ungefiltert (Schreib-Skripte).
+2. `scripts/gen_dome.py`: Variante aus `variante.aktiv()`; Graeben und Leitungen ueber `laden_variante`; `component_file` schreibt in B2 `<name>-ring_b2.sc` (A+-Dateien bleiben unberuehrt); `verteiler_a_plus()` (Verteiler d50 kommt als `teile` VT1/VT2 mit `varianten: ["a_plus"]`), `ring_b2()` leer bis R1.
+3. `data/leitungstrassen.json`: VT1, VT2 samt Kappen und Klemmen (8 Eintraege) `varianten: ["a_plus"]`; `scripts/trassen_linie.py` setzt das Feld beim Erzeugen und laesst `ring_b2`-Eintraege beim Neuschreiben stehen.
+4. `scripts/build.sh` 3. Argument Variante (Pfade aus `variante.pfad`); Pruefskripte `check_leitungen.py`, `check_walkways.py`, `check_walkways_voll.py`, `check_latte.py` mit `--variante`.
+5. Messen: A+-Hash gleich; B2-Skript gegen A+ nur ohne die 8 Teile (Instanzzahl in `08_Leitungen`); `check_leitungen.py` beide Varianten; Paket, Commit, Push.
 
 ## Stand
 - 05.11.2026: Plan und Blatt geschrieben (Planer). Noch nichts gebaut. A+-Blaetter M10-S2N..S7 standen beim Schreiben nicht im Repo.
@@ -39,6 +49,13 @@ Auftragsblatt mit Architektur, Netz-Delta, Pruefpunkten: `docs/jobs/N-VARIANTEN.
 - Probe nur mit vorhandenem Export (Scratchpad-Kopie mit Junctions auf `viewer/defs` und `data/parts`, Ring-B2-Ordner aus dem A+-Export abgeleitet ohne die zwei Absetzer): A+ 4914 Instanzen, 164 Definitionen; Wechsel auf Ring B2: 4912 Instanzen, 163 Definitionen, Kennzahlen mit anderem Stand, 0 neue Abrufe aus `defs/` (164 vor, 164 nach), Adresse `?variante=ring_b2`, Rueckwechsel ebenso; Ordner entfernt: Meldung "noch nicht exportiert" und Rueckkehr zu A+. Screenshots mit Etikett "Kreislauf: Ring B2" und "Kreislauf: A+".
 - Nicht gemessen: ein echter Ring-B2-Export (V1b steht aus), Kennzahlen-Datei `data/system-specs-ring_b2.json` und `data/stueckliste-ring_b2.json` der echten Variante.
 
+- 05.11.2026: **V1b Varianten-Weiche gebaut und gemessen** (Werkstatt Opus 5.5; kein `build.sh`-Lauf, kein `designs/dome.sc`).
+  - **A+ byte-gleich:** `python -X utf8 scripts/gen_dome.py 5 <scratch>/a_nachher.json` SHA-256 `39930b221a65...` = vorher = eingechecktes `scripts/dome-script.json` (`sha256sum`).
+  - **B2 unterscheidet sich nur um die A+-Teile:** `python -X utf8 scripts/gen_dome.py 5 <scratch>/b2.json --variante ring_b2`: 10 897 statt 10 916 Befehle; `08_Leitungen` 471 statt 479 Instanzen, Unterschied genau die 8 Eintraege VT1/VT2 (Verteiler d50, Kappe d20, Kappe d50, Klemme d50 je Linie); sonst nur Nummerierung derselben Klassen. B2 schreibt eigene Bauteildateien `designs/components/<name>-ring_b2.sc` (erdflaeche, fundamentring, pool_zentral, zweitbecken, zulaufrohr, schaltschrank), A+-Dateien bleiben unberuehrt.
+  - **Pruefskripte:** `python -X utf8 scripts/check_leitungen.py` (A+) und `... --variante ring_b2`: je 3 Verstoesse, dieselben (KOLL K08, GEFAELLE K05, K21; gleich Pruefer da7af25). `python -X utf8 scripts/check_walkways.py` A+: Ausgabe byte-gleich zur HEAD-Fassung. `trassen_linie.schreiben` mit Testdaten: `ring_b2`-Eintraege bleiben, A+-Eintraege werden ersetzt.
+  - **Geaendert:** `scripts/leitungen.py` (`laden_variante`), `scripts/gen_dome.py` (Variante, `verteiler_a_plus()`, `ring_b2()` leer, B2-Bauteildateien), `scripts/build.sh` (3. Argument, Pfade aus `variante.pfad`), `scripts/trassen_linie.py`, `scripts/check_leitungen.py`, `scripts/check_walkways.py`, `scripts/check_walkways_voll.py` (B2: `renders/ring_b2/walkway-map-*.png`, `docs/walkway-map-ring_b2.md`), `scripts/check_latte.py` (B2: `designs/dome-ring_b2.sc`, eigener Cache), `data/leitungstrassen.json` (8 Eintraege `varianten: ["a_plus"]`).
+  - **Liste der nachtraeglich markierten A+-Eintraege (Blatt 3 Punkt 3):** teile VT1, VT1-Kappe3, VT1-Kappe4, VT1-Halter, VT2, VT2-Kappe3, VT2-Kappe4, VT2-Halter. K10/K26 (100-mm-Stueck ab Biofilter-Ueberlauf) bleiben gemeinsam: B2 setzt dort an (K60/K68). K11..K13/K27..K29 sind noch nicht gebaut; die A+-Kette markiert sie beim Bau.
+  - **Nicht gemessen:** `check_latte.py` und `check_walkways_voll.py` nicht gelaufen (CAD-Lauf bzw. schreibt Karten; Aenderung nur Pfadwahl); kein B2-Modell `designs/dome-ring_b2.sc` gebaut (B2 hat noch keine eigenen Teile, R1/R2). Die B2-Laufprodukte (`scripts/dome-script-ring_b2.json`, `*-ring_b2.sc`) wurden nach der Messung geloescht, nicht committet.
 ## DoD
 1. P1 bis P5 aus `docs/jobs/N-VARIANTEN.md` Abschnitt 5 von fremden Pruefern als PASS belegt (`docs/jobs/pruefung/N-VARIANTEN-1.md`, `-2.md`).
 2. Viewer-Screenshot beider Varianten im echten Browser.

@@ -3562,7 +3562,10 @@
    ],
    "farbe": "dunkelblau",
    "notiz": "Verteiler d50 (W36) auf dem Ende von K10: Abgaenge 1 Beete d40, 2 NFT d32, 3 Messkreis d20, 4 Bypass d50 nach oben",
-   "linie": 1
+   "linie": 1,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "VT1-Kappe3",
@@ -3584,7 +3587,10 @@
    ],
    "farbe": "grau",
    "notiz": "Kappe d20 auf Abgang 3 des Verteilers (vorerst verschlossen bis S3)",
-   "linie": 1
+   "linie": 1,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "VT1-Kappe4",
@@ -3606,7 +3612,10 @@
    ],
    "farbe": "grau",
    "notiz": "Kappe d50 auf Abgang 4 des Verteilers (vorerst verschlossen bis S3)",
-   "linie": 1
+   "linie": 1,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "VT1-Halter",
@@ -3628,7 +3637,10 @@
    ],
    "farbe": "grau",
    "notiz": "Rohrklemme d50 50 mm vor dem Verteiler (Konsole an der Tank-Plattform: OFFEN Werkstatt Halter)",
-   "linie": 1
+   "linie": 1,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "FH2",
@@ -3715,7 +3727,10 @@
    ],
    "farbe": "dunkelblau",
    "notiz": "Verteiler d50 (W36) auf dem Ende von K26: Abgaenge 1 Beete d40, 2 NFT d32, 3 Messkreis d20, 4 Bypass d50 nach oben",
-   "linie": 2
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "VT2-Kappe3",
@@ -3737,7 +3752,10 @@
    ],
    "farbe": "grau",
    "notiz": "Kappe d20 auf Abgang 3 des Verteilers (vorerst verschlossen bis S3)",
-   "linie": 2
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "VT2-Kappe4",
@@ -3759,7 +3777,10 @@
    ],
    "farbe": "grau",
    "notiz": "Kappe d50 auf Abgang 4 des Verteilers (vorerst verschlossen bis S3)",
-   "linie": 2
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "VT2-Halter",
@@ -3781,7 +3802,10 @@
    ],
    "farbe": "grau",
    "notiz": "Rohrklemme d50 50 mm vor dem Verteiler (Konsole an der Tank-Plattform: OFFEN Werkstatt Halter)",
-   "linie": 2
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "KAPPE_V6_6",

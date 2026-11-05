@@ -28,6 +28,19 @@ TOL = 0.6   # mm, Passung "Bogen direkt auf dem Stutzen"
 def laden():
     return json.load(open(TRASSEN, encoding="utf-8")) if os.path.exists(TRASSEN) else None
 
+VAR_LISTEN = ("trassen", "t_stuecke", "r_stuecke", "teile", "gruben")
+
+def laden_variante(v=None):
+    """N-VARIANTEN V1b: Trassenliste nur mit den Eintraegen der Variante v (scripts/variante.py gilt; Eintrag ohne Feld `varianten` gilt fuer alle).
+    Fuer Bau, Graeben und Pruefungen; Skripte, die data/leitungstrassen.json SCHREIBEN, lesen weiter laden() ungefiltert."""
+    import variante
+    doc = laden()
+    if not doc: return doc
+    v = v or variante.aktiv()
+    for key in VAR_LISTEN:
+        if key in doc: doc[key] = variante.filtere(doc[key], v)
+    return doc
+
 def add(a, b, s=1.0): return tuple(a[i] + s * b[i] for i in range(3))
 def sub(a, b): return tuple(a[i] - b[i] for i in range(3))
 def dot(a, b): return sum(a[i] * b[i] for i in range(3))
@@ -241,7 +254,7 @@ def graben(doc, fz):
     return out
 
 if __name__ == "__main__":
-    doc = laden()
+    doc = laden_variante()   # V1b: Bericht fuer die aktive Variante (--variante <v>)
     if not doc: raise SystemExit("keine Trassenliste")
     T, bericht = bauen(doc)
     for art_d_l, liste in sorted(T.items.items()): print(art_d_l, len(liste))

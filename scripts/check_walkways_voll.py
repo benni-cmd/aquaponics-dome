@@ -6,7 +6,12 @@ import json, math, os, subprocess, sys, tempfile
 from PIL import Image, ImageDraw
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CLI = r"C:\Program Files\SolidCraft\solidcraft-cli.exe"
-cmds = json.load(open(os.path.join(ROOT, "scripts", "dome-script.json")))["commands"]
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import variante   # N-VARIANTEN V1b: --variante a_plus|ring_b2 (Standard params.json)
+V = variante.aktiv()
+cmds = json.load(open(variante.pfad("dome_script", V)))["commands"]   # V1b: Bau-Skript der Variante
+BILDER = variante.pfad("bilder_dir", V); os.makedirs(BILDER, exist_ok=True)   # A+: renders/, B2: renders/ring_b2/
+KARTE = os.path.join(ROOT, "docs", "walkway-map.md" if V == "a_plus" else "walkway-map-%s.md" % V)
 P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["command"] == "parameters.add"}
 LAY = json.load(open(os.path.join(ROOT, "data", "layout.json")))
 mv = {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}
@@ -174,7 +179,7 @@ for sl, h in [s_ for s_ in (("knie", 300), ("kopf", 1700)) if s_[0] in os.enviro
     for cells, col in ((red, (220, 40, 40)), (yel, (235, 150, 20))):
         for j, i in cells: dr.rectangle([i * sc - 1, (N - 1 - j) * sc - 1, (i + 1) * sc + 1, (N - j) * sc + 1], fill=col)
     dr.text((8, 8), f"Laufwegkarte {sl} ({h} mm): gruen >= 600, gelb 500-600 (Gang), blau nicht erreichbar, rote/orange Linien = Engstellen < 500 / 500-600", fill=(0, 0, 0))
-    im.save(os.path.join(ROOT, "renders", f"walkway-map-{sl}.png"))
+    im.save(os.path.join(BILDER, f"walkway-map-{sl}.png"))
 lines += ["## Zusammenfassung", ""] + [f"- {k[0]} {k[1]}: {v} Engstellen" for k, v in summary.items()]
-open(os.path.join(ROOT, "docs", "walkway-map.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
+open(KARTE, "w", encoding="utf-8").write("\n".join(lines) + "\n")
 print("\n".join(lines[-6:]))

@@ -74,7 +74,7 @@ def s_alt(neu, kid, g0, gh, s):
 def schreiben(doc, linie, neu):
     """Mischt die Trassen der Linie in die bestehende Liste (Trassen der anderen Linie bleiben); S2a-Eintraege ohne Feld linie gelten als Linie 1."""
     alt = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {"z_bezug": "absolut", "regeln": {}, "trassen": []}
-    gehoert = lambda e: e.get("linie", 1) == linie
+    gehoert = lambda e: e.get("linie", 1) == linie and not (e.get("varianten") and "a_plus" not in e["varianten"])   # V1b: Eintraege nur fuer ring_b2 (scripts/trassen_ring.py) bleiben stehen
     for key in ("trassen", "t_stuecke", "r_stuecke", "teile", "gruben"):
         doc[key] = [e for e in alt.get(key, []) if not gehoert(e)] + neu.get(key, [])
         for e in neu.get(key, []): e["linie"] = linie
@@ -706,15 +706,15 @@ def schlamm_verteiler(L, neu, linie):
     tr = [t for t in neu["trassen"] if t["id"] == kid_u][0]; e = tuple(tr["pfad"][-1]); a0 = tuple(tr["pfad"][-2])
     xd = unit(sub(e, a0)); tr["ende"] = "muffe"
     tr["notiz"] = tr["notiz"].replace("; Verteiler d50 folgt (M10-UMBAU Schritt 6)", "; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)")
-    neu["teile"].append({"id": "VT%d" % linie, "datei": "lt_verteiler_d50", "pos": rd(e), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "dunkelblau",
+    neu["teile"].append({"id": "VT%d" % linie, "varianten": ["a_plus"], "datei": "lt_verteiler_d50", "pos": rd(e), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "dunkelblau",
                          "notiz": "Verteiler d50 (W36) auf dem Ende von %s: Abgaenge 1 Beete d40, 2 NFT d32, 3 Messkreis d20, 4 Bypass d50 nach oben" % kid_u})
     for nr, dk in ((3, 20), (4, 50)):
         lage = lt_ports("lt_verteiler_d50")[nr][1]
         top = add(add(e, xd, lage[0]), up, lage[2]); pos = add(top, up, -LT.DEPTH[dk])
-        neu["teile"].append({"id": "VT%d-Kappe%d" % (linie, nr), "datei": "lt_kappe_d%d" % dk, "pos": rd(pos), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "grau",
+        neu["teile"].append({"id": "VT%d-Kappe%d" % (linie, nr), "varianten": ["a_plus"], "datei": "lt_kappe_d%d" % dk, "pos": rd(pos), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "grau",
                              "notiz": "Kappe d%d auf Abgang %d des Verteilers (vorerst verschlossen bis S3)" % (dk, nr)})
     hp = add(e, xd, -50.0); hk = 4.0 + (50 + 6) / 2.0                 # Halter je Verteiler (R6: <= 300 mm daneben): Klemme d50 unter dem Rohr vor Muffe A
-    neu["teile"].append({"id": "VT%d-Halter" % linie, "datei": "lt_klemme_d50", "pos": rd(add(hp, up, -hk)), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "grau",
+    neu["teile"].append({"id": "VT%d-Halter" % linie, "varianten": ["a_plus"], "datei": "lt_klemme_d50", "pos": rd(add(hp, up, -hk)), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "grau",
                          "notiz": "Rohrklemme d50 50 mm vor dem Verteiler (Konsole an der Tank-Plattform: OFFEN Werkstatt Halter)"})
     for t in neu["trassen"]:
         if not t.get("baender") and not t.get("band"): t["baender"] = baender_auto(t["pfad"])

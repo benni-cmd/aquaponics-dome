@@ -1,8 +1,10 @@
 """Erzeugt das SolidCraft-Befehlsskript fuer designs/dome.sc (Stufe 1-4 = Plan-Schritte 2-5).
-Aufruf: python gen_dome.py <stufe> <out.json>. Masse in mm; alle Annahmen stehen in P."""
+Aufruf: python gen_dome.py <stufe> <out.json> [--variante a_plus|ring_b2]. Masse in mm; alle Annahmen stehen in P."""
 import json, math, os, sys
 from geo import build
 import leitungen as LTG   # M10-S2a
+import variante           # N-VARIANTEN V1b: Kreislauf-Variante (Schalter --variante, Umgebung KREISLAUF_VARIANTE, Standard params.json)
+V = variante.aktiv()      # a_plus (Standard, Pfade wie bisher) | ring_b2
 
 P = {k: v["value"] for k, v in json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "params.json"))).items()}   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort)
 
@@ -50,7 +52,7 @@ def component_file(fname, cls, assembly, fn):
     fn(); colors()
     data = cmds; cmds, names = saved, savedn
     tmp = os.path.join(ROOT, "scripts", "_comp.json"); json.dump({"commands": data}, open(tmp, "w"))
-    out = os.path.join(ROOT, "designs", "components", fname + ".sc")
+    out = os.path.join(ROOT, "designs", "components", fname + ("" if V == "a_plus" else "-" + V) + ".sc")   # V1b: B2 schreibt eigene Dateien (Graeben in erdflaeche haengen an der Variante); A+ unveraendert
     r = __import__("subprocess").run([r"C:\Program Files\SolidCraft\solidcraft-cli.exe", "run", tmp, "--save", out, "--quiet"], capture_output=True, text=True)
     if r.returncode: raise SystemExit(f"Komponente {fname} fehlgeschlagen: {r.stderr[-400:]}{r.stdout[-400:]}")
     os.remove(tmp)
@@ -97,7 +99,7 @@ def erde_fn(sock_z):
         rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, bed_yaw(b), ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
     for k, (x, y, yaw) in enumerate(feinfilter_orte(), 1):   # M10-S1: Feinfilter-Gruben (Boden = Standflaeche), Drehung wie der Filter
         rect_body(f"T55_Grube_{k:02d}", x, y, sock_z + P["ff_z"], yaw, P["ff_grube_l"], P["ff_grube_w"], -P["ff_z"] + 1, op="cut", targets=["T13_Erde"])
-    doc = LTG.laden()   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
+    doc = LTG.laden_variante(V)   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
     for g in (LTG.graben(doc, sock_z) if doc else []):
         if g[0] == "box": rect_body(g[1], g[2], g[3], g[4], g[5], g[6], g[7], g[8], op="cut", targets=["T13_Erde"])
         else: add("solid.cylinder", diameter=g[5], height=g[6], base=[g[2], g[3], g[4]], operation="cut", targets=["T13_Erde"], name=g[1])
@@ -426,13 +428,25 @@ def place_matrices(cls, path, mats, assembly):
 
 def leitungen(fz):
     """M10-S2a: Rohre, Bogen, T, Reduziermuffen und Kupplungen aus data/leitungstrassen.json als Instanzen der Bibliothek lt_*.sc (Rechnung: scripts/leitungen.py), Assembly 08_Leitungen, Farbe nach Funktion."""
-    doc = LTG.laden()
+    doc = LTG.laden_variante(V)   # V1b: nur Trassen, Formstuecke und Teile der aktiven Variante
     if not doc: return
     teile, _ = LTG.bauen(doc)
     for cls, path, mats, farben in LTG.dateien(teile):
         place_matrices(cls, path, mats, "08_Leitungen")
         for hexfarbe, occ in farben.items():
             if hexfarbe: add("appearance.assign", components=occ, color=hexfarbe)
+
+def verteiler_a_plus():
+    """N-VARIANTEN V1b (Blatt 1.2): Setzung nur in A+. Der Verteiler d50 je Linie steht als `teile` VT1/VT2 (samt Kappen und Klemme) mit
+    `varianten: ["a_plus"]` in data/leitungstrassen.json und wird von leitungen() gesetzt; hier entsteht kein eigener Befehl (A+ bleibt byte-gleich).
+    Liefert die Ids der A+-eigenen Teile fuer Bericht und Pruefung."""
+    doc = LTG.laden() or {}
+    return [e["id"] for key in LTG.VAR_LISTEN for e in doc.get(key, []) if e.get("varianten") == ["a_plus"]]
+
+def ring_b2(fz):
+    """N-VARIANTEN V1b: Setzungen nur in Ring B2 (Pegelschacht, Booster, Steigleitung, Ringstuetzen, Entluefter). Leer bis R1/R2 (Montage Ring B2);
+    Ring-Trassen kommen spaeter als Eintraege mit `varianten: ["ring_b2"]` ueber leitungen()."""
+    return []
 
 # T9: 14 halbe IBC-Wannen (layout.json) als Instanzen der Werkstatt-Komponenten ibc_beet_{aussen_933,aussen_993,innen_933}; Ursprung = Mitte Wannenunterseite
 def t9(fz):
@@ -540,7 +554,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); (verteiler_a_plus() if V == "a_plus" else ring_b2(P["sock_h"])); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
-    print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")
+    print(f"variante {V}, stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

@@ -5,7 +5,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CLI = r"C:\Program Files\SolidCraft\solidcraft-cli.exe"
 rnd = sys.argv[1] if len(sys.argv) > 1 else "00"
 tmp = tempfile.mkdtemp()
-dome = os.path.join(ROOT, "designs", "dome.sc")
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import variante   # N-VARIANTEN V1b: --variante a_plus|ring_b2 (Standard params.json)
+V = variante.aktiv()
+dome = variante.pfad("modell", V)   # V1b: designs/dome.sc (A+) oder designs/dome-ring_b2.sc
 
 def run_json(args):
     out = os.path.join(tmp, "o.json")
@@ -26,7 +29,7 @@ def find(o, key):
 bodies = find(run_json(["eval", dome]), "bodies")
 B = {b["name"]: b for b in bodies}
 BN = {n: b for n, b in B.items() if n[:1] == "T" and n[1:2].isdigit()}   # eigene T-Koerper; Werkstatt-Instanzen heissen anders
-cmds = json.load(open(os.path.join(ROOT, "scripts", "dome-script.json")))["commands"]
+cmds = json.load(open(variante.pfad("dome_script", V)))["commands"]
 P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["command"] == "parameters.add"}
 pre = lambda p: [b for n, b in B.items() if n.startswith(p)]
 ext = lambda bs, i: (min(b["bbox"]["min"][i] for b in bs), max(b["bbox"]["max"][i] for b in bs))
@@ -213,7 +216,7 @@ for i, a in enumerate(names):
         if "T13_Erde" in (a, b) and len(cs) > 1 and all(c.startswith(("Tank_", "Pumpe_", "Tisch_")) for c in cs - {"Erdflaeche"}): continue   # Fussplatten/-schrauben stehen im Boden (Werkstatt: bis 24 mm)
         cand.append((a, b))
 HEAVY = ("T3_Sockel", "T13_Erde")
-CACHE = os.path.join(ROOT, "scripts", ".latte-cache.json")   # Ergebnisse je Paar, gueltig solange dome.sc und alle verknuepften Komponentendateien unveraendert sind
+CACHE = os.path.join(ROOT, "scripts", ".latte-cache.json" if V == "a_plus" else ".latte-cache-%s.json" % V)   # Ergebnisse je Paar, gueltig solange dome.sc und alle verknuepften Komponentendateien unveraendert sind
 sig = str(os.path.getmtime(dome)) + "|" + str(max(os.path.getmtime(os.path.join(ROOT, "designs", "components", f)) for f in os.listdir(os.path.join(ROOT, "designs", "components")) if f.endswith(".sc")))
 cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
 if cache.get("sig") != sig: cache = {"sig": sig, "checked": [], "found": []}

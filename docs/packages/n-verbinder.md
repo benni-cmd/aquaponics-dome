@@ -53,12 +53,14 @@ Werkstatt W83 05.11.2026 nachmittags (Ben: obere und untere Lochplatte, Scheren 
 3. Viewer-Export A+ (273 Definitionen, 5353 Instanzen) und B2 (`--variante ring_b2`, 299 / 5570) im Browser angesehen: Kuppel-Struktur 229 Instanzen; Scheitelknoten zeigt Plattenpaar, 5 Scheren, Rundrohre; B2 mit Etikett und Ring.
 4. Bilder: `renders/round-77.png`, `renders/verbinder-77-n02-aussen.png`, `renders/ring_b2/round-03.png`.
 5. Masse Verbinder im Modell: 26 x 1083 g + 128 x 394 g = 78,6 kg (vorher Kugelknoten 155 kg).
+6. `check_latte` A+ Runde 77 in Arbeitskopie (151 min): SCORE 29/31, L6 Kollisionen 215 (Runde 75: 83), 1186 Paare ungeprueft. Davon 170 neu durch die Montage: 38 Scherenarme (10 A, 28 B) an den 10 Basisknoten x `T3_Sockel` (Lasche, Platten- und Drehschraube, Scheiben). Rest 45 Altbestand (Leitungen x Tankstreben, Erde, Schaltschrank). Ausgabe `renders/check_latte-77.txt`. Ring B2 nicht gelaufen (gleiche Kuppel, gleicher Sockel).
 
 **Befunde fuer den Orchestrator:**
 1. 6-Loch-Platte an 5-wertigen Knoten (D91): A-Rohre muessten 3075,5 / 3076,3 / 3078,6 mm lang sein; gebaut eine Laenge 3077,1, Rest nimmt das Lochspiel D15 auf. Mit 5-Loch-Platte waeren alle A 3075,3.
 2. Katalog `data/katalog.json` fuehrt noch `PRF-st-strebe30x30` und die Kugelknoten-Artikel; Stuecklisten-Kette (bom.py) auf Rundrohr und Scherenknoten umstellen.
 3. `data/components/keilschiene.json` rechnet mit 120 mm Endversatz (node_clear 130); Scherenknoten: Rohrmund 102 mm.
 4. `scripts/strut_cutting.py` hat `E_NOM = 120` fest.
+5. Basisknoten x Sockel (170 Kollisionen): Basisknoten-Achse liegt 75 mm ueber dem Sockel (`base_axis_h`, aus dem alten Rundstab), Plattenpaar D110 und Scherenarme der liegenden Basisstreben reichen hinein. Loesung ist eine Entscheidung: Achse hoeher (verschiebt Kuppel, Tuer, Fundament), Sockel an den Knoten ausnehmen oder eigener Basisknoten.
 
 ## DoD
 - R56 enthaelt alle sechs Abschnitte des Auftrags mit [A]/[E]/[Q]-Kennzeichnung.

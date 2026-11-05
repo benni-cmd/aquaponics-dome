@@ -1,0 +1,272 @@
+W-M4 Beet x Beet: kleinste Luecke mit Fase 94 mm | ohne Fase (Vergleich, alter Stand) 24 mm | Werkstatt-Stand Runde 44/46 (Lage vor D62/D63): -35 ohne / +36 mit Fase
+GEOMETRIE kleinster Fussplatte-Beet-Abstand 45 mm | kleinster Tisch-Tisch-Abstand 186 mm | Verletzungen Bein/Beet, Pool, Tisch/Tisch: 0 0 0 [] []
+EXAKT ohne Fundamentring/Erde: 4701 Paare, 0 aus dem Cache
+EXAKT ohne Fundamentring/Erde Runde 1: 2886 Koerper, noch offen 2725
+EXAKT ohne Fundamentring/Erde Runde 2: 2409 Koerper, noch offen 2351
+EXAKT ohne Fundamentring/Erde Runde 3: 2114 Koerper, noch offen 1912
+EXAKT ohne Fundamentring/Erde Runde 4: 1706 Koerper, noch offen 1302
+EXAKT ohne Fundamentring/Erde Runde 5: 1321 Koerper, noch offen 1197
+EXAKT ohne Fundamentring/Erde Runde 6: 1217 Koerper, noch offen 1171
+EXAKT Fundamentring: 486 Paare, 0 aus dem Cache
+EXAKT Fundamentring Runde 1: 487 Koerper, noch offen 14
+EXAKT Fundamentring Runde 2: 15 Koerper, noch offen 14
+EXAKT Fundamentring Runde 3: 15 Koerper, noch offen 14
+EXAKT Erde: 778 Paare, 0 aus dem Cache
+EXAKT Erde Runde 1: 779 Koerper, noch offen 1
+EXAKT Erde Runde 2: 2 Koerper, noch offen 1
+EXAKT Erde Runde 3: 2 Koerper, noch offen 1
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:13) Tank (3)
+KOLL Kupplung (3) Strebe_2 (07_Tanks:1/Tank_klein:2)
+KOLL Kupplung (3) (08_Leitungen:1/LT_Kupplung_d32:2) Strebe_4
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:2) Strebe_4 (2)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:4) Strebe_2 (3)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:5) Bein_3 (3)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:5) Strebe_1 (3)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:5) Strebe_4 (3)
+KOLL Einlaufrohr Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:4)
+KOLL Einlaufrohr (09_Technik:1/Feinfilter:2) Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:6)
+KOLL Verteiler (4) Rohr (90)
+KOLL Bogen (2) (08_Leitungen:1/LT_Bogen90_d25:35) Betonpunkt (02_Gelaende:1/Fundamentanker:9)
+KOLL Bogen (3) (08_Leitungen:1/LT_Bogen90_d32:5) Diagonale_4
+KOLL Bogen (3) (08_Leitungen:1/LT_Bogen90_d32:6) Diagonale_4
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:4) Diagonale_4 (2)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:13) Biomedium (2)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:13) Stuetzrippe_5 (2)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:11) Reduzierung (5)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:25) Reduzierung (5) (08_Leitungen:1/LT_Reduzierung_d75_d50:2)
+KOLL Rohr (66) Plattform (3)
+KOLL Rohr (66) Strebe_3 (3)
+KOLL Rohr (77) Strebe_2 (07_Tanks:1/Tank_klein:2)
+KOLL Rohr (77) (08_Leitungen:1/LT_Rohr_d32_L89:2) Strebe_4
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:2) Strebe_4 (2)
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:3) Strebe_2 (3)
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:4) Bein_3 (3)
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:4) Strebe_4 (3)
+KOLL Rohr (97) Tank (3)
+KOLL Rohr (125) Verteiler (6)
+KOLL Rohr (143) T_Stueck (2) (08_Leitungen:1/LT_T_d50:13)
+KOLL Rohr (144) T_Stueck (2) (08_Leitungen:1/LT_T_d50:14)
+KOLL Rohr (145) T_Stueck (2) (08_Leitungen:1/LT_T_d50:7)
+KOLL T11_Schaltschrank Schrankwand
+KOLL T11_Schaltschrank Koerper
+KOLL T11_Schaltschrank Koerper (2)
+KOLL Bogen (3) (08_Leitungen:1/LT_Bogen90_d32:7) Kappe (2) (08_Leitungen:1/LT_Kappe_d50:10)
+KOLL Rohr (178) T_Stueck (4) (08_Leitungen:1/LT_T_d75:4)
+KOLL Rohr (182) T_Stueck (4) (08_Leitungen:1/LT_T_d75:2)
+KOLL T10_Zulaufrohr T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:51) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:51) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:51) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:51) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:51) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:52) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:52) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:52) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:52) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:53) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:53) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:53) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:53) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:54) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:54) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:54) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:54) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:54) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:55) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:55) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:55) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:55) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:55) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:56) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:56) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:56) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:56) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:56) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:57) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:57) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:57) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:57) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:57) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:58) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:58) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:58) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:58) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:58) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:59) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:59) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:59) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:59) T3_Sockel
+KOLL Lasche_2 (03_Kuppel:1/Schere_A:60) T3_Sockel
+KOLL Platte_ScheibeO (03_Kuppel:1/Schere_A:60) T3_Sockel
+KOLL Platte_Schraube (03_Kuppel:1/Schere_A:60) T3_Sockel
+KOLL Dreh_ScheibeO (03_Kuppel:1/Schere_A:60) T3_Sockel
+KOLL Dreh_Schraube (03_Kuppel:1/Schere_A:60) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:41) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:41) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:41) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:42) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:42) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:42) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:42) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:42) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:43) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:43) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:43) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:43) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:43) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:44) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:44) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:44) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:45) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:45) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:45) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:45) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:45) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:46) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:46) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:46) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:46) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:46) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:47) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:47) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:47) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:48) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:48) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:48) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:48) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:48) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:49) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:49) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:49) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:49) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:49) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:50) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:50) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:50) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:50) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:51) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:51) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:51) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:51) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:51) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:52) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:52) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:52) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:52) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:52) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:53) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:53) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:53) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:54) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:54) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:54) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:54) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:54) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:55) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:55) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:55) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:55) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:55) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:56) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:56) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:56) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:57) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:57) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:57) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:57) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:57) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:58) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:58) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:58) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:58) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:58) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:59) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:59) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:59) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:59) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:60) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:60) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:60) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:60) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:60) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:61) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:61) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:61) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:61) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:62) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:62) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:62) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:62) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:62) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:63) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:63) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:63) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:63) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:63) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:64) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:64) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:65) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:65) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:65) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:65) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:65) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:66) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:66) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:66) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:66) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:67) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:67) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:67) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:67) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:67) T3_Sockel
+KOLL Lasche_2 (2) (03_Kuppel:1/Schere_B:68) T3_Sockel
+KOLL Platte_ScheibeO (2) (03_Kuppel:1/Schere_B:68) T3_Sockel
+KOLL Platte_Schraube (2) (03_Kuppel:1/Schere_B:68) T3_Sockel
+KOLL Dreh_ScheibeO (2) (03_Kuppel:1/Schere_B:68) T3_Sockel
+KOLL Dreh_Schraube (2) (03_Kuppel:1/Schere_B:68) T3_Sockel
+KOLL Koerper T13_Erde
+KOLL Dichtung (2) T13_Erde
+KOLL Koerper (2) T13_Erde
+KOLL Dichtung (2) (2) T13_Erde
+KOLL Leerrohrbogen T13_Erde
+KOLL Leerrohrbogen (2) T13_Erde
+OFFEN W-M1 (Pumpentafel x Tankrahmen, Werkstatt): 38 | M2b (Knoten-Querbolzen x Strebe, Bohrungen fehlen, Montage): 0 | Fuss-Erde Puffer (gezaehlt, nicht bewertet): 0 | Teil-A gewollt (Wasserkoerper, Steckverbindung Luft d25): 0 | exakt geprueft: Paare 5965
+NICHT GEPRUEFT (aus der Kollision genommen): Plane 80 Koerper / 40 Instanzen, Figuren 29 / 2, Messstellen 36 / 22, Pflanzen 219978 / 4444 (Koerper / Instanzen)
+NICHT GEPRUEFT (Skript-Grenzen): Tuer-Breite aus der Geometrie (nur Parameter door_w) und Obergrenze der Tuerhoehe/Rahmenmasse | Plane x Streben (Folie liegt auf) | Keilschienen, Planenausschnitt-Zarge, Bodenbefestigung (nicht im Modell) | Rohre/Schlaeuche und Messstellen an Leitungen (M10, noch nicht verlegt) | Laufwege/Bedienzonen (check_walkways*.py) | Tank-Abstaende zu den neuen Pumpentafeln (tank_offsets kennt sie nicht) | station_an=0: Station T81 abgeschaltet, nicht erwartet
+NICHT GEPRUEFT: [('T11_Schaltschrank', 'Schrankboden'), ('T11_Schaltschrank', 'Gegenmutter'), ('T11_Schaltschrank', 'Gegenmutter (2)'), ('Dichtung (2)', 'T10_Zulaufrohr'), ('Gegenmutter', 'T10_Zulaufrohr'), ('Dichtung (2) (2)', 'T10_Zulaufrohr'), ('Gegenmutter (2)', 'T10_Zulaufrohr'), ('Rohr_Austritt', 'Rueckschlagventil (2)'), ('Rohr_Austritt (14_Technik_E13:', 'Rueckschlagventil (2) (08_Leit'), ('Rohr_Eingang', 'Kupplung (2) (08_Leitungen:1/L')]
+PASS L5/7 Kuppelhoehe [mm] | Ist: 5948 | Soll: 6000
+PASS L1/10 Streben am Scheitel | Ist: 5 | Soll: 5
+PASS L5/7 Kuppelbreite (Knoten-Durchmesser) [mm] | Ist: 12000 | Soll: 12000
+PASS L5/7 Hoehe/Breite | Ist: 0.496 | Soll: 0.5
+PASS L10 Basisknoten (Zehneck; 1 Knoten an der Tuer ohne Streben) | Ist: 10 | Soll: 9-10
+PASS L10 Strebenzahl 2V (60 + 10 Basis - Tuer) | Ist: 64 | Soll: 55-65
+PASS L2/11 Fundamentring (Flaechen 10 aussen + 10 innen + 2, Tuerluecke +4) | Ist: 26 | Soll: 22-28
+PASS L9/11 Sockel Ueberstand [mm] | Ist: -56 | Soll: <= 300
+PASS OBJ Substratbeete (14 IBC-Wannen als Instanzen) | Ist: 14 | Soll: 14
+PASS Tuer_Komplett vorhanden (Instanz, Koerper) | Ist: (1, 27) | Soll: (1, >= 1)
+PASS Tuer Hoehe (Tuer_Komplett-bbox Z, Untergrenze lichte Hoehe 1960 mm in der Feldebene) [mm] | Ist: 2036 | Soll: >= 1905
+PASS Tuer Breite (Parameter door_w; Geometrie-Breite nicht geprueft) [mm] | Ist: 1000 | Soll: 1000
+PASS Tuerzugang: Abstand Tuer_Komplett-Bett (bbox) [mm] | Ist: 1307 | Soll: >= 1000
+PASS OBJ Tanks (4 Instanzen) + Zweitbecken T6 (1) + Pumpentafeln (8) | Ist: (4, 1, 8) | Soll: (4, 1, 8)
+PASS OBJ Pool zentriert (Abstand Mitte [mm]) | Ist: 0 | Soll: < 50
+PASS OBJ Wasserscheibe D [mm] | Ist: 3880 | Soll: 3890
+PASS L13 Tankwand [mm] | Ist: 150 | Soll: >= 150
+PASS L13 Wasserscheibe T5_Wasser | Ist: 1 | Soll: 1
+PASS L6 Teilenamen T1,T3,T5,T6,T10,T11 vorhanden (T4 Tuer = Tuer_Komplett s. o.; T2 Haut = Phase 2, T8 NFT folgt) | Ist: ['T1', 'T3', 'T5', 'T6', 'T10', 'T11', 'T13', 'T14k'] | Soll: T1,T3,T5,T6,T10,T11
+PASS Netztoepfe: Aussenbeete (8 x 20 x 6) + Innenbeete (6 x 14 x 7) + Rinnen (nft_pots.json) als Instanzen | Ist: 2222 | Soll: 2222
+PASS Netztoepfe Erwartung Runde 60: 960 Aussenbeete + 588 Innenbeete + 674 Rinnen | Ist: (960, 588, 674, 2222) | Soll: (960, 588, 674, 2222)
+PASS Info: Koerperzahl im Modell (kein Pruefkriterium; 4667 ist die Instanzzahl der Viewer-Meldung Build 60, nicht die Koerperzahl) | Ist: 225628 | Soll: Information
+PASS Puffer: Instanzen (Puffer_Station, Puffer_Klein) je nach station_an=0 (0 -> Station aus, Puffer klein T82) | Ist: (0, 1) | Soll: (0, 1)
+PASS Drittbecken klein T14k: Instanz Becken_Dritt (1, Koerper >= 1) und pool3_d [mm] | Ist: (1, 6, 800) | Soll: (1, >= 1, 800)
+PASS Messstellen 13_Messstellen: Instanzen (3 H_TAUCH + 2 H_BERUHIG + 17 Sonden) | Ist: 22 | Soll: 22
+PASS W-M2 NFT-Tisch-Fussplatten ausserhalb der Beete (reine Geometrie, Verletzungen) | Ist: 0 | Soll: 0
+PASS W-M2b Innentisch-Pfosten ausserhalb des Poolrands (Verletzungen) | Ist: 0 | Soll: 0
+PASS Beete untereinander kollisionsfrei, Innenbeete mit Fase 120 mm (W-M4/W26; reine Geometrie, kleinste Luecke [mm]) | Ist: 94 | Soll: > 0
+PASS W-M3 Tisch-Tisch-Abstand an den Ecken >= corner_gap (Umrisspunkte, Verletzungen) | Ist: 0 | Soll: 0
+FAIL L6 Kollisionen (exakt; ohne verankerte Teile, Rohr/Schlauch, offenen Mangel W-M1) | Ist: 215 | Soll: 0
+FAIL L6 Kollisionspruefung vollstaendig (alle Kandidatenpaare exakt geschnitten) | Ist: 1186 | Soll: 0
+SCORE 29/31 = 94%
+
+real	151m38.379s
+user	0m0.015s
+sys	0m0.000s

@@ -120,5 +120,5 @@
 
 ## N-VERBINDER Montage (5.11., A+ Runde 77, Ring B2 Runde 3) — Scherenknoten und Rundrohr-Streben (D91)
 - Gebaut: Kugelknoten ersetzt durch 26 Plattenpaare + 128 Scherenarme (`knoten_schere_platte.sc`, `knoten_schere_arm_a/b_montage.sc`, Lage `scripts/knoten_montage.py`); Streben Rundrohr 42,4 x 2,6 (A 3077,1 / B 3503,8, Gegenloecher D15), Laschen 8 mm, Folie `foil_z0` 40,2. Build A+ `sh scripts/build.sh 5 77` Exit 0, B2 `sh scripts/build.sh 5 3 ring_b2` Exit 0.
-- Pruefung: `check_verbinder_montage.py` 14/14 je Variante; `check_walkways` PASS je Variante; `check_huelle` 68/68; `check_knoten_schere` 35/35; Viewer-Export beider Varianten im Browser angesehen. `check_latte` A+ in Kopie: siehe Paket `n-verbinder`.
+- Pruefung: `check_verbinder_montage.py` 14/14 je Variante; `check_walkways` PASS je Variante; `check_huelle` 68/68; `check_knoten_schere` 35/35; Viewer-Export beider Varianten im Browser angesehen. `check_latte` A+ in Kopie 29/31, L6 215 (Runde 75: 83): 170 neu = 38 Scherenarme an den Basisknoten x `T3_Sockel` (Achse 75 mm ueber Sockel), 1186 Paare ungeprueft; `renders/check_latte-77.txt`.
 - Offen: Katalog/Stueckliste auf Rundrohr und Scherenknoten; Keilschiene und `strut_cutting.py` noch mit 120 mm Endversatz; A-Rohrlaenge streut 3 mm wegen 6-Loch-Platte an 5-wertigen Knoten. Einzelheiten `docs/packages/n-verbinder.md` Abschnitt Montage D91.

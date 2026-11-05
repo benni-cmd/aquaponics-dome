@@ -6,7 +6,7 @@
 
 ## Plan
 1. [x] Werkstatt A (04.11., a2efae2): Inventur-Skript `scripts/model_inventar.py`, `docs/model-inventar.md`
-2. [~] Werkstatt B (05.11.): Strebe als Vierkantrohr gebaut und gemessen (`scripts/components/strebe.py`, Parameter, Bauteilblatt `docs/parts/strebe.md`, `data/parts`); offen nur `strebe_a/b.sc` ins Repo nach "check_latte fertig"
+2. [x] Werkstatt B (05.11.): Strebe als Vierkantrohr gebaut und gemessen (`scripts/components/strebe.py`, Parameter, Bauteilblatt `docs/parts/strebe.md`, `data/parts`, `designs/components/strebe_a/b.sc`)
 3. [ ] Montage (nach M10-S5-LUFT, einzige Modell-Schreibsitzung): `place_struts` mit Rollwinkel, `strut_r` aus Basisringhoehe entkoppeln, `dome.sc` neu bauen
 4. [~] Werkstatt C (04.11.): `tuer.sc` gekennzeichnet (erledigt); Werkstoffe: Skript `scripts/workshop/default_werkstoffe.py` fertig und auf Kopien geprueft, Anwendung nach Modell-Build durch Montage, `check_parts.py`
 5. [ ] Viewer: Kleinteil-Ausnahme in `export_model.py`, Screenshot Tuer und Strebe
@@ -32,7 +32,7 @@ Reihenfolge: 2 und 5 duerfen vor Schritt 3 laufen (kein `dome.sc`-Neubau); 3 nac
 - **Gemessen (Scratchpad-Kopie, `solidcraft-cli.exe eval <sc> --json-out`):** A: 1 Koerper, bbox 30 x 30 x 3039, Volumen 984 636 mm3, Masse 7,729 kg, closed wahr, Material `Stahl verzinkt`. B: 1 Koerper, bbox 30 x 30 x 3468, Volumen 1 123 632 mm3, Masse 8,821 kg, closed wahr, Material `Stahl verzinkt`. Alle Soll-Werte aus Schritt 2 getroffen (Abweichung unter 0,1 %).
 - **Passung:** CAD-Probe Steckarm 23 x 23 x 3, 80 mm tief an beiden Enden, `inspect.interference`: 0 Interferenzen (A und B, je 2 Paare per Boolean geprueft). Gegenprobe Arm 25 x 25: 2 Interferenzen je 3920 mm3 (Probe trennt).
 - **check_parts:** `python -X utf8 scripts/workshop/check_parts.py strebe_a strebe_b` mit Umleitung der zwei `.sc` auf die Scratchpad-Kopie: 22/22 je Komponente, Exit 0.
-- **Offen:** `designs/components/strebe_a.sc`/`strebe_b.sc` im Repo schreiben (`python -X utf8 scripts/components/strebe.py`) erst nach "check_latte fertig" vom Orchestrator; danach `check_parts.py strebe_a strebe_b` ohne Umleitung. Folge fuer Schritt 3: Rohr-Aussenkante 15 statt 45 mm von der Achse, Folienabstand in `check_huelle.py` waechst.
+- **Im Repo (nach "check_latte fertig"):** `python -X utf8 scripts/components/strebe.py` schrieb `designs/components/strebe_a.sc`/`strebe_b.sc`; `eval` im Repo gleich der Scratchpad-Messung (7729 g / 8821 g, bbox 30 x 30 x 3039/3468, closed, `Stahl verzinkt`); `python -X utf8 scripts/workshop/check_parts.py strebe_a strebe_b` ohne Umleitung 22/22 je Teil, Exit 0. Folge fuer Schritt 3: Rohr-Aussenkante 15 statt 45 mm von der Achse, Folienabstand in `check_huelle.py` waechst.
 
 ## DoD
 Dateien aus dem Blatt vorhanden; fuenf Pruefpunkte vom Pruefer gemessen; Screenshot Tuer mit Klinke und Streben-Nahansicht gegen `docs/ui-standard.md`; Vorher/Nachher-Werte (Basisknoten-Z, defs-Summe) im Paket; Entscheidungen in `docs/decisions.md`; Commit und Push je Teilschritt.

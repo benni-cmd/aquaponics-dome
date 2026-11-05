@@ -799,6 +799,31 @@ def s2n_spuel(neu, tid, q, h, nr, linie, notiz):
     neu["teile"].append({"id": hid + "-Kappe", "datei": "lt_kappe_d50", "pos": rd(pk), "z": [round(v, 6) for v in h], "x": [1.0, 0.0, 0.0] if abs(h[0]) < 0.9 else [0.0, 1.0, 0.0],
                          "farbe": "grau", "varianten": S2N_AP, "notiz": "Kappe d50 Spuelanschluss " + notiz})
 
+def s2n_richtung(neu, linie, q, h0, own):
+    """Abzweig-Richtung fuer einen Spuelanschluss ueber Flur: Weltachse (R1), alle Punkte <= 250 mm an einem Bauteil-Kasten (R9-Naeherung wie check_leitungsordnung),
+    kein Bauteil- und kein Rohr-Treffer; unter den passenden die zu h0 naechste."""
+    import check_leitungen as CL
+    inst = json.load(open(os.path.join(ROOT, "viewer", "instances.json"), encoding="utf-8"))["instances"]
+    bomk = json.load(open(os.path.join(ROOT, "data", "bom_koerper.json"), encoding="utf-8"))["komponenten"]
+    SKIP = ("lt_", "netztopf", "salatkopf", "huelle_", "strebe_", "knoten_", "erdflaeche", "mensch_", "fundamentring", "fundamentanker", "luft_scheibe", "tuer")
+    kast = []
+    for a in inst:
+        b = bomk.get(a["d"])
+        if a["d"].startswith(SKIP) or not b or not b["bodies"]: continue
+        kast.append((a["m"], [min(x["bbox_min"][i] for x in b["bodies"]) for i in range(3)], [max(x["bbox_max"][i] for x in b["bodies"]) for i in range(3)]))
+    def nah(p, m, lo, hi, tol):
+        dd = [p[0] - m[3], p[1] - m[7], p[2] - m[11]]; r = [m[0] * dd[0] + m[4] * dd[1] + m[8] * dd[2], m[1] * dd[0] + m[5] * dd[1] + m[9] * dd[2], m[2] * dd[0] + m[6] * dd[1] + m[10] * dd[2]]
+        return all(lo[i] - tol <= r[i] <= hi[i] + tol for i in range(3))
+    welt = S2NWelt(neu, linie); L = SP_ROHR + hl(50) + K_GAP + KAPPE_H; wahl = []
+    for h in ((1.0, 0.0, 0.0), (-1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, -1.0, 0.0)):
+        pts = [add(q, h, 60.0 + (L - 60.0) * k / 8) for k in range(9)]
+        if not all(any(nah(p, *k, 250.0) for k in kast) for p in pts): continue
+        if any(nah(p, *k, 45.0) for p in pts for k in kast): continue                      # Hahn-Gehaeuse (Aussen ~ 84) frei vom Bauteil-Kasten
+        if any(CL.seg_seg(pts[0], pts[-1], a, b)[0] < 45 + dn / 2 + REV_LUFT for tid, dn, a, b in welt.segs() if tid not in own and not tid.startswith(tuple(own))): continue
+        wahl.append((-dot(h, h0), h))
+    if not wahl: raise SystemExit("S2N: kein Abzweig fuer den Spuelanschluss bei %s" % rd(q))
+    return min(wahl)[1]
+
 class S2NWelt:
     """Hindernisse (scripts/check_leitungen.load_world) und alle Leitungsstrecken (andere Linie aus der Datei, eigene aus neu) fuer die Steigrohr-Pruefung."""
     def __init__(self, neu, linie):
@@ -916,7 +941,8 @@ def s2n(neu, linie):
     s2n_spuel(neu, tid, q, (0.0, 0.0, 1.0), 1, linie, "am Steigerkopf %s (Absetzer-Saug, lotrecht in den Steiger)" % tid)
     # M7 Spuelanschluss 2: Fallrohr des Absetzer-Auslaufs, T auf Z 950, Abzweig waagerecht vom Tank weg
     tr = T(I["fall"]); P = [tuple(p) for p in tr["pfad"]]
-    h = unit((P[1][0] - P[0][0], P[1][1] - P[0][1], 0.0)); q = (P[1][0], P[1][1], 950.0)
+    h0 = unit((P[1][0] - P[0][0], P[1][1] - P[0][1], 0.0)); q = (P[1][0], P[1][1], 950.0)
+    h = s2n_richtung(neu, linie, q, h0, [I["fall"]])
     s2n_spuel(neu, I["fall"], q, h, 2, linie, "am Fallrohr %s (Absetzer-Auslauf, Z 950)" % I["fall"])
     # M2 Schacht an KH1/KH2 (Bauform senkrecht, Einbau docs/parts/schacht_kugelhahn_tief.md)
     kh = [r for r in neu["r_stuecke"] if r["id"] == I["kh"]][0]; hm = add(tuple(kh["pos_a"]), tuple(kh["dir"]), hl(63) / 2)

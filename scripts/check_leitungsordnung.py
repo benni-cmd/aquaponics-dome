@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import leitungen as LG
 
 FZ, KOPF = 400.0, 2500.0
-DOC = json.load(open(sys.argv[sys.argv.index("--trassen") + 1], encoding="utf-8")) if "--trassen" in sys.argv else LG.laden()
+DOC = json.load(open(sys.argv[sys.argv.index("--trassen") + 1], encoding="utf-8")) if "--trassen" in sys.argv else LG.laden_variante()   # M10-S2N: Variante filtern (geteilte Trassen haben eine ring_b2-Kopie)
 KANTEN = json.load(open(os.path.join(ROOT, "data", "leitungsnetz.json"), encoding="utf-8"))["kanten"]
 CMDS = json.load(open(os.path.join(ROOT, "scripts", "dome-script.json")))["commands"]
 MV = {c["params"]["occurrence"]: c["params"]["matrix"] for c in CMDS if c["command"] == "occurrence.move"}

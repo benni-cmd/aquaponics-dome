@@ -2,26 +2,32 @@
 
 Generator: `scripts/components/strebe.py` -> `designs/components/strebe_a.sc`, `strebe_b.sc`. Teiledaten: `data/parts/strebe_a.json`, `strebe_b.json`.
 
-## Form
-- Hohles Vierkantrohr `strut_profile` x `strut_profile` x `strut_wall` = 30 x 30 x 3 mm (Parameter in `data/params.json`, Herkunft [A] Knotenblatt `data/components/knoten.json`; Wand 3 mm entschieden 05.11.2026 bis N-STATIK).
-- Laenge = Knoten-Knoten-Abstand minus 2 x `strut_end_offset` (120): A 3279 - 240 = 3039 mm (30 Stueck), B 3708 - 240 = 3468 mm (34 Stueck).
-- Ursprung Strebenanfang, Achse +Z, Rohrflaechen parallel zu X und Y. Die Drehlage im Gesamtmodell setzt die Montage (`gen_dome.py` `place_struts`, N-MODELL-KOMPLETT Schritt 3) aus `data/components/knoten_arme.json`.
-- Ein Koerper je Datei (`T1_Strebe_A`, `T1_Strebe_B`), Werkstoff `Stahl verzinkt` (Katalog `stahl_verzinkt`, 7,85 g/cm3).
-- Keine eigene Aufnahme: der Steckarm 23 x 23 steckt 80 mm im durchgehenden Innenmass 24 x 24 (0,5 mm Luft je Seite). `strut_pocket` (runde Aufnahme D34 des Rundstabs) ist nicht mehr benutzt.
+## Form (D91, 05.11.2026)
+- Rundrohr `strut_d` x `strut_wall` = 42,4 x 2,6 mm, EN 10255 verzinkt (Parameter in `data/params.json`; muss gleich `tube_d`/`tube_t` des Scherenknotens `data/components/knoten_schere.json` sein, sonst bricht das Skript ab). Vorher Vierkant 30 x 30 x 3 (Kugelknoten mit Steckarm).
+- Laenge = Rohrmund bis Rohrmund der zwei Scheren, gemessen in der Montage-Lage (`scripts/knoten_montage.py` `rohrlaengen`): Mitte der Spanne je Typ.
+  - A: Spanne 3075,5 bis 3078,7 mm, gebaut 3077,1 mm (30 Stueck). Die Spanne kommt von der einheitlichen 6-Loch-Platte (D91): an den 5-wertigen Knoten dreht jeder Arm bis 24 Grad um seine Plattenschraube, der Rohrmund wandert bis 15 mm. Alle A-Streben beruehren einen 5-wertigen Knoten.
+  - B: 3503,8 mm (34 Stueck), Spanne 0,0 mm.
+  - Nennmass ohne Plattendrehung (Werkstatt `knoten_schere.json` `geometrie.rohr_mm`): A 3075,3 / B 3503,5.
+- Je Ende zwei Gegenloecher D15 (`wall_hole`), 46 mm hinter dem Rohrmund (`b_pivot_to_nose` 58 - `pivot_out` 12), je auf der Mittelebene einer Lasche (x = -/+ 4 mm bei `link_t` 8).
+- Rahmen: Ursprung Rohrmund am Anfang, Achse +Z, X = Kuppel aussen (Laschennormale), Y = Nasenrichtung. Anfang: Lasche 1 nach +Y, Lasche 2 nach -Y; Ende umgekehrt.
+- Ein Koerper je Datei (`T1_Strebe_A`, `T1_Strebe_B`), Werkstoff `Stahl verzinkt` (7,85 g/cm3).
+
+## Einbau (Montage)
+`gen_dome.py` `place_struts` setzt jede Strebe mittig zwischen die Rohrmuender ihrer zwei Scherenarme (`scripts/knoten_montage.py`). Spalt Rohrende zu Rohrmund je Ende: A hoechstens 0,8 mm, B 0,0 mm. Die Nase (10 x 8 mm, Diagonale 12,8) passt mit 1,1 mm Spiel in D15; Pruefung `python -X utf8 scripts/check_verbinder_montage.py`.
 
 ## Profil aendern (N-STATIK)
-Nur `strut_profile` und `strut_wall` in `data/params.json` aendern, dann `python -X utf8 scripts/components/strebe.py`. Achtung: der Knoten-Steckarm (`data/components/knoten.json`, 23,0) muss zum neuen Innenmass passen (Innenmass - 1,0).
+`strut_d`/`strut_wall` in `data/params.json` UND `tube_d`/`tube_t` in `data/components/knoten_schere.json` gleich aendern, dann `python -X utf8 scripts/workshop/knoten_schere.py` und `python -X utf8 scripts/components/strebe.py` (liest `scripts/.segs.json` aus dem letzten `gen_dome.py`-Lauf).
 
 ## Messwerte 05.11.2026
-Befehl: `solidcraft-cli.exe eval <strebe_x.sc> --json-out <datei>`
+Befehl: `solidcraft-cli.exe eval designs/components/strebe_<x>.sc`
 
 | | bbox mm | Volumen mm3 | Masse kg | closed | Material |
 |---|---|---|---|---|---|
-| A | 30 x 30 x 3039 | 984 636 | 7,729 | wahr | Stahl verzinkt |
-| B | 30 x 30 x 3468 | 1 123 632 | 8,821 | wahr | Stahl verzinkt |
+| A | 42,4 x 42,4 x 3077,1 | 998 041 | 7,835 | wahr | Stahl verzinkt |
+| B | 42,4 x 42,4 x 3503,8 | 1 136 694 | 8,923 | wahr | Stahl verzinkt |
 
-Soll laut Blatt: 7,73 / 8,82 kg (+-1 %), Querschnitt 324 mm2. Passung: CAD-Probe Steckarm 23 x 23 x 3, 80 mm tief an beiden Enden, `inspect.interference`: 0 Interferenzen (2 Paare geprueft); Gegenprobe Steckarm 25 x 25: 2 Interferenzen je 3920 mm3. `check_parts.py strebe_a strebe_b`: 22/22 je Teil, Exit 0.
+`python -X utf8 scripts/workshop/check_parts.py strebe_a strebe_b`: 22/22 je Teil.
 
-## Folgen fuer die Montage (Schritt 3)
-- `strut_r` (45) bleibt in `data/params.json`: `gen_dome.py:250`, `check_latte.py:75`, `place_m8.py:11` und `check_huelle.py:144` rechnen damit (Basisringhoehe, Folienabstand). Die Montage entkoppelt das.
-- Rohr-Aussenkante liegt 15 statt 45 mm von der Achse: der Folienabstand in `check_huelle.py` (45 + 3 + 15 < 64) wird groesser, nicht kleiner.
+## Offen
+- Katalog-Artikel: `data/katalog.json` fuehrt noch `PRF-st-strebe30x30`; Rundrohr 42,4 x 2,6 (Haendler in R56 Abschnitt 5) traegt die Stuecklisten-Kette nach.
+- Bekommen die 5-wertigen Knoten eine 5-Loch-Platte (Werkstatt-Befund N-VERBINDER), entfaellt die A-Spanne: alle A 3075,3 mm.

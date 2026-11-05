@@ -1,4 +1,4 @@
-# Bauteilblatt: Scherenknoten T60S (W74) — zur Abnahme durch Ben, NICHT im Gesamtmodell
+# Bauteilblatt: Scherenknoten T60S (W74) — freigegeben D91, im Gesamtmodell an allen 26 Knoten (N-VERBINDER Montage 05.11.2026)
 
 **Funktion:** Ein Plattenpaar (obere und untere Lochplatte, W83 Ben 05.11.) verbindet die Streben eines Knotens; die Laschenaugen liegen zwischen den beiden Platten. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch. Liegen beide Laschenaugen deckungsgleich auf der Platte und sind mit EINER Schraube verschraubt, stehen die zwei Nasen durch zwei gegenueberliegende Gegenloecher 3 mm aus dem Rohr: Die Strebe ist eingerastet. Ohne Plattenschraube oeffnet sich die Schere, die Nasen ziehen ein, das Rohr laesst sich abziehen (R56 Abschnitt 1).
 
@@ -9,6 +9,7 @@
 | `designs/components/knoten_schere_arm_a.sc` | Schere + Normteile + Rohrende 250 mm, Knick A | T60S-A | 60 Enden |
 | `designs/components/knoten_schere_arm_b.sc` | dasselbe, Knick B | T60S-B | 70 Enden |
 | `designs/components/knoten_schere.sc` | Detailmodell fuer den Viewer: Plattenpaar + ein Arm B | T60S | 0 (nur Ansicht) |
+| `designs/components/knoten_schere_arm_a_montage.sc`, `_b_montage.sc` | Arm A/B OHNE Probe-Rohr: das Rohr ist die Strebe T1 (D91); diese zwei setzt `gen_dome.py` ins Gesamtmodell | T60S-A / T60S-B | Modell A+: 60 A / 68 B (Basiskante der Tuer ohne Strebe: 2 Arme weniger) |
 
 **Generator:** `scripts/workshop/knoten_schere.py` (Parameter und Knotentabelle `data/components/knoten_schere.json`, Teiledaten `data/parts/knoten_schere.json`) · **Pruefung:** `scripts/workshop/check_knoten_schere.py` · **Bilder:** `scripts/workshop/render_knoten_schere.py` (Aufruf ueber `knoten_schere.py --render`) · **Bericht:** `docs/research/R56-scherenknoten.md` · **Blatt:** `docs/jobs/N-VERBINDER.md`.
 
@@ -23,11 +24,11 @@
 |---|---|
 | Lochplatte oben | D 110 x 8, 6 Loecher D 11 auf Lochkreis r 37 (60-Grad-Raster), Mittelbohrung D 20; Unterkante 15,5 mm unter dem Knotenpunkt |
 | Lochplatte unten (W83) | gleicher Zuschnitt; Oberkante 25,5 mm unter dem Knotenpunkt, 10 mm Spalt = die zwei Laschenaugen; Knick liegt ausserhalb beider Platten (Plattenrand r 55, Knick r 63 / 72) |
-| Lasche (2 je Arm) | Flachstahl 20 x 5, Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Laschenende 3 hinter der Nase |
+| Lasche (2 je Arm) | Flachstahl 20 x 8 (D91; vorher 5), Auge bis Drehpunkt 50, Drehpunkt bis Nase 58, Nase 10 breit, Laschenende 3 hinter der Nase |
 | Knick A | 15,9 Grad, Knicklinie bei r 72,1, Drehpunkt 14,9 mm hinter dem Knick |
 | Knick B | 18,0 Grad, Knicklinie bei r 63,0, Drehpunkt 24,0 mm hinter dem Knick |
 | Rohrende | Rund 42,4 x 2,6 (EN 10255), Probestueck 250 mm; Rohrmund 12 mm hinter dem Drehpunkt; Knotenpunkt bis Rohrmund A 101,9 / B 102,2 mm |
-| Gegenloecher | 2 x D 13 gegenueber, 46 mm hinter dem Rohrmund, je auf der Mittelebene ihrer Lasche |
+| Gegenloecher | 2 x D 15 gegenueber (D91: Nase 10 x 8, Diagonale 12,8, 1,1 mm Spiel; D13 liess bei 8-mm-Laschen nur 0,1 mm), 46 mm hinter dem Rohrmund, je auf der Mittelebene ihrer Lasche |
 | Plattenschraube | M10 x 45 ISO 4017 8.8 (durch beide Platten und beide Augen), 2 Scheiben ISO 7089, Mutter ISO 4032 unter der unteren Platte; Kopf auf der oberen Platte |
 | Drehpunktschraube | M8 x 25 ISO 4017 8.8, 2 Scheiben, Mutter |
 
@@ -46,6 +47,7 @@
 | Rohrstueck 250 mm (nur Probestueck) | 632 g |
 | Knoten ohne Rohr: 4- / 5- / 6-wertig | 2,18 / 2,45 / 2,72 kg |
 | Alle 26 Plattenpaare + 130 Scheren mit Schrauben | 63,7 kg (gegen 155 kg Kugelknoten, `docs/parts/knoten.md`) |
+**Nach D91 (Laschen 8 mm, Montage-Arme ohne Rohr, gemessen 05.11.2026 mit `solidcraft-cli eval designs/components/knoten_schere_{platte,arm_a_montage,arm_b_montage}.sc`):** Lasche 1 / 2 153 / 156 g, Arm mit Normteilen 394 g, Plattenpaar 1083 g; im Modell A+ 26 Plattenpaare + 128 Arme = 78,6 kg (die Werte oben gelten fuer 5-mm-Laschen).
 Werkstoffe: Laserteile S235 feuerverzinkt (`Stahl Laserteil`), Rohr EN 10255 verzinkt (`Stahl verzinkt`), Schrauben 8.8 verzinkt (`Stahl Schraube`).
 
 ## Lochbild-Frage (Blatt Bauteil-Aufbau 4) — BEFUND
@@ -90,7 +92,10 @@ Werkzeug: 2 Ringschluessel SW 16 (M10) und SW 13 (M8). Gegenloecher mit Bohrlehr
 ## Vorentwurf
 `knoten_schere_proto` (Commit 927d171) ist geloescht: Er hatte die Platte unter den Laschen, nur Arm B und keine gemeinsame Plattenhoehe fuer A und B; zwei Modelle desselben Teils wuerden Montage und Pruefer verwirren. Der Stand bleibt in Git (927d171) erhalten.
 
-## Offen (Ben)
+## Entschieden (D91, Ben 05.11.2026)
+Rundrohr 42,4 x 2,6; Laschen 8 mm; EINE 6-Loch-Platte fuer alle 26 Knoten (5-wertig bleibt 15 mm Achsversatz, die A-Streben streuen dadurch 3075,5 bis 3078,7 mm, gebaut 3077,1). Die Liste unten ist der Stand vor D91.
+
+## Offen (Ben) — Stand vor D91
 1. Lesart der Funktion: Augen deckungsgleich verschraubt = Nasen aussen (R56 Abschnitt 1).
 2. Rohr Rund 42,4 x 2,6 statt Vierkant 30 x 30 x 3 (Schere passt nicht in 30 x 30 x 3).
 3. Laschendicke 5 oder 8 mm (Parameter `link_t`; Knick traegt 4,6 gegen 11,8 kN).

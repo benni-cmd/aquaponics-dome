@@ -9,7 +9,7 @@
   },
   "modell_aktuell": {
    "instances_built": "2026-11-05 02:12:59",
-   "sc_sha256": "0ae398d6aeb4b17c",
+   "sc_sha256": "938f5a09625e8abb",
    "ibc_beet_sha256": "491fba715722d28b",
    "anzahl_sc": 326
   },
@@ -14730,9 +14730,7 @@
    "gruppen": [
     "Kuppel"
    ],
-   "hinweise": [
-    "platzhalterkoerper"
-   ],
+   "hinweise": [],
    "name_vergeben": 0,
    "preis": {
     "einzelpreis_eur": 9.12,

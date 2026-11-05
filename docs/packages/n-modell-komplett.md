@@ -10,7 +10,7 @@
 3. [x] Montage (05.11., Runde 70): `place_struts` mit Rollwinkel, `strut_r` aus Basisringhoehe entkoppeln (`base_axis_h`), `dome.sc` neu gebaut, Werkstoffe angewendet
 4. [~] Werkstatt C (04.11.): `tuer.sc` gekennzeichnet (erledigt); Werkstoffe: Skript `scripts/workshop/default_werkstoffe.py` fertig und auf Kopien geprueft, Anwendung nach Modell-Build durch Montage, `check_parts.py`
 5. [ ] Viewer: Kleinteil-Ausnahme in `export_model.py`, Screenshot Tuer und Strebe
-6. [ ] `bom.py` und `check_bom.py` nachziehen
+6. [x] `bom.py` und `check_bom.py` nachgezogen (05.11.2026, Werkstatt Daten): Flag `platzhalterkoerper` an `PRF-st-strebe30x30` entfernt (`scripts/bom_artikel.py`), `katalog.json` neu erzeugt, `check_bom.py` Exit 0 (14 von 14), Menge 209,082 m
 7. [ ] Pruefer: `docs/jobs/pruefung/N-MODELL-KOMPLETT.md` nach fuenf Pruefpunkten
 8. [ ] Orchestrator: Roadmap nachfuehren, W65 (Ausfuell-Artefakt) freigeben
 

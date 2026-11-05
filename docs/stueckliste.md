@@ -2,7 +2,7 @@
 
 Erzeugt von `scripts/bom.py` aus dem Modellstand (`viewer/instances.json` built 2026-11-05 02:12:59, sc_sha256 4aef15a1929b9af1). Preise brutto, Richtwerte mit Datum, keine Angebote. Quelle der Preise: `data/beschaffung/*.json`.
 
-**Drift:** die `.sc` haben sich seit der Koerpermessung geaendert (aktuell 0ae398d6aeb4b17c). Nachmessen: `python -X utf8 scripts/bom_artikel.py --ergaenzen`.
+**Drift:** die `.sc` haben sich seit der Koerpermessung geaendert (aktuell 938f5a09625e8abb). Nachmessen: `python -X utf8 scripts/bom_artikel.py --ergaenzen`.
 
 ## Kopf
 

@@ -231,10 +231,10 @@ def classify(comp, b):
             return Art("BLE-platte-250x250x15", "BLE", "Ankerplatte 250x250x15 mm, Stahl", art="a", werkstoff="Stahl Anker")
         if nl.startswith("gabel"):
             return Art("SON-ankergabel-80x140", "SON", "Gabelkopf 80x140 (Fundamentanker, Stahl, Zuschnitt)", art="c", werkstoff="Stahl Anker")
-    # ---- Streben (Platzhalter-Koerper je Strebe)
+    # ---- Streben (Vierkantrohr 30x30x3, N-MODELL-KOMPLETT Schritt 2)
     if comp in ("strebe_a", "strebe_b"):
         return Art("PRF-st-strebe30x30", "PRF", "Strebenprofil 30x30 (Kuppelstrebe, Profil und Wand offen: N-STATIK V1/V2c)", "m", "a", "Stahl verzinkt",
-                   {"querschnitt_mm": [30, 30]}, menge=d[2] / 1000.0, flag="platzhalterkoerper")
+                   {"querschnitt_mm": [30, 30]}, menge=d[2] / 1000.0)
     # ---- Tuer, Haut, Huelle
     if comp.startswith("huelle_folie"):
         return Art("FOL-pe-plane", "FOL", "PE-Planenbahn (Huelle, Zuschnitt je Feld, Flaeche aus Modell)", "m2", "b", "PE Folie", menge=(d[2] * d[1]) / 1e6)

@@ -1532,12 +1532,19 @@
           "koerper": 1,
           "instanzen": 1,
           "menge_je_instanz": 0.099
+        },
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 5,
+          "instanzen": 0,
+          "menge_je_instanz": 1.684
         }
       ],
       "bedarf": {
         "einheit": "m",
         "menge": 12.525,
         "komponenten_ohne_instanz": [
+          "beet_sumpf",
           "lt_rohr_d40"
         ]
       },
@@ -1685,11 +1692,59 @@
           "koerper": 11,
           "instanzen": 0,
           "menge_je_instanz": 1.14
+        },
+        {
+          "komponente": "lt_rohr_d25_L1671",
+          "koerper": 1,
+          "instanzen": 1,
+          "menge_je_instanz": 1.671
+        },
+        {
+          "komponente": "lt_rohr_d25_L2304",
+          "koerper": 1,
+          "instanzen": 1,
+          "menge_je_instanz": 2.304
+        },
+        {
+          "komponente": "lt_rohr_d25_L2353",
+          "koerper": 1,
+          "instanzen": 4,
+          "menge_je_instanz": 2.353
+        },
+        {
+          "komponente": "lt_rohr_d25_L2794",
+          "koerper": 1,
+          "instanzen": 1,
+          "menge_je_instanz": 2.794
+        },
+        {
+          "komponente": "lt_rohr_d25_L51",
+          "koerper": 1,
+          "instanzen": 2,
+          "menge_je_instanz": 0.051
+        },
+        {
+          "komponente": "lt_rohr_d25_L58",
+          "koerper": 1,
+          "instanzen": 1,
+          "menge_je_instanz": 0.058
+        },
+        {
+          "komponente": "lt_rohr_d25_L59",
+          "koerper": 1,
+          "instanzen": 1,
+          "menge_je_instanz": 0.059
+        },
+        {
+          "komponente": "lt_rohr_d25_L941",
+          "koerper": 1,
+          "instanzen": 1,
+          "menge_je_instanz": 0.941
         }
       ],
       "bedarf": {
         "einheit": "m",
-        "menge": 8.63,
+        "menge": 25.971,
         "komponenten_ohne_instanz": [
           "aktivkohle_station",
           "ibc_beet_aussen_933",
@@ -1826,9 +1881,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "fundamentanker",
@@ -1861,9 +1914,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "fundamentanker",
@@ -1916,12 +1967,19 @@
           "koerper": 1,
           "instanzen": 0,
           "menge_je_instanz": 1.0
+        },
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
         }
       ],
       "bedarf": {
         "einheit": "Stk",
         "menge": 5.0,
         "komponenten_ohne_instanz": [
+          "beet_sumpf",
           "lt_kappe_d20"
         ]
       },
@@ -2663,12 +2721,19 @@
           "koerper": 2,
           "instanzen": 2,
           "menge_je_instanz": 0.646
+        },
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 0.38
         }
       ],
       "bedarf": {
         "einheit": "m",
         "menge": 33.415,
         "komponenten_ohne_instanz": [
+          "beet_sumpf",
           "halter_inline_d32",
           "lt_rohr_d50",
           "lt_rohr_d50_L1184",
@@ -3951,6 +4016,12 @@
           "koerper": 2,
           "instanzen": 0,
           "menge_je_instanz": 0.833
+        },
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.194
         }
       ],
       "bedarf": {
@@ -3958,6 +4029,7 @@
         "menge": 28.334,
         "komponenten_ohne_instanz": [
           "aktivkohle_station",
+          "beet_sumpf",
           "geblaese_luft",
           "ibc_beet_aussen_933",
           "ibc_beet_aussen_993",
@@ -4652,9 +4724,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "knoten_4",
@@ -5221,18 +5291,16 @@
         {
           "komponente": "lt_bogen90_d25",
           "koerper": 1,
-          "instanzen": 0,
+          "instanzen": 16,
           "menge_je_instanz": 1.0
         }
       ],
       "bedarf": {
         "einheit": "Stk",
-        "menge": 0.0,
-        "komponenten_ohne_instanz": [
-          "lt_bogen90_d25"
-        ]
+        "menge": 16.0,
+        "komponenten_ohne_instanz": []
       },
-      "ohne_instanz_im_modell": true
+      "ohne_instanz_im_modell": false
     },
     {
       "id": "FIT-bogen90-d32",
@@ -5581,97 +5649,6 @@
         ]
       },
       "ohne_instanz_im_modell": true
-    },
-    {
-      "id": "SRB-satz-m6x20",
-      "typ": "SRB",
-      "bezeichnung": "Schraubensatz M6x20 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
-      "werkstoff": "Stahl verzinkt",
-      "masse": {
-        "gewinde": "M6",
-        "laenge_mm": 20
-      },
-      "lagerlaengen_mm": null,
-      "einheit": "Satz",
-      "beschaffung_art": "a",
-      "bezug": {
-        "land": null,
-        "ok": "offen"
-      },
-      "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
-      "verwendung": [
-        {
-          "komponente": "lt_klemme_d110",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "lt_klemme_d20",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "lt_klemme_d25",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "lt_klemme_d32",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "lt_klemme_d40",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "lt_klemme_d50",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "lt_klemme_d63",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "pumpe_gross",
-          "koerper": 2,
-          "instanzen": 4,
-          "menge_je_instanz": 2.0
-        },
-        {
-          "komponente": "pumpe_klein",
-          "koerper": 2,
-          "instanzen": 4,
-          "menge_je_instanz": 2.0
-        }
-      ],
-      "bedarf": {
-        "einheit": "Satz",
-        "menge": 16.0,
-        "komponenten_ohne_instanz": [
-          "lt_klemme_d110",
-          "lt_klemme_d20",
-          "lt_klemme_d25",
-          "lt_klemme_d32",
-          "lt_klemme_d40",
-          "lt_klemme_d50",
-          "lt_klemme_d63"
-        ]
-      },
-      "ohne_instanz_im_modell": false
     },
     {
       "id": "SCH-rohrschelle-d20",
@@ -7105,12 +7082,19 @@
           "koerper": 1,
           "instanzen": 0,
           "menge_je_instanz": 1.0
+        },
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 2,
+          "instanzen": 0,
+          "menge_je_instanz": 2.0
         }
       ],
       "bedarf": {
         "einheit": "Stk",
         "menge": 0.0,
         "komponenten_ohne_instanz": [
+          "beet_sumpf",
           "lt_rueckschlagventil_d40"
         ]
       },
@@ -7182,57 +7166,6 @@
         "menge": 0.0,
         "komponenten_ohne_instanz": [
           "lt_schelle_vk_d32"
-        ]
-      },
-      "ohne_instanz_im_modell": true
-    },
-    {
-      "id": "SRB-satz-m6x16",
-      "typ": "SRB",
-      "bezeichnung": "Schraubensatz M6x16 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
-      "werkstoff": "Stahl verzinkt",
-      "masse": {
-        "gewinde": "M6",
-        "laenge_mm": 16
-      },
-      "lagerlaengen_mm": null,
-      "einheit": "Satz",
-      "beschaffung_art": "a",
-      "bezug": {
-        "land": null,
-        "ok": "offen"
-      },
-      "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
-      "verwendung": [
-        {
-          "komponente": "lt_schelle_vk_d32",
-          "koerper": 4,
-          "instanzen": 0,
-          "menge_je_instanz": 4.0
-        },
-        {
-          "komponente": "lt_schelle_vk_d63",
-          "koerper": 4,
-          "instanzen": 0,
-          "menge_je_instanz": 4.0
-        },
-        {
-          "komponente": "winkelhalter",
-          "koerper": 2,
-          "instanzen": 0,
-          "menge_je_instanz": 2.0
-        }
-      ],
-      "bedarf": {
-        "einheit": "Satz",
-        "menge": 0.0,
-        "komponenten_ohne_instanz": [
-          "lt_schelle_vk_d32",
-          "lt_schelle_vk_d63",
-          "winkelhalter"
         ]
       },
       "ohne_instanz_im_modell": true
@@ -8919,9 +8852,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "nft_tisch_aussen",
@@ -9078,9 +9009,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "nft_tisch_aussen",
@@ -9119,9 +9048,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "nft_tisch_aussen",
@@ -9348,20 +9275,19 @@
         {
           "komponente": "schwimmerventil_pool",
           "koerper": 1,
-          "instanzen": 0,
+          "instanzen": 1,
           "menge_je_instanz": 1.0
         }
       ],
       "bedarf": {
         "einheit": "Stk",
-        "menge": 0.0,
+        "menge": 1.0,
         "komponenten_ohne_instanz": [
           "puffer_ibc",
-          "puffer_station",
-          "schwimmerventil_pool"
+          "puffer_station"
         ]
       },
-      "ohne_instanz_im_modell": true
+      "ohne_instanz_im_modell": false
     },
     {
       "id": "FIT-stutzen-d40",
@@ -10402,6 +10328,45 @@
       "ohne_instanz_im_modell": false
     },
     {
+      "id": "SRB-satz-m6x20",
+      "typ": "SRB",
+      "bezeichnung": "Schraubensatz M6x20 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
+      "werkstoff": "Stahl verzinkt",
+      "masse": {
+        "gewinde": "M6",
+        "laenge_mm": 20
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Satz",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "pumpe_gross",
+          "koerper": 2,
+          "instanzen": 4,
+          "menge_je_instanz": 2.0
+        },
+        {
+          "komponente": "pumpe_klein",
+          "koerper": 2,
+          "instanzen": 4,
+          "menge_je_instanz": 2.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Satz",
+        "menge": 16.0,
+        "komponenten_ohne_instanz": []
+      },
+      "ohne_instanz_im_modell": false
+    },
+    {
       "id": "BLE-pp-tafel-502x345x5",
       "typ": "BLE",
       "bezeichnung": "PP-Montagetafel 502x345x5 (Zuschnitt)",
@@ -10961,9 +10926,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "platzhalterkoerper"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "strebe_a",
@@ -11738,6 +11701,41 @@
       "ohne_instanz_im_modell": true
     },
     {
+      "id": "SRB-satz-m6x16",
+      "typ": "SRB",
+      "bezeichnung": "Schraubensatz M6x16 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
+      "werkstoff": "Stahl verzinkt",
+      "masse": {
+        "gewinde": "M6",
+        "laenge_mm": 16
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Satz",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "winkelhalter",
+          "koerper": 2,
+          "instanzen": 0,
+          "menge_je_instanz": 2.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Satz",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "winkelhalter"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
       "id": "SRB-satz-m6x55",
       "typ": "SRB",
       "bezeichnung": "Schraubensatz M6x55 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
@@ -11754,9 +11752,7 @@
         "ok": "offen"
       },
       "status": "OFFEN (Quelle)",
-      "hinweise": [
-        "name_vergeben"
-      ],
+      "hinweise": [],
       "verwendung": [
         {
           "komponente": "winkelhalter",
@@ -12189,18 +12185,24 @@
         {
           "komponente": "luft_scheibenbelueftung",
           "koerper": 1,
+          "instanzen": 4,
+          "menge_je_instanz": 1.0
+        },
+        {
+          "komponente": "schlammfass",
+          "koerper": 1,
           "instanzen": 0,
           "menge_je_instanz": 1.0
         }
       ],
       "bedarf": {
         "einheit": "Stk",
-        "menge": 0.0,
+        "menge": 4.0,
         "komponenten_ohne_instanz": [
-          "luft_scheibenbelueftung"
+          "schlammfass"
         ]
       },
-      "ohne_instanz_im_modell": true
+      "ohne_instanz_im_modell": false
     },
     {
       "id": "SON-scheibenbelueftung-270",
@@ -12223,18 +12225,16 @@
         {
           "komponente": "luft_scheibenbelueftung",
           "koerper": 1,
-          "instanzen": 0,
+          "instanzen": 4,
           "menge_je_instanz": 1.0
         }
       ],
       "bedarf": {
         "einheit": "Stk",
-        "menge": 0.0,
-        "komponenten_ohne_instanz": [
-          "luft_scheibenbelueftung"
-        ]
+        "menge": 4.0,
+        "komponenten_ohne_instanz": []
       },
-      "ohne_instanz_im_modell": true
+      "ohne_instanz_im_modell": false
     },
     {
       "id": "SON-luftverteiler-4",
@@ -12263,18 +12263,16 @@
         {
           "komponente": "luftverteiler_4",
           "koerper": 1,
-          "instanzen": 0,
+          "instanzen": 1,
           "menge_je_instanz": 1.0
         }
       ],
       "bedarf": {
         "einheit": "Stk",
-        "menge": 0.0,
-        "komponenten_ohne_instanz": [
-          "luftverteiler_4"
-        ]
+        "menge": 1.0,
+        "komponenten_ohne_instanz": []
       },
-      "ohne_instanz_im_modell": true
+      "ohne_instanz_im_modell": false
     },
     {
       "id": "SON-luftverteiler-6",
@@ -12405,6 +12403,42 @@
         {
           "komponente": "schwimmerventil_pool",
           "koerper": 1,
+          "instanzen": 1,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 1.0,
+        "komponenten_ohne_instanz": []
+      },
+      "ohne_instanz_im_modell": false
+    },
+    {
+      "id": "BEH-tank-pe-800x1000",
+      "typ": "BEH",
+      "bezeichnung": "PE-Tank 800 mm Durchm., 1000 mm hoch (Kegelboden/Absetzer)",
+      "werkstoff": "PE",
+      "masse": {
+        "bbox_mm": [
+          800,
+          800,
+          1000
+        ]
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 1,
           "instanzen": 0,
           "menge_je_instanz": 1.0
         }
@@ -12413,7 +12447,426 @@
         "einheit": "Stk",
         "menge": 0.0,
         "komponenten_ohne_instanz": [
-          "schwimmerventil_pool"
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "BEH-pe-schachtaufsatz-600x200",
+      "typ": "BEH",
+      "bezeichnung": "PE-Schachtaufsatz (Dom) Oe 600 x 200 mm fuer Tank [A]",
+      "werkstoff": "PE",
+      "masse": {
+        "bbox_mm": [
+          200,
+          600,
+          600
+        ]
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "BEH-tank-pe-700-deckel",
+      "typ": "BEH",
+      "bezeichnung": "PE-Tankdeckel 700 mm",
+      "werkstoff": "PE",
+      "masse": {},
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "ARM-bulkhead-d50",
+      "typ": "ARM",
+      "bezeichnung": "PVC-U-Bulkhead d50 (Tankverbinder, Tankdurchfuehrung)",
+      "werkstoff": "PVC-U",
+      "masse": {
+        "durchmesser_mm": 50
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 2,
+          "instanzen": 0,
+          "menge_je_instanz": 2.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "PMP-teichpumpe-5300",
+      "typ": "PMP",
+      "bezeichnung": "Teichpumpe 5300 l/h, 60 W, Hmax 2,8 m (Beet-Sumpf, Fabrikat offen) [A]",
+      "werkstoff": null,
+      "masse": {},
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 2,
+          "instanzen": 0,
+          "menge_je_instanz": 2.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "MES-schwimmerschalter",
+      "typ": "MES",
+      "bezeichnung": "Schwimmerschalter (Niveau AUS/EIN/ALARM, Fabrikat offen) [A]",
+      "werkstoff": null,
+      "masse": {},
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 3,
+          "instanzen": 0,
+          "menge_je_instanz": 3.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "FIT-entlueftung-d32",
+      "typ": "FIT",
+      "bezeichnung": "Entlueftung d32 (PVC-U, mit Insektengitter-Kappe) [A]",
+      "werkstoff": "PVC-U",
+      "masse": {
+        "durchmesser_mm": 32
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "ELE-kabelverschraubung-m25",
+      "typ": "ELE",
+      "bezeichnung": "Kabelverschraubung M25 (PA)",
+      "werkstoff": "PA",
+      "masse": {},
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "beet_sumpf",
+          "koerper": 2,
+          "instanzen": 0,
+          "menge_je_instanz": 2.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "beet_sumpf"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "ARM-kugelhahn-feder_d40",
+      "typ": "ARM",
+      "bezeichnung": "PVC-U-Kugelhahn feder_d40",
+      "werkstoff": "PVC-U",
+      "masse": {
+        "groesse": "feder_d40"
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [
+        "e20_pruefen (Leitungsteil, Wasserkreislauf-Variante E20 offen)"
+      ],
+      "verwendung": [
+        {
+          "komponente": "lt_kugelhahn_feder_d40",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "lt_kugelhahn_feder_d40"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "BEH-tank-pe-580x865",
+      "typ": "BEH",
+      "bezeichnung": "PE-Tank 580 mm Durchm., 865 mm hoch (Kegelboden/Absetzer)",
+      "werkstoff": "PE",
+      "masse": {
+        "bbox_mm": [
+          580,
+          580,
+          865
+        ]
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "schlammfass",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "schlammfass"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "BEH-tank-pe-580-deckel",
+      "typ": "BEH",
+      "bezeichnung": "PE-Tankdeckel 580 mm",
+      "werkstoff": "PE",
+      "masse": {},
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "schlammfass",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "schlammfass"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "PRF-st-rr35x600x0.5",
+      "typ": "PRF",
+      "bezeichnung": "Rechteckrohr 35x600x0.5 mm, Stahl verzinkt",
+      "werkstoff": "Stahl verzinkt",
+      "masse": {
+        "querschnitt_mm": [
+          35,
+          600
+        ],
+        "norm_hinweis": "Wand aus Modellmasse gerechnet [E]"
+      },
+      "lagerlaengen_mm": [
+        3000,
+        3500,
+        4000,
+        6000,
+        6500,
+        7000
+      ],
+      "einheit": "m",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "schlammfass",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 0.6
+        }
+      ],
+      "bedarf": {
+        "einheit": "m",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "schlammfass"
+        ]
+      },
+      "ohne_instanz_im_modell": true
+    },
+    {
+      "id": "FIT-stutzen-d50",
+      "typ": "FIT",
+      "bezeichnung": "PVC-U-Stutzen d50 (Klebe/Gewinde)",
+      "werkstoff": "PVC-U",
+      "masse": {
+        "durchmesser_mm": 50
+      },
+      "lagerlaengen_mm": null,
+      "einheit": "Stk",
+      "beschaffung_art": "a",
+      "bezug": {
+        "land": null,
+        "ok": "offen"
+      },
+      "status": "OFFEN (Quelle)",
+      "hinweise": [],
+      "verwendung": [
+        {
+          "komponente": "schlammfass",
+          "koerper": 1,
+          "instanzen": 0,
+          "menge_je_instanz": 1.0
+        }
+      ],
+      "bedarf": {
+        "einheit": "Stk",
+        "menge": 0.0,
+        "komponenten_ohne_instanz": [
+          "schlammfass"
         ]
       },
       "ohne_instanz_im_modell": true
@@ -12466,8 +12919,6 @@
       "knoten_6_n13": 18,
       "knoten_6_n14": 18,
       "knoten_6_n16": 18,
-      "lt_schelle_vk_d32": 4,
-      "lt_schelle_vk_d63": 4,
       "nft_tisch_aussen": 8,
       "nft_tisch_mitte": 8,
       "pumpe_gross": 2,
@@ -12488,10 +12939,10 @@
   },
   "artikel_ungeklaert": [],
   "artikel_stempel": {
-    "instances_built": "2026-11-04 05:27:43",
-    "sc_sha256": "42664210d63329ed",
-    "ibc_beet_sha256": "d93f0711637ec81d",
-    "anzahl_sc": 308,
+    "instances_built": "2026-11-05 02:12:59",
+    "sc_sha256": "4aef15a1929b9af1",
+    "ibc_beet_sha256": "491fba715722d28b",
+    "anzahl_sc": 326,
     "erzeugt_von": "scripts/bom_artikel.py",
     "preise": "leer (Paket 2, data/beschaffung)",
     "entscheidungen": "Preise brutto; Pflanzgut, Fisch, Beton, Aushub nicht in der Liste; UK als Europa offen (Orchestrator 04.11.2026, Ben bestaetigt am 05.11.)"

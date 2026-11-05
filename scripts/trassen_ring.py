@@ -511,40 +511,58 @@ def schlauch_weg(a):
     if s3 is None: raise SystemExit("%s: kein Schlauchweg unten" % a["name"])
     return dict(Rb=Rb, ad=AS.HOSE[idd]["ad"], tl=tl, kr=kr, s1=s1, z_ht=z_ht, z_hb=z_hb, z_kt=z_kt, z_kb=z_kb, D=D, s2=[(D[0], D[1], z_hb), (D[0], D[1], z_kt)], s3=s3, E=E, la=la)
 
+def prisma(b, nm, d, p0, u, ln, mat_=None):
+    """Achtkant-Prisma (Darstellung [A]): Durchmesser d ueber Ecken, Achse u ab p0, Laenge ln. Wenige Dreiecke im OBJ (Zylinder mit Bohrung: Tausende)."""
+    u = unit(u); x = unit(cross(u, (0.0, 0.0, 1.0)) if abs(u[2]) < 0.9 else cross(u, (1.0, 0.0, 0.0))); y = cross(u, x)
+    r = d / 2.0; pts = [[round(r * math.cos(math.radians(22.5 + 45 * i)), 3), round(r * math.sin(math.radians(22.5 + 45 * i)), 3)] for i in range(8)]
+    b.add("sketch.create", plane={"origin": [round(v, 3) for v in p0], "x_dir": [round(v, 9) for v in x], "y_dir": [round(v, 9) for v in y]}, name=nm + "_sk")
+    b.add("sketch.line", points=pts, closed=True); b.add("sketch.finish")
+    b.add("solid.extrude", distance=round(ln, 3), operation="new", name=nm, body_name=nm)
+    return nm
+
+def hose_einfach(b, prefix, pts, R, ad, idd):
+    """Darstellungs-Schlauch [A]: Weg wie AS.hose_layout (gleiche Laenge), je Gerade ein Achtkant-Prisma, Bogen aus 4 Sehnen (je 2 mm verlaengert)."""
+    segs = AS.hose_layout([list(p) for p in pts], R); names = []
+    for n, sg in enumerate(segs, 1):
+        stuecke = []
+        if sg[0] == "G": stuecke.append((tuple(sg[1]), tuple(sg[2])))
+        else:
+            _, A, Bp, C, k, u_in, th = sg; prev = tuple(A)
+            for j in range(1, 5):
+                q = tuple(add(C, AS.rot(list(sub(A, C)), k, th * j / 4))); stuecke.append((prev, q)); prev = q
+        for j, (p0, p1) in enumerate(stuecke):
+            u = unit(sub(p1, p0)); names.append(prisma(b, f"{prefix}_{n}_{j}", ad, sub(p0, mul(u, 1.0)), u, math.dist(p0, p1) + 2.0))
+    b.add("material.assign", bodies=names, material="SCH schwarz")
+    return segs, AS.hose_length(segs, R), names
+
 def schlauch_bauen(out_sc=None):
-    """Eine Komponente mit allen 38 Fallleitungen in Weltlage (Instanz im Ursprung): Tuelle, Schlauch, Regelhahn, Zwischenschlauch, Schnellkupplung, Schlauch, Endstueck."""
+    """Eine Komponente mit allen 38 Fallleitungen in Weltlage (Instanz im Ursprung), Darstellungsgeometrie [A]: Tuelle, Schlauch, Regelhahn, Zwischenschlauch,
+    Schnellkupplung, Schlauch, Endstueck als Achtkant-Prismen ohne Bohrung (Masse aus autobahn_s; Wege und Laengen wie in fallleitungen())."""
     import sc
     b = sc.Build(); nm = "R2_Ring_B2_Schlaeuche"
     AS.mats(b, ["SCH schwarz", "LT pp", "LT pvc", "LT v2a", "LT hahn"]); b.add("component.create", name=nm, grounded=True)
     laengen = []
     for i, a in enumerate(fallleitungen(), 1):
         w = a["weg"]; idd, dk, tl, kr = a["idd"], a["dk"], w["tl"], w["kr"]; u0 = a["u0"]; A0 = a["abgang"]; pre = f"F{i:02d}"
-        tu = pre + "_Tuelle_oben"
-        AS.cyl_ax(b, tu + "_Zapfen", dk, list(add(A0, u0, -LT.DEPTH[dk])), list(u0), LT.DEPTH[dk], body=tu)
-        AS.cyl_ax(b, tu + "_Kragen", LT.od_f(dk), list(A0), list(u0), kr, op="join", targets=[tu])
-        AS.cyl_ax(b, tu + "_T", idd, list(add(A0, u0, kr)), list(u0), tl, op="join", targets=[tu])
-        AS.cyl_ax(b, tu + "_Bohrung", idd - 5, list(add(A0, u0, -LT.DEPTH[dk] - 1)), list(u0), LT.DEPTH[dk] + kr + tl + 2, op="cut", targets=[tu])
+        tu = prisma(b, pre + "_Tuelle_oben", LT.od_f(dk), add(A0, u0, -LT.DEPTH[dk]), u0, LT.DEPTH[dk] + kr + tl)
         b.add("material.assign", bodies=[tu], material="LT pvc")
-        _, l1, _ = AS.hose_path(b, pre + "_S1", [list(p) for p in w["s1"]], w["Rb"], w["ad"], idd)
-        D = w["D"]; dn = [0, 0, -1]; hn = pre + "_Regelhahn"; zt, zb = w["z_ht"], w["z_hb"]
-        AS.cyl_ax(b, hn + "_To", idd, [D[0], D[1], zt + tl], dn, tl, body=hn)
-        AS.cyl_ax(b, hn + "_G", AS.FT["hahn_ob"][idd], [D[0], D[1], zt], dn, AS.FT["hahn_lb"][idd], op="join", targets=[hn])
-        AS.cyl_ax(b, hn + "_Tu", idd, [D[0], D[1], zb], dn, tl, op="join", targets=[hn])
-        AS.cyl_ax(b, hn + "_B", idd - 5, [D[0], D[1], zt + tl + 1], dn, AS.FT["hahn_lb"][idd] + 2 * tl + 2, op="cut", targets=[hn])
-        b.add("material.assign", bodies=[hn], material="LT hahn")
-        _, l2, _ = AS.hose_path(b, pre + "_S2", [list(p) for p in w["s2"]], w["Rb"], w["ad"], idd)
-        AS.add_kupplung(b, pre + "_Kupplung", [D[0], D[1], w["z_kt"] + AS.SK[idd]["tl"]], dn, idd, wulst=False)
-        _, l3, _ = AS.hose_path(b, pre + "_S3", [list(p) for p in w["s3"]], w["Rb"], w["ad"], idd)
-        ed = mul(a["d_o"], -1); la = w["la"]; p_e0 = w["E"]; an = pre + "_Anschluss"; dz_a = AS.ANSCHLUSS[a["art"]][1]
-        AS.cyl_ax(b, an + "_Tu", idd, list(sub(p_e0, mul(ed, tl))), list(ed), tl, body=an)
-        AS.cyl_ax(b, an + "_K", AS.FT["anschl_od"][a["art"]], list(p_e0), list(ed), la, op="join", targets=[an])
-        AS.cyl_ax(b, an + "_M", dz_a, list(add(p_e0, mul(ed, la - 22))), list(ed), 23, op="cut", targets=[an])
-        AS.cyl_ax(b, an + "_B", idd - 5, list(sub(p_e0, mul(ed, tl + 1))), list(ed), tl + la + 2, op="cut", targets=[an])
+        _, l1, _ = hose_einfach(b, pre + "_S1", w["s1"], w["Rb"], w["ad"], idd)
+        D = w["D"]; dn = (0.0, 0.0, -1.0); zt, zb = w["z_ht"], w["z_hb"]
+        hn = prisma(b, pre + "_Regelhahn", AS.FT["hahn_ob"][idd], (D[0], D[1], zt + tl), dn, AS.FT["hahn_lb"][idd] + 2 * tl)
+        b.add("solid.box", length=10, width=AS.FT["hebel"], height=12, center=[D[0], D[1] + AS.FT["hahn_ob"][idd] / 2 + AS.FT["hebel"] / 2 - 2, (zt + zb) / 2], operation="new", name=pre + "_Hebel", body_name=pre + "_Hebel")
+        b.add("material.assign", bodies=[hn, pre + "_Hebel"], material="LT hahn")
+        _, l2, _ = hose_einfach(b, pre + "_S2", w["s2"], w["Rb"], w["ad"], idd)
+        k_ = AS.SK[idd]; z0 = w["z_kt"] + k_["tl"]
+        kd = prisma(b, pre + "_Kupplung_Dose", k_["dose_d"], (D[0], D[1], z0 - k_["tl"]), dn, k_["tl"] + k_["dose_l"])
+        ks = prisma(b, pre + "_Kupplung_Stecker", k_["st_d"], (D[0], D[1], z0 - k_["tl"] - k_["dose_l"]), dn, k_["st_l"] + k_["tl"])
+        b.add("material.assign", bodies=[kd, ks], material="LT v2a")
+        _, l3, _ = hose_einfach(b, pre + "_S3", w["s3"], w["Rb"], w["ad"], idd)
+        ed = mul(a["d_o"], -1); an = prisma(b, pre + "_Anschluss", AS.FT["anschl_od"][a["art"]], sub(w["E"], mul(ed, tl)), ed, tl + w["la"])
         b.add("material.assign", bodies=[an], material="LT pvc" if a["art"] == "tisch" else "LT pp")
         laengen.append((a["name"], l1 + l2 + l3))
     b.add("component.activate", component=nm)
     b.add("component.metadata.set", component=nm, part_number="R2-SCHLAEUCHE", revision="A", properties={"Werkstoff": "Schlauch REHAU RAUAQUA T-Flex ID19/ID25 schwarz (D85), Tuellen PVC-U/PP, Regelhahn PVC-U, Kupplung Edelstahl"},
-          description="Montage R2 Ring B2: 38 Schlauch-Fallleitungen in Weltlage (trassen_ring.py), je Abnehmer Tuelle -> Schlauch (Ausleger + freier Fall) -> Regelhahn -> Schnellkupplung -> Endstueck am Tisch-Zulaufverteiler bzw. Tropfrohr")
+          description="Montage R2 Ring B2: 38 Schlauch-Fallleitungen in Weltlage (trassen_ring.py); Darstellungsgeometrie [A]: Achtkant-Prismen ohne Bohrung (Werkstatt-Teile mit Bohrung WA5/WA6 ergeben 17 MB OBJ je Fallleitung); je Abnehmer Tuelle -> Schlauch (Ausleger + freier Fall) -> Regelhahn -> Schnellkupplung -> Endstueck am Tisch-Zulaufverteiler bzw. Tropfrohr")
     out_sc = out_sc or comp(SCHLAUCH_DATEI)
     sc.run(b.write("ring_b2_schlaeuche"), out_sc)
     return laengen

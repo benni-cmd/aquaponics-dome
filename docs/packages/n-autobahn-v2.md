@@ -39,6 +39,44 @@ Auftragsblatt: `docs/jobs/N-AUTOBAHN-V2.md`. Rechnung: `python -X utf8 scripts/n
 4. R2: Ausleger, 38 Abzweige und Fallleitungen, Ruecklauf; Bau, alle Pruefungen, Viewer-Export, Screenshots.
 5. A+-Pruefsumme vorher (13:34, `sha256sum` der Ausgabe von `gen_dome.py 5 <scratch>/a.json`): `1a3e4ac0d0b8b468204d5434a6b4d099a6bbc92e5b6a05ed80fae23b19c7d7b9`.
 
+**Stand Montage R1/R2 (05.11.2026):** beide Runden gebaut, Pruefpunkte gemessen. Bau: `solidcraft-cli run scripts/dome-script-ring_b2.json --save designs/dome-ring_b2.sc` (R1 Exit 0 in 3:39 min, R2 Exit 0 in 5:25 min; erzeugt mit `AUTOBAHN_RUNDE=r1|r2 python -X utf8 scripts/gen_dome.py 5 scripts/dome-script-ring_b2.json --variante ring_b2`). Geometrie-Pruefung: `python -X utf8 scripts/check_autobahn_montage.py r1|r2`.
+
+Pruefpunkte R1 (Tragwerk, Ring, Einspeisung), 13 PASS, 2 FAIL:
+| Pruefpunkt | Ist | Soll | Ergebnis |
+|---|---|---|---|
+| Stuetzpunkte | 7 Joche, 3 Stelzen, 10 Schienen, 10 Verbinder, 10 Ring-Ecken | 7 / 3 / 10 / 10 / 10 | PASS |
+| Ring-Schellen, groesster Abstand entlang der Achse | 30 Schellen, 955 mm | <= 1000 (R6) | PASS (Blatt schaetzte 22; mit einer Schelle je Seite waeren es 1077 mm) |
+| Einspeisung | 2 Pegelschaechte auf Podest Z 820, 4 Booster, 4 Rueckschlagventile d50, Steigleitungen d63 | wie Blatt 2.1 | PASS |
+| Haehne und Entluefter | 2 Kupplungs-, 2 Ring-Ende-, 2 Entleerungshaehne d63, 2 Entluefter d75 | je 2 | PASS |
+| Ring- und Schellen-Unterkante | Z 2107,5 / 2101,5 rel | >= 2100 | PASS |
+| Stelzen ausserhalb der Gaenge | 0 mm Ueberdeckung (r 3108, 3108, 3801) | 0 | PASS |
+| Pegelschacht ausserhalb der Gaenge | Linie 1 r 2581: 464 mm in Gang A; Linie 2 r 4134: 425 mm in Gang B | 0 | **FAIL** |
+| Interferenz Autobahn-Teile | Gesamtlauf: 4 Treffer (Anker der 3 Stelzen im Erdkoerper, gewollt), aber abgeschnitten bei 20.000 Kandidatenpaaren (`truncated`); gezielter Lauf siehe unten | 0 | offen |
+| Gangkarte `check_walkways_voll.py --variante ring_b2` gegen A+ | Knie rot 56 (A+ 60), Kopf rot 5 (A+ 2); NICHT erreichbar: 6 Aussenbeete, 4 Booster, Pumpe_gross:1/:4, Pumpe_klein:3 (A+: 0) | keine neue rote Engstelle | **FAIL** |
+| `check_leitungen.py --variante ring_b2` | 55 Verstoesse = 52 EINGABE (Kanten K60 bis K76 fehlen im Netz, O1) + 3 wie A+ | 0 ausser benannt | offen bis O1 |
+| `check_leitungsordnung.py` (B2 gegen A+) | R1 32, R6 18, R9 16 Verstoesse mehr (Zehneck-Ring, 30-Grad-Saugleitungen, Hahnabgaenge unter Z 2100); Ausnahmen aus Blatt 2.6 kennt das Skript nicht | 0 ausser 2.6 | offen |
+
+Pruefpunkte R2 (Ausleger, Abzweige, Schlaeuche), zusaetzlich 6 PASS, 2 FAIL:
+| Pruefpunkt | Ist | Soll | Ergebnis |
+|---|---|---|---|
+| Ausleger / Abzweige d40 / d32 | 18 / 14 / 24 | 18 / 14 / 24 | PASS |
+| Fallleitungen je Linie | je Linie 7 Beete, 12 Tische (38) | 7 + 12 | PASS |
+| Schlauch-Unterkante ueber Gang A/B | Z 2128 rel (Beet_aussen_800:5, Gang B) | >= 2100 | PASS |
+| freier Fall bis Regelhahn | hoechstens 1072 mm | <= 1500 | PASS |
+| Schlauchende am Port | 0,0 mm | <= 1 | PASS |
+| frei vom Abzweig bis zum ersten Clip | hoechstens 601 mm, 21 von 26 ueber Soll | <= 400 (R6) | **FAIL** |
+| Schlauch im ersten Clip | 19 von 26 > 5 mm daneben; insgesamt 72 von 95 Clip-Plaetzen belegt | im Clip | **FAIL** |
+| Schlauchmeter aus den Wegen | ID19 87,0 m (Rechnung ID16 60,8), ID25 51,3 m (Rechnung 38,6) | Messwert | INFO |
+| Rohrmeter aus den Trassen | Ring 20,6 m (PE-Ecken 14,8 + PVC 5,8), d63 10,4, d50 8,6, d40 0,5 | Messwert | INFO |
+| A+ unberuehrt | SHA-256 der Ausgabe von `gen_dome.py 5` vorher = nachher `1a3e4ac0...c7d7b9` (`cmp` gleich) | gleich | PASS |
+
+Befunde (Montage):
+1. **Einspeisung hat keinen Platz ausserhalb der Gaenge.** Am K10/K26-Ende (Vorschlag WA-T) steht der Pegelschacht mitten in Gang A bzw. B; mit Podest und Boostern schneidet er den Rundgang ab (6 Aussenbeete nicht erreichbar). Frei ist nur der Tuer-Korridor (gruen in der Gangkarte), dort wird K10 ueber 2 m lang und das Podest sinkt.
+2. **Abzweige sitzen auf dem PE-Bogen** (Annahme Montage: Anbohrschelle, Abweichung der T-Achse zur Bogenlinie <= 2 mm). WA-T verlangt mindestens 609 mm Abstand zur Ecke; dort ist kein Platz fuer bis zu 5 Abzweige je Ecke neben Schellen, Hahn- und Einspeise-T.
+3. **Clips:** Die Ausleger-Clips beginnen 158 bis 178 mm hinter dem Flansch; der Schlauch erreicht die Armhoehe erst nach Versatz (bis 507 mm, weil an einer Ecke bis zu 5 Abzweige liegen) und 45-Grad-Anstieg. Abhilfe: Clip-Raster je Ausleger erst ab 700 mm oder zusaetzliche Haenger am Joch-Querriegel (WA-T).
+4. **Ruecklauf R2c nicht gebaut:** WA-S Befund 4 zeigt, dass die Bodenrinne unter dem Pool-Spiegel liegt; der Schlauch-Ruecklauf aus Blatt 2.5 laeuft so nicht frei. Ring B2 behaelt den gemeinsamen starren Ruecklauf K15/K31 (wie A+). Ring-Ende- und Notueberlauf-Leitungen enden offen ueber dem Boden.
+5. **Schlauch-Komponente ist Darstellungsgeometrie** (`designs/components/ring_b2_schlaeuche.sc`): Achtkant-Prismen ohne Bohrung. Die Werkstatt-Teile mit Bohrung ergaben im Viewer 622 MB OBJ (17 MB je Fallleitung) und luden nicht ("Invalid string length"); jetzt 4,9 MB. Wege und Laengen sind unveraendert.
+
 ### WA-T Tragwerk (Werkstatt, 05.11.2026)
 **Problem:** Joch, Ausleger, Schiene mit Schelle, Ring-Ecke und Podest fehlen als Bauteile. **Intent:** R1/R2 setzen nur fertige Teile. **Goal:** Die WA-T-Pruefpunkte aus Blatt Abschnitt 3 sind in `scripts/workshop/check_autobahn_t.py` gemessen (Exit 0).
 

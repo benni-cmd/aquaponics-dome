@@ -35,3 +35,11 @@ Keine neue Massabweichung in Gruppe 1B gefunden.
 1. **Auflage 3, T-Stuecke:** Von Hand gelesen 05.11.: Schwarte-T-Stuecke sind laut Seitentext "T-Stueck 90 Grad reduziert" (Baenninger). Gemessen ueber alle acht Zeilen (`FIT-t-d20` bis `d110`), nicht nur d50/d63. Bevo-Varianten (gleich grosses T, KIWA, 16 bar) sind jetzt Hauptangebot, Schwarte bleibt als Preisvergleich mit Warnhinweis. Zweite gleichwertige Quelle: OFFEN (Quelle).
 2. **Auflage 4, Preisbasis:** Jedes Bevo-Angebot (48) traegt jetzt "preis_eur = brutto = netto x 1,19"; Bevo-Seiten zeigen netto und brutto (Beispiel T d50: 3,43 netto, 4,15 brutto laut Seite). Die Schraubensaetze gehoeren zur Gruppe Stahl.
 3. **Auflage 5, Lebensmitteleignung:** OFFEN (Quelle): Eignung nicht angegeben fuer alle Teile im Fischwasser dieser Gruppe: Rohre (ROH), Fittings (FIT), Armaturen (ARM: Kugelhaehne, Bulkheads, Rueckschlagventile). Hinweis: Bevo-T-Stuecke tragen KIWA im Titel (Trinkwasser-Pruefzeichen); das ist kein Beleg fuer die Armaturen. Entscheidung OFFEN (Ben) 1 steht weiter, nichts deshalb ersetzt.
+
+## D83 Bogen d75 fuer Heber K01/K17 (Nachtrag 05.11.2026)
+Problem: Der Heber braucht Spritzgussboegen d75 mit glattem Innenradius statt Gehrungs- oder Segmentboegen (Variante V1b, `docs/packages/bis-zwischencheck.md`).
+1. **Ersetzt** `FIT-bogen90-d75` (Bedarf 8): Hauptangebot jetzt Bevo Profec Langbogen 90 Grad d75, Art.-Nr. 0110183, von Hand gelesen 05.11.: Seite nennt "injection moulded", 16 bar, Cb 194 mm je Schenkel; 57,56 EUR netto = 68,50 EUR brutto je Stk, Gebinde 8 Stk. Die Bevo-Variante 0110205 ("made from tubing") ist der Gehrungsbogen und wird ausdruecklich nicht verwendet.
+2. **Schwarte-Winkel** (Baenninger 1410129012, 11,95 EUR) bleibt als Preisvergleich: Seite nennt weder Spritzguss noch Radius, daher nicht als Heberbogen belegt.
+3. **OFFEN (Quelle):** zweite unabhaengige Quelle mit belegtem Spritzguss fehlt. GF 721100112 (Ahlsell SE) hat keinen Preis und keinen Fertigungsweg; Bosta ist Bevo-Schwester.
+4. **OFFEN (Ben):** Mehrpreis etwa 57 EUR je Bogen, bei 8 Stk rund 460 EUR mehr (68,50 gegen 11,95 EUR). Annahme D83 gilt; wer den Mehrpreis freigibt, steht nicht in D83.
+5. **Hinweis:** `FIT-bogen45-d75` (Bedarf 0) hat als Bevo-Angebot den Langbogen "made from tubing" (Gehrung). Falls ein 45-Grad-Bogen im Heber verbaut wird, gilt dort dasselbe Problem.

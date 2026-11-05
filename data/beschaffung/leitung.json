@@ -1077,6 +1077,17 @@
    "e20_preis_heutige_variante": "ja, Preis gilt fuer heutige Variante",
    "angebote": [
     {
+     "preis_eur": 68.5,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-05",
+     "haendler": "Bevo",
+     "land": "NL",
+     "url": "https://www.bevo.com/en/profec-long-bend-90-pvc-u-75-mm-glue-socket-16bar-grey-0110183",
+     "lieferung_de": "ja (Storefront bevo.com/de-de; Lager/Versandkosten nicht gelesen, Lagerbestand auf der Seite nicht angezeigt)",
+     "konfidenz": "Q (Netto gelesen, Variantenseite), brutto E (x1,19)",
+     "bemerkung": "netto 57.56 EUR; Profec Langbogen 90 Grad d75, laut Seite 'injection moulded' (Spritzguss), 16 bar, Cb 194 mm je Schenkel (Langradius), EN-ISO 1452-3; Gebinde 8 Stk, Mindestmenge 1. NICHT die Variante 'made from tubing' (0110205, aus Rohr gefertigt = Gehrung). Preisbasis: preis_eur = brutto = netto x 1,19. Grund: D83, Heber K01/K17 braucht Spritzgussbogen mit glattem Innenradius"
+    },
+    {
      "preis_eur": 11.95,
      "bezug_einheit": "Stk",
      "stand": "2026-11-04",
@@ -1085,10 +1096,10 @@
      "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-winkel-90-75-mm",
      "lieferung_de": "ja",
      "konfidenz": "Q",
-     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR"
+     "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Bauart/Innenradius auf der Seite NICHT belegt (Baenninger Winkel 90 Grad \"auf kurzer Strecke\", kein Wort zu Spritzguss oder Radius): fuer D83 (Heber K01/K17) nur Preisvergleich, nicht als Spritzgussbogen belegt (05.11.)"
     }
    ],
-   "luecke": "OFFEN (Quelle): zweite unabhaengige Quelle in dieser Sitzung nicht gefunden (05.11.); Hauptangebot Seite und Mass geprueft/bestaetigt"
+   "luecke": "OFFEN (Quelle): zweite unabhaengige Quelle mit BELEGTEM Spritzguss/glattem Radius fehlt. Schwarte (Baenninger) nennt Bauart und Radius nicht; GF 721100112 bei Ahlsell (SE, ohne Preis, Einstecktiefe 44 mm) nennt den Fertigungsweg ebenfalls nicht. Bosta (Bevo-Schwester) fuehrt denselben Profec-Artikel 0110183, nicht unabhaengig. Mehrpreis ca. 57 EUR je Bogen gegen Schwarte (8 Stk): Preisentscheid beim Owner."
   },
   {
    "id": "ARM-kabeleinfuehrung-dn100",

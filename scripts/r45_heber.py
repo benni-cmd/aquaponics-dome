@@ -85,7 +85,7 @@ def strecken(namen):
     return vor, hint
 
 
-DI_SDR21 = {50: 0.0452, 63: 0.057, 75: 0.0678}   # Innen-Durchmesser PVC-U SDR 21 (d50 x 2,4 [A], d63 x 3,0, d75 x 3,6)
+DI_SDR21 = {50: 0.0452, 63: 0.057, 75: 0.0678, 90: 0.0814}   # Innen-Durchmesser PVC-U SDR 21 (d50 x 2,4 [A], d63 x 3,0, d75 x 3,6)
 
 
 def trasse(tid):
@@ -108,11 +108,20 @@ def gebaut_info(namen):
     return vor, hint, ts, red
 
 
-def verlust_gebaut(namen, q1, q2, kb, kt, rau, n90):
+def verlust_gebaut(namen, q1, q2, kb, kt, rau, n90, dn_heber=None, stutzen_pool=None, stutzen_filter=None):
     """Verlust in mm fuer den gebauten Heber mit echten dn: Reibung je Teilstueck mit dessen dn, Eintritt am d63-Pool-Stutzen,
     Reduziermuffe d63->d75 (Borda-Erweiterung, bezogen auf v63), n90 Boegen (je Haelfte vor/hinter dem Absetzer-T) und T Durchgang mit dem dn aus der JSON,
     Reduziermuffe d75->d63 (ploetzliche Verengung 0,5 (1 - A63/A75)) und Austritt 1,0 am d63-Filterstutzen. Muffentiefe und d63-Stutzenstuecke als Reibung ignoriert [A]."""
     vor, hint, ts, red = gebaut_info(namen)
+    if dn_heber:   # Variante: Heber (Rohr, Boegen, T) mit anderem dn als gebaut
+        vor = [(a, b, dn_heber) for a, b, _ in vor]
+        hint = [(a, b, dn_heber) for a, b, _ in hint]
+        ts = [dict(x, d=dn_heber) for x in ts]
+        red = {k: dict(v, d_gross=dn_heber) for k, v in red.items()}
+    if stutzen_pool:
+        red["P"] = dict(red["P"], d_klein=stutzen_pool)
+    if stutzen_filter:
+        red["F"] = dict(red["F"], d_klein=stutzen_filter)
     def hv(dn, q):
         a = math.pi * DI_SDR21[dn] ** 2 / 4
         v = q / a
@@ -184,6 +193,28 @@ if __name__ == "__main__":
     print("\n== Marge gegen Vorgabe >= 85 mm (Auflage A2 M10-S2R; Grenze Reserve 30 mm), schlechter Fall, GEBAUT ==")
     for namen, res in gebaut_schlecht.items():
         print(f"  {namen}: Reserve {res:.0f} mm, Marge gegen 85 mm {res - 85:+.0f} mm, gegen 30 mm {res - 30:+.0f} mm -> {'OK' if res >= 85 else 'UNTER 85 mm'}")
+
+    print("\n== LOESUNGSVARIANTEN fuer die Heber-Reserve (schlechter Fall: gealtert, Crane Gehrung/T 0,9; nur gerechnet, nichts gebaut) ==")
+    KS = dict(kb=60 * FT, kt=0.9)
+    for namen, ids in LINIEN.items():
+        n90, _ = zaehle_boegen(ids)
+
+        def r(head_plus=0.0, **kw):
+            a = dict(KS)
+            a.update({k: kw.pop(k) for k in ("kb", "kt") if k in kw})
+            v, _ = verlust_gebaut(namen, 97.5, 110.0, a["kb"], a["kt"], 0.05, n90, **kw)
+            return SPIEGEL - EINLAUF + head_plus - v
+        print(f"  {namen}")
+        for lab, val in (("V0 gebaut (Bezug)", r()),
+                         ("V1 Langbogen (kb 0,2) statt Gehrung", r(kb=0.2)),
+                         ("V1b Spritzgussbogen glatt (Crane 30 fT = 0,57), T bleibt 0,9", r(kb=30 * FT)),
+                         ("V2 Filter-Einlauf d75 statt d63 (Reduziermuffe, Austritt d63 entfallen)", r(stutzen_filter=75)),
+                         ("V3 V1 + V2", r(kb=0.2, stutzen_filter=75)),
+                         ("V4 Einlaufachse 50 mm tiefer", r(head_plus=50)),
+                         ("V5 Einlaufachse 100 mm tiefer", r(head_plus=100)),
+                         ("V6 Heber d90 (Rohr, Boegen, T; Muffen d90/d63)", r(dn_heber=90)),
+                         ("V7 T-Stuecke Langradius (kt 0,2)", r(kt=0.2))):
+            print(f"   {lab:74s} Reserve {val:5.0f} mm  Marge 85: {val - 85:+4.0f}  {'OK' if val >= 85 else 'unter 85'}")
 
     print("\n== Pumpe statt Heber (Leistung fuer die Foerderhoehe 0,25 m, Wirkungsgrad 25 % wie Netz R21) ==")
     q = 110 / 60000

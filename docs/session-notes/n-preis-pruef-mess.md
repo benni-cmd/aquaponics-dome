@@ -6,7 +6,7 @@ Bezugsdatei: `data/beschaffung/mess_elektrik.json` (22 Zeilen, davon 10 platzier
 Von Hand lesbar waren: DigiKey (FI, NL, DE), Atlas Scientific, Galaxus, Shelly, Domadoo, el12, Tameson, Domoticx, GHL, eBay-Produktseite. **Nicht lesbar** (Bot-Pruefung, nicht umgangen): RobotShop EU, RS Online, teils eBay-Artikel, Kaufland, ManoMano, Tinytronics. Diese Zeilen tragen OFFEN.
 
 ## Ersetzt
-1. `ELE-kabelverschraubung-pg`: RS-Angebote (403) ersetzt durch el12 HAUPA 250086 (4,85 EUR je 10 Stk, PL) und Tameson OBO 2022887 (16,19 USD je 10, NL). Beide gelesen, M20 PA IP68. Tameson ohne Kontermutter.
+1. `ELE-kabelverschraubung-pg`: RS-Angebote (403) ersetzt durch el12 HAUPA 250086 (4,85 EUR je 10 Stk, PL) und DigiKey DE TE Entrelec EP-SGL-M20-BL-C (0,89 EUR brutto je Stk, 79 auf Lager, EUR). Beide im Pane gelesen, M20 PA IP68. Auflage 7: Tameson (US-Storefront, USD, Europa-Lieferung nicht belegt) entfernt. Auflage 5: Kabelverschraubungen liegen an Gehaeusen im Trockenen, kein Fischwasserkontakt, Eignung nicht noetig (Werkstoff Polyamid benannt).
 2. `MES-leck`: eBay SEBSON GS153 ist ein Einzelwarnmelder ohne Signalausgang, passt nicht. Ersatz Shelly Flood Gen4 mit Leck-Sensorkabel: Shelly Europe 34,90 EUR, Domadoo FR 35,28 EUR (beide gelesen).
 3. `MES-level-druck`: eBay-Angebot beendet und 0-2 m statt 0-1 m. Kein Ersatz, siehe OFFEN.
 4. `MES-flow-gross`: ManoMano (30 l/min) und eBay-China deckt/erfuellt D76 nicht. Entfernt, siehe OFFEN.

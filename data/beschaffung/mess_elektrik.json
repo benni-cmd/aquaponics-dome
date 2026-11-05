@@ -360,25 +360,23 @@
      "url": "https://el12.com/en/switchboards-and-enclosures/gland-m-20-metric-ip-68-black-10-pcs-250086,i207068",
      "lieferung_de": "unbekannt",
      "konfidenz": "Q",
-     "bemerkung": "von Hand gelesen 05.11.: 4,85 EUR brutto je 10er-Pack, Kabel 10-14 mm, Gewinde M20, IP68; Kontermutter nicht genannt",
+     "bemerkung": "von Hand gelesen 05.11.: 4,85 EUR brutto je 10er-Pack, Kabel 10-14 mm, Gewinde M20, IP68; Kontermutter nicht genannt; Seite im Browser-Pane gelesen (Skript-Abruf liefert 403)",
      "preis_pack_eur": 4.85,
      "pack": 10
     },
     {
-     "preis_eur": 1.4,
+     "preis_eur": 0.89,
      "bezug_einheit": "Stk",
      "stand": "2026-11-05",
-     "haendler": "Tameson (OBO 2022887, M20 PA IP68 schwarz, 10er-Pack)",
-     "land": "NL",
-     "url": "https://tameson.com/products/m20-ip68-metric-cable-gland-with-strain-relief-black-2022887-10-pieces",
-     "lieferung_de": "unbekannt",
+     "haendler": "DigiKey DE (TE Entrelec EP-SGL-M20-BL-C, M20x1,5 PA6 schwarz IP68)",
+     "land": "EU (DigiKey DE, Preise in EUR)",
+     "url": "https://www.digikey.de/de/products/detail/te-connectivity-entrelec/EP-SGL-M20-BL-C/16686595",
+     "lieferung_de": "ja (Shop digikey.de)",
      "konfidenz": "Q",
-     "bemerkung": "von Hand gelesen 05.11.: 16,19 USD netto je 10er-Pack (Seite zeigte USD; EUR gerechnet, E), Polyamid, IP68, Kontermutter NICHT enthalten, nur Firmenkunden",
-     "preis_pack_usd": 16.19,
-     "pack": 10
+     "bemerkung": "von Hand gelesen 05.11.: 0,75 EUR netto = 0,89 EUR brutto je Stk (Staffel ab 10: 0,632), 79 auf Lager, Status Aktiv, Kabel 6-12 mm, Polyamid, IP68, Dichtung enthalten, Kontermutter nicht genannt. Kein Wasserkontakt im Fischwasser (Gehaeusedurchfuehrung)"
     }
    ],
-   "zweites_angebot": "vorhanden (el12, Tameson)",
+   "zweites_angebot": "vorhanden (el12 PL, DigiKey DE), unabhaengig, Tameson (US-Storefront) entfernt",
    "pruefung": "2026-11-05"
   },
   "ELE-kabelkanal-30x60": {

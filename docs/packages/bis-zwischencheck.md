@@ -36,3 +36,5 @@
 
 ## DoD
 Roadmap `vor_zwischencheck` ohne offene Bauschritte; Pruefer-Befunde je Montage; Zwischencheck-Bericht mit Annahmen-Liste; Commit und Push je Schritt.
+
+- 05.11. Nacht: erledigt Strebe Runde 70 (Pruefer: FAIL nur BOM-Flag, behoben 7417910), Maengel-Inventur (7d59462, 12 Maengel), Leitungsordnung + M10-UMBAU (4f16d13), W37-1 Sumpf/Schlammfass (6da69f3), tiefer Schacht + Ring-Bauteile (0462ec8, 721b607), Preisliste neu (7d3fd5d, Pruefer PASS mit Auflagen 101277e), Anschluesse sichtbar (a980ae1), A4 (d324fb6). Laeuft: Montage M10-UMBAU Runde 71 (montage-strebe-70), V1a Varianten-Skripte (preis-werkstatt-2), Werkstatt Ruecklauf-Sammler/Tank (werkstatt-strebe), check_latte 69 in Kopie (Runde 3/6). Danach: Pruefer UMBAU, Pruefer Luft A, Montage Luft B, V1b, M10-S2N.

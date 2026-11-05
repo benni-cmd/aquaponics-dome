@@ -75,7 +75,7 @@ def schreiben(doc, linie, neu):
     """Mischt die Trassen der Linie in die bestehende Liste (Trassen der anderen Linie bleiben); S2a-Eintraege ohne Feld linie gelten als Linie 1."""
     alt = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {"z_bezug": "absolut", "regeln": {}, "trassen": []}
     gehoert = lambda e: e.get("linie", 1) == linie
-    for key in ("trassen", "t_stuecke", "r_stuecke"):
+    for key in ("trassen", "t_stuecke", "r_stuecke", "teile", "gruben"):
         doc[key] = [e for e in alt.get(key, []) if not gehoert(e)] + neu.get(key, [])
         for e in neu.get(key, []): e["linie"] = linie
     if not doc["r_stuecke"]: del doc["r_stuecke"]
@@ -645,6 +645,80 @@ def linie2_ordnung(L, neu, alt):
         if not t.get("korridor"): t["korridor"] = kor_auto(t["pfad"])
         if not t.get("baender") and not t.get("band"): t["baender"] = baender_auto(t["pfad"])
 
+
+# ======================================================================================================================
+# M10-UMBAU Schritte 5 und 6 (05.11.2026): Schlammablass (M03) und Verteiler am Ueberlauf (M08) je Linie.
+# Absetzer: Ablaufstutzen d40 an der Kegelspitze (tank.md: Zapfen, Ende lokal z 80) -> Federrueckzug-Kugelhahn lt_kugelhahn_feder_d40 -> Rohr d40 lotrecht in den Graben ->
+# waagerecht in X/Y mit >= 1 % Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses (T93) in einer Grube neben dem Absetzer.
+# Weil der Hahnauslauf nur 4 mm ueber dem Flur liegt, sitzt das Fass tiefer als im Bauteilblatt (Oberkante unter Flur, Grube mit Abdeckung): Befund an Werkstatt/Ben.
+# Biofilter-Tanks: Ablaufstutzen d50 -> Kugelhahn d50 -> Rohrstueck -> Kappe d50 (Wartungsablass, kein Netz-Knoten).
+# Ueberlauf K10/K26: Verteiler d50 (W36) mit Muffe A auf dem Rohrende, Achse in Port-Richtung, Abgaenge nach oben; Abgang 3 (d20) und 4 (d50) mit Kappe,
+# Abgang 1 (d40) und 2 (d32) offen: Kappe d40/d32 fehlt in der Bibliothek (OFFEN Werkstatt).
+SCHLAMM = {1: {"tank": "Tank_klein:2", "fass": (3925.0, -1461.0), "kid": "K07", "folge": "XY"},     # Fass-Lage [A]: Abstandssuche 05.11. (Grube Oe 800 >= 30 mm frei von Graeben,
+           2: {"tank": "Tank_klein:1", "fass": (1307.5, -3083.0), "kid": "K23", "folge": "YX"}}     # >= 30 mm von Bauteil-Kaesten, >= 100 mm vom Pool); naeher als 0,95 m ist belegt
+BIO = {1: ("Tank_gross:1", "KB1"), 2: ("Tank_gross_t3:1", "KB2")}
+S_PCT = 1.5          # Gefaelle K07/K23 [A] (Blatt: >= 1 %; 1,5 % = 0,86 Grad, Bogen-Toleranz 1 Grad wie K05)
+S_H1 = 100.0         # sichtbares Rohr unter dem Federhahn bis zum Bogen
+S_H2 = 50.0          # sichtbares Rohr vom letzten Bogen bis in die Fassmuffe
+S_SAND = 70.0        # Sandbett unter dem Fass (schlammfass.md)
+F_INNEN = 920.0      # Muffe d40 des Fasses, Lage lokal z (schlammfass.md Ports)
+K_GAP = 10.0         # sichtbares Rohrstueck zwischen Kugelhahn und Kappe
+
+def lt_ports(name):
+    import leitung_w71 as W71
+    return W71.ports(name)
+
+def schlamm_verteiler(L, neu, linie):
+    neu.setdefault("teile", []); neu.setdefault("gruben", [])
+    dn = (0.0, 0.0, -1.0); up = (0.0, 0.0, 1.0)
+    # ---------------- Absetzer -> Schlammfass
+    cfg = SCHLAMM[linie]; m = MV[cfg["tank"]]
+    tip = world(m, (0.0, 0.0, 80.0)); t40 = LT.DEPTH[40]
+    lf = lt_ports("lt_kugelhahn_feder_d40")[1][1][2]
+    pa = add(tip, up, t40); pb = add(pa, dn, lf)                     # Muffe A (Stutzen steckt t), Muffe B unten
+    neu["teile"].append({"id": "FH%d" % linie, "datei": "lt_kugelhahn_feder_d40", "pos": rd(pa), "z": [0.0, 0.0, -1.0], "x": [1.0, 0.0, 0.0], "farbe": "dunkelblau",
+                         "notiz": "Federrueckzug-Kugelhahn d40 auf dem Ablaufstutzen des Absetzers %s (Hebel quer = zu)" % cfg["tank"]})
+    k40 = k90(40); fx, fy = cfg["fass"]
+    h1 = pb[2] - S_H1 - k40
+    ecke = (fx, pb[1]) if cfg["folge"] == "XY" else (pb[0], fy)
+    l1 = math.hypot(ecke[0] - pb[0], ecke[1] - pb[1]); l2 = math.hypot(fx - ecke[0], fy - ecke[1]); g = S_PCT / 100.0
+    if min(l1, l2) < 120: raise SystemExit("%s: Strecken zu kurz (%.0f / %.0f)" % (cfg["kid"], l1, l2))
+    p1 = (pb[0], pb[1], h1); p2 = (ecke[0], ecke[1], h1 - g * l1); p3 = (fx, fy, h1 - g * (l1 + l2))
+    zin = p3[2] - k40 - S_H2; p4 = (fx, fy, zin)
+    neu["trassen"].append({"id": cfg["kid"], "kante": cfg["kid"], "dn": 40, "farbe": "grau", "start": "muffe", "ende": "muffe", "gefaelle_pct": S_PCT, "korridor": ["KS", "KG", "KG", "KS"],
+                           "anschluss": [cfg["tank"], "schlammfass_%d" % linie], "pfad": [rd(p) for p in (pb, p1, p2, p3, p4)],
+                           "notiz": "Schlammablass: Federhahn -> lotrecht in den Graben (Z %.0f) -> %.0f + %.0f mm mit %.1f %% Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses" % (h1, l1, l2, S_PCT)})
+    z0 = zin - F_INNEN
+    neu["teile"].append({"id": "schlammfass_%d" % linie, "datei": "schlammfass", "pos": rd((fx, fy, z0)), "z": [0.0, 0.0, 1.0], "x": [1.0, 0.0, 0.0],
+                         "notiz": "T93 Schlammfass Linie %d: Fassboden Z %.0f (flur-relativ %.0f), Oberkante flur-relativ %.0f; Grube Oe 800 mit Abdeckung [A]" % (linie, z0, z0 - 400, z0 + 880 - 400)})
+    neu["gruben"].append({"id": "schlammfass_%d" % linie, "x": fx, "y": fy, "d": 800.0, "sohle": round(z0 - S_SAND, 1)})
+    # ---------------- Biofilter-Tank: Wartungsablass mit Kugelhahn d50 und Kappe
+    tg, kid = BIO[linie]; mg = MV[tg]; t50 = LT.DEPTH[50]
+    tipg = world(mg, (0.0, 0.0, 134.0)); pga = add(tipg, up, t50); lh = LT.ports("lt_kugelhahn_d50")[1][1][2]; pgb = add(pga, dn, lh)
+    neu["r_stuecke"].append({"id": kid, "art": "kugelhahn", "pos_a": rd(pga), "dir": [0.0, 0.0, -1.0], "d_gross": 50, "d_klein": 50,
+                             "notiz": "Kugelhahn d50 am Schlammablass des Biofilter-Tanks %s (Wartungsablass, kein Netz-Knoten: Befund an den Orchestrator)" % tg})
+    pk = add(pgb, dn, K_GAP)
+    neu["trassen"].append({"id": kid + "-Kappe", "kante": None, "dn": 50, "farbe": "grau", "start": "r:" + kid, "ende": "muffe", "korridor": ["KS"], "anschluss": [tg],
+                           "pfad": [rd(pgb), rd(pk)], "notiz": "Rohrstueck d50 zwischen Kugelhahn und Kappe (Wartungsablass)"})
+    neu["teile"].append({"id": kid + "-Kappe", "datei": "lt_kappe_d50", "pos": rd(pk), "z": [0.0, 0.0, -1.0], "x": [1.0, 0.0, 0.0], "farbe": "grau", "notiz": "Kappe d50 unter dem Kugelhahn"})
+    # ---------------- Verteiler d50 am Ende von K10/K26
+    kid_u = "K10" if linie == 1 else "K26"
+    tr = [t for t in neu["trassen"] if t["id"] == kid_u][0]; e = tuple(tr["pfad"][-1]); a0 = tuple(tr["pfad"][-2])
+    xd = unit(sub(e, a0)); tr["ende"] = "muffe"
+    tr["notiz"] = tr["notiz"].replace("; Verteiler d50 folgt (M10-UMBAU Schritt 6)", "; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)")
+    neu["teile"].append({"id": "VT%d" % linie, "datei": "lt_verteiler_d50", "pos": rd(e), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "dunkelblau",
+                         "notiz": "Verteiler d50 (W36) auf dem Ende von %s: Abgaenge 1 Beete d40, 2 NFT d32, 3 Messkreis d20, 4 Bypass d50 nach oben" % kid_u})
+    for nr, dk in ((3, 20), (4, 50)):
+        lage = lt_ports("lt_verteiler_d50")[nr][1]
+        top = add(add(e, xd, lage[0]), up, lage[2]); pos = add(top, up, -LT.DEPTH[dk])
+        neu["teile"].append({"id": "VT%d-Kappe%d" % (linie, nr), "datei": "lt_kappe_d%d" % dk, "pos": rd(pos), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "grau",
+                             "notiz": "Kappe d%d auf Abgang %d des Verteilers (vorerst verschlossen bis S3)" % (dk, nr)})
+    hp = add(e, xd, -50.0); hk = 4.0 + (50 + 6) / 2.0                 # Halter je Verteiler (R6: <= 300 mm daneben): Klemme d50 unter dem Rohr vor Muffe A
+    neu["teile"].append({"id": "VT%d-Halter" % linie, "datei": "lt_klemme_d50", "pos": rd(add(hp, up, -hk)), "z": [0.0, 0.0, 1.0], "x": [round(v, 6) for v in xd], "farbe": "grau",
+                         "notiz": "Rohrklemme d50 50 mm vor dem Verteiler (Konsole an der Tank-Plattform: OFFEN Werkstatt Halter)"})
+    for t in neu["trassen"]:
+        if not t.get("baender") and not t.get("band"): t["baender"] = baender_auto(t["pfad"])
+
 def main(linie):
     if linie not in LINIEN: raise SystemExit("Linie 1 oder 2")
     import gen_dome as G
@@ -652,9 +726,11 @@ def main(linie):
     neu = {"trassen": [], "t_stuecke": [], "r_stuecke": []}
     if linie == 1:
         linie1_ordnung(L, neu)   # M10-UMBAU: ersetzt linie1_s2a/_biofilter/_absetzer/_bypass (bleiben als Vorlage fuer Linie 2 stehen)
+        schlamm_verteiler(L, neu, 1)
     else:
         alt = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {}
         linie2_ordnung(L, neu, alt)   # M10-UMBAU Schritt 4: ersetzt linie2_s2a/_biofilter/_absetzer/_bypass (bleiben als Vorlage stehen)
+        schlamm_verteiler(L, neu, 2)
     doc = {"z_bezug": "absolut", "regeln": {}, "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost, Linie 2 West (je Linie ein Lauf)"}
     doc = schreiben(doc, linie, neu)
     json.dump(doc, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False); open(OUT, "a").write("\n")

@@ -431,7 +431,8 @@ def leitungen(fz):
     teile, _ = LTG.bauen(doc)
     for cls, path, mats, farben in LTG.dateien(teile):
         place_matrices(cls, path, mats, "08_Leitungen")
-        for hexfarbe, occ in farben.items(): add("appearance.assign", components=occ, color=hexfarbe)
+        for hexfarbe, occ in farben.items():
+            if hexfarbe: add("appearance.assign", components=occ, color=hexfarbe)
 
 # T9: 14 halbe IBC-Wannen (layout.json) als Instanzen der Werkstatt-Komponenten ibc_beet_{aussen_933,aussen_993,innen_933}; Ursprung = Mitte Wannenunterseite
 def t9(fz):

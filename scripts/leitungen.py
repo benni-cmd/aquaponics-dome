@@ -123,7 +123,39 @@ def bauen(doc):
             if s1[i] - s0[i] < t: raise SystemExit("%s: Teilstueck %d: Fittings ueberlappen (Rohr %.1f mm, Teilstueck %.1f, Schenkel %.1f + %.1f)" % (tid, i + 1, s1[i] - s0[i], D[i], ks[i], ke[i]))
             rohr(T, add(pts[i], dirs[i], s0[i]), add(pts[i], dirs[i], s1[i]), d, farbe, tid)
         bericht.append((tid, d, n - 1))
+    for e in doc.get("teile", []):                                    # M10-UMBAU: weitere Bauteile ohne Trasse (Schlammfass, Federhahn, Verteiler, Kappen, Klemmen von Hand)
+        kl = e["datei"].startswith("lt_klemme_d")                    # Klemmen von Hand teilen die Klasse mit den Klemmen aus halter() (eine Definition je Durchmesser)
+        T.put("klemme" if kl else "teil:" + e["datei"], int(e["datei"][11:]) if kl else 0, 0, tuple(e["pos"]), tuple(e["z"]), tuple(e.get("x", (1.0, 0.0, 0.0))), FARBEN.get(e.get("farbe")), e["id"])
+    if not doc.get("halter_aus"): halter(T, bericht)
     return T, bericht
+
+def abst_halter(d): return 600.0 if d <= 32 else 800.0 if d <= 63 else 1000.0   # docs/leitungsordnung.md R6 [A]
+
+def halter(T, bericht):
+    """M10-UMBAU Schritt 9 (R6): je Rohr ueber Flur (beide Enden Z > 400) Rohrklemmen lt_klemme_d<d> in gleichen Abstaenden, Abstand <= R6 (senkrecht x 1,5); Rohre < 300 mm
+    gelten als Formstueck-Zusammenbau (Halter am Nachbarrohr). Waagerechte Rohre: Klemmenfuss unten (Konsole/Boden); senkrechte: Fuss in -X (Wand/Tafel) [A].
+    Fehlt die Klemme fuer den Durchmesser (d75), steht das Rohr im Bericht als OFFEN (Werkstatt: Halter)."""
+    neu = []
+    for (art, d, L), liste in list(T.items.items()):
+        if art != "rohr" or L < 300: continue
+        for m, farbe, tid in liste:
+            z = (m[2], m[6], m[10]); A = (m[3], m[7], m[11]); B = add(A, z, L)
+            if min(A[2], B[2]) <= 400.0: continue
+            vert = abs(z[2]) > 0.999; smax = abst_halter(d) * (1.5 if vert else 1.0)
+            k = max(1, int(math.ceil(L / smax - 1.0 - 1e-9)))
+            if not os.path.exists(os.path.join(COMP, "lt_klemme_d%d.sc" % d)):
+                bericht.append(("OFFEN (Werkstatt: Halter) lt_klemme_d%d fuer %s" % (d, tid), d, k)); continue
+            fuss = (-1.0, 0.0, 0.0) if vert else (0.0, 0.0, -1.0)
+            for i in range(1, k + 1):
+                p = add(A, z, L * i / (k + 1))
+                neu.append((d, add(p, fuss, 4.0 + (d + 6) / 2.0), tuple(-v for v in fuss), z, farbe, tid))
+    for d, o, zc, xc, farbe, tid in neu:
+        T.put("klemme", d, 0, o, zc, xc, FARBEN["grau"], tid)
+
+def klasse(fname):
+    """Klassenname fuer ein Bauteil aus designs/components: lt_kugelhahn_feder_d40 -> LT_Kugelhahn_Feder_d40, schlammfass -> Schlammfass."""
+    t = fname.split("_")
+    return "LT_" + "_".join(x if x[:1] == "d" and x[1:2].isdigit() else x.capitalize() for x in t[1:]) if t[0] == "lt" else "_".join(x.capitalize() for x in t)
 
 def dateien(T):
     """(Klassenname, Dateipfad, [Matrizen], {Farbe: [Instanzindizes]}) je Bibliotheksteil; legt fehlende Rohr-Laengen an."""
@@ -134,6 +166,10 @@ def dateien(T):
             if not os.path.exists(os.path.join(COMP, fname + ".sc")):
                 b, nm = LT.rohr(d, L); LT.save(b, nm, fname)
             cls = "LT_Rohr_d%d_L%d" % (d, L)
+        elif art.startswith("teil:"):
+            fname = art[5:]; cls = klasse(fname)
+        elif art == "klemme":
+            fname = "lt_klemme_d%d" % d; cls = "LT_Klemme_d%d" % d
         elif art == "reduzierung":
             fname = "lt_reduzierung_d%d_d%d" % (d, L); cls = "LT_Reduzierung_d%d_d%d" % (d, L)
         else:
@@ -195,6 +231,8 @@ def graben(doc, fz):
             else:
                 z = (a[2] + b[2]) / 2; z0 = min(a[2], b[2]) - w / 2
                 out.append(("box", name, round((a[0] + b[0]) / 2, 1), round((a[1] + b[1]) / 2, 1), round(z0, 1), round(math.degrees(math.atan2(b[1] - a[1], b[0] - a[0])), 3), round(dxy + w + 2 * ex, 1), round(w, 1), round(fz + 1 - z0, 1)))
+    for g in doc.get("gruben", []):                                   # M10-UMBAU Schritt 5: Grube Schlammfass (Zylinder bis Flur + 1)
+        out.append(("zyl", "T93_Grube_%s" % g["id"].replace("-", "_"), round(g["x"], 1), round(g["y"], 1), round(g["sohle"], 1), round(g["d"], 1), round(fz + 1 - g["sohle"], 1)))
     return out
 
 if __name__ == "__main__":

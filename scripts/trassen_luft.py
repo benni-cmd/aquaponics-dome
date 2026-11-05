@@ -92,13 +92,81 @@ def lade_params():
     lay = json.load(open(os.path.join(ROOT, "data", "layout.json"), encoding="utf-8"))
     return P, lay
 
+
+# ======================================================================================================================
+# M10-UMBAU Schritt 7 (Befund 5 des Blatts, docs/leitungsordnung.md KB): je Strang Zapfen -> Bogen -> waagerecht in -X ueber die Krone -> lotrecht an der Innenwand
+# hinab -> waagerechte Bodenstrecken nur in X oder Y (Manhattan, 1 bis 3 Strecken je >= 300 mm, R3/R4) -> Bogen unter der Scheibe. Verteiler und Scheiben bleiben stehen.
+# Die Zuordnung Abgang -> Scheibe und die Zwischenlagen sucht ordnung_routen() (kuerzeste Gesamtlaenge, Bodenstrecken verschiedener Straenge >= MIN_ABST, Bogenzahl <= R5).
+MIN_ABST = 70.0          # lichter Abstand der Rohrachsen zweier Straenge am Boden (d25: 45 mm frei) [A]
+MIN_LEG = 300.0          # Bodenstrecke zwischen zwei Boegen (R4: keine Kette)
+RASTER = 50.0            # Raster der Zwischenlagen
+
+def _ps(p, a, b):
+    dx, dy = b[0] - a[0], b[1] - a[1]; L = dx * dx + dy * dy
+    t = 0 if L == 0 else max(0, min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L))
+    return math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy)
+
+def _sd(a, b, c, d):
+    def o(p, q, r): return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    if o(a, b, c) * o(a, b, d) < 0 and o(c, d, a) * o(c, d, b) < 0: return 0.0
+    return min(_ps(a, c, d), _ps(b, c, d), _ps(c, a, b), _ps(d, a, b))
+
+def ordnung_routen(g, ri_w):
+    """Bodenrouten je Abgang (2D, Z = z_low): Rueckgabe (perm, [[Abstiegspunkt, Ecken..., Scheibe], ...]). ri_w = Radius der Rohrachse an der Innenwand."""
+    tips = [(t[0], t[1]) for t in g["tips"]]; sch = [(s[0], s[1]) for s in g["scheiben"]]
+    def kand(t, s):
+        d = (math.sqrt(ri_w * ri_w - t[1] * t[1]), t[1]); out = []
+        rs = [[d, (s[0], d[1]), s], [d, (d[0], s[1]), s]]
+        c = -1800.0
+        while c <= 1800.0:
+            rs += [[d, (c, d[1]), (c, s[1]), s], [d, (d[0], c), (s[0], c), s]]; c += RASTER
+        for fl in rs:
+            f2 = [fl[0]] + [p for i, p in enumerate(fl[1:-1], 1) if math.dist(p, fl[i - 1]) > 1e-6] + [fl[-1]]
+            legs = [math.dist(a, b) for a, b in zip(f2[:-1], f2[1:])]
+            if min(legs) < MIN_LEG or any(math.hypot(*p) > ri_w + 0.5 for p in f2): continue
+            if any(_ps((0.0, 0.0), a, b) < 150.0 for a, b in zip(f2[:-1], f2[1:])): continue    # Bodenablauf in der Mitte frei
+            L = math.dist(t, d) + sum(legs)
+            if 3 + (len(f2) - 2) + 1 > 4 + math.ceil((L + 1300.0) / 5000.0): continue      # R5 (Zapfen, Krone, Boden, Ecken, Scheibe; Abstieg ~1,3 m)
+            out.append((L, f2))
+        return sorted(out)[:400]
+    def abst(a, b):
+        return min(_sd(p, q, r, s) for p, q in zip(a[:-1], a[1:]) for r, s in zip(b[:-1], b[1:]))
+    best = [None]
+    for perm in itertools.permutations(range(4)):
+        K = [kand(tips[j], sch[perm[j]]) for j in range(4)]
+        def rek(i, ch, L):
+            if best[0] and L >= best[0][0]: return
+            if i == 4: best[0] = (L, perm, [c[1] for c in ch]); return
+            for k in K[i]:
+                if all(abst(k[1], c[1]) >= MIN_ABST for c in ch):
+                    ch.append(k); rek(i + 1, ch, L + k[0]); ch.pop()
+        rek(0, [], 0.0)
+    if not best[0]: raise SystemExit("Luft: keine Bodenfuehrung ohne Kreuzung gefunden")
+    return best[0][1], best[0][2]
+
+def trassen_ordnung(g, ri):
+    """K44-S1..S4 nach der Leitungsordnung (Pfade 3D, Z absolut)."""
+    k = tangent(); t = LT.DEPTH[D]; dkt = k - t; ri_w = ri - R_WAND
+    perm, routen = ordnung_routen(g, ri_w)
+    out = []
+    for j in range(4):
+        tip = g["tips"][j]; fl = routen[j]; z1 = tip[2] + dkt; zl = g["z_low"]
+        pf = [tip, (tip[0], tip[1], z1), (fl[0][0], fl[0][1], z1), (fl[0][0], fl[0][1], zl)] + [(p[0], p[1], zl) for p in fl[1:]] + [(fl[-1][0], fl[-1][1], g["z_pa"])]
+        kor = ["KS", "KH", "KS"] + ["KB"] * (len(fl) - 1) + ["KS"]
+        out.append({"id": "K44-S%d" % (j + 1), "kante": "K44", "dn": D, "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+                    "farbe": FARBE, "start": "stutzen", "ende": "stutzen", "korridor": kor, "baender": ["W", "W", "W"] + ["UT"] * (len(fl) - 1) + ["UT"], "anschluss": ["Zentralpool"],
+                    "pfad": [[round(v, 2) for v in p] for p in pf], "linie": "luft",
+                    "notiz": "M10-UMBAU Schritt 7: Abgang %d -> Scheibe %d (Az %g): Bogen auf dem Zapfen, -X ueber die Krone, lotrecht an der Innenwand, %d Bodenstrecke(n) in X/Y (Leitungsordnung KB), Bogen unter der Scheibe" % (j + 1, perm[j] + 1, SCHEIBEN_AZ[perm[j]], len(fl) - 1)})
+    return perm, out
+
 if __name__ == "__main__":
     P, lay = lade_params()
     g = geometrie(P["sock_h"], lay["pool"]["d"], P["wall"], P["pool_rim"], lay["pool"]["water_z"], P["pool_depth"])
+    perm, trs = trassen_ordnung(g, lay["pool"]["d"] / 2.0)   # M10-UMBAU: ersetzt g["trassen"] (radiale Strecken lagen schraeg, R1)
     pfad = os.path.join(ROOT, "data", "leitungstrassen.json")
     doc = json.load(open(pfad, encoding="utf-8"))
-    doc["trassen"] = [t for t in doc["trassen"] if t.get("linie") != "luft"] + g["trassen"]
+    doc["trassen"] = [t for t in doc["trassen"] if t.get("linie") != "luft"] + trs
     txt = json.dumps(doc, ensure_ascii=False, indent=1) + chr(10)
     open(pfad, "w", encoding="utf-8", newline="").write(txt)
-    print("Zuordnung Abgang -> Scheibe", [p + 1 for p in g["perm"]], "kleinster Rohrabstand %.1f mm" % g["dmin"], "Verteiler", [round(v, 1) for v in g["verteiler"]], "Ventil", [round(v, 1) for v in g["ventil"]])
-    for t in g["trassen"]: print(t["id"], t["pfad"])
+    print("Zuordnung Abgang -> Scheibe", [p + 1 for p in perm], "Verteiler", [round(v, 1) for v in g["verteiler"]], "Ventil", [round(v, 1) for v in g["ventil"]])
+    for t in trs: print(t["id"], t["pfad"])

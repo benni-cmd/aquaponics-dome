@@ -4,218 +4,6 @@
  "quelle": "scripts/trassen_linie.py (Ableitung); M10-S2: Linie 1 Ost, Linie 2 West (je Linie ein Lauf)",
  "trassen": [
   {
-   "id": "K44-S1",
-   "kante": "K44",
-   "dn": 25,
-   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
-   "farbe": "gruen",
-   "start": "stutzen",
-   "ende": "stutzen",
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "UT",
-    "UT"
-   ],
-   "anschluss": [
-    "Zentralpool"
-   ],
-   "pfad": [
-    [
-     1906.81,
-     -690.55,
-     1148.0
-    ],
-    [
-     1906.81,
-     -690.55,
-     1180.25
-    ],
-    [
-     1791.16,
-     -648.67,
-     1180.25
-    ],
-    [
-     1791.16,
-     -648.67,
-     -1237.25
-    ],
-    [
-     707.11,
-     707.11,
-     -1237.25
-    ],
-    [
-     707.11,
-     707.11,
-     -1205.0
-    ]
-   ],
-   "linie": "luft",
-   "notiz": "Luft Pool-Verteiler Abgang 1 -> Scheibe 1 (Az 45), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
-  },
-  {
-   "id": "K44-S2",
-   "kante": "K44",
-   "dn": 25,
-   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
-   "farbe": "gruen",
-   "start": "stutzen",
-   "ende": "stutzen",
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "UT",
-    "UT"
-   ],
-   "anschluss": [
-    "Zentralpool"
-   ],
-   "pfad": [
-    [
-     1856.1,
-     -799.31,
-     1148.0
-    ],
-    [
-     1856.1,
-     -799.31,
-     1180.25
-    ],
-    [
-     1749.66,
-     -753.47,
-     1180.25
-    ],
-    [
-     1749.66,
-     -753.47,
-     -1237.25
-    ],
-    [
-     -707.11,
-     707.11,
-     -1237.25
-    ],
-    [
-     -707.11,
-     707.11,
-     -1205.0
-    ]
-   ],
-   "linie": "luft",
-   "notiz": "Luft Pool-Verteiler Abgang 2 -> Scheibe 2 (Az 135), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
-  },
-  {
-   "id": "K44-S3",
-   "kante": "K44",
-   "dn": 25,
-   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
-   "farbe": "gruen",
-   "start": "stutzen",
-   "ende": "stutzen",
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "UT",
-    "UT"
-   ],
-   "anschluss": [
-    "Zentralpool"
-   ],
-   "pfad": [
-    [
-     1805.38,
-     -908.07,
-     1148.0
-    ],
-    [
-     1805.38,
-     -908.07,
-     1180.25
-    ],
-    [
-     1701.85,
-     -855.99,
-     1180.25
-    ],
-    [
-     1701.85,
-     -855.99,
-     -1237.25
-    ],
-    [
-     707.11,
-     -707.11,
-     -1237.25
-    ],
-    [
-     707.11,
-     -707.11,
-     -1205.0
-    ]
-   ],
-   "linie": "luft",
-   "notiz": "Luft Pool-Verteiler Abgang 3 -> Scheibe 4 (Az 315), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
-  },
-  {
-   "id": "K44-S4",
-   "kante": "K44",
-   "dn": 25,
-   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
-   "farbe": "gruen",
-   "start": "stutzen",
-   "ende": "stutzen",
-   "baender": [
-    "W",
-    "W",
-    "W",
-    "UT",
-    "UT"
-   ],
-   "anschluss": [
-    "Zentralpool"
-   ],
-   "pfad": [
-    [
-     1754.67,
-     -1016.82,
-     1148.0
-    ],
-    [
-     1754.67,
-     -1016.82,
-     1180.25
-    ],
-    [
-     1648.24,
-     -955.15,
-     1180.25
-    ],
-    [
-     1648.24,
-     -955.15,
-     -1237.25
-    ],
-    [
-     -707.11,
-     -707.11,
-     -1237.25
-    ],
-    [
-     -707.11,
-     -707.11,
-     -1205.0
-    ]
-   ],
-   "linie": "luft",
-   "notiz": "Luft Pool-Verteiler Abgang 4 -> Scheibe 3 (Az 225), Rohr d25: Zapfen des Verteilers, ueber den Beckenrand, an der Innenwand hinab, auf dem Boden, Bogen unter dem Anschluss der Scheibe [A]"
-  },
-  {
    "id": "K01",
    "kante": "K01",
    "dn": 75,
@@ -738,7 +526,7 @@
    "dn": 50,
    "farbe": "dunkelblau",
    "start": "r:R_UEB",
-   "ende": "offen",
+   "ende": "muffe",
    "korridor": [
     "KH"
    ],
@@ -757,7 +545,7 @@
      1970.0
     ]
    ],
-   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Verteiler d50 folgt (M10-UMBAU Schritt 6)",
+   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)",
    "baender": [
     "WH"
    ],
@@ -1031,6 +819,91 @@
     "UT",
     "UT",
     "U"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "K07",
+   "kante": "K07",
+   "dn": 40,
+   "farbe": "grau",
+   "start": "muffe",
+   "ende": "muffe",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KS",
+    "KG",
+    "KG",
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_klein:2",
+    "schlammfass_1"
+   ],
+   "pfad": [
+    [
+     2841.5,
+     -1651.6,
+     404.0
+    ],
+    [
+     2841.5,
+     -1651.6,
+     230.0
+    ],
+    [
+     3925.0,
+     -1651.6,
+     213.7
+    ],
+    [
+     3925.0,
+     -1461.0,
+     210.9
+    ],
+    [
+     3925.0,
+     -1461.0,
+     86.9
+    ]
+   ],
+   "notiz": "Schlammablass: Federhahn -> lotrecht in den Graben (Z 230) -> 1084 + 191 mm mit 1.5 % Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses",
+   "baender": [
+    "W",
+    "U",
+    "U",
+    "U"
+   ],
+   "linie": 1
+  },
+  {
+   "id": "KB1-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KB1",
+   "ende": "muffe",
+   "korridor": [
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_gross:1"
+   ],
+   "pfad": [
+    [
+     3371.6,
+     -299.6,
+     453.0
+    ],
+    [
+     3371.6,
+     -299.6,
+     443.0
+    ]
+   ],
+   "notiz": "Rohrstueck d50 zwischen Kugelhahn und Kappe (Wartungsablass)",
+   "baender": [
+    "W"
    ],
    "linie": 1
   },
@@ -1580,7 +1453,7 @@
    "dn": 50,
    "farbe": "dunkelblau",
    "start": "r:R_UEB2",
-   "ende": "offen",
+   "ende": "muffe",
    "anschluss": [
     "Tank_gross_t3:1"
    ],
@@ -1596,7 +1469,7 @@
      1970.0
     ]
    ],
-   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Verteiler d50 folgt (M10-UMBAU Schritt 6)",
+   "notiz": "Ueberlauf d63 -> Reduziermuffe d63/d50 -> 100 mm in Port-Richtung; Rohr steckt in Muffe A des Verteilers d50 (M10-UMBAU Schritt 6)",
    "korridor": [
     "KH"
    ],
@@ -1778,6 +1651,380 @@
     "U"
    ],
    "linie": 2
+  },
+  {
+   "id": "K23",
+   "kante": "K23",
+   "dn": 40,
+   "farbe": "grau",
+   "start": "muffe",
+   "ende": "muffe",
+   "gefaelle_pct": 1.5,
+   "korridor": [
+    "KS",
+    "KG",
+    "KG",
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_klein:1",
+    "schlammfass_2"
+   ],
+   "pfad": [
+    [
+     906.0,
+     -3944.4,
+     404.0
+    ],
+    [
+     906.0,
+     -3944.4,
+     230.0
+    ],
+    [
+     906.0,
+     -3083.0,
+     217.1
+    ],
+    [
+     1307.5,
+     -3083.0,
+     211.1
+    ],
+    [
+     1307.5,
+     -3083.0,
+     87.1
+    ]
+   ],
+   "notiz": "Schlammablass: Federhahn -> lotrecht in den Graben (Z 230) -> 861 + 402 mm mit 1.5 % Gefaelle -> lotrecht in die Muffe d40 des Schlammfasses",
+   "baender": [
+    "W",
+    "U",
+    "U",
+    "U"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "KB2-Kappe",
+   "kante": null,
+   "dn": 50,
+   "farbe": "grau",
+   "start": "r:KB2",
+   "ende": "muffe",
+   "korridor": [
+    "KS"
+   ],
+   "anschluss": [
+    "Tank_gross_t3:1"
+   ],
+   "pfad": [
+    [
+     -457.6,
+     -3333.7,
+     453.0
+    ],
+    [
+     -457.6,
+     -3333.7,
+     443.0
+    ]
+   ],
+   "notiz": "Rohrstueck d50 zwischen Kugelhahn und Kappe (Wartungsablass)",
+   "baender": [
+    "W"
+   ],
+   "linie": 2
+  },
+  {
+   "id": "K44-S1",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "korridor": [
+    "KS",
+    "KH",
+    "KS",
+    "KB",
+    "KB",
+    "KB",
+    "KS"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1906.81,
+     -690.55,
+     1148.0
+    ],
+    [
+     1906.81,
+     -690.55,
+     1180.25
+    ],
+    [
+     1775.43,
+     -690.55,
+     1180.25
+    ],
+    [
+     1775.43,
+     -690.55,
+     -1237.25
+    ],
+    [
+     1775.43,
+     600.0,
+     -1237.25
+    ],
+    [
+     707.11,
+     600.0,
+     -1237.25
+    ],
+    [
+     707.11,
+     -707.11,
+     -1237.25
+    ],
+    [
+     707.11,
+     -707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "M10-UMBAU Schritt 7: Abgang 1 -> Scheibe 4 (Az 315): Bogen auf dem Zapfen, -X ueber die Krone, lotrecht an der Innenwand, 3 Bodenstrecke(n) in X/Y (Leitungsordnung KB), Bogen unter der Scheibe"
+  },
+  {
+   "id": "K44-S2",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "korridor": [
+    "KS",
+    "KH",
+    "KS",
+    "KB",
+    "KB",
+    "KB",
+    "KS"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1856.1,
+     -799.31,
+     1148.0
+    ],
+    [
+     1856.1,
+     -799.31,
+     1180.25
+    ],
+    [
+     1729.2,
+     -799.31,
+     1180.25
+    ],
+    [
+     1729.2,
+     -799.31,
+     -1237.25
+    ],
+    [
+     150.0,
+     -799.31,
+     -1237.25
+    ],
+    [
+     150.0,
+     707.11,
+     -1237.25
+    ],
+    [
+     707.11,
+     707.11,
+     -1237.25
+    ],
+    [
+     707.11,
+     707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "M10-UMBAU Schritt 7: Abgang 2 -> Scheibe 1 (Az 45): Bogen auf dem Zapfen, -X ueber die Krone, lotrecht an der Innenwand, 3 Bodenstrecke(n) in X/Y (Leitungsordnung KB), Bogen unter der Scheibe"
+  },
+  {
+   "id": "K44-S3",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "korridor": [
+    "KS",
+    "KH",
+    "KS",
+    "KB",
+    "KB",
+    "KB",
+    "KS"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1805.38,
+     -908.07,
+     1148.0
+    ],
+    [
+     1805.38,
+     -908.07,
+     1180.25
+    ],
+    [
+     1674.65,
+     -908.07,
+     1180.25
+    ],
+    [
+     1674.65,
+     -908.07,
+     -1237.25
+    ],
+    [
+     -400.0,
+     -908.07,
+     -1237.25
+    ],
+    [
+     -400.0,
+     707.11,
+     -1237.25
+    ],
+    [
+     -707.11,
+     707.11,
+     -1237.25
+    ],
+    [
+     -707.11,
+     707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "M10-UMBAU Schritt 7: Abgang 3 -> Scheibe 2 (Az 135): Bogen auf dem Zapfen, -X ueber die Krone, lotrecht an der Innenwand, 3 Bodenstrecke(n) in X/Y (Leitungsordnung KB), Bogen unter der Scheibe"
+  },
+  {
+   "id": "K44-S4",
+   "kante": "K44",
+   "dn": 25,
+   "dn_abweichung": "Pool-Verteiler luftverteiler_4 teilt die Hauptleitung d40 (K44) in vier Abgaenge d25 (R45 Abschnitt 4, Bauteilblatt T87)",
+   "farbe": "gruen",
+   "start": "stutzen",
+   "ende": "stutzen",
+   "korridor": [
+    "KS",
+    "KH",
+    "KS",
+    "KB",
+    "KB",
+    "KS"
+   ],
+   "baender": [
+    "W",
+    "W",
+    "W",
+    "UT",
+    "UT",
+    "UT"
+   ],
+   "anschluss": [
+    "Zentralpool"
+   ],
+   "pfad": [
+    [
+     1754.67,
+     -1016.82,
+     1148.0
+    ],
+    [
+     1754.67,
+     -1016.82,
+     1180.25
+    ],
+    [
+     1610.93,
+     -1016.82,
+     1180.25
+    ],
+    [
+     1610.93,
+     -1016.82,
+     -1237.25
+    ],
+    [
+     -707.11,
+     -1016.82,
+     -1237.25
+    ],
+    [
+     -707.11,
+     -707.11,
+     -1237.25
+    ],
+    [
+     -707.11,
+     -707.11,
+     -1205.0
+    ]
+   ],
+   "linie": "luft",
+   "notiz": "M10-UMBAU Schritt 7: Abgang 4 -> Scheibe 3 (Az 225): Bogen auf dem Zapfen, -X ueber die Krone, lotrecht an der Innenwand, 2 Bodenstrecke(n) in X/Y (Leitungsordnung KB), Bogen unter der Scheibe"
   }
  ],
  "t_stuecke": [
@@ -2211,6 +2458,24 @@
    "linie": 1
   },
   {
+   "id": "KB1",
+   "art": "kugelhahn",
+   "pos_a": [
+    3371.6,
+    -299.6,
+    565.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 50,
+   "d_klein": 50,
+   "notiz": "Kugelhahn d50 am Schlammablass des Biofilter-Tanks Tank_gross:1 (Wartungsablass, kein Netz-Knoten: Befund an den Orchestrator)",
+   "linie": 1
+  },
+  {
    "id": "R_K17_P",
    "pos_a": [
     -1020.4,
@@ -2328,6 +2593,350 @@
    "d_gross": 50,
    "d_klein": 32,
    "auf_stutzen": true,
+   "linie": 2
+  },
+  {
+   "id": "KB2",
+   "art": "kugelhahn",
+   "pos_a": [
+    -457.6,
+    -3333.7,
+    565.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "d_gross": 50,
+   "d_klein": 50,
+   "notiz": "Kugelhahn d50 am Schlammablass des Biofilter-Tanks Tank_gross_t3:1 (Wartungsablass, kein Netz-Knoten: Befund an den Orchestrator)",
+   "linie": 2
+  }
+ ],
+ "teile": [
+  {
+   "id": "FH1",
+   "datei": "lt_kugelhahn_feder_d40",
+   "pos": [
+    2841.5,
+    -1651.6,
+    506.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "farbe": "dunkelblau",
+   "notiz": "Federrueckzug-Kugelhahn d40 auf dem Ablaufstutzen des Absetzers Tank_klein:2 (Hebel quer = zu)",
+   "linie": 1
+  },
+  {
+   "id": "schlammfass_1",
+   "datei": "schlammfass",
+   "pos": [
+    3925.0,
+    -1461.0,
+    -833.1
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "notiz": "T93 Schlammfass Linie 1: Fassboden Z -833 (flur-relativ -1233), Oberkante flur-relativ -353; Grube Oe 800 mit Abdeckung [A]",
+   "linie": 1
+  },
+  {
+   "id": "KB1-Kappe",
+   "datei": "lt_kappe_d50",
+   "pos": [
+    3371.6,
+    -299.6,
+    443.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Kappe d50 unter dem Kugelhahn",
+   "linie": 1
+  },
+  {
+   "id": "VT1",
+   "datei": "lt_verteiler_d50",
+   "pos": [
+    2677.4,
+    -165.9,
+    1970.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    -0.981978,
+    0.188996,
+    0.0
+   ],
+   "farbe": "dunkelblau",
+   "notiz": "Verteiler d50 (W36) auf dem Ende von K10: Abgaenge 1 Beete d40, 2 NFT d32, 3 Messkreis d20, 4 Bypass d50 nach oben",
+   "linie": 1
+  },
+  {
+   "id": "VT1-Kappe3",
+   "datei": "lt_kappe_d20",
+   "pos": [
+    2368.1,
+    -106.4,
+    2033.2
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    -0.981978,
+    0.188996,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Kappe d20 auf Abgang 3 des Verteilers (vorerst verschlossen bis S3)",
+   "linie": 1
+  },
+  {
+   "id": "VT1-Kappe4",
+   "datei": "lt_kappe_d50",
+   "pos": [
+    2250.2,
+    -83.7,
+    2018.2
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    -0.981978,
+    0.188996,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Kappe d50 auf Abgang 4 des Verteilers (vorerst verschlossen bis S3)",
+   "linie": 1
+  },
+  {
+   "id": "VT1-Halter",
+   "datei": "lt_klemme_d50",
+   "pos": [
+    2726.5,
+    -175.3,
+    1938.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    -0.981978,
+    0.188996,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Rohrklemme d50 50 mm vor dem Verteiler (Konsole an der Tank-Plattform: OFFEN Werkstatt Halter)",
+   "linie": 1
+  },
+  {
+   "id": "FH2",
+   "datei": "lt_kugelhahn_feder_d40",
+   "pos": [
+    906.0,
+    -3944.4,
+    506.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "farbe": "dunkelblau",
+   "notiz": "Federrueckzug-Kugelhahn d40 auf dem Ablaufstutzen des Absetzers Tank_klein:1 (Hebel quer = zu)",
+   "linie": 2
+  },
+  {
+   "id": "schlammfass_2",
+   "datei": "schlammfass",
+   "pos": [
+    1307.5,
+    -3083.0,
+    -832.9
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "notiz": "T93 Schlammfass Linie 2: Fassboden Z -833 (flur-relativ -1233), Oberkante flur-relativ -353; Grube Oe 800 mit Abdeckung [A]",
+   "linie": 2
+  },
+  {
+   "id": "KB2-Kappe",
+   "datei": "lt_kappe_d50",
+   "pos": [
+    -457.6,
+    -3333.7,
+    443.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "x": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Kappe d50 unter dem Kugelhahn",
+   "linie": 2
+  },
+  {
+   "id": "VT2",
+   "datei": "lt_verteiler_d50",
+   "pos": [
+    -236.8,
+    -4005.3,
+    1970.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    0.312024,
+    -0.950074,
+    0.0
+   ],
+   "farbe": "dunkelblau",
+   "notiz": "Verteiler d50 (W36) auf dem Ende von K26: Abgaenge 1 Beete d40, 2 NFT d32, 3 Messkreis d20, 4 Bypass d50 nach oben",
+   "linie": 2
+  },
+  {
+   "id": "VT2-Kappe3",
+   "datei": "lt_kappe_d20",
+   "pos": [
+    -138.5,
+    -4304.6,
+    2033.2
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    0.312024,
+    -0.950074,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Kappe d20 auf Abgang 3 des Verteilers (vorerst verschlossen bis S3)",
+   "linie": 2
+  },
+  {
+   "id": "VT2-Kappe4",
+   "datei": "lt_kappe_d50",
+   "pos": [
+    -101.1,
+    -4418.6,
+    2018.2
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    0.312024,
+    -0.950074,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Kappe d50 auf Abgang 4 des Verteilers (vorerst verschlossen bis S3)",
+   "linie": 2
+  },
+  {
+   "id": "VT2-Halter",
+   "datei": "lt_klemme_d50",
+   "pos": [
+    -252.4,
+    -3957.8,
+    1938.0
+   ],
+   "z": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "x": [
+    0.312024,
+    -0.950074,
+    0.0
+   ],
+   "farbe": "grau",
+   "notiz": "Rohrklemme d50 50 mm vor dem Verteiler (Konsole an der Tank-Plattform: OFFEN Werkstatt Halter)",
+   "linie": 2
+  }
+ ],
+ "gruben": [
+  {
+   "id": "schlammfass_1",
+   "x": 3925.0,
+   "y": -1461.0,
+   "d": 800.0,
+   "sohle": -903.1,
+   "linie": 1
+  },
+  {
+   "id": "schlammfass_2",
+   "x": 1307.5,
+   "y": -3083.0,
+   "d": 800.0,
+   "sohle": -902.9,
    "linie": 2
   }
  ]

@@ -1,7 +1,7 @@
 """N-VIEWER-HOSTING: baut die statische Viewer-Ausgabe viewer/dist/ reproduzierbar (Hosting ohne serve.py).
 Aufruf: python -X utf8 scripts/viewer_dist.py [--nur-messen]
 Eingaben: viewer/ (index.html, *.json, defs/, detail/, varianten/<v>/), data/ (parts, katalog, descriptions, messstellen, stueckliste*, system-specs*).
-Ausgabe viewer/dist/ (nie committen, steht in .gitignore):
+Ausgabe viewer/dist/ (nie committen, steht in .gitignore; .vercel und .vercelignore bleiben beim Neubau erhalten):
   index.html            Kopie von viewer/index.html mit <meta name="viewer-modus" content="statisch">
   defs/*.obj.gz, detail/*.obj.gz   OBJ-Text, Koordinaten auf 0,01 mm (Normalen 0,001) gerundet, gzip -9; der Browser entpackt per DecompressionStream
   alle JSON-Dateien     unveraendert (Viewer liest sie ueber die Namen, die der fetch-Umschalter in index.html abbildet)
@@ -12,6 +12,7 @@ from multiprocessing import Pool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V = os.path.join(ROOT, 'viewer'); D = os.path.join(ROOT, 'data'); OUT = os.path.join(V, 'dist')
+BEHALTEN = ('.vercel', '.vercelignore')   # Deploy-Zustand, wird beim Neubau nicht geloescht
 ZAHL = re.compile(r'-?\d+\.\d+(?:e-?\d+)?')
 
 def runde(n):
@@ -44,8 +45,14 @@ def kopie(src, dst):
 
 def main():
     t0 = time.time()
-    if os.path.isdir(OUT): shutil.rmtree(OUT)
-    os.makedirs(OUT)
+    # Inhalt leeren, den Ordner selbst und die Deploy-Dateien behalten: .vercel (Projektbindung) bleibt, .vercelignore wird bei Bedarf geschrieben
+    os.makedirs(OUT, exist_ok=True)
+    for name in os.listdir(OUT):
+        if name in BEHALTEN: continue
+        pfad = os.path.join(OUT, name)
+        shutil.rmtree(pfad) if os.path.isdir(pfad) else os.remove(pfad)
+    if not os.path.exists(os.path.join(OUT, '.vercelignore')):
+        open(os.path.join(OUT, '.vercelignore'), 'w', encoding='utf-8', newline='\n').write('.env*\n.vercel\n')
     jobs = []
     for sub in ('defs', 'detail'):
         for f in sorted(os.listdir(os.path.join(V, sub))):

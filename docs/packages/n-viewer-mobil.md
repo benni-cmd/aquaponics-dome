@@ -59,3 +59,6 @@ Weiche: `?mobil=1` erzwingt die Mobilansicht, `?mobil=0` schaltet sie ab.
 - [x] Paket nachgeführt, Commit und Push
 - [ ] Mobilansicht online (Orchestrator)
 - [ ] Test auf echtem Handy (Ben oder Leon): Speicher, Touch-Gefühl, Mobilfunk-Ladezeit
+
+## Nachtrag 05.11.2026 (Bau-Skript)
+`scripts/viewer_dist.py` leert beim Neubau nur den Inhalt von `viewer/dist` und behält `.vercel` (Projektbindung) und `.vercelignore`; fehlt `.vercelignore`, schreibt das Skript es neu (`.env*` und `.vercel`). Das beseitigt auch die Ordnersperre, weil der Ordner selbst nicht mehr gelöscht wird. Beleg: Prüfsummen von `.vercel/project.json` und `.vercelignore` vor und nach dem Lauf gleich; nach `rm .vercelignore` wird die Datei neu geschrieben. Hinweis: `.env.local` und `.gitignore`, die das Vercel-Werkzeug in `dist` anlegt, werden beim Neubau gelöscht (beide für den Deploy ohne Wirkung, `.env*` steht in `.vercelignore`).

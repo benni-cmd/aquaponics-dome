@@ -4,12 +4,45 @@
     "BEH",
     "PMP"
   ],
-  "stand": "2026-11-04",
+  "stand": "2026-11-05",
   "hinweis": "Preise brutto (inkl. 19 % MwSt bei DE/AT-Shops), grob, ohne Versand. konfidenz: Q = Seite selbst geoeffnet und gelesen, Q-Treffer = nur Suchtreffer (Kandidat), E = gerechnet, A = angenommen. UK gilt als Europa OFFEN und ist mit land UK gekennzeichnet. Kein Kauf, keine Anmeldung. Geblaese stehen nicht im Katalog dieser Klasse (kein Artikel BEH/PMP).",
   "artikel": {
     "PMP-pumpe-gross": {
-      "bemerkung_artikel": "Soll 55 l/min je Pumpe bei kleiner Foerderhoehe, je Linie 144 W elektrisch fuer 2 Pumpen (data/system-specs.json leistung). Eheim Universal 3400: 3400 l/h = 56,7 l/min, 80 W, Foerderhoehe 3,6 m [Q]. Kennlinie bei der realen Anlagen-Foerderhoehe nicht geprueft.",
+      "bemerkung_artikel": "Soll 55 l/min je Pumpe (80 W). Eheim Universal 3400 (Typ 1262): 3400 l/h = 56,7 l/min nur bei 0 m Foerderhoehe, 80 W, 3,6 m max. [Q, drei Haendlerseiten 05.11. gelesen]. Eheim nennt fuer die Universal-Reihe 'fresh and sea water'; Werkstoff nicht angegeben. OFFEN (Ben): Mass/Foerderhoehe - Kennlinie bei Anlagenhoehe nicht belegt.",
       "angebote": [
+        {
+          "preis_eur": 276.9,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "shop-meeresaquaristik.de",
+          "land": "DE",
+          "url": "https://www.shop-meeresaquaristik.de/Pumpen/Foerderpumpen/Eheim/Eheim-Foerderpumpen/Eheim-Universalpumpe-3400-1262-1262210::17.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Eheim Universal 3400 (1262210), 276,90 inkl. 19 % MwSt zzgl. Versand, 3-4 Tage; 3400 l/h, 80 W, ca. 3,60 m (Seite 05.11. gelesen)."
+        },
+        {
+          "preis_eur": 195.95,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "aquaristikshop.com",
+          "land": "unbekannt",
+          "url": "https://www.aquaristikshop.com/aquaristic/EHEIM-Universal-Pump-1262/126221/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Eheim Universal 3400 (126221), 195,95 inkl. MwSt, 'free delivery' mit Link auf Versandkosten DE, lieferbar 10.-13.11.; Land des Shops steht nicht auf der Seite (Impressum nicht gelesen)."
+        },
+        {
+          "preis_eur": 299.0,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "Hornbach Oesterreich",
+          "land": "AT",
+          "url": "https://www.hornbach.at/p/universal-pumpe-eheim-3400-3-adriger-schukostecker-mit-1-7-m-kabel-80-w/8888958/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "Art. 8888958, 299 inkl. MwSt zzgl. Versand; 80 W, 3400 l/h; Lieferung nach DE nicht genannt (05.11. gelesen)."
+        },
         {
           "preis_eur": 233.79,
           "bezug_einheit": "Stk",
@@ -19,75 +52,42 @@
           "url": "https://greenaqua.hu/en/eheim-universal-3400.html",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "Eheim Universal 3400. Seite: 'We ship to all EU countries', Versand DE nicht beziffert; MwSt-Angabe fehlt; Bestand widerspruechlich (in stock / backorder 5-10 Tage)."
-        },
-        {
-          "preis_eur": 299,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Hornbach Oesterreich",
-          "land": "AT",
-          "url": "https://www.hornbach.at/p/universal-pumpe-eheim-3400-3-adriger-schukostecker-mit-1-7-m-kabel-80-w/8888958/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q",
-          "bemerkung": "Eheim Universal 3400, Art. 8888958, 299 EUR inkl. MwSt zzgl. Versand; Lieferung nach DE auf der Seite nicht genannt."
+          "bemerkung": "Preis vom 04.11.; Seite am 05.11. mit HTTP 429 nicht erneut gelesen. 'We ship to all EU countries'; Versand DE nicht beziffert."
         }
       ],
-      "alternative": "Aquaforte DM-3500 (toppy.nl NL, 146,95 EUR, 25 W): Leistung faellt von 3500 l/h bei 0 m auf 2400 l/h bei 1 m und 700 l/h bei 2 m; bei Anlagenhoehe zu schwach [Q, https://www.toppy.nl/product/2888/aquaforte-dm-3500-vijverpomp.html, aktuell nicht lieferbar]."
+      "alternative": "Aquaforte DM-3500 (toppy.nl NL, 146,95, 25 W) faellt bei 1 m Foerderhoehe auf 2400 l/h und bei 2 m auf 700 l/h: bei Anlagenhoehe zu schwach [Q, https://www.toppy.nl/product/2888/aquaforte-dm-3500-vijverpomp.html, nicht lieferbar]."
     },
     "PMP-pumpe-klein": {
-      "bemerkung_artikel": "Soll 12,5 l/min (750 l/h), beide Absetzerpumpen zusammen 33 W (je ca. 16 W). Eheim Universal 1200 ist groesser (1200 l/h, 28 W, 2 m); eine kleinere Eheim Universal 600 oder Drosselung waere zu pruefen [A]. Auswahl der Groesse ist Planerentscheidung.",
+      "bemerkung_artikel": "Soll 12,5 l/min (750 l/h), beide Absetzerpumpen zusammen 33 W. Eheim Universal 1200 (1250219): 1200 l/h = 20 l/min, 28 W, 2 m [Q, eheim.com/en_GB/products/technology/pumps/universal-1200 gelesen]; damit 60 % ueber Soll, Drosselung (Regelhahn) noetig. Universal 600 (1048): 10 l/min, 10 W, 1,5 m [Q, eheim.com universal-600 gelesen] liegt UNTER Soll 12,5 und ist nicht geeignet. OFFEN (Ben): Mass - Universal 1200 gedrosselt akzeptieren oder Soll aendern.",
       "angebote": [
         {
           "preis_eur": 95.9,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
+          "stand": "2026-11-05",
           "haendler": "aquacomputer.de",
           "land": "DE",
           "url": "https://shop.aquacomputer.de/Wasserkuehlung/Pumpen-Zub/Pumpen/Eheim-1250-Eheim-universal-1200-Version-Deutschland-Pumpe-1250219::1276.html",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "Eheim Universal 1200 (1250219), 95,90 EUR inkl. MwSt zzgl. Versand; aktuell 'nicht am Lager', Lieferzeit bis 90 Tage."
+          "bemerkung": "Eheim Universal 1200 (1250219), 95,90 inkl. MwSt zzgl. Versand; 05.11.: 'nicht am Lager', Lieferzeit DE bis 90 Tage."
         },
         {
-          "preis_eur": 130.11,
+          "preis_eur": 117.1,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
+          "stand": "2026-11-05",
           "haendler": "Green Aqua (greenaqua.hu)",
           "land": "HU",
           "url": "https://greenaqua.hu/en/eheim-universal-1200-pump-1250-828w-1200-lph.html",
-          "lieferung_de": "ja",
+          "lieferung_de": "unbekannt",
           "konfidenz": "Q",
-          "bemerkung": "Eheim Universal 1200; 'We ship to all EU countries'; MwSt-Angabe fehlt; Bestand widerspruechlich."
+          "bemerkung": "Heute 117,10 (durchgestrichen 130,11; Bestand 04.11.: 130,11); MwSt-Angabe fehlt; Versandangabe nur HU 9,90, Text 'ship to all EU countries'; Bestand widerspruechlich."
         }
       ]
     },
     "PMP-dosierpumpe": {
-      "bemerkung_artikel": "Schlauchpumpe 12 V, Dosierung Naehrloesung/Saeure; Durchfluss und Schlauch je Fabrikat sehr unterschiedlich, Auswahl durch Planer.",
-      "angebote": [
-        {
-          "preis_eur": 15.65,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Funduino",
-          "land": "DE",
-          "url": "https://funduino.com/es/products/peristaltikpumpe-dosierpumpe-12v-60-150ml",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "12 V, 60-150 ml/min; nur Suchtreffer (Seite lieferte 429); Herkunftsland angenommen."
-        },
-        {
-          "preis_eur": 42.92,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "ManoMano",
-          "land": "FR",
-          "url": "https://www.manomano.de/p/12v-schlauchpumpe-fur-aquarien-labore-und-chemische-analysen-im-heimwerkerbereich-gruner-kopf-35-229357427",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "12 V Schlauchpumpe Aquarium/Labor; Seite 403, nur Suchtreffer; manomano.de liefert nach DE (Marktplatz, Verkaeufer variiert)."
-        }
-      ]
+      "bemerkung_artikel": "Schlauchpumpe 12 V fuer Naehrloesung/Saeure. Kandidat Funduino 12 V 60-150 ml/min, 15,65 (Seite liefert HTTP 200, Titel 'Peristaltikpumpe 12 V, bis 150 ml/min', Preis und Silikonschlauch 'lebensmittelecht' nur aus Suchtreffer). Kamoer NKP-DC-S08 (55 ml/min, Silikon oder BPT-Schlauch) nur aus Suchtreffern. Berrybase (DE) Kamoer PPFL-1, 12 V, 58 ml/min, 9,10: gelesen, aber nicht mehr verfuegbar, Schlauchwerkstoff nicht genannt. OFFEN (Ben): Dosiermenge und Medium (Saeureart), davon haengt der Schlauchwerkstoff ab.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): Funduino (429) und ManoMano (403) am 05.11. nicht lesbar, kein Herstellerdatenblatt gelesen; naechster Schritt Kamoer-Datenblatt plus EU-Haendler der NKP-DC-S08 (nicht ausgefuehrt, ICH)."
     },
     "BEH-tank-pe-673x1075": {
       "bemerkung_artikel": "Soll Kegelboden-Tank Durchm. 673 x 1075 mm. Kein Europa-Tank mit genau diesem Mass gefunden; naechste Groesse als Kandidat. Tanksdirekt 200 l: 568 x 568 x 975, 1 Zoll BSP, Schraubdeckel Durchm. 200 enthalten. Mass muss vom Planer gegen das Modell abgeglichen werden.",
@@ -407,6 +407,43 @@
       "bemerkung_artikel": "Drittbecken klein, Wanne 920 x 920 x 1055, Werkstoff Beton fraglich; kein Kaufteil recherchiert.",
       "angebote": [],
       "status_vorschlag": "OFFEN (Ben): Werkstoff"
+    },
+    "PMP-geblaese-luft": {
+      "bemerkung_artikel": "Membrangeblaese Luft, Bbox 180 x 230 x 240. Typ Secoh JDK-S-200 passt zur Bbox (240 x 180 x 230,5 mm, 10 kg) [Q, tanks.ie gelesen]. Leistung widerspruechlich: tanks.ie 115 W, R53 180 W, Bestand 204 W; BIBUS nennt 245 l/min bei 100 mbar, R53 schaetzt ca. 176 l/min bei 26 kPa; Spitze 205 l/min traegt eine Pumpe nicht (N+1 ist Planerfrage). Im Wasser: nein. Alternative Hiblow HP-200 toppy.nl NL 674,95, nur Suchtreffer, nicht lieferbar. OFFEN (Ben): Mass/Leistung.",
+      "angebote": [
+        {
+          "preis_eur": 458.42,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "tanks.ie (Secoh JDK-S-200)",
+          "land": "IE",
+          "url": "https://www.tanks.ie/secoh-jdk-s-200-single-series-blower/p21263",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "E",
+          "bemerkung": "Seite nennt 372,70 EUR NETTO (keine Bruttoangabe); brutto mit irischer MwSt 23 % gerechnet = 458,42 [E]. 3-5 Tage, 'ROI nationwide', Lieferung nach DE nicht genannt (anfragen). Technische Zweitquelle: BIBUS https://technology.bibus.com/hu-en/products/itm/jdk-s-150-200-250/ (245 l/min bei 100 mbar, kein Preis)."
+        }
+      ],
+      "luecke": "OFFEN (Quelle): zweiter Haendler mit EU-Preis und Lieferung nach DE fehlt; Preis nur gerechnet aus Netto."
+    },
+    "SON-luftverteiler-4": {
+      "bemerkung_artikel": "Luftverteiler 4-fach, PVC, Bbox 48 x 98 x 470 (Eigenbau laut Stueckliste). Kein Kaufteil in dieser Bauform gefunden: Aquarium-Verteiler (4/6 mm Schlauch) sind fuer eine d20/d25-Luftleitung viel zu klein, Alu-Pneumatikbloecke passen nicht zu PVC (nur Suchtreffer). Eigenbau-Vorschlag aus Normteilen: 1 PVC-U-Druckrohr d25 mit 470 mm, 4 Abgaenge als PVC-U-Gewindestutzen oder Einbohrstutzen mit Schlauchtuelle, 2 Endkappen, Kleber; Preise bei den Leitungsteilen in data/beschaffung/leitung.json. Im Wasser: nein. OFFEN (Ben): Mass - Bbox 48 x 98 ist keine d25-Rohrgeometrie, Modell klaeren.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein Kaufteil, Eigenbau aus Normteilen ohne belegte Einzelpreise."
+    },
+    "SON-luftverteiler-6": {
+      "bemerkung_artikel": "Luftverteiler 6-fach, PVC, Bbox 48 x 98 x 710; wie SON-luftverteiler-4, jedoch Rohr 710 mm und 6 Abgaenge. Kein Kaufteil gefunden (nur Suchtreffer fuer Aquarium- und Pneumatikverteiler). OFFEN (Ben): Mass wie bei der 4-fach-Variante.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein Kaufteil, Eigenbau aus Normteilen ohne belegte Einzelpreise."
+    },
+    "SON-scheibenbelueftung-270": {
+      "bemerkung_artikel": "Scheibenbelueftung d270 im Fischwasser. Typ Jaeger JetFlex HD 270 (DE-Hersteller): Herstellerdatenblatt gelesen: 268/218 mm, Hoehe 60 mm, R 3/4\", 1,5-8 Nm3/h, Traeger PP 30 % GF, Membran EPDM F053A oder weichmacherarmes EPDM F057A oder Silikon, 75 Shore A, Wasser 5-40 C [Q, https://jaeger-envirotech.com/wp-content/uploads/dokumente/JetFlex%C2%AE-HD-270-EN-2025.pdf]. BIBUS-Seite gleiche Daten, ohne Preis [https://technology.bibus.com/ua-en/products/itm/jetflex-hd-270-disc-diffusers/]. Lebensmittel/Trinkwasser: keine KTW-, W270- oder FDA-Angabe; 'food, beverage' steht nur beim weichmacherarmen EPDM. Fuer Fisch Silikon oder weichmacherarmes EPDM waehlen und Zulassung beim Hersteller anfragen. OFFEN (Ben): Mass 268 mm gegen 270.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein EU-Haendler mit Preis gelesen (Hersteller und Distributor nur auf Anfrage); Eignung Fischwasser nicht belegt."
+    },
+    "SON-gummifuss-40": {
+      "bemerkung_artikel": "Gummifuss 40x40x15, EPDM, im Trockenen. Standardartikel haben 27-40 mm Hoehe, keiner mit 15 mm gefunden. Kandidat: Audiophonics (FR) ELESA+GANTER Daempfungsfuss d40 x H40, M8 x 23, 3,70 inkl. MwSt, DE-Versand nicht genannt [Q, https://www.audiophonics.fr/en/rubber-feet/damping-fot-40x40mm-m8-unit-p-8951.html, 05.11. gelesen]. Zweite Quelle RS FIBET M8 d40x40 mit 403 nicht lesbar. OFFEN (Ben): Mass - Hoehe 40 statt 15 mm.",
+      "angebote": [],
+      "luecke": "OFFEN (Ben): Mass; nur eine gelesene Quelle, Hoehe weicht von 15 mm ab."
     }
   }
 }

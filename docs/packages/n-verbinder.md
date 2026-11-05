@@ -40,8 +40,25 @@ Werkstatt W83 05.11.2026 nachmittags (Ben: obere und untere Lochplatte, Scheren 
 4. Pruefskript `scripts/check_verbinder_montage.py` (Instanzen, Nase im Gegenloch, Folie ueber Hardware, Probe-Durchdringung 4/5/6-wertig).
 5. Bau A+ und Ring B2, `check_walkways`, `check_huelle`, `check_latte` in Kopie, Viewer-Export, Bilder, loop-state, Pfad-Commits.
 
-### Stand
-(wird beim Abschluss nachgefuehrt)
+### Stand (05.11.2026 abends)
+**Gebaut:**
+1. Werkstatt-Anteil: Laschen 8 mm (D91), Gegenloch D15 (bei 8 mm liess D13 der Nase 10 x 8 nur 0,1 mm Spiel), Montage-Arme `knoten_schere_arm_a/b_montage.sc` ohne Probe-Rohr. `python -X utf8 scripts/workshop/check_knoten_schere.py` 35/35 (Flaechenkontakt Lasche 1/2 im eigenen Arm unter 0,3 mm Facetten als Kontakt gewertet, gemessen 0,17/0,23 mm).
+2. Strebe Rundrohr 42,4 x 2,6 mit 4 Gegenloechern (`scripts/components/strebe.py`): A 3077,1 mm (Rohrmund-Abstand in der Montage-Lage 3075,5 bis 3078,7, Mitte gebaut), B 3503,8 mm; `check_parts.py strebe_a strebe_b` je 22/22. Folie `foil_z0` 64 -> 40,2 mm (Rohrradius 21,2 + Schaumband 3 + Kanal 15 + 1); `check_huelle.py` 68/68.
+3. Montage: `scripts/knoten_montage.py` (Tabelle -> Modellrahmen), `gen_dome.py` setzt 26 Plattenpaare, 60 Arme A, 68 Arme B (Basiskante der Tuer ohne Strebe) und 64 Streben mittig zwischen den Rohrmuendern. Kugelknoten `knoten_<n>_nNN.sc` nicht mehr im Modell.
+4. A+ Runde 77: `sh scripts/build.sh 5 77` Exit 0 (11314 Befehle, 8:22 min). Ring B2 Runde 3: `sh scripts/build.sh 5 3 ring_b2` Exit 0 (11783 Befehle, 14:25 min).
+
+**Gemessen (beide Varianten gleich):**
+1. `python -X utf8 scripts/check_verbinder_montage.py [--variante ring_b2]` 14/14: Instanzen, Nase im Gegenloch (groesste Nasenecke 0,29 mm innerhalb des Lochrands), Folie ueber Hardware (39,3 < 40,2 mm, Koerper-Box-Ecken, konservativ), Probe n01/n02/n17 (6/5/4-wertig) ohne Durchdringung. Ausgaben `renders/check_verbinder_montage-77.txt`, `renders/ring_b2/check_verbinder_montage-03.txt`.
+2. `check_walkways.py` beide Exit 0.
+3. Viewer-Export A+ (273 Definitionen, 5353 Instanzen) und B2 (`--variante ring_b2`, 299 / 5570) im Browser angesehen: Kuppel-Struktur 229 Instanzen; Scheitelknoten zeigt Plattenpaar, 5 Scheren, Rundrohre; B2 mit Etikett und Ring.
+4. Bilder: `renders/round-77.png`, `renders/verbinder-77-n02-aussen.png`, `renders/ring_b2/round-03.png`.
+5. Masse Verbinder im Modell: 26 x 1083 g + 128 x 394 g = 78,6 kg (vorher Kugelknoten 155 kg).
+
+**Befunde fuer den Orchestrator:**
+1. 6-Loch-Platte an 5-wertigen Knoten (D91): A-Rohre muessten 3075,5 / 3076,3 / 3078,6 mm lang sein; gebaut eine Laenge 3077,1, Rest nimmt das Lochspiel D15 auf. Mit 5-Loch-Platte waeren alle A 3075,3.
+2. Katalog `data/katalog.json` fuehrt noch `PRF-st-strebe30x30` und die Kugelknoten-Artikel; Stuecklisten-Kette (bom.py) auf Rundrohr und Scherenknoten umstellen.
+3. `data/components/keilschiene.json` rechnet mit 120 mm Endversatz (node_clear 130); Scherenknoten: Rohrmund 102 mm.
+4. `scripts/strut_cutting.py` hat `E_NOM = 120` fest.
 
 ## DoD
 - R56 enthaelt alle sechs Abschnitte des Auftrags mit [A]/[E]/[Q]-Kennzeichnung.

@@ -1,0 +1,168 @@
+W-M4 Beet x Beet: kleinste Luecke mit Fase 94 mm | ohne Fase (Vergleich, alter Stand) 24 mm | Werkstatt-Stand Runde 44/46 (Lage vor D62/D63): -35 ohne / +36 mit Fase
+GEOMETRIE kleinster Fussplatte-Beet-Abstand 45 mm | kleinster Tisch-Tisch-Abstand 186 mm | Verletzungen Bein/Beet, Pool, Tisch/Tisch: 0 0 0 [] []
+EXAKT ohne Fundamentring/Erde: 2084 Paare, 0 aus dem Cache
+EXAKT ohne Fundamentring/Erde Runde 1: 1715 Koerper, noch offen 1154
+EXAKT ohne Fundamentring/Erde Runde 2: 1049 Koerper, noch offen 754
+EXAKT ohne Fundamentring/Erde Runde 3: 706 Koerper, noch offen 282
+EXAKT ohne Fundamentring/Erde Runde 4: 377 Koerper, noch offen 229
+EXAKT ohne Fundamentring/Erde Runde 5: 311 Koerper, noch offen 71
+EXAKT ohne Fundamentring/Erde Runde 6: 115 Koerper, noch offen 70
+EXAKT Fundamentring: 106 Paare, 0 aus dem Cache
+EXAKT Fundamentring Runde 1: 107 Koerper, noch offen 1
+EXAKT Fundamentring Runde 2: 2 Koerper, noch offen 1
+EXAKT Fundamentring Runde 3: 2 Koerper, noch offen 1
+EXAKT Erde: 725 Paare, 0 aus dem Cache
+EXAKT Erde Runde 1: 726 Koerper, noch offen 1
+EXAKT Erde Runde 2: 2 Koerper, noch offen 1
+EXAKT Erde Runde 3: 2 Koerper, noch offen 1
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:13) Tank (3)
+KOLL Kupplung (3) Strebe_2 (07_Tanks:1/Tank_klein:2)
+KOLL Kupplung (3) (08_Leitungen:1/LT_Kupplung_d32:2) Strebe_4
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:2) Strebe_4 (2)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:4) Strebe_2 (3)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:5) Bein_3 (3)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:5) Strebe_1 (3)
+KOLL Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:5) Strebe_4 (3)
+KOLL Einlaufrohr Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:4)
+KOLL Einlaufrohr (09_Technik:1/Feinfilter:2) Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:6)
+KOLL Verteiler (4) Rohr (90)
+KOLL Bogen (2) (08_Leitungen:1/LT_Bogen90_d25:35) Betonpunkt (02_Gelaende:1/Fundamentanker:4)
+KOLL Bogen (3) (08_Leitungen:1/LT_Bogen90_d32:5) Diagonale_4
+KOLL Bogen (3) (08_Leitungen:1/LT_Bogen90_d32:6) Diagonale_4
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:4) Diagonale_4 (2)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:13) Biomedium (2)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:13) Stuetzrippe_5 (2)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:12) Reduzierung (5)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:27) Reduzierung (5) (08_Leitungen:1/LT_Reduzierung_d75_d50:2)
+KOLL Rohr (66) Plattform (3)
+KOLL Rohr (77) Strebe_2 (07_Tanks:1/Tank_klein:2)
+KOLL Rohr (77) (08_Leitungen:1/LT_Rohr_d32_L89:2) Strebe_4
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:2) Strebe_4 (2)
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:3) Strebe_2 (3)
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:4) Bein_3 (3)
+KOLL Rohr (95) (08_Leitungen:1/LT_Rohr_d40_L191:4) Strebe_4 (3)
+KOLL Rohr (97) Tank (3)
+KOLL Rohr (123) Verteiler (6)
+KOLL T11_Schaltschrank Schrankboden
+KOLL T11_Schaltschrank Schrankwand
+KOLL T11_Schaltschrank Koerper
+KOLL T11_Schaltschrank Koerper (2)
+KOLL Bogen (3) (08_Leitungen:1/LT_Bogen90_d32:4) Rohr (79)
+KOLL Bogen (3) (08_Leitungen:1/LT_Bogen90_d32:8) Rohr (79) (08_Leitungen:1/LT_Rohr_d32_L132:2)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:6) Rohr (106)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:8) Rohr (88)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:14) Rohr (103)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:15) Rohr (103)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:16) Rohr (88) (08_Leitungen:1/LT_Rohr_d40_L102:2)
+KOLL Bogen (4) (08_Leitungen:1/LT_Bogen90_d40:27) Rohr (90)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:8) Rohr (117)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:8) Rohr (139)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:9) Rohr (135)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:12) Rohr (113)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:12) Rohr (126)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:20) Rohr (127)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:23) Rohr (125)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:24) Rohr (117) (08_Leitungen:1/LT_Rohr_d50_L94:2)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:24) Rohr (139) (08_Leitungen:1/LT_Rohr_d50_L1465:2)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:25) Rohr (140)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:26) Rohr (140)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:27) Rohr (112)
+KOLL Bogen (5) (08_Leitungen:1/LT_Bogen90_d50:27) Rohr (141)
+KOLL Bogen (6) Rohr (146)
+KOLL Bogen (6) (08_Leitungen:1/LT_Bogen90_d63:8) Rohr (146) (08_Leitungen:1/LT_Rohr_d63_L49:2)
+KOLL Bogen (7) Rohr (164) (08_Leitungen:1/LT_Rohr_d75_L88:5)
+KOLL Bogen (7) Rohr (169)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:2) Rohr (165)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:3) Rohr (168)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:4) Rohr (164) (08_Leitungen:1/LT_Rohr_d75_L88:6)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:5) Rohr (164) (08_Leitungen:1/LT_Rohr_d75_L88:7)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:5) Rohr (169) (08_Leitungen:1/LT_Rohr_d75_L410:2)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:6) Rohr (163)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:7) Rohr (167)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:7) Rohr (168) (08_Leitungen:1/LT_Rohr_d75_L390:2)
+KOLL Bogen (7) (08_Leitungen:1/LT_Bogen90_d75:8) Rohr (164) (08_Leitungen:1/LT_Rohr_d75_L88:8)
+KOLL Reduzierung (4) (08_Leitungen:1/LT_Reduzierung_d63_d50:6) Ueberlauf
+KOLL Reduzierung (4) (08_Leitungen:1/LT_Reduzierung_d63_d50:8) Ueberlauf (2)
+KOLL Rohr (51) Betonpunkt (02_Gelaende:1/Fundamentanker:4)
+KOLL Rohr (66) Fussplatte_4 (3)
+KOLL Rohr (66) Strebe_3 (3)
+KOLL Rohr (97) Biomedium (2)
+KOLL Rohr (162) T_Stueck (4) (08_Leitungen:1/LT_T_d75:4)
+KOLL Rohr (166) T_Stueck (4) (08_Leitungen:1/LT_T_d75:2)
+KOLL Saugstutzen Reduzierung (3) (08_Leitungen:1/LT_Reduzierung_d50_d40:6)
+KOLL Druckstutzen Kupplung (3) (08_Leitungen:1/LT_Kupplung_d32:2)
+KOLL Saugstutzen (09_Technik:1/Pumpe_klein:3) Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:3)
+KOLL Druckstutzen (09_Technik:1/Pumpe_klein:3) Kupplung (3)
+KOLL Saugstutzen (2) Kupplung (5)
+KOLL Saugstutzen (2) (09_Technik:1/Pumpe_gross:2) Kupplung (5) (08_Leitungen:1/LT_Kupplung_d50:2)
+KOLL Druckstutzen (2) (09_Technik:1/Pumpe_gross:2) Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:2)
+KOLL Druckstutzen (2) (09_Technik:1/Pumpe_gross:3) Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:4)
+KOLL Druckstutzen (2) (09_Technik:1/Pumpe_gross:4) Kupplung (4) (08_Leitungen:1/LT_Kupplung_d40:5)
+KOLL Kupplung (5) (08_Leitungen:1/LT_Kupplung_d50:7) Rohr (117) (08_Leitungen:1/LT_Rohr_d50_L94:2)
+KOLL Reduzierung (3) (08_Leitungen:1/LT_Reduzierung_d50_d40:6) Rohr (125)
+KOLL T11_Schaltschrank Gegenmutter
+KOLL T11_Schaltschrank Gegenmutter (2)
+KOLL T10_Zulaufrohr Rohr (37)
+KOLL Klemmenfuss (08_Leitungen:1/LT_Klemme_d20:3) T6_Wasser
+KOLL Klemmenring (08_Leitungen:1/LT_Klemme_d20:3) T6_Wasser
+KOLL Schraube_ym (08_Leitungen:1/LT_Klemme_d20:3) T6_Wasser
+KOLL Schraube_yp (08_Leitungen:1/LT_Klemme_d20:3) T6_Wasser
+KOLL Klemmenring (5) Rohr (123)
+KOLL Klemmenring (5) (08_Leitungen:1/LT_Klemme_d50:2) Rohr (123) (08_Leitungen:1/LT_Rohr_d50_L162:2)
+KOLL Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:3) T5_Stutzen_SA_Ost_A
+KOLL Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:4) Rohr (164) (08_Leitungen:1/LT_Rohr_d75_L88:6)
+KOLL Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:5) T5_Stutzen_SA_West_B
+KOLL Reduzierung (6) (08_Leitungen:1/LT_Reduzierung_d75_d63:6) Rohr (164) (08_Leitungen:1/LT_Rohr_d75_L88:8)
+KOLL Rohr (11) T6_Wasser
+KOLL Rohr (19) Ankerplatte (02_Gelaende:1/Fundamentanker:4)
+KOLL Rohr (76) GabelAussen (02_Gelaende:1/Fundamentanker:4)
+KOLL Rohr (76) GabelInnen (02_Gelaende:1/Fundamentanker:4)
+KOLL Rohr (77) (08_Leitungen:1/LT_Rohr_d32_L89:2) Diagonale_4
+KOLL Rohr (80) Diagonale_4
+KOLL Rohr (93) Diagonale_4 (2)
+KOLL Rohr (93) (08_Leitungen:1/LT_Rohr_d40_L162:2) Stuetzrippe_5 (2)
+KOLL Rohr (97) Stuetzrippe_5 (2)
+KOLL T10_Zulaufrohr T3_Sockel
+KOLL Koerper T13_Erde
+KOLL Dichtung (2) T13_Erde
+KOLL Koerper (2) T13_Erde
+KOLL Dichtung (2) (2) T13_Erde
+KOLL Leerrohrbogen T13_Erde
+KOLL Leerrohrbogen (2) T13_Erde
+OFFEN W-M1 (Pumpentafel x Tankrahmen, Werkstatt): 49 | M2b (Knoten-Querbolzen x Strebe, Bohrungen fehlen, Montage): 504 | Fuss-Erde Puffer (gezaehlt, nicht bewertet): 0 | Teil-A gewollt (Wasserkoerper, Steckverbindung Luft d25): 47 | exakt geprueft: Paare 2915
+NICHT GEPRUEFT (aus der Kollision genommen): Plane 80 Koerper / 40 Instanzen, Figuren 29 / 2, Messstellen 36 / 22, Pflanzen 219978 / 4444 (Koerper / Instanzen)
+NICHT GEPRUEFT (Skript-Grenzen): Tuer-Breite aus der Geometrie (nur Parameter door_w) und Obergrenze der Tuerhoehe/Rahmenmasse | Plane x Streben (Folie liegt auf) | Keilschienen, Planenausschnitt-Zarge, Bodenbefestigung (nicht im Modell) | Rohre/Schlaeuche und Messstellen an Leitungen (M10, noch nicht verlegt) | Laufwege/Bedienzonen (check_walkways*.py) | Tank-Abstaende zu den neuen Pumpentafeln (tank_offsets kennt sie nicht) | station_an=0: Station T81 abgeschaltet, nicht erwartet
+NICHT GEPRUEFT: [('Druckstutzen (2)', 'Kupplung (4)'), ('Saugstutzen (2) (09_Technik:1/', 'Kupplung (5) (08_Leitungen:1/L'), ('Saugstutzen (2) (09_Technik:1/', 'Kupplung (5) (08_Leitungen:1/L'), ('Auslaufrohr (2)', 'Bogen (6)'), ('Auslaufrohr (2) (09_Technik:1/', 'Bogen (6) (08_Leitungen:1/LT_B'), ('Verteiler (4)', 'Bogen (2)'), ('Verteiler (4)', 'Bogen (2) (08_Leitungen:1/LT_B'), ('Verteiler (4)', 'Bogen (2) (08_Leitungen:1/LT_B'), ('Verteiler (4)', 'Bogen (2) (08_Leitungen:1/LT_B'), ('Bogen (08_Leitungen:1/LT_Bogen', 'Rohr (22)')]
+PASS L5/7 Kuppelhoehe [mm] | Ist: 5937 | Soll: 6000
+PASS L1/10 Streben am Scheitel | Ist: 5 | Soll: 5
+PASS L5/7 Kuppelbreite (Knoten-Durchmesser) [mm] | Ist: 12000 | Soll: 12000
+PASS L5/7 Hoehe/Breite | Ist: 0.495 | Soll: 0.5
+PASS L10 Basisknoten (Zehneck; 1 Knoten an der Tuer ohne Streben) | Ist: 10 | Soll: 9-10
+PASS L10 Strebenzahl 2V (60 + 10 Basis - Tuer) | Ist: 64 | Soll: 55-65
+PASS L2/11 Fundamentring (Flaechen 10 aussen + 10 innen + 2, Tuerluecke +4) | Ist: 26 | Soll: 22-28
+PASS L9/11 Sockel Ueberstand [mm] | Ist: -56 | Soll: <= 300
+PASS OBJ Substratbeete (14 IBC-Wannen als Instanzen) | Ist: 14 | Soll: 14
+PASS Tuer_Komplett vorhanden (Instanz, Koerper) | Ist: (1, 27) | Soll: (1, >= 1)
+PASS Tuer Hoehe (Tuer_Komplett-bbox Z, Untergrenze lichte Hoehe 1960 mm in der Feldebene) [mm] | Ist: 2036 | Soll: >= 1905
+PASS Tuer Breite (Parameter door_w; Geometrie-Breite nicht geprueft) [mm] | Ist: 1000 | Soll: 1000
+PASS Tuerzugang: Abstand Tuer_Komplett-Bett (bbox) [mm] | Ist: 1307 | Soll: >= 1000
+PASS OBJ Tanks (4 Instanzen) + Zweitbecken T6 (1) + Pumpentafeln (8) | Ist: (4, 1, 8) | Soll: (4, 1, 8)
+PASS OBJ Pool zentriert (Abstand Mitte [mm]) | Ist: 0 | Soll: < 50
+PASS OBJ Wasserscheibe D [mm] | Ist: 3880 | Soll: 3890
+PASS L13 Tankwand [mm] | Ist: 150 | Soll: >= 150
+PASS L13 Wasserscheibe T5_Wasser | Ist: 1 | Soll: 1
+PASS L6 Teilenamen T1,T3,T5,T6,T10,T11 vorhanden (T4 Tuer = Tuer_Komplett s. o.; T2 Haut = Phase 2, T8 NFT folgt) | Ist: ['T1', 'T3', 'T5', 'T6', 'T10', 'T11', 'T13', 'T14k'] | Soll: T1,T3,T5,T6,T10,T11
+PASS Netztoepfe: Aussenbeete (8 x 20 x 6) + Innenbeete (6 x 14 x 7) + Rinnen (nft_pots.json) als Instanzen | Ist: 2222 | Soll: 2222
+PASS Netztoepfe Erwartung Runde 60: 960 Aussenbeete + 588 Innenbeete + 674 Rinnen | Ist: (960, 588, 674, 2222) | Soll: (960, 588, 674, 2222)
+PASS Info: Koerperzahl im Modell (kein Pruefkriterium; 4667 ist die Instanzzahl der Viewer-Meldung Build 60, nicht die Koerperzahl) | Ist: 224883 | Soll: Information
+PASS Puffer: Instanzen (Puffer_Station, Puffer_Klein) je nach station_an=0 (0 -> Station aus, Puffer klein T82) | Ist: (0, 1) | Soll: (0, 1)
+PASS Drittbecken klein T14k: Instanz Becken_Dritt (1, Koerper >= 1) und pool3_d [mm] | Ist: (1, 6, 800) | Soll: (1, >= 1, 800)
+PASS Messstellen 13_Messstellen: Instanzen (3 H_TAUCH + 2 H_BERUHIG + 17 Sonden) | Ist: 22 | Soll: 22
+PASS W-M2 NFT-Tisch-Fussplatten ausserhalb der Beete (reine Geometrie, Verletzungen) | Ist: 0 | Soll: 0
+PASS W-M2b Innentisch-Pfosten ausserhalb des Poolrands (Verletzungen) | Ist: 0 | Soll: 0
+PASS Beete untereinander kollisionsfrei, Innenbeete mit Fase 120 mm (W-M4/W26; reine Geometrie, kleinste Luecke [mm]) | Ist: 94 | Soll: > 0
+PASS W-M3 Tisch-Tisch-Abstand an den Ecken >= corner_gap (Umrisspunkte, Verletzungen) | Ist: 0 | Soll: 0
+FAIL L6 Kollisionen (exakt; ohne verankerte Teile, Rohr/Schlauch, offenen Mangel W-M1) | Ist: 114 | Soll: 0
+FAIL L6 Kollisionspruefung vollstaendig (alle Kandidatenpaare exakt geschnitten) | Ist: 72 | Soll: 0
+SCORE 29/31 = 94%
+EXIT 1

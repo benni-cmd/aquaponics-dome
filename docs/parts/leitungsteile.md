@@ -708,3 +708,48 @@ Auftrag `docs/jobs/W37-1-sumpf-schlammfass.md` (Teil 2). Generator `scripts/work
 - Ports: A (0, 0, 0) Richtung -Z, Muffe DN32 (d40); B (0, 0, 102) Richtung +Z, Muffe DN32 (d40) — gleich der Bibliothek.
 - Herkunft: Bauweise [E] wie Kugelhahn der Bibliothek; Federgehaeuse und Hebel [A]. **Fabrikat und Verfuegbarkeit eines Kugelhahns d40 mit Federrueckzug im Standardmass NICHT geprueft [A]** (R45 Offene Punkte Frage 0 Nr. 3); Ersatz, falls nicht erhaeltlich: Kugelhahn mit Totmann-Hebel oder Magnetventil stromlos zu (Steuerung).
 - Bild: `renders/components/leitungsteile/lt_kugelhahn_feder_d40.png`.
+
+## Ruecklauf-Sammler d110 `lt_sammler_d110` (T70-S-110-4)
+
+**Mini-Plan.** Problem: Die Netz-Knoten `ruecklauf_1/2` haben kein Bauteil (`docs/model-maengel.md` M02); NFT-Sammelrohr, Bypass und Beet-Sumpf-Pumpe haben kein Ziel, der Pool-Ruecklauf d110 keinen Anfang. Intent: S3 kann den Ruecklauf je Linie an einem Teil zusammenfuehren. Goal: eine Komponente mit Auslauf-Muffe d110 und Anschluessen nach Netz, Ports im Bibliotheksformat, Check gruen, Interferenz 0. Bau wie der Verteiler d50 (Formstueck-Koerper, ein Koerper), aber als Schwerkraft-Sammler: Zulaeufe oben als Klebemuffen, damit die Rohrenden direkt einstecken.
+
+**Funktion:** Sammelrohr d110 am Ende des Ruecklaufs einer Linie; Wasser fliesst zum Auslauf A (Fliessrichtung -X) und von dort mit Gefaelle >= 1 % in den Pool (K16/K32). Generator `scripts/workshop/leitung_w71.py`, Pruefung `scripts/workshop/check_lt_w71.py`.
+
+| Merkmal | Wert |
+|---|---|
+| Sammler | d110 x 5,2 (SDR 21 der Bibliothek), Innen-D 99,6, Aussen-D Koerper 121,5 (Formstueck), Laenge 530 |
+| Auslauf A | Muffe d110, Tiefe 61 (Rohr `lt_rohr_d110` steckt bis Anschlag) |
+| Ende | geschlossen, integrierte Kappe 10 mm (kein Port) |
+| Zulaeufe | 3 Muffen-Stutzen oben (Aussen od_f), Anschlag 5 mm ueber dem Koerper, Teilung 120 |
+| Abgang | Zapfen d50 nach unten, 50 mm Ueberstand (Zweitbecken, nur Linie 1) |
+| Werkstoff, Farbe | PVC-U (1,4 g/cm3), grau #8d9296 (Ruecklauf) |
+| Masse | 2 033 473 mm3 = 2,85 kg leer [E aus Volumen]; Wasser im Sammler ca. 3,6 l |
+
+**Ports** (Bauteil-KS, mm; Ursprung = Mitte der Muffenoeffnung A, Sammler-Achse +X):
+
+| Port | DN | Art | Lage x, y, z | Richtung | Netz-Kante | Soll Linie 1 / Linie 2 (l/min) |
+|---|---|---|---|---|---|---|
+| A Auslauf | DN100 (d110) | Muffe | 0, 0, 0 | -X | K16 / K32 | 102 / 110 |
+| Abgang 1 Zweitbecken | DN40 (d50) | Zapfen | 120, 0, -110,75 | -Z | K33 (nur Linie 1) | 5 / Kappe |
+| Zulauf 2 NFT | DN50 (d63) | Muffe | 240, 0, 103,25 | +Z | K15 / K31 | 38 / 38 |
+| Zulauf 3 Bypass | DN40 (d50) | Muffe | 360, 0, 96,75 | +Z | K13 / K29 | 14,5 / 17,5 |
+| Zulauf 4 Beet-Sumpf | DN32 (d40) | Muffe | 480, 0, 91,75 | +Z | K58 / K59 | 54,5 / 54,5 |
+
+Bilanz (aus `data/leitungsnetz.json`): Linie 1 Zulauf 107 minus Zweitbecken 5 = Auslauf 102; Linie 2 Zulauf 110 = Auslauf 110. Schwerkraft-Kapazitaet des Sammlers vollgefuellt bei 1 % Gefaelle (Manning, n = 0,009): rund 440 l/min, das Vierfache des groessten Auslaufs.
+
+**Verbindungen:** Klebemuffen nach DIN EN 1452, PVC-U-Kleber; der Abgang d50 nimmt in Linie 1 einen Kugelhahn d50 als Drossel (Teilstrom 5 l/min), in Linie 2 eine `lt_kappe_d50` (Kappenursprung = Zapfen-Unterkante plus Muffentiefe 31, Kappe zeigt nach -Z).
+
+**Herkunft:**
+
+| Merkmal | Wert | Herkunft | Konfidenz |
+|---|---|---|---|
+| Durchmesser der Anschluesse | d110, d63, d50, d40, d50 | `data/leitungsnetz.json` K13, K15, K16, K29, K31, K32, K33, K58, K59 (Python gelesen) | hoch |
+| Wand, Muffentiefe, Formstueck-Aussen | SDR 21 / EN 1452 gerundet | A, aus der Bibliothek | niedrig |
+| Teilung 120, Anschlag 5, Endkappe 10, Zapfen 50 | mm | A, wie Verteiler d50 | niedrig |
+| Abgang Zweitbecken unten | Teilstrom per Schwerkraft | A (Drossel mit Kugelhahn) | niedrig |
+
+**Montage (L4):** Sammler mit Gefaelle >= 1 % zum Auslauf auf Rohrschellen lagern (`lt_klemme_d110`); Rohr d110 zum Pool in Muffe A kleben; Zulaufrohre von oben bis Anschlag in die Muffen kleben; Abgang unten mit Kugelhahn d50 (Linie 1) bzw. Kappe d50 (Linie 2). Lage oberhalb des Wasserspiegels Z 515 (Netz K16). Alternative lokale Fertigung: Rohr d110 mit Klebe-T d110 und Reduzierungen d110/d63, d63/d50, d50/d40 zusammenkleben (Naeherung des Sonderteils).
+
+**Pruefung:** `python -X utf8 scripts/workshop/check_lt_w71.py` 38/38 PASS: ein Koerper, geschlossen, Masse, je Anschluss Muffe/Zapfen, Stutzen-Aussen, Anschlag, Bohrung; 5 Port-Stirnflaechen; Durchfluss-Bilanz beider Linien gegen das Netz; Schwerkraft-Kapazitaet; Luft zwischen den Anschluessen; Volumen gegen CSG-Raster 1 mm; Interferenz 0 mit Testrohren bis Anschlag in allen vier Muffen; Gegenprobe Testrohre 2 mm zu dick: 4 Kollisionen. `check_parts.py lt_sammler_d110` 22/22.
+
+**Offene Fragen:** (1) Artikel `lt_sammler_d110` fehlt in `data/katalog.json` und `data/stueckliste.json` (N-STUECKLISTE). (2) Netz-Knoten nennen `bauteil: lt_rohr` (Ruecklauf) bzw. `lt_verteiler`; die Montage setzt `lt_sammler_d110` und `lt_verteiler_d50` ein. (3) Hoehe des Sammlers gegen NFT-Rinnenende (Z ca. 1000) und Beet-Sumpf legt die Montage fest.

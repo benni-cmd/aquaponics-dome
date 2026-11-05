@@ -1218,6 +1218,15 @@
    "reihenfolge": 7.2,
    "wer": "Planer, Montage, Pruefer",
    "notiz": "Ben 05.11.: Technik gehoert nach innen, Wege kurz; Runde 74 stellte die Gruppe aussen auf. Planer bestimmt Platz innen (Gaenge, Brandlast Schrank), Montage verlegt um, Kennzahlen Rohrlaenge/Pumpenleistung vorher/nachher."
+  },
+  {
+   "id": "N-VERBINDER",
+   "titel": "Scherenknoten (Lochplatte, Schere mit Nasen, Rohr mit Gegenloechern) statt Kugelknoten (W74)",
+   "status": "laeuft",
+   "phase": "vor_zwischencheck",
+   "reihenfolge": 3.85,
+   "wer": "Recherche/Planer, Werkstatt, Pruefer, Ben-Abnahme, Montage",
+   "notiz": "Ablauf: (1) Recherche + Planer R56 und Blatt N-VERBINDER (laeuft, verbinder-schere); (2) Werkstatt baut Prototyp eines Knotens: Lochplatte, eine Schere, ein Rohrstueck mit zwei Gegenloechern, Nasen ausgefahren, Renders aus drei Richtungen plus Explosionsbild und Detailansicht im Viewer; (3) Pruefer vergleicht mit dem Foto reference/chemnitz/laschenknoten-foto.jpg; (4) Ben gibt frei; (5) Werkstatt Serie, Montage baut ein."
   }
  ]
 }

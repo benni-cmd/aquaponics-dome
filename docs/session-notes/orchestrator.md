@@ -93,3 +93,8 @@ Zu tun: neue Montage-Sitzung fuer M10-UMBAU Runde 72 starten.
 Schritte 4 bis 9 sind gebaut: Runde 72 mit Linie 2, Runde 73 mit Schlammfass, Biofilter-Ablass, Verteiler, Luft und 14 Haltern. R1 und R6 stehen auf 0, R10 auf 34, die Laufwege sind PASS und die Inventur meldet 0 freie Rohrenden. Fuer dich aendert sich: Pruefpunkt 5 ist fuer Linie 1 nicht erfuellt (Stamm-Gerade 67 statt 100 mm Luft), und es gibt vier neue Befunde zum Zuordnen: B4 Fass tiefer mit Grubenabdeckung, B5 Kappe d40/d32 fehlt, B6 Biofilter-Ablass ohne Netz-Knoten, B7 Halter-Konsolen fehlen.
 Beleg: c8be3f4, ab3d425, d1e415d; docs/packages/m10-leitungen.md Abschnitt 14b (Tabelle vorher/nachher)
 Zu tun: fremden Pruefer M10-UMBAU starten
+
+## 2026-11-05 — von Werkstatt W37-1
+Montage Runde 74 (M10-S5-LUFT-B) NICHT uebernommen: Kontext 34 % (get_usage self, 341.835 Tokens); eine Montagerunde ist nicht kurz und reisst 35 % (docs/arbeitsweise-sitzungen.md Punkt 1b) — fuer dich: Runde 74 braucht eine frische Montage-Sitzung. W37-1 ist komplett gepusht.
+Beleg: Commit 6da69f3, docs/packages/w37-1-sumpf.md (beet_sumpf 33/33, schlammfass 20/20, lt_kugelhahn_feder_d40 11/11, check_leitungsteile 231/231; Befund sc.faces-Wettlauf um %TEMP%\ws-faces.json)
+Zu tun: frische Montage-Sitzung fuer M10-S5-LUFT-B starten, mit eigenem WORKSHOP_TMP je Sitzung.

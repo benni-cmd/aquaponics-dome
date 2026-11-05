@@ -30,8 +30,8 @@
       ["^(fundamentanker|fundamentring|erdflaeche)$", "Fundament"],
       ["^(haut_.*|huelle_.*|tuer.*|keilschiene)$", "Huelle"],
       ["^(feinfilter|aktivkohle_station)$", "Filter"],
-      ["^(tank_.*|becken_.*|zweitbecken|pool_zentral|puffer_.*|pumpe_.*|zulaufrohr|schwimmerventil_pool)$", "Becken und Tanks"],
-      ["^(nft_.*|ibc_beet.*|pflanztisch|netztopf|salatkopf|winkelhalter)$", "Tische und Beete"],
+      ["^(tank_.*|becken_.*|zweitbecken|pool_zentral|puffer_.*|pumpe_.*|zulaufrohr|schwimmerventil_pool|schlammfass)$", "Becken und Tanks"],
+      ["^(nft_.*|ibc_beet.*|beet_sumpf|pflanztisch|netztopf|salatkopf|winkelhalter)$", "Tische und Beete"],
       ["^(lt_.*|luftverteiler_.*|geblaese_luft|luft_scheibenbelueftung)$", "Leitungen"],
       ["^(sonde_.*|halter_.*|schaltschrank|schrank_einfuehrung)$", "Messtechnik und Elektrik"],
       ["^(mensch_referenz.*)$", "Massfigur"]

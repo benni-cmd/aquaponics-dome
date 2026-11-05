@@ -123,7 +123,8 @@
         "Stahl Knoten",
         "Blech",
         "Stahl Pumpe",
-        "AK Konsole"
+        "AK Konsole",
+        "stahl_verzinkt"
       ],
       "pilot": true,
       "quelle": "docs/parts/tank.md, docs/parts/feinfilter.md (Stahl verzinkt, Dichte 7,85 g/cm3); steht nirgends im Wasser, daher kein Lebensmittelkontakt",
@@ -140,7 +141,10 @@
         "EPDM Feinfilter",
         "LT epdm",
         "LV EPDM",
-        "GL Fuss"
+        "GL Fuss",
+        "Schaumband EPDM",
+        "EPDM schwarz",
+        "EPDM Dichtband Zarge"
       ],
       "pilot": true,
       "quelle": "docs/parts/feinfilter.md (EPDM-Flachdichtung 3 mm, Dichte 1,1 g/cm3); Trinkwasser-/Lebensmitteleignung der konkreten Mischung offen",
@@ -377,7 +381,8 @@
       "lebensmittelkontakt": "ja",
       "konfidenz": "angenommen",
       "sc_material": [
-        "Beton"
+        "Beton",
+        "Beton C25"
       ],
       "pilot": false,
       "quelle": "Handbuchwert 2,4 g/cm3; Werkstoff des kleinen Drittbeckens laut Modell fraglich",
@@ -452,6 +457,92 @@
       ],
       "pilot": false,
       "quelle": "docs/parts/salatkopf.md: Bulk-Dichte 0,4 g/cm3 nur Näherung für die Gewichtsangabe; nicht kaufbar",
+      "marke": "[A]"
+    },
+    {
+      "id": "stahl_anker",
+      "name": "Stahl der Ankerteile (Oberflaeche offen)",
+      "norm": "EN 10025 (Baustahl) [A]",
+      "dichte_g_cm3": 7.85,
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Stahl Anker"
+      ],
+      "pilot": false,
+      "quelle": "N-DETAIL-W60 A4 (05.11.2026): Werkstoff der Teiledaten, vorher nur als .sc-Materialname gefuehrt (Fachwissen, nicht im Repo belegt)",
+      "marke": "[A]"
+    },
+    {
+      "id": "polycarbonat",
+      "name": "Polycarbonat (Haut-Paneel)",
+      "norm": "EN ISO 7391 (Polycarbonat-Formmassen) [A]",
+      "dichte_g_cm3": 1.2,
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Polycarbonat"
+      ],
+      "pilot": false,
+      "quelle": "N-DETAIL-W60 A4 (05.11.2026): Werkstoff der Teiledaten, vorher nur als .sc-Materialname gefuehrt (Fachwissen, nicht im Repo belegt)",
+      "marke": "[A]"
+    },
+    {
+      "id": "aluminium",
+      "name": "Aluminium (Profil, Kappe, Zarge)",
+      "norm": "EN 755 (Strangpressprofile) [A]",
+      "dichte_g_cm3": 2.7,
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Aluminium",
+        "Aluminium Keilschiene",
+        "Aluminium Zarge"
+      ],
+      "pilot": false,
+      "quelle": "N-DETAIL-W60 A4 (05.11.2026): Werkstoff der Teiledaten, vorher nur als .sc-Materialname gefuehrt (Fachwissen, nicht im Repo belegt)",
+      "marke": "[A]"
+    },
+    {
+      "id": "pe_folie",
+      "name": "PE-Folie (Huelle)",
+      "norm": "EN 13206 (Gewaechshausfolien) [A]",
+      "dichte_g_cm3": 0.92,
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "PE Folie"
+      ],
+      "pilot": false,
+      "quelle": "N-DETAIL-W60 A4 (05.11.2026): Werkstoff der Teiledaten, vorher nur als .sc-Materialname gefuehrt (Fachwissen, nicht im Repo belegt)",
+      "marke": "[A]"
+    },
+    {
+      "id": "federstahl",
+      "name": "Federstahl (Federdraht)",
+      "norm": "EN 10270 (Federstahldraht) [A]",
+      "dichte_g_cm3": 7.85,
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Federstahl Keilschiene"
+      ],
+      "pilot": false,
+      "quelle": "N-DETAIL-W60 A4 (05.11.2026): Werkstoff der Teiledaten, vorher nur als .sc-Materialname gefuehrt (Fachwissen, nicht im Repo belegt)",
+      "marke": "[A]"
+    },
+    {
+      "id": "tuerblatt_sandwich",
+      "name": "Tuerblatt als Sandwichplatte",
+      "norm": "keine, Aufbau laut Bauteilblatt Tuer [A]",
+      "dichte_g_cm3": 0,
+      "lebensmittelkontakt": "nein",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Tuerblatt Sandwich"
+      ],
+      "pilot": false,
+      "quelle": "N-DETAIL-W60 A4 (05.11.2026): Werkstoff der Teiledaten, vorher nur als .sc-Materialname gefuehrt (Fachwissen, nicht im Repo belegt)",
       "marke": "[A]"
     }
   ],

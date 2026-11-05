@@ -273,10 +273,30 @@ def classify(comp, b):
         return Art("BEH-ibc-1000l", "BEH", "IBC-Container 1000 l mit Gitterkaefig und Palette (Puffer)", "Stk", "a", "PE/Stahl/HDPE",
                    {"volumen_l": 1000}, teil_von=not base)
     # ---- Behaelter
-    if m == "PE Tank" and nl == "tank":
+    if m == "PE Tank" and (nl == "tank" or (comp == "schlammfass" and nl == "fass")):  # W37-1 Schlammfass 220 l
         return Art(f"BEH-tank-pe-{lnum(d[0])}x{lnum(d[2])}", "BEH", f"PE-Tank {lnum(d[0])} mm Durchm., {lnum(d[2])} mm hoch (Kegelboden/Absetzer)", "Stk", "a", "PE", {"bbox_mm": d})
     if m == "PE Tank" and nl == "deckel":
         return Art(f"BEH-tank-pe-{lnum(d[2])}-deckel", "BEH", f"PE-Tankdeckel {lnum(d[2])} mm", "Stk", "a", "PE", {})
+    if comp == "beet_sumpf" and m == "PE Tank" and nl == "schachtaufsatz":  # W37-1 T92, Aufsatz Oe 600 x 200 [A]
+        return Art("BEH-pe-schachtaufsatz-600x200", "BEH", "PE-Schachtaufsatz (Dom) Oe 600 x 200 mm fuer Tank [A]", "Stk", "a", "PE", {"bbox_mm": d})
+    if comp == "beet_sumpf":  # W37-1 T92: Pumpen, RSV, Schwimmer, Entlueftung, Verschraubung (Bauteilblatt beet_sumpf, Annahmen [A])
+        if nl.startswith("pumpe_"):
+            return Art("PMP-teichpumpe-5300", "PMP", "Teichpumpe 5300 l/h, 60 W, Hmax 2,8 m (Beet-Sumpf, Fabrikat offen) [A]", "Stk", "a", None, {})
+        if nl.startswith("rueckschlagventil_"):
+            return Art("ARM-rsv-d40", "ARM", "PVC-U-Rueckschlagventil d40", "Stk", "a", "PVC-U", {"groesse": "d40"})
+        if nl == "durchfuehrung_foerder":
+            return Art("ARM-bulkhead-d50", "ARM", "PVC-U-Bulkhead d50 (Tankverbinder, Tankdurchfuehrung)", "Stk", "a", "PVC-U", {"durchmesser_mm": 50})
+        if nl == "schwimmerstange":
+            dd = snap_d(d[0])
+            return Art(f"ROH-pvcu-d{dd}", "ROH", f"PVC-U-Druckrohr d{dd} (Meterware)", "m", "a", "PVC-U", {"durchmesser_mm": dd}, menge=d[2] / 1000.0)
+        if nl.startswith("schwimmer_"):
+            return Art("MES-schwimmerschalter", "MES", "Schwimmerschalter (Niveau AUS/EIN/ALARM, Fabrikat offen) [A]", "Stk", "a", None, {})
+        if nl == "entlueftung":
+            return Art("FIT-entlueftung-d32", "FIT", "Entlueftung d32 (PVC-U, mit Insektengitter-Kappe) [A]", "Stk", "a", "PVC-U", {"durchmesser_mm": 32})
+        if nl.startswith("kabelverschraubung_"):
+            return Art("ELE-kabelverschraubung-m25", "ELE", "Kabelverschraubung M25 (PA)", "Stk", "a", "PA", {})
+    if comp == "beet_sumpf" and nl == "zulauf_tankverbinder":  # Tankverbinder d50 durch die Tankwand (Bauteilblatt beet_sumpf)
+        return Art("ARM-bulkhead-d50", "ARM", "PVC-U-Bulkhead d50 (Tankverbinder, Tankdurchfuehrung)", "Stk", "a", "PVC-U", {"durchmesser_mm": 50})
     if m == "HDPE weiss" and nl == "wanne":
         return Art("BEH-ibc-beetwanne", "BEH", "IBC-Beetwanne HDPE (aus IBC geschnitten, Laenge je Beet)", "Stk", "b", "HDPE weiss", {"bbox_mm": d})
     if m == "PP grau" and nl == "siebboden":
@@ -576,7 +596,7 @@ def zuordnen(comp, b):
     if comp.startswith("lt_") and not bom_benennung.ist_unbenannt(b["name"]):
         return None, None  # eigene Behandlung
     nl = re.sub(r" \(\d+\)", "", (b["name"] or "").lower())
-    if bom_benennung.ist_unbenannt(b["name"]) or nl.startswith("schraube_"):
+    if bom_benennung.ist_unbenannt(b["name"]) or nl.startswith("schraube_") or re.match(r"(scheibe|mutter|anker_\d|querbolzen)", nl):  # W60 5a/N-STUECKLISTE 5a: Normteile benannt, Gestalt-Erkennung gilt weiter
         bn = bom_benennung.benenne(comp, b)
         if bn is None:
             return None, None  # ungeklaert -> check_bom meldet

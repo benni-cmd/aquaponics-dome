@@ -17,3 +17,5 @@ scripts/.compbox.json
 renders/photoreal/_input/
 renders/photoreal/_png/
 viewer/.export.lock
+viewer/dist/
+viewer/detail/*.obj

@@ -7,6 +7,7 @@
 <style>
   :root { --bg:#0f1720; --panel:#17212c; --line:#2a3846; --text:#e6edf3; --muted:#9fb0c0; --accent:#4cc38a; --hover:#ffc247; --sel:#4de1ff; }
   * { box-sizing: border-box; }
+  .statik .nur-live { display:none !important; }
   html, body { margin:0; height:100%; background:var(--bg); color:var(--text); font:13px/1.4 system-ui, sans-serif; overflow:hidden; }
   #view { position:fixed; inset:0; }
   #panel { position:fixed; top:10px; left:10px; width:330px; max-height:calc(100% - 20px); overflow:auto; background:var(--panel);
@@ -90,6 +91,27 @@
   #dlist .cat > .node { font-weight:600; } #dlist .node { align-items:flex-start; }
   #dlist .node .chev, #dlist .node .sw { margin-top:3px; }
 </style>
+<script>
+// Statischer Modus (N-VIEWER-HOSTING): scripts/viewer_dist.py schreibt <meta name="viewer-modus" content="statisch"> in dist/index.html.
+// Dann gibt es kein /api/*, keinen Export und kein Board; .obj kommt als .obj.gz (im Browser entpackt), Varianten-Dateien liegen unter festen Namen.
+(function () {
+  const m = document.querySelector('meta[name="viewer-modus"][content="statisch"]');
+  window.STATIK = !!m; if (!m) return;
+  document.documentElement.classList.add('statik');
+  const orig = window.fetch.bind(window);
+  const MAP = { 'system-specs.json': { ring_b2: 'system-specs-ring_b2.json' }, 'stueckliste.json': { ring_b2: 'stueckliste-ring_b2.json' } };
+  window.fetch = async function (url, opt) {
+    const [p0, q = ''] = String(url).split('?'); let p = p0.replace(/^\//, '');
+    if (/^api\//.test(p)) return new Response('{}', { status: 404 });
+    if (MAP[p]) p = MAP[p][new URLSearchParams(q).get('variante')] || p;
+    if (/\.obj$/.test(p)) {
+      const r = await orig(p + '.gz', opt); if (!r.ok || !r.body) return r;
+      return new Response(r.body.pipeThrough(new DecompressionStream('gzip')), { status: 200, headers: { 'Content-Type': 'text/plain' } });
+    }
+    return orig(p, opt);
+  };
+})();
+</script>
 <script type="importmap">
 { "imports": { "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
                "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
@@ -118,7 +140,7 @@
   </div>
   <div class="row">
     <button data-cam="iso">Ansicht ref-4</button><button data-cam="top">Oben</button>
-    <button data-cam="side">Seite</button><button data-cam="pool">Pool</button><button id="fpv">FPV</button> <a href="/history/" target="_blank" style="color:inherit">Bildverlauf</a>
+    <button data-cam="side">Seite</button><button data-cam="pool">Pool</button><button id="fpv">FPV</button> <a href="/history/" target="_blank" class="nur-live" style="color:inherit">Bildverlauf</a>
   </div>
   <div class="seg" id="ansicht" role="group" aria-label="Ansicht"><span>Ansicht:</span>
     <button type="button" data-ansicht="visuell" aria-pressed="true" title="Nach Werkstoff gefärbt, mit Menschfiguren">Visuell</button>
@@ -129,7 +151,7 @@
   <label class="opt" title="Markiert alle Halter und Sonden des Messstellenplans im Modell mit rosa Kugeln"><input type="checkbox" id="mess"> Messstellen zeigen</label>
   <label class="opt" title="Blendet die Plane (Hülle) aus"><input type="checkbox" id="plane" checked> Plane zeigen</label>
   <div class="row" style="align-items:center;flex-wrap:nowrap"><span style="color:var(--muted);font-size:12px;white-space:nowrap">Deckkraft Plane</span><input type="range" id="planeop" min="0" max="60" value="14" style="flex:1"><span id="planeopzahl" style="font-size:12px;min-width:34px;text-align:right"></span></div>
-  <label class="opt"><input type="checkbox" id="auto" checked> Auto-Update</label>
+  <label class="opt nur-live"><input type="checkbox" id="auto" checked> Auto-Update</label>
   <label class="opt" title="Schrauben, Scharniere, Klinken und andere Körper unter 15 cm Diagonale; werden erst beim Einschalten nachgeladen. Stutzen, Muffen und Hähne bleiben immer sichtbar."><input type="checkbox" id="klein"> Kleinteile unter 15 cm zeigen</label>
   <h2>Schnitt (Hoehe)</h2>
   <input type="range" id="clip" min="0" max="7000" value="7000">
@@ -139,8 +161,8 @@
   <div class="row"><button id="detailbtn" hidden>Detailansicht</button></div>
   <div id="tree"></div>
   <div id="perf" style="color:var(--muted);font-size:11px;margin-top:6px"></div>
-  <h2>Bauteil-Stand (Board)</h2>
-  <div id="board" style="font-size:12px"></div>
+  <h2 class="nur-live">Bauteil-Stand (Board)</h2>
+  <div id="board" class="nur-live" style="font-size:12px"></div>
 </div>
 <script type="module">
 import * as THREE from 'three';
@@ -837,7 +859,7 @@ async function varianteWechseln(neu) {
   variante = neu; try { localStorage.setItem('viewer.variante', variante); } catch (e) {}
   const u = new URL(location.href); u.searchParams.set('variante', variante); history.replaceState(null, '', u);
   varianteAnzeigen(); if (detail.on) closeDetail(); SL = null; ladeSpec();
-  try { const s = await fetch('/api/state?variante=' + variante + '&t=' + Date.now()).then(r => r.json()); version = s.version; } catch (e) {}
+  if (!window.STATIK) { try { const s = await fetch('/api/state?variante=' + variante + '&t=' + Date.now()).then(r => r.json()); version = s.version; } catch (e) {} }
   ladeGelungen = false; await load();
   if (!ladeGelungen) {                                       // Variante nicht exportiert: das alte Modell bleibt, Schalter und Etikett bleiben bei dem, was wirklich zu sehen ist
     variante = zurueck.v; version = zurueck.version; try { localStorage.setItem('viewer.variante', variante); } catch (e) {}
@@ -873,7 +895,11 @@ async function pollBoard() {
       `<div style="color:var(--muted);margin:0 0 3px 16px">${r.status.replace(/</g, '&lt;')}</div>`).join('');
   } catch (e) {}
 }
-setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard();
+if (window.STATIK) {                                        // statisch: kein Server, kein Export, kein Board; einmal laden
+  document.getElementById('status').textContent = 'Statische Ansicht (Stand des letzten Exports)';
+  fetch('statik.json').then(r => r.json()).then(s => { document.getElementById('status').textContent = `Statische Ansicht, Stand ${s.stand}`; if (!(s.varianten || []).includes('ring_b2')) document.querySelectorAll('[data-variante="ring_b2"]').forEach(b => { b.hidden = true; }); }).catch(() => {});
+  version = 1; load();
+} else { setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard(); }
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
 
 // ---- Detailansicht: Teileliste, Explosion, Infokarte (alles aus data/parts/<def>.json und detail/<def>.*; kein Bauteilname im Code) ----

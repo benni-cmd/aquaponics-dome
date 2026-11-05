@@ -1,127 +1,96 @@
 {
   "_hinweis": "N-STUECKLISTE Paket 2E (Huelle und Pflanzbereich, Typen FOL TOP GEW SON BET). Stand 2026-11-04, Zwischenstand Untergruppe 1 (Folie, Substrat, Biomedium, Dichtband, Siebgewebe, Netztopf). Preise brutto in EUR inkl. MwSt. (DE 19 %), ohne Versand ausser vermerkt. Konfidenz: Q = Seite selbst gelesen | Q-Treffer = nur Suchtreffer/Seite nicht abrufbar | E = gerechnet | A = angenommen. Kein Kauf, keine Anmeldung. UK-Angebote sind gekennzeichnet (UK als Europa OFFEN). Nacht-Regel: Pflanzgut, Fisch, Beton, Aushub nicht in der Liste.",
   "paket": "2E",
-  "stand": "2026-11-04",
+  "stand": "2026-11-05",
   "artikel": {
     "FOL-pe-plane": {
       "bezug_einheit": "m2",
       "angebote": [
         {
+          "preis_eur": 2.52,
+          "bezug_einheit": "m2",
+          "stand": "2026-11-05",
+          "haendler": "gekaho-shop.de, Gewaechshausfolie UV4 Standard ca. 200 my, Meterware",
+          "land": "DE",
+          "url": "https://gekaho-shop.de/gewaechshausfolien/hochbeet-folie/gewaechshausfolien-uv-4-standardfolie",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: ca. 200 my, UV-bestaendig (UV4), Breiten 1,5 bis 10 m. Regulaerer Preis 2,52 EUR/m2, Grundpreis 1,68 EUR/m2 inkl. MwSt (unklar, welcher gilt); unter 21 m2 2 EUR Schnittkosten je Stueck. Firmensitz nicht gelesen."
+        },
+        {
+          "preis_eur": 2.23,
+          "bezug_einheit": "m2",
+          "stand": "2026-11-05",
+          "haendler": "haga-welt.de, UV5-Folie 4 m breit",
+          "land": "DE",
+          "url": "https://haga-welt.de/en/products/uv5-film-in-various-widths-film-tunnel-greenhouse-film-hothouse-film",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: ca. 150 um (nicht 200), UV5 (mind. 5 Anbausaisons), 4 m breit 8,95 EUR je lfm = 2,23 EUR/m2, Rabatt 5 % ab 100 m, 10 % ab 200 m, 15 % ab 500 m. Sitz Elze (DE), EU-Versand nicht belegt."
+        },
+        {
           "preis_eur": 2.05,
           "bezug_einheit": "m2",
-          "stand": "2026-11-04",
-          "haendler": "Aquagart (auch OBI Marktplatz, Manomano, OTTO)",
+          "stand": "2026-11-05",
+          "haendler": "Aquagart UV5 4x20 m (billiger.de-Preisvergleich; OBI, OTTO, ManoMano)",
           "land": "DE",
-          "url": "https://www.billiger.de/pricelist/4320529950-aquagart-8m-gartenfolie-gewaechshausfolie-uv-5-fruehbeetfolie-treibhausfolie-8m-breit",
+          "url": "https://www.billiger.de/pricelist/4320529954-aquagart-20m-gartenfolie-gewaechshausfolie-uv-5-fruehbeetfolie-treibhausfolie-4m-breit",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "Rolle 8 m x 8 m = 131,30 EUR frei Haus (Preisvergleichsseite gelesen, Haendlerseite nicht). Dicke auf der Seite nicht genannt (Suchtreffer: 190 um), 200-um-Anforderung (R42) ungeprueft."
-        },
-        {
-          "preis_eur": 1.93,
-          "bezug_einheit": "m2",
-          "stand": "2026-10-31",
-          "haendler": "AGRIplus UV5 200 um (stretchfolie.eu / dm-folien.com)",
-          "land": "DE",
-          "url": "https://stretchfolie.eu",
-          "lieferung_de": "ja",
-          "konfidenz": "Q",
-          "bemerkung": "Auflage A3 (04.11.): Seite gelesen: Enzensberger GmbH (Telefon +49), Lieferungen innerhalb Deutschland versandkostenfrei; 200 um und UV5 stehen auf der Startseite nicht, nur laut R42. Aus R42 (gelesen am 31.10.): 1,62 EUR/m2 netto bei Zuschnitt = 1,93 brutto (E); ganze Rolle 10x25 m 179,50 netto = 0,86 brutto je m2. Heute nicht neu geoeffnet."
-        },
-        {
-          "preis_eur": 2.12,
-          "bezug_einheit": "m2",
-          "stand": "2026-10-31",
-          "haendler": "Lirsa Tristar (norhage.de)",
-          "land": "EU (laut R42)",
-          "url": "https://www.norhage.de",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "R42: 1,78 EUR/m2 netto = 2,12 brutto (E); Lieferzeit 1-3 Wochen."
-        },
-        {
-          "preis_eur": null,
-          "bezug_einheit": "m2",
-          "stand": "2026-11-04",
-          "haendler": "Folitec Folisol clear AF 200 um (Haupt-Produkt R42)",
-          "land": "DE",
-          "url": "https://www.folitec.de/gewaechshausfolien",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Seite heute nicht abrufbar (Zertifikatsfehler), Preis nur auf Anfrage. Kandidat, Anfrage noetig (DEINE HANDLUNG)."
+          "bemerkung": "Preisvergleichsseite gelesen 05.11.: 4x20 m UV5 164,30 EUR = 2,05 EUR/m2, meist versandfrei. Dicke auf der Seite nicht genannt (Galaxus-Suchtreffer: 190 um)."
         }
       ],
-      "empfehlung_grob_eur": 2.0,
-      "bemerkung": "Bedarf 1015,8 m2 laut Katalog (inkl. beide Lagen) -> grob 2000 EUR; Verschnitt aus R42 (16,7 bis 21,9 %) steckt in der Kaufmenge, nicht im Stueckpreis."
+      "empfehlung_grob_eur": 2.2,
+      "bemerkung": "Bedarf 1015,8 m2 laut Katalog (inkl. beide Lagen) -> grob 2000 EUR; Verschnitt aus R42 (16,7 bis 21,9 %) steckt in der Kaufmenge, nicht im Stueckpreis.",
+      "luecke": "OFFEN (Quelle): kein Angebot mit 200 um UND UV5 belegt (gekaho 200 um nur UV4, haga UV5 nur 150 um, Aquagart Dicke unbelegt); alte Links stretchfolie.eu und norhage.de zeigten nur Startseiten und sind entfernt (05.11.). OFFEN (Ben): Mass Dicke 150 um (UV5) statt 200 um? Preis gekaho 1,68 oder 2,52 EUR/m2 beim Haendler klaeren."
     },
     "TOP-blaehton": {
       "bezug_einheit": "m3",
       "angebote": [
         {
-          "preis_eur": 618,
+          "preis_eur": 314,
           "bezug_einheit": "m3",
-          "stand": "2026-11-04",
-          "haendler": "OSCAR.ehandel (eBay.de), Plagron Euro Pebbles 8-16 mm",
+          "stand": "2026-11-05",
+          "haendler": "natursteinzentrum-rm.de, Lecaton Blaehton 8-16 mm Big Bag 1,5 m3",
           "land": "DE",
-          "url": "https://www.ebay.de/p/1646269961",
+          "url": "https://www.natursteinzentrum-rm.de/Lecaton-8-16-mm-im-Big-Bag/Lvton8-16-1-5",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "45 l = 27,80 EUR, Versand frei; umgerechnet 618 EUR/m3 (E). Sackware, fuer 7,5 m3 zu teuer."
+          "bemerkung": "Seite gelesen 05.11.: 471,00 EUR brutto je Big Bag 1,5 m3 zzgl. Versand = ca. 314 EUR/m3; Seite nennt \"1 Tonne\" (passt nicht zu 1,5 m3, beim Haendler klaeren); nur 1 auf Lager; Hydrokultur-Substrat, keine Wasserqualitaetsangabe."
         },
         {
-          "preis_eur": 330,
+          "preis_eur": 528,
           "bezug_einheit": "m3",
-          "stand": "2026-11-04",
-          "haendler": "Baumarkt/Haendler 80-l-Sack (Suchtreffer)",
+          "stand": "2026-11-05",
+          "haendler": "kiesdirekt.de, Keramsit 8-16 mm Big Bag 500 l",
           "land": "DE",
-          "url": "https://www.kaufland.de/product/533277187/",
+          "url": "https://www.kiesdirekt.de/p/blaehton-8-16-mm-keramsit-1073.asp",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "80 l = 26,29 bis 29,48 EUR (Suchausschnitt), 330 bis 370 EUR/m3 (E)."
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: ab 264,00 EUR inkl. Lieferung und MwSt je 500 l (PLZ-abhaengig) = ca. 528 EUR/m3."
         },
         {
-          "preis_eur": null,
+          "preis_eur": 424,
           "bezug_einheit": "m3",
-          "stand": "2026-11-04",
-          "haendler": "baustoffshop.de Conluto Blaehton-Leichtlehm Big Bag 1000 kg",
+          "stand": "2026-11-05",
+          "haendler": "kiesundco.de, Hamann Blaehton 8-16 mm 800 l (40 Saecke)",
           "land": "DE",
-          "url": "https://www.baustoffshop.de/conluto-blahton-leichtlehm-1000-kg-bigbag-n129-00004-grp.html",
+          "url": "https://www.kiesundco.de/hamann-blaeaehton-8-16-mm-800-l",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Big-Bag-Weg fuer 7,5 m3; Preis und Korngroesse 8-16 nicht gelesen. Ansatz Grosspartie 100 bis 200 EUR/m3 ist A."
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: 339,00 EUR brutto zzgl. Versand je 800 l = ca. 424 EUR/m3; Spedition 4-6 Werktage."
         }
       ],
-      "empfehlung_grob_eur": 330,
-      "bemerkung": "Bedarf 7,52 m3 -> Sackware ca. 2500 EUR, Big Bag/Palette vermutlich ca. 1000 EUR (A). Anfrage beim Blaehton-Hersteller (Liapor, Leca) noetig."
+      "empfehlung_grob_eur": 424,
+      "bemerkung": "Bedarf 7,52 m3 -> Sackware ca. 2500 EUR, Big Bag/Palette vermutlich ca. 1000 EUR (A). Anfrage beim Blaehton-Hersteller (Liapor, Leca) noetig.",
+      "luecke": "bestaetigt/ersetzt: drei DE-Angebote gelesen; Eignung Wasserkontakt nicht belegt (Blaehton, inert)."
     },
     "TOP-biomedium": {
       "bezug_einheit": "m3",
-      "angebote": [
-        {
-          "preis_eur": 1200,
-          "bezug_einheit": "m3",
-          "stand": "2026-11-04",
-          "haendler": "Wiltec, Unique Koi K1 Media 50 l",
-          "land": "DE",
-          "url": "https://wiltec.de/en/unique-koi-k1-media-50l-4-paths-moving-bed-filtermedium-media-beads/7050058",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "59,99 EUR je 50 l (Suchausschnitt) = 1200 EUR/m3 (E); Seite beim Abruf 404, Suchausschnitt meldet nicht mehr lieferbar."
-        },
-        {
-          "preis_eur": 1900,
-          "bezug_einheit": "m3",
-          "stand": "2026-11-04",
-          "haendler": "Absolute Koi (UK), Evolution Aqua K1 50 l",
-          "land": "UK",
-          "url": "https://absolute-koi.com/prod2430.html",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "UK, Europa-Status OFFEN. 74,95 GBP je 50 l, ca. 1900 EUR/m3 (E, Kurs A 1,27). Zweites UK-Angebot Pondkeeper 85,95 GBP."
-        }
-      ],
+      "angebote": [],
       "empfehlung_grob_eur": 1200,
-      "bemerkung": "Bedarf 1,29 m3 -> ca. 1500 EUR (E). Medienart (K1 oder anderes) ist im Modell nicht festgelegt; Annahme K1."
+      "bemerkung": "Bedarf 1,29 m3 -> ca. 1500 EUR (E). Medienart (K1 oder anderes) ist im Modell nicht festgelegt; Annahme K1.",
+      "luecke": "OFFEN (Quelle): kein EU-Haendler mit lieferbarem K1-Biomedium je m3 gefunden (05.11.); Wiltec-Seite ist 404, Absolute Koi ist UK (Europa-Status OFFEN, D76). Naechster Schritt: Anfrage bei DE/NL/AT-Haendler fuer Teich-/Abwassertechnik."
     },
     "FOL-epdm-schaumband": {
       "bezug_einheit": "m",
@@ -136,97 +105,44 @@
           "lieferung_de": "ja",
           "konfidenz": "Q-Treffer",
           "bemerkung": "22,87 EUR je 10 m (Suchausschnitt), Netto/Brutto unklar, derzeit nicht auf Lager; Seite beim Abruf 403."
-        },
-        {
-          "preis_eur": 0.5,
-          "bezug_einheit": "m",
-          "stand": "2026-11-04",
-          "haendler": "Fugendichtband24 / eBay-Haendler (EPDM Zellkautschuk selbstklebend, 15x2 mm 10 m = 5,15 EUR)",
-          "land": "DE",
-          "url": "https://www.ebay.de/p/1258844086",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Ersatzmass 15x2; 25x3 bei eBay-Haendlern nur 1-5 m Stuecke (Preis nicht gelesen)."
         }
       ],
       "empfehlung_grob_eur": 2.3,
-      "bemerkung": "Mass 25x3 nur ueber Buerklin belegt; Bedarf im Katalog 0 (keilschiene ohne Instanz im Modell)."
+      "bemerkung": "Mass 25x3 nur ueber Buerklin belegt; Bedarf im Katalog 0 (keilschiene ohne Instanz im Modell).",
+      "luecke": "OFFEN (Quelle): nur Buerklin (Suchtreffer, Seite 403, nicht lagernd); Ahlsell SE (gelesen) Cellgummi EPDM 3x25 mm x 10 m selbstklebend, Preis nur nach Login, Lieferung nach DE unklar. Alter eBay-Link (15x2, VERDACHT) entfernt."
     },
     "FOL-epdm-dichtband-zarge": {
       "bezug_einheit": "m",
-      "angebote": [
-        {
-          "preis_eur": 0.5,
-          "bezug_einheit": "m",
-          "stand": "2026-11-04",
-          "haendler": "Steinbach & Vollmann (stuv.de), EPDM-Zellkautschuk selbstklebend",
-          "land": "DE",
-          "url": "https://stuv.de/api/de-DE/datasheet/V07800940",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Datenblatt erscheint in Suche (aus W40-BEET Nachtrag bekannt); Preis nicht gelesen. 0,5 EUR/m ist A nach Vergleich 15x2 bei Fugendichtband24."
-        },
-        {
-          "preis_eur": 0.5,
-          "bezug_einheit": "m",
-          "stand": "2026-11-04",
-          "haendler": "Fugendichtband24 (15x2 mm, 10 m = 5,15 EUR)",
-          "land": "DE",
-          "url": "https://www.ebay.de/p/1258844086",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Ersatzmass."
-        }
-      ],
+      "angebote": [],
       "empfehlung_grob_eur": 1.0,
-      "bemerkung": "Mass fuer Zarge nicht festgelegt (W40-BEET: Maß offen). Gleiche Quellen gelten fuer FOL-epdm-tuerdichtung."
+      "bemerkung": "Mass fuer Zarge nicht festgelegt (W40-BEET: Maß offen). Gleiche Quellen gelten fuer FOL-epdm-tuerdichtung.",
+      "luecke": "OFFEN (Quelle): Mass der Zarge nicht festgelegt (W40-BEET); keine Produktseite geoeffnet (stuv.de Timeout, eBay-Ersatzmass 15x2 entfernt). OFFEN (Ben): Mass Dichtband festlegen."
     },
     "FOL-epdm-tuerdichtung": {
       "bezug_einheit": "m",
       "angebote": [
         {
-          "preis_eur": 1.5,
+          "preis_eur": 1.64,
           "bezug_einheit": "m",
-          "stand": "2026-11-04",
-          "haendler": "wie FOL-epdm-dichtband-zarge (stuv.de, Fugendichtband24)",
+          "stand": "2026-11-05",
+          "haendler": "graf-dichtungen.de, Klebedichtung F2465 EPDM P-Profil 5x8 mm",
           "land": "DE",
-          "url": "https://stuv.de/api/de-DE/datasheet/V07700400",
+          "url": "https://www.graf-dichtungen.de/pdfdatasheet/59544667a10f4f4aa2186a236edc010c",
           "lieferung_de": "ja",
-          "konfidenz": "A",
-          "bemerkung": "Profil unbekannt; Preis angenommen, nicht belegt."
+          "konfidenz": "Q",
+          "bemerkung": "Datenblatt gelesen 05.11.: EPDM, P-Profil 5x8 mm, 1 Hohlkammer, selbstklebend, Spaltbreite 3-5 mm, 1,64 EUR/m inkl. MwSt zzgl. Versand."
         }
       ],
-      "empfehlung_grob_eur": 1.5,
-      "bemerkung": "Offen: Profilart (Lippen-/Hohlkammerprofil) vor Preis klaeren."
+      "empfehlung_grob_eur": 1.64,
+      "bemerkung": "Offen: Profilart (Lippen-/Hohlkammerprofil) vor Preis klaeren.",
+      "luecke": "OFFEN (Quelle): zweite unabhaengige Quelle nicht geoeffnet (RS 403); Eignung des Profils fuer die Tuerspaltbreite ungeprueft. Alter stuv.de-Link (Timeout) entfernt."
     },
     "GEW-v2a-100um": {
       "bezug_einheit": "m2",
-      "angebote": [
-        {
-          "preis_eur": 39,
-          "bezug_einheit": "m2",
-          "stand": "2026-11-04",
-          "haendler": "eBay.de-Haendler Edelstahl-Filtergewebe 150 um (200x60 cm = 47 EUR; 75 um = 52 EUR)",
-          "land": "DE",
-          "url": "https://www.ebay.de/p/1257460901",
-          "lieferung_de": "ja",
-          "konfidenz": "E",
-          "bemerkung": "Auflage A1 (04.11.): Seite zeigt nur 25-um-Gewebe, ausverkauft, kein 100-um-Angebot belegt; Preis gerechnet, nicht gelesen. Preis fuer 150 um und 75 um aus Suchausschnitt, 100 um nicht gelistet; 100 um in dieser Spanne interpoliert: ca. 40 bis 45 EUR/m2 (E)."
-        },
-        {
-          "preis_eur": null,
-          "bezug_einheit": "m2",
-          "stand": "2026-10-31",
-          "haendler": "Metallwaren-Riffert (AT), MW-0,10 1.4301 Leinwand",
-          "land": "AT",
-          "url": "https://www.metallwaren-riffert.at/siebgewebe.htm",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Aus R52; Seite heute nicht erneut geoeffnet; Preis nicht bekannt. Zweiter Kandidat Beissermetall (DE, auf Anfrage)."
-        }
-      ],
+      "angebote": [],
       "empfehlung_grob_eur": 42,
-      "bemerkung": "Bedarf 2,02 m2 (Flaeche geschaetzt) -> ca. 90 EUR (E)."
+      "bemerkung": "Bedarf 2,02 m2 (Flaeche geschaetzt) -> ca. 90 EUR (E).",
+      "luecke": "OFFEN (Quelle): Maschenweite 100 um in 1.4301 belegt (laborsieb.de, rotec-berlin.de), aber kein Preis (nur auf Anfrage); Drahtstaerke (0,050/0,065/0,071 mm) festlegen. Alter eBay-Link zeigte 25-um-Gewebe, entfernt (05.11.)."
     },
     "TOP-netztopf-64": {
       "bezug_einheit": "Stk",
@@ -244,200 +160,162 @@
         }
       ],
       "empfehlung_grob_eur": 0.15,
-      "bemerkung": "OFFEN: 64 mm vs 2-Zoll-Marktware (50 bis 60 mm) im Modell pruefen (ICH/Planer); Bedarf 2222 Stk -> grob 330 EUR (A)."
+      "bemerkung": "OFFEN: 64 mm vs 2-Zoll-Marktware (50 bis 60 mm) im Modell pruefen (ICH/Planer); Bedarf 2222 Stk -> grob 330 EUR (A).",
+      "luecke": "OFFEN (Quelle): kein 64-mm-Netztopf aus PP in EU gefunden (05.11.). OFFEN (Ben): Mass 2 Zoll (ca. 50 mm) statt 64 mm; gelesen: pevgrow.com (ES) 50/55 mm 0,25 EUR, grow-guru.com (DE) 50 mm oben 0,24 EUR, ohne Staffelpreis, Material PP nicht belegt. Fuer 2222 Stk Anfrage beim Grosshaendler."
     },
     "SON-polycarbonat-paneel": {
       "bezug_einheit": "m2",
       "angebote": [
         {
-          "preis_eur": 10.5,
+          "preis_eur": 14.72,
           "bezug_einheit": "m2",
-          "stand": "2026-11-04",
-          "haendler": "Voelkner (Sonnewelt, 10er-Pack 8 mm Doppelsteg 121x60,5 cm = 7,32 m2)",
+          "stand": "2026-11-05",
+          "haendler": "polycarbonatstore.de, Doppelstegplatte 8 mm klar (SUNLITE)",
           "land": "DE",
-          "url": "https://www.voelkner.de/products/13260401/10x-Doppelstegplatten-8mm-Zuschneidbar-121x60-5cm-Polycarbonat-7-32m-UV-bestaendig-Klar-Hohlkammerplatten-Gewaechshaus-Platten-Stegplatten.html",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Suchausschnitt: 76,99 EUR inkl. MwSt. frei Haus = 10,5 EUR/m2 (E). Seite selbst geoeffnet: Material und Mass bestaetigt, aber AUSVERKAUFT, Preis nicht lesbar."
+          "url": "https://polycarbonatstore.de/product/doppelstegplatte-8-mm-klar/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: 14,72 EUR/m2, Breiten 1050/2100 mm; Seite nennt an einer Stelle \"6 mm\" (Widerspruch), Haendlerort nicht gelesen."
         },
         {
-          "preis_eur": 13.7,
+          "preis_eur": 16.03,
           "bezug_einheit": "m2",
-          "stand": "2026-11-04",
-          "haendler": "Kaufland.at, 10er-Pack 8 mm, 7,3 m2",
-          "land": "AT",
-          "url": "https://www.kaufland.at/product/523405227/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "99,99 EUR laut Suchausschnitt = 13,7 EUR/m2 (E); Lieferung nach DE ungeklaert."
+          "stand": "2026-11-05",
+          "haendler": "stegplattenguru.de, MARLON ST 8 mm farblos",
+          "land": "DE",
+          "url": "https://stegplattenguru.de/polycarbonat-doppelstegplatte-hohlkammerplatte-8-mm-farblos/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: 16,03 EUR/m2, Lager Wesel (DE), 4-14 Werktage; Tabelle widerspruechlich (\"6 mm\", zwei U-Werte)."
+        },
+        {
+          "preis_eur": 17.95,
+          "bezug_einheit": "m2",
+          "stand": "2026-11-05",
+          "haendler": "stegplatten-fachmarkt.de, Stegplatte 8 mm klar 2100 mm breit",
+          "land": "DE",
+          "url": "https://www.stegplatten-fachmarkt.de/stegplatten-aus-polycarbonat/stegplatten-8-mm/transparent-klar/stegplatten-8-mm-transparent-klar-2100-mm-breit.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: 17,95 EUR/m2 inkl. MwSt zzgl. Versand, Easytec GmbH Luenen (DE), 8-10 Tage."
         }
       ],
-      "empfehlung_grob_eur": 12.0,
-      "bemerkung": "Stueckpreis je m2; Bedarf im Katalog 0 (Felder ohne Instanz), Kaufmenge nach Zuschnitt noch offen. Kleinformat 121x60,5 cm pruefen gegen Feldgroesse."
+      "empfehlung_grob_eur": 15,
+      "bemerkung": "Stueckpreis je m2; Bedarf im Katalog 0 (Felder ohne Instanz), Kaufmenge nach Zuschnitt noch offen. Kleinformat 121x60,5 cm pruefen gegen Feldgroesse.",
+      "luecke": "ersetzt: drei DE-Haendler gelesen (Voelkner ausverkauft, Kaufland.at entfernt)."
     },
     "SON-tuerblatt-1000x2000": {
       "bezug_einheit": "Stk",
       "angebote": [
         {
-          "preis_eur": 895,
+          "preis_eur": 749,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Haendler laut wogibtswas.at: Alu/PVC-Haustuer Smart A400 1000x2100 RC2 inkl. Beschlag",
-          "land": "AT",
-          "url": "https://wogibtswas.at/ta/gigaset-a400",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Komplette Haustuer, nicht nur Blatt; Mass 1000x2100 statt 2000, Mittellage 50 mm."
-        },
-        {
-          "preis_eur": 1558,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "vidaXL ueber Voelkner, Haustuer Alu/PVC 100x200 cm, Sandwich-Styropor",
+          "stand": "2026-11-05",
+          "haendler": "garagenonline.eu, Nebeneingangstuer Stahl nach Mass (Sandwichpaneel 40 mm)",
           "land": "DE",
-          "url": "https://www.voelkner.de/products/6935006/vidaXL-Haustuer-Aluminium-und-PVC-Anthrazit-100x200-cm.html",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Preis 1557,99 EUR nur im Suchausschnitt; Seite selbst geoeffnet: ausverkauft, kein Preis. Masse 100x200 passen."
+          "url": "https://www.garagenonline.eu/onlineshop/nebeneingangsturen/nebeneingangstur-stahl-nach-mass-aus-iso-40-sektionaltor-sandwichpaneelen",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: KOMPLETTE Tuer (Zarge, Blatt, Baender, Schloss), 40-mm-Sandwichpaneel, 1000x2000 im Konfigurator, ab 749 EUR (brutto/netto nicht genannt), Lieferung DE/AT 4-10 Wochen."
         }
       ],
-      "empfehlung_grob_eur": 900,
-      "bemerkung": "Katalog fordert nur das Blatt 40 mm; Markt liefert komplette Tueren (Blatt + Rahmen). Planer klaeren: Kompletttür statt Blatt + Scharnier + Druecker? Dann entfallen SON-tuerscharnier und SON-tuerdruecker als eigene Zeilen."
+      "empfehlung_grob_eur": 749,
+      "bemerkung": "Katalog fordert nur das Blatt 40 mm; Markt liefert komplette Tueren (Blatt + Rahmen). Planer klaeren: Kompletttür statt Blatt + Scharnier + Druecker? Dann entfallen SON-tuerscharnier und SON-tuerdruecker als eigene Zeilen.",
+      "luecke": "OFFEN (Quelle): zweite geoeffnete Quelle fehlt; Einzelblatt Domoferm UT401 1000x2000 nur als Suchtreffer (schreinersache.de 516,86 EUR, Seiten 403), Aussentauglichkeit ungeprueft. OFFEN (Ben): Kompletttuer statt Blatt+Scharnier+Druecker. Alte Links (Gigaset-Seite, vidaXL ausverkauft) entfernt."
     },
     "SON-spannverschluss-edelstahl": {
       "bezug_einheit": "Stk",
       "angebote": [
         {
-          "preis_eur": 17,
+          "preis_eur": 23.03,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Leschhorn (Ganter GN 927.5 Edelstahl-Exzenterspanner)",
+          "stand": "2026-11-05",
+          "haendler": "schraubbar.de, Ganter GN 927.7 Edelstahl-Exzenterspanner",
           "land": "DE",
-          "url": "https://www.leschhorn.de/de/detail/019973833f1e72bea1d0945048de1908",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Seite geoeffnet: Produkt Ganter 927.7-101-M8-25-A Edelstahl, Preis auf der Seite nicht lesbar. Suchausschnitt: ca. 11 bis 37 EUR/Stk je Typ. Werkstoff A2 nicht belegt, netto/brutto unklar."
+          "url": "https://www.schraubbar.de/de/edelstahl-exzenterspanner-mit-schraube-59555.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: ab 23,03 EUR inkl. MwSt zzgl. Versand, 3-4 Tage; Werkstoffe Hebel 1.4308, Achse/Schrauben 1.4305, Scheiben 1.4057 (A2 nicht ausdruecklich)."
         },
         {
-          "preis_eur": 7.6,
+          "preis_eur": null,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Leschhorn, Ganter GN 927.4 (Zinkdruckguss-Hebel, Edelstahlschraube)",
-          "land": "DE",
-          "url": "https://www.leschhorn.de/de/detail/0199737dc29e7203bb609b5039ef8247",
+          "stand": "2026-11-05",
+          "haendler": "elesa-ganter.at, GN 927.7 Edelstahl-Exzenterspanner",
+          "land": "AT",
+          "url": "https://www.elesa-ganter.at/de/aut/Klemmhebel-Spannhebel--Edelstahl-Exzenterspanner--GN-9277",
           "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Guenstigere Variante, nicht voll Edelstahl; nur Suchausschnitt."
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: gleiche Werkstoffe, kein Preis, Lieferung nach DE ueber ganternorm.com ungeklaert."
         }
       ],
-      "empfehlung_grob_eur": 17,
-      "bemerkung": "Bedarf 8 Stk -> ca. 140 EUR (E). Ein einziger Haendler (Leschhorn); zweites unabhaengiges Angebot fehlt (Misumi, Hahn+Kolb nicht geprueft)."
+      "empfehlung_grob_eur": 23.03,
+      "bemerkung": "Bedarf 8 Stk -> ca. 140 EUR (E). Ein einziger Haendler (Leschhorn); zweites unabhaengiges Angebot fehlt (Misumi, Hahn+Kolb nicht geprueft).",
+      "luecke": "OFFEN (Quelle): Werkstoffguete A2 nicht belegt (1.4308/1.4305); Produkt und Mass durch zwei Seiten gelesen."
     },
     "SON-federdraht-d2": {
       "bezug_einheit": "m",
-      "angebote": [
-        {
-          "preis_eur": 1.3,
-          "bezug_einheit": "m",
-          "stand": "2026-11-04",
-          "haendler": "eBay.de-Haendler, 304 Edelstahl-Federdraht 0,4 bis 2,0 mm, 1/5/10 m",
-          "land": "DE",
-          "url": "https://www.ebay.de/itm/388621401549",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "A",
-          "bemerkung": "Auflage A1 (04.11.): eBay antwortet auf Abruf mit 403, Preis nicht pruefbar (A), Durchmesser 2 mm nicht belegt. 1,29 EUR laut Suchausschnitt, Preis je Laenge/Durchmesser nicht aufgeloest."
-        },
-        {
-          "preis_eur": 1.0,
-          "bezug_einheit": "m",
-          "stand": "2026-11-04",
-          "haendler": "eBay.de-Haendler 267458417642, 304 Edelstahl-Federstahldraht bis 2,0 mm",
-          "land": "DE",
-          "url": "https://www.ebay.de/itm/267458417642",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "A",
-          "bemerkung": "Auflage A1 (04.11.): eBay antwortet auf Abruf mit 403, Preis nicht pruefbar (A), Durchmesser 2 mm nicht belegt. Preis nicht gelesen; 1 EUR/m ist A."
-        }
-      ],
+      "angebote": [],
       "empfehlung_grob_eur": 1.5,
-      "bemerkung": "Werkstoff im Katalog Federstahl (nicht rostfrei); Treffer sind 304 Edelstahl. Bedarf im Katalog 0."
+      "bemerkung": "Werkstoff im Katalog Federstahl (nicht rostfrei); Treffer sind 304 Edelstahl. Bedarf im Katalog 0.",
+      "luecke": "OFFEN (Quelle): kein Preis fuer 2 mm Federdraht aus geoeffneter Seite (05.11.); gelesen: stahlbecker.de und nobitschek.de fuehren 1.4310 2,00 mm ohne Preis, pianelli.de Klaviersaite nur bis 1,7 mm. Suchtreffer wires-online.com 1.4310 2 mm ca. 134 EUR/105 m. Alte eBay-Links (403, 304-Edelstahl statt Federstahl) entfernt."
     },
     "SON-pp-stuetze-60x60": {
       "bezug_einheit": "Stk",
-      "angebote": [
-        {
-          "preis_eur": null,
-          "bezug_einheit": "m",
-          "stand": "2026-11-04",
-          "haendler": "keiner belegt (PP-Vierkant 60x60 nicht gefunden; Rundstab RS PRO PP 50 mm bei Distrelec)",
-          "land": "CH",
-          "url": "https://www.distrelec.ch/de/stab-polypropylen-pp-910kg-1m-grau-rs-pro-3136326/p/30414305",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "CH, nicht EU; Preis nicht gelesen, Profil passt nicht. Naechster Weg: Kunststoff-Zuschnitt-Shop (Gutekunst, Kunststoffplattenshop) fuer PP-Platte/Block 60 mm, Zuschnitt auf Beethoehe."
-        }
-      ],
+      "angebote": [],
       "empfehlung_grob_eur": 6.0,
-      "bemerkung": "Preis 6 EUR/Stk nur A (grob 0,5 kg PP je Stuetze); 282 Stk -> ca. 1700 EUR (A). OFFEN: Quelle fehlt."
+      "bemerkung": "Preis 6 EUR/Stk nur A (grob 0,5 kg PP je Stuetze); 282 Stk -> ca. 1700 EUR (A). OFFEN: Quelle fehlt.",
+      "luecke": "OFFEN (Quelle): kein PP-Vierkant 60x60 gefunden (05.11.); gelesen: plastx24.de PP-Rundstab d60 1 m 27,00 EUR netto. Alternativen: Rundstab d60 oder 60-mm-PP-Platte als Streifen; Preisanfrage noetig. Alter Distrelec-CH-Link (Rundstab 50 mm, CH) entfernt."
     },
     "FOL-epdm-dichtung-630x440": {
       "bezug_einheit": "Stk",
       "angebote": [
         {
-          "preis_eur": 33,
+          "preis_eur": 4.23,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "RS Components Deutschland, EPDM-Matte 3 mm, 1,2 m x 600 mm (zuschneiden)",
+          "stand": "2026-11-05",
+          "haendler": "diconfa.de, EPDM-Matte nach Mass 3 mm 630x440",
           "land": "DE",
-          "url": "https://de.rs-online.com/web/p/gummimatten/5063214",
+          "url": "https://diconfa.de/en/epdm-rubber-mat-made-to-measure/",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "95,72 EUR brutto je Matte (Suchausschnitt, Seite 403): Matte 1200x600 liefert ca. 2 Dichtungen 630x440 bei Zuschnitt -> ca. 48 EUR je Dichtung; mit 10-m-Rolle (ca. 578 EUR brutto, 14 m2) ca. 6 EUR je Dichtung bei grosser Menge (E). 33 EUR ist Mittelwert A."
-        },
-        {
-          "preis_eur": null,
-          "bezug_einheit": "m2",
-          "stand": "2026-11-04",
-          "haendler": "ehorst.de Ites Gummiplatte 3 mm 1,4 x 10 m (EPDM/SBR)",
-          "land": "DE",
-          "url": "https://www.ehorst.de/en/Gummiplatte-BxL-1-4x10-m-D-3-mm-schwarz-ohne-Einlage-Ites-1403330.html",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Preis nicht gelesen; Mischung EPDM/SBR, nicht rein EPDM."
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: EPDM schwarz, UV-/witterungsbestaendig, 3 mm, 630x440 mm = 4,23 EUR/Stk inkl. MwSt zzgl. 4,90 EUR Versand (frei ab 20 EUR); DE-Haendler."
         }
       ],
-      "empfehlung_grob_eur": 25,
-      "bemerkung": "Bedarf 2 Stk. Einzelstueck am besten aus Zuschnitt beim Kautschukhaendler."
+      "empfehlung_grob_eur": 4.23,
+      "bemerkung": "Bedarf 2 Stk. Einzelstueck am besten aus Zuschnitt beim Kautschukhaendler.",
+      "luecke": "OFFEN (Quelle): zweite unabhaengige Quelle fehlt (RS 403, ehorst nur EPDM/SBR ohne Preis)."
     },
     "SON-korbgriff-v2a": {
       "bezug_einheit": "Stk",
       "angebote": [
         {
-          "preis_eur": 10.2,
+          "preis_eur": 13.24,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "toolteam.com, Halder 24310.0710 Buegelgriff d12x125 rostfrei",
+          "stand": "2026-11-05",
+          "haendler": "profishop.de, Ganter GN 425-NI-12-160-GS Buegelgriff (VE 10)",
           "land": "DE",
-          "url": "https://toolteam.com/en-GB/halder-normalien-buegelgriff-o-12-x-125-rostfreier-stahl-24310-0710-t-997832-4030618269892.html",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "8,61 EUR netto laut Suchausschnitt = 10,2 brutto (E); Seite nicht geoeffnet; Mass 125 statt 160 mm."
+          "url": "https://www.profishop.de/p/ganter-edelstahl-buegelgriffe-gn-425-ni-12-160-gs-ve-10-stueck-425-ni-12-160-gs",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: Laenge 160, d12, Edelstahl (Guete nicht genannt), nur 10er-Pack 132,38 EUR brutto, versandfrei, 3-5 Werktage."
         },
         {
-          "preis_eur": 32.93,
+          "preis_eur": 38.18,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Leschhorn, EO-20-160 Oval-Griff 1.4307",
+          "stand": "2026-11-05",
+          "haendler": "leschhorn.de, EO-20-160-36 Oval-Buegelgriff 1.4307",
           "land": "DE",
-          "url": "https://www.leschhorn.de/de/detail/0199737fd8cc73e9b26b275285143dc7",
-          "lieferung_de": "unbekannt",
+          "url": "https://www.leschhorn.de/de/detail/0199737fd8ce728b87dbedb4bded8b0c",
+          "lieferung_de": "ja",
           "konfidenz": "Q-Treffer",
-          "bemerkung": "ab 32,93 EUR (bis 11 Stk), netto/brutto unklar; Werkstoff 1.4307."
+          "bemerkung": "Seite gelesen 05.11.: Lochabstand 160, 1.4307; Preis nur im Suchausschnitt (ab 38,18 EUR)."
         }
       ],
       "beschaffung_art": "b",
-      "empfehlung_grob_eur": 12.0,
-      "bemerkung": "Katalog nennt Eigenbau; Normgriff aus Edelstahl ersetzt ihn (Planer klaeren). 4 Stk -> ca. 50 EUR."
+      "empfehlung_grob_eur": 13.24,
+      "bemerkung": "Katalog nennt Eigenbau; Normgriff aus Edelstahl ersetzt ihn (Planer klaeren). 4 Stk -> ca. 50 EUR.",
+      "luecke": "OFFEN (Quelle): Guete 1.4301 beim 12/160-Griff nicht belegt. Halder 125 mm (falsches Mass) entfernt."
     },
     "SON-ankergabel-80x140": {
       "bezug_einheit": "Stk",
@@ -456,7 +334,8 @@
         }
       ],
       "empfehlung_grob_eur": 8,
-      "bemerkung": "20 Stk -> ca. 160 EUR (A). Fundamentanker, Statik offen."
+      "bemerkung": "20 Stk -> ca. 160 EUR (A). Fundamentanker, Statik offen.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-halter-inline-d32-vorfilter": {
       "bezug_einheit": "Stk",
@@ -475,7 +354,8 @@
         }
       ],
       "empfehlung_grob_eur": 5,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-halter-inline-d32-sieb": {
       "bezug_einheit": "Stk",
@@ -494,7 +374,8 @@
         }
       ],
       "empfehlung_grob_eur": 3,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-halter-inline-d32-sensorblock": {
       "bezug_einheit": "Stk",
@@ -513,7 +394,8 @@
         }
       ],
       "empfehlung_grob_eur": 5,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-halter-inline-d50-vorfilter": {
       "bezug_einheit": "Stk",
@@ -532,7 +414,8 @@
         }
       ],
       "empfehlung_grob_eur": 6,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-halter-inline-d50-sieb": {
       "bezug_einheit": "Stk",
@@ -551,7 +434,8 @@
         }
       ],
       "empfehlung_grob_eur": 3,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-halter-inline-d50-sensorblock": {
       "bezug_einheit": "Stk",
@@ -570,7 +454,8 @@
         }
       ],
       "empfehlung_grob_eur": 6,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-strahlungsschutz-par": {
       "bezug_einheit": "Stk",
@@ -589,7 +474,8 @@
         }
       ],
       "empfehlung_grob_eur": 15,
-      "bemerkung": "Bedarf im Modell 0. Fertige Strahlungsschutz-Schalen (Wetterstationen) als Alternative nicht geprueft."
+      "bemerkung": "Bedarf im Modell 0. Fertige Strahlungsschutz-Schalen (Wetterstationen) als Alternative nicht geprueft.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-tauchklemme": {
       "bezug_einheit": "Stk",
@@ -608,7 +494,8 @@
         }
       ],
       "empfehlung_grob_eur": 3,
-      "bemerkung": "3 Stk -> ca. 9 EUR (A)."
+      "bemerkung": "3 Stk -> ca. 9 EUR (A).",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-halter-zelle-zellkoerper": {
       "bezug_einheit": "Stk",
@@ -627,7 +514,8 @@
         }
       ],
       "empfehlung_grob_eur": 8,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-sondenhalter-36": {
       "bezug_einheit": "Stk",
@@ -646,37 +534,16 @@
         }
       ],
       "empfehlung_grob_eur": 4,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-knotenkugel-d100": {
       "bezug_einheit": "Stk",
       "beschaffung_art": "c",
-      "angebote": [
-        {
-          "preis_eur": null,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "eBay.de-Haendler (Happy Parts, HomeDIYer): Lagerstahl-Vollkugeln 7 bis 100 mm",
-          "land": "DE",
-          "url": "https://www.ebay.de/itm/405808793628",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Listung ab 1,39 EUR, 100-mm-Preis nicht gelesen (Seite nicht geoeffnet); Masse ca. 4 kg, ungehaertet."
-        },
-        {
-          "preis_eur": 5.35,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Kaufland.at, 20 Edelstahlkugeln 10 cm = 106,95 EUR",
-          "land": "AT",
-          "url": "https://www.kaufland.at/product/479387815/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Zuordnung unsicher (Seitenaufbau unuebersichtlich), Preis je Stueck unplausibel niedrig fuer 100-mm-Edelstahl-Vollkugel; nicht verwenden."
-        }
-      ],
+      "angebote": [],
       "empfehlung_grob_eur": 40,
-      "bemerkung": "40 EUR/Stk ist A (Rohstahl ca. 4 kg + Bearbeitung/Bohrungen). 26 Stk -> ca. 1040 EUR. N-STATIK W43 offen; Hohlkugel oder Rohrknoten koennten sie ersetzen."
+      "bemerkung": "40 EUR/Stk ist A (Rohstahl ca. 4 kg + Bearbeitung/Bohrungen). 26 Stk -> ca. 1040 EUR. N-STATIK W43 offen; Hohlkugel oder Rohrknoten koennten sie ersetzen.",
+      "luecke": "OFFEN (Quelle): nur Hohlkugeln gefunden: fenau.eu d100 S235JR roh 5,37 EUR (DE), edelstahl-handel.com d100 St 37 4,35 EUR (DE), beide gelesen 05.11.; Vollkugel d100 nur eBay-Suchtreffer. OFFEN (Ben): Hohlkugel statt Vollkugel (4 kg), N-STATIK W43 offen. Alte Angebote (eBay 403, Kaufland.at unplausibel) entfernt."
     },
     "SON-knotenarm-23x23x3": {
       "bezug_einheit": "Stk",
@@ -695,7 +562,8 @@
         }
       ],
       "empfehlung_grob_eur": 2.5,
-      "bemerkung": "130 Stk -> ca. 325 EUR (A). N-STATIK W43 offen."
+      "bemerkung": "130 Stk -> ca. 325 EUR (A). N-STATIK W43 offen.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-ankerlasche": {
       "bezug_einheit": "Stk",
@@ -714,7 +582,8 @@
         }
       ],
       "empfehlung_grob_eur": 4,
-      "bemerkung": "10 Stk -> ca. 40 EUR (A)."
+      "bemerkung": "10 Stk -> ca. 40 EUR (A).",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-schacht-kugelhahn-d63": {
       "bezug_einheit": "Stk",
@@ -733,21 +602,24 @@
         }
       ],
       "empfehlung_grob_eur": 45,
-      "bemerkung": "Preis nur A."
+      "bemerkung": "Preis nur A.",
+      "luecke": "OFFEN (Quelle): nicht recherchiert, Bedarf im Modell 0 (05.11.)"
     },
     "SON-pflanztisch-platte": {
       "bezug_einheit": "Stk",
       "beschaffung_art": "a",
       "angebote": [],
       "empfehlung_grob_eur": null,
-      "bemerkung": "Altmodell, nicht verbaut (Katalog-Hinweis 'altmodell'); kein Preis, Zeile nicht in die Einkaufsliste uebernehmen (Bedarf 0)."
+      "bemerkung": "Altmodell, nicht verbaut (Katalog-Hinweis 'altmodell'); kein Preis, Zeile nicht in die Einkaufsliste uebernehmen (Bedarf 0).",
+      "luecke": "entfaellt: Altmodell, nicht verbaut, Bedarf 0"
     },
     "SON-tuer-modellvariante": {
       "bezug_einheit": "Stk",
       "beschaffung_art": "a",
       "angebote": [],
       "empfehlung_grob_eur": null,
-      "bemerkung": "Altmodell, nicht verbaut; kein Preis, Bedarf 0."
+      "bemerkung": "Altmodell, nicht verbaut; kein Preis, Bedarf 0.",
+      "luecke": "entfaellt: Altmodell, nicht verbaut, Bedarf 0"
     },
     "SON-belueftungsgitter-460": {
       "bezug_einheit": "Stk",
@@ -766,7 +638,8 @@
         }
       ],
       "empfehlung_grob_eur": 15,
-      "bemerkung": "15 EUR/Stk ist A; 2 Stk -> ca. 30 EUR."
+      "bemerkung": "15 EUR/Stk ist A; 2 Stk -> ca. 30 EUR.",
+      "luecke": "OFFEN (Quelle): kein Kunststoff-Lueftungsgitter 460x460 gefunden (05.11.); lueftungsland.de nur 150/250 mm; naechstes Mass Stahl 450x450 (CB-tec WG 4545, nur Suchtreffer). OFFEN (Ben): Metall statt Kunststoff oder Sonderanfertigung."
     },
     "SON-tanksieb-stahl": {
       "bezug_einheit": "Stk",
@@ -785,7 +658,8 @@
         }
       ],
       "empfehlung_grob_eur": 8,
-      "bemerkung": "4 Stk -> ca. 32 EUR (A)."
+      "bemerkung": "4 Stk -> ca. 32 EUR (A).",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-plattform-821x821": {
       "bezug_einheit": "Stk",
@@ -804,7 +678,8 @@
         }
       ],
       "empfehlung_grob_eur": 60,
-      "bemerkung": "2 Stk -> ca. 120 EUR (A)."
+      "bemerkung": "2 Stk -> ca. 120 EUR (A).",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-plattform-619x619": {
       "bezug_einheit": "Stk",
@@ -823,7 +698,8 @@
         }
       ],
       "empfehlung_grob_eur": 40,
-      "bemerkung": "2 Stk -> ca. 80 EUR (A)."
+      "bemerkung": "2 Stk -> ca. 80 EUR (A).",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-holz-stuetzrippe": {
       "bezug_einheit": "Stk",
@@ -842,67 +718,70 @@
         }
       ],
       "empfehlung_grob_eur": 4,
-      "bemerkung": "10 Stk -> ca. 40 EUR (A)."
+      "bemerkung": "10 Stk -> ca. 40 EUR (A).",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     },
     "SON-tuerscharnier": {
       "bezug_einheit": "Stk",
       "beschaffung_art": "a",
       "angebote": [
         {
-          "preis_eur": 2.59,
+          "preis_eur": 2.49,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Hornbach (AT), verzinktes Tuerband 80x45, 10er-Pack 25,90 EUR",
-          "land": "AT",
-          "url": "https://www.hornbach.at/c/eisenwaren/beschlaege/tuerbaender/S31814/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Suchausschnitt, Seite nicht geoeffnet; Lieferung nach DE ungeklaert."
+          "stand": "2026-11-05",
+          "haendler": "der-technikprofi.de, Hettich Tuerband 80x45 verzinkt (10er-Pack)",
+          "land": "DE",
+          "url": "https://www.der-technikprofi.de/Tuerband-80-x-45mm-DIN-Rechts-verzinkt",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: Hettich 9247732, 80x45, Stahl verzinkt, 24,95 EUR je 10 = 2,49 EUR/Stk zzgl. Versand, 2-3 Werktage."
         },
         {
-          "preis_eur": 4.75,
+          "preis_eur": 1.65,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Bauhaus (AT), Stabilit Anschweissband 75x45",
-          "land": "AT",
-          "url": "https://www.bauhaus.at/torbaender/c/10002806",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Suchausschnitt 4,75 EUR; Anschweissvariante."
+          "stand": "2026-11-05",
+          "haendler": "hornbach.de, Scharnier verzinkt 80x45",
+          "land": "DE",
+          "url": "https://www.hornbach.de/p/scharnier-verzinkt-80x45-mm/6826260/",
+          "lieferung_de": "nein",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: 1,65 EUR/Stk, nur Abholung im Markt, nicht online bestellbar."
         }
       ],
-      "empfehlung_grob_eur": 5.0,
-      "bemerkung": "3 Stk -> ca. 15 EUR (E). Entfaellt, wenn Komplett-Tuer gewaehlt wird (siehe SON-tuerblatt-1000x2000)."
+      "empfehlung_grob_eur": 2.49,
+      "bemerkung": "3 Stk -> ca. 15 EUR (E). Entfaellt, wenn Komplett-Tuer gewaehlt wird (siehe SON-tuerblatt-1000x2000).",
+      "luecke": "bestaetigt: zwei gelesene Seiten, eine liefert (D76)."
     },
     "SON-tuerdruecker": {
       "bezug_einheit": "Stk",
       "beschaffung_art": "a",
       "angebote": [
         {
-          "preis_eur": 30.33,
+          "preis_eur": 16.06,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "eBay.de-Haendler, Hoppe Paris/Amsterdam Wechselgarnitur Edelstahl matt",
+          "stand": "2026-11-05",
+          "haendler": "mein-tuergriff.de, Wechsel-Drueckergarnitur 138.1070.WG Edelstahl",
           "land": "DE",
-          "url": "https://www.ebay.de/p/2254304591",
+          "url": "https://www.mein-tuergriff.de/tuerdruecker-u-form-rosette-edelstahl-tuergriff-wechsel-drueckergarnitur-138-1070-wg_163_1124/",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "30,33 EUR brutto + 4,90 EUR Versand laut Suchausschnitt; Seite nicht geoeffnet."
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: Edelstahl rostfrei matt, 16,06 EUR zzgl. 5,90 EUR Versand, 2-3 Werktage."
         },
         {
-          "preis_eur": 29,
+          "preis_eur": 105.34,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Hornbach (AT), Intersteel Tuerdruecker auf Rosette (2er-Set)",
-          "land": "AT",
-          "url": "https://www.hornbach.at/c/eisenwaren/beschlaege/tuerdruecker/tuerdruecker-rosetten/S2611/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "ca. 28 bis 30 EUR je Set; Lieferung nach DE ungeklaert."
+          "stand": "2026-11-05",
+          "haendler": "habefa.de, Wechselgarnitur Edelstahl Objekttueren",
+          "land": "DE",
+          "url": "https://www.habefa.de/shop/artikel/drueckergarnitur-aus-edelstahl-mit-rosette-fuer-objekttueren_4309.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen 05.11.: Wechselgarnitur Art. 4310 105,34 EUR (Objektausfuehrung)."
         }
       ],
-      "empfehlung_grob_eur": 30,
-      "bemerkung": "Katalog Bedarf 2 Stk (Aussen/Innen); eine Wechselgarnitur = 1 Satz -> ca. 30 bis 60 EUR."
+      "empfehlung_grob_eur": 16.06,
+      "bemerkung": "Katalog Bedarf 2 Stk (Aussen/Innen); eine Wechselgarnitur = 1 Satz -> ca. 30 bis 60 EUR.",
+      "luecke": "bestaetigt: zwei gelesene DE-Seiten; Preis je Wechselgarnitur (1 Satz), nicht je Druecker."
     },
     "SON-zarge-aufsatzrahmen": {
       "bezug_einheit": "Stk",
@@ -921,7 +800,8 @@
         }
       ],
       "empfehlung_grob_eur": 40,
-      "bemerkung": "Bedarf im Modell 0."
+      "bemerkung": "Bedarf im Modell 0.",
+      "luecke": "OFFEN (Quelle): Eigenbau aus Rohmaterial, Preis nur angenommen (A), kein Kaufteil; Rohmaterial in Gruppe Stahl/Leitung (05.11.)"
     }
   },
   "nicht_recherchiert": {

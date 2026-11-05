@@ -1,6 +1,7 @@
 """Bauteile Strebe A und B der 2V-Kuppel als Rundrohr (D91, R56): Rohr strut_d x strut_wall (42,4 x 2,6, EN 10255 verzinkt).
-Laenge = Rohrmund bis Rohrmund der beiden Scherenknoten: Knoten-Knoten (layout.json 3279 / 3708) minus 2 x Knotenpunkt bis Rohrmund
-(Werkstatt-Geometrie data/components/knoten_schere.json -> geometrie.<typ>.rohr_mm: A 3075,3 / B 3503,5).
+Laenge = Rohrmund bis Rohrmund der beiden Scherenknoten, gemessen in der Montage-Lage (scripts/knoten_montage.py rohrlaengen, aus
+scripts/.segs.json): Mitte der Spanne je Typ. Nennmass ohne Plattendrehung (knoten_schere.json geometrie.rohr_mm) A 3075,3 / B 3503,5;
+die 6-Loch-Platte (D91) verschiebt an den 5-wertigen Knoten die Rohrmuender, A streut 3075,5 bis 3078,7.
 Je Rohrende zwei Gegenloecher wall_hole (D 13) fuer die Nasen der Schere, 46 mm hinter dem Rohrmund (b_pivot_to_nose - pivot_out),
 je auf der Mittelebene ihrer Lasche (x = -+ link_t/2).
 Rahmen: Ursprung = Rohrmund am Anfang, Achse +Z, X = Laschennormale (Kuppel aussen), Y = Z x X (Nasenrichtung).
@@ -22,8 +23,11 @@ if abs(d - KP["tube_d"]) > 1e-6 or abs(w - KP["tube_t"]) > 1e-6:
     sys.exit(f"Strebe {d} x {w} passt nicht zum Scherenknoten-Rohr {KP['tube_d']} x {KP['tube_t']} (data/components/knoten_schere.json)")
 t, hole = KP["link_t"], KP["wall_hole"]
 s_hole = KP["b_pivot_to_nose"] - KP["pivot_out"]       # Gegenloch hinter dem Rohrmund (46 mm)
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import knoten_montage as KM
+LEN = KM.rohrlaengen(json.load(open(os.path.join(ROOT, "scripts", ".segs.json"))), P["door_az"] - 167)
 for key in ("a", "b"):
-    L = KS["geometrie"][key.upper()]["rohr_mm"]; nm = f"T1_Strebe_{key.upper()}"
+    L = LEN[key.upper()][0]; nm = f"T1_Strebe_{key.upper()}"
     cmds = [{"command": "parameters.add", "params": {"name": "strut_d", "expression": f"{d} mm"}},
             {"command": "parameters.add", "params": {"name": "strut_wall", "expression": f"{w} mm"}},
             {"command": "material.create", "params": {"name": MAT, "density_g_cm3": DENS, "color": COL, "pbr": {"metallic": 0.8, "roughness": 0.45, "dielectric_ior": 1.5}}},
@@ -37,4 +41,4 @@ for key in ("a", "b"):
     cmds.append({"command": "material.assign", "params": {"bodies": [nm], "material": MAT}})
     tmp = os.path.join(out, f"_strebe_{key}.json"); json.dump({"commands": cmds}, open(tmp, "w"))
     subprocess.run([CLI, "run", tmp, "--save", os.path.join(out, f"strebe_{key}.sc"), "--quiet"], check=True); os.remove(tmp)
-    print(f"strebe_{key}.sc L={L} Rund {d} x {w}, 4 Gegenloecher D{hole:g} bei {s_hole:g} mm vom Rohrmund")
+    print(f"strebe_{key}.sc L={L} (Spanne {LEN[key.upper()][1]:.1f} .. {LEN[key.upper()][2]:.1f}) Rund {d} x {w}, 4 Gegenloecher D{hole:g} bei {s_hole:g} mm vom Rohrmund")

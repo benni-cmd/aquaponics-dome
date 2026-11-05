@@ -28,6 +28,21 @@ Pruefpunkte des Blatts gemessen:
 Abweichung vom Blatt: A und B unterscheiden sich auch in der Lage der Knicklinie (A r 72,1, B r 63,0), weil die gemeinsame Platte eine gemeinsame Hoehe erzwingt; Zuschnitt gleich. Naechster Schritt: fremder Pruefer, dann Ben-Abnahme.
 Werkstatt W83 05.11.2026 nachmittags (Ben: obere und untere Lochplatte, Scheren dazwischen): `knoten_schere_platte.sc` ist jetzt ein Plattenpaar (2 gleiche Platten D 110 x 8, Spalt 10 mm = zwei Laschenaugen), Plattenschraube M10 x 45 durch beide Platten, Arme unveraendert. Pruefer-Auflagen a1ed36b: Auflage 5 erledigt (Probe n02 fuenfwertig als Pflichtlauf im Check), Auflage 4 Viewer-Detailansicht angesehen (13 Teile, Gruppe Plattenpaar). Check `python -X utf8 scripts/workshop/check_knoten_schere.py` → 35/35 PASS, Exit 0 (n01 und n02 ohne Durchdringung > 0,1 mm3); `check_parts.py knoten_schere` 22/22; 9 Bilder neu (neu: 09 Plattenpaar nah). Masse aller Knoten ohne Rohre 63,7 kg. Offen bei Ben: 5-Loch-Platte, vier Blatt-Fragen; Auflage 3 (Blatt-Text Knicklinie) beim Orchestrator.
 
+## Montage D91 (Start-Auftrag `docs/jobs/start/N-VERBINDER-montage.md`, 05.11.2026 abends)
+**Problem:** Das Gesamtmodell (beide Varianten) traegt noch Kugelknoten und Vierkantstreben 30 x 30 x 3; Ben hat den Scherenknoten freigegeben (D91: eine 6-Loch-Platte fuer alle 26 Knoten, Rundrohr 42,4 x 2,6, Laschen 8 mm).
+**Intent:** Das Modell zeigt den echten Verbinder, damit Stueckliste, Viewer und Pruefungen auf dem gebauten Knoten stehen.
+**Goal:** `designs/dome.sc` (A+) und `designs/dome-ring_b2.sc` (Ring B2) tragen an allen 26 Knoten ein Plattenpaar und je Strebe einen Scherenarm, die 64 Streben sind Rundrohr 42,4 x 2,6 mit Gegenloechern; `check_verbinder_montage`, `check_walkways`, `check_huelle` gruen, `check_latte` in Kopie gelaufen, Viewer-Export beider Varianten im Browser angesehen.
+
+### Plan
+1. Werkstatt-Anteil: `link_t` 8 (D91), Montage-Arme ohne Probe-Rohr (`knoten_schere_arm_a/b_montage.sc`), Check `check_knoten_schere.py`.
+2. Strebe als Rundrohr (`scripts/components/strebe.py`, `data/params.json` `strut_d`/`strut_wall`/`strut_end_offset`), Laenge Rohrmund bis Rohrmund, Gegenloecher.
+3. Lage-Rechnung `scripts/knoten_montage.py` (Tabelle `knoten_schere.json` -> Modellrahmen), Einbau in `gen_dome.py` (`place_struts`, `knoten_anker`), Folie `foil_z0` auf das Rundrohr.
+4. Pruefskript `scripts/check_verbinder_montage.py` (Instanzen, Nase im Gegenloch, Folie ueber Hardware, Probe-Durchdringung 4/5/6-wertig).
+5. Bau A+ und Ring B2, `check_walkways`, `check_huelle`, `check_latte` in Kopie, Viewer-Export, Bilder, loop-state, Pfad-Commits.
+
+### Stand
+(wird beim Abschluss nachgefuehrt)
+
 ## DoD
 - R56 enthaelt alle sechs Abschnitte des Auftrags mit [A]/[E]/[Q]-Kennzeichnung.
 - Prototyp: Check-Skript besteht (Koerper geschlossen, Nasen ragen durch die Wand, keine Durchdringung Lasche/Rohr ausser in den Wandloechern).

@@ -74,12 +74,12 @@ def place_struts(segs):
     """D91 (N-VERBINDER Montage): Streben als Rundrohr-Instanzen strebe_a/strebe_b (scripts/components/strebe.py), mittig zwischen den
     Rohrmuendern der zwei Scheren (scripts/knoten_montage.py); X = Kuppel aussen, Y = Nasenrichtung (Gegenloecher)."""
     import knoten_montage as KM
-    KS = json.load(open(os.path.join(ROOT, "data", "components", "knoten_schere.json"), encoding="utf-8"))["geometrie"]
+    LEN = KM.rohrlaengen(segs, ROT)   # gleiche Rohrlaenge wie scripts/components/strebe.py
     _, _, streben, _ = KM.montage(segs, ROT)
     base_z = min(min(A[2], B[2]) for A, B in segs)   # Kuppelmitte (0, 0, cz): Basisknoten liegen auf cz
     moves = {"A": [], "B": []}
     for st in streben:
-        m, _ = KM.strebe_matrix(st, [0.0, 0.0, base_z], KS[st["typ"]]["rohr_mm"]); moves[st["typ"]].append(m)
+        m, _ = KM.strebe_matrix(st, [0.0, 0.0, base_z], LEN[st["typ"]][0]); moves[st["typ"]].append(m)
     for key in ("A", "B"):
         place_matrix(f"Strebe_{key}", os.path.join(ROOT, "designs", "components", f"strebe_{key.lower()}.sc"), moves[key])
 

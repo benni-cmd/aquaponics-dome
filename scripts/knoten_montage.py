@@ -108,6 +108,17 @@ def montage(segs, rot_deg):
     return platten, arme, streben, K
 
 
+def rohrlaengen(segs, rot_deg):
+    """Eine Rohrlaenge je Typ = Mitte der gemessenen Spanne Rohrmund-Rohrmund (an 5-wertigen Knoten streut A um 3 mm, 6-Loch-Platte D91);
+    Rueckgabe {typ: (laenge, min, max)}; der Spalt je Ende liegt damit hoechstens bei (max - min) / 4."""
+    _, _, st, _ = montage(segs, rot_deg)
+    out = {}
+    for t in "AB":
+        L = [s["laenge"] for s in st if s["typ"] == t]
+        out[t] = (round((min(L) + max(L)) / 2, 1), min(L), max(L))
+    return out
+
+
 def strebe_matrix(s, center, L_nom):
     """Lage einer Streben-Instanz (scripts/components/strebe.py): Rohr L_nom mittig zwischen die zwei Rohrmuender,
     Z = Achse, X = Kuppel aussen (Laschennormale, senkrecht zur Achse), Y = Z x X (Nasenrichtung). Rueckgabe (matrix12, Spalt je Ende mm)."""

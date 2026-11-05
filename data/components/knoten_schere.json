@@ -119,9 +119,9 @@
    "herkunft": "R56 Drehpunkt 12 mm vor dem Rohrmund [A]"
   },
   "wall_hole": {
-   "wert": 13,
+   "wert": 15,
    "einheit": "mm",
-   "herkunft": "R56 Gegenloch D 13 [A]"
+   "herkunft": "D91 Laschen 8 mm: Nase 10 x 8 (Diagonale 12,8) braucht D15 fuer 1,1 mm Spiel (D13 liess nur 0,1 mm, N-VERBINDER Montage 05.11.); vorher D13 fuer 5-mm-Laschen"
   }
  },
  "knoten": [

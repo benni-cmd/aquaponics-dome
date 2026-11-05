@@ -73,7 +73,9 @@ for c in cmds:
         m = p["matrix"]; L = 0.5465 * P["dome_base_d"] / 2 if p["occurrence"].startswith("Strebe_A") else 0.618 * P["dome_base_d"] / 2
         o = P["strut_end_offset"]; org = [m[(3, 7, 11)[j]] - m[(2, 6, 10)[j]] * o for j in range(3)]   # Strebe beginnt strut_end_offset hinter der Knotenmitte
         for pt in (tuple(round(v) for v in org), tuple(round(org[j] + m[(2, 6, 10)[j]] * L) for j in range(3))):
-            ends[pt] = ends.get(pt, 0) + 1
+            # D91 Scherenknoten: Rohrachse liegt an 5-wertigen Knoten bis 15 mm neben dem Knotenpunkt -> Enden im Umkreis 40 mm zusammenfassen
+            near = next((k for k in ends if math.dist(k, pt) < 40), None)
+            ends[near or pt] = ends.get(near or pt, 0) + 1
 apex = max(ends, key=lambda k: k[2]); apex_n = ends[apex]
 base_nodes = [k for k in ends if abs(k[2] - (sock_top + P['strut_r'] + 30)) < 5]
 chk("L1/10 Streben am Scheitel", apex_n, 5, apex_n == 5)

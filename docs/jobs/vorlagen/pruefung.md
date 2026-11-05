@@ -24,3 +24,6 @@ Zweck (Ben 01.11.2026, E18): Der Pruefer ist der Gegenleser einer fertigen Bau-,
 
 ## Pflanzen gegen Bauteile pruefen (Pruefer-Auflage M-BEET-TAUSCH, 04.11.2026)
 `check_latte` nimmt Pflanzen (Netztoepfe, Salatkoepfe) aus. Wer Beete, Tische oder Rinnen prueft, misst Beet x Pflanze eigens: `python -X utf8 scripts/workshop/check_ibc_beet.py` (Abstandszeilen Schacht UND Medienschutz zu jedem Netztopf) und eine CAD-Probe `inspect.interference` mit einem `netztopf.sc` am naechsten Topf. "Ohne Treffer" gilt nur mit dieser Messung.
+
+## Pflicht: Designprinzipien-Check
+Vor dem Abschluss jedes Blatts bzw. Befunds `docs/designprinzipien.md` Punkt 1 bis 10 einzeln abhaken; Verstoss = ausdruecklich nennen und begruenden (z. B. Pumpe statt Siphon nur mit physikalischem Grund).

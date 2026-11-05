@@ -18,3 +18,6 @@ Zweck (Ben 01.11.2026, E18): Der Planer schreibt das Auftragsblatt fuer einen Ro
 **Sichern:** `git commit -m "Plan <ID>: Auftragsblatt" -m "Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>" -- docs/jobs/<ID>.md` (neue Datei vorher `git add -N`), `git push`. Fremde Dateien nie committen.
 
 **Abschluss:** Kurzmeldung, hoechstens sechs Zeilen: Aktualitaet (gueltig/angepasst/obsolet und Grund) · Blattpfad · was Ben noch entscheiden muss · geschaetzte Zahl der Bau-Sitzungen · "Besonderheit: ..." falls etwas auffaellt. Dann STOPP.
+
+## Pflicht: Designprinzipien-Check
+Vor dem Abschluss jedes Blatts bzw. Befunds `docs/designprinzipien.md` Punkt 1 bis 10 einzeln abhaken; Verstoss = ausdruecklich nennen und begruenden (z. B. Pumpe statt Siphon nur mit physikalischem Grund).

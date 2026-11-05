@@ -1226,7 +1226,7 @@
    "phase": "vor_zwischencheck",
    "reihenfolge": 3.85,
    "wer": "Recherche/Planer, Werkstatt, Pruefer, Ben-Abnahme, Montage",
-   "notiz": "Ablauf: (1) Recherche + Planer R56 und Blatt N-VERBINDER (laeuft, verbinder-schere); (2) Werkstatt baut Prototyp eines Knotens: Lochplatte, eine Schere, ein Rohrstueck mit zwei Gegenloechern, Nasen ausgefahren, Renders aus drei Richtungen plus Explosionsbild und Detailansicht im Viewer; (3) Pruefer vergleicht mit dem Foto reference/chemnitz/laschenknoten-foto.jpg; (4) Ben gibt frei; (5) Werkstatt Serie, Montage baut ein."
+   "notiz": "Ablauf: (1) Recherche + Planer R56 und Blatt N-VERBINDER (laeuft, verbinder-schere); (2) Werkstatt baut Prototyp eines Knotens: Lochplatte, eine Schere, ein Rohrstueck mit zwei Gegenloechern, Nasen ausgefahren, Renders aus drei Richtungen plus Explosionsbild und Detailansicht im Viewer; (3) Pruefer vergleicht mit dem Foto reference/chemnitz/laschenknoten-foto.jpg; (4) Ben gibt frei; (5) KEINE Serie: Ben 05.11.: die Werkstatt baut den Knoten EINMAL als Bauteil (Lochplatte, Scheren, Rohrende), die Montage setzt nur Instanzen an die 26 Knotenpunkte; unterschiedliche Strebenzahl und Winkel ueber die Zahl der Scheren und deren Drehung um die Plattenschraube."
   }
  ]
 }

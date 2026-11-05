@@ -10,8 +10,8 @@
 1. [x] Aktualitaetspruefung (04.11.): E20 blockiert die Luft nicht; E13 blockiert die Technikbereich-Gruppe
 2. [x] Blatt `docs/jobs/M10-S5-LUFT.md` mit Teilen A, B, C und fuenf Pruefpunkten
 3. [x] Montage Teil A (Pool-Verteiler, 4 Scheiben, Schwimmerventil, Luftrohre K44-S1..S4, Enden-Tabelle): Runde 69, 04.11.2026
-4. [ ] Montage Teil B, nur auf Bens Ja zum vorlaeufigen Technikbereich-Ort
-5. [ ] Teil C nach E20 (05.11.)
+4. [x] Montage Teil B (Blatt `docs/jobs/M10-S5-LUFT-B.md`, D81 Annahme E13): Runde 74, Technikgruppe AUSSEN neben der Tuer
+5. [x] Teil C mit A+ (D81): K40, K45, K46 in Runde 74 verlegt; K47/K48 OFFEN (Absetzer ohne Luftanschluss im Bauteil)
 
 ## Status
 04.11.2026 (Planer) - Befund: teilweise ja. Teil A freigegeben; Teil B haengt an Bens Ja (vorlaeufiger Ort am heutigen Schrank-Ort, verschiebbare Gruppe); Teil C OFFEN (E20): Zulauf K40, K45 bis K48, Kabelzahl. OFFEN (E13): Standort Technikbereich.
@@ -33,6 +33,17 @@ Pruefung: `check_leitungen.py` EINGABE/KOLL/BAND/GANG/GEFAELLE 0 Verstoesse (dn 
 | Luftverteiler Port A (Einlauf K44) | K44 | 1938,5 / -622,6 / 1074 | Muffe zeigt Richtung Technikbereich (Az 0) | gesetzt; Anschluss an den Hauptverteiler OFFEN (E13) |
 
 **Nicht gebaut, OFFEN:** Teil B (Technikbereich-Gruppe, Geblaese, Hauptverteiler, Aktivkohle-Station, Schrank-Einfuehrung) OFFEN (E13), Bens Ja zum vorlaeufigen Ort fehlt; K40-Zulauf aus Station oder Ring OFFEN (E20); K45 bis K48 (Biofilter, Absetzer) OFFEN (E20); Kabelzahl der Einfuehrung OFFEN (E20); Standort Schaltschrank OFFEN (E13).
+
+
+### Teil B, Runde 74 (05.11.2026, Montage nach `docs/jobs/M10-S5-LUFT-B.md`)
+**Problem:** Technikgruppe (Schrank, Einfuehrung, 2 Geblaese, Hauptverteiler, Aktivkohle-Station) nicht im Dom, 9 Kanten ohne Rohr. **Intent:** D81 (E13 vorlaeufig, E20 = A+) macht alles baubar. **Goal:** Gruppe als verschiebbare Einheit, Kanten K39, K40, K41, K44 (Zuleitung), K45, K46, K49, K51, K52 nach der Leitungsordnung.
+
+**Befund Ort (aendert das Blatt):** Die Tuer steht bei Az -72 (`Tuer_Komplett:1`, `Huelle_BBB_tuer:1`), nicht bei -54. Innen zwischen Tuer und Ecke Az -90 sind nur etwa 1,35 x 1,2 m frei (`Pumpe_klein:2` 1380 mm vor der Wand, Rechnung aus den Instanzmatrizen), die Gruppe (Schrank 800 x 500, Station 1,7 m) passt nicht. Gebaut nach dem D81-Wortlaut **aussen am Fundamentring neben der Tuer**: Schrankmitte x 500 / y -6490 (Az -85,6, r 6509), achsparallel, Rueckwand 20 mm vor der Fundamentring-Aussenkante. Parameter `technik_az` (-85, Bezug), `technik_x`, `technik_y` in `data/params.json`; eine Verschiebung beider Werte versetzt die Gruppe, danach `python -X utf8 scripts/technik_e13.py` neu (Leitungen werden neu geroutet). Wetterschutz aussen (Geblaese, Aktivkohle) ist OFFEN (Ben, Zwischencheck).
+**Gruppe** (Baugruppe `14_Technik_E13`, Lagen aus `scripts/technik_e13.py` `gruppe()`): Schaltschrank (gen_dome `schrank_fn`), Schrank-Einfuehrung darunter, Geblaese A/B westlich (Austritt +X, Rueckschlagventil d20 je Austritt, T d20, Reduziermuffe d40/d20), Hauptverteiler `luftverteiler_6` mit Abgaengen nach unten (Schleife Z 1110 ueber dem Spiegel 915), Aktivkohle-Station um 90 Grad gedreht (Ausgang K40 zur Kuppel).
+**Leitungen** (Router in `scripts/technik_e13.py`, 50-mm-Raster, Start und Ziel genau auf dem Raster, Mindestlauf 4 Schritte zwischen Boegen): vier Grabenlagen, damit sich die Straenge kreuzen duerfen: K44/K45 Z 290, K46/K49/K51 Z 240, Frischwasser Z 190, K39 Z 140 (Band U). Abgang-Zuordnung von West nach Ost: K44, K45, K46, Kappe (K47/K48), K51, K49. Laengen (`python -X utf8 scripts/technik_e13.py`): K44 11,95 m, K45 17,74, K46 8,06, K51 8,10, K49 10,41, K40 12,26, K41 13,88, K52 12,58, K39 8,88 m; Geblaese-Verbindung 1,05 m.
+Ziele: K44 Schwanenhals ueber den Poolrand an Muffe A des Pool-Verteilers (Port-Stueck 150 mm); K40 an Muffe A des Schwimmerventils (280 mm); K45/K46 von oben auf den Deckelanschluss d16 der Biofilter (Rohrende 20 mm darueber, Uebergang d25 auf Luftschlauch 16 OFFEN Werkstatt); K49 an die Tuelle des Drittbeckens; K41 an Muffe K41 des Drittbeckens; K51 ueber den Rand des Zweitbeckens, offen 300 mm unter dem Spiegel (Ausstroemer OFFEN Werkstatt); K52 Zapfhahn d25 vor dem Puffer (Fass von Hand); K39 vom Ende des Platzhalters T10_Zulaufrohr (Az -58) zur Station.
+**Werkzeug-Aenderungen:** `leitungen.py` Endtyp `muffe`, `r_stuecke` mit `art: teil` (Rueckschlagventil); `check_leitungen.py` Band `AU` (nur ausserhalb des Zehnecks); `check_leitungsordnung.py` Endtyp `muffe` fuer Ausnahme 2, R8-Ausnahme `buendel`, R4-Ausnahme `schwanenhals`, R9 nur im Dom; `docs/leitungsordnung.md` Ausnahmen 4 bis 6.
+**Pruefung vor dem Build** (Trassen Runde 74): `check_leitungen.py` nur die 3 Altbefunde aus Runde 73 (K08 KOLL Tank_gross:1, K05/K21 GEFAELLE), 0 neue; `check_leitungsordnung.py` R1/R2/R3/R7 PASS, R4 1 (K20, Altbestand), R9 1 (K24-K25-Stamm, Altbestand). **Befunde, nicht geloest:** R5 Bogenzahl K44 11 (Soll 7), K45 9 (8), K46 8 (6), K40 10 (7): jede Leitung hat 3 bis 5 feste Boegen an Port und Steigleitungen, die R5-Annahme [A] rechnet sie nicht ein; R8 K40 liegt im selben Graben 50 bis 100 mm unter dem Luftbuendel (lichter Abstand 68 bis 226 mm statt 25 bis 60 oder >= 250 mm Achse).
 
 ## Definition of Done
 Geprueft gegen: `git log`, Roadmap M10-S5, Netz Version 3 K39 bis K52, `docs/packages/w37-2-3-frischwasser-luft.md`, `gen_dome.py` und `params.json` per Lesen

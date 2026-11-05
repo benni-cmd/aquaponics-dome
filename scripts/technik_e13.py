@@ -155,7 +155,7 @@ class Router:
         D = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         LAUF = 4                                                            # mindestens 4 Rasterschritte (~200 mm) zwischen zwei Boegen (R3, Bogenschenkel d40 74 mm)
         best = {}; pq = []
-        for k in range(4): heapq.heappush(pq, (0.0, i0[0], i0[1], k, LAUF)); best[(i0[0], i0[1], k, LAUF)] = 0.0
+        for k in range(4): heapq.heappush(pq, (0.0, i0[0], i0[1], k, 0)); best[(i0[0], i0[1], k, 0)] = 0.0   # auch das erste Grabenstueck nach der Steigleitung braucht den Mindestlauf
         prev = {}; ziel = None
         while pq:
             c, x, y, k, n = heapq.heappop(pq)

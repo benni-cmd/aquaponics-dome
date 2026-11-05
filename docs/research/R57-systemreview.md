@@ -27,6 +27,37 @@
 4. **Geländer** ist ein neues Bauteil (Höhe und Norm nicht recherchiert [A]); es ersetzt die heutige Wand über Flur als Absturzschutz.
 5. **Was gleich bleibt:** Streichliste (Abschnitt 2 ohne G1-Volumen), eine Pumpstufe, die zwei Bedingungen (Pegel-tief-Abschaltung, Siebmessung mit Vortex-Rückfall), Teilekosten 6039 → 2242 €, 12 → 4 Pumpen.
 
+## Nachtrag W86 (05.11.2026): Pool per Siphon ablassen? und Prinzipien-Check
+
+**Antwort: Ein Siphon leert den eingelassenen Pool nicht, denn es gibt keinen tieferen Auslass.** Ein Siphon fördert nur bis zur Höhe seines Auslasses. Der Ruhepegel liegt 150 mm unter dem Flur, der Beckenboden nach D88 bei 2350 mm unter dem Flur [E, `python -X utf8 scripts/r57_rechnung.py ablassen`]:
+
+| Auslass des Siphons | ablassbar |
+|---|---|
+| draußen auf dem Gelände, Flurhöhe [A] | 0 m³ von 26,1 m³ |
+| Graben oder Hang 500 mm unter Flur [A] | 4,2 m³ |
+| Hang oder Schacht mindestens 2450 mm unter Flur | 26,1 m³; nur, wenn der Standort so einen Auslass hat (Standort offen, D69) |
+
+**Empfehlung, Physik und vorhandene Teile zuerst:**
+1. **Kein zusätzliches Teil:** Ein Ablasshahn mit Schlauchanschluss an der Wasserstation, also am Druckschlauch der vorhandenen Pumpen. Die Pumpen stehen am Beckenboden und leeren den Pool damit fast vollständig: 26,1 m³ in 2,0 h für 0,85 kWh [E]. Für Teilwasserwechsel geht das Wasser als Gießwasser nach draußen. Die Pegel-tief-Abschaltung braucht dafür einen bewusst zu schaltenden Ablassmodus (Schlüsselschalter [A]).
+2. **Siphon dort, wo er wirkt:** Alles, was höher steht als der Pool, wird per Siphon oder Hahn in den Pool abgelassen und braucht keine Pumpe. Das sind Biofilter, Beete, Zweitbecken, Drittbecken und Messzelle.
+3. **Mobile Pumpe nur als Rückfall:** Fallen die Hauptpumpen aus, kommt eine geliehene Schmutzwasserpumpe zum Einsatz, nicht fest eingebaut (Prinzip 1).
+4. **Siphon zum Pool nur bei Hanglage:** Falls der Standort einen Auslass mindestens 2450 mm unter Flur hat, ersetzt ein Siphonschlauch über den Rand den Ablasshahn. Prüfen, wenn der Standort feststeht.
+
+**Pflicht-Check `docs/designprinzipien.md` gegen Zielbild S nach D88:**
+
+| Nr | Prinzip | Stand im Zielbild S | Erfüllt? |
+|---|---|---|---|
+| 1 | Physik vor Strom | Eine Pumpstufe statt drei, alles andere fließt frei. Ablassen über die vorhandenen Pumpen, weil ein Siphon ohne tieferen Auslass nicht geht (oben). Die Pumpe im Pool ist begründet: der Pool ist der tiefste Punkt | ja, mit Begründung |
+| 2 | So wenig graben wie möglich | 230 → 18 m Leitung unter Flur, Aushub 43,7 → 9,9 m³. Die Ausnahme ist der tiefer eingelassene Pool (D88, +7,9 m³) | ja, Ausnahme benannt |
+| 3 | Wenig Teile, günstig | 40 → 10 Teile, 12 → 4 Pumpen, belegte Teilekosten 6039 → 2242 € [E kosten]. Neu kommen Geländer und Aufkantung, ohne Preis | ja |
+| 4 | Technik innen, Wasserstation je Linie | Wasserstation je Linie am Biofilter (Abschnitt 2a), Schrank-Kasten innen (G21) | ja |
+| 5 | Leitungen nach Ordnung v2 | Arten A bis F, R11 bis R14 messbar (`check_leitungsordnung.py`) | ja |
+| 6 | Lebensmittelecht | Schläuche nach EU 10/2011 eingeplant; HT- und KG-Rohr ausgeschlossen; Fass 220 l lebensmittelecht (Einzelquelle). Offen: Pumpenwerkstoff (Eheim nennt keinen) und ein lichtdichter Schlauch mit Preis | teilweise, offen benannt |
+| 7 | Kaufen vor Selbstbau, Europa, Link | Alle neuen Kaufteile mit europäischem Händler und Link (Abschnitt 7). Siebkorb-Aufnahme und Hahntafel sind einfache Werkstattteile | teilweise: Tauchpumpe mit passender Kennlinie und Geländer noch ohne Link |
+| 8 | Wartbar und rückbaubar, Schlamm draußen | Kein Graben für Wartung, Pumpe am Seil, Korb oben, Schlamm per Schlauch ins Fass draußen | ja |
+| 9 | Sicherheit | Geländer und Aufkantung (D88), Pegel-tief-Abschaltung, Gebläse unabhängig von den Pumpen. Notluft bei Stromausfall bleibt nach R55 offen (Akku-Pumpe, Förderkurve) | teilweise: Notluft offen |
+| 10 | Ehrlich messen | Jede Zahl mit Befehl (`r57_rechnung.py`) oder Quelle (Abschnitt 7). Annahmen sind mit [A] markiert; die Annahme Absetzer streichen steht in D88 | ja |
+
 ## 0. Antwort (fünf Punkte, erste Fassung vor D88; Abweichungen im Nachtrag oben)
 
 1. **Ein Hebel löst fast alles: Der Pool wird der tiefste Punkt des Kreislaufs.** Wird der Ruhepegel um 665 mm abgesenkt (Z +515 auf Z −150) und stehen die Beete auf dem Flur statt eingelassen, dann fließt jedes Beet, jede NFT-Rinne und jeder Überlauf frei in den Pool zurück. Dann bleibt eine einzige Pumpstufe: Tauchpumpen im Pool heben über einen Schlauch in den Siebkorb auf dem Biofilter [E, `r57_rechnung.py pegel`].

@@ -1,5 +1,5 @@
 """R57 Systemreview (N-MINIMAL, W75/W76/W79): Rechnung heute (A+ wie gebaut und geplant) gegen Zielbild S (schlank).
-Nur lesen. Aufruf: python -X utf8 scripts/r57_rechnung.py [abschnitt]   abschnitt = vergraben | aushub | pegel | pumpen | kosten | station | alle (Standard)
+Nur lesen. Aufruf: python -X utf8 scripts/r57_rechnung.py [abschnitt]   abschnitt = vergraben | aushub | pegel | pumpen | kosten | station | ablassen | alle (Standard)
 Eingaben: data/leitungstrassen.json (ueber scripts/leitungen.laden_variante(), Variante A+), data/leitungsnetz.json, data/system-specs.json,
 data/beschaffung/*.json (kleinster belegter Preis je Artikel, Stand 04./05.11.2026), docs/research/R45, R47, R49 (zitierte Zahlen, unten je Wert benannt).
 Herkunft je Zahl: [Q] Datei/Quelle gelesen, [E] hier gerechnet, [A] Annahme dieses Skripts. Keine fachliche Freigabe.
@@ -242,6 +242,19 @@ def station():
     print("  Verlust %.0f mm; Druckkopf NFT-Tisch %d mm -> %.0f mm (Soll >= 500 mm, Netz K12) [E]" % (hf * 1000, kopf_nft, kopf_nft - hf * 1000))
     return dict(abstand=abstand, hf=hf, kopf=kopf_nft - hf * 1000)
 
+
+# ------------------------------------------------------------------ 7 Pool ablassen (W86): Siphon gegen vorhandene Pumpen
+def ablassen():
+    kopf("7 Pool ablassen (W86): Siphon nur bis zur Hoehe seines Auslasses")
+    ruhe, boden = -150, -150 - TIEFE                 # D88: Ruhepegel Z -150, Beckenboden Z -2350 [E pegel]
+    for aus, txt in ((0, "Auslass draussen auf Gelaende Z 0 [A]"), (-500, "Auslass in Graben/Hang Z -500 [A]"), (boden - 100, "Auslass mindestens Z %d (Hang oder Schacht)" % (boden - 100))):
+        h = max(0, ruhe - max(aus, boden)) / 1000
+        print("  %-44s ablassbar %.2f m = %.1f m3 von %.1f m3 [E]" % (txt, h, AREA * h, AREA * TIEFE / 1000))
+    v = AREA * TIEFE / 1000; hm = (1750 - (ruhe + boden) / 2) / 1000      # vorhandene Pumpen heben bis Wasserstation Z 1750, mittlerer Pegel
+    e = 1000 * 9.81 * v * hm / 0.25 / 3.6e6
+    print("  mit den 4 vorhandenen Pumpen ueber Ablasshahn an der Wasserstation: %.1f m3 in %.1f h (220 l/min), %.2f kWh (mittlere Hubhoehe %.2f m, Wirkungsgrad 25 %%) [E]" % (v, v / 0.22 / 60, e, hm))
+    return dict(kwh=e)
+
 if __name__ == "__main__":
     if ARG in ("vergraben", "alle"): vergraben.cache = vergraben()
     if ARG in ("aushub", "alle"): aushub()
@@ -249,3 +262,4 @@ if __name__ == "__main__":
     if ARG in ("pumpen", "alle"): pumpen()
     if ARG in ("kosten", "alle"): kosten()
     if ARG in ("station", "alle"): station()
+    if ARG in ("ablassen", "alle"): ablassen()

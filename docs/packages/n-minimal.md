@@ -22,6 +22,8 @@
 
 - 05.11.2026 Nachtrag D88 (Ben: Zielbild S, Pool gleich gross und 665 mm tiefer eingelassen): neu gerechnet mit `python -X utf8 scripts/r57_rechnung.py pegel | aushub`. Fischwasser 28,5 m3 und Besatz 12,1 kg/m3 bleiben, Beckenboden Z -2350, Aushub 9,9 m3 (7,9 m3 davon tiefere Poolgrube), Freibord 150 mm bei Rand Z 0 reicht im Stoerfall nicht (+276 mm), Empfehlung Aufkantung 150 mm (Freibord 300), freier Fall 0,30 bis 0,35 m, Halbring auf der Aufkantung (KW in der Leitungsordnung angepasst).
 
+- 05.11.2026 Nachtrag W86: Siphon leert den Pool nicht (kein tieferer Auslass; `python -X utf8 scripts/r57_rechnung.py ablassen`), empfohlen Ablasshahn an der Wasserstation ueber die vorhandenen Pumpen (26,1 m3 in 2,0 h, 0,85 kWh); Pflicht-Check `docs/designprinzipien.md` in R57: 7 von 10 erfuellt, 3 teilweise (lebensmittelecht Pumpe/Schlauch lichtdicht, Kaufteil-Links Pumpe/Gelaender, Notluft).
+
 ## Definition of Done
 Geprueft gegen:
 1. `python -X utf8 scripts/r57_rechnung.py` (alle Abschnitte)

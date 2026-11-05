@@ -221,3 +221,4 @@ Naechste: nach 1C -> N-PREIS-PRUEF Werkstatt Schritt 2 (bom.py), dann Pruefer; n
 
 ## 05.11.2026 NACHTMODUS (Ben, D82): PC laeuft durch, Roadmap weiter bis Zwischencheck
 Pause aufgehoben. Waechter wieder an. Bis 5 Sitzungen, hoechstens 2 schwere SolidCraft-Laeufe, freier RAM >= 10 GB vor schwerem Start. Warteschlange: docs/packages/bis-zwischencheck.md.
+- 05.11. Nacht: Runde 70 Strebe gebaut (24a5ee8, 5c8baef). Aus Waechter-Zuegen darf die App KEINE neuen Sitzungen starten, nur vorhandene wecken: Maengel-Inventur -> pruefer-detail-pilot, Pruefer N-MODELL-KOMPLETT -> pruefer-w37-2-3 (Pruefer Luft A spaeter dann frische oder andere Pruefer-Sitzung), A4 + nft_tisch_innen -> auflagen-detail-w60. Modell-Slot frei bis Leitungsordnung geplant (Planer nach Inventur).

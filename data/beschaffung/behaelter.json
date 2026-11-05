@@ -134,110 +134,122 @@
       "luecke": "OFFEN (Quelle): kein Tank d930, daher kein Deckel"
     },
     "BEH-ibc-1000l": {
-      "bemerkung_artikel": "IBC 1000 l mit Gitterkaefig/Palette (Puffer). Gebraucht ca. 110 bis 200 EUR, neu ca. 390 bis 535 EUR. Gebrauchte: Gefahrgut-Vorgeschichte und Reinigung pruefen (Restanhaftungen).",
+      "bemerkung_artikel": "IBC 1000 l als Puffer, NEU und lebensmittelecht. Bestand ersetzt: Monopoel gebraucht = '2. Wahl mit Restanhaftungen', Hornbach GRAF = Gefahrgut-IBC ohne Lebensmittelangabe. Keine Seite nennt EU 10/2011 beim Artikel; Konformitaetserklaerung (EG 1935/2004 + EU 10/2011, Lebensmittelart Wasser) vor Kauf anfordern. Rekubik 'Rebottled FOOD' ist laut Seite NICHT lebensmittelecht; gebrauchte 'zuvor nur Lebensmittel' (schwarzwaldpaletten-home.de 149,99) ohne Nachweis zaehlen nicht.",
       "angebote": [
         {
-          "preis_eur": 109.99,
+          "preis_eur": 229.94,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Monopoel GmbH",
+          "stand": "2026-11-05",
+          "haendler": "Fasswulf (Arthur Wulf Fasshandel)",
           "land": "DE",
-          "url": "https://www.monopoel.de/catalog/container-1000-usage-p-525.html",
+          "url": "https://www.fasswulf.de/products/1000-l-ibc-container-neu-kunststoff-palette-225-50-fda-un",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "gebraucht, 2. Wahl mit Restanhaftungen, PE natur auf diversen Paletten, 1200x1000x1160; Versand zzgl. auf Anfrage (Paketversand nicht moeglich); Gitterkaefig nicht genannt."
+          "bemerkung": "NEU, Mauser UN 225/50, HDPE, 'FDA Lebensmittelzulassung: Ja', 1200 x 1000 x 1165, 59 kg, Kunststoffpalette; 229,94 (193,23 netto); Hauptpreisblock zeigte 0,00; Konformitaetserklaerung auf Wunsch. Kategorie: fuer Nahrungsmittel oder Trinkwasser nur neue IBC."
         },
         {
-          "preis_eur": 389.95,
+          "preis_eur": 299.99,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Hornbach",
+          "stand": "2026-11-05",
+          "haendler": "Rekubik GmbH (Werit, schwarz)",
           "land": "DE",
-          "url": "https://www.hornbach.de/p/ibc-tank-transportcontainer-graf-1-000-l-mit-un-kennzeichnung-geeignet-fuer-gefahrgueter-auf-kunststoff-palette/10230578/",
+          "url": "https://www.rekubik.de/ibc-container/neue-ibc/1000l-ibc-container-schwarz-auf-pe-palette-neu",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "GRAF 1000 l neu, Kunststoffpalette (keine Stahlkufe/Gitterkaefig); Preis aus Kategorieseite gelesen, Versand zzgl. Alternative mit Stahlkufe 494,95 EUR (hornbach.de/p/ibc-1000-stahlkufe-150-80/12199205/)."
+          "bemerkung": "NEU, 'Lebensmittelecht: Ja', 1200 x 1000 x 1160, 60 kg; 299,99 plus 59,99 Spedition; am 05.11. nicht verfuegbar; Konformitaetserklaerung verlinkt, Inhalt nicht gelesen."
+        },
+        {
+          "preis_eur": 187.63,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "Faesser.de (Gerhard van Well GmbH)",
+          "land": "DE",
+          "url": "https://www.faesser.de/IBC-Container/Lebensmittel/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "E",
+          "bemerkung": "IN10WKP150LM neu, Kategorie Lebensmittelzulassung (EG 1935/2004); 187,63 = 157,67 netto x 1,19 gerechnet; Versand zzgl., Lieferung DE nicht genannt."
         }
       ]
     },
     "BEH-ibc-beetwanne": {
-      "bemerkung_artikel": "Wird aus IBC-Behaeltern geschnitten (Bbox 637 x 800 x 2640 mm, 14 Stk); die Wanne ist kein eigenes Handelsprodukt. Beschaffung = gebrauchter oder neuer IBC; wie viele Wannen aus einem IBC entstehen, ist Planerfrage.",
+      "bemerkung_artikel": "Wird aus IBC-Behaeltern geschnitten (Bbox 637 x 800 x 2640, 14 Stk), keine eigene Handelsware. Markt-IBC misst 1200 x 1000 x 1160, die Laenge 2640 ist aus einem IBC nicht schneidbar. OFFEN (Ben): Anzahl IBC je Wanne bzw. Wannenzahl. Lebensmittelnachweis wie BEH-ibc-1000l (neue IBC mit Lebensmittelzulassung, Konformitaetserklaerung anfordern).",
       "angebote": [
         {
-          "preis_eur": 109.99,
+          "preis_eur": 229.94,
           "bezug_einheit": "Stk (je IBC)",
-          "stand": "2026-11-04",
-          "haendler": "Monopoel GmbH",
+          "stand": "2026-11-05",
+          "haendler": "Fasswulf (Arthur Wulf Fasshandel)",
           "land": "DE",
-          "url": "https://www.monopoel.de/catalog/container-1000-usage-p-525.html",
+          "url": "https://www.fasswulf.de/products/1000-l-ibc-container-neu-kunststoff-palette-225-50-fda-un",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "gebrauchter IBC, Rohstoff fuer Wanne."
+          "bemerkung": "Neuer IBC als Rohstoff, 'FDA Lebensmittelzulassung: Ja', je IBC."
         },
         {
-          "preis_eur": 389.95,
+          "preis_eur": 299.99,
           "bezug_einheit": "Stk (je IBC)",
-          "stand": "2026-11-04",
-          "haendler": "Hornbach",
+          "stand": "2026-11-05",
+          "haendler": "Rekubik GmbH (Werit, schwarz)",
           "land": "DE",
-          "url": "https://www.hornbach.de/p/ibc-tank-transportcontainer-graf-1-000-l-mit-un-kennzeichnung-geeignet-fuer-gefahrgueter-auf-kunststoff-palette/10230578/",
+          "url": "https://www.rekubik.de/ibc-container/neue-ibc/1000l-ibc-container-schwarz-auf-pe-palette-neu",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "neuer IBC als Rohstoff."
+          "bemerkung": "Neuer IBC, 'Lebensmittelecht: Ja'; plus 59,99 Spedition; am 05.11. nicht verfuegbar."
         }
-      ]
+      ],
+      "luecke": "OFFEN (Ben): Beetwanne 2640 mm ist aus einem IBC nicht schneidbar; Anzahl IBC je Wanne entscheiden"
     },
     "BEH-fass-hdpe": {
-      "bemerkung_artikel": "HDPE-Fass 500 mm Durchm. (Mischfass), blaues 220-l-Deckelfass ca. 595 x 1010 (Keller & Kalmbach E820343); 500 mm Durchm. nicht eindeutig belegt.",
+      "bemerkung_artikel": "Soll HDPE-Fass d500 (Mischfass, 120 l, Modell d500 x 788). Bestand (220 l, 595 x 1010) passte nicht. Markt: 120-l-Spannringfass d490-496 x H800. OFFEN (Ben): Mass d496 x 800 statt 500 x 788. Hersteller-Lebensmittelnachweis nur als Haendlerangabe, Konformitaetserklaerung nicht gelesen (OFFEN (Quelle)). Nutzung Stammloesung/Dosiervorrat.",
       "angebote": [
         {
-          "preis_eur": 69.12,
+          "preis_eur": 55.22,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Kanister-Vertrieb (Kaufland)",
+          "stand": "2026-11-05",
+          "haendler": "richter & hess Verpackungen",
           "land": "DE",
-          "url": "https://www.kaufland.de/product/564471148/",
+          "url": "https://shop.richter-hess.de/standarddeckelfass-120-l-aus-kunststoff-105d120rbxs.html",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "220 l blau Deckelfass mit Spannring, laut Suchtreffer 46,60 bis 69,12 EUR mit kostenlosem Versand; Seite nicht geoeffnet."
+          "konfidenz": "E",
+          "bemerkung": "120 l, d496 x H800, 'Lebensmittelzulassung: Ja', UN; 55,22 = 46,40 netto x 1,19 gerechnet; Versand DE/AT/CH."
         },
         {
-          "preis_eur": 52.55,
+          "preis_eur": 43.99,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "billiger.de (Preisvergleich plasteo 220 l Weithalsfass blau)",
+          "stand": "2026-11-05",
+          "haendler": "Rekubik GmbH",
           "land": "DE",
-          "url": "https://www.billiger.de/pricelist/4814918053-plasteo-120-liter-weithalsfass-mit-deckel-blau",
+          "url": "https://www.rekubik.de/kanister-faesser/faesser/120-l-weithalsfass-kunststoffdeckelfass-mit-spannring-blau-un-zulassung",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "ab etwa 52,55 EUR; Seite nicht geoeffnet; Titel nennt 120 l, Treffertext 220 l: pruefen."
+          "konfidenz": "Q",
+          "bemerkung": "120 l, 490 x 800, Oeffnung 395, 'Lebensmittelecht: Ja', UN 1H2/X320/S; Konformitaetserklaerung verlinkt, nicht gelesen."
         }
       ]
     },
     "BEH-kanister-hdpe": {
-      "bemerkung_artikel": "Dosiervorrat; Gewinde DIN 61 oder DIN 60 je Modell, auf Auslaufhahn abstimmen.",
+      "bemerkung_artikel": "Dosiervorrat HDPE-Kanister 20 l, Muendung DIN 61 (Deckel 60 mm). Bestand eBay/Kaufland ersetzt. OFFEN (Ben): Mass - Markt 294 x 258 x 378 bzw. 246 x 290 x 385 statt Modell 250 x 285 x 300. Menke: nur auf Anfrage, Mindestmenge 12 (nicht aufgenommen).",
       "angebote": [
         {
-          "preis_eur": 21.99,
+          "preis_eur": 8.66,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "eBay.de-Haendler (Huenersdorff Industriekanister 20 l natur, UN)",
+          "stand": "2026-11-05",
+          "haendler": "richter & hess Verpackungen",
           "land": "DE",
-          "url": "https://www.ebay.de/p/14014263492",
+          "url": "https://shop.richter-hess.de/kanister-20-l-aus-kunststoff-106est20n980-61xova.html",
           "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "kostenloser Versand laut Suchtreffer; Seite nicht geoeffnet."
+          "konfidenz": "E",
+          "bemerkung": "20 l HDPE natur, 294 x 258 x 378, Muendung R61, 'Lebensmittelzulassung: Ja', UN; 8,66 = 7,28 netto x 1,19 gerechnet; 3-5 Werktage."
         },
         {
-          "preis_eur": 15.85,
+          "preis_eur": 18.09,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Kaufland-Verkaeufer (Leerkanister DIN 61 natur 20 l)",
+          "stand": "2026-11-05",
+          "haendler": "subolab",
           "land": "DE",
-          "url": "https://www.kaufland.de/product/454580769/",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Verkaeufer im Suchtreffer nicht eindeutig; Seite nicht geoeffnet."
+          "url": "https://www.subolab.de/20-liter-un-kanister-aus-hdpe-natur-rechteckig-nd61-950-g/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "E",
+          "bemerkung": "20 l, 246 x 290 x 385, Gewinde ND61, 950 g; 18,09 = 15,20 netto x 1,19; keine Lebensmittel-Zertifizierung auf der Seite."
         }
       ]
     },
@@ -330,47 +342,47 @@
       "luecke": "OFFEN (Quelle): kein abgelesener 5-mm-Zuschnittpreis; Zuschnitt und Kleber ungerechnet"
     },
     "BEH-pool-zentral": {
-      "bemerkung_artikel": "Zentralpool, Sonderanfertigung, Bbox 2475 x 4190 x 4190 mm (rund Durchm. ca. 4190, Hoehe im Modell 2475). Handels-Stahlwandpools haben Hoehe 107 bis 132 cm; die Modellhoehe wird von keinem Standardpool erreicht. Preise sind nur Groessenordnung fuer Durchm. 460 cm, Werkstoff und Bauart sind Planerentscheidung.",
-      "angebote": [
-        {
-          "preis_eur": 499,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Hornbach Oesterreich (Marimex Stahlwandpool rund 457 x 107 cm, inkl. Skimmer)",
-          "land": "AT",
-          "url": "https://www.hornbach.at/p/aufstellpool-stahlwandpool-marimex-rund-457x107-cm-inkl-skimmer/12617697/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q",
-          "bemerkung": "Kategorieseite gelesen (nicht Produktseite); Hoehe 107 statt 247,5 cm: nur Preis-Orientierung."
-        },
-        {
-          "preis_eur": 899,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Hornbach Oesterreich (Planet Pool Vision Classic 460 x 120 mit Kartuschenfilter und Leiter)",
-          "land": "AT",
-          "url": "https://www.hornbach.at/p/aufstellpool-stahlwandpool-set-planet-pool-vision-pool-classic-rund-o-460x120-cm-inkl-kartuschenfilteranlage-leiter-weiss/7602701/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q",
-          "bemerkung": "Kategorieseite gelesen; Hoehe 120; Set mit Filter, fuer die Anlage unnoetig."
-        }
-      ],
-      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart; Preise nur Groessenordnung"
+      "bemerkung_artikel": "Zentralpool, Sonderanfertigung, Bbox 2475 x 4190 x 4190 (ca. 34 m3). Kein Standardteil in der Groesse. Naechster Typ: Wellblech-/Stahlpanel-Rundtank mit EPDM-Liner (Evenproducts, UK; Haendler Farmsolutions bewaesserungsprofi.at AT: d2-20 m, H1-6 m, EPDM 0,75/1,00 mm, 'WRAS-zertifizierte Trinkwasseroption'; https://www.bewaesserungsprofi.at/914-wellblechtanks-wassersilo-wasserspeicher). Evenproducts-Tabelle (https://evenproducts.com/products/water-storage-tanks-size-guide/): d4,02 m, 3 Ringe = 2,29 m = 28 m3; 4 Ringe = 3,05 m = 38 m3. Preis fuer d4,02 nicht gelistet (nur 100-m3-Tank 9.084,90, Lieferung nur AT). FIAP Stahl/PVC max d3,5 x 1,2 zu klein. Hornbach-Poolsets (457 x 107 fuer 499; 460 x 120 fuer 899) nur Preis-Orientierung, nicht fuer Fischwasser belegt. OFFEN (Ben): Werkstoff, Bauart und Mass - d4,02 x 2,29 bzw. 3,05 statt 4,19 x 2,475.",
+      "angebote": [],
+      "luecke": "OFFEN (Ben): Werkstoff/Bauart; kein Kaufteil, Preis fuer d4,02 und Fischeignung der Folie OFFEN (Quelle)"
     },
     "BEH-zweitbecken": {
-      "bemerkung_artikel": "Zweitbecken, Eigenbau/Sonderanfertigung, Bbox 1135 x 1867 x 1867; Werkstoff offen.",
+      "bemerkung_artikel": "Zweitbecken rund, Modell d1867 x H1135. Naechstes Kaufteil: PP-C-Rundbecken (Bavaria Aquasolution) d1750 x 1250 (3000 l) oder d1950 x 1250 (3700 l) ueber koiteichbedarf.com (Spedition DE 399) und koi-fischer.com (DE, Versand 200; Preise nur fuer 1250 x 1250 = 949 und 1950 x 1000 = 1499), Lieferzeit 21-35 Werktage; Fisch-/Lebensmitteleignung auf beiden Seiten nicht angegeben. URLs: https://koiteichbedarf.com/haelterungsbecken-rund-oe-1250-2400-mm-629 und https://www.koi-fischer.com/shop1/Koi-Rundbecken-Quarantanebecken-1950-mm-Hohe-1000-mm-Innenhalterung-p621861002. OFFEN (Ben): Mass d1750 x 1250 statt 1867 x 1135.",
       "angebote": [],
-      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart"
+      "luecke": "OFFEN (Ben): Werkstoff/Bauart und Mass; Preis fuer die passende Variante OFFEN (Quelle)"
     },
     "BEH-becken-dritt": {
-      "bemerkung_artikel": "Drittbecken (Sonderanfertigung), Bbox 1150 x 1150 x 1265; ohne Instanz im Modell; Werkstoff offen.",
+      "bemerkung_artikel": "Drittbecken, Bbox 1150 x 1150 x 1265, ohne Instanz im Modell (nicht platziert, Bedarf 0). Naechstes Kaufteil: PP-C-Rundbecken d1250 x 1250 (1500 l), 949,00 plus 200 Versand (koi-fischer.com, https://www.koi-fischer.com/shop1/Koi-Rundbecken-Quarantanebecken-1250-mm-Hohe-1250-mm-Innenhalterung-p621836986) bzw. 849,00 plus 399 (koiteichbedarf.com, Variante unklar); Fischeignung nicht angegeben. OFFEN (Ben): Bedarf und Mass.",
       "angebote": [],
-      "status_vorschlag": "OFFEN (Ben): Werkstoff und Bauart"
+      "luecke": "OFFEN (Ben): nicht platziert, Bedarf pruefen; Mass d1250 x 1250 statt 1150 x 1265"
     },
     "BEH-drittbecken-klein": {
-      "bemerkung_artikel": "Drittbecken klein, Wanne 920 x 920 x 1055, Werkstoff Beton fraglich; kein Kaufteil recherchiert.",
-      "angebote": [],
-      "status_vorschlag": "OFFEN (Ben): Werkstoff"
+      "bemerkung_artikel": "Wanne 920 x 920 x 1055, Beton fraglich; Betonfertigteil als Kaufteil nicht recherchiert. Vorschlag: 500-l-PE-Rundbehaelter d740 x 1230: ANDO Technik (DE) 689,72, 'lebensmittelechtes PE', lieferbar 2-5 Tage; DENIOS (DE) 680,68 = 572,00 netto x 1,19, LLD-PE lebensmittelecht, 3-4 Wochen, Masse auf der Seite nicht genannt. OFFEN (Ben): Werkstoff (Beton oder PE) und Mass d740 x 1230.",
+      "angebote": [
+        {
+          "preis_eur": 689.72,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "ANDO Technik GmbH (PE-Behaelter 500 l)",
+          "land": "DE",
+          "url": "https://ando-technik.com/pe-dosierbehaelter--500l-weiss-h-1230mm--d-740m.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "d740 x H1230, 'lebensmittelechtes PE', lieferbar 2-5 Tage, Versand extra; ersetzt Beton-Wanne 920 x 920 x 1055 nur als Vorschlag."
+        },
+        {
+          "preis_eur": 680.68,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "DENIOS",
+          "land": "DE",
+          "url": "https://www.denios.de/lager-und-dosierbehaelter-aus-polyethylen-pe-500-liter-volumen-natur-transparent-136937/136937",
+          "lieferung_de": "ja",
+          "konfidenz": "E",
+          "bemerkung": "500 l, lebensmittelechtes UV-stabilisiertes LLD-PE; 680,68 = 572,00 netto x 1,19; Versand frei, 3-4 Wochen; Masse auf der Seite nicht genannt."
+        }
+      ],
+      "luecke": "OFFEN (Ben): Werkstoff und Mass (Beton 920 x 920 x 1055 gegen PE 740 x 1230)"
     },
     "PMP-geblaese-luft": {
       "bemerkung_artikel": "Membrangeblaese Luft, Bbox 180 x 230 x 240. Typ Secoh JDK-S-200 passt zur Bbox (240 x 180 x 230,5 mm, 10 kg) [Q, tanks.ie gelesen]. Leistung widerspruechlich: tanks.ie 115 W, R53 180 W, Bestand 204 W; BIBUS nennt 245 l/min bei 100 mbar, R53 schaetzt ca. 176 l/min bei 26 kPa; Spitze 205 l/min traegt eine Pumpe nicht (N+1 ist Planerfrage). Im Wasser: nein. Alternative Hiblow HP-200 toppy.nl NL 674,95, nur Suchtreffer, nicht lieferbar. OFFEN (Ben): Mass/Leistung.",

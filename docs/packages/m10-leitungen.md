@@ -227,3 +227,38 @@ Nicht vorab schliessbar, weil sie erst am fertigen Rohr pruefbar sind: L10 (Nach
 - **Messung nach Runde 72 Teil 1** (`python -X utf8 scripts/check_leitungsordnung.py`, Exit 1): R1 8 (vorher 33; alle 8 in Luft K44, Schritt 7), R2 0, R3 0, R4 1 (vorher 1; jetzt K20 statt K18), R5 0, R6 12 (Schritt 9), R7 0, R8 0, R9 1 (vorher 9), R10 36; Rohre schraeg 29 (Runde 71: 54, Bestand 74).
 - `python -X utf8 scripts/check_leitungen.py`: 3 Verstoesse = K08 Grobkasten (Linie 1, bekannt), Gefaelle K05 (B2) und **K21 (gleicher Befund B2 in Linie 2: Ende steigt 239 mm von unten ins T12)**.
 - **Offen fuer die naechste Montage-Sitzung:** (1) R4 K20: Versatz 338 x 200 mm zwischen Druckstutzen Pumpe_klein:1 und Zulauf Tank_klein:1 laesst zwischen drei Boegen kein 300-mm-Rohr; loesbar nur mit Umweg oder Bauteil-Lage (Befund). (2) R9 Stamm-Steiger K24-K25-Stamm bei x -1018 / y -3942 liegt 827 mm vom Tankmittelpunkt (Naeherung "Gang"); nach dem Build mit `check_walkways.py` pruefen. (3) Build Runde 72 (RAM >= 10 GB, D82), check_walkways, Inventur, Bild. (4) Schritte 5 bis 9.
+
+**Runde 72 Teil 2 und Runde 73 (05.11.2026, Montage): Build Linie 2, dann Schritte 5 bis 9.**
+- Runde 72 (c8be3f4): `sh scripts/build.sh 5 72` Exit 0 (10236 Befehle, 15:47 min), Trassen gleich Commit 98c1fd6; `check_walkways.py` PASS (A 700, B 600, Wandluft 110, Nachbarportale 307, Tuer-Gang 3177, gleich Runde 71).
+- **Schritt 5 Schlammablass:** je Linie `lt_kugelhahn_feder_d40` auf dem Ablaufstutzen d40 der Absetzer-Spitze (Tank_klein:2 / :1), K07/K23 d40: lotrecht in den Graben (Z 230), zwei Strecken in X/Y mit 1,5 % Gefaelle (2 % ergab 88,9-Grad-Knicke, Bogen-Toleranz 1 Grad), lotrecht in die Muffe d40 von `schlammfass` (T93). Lage der Fass-Gruben per Abstandssuche (Grube Oe 800 >= 30 mm frei von Graeben und Bauteil-Kaesten, >= 100 mm vom Pool): Linie 1 x 3925 / y -1461 (1,1 m vom Absetzer), Linie 2 x 1307,5 / y -3083 (0,95 m); 0,7 bis 0,8 m (Bauteilblatt) ist an beiden Absetzern belegt. Biofilter-Tanks Tank_gross:1 und Tank_gross_t3:1: Kugelhahn d50 + Rohrstueck + `lt_kappe_d50` am Ablaufstutzen (KB1/KB2, Wartungsablass).
+- **Schritt 6 Verteiler:** `lt_verteiler_d50` mit Muffe A auf dem Ende von K10/K26 (Achse in Port-Richtung, Abgaenge nach oben), Abgang 3 mit `lt_kappe_d20`, Abgang 4 mit `lt_kappe_d50`, je eine Klemme d50 50 mm vor dem Verteiler. K10/K26 enden nicht mehr offen (`ende: muffe`).
+- **Schritt 7 Luft K44:** `trassen_luft.ordnung_routen()` sucht je Abgang eine Bodenfuehrung nur in X/Y (1 bis 3 Strecken je >= 300 mm, Rohrachsen verschiedener Straenge >= 70 mm, Bodenablauf >= 150 mm frei, Bogenzahl nach R5); Verteiler, Scheiben und Schwimmerventil unveraendert. Zuordnung Abgang -> Scheibe 4, 1, 2, 3; Luftrohr gesamt 19,7 m (Strecken am Boden und an der Wand). Bild `renders/m10-umbau-poolrand-luft-73.png`: vier Straenge rechtwinklig, keine Kreuzung.
+- **Schritt 8 M09:** die Heber-Steiger d75 (K01-b x 3780 / y 1365, K17-b x -1720 / y -2635, Z 150 bis 720) liegen 609 mm (Tisch_mitte:4, Fussplatte_1A) und 492 mm (Tisch_mitte:3, Fussplatte_2B) von den naechsten Tischkoerpern (Kaesten aus `data/bom_koerper.json`, Mantel d75 abgezogen): keine Kollision, Kasten-Kandidat geschlossen.
+- **Schritt 9 Halter:** `leitungen.halter()` setzt je Rohr ueber Flur (beide Enden > Z 400, Laenge >= 300) Klemmen `lt_klemme_d<d>` in gleichen Abstaenden nach R6 (waagerecht Fuss unten, senkrecht Fuss in -X [A]); 12 Klemmen plus 2 an den Verteilern = 14 Halter.
+- **Build Runde 73 (ab3d425):** `sh scripts/build.sh 5 73` Exit 0 (10400 Befehle, 15:09 min), `default_werkstoffe.py --apply` Exit 0. Instanzen (`grep -c` in `scripts/dome-script.json`): Schlammfass 2, LT_Kugelhahn_Feder_d40 2, LT_Verteiler_d50 2, LT_Kappe_d20 2, LT_Kappe_d50 4, LT_Klemme_d32/d40/d50 4/4/6.
+- **Inventur** (`python -I -X utf8 renders/maengel/inventur.py . <aus.json>`, Viewer-Export `viewer/export_model.py` Exit 0, 195 Definitionen, 4988 Instanzen): `frei_ins_leere` **0**; Ablaufstutzen aller vier Tanks **0 mm** zum naechsten Leitungsteil (vorher 290 bis 379); Schlammstutzen 54/49 mm (innerer Stutzen zum tankeigenen Hahn, kein Leitungsanschluss); Halter 14; Boegen 95; `bogenketten_ab3` 2 (beide unterirdisch an den Heber-T T4/T12, d50/d63/d75, Ausnahme 1); `rohre_durch_bauteile` 6 = 4 Luft-Abstiege im Kasten Pool/Tisch_innen:6 (Pool = Ausnahme 3; naechster Tischkoerper 103 bis 196 mm) und die 2 Heber-Steiger aus M09 (geschlossen, siehe Schritt 8).
+- Bilder: `renders/round-73.png`, `renders/section-73.png`, `renders/m10-umbau-absetzer-fass-73.png` (Erde durchsichtig, Fass in der Grube), `renders/m10-umbau-poolrand-luft-73.png` (Luft am Boden, Wasser durchsichtig), `renders/m10-umbau-draufsicht-73.png`.
+
+**Messung vorher (Runde 72) / nachher (Runde 73):**
+
+| Messung | Befehl | Runde 72 | Runde 73 |
+|---|---|---|---|
+| R1 Richtung | `python -X utf8 scripts/check_leitungsordnung.py` | 8 (Luft K44) | **0** |
+| R4 Bogenkette | gleich | 1 (K20) | 1 (K20, Befund unten) |
+| R6 Halter | gleich | 12 Rohre ohne Halter, 0 Halter | **0**, 14 Halter |
+| R9 Gang | gleich | 1 (K24-K25-Stamm) | 1 (gleich) |
+| R2, R3, R5, R7, R8 | gleich | 0 | 0 |
+| R10 Kanten ohne Trasse | gleich | 36 | **34** (Soll 34) |
+| Rohre schraeg > 3 Grad | gleich | 29 (Bestand 74) | 21 (alle in Ausnahme 1 Heber und 2 Port <= 300) |
+| `check_leitungen.py` | `python -X utf8 scripts/check_leitungen.py` | 3 | 3 (K08 Grobkasten, Gefaelle K05 und K21 = Befund B2) |
+| Laufwege | `python -X utf8 scripts/check_walkways.py` | PASS | PASS (gleich) |
+| Heber-Reserve gebaut, schlechter Fall | `python -X utf8 scripts/r45_heber.py` | 65 mm | 65 mm (unveraendert, Befund B3) |
+
+**Pruefpunkt 5, Gerade am Stamm fuer den Stamm-Hahn-Schacht** (Fenster 262 mm entlang jedes Stamm-Rohrs, lichter Abstand zu Rohren anderer Trassen; Skript im Sitzungs-Scratchpad, Rechnung `leitungen.bauen`): Linie 2 K22-T-b Rohr L638: **164 mm** (Soll >= 100, erfuellt). Linie 1: hoechstens **67 mm** (K06-T Rohr L383 neben K56-b am T6; K06-T-b kreuzt K05 bei x 3260 mit 46 mm), **nicht erfuellt**. Probe: Bypass-Tiefleitung 320 statt 200 mm suedlich ergab 98 mm, deshalb zurueckgenommen; Loesung braucht T6 oder den K05-Nordlauf an anderer Lage (Vorschlag: S2N-Planer).
+
+**Befunde (an den Orchestrator):**
+- **B4 Schlammfass tiefer als im Bauteilblatt:** Der Ablaufstutzen der Absetzer endet lokal z 80 (Z 480), der Federhahn reicht bis Z 404. Fuer Gefaelle muss die Fassmuffe bei Z 80,5 liegen: Fassboden flur-relativ -1240, Oberkante -360, Grubensohle -1310 (Blatt `schlammfass.md`: Oberkante Flur 0, Sohle -950). Die Grube braucht eine begehbare Abdeckung (Werkstatt).
+- **B5 Kappe d40 und d32 fehlen:** Verteiler-Abgang 1 (d40, Beete) und 2 (d32, NFT) sind offene Zapfen bis S3 (OFFEN Werkstatt: `lt_kappe_d40`, `lt_kappe_d32`).
+- **B6 Biofilter-Ablass ohne Netz-Knoten:** KB1/KB2 (Kugelhahn d50 + Kappe) haben keine Kante in `data/leitungsnetz.json`.
+- **B7 Halter ohne Konsole:** Die Klemmen sitzen an der Rohrachse; Konsole oder Staender zum Boden/Tafel sind nicht modelliert (OFFEN Werkstatt: Halter). `lt_klemme_d75` fehlt weiter (oberirdisch derzeit kein d75-Rohr ueber Flur).
+- **Unveraendert offen:** R4 K20 (Versatz Druckstutzen Pumpe_klein:1 zu Zulauf Tank_klein:1 laesst kein 300-mm-Rohr zwischen drei Boegen; nur mit Bauteil-Lage loesbar), R9 K24-K25-Stamm (Naeherung "Gang", `check_walkways` PASS), B1 (Strebe ueber Pumpen-Druckstutzen), B2 (K05/K21 Gefaelle, Entscheidung), B3 (Heber-Reserve 65 mm schon im Bestand).

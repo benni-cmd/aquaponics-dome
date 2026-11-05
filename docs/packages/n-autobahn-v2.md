@@ -82,6 +82,13 @@ Befunde (Montage):
 5. **Aussen-Ausleger durchstossen die Kuppel.** Ueber Gang B auf Z 2277 rel ist bei r 5,1 bis 5,5 m kein Platz mehr unter den Facetten (Blatt Abschnitt 4 R2a nannte es "knapp"). Abhilfe (Planer/WA-T): Aussen-Ausleger kuerzer und Schlauch frueher fallen lassen (dann quert er Gang B tiefer als Z 2100) oder Aussen-Abnehmer von unten speisen.
 6. **Schlauch-Komponente ist Darstellungsgeometrie** (`designs/components/ring_b2_schlauchwege.sc`, vorher `ring_b2_schlaeuche.sc`; neuer Name, weil die alte 622-MB-Definition im laufenden Viewer gesperrt blieb): Achtkant-Prismen ohne Bohrung. Die Werkstatt-Teile mit Bohrung ergaben im Viewer 622 MB OBJ (17 MB je Fallleitung) und luden nicht ("Invalid string length"); jetzt 4,9 MB. Wege und Laengen sind unveraendert.
 
+**Uebergabe an FIX-a (Montage R1/R2, 05.11.2026, Kontext 61 %, deshalb FIX-a nicht in dieser Sitzung):**
+1. Lagen: `scripts/trassen_ring.py` (`stuetzpunkte()`, `fallleitungen()`, `schlauch_bauen()`); Ausleger-Laengen aus `data/components/autobahn_teile.json` -> `tragwerk.lagen[].ausleger_laenge`.
+2. Kuppelhaut messen geometrisch: Abstand der Ausleger-Endpunkte zu den Facettenebenen durch die Knotenkugel-Mitten (aus `solidcraft-cli eval designs/dome-ring_b2.sc`). Die CAD-Interferenz Folie x Ausleger bricht ab ("shell boundaries intersect or touch").
+3. Bau: `AUTOBAHN_RUNDE=r2 python -X utf8 scripts/gen_dome.py 5 scripts/dome-script-ring_b2.json --variante ring_b2` (etwa 13 min), dann `solidcraft-cli run scripts/dome-script-ring_b2.json --save designs/dome-ring_b2.sc` (5 bis 10 min). Aendert sich nur der Schlauchweg: `python -X utf8 scripts/trassen_ring.py --schlauch-bauen` (3 min) und nur den CLI-Lauf.
+4. Pruefung: `python -X utf8 scripts/check_autobahn_montage.py r2`; A+-Pruefsumme siehe Plan Punkt 5.
+5. Fallen: Schlauch-Komponente heisst `ring_b2_schlauchwege.sc`; Gesamt-Interferenz ist bei 20.000 Paaren abgeschnitten, gezielt mit `params.bodies` pruefen; Exit-Code von `viewer/export_model.py` nicht hinter `| tail` verstecken.
+
 ### WA-T Tragwerk (Werkstatt, 05.11.2026)
 **Problem:** Joch, Ausleger, Schiene mit Schelle, Ring-Ecke und Podest fehlen als Bauteile. **Intent:** R1/R2 setzen nur fertige Teile. **Goal:** Die WA-T-Pruefpunkte aus Blatt Abschnitt 3 sind in `scripts/workshop/check_autobahn_t.py` gemessen (Exit 0).
 

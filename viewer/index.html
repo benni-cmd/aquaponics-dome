@@ -25,6 +25,8 @@
   #ladewarn::before { content:'Hinweis: '; font-weight:600; }
   #ladefehler { margin:5px 0 0; padding:0 0 0 16px; font-size:12px; color:#ff9b8a; word-break:break-word; }
   #ladefehler:empty { display:none; }
+  #variantenetikett { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:5; padding:3px 12px; border-radius:999px; background:#16384a; border:1px solid var(--sel); font-size:12px; font-weight:600; pointer-events:none; }
+  body.fpv #variantenetikett, body.detail #variantenetikett { display:none; }
   .seg { display:flex; align-items:center; gap:4px; margin:6px 0; }
   .seg > span { color:var(--muted); font-size:12px; margin-right:2px; }
   .seg button[aria-pressed=true] { background:#16384a; border-color:var(--sel); }
@@ -94,6 +96,7 @@
 </head>
 <body>
 <div id="view"></div>
+<div id="variantenetikett"></div>
 <button id="fpvx" title="FPV beenden (Esc)">X</button>
 <div id="ctxmenu"></div><div id="toast"></div>
 <div id="detailpanel"></div>
@@ -101,6 +104,10 @@
 <div id="panel">
   <h1>Kuppel Live-Viewer</h1>
   <div id="status">verbinde ...</div>
+  <div class="seg" id="variante" role="group" aria-label="Kreislauf"><span>Kreislauf:</span>
+    <button type="button" data-variante="a_plus" aria-pressed="true" title="Kreislauf A+ (heutiges Modell)">A+</button>
+    <button type="button" data-variante="ring_b2" aria-pressed="false" title="Kreislauf Ring B2 (Variante, eigener Export)">Ring B2</button>
+  </div>
   <div id="lade" hidden aria-live="polite">
     <div id="ladephase"></div>
     <div class="bar"><i id="ladebalken"></i></div>
@@ -275,13 +282,20 @@ const bullets = a => `<ul>${a.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
 const grouped = a => a.map(g => typeof g === 'string' ? bullets([g]) : `<div class="g">${esc(g.t)}</div>${bullets(g.p)}`).join('');
 const kv = o => `<table class="kv">${Object.entries(o).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</table>`;
 let SPEC = null;
-fetch('/system-specs.json?v=' + Date.now()).then(r => r.json()).then(d => { SPEC = d; topfPatch(); if (!pinned && !selected) showInfo(null); }).catch(() => {});
+// ---- Kreislauf-Variante (N-VARIANTEN VV): A+ oder Ring B2; Adresse ?variante=ring_b2, Wahl im localStorage; Definitionen (defs/) sind gemeinsam ----
+const VARIANTEN = { a_plus: { name: 'A+', ordner: '' }, ring_b2: { name: 'Ring B2', ordner: 'varianten/ring_b2/' } };
+let variante = 'a_plus';
+{ const q = new URLSearchParams(location.search).get('variante'); let ls = null; try { ls = localStorage.getItem('viewer.variante'); } catch (e) {}
+  variante = VARIANTEN[q] ? q : (VARIANTEN[ls] ? ls : 'a_plus'); }
+const varOrdner = () => VARIANTEN[variante].ordner;
+function ladeSpec() { SPEC = null; fetch('/system-specs.json?variante=' + variante + '&v=' + Date.now()).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => { SPEC = d; topfPatch(); if (!pinned && !selected) showInfo(null); }).catch(() => { if (!pinned && !selected) showInfo(null); }); }
+ladeSpec();
 const fm = (x, n = 1) => Number(x).toLocaleString('de-DE', { maximumFractionDigits: n });
 const has = x => x !== undefined && x !== null;
 const kvx = o => kv(Object.fromEntries(Object.entries(o).filter(([, v]) => v)));   // Zeilen ohne Wert (fehlender Schluessel) entfallen
 const rng = (a, u, n = 1) => Array.isArray(a) ? fm(a[0], n) + '–' + fm(a[a.length - 1], n) + ' ' + u : '';
 function overview() {
-  if (!SPEC) return '<span class="ph">Kuppel-Kennzahlen werden geladen ...</span>';
+  if (!SPEC) return `<span class="ph">Kuppel-Kennzahlen (${esc(VARIANTEN[variante].name)}) werden geladen oder liegen für diese Variante noch nicht vor ...</span>`;
   const w = SPEC.wasser || {}, pf = SPEC.pflanzen || {}, f = SPEC.fische || {}, fl = SPEC.fluesse || {}, l = SPEC.leistung || {}, fi = SPEC.filter || {}, k = SPEC.kapazitaet || {};
   const h = SPEC.huelle || {}, hz = l.heizung || {}, fb = f.tabelle_ben || {}, sp = f.spanne || {};
   const wt = {}; (w.teile || []).forEach(t => { wt[t[0]] = fm(t[1]) + ' m³ (' + t[2] + ')'; });
@@ -604,7 +618,7 @@ const pbrVon = e => matPBR(e.farbe, e.deckkraft || 1, e.glanz || 0, e.rauheit ==
 async function ladeAnsichtDaten(inst) {                     // eine Nebendatei statt je Definition ein Abruf (viewer/ansicht.json); ohne sie: Einzelabrufe
   ARTEN = {};
   try {
-    const a = await getJsonWdh('ansicht.json?v=' + Date.now());
+    const a = await getJsonWdh(varOrdner() + 'ansicht.json?v=' + Date.now());
     Object.keys(PARTS).forEach(k => delete PARTS[k]);
     Object.entries(a.komponenten).forEach(([k, v]) => { PARTS[k] = v; });
     if (a.built === inst.built) ARTEN = a.leitungsart || {};          // Art je Instanz nur, wenn die Datei zum selben Export gehoert
@@ -712,8 +726,11 @@ async function load() {
   try {
     Lade.begin('Modell', 'Definition', 0, 0); Lade.letzte = 'instances.json'; Lade.zeige();
     let inst, ex;
-    try { [inst, ex] = await Promise.all([getJsonWdh('instances.json?v=' + v), getJsonWdh('extras.json?v=' + v)]); }
-    catch (e) { Lade.fehlerMelden('Modellverzeichnis nicht lesbar: ' + e.message); Lade.ende(); return; }
+    try { [inst, ex] = await Promise.all([getJsonWdh(varOrdner() + 'instances.json?v=' + v), getJsonWdh(varOrdner() + 'extras.json?v=' + v)]); }
+    catch (e) {
+      Lade.fehlerMelden(variante !== 'a_plus' ? `Die Variante ${VARIANTEN[variante].name} ist noch nicht exportiert (${e.message}). Export: python viewer/export_model.py --variante ${variante}. Das bisherige Modell bleibt stehen.` : 'Modellverzeichnis nicht lesbar: ' + e.message);
+      Lade.ende(); return;
+    }
     extras = ex; GROUND = Number.isFinite(inst.walk_z) ? inst.walk_z : 400;   // begehbarer Boden = Sockelhoehe sock_h
     DEFS_INFO = inst.defs; MIN_DIAG_MM = inst.min_diag || 150; inst_anschluss = !!inst.anschluss_immer_sichtbar; POT = topfzahlen(inst); topfPatch();
     try { FARBEN = farbenLesen(await getJson('farben.json?v=' + v)); } catch (e) { FARBEN = null; Lade.fehlerMelden('farben.json nicht lesbar, es gelten die bisherigen Farben: ' + e.message); }
@@ -733,7 +750,7 @@ async function load() {
     if (selected && !defList[selected.stem]) selected = null;
     perfAufbau = ((performance.now() - t0) / 1000).toFixed(1);
     buildTree(inst); applyAnsicht(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
-    perfText(); Lade.ende();
+    perfText(); ladeGelungen = true; Lade.ende();
   } catch (e) { Lade.fehlerMelden('Aufbau abgebrochen: ' + e.message); Lade.ende(); }
   finally { loadBusy = false; }
   await syncKlein();
@@ -754,6 +771,27 @@ document.getElementById('wire').addEventListener('change', applyWire);
 document.getElementById('clip').addEventListener('input', e => { clipPlane.constant = +e.target.value; });
 document.querySelectorAll('[data-cam]').forEach(b => b.addEventListener('click', () => setCam(b.dataset.cam)));
 
+function varianteAnzeigen() {
+  document.querySelectorAll('[data-variante]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.variante === variante)));
+  document.getElementById('variantenetikett').textContent = 'Kreislauf: ' + VARIANTEN[variante].name;
+  document.title = 'Kuppel Live-Viewer (' + VARIANTEN[variante].name + ')';
+}
+let ladeGelungen = false;
+async function varianteWechseln(neu) {
+  if (neu === variante || loadBusy) return;
+  const zurueck = { v: variante, version };
+  variante = neu; try { localStorage.setItem('viewer.variante', variante); } catch (e) {}
+  const u = new URL(location.href); u.searchParams.set('variante', variante); history.replaceState(null, '', u);
+  varianteAnzeigen(); if (detail.on) closeDetail(); SL = null; ladeSpec();
+  try { const s = await fetch('/api/state?variante=' + variante + '&t=' + Date.now()).then(r => r.json()); version = s.version; } catch (e) {}
+  ladeGelungen = false; await load();
+  if (!ladeGelungen) {                                       // Variante nicht exportiert: das alte Modell bleibt, Schalter und Etikett bleiben bei dem, was wirklich zu sehen ist
+    variante = zurueck.v; version = zurueck.version; try { localStorage.setItem('viewer.variante', variante); } catch (e) {}
+    const u = new URL(location.href); u.searchParams.set('variante', variante); history.replaceState(null, '', u); varianteAnzeigen(); ladeSpec();
+  }
+}
+document.querySelectorAll('[data-variante]').forEach(b => b.addEventListener('click', () => varianteWechseln(b.dataset.variante)));
+varianteAnzeigen();
 let exportHinweisAn = false;
 function exportHinweis(busy) {                             // Export laeuft: nichts laden, sondern sagen warum
   if (busy && !loadBusy && !kleinBusy) { exportHinweisAn = true; clearTimeout(Lade.weg); clearInterval(Lade.timer); Lade.phase = 3; ladeEl.hidden = false; ladeEl.classList.remove('fertig'); ladeBar.style.width = '0%'; ladePhase.textContent = 'Export läuft'; ladeText.textContent = ''; ladeFehler.innerHTML = ''; ladeWarn.hidden = false; ladeWarn.textContent = 'Der Export läuft, das Modell wird danach automatisch neu geladen.'; }
@@ -762,7 +800,7 @@ function exportHinweis(busy) {                             // Export laeuft: nic
 async function poll() {
   const st = document.getElementById('status');
   try {
-    const s = await fetch('/api/state?t=' + Date.now()).then(r => r.json());
+    const s = await fetch('/api/state?variante=' + variante + '&t=' + Date.now()).then(r => r.json());
     const auto = document.getElementById('auto').checked;
     st.innerHTML = `Modell gespeichert <b>${s.design_saved || '-'}</b> · Viewer <b>${s.built || '-'}</b>` +
       (s.busy ? ' · <b>exportiert ...</b>' : '') + (s.error ? '<br>Fehler: ' + s.error.replace(/</g, '&lt;') : '') +
@@ -837,7 +875,7 @@ let SL = null;
 async function ladeStueckliste() {
   if (SL) return;
   try {
-    const d = await getJson('/stueckliste.json?v=' + Date.now()), by = new Map();
+    const d = await getJson('/stueckliste.json?variante=' + variante + '&v=' + Date.now()), by = new Map();
     d.zeilen.forEach(z => by.set(z.artikel_id, z)); SL = { by, kopf: d.kopf, komp: Object.fromEntries(d.komponenten.map(c => [c.komponente, c])) };
   } catch (e) { SL = null; }
 }

@@ -1,0 +1,1383 @@
+{
+ "tragwerk": {
+  "quelle": "scripts/workshop/autobahn_t.py",
+  "auftrag": "docs/jobs/N-AUTOBAHN-V2.md Abschnitt 3, WA-T (WA1 bis WA4, WA7)",
+  "variante": "ring_b2",
+  "hoehenkette_rel": {
+   "achse": 2145.0,
+   "schelle_unten": 2101.5,
+   "nabe": 2199.0,
+   "schiene_u": 2212.0,
+   "schiene_o": 2253.0,
+   "platte_o": 2257.0,
+   "traeger_o": 2297.0,
+   "kr_oben": 2300.0,
+   "gang_frei": 2100.0
+  },
+  "ring": {
+   "apothem": 3377.0,
+   "eckradius": 3550.8,
+   "seite": 2194.5,
+   "umfang_m": 21.95,
+   "hinweis": "Planer-Blatt rechnete mit ap 3277 (nft_tisch.json); im Modell steht der Mittelring seit D63 auf 3377 (ring_shift_mid +100)"
+  },
+  "ausleger_ziel_ab_ring": {
+   "innen": 1590.9,
+   "aussen": 1784.3
+  },
+  "ausleger_laengen": {
+   "joch_innen": 1020,
+   "joch_aussen": 1210,
+   "stelze_innen": 1520,
+   "stelze_aussen": 1370
+  },
+  "lagen": [
+   {
+    "ecke_az": -161.7,
+    "art": "joch",
+    "teil": "portal_joch_mitte_b",
+    "tisch": "Tisch_mitte:2",
+    "bock": "b",
+    "abstand_ecke": 505.3,
+    "matrix_tisch": [
+     0.005235964,
+     0.999986292,
+     0,
+     -3377.0,
+     -0.999986292,
+     0.005235964,
+     0,
+     -17.7,
+     0,
+     0,
+     1,
+     400
+    ],
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    }
+   },
+   {
+    "ecke_az": -125.7,
+    "art": "joch",
+    "teil": "portal_joch_mitte_b",
+    "tisch": "Tisch_mitte:3",
+    "bock": "b",
+    "abstand_ecke": 505.3,
+    "matrix_tisch": [
+     0.592013179,
+     0.805928282,
+     0,
+     -2721.6,
+     -0.805928282,
+     0.592013179,
+     0,
+     -1999.2,
+     0,
+     0,
+     1,
+     400
+    ],
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    }
+   },
+   {
+    "ecke_az": -89.7,
+    "art": "stelze",
+    "teil": "ringstuetze_d75_b",
+    "ausleger": {
+     "innen": true,
+     "aussen": false
+    },
+    "vorschlag": "Pfosten radial aussen vor der Ecke (r 3801), Kragarm +X zeigt zur Kuppelmitte; Standort darf 300 mm entlang der Ringseite wandern (Blatt 2.3)"
+   },
+   {
+    "ecke_az": -53.7,
+    "art": "stelze",
+    "teil": "ringstuetze_d75_b",
+    "ausleger": {
+     "innen": true,
+     "aussen": false
+    },
+    "vorschlag": "Pfosten radial aussen vor der Ecke (r 3801), Kragarm +X zeigt zur Kuppelmitte; Standort darf 300 mm entlang der Ringseite wandern (Blatt 2.3)"
+   },
+   {
+    "ecke_az": -17.7,
+    "art": "stelze",
+    "teil": "ringstuetze_d75_b",
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    },
+    "vorschlag": "Pfosten radial aussen vor der Ecke (r 3801), Kragarm +X zeigt zur Kuppelmitte; Standort darf 300 mm entlang der Ringseite wandern (Blatt 2.3)"
+   },
+   {
+    "ecke_az": 18.3,
+    "art": "joch",
+    "teil": "portal_joch_mitte_a",
+    "tisch": "Tisch_mitte:4",
+    "bock": "a",
+    "abstand_ecke": 595.3,
+    "matrix_tisch": [
+     -0.592013179,
+     -0.805928282,
+     0,
+     2721.6,
+     0.805928282,
+     -0.592013179,
+     0,
+     1999.2,
+     0,
+     0,
+     1,
+     400
+    ],
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    }
+   },
+   {
+    "ecke_az": 54.3,
+    "art": "joch",
+    "teil": "portal_joch_mitte_b",
+    "tisch": "Tisch_mitte:4",
+    "bock": "b",
+    "abstand_ecke": 505.3,
+    "matrix_tisch": [
+     -0.592013179,
+     -0.805928282,
+     0,
+     2721.6,
+     0.805928282,
+     -0.592013179,
+     0,
+     1999.2,
+     0,
+     0,
+     1,
+     400
+    ],
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    }
+   },
+   {
+    "ecke_az": 90.3,
+    "art": "joch",
+    "teil": "portal_joch_mitte_b",
+    "tisch": "Tisch_mitte:5",
+    "bock": "b",
+    "abstand_ecke": 505.3,
+    "matrix_tisch": [
+     -0.952661481,
+     -0.304033061,
+     0,
+     1026.7,
+     0.304033061,
+     -0.952661481,
+     0,
+     3217.1,
+     0,
+     0,
+     1,
+     400
+    ],
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    }
+   },
+   {
+    "ecke_az": 126.3,
+    "art": "joch",
+    "teil": "portal_joch_mitte_b",
+    "tisch": "Tisch_mitte:6",
+    "bock": "b",
+    "abstand_ecke": 505.3,
+    "matrix_tisch": [
+     -0.949425478,
+     0.313992456,
+     0,
+     -1060.4,
+     -0.313992456,
+     -0.949425478,
+     0,
+     3206.2,
+     0,
+     0,
+     1,
+     400
+    ],
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    }
+   },
+   {
+    "ecke_az": 162.3,
+    "art": "joch",
+    "teil": "portal_joch_mitte_b",
+    "tisch": "Tisch_mitte:1",
+    "bock": "b",
+    "abstand_ecke": 505.3,
+    "matrix_tisch": [
+     -0.583541211,
+     0.812083527,
+     0,
+     -2742.4,
+     -0.812083527,
+     -0.583541211,
+     0,
+     1970.6,
+     0,
+     0,
+     1,
+     400
+    ],
+    "ausleger": {
+     "innen": true,
+     "aussen": true
+    }
+   }
+  ],
+  "teile": {
+   "portal_joch_mitte_a": {
+    "teilenummer": "WA1-A",
+    "ks": "= Tisch-KS nft_tisch_mitte (Instanzmatrix des Tisches uebernehmen)",
+    "geometrie": {
+     "e0": -522.0,
+     "e1": -482.0,
+     "xe": -502.0,
+     "dist": [
+      -482.0,
+      -478.0
+     ],
+     "px": [
+      -534.0,
+      -425.0
+     ],
+     "bolts": [
+      -528.0,
+      -431.0
+     ],
+     "y_end": 567.0,
+     "y_flansch": 575.0,
+     "abstand_ecke": 595.2538141785246
+    },
+    "ports": [
+     {
+      "name": "Schiene (Auflage Oberkante Montageschiene 41)",
+      "lage": [
+       -502.0,
+       0.0,
+       2253.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Auflage",
+      "dn": "Schiene 41"
+     },
+     {
+      "name": "Ausleger innen (Stirnplatte)",
+      "lage": [
+       -502.0,
+       575.0,
+       2277.0
+      ],
+      "richtung": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Ausleger aussen (Stirnplatte)",
+      "lage": [
+       -502.0,
+       -575.0,
+       2277.0
+      ],
+      "richtung": [
+       0.0,
+       -1.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     }
+    ]
+   },
+   "portal_joch_mitte_b": {
+    "teilenummer": "WA1-B",
+    "ks": "= Tisch-KS nft_tisch_mitte (Instanzmatrix des Tisches uebernehmen)",
+    "geometrie": {
+     "e0": 572.0,
+     "e1": 612.0,
+     "xe": 592.0,
+     "dist": [
+      568.0,
+      572.0
+     ],
+     "px": [
+      516.0,
+      624.0
+     ],
+     "bolts": [
+      522.0,
+      618.0
+     ],
+     "y_end": 567.0,
+     "y_flansch": 575.0,
+     "abstand_ecke": 505.25381417852464
+    },
+    "ports": [
+     {
+      "name": "Schiene (Auflage Oberkante Montageschiene 41)",
+      "lage": [
+       592.0,
+       0.0,
+       2253.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Auflage",
+      "dn": "Schiene 41"
+     },
+     {
+      "name": "Ausleger innen (Stirnplatte)",
+      "lage": [
+       592.0,
+       575.0,
+       2277.0
+      ],
+      "richtung": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Ausleger aussen (Stirnplatte)",
+      "lage": [
+       592.0,
+       -575.0,
+       2277.0
+      ],
+      "richtung": [
+       0.0,
+       -1.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     }
+    ]
+   },
+   "ausleger_schlauch_1020": {
+    "teilenummer": "WA2-1020",
+    "laenge": 1020,
+    "ks": "Flanschanlage x 0, Arm +X, Armmitte z 0 (= Z 2277 rel im Modell)",
+    "ports": [
+     {
+      "name": "Flansch (an Joch/Stelze)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Halter 1 l (Schlauchachse)",
+      "lage": [
+       176.7,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 1 r (Schlauchachse)",
+      "lage": [
+       176.7,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 l (Schlauchachse)",
+      "lage": [
+       514.0,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 r (Schlauchachse)",
+      "lage": [
+       514.0,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 l (Schlauchachse)",
+      "lage": [
+       851.3,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 r (Schlauchachse)",
+      "lage": [
+       851.3,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Fall l (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1230.0,
+       42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     },
+     {
+      "name": "Fall r (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1230.0,
+       -42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     }
+    ]
+   },
+   "ausleger_schlauch_1210": {
+    "teilenummer": "WA2-1210",
+    "laenge": 1210,
+    "ks": "Flanschanlage x 0, Arm +X, Armmitte z 0 (= Z 2277 rel im Modell)",
+    "ports": [
+     {
+      "name": "Flansch (an Joch/Stelze)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Halter 1 l (Schlauchachse)",
+      "lage": [
+       158.2,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 1 r (Schlauchachse)",
+      "lage": [
+       158.2,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 l (Schlauchachse)",
+      "lage": [
+       458.8,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 r (Schlauchachse)",
+      "lage": [
+       458.8,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 l (Schlauchachse)",
+      "lage": [
+       759.2,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 r (Schlauchachse)",
+      "lage": [
+       759.2,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 4 l (Schlauchachse)",
+      "lage": [
+       1059.8,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 4 r (Schlauchachse)",
+      "lage": [
+       1059.8,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Fall l (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1420.0,
+       42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     },
+     {
+      "name": "Fall r (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1420.0,
+       -42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     }
+    ]
+   },
+   "ausleger_schlauch_1370": {
+    "teilenummer": "WA2-1370",
+    "laenge": 1370,
+    "ks": "Flanschanlage x 0, Arm +X, Armmitte z 0 (= Z 2277 rel im Modell)",
+    "ports": [
+     {
+      "name": "Flansch (an Joch/Stelze)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Halter 1 l (Schlauchachse)",
+      "lage": [
+       178.2,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 1 r (Schlauchachse)",
+      "lage": [
+       178.2,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 l (Schlauchachse)",
+      "lage": [
+       518.8,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 r (Schlauchachse)",
+      "lage": [
+       518.8,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 l (Schlauchachse)",
+      "lage": [
+       859.2,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 r (Schlauchachse)",
+      "lage": [
+       859.2,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 4 l (Schlauchachse)",
+      "lage": [
+       1199.8,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 4 r (Schlauchachse)",
+      "lage": [
+       1199.8,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Fall l (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1580.0,
+       42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     },
+     {
+      "name": "Fall r (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1580.0,
+       -42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     }
+    ]
+   },
+   "ausleger_schlauch_1520": {
+    "teilenummer": "WA2-1520",
+    "laenge": 1520,
+    "ks": "Flanschanlage x 0, Arm +X, Armmitte z 0 (= Z 2277 rel im Modell)",
+    "ports": [
+     {
+      "name": "Flansch (an Joch/Stelze)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       -1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Halter 1 l (Schlauchachse)",
+      "lage": [
+       197.0,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 1 r (Schlauchachse)",
+      "lage": [
+       197.0,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 l (Schlauchachse)",
+      "lage": [
+       575.0,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 2 r (Schlauchachse)",
+      "lage": [
+       575.0,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 l (Schlauchachse)",
+      "lage": [
+       953.0,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 3 r (Schlauchachse)",
+      "lage": [
+       953.0,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 4 l (Schlauchachse)",
+      "lage": [
+       1331.0,
+       42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Halter 4 r (Schlauchachse)",
+      "lage": [
+       1331.0,
+       -42.5,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Schlauchclip",
+      "dn": "AD <= 35"
+     },
+     {
+      "name": "Fall l (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1730.0,
+       42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     },
+     {
+      "name": "Fall r (Schlauch senkrecht nach dem Sattel)",
+      "lage": [
+       1730.0,
+       -42.5,
+       -210.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Schlauchfuehrung",
+      "dn": "frei"
+     }
+    ]
+   },
+   "ringstuetze_d75_b": {
+    "teilenummer": "T95-B",
+    "ks": "wie T95 (Pfosten im Ursprung, Kragarm +X, Ring entlang Y bei x 250)",
+    "ports": [
+     {
+      "name": "Schienenecke (Auflage Oberkante Schienenverbinder 36)",
+      "lage": [
+       250.0,
+       0.0,
+       2257.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Auflage",
+      "dn": "Verbinder 36"
+     },
+     {
+      "name": "Scheitel-Schelle (Stummel M8 durch den Kragarm)",
+      "lage": [
+       346.49,
+       0.0,
+       2297.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Bohrung",
+      "dn": "M8"
+     },
+     {
+      "name": "Ausleger +X (Stirnplatte Kragarm)",
+      "lage": [
+       414.492,
+       0.0,
+       2277.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Ausleger -X (Stirnplatte Gegenarm)",
+      "lage": [
+       -68.0,
+       0.0,
+       2277.0
+      ],
+      "richtung": [
+       -1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Flansch",
+      "dn": "2 x M10"
+     },
+     {
+      "name": "Fuss (Innenboden)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Auflage + 4 Anker M10",
+      "dn": "200x200"
+     }
+    ]
+   },
+   "montageschiene_41_2179": {
+    "teilenummer": "WA3-S41-2179",
+    "parameter": {
+     "b": 41.0,
+     "h": 41.0,
+     "t": 2.5,
+     "schlitz": 22.0,
+     "laenge": 2179.2
+    },
+    "querschnitt": {
+     "A": 330.0,
+     "zs": 23.71,
+     "I": 71705.68,
+     "W": 3024.49,
+     "kg_m": 2.59
+    },
+    "ks": "Schiene entlang X ab 0, Schlitz unten z 0 (= Z 2212 rel), Ruecken z 41",
+    "anzahl_im_ring": 10
+   },
+   "lt_klemme_d75": {
+    "teilenummer": "LT-KL-75-S",
+    "ks": "Rohrachse X durch Ursprung (= Z 2145 rel)",
+    "unterkante": -43.5,
+    "ports": [
+     {
+      "name": "Rohrachse (Ring d75)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Aufnahme",
+      "dn": "DN65"
+     },
+     {
+      "name": "Befestigung (Auflage der Mutter)",
+      "lage": [
+       0.0,
+       0.0,
+       69.5
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Mutter M8",
+      "dn": "M8"
+     }
+    ]
+   },
+   "lt_klemme_d75_ecke": {
+    "teilenummer": "LT-KL-75-E",
+    "ks": "Rohrachse X durch Ursprung (= Z 2145 rel)",
+    "unterkante": -43.5,
+    "ports": [
+     {
+      "name": "Rohrachse (Ring d75)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Aufnahme",
+      "dn": "DN65"
+     },
+     {
+      "name": "Befestigung (Auflage der Mutter)",
+      "lage": [
+       0.0,
+       0.0,
+       112.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Mutter M8",
+      "dn": "M8"
+     }
+    ]
+   },
+   "lt_klemme_d75_stelze": {
+    "teilenummer": "LT-KL-75-S",
+    "ks": "Rohrachse X durch Ursprung (= Z 2145 rel)",
+    "unterkante": -43.5,
+    "ports": [
+     {
+      "name": "Rohrachse (Ring d75)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "art": "Aufnahme",
+      "dn": "DN65"
+     },
+     {
+      "name": "Befestigung (Auflage der Mutter)",
+      "lage": [
+       0.0,
+       0.0,
+       152.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Mutter M8",
+      "dn": "M8"
+     }
+    ]
+   },
+   "schienenverbinder_36": {
+    "teilenummer": "WA3-SV36",
+    "ks": "Ecke der Schienen-Mittellinien im Ursprung, Platte z 0..4 auf dem Schienenruecken (= Z 2253 rel)",
+    "anzahl_im_ring": 10
+   },
+   "ring_ecke_d75": {
+    "teilenummer": "WA4-36",
+    "parameter": {
+     "d": 75.0,
+     "sdr": 17.0,
+     "r_faktor": 25.0,
+     "schenkel": 150.0
+    },
+    "geometrie": {
+     "R": 1875.0,
+     "wand": 4.41,
+     "di": 66.18,
+     "end": [
+      446.2609233908446,
+      0.0,
+      1373.4498972046292
+     ],
+     "dir": [
+      0.5877852522924731,
+      0.0,
+      0.8090169943749475
+     ],
+     "tangente": 609.22,
+     "bogen_l": 1178.1,
+     "stich": 96.49,
+     "achs_l": 1478.1,
+     "ecke_bis_port": 759.22
+    },
+    "ports": [
+     {
+      "name": "A",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "Rohrende",
+      "dn": "d75"
+     },
+     {
+      "name": "B",
+      "lage": [
+       446.261,
+       0.0,
+       1373.45
+      ],
+      "richtung": [
+       0.58779,
+       0.0,
+       0.80902
+      ],
+      "art": "Rohrende",
+      "dn": "d75"
+     }
+    ]
+   },
+   "pegelschacht_podest": {
+    "teilenummer": "WA7",
+    "parameter": {
+     "b": 480.0,
+     "profil": 40.0,
+     "wand": 3.0,
+     "platte_t": 6.0,
+     "fuss_b": 100.0,
+     "fuss_t": 6.0,
+     "riegel_z": 400.0,
+     "ring_h": 60.0,
+     "ring_t": 3.0,
+     "ring_luft": 5.0,
+     "anker_d": 8.0
+    },
+    "hoehe": 820,
+    "k10_rechnung": {
+     "h_max": 820.0,
+     "bogen": 91.0,
+     "stueck": 72,
+     "zport": 575.0
+    },
+    "ports": [
+     {
+      "name": "Fass (Ursprung Pegelschacht T94)",
+      "lage": [
+       0.0,
+       0.0,
+       820
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       1.0
+      ],
+      "art": "Auflage",
+      "dn": "Fass d400"
+     },
+     {
+      "name": "Fuss (Innenboden)",
+      "lage": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "richtung": [
+       0.0,
+       0.0,
+       -1.0
+      ],
+      "art": "4 Fussplatten, je 1 Anker M8",
+      "dn": "480x480"
+     }
+    ]
+   }
+  }
+ }
+}

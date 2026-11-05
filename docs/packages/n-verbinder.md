@@ -26,6 +26,7 @@ Pruefpunkte des Blatts gemessen:
 4. Groesster Achsversatz 15,07 mm (n02, 5-wertig, 24 Grad Drehung) → BEFUND an Ben: 5-Loch-Platte fuer die 6 fuenfwertigen Knoten; 4- und 6-wertig 1,1 mm.
 5. 8 Bilder inkl. 2 Explosionsbilder, angesehen und gegen das Foto verglichen; Teiledaten `check_parts.py knoten_schere` 22/22.
 Abweichung vom Blatt: A und B unterscheiden sich auch in der Lage der Knicklinie (A r 72,1, B r 63,0), weil die gemeinsame Platte eine gemeinsame Hoehe erzwingt; Zuschnitt gleich. Naechster Schritt: fremder Pruefer, dann Ben-Abnahme.
+Werkstatt W83 05.11.2026 nachmittags (Ben: obere und untere Lochplatte, Scheren dazwischen): `knoten_schere_platte.sc` ist jetzt ein Plattenpaar (2 gleiche Platten D 110 x 8, Spalt 10 mm = zwei Laschenaugen), Plattenschraube M10 x 45 durch beide Platten, Arme unveraendert. Pruefer-Auflagen a1ed36b: Auflage 5 erledigt (Probe n02 fuenfwertig als Pflichtlauf im Check), Auflage 4 Viewer-Detailansicht angesehen (13 Teile, Gruppe Plattenpaar). Check `python -X utf8 scripts/workshop/check_knoten_schere.py` → 35/35 PASS, Exit 0 (n01 und n02 ohne Durchdringung > 0,1 mm3); `check_parts.py knoten_schere` 22/22; 9 Bilder neu (neu: 09 Plattenpaar nah). Masse aller Knoten ohne Rohre 63,7 kg. Offen bei Ben: 5-Loch-Platte, vier Blatt-Fragen; Auflage 3 (Blatt-Text Knicklinie) beim Orchestrator.
 
 ## DoD
 - R56 enthaelt alle sechs Abschnitte des Auftrags mit [A]/[E]/[Q]-Kennzeichnung.

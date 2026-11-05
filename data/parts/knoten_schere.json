@@ -3,17 +3,18 @@
  "datei": "designs/components/knoten_schere.sc",
  "teilenummer": "T60S",
  "stand": "pilot",
- "titel": "Scherenknoten (Lochplatte + Schere je Strebe), Detailmodell mit einem Arm B",
- "kurz": "Die Lochplatte verbindet die Streben eines Knotens. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch; die zwei Nasen der Schere stehen durch zwei Gegenloecher im Rohr. Die Montage setzt je Knoten eine Platte und 4, 5 oder 6 Arme.",
+ "titel": "Scherenknoten (Plattenpaar + Schere je Strebe), Detailmodell mit einem Arm B",
+ "kurz": "Zwei Lochplatten (oben und unten) verbinden die Streben eines Knotens; die Laschenaugen liegen dazwischen. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch; die zwei Nasen der Schere stehen durch zwei Gegenloecher im Rohr. Die Montage setzt je Knoten ein Plattenpaar und 4, 5 oder 6 Arme.",
  "hinweis": "Abnahme-Vorlage fuer Ben (N-VERBINDER). Alle Kopfmasse sind Annahmen aus dem Foto ohne Massstab (R56). Offen bei Ben: Rundrohr statt Vierkant, Laschendicke 5 oder 8 mm, Lochbild der 5-wertigen Knoten.",
- "koerperzahl": 12,
+ "koerperzahl": 13,
  "gruppen": [
   {
    "id": "platte",
-   "name": "Lochplatte",
-   "kurz": "Eine je Knoten.",
+   "name": "Plattenpaar",
+   "kurz": "Obere und untere Platte, ein Paar je Knoten (W83).",
    "teile": [
     "lochplatte",
+    "lochplatte_unten",
     "plattenschraube",
     "plattenscheibe_oben",
     "plattenscheibe_unten",
@@ -50,7 +51,7 @@
    "konfidenz": "angenommen",
    "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
    "id": "lochplatte",
-   "name": "Lochplatte",
+   "name": "Lochplatte oben",
    "koerper": [
     "Lochplatte"
    ],
@@ -73,6 +74,37 @@
      1.0
     ],
     "abstand_mm": 170.0
+   }
+  },
+  {
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "nein",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "ausnahme": "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage",
+   "id": "lochplatte_unten",
+   "name": "Lochplatte unten",
+   "koerper": [
+    "Lochplatte_unten"
+   ],
+   "menge": 1,
+   "typ": "platte",
+   "werkstoff": "stahl_verzinkt",
+   "masse_mm": "wie die obere: Scheibe D 110 x 8, 6 Loecher D 11 auf r 37, Mittelbohrung D 20",
+   "funktion": "Die untere Platte (W83, Ben) klemmt die Laschenaugen von unten. Mit der oberen Platte bildet sie ein Paar: jede Plattenschraube geht durch beide Platten und beide Augen, die Augen sind zweischnittig gefasst.",
+   "eigenschaften": [
+    "Gleiches Laserteil wie die obere Platte (ein Zuschnitt, 52 Stueck fuer 26 Knoten).",
+    "Oberkante 25.5 mm unter dem Knotenpunkt; der Laschenknick liegt ausserhalb beider Platten (r 63 bzw. 72 gegen Plattenrand r 55)."
+   ],
+   "norm": "EN 10025-2 S235 (Blech) [A]",
+   "quelle": "Wunschbuch W83 (Ben 05.11.); Masse wie obere Platte [A]",
+   "explosion": {
+    "richtung": [
+     0.0,
+     0.0,
+     -1.0
+    ],
+    "abstand_mm": 95.0
    }
   },
   {
@@ -173,14 +205,14 @@
   },
   {
    "id": "plattenschraube",
-   "name": "Plattenschraube M10 x 35",
+   "name": "Plattenschraube M10 x 45",
    "koerper": [
     "Platte_Schraube"
    ],
    "menge": 1,
    "typ": "normteil",
    "werkstoff": "stahl_verzinkt",
-   "masse_mm": "M10 x 35",
+   "masse_mm": "M10 x 45",
    "funktion": "Schraubt beide Laschenaugen auf ein Loch der Platte; traegt die ganze Strebenkraft (einschnittig).",
    "eigenschaften": [
     "Angezogen kann sich die Schere nicht mehr oeffnen."
@@ -243,7 +275,7 @@
    "typ": "normteil",
    "werkstoff": "stahl_verzinkt",
    "masse_mm": "10,5 x 20 x 2",
-   "funktion": "Liegt unter Lasche 1 vor der Mutter.",
+   "funktion": "Liegt unter der unteren Platte vor der Mutter.",
    "eigenschaften": [
     "Flache Scheibe."
    ],
@@ -261,7 +293,7 @@
      0.0,
      -1.0
     ],
-    "abstand_mm": 70.0
+    "abstand_mm": 150.0
    }
   },
   {
@@ -292,7 +324,7 @@
      0.0,
      -1.0
     ],
-    "abstand_mm": 110.0
+    "abstand_mm": 195.0
    }
   },
   {

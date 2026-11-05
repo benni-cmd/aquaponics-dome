@@ -19,7 +19,7 @@ def explode_vectors():
     m = lambda v, s: [round(x * s, 3) for x in v]
     return {"Lochplatte": [0, 0, 170], "Platte_ScheibeO": [0, 0, 225], "Platte_Schraube": [0, 0, 285],
             "Lasche_2": [0, 70, 45], "Lasche_1": [0, -70, -30],
-            "Platte_ScheibeU": [0, 0, -70], "Platte_Mutter": [0, 0, -110],
+            "Lochplatte_unten": [0, 0, -95], "Platte_ScheibeU": [0, 0, -150], "Platte_Mutter": [0, 0, -195],
             "Dreh_ScheibeO": m(n, 45), "Dreh_Schraube": m(n, 90), "Dreh_ScheibeU": m(n, -50), "Dreh_Mutter": m(n, -85),
             "Rohrstueck": m(u, 230)}
 
@@ -40,7 +40,8 @@ def main():
         ("05-explosion-draufsicht", expl, [210, 0, 0], 0.0, 1.5607, 640, []),
         ("06-nase-detail", ks.OUT["B"], [round(x, 2) for x in ks.Geo("B").pt(ks.Geo("B").s_nose)], 0.45, 0.35, 200, glass),
         ("07-arm-b-seite", ks.OUT["B"], [110, 0, -40], 0.0, 0.0, 320, glass),
-        ("08-arm-a-seite", ks.OUT["A"], [110, 0, -40], 0.0, 0.0, 320, glass)]
+        ("08-arm-a-seite", ks.OUT["A"], [110, 0, -40], 0.0, 0.0, 320, glass),
+        ("09-plattenpaar-nah", probe, [0, 0, -22], 0.35, 0.18, 300, [])]   # W83: obere + untere Platte, Laschenaugen dazwischen
     nur = sys.argv[sys.argv.index("--nur") + 1].split(",") if "--nur" in sys.argv else None
     for nm, f, tgt, yaw, pitch, dist, extra in shots:
         if nur and nm[:2] not in nur:

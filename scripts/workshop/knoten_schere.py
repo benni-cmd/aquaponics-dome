@@ -1,7 +1,8 @@
 """Scherenknoten (W74, R56, Blatt docs/jobs/N-VERBINDER.md): EIN Bauteil, die Montage setzt nur Instanzen.
 
 Teile (je eine Datei, alle im selben Rahmen):
-  designs/components/knoten_schere_platte.sc   Lochplatte D 110 x 8, 6 Loecher auf r 37, Mittelbohrung (1 je Knoten)
+  designs/components/knoten_schere_platte.sc   Plattenpaar (W83): obere und untere Lochplatte D 110 x 8, 6 Loecher auf r 37, Mittelbohrung;
+                                               die Laschenaugen liegen dazwischen (1 Paar je Knoten)
   designs/components/knoten_schere_arm_a.sc    Schere (2 Laschen, Drehpunkt M8, Plattenschraube M10) + Rohrende 250 mm, Knick A
   designs/components/knoten_schere_arm_b.sc    wie A, Knick B (A und B unterscheiden sich NUR im Knickwinkel)
   designs/components/knoten_schere.sc          Detailmodell fuer den Viewer: Platte + ein Arm B (flach gebaut, eindeutige Koerpernamen)
@@ -52,7 +53,9 @@ class Geo:
         # EINE Platte fuer A und B -> eine Plattenhoehe: Mittelebene aus B (bend_r), Knicklinie je Typ so, dass die Achse durch den Ursprung geht
         self.z_mid = -P["bend_r"] * math.tan(math.radians(tilt("B")))
         self.bend = -self.z_mid / math.tan(th)                    # Lage der Knicklinie (B = bend_r, A weiter aussen)
-        self.z_plate_bot = self.z_mid + t                         # Platte liegt auf Lasche 2
+        self.z_plate_bot = self.z_mid + t                         # obere Platte liegt auf Lasche 2
+        self.z_plate2_top = self.z_mid - t                        # untere Platte (W83) liegt unter Lasche 1
+        self.z_plate2_bot = self.z_plate2_top - P["plate_t"]
         self.B0 = [self.bend, 0.0, self.z_mid]
         self.s_pivot = P["bolt_circle_r"] + P["a_plate_to_pivot"] - self.bend   # gleicher Laschenzuschnitt fuer A und B
         self.s_nose = self.s_pivot + P["b_pivot_to_nose"]
@@ -76,8 +79,8 @@ def materials(b):
         b.add("material.create", name=nm, density_g_cm3=7.85, color=col, pbr={"metallic": 0.8, "roughness": 0.5, "dielectric_ior": 1.5})
 
 
-def build_plate(b, z_bot, pre=""):
-    nm = pre + "Lochplatte"
+def build_plate(b, z_bot, pre="", nm="Lochplatte"):
+    nm = pre + nm
     pt = P["plate_t"]
     b.add("solid.cylinder", diameter=P["plate_d"], height=pt, base=[0, 0, round(z_bot, 4)], axis=[0, 0, 1], operation="new", name=pre + "Platte_F", body_name=nm)
     b.add("solid.cylinder", diameter=P["center_hole"], height=pt + 2, base=[0, 0, round(z_bot - 1, 4)], axis=[0, 0, 1], operation="cut", targets=[nm], name=pre + "Mittelbohrung")
@@ -134,8 +137,8 @@ def build_arm(b, g, pre=""):
     # Normteile: Plattenschraube M10 (Kopf auf der Platte), Drehpunkt M8
     wt10, wt8, nut10, nut8 = 2.0, 1.6, 8.4, 6.8
     top = [P["bolt_circle_r"], 0, g.z_plate_bot + P["plate_t"]]
-    bot = [P["bolt_circle_r"], 0, g.z_mid - t]
-    l10 = bolt_len(P["plate_t"] + 2 * t + 2 * wt10 + nut10 + 2)
+    bot = [P["bolt_circle_r"], 0, g.z_plate2_bot]                # unter der unteren Platte (W83)
+    l10 = bolt_len(2 * P["plate_t"] + 2 * t + 2 * wt10 + nut10 + 2)
     pv = g.pt(g.s_pivot)
     ptop, pbot = add(pv, g.nrm, t), add(pv, g.nrm, -t)
     l8 = bolt_len(2 * t + 2 * wt8 + nut8 + 2)
@@ -174,8 +177,8 @@ def design(which, explode=None):
     if which == "platte":
         root = "60S_Knoten_Schere_Platte"
         b.add("component.create", name=root)
-        meta(b, root, "T60S-P", "Lochplatte D110 x 8, 6 Loecher D11 auf Lochkreis r37, Mittelbohrung D20; eine je Knoten")
-        bodies = build_plate(b, gB.z_plate_bot)
+        meta(b, root, "T60S-P", "Plattenpaar (W83): 2 Lochplatten D110 x 8, je 6 Loecher D11 auf Lochkreis r37, Mittelbohrung D20; Laschenaugen dazwischen; ein Paar je Knoten")
+        bodies = build_plate(b, gB.z_plate_bot) + build_plate(b, gB.z_plate2_bot, nm="Lochplatte_unten")
         parts = []
     else:
         typ = "B" if which == "detail" else which
@@ -187,7 +190,7 @@ def design(which, explode=None):
              f"Rohrende Rund {P['tube_d']:g} x {P['tube_t']:g} ({P['tube_len']:g} mm Probestueck) mit 2 Gegenloechern D{P['wall_hole']:g}")
         bodies, parts, _ = build_arm(b, g)
         if which == "detail":
-            bodies += build_plate(b, g.z_plate_bot)
+            bodies += build_plate(b, g.z_plate_bot) + build_plate(b, g.z_plate2_bot, nm="Lochplatte_unten")
         rename_parts(b, parts)
     if explode:
         for nm, v in explode.items():
@@ -271,6 +274,7 @@ def write_table():
     DOC["geometrie"] = {typ: {"neigung_grad": round(Geo(typ).deg, 3), "knicklinie_r_mm": round(Geo(typ).bend, 2), "drehpunkt_hinter_knick_mm": round(Geo(typ).s_pivot, 2), "knotenpunkt_bis_rohrende_mm": round(Geo(typ).node_to_tube, 2),
                               "rohr_mm": round(P[f"strut_{typ.lower()}"] - 2 * Geo(typ).node_to_tube, 1)} for typ in "AB"}
     DOC["geometrie"]["platte_unterkante_z_mm"] = round(Geo("B").z_plate_bot, 3)
+    DOC["geometrie"]["untere_platte_oberkante_z_mm"] = round(Geo("B").z_plate2_top, 3)
     json.dump(DOC, open(PJ, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps(DOC["auswertung"], ensure_ascii=False))
     print(json.dumps(DOC["geometrie"], ensure_ascii=False))
@@ -288,7 +292,7 @@ def write_parts():
         v = ex[body]
         ln = math.sqrt(dot(v, v))
         return {"richtung": [round(x / ln, 4) for x in v], "abstand_mm": round(ln, 1)}
-    bolts = {"M10": bolt_len(P["plate_t"] + 2 * t + 2 * 2.0 + 8.4 + 2), "M8": bolt_len(2 * t + 2 * 1.6 + 6.8 + 2)}
+    bolts = {"M10": bolt_len(2 * P["plate_t"] + 2 * t + 2 * 2.0 + 8.4 + 2), "M8": bolt_len(2 * t + 2 * 1.6 + 6.8 + 2)}
     ausn = "Vorentwurf zur Abnahme durch Ben (N-VERBINDER); Katalog- und Stuecklisten-Eintrag erst nach Freigabe durch die Montage"
     norm_bezug = "Normteil, in ganz Europa im Schraubenhandel (D76); Haendler nicht recherchiert"
 
@@ -298,12 +302,18 @@ def write_parts():
                 "lebensmittelkontakt_konfidenz": "angenommen", "konfidenz": "angenommen", "quelle": "R56 Abschnitt 2 (M10 und M8, 8.8 [A])",
                 "bezug": norm_bezug, "ausnahme": ausn, "explosion": explo(body)}
     common = {"norm_konfidenz": "angenommen", "lebensmittelkontakt": "nein", "lebensmittelkontakt_konfidenz": "angenommen", "konfidenz": "angenommen", "ausnahme": ausn}
-    teile = [dict(common, id="lochplatte", name="Lochplatte", koerper=["Lochplatte"], menge=1, typ="platte", werkstoff="stahl_verzinkt",
+    teile = [dict(common, id="lochplatte", name="Lochplatte oben", koerper=["Lochplatte"], menge=1, typ="platte", werkstoff="stahl_verzinkt",
                   masse_mm=f"Scheibe D {P['plate_d']:g} x {P['plate_t']:g}, {int(P['holes'])} Loecher D {P['plate_hole']:g} auf Lochkreis r {P['bolt_circle_r']:g}, Mittelbohrung D {P['center_hole']:g}",
                   funktion="Die Platte verbindet alle Streben eines Knotens. Jede Schere wird mit einer Schraube auf ein Loch geschraubt; solange die Schraube locker ist, dreht sich die Strebe um sie.",
                   eigenschaften=["Eine Platte fuer alle 26 Knoten (4-, 5- und 6-wertig).", "Laserteil S235, feuerverzinkt.",
                                  f"Liegt wie auf dem Foto OBEN auf den Laschen; Unterkante {-g.z_plate_bot:.1f} mm unter dem Knotenpunkt."],
-                  norm="EN 10025-2 S235 (Blech) [A]", quelle="Blatt N-VERBINDER, R56 Abschnitt 2 (Foto ohne Massstab)", explosion=explo("Lochplatte"))]
+                  norm="EN 10025-2 S235 (Blech) [A]", quelle="Blatt N-VERBINDER, R56 Abschnitt 2 (Foto ohne Massstab)", explosion=explo("Lochplatte")),
+             dict(common, id="lochplatte_unten", name="Lochplatte unten", koerper=["Lochplatte_unten"], menge=1, typ="platte", werkstoff="stahl_verzinkt",
+                  masse_mm=f"wie die obere: Scheibe D {P['plate_d']:g} x {P['plate_t']:g}, {int(P['holes'])} Loecher D {P['plate_hole']:g} auf r {P['bolt_circle_r']:g}, Mittelbohrung D {P['center_hole']:g}",
+                  funktion="Die untere Platte (W83, Ben) klemmt die Laschenaugen von unten. Mit der oberen Platte bildet sie ein Paar: jede Plattenschraube geht durch beide Platten und beide Augen, die Augen sind zweischnittig gefasst.",
+                  eigenschaften=["Gleiches Laserteil wie die obere Platte (ein Zuschnitt, 52 Stueck fuer 26 Knoten).",
+                                 f"Oberkante {-g.z_plate2_top:.1f} mm unter dem Knotenpunkt; der Laschenknick liegt ausserhalb beider Platten (r {Geo('B').bend:.0f} bzw. {Geo('A').bend:.0f} gegen Plattenrand r {P['plate_d'] / 2:g})."],
+                  norm="EN 10025-2 S235 (Blech) [A]", quelle="Wunschbuch W83 (Ben 05.11.); Masse wie obere Platte [A]", explosion=explo("Lochplatte_unten"))]
     for k, side in ((2, "+"), (1, "-")):
         teile.append(dict(common, id=f"lasche_{k}", name=f"Lasche {k} ({'oben, an der Platte' if k == 2 else 'unten'})", koerper=[f"Lasche_{k}"], menge=1,
                           typ="sonderteil", werkstoff="stahl_verzinkt",
@@ -324,7 +334,7 @@ def write_parts():
         nt("plattenschraube", f"Plattenschraube M10 x {bolts['M10']}", "Platte_Schraube", "ISO 4017 M10, 8.8 verzinkt", f"M10 x {bolts['M10']}",
            "Schraubt beide Laschenaugen auf ein Loch der Platte; traegt die ganze Strebenkraft (einschnittig).", ["Angezogen kann sich die Schere nicht mehr oeffnen."]),
         nt("plattenscheibe_oben", "Scheibe M10 oben", "Platte_ScheibeO", "ISO 7089 10, verzinkt", "10,5 x 20 x 2", "Liegt unter dem Schraubenkopf auf der Platte.", ["Flache Scheibe."]),
-        nt("plattenscheibe_unten", "Scheibe M10 unten", "Platte_ScheibeU", "ISO 7089 10, verzinkt", "10,5 x 20 x 2", "Liegt unter Lasche 1 vor der Mutter.", ["Flache Scheibe."]),
+        nt("plattenscheibe_unten", "Scheibe M10 unten", "Platte_ScheibeU", "ISO 7089 10, verzinkt", "10,5 x 20 x 2", "Liegt unter der unteren Platte vor der Mutter.", ["Flache Scheibe."]),
         nt("plattenmutter", "Mutter M10", "Platte_Mutter", "ISO 4032 M10, 8 verzinkt", "M10", "Haelt die Plattenschraube.", ["Sechskantmutter."]),
         nt("drehschraube", f"Drehpunktschraube M8 x {bolts['M8']}", "Dreh_Schraube", "ISO 4017 M8, 8.8 verzinkt", f"M8 x {bolts['M8']}",
            "Haelt die zwei Laschen als Schere zusammen; traegt planmaessig nichts.", [f"Sitzt {P['pivot_out']:g} mm vor dem Rohrmund ausserhalb des Rohrs."]),
@@ -333,11 +343,11 @@ def write_parts():
         nt("drehmutter", "Mutter M8", "Dreh_Mutter", "ISO 4032 M8, 8 verzinkt", "M8", "Haelt die Drehpunktschraube.", ["Sechskantmutter."]),
     ]
     out = {"komponente": "knoten_schere", "datei": "designs/components/knoten_schere.sc", "teilenummer": "T60S", "stand": "pilot",
-           "titel": "Scherenknoten (Lochplatte + Schere je Strebe), Detailmodell mit einem Arm B",
-           "kurz": "Die Lochplatte verbindet die Streben eines Knotens. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch; die zwei Nasen der Schere stehen durch zwei Gegenloecher im Rohr. Die Montage setzt je Knoten eine Platte und 4, 5 oder 6 Arme.",
+           "titel": "Scherenknoten (Plattenpaar + Schere je Strebe), Detailmodell mit einem Arm B",
+           "kurz": "Zwei Lochplatten (oben und unten) verbinden die Streben eines Knotens; die Laschenaugen liegen dazwischen. Jede Strebe haengt mit einer Schere aus zwei gekreuzten Laschen an einem Plattenloch; die zwei Nasen der Schere stehen durch zwei Gegenloecher im Rohr. Die Montage setzt je Knoten ein Plattenpaar und 4, 5 oder 6 Arme.",
            "hinweis": "Abnahme-Vorlage fuer Ben (N-VERBINDER). Alle Kopfmasse sind Annahmen aus dem Foto ohne Massstab (R56). Offen bei Ben: Rundrohr statt Vierkant, Laschendicke 5 oder 8 mm, Lochbild der 5-wertigen Knoten.",
-           "koerperzahl": 12,
-           "gruppen": [{"id": "platte", "name": "Lochplatte", "kurz": "Eine je Knoten.", "teile": ["lochplatte", "plattenschraube", "plattenscheibe_oben", "plattenscheibe_unten", "plattenmutter"]},
+           "koerperzahl": 13,
+           "gruppen": [{"id": "platte", "name": "Plattenpaar", "kurz": "Obere und untere Platte, ein Paar je Knoten (W83).", "teile": ["lochplatte", "lochplatte_unten", "plattenschraube", "plattenscheibe_oben", "plattenscheibe_unten", "plattenmutter"]},
                        {"id": "schere", "name": "Schere", "kurz": "Zwei Laschen mit Nasen und Drehpunkt; eine je Strebenende.", "teile": ["lasche_1", "lasche_2", "drehschraube", "drehscheibe_oben", "drehscheibe_unten", "drehmutter"]},
                        {"id": "rohr", "name": "Rohrende", "kurz": "Strebe mit zwei Gegenloechern.", "teile": ["rohrende"]}],
            "teile": teile}

@@ -1,11 +1,11 @@
 """Pruefung Scherenknoten (Blatt docs/jobs/N-VERBINDER.md, Pruefpunkte 1 bis 4).
 1. Platte, Arm A, Arm B: alle Koerper geschlossen; Nasen reichen Rohraussenradius + nose_out (+-0,05); Rohrachse durch den Knotenpunkt (<= 0,01 mm).
-2. Probe-Knoten n01 (1 Platte + 6 Arm-Instanzen, gedreht wie in data/components/knoten_schere.json) im Scratchpad:
+2. Probe-Knoten n01 (6-wertig) und n02 (5-wertig, Pflicht seit Pruefer-Auflage a1ed36b), je Plattenpaar + Arm-Instanzen, gedreht wie in data/components/knoten_schere.json) im Scratchpad:
    inspect.interference 0 Durchdringungen ueber 0,1 mm3 (Schraube/Mutter/Scheibe im eigenen Arm ausgenommen: Gewinde- und Auflageberuehrung).
 3. Knotentabelle: 26 Knoten, Armzahl = Wertigkeit aus data/layout.json (10 x 4, 6 x 5, 10 x 6), 130 Arme, A 60 / B 70.
 4. Groesster Achsversatz nach Drehung um die Plattenschraube: gemeldet; Soll <= 5 mm, sonst BEFUND (kein FAIL, Blatt: melden statt umbauen).
-Aufruf: python -X utf8 scripts/workshop/check_knoten_schere.py [--probe-dir DIR] [--knoten n01]   (Exit 0 = alle PASS)"""
-import json, math, os, subprocess, sys
+Aufruf: python -X utf8 scripts/workshop/check_knoten_schere.py [--probe-dir DIR] [--knoten n01,n02]   (Exit 0 = alle PASS)"""
+import json, math, os, re, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sc
 import knoten_schere as ks
@@ -48,6 +48,40 @@ def interference(path):
     return json.loads(r.stdout)[0]
 
 
+def probe_one(c, knoten, out_dir):
+    path, row = probe_script(knoten, out_dir)
+    pev = sc.evaluate(path)
+    c.eq(f"Probe {knoten}: Koerper (2 Platten + {len(row['arme'])} x 11)", len(pev["bodies"]), 2 + 11 * len(row["arme"]))
+    res = interference(path)
+    pairs = res.get("interferences", res.get("pairs", []))
+    unchecked = res.get("unchecked", [])
+
+    def owner(p):
+        return p.get("occurrence") or p.get("path") or ""
+    bad, ignored = [], 0
+    for p in pairs:
+        vol = p.get("volume_mm3", p.get("volume", 0)) or 0
+        a, b2 = p.get("a", p.get("body_a", "")), p.get("b", p.get("body_b", ""))
+        an, bn = (a.get("name", "") if isinstance(a, dict) else str(a)), (b2.get("name", "") if isinstance(b2, dict) else str(b2))
+        arm = lambda nm: (re.search(r"\((\d+)\)$", nm) or [None, "1"])[1]   # Instanz-Suffix "(n)" = gleicher Arm
+        same = arm(an) == arm(bn)
+        if vol <= 0.1:
+            continue
+        if same and (an.split("/")[-1] in NORMTEIL or bn.split("/")[-1] in NORMTEIL):
+            ignored += 1
+            continue
+        bad.append((an, bn, round(vol, 3)))
+    print(f"interference {knoten}: {len(pairs)} Paare gemeldet, {ignored} Normteil-Beruehrungen im eigenen Arm ausgenommen, ungeprueft {len(unchecked)}")
+    for p in pairs[:8]:
+        print("  Paar:", json.dumps(p, ensure_ascii=False)[:220])
+    for x in bad[:12]:
+        print("  Durchdringung:", x)
+    if not pairs:
+        print("  Rohantwort:", json.dumps(res)[:400])
+    c.eq(f"Probe {knoten}: Durchdringungen > 0,1 mm3", len(bad), 0)
+    c.eq(f"Probe {knoten}: ungepruefte Paare", len(unchecked), 0)
+
+
 def main():
     c = sc.Check("knoten_schere")
     # --- 1. Einzelteile
@@ -55,7 +89,9 @@ def main():
     for w, e in ev.items():
         n = len(e["bodies"])
         c.eq(f"{w}: alle Koerper geschlossen ({n})", sum(1 for x in e["bodies"] if x.get("closed")), n)
-    c.eq("platte: 1 Koerper", len(ev["platte"]["bodies"]), 1)
+    c.eq("platte: 2 Koerper (Plattenpaar oben/unten, W83)", len(ev["platte"]["bodies"]), 2)
+    pl = {x["name"]: x for x in ev["platte"]["bodies"]}
+    c.eq("platte: obere und untere Platte gleich (Volumendifferenz mm3)", round(abs(pl["Lochplatte"].get("volume_mm3", pl["Lochplatte"].get("mass_g", 0)) - pl["Lochplatte_unten"].get("volume_mm3", pl["Lochplatte_unten"].get("mass_g", 0))), 3), 0.0, 0.01)
     for typ in "AB":
         g = ks.Geo(typ)
         bodies = {x["name"]: x for x in ev[typ]["bodies"]}
@@ -74,7 +110,11 @@ def main():
         top = [f for f in sc.faces(ks.OUT[typ], "Lasche_2") if f.get("plane_normal") and f["plane_normal"][2] > 0.9999]
         top = max(top, key=lambda f: f["area"])                  # Oberseite des flachen Stuecks (Augenbereich)
         c.eq(f"Arm {typ}: Oberseite Lasche 2 (Auge) = Plattenunterkante (z mm, Flaeche gemessen)", round(top["centroid"][2], 3),
-             round(ev["platte"]["bodies"][0]["bbox"]["min"][2], 3), 0.01)
+             round(pl["Lochplatte"]["bbox"]["min"][2], 3), 0.01)
+        bot = [f for f in sc.faces(ks.OUT[typ], "Lasche_1") if f.get("plane_normal") and f["plane_normal"][2] < -0.9999]
+        bot = max(bot, key=lambda f: f["area"])                  # Unterseite des flachen Stuecks (Augenbereich)
+        c.eq(f"Arm {typ}: Unterseite Lasche 1 (Auge) = Oberkante untere Platte (z mm, Flaeche gemessen)", round(bot["centroid"][2], 3),
+             round(pl["Lochplatte_unten"]["bbox"]["max"][2], 3), 0.01)
     # --- 3. Knotentabelle gegen layout.json
     lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))["dome"]
     vl = [nd["valence"] for nd in lay["nodes_list"]]
@@ -89,38 +129,9 @@ def main():
     c.eq("Tabelle: Enden Typ B", sum(1 for r in tab for a in r["arme"] if a["typ"] == "B"), 70)
     c.eq("Tabelle: je Knoten jedes Loch hoechstens einmal belegt (Doppelbelegungen)", sum(len(r["arme"]) - len({a["loch"] for a in r["arme"]}) for r in tab), 0)
     # --- 2. Probe-Knoten
-    knoten = arg("--knoten", "n01")
     out_dir = arg("--probe-dir", sc.TMP)
-    path, row = probe_script(knoten, out_dir)
-    pev = sc.evaluate(path)
-    c.eq(f"Probe {knoten}: Koerper (1 Platte + {len(row['arme'])} x 11)", len(pev["bodies"]), 1 + 11 * len(row["arme"]))
-    res = interference(path)
-    pairs = res.get("interferences", res.get("pairs", []))
-    unchecked = res.get("unchecked", [])
-
-    def owner(p):
-        return p.get("occurrence") or p.get("path") or ""
-    bad, ignored = [], 0
-    for p in pairs:
-        vol = p.get("volume_mm3", p.get("volume", 0)) or 0
-        a, b2 = p.get("a", p.get("body_a", "")), p.get("b", p.get("body_b", ""))
-        an, bn = (a.get("name", "") if isinstance(a, dict) else str(a)), (b2.get("name", "") if isinstance(b2, dict) else str(b2))
-        same = isinstance(a, dict) and isinstance(b2, dict) and owner(a) == owner(b2)
-        if vol <= 0.1:
-            continue
-        if same and (an.split("/")[-1] in NORMTEIL or bn.split("/")[-1] in NORMTEIL):
-            ignored += 1
-            continue
-        bad.append((an, bn, round(vol, 3)))
-    print(f"interference {knoten}: {len(pairs)} Paare gemeldet, {ignored} Normteil-Beruehrungen im eigenen Arm ausgenommen, ungeprueft {len(unchecked)}")
-    for p in pairs[:8]:
-        print("  Paar:", json.dumps(p, ensure_ascii=False)[:220])
-    for x in bad[:12]:
-        print("  Durchdringung:", x)
-    if not pairs:
-        print("  Rohantwort:", json.dumps(res)[:400])
-    c.eq(f"Probe {knoten}: Durchdringungen > 0,1 mm3", len(bad), 0)
-    c.eq(f"Probe {knoten}: ungepruefte Paare", len(unchecked), 0)
+    for knoten in arg("--knoten", "n01,n02").split(","):        # Pflicht: 6-wertig n01 und 5-wertig n02 (Pruefer-Auflage 5, a1ed36b)
+        probe_one(c, knoten, out_dir)
     # --- 4. Achsversatz (Befund, kein FAIL)
     au = ks.DOC["auswertung"]
     print(f"BEFUND-MESSUNG Achsversatz: groesster {au['groesster_achsversatz_mm']} mm bei {au['bei_knoten']} (Drehung {au['groesste_drehung_grad']} Grad); "

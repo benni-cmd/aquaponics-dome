@@ -2067,6 +2067,7 @@
    "knotenpunkt_bis_rohrende_mm": 102.24,
    "rohr_mm": 3503.5
   },
-  "platte_unterkante_z_mm": -15.469
+  "platte_unterkante_z_mm": -15.469,
+  "untere_platte_oberkante_z_mm": -25.469
  }
 }

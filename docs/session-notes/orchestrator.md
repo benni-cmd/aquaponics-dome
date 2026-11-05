@@ -83,3 +83,8 @@ Variante `aussen4` als Parameter-Konfiguration (nft_tisch.json typen.aussen4), S
 Linie 1 ist nach der Leitungsordnung umgebaut, Blatt-Schritte 4 bis 9 nicht gebaut; Runde 72 braucht eine frische Montage-Sitzung (diese STOPPT, Kontext ueber 35 %) — die Pruefer-Zahlen R1 33 / R4 1 / R9 9 liegen komplett in Linie 2 und Luft K44 (Linie 1: R1/R4/R8/R9 0, R6 6); R6 17 = Halter (Schritt 9), R10 36 = K07/K23 fehlen (Schritt 5). Build 71 lief erst nach Fix in `gen_dome.params()` (Text-Parameter `kreislauf_variante` aus d0819fe brach jeden Build). Befunde B1 Strebe ueber Pumpen-Druckstutzen, B2 K05 Gefaelle (Entscheidung), B3 Heber-Reserve 65/68 mm schon vorher.
 Beleg: `docs/packages/m10-leitungen.md` Abschnitt 14b; Commits 45af03b, e881f56, 032c25c.
 Zu tun: neue Montage-Sitzung mit `docs/jobs/M10-UMBAU.md` ab Schritt 4 starten.
+
+## 2026-11-05 — von werkstatt (Schacht tief + Ring B2)
+Montage M10-UMBAU Schritte 4 bis 9 (Runde 72) NICHT uebernommen: Kontext dieser Sitzung liegt nach zwei Werkstatt-Paketen weit ueber der 35-%-Grenze — fuer dich: frische Montage-Sitzung starten.
+Beleg: docs/jobs/M10-UMBAU.md Start-Hinweis 5; Werkstatt gepusht 0462ec8 (Schacht tief 46/46, Paket m10-leitungen 14a), 721b607 (Ring B2 56/56, Paket n-varianten); Stamm-Hahn Linie 2 braucht >= 245 mm Achsabstand K18/K22-T (docs/parts/schacht_kugelhahn_tief.md); Notueberlauf K67/K75 d63 (docs/parts/ring_b2.md).
+Zu tun: neue Montage-Sitzung fuer M10-UMBAU Runde 72 starten.

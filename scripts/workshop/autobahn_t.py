@@ -450,6 +450,11 @@ def ausleger_laengen():
 # ausgleichen (Kopfverschiebung, check_stelze); Stelze mit Innen- und Aussen-Ausleger (-17,7) steht mit dem Pfosten AUSSEN. Saettel liegen ausserhalb der Gaenge (check_ausleger).
 AUSL = {"joch_innen": round(ausleger_laengen()["joch_innen"] / 10) * 10, "joch_aussen": round(ausleger_laengen()["joch_aussen"] / 10) * 10}
 AUSL.update({"stelze_innen_pfosten_innen": AUSL["joch_innen"], "stelze_innen_pfosten_aussen": 1370, "stelze_aussen_pfosten_aussen": 1370})
+# N-AUTOBAHN-FIX FIX-a / W-FIX-1 (docs/jobs/N-AUTOBAHN-FIX.md 2.2): Aussen-Ausleger kurz, Fallachse (Laenge + biege_r ab Flansch) bei r 4732 = Port Tisch aussen,
+# also gleich hinter Gang B (bis r 4492) statt bei r 5400 unter der Kuppelhaut. Flansch r 3997 (Joch) bzw. 3869 (Stelze -17,7) [E, trassen_ring.fallleitungen()].
+R_FALL_AUSSEN = 4732.0
+AUSL["joch_aussen"] = 540   # (4732 - 3997 - 210) = 525 lag mit dem Sattelbeginn r 4472 noch 20 mm ueber Gang B (check_ausleger, Flansch r 3952); 540: Sattel ab r 4492, Fall r 4747
+AUSL["stelze_aussen_pfosten_aussen"] = round((R_FALL_AUSSEN - 3869.0 - AU["biege_r"]) / 10) * 10   # 650
 
 # =========================================================================== Ausgabe
 def jobs(want):

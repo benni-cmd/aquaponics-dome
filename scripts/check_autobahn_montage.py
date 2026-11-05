@@ -115,5 +115,43 @@ if RUNDE == "r2":
     print(f"INFO Schlauchmeter aus den Wegen: ID19 {s19:.1f} m (Rechnung ID16 60,8), ID25 {s25:.1f} m (Rechnung 38,6); je Abnehmer {min(L for _, L in laengen):.0f} bis {max(L for _, L in laengen):.0f} mm")
     chk("Schlauchende = Endstueck am Port (Abstand) [mm]", max(m for _, m in miss), "<= 1", max(m for _, m in miss) <= 1.0)
 
+    # ---- N-AUTOBAHN-FIX P2/P3 (docs/jobs/N-AUTOBAHN-FIX.md Abschnitt 5): Abstand zur Kuppelhaut, Fallachsen aussen hinter Gang B
+    # Huelle = konvexe Facetten aus den Strebenachsen (scripts/.segs.json, schreibt gen_dome.py; nach D91 Rundrohr 42,4: Rohr-Innenseite = Achse - 21,2;
+    # an 5-wertigen Knoten liegt die Achse bis 15,9 mm neben dem Knotenpunkt, Pruefung N-VERBINDER) -> Normalabstand je Pruefpunkt = min ueber die Facetten.
+    segs = json.load(open(os.path.join(HERE, ".segs.json"), encoding="utf-8"))
+    key = lambda p: tuple(round(v) for v in p)
+    nb = {}
+    for A, B in segs:
+        nb.setdefault(key(A), set()).add(key(B)); nb.setdefault(key(B), set()).add(key(A))
+    tri = {tuple(sorted((a, b, c))) for a in nb for b in nb[a] for c in nb[b] if c in nb[a] and len({a, b, c}) == 3}
+    zs = [p[2] for p in nb]; C0 = (0.0, 0.0, (min(zs) + max(zs)) / 2)
+    facets = []
+    for a, b, c in tri:
+        n = TR.cross(TR.sub(b, a), TR.sub(c, a)); n = TR.unit(n)
+        m = tuple((a[i] + b[i] + c[i]) / 3 for i in range(3))
+        if TR.dot(n, TR.sub(m, C0)) < 0: n = TR.mul(n, -1)                       # Normale nach aussen (weg vom Kuppel-Innenpunkt C0)
+        facets.append((n, TR.dot(n, a)))
+    R_ROHR = 42.4 / 2
+    def haut(p): return min(d - TR.dot(n, p) for n, d in facets) - R_ROHR      # > 0: innen, Abstand zur Rohr-Innenseite
+    au_pts = []
+    for a in fl:
+        if a["zone"] == "mitte": continue
+        au = a["ausleger"]; lg = au["lg"]
+        for x in [i * (lg + TR.AT.AU["biege_r"]) / 20 for i in range(21)]:
+            for y in (-62.0, 62.0):
+                for z in (-20.0, 20.0): au_pts.append((haut(TR.world(au["m"], (x, y, z))), "Ausleger %d (%s)" % (lg, a["name"])))
+    hs_pts = []
+    for a in fl:
+        w = a["weg"]
+        for seg in (w["s1"], w["s2"], w["s3"]):
+            for i in range(len(seg) - 1):
+                for t in range(11):
+                    q = tuple(seg[i][j] + (seg[i + 1][j] - seg[i][j]) * t / 10 for j in range(3)); hs_pts.append((haut(q) - w["ad"] / 2, a["name"]))
+    ma, mh = min(au_pts), min(hs_pts)
+    chk("Kuppelhaut: kleinster Normalabstand Ausleger (Huelle +-62 / +-20) zur Rohr-Innenseite der Facetten [mm] (FIX P2)", (round(ma[0]), ma[1]), ">= 100", ma[0] >= 100)
+    chk("Kuppelhaut: kleinster Normalabstand Schlauch (Achse + AD/2) zur Rohr-Innenseite der Facetten [mm] (FIX P2)", (round(mh[0]), mh[1]), ">= 100", mh[0] >= 100)
+    fa = [(round(math.hypot(*a["weg"]["D"])), a["name"]) for a in fl if a["zone"] == "aussen"]
+    chk("Fallachse aussen (senkrechter Fall nach dem Sattel) hinter Gang B [r mm] (FIX P3)", min(fa), ">= 4560", min(fa)[0] >= 4560)
+
 print(f"\n{sum(res)} PASS, {len(res) - sum(res)} FAIL von {len(res)} ({RUNDE})")
 sys.exit(0 if all(res) else 1)

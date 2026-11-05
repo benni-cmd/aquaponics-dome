@@ -141,8 +141,19 @@ def check_ausleger(ck):
               ("stelze Pfosten aussen, aussen", r_scheitel + (st["x_scheitel"] - st["x_minus"]), 1, A.AUSL["stelze_aussen_pfosten_aussen"])]
     for nm_, r0, sgn, lg in faelle:
         r_ende = r0 + sgn * lg; sat = sorted((r_ende, r_ende + sgn * (A.AU["biege_r"] + 5)))
-        frei = all(sat[1] < g0 or sat[0] > g1 for g0, g1 in GANG.values())
-        ck.eq(f"ausleger {nm_} ({lg:.0f}): Flansch r {r0:.0f}, Sattel r {sat[0]:.0f}..{sat[1]:.0f} ausserhalb Gang A {GANG['A'][0]:.0f}..{GANG['A'][1]:.0f} und B {GANG['B'][0]:.0f}..{GANG['B'][1]:.0f}", 1 if frei else 0, 1)
+        # W88/FIX-a: Der Sattel darf ueber dem Gang beginnen, solange die Schlauch-Unterkante dort >= Z 2100 rel bleibt; der senkrechte Fall liegt ausserhalb.
+        z_arm = (A.Z["platte_o"] + A.Z["traeger_o"]) / 2; Rb = A.AU["biege_r"]; ad2 = A.AU["schlauch_ad_max"] / 2
+        r_fall = r_ende + sgn * Rb; z_min_gang = None
+        for g0, g1 in GANG.values():
+            for i in range(0, 211):
+                r = r_ende + sgn * Rb * i / 210
+                if g0 <= r <= g1:
+                    dx = Rb * i / 210; zu = z_arm - (Rb - math.sqrt(max(0.0, Rb * Rb - dx * dx))) - ad2
+                    z_min_gang = zu if z_min_gang is None else min(z_min_gang, zu)
+        fall_frei = all(not (g0 - ad2 - 50 <= r_fall <= g1 + ad2 + 50) for g0, g1 in GANG.values())
+        frei = fall_frei and (z_min_gang is None or z_min_gang >= 2100)
+        ck.eq(f"ausleger {nm_} ({lg:.0f}): Flansch r {r0:.0f}, Fallachse r {r_fall:.0f} ausserhalb Gang A {GANG['A'][0]:.0f}..{GANG['A'][1]:.0f} und B {GANG['B'][0]:.0f}..{GANG['B'][1]:.0f} (+ AD/2 + 50); "
+              f"Schlauch-Unterkante im Sattel ueber dem Gang {'-' if z_min_gang is None else round(z_min_gang)} >= 2100 rel", 1 if frei else 0, 1)
 
 # =========================================================================== WA2b Stelze Rev. B
 def check_stelze(ck):

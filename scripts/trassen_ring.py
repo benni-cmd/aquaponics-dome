@@ -380,7 +380,7 @@ ZONE = {"Tisch_innen": ("innen", "tisch"), "Tisch_mitte": ("mitte", "tisch"), "T
 PORT = {"Tisch_innen": ((-449.0, 256.0, 1076.0), "t"), "Tisch_mitte": ((-823.0, 520.0, 1083.0), "t"), "Tisch_aussen": ((-1349.0, 497.0, 1091.0), "t"),
         "Beet_innen_933": ((-972.0, -392.0, 624.0), "b"), "Beet_aussen_800": ((-1360.0, -326.0, 612.0), "b")}   # [Q] docs/parts/nft_tisch.md Ports, docs/parts/ibc_beet.md Ports
 LINIE1_SEKT = (0, 36, 72, 108); LINIE2_SEKT = (144, 180, -144, -108); INNEN_EXTRA = {1: -36, 2: -72}   # wie scripts/n_autobahn_rechnung.py (Blatt 1.5)
-Y_CLIP = TW["teile"]["ausleger_schlauch_1020"]["ports"][1]["lage"][1]   # 42,5 seitlich der Armachse
+Y_CLIP = [v for k, v in TW["teile"].items() if k.startswith("ausleger_schlauch_")][0]["ports"][1]["lage"][1]   # 42,5 seitlich der Armachse (gleich fuer alle Laengen)
 T_HALB = T75 + 5.0                                                       # T-Laenge/2 + Luft
 def _sekt(a): a = round(a); a = (a + 180) % 360 - 180; return 180 if a == -180 else a
 
@@ -470,11 +470,24 @@ def fallleitungen():
     return out
 
 Z_ARM = AT.Z["platte_o"] / 2 + AT.Z["traeger_o"] / 2 + FZ            # 2677 abs
-def schlauch_weg(a):
+WINKEL_H = 45.0                                                     # [A] Winkeltuelle 90 Grad d25 (PVC-U): Achse Port bis Schlauchende senkrecht
+def _fall_xy(a):
+    """Fall-Linie (x, y, 0) eines Ausleger-Abnehmers: Endbuegel-Port 'Fall'."""
+    au = a["ausleger"]; f = world(au["m"], (au["lg"] + AT.AU["biege_r"], a["y_clip"], 0.0)); return (f[0], f[1], 0.0)
+def schlauch_weg(a, winkel=None):
     """Weltpunkte des Schlauchs (s1 bis Regelhahn, Zwischenschlauch, s3 bis Anschluss) und Lage von Hahn, Kupplung, Endstueck (Masse aus autobahn_s)."""
     idd, Rb = a["idd"], AS.hose_R(a["idd"]); tl = AS.FT["tuelle"][idd]; kr = AS.FT["kragen"]
     u0 = a["u0"]; A0 = a["abgang"]
-    z_h = AS.FT["z_hahn"][a["art"]] + FZ; hl = AS.FT["hahn_lb"][idd]; z_ht = z_h + hl / 2; z_hb = z_ht - hl
+    la = AS.FT["anschl_l"][a["art"]]; E = add(a["port"], a["d_o"], la); zE = a["port"][2]
+    # W88: Port oeffnet vom Fall weg (Innentisch: Verteiler-Oeffnung zeigt zum Pool) -> Winkeltuelle 90 Grad nach oben am Port, Schlauch kommt von oben;
+    # dafuer liegen Regelhahn und Kupplung so hoch, dass zwei 90-Grad-Boegen (Tangente Rb) zwischen Kupplung und Winkel passen.
+    E_up = (E[0], E[1], zE + WINKEL_H)
+    z_h = AS.FT["z_hahn"][a["art"]] + FZ; hl = AS.FT["hahn_lb"][idd]
+    k_d = AS.SK[idd]; stapel = hl / 2 + (2 * tl + 20) + (k_d["dose_l"] + k_d["st_l"])          # z_h bis Kupplungs-Unterkante
+    fxy = (a["abgang"][0], a["abgang"][1], 0.0) if a["zone"] == "mitte" else _fall_xy(a)
+    if winkel is None: winkel = dot(a["d_o"], sub(fxy, (E[0], E[1], 0.0))) < 0   # Port zeigt vom Fall weg
+    if winkel: z_h = max(z_h, E_up[2] + 2 * Rb + 10 + stapel)
+    z_ht = z_h + hl / 2; z_hb = z_ht - hl
     if a["zone"] == "mitte":                                                 # Fall senkrecht unter dem Abzweig (Beet: in der Fuge auf der Sektorgrenze)
         D = (A0[0], A0[1]); s1 = [add(A0, u0, kr), (D[0], D[1], z_ht)]
     else:
@@ -483,33 +496,37 @@ def schlauch_weg(a):
         P1 = add(A0, d, x1)
         fall = world(au["m"], (au["lg"] + AT.AU["biege_r"], a["y_clip"], 0.0))       # Fall-Linie am Endbuegel (WA-T Port 'Fall')
         D = (fall[0], fall[1]); lam = a["lam"]
-        pts = [add(A0, u0, kr), P1]                                           # seitlicher Versatz zuerst auf Ring-Achshoehe, dann Anstieg in der Clip-Linie auf den Arm
-        if abs(lam) > 0.5:
-            P1b = add(add(P1, d, abs(lam)), yv, -lam); pts.append(P1b); P1 = P1b
-            P1 = add(P1, d, 2 * Rb * math.tan(math.pi / 8) + 5); pts.append(P1)
-        P2 = add(add(P1, d, dz), up, dz); pts.append(P2)
-        pts += [fall, (D[0], D[1], z_ht)]
-        s1 = pts
-    k_d = AS.SK[idd]; z_kt = z_hb - (2 * tl + 20); z_kb = z_kt - (k_d["dose_l"] + k_d["st_l"])
-    la = AS.FT["anschl_l"][a["art"]]; E = add(a["port"], a["d_o"], la); zE = a["port"][2]
+        def _s1(quer):
+            """quer False: seitlicher Versatz als 45-Grad-Diagonale (braucht |lam| entlang des Arms); quer True (W88, kurze Innen-Ausleger):
+            Versatz rechtwinklig mit zwei 90-Grad-Boegen (braucht nur 2 x Rb entlang des Arms)."""
+            P = add(A0, d, (kr + tl + Rb + 5) if quer else x1); pts = [add(A0, u0, kr), P]   # seitlicher Versatz zuerst auf Ring-Achshoehe, dann Anstieg in der Clip-Linie
+            if abs(lam) > 0.5:
+                if quer: P = add(P, yv, -lam); pts.append(P); P = add(P, d, Rb + Rb * math.tan(math.pi / 8) + 5)
+                else: P = add(add(P, d, abs(lam)), yv, -lam); pts.append(P); P = add(P, d, 2 * Rb * math.tan(math.pi / 8) + 5)
+                pts.append(P)
+            pts.append(add(add(P, d, dz), up, dz))
+            return pts + [fall, (D[0], D[1], z_ht)]
+        s1 = _s1(False)
+        try: AS.hose_layout([list(p) for p in s1], Rb)
+        except ValueError: s1 = _s1(True)
+    z_kt = z_hb - (2 * tl + 20); z_kb = z_kt - (k_d["dose_l"] + k_d["st_l"])
     s3 = None
-    for Lc in (Rb + 40, 2 * Rb, 3 * Rb, 4 * Rb, 6 * Rb):
+    if winkel:                                                               # W88: ueber dem Tisch zum Port, dann von oben in die Winkeltuelle (Halter je <= 400 mm, R6)
+        zm = E_up[2] + Rb + 5
+        for cand in ([(D[0], D[1], z_kb), (D[0], D[1], zm), (E_up[0], E_up[1], zm), E_up],                        # waagerecht ueber dem Abnehmer
+                     [(D[0], D[1], z_kb), (D[0], D[1], z_kb - 40), (E_up[0], E_up[1], E_up[2] + 40), E_up]):       # Fall fast ueber dem Port: schraeges S
+            if math.hypot(D[0] - E_up[0], D[1] - E_up[1]) < 1.0: cand = [(D[0], D[1], z_kb), E_up]
+            try: AS.hose_layout([list(p) for p in cand], Rb); s3 = cand; break
+            except ValueError: continue
+    for Lc in ([] if (s3 or winkel) else (Rb + 40, 2 * Rb)):                # nur kurzer Anlauf; laengere Umwege waren die Schlaufen in der Luft (W88)
         C = add(E, a["d_o"], Lc); C = (C[0], C[1], zE)
         cand = [(D[0], D[1], z_kb), (D[0], D[1], zE), C, (E[0], E[1], zE)]
         if math.hypot(C[0] - D[0], C[1] - D[1]) < 1.0: cand = [cand[0], cand[1], cand[3]]
         try: AS.hose_layout(cand, Rb); s3 = cand; break
         except ValueError: continue
-    if s3 is None:                                                           # Fall-Linie liegt fast ueber dem Port: Schlaufe seitlich (zwei Ecken), Ende waagerecht in den Port
-        n_ = (-a["d_o"][1], a["d_o"][0], 0.0)
-        for f in (2.2, 3.0, 4.0):
-            for sg in (1, -1):
-                C2 = add(E, a["d_o"], f * Rb); C1 = add(C2, n_, sg * f * Rb)
-                cand = [(D[0], D[1], z_kb), (D[0], D[1], zE), (C1[0], C1[1], zE), (C2[0], C2[1], zE), (E[0], E[1], zE)]
-                try: AS.hose_layout(cand, Rb); s3 = cand; break
-                except ValueError: continue
-            if s3: break
+    if s3 is None and not winkel: return schlauch_weg(a, winkel=True)        # W88: statt Schlaufe in der Luft (frueher Rueckfall) Winkeltuelle von oben
     if s3 is None: raise SystemExit("%s: kein Schlauchweg unten" % a["name"])
-    return dict(Rb=Rb, ad=AS.HOSE[idd]["ad"], tl=tl, kr=kr, s1=s1, z_ht=z_ht, z_hb=z_hb, z_kt=z_kt, z_kb=z_kb, D=D, s2=[(D[0], D[1], z_hb), (D[0], D[1], z_kt)], s3=s3, E=E, la=la)
+    return dict(Rb=Rb, ad=AS.HOSE[idd]["ad"], tl=tl, kr=kr, s1=s1, z_ht=z_ht, z_hb=z_hb, z_kt=z_kt, z_kb=z_kb, D=D, s2=[(D[0], D[1], z_hb), (D[0], D[1], z_kt)], s3=s3, E=E, la=la, winkel=winkel, E_up=E_up)
 
 def prisma(b, nm, d, p0, u, ln, mat_=None):
     """Achtkant-Prisma (Darstellung [A]): Durchmesser d ueber Ecken, Achse u ab p0, Laenge ln. Wenige Dreiecke im OBJ (Zylinder mit Bohrung: Tausende)."""
@@ -535,6 +552,19 @@ def hose_einfach(b, prefix, pts, R, ad, idd):
     b.add("material.assign", bodies=names, material="SCH schwarz")
     return segs, AS.hose_length(segs, R), names
 
+def halter_s3(w, raster=400.0, breite=20.0):
+    """Halter-Lagen (je ein kurzes Stueck entlang der Achse) auf den waagerechten Geraden von s3 nach AS.hose_layout: Abstand <= raster (R6 Schlauch),
+    gezaehlt ab Bogenende; Geraden kuerzer als raster bekommen keinen Halter (liegen zwischen zwei Boegen am Port bzw. an der Kupplung)."""
+    out = []
+    for sg in AS.hose_layout([list(p) for p in w["s3"]], w["Rb"]):
+        if sg[0] != "G": continue
+        p0, p1 = tuple(sg[1]), tuple(sg[2]); L = math.dist(p0, p1)
+        if abs(p1[2] - p0[2]) > 0.05 * L or L <= raster: continue
+        n = math.ceil(L / raster) - 1; u = unit(sub(p1, p0))
+        for k in range(1, n + 1):
+            c = add(p0, u, L * k / (n + 1)); out.append((add(c, u, -breite / 2), add(c, u, breite / 2)))
+    return out
+
 def schlauch_bauen(out_sc=None):
     """Eine Komponente mit allen 38 Fallleitungen in Weltlage (Instanz im Ursprung), Darstellungsgeometrie [A]: Tuelle, Schlauch, Regelhahn, Zwischenschlauch,
     Schnellkupplung, Schlauch, Endstueck als Achtkant-Prismen ohne Bohrung (Masse aus autobahn_s; Wege und Laengen wie in fallleitungen())."""
@@ -559,6 +589,13 @@ def schlauch_bauen(out_sc=None):
         _, l3, _ = hose_einfach(b, pre + "_S3", w["s3"], w["Rb"], w["ad"], idd)
         ed = mul(a["d_o"], -1); an = prisma(b, pre + "_Anschluss", AS.FT["anschl_od"][a["art"]], sub(w["E"], mul(ed, tl)), ed, tl + w["la"])
         b.add("material.assign", bodies=[an], material="LT pvc" if a["art"] == "tisch" else "LT pp")
+        if w.get("winkel"):                                                  # W88: Winkeltuelle 90 Grad nach oben am Port
+            wk = prisma(b, pre + "_Winkel", AS.FT["anschl_od"][a["art"]], sub(w["E"], (0.0, 0.0, AS.FT["anschl_od"][a["art"]] / 2)), (0.0, 0.0, 1.0), WINKEL_H + AS.FT["anschl_od"][a["art"]] / 2 + tl)
+            b.add("material.assign", bodies=[wk], material="LT pvc")
+        hl_ = []                                                             # W88/R6: Schlauchhalter auf waagerechten Strecken unten (s3) je <= 400 mm
+        for i_, (p0, p1) in enumerate(halter_s3(w)):
+            hl_.append(prisma(b, f"{pre}_Halter_{i_ + 1}", w["ad"] + 10, p0, sub(p1, p0), math.dist(p0, p1)))
+        if hl_: b.add("material.assign", bodies=hl_, material="LT pp")
         laengen.append((a["name"], l1 + l2 + l3))
     b.add("component.activate", component=nm)
     b.add("component.metadata.set", component=nm, part_number="R2-SCHLAEUCHE", revision="A", properties={"Werkstoff": "Schlauch REHAU RAUAQUA T-Flex ID19/ID25 schwarz (D85), Tuellen PVC-U/PP, Regelhahn PVC-U, Kupplung Edelstahl"},

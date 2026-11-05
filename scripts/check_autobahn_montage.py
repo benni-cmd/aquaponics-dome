@@ -64,7 +64,7 @@ if RUNDE == "r2":
     chk("Ausleger", sum(v for k, v in cnt.items() if k.startswith("Ausleger_Schlauch")), 18, sum(v for k, v in cnt.items() if k.startswith("Ausleger_Schlauch")) == 18)
     chk("Abzweige d40 / d32", (cnt["Ring_Abzweig_d40"], cnt["Ring_Abzweig_d32"]), (14, 24), (cnt["Ring_Abzweig_d40"], cnt["Ring_Abzweig_d32"]) == (14, 24))
     # Schlauch im Gang: tiefster Punkt der Schlauchachse - AD/2, ueber Gangband A/B, ohne die senkrechten Fallstrecken ueber dem Abnehmer
-    tief, frei, laengen, miss = [], [], [], []
+    tief, frei, laengen, miss, jenseits = [], [], [], [], []
     for a in fl:
         w = a["weg"]; ad = w["ad"]
         pts = []
@@ -93,7 +93,11 @@ if RUNDE == "r2":
                 acc += sl
             frei.append(("auf", a["name"], best[1], 400.0)); frei.append(("clip", a["name"], round(best[0], 1), 5.0))
             frei.append(("fall", a["name"], TR.Z_ARM - w["z_ht"], 1500.0))
-        miss.append((a["name"], round(math.dist(w["s3"][-1], w["E"]), 1)))
+        miss.append((a["name"], round(math.dist(w["s3"][-1], w["E_up"] if w.get("winkel") else w["E"]), 1)))
+        # W88: kein Schlauchstueck jenseits des Ports (keine Schlaufe ueber dem Pool bzw. hinter dem Abnehmer), gemessen entlang der Port-Richtung d_o
+        # Soll: hoechstens bis zur Fall-Linie oder einen kurzen Anlauf (Rb + 45) hinter den Port; mehr ist ein Umweg (Schlaufe), wie W88 ihn zeigte
+        ax = lambda q: TR.dot(TR.sub((q[0], q[1], 0.0), (w["E"][0], w["E"][1], 0.0)), a["d_o"])
+        jenseits.append((round(max(ax(q) for q in w["s3"]) - max(ax(w["s3"][0]), 0.0) - (w["Rb"] + 45), 1), a["name"]))
     tmin = min(tief) if tief else (None,)
     chk("Schlauch-Unterkante ueber Gang A/B [rel] (tiefster Punkt)", tmin[:3], ">= 2100", (not tief) or tmin[0] >= 2100)
     for art, soll in (("auf", 400.0), ("fall", 1500.0)):
@@ -114,6 +118,11 @@ if RUNDE == "r2":
     s19 = sum(L for i, L in laengen if i == 19) / 1000; s25 = sum(L for i, L in laengen if i == 25) / 1000
     print(f"INFO Schlauchmeter aus den Wegen: ID19 {s19:.1f} m (Rechnung ID16 60,8), ID25 {s25:.1f} m (Rechnung 38,6); je Abnehmer {min(L for _, L in laengen):.0f} bis {max(L for _, L in laengen):.0f} mm")
     chk("Schlauchende = Endstueck am Port (Abstand) [mm]", max(m for _, m in miss), "<= 1", max(m for _, m in miss) <= 1.0)
+    js = max(jenseits)
+    chk("W88: kein Umweg unten (Schlauch reicht hoechstens bis Fall-Linie bzw. Anlauf Rb + 45 hinter den Port) [mm Ueberschuss entlang Port-Richtung]", js, "<= 0", js[0] <= 0.5)
+    nh = sum(len(TR.halter_s3(a["weg"])) for a in fl); nw = sum(1 for a in fl if a["weg"].get("winkel"))
+    lmax = max((math.dist(sg[1], sg[2]), a["name"]) for a in fl for sg in AS.hose_layout([list(p) for p in a["weg"]["s3"]], a["weg"]["Rb"]) if sg[0] == "G" and abs(sg[2][2] - sg[1][2]) <= 0.05 * math.dist(sg[1], sg[2]))
+    print(f"INFO W88: {nh} Schlauchhalter auf waagerechten Strecken unten, {nw} Winkeltuellen am Port (Port zeigt vom Fall weg oder Fall fast ueber dem Port); laengste waagerechte Gerade {lmax[0]:.0f} mm ({lmax[1]})")
 
     # ---- N-AUTOBAHN-FIX P2/P3 (docs/jobs/N-AUTOBAHN-FIX.md Abschnitt 5): Abstand zur Kuppelhaut, Fallachsen aussen hinter Gang B
     # Huelle = konvexe Facetten aus den Strebenachsen (scripts/.segs.json, schreibt gen_dome.py; nach D91 Rundrohr 42,4: Rohr-Innenseite = Achse - 21,2;

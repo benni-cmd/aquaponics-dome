@@ -26,10 +26,10 @@
    "aussen": 1784.3
   },
   "ausleger_laengen": {
-   "joch_innen": 1020,
+   "joch_innen": 540,
    "joch_aussen": 540,
-   "stelze_innen_pfosten_innen": 1020,
-   "stelze_innen_pfosten_aussen": 1370,
+   "stelze_innen_pfosten_innen": 710,
+   "stelze_innen_pfosten_aussen": 1060,
    "stelze_aussen_pfosten_aussen": 650
   },
   "lagen": [
@@ -59,7 +59,7 @@
      "aussen": true
     },
     "ausleger_laenge": {
-     "innen": 1020,
+     "innen": 540,
      "aussen": 540
     }
    },
@@ -89,7 +89,7 @@
      "aussen": true
     },
     "ausleger_laenge": {
-     "innen": 1020,
+     "innen": 540,
      "aussen": 540
     }
    },
@@ -104,7 +104,7 @@
     "pfosten": "innen",
     "r_pfosten": 3107.8,
     "ausleger_laenge": {
-     "innen": 1020
+     "innen": 710
     },
     "vorschlag": "Pfosten auf der Winkelhalbierenden der Ecke bei r 3108, Kragarm +X zeigt nach aussen zum Bogenscheitel; Innen-Ausleger am Gegenarm -X"
    },
@@ -119,7 +119,7 @@
     "pfosten": "innen",
     "r_pfosten": 3107.8,
     "ausleger_laenge": {
-     "innen": 1020
+     "innen": 710
     },
     "vorschlag": "Pfosten auf der Winkelhalbierenden der Ecke bei r 3108, Kragarm +X zeigt nach aussen zum Bogenscheitel; Innen-Ausleger am Gegenarm -X"
    },
@@ -134,7 +134,7 @@
     "pfosten": "aussen",
     "r_pfosten": 3800.8,
     "ausleger_laenge": {
-     "innen": 1370,
+     "innen": 1060,
      "aussen": 650
     },
     "vorschlag": "Pfosten auf der Winkelhalbierenden der Ecke bei r 3801, Kragarm +X zeigt zur Kuppelmitte zum Bogenscheitel; Innen-Ausleger am Kragarm +X, Aussen-Ausleger am Gegenarm -X"
@@ -165,7 +165,7 @@
      "aussen": true
     },
     "ausleger_laenge": {
-     "innen": 1020,
+     "innen": 540,
      "aussen": 540
     }
    },
@@ -195,7 +195,7 @@
      "aussen": true
     },
     "ausleger_laenge": {
-     "innen": 1020,
+     "innen": 540,
      "aussen": 540
     }
    },
@@ -225,7 +225,7 @@
      "aussen": true
     },
     "ausleger_laenge": {
-     "innen": 1020,
+     "innen": 540,
      "aussen": 540
     }
    },
@@ -255,7 +255,7 @@
      "aussen": true
     },
     "ausleger_laenge": {
-     "innen": 1020,
+     "innen": 540,
      "aussen": 540
     }
    },
@@ -285,7 +285,7 @@
      "aussen": true
     },
     "ausleger_laenge": {
-     "innen": 1020,
+     "innen": 540,
      "aussen": 540
     }
    }
@@ -657,9 +657,9 @@
      }
     ]
    },
-   "ausleger_schlauch_1020": {
-    "teilenummer": "WA2-1020",
-    "laenge": 1020,
+   "ausleger_schlauch_710": {
+    "teilenummer": "WA2-710",
+    "laenge": 710,
     "ks": "Flanschanlage x 0, Arm +X, Armmitte z 0 (= Z 2277 rel im Modell)",
     "ports": [
      {
@@ -680,7 +680,7 @@
      {
       "name": "Halter 1 l (Schlauchachse)",
       "lage": [
-       176.7,
+       183.5,
        42.5,
        0.0
       ],
@@ -695,7 +695,7 @@
      {
       "name": "Halter 1 r (Schlauchachse)",
       "lage": [
-       176.7,
+       183.5,
        -42.5,
        0.0
       ],
@@ -710,7 +710,7 @@
      {
       "name": "Halter 2 l (Schlauchachse)",
       "lage": [
-       514.0,
+       534.5,
        42.5,
        0.0
       ],
@@ -725,37 +725,7 @@
      {
       "name": "Halter 2 r (Schlauchachse)",
       "lage": [
-       514.0,
-       -42.5,
-       0.0
-      ],
-      "richtung": [
-       1.0,
-       0.0,
-       0.0
-      ],
-      "art": "Schlauchclip",
-      "dn": "AD <= 35"
-     },
-     {
-      "name": "Halter 3 l (Schlauchachse)",
-      "lage": [
-       851.3,
-       42.5,
-       0.0
-      ],
-      "richtung": [
-       1.0,
-       0.0,
-       0.0
-      ],
-      "art": "Schlauchclip",
-      "dn": "AD <= 35"
-     },
-     {
-      "name": "Halter 3 r (Schlauchachse)",
-      "lage": [
-       851.3,
+       534.5,
        -42.5,
        0.0
       ],
@@ -770,7 +740,7 @@
      {
       "name": "Fall l (Schlauch senkrecht nach dem Sattel)",
       "lage": [
-       1230.0,
+       920.0,
        42.5,
        -210.0
       ],
@@ -785,7 +755,7 @@
      {
       "name": "Fall r (Schlauch senkrecht nach dem Sattel)",
       "lage": [
-       1230.0,
+       920.0,
        -42.5,
        -210.0
       ],
@@ -799,9 +769,9 @@
      }
     ]
    },
-   "ausleger_schlauch_1370": {
-    "teilenummer": "WA2-1370",
-    "laenge": 1370,
+   "ausleger_schlauch_1060": {
+    "teilenummer": "WA2-1060",
+    "laenge": 1060,
     "ks": "Flanschanlage x 0, Arm +X, Armmitte z 0 (= Z 2277 rel im Modell)",
     "ports": [
      {
@@ -822,7 +792,7 @@
      {
       "name": "Halter 1 l (Schlauchachse)",
       "lage": [
-       178.2,
+       183.3,
        42.5,
        0.0
       ],
@@ -837,7 +807,7 @@
      {
       "name": "Halter 1 r (Schlauchachse)",
       "lage": [
-       178.2,
+       183.3,
        -42.5,
        0.0
       ],
@@ -852,7 +822,7 @@
      {
       "name": "Halter 2 l (Schlauchachse)",
       "lage": [
-       518.8,
+       534.0,
        42.5,
        0.0
       ],
@@ -867,7 +837,7 @@
      {
       "name": "Halter 2 r (Schlauchachse)",
       "lage": [
-       518.8,
+       534.0,
        -42.5,
        0.0
       ],
@@ -882,7 +852,7 @@
      {
       "name": "Halter 3 l (Schlauchachse)",
       "lage": [
-       859.2,
+       884.7,
        42.5,
        0.0
       ],
@@ -897,37 +867,7 @@
      {
       "name": "Halter 3 r (Schlauchachse)",
       "lage": [
-       859.2,
-       -42.5,
-       0.0
-      ],
-      "richtung": [
-       1.0,
-       0.0,
-       0.0
-      ],
-      "art": "Schlauchclip",
-      "dn": "AD <= 35"
-     },
-     {
-      "name": "Halter 4 l (Schlauchachse)",
-      "lage": [
-       1199.8,
-       42.5,
-       0.0
-      ],
-      "richtung": [
-       1.0,
-       0.0,
-       0.0
-      ],
-      "art": "Schlauchclip",
-      "dn": "AD <= 35"
-     },
-     {
-      "name": "Halter 4 r (Schlauchachse)",
-      "lage": [
-       1199.8,
+       884.7,
        -42.5,
        0.0
       ],
@@ -942,7 +882,7 @@
      {
       "name": "Fall l (Schlauch senkrecht nach dem Sattel)",
       "lage": [
-       1580.0,
+       1270.0,
        42.5,
        -210.0
       ],
@@ -957,7 +897,7 @@
      {
       "name": "Fall r (Schlauch senkrecht nach dem Sattel)",
       "lage": [
-       1580.0,
+       1270.0,
        -42.5,
        -210.0
       ],

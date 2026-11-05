@@ -455,6 +455,13 @@ AUSL.update({"stelze_innen_pfosten_innen": AUSL["joch_innen"], "stelze_innen_pfo
 R_FALL_AUSSEN = 4732.0
 AUSL["joch_aussen"] = 540   # (4732 - 3997 - 210) = 525 lag mit dem Sattelbeginn r 4472 noch 20 mm ueber Gang B (check_ausleger, Flansch r 3952); 540: Sattel ab r 4492, Fall r 4747
 AUSL["stelze_aussen_pfosten_aussen"] = round((R_FALL_AUSSEN - 3869.0 - AU["biege_r"]) / 10) * 10   # 650
+# W88 (Ben 05.11. abends, wunschbuch-ben.md): Innen-Schlaeuche fielen bei r 1567..1810 ueber dem Pool-Wasser und schlugen unten eine freie Schlaufe in der Luft.
+# Neu faellt der Schlauch am Innentisch-Pfosten neben Gang A (Pfosten ap 2160, Rinnen bis r 2060, Gang A ab r 2195): Fallachse r 2120, Regelhahn vom Gang greifbar,
+# danach mit Haltern unter dem Kragarm zum Port (r 1630). Flansch r aus check_ausleger: Joch 2802, Stelze Pfosten innen 3040, Stelze Pfosten aussen 3386.
+R_FALL_INNEN = 2120.0
+AUSL["joch_innen"] = 540   # Flansch im Modell r 2875 (Joch-KS je Tisch; check_ausleger rechnet mit 2802): 470 ergab Fall r 2193 an der Gangkante, 540 -> r ~2123
+AUSL["stelze_innen_pfosten_innen"] = round((3040.0 - AU["biege_r"] - R_FALL_INNEN) / 10) * 10                         # 710
+AUSL["stelze_innen_pfosten_aussen"] = round((3386.0 - AU["biege_r"] - R_FALL_INNEN) / 10) * 10                        # 1060
 
 # =========================================================================== Ausgabe
 def jobs(want):

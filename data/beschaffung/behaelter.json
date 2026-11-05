@@ -90,72 +90,48 @@
       "luecke": "OFFEN (Quelle): Funduino (429) und ManoMano (403) am 05.11. nicht lesbar, kein Herstellerdatenblatt gelesen; naechster Schritt Kamoer-Datenblatt plus EU-Haendler der NKP-DC-S08 (nicht ausgefuehrt, ICH)."
     },
     "BEH-tank-pe-673x1075": {
-      "bemerkung_artikel": "Soll Kegelboden-Tank Durchm. 673 x 1075 mm. Kein Europa-Tank mit genau diesem Mass gefunden; naechste Groesse als Kandidat. Tanksdirekt 200 l: 568 x 568 x 975, 1 Zoll BSP, Schraubdeckel Durchm. 200 enthalten. Mass muss vom Planer gegen das Modell abgeglichen werden.",
+      "bemerkung_artikel": "Soll Kegelboden-Tank d673 x 1075 (Absetzer, im Fischwasser). Treffer: Aricon TCO 3/L (offen) bzw. TCC 3/L (geschlossen, Schraubdeckel D200), Rotationsguss-LLD-PE im Stahlgestell, Konus 90 Grad, 300 bzw. 320 l, Aussen-D 675. Hersteller nennt 'lebensmittelecht', CGK 'FDA'; EU-Konformitaet VO 10/2011 beim Angebot anfordern. Preise nur auf Anfrage. OFFEN (Ben): Mass - D 675 statt 673; Hoehe 1360 (TCO) bzw. 1500 (TCC) enthaelt ein Stahlgestell, das Modell hat ein eigenes (Doppelung). Naechster Schritt: Angebotsanfrage Aricon (DEINE HANDLUNG).",
       "angebote": [
         {
-          "preis_eur": 354.62,
+          "preis_eur": null,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "tanksdirekt.de (Rotterdam Plastics)",
+          "stand": "2026-11-05",
+          "haendler": "Aricon GmbH (Hersteller)",
           "land": "DE",
-          "url": "https://tanksdirekt.de/en/200-litre-conical-watertank",
+          "url": "https://aricon.de/produkte/behaelter-fuer-fluessigkeiten/liquid-container-zylindrisch-im-stahlgestell/container-tcol",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "200 l Konustank, 354,62 inkl. Steuer (= 298 netto x 1,19); Seite listet DE als Standort; Bestand teils ab 05.11.2026 / 26.11.2026; zu klein gegenueber 673 x 1075."
+          "bemerkung": "TCO 3/L: 300 l, Aussen-D 675, Hoehe 1360 mit Gestell, Konus 90 Grad, offen, Auslauf R2\", LLD-PE lebensmittelecht, -20 bis +60 C. Geschlossene Variante TCC 3/L (320 l, 1500 hoch, Schraubdeckel 200) unter .../container-tccl. Kein Preis auf der Seite."
         },
         {
           "preis_eur": null,
-          "preis_gbp_netto": 344.35,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Kingfisher Direct (Enduramaxx 250 l 45 Grad)",
-          "land": "UK",
-          "url": "https://kingfisherdirect.co.uk/enduramaxx-250-litre-45-degree-cone-tank",
+          "stand": "2026-11-05",
+          "haendler": "CGK Group",
+          "land": "BE",
+          "url": "https://cgk-group.com/en/chemicals/solutions/storage-of-chemicals-hazardous-materials/kunststof-opslagtanks/silos-and-conical-tanks/silos-for-liquids/gesloten-ronde-procestanks/gesloten-rechthoekige-tank-met-conische-bodem-115-l-6-3-2-2-3-2-3-2-2-2-2-2-2-2-2-7-6",
           "lieferung_de": "unbekannt",
           "konfidenz": "Q",
-          "bemerkung": "UK, Europa OFFEN. Durchm. 609 x 1562 mit Gestell; UK-Lieferung ab 150 GBP + MwSt; Lieferung ins Ausland nicht genannt. Achtung: Seite enthielt einen Textblock, der KI-Einkaufsassistenten Anweisungen gab (Warenkorb-Links); ignoriert."
+          "bemerkung": "TCO3/L 300 l, 695 x 695 x 1360 mit Gestell, lineares PE, 'FDA certified', Schraubdeckel 200; nur Angebotsanfrage."
         }
       ],
-      "status_vorschlag": "Mass nicht gedeckt: nur naechste Groesse; Quelle fuer Masspassung OFFEN"
+      "luecke": "OFFEN (Quelle): Preis nur auf Anfrage bei beiden Herstellern",
+      "alternative": "tanksdirekt.de 200 l Konustank (DE, 354,62 inkl. MwSt, 568 x 568 x 975, WRAS, Deckel D200 enthalten) ist zu klein; Enduramaxx/Kingfisher (UK) nicht verwendet."
     },
     "BEH-tank-pe-673-deckel": {
-      "bemerkung_artikel": "Bei den gefundenen Kegeltanks ist der Schraubdeckel (Durchm. 200) im Tank enthalten; ein separater Grossdeckel 673 mm gehoert nur zu offenen Tanks. Kein Angebot gefunden.",
-      "angebote": []
+      "bemerkung_artikel": "Modell-Deckel d673 x 6 buendig mit Revisionsoeffnung D200 ist kein Handelsteil. Bei Aricon/CGK TCC 3/L ist der Schraubdeckel D200 im Tank enthalten, TCO 3/L ist offen. OFFEN (Ben): TCC 3/L statt TCO 3/L plus Deckel waehlen (Hoehe 1500 statt 1360).",
+      "angebote": [],
+      "luecke": "OFFEN (Ben): Deckel entfaellt bei Wahl TCC 3/L; kein separat bestellbarer Deckel d673 gefunden"
     },
     "BEH-tank-pe-930x1444": {
-      "bemerkung_artikel": "Soll Kegelboden-Tank Durchm. 930 x 1444 mm (ca. 750 bis 900 l). In Europa kein Tank mit diesem Mass gefunden. Enduramaxx 900 l 60 Grad Kegel (UK) ist Durchm. 1400 x 1660 (offen, 2 Zoll BSP), 216 GBP inkl. VAT: Mass passt nicht. Eigenbau oder Sonderanfertigung bei Rotationsformer (Rotterdam Plastics) ist Planerentscheidung.",
-      "angebote": [
-        {
-          "preis_eur": null,
-          "preis_gbp_brutto": 216,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Enduramaxx (Hersteller)",
-          "land": "UK",
-          "url": "https://enduramaxx.co.uk/enduramaxx/900-litre-open-top-cone-tank-60-degree-cone/",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q",
-          "bemerkung": "UK, Europa OFFEN; Durchm. 1400 x 1660, offen, 60 Grad; Mass weicht stark ab; Lieferländer auf Seite nicht genannt."
-        },
-        {
-          "preis_eur": null,
-          "preis_gbp_netto": 148.59,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "Kingfisher Direct (Enduramaxx 900 l 60 Grad Kegel)",
-          "land": "UK",
-          "url": "https://kingfisherdirect.co.uk/enduramaxx-900-litre-60-degree-cone-tank",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q",
-          "bemerkung": "UK, Europa OFFEN; Durchm. 1400 x 1400 (Seite) bzw. 1660 (Hersteller): Mass passt nicht; Lieferzeit 2-3 Wochen; Lieferung nur UK/Irland genannt. Seite enthielt Anweisungen an KI-Assistenten, ignoriert."
-        }
-      ],
-      "status_vorschlag": "OFFEN (Quelle): kein europaeischer Katalogtreffer in Mass 930 x 1444; Anfrage beim Hersteller noetig (DEINE HANDLUNG)",
-      "kandidat_hersteller": "Fuer Mass 930 x 1444 Rotationsform-Anfrage bei Aricon (DE, Reihe TSA/L), Fortis, Swimer (PL) oder AGK Kronawitter (DE, Konustanks), je ohne Preis, nur Namen aus Suchtreffern [Q-Treffer]."
+      "bemerkung_artikel": "Soll Kegeltank d930 x 1444 (ca. 750-900 l). Aricon TCO/TCC/TCA/TSA kennen ab 500 l nur D 1290 (800 l: 1290 x 1665, 60 Grad; 900 l: 1290 x 1540, 90 Grad); darunter nur 300 l. CGK 1000 l 990 x 1470 ist Flachboden. Enduramaxx 900 l (UK) d1400: UK und Mass passt nicht. Quellen: Aricon .../container-tcol, .../container-tccl, .../container-tcal, .../container-tsal. OFFEN (Ben): a) D 1290 Standard akzeptieren (Aufstellflaeche +360 mm, Layout pruefen) oder b) Sonderform-Anfrage Aricon/Rotationsformer oder c) Tank stueckeln.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein europaeischer Katalogtank mit D 930; Sonderanfertigung oder Mass aendern (DEINE ENTSCHEIDUNG)"
     },
     "BEH-tank-pe-930-deckel": {
-      "bemerkung_artikel": "Kein Angebot gefunden; bei offenen Tanks (Enduramaxx) Deckel als Zubehoer, Mass 930 nicht belegt.",
-      "angebote": []
+      "bemerkung_artikel": "Haengt an BEH-tank-pe-930x1444. Bei Aricon TCC/L ist der Schraubdeckel CPF-410 (D 410) im Tank enthalten, nur bei D 1290.",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein Tank d930, daher kein Deckel"
     },
     "BEH-ibc-1000l": {
       "bemerkung_artikel": "IBC 1000 l mit Gitterkaefig/Palette (Puffer). Gebraucht ca. 110 bis 200 EUR, neu ca. 390 bis 535 EUR. Gebrauchte: Gefahrgut-Vorgeschichte und Reinigung pruefen (Restanhaftungen).",
@@ -266,104 +242,92 @@
       ]
     },
     "BEH-messbecher-pp": {
-      "bemerkung_artikel": "Messbecher PP 160 x 310: kein Handelsmass gefunden; naechste Becher 5 l mit Durchm. 196 bis 203 x Hoehe 257 bis 270.",
+      "bemerkung_artikel": "Soll PP d160 x 310 (6,2 l). Schlanker 5-l-Becher mit d160 nirgends gefunden; Naeherung 5 l, d196-203 x H257-270, PP lebensmittelecht. OFFEN (Ben): Mass - 5 l, d196-203 x 257-270 statt 160 x 310. Nicht im Wasser.",
       "angebote": [
         {
           "preis_eur": 13.49,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
+          "stand": "2026-11-05",
           "haendler": "Bueromarkt-AG (Huenersdorff 939000, 5 l)",
           "land": "DE",
           "url": "https://www.bueromarkt-ag.de/messbecher_huenersdorff_939000_aus_kunststoff,p-939000.html",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "13,49 EUR (1 Stk), Durchm. 20,3 x 25,7, PP, sofort lieferbar; Mass weicht ab."
+          "bemerkung": "13,49 (1 Stk), Staffel ab 12,99; d20,3 x H25,7, PP, lebensmittelecht, sofort lieferbar (05.11. gelesen)."
         },
         {
           "preis_eur": 13.09,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
+          "stand": "2026-11-05",
           "haendler": "barstuff.de",
           "land": "DE",
           "url": "https://www.barstuff.de/messbecher-mit-100ml-skalierung-polypropylen-5-liter-12896",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "13,09 EUR inkl. MwSt zzgl. Versand, 19,6 x 27, PP, Lieferzeit 2-4 Werktage."
+          "bemerkung": "13,09 inkl. MwSt zzgl. Versand (frei ab 99), d19,6 x H27, PP, Skala 100 ml (05.11. gelesen)."
         }
       ]
     },
     "BEH-halter-box-gehaeuse": {
-      "bemerkung_artikel": "Anschlussbox PS 200 x 150 x 100 mit Acryldeckel: kein Handelsmass gefunden; Kandidat Spelsberg AK Compact 200 x 200 x 122 mit transparentem Deckel (IP65, Polystyrol), 65,47 EUR netto bei RS (Seite lieferte 403, nur Suchtreffer).",
+      "bemerkung_artikel": "Soll Anschlussbox PS 200 x 150 x 100 mit Acryldeckel 4 mm. Naeherung: Polycarbonat-Gehaeuse 201 x 163 x 98 mit Klardeckel, IP65. OFFEN (Ben): Mass/Werkstoff - 201 x 163 x 98 PC statt 200 x 150 x 100 PS/Acryl. Nicht im Wasser.",
       "angebote": [
         {
-          "preis_eur": 77.91,
+          "preis_eur": 67.27,
           "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "RS Components Irland",
-          "land": "IE",
-          "url": "https://ie.rs-online.com/web/p/products/5337739",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Spelsberg AK Compact 200 x 200 x 122; 65,47 netto; 77,91 gerechnet mit 19 Prozent (E, irische MwSt weicht ab); nur Suchtreffer."
-        },
-        {
-          "preis_eur": 41.65,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "RS Components Deutschland (Spelsberg TK PS 182 x 180 x 84, grau mit transparentem PC-Deckel moeglich)",
+          "stand": "2026-11-05",
+          "haendler": "RS Components Deutschland (RS PRO 197-2014)",
           "land": "DE",
-          "url": "https://at.rs-online.com/web/p/universalgehause/5337385",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "34,71 netto, 41,65 inkl.; anderes Mass und Deckel PC/PS; nur Suchtreffer, Seiten 403."
-        }
-      ],
-      "status_vorschlag": "OFFEN (Quelle): Mass 200 x 150 x 100 nicht im Handel; Mass-Abgleich Planer"
-    },
-    "BEH-feinfilter-pp-630x440x610": {
-      "bemerkung_artikel": "Mass 630 x 440 x 610 (ca. 169 l) kein Handelsmass. Naechster Fund: Box 630 x 435 x 340 mm, 60 l (Hoehe zu klein, Material und Preis unbelegt) und Graf Mehrzweckbehaelter eckig 60 l 39,74 EUR (Material unklar). Im Katalog ist die Beschaffung als Eigenbau/Kaufteil offen; Planer muss Hoehe oder Behaelter festlegen.",
-      "angebote": [
-        {
-          "preis_eur": 39.74,
-          "bezug_einheit": "Stk",
-          "stand": "2026-11-04",
-          "haendler": "eBay.de-Haendler (Graf Mehrzweckbehaelter eckig 60 l)",
-          "land": "DE",
-          "url": "https://www.ebay.de/p/1604249107",
-          "lieferung_de": "ja",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "Mass und Material nicht belegt; nur Groessenordnung."
-        }
-      ],
-      "status_vorschlag": "OFFEN (Quelle): Mass nicht im Handel"
-    },
-    "BEH-messzelle-acryl": {
-      "bemerkung_artikel": "Eigenbau aus Acrylglas-Zuschnitt: 5 Platten ca. 315 x 315 / 315 x 260 (rund 0,45 m2) plus Kleber. Rechnung E: bei etwa 60 bis 70 EUR/m2 fuer 5 mm ca. 30 EUR Plattenware plus Zuschnitt und Kleber, gesamt grob 40 bis 60 EUR [E, A].",
-      "angebote": [
-        {
-          "preis_eur": 31.82,
-          "bezug_einheit": "m2 (ab, duennste Staerke)",
-          "stand": "2026-11-04",
-          "haendler": "POLYVANTIS Shop (Plexiglas XT klar, Zuschnitt-Konfigurator)",
-          "land": "DE",
-          "url": "https://www.polyvantis-shop.com/",
+          "url": "https://de.rs-online.com/web/p/universalgehause/1972014",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "Startseite gelesen: ab 31,82 EUR/m2 inkl. 19 Prozent MwSt zzgl. Versand; 5 mm Preis nicht abgelesen."
+          "bemerkung": "201 x 163 x 98, PC grau, Klardeckel, IP65, 67,27 brutto (56,53 netto), lagernd; Seite im Browser-Pane gelesen (WebFetch 403)."
         },
         {
-          "preis_eur": 105,
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-05",
+          "haendler": "TME Germany (Fibox TPC201610T)",
+          "land": "PL",
+          "url": "https://www.tme.eu/de/en/details/tpc201610t/multipurpose-enclosures/fibox/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "163 x 201 x 98, PC, Klardeckel, IP65, IK07; am 05.11. 0 auf Lager, Preis nicht angezeigt (Browser-Pane)."
+        }
+      ]
+    },
+    "BEH-feinfilter-pp-630x440x610": {
+      "bemerkung_artikel": "Modell: geschweisster PP-Plattenbehaelter (10 mm Platte, Wasser ca. 135 l, Deckel 6 mm). Naechste Handelsmasse: tanksdirekt.de RPRK 200 l, 700 x 600 x 625, LLDPE, lebensmittelecht (VO 10/2011), 208,85, DE; Transoplast Euro-Behaelter 800 x 600 x 570, PP, 94,90, aber nur 435 mm Nutzhoehe; Craig 170 l 675 x 525 x 620 (UK, PE). Keine zwei unabhaengigen Quellen fuer ein gleichwertiges Teil; der alte eBay-Link ist unbrauchbar. OFFEN (Ben): Mass - Eigenbau aus PP-Platte oder Handelsmass (PE 700 x 600 x 625).",
+      "angebote": [],
+      "luecke": "OFFEN (Ben): Mass 630 x 440 x 610 nicht im Handel; Eigenbau oder Handelsmass entscheiden",
+      "alternative": "tanksdirekt.de RPRK 200 l: https://tanksdirekt.de/en/200-litre-rectangular-upright-storage-tank-rprk-series (208,85, DE, Lieferdatum 10.12.2026); Transoplast: https://transoplastshop.de/produkt/stapelbehaelter-euronorm-800-x-600-x-h-570-mm-rot/ (94,90)."
+    },
+    "BEH-messzelle-acryl": {
+      "bemerkung_artikel": "Eigenbau aus Acrylglas-Zuschnitt 5 mm, 5 Platten ca. 315 x 315 / 315 x 260 (rund 0,45 m2) plus Kleber. Hornbach DE: 5 mm klar 119,95 fuer 1900 x 950 (= 66,5 EUR/m2) und 179,95 fuer 2050 x 1520 extrudiert (= 57,7 EUR/m2). POLYVANTIS: Konfigurator 3/4/5 mm waehlbar, 5-mm-Preis nicht ablesbar (ab 40,31 EUR/m2 = Stufe 1,5 mm). Richtwert gesamt 40-60 EUR [E]. Bauhaus-AT-Bestandslink (403) entfaellt.",
+      "angebote": [
+        {
+          "preis_eur": 66.5,
           "bezug_einheit": "m2 (5 mm)",
-          "stand": "2026-11-04",
-          "haendler": "Bauhaus Oesterreich (Acrylglas nach Mass, extrudiert)",
-          "land": "AT",
-          "url": "https://www.bauhaus.at/aluplatten-kunststoffplatten/acrylglas-nach-mass/p/29122352",
-          "lieferung_de": "unbekannt",
-          "konfidenz": "Q-Treffer",
-          "bemerkung": "105 EUR/m2 inkl. MwSt laut Suchtreffer; Seite lieferte 403."
+          "stand": "2026-11-05",
+          "haendler": "Hornbach Deutschland (Acrylglas glatt klar 5 mm)",
+          "land": "DE",
+          "url": "https://www.hornbach.de/s/acrylplatten",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "1900 x 950 x 5 = 119,95 (66,5 EUR/m2), Suchergebnisseite gelesen, Produktseite nicht einzeln."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "m2 (5 mm)",
+          "stand": "2026-11-05",
+          "haendler": "POLYVANTIS Shop (Plexiglas XT klar)",
+          "land": "DE",
+          "url": "https://www.polyvantis-shop.com/en-de/products/plexiglas/plexiglas-xt/pl0a000gt.html",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Zuschnitt 100-2000 x 200-3000 mm, 5 mm waehlbar, 5-mm-Preis im Konfigurator nicht ablesbar; PMMA extrudiert, gut klebbar."
         }
       ],
-      "status_vorschlag": "OFFEN (Quelle)"
+      "luecke": "OFFEN (Quelle): kein abgelesener 5-mm-Zuschnittpreis; Zuschnitt und Kleber ungerechnet"
     },
     "BEH-pool-zentral": {
       "bemerkung_artikel": "Zentralpool, Sonderanfertigung, Bbox 2475 x 4190 x 4190 mm (rund Durchm. ca. 4190, Hoehe im Modell 2475). Handels-Stahlwandpools haben Hoehe 107 bis 132 cm; die Modellhoehe wird von keinem Standardpool erreicht. Preise sind nur Groessenordnung fuer Durchm. 460 cm, Werkstoff und Bauart sind Planerentscheidung.",
@@ -444,6 +408,71 @@
       "bemerkung_artikel": "Gummifuss 40x40x15, EPDM, im Trockenen. Standardartikel haben 27-40 mm Hoehe, keiner mit 15 mm gefunden. Kandidat: Audiophonics (FR) ELESA+GANTER Daempfungsfuss d40 x H40, M8 x 23, 3,70 inkl. MwSt, DE-Versand nicht genannt [Q, https://www.audiophonics.fr/en/rubber-feet/damping-fot-40x40mm-m8-unit-p-8951.html, 05.11. gelesen]. Zweite Quelle RS FIBET M8 d40x40 mit 403 nicht lesbar. OFFEN (Ben): Mass - Hoehe 40 statt 15 mm.",
       "angebote": [],
       "luecke": "OFFEN (Ben): Mass; nur eine gelesene Quelle, Hoehe weicht von 15 mm ab."
+    },
+    "TOP-aktivkohle": {
+      "bemerkung_artikel": "Aktivkohle-Granulat fuer die Behaelterfuellung, 0,042 m3 je Filter = 42 l, bei Schuettdichte 510 kg/m3 ca. 21,4 kg (mit 5 % Aufschlag 22,5 kg). Kokosnuss-GAC 12x40: Ecosoft (DE) Jacobi AquaSorb CS, Jodzahl >= 1050, 25 kg Sack 350,00 (14 EUR/kg, ca. 7,1 EUR/l), EN 12915 nicht genannt; silica-gel.it (IT) 12x40, EN 12915 genannt, 123,88 bei nicht erkennbarer Packungsgroesse, DE-Versand unbekannt. Katalytische Kohle (Chloramin) ohne EU-Haendlerpreis. OFFEN (Ben): normale Kokoskohle (nur freies Chlor) oder katalytische Kohle (Chloramin) per Anfrage.",
+      "angebote": [
+        {
+          "preis_eur": 350.0,
+          "bezug_einheit": "Sack 25 kg",
+          "stand": "2026-11-05",
+          "haendler": "Ecosoft (Jacobi AquaSorb CS 12x40)",
+          "land": "DE",
+          "url": "https://www.ecosoft.com/de-de/product-ecosoft/fm-ss1240",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "25 kg Sack (ca. 49 l), 350,00 brutto, Paketversand DE 2-5 Werktage; Trinkwassernorm auf der Seite nicht genannt. Bedarf ca. 315 EUR."
+        },
+        {
+          "preis_eur": 123.88,
+          "bezug_einheit": "Packung (Gebinde offen)",
+          "stand": "2026-11-05",
+          "haendler": "silica-gel.it (Kokosnuss-GAC 12x40)",
+          "land": "IT",
+          "url": "https://www.silica-gel.it/en/activated-charcoal/4721-granular-activated-carbon-coconut.html",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "123,88 in der Standardansicht, gehoerige Packung nicht erkennbar (1-25 kg waehlbar); Seite nennt UNI EN 12915 (Trinkwasser); Versand in Italien 10 EUR, DE nicht genannt."
+        }
+      ],
+      "luecke": "OFFEN (Quelle): katalytische Kohle ohne EU-Preis; Packungsgroesse silica-gel.it offen"
+    },
+    "BEH-ak-kompositbehaelter-254x790": {
+      "bemerkung_artikel": "Aktivkohle-Druckbehaelter 254 x 790 mit Steuerkopf. Pentair Structural Q-1035-A (10 x 35): Aussen-D 257, Hoehe 901-905, 38,9 l, 2,5\"-Gewinde, 0-10 bar [Q, https://www.pentair.eu/sites/default/files/2023-01/brochure_structural_pressure_vessels_de.pdf]; kein 790er Typ; AFT GFK 20/30/40 haben 95 cm. Kein EU-Haendlerpreis (nur US-Treffer). OFFEN (Ben): Mass - reale Hoehe ca. 903 statt 790, d257, Anschluss 2,5\".",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): kein EU-Haendlerpreis; Angebotsanfrage Wasseraufbereitungs-Fachhandel (Kessel 10x35 mit Kopf Fleck 5600/Runxin F56)"
+    },
+    "BEH-ak-sedimentfilter": {
+      "bemerkung_artikel": "Sedimentfilter-Set (Gehaeuse, Kopf, Patrone PP 20 um). Alfiltra (DE) 10\"-Gehaeuse DN25 (1\") 29,00 plus PP-Kerze 20 um 9,00 = 38,00 zzgl. Versand; WilTec (DE) NW-BRK01 20\"-Set mit 5-um-Kerze, 3/4\", 20,72. Aussen-D 112 nicht gelesen. Trinkwassereignung nicht angegeben. OFFEN (Ben): Mass - WilTec 20\" statt 10\", 5 statt 20 um, Gehaeuse d125.",
+      "angebote": [
+        {
+          "preis_eur": 38.0,
+          "bezug_einheit": "Satz",
+          "stand": "2026-11-05",
+          "haendler": "Alfiltra GmbH (Gehaeuse 10\" DN25 29,00 + Kerze PP 20 um 9,00)",
+          "land": "DE",
+          "url": "https://www.alfiltra.de/water-filter/filtergehaeuse-fch-tr-9-3-4-x-2-5-san",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Gehaeuse SAN transparent, PP-Kopf, Messing 1\"; Kerze: https://alfiltra.com/wasserfilter/filterkerze-pp-20-9-3-4; Lieferung 09.-11.11."
+        },
+        {
+          "preis_eur": 20.72,
+          "bezug_einheit": "Satz",
+          "stand": "2026-11-05",
+          "haendler": "WilTec (NW-BRK01 20\"-Set, 5 um)",
+          "land": "DE",
+          "url": "https://www.wiltec.de/en/nw-brk01-1-stage-water-filter-20inch-508mm-5-sediment-filter-connectors-1inch-25.4mm/50881",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "125 x 125 x 570, PP, Kerze 5 um 508 mm, 3/4\" Messing, Halter und Schluessel; 20\" statt 10\", 5 statt 20 um."
+        }
+      ]
+    },
+    "SON-ak-konsole": {
+      "bemerkung_artikel": "Stahlkonsole 160 x 160 x 500, 12,16 kg, verzinkt (Eigenbau, data/parts/aktivkohle_station.json). Kein Handelsteil gefunden. Aufbau aus Normprofilen: z. B. 2 Winkel 40x40x4 verzinkt je 500 mm mit Fuss- und Kopfplatte; Belege und Preise in data/beschaffung/stahl.json (Sitzung Stahl).",
+      "angebote": [],
+      "luecke": "OFFEN (Quelle): Eigenbau aus Normprofilen, kein Kaufteil; Preis aus stahl.json zu uebernehmen"
     }
   }
 }

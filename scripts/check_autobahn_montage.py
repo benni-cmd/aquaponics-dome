@@ -102,6 +102,15 @@ if RUNDE == "r2":
         chk(f"Schlauch frei {'vom Abzweig bis zum ersten Ausleger-Clip' if art == 'auf' else 'im letzten Fall bis zum Regelhahn'} [mm] (R6 / Blatt 2.6.3)", f"max {worst[2]:.0f} ({worst[1]}), {n_over} ueber Soll", f"<= {soll:.0f}", n_over == 0)
     cl = [f for f in frei if f[0] == "clip"]; ncl = sum(1 for f in cl if f[2] > 5.0)
     chk("Schlauch liegt im Clip (Abstand Schlauchachse zum ersten Clip-Port)", f"max {max(f[2] for f in cl):.0f} mm, {ncl} von {len(cl)} > 5 mm", "<= 5 mm", ncl == 0)
+    genutzt, gesamt = 0, 0
+    for a in fl:
+        if a["zone"] == "mitte": continue
+        au = a["ausleger"]; s1 = a["weg"]["s1"]
+        for pt in TR.TW["teile"]["ausleger_schlauch_%d" % au["lg"]]["ports"][1:-2:2]:
+            c = TR.world(au["m"], (pt["lage"][0], a["y_clip"], 0.0)); gesamt += 1
+            dmin = min(math.dist(tuple(s1[i][j] + (s1[i + 1][j] - s1[i][j]) * t / 200 for j in range(3)), c) for i in range(len(s1) - 1) for t in range(201))
+            genutzt += dmin <= 5.0
+    print(f"INFO Clips: Schlauch liegt in {genutzt} von {gesamt} Clip-Plaetzen der Ausleger (Rest: Versatz und Anstieg vor dem Arm)")
     s19 = sum(L for i, L in laengen if i == 19) / 1000; s25 = sum(L for i, L in laengen if i == 25) / 1000
     print(f"INFO Schlauchmeter aus den Wegen: ID19 {s19:.1f} m (Rechnung ID16 60,8), ID25 {s25:.1f} m (Rechnung 38,6); je Abnehmer {min(L for _, L in laengen):.0f} bis {max(L for _, L in laengen):.0f} mm")
     chk("Schlauchende = Endstueck am Port (Abstand) [mm]", max(m for _, m in miss), "<= 1", max(m for _, m in miss) <= 1.0)

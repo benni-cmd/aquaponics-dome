@@ -480,12 +480,14 @@ def schlauch_weg(a):
     else:
         au = a["ausleger"]; d = au["d"]; yv = a["yv"]; up = (0.0, 0.0, 1.0)
         x1 = kr + tl + Rb * math.tan(math.pi / 8) + 5; dz = Z_ARM - A0[2]
-        P1 = add(A0, d, x1); P2 = add(add(P1, d, dz), up, dz)
+        P1 = add(A0, d, x1)
         fall = world(au["m"], (au["lg"] + AT.AU["biege_r"], a["y_clip"], 0.0))       # Fall-Linie am Endbuegel (WA-T Port 'Fall')
         D = (fall[0], fall[1]); lam = a["lam"]
-        pts = [add(A0, u0, kr), P1, P2]
+        pts = [add(A0, u0, kr), P1]                                           # seitlicher Versatz zuerst auf Ring-Achshoehe, dann Anstieg in der Clip-Linie auf den Arm
         if abs(lam) > 0.5:
-            P3 = add(P2, d, 2 * Rb * math.tan(math.pi / 8) + 5); P4 = add(add(P3, d, abs(lam)), yv, -lam); pts += [P3, P4]
+            P1b = add(add(P1, d, abs(lam)), yv, -lam); pts.append(P1b); P1 = P1b
+            P1 = add(P1, d, 2 * Rb * math.tan(math.pi / 8) + 5); pts.append(P1)
+        P2 = add(add(P1, d, dz), up, dz); pts.append(P2)
         pts += [fall, (D[0], D[1], z_ht)]
         s1 = pts
     k_d = AS.SK[idd]; z_kt = z_hb - (2 * tl + 20); z_kb = z_kt - (k_d["dose_l"] + k_d["st_l"])

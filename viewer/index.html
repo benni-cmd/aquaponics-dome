@@ -119,7 +119,7 @@
   <div id="legende" hidden></div>
   <label class="opt"><input type="checkbox" id="wire"> Drahtgitter</label>
   <label class="opt"><input type="checkbox" id="auto" checked> Auto-Update</label>
-  <label class="opt" title="Schrauben, Scharniere, Klinken und andere Koerper unter 15 cm Diagonale; werden erst beim Einschalten nachgeladen"><input type="checkbox" id="klein"> Kleinteile unter 15 cm zeigen</label>
+  <label class="opt" title="Schrauben, Scharniere, Klinken und andere Körper unter 15 cm Diagonale; werden erst beim Einschalten nachgeladen. Stutzen, Muffen und Hähne bleiben immer sichtbar."><input type="checkbox" id="klein"> Kleinteile unter 15 cm zeigen</label>
   <h2>Schnitt (Hoehe)</h2>
   <input type="range" id="clip" min="0" max="7000" value="7000">
   <h2>Bauteile (Hover leuchtet, Klick waehlt)</h2>
@@ -512,6 +512,7 @@ async function bauePhase(eintraege, fn) {                   // Meshes bauen, dab
 const LS_KLEIN = 'viewer.kleinteile';
 let kleinOn = false; try { kleinOn = localStorage.getItem(LS_KLEIN) === '1'; } catch (e) {}
 document.getElementById('klein').checked = kleinOn;
+let inst_anschluss = false;
 let DEFS_INFO = {}, MIN_DIAG_MM = 150, kleinBuilt = false, kleinBusy = false, loadBusy = false;
 const meshVisible = (im, leafOn) => leafOn && (!im.userData.klein || kleinOn) && (!im.userData.mensch || ansicht === 'visuell');
 function setKleinVisible() {
@@ -552,9 +553,10 @@ function perfText() {
   if (!DEFS_INFO || !model) return;
   const defs = Object.values(DEFS_INFO), nI = Object.values(defList).reduce((s, l) => s + l.length, 0);
   document.getElementById('perf').textContent = `${nI} Instanzen, ${defs.length} Definitionen, ${mb(defs.reduce((s, d) => s + d.kb * 1024, 0))}, Aufbau ${perfAufbau} s, ` +
-    (kleinOn && kleinBuilt ? `Kleinteile unter ${MIN_DIAG_MM / 10} cm sichtbar (${mb(defs.reduce((s, d) => s + (d.klein_kb || 0) * 1024, 0))})` : `Kleinteile unter ${MIN_DIAG_MM / 10} cm ausgeblendet`);
+    (kleinOn && kleinBuilt ? `Kleinteile unter ${MIN_DIAG_MM / 10} cm sichtbar (${mb(defs.reduce((s, d) => s + (d.klein_kb || 0) * 1024, 0))})` : `Kleinteile unter ${MIN_DIAG_MM / 10} cm ausgeblendet${inst_anschluss ? ' (Stutzen, Muffen und Hähne bleiben sichtbar)' : ''}`);
 }
 let perfAufbau = '0.0';
+window.kamera = (pos, ziel) => { camera.position.set(...pos); controls.target.set(...ziel); controls.update(); };   // Messhaken: Kamera fuer Bildvergleiche
 window.viewerStand = () => Object.fromEntries(Object.entries(defMeshes).map(([stem, ms]) => [stem, { koerper: ms.filter(m => !m.userData.klein && m.visible).length, kleinteile: ms.filter(m => m.userData.klein && m.visible).length }]));   // Messhaken: sichtbare Koerper je Definition
 
 // Topfzahlen aus dem Modell ableiten (nicht von Hand): Beet-Toepfe und NFT-Toepfe liegen in zwei klar getrennten Hoehen
@@ -713,7 +715,7 @@ async function load() {
     try { [inst, ex] = await Promise.all([getJsonWdh('instances.json?v=' + v), getJsonWdh('extras.json?v=' + v)]); }
     catch (e) { Lade.fehlerMelden('Modellverzeichnis nicht lesbar: ' + e.message); Lade.ende(); return; }
     extras = ex; GROUND = Number.isFinite(inst.walk_z) ? inst.walk_z : 400;   // begehbarer Boden = Sockelhoehe sock_h
-    DEFS_INFO = inst.defs; MIN_DIAG_MM = inst.min_diag || 150; POT = topfzahlen(inst); topfPatch();
+    DEFS_INFO = inst.defs; MIN_DIAG_MM = inst.min_diag || 150; inst_anschluss = !!inst.anschluss_immer_sichtbar; POT = topfzahlen(inst); topfPatch();
     try { FARBEN = farbenLesen(await getJson('farben.json?v=' + v)); } catch (e) { FARBEN = null; Lade.fehlerMelden('farben.json nicht lesbar, es gelten die bisherigen Farben: ' + e.message); }
     const teileP = ladeAnsichtDaten(inst);
     const t0 = performance.now(), m = new THREE.Group();

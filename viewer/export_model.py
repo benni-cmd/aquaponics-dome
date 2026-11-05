@@ -12,7 +12,10 @@ CLI = r'C:\Program Files\SolidCraft\solidcraft-cli.exe'
 SCRIPT = os.path.join(ROOT, 'scripts', 'dome-script.json')
 DEFS = os.path.join(HERE, 'defs')
 MIN_DIAG = 150   # mm
-FORMAT = 'v2'    # Cache-Schluessel: v2 = Kleinteile in <stem>.klein.obj statt verworfen
+FORMAT = 'v3'    # Cache-Schluessel: v2 = Kleinteile in <stem>.klein.obj statt verworfen, v3 = Anschlussteile bleiben im Hauptexport
+ANSCHLUSS = [re.compile(m, re.I) for m in json.load(open(os.path.join(HERE, 'anschluesse.json'), encoding='utf-8'))['muster']] if os.path.exists(os.path.join(HERE, 'anschluesse.json')) else []
+ANSCHLUSS_ID = '%08x' % (sum(ord(c) * (i + 1) for i, c in enumerate('|'.join(a.pattern for a in ANSCHLUSS))) & 0xffffffff)   # aendert sich mit der Liste
+ist_anschluss = lambda name: any(a.search(name) for a in ANSCHLUSS)
 KEEP_ALL = ('netztopf', 'salatkopf')   # Pflanzenteile sind klein, aber als Instanzen billig: alle Koerper behalten
 fw = lambda p: os.path.abspath(p).replace(chr(92), '/')
 
@@ -49,14 +52,15 @@ t0 = time.time(); defs = {}; exported = 0; tmp = os.path.join(DEFS, '_job.json')
 for cls, path in ins.items():
     stem = os.path.splitext(os.path.basename(path))[0]
     if stem in defs: continue
-    md = 0 if stem in KEEP_ALL else MIN_DIAG; key = f'{os.path.getmtime(path)}|{md}|{FORMAT}'; out = os.path.join(DEFS, stem + '.obj'); out_k = os.path.join(DEFS, stem + '.klein.obj')
+    md = 0 if stem in KEEP_ALL else MIN_DIAG; key = f'{os.path.getmtime(path)}|{md}|{FORMAT}|{ANSCHLUSS_ID}'; out = os.path.join(DEFS, stem + '.obj'); out_k = os.path.join(DEFS, stem + '.klein.obj')
     if cache.get(stem) != key or not os.path.exists(out):
         json.dump({'commands': [{'command': 'doc.open', 'params': {'path': fw(path), 'read_only': True}}]}, open(tmp, 'w'))
         o = os.path.join(DEFS, '_ev.json')
         subprocess.run([CLI, 'eval', fw(path), '--json-out', o], capture_output=True)
         bodies = find(json.load(open(o, encoding='utf-8')), 'bodies') or []; os.remove(o)
-        keep = [b['name'] for b in bodies if math.dist(b['bbox']['min'], b['bbox']['max']) >= md]
-        klein = [b['name'] for b in bodies if math.dist(b['bbox']['min'], b['bbox']['max']) < md]
+        gross = lambda b: math.dist(b['bbox']['min'], b['bbox']['max']) >= md or ist_anschluss(b['name'])   # Anschlussteile immer im Hauptexport
+        keep = [b['name'] for b in bodies if gross(b)]
+        klein = [b['name'] for b in bodies if not gross(b)]
 
         def schreibe(namen, ziel):   # leere Liste: leere Datei (sonst exportiert die CLI womoeglich alle Koerper)
             if not namen:
@@ -87,7 +91,7 @@ for f in os.listdir(HERE):   # Altlast: das fruehere Gesamt-OBJ
 try: walk_z = json.load(open(os.path.join(ROOT, 'data', 'params.json'), encoding='utf-8'))['sock_h']['value']   # begehbarer Boden fuer den FPV-Modus
 except Exception: walk_z = 400
 json_atomar({'plants': [], 'colors': colors, 'built': built, 'bodies': len(insts)}, os.path.join(HERE, 'extras.json'))
-json_atomar({'built': built, 'min_diag': MIN_DIAG, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, os.path.join(HERE, 'instances.json'))   # zuletzt: erst jetzt zeigt das Modellverzeichnis auf den neuen Stand
+json_atomar({'built': built, 'min_diag': MIN_DIAG, 'anschluss_immer_sichtbar': True, 'walk_z': walk_z, 'defs': defs, 'instances': insts}, os.path.join(HERE, 'instances.json'))   # zuletzt: erst jetzt zeigt das Modellverzeichnis auf den neuen Stand
 subprocess.run([sys.executable, '-I', os.path.join(HERE, 'export_ansicht.py')], capture_output=True, text=True)   # Nebendatei Werkstoff/Gruppe/Leitungsart passend zu diesem Export
 size = sum(d['kb'] for d in defs.values()) / 1024; size_k = sum(d['klein_kb'] for d in defs.values()) / 1024
 print(f'export {time.time()-t0:.0f}s defs={len(defs)} (neu {exported}) = {size:.1f} MB + Kleinteile {size_k:.1f} MB, instanzen={len(insts)}')

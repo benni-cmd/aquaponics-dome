@@ -8,11 +8,11 @@ Stand 05.11.2026, Viewer-Sitzung. Status: gebaut und lokal belegt; Deploy wartet
 - **Goal:** Auf einem Touch-Gerät mit schmalem Bildschirm zeigt der Viewer ein kleines, einklappbares Menü, bewegt das Modell per Touch (drehen, zoomen, verschieben) und steuert FPV mit virtuellem Joystick (Laufen) und Wischen (Umschauen). Kleinteile laden mobil standardmäßig nicht. Die Desktopansicht bleibt unverändert; das ist per Screenshot und gleicher Ladestatistik belegt.
 
 ## Entwurf
-1. **Weiche:** `html.mobil` wird früh im `<head>` gesetzt, nur wenn das Gerät Touch hat (`navigator.maxTouchPoints > 0`) und die kleinere Fensterseite höchstens 600 px misst. Ohne diese Klasse greift keine Mobil-Regel.
+1. **Weiche:** `html.mobil` wird früh im `<head>` gesetzt, nur wenn das Gerät Touch hat (Berührungspunkte, grober Zeiger oder mobile Browser-Kennung) und die kleinere Fensterseite höchstens 600 px misst. `?mobil=1` erzwingt, `?mobil=0` schaltet ab. Grund: der Browser-Pane meldet 0 Berührungspunkte, deshalb die Kennung und der Schalter. Ohne diese Klasse greift keine Mobil-Regel.
 2. **CSS:** alle Mobil-Regeln stehen unter `.mobil`. Das Desktop-CSS wird nicht geändert.
 3. **JS:** ein eigener Abschnitt am Ende des Modul-Skripts, nur bei `MOBIL`. Er legt Menü-Knopf, Joystick und Wisch-Blick an. Er nutzt die vorhandenen FPV-Funktionen (`fpvEnter`, `fpvLook`, `fpvApply`); der FPV-Code selbst bleibt unverändert.
 4. **Zwei Einzeiler im Desktop-Pfad**, beide mit `MOBIL` abgesichert (Desktop führt dieselben Anweisungen wie vorher aus): Kleinteile aus dem lokalen Speicher ignorieren, und den Text-Zwischenspeicher `defCache` nach dem Aufbau leeren (spart Speicher auf dem Handy).
-5. **Menü mobil:** Kamera-Knöpfe, FPV, Ansicht Visuell/Technisch, Plane, Kleinteile (mit Datenhinweis), Schnitt-Regler. Ausgeblendet: Bauteilbaum, Infopanel, Kontextmenü, Drahtgitter, Messstellen, Deckkraft, Kreislauf-Schalter, Detailansicht.
+5. **Menü mobil:** Kamera-Knöpfe, FPV, Ansicht Visuell/Technisch, Plane, Kleinteile (mit Datenhinweis), Schnitt-Regler. Ausgeblendet (mobil, auch Kreislauf-Etikett): Bauteilbaum, Infopanel, Kontextmenü, Drahtgitter, Messstellen, Deckkraft, Kreislauf-Schalter, Detailansicht.
 6. **Ladeanzeige** zieht mobil aus dem Menü an den unteren Rand, damit der Fortschritt bei geschlossenem Menü sichtbar bleibt.
 
 ## Plan
@@ -22,8 +22,8 @@ Stand 05.11.2026, Viewer-Sitzung. Status: gebaut und lokal belegt; Deploy wartet
 4. [x] Lokal testen (`viewer/dist` über `python -m http.server`), Screenshots mobil: Modellansicht, FPV mit Steuerelementen
 5. [x] Screenshot Desktop (Preset desktop) als Beleg, dass Desktop gleich ist
 6. [x] Ladezeit und Datenmenge mobil messen
-7. [~] `python -X utf8 scripts/viewer_dist.py`, dann Deploy (oder Übergabe an den Orchestrator)
-8. [ ] Commit per Pfad, Push
+7. [x] `viewer_dist.py` neu gelaufen; Deploy abgelehnt, an den Orchestrator übergeben
+8. [x] Commit per Pfad, Push
 
 ## Messung (Browser-Pane, Preset mobile 375x812, lokaler Server auf `viewer/dist`, 05.11.2026)
 | Größe | Wert | Befehl |
@@ -49,9 +49,6 @@ Ehrlich: Das ist der Pane (Desktop-Rechner, lokal), kein echtes Handy und kein M
 05.11.2026: Mobil-Schicht in `viewer/index.html` gebaut, `viewer/dist` neu gebaut (173,6 MB), lokal im Pane belegt (mobil Modell, mobil FPV, Desktop unverändert). Deploy: `npx.cmd --yes vercel@59.5.0 deploy --prod --yes` in `viewer/dist` wurde vom Berechtigungssystem abgelehnt ("Production Deploy"), nicht umgangen. Der Orchestrator deployt. Hinweis zum Bau: `viewer/dist` war durch einen fremden Prozess gesperrt (alter Testserver `http.server 4425` aus dem Hosting-Paket, beendet; danach hielt weiterhin ein Prozess den Ordner). Das Bau-Skript lief mit abgefangenem Löschfehler, Ergebnis gleich; das Skript selbst ist unverändert.
 
 Weiche: `?mobil=1` erzwingt die Mobilansicht, `?mobil=0` schaltet sie ab.
-
-## Stand
-05.11.2026: Paket angelegt, Bau beginnt.
 
 ## DoD
 - [x] Deploy an den Orchestrator übergeben (Mobilansicht noch nicht online)

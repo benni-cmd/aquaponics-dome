@@ -25,3 +25,13 @@
 
 Geprueft gegen: Screenshots im Browser-Pane; `window.messStand()` (Zaehlung Halter und Sonden); Kennzahl Puffer in der Seite gegen `data/system-specs.json`
 Offen: L18 Exportgroesse; zwei feste Texte im Kennzahlenkopf (Durchmesser, Pumpenzahl) stehen nicht in `system-specs.json`
+
+05.11.2026, Auflagen V1 bis V6 aus `docs/jobs/pruefung/V-MESS-VV.md` (Viewer):
+- V1: Kopfzaehler "n Instanzen" kommt aus der geladenen `instances.json` der Variante (Variable `instAnzahl`), nicht mehr aus `extras.json`.
+- V2: Rueckfallmeldung bei fehlendem Variantenexport ohne Balken und ohne Abrufzeitstempel (`Lade.abbruch`); gemessen im Browser: Klasse `abbruch`, Phase und Text leer, Meldung "... (varianten/ring_b2/instances.json 404) ...", Adresse und `localStorage` zurueck auf `a_plus`.
+- V3: `viewer/serve.py` hat eine Sperrdatei `viewer/.export.lock` (Prozesskennung, verwaist oder aelter als 30 min wird ersetzt) und den Schalter `--kein-export` fuer Pruef- und Testserver. Gemessen per Skript: tote Kennung ersetzt, fremde Sperre wartet 4 s und fuehrt keinen zweiten Export aus. Pruefer-Auftraege sollen `python viewer/serve.py <port> --kein-export` nennen.
+- V4: Anteile unter 1 m³ mit zwei Nachkommastellen (Drittbecken "0,40 m³" im Browser gesehen).
+- V5: Anzeige "22 Bauteile fuer die 67 Messstellen stehen schon im Modell (5 Halter, 17 Sonden)" statt "n von 67 haben ein Bauteil".
+- V6: `viewer/anschluesse.json`: `auslauf`, `ablauf`, `zulauf` nur am Namensanfang und nicht vor "sieb" (`Zulaufsieb` False, `Ablaufstutzen` True per `re`). Die geaenderte Liste erzwingt beim naechsten Export den Neuexport der Definitionen; nicht gestartet.
+- V7 (M12 nach Vollexport nachpruefen) bleibt offen.
+

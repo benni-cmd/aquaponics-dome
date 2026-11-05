@@ -1,5 +1,5 @@
 """Lokaler Live-Viewer-Server fuer das Kuppel-Modell.
-Aufruf: python viewer/serve.py [port]   (Standard 4410), dann im Browser http://localhost:4410/  (Variante Ring B2: ?variante=ring_b2)
+Aufruf: python viewer/serve.py [port] [--kein-export]   (Standard 4410; --kein-export fuer Pruef- und Testserver: nie exportieren), dann im Browser http://localhost:4410/  (Variante Ring B2: ?variante=ring_b2)
 Beobachtet designs/dome.sc und designs/dome-ring_b2.sc (N-VARIANTEN VV); nach jeder Speicherung (Aenderungszeit stabil) wird die geaenderte
 Variante neu exportiert (viewer/export_model.py --variante <v>), die Seite fragt /api/state?variante=<v> ab und laedt das Modell neu, ohne die Kamera zu verlieren.
 Ausgabepfade, Kennzahlen und Stueckliste je Variante kommen aus scripts/variante.py (Tabelle 1.3 in docs/jobs/N-VARIANTEN.md)."""
@@ -10,7 +10,10 @@ ROOT = os.path.abspath(os.path.join(HERE, '..'))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import variante as V   # nur pfad() und VARIANTEN; der Schalter dieser Datei ist die Adresse ?variante=, nie die Kommandozeile
 EXPORT = os.path.join(HERE, 'export_model.py')
-PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 4410
+_args = [a for a in sys.argv[1:] if not a.startswith('--')]
+PORT = int(_args[0]) if _args else 4410
+KEIN_EXPORT = '--kein-export' in sys.argv           # Pruef- und Testserver: nie exportieren, nur anzeigen (V3)
+LOCK = os.path.join(HERE, '.export.lock')            # gilt fuer alle serve.py-Prozesse: ein Export zugleich, auch ueber Ports hinweg (V3)
 export_lock = threading.Lock()                      # nie zwei Exporte zugleich (CLI und defs/ gemeinsam)
 states = {v: {'version': 0, 'built': '', 'busy': False, 'error': '', 'design_saved': ''} for v in V.VARIANTEN}
 P = lambda art, v: V.pfad(art, v, root=ROOT)
@@ -26,14 +29,47 @@ for _v in V.VARIANTEN:
             if _b: states[_v]['design_saved'] = _b[11:19] if _b[:10] == time.strftime('%Y-%m-%d') else f'{_b[8:10]}.{_b[5:7]}. {_b[11:19]}'
         except (OSError, ValueError): pass
 
+def pid_lebt(pid):
+    if sys.platform == 'win32':
+        import ctypes
+        h = ctypes.windll.kernel32.OpenProcess(0x1000, False, int(pid))      # PROCESS_QUERY_LIMITED_INFORMATION
+        if not h: return False
+        code = ctypes.c_ulong(); ctypes.windll.kernel32.GetExitCodeProcess(h, ctypes.byref(code)); ctypes.windll.kernel32.CloseHandle(h)
+        return code.value == 259                                              # STILL_ACTIVE
+    try: os.kill(int(pid), 0); return True
+    except OSError: return False
+
+def sperre_nehmen():
+    """True = Sperre gehoert diesem Prozess; False = ein anderer Server exportiert (wir haben gewartet, sein Ergebnis gilt)."""
+    gewartet = False
+    while True:
+        try:
+            fd = os.open(LOCK, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.write(fd, json.dumps({'pid': os.getpid(), 'start': time.time()}).encode()); os.close(fd); return not gewartet
+        except FileExistsError:
+            try:
+                d = json.load(open(LOCK, encoding='utf-8'))
+                if not pid_lebt(d['pid']) or time.time() - d['start'] > 1800: os.remove(LOCK); continue   # verwaist oder haengt seit 30 min
+            except (OSError, ValueError, KeyError):
+                time.sleep(0.5); continue
+            gewartet = True; time.sleep(2)
+
 def do_export(v):
     st = states[v]
     st['busy'] = True
     try:
         with export_lock:
-            r = subprocess.run([sys.executable, '-I', EXPORT, '--variante', v], capture_output=True, text=True)
-        st['error'] = '' if r.returncode == 0 else (r.stdout + r.stderr)[-400:]
-        if r.returncode == 0:
+            eigener = sperre_nehmen()
+            if eigener:
+                try: r = subprocess.run([sys.executable, '-I', EXPORT, '--variante', v], capture_output=True, text=True)
+                finally:
+                    try: os.remove(LOCK)
+                    except OSError: pass
+                st['error'] = '' if r.returncode == 0 else (r.stdout + r.stderr)[-400:]
+                ok = r.returncode == 0
+            else:                                    # ein anderer Server hat fuer alle exportiert: nur uebernehmen, wenn instances.json neuer ist
+                ok = os.path.exists(P('instances', v)) and time.time() - os.path.getmtime(P('instances', v)) < 600
+        if ok:
             st['version'] += 1
             st['built'] = time.strftime('%H:%M:%S')
     finally:
@@ -132,8 +168,11 @@ class H(http.server.SimpleHTTPRequestHandler):
         return super().translate_path(path)
     def log_message(self, *a): pass
 
-for _v in V.VARIANTEN:
-    threading.Thread(target=watch, args=(_v,), daemon=True).start()
+if not KEIN_EXPORT:
+    for _v in V.VARIANTEN:
+        threading.Thread(target=watch, args=(_v,), daemon=True).start()
+else:
+    print('Kein Export: dieser Server beobachtet dome.sc nicht (--kein-export).', flush=True)
 with socketserver.ThreadingTCPServer(('127.0.0.1', PORT), H) as s:
     s.allow_reuse_address = True
     print(f'Viewer auf http://localhost:{PORT}/', flush=True)

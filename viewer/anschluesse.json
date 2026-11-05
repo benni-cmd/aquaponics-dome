@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Anschlussteile (Stutzen, Muffen, Kugelhaehne, Abgaenge, Flansche, Tuellen, Huelsen, Endstopfen ...) bleiben im Hauptexport sichtbar, auch wenn sie unter MIN_DIAG (15 cm Diagonale) liegen; sonst sieht man an Tanks und Leitungen Durchbrueche ohne Rohr (docs/model-maengel.md M12). Treffer ueber den Koerpernamen, ohne Gross-/Kleinschreibung (Python-re). viewer/export_model.py liest die Liste; eine Aenderung erzwingt den Neuexport der Definitionen.",
+  "_hinweis": "Anschlussteile (Stutzen, Muffen, Kugelhaehne, Abgaenge, Flansche, Tuellen, Huelsen, Endstopfen ...) bleiben im Hauptexport sichtbar, auch wenn sie unter MIN_DIAG (15 cm Diagonale) liegen; sonst sieht man an Tanks und Leitungen Durchbrueche ohne Rohr (docs/model-maengel.md M12). Treffer ueber den Koerpernamen (auslauf/ablauf/zulauf nur am Namensanfang und nicht als Sieb, V6), ohne Gross-/Kleinschreibung (Python-re). viewer/export_model.py liest die Liste; eine Aenderung erzwingt den Neuexport der Definitionen.",
   "muster": [
     "stutzen",
     "muffe",
@@ -11,9 +11,9 @@
     "reduktion",
     "reduzier",
     "huelse",
-    "auslauf",
-    "ablauf",
-    "zulauf",
+    "^auslauf(?!sieb)",
+    "^ablauf(?!sieb)",
+    "^zulauf(?!sieb)",
     "ablass",
     "endstopfen",
     "kabelverschraubung",

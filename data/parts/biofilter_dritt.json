@@ -1,0 +1,204 @@
+{
+ "komponente": "biofilter_dritt",
+ "datei": "designs/components/biofilter_dritt.sc",
+ "bauteilgruppe": "Becken und Filter",
+ "teilenummer": "T98",
+ "stand": "5a",
+ "titel": "Biofilter Drittbecken",
+ "kurz": "Ein 60-Liter-Fass mit 37 l Bioballs reinigt das Wasser des Quarantäne-Beckens; eine Pumpe drückt es hinein, es läuft von selbst zurück.",
+ "hinweis": "Gebaut 05.11.2026 (N-REWORK B, Mangel M02). Fassmaß aus zwei Quellen, Einbauten (Tauchrohr, Lochplatte, Lagen) angenommen. Pumpe für K42 gehört zum Drittbecken.",
+ "koerperzahl": 7,
+ "gruppen": [
+  {
+   "id": "behaelter",
+   "name": "Behälter",
+   "kurz": "Fass und Deckel.",
+   "teile": [
+    "fass",
+    "deckel"
+   ]
+  },
+  {
+   "id": "filter",
+   "name": "Filterbett",
+   "kurz": "Bioballs und Niederhalter.",
+   "teile": [
+    "bioballs",
+    "lochplatte"
+   ]
+  },
+  {
+   "id": "anschluesse",
+   "name": "Anschlüsse",
+   "kurz": "Zulauf mit Tauchrohr und Auslauf.",
+   "teile": [
+    "zulaufstutzen",
+    "tauchrohr",
+    "auslaufstutzen"
+   ]
+  }
+ ],
+ "teile": [
+  {
+   "id": "fass",
+   "name": "Weithalsfass PE 60 l",
+   "koerper": [
+    "Fass"
+   ],
+   "menge": 1,
+   "typ": "kaufteil",
+   "werkstoff": "pe",
+   "masse_mm": "Ø 398 × 615 mm, Wand 3 mm",
+   "funktion": "Das Fass ist der Behälter des Biofilters; es hält Bioballs und Wasser.",
+   "eigenschaften": [
+    "Handelsfass 60 l, lebensmittelecht; im Modell zylindrisch, das echte Fass ist leicht konisch (Boden Ø 370).",
+    "Seitlich ein Durchbruch für den Auslauf-Tankverbinder."
+   ],
+   "norm": "Weithalsfass PE-HD mit UN-Kennzeichnung [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/biofilter_dritt.py, data/components/biofilter_dritt.json, docs/parts/biofilter_dritt.md; Fassmaß Graf-Maßskizze 824410 und Händlerangaben; Bettvolumen docs/research/R37.md Befund 10; Netz data/leitungsnetz.json K42/K43",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+   "bezug": "offen: kein europäisches Angebot gelesen (D76, N-BESCHAFFUNG)"
+  },
+  {
+   "id": "deckel",
+   "name": "Schraubdeckel",
+   "koerper": [
+    "Deckel"
+   ],
+   "menge": 1,
+   "typ": "kaufteil",
+   "werkstoff": "pe",
+   "masse_mm": "Ø 398 × 10 mm",
+   "funktion": "Der Deckel schließt das Fass und trägt die Zulauf-Muffe und die Bohrung für den Luftschlauch.",
+   "eigenschaften": [
+    "Gehört zum Fass; zwei Bohrungen: Zulauf Ø 32 und Luftschlauch Ø 8."
+   ],
+   "norm": "Zubehör des Weithalsfasses [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/biofilter_dritt.py, data/components/biofilter_dritt.json, docs/parts/biofilter_dritt.md; Fassmaß Graf-Maßskizze 824410 und Händlerangaben; Bettvolumen docs/research/R37.md Befund 10; Netz data/leitungsnetz.json K42/K43",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+   "bezug": "offen: kein europäisches Angebot gelesen (D76, N-BESCHAFFUNG)"
+  },
+  {
+   "id": "zulaufstutzen",
+   "name": "Zulauf-Muffe d25",
+   "koerper": [
+    "Zulaufstutzen"
+   ],
+   "menge": 1,
+   "typ": "kaufteil",
+   "werkstoff": "pvc_u",
+   "masse_mm": "Ø 32 × 39 mm, Muffe d25 oben 19 mm, unten 16 mm",
+   "funktion": "Über die Muffe kommt das Wasser aus dem Drittbecken (K42) und fließt ins Tauchrohr.",
+   "eigenschaften": [
+    "Oben steckt die Zulaufleitung d25, unten das Tauchrohr; dazwischen ein 4 mm Anschlag."
+   ],
+   "norm": "PVC-U-Formstück nach EN 1452 [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/biofilter_dritt.py, data/components/biofilter_dritt.json, docs/parts/biofilter_dritt.md; Fassmaß Graf-Maßskizze 824410 und Händlerangaben; Bettvolumen docs/research/R37.md Befund 10; Netz data/leitungsnetz.json K42/K43",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+   "bezug": "offen: kein europäisches Angebot gelesen (D76, N-BESCHAFFUNG)"
+  },
+  {
+   "id": "tauchrohr",
+   "name": "Tauchrohr d25",
+   "koerper": [
+    "Tauchrohr"
+   ],
+   "menge": 1,
+   "typ": "rohr",
+   "werkstoff": "pvc_u",
+   "masse_mm": "Rohr d25 × 1,8, Länge 571 mm",
+   "funktion": "Das Tauchrohr führt das Wasser an den Fassboden, damit es von unten durch die Bioballs steigt.",
+   "eigenschaften": [
+    "Endet 60 mm über dem Fassboden, unter dem Bioball-Bett."
+   ],
+   "norm": "PVC-U-Rohr nach EN 1452 [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/biofilter_dritt.py, data/components/biofilter_dritt.json, docs/parts/biofilter_dritt.md; Fassmaß Graf-Maßskizze 824410 und Händlerangaben; Bettvolumen docs/research/R37.md Befund 10; Netz data/leitungsnetz.json K42/K43",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)"
+  },
+  {
+   "id": "bioballs",
+   "name": "Bioballs 37 l",
+   "koerper": [
+    "Bioballs"
+   ],
+   "menge": 1,
+   "typ": "kaufteil",
+   "werkstoff": "biomedium",
+   "masse_mm": "Schüttung Ø 386 × 318 mm = 37,0 l",
+   "funktion": "Auf den Bioballs siedeln Bakterien, die das Ammonium aus dem Fischwasser zu Nitrat abbauen.",
+   "eigenschaften": [
+    "37 l nach R37 (0,5 l je g Futter bei 73 g Futter am Tag).",
+    "Im Modell ein Körper mit Ersatzdichte 0,15 g/cm³; Verweilzeit bei 5 l/min 7,4 Minuten."
+   ],
+   "norm": "Filtermedium Kunststoff (PP/PE) [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/biofilter_dritt.py, data/components/biofilter_dritt.json, docs/parts/biofilter_dritt.md; Fassmaß Graf-Maßskizze 824410 und Händlerangaben; Bettvolumen docs/research/R37.md Befund 10; Netz data/leitungsnetz.json K42/K43",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+   "bezug": "offen: kein europäisches Angebot gelesen (D76, N-BESCHAFFUNG)"
+  },
+  {
+   "id": "lochplatte",
+   "name": "Niederhalter-Lochplatte",
+   "koerper": [
+    "Lochplatte"
+   ],
+   "menge": 1,
+   "typ": "sonderteil",
+   "werkstoff": "pe",
+   "masse_mm": "Ø 386 × 10 mm, Bohrungen nicht modelliert",
+   "funktion": "Die Lochplatte hält die Bioballs unter Wasser, damit sie nicht aufschwimmen.",
+   "eigenschaften": [
+    "Aus PE-Platte zugeschnitten; Loch für das Tauchrohr; Befestigung gegen Auftrieb offen."
+   ],
+   "norm": "PE-HD-Platte [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/biofilter_dritt.py, data/components/biofilter_dritt.json, docs/parts/biofilter_dritt.md; Fassmaß Graf-Maßskizze 824410 und Händlerangaben; Bettvolumen docs/research/R37.md Befund 10; Netz data/leitungsnetz.json K42/K43",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)"
+  },
+  {
+   "id": "auslaufstutzen",
+   "name": "Tankverbinder d25 (Auslauf)",
+   "koerper": [
+    "Auslaufstutzen"
+   ],
+   "menge": 1,
+   "typ": "kaufteil",
+   "werkstoff": "pvc_u",
+   "masse_mm": "Ø 32 × 63 mm, Muffe d25 außen",
+   "funktion": "Über den Tankverbinder läuft das gereinigte Wasser per Schwerkraft zurück ins Drittbecken (K43).",
+   "eigenschaften": [
+    "Achse 75 mm unter dem Fassrand; bestimmt den Wasserstand im Fass."
+   ],
+   "norm": "Tankverbinder PVC-U mit Dichtung [A]",
+   "norm_konfidenz": "angenommen",
+   "lebensmittelkontakt": "ja",
+   "lebensmittelkontakt_konfidenz": "angenommen",
+   "konfidenz": "angenommen",
+   "quelle": "scripts/workshop/biofilter_dritt.py, data/components/biofilter_dritt.json, docs/parts/biofilter_dritt.md; Fassmaß Graf-Maßskizze 824410 und Händlerangaben; Bettvolumen docs/research/R37.md Befund 10; Netz data/leitungsnetz.json K42/K43",
+   "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+   "bezug": "offen: kein europäisches Angebot gelesen (D76, N-BESCHAFFUNG)"
+  }
+ ]
+}

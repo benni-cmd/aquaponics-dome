@@ -62,21 +62,21 @@
   "maturity": 0,
   "used_by": "gen_dome.py"
  },
- "strut_profile": {
-  "value": 30,
+ "strut_d": {
+  "value": 42.4,
   "unit": "mm",
-  "origin": "A",
-  "source": "Knotenblatt data/components/knoten.json: Strebe Rechteckhohlprofil 30 x 30 (Einkaufsliste PRF-st-strebe30x30); N-STATIK darf auf 40/50 aendern (W43)",
-  "r_id": "R01",
+  "origin": "E",
+  "source": "D91 (Ben 05.11.2026): Strebe Rundrohr 42,4 x 2,6 verzinkt (EN 10255) nach R56-Empfehlung (gleiches Gewicht, 1,6-fach knicksicherer als 30x30x3, Schere passt hinein); muss gleich tube_d in data/components/knoten_schere.json sein",
+  "r_id": "R56",
   "maturity": 0,
   "used_by": "scripts/components/strebe.py"
  },
  "strut_wall": {
-  "value": 3,
+  "value": 2.6,
   "unit": "mm",
-  "origin": "A",
-  "source": "Knotenblatt data/components/knoten.json (Steckarm 23 in Innenmass 24); Orchestrator 05.11.2026: Wand 3 mm bis N-STATIK",
-  "r_id": "R01",
+  "origin": "E",
+  "source": "D91 (Ben 05.11.2026): Rundrohr 42,4 x 2,6 (EN 10255, R56); muss gleich tube_t in data/components/knoten_schere.json sein",
+  "r_id": "R56",
   "maturity": 0,
   "used_by": "scripts/components/strebe.py"
  },
@@ -225,13 +225,13 @@
   "used_by": "gen_dome.py"
  },
  "strut_end_offset": {
-  "value": 120,
+  "value": 102,
   "unit": "mm",
-  "origin": "A",
-  "source": "Scope-Card knoten/R02: Strebenende liegt 120 mm von der Knotenmitte (Knotenkugel D100 + Steckarm 80 mm in der Strebe); Strebe = Knoten-Knoten-Abstand minus 2 x 120",
-  "r_id": "R02",
+  "origin": "E",
+  "source": "D91 Scherenknoten: Knotenpunkt bis Rohrmund (data/components/knoten_schere.json geometrie: A 101,85 / B 102,24); Strebenlaenge kommt aus geometrie.rohr_mm, gen_dome.py setzt die Strebe mittig zwischen die Rohrmuender der Scheren",
+  "r_id": "R56",
   "maturity": 0,
-  "used_by": "gen_dome.py, scripts/components/strebe.py, check_latte.py"
+  "used_by": "check_latte.py (Knotenpunkt aus der Strebenlage, Toleranz)"
  },
  "strut_pocket": {
   "value": 34,
@@ -870,7 +870,10 @@
   "source": "D81 / W70 (N-VARIANTEN): Standard der Kreislauf-Variante; gebaut wird nie durch Aendern dieser Datei, sondern mit --variante oder KREISLAUF_VARIANTE",
   "r_id": "",
   "maturity": 0,
-  "werte": ["a_plus", "ring_b2"],
+  "werte": [
+   "a_plus",
+   "ring_b2"
+  ],
   "used_by": "scripts/variante.py"
  },
  "technik_az": {

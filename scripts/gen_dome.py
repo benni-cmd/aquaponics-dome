@@ -64,30 +64,24 @@ def act(name):
     """Baugruppe aktivieren: neue Koerper/Instanzen entstehen darin (Wurzel bleibt frei von losen Koerpern)."""
     add("component.activate", component=name)
 
+def place_matrix(cls, path, mats):
+    """Komponente einmal verknuepfen und je 12er-Matrix eine Instanz setzen (erst alle Kopien am Ursprung, dann absolut verschieben)."""
+    add("component.insert_design", path=path.replace("\\", "/"), name=cls)
+    for _ in range(len(mats) - 1): add("occurrence.copy", component=cls)
+    for i, mat in enumerate(mats, 1): add("occurrence.move", occurrence=f"{cls}:{i}", matrix=mat, tolerance=1e-6, move_grounded=True)
+
 def place_struts(segs):
-    """Streben als Instanzen der Komponenten strebe_a/strebe_b (component.insert_design + occurrence.copy), Platzierung per Matrix."""
-    R = P["dome_base_d"]/2; cnt = {"A": 0, "B": 0}
-    for key, fct in (("A", 0.5465), ("B", 0.6180)):
-        add("component.insert_design", path=os.path.join(ROOT, "designs", "components", f"strebe_{key.lower()}.sc").replace("\\", "/"), name=f"Strebe_{key}")
+    """D91 (N-VERBINDER Montage): Streben als Rundrohr-Instanzen strebe_a/strebe_b (scripts/components/strebe.py), mittig zwischen den
+    Rohrmuendern der zwei Scheren (scripts/knoten_montage.py); X = Kuppel aussen, Y = Nasenrichtung (Gegenloecher)."""
+    import knoten_montage as KM
+    KS = json.load(open(os.path.join(ROOT, "data", "components", "knoten_schere.json"), encoding="utf-8"))["geometrie"]
+    _, _, streben, _ = KM.montage(segs, ROT)
+    base_z = min(min(A[2], B[2]) for A, B in segs)   # Kuppelmitte (0, 0, cz): Basisknoten liegen auf cz
     moves = {"A": [], "B": []}
-    # Rollwinkel (N-MODELL-KOMPLETT Schritt 3): Rohrflaechen parallel zu den Steckarmen; lokale Y = Bolzenachse des Arms aus knoten_arme.json (layout-Rahmen, um ROT gedreht)
-    KA = json.load(open(os.path.join(ROOT, "data", "components", "knoten_arme.json"), encoding="utf-8"))
-    ra = math.radians(ROT)
-    NM = [rot(n["x"], n["y"], ra) for n in LAYOUT["dome"]["nodes_list"]]
-    def nid(p): return min(range(len(NM)), key=lambda i: math.hypot(NM[i][0] - p[0], NM[i][1] - p[1])) + 1
-    for A, B in segs:
-        d = [B[i]-A[i] for i in range(3)]; L = math.sqrt(sum(x*x for x in d)); u = [x/L for x in d]
-        key = "A" if abs(L - 0.5465*R) < abs(L - 0.6180*R) else "B"
-        ia, ib = nid(A), nid(B)
-        ba = next(a["bolzenachse"] for a in KA[str(ia)]["arme"] if a["nachbar"] == ib)
-        bx, by = rot(ba[0], ba[1], ra); b3 = [bx, by, ba[2]]
-        bu = sum(b3[i]*u[i] for i in range(3)); y = [b3[i] - bu*u[i] for i in range(3)]; yl = math.sqrt(sum(q*q for q in y)); y = [q/yl for q in y]
-        x = [y[1]*u[2]-y[2]*u[1], y[2]*u[0]-y[0]*u[2], y[0]*u[1]-y[1]*u[0]]   # x = y kreuz u, damit (x, y, u) rechtshaendig
-        o = P["strut_end_offset"]   # Strebe beginnt 120 mm hinter dem Knoten (Komponente = Knoten-Knoten minus 2 x Endversatz)
-        moves[key].append([round(v, 9) for v in (x[0], y[0], u[0], A[0] + u[0]*o, x[1], y[1], u[1], A[1] + u[1]*o, x[2], y[2], u[2], A[2] + u[2]*o)])
-    for key in ("A", "B"):   # erst alle Kopien (alle am Ursprung), dann jede Instanz absolut platzieren
-        for _ in range(len(moves[key]) - 1): add("occurrence.copy", component=f"Strebe_{key}")
-        for i, mat in enumerate(moves[key], 1): add("occurrence.move", occurrence=f"Strebe_{key}:{i}", matrix=mat, tolerance=1e-6, move_grounded=True)
+    for st in streben:
+        m, _ = KM.strebe_matrix(st, [0.0, 0.0, base_z], KS[st["typ"]]["rohr_mm"]); moves[st["typ"]].append(m)
+    for key in ("A", "B"):
+        place_matrix(f"Strebe_{key}", os.path.join(ROOT, "designs", "components", f"strebe_{key.lower()}.sc"), moves[key])
 
 def erde_fn(sock_z):
     add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
@@ -237,15 +231,16 @@ def huelle(segs):
 
 NODE_FILES = {}   # Knoten-Index (1-26 wie layout.json nodes_list) -> Dateiname
 def knoten_anker(segs):
-    """26 Knoten (Werkstatt: knoten_<wertigkeit>_n<ii>.sc, Ursprung Knotenmitte, Armrichtungen im OBJ-Rahmen -> Drehung um ROT) an den Strebenenden + 10 Fundamentanker an den Basisknoten (X radial nach aussen)."""
-    ends = {}
-    for A, B in segs:
-        for q in (A, B): ends.setdefault(tuple(round(v / 20) for v in q), []).append(q)
-    E = [tuple(sum(v[i] for v in l)/len(l) for i in range(3)) for l in ends.values()]
-    base_z = min(e[2] for e in E)
-    for i, n in enumerate(LAYOUT["dome"]["nodes_list"], 1):
-        x, y = rot(n["x"], n["y"], math.radians(ROT)); e = min(E, key=lambda e: math.hypot(e[0] - x, e[1] - y))
-        place_instances(f"Knoten_n{i:02d}", os.path.join(ROOT, "designs", "components", f"knoten_{n['valence']}_n{i:02d}.sc"), [(round(e[0], 1), round(e[1], 1), round(e[2], 1), ROT)], "03_Kuppel")
+    """D91 (N-VERBINDER Montage): 26 Scherenknoten statt Kugelknoten. Je Knoten 1 Plattenpaar (knoten_schere_platte.sc) und je Strebe 1 Arm
+    (knoten_schere_arm_a/b_montage.sc, ohne Probe-Rohr), Lage aus data/components/knoten_schere.json ueber scripts/knoten_montage.py;
+    dazu 10 Fundamentanker an den Basisknoten (X radial nach aussen)."""
+    import knoten_montage as KM
+    platten, arme, _, K = KM.montage(segs, ROT)
+    D = os.path.join(ROOT, "designs", "components")
+    place_matrix("Knoten_Platte", os.path.join(D, "knoten_schere_platte.sc"), [m for _, m in platten])
+    for t in ("A", "B"):
+        place_matrix(f"Schere_{t}", os.path.join(D, f"knoten_schere_arm_{t.lower()}_montage.sc"), [m for _, _, m in arme[t]])
+    E = [o for o, _, _ in K.values()]; base_z = min(e[2] for e in E)
     anchors = [(round(e[0], 1), round(e[1], 1), round(e[2], 1), math.degrees(math.atan2(e[1], e[0]))) for e in E if abs(e[2] - base_z) < 5]
     place_instances("Fundamentanker", os.path.join(ROOT, "designs", "components", "fundamentanker.sc"), anchors, "02_Gelaende")
 

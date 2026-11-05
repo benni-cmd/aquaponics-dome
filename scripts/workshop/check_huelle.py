@@ -118,7 +118,7 @@ def check_folie(ck):
         k = (r + p["overlap"] / 2) / r
         for lage in ("Folie_innen", "Folie_aussen"):
             ck.eq(f"{typ} {lage}: Dicke 0,15 (Z-Ausdehnung)", Bd[lage]["bbox"]["max"][2] - Bd[lage]["bbox"]["min"][2], p["foil_t"], 0.005)
-        ck.eq(f"{typ}: innere Lage bei Z 64 (liegt auf der Keilschiene)", Bd["Folie_innen"]["bbox"]["min"][2], p["foil_z0"], 0.005)
+        ck.eq(f"{typ}: innere Lage bei Z {p['foil_z0']:g} (liegt auf der Keilschiene)", Bd["Folie_innen"]["bbox"]["min"][2], p["foil_z0"], 0.005)
         ck.eq(f"{typ}: Lagenabstand 100 mm (Luftpolster, Unterkante zu Unterkante)", Bd["Folie_aussen"]["bbox"]["min"][2] - Bd["Folie_innen"]["bbox"]["min"][2], p["layer_gap"], 0.005)
         cut = 0.0
         if T["tuerausschnitt"]:
@@ -141,8 +141,8 @@ def check_folie(ck):
     ck.eq("Summe netto aus den Bauteilen (30 AAB + 9 BBB + Tuerfeld) in m2 gegen R24 208 +- 3 %", tot_net, 208.0, 208.0 * 0.03)
     print(f"   Folienflaeche je Lage mit Ueberstand: {tot_gross:.1f} m2 (netto {tot_net:.1f} m2); Gesamtmasse beide Lagen: {tot_mass:.1f} kg")
     kp, dk = sc.load_params("keilschiene")
-    strut_r = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))["strut_r"]["value"]
-    ck.eq("Innere Lage liegt ueber Strebe + Schaumband + Kanal (45 + 3 + 15 = 63 < 64)", 1 if strut_r + kp["foam_t"] + kp["ch_h"] < p["foil_z0"] else 0, 1)
+    strut_r = json.load(open(os.path.join(sc.ROOT, "data", "params.json"), encoding="utf-8"))["strut_d"]["value"] / 2   # D91: Rundrohr-Radius (Folie auf der Strebe)
+    ck.eq(f"Innere Lage liegt ueber Strebe + Schaumband + Kanal ({strut_r:g} + 3 + 15 < {p['foil_z0']:g})", 1 if strut_r + kp["foam_t"] + kp["ch_h"] < p["foil_z0"] else 0, 1)
     ck.eq("Luft zwischen Kanal-Oberkante und innerer Lage in mm (1)", p["foil_z0"] - (strut_r + kp["foam_t"] + kp["ch_h"]), 1.0, 0.01)
 
 def check_zarge(ck):
@@ -174,8 +174,8 @@ def check_zarge(ck):
     ck.eq("Aufsatzrahmen steht auf der Zarge (Unterkante Z' = 15 = Zargenrohr-Oberflaeche)", bb("Aufsatzrahmen")["min"][2], r / 2, 0.01)
     ck.eq("Aufsatzrahmen Breite X = 2 x 523 + 20 (Kragen 40 breit)", bb("Aufsatzrahmen")["max"][0] - bb("Aufsatzrahmen")["min"][0], 2 * xc + cw, 0.05)
     ck.eq("Kragen-Oberkante Z' = Dichtband-Unterkante", bb("Aufsatzrahmen")["max"][2], bb("Dichtband")["min"][2], 0.01)
-    ck.eq("Dichtband-Oberkante Z' 64 = innere Folienlage (liegt auf)", bb("Dichtband")["max"][2], fp["foil_z0"], 0.01)
-    ck.eq("Klemmleiste-Unterkante = Folien-Oberflaeche (64 + 0,15)", bb("Klemmleiste")["min"][2], fp["foil_z0"] + fp["foil_t"], 0.01)
+    ck.eq(f"Dichtband-Oberkante Z' {fp['foil_z0']:g} = innere Folienlage (liegt auf)", bb("Dichtband")["max"][2], fp["foil_z0"], 0.01)
+    ck.eq(f"Klemmleiste-Unterkante = Folien-Oberflaeche ({fp['foil_z0']:g} + 0,15)", bb("Klemmleiste")["min"][2], fp["foil_z0"] + fp["foil_t"], 0.01)
     # Planenausschnitt der Folie liegt auf dem Dichtband
     ck.eq("Folien-Ausschnitt halbe Breite 513 = Dichtband-Innenkante (xc - seal_w/2)", G["zarge_aussen_w"] / 2 - fp["door_overlap"], xc - sw / 2, 0.01)
     ck.eq("Folien-Ausschnitt oben Y' 2043 = Dichtband-Innenkante oben (yc - seal_w/2)", G["zarge_hoehe"] - fp["door_overlap"], yc - sw / 2, 0.01)

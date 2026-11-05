@@ -50,9 +50,9 @@
    "herkunft": "[E] R24: 100 mm Ueberstand je Seite ueber die Strebenachse, im Verband ziegelartig ueberlappend; Ueberlappung zweier Nachbarfelder = 2 x 100 mm"
   },
   "foil_z0": {
-   "wert": 64,
+   "wert": 40.2,
    "einheit": "mm",
-   "herkunft": "[E] Hoehe der inneren Lage ueber der Ebene der Strebenachsen: Strebenradius 45 + Schaumband 3 + Kanal 15 + 1 mm Luft (liegt auf der Keilschiene)"
+   "herkunft": "[E] Hoehe der inneren Lage ueber der Ebene der Strebenachsen: Rohrradius 21,2 (Rundrohr 42,4, D91) + Schaumband 3 + Kanal 15 + 1 mm Luft (liegt auf der Keilschiene); vorher 64 mit Strebenradius 45"
   },
   "door_overlap": {
    "wert": 25,

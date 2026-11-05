@@ -1,0 +1,205 @@
+{
+ "quelle": "scripts/workshop/schacht_tief.py",
+ "flur_z_absolut": 400.0,
+ "bauformen": {
+  "lt_schacht_kugelhahn_d63_tief_senkrecht": {
+   "teilenummer": "T70-SCH-KH63-TS",
+   "rohrrichtung": "senkrecht",
+   "parameter": {
+    "rohrrichtung": "senkrecht",
+    "innen_x": 188.0,
+    "innen_y": 400.0,
+    "versatz_x": -8.0,
+    "versatz_y": 35.0,
+    "wand": 8.0,
+    "boden": 15.0,
+    "z_top": 486.4,
+    "z_boden_innen": -80.0,
+    "deckel_dicke": 30.0,
+    "deckel_ueber": 2.0,
+    "boden_loch": 85.0,
+    "boden_dichtung_innen": 73.0,
+    "quer_z": 236.4,
+    "quer_d": 75.0,
+    "quer_loch": 100.0,
+    "quer_dichtung_innen": 86.0,
+    "dichtung_len": 14.0
+   },
+   "aussen": [
+    204.0,
+    416.0,
+    581.4
+   ],
+   "einbau": {
+    "fuer": [
+     "KH1 (K56, Linie 1)",
+     "KH2 (K57, Linie 2)"
+    ],
+    "hahnmitte_absolut_z": -86.4,
+    "deckel_oberkante_absolut_z": 400.0,
+    "lage_x": "Schacht-X = Richtung K01-m (Linie 1) bzw. K17-m (Linie 2), weg vom Steigrohr K01/K17",
+    "lage_y": "Z x X; Spindel/Hebel des Hahns zeigt nach Schacht +Y",
+    "hahn": "lt_kugelhahn_d63, Hahn-Z nach Welt -Z (Port A oben), Hahn +X (Spindel) nach Schacht +Y"
+   },
+   "ports": [
+    {
+     "name": "Hahn Port A (oben)",
+     "lage": [
+      0.0,
+      0.0,
+      62.5
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Lage Kugelhahn",
+     "dn": "DN50"
+    },
+    {
+     "name": "Bodendurchfuehrung",
+     "lage": [
+      0.0,
+      0.0,
+      -95.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "art": "Durchfuehrung",
+     "dn": "DN50 (d63)"
+    },
+    {
+     "name": "Querdurchfuehrung A",
+     "lage": [
+      -110.0,
+      0.0,
+      236.4
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Durchfuehrung",
+     "dn": "DN65 (d75)"
+    },
+    {
+     "name": "Querdurchfuehrung B",
+     "lage": [
+      94.0,
+      0.0,
+      236.4
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Durchfuehrung",
+     "dn": "DN65 (d75)"
+    },
+    {
+     "name": "Deckel",
+     "lage": [
+      -8.0,
+      35.0,
+      486.4
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Oeffnung / Flur",
+     "dn": "400x400"
+    }
+   ]
+  },
+  "lt_schacht_kugelhahn_d63_tief_waagerecht": {
+   "teilenummer": "T70-SCH-KH63-TW",
+   "rohrrichtung": "waagerecht",
+   "parameter": {
+    "rohrrichtung": "waagerecht",
+    "innen_x": 240.0,
+    "innen_y": 400.0,
+    "versatz_x": 0.0,
+    "versatz_y": 0.0,
+    "wand": 8.0,
+    "boden": 15.0,
+    "z_top": 186.0,
+    "z_boden_innen": -150.0,
+    "deckel_dicke": 30.0,
+    "deckel_ueber": 2.0,
+    "rohr_loch": 70.0,
+    "rohr_d": 63.0,
+    "dichtung_len": 14.0
+   },
+   "aussen": [
+    256.0,
+    416.0,
+    351.0
+   ],
+   "einbau": {
+    "fuer": [
+     "Stamm-Hahn L1 auf K06-T-b",
+     "Stamm-Hahn L2 auf K22-T-b"
+    ],
+    "rohrachse_absolut_z": 214.0,
+    "deckel_oberkante_absolut_z": 400.0,
+    "lage_x": "Schacht-X = Rohrachse",
+    "hahn": "lt_kugelhahn_d63, Hahn-Z = Rohrachse, Spindel (Hahn +X) nach Welt +Z, Hahnmitte im Ursprung"
+   },
+   "ports": [
+    {
+     "name": "Durchfuehrung A",
+     "lage": [
+      -128.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Durchfuehrung",
+     "dn": "DN50 (d63)"
+    },
+    {
+     "name": "Durchfuehrung B",
+     "lage": [
+      128.0,
+      0.0,
+      0.0
+     ],
+     "richtung": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "art": "Durchfuehrung",
+     "dn": "DN50 (d63)"
+    },
+    {
+     "name": "Deckel",
+     "lage": [
+      0.0,
+      0.0,
+      186.0
+     ],
+     "richtung": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "art": "Oeffnung / Flur",
+     "dn": "400x400"
+    }
+   ]
+  }
+ }
+}

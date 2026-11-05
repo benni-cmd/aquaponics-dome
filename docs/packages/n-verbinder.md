@@ -16,6 +16,7 @@
 
 ## Stand
 05.11.2026: Plan angelegt. Rechnung Selbsttest 6/6. R56 geschrieben. Prototyp gebaut, Check 6/6, 5 Renders angesehen, Bauteilblatt `docs/parts/knoten_schere_proto.md`. Wartet auf Bens Abnahme (R56 Abschnitt 6, fuenf Fragen). Gesamtmodell unveraendert.
+Nachtrag 05.11.: Ben trennt Recherche, Planer und Werkstatt; Knoten wird EINMAL als Bauteil gebaut, Montage setzt Instanzen (Scherenzahl und Drehung). Auftragsblatt `docs/jobs/N-VERBINDER.md` geschrieben; der Prototyp `knoten_schere_proto` gilt als Vorentwurf fuer die Werkstatt.
 
 ## DoD
 - R56 enthaelt alle sechs Abschnitte des Auftrags mit [A]/[E]/[Q]-Kennzeichnung.

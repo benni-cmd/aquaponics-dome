@@ -794,7 +794,7 @@ const umlaute = s => UML.reduce((a, [x, y]) => a.split(x).join(y), s);
 const dezKomma = s => s.replace(/(\d)\.(\d)/g, '$1,$2');
 const klartext = s => {
   if (typeof s !== 'string') return s;
-  s = umlaute(s).replace(/\s*\[(?:A|E|Q)\]/g, '').replace(/\s*[\(\[][^()\[\]]*\b[a-z]+(?:_[a-z0-9]+)+\b[^()\[\]]*[\)\]]/g, '').replace(/\s+[a-z]+(?:_[a-z0-9]+)+\b/g, '')
+  s = umlaute(s).replace(/(\d)\.(\d+)(?=\s?(?:mm|cm|kg|g|l|m)\b)/g, '$1,$2').replace(/\s*\[(?:A|E|Q)\]/g, '').replace(/\s*[\(\[][^()\[\]]*\b[a-z]+(?:_[a-z0-9]+)+\b[^()\[\]]*[\)\]]/g, '').replace(/\s+[a-z]+(?:_[a-z0-9]+)+\b/g, '')
     .replace(/\s*[\(\[][^()\[\]]*\bN-[A-Z]+ [A-Z]\d{1,2}\b[^()\[\]]*[\)\]]/g, '');
   const t = s.replace(/\s*[\(\[][^()\[\]]*\b(?:[RDBTWE]\d{1,2}|Parameter\w*)\b[^()\[\]]*[\)\]]/g, '')
     .split(/(?<=[.!?])\s+/).filter(x => !/\b(?:data|scripts|docs)\/|\.py\b|\.json\b|\bRegel [A-Z]\d{2}\b|\b(?:R\d{2}|W\d{2}|E\d{2}|B\d)\b/.test(x)).join(' ');
@@ -803,6 +803,7 @@ const klartext = s => {
 const kt = s => esc(klartext(s));
 const masseText = s => kt(dezKomma(String(s || '')));            // "Masse 312.6 g, Einzelkoerper 84.1 x ..." -> Dezimalkomma, Umlaut
 const bez = s => esc(klartext(s || ''));                        // Katalog-Bezeichnung (Einkaufsliste) fuer die Anzeige
+window.anzeigeMess = { klartext, masseText };                 // Messhilfe: dieselben Filter wie die Anzeige, fuer die Zaehlung ueber alle Teiledaten
 const teilWort = n => `${n} ${n === 1 ? 'Teil' : 'Teile'}`, koerperWort = n => `${n} ${n === 1 ? 'Körper' : 'Körper'}`;
 const TYP = { profil: 'Profil', platte: 'Platte', rohr: 'Rohr', normteil: 'Normteil', sonderteil: 'Sonderteil', kaufteil: 'Kaufteil' };
 const attr = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
@@ -873,8 +874,8 @@ function bauteilSumme() {                                   // Preis aller Kauft
 }
 function bauteilPreis(klein) {
   const s = bauteilSumme(); if (!s || (!s.mit && !s.ohne)) return '';
-  const satz = !s.mit ? `Für die Kaufteile dieses Bauteils gibt es noch keinen Preis. Im Modell stehen ${s.n} ${s.n === 1 ? 'Bauteil' : 'Bauteile'}.`
-    : `Die Kaufteile eines Bauteils kosten anteilig ${eur(s.summe)}${s.ohne ? `; ${s.ohne === 1 ? 'ein Teil hat' : s.ohne + ' Teile haben'} noch keinen Preis` : ''}. Im Modell stehen ${s.n} ${s.n === 1 ? 'Bauteil' : 'Bauteile'}${s.n > 1 ? `, zusammen ${eur(s.summe * s.n)}` : ''}.`;
+  const satz = !s.mit ? `Für die Kaufteile dieses Bauteils gibt es noch keinen Preis. ${s.n ? `Im Modell stehen ${s.n} ${s.n === 1 ? 'Bauteil' : 'Bauteile'}.` : 'Das Bauteil ist im Gesamtmodell nicht platziert.'}`
+    : `Die Kaufteile eines Bauteils kosten anteilig ${eur(s.summe)}${s.ohne ? `; ${s.ohne === 1 ? 'ein Teil hat' : s.ohne + ' Teile haben'} noch keinen Preis` : ''}. ${s.n ? `Im Modell stehen ${s.n} ${s.n === 1 ? 'Bauteil' : 'Bauteile'}${s.n > 1 ? `, zusammen ${eur(s.summe * s.n)}` : ''}.` : 'Das Bauteil ist im Gesamtmodell nicht platziert.'}`;
   return klein ? `<div class="note"><b>Einkauf:</b> ${esc(satz)}</div>` : `<div class="sub">${esc(satz)}</div>`;
 }
 async function openDetail(def) {

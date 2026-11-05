@@ -1,0 +1,15 @@
+PASS ring_b2: Instanzen Knoten_Platte: Ist 26, Soll 26
+PASS ring_b2: Instanzen Schere_A: Ist 60, Soll 60
+PASS ring_b2: Instanzen Schere_B: Ist 68, Soll 68
+PASS ring_b2: Instanzen Strebe_A: Ist 30, Soll 30
+PASS ring_b2: Instanzen Strebe_B: Ist 34, Soll 34
+PASS ring_b2: Arme gesamt = 2 x Streben: Ist 128, Soll 128
+PASS ring_b2: Kugelknoten knoten_<n>_nNN.sc im Skript: Ist 0, Soll 0
+PASS ring_b2: Nasen geprueft (2 je Arm): Ist 256, Soll 256
+PASS ring_b2: Nasenecke im Gegenloch D15, groesster Ueberstand ueber den Lochrand mm (Typ, axial, quer): Ist -0.29 ('A', 0.9, 0.14), Soll <= 0
+PASS ring_b2: Dreiecksfelder aus den Streben: Ist 39, Soll 39-40
+PASS ring_b2: hoechster Punkt (Hardware, Rohr) ueber der Feldebene mm, innere Folie bei foil_z0 40.2 (Knoten-Hardware n05 (Koerper-Box-Ecke)): Ist 39.3, Soll < 40.2
+PASS ring_b2: Probe n02 (5-wertig, Platte + Arme + Streben): Durchdringungen > 0,1 mm3 / ungeprueft: Ist 0 / 0, Soll 0 / 0
+PASS ring_b2: Probe n01 (6-wertig, Platte + Arme + Streben): Durchdringungen > 0,1 mm3 / ungeprueft: Ist 0 / 0, Soll 0 / 0
+PASS ring_b2: Probe n17 (4-wertig, Platte + Arme + Streben): Durchdringungen > 0,1 mm3 / ungeprueft: Ist 0 / 0, Soll 0 / 0
+== check_verbinder_montage ring_b2: 14/14 PASS

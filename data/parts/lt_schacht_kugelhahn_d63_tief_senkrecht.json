@@ -1,0 +1,180 @@
+{
+  "komponente": "lt_schacht_kugelhahn_d63_tief_senkrecht",
+  "datei": "designs/components/lt_schacht_kugelhahn_d63_tief_senkrecht.sc",
+  "bauteilgruppe": "Leitungen",
+  "teilenummer": "T70-SCH-KH63-TS",
+  "stand": "5a",
+  "titel": "Tiefer Ventilschacht (senkrechter Hahn)",
+  "kurz": "Baugruppe aus 5 Koerpern. Schacht um den senkrechten Bypass-Kugelhahn KH1/KH2, Hahnmitte 486 mm unter dem Innenboden; Heberleitung d75 laeuft oben quer durch, das Rohr d63 unten durch den Boden.",
+  "hinweis": "Werkstatt 05.11.2026 (M10-S2N Vorbedingung, N-VARIANTEN V2): Masse aus dem Modell; Texte, Normverweise und Bezug aus Fachwissen, alle angenommen [A].",
+  "koerperzahl": 5,
+  "gruppen": [
+    {
+      "id": "sonderteile",
+      "name": "Sonderteile (Eigenbau)",
+      "kurz": "Teile, die selbst gebaut oder angepasst werden.",
+      "teile": [
+        "schachtwanne",
+        "deckel"
+      ]
+    },
+    {
+      "id": "kaufteile",
+      "name": "Kaufteile",
+      "kurz": "Teile, die man fertig bestellt.",
+      "teile": [
+        "dichtung_boden",
+        "dichtung_a",
+        "dichtung_b"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "schachtwanne",
+      "name": "Schachtwanne",
+      "koerper": [
+        "Schachtwanne"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 5933.7 g, Einzelkoerper 551.4 x 416.0 x 204.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Wanne umschliesst den Kugelhahn d63 im Erdreich; von oben wird der Hahn bedient.",
+      "eigenschaften": [
+        "PE-HD, Wand 8, Boden 15 [A].",
+        "Durchfuehrungen fuer die Rohre mit Dichtung."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\lt_schacht_kugelhahn_d63_tief_senkrecht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]"
+    },
+    {
+      "id": "dichtung_boden",
+      "name": "Dichtung Boden",
+      "koerper": [
+        "Dichtung_Boden"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "epdm",
+      "masse_mm": "Masse 34.4 g, Einzelkoerper 85.0 x 85.0 x 21.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Ringraumdichtung dichtet die Rohrdurchfuehrung gegen Erdreich und Sickerwasser.",
+      "eigenschaften": [
+        "EPDM-Manschette [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\lt_schacht_kugelhahn_d63_tief_senkrecht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          -1
+        ],
+        "abstand_mm": 80
+      }
+    },
+    {
+      "id": "dichtung_a",
+      "name": "Dichtung A",
+      "koerper": [
+        "Dichtung_A"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "epdm",
+      "masse_mm": "Masse 31.5 g, Einzelkoerper 100.0 x 100.0 x 14.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Ringraumdichtung dichtet die Rohrdurchfuehrung gegen Erdreich und Sickerwasser.",
+      "eigenschaften": [
+        "EPDM-Manschette [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\lt_schacht_kugelhahn_d63_tief_senkrecht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          -1,
+          0,
+          0
+        ],
+        "abstand_mm": 80
+      }
+    },
+    {
+      "id": "dichtung_b",
+      "name": "Dichtung B",
+      "koerper": [
+        "Dichtung_B"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "epdm",
+      "masse_mm": "Masse 31.5 g, Einzelkoerper 100.0 x 100.0 x 14.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Die Ringraumdichtung dichtet die Rohrdurchfuehrung gegen Erdreich und Sickerwasser.",
+      "eigenschaften": [
+        "EPDM-Manschette [A]."
+      ],
+      "norm": "Herstellerangabe [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\lt_schacht_kugelhahn_d63_tief_senkrecht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "bezug": "offen (D76: Handelsteil, in der EU bestellbar angenommen [A]; Haendler nicht abgerufen)",
+      "explosion": {
+        "richtung": [
+          1,
+          0,
+          0
+        ],
+        "abstand_mm": 80
+      }
+    },
+    {
+      "id": "deckel",
+      "name": "Schachtdeckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 2404.3 g, Einzelkoerper 420.0 x 208.0 x 30.0 mm (Modell-Bounding-Box)",
+      "ausnahme": "Artikel noch nicht in data/katalog.json und data/stueckliste.json; Aufnahme durch N-STUECKLISTE (Werkstatt darf diese Dateien nicht schreiben)",
+      "funktion": "Der Deckel schliesst den Schacht buendig mit dem Innenboden und wird zum Bedienen abgehoben.",
+      "eigenschaften": [
+        "PE-HD 30 mm, zwei Griffmulden, nicht befahrbar [A]."
+      ],
+      "norm": "EN ISO 17855-1 (PE-Formmassen) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "Modell designs\\components\\lt_schacht_kugelhahn_d63_tief_senkrecht.sc (Masse aus solidcraft-cli eval); Texte und Norm aus Fachwissen [A]",
+      "explosion": {
+        "richtung": [
+          0,
+          0,
+          1
+        ],
+        "abstand_mm": 250
+      }
+    }
+  ]
+}

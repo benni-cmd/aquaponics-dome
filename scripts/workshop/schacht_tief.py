@@ -112,7 +112,7 @@ def ports(v):
     else:
         out.append(("Durchfuehrung A", (g["x_out"][0], 0.0, 0.0), (-1.0, 0.0, 0.0), "Durchfuehrung", "DN50 (d63)"))
         out.append(("Durchfuehrung B", (g["x_out"][1], 0.0, 0.0), (1.0, 0.0, 0.0), "Durchfuehrung", "DN50 (d63)"))
-    out.append(("Deckel", (g["versatz_x"], g["versatz_y"], g["z_top"]), (0.0, 0.0, 1.0), "Oeffnung / Flur", "400x400"))
+    out.append(("Deckel", (g["versatz_x"], g["versatz_y"], g["z_top"]), (0.0, 0.0, 1.0), "Oeffnung / Flur", f"{g['innen_x']:g}x{g['innen_y']:g}"))
     return [(n, tuple(round(c, 2) for c in p), d, a, dn) for n, p, d, a, dn in out]
 
 def json_data():

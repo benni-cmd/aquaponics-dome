@@ -39,6 +39,16 @@ Auftragsblatt: `docs/jobs/N-AUTOBAHN-V2.md`. Rechnung: `python -X utf8 scripts/n
 4. R2: Ausleger, 38 Abzweige und Fallleitungen, Ruecklauf; Bau, alle Pruefungen, Viewer-Export, Screenshots.
 5. A+-Pruefsumme vorher (13:34, `sha256sum` der Ausgabe von `gen_dome.py 5 <scratch>/a.json`): `1a3e4ac0d0b8b468204d5434a6b4d099a6bbc92e5b6a05ed80fae23b19c7d7b9`.
 
+### WA-T Tragwerk (Werkstatt, 05.11.2026)
+**Problem:** Joch, Ausleger, Schiene mit Schelle, Ring-Ecke und Podest fehlen als Bauteile. **Intent:** R1/R2 setzen nur fertige Teile. **Goal:** Die WA-T-Pruefpunkte aus Blatt Abschnitt 3 sind in `scripts/workshop/check_autobahn_t.py` gemessen (Exit 0).
+
+**Stand WA-T 05.11.2026:** 14 Teile gebaut (`scripts/workshop/autobahn_t.py`), Check 104/104 PASS (`python -X utf8 scripts/workshop/check_autobahn_t.py`). Lage je Ringecke steht in `data/components/autobahn_teile.json` -> `tragwerk.lagen`. Befunde im Teileblatt `docs/parts/autobahn.md` Abschnitt WA-T:
+1. Ring-Apothem 3377 statt 3277 (D63): Seite 2194,5 mm, Umfang 21,95 m.
+2. Der Ring haengt unter der Schiene; sonst laege die Schiene unter Z 2100.
+3. Ring-Ecke PE-100 kalt gebogen mit R 1875. Abzweige muessen mindestens 609 mm von der Ecke weg; PP-Klemm-T statt PVC kleben.
+4. Podest auf Z 820 statt 950; Pumpen etwa 636 statt 617 W.
+5. Podest am heutigen Verteilerplatz liegt im Gang: Die Lage klaert Montage R1c.
+
 ## DoD
 1. Pruefpunkte 1 bis 5 aus dem Blatt von einem fremden Pruefer als PASS belegt (`docs/jobs/pruefung/N-AUTOBAHN-V2.md`).
 2. Viewer-Screenshot beider Varianten im echten Browser, Ring mit Schlaeuchen nur in Ring B2.

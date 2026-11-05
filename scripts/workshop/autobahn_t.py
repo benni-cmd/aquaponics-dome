@@ -68,7 +68,8 @@ def meta(b, nm, pn, desc, werk):
 # =========================================================================== WA1 Portal-Joch (KS = Tisch-KS nft_tisch_mitte: X tangential CCW, Y radial innen, Z ab Innenboden)
 # Bestand (solidcraft-cli eval designs/components/nft_tisch_mitte.sc): Bock 1 Beine x -478..-437, Diagonale aussen x -480..-478; Bock 2 Beine x 528..568,
 # Diagonale aussen x 568..570; Beine y -567..-526 / 526..567, Hoehe 5..948 (Bock 1) / 932 (Bock 2); Laengsdiagonalen und Laengsstreben innen (zwischen den Boecken).
-TISCH = {"a": dict(bein=(-478.0, -437.0), diag_aussen=(-480.0, -478.0), s=-1), "b": dict(bein=(528.0, 568.0), diag_aussen=(568.0, 570.0), s=1)}
+# Aussenkante je Bock = Diagonalen-Schrauben M6x40 bzw. Muttern (eval: Bock 1 bis x -484, Bock 2 bis x 574), nicht die Diagonale selbst
+TISCH = {"a": dict(bein=(-478.0, -437.0), diag_aussen=(-484.0, -478.0), s=-1), "b": dict(bein=(528.0, 568.0), diag_aussen=(568.0, 574.0), s=1)}
 JO = dict(profil=40.0, wand=3.0, luft_diag=2.0, bein_y0=526.0, bein_y1=567.0, ext_z0=150.0, klemm_z=((250.0, 310.0), (780.0, 840.0)), klemm_t=6.0, schraube_d=8.0,
           stirn_t=8.0, stirn_b=100.0, platte_b=60.0)
 
@@ -105,9 +106,11 @@ def joch(seite):
             for side, (y0, y1) in (("aussen", (p["bein_y1"], p["bein_y1"] + p["klemm_t"])), ("innen", (p["bein_y0"] - p["klemm_t"], p["bein_y0"]))):
                 yy = (y0, y1) if sy > 0 else (-y1, -y0)
                 kp = f"Klemmplatte_{tag}_{k}_{side}"; bx(b, kp, g["px"][0], g["px"][1], yy[0], yy[1], z0, z1); bodies.append(kp)
+                for j, xb in enumerate(g["bolts"]):
+                    cyl(b, f"{kp}_Loch_{j + 1}", p["schraube_d"] + 1, yy[1] - yy[0] + 2, [xb, yy[0] - 1, (z0 + z1) / 2], [0, 1, 0], op="cut", targets=[kp])
             for j, xb in enumerate(g["bolts"]):
                 sn = f"Schraube_{tag}_{k}_{j + 1}"
-                y_lo = p["bein_y0"] - p["klemm_t"] - 10; y_hi = p["bein_y1"] + p["klemm_t"] + 10
+                y_lo = p["bein_y0"] - p["klemm_t"] - 8; y_hi = p["bein_y1"] + p["klemm_t"] + 8
                 base = [xb, sy * y_lo if sy > 0 else -y_hi, (z0 + z1) / 2]
                 cyl(b, sn, p["schraube_d"], y_hi - y_lo, base, [0, 1, 0]); bodies.append(sn)
     # Querriegel auf den Verlaengerungen, Stirnplatten fuer die Ausleger, Ausgleichsplatte unter dem Riegel ueber der Schiene

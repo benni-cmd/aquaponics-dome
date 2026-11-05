@@ -4,7 +4,84 @@ Auftrag: `docs/jobs/N-AUTOBAHN-V2.md` Abschnitt 3. Je Werkstatt-Sitzung ein Absc
 
 <!-- WA-T Anfang -->
 ## WA-T Tragwerk
-(Abschnitt der Sitzung WA-T.)
+
+Auftrag: `docs/jobs/N-AUTOBAHN-V2.md` Abschnitt 3, Teile WA1 bis WA4 und WA7. Generator `scripts/workshop/autobahn_t.py`, Pruefung `scripts/workshop/check_autobahn_t.py`, Teiledaten `data/components/autobahn_teile.json` (Schluessel `tragwerk`, mit Lage je Ringecke unter `lagen`), Bilder `renders/components/autobahn/<teil>.png`. [Q] Quelle · [E] eigene Rechnung/Messung · [A] Annahme. Z relativ zum Innenboden (absolut = +400).
+
+**Mini-Plan.** Problem: Der Ring hat keine Stuetzpunkte, Ausleger, Traeger und Ecken; fuer das Podest fehlt die Pruefung gegen das Gefaelle von K10. Intent: Montage R1/R2 setzt das Tragwerk nur noch ein und erfindet keine Teile. Goal: Je Teil eine `.sc` mit Ports, Interferenz 0 gegen echte Nachbarn, Statik und K10-Gefaelle im Check gemessen.
+
+### Befunde, die das Planer-Blatt aendern
+
+1. **Ring liegt bei Apothem 3377, nicht bei 3277.** Seit D63 stehen die Mitteltische 100 mm weiter aussen (`ring_shift_mid`, `scripts/dome-script.json`). Daraus folgen: Eckradius 3551, Seite 2194,5 mm, Umfang 21,95 m (Blatt: 3446 / 2130 / 21,30 m). Die Ausleger-Ziele steigen auf 1591 mm innen und 1784 mm aussen ab dem Ring.
+2. **Ring haengt unter der Schiene, er liegt nicht auf ihr.** Laege der Ring auf einer Schiene 41, laege deren Unterkante bei etwa Z 2060, also unter Z 2100 im Gang. Die Hoehenkette ist deshalb fuer alle Stuetzpunkte gleich: Ringachse 2145, tiefster Schellenpunkt 2101,5, Schiene 2212 bis 2253 (Schlitz unten), Ausgleichsplatte bzw. Verbinder 2253 bis 2257, Querriegel, Kragarm und Ausleger 2257 bis 2297. Korridor KR bis 2300 wird eingehalten.
+3. **Ringecke = PE-100 kalt gebogen, R 1875 (25 x d).** Ein PVC-U-Klebebogen d75 mit 36, 30, 22,5 oder 18 Grad wurde nicht gefunden: Profec fuehrt 30 und 22,5 Grad erst ab d90, Praher und FIP nur 45 und 90 Grad (Abschnitt Quellen). Der Bogen braucht je Ecke 609 mm Gerade beidseits (Tangente), sein Scheitel liegt 96,5 mm innerhalb der Polygonecke. **Folgen:** (a) An einer Ecke kann kein Abzweig sitzen; die Abzweige liegen auf der Geraden, mindestens 609 mm von der Ecke entfernt. Zwischen zwei Boegen bleiben 976 mm. (b) PE laesst sich nicht kleben. T97 `ring_abzweig_*` und T96 `entluefter_d75` aus PVC-U brauchen deshalb PP-Klemmverbinder: T-Stueck d75 mit Innengewinde 2 1/2 Zoll, Trinkwasser-Zulassung W270/KTW (+GF+ iJOINT, Code 158 400 197) oder Plassim (T 75 x 2 1/2 x 75). Die Wahl trifft die Montage R1b, kein WA-T-Teil.
+4. **Podest auf Z 820, nicht auf 950.** Bei 950 passt K10 nicht in den Fassdeckel: Achse 1570 minus Bogen 90 d50 (91) minus Rohrstueck (72) minus Zulauf-Port (575) ergibt 832; mit 1 % Gefaelle auf 1,2 m bleiben 820. Pegel EIN liegt dann bei Z 1160 statt 1290, die Booster heben 130 mm mehr. [E, auf das Planer-Modell Abschn. 5 umgerechnet: 4 Booster 206 statt 187 W bei eta 25 %, gesamt etwa 636 statt 617 W]
+5. **Podest-Lage am heutigen A+-Verteiler geht nicht.** Am Ende von K10 laege das Fass mit seinen Stutzen 500 mm in Gang A, am Ende von K26 482 mm in Gang B (Check, BEFUND-Zeile). Die Montage R1c muss K10 und K26 seitlich am Biofilter vorbeifuehren (bis 1,2 m bei 1 %) und dort einen Platz ausserhalb der Gaenge finden. Das Podest selbst ist dafuer bemessen.
+
+### Stuetzpunkte im Ring (aus `lagen`, Montage uebernimmt)
+
+| Ecke (Azimut) | Stuetzpunkt | Teil | Ausleger innen / aussen |
+|---|---|---|---|
+| 18,3 | Joch an `Tisch_mitte:4` Bock 1 (-X), 591 mm hinter der Ecke | `portal_joch_mitte_a` | 1020 / 1210 |
+| 54,3 · 90,3 · 126,3 · 162,3 · -161,7 · -125,7 | Joch an Bock 2 (+X) von `Tisch_mitte:4/5/6/1/2/3`, 501 mm vor der Ecke | `portal_joch_mitte_b` | 1020 / 1210 |
+| -89,7 · -53,7 | Stelze, Pfosten innen (r 3108) auf der Winkelhalbierenden, Kragarm nach aussen | `ringstuetze_d75_b` | 1020 am Gegenarm / – |
+| -17,7 | Stelze, Pfosten aussen (r 3801), Kragarm zur Mitte | `ringstuetze_d75_b` | 1370 am Kragarm / 1370 am Gegenarm |
+
+Joch-KS = Tisch-KS: Die Montage setzt das Joch mit der Instanzmatrix des Tisches (`matrix_tisch`). Summe: 7 Joche, 3 Stelzen, 18 Ausleger (10 innen, 8 aussen), 10 Schienen, 10 Verbinder, 30 Schellen (20 auf der Schiene an den Tangentenpunkten, 7 an den Verbinder-Laschen, 3 an den Stelzen-Kragarmen), 10 Ring-Ecken.
+
+### WA1 Portal-Joch `portal_joch_mitte_a` / `_b`
+
+Zwei Verlaengerungen 40 x 40 x 3 stehen aussen neben den Bestandsbeinen eines Bocks, 2 mm vor den Diagonalen-Schrauben M6 (Bock 1 bis x -484, Bock 2 bis x 574), mit Distanzblech 8 mm. Je Bein halten zwei Klemmen (Platten 6 mm, 2 x M8, Z 250 bis 310 und 780 bis 840). Oben liegt ein Querriegel 40 x 40 x 3 auf Z 2257 bis 2297 mit Stirnplatten 100 x 40 x 8 fuer die Ausleger. Am Tisch wird nicht geschweisst. Masse 22,3 kg.
+
+| Port (Tisch-KS) | A: Lage | B: Lage | Richtung |
+|---|---|---|---|
+| Schiene (Auflage Oberkante Schiene) | -506, 0, 2253 | 596, 0, 2253 | -Z |
+| Ausleger innen (Stirnplatte) | -506, 575, 2277 | 596, 575, 2277 | +Y |
+| Ausleger aussen (Stirnplatte) | -506, -575, 2277 | 596, -575, 2277 | -Y |
+
+### WA2 Ausleger `ausleger_schlauch_1020` / `_1210` / `_1370`
+
+Kragarm 40 x 40 x 3 mit Flansch 100 x 40 x 8 (2 x M10). Halterpaare beidseits im Raster unter 400 mm: Clips fuer Schlauch bis AD 35, Schlauchachse y +-42,5 auf Armmitte. Am Ende sitzt ein Endbuegel mit Viertel-Sattel R 192,5 unter dem Schlauch, das ergibt einen Biegeradius von 210 = 6 x AD (Leitungsordnung R14). **Kein Kopfband:** Unter dem Arm wuerde es in den Gang unter Z 2100 ragen; der Arm traegt ohne Kopfband (Check). Masse 5,6 / 6,3 / 6,9 kg.
+Ports (KS: Flanschanlage x 0, Arm +X, Armmitte z 0 = Z 2277): Flansch (0, 0, 0) -X; Halter k l/r (x_k, +-42,5, 0) +X; Fall l/r (L + 210, +-42,5, -210) -Z.
+
+### WA2b Ringstuetze Rev. B `ringstuetze_d75_b` (T95-B)
+
+Fuss, Pfosten 50 x 50 x 3 und Hoehen wie T95. Es gibt keinen Haenger: Der Schienenverbinder liegt unter dem Kragarm bei x 250, die Scheitel-Schelle haengt mit M8 durch den Kragarm bei x 346,5. Der Gegenarm (-X) und beide Armenden tragen Stirnplatten fuer Ausleger. T95 Rev. A bleibt unveraendert. Masse 15,5 kg.
+Ports: Schienenecke (250, 0, 2257) -Z; Scheitel-Schelle (346,5, 0, 2297) +Z; Ausleger +X (414,5, 0, 2277); Ausleger -X (-68, 0, 2277); Fuss (0, 0, 0) -Z.
+
+### WA3 Montageschiene, Schellen, Verbinder
+
+1. `montageschiene_41_2179`: C-Profil 41 x 41 x 2,5, Schlitz 22 unten, Laenge 2179 (Seite minus Gehrungsluft), 2,59 kg/m im Modell. Statik mit Datenblattwerten Iy 5,81 cm4 / Wy 2,84 cm3 [Q MUEPRO MPR 41/41/2,5; fischer FUS 41/2,5: 6,0 / 2,85]. Das Modell ergibt 7,17 cm4, weil Lochung und Radien fehlen.
+2. `lt_klemme_d75` (Schiene, Mutter im Schlitz), `lt_klemme_d75_ecke` (Mutter auf der Verbinder-Lasche) und `lt_klemme_d75_stelze` (Mutter auf dem Kragarm): Schelle d75 mit EPDM 3 mm. Tiefster Punkt 2101,5. Ports: Rohrachse (0, 0, 0) entlang X; Mutterauflage z 69,5 / 112 / 152 ueber der Achse.
+3. `schienenverbinder_36`: Flachstahl 4 mm auf dem Ruecken beider Schienen, je Schenkel 2 Loecher M8. Eine Lasche auf der Winkelhalbierenden (108 Grad) traegt das Loch ueber dem Bogenscheitel (96,5 mm). Masse 0,52 kg.
+
+### WA4 Ring-Ecke `ring_ecke_d75`
+
+PE-100 d75 SDR 17 (Wand 4,41), kalt gebogen um 36 Grad mit R 1875, Schenkel je 150, Achslaenge 1478. Ports: A (0, 0, 0) -Z; B (446,3, 0, 1373,5), Richtung (0,588, 0, 0,809). Lebensmittelecht nach D85: PE-100-Trinkwasserrohr; die Zulassung des gewaehlten Fabrikats pruefen N-STUECKLISTE und Beschaffung.
+
+### WA7 Pegelschacht-Podest `pegelschacht_podest`
+
+Stahlgestell 480 x 480 aus 40 x 40 x 3 mit Rahmen oben und auf Z 400, Deckplatte 6 mm bis Z 820 (Fassboden), Haltering 60 hoch gegen Verrutschen, 4 Fussplatten 100 x 100 x 6 mit je einem Anker M8. Masse 37,0 kg. Ports: Fass (0, 0, 820) +Z, dort steht der Ursprung des T94; Fuss (0, 0, 0).
+
+### Pruefung (`python -X utf8 scripts/workshop/check_autobahn_t.py`, Stand dieses Blatts)
+
+**104/104 PASS**, Exit 0. Gemessen werden je Teil: Koerperliste, Ports als Stirnflaechen, Interferenz 0 (Joch gegen die echte Geometrie von nft_tisch_mitte samt Innenbeet, Ring, Schiene und Ausleger; Podest mit T94 darauf; Klemmen mit Testrohr). Dazu Hoehen (Schellen >= 2100, Oberkante <= 2300, kein Joch-Teil ausserhalb des Portalrands unter 2100) und die Statik. Kennwerte: Joch-Kopfverschiebung radial 0,73 mm und tangential 1,11 mm (Grenze 4,7). Ausleger mit Durchbiegung und Flanschschrauben; Saettel liegen in allen 5 Aufstellungen ausserhalb von Gang A und B. Stelze in 4 Lastfaellen unter L/300. Schiene: groesste Spannweite 2786 mm mit 6,06 mm Durchbiegung (Grenze 13,9), Schellenabstand hoechstens 976 mm. Ring-Ecke R 1875 = 25 x d. K10-Gefaelle 1,0 % auf 1,2 m. Podest kippt ohne Anker nicht. Die Lage am Verteilerplatz ist als BEFUND ausgegeben und wird nicht gezaehlt.
+
+### Quellen (Recherche-Agent 05.11.2026, Texte aus den PDFs gelesen)
+
+| Frage | Ergebnis | Quellen |
+|---|---|---|
+| Kalt-Biegeradius PE d75 | 25 x d fuer SDR 17 (strengster Wert); 20 x d bei 20 Grad C | PE100+ Association (pe100plus.com, Technical guidance, Trenching); Firat (firat.com, Bending diameter); Ostendorf Sicherheitsblatt PE 80 (media.hornbach.ch). Kein deutscher Herstellerwert fuer PE 100 gefunden |
+| PVC-U-Bogen d75 unter 45 Grad | nicht gefunden | Profec ueber Bevo und Bosta (30 und 22,5 Grad erst ab d90), Praher und FIP (nur 45 und 90 Grad, nur Auszuege) |
+| PP-Klemmverbinder d75 | vorhanden, T-Stueck mit Innengewinde und Kupplung | +GF+ iJOINT (W270, KTW, DVGW); Plassim (Rohstoff-Zulassung); Unidelta (DVGW, KIWA) |
+| Schiene 41 x 41 x 2,5 | Iy 5,81 / 6,0 cm4, 2,45 bis 2,53 kg/m | MUEPRO Datenblatt 33665; fischer FUS 41/2,5 (Meesenburg) |
+
+### Offen (WA-T)
+
+1. **Montage R1c:** Platz fuer Podest und Pegelschacht ausserhalb von Gang A und B finden; K10/K26 duerfen dafuer bis 1,2 m lang werden.
+2. **Montage R1b:** Abzweige und Entluefter auf die Ring-Geraden legen, mindestens 609 mm von jeder Ecke; als Uebergang PE zu PVC-U das PP-Klemm-T 75 x 2 1/2 Zoll (+GF+ iJOINT) oder einen Uebergangsadapter waehlen.
+3. **Montage R1a:** Die Stelzen -89,7 und -53,7 (Pfosten r 3108) und -17,7 (r 3801) gegen Tanks und Pumpen pruefen; der Standort darf 300 mm entlang der Winkelhalbierenden wandern.
+4. **N-STATIK:** Joch-Klemmen per Reibschluss pruefen (Vorspannung M8 mit 5 kN angesetzt [A]) und die Anker der Stelzen.
+5. **Planer/Orchestrator:** Ringmasse im Auftragsblatt (Abschn. 1.2 und 2.2) und die Pumpenleistung (636 statt 617 W) nachziehen.
 <!-- WA-T Ende -->
 
 <!-- WA-S Anfang -->

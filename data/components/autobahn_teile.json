@@ -39,7 +39,7 @@
     "teil": "portal_joch_mitte_b",
     "tisch": "Tisch_mitte:2",
     "bock": "b",
-    "abstand_ecke": 505.3,
+    "abstand_ecke": 501.3,
     "matrix_tisch": [
      0.005235964,
      0.999986292,
@@ -69,7 +69,7 @@
     "teil": "portal_joch_mitte_b",
     "tisch": "Tisch_mitte:3",
     "bock": "b",
-    "abstand_ecke": 505.3,
+    "abstand_ecke": 501.3,
     "matrix_tisch": [
      0.592013179,
      0.805928282,
@@ -145,7 +145,7 @@
     "teil": "portal_joch_mitte_a",
     "tisch": "Tisch_mitte:4",
     "bock": "a",
-    "abstand_ecke": 595.3,
+    "abstand_ecke": 591.3,
     "matrix_tisch": [
      -0.592013179,
      -0.805928282,
@@ -175,7 +175,7 @@
     "teil": "portal_joch_mitte_b",
     "tisch": "Tisch_mitte:4",
     "bock": "b",
-    "abstand_ecke": 505.3,
+    "abstand_ecke": 501.3,
     "matrix_tisch": [
      -0.592013179,
      -0.805928282,
@@ -205,7 +205,7 @@
     "teil": "portal_joch_mitte_b",
     "tisch": "Tisch_mitte:5",
     "bock": "b",
-    "abstand_ecke": 505.3,
+    "abstand_ecke": 501.3,
     "matrix_tisch": [
      -0.952661481,
      -0.304033061,
@@ -235,7 +235,7 @@
     "teil": "portal_joch_mitte_b",
     "tisch": "Tisch_mitte:6",
     "bock": "b",
-    "abstand_ecke": 505.3,
+    "abstand_ecke": 501.3,
     "matrix_tisch": [
      -0.949425478,
      0.313992456,
@@ -265,7 +265,7 @@
     "teil": "portal_joch_mitte_b",
     "tisch": "Tisch_mitte:1",
     "bock": "b",
-    "abstand_ecke": 505.3,
+    "abstand_ecke": 501.3,
     "matrix_tisch": [
      -0.583541211,
      0.812083527,
@@ -295,30 +295,30 @@
     "teilenummer": "WA1-A",
     "ks": "= Tisch-KS nft_tisch_mitte (Instanzmatrix des Tisches uebernehmen)",
     "geometrie": {
-     "e0": -522.0,
-     "e1": -482.0,
-     "xe": -502.0,
+     "e0": -526.0,
+     "e1": -486.0,
+     "xe": -506.0,
      "dist": [
-      -482.0,
+      -486.0,
       -478.0
      ],
      "px": [
-      -534.0,
+      -538.0,
       -425.0
      ],
      "bolts": [
-      -528.0,
+      -532.0,
       -431.0
      ],
      "y_end": 567.0,
      "y_flansch": 575.0,
-     "abstand_ecke": 595.2538141785246
+     "abstand_ecke": 591.2538141785246
     },
     "ports": [
      {
       "name": "Schiene (Auflage Oberkante Montageschiene 41)",
       "lage": [
-       -502.0,
+       -506.0,
        0.0,
        2253.0
       ],
@@ -333,7 +333,7 @@
      {
       "name": "Ausleger innen (Stirnplatte)",
       "lage": [
-       -502.0,
+       -506.0,
        575.0,
        2277.0
       ],
@@ -348,7 +348,7 @@
      {
       "name": "Ausleger aussen (Stirnplatte)",
       "lage": [
-       -502.0,
+       -506.0,
        -575.0,
        2277.0
       ],
@@ -366,30 +366,30 @@
     "teilenummer": "WA1-B",
     "ks": "= Tisch-KS nft_tisch_mitte (Instanzmatrix des Tisches uebernehmen)",
     "geometrie": {
-     "e0": 572.0,
-     "e1": 612.0,
-     "xe": 592.0,
+     "e0": 576.0,
+     "e1": 616.0,
+     "xe": 596.0,
      "dist": [
       568.0,
-      572.0
+      576.0
      ],
      "px": [
       516.0,
-      624.0
+      628.0
      ],
      "bolts": [
       522.0,
-      618.0
+      622.0
      ],
      "y_end": 567.0,
      "y_flansch": 575.0,
-     "abstand_ecke": 505.25381417852464
+     "abstand_ecke": 501.25381417852464
     },
     "ports": [
      {
       "name": "Schiene (Auflage Oberkante Montageschiene 41)",
       "lage": [
-       592.0,
+       596.0,
        0.0,
        2253.0
       ],
@@ -404,7 +404,7 @@
      {
       "name": "Ausleger innen (Stirnplatte)",
       "lage": [
-       592.0,
+       596.0,
        575.0,
        2277.0
       ],
@@ -419,7 +419,7 @@
      {
       "name": "Ausleger aussen (Stirnplatte)",
       "lage": [
-       592.0,
+       596.0,
        -575.0,
        2277.0
       ],

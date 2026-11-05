@@ -118,6 +118,8 @@ class H(http.server.SimpleHTTPRequestHandler):
             vv = 'ring_b2' if '/varianten/ring_b2/' in p else v
             ansicht_pruefen(vv)
             return P('ansicht', vv)
+        if p == '/messstellen.json':
+            return os.path.join(ROOT, 'data', 'messstellen.json')
         if p == '/katalog.json':
             return os.path.join(ROOT, 'data', 'katalog.json')
         if p.startswith('/parts/') and p.endswith('.json') and '/' not in p[len('/parts/'):] and '..' not in p:

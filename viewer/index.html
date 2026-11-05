@@ -125,6 +125,9 @@
   </div>
   <div id="legende" hidden></div>
   <label class="opt"><input type="checkbox" id="wire"> Drahtgitter</label>
+  <label class="opt" title="Markiert alle Halter und Sonden des Messstellenplans im Modell mit rosa Kugeln"><input type="checkbox" id="mess"> Messstellen zeigen</label>
+  <label class="opt" title="Blendet die Plane (Hülle) aus"><input type="checkbox" id="plane" checked> Plane zeigen</label>
+  <div class="row" style="align-items:center;flex-wrap:nowrap"><span style="color:var(--muted);font-size:12px;white-space:nowrap">Deckkraft Plane</span><input type="range" id="planeop" min="0" max="60" value="14" style="flex:1"><span id="planeopzahl" style="font-size:12px;min-width:34px;text-align:right"></span></div>
   <label class="opt"><input type="checkbox" id="auto" checked> Auto-Update</label>
   <label class="opt" title="Schrauben, Scharniere, Klinken und andere Körper unter 15 cm Diagonale; werden erst beim Einschalten nachgeladen. Stutzen, Muffen und Hähne bleiben immer sichtbar."><input type="checkbox" id="klein"> Kleinteile unter 15 cm zeigen</label>
   <h2>Schnitt (Hoehe)</h2>
@@ -200,6 +203,7 @@ const CATS = [
   ['Tuer', /^tuer/],
   ['Huelle (Plane)', /^huelle/],
   ['Technik', /^schaltschrank/],
+  ['Messstellen', /^(halter_|sonde_)/],
 ];
 const catOf = stem => (CATS.find(c => c[1].test(stem)) || ['Sonstiges'])[0];
 const leafKeyOf = stem => stem.replace(/_(n|r|t)\d+$/, '');   // Varianten (knoten_4_n17, nft_rinne_x_r3) zu einer Gruppe
@@ -298,7 +302,7 @@ function overview() {
   if (!SPEC) return `<span class="ph">Kuppel-Kennzahlen (${esc(VARIANTEN[variante].name)}) werden geladen oder liegen für diese Variante noch nicht vor ...</span>`;
   const w = SPEC.wasser || {}, pf = SPEC.pflanzen || {}, f = SPEC.fische || {}, fl = SPEC.fluesse || {}, l = SPEC.leistung || {}, fi = SPEC.filter || {}, k = SPEC.kapazitaet || {};
   const h = SPEC.huelle || {}, hz = l.heizung || {}, fb = f.tabelle_ben || {}, sp = f.spanne || {};
-  const wt = {}; (w.teile || []).forEach(t => { wt[t[0]] = fm(t[1]) + ' m³ (' + t[2] + ')'; });
+  const wt = {}; (w.teile || []).forEach(t => { wt[t[0]] = fm(t[1], t[1] < 1 ? 2 : 1) + ' m³ (' + t[2] + ')'; });
   const chk = (SPEC.konsistenz || []).map(c => `<li>${c.ok ? '✔ OK' : '⚠ Warnung'} – <b>${esc(c.pruefung)}</b><div class="sub">${esc(c.detail)}</div></li>`).join('');
   const tab = (v, u, n = 0) => has(v) ? ' (Ben: ' + fm(v, n) + ' ' + u + ')' : '';
   const sec = (titel, o) => Object.values(o).some(Boolean) ? `<div class="k">${titel}</div>${kvx(o)}` : '';
@@ -315,6 +319,7 @@ function overview() {
   + sec('Pflanzmix (Empfehlung)', has(SPEC.pflanzmix) ? { 'Beete': (SPEC.pflanzmix.beete || []).map(b => b.art + ' ' + b.pflanzen).join(', '), 'NFT': (SPEC.pflanzmix.nft || []).map(b => b.art.split(' (')[0] + ' ' + b.toepfe).join(', '), 'Bepflanzt': has((SPEC.pflanzmix.topfplaetze || {}).bepflanzt) ? fm(SPEC.pflanzmix.topfplaetze.bepflanzt, 0) + ' von ' + fm(SPEC.pflanzmix.topfplaetze.gesamt, 0) + ' Töpfen' : '', 'Futter-Ziel': rng(SPEC.pflanzmix.ziel_futter_kg_tag, 'kg/Tag'), 'Rückfall (Fisch)': rng(SPEC.pflanzmix.rueckfall_fisch_kg, 'kg', 0), 'Empfehlung': (SPEC.pflanzmix.empfehlung || {}).szenario ? SPEC.pflanzmix.empfehlung.szenario + ': ' + fm(SPEC.pflanzmix.empfehlung.futter_kg_tag, 2) + ' kg Futter, ' + fm(SPEC.pflanzmix.empfehlung.fisch_kg, 0) + ' kg Fisch' : '' } : {})
   + sec('Außenrinnen-Szenario', has(SPEC.szenario) ? Object.fromEntries([['drei_rinnen', '3 Rinnen'], ['vier_rinnen', '4 Rinnen' + (SPEC.szenario.aussen_rinnen === 4 ? ' (Standard)' : '')]].filter(([key]) => SPEC.szenario[key]).map(([key, t]) => { const s = SPEC.szenario[key]; return [t, fm(s.flaeche_gesamt_m2) + ' m², ' + s.nft_topf + ' NFT-Töpfe, nötig ' + fm(s.noetiger_fruchtanteil * 100, 0) + ' % Frucht; Bens Mix trägt ' + s.tragbar_bens_mix_kg + ' kg']; })) : {})
   + sec('Sauerstoff', has((SPEC.sauerstoff || {}).gesamt_kg_tag) ? { 'Bedarf': rng(SPEC.sauerstoff.gesamt_kg_tag, 'kg/Tag') + ' (Spitze ×' + fm(SPEC.sauerstoff.spitze_faktor) + ')', 'Belüftung nötig': has(SPEC.sauerstoff.belueftung_aus_bedarf_w) ? fm(SPEC.sauerstoff.belueftung_aus_bedarf_w, 0) + ' W' : '' } : {})
+  + sec('Messstellen', messKennzahlen())
   + ((SPEC.offene_fragen || []).length ? `<div class="k">Offene Fragen</div>${bullets(SPEC.offene_fragen)}` : '')
   + (chk ? `<div class="k">Passt das zusammen?</div><ul>${chk}</ul>` : '')
   + `<div class="note"><b>Hinweis:</b> ${esc(SPEC.hinweis || '')} Rechnung: scripts/system_specs.py.</div>`;
@@ -528,7 +533,7 @@ let kleinOn = false; try { kleinOn = localStorage.getItem(LS_KLEIN) === '1'; } c
 document.getElementById('klein').checked = kleinOn;
 let inst_anschluss = false;
 let DEFS_INFO = {}, MIN_DIAG_MM = 150, kleinBuilt = false, kleinBusy = false, loadBusy = false;
-const meshVisible = (im, leafOn) => leafOn && (!im.userData.klein || kleinOn) && (!im.userData.mensch || ansicht === 'visuell');
+const meshVisible = (im, leafOn) => leafOn && (!im.userData.klein || kleinOn) && (!im.userData.mensch || ansicht === 'visuell') && (!im.userData.plane || planeOn);
 function setKleinVisible() {
   if (!model) return;
   Object.keys(defMeshes).forEach(stem => {
@@ -703,6 +708,48 @@ window.ansichtStand = () => {                               // Messhaken: Materi
   out.farben = Object.keys(out.farben).length; return out;
 };
 
+// ---- Ebene Messstellen und Plane (V-MESS) ------------------------------------------------------------------------
+const lsAn = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} return null; };
+let messOn = lsAn('viewer.messstellen') === '1', planeOn = lsAn('viewer.plane') !== '0';
+let planeOp = (() => { const v = parseInt(lsAn('viewer.planeop')); return Number.isFinite(v) ? Math.min(60, Math.max(0, v)) : 14; })();
+const MESS_RE = /^(halter_|sonde_)/, planeMats = new Set();
+const messGroup = new THREE.Group(); messGroup.renderOrder = 998; scene.add(messGroup);
+const messMat = new THREE.MeshBasicMaterial({ color: 0xff4fd8, transparent: true, opacity: 0.9, depthTest: false, depthWrite: false, clippingPlanes: [clipPlane] });
+const messGeo = new THREE.SphereGeometry(70, 16, 12);
+let MESS = null;                                            // data/messstellen.json (Messstellenplan)
+fetch('/messstellen.json?v=' + Date.now()).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => { MESS = d; if (!pinned && !selected) showInfo(null); }).catch(() => {});
+function messBauen() {                                      // Markierkugel und Leuchtumriss an jedem Halter und jeder Sonde
+  messGroup.children.slice().forEach(o => messGroup.remove(o));
+  messGroup.visible = messOn; if (!model) return;
+  const pos = [];
+  Object.keys(defList).filter(s => MESS_RE.test(s)).forEach(stem => {
+    defList[stem].forEach(i => pos.push(new THREE.Matrix4().makeTranslation(i.m[3], i.m[7], i.m[11])));
+    (defMeshes[stem] || []).forEach(base => {
+      const im = new THREE.InstancedMesh(base.geometry, messMat, defList[stem].length);
+      defMats[stem].forEach((mx, k) => im.setMatrixAt(k, mx));
+      im.frustumCulled = false; im.renderOrder = 998; im.raycast = () => {}; messGroup.add(im);
+    });
+  });
+  if (pos.length) { const sp = new THREE.InstancedMesh(messGeo, messMat, pos.length); pos.forEach((m, k) => sp.setMatrixAt(k, m)); sp.frustumCulled = false; sp.renderOrder = 998; sp.raycast = () => {}; messGroup.add(sp); }
+}
+function messKennzahlen() {                                 // Zaehlung aus dem Modell, Plan aus dem Messstellenplan
+  const ms = MESS && MESS.messstellen || [], n = ms.length, pf = ms.filter(m => m.stufe === 'pflicht').length;
+  const h = Object.keys(defList).filter(s => /^halter_/.test(s)).reduce((a, s) => a + defList[s].length, 0), so = Object.keys(defList).filter(s => /^sonde_/.test(s)).reduce((a, s) => a + defList[s].length, 0);
+  return { 'Plan': n ? `${n} Messstellen: ${pf} Pflicht (Fischtod und Anlagenschaden), ${n - pf} Zusatz` : '', 'Im Modell': model ? `${h} Halter und ${so} Sonden stehen schon im Modell` : '',
+           'Anzeigen': n ? 'Haken "Messstellen zeigen" im Menü markiert sie im Modell' : '' };
+}
+function planeAnwenden() {                                  // Deckkraft und Sichtbarkeit der Plane (Huelle)
+  planeMats.forEach(m => { m.opacity = planeOp / 100; m.transparent = planeOp < 100; m.depthWrite = planeOp >= 100; m.needsUpdate = true; });
+  Object.keys(defMeshes).forEach(stem => { if (/^huelle/.test(stem)) { const leafOn = !hiddenLeaf.has(leafKeyOf(stem)); defMeshes[stem].forEach(im => { im.visible = meshVisible(im, leafOn); }); } });
+}
+document.getElementById('mess').checked = messOn; document.getElementById('plane').checked = planeOn; document.getElementById('planeop').value = planeOp;
+document.getElementById('mess').addEventListener('change', e => { messOn = e.target.checked; lsAn('viewer.messstellen', messOn ? '1' : '0'); messGroup.visible = messOn; });
+document.getElementById('plane').addEventListener('change', e => { planeOn = e.target.checked; lsAn('viewer.plane', planeOn ? '1' : '0'); planeAnwenden(); rebuildHighlight(); });
+document.getElementById('planeop').addEventListener('input', e => { planeOp = +e.target.value; lsAn('viewer.planeop', String(planeOp)); document.getElementById('planeopzahl').textContent = planeOp + ' %'; planeAnwenden(); });
+document.getElementById('planeopzahl').textContent = planeOp + ' %';
+window.messStand = () => ({ an: messOn, halter: Object.keys(defList).filter(s => /^halter_/.test(s)).reduce((a, s) => a + defList[s].length, 0), sonden: Object.keys(defList).filter(s => /^sonde_/.test(s)).reduce((a, s) => a + defList[s].length, 0), geplant: MESS ? MESS.messstellen.length : null, markierungen: messGroup.children.length, sichtbar: messGroup.visible,
+  plane: { an: planeOn, deckkraft: planeOp, netze: Object.keys(defMeshes).filter(s => /^huelle/.test(s)).reduce((a, s) => a + defMeshes[s].filter(m => m.visible).length, 0) } });
+
 function baueDef(stem, text, m, klein) {                    // eine Definition (oder ihre Kleinteile) als InstancedMesh je Koerper
   const list = defList[stem], mxs = defMats[stem], g = loader.parse(text);
   if (!defMeshes[stem]) defMeshes[stem] = [];
@@ -712,6 +759,7 @@ function baueDef(stem, text, m, klein) {                    // eine Definition (
     const name = o.name || o.parent.name, mt = materialienFuer(stem, name), mat = ansicht === 'visuell' ? mt.vis : mt.tech;
     const im = new THREE.InstancedMesh(o.geometry, mat, list.length);
     im.userData.matVis = mt.vis; im.userData.matTech = mt.tech; im.userData.mensch = mt.mensch; im.userData.werkstoff = mt.werkstoff; im.userData.art = mt.art;
+    if (/^huelle/.test(stem)) { im.userData.plane = true; planeMats.add(mt.vis); planeMats.add(mt.tech); }
     mxs.forEach((mx, i) => im.setMatrixAt(i, mx));
     im.frustumCulled = false; im.name = name; im.userData.def = stem; if (klein) im.userData.klein = true;
     im.visible = meshVisible(im, leafOn); m.add(im); defMeshes[stem].push(im);
@@ -749,7 +797,7 @@ async function load() {
     hiddenInst.forEach(k => { const [s, i] = k.split('#'); if (defMeshes[s]) applyInstVisibility(s, +i); });
     if (selected && !defList[selected.stem]) selected = null;
     perfAufbau = ((performance.now() - t0) / 1000).toFixed(1);
-    buildTree(inst); applyAnsicht(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
+    buildTree(inst); applyAnsicht(); messBauen(); planeAnwenden(); rebuildHighlight(); if (!pinned && !selected) showInfo(null);
     perfText(); ladeGelungen = true; Lade.ende();
   } catch (e) { Lade.fehlerMelden('Aufbau abgebrochen: ' + e.message); Lade.ende(); }
   finally { loadBusy = false; }

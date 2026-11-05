@@ -154,9 +154,9 @@
           "haendler": "Rekubik GmbH (Werit, schwarz)",
           "land": "DE",
           "url": "https://www.rekubik.de/ibc-container/neue-ibc/1000l-ibc-container-schwarz-auf-pe-palette-neu",
-          "lieferung_de": "ja",
+          "lieferung_de": "nein",
           "konfidenz": "Q",
-          "bemerkung": "NEU, 'Lebensmittelecht: Ja', 1200 x 1000 x 1160, 60 kg; 299,99 plus 59,99 Spedition; am 05.11. nicht verfuegbar; Konformitaetserklaerung verlinkt, Inhalt nicht gelesen."
+          "bemerkung": "NICHT BESTELLBAR am 05.11.2026 (Seite: nicht verfuegbar). NEU, 'Lebensmittelecht: Ja', 1200 x 1000 x 1160, 60 kg; 299,99 plus 59,99 Spedition; am 05.11. nicht verfuegbar; Konformitaetserklaerung verlinkt, Inhalt nicht gelesen."
         },
         {
           "preis_eur": 187.63,
@@ -192,9 +192,9 @@
           "haendler": "Rekubik GmbH (Werit, schwarz)",
           "land": "DE",
           "url": "https://www.rekubik.de/ibc-container/neue-ibc/1000l-ibc-container-schwarz-auf-pe-palette-neu",
-          "lieferung_de": "ja",
+          "lieferung_de": "nein",
           "konfidenz": "Q",
-          "bemerkung": "Neuer IBC, 'Lebensmittelecht: Ja'; plus 59,99 Spedition; am 05.11. nicht verfuegbar."
+          "bemerkung": "NICHT BESTELLBAR am 05.11.2026 (Seite: nicht verfuegbar). Neuer IBC, 'Lebensmittelecht: Ja'; plus 59,99 Spedition; am 05.11. nicht verfuegbar."
         }
       ],
       "luecke": "OFFEN (Ben): Beetwanne 2640 mm ist aus einem IBC nicht schneidbar; Anzahl IBC je Wanne entscheiden"
@@ -368,7 +368,7 @@
           "url": "https://ando-technik.com/pe-dosierbehaelter--500l-weiss-h-1230mm--d-740m.html",
           "lieferung_de": "ja",
           "konfidenz": "Q",
-          "bemerkung": "d740 x H1230, 'lebensmittelechtes PE', lieferbar 2-5 Tage, Versand extra; ersetzt Beton-Wanne 920 x 920 x 1055 nur als Vorschlag."
+          "bemerkung": "ERSATZ (Abweichung: PE-Rundbehaelter 500 l statt Beton-Wanne 920 x 920 x 1055; Mass d740 x 1230). d740 x H1230, 'lebensmittelechtes PE', lieferbar 2-5 Tage, Versand extra; ersetzt Beton-Wanne 920 x 920 x 1055 nur als Vorschlag."
         },
         {
           "preis_eur": 680.68,
@@ -379,7 +379,7 @@
           "url": "https://www.denios.de/lager-und-dosierbehaelter-aus-polyethylen-pe-500-liter-volumen-natur-transparent-136937/136937",
           "lieferung_de": "ja",
           "konfidenz": "E",
-          "bemerkung": "500 l, lebensmittelechtes UV-stabilisiertes LLD-PE; 680,68 = 572,00 netto x 1,19; Versand frei, 3-4 Wochen; Masse auf der Seite nicht genannt."
+          "bemerkung": "ERSATZ (Abweichung: PE-Rundbehaelter 500 l statt Beton-Wanne 920 x 920 x 1055; Mass d740 x 1230). 500 l, lebensmittelechtes UV-stabilisiertes LLD-PE; 680,68 = 572,00 netto x 1,19; Versand frei, 3-4 Wochen; Masse auf der Seite nicht genannt."
         }
       ],
       "luecke": "OFFEN (Ben): Werkstoff und Mass (Beton 920 x 920 x 1055 gegen PE 740 x 1230)"

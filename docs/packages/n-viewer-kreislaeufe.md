@@ -13,7 +13,7 @@ Stand 05.11.2026, Viewer-Sitzung. Wunsch W87 (`docs/packages/wunschbuch-ben.md`)
    - Rohre, Bögen, Hähne und Co. (`lt_*`): die Leitungsart der Instanz aus `leitungsart` (Zulauf, Rücklauf, Frischwasser = Wasser; Luft = Luft). Fehlt sie (Abstand zur Trasse über 150 mm), entscheidet das Feld `linie` des nächsten Eintrags in `leitungstrassen.json` (`teile`): `luft` und `luft_b` = Luft, Zahl = Wasser, `frisch` = Wasser.
    - Tanks, Pumpen, Filter und andere Bauteile: die Knoten in `leitungsnetz.json` (`bauteil` oder `id` passt zum Teilenamen). Hängt der Knoten an einer Kante mit Medium Wasser, ist das Teil Wasser; bei Medium Luft zählt nur der Quellknoten (Gebläse), die belüfteten Becken bleiben Wasser.
    - Strom: die Kabelliste in `leitungsnetz.json` (Medium Strom: Schaltschrank, Pumpen, Gebläse, Puffer, Steuerung) und im Teile-Datensatz jeder Körper mit Werkstoff `kabel_pvc` oder Namen "Kabel", "Netzkabel", "Stecker" (Pumpenkabel sind einzelne Körper).
-3. **Darstellung:** Schalter an, dann bekommen alle Körper ein blasses, durchsichtiges Material. Die Teile des gewählten Kreislaufs liegen als farbige Kopie darüber (Wasser blau, Luft grün, Strom orange), Tiefentest an, damit Formen lesbar bleiben. Mehrere Schalter ergeben die Vereinigung. Bauteilbaum, Auswahl und Schnitt-Regler wirken weiter (versteckte Teile bleiben versteckt, der Schnitt gilt auch für die Kopie).
+3. **Darstellung:** Schalter an, dann bekommen alle Körper ein blasses, durchsichtiges Material. Die Teile des gewählten Kreislaufs liegen als farbige Kopie darüber (Wasser blau, Luft hellgelb, Strom orangerot (W87a)), Tiefentest an, damit Formen lesbar bleiben. Mehrere Schalter ergeben die Vereinigung. Bauteilbaum, Auswahl und Schnitt-Regler wirken weiter (versteckte Teile bleiben versteckt, der Schnitt gilt auch für die Kopie).
 4. **Mobil:** die drei Schalter stehen im Menü (einfache Kontrollkästchen), kein Zusatzaufwand.
 5. **Grenzen, ehrlich:** Messstellen-Halter und Sonden gehören zu keinem der drei Kreisläufe (sie haben ihre eigene Ebene). Teile ohne Datenbezug (Fundament, Kuppel, Hülle, Pflanzen, Tische) gehören zu keinem Kreislauf und sind bei jedem Schalter blass.
 
@@ -45,7 +45,7 @@ Alle Zahlen kommen aus `python -X utf8 viewer/export_ansicht.py [--variante ring
 - Der Zustand der drei Schalter bleibt nach dem Neuladen erhalten (`localStorage`, Schlüssel `viewer.kreis.*`).
 
 ## Belege
-- Screenshots im Browser-Pane (Desktop, Draufsicht, A+): Wasser allein (Pool, Tanks, Tische, Beete, Rohre blau, Rest blass), Luft allein (grüne Schläuche, vier Belüfter, Gebläse), Strom allein (orange Schaltschrank, Pumpen, Puffer, Gebläse), alle drei zusammen.
+- Screenshots im Browser-Pane (Desktop, Draufsicht, A+): Wasser allein (Pool, Tanks, Tische, Beete, Rohre blau, Rest blass), Luft allein (hellgelbe Schläuche, vier Belüfter, Gebläse), Strom allein (orangerote Schaltschrank, Pumpen, Puffer, Gebläse), alle drei zusammen.
 - Screenshot Ring B2 mit allen drei Schaltern: gleiche Farben, Ring-Pool und Ring-Schaltschrank werden erkannt.
 - Screenshot Mobil (375x812, `?mobil=1`): die drei Schalter stehen im Menü, der Satz zur Hervorhebung ist lesbar, kein Bauteilbaum.
 - Statische Ausgabe: `python -X utf8 scripts/viewer_dist.py` lief durch (906 OBJ-Dateien, 182,8 MB, 1553 Dateien, 165 s). `viewer/dist/index.html` enthält die Schalter, beide `ansicht.json` das Feld `kreislauf`. Im statischen Viewer (Python-Server auf `viewer/dist`) laden 273 Definitionen in 15 s, alle drei Schalter arbeiten.

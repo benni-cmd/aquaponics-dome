@@ -186,8 +186,8 @@
   <label class="opt" title="Markiert alle Halter und Sonden des Messstellenplans im Modell mit rosa Kugeln"><input type="checkbox" id="mess"> Messstellen zeigen</label>
   <div id="kreise" role="group" aria-label="Kreisläufe hervorheben">
     <label class="opt" title="Hebt Wasserleitungen und alle Teile im Wasserweg blau hervor, alles andere wird blass"><input type="checkbox" id="kr_wasser"> <span class="sw" style="background:#2f8cff"></span> Wasserkreislauf</label>
-    <label class="opt" title="Hebt Luftschläuche, Verteiler, Belüfter und das Gebläse grün hervor, alles andere wird blass"><input type="checkbox" id="kr_luft"> <span class="sw" style="background:#3ddc97"></span> Luftkreislauf</label>
-    <label class="opt" title="Hebt Schaltschrank, Kabel und alle Teile am Strom orange hervor, alles andere wird blass"><input type="checkbox" id="kr_strom"> <span class="sw" style="background:#ffb02e"></span> Stromkreislauf</label>
+    <label class="opt" title="Hebt Luftschläuche, Verteiler, Belüfter und das Gebläse hellgelb hervor, alles andere wird blass"><input type="checkbox" id="kr_luft"> <span class="sw" style="background:#ffe873"></span> Luftkreislauf</label>
+    <label class="opt" title="Hebt Schaltschrank, Kabel und alle Teile am Strom orangerot hervor, alles andere wird blass"><input type="checkbox" id="kr_strom"> <span class="sw" style="background:#ff5a2e"></span> Stromkreislauf</label>
     <div id="kreisinfo"></div>
   </div>
   <label class="opt" title="Blendet die Plane (Hülle) aus"><input type="checkbox" id="plane" checked> Plane zeigen</label>
@@ -826,7 +826,7 @@ window.messStand = () => ({ an: messOn, halter: Object.keys(defList).filter(s =>
 // ---- Ebenen Wasser-, Luft- und Stromkreislauf (N-VIEWER-KREISLAEUFE, W87) --------------------------------------------
 // Zuordnung nur aus ansicht.json (`kreislauf`, geschrieben von export_ansicht.py aus leitungsnetz, leitungstrassen und data/parts).
 // Ein Schalter an: alle Koerper werden blass (paleMat), die Teile des Kreislaufs liegen als farbige Kopie darueber (wie bei den Messstellen).
-const KREISE = [['wasser', 'Wasser', 0x2f8cff], ['luft', 'Luft', 0x3ddc97], ['strom', 'Strom', 0xffb02e]];
+const KREISE = [['wasser', 'Wasser', 0x2f8cff], ['luft', 'Luft', 0xffe873], ['strom', 'Strom', 0xff5a2e]];
 const kreisOn = { wasser: lsAn('viewer.kreis.wasser') === '1', luft: lsAn('viewer.kreis.luft') === '1', strom: lsAn('viewer.kreis.strom') === '1' };
 const kreisGroup = new THREE.Group(); kreisGroup.renderOrder = 997; scene.add(kreisGroup);
 const paleMat = new THREE.MeshStandardMaterial({ color: 0x8ea0b4, roughness: 0.9, metalness: 0, transparent: true, opacity: 0.07, depthWrite: false, side: THREE.DoubleSide, clippingPlanes: [clipPlane] });

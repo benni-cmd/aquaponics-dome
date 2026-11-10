@@ -1,0 +1,126 @@
+{
+ "klasse": "regentank_5m3",
+ "teilenummer": "T107",
+ "revision": "A",
+ "beschreibung": "Regenwassertank 5 m3 (Platzhalter, U2, D107, Quelle A8): stehender runder PE-Tank Ø 1700 x 2300 mit Domschacht und Domdeckel, Auslaufstutzen d25 (zum Nachspeise-Ventil) und Ueberlaufstutzen d63; erste Wahl der Nachspeisung, ausserhalb der Kuppel an der Technikseite; Maße Annahme",
+ "quelle_masse": "data/oasis-soll.json (rain: Regenwassertank 5 m3, Salzgehalt < 12 mg/l, freies Chlor 0; Hoehe nicht festgelegt; Zeichnung Rechteck 1625 x 500 schematisch); docs/decisions.md D107",
+ "parameter": {
+  "aussen_d": {
+   "wert": 1700,
+   "einheit": "mm",
+   "herkunft": "[A] Platzhalter: stehender PE-Tank Ø 1700 (die Zeichnung zeigt nur ein Rechteck 1625 x 500, schematisch A16)"
+  },
+  "wand": {
+   "wert": 15,
+   "einheit": "mm",
+   "herkunft": "[A] Wand, Boden und Deckel PE 15 mm"
+  },
+  "h": {
+   "wert": 2300,
+   "einheit": "mm",
+   "herkunft": "[E] 5 m3 = pi x 0,835^2 x 2,27 m = 4,97 m3 (Innen-Ø 1670, Innenhoehe 2270)"
+  },
+  "dom_d": {
+   "wert": 500,
+   "einheit": "mm",
+   "herkunft": "[A] Domschacht Ø 500 aussen, Bohrung Ø 440"
+  },
+  "dom_h": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[A] Domschacht 150 hoch"
+  },
+  "domdeckel_d": {
+   "wert": 520,
+   "einheit": "mm",
+   "herkunft": "[A] Domdeckel Ø 520 x 30"
+  },
+  "auslauf_z": {
+   "wert": 150,
+   "einheit": "mm",
+   "herkunft": "[A] Auslauf d25 (Klebemuffe, Aussen 32,25) 150 mm ueber dem Boden (Bodensatz bleibt im Tank)"
+  },
+  "ueberlauf_z": {
+   "wert": 2150,
+   "einheit": "mm",
+   "herkunft": "[A] Ueberlauf d63 (Aussen 72,15) 150 mm unter dem Rand"
+  },
+  "stutzen_l": {
+   "wert": 100,
+   "einheit": "mm",
+   "herkunft": "[A] Stutzen ragen 100 mm aus der Wand"
+  },
+  "volumen_l": {
+   "wert": 5000,
+   "einheit": "",
+   "herkunft": "[Q] Quelle: Tank-Kapazitaet 5,0 m3 (5000 Liter)"
+  }
+ },
+ "werkstoff": {
+  "name": "PE-HD (Tank, Dom, Deckel), PVC-U (Stutzen)",
+  "dichte_g_cm3": 0.95,
+  "farbe": "#d9d4c0",
+  "herkunft": "[A] Platzhalter; Regenwasser mit Fischkontakt (Nachspeisung): Tankwerkstoff lebensmittelecht, Nachweis offen (D85)"
+ },
+ "anzahl": {
+  "soll": "1 (Regenwassertank)",
+  "quelle": "data/oasis-soll.json rain (anzahl 1)"
+ },
+ "bezugspunkt": "Mitte der Standflaeche in X und Y, Z 0 = Fussboden; Stutzen bei +X, Dom oben mittig",
+ "herkunft_tabelle": [
+  [
+   "5 m3",
+   "Innen Ø 1670 x 2270 = 4,97 m3",
+   "E/Q",
+   "Quelle rain 5,0 m3; Rechnung pi x 0,835^2 x 2,27",
+   "hoch"
+  ],
+  [
+   "Maße Ø 1700 x 2300",
+   "Platzhalter",
+   "A",
+   "Quelle legt Hoehe und Lage nicht fest (rain: stufe_status ohne Hoehenangabe)",
+   "niedrig"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Sammelt Regenwasser (salz- und chlorfrei, erste Wahl der Nachspeisung) und gibt es ueber den Auslaufstutzen d25 an das Nachspeise-Ventil am Fischtank ab; der Ueberlaufstutzen d63 leitet bei Fuellung zum Versickern oder in die Permakultur. Einfacher Platzhalter ausserhalb der Kuppel (Quelle A16, D107, Designprinzip 4 Ausnahme).",
+  "querschnitt": "PE-Tank aussen Ø 1700 x 2300, Wand 15; Innen 1670 x 2270; Domschacht Ø 500 x 150 mit Bohrung Ø 440; Domdeckel Ø 520 x 30; Auslaufstutzen d25 bei Z 150, Ueberlaufstutzen d63 bei Z 2150.",
+  "toleranzen": "Platzhalter: Maße aus Annahme; Stutzen durch die Wand in Passbohrung.",
+  "ports": [
+   [
+    "Auslauf (Muffe d25)",
+    "PVC-U d25, Tiefe 19",
+    "x 850 bis 950, z 150",
+    "waagerecht zum Nachspeise-Ventil (Rohr d25, Eingang A)"
+   ],
+   [
+    "Ueberlauf (Muffe d63)",
+    "PVC-U d63, Tiefe 37,5",
+    "x 850 bis 950, z 2150",
+    "waagerecht, Wasser zum Versickern"
+   ]
+  ],
+  "verbindungen": [
+   "Stutzen mit Dichtung durch die Wand",
+   "Domdeckel lose, gegen Kinder gesichert"
+  ],
+  "montage": [
+   "Tank auf tragfaehigen, ebenen Grund stellen (5 t Last)",
+   "Zulauf vom Kuppeldach (Regenrinne) an den Dom, Auslauf d25 zum Nachspeise-Ventil",
+   "Ueberlauf ableiten"
+  ],
+  "werkzeug": "Wasserwaage, Lochsaege",
+  "pruefung": [
+   "python -X utf8 scripts/workshop/check_regentank_5m3.py"
+  ],
+  "offen": [
+   "Maße, Lage und Typ (stehend/liegend) vom Orchestrator angenommen, weil die Quelle sie nicht festlegt (D107); Fabrikat und Bezug Europa siehe data/beschaffung/",
+   "Fundament und Statik fuer 5 t Wasser: N-STATIK",
+   "Regenwasserfuehrung von der Kuppelhaut (Rinne, Filter) ist nicht modelliert"
+  ],
+  "teileliste": [],
+  "kritiker": "offen (Pruefer P-Pruef)",
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+ }
+}

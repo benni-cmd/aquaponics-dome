@@ -1,0 +1,107 @@
+{
+ "klasse": "permakultur_modul",
+ "teilenummer": "T111",
+ "revision": "A",
+ "beschreibung": "Permakultur-Modul (Platzhalter, U2, D104, D107, Quelle permakultur): Kompostbox aus Holz 1500 x 525 x 600 mit Deckel und Futterzuchtkiste aus PE 800 x 525 x 350 fuer Wuermer; nimmt den Schlamm von Hand auf, kein Rueckweg ins Wasser; ausserhalb der Kuppel; Maße Annahme",
+ "quelle_masse": "data/oasis-soll.json (permakultur: Schlamm-Senke, Zeichnung Rechteck 1500 x 525 mm, Hoehe nicht festgelegt; Beschreibung 'Permakultur um den Dom und Futterzucht (Wuermer, Kompostbox, Soldatenfliegen)'); docs/decisions.md D104, D107",
+ "parameter": {
+  "kompost_l": {
+   "wert": 1500,
+   "einheit": "mm",
+   "herkunft": "[Q] Zeichnung permakultur: Rechteck 1500 mm breit"
+  },
+  "kompost_b": {
+   "wert": 525,
+   "einheit": "mm",
+   "herkunft": "[Q] Zeichnung permakultur: Rechteck 525 mm tief"
+  },
+  "kompost_h": {
+   "wert": 600,
+   "einheit": "mm",
+   "herkunft": "[A] Hoehe Kompostbox (Quelle: Hoehe nicht festgelegt)"
+  },
+  "holz_t": {
+   "wert": 25,
+   "einheit": "mm",
+   "herkunft": "[A] Fichte 25 mm (Wand, Boden, Deckel)"
+  },
+  "kiste_l": {
+   "wert": 800,
+   "einheit": "mm",
+   "herkunft": "[A] Futterzuchtkiste PE 800 x 525 x 350 (Wuermer)"
+  },
+  "kiste_h": {
+   "wert": 350,
+   "einheit": "mm",
+   "herkunft": "[A] Hoehe der Futterzuchtkiste"
+  },
+  "kiste_wand": {
+   "wert": 6,
+   "einheit": "mm",
+   "herkunft": "[A] PE-Kiste Wand und Boden 6 mm"
+  },
+  "abstand": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "[A] Abstand der Kiste neben der Kompostbox"
+  }
+ },
+ "werkstoff": {
+  "name": "Fichtenholz (Kompostbox), PE (Futterzuchtkiste)",
+  "dichte_g_cm3": 0.45,
+  "farbe": "#c8a878",
+  "herkunft": "[A] einfacher Platzhalter; kein Kontakt zu Wasser, Fisch oder Pflanzen des Kreislaufs (D85 greift nicht)"
+ },
+ "anzahl": {
+  "soll": "1 (Permakultur-Modul)",
+  "quelle": "data/oasis-soll.json permakultur (anzahl 1)"
+ },
+ "bezugspunkt": "Mitte der Kompostbox in X und Y, Z 0 = Fussboden; Futterzuchtkiste bei +X neben der Kompostbox",
+ "herkunft_tabelle": [
+  [
+   "Rechteck 1500 x 525",
+   "Kompostbox",
+   "Q",
+   "data/oasis-soll.json permakultur zeichnung_rect",
+   "mittel"
+  ],
+  [
+   "Hoehen und Futterzuchtkiste",
+   "Annahme",
+   "A",
+   "Quelle legt Hoehe nicht fest; D104/D107: einfacher Platzhalter",
+   "niedrig"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Nimmt den Schlamm aus den Sammelbehaeltern von Hand auf (Kompost, Wuermer, Futterzucht); keine Rueckleitung ins Wasser, getrennt vom Lebendfutterbecken (Quelle). Einfacher Platzhalter fuer die Schlamm-Senke ausserhalb der Kuppel; die Permakultur um den Dom ist nicht modelliert.",
+  "querschnitt": "Kompostbox Fichte 25 mm, aussen 1500 x 525 x 600, offen, mit Deckel 25 mm; Futterzuchtkiste PE 800 x 525 x 350, Wand 6 mm.",
+  "toleranzen": "Platzhalter; Kiste steht 50 mm neben der Box.",
+  "ports": [
+   [
+    "Schlammannahme",
+    "offen von oben",
+    "Oberkante Kompostbox Z 600",
+    "Schlamm von Hand einfuellen"
+   ]
+  ],
+  "verbindungen": [
+   "Holz verschraubt (Normteile nicht modelliert)"
+  ],
+  "montage": [
+   "Box auf ebenem Grund stellen",
+   "Schlamm aus dem Sammelbehaelter von Hand einfuellen, mit Laub abdecken"
+  ],
+  "werkzeug": "Schaufel, Karre",
+  "pruefung": [
+   "python -X utf8 scripts/workshop/check_permakultur_modul.py"
+  ],
+  "offen": [
+   "Maße und Aufbau sind Annahme (Quelle nennt nur Rechteck und Stichworte); Permakultur um den Dom, Soldatenfliegen und Wuermer-Besatz nicht modelliert",
+   "Eigener Baustein ausserhalb der zehn Namen des Auftrags: das Soll-Bauteil `permakultur` hat sonst keine Komponente (D112 Zusatz)"
+  ],
+  "teileliste": [],
+  "kritiker": "offen (Pruefer P-Pruef)",
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+ }
+}

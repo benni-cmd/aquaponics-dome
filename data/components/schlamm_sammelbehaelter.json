@@ -1,0 +1,129 @@
+{
+ "klasse": "schlamm_sammelbehaelter",
+ "teilenummer": "T106",
+ "revision": "A",
+ "beschreibung": "Schlamm-Sammelbehaelter 350 l (U2, D104, Quelle A11): oberirdischer runder PE-Behaelter Ø 900 x 600 mit Deckel, Einlaufstutzen d40 (Zulauf vom Vortex per Schwerkraft), Entlueftung und Ablasshahn d40 von Hand; ausserhalb des Wasserkreislaufs, Schlamm geht von Hand zum Permakultur-Modul",
+ "quelle_masse": "data/oasis-soll.json (sludge_1: Sammelbehaelter 350 l, Ablasshahn von Hand, Stufe 1 nicht festgelegt, Zeichnung Radius 450 mm); docs/research/R61-oasis-wasserkreislauf.md Abschnitt 4 (O5); docs/decisions.md D104",
+ "parameter": {
+  "aussen_d": {
+   "wert": 900,
+   "einheit": "mm",
+   "herkunft": "[Q] Zeichnung sludge_1: Radius 450 mm (Fussabdruck der Lage-Probe U1); Behaelter Ø 900 aussen"
+  },
+  "wand": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "[A] Wand und Boden PE 10 mm"
+  },
+  "innen_h": {
+   "wert": 575,
+   "einheit": "mm",
+   "herkunft": "[E] 350 l = pi x 440^2 x 575 mm (Innen-Ø 880): 349,7 l; Hoehe so gewaehlt, dass der Zulauf unter dem Schlammstutzen des Vortex liegt"
+  },
+  "deckel_t": {
+   "wert": 15,
+   "einheit": "mm",
+   "herkunft": "[A] Deckel PE 15 mm, aufgesetzt"
+  },
+  "einlauf_l": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[A] Einlaufstutzen d40 (Klebemuffe, Aussen 46,25 laut leitung.py) 60 hoch auf dem Deckel"
+  },
+  "ent_d": {
+   "wert": 26,
+   "einheit": "mm",
+   "herkunft": "[A] Entlueftungsstutzen Ø 26 x 30 auf dem Deckel (Bohrung 10)"
+  },
+  "auslauf_z": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] Achse des Ablaufs 40 mm ueber der Behaelter-Unterkante (Restmenge unter dem Ablauf rund 18 l)"
+  },
+  "hahn_d": {
+   "wert": 52,
+   "einheit": "mm",
+   "herkunft": "[A] Kugelhahn d40 PVC-U, Gehaeuse Ø 52 x 70 (Platzhalter, Handelsmaß offen)"
+  },
+  "vortex_schlammstutzen_z": {
+   "wert": 697,
+   "einheit": "mm",
+   "herkunft": "[E] Vortex-Schlammstutzen: Podest 577 + Kugelhahn des tank_klein bei z 120 (data/parts/tank_klein.json 'kugelhahn z 120 bis 160'); der Behaelter muss tiefer stehen, damit der Schlamm abwaerts laeuft"
+  }
+ },
+ "werkstoff": {
+  "name": "PE-HD (Behaelter, Deckel), PVC-U (Stutzen, Hahn)",
+  "dichte_g_cm3": 0.95,
+  "farbe": "#d9d4c0",
+  "herkunft": "[A] PE-Fass oder Rundbehaelter; Wasserkontakt Schlamm, nicht Fisch (D85: Nachweis offen)"
+ },
+ "anzahl": {
+  "soll": "2 (je Linie einer)",
+  "quelle": "data/oasis-soll.json sludge_1, sludge_2"
+ },
+ "bezugspunkt": "Mitte der Standflaeche in X und Y, Z 0 = Fussboden (Behaelter-Unterkante); Ablasshahn bei +X, Einlauf in der Deckelmitte",
+ "herkunft_tabelle": [
+  [
+   "Inhalt 350 l",
+   "Innen Ø 880 x 575",
+   "E",
+   "Quelle: 350 l (sludge_1); Rechnung pi x 0,44^2 x 0,575 m",
+   "hoch"
+  ],
+  [
+   "Ø 900 aussen",
+   "Zeichnung Radius 450",
+   "Q",
+   "data/oasis-soll.json sludge_1 radius_mm 450",
+   "mittel"
+  ],
+  [
+   "oberirdisch, Ablasshahn von Hand",
+   "Hahn d40 bei Z 40",
+   "Q/A",
+   "Quelle A11, D104; Hahnmaße Platzhalter",
+   "mittel"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Nimmt den Feststoffschlamm des Vortex (und eventuell des Biofilters) auf: Zulauf per Schwerkraft ueber den Einlaufstutzen, Ablass nur von Hand ueber den Kugelhahn d40; steht oberirdisch ausserhalb des Wasserkreislaufs, der Schlamm geht von Hand an das Permakultur-Modul, kein Rueckweg (Quelle A11, D104, Designprinzip 8). Steht tiefer als der Schlammstutzen des Vortex.",
+  "querschnitt": "PE-Behaelter aussen Ø 900, Wand und Boden 10, innen Ø 880 x 575 (350 l); Deckel 15; Einlaufstutzen d40 (60 hoch, Muffe d40) mittig; Entlueftung Ø 26 x 30; Ablaufrohr d40 durch die Wand bei Z 40 mit Kugelhahn Ø 52 x 70 und Hebel.",
+  "toleranzen": "Rohr und Hahn stossen an; Rohr ragt 10 mm in den Behaelter. Restmenge unter dem Ablauf rund 18 l.",
+  "ports": [
+   [
+    "Einlauf (Muffe d40)",
+    "PVC-U d40, Tiefe 26",
+    "x 0, y 0, Z 600 bis 660",
+    "Oeffnung oben; Rohr d40 vom Schlammstutzen des Vortex"
+   ],
+   [
+    "Ablass (Kugelhahn d40)",
+    "PVC-U d40",
+    "x 454 bis 524, z 40",
+    "Hahn von Hand, Ablass in Eimer oder Karre"
+   ]
+  ],
+  "verbindungen": [
+   "Einlaufstutzen mit dem Deckel verklebt oder verschweisst",
+   "Ablaufrohr durch die Wand mit Dichtung, Hahn auf das Rohr geklebt",
+   "Deckel lose aufgesetzt"
+  ],
+  "montage": [
+   "Behaelter auf ebenen Fussboden stellen, Standort tiefer als der Schlammstutzen des Vortex",
+   "Rohr d40 vom Vortex zum Einlaufstutzen mit Gefaelle fuehren",
+   "Hahn schliessen, Deckel aufsetzen, Entlueftung offen lassen"
+  ],
+  "werkzeug": "Lochsaege 40 mm, PVC-Kleber, Wasserwaage",
+  "pruefung": [
+   "python -X utf8 scripts/workshop/check_schlamm_sammelbehaelter.py"
+  ],
+  "offen": [
+   "Fabrikat und Wanddicke des PE-Behaelters offen (Ø 900 x 600 ist Platzhalter nach der Zeichnung); Bezug Europa siehe data/beschaffung/",
+   "Zulauf-Gefaelle ab Vortex-Schlammstutzen: Rohrlaenge und Gefaelle gehoeren zu U6",
+   "Geruch und Schlammverfestigung (Entlueftung, Reinigung) nicht gerechnet"
+  ],
+  "teileliste": [],
+  "kritiker": "offen (Pruefer P-Pruef)",
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+ }
+}

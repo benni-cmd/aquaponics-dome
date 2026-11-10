@@ -1,0 +1,137 @@
+{
+ "klasse": "tauchpumpe_modul",
+ "teilenummer": "T110",
+ "revision": "A",
+ "beschreibung": "Tauchpumpen-Modul (U2, D92, D102, A14): vereinfachter Koerper der Oase AquaMax Eco Premium 8000 (Kandidat nach R59, Typ nicht bestaetigt) mit Ansaugkorb, Druckstutzen, Rueckschlagventil d50 in der Druckleitung und Netzkabel; steht auf dem Boden von Fischtank (Pumpstelle 1, Hub 1,15 m) oder Sumpf (Pumpstelle 2, Hub 1,00 m); Pumpenzahl und Leistung offen (A3)",
+ "quelle_masse": "data/oasis-soll.json (filterpumpe_1: Rueckschlagventil in der Druckleitung A14; hauptpumpe_1; Zeichnung Pumpe Radius 137,5 mm); docs/research/R59-tauchpumpe.md (Eco Premium 8000: 8000 l/h, Hmax 4,1 m [A], 65 W, Eintauchtiefe 4 m); docs/decisions.md D92, D102, D106",
+ "parameter": {
+  "korb_d": {
+   "wert": 275,
+   "einheit": "mm",
+   "herkunft": "[Q] Zeichnung Pumpe: Radius 137,5 mm = Ø 275 (Lage-Probe U1 nutzt Ø 275 als Fussabdruck)"
+  },
+  "korb_h": {
+   "wert": 50,
+   "einheit": "mm",
+   "herkunft": "[A] Ansaugkorb mit Sieb, Standflaeche Z 0"
+  },
+  "geh_d": {
+   "wert": 230,
+   "einheit": "mm",
+   "herkunft": "[A] Pumpengehaeuse Ø 230 (Maß nicht aus dem Datenblatt gelesen)"
+  },
+  "geh_h": {
+   "wert": 190,
+   "einheit": "mm",
+   "herkunft": "[A] Pumpengehaeuse 190 hoch ueber dem Korb (Gesamthoehe bis Gehaeuse-Oberkante 240)"
+  },
+  "stutzen_l": {
+   "wert": 70,
+   "einheit": "mm",
+   "herkunft": "[A] Druckstutzen Ø 50 (Schlauchtuelle auf Klebeadapter) 70 hoch, 31 mm davon im Rueckschlagventil"
+  },
+  "rv_d": {
+   "wert": 63,
+   "einheit": "mm",
+   "herkunft": "[A] Rueckschlagventil PVC-U d50 (Klappe oder Kugel), Gehaeuse Ø 63 x 110"
+  },
+  "rv_l": {
+   "wert": 110,
+   "einheit": "mm",
+   "herkunft": "[A] Baulaenge Rueckschlagventil mit Muffe d50 oben und unten"
+  },
+  "kabel_d": {
+   "wert": 9,
+   "einheit": "mm",
+   "herkunft": "[A] Netzkabel Ø 9"
+  },
+  "kabel_l": {
+   "wert": 400,
+   "einheit": "mm",
+   "herkunft": "[A] Kabelstueck im Modell (Ausschnitt)"
+  },
+  "qmax_l_min": {
+   "wert": 133.3,
+   "einheit": "",
+   "herkunft": "[E] 8000 l/h aus R59 (Herstellerangabe Eco Premium 8000)"
+  },
+  "hmax_m": {
+   "wert": 4.1,
+   "einheit": "",
+   "herkunft": "[A] R59: 4,1 m, Zuordnung der Hmax-Spalte im Handbuch unsicher"
+  },
+  "tiefe_max_mm": {
+   "wert": 4000,
+   "einheit": "mm",
+   "herkunft": "[Q] R59: wasserdicht bis 4 m (Handbuch der Baureihe)"
+  }
+ },
+ "werkstoff": {
+  "name": "Kunststoffgehaeuse (Pumpe), PP (Korb, Stutzen), PVC-U (Rueckschlagventil)",
+  "dichte_g_cm3": 1.5,
+  "farbe": "#3a5f9a",
+  "herkunft": "[A] Platzhalterkoerper; Gehaeusewerkstoff und Lebensmittelnachweis der Teichpumpe nicht belegt (R59, D85)"
+ },
+ "anzahl": {
+  "soll": "4 (2 Pumpstelle 1 im Fischtank, 2 Pumpstelle 2 im Sumpf)",
+  "quelle": "docs/decisions.md D102; data/oasis-soll.json filterpumpe_1/_2, hauptpumpe_1/_2"
+ },
+ "bezugspunkt": "Mitte der Standflaeche (Unterkante Ansaugkorb) in X und Y, Z 0 = Boden des Beckens; Druckleitung d50 senkrecht nach oben (Port bei Z 389), Kabel +X",
+ "herkunft_tabelle": [
+  [
+   "Eco Premium 8000 als Kandidat",
+   "Körper Ø 230 x 190, Korb Ø 275",
+   "A",
+   "R59 Empfehlung (bedingt); Kennlinie nur aus Qmax/Hmax gerechnet, Nachweis offen",
+   "niedrig"
+  ],
+  [
+   "Rueckschlagventil in der Druckleitung",
+   "d50 PVC-U",
+   "Q",
+   "A14, filterpumpe_1.t3 und hauptpumpe_1.t2",
+   "mittel"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Hebt Wasser von unten nach oben: Pumpstelle 1 saugt im Fischtank und hebt 1,15 m (Wsp 750 zu Vortex 1900), Pumpstelle 2 saugt im Sumpf und hebt 1,00 m (Wsp -250 zu 750) durch den Venturi-Belueffter in den Fischtank. Das Rueckschlagventil in der Druckleitung haelt die Leitung bei Stillstand gefuellt (A14). Typ bleibt Kandidat (R59/D92). Die Rechnung der Foerderleistung im Check zeigt: Pumpstelle 1 trifft 110 l/min nur nach den optimistischen Kennlinienformen, Pumpstelle 2 mit Venturi nicht; Nachweis offen.",
+  "querschnitt": "Ansaugkorb PP Ø 275 x 50 (Z 0 bis 50); Gehaeuse Ø 230 x 190 (Z 50 bis 240); Druckstutzen Ø 50 x 70 (Z 240 bis 310); Rueckschlagventil Ø 63 x 110 mit Muffe d50 unten (nimmt den Stutzen) und oben (Z 279 bis 389); Kabel Ø 9 x 400 seitlich bei Z 120.",
+  "toleranzen": "Platzhalterkoerper; Pumpeninneres nicht modelliert; Stutzen steckt 31 mm im Ventil (Beruehrung).",
+  "ports": [
+   [
+    "Druckleitung (Muffe d50)",
+    "PVC-U d50, Tiefe 31",
+    "x 0, y 0, z 389",
+    "Oeffnung zeigt +Z; Rohr d50 nach oben (D106)"
+   ],
+   [
+    "Strom",
+    "Netzkabel Ø 9",
+    "x 115 bis 515, z 120",
+    "an die Steuerung (nicht modelliert)"
+   ]
+  ],
+  "verbindungen": [
+   "Druckleitung d50 in die Muffe oben kleben",
+   "Pumpe steht auf Sockel oder Boden, Kabel zum Schaltschrank"
+  ],
+  "montage": [
+   "Pumpe auf den Boden (Fischtank) oder den Pumpensockel (Sumpf) stellen",
+   "Rueckschlagventil in die Druckleitung d50, Rohr nach oben fuehren",
+   "Kabel ueber den Rand zum Schaltschrank; Probelauf mit Pegelkontrolle"
+  ],
+  "werkzeug": "Rohrschneider, PVC-Kleber",
+  "pruefung": [
+   "python -X utf8 scripts/workshop/check_tauchpumpe_modul.py"
+  ],
+  "offen": [
+   "Foerderleistung: Kennlinie nur aus Qmax/Hmax gerechnet (R59), Herstellerkennlinie und zweite Quelle fehlen; Pumpstelle 2 mit Venturi nach der Rechnung nicht belegt",
+   "Lebensmittel- und Fischvertraeglichkeit der Teichpumpe (D85) nicht belegt; Rueckfall Aquaforte EC-10000 (R59)",
+   "Im Sumpf liegt das Gehaeuse bei Soll-Pegel -250 mit Sockel 30 teilweise trocken (Oberkante -230): flachere Pumpe oder Sockel anpassen, offen",
+   "Anzahl und Leistung wie in der Quelle offen (A3)"
+  ],
+  "teileliste": [],
+  "kritiker": "offen (Pruefer P-Pruef)",
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+ }
+}

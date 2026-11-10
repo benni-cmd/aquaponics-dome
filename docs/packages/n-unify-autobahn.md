@@ -12,26 +12,148 @@ es gibt nur noch eine Variante, Teileliste/Bestellliste/Beschreibungen decken je
 `check_latte` zeigt keine neuen Kollisionen durch den Kreislauf, und ein fremder Prüfer bestätigt das gegen eine
 Soll-Ist-Tabelle aller Quell-Bauteile.
 
-**Quelle:** `docs/quellen/oasis-showcase-2026-11-10/` (Commit f11a92d, SHA256 im README). Entscheidung D93, Wunsch W89.
+**Quelle:** `docs/quellen/oasis-showcase-2026-11-10/` (Commit f11a92d, SHA256 im README) und Nachtrag
+`docs/quellen/oasis-showcase-2026-11-10-nachtrag/` (`flow-diagram.html`: Höhenschnitt, Annahmen A1 bis A32, JSON-Daten). Entscheidung D93, Wunsch W89.
+**Daten und Bericht:** `data/oasis-soll.json` (erzeugt von `scripts/oasis_soll.py`, 45/45 Prüfungen) · `docs/research/R61-oasis-wasserkreislauf.md` · Annahmen D94 bis D107 in `docs/decisions.md` · Bauplan `docs/jobs/N-UNIFY-AUTOBAHN.md`.
 **Arbeitsweise:** Agent-SDK-Runner auf API-Guthaben (`tools/agent-sdk-runner` der Werkbank), Sonnet 5.5, einfache
 Aufgaben Haiku 5.5, kein Opus. Phasen wie bisher: Planer → Bau (Werkstatt, Montage, Daten, Viewer) → fremder Prüfer.
 Ein Lauf zur Zeit (das Gesamtmodell baut immer nur einer). Der Orchestrator legt die Läufe in die Warteschlange,
 liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 
 ## Plan
-| Phase | Lauf | Inhalt | Budget | Stand |
+| Phase | Lauf (Auftragsdatei in `docs/jobs/api/`) | Inhalt | Budget (Obergrenze) | Stand |
 |---|---|---|---|---|
-| P0 | im Planer-Lauf | WIP-Stand Ring B2 sichten und sichern (16 ungesicherte Dateien seit 05.11.) | – | offen |
-| P1 | `docs/jobs/api/unify-1-planer.md` | Quelle auswerten → `data/oasis-soll.json` + R61; Soll-Ist-Abgleich; Bauplan in Runden U1…Un; Abweichungen zu Altbestand | 12 USD | offen |
-| P2…n | je Runde ein Lauf (vom Planer festgelegt) | Werkstatt/Montage/Daten/Viewer je Runde, `build.sh`, `check_latte` in Kopie | je Runde laut Planer | offen |
-| P-Prüf | eigener Lauf, nicht der Bauer | Soll-Ist-Tabelle aller Quell-Bauteile, Kollisionen, Listen | 8 USD | offen |
+| P0 | im Planer-Lauf | WIP-Stand Ring B2 gesichert (16 Dateien seit 05.11.) | – | **erledigt** (35e3948) |
+| P1 | `unify-1-planer.md` | Quelle → `data/oasis-soll.json` + R61; Soll-Ist; Bauplan; Abweichungen | 12 USD | **erledigt** (e0dca88, 0aa5bb9, 99ce5b0 und Schluss-Commit) |
+| U1 | `unify-u1-daten.md` | Lage-Probe: Soll-Lage gegen gebaute Teile, Bauplatz je Bauteil (`data/oasis-lage.json`), nichts gebaut | 8 USD | offen |
+| U2 | `unify-u2-werkstatt.md` | neue Bauteile: Sumpftank mit Pufferzonen, Podeste, Venturi, Schwimmerschalter, Schlamm-Sammelbehälter, Regentank, Nachspeise-Ventil, Notluft, Beet-Siphon-Details | 15 USD | offen |
+| U3 | `unify-u3-werkstatt.md` | Becken und Tische: Fischtank (Rand 1200, Boden −1000), Anzucht-/Lebendfutterbecken, Überläufe, Tisch- und Beethöhen als Parameter | 15 USD | offen |
+| U4 | `unify-u4-montage.md` | Gesamtmodell: Becken, Sumpftanks, Gruben, Tische und Beete auf Soll-Höhe | 20 USD | offen |
+| U5 | `unify-u5-montage.md` | Gesamtmodell: Technik (Vortex, Biofilter auf Podest, Pumpstellen, Venturi, Schwimmer, Luft, Schlamm), Entfernen der Ist-Teile ohne Soll | 20 USD | offen |
+| U6 | `unify-u6-montage.md` | Gesamtmodell: Wasserautobahn auf 1550 mm, Einspeisung, Rückläufe, Beckenkette, Nachspeisung, Notüberlauf, Luft-/Schlammleitungen | 20 USD | offen |
+| U7 | `unify-u7-montage.md` | Variantenumschaltung abbauen (`variante.py`, `gen_dome.py`, `build.sh`, Viewer, `viewer_dist.py`): nur noch eine Variante | 12 USD | offen |
+| U8 | `unify-u8-daten.md` | Teileliste, Bestellliste (Europa, Link, lebensmittelecht), Bauteilbeschreibungen, Katalog | 12 USD | offen |
+| U9 | `unify-u9-montage.md` | `check_latte` in Kopie, Kollisionen beheben (Verschiebung höchstens 750 mm), Gangkarte | 18 USD | offen |
+| U10 | `unify-u10-viewer.md` | Viewer-Export, Kreislauf-Schalter mit Soll-Wegen, Browser-Screenshot, `viewer_dist.py` | 10 USD | offen |
+| P-Prüf | eigener Lauf, nicht der Bauer (Vorlage `docs/jobs/vorlagen/pruefung.md`) | Soll-Ist-Tabelle aller Quell-Bauteile, Kollisionen, Listen | 8 USD | offen |
+
+Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Obergrenzen je Lauf, keine Erwartung; gemessen wird in `tools/agent-sdk-runner/usage.jsonl`. Anhaltspunkt: dieser Planer-Lauf hat bis zum Schreiben des Plans etwa 4,5 USD verbraucht (Budgetzähler des Runners).
 
 ## Stand
 - 10.11.2026: Quelle gesichert (f11a92d), D93 und W89 eingetragen, Planer-Auftrag geschrieben.
+- 10.11.2026, Planer-Lauf (Sonnet 5.5, Agent-SDK):
+  1. P0: 14 von 16 ungesicherten Dateien als WIP gesichert (`35e3948`: 6 `*-ring_b2.sc`, `scripts/dome-script-ring_b2.json`, 5 neu gespeicherte Komponenten, `viewer/extras.json`, `docs/session-notes/orchestrator.md`). Gemessen: alle mit Zeitstempel 05.11. 17:50 bis 20:40, aus dem Ring-B2-Bau (Paket n-autobahn-v2, Commit 4965331). Nicht committet, aus gutem Grund: `viewer/detail/` (laut `viewer/export_detail.py` Zeile 5 „wird nie committet“, 670 MB OBJ ignoriert, 306 erzeugte JSON) und `viewer/varianten/` (erzeugter Export wie die ignorierte `viewer/instances.json`). Beides bleibt als ungesichert stehen, nichts gelöscht.
+  2. Fehlende Quelle gefunden und gesichert: `flow-diagram.html` (555 031 Byte, SHA256 `68e358…1799`, öffentlich abrufbar) = Höhenschnitt, Annahmen A1 bis A32, JSON mit 43 Bauteilen und 90 Wegen. Commit `e0dca88`.
+  3. P1a `data/oasis-soll.json` (`0aa5bb9`, `99ce5b0`): 43 Bauteile (40 im Umfang), 90 Wege (77 im Umfang: 53 Wasser, 9 Luft, 6 Schlamm, 9 Strom für Pumpen/Belüftung/Schwimmer), 97 Armaturen-Zeilen (406 gezählte Stück); 45 von 45 Selbstprüfungen (`python -I -X utf8 scripts/oasis_soll.py`).
+  4. P1b R61, 14 Annahmen D94 bis D107 (`99ce5b0`). P1c Soll-Ist und P1d Abweichungen siehe unten, P1e Bauplan `docs/jobs/N-UNIFY-AUTOBAHN.md` mit 10 Lauf-Aufträgen.
+  5. Wichtigste Befunde: (a) Fußboden der Quelle = Modell-Z 400, nicht 0 (D94); (b) Ring B2 im Modell ist exakt die Quell-Zeichnung um 18° gedreht (D95); (c) die Quelle zeigt Höhenschnitt und Annahmen nur in `flow-diagram.html`.
+
+## Soll-Ist (P1c)
+Ist-Messung: `python -I -X utf8 scripts/oasis_istmessung.py` (Export `viewer/varianten/ring_b2/instances.json`, Stand 05.11.2026 21:18, 5570 Instanzen; Höhen relativ zum Fußboden Z 400). Soll: `data/oasis-soll.json` (gedreht, Modellkoordinaten). Urteil: **übernehmen** (passt wie gebaut) · **verschieben** (gleiches Bauteil, andere Höhe oder Lage) · **umbauen** (Maß oder Funktion ändert sich) · **neu** · **entfernen**.
+Ergebnis in Zahlen: von 40 Soll-Bauteilen im Umfang **2 übernehmen · 8 verschieben · 17 umbauen · 13 neu**; von 77 Soll-Wegen **0 passen · 20 verschieben · 32 umbauen · 25 neu**. Die Zählung steht unter den Tabellen.
+
+### A. Bauteile (40 im Umfang)
+| Soll-ID (Anzahl) | Soll: Wasserspiegel · Lage (Modell) | Ist: Komponente · Lage · Höhe | Urteil |
+|---|---|---|---|
+| `fish` (1) Fischtank | Wsp 750, Rand 1200, Boden −1000; Mitte | `pool_zentral(-ring_b2).sc`: Ø 3890, Wsp +515, Rand +650, Innenboden −1705, Mitte (`layout.json`, `params.json` pool_rim, `loop-state.md`) | umbauen (+235 / +550 / +705; 20,8 statt 26,4 m³; D96) |
+| `nursery` (1) | Wsp 800, Rand 1000, Ø 2000; r 3550 Az −72, auf dem Boden | `zweitbecken(-ring_b2).sc`: Ø 1747, Wsp +515, Tiefe 1000 im Boden, r 4820 Az −54 | umbauen + verschieben (D96) |
+| `feed` (1) | Wsp 850, Rand 1000, Ø 1000; r 5300 Az −72 | `becken_dritt_klein.sc`: Ø 800, Wanne im Boden (Z −405), r 4970 Az −30 | umbauen + verschieben (D96) |
+| `filterpumpe_1/_2` (2) | Pumpe Fischtank→Vortex, +1150; r 2662 Az −44/−100 | `pumpe_gross` ×4 (Hauptkreislauf, Saugseite aus Pool über Feinfilter, Z 0), Tauchpumpe nur als Kandidat R59/D92, nicht gebaut | neu (D102) |
+| `vortex_1/_2` (2) | Wsp 1900; r 4475 Az −34/−110 | `tank_klein` ×2 (Absetzer): r 4047 Az −77 und r 3287 Az −30, Standfläche Z 0, Oberkante 1323 | umbauen (Podest ≥ 577 mm, Zulauf von Pumpe; D100) |
+| `bio_1/_2` (2) | Wsp 1800; r 5301 Az −23/−121 | `tank_gross`, `tank_gross_t3`: r 3385 Az −5 und r 3365 Az −98, Oberkante 1756, Überlauf gebaut 1570 | umbauen (Podest 230 mm; Lage um 1,9 m radial, Probe U1; D99, D100) |
+| `sludge_1/_2` (2) | Sammelbehälter 350 l oberirdisch; r 5433 Az −42/−102 | `schlammfass` ×2 im Boden (Z −1233), r 4188 Az −20 / r 3349 Az −67 | umbauen (aus dem Boden; D104) |
+| `permakultur` (1) | Platzhalter außen; r 6612 Az −72 | nicht vorhanden | neu (D104, D107) |
+| `sump_1/_2` (2) | im Boden, Boden −500, Rand 0, Wsp −250, Hochstand −110, 1125 × 2975, 4 Pufferzonen; r 4329 Az −51/−93 | nicht vorhanden (`beet_sumpf` nur als Bauteil, nie gesetzt) | neu (D105) |
+| `hauptpumpe_1/_2` (2) | Pumpe Sumpf→Venturi→Fischtank, +1000; r 3946 Az −50/−94 | nicht vorhanden (Rücklauf heute frei in den Pool) | neu (D102) |
+| `venturi_1/_2` (2) | im Druckrohr vor dem Fischtank; r 3132 Az −43/−101 | nicht vorhanden (R60: Gebläse bleibt) | neu (D103) |
+| `schwimmer_1/_2` (2) | Hochstand −110 im Sumpf; r 5588 Az −54/−90 | `sonde_level_float` ×3 (Messstellen am Pool, Z +365/+665, nicht im Sumpf) | neu (D105) |
+| `nachspeise` (1) | Schwimmerventil am Fischtank, Regen vor Frisch; r 3068 | `schwimmerventil_pool`: r 2070 Az −10, Z +710, Frischwasser über `aktivkohle_station` (K39/K40) | umbauen (zweiter Eingang; D107) |
+| `rain` (1) | Tank 5 m³ außen; r 6621 | nicht vorhanden | neu (D107) |
+| `tap` (1) | Frischwasseranschluss; r 6564 | `aktivkohle_station` r 7906 Az −92 (K39) | übernehmen |
+| `ring_1/_2` (2) | Rohrachse 1550, Ecken Az 18 + 36 k, Eckradius 3550 (gezeichnet) | `ring_ecke_d75` ×10: Eckradius 3394, Ecken Az 18 + 36 k, Rohrachse +2145; Entlüfter ×2 +2145 | umbauen (−595 mm; Radius bleibt, D98) |
+| `kupplungshahn` (2) | 2 Kugelhähne d63, im Betrieb offen, Az 108 / −72, Achse 1550 | `lt_kugelhahn_d63` ×2 bei Az −73 / 107, Z +2145, laut V2 „geschlossen“ | umbauen (−595 mm, Hahnstellung/Text; D98) |
+| `ringende_1/_2` (2) | Hahn d63 → Sumpf; Az 90 / 126 | `lt_kugelhahn_d63` ×4 bei +1823 (Ring-Ende und Entleerung), Ziel Pool-Rücklauf | umbauen (Ziel Sumpf; D98) |
+| `abf_nft_1/_2` (2×12) | 12 Abzweige d32 je Halbring, 38 l/min | `ring_abzweig_d32` ×24, Z +2145 (r 3379 bis 3454) | verschieben (−595 mm) |
+| `abf_fd_1/_2` (2×7) | 7 Abzweige d40 je Halbring, 54,5 l/min | `ring_abzweig_d40` ×14, Z +2145 | verschieben (−595 mm) |
+| `nft_aussen` (8) | Wsp 1050 | `nft_tisch_aussen` ×8 (r 5074), Rinnenunterkante +1000 (D60), Film etwa +1020 [E] | übernehmen (Höhe in U4 messen, Abweichung etwa +30) |
+| `nft_mitte` (6) | Wsp 900 | `nft_tisch_mitte` ×6 (r 3377), Rinnenunterkante +1000 | verschieben (≈ −120 mm; hebt D60 auf, D97) |
+| `nft_innen` (10) | Wsp 1250 auf dem Poolrand (Rand 1200) | `nft_tisch_innen` ×10 (r 1864), Rinnenunterkante +1000, Kragarm über dem Pool | verschieben (≈ +230 mm, D97) |
+| `fd_aussen` (8) | Flutstand 250, Beet-Boden 70, Rand 460 | `ibc_beet_aussen_800` ×8 (r 5074), Boden −162, Oberkante +475, Siphon mit Schutzkorb (W40) | verschieben (Beet +162 auf den Flur, Flutstand über Standrohr; D97) |
+| `fd_mitte` (6) | Flutstand 250, Boden 70, Rand 420 | `ibc_beet_innen_933` ×6 (r 3377), Boden −209…−170, Oberkante +475 | verschieben (Beet +170…209 auf den Flur; D97) |
+| `luftpumpe_1/_2` (2) | je 4 Arme (Biofilter, Sumpf, Becken, Fischtank); r 7216 (Zeichnung) | `geblaese_luft` ×2 (r 6857…7235 Az −110), `luftverteiler_6` (r 6982), `luftverteiler_4` (r 2036), `luft_scheibenbelueftung` ×4 im Pool (Z −1605) | umbauen (Arme neu verteilen, in die Kuppel; D103, D107) |
+| `luftpumpe` Notluft (1) | Luftpumpe + Luftstein im Fischtank | nicht vorhanden | neu (D103) |
+
+Zählung (`grep` auf die Urteilsspalte): übernehmen 2 (`tap`, `nft_aussen`) · verschieben 8 (`abf_nft` ×2, `abf_fd` ×2, `nft_mitte`, `nft_innen`, `fd_aussen`, `fd_mitte`) · umbauen 17 (`fish`, `nursery`, `feed`, `vortex` ×2, `bio` ×2, `sludge` ×2, `nachspeise`, `ring` ×2, `kupplungshahn`, `ringende` ×2, `luftpumpe_1/_2`) · neu 13 (`filterpumpe` ×2, `permakultur`, `sump` ×2, `hauptpumpe` ×2, `venturi` ×2, `schwimmer` ×2, `rain`, `luftpumpe`) = 40.
+
+### B. Wege (77 im Umfang)
+| Weg-Gruppe der Quelle (Anzahl) | Ist (Netz `data/leitungsnetz.json`, Ring B2) | Urteil |
+|---|---|---|
+| Nachspeisung e17, e18, e19 (3) | K39/K40 Frischwasser → Aktivkohle → Pool; Schwimmerventil am Pool; kein Regenwasser | umbauen |
+| Pumpstelle 1 e20, e21, e22, e84 (4) | K01/K03/K17/K19/K56/K57: Pool → Feinfilter und Pumpen (Pool-Seitenablauf d75) | neu |
+| Vortex → Biofilter e23, e24 (2) | K05/K06/K08/K09: Absetzer → Feinfilter → Pumpe → Biofilter | neu |
+| Biofilter → Ring e25, e26 (2) | K10/K26 Biofilter → Pegelschacht → 2 Booster → Steigleitung d63 → Ring | umbauen (direkter Überlauf d63) |
+| Ring, Kupplung e27 bis e32 (6) | Ring d75, 10 Ecken, 2 Kupplungsstrecken (geschlossen), Ring-Ende-Hähne (Z +2145) | verschieben |
+| Ring-Ende → Sumpf e33, e34 (2) | Ring-Ende → Rücklauf Pool | neu |
+| Abfahrten e35 bis e38 (4) | 24 + 14 `ring_abzweig_*` auf Z +2145 | verschieben |
+| Fallleitungen e39 bis e48 (10 Wege, 38 Stück) | 38 Schlauch-Fallleitungen, 18 Ausleger (`ring_b2_schlauchwege`) | verschieben (Länge, Höhe −595) |
+| Rückläufe e49 bis e57 (9) | Schlauch-Rücklauf zum Pool (FIX-c „nicht baubar“, offen) | umbauen (in die Sumpftanks, NFT Innen in den Fischtank) |
+| Pumpstelle 2 e58, e59, e60, e61, e71, e72 (6) | nicht vorhanden | neu |
+| Beckenkette e62, e63, e70 (3) | K33/K34 Rücklauf 1 → Zweitbecken → Pool | umbauen |
+| Notüberlauf e81, e82 (2) | nicht vorhanden | neu |
+| Luft e77, e86 bis e89, e91 bis e94 (9) | K44 bis K51 Gebläse → Pool, Biofilter, Absetzer, Zweit-, Drittbecken | umbauen |
+| Schlamm e64 bis e69 (6) | K07/K23 Absetzer → Schlammfass (im Boden); Schlamm von Hand zum Kompost | umbauen |
+| Strom/Meldung e13, e14, e15, e75, e76, e80, e83, e85, e90 (9) | Kabel `kabel` im Netz für Pumpen und Gebläse; keine Schwimmer-Meldung | neu |
+
+Zählung: verschieben 6 + 4 + 10 = 20 · umbauen 3 + 2 + 9 + 3 + 9 + 6 = 32 · neu 4 + 2 + 2 + 6 + 2 + 9 = 25 · passt 0 = 77.
+
+### C. Ist ohne Gegenstück in der Quelle (entfernen oder begründet behalten, D101)
+| Ist-Bauteil (Anzahl) | Befund | Urteil |
+|---|---|---|
+| `feinfilter` ×2 (Gruben Z −496) | Quelle kennt keinen Feinfilter; D51/D55/D72 überholt | entfernen (Designprinzip 3) |
+| `pumpe_klein` ×4 | Absetzer-Teilstrom entfällt (Vortex hängt in der Linie) | entfernen |
+| `pumpe_gross` ×8 (4 Hauptkreislauf + 4 Booster) | ersetzt durch 4 Pumpen (2 + 2) | entfernen |
+| `pegelschacht` ×2 samt Podest | Quelle: Biofilter höher als Ring, kein Zwischenbehälter | entfernen |
+| `schlammfass` ×2 im Boden | → Sammelbehälter oberirdisch (siehe A) | entfernen (W79) |
+| A+-Leitungen (63 Trassen, 56,3 m), Heber, Verteiler | nicht im Soll; Wege neu nach B | entfernen |
+| Pool-Geländer (Zielbild S, nicht gebaut) | Rand 1200 mm ≥ 1000 mm (D90), Designprinzip 9 erfüllt durch die Wand | entfällt |
+| `aktivkohle_station` | Chlor im Frischwasser tötet Fische und Nitrifikanten; Quelle nennt nur Regenwasser salzfrei und chlorfrei | behalten (Designprinzip 9) |
+| `puffer_klein`, Messzelle, Dosierung, Messstellen/Sonden | Messtechnik, nicht im Kreislauf verschaltet (D65, W76, Designprinzip 10) | behalten (offene Frage an Ben) |
+| `schaltschrank` | Steuerung der Quelle liegt gezeichnet am Rand, D87 innen | behalten (D87) |
+| Ringtragwerk: `ringstuetze_d75_b` ×3, Portal-Joche ×8, Montageschienen ×10 | Quelle: „Ring d75 auf Schellen“ | behalten, Höhe −595 mm |
+| `luft_scheibenbelueftung` ×4 im Pool (Z −1605) | Quelle: Belüftung über Venturi, Notluftstein, Anlage mit Armen | verschieben (Pool-Boden −1000) |
+
+## Abweichungen zum Altbestand (P1d)
+Die Quelle gewinnt (D93). Reihenfolge nach Gewicht; „Folge“ nennt die Runde, in der es umgesetzt wird.
+| Nr | Altbestand (Entscheidung/Wunsch/Blatt) | alt | neu (Quelle) | Folge |
+|---|---|---|---|---|
+| 1 | D88, W85 Zielbild S (Pool) | Pool 665 mm tiefer, Rand ≈ Flur, Geländer, eine Pumpstufe | Fischtank teilversenkt: Boden −1000, Rand 1200, Wsp 750, zwei Pumpstellen, Fischtank bleibt tiefster Punkt | U3, U4 |
+| 2 | N-AUTOBAHN-V2, D92 (Ring, Pegelschacht, Booster) | Ring auf 2145; Biofilter-Überlauf 1570 → Pegelschacht → 2 Booster → Steigleitung; Kupplung geschlossen | Ring 1550; Biofilter 1800 und Vortex 1900 höher als der Ring, Überlauf d63 direkt; Kupplung offen; Pumpe nur Fischtank → Vortex (+1150) | U5, U6 |
+| 3 | A+-Rücklauf in den Pool (K16/K32), Beet-Sumpf nur Bauteil, D75 Subtank (V4) | alle Rückläufe frei in den Pool | Rückläufe in zwei Sumpftanks im Boden, Pumpstelle 2 + Venturi hebt 1,00 m in den Fischtank; nur NFT Innen direkt in den Fischtank | U4, U5, U6 |
+| 4 | D38, D51, D55, D71, D72 (Pumpen klein, Feinfilter, Absetzer-Kreis) | Feinfilter ×2, Pumpe klein ×4, Absetzer im Teilstrom | entfallen; Vortex in der Linie, Schlamm per Schwerkraft in den Sammelbehälter | U5 |
+| 5 | W70, D81 E20, W78 (A+ und Ring B2 umschaltbar) | zwei Varianten, Schalter in Skripten, Modell, Viewer | nur noch eine Variante | U7 |
+| 6 | D58, D60, D61 (Tischhöhe) | Rinnenunterkante 1000 für alle drei Ringe | Wsp NFT Außen 1050, Mitte 900, Innen 1250 (auf dem Poolrand) | U3, U4 |
+| 7 | D08, D13, D26 (Pool-Tiefe, „zum Teil eingelassen“) | Tiefe 2200 bis 2340, Wsp +515 | Wassertiefe 1750, Wsp 750, 20,8 m³ (Quelle 22 m³) | U3, U4 |
+| 8 | D36, D42, D46, D48, D50, D63, D66, D70 (Zweit-, Drittbecken) | Zweitbecken Fische r 4820 Az −54; Drittbecken klein Quarantäne r 4970 Az −30, im Boden | Anzuchtbecken Ø 2000 und Lebendfutterbecken Ø 1000 in einer Reihe auf Az −72, auf dem Boden, Überläufe von außen nach innen; Quarantäne-Funktion entfällt | U3, U4 |
+| 9 | W79, D88 (Schlamm) | Schlammfass im Boden | oberirdischer Sammelbehälter, Permakultur-Modul außen | U2, U5 |
+| 10 | D84, W72, W82, D90 (Wasserstation, Hahn je Strang) | Wasserstation je Linie am Biofilter, 7 Hähne je Linie | entfällt; Abzweig-Kugelhahn am Ring + Regelhahn d25 auf Greifhöhe je Abnehmer (38 + 38) | U6 |
+| 11 | D90 (Geländer 1,0 m am Pool) | Geländer auf der Aufkantung | entfällt, Rand 1200 mm | U3 |
+| 12 | N-AUTOBAHN-V2 Abschnitt 2.2, D98 | Ring-Ende leitet in den Pool-Rücklauf | Ring-Ende-Hahn in den Sumpf der eigenen Linie | U6 |
+| 13 | R60, Belüftung: Gebläse ×2 außen | Gebläse außen, Verteiler 6 und 4 Arme | Belüftungsanlage 2 × 4 Arme zu Biofilter, Sumpf, Becken, Fischtank; Venturi ×2; Notluftpumpe ×1; alles in der Kuppel | U5 |
+| 14 | W40-BEET, D77 (Beet-Siphon) | Standrohr d25, Lochblech-Schutzkorb | Siphon mit Abtropfgitter, Vlies, Sieb, Belüftung unten (A21); Flutstand 250 | U2, U4 |
+| 15 | D86, W75 (Leitungsordnung v2, Schläuche), W87, W88 | – | **bestätigt**, nicht überholt (Fallleitungen frei hängend, Rücklauf Schlauch) | – |
+| 16 | D40 (Fischmenge 475 kg in 26,4 bis 27,8 m³) | Auslegung 475 kg, 680 Fische | Quelle rechnet 120 Fische/85 kg in 22 m³ (Showcase-Parameter, nicht Teil des Kreislaufs): D40 bleibt, Biomasse in 20,8 m³ neu rechnen | U8 (Daten), offen |
+
+## Offen (an Ben, nicht blockierend: Annahmen D94 bis D107 gelten bis zum Zwischencheck, D81-Regel)
+1. DEINE ENTSCHEIDUNG: Pool-Rand 1200 mm (Quelle, A26/Q18 „Ja, B umsetzen“) statt „ebenerdig“ (D88, W85)? Empfehlung: Quelle, weil Ben es am 09.11. so bestätigt hat und 5,0 m³ weniger Aushub entstehen.
+2. DEINE ENTSCHEIDUNG: Quarantäne-Funktion des Drittbeckens (D46) entfällt zugunsten des Lebendfutterbeckens? Empfehlung: ja, ein Becken weniger; bei Bedarf Anzuchtbecken.
+3. DEINE ENTSCHEIDUNG: 20,8 statt 22 m³ Fischtank (Radialbudget des Modells, D96) und 475 kg Biomasse (D40) neu rechnen? Empfehlung: ja, in U8.
+4. DEINE ENTSCHEIDUNG: Messtechnik (`puffer_klein`, Dosierung) im Modell behalten (Empfehlung) oder streichen.
+5. ICH (Orchestrator): Läufe U1 bis U10 in die Warteschlange legen, ein Lauf zur Zeit; nächster Lauf: U1 (`docs/jobs/api/unify-u1-daten.md`).
 
 ## Verbrauch (aus `tools/agent-sdk-runner/usage.jsonl`, je Lauf)
 | Lauf | Modell | USD | Token Eingabe/Ausgabe/Cache gelesen/geschrieben |
 |---|---|---|---|
+| P1 Planer (unify-1) | Sonnet 5.5 | etwa 4,5 bis Planende (Budgetzähler des Runners); genaue Zeile trägt der Runner nach | – |
 
 ## DoD
 - [ ] Soll-Ist-Tabelle: alle Wasser-Bauteile und -Wege der Quelle gebaut, Wasserspiegel ±50 mm, Stufen exakt
@@ -39,4 +161,4 @@ liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 - [ ] Teileliste, Bestellliste (Europa, Link, lebensmittelecht D85), Bauteilbeschreibungen für jedes neue Teil
 - [ ] `check_latte`: keine neue Kollision durch den Kreislauf
 - [ ] Fremder Prüfer PASS
-- [ ] Abweichungen Altbestand ↔ Quelle vollständig notiert, Annahmen in `docs/decisions.md`
+- [x] Abweichungen Altbestand ↔ Quelle vollständig notiert, Annahmen in `docs/decisions.md` (D94 bis D107, 10.11.2026)

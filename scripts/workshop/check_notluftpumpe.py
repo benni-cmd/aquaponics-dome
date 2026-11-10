@@ -14,7 +14,7 @@ def main():
     f = next(x for x in soll["bauteile"] if x["id"] == "fish")["hoehen"]
     boden, rand, wsp = f["boden_ueber_fussboden_mm"], f["rand_ueber_fussboden_mm"], f["wsp_ueber_fussboden_mm"]
     c.eq("Pumpe steht auf Z 0 (Fussboden)", c.unten("Pumpe"), 0, 0.1)
-    for i, (n, v) in enumerate((("Laenge", 210), ("Breite", 150), ("Hoehe", 170))):
+    for i, (n, v) in enumerate((("Laenge", 330), ("Breite", 230), ("Hoehe", 320))):
         c.eq(f"Gehaeuse {n} {v}", c.ausdehnung("Pumpe", i), v, 0.1)
     c.eq(f"Luftstein-Unterkante {c.unten('Luftstein'):g} = Boden des Fischtanks {boden} + 20", c.unten("Luftstein"), boden + p["stein_ueber_boden"], 0.1)
     c.wahr(f"Luftstein-Oberkante {c.oben('Luftstein'):g} liegt unter dem Spiegel {wsp} (eingetaucht)", c.oben("Luftstein") < wsp)
@@ -23,9 +23,9 @@ def main():
     c.wahr(f"Schlauch-Hoechstpunkt {c.oben('Luftschlauch_2'):g} liegt ueber dem Rand {rand} + 50 (Siphonbrecher, Designprinzip 9)", c.oben("Luftschlauch_2") >= rand + 50)
     c.eq("Schlauch-Aussen-Ø 12", c.ausdehnung("Luftschlauch_1", 1), 12, 0.1)
     c.wahr("Schlauch endet auf dem Luftstein (Unterkante Schlauch = Oberkante Stein)", abs(c.unten("Luftschlauch_4") - c.oben("Luftstein")) < 0.2)
-    c.eq("Tuelle sitzt an der Pumpenseite (x = Gehaeuse-Halblaenge 105)", c.B["Tuelle"]["bbox"]["min"][0], 105, 0.1)
+    c.eq("Tuelle sitzt an der Pumpenseite (x = Gehaeuse-Halblaenge 165)", c.B["Tuelle"]["bbox"]["min"][0], 165, 0.1)
     c.eq("Rueckschlagventil schliesst an die Tuelle an", c.B["Rueckschlagventil"]["bbox"]["min"][0], c.B["Tuelle"]["bbox"]["max"][0], 0.1)
-    c.port("Luftausgang (Tuelle)", "Tuelle", (105 + p["tuelle_l"], 0, p["tuelle_z"]), (1, 0, 0))
+    c.port("Luftausgang (Tuelle)", "Tuelle", (165 + p["tuelle_l"], 0, p["tuelle_z"]), (1, 0, 0))
     c.interferenz()
     print(f"INFO Luftmenge: Richtwert {p['luft_l_min']} l/min (R55), Quelle offen (A24); Spitzenbedarf 71 g O2/h aus R55, Deckung 24 bis 49 Prozent laut R55 Tabelle")
     return c.fertig()

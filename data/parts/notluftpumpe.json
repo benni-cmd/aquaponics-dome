@@ -1,0 +1,166 @@
+{
+  "komponente": "notluftpumpe",
+  "datei": "designs/components/notluftpumpe.sc",
+  "bauteilgruppe": "Luft",
+  "teilenummer": "T109",
+  "stand": "teiledaten",
+  "titel": "Notluftpumpe",
+  "kurz": "Luftpumpe mit Luftstein im Fischtank, startet bei Ausfall der Wasserpumpen oder des Netzes.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 8,
+  "gruppen": [
+    {
+      "id": "pumpe",
+      "name": "Pumpe",
+      "kurz": "Gehaeuse, Tuelle und Rueckschlagventil.",
+      "teile": [
+        "t_pumpe",
+        "t_tuelle",
+        "t_rv"
+      ]
+    },
+    {
+      "id": "leitung",
+      "name": "Leitung und Stein",
+      "kurz": "Schlauch ueber den Rand und Luftstein.",
+      "teile": [
+        "t_schlauch",
+        "t_stein"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_pumpe",
+      "name": "Luftpumpe (Platzhalter)",
+      "koerper": [
+        "Pumpe"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "ps",
+      "masse_mm": "Masse 25502.4 g, Einzelkoerper 330.0 x 230.0 x 320.0 mm (Modell-Bounding-Box)",
+      "funktion": "Erzeugt die Notluft.",
+      "eigenschaften": [
+        "330 x 230 x 320 (Kandidat Kerry KEA3600, Q)",
+        "60 l/min, 35 W, 230 V"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/notluftpumpe.md, data/components/notluftpumpe.json, data/oasis-soll.json",
+      "bezug": "Hornbach (Marktplatz-Verkaeufer AGABA) (DE) https://www.hornbach.de/p/kerry-electronics-teichbeluefter-3600-l-h-stufenlos-regulierbar-35-watt-sauerstoffpumpe-fuer-teich-membranpumpe-60-l-min-teichbelueftung-luftpumpe-teich-beluefterpumpe-fuer-gartenteiche-teichbelueftungspumpe/12771855/ [Q]; Membran-Luftpumpe mit 60 l/min: Kerry Electronics KEA3600 (Art. 12771855) bei Hornbach DE [Q]: 120,90 EUR inkl. MwSt, 3600 l/h bis 60 l/min, 35 W, stufenlos reg",
+      "artikel_hinweis": "PMP-luftpumpe-notluft",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_tuelle",
+      "name": "Ausgangstuelle",
+      "koerper": [
+        "Tuelle"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 3.1 g, Einzelkoerper 30.0 x 12.0 x 12.0 mm (Modell-Bounding-Box)",
+      "funktion": "Anschluss fuer den Schlauch.",
+      "eigenschaften": [
+        "Ø 12 x 30"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/notluftpumpe.md, data/components/notluftpumpe.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_rv",
+      "name": "Rueckschlagventil Luft",
+      "koerper": [
+        "Rueckschlagventil"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 16.0 g, Einzelkoerper 45.0 x 18.0 x 18.0 mm (Modell-Bounding-Box)",
+      "funktion": "Verhindert Rueckfluss in die Pumpe.",
+      "eigenschaften": [
+        "Ø 18 x 45"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/notluftpumpe.md, data/components/notluftpumpe.json, data/oasis-soll.json",
+      "bezug": "Kaufland (DE) https://www.kaufland.de/product/23980601/ [Q-Treffer]; Rueckschlagventil Luft, Schlauch 9/12 mm: kein Angebot mit bestaetigter Schlauchgroesse 9/12 gefunden. Der OBI-Link zu Tetratec CV 4 (obi.de/p/6772081) lieferte",
+      "artikel_hinweis": "ARM-rueckschlagventil-luft",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_schlauch",
+      "name": "Luftschlauch (Ausschnitt)",
+      "koerper": [
+        "Luftschlauch_1",
+        "Luftschlauch_2",
+        "Luftschlauch_3",
+        "Luftschlauch_4"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_p_schlauch",
+      "masse_mm": "Masse 548.0 g, Einzelkoerper 134.0 x 12.0 x 12.0 mm (Modell-Bounding-Box)",
+      "funktion": "Fuehrt die Luft ueber den Rand (Schleife Z 1300) zum Stein.",
+      "eigenschaften": [
+        "Aussen 12, vier Stuecke"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/notluftpumpe.md, data/components/notluftpumpe.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_stein",
+      "name": "Luftstein",
+      "koerper": [
+        "Luftstein"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 119.4 g, Einzelkoerper 40.0 x 40.0 x 100.0 mm (Modell-Bounding-Box)",
+      "funktion": "Verteilt die Luft im Fischtank.",
+      "eigenschaften": [
+        "Ø 40 x 100, 20 mm ueber dem Boden"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/notluftpumpe.md, data/components/notluftpumpe.json, data/oasis-soll.json",
+      "bezug": "toom Baumarkt (DE) https://toom.de/p/ausstroemer-eckig-50-x-25-x-25-mm/2674573 [Q]; Luftstein/Ausstroemer: Hobby 'Ausstroemer eckig 50 x 25 x 25 mm' (Art. 2674573) bei toom.de [Q]: Keramik ('aus Bloecken gesaegt'), Aquaristik; Preis auf der gel",
+      "artikel_hinweis": "ARM-luftstein-notluft",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

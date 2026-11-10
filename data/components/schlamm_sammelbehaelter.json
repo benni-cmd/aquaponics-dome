@@ -120,10 +120,12 @@
   "offen": [
    "Fabrikat und Wanddicke des PE-Behaelters offen (Ø 900 x 600 ist Platzhalter nach der Zeichnung); Bezug Europa siehe data/beschaffung/",
    "Zulauf-Gefaelle ab Vortex-Schlammstutzen: Rohrlaenge und Gefaelle gehoeren zu U6",
-   "Geruch und Schlammverfestigung (Entlueftung, Reinigung) nicht gerechnet"
+   "Geruch und Schlammverfestigung (Entlueftung, Reinigung) nicht gerechnet",
+   "Bezug Europa und Lebensmittel (D76, D85), Stand 10.11.2026 aus data/beschaffung/u2_wasserkreislauf.json: BEH-schlammbehaelter-350: kein Angebot in Europa gefunden; Lebensmittel: offen fuer 350 l rund (kein Hersteller mit Datenblatt gelesen), Rueckfall: Werit/Buerkle/Plasteo oder Graf nach rundem Behaelter 350 l bzw; Rueckfall: Delta-V 400 l PE-HD lebensmittelecht (rechteckig 1200 x 1000 x 580 mm) laut Suchzusammenfassung [Q-Treffer, https://www.delta-v.de//out/medi"
   ],
   "teileliste": [],
   "kritiker": "offen (Pruefer P-Pruef)",
-  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle).",
+  "referenz": "kein OBJ-Bild (Bauteil neu nach der Quelle): docs/quellen/oasis-showcase-2026-11-10/ (Draufsicht, Seitenprofil) und data/oasis-soll.json"
  }
 }

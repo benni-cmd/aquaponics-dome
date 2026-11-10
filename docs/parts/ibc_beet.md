@@ -1,6 +1,6 @@
 # Bauteilblatt T30 ibc_beet (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/ibc_beet.json` und `designs/components/ibc_beet.sc`, nicht von Hand aendern)
 
-**Funktion:** Substratbeet (Fluten und Entleeren per Glockensiphon): Pflanzen (Instanzen; 288 je Aussenbeet, Beet bei Azimut 113 hat 144) in Netztoepfen im Medium (Blaehton/Kies), Wasser fliesst ueber das Tropfrohr zu, der Glockensiphon entleert das Beet in Zyklen bis auf 12 mm Film ueber dem ungelochten Sperrboden (V3, D77: kein stehendes Wasser unter dem Medium); zugleich Biofilterflaeche. Ein stehender Reinigungsschacht d110 erlaubt das Absaugen von Schlamm.
+**Funktion:** [Soll nach Quelle A21 (U2, D115), ersetzt die Lochblech-Schutzkorb-Beschreibung: jedes Beet hat einen Siphon, der durch ein Abtropfgitter am Boden bis ganz nach unten reicht; Vlies und Sieb ueber dem Gitter halten Schlamm und Medium fern; etwas Belueftung unten verhindert Faulstellen; Flutstand 250 mm ueber dem Fussboden. Die Teile stehen in den Parametern a21_* und in der Teileliste; die .sc-Geometrie (Medienschutz, Sperrboden) bleibt bis U3 unveraendert und wird dort auf A21 umgebaut.] Substratbeet (Fluten und Entleeren per Glockensiphon): Pflanzen (Instanzen; 288 je Aussenbeet, Beet bei Azimut 113 hat 144) in Netztoepfen im Medium (Blaehton/Kies), Wasser fliesst ueber das Tropfrohr zu, der Glockensiphon entleert das Beet in Zyklen bis auf 12 mm Film ueber dem ungelochten Sperrboden (V3, D77: kein stehendes Wasser unter dem Medium); zugleich Biofilterflaeche. Ein stehender Reinigungsschacht d110 erlaubt das Absaugen von Schlamm.
 
 **Datei:** `designs/components/ibc_beet.sc` · **Teilenummer:** T30 · **Revision:** A · **Bezugspunkt:** Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienoberflaeche bei hoehe - rim_gap; Ablaufport unter dem Boden (Z < 0); Wannen sind eingelassen (z0 -162 bis -209, Integrator)
 
@@ -10,6 +10,14 @@
 
 | Parameter | Wert | Einheit | Herkunft |
 |---|---|---|---|
+| `a21_flutstand` | 250 | mm | [Q] data/oasis-soll.json fd_aussen/fd_mitte wsp_ueber_fussboden_mm 250 (Flutstand, Quelle A21/A25); U3/U4 setzen ihn, U2 legt nur die Daten fest (D115) |
+| `a21_boden` | 70 | mm | [Q] data/oasis-soll.json fd_aussen/fd_mitte boden_ueber_fussboden_mm 70 (Beetboden innen ueber dem Fussboden) |
+| `a21_standrohr_h` | 180 | mm | [E] Flutstand 250 minus Beetboden 70 = 180 mm Standrohrhoehe ueber dem Beetboden (der Siphon bestimmt den Flutstand) |
+| `a21_standrohr_unten` | 0 | mm | [Q] Quelle fd_aussen.t2: 'der Siphon geht durch das Gitter bis ganz nach unten' = Standrohr endet auf dem Beetboden (Abstand 0) |
+| `a21_gitter_h` | 25 | mm | [A] Abtropfgitter am Boden des Beets: PP-Rost 25 mm hoch, Maschen 20 x 20 (Quelle fd_aussen.t2 nennt kein Maß); Geometrie in U3 |
+| `a21_vlies_t` | 2 | mm | [A] Drainagevlies ueber dem Gitter (Quelle fd_aussen.t3: Vlies und Sieb halten Schlamm fern) |
+| `a21_sieb_mm` | 2 | mm | [A] Sieb ueber dem Vlies: Edelstahl-Gewebe Maschenweite 2 mm (haelt Blaehton und Schlamm vom Siphon fern) |
+| `a21_belueftung_d` | 8 | mm | [A] Belueftung unten im Beet (Quelle fd_aussen.t4: 'etwas Belueftung unten, damit nichts gammelt'): Luftschlauch Ø 8 mit Ausstroemer unter dem Gitter; Luftquelle in der Quelle nicht festgelegt |
 | `wall` | 4 | mm | R03: Wandstaerke 3-4 mm (Scope-Card ibc_beet) |
 | `floor_t` | 5 | mm | [A] Bodenstaerke |
 | `corner_r` | 40 | mm | [A] Innenradius der Wannenecken (IBC-Schnitt, ref-5) |
@@ -109,6 +117,7 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 
 | Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
 |---|---|---|---|---|
+| Siphon mit Abtropfgitter, Vlies, Sieb, Belueftung unten (A21) | Parameter a21_* | Q/A | data/oasis-soll.json fd_aussen.t1 bis t4 (Quelle A21); Maße Annahme; ersetzt den Lochblech-Schutzkorb (W40-BEET, D77), Abweichung Nr. 14 im Paket n-unify-autobahn, D115 | mittel |
 | Aussenmass 2953 x 933/993 x 637 bzw. 1865 x 933 x 649 | mm | OBJ | layout.json ibc_beds (Laenge, Breite, Hoehe) | hoch |
 | Unterkante Z -162 (aussen) / -173..-209 (innen) | mm | OBJ | layout.json ibc_beds z0 (Integrator setzt; im Bauteil Ursprung = Wannenunterseite) | hoch |
 | Wandstaerke 4 mm, Boden 5 mm | 4 / 5 mm | R03 + A | R03 nennt 3-4 mm nur als Folgerung fuer das Modell (Scope-Card), keine eigene Quelle; Boden Annahme | mittel |
@@ -129,7 +138,7 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 | Aussenbeet 800 x 2640 x 637 (aussen_800) | 800 / 2640 / 637 mm | Ben + E | D29: einseitig erreichbar <= 800; Laenge 2640 = Obergrenze aus der Montage-Rechnung (D25/D28 outer_bed_len), Hoehe wie OBJ; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771) | mittel |
 | Sperrboden 8 mm ungelocht (V3) | 8 mm, 0 Loecher | Ben D77 + R51 | docs/jobs/W40-BEET.md (Variante V3, D77 04.11.2026); R51 Befund 5a (stehendes Wasser unter dem Siebboden) | mittel |
 | Glocke d75 x 295 mit 4 Kerben 10 x 12 am Fuss, Luftloch 10 | d75 x 295; 4 x 10 x 12 | R03 + W40 | R03: d75, Luftloch 10; Kerben statt Schlitzen 10 x 40 (W40-BEET V3, Kerbenflaeche 480 mm2 >= Standrohr 380 mm2) | mittel |
-| Medienschutz Lochblech V2A d110 x 1,5 x 320, lose Kappe | d110 x 320 | R51 + Ben D77 | R51 T30e-4 (Rundloch d5, Teilung 8, 35 % offen); Modell 2 Ringe x 12 Schlitze 5 x 50 = 6000 mm2 = 15,8 x Standrohr; Zuschnitt und Rollen beim Metallbauer | mittel |
+| UEBERHOLT durch A21 (D115): Medienschutz Lochblech V2A d110 x 1,5 x 320, lose Kappe | d110 x 320 | R51 + Ben D77 | R51 T30e-4 (Rundloch d5, Teilung 8, 35 % offen); Modell 2 Ringe x 12 Schlitze 5 x 50 = 6000 mm2 = 15,8 x Standrohr; Zuschnitt und Rollen beim Metallbauer | mittel |
 | Reinigungsschacht d110 x 3 stehend auf dem Sperrboden, Kappe, 2 Kerben 30 x 30 | d110 x 320 | R51 + W40 | R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4); Lage auf Zellmitte des Topfrasters (M-BEET-TAUSCH 0c) | mittel |
 | Reduktion d40 x d25, Bauhoehe 50 mm | d40 / d25 / 50 | R51 + A | R51 T30e-3; Bauhoehe [A], Kaufmass pruefen | niedrig |
 | Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 (Boden und Platte) | D36 / D50 / 32/25 | Ben D77 + A | D77: Standrohr d25 mit Reduzierhuelse 32/25 im Tankverbinder; Tankverbinder-Maße [A] (Bevo Art. 7018227 [Q], Reduzierhuelse Bevo 7002656 / Schwarte 75208) | niedrig |
@@ -174,10 +183,13 @@ Marke: [Q] Seite/Ausschnitt gelesen (nur Katalogzeile, Preise nicht geprueft), [
 
 | Teil | Mass | Europaeische Quelle (Hersteller/Haendler, Artikel) | Status |
 |---|---|---|---|
+| Abtropfgitter am Beetboden (A21) | PP-Rost 25 mm hoch, Maschen 20 x 20 [A] | offen: Recherche folgt in U8 (D76) | A21 Quelle fd_aussen.t2, Bezug offen |
+| Vlies und Sieb ueber dem Gitter (A21) | Drainagevlies 2 mm, Edelstahl-Gewebe 2 mm [A] | offen: Recherche folgt in U8 (D76) | A21 Quelle fd_aussen.t3, Bezug und Lebensmittelnachweis offen (D85) |
+| Belueftung unten im Beet (A21) | Luftschlauch Ø 8 mit Ausstroemer [A] | offen: Recherche folgt in U8; Luftquelle offen | A21 Quelle fd_aussen.t4, Bezug offen |
 | Reduktion kurz 40 x 25 | PVC-U Klebefitting mit Klebstutzen und Klebmuffe | Weinmann-Schanz (DE) Bestell-Nr. 93 049 64 [R51]; Georg Fischer (CH) TP PVC-U Reduzierung D40AG-D25IG ueber Vanmarcke (BE) [R51] | beschaffbar (Bauhoehe etwa 50 mm [A] aus Datenblatt noch zu pruefen) |
 | Standrohr d25 x 1,5 | PVC-U Druckrohr PN10, ISO 4422 | Bevo (NL/BE) Druckrohr PVC-U 25 mm x 1,5 mm Klebemuffe x glatt 10 bar ISO-PN10 grau 5 m, Art. 0309025 [R51/R45] | beschaffbar |
 | Glocke d75 | PVC-U Rohr d75 (2,9 oder 3,6 mm) plus Klebekappe d75, Laenge 295 mm saegen, 4 Kerben 10 x 12 saegen | Bevo Druckrohr PVC-U 75 mm x 2,9 mm Art. 7027594 bzw. x 3,6 mm Art. 0309175 [Q]; Kappe Bevo Art. 0160592 [Q], Klebefitting-Kappen auch bei Schwarte (DE) | beschaffbar; Modell rechnet Wand 3 mm: auf 2,9 oder 3,6 mm abstimmen |
-| Schutzkorb Lochblech | Edelstahl 1.4301, 1,5 mm, Rundloch 5 mm, Teilung 8, Zuschnitt etwa 366 x 340 mm, gerollt, genietet | ehorst.de (DE) Lochblech Edelstahl 1.4301 RV 5-8 1,50 1000 x 2000 mm DIN 24041, Art. 1003438 [R51]; Zuschnitt und Rollen beim Metallbauer (Entscheidung Ben 04.11.2026, D77) | beschaffbar als Tafelware; Anfrage Metallbauer: Ben (offen) |
+| Schutzkorb Lochblech (UEBERHOLT durch A21, D115) | Edelstahl 1.4301, 1,5 mm, Rundloch 5 mm, Teilung 8, Zuschnitt etwa 366 x 340 mm, gerollt, genietet | ehorst.de (DE) Lochblech Edelstahl 1.4301 RV 5-8 1,50 1000 x 2000 mm DIN 24041, Art. 1003438 [R51]; Zuschnitt und Rollen beim Metallbauer (Entscheidung Ben 04.11.2026, D77) | beschaffbar als Tafelware; Anfrage Metallbauer: Ben (offen) |
 | Kappe Schutzkorb und Schacht (lose) | Muffenstopfen DN110, PVC-U/PP | Ostendorf (DE) KG Muffenstopfen DN/OD 110, Art. 220620 und HT-Safe M Muffenstopfen PP D110 (ueber Vanmarcke) [Q]; Hornbach Art. 267389/267185 [Q] | beschaffbar |
 | Reinigungsschacht d110 | KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm ab Platte | Artikel nicht nachgewiesen: KG-Rohr DN/OD 110 gibt es als Ostendorf KG 2000 (DN/OD 110 bis 630, 1000 mm, Muffe) [Q-Treffer ebay.de/crassus.de, kein Artikel gelesen]; Hersteller und Artikelnummer beim Kauf eintragen (Wavin/Funke/Ostendorf) | beschaffbar (Rohrklasse); Artikel nicht nachgewiesen; Laenge 320 mm ab Platte (Modell z 262 bis 582 lokal fuer 300 mm Medium + 20) |
 | Tankverbinder (Wannenboden und Sperrboden) | PVC-U Tankverbinder 32 mm x 1 Zoll, Klebemuffe d32 x Aussengewinde, 10 bar; im Modell D36 mit Flansch D50 [A] | Georg Fischer/VDL ueber Bevo Art. 7018227 [Q]; Koi-Breeder PVC-U tank bushing [Q] | beschaffbar; Flanschmass D50 [A]: Datenblatt nicht gelesen (M-BEET-TAUSCH Auflage 5); Hinweis: VDL fuehrt 32 mm x 1 1/4 Zoll (Bevo 0100560), ein 32 x 1 Zoll Verbinder ist ueber Epco/Pipestock (UK) belegt, nicht ueber Bevo |
@@ -225,11 +237,12 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 
 ## Offene Fragen
 
+- A21 (U2, D115): Die vier Beet-Komponenten zeigen im Modell noch Medienschutz (Lochblech) und ungelochten Sperrboden (V3, D77). Die Quelle verlangt Abtropfgitter, Siphon bis ganz nach unten, Vlies und Sieb, Belueftung unten; das Beet leert sich damit ganz (wie W57), D77 (12 mm Restfilm ueber dem Sperrboden) aendert sich. Geometrie, check_ibc_beet.py und Teileliste folgen in U3/U8. Luftquelle der Beet-Belueftung ist in der Quelle nicht festgelegt (die Arme der Luftpumpen gehen zu Biofilter, Sumpf, Becken, Fischtank), Maße von Gitter, Vlies und Sieb sind Annahme
 - Dichtheit des Sperrbodens (Plattenrand, Plattenhuelse) und Anspringen des Siphons bei 3,3 l/min nur am Muster pruefbar; Leckwasser unter der Platte waere wieder stehendes Wasser
 - Luftkammer unter dem Sperrboden (262 bis 274 mm hoch) bleibt ungenutzt und trocken; Alternative "IBC kuerzer schneiden" waere ein Layout-Eingriff (Z-Hoehen, Tische R35/R36), nicht Teil von W40-BEET
 - Dichtband-Mass offen (EPDM-Zellkautschuk selbstklebend, Spalt 2 mm; 10 x 10 selbstklebend nicht nachgewiesen)
 - Reduzierhuelse 32/25: Baulaenge 22 mm (Bevo-Katalogzeile) gegen Huelsenlaenge im Modell (Boden 39 mm, Platte 15 mm); Modell vereinfacht, Datenblatt nicht gelesen
-- Schutzkorb: Anfrage Metallbauer (Zuschnitt, Rollen) liegt bei Ben; Lochblech im Modell als Schlitze 5 x 50 vereinfacht (real Rundloch d5, Teilung 8)
+- UEBERHOLT durch A21 (D115), Anfrage nur noch falls das Lochblech als Rueckfall bleibt: Schutzkorb: Anfrage Metallbauer (Zuschnitt, Rollen) liegt bei Ben; Lochblech im Modell als Schlitze 5 x 50 vereinfacht (real Rundloch d5, Teilung 8)
 - Flansch D50, Tankverbinder-Aussenmass D36, Reduktions-Bauhoehe 50 mm, Wandstaerken Rohre: Annahmen [A], Datenblaetter der Kaufteile nicht gelesen
 - Optionale Nachlaufbohrung d4 im Standrohr nur wenn der Film am Muster zu gross ist (Rechnung 0,5 bis 1,0 l/min je nach Ausflussbeiwert)
 - Orchestrator/Montage: Netz K14/K30 `hoehe` (Beetablauf Achse etwa -260 aussen / -290 innen statt -100) und Sumpf-Einlauf; Systemwasserbilanz und Gewichte ohne Wasserraum (rund 6280 l weniger); Montage baut 14 Beete im Dom neu; `data/descriptions.json` (Beet-Beschreibung nennt noch Schlitze, Siebboden, Standrohr 220) nachziehen

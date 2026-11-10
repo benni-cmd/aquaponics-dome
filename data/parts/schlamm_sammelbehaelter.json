@@ -1,0 +1,212 @@
+{
+  "komponente": "schlamm_sammelbehaelter",
+  "datei": "designs/components/schlamm_sammelbehaelter.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "T106",
+  "stand": "teiledaten",
+  "titel": "Schlamm-Sammelbehaelter",
+  "kurz": "Oberirdischer Behaelter fuer 350 l Schlamm mit Ablasshahn von Hand, ausserhalb des Wasserkreislaufs.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 7,
+  "gruppen": [
+    {
+      "id": "behaelter",
+      "name": "Behaelter",
+      "kurz": "Behaelter und Deckel.",
+      "teile": [
+        "t_behaelter",
+        "t_deckel"
+      ]
+    },
+    {
+      "id": "anschluesse",
+      "name": "Anschluesse",
+      "kurz": "Einlauf, Entlueftung, Ablass.",
+      "teile": [
+        "t_einlauf",
+        "t_entl",
+        "t_auslauf",
+        "t_hahn",
+        "t_hebel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_behaelter",
+      "name": "Behaelter 350 l",
+      "koerper": [
+        "Behaelter"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 21304.6 g, Einzelkoerper 900.0 x 900.0 x 585.0 mm (Modell-Bounding-Box)",
+      "funktion": "Nimmt den Schlamm auf.",
+      "eigenschaften": [
+        "Ø 900 x 585, Wand 10"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/components/schlamm_sammelbehaelter.json, data/oasis-soll.json",
+      "bezug": "offen: Rundbehaelter PE etwa 350 l, Durchmesser 900 x Hoehe 600 mm mit Deckel, lebensmittelecht: KEIN Treffer in zwei Suchen. Rechnung (von Hand, nicht per Skript): 350 l bei Durchmesser 900 mm ergibt Innenh",
+      "artikel_hinweis": "BEH-schlammbehaelter-350",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_deckel",
+      "name": "Deckel",
+      "koerper": [
+        "Deckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 9049.8 g, Einzelkoerper 900.0 x 900.0 x 15.0 mm (Modell-Bounding-Box)",
+      "funktion": "Schliesst den Behaelter.",
+      "eigenschaften": [
+        "Ø 900 x 15"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/components/schlamm_sammelbehaelter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_einlauf",
+      "name": "Einlaufstutzen d40",
+      "koerper": [
+        "Einlaufstutzen"
+      ],
+      "menge": 1,
+      "typ": "normteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 57.8 g, Einzelkoerper 48.0 x 48.0 x 60.0 mm (Modell-Bounding-Box)",
+      "funktion": "Zulauf vom Vortex.",
+      "eigenschaften": [
+        "Muffe d40, 60 hoch"
+      ],
+      "norm": "DIN 8063 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/components/schlamm_sammelbehaelter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_entl",
+      "name": "Entlueftung",
+      "koerper": [
+        "Entlueftung"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 12.3 g, Einzelkoerper 26.0 x 26.0 x 30.0 mm (Modell-Bounding-Box)",
+      "funktion": "Gleicht den Druck aus.",
+      "eigenschaften": [
+        "Ø 26 x 30"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/components/schlamm_sammelbehaelter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_auslauf",
+      "name": "Ablaufrohr d40",
+      "koerper": [
+        "Auslaufrohr"
+      ],
+      "menge": 1,
+      "typ": "rohr",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 24.4 g, Einzelkoerper 50.0 x 40.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Fuehrt den Schlamm zum Hahn.",
+      "eigenschaften": [
+        "Ø 40, 50 lang"
+      ],
+      "norm": "DIN 8062 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/components/schlamm_sammelbehaelter.json, data/oasis-soll.json",
+      "katalog": "pvc_u_d40",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_hahn",
+      "name": "Kugelhahn d40",
+      "koerper": [
+        "Kugelhahn"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 127.7 g, Einzelkoerper 70.0 x 52.0 x 52.0 mm (Modell-Bounding-Box)",
+      "funktion": "Ablass von Hand.",
+      "eigenschaften": [
+        "Ø 52 x 70"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/components/schlamm_sammelbehaelter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_hebel",
+      "name": "Hahnhebel",
+      "koerper": [
+        "Hahnhebel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pa",
+      "masse_mm": "Masse 12.3 g, Einzelkoerper 12.0 x 90.0 x 10.0 mm (Modell-Bounding-Box)",
+      "funktion": "Betaetigt den Hahn.",
+      "eigenschaften": [
+        "12 x 90 x 10"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/components/schlamm_sammelbehaelter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "komponente": "regentank_5m3",
+  "datei": "designs/components/regentank_5m3.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "T107",
+  "stand": "teiledaten",
+  "titel": "Regentank 5 m3 (Platzhalter)",
+  "kurz": "Stehender PE-Tank fuer 5000 l Regenwasser, erste Wahl der Nachspeisung.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 5,
+  "gruppen": [
+    {
+      "id": "tank",
+      "name": "Tank",
+      "kurz": "Tank, Dom und Deckel.",
+      "teile": [
+        "t_tank",
+        "t_dom",
+        "t_domdeckel"
+      ]
+    },
+    {
+      "id": "stutzen",
+      "name": "Stutzen",
+      "kurz": "Auslauf d25 und Ueberlauf d63.",
+      "teile": [
+        "t_auslauf",
+        "t_ueberlauf"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_tank",
+      "name": "Regentank 5000 l",
+      "koerper": [
+        "Tank"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 233684.7 g, Einzelkoerper 1700.0 x 1700.0 x 2300.0 mm (Modell-Bounding-Box)",
+      "funktion": "Speichert das Regenwasser.",
+      "eigenschaften": [
+        "Ø 1700 x 2300 (Annahme)",
+        "Innen 4,97 m3"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/regentank_5m3.md, data/components/regentank_5m3.json, data/oasis-soll.json",
+      "bezug": "tbs-online.de (DE) https://tbs-online.de/gb/en/Techn-requirements/Irrigation-pumps-rainwater-utilisation-and-lifting-systems/Over-floor-tank/Regenwassertank-liegend/Plastic-rainwater-tank-CHO-5000-litres-sid687983.html [Q-Treffer]; Stehender oberirdischer PE-Regenwassertank 5000 l: keinen passenden stehenden Tank mit Maßen und Lebensmittelangabe gefunden (zwei Suchen); die meisten 5000-l-T",
+      "artikel_hinweis": "BEH-regentank-5000",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_dom",
+      "name": "Domschacht",
+      "koerper": [
+        "Dom"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 6312.4 g, Einzelkoerper 500.0 x 500.0 x 150.0 mm (Modell-Bounding-Box)",
+      "funktion": "Zugang zum Tank.",
+      "eigenschaften": [
+        "Ø 500 x 150"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/regentank_5m3.md, data/components/regentank_5m3.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_domdeckel",
+      "name": "Domdeckel",
+      "koerper": [
+        "Domdeckel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 6052.2 g, Einzelkoerper 520.0 x 520.0 x 30.0 mm (Modell-Bounding-Box)",
+      "funktion": "Verschliesst den Dom.",
+      "eigenschaften": [
+        "Ø 520 x 30"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/regentank_5m3.md, data/components/regentank_5m3.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_auslauf",
+      "name": "Auslaufstutzen d25",
+      "koerper": [
+        "Auslaufstutzen"
+      ],
+      "menge": 1,
+      "typ": "normteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 87.9 g, Einzelkoerper 115.0 x 32.2 x 32.2 mm (Modell-Bounding-Box)",
+      "funktion": "Wasser zum Nachspeise-Ventil.",
+      "eigenschaften": [
+        "Muffe d25 bei Z 150"
+      ],
+      "norm": "DIN 8063 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/regentank_5m3.md, data/components/regentank_5m3.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_ueberlauf",
+      "name": "Ueberlaufstutzen d63",
+      "koerper": [
+        "Ueberlaufstutzen"
+      ],
+      "menge": 1,
+      "typ": "normteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 236.8 g, Einzelkoerper 115.0 x 72.1 x 72.1 mm (Modell-Bounding-Box)",
+      "funktion": "Ueberlauf bei vollem Tank.",
+      "eigenschaften": [
+        "Muffe d63 bei Z 2150"
+      ],
+      "norm": "DIN 8063 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/regentank_5m3.md, data/components/regentank_5m3.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

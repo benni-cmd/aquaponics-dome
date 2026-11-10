@@ -1,0 +1,176 @@
+{
+  "komponente": "podest_vortex",
+  "datei": "designs/components/podest_vortex.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "T102",
+  "stand": "teiledaten",
+  "titel": "Podest Vortex",
+  "kurz": "Stahlrahmen, der tank_klein um 577 mm anhebt, damit der Ueberlauf auf dem Soll-Wasserspiegel liegt.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 24,
+  "gruppen": [
+    {
+      "id": "rahmen",
+      "name": "Rahmen",
+      "kurz": "Stuetzen, Fuss- und Kopfrahmen aus Vierkantrohr.",
+      "teile": [
+        "t_stuetze",
+        "t_fussrahmen",
+        "t_kopfrahmen"
+      ]
+    },
+    {
+      "id": "platten",
+      "name": "Platten und Bleche",
+      "kurz": "Fussplatten und Knotenbleche.",
+      "teile": [
+        "t_fussplatte",
+        "t_knoten"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_stuetze",
+      "name": "Stuetze",
+      "koerper": [
+        "Stuetze_1",
+        "Stuetze_2",
+        "Stuetze_3",
+        "Stuetze_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 28687.0 g, Einzelkoerper 40.0 x 40.0 x 571.0 mm (Modell-Bounding-Box)",
+      "funktion": "Tragen den Tank.",
+      "eigenschaften": [
+        "Vierkantrohr 40 x 40 x 3"
+      ],
+      "norm": "DIN EN 10219 (Hohlprofile) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/podest_vortex.md, data/components/podest_vortex.json, data/oasis-soll.json",
+      "katalog": "vierkantrohr_40x40x3",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_fussrahmen",
+      "name": "Fussrahmen",
+      "koerper": [
+        "Fussrahmen_1",
+        "Fussrahmen_2",
+        "Fussrahmen_3",
+        "Fussrahmen_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 32153.6 g, Einzelkoerper 640.0 x 40.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Verbindet die Stuetzen unten.",
+      "eigenschaften": [
+        "Vierkantrohr 40 x 40 x 3, Laenge Spannweite - 80"
+      ],
+      "norm": "DIN EN 10219 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/podest_vortex.md, data/components/podest_vortex.json, data/oasis-soll.json",
+      "katalog": "vierkantrohr_40x40x3",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_kopfrahmen",
+      "name": "Kopfrahmen",
+      "koerper": [
+        "Kopfrahmen_1",
+        "Kopfrahmen_2",
+        "Kopfrahmen_3",
+        "Kopfrahmen_4"
+      ],
+      "menge": 4,
+      "typ": "profil",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 32153.6 g, Einzelkoerper 640.0 x 40.0 x 40.0 mm (Modell-Bounding-Box)",
+      "funktion": "Auflage fuer die Tankplattform.",
+      "eigenschaften": [
+        "Vierkantrohr 40 x 40 x 3, Oberkante = Podesthoehe"
+      ],
+      "norm": "DIN EN 10219 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/podest_vortex.md, data/components/podest_vortex.json, data/oasis-soll.json",
+      "katalog": "vierkantrohr_40x40x3",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_fussplatte",
+      "name": "Fussplatte",
+      "koerper": [
+        "Fussplatte_1",
+        "Fussplatte_2",
+        "Fussplatte_3",
+        "Fussplatte_4"
+      ],
+      "menge": 4,
+      "typ": "platte",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 1884.0 g, Einzelkoerper 100.0 x 100.0 x 6.0 mm (Modell-Bounding-Box)",
+      "funktion": "Verteilt die Last auf den Fussboden.",
+      "eigenschaften": [
+        "Blech 100 x 100 x 6"
+      ],
+      "norm": "DIN EN 10025 (S235) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/podest_vortex.md, data/components/podest_vortex.json, data/oasis-soll.json",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_knoten",
+      "name": "Knotenblech",
+      "koerper": [
+        "Knotenblech_1",
+        "Knotenblech_2",
+        "Knotenblech_3",
+        "Knotenblech_4",
+        "Knotenblech_5",
+        "Knotenblech_6",
+        "Knotenblech_7",
+        "Knotenblech_8"
+      ],
+      "menge": 8,
+      "typ": "platte",
+      "werkstoff": "stahl_verzinkt",
+      "masse_mm": "Masse 3768.0 g, Einzelkoerper 6.0 x 100.0 x 100.0 mm (Modell-Bounding-Box)",
+      "funktion": "Versteift die Rahmenecken oben und unten.",
+      "eigenschaften": [
+        "Blech 6 x 100 x 100, aussen an den X-Seiten"
+      ],
+      "norm": "DIN EN 10025 (S235) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/podest_vortex.md, data/components/podest_vortex.json, data/oasis-soll.json",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

@@ -102,6 +102,7 @@
   ],
   "teileliste": [],
   "kritiker": "offen (Pruefer P-Pruef)",
-  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle).",
+  "referenz": "kein OBJ-Bild (Bauteil neu nach der Quelle): docs/quellen/oasis-showcase-2026-11-10/ (Draufsicht, Seitenprofil) und data/oasis-soll.json"
  }
 }

@@ -1,4 +1,4 @@
-"""Pruefung Tauchpumpen-Modul T110 (U2): Koerperzahl, Fussabdruck Ø 275 (Zeichnung), Rueckschlagventil d50 mit Port oben, Hub je Pumpstelle aus data/oasis-soll.json, Eintauchtiefe gegen 4 m (R59),
+"""Pruefung Tauchpumpen-Modul T110 (U2): Koerperzahl, Maße 340 x 280 x 165 (Hersteller-Shop, gelesen 10.11.2026), Rueckschlagventil d50 mit Port oben, Hub je Pumpstelle aus data/oasis-soll.json, Eintauchtiefe gegen 4 m (R59),
 Kennlinien-Rechnung aus Qmax/Hmax (nur Rechnung, Nachweis offen), Sumpf-Ueberflutung, Interferenz 0. Aufruf: python -X utf8 scripts/workshop/check_tauchpumpe_modul.py   (exit 1 bei FAIL)"""
 import json, math, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -23,13 +23,14 @@ def kennlinie(q_max, h_max, h):
 def main():
     c = U.Pruefung("tauchpumpe_modul")
     p = c.p
-    c.koerper(["Ansaugkorb", "Gehaeuse", "Druckstutzen", "Rueckschlagventil", "Kabel"])
+    c.koerper(["Gehaeuse", "Druckstutzen", "Rueckschlagventil", "Kabel"])
     soll = json.load(open(os.path.join(sc.ROOT, "data", "oasis-soll.json"), encoding="utf-8"))
     b = {x["id"]: x["hoehen"] for x in soll["bauteile"] if x["id"] in ("fish", "vortex_1", "sump_1")}
-    c.eq("Fussabdruck Ø 275 = Zeichnung Pumpe Radius 137,5", c.ausdehnung("Ansaugkorb", 0), 275, 0.1)
-    c.eq("Standflaeche Z 0", c.unten("Ansaugkorb"), 0, 0.1)
-    c.eq("Gehaeuse Ø 230", c.ausdehnung("Gehaeuse", 0), 230, 0.1)
-    c.eq("Gehaeuse-Oberkante Z 240", c.oben("Gehaeuse"), 240, 0.1)
+    c.eq("Gehaeuse Laenge 340 (oase-teichbau.de, Q)", c.ausdehnung("Gehaeuse", 0), 340, 0.1)
+    c.eq("Gehaeuse Breite 280 (Q)", c.ausdehnung("Gehaeuse", 1), 280, 0.1)
+    c.eq("Gehaeuse Hoehe 165 (Q)", c.ausdehnung("Gehaeuse", 2), 165, 0.1)
+    c.eq("Standflaeche Z 0", c.unten("Gehaeuse"), 0, 0.1)
+    print(f"INFO Fussabdruck 340 x 280 (Diagonale {round((340 ** 2 + 280 ** 2) ** 0.5)} mm) gegen Kreis Ø 275 der Zeichnung: Platzbedarf im Becken in U3/U5 pruefen")
     c.eq("Druckstutzen Ø 50", c.ausdehnung("Druckstutzen", 0), 50, 0.1)
     t = L.DEPTH[50]
     c.eq(f"Stutzen steckt {t} mm im Rueckschlagventil (Ventil-Unterkante = Stutzen-Oberkante - {t})", c.unten("Rueckschlagventil"), c.oben("Druckstutzen") - t, 0.1)
@@ -37,7 +38,7 @@ def main():
     c.zylinder("Ventil Muffe oben d50", "Rueckschlagventil", 25)
     top = c.oben("Rueckschlagventil")
     c.port("Druckleitung (Muffe d50, oben)", "Rueckschlagventil", (0, 0, top), (0, 0, 1))
-    c.eq("Rueckschlagventil in der Druckleitung: Oberkante Z 389", top, 389, 0.1)
+    c.eq("Rueckschlagventil in der Druckleitung: Oberkante Z 314", top, 314, 0.1)
     # Hub je Pumpstelle aus der Soll-Datei
     h1 = (b["vortex_1"]["wsp_ueber_fussboden_mm"] - b["fish"]["wsp_ueber_fussboden_mm"]) / 1000
     h2 = (b["fish"]["wsp_ueber_fussboden_mm"] - b["sump_1"]["wsp_ueber_fussboden_mm"]) / 1000

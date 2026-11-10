@@ -1,0 +1,106 @@
+{
+  "komponente": "permakultur_modul",
+  "datei": "designs/components/permakultur_modul.sc",
+  "bauteilgruppe": "Becken und Tanks",
+  "teilenummer": "T111",
+  "stand": "teiledaten",
+  "titel": "Permakultur-Modul (Platzhalter)",
+  "kurz": "Kompostbox und Futterzuchtkiste, die den Schlamm von Hand aufnehmen.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "box",
+      "name": "Kompostbox",
+      "kurz": "Box mit Deckel.",
+      "teile": [
+        "t_box",
+        "t_deckel"
+      ]
+    },
+    {
+      "id": "zucht",
+      "name": "Futterzucht",
+      "kurz": "Kiste fuer Wuermer.",
+      "teile": [
+        "t_kiste"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_box",
+      "name": "Kompostbox",
+      "koerper": [
+        "Kompostbox"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "holz_fichte",
+      "masse_mm": "Masse 34410.9 g, Einzelkoerper 1500.0 x 525.0 x 600.0 mm (Modell-Bounding-Box)",
+      "funktion": "Nimmt den Schlamm auf.",
+      "eigenschaften": [
+        "Fichte 25 mm, 1500 x 525 x 600"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/permakultur_modul.md, data/components/permakultur_modul.json, data/oasis-soll.json",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_deckel",
+      "name": "Deckel",
+      "koerper": [
+        "Kompostdeckel"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "holz_fichte",
+      "masse_mm": "Masse 8859.4 g, Einzelkoerper 1500.0 x 525.0 x 25.0 mm (Modell-Bounding-Box)",
+      "funktion": "Deckt die Box ab.",
+      "eigenschaften": [
+        "Fichte 25 mm"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/permakultur_modul.md, data/components/permakultur_modul.json, data/oasis-soll.json",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_kiste",
+      "name": "Futterzuchtkiste",
+      "koerper": [
+        "Futterzuchtkiste"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pe",
+      "masse_mm": "Masse 7543.1 g, Einzelkoerper 800.0 x 525.0 x 350.0 mm (Modell-Bounding-Box)",
+      "funktion": "Wuermerzucht.",
+      "eigenschaften": [
+        "PE 800 x 525 x 350"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/permakultur_modul.md, data/components/permakultur_modul.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "artikel_hinweis": "BEH-futterzuchtkiste",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

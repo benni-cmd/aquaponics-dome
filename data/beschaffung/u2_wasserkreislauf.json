@@ -1,0 +1,280 @@
+{
+  "klasse": "U2",
+  "typen": [
+    "PMP",
+    "ARM",
+    "BEH",
+    "MAT"
+  ],
+  "stand": "2026-11-10",
+  "hinweis": "Zwoelf Kaufteile des Wasserkreislaufs (Recherche 10.11.2026, nur WebSearch und WebFetch, nichts gekauft, keine Anmeldung). konfidenz: Q = Seite selbst geoeffnet und gelesen, Q-Treffer = nur Suchtreffer/Suchzusammenfassung (Kandidat, nicht selbst gelesen), E = gerechnet, A = angenommen. preis_eur null = auf der gelesenen Seite stand kein Preis. Grenzen der Methode: WebFetch liest PDF-Datenblaetter nur als Binaerdatei (Findernet, R+S, Mazzei, Schwarte nicht lesbar) und einige Haendler (foudebassin.com, teichbedarf24.de) sperrten mit HTTP 429; Aussagen daraus stammen dann nur aus der Suchzusammenfassung und sind Q-Treffer. Lebensmittel-Nachweis (D85): fuer KEINEN der Wasserteile liegt ein selbst gelesener Herstellernachweis vor; jeder Artikel nennt Fundstelle oder ehrlich 'offen' mit Rueckfall. Luftseite (Luftpumpe, Luftschlauch-Rueckschlagventil) hat keinen Wasserdauerkontakt: D85 dort nicht anwendbar, Ausstroemer schon (Wasserkontakt). UK gilt als Europa OFFEN (hier kein UK-Angebot eingetragen).",
+  "artikel": {
+    "PMP-tauchpumpe-oase-8000": {
+      "bemerkung_artikel": "Oase AquaMax Eco Premium 8000 (Art. 50740). Seite oase-teichbau.de (Oase-Eigenshop DE) am 10.11. gelesen [Q]: 'Nicht lieferbar', Hersteller verweist auf den Nachfolger AquaMax Eco Premium 9000 (dessen Daten NICHT gelesen). Daten laut Seite: Qmax 8000 l/h (133 l/min), Hmax 4,1 m, Leistung widerspruechlich (Beschreibung 65 W, Tabelle 15-60 W), Masse L x B x H 340 x 280 x 165 mm (kein Durchmesser angegeben), Kabel 10 m, Gewicht 5,3 kg (Tabelle) bzw. 5,7 kg (Vergleich), Anschluesse 25/32/38/50 mm, Ein- und Auslass 50 mm, 'getaucht und trocken aufstellbar'. Eintauchtiefe steht auf DIESER Seite NICHT; 4 m stammt aus dem Oase-Handbuch (R59) und aus einer Suchzusammenfassung von guenstiger.de [Q-Treffer]. Werkstoff auf der Seite nicht genannt, keine Aussage zu Fisch/Lebensmittel/Trinkwasser. Lebensmittel: offen (kein Herstellernachweis gefunden), Rueckfall: Oase-Support nach Werkstoffliste und Konformitaet (EU 1935/2004, KTW) fragen; Pumpe ist bei Oase ausgelaufen, also Nachfolger 9000 mit Datenblatt und Nachweis pruefen. Haendler-Preise (Q-Treffer): 408,99 EUR (guenstigster Anbieter laut guenstiger.de) bis 499,95 EUR plus 10,49 EUR Versand (billiger.de); Galaxus 'nicht vorraetig'; ein UK-Haendler 'discontinued'. D76 fuer den 8000er daher OFFEN (nur Restbestand/Sonderanbieter), fuer den Nachfolger 9000 ungeprueft.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "oase-teichbau.de (Oase Shop)",
+          "land": "DE",
+          "url": "https://www.oase-teichbau.de/oase-aquamax-eco-premium-8000",
+          "lieferung_de": "nein",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen: 'Nicht lieferbar', kein Preis genannt; empfiehlt Eco Premium 9000. Daten wie in bemerkung_artikel."
+        },
+        {
+          "preis_eur": 408.99,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "guenstiger.de (Preisvergleich, Anbieter nicht benannt)",
+          "land": "DE",
+          "url": "https://www.guenstiger.de/Produkt/Oase/Aquamax_Eco_Premium_8000.html",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Suchzusammenfassung: Spanne 408,99 bis 499,95 EUR, 65 W, 8000 l/h, Tiefe 4 m, Kabel 10 m. Seite nicht geoeffnet; Anbieter und Lieferbarkeit offen."
+        },
+        {
+          "preis_eur": 499.95,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "billiger.de (Preisvergleich, Anbieter nicht benannt)",
+          "land": "DE",
+          "url": "https://www.billiger.de/pricelist/230511372",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Suchzusammenfassung: 499,95 EUR plus 10,49 EUR Versand, Lieferzeit 1-5 Werktage; Angebot heisst 'OASE AQUAMAX 8000 ECO CWS' (anderes Modell oder Altbezeichnung moeglich). Seite nicht geoeffnet."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "foudebassin.com",
+          "land": "unbekannt",
+          "url": "https://www.foudebassin.com/en/collections/pompes-pour-piscines-naturelles-lagunage/products/aquamax-eco-premium-8000",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Suchtreffer; Seite mit HTTP 429 zweimal nicht gelesen (zwei URL-Varianten). Land und Versand nicht belegt."
+        }
+      ],
+      "alternative": "Oase AquaMax Eco Premium 9000 (Nachfolger laut oase-teichbau.de [Q], Daten ungelesen) oder Aquaforte EC-10000 (129 EUR Hornbach DE, R59 Rueckfall). Beide brauchen Kennlinie, Tiefe und D85-Nachweis vor dem Kauf."
+    },
+    "ARM-venturi-mazzei-1583": {
+      "bemerkung_artikel": "Mazzei Injektor 1583: in Europa KEIN Haendler gefunden (zwei Suchen). Treffer nur aus den USA: Newegg 1583A-PVDF (1,5 Zoll MNPT, 261,04 USD) und Irrigation King 1583-A-PP (78,27 USD) [Q-Treffer, US, nicht Europa, nicht D76-tauglich]. Mazzei sitzt in Bakersfield, USA; keine europaeische Vertriebsliste gefunden. Datenblatt-PDFs (irrigation-mart.com: HTTP 404; Shopify-PDF: Binaerdatei) waren nicht lesbar, daher Laenge und Aussendurchmesser OFFEN (Projektannahme Durchmesser 64 x 150 bleibt [A]). Suchzusammenfassung: Mazzei-Katalog nennt 1583 als 1-1/2 Zoll BSPT mit Rueckschlagventil im Saugstutzen, PVDF blau; ein Katalog von 2014 fuehrt die 1583-Familie als ISO 1583A-GRPP (glasfaserverstaerktes PP) [Q-Treffer]. Lebensmittel: offen (kein Herstellernachweis NSF/FDA/Trinkwasser gelesen), Rueckfall: Mazzei per Anfrage nach EU-Haendler und NSF 61/ACS-Angabe fragen; sonst Alternative unten.",
+      "angebote": [],
+      "alternative": "Niederdruck-Venturi aus der europaeischen Bewaesserungstechnik, KEIN Fisch-/Lebensmittelnachweis gelesen: Irritec Venturi Injector PRO 1 Zoll AG 350 l/h (dvs-beregnung.de, DE, 49,20 EUR [Q-Treffer], https://dvs-beregnung.de/injecteur-venturi-pro-1-ag-350l-h) und bevo.com Venturi-Injektor PP 1 Zoll x 13 mm Schlauchtuelle Art. 7025669M (https://www.bevo.com/en/venturi-injector-complete-pp-male-thread-x-hose-tail-x-male-thread-black-7025669m, Q-Treffer). Beides kleiner als 1,5 Zoll; Irritec fuehrt laut Suche auch 1,5 Zoll, Angebot nicht gefunden. Leistung/Saugmenge muss gegen die Auslegung (R45) neu gerechnet werden."
+    },
+    "ARM-schwimmerschalter-hochstand": {
+      "bemerkung_artikel": "Kein Haendlerangebot mit selbst gelesenen Werten gefunden: die Datenblatt-PDFs (Findernet 72, R+S ENM-10) liessen sich nur als Binaerdatei laden; die Gardena-Seite (Art. 1735-20, AT) ist ausgelaufen und nennt weder Werkstoff noch Schaltdifferenz oder Masse [Q]. Aus der Suchzusammenfassung [Q-Treffer]: Findernet Serie 72 (Typ 72.A1.0000.xx02): 'verwendete Metalle und Kunststoffe entsprechen der ACS-Trinkwasserzulassung', IP68, Kabel 5 bis 20 m; R+S ENM-10: Schwimmer aus ungiftigem Polypropylen, Einsatz Trinkwasser und Abwasser, IP68; Eaton SW (Conrad): Trinkwasser 'ja', IP65; Doepke Champ 2 G-L/F: Gehaeuse nicht-toxisches PP, IP68, KEINE Trinkwasserfreigabe; Doepke Champ 1 GS-L: Trinkwasser ausdruecklich NICHT geeignet; Rapid/Zehnder Opti: PP, fuer Entwaesserung. Kabelmantel-Werkstoff und Schaltdifferenz bei keinem gelesen. Lebensmittel: offen (kein selbst gelesener Herstellernachweis), Rueckfall: Findernet 72.A1 (ACS-Angabe) bei einem Haendler bestellbar machen und Datenblatt als Text lesen; zweite Wahl R+S ENM-10. Projektannahme Durchmesser 70 mm ist NICHT belegt.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "Finder (Hersteller-Datenblatt Serie 72)",
+          "land": "unbekannt",
+          "url": "https://cdn.findernet.com/app/uploads/ZDPDEXX72A1.pdf",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Datenblatt-PDF, WebFetch lieferte nur Binaerdaten; ACS-Aussage nur aus Suchzusammenfassung. Kein Haendler, kein Preis."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "R+S Group (Datenblatt ENM 10)",
+          "land": "unbekannt",
+          "url": "https://doc.r-s-group.com/1.4.4%20-%20ENM%2010.pdf",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "PDF (2007) nicht lesbar; PP und 'Trinkwasser und Abwasser' nur aus Suchzusammenfassung. Kein Preis, Haendler offen."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "Gardena Oesterreich",
+          "land": "AT",
+          "url": "https://gardena.com/at/produkte/pumpen/pumpenzubehoer/schwimmerschalter/900948801.html",
+          "lieferung_de": "nein",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen: Schwimmerschalter Art. 1735-20, 'nicht mehr erhaeltlich'; keine Werkstoff-, Schaltdifferenz- oder Massangabe. Nur als Beleg, dass dieser Link NICHT taugt."
+        }
+      ],
+      "alternative": "Eaton SW Schwimmerschalter (Conrad-Datenblatt, Trinkwasser 'ja', IP65) [Q-Treffer, https://asset.conrad.com/media10/add/160267/c1/-/de/002133261DS00/datasheet-2133261-eaton-sw-float-switch-grey-1-pcs.pdf]; Alternative ohne bewegliche Teile: kapazitiver Niveausensor ausserhalb des Behaelters (nicht recherchiert)."
+    },
+    "PMP-luftpumpe-notluft": {
+      "bemerkung_artikel": "Membran-Luftpumpe mit 60 l/min: Kerry Electronics KEA3600 (Art. 12771855) bei Hornbach DE [Q]: 120,90 EUR inkl. MwSt, 3600 l/h bis 60 l/min, 35 W, stufenlos regulierbar, Masse L x B x H 33 x 23 x 32 cm, Kabel 2 m, Schutzkontakt-Stecker (also 230 V, Spannung nicht ausdruecklich genannt), Lieferzeit ca. 1-3 Werktage, Verkaeufer 'AGABA' (Marktplatz-Angebot), im Lieferumfang 40 m Schlauch, Verteiler, 8 Ausstroemer. Eine 12-V-Pumpe mit 60 l/min wurde NICHT gefunden: Suchtreffer sind Oase AquaOxy 1000 (12 V DC, 1000 l/h, rund 17 l/min, 15 W, Kaufland) und Schego-Membranpumpe (12 V, 150 l/h) [Q-Treffer] sowie ein eBay-Angebot 12 V 18 W 38 l/min ohne erkennbare Bauart. Lebensmittel: nicht anwendbar (Luftseite, kein Wasserkontakt).",
+      "angebote": [
+        {
+          "preis_eur": 120.9,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "Hornbach (Marktplatz-Verkaeufer AGABA)",
+          "land": "DE",
+          "url": "https://www.hornbach.de/p/kerry-electronics-teichbeluefter-3600-l-h-stufenlos-regulierbar-35-watt-sauerstoffpumpe-fuer-teich-membranpumpe-60-l-min-teichbelueftung-luftpumpe-teich-beluefterpumpe-fuer-gartenteiche-teichbelueftungspumpe/12771855/",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "230 V, 35 W, 60 l/min, 33 x 23 x 32 cm, 1-3 Werktage; Preis inkl. MwSt zzgl. ggf. Versand; Seitenstand 10.11.2026."
+        }
+      ],
+      "alternative": "Notstrom 12 V: Oase AquaOxy 1000 (12 V DC, 15 W, 1000 l/h) mehrfach parallel [Q-Treffer, https://www.kaufland.de/product/61996491/], zusammen aber weit unter 60 l/min; oder 230-V-Pumpe oben mit Wechselrichter/USV an Batterie (Auslegung offen). 12-V-Membranpumpe 60 l/min: nicht gefunden."
+    },
+    "ARM-luftstein-notluft": {
+      "bemerkung_artikel": "Luftstein/Ausstroemer: Hobby 'Ausstroemer eckig 50 x 25 x 25 mm' (Art. 2674573) bei toom.de [Q]: Keramik ('aus Bloecken gesaegt'), Aquaristik; Preis auf der gelesenen Seite nicht angezeigt, kein Fisch-/Lebensmittelhinweis, Teich nicht genannt. Weitere Suchtreffer fuer runde Steine Durchmesser 50 mm [Q-Treffer]: Kaufland (Belueftungsstein 50 mm), eBay Hailea 10 Stk 17,99 EUR, FIAP-Set mit 4 Steinen bei Conrad AT, ALITA Ausstroemerkugel bei alltron.ch (CH). Werkstoff meist Stein/Keramik (inert), aber Lebensmittel: offen (kein Herstellernachweis gefunden), Rueckfall: Hobby/Hailea nach Material und Konformitaet fragen; Aquaristik-Luftsteine sind fuer Fischwasser vorgesehen, das ist aber kein D85-Beleg.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "toom Baumarkt",
+          "land": "DE",
+          "url": "https://toom.de/p/ausstroemer-eckig-50-x-25-x-25-mm/2674573",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "Hobby Ausstroemer Keramik 50 x 25 x 25 mm (Aquarium); Preis und Lieferbarkeit auf der gelesenen Seite nicht angezeigt (nur 'inkl. undefined% MwSt.')."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "Kaufland",
+          "land": "DE",
+          "url": "https://www.kaufland.de/product/308556166/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Luftausstroemer Belueftungsstein rund 5 cm (Suchzusammenfassung); Seite nicht geoeffnet."
+        }
+      ],
+      "alternative": "Oase/FIAP Teichbelueftungs-Sets mit Ausstroemern (Conrad AT, FIAP Air active) als Kandidat [Q-Treffer, https://www.conrad.at/de/p/fiap-2951-air-active-set-2000-teichbeluefter-25-l-h-551217.html]; Grossflaechen-Ausstroemer (Zylinder 50 x 150 mm, Kaufland 32,90 EUR) fuer groessere Luftmenge."
+    },
+    "ARM-rueckschlagventil-luft": {
+      "bemerkung_artikel": "Rueckschlagventil Luft, Schlauch 9/12 mm: kein Angebot mit bestaetigter Schlauchgroesse 9/12 gefunden. Der OBI-Link zu Tetratec CV 4 (obi.de/p/6772081) lieferte am 10.11. HTTP 404 [Q: Link tot]. Suchtreffer [Q-Treffer]: Tetra CV4 bei Kaufland, sera Rueckschlagventil 2 Stk rund 4,79 EUR (eBay), 'Rueckschlagventil 9 mm' 6,00 EUR (Kaufland, Marktplatz Koigarden_Shop); Reich/Comet-Ventile sind fuer 10/12 mm bzw. 12 mm, passen also nicht. Tetra CV4 ist ein Aquarien-Ventil fuer 4/6-mm-Schlauch (aus Erfahrung, hier nicht belegt [A]); fuer 9/12 mm ist das 'Rueckschlagventil 9 mm' der naechste Kandidat. Lebensmittel: nicht anwendbar (Luftseite). Rueckfall: Ventil fuer Hi-Blow/Teichbelueftung 9/12 mm beim Teichbelueftungs-Haendler (z. B. Koigarden) anfragen oder Schlauch auf 10/12-Ventil mit Tuelle anpassen.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "Kaufland",
+          "land": "DE",
+          "url": "https://www.kaufland.de/product/23980601/",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Tetra CV4 Rueckschlagventil (Suchtreffer), Schlauchgroesse nicht genannt, Seite nicht geoeffnet. Der Eintrag 'Rueckschlagventil 9 mm' fuer 6,00 EUR (Marktplatz Koigarden_Shop) stand im Suchtext ohne eigene URL und ist deshalb hier nicht als Angebot gefuehrt."
+        }
+      ],
+      "alternative": "Tameson-Seite 'Rueckschlagventile fuer Aquarien' als Quelle fuer Bauform [Q-Treffer, https://tameson.de/pages/ruckschlagventile-aquarien]."
+    },
+    "BEH-schlammbehaelter-350": {
+      "bemerkung_artikel": "Rundbehaelter PE etwa 350 l, Durchmesser 900 x Hoehe 600 mm mit Deckel, lebensmittelecht: KEIN Treffer in zwei Suchen. Rechnung (von Hand, nicht per Skript): 350 l bei Durchmesser 900 mm ergibt Innenhoehe etwa 550 mm. Naechste Kandidaten [Q-Treffer, nichts gelesen]: Graf Rundbehaelter ab 600 l, Durchmesser 960 mm (voelkner.de, Mischbehaelter, saeure-/laugenbestaendig); Delta-V 400 l PE lebensmittelecht, aber rechteckig 1200 x 1000 x 580 mm (Katalog delta-v.de HKD 1/24); Werit rund 110 l Durchmesser 515 mm, 'garantiert lebensmittelecht' (werit.eu Datenblatt, Hoehe 540 mm, Volumen nicht ausgewiesen); RS PRO 350 l rechteckig 1,2 m x 0,725 m x 0,75 m, 'Normen: No'. Lebensmittel: offen fuer 350 l rund (kein Hersteller mit Datenblatt gelesen), Rueckfall: Werit/Buerkle/Plasteo oder Graf nach rundem Behaelter 350 l bzw. Delta-V 400 l (rechteckig) fragen; sonst Behaelter-Mass im Modell anpassen (Entscheidung Ben).",
+      "angebote": [],
+      "alternative": "Delta-V 400 l PE-HD lebensmittelecht (rechteckig 1200 x 1000 x 580 mm) laut Suchzusammenfassung [Q-Treffer, https://www.delta-v.de//out/media/kataloge/de/HKD_1_24-0939.pdf]; Graf Rundbehaelter 600 l Durchmesser 960 mm [Q-Treffer, https://www.voelkner.de/products/3769077/Mischbehaelter-saeure-und-laugenbestaendig-Volumen-fuer-600-l-Graf-Bezeichnung-Deckel-Hoehe-40-mm-Durchmesser-960-mm-Gewicht-8-kg.html]."
+    },
+    "BEH-regentank-5000": {
+      "bemerkung_artikel": "Stehender oberirdischer PE-Regenwassertank 5000 l: keinen passenden stehenden Tank mit Maßen und Lebensmittelangabe gefunden (zwei Suchen); die meisten 5000-l-Treffer sind Erdtanks. Naechster Kandidat [Q-Treffer, Seite nicht geoeffnet]: tbs-online.de / weinmann-schanz.de 'Plastic rainwater tank CHO-5000 litres', Best.-Nr. 93 181 81, Kategorie Ueberflur-Tank (liegend): Durchmesser 1740 mm, Hoehe 1840 mm, Laenge x Hoehe 2310 x 1840 mm, DN-50-Zulauf. Liegende Bauform ist NICHT stehend; Pool/Aufstellflaeche muessten neu geprueft werden. Erdtanks (nicht oberirdisch): Hornbach 4rain Mono 5000 l, 245 x 183 x 217 cm [Q-Treffer]; Bauhaus 'Unground 5000' wirbt mit 'lebensmittelechtem PE' (Haendlerangabe, Erdtank, kein Herstellerbeleg). Lebensmittel: offen (kein Herstellernachweis gefunden), Rueckfall: Hersteller (Graf, Roth, Kingspan, 4rain) nach Datenblatt des oberirdischen Rundtanks 5000 l mit KTW/W270 oder DIN-Angabe fragen.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "tbs-online.de",
+          "land": "DE",
+          "url": "https://tbs-online.de/gb/en/Techn-requirements/Irrigation-pumps-rainwater-utilisation-and-lifting-systems/Over-floor-tank/Regenwassertank-liegend/Plastic-rainwater-tank-CHO-5000-litres-sid687983.html",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Liegender Ueberflur-Tank 5000 l, Durchmesser 1740, Hoehe 1840 laut Suchausschnitt; Preis und Material nicht gelesen."
+        }
+      ],
+      "alternative": "Zwei kleinere stehende Tanks oder Erdtank-Bauform (Hornbach 4rain Mono 5000 l, https://www.hornbach.de/p/erdtank-4rain-mono-5000-l/10356804 [Q-Treffer]) nur mit Ben-Entscheidung zur Aufstellung."
+    },
+    "ARM-schwimmerventil-nachspeise": {
+      "bemerkung_artikel": "Link aus R53 funktioniert noch [Q, 10.11.2026 gelesen]: R+M Suttner Art. 701403 'Schwimmerventil AK mit Kugel 3/4 Zoll AG kurz': Gehaeuse Kunststoff, Schwimmer Kunststoff, Anschluss Eingang und Ausgang 3/4 Zoll Aussengewinde, DN 10, max. 22 l/min, Druck 0,3 bis 10 bar, max. 60 Grad C, Status 'on stock'. Preis auf der Seite NICHT genannt (Preise 'excl. tax', Versand auf separater Seite). Kunststoffart und Trinkwasser-/Lebensmittelangabe stehen NICHT auf der Seite; Masse nicht angegeben (Projektannahme Gehaeuse Durchmesser 38 x 80 bleibt [A]). Suchzusammenfassung zum Schwesterartikel 701408 (3/4 Zoll AG, PE-Schwimmer): Flyer nennt 'geeignet fuer kaltes und erwaermtes Trinkwasser' [Q-Treffer, Flyer nicht gelesen]. Lebensmittel: offen fuer 701403 (kein Herstellernachweis gefunden), Rueckfall: 701408 mit Trinkwasser-Hinweis (Flyer https://shop.rm-suttner.com/data/media/docs/flyer_701408_de.pdf) lesen und ggf. diesen Artikel waehlen.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "R+M Suttner (Online-Shop)",
+          "land": "DE",
+          "url": "https://shop.rm-suttner.com/en/low-pressure-equipment/valves/float-valves/float-valve-ak-with-ball-3-4m-short-701403.htm",
+          "lieferung_de": "ja",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen, 'on stock available', Preis nicht sichtbar (netto-Preise, Versandkosten separat); Land DE aus Hotline +49 (0) 20 56-16333-0 im Suchtreffer-Titel, Impressum nicht gelesen."
+        }
+      ],
+      "alternative": "R+M Suttner 701408 (3/4 Zoll AG mit Kugel, Trinkwasser-Flyer) [Q-Treffer, https://shop.rm-suttner.com/en/low-pressure-equipment/valves/float-valves/float-valve-ak-with-ball-3-4m-:-3-4m-701408.htm]; Pegler Yorkshire 3/4 Zoll Messing (RS, https://de.rs-online.com/web/p/schwimmerventile/0197867 [Q-Treffer]) nur als Messing-Notloesung (Messing im Fischwasser unerwuenscht, R59)."
+    },
+    "ARM-rueckschlagventil-d50": {
+      "bemerkung_artikel": "Rueckschlagventil PVC d50 mit Klebemuffe: mediPOOL Art. 2802308 bei toom.de [Q]: 'Rueckschlagventil PVC Durchmesser 50 mm x 2 Zoll mit Klebemuffe', Material 'Kunststoff (PVC)' ohne PVC-U-Angabe, einzige Aussage 'fuer Suesswasser geeignet', Laenge laut Seite 1,5 cm (offensichtlich falsch, nicht uebernehmen), Preis auf der Seite nicht angezeigt, Lieferumfang inkl. Schelle und Teflonband. Weitere Suchtreffer [Q-Treffer]: Schwarte-Shop PVC-U Klebefitting Rueckschlagventil 50 mm (Datenblatt-PDF nicht lesbar; Suchzusammenfassung: 'nicht gemaess UBA-Positivliste', also NICHT fuer Trinkwasser); MCM/FIP PVC-U Schraegsitz-Rueckschlagventil VR DN 10-100, Klebemuffe als Ausfuehrung VRIV, Datenblatt nennt Vertraeglichkeit mit Trinkwasser ohne formale KTW-Zertifizierung; Georg Fischer Typ 561 Kugelrueckschlagventil PVC-U Klebemuffe (RS Online, DN 50 mit KTW nicht belegt). Lebensmittel: offen (kein Herstellernachweis KTW/UBA gelesen), Rueckfall: FIP/MCM VR oder Georg Fischer 561 mit Herstellerzertifikat anfragen.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "toom Baumarkt (mediPOOL)",
+          "land": "DE",
+          "url": "https://toom.de/p/rueckschlagventil-pvc-50-mm-x-2-mit-klebemuffe/2802308",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q",
+          "bemerkung": "Seite gelesen; Preis und Lieferbarkeit nicht angezeigt; 'fuer Suesswasser geeignet'; keine Trinkwasser-/KTW-Angabe."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "Stk",
+          "stand": "2026-11-10",
+          "haendler": "Schwarte-Shop",
+          "land": "DE",
+          "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-rueckschlagventil-50-mm?pdf=true",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "PDF als Binaerdatei geladen, nicht lesbar; Suchzusammenfassung: Datenblatt 'nicht gemaess UBA-Positivliste'. Land aus Domain, nicht aus Impressum."
+        }
+      ],
+      "alternative": "MCM-Systeme/FIP PVC-U Schraegsitz-Rueckschlagventil [Q-Treffer, https://mcm-systeme.de/mediafiles/PDF/FIP/vr_pvc-u_schraegsitz-rueckschlagventil_de_datenblatt.pdf]; Georg Fischer Typ 561 [Q-Treffer, https://ch.rs-online.com/web/p/ruckschlagventile/2140598]."
+    },
+    "MAT-epdm-teichfolie": {
+      "bemerkung_artikel": "EPDM-Teichfolie 1,5 mm: keine Seite selbst gelesen (teichbedarf24.de sperrte dreimal mit HTTP 429), also nur Q-Treffer. Kandidaten: TeichVision EPDM Pro 1,5 mm (teichbedarf24.de), Elevate/Holcim GeoSmart EPDM 1,5 mm (teichbedarf24.de), technisches Datenblatt EPDM 1,52 mm der Teichfolie & Teichfilter TM GmbH (teichfolie.de, PDF nicht gelesen; Bahnenbreiten 3,05 bis 15,25 m). Aussagen zur Fischvertraeglichkeit aus Suchzusammenfassung: Oase-Katalog 2017 nennt seine EPDM-Folien 'fisch- und pflanzenvertraeglich nach WRc'; ein Ratgeber (gartenjournal.net) nennt EPDM weichmacherfrei und fischvertraeglich; fuer das konkrete 1,5-mm-Produkt wurde KEIN Pruefzeugnis gefunden. Lebensmittel: offen (kein Herstellernachweis zu Fisch/Trinkwasser gefunden), Rueckfall: Datenblatt der Teichfolie & Teichfilter TM GmbH als Text lesen und Fisch-/Trinkwasserangabe oder WRc-/KTW-Pruefung beim Hersteller erfragen.",
+      "angebote": [
+        {
+          "preis_eur": null,
+          "bezug_einheit": "m2",
+          "stand": "2026-11-10",
+          "haendler": "Teichbedarf24 (TeichVision EPDM Pro 1,5 mm)",
+          "land": "DE",
+          "url": "https://teichbedarf24.de/en/products/epdm-teichfolie-teichvision-pro-1-5-mm",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Suchtreffer; Seite mit HTTP 429 nicht gelesen. Land aus Domain, Preis und Bezugseinheit offen."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "m2",
+          "stand": "2026-11-10",
+          "haendler": "Teichbedarf24 (Elevate GeoSmart EPDM 1,5 mm)",
+          "land": "DE",
+          "url": "https://teichbedarf24.de/en/products/elevate-epdm-teichfolie-geosmart-1-5-mm",
+          "lieferung_de": "unbekannt",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Suchtreffer, Seite nicht geoeffnet."
+        },
+        {
+          "preis_eur": null,
+          "bezug_einheit": "m2",
+          "stand": "2026-11-10",
+          "haendler": "Teichfolie & Teichfilter TM GmbH (teichfolie.de)",
+          "land": "DE",
+          "url": "https://www.teichfolie.de/media/products/technisches_datenblatt_epdm_teichfolie_1,52mm (2).pdf",
+          "lieferung_de": "ja",
+          "konfidenz": "Q-Treffer",
+          "bemerkung": "Technisches Datenblatt EPDM 1,52 mm; nur Suchausschnitt gesehen (Bahnenbreiten), keine Fischangabe im Ausschnitt; Lieferung DE aus Firmenname/Domain geschlossen, nicht belegt. URL enthaelt Leerzeichen und Klammern."
+        }
+      ],
+      "alternative": "Oase EPDM-Folie 'fisch- und pflanzenvertraeglich nach WRc' (Oase-Katalog 2017, https://www.oase-livingwater.com/fileadmin/pageflip/61146_PK_2017_DE_Internet_2016-10-06.pdf/files/assets/basic-html/page260.html [Q-Treffer]) als Quelle fuer die Angabe; Foliendicke dort nicht geprueft."
+    },
+    "MAT-gitterrost-deckel": {
+      "bemerkung_artikel": "Begehbarer Gitterrost 30/10 feuerverzinkt 1229 x 1026 x 40 mm: weder Mass noch Bauhoehe 40 mm bei Maschenweite 30/10 gefunden (zwei Suchen). Es ist ein Standardprodukt, das auf Mass geschnitten wird: PcP-Datenblatt 'Gitterrost 30/10, Stahl 240 YP, Pressrost nach DIN 24530, Hoehe 30 mm, Tragstab Standard 2 mm, feuerverzinkt' [Q-Treffer, Normnummer der Verzinkung im Suchausschnitt abgeschnitten]; Treppenstufen mit Tragstab 30/2, 30/3 oder 40/3. MEA-Gitterroste 30/10 (Lichtschacht, begehbar, 1,5 kN; Variante 5,0 kN) sind Fertigmasse (z. B. 1000 x 400 mm, Hoehe 20) bei Thies (shop.thies-co.de), baustoffshop.de, Hornbach AT/LU (Datenblatt nennt Klassen A 15 bis C 250 nach DIN 19580 / EN 1433 fuer ein anderes Produkt). Eine Tragklasse fuer 1229 x 1026 x 40 mm liegt NICHT vor; sie haengt von Tragstab und Auflager ab und muss vom Hersteller (Seppeler, MEA, K60 Gitterrostsysteme) fuer Last und Spannweite bescheinigt werden. Kein Wasserkontakt des Deckels als Dauerzustand, aber Sichtkontakt zum Becken: Lebensmittel: nicht verlangt/offen (Zinkueberzug am Wasser nicht belegt), Rueckfall: Gitterrost nur als Abdeckung ueber Wasser, nicht eintauchend, oder Edelstahl-/GFK-Rost.",
+      "angebote": [],
+      "alternative": "Seppeler Pressroste Lager (Hersteller, Lagerprogramm) [Q-Treffer, https://www.seppeler.de/fileadmin/user_upload/Gitterroste/Gitterroste/Lagerprogramm/Pressroste_Lager.pdf]; MEA 30/10 Standardmasse z. B. https://shop.thies-co.de/Gitterrost-1000x400mm-o.ZMW-30-10-H-20-MEA/3810110039 [Q-Treffer]; K60 Gitterrostsysteme (eBay-Shop, Zuschnitt nach Mass, nicht geprueft)."
+    }
+  }
+}

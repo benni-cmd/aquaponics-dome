@@ -146,8 +146,10 @@
   "offen": [
    "Zwei Ventile mit gestaffelter Kugelhoehe sind eine Annahme (D114); die Quelle nennt ein Ventil mit Regenwasser zuerst. Rueckfall: ein Mehrwege-Schwimmerventil oder die Frischwasser-Nachspeisung im Regentank",
    "Handelsteil, Fabrikat und Schliessdruck mit Drossel offen (wie T84); Bezug Europa und Lebensmittelnachweis (D85) siehe data/beschaffung/",
-   "Der Bestand T84 (schwimmerventil_pool) wird in U3/U5 durch dieses Teil ersetzt; T84 bleibt bis dahin unberuehrt"
+   "Der Bestand T84 (schwimmerventil_pool) wird in U3/U5 durch dieses Teil ersetzt; T84 bleibt bis dahin unberuehrt",
+   "Bezug Europa und Lebensmittel (D76, D85), Stand 10.11.2026 aus data/beschaffung/u2_wasserkreislauf.json: ARM-schwimmerventil-nachspeise: R+M Suttner (Online-Shop) (DE), Konfidenz Q; Lebensmittel: offen fuer 701403 (kein Herstellernachweis gefunden), Rueckfall: 701408 mit Trinkwasser-Hinweis (Flyer https://shop; Rueckfall: R+M Suttner 701408 (3/4 Zoll AG mit Kugel, Trinkwasser-Flyer) [Q-Treffer, https://shop.rm-suttner.com/en/low-pressure-equipment/valves/float"
   ],
-  "abweichung": "Kein OBJ-Bestand (Bauteil ersetzt T84 am Fischtank)."
+  "abweichung": "Kein OBJ-Bestand (Bauteil ersetzt T84 am Fischtank).",
+  "referenz": "kein OBJ-Bild (Bauteil neu nach der Quelle): docs/quellen/oasis-showcase-2026-11-10/ (Draufsicht, Seitenprofil) und data/oasis-soll.json"
  }
 }

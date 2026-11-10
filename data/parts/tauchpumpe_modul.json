@@ -1,0 +1,136 @@
+{
+  "komponente": "tauchpumpe_modul",
+  "datei": "designs/components/tauchpumpe_modul.sc",
+  "bauteilgruppe": "Pumpen",
+  "teilenummer": "T110",
+  "stand": "teiledaten",
+  "titel": "Tauchpumpen-Modul (Eco Premium 8000, Kandidat)",
+  "kurz": "Vereinfachter Pumpenkoerper (340 x 280 x 165), Rueckschlagventil d50 und Kabel; Pumpstellen 1 und 2.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 4,
+  "gruppen": [
+    {
+      "id": "pumpe",
+      "name": "Pumpe",
+      "kurz": "Gehaeuse und Kabel.",
+      "teile": [
+        "t_gehaeuse",
+        "t_kabel"
+      ]
+    },
+    {
+      "id": "druck",
+      "name": "Druckleitung",
+      "kurz": "Stutzen und Rueckschlagventil.",
+      "teile": [
+        "t_stutzen",
+        "t_rv"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_gehaeuse",
+      "name": "Pumpengehaeuse",
+      "koerper": [
+        "Gehaeuse"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pumpengehaeuse",
+      "masse_mm": "Masse 23562.0 g, Einzelkoerper 340.0 x 280.0 x 165.0 mm (Modell-Bounding-Box)",
+      "funktion": "Pumpt das Wasser.",
+      "eigenschaften": [
+        "340 x 280 x 165 (Hersteller-Shop, Q)",
+        "8000 l/h, Hmax 4,1 m, Tiefe 4 m (R59)"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tauchpumpe_modul.md, data/components/tauchpumpe_modul.json, data/oasis-soll.json",
+      "bezug": "oase-teichbau.de (Oase Shop) (DE) https://www.oase-teichbau.de/oase-aquamax-eco-premium-8000 [Q]; Oase AquaMax Eco Premium 8000 (Art. 50740). Seite oase-teichbau.de (Oase-Eigenshop DE) am 10.11. gelesen [Q]: 'Nicht lieferbar', Hersteller verweist auf den Nac",
+      "artikel_hinweis": "PMP-tauchpumpe-oase-8000",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_kabel",
+      "name": "Netzkabel",
+      "koerper": [
+        "Kabel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "kabel_pvc",
+      "masse_mm": "Masse 30.5 g, Einzelkoerper 400.0 x 9.0 x 9.0 mm (Modell-Bounding-Box)",
+      "funktion": "Versorgt die Pumpe.",
+      "eigenschaften": [
+        "Ø 9, Ausschnitt 400"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tauchpumpe_modul.md, data/components/tauchpumpe_modul.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_stutzen",
+      "name": "Druckstutzen d50",
+      "koerper": [
+        "Druckstutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 125.1 g, Einzelkoerper 50.0 x 50.0 x 70.0 mm (Modell-Bounding-Box)",
+      "funktion": "Abgang der Pumpe.",
+      "eigenschaften": [
+        "Ø 50 x 70"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tauchpumpe_modul.md, data/components/tauchpumpe_modul.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_rv",
+      "name": "Rueckschlagventil d50",
+      "koerper": [
+        "Rueckschlagventil"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 239.8 g, Einzelkoerper 63.0 x 63.0 x 110.0 mm (Modell-Bounding-Box)",
+      "funktion": "Haelt die Druckleitung gefuellt (A14).",
+      "eigenschaften": [
+        "Ø 63 x 110, Muffen d50"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/tauchpumpe_modul.md, data/components/tauchpumpe_modul.json, data/oasis-soll.json",
+      "bezug": "toom Baumarkt (mediPOOL) (DE) https://toom.de/p/rueckschlagventil-pvc-50-mm-x-2-mit-klebemuffe/2802308 [Q]; Rueckschlagventil PVC d50 mit Klebemuffe: mediPOOL Art. 2802308 bei toom.de [Q]: 'Rueckschlagventil PVC Durchmesser 50 mm x 2 Zoll mit Klebemuffe', Material 'Ku",
+      "artikel_hinweis": "ARM-rueckschlagventil-d50",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

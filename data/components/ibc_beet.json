@@ -1,7 +1,7 @@
 {
  "klasse": "ibc_beet",
  "teilenummer": "T30",
- "beschreibung": "Substratbeet aus halber IBC: IBC-Wanne (Sondermass nach OBJ) mit Randsims und Stuetzen, ungelochtem Sperrboden (V3, D77), Medium als EIN Koerper, Glockensiphon mit Kerben (Standrohr d25, Tankverbinder mit Reduzierhuelse 32/25, Reduktion d40 x d25, Medienschutz Lochblech), stehendem Reinigungsschacht d110, Zulauf-Tropfrohr",
+ "beschreibung": "[Soll nach Quelle A21, D115: Siphon durch das Abtropfgitter bis unten, Vlies und Sieb darueber, Belueftung unten; die Lochblech-Schutzkorb-Beschreibung ist UEBERHOLT, das Modell zeigt bis U3 noch den Medienschutz] Substratbeet aus halber IBC: IBC-Wanne (Sondermass nach OBJ) mit Randsims und Stuetzen, ungelochtem Sperrboden (V3, D77), Medium als EIN Koerper, Glockensiphon mit Kerben (Standrohr d25, Tankverbinder mit Reduzierhuelse 32/25, Reduktion d40 x d25, Medienschutz Lochblech), stehendem Reinigungsschacht d110, Zulauf-Tropfrohr",
  "quelle_masse": "data/layout.json ibc_beds (Laenge, Breite, Hoehe, Z-Unterkante), docs/research/R03.md (Beetaufbau), docs/scope-cards.md ibc_beet; ref-5/ref-6: weisse Wannen mit Rand und Erde/Kies",
  "typen": {
   "aussen_933": {
@@ -36,6 +36,14 @@
   }
  },
  "parameter": {
+  "a21_flutstand": {"wert": 250, "einheit": "mm", "herkunft": "[Q] data/oasis-soll.json fd_aussen/fd_mitte wsp_ueber_fussboden_mm 250 (Flutstand, Quelle A21/A25); U3/U4 setzen ihn, U2 legt nur die Daten fest (D115)"},
+  "a21_boden": {"wert": 70, "einheit": "mm", "herkunft": "[Q] data/oasis-soll.json fd_aussen/fd_mitte boden_ueber_fussboden_mm 70 (Beetboden innen ueber dem Fussboden)"},
+  "a21_standrohr_h": {"wert": 180, "einheit": "mm", "herkunft": "[E] Flutstand 250 minus Beetboden 70 = 180 mm Standrohrhoehe ueber dem Beetboden (der Siphon bestimmt den Flutstand)"},
+  "a21_standrohr_unten": {"wert": 0, "einheit": "mm", "herkunft": "[Q] Quelle fd_aussen.t2: 'der Siphon geht durch das Gitter bis ganz nach unten' = Standrohr endet auf dem Beetboden (Abstand 0)"},
+  "a21_gitter_h": {"wert": 25, "einheit": "mm", "herkunft": "[A] Abtropfgitter am Boden des Beets: PP-Rost 25 mm hoch, Maschen 20 x 20 (Quelle fd_aussen.t2 nennt kein Maß); Geometrie in U3"},
+  "a21_vlies_t": {"wert": 2, "einheit": "mm", "herkunft": "[A] Drainagevlies ueber dem Gitter (Quelle fd_aussen.t3: Vlies und Sieb halten Schlamm fern)"},
+  "a21_sieb_mm": {"wert": 2, "einheit": "mm", "herkunft": "[A] Sieb ueber dem Vlies: Edelstahl-Gewebe Maschenweite 2 mm (haelt Blaehton und Schlamm vom Siphon fern)"},
+  "a21_belueftung_d": {"wert": 8, "einheit": "mm", "herkunft": "[A] Belueftung unten im Beet (Quelle fd_aussen.t4: 'etwas Belueftung unten, damit nichts gammelt'): Luftschlauch Ø 8 mit Ausstroemer unter dem Gitter; Luftquelle in der Quelle nicht festgelegt"},
   "wall": {
    "wert": 4,
    "einheit": "mm",
@@ -275,7 +283,7 @@
  },
  "bezugspunkt": "Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienoberflaeche bei hoehe - rim_gap; Ablaufport unter dem Boden (Z < 0); Wannen sind eingelassen (z0 -162 bis -209, Integrator)",
  "blatt": {
-  "funktion": "Substratbeet (Fluten und Entleeren per Glockensiphon): Pflanzen (Instanzen; 288 je Aussenbeet, Beet bei Azimut 113 hat 144) in Netztoepfen im Medium (Blaehton/Kies), Wasser fliesst ueber das Tropfrohr zu, der Glockensiphon entleert das Beet in Zyklen bis auf 12 mm Film ueber dem ungelochten Sperrboden (V3, D77: kein stehendes Wasser unter dem Medium); zugleich Biofilterflaeche. Ein stehender Reinigungsschacht d110 erlaubt das Absaugen von Schlamm.",
+  "funktion": "[Soll nach Quelle A21 (U2, D115), ersetzt die Lochblech-Schutzkorb-Beschreibung: jedes Beet hat einen Siphon, der durch ein Abtropfgitter am Boden bis ganz nach unten reicht; Vlies und Sieb ueber dem Gitter halten Schlamm und Medium fern; etwas Belueftung unten verhindert Faulstellen; Flutstand 250 mm ueber dem Fussboden. Die Teile stehen in den Parametern a21_* und in der Teileliste; die .sc-Geometrie (Medienschutz, Sperrboden) bleibt bis U3 unveraendert und wird dort auf A21 umgebaut.] Substratbeet (Fluten und Entleeren per Glockensiphon): Pflanzen (Instanzen; 288 je Aussenbeet, Beet bei Azimut 113 hat 144) in Netztoepfen im Medium (Blaehton/Kies), Wasser fliesst ueber das Tropfrohr zu, der Glockensiphon entleert das Beet in Zyklen bis auf 12 mm Film ueber dem ungelochten Sperrboden (V3, D77: kein stehendes Wasser unter dem Medium); zugleich Biofilterflaeche. Ein stehender Reinigungsschacht d110 erlaubt das Absaugen von Schlamm.",
   "querschnitt": "Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm OHNE Lochung auf 15 (innen, 5 x 3) bzw. 24 (aussen, 8 x 3) Stuetzkloetzen 60 x 60 (Abstand <= 420 mm), einzige Oeffnung = Plattenhuelse (Tankverbinder D36, Flansch D50 auf der Wasserseite, Reduzierhuelse 32/25); Medium 300 mm (EIN Koerper) mit Oberflaeche 75 mm unter dem Rand, Ausschnitte d110 fuer Medienschutz und Reinigungsschacht; Glockensiphon: Standrohr d25, Glocke d75 x 295 (4 Kerben 10 x 12 am Fuss, Luftloch 10), Medienschutz Lochblech V2A d110 x 1,5 x 320 (Modell: 2 Ringe x 12 Schlitze 5 x 50) mit loser Kappe; Reinigungsschacht PVC-U/KG d110 x 3, Oberkante 20 mm ueber dem Medium, Kappe, 2 Kerben 30 x 30; Reduktion d40 x d25 unter dem Bulkhead (Port z -30).",
   "toleranzen": "Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase = Standrohrkante, 265 mm ueber der Plattenoberkante = 35 mm unter der Medienoberflaeche (Orchestrator-Vorgabe 29.10.). Restwasser nach dem Ablauf: Film bis Kerben-Oberkante (Plattenoberkante + 12 mm), gerechnet 9,3 l (aussen_800), 7,6 l (innen_933), 12,3 l (aussen_933) bei 40 % Porositaet [A] (scripts/w40_beet_rechnung.py); Haftwasser im Korn bleibt. Entleerzeit d25: 3,6 bis 5,1 min (aussen_800), 4,7 bis 6,7 min (aussen_933) gegen R45 4,3 bis 6,1 min (R45 setzt fest 234 l an, die Rechnung nimmt die Beetflaeche; Abweichung ausgewiesen, Sollbereich unveraendert).",
   "ports": [
@@ -397,11 +405,12 @@
    "Triage in docs/workshop-log.md"
   ],
   "offen": [
+   "A21 (U2, D115): Die vier Beet-Komponenten zeigen im Modell noch Medienschutz (Lochblech) und ungelochten Sperrboden (V3, D77). Die Quelle verlangt Abtropfgitter, Siphon bis ganz nach unten, Vlies und Sieb, Belueftung unten; das Beet leert sich damit ganz (wie W57), D77 (12 mm Restfilm ueber dem Sperrboden) aendert sich. Geometrie, check_ibc_beet.py und Teileliste folgen in U3/U8. Luftquelle der Beet-Belueftung ist in der Quelle nicht festgelegt (die Arme der Luftpumpen gehen zu Biofilter, Sumpf, Becken, Fischtank), Maße von Gitter, Vlies und Sieb sind Annahme",
    "Dichtheit des Sperrbodens (Plattenrand, Plattenhuelse) und Anspringen des Siphons bei 3,3 l/min nur am Muster pruefbar; Leckwasser unter der Platte waere wieder stehendes Wasser",
    "Luftkammer unter dem Sperrboden (262 bis 274 mm hoch) bleibt ungenutzt und trocken; Alternative \"IBC kuerzer schneiden\" waere ein Layout-Eingriff (Z-Hoehen, Tische R35/R36), nicht Teil von W40-BEET",
    "Dichtband-Mass offen (EPDM-Zellkautschuk selbstklebend, Spalt 2 mm; 10 x 10 selbstklebend nicht nachgewiesen)",
    "Reduzierhuelse 32/25: Baulaenge 22 mm (Bevo-Katalogzeile) gegen Huelsenlaenge im Modell (Boden 39 mm, Platte 15 mm); Modell vereinfacht, Datenblatt nicht gelesen",
-   "Schutzkorb: Anfrage Metallbauer (Zuschnitt, Rollen) liegt bei Ben; Lochblech im Modell als Schlitze 5 x 50 vereinfacht (real Rundloch d5, Teilung 8)",
+   "UEBERHOLT durch A21 (D115), Anfrage nur noch falls das Lochblech als Rueckfall bleibt: Schutzkorb: Anfrage Metallbauer (Zuschnitt, Rollen) liegt bei Ben; Lochblech im Modell als Schlitze 5 x 50 vereinfacht (real Rundloch d5, Teilung 8)",
    "Flansch D50, Tankverbinder-Aussenmass D36, Reduktions-Bauhoehe 50 mm, Wandstaerken Rohre: Annahmen [A], Datenblaetter der Kaufteile nicht gelesen",
    "Optionale Nachlaufbohrung d4 im Standrohr nur wenn der Film am Muster zu gross ist (Rechnung 0,5 bis 1,0 l/min je nach Ausflussbeiwert)",
    "Orchestrator/Montage: Netz K14/K30 `hoehe` (Beetablauf Achse etwa -260 aussen / -290 innen statt -100) und Sumpf-Einlauf; Systemwasserbilanz und Gewichte ohne Wasserraum (rund 6280 l weniger); Montage baut 14 Beete im Dom neu; `data/descriptions.json` (Beet-Beschreibung nennt noch Schlitze, Siebboden, Standrohr 220) nachziehen",
@@ -414,6 +423,9 @@
    "Medium"
   ],
   "teileliste": [
+   ["Abtropfgitter am Beetboden (A21)", "PP-Rost 25 mm hoch, Maschen 20 x 20 [A]", "offen: Recherche folgt in U8 (D76)", "A21 Quelle fd_aussen.t2, Bezug offen"],
+   ["Vlies und Sieb ueber dem Gitter (A21)", "Drainagevlies 2 mm, Edelstahl-Gewebe 2 mm [A]", "offen: Recherche folgt in U8 (D76)", "A21 Quelle fd_aussen.t3, Bezug und Lebensmittelnachweis offen (D85)"],
+   ["Belueftung unten im Beet (A21)", "Luftschlauch Ø 8 mit Ausstroemer [A]", "offen: Recherche folgt in U8; Luftquelle offen", "A21 Quelle fd_aussen.t4, Bezug offen"],
    [
     "Reduktion kurz 40 x 25",
     "PVC-U Klebefitting mit Klebstutzen und Klebmuffe",
@@ -433,7 +445,7 @@
     "beschaffbar; Modell rechnet Wand 3 mm: auf 2,9 oder 3,6 mm abstimmen"
    ],
    [
-    "Schutzkorb Lochblech",
+    "Schutzkorb Lochblech (UEBERHOLT durch A21, D115)",
     "Edelstahl 1.4301, 1,5 mm, Rundloch 5 mm, Teilung 8, Zuschnitt etwa 366 x 340 mm, gerollt, genietet",
     "ehorst.de (DE) Lochblech Edelstahl 1.4301 RV 5-8 1,50 1000 x 2000 mm DIN 24041, Art. 1003438 [R51]; Zuschnitt und Rollen beim Metallbauer (Entscheidung Ben 04.11.2026, D77)",
     "beschaffbar als Tafelware; Anfrage Metallbauer: Ben (offen)"
@@ -477,6 +489,7 @@
   ]
  },
  "herkunft_tabelle": [
+  ["Siphon mit Abtropfgitter, Vlies, Sieb, Belueftung unten (A21)", "Parameter a21_*", "Q/A", "data/oasis-soll.json fd_aussen.t1 bis t4 (Quelle A21); Maße Annahme; ersetzt den Lochblech-Schutzkorb (W40-BEET, D77), Abweichung Nr. 14 im Paket n-unify-autobahn, D115", "mittel"],
   [
    "Aussenmass 2953 x 933/993 x 637 bzw. 1865 x 933 x 649",
    "mm",
@@ -618,7 +631,7 @@
    "mittel"
   ],
   [
-   "Medienschutz Lochblech V2A d110 x 1,5 x 320, lose Kappe",
+   "UEBERHOLT durch A21 (D115): Medienschutz Lochblech V2A d110 x 1,5 x 320, lose Kappe",
    "d110 x 320",
    "R51 + Ben D77",
    "R51 T30e-4 (Rundloch d5, Teilung 8, 35 % offen); Modell 2 Ringe x 12 Schlitze 5 x 50 = 6000 mm2 = 15,8 x Standrohr; Zuschnitt und Rollen beim Metallbauer",

@@ -1,0 +1,101 @@
+{
+  "komponente": "schwimmerschalter_hochstand",
+  "datei": "designs/components/schwimmerschalter_hochstand.sc",
+  "bauteilgruppe": "Armaturen",
+  "teilenummer": "T105",
+  "stand": "teiledaten",
+  "titel": "Schwimmerschalter Hochstand",
+  "kurz": "Kabel-Schwimmerschalter, der im Sumpf den Hochstand bei -110 mm meldet und ueber die Steuerung die Pumpe Fischtank zu Filter abschaltet.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 3,
+  "gruppen": [
+    {
+      "id": "schalter",
+      "name": "Schalter und Leitung",
+      "kurz": "Schwimmer, Klemme und Meldeleitung.",
+      "teile": [
+        "t_schwimmer",
+        "t_klemme",
+        "t_kabel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_schwimmer",
+      "name": "Schwimmerschalter",
+      "koerper": [
+        "Schwimmer"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 163.4 g, Einzelkoerper 70.0 x 70.0 x 70.0 mm (Modell-Bounding-Box)",
+      "funktion": "Schaltet beim Hochstand.",
+      "eigenschaften": [
+        "Kugel Ø 70, Mitte = Schaltpunkt"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerschalter_hochstand.md, data/components/schwimmerschalter_hochstand.json, data/oasis-soll.json",
+      "bezug": "Finder (Hersteller-Datenblatt Serie 72) (unbekannt) https://cdn.findernet.com/app/uploads/ZDPDEXX72A1.pdf [Q-Treffer]; Kein Haendlerangebot mit selbst gelesenen Werten gefunden: die Datenblatt-PDFs (Findernet 72, R+S ENM-10) liessen sich nur als Binaerdatei laden; die Gardena-Se",
+      "artikel_hinweis": "ARM-schwimmerschalter-hochstand",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_klemme",
+      "name": "Kabelklemme",
+      "koerper": [
+        "Kabelklemme"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pa",
+      "masse_mm": "Masse 29.5 g, Einzelkoerper 30.0 x 30.0 x 30.0 mm (Modell-Bounding-Box)",
+      "funktion": "Haelt das Kabel in der Aufnahme.",
+      "eigenschaften": [
+        "PA 30 x 30 x 30, Bohrung 7"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerschalter_hochstand.md, data/components/schwimmerschalter_hochstand.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_kabel",
+      "name": "Meldeleitung (Ausschnitt)",
+      "koerper": [
+        "Kabel"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "kabel_pvc",
+      "masse_mm": "Masse 18.5 g, Einzelkoerper 7.0 x 7.0 x 400.0 mm (Modell-Bounding-Box)",
+      "funktion": "Fuehrt das Signal zur Steuerung.",
+      "eigenschaften": [
+        "Ø 7, Ausschnitt 400"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/schwimmerschalter_hochstand.md, data/components/schwimmerschalter_hochstand.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

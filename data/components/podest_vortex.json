@@ -82,7 +82,8 @@
    "Statik (Kippsicherheit, Horizontallast, Fussbodenanker) ist Sache von N-STATIK; der Check rechnet nur Stuetzendruck und Knicken",
    "Verzinkung und Werkstoff-Lebensmittelnachweis nicht noetig (kein Wasserkontakt)"
   ],
-  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle).",
+  "referenz": "kein OBJ-Bild (Bauteil neu nach der Quelle): docs/quellen/oasis-showcase-2026-11-10/ (Draufsicht, Seitenprofil) und data/oasis-soll.json"
  },
  "u2": {
   "tank": "tank_klein",

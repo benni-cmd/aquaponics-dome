@@ -1773,6 +1773,393 @@
         "Kleidung blau, Weste orange, Kopf und Hände hautfarben (Hinweis, im Modell nur Materialien)."
       ],
       "quelle": "Drillis und Contini (Körperproportionen als Anteile der Körperhöhe); docs/parts/mensch_referenz.md; Ben 31.10. (D47)"
+    },
+    {
+      "match": "^sumpftank",
+      "titel": "Sumpftank (Grube mit Pufferzonen)",
+      "was": "Die Grube im Boden sammelt die Ruecklaeufe einer Linie, hat vier Pufferzonen, einen begehbaren Deckel und Platz fuer Pumpe und Schwimmerschalter.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Die Ruecklaeufe der Anbauringe laufen durch die Zulauftuellen in die Hauptkammer.",
+        "Die Pumpe auf dem Sockel hebt das Wasser 1,00 m in den Fischtank; der Soll-Pegel ist -250 mm.",
+        "Der Schwimmerschalter meldet den Hochstand bei -110 mm; die Zonen am Ende nehmen Kalk oder Aktivkohle auf."
+      ],
+      "aufbau": [
+        {
+          "t": "Grube",
+          "p": [
+            "Betonwanne",
+            "EPDM-Folie (Belag)",
+            "Wasserfuellung (nur Darstellung)"
+          ]
+        },
+        {
+          "t": "Pufferzonen",
+          "p": [
+            "Trennwand Pufferzone (4x)",
+            "Zonenschild (4x)"
+          ]
+        },
+        {
+          "t": "Einbauten",
+          "p": [
+            "Pumpensockel",
+            "Zulauftuelle ID25 (3x)",
+            "Schwimmerhalter"
+          ]
+        },
+        {
+          "t": "Deckel",
+          "p": [
+            "Deckelplatte Gitterrost (3x)"
+          ]
+        }
+      ],
+      "masse": {
+        "Grube innen": "1125 x 2975 x 500 mm",
+        "Soll-Pegel": "-250 mm (823 l im Modell, Soll 850 l)",
+        "Pufferzonen": "4 x 212 mm",
+        "Hochstand": "-110 mm"
+      },
+      "grenzen": "Der Durchstroem der Pufferzonen (auf/ab) ist als passiver Austausch angenommen (D112); Statik und Auftrieb der Betonwanne sind offen.",
+      "quelle": "docs/parts/sumpftank.md, data/oasis-soll.json (sump_1)"
+    },
+    {
+      "match": "^podest_vortex",
+      "titel": "Podest Vortex",
+      "was": "Stahlrahmen, der tank_klein um 577 mm anhebt, damit der Ueberlauf auf dem Soll-Wasserspiegel liegt.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Der Rahmen steht auf dem Fussboden und traegt tank_klein.",
+        "Die Hoehe ist ein Parameter und folgt dem Soll-Wasserspiegel.",
+        "Das Wasser laeuft danach per Schwerkraft weiter."
+      ],
+      "aufbau": [
+        {
+          "t": "Rahmen",
+          "p": [
+            "Stuetze (4x)",
+            "Fussrahmen (4x)",
+            "Kopfrahmen (4x)"
+          ]
+        },
+        {
+          "t": "Platten und Bleche",
+          "p": [
+            "Fussplatte (4x)",
+            "Knotenblech (8x)"
+          ]
+        }
+      ],
+      "masse": {
+        "Hoehe": "577 mm",
+        "Standflaeche": "Rahmen + 60 mm",
+        "Profil": "Vierkantrohr 40 x 40 x 3",
+        "Teile": "24 Koerper"
+      },
+      "grenzen": "Statik (Kippen, Horizontalkraefte, Fussbodenanker) ist offen (N-STATIK); der Check rechnet nur Druck und Knicken.",
+      "quelle": "docs/parts/podest_vortex.md, data/oasis-soll.json"
+    },
+    {
+      "match": "^podest_biofilter",
+      "titel": "Podest Biofilter",
+      "was": "Stahlrahmen, der tank_gross um 230 mm anhebt, damit der Ueberlauf auf dem Soll-Wasserspiegel liegt.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Der Rahmen steht auf dem Fussboden und traegt tank_gross.",
+        "Die Hoehe ist ein Parameter und folgt dem Soll-Wasserspiegel.",
+        "Das Wasser laeuft danach per Schwerkraft weiter."
+      ],
+      "aufbau": [
+        {
+          "t": "Rahmen",
+          "p": [
+            "Stuetze (4x)",
+            "Fussrahmen (4x)",
+            "Kopfrahmen (4x)"
+          ]
+        },
+        {
+          "t": "Platten und Bleche",
+          "p": [
+            "Fussplatte (4x)",
+            "Knotenblech (8x)"
+          ]
+        }
+      ],
+      "masse": {
+        "Hoehe": "230 mm",
+        "Standflaeche": "Rahmen + 60 mm",
+        "Profil": "Vierkantrohr 40 x 40 x 3",
+        "Teile": "24 Koerper"
+      },
+      "grenzen": "Statik (Kippen, Horizontalkraefte, Fussbodenanker) ist offen (N-STATIK); der Check rechnet nur Druck und Knicken.",
+      "quelle": "docs/parts/podest_biofilter.md, data/oasis-soll.json"
+    },
+    {
+      "match": "^venturi_belueffter",
+      "titel": "Venturi-Belueffter",
+      "was": "Passiver Injektor im Druckrohr d50, der Luft ins Ruecklaufwasser saugt, bevor es in den Fischtank laeuft.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Die Pumpe am Sumpf drueckt das Wasser durch den Injektor.",
+        "Die Verengung erzeugt Unterdruck und saugt Luft ueber Filter und Ventil an.",
+        "Das belueftete Wasser laeuft in den Fischtank."
+      ],
+      "aufbau": [
+        {
+          "t": "Injektor",
+          "p": [
+            "Injektor (Klasse Mazzei 1583)",
+            "Klebemuffe d50 (2x)"
+          ]
+        },
+        {
+          "t": "Luftweg",
+          "p": [
+            "Ansaugstutzen",
+            "Rueckschlagventil Luft",
+            "Luftfilter"
+          ]
+        }
+      ],
+      "masse": {
+        "Laenge": "270 mm (Port A bis B)",
+        "Rohr": "d50",
+        "Durchsatz Soll": "110 l/min je Linie",
+        "Injektor": "Klasse Mazzei 1583 (Ø 64 x 150, Annahme)"
+      },
+      "grenzen": "Antriebsdruck und Durchsatz sind nicht belegt: Tabelle verlangt rund 0,7 bar, die Tauchpumpe liefert hoechstens 0,3 bis 0,4 bar (R60, R59).",
+      "quelle": "docs/parts/venturi_belueffter.md, data/oasis-soll.json (venturi_1)"
+    },
+    {
+      "match": "^schwimmerschalter_hochstand",
+      "titel": "Schwimmerschalter Hochstand",
+      "was": "Kabel-Schwimmerschalter, der im Sumpf den Hochstand bei -110 mm meldet und ueber die Steuerung die Pumpe Fischtank zu Filter abschaltet.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Der Schwimmer haengt in der Aufnahme im Sumpf; seine Mitte liegt auf dem Hochstand -110 mm.",
+        "Steigt das Wasser, schaltet er und meldet an die Steuerung.",
+        "Die Steuerung schaltet die Pumpe Fischtank zu Filter dieser Linie ab."
+      ],
+      "aufbau": [
+        {
+          "t": "Schalter und Leitung",
+          "p": [
+            "Schwimmerschalter",
+            "Kabelklemme",
+            "Meldeleitung (Ausschnitt)"
+          ]
+        }
+      ],
+      "masse": {
+        "Schaltpunkt": "-110 mm",
+        "Wiedereinschalten": "-180 mm (Annahme)",
+        "Schwimmer": "Ø 70"
+      },
+      "grenzen": "Fabrikat und Schaltdifferenz offen; Steuerung gehoert zu U6.",
+      "quelle": "docs/parts/schwimmerschalter_hochstand.md, data/oasis-soll.json (schwimmer_1)"
+    },
+    {
+      "match": "^notluftpumpe",
+      "titel": "Notluftpumpe",
+      "was": "Luftpumpe mit Luftstein im Fischtank, startet bei Ausfall der Wasserpumpen oder des Netzes.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Bei Ausfall der Wasserpumpen oder des Netzes startet die Steuerung die Luftpumpe am Notstrom.",
+        "Die Luft steigt ueber den Rand des Fischtanks (Schleife) und faellt zum Luftstein.",
+        "Der Stein haelt die Fische mit Sauerstoff am Leben."
+      ],
+      "aufbau": [
+        {
+          "t": "Pumpe",
+          "p": [
+            "Luftpumpe (Platzhalter)",
+            "Ausgangstuelle",
+            "Rueckschlagventil Luft"
+          ]
+        },
+        {
+          "t": "Leitung und Stein",
+          "p": [
+            "Luftschlauch (Ausschnitt) (4x)",
+            "Luftstein"
+          ]
+        }
+      ],
+      "masse": {
+        "Luftmenge": "55 l/min Richtwert (offen)",
+        "Schleife": "Z 1300 (Rand 1200 + 100)",
+        "Luftstein": "Z -980 bis -880"
+      },
+      "grenzen": "Leistung und Luftmenge wie in der Quelle offen (A24).",
+      "quelle": "docs/parts/notluftpumpe.md, data/oasis-soll.json (luftpumpe)"
+    },
+    {
+      "match": "^nachspeise_ventil",
+      "titel": "Nachspeise-Ventil (Regenwasser zuerst)",
+      "was": "Zwei Schwimmerventile am Fischtank: erst Regenwasser, bei dessen Ausbleiben 30 mm tiefer Frischwasser.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Sinkt der Spiegel im Fischtank, oeffnet das Regenwasser-Ventil.",
+        "Kommt kein Regenwasser nach, sinkt der Spiegel um 30 mm und das Frischwasser-Ventil oeffnet.",
+        "Steigt der Spiegel, schliessen beide."
+      ],
+      "aufbau": [
+        {
+          "t": "Ventil Regenwasser",
+          "p": [
+            "Uebergang Klebemuffe d25 (2x)",
+            "Ventilgehaeuse 3/4 Zoll (2x)",
+            "Wangenhalter (4x)",
+            "Hebelarm mit Schwimmerkugel (2x)"
+          ]
+        }
+      ],
+      "masse": {
+        "Rohrachse": "510 mm ueber dem Spiegel",
+        "Staffelung": "30 mm",
+        "Eingaenge": "A Regenwasser, B Frischwasser (y 120)"
+      },
+      "grenzen": "Zwei Ventile mit Staffelung sind Annahme D114; Maße Platzhalter wie T84.",
+      "quelle": "docs/parts/nachspeise_ventil.md, data/oasis-soll.json (nachspeise)"
+    },
+    {
+      "match": "^schlamm_sammelbehaelter",
+      "titel": "Schlamm-Sammelbehaelter",
+      "was": "Oberirdischer Behaelter fuer 350 l Schlamm mit Ablasshahn von Hand, ausserhalb des Wasserkreislaufs.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Der Schlamm laeuft vom Vortex per Schwerkraft in den Behaelter.",
+        "Der Ablasshahn bleibt zu, bis der Behaelter von Hand geleert wird.",
+        "Der Schlamm geht von Hand zum Permakultur-Modul."
+      ],
+      "aufbau": [
+        {
+          "t": "Behaelter",
+          "p": [
+            "Behaelter 350 l",
+            "Deckel"
+          ]
+        },
+        {
+          "t": "Anschluesse",
+          "p": [
+            "Einlaufstutzen d40",
+            "Entlueftung",
+            "Ablaufrohr d40",
+            "Kugelhahn d40",
+            "Hahnhebel"
+          ]
+        }
+      ],
+      "masse": {
+        "Inhalt": "350 l",
+        "Aussen": "Ø 900 x 600",
+        "Ablass": "Kugelhahn d40 bei Z 40"
+      },
+      "grenzen": "Maße nach der Zeichnung (Radius 450); Fabrikat offen.",
+      "quelle": "docs/parts/schlamm_sammelbehaelter.md, data/oasis-soll.json (sludge_1)"
+    },
+    {
+      "match": "^regentank_5m3",
+      "titel": "Regentank 5 m3 (Platzhalter)",
+      "was": "Stehender PE-Tank fuer 5000 l Regenwasser, erste Wahl der Nachspeisung.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Regenwasser fuellt den Tank.",
+        "Das Nachspeise-Ventil holt bei Bedarf Wasser ueber den Auslauf d25.",
+        "Bei vollem Tank laeuft das Wasser ueber den Ueberlauf d63 ab."
+      ],
+      "aufbau": [
+        {
+          "t": "Tank",
+          "p": [
+            "Regentank 5000 l",
+            "Domschacht",
+            "Domdeckel"
+          ]
+        },
+        {
+          "t": "Stutzen",
+          "p": [
+            "Auslaufstutzen d25",
+            "Ueberlaufstutzen d63"
+          ]
+        }
+      ],
+      "masse": {
+        "Inhalt": "5000 l (innen 4,97 m3)",
+        "Aussen": "Ø 1700 x 2300"
+      },
+      "grenzen": "Maße, Lage und Typ sind Annahme (D107); Fundament offen.",
+      "quelle": "docs/parts/regentank_5m3.md, data/oasis-soll.json (rain)"
+    },
+    {
+      "match": "^permakultur_modul",
+      "titel": "Permakultur-Modul (Platzhalter)",
+      "was": "Kompostbox und Futterzuchtkiste, die den Schlamm von Hand aufnehmen.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Der Schlamm wird von Hand aus dem Sammelbehaelter eingefuellt.",
+        "Kompost und Wuermer bauen ihn ab.",
+        "Es gibt keinen Rueckweg ins Wasser."
+      ],
+      "aufbau": [
+        {
+          "t": "Kompostbox",
+          "p": [
+            "Kompostbox",
+            "Deckel"
+          ]
+        },
+        {
+          "t": "Futterzucht",
+          "p": [
+            "Futterzuchtkiste"
+          ]
+        }
+      ],
+      "masse": {
+        "Kompostbox": "1500 x 525 x 600",
+        "Kiste": "800 x 525 x 350"
+      },
+      "grenzen": "Platzhalter; Permakultur um den Dom nicht modelliert.",
+      "quelle": "docs/parts/permakultur_modul.md, data/oasis-soll.json (permakultur)"
+    },
+    {
+      "match": "^tauchpumpe_modul",
+      "titel": "Tauchpumpen-Modul (Eco Premium 8000, Kandidat)",
+      "was": "Vereinfachter Pumpenkoerper (340 x 280 x 165), Rueckschlagventil d50 und Kabel; Pumpstellen 1 und 2.",
+      "status": "Komponente gebaut und geprueft (U2), noch nicht im Gesamtmodell",
+      "ablauf": [
+        "Die Pumpe saugt unten am Becken an.",
+        "Das Rueckschlagventil haelt die Leitung bei Stillstand gefuellt.",
+        "Pumpstelle 1 hebt 1,15 m in den Vortex, Pumpstelle 2 hebt 1,00 m in den Fischtank."
+      ],
+      "aufbau": [
+        {
+          "t": "Pumpe",
+          "p": [
+            "Pumpengehaeuse",
+            "Netzkabel"
+          ]
+        },
+        {
+          "t": "Druckleitung",
+          "p": [
+            "Druckstutzen d50",
+            "Rueckschlagventil d50"
+          ]
+        }
+      ],
+      "masse": {
+        "Gehaeuse": "340 x 280 x 165 mm",
+        "Gesamthoehe": "314 mm bis Port",
+        "Hub": "1,15 m und 1,00 m"
+      },
+      "grenzen": "Kennlinie nur aus Qmax/Hmax gerechnet; mit Venturi nicht belegt; Typ Kandidat (R59).",
+      "quelle": "docs/parts/tauchpumpe_modul.md, data/oasis-soll.json (filterpumpe_1)"
     }
   ]
 }

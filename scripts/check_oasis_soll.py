@@ -123,6 +123,34 @@ def measure(pt, instances, floor, soll_ids):
 MESSDATA = load(MESS)
 
 
+def komponenten_hoehen(soll):
+    """U2 (Komponenten, nicht Gesamtmodell): Hoehenparameter der neuen Bauteile gegen die Soll-Datei. Gebaut als Komponente = 'Komponente ok';
+    im Gesamtmodell sind sie erst nach U4/U5 -> 'ausstehend' (kein Fehler, aendert weder Exit-Code noch die Messung oben)."""
+    def par(name):
+        return {k: v["wert"] for k, v in load(os.path.join(ROOT, "data", "components", name + ".json"))["parameter"].items()}
+
+    def h(i, k):
+        return soll[i]["hoehen"][k]
+    zeilen = []
+    for nm, i, tank in (("podest_vortex", "vortex_1", 1323), ("podest_biofilter", "bio_1", 1570)):
+        zeilen.append((nm, "%s_h Podesthoehe" % nm, par(nm)[nm + "_h"], h(i, "wsp_ueber_fussboden_mm") - tank, "Soll-Wsp %d minus Tank/Ueberlauf %d" % (h(i, "wsp_ueber_fussboden_mm"), tank)))
+    s = par("sumpftank")
+    zeilen += [("sumpftank", "Boden", -s["pit_d"], h("sump_1", "boden_ueber_fussboden_mm"), "sump_1"), ("sumpftank", "Soll-Pegel", s["wsp"], h("sump_1", "wsp_ueber_fussboden_mm"), "sump_1"),
+               ("sumpftank", "Hochstand", s["hochstand"], h("sump_1", "hochstand_ueber_fussboden_mm"), "sump_1"),
+               ("schwimmerschalter_hochstand", "Schaltpunkt", par("schwimmerschalter_hochstand")["schaltpunkt"], h("sump_1", "hochstand_ueber_fussboden_mm"), "schwimmer_1 = Hochstand Sumpf")]
+    n = par("nachspeise_ventil")
+    zeilen.append(("nachspeise_ventil", "Rohrachse ueber Spiegel", n["ventil_h"], h("fish", "rand_ueber_fussboden_mm") - h("fish", "wsp_ueber_fussboden_mm") + 60, "Rand - Wsp + 60"))
+    zeilen.append(("notluftpumpe", "Schlauch-Schleife (>= Rand + 50)", par("notluftpumpe")["schleife_z"], h("fish", "rand_ueber_fussboden_mm") + 100, "Rand + 100"))
+    zeilen.append(("venturi_belueffter", "Achse ueber Fischtank-Spiegel", par("venturi_belueffter")["achse_ueber_spiegel"], 1650 - 400 - h("fish", "wsp_ueber_fussboden_mm"), "Lage-Probe Modell-Z 1650 - Fussboden 400 - Wsp"))
+    print("Komponenten (U2, Hoehenparameter der neuen Bauteile; Gesamtmodell ausstehend bis U4/U5, nicht Teil der Messung oben)")
+    print("%-28s %-34s %8s %8s  %s" % ("Komponente", "Hoehenparameter", "Wert", "Soll", "Urteil"))
+    for nm, was, ist, sl, why in zeilen:
+        print("%-28s %-34s %8g %8g  %s (%s)" % (nm, was, ist, sl, "Komponente ok" if abs(ist - sl) < 1e-9 else "ABWEICHUNG Komponente", why))
+    for nm in ("tauchpumpe_modul", "schlamm_sammelbehaelter", "regentank_5m3", "permakultur_modul"):
+        print("%-28s %-34s %8s %8s  Komponente gebaut, Quelle legt keine Hoehe fest (stufe_status offen) / Hub aus Soll-Datei" % (nm, "-", "-", "-"))
+    print("  Gesamtmodell: ausstehend (Komponenten in dome-ring_b2.sc erst ab U4/U5)")
+
+
 def main():
     soll = {b["id"]: b for b in load(SOLL)["bauteile"]}
     tol = MESSDATA["toleranz_mm"]
@@ -180,6 +208,8 @@ def main():
         else:
             bad += 1
             print("  %-10s > %-10s nicht pruefbar (Messwert fehlt)  (%s)" % (hi, lo, why))
+    if arg("--teil", "") in ("technik", "alle"):
+        komponenten_hoehen(soll)
     print("ERGEBNIS: %s (%d Abweichungen oder fehlende Werte)" % ("BESTANDEN" if not bad else "ABWEICHUNG", bad))
     return 1 if bad else 0
 

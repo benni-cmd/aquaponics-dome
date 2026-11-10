@@ -1,0 +1,163 @@
+{
+  "komponente": "venturi_belueffter",
+  "datei": "designs/components/venturi_belueffter.sc",
+  "bauteilgruppe": "Armaturen",
+  "teilenummer": "T104",
+  "stand": "teiledaten",
+  "titel": "Venturi-Belueffter",
+  "kurz": "Passiver Injektor im Druckrohr d50, der Luft ins Ruecklaufwasser saugt, bevor es in den Fischtank laeuft.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 6,
+  "gruppen": [
+    {
+      "id": "injektor",
+      "name": "Injektor",
+      "kurz": "Injektorkoerper und Muffen d50.",
+      "teile": [
+        "t_injektor",
+        "t_muffe"
+      ]
+    },
+    {
+      "id": "luft",
+      "name": "Luftweg",
+      "kurz": "Stutzen, Rueckschlagventil und Filter.",
+      "teile": [
+        "t_stutzen",
+        "t_rv",
+        "t_filter"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_injektor",
+      "name": "Injektor (Klasse Mazzei 1583)",
+      "koerper": [
+        "Injektor"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 300.2 g, Einzelkoerper 150.0 x 64.0 x 64.0 mm (Modell-Bounding-Box)",
+      "funktion": "Erzeugt Unterdruck und saugt Luft an.",
+      "eigenschaften": [
+        "Ø 64 x 150 (Annahme)",
+        "Durchgang Ø 36 vereinfacht"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/venturi_belueffter.md, data/components/venturi_belueffter.json, data/oasis-soll.json",
+      "bezug": "offen: Mazzei Injektor 1583: in Europa KEIN Haendler gefunden (zwei Suchen). Treffer nur aus den USA: Newegg 1583A-PVDF (1,5 Zoll MNPT, 261,04 USD) und Irrigation King 1583-A-PP (78,27 USD) [Q-Treffer, US, n",
+      "artikel_hinweis": "ARM-venturi-mazzei-1583",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_muffe",
+      "name": "Klebemuffe d50",
+      "koerper": [
+        "Muffe_Ein",
+        "Muffe_Aus"
+      ],
+      "menge": 2,
+      "typ": "normteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 198.5 g, Einzelkoerper 60.0 x 58.5 x 58.5 mm (Modell-Bounding-Box)",
+      "funktion": "Verbindet den Injektor mit dem Druckrohr d50.",
+      "eigenschaften": [
+        "PVC-U, Aussen 58,5, Tiefe 31"
+      ],
+      "norm": "DIN 8063 / EN 1452 (PVC-U Formstuecke) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/venturi_belueffter.md, data/components/venturi_belueffter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_stutzen",
+      "name": "Ansaugstutzen",
+      "koerper": [
+        "Saugstutzen"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 11.0 g, Einzelkoerper 24.0 x 24.0 x 30.0 mm (Modell-Bounding-Box)",
+      "funktion": "Luftanschluss am Injektor.",
+      "eigenschaften": [
+        "Ø 24 x 30, Bohrung 8"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/venturi_belueffter.md, data/components/venturi_belueffter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_rv",
+      "name": "Rueckschlagventil Luft",
+      "koerper": [
+        "Rueckschlagventil"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 50.6 g, Einzelkoerper 30.0 x 30.0 x 55.0 mm (Modell-Bounding-Box)",
+      "funktion": "Verhindert Wasseraustritt bei Stillstand.",
+      "eigenschaften": [
+        "Ø 30 x 55, Bohrung 8"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/venturi_belueffter.md, data/components/venturi_belueffter.json, data/oasis-soll.json",
+      "bezug": "Kaufland (DE) https://www.kaufland.de/product/23980601/ [Q-Treffer]; Rueckschlagventil Luft, Schlauch 9/12 mm: kein Angebot mit bestaetigter Schlauchgroesse 9/12 gefunden. Der OBI-Link zu Tetratec CV 4 (obi.de/p/6772081) lieferte",
+      "artikel_hinweis": "ARM-rueckschlagventil-luft",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_filter",
+      "name": "Luftfilter",
+      "koerper": [
+        "Luftfilter"
+      ],
+      "menge": 1,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 94.1 g, Einzelkoerper 45.0 x 45.0 x 65.0 mm (Modell-Bounding-Box)",
+      "funktion": "Haelt Staub von der Ansaugluft ab.",
+      "eigenschaften": [
+        "Ø 45 x 65"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "nein",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/venturi_belueffter.md, data/components/venturi_belueffter.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

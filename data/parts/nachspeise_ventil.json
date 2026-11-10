@@ -1,0 +1,134 @@
+{
+  "komponente": "nachspeise_ventil",
+  "datei": "designs/components/nachspeise_ventil.sc",
+  "bauteilgruppe": "Armaturen",
+  "teilenummer": "T108",
+  "stand": "teiledaten",
+  "titel": "Nachspeise-Ventil (Regenwasser zuerst)",
+  "kurz": "Zwei Schwimmerventile am Fischtank: erst Regenwasser, bei dessen Ausbleiben 30 mm tiefer Frischwasser.",
+  "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils (U2, N-UNIFY-AUTOBAHN). Maße von Handelsteilen sind Annahme; Europa-Bezug und Lebensmittelnachweis stehen je Teil im Feld bezug (D76, D85), offene Nachweise sind als offen gefuehrt. Katalog und Stueckliste folgen in U8.",
+  "koerperzahl": 10,
+  "gruppen": [
+    {
+      "id": "regen",
+      "name": "Ventil Regenwasser",
+      "kurz": "Eingang A, hoehere Kugel.",
+      "teile": [
+        "t_uebergang",
+        "t_gehaeuse",
+        "t_wange",
+        "t_hebel"
+      ]
+    }
+  ],
+  "teile": [
+    {
+      "id": "t_uebergang",
+      "name": "Uebergang Klebemuffe d25",
+      "koerper": [
+        "Uebergang_regen",
+        "Uebergang_frisch"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 53.5 g, Einzelkoerper 40.0 x 32.2 x 32.2 mm (Modell-Bounding-Box)",
+      "funktion": "Verbindet Rohr d25 mit dem Ventil.",
+      "eigenschaften": [
+        "Aussen 32,25, Tiefe 19"
+      ],
+      "norm": "DIN 8063 [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nachspeise_ventil.md, data/components/nachspeise_ventil.json, data/oasis-soll.json",
+      "bezug": "R+M Suttner (Online-Shop) (DE) https://shop.rm-suttner.com/en/low-pressure-equipment/valves/float-valves/float-valve-ak-with-ball-3-4m-short-701403.htm [Q]; Link aus R53 funktioniert noch [Q, 10.11.2026 gelesen]: R+M Suttner Art. 701403 'Schwimmerventil AK mit Kugel 3/4 Zoll AG kurz': Gehaeuse Kunststoff, Schwimmer ",
+      "artikel_hinweis": "ARM-schwimmerventil-nachspeise",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_gehaeuse",
+      "name": "Ventilgehaeuse 3/4 Zoll",
+      "koerper": [
+        "Ventilgehaeuse_regen",
+        "Ventilgehaeuse_frisch"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 165.1 g, Einzelkoerper 80.0 x 38.0 x 38.0 mm (Modell-Bounding-Box)",
+      "funktion": "Oeffnet und schliesst den Zulauf.",
+      "eigenschaften": [
+        "Ø 38 x 80"
+      ],
+      "norm": "keine (Handelsteil) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nachspeise_ventil.md, data/components/nachspeise_ventil.json, data/oasis-soll.json",
+      "bezug": "R+M Suttner (Online-Shop) (DE) https://shop.rm-suttner.com/en/low-pressure-equipment/valves/float-valves/float-valve-ak-with-ball-3-4m-short-701403.htm [Q]; Link aus R53 funktioniert noch [Q, 10.11.2026 gelesen]: R+M Suttner Art. 701403 'Schwimmerventil AK mit Kugel 3/4 Zoll AG kurz': Gehaeuse Kunststoff, Schwimmer ",
+      "artikel_hinweis": "ARM-schwimmerventil-nachspeise",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_wange",
+      "name": "Wangenhalter",
+      "koerper": [
+        "Wange_L_regen",
+        "Wange_R_regen",
+        "Wange_L_frisch",
+        "Wange_R_frisch"
+      ],
+      "menge": 4,
+      "typ": "kaufteil",
+      "werkstoff": "pp",
+      "masse_mm": "Masse 4.9 g, Einzelkoerper 16.0 x 4.0 x 21.0 mm (Modell-Bounding-Box)",
+      "funktion": "Haelt den Hebelarm.",
+      "eigenschaften": [
+        "4 mm"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nachspeise_ventil.md, data/components/nachspeise_ventil.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    },
+    {
+      "id": "t_hebel",
+      "name": "Hebelarm mit Schwimmerkugel",
+      "koerper": [
+        "Hebelarm_mit_Kugel_regen",
+        "Hebelarm_mit_Kugel_frisch"
+      ],
+      "menge": 2,
+      "typ": "kaufteil",
+      "werkstoff": "hdpe",
+      "masse_mm": "Masse 504.9 g, Einzelkoerper 318.5 x 110.0 x 517.0 mm (Modell-Bounding-Box)",
+      "funktion": "Schliesst das Ventil bei Soll-Spiegel; Frischwasser-Kugel haengt 30 mm tiefer.",
+      "eigenschaften": [
+        "Arm Ø 8, Kugel Ø 110"
+      ],
+      "norm": "keine [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "offen",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "docs/parts/nachspeise_ventil.md, data/components/nachspeise_ventil.json, data/oasis-soll.json",
+      "bezug": "offen: Recherche data/beschaffung/u2_wasserkreislauf.json (D76), Bezug noch nicht belegt",
+      "ausnahme": "Katalog- und Stueckliste-Eintrag folgt in U8 (Paket n-unify-autobahn); Teil noch nicht im Gesamtmodell",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0
+    }
+  ]
+}

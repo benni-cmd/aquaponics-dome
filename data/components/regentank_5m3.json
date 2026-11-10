@@ -117,10 +117,12 @@
   "offen": [
    "Maße, Lage und Typ (stehend/liegend) vom Orchestrator angenommen, weil die Quelle sie nicht festlegt (D107); Fabrikat und Bezug Europa siehe data/beschaffung/",
    "Fundament und Statik fuer 5 t Wasser: N-STATIK",
-   "Regenwasserfuehrung von der Kuppelhaut (Rinne, Filter) ist nicht modelliert"
+   "Regenwasserfuehrung von der Kuppelhaut (Rinne, Filter) ist nicht modelliert",
+   "Bezug Europa und Lebensmittel (D76, D85), Stand 10.11.2026 aus data/beschaffung/u2_wasserkreislauf.json: BEH-regentank-5000: tbs-online.de (DE), Konfidenz Q-Treffer; Lebensmittel: offen (kein Herstellernachweis gefunden), Rueckfall: Hersteller (Graf, Roth, Kingspan, 4rain) nach Datenblatt des oberirdischen Rundtanks 5000 l mit KTW/W270 oder DIN-Angabe fragen; Rueckfall: Zwei kleinere stehende Tanks oder Erdtank-Bauform (Hornbach 4rain Mono 5000 l, https://www.hornbach.de/p/erdtank-4rain-mono-5000-l/10356804 "
   ],
   "teileliste": [],
   "kritiker": "offen (Pruefer P-Pruef)",
-  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle).",
+  "referenz": "kein OBJ-Bild (Bauteil neu nach der Quelle): docs/quellen/oasis-showcase-2026-11-10/ (Draufsicht, Seitenprofil) und data/oasis-soll.json"
  }
 }

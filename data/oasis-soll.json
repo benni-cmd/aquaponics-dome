@@ -19,8 +19,8 @@
     480.0
    ],
    "kuppel_radius_zeichnung": 480,
-   "x_modell_mm": "(x - 500) * 12,5",
-   "y_modell_mm": "-(y - 480) * 12,5 (Zeichnung unten = Modell -Y, Norden = +Y)",
+   "drehung_grad": 18.0,
+   "x_modell_mm": "dx = (x - 500) * 12,5, dy = -(y - 480) * 12,5 (Zeichnung unten = Modell -Y), dann um drehung_grad gegen den Uhrzeigersinn gedreht",
    "fussboden_z_modell_mm": 400,
    "z_modell_mm": "400 + Hoehe ueber Fussboden",
    "hinweis": "Zeichnung ist schematisch (A16): Mittelpunkte und Reihenfolge gelten; Rohrverlaeufe (pfad_punkte) sind Verbindungen, keine Trassen."
@@ -82,10 +82,10 @@
        -25.0,
        410.0
       ],
-      "x_mm": -6562.5,
-      "y_mm": 875.0,
+      "x_mm": -6511.7,
+      "y_mm": -1195.7,
       "r_mm": 6620.6,
-      "az_grad": 172.41,
+      "az_grad": -169.6,
       "typ": "rechteck",
       "breite_mm": 1625.0,
       "hoehe_mm": 500.0,
@@ -99,10 +99,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": -6562.5,
-    "mittelpunkt_y_mm": 875.0,
+    "mittelpunkt_x_mm": -6511.7,
+    "mittelpunkt_y_mm": -1195.7,
     "mittelpunkt_r_mm": 6620.6,
-    "mittelpunkt_az_grad": 172.41
+    "mittelpunkt_az_grad": -169.6
    },
    "wege_ein": [],
    "wege_aus": [
@@ -148,10 +148,10 @@
        -25.0,
        470.0
       ],
-      "x_mm": -6562.5,
-      "y_mm": 125.0,
-      "r_mm": 6563.7,
-      "az_grad": 178.91,
+      "x_mm": -6279.9,
+      "y_mm": -1909.0,
+      "r_mm": 6563.6,
+      "az_grad": -163.09,
       "typ": "rechteck",
       "breite_mm": 1625.0,
       "hoehe_mm": 500.0,
@@ -165,10 +165,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": -6562.5,
-    "mittelpunkt_y_mm": 125.0,
-    "mittelpunkt_r_mm": 6563.7,
-    "mittelpunkt_az_grad": 178.91
+    "mittelpunkt_x_mm": -6279.9,
+    "mittelpunkt_y_mm": -1909.0,
+    "mittelpunkt_r_mm": 6563.6,
+    "mittelpunkt_az_grad": -163.09
    },
    "wege_ein": [],
    "wege_aus": [
@@ -218,18 +218,18 @@
        262.0,
        420.0
       ],
-      "x_mm": -2975.0,
-      "y_mm": 750.0,
+      "x_mm": -3061.2,
+      "y_mm": -206.0,
       "r_mm": 3068.1,
-      "az_grad": 165.85,
+      "az_grad": -176.15,
       "typ": "ventil"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -2975.0,
-    "mittelpunkt_y_mm": 750.0,
+    "mittelpunkt_x_mm": -3061.2,
+    "mittelpunkt_y_mm": -206.0,
     "mittelpunkt_r_mm": 3068.1,
-    "mittelpunkt_az_grad": 165.85
+    "mittelpunkt_az_grad": -176.15
    },
    "wege_ein": [
     "e17",
@@ -282,10 +282,10 @@
        970.0,
        90.0
       ],
-      "x_mm": 5875.0,
-      "y_mm": 4875.0,
+      "x_mm": 4081.0,
+      "y_mm": 6451.9,
       "r_mm": 7634.2,
-      "az_grad": 39.69,
+      "az_grad": 57.69,
       "typ": "rechteck",
       "breite_mm": 1750.0,
       "hoehe_mm": 500.0,
@@ -299,10 +299,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": 5875.0,
-    "mittelpunkt_y_mm": 4875.0,
+    "mittelpunkt_x_mm": 4081.0,
+    "mittelpunkt_y_mm": 6451.9,
     "mittelpunkt_r_mm": 7634.2,
-    "mittelpunkt_az_grad": 39.69
+    "mittelpunkt_az_grad": 57.69
    },
    "wege_ein": [],
    "wege_aus": [
@@ -352,10 +352,10 @@
        970.0,
        150.0
       ],
-      "x_mm": 5875.0,
-      "y_mm": 4125.0,
-      "r_mm": 7178.5,
-      "az_grad": 35.07,
+      "x_mm": 4312.8,
+      "y_mm": 5738.6,
+      "r_mm": 7178.6,
+      "az_grad": 53.07,
       "typ": "rechteck",
       "breite_mm": 1750.0,
       "hoehe_mm": 500.0,
@@ -369,10 +369,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": 5875.0,
-    "mittelpunkt_y_mm": 4125.0,
-    "mittelpunkt_r_mm": 7178.5,
-    "mittelpunkt_az_grad": 35.07
+    "mittelpunkt_x_mm": 4312.8,
+    "mittelpunkt_y_mm": 5738.6,
+    "mittelpunkt_r_mm": 7178.6,
+    "mittelpunkt_az_grad": 53.07
    },
    "wege_ein": [
     "e01"
@@ -425,10 +425,10 @@
        -25.0,
        562.5
       ],
-      "x_mm": -6562.5,
-      "y_mm": -1031.2,
+      "x_mm": -5922.6,
+      "y_mm": -3008.7,
       "r_mm": 6643.0,
-      "az_grad": -171.07,
+      "az_grad": -153.07,
       "typ": "rechteck",
       "breite_mm": 1625.0,
       "hoehe_mm": 562.5,
@@ -442,10 +442,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": -6562.5,
-    "mittelpunkt_y_mm": -1031.2,
+    "mittelpunkt_x_mm": -5922.6,
+    "mittelpunkt_y_mm": -3008.7,
     "mittelpunkt_r_mm": 6643.0,
-    "mittelpunkt_az_grad": -171.07
+    "mittelpunkt_az_grad": -153.07
    },
    "wege_ein": [
     "e02",
@@ -617,10 +617,10 @@
        500.0,
        764.0
       ],
-      "x_mm": 0.0,
-      "y_mm": -3550.0,
+      "x_mm": 1097.0,
+      "y_mm": -3376.3,
       "r_mm": 3550.0,
-      "az_grad": -90.0,
+      "az_grad": -72.0,
       "typ": "kreis",
       "radius_zeichnung": 80.0,
       "radius_mm": 1000.0
@@ -628,10 +628,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 0.0,
-    "mittelpunkt_y_mm": -3550.0,
+    "mittelpunkt_x_mm": 1097.0,
+    "mittelpunkt_y_mm": -3376.3,
     "mittelpunkt_r_mm": 3550.0,
-    "mittelpunkt_az_grad": -90.0
+    "mittelpunkt_az_grad": -72.0
    },
    "wege_ein": [
     "e63",
@@ -698,10 +698,10 @@
        500.0,
        904.0
       ],
-      "x_mm": 0.0,
-      "y_mm": -5300.0,
+      "x_mm": 1637.8,
+      "y_mm": -5040.6,
       "r_mm": 5300.0,
-      "az_grad": -90.0,
+      "az_grad": -72.0,
       "typ": "kreis",
       "radius_zeichnung": 46.0,
       "radius_mm": 575.0
@@ -709,10 +709,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 0.0,
-    "mittelpunkt_y_mm": -5300.0,
+    "mittelpunkt_x_mm": 1637.8,
+    "mittelpunkt_y_mm": -5040.6,
     "mittelpunkt_r_mm": 5300.0,
-    "mittelpunkt_az_grad": -90.0
+    "mittelpunkt_az_grad": -72.0
    },
    "wege_ein": [
     "e16",
@@ -766,10 +766,10 @@
        600.0,
        668.0
       ],
-      "x_mm": 1250.0,
-      "y_mm": -2350.0,
+      "x_mm": 1915.0,
+      "y_mm": -1848.7,
       "r_mm": 2661.8,
-      "az_grad": -61.99,
+      "az_grad": -43.99,
       "typ": "kreis",
       "radius_zeichnung": 11.0,
       "radius_mm": 137.5
@@ -781,19 +781,19 @@
        655.0,
        668.0
       ],
-      "x_mm": 1937.5,
-      "y_mm": -2350.0,
-      "r_mm": 3045.7,
-      "az_grad": -50.5,
+      "x_mm": 2568.9,
+      "y_mm": -1636.3,
+      "r_mm": 3045.8,
+      "az_grad": -32.5,
       "typ": "rueckschlagventil",
       "drehung_grad": 0.0
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 1250.0,
-    "mittelpunkt_y_mm": -2350.0,
+    "mittelpunkt_x_mm": 1915.0,
+    "mittelpunkt_y_mm": -1848.7,
     "mittelpunkt_r_mm": 2661.8,
-    "mittelpunkt_az_grad": -61.99
+    "mittelpunkt_az_grad": -43.99
    },
    "wege_ein": [
     "e13",
@@ -846,10 +846,10 @@
        400.0,
        668.0
       ],
-      "x_mm": -1250.0,
-      "y_mm": -2350.0,
+      "x_mm": -462.6,
+      "y_mm": -2621.3,
       "r_mm": 2661.8,
-      "az_grad": -118.01,
+      "az_grad": -100.01,
       "typ": "kreis",
       "radius_zeichnung": 11.0,
       "radius_mm": 137.5
@@ -861,19 +861,19 @@
        345.0,
        668.0
       ],
-      "x_mm": -1937.5,
-      "y_mm": -2350.0,
+      "x_mm": -1116.5,
+      "y_mm": -2833.7,
       "r_mm": 3045.7,
-      "az_grad": -129.5,
+      "az_grad": -111.5,
       "typ": "rueckschlagventil",
       "drehung_grad": 180.0
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -1250.0,
-    "mittelpunkt_y_mm": -2350.0,
+    "mittelpunkt_x_mm": -462.6,
+    "mittelpunkt_y_mm": -2621.3,
     "mittelpunkt_r_mm": 2661.8,
-    "mittelpunkt_az_grad": -118.01
+    "mittelpunkt_az_grad": -100.01
    },
    "wege_ein": [
     "e83",
@@ -931,10 +931,10 @@
        718.0,
        764.0
       ],
-      "x_mm": 2725.0,
-      "y_mm": -3550.0,
+      "x_mm": 3688.6,
+      "y_mm": -2534.2,
       "r_mm": 4475.3,
-      "az_grad": -52.49,
+      "az_grad": -34.49,
       "typ": "kreis",
       "radius_zeichnung": 42.0,
       "radius_mm": 525.0
@@ -942,10 +942,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 2725.0,
-    "mittelpunkt_y_mm": -3550.0,
+    "mittelpunkt_x_mm": 3688.6,
+    "mittelpunkt_y_mm": -2534.2,
     "mittelpunkt_r_mm": 4475.3,
-    "mittelpunkt_az_grad": -52.49
+    "mittelpunkt_az_grad": -34.49
    },
    "wege_ein": [
     "e04",
@@ -1004,10 +1004,10 @@
        282.0,
        764.0
       ],
-      "x_mm": -2725.0,
-      "y_mm": -3550.0,
+      "x_mm": -1494.6,
+      "y_mm": -4218.3,
       "r_mm": 4475.3,
-      "az_grad": -127.51,
+      "az_grad": -109.51,
       "typ": "kreis",
       "radius_zeichnung": 42.0,
       "radius_mm": 525.0
@@ -1015,10 +1015,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -2725.0,
-    "mittelpunkt_y_mm": -3550.0,
+    "mittelpunkt_x_mm": -1494.6,
+    "mittelpunkt_y_mm": -4218.3,
     "mittelpunkt_r_mm": 4475.3,
-    "mittelpunkt_az_grad": -127.51
+    "mittelpunkt_az_grad": -109.51
    },
    "wege_ein": [
     "e05",
@@ -1077,10 +1077,10 @@
        822.0,
        756.0
       ],
-      "x_mm": 4025.0,
-      "y_mm": -3450.0,
+      "x_mm": 4894.1,
+      "y_mm": -2037.4,
       "r_mm": 5301.2,
-      "az_grad": -40.6,
+      "az_grad": -22.6,
       "typ": "kreis",
       "radius_zeichnung": 46.0,
       "radius_mm": 575.0
@@ -1088,10 +1088,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 4025.0,
-    "mittelpunkt_y_mm": -3450.0,
+    "mittelpunkt_x_mm": 4894.1,
+    "mittelpunkt_y_mm": -2037.4,
     "mittelpunkt_r_mm": 5301.2,
-    "mittelpunkt_az_grad": -40.6
+    "mittelpunkt_az_grad": -22.6
    },
    "wege_ein": [
     "e06",
@@ -1153,10 +1153,10 @@
        178.0,
        756.0
       ],
-      "x_mm": -4025.0,
-      "y_mm": -3450.0,
+      "x_mm": -2761.9,
+      "y_mm": -4524.9,
       "r_mm": 5301.2,
-      "az_grad": -139.4,
+      "az_grad": -121.4,
       "typ": "kreis",
       "radius_zeichnung": 46.0,
       "radius_mm": 575.0
@@ -1164,10 +1164,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -4025.0,
-    "mittelpunkt_y_mm": -3450.0,
+    "mittelpunkt_x_mm": -2761.9,
+    "mittelpunkt_y_mm": -4524.9,
     "mittelpunkt_r_mm": 5301.2,
-    "mittelpunkt_az_grad": -139.4
+    "mittelpunkt_az_grad": -121.4
    },
    "wege_ein": [
     "e07",
@@ -1228,10 +1228,10 @@
        718.0,
        856.0
       ],
-      "x_mm": 2725.0,
-      "y_mm": -4700.0,
+      "x_mm": 4044.0,
+      "y_mm": -3627.9,
       "r_mm": 5432.8,
-      "az_grad": -59.9,
+      "az_grad": -41.9,
       "typ": "kreis",
       "radius_zeichnung": 36.0,
       "radius_mm": 450.0
@@ -1239,10 +1239,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 2725.0,
-    "mittelpunkt_y_mm": -4700.0,
+    "mittelpunkt_x_mm": 4044.0,
+    "mittelpunkt_y_mm": -3627.9,
     "mittelpunkt_r_mm": 5432.8,
-    "mittelpunkt_az_grad": -59.9
+    "mittelpunkt_az_grad": -41.9
    },
    "wege_ein": [
     "e64",
@@ -1300,10 +1300,10 @@
        282.0,
        856.0
       ],
-      "x_mm": -2725.0,
-      "y_mm": -4700.0,
+      "x_mm": -1139.2,
+      "y_mm": -5312.0,
       "r_mm": 5432.8,
-      "az_grad": -120.1,
+      "az_grad": -102.1,
       "typ": "kreis",
       "radius_zeichnung": 36.0,
       "radius_mm": 450.0
@@ -1311,10 +1311,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -2725.0,
-    "mittelpunkt_y_mm": -4700.0,
+    "mittelpunkt_x_mm": -1139.2,
+    "mittelpunkt_y_mm": -5312.0,
     "mittelpunkt_r_mm": 5432.8,
-    "mittelpunkt_az_grad": -120.1
+    "mittelpunkt_az_grad": -102.1
    },
    "wege_ein": [
     "e65",
@@ -1363,10 +1363,10 @@
        500.0,
        1009.0
       ],
-      "x_mm": 0.0,
-      "y_mm": -6612.5,
+      "x_mm": 2043.4,
+      "y_mm": -6288.9,
       "r_mm": 6612.5,
-      "az_grad": -90.0,
+      "az_grad": -72.0,
       "typ": "rechteck",
       "breite_mm": 1500.0,
       "hoehe_mm": 525.0,
@@ -1380,10 +1380,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": 0.0,
-    "mittelpunkt_y_mm": -6612.5,
+    "mittelpunkt_x_mm": 2043.4,
+    "mittelpunkt_y_mm": -6288.9,
     "mittelpunkt_r_mm": 6612.5,
-    "mittelpunkt_az_grad": -90.0
+    "mittelpunkt_az_grad": -72.0
    },
    "wege_ein": [
     "e68",
@@ -1444,80 +1444,80 @@
          511.0,
          750.0
         ],
-        "x_mm": 137.5,
-        "y_mm": -3375.0,
+        "x_mm": 1173.7,
+        "y_mm": -3167.3,
         "r_mm": 3377.8,
-        "az_grad": -87.67
+        "az_grad": -69.67
        },
        {
         "zeichnung": [
          587.8,
          750.1
         ],
-        "x_mm": 1097.5,
-        "y_mm": -3376.3,
+        "x_mm": 2087.1,
+        "y_mm": -2871.9,
         "r_mm": 3550.2,
-        "az_grad": -71.99
+        "az_grad": -53.99
        },
        {
         "zeichnung": [
          729.8,
          646.9
         ],
-        "x_mm": 2872.5,
-        "y_mm": -2086.2,
-        "r_mm": 3550.1,
-        "az_grad": -35.99
+        "x_mm": 3376.6,
+        "y_mm": -1096.5,
+        "r_mm": 3550.2,
+        "az_grad": -17.99
        },
        {
         "zeichnung": [
          784.0,
          480.0
         ],
-        "x_mm": 3550.0,
-        "y_mm": 0.0,
+        "x_mm": 3376.3,
+        "y_mm": 1097.0,
         "r_mm": 3550.0,
-        "az_grad": 0.0
+        "az_grad": 18.0
        },
        {
         "zeichnung": [
          729.8,
          313.1
         ],
-        "x_mm": 2872.5,
-        "y_mm": 2086.2,
-        "r_mm": 3550.1,
-        "az_grad": 35.99
+        "x_mm": 2087.2,
+        "y_mm": 2871.8,
+        "r_mm": 3550.2,
+        "az_grad": 53.99
        },
        {
         "zeichnung": [
          587.8,
          209.9
         ],
-        "x_mm": 1097.5,
-        "y_mm": 3376.3,
+        "x_mm": 0.5,
+        "y_mm": 3550.2,
         "r_mm": 3550.2,
-        "az_grad": 71.99
+        "az_grad": 89.99
        },
        {
         "zeichnung": [
          511.0,
          210.0
         ],
-        "x_mm": 137.5,
-        "y_mm": 3375.0,
+        "x_mm": -912.2,
+        "y_mm": 3252.3,
         "r_mm": 3377.8,
-        "az_grad": 87.67
+        "az_grad": 105.67
        }
       ]
      }
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 1680.7,
-    "mittelpunkt_y_mm": 0.0,
-    "mittelpunkt_r_mm": 1680.7,
-    "mittelpunkt_az_grad": 0.0
+    "mittelpunkt_x_mm": 1598.5,
+    "mittelpunkt_y_mm": 519.4,
+    "mittelpunkt_r_mm": 1680.8,
+    "mittelpunkt_az_grad": 18.0
    },
    "wege_ein": [
     "e25",
@@ -1583,80 +1583,80 @@
          489.0,
          750.0
         ],
-        "x_mm": -137.5,
-        "y_mm": -3375.0,
+        "x_mm": 912.2,
+        "y_mm": -3252.3,
         "r_mm": 3377.8,
-        "az_grad": -92.33
+        "az_grad": -74.33
        },
        {
         "zeichnung": [
          412.2,
          750.1
         ],
-        "x_mm": -1097.5,
-        "y_mm": -3376.3,
+        "x_mm": -0.5,
+        "y_mm": -3550.2,
         "r_mm": 3550.2,
-        "az_grad": -108.01
+        "az_grad": -90.01
        },
        {
         "zeichnung": [
          270.2,
          646.9
         ],
-        "x_mm": -2872.5,
-        "y_mm": -2086.2,
-        "r_mm": 3550.1,
-        "az_grad": -144.01
+        "x_mm": -2087.2,
+        "y_mm": -2871.8,
+        "r_mm": 3550.2,
+        "az_grad": -126.01
        },
        {
         "zeichnung": [
          216.0,
          480.0
         ],
-        "x_mm": -3550.0,
-        "y_mm": 0.0,
+        "x_mm": -3376.3,
+        "y_mm": -1097.0,
         "r_mm": 3550.0,
-        "az_grad": 180.0
+        "az_grad": -162.0
        },
        {
         "zeichnung": [
          270.2,
          313.1
         ],
-        "x_mm": -2872.5,
-        "y_mm": 2086.2,
-        "r_mm": 3550.1,
-        "az_grad": 144.01
+        "x_mm": -3376.6,
+        "y_mm": 1096.5,
+        "r_mm": 3550.2,
+        "az_grad": 162.01
        },
        {
         "zeichnung": [
          412.2,
          209.9
         ],
-        "x_mm": -1097.5,
-        "y_mm": 3376.3,
+        "x_mm": -2087.1,
+        "y_mm": 2871.9,
         "r_mm": 3550.2,
-        "az_grad": 108.01
+        "az_grad": 126.01
        },
        {
         "zeichnung": [
          489.0,
          210.0
         ],
-        "x_mm": -137.5,
-        "y_mm": 3375.0,
+        "x_mm": -1173.7,
+        "y_mm": 3167.3,
         "r_mm": 3377.8,
-        "az_grad": 92.33
+        "az_grad": 110.33
        }
       ]
      }
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -1680.7,
-    "mittelpunkt_y_mm": 0.0,
-    "mittelpunkt_r_mm": 1680.7,
-    "mittelpunkt_az_grad": 180.0
+    "mittelpunkt_x_mm": -1598.5,
+    "mittelpunkt_y_mm": -519.4,
+    "mittelpunkt_r_mm": 1680.8,
+    "mittelpunkt_az_grad": -162.0
    },
    "wege_ein": [
     "e26",
@@ -1716,10 +1716,10 @@
        500.0,
        210.0
       ],
-      "x_mm": 0.0,
-      "y_mm": 3375.0,
+      "x_mm": -1042.9,
+      "y_mm": 3209.8,
       "r_mm": 3375.0,
-      "az_grad": 90.0,
+      "az_grad": 108.0,
       "typ": "ventil"
      },
      {
@@ -1727,10 +1727,10 @@
        500.0,
        750.0
       ],
-      "x_mm": 0.0,
-      "y_mm": -3375.0,
+      "x_mm": 1042.9,
+      "y_mm": -3209.8,
       "r_mm": 3375.0,
-      "az_grad": -90.0,
+      "az_grad": -72.0,
       "typ": "ventil"
      }
     ],
@@ -1787,18 +1787,18 @@
        579.7,
        234.6
       ],
-      "x_mm": 996.3,
-      "y_mm": 3067.5,
+      "x_mm": -0.4,
+      "y_mm": 3225.2,
       "r_mm": 3225.2,
-      "az_grad": 72.01,
+      "az_grad": 90.01,
       "typ": "ventil"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 996.3,
-    "mittelpunkt_y_mm": 3067.5,
+    "mittelpunkt_x_mm": -0.4,
+    "mittelpunkt_y_mm": 3225.2,
     "mittelpunkt_r_mm": 3225.2,
-    "mittelpunkt_az_grad": 72.01
+    "mittelpunkt_az_grad": 90.01
    },
    "wege_ein": [
     "e31"
@@ -1849,18 +1849,18 @@
        420.3,
        234.6
       ],
-      "x_mm": -996.2,
-      "y_mm": 3067.5,
+      "x_mm": -1895.4,
+      "y_mm": 2609.5,
       "r_mm": 3225.2,
-      "az_grad": 107.99,
+      "az_grad": 125.99,
       "typ": "ventil"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -996.2,
-    "mittelpunkt_y_mm": 3067.5,
+    "mittelpunkt_x_mm": -1895.4,
+    "mittelpunkt_y_mm": 2609.5,
     "mittelpunkt_r_mm": 3225.2,
-    "mittelpunkt_az_grad": 107.99
+    "mittelpunkt_az_grad": 125.99
    },
    "wege_ein": [
     "e32"
@@ -1930,10 +1930,10 @@
        587.8,
        750.1
       ],
-      "x_mm": 1097.5,
-      "y_mm": -3376.3,
+      "x_mm": 2087.1,
+      "y_mm": -2871.9,
       "r_mm": 3550.2,
-      "az_grad": -71.99,
+      "az_grad": -53.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -1941,10 +1941,10 @@
        726.8,
        651.0
       ],
-      "x_mm": 2835.0,
-      "y_mm": -2137.5,
+      "x_mm": 3356.8,
+      "y_mm": -1156.8,
       "r_mm": 3550.5,
-      "az_grad": -37.02,
+      "az_grad": -19.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -1952,10 +1952,10 @@
        729.8,
        646.9
       ],
-      "x_mm": 2872.5,
-      "y_mm": -2086.2,
-      "r_mm": 3550.1,
-      "az_grad": -35.99,
+      "x_mm": 3376.6,
+      "y_mm": -1096.5,
+      "r_mm": 3550.2,
+      "az_grad": -17.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -1963,10 +1963,10 @@
        784.0,
        490.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": -125.0,
+      "x_mm": 3414.9,
+      "y_mm": 978.1,
       "r_mm": 3552.2,
-      "az_grad": -2.02,
+      "az_grad": 15.98,
       "typ": "abzweig_punkt"
      },
      {
@@ -1974,10 +1974,10 @@
        784.0,
        485.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": -62.5,
+      "x_mm": 3395.6,
+      "y_mm": 1037.6,
       "r_mm": 3550.6,
-      "az_grad": -1.01,
+      "az_grad": 16.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -1985,10 +1985,10 @@
        784.0,
        475.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": 62.5,
-      "r_mm": 3550.6,
-      "az_grad": 1.01,
+      "x_mm": 3356.9,
+      "y_mm": 1156.5,
+      "r_mm": 3550.5,
+      "az_grad": 19.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -1996,10 +1996,10 @@
        735.6,
        321.2
       ],
-      "x_mm": 2945.0,
-      "y_mm": 1985.0,
+      "x_mm": 2187.5,
+      "y_mm": 2797.9,
       "r_mm": 3551.5,
-      "az_grad": 33.98,
+      "az_grad": 51.98,
       "typ": "abzweig_punkt"
      },
      {
@@ -2007,10 +2007,10 @@
        732.7,
        317.1
       ],
-      "x_mm": 2908.8,
-      "y_mm": 2036.2,
-      "r_mm": 3550.7,
-      "az_grad": 34.99,
+      "x_mm": 2137.1,
+      "y_mm": 2835.4,
+      "r_mm": 3550.6,
+      "az_grad": 52.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2018,10 +2018,10 @@
        726.8,
        309.0
       ],
-      "x_mm": 2835.0,
-      "y_mm": 2137.5,
+      "x_mm": 2035.7,
+      "y_mm": 2908.9,
       "r_mm": 3550.5,
-      "az_grad": 37.02,
+      "az_grad": 55.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2029,10 +2029,10 @@
        608.7,
        216.7
       ],
-      "x_mm": 1358.8,
-      "y_mm": 3291.2,
+      "x_mm": 275.2,
+      "y_mm": 3550.0,
       "r_mm": 3560.7,
-      "az_grad": 67.57,
+      "az_grad": 85.57,
       "typ": "abzweig_punkt"
      },
      {
@@ -2040,10 +2040,10 @@
        603.9,
        215.2
       ],
-      "x_mm": 1298.7,
-      "y_mm": 3310.0,
-      "r_mm": 3555.7,
-      "az_grad": 68.58,
+      "x_mm": 212.3,
+      "y_mm": 3549.3,
+      "r_mm": 3555.6,
+      "az_grad": 86.58,
       "typ": "abzweig_punkt"
      },
      {
@@ -2051,29 +2051,29 @@
        594.4,
        212.1
       ],
-      "x_mm": 1180.0,
-      "y_mm": 3348.7,
-      "r_mm": 3550.5,
-      "az_grad": 70.59,
+      "x_mm": 87.4,
+      "y_mm": 3549.5,
+      "r_mm": 3550.6,
+      "az_grad": 88.59,
       "typ": "abzweig_punkt"
      }
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 2498.4,
-    "mittelpunkt_y_mm": 698.6,
-    "mittelpunkt_r_mm": 2594.2,
-    "mittelpunkt_az_grad": 15.62,
+    "mittelpunkt_x_mm": 2160.3,
+    "mittelpunkt_y_mm": 1436.5,
+    "mittelpunkt_r_mm": 2594.3,
+    "mittelpunkt_az_grad": 33.62,
     "abzweige": [
      {
       "zeichnung": [
        587.8,
        750.1
       ],
-      "x_mm": 1097.5,
-      "y_mm": -3376.3,
+      "x_mm": 2087.1,
+      "y_mm": -2871.9,
       "r_mm": 3550.2,
-      "az_grad": -71.99,
+      "az_grad": -53.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2081,10 +2081,10 @@
        726.8,
        651.0
       ],
-      "x_mm": 2835.0,
-      "y_mm": -2137.5,
+      "x_mm": 3356.8,
+      "y_mm": -1156.8,
       "r_mm": 3550.5,
-      "az_grad": -37.02,
+      "az_grad": -19.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2092,10 +2092,10 @@
        729.8,
        646.9
       ],
-      "x_mm": 2872.5,
-      "y_mm": -2086.2,
-      "r_mm": 3550.1,
-      "az_grad": -35.99,
+      "x_mm": 3376.6,
+      "y_mm": -1096.5,
+      "r_mm": 3550.2,
+      "az_grad": -17.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2103,10 +2103,10 @@
        784.0,
        490.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": -125.0,
+      "x_mm": 3414.9,
+      "y_mm": 978.1,
       "r_mm": 3552.2,
-      "az_grad": -2.02,
+      "az_grad": 15.98,
       "typ": "abzweig_punkt"
      },
      {
@@ -2114,10 +2114,10 @@
        784.0,
        485.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": -62.5,
+      "x_mm": 3395.6,
+      "y_mm": 1037.6,
       "r_mm": 3550.6,
-      "az_grad": -1.01,
+      "az_grad": 16.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2125,10 +2125,10 @@
        784.0,
        475.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": 62.5,
-      "r_mm": 3550.6,
-      "az_grad": 1.01,
+      "x_mm": 3356.9,
+      "y_mm": 1156.5,
+      "r_mm": 3550.5,
+      "az_grad": 19.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2136,10 +2136,10 @@
        735.6,
        321.2
       ],
-      "x_mm": 2945.0,
-      "y_mm": 1985.0,
+      "x_mm": 2187.5,
+      "y_mm": 2797.9,
       "r_mm": 3551.5,
-      "az_grad": 33.98,
+      "az_grad": 51.98,
       "typ": "abzweig_punkt"
      },
      {
@@ -2147,10 +2147,10 @@
        732.7,
        317.1
       ],
-      "x_mm": 2908.8,
-      "y_mm": 2036.2,
-      "r_mm": 3550.7,
-      "az_grad": 34.99,
+      "x_mm": 2137.1,
+      "y_mm": 2835.4,
+      "r_mm": 3550.6,
+      "az_grad": 52.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2158,10 +2158,10 @@
        726.8,
        309.0
       ],
-      "x_mm": 2835.0,
-      "y_mm": 2137.5,
+      "x_mm": 2035.7,
+      "y_mm": 2908.9,
       "r_mm": 3550.5,
-      "az_grad": 37.02,
+      "az_grad": 55.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2169,10 +2169,10 @@
        608.7,
        216.7
       ],
-      "x_mm": 1358.8,
-      "y_mm": 3291.2,
+      "x_mm": 275.2,
+      "y_mm": 3550.0,
       "r_mm": 3560.7,
-      "az_grad": 67.57,
+      "az_grad": 85.57,
       "typ": "abzweig_punkt"
      },
      {
@@ -2180,10 +2180,10 @@
        603.9,
        215.2
       ],
-      "x_mm": 1298.7,
-      "y_mm": 3310.0,
-      "r_mm": 3555.7,
-      "az_grad": 68.58,
+      "x_mm": 212.3,
+      "y_mm": 3549.3,
+      "r_mm": 3555.6,
+      "az_grad": 86.58,
       "typ": "abzweig_punkt"
      },
      {
@@ -2191,10 +2191,10 @@
        594.4,
        212.1
       ],
-      "x_mm": 1180.0,
-      "y_mm": 3348.7,
-      "r_mm": 3550.5,
-      "az_grad": 70.59,
+      "x_mm": 87.4,
+      "y_mm": 3549.5,
+      "r_mm": 3550.6,
+      "az_grad": 88.59,
       "typ": "abzweig_punkt"
      }
     ]
@@ -2265,10 +2265,10 @@
        732.7,
        642.9
       ],
-      "x_mm": 2908.8,
-      "y_mm": -2036.2,
-      "r_mm": 3550.7,
-      "az_grad": -34.99,
+      "x_mm": 3395.6,
+      "y_mm": -1037.7,
+      "r_mm": 3550.6,
+      "az_grad": -16.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2276,10 +2276,10 @@
        784.0,
        480.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": 0.0,
+      "x_mm": 3376.3,
+      "y_mm": 1097.0,
       "r_mm": 3550.0,
-      "az_grad": 0.0,
+      "az_grad": 18.0,
       "typ": "abzweig_punkt"
      },
      {
@@ -2287,10 +2287,10 @@
        784.0,
        470.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": 125.0,
+      "x_mm": 3337.6,
+      "y_mm": 1215.9,
       "r_mm": 3552.2,
-      "az_grad": 2.02,
+      "az_grad": 20.02,
       "typ": "abzweig_punkt"
      },
      {
@@ -2298,10 +2298,10 @@
        729.8,
        313.1
       ],
-      "x_mm": 2872.5,
-      "y_mm": 2086.2,
-      "r_mm": 3550.1,
-      "az_grad": 35.99,
+      "x_mm": 2087.2,
+      "y_mm": 2871.8,
+      "r_mm": 3550.2,
+      "az_grad": 53.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2309,10 +2309,10 @@
        723.9,
        305.0
       ],
-      "x_mm": 2798.7,
-      "y_mm": 2187.5,
+      "x_mm": 1985.8,
+      "y_mm": 2945.3,
       "r_mm": 3552.2,
-      "az_grad": 38.01,
+      "az_grad": 56.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2320,10 +2320,10 @@
        599.2,
        213.6
       ],
-      "x_mm": 1240.0,
-      "y_mm": 3330.0,
+      "x_mm": 150.3,
+      "y_mm": 3550.2,
       "r_mm": 3553.4,
-      "az_grad": 69.58,
+      "az_grad": 87.58,
       "typ": "abzweig_punkt"
      },
      {
@@ -2331,29 +2331,29 @@
        589.7,
        210.5
       ],
-      "x_mm": 1121.3,
-      "y_mm": 3368.8,
+      "x_mm": 25.4,
+      "y_mm": 3550.4,
       "r_mm": 3550.5,
-      "az_grad": 71.59,
+      "az_grad": 89.59,
       "typ": "abzweig_punkt"
      }
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 2577.3,
-    "mittelpunkt_y_mm": 1294.5,
-    "mittelpunkt_r_mm": 2884.1,
-    "mittelpunkt_az_grad": 26.67,
+    "mittelpunkt_x_mm": 2051.2,
+    "mittelpunkt_y_mm": 2027.6,
+    "mittelpunkt_r_mm": 2884.2,
+    "mittelpunkt_az_grad": 44.67,
     "abzweige": [
      {
       "zeichnung": [
        732.7,
        642.9
       ],
-      "x_mm": 2908.8,
-      "y_mm": -2036.2,
-      "r_mm": 3550.7,
-      "az_grad": -34.99,
+      "x_mm": 3395.6,
+      "y_mm": -1037.7,
+      "r_mm": 3550.6,
+      "az_grad": -16.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2361,10 +2361,10 @@
        784.0,
        480.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": 0.0,
+      "x_mm": 3376.3,
+      "y_mm": 1097.0,
       "r_mm": 3550.0,
-      "az_grad": 0.0,
+      "az_grad": 18.0,
       "typ": "abzweig_punkt"
      },
      {
@@ -2372,10 +2372,10 @@
        784.0,
        470.0
       ],
-      "x_mm": 3550.0,
-      "y_mm": 125.0,
+      "x_mm": 3337.6,
+      "y_mm": 1215.9,
       "r_mm": 3552.2,
-      "az_grad": 2.02,
+      "az_grad": 20.02,
       "typ": "abzweig_punkt"
      },
      {
@@ -2383,10 +2383,10 @@
        729.8,
        313.1
       ],
-      "x_mm": 2872.5,
-      "y_mm": 2086.2,
-      "r_mm": 3550.1,
-      "az_grad": 35.99,
+      "x_mm": 2087.2,
+      "y_mm": 2871.8,
+      "r_mm": 3550.2,
+      "az_grad": 53.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2394,10 +2394,10 @@
        723.9,
        305.0
       ],
-      "x_mm": 2798.7,
-      "y_mm": 2187.5,
+      "x_mm": 1985.8,
+      "y_mm": 2945.3,
       "r_mm": 3552.2,
-      "az_grad": 38.01,
+      "az_grad": 56.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2405,10 +2405,10 @@
        599.2,
        213.6
       ],
-      "x_mm": 1240.0,
-      "y_mm": 3330.0,
+      "x_mm": 150.3,
+      "y_mm": 3550.2,
       "r_mm": 3553.4,
-      "az_grad": 69.58,
+      "az_grad": 87.58,
       "typ": "abzweig_punkt"
      },
      {
@@ -2416,10 +2416,10 @@
        589.7,
        210.5
       ],
-      "x_mm": 1121.3,
-      "y_mm": 3368.8,
+      "x_mm": 25.4,
+      "y_mm": 3550.4,
       "r_mm": 3550.5,
-      "az_grad": 71.59,
+      "az_grad": 89.59,
       "typ": "abzweig_punkt"
      }
     ]
@@ -2493,10 +2493,10 @@
        412.2,
        750.1
       ],
-      "x_mm": -1097.5,
-      "y_mm": -3376.3,
+      "x_mm": -0.5,
+      "y_mm": -3550.2,
       "r_mm": 3550.2,
-      "az_grad": -108.01,
+      "az_grad": -90.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2504,10 +2504,10 @@
        273.2,
        651.0
       ],
-      "x_mm": -2835.0,
-      "y_mm": -2137.5,
+      "x_mm": -2035.7,
+      "y_mm": -2908.9,
       "r_mm": 3550.5,
-      "az_grad": -142.98,
+      "az_grad": -124.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2515,10 +2515,10 @@
        270.2,
        646.9
       ],
-      "x_mm": -2872.5,
-      "y_mm": -2086.2,
-      "r_mm": 3550.1,
-      "az_grad": -144.01,
+      "x_mm": -2087.2,
+      "y_mm": -2871.8,
+      "r_mm": 3550.2,
+      "az_grad": -126.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2526,10 +2526,10 @@
        216.0,
        490.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": -125.0,
+      "x_mm": -3337.6,
+      "y_mm": -1215.9,
       "r_mm": 3552.2,
-      "az_grad": -177.98,
+      "az_grad": -159.98,
       "typ": "abzweig_punkt"
      },
      {
@@ -2537,10 +2537,10 @@
        216.0,
        485.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": -62.5,
-      "r_mm": 3550.6,
-      "az_grad": -178.99,
+      "x_mm": -3356.9,
+      "y_mm": -1156.5,
+      "r_mm": 3550.5,
+      "az_grad": -160.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2548,10 +2548,10 @@
        216.0,
        475.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": 62.5,
+      "x_mm": -3395.6,
+      "y_mm": -1037.6,
       "r_mm": 3550.6,
-      "az_grad": 178.99,
+      "az_grad": -163.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2559,10 +2559,10 @@
        264.4,
        321.2
       ],
-      "x_mm": -2945.0,
-      "y_mm": 1985.0,
-      "r_mm": 3551.5,
-      "az_grad": 146.02,
+      "x_mm": -3414.3,
+      "y_mm": 977.8,
+      "r_mm": 3551.6,
+      "az_grad": 164.02,
       "typ": "abzweig_punkt"
      },
      {
@@ -2570,10 +2570,10 @@
        267.3,
        317.1
       ],
-      "x_mm": -2908.8,
-      "y_mm": 2036.2,
-      "r_mm": 3550.7,
-      "az_grad": 145.01,
+      "x_mm": -3395.6,
+      "y_mm": 1037.7,
+      "r_mm": 3550.6,
+      "az_grad": 163.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2581,10 +2581,10 @@
        273.2,
        309.0
       ],
-      "x_mm": -2835.0,
-      "y_mm": 2137.5,
+      "x_mm": -3356.8,
+      "y_mm": 1156.8,
       "r_mm": 3550.5,
-      "az_grad": 142.98,
+      "az_grad": 160.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2592,10 +2592,10 @@
        391.3,
        216.7
       ],
-      "x_mm": -1358.7,
-      "y_mm": 3291.2,
-      "r_mm": 3560.6,
-      "az_grad": 112.43,
+      "x_mm": -2309.3,
+      "y_mm": 2710.3,
+      "r_mm": 3560.7,
+      "az_grad": 130.43,
       "typ": "abzweig_punkt"
      },
      {
@@ -2603,10 +2603,10 @@
        396.1,
        215.2
       ],
-      "x_mm": -1298.7,
-      "y_mm": 3310.0,
+      "x_mm": -2258.0,
+      "y_mm": 2746.7,
       "r_mm": 3555.7,
-      "az_grad": 111.42,
+      "az_grad": 129.42,
       "typ": "abzweig_punkt"
      },
      {
@@ -2614,29 +2614,29 @@
        405.6,
        212.1
       ],
-      "x_mm": -1180.0,
-      "y_mm": 3348.7,
-      "r_mm": 3550.5,
-      "az_grad": 109.41,
+      "x_mm": -2157.1,
+      "y_mm": 2820.2,
+      "r_mm": 3550.6,
+      "az_grad": 127.41,
       "typ": "abzweig_punkt"
      }
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -2498.4,
-    "mittelpunkt_y_mm": 698.6,
+    "mittelpunkt_x_mm": -2592.0,
+    "mittelpunkt_y_mm": -107.6,
     "mittelpunkt_r_mm": 2594.2,
-    "mittelpunkt_az_grad": 164.38,
+    "mittelpunkt_az_grad": -177.62,
     "abzweige": [
      {
       "zeichnung": [
        412.2,
        750.1
       ],
-      "x_mm": -1097.5,
-      "y_mm": -3376.3,
+      "x_mm": -0.5,
+      "y_mm": -3550.2,
       "r_mm": 3550.2,
-      "az_grad": -108.01,
+      "az_grad": -90.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2644,10 +2644,10 @@
        273.2,
        651.0
       ],
-      "x_mm": -2835.0,
-      "y_mm": -2137.5,
+      "x_mm": -2035.7,
+      "y_mm": -2908.9,
       "r_mm": 3550.5,
-      "az_grad": -142.98,
+      "az_grad": -124.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2655,10 +2655,10 @@
        270.2,
        646.9
       ],
-      "x_mm": -2872.5,
-      "y_mm": -2086.2,
-      "r_mm": 3550.1,
-      "az_grad": -144.01,
+      "x_mm": -2087.2,
+      "y_mm": -2871.8,
+      "r_mm": 3550.2,
+      "az_grad": -126.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2666,10 +2666,10 @@
        216.0,
        490.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": -125.0,
+      "x_mm": -3337.6,
+      "y_mm": -1215.9,
       "r_mm": 3552.2,
-      "az_grad": -177.98,
+      "az_grad": -159.98,
       "typ": "abzweig_punkt"
      },
      {
@@ -2677,10 +2677,10 @@
        216.0,
        485.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": -62.5,
-      "r_mm": 3550.6,
-      "az_grad": -178.99,
+      "x_mm": -3356.9,
+      "y_mm": -1156.5,
+      "r_mm": 3550.5,
+      "az_grad": -160.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2688,10 +2688,10 @@
        216.0,
        475.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": 62.5,
+      "x_mm": -3395.6,
+      "y_mm": -1037.6,
       "r_mm": 3550.6,
-      "az_grad": 178.99,
+      "az_grad": -163.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2699,10 +2699,10 @@
        264.4,
        321.2
       ],
-      "x_mm": -2945.0,
-      "y_mm": 1985.0,
-      "r_mm": 3551.5,
-      "az_grad": 146.02,
+      "x_mm": -3414.3,
+      "y_mm": 977.8,
+      "r_mm": 3551.6,
+      "az_grad": 164.02,
       "typ": "abzweig_punkt"
      },
      {
@@ -2710,10 +2710,10 @@
        267.3,
        317.1
       ],
-      "x_mm": -2908.8,
-      "y_mm": 2036.2,
-      "r_mm": 3550.7,
-      "az_grad": 145.01,
+      "x_mm": -3395.6,
+      "y_mm": 1037.7,
+      "r_mm": 3550.6,
+      "az_grad": 163.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2721,10 +2721,10 @@
        273.2,
        309.0
       ],
-      "x_mm": -2835.0,
-      "y_mm": 2137.5,
+      "x_mm": -3356.8,
+      "y_mm": 1156.8,
       "r_mm": 3550.5,
-      "az_grad": 142.98,
+      "az_grad": 160.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2732,10 +2732,10 @@
        391.3,
        216.7
       ],
-      "x_mm": -1358.7,
-      "y_mm": 3291.2,
-      "r_mm": 3560.6,
-      "az_grad": 112.43,
+      "x_mm": -2309.3,
+      "y_mm": 2710.3,
+      "r_mm": 3560.7,
+      "az_grad": 130.43,
       "typ": "abzweig_punkt"
      },
      {
@@ -2743,10 +2743,10 @@
        396.1,
        215.2
       ],
-      "x_mm": -1298.7,
-      "y_mm": 3310.0,
+      "x_mm": -2258.0,
+      "y_mm": 2746.7,
       "r_mm": 3555.7,
-      "az_grad": 111.42,
+      "az_grad": 129.42,
       "typ": "abzweig_punkt"
      },
      {
@@ -2754,10 +2754,10 @@
        405.6,
        212.1
       ],
-      "x_mm": -1180.0,
-      "y_mm": 3348.7,
-      "r_mm": 3550.5,
-      "az_grad": 109.41,
+      "x_mm": -2157.1,
+      "y_mm": 2820.2,
+      "r_mm": 3550.6,
+      "az_grad": 127.41,
       "typ": "abzweig_punkt"
      }
     ]
@@ -2828,10 +2828,10 @@
        267.3,
        642.9
       ],
-      "x_mm": -2908.8,
-      "y_mm": -2036.2,
-      "r_mm": 3550.7,
-      "az_grad": -145.01,
+      "x_mm": -2137.1,
+      "y_mm": -2835.4,
+      "r_mm": 3550.6,
+      "az_grad": -127.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2839,10 +2839,10 @@
        216.0,
        480.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": 0.0,
+      "x_mm": -3376.3,
+      "y_mm": -1097.0,
       "r_mm": 3550.0,
-      "az_grad": 180.0,
+      "az_grad": -162.0,
       "typ": "abzweig_punkt"
      },
      {
@@ -2850,10 +2850,10 @@
        216.0,
        470.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": 125.0,
+      "x_mm": -3414.9,
+      "y_mm": -978.1,
       "r_mm": 3552.2,
-      "az_grad": 177.98,
+      "az_grad": -164.02,
       "typ": "abzweig_punkt"
      },
      {
@@ -2861,10 +2861,10 @@
        270.2,
        313.1
       ],
-      "x_mm": -2872.5,
-      "y_mm": 2086.2,
-      "r_mm": 3550.1,
-      "az_grad": 144.01,
+      "x_mm": -3376.6,
+      "y_mm": 1096.5,
+      "r_mm": 3550.2,
+      "az_grad": 162.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2872,10 +2872,10 @@
        276.1,
        305.0
       ],
-      "x_mm": -2798.7,
-      "y_mm": 2187.5,
+      "x_mm": -3337.7,
+      "y_mm": 1215.6,
       "r_mm": 3552.2,
-      "az_grad": 141.99,
+      "az_grad": 159.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2883,10 +2883,10 @@
        400.8,
        213.6
       ],
-      "x_mm": -1240.0,
-      "y_mm": 3330.0,
-      "r_mm": 3553.4,
-      "az_grad": 110.42,
+      "x_mm": -2208.3,
+      "y_mm": 2783.8,
+      "r_mm": 3553.3,
+      "az_grad": 128.42,
       "typ": "abzweig_punkt"
      },
      {
@@ -2894,29 +2894,29 @@
        410.3,
        210.5
       ],
-      "x_mm": -1121.2,
-      "y_mm": 3368.8,
+      "x_mm": -2107.4,
+      "y_mm": 2857.4,
       "r_mm": 3550.5,
-      "az_grad": 108.41,
+      "az_grad": 126.41,
       "typ": "abzweig_punkt"
      }
     ],
     "symbole": [],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -2577.3,
-    "mittelpunkt_y_mm": 1294.5,
+    "mittelpunkt_x_mm": -2851.2,
+    "mittelpunkt_y_mm": 434.7,
     "mittelpunkt_r_mm": 2884.1,
-    "mittelpunkt_az_grad": 153.33,
+    "mittelpunkt_az_grad": 171.33,
     "abzweige": [
      {
       "zeichnung": [
        267.3,
        642.9
       ],
-      "x_mm": -2908.8,
-      "y_mm": -2036.2,
-      "r_mm": 3550.7,
-      "az_grad": -145.01,
+      "x_mm": -2137.1,
+      "y_mm": -2835.4,
+      "r_mm": 3550.6,
+      "az_grad": -127.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2924,10 +2924,10 @@
        216.0,
        480.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": 0.0,
+      "x_mm": -3376.3,
+      "y_mm": -1097.0,
       "r_mm": 3550.0,
-      "az_grad": 180.0,
+      "az_grad": -162.0,
       "typ": "abzweig_punkt"
      },
      {
@@ -2935,10 +2935,10 @@
        216.0,
        470.0
       ],
-      "x_mm": -3550.0,
-      "y_mm": 125.0,
+      "x_mm": -3414.9,
+      "y_mm": -978.1,
       "r_mm": 3552.2,
-      "az_grad": 177.98,
+      "az_grad": -164.02,
       "typ": "abzweig_punkt"
      },
      {
@@ -2946,10 +2946,10 @@
        270.2,
        313.1
       ],
-      "x_mm": -2872.5,
-      "y_mm": 2086.2,
-      "r_mm": 3550.1,
-      "az_grad": 144.01,
+      "x_mm": -3376.6,
+      "y_mm": 1096.5,
+      "r_mm": 3550.2,
+      "az_grad": 162.01,
       "typ": "abzweig_punkt"
      },
      {
@@ -2957,10 +2957,10 @@
        276.1,
        305.0
       ],
-      "x_mm": -2798.7,
-      "y_mm": 2187.5,
+      "x_mm": -3337.7,
+      "y_mm": 1215.6,
       "r_mm": 3552.2,
-      "az_grad": 141.99,
+      "az_grad": 159.99,
       "typ": "abzweig_punkt"
      },
      {
@@ -2968,10 +2968,10 @@
        400.8,
        213.6
       ],
-      "x_mm": -1240.0,
-      "y_mm": 3330.0,
-      "r_mm": 3553.4,
-      "az_grad": 110.42,
+      "x_mm": -2208.3,
+      "y_mm": 2783.8,
+      "r_mm": 3553.3,
+      "az_grad": 128.42,
       "typ": "abzweig_punkt"
      },
      {
@@ -2979,10 +2979,10 @@
        410.3,
        210.5
       ],
-      "x_mm": -1121.2,
-      "y_mm": 3368.8,
+      "x_mm": -2107.4,
+      "y_mm": 2857.4,
       "r_mm": 3550.5,
-      "az_grad": 108.41,
+      "az_grad": 126.41,
       "typ": "abzweig_punkt"
      }
     ]
@@ -3052,20 +3052,20 @@
          173.5,
          668.5
         ],
-        "x_mm": -4081.2,
-        "y_mm": -2356.2,
-        "r_mm": 4712.5,
-        "az_grad": -150.0
+        "x_mm": -3153.4,
+        "y_mm": -3502.1,
+        "r_mm": 4712.6,
+        "az_grad": -132.0
        },
        {
         "zeichnung": [
          826.5,
          668.5
         ],
-        "x_mm": 4081.2,
-        "y_mm": -2356.2,
-        "r_mm": 4712.5,
-        "az_grad": -30.0
+        "x_mm": 4609.6,
+        "y_mm": -979.8,
+        "r_mm": 4712.6,
+        "az_grad": -12.0
        }
       ],
       "radius_zeichnung": 377.0,
@@ -3074,8 +3074,8 @@
        500.0,
        480.0
       ],
-      "von_az_grad": -150.0,
-      "bis_az_grad": -30.0,
+      "von_az_grad": -132.0,
+      "bis_az_grad": -12.0,
       "offener_winkel_grad": 120.0,
       "bogen_hinweis": "Zeichnung: Bogen mit Oeffnung nach unten (Sueden), schematisch (A16); Tisch-/Beetlage gilt nach Modell (A25)"
      }
@@ -3166,20 +3166,20 @@
          185.6,
          661.5
         ],
-        "x_mm": -3930.0,
-        "y_mm": -2268.8,
-        "r_mm": 4537.9,
-        "az_grad": -150.0
+        "x_mm": -3036.6,
+        "y_mm": -3372.1,
+        "r_mm": 4537.8,
+        "az_grad": -132.0
        },
        {
         "zeichnung": [
          814.4,
          661.5
         ],
-        "x_mm": 3930.0,
-        "y_mm": -2268.8,
-        "r_mm": 4537.9,
-        "az_grad": -30.0
+        "x_mm": 4438.7,
+        "y_mm": -943.3,
+        "r_mm": 4537.8,
+        "az_grad": -12.0
        }
       ],
       "radius_zeichnung": 363.0,
@@ -3188,8 +3188,8 @@
        500.0,
        480.0
       ],
-      "von_az_grad": -150.0,
-      "bis_az_grad": -30.0,
+      "von_az_grad": -132.0,
+      "bis_az_grad": -12.0,
       "offener_winkel_grad": 120.0,
       "bogen_hinweis": "Zeichnung: Bogen mit Oeffnung nach unten (Sueden), schematisch (A16); Tisch-/Beetlage gilt nach Modell (A25)"
      }
@@ -3200,10 +3200,10 @@
        826.3,
        639.1
       ],
-      "x_mm": 4078.7,
-      "y_mm": -1988.8,
-      "r_mm": 4537.7,
-      "az_grad": -25.99,
+      "x_mm": 4493.7,
+      "y_mm": -631.0,
+      "r_mm": 4537.8,
+      "az_grad": -7.99,
       "typ": "siphon"
      },
      {
@@ -3211,10 +3211,10 @@
        173.7,
        639.1
       ],
-      "x_mm": -4078.8,
-      "y_mm": -1988.8,
+      "x_mm": -3264.6,
+      "y_mm": -3151.8,
       "r_mm": 4537.8,
-      "az_grad": -154.01,
+      "az_grad": -136.01,
       "typ": "siphon"
      }
     ],
@@ -3293,20 +3293,20 @@
          242.8,
          628.5
         ],
-        "x_mm": -3215.0,
-        "y_mm": -1856.2,
+        "x_mm": -2484.0,
+        "y_mm": -2758.9,
         "r_mm": 3712.4,
-        "az_grad": -150.0
+        "az_grad": -132.0
        },
        {
         "zeichnung": [
          757.2,
          628.5
         ],
-        "x_mm": 3215.0,
-        "y_mm": -1856.2,
+        "x_mm": 3631.3,
+        "y_mm": -771.9,
         "r_mm": 3712.4,
-        "az_grad": -30.0
+        "az_grad": -12.0
        }
       ],
       "radius_zeichnung": 297.0,
@@ -3315,8 +3315,8 @@
        500.0,
        480.0
       ],
-      "von_az_grad": -150.0,
-      "bis_az_grad": -30.0,
+      "von_az_grad": -132.0,
+      "bis_az_grad": -12.0,
       "offener_winkel_grad": 120.0,
       "bogen_hinweis": "Zeichnung: Bogen mit Oeffnung nach unten (Sueden), schematisch (A16); Tisch-/Beetlage gilt nach Modell (A25)"
      }
@@ -3407,20 +3407,20 @@
          254.9,
          621.5
         ],
-        "x_mm": -3063.8,
-        "y_mm": -1768.8,
-        "r_mm": 3537.7,
-        "az_grad": -150.0
+        "x_mm": -2367.2,
+        "y_mm": -2628.9,
+        "r_mm": 3537.6,
+        "az_grad": -132.0
        },
        {
         "zeichnung": [
          745.1,
          621.5
         ],
-        "x_mm": 3063.8,
-        "y_mm": -1768.8,
+        "x_mm": 3460.4,
+        "y_mm": -735.4,
         "r_mm": 3537.7,
-        "az_grad": -30.0
+        "az_grad": -12.0
        }
       ],
       "radius_zeichnung": 283.0,
@@ -3429,8 +3429,8 @@
        500.0,
        480.0
       ],
-      "von_az_grad": -150.0,
-      "bis_az_grad": -30.0,
+      "von_az_grad": -132.0,
+      "bis_az_grad": -12.0,
       "offener_winkel_grad": 120.0,
       "bogen_hinweis": "Zeichnung: Bogen mit Oeffnung nach unten (Sueden), schematisch (A16); Tisch-/Beetlage gilt nach Modell (A25)"
      }
@@ -3441,10 +3441,10 @@
        754.4,
        604.1
       ],
-      "x_mm": 3180.0,
-      "y_mm": -1551.3,
+      "x_mm": 3503.7,
+      "y_mm": -492.7,
       "r_mm": 3538.2,
-      "az_grad": -26.0,
+      "az_grad": -8.0,
       "typ": "siphon"
      },
      {
@@ -3452,10 +3452,10 @@
        245.6,
        604.1
       ],
-      "x_mm": -3180.0,
-      "y_mm": -1551.3,
+      "x_mm": -2545.0,
+      "y_mm": -2458.0,
       "r_mm": 3538.2,
-      "az_grad": -154.0,
+      "az_grad": -136.0,
       "typ": "siphon"
      }
     ],
@@ -3534,20 +3534,20 @@
          318.1,
          585.0
         ],
-        "x_mm": -2273.7,
-        "y_mm": -1312.5,
-        "r_mm": 2625.3,
-        "az_grad": -150.0
+        "x_mm": -1756.9,
+        "y_mm": -1950.9,
+        "r_mm": 2625.4,
+        "az_grad": -132.0
        },
        {
         "zeichnung": [
          681.9,
          585.0
         ],
-        "x_mm": 2273.7,
-        "y_mm": -1312.5,
+        "x_mm": 2568.0,
+        "y_mm": -545.6,
         "r_mm": 2625.3,
-        "az_grad": -30.0
+        "az_grad": -11.99
        }
       ],
       "radius_zeichnung": 210.0,
@@ -3556,8 +3556,8 @@
        500.0,
        480.0
       ],
-      "von_az_grad": -150.0,
-      "bis_az_grad": -30.0,
+      "von_az_grad": -132.0,
+      "bis_az_grad": -11.99,
       "offener_winkel_grad": 120.0,
       "bogen_hinweis": "Zeichnung: Bogen mit Oeffnung nach unten (Sueden), schematisch (A16); Tisch-/Beetlage gilt nach Modell (A25)"
      }
@@ -3642,10 +3642,10 @@
        625.0,
        803.0
       ],
-      "x_mm": 1562.5,
-      "y_mm": -4037.5,
+      "x_mm": 2733.7,
+      "y_mm": -3357.1,
       "r_mm": 4329.3,
-      "az_grad": -68.84,
+      "az_grad": -50.84,
       "typ": "rechteck",
       "breite_mm": 1125.0,
       "hoehe_mm": 2975.0,
@@ -3663,10 +3663,10 @@
        625.0,
        862.5
       ],
-      "x_mm": 1562.5,
-      "y_mm": -4781.2,
-      "r_mm": 5030.0,
-      "az_grad": -71.9,
+      "x_mm": 2963.5,
+      "y_mm": -4064.4,
+      "r_mm": 5030.1,
+      "az_grad": -53.9,
       "typ": "pufferzone",
       "nummer": 1,
       "text": "Pufferzone 1 (10 %): Kalk (Muschelschill, Eierschalen), aufwärts"
@@ -3676,10 +3676,10 @@
        625.0,
        879.5
       ],
-      "x_mm": 1562.5,
-      "y_mm": -4993.8,
+      "x_mm": 3029.2,
+      "y_mm": -4266.5,
       "r_mm": 5232.5,
-      "az_grad": -72.63,
+      "az_grad": -54.63,
       "typ": "pufferzone",
       "nummer": 2,
       "text": "Pufferzone 2 (10 %): Aktivkohle, abwärts"
@@ -3689,10 +3689,10 @@
        625.0,
        896.5
       ],
-      "x_mm": 1562.5,
-      "y_mm": -5206.2,
+      "x_mm": 3094.8,
+      "y_mm": -4468.6,
       "r_mm": 5435.6,
-      "az_grad": -73.29,
+      "az_grad": -55.29,
       "typ": "pufferzone",
       "nummer": 3,
       "text": "Pufferzone 3 (10 %): frei wählbar, aufwärts"
@@ -3702,20 +3702,20 @@
        625.0,
        913.5
       ],
-      "x_mm": 1562.5,
-      "y_mm": -5418.8,
-      "r_mm": 5639.6,
-      "az_grad": -73.92,
+      "x_mm": 3160.5,
+      "y_mm": -4670.7,
+      "r_mm": 5639.5,
+      "az_grad": -55.92,
       "typ": "pufferzone",
       "nummer": 4,
       "text": "Pufferzone 4 (10 %): frei wählbar, abwärts"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 1562.5,
-    "mittelpunkt_y_mm": -4037.5,
+    "mittelpunkt_x_mm": 2733.7,
+    "mittelpunkt_y_mm": -3357.1,
     "mittelpunkt_r_mm": 4329.3,
-    "mittelpunkt_az_grad": -68.84
+    "mittelpunkt_az_grad": -50.84
    },
    "wege_ein": [
     "e33",
@@ -3772,10 +3772,10 @@
        620.0,
        772.0
       ],
-      "x_mm": 1500.0,
-      "y_mm": -3650.0,
+      "x_mm": 2554.5,
+      "y_mm": -3007.8,
       "r_mm": 3946.2,
-      "az_grad": -67.66,
+      "az_grad": -49.66,
       "typ": "kreis",
       "radius_zeichnung": 11.0,
       "radius_mm": 137.5
@@ -3787,19 +3787,19 @@
        620.0,
        738.0
       ],
-      "x_mm": 1500.0,
-      "y_mm": -3225.0,
+      "x_mm": 2423.2,
+      "y_mm": -2603.6,
       "r_mm": 3556.8,
-      "az_grad": -65.06,
+      "az_grad": -47.06,
       "typ": "rueckschlagventil",
       "drehung_grad": -90.0
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 1500.0,
-    "mittelpunkt_y_mm": -3650.0,
+    "mittelpunkt_x_mm": 2554.5,
+    "mittelpunkt_y_mm": -3007.8,
     "mittelpunkt_r_mm": 3946.2,
-    "mittelpunkt_az_grad": -67.66
+    "mittelpunkt_az_grad": -49.66
    },
    "wege_ein": [
     "e14",
@@ -3853,18 +3853,18 @@
        620.0,
        700.0
       ],
-      "x_mm": 1500.0,
-      "y_mm": -2750.0,
+      "x_mm": 2276.4,
+      "y_mm": -2151.9,
       "r_mm": 3132.5,
-      "az_grad": -61.39,
+      "az_grad": -43.39,
       "typ": "venturi"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 1500.0,
-    "mittelpunkt_y_mm": -2750.0,
+    "mittelpunkt_x_mm": 2276.4,
+    "mittelpunkt_y_mm": -2151.9,
     "mittelpunkt_r_mm": 3132.5,
-    "mittelpunkt_az_grad": -61.39
+    "mittelpunkt_az_grad": -43.39
    },
    "wege_ein": [
     "e59"
@@ -3935,10 +3935,10 @@
        375.0,
        803.0
       ],
-      "x_mm": -1562.5,
-      "y_mm": -4037.5,
+      "x_mm": -238.4,
+      "y_mm": -4322.7,
       "r_mm": 4329.3,
-      "az_grad": -111.16,
+      "az_grad": -93.16,
       "typ": "rechteck",
       "breite_mm": 1125.0,
       "hoehe_mm": 2975.0,
@@ -3956,10 +3956,10 @@
        375.0,
        862.5
       ],
-      "x_mm": -1562.5,
-      "y_mm": -4781.2,
-      "r_mm": 5030.0,
-      "az_grad": -108.1,
+      "x_mm": -8.5,
+      "y_mm": -5030.1,
+      "r_mm": 5030.1,
+      "az_grad": -90.1,
       "typ": "pufferzone",
       "nummer": 1,
       "text": "Pufferzone 1 (10 %): Kalk (Muschelschill, Eierschalen), aufwärts"
@@ -3969,10 +3969,10 @@
        375.0,
        879.5
       ],
-      "x_mm": -1562.5,
-      "y_mm": -4993.8,
+      "x_mm": 57.1,
+      "y_mm": -5232.2,
       "r_mm": 5232.5,
-      "az_grad": -107.37,
+      "az_grad": -89.37,
       "typ": "pufferzone",
       "nummer": 2,
       "text": "Pufferzone 2 (10 %): Aktivkohle, abwärts"
@@ -3982,10 +3982,10 @@
        375.0,
        896.5
       ],
-      "x_mm": -1562.5,
-      "y_mm": -5206.2,
-      "r_mm": 5435.6,
-      "az_grad": -106.71,
+      "x_mm": 122.8,
+      "y_mm": -5434.3,
+      "r_mm": 5435.7,
+      "az_grad": -88.71,
       "typ": "pufferzone",
       "nummer": 3,
       "text": "Pufferzone 3 (10 %): frei wählbar, aufwärts"
@@ -3995,20 +3995,20 @@
        375.0,
        913.5
       ],
-      "x_mm": -1562.5,
-      "y_mm": -5418.8,
+      "x_mm": 188.5,
+      "y_mm": -5636.4,
       "r_mm": 5639.6,
-      "az_grad": -106.08,
+      "az_grad": -88.08,
       "typ": "pufferzone",
       "nummer": 4,
       "text": "Pufferzone 4 (10 %): frei wählbar, abwärts"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -1562.5,
-    "mittelpunkt_y_mm": -4037.5,
+    "mittelpunkt_x_mm": -238.4,
+    "mittelpunkt_y_mm": -4322.7,
     "mittelpunkt_r_mm": 4329.3,
-    "mittelpunkt_az_grad": -111.16
+    "mittelpunkt_az_grad": -93.16
    },
    "wege_ein": [
     "e34",
@@ -4065,10 +4065,10 @@
        380.0,
        772.0
       ],
-      "x_mm": -1500.0,
-      "y_mm": -3650.0,
+      "x_mm": -298.7,
+      "y_mm": -3934.9,
       "r_mm": 3946.2,
-      "az_grad": -112.34,
+      "az_grad": -94.34,
       "typ": "kreis",
       "radius_zeichnung": 11.0,
       "radius_mm": 137.5
@@ -4080,19 +4080,19 @@
        380.0,
        738.0
       ],
-      "x_mm": -1500.0,
-      "y_mm": -3225.0,
+      "x_mm": -430.0,
+      "y_mm": -3530.7,
       "r_mm": 3556.8,
-      "az_grad": -114.94,
+      "az_grad": -96.94,
       "typ": "rueckschlagventil",
       "drehung_grad": 270.0
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -1500.0,
-    "mittelpunkt_y_mm": -3650.0,
+    "mittelpunkt_x_mm": -298.7,
+    "mittelpunkt_y_mm": -3934.9,
     "mittelpunkt_r_mm": 3946.2,
-    "mittelpunkt_az_grad": -112.34
+    "mittelpunkt_az_grad": -94.34
    },
    "wege_ein": [
     "e15",
@@ -4146,18 +4146,18 @@
        380.0,
        700.0
       ],
-      "x_mm": -1500.0,
-      "y_mm": -2750.0,
+      "x_mm": -576.8,
+      "y_mm": -3078.9,
       "r_mm": 3132.5,
-      "az_grad": -118.61,
+      "az_grad": -100.61,
       "typ": "venturi"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -1500.0,
-    "mittelpunkt_y_mm": -2750.0,
+    "mittelpunkt_x_mm": -576.8,
+    "mittelpunkt_y_mm": -3078.9,
     "mittelpunkt_r_mm": 3132.5,
-    "mittelpunkt_az_grad": -118.61
+    "mittelpunkt_az_grad": -100.61
    },
    "wege_ein": [
     "e61"
@@ -4210,18 +4210,18 @@
        637.0,
        905.5
       ],
-      "x_mm": 1712.5,
-      "y_mm": -5318.8,
-      "r_mm": 5587.7,
-      "az_grad": -72.15,
+      "x_mm": 3272.3,
+      "y_mm": -4529.2,
+      "r_mm": 5587.6,
+      "az_grad": -54.15,
       "typ": "schwimmerschalter"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": 1712.5,
-    "mittelpunkt_y_mm": -5318.8,
-    "mittelpunkt_r_mm": 5587.7,
-    "mittelpunkt_az_grad": -72.15
+    "mittelpunkt_x_mm": 3272.3,
+    "mittelpunkt_y_mm": -4529.2,
+    "mittelpunkt_r_mm": 5587.6,
+    "mittelpunkt_az_grad": -54.15
    },
    "wege_ein": [],
    "wege_aus": [
@@ -4272,18 +4272,18 @@
        363.0,
        905.5
       ],
-      "x_mm": -1712.5,
-      "y_mm": -5318.8,
-      "r_mm": 5587.7,
-      "az_grad": -107.85,
+      "x_mm": 14.9,
+      "y_mm": -5587.6,
+      "r_mm": 5587.6,
+      "az_grad": -89.85,
       "typ": "schwimmerschalter"
      }
     ],
     "ausserhalb_kuppel": false,
-    "mittelpunkt_x_mm": -1712.5,
-    "mittelpunkt_y_mm": -5318.8,
-    "mittelpunkt_r_mm": 5587.7,
-    "mittelpunkt_az_grad": -107.85
+    "mittelpunkt_x_mm": 14.9,
+    "mittelpunkt_y_mm": -5587.6,
+    "mittelpunkt_r_mm": 5587.6,
+    "mittelpunkt_az_grad": -89.85
    },
    "wege_ein": [],
    "wege_aus": [
@@ -4338,10 +4338,10 @@
        -25.0,
        660.0
       ],
-      "x_mm": -6562.5,
-      "y_mm": -2250.0,
+      "x_mm": -5546.0,
+      "y_mm": -4167.8,
       "r_mm": 6937.5,
-      "az_grad": -161.08,
+      "az_grad": -143.08,
       "typ": "rechteck",
       "breite_mm": 1625.0,
       "hoehe_mm": 500.0,
@@ -4355,10 +4355,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": -6562.5,
-    "mittelpunkt_y_mm": -2250.0,
+    "mittelpunkt_x_mm": -5546.0,
+    "mittelpunkt_y_mm": -4167.8,
     "mittelpunkt_r_mm": 6937.5,
-    "mittelpunkt_az_grad": -161.08
+    "mittelpunkt_az_grad": -143.08
    },
    "wege_ein": [
     "e80"
@@ -4410,10 +4410,10 @@
        1025.0,
        720.0
       ],
-      "x_mm": 6562.5,
-      "y_mm": -3000.0,
+      "x_mm": 7168.4,
+      "y_mm": -825.2,
       "r_mm": 7215.7,
-      "az_grad": -24.57,
+      "az_grad": -6.57,
       "typ": "rechteck",
       "breite_mm": 1625.0,
       "hoehe_mm": 500.0,
@@ -4427,10 +4427,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": 6562.5,
-    "mittelpunkt_y_mm": -3000.0,
+    "mittelpunkt_x_mm": 7168.4,
+    "mittelpunkt_y_mm": -825.2,
     "mittelpunkt_r_mm": 7215.7,
-    "mittelpunkt_az_grad": -24.57
+    "mittelpunkt_az_grad": -6.57
    },
    "wege_ein": [
     "e85"
@@ -4485,10 +4485,10 @@
        -25.0,
        720.0
       ],
-      "x_mm": -6562.5,
-      "y_mm": -3000.0,
+      "x_mm": -5314.3,
+      "y_mm": -4881.1,
       "r_mm": 7215.7,
-      "az_grad": -155.43,
+      "az_grad": -137.43,
       "typ": "rechteck",
       "breite_mm": 1625.0,
       "hoehe_mm": 500.0,
@@ -4502,10 +4502,10 @@
     ],
     "symbole": [],
     "ausserhalb_kuppel": true,
-    "mittelpunkt_x_mm": -6562.5,
-    "mittelpunkt_y_mm": -3000.0,
+    "mittelpunkt_x_mm": -5314.3,
+    "mittelpunkt_y_mm": -4881.1,
     "mittelpunkt_r_mm": 7215.7,
-    "mittelpunkt_az_grad": -155.43
+    "mittelpunkt_az_grad": -137.43
    },
    "wege_ein": [
     "e90"
@@ -4542,20 +4542,20 @@
       970.0,
       110.0
      ],
-     "x_mm": 5875.0,
-     "y_mm": 4625.0,
-     "r_mm": 7477.0,
-     "az_grad": 38.21
+     "x_mm": 4158.3,
+     "y_mm": 6214.1,
+     "r_mm": 7477.1,
+     "az_grad": 56.21
     },
     {
      "zeichnung": [
       970.0,
       121.0
      ],
-     "x_mm": 5875.0,
-     "y_mm": 4487.5,
-     "r_mm": 7392.8,
-     "az_grad": 37.37
+     "x_mm": 4200.7,
+     "y_mm": 6083.3,
+     "r_mm": 7392.7,
+     "az_grad": 55.37
     }
    ],
    "pfad_schematisch": true
@@ -4583,140 +4583,140 @@
       900.0,
       150.0
      ],
-     "x_mm": 5000.0,
-     "y_mm": 4125.0,
-     "r_mm": 6481.9,
-     "az_grad": 39.52
+     "x_mm": 3480.6,
+     "y_mm": 5468.2,
+     "r_mm": 6482.0,
+     "az_grad": 57.52
     },
     {
      "zeichnung": [
       887.0,
       150.0
      ],
-     "x_mm": 4837.5,
-     "y_mm": 4125.0,
+     "x_mm": 3326.0,
+     "y_mm": 5418.0,
      "r_mm": 6357.4,
-     "az_grad": 40.45
+     "az_grad": 58.46
     },
     {
      "zeichnung": [
       880.0,
       150.0
      ],
-     "x_mm": 4750.0,
-     "y_mm": 4125.0,
+     "x_mm": 3242.8,
+     "y_mm": 5390.9,
      "r_mm": 6291.1,
-     "az_grad": 40.97
+     "az_grad": 58.97
     },
     {
      "zeichnung": [
       880.0,
       37.0
      ],
-     "x_mm": 4750.0,
-     "y_mm": 5537.5,
+     "x_mm": 2806.3,
+     "y_mm": 6734.3,
      "r_mm": 7295.6,
-     "az_grad": 49.38
+     "az_grad": 67.38
     },
     {
      "zeichnung": [
       880.0,
       30.0
      ],
-     "x_mm": 4750.0,
-     "y_mm": 5625.0,
+     "x_mm": 2779.3,
+     "y_mm": 6817.5,
      "r_mm": 7362.3,
-     "az_grad": 49.82
+     "az_grad": 67.82
     },
     {
      "zeichnung": [
       -103.0,
       30.0
      ],
-     "x_mm": -7537.5,
-     "y_mm": 5625.0,
+     "x_mm": -8906.8,
+     "y_mm": 3020.5,
      "r_mm": 9405.0,
-     "az_grad": 143.27
+     "az_grad": 161.27
     },
     {
      "zeichnung": [
       -110.0,
       30.0
      ],
-     "x_mm": -7625.0,
-     "y_mm": 5625.0,
+     "x_mm": -8990.0,
+     "y_mm": 2993.4,
      "r_mm": 9475.3,
-     "az_grad": 143.58
+     "az_grad": 161.58
     },
     {
      "zeichnung": [
       -110.0,
       605.0
      ],
-     "x_mm": -7625.0,
-     "y_mm": -1562.5,
-     "r_mm": 7783.4,
-     "az_grad": -168.42
+     "x_mm": -6769.0,
+     "y_mm": -3842.3,
+     "r_mm": 7783.5,
+     "az_grad": -150.42
     },
     {
      "zeichnung": [
       -110.0,
       612.0
      ],
-     "x_mm": -7625.0,
-     "y_mm": -1650.0,
+     "x_mm": -6741.9,
+     "y_mm": -3925.5,
      "r_mm": 7801.5,
-     "az_grad": -167.79
+     "az_grad": -149.79
     },
     {
      "zeichnung": [
       -65.0,
       612.0
      ],
-     "x_mm": -7062.5,
-     "y_mm": -1650.0,
+     "x_mm": -6207.0,
+     "y_mm": -3751.7,
      "r_mm": 7252.7,
-     "az_grad": -166.85
+     "az_grad": -148.85
     },
     {
      "zeichnung": [
       -55.0,
       612.0
      ],
-     "x_mm": -6937.5,
-     "y_mm": -1650.0,
+     "x_mm": -6088.1,
+     "y_mm": -3713.0,
      "r_mm": 7131.0,
-     "az_grad": -166.62
+     "az_grad": -148.62
     },
     {
      "zeichnung": [
       -32.0,
       612.0
      ],
-     "x_mm": -6650.0,
-     "y_mm": -1650.0,
+     "x_mm": -5814.6,
+     "y_mm": -3624.2,
      "r_mm": 6851.6,
-     "az_grad": -166.07
+     "az_grad": -148.06
     },
     {
      "zeichnung": [
       -25.0,
       612.0
      ],
-     "x_mm": -6562.5,
-     "y_mm": -1650.0,
-     "r_mm": 6766.8,
-     "az_grad": -165.89
+     "x_mm": -5731.4,
+     "y_mm": -3597.2,
+     "r_mm": 6766.7,
+     "az_grad": -147.89
     },
     {
      "zeichnung": [
       -25.0,
       594.0
      ],
-     "x_mm": -6562.5,
-     "y_mm": -1425.0,
-     "r_mm": 6715.4,
-     "az_grad": -167.75
+     "x_mm": -5801.0,
+     "y_mm": -3383.2,
+     "r_mm": 6715.5,
+     "az_grad": -149.75
     }
    ],
    "pfad_schematisch": true
@@ -4744,20 +4744,20 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       331.0,
       562.0
      ],
-     "x_mm": -2112.5,
-     "y_mm": -1025.0,
+     "x_mm": -1692.4,
+     "y_mm": -1627.6,
      "r_mm": 2348.0,
-     "az_grad": -154.12
+     "az_grad": -136.12
     }
    ],
    "pfad_schematisch": true
@@ -4785,100 +4785,100 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       759.0,
       972.0
      ],
-     "x_mm": 3237.5,
-     "y_mm": -6150.0,
+     "x_mm": 4979.5,
+     "y_mm": -4848.6,
      "r_mm": 6950.1,
-     "az_grad": -62.24
+     "az_grad": -44.24
     },
     {
      "zeichnung": [
       766.0,
       972.0
      ],
-     "x_mm": 3325.0,
-     "y_mm": -6150.0,
+     "x_mm": 5062.7,
+     "y_mm": -4821.5,
      "r_mm": 6991.3,
-     "az_grad": -61.6
+     "az_grad": -43.6
     },
     {
      "zeichnung": [
       766.0,
       793.0
      ],
-     "x_mm": 3325.0,
-     "y_mm": -3912.5,
+     "x_mm": 4371.3,
+     "y_mm": -2693.5,
      "r_mm": 5134.5,
-     "az_grad": -49.64
+     "az_grad": -31.64
     },
     {
      "zeichnung": [
       766.0,
       790.0
      ],
-     "x_mm": 3325.0,
-     "y_mm": -3875.0,
+     "x_mm": 4359.7,
+     "y_mm": -2657.9,
      "r_mm": 5106.0,
-     "az_grad": -49.37
+     "az_grad": -31.37
     },
     {
      "zeichnung": [
       760.0,
       790.0
      ],
-     "x_mm": 3250.0,
-     "y_mm": -3875.0,
+     "x_mm": 4288.4,
+     "y_mm": -2681.0,
      "r_mm": 5057.5,
-     "az_grad": -50.01
+     "az_grad": -32.01
     }
    ],
    "pfad_schematisch": true
@@ -4906,100 +4906,100 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       227.0,
       972.0
      ],
-     "x_mm": -3412.5,
-     "y_mm": -6150.0,
+     "x_mm": -1345.0,
+     "y_mm": -6903.5,
      "r_mm": 7033.3,
-     "az_grad": -119.02
+     "az_grad": -101.02
     },
     {
      "zeichnung": [
       234.0,
       972.0
      ],
-     "x_mm": -3325.0,
-     "y_mm": -6150.0,
+     "x_mm": -1261.8,
+     "y_mm": -6876.5,
      "r_mm": 6991.3,
-     "az_grad": -118.4
+     "az_grad": -100.4
     },
     {
      "zeichnung": [
       234.0,
       793.0
      ],
-     "x_mm": -3325.0,
-     "y_mm": -3912.5,
+     "x_mm": -1953.2,
+     "y_mm": -4748.5,
      "r_mm": 5134.5,
-     "az_grad": -130.36
+     "az_grad": -112.36
     },
     {
      "zeichnung": [
       234.0,
       790.0
      ],
-     "x_mm": -3325.0,
-     "y_mm": -3875.0,
+     "x_mm": -1964.8,
+     "y_mm": -4712.8,
      "r_mm": 5106.0,
-     "az_grad": -130.63
+     "az_grad": -112.63
     },
     {
      "zeichnung": [
       240.0,
       790.0
      ],
-     "x_mm": -3250.0,
-     "y_mm": -3875.0,
-     "r_mm": 5057.5,
-     "az_grad": -129.99
+     "x_mm": -1893.5,
+     "y_mm": -4689.6,
+     "r_mm": 5057.4,
+     "az_grad": -111.99
     }
    ],
    "pfad_schematisch": true
@@ -5027,80 +5027,80 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       815.0,
       972.0
      ],
-     "x_mm": 3937.5,
-     "y_mm": -6150.0,
-     "r_mm": 7302.5,
-     "az_grad": -57.37
+     "x_mm": 5645.2,
+     "y_mm": -4632.2,
+     "r_mm": 7302.4,
+     "az_grad": -39.37
     },
     {
      "zeichnung": [
       822.0,
       972.0
      ],
-     "x_mm": 4025.0,
-     "y_mm": -6150.0,
-     "r_mm": 7350.0,
-     "az_grad": -56.8
+     "x_mm": 5728.5,
+     "y_mm": -4605.2,
+     "r_mm": 7350.1,
+     "az_grad": -38.8
     },
     {
      "zeichnung": [
       822.0,
       812.0
      ],
-     "x_mm": 4025.0,
-     "y_mm": -4150.0,
+     "x_mm": 5110.4,
+     "y_mm": -2703.1,
      "r_mm": 5781.3,
-     "az_grad": -45.88
+     "az_grad": -27.88
     }
    ],
    "pfad_schematisch": true
@@ -5128,80 +5128,80 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       171.0,
       972.0
      ],
-     "x_mm": -4112.5,
-     "y_mm": -6150.0,
+     "x_mm": -2010.8,
+     "y_mm": -7119.8,
      "r_mm": 7398.3,
-     "az_grad": -123.77
+     "az_grad": -105.77
     },
     {
      "zeichnung": [
       178.0,
       972.0
      ],
-     "x_mm": -4025.0,
-     "y_mm": -6150.0,
+     "x_mm": -1927.5,
+     "y_mm": -7092.8,
      "r_mm": 7350.0,
-     "az_grad": -123.2
+     "az_grad": -105.2
     },
     {
      "zeichnung": [
       178.0,
       812.0
      ],
-     "x_mm": -4025.0,
-     "y_mm": -4150.0,
+     "x_mm": -2545.6,
+     "y_mm": -5190.7,
      "r_mm": 5781.3,
-     "az_grad": -134.12
+     "az_grad": -116.12
     }
    ],
    "pfad_schematisch": true
@@ -5229,20 +5229,20 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       137.0,
       562.0
      ],
-     "x_mm": -4537.5,
-     "y_mm": -1025.0,
-     "r_mm": 4651.8,
-     "az_grad": -167.27
+     "x_mm": -3998.7,
+     "y_mm": -2377.0,
+     "r_mm": 4651.9,
+     "az_grad": -149.27
     }
    ],
    "pfad_schematisch": true
@@ -5270,20 +5270,20 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       298.0,
       562.0
      ],
-     "x_mm": -2525.0,
-     "y_mm": -1025.0,
+     "x_mm": -2084.7,
+     "y_mm": -1755.1,
      "r_mm": 2725.1,
-     "az_grad": -157.91
+     "az_grad": -139.91
     }
    ],
    "pfad_schematisch": true
@@ -5311,20 +5311,20 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       123.0,
       562.0
      ],
-     "x_mm": -4712.5,
-     "y_mm": -1025.0,
+     "x_mm": -4165.1,
+     "y_mm": -2431.1,
      "r_mm": 4822.7,
-     "az_grad": -167.73
+     "az_grad": -149.73
     }
    ],
    "pfad_schematisch": true
@@ -5352,20 +5352,20 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       206.0,
       562.0
      ],
-     "x_mm": -3675.0,
-     "y_mm": -1025.0,
+     "x_mm": -3178.4,
+     "y_mm": -2110.5,
      "r_mm": 3815.3,
-     "az_grad": -164.42
+     "az_grad": -146.42
     }
    ],
    "pfad_schematisch": true
@@ -5393,20 +5393,20 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       220.0,
       562.0
      ],
-     "x_mm": -3500.0,
-     "y_mm": -1025.0,
+     "x_mm": -3012.0,
+     "y_mm": -2056.4,
      "r_mm": 3647.0,
-     "az_grad": -163.68
+     "az_grad": -145.68
     }
    ],
    "pfad_schematisch": true
@@ -5434,80 +5434,80 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       591.0,
       972.0
      ],
-     "x_mm": 1137.5,
-     "y_mm": -6150.0,
+     "x_mm": 2982.3,
+     "y_mm": -5497.5,
      "r_mm": 6254.3,
-     "az_grad": -79.52
+     "az_grad": -61.52
     },
     {
      "zeichnung": [
       598.0,
       972.0
      ],
-     "x_mm": 1225.0,
-     "y_mm": -6150.0,
-     "r_mm": 6270.8,
-     "az_grad": -78.73
+     "x_mm": 3065.5,
+     "y_mm": -5470.5,
+     "r_mm": 6270.9,
+     "az_grad": -60.74
     },
     {
      "zeichnung": [
       598.0,
       688.0
      ],
-     "x_mm": 1225.0,
-     "y_mm": -2600.0,
+     "x_mm": 1968.5,
+     "y_mm": -2094.2,
      "r_mm": 2874.1,
-     "az_grad": -64.77
+     "az_grad": -46.77
     }
    ],
    "pfad_schematisch": true
@@ -5535,100 +5535,100 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       591.0,
       972.0
      ],
-     "x_mm": 1137.5,
-     "y_mm": -6150.0,
+     "x_mm": 2982.3,
+     "y_mm": -5497.5,
      "r_mm": 6254.3,
-     "az_grad": -79.52
+     "az_grad": -61.52
     },
     {
      "zeichnung": [
       598.0,
       972.0
      ],
-     "x_mm": 1225.0,
-     "y_mm": -6150.0,
-     "r_mm": 6270.8,
-     "az_grad": -78.73
+     "x_mm": 3065.5,
+     "y_mm": -5470.5,
+     "r_mm": 6270.9,
+     "az_grad": -60.74
     },
     {
      "zeichnung": [
       598.0,
       773.0
      ],
-     "x_mm": 1225.0,
-     "y_mm": -3662.5,
+     "x_mm": 2296.8,
+     "y_mm": -3104.7,
      "r_mm": 3861.9,
-     "az_grad": -71.51
+     "az_grad": -53.51
     },
     {
      "zeichnung": [
       598.0,
       772.0
      ],
-     "x_mm": 1225.0,
-     "y_mm": -3650.0,
+     "x_mm": 2293.0,
+     "y_mm": -3092.8,
      "r_mm": 3850.1,
-     "az_grad": -71.45
+     "az_grad": -53.45
     },
     {
      "zeichnung": [
       600.0,
       772.0
      ],
-     "x_mm": 1250.0,
-     "y_mm": -3650.0,
+     "x_mm": 2316.7,
+     "y_mm": -3085.1,
      "r_mm": 3858.1,
-     "az_grad": -71.1
+     "az_grad": -53.1
     }
    ],
    "pfad_schematisch": true
@@ -5656,100 +5656,100 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       395.0,
       972.0
      ],
-     "x_mm": -1312.5,
-     "y_mm": -6150.0,
+     "x_mm": 652.2,
+     "y_mm": -6254.6,
      "r_mm": 6288.5,
-     "az_grad": -102.05
+     "az_grad": -84.05
     },
     {
      "zeichnung": [
       402.0,
       972.0
      ],
-     "x_mm": -1225.0,
-     "y_mm": -6150.0,
+     "x_mm": 735.4,
+     "y_mm": -6227.5,
      "r_mm": 6270.8,
-     "az_grad": -101.27
+     "az_grad": -83.27
     },
     {
      "zeichnung": [
       402.0,
       773.0
      ],
-     "x_mm": -1225.0,
-     "y_mm": -3662.5,
+     "x_mm": -33.3,
+     "y_mm": -3861.8,
      "r_mm": 3861.9,
-     "az_grad": -108.49
+     "az_grad": -90.49
     },
     {
      "zeichnung": [
       402.0,
       772.0
      ],
-     "x_mm": -1225.0,
-     "y_mm": -3650.0,
+     "x_mm": -37.1,
+     "y_mm": -3849.9,
      "r_mm": 3850.1,
-     "az_grad": -108.55
+     "az_grad": -90.55
     },
     {
      "zeichnung": [
       400.0,
       772.0
      ],
-     "x_mm": -1250.0,
-     "y_mm": -3650.0,
+     "x_mm": -60.9,
+     "y_mm": -3857.6,
      "r_mm": 3858.1,
-     "az_grad": -108.9
+     "az_grad": -90.9
     }
    ],
    "pfad_schematisch": true
@@ -5777,80 +5777,80 @@
       40.0,
       562.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1025.0,
+     "x_mm": -5151.8,
+     "y_mm": -2751.7,
      "r_mm": 5840.6,
-     "az_grad": -169.89
+     "az_grad": -151.89
     },
     {
      "zeichnung": [
       55.0,
       562.0
      ],
-     "x_mm": -5562.5,
-     "y_mm": -1025.0,
+     "x_mm": -4973.5,
+     "y_mm": -2693.7,
      "r_mm": 5656.1,
-     "az_grad": -169.56
+     "az_grad": -151.56
     },
     {
      "zeichnung": [
       62.0,
       562.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -1025.0,
+     "x_mm": -4890.3,
+     "y_mm": -2666.7,
      "r_mm": 5570.1,
-     "az_grad": -169.4
+     "az_grad": -151.4
     },
     {
      "zeichnung": [
       62.0,
       965.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6062.5,
+     "x_mm": -3333.6,
+     "y_mm": -7457.6,
      "r_mm": 8168.8,
-     "az_grad": -132.08
+     "az_grad": -114.08
     },
     {
      "zeichnung": [
       62.0,
       972.0
      ],
-     "x_mm": -5475.0,
-     "y_mm": -6150.0,
+     "x_mm": -3306.6,
+     "y_mm": -7540.9,
      "r_mm": 8234.0,
-     "az_grad": -131.68
+     "az_grad": -113.68
     },
     {
      "zeichnung": [
       493.5,
       972.0
      ],
-     "x_mm": -81.2,
-     "y_mm": -6150.0,
+     "x_mm": 1823.2,
+     "y_mm": -5874.1,
      "r_mm": 6150.5,
-     "az_grad": -90.76
+     "az_grad": -72.76
     },
     {
      "zeichnung": [
       500.0,
       972.0
      ],
-     "x_mm": 0.0,
-     "y_mm": -6150.0,
+     "x_mm": 1900.5,
+     "y_mm": -5849.0,
      "r_mm": 6150.0,
-     "az_grad": -90.0
+     "az_grad": -72.0
     },
     {
      "zeichnung": [
       500.0,
       959.0
      ],
-     "x_mm": 0.0,
-     "y_mm": -5987.5,
+     "x_mm": 1850.2,
+     "y_mm": -5694.5,
      "r_mm": 5987.5,
-     "az_grad": -90.0
+     "az_grad": -72.0
     }
    ],
    "pfad_schematisch": true
@@ -5878,40 +5878,40 @@
       40.0,
       410.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": 875.0,
+     "x_mm": -5739.0,
+     "y_mm": -944.7,
      "r_mm": 5816.2,
-     "az_grad": 171.35
+     "az_grad": -170.65
     },
     {
      "zeichnung": [
       100.0,
       410.0
      ],
-     "x_mm": -5000.0,
-     "y_mm": 875.0,
+     "x_mm": -5025.7,
+     "y_mm": -712.9,
      "r_mm": 5076.0,
-     "az_grad": 170.07
+     "az_grad": -171.93
     },
     {
      "zeichnung": [
       110.0,
       410.0
      ],
-     "x_mm": -4875.0,
-     "y_mm": 875.0,
+     "x_mm": -4906.8,
+     "y_mm": -674.3,
      "r_mm": 4952.9,
-     "az_grad": 169.82
+     "az_grad": -172.18
     },
     {
      "zeichnung": [
       241.0,
       410.0
      ],
-     "x_mm": -3237.5,
-     "y_mm": 875.0,
-     "r_mm": 3353.7,
-     "az_grad": 164.88
+     "x_mm": -3349.4,
+     "y_mm": -168.3,
+     "r_mm": 3353.6,
+     "az_grad": -177.12
     }
    ],
    "pfad_schematisch": true
@@ -5939,80 +5939,80 @@
       40.0,
       470.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": 125.0,
+     "x_mm": -5507.2,
+     "y_mm": -1658.0,
      "r_mm": 5751.4,
-     "az_grad": 178.75
+     "az_grad": -163.25
     },
     {
      "zeichnung": [
       53.0,
       470.0
      ],
-     "x_mm": -5587.5,
-     "y_mm": 125.0,
-     "r_mm": 5588.9,
-     "az_grad": 178.72
+     "x_mm": -5352.7,
+     "y_mm": -1607.8,
+     "r_mm": 5589.0,
+     "az_grad": -163.28
     },
     {
      "zeichnung": [
       60.0,
       470.0
      ],
-     "x_mm": -5500.0,
-     "y_mm": 125.0,
+     "x_mm": -5269.4,
+     "y_mm": -1580.7,
      "r_mm": 5501.4,
-     "az_grad": 178.7
+     "az_grad": -163.3
     },
     {
      "zeichnung": [
       60.0,
       437.0
      ],
-     "x_mm": -5500.0,
-     "y_mm": 537.5,
+     "x_mm": -5396.9,
+     "y_mm": -1188.4,
      "r_mm": 5526.2,
-     "az_grad": 174.42
+     "az_grad": -167.58
     },
     {
      "zeichnung": [
       60.0,
       430.0
      ],
-     "x_mm": -5500.0,
-     "y_mm": 625.0,
+     "x_mm": -5423.9,
+     "y_mm": -1105.2,
      "r_mm": 5535.4,
-     "az_grad": 173.52
+     "az_grad": -168.48
     },
     {
      "zeichnung": [
       100.0,
       430.0
      ],
-     "x_mm": -5000.0,
-     "y_mm": 625.0,
+     "x_mm": -4948.4,
+     "y_mm": -950.7,
      "r_mm": 5038.9,
-     "az_grad": 172.87
+     "az_grad": -169.12
     },
     {
      "zeichnung": [
       110.0,
       430.0
      ],
-     "x_mm": -4875.0,
-     "y_mm": 625.0,
+     "x_mm": -4829.5,
+     "y_mm": -912.0,
      "r_mm": 4914.9,
-     "az_grad": 172.69
+     "az_grad": -169.31
     },
     {
      "zeichnung": [
       241.0,
       430.0
      ],
-     "x_mm": -3237.5,
-     "y_mm": 625.0,
+     "x_mm": -3272.2,
+     "y_mm": -406.0,
      "r_mm": 3297.3,
-     "az_grad": 169.07
+     "az_grad": -172.93
     }
    ],
    "pfad_schematisch": true
@@ -6040,20 +6040,20 @@
       274.0,
       420.0
      ],
-     "x_mm": -2825.0,
-     "y_mm": 750.0,
+     "x_mm": -2918.5,
+     "y_mm": -159.7,
      "r_mm": 2922.9,
-     "az_grad": 165.13
+     "az_grad": -176.87
     },
     {
      "zeichnung": [
       321.0,
       420.0
      ],
-     "x_mm": -2237.5,
-     "y_mm": 750.0,
+     "x_mm": -2359.8,
+     "y_mm": 21.9,
      "r_mm": 2359.9,
-     "az_grad": 161.47
+     "az_grad": 179.47
     }
    ],
    "pfad_schematisch": true
@@ -6081,20 +6081,20 @@
       600.0,
       629.7
      ],
-     "x_mm": 1250.0,
-     "y_mm": -1871.3,
+     "x_mm": 1767.1,
+     "y_mm": -1393.4,
      "r_mm": 2250.4,
-     "az_grad": -56.26
+     "az_grad": -38.26
     },
     {
      "zeichnung": [
       600.0,
       648.0
      ],
-     "x_mm": 1250.0,
-     "y_mm": -2100.0,
+     "x_mm": 1837.8,
+     "y_mm": -1610.9,
      "r_mm": 2443.9,
-     "az_grad": -59.24
+     "az_grad": -41.24
     }
    ],
    "pfad_schematisch": true
@@ -6122,40 +6122,40 @@
       611.0,
       668.0
      ],
-     "x_mm": 1387.5,
-     "y_mm": -2350.0,
+     "x_mm": 2045.8,
+     "y_mm": -1806.2,
      "r_mm": 2729.0,
-     "az_grad": -59.44
+     "az_grad": -41.44
     },
     {
      "zeichnung": [
       711.0,
       668.0
      ],
-     "x_mm": 2637.5,
-     "y_mm": -2350.0,
-     "r_mm": 3532.5,
-     "az_grad": -41.7
+     "x_mm": 3234.6,
+     "y_mm": -1420.0,
+     "r_mm": 3532.6,
+     "az_grad": -23.7
     },
     {
      "zeichnung": [
       718.0,
       668.0
      ],
-     "x_mm": 2725.0,
-     "y_mm": -2350.0,
-     "r_mm": 3598.4,
-     "az_grad": -40.77
+     "x_mm": 3317.8,
+     "y_mm": -1392.9,
+     "r_mm": 3598.3,
+     "az_grad": -22.77
     },
     {
      "zeichnung": [
       718.0,
       713.0
      ],
-     "x_mm": 2725.0,
-     "y_mm": -2912.5,
+     "x_mm": 3491.6,
+     "y_mm": -1927.9,
      "r_mm": 3988.5,
-     "az_grad": -46.9
+     "az_grad": -28.91
     }
    ],
    "pfad_schematisch": true
@@ -6183,40 +6183,40 @@
       389.0,
       668.0
      ],
-     "x_mm": -1387.5,
-     "y_mm": -2350.0,
+     "x_mm": -593.4,
+     "y_mm": -2663.7,
      "r_mm": 2729.0,
-     "az_grad": -120.56
+     "az_grad": -102.56
     },
     {
      "zeichnung": [
       289.0,
       668.0
      ],
-     "x_mm": -2637.5,
-     "y_mm": -2350.0,
+     "x_mm": -1782.2,
+     "y_mm": -3050.0,
      "r_mm": 3532.5,
-     "az_grad": -138.3
+     "az_grad": -120.3
     },
     {
      "zeichnung": [
       282.0,
       668.0
      ],
-     "x_mm": -2725.0,
-     "y_mm": -2350.0,
+     "x_mm": -1865.4,
+     "y_mm": -3077.1,
      "r_mm": 3598.4,
-     "az_grad": -139.23
+     "az_grad": -121.23
     },
     {
      "zeichnung": [
       282.0,
       713.0
      ],
-     "x_mm": -2725.0,
-     "y_mm": -2912.5,
+     "x_mm": -1691.6,
+     "y_mm": -3612.0,
      "r_mm": 3988.5,
-     "az_grad": -133.1
+     "az_grad": -115.09
     }
    ],
    "pfad_schematisch": true
@@ -6244,20 +6244,20 @@
       759.8,
       760.0
      ],
-     "x_mm": 3247.5,
-     "y_mm": -3500.0,
+     "x_mm": 4170.1,
+     "y_mm": -2325.2,
      "r_mm": 4774.5,
-     "az_grad": -47.14
+     "az_grad": -29.14
     },
     {
      "zeichnung": [
       767.2,
       760.0
      ],
-     "x_mm": 3340.0,
-     "y_mm": -3500.0,
-     "r_mm": 4837.9,
-     "az_grad": -46.34
+     "x_mm": 4258.1,
+     "y_mm": -2296.6,
+     "r_mm": 4838.0,
+     "az_grad": -28.34
     }
    ],
    "pfad_schematisch": true
@@ -6285,20 +6285,20 @@
       240.2,
       760.0
      ],
-     "x_mm": -3247.5,
-     "y_mm": -3500.0,
+     "x_mm": -2007.0,
+     "y_mm": -4332.2,
      "r_mm": 4774.5,
-     "az_grad": -132.86
+     "az_grad": -114.86
     },
     {
      "zeichnung": [
       232.8,
       760.0
      ],
-     "x_mm": -3340.0,
-     "y_mm": -3500.0,
+     "x_mm": -2095.0,
+     "y_mm": -4360.8,
      "r_mm": 4837.9,
-     "az_grad": -133.66
+     "az_grad": -115.66
     }
    ],
    "pfad_schematisch": true
@@ -6326,80 +6326,80 @@
       796.0,
       718.1
      ],
-     "x_mm": 3700.0,
-     "y_mm": -2976.3,
+     "x_mm": 4438.6,
+     "y_mm": -1687.2,
      "r_mm": 4748.5,
-     "az_grad": -38.81
+     "az_grad": -20.81
     },
     {
      "zeichnung": [
       796.0,
       713.1
      ],
-     "x_mm": 3700.0,
-     "y_mm": -2913.8,
+     "x_mm": 4419.3,
+     "y_mm": -1627.8,
      "r_mm": 4709.6,
-     "az_grad": -38.22
+     "az_grad": -20.22
     },
     {
      "zeichnung": [
       796.0,
       708.0
      ],
-     "x_mm": 3700.0,
-     "y_mm": -2850.0,
+     "x_mm": 4399.6,
+     "y_mm": -1567.1,
      "r_mm": 4670.4,
-     "az_grad": -37.61
+     "az_grad": -19.61
     },
     {
      "zeichnung": [
       723.0,
       708.0
      ],
-     "x_mm": 2787.5,
-     "y_mm": -2850.0,
+     "x_mm": 3531.8,
+     "y_mm": -1849.1,
      "r_mm": 3986.6,
-     "az_grad": -45.64
+     "az_grad": -27.63
     },
     {
      "zeichnung": [
       713.0,
       708.0
      ],
-     "x_mm": 2662.5,
-     "y_mm": -2850.0,
+     "x_mm": 3412.9,
+     "y_mm": -1887.8,
      "r_mm": 3900.2,
-     "az_grad": -46.95
+     "az_grad": -28.95
     },
     {
      "zeichnung": [
       595.0,
       708.0
      ],
-     "x_mm": 1187.5,
-     "y_mm": -2850.0,
+     "x_mm": 2010.1,
+     "y_mm": -2343.6,
      "r_mm": 3087.5,
-     "az_grad": -67.38
+     "az_grad": -49.38
     },
     {
      "zeichnung": [
       588.0,
       708.0
      ],
-     "x_mm": 1100.0,
-     "y_mm": -2850.0,
+     "x_mm": 1926.9,
+     "y_mm": -2370.6,
      "r_mm": 3054.9,
-     "az_grad": -68.9
+     "az_grad": -50.89
     },
     {
      "zeichnung": [
       588.0,
       741.0
      ],
-     "x_mm": 1100.0,
-     "y_mm": -3262.5,
-     "r_mm": 3443.0,
-     "az_grad": -71.37
+     "x_mm": 2054.3,
+     "y_mm": -2762.9,
+     "r_mm": 3442.9,
+     "az_grad": -53.37
     }
    ],
    "pfad_schematisch": true
@@ -6427,80 +6427,80 @@
       204.0,
       718.1
      ],
-     "x_mm": -3700.0,
-     "y_mm": -2976.3,
-     "r_mm": 4748.5,
-     "az_grad": -141.19
+     "x_mm": -2599.2,
+     "y_mm": -3973.9,
+     "r_mm": 4748.4,
+     "az_grad": -123.19
     },
     {
      "zeichnung": [
       204.0,
       713.1
      ],
-     "x_mm": -3700.0,
-     "y_mm": -2913.8,
-     "r_mm": 4709.6,
-     "az_grad": -141.78
+     "x_mm": -2618.5,
+     "y_mm": -3914.5,
+     "r_mm": 4709.5,
+     "az_grad": -123.78
     },
     {
      "zeichnung": [
       204.0,
       708.0
      ],
-     "x_mm": -3700.0,
-     "y_mm": -2850.0,
+     "x_mm": -2638.2,
+     "y_mm": -3853.9,
      "r_mm": 4670.4,
-     "az_grad": -142.39
+     "az_grad": -124.39
     },
     {
      "zeichnung": [
       277.0,
       708.0
      ],
-     "x_mm": -2787.5,
-     "y_mm": -2850.0,
+     "x_mm": -1770.4,
+     "y_mm": -3571.9,
      "r_mm": 3986.6,
-     "az_grad": -134.36
+     "az_grad": -116.37
     },
     {
      "zeichnung": [
       287.0,
       708.0
      ],
-     "x_mm": -2662.5,
-     "y_mm": -2850.0,
+     "x_mm": -1651.5,
+     "y_mm": -3533.3,
      "r_mm": 3900.2,
-     "az_grad": -133.05
+     "az_grad": -115.05
     },
     {
      "zeichnung": [
       405.0,
       708.0
      ],
-     "x_mm": -1187.5,
-     "y_mm": -2850.0,
+     "x_mm": -248.7,
+     "y_mm": -3077.5,
      "r_mm": 3087.5,
-     "az_grad": -112.62
+     "az_grad": -94.62
     },
     {
      "zeichnung": [
       412.0,
       708.0
      ],
-     "x_mm": -1100.0,
-     "y_mm": -2850.0,
+     "x_mm": -165.5,
+     "y_mm": -3050.4,
      "r_mm": 3054.9,
-     "az_grad": -111.1
+     "az_grad": -93.11
     },
     {
      "zeichnung": [
       412.0,
       741.0
      ],
-     "x_mm": -1100.0,
-     "y_mm": -3262.5,
-     "r_mm": 3443.0,
-     "az_grad": -108.63
+     "x_mm": -38.0,
+     "y_mm": -3442.7,
+     "r_mm": 3442.9,
+     "az_grad": -90.63
     }
    ],
    "pfad_schematisch": true
@@ -6528,20 +6528,20 @@
       588.0,
       210.0
      ],
-     "x_mm": 1100.0,
-     "y_mm": 3375.0,
+     "x_mm": 3.2,
+     "y_mm": 3549.7,
      "r_mm": 3549.7,
-     "az_grad": 71.95
+     "az_grad": 89.95
     },
     {
      "zeichnung": [
       519.0,
       210.0
      ],
-     "x_mm": 237.5,
-     "y_mm": 3375.0,
+     "x_mm": -817.1,
+     "y_mm": 3283.2,
      "r_mm": 3383.3,
-     "az_grad": 85.97
+     "az_grad": 103.98
     }
    ],
    "pfad_schematisch": true
@@ -6569,20 +6569,20 @@
       490.0,
       210.0
      ],
-     "x_mm": -125.0,
-     "y_mm": 3375.0,
+     "x_mm": -1161.8,
+     "y_mm": 3171.2,
      "r_mm": 3377.3,
-     "az_grad": 92.12
+     "az_grad": 110.12
     },
     {
      "zeichnung": [
       421.0,
       210.0
      ],
-     "x_mm": -987.5,
-     "y_mm": 3375.0,
+     "x_mm": -1982.1,
+     "y_mm": 2904.7,
      "r_mm": 3516.5,
-     "az_grad": 106.31
+     "az_grad": 124.31
     }
    ],
    "pfad_schematisch": true
@@ -6610,20 +6610,20 @@
       412.0,
       750.0
      ],
-     "x_mm": -1100.0,
-     "y_mm": -3375.0,
+     "x_mm": -3.2,
+     "y_mm": -3549.7,
      "r_mm": 3549.7,
-     "az_grad": -108.05
+     "az_grad": -90.05
     },
     {
      "zeichnung": [
       481.0,
       750.0
      ],
-     "x_mm": -237.5,
-     "y_mm": -3375.0,
+     "x_mm": 817.1,
+     "y_mm": -3283.2,
      "r_mm": 3383.3,
-     "az_grad": -94.03
+     "az_grad": -76.02
     }
    ],
    "pfad_schematisch": true
@@ -6651,20 +6651,20 @@
       510.0,
       750.0
      ],
-     "x_mm": 125.0,
-     "y_mm": -3375.0,
+     "x_mm": 1161.8,
+     "y_mm": -3171.2,
      "r_mm": 3377.3,
-     "az_grad": -87.88
+     "az_grad": -69.88
     },
     {
      "zeichnung": [
       579.0,
       750.0
      ],
-     "x_mm": 987.5,
-     "y_mm": -3375.0,
+     "x_mm": 1982.1,
+     "y_mm": -2904.7,
      "r_mm": 3516.5,
-     "az_grad": -73.69
+     "az_grad": -55.69
     }
    ],
    "pfad_schematisch": true
@@ -6692,20 +6692,20 @@
       587.8,
       209.9
      ],
-     "x_mm": 1097.5,
-     "y_mm": 3376.3,
+     "x_mm": 0.5,
+     "y_mm": 3550.2,
      "r_mm": 3550.2,
-     "az_grad": 71.99
+     "az_grad": 89.99
     },
     {
      "zeichnung": [
       579.7,
       234.6
      ],
-     "x_mm": 996.3,
-     "y_mm": 3067.5,
+     "x_mm": -0.4,
+     "y_mm": 3225.2,
      "r_mm": 3225.2,
-     "az_grad": 72.01
+     "az_grad": 90.01
     }
    ],
    "pfad_schematisch": true
@@ -6733,20 +6733,20 @@
       412.2,
       209.9
      ],
-     "x_mm": -1097.5,
-     "y_mm": 3376.3,
+     "x_mm": -2087.1,
+     "y_mm": 2871.9,
      "r_mm": 3550.2,
-     "az_grad": 108.01
+     "az_grad": 126.01
     },
     {
      "zeichnung": [
       420.3,
       234.6
      ],
-     "x_mm": -996.2,
-     "y_mm": 3067.5,
+     "x_mm": -1895.4,
+     "y_mm": 2609.5,
      "r_mm": 3225.2,
-     "az_grad": 107.99
+     "az_grad": 125.99
     }
    ],
    "pfad_schematisch": true
@@ -6774,80 +6774,80 @@
       579.7,
       234.6
      ],
-     "x_mm": 996.3,
-     "y_mm": 3067.5,
+     "x_mm": -0.4,
+     "y_mm": 3225.2,
      "r_mm": 3225.2,
-     "az_grad": 72.01
+     "az_grad": 90.01
     },
     {
      "zeichnung": [
       888.0,
       234.6
      ],
-     "x_mm": 4850.0,
-     "y_mm": 3067.5,
+     "x_mm": 3664.7,
+     "y_mm": 4416.1,
      "r_mm": 5738.6,
-     "az_grad": 32.31
+     "az_grad": 50.31
     },
     {
      "zeichnung": [
       895.0,
       234.6
      ],
-     "x_mm": 4937.5,
-     "y_mm": 3067.5,
-     "r_mm": 5812.8,
-     "az_grad": 31.85
+     "x_mm": 3747.9,
+     "y_mm": 4443.1,
+     "r_mm": 5812.7,
+     "az_grad": 49.85
     },
     {
      "zeichnung": [
       895.0,
       685.0
      ],
-     "x_mm": 4937.5,
-     "y_mm": -2562.5,
+     "x_mm": 5487.7,
+     "y_mm": -911.3,
      "r_mm": 5562.9,
-     "az_grad": -27.43
+     "az_grad": -9.43
     },
     {
      "zeichnung": [
       895.0,
       692.0
      ],
-     "x_mm": 4937.5,
-     "y_mm": -2650.0,
+     "x_mm": 5514.7,
+     "y_mm": -994.5,
      "r_mm": 5603.7,
-     "az_grad": -28.22
+     "az_grad": -10.22
     },
     {
      "zeichnung": [
       723.0,
       692.0
      ],
-     "x_mm": 2787.5,
-     "y_mm": -2650.0,
+     "x_mm": 3470.0,
+     "y_mm": -1658.9,
      "r_mm": 3846.1,
-     "az_grad": -43.55
+     "az_grad": -25.55
     },
     {
      "zeichnung": [
       713.0,
       692.0
      ],
-     "x_mm": 2662.5,
-     "y_mm": -2650.0,
+     "x_mm": 3351.1,
+     "y_mm": -1697.5,
      "r_mm": 3756.5,
-     "az_grad": -44.87
+     "az_grad": -26.86
     },
     {
      "zeichnung": [
       679.0,
       692.0
      ],
-     "x_mm": 2237.5,
-     "y_mm": -2650.0,
+     "x_mm": 2946.9,
+     "y_mm": -1828.9,
      "r_mm": 3468.3,
-     "az_grad": -49.82
+     "az_grad": -31.82
     }
    ],
    "pfad_schematisch": true
@@ -6875,80 +6875,80 @@
       420.3,
       234.6
      ],
-     "x_mm": -996.2,
-     "y_mm": 3067.5,
+     "x_mm": -1895.4,
+     "y_mm": 2609.5,
      "r_mm": 3225.2,
-     "az_grad": 107.99
+     "az_grad": 125.99
     },
     {
      "zeichnung": [
       112.0,
       234.6
      ],
-     "x_mm": -4850.0,
-     "y_mm": 3067.5,
+     "x_mm": -5560.5,
+     "y_mm": 1418.6,
      "r_mm": 5738.6,
-     "az_grad": 147.69
+     "az_grad": 165.69
     },
     {
      "zeichnung": [
       105.0,
       234.6
      ],
-     "x_mm": -4937.5,
-     "y_mm": 3067.5,
+     "x_mm": -5643.8,
+     "y_mm": 1391.6,
      "r_mm": 5812.8,
-     "az_grad": 148.15
+     "az_grad": 166.15
     },
     {
      "zeichnung": [
       105.0,
       685.0
      ],
-     "x_mm": -4937.5,
-     "y_mm": -2562.5,
+     "x_mm": -3904.0,
+     "y_mm": -3962.9,
      "r_mm": 5562.9,
-     "az_grad": -152.57
+     "az_grad": -134.57
     },
     {
      "zeichnung": [
       105.0,
       692.0
      ],
-     "x_mm": -4937.5,
-     "y_mm": -2650.0,
+     "x_mm": -3876.9,
+     "y_mm": -4046.1,
      "r_mm": 5603.7,
-     "az_grad": -151.78
+     "az_grad": -133.78
     },
     {
      "zeichnung": [
       277.0,
       692.0
      ],
-     "x_mm": -2787.5,
-     "y_mm": -2650.0,
+     "x_mm": -1832.2,
+     "y_mm": -3381.7,
      "r_mm": 3846.1,
-     "az_grad": -136.45
+     "az_grad": -118.45
     },
     {
      "zeichnung": [
       287.0,
       692.0
      ],
-     "x_mm": -2662.5,
-     "y_mm": -2650.0,
-     "r_mm": 3756.5,
-     "az_grad": -135.13
+     "x_mm": -1713.3,
+     "y_mm": -3343.1,
+     "r_mm": 3756.6,
+     "az_grad": -117.13
     },
     {
      "zeichnung": [
       321.0,
       692.0
      ],
-     "x_mm": -2237.5,
-     "y_mm": -2650.0,
+     "x_mm": -1309.1,
+     "y_mm": -3211.7,
      "r_mm": 3468.3,
-     "az_grad": -130.18
+     "az_grad": -112.18
     }
    ],
    "pfad_schematisch": true
@@ -6976,120 +6976,120 @@
       589.0,
       753.9
      ],
-     "x_mm": 1112.5,
-     "y_mm": -3423.7,
+     "x_mm": 2116.0,
+     "y_mm": -2912.4,
      "r_mm": 3599.9,
-     "az_grad": -72.0
+     "az_grad": -54.0
     },
     {
      "zeichnung": [
       730.1,
       653.3
      ],
-     "x_mm": 2876.3,
-     "y_mm": -2166.2,
+     "x_mm": 3404.9,
+     "y_mm": -1171.4,
      "r_mm": 3600.8,
-     "az_grad": -36.98
+     "az_grad": -18.98
     },
     {
      "zeichnung": [
       726.5,
       644.6
      ],
-     "x_mm": 2831.2,
-     "y_mm": -2057.5,
+     "x_mm": 3328.5,
+     "y_mm": -1081.9,
      "r_mm": 3499.9,
-     "az_grad": -36.01
+     "az_grad": -18.01
     },
     {
      "zeichnung": [
       788.0,
       490.0
      ],
-     "x_mm": 3600.0,
-     "y_mm": -125.0,
-     "r_mm": 3602.2,
-     "az_grad": -1.99
+     "x_mm": 3462.4,
+     "y_mm": 993.6,
+     "r_mm": 3602.1,
+     "az_grad": 16.01
     },
     {
      "zeichnung": [
       780.0,
       485.0
      ],
-     "x_mm": 3500.0,
-     "y_mm": -62.5,
-     "r_mm": 3500.6,
-     "az_grad": -1.02
+     "x_mm": 3348.0,
+     "y_mm": 1022.1,
+     "r_mm": 3500.5,
+     "az_grad": 16.98
     },
     {
      "zeichnung": [
       780.0,
       475.0
      ],
-     "x_mm": 3500.0,
-     "y_mm": 62.5,
+     "x_mm": 3309.4,
+     "y_mm": 1141.0,
      "r_mm": 3500.6,
-     "az_grad": 1.02
+     "az_grad": 19.02
     },
     {
      "zeichnung": [
       738.9,
       318.8
      ],
-     "x_mm": 2986.2,
-     "y_mm": 2015.0,
-     "r_mm": 3602.4,
-     "az_grad": 34.01
+     "x_mm": 2217.4,
+     "y_mm": 2839.2,
+     "r_mm": 3602.5,
+     "az_grad": 52.01
     },
     {
      "zeichnung": [
       729.5,
       319.5
      ],
-     "x_mm": 2868.8,
-     "y_mm": 2006.2,
+     "x_mm": 2108.4,
+     "y_mm": 2794.5,
      "r_mm": 3500.7,
-     "az_grad": 34.97
+     "az_grad": 52.97
     },
     {
      "zeichnung": [
       723.6,
       311.4
      ],
-     "x_mm": 2795.0,
-     "y_mm": 2107.5,
+     "x_mm": 2006.9,
+     "y_mm": 2868.1,
      "r_mm": 3500.5,
-     "az_grad": 37.02
+     "az_grad": 55.02
     },
     {
      "zeichnung": [
       609.9,
       212.9
      ],
-     "x_mm": 1373.7,
-     "y_mm": 3338.8,
+     "x_mm": 274.8,
+     "y_mm": 3599.9,
      "r_mm": 3610.4,
-     "az_grad": 67.64
+     "az_grad": 85.63
     },
     {
      "zeichnung": [
       602.7,
       219.0
      ],
-     "x_mm": 1283.8,
-     "y_mm": 3262.5,
+     "x_mm": 212.8,
+     "y_mm": 3499.5,
      "r_mm": 3506.0,
-     "az_grad": 68.52
+     "az_grad": 86.52
     },
     {
      "zeichnung": [
       593.2,
       215.9
      ],
-     "x_mm": 1165.0,
-     "y_mm": 3301.3,
+     "x_mm": 87.8,
+     "y_mm": 3499.7,
      "r_mm": 3500.8,
-     "az_grad": 70.56
+     "az_grad": 88.56
     }
    ],
    "pfad_schematisch": true
@@ -7117,70 +7117,70 @@
       729.5,
       640.5
      ],
-     "x_mm": 2868.8,
-     "y_mm": -2006.2,
+     "x_mm": 3348.3,
+     "y_mm": -1021.6,
      "r_mm": 3500.7,
-     "az_grad": -34.97
+     "az_grad": -16.97
     },
     {
      "zeichnung": [
       788.0,
       480.0
      ],
-     "x_mm": 3600.0,
-     "y_mm": 0.0,
+     "x_mm": 3423.8,
+     "y_mm": 1112.5,
      "r_mm": 3600.0,
-     "az_grad": 0.0
+     "az_grad": 18.0
     },
     {
      "zeichnung": [
       780.0,
       470.0
      ],
-     "x_mm": 3500.0,
-     "y_mm": 125.0,
+     "x_mm": 3290.1,
+     "y_mm": 1200.4,
      "r_mm": 3502.2,
-     "az_grad": 2.05
+     "az_grad": 20.04
     },
     {
      "zeichnung": [
       733.0,
       310.7
      ],
-     "x_mm": 2912.5,
-     "y_mm": 2116.2,
-     "r_mm": 3600.1,
-     "az_grad": 36.0
+     "x_mm": 2116.0,
+     "y_mm": 2912.7,
+     "r_mm": 3600.2,
+     "az_grad": 54.0
     },
     {
      "zeichnung": [
       720.6,
       307.3
      ],
-     "x_mm": 2757.5,
-     "y_mm": 2158.8,
+     "x_mm": 1955.4,
+     "y_mm": 2905.2,
      "r_mm": 3502.0,
-     "az_grad": 38.06
+     "az_grad": 56.06
     },
     {
      "zeichnung": [
       600.4,
       209.8
      ],
-     "x_mm": 1255.0,
-     "y_mm": 3377.5,
+     "x_mm": 149.9,
+     "y_mm": 3600.0,
      "r_mm": 3603.1,
-     "az_grad": 69.62
+     "az_grad": 87.62
     },
     {
      "zeichnung": [
       588.4,
       214.3
      ],
-     "x_mm": 1105.0,
-     "y_mm": 3321.2,
-     "r_mm": 3500.2,
-     "az_grad": 71.6
+     "x_mm": 24.6,
+     "y_mm": 3500.2,
+     "r_mm": 3500.3,
+     "az_grad": 89.6
     }
    ],
    "pfad_schematisch": true
@@ -7208,120 +7208,120 @@
       411.0,
       753.9
      ],
-     "x_mm": -1112.5,
-     "y_mm": -3423.7,
-     "r_mm": 3599.9,
-     "az_grad": -108.0
+     "x_mm": -0.1,
+     "y_mm": -3600.0,
+     "r_mm": 3600.0,
+     "az_grad": -90.0
     },
     {
      "zeichnung": [
       269.9,
       653.3
      ],
-     "x_mm": -2876.3,
-     "y_mm": -2166.2,
-     "r_mm": 3600.8,
-     "az_grad": -143.02
+     "x_mm": -2066.1,
+     "y_mm": -2949.0,
+     "r_mm": 3600.7,
+     "az_grad": -125.02
     },
     {
      "zeichnung": [
       273.5,
       644.6
      ],
-     "x_mm": -2831.2,
-     "y_mm": -2057.5,
+     "x_mm": -2056.9,
+     "y_mm": -2831.7,
      "r_mm": 3499.9,
-     "az_grad": -143.99
+     "az_grad": -125.99
     },
     {
      "zeichnung": [
       212.0,
       490.0
      ],
-     "x_mm": -3600.0,
-     "y_mm": -125.0,
+     "x_mm": -3385.2,
+     "y_mm": -1231.3,
      "r_mm": 3602.2,
-     "az_grad": -178.01
+     "az_grad": -160.01
     },
     {
      "zeichnung": [
       220.0,
       485.0
      ],
-     "x_mm": -3500.0,
-     "y_mm": -62.5,
+     "x_mm": -3309.4,
+     "y_mm": -1141.0,
      "r_mm": 3500.6,
-     "az_grad": -178.98
+     "az_grad": -160.98
     },
     {
      "zeichnung": [
       220.0,
       475.0
      ],
-     "x_mm": -3500.0,
-     "y_mm": 62.5,
-     "r_mm": 3500.6,
-     "az_grad": 178.98
+     "x_mm": -3348.0,
+     "y_mm": -1022.1,
+     "r_mm": 3500.5,
+     "az_grad": -163.02
     },
     {
      "zeichnung": [
       261.1,
       318.8
      ],
-     "x_mm": -2986.2,
-     "y_mm": 2015.0,
-     "r_mm": 3602.4,
-     "az_grad": 145.99
+     "x_mm": -3462.8,
+     "y_mm": 993.6,
+     "r_mm": 3602.5,
+     "az_grad": 163.99
     },
     {
      "zeichnung": [
       270.5,
       319.5
      ],
-     "x_mm": -2868.8,
-     "y_mm": 2006.2,
+     "x_mm": -3348.3,
+     "y_mm": 1021.6,
      "r_mm": 3500.7,
-     "az_grad": 145.03
+     "az_grad": 163.03
     },
     {
      "zeichnung": [
       276.4,
       311.4
      ],
-     "x_mm": -2795.0,
-     "y_mm": 2107.5,
+     "x_mm": -3309.5,
+     "y_mm": 1140.6,
      "r_mm": 3500.5,
-     "az_grad": 142.98
+     "az_grad": 160.98
     },
     {
      "zeichnung": [
       390.1,
       212.9
      ],
-     "x_mm": -1373.7,
-     "y_mm": 3338.8,
-     "r_mm": 3610.4,
-     "az_grad": 112.36
+     "x_mm": -2338.2,
+     "y_mm": 2750.8,
+     "r_mm": 3610.3,
+     "az_grad": 130.36
     },
     {
      "zeichnung": [
       397.3,
       219.0
      ],
-     "x_mm": -1283.7,
-     "y_mm": 3262.5,
+     "x_mm": -2229.1,
+     "y_mm": 2706.1,
      "r_mm": 3506.0,
-     "az_grad": 111.48
+     "az_grad": 129.48
     },
     {
      "zeichnung": [
       406.8,
       215.9
      ],
-     "x_mm": -1165.0,
-     "y_mm": 3301.3,
+     "x_mm": -2128.1,
+     "y_mm": 2779.7,
      "r_mm": 3500.8,
-     "az_grad": 109.44
+     "az_grad": 127.44
     }
    ],
    "pfad_schematisch": true
@@ -7349,70 +7349,70 @@
       270.5,
       640.5
      ],
-     "x_mm": -2868.8,
-     "y_mm": -2006.2,
+     "x_mm": -2108.4,
+     "y_mm": -2794.5,
      "r_mm": 3500.7,
-     "az_grad": -145.03
+     "az_grad": -127.03
     },
     {
      "zeichnung": [
       212.0,
       480.0
      ],
-     "x_mm": -3600.0,
-     "y_mm": 0.0,
+     "x_mm": -3423.8,
+     "y_mm": -1112.5,
      "r_mm": 3600.0,
-     "az_grad": 180.0
+     "az_grad": -162.0
     },
     {
      "zeichnung": [
       220.0,
       470.0
      ],
-     "x_mm": -3500.0,
-     "y_mm": 125.0,
+     "x_mm": -3367.3,
+     "y_mm": -962.7,
      "r_mm": 3502.2,
-     "az_grad": 177.95
+     "az_grad": -164.04
     },
     {
      "zeichnung": [
       267.0,
       310.7
      ],
-     "x_mm": -2912.5,
-     "y_mm": 2116.2,
-     "r_mm": 3600.1,
-     "az_grad": 144.0
+     "x_mm": -3423.9,
+     "y_mm": 1112.7,
+     "r_mm": 3600.2,
+     "az_grad": 162.0
     },
     {
      "zeichnung": [
       279.4,
       307.3
      ],
-     "x_mm": -2757.5,
-     "y_mm": 2158.8,
+     "x_mm": -3289.6,
+     "y_mm": 1201.0,
      "r_mm": 3502.0,
-     "az_grad": 141.94
+     "az_grad": 159.94
     },
     {
      "zeichnung": [
       399.6,
       209.8
      ],
-     "x_mm": -1255.0,
-     "y_mm": 3377.5,
-     "r_mm": 3603.1,
-     "az_grad": 110.38
+     "x_mm": -2237.3,
+     "y_mm": 2824.4,
+     "r_mm": 3603.2,
+     "az_grad": 128.38
     },
     {
      "zeichnung": [
       411.6,
       214.3
      ],
-     "x_mm": -1105.0,
-     "y_mm": 3321.2,
+     "x_mm": -2077.2,
+     "y_mm": 2817.2,
      "r_mm": 3500.2,
-     "az_grad": 108.4
+     "az_grad": 126.4
     }
    ],
    "pfad_schematisch": true
@@ -7440,40 +7440,40 @@
       731.4,
       648.1
      ],
-     "x_mm": 2892.5,
-     "y_mm": -2101.3,
+     "x_mm": 3400.3,
+     "y_mm": -1104.6,
      "r_mm": 3575.2,
-     "az_grad": -36.0
+     "az_grad": -18.0
     },
     {
      "zeichnung": [
       786.0,
       475.0
      ],
-     "x_mm": 3575.0,
-     "y_mm": 62.5,
+     "x_mm": 3380.7,
+     "y_mm": 1164.2,
      "r_mm": 3575.5,
-     "az_grad": 1.0
+     "az_grad": 19.0
     },
     {
      "zeichnung": [
       728.4,
       307.8
      ],
-     "x_mm": 2855.0,
-     "y_mm": 2152.5,
+     "x_mm": 2050.1,
+     "y_mm": 2929.4,
      "r_mm": 3575.5,
-     "az_grad": 37.01
+     "az_grad": 55.01
     },
     {
      "zeichnung": [
       595.0,
       210.2
      ],
-     "x_mm": 1187.5,
-     "y_mm": 3372.5,
+     "x_mm": 87.2,
+     "y_mm": 3574.4,
      "r_mm": 3575.5,
-     "az_grad": 70.6
+     "az_grad": 88.6
     }
    ],
    "pfad_schematisch": true,
@@ -7502,30 +7502,30 @@
       786.0,
       485.0
      ],
-     "x_mm": 3575.0,
-     "y_mm": -62.5,
+     "x_mm": 3419.3,
+     "y_mm": 1045.3,
      "r_mm": 3575.5,
-     "az_grad": -1.0
+     "az_grad": 17.0
     },
     {
      "zeichnung": [
       734.3,
       315.9
      ],
-     "x_mm": 2928.7,
-     "y_mm": 2051.3,
+     "x_mm": 2151.5,
+     "y_mm": 2855.9,
      "r_mm": 3575.6,
-     "az_grad": 35.01
+     "az_grad": 53.01
     },
     {
      "zeichnung": [
       604.5,
       213.3
      ],
-     "x_mm": 1306.2,
-     "y_mm": 3333.8,
-     "r_mm": 3580.6,
-     "az_grad": 68.6
+     "x_mm": 212.1,
+     "y_mm": 3574.2,
+     "r_mm": 3580.5,
+     "az_grad": 86.6
     }
    ],
    "pfad_schematisch": true,
@@ -7554,50 +7554,50 @@
       587.1,
       748.2
      ],
-     "x_mm": 1088.8,
-     "y_mm": -3352.5,
+     "x_mm": 2071.4,
+     "y_mm": -2852.0,
      "r_mm": 3524.9,
-     "az_grad": -72.01
+     "az_grad": -54.01
     },
     {
      "zeichnung": [
       725.2,
       649.8
      ],
-     "x_mm": 2815.0,
-     "y_mm": -2122.5,
+     "x_mm": 3333.1,
+     "y_mm": -1148.7,
      "r_mm": 3525.5,
-     "az_grad": -37.02
+     "az_grad": -19.02
     },
     {
      "zeichnung": [
       782.0,
       490.0
      ],
-     "x_mm": 3525.0,
-     "y_mm": -125.0,
+     "x_mm": 3391.1,
+     "y_mm": 970.4,
      "r_mm": 3527.2,
-     "az_grad": -2.03
+     "az_grad": 15.97
     },
     {
      "zeichnung": [
       734.0,
       322.3
      ],
-     "x_mm": 2925.0,
-     "y_mm": 1971.2,
+     "x_mm": 2172.7,
+     "y_mm": 2778.6,
      "r_mm": 3527.2,
-     "az_grad": 33.98
+     "az_grad": 51.98
     },
     {
      "zeichnung": [
       608.1,
       218.6
      ],
-     "x_mm": 1351.3,
-     "y_mm": 3267.5,
-     "r_mm": 3535.9,
-     "az_grad": 67.53
+     "x_mm": 275.4,
+     "y_mm": 3525.1,
+     "r_mm": 3535.8,
+     "az_grad": 85.53
     }
    ],
    "pfad_schematisch": true,
@@ -7626,40 +7626,40 @@
       734.3,
       644.1
      ],
-     "x_mm": 2928.7,
-     "y_mm": -2051.3,
-     "r_mm": 3575.6,
-     "az_grad": -35.01
+     "x_mm": 3419.3,
+     "y_mm": -1045.8,
+     "r_mm": 3575.7,
+     "az_grad": -17.01
     },
     {
      "zeichnung": [
       786.0,
       470.0
      ],
-     "x_mm": 3575.0,
-     "y_mm": 125.0,
+     "x_mm": 3361.4,
+     "y_mm": 1223.6,
      "r_mm": 3577.2,
-     "az_grad": 2.0
+     "az_grad": 20.0
     },
     {
      "zeichnung": [
       725.5,
       303.8
      ],
-     "x_mm": 2818.8,
-     "y_mm": 2202.5,
+     "x_mm": 2000.2,
+     "y_mm": 2965.7,
      "r_mm": 3577.2,
-     "az_grad": 38.0
+     "az_grad": 56.0
     },
     {
      "zeichnung": [
       590.3,
       208.6
      ],
-     "x_mm": 1128.7,
-     "y_mm": 3392.5,
-     "r_mm": 3575.3,
-     "az_grad": 71.6
+     "x_mm": 25.2,
+     "y_mm": 3575.3,
+     "r_mm": 3575.4,
+     "az_grad": 89.6
     }
    ],
    "pfad_schematisch": true,
@@ -7688,30 +7688,30 @@
       782.0,
       480.0
      ],
-     "x_mm": 3525.0,
-     "y_mm": 0.0,
+     "x_mm": 3352.5,
+     "y_mm": 1089.3,
      "r_mm": 3525.0,
-     "az_grad": 0.0
+     "az_grad": 18.0
     },
     {
      "zeichnung": [
       728.1,
       314.2
      ],
-     "x_mm": 2851.3,
-     "y_mm": 2072.5,
+     "x_mm": 2071.3,
+     "y_mm": 2852.1,
      "r_mm": 3524.9,
-     "az_grad": 36.01
+     "az_grad": 54.01
     },
     {
      "zeichnung": [
       598.6,
       215.5
      ],
-     "x_mm": 1232.5,
-     "y_mm": 3306.2,
+     "x_mm": 150.5,
+     "y_mm": 3525.3,
      "r_mm": 3528.5,
-     "az_grad": 69.56
+     "az_grad": 87.56
     }
    ],
    "pfad_schematisch": true,
@@ -7740,40 +7740,40 @@
       268.6,
       648.1
      ],
-     "x_mm": -2892.5,
-     "y_mm": -2101.3,
-     "r_mm": 3575.2,
-     "az_grad": -144.0
+     "x_mm": -2101.6,
+     "y_mm": -2892.2,
+     "r_mm": 3575.1,
+     "az_grad": -126.0
     },
     {
      "zeichnung": [
       214.0,
       475.0
      ],
-     "x_mm": -3575.0,
-     "y_mm": 62.5,
+     "x_mm": -3419.3,
+     "y_mm": -1045.3,
      "r_mm": 3575.5,
-     "az_grad": 179.0
+     "az_grad": -163.0
     },
     {
      "zeichnung": [
       271.6,
       307.8
      ],
-     "x_mm": -2855.0,
-     "y_mm": 2152.5,
+     "x_mm": -3380.4,
+     "y_mm": 1164.9,
      "r_mm": 3575.5,
-     "az_grad": 142.99
+     "az_grad": 160.99
     },
     {
      "zeichnung": [
       405.0,
       210.2
      ],
-     "x_mm": -1187.5,
-     "y_mm": 3372.5,
+     "x_mm": -2171.5,
+     "y_mm": 2840.5,
      "r_mm": 3575.5,
-     "az_grad": 109.4
+     "az_grad": 127.4
     }
    ],
    "pfad_schematisch": true,
@@ -7802,30 +7802,30 @@
       214.0,
       485.0
      ],
-     "x_mm": -3575.0,
-     "y_mm": -62.5,
+     "x_mm": -3380.7,
+     "y_mm": -1164.2,
      "r_mm": 3575.5,
-     "az_grad": -179.0
+     "az_grad": -161.0
     },
     {
      "zeichnung": [
       265.7,
       315.9
      ],
-     "x_mm": -2928.8,
-     "y_mm": 2051.3,
+     "x_mm": -3419.3,
+     "y_mm": 1045.8,
      "r_mm": 3575.7,
-     "az_grad": 144.99
+     "az_grad": 162.99
     },
     {
      "zeichnung": [
       395.5,
       213.3
      ],
-     "x_mm": -1306.2,
-     "y_mm": 3333.8,
-     "r_mm": 3580.6,
-     "az_grad": 111.4
+     "x_mm": -2272.5,
+     "y_mm": 2766.9,
+     "r_mm": 3580.5,
+     "az_grad": 129.4
     }
    ],
    "pfad_schematisch": true,
@@ -7854,50 +7854,50 @@
       412.9,
       748.2
      ],
-     "x_mm": -1088.8,
-     "y_mm": -3352.5,
+     "x_mm": 0.5,
+     "y_mm": -3524.9,
      "r_mm": 3524.9,
-     "az_grad": -107.99
+     "az_grad": -89.99
     },
     {
      "zeichnung": [
       274.8,
       649.8
      ],
-     "x_mm": -2815.0,
-     "y_mm": -2122.5,
+     "x_mm": -2021.3,
+     "y_mm": -2888.5,
      "r_mm": 3525.5,
-     "az_grad": -142.98
+     "az_grad": -124.98
     },
     {
      "zeichnung": [
       218.0,
       490.0
      ],
-     "x_mm": -3525.0,
-     "y_mm": -125.0,
+     "x_mm": -3313.8,
+     "y_mm": -1208.2,
      "r_mm": 3527.2,
-     "az_grad": -177.97
+     "az_grad": -159.97
     },
     {
      "zeichnung": [
       266.0,
       322.3
      ],
-     "x_mm": -2925.0,
-     "y_mm": 1971.2,
-     "r_mm": 3527.2,
-     "az_grad": 146.02
+     "x_mm": -3391.0,
+     "y_mm": 970.9,
+     "r_mm": 3527.3,
+     "az_grad": 164.02
     },
     {
      "zeichnung": [
       391.9,
       218.6
      ],
-     "x_mm": -1351.3,
-     "y_mm": 3267.5,
-     "r_mm": 3535.9,
-     "az_grad": 112.47
+     "x_mm": -2294.8,
+     "y_mm": 2690.0,
+     "r_mm": 3535.8,
+     "az_grad": 130.47
     }
    ],
    "pfad_schematisch": true,
@@ -7926,40 +7926,40 @@
       265.7,
       644.1
      ],
-     "x_mm": -2928.8,
-     "y_mm": -2051.3,
-     "r_mm": 3575.7,
-     "az_grad": -144.99
+     "x_mm": -2151.5,
+     "y_mm": -2855.9,
+     "r_mm": 3575.6,
+     "az_grad": -126.99
     },
     {
      "zeichnung": [
       214.0,
       470.0
      ],
-     "x_mm": -3575.0,
-     "y_mm": 125.0,
+     "x_mm": -3438.7,
+     "y_mm": -985.9,
      "r_mm": 3577.2,
-     "az_grad": 178.0
+     "az_grad": -164.0
     },
     {
      "zeichnung": [
       274.5,
       303.8
      ],
-     "x_mm": -2818.8,
-     "y_mm": 2202.5,
+     "x_mm": -3361.4,
+     "y_mm": 1223.7,
      "r_mm": 3577.2,
-     "az_grad": 142.0
+     "az_grad": 160.0
     },
     {
      "zeichnung": [
       409.7,
       208.6
      ],
-     "x_mm": -1128.8,
-     "y_mm": 3392.5,
+     "x_mm": -2121.8,
+     "y_mm": 2877.7,
      "r_mm": 3575.4,
-     "az_grad": 108.4
+     "az_grad": 126.4
     }
    ],
    "pfad_schematisch": true,
@@ -7988,30 +7988,30 @@
       218.0,
       480.0
      ],
-     "x_mm": -3525.0,
-     "y_mm": 0.0,
+     "x_mm": -3352.5,
+     "y_mm": -1089.3,
      "r_mm": 3525.0,
-     "az_grad": 180.0
+     "az_grad": -162.0
     },
     {
      "zeichnung": [
       271.9,
       314.2
      ],
-     "x_mm": -2851.3,
-     "y_mm": 2072.5,
+     "x_mm": -3352.1,
+     "y_mm": 1090.0,
      "r_mm": 3524.9,
-     "az_grad": 143.99
+     "az_grad": 161.99
     },
     {
      "zeichnung": [
       401.4,
       215.5
      ],
-     "x_mm": -1232.5,
-     "y_mm": 3306.2,
-     "r_mm": 3528.5,
-     "az_grad": 110.44
+     "x_mm": -2193.9,
+     "y_mm": 2763.6,
+     "r_mm": 3528.6,
+     "az_grad": 128.44
     }
    ],
    "pfad_schematisch": true,
@@ -8040,60 +8040,60 @@
       814.4,
       661.5
      ],
-     "x_mm": 3930.0,
-     "y_mm": -2268.8,
-     "r_mm": 4537.9,
-     "az_grad": -30.0
+     "x_mm": 4438.7,
+     "y_mm": -943.3,
+     "r_mm": 4537.8,
+     "az_grad": -12.0
     },
     {
      "zeichnung": [
       814.4,
       685.0
      ],
-     "x_mm": 3930.0,
-     "y_mm": -2562.5,
+     "x_mm": 4529.5,
+     "y_mm": -1222.6,
      "r_mm": 4691.6,
-     "az_grad": -33.11
+     "az_grad": -15.11
     },
     {
      "zeichnung": [
       814.4,
       692.0
      ],
-     "x_mm": 3930.0,
-     "y_mm": -2650.0,
-     "r_mm": 4740.0,
-     "az_grad": -33.99
+     "x_mm": 4556.5,
+     "y_mm": -1305.9,
+     "r_mm": 4739.9,
+     "az_grad": -15.99
     },
     {
      "zeichnung": [
       723.0,
       692.0
      ],
-     "x_mm": 2787.5,
-     "y_mm": -2650.0,
+     "x_mm": 3470.0,
+     "y_mm": -1658.9,
      "r_mm": 3846.1,
-     "az_grad": -43.55
+     "az_grad": -25.55
     },
     {
      "zeichnung": [
       713.0,
       692.0
      ],
-     "x_mm": 2662.5,
-     "y_mm": -2650.0,
+     "x_mm": 3351.1,
+     "y_mm": -1697.5,
      "r_mm": 3756.5,
-     "az_grad": -44.87
+     "az_grad": -26.86
     },
     {
      "zeichnung": [
       679.0,
       692.0
      ],
-     "x_mm": 2237.5,
-     "y_mm": -2650.0,
+     "x_mm": 2946.9,
+     "y_mm": -1828.9,
      "r_mm": 3468.3,
-     "az_grad": -49.82
+     "az_grad": -31.82
     }
    ],
    "pfad_schematisch": true
@@ -8121,60 +8121,60 @@
       745.1,
       621.5
      ],
-     "x_mm": 3063.8,
-     "y_mm": -1768.8,
+     "x_mm": 3460.4,
+     "y_mm": -735.4,
      "r_mm": 3537.7,
-     "az_grad": -30.0
+     "az_grad": -12.0
     },
     {
      "zeichnung": [
       745.1,
       685.0
      ],
-     "x_mm": 3063.8,
-     "y_mm": -2562.5,
-     "r_mm": 3994.2,
-     "az_grad": -39.91
+     "x_mm": 3705.7,
+     "y_mm": -1490.3,
+     "r_mm": 3994.1,
+     "az_grad": -21.91
     },
     {
      "zeichnung": [
       745.1,
       692.0
      ],
-     "x_mm": 3063.8,
-     "y_mm": -2650.0,
+     "x_mm": 3732.7,
+     "y_mm": -1573.5,
      "r_mm": 4050.8,
-     "az_grad": -40.86
+     "az_grad": -22.86
     },
     {
      "zeichnung": [
       723.0,
       692.0
      ],
-     "x_mm": 2787.5,
-     "y_mm": -2650.0,
+     "x_mm": 3470.0,
+     "y_mm": -1658.9,
      "r_mm": 3846.1,
-     "az_grad": -43.55
+     "az_grad": -25.55
     },
     {
      "zeichnung": [
       713.0,
       692.0
      ],
-     "x_mm": 2662.5,
-     "y_mm": -2650.0,
+     "x_mm": 3351.1,
+     "y_mm": -1697.5,
      "r_mm": 3756.5,
-     "az_grad": -44.87
+     "az_grad": -26.86
     },
     {
      "zeichnung": [
       679.0,
       692.0
      ],
-     "x_mm": 2237.5,
-     "y_mm": -2650.0,
+     "x_mm": 2946.9,
+     "y_mm": -1828.9,
      "r_mm": 3468.3,
-     "az_grad": -49.82
+     "az_grad": -31.82
     }
    ],
    "pfad_schematisch": true
@@ -8202,60 +8202,60 @@
       185.6,
       661.5
      ],
-     "x_mm": -3930.0,
-     "y_mm": -2268.8,
-     "r_mm": 4537.9,
-     "az_grad": -150.0
+     "x_mm": -3036.6,
+     "y_mm": -3372.1,
+     "r_mm": 4537.8,
+     "az_grad": -132.0
     },
     {
      "zeichnung": [
       185.6,
       685.0
      ],
-     "x_mm": -3930.0,
-     "y_mm": -2562.5,
+     "x_mm": -2945.8,
+     "y_mm": -3651.5,
      "r_mm": 4691.6,
-     "az_grad": -146.89
+     "az_grad": -128.89
     },
     {
      "zeichnung": [
       185.6,
       692.0
      ],
-     "x_mm": -3930.0,
-     "y_mm": -2650.0,
+     "x_mm": -2918.8,
+     "y_mm": -3734.7,
      "r_mm": 4740.0,
-     "az_grad": -146.01
+     "az_grad": -128.01
     },
     {
      "zeichnung": [
       277.0,
       692.0
      ],
-     "x_mm": -2787.5,
-     "y_mm": -2650.0,
+     "x_mm": -1832.2,
+     "y_mm": -3381.7,
      "r_mm": 3846.1,
-     "az_grad": -136.45
+     "az_grad": -118.45
     },
     {
      "zeichnung": [
       287.0,
       692.0
      ],
-     "x_mm": -2662.5,
-     "y_mm": -2650.0,
-     "r_mm": 3756.5,
-     "az_grad": -135.13
+     "x_mm": -1713.3,
+     "y_mm": -3343.1,
+     "r_mm": 3756.6,
+     "az_grad": -117.13
     },
     {
      "zeichnung": [
       321.0,
       692.0
      ],
-     "x_mm": -2237.5,
-     "y_mm": -2650.0,
+     "x_mm": -1309.1,
+     "y_mm": -3211.7,
      "r_mm": 3468.3,
-     "az_grad": -130.18
+     "az_grad": -112.18
     }
    ],
    "pfad_schematisch": true
@@ -8283,60 +8283,60 @@
       254.9,
       621.5
      ],
-     "x_mm": -3063.8,
-     "y_mm": -1768.8,
-     "r_mm": 3537.7,
-     "az_grad": -150.0
+     "x_mm": -2367.2,
+     "y_mm": -2628.9,
+     "r_mm": 3537.6,
+     "az_grad": -132.0
     },
     {
      "zeichnung": [
       254.9,
       685.0
      ],
-     "x_mm": -3063.8,
-     "y_mm": -2562.5,
-     "r_mm": 3994.2,
-     "az_grad": -140.09
+     "x_mm": -2121.9,
+     "y_mm": -3383.8,
+     "r_mm": 3994.1,
+     "az_grad": -122.09
     },
     {
      "zeichnung": [
       254.9,
       692.0
      ],
-     "x_mm": -3063.8,
-     "y_mm": -2650.0,
-     "r_mm": 4050.8,
-     "az_grad": -139.14
+     "x_mm": -2094.9,
+     "y_mm": -3467.1,
+     "r_mm": 4050.9,
+     "az_grad": -121.14
     },
     {
      "zeichnung": [
       277.0,
       692.0
      ],
-     "x_mm": -2787.5,
-     "y_mm": -2650.0,
+     "x_mm": -1832.2,
+     "y_mm": -3381.7,
      "r_mm": 3846.1,
-     "az_grad": -136.45
+     "az_grad": -118.45
     },
     {
      "zeichnung": [
       287.0,
       692.0
      ],
-     "x_mm": -2662.5,
-     "y_mm": -2650.0,
-     "r_mm": 3756.5,
-     "az_grad": -135.13
+     "x_mm": -1713.3,
+     "y_mm": -3343.1,
+     "r_mm": 3756.6,
+     "az_grad": -117.13
     },
     {
      "zeichnung": [
       321.0,
       692.0
      ],
-     "x_mm": -2237.5,
-     "y_mm": -2650.0,
+     "x_mm": -1309.1,
+     "y_mm": -3211.7,
      "r_mm": 3468.3,
-     "az_grad": -130.18
+     "az_grad": -112.18
     }
    ],
    "pfad_schematisch": true
@@ -8364,60 +8364,60 @@
       826.5,
       668.5
      ],
-     "x_mm": 4081.2,
-     "y_mm": -2356.2,
-     "r_mm": 4712.5,
-     "az_grad": -30.0
+     "x_mm": 4609.6,
+     "y_mm": -979.8,
+     "r_mm": 4712.6,
+     "az_grad": -12.0
     },
     {
      "zeichnung": [
       826.5,
       685.0
      ],
-     "x_mm": 4081.2,
-     "y_mm": -2562.5,
-     "r_mm": 4819.0,
-     "az_grad": -32.12
+     "x_mm": 4673.4,
+     "y_mm": -1175.9,
+     "r_mm": 4819.1,
+     "az_grad": -14.12
     },
     {
      "zeichnung": [
       826.5,
       692.0
      ],
-     "x_mm": 4081.2,
-     "y_mm": -2650.0,
+     "x_mm": 4700.4,
+     "y_mm": -1259.1,
      "r_mm": 4866.1,
-     "az_grad": -33.0
+     "az_grad": -15.0
     },
     {
      "zeichnung": [
       723.0,
       692.0
      ],
-     "x_mm": 2787.5,
-     "y_mm": -2650.0,
+     "x_mm": 3470.0,
+     "y_mm": -1658.9,
      "r_mm": 3846.1,
-     "az_grad": -43.55
+     "az_grad": -25.55
     },
     {
      "zeichnung": [
       713.0,
       692.0
      ],
-     "x_mm": 2662.5,
-     "y_mm": -2650.0,
+     "x_mm": 3351.1,
+     "y_mm": -1697.5,
      "r_mm": 3756.5,
-     "az_grad": -44.87
+     "az_grad": -26.86
     },
     {
      "zeichnung": [
       679.0,
       692.0
      ],
-     "x_mm": 2237.5,
-     "y_mm": -2650.0,
+     "x_mm": 2946.9,
+     "y_mm": -1828.9,
      "r_mm": 3468.3,
-     "az_grad": -49.82
+     "az_grad": -31.82
     }
    ],
    "pfad_schematisch": true
@@ -8445,60 +8445,60 @@
       757.2,
       628.5
      ],
-     "x_mm": 3215.0,
-     "y_mm": -1856.2,
+     "x_mm": 3631.3,
+     "y_mm": -771.9,
      "r_mm": 3712.4,
-     "az_grad": -30.0
+     "az_grad": -12.0
     },
     {
      "zeichnung": [
       757.2,
       685.0
      ],
-     "x_mm": 3215.0,
-     "y_mm": -2562.5,
+     "x_mm": 3849.5,
+     "y_mm": -1443.6,
      "r_mm": 4111.3,
-     "az_grad": -38.56
+     "az_grad": -20.56
     },
     {
      "zeichnung": [
       757.2,
       692.0
      ],
-     "x_mm": 3215.0,
-     "y_mm": -2650.0,
-     "r_mm": 4166.4,
-     "az_grad": -39.5
+     "x_mm": 3876.5,
+     "y_mm": -1526.8,
+     "r_mm": 4166.3,
+     "az_grad": -21.5
     },
     {
      "zeichnung": [
       723.0,
       692.0
      ],
-     "x_mm": 2787.5,
-     "y_mm": -2650.0,
+     "x_mm": 3470.0,
+     "y_mm": -1658.9,
      "r_mm": 3846.1,
-     "az_grad": -43.55
+     "az_grad": -25.55
     },
     {
      "zeichnung": [
       713.0,
       692.0
      ],
-     "x_mm": 2662.5,
-     "y_mm": -2650.0,
+     "x_mm": 3351.1,
+     "y_mm": -1697.5,
      "r_mm": 3756.5,
-     "az_grad": -44.87
+     "az_grad": -26.86
     },
     {
      "zeichnung": [
       679.0,
       692.0
      ],
-     "x_mm": 2237.5,
-     "y_mm": -2650.0,
+     "x_mm": 2946.9,
+     "y_mm": -1828.9,
      "r_mm": 3468.3,
-     "az_grad": -49.82
+     "az_grad": -31.82
     }
    ],
    "pfad_schematisch": true
@@ -8526,60 +8526,60 @@
       173.5,
       668.5
      ],
-     "x_mm": -4081.2,
-     "y_mm": -2356.2,
-     "r_mm": 4712.5,
-     "az_grad": -150.0
+     "x_mm": -3153.4,
+     "y_mm": -3502.1,
+     "r_mm": 4712.6,
+     "az_grad": -132.0
     },
     {
      "zeichnung": [
       173.5,
       685.0
      ],
-     "x_mm": -4081.2,
-     "y_mm": -2562.5,
+     "x_mm": -3089.6,
+     "y_mm": -3698.3,
      "r_mm": 4819.0,
-     "az_grad": -147.88
+     "az_grad": -129.88
     },
     {
      "zeichnung": [
       173.5,
       692.0
      ],
-     "x_mm": -4081.2,
-     "y_mm": -2650.0,
+     "x_mm": -3062.6,
+     "y_mm": -3781.5,
      "r_mm": 4866.1,
-     "az_grad": -147.0
+     "az_grad": -129.0
     },
     {
      "zeichnung": [
       277.0,
       692.0
      ],
-     "x_mm": -2787.5,
-     "y_mm": -2650.0,
+     "x_mm": -1832.2,
+     "y_mm": -3381.7,
      "r_mm": 3846.1,
-     "az_grad": -136.45
+     "az_grad": -118.45
     },
     {
      "zeichnung": [
       287.0,
       692.0
      ],
-     "x_mm": -2662.5,
-     "y_mm": -2650.0,
-     "r_mm": 3756.5,
-     "az_grad": -135.13
+     "x_mm": -1713.3,
+     "y_mm": -3343.1,
+     "r_mm": 3756.6,
+     "az_grad": -117.13
     },
     {
      "zeichnung": [
       321.0,
       692.0
      ],
-     "x_mm": -2237.5,
-     "y_mm": -2650.0,
+     "x_mm": -1309.1,
+     "y_mm": -3211.7,
      "r_mm": 3468.3,
-     "az_grad": -130.18
+     "az_grad": -112.18
     }
    ],
    "pfad_schematisch": true
@@ -8607,60 +8607,60 @@
       242.8,
       628.5
      ],
-     "x_mm": -3215.0,
-     "y_mm": -1856.2,
+     "x_mm": -2484.0,
+     "y_mm": -2758.9,
      "r_mm": 3712.4,
-     "az_grad": -150.0
+     "az_grad": -132.0
     },
     {
      "zeichnung": [
       242.8,
       685.0
      ],
-     "x_mm": -3215.0,
-     "y_mm": -2562.5,
+     "x_mm": -2265.8,
+     "y_mm": -3430.6,
      "r_mm": 4111.3,
-     "az_grad": -141.44
+     "az_grad": -123.44
     },
     {
      "zeichnung": [
       242.8,
       692.0
      ],
-     "x_mm": -3215.0,
-     "y_mm": -2650.0,
+     "x_mm": -2238.8,
+     "y_mm": -3513.8,
      "r_mm": 4166.4,
-     "az_grad": -140.5
+     "az_grad": -122.5
     },
     {
      "zeichnung": [
       277.0,
       692.0
      ],
-     "x_mm": -2787.5,
-     "y_mm": -2650.0,
+     "x_mm": -1832.2,
+     "y_mm": -3381.7,
      "r_mm": 3846.1,
-     "az_grad": -136.45
+     "az_grad": -118.45
     },
     {
      "zeichnung": [
       287.0,
       692.0
      ],
-     "x_mm": -2662.5,
-     "y_mm": -2650.0,
-     "r_mm": 3756.5,
-     "az_grad": -135.13
+     "x_mm": -1713.3,
+     "y_mm": -3343.1,
+     "r_mm": 3756.6,
+     "az_grad": -117.13
     },
     {
      "zeichnung": [
       321.0,
       692.0
      ],
-     "x_mm": -2237.5,
-     "y_mm": -2650.0,
+     "x_mm": -1309.1,
+     "y_mm": -3211.7,
      "r_mm": 3468.3,
-     "az_grad": -130.18
+     "az_grad": -112.18
     }
    ],
    "pfad_schematisch": true
@@ -8688,20 +8688,20 @@
       500.0,
       276.0
      ],
-     "x_mm": 0.0,
-     "y_mm": 2550.0,
+     "x_mm": -788.0,
+     "y_mm": 2425.2,
      "r_mm": 2550.0,
-     "az_grad": 90.0
+     "az_grad": 108.0
     },
     {
      "zeichnung": [
       500.0,
       289.0
      ],
-     "x_mm": 0.0,
-     "y_mm": 2387.5,
+     "x_mm": -737.8,
+     "y_mm": 2270.6,
      "r_mm": 2387.5,
-     "az_grad": 90.0
+     "az_grad": 108.0
     }
    ],
    "pfad_schematisch": true
@@ -8729,20 +8729,20 @@
       620.0,
       806.0
      ],
-     "x_mm": 1500.0,
-     "y_mm": -4075.0,
+     "x_mm": 2685.8,
+     "y_mm": -3412.0,
      "r_mm": 4342.3,
-     "az_grad": -69.79
+     "az_grad": -51.79
     },
     {
      "zeichnung": [
       620.0,
       792.0
      ],
-     "x_mm": 1500.0,
-     "y_mm": -3900.0,
-     "r_mm": 4178.5,
-     "az_grad": -68.96
+     "x_mm": 2631.8,
+     "y_mm": -3245.6,
+     "r_mm": 4178.6,
+     "az_grad": -50.96
     }
    ],
    "pfad_schematisch": true
@@ -8770,20 +8770,20 @@
       620.0,
       761.0
      ],
-     "x_mm": 1500.0,
-     "y_mm": -3512.5,
+     "x_mm": 2512.0,
+     "y_mm": -2877.1,
      "r_mm": 3819.4,
-     "az_grad": -66.88
+     "az_grad": -48.88
     },
     {
      "zeichnung": [
       620.0,
       720.0
      ],
-     "x_mm": 1500.0,
-     "y_mm": -3000.0,
-     "r_mm": 3354.1,
-     "az_grad": -63.43
+     "x_mm": 2353.6,
+     "y_mm": -2389.6,
+     "r_mm": 3354.0,
+     "az_grad": -45.43
     }
    ],
    "pfad_schematisch": true
@@ -8811,20 +8811,20 @@
       620.0,
       689.0
      ],
-     "x_mm": 1500.0,
-     "y_mm": -2612.5,
+     "x_mm": 2233.9,
+     "y_mm": -2021.1,
      "r_mm": 3012.5,
-     "az_grad": -60.14
+     "az_grad": -42.14
     },
     {
      "zeichnung": [
       620.0,
       623.2
      ],
-     "x_mm": 1500.0,
-     "y_mm": -1790.0,
+     "x_mm": 1979.7,
+     "y_mm": -1238.9,
      "r_mm": 2335.4,
-     "az_grad": -50.04
+     "az_grad": -32.04
     }
    ],
    "pfad_schematisch": true
@@ -8852,20 +8852,20 @@
       380.0,
       806.0
      ],
-     "x_mm": -1500.0,
-     "y_mm": -4075.0,
+     "x_mm": -167.3,
+     "y_mm": -4339.1,
      "r_mm": 4342.3,
-     "az_grad": -110.21
+     "az_grad": -92.21
     },
     {
      "zeichnung": [
       380.0,
       792.0
      ],
-     "x_mm": -1500.0,
-     "y_mm": -3900.0,
+     "x_mm": -221.4,
+     "y_mm": -4172.6,
      "r_mm": 4178.5,
-     "az_grad": -111.04
+     "az_grad": -93.04
     }
    ],
    "pfad_schematisch": true
@@ -8893,20 +8893,20 @@
       380.0,
       761.0
      ],
-     "x_mm": -1500.0,
-     "y_mm": -3512.5,
+     "x_mm": -341.2,
+     "y_mm": -3804.1,
      "r_mm": 3819.4,
-     "az_grad": -113.12
+     "az_grad": -95.13
     },
     {
      "zeichnung": [
       380.0,
       720.0
      ],
-     "x_mm": -1500.0,
-     "y_mm": -3000.0,
+     "x_mm": -499.5,
+     "y_mm": -3316.7,
      "r_mm": 3354.1,
-     "az_grad": -116.57
+     "az_grad": -98.56
     }
    ],
    "pfad_schematisch": true
@@ -8934,20 +8934,20 @@
       380.0,
       689.0
      ],
-     "x_mm": -1500.0,
-     "y_mm": -2612.5,
+     "x_mm": -619.3,
+     "y_mm": -2948.2,
      "r_mm": 3012.5,
-     "az_grad": -119.86
+     "az_grad": -101.86
     },
     {
      "zeichnung": [
       380.0,
       623.2
      ],
-     "x_mm": -1500.0,
-     "y_mm": -1790.0,
+     "x_mm": -873.4,
+     "y_mm": -2165.9,
      "r_mm": 2335.4,
-     "az_grad": -129.96
+     "az_grad": -111.96
     }
    ],
    "pfad_schematisch": true
@@ -8975,100 +8975,100 @@
       796.0,
       718.1
      ],
-     "x_mm": 3700.0,
-     "y_mm": -2976.3,
+     "x_mm": 4438.6,
+     "y_mm": -1687.2,
      "r_mm": 4748.5,
-     "az_grad": -38.81
+     "az_grad": -20.81
     },
     {
      "zeichnung": [
       796.0,
       713.1
      ],
-     "x_mm": 3700.0,
-     "y_mm": -2913.8,
+     "x_mm": 4419.3,
+     "y_mm": -1627.8,
      "r_mm": 4709.6,
-     "az_grad": -38.22
+     "az_grad": -20.22
     },
     {
      "zeichnung": [
       796.0,
       708.0
      ],
-     "x_mm": 3700.0,
-     "y_mm": -2850.0,
+     "x_mm": 4399.6,
+     "y_mm": -1567.1,
      "r_mm": 4670.4,
-     "az_grad": -37.61
+     "az_grad": -19.61
     },
     {
      "zeichnung": [
       723.0,
       708.0
      ],
-     "x_mm": 2787.5,
-     "y_mm": -2850.0,
+     "x_mm": 3531.8,
+     "y_mm": -1849.1,
      "r_mm": 3986.6,
-     "az_grad": -45.64
+     "az_grad": -27.63
     },
     {
      "zeichnung": [
       713.0,
       708.0
      ],
-     "x_mm": 2662.5,
-     "y_mm": -2850.0,
+     "x_mm": 3412.9,
+     "y_mm": -1887.8,
      "r_mm": 3900.2,
-     "az_grad": -46.95
+     "az_grad": -28.95
     },
     {
      "zeichnung": [
       595.0,
       708.0
      ],
-     "x_mm": 1187.5,
-     "y_mm": -2850.0,
+     "x_mm": 2010.1,
+     "y_mm": -2343.6,
      "r_mm": 3087.5,
-     "az_grad": -67.38
+     "az_grad": -49.38
     },
     {
      "zeichnung": [
       588.0,
       708.0
      ],
-     "x_mm": 1100.0,
-     "y_mm": -2850.0,
+     "x_mm": 1926.9,
+     "y_mm": -2370.6,
      "r_mm": 3054.9,
-     "az_grad": -68.9
+     "az_grad": -50.89
     },
     {
      "zeichnung": [
       588.0,
       873.0
      ],
-     "x_mm": 1100.0,
-     "y_mm": -4912.5,
+     "x_mm": 2564.2,
+     "y_mm": -4332.1,
      "r_mm": 5034.1,
-     "az_grad": -77.38
+     "az_grad": -59.38
     },
     {
      "zeichnung": [
       588.0,
       880.0
      ],
-     "x_mm": 1100.0,
-     "y_mm": -5000.0,
+     "x_mm": 2591.2,
+     "y_mm": -4415.4,
      "r_mm": 5119.6,
-     "az_grad": -77.59
+     "az_grad": -59.59
     },
     {
      "zeichnung": [
       548.2,
       880.0
      ],
-     "x_mm": 602.5,
-     "y_mm": -5000.0,
+     "x_mm": 2118.1,
+     "y_mm": -4569.1,
      "r_mm": 5036.2,
-     "az_grad": -83.13
+     "az_grad": -65.13
     }
    ],
    "pfad_schematisch": true
@@ -9096,20 +9096,20 @@
       500.0,
       858.0
      ],
-     "x_mm": 0.0,
-     "y_mm": -4725.0,
+     "x_mm": 1460.1,
+     "y_mm": -4493.7,
      "r_mm": 4725.0,
-     "az_grad": -90.0
+     "az_grad": -72.0
     },
     {
      "zeichnung": [
       500.0,
       853.0
      ],
-     "x_mm": 0.0,
-     "y_mm": -4662.5,
+     "x_mm": 1440.8,
+     "y_mm": -4434.3,
      "r_mm": 4662.5,
-     "az_grad": -90.0
+     "az_grad": -72.0
     }
    ],
    "pfad_schematisch": true
@@ -9137,20 +9137,20 @@
       500.0,
       684.0
      ],
-     "x_mm": 0.0,
-     "y_mm": -2550.0,
+     "x_mm": 788.0,
+     "y_mm": -2425.2,
      "r_mm": 2550.0,
-     "az_grad": -90.0
+     "az_grad": -72.0
     },
     {
      "zeichnung": [
       500.0,
       669.0
      ],
-     "x_mm": 0.0,
-     "y_mm": -2362.5,
+     "x_mm": 730.1,
+     "y_mm": -2246.9,
      "r_mm": 2362.5,
-     "az_grad": -90.0
+     "az_grad": -72.0
     }
    ],
    "pfad_schematisch": true
@@ -9178,20 +9178,20 @@
       718.0,
       806.0
      ],
-     "x_mm": 2725.0,
-     "y_mm": -4075.0,
+     "x_mm": 3850.9,
+     "y_mm": -3033.5,
      "r_mm": 4902.2,
-     "az_grad": -56.23
+     "az_grad": -38.23
     },
     {
      "zeichnung": [
       718.0,
       811.0
      ],
-     "x_mm": 2725.0,
-     "y_mm": -4137.5,
+     "x_mm": 3870.2,
+     "y_mm": -3092.9,
      "r_mm": 4954.2,
-     "az_grad": -56.63
+     "az_grad": -38.63
     }
    ],
    "pfad_schematisch": true
@@ -9219,20 +9219,20 @@
       282.0,
       806.0
      ],
-     "x_mm": -2725.0,
-     "y_mm": -4075.0,
-     "r_mm": 4902.2,
-     "az_grad": -123.77
+     "x_mm": -1332.4,
+     "y_mm": -4717.6,
+     "r_mm": 4902.1,
+     "az_grad": -105.77
     },
     {
      "zeichnung": [
       282.0,
       811.0
      ],
-     "x_mm": -2725.0,
-     "y_mm": -4137.5,
-     "r_mm": 4954.2,
-     "az_grad": -123.37
+     "x_mm": -1313.1,
+     "y_mm": -4777.1,
+     "r_mm": 4954.3,
+     "az_grad": -105.37
     }
    ],
    "pfad_schematisch": true
@@ -9260,40 +9260,40 @@
       800.0,
       796.4
      ],
-     "x_mm": 3750.0,
-     "y_mm": -3955.0,
+     "x_mm": 4788.6,
+     "y_mm": -2602.6,
      "r_mm": 5450.2,
-     "az_grad": -46.52
+     "az_grad": -28.52
     },
     {
      "zeichnung": [
       800.0,
       849.0
      ],
-     "x_mm": 3750.0,
-     "y_mm": -4612.5,
+     "x_mm": 4991.8,
+     "y_mm": -3227.9,
      "r_mm": 5944.5,
-     "az_grad": -50.89
+     "az_grad": -32.89
     },
     {
      "zeichnung": [
       800.0,
       856.0
      ],
-     "x_mm": 3750.0,
-     "y_mm": -4700.0,
+     "x_mm": 5018.8,
+     "y_mm": -3311.2,
      "r_mm": 6012.7,
-     "az_grad": -51.41
+     "az_grad": -33.42
     },
     {
      "zeichnung": [
       763.0,
       856.0
      ],
-     "x_mm": 3287.5,
-     "y_mm": -4700.0,
-     "r_mm": 5735.6,
-     "az_grad": -55.03
+     "x_mm": 4579.0,
+     "y_mm": -3454.1,
+     "r_mm": 5735.7,
+     "az_grad": -37.03
     }
    ],
    "pfad_schematisch": true
@@ -9321,40 +9321,40 @@
       200.0,
       796.4
      ],
-     "x_mm": -3750.0,
-     "y_mm": -3955.0,
-     "r_mm": 5450.2,
-     "az_grad": -133.48
+     "x_mm": -2344.3,
+     "y_mm": -4920.2,
+     "r_mm": 5450.1,
+     "az_grad": -115.48
     },
     {
      "zeichnung": [
       200.0,
       849.0
      ],
-     "x_mm": -3750.0,
-     "y_mm": -4612.5,
-     "r_mm": 5944.5,
-     "az_grad": -129.11
+     "x_mm": -2141.1,
+     "y_mm": -5545.6,
+     "r_mm": 5944.6,
+     "az_grad": -111.11
     },
     {
      "zeichnung": [
       200.0,
       856.0
      ],
-     "x_mm": -3750.0,
-     "y_mm": -4700.0,
+     "x_mm": -2114.1,
+     "y_mm": -5628.8,
      "r_mm": 6012.7,
-     "az_grad": -128.59
+     "az_grad": -110.59
     },
     {
      "zeichnung": [
       237.0,
       856.0
      ],
-     "x_mm": -3287.5,
-     "y_mm": -4700.0,
-     "r_mm": 5735.6,
-     "az_grad": -124.97
+     "x_mm": -1674.2,
+     "y_mm": -5485.9,
+     "r_mm": 5735.7,
+     "az_grad": -106.97
     }
    ],
    "pfad_schematisch": true
@@ -9382,40 +9382,40 @@
       718.0,
       892.0
      ],
-     "x_mm": 2725.0,
-     "y_mm": -5150.0,
+     "x_mm": 4183.1,
+     "y_mm": -4055.9,
      "r_mm": 5826.5,
-     "az_grad": -62.12
+     "az_grad": -44.12
     },
     {
      "zeichnung": [
       718.0,
       1002.0
      ],
-     "x_mm": 2725.0,
-     "y_mm": -6525.0,
+     "x_mm": 4608.0,
+     "y_mm": -5363.6,
      "r_mm": 7071.2,
-     "az_grad": -67.33
+     "az_grad": -49.33
     },
     {
      "zeichnung": [
       718.0,
       1009.0
      ],
-     "x_mm": 2725.0,
-     "y_mm": -6612.5,
+     "x_mm": 4635.0,
+     "y_mm": -5446.8,
      "r_mm": 7152.0,
-     "az_grad": -67.6
+     "az_grad": -49.6
     },
     {
      "zeichnung": [
       569.0,
       1009.0
      ],
-     "x_mm": 862.5,
-     "y_mm": -6612.5,
+     "x_mm": 2863.7,
+     "y_mm": -6022.3,
      "r_mm": 6668.5,
-     "az_grad": -82.57
+     "az_grad": -64.57
     }
    ],
    "pfad_schematisch": true
@@ -9443,40 +9443,40 @@
       282.0,
       892.0
      ],
-     "x_mm": -2725.0,
-     "y_mm": -5150.0,
+     "x_mm": -1000.2,
+     "y_mm": -5740.0,
      "r_mm": 5826.5,
-     "az_grad": -117.88
+     "az_grad": -99.88
     },
     {
      "zeichnung": [
       282.0,
       1002.0
      ],
-     "x_mm": -2725.0,
-     "y_mm": -6525.0,
-     "r_mm": 7071.2,
-     "az_grad": -112.67
+     "x_mm": -575.3,
+     "y_mm": -7047.7,
+     "r_mm": 7071.1,
+     "az_grad": -94.67
     },
     {
      "zeichnung": [
       282.0,
       1009.0
      ],
-     "x_mm": -2725.0,
-     "y_mm": -6612.5,
-     "r_mm": 7152.0,
-     "az_grad": -112.4
+     "x_mm": -548.3,
+     "y_mm": -7130.9,
+     "r_mm": 7151.9,
+     "az_grad": -94.4
     },
     {
      "zeichnung": [
       431.0,
       1009.0
      ],
-     "x_mm": -862.5,
-     "y_mm": -6612.5,
+     "x_mm": 1223.1,
+     "y_mm": -6555.4,
      "r_mm": 6668.5,
-     "az_grad": -97.43
+     "az_grad": -79.43
     }
    ],
    "pfad_schematisch": true
@@ -9504,200 +9504,200 @@
       637.0,
       917.0
      ],
-     "x_mm": 1712.5,
-     "y_mm": -5462.5,
-     "r_mm": 5724.6,
-     "az_grad": -72.59
+     "x_mm": 3316.7,
+     "y_mm": -4666.0,
+     "r_mm": 5724.7,
+     "az_grad": -54.59
     },
     {
      "zeichnung": [
       637.0,
       959.0
      ],
-     "x_mm": 1712.5,
-     "y_mm": -5987.5,
+     "x_mm": 3478.9,
+     "y_mm": -5165.3,
      "r_mm": 6227.6,
-     "az_grad": -74.04
+     "az_grad": -56.04
     },
     {
      "zeichnung": [
       637.0,
       966.0
      ],
-     "x_mm": 1712.5,
-     "y_mm": -6075.0,
+     "x_mm": 3506.0,
+     "y_mm": -5248.5,
      "r_mm": 6311.8,
-     "az_grad": -74.26
+     "az_grad": -56.26
     },
     {
      "zeichnung": [
       603.0,
       966.0
      ],
-     "x_mm": 1287.5,
-     "y_mm": -6075.0,
+     "x_mm": 3101.8,
+     "y_mm": -5379.8,
      "r_mm": 6209.9,
-     "az_grad": -78.03
+     "az_grad": -60.03
     },
     {
      "zeichnung": [
       593.0,
       966.0
      ],
-     "x_mm": 1162.5,
-     "y_mm": -6075.0,
+     "x_mm": 2982.9,
+     "y_mm": -5418.4,
      "r_mm": 6185.2,
-     "az_grad": -79.17
+     "az_grad": -61.17
     },
     {
      "zeichnung": [
       505.0,
       966.0
      ],
-     "x_mm": 62.5,
-     "y_mm": -6075.0,
-     "r_mm": 6075.3,
-     "az_grad": -89.41
+     "x_mm": 1936.7,
+     "y_mm": -5758.4,
+     "r_mm": 6075.4,
+     "az_grad": -71.41
     },
     {
      "zeichnung": [
       495.0,
       966.0
      ],
-     "x_mm": -62.5,
-     "y_mm": -6075.0,
+     "x_mm": 1817.8,
+     "y_mm": -5797.0,
      "r_mm": 6075.3,
-     "az_grad": -90.59
+     "az_grad": -72.59
     },
     {
      "zeichnung": [
       407.0,
       966.0
      ],
-     "x_mm": -1162.5,
-     "y_mm": -6075.0,
+     "x_mm": 771.7,
+     "y_mm": -6136.9,
      "r_mm": 6185.2,
-     "az_grad": -100.83
+     "az_grad": -82.83
     },
     {
      "zeichnung": [
       397.0,
       966.0
      ],
-     "x_mm": -1287.5,
-     "y_mm": -6075.0,
+     "x_mm": 652.8,
+     "y_mm": -6175.5,
      "r_mm": 6209.9,
-     "az_grad": -101.97
+     "az_grad": -83.97
     },
     {
      "zeichnung": [
       239.0,
       966.0
      ],
-     "x_mm": -3262.5,
-     "y_mm": -6075.0,
+     "x_mm": -1225.5,
+     "y_mm": -6785.8,
      "r_mm": 6895.6,
-     "az_grad": -118.24
+     "az_grad": -100.24
     },
     {
      "zeichnung": [
       229.0,
       966.0
      ],
-     "x_mm": -3387.5,
-     "y_mm": -6075.0,
-     "r_mm": 6955.6,
-     "az_grad": -119.14
+     "x_mm": -1344.4,
+     "y_mm": -6824.5,
+     "r_mm": 6955.7,
+     "az_grad": -101.14
     },
     {
      "zeichnung": [
       183.0,
       966.0
      ],
-     "x_mm": -3962.5,
-     "y_mm": -6075.0,
-     "r_mm": 7253.1,
-     "az_grad": -123.11
+     "x_mm": -1891.3,
+     "y_mm": -7002.1,
+     "r_mm": 7253.0,
+     "az_grad": -105.12
     },
     {
      "zeichnung": [
       173.0,
       966.0
      ],
-     "x_mm": -4087.5,
-     "y_mm": -6075.0,
+     "x_mm": -2010.2,
+     "y_mm": -7040.8,
      "r_mm": 7322.1,
-     "az_grad": -123.93
+     "az_grad": -105.93
     },
     {
      "zeichnung": [
       117.0,
       966.0
      ],
-     "x_mm": -4787.5,
-     "y_mm": -6075.0,
+     "x_mm": -2675.9,
+     "y_mm": -7257.1,
      "r_mm": 7734.7,
-     "az_grad": -128.24
+     "az_grad": -110.24
     },
     {
      "zeichnung": [
       107.0,
       966.0
      ],
-     "x_mm": -4912.5,
-     "y_mm": -6075.0,
+     "x_mm": -2794.8,
+     "y_mm": -7295.7,
      "r_mm": 7812.7,
-     "az_grad": -128.96
+     "az_grad": -110.96
     },
     {
      "zeichnung": [
       77.0,
       966.0
      ],
-     "x_mm": -5287.5,
-     "y_mm": -6075.0,
+     "x_mm": -3151.4,
+     "y_mm": -7411.6,
      "r_mm": 8053.8,
-     "az_grad": -131.04
+     "az_grad": -113.04
     },
     {
      "zeichnung": [
       70.0,
       966.0
      ],
-     "x_mm": -5375.0,
-     "y_mm": -6075.0,
+     "x_mm": -3234.7,
+     "y_mm": -7438.6,
      "r_mm": 8111.5,
-     "az_grad": -131.5
+     "az_grad": -113.5
     },
     {
      "zeichnung": [
       70.0,
       583.0
      ],
-     "x_mm": -5375.0,
-     "y_mm": -1287.5,
-     "r_mm": 5527.0,
-     "az_grad": -166.53
+     "x_mm": -4714.1,
+     "y_mm": -2885.5,
+     "r_mm": 5527.1,
+     "az_grad": -148.53
     },
     {
      "zeichnung": [
       70.0,
       576.0
      ],
-     "x_mm": -5375.0,
-     "y_mm": -1200.0,
+     "x_mm": -4741.1,
+     "y_mm": -2802.2,
      "r_mm": 5507.3,
-     "az_grad": -167.41
+     "az_grad": -149.42
     },
     {
      "zeichnung": [
       49.0,
       576.0
      ],
-     "x_mm": -5637.5,
-     "y_mm": -1200.0,
-     "r_mm": 5763.8,
-     "az_grad": -167.98
+     "x_mm": -4990.8,
+     "y_mm": -2883.4,
+     "r_mm": 5763.9,
+     "az_grad": -149.98
     }
    ],
    "pfad_schematisch": true
@@ -9725,140 +9725,140 @@
       363.0,
       917.0
      ],
-     "x_mm": -1712.5,
-     "y_mm": -5462.5,
+     "x_mm": 59.3,
+     "y_mm": -5724.3,
      "r_mm": 5724.6,
-     "az_grad": -107.41
+     "az_grad": -89.41
     },
     {
      "zeichnung": [
       363.0,
       959.0
      ],
-     "x_mm": -1712.5,
-     "y_mm": -5987.5,
-     "r_mm": 6227.6,
-     "az_grad": -105.96
+     "x_mm": 221.6,
+     "y_mm": -6223.6,
+     "r_mm": 6227.5,
+     "az_grad": -87.96
     },
     {
      "zeichnung": [
       363.0,
       966.0
      ],
-     "x_mm": -1712.5,
-     "y_mm": -6075.0,
+     "x_mm": 248.6,
+     "y_mm": -6306.9,
      "r_mm": 6311.8,
-     "az_grad": -105.74
+     "az_grad": -87.74
     },
     {
      "zeichnung": [
       239.0,
       966.0
      ],
-     "x_mm": -3262.5,
-     "y_mm": -6075.0,
+     "x_mm": -1225.5,
+     "y_mm": -6785.8,
      "r_mm": 6895.6,
-     "az_grad": -118.24
+     "az_grad": -100.24
     },
     {
      "zeichnung": [
       229.0,
       966.0
      ],
-     "x_mm": -3387.5,
-     "y_mm": -6075.0,
-     "r_mm": 6955.6,
-     "az_grad": -119.14
+     "x_mm": -1344.4,
+     "y_mm": -6824.5,
+     "r_mm": 6955.7,
+     "az_grad": -101.14
     },
     {
      "zeichnung": [
       183.0,
       966.0
      ],
-     "x_mm": -3962.5,
-     "y_mm": -6075.0,
-     "r_mm": 7253.1,
-     "az_grad": -123.11
+     "x_mm": -1891.3,
+     "y_mm": -7002.1,
+     "r_mm": 7253.0,
+     "az_grad": -105.12
     },
     {
      "zeichnung": [
       173.0,
       966.0
      ],
-     "x_mm": -4087.5,
-     "y_mm": -6075.0,
+     "x_mm": -2010.2,
+     "y_mm": -7040.8,
      "r_mm": 7322.1,
-     "az_grad": -123.93
+     "az_grad": -105.93
     },
     {
      "zeichnung": [
       117.0,
       966.0
      ],
-     "x_mm": -4787.5,
-     "y_mm": -6075.0,
+     "x_mm": -2675.9,
+     "y_mm": -7257.1,
      "r_mm": 7734.7,
-     "az_grad": -128.24
+     "az_grad": -110.24
     },
     {
      "zeichnung": [
       107.0,
       966.0
      ],
-     "x_mm": -4912.5,
-     "y_mm": -6075.0,
+     "x_mm": -2794.8,
+     "y_mm": -7295.7,
      "r_mm": 7812.7,
-     "az_grad": -128.96
+     "az_grad": -110.96
     },
     {
      "zeichnung": [
       77.0,
       966.0
      ],
-     "x_mm": -5287.5,
-     "y_mm": -6075.0,
+     "x_mm": -3151.4,
+     "y_mm": -7411.6,
      "r_mm": 8053.8,
-     "az_grad": -131.04
+     "az_grad": -113.04
     },
     {
      "zeichnung": [
       70.0,
       966.0
      ],
-     "x_mm": -5375.0,
-     "y_mm": -6075.0,
+     "x_mm": -3234.7,
+     "y_mm": -7438.6,
      "r_mm": 8111.5,
-     "az_grad": -131.5
+     "az_grad": -113.5
     },
     {
      "zeichnung": [
       70.0,
       583.0
      ],
-     "x_mm": -5375.0,
-     "y_mm": -1287.5,
-     "r_mm": 5527.0,
-     "az_grad": -166.53
+     "x_mm": -4714.1,
+     "y_mm": -2885.5,
+     "r_mm": 5527.1,
+     "az_grad": -148.53
     },
     {
      "zeichnung": [
       70.0,
       576.0
      ],
-     "x_mm": -5375.0,
-     "y_mm": -1200.0,
+     "x_mm": -4741.1,
+     "y_mm": -2802.2,
      "r_mm": 5507.3,
-     "az_grad": -167.41
+     "az_grad": -149.42
     },
     {
      "zeichnung": [
       49.0,
       576.0
      ],
-     "x_mm": -5637.5,
-     "y_mm": -1200.0,
-     "r_mm": 5763.8,
-     "az_grad": -167.98
+     "x_mm": -4990.8,
+     "y_mm": -2883.4,
+     "r_mm": 5763.9,
+     "az_grad": -149.98
     }
    ],
    "pfad_schematisch": true
@@ -9886,60 +9886,60 @@
       40.0,
       650.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -2125.0,
+     "x_mm": -4811.9,
+     "y_mm": -3797.8,
      "r_mm": 6130.1,
-     "az_grad": -159.72
+     "az_grad": -141.72
     },
     {
      "zeichnung": [
       193.0,
       650.0
      ],
-     "x_mm": -3837.5,
-     "y_mm": -2125.0,
-     "r_mm": 4386.6,
-     "az_grad": -151.02
+     "x_mm": -2993.0,
+     "y_mm": -3206.8,
+     "r_mm": 4386.5,
+     "az_grad": -133.02
     },
     {
      "zeichnung": [
       200.0,
       650.0
      ],
-     "x_mm": -3750.0,
-     "y_mm": -2125.0,
+     "x_mm": -2909.8,
+     "y_mm": -3179.8,
      "r_mm": 4310.2,
-     "az_grad": -150.46
+     "az_grad": -132.46
     },
     {
      "zeichnung": [
       200.0,
       595.3
      ],
-     "x_mm": -3750.0,
-     "y_mm": -1441.2,
+     "x_mm": -3121.1,
+     "y_mm": -2529.5,
      "r_mm": 4017.4,
-     "az_grad": -158.98
+     "az_grad": -140.98
     },
     {
      "zeichnung": [
       200.0,
       588.3
      ],
-     "x_mm": -3750.0,
-     "y_mm": -1353.7,
-     "r_mm": 3986.9,
-     "az_grad": -160.15
+     "x_mm": -3148.1,
+     "y_mm": -2446.3,
+     "r_mm": 3986.8,
+     "az_grad": -142.15
     },
     {
      "zeichnung": [
       347.3,
       588.3
      ],
-     "x_mm": -1908.7,
-     "y_mm": -1353.7,
-     "r_mm": 2340.0,
-     "az_grad": -144.65
+     "x_mm": -1397.0,
+     "y_mm": -1877.3,
+     "r_mm": 2340.1,
+     "az_grad": -126.65
     }
    ],
    "pfad_schematisch": true
@@ -9967,20 +9967,20 @@
       -60.0,
       585.0
      ],
-     "x_mm": -7000.0,
-     "y_mm": -1312.5,
+     "x_mm": -6251.8,
+     "y_mm": -3411.4,
      "r_mm": 7122.0,
-     "az_grad": -169.38
+     "az_grad": -151.38
     },
     {
      "zeichnung": [
       -60.0,
       631.0
      ],
-     "x_mm": -7000.0,
-     "y_mm": -1887.5,
+     "x_mm": -6074.1,
+     "y_mm": -3958.2,
      "r_mm": 7250.0,
-     "az_grad": -164.91
+     "az_grad": -146.91
     }
    ],
    "pfad_schematisch": true
@@ -10008,40 +10008,40 @@
       830.0,
       801.4
      ],
-     "x_mm": 4125.0,
-     "y_mm": -4017.5,
+     "x_mm": 5164.6,
+     "y_mm": -2546.2,
      "r_mm": 5758.1,
-     "az_grad": -44.24
+     "az_grad": -26.24
     },
     {
      "zeichnung": [
       830.0,
       903.0
      ],
-     "x_mm": 4125.0,
-     "y_mm": -5287.5,
+     "x_mm": 5557.0,
+     "y_mm": -3754.0,
      "r_mm": 6706.2,
-     "az_grad": -52.04
+     "az_grad": -34.04
     },
     {
      "zeichnung": [
       830.0,
       910.0
      ],
-     "x_mm": 4125.0,
-     "y_mm": -5375.0,
+     "x_mm": 5584.1,
+     "y_mm": -3837.2,
      "r_mm": 6775.4,
-     "az_grad": -52.5
+     "az_grad": -34.5
     },
     {
      "zeichnung": [
       679.0,
       910.0
      ],
-     "x_mm": 2237.5,
-     "y_mm": -5375.0,
+     "x_mm": 3789.0,
+     "y_mm": -4420.5,
      "r_mm": 5822.1,
-     "az_grad": -67.4
+     "az_grad": -49.4
     }
    ],
    "pfad_schematisch": true
@@ -10069,40 +10069,40 @@
       170.0,
       801.4
      ],
-     "x_mm": -4125.0,
-     "y_mm": -4017.5,
+     "x_mm": -2681.6,
+     "y_mm": -5095.6,
      "r_mm": 5758.1,
-     "az_grad": -135.76
+     "az_grad": -117.76
     },
     {
      "zeichnung": [
       170.0,
       903.0
      ],
-     "x_mm": -4125.0,
-     "y_mm": -5287.5,
+     "x_mm": -2289.2,
+     "y_mm": -6303.4,
      "r_mm": 6706.2,
-     "az_grad": -127.96
+     "az_grad": -109.96
     },
     {
      "zeichnung": [
       170.0,
       910.0
      ],
-     "x_mm": -4125.0,
-     "y_mm": -5375.0,
+     "x_mm": -2262.1,
+     "y_mm": -6386.6,
      "r_mm": 6775.4,
-     "az_grad": -127.5
+     "az_grad": -109.5
     },
     {
      "zeichnung": [
       321.0,
       910.0
      ],
-     "x_mm": -2237.5,
-     "y_mm": -5375.0,
-     "r_mm": 5822.1,
-     "az_grad": -112.6
+     "x_mm": -467.0,
+     "y_mm": -5803.4,
+     "r_mm": 5822.2,
+     "az_grad": -94.6
     }
    ],
    "pfad_schematisch": true
@@ -10130,100 +10130,100 @@
       40.0,
       574.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -1175.0,
+     "x_mm": -5105.5,
+     "y_mm": -2894.3,
      "r_mm": 5868.8,
-     "az_grad": -168.45
+     "az_grad": -150.45
     },
     {
      "zeichnung": [
       69.0,
       574.0
      ],
-     "x_mm": -5387.5,
-     "y_mm": -1175.0,
+     "x_mm": -4760.7,
+     "y_mm": -2782.3,
      "r_mm": 5514.1,
-     "az_grad": -167.7
+     "az_grad": -149.7
     },
     {
      "zeichnung": [
       76.0,
       574.0
      ],
-     "x_mm": -5300.0,
-     "y_mm": -1175.0,
+     "x_mm": -4677.5,
+     "y_mm": -2755.3,
      "r_mm": 5428.7,
-     "az_grad": -167.5
+     "az_grad": -149.5
     },
     {
      "zeichnung": [
       76.0,
       951.0
      ],
-     "x_mm": -5300.0,
-     "y_mm": -5887.5,
-     "r_mm": 7921.7,
-     "az_grad": -131.99
+     "x_mm": -3221.3,
+     "y_mm": -7237.1,
+     "r_mm": 7921.6,
+     "az_grad": -113.99
     },
     {
      "zeichnung": [
       76.0,
       958.0
      ],
-     "x_mm": -5300.0,
-     "y_mm": -5975.0,
+     "x_mm": -3194.2,
+     "y_mm": -7320.4,
      "r_mm": 7986.9,
-     "az_grad": -131.57
+     "az_grad": -113.57
     },
     {
      "zeichnung": [
       358.0,
       958.0
      ],
-     "x_mm": -1775.0,
-     "y_mm": -5975.0,
+     "x_mm": 158.3,
+     "y_mm": -6231.1,
      "r_mm": 6233.1,
-     "az_grad": -106.55
+     "az_grad": -88.54
     },
     {
      "zeichnung": [
       368.0,
       958.0
      ],
-     "x_mm": -1650.0,
-     "y_mm": -5975.0,
+     "x_mm": 277.1,
+     "y_mm": -6192.4,
      "r_mm": 6198.6,
-     "az_grad": -105.44
+     "az_grad": -87.44
     },
     {
      "zeichnung": [
       395.0,
       958.0
      ],
-     "x_mm": -1312.5,
-     "y_mm": -5975.0,
-     "r_mm": 6117.5,
-     "az_grad": -102.39
+     "x_mm": 598.1,
+     "y_mm": -6088.1,
+     "r_mm": 6117.4,
+     "az_grad": -84.39
     },
     {
      "zeichnung": [
       402.0,
       958.0
      ],
-     "x_mm": -1225.0,
-     "y_mm": -5975.0,
+     "x_mm": 681.3,
+     "y_mm": -6061.1,
      "r_mm": 6099.3,
-     "az_grad": -101.59
+     "az_grad": -83.59
     },
     {
      "zeichnung": [
       402.0,
       688.0
      ],
-     "x_mm": -1225.0,
-     "y_mm": -2600.0,
+     "x_mm": -361.6,
+     "y_mm": -2851.3,
      "r_mm": 2874.1,
-     "az_grad": -115.23
+     "az_grad": -97.23
     }
    ],
    "pfad_schematisch": true
@@ -10251,20 +10251,20 @@
       400.0,
       629.7
      ],
-     "x_mm": -1250.0,
-     "y_mm": -1871.3,
-     "r_mm": 2250.4,
-     "az_grad": -123.74
+     "x_mm": -610.6,
+     "y_mm": -2165.9,
+     "r_mm": 2250.3,
+     "az_grad": -105.74
     },
     {
      "zeichnung": [
       400.0,
       648.0
      ],
-     "x_mm": -1250.0,
-     "y_mm": -2100.0,
+     "x_mm": -539.9,
+     "y_mm": -2383.5,
      "r_mm": 2443.9,
-     "az_grad": -120.76
+     "az_grad": -102.76
     }
    ],
    "pfad_schematisch": true
@@ -10292,80 +10292,80 @@
       40.0,
       552.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -900.0,
+     "x_mm": -5190.5,
+     "y_mm": -2632.8,
      "r_mm": 5820.0,
-     "az_grad": -171.1
+     "az_grad": -153.1
     },
     {
      "zeichnung": [
       105.0,
       552.0
      ],
-     "x_mm": -4937.5,
-     "y_mm": -900.0,
-     "r_mm": 5018.9,
-     "az_grad": -169.67
+     "x_mm": -4417.7,
+     "y_mm": -2381.7,
+     "r_mm": 5018.8,
+     "az_grad": -151.67
     },
     {
      "zeichnung": [
       112.0,
       552.0
      ],
-     "x_mm": -4850.0,
-     "y_mm": -900.0,
+     "x_mm": -4334.5,
+     "y_mm": -2354.7,
      "r_mm": 4932.8,
-     "az_grad": -169.49
+     "az_grad": -151.49
     },
     {
      "zeichnung": [
       112.0,
       977.0
      ],
-     "x_mm": -4850.0,
-     "y_mm": -6212.5,
+     "x_mm": -2692.9,
+     "y_mm": -7407.2,
      "r_mm": 7881.5,
-     "az_grad": -127.98
+     "az_grad": -109.98
     },
     {
      "zeichnung": [
       112.0,
       984.0
      ],
-     "x_mm": -4850.0,
-     "y_mm": -6300.0,
+     "x_mm": -2665.8,
+     "y_mm": -7490.4,
      "r_mm": 7950.6,
-     "az_grad": -127.59
+     "az_grad": -109.59
     },
     {
      "zeichnung": [
       1018.0,
       984.0
      ],
-     "x_mm": 6475.0,
-     "y_mm": -6300.0,
-     "r_mm": 9034.1,
-     "az_grad": -44.22
+     "x_mm": 8104.9,
+     "y_mm": -3990.8,
+     "r_mm": 9034.2,
+     "az_grad": -26.22
     },
     {
      "zeichnung": [
       1025.0,
       984.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -6300.0,
-     "r_mm": 9097.1,
-     "az_grad": -43.83
+     "x_mm": 8188.1,
+     "y_mm": -3963.7,
+     "r_mm": 9097.0,
+     "az_grad": -25.83
     },
     {
      "zeichnung": [
       1025.0,
       749.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -3362.5,
+     "x_mm": 7280.4,
+     "y_mm": -1170.0,
      "r_mm": 7373.8,
-     "az_grad": -27.13
+     "az_grad": -9.13
     }
    ],
    "pfad_schematisch": true
@@ -10393,20 +10393,20 @@
       960.0,
       722.0
      ],
-     "x_mm": 5750.0,
-     "y_mm": -3025.0,
+     "x_mm": 6403.4,
+     "y_mm": -1100.1,
      "r_mm": 6497.2,
-     "az_grad": -27.75
+     "az_grad": -9.75
     },
     {
      "zeichnung": [
       865.0,
       722.0
      ],
-     "x_mm": 4562.5,
-     "y_mm": -3025.0,
-     "r_mm": 5474.2,
-     "az_grad": -33.54
+     "x_mm": 5274.0,
+     "y_mm": -1467.1,
+     "r_mm": 5474.3,
+     "az_grad": -15.55
     }
    ],
    "pfad_schematisch": true
@@ -10434,60 +10434,60 @@
       1025.0,
       740.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -3250.0,
+     "x_mm": 7245.6,
+     "y_mm": -1063.0,
      "r_mm": 7323.2,
-     "az_grad": -26.35
+     "az_grad": -8.35
     },
     {
      "zeichnung": [
       1025.0,
       1013.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -6662.5,
-     "r_mm": 9351.8,
-     "az_grad": -45.43
+     "x_mm": 8300.1,
+     "y_mm": -4308.5,
+     "r_mm": 9351.7,
+     "az_grad": -27.43
     },
     {
      "zeichnung": [
       1025.0,
       1020.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -6750.0,
+     "x_mm": 8327.2,
+     "y_mm": -4391.7,
      "r_mm": 9414.3,
-     "az_grad": -45.81
+     "az_grad": -27.81
     },
     {
      "zeichnung": [
       662.0,
       1020.0
      ],
-     "x_mm": 2025.0,
-     "y_mm": -6750.0,
-     "r_mm": 7047.2,
-     "az_grad": -73.3
+     "x_mm": 4011.8,
+     "y_mm": -5793.9,
+     "r_mm": 7047.3,
+     "az_grad": -55.3
     },
     {
      "zeichnung": [
       655.0,
       1020.0
      ],
-     "x_mm": 1937.5,
-     "y_mm": -6750.0,
-     "r_mm": 7022.6,
-     "az_grad": -73.98
+     "x_mm": 3928.5,
+     "y_mm": -5820.9,
+     "r_mm": 7022.5,
+     "az_grad": -55.98
     },
     {
      "zeichnung": [
       655.0,
       931.0
      ],
-     "x_mm": 1937.5,
-     "y_mm": -5637.5,
+     "x_mm": 3584.8,
+     "y_mm": -4762.9,
      "r_mm": 5961.2,
-     "az_grad": -71.03
+     "az_grad": -53.03
     }
    ],
    "pfad_schematisch": true
@@ -10515,60 +10515,60 @@
       1060.0,
       740.0
      ],
-     "x_mm": 7000.0,
-     "y_mm": -3250.0,
+     "x_mm": 7661.7,
+     "y_mm": -927.8,
      "r_mm": 7717.7,
-     "az_grad": -24.9
+     "az_grad": -6.9
     },
     {
      "zeichnung": [
       1060.0,
       1025.0
      ],
-     "x_mm": 7000.0,
-     "y_mm": -6812.5,
-     "r_mm": 9767.8,
-     "az_grad": -44.22
+     "x_mm": 8762.6,
+     "y_mm": -4316.0,
+     "r_mm": 9767.9,
+     "az_grad": -26.22
     },
     {
      "zeichnung": [
       1060.0,
       1032.0
      ],
-     "x_mm": 7000.0,
-     "y_mm": -6900.0,
+     "x_mm": 8789.6,
+     "y_mm": -4399.2,
      "r_mm": 9829.0,
-     "az_grad": -44.59
+     "az_grad": -26.59
     },
     {
      "zeichnung": [
       575.0,
       1032.0
      ],
-     "x_mm": 937.5,
-     "y_mm": -6900.0,
+     "x_mm": 3023.8,
+     "y_mm": -6272.6,
      "r_mm": 6963.4,
-     "az_grad": -82.26
+     "az_grad": -64.26
     },
     {
      "zeichnung": [
       568.0,
       1032.0
      ],
-     "x_mm": 850.0,
-     "y_mm": -6900.0,
-     "r_mm": 6952.2,
-     "az_grad": -82.98
+     "x_mm": 2940.6,
+     "y_mm": -6299.6,
+     "r_mm": 6952.1,
+     "az_grad": -64.98
     },
     {
      "zeichnung": [
       568.0,
       815.0
      ],
-     "x_mm": 850.0,
-     "y_mm": -4187.5,
+     "x_mm": 2102.4,
+     "y_mm": -3719.9,
      "r_mm": 4272.9,
-     "az_grad": -78.53
+     "az_grad": -60.53
     }
    ],
    "pfad_schematisch": true
@@ -10596,80 +10596,80 @@
       1025.0,
       700.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -2750.0,
+     "x_mm": 7091.1,
+     "y_mm": -587.5,
      "r_mm": 7115.4,
-     "az_grad": -22.74
+     "az_grad": -4.74
     },
     {
      "zeichnung": [
       1025.0,
       657.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -2212.5,
+     "x_mm": 6925.0,
+     "y_mm": -76.3,
      "r_mm": 6925.4,
-     "az_grad": -18.63
+     "az_grad": -0.63
     },
     {
      "zeichnung": [
       1025.0,
       650.0
      ],
-     "x_mm": 6562.5,
-     "y_mm": -2125.0,
+     "x_mm": 6898.0,
+     "y_mm": 6.9,
      "r_mm": 6898.0,
-     "az_grad": -17.94
+     "az_grad": 0.06
     },
     {
      "zeichnung": [
       807.0,
       650.0
      ],
-     "x_mm": 3837.5,
-     "y_mm": -2125.0,
-     "r_mm": 4386.6,
-     "az_grad": -28.98
+     "x_mm": 4306.3,
+     "y_mm": -835.1,
+     "r_mm": 4386.5,
+     "az_grad": -10.97
     },
     {
      "zeichnung": [
       800.0,
       650.0
      ],
-     "x_mm": 3750.0,
-     "y_mm": -2125.0,
+     "x_mm": 4223.1,
+     "y_mm": -862.2,
      "r_mm": 4310.2,
-     "az_grad": -29.54
+     "az_grad": -11.54
     },
     {
      "zeichnung": [
       800.0,
       595.3
      ],
-     "x_mm": 3750.0,
-     "y_mm": -1441.2,
+     "x_mm": 4011.8,
+     "y_mm": -211.9,
      "r_mm": 4017.4,
-     "az_grad": -21.02
+     "az_grad": -3.02
     },
     {
      "zeichnung": [
       800.0,
       588.3
      ],
-     "x_mm": 3750.0,
-     "y_mm": -1353.7,
+     "x_mm": 3984.8,
+     "y_mm": -128.7,
      "r_mm": 3986.9,
-     "az_grad": -19.85
+     "az_grad": -1.85
     },
     {
      "zeichnung": [
       652.7,
       588.3
      ],
-     "x_mm": 1908.8,
-     "y_mm": -1353.7,
+     "x_mm": 2233.7,
+     "y_mm": -697.7,
      "r_mm": 2340.1,
-     "az_grad": -35.34
+     "az_grad": -17.35
     }
    ],
    "pfad_schematisch": true
@@ -10697,60 +10697,60 @@
       -90.0,
       562.0
      ],
-     "x_mm": -7375.0,
-     "y_mm": -1025.0,
+     "x_mm": -6697.3,
+     "y_mm": -3253.8,
      "r_mm": 7445.9,
-     "az_grad": -172.09
+     "az_grad": -154.09
     },
     {
      "zeichnung": [
       -103.0,
       562.0
      ],
-     "x_mm": -7537.5,
-     "y_mm": -1025.0,
-     "r_mm": 7606.9,
-     "az_grad": -172.26
+     "x_mm": -6851.8,
+     "y_mm": -3304.0,
+     "r_mm": 7606.8,
+     "az_grad": -154.26
     },
     {
      "zeichnung": [
       -110.0,
       562.0
      ],
-     "x_mm": -7625.0,
-     "y_mm": -1025.0,
+     "x_mm": -6935.1,
+     "y_mm": -3331.1,
      "r_mm": 7693.6,
-     "az_grad": -172.34
+     "az_grad": -154.34
     },
     {
      "zeichnung": [
       -110.0,
       714.5
      ],
-     "x_mm": -7625.0,
-     "y_mm": -2931.2,
+     "x_mm": -6346.0,
+     "y_mm": -5144.0,
      "r_mm": 8169.0,
-     "az_grad": -158.97
+     "az_grad": -140.97
     },
     {
      "zeichnung": [
       -110.0,
       720.0
      ],
-     "x_mm": -7625.0,
-     "y_mm": -3000.0,
-     "r_mm": 8193.9,
-     "az_grad": -158.52
+     "x_mm": -6324.8,
+     "y_mm": -5209.4,
+     "r_mm": 8194.0,
+     "az_grad": -140.52
     },
     {
      "zeichnung": [
       -99.0,
       720.0
      ],
-     "x_mm": -7487.5,
-     "y_mm": -3000.0,
+     "x_mm": -6194.0,
+     "y_mm": -5166.9,
      "r_mm": 8066.1,
-     "az_grad": -158.17
+     "az_grad": -140.17
     }
    ],
    "pfad_schematisch": true
@@ -10778,20 +10778,20 @@
       40.0,
       722.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -3025.0,
+     "x_mm": -4533.8,
+     "y_mm": -4653.8,
      "r_mm": 6497.2,
-     "az_grad": -152.25
+     "az_grad": -134.25
     },
     {
      "zeichnung": [
       135.0,
       722.0
      ],
-     "x_mm": -4562.5,
-     "y_mm": -3025.0,
+     "x_mm": -3404.4,
+     "y_mm": -4286.8,
      "r_mm": 5474.2,
-     "az_grad": -146.46
+     "az_grad": -128.46
     }
    ],
    "pfad_schematisch": true
@@ -10819,60 +10819,60 @@
       -25.0,
       740.0
      ],
-     "x_mm": -6562.5,
-     "y_mm": -3250.0,
+     "x_mm": -5237.0,
+     "y_mm": -5118.9,
      "r_mm": 7323.2,
-     "az_grad": -153.65
+     "az_grad": -135.65
     },
     {
      "zeichnung": [
       -25.0,
       1013.0
      ],
-     "x_mm": -6562.5,
-     "y_mm": -6662.5,
-     "r_mm": 9351.8,
-     "az_grad": -134.57
+     "x_mm": -4182.5,
+     "y_mm": -8364.3,
+     "r_mm": 9351.7,
+     "az_grad": -116.57
     },
     {
      "zeichnung": [
       -25.0,
       1020.0
      ],
-     "x_mm": -6562.5,
-     "y_mm": -6750.0,
+     "x_mm": -4155.4,
+     "y_mm": -8447.6,
      "r_mm": 9414.3,
-     "az_grad": -134.19
+     "az_grad": -116.19
     },
     {
      "zeichnung": [
       338.0,
       1020.0
      ],
-     "x_mm": -2025.0,
-     "y_mm": -6750.0,
+     "x_mm": 160.0,
+     "y_mm": -7045.4,
      "r_mm": 7047.2,
-     "az_grad": -106.7
+     "az_grad": -88.7
     },
     {
      "zeichnung": [
       345.0,
       1020.0
      ],
-     "x_mm": -1937.5,
-     "y_mm": -6750.0,
+     "x_mm": 243.2,
+     "y_mm": -7018.4,
      "r_mm": 7022.6,
-     "az_grad": -106.02
+     "az_grad": -88.02
     },
     {
      "zeichnung": [
       345.0,
       931.0
      ],
-     "x_mm": -1937.5,
-     "y_mm": -5637.5,
-     "r_mm": 5961.2,
-     "az_grad": -108.97
+     "x_mm": -100.6,
+     "y_mm": -5960.3,
+     "r_mm": 5961.1,
+     "az_grad": -90.97
     }
    ],
    "pfad_schematisch": true
@@ -10900,80 +10900,80 @@
       -60.0,
       740.0
      ],
-     "x_mm": -7000.0,
-     "y_mm": -3250.0,
+     "x_mm": -5653.1,
+     "y_mm": -5254.1,
      "r_mm": 7717.7,
-     "az_grad": -155.1
+     "az_grad": -137.1
     },
     {
      "zeichnung": [
       -60.0,
       1025.0
      ],
-     "x_mm": -7000.0,
-     "y_mm": -6812.5,
+     "x_mm": -4552.2,
+     "y_mm": -8642.2,
      "r_mm": 9767.8,
-     "az_grad": -135.78
+     "az_grad": -117.78
     },
     {
      "zeichnung": [
       -60.0,
       1032.0
      ],
-     "x_mm": -7000.0,
-     "y_mm": -6900.0,
+     "x_mm": -4525.2,
+     "y_mm": -8725.4,
      "r_mm": 9829.0,
-     "az_grad": -135.41
+     "az_grad": -117.41
     },
     {
      "zeichnung": [
       425.0,
       1032.0
      ],
-     "x_mm": -937.5,
-     "y_mm": -6900.0,
+     "x_mm": 1240.6,
+     "y_mm": -6852.0,
      "r_mm": 6963.4,
-     "az_grad": -97.74
+     "az_grad": -79.74
     },
     {
      "zeichnung": [
       432.0,
       1032.0
      ],
-     "x_mm": -850.0,
-     "y_mm": -6900.0,
+     "x_mm": 1323.8,
+     "y_mm": -6825.0,
      "r_mm": 6952.2,
-     "az_grad": -97.02
+     "az_grad": -79.02
     },
     {
      "zeichnung": [
       432.0,
       910.5
      ],
-     "x_mm": -850.0,
-     "y_mm": -5381.2,
+     "x_mm": 854.5,
+     "y_mm": -5380.5,
      "r_mm": 5447.9,
-     "az_grad": -98.98
+     "az_grad": -80.98
     },
     {
      "zeichnung": [
       432.0,
       904.0
      ],
-     "x_mm": -850.0,
-     "y_mm": -5300.0,
-     "r_mm": 5367.7,
-     "az_grad": -99.11
+     "x_mm": 829.4,
+     "y_mm": -5303.3,
+     "r_mm": 5367.8,
+     "az_grad": -81.11
     },
     {
      "zeichnung": [
       445.0,
       904.0
      ],
-     "x_mm": -687.5,
-     "y_mm": -5300.0,
-     "r_mm": 5344.4,
-     "az_grad": -97.39
+     "x_mm": 983.9,
+     "y_mm": -5253.0,
+     "r_mm": 5344.3,
+     "az_grad": -79.39
     }
    ],
    "pfad_schematisch": true
@@ -11001,100 +11001,100 @@
       40.0,
       712.0
      ],
-     "x_mm": -5750.0,
-     "y_mm": -2900.0,
+     "x_mm": -4572.4,
+     "y_mm": -4534.9,
      "r_mm": 6439.9,
-     "az_grad": -153.24
+     "az_grad": -135.24
     },
     {
      "zeichnung": [
       93.0,
       712.0
      ],
-     "x_mm": -5087.5,
-     "y_mm": -2900.0,
+     "x_mm": -3942.4,
+     "y_mm": -4330.2,
      "r_mm": 5856.0,
-     "az_grad": -150.32
+     "az_grad": -132.32
     },
     {
      "zeichnung": [
       100.0,
       712.0
      ],
-     "x_mm": -5000.0,
-     "y_mm": -2900.0,
+     "x_mm": -3859.1,
+     "y_mm": -4303.1,
      "r_mm": 5780.1,
-     "az_grad": -149.89
+     "az_grad": -131.89
     },
     {
      "zeichnung": [
       100.0,
       657.0
      ],
-     "x_mm": -5000.0,
-     "y_mm": -2212.5,
-     "r_mm": 5467.6,
-     "az_grad": -156.13
+     "x_mm": -4071.6,
+     "y_mm": -3649.3,
+     "r_mm": 5467.7,
+     "az_grad": -138.13
     },
     {
      "zeichnung": [
       100.0,
       650.0
      ],
-     "x_mm": -5000.0,
-     "y_mm": -2125.0,
+     "x_mm": -4098.6,
+     "y_mm": -3566.1,
      "r_mm": 5432.8,
-     "az_grad": -156.97
+     "az_grad": -138.97
     },
     {
      "zeichnung": [
       193.0,
       650.0
      ],
-     "x_mm": -3837.5,
-     "y_mm": -2125.0,
-     "r_mm": 4386.6,
-     "az_grad": -151.02
+     "x_mm": -2993.0,
+     "y_mm": -3206.8,
+     "r_mm": 4386.5,
+     "az_grad": -133.02
     },
     {
      "zeichnung": [
       200.0,
       650.0
      ],
-     "x_mm": -3750.0,
-     "y_mm": -2125.0,
+     "x_mm": -2909.8,
+     "y_mm": -3179.8,
      "r_mm": 4310.2,
-     "az_grad": -150.46
+     "az_grad": -132.46
     },
     {
      "zeichnung": [
       200.0,
       595.3
      ],
-     "x_mm": -3750.0,
-     "y_mm": -1441.2,
+     "x_mm": -3121.1,
+     "y_mm": -2529.5,
      "r_mm": 4017.4,
-     "az_grad": -158.98
+     "az_grad": -140.98
     },
     {
      "zeichnung": [
       200.0,
       588.3
      ],
-     "x_mm": -3750.0,
-     "y_mm": -1353.7,
-     "r_mm": 3986.9,
-     "az_grad": -160.15
+     "x_mm": -3148.1,
+     "y_mm": -2446.3,
+     "r_mm": 3986.8,
+     "az_grad": -142.15
     },
     {
      "zeichnung": [
       347.3,
       588.3
      ],
-     "x_mm": -1908.7,
-     "y_mm": -1353.7,
-     "r_mm": 2340.0,
-     "az_grad": -144.65
+     "x_mm": -1397.0,
+     "y_mm": -1877.3,
+     "r_mm": 2340.1,
+     "az_grad": -126.65
     }
    ],
    "pfad_schematisch": true
@@ -11138,10 +11138,10 @@
       655.0,
       668.0
      ],
-     "x_mm": 1937.5,
-     "y_mm": -2350.0,
-     "r_mm": 3045.7,
-     "az_grad": -50.5,
+     "x_mm": 2568.9,
+     "y_mm": -1636.3,
+     "r_mm": 3045.8,
+     "az_grad": -32.5,
      "typ": "rueckschlagventil",
      "drehung_grad": 0.0
     }
@@ -11184,10 +11184,10 @@
       345.0,
       668.0
      ],
-     "x_mm": -1937.5,
-     "y_mm": -2350.0,
+     "x_mm": -1116.5,
+     "y_mm": -2833.7,
      "r_mm": 3045.7,
-     "az_grad": -129.5,
+     "az_grad": -111.5,
      "typ": "rueckschlagventil",
      "drehung_grad": 180.0
     }
@@ -11384,10 +11384,10 @@
       500.0,
       210.0
      ],
-     "x_mm": 0.0,
-     "y_mm": 3375.0,
+     "x_mm": -1042.9,
+     "y_mm": 3209.8,
      "r_mm": 3375.0,
-     "az_grad": 90.0,
+     "az_grad": 108.0,
      "typ": "ventil"
     },
     {
@@ -11395,10 +11395,10 @@
       500.0,
       750.0
      ],
-     "x_mm": 0.0,
-     "y_mm": -3375.0,
+     "x_mm": 1042.9,
+     "y_mm": -3209.8,
      "r_mm": 3375.0,
-     "az_grad": -90.0,
+     "az_grad": -72.0,
      "typ": "ventil"
     }
    ]
@@ -11418,10 +11418,10 @@
       579.7,
       234.6
      ],
-     "x_mm": 996.3,
-     "y_mm": 3067.5,
+     "x_mm": -0.4,
+     "y_mm": 3225.2,
      "r_mm": 3225.2,
-     "az_grad": 72.01,
+     "az_grad": 90.01,
      "typ": "ventil"
     }
    ]
@@ -11441,10 +11441,10 @@
       420.3,
       234.6
      ],
-     "x_mm": -996.2,
-     "y_mm": 3067.5,
+     "x_mm": -1895.4,
+     "y_mm": 2609.5,
      "r_mm": 3225.2,
-     "az_grad": 107.99,
+     "az_grad": 125.99,
      "typ": "ventil"
     }
    ]
@@ -11816,10 +11816,10 @@
       826.3,
       639.1
      ],
-     "x_mm": 4078.7,
-     "y_mm": -1988.8,
-     "r_mm": 4537.7,
-     "az_grad": -25.99,
+     "x_mm": 4493.7,
+     "y_mm": -631.0,
+     "r_mm": 4537.8,
+     "az_grad": -7.99,
      "typ": "siphon"
     },
     {
@@ -11827,10 +11827,10 @@
       173.7,
       639.1
      ],
-     "x_mm": -4078.8,
-     "y_mm": -1988.8,
+     "x_mm": -3264.6,
+     "y_mm": -3151.8,
      "r_mm": 4537.8,
-     "az_grad": -154.01,
+     "az_grad": -136.01,
      "typ": "siphon"
     }
    ]
@@ -11850,10 +11850,10 @@
       826.3,
       639.1
      ],
-     "x_mm": 4078.7,
-     "y_mm": -1988.8,
-     "r_mm": 4537.7,
-     "az_grad": -25.99,
+     "x_mm": 4493.7,
+     "y_mm": -631.0,
+     "r_mm": 4537.8,
+     "az_grad": -7.99,
      "typ": "siphon"
     },
     {
@@ -11861,10 +11861,10 @@
       173.7,
       639.1
      ],
-     "x_mm": -4078.8,
-     "y_mm": -1988.8,
+     "x_mm": -3264.6,
+     "y_mm": -3151.8,
      "r_mm": 4537.8,
-     "az_grad": -154.01,
+     "az_grad": -136.01,
      "typ": "siphon"
     }
    ]
@@ -11906,10 +11906,10 @@
       754.4,
       604.1
      ],
-     "x_mm": 3180.0,
-     "y_mm": -1551.3,
+     "x_mm": 3503.7,
+     "y_mm": -492.7,
      "r_mm": 3538.2,
-     "az_grad": -26.0,
+     "az_grad": -8.0,
      "typ": "siphon"
     },
     {
@@ -11917,10 +11917,10 @@
       245.6,
       604.1
      ],
-     "x_mm": -3180.0,
-     "y_mm": -1551.3,
+     "x_mm": -2545.0,
+     "y_mm": -2458.0,
      "r_mm": 3538.2,
-     "az_grad": -154.0,
+     "az_grad": -136.0,
      "typ": "siphon"
     }
    ]
@@ -11940,10 +11940,10 @@
       754.4,
       604.1
      ],
-     "x_mm": 3180.0,
-     "y_mm": -1551.3,
+     "x_mm": 3503.7,
+     "y_mm": -492.7,
      "r_mm": 3538.2,
-     "az_grad": -26.0,
+     "az_grad": -8.0,
      "typ": "siphon"
     },
     {
@@ -11951,10 +11951,10 @@
       245.6,
       604.1
      ],
-     "x_mm": -3180.0,
-     "y_mm": -1551.3,
+     "x_mm": -2545.0,
+     "y_mm": -2458.0,
      "r_mm": 3538.2,
-     "az_grad": -154.0,
+     "az_grad": -136.0,
      "typ": "siphon"
     }
    ]
@@ -12018,10 +12018,10 @@
       625.0,
       862.5
      ],
-     "x_mm": 1562.5,
-     "y_mm": -4781.2,
-     "r_mm": 5030.0,
-     "az_grad": -71.9,
+     "x_mm": 2963.5,
+     "y_mm": -4064.4,
+     "r_mm": 5030.1,
+     "az_grad": -53.9,
      "typ": "pufferzone",
      "nummer": 1,
      "text": "Pufferzone 1 (10 %): Kalk (Muschelschill, Eierschalen), aufwärts"
@@ -12031,10 +12031,10 @@
       625.0,
       879.5
      ],
-     "x_mm": 1562.5,
-     "y_mm": -4993.8,
+     "x_mm": 3029.2,
+     "y_mm": -4266.5,
      "r_mm": 5232.5,
-     "az_grad": -72.63,
+     "az_grad": -54.63,
      "typ": "pufferzone",
      "nummer": 2,
      "text": "Pufferzone 2 (10 %): Aktivkohle, abwärts"
@@ -12044,10 +12044,10 @@
       625.0,
       896.5
      ],
-     "x_mm": 1562.5,
-     "y_mm": -5206.2,
+     "x_mm": 3094.8,
+     "y_mm": -4468.6,
      "r_mm": 5435.6,
-     "az_grad": -73.29,
+     "az_grad": -55.29,
      "typ": "pufferzone",
      "nummer": 3,
      "text": "Pufferzone 3 (10 %): frei wählbar, aufwärts"
@@ -12057,10 +12057,10 @@
       625.0,
       913.5
      ],
-     "x_mm": 1562.5,
-     "y_mm": -5418.8,
-     "r_mm": 5639.6,
-     "az_grad": -73.92,
+     "x_mm": 3160.5,
+     "y_mm": -4670.7,
+     "r_mm": 5639.5,
+     "az_grad": -55.92,
      "typ": "pufferzone",
      "nummer": 4,
      "text": "Pufferzone 4 (10 %): frei wählbar, abwärts"
@@ -12093,10 +12093,10 @@
       620.0,
       738.0
      ],
-     "x_mm": 1500.0,
-     "y_mm": -3225.0,
+     "x_mm": 2423.2,
+     "y_mm": -2603.6,
      "r_mm": 3556.8,
-     "az_grad": -65.06,
+     "az_grad": -47.06,
      "typ": "rueckschlagventil",
      "drehung_grad": -90.0
     }
@@ -12117,10 +12117,10 @@
       620.0,
       700.0
      ],
-     "x_mm": 1500.0,
-     "y_mm": -2750.0,
+     "x_mm": 2276.4,
+     "y_mm": -2151.9,
      "r_mm": 3132.5,
-     "az_grad": -61.39,
+     "az_grad": -43.39,
      "typ": "venturi"
     }
    ]
@@ -12184,10 +12184,10 @@
       375.0,
       862.5
      ],
-     "x_mm": -1562.5,
-     "y_mm": -4781.2,
-     "r_mm": 5030.0,
-     "az_grad": -108.1,
+     "x_mm": -8.5,
+     "y_mm": -5030.1,
+     "r_mm": 5030.1,
+     "az_grad": -90.1,
      "typ": "pufferzone",
      "nummer": 1,
      "text": "Pufferzone 1 (10 %): Kalk (Muschelschill, Eierschalen), aufwärts"
@@ -12197,10 +12197,10 @@
       375.0,
       879.5
      ],
-     "x_mm": -1562.5,
-     "y_mm": -4993.8,
+     "x_mm": 57.1,
+     "y_mm": -5232.2,
      "r_mm": 5232.5,
-     "az_grad": -107.37,
+     "az_grad": -89.37,
      "typ": "pufferzone",
      "nummer": 2,
      "text": "Pufferzone 2 (10 %): Aktivkohle, abwärts"
@@ -12210,10 +12210,10 @@
       375.0,
       896.5
      ],
-     "x_mm": -1562.5,
-     "y_mm": -5206.2,
-     "r_mm": 5435.6,
-     "az_grad": -106.71,
+     "x_mm": 122.8,
+     "y_mm": -5434.3,
+     "r_mm": 5435.7,
+     "az_grad": -88.71,
      "typ": "pufferzone",
      "nummer": 3,
      "text": "Pufferzone 3 (10 %): frei wählbar, aufwärts"
@@ -12223,10 +12223,10 @@
       375.0,
       913.5
      ],
-     "x_mm": -1562.5,
-     "y_mm": -5418.8,
+     "x_mm": 188.5,
+     "y_mm": -5636.4,
      "r_mm": 5639.6,
-     "az_grad": -106.08,
+     "az_grad": -88.08,
      "typ": "pufferzone",
      "nummer": 4,
      "text": "Pufferzone 4 (10 %): frei wählbar, abwärts"
@@ -12259,10 +12259,10 @@
       380.0,
       738.0
      ],
-     "x_mm": -1500.0,
-     "y_mm": -3225.0,
+     "x_mm": -430.0,
+     "y_mm": -3530.7,
      "r_mm": 3556.8,
-     "az_grad": -114.94,
+     "az_grad": -96.94,
      "typ": "rueckschlagventil",
      "drehung_grad": 270.0
     }
@@ -12283,10 +12283,10 @@
       380.0,
       700.0
      ],
-     "x_mm": -1500.0,
-     "y_mm": -2750.0,
+     "x_mm": -576.8,
+     "y_mm": -3078.9,
      "r_mm": 3132.5,
-     "az_grad": -118.61,
+     "az_grad": -100.61,
      "typ": "venturi"
     }
    ]
@@ -12328,10 +12328,10 @@
       637.0,
       905.5
      ],
-     "x_mm": 1712.5,
-     "y_mm": -5318.8,
-     "r_mm": 5587.7,
-     "az_grad": -72.15,
+     "x_mm": 3272.3,
+     "y_mm": -4529.2,
+     "r_mm": 5587.6,
+     "az_grad": -54.15,
      "typ": "schwimmerschalter"
     }
    ]
@@ -12373,10 +12373,10 @@
       363.0,
       905.5
      ],
-     "x_mm": -1712.5,
-     "y_mm": -5318.8,
-     "r_mm": 5587.7,
-     "az_grad": -107.85,
+     "x_mm": 14.9,
+     "y_mm": -5587.6,
+     "r_mm": 5587.6,
+     "az_grad": -89.85,
      "typ": "schwimmerschalter"
     }
    ]
@@ -12517,10 +12517,10 @@
       262.0,
       420.0
      ],
-     "x_mm": -2975.0,
-     "y_mm": 750.0,
+     "x_mm": -3061.2,
+     "y_mm": -206.0,
      "r_mm": 3068.1,
-     "az_grad": 165.85,
+     "az_grad": -176.15,
      "typ": "ventil"
     }
    ]
@@ -12528,12 +12528,12 @@
  ],
  "pruefungen": [
   {
-   "pruefung": "SHA256 index.html",
+   "pruefung": "SHA256 index.html (Zeilenenden egal)",
    "ok": true,
    "detail": "37c1a78f1dcd685891512bf297648705633e6359591b6228d0a76d1bcf552dcc"
   },
   {
-   "pruefung": "SHA256 flow-diagram.html",
+   "pruefung": "SHA256 flow-diagram.html (Zeilenenden egal)",
    "ok": true,
    "detail": "68e35886735e0c544c2439aa845c7db0a691815921197f6b795ed7259dca1799"
   },
@@ -12736,6 +12736,11 @@
    "pruefung": "Ring-Ecken liegen auf Eckradius 3550 mm (Zehneck, Halbring 1: 5 Ecken)",
    "ok": true,
    "detail": "Radien [3550], Ecken 5"
+  },
+  {
+   "pruefung": "Ring-Ecken Halbring 1 liegen bei Az -54, -18, 18, 54, 90 (= Ring B2 im Modell: Ecken bei 18 + 36 k)",
+   "ok": true,
+   "detail": "[-54, -18, 18, 54, 90]"
   },
   {
    "pruefung": "Quelle: 9 Bauteile ohne Hoehenangabe (ohneStufe)",

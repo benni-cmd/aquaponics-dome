@@ -20,6 +20,10 @@ Umrechnung Zeichnung -> Modell (ANNAHME, siehe docs/research/R61 Abschnitt 5 und
   * Fussboden der Quelle (Oberkante Bodenplatte, A25) = Modell-Z 400 mm (FUSSBODEN_Z_MM; `viewer/instances.json` walk_z = 400,
     Tische/Tanks/Pumpen stehen bei Z 400). Auftrag nannte Z 0: das ist die Unterkante des Sockels, nicht der begehbare Boden.
     Alle `z_modell_mm` = 400 + Hoehe ueber Fussboden. Eine Zahl aendern genuegt, falls Ben anders entscheidet.
+  * Drehung +18 Grad (DREHUNG_GRAD, ANNAHME): Die Quelle hat das Zehneck so gedreht, dass die zwei Kupplungsstrecken auf der Achse
+    liegen, und die Winkel aus Bens Konzept nicht uebernommen (A16). Das Ring-B2-Modell hat die Ecken bei Az 18 + 36 k (Tisch-Zulaeufe
+    an den Sektorgrenzen) und die Kupplungsstrecken bei Az 108 und -72; das ist genau die Zeichnung, um +18 Grad gedreht (Pruefung unten).
+    Die Zeichnung zeigt ihre Koordinaten weiter unveraendert in `zeichnung`/`d`.
   * Die Zeichnung ist an Becken, Filtern und Rohrfuehrung schematisch (A16): Mittelpunkte und Reihenfolge gelten, Rohrverlaeufe
     sind Verbindungen, keine Trassen. Wo die Quelle Masse nennt (A26 Fischtank 4 m x 2,2 m, Anzucht 2 m x 1 m, Futterbecken 1 m x 1 m),
     stehen sie als `masse_text_mm` und gehen der Zeichnungsgroesse vor.
@@ -48,6 +52,7 @@ MM_JE_EINHEIT = 12.5
 MITTE = (500.0, 480.0)
 KUPPEL_R_MM = 6000
 FUSSBODEN_Z_MM = 400
+DREHUNG_GRAD = 18.0   # ANNAHME D95: Zeichnung -> Modell um +18 Grad (CCW) gedreht; Begruendung im Kopf und in R61 Abschnitt 5
 
 # Kurzrolle je Bauteil (eigene Worte, ein Satz); die Quelltexte stehen unveraendert in `beschreibung`.
 ROLLE = {
@@ -135,13 +140,19 @@ def lies(p):
         return f.read()
 
 
-def sha(p):
-    return hashlib.sha256(open(p, "rb").read()).hexdigest()
+def sha_passt(p, erwartet):
+    """SHA256 der Datei; ein Windows-Checkout mit autocrlf aendert nur die Zeilenenden, nicht den Inhalt: roh, LF und CRLF werden geprueft."""
+    roh = open(p, "rb").read()
+    lf = roh.replace(bytes([13, 10]), bytes([10]))
+    kandidaten = {hashlib.sha256(x).hexdigest() for x in (roh, lf, lf.replace(bytes([10]), bytes([13, 10])))}
+    return erwartet in kandidaten
 
 
 def mm(x, y):
-    """Zeichnungseinheiten -> Modell-Millimeter (X rechts, Y oben = Norden)."""
-    return round((x - MITTE[0]) * MM_JE_EINHEIT, 1) + 0.0, round(-(y - MITTE[1]) * MM_JE_EINHEIT, 1) + 0.0
+    """Zeichnungseinheiten -> Modell-Millimeter (X rechts, Y oben = Norden), um DREHUNG_GRAD gedreht."""
+    dx, dy = (x - MITTE[0]) * MM_JE_EINHEIT, -(y - MITTE[1]) * MM_JE_EINHEIT
+    c, s_ = math.cos(math.radians(DREHUNG_GRAD)), math.sin(math.radians(DREHUNG_GRAD))
+    return round(dx * c - dy * s_, 1) + 0.0, round(dx * s_ + dy * c, 1) + 0.0
 
 
 def polar(xm, ym):
@@ -355,7 +366,7 @@ def baue():
 
     # --- Pruefung 1: Quelldateien unveraendert
     for name, p in (("index.html", INDEX), ("flow-diagram.html", FLOW)):
-        pruefe("SHA256 " + name, sha(p) == SHA[name], sha(p))
+        pruefe("SHA256 " + name + " (Zeilenenden egal)", sha_passt(p, SHA[name]), SHA[name])
 
     # --- Pruefung 2: Bauteile <-> Plan-Teile, Kanten <-> Plan-Kanten
     pruefe("43 Bauteile in flow-data", len(nodes) == 43, str(len(nodes)))
@@ -537,6 +548,8 @@ def baue():
     rr = sorted({round(p["r_mm"]) for p in corners if abs(p["r_mm"] - 3550) < 60})
     pruefe("Ring-Ecken liegen auf Eckradius 3550 mm (Zehneck, Halbring 1: 5 Ecken)", len(rr) == 1 and rr[0] == 3550 and len([p for p in corners if abs(p["r_mm"] - 3550) < 5]) == 5,
            "Radien %s, Ecken %d" % (rr, len([p for p in corners if abs(p["r_mm"] - 3550) < 5])))
+    azs = sorted({round(p["az_grad"]) for p in corners if abs(p["r_mm"] - 3550) < 5})
+    pruefe("Ring-Ecken Halbring 1 liegen bei Az -54, -18, 18, 54, 90 (= Ring B2 im Modell: Ecken bei 18 + 36 k)", azs == [-54, -18, 18, 54, 90], str(azs))
     pruefe("Quelle: 9 Bauteile ohne Hoehenangabe (ohneStufe)", len(sd["ohneStufe"]) == 9, str(sd["ohneStufe"]))
     if not nd:
         pruefe("nodeDatabase per node ausgewertet", False, "node fehlt oder Fehler: kennzahlen_index leer")
@@ -550,7 +563,8 @@ def baue():
         "erzeugt_von": "scripts/oasis_soll.py (python -I -X utf8 scripts/oasis_soll.py)",
         "umrechnung": {
             "mm_je_zeichnungseinheit": MM_JE_EINHEIT, "kuppelmitte_zeichnung": list(MITTE), "kuppel_radius_zeichnung": 480,
-            "x_modell_mm": "(x - 500) * 12,5", "y_modell_mm": "-(y - 480) * 12,5 (Zeichnung unten = Modell -Y, Norden = +Y)",
+            "drehung_grad": DREHUNG_GRAD,
+            "x_modell_mm": "dx = (x - 500) * 12,5, dy = -(y - 480) * 12,5 (Zeichnung unten = Modell -Y), dann um drehung_grad gegen den Uhrzeigersinn gedreht",
             "fussboden_z_modell_mm": FUSSBODEN_Z_MM, "z_modell_mm": "400 + Hoehe ueber Fussboden",
             "hinweis": "Zeichnung ist schematisch (A16): Mittelpunkte und Reihenfolge gelten; Rohrverlaeufe (pfad_punkte) sind Verbindungen, keine Trassen."},
         "stufen_bedeutung": "Stufe 0 bis 5 = nur Reihenfolge (A15); das Mass steht in wasserspiegel_ueber_fussboden_mm (A25, Vorschlaege, einstellbar)",

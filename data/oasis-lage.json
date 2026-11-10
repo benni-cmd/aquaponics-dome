@@ -1,0 +1,2104 @@
+{
+ "meta": {
+  "titel": "Lage-Probe der Soll-Lage (Oasis-Showcase, 18 Grad gedreht) gegen die gebaute Kuppel, N-UNIFY-AUTOBAHN U1",
+  "erzeugt_von": "scripts/oasis_lagepruefung.py (python -I -X utf8 scripts/oasis_lagepruefung.py)",
+  "eingaben": {
+   "oasis-soll.json": "data/oasis-soll.json",
+   "instanzen": "viewer/varianten/ring_b2/instances.json (built 2026-11-05 21:18:01, 5570 Instanzen)",
+   "detail": "viewer/detail/*.json"
+  },
+  "regeln": {
+   "luft_mm": 150.0,
+   "wandluft_mm": 100.0,
+   "zehneck_apothema_mm": 5706.3,
+   "kuppelkugel_mm": 5800.0,
+   "tuer_gang_mm": 900.0,
+   "tuer_az_grad": -72.0,
+   "max_verschiebung_mm": 750.0,
+   "raster_mm": 50.0,
+   "fussboden_z_mm": 400.0,
+   "laufweg_mm": 500
+  },
+  "annahmen_im_skript": {
+   "podest_ueberstand_mm": 50.0,
+   "podest_vortex_mm": 577,
+   "podest_biofilter_mm": 230,
+   "wand_becken_mm": 60,
+   "hindernis_beet": "Beet + 115 mm je Seite (Portal, D54)",
+   "tuer_vorplatz_aussen": "900 x 1500 mm [A]"
+  },
+  "zaehlung": {
+   "bauteile_im_umfang": 40,
+   "mit_bauplatz": 40,
+   "frei_oder_aussen_zeichnung": 6,
+   "groesste_verschiebung_zeichnung_mm": 667.2,
+   "ausnahmen_annahme_oder_einbau": [
+    "nursery",
+    "feed",
+    "filterpumpe_1",
+    "filterpumpe_2",
+    "vortex_1",
+    "vortex_2",
+    "bio_2",
+    "sludge_1",
+    "sludge_2",
+    "permakultur",
+    "sump_1",
+    "hauptpumpe_1",
+    "sump_2",
+    "hauptpumpe_2",
+    "schwimmer_1",
+    "schwimmer_2",
+    "luftpumpe",
+    "luftpumpe_1",
+    "luftpumpe_2"
+   ],
+   "offen": [],
+   "konflikte_nach_verschiebung": 0
+  },
+  "gangprobe": {
+   "neu_blockiert": [],
+   "schon_vorher_nicht_erreichbar": [],
+   "soll_teile_nicht_erreichbar": [],
+   "regel": "Flutung von der Tuer (Az -72) ueber Zellen mit Abstand >= 250 mm (= 500 mm Gang), 50-mm-Raster, Knie 0,3 m und Kopf 1,7 m; erreichbar = geflutete Zelle hoechstens 400 mm vom Bauteil"
+  },
+  "hinweise": []
+ },
+ "bauteile": [
+  {
+   "id": "rain",
+   "name": "Regenwasser",
+   "anzahl": 1,
+   "ort": "aussen (Platzhalter)",
+   "gruppe": "aussen",
+   "soll_lage": {
+    "x_mm": -6511.7,
+    "y_mm": -1195.7,
+    "r_mm": 6620.6,
+    "az_grad": -169.6
+   },
+   "fussabdruck": {
+    "mass": "Platzhalter 1625 x 500 (Quelle, schematisch)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1900.0
+   },
+   "konflikte_soll_lage": [
+    "sockel: 0 mm zum Sockel, Soll >= 150",
+    "kollision nft_tisch_aussen:2: 85 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:2: 79 mm, Soll >= 150"
+   ],
+   "modus": "zeichnung",
+   "annahme": null,
+   "verschiebung_mm": 450.3,
+   "bauplatz": {
+    "x_mm": -6962,
+    "y_mm": -1196,
+    "drehung_grad": 18.0,
+    "z_modell_mm": 400.0,
+    "r_mm": 7064.0,
+    "az_grad": -170.3
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 331.0,
+   "naechstes_teil": "tap"
+  },
+  {
+   "id": "tap",
+   "name": "Frischwasser",
+   "anzahl": 1,
+   "ort": "aussen (Platzhalter)",
+   "gruppe": "aussen",
+   "soll_lage": {
+    "x_mm": -6279.9,
+    "y_mm": -1909.0,
+    "r_mm": 6563.6,
+    "az_grad": -163.1
+   },
+   "fussabdruck": {
+    "mass": "Platzhalter 1625 x 500 (Quelle, schematisch)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1900.0
+   },
+   "konflikte_soll_lage": [
+    "sockel: 0 mm zum Sockel, Soll >= 150",
+    "kollision nft_tisch_aussen:2: 12 mm, Soll >= 150",
+    "kollision nft_tisch_aussen:3: 31 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:2: 71 mm, Soll >= 150"
+   ],
+   "modus": "zeichnung",
+   "annahme": null,
+   "verschiebung_mm": 667.2,
+   "bauplatz": {
+    "x_mm": -6930,
+    "y_mm": -2059,
+    "drehung_grad": 18.0,
+    "z_modell_mm": 400.0,
+    "r_mm": 7229.4,
+    "az_grad": -163.5
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 331.0,
+   "naechstes_teil": "rain"
+  },
+  {
+   "id": "nachspeise",
+   "name": "Nachspeise-Ventil",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -3061.2,
+    "y_mm": -206.0,
+    "r_mm": 3068.1,
+    "az_grad": -176.2
+   },
+   "fussabdruck": {
+    "mass": "Kreis 300 mm [A] (Schwimmerventil am Rand des Fischtanks, Rand 1200 ueber Flur, steht nicht auf dem Boden)",
+    "z_von_mm": 1200.0,
+    "z_bis_mm": 1800.0
+   },
+   "konflikte_soll_lage": [
+    "kollision nft_tisch_mitte:2: 0 mm, Soll >= 150",
+    "kollision ibc_beet_innen_933:2: 0 mm, Soll >= 150"
+   ],
+   "modus": "zeichnung",
+   "annahme": null,
+   "verschiebung_mm": 650.2,
+   "bauplatz": {
+    "x_mm": -2461,
+    "y_mm": -456,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 1150.0,
+    "r_mm": 2502.9,
+    "az_grad": -169.5
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 152.0,
+   "naechstes_teil": "nft_tisch_innen:2"
+  },
+  {
+   "id": "fish",
+   "name": "Haupt-Fischtank",
+   "anzahl": 1,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "x_mm": 0.0,
+    "y_mm": 0.0,
+    "r_mm": 0.0,
+    "az_grad": 0.0
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "bauplatz": {
+    "x_mm": 0.0,
+    "y_mm": 0.0,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -600.0,
+    "r_mm": 0.0,
+    "az_grad": 0.0
+   },
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "fussabdruck": {
+    "mass": "Kreis Aussen 4190 mm (Wasser innen 3880; Quelle Durchmesser 4000, D96: Modellmass bleibt)",
+    "z_von_mm": -600.0,
+    "z_bis_mm": 1600.0
+   },
+   "hinweis": "Pool-Huelle bleibt in der Mitte; Boden -1000, Rand 1200 (U3)"
+  },
+  {
+   "id": "nursery",
+   "name": "Anzuchtbecken",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 1097.0,
+    "y_mm": -3376.3,
+    "r_mm": 3550.0,
+    "az_grad": -72.0
+   },
+   "fussabdruck": {
+    "mass": "Kreis Aussen 2120 mm (Innen 2000 + 60)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1400.0
+   },
+   "konflikte_soll_lage": [
+    "tuer_gang: im 900-mm-Gang Tuer (Az -72) - Zentralpool",
+    "kollision ringstuetze_d75_b:1: 0 mm, Soll >= 150",
+    "kollision ringstuetze_d75_b:2: 0 mm, Soll >= 150",
+    "kollision puffer_klein:1: 0 mm, Soll >= 150"
+   ],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 1702.9,
+   "bauplatz": {
+    "x_mm": 2797,
+    "y_mm": -3476,
+    "drehung_grad": 108.0,
+    "z_modell_mm": 400.0,
+    "r_mm": 4461.6,
+    "az_grad": -51.2
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 190.0,
+   "naechstes_teil": "bio_1",
+   "laufweg": "erreichbar"
+  },
+  {
+   "id": "feed",
+   "name": "Lebendfutter",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 1637.8,
+    "y_mm": -5040.6,
+    "r_mm": 5300.0,
+    "az_grad": -72.0
+   },
+   "fussabdruck": {
+    "mass": "Kreis Aussen 1120 mm (Innen 1000 + 60)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1400.0
+   },
+   "konflikte_soll_lage": [
+    "kuppel_kreis: Umkreis 5860 > 5800",
+    "wandluft: -154 mm zur Zehneck-Wand, Soll >= 100",
+    "kopffreiheit: Umkreis 5860 in 1000 mm Hoehe ausserhalb Kugel 5800",
+    "tuer_gang: im 900-mm-Gang Tuer (Az -72) - Zentralpool"
+   ],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 1720.1,
+   "bauplatz": {
+    "x_mm": 238,
+    "y_mm": -4041,
+    "drehung_grad": 108.0,
+    "z_modell_mm": 400.0,
+    "r_mm": 4048.0,
+    "az_grad": -86.6
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 228.0,
+   "naechstes_teil": "nft_tisch_aussen:4",
+   "laufweg": "erreichbar"
+  },
+  {
+   "id": "filterpumpe_1",
+   "name": "Pumpe Fischtank → Filter 1",
+   "anzahl": 1,
+   "gruppe": "einbau",
+   "soll_lage": {
+    "x_mm": 1915.0,
+    "y_mm": -1848.7,
+    "r_mm": 2661.8,
+    "az_grad": -44.0
+   },
+   "fussabdruck": {
+    "mass": "Kreis 275 mm (Quelle)",
+    "z_von_mm": -600.0,
+    "z_bis_mm": -200.0
+   },
+   "konflikte_soll_lage": [],
+   "annahme": "D108",
+   "alternativen": [],
+   "modus": "einbau",
+   "status": "OK",
+   "wirt": "fish",
+   "verschiebung_mm": 959.3,
+   "bauplatz": {
+    "x_mm": 1224.87,
+    "y_mm": -1182.46,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -600.0,
+    "r_mm": 1702.5,
+    "az_grad": -44.0
+   },
+   "konflikte_bauplatz": [],
+   "kleinster_abstand_mm": null,
+   "naechstes_teil": null,
+   "hinweis": "Tauchpumpe am Boden des Fischtanks (D102), gleiches Azimut wie gezeichnet; die Quelle zeichnet sie am Tankrand"
+  },
+  {
+   "id": "filterpumpe_2",
+   "name": "Pumpe Fischtank → Filter 2",
+   "anzahl": 1,
+   "gruppe": "einbau",
+   "soll_lage": {
+    "x_mm": -462.6,
+    "y_mm": -2621.3,
+    "r_mm": 2661.8,
+    "az_grad": -100.0
+   },
+   "fussabdruck": {
+    "mass": "Kreis 275 mm (Quelle)",
+    "z_von_mm": -600.0,
+    "z_bis_mm": -200.0
+   },
+   "konflikte_soll_lage": [],
+   "annahme": "D108",
+   "alternativen": [],
+   "modus": "einbau",
+   "status": "OK",
+   "wirt": "fish",
+   "verschiebung_mm": 959.3,
+   "bauplatz": {
+    "x_mm": -295.88,
+    "y_mm": -1676.59,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -600.0,
+    "r_mm": 1702.5,
+    "az_grad": -100.0
+   },
+   "konflikte_bauplatz": [],
+   "kleinster_abstand_mm": null,
+   "naechstes_teil": null,
+   "hinweis": "Tauchpumpe am Boden des Fischtanks (D102), gleiches Azimut wie gezeichnet; die Quelle zeichnet sie am Tankrand"
+  },
+  {
+   "id": "vortex_1",
+   "name": "Vortex 1",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 3688.6,
+    "y_mm": -2534.2,
+    "r_mm": 4475.3,
+    "az_grad": -34.5
+   },
+   "fussabdruck": {
+    "mass": "Box 835 x 788 (Tank 688 + Stutzen + Podest 577)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 2300.0
+   },
+   "konflikte_soll_lage": [],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 1640.0,
+   "bauplatz": {
+    "x_mm": 2689,
+    "y_mm": -1234,
+    "drehung_grad": 7.4,
+    "z_modell_mm": 977.0,
+    "r_mm": 2958.6,
+    "az_grad": -24.7
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 210.0,
+   "naechstes_teil": "nft_tisch_innen:6",
+   "laufweg": "erreichbar"
+  },
+  {
+   "id": "vortex_2",
+   "name": "Vortex 2",
+   "anzahl": 1,
+   "ort": "aussen (Vorbau)",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -1494.6,
+    "y_mm": -4218.3,
+    "r_mm": 4475.3,
+    "az_grad": -109.5
+   },
+   "fussabdruck": {
+    "mass": "Box 835 x 788 (Tank 688 + Stutzen + Podest 577)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 2300.0
+   },
+   "konflikte_soll_lage": [
+    "sockel: 0 mm zum Sockel, Soll >= 150",
+    "kollision nft_tisch_aussen:4: 0 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:4: 0 mm, Soll >= 150"
+   ],
+   "modus": "annahme",
+   "annahme": "D109",
+   "verschiebung_mm": 2625.0,
+   "bauplatz": {
+    "x_mm": -3495,
+    "y_mm": -5918,
+    "drehung_grad": -151.4,
+    "z_modell_mm": 977.0,
+    "r_mm": 6873.0,
+    "az_grad": -120.6
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [
+    {
+     "text": "innen ohne Regelverletzung gibt es keinen Platz (150 mm Luft, Wandluft 100, Tuer-Gang 900, Kuppelkugel 5800)",
+     "gewaehlt": false
+    },
+    {
+     "text": "Vorbau aussen am naechsten freien Platz, 2625 mm von der Zeichnung",
+     "gewaehlt": true
+    }
+   ],
+   "status": "OK",
+   "kleinster_abstand_mm": 584.0,
+   "naechstes_teil": "ibc_beet_aussen_800:4"
+  },
+  {
+   "id": "bio_1",
+   "name": "Biofilter 1",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 4894.1,
+    "y_mm": -2037.4,
+    "r_mm": 5301.2,
+    "az_grad": -22.6
+   },
+   "fussabdruck": {
+    "mass": "Box 1085 x 1030 (Tank 930 + Stutzen + Podest 230)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 2386.0
+   },
+   "konflikte_soll_lage": [
+    "kuppel_kreis: Umkreis 5839 > 5800",
+    "wandluft: -71 mm zur Zehneck-Wand, Soll >= 100",
+    "kopffreiheit: Umkreis 5839 in 1986 mm Hoehe ausserhalb Kugel 5800",
+    "kollision nft_tisch_aussen:5: 0 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:5: 7 mm, Soll >= 150"
+   ],
+   "modus": "zeichnung",
+   "annahme": null,
+   "verschiebung_mm": 632.4,
+   "bauplatz": {
+    "x_mm": 4294,
+    "y_mm": -2237,
+    "drehung_grad": 157.4,
+    "z_modell_mm": 630.0,
+    "r_mm": 4841.8,
+    "az_grad": -27.5
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 154.0,
+   "naechstes_teil": "nft_tisch_aussen:5",
+   "laufweg": "erreichbar"
+  },
+  {
+   "id": "bio_2",
+   "name": "Biofilter 2",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -2761.9,
+    "y_mm": -4524.9,
+    "r_mm": 5301.2,
+    "az_grad": -121.4
+   },
+   "fussabdruck": {
+    "mass": "Box 1085 x 1030 (Tank 930 + Stutzen + Podest 230)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 2386.0
+   },
+   "konflikte_soll_lage": [
+    "kuppel_kreis: Umkreis 5839 > 5800",
+    "wandluft: -71 mm zur Zehneck-Wand, Soll >= 100",
+    "kopffreiheit: Umkreis 5839 in 1986 mm Hoehe ausserhalb Kugel 5800",
+    "kollision nft_tisch_aussen:3: 0 mm, Soll >= 150",
+    "kollision nft_tisch_aussen:4: 0 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:3: 0 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:4: 0 mm, Soll >= 150"
+   ],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 1664.2,
+   "bauplatz": {
+    "x_mm": -1362,
+    "y_mm": -3625,
+    "drehung_grad": 73.6,
+    "z_modell_mm": 630.0,
+    "r_mm": 3872.4,
+    "az_grad": -110.6
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 151.0,
+   "naechstes_teil": "venturi_2",
+   "laufweg": "erreichbar"
+  },
+  {
+   "id": "sludge_1",
+   "name": "Schlammreaktor 1",
+   "anzahl": 1,
+   "ort": "aussen (Vorbau)",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 4044.0,
+    "y_mm": -3627.9,
+    "r_mm": 5432.8,
+    "az_grad": -41.9
+   },
+   "fussabdruck": {
+    "mass": "Kreis 900 mm (Sammelbehaelter 350 l [A], Quelle zeichnet 900)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1300.0
+   },
+   "konflikte_soll_lage": [
+    "sockel: 0 mm zum Sockel, Soll >= 150"
+   ],
+   "modus": "annahme",
+   "annahme": "D109",
+   "verschiebung_mm": 1711.8,
+   "bauplatz": {
+    "x_mm": 4244,
+    "y_mm": -5328,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 400.0,
+    "r_mm": 6811.7,
+    "az_grad": -51.5
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [
+    {
+     "text": "innen ohne Regelverletzung gibt es keinen Platz (150 mm Luft, Wandluft 100, Tuer-Gang 900, Kuppelkugel 5800)",
+     "gewaehlt": false
+    },
+    {
+     "text": "Vorbau aussen am naechsten freien Platz, 1712 mm von der Zeichnung",
+     "gewaehlt": true
+    }
+   ],
+   "status": "OK",
+   "kleinster_abstand_mm": 840.0,
+   "naechstes_teil": "nursery"
+  },
+  {
+   "id": "sludge_2",
+   "name": "Schlammreaktor 2",
+   "anzahl": 1,
+   "ort": "aussen (Vorbau)",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -1139.2,
+    "y_mm": -5312.0,
+    "r_mm": 5432.8,
+    "az_grad": -102.1
+   },
+   "fussabdruck": {
+    "mass": "Kreis 900 mm (Sammelbehaelter 350 l [A], Quelle zeichnet 900)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1300.0
+   },
+   "konflikte_soll_lage": [
+    "sockel: 0 mm zum Sockel, Soll >= 150",
+    "kollision nft_tisch_aussen:4: 0 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:4: 0 mm, Soll >= 150"
+   ],
+   "modus": "annahme",
+   "annahme": "D109",
+   "verschiebung_mm": 2702.0,
+   "bauplatz": {
+    "x_mm": 561,
+    "y_mm": -7412,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 400.0,
+    "r_mm": 7433.2,
+    "az_grad": -85.7
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [
+    {
+     "text": "innen ohne Regelverletzung gibt es keinen Platz (150 mm Luft, Wandluft 100, Tuer-Gang 900, Kuppelkugel 5800)",
+     "gewaehlt": false
+    },
+    {
+     "text": "Vorbau aussen am naechsten freien Platz, 2702 mm von der Zeichnung",
+     "gewaehlt": true
+    }
+   ],
+   "status": "OK",
+   "kleinster_abstand_mm": 184.0,
+   "naechstes_teil": "aktivkohle_station:1"
+  },
+  {
+   "id": "permakultur",
+   "name": "Permakultur und Futterzucht",
+   "anzahl": 1,
+   "ort": "aussen (Platzhalter)",
+   "gruppe": "aussen",
+   "soll_lage": {
+    "x_mm": 2043.4,
+    "y_mm": -6288.9,
+    "r_mm": 6612.5,
+    "az_grad": -72.0
+   },
+   "fussabdruck": {
+    "mass": "Platzhalter 1500 x 525 (Quelle, schematisch)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1900.0
+   },
+   "konflikte_soll_lage": [
+    "tuer_vorplatz: im 900 x 1500 Vorplatz vor der Tuer"
+   ],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 1118.1,
+   "bauplatz": {
+    "x_mm": 2243,
+    "y_mm": -7389,
+    "drehung_grad": 18.0,
+    "z_modell_mm": 400.0,
+    "r_mm": 7721.9,
+    "az_grad": -73.1
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 439.0,
+   "naechstes_teil": "sludge_2"
+  },
+  {
+   "id": "ring_1",
+   "name": "Wasserautobahn Halbring 1",
+   "anzahl": 1,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "hinweis": "Linienzug/Abzweige der Zeichnung; Lage nach Modell (D98)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": 1381.29,
+     "y_mm": -3100.08,
+     "drehung_grad": 108.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": -66.0
+    },
+    {
+     "x_mm": 2939.67,
+     "y_mm": -1696.11,
+     "drehung_grad": 144.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": -30.0
+    },
+    {
+     "x_mm": 3375.2,
+     "y_mm": 355.71,
+     "drehung_grad": -179.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": 6.0
+    },
+    {
+     "x_mm": 2521.51,
+     "y_mm": 2271.67,
+     "drehung_grad": -143.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": 42.0
+    },
+    {
+     "x_mm": 704.69,
+     "y_mm": 3319.92,
+     "drehung_grad": -107.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": 78.0
+    }
+   ],
+   "hinweis": "Rohrachse 1550 ueber Flur (Ist 2145); Lage nach Modell (D98)"
+  },
+  {
+   "id": "ring_2",
+   "name": "Wasserautobahn Halbring 2",
+   "anzahl": 1,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "hinweis": "Linienzug/Abzweige der Zeichnung; Lage nach Modell (D98)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -3375.2,
+     "y_mm": -355.71,
+     "drehung_grad": 0.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": -174.0
+    },
+    {
+     "x_mm": -2521.51,
+     "y_mm": -2271.67,
+     "drehung_grad": 36.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": -138.0
+    },
+    {
+     "x_mm": -704.69,
+     "y_mm": -3319.92,
+     "drehung_grad": 72.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": -102.0
+    },
+    {
+     "x_mm": -1381.29,
+     "y_mm": 3100.08,
+     "drehung_grad": -71.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": 114.0
+    },
+    {
+     "x_mm": -2939.67,
+     "y_mm": 1696.11,
+     "drehung_grad": -35.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3393.9,
+     "az_grad": 150.0
+    }
+   ],
+   "hinweis": "Rohrachse 1550 ueber Flur (Ist 2145); Lage nach Modell (D98)"
+  },
+  {
+   "id": "kupplungshahn",
+   "name": "Kupplungshahn zwischen den Halbringen",
+   "anzahl": 2,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "hinweis": "Symbole bei Az 108 und -72, r 3375"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "plaetze": [
+    {
+     "x_mm": -1001.0,
+     "y_mm": 3225.8,
+     "drehung_grad": -71.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3377.5,
+     "az_grad": 107.2
+    },
+    {
+     "x_mm": 1001.0,
+     "y_mm": -3225.8,
+     "drehung_grad": -71.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3377.5,
+     "az_grad": -72.8
+    }
+   ],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "hinweis": "Hahn des Modells auf Rohrachse 1550 (Ist 2145); im Betrieb offen (D98)",
+   "hinweise_gang": [
+    "tuer_gang: im 900-mm-Gang Tuer (Az -72) - Zentralpool (Hahn bei Az -73)"
+   ]
+  },
+  {
+   "id": "ringende_1",
+   "name": "Ring-Ende-Hahn Halbring 1",
+   "anzahl": 1,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "x_mm": -0.4,
+    "y_mm": 3225.2,
+    "r_mm": 3225.2,
+    "az_grad": 90.0
+   },
+   "modus": "zeichnung",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "bauplatz": {
+    "x_mm": -0.4,
+    "y_mm": 3225.2,
+    "drehung_grad": 90.007,
+    "z_modell_mm": 1950.0,
+    "r_mm": 3225.2,
+    "az_grad": 90.0
+   },
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "hinweis": "Hahn d63 am Ring-Ende in den Sumpf der Linie (D98), Lage der Zeichnung; hinweise_gang nennt Gang-Regeln",
+   "hinweise_gang": []
+  },
+  {
+   "id": "ringende_2",
+   "name": "Ring-Ende-Hahn Halbring 2",
+   "anzahl": 1,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "x_mm": -1895.4,
+    "y_mm": 2609.5,
+    "r_mm": 3225.2,
+    "az_grad": 126.0
+   },
+   "modus": "zeichnung",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "bauplatz": {
+    "x_mm": -1895.4,
+    "y_mm": 2609.5,
+    "drehung_grad": 125.993,
+    "z_modell_mm": 1950.0,
+    "r_mm": 3225.2,
+    "az_grad": 126.0
+   },
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "hinweis": "Hahn d63 am Ring-Ende in den Sumpf der Linie (D98), Lage der Zeichnung; hinweise_gang nennt Gang-Regeln",
+   "hinweise_gang": []
+  },
+  {
+   "id": "abf_nft_1",
+   "name": "NFT-Abfahrten Halbring 1",
+   "anzahl": 12,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "hinweis": "Linienzug/Abzweige der Zeichnung; Lage nach Modell (D98)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": 1930.7,
+     "y_mm": -2861.56,
+     "drehung_grad": 36.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3452.0,
+     "az_grad": -56.0
+    },
+    {
+     "x_mm": 3327.92,
+     "y_mm": -917.14,
+     "drehung_grad": 72.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3452.0,
+     "az_grad": -15.4
+    },
+    {
+     "x_mm": 3152.44,
+     "y_mm": -1374.63,
+     "drehung_grad": 72.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3439.1,
+     "az_grad": -23.6
+    },
+    {
+     "x_mm": 2936.4,
+     "y_mm": 1706.86,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3396.4,
+     "az_grad": 30.2
+    },
+    {
+     "x_mm": 3142.9,
+     "y_mm": 1398.47,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3440.0,
+     "az_grad": 24.0
+    },
+    {
+     "x_mm": 2793.9,
+     "y_mm": 1900.85,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3379.2,
+     "az_grad": 34.2
+    },
+    {
+     "x_mm": 2270.79,
+     "y_mm": 2584.56,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3440.4,
+     "az_grad": 48.7
+    },
+    {
+     "x_mm": 2503.9,
+     "y_mm": 2295.64,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3397.0,
+     "az_grad": 42.5
+    },
+    {
+     "x_mm": 1860.42,
+     "y_mm": 2905.56,
+     "drehung_grad": 149.953,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3450.1,
+     "az_grad": 57.4
+    },
+    {
+     "x_mm": 317.94,
+     "y_mm": 3425.69,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3440.4,
+     "az_grad": 84.7
+    },
+    {
+     "x_mm": -10.29,
+     "y_mm": 3454.29,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3454.3,
+     "az_grad": 90.2
+    },
+    {
+     "x_mm": -375.69,
+     "y_mm": 3417.93,
+     "drehung_grad": -168.699,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3438.5,
+     "az_grad": 96.3
+    }
+   ],
+   "hinweis": "Abzweige am Ring, Rohrachse 1550 (Ist 2145)"
+  },
+  {
+   "id": "abf_fd_1",
+   "name": "Flood-and-Drain-Abfahrten Halbring 1",
+   "anzahl": 7,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "hinweis": "Linienzug/Abzweige der Zeichnung; Lage nach Modell (D98)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": 3232.81,
+     "y_mm": -1207.31,
+     "drehung_grad": 72.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3450.9,
+     "az_grad": -20.5
+    },
+    {
+     "x_mm": 3045.55,
+     "y_mm": 1556.63,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3420.3,
+     "az_grad": 27.1
+    },
+    {
+     "x_mm": 3279.61,
+     "y_mm": 1084.63,
+     "drehung_grad": 108.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3454.3,
+     "az_grad": 18.3
+    },
+    {
+     "x_mm": 2393.05,
+     "y_mm": 2444.62,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3420.9,
+     "az_grad": 45.6
+    },
+    {
+     "x_mm": 2015.73,
+     "y_mm": 2805.19,
+     "drehung_grad": 144.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3454.3,
+     "az_grad": 54.3
+    },
+    {
+     "x_mm": 499.11,
+     "y_mm": 3384.33,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3420.9,
+     "az_grad": 81.6
+    },
+    {
+     "x_mm": -192.79,
+     "y_mm": 3445.19,
+     "drehung_grad": -174.352,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3450.6,
+     "az_grad": 93.2
+    }
+   ],
+   "hinweis": "Abzweige am Ring, Rohrachse 1550 (Ist 2145)"
+  },
+  {
+   "id": "abf_nft_2",
+   "name": "NFT-Abfahrten Halbring 2",
+   "anzahl": 12,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "hinweis": "Linienzug/Abzweige der Zeichnung; Lage nach Modell (D98)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -3356.28,
+     "y_mm": -756.21,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3440.4,
+     "az_grad": -167.3
+    },
+    {
+     "x_mm": -3375.04,
+     "y_mm": -385.46,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3397.0,
+     "az_grad": -173.5
+    },
+    {
+     "x_mm": -3212.96,
+     "y_mm": -1257.12,
+     "drehung_grad": -66.047,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3450.1,
+     "az_grad": -158.6
+    },
+    {
+     "x_mm": -2270.79,
+     "y_mm": -2584.56,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3440.4,
+     "az_grad": -131.3
+    },
+    {
+     "x_mm": -2503.9,
+     "y_mm": -2295.64,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3397.0,
+     "az_grad": -137.5
+    },
+    {
+     "x_mm": 156.13,
+     "y_mm": -3448.45,
+     "drehung_grad": 0.3,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3452.0,
+     "az_grad": -87.4
+    },
+    {
+     "x_mm": -1756.44,
+     "y_mm": 2958.28,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3440.4,
+     "az_grad": 120.7
+    },
+    {
+     "x_mm": -2038.7,
+     "y_mm": 2788.53,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3454.3,
+     "az_grad": 126.2
+    },
+    {
+     "x_mm": -2312.95,
+     "y_mm": 2544.34,
+     "drehung_grad": -132.699,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3438.5,
+     "az_grad": 132.3
+    },
+    {
+     "x_mm": -3159.78,
+     "y_mm": 1360.98,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3440.4,
+     "az_grad": 156.7
+    },
+    {
+     "x_mm": -2957.03,
+     "y_mm": 1671.96,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3397.0,
+     "az_grad": 150.5
+    },
+    {
+     "x_mm": -3338.25,
+     "y_mm": 871.49,
+     "drehung_grad": -102.047,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3450.1,
+     "az_grad": 165.4
+    }
+   ],
+   "hinweis": "Abzweige am Ring, Rohrachse 1550 (Ist 2145)"
+  },
+  {
+   "id": "abf_fd_2",
+   "name": "Flood-and-Drain-Abfahrten Halbring 2",
+   "anzahl": 7,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "hinweis": "Linienzug/Abzweige der Zeichnung; Lage nach Modell (D98)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -3372.93,
+     "y_mm": -571.14,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3420.9,
+     "az_grad": -170.4
+    },
+    {
+     "x_mm": -3279.61,
+     "y_mm": -1084.63,
+     "drehung_grad": -71.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3454.3,
+     "az_grad": -161.7
+    },
+    {
+     "x_mm": -2393.05,
+     "y_mm": -2444.62,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3420.9,
+     "az_grad": -134.4
+    },
+    {
+     "x_mm": -1585.57,
+     "y_mm": 3031.32,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3421.0,
+     "az_grad": 117.6
+    },
+    {
+     "x_mm": -2181.0,
+     "y_mm": 2673.9,
+     "drehung_grad": -138.352,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3450.6,
+     "az_grad": 129.2
+    },
+    {
+     "x_mm": -3064.46,
+     "y_mm": 1520.5,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3420.9,
+     "az_grad": 153.6
+    },
+    {
+     "x_mm": -3290.79,
+     "y_mm": 1050.22,
+     "drehung_grad": -107.7,
+     "z_modell_mm": 1950.0,
+     "r_mm": 3454.3,
+     "az_grad": 162.3
+    }
+   ],
+   "hinweis": "Abzweige am Ring, Rohrachse 1550 (Ist 2145)"
+  },
+  {
+   "id": "nft_aussen",
+   "name": "NFT Außen",
+   "anzahl": 8,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "bogen_radius_mm": 4712.5,
+    "hinweis": "Bogen der Zeichnung ist schematisch (A16); Lage nach Modell (D97)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -4120.5,
+     "y_mm": 2960.9,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 144.3
+    },
+    {
+     "x_mm": -5073.9,
+     "y_mm": -26.6,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": -179.7
+    },
+    {
+     "x_mm": -4089.3,
+     "y_mm": -3003.9,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": -143.7
+    },
+    {
+     "x_mm": -1542.7,
+     "y_mm": -4833.8,
+     "drehung_grad": -17.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": -107.7
+    },
+    {
+     "x_mm": 5073.9,
+     "y_mm": 26.6,
+     "drehung_grad": 90.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 0.3
+    },
+    {
+     "x_mm": 4089.3,
+     "y_mm": 3003.9,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 36.3
+    },
+    {
+     "x_mm": 1542.7,
+     "y_mm": 4833.8,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 72.3
+    },
+    {
+     "x_mm": -1593.2,
+     "y_mm": 4817.4,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 108.3
+    }
+   ],
+   "hinweis": "Standflaeche Flur; Rinnen-Wasserspiegel auf Soll ueber Tisch-Hoehenparameter (U3), Lage nach Modell (D97)"
+  },
+  {
+   "id": "fd_aussen",
+   "name": "Flood-and-Drain Außen",
+   "anzahl": 8,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "bogen_radius_mm": 4537.5,
+    "hinweis": "Bogen der Zeichnung ist schematisch (A16); Lage nach Modell (D97)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -4120.5,
+     "y_mm": 2960.9,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 144.3
+    },
+    {
+     "x_mm": -5073.9,
+     "y_mm": -26.6,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": -179.7
+    },
+    {
+     "x_mm": -4089.3,
+     "y_mm": -3003.9,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": -143.7
+    },
+    {
+     "x_mm": -1542.7,
+     "y_mm": -4833.8,
+     "drehung_grad": -17.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": -107.7
+    },
+    {
+     "x_mm": 5073.9,
+     "y_mm": 26.6,
+     "drehung_grad": 90.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 0.3
+    },
+    {
+     "x_mm": 4089.3,
+     "y_mm": 3003.9,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 36.3
+    },
+    {
+     "x_mm": 1542.7,
+     "y_mm": 4833.8,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 72.3
+    },
+    {
+     "x_mm": -1593.2,
+     "y_mm": 4817.4,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 5074.0,
+     "az_grad": 108.3
+    }
+   ],
+   "hinweis": "Beet-Boden auf dem Flur (D97: +162 bis +209 gegen Ist); Flutstand 250 ueber Standrohr (U3)"
+  },
+  {
+   "id": "nft_mitte",
+   "name": "NFT Mitte",
+   "anzahl": 6,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "bogen_radius_mm": 3712.5,
+    "hinweis": "Bogen der Zeichnung ist schematisch (A16); Lage nach Modell (D97)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -2742.4,
+     "y_mm": 1970.6,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 144.3
+    },
+    {
+     "x_mm": -3377.0,
+     "y_mm": -17.7,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": -179.7
+    },
+    {
+     "x_mm": -2721.6,
+     "y_mm": -1999.2,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": -143.7
+    },
+    {
+     "x_mm": 2721.6,
+     "y_mm": 1999.2,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 36.3
+    },
+    {
+     "x_mm": 1026.7,
+     "y_mm": 3217.1,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 72.3
+    },
+    {
+     "x_mm": -1060.4,
+     "y_mm": 3206.2,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 108.3
+    }
+   ],
+   "hinweis": "Standflaeche Flur; Rinnen-Wasserspiegel auf Soll ueber Tisch-Hoehenparameter (U3), Lage nach Modell (D97)"
+  },
+  {
+   "id": "fd_mitte",
+   "name": "Flood-and-Drain Mitte",
+   "anzahl": 6,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "bogen_radius_mm": 3537.5,
+    "hinweis": "Bogen der Zeichnung ist schematisch (A16); Lage nach Modell (D97)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -2742.4,
+     "y_mm": 1970.6,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 144.3
+    },
+    {
+     "x_mm": -3377.0,
+     "y_mm": -17.7,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": -179.7
+    },
+    {
+     "x_mm": -2721.6,
+     "y_mm": -1999.2,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": -143.7
+    },
+    {
+     "x_mm": 2721.6,
+     "y_mm": 1999.2,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 36.3
+    },
+    {
+     "x_mm": 1026.7,
+     "y_mm": 3217.1,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 72.3
+    },
+    {
+     "x_mm": -1060.4,
+     "y_mm": 3206.2,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 3377.0,
+     "az_grad": 108.3
+    }
+   ],
+   "hinweis": "Beet-Boden auf dem Flur (D97: +162 bis +209 gegen Ist); Flutstand 250 ueber Standrohr (U3)"
+  },
+  {
+   "id": "nft_innen",
+   "name": "NFT Innen",
+   "anzahl": 10,
+   "gruppe": "bleibt",
+   "soll_lage": {
+    "bogen_radius_mm": 2625.0,
+    "hinweis": "Bogen der Zeichnung ist schematisch (A16); Lage nach Modell (D97)"
+   },
+   "modus": "bleibt",
+   "status": "OK",
+   "annahme": null,
+   "verschiebung_mm": 0.0,
+   "alternativen": [],
+   "konflikte_bauplatz": [],
+   "konflikte_soll_lage": [],
+   "plaetze": [
+    {
+     "x_mm": -1513.7,
+     "y_mm": 1087.7,
+     "drehung_grad": -125.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": 144.3
+    },
+    {
+     "x_mm": -1864.0,
+     "y_mm": -9.8,
+     "drehung_grad": -89.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": -179.7
+    },
+    {
+     "x_mm": -1502.3,
+     "y_mm": -1103.5,
+     "drehung_grad": -53.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": -143.7
+    },
+    {
+     "x_mm": -566.7,
+     "y_mm": -1775.8,
+     "drehung_grad": -17.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": -107.7
+    },
+    {
+     "x_mm": 585.3,
+     "y_mm": -1769.7,
+     "drehung_grad": 18.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": -71.7
+    },
+    {
+     "x_mm": 1513.7,
+     "y_mm": -1087.7,
+     "drehung_grad": 54.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": -35.7
+    },
+    {
+     "x_mm": 1864.0,
+     "y_mm": 9.8,
+     "drehung_grad": 90.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": 0.3
+    },
+    {
+     "x_mm": 1502.3,
+     "y_mm": 1103.5,
+     "drehung_grad": 126.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": 36.3
+    },
+    {
+     "x_mm": 566.7,
+     "y_mm": 1775.8,
+     "drehung_grad": 162.3,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": 72.3
+    },
+    {
+     "x_mm": -585.3,
+     "y_mm": 1769.7,
+     "drehung_grad": -161.7,
+     "z_modell_mm": 400.0,
+     "r_mm": 1864.0,
+     "az_grad": 108.3
+    }
+   ],
+   "hinweis": "Standflaeche Flur; Rinnen-Wasserspiegel auf Soll ueber Tisch-Hoehenparameter (U3), Lage nach Modell (D97)"
+  },
+  {
+   "id": "sump_1",
+   "name": "Sumpftank 1",
+   "anzahl": 1,
+   "ort": "aussen (Vorbau)",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 2733.7,
+    "y_mm": -3357.1,
+    "r_mm": 4329.3,
+    "az_grad": -50.8
+   },
+   "fussabdruck": {
+    "mass": "Rechteck 2975 x 1125 (Quelle, massstaeblich), im Boden -500..0",
+    "z_von_mm": -100.0,
+    "z_bis_mm": 400.0
+   },
+   "konflikte_soll_lage": [
+    "sockel: 0 mm zum Sockel, Soll >= 150",
+    "kollision ringstuetze_d75_b:2: 0 mm, Soll >= 150",
+    "kollision puffer_klein:1: 0 mm, Soll >= 150"
+   ],
+   "modus": "annahme",
+   "annahme": "D109",
+   "verschiebung_mm": 3301.7,
+   "bauplatz": {
+    "x_mm": 5434,
+    "y_mm": -5257,
+    "drehung_grad": 93.0,
+    "z_modell_mm": -100.0,
+    "r_mm": 7560.7,
+    "az_grad": -44.1
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [
+    {
+     "text": "innen ohne Regelverletzung gibt es keinen Platz (150 mm Luft, Wandluft 100, Tuer-Gang 900, Kuppelkugel 5800)",
+     "gewaehlt": false
+    },
+    {
+     "text": "Vorbau aussen am naechsten freien Platz, 3302 mm von der Zeichnung",
+     "gewaehlt": true
+    }
+   ],
+   "status": "OK",
+   "kleinster_abstand_mm": 180.0,
+   "naechstes_teil": "sludge_1"
+  },
+  {
+   "id": "hauptpumpe_1",
+   "name": "Pumpe Sumpf 1 → Fischtank",
+   "anzahl": 1,
+   "gruppe": "einbau",
+   "soll_lage": {
+    "x_mm": 2554.5,
+    "y_mm": -3007.8,
+    "r_mm": 3946.2,
+    "az_grad": -49.7
+   },
+   "fussabdruck": {
+    "mass": "Kreis 275 mm (Quelle)",
+    "z_von_mm": -100.0,
+    "z_bis_mm": 200.0
+   },
+   "konflikte_soll_lage": [],
+   "annahme": "D108",
+   "alternativen": [],
+   "modus": "einbau",
+   "status": "OK",
+   "wirt": "sump_1",
+   "verschiebung_mm": 3301.7,
+   "bauplatz": {
+    "x_mm": 5254.8,
+    "y_mm": -4907.7,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -100.0,
+    "r_mm": 7190.2,
+    "az_grad": -43.0
+   },
+   "konflikte_bauplatz": [],
+   "kleinster_abstand_mm": null,
+   "naechstes_teil": null,
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+  },
+  {
+   "id": "venturi_1",
+   "name": "Venturi-Belüfter 1",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 2276.4,
+    "y_mm": -2151.9,
+    "r_mm": 3132.5,
+    "az_grad": -43.4
+   },
+   "fussabdruck": {
+    "mass": "Kreis 300 mm [A] (Injektor im Druckrohr, Hoehe Rand Fischtank)",
+    "z_von_mm": 1100.0,
+    "z_bis_mm": 1700.0
+   },
+   "konflikte_soll_lage": [
+    "kollision puffer_klein:1: 0 mm, Soll >= 150"
+   ],
+   "modus": "zeichnung",
+   "annahme": null,
+   "verschiebung_mm": 205.7,
+   "bauplatz": {
+    "x_mm": 2476,
+    "y_mm": -2102,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 1650.0,
+    "r_mm": 3247.9,
+    "az_grad": -40.3
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 167.0,
+   "naechstes_teil": "puffer_klein:1"
+  },
+  {
+   "id": "sump_2",
+   "name": "Sumpftank 2",
+   "anzahl": 1,
+   "ort": "aussen (Vorbau)",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -238.4,
+    "y_mm": -4322.7,
+    "r_mm": 4329.3,
+    "az_grad": -93.2
+   },
+   "fussabdruck": {
+    "mass": "Rechteck 2975 x 1125 (Quelle, massstaeblich), im Boden -500..0",
+    "z_von_mm": -100.0,
+    "z_bis_mm": 400.0
+   },
+   "konflikte_soll_lage": [
+    "sockel: 0 mm zum Sockel, Soll >= 150",
+    "kollision nft_tisch_aussen:4: 0 mm, Soll >= 150",
+    "kollision ibc_beet_aussen_800:4: 0 mm, Soll >= 150",
+    "kollision ringstuetze_d75_b:1: 0 mm, Soll >= 150"
+   ],
+   "modus": "annahme",
+   "annahme": "D109",
+   "verschiebung_mm": 3400.1,
+   "bauplatz": {
+    "x_mm": -1838,
+    "y_mm": -7323,
+    "drehung_grad": 123.0,
+    "z_modell_mm": -100.0,
+    "r_mm": 7550.1,
+    "az_grad": -104.1
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [
+    {
+     "text": "innen ohne Regelverletzung gibt es keinen Platz (150 mm Luft, Wandluft 100, Tuer-Gang 900, Kuppelkugel 5800)",
+     "gewaehlt": false
+    },
+    {
+     "text": "Vorbau aussen am naechsten freien Platz, 3400 mm von der Zeichnung",
+     "gewaehlt": true
+    }
+   ],
+   "status": "OK",
+   "kleinster_abstand_mm": 164.0,
+   "naechstes_teil": "aktivkohle_station:1"
+  },
+  {
+   "id": "hauptpumpe_2",
+   "name": "Pumpe Sumpf 2 → Fischtank",
+   "anzahl": 1,
+   "gruppe": "einbau",
+   "soll_lage": {
+    "x_mm": -298.7,
+    "y_mm": -3934.9,
+    "r_mm": 3946.2,
+    "az_grad": -94.3
+   },
+   "fussabdruck": {
+    "mass": "Kreis 275 mm (Quelle)",
+    "z_von_mm": -100.0,
+    "z_bis_mm": 200.0
+   },
+   "konflikte_soll_lage": [],
+   "annahme": "D108",
+   "alternativen": [],
+   "modus": "einbau",
+   "status": "OK",
+   "wirt": "sump_2",
+   "verschiebung_mm": 3400.1,
+   "bauplatz": {
+    "x_mm": -1898.3,
+    "y_mm": -6935.2,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -100.0,
+    "r_mm": 7190.3,
+    "az_grad": -105.3
+   },
+   "konflikte_bauplatz": [],
+   "kleinster_abstand_mm": null,
+   "naechstes_teil": null,
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+  },
+  {
+   "id": "venturi_2",
+   "name": "Venturi-Belüfter 2",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -576.8,
+    "y_mm": -3078.9,
+    "r_mm": 3132.5,
+    "az_grad": -100.6
+   },
+   "fussabdruck": {
+    "mass": "Kreis 300 mm [A] (Injektor im Druckrohr, Hoehe Rand Fischtank)",
+    "z_von_mm": 1100.0,
+    "z_bis_mm": 1700.0
+   },
+   "konflikte_soll_lage": [],
+   "modus": "zeichnung",
+   "annahme": null,
+   "verschiebung_mm": 111.6,
+   "bauplatz": {
+    "x_mm": -477,
+    "y_mm": -3029,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 1650.0,
+    "r_mm": 3066.3,
+    "az_grad": -98.9
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 151.0,
+   "naechstes_teil": "bio_2"
+  },
+  {
+   "id": "schwimmer_1",
+   "name": "Schwimmerschalter Sumpf 1",
+   "anzahl": 1,
+   "gruppe": "einbau",
+   "soll_lage": {
+    "x_mm": 3272.3,
+    "y_mm": -4529.2,
+    "r_mm": 5587.6,
+    "az_grad": -54.2
+   },
+   "fussabdruck": {
+    "mass": "Punkt (Schwimmerschalter)",
+    "z_von_mm": 290.0,
+    "z_bis_mm": 590.0
+   },
+   "konflikte_soll_lage": [],
+   "annahme": "D108",
+   "alternativen": [],
+   "modus": "einbau",
+   "status": "OK",
+   "wirt": "sump_1",
+   "verschiebung_mm": 3301.7,
+   "bauplatz": {
+    "x_mm": 5972.6,
+    "y_mm": -6429.1,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 290.0,
+    "r_mm": 8775.3,
+    "az_grad": -47.1
+   },
+   "konflikte_bauplatz": [],
+   "kleinster_abstand_mm": null,
+   "naechstes_teil": null,
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+  },
+  {
+   "id": "schwimmer_2",
+   "name": "Schwimmerschalter Sumpf 2",
+   "anzahl": 1,
+   "gruppe": "einbau",
+   "soll_lage": {
+    "x_mm": 14.9,
+    "y_mm": -5587.6,
+    "r_mm": 5587.6,
+    "az_grad": -89.8
+   },
+   "fussabdruck": {
+    "mass": "Punkt (Schwimmerschalter)",
+    "z_von_mm": 290.0,
+    "z_bis_mm": 590.0
+   },
+   "konflikte_soll_lage": [],
+   "annahme": "D108",
+   "alternativen": [],
+   "modus": "einbau",
+   "status": "OK",
+   "wirt": "sump_2",
+   "verschiebung_mm": 3400.1,
+   "bauplatz": {
+    "x_mm": -1584.7,
+    "y_mm": -8587.9,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 290.0,
+    "r_mm": 8732.9,
+    "az_grad": -100.5
+   },
+   "konflikte_bauplatz": [],
+   "kleinster_abstand_mm": null,
+   "naechstes_teil": null,
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+  },
+  {
+   "id": "luftpumpe",
+   "name": "Notluftpumpe",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -5546.0,
+    "y_mm": -4167.8,
+    "r_mm": 6937.5,
+    "az_grad": -143.1
+   },
+   "fussabdruck": {
+    "mass": "Box 300 x 250 [A] (Notluftpumpe, Luftstein im Fischtank)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 650.0
+   },
+   "konflikte_soll_lage": [
+    "kuppel_kreis: Umkreis 7089 > 5800",
+    "wandluft: -1382 mm zur Zehneck-Wand, Soll >= 100",
+    "kopffreiheit: Umkreis 7089 in 250 mm Hoehe ausserhalb Kugel 5800"
+   ],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 3041.2,
+   "bauplatz": {
+    "x_mm": -4146,
+    "y_mm": -1468,
+    "drehung_grad": 36.9,
+    "z_modell_mm": 400.0,
+    "r_mm": 4398.2,
+    "az_grad": -160.5
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 156.0,
+   "naechstes_teil": "nft_tisch_mitte:3"
+  },
+  {
+   "id": "luftpumpe_1",
+   "name": "Belüftungspumpe 1",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": 7168.4,
+    "y_mm": -825.2,
+    "r_mm": 7215.7,
+    "az_grad": -6.6
+   },
+   "fussabdruck": {
+    "mass": "Box 532 x 280 (geblaese_luft)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1129.5
+   },
+   "konflikte_soll_lage": [
+    "kuppel_kreis: Umkreis 7338 > 5800",
+    "wandluft: -1603 mm zur Zehneck-Wand, Soll >= 100",
+    "kopffreiheit: Umkreis 7338 in 729 mm Hoehe ausserhalb Kugel 5800"
+   ],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 3138.9,
+   "bauplatz": {
+    "x_mm": 4268,
+    "y_mm": 375,
+    "drehung_grad": -171.6,
+    "z_modell_mm": 400.0,
+    "r_mm": 4284.4,
+    "az_grad": 5.0
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 158.0,
+   "naechstes_teil": "nft_tisch_aussen:5",
+   "laufweg": "erreichbar"
+  },
+  {
+   "id": "luftpumpe_2",
+   "name": "Belüftungspumpe 2",
+   "anzahl": 1,
+   "ort": "innen",
+   "gruppe": "frei",
+   "soll_lage": {
+    "x_mm": -5314.3,
+    "y_mm": -4881.1,
+    "r_mm": 7215.7,
+    "az_grad": -137.4
+   },
+   "fussabdruck": {
+    "mass": "Box 532 x 280 (geblaese_luft)",
+    "z_von_mm": 400.0,
+    "z_bis_mm": 1129.5
+   },
+   "konflikte_soll_lage": [
+    "kuppel_kreis: Umkreis 7338 > 5800",
+    "wandluft: -1592 mm zur Zehneck-Wand, Soll >= 100",
+    "kopffreiheit: Umkreis 7338 in 729 mm Hoehe ausserhalb Kugel 5800"
+   ],
+   "modus": "annahme",
+   "annahme": "D110",
+   "verschiebung_mm": 3087.4,
+   "bauplatz": {
+    "x_mm": -2514,
+    "y_mm": -3581,
+    "drehung_grad": 27.6,
+    "z_modell_mm": 400.0,
+    "r_mm": 4375.4,
+    "az_grad": -125.1
+   },
+   "konflikte_bauplatz": [],
+   "alternativen": [],
+   "status": "OK",
+   "kleinster_abstand_mm": 164.0,
+   "naechstes_teil": "ibc_beet_aussen_800:4",
+   "laufweg": "erreichbar"
+  }
+ ]
+}

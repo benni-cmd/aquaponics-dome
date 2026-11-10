@@ -1,0 +1,281 @@
+{
+  "titel": "Messvorschrift der 16 Wasserspiegel-Messpunkte (N-UNIFY-AUTOBAHN U1), Quelle der Sollwerte: data/oasis-soll.json (wasserspiegel_ueber_fussboden_mm)",
+  "gelesen_von": "scripts/check_oasis_soll.py",
+  "z_bezug": "Fussboden = Modell-Z 400 (D94, params sock_h = 400, Export walk_z = 400); Ist ueber Fussboden = Z absolut minus 400",
+  "toleranz_mm": 50,
+  "eingaben": {
+    "instanzen": "viewer/varianten/ring_b2/instances.json (Variante ring_b2) bzw. viewer/instances.json (a_plus); Matrix m: Translation = m[3], m[7], m[11]",
+    "koerper": "viewer/detail/<komponente>.json (Koerper-Boxen lokal; Datei der Definition, sonst ohne Endung -ring_b2)",
+    "parameter": "data/params.json (sock_h als Z-Bezug)"
+  },
+  "arten": {
+    "koerper_oberkante": "Wasserspiegel = Instanz-Z + hoechstes Z des Koerpers `koerper` (Wasserkoerper des Beckens; beim Vortex die Oberkante des Leitrohrs = Ueberlauf, D100)",
+    "ueberlauf_mitte": "Wasserspiegel = Instanz-Z + Mitte (Z min, Z max) des Koerpers `koerper` (Ueberlaufstutzen: Schwerkraft-Ueberlauf legt den Spiegel fest, D100)",
+    "rinne_mitte_film": "Wasserspiegel = Instanz-Z + Rinnenunterkante in Rinnenmitte + Film; Rinnenunterkante in Mitte = (Z min + Z max der Koerper `koerper` - Profilhoehe) / 2 (Rinne hat Gefaelle, Zulauf hoeher als Ablauf), Film und Profilhoehe als Parameter dieser Datei",
+    "standrohr_oberkante": "Flutstand = Instanz-Z + hoechstes Z des Koerpers `koerper` (Standrohr, W40-BEET)",
+    "rohrachse": "Rohrachse des Rings = Instanz-Z (Ursprung der Ring-Teile liegt auf der Rohrachse)"
+  },
+  "parameter": {
+    "nft_film_mm": 20,
+    "nft_profilhoehe_mm": 100,
+    "nft_parameter_quelle": "Paket n-unify-autobahn Soll-Ist: Rinnenunterkante +1000 (D60), Film etwa +1020 [E]; Profilhoehe = KappeZulauf 100 mm hoch (viewer/detail/nft_tisch_aussen.json)"
+  },
+  "punkte": [
+    {
+      "id": "fish",
+      "teil": "becken",
+      "art": "koerper_oberkante",
+      "definition": "pool_zentral-ring_b2",
+      "detail": "pool_zentral",
+      "koerper": "T5_Wasser",
+      "instanz": "ursprung",
+      "zuordnung": "einzeln",
+      "ist_heute": "Wasserkoerper T5_Wasser, Oberkante absolut 915 (+515 ueber Fussboden); Komponente liegt im Nullpunkt, Z absolut"
+    },
+    {
+      "id": "nursery",
+      "teil": "becken",
+      "art": "koerper_oberkante",
+      "definition": "zweitbecken-ring_b2",
+      "detail": "zweitbecken",
+      "koerper": "T6_Wasser",
+      "instanz": "ursprung",
+      "zuordnung": "einzeln",
+      "ist_heute": "Wasserkoerper T6_Wasser, Oberkante absolut 915 (+515); Komponente liegt im Nullpunkt, Z absolut"
+    },
+    {
+      "id": "feed",
+      "teil": "becken",
+      "art": "koerper_oberkante",
+      "definition": "becken_dritt_klein",
+      "detail": "becken_dritt_klein",
+      "koerper": "Wasser",
+      "instanz": "matrix",
+      "zuordnung": "einzeln",
+      "ist_heute": "Instanz Z -5 (Wanne im Boden) + Wasser Oberkante 920 = 915 absolut (+515)"
+    },
+    {
+      "id": "vortex_1",
+      "teil": "technik",
+      "art": "koerper_oberkante",
+      "definition": "tank_klein",
+      "detail": "tank_klein",
+      "koerper": "Leitrohr",
+      "instanz": "matrix",
+      "zuordnung": "naechste_lage",
+      "ist_heute": "Absetzer tank_klein: Standflaeche Z 400 + Oberkante Leitrohr 1323 (der Spiegel liegt auf der Leitrohr-Oberkante = Ueberlauf, D100) = +1323"
+    },
+    {
+      "id": "vortex_2",
+      "teil": "technik",
+      "art": "koerper_oberkante",
+      "definition": "tank_klein",
+      "detail": "tank_klein",
+      "koerper": "Leitrohr",
+      "instanz": "matrix",
+      "zuordnung": "naechste_lage",
+      "ist_heute": "Absetzer tank_klein: Standflaeche Z 400 + Oberkante Leitrohr 1323 (der Spiegel liegt auf der Leitrohr-Oberkante = Ueberlauf, D100) = +1323"
+    },
+    {
+      "id": "bio_1",
+      "teil": "technik",
+      "art": "ueberlauf_mitte",
+      "definition": "tank_gross|tank_gross_t3",
+      "detail": "tank_gross",
+      "koerper": "Ueberlauf",
+      "instanz": "matrix",
+      "zuordnung": "naechste_lage",
+      "ist_heute": "Biofilter tank_gross: Z 400 + Mitte Stutzen Ueberlauf (1539..1601) = 1570 (N-AUTOBAHN-V2 2.1)"
+    },
+    {
+      "id": "bio_2",
+      "teil": "technik",
+      "art": "ueberlauf_mitte",
+      "definition": "tank_gross|tank_gross_t3",
+      "detail": "tank_gross",
+      "koerper": "Ueberlauf",
+      "instanz": "matrix",
+      "zuordnung": "naechste_lage",
+      "ist_heute": "wie bio_1 (tank_gross_t3)"
+    },
+    {
+      "id": "ring_1",
+      "teil": "ring",
+      "art": "rohrachse",
+      "definition": "ring_ecke_d75",
+      "detail": "",
+      "koerper": "",
+      "instanz": "matrix",
+      "zuordnung": "halbring_1",
+      "ist_heute": "ring_ecke_d75 Ursprung Z 2545 absolut (+2145 ueber Fussboden), Halbring 1 = Instanzen mit Azimut zwischen -72 und 108 Grad"
+    },
+    {
+      "id": "ring_2",
+      "teil": "ring",
+      "art": "rohrachse",
+      "definition": "ring_ecke_d75",
+      "detail": "",
+      "koerper": "",
+      "instanz": "matrix",
+      "zuordnung": "halbring_2",
+      "ist_heute": "wie ring_1, Halbring 2"
+    },
+    {
+      "id": "nft_aussen",
+      "teil": "becken",
+      "art": "rinne_mitte_film",
+      "definition": "nft_tisch_aussen",
+      "detail": "nft_tisch_aussen",
+      "koerper": "Rinnenprofil",
+      "instanz": "matrix",
+      "zuordnung": "alle",
+      "ist_heute": "Rinnenunterkante in Mitte +1000, Film +20 = +1020"
+    },
+    {
+      "id": "nft_mitte",
+      "teil": "becken",
+      "art": "rinne_mitte_film",
+      "definition": "nft_tisch_mitte",
+      "detail": "nft_tisch_mitte",
+      "koerper": "Rinnenprofil",
+      "instanz": "matrix",
+      "zuordnung": "alle",
+      "ist_heute": "wie nft_aussen"
+    },
+    {
+      "id": "nft_innen",
+      "teil": "becken",
+      "art": "rinne_mitte_film",
+      "definition": "nft_tisch_innen",
+      "detail": "nft_tisch_innen",
+      "koerper": "Rinnenprofil",
+      "instanz": "matrix",
+      "zuordnung": "alle",
+      "ist_heute": "wie nft_aussen"
+    },
+    {
+      "id": "fd_aussen",
+      "teil": "becken",
+      "art": "standrohr_oberkante",
+      "definition": "ibc_beet_aussen_800",
+      "detail": "ibc_beet_aussen_800",
+      "koerper": "Standrohr",
+      "instanz": "matrix",
+      "zuordnung": "alle",
+      "ist_heute": "Beet Boden Z 238 absolut (-162 ueber Fussboden) + Standrohr 527 = +365"
+    },
+    {
+      "id": "fd_mitte",
+      "teil": "becken",
+      "art": "standrohr_oberkante",
+      "definition": "ibc_beet_innen_933",
+      "detail": "ibc_beet_innen_933",
+      "koerper": "Standrohr",
+      "instanz": "matrix",
+      "zuordnung": "alle",
+      "ist_heute": "Beet Boden -209..-170 ueber Fussboden + Standrohr"
+    },
+    {
+      "id": "sump_1",
+      "teil": "becken",
+      "art": "koerper_oberkante",
+      "definition": "sumpftank",
+      "detail": "sumpftank",
+      "koerper": "Wasser",
+      "instanz": "matrix",
+      "zuordnung": "naechste_lage",
+      "ist_heute": "Komponente `sumpftank` fehlt im Export (kommt in U2); Koerpername `Wasser` ist hier vorgegeben und von U2 so zu benennen"
+    },
+    {
+      "id": "sump_2",
+      "teil": "becken",
+      "art": "koerper_oberkante",
+      "definition": "sumpftank",
+      "detail": "sumpftank",
+      "koerper": "Wasser",
+      "instanz": "matrix",
+      "zuordnung": "naechste_lage",
+      "ist_heute": "wie sump_1"
+    }
+  ],
+  "stufen_reihenfolge": {
+    "regel": "Wasserspiegel faellt entlang der Stufen 5 > 4 > 3 > 2 > 1 > 0 (A15); geprueft als Paare hoeher > tiefer mit den Ist-Werten (Mittel je Soll-ID); die Stufe 0 hat verschiedene Hoehen (Fischtank 750, Sumpf -250), deshalb Paare nach den Wegen der Quelle statt Gruppenvergleich",
+    "paare": [
+      [
+        "vortex_1",
+        "bio_1",
+        "Stufe 5 > 4, Weg e23 Ueberlauf"
+      ],
+      [
+        "vortex_2",
+        "bio_2",
+        "Stufe 5 > 4, Weg e24 Ueberlauf"
+      ],
+      [
+        "bio_1",
+        "ring_1",
+        "Stufe 4 > 3, Weg e25 Einspeisung"
+      ],
+      [
+        "bio_2",
+        "ring_2",
+        "Stufe 4 > 3, Weg e26 Einspeisung"
+      ],
+      [
+        "ring_1",
+        "nft_aussen",
+        "Stufe 3 > 2, Abfahrt"
+      ],
+      [
+        "ring_1",
+        "nft_mitte",
+        "Stufe 3 > 2, Abfahrt"
+      ],
+      [
+        "ring_1",
+        "nft_innen",
+        "Stufe 3 > 2, Abfahrt"
+      ],
+      [
+        "nft_aussen",
+        "fd_aussen",
+        "Stufe 2 > 1, Rinne in Beet-Rueckweg (Sumpf)"
+      ],
+      [
+        "nft_mitte",
+        "fd_mitte",
+        "Stufe 2 > 1"
+      ],
+      [
+        "fd_aussen",
+        "sump_1",
+        "Stufe 1 > 0, Rueckweg in den Sumpf"
+      ],
+      [
+        "fd_mitte",
+        "sump_2",
+        "Stufe 1 > 0"
+      ],
+      [
+        "nft_innen",
+        "fish",
+        "Stufe 2 > 0, NFT Innen direkt in den Fischtank"
+      ],
+      [
+        "bio_1",
+        "feed",
+        "Beckenkette: Biofilter 1 > Lebendfutterbecken"
+      ],
+      [
+        "feed",
+        "nursery",
+        "Beckenkette 850 > 800"
+      ],
+      [
+        "nursery",
+        "fish",
+        "Beckenkette 800 > 750"
+      ]
+    ]
+  }
+}

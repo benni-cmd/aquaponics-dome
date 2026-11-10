@@ -31,7 +31,11 @@ def n_interf(path):
 
 def main(typs):
     p, d = sc.load_params("ibc_beet")
-    lay = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))["ibc_beds"]
+    LAY = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))
+    lay = LAY["ibc_beds"]
+    soll = {b["id"]: b for b in json.load(open(os.path.join(sc.ROOT, "data", "oasis-soll.json"), encoding="utf-8"))["bauteile"]}   # U3 (D122): Soll der Quelle, Wanne steht auf dem Flur
+    z0_soll = LAY["ring_b2"]["ibc_beds_z0"]                    # 0 = Unterkante Wanne auf dem Flur (A+: layout.json ibc_beds z0 -162 bis -209)
+    SOLL_ID = {"aussen_800": "fd_aussen", "innen_933": "fd_mitte"}          # Typen, die im Soll vorkommen (aussen_933/993 sind unbenutzte Altfassungen)
     ck = sc.Check("ibc_beet")
     for typ in typs:
         T = d["typen"][typ]
@@ -43,7 +47,7 @@ def main(typs):
         if typ == "aussen_800":                                    # W17: Sollmass aus D29, im Layout noch nicht gesetzt (Montage M7): Anzahl = Aussenbeete (mit 'plants')
             ls = [b for b in lay if "plants" in b]
         else:
-            ls = [b for b in lay if b["length"] == L and b["width"] == W and b["height"] == H]
+            ls = [b for b in lay if b["length"] == L and b["width"] == W]     # Hoehe ignoriert: layout.json traegt die A+-Hoehen (U3: Wanne 420 / 460)
         ck.eq(f"{typ} Anzahl laut layout.json" + (" (Aussenbeete, Mass erst nach M7)" if typ == "aussen_800" else ""), len(ls), T["anzahl"])
         w = B["Wanne"]["bbox"]
         ck.eq(f"{typ} Wanne Laenge", w["max"][0] - w["min"][0], L, 0.5)
@@ -53,7 +57,8 @@ def main(typs):
         med = [k for k in B if k.startswith("Medium") and not k.startswith("Medienschutz")]
         ck.eq(f"{typ} Medium Koerperzahl", len(med), 1)
         m = B["Medium"]["bbox"]
-        ck.eq(f"{typ} Medium Oberflaeche lokal", m["max"][2], H - p["rim_gap"], 0.5)
+        ck.eq(f"{typ} Medium Oberflaeche lokal = Beetboden {p['a21_boden']} + Medientiefe {p['media_depth']} (U3, D122)", m["max"][2], p["a21_boden"] + p["media_depth"], 0.5)
+        ck.eq(f"{typ} Medium Unterkante = Soll-Beetboden {p['a21_boden']} (data/oasis-soll.json boden_ueber_fussboden_mm)", m["min"][2], p["a21_boden"], 0.5)
         ck.eq(f"{typ} Medium Tiefe", m["max"][2] - m["min"][2], p["media_depth"], 0.5)
         if T.get("fase"):                                          # W26/D44: Medium-Grundflaeche = Rechteck - 4 Ecken (c^2/2) - Loch Medienschutz; Fase am Medium-Umriss parallel versetzt (c - d x (2 - sqrt 2))
             Wi_, Li_ = W - 2 * p["rim_w"] - 2 * p["wall"], L - 2 * p["rim_w"] - 2 * p["wall"]
@@ -66,9 +71,14 @@ def main(typs):
             tr = B["Tropfrohr"]["bbox"]
             y_edge = (W - 2 * p["rim_w"]) / 2.0 - c_a                                  # Beginn der Fase an der Stirnwand (|y|)
             ck.eq(f"{typ} Zulauf-Tropfrohr: |y| {max(abs(tr['min'][1]), abs(tr['max'][1])):.0f} liegt vor dem Fasenbeginn {y_edge:.0f} (Rohr trifft die gerade Stirnwand)", 1 if max(abs(tr["min"][1]), abs(tr["max"][1])) <= y_edge - 10 else 0, 1)
-        z0_abs = lay[0]["z0"] if typ.startswith("aussen") else lay[8]["z0"]
-        tol_abs = 15 if typ.startswith("aussen") else 40            # innen: OBJ-Beete liegen z0 -209..-170 (Rand Z 440-479): Oberflaeche absolut 365-404
-        ck.eq(f"{typ} Medium Oberflaeche absolut (z0 {z0_abs})", m["max"][2] + z0_abs, 400, tol_abs)      # R03: Z 400
+        z0_abs = z0_soll                                           # U3: Wanne auf dem Flur (A+ -162 bis -209 siehe docs/decisions.md D122)
+        tol_abs = 0.5
+        if typ in SOLL_ID:                                         # Soll der Quelle (fd_aussen / fd_mitte): Beetboden 70, Rand 460 / 420, Flutstand 250 ueber dem Flur
+            S = soll[SOLL_ID[typ]]["hoehen"]
+            ck.eq(f"{typ} Wannen-Oberkante absolut = Soll-Rand {S['rand_ueber_fussboden_mm']} (data/oasis-soll.json {SOLL_ID[typ]})", w["max"][2] + z0_abs, S["rand_ueber_fussboden_mm"], 0.5)
+            ck.eq(f"{typ} Beetboden absolut = Soll {S['boden_ueber_fussboden_mm']}", m["min"][2] + z0_abs, S["boden_ueber_fussboden_mm"], 0.5)
+            ck.eq(f"{typ} Flutstand (Standrohr-Oberkante) absolut = Soll {S['wsp_ueber_fussboden_mm']}", B["Standrohr"]["bbox"]["max"][2] + z0_abs, S["wsp_ueber_fussboden_mm"], 0.5)
+            ck.eq(f"{typ} Medium liegt ueber dem Flutstand nicht unter ihm (Oberflaeche {m['max'][2] + z0_abs:.0f} >= Flutstand {S['wsp_ueber_fussboden_mm']})", 1 if m["max"][2] + z0_abs >= S["wsp_ueber_fussboden_mm"] else 0, 1)
         # --- W40-BEET V3 (D77): Sperrboden ungelocht, Kerben, Medienschutz, Reinigungsschacht, Reduktion, Reduzierhuelsen
         PI = math.pi
         Wi_, Li_ = W - 2 * p["rim_w"] - 2 * p["wall"], L - 2 * p["rim_w"] - 2 * p["wall"]
@@ -157,7 +167,8 @@ def main(typs):
         t = B["Tropfrohr"]["bbox"]
         ck.eq(f"{typ} Zulaufport ausserhalb der Wanne (x < -L/2)", 1 if t["min"][0] < w["min"][0] + 10 else 0, 1)
         ck.eq(f"{typ} Zulaufhoehe lokal", (t["min"][2] + t["max"][2]) / 2, H - p["inflow_below_rim"], 0.5)
-        ck.eq(f"{typ} Zulauf absolut (z0 {z0_abs})", (t["min"][2] + t["max"][2]) / 2 + z0_abs, 450, tol_abs + 10)
+        if typ in SOLL_ID:
+            ck.eq(f"{typ} Zulauf absolut = Soll-Rand minus {p['inflow_below_rim']} (z0 {z0_abs})", (t["min"][2] + t["max"][2]) / 2 + z0_abs, soll[SOLL_ID[typ]]["hoehen"]["rand_ueber_fussboden_mm"] - p["inflow_below_rim"], 0.5)
         # Nichts schwebt: jedes Teil der Wanne kollidiert nicht mit dem Medium (Medienschutz/Glocke stehen auf dem Siebboden)
         ck.eq(f"{typ} Glocke steht auf dem Siebboden", gl["min"][2], g["max"][2], 0.01)
     return ck.done()

@@ -22,7 +22,7 @@ RINGS = {                                # (Rinnen, Abstand mm, Beetbreite mm)
     "mitte (4 Rinnen)": (4, 263, 933),
     "innen (2 Rinnen, ueber Pool)": (2, 263, None),
 }
-HEIGHT_CANDIDATES = [840, 1000, 1100, 1200, 1300]
+HEIGHT_CANDIDATES = [840, 880, 1000, 1030, 1100, 1200, 1230, 1300]   # U3 (D121): 880 / 1030 / 1230 = Rinnenunterkante Mitte / Aussen / Innen nach der Oasis-Quelle (Wasserspiegel 900 / 1050 / 1250 minus Film 20)
 
 
 def person_rows(zu):

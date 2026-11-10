@@ -29,6 +29,7 @@ def skew(sgn):
 def build(typ):
     p, d = sc.load_params("nft_tisch")
     T = d["typen"][typ]
+    p = dict(p); p["holm_h"] = T.get("holm_h", p["holm_h"])   # D121 (U3): Innen-Holm/Kragarm 20 hoch, die Rinne liegt nur 30 mm ueber dem Poolrand 1200
     G = TG.geometry(typ, p, T)
     rows, n, zc, slope, Wt, xb = G["rows"], G["n"], G["zc"], G["slope"], G["Wt"], G["xb"]
     ang = math.degrees(math.atan(slope))

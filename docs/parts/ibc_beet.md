@@ -2,7 +2,7 @@
 
 **Funktion:** [Soll nach Quelle A21 (U2, D115), ersetzt die Lochblech-Schutzkorb-Beschreibung: jedes Beet hat einen Siphon, der durch ein Abtropfgitter am Boden bis ganz nach unten reicht; Vlies und Sieb ueber dem Gitter halten Schlamm und Medium fern; etwas Belueftung unten verhindert Faulstellen; Flutstand 250 mm ueber dem Fussboden. Die Teile stehen in den Parametern a21_* und in der Teileliste; die .sc-Geometrie (Medienschutz, Sperrboden) bleibt bis U3 unveraendert und wird dort auf A21 umgebaut.] Substratbeet (Fluten und Entleeren per Glockensiphon): Pflanzen (Instanzen; 288 je Aussenbeet, Beet bei Azimut 113 hat 144) in Netztoepfen im Medium (Blaehton/Kies), Wasser fliesst ueber das Tropfrohr zu, der Glockensiphon entleert das Beet in Zyklen bis auf 12 mm Film ueber dem ungelochten Sperrboden (V3, D77: kein stehendes Wasser unter dem Medium); zugleich Biofilterflaeche. Ein stehender Reinigungsschacht d110 erlaubt das Absaugen von Schlamm.
 
-**Datei:** `designs/components/ibc_beet.sc` · **Teilenummer:** T30 · **Revision:** A · **Bezugspunkt:** Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienoberflaeche bei hoehe - rim_gap; Ablaufport unter dem Boden (Z < 0); Wannen sind eingelassen (z0 -162 bis -209, Integrator)
+**Datei:** `designs/components/ibc_beet.sc` · **Teilenummer:** T30 · **Revision:** A · **Bezugspunkt:** Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienunterkante bei a21_boden 70, Medienoberflaeche 370; Ablaufport unter dem Boden (Z < 0, reicht in den Fussboden: U4/U6); Wannen stehen auf dem Flur (z0 0, U3 D122; A+ eingelassen z0 -162 bis -209)
 
 **Anzahl (Instanzen):** aussen 8 (OBJ: 5 x 933, 3 x 993; Zielmass nach D29: 8 x aussen_800), innen 6 (Quelle: data/layout.json ibc_beds; aussen_800: docs/decisions.md D29 (Montage M7 stellt den Dom um))
 
@@ -23,17 +23,17 @@
 | `corner_r` | 40 | mm | [A] Innenradius der Wannenecken (IBC-Schnitt, ref-5) |
 | `rim_w` | 20 | mm | [A] Randsims: Breite nach aussen 20 mm (Bild-Kritiker: Referenz zeigt breiten flachen Randsims) |
 | `rim_h` | 14 | mm | [A] Randsims: Hoehe 14 mm |
-| `rim_gap` | 75 | mm | [E] Abstand Medienoberflaeche unter Wannenrand: R03 Z 400 minus OBJ-Oberkante Z 475 |
+| `rim_gap` | 75 | mm | U3 (D122): wird nicht mehr gelesen, rim_gap = Wannenhoehe - Medienoberflaeche (aussen 90, innen 50); Medienunterkante ist a21_boden 70; Altwert: [E] Abstand Medienoberflaeche unter Wannenrand: R03 Z 400 minus OBJ-Oberkante Z 475 |
 | `media_depth` | 300 | mm | R03: Fruchtgemuese 300, Blattgemuese 150-200 (FarmHub); Scope-Card 300 |
 | `media_gap` | 2 | mm | [A] Spiel Medium zur Wannenwand |
 | `grid_t` | 8 | mm | [A] Sperrboden 8 mm (PP-Platte, ungelocht, V3/D77), Stuetzenabstand <= 420 mm (Traglast Medium) |
 | `post` | 60 | mm | [A] Stuetzklotz 60 x 60 unter dem Sperrboden |
 | `post_nx` | 8 |  | [A] Stuetzen in Laengsrichtung: aussen 8, innen 5; 3 Reihen (y = +-(Wi/2-100) und 0) |
 | `standpipe_d` | 25 | mm | R03: Standrohr D25 (FarmHub 2,5 cm PVC) |
-| `standpipe_over` | 265 | mm | Orchestrator 29.10.: standpipe_h = media_depth - 35 mm = 265 ueber der Medienunterkante (Wasserstand 35 mm unter der Oberflaeche, dazwischen SRAC 1 Zoll = 25 mm / R03 trockene Zone 2-5 cm); Variante FarmHub 220 (R03 Befund 5, widerspricht Befund 4); Gesamtlaenge ab Bulkhead = Stuetzhoehe + 265 [E] |
+| `standpipe_over` | 180 | mm | U3 (D122, A21): Standrohr-Oberkante = Flutstand 250 ueber dem Flur = Beet-Boden 70 + 180 (a21_standrohr_h); UEBERHOLT 265: Orchestrator 29.10.: standpipe_h = media_depth - 35 mm = 265 ueber der Medienunterkante (Wasserstand 35 mm unter der Oberflaeche, dazwischen SRAC 1 Zoll = 25 mm / R03 trockene Zone 2-5 cm); Variante FarmHub 220 (R03 Befund 5, widerspricht Befund 4); Gesamtlaenge ab Bulkhead = Stuetzhoehe + 265 [E] |
 | `standpipe_wall` | 1.5 | mm | Bevo PVC-U Druckrohr 25 x 1,5 PN10 Art. 0309025 [R51/R45]: ID 22,0, Querschnitt 380 mm2 (W40-BEET Auflage 4, M-BEET-TAUSCH 0b; vorher [A] 2 mm = 346 mm2) |
 | `bell_d` | 75 | mm | R03: Glocke D75 |
-| `bell_h` | 295 | mm | [E] Glocke = Standrohrhoehe + 30 mm (R03: 250 bei Standrohr 220); oben verschlossen |
+| `bell_h` | 210 | mm | U3 (D122): Standrohr 180 + 30 = 210; UEBERHOLT 295: [E] Glocke = Standrohrhoehe + 30 mm (R03: 250 bei Standrohr 220); oben verschlossen |
 | `bell_wall` | 3 | mm | [A] PVC-Rohr d75 |
 | `bell_slot_w` | 10 | mm | R03: zwei Schlitze 10 x 40 mm |
 | `bell_slot_h` | 12 | mm | W40-BEET V3 (D77): Kerbenhoehe 12 mm = Restfilm 12 mm; 4 Kerben 10 x 12 = 480 mm2 >= Standrohrflaeche 380 mm2 (R03 hatte 2 Schlitze 10 x 40) |
@@ -63,25 +63,25 @@
 | `reduktion_h` | 50 | mm | R51 T30e-3: Reduktion kurz d40 x d25, Bauhoehe etwa 50 mm [A], Kaufmass pruefen |
 | `reduktion_stutzen_d` | 40 | mm | Klebestutzen d40 unten |
 
-| Typ | laenge | breite | hoehe | anzahl | herkunft | fase | fase_herkunft |
-|---|---|---|---|---|---|---|---|
-| aussen_933 | 2953 | 933 | 637 | 5 | layout.json ibc_beds 3-7: 2953 x 933 x 637 |  |  |
-| aussen_993 | 2953 | 993 | 637 | 3 | layout.json ibc_beds 1, 2, 8: 2953 x 993 x 637 |  |  |
-| innen_933 | 1865 | 933 | 649 | 6 | layout.json ibc_beds 9-14: 1865 x 933 x 649 | 120 | D44 (W-M4, 31.10.): Ecken 45 Grad angefast, Schenkel 120 mm am Randwulst-Umriss (ueberlappten Nachbarbeete um 35 mm); Rueckfall Laenge 1790; Medium/Siebboden/Wanne parallel versetzt |
-| aussen_800 | 2640 | 800 | 637 | 8 | W17/D29: Aussenbeet einseitig erreichbar <= 800 breit; Laenge 2640 = Obergrenze aus der Montage-Rechnung (Streben/Sockel, D25; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771)); Hoehe wie OBJ 637; ersetzt aussen_933/aussen_993 im Dom (Montage M7 stellt um) |  |  |
+| Typ | laenge | breite | hoehe | anzahl | herkunft | hoehe_herkunft | fase | fase_herkunft |
+|---|---|---|---|---|---|---|---|---|
+| aussen_933 | 2953 | 933 | 637 | 5 | layout.json ibc_beds 3-7: 2953 x 933 x 637 |  |  |  |
+| aussen_993 | 2953 | 993 | 637 | 3 | layout.json ibc_beds 1, 2, 8: 2953 x 993 x 637 |  |  |  |
+| innen_933 | 1865 | 933 | 420 | 6 | layout.json ibc_beds 9-14: 1865 x 933 x 649 | U3 (D122): Wannenhoehe 420 = Soll-Rand data/oasis-soll.json fd_mitte rand_ueber_fussboden_mm 420 (vorher 649 im Boden; Wanne steht auf dem Flur, Sperrboden-Oberkante 70) | 120 | D44 (W-M4, 31.10.): Ecken 45 Grad angefast, Schenkel 120 mm am Randwulst-Umriss (ueberlappten Nachbarbeete um 35 mm); Rueckfall Laenge 1790; Medium/Siebboden/Wanne parallel versetzt |
+| aussen_800 | 2640 | 800 | 460 | 8 | W17/D29: Aussenbeet einseitig erreichbar <= 800 breit; Laenge 2640 = Obergrenze aus der Montage-Rechnung (Streben/Sockel, D25; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771)); Hoehe wie OBJ 637; ersetzt aussen_933/aussen_993 im Dom (Montage M7 stellt um) | U3 (D122): Wannenhoehe 460 = Soll-Rand data/oasis-soll.json fd_aussen rand_ueber_fussboden_mm 460 (vorher 637 im Boden; Wanne steht auf dem Flur, Sperrboden-Oberkante 70) |  |  |
 
 Gesamt-Box (Messung, Variante ibc_beet_aussen_933): X -1516.5 bis 1476.5, Y -466.5 bis 466.5, Z -80.0 bis 637.0 mm; Koerper: 40.
 
-**Toleranzen / Spiel:** Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase = Standrohrkante, 265 mm ueber der Plattenoberkante = 35 mm unter der Medienoberflaeche (Orchestrator-Vorgabe 29.10.). Restwasser nach dem Ablauf: Film bis Kerben-Oberkante (Plattenoberkante + 12 mm), gerechnet 9,3 l (aussen_800), 7,6 l (innen_933), 12,3 l (aussen_933) bei 40 % Porositaet [A] (scripts/w40_beet_rechnung.py); Haftwasser im Korn bleibt. Entleerzeit d25: 3,6 bis 5,1 min (aussen_800), 4,7 bis 6,7 min (aussen_933) gegen R45 4,3 bis 6,1 min (R45 setzt fest 234 l an, die Rechnung nimmt die Beetflaeche; Abweichung ausgewiesen, Sollbereich unveraendert).
+**Toleranzen / Spiel:** Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase = Standrohrkante = Flutstand 250 ueber dem Flur, 180 mm ueber der Plattenoberkante = 120 mm unter der Medienoberflaeche (Quelle A21/A25, U3 D122; vorher 265 / 35 mm, Orchestrator-Vorgabe 29.10.). Restwasser nach dem Ablauf: Film bis Kerben-Oberkante (Plattenoberkante + 12 mm), gerechnet 9,3 l (aussen_800), 7,6 l (innen_933), 12,3 l (aussen_933) bei 40 % Porositaet [A] (scripts/w40_beet_rechnung.py); Haftwasser im Korn bleibt. Entleerzeit d25: 3,6 bis 5,1 min (aussen_800), 4,7 bis 6,7 min (aussen_933) gegen R45 4,3 bis 6,1 min (R45 setzt fest 234 l an, die Rechnung nimmt die Beetflaeche; Abweichung ausgewiesen, Sollbereich unveraendert).
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: HDPE weiss (Wanne), PVC grau (Rohre), Kies/Blaehton (Medium), Dichte 0.95 g/cm3, Farbe #e9ebe8 (ref-5/ref-6 weisse Wannen (HDPE IBC-Innenbehaelter 0,95 g/cm3); Siebboden/Stuetzen PP 0,91, Rohre PVC-U 1,4 g/cm3)
-- Volumen (Messung, Variante ibc_beet_aussen_933, `solidcraft-cli eval`): 77491.4 cm3 · Masse leer (ohne Medium): 73579 g (73.58 kg)
-- Variante `ibc_beet_aussen_933`: 73.58 kg leer (ohne Medium)
-- Variante `ibc_beet_aussen_993`: 76.00 kg leer (ohne Medium)
-- Variante `ibc_beet_aussen_800`: 63.67 kg leer (ohne Medium)
-- Variante `ibc_beet_innen_933`: 48.77 kg leer (ohne Medium)
+- Volumen (Messung, Variante ibc_beet_aussen_933, `solidcraft-cli eval`): 60814.2 cm3 · Masse leer (ohne Medium): 58360 g (58.36 kg)
+- Variante `ibc_beet_aussen_933`: 58.36 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_993`: 60.78 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_800`: 43.99 kg leer (ohne Medium)
+- Variante `ibc_beet_innen_933`: 34.12 kg leer (ohne Medium)
 - Gefuellt/in Betrieb: aussen_933: leer ohne Medium 73.6 kg; Medium 761 l = 685 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 269 l = 269 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 1027 kg | aussen_993: leer ohne Medium 76.0 kg; Medium 813 l = 732 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 287 l = 287 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 1095 kg | aussen_800: leer ohne Medium 63.7 kg; Medium 575 l = 517 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 203 l = 203 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 784 kg | innen_933: leer ohne Medium 48.8 kg; Medium 467 l = 420 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 165 l = 165 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 634 kg
 
 ## Querschnitt / Profil
@@ -118,15 +118,15 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 | Merkmal | Wert | Herkunft | Bezug (Datei, Ausschnitt) | Konfidenz |
 |---|---|---|---|---|
 | Siphon mit Abtropfgitter, Vlies, Sieb, Belueftung unten (A21) | Parameter a21_* | Q/A | data/oasis-soll.json fd_aussen.t1 bis t4 (Quelle A21); Maße Annahme; ersetzt den Lochblech-Schutzkorb (W40-BEET, D77), Abweichung Nr. 14 im Paket n-unify-autobahn, D115 | mittel |
-| Aussenmass 2953 x 933/993 x 637 bzw. 1865 x 933 x 649 | mm | OBJ | layout.json ibc_beds (Laenge, Breite, Hoehe) | hoch |
-| Unterkante Z -162 (aussen) / -173..-209 (innen) | mm | OBJ | layout.json ibc_beds z0 (Integrator setzt; im Bauteil Ursprung = Wannenunterseite) | hoch |
+| Aussenmass 2953 x 933/993 x 637 bzw. 1865 x 933 x 649 (U3: Hoehen 460 / 420, aussen_933 / 993 unbenutzte Altfassungen mit 637) | mm | OBJ | layout.json ibc_beds (Laenge, Breite, Hoehe) | hoch |
+| Unterkante Z 0 (Wanne auf dem Flur, U3 D122); A+ war -162 (aussen) / -173..-209 (innen) | mm | OBJ | layout.json ibc_beds z0 (Integrator setzt; im Bauteil Ursprung = Wannenunterseite) | hoch |
 | Wandstaerke 4 mm, Boden 5 mm | 4 / 5 mm | R03 + A | R03 nennt 3-4 mm nur als Folgerung fuer das Modell (Scope-Card), keine eigene Quelle; Boden Annahme | mittel |
 | Randsims 20 x 14 mm | 20 / 14 | Bild + A | ref-5/ref-6: breiter flacher Randsims der weissen Wannen (Bild-Kritiker) | niedrig |
 | Eckenradius 40 mm | 40 | Bild + A | ref-5 (gerundete Ecken der IBC-Wannen) | niedrig |
-| Medientiefe 300 mm, Oberflaeche Z 400 (75 mm unter dem Rand) | 300 | R03 | docs/research/R03.md (FarmHub 30 cm Fruchtgemuese; Z 400 Vorgabe Orchestrator) | mittel |
+| Medientiefe 300 mm, Oberflaeche Z 370 (Beetboden 70 + 300; 90 mm unter dem Rand aussen, 50 mm innen; U3 D122) | 300 | R03 | docs/research/R03.md (FarmHub 30 cm Fruchtgemuese; Z 400 Vorgabe Orchestrator) | mittel |
 | Medium als EIN Koerper | 1 Koerper | R03/Scope-Card | Scope-Card ibc_beet: Medium als EIN Koerper | hoch |
 | Stuetzkloetze 60x60, 15 (innen) / 24 (aussen) | 60 x 60 | A | Konstruktionspraxis; Abstand <= 420 mm wegen Medienlast (Bild-Kritiker); Luftraum unter dem Sperrboden (trocken, V3/D77) | niedrig |
-| Standrohr d25, 265 mm ueber Medienunterkante (Variante FarmHub 220) | 25 / 265 | Orchestrator + R03 | Vorgabe media_depth - 35 mm (29.10.), FarmHub 220 als Variante; R03 Befund 5 widerspricht Befund 4/SRAC | mittel |
+| Standrohr d25, 180 mm ueber Medienunterkante = Flutstand 250 (U3 D122; vorher 265, Variante FarmHub 220) | 25 / 180 | Orchestrator + R03 | Vorgabe media_depth - 35 mm (29.10.), FarmHub 220 als Variante; R03 Befund 5 widerspricht Befund 4/SRAC | mittel |
 | Zulauf-Tropfrohr d20 auf Z 450 (25 mm unter dem Rand) | 20 | R03 + A | R03: Zulaufrohr auf Z 450; Durchmesser Annahme | niedrig |
 | Zulauf 200-500 l/h je Beet | 200-500 l/h | R03 | docs/research/R03.md (Glockensiphon-Auslegung) | mittel |
 | Anzahl 8 aussen (5 x 933, 3 x 993), 6 innen | 14 | OBJ | layout.json ibc_beds | hoch |
@@ -135,9 +135,9 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 | Tropfloecher 4 x 4 mm, Teilung 200 mm, ab 150 mm von der Stirn | 4 / 200 mm | A | R03: gelochtes Rohr oder Tropfschlauch; Raster Annahme | niedrig |
 | Zulauf-Wanddurchfuehrung D22 in der Stirnwand (Rohr d20) | D22 | A | Konstruktionspraxis (Gummitulle); y = -(Wi/2 - 50) | niedrig |
 | Zulaufrohr liegt laengs (nicht quer), 25 mm unter dem Rand | z 612 lokal / 450 abs. | R03 + E | R03: 'quer ueber das Beet auf Z 450'; bei 2,9 m Laenge laengs ausgelegt (E) | niedrig |
-| Aussenbeet 800 x 2640 x 637 (aussen_800) | 800 / 2640 / 637 mm | Ben + E | D29: einseitig erreichbar <= 800; Laenge 2640 = Obergrenze aus der Montage-Rechnung (D25/D28 outer_bed_len), Hoehe wie OBJ; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771) | mittel |
+| Aussenbeet 800 x 2640 x 460 (aussen_800) | 800 / 2640 / 460 mm | Ben + E | D29: einseitig erreichbar <= 800; Laenge 2640 = Obergrenze aus der Montage-Rechnung (D25/D28 outer_bed_len), Hoehe wie OBJ; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771) | mittel |
 | Sperrboden 8 mm ungelocht (V3) | 8 mm, 0 Loecher | Ben D77 + R51 | docs/jobs/W40-BEET.md (Variante V3, D77 04.11.2026); R51 Befund 5a (stehendes Wasser unter dem Siebboden) | mittel |
-| Glocke d75 x 295 mit 4 Kerben 10 x 12 am Fuss, Luftloch 10 | d75 x 295; 4 x 10 x 12 | R03 + W40 | R03: d75, Luftloch 10; Kerben statt Schlitzen 10 x 40 (W40-BEET V3, Kerbenflaeche 480 mm2 >= Standrohr 380 mm2) | mittel |
+| Glocke d75 x 210 mit 4 Kerben 10 x 12 am Fuss, Luftloch 10 | d75 x 210; 4 x 10 x 12 | R03 + W40 | R03: d75, Luftloch 10; Kerben statt Schlitzen 10 x 40 (W40-BEET V3, Kerbenflaeche 480 mm2 >= Standrohr 380 mm2) | mittel |
 | UEBERHOLT durch A21 (D115): Medienschutz Lochblech V2A d110 x 1,5 x 320, lose Kappe | d110 x 320 | R51 + Ben D77 | R51 T30e-4 (Rundloch d5, Teilung 8, 35 % offen); Modell 2 Ringe x 12 Schlitze 5 x 50 = 6000 mm2 = 15,8 x Standrohr; Zuschnitt und Rollen beim Metallbauer | mittel |
 | Reinigungsschacht d110 x 3 stehend auf dem Sperrboden, Kappe, 2 Kerben 30 x 30 | d110 x 320 | R51 + W40 | R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4); Lage auf Zellmitte des Topfrasters (M-BEET-TAUSCH 0c) | mittel |
 | Reduktion d40 x d25, Bauhoehe 50 mm | d40 / d25 / 50 | R51 + A | R51 T30e-3; Bauhoehe [A], Kaufmass pruefen | niedrig |
@@ -171,11 +171,11 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 - T30b Stuetzkloetze PP 60x60: 24 (aussen) / 15 (innen) je Beet
 - T30c Sperrboden PP 8 mm, ungelocht (nur Durchfuehrung D36): 1 je Beet; Plattenhuelse (Tankverbinder D36 mit Flansch D50 + Reduzierhuelse 32/25 + Kontermutter): 1 je Beet; Dichtband Plattenrand
 - T30d Medium Blaehton 8-16 mm: aussen_800 575 l (517 kg); innen_933 467 l (420 kg); aussen_933 761 l (685 kg); aussen_993 813 l (732 kg) (Messung `solidcraft-cli eval`)
-- T30e Siphon: 1 Tankverbinder D36 mit Flansch D50 + Reduzierhuelse 32/25 + Dichtung + Kontermutter, 1 Standrohr PVC-U d25 (Laenge 30 + 527 mm), 1 Reduktion kurz d40 x d25, 1 Glocke PVC-U d75 x 295 mit Deckel und 4 Kerben, 1 Medienschutz Lochblech V2A 1.4301 1,5 mm (Rundloch 5, Teilung 8) d110 x 320 mit loser Kappe DN110
+- T30e Siphon: 1 Tankverbinder D36 mit Flansch D50 + Reduzierhuelse 32/25 + Dichtung + Kontermutter, 1 Standrohr PVC-U d25 (Laenge 30 + 250 mm (U3: Flutstand 250)), 1 Reduktion kurz d40 x d25, 1 Glocke PVC-U d75 x 210 mit Deckel und 4 Kerben, 1 Medienschutz Lochblech V2A 1.4301 1,5 mm (Rundloch 5, Teilung 8) d110 x 320 mit loser Kappe DN110
 - T30f Zulauf: 1 Tropfrohr PE d20 (Laenge siehe Messung), 1 Endstopfen d20, 1 Gummituelle D22 fuer die Wanddurchfuehrung, 1 Anschluss-Kupplung d20
 - T30g Reinigungsschacht: 1 KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm (ab Platte), 1 Muffenstopfen DN110
 - Normbezeichnungen: PVC-U Rohr nach DIN 8062 / EN 1452; PE-Rohr nach DIN 8074; Kleber nach DIN EN 14814; Medium gewaschen
-- T30 aussen_800 (W17/D29): 8 Beete 800 x 2640 x 637 statt 5 x 933 + 3 x 993 x 2953; Wannen-Sondermass (HDPE), Siphon wie die anderen Aussenbeete
+- T30 aussen_800 (W17/D29): 8 Beete 800 x 2640 x 460 (Wanne auf dem Flur, U3 D122; vorher 637 eingelassen) statt 5 x 933 + 3 x 993 x 2953; Wannen-Sondermass (HDPE), Siphon wie die anderen Aussenbeete
 
 ## Teileliste mit Bezug in Europa (D76)
 
@@ -237,7 +237,7 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 
 ## Offene Fragen
 
-- A21 (U2, D115): Die vier Beet-Komponenten zeigen im Modell noch Medienschutz (Lochblech) und ungelochten Sperrboden (V3, D77). Die Quelle verlangt Abtropfgitter, Siphon bis ganz nach unten, Vlies und Sieb, Belueftung unten; das Beet leert sich damit ganz (wie W57), D77 (12 mm Restfilm ueber dem Sperrboden) aendert sich. Geometrie, check_ibc_beet.py und Teileliste folgen in U3/U8. Luftquelle der Beet-Belueftung ist in der Quelle nicht festgelegt (die Arme der Luftpumpen gehen zu Biofilter, Sumpf, Becken, Fischtank), Maße von Gitter, Vlies und Sieb sind Annahme
+- U3 (D122): Flutstand 250, Standrohr 180 ueber dem Sperrboden 70, Wanne auf dem Flur, Hoehe 460 / 420 sind gebaut; offen bleibt die A21-Geometrie (Gitter, Vlies, Sieb, Belueftung unten) und der Auslass unter der Wanne (reicht in den Fussboden). A21 (U2, D115): Die vier Beet-Komponenten zeigen im Modell noch Medienschutz (Lochblech) und ungelochten Sperrboden (V3, D77). Die Quelle verlangt Abtropfgitter, Siphon bis ganz nach unten, Vlies und Sieb, Belueftung unten; das Beet leert sich damit ganz (wie W57), D77 (12 mm Restfilm ueber dem Sperrboden) aendert sich. Geometrie, check_ibc_beet.py und Teileliste folgen in U3/U8. Luftquelle der Beet-Belueftung ist in der Quelle nicht festgelegt (die Arme der Luftpumpen gehen zu Biofilter, Sumpf, Becken, Fischtank), Maße von Gitter, Vlies und Sieb sind Annahme
 - Dichtheit des Sperrbodens (Plattenrand, Plattenhuelse) und Anspringen des Siphons bei 3,3 l/min nur am Muster pruefbar; Leckwasser unter der Platte waere wieder stehendes Wasser
 - Luftkammer unter dem Sperrboden (262 bis 274 mm hoch) bleibt ungenutzt und trocken; Alternative "IBC kuerzer schneiden" waere ein Layout-Eingriff (Z-Hoehen, Tische R35/R36), nicht Teil von W40-BEET
 - Dichtband-Mass offen (EPDM-Zellkautschuk selbstklebend, Spalt 2 mm; 10 x 10 selbstklebend nicht nachgewiesen)

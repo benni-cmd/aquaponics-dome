@@ -53,8 +53,9 @@ def build(typ):
             return rrect(b_, z, w, l, r, name)
         d_ = (W - w) / 2.0                       # Versatz gegen den Randwulst-Umriss
         return crect(b_, z, w, l, fase - d_ * (2 - math.sqrt(2)), name)
-    z_ms = H - p["rim_gap"]                      # Medienoberflaeche
-    z_m0 = z_ms - p["media_depth"]               # Medienunterkante = Oberkante Siebboden
+    z_m0 = p["a21_boden"]                        # U3 (D122): Medienunterkante = Oberkante Siebboden = Soll-Beetboden 70 ueber dem Flur (Wanne steht auf dem Flur)
+    z_ms = z_m0 + p["media_depth"]               # Medienoberflaeche (Soll 370)
+    rim_gap = H - z_ms                           # abgeleitet (aussen 90, innen 50); der Parameter rim_gap wird nicht mehr gelesen
     z_g0 = z_m0 - p["grid_t"]                    # Unterkante Siebboden
     x_sp, y_sp = shaft_cell(L, W, Li / 2 - 200)  # Siphon nahe dem Ablaufende (+X), auf einer Zellmitte des Topfrasters (M-BEET-TAUSCH-fix, D79; vorher y = 0: Topf in Schutzrohr und Kappe)
     x_sh, y_sh = shaft_cell(L, W, -Li / 2 + 250)  # Reinigungsschacht am Zulaufende (T30e-5), auf einer Zellmitte des Topfrasters (M-BEET-TAUSCH 0c; vorher x = -Li/2 + 250, y = 0: Toepfe in der Schachtwand)

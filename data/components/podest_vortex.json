@@ -1,0 +1,94 @@
+{
+ "klasse": "podest_vortex",
+ "teilenummer": "T102",
+ "revision": "A",
+ "beschreibung": "Podest Vortex (U2, D100): Stahlrahmen aus Vierkantrohr 40 x 40 x 3 fuer tank_klein (Standflaeche 619 x 619), Hoehe 577 mm als Parameter podest_vortex_h; 4 Fussplatten, 4 Stuetzen, Fuss- und Kopfrahmen, 8 Knotenbleche; hebt den Tank, bis der Ueberlauf auf dem Soll-Wasserspiegel 1900 liegt",
+ "quelle_masse": "data/oasis-soll.json (Vortex 1 und 2: Wasserspiegel 1900 ueber Fussboden); docs/research/R61-oasis-wasserkreislauf.md Abschnitt 4 (O2, O10) und 6 Nr. 3; docs/decisions.md D100; data/components/tank.json (plat_l 619)",
+ "parameter": {
+  "podest_vortex_h": {
+   "wert": 577,
+   "einheit": "mm",
+   "herkunft": "[E] Soll-Wasserspiegel Vortex 1900 (data/oasis-soll.json vortex_1) minus Tankoberkante 1323 (tank_klein, R61 Abschnitt 6 Nr. 3) = 577; mindestens, D100; U4/U5 setzen den Wert aus data/oasis-lage.json"
+  },
+  "span": {
+   "wert": 720,
+   "einheit": "mm",
+   "herkunft": "[A] Aussenmass des Rahmens = Plattform 619 + 2 x 50 mm Ueberstand (Annahme Lage-Probe U1, Paket Abschnitt Grenzen), auf 720 gerundet"
+  }
+ },
+ "werkstoff": {
+  "name": "Stahl, feuerverzinkt (Vierkantrohr 40 x 40 x 3, Blech 6 mm)",
+  "dichte_g_cm3": 7.85,
+  "farbe": "#b8bcc2",
+  "herkunft": "[A] Normprofil aus dem Katalog (vierkantrohr_40x40x3), Selbstbau durch Schweissen oder Verschrauben (Designprinzip 7: Podeste sind Selbstbau)"
+ },
+ "anzahl": {
+  "soll": "Vortex 1 und 2: je 1 Podest je Tank",
+  "quelle": "data/oasis-soll.json (vortex_1/_2, bio_1/_2); D100"
+ },
+ "bezugspunkt": "Mitte der Standflaeche in X und Y, Z 0 = Boden (Fussplatten-Unterkante); Auflage fuer tank_klein auf Z = podest_vortex_h (Oberkante Kopfrahmen)",
+ "herkunft_tabelle": [
+  [
+   "Hoehe 577 mm",
+   "Parameter podest_vortex_h",
+   "E",
+   "[E] Soll-Wasserspiegel Vortex 1900 (data/oasis-soll.json vortex_1) minus Tankoberkante 1323 (tank_klein, R61 Abschnitt 6 Nr. 3) = 577; mindestens, D100",
+   "mittel"
+  ],
+  [
+   "Standflaeche 720 x 720",
+   "tank_klein Plattform 619 + Ueberstand",
+   "A",
+   "data/components/tank.json plat_l; Ueberstand 50 mm aus der Lage-Probe U1",
+   "niedrig"
+  ],
+  [
+   "Vierkantrohr 40 x 40 x 3",
+   "Stuetzen und Rahmen",
+   "A",
+   "data/katalog.json vierkantrohr_40x40x3; Tragfaehigkeit gerechnet im Check, Statik N-STATIK offen",
+   "mittel"
+  ]
+ ],
+ "blatt": {
+  "funktion": "Hebt tank_klein (Vortex 1 und 2) um 577 mm, damit der Ueberlauf auf dem Soll-Wasserspiegel 1900 liegt und das Wasser danach per Schwerkraft weiterlaeuft (Designprinzip 1). Reiner Stahlrahmen aus Normprofil, kein eigener Kreislaufteil.",
+  "querschnitt": "Vierkantrohr 40 x 40 x 3; Fussplatten 100 x 100 x 6; Stuetzen von Z 6 bis 577; Fussrahmen (Z 6 bis 46) und Kopfrahmen (Z 537 bis 577) zwischen den Stuetzen; 8 Knotenbleche 6 x 100 x 100 aussen an den X-Seiten.",
+  "toleranzen": "Rahmenstuecke stossen auf Stoss an die Stuetzen (Beruehrung, keine Durchdringung); Hoehe ueber den Parameter einstellbar.",
+  "ports": [
+   [
+    "Auflage Tank",
+    "tank_klein Plattform 619 x 619",
+    "Z = 577",
+    "Tank steht mittig auf dem Kopfrahmen"
+   ]
+  ],
+  "verbindungen": [
+   "Rahmen verschweisst oder verschraubt (Normprofil, Selbstbau)",
+   "Fussplatten mit Fussbodenankern (Loecher im Modell nicht gebohrt)",
+   "Tank mit Tankplattform auf dem Kopfrahmen verschraubt"
+  ],
+  "montage": [
+   "Fussplatten setzen, Stuetzen und Fussrahmen verschweissen/verschrauben, Kopfrahmen aufsetzen und ausrichten",
+   "Knotenbleche anschweissen, Rahmen auf Fussboden dueblen",
+   "tank_klein aufsetzen und mit dem Kopfrahmen verbinden"
+  ],
+  "werkzeug": "Winkelschleifer, Schweissgeraet oder Schrauben M8, Wasserwaage",
+  "teileliste": [],
+  "kritiker": "offen (Pruefer P-Pruef)",
+  "pruefung": [
+   "python -X utf8 scripts/workshop/check_podest_vortex.py"
+  ],
+  "offen": [
+   "Statik (Kippsicherheit, Horizontallast, Fussbodenanker) ist Sache von N-STATIK; der Check rechnet nur Stuetzendruck und Knicken",
+   "Verzinkung und Werkstoff-Lebensmittelnachweis nicht noetig (kein Wasserkontakt)"
+  ],
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+ },
+ "u2": {
+  "tank": "tank_klein",
+  "last_kg": 500,
+  "tank_ok": 1323,
+  "wsp": 1900,
+  "plat": 619
+ }
+}

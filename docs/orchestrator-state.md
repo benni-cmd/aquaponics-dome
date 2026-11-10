@@ -231,3 +231,10 @@ Pause aufgehoben. Waechter wieder an. Bis 5 Sitzungen, hoechstens 2 schwere Soli
 ## 05.11.2026 abends PAUSE (Ben: PC soll sich erholen)
 - Beendet: SolidCraft-Laeufe (Ring-B2-Bau, Snapshot, check_latte 77 in Kopie), Viewer-Server 4455/4456. Waechter aus. Sitzungen angehalten, Stand gesichert (4965331 FIX-a + W88 WIP, 9e5ab15 Knoten, 78d02b2 Viewer-Schalter).
 - Wiederaufnahme: (1) FIX-a/W88 fertig messen (Ring B2 neu bauen, Snapshot), (2) Basisknoten-Scheren x Sockel (170 Treffer) beheben, (3) Viewer neu bauen und hochladen (Ben hat freigegeben), (4) Z1 bis Z7 laut D92.
+
+## 10.11.2026 Merkliste (Ben: "unbedingt danach machen")
+Offen aus dem SolidCraft-Umstieg (Paket `docs/packages/solidcraft-0301-umstieg.md`, Test bestanden 08.11.):
+1. Ben installiert `solidcraft-0.30.1-windows-x64.msi` (noch 0.25.1 installiert, Stand 10.11.).
+2. Danach: Bauzeit neu messen (Test 22:28 statt 8:22 min) und Ring B2 einmal mit 0.30.1 bauen.
+3. 16 nicht committete Ring-B2-Dateien (Komponenten `*-ring_b2.sc`, `scripts/dome-script-ring_b2.json`, `viewer/varianten/`, `viewer/detail/`) pruefen und sichern.
+4. Dann Pause beenden: FIX-a/W88 fertig, Viewer neu + Vercel, Scheren x Sockel (170), Z1-Z7.

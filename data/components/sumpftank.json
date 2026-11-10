@@ -12,7 +12,7 @@
   "wall_t": {"wert": 100, "einheit": "mm", "herkunft": "[A] Betonwanne, Wand und Boden je 100 mm (Statik und Erddruck offen, N-STATIK)"},
   "deckel_t": {"wert": 40, "einheit": "mm", "herkunft": "[A] Gitterrost 30/10 verzinkt, 40 mm hoch; Oberkante des Deckels = Fussboden Z 0 (Quelle A18: Deckel auf Fussbodenhoehe)"},
   "deckel_w": {"wert": 1229, "einheit": "mm", "herkunft": "[A] Deckelbreite = Wanne innen 1129 + 2 x 50 mm Auflage auf der Wannenwand"},
-  "deckel_seg": {"wert": 1026, "einheit": "mm", "herkunft": "[A] drei Platten je 1026 mm in Y (3 x 1026 = 3078 = Wanne innen 2979 + 2 x 49,5 mm Auflage); je Platte rund 35 kg, einzeln abhebbar (Designprinzip 8)"},
+  "deckel_seg": {"wert": 1026, "einheit": "mm", "herkunft": "[A] drei Platten je 1026 mm in Y (3 x 1026 = 3078 = Wanne innen 2979 + 2 x 49,5 mm Auflage); je Platte rund 35 kg als Gitterrost, einzeln abhebbar (Designprinzip 8); im Modell Vollplatte (396 kg), Masse im Modell daher zu hoch"},
   "zone_l": {"wert": 212, "einheit": "mm", "herkunft": "[Q] Quelle A31 / D105: vier Pufferzonen zu je 17 Einheiten = 212,5 mm, auf 212 mm gerundet"},
   "zone_n": {"wert": 4, "einheit": "", "herkunft": "[Q] Quelle A31: vier Pufferzonen zu je 10 % der alten Laenge (Kalk, Aktivkohle, frei, frei)"},
   "trenn_t": {"wert": 10, "einheit": "mm", "herkunft": "[A] Trennwand PP 10 mm (zaehlt nicht zur Zonenbreite 212; geht von der Hauptkammer ab)"},
@@ -29,7 +29,7 @@
   "tuelle_id": {"wert": 25, "einheit": "mm", "herkunft": "[Q] D106: Zulauf-Schlauch ID25"},
   "tuelle_z": {"wert": -75, "einheit": "mm", "herkunft": "[A] Achse der Zulaufe oben: ueber dem Hochstand -110, unter dem Deckel -40 (freier Auslauf ueber dem Wasser)"},
   "tuelle_l": {"wert": 142, "einheit": "mm", "herkunft": "[A] Tuelle von aussen durch Wand und Folie bis 40 mm in die Grube"},
-  "halter_z": {"wert": -100, "einheit": "mm", "herkunft": "[A] Mitte der Schwimmerhalter-Aufnahme; sie umfasst den Hochstand -110"},
+  "halter_z": {"wert": -80, "einheit": "mm", "herkunft": "[A] Mitte der Schwimmerhalter-Aufnahme (Z -120 bis -40, unter dem Deckel); sie umfasst den Hochstand -110 und die Kabelklemme des schwimmerschalter_hochstand (Z -75 bis -45)"},
   "halter_y": {"wert": -444, "einheit": "mm", "herkunft": "[A] Lage der Aufnahme in der Hauptkammer (Mitte)"}
  },
  "werkstoff": {"name": "Beton C25 (Wanne), EPDM (Belag), PP (Trennwaende), Stahl verzinkt (Gitterrost)", "dichte_g_cm3": 2.4, "farbe": "#9a9a96", "herkunft": "[A] Selbstbau der Grube (Designprinzip 7: nur Sumpf-Grube und Podeste); Werkstoffe je Teil in data/parts/sumpftank.json"},
@@ -50,7 +50,7 @@
   "ports": [
    ["Zulauf 1 bis 3 (Schlauchtuelle ID25)", "PP-Tuelle Aussen 32, Bohrung 25, D106", "x -664,5 bis -522,5, y -1100 / -700 / -300, z -75", "waagerecht von der -X-Wand in die Grube; Schlauch ID25 aus Fallleitung oder Ruecklauf, freier Auslauf ueber dem Hochstand"],
    ["Pumpenplatz (tauchpumpe_modul)", "Sockel 400 x 400 x 30", "x 200, y -700, z -500 bis -470", "Pumpe steht auf dem Sockel; Druckleitung d50 nach oben durch eine Deckelfuge"],
-   ["Aufnahme Schwimmerschalter", "Halter PP 60 x 40 x 80", "x 532,5, y -444, z -140 bis -60", "Klemmpunkt des Schwimmerschalters auf dem Hochstand -110"]
+   ["Aufnahme Schwimmerschalter", "Halter PP 60 x 40 x 80", "x 532,5, y -444, z -120 bis -40", "Klemmpunkt des Schwimmerschalters auf dem Hochstand -110"]
   ],
   "verbindungen": [
    "Betonwanne in die Grube setzen, Wanne innen mit EPDM-Folie auskleiden und an der Oberkante fassen",

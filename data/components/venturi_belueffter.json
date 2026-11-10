@@ -1,0 +1,54 @@
+{
+ "klasse": "venturi_belueffter",
+ "teilenummer": "T104",
+ "revision": "A",
+ "beschreibung": "Passiver Venturi-Belueffter (U2, D103, Quelle A19): Injektor der Klasse Mazzei 1583 (1,5 Zoll) im Druckrohr d50 der Pumpe am Sumpf, unmittelbar vor dem Einlauf in den Fischtank; Lufteinlass mit Rueckschlagventil und Luftfilter oben, Klebemuffen d50 an beiden Enden. Groesse nach R60 (Mazzei-Tabelle), Maße des Injektors Annahme; Betriebspunkt (Druck, Luftmenge) nicht belegt",
+ "quelle_masse": "data/oasis-soll.json (venturi_1: Venturi-Injektor im Druckrohr, Lufteinlass mit Filter, Groesse offen A19; Lage Modell-Z 1650 laut data/oasis-lage.json); docs/research/R60-pumpe-statt-geblaese.md Abschnitt 2.1 (Mazzei-Tabelle, 1583: 55 l/min bei 10 psi); docs/research/R61-oasis-wasserkreislauf.md Abschnitt 4 (O3); docs/decisions.md D103, D106 (Druckrohr d50)",
+ "parameter": {
+  "pipe_d": {"wert": 50, "einheit": "mm", "herkunft": "[Q] D106: Druckleitung der Pumpen d50 (PVC-U)"},
+  "muffe_l": {"wert": 60, "einheit": "mm", "herkunft": "[A] Klebemuffe d50 (Einstecktiefe 31 laut leitung.py) plus 29 mm Anlauf bis zum Injektor"},
+  "inj_d": {"wert": 64, "einheit": "mm", "herkunft": "[A] Aussendurchmesser des Injektorkoerpers (Mazzei 1583, 1,5 Zoll; Datenblatt-Maß nicht gelesen)"},
+  "inj_l": {"wert": 150, "einheit": "mm", "herkunft": "[A] Baulaenge des Injektorkoerpers (Platzhalter nach Klasse 1,5 Zoll)"},
+  "inj_bohr": {"wert": 36, "einheit": "mm", "herkunft": "[A] Durchgang im Injektor (vereinfacht, die Duese ist nicht modelliert)"},
+  "saug_d": {"wert": 24, "einheit": "mm", "herkunft": "[A] Ansaugstutzen am Injektor (Gewinde 1/2 Zoll, aussen 24), Bohrung 8"},
+  "saug_l": {"wert": 30, "einheit": "mm", "herkunft": "[A] Hoehe des Ansaugstutzens ueber dem Injektor"},
+  "rv_d": {"wert": 30, "einheit": "mm", "herkunft": "[A] Rueckschlagventil Luft (Kunststoff, Tuellen-Typ), Aussen 30"},
+  "rv_l": {"wert": 55, "einheit": "mm", "herkunft": "[A] Baulaenge Rueckschlagventil Luft"},
+  "filter_d": {"wert": 45, "einheit": "mm", "herkunft": "[A] Luftfilter (Kunststoffgehaeuse mit Schaumeinsatz), Aussen 45"},
+  "filter_l": {"wert": 65, "einheit": "mm", "herkunft": "[A] Hoehe des Luftfilters"},
+  "luft_bohr": {"wert": 8, "einheit": "mm", "herkunft": "[A] Luftweg Ø 8 durch Stutzen und Rueckschlagventil"},
+  "achse_ueber_spiegel": {"wert": 500, "einheit": "mm", "herkunft": "[E] Rohrachse Modell-Z 1650 (data/oasis-lage.json venturi_1) minus Fischtank-Spiegel Modell-Z 1150 (= 400 + 750): 500 mm; der Lufteinlass liegt damit ueber dem Spiegel"},
+  "durchfluss_l_min": {"wert": 110, "einheit": "", "herkunft": "[Q] Quelle: 110 l/min je Linie (data/oasis-soll.json, Mengenbilanz je Halbring)"}
+ },
+ "werkstoff": {"name": "PP (Injektor, Stutzen, Filter, Rueckschlagventil), PVC-U (Muffen d50)", "dichte_g_cm3": 0.91, "farbe": "#e8e5d8", "herkunft": "[A] Mazzei liefert PP oder PVDF; PP gewaehlt (guenstiger, lebensmittelechte Qualitaet je Hersteller offen, D85)"},
+ "anzahl": {"soll": "2 (Venturi-Belueffter 1 und 2, je Linie einer)", "quelle": "data/oasis-soll.json venturi_1, venturi_2"},
+ "bezugspunkt": "Port A (Mitte der Muffenoeffnung am Eintritt) im Ursprung; Stroemung +X, Z hoch; Lufteinlass oben bei x 135; Einbau: Rohrachse 500 mm ueber dem Fischtank-Spiegel (Modell-Z 1650)",
+ "herkunft_tabelle": [
+  ["Injektor Klasse Mazzei 1583 (1,5 Zoll)", "Ø 64 x 150", "A", "R60 Abschnitt 2.1: 1583 liefert 55 l/min bei 10 psi Eingang; Maße des Datenblatts nicht gelesen", "niedrig"],
+  ["Druckrohr d50", "Muffen d50 beidseitig", "Q", "D106; leitung.py: Aussen 58,5, Muffentiefe 31", "hoch"],
+  ["Lufteinlass mit Filter und Rueckschlagventil", "Stutzen, Rueckschlagventil, Filter", "Q/A", "Quelle A19 (Filter, Schutz gegen Wasseraustritt bei Stillstand offen); Rueckschlagventil Annahme D113", "mittel"],
+  ["Betriebspunkt (Druck, Luft)", "nicht belegt", "offen", "R60: Tauchpumpe 0,23 bis 0,4 bar, Tabelle verlangt 0,7 bar Differenz; siehe Offene Fragen", "-"]
+ ],
+ "blatt": {
+  "funktion": "Bringt Sauerstoff ins Ruecklaufwasser, bevor es in den Fischtank laeuft: Die Pumpe am Sumpf druckt das Wasser durch die Verengung des Injektors, der Unterdruck saugt Luft ueber Filter und Rueckschlagventil an. Passiv, kein eigener Strom; ersetzt das Geblaese nicht allein (R60: 37 bis 48 g O2/h Wassertragfaehigkeit gegen 71 g/h Bedarf), deshalb bleiben Belueftungsanlage und Notluftpumpe. Im Vortex saugt kein Venturi (Quelle A23).",
+  "querschnitt": "Injektorkoerper Ø 64 x 150 mit Durchgang Ø 36; beidseitig Klebemuffe PVC-U d50 (Aussen 58,5, Tiefe 31, Gesamtlaenge je 60); Ansaugstutzen Ø 24 x 30, Rueckschlagventil Ø 30 x 55, Luftfilter Ø 45 x 65 senkrecht darauf; Luftweg Ø 8.",
+  "toleranzen": "Alle Koerper stossen an (Beruehrung, keine Durchdringung); Duese und Diffusor im Inneren nicht modelliert.",
+  "ports": [
+   ["A Eintritt (Muffe d50)", "PVC-U d50, Klebemuffe, Tiefe 31", "x 0, y 0, z 0", "Oeffnung zeigt -X; Druckrohr der Pumpe am Sumpf"],
+   ["B Austritt (Muffe d50)", "PVC-U d50, Klebemuffe, Tiefe 31", "x 270, y 0, z 0", "Oeffnung zeigt +X; Rohr zum Einlauf in den Fischtank"],
+   ["Luft (Filter)", "Ø 8", "x 135, z 182", "Luftfilter oben; liegt ueber dem Spiegel des Fischtanks"]
+  ],
+  "verbindungen": ["Muffen d50 mit dem Rohr verkleben (PVC-U)", "Injektor an den Muffen mit Gewinde- oder Klebeanschluss (im Modell Stoss)", "Ansaugstutzen, Rueckschlagventil und Filter stecken aufeinander (Schlauchtuelle)"],
+  "montage": ["Venturi waagerecht in das Druckrohr d50 setzen, Luftfilter nach oben", "Rohrachse so legen, dass der Lufteinlass mehr als 500 mm ueber dem Fischtank-Spiegel liegt", "Pumpe starten: Luft muss hoerbar angesaugt werden; bei Stillstand darf kein Wasser aus dem Filter austreten"],
+  "werkzeug": "Rohrschneider, PVC-Kleber nach DIN EN 14814, Wasserwaage",
+  "teileliste": [], "kritiker": "offen (Pruefer P-Pruef)",
+  "pruefung": ["python -X utf8 scripts/workshop/check_venturi_belueffter.py"],
+  "offen": [
+   "Antriebsdruck: Mazzei-Tabelle (R60) verlangt mindestens rund 0,7 bar Differenz (10 psi), die Tauchpumpe tauchpumpe_modul (Hmax 3,3 bis 4,1 m, R59) liefert hoechstens 0,3 bis 0,4 bar bei null Foerderung; Betriebspunkt nicht belegt. Rueckfall: Niederdruck-Venturi (Teichbelueftung) oder Injektor im Nebenstrom; Entscheidung bei Ben",
+   "Durchsatz: 110 l/min je Linie gegen 55 l/min Tabellenwert des 1583; Gegenmassnahmen offen (zwei parallel, Nebenstrom)",
+   "Lebensmitteleignung des Injektors (Mazzei PP/PVDF) ohne Herstellernachweis; Bezug Europa ueber Haendler, siehe data/beschaffung/",
+   "Schutz gegen Wasseraustritt bei Stillstand: Rueckschlagventil Luft ist Annahme D113 (Quelle laesst ihn offen, A19)"
+  ],
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+ }
+}

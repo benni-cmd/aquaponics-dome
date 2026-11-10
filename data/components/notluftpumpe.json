@@ -1,0 +1,50 @@
+{
+ "klasse": "notluftpumpe",
+ "teilenummer": "T109",
+ "revision": "A",
+ "beschreibung": "Notluftpumpe (U2, D103, Quelle A24): Membran-Luftpumpe (Platzhalterkoerper) mit Rueckschlagventil, Luftschlauch ueber den Rand des Fischtanks (Schleife ueber dem hoechsten Wasserspiegel gegen Rueckfluss) und Luftstein am Boden des Fischtanks; startet bei Ausfall der Wasserpumpen oder des Netzes, am Notstrom der Steuerung. Leistung und Luftmenge offen wie in der Quelle",
+ "quelle_masse": "data/oasis-soll.json (luftpumpe: Notluftpumpe, Luftleitung zum Fischtank mit Luftstein, startet bei Ausfall A24; fish: Boden -1000, Rand 1200, Wsp 750); docs/research/R55-wasserquelle-venturi.md (Notluft 55 l/min Eintrag als Richtwert); docs/decisions.md D103",
+ "parameter": {
+  "pumpe_l": {"wert": 210, "einheit": "mm", "herkunft": "[A] Gehaeuse Membran-Luftpumpe, Laenge X (Platzhalter nach Klasse 50 bis 60 l/min)"},
+  "pumpe_b": {"wert": 150, "einheit": "mm", "herkunft": "[A] Gehaeuse, Breite Y"},
+  "pumpe_h": {"wert": 170, "einheit": "mm", "herkunft": "[A] Gehaeuse, Hoehe Z (Standflaeche Z 0)"},
+  "tuelle_d": {"wert": 12, "einheit": "mm", "herkunft": "[A] Ausgangstuelle der Pumpe fuer Luftschlauch 9/12"},
+  "tuelle_l": {"wert": 30, "einheit": "mm", "herkunft": "[A] Laenge der Tuelle ausserhalb des Gehaeuses"},
+  "tuelle_z": {"wert": 120, "einheit": "mm", "herkunft": "[A] Hoehe der Tuelle ueber der Standflaeche"},
+  "rv_d": {"wert": 18, "einheit": "mm", "herkunft": "[A] Rueckschlagventil Luft (Kunststoff), Aussen 18"},
+  "rv_l": {"wert": 45, "einheit": "mm", "herkunft": "[A] Baulaenge Rueckschlagventil"},
+  "schlauch_d": {"wert": 12, "einheit": "mm", "herkunft": "[A] Luftschlauch 9/12 (Aussen 12)"},
+  "schleife_x": {"wert": 380, "einheit": "mm", "herkunft": "[A] Abstand der Steigleitung von der Pumpe (x)"},
+  "schleife_z": {"wert": 1300, "einheit": "mm", "herkunft": "[E] Rand des Fischtanks 1200 (data/oasis-soll.json fish) plus 100 mm: Luftleitung ueber dem hoechsten Wasserspiegel (Siphonbrecher, kein Wasser in die Pumpe)"},
+  "tank_x": {"wert": 760, "einheit": "mm", "herkunft": "[A] Abstand der Fallleitung in den Fischtank (x), die Schleife quert den Rand"},
+  "stein_d": {"wert": 40, "einheit": "mm", "herkunft": "[A] Luftstein Ø 40 (poroeses Sintermaterial)"},
+  "stein_l": {"wert": 100, "einheit": "mm", "herkunft": "[A] Luftstein 100 lang, steht senkrecht"},
+  "stein_ueber_boden": {"wert": 20, "einheit": "mm", "herkunft": "[A] Abstand des Luftsteins zum Boden des Fischtanks -1000"},
+  "luft_l_min": {"wert": 55, "einheit": "", "herkunft": "[A] Richtwert Notluft 55 l/min (R55 Tabelle), Quelle laesst Leistung und Luftmenge offen (A24)"}
+ },
+ "werkstoff": {"name": "PS/PA (Pumpengehaeuse), PVC-P (Schlauch), PE (Luftstein), PP (Tuelle, Ventil)", "dichte_g_cm3": 1.05, "farbe": "#777777", "herkunft": "[A] Platzhalter; Werkstoffe je Fabrikat. Wasserkontakt hat nur der Luftstein (D85: Nachweis offen)"},
+ "anzahl": {"soll": "1 (Notluftpumpe fuer den Fischtank)", "quelle": "data/oasis-soll.json luftpumpe (anzahl 1)"},
+ "bezugspunkt": "Mitte der Standflaeche der Pumpe in X und Y, Z 0 = Standflaeche (Fussboden); Schlauch +X ueber den Rand (Z 1300) und senkrecht hinab; Luftstein bei Z -980 (Boden Fischtank -1000)",
+ "herkunft_tabelle": [
+  ["Luftschlauch ueber dem hoechsten Wasserspiegel", "Schleife bei Z 1300", "Q/E", "Quelle luftpumpe_1.t3 'Luftleitung ueber dem hoechsten Wasserspiegel mit Rueckschlagventil'; Rand 1200 + 100", "mittel"],
+  ["Luftstein am Boden des Fischtanks", "Z -980 bis -880", "Q", "data/oasis-soll.json fish boden_ueber_fussboden_mm -1000; luftpumpe.t2 'Luftleitung zum Fischtank mit Luftstein'", "hoch"],
+  ["Pumpe 55 l/min", "Gehaeuse 210 x 150 x 170", "A", "R55 Richtwert; Quelle: Leistung offen (A24); Maße Platzhalter", "niedrig"]
+ ],
+ "blatt": {
+  "funktion": "Haelt die Fische bei Ausfall der Wasserpumpen (und damit der Venturi-Belueffter) oder des Netzes am Leben: startet ueber die Steuerung am Notstrom (Batteriespeicher), blaest Luft ueber einen Luftstein in den Fischtank. Die Luftleitung steigt ueber den hoechsten Wasserspiegel (Rand 1200) und faellt dann zum Stein, ein Rueckschlagventil sitzt am Pumpenausgang: so laeuft kein Wasser in die Pumpe zurueck (Designprinzip 9). Pumpenzahl und Luftmenge offen wie in der Quelle (A24); Richtwert 55 l/min nach R55 (deckt rund 24 bis 49 Prozent des Spitzenbedarfs von 71 g O2/h, kein Ersatz fuer das Gebläse im Dauerbetrieb).",
+  "querschnitt": "Gehaeuse 210 x 150 x 170; Ausgangstuelle Ø 12 x 30 auf Z 120; Rueckschlagventil Ø 18 x 45; Luftschlauch Ø 12 als ein Koerper (Steigleitung bei x 380 bis Z 1300, waagerecht bis x 760, Fallleitung bis Z -880); Luftstein Ø 40 x 100 senkrecht (Z -980 bis -880).",
+  "toleranzen": "Schlauch als ein Koerper (Knicke als Gehrung); Stein beruehrt den Schlauch (Stoss). Boden des Fischtanks und Rand liegen im Bauteil bei Z -1000 und Z 1200.",
+  "ports": [["Strom (Steuerung)", "Netz oder 12 V je Fabrikat", "am Gehaeuse (nicht modelliert)", "an die Steuerung am Notstrom"], ["Luftstein", "Ø 40 x 100", "x 760, y 0, z -980 bis -880", "steht auf dem Boden des Fischtanks (20 mm Abstand)"]],
+  "verbindungen": ["Schlauch auf die Tuelle stecken und mit Schelle sichern", "Rueckschlagventil zwischen Tuelle und Schlauch", "Schlauch an der Fischtank-Wand fixieren (Klammern), Luftstein beschweren oder an den Schlauch binden"],
+  "montage": ["Pumpe auf festem Platz im Dom aufstellen (trocken, ueber der Wasserlinie des Sumpfs)", "Schlauch ueber den Rand des Fischtanks legen (Schleife ueber Z 1300) und zum Luftstein hinabfuehren", "Luftstein auf den Boden stellen, Steuerung auf Notstrombetrieb pruefen"],
+  "werkzeug": "Schlauchschelle, Seitenschneider, Kabelbinder",
+  "teileliste": [], "kritiker": "offen (Pruefer P-Pruef)",
+  "pruefung": ["python -X utf8 scripts/workshop/check_notluftpumpe.py"],
+  "offen": [
+   "Pumpenfabrikat, Leistung und Luftmenge (Quelle A24 offen; 55 l/min ist Richtwert R55); Bezug Europa je Haendler siehe data/beschaffung/",
+   "Lebensmitteleignung des Luftsteins (Wasserkontakt, D85) ohne Herstellernachweis; Rueckfall: Edelstahl- oder Keramikausstroemer",
+   "Notstrom: Auslegung des Batteriespeichers und Umschaltung gehoeren zur Steuerung, nicht zu diesem Teil"
+  ],
+  "abweichung": "Kein OBJ-Bestand (Bauteil ist neu nach der Quelle)."
+ }
+}

@@ -14,8 +14,9 @@ Regeln (jede mit Quelle im Kopf von `constraints`):
   Luft 150 mm zwischen Fussabdruecken, die sich in Z beruehren oder ueberlappen · Wandluft 100 mm zur Zehneck-Innenkante (Apothema 5706, D29)
   · Kuppelkugel 5800 mm (Aufgabe U1; Knoten liegen auf r 6000, Streben/Knoten 200 mm tief) auch in der Hoehe (Kopffreiheit)
   · Tuer-Gang 900 mm breit von der Tuer (Az -72) bis zum Zentralpool (D29) · Laufweg 500 mm: Flutung von der Tuer (wie check_walkways_voll.py).
-Suche: Raster 50 mm, kleinste Verschiebung gegen die gedrehte Zeichnung, hoechstens 750 mm (D99). Ohne Treffer: Status OFFEN, naechster
-freier Platz als Alternative A; eine ANNAHME (docs/decisions.md) legt dann den Bauplatz fest (Tabelle ANNAHMEN unten).
+Suche: je Teil der erste regelkonforme Platz in aufsteigender Verschiebung gegen die gedrehte Zeichnung (Raster 50 mm bis 750 mm, D99; darueber 100 mm bis 3600 mm),
+vier Reihenfolgen, die beste zaehlt. Teile ohne Platz in der Kuppel gehen als Vorbau nach aussen (D109), ebenso Teile, die den Zugang ueber 500-mm-Gaenge abschnueren;
+Verschiebungen ueber 750 mm tragen D110, Einbauten (Pumpen, Schwimmer im Wirt) D108. `--ohne a,b` rechnet ohne bleibende Hindernisse (Vergleich, schreibt nichts); `--bild <pfad>` zeichnet.
 """
 import json
 import math
@@ -438,17 +439,6 @@ OFFS_750 = offsets(MAX_SHIFT)
 OFFS_FAR = None
 
 
-def first_fit(spec, nom, others, far=False):
-    global OFFS_FAR
-    if far and OFFS_FAR is None:
-        OFFS_FAR = OFFS_750 + [o for o in offsets(SEARCH_MAX, 100.0) if math.hypot(*o) > MAX_SHIFT]
-    for dx, dy in (OFFS_FAR if far else OFFS_750):
-        c = (nom[0] + dx, nom[1] + dy)
-        if not violations(spec, spec["fn"](c), others):
-            return (dx, dy)
-    return None
-
-
 def nearest_gap(spec, shape, others):
     best = (1e9, None)
     for o in others:
@@ -457,15 +447,6 @@ def nearest_gap(spec, shape, others):
             if d < best[0]:
                 best = (d, o["name"])
     return best
-
-
-# ---------------------------------------------------------------- ANNAHMEN (Dxxx in docs/decisions.md): Bauplatz ausserhalb von 750 mm
-# Schluessel = Soll-ID; Wert = (D-Nummer, Modus). Modus "annahme": Bauplatz = naechster freier Platz ueber die 750 mm hinaus
-# (Suche bis SEARCH_MAX), "einbau": Standflaeche im Wirt. Erst eintragen, wenn die Probe das Teil als OFFEN meldet.
-ANNAHMEN = {}
-EINBAU_D = "D108"        # Einbauten (Pumpen im Fischtank/Sumpf, Schwimmer): Bauplatz im Wirt
-VORBAU_D = "D109"        # kein Platz in der Kuppel: Bauplatz aussen als Vorbau
-SHIFT_D = "D110"         # Verschiebung ueber 750 mm, begruendet
 
 
 def pos_dict(x, y, yaw, z):
@@ -932,33 +913,6 @@ def show(out):
                 r["id"], r["gruppe"], r["modus"], r["status"], r["verschiebung_mm"], b.get("x_mm", 0), b.get("y_mm", 0), b.get("drehung_grad", 0), b.get("z_modell_mm", 0),
                 r.get("kleinster_abstand_mm"), r.get("naechstes_teil") or "", "; ".join(r["konflikte_soll_lage"])[:150] or "frei",
                 (" | GANG: " + "; ".join(r["hinweise_gang"])[:140]) if r.get("hinweise_gang") else ""))
-
-
-def check(out):
-    """Abnahme U1; liefert Liste der Fehler."""
-    err = []
-    z = out["meta"]["zaehlung"]
-    if z["bauteile_im_umfang"] != 40:
-        err.append("Bauteile im Umfang %d statt 40" % z["bauteile_im_umfang"])
-    if z["mit_bauplatz"] != 40:
-        err.append("nur %d von 40 mit Bauplatz" % z["mit_bauplatz"])
-    if z["offen"]:
-        err.append("OFFEN ohne ANNAHME: %s" % z["offen"])
-    if z["konflikte_nach_verschiebung"]:
-        err.append("%d Konflikte nach Verschiebung" % z["konflikte_nach_verschiebung"])
-    if z["groesste_verschiebung_zeichnung_mm"] > MAX_SHIFT:
-        err.append("groesste Verschiebung %.0f > %.0f" % (z["groesste_verschiebung_zeichnung_mm"], MAX_SHIFT))
-    g = out["meta"]["gangprobe"]
-    if g["soll_teile_nicht_erreichbar"] or g["neu_blockiert"]:
-        err.append("Laufweg: %s %s" % (g["soll_teile_nicht_erreichbar"], g["neu_blockiert"]))
-    for r in out["bauteile"]:
-        if r["modus"] in ("annahme", "einbau") and not r.get("annahme"):
-            err.append("%s: Ausnahme ohne D-Nummer" % r["id"])
-        if r["gruppe"] == "frei" and r["id"].split("_")[0] not in ("nachspeise", "venturi", "permakultur", "rain", "tap"):
-            b = r["bauplatz"]
-            if math.hypot(b["x_mm"], b["y_mm"]) > DOME_R:
-                err.append("%s ausserhalb der Kuppel" % r["id"])
-    return err
 
 
 def verify_file():

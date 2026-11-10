@@ -25,7 +25,7 @@ liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 |---|---|---|---|---|
 | P0 | im Planer-Lauf | WIP-Stand Ring B2 gesichert (16 Dateien seit 05.11.) | – | **erledigt** (35e3948) |
 | P1 | `unify-1-planer.md` | Quelle → `data/oasis-soll.json` + R61; Soll-Ist; Bauplan; Abweichungen | 12 USD | **erledigt** (e0dca88, 0aa5bb9, 99ce5b0, c9646ac) |
-| U1 | `unify-u1-daten.md` | Lage-Probe: Soll-Lage gegen gebaute Teile, Bauplatz je Bauteil (`data/oasis-lage.json`), nichts gebaut | 8 USD | offen |
+| U1 | `unify-u1-daten.md` | Lage-Probe: Soll-Lage gegen gebaute Teile, Bauplatz je Bauteil (`data/oasis-lage.json`), nichts gebaut | 8 USD | **teilweise** (10.11.): Mess-Skript und Lage-Probe laufen; 40 Bauplätze, davon 19 nur per ANNAHME D108–D110 (Technik passt nicht in die Kuppel, Ben entscheidet) |
 | U2 | `unify-u2-werkstatt.md` | neue Bauteile: Sumpftank mit Pufferzonen, Podeste, Venturi, Schwimmerschalter, Schlamm-Sammelbehälter, Regentank, Nachspeise-Ventil, Notluft, Beet-Siphon-Details | 15 USD | offen |
 | U3 | `unify-u3-werkstatt.md` | Becken und Tische: Fischtank (Rand 1200, Boden −1000), Anzucht-/Lebendfutterbecken, Überläufe, Tisch- und Beethöhen als Parameter | 15 USD | offen |
 | U4 | `unify-u4-montage.md` | Gesamtmodell: Becken, Sumpftanks, Gruben, Tische und Beete auf Soll-Höhe | 20 USD | offen |
@@ -47,6 +47,8 @@ Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Oberg
   3. P1a `data/oasis-soll.json` (`0aa5bb9`, `99ce5b0`): 43 Bauteile (40 im Umfang), 90 Wege (77 im Umfang: 53 Wasser, 9 Luft, 6 Schlamm, 9 Strom für Pumpen/Belüftung/Schwimmer), 97 Armaturen-Zeilen (406 gezählte Stück); 45 von 45 Selbstprüfungen (`python -I -X utf8 scripts/oasis_soll.py`).
   4. P1b R61 und 14 Annahmen D94 bis D107 (`99ce5b0`). P1c Soll-Ist und P1d Abweichungen siehe unten, P1e Bauplan `docs/jobs/N-UNIFY-AUTOBAHN.md` mit 10 Runden-Aufträgen und 1 Prüfer-Auftrag in `docs/jobs/api/unify-*.md` (`c9646ac`).
   5. Wichtigste Befunde: (a) Fußboden der Quelle = Modell-Z 400, nicht 0 (D94); (b) Ring B2 im Modell ist exakt die Quell-Zeichnung um 18° gedreht (D95); (c) die Quelle zeigt Höhenschnitt und Annahmen nur in `flow-diagram.html`.
+
+- 10.11.2026, Daten-Lauf U1 (Sonnet 5.5, Agent-SDK): `scripts/oasis_lagepruefung.py`, `data/oasis-lage.json`, `scripts/check_oasis_soll.py`, `data/oasis-messung.json`, `renders/oasis-lage.png`, Annahmen D108–D111. Prüfbefehle: (1) `python -I -X utf8 scripts/oasis_lagepruefung.py --pruefen` → Exit 0, 40 Bauteile mit Bauplatz, 0 Regelverletzungen, größte Verschiebung „Zeichnung" 667 mm, 19 Ausnahmen mit D-Nummer; (2) `python -I -X utf8 scripts/check_oasis_soll.py --liste` → 16 Messpunkte, `--teil alle` → Ausgangsmessung (Tabelle unten, Exit 1); (3) `python -I -X utf8 scripts/oasis_soll.py --pruefen` → 45 OK, 0 FAIL; (4) `git diff --stat designs/ scripts/gen_dome.py data/params.json` → leer. Wörtlich nicht erfüllt: „größte Verschiebung ≤ 750 mm" gilt nur für 6 Teile; 8 Teile liegen darüber (D110), 5 Teile außen (D109), 6 Einbauten zählen gegen den Wirt (D108). Fortsetzungspunkt: Ben entscheidet D109/D111; danach `unify-u2-werkstatt.md`.
 
 ## Soll-Ist (P1c)
 Ist-Messung: `python -I -X utf8 scripts/oasis_istmessung.py` (Export `viewer/varianten/ring_b2/instances.json`, Stand 05.11.2026 21:18, 5570 Instanzen; Höhen relativ zum Fußboden Z 400). Soll: `data/oasis-soll.json` (gedreht, Modellkoordinaten). Urteil: **übernehmen** (passt wie gebaut) · **verschieben** (gleiches Bauteil, andere Höhe oder Lage) · **umbauen** (Maß oder Funktion ändert sich) · **neu** · **entfernen**.
@@ -143,6 +145,75 @@ Die Quelle gewinnt (D93). Reihenfolge nach Gewicht; „Folge“ nennt die Runde,
 | 15 | D86, W75 (Leitungsordnung v2, Schläuche), W87, W88 | – | **bestätigt**, nicht überholt (Fallleitungen frei hängend, Rücklauf Schlauch) | – |
 | 16 | D40 (Fischmenge 475 kg in 26,4 bis 27,8 m³) | Auslegung 475 kg, 680 Fische | Quelle rechnet 120 Fische/85 kg in 22 m³ (Showcase-Parameter, nicht Teil des Kreislaufs): D40 bleibt, Biomasse in 20,8 m³ neu rechnen | U8 (Daten), offen |
 
+## U1: Ausgangsmessung und Lage-Probe (Daten-Lauf, 10.11.2026)
+**Problem:** Ob die Soll-Lage in die gebaute Kuppel passt, und wie der Wasserspiegel am gebauten Modell gemessen wird, war offen. **Intent:** vor jedem Bau Bauplatz und Messvorschrift festlegen (D99). **Goal:** 40 Bauplätze ohne Kollision und ein Mess-Skript für 16 Wasserspiegel (±50 mm).
+
+### Ausgangsmessung (Altmodell, Export 05.11.2026 21:18)
+Befehl: `python -I -X utf8 scripts/check_oasis_soll.py --teil alle` (Exit 1 = Abweichung, erwartet). Ist = Mittel der Instanzen, in mm über Fußboden (Z-Bezug 400); Messvorschrift je Punkt in `data/oasis-messung.json`.
+| Punkt | Soll | Ist | Abweichung | Urteil |
+|---|---|---|---|---|
+| `fish` | 750 | 515 | -235 | ABWEICHUNG |
+| `nursery` | 800 | 515 | -285 | ABWEICHUNG |
+| `feed` | 850 | 515 | -335 | ABWEICHUNG |
+| `vortex_1` | 1900 | 1323 | -577 | ABWEICHUNG |
+| `vortex_2` | 1900 | 1323 | -577 | ABWEICHUNG |
+| `bio_1` | 1800 | 1570 | -230 | ABWEICHUNG |
+| `bio_2` | 1800 | 1570 | -230 | ABWEICHUNG |
+| `ring_1` | 1550 | 2145 | +595 | ABWEICHUNG |
+| `ring_2` | 1550 | 2145 | +595 | ABWEICHUNG |
+| `nft_aussen` | 1050 | 1020 | -30 | OK |
+| `nft_mitte` | 900 | 1020 | +120 | ABWEICHUNG |
+| `nft_innen` | 1250 | 1020 | -230 | ABWEICHUNG |
+| `fd_aussen` | 250 | 365 | +115 | ABWEICHUNG |
+| `fd_mitte` | 250 | 354 | +104 | ABWEICHUNG |
+| `sump_1` | -250 | fehlt (keine Komponente `sumpftank`) | – | FEHLT |
+| `sump_2` | -250 | fehlt (keine Komponente `sumpftank`) | – | FEHLT |
+
+Ergebnis: 1 von 16 Punkten innerhalb ±50 mm (`nft_aussen`), 13 mit Abweichung, 2 fehlen (Sumpftank ist nicht gebaut). Stufenreihenfolge: 15 Paare, davon 7 erfüllt, 6 verletzt (Vortex > Biofilter ×2, Biofilter > Ring ×2, Anzucht > Fischtank und Lebendfutter > Anzucht, weil alle drei Becken heute +515 stehen) und 2 nicht prüfbar (Sumpf fehlt). Zeile des Skripts: `ERGEBNIS: ABWEICHUNG (23 Abweichungen oder fehlende Werte)`.
+
+### Lage-Probe (nach dem Entfernen der Ist-Teile aus Abschnitt C)
+Befehle: `python -I -X utf8 scripts/oasis_lagepruefung.py` (rechnet, schreibt `data/oasis-lage.json`, etwa 2 Minuten), `... --pruefen` (misst die Datei neu, Sekunden), Bild `renders/oasis-lage.png` (rot = Zeichnung, grün = Bauplatz, blau = Tür-Gang). Regeln: 150 mm Luft zu allem, was in Z berührt oder überlappt; Wandluft 100 mm zur Zehneck-Wand (Apothema 5706); Kuppelkugel 5800 mm auch in der Höhe; Tür-Gang 900 mm von der Tür (Az −72) bis zum Zentralpool; Laufweg 500 mm als Flutung von der Tür (50-mm-Raster, Knie- und Kopfscheibe). Suche: Raster 50 mm bis 750 mm, darüber 100 mm bis 3600 mm; vier Reihenfolgen, die beste zählt.
+
+**Befund: Die Soll-Technik passt in der gebauten Kuppel nicht vollständig hinein.** Die Lücke im Außenring ist 72° breit (8 von 10 Tischen), die Zeichnung rechnet mit 120°. Gemessen: Von 19 frei stehenden Teilen haben je nach Reihenfolge 4 bis 7 keinen kollisionsfreien Platz in der Kuppel; die erste Fassung (4 Teile außen) schnürte den Zugang ab (34 Tische, Beete und Teile über 500-mm-Gänge nicht mehr erreichbar), erst mit 5 Teilen außen sind es 0.
+
+| Bauteil | Ort | Soll r / Az (Zeichnung, gedreht) | Bauplatz r / Az | Drehung ° | Z Modell | Verschiebung mm | Modus |
+|---|---|---|---|---|---|---|---|
+| `rain` | aussen (Platzhalter) | 6620.6 / -169.6 | 7064.0 / -170.3 | 18.0 | 400.0 | 450 | Zeichnung (≤ 750) |
+| `tap` | aussen (Platzhalter) | 6563.6 / -163.1 | 7229.4 / -163.5 | 18.0 | 400.0 | 667 | Zeichnung (≤ 750) |
+| `nachspeise` | innen | 3068.1 / -176.2 | 2502.9 / -169.5 | 0.0 | 1150.0 | 650 | Zeichnung (≤ 750) |
+| `fish` | innen | 0.0 / 0.0 | 0.0 / 0.0 | 0.0 | -600.0 | 0 | bleibt |
+| `nursery` | innen | 3550.0 / -72.0 | 4461.6 / -51.2 | 108.0 | 400.0 | 1703 | ANNAHME D110 |
+| `feed` | innen | 5300.0 / -72.0 | 4048.0 / -86.6 | 108.0 | 400.0 | 1720 | ANNAHME D110 |
+| `filterpumpe_1` |  | 2661.8 / -44.0 | 1702.5 / -44.0 | 0.0 | -600.0 | 959 | Einbau D108 im Wirt `fish` |
+| `filterpumpe_2` |  | 2661.8 / -100.0 | 1702.5 / -100.0 | 0.0 | -600.0 | 959 | Einbau D108 im Wirt `fish` |
+| `vortex_1` | innen | 4475.3 / -34.5 | 2958.6 / -24.7 | 7.4 | 977.0 | 1640 | ANNAHME D110 |
+| `vortex_2` | aussen (Vorbau) | 4475.3 / -109.5 | 6873.0 / -120.6 | -151.4 | 977.0 | 2625 | ANNAHME D109 |
+| `bio_1` | innen | 5301.2 / -22.6 | 4841.8 / -27.5 | 157.4 | 630.0 | 632 | Zeichnung (≤ 750) |
+| `bio_2` | innen | 5301.2 / -121.4 | 3872.4 / -110.6 | 73.6 | 630.0 | 1664 | ANNAHME D110 |
+| `sludge_1` | aussen (Vorbau) | 5432.8 / -41.9 | 6811.7 / -51.5 | 0.0 | 400.0 | 1712 | ANNAHME D109 |
+| `sludge_2` | aussen (Vorbau) | 5432.8 / -102.1 | 7433.2 / -85.7 | 0.0 | 400.0 | 2702 | ANNAHME D109 |
+| `permakultur` | aussen (Platzhalter) | 6612.5 / -72.0 | 7721.9 / -73.1 | 18.0 | 400.0 | 1118 | ANNAHME D110 |
+| `ringende_1` | innen | 3225.2 / 90.0 | 3225.2 / 90.0 | 90.007 | 1950.0 | 0 | Zeichnung (≤ 750) |
+| `ringende_2` | innen | 3225.2 / 126.0 | 3225.2 / 126.0 | 125.993 | 1950.0 | 0 | Zeichnung (≤ 750) |
+| `sump_1` | aussen (Vorbau) | 4329.3 / -50.8 | 7560.7 / -44.1 | 93.0 | -100.0 | 3302 | ANNAHME D109 |
+| `hauptpumpe_1` |  | 3946.2 / -49.7 | 7190.2 / -43.0 | 0.0 | -100.0 | 3302 | Einbau D108 im Wirt `sump_1` |
+| `venturi_1` | innen | 3132.5 / -43.4 | 3247.9 / -40.3 | 0.0 | 1650.0 | 206 | Zeichnung (≤ 750) |
+| `sump_2` | aussen (Vorbau) | 4329.3 / -93.2 | 7550.1 / -104.1 | 123.0 | -100.0 | 3400 | ANNAHME D109 |
+| `hauptpumpe_2` |  | 3946.2 / -94.3 | 7190.3 / -105.3 | 0.0 | -100.0 | 3400 | Einbau D108 im Wirt `sump_2` |
+| `venturi_2` | innen | 3132.5 / -100.6 | 3066.3 / -98.9 | 0.0 | 1650.0 | 112 | Zeichnung (≤ 750) |
+| `schwimmer_1` |  | 5587.6 / -54.2 | 8775.3 / -47.1 | 0.0 | 290.0 | 3302 | Einbau D108 im Wirt `sump_1` |
+| `schwimmer_2` |  | 5587.6 / -89.8 | 8732.9 / -100.5 | 0.0 | 290.0 | 3400 | Einbau D108 im Wirt `sump_2` |
+| `luftpumpe` | innen | 6937.5 / -143.1 | 4398.2 / -160.5 | 36.9 | 400.0 | 3041 | ANNAHME D110 |
+| `luftpumpe_1` | innen | 7215.7 / -6.6 | 4284.4 / 5.0 | -171.6 | 400.0 | 3139 | ANNAHME D110 |
+| `luftpumpe_2` | innen | 7215.7 / -137.4 | 4375.4 / -125.1 | 27.6 | 400.0 | 3087 | ANNAHME D110 |
+
+Bleibende Gruppen (Lage nach Modell, nur die Höhe ändert sich; Plätze samt Z in der Datei): `ring_1` (5 Plätze, Z 1950.0), `ring_2` (5 Plätze, Z 1950.0), `kupplungshahn` (2 Plätze, Z 1950.0), `abf_nft_1` (12 Plätze, Z 1950.0), `abf_fd_1` (7 Plätze, Z 1950.0), `abf_nft_2` (12 Plätze, Z 1950.0), `abf_fd_2` (7 Plätze, Z 1950.0), `nft_aussen` (8 Plätze, Z 400.0), `fd_aussen` (8 Plätze, Z 400.0), `nft_mitte` (6 Plätze, Z 400.0), `fd_mitte` (6 Plätze, Z 400.0), `nft_innen` (10 Plätze, Z 400.0).
+Zählung (`--pruefen`): 40 Bauteile mit Bauplatz, 0 Regelverletzungen nach Verschiebung, größte Verschiebung im Modus „Zeichnung" 667 mm (6 Teile, Grenze 750); 19 Teile mit ANNAHME: 6 Einbauten (D108), 5 Vorbau außen (D109), 8 über 750 mm (D110). Befund Tür-Gang: Der Ring auf 1550 kreuzt die Tür-Achse (Kupplungsstrecke Az −72) unterhalb der Kopfscheibe 1,7 m (D111).
+
+Vergleichsrechnungen (je `... --ohne <Hindernisse>`, nichts geschrieben): ohne Puffer klein → 4 Teile ohne Platz (Vortex 2, Schlamm 2, Anzucht, Lebendfutter; beide Sumpftanks passen dann hinein); ohne Puffer klein und ohne Außentisch/Außenbeet Az −108 → 5 Teile ohne Platz (nicht besser). Die Suche ist ein Greedy-Verfahren, keine Optimierung: sie zeigt, dass diese Anordnung nicht gefunden wurde, nicht dass es keine gibt.
+
+**Grenzen (Designprinzip 10):** Fußabdrücke aus den Körper-Boxen (`viewer/detail`, Pool aus der A+-Datei: Hülle Radius 2095), Podest-Überstand 50 mm, Behälterwand 60 mm, Tür-Vorplatz 900 × 1500 und Notluftpumpe 300 × 250 sind Annahmen [A]; Tauchpumpen-Größe aus der Zeichnung (Ø 275); Portale als Beet + 115 mm (D54). Die Zufahrt der Zulaufleitung außen ist nicht geprüft (U6).
+
 ## Offen (an Ben, nicht blockierend: Annahmen D94 bis D107 gelten bis zum Zwischencheck, D81-Regel)
 1. DEINE ENTSCHEIDUNG: Pool-Rand 1200 mm (Quelle, A26/Q18 „Ja, B umsetzen“) statt „ebenerdig“ (D88, W85)? Empfehlung: Quelle, weil Ben es am 09.11. so bestätigt hat und 5,0 m³ weniger Aushub entstehen.
 2. DEINE ENTSCHEIDUNG: Quarantäne-Funktion des Drittbeckens (D46) entfällt zugunsten des Lebendfutterbeckens? Empfehlung: ja, ein Becken weniger; bei Bedarf Anzuchtbecken.
@@ -151,6 +222,9 @@ Die Quelle gewinnt (D93). Reihenfolge nach Gewicht; „Folge“ nennt die Runde,
 5. ICH (Orchestrator), empfohlener nächster Schritt: Läufe U1 bis U10 in die Warteschlange legen, ein Lauf zur Zeit; nächster Lauf: U1 (`docs/jobs/api/unify-u1-daten.md`). Dazu den Roadmap-Eintrag `N-UNIFY-AUTOBAHN` anlegen und W89 im Wunschbuch auf „in Arbeit“ setzen (der Planer ändert `data/roadmap.json` nicht).
 6. DEINE HANDLUNG (Ben): Leon die Abweichungen von seiner Quelle zeigen (`docs/research/R61-oasis-wasserkreislauf.md` Abschnitt 3 und 4, Annahmen D94 bis D107; besonders Fußboden Z 400, Drehung 18°, Fischtank 20,8 statt 22 m³, Quarantäne entfällt), bevor U4 baut: die Quelle ist seine, das Ziel ist ein Kreislauf, auf den sich beide einigen.
 7. ICH (Orchestrator) oder DEINE ENTSCHEIDUNG: `.gitignore` um `viewer/detail/*.json` und `viewer/varianten/` ergänzen? Beide Ordner stehen seit dem 05.11. als ungesichert im `git status`; `viewer/export_detail.py` Zeile 5 sagt „wird nie committet“. Empfehlung: ja, damit der Hinweis „NICHT COMMITTET“ nicht dauerhaft auf Erzeugtes zeigt.
+8. DEINE ENTSCHEIDUNG (U1, D109): Soll-Technik passt nicht in die Kuppel. Optionen: (a) Sumpftank 1 und 2, Vortex 2 und beide Schlamm-Sammelbehälter als Vorbau außen (Annahme, verstößt gegen Designprinzip 4); (b) Puffer klein (Messtechnik) entfällt, dann stehen nur Vortex 2, Schlamm 2, Anzucht- und Lebendfutterbecken außen und beide Sumpftanks innen; (c) Quelle ändern (weniger Teile). Die Daten in `data/oasis-lage.json` gelten für (a), weil (b) ein Teil streicht, das du nicht freigegeben hast (offene Frage 4). Empfehlung: (b), weil die Sumpftanks mit Pumpe und Venturi dann im Kreislauf bleiben und nur die Messtechnik wegfällt; ICH setze es auf dein Ja um (Lauf U1 mit entferntem `puffer_klein:1` wiederholen, Anzucht- und Lebendfutterbecken kämen dann nach außen).
+9. DEINE ENTSCHEIDUNG (U1, D111): Ring auf 1550 kreuzt die Tür-Achse mit etwa 1,51 m lichter Höhe. Optionen: so lassen (Bücken an der Tür-Achse) oder Ring-Stück an der Tür-Achse auf mindestens 2100 anheben. Empfehlung: anheben; ICH plane es in U6.
+10. ICH (nächster Schritt, empfohlen): Lauf U2 (`docs/jobs/api/unify-u2-werkstatt.md`) starten; er hängt von keiner der beiden Entscheidungen ab (Bauteile, nicht Lage). U4/U5 warten auf Entscheidung 8.
 
 ## Verbrauch (aus `tools/agent-sdk-runner/usage.jsonl`, je Lauf)
 | Lauf | Modell | USD | Token Eingabe/Ausgabe/Cache gelesen/geschrieben |

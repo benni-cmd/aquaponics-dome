@@ -38,6 +38,9 @@
   #legende .lz.sub { margin-left:16px; color:var(--muted); }
   #legende .kopf { color:var(--muted); margin-bottom:3px; }
   .row { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
+  a.knopf { display:inline-block; margin:2px 0 6px; background:#223142; color:var(--text); border:1px solid var(--line); border-radius:5px; padding:4px 8px; text-decoration:none; font-size:13px; }
+  a.knopf:hover { border-color:var(--sel); }
+  .mobil #panel a.knopf { padding:10px 12px; }
   button { background:#223142; color:var(--text); border:1px solid var(--line); border-radius:5px; padding:4px 8px; cursor:pointer; font:inherit; }
   button:hover { border-color:var(--accent); }
   label.opt { display:flex; align-items:center; gap:6px; padding:1px 0; cursor:pointer; }
@@ -166,6 +169,7 @@
     <button type="button" data-variante="a_plus" aria-pressed="true" title="Kreislauf A+ (heutiges Modell)">A+</button>
     <button type="button" data-variante="ring_b2" aria-pressed="false" title="Kreislauf Ring B2 (Variante, eigener Export)">Ring B2</button>
   </div>
+  <a id="modelldownload" class="knopf" hidden download>Modell herunterladen</a>
   <div id="lade" hidden aria-live="polite">
     <div id="ladephase"></div>
     <div class="bar"><i id="ladebalken"></i></div>
@@ -956,6 +960,15 @@ function varianteAnzeigen() {
   document.querySelectorAll('[data-variante]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.variante === variante)));
   document.getElementById('variantenetikett').textContent = 'Kreislauf: ' + VARIANTEN[variante].name;
   document.title = 'Kuppel Live-Viewer (' + VARIANTEN[variante].name + ')';
+  if (typeof downloadAnzeigen === 'function') downloadAnzeigen();
+}
+// Download des SolidCraft-Modells (Wunsch Ben 10.11.2026, Pakete aus scripts/model_download.py); nur in der statischen Ansicht
+var DOWNLOAD = null;
+function downloadAnzeigen() {
+  const a = document.getElementById('modelldownload'), d = DOWNLOAD && DOWNLOAD[variante];
+  a.hidden = !d; if (!d) return;
+  a.href = d.datei; a.textContent = `Modell herunterladen (SolidCraft, ${String(d.mb).replace('.', ',')} MB)`;
+  a.title = `${VARIANTEN[variante].name}: Gesamtmodell und ${d.bauteile} Bauteile als ZIP, Stand ${d.datum.slice(0, 16)} (Commit ${d.commit}). Öffnen mit SolidCraft 0.25.1 oder neuer.`;
 }
 let ladeGelungen = false;
 async function varianteWechseln(neu) {
@@ -1002,6 +1015,7 @@ async function pollBoard() {
 }
 if (window.STATIK) {                                        // statisch: kein Server, kein Export, kein Board; einmal laden
   document.getElementById('status').textContent = 'Statische Ansicht (Stand des letzten Exports)';
+  fetch('download/download.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => { DOWNLOAD = d; downloadAnzeigen(); }).catch(() => {});
   fetch('statik.json').then(r => r.json()).then(s => { document.getElementById('status').textContent = `Statische Ansicht, Stand ${s.stand}`; if (!(s.varianten || []).includes('ring_b2')) document.querySelectorAll('[data-variante="ring_b2"]').forEach(b => { b.hidden = true; }); }).catch(() => {});
   version = 1; load();
 } else { setInterval(poll, 2000); poll(); setInterval(pollBoard, 5000); pollBoard(); }

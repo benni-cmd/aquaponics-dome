@@ -5,6 +5,7 @@ Ausgabe viewer/dist/ (nie committen, steht in .gitignore; .vercel und .vercelign
   index.html            Kopie von viewer/index.html mit <meta name="viewer-modus" content="statisch">
   defs/*.obj.gz, detail/*.obj.gz   OBJ-Text, Koordinaten auf 0,01 mm (Normalen 0,001) gerundet, gzip -9; der Browser entpackt per DecompressionStream
   alle JSON-Dateien     unveraendert (Viewer liest sie ueber die Namen, die der fetch-Umschalter in index.html abbildet)
+  download/             kuppel-<variante>.zip + download.json (scripts/model_download.py, Inhalt aus Git HEAD)
   statik.json           Stand und vorhandene Varianten;  vercel.json  Header (kein Cache-Zwang, noindex)
 Messung: Groesse vorher (Quellordner) und nachher (dist) wird am Ende gedruckt."""
 import gzip, json, os, re, shutil, sys, time
@@ -82,6 +83,8 @@ def main():
     json.dump({'headers': [{'source': '/(.*)', 'headers': [{'key': 'X-Robots-Tag', 'value': 'noindex, nofollow'}]},
                            {'source': '/(.*)\\.gz', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=0, must-revalidate'}]}]},
               open(os.path.join(OUT, 'vercel.json'), 'w'), indent=1)
+    import model_download                                  # Download-Knopf: SolidCraft-Modell je Variante aus Git (HEAD)
+    model_download.main(['--out', os.path.join(OUT, 'download'), '--varianten', ','.join(varianten)])
     vor, nach = sum(r[0] for r in res), sum(r[1] for r in res)
     print(f'OBJ-Dateien: {len(res)}  roh {vor/1e6:.1f} MB -> gzip {nach/1e6:.1f} MB  (Faktor {vor/max(nach,1):.1f})')
     print(f'Quelle viewer/defs+detail: {(dirsize(os.path.join(V,"defs"))+dirsize(os.path.join(V,"detail")))/1e6:.1f} MB;  dist gesamt: {dirsize(OUT)/1e6:.1f} MB;  Dateien: {sum(len(fs) for _,_,fs in os.walk(OUT))};  groesste Datei: {max(os.path.getsize(os.path.join(a,f)) for a,_,fs in os.walk(OUT) for f in fs)/1e6:.1f} MB;  Varianten: {varianten};  {time.time()-t0:.0f} s')

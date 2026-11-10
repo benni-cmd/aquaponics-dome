@@ -340,20 +340,28 @@ def meter(s):
 
 
 def klasse_armatur(text):
+    """Art der Zeile aus `teile` der Quelle; die Reihenfolge der Schluessel ist wichtig (spezifisch vor allgemein)."""
     t = text.lower()
-    for key, typ in (("rückschlag", "rueckschlagventil"), ("regelhahn", "regelhahn"), ("kugelhahn", "kugelhahn"), ("kugelhähne", "kugelhahn"),
-                     ("ablasshahn", "ablasshahn"), ("entleerungshahn", "entleerungshahn"), ("entlüfter", "entlueffter"),
-                     ("schwimmerschalter", "schwimmerschalter"), ("schwimmerventil", "schwimmerventil"), ("siphon", "siphon"),
-                     ("venturi", "venturi_injektor"), ("lufteinlass", "lufteinlass"), ("schnellkupplung", "schnellkupplung"),
-                     ("reduzierung", "reduzierung"), ("t-stück", "t_stueck"), ("tülle", "schlauchtuelle"),
-                     ("schlauch", "schlauch"), ("muffe", "endstueck"), ("klemmverbinder", "endstueck"), ("luftstein", "luftstein"),
-                     ("luftverteiler", "luftverteiler"), ("luftleitung", "luftleitung"), ("pufferzone", "pufferzone"),
-                     ("meldeleitung", "meldeleitung"), ("abtropfgitter", "abtropfgitter"), ("vlies", "vlies_sieb"),
-                     ("belüftung", "belueftung_beet"), ("ring d75", "rohr"), ("anschluss", "anschluss"),
-                     ("pumpe", "pumpe"), ("luftpumpe", "pumpe"), ("hahn", "kugelhahn"), ("trockenlaufschutz", "schwimmerventil")):
+    for key, typ in (("rückschlag", "rueckschlagventil"), ("regelhahn", "regelhahn"), ("ablasshahn", "ablasshahn"),
+                     ("entleerungshahn", "entleerungshahn"), ("kugelhahn", "kugelhahn"), ("kugelhähne", "kugelhahn"),
+                     ("entlüfter", "entlueffter"), ("abtropfgitter", "abtropfgitter"), ("vlies", "vlies_sieb"),
+                     ("etwas belüftung", "belueftung_beet"), ("siphon", "siphon"), ("schwimmerschalter (hochstand)", "schwimmerschalter"),
+                     ("schwimmerschalter für", "schwimmerschalter"), ("schwimmerventil", "schwimmerventil"), ("trockenlaufschutz", "schwimmerventil"),
+                     ("luftpumpe", "luftpumpe"), ("luftverteiler", "luftverteiler"), ("luftstein", "luftstein"), ("luftleitung", "luftleitung"),
+                     ("lufteinlass", "lufteinlass"), ("venturi-injektor", "venturi_injektor"), ("schnellkupplung", "schnellkupplung"),
+                     ("reduzierung", "reduzierung"), ("t-stück", "t_stueck"), ("tülle", "schlauchtuelle"), ("schlauch-fall", "schlauch"),
+                     ("muffe", "endstueck"), ("klemmverbinder", "endstueck"), ("pufferzone", "pufferzone"), ("meldeleitung", "meldeleitung"),
+                     ("ring d75", "rohr"), ("anschluss", "anschluss"), ("pumpe(n)", "pumpe"), ("saugseite", "beschreibung"),
+                     ("sammelbehälter", "behaelter"), ("offen", "offene_angabe"), ("hahn", "kugelhahn")):
         if key in t:
             return typ
     return "sonstiges"
+
+
+# Zeilen, die keine eigene Stueckzahl tragen: Beschreibung des Bauteils selbst, offene Angabe, Behaelter, Pumpe (= das Bauteil)
+NICHT_ZAEHLEN = {"pumpe", "luftpumpe", "beschreibung", "offene_angabe", "behaelter", "sonstiges"}
+# der Schwimmerschalter steht im Sumpf-Text UND als eigenes Bauteil: nur das eigene Bauteil zaehlt
+DOPPELT = {("sump_1", "schwimmerschalter"): "schwimmer_1", ("sump_2", "schwimmerschalter"): "schwimmer_2"}
 
 
 def baue():
@@ -448,15 +456,17 @@ def baue():
             typ = klasse_armatur(tx)
             sym = [s for s in symb if s["typ"] == {"rueckschlagventil": "rueckschlagventil", "siphon": "siphon", "schwimmerschalter": "schwimmerschalter",
                                                      "kugelhahn": "ventil", "venturi_injektor": "venturi", "pufferzone": "pufferzone"}.get(typ, "-")]
+            zaehlt = typ not in NICHT_ZAEHLEN and (nid, typ) not in DOPPELT
             armaturen.append({"id": "%s.t%d" % (nid, i + 1), "an_bauteil": nid, "typ": typ, "text_quelle": tx,
-                              "anzahl_je_einheit": je, "einheiten": mult, "anzahl_gesamt": je * mult,
+                              "anzahl_je_einheit": je, "einheiten": mult, "anzahl_gesamt": je * mult if zaehlt else 0,
+                              "zaehlt": zaehlt, "zaehlt_nicht_weil": ("" if zaehlt else ("steht als eigenes Bauteil " + DOPPELT[(nid, typ)] if (nid, typ) in DOPPELT else "Beschreibung/offene Angabe/Bauteil selbst")),
                               "einheit_art": "je Abzweig/Beet" if mult > 1 else "je Bauteil", "lage_symbole": sym})
     # Armaturen, die nur die Zeichnung zeigt (Symbol ohne eigene Zeile in `teile`)
     for b in bauteile:
         if b["id"] in ("nachspeise",):
             armaturen.append({"id": "nachspeise.t0", "an_bauteil": "nachspeise", "typ": "schwimmerventil",
                               "text_quelle": "Mechanisches Schwimmerventil am Fischtank: gibt Regenwasser zuerst frei, Frischwasser nur nachrangig (nodeDatabase.nachspeise.desc)",
-                              "anzahl_je_einheit": 1, "einheiten": 1, "anzahl_gesamt": 1, "einheit_art": "je Bauteil", "lage_symbole": b["lage"]["symbole"]})
+                              "anzahl_je_einheit": 1, "einheiten": 1, "anzahl_gesamt": 1, "zaehlt": True, "zaehlt_nicht_weil": "", "einheit_art": "je Bauteil", "lage_symbole": b["lage"]["symbole"]})
         for s in b["lage"]["symbole"]:
             if s["typ"] == "siphon" and b["id"] in ("fd_aussen", "fd_mitte"):
                 pass

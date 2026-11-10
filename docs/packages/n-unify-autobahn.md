@@ -24,7 +24,7 @@ liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 | Phase | Lauf (Auftragsdatei in `docs/jobs/api/`) | Inhalt | Budget (Obergrenze) | Stand |
 |---|---|---|---|---|
 | P0 | im Planer-Lauf | WIP-Stand Ring B2 gesichert (16 Dateien seit 05.11.) | – | **erledigt** (35e3948) |
-| P1 | `unify-1-planer.md` | Quelle → `data/oasis-soll.json` + R61; Soll-Ist; Bauplan; Abweichungen | 12 USD | **erledigt** (e0dca88, 0aa5bb9, 99ce5b0 und Schluss-Commit) |
+| P1 | `unify-1-planer.md` | Quelle → `data/oasis-soll.json` + R61; Soll-Ist; Bauplan; Abweichungen | 12 USD | **erledigt** (e0dca88, 0aa5bb9, 99ce5b0, c9646ac) |
 | U1 | `unify-u1-daten.md` | Lage-Probe: Soll-Lage gegen gebaute Teile, Bauplatz je Bauteil (`data/oasis-lage.json`), nichts gebaut | 8 USD | offen |
 | U2 | `unify-u2-werkstatt.md` | neue Bauteile: Sumpftank mit Pufferzonen, Podeste, Venturi, Schwimmerschalter, Schlamm-Sammelbehälter, Regentank, Nachspeise-Ventil, Notluft, Beet-Siphon-Details | 15 USD | offen |
 | U3 | `unify-u3-werkstatt.md` | Becken und Tische: Fischtank (Rand 1200, Boden −1000), Anzucht-/Lebendfutterbecken, Überläufe, Tisch- und Beethöhen als Parameter | 15 USD | offen |
@@ -37,7 +37,7 @@ liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 | U10 | `unify-u10-viewer.md` | Viewer-Export, Kreislauf-Schalter mit Soll-Wegen, Browser-Screenshot, `viewer_dist.py` | 10 USD | offen |
 | P-Prüf | eigener Lauf, nicht der Bauer (Vorlage `docs/jobs/vorlagen/pruefung.md`) | Soll-Ist-Tabelle aller Quell-Bauteile, Kollisionen, Listen | 8 USD | offen |
 
-Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Obergrenzen je Lauf, keine Erwartung; gemessen wird in `tools/agent-sdk-runner/usage.jsonl`. Anhaltspunkt: dieser Planer-Lauf hat bis zum Schreiben des Plans etwa 4,5 USD verbraucht (Budgetzähler des Runners).
+Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Obergrenzen je Lauf, keine Erwartung; gemessen wird in `tools/agent-sdk-runner/usage.jsonl`. Anhaltspunkt: dieser Planer-Lauf hat bis zum Planende etwa 5,7 USD verbraucht (Budgetzähler des Runners, 12 USD Obergrenze).
 
 ## Stand
 - 10.11.2026: Quelle gesichert (f11a92d), D93 und W89 eingetragen, Planer-Auftrag geschrieben.
@@ -45,7 +45,7 @@ Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Oberg
   1. P0: 14 von 16 ungesicherten Dateien als WIP gesichert (`35e3948`: 6 `*-ring_b2.sc`, `scripts/dome-script-ring_b2.json`, 5 neu gespeicherte Komponenten, `viewer/extras.json`, `docs/session-notes/orchestrator.md`). Gemessen: alle mit Zeitstempel 05.11. 17:50 bis 20:40, aus dem Ring-B2-Bau (Paket n-autobahn-v2, Commit 4965331). Nicht committet, aus gutem Grund: `viewer/detail/` (laut `viewer/export_detail.py` Zeile 5 „wird nie committet“, 670 MB OBJ ignoriert, 306 erzeugte JSON) und `viewer/varianten/` (erzeugter Export wie die ignorierte `viewer/instances.json`). Beides bleibt als ungesichert stehen, nichts gelöscht.
   2. Fehlende Quelle gefunden und gesichert: `flow-diagram.html` (555 031 Byte, SHA256 `68e358…1799`, öffentlich abrufbar) = Höhenschnitt, Annahmen A1 bis A32, JSON mit 43 Bauteilen und 90 Wegen. Commit `e0dca88`.
   3. P1a `data/oasis-soll.json` (`0aa5bb9`, `99ce5b0`): 43 Bauteile (40 im Umfang), 90 Wege (77 im Umfang: 53 Wasser, 9 Luft, 6 Schlamm, 9 Strom für Pumpen/Belüftung/Schwimmer), 97 Armaturen-Zeilen (406 gezählte Stück); 45 von 45 Selbstprüfungen (`python -I -X utf8 scripts/oasis_soll.py`).
-  4. P1b R61, 14 Annahmen D94 bis D107 (`99ce5b0`). P1c Soll-Ist und P1d Abweichungen siehe unten, P1e Bauplan `docs/jobs/N-UNIFY-AUTOBAHN.md` mit 10 Lauf-Aufträgen.
+  4. P1b R61 und 14 Annahmen D94 bis D107 (`99ce5b0`). P1c Soll-Ist und P1d Abweichungen siehe unten, P1e Bauplan `docs/jobs/N-UNIFY-AUTOBAHN.md` mit 10 Runden-Aufträgen und 1 Prüfer-Auftrag in `docs/jobs/api/unify-*.md` (`c9646ac`).
   5. Wichtigste Befunde: (a) Fußboden der Quelle = Modell-Z 400, nicht 0 (D94); (b) Ring B2 im Modell ist exakt die Quell-Zeichnung um 18° gedreht (D95); (c) die Quelle zeigt Höhenschnitt und Annahmen nur in `flow-diagram.html`.
 
 ## Soll-Ist (P1c)
@@ -66,7 +66,7 @@ Ergebnis in Zahlen: von 40 Soll-Bauteilen im Umfang **2 übernehmen · 8 verschi
 | `sump_1/_2` (2) | im Boden, Boden −500, Rand 0, Wsp −250, Hochstand −110, 1125 × 2975, 4 Pufferzonen; r 4329 Az −51/−93 | nicht vorhanden (`beet_sumpf` nur als Bauteil, nie gesetzt) | neu (D105) |
 | `hauptpumpe_1/_2` (2) | Pumpe Sumpf→Venturi→Fischtank, +1000; r 3946 Az −50/−94 | nicht vorhanden (Rücklauf heute frei in den Pool) | neu (D102) |
 | `venturi_1/_2` (2) | im Druckrohr vor dem Fischtank; r 3132 Az −43/−101 | nicht vorhanden (R60: Gebläse bleibt) | neu (D103) |
-| `schwimmer_1/_2` (2) | Hochstand −110 im Sumpf; r 5588 Az −54/−90 | `sonde_level_float` ×3 (Messstellen am Pool, Z +365/+665, nicht im Sumpf) | neu (D105) |
+| `schwimmer_1/_2` (2) | Hochstand −110 im Sumpf; r 5588 Az −54/−90 | `sonde_level_float` ×3 (Messstellen an Pool und Becken, Z +365/+665, nicht im Sumpf) | neu (D105) |
 | `nachspeise` (1) | Schwimmerventil am Fischtank, Regen vor Frisch; r 3068 | `schwimmerventil_pool`: r 2070 Az −10, Z +710, Frischwasser über `aktivkohle_station` (K39/K40) | umbauen (zweiter Eingang; D107) |
 | `rain` (1) | Tank 5 m³ außen; r 6621 | nicht vorhanden | neu (D107) |
 | `tap` (1) | Frischwasseranschluss; r 6564 | `aktivkohle_station` r 7906 Az −92 (K39) | übernehmen |
@@ -114,7 +114,7 @@ Zählung: verschieben 6 + 4 + 10 = 20 · umbauen 3 + 2 + 9 + 3 + 9 + 6 = 32 · n
 | `pumpe_gross` ×8 (4 Hauptkreislauf + 4 Booster) | ersetzt durch 4 Pumpen (2 + 2) | entfernen |
 | `pegelschacht` ×2 samt Podest | Quelle: Biofilter höher als Ring, kein Zwischenbehälter | entfernen |
 | `schlammfass` ×2 im Boden | → Sammelbehälter oberirdisch (siehe A) | entfernen (W79) |
-| A+-Leitungen (63 Trassen, 56,3 m), Heber, Verteiler | nicht im Soll; Wege neu nach B | entfernen |
+| A+-Leitungen (Rückbau-Umfang 63 Trassen, 56,3 m laut `docs/packages/m10-zielbild-s.md`), Heber, Verteiler | nicht im Soll; Wege neu nach B | entfernen |
 | Pool-Geländer (Zielbild S, nicht gebaut) | Rand 1200 mm ≥ 1000 mm (D90), Designprinzip 9 erfüllt durch die Wand | entfällt |
 | `aktivkohle_station` | Chlor im Frischwasser tötet Fische und Nitrifikanten; Quelle nennt nur Regenwasser salzfrei und chlorfrei | behalten (Designprinzip 9) |
 | `puffer_klein`, Messzelle, Dosierung, Messstellen/Sonden | Messtechnik, nicht im Kreislauf verschaltet (D65, W76, Designprinzip 10) | behalten (offene Frage an Ben) |
@@ -148,12 +148,14 @@ Die Quelle gewinnt (D93). Reihenfolge nach Gewicht; „Folge“ nennt die Runde,
 2. DEINE ENTSCHEIDUNG: Quarantäne-Funktion des Drittbeckens (D46) entfällt zugunsten des Lebendfutterbeckens? Empfehlung: ja, ein Becken weniger; bei Bedarf Anzuchtbecken.
 3. DEINE ENTSCHEIDUNG: 20,8 statt 22 m³ Fischtank (Radialbudget des Modells, D96) und 475 kg Biomasse (D40) neu rechnen? Empfehlung: ja, in U8.
 4. DEINE ENTSCHEIDUNG: Messtechnik (`puffer_klein`, Dosierung) im Modell behalten (Empfehlung) oder streichen.
-5. ICH (Orchestrator): Läufe U1 bis U10 in die Warteschlange legen, ein Lauf zur Zeit; nächster Lauf: U1 (`docs/jobs/api/unify-u1-daten.md`).
+5. ICH (Orchestrator), empfohlener nächster Schritt: Läufe U1 bis U10 in die Warteschlange legen, ein Lauf zur Zeit; nächster Lauf: U1 (`docs/jobs/api/unify-u1-daten.md`). Dazu den Roadmap-Eintrag `N-UNIFY-AUTOBAHN` anlegen und W89 im Wunschbuch auf „in Arbeit“ setzen (der Planer ändert `data/roadmap.json` nicht).
+6. DEINE HANDLUNG (Ben): Leon die Abweichungen von seiner Quelle zeigen (`docs/research/R61-oasis-wasserkreislauf.md` Abschnitt 3 und 4, Annahmen D94 bis D107; besonders Fußboden Z 400, Drehung 18°, Fischtank 20,8 statt 22 m³, Quarantäne entfällt), bevor U4 baut: die Quelle ist seine, das Ziel ist ein Kreislauf, auf den sich beide einigen.
+7. ICH (Orchestrator) oder DEINE ENTSCHEIDUNG: `.gitignore` um `viewer/detail/*.json` und `viewer/varianten/` ergänzen? Beide Ordner stehen seit dem 05.11. als ungesichert im `git status`; `viewer/export_detail.py` Zeile 5 sagt „wird nie committet“. Empfehlung: ja, damit der Hinweis „NICHT COMMITTET“ nicht dauerhaft auf Erzeugtes zeigt.
 
 ## Verbrauch (aus `tools/agent-sdk-runner/usage.jsonl`, je Lauf)
 | Lauf | Modell | USD | Token Eingabe/Ausgabe/Cache gelesen/geschrieben |
 |---|---|---|---|
-| P1 Planer (unify-1) | Sonnet 5.5 | etwa 4,5 bis Planende (Budgetzähler des Runners); genaue Zeile trägt der Runner nach | – |
+| P1 Planer (unify-1) | Sonnet 5.5 | etwa 5,7 (Budgetzähler des Runners bei Planende, Obergrenze 12); die genaue Zeile trägt der Runner nach | – |
 
 ## DoD
 - [ ] Soll-Ist-Tabelle: alle Wasser-Bauteile und -Wege der Quelle gebaut, Wasserspiegel ±50 mm, Stufen exakt

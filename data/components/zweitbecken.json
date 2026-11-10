@@ -1,0 +1,85 @@
+{
+ "klasse": "zweitbecken",
+ "teilenummer": "T6",
+ "revision": "B",
+ "beschreibung": "Anzuchtbecken (mittlerer Beckenring der Oasis-Quelle, D93/D96/D118, bisher Zweitbecken): Innen-Ø 2000, steht auf dem Fussboden (Standflaeche 0, Innenboden 120), Wasserspiegel 800, Rand 1000; Ueberlauf-Tuelle d63 auf 800 in Richtung Fischtank (50 mm ueber dem Fischtank)",
+ "quelle_masse": "data/oasis-soll.json nursery (A13, A26: Ø 2 m, steht auf dem Boden, Wsp 800, Rand 1000); Bauplatz data/oasis-lage.json nursery (U1, D110)",
+ "parameter": {
+  "wasser_d": {
+   "wert": 2000,
+   "einheit": "mm",
+   "herkunft": "[Q] data/oasis-soll.json nursery masse_text_mm.durchmesser 2000 (Innendurchmesser, D118) = data/layout.json ring_b2.pool2.d"
+  },
+  "ring": {
+   "wert": 60,
+   "einheit": "mm",
+   "herkunft": "[E] Wandstaerke wie Zweit- und Drittbecken im Bestand (gen_dome.py pool_fn wall 60)"
+  },
+  "wsp": {
+   "wert": 800,
+   "einheit": "mm",
+   "herkunft": "[Q] data/oasis-soll.json nursery wsp_ueber_fussboden_mm 800 = data/params.json pool2_wsp"
+  },
+  "rand": {
+   "wert": 1000,
+   "einheit": "mm",
+   "herkunft": "[Q] data/oasis-soll.json nursery rand_ueber_fussboden_mm 1000 = data/params.json pool2_rim"
+  },
+  "tiefe": {
+   "wert": 800,
+   "einheit": "mm",
+   "herkunft": "[E] Wasserspiegel minus Standflaeche = 800 - 0 = data/params.json pool2_depth (varianten_werte ring_b2)"
+  },
+  "pos_x": {
+   "wert": 2797,
+   "einheit": "mm",
+   "herkunft": "[Q] data/oasis-lage.json nursery bauplatz x_mm (U1, ANNAHME D110, r 4461,6 / Az -51,2)"
+  },
+  "pos_y": {
+   "wert": -3476,
+   "einheit": "mm",
+   "herkunft": "[Q] data/oasis-lage.json nursery bauplatz y_mm"
+  },
+  "boden": {
+   "wert": 120,
+   "einheit": "mm",
+   "herkunft": "[E] Bestand gen_dome.py POOL_BODEN 120 (Bodenplatte; Innenboden = Aussenunterkante + 120), wie Drittbecken (D118)"
+  },
+  "wasser_spiel": {
+   "wert": 10,
+   "einheit": "mm",
+   "herkunft": "[E] Bestand gen_dome.py pool_fn: Wasserkoerper Ø d - 10 (5 mm Luft zur Wand, keine Beruehrung)"
+  },
+  "fussboden_z": {
+   "wert": 400,
+   "einheit": "mm",
+   "herkunft": "[E] D94: Fussboden der Quelle = Modell-Z 400 (walk_z, scripts/oasis_soll.py FUSSBODEN_Z_MM)"
+  },
+  "ue_dn": {
+   "wert": 63,
+   "einheit": "mm",
+   "herkunft": "[A] D106: Ueberlaeufe der Becken d63 (Leitungsbibliothek lt_*, EN 1452)"
+  },
+  "ue_id": {
+   "wert": 57,
+   "einheit": "mm",
+   "herkunft": "[E] PVC-U 63 x 3,0 PN10: Innendurchmesser 57; Rohr-Innenunterkante = Wasserspiegel (D120)"
+  },
+  "stutzen_len": {
+   "wert": 70,
+   "einheit": "mm",
+   "herkunft": "[A] Stutzenrohr ausserhalb des Rings (Muffentiefe d63 = 37,5)"
+  }
+ },
+ "werkstoff": {
+  "name": "Beton (Platzhalter fuer die Beckenwand)",
+  "dichte_g_cm3": 2.4,
+  "farbe": "#9a9a96",
+  "herkunft": "[A] Wandwerkstoff nicht entschieden (Bestand ohne Material); Beton als Platzhalter"
+ },
+ "anzahl": {
+  "soll": "1 Anzuchtbecken mit 1 Ueberlauf-Tuelle d63",
+  "quelle": "D93, data/oasis-soll.json nursery, Weg e70"
+ },
+ "bezugspunkt": "Weltrahmen: Mittelpunkt am Bauplatz (pos_x, pos_y), Z absolut (Fussboden Z 400); Instanz im Ursprung einfuegen, keine Verschiebung"
+}

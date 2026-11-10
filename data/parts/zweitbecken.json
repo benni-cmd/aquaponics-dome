@@ -2,12 +2,12 @@
   "komponente": "zweitbecken",
   "datei": "designs/components/zweitbecken.sc",
   "bauteilgruppe": "Becken und Tanks",
-  "teilenummer": "",
+  "teilenummer": "T6",
   "stand": "teiledaten",
-  "titel": "Zweitbecken",
-  "kurz": "Zweites Fischbecken im Boden. Das Modell ist eine Hüllform aus dem Layout; Werkstoff und Bauart sind offen.",
+  "titel": "Anzuchtbecken",
+  "kurz": "Das mittlere Becken der Oasis-Quelle (Nachzucht): steht auf dem Fussboden, Innen-Ø 2000, Wasserspiegel 0,80 m, Rand 1,00 m, Ueberlauf d63 in den Fischtank.",
   "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
-  "koerperzahl": 2,
+  "koerperzahl": 3,
   "gruppen": [
     {
       "id": "becken",
@@ -17,30 +17,38 @@
         "t_zweitbecken",
         "t_wasser"
       ]
+    },
+    {
+      "id": "ueberlauf",
+      "name": "Ueberlauf",
+      "kurz": "Die Tuelle gibt das Wasser an den Fischtank weiter.",
+      "teile": [
+        "t_ueberlauf"
+      ]
     }
   ],
   "teile": [
     {
       "id": "t_zweitbecken",
-      "name": "Zweitbecken",
+      "name": "Anzuchtbecken (Wanne)",
       "koerper": [
         "T6_Zweitbecken"
       ],
       "menge": 1,
       "typ": "kaufteil",
-      "werkstoff": "unbestimmt_modell",
-      "masse_mm": "Masse 869774.3 g, Einzelkoerper 1135.0 x 1866.9 x 1867.0 mm (Modell-Bounding-Box)",
-      "funktion": "Das Zweitbecken ergänzt den Pool als zweites Fischbecken im Boden.",
+      "werkstoff": "beton",
+      "masse_mm": "Masse 1836092.0 g, Einzelkoerper 1000.0 x 2120.0 x 2120.0 mm (Modell-Bounding-Box)",
+      "funktion": "Das Anzuchtbecken zieht Jungfische auf; es nimmt das Wasser des Lebendfutterbeckens auf und gibt es ueber den Ueberlauf an den Fischtank weiter.",
       "eigenschaften": [
-        "Außenmaß rund 1867 x 1867 x 1135 mm.",
-        "Eigenbau oder Sonderanfertigung; Werkstoff im Modell nicht zugewiesen."
+        "Aussen Ø 2120, Innen Ø 2000, Wand 60; Hoehe 1000 mm, steht auf dem Fussboden (keine Grube).",
+        "Wasserspiegel 800, Rand 1000 (Freibord 200), Wassertiefe 680 mm = 2,1 m3."
       ],
       "norm": "keine, Werkstoff je Teil in der Beschreibung [A]",
       "norm_konfidenz": "angenommen",
       "lebensmittelkontakt": "offen",
       "lebensmittelkontakt_konfidenz": "angenommen",
       "konfidenz": "angenommen",
-      "quelle": "data/layout.json (Maße aus dem Referenzmodell), docs/research/R37; Eigenbau, Werkstoff im Modell nicht zugewiesen",
+      "quelle": "data/oasis-soll.json nursery (A13, A26), data/components/zweitbecken.json, D118; Eigenbau, Werkstoff Beton (Platzhalter)",
       "bezug": "offen (R52)",
       "artikel_id": "BEH-zweitbecken",
       "artikel_einheit": "Stk",
@@ -54,8 +62,8 @@
       ],
       "menge": 1,
       "typ": "sonderteil",
-      "werkstoff": "unbestimmt_modell",
-      "masse_mm": "Masse 2689849.0 g, Einzelkoerper 880.0 x 1736.9 x 1737.0 mm (Modell-Bounding-Box)",
+      "werkstoff": "wasser",
+      "masse_mm": "Masse 2114828.7 g, Einzelkoerper 680.0 x 1990.0 x 1989.9 mm (Modell-Bounding-Box)",
       "funktion": "Der Körper zeigt die Wasserfüllung; er ist kein Bauteil.",
       "eigenschaften": [
         "Reines Darstellungsvolumen."
@@ -69,6 +77,32 @@
       "artikel_einheit": null,
       "artikel_menge_je_instanz": 0,
       "ausnahme": "Wasserkoerper, kein Bauteil"
+    },
+    {
+      "id": "t_ueberlauf",
+      "name": "Ueberlauf-Tuelle d63",
+      "koerper": [
+        "T6_Ueberlauf"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 250.0 g, Einzelkoerper 72.1 x 137.7 x 146.5 mm (Modell-Bounding-Box)",
+      "funktion": "Wanddurchfuehrung auf Wasserspiegelhoehe: das Wasser laeuft ueber die Rohr-Innenunterkante frei in den Fischtank (50 mm tiefer).",
+      "eigenschaften": [
+        "PVC-U d63 x 3,0 (ID 57), Muffe d63 aussen; Rohr-Innenunterkante = Wasserspiegel 800, Achse 828,5 ueber dem Fussboden.",
+        "Richtung zum Fischtank nach dem Bauplatz (data/oasis-lage.json)."
+      ],
+      "norm": "EN 1452 (PVC-U Druckrohr) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "D106, D120, Weg e70 data/oasis-soll.json; Beleg Lebensmittelnachweis offen (D85, U8)",
+      "bezug": "offen (R52, U8)",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Kaufteil Tankdurchfuehrung d63: Artikel, Bezug und Lebensmittelnachweis folgen in U8 (Bestellliste); hier nur das Modellteil"
     }
   ]
 }

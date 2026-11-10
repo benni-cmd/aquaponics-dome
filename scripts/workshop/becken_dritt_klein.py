@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import math
 import sc
 import leitung as L
+import becken_soll as BS
 
 def build():
     p, d = sc.load_params("becken_dritt_klein")
@@ -57,7 +58,9 @@ def build():
         else:
             b.add("solid.cylinder", diameter=16, height=p["stutzen_len"] + 1, base=[(r_o + 1) * ux, (r_o + 1) * uy, zb], axis=[ux, uy, 0], operation="cut", targets=[body], name=f"R_{body}_Bohrung")
         b.add("material.assign", bodies=[body], material="Stutzen PVC")
-    b.add("component.metadata.set", component=root, part_number="T14k", description=d["beschreibung"], revision="A", properties={"Werkstoff": d["werkstoff"]["name"]})
+    # U3 (D120): Ueberlauf-Tuelle d63 auf Wasserspiegelhoehe Richtung Anzuchtbecken (Weg e63), Azimut aus den Bauplaetzen von data/oasis-lage.json
+    BS.ueberlauf_tuelle(b, p, "T14k_Wanne", 0, 0, z_wasser, BS.ue_azimut("feed", "nursery"), "T14k_Ueberlauf")
+    b.add("component.metadata.set", component=root, part_number="T14k", description=d["beschreibung"], revision=d["revision"], properties={"Werkstoff": d["werkstoff"]["name"]})
     return b
 
 if __name__ == "__main__":

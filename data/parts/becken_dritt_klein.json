@@ -2,17 +2,17 @@
   "komponente": "becken_dritt_klein",
   "datei": "designs/components/becken_dritt_klein.sc",
   "bauteilgruppe": "Becken und Tanks",
-  "teilenummer": "",
+  "teilenummer": "T14k",
   "stand": "teiledaten",
-  "titel": "Drittbecken klein (Quarantäne- und Notbecken)",
-  "kurz": "Eine in den Boden eingelassene Wanne mit 0,4 m³ Wasser für kranke Tiere oder Zuchttiere.",
+  "titel": "Lebendfutterbecken",
+  "kurz": "Das aeussere Becken der Oasis-Quelle (Algen- und Wasserflohzucht): steht auf dem Fussboden, Innen-Ø 1000, Wasserspiegel 0,85 m, Rand 1,00 m, Ueberlauf d63 in das Anzuchtbecken.",
   "hinweis": "Texte und Maße aus dem Bauteilblatt und den Parametern des Bauteils. Rohr-, Wand- und Fabrikatangaben sind angenommen; der europäische Bezug der Kaufteile ist offen (Regel D76, Recherche R52).",
-  "koerperzahl": 6,
+  "koerperzahl": 7,
   "gruppen": [
     {
       "id": "becken",
       "name": "Wanne und Wasser",
-      "kurz": "Die Wanne fasst 0,4 m³ Wasser; sie wird in den Boden eingelassen.",
+      "kurz": "Die Wanne fasst 0,57 m3 Wasser; sie steht auf dem Fussboden.",
       "teile": [
         "t_wanne",
         "wasser"
@@ -21,34 +21,35 @@
     {
       "id": "anschluss",
       "name": "Anschlüsse",
-      "kurz": "Vier Stutzen verbinden das Becken mit den Leitungen.",
+      "kurz": "Vier Stutzen und die Ueberlauf-Tuelle verbinden das Becken mit den Leitungen.",
       "teile": [
-        "stutzen_k"
+        "stutzen_k",
+        "t_ueberlauf"
       ]
     }
   ],
   "teile": [
     {
       "id": "t_wanne",
-      "name": "Wanne des Drittbeckens",
+      "name": "Wanne des Lebendfutterbeckens",
       "koerper": [
         "T14k_Wanne"
       ],
       "menge": 1,
       "typ": "kaufteil",
       "werkstoff": "beton",
-      "masse_mm": "Masse 555154.8 g, Einzelkoerper 920.0 x 920.0 x 1055.0 mm (Modell-Bounding-Box)",
-      "funktion": "Die Wanne ist das Quarantäne- und Notbecken für kranke Tiere oder Zuchttiere.",
+      "masse_mm": "Masse 705133.6 g, Einzelkoerper 1000.0 x 1120.0 x 1120.0 mm (Modell-Bounding-Box)",
+      "funktion": "Die Wanne ist das Lebendfutterbecken: Zucht von Algen oder Wasserfloehen, gespeist mit gereinigtem Biofilterwasser, Ueberlauf in das Anzuchtbecken.",
       "eigenschaften": [
-        "Rund 920 x 920 x 1055 mm.",
-        "In den Boden eingelassen wie Pool und Zweitbecken."
+        "Rund 1120 x 1120 x 1000 mm.",
+        "Steht auf dem Fussboden; Wasserspiegel 850, Rand 1000 (Freibord 150), Wassertiefe 730 mm = 0,57 m3."
       ],
       "norm": "EN 206 (Beton) [A]",
       "norm_konfidenz": "angenommen",
       "lebensmittelkontakt": "ja",
       "lebensmittelkontakt_konfidenz": "angenommen",
       "konfidenz": "angenommen",
-      "quelle": "docs/parts/becken_dritt_klein.md, data/components/becken_dritt_klein.json, docs/research/R37 (Befund 10)",
+      "quelle": "docs/parts/becken_dritt_klein.md, data/components/becken_dritt_klein.json, data/oasis-soll.json feed (D118)",
       "bezug": "offen (R52)",
       "artikel_id": "BEH-drittbecken-klein",
       "artikel_einheit": "Stk",
@@ -63,7 +64,7 @@
       "menge": 1,
       "typ": "sonderteil",
       "werkstoff": "wasser",
-      "masse_mm": "Masse 392089.3 g, Einzelkoerper 790.0 x 790.0 x 800.0 mm (Modell-Bounding-Box)",
+      "masse_mm": "Masse 561867.8 g, Einzelkoerper 730.0 x 990.0 x 990.0 mm (Modell-Bounding-Box)",
       "funktion": "Der Körper zeigt die Wasserfüllung von rund 0,4 m³; er ist kein Bauteil.",
       "eigenschaften": [
         "Reines Darstellungsvolumen."
@@ -110,6 +111,32 @@
       "artikel_id": "ARM-bulkhead-pool",
       "artikel_einheit": "Stk",
       "artikel_menge_je_instanz": 4.0
+    },
+    {
+      "id": "t_ueberlauf",
+      "name": "Ueberlauf-Tuelle d63",
+      "koerper": [
+        "T14k_Ueberlauf"
+      ],
+      "menge": 1,
+      "typ": "sonderteil",
+      "werkstoff": "pvc_u",
+      "masse_mm": "Masse 250.0 g, Einzelkoerper 72.1 x 142.5 x 98.5 mm (Modell-Bounding-Box)",
+      "funktion": "Wanddurchfuehrung auf Wasserspiegelhoehe: das Wasser laeuft ueber die Rohr-Innenunterkante frei in das Anzuchtbecken (50 mm tiefer).",
+      "eigenschaften": [
+        "PVC-U d63 x 3,0 (ID 57), Muffe d63 aussen; Rohr-Innenunterkante = Wasserspiegel 850, Achse 878,5 ueber der Unterkante.",
+        "Richtung zum Anzuchtbecken nach dem Bauplatz (data/oasis-lage.json)."
+      ],
+      "norm": "EN 1452 (PVC-U Druckrohr) [A]",
+      "norm_konfidenz": "angenommen",
+      "lebensmittelkontakt": "ja",
+      "lebensmittelkontakt_konfidenz": "angenommen",
+      "konfidenz": "angenommen",
+      "quelle": "D106, D120, Weg e63 data/oasis-soll.json; Lebensmittelnachweis offen (D85, U8)",
+      "bezug": "offen (R52, U8)",
+      "artikel_einheit": null,
+      "artikel_menge_je_instanz": 0,
+      "ausnahme": "Kaufteil Tankdurchfuehrung d63: Artikel, Bezug und Lebensmittelnachweis folgen in U8 (Bestellliste); hier nur das Modellteil"
     }
   ]
 }

@@ -1129,5 +1129,13 @@
     "valence": 4
    }
   ]
+ },
+ "ring_b2": {
+  "quelle": "N-UNIFY-AUTOBAHN U3, D118/D119: Soll-Maße nach data/oasis-soll.json; A+ liest diesen Block nicht (gen_dome.py liest ihn ab U4 hinter V == ring_b2)",
+  "pool": {"d": 3890, "water_z": 750},
+  "pool2": {"d": 2000, "water_z": 800},
+  "pool3": {"d": 1000, "water_z": 850},
+  "ibc_beds_z0": 0,
+  "ibc_beds_hoehe": {"aussen": 460, "innen": 420}
  }
 }

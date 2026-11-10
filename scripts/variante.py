@@ -88,6 +88,21 @@ def filtere(eintraege, v=None):
     return [e for e in eintraege if gilt(e, v)]
 
 
+def parameter(v=None, root=None):
+    """D119 (N-UNIFY U3): data/params.json als flaches Dict {name: wert} fuer die Variante v.
+    Eintraege mit Liste `varianten` gelten nur dort (gilt()); `varianten_werte` {v: x} ueberschreibt `value`.
+    a_plus liefert damit exakt die Werte vor U3; ring_b2 die Soll-Werte der Oasis-Quelle (data/oasis-soll.json)."""
+    v = _pruefen(v or aktiv())
+    with open(os.path.join(root or ROOT, "data", "params.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    out = {}
+    for k, e in d.items():
+        if not isinstance(e, dict) or "value" not in e or not gilt(e, v):
+            continue
+        out[k] = e.get("varianten_werte", {}).get(v, e["value"])
+    return out
+
+
 def pfad(art, v=None, root=None):
     root = root or ROOT
     if art in _GEMEINSAM:

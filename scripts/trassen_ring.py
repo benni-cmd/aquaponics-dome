@@ -1,12 +1,12 @@
-"""N-AUTOBAHN-V2 Montage R1/R2 (docs/jobs/N-AUTOBAHN-V2.md Abschnitt 4): Lage aller Teile der Wasserautobahn (Variante ring_b2).
-Koordinaten kommen aus den Instanzmatrizen von scripts/dome-script.json (A+-Bau, Tische/Tanks sind in beiden Varianten gleich) und aus den
-Port-Tabellen der Werkstatt (data/components/autobahn_teile.json, scripts/workshop/autobahn_t.py, ring_b2.py, autobahn_s.py), nie von Hand.
+"""N-AUTOBAHN-V2 Montage R1/R2 (docs/jobs/N-AUTOBAHN-V2.md Abschnitt 4): Lage aller Teile der Wasserautobahn (Ringleitung; seit U7 der einzige Kreislauf, D141).
+Koordinaten kommen aus den Instanzmatrizen von scripts/dome-script.json (Tische wie im Altbestand) und aus den
+Port-Tabellen der Werkstatt (data/components/autobahn_teile.json, scripts/workshop/autobahn_t.py, ringleitung.py, autobahn_s.py), nie von Hand.
 Modellrahmen: Z absolut (= relativ + 400). Ring als Zehneck auf dem Mittelring (Apothem 3377, WA-T), Umlauf gegen den Uhrzeigersinn.
 
 Ausgaben:
-  tragwerk()            -> [(Klasse, Datei, [Matrizen], Assembly)] fuer gen_dome.ring_b2() (Joche, Stelzen, Ausleger, Schienen, Verbinder, Schellen,
+  tragwerk()            -> [(Klasse, Datei, [Matrizen], Assembly)] fuer gen_dome.ringleitung() (Joche, Stelzen, Ausleger, Schienen, Verbinder, Schellen,
                            Ring-Ecken, Podeste, Pegelschaechte, Booster, Abzweige, Entluefter, Fallleitungen)
-  leitungen_eintraege() -> Trassen, T-Stuecke, R-Stuecke mit varianten ["ring_b2"] und quelle "trassen_ring" fuer data/leitungstrassen.json
+  leitungen_eintraege() -> Trassen, T-Stuecke, R-Stuecke mit quelle "trassen_ring" fuer data/leitungstrassen.json
 Aufruf: python -X utf8 scripts/trassen_ring.py [--schreiben] [--bericht]
   --schreiben  ersetzt in data/leitungstrassen.json alle Eintraege mit quelle "trassen_ring" (fremde Eintraege bleiben stehen)
   --bericht    druckt Zaehlung und Geometrie-Pruefpunkte (R1/R2, Blatt Abschnitt 6)"""
@@ -17,12 +17,12 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, "workshop"))
 import leitung as LT          # Bibliothek lt_* (Ports, Muffentiefen)
 import autobahn_t as AT       # WA-T Tragwerk
-import ring_b2 as RB          # V2 Bauteile (Pegelschacht, Abzweig, Entluefter)
+import ringleitung as RB      # V2 Bauteile (Pegelschacht, Abzweig, Entluefter)
+import variante               # Pfade (U7, D141)
 
 COMP = os.path.join(ROOT, "designs", "components")
 FZ = 400.0                                        # Innenboden absolut (params sock_h)
 QUELLE = "trassen_ring"
-V = ["ring_b2"]
 
 # ------------------------------------------------------------------ Vektoren
 def add(a, b, s=1.0): return tuple(a[i] + s * b[i] for i in range(len(a)))
@@ -45,12 +45,12 @@ def world(m, p): return tuple(m[4 * r] * p[0] + m[4 * r + 1] * p[1] + m[4 * r + 
 def wdir(m, d): return tuple(m[4 * r] * d[0] + m[4 * r + 1] * d[1] + m[4 * r + 2] * d[2] for r in range(3))
 
 # ------------------------------------------------------------------ Bestand
-def _bestand(datei="dome-script-ring_b2.json"):
-    """U6: Lage aus dem Bauskript der Variante ring_b2 (Beete auf dem Flur, Technik am Bauplatz der Lage-Probe; Tische wie A+)."""
+def _bestand(datei="dome-script.json"):
+    """U6: Lage aus dem Bauskript (Beete auf dem Flur, Technik am Bauplatz der Lage-Probe; Tische wie A+)."""
     cmds = json.load(open(os.path.join(ROOT, "scripts", datei), encoding="utf-8"))["commands"]
     return {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}
 MV = _bestand()
-MV_APLUS = _bestand("dome-script.json")
+MV_APLUS = {c["params"]["occurrence"]: c["params"]["matrix"] for c in json.load(open(variante.pfad("dome_script_altbestand"), encoding="utf-8"))["commands"] if c["command"] == "occurrence.move"}   # U7 (D141): Altbestand-Bauskript im Archiv
 TEILE = json.load(open(os.path.join(ROOT, "data", "components", "autobahn_teile.json"), encoding="utf-8"))
 TW = TEILE["tragwerk"]
 Z = {k: v + FZ for k, v in TW["hoehenkette_rel"].items()}     # absolut: achse 2545, schiene_u 2612, schiene_o 2653, platte_o 2657, traeger_o 2697
@@ -207,7 +207,7 @@ def _inv_world(m, p):
 def _inv_dir(m, d): return tuple(m[r] * d[0] + m[4 + r] * d[1] + m[8 + r] * d[2] for r in range(3))
 def einspeisung_u6(l):
     tank = {1: "Tank_gross:1", 2: "Tank_gross_t3:1"}[l]; rid = {1: "R_UEB", 2: "R_UEB2"}[l]
-    r = [x for x in TRASSEN["r_stuecke"] if x["id"] == rid][0]
+    r = [x for x in json.load(open(variante.pfad("trassen_altbestand"), encoding="utf-8"))["r_stuecke"] if x["id"] == rid][0]   # U7 (D141): Stutzen des Altbestands aus dem Archiv
     ma, mb = MV_APLUS[tank], MV[tank]
     p0 = world(mb, _inv_world(ma, tuple(r["pos_a"]))); u = unit(wdir(mb, _inv_dir(ma, tuple(r["dir"]))))
     p1 = add(p0, u, L_EIN)
@@ -227,9 +227,9 @@ def seiten_belegung(feeds):
     return bel
 
 def leitungen_eintraege():
-    """Alle Trassen/T/R-Stuecke der Autobahn (ring_b2). Rueckgabe dict wie leitungstrassen.json (nur die Listen)."""
+    """Alle Trassen/T/R-Stuecke der Autobahn. Rueckgabe dict wie leitungstrassen.json (nur die Listen)."""
     tr, ts, rs, te = [], [], [], []
-    base = dict(varianten=V, quelle=QUELLE)
+    base = dict(quelle=QUELLE)
     ein = {l: einspeisung_u6(l) for l in (1, 2)}
     # ---- U6 (D93, Quelle e25/e26): Ueberlauf d63 des Biofilters -> waagerecht aus dem Tank -> senkrecht auf die Ringachse -> in den Einspeise-T d75.
     #      Pegelschacht, Booster, Rueckschlagventile und Notueberlauf des Schachts (V2: K60 bis K67, K68 bis K75) entfallen (D101).
@@ -338,7 +338,7 @@ def stp_by_k():
     if _STP is None: _STP = {s["k"]: s for s in stuetzpunkte()}
     return _STP
 
-# ------------------------------------------------------------------ Tragwerk-Instanzen fuer gen_dome.ring_b2()
+# ------------------------------------------------------------------ Tragwerk-Instanzen fuer gen_dome.ringleitung()
 def comp(n): return os.path.join(COMP, n + ".sc")
 def tragwerk(runde="r1"):
     out = []
@@ -371,7 +371,7 @@ def tragwerk(runde="r1"):
 
 # ================================================================== R2: 38 Abzweige und Schlauch-Fallleitungen
 import autobahn_s as AS
-SCHLAUCH_DATEI = "ring_b2_schlauchwege"   # neuer Name: alte 622-MB-Definition ring_b2_schlaeuche blieb im Viewer gesperrt
+SCHLAUCH_DATEI = "ring_schlauchwege"   # U7 (D141): Name ohne Variantenkuerzel (eine alte 622-MB-Definition blieb im Viewer gesperrt)
 ZONE = {"Tisch_innen": ("innen", "tisch"), "Tisch_mitte": ("mitte", "tisch"), "Tisch_aussen": ("aussen", "tisch"), "Beet_innen_933": ("mitte", "beet"), "Beet_aussen_800": ("aussen", "beet")}
 PORT = {"Tisch_innen": ((-449.0, 256.0, 1306.0), "t"), "Tisch_mitte": ((-823.0, 520.0, 963.0), "t"), "Tisch_aussen": ((-1349.0, 497.0, 1121.0), "t"),
         "Beet_innen_933": ((-973.0, -298.0, 395.0), "b"), "Beet_aussen_800": ((-1360.0, -326.0, 435.0), "b")}   # U6: gemessen an viewer/detail/nft_tisch_*.json (Verteiler-Mitte, U3: +230/-120/+30) und ibc_beet_*.json (Tropfrohr, U3b: Rand - 25)
@@ -602,14 +602,14 @@ def schlauch_bauen(out_sc=None):
     b.add("component.metadata.set", component=nm, part_number="R2-SCHLAEUCHE", revision="A", properties={"Werkstoff": "Schlauch REHAU RAUAQUA T-Flex ID19/ID25 schwarz (D85), Tuellen PVC-U/PP, Regelhahn PVC-U, Kupplung Edelstahl"},
           description="Montage R2 Ring B2: 38 Schlauch-Fallleitungen in Weltlage (trassen_ring.py); Darstellungsgeometrie [A]: Achtkant-Prismen ohne Bohrung (Werkstatt-Teile mit Bohrung WA5/WA6 ergeben 17 MB OBJ je Fallleitung); je Abnehmer Tuelle -> Schlauch (Ausleger + freier Fall) -> Regelhahn -> Schnellkupplung -> Endstueck am Tisch-Zulaufverteiler bzw. Tropfrohr")
     out_sc = out_sc or comp(SCHLAUCH_DATEI)
-    sc.run(b.write("ring_b2_schlaeuche"), out_sc)
+    sc.run(b.write("ring_schlaeuche"), out_sc)
     return laengen
 
 SOLL_FALL = {(1, "tisch", "aussen"): "e39", (1, "tisch", "mitte"): "e40", (1, "tisch", "innen"): "e41", (1, "beet", "aussen"): "e42", (1, "beet", "mitte"): "e43",
              (2, "tisch", "aussen"): "e44", (2, "tisch", "mitte"): "e45", (2, "tisch", "innen"): "e46", (2, "beet", "aussen"): "e47", (2, "beet", "mitte"): "e48"}
 SOLL_ABZ = {(1, "tisch"): "e35", (1, "beet"): "e36", (2, "tisch"): "e37", (2, "beet"): "e38"}
 def schlauch_soll_wege():
-    """U6: Soll-Wege der Abfahrten (e35 bis e38, Ring-Abzweig) und Fallleitungen (e39 bis e48, Schlauch) mit Stueckzahl im Modell (Komponente ring_b2_schlauchwege)."""
+    """U6: Soll-Wege der Abfahrten (e35 bis e38, Ring-Abzweig) und Fallleitungen (e39 bis e48, Schlauch) mit Stueckzahl im Modell (Komponente ring_schlauchwege)."""
     out = {}
     for a in fallleitungen():
         for w in (SOLL_ABZ[(a["linie"], a["art"])], SOLL_FALL[(a["linie"], a["art"], a["zone"])]):

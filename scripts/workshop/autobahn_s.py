@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import sc
 import leitung as L
-import ring_b2 as R
+import ringleitung as R
 import n_autobahn_rechnung as NR
 
 DC = os.path.join(sc.ROOT, "designs", "components")
@@ -195,7 +195,7 @@ def rsv_ports():
     return [("A (Zulauf, Booster)", (0.0, 0.0, 0.0), (0.0, 0.0, -1.0), "Muffe", L.DN[50]), ("B (Abgang, Steigleitung)", (0.0, 0.0, RSV["L"]), (0.0, 0.0, 1.0), "Muffe", L.DN[50])]
 
 # ------------------------------------------------------------------ WA5 Schlauch-Fallleitung
-# KS: Ursprung = Abgang des Ring-Abzweigs (Stirnflaeche Muffe B des Kugelhahns, ring_b2 T97). +X = radial zum Abnehmer (innen oder aussen,
+# KS: Ursprung = Abgang des Ring-Abzweigs (Stirnflaeche Muffe B des Kugelhahns, Ringleitung T97). +X = radial zum Abnehmer (innen oder aussen,
 # die Montage dreht), Z hoch. Typ 'fall' (Mittelzone): Abzweig wie T97 nach unten, Schlauch faellt senkrecht. Typ 'ausleger': Abzweig um die
 # Ringachse 90 Grad gedreht, Abgang waagerecht radial auf Ring-Achshoehe; Schlauch liegt auf dem Ausleger bis zu dessen Ende, faellt dann frei.
 Z_ACHSE = NR.Z_RING_ACHSE                    # 2145 rel

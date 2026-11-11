@@ -162,8 +162,7 @@
   "used_by": "gen_dome.py"
  },
  "pool_depth": {
-  "value": 2340,
-  "varianten_werte": {"ring_b2": 1870},
+  "value": 1870,
   "unit": "mm",
   "origin": "A",
   "source": "Ben/Simulator 27,8 m3 bei D 3,89 m (Kontext, unverifiziert); Beckenboden Z -1825",
@@ -172,8 +171,7 @@
   "used_by": "gen_dome.py"
  },
  "pool_rim": {
-  "value": 650,
-  "varianten_werte": {"ring_b2": 1200},
+  "value": 1200,
   "unit": "mm",
   "origin": "A",
   "source": "Ben: Rand ca. Z 650, am Bild ref-4 pruefen",
@@ -182,8 +180,7 @@
   "used_by": "gen_dome.py"
  },
  "pool2_depth": {
-  "value": 1000,
-  "varianten_werte": {"ring_b2": 800},
+  "value": 800,
   "unit": "mm",
   "origin": "A",
   "source": "Annahme: eingelassen wie Pool",
@@ -255,8 +252,7 @@
   "used_by": "gen_dome.py, check_walkways.py"
  },
  "pool3_d": {
-  "value": 800,
-  "varianten_werte": {"ring_b2": 1000},
+  "value": 1000,
   "unit": "mm",
   "origin": "A",
   "source": "D46: Drittbecken Innendurchmesser (Designer-Modell, E; Mass Ben offen)",
@@ -265,8 +261,7 @@
   "used_by": "gen_dome.py, place_m8.py"
  },
  "pool3_depth": {
-  "value": 920,
-  "varianten_werte": {"ring_b2": 850},
+  "value": 850,
   "unit": "mm",
   "origin": "A",
   "source": "D46: Drittbecken Tiefe bis Wasserspiegel (Designer-Modell, E)",
@@ -868,19 +863,6 @@
   "maturity": 0,
   "used_by": "trassen_linie.py"
  },
- "kreislauf_variante": {
-  "value": "a_plus",
-  "unit": "-",
-  "origin": "A",
-  "source": "D81 / W70 (N-VARIANTEN): Standard der Kreislauf-Variante; gebaut wird nie durch Aendern dieser Datei, sondern mit --variante oder KREISLAUF_VARIANTE",
-  "r_id": "",
-  "maturity": 0,
-  "werte": [
-   "a_plus",
-   "ring_b2"
-  ],
-  "used_by": "scripts/variante.py"
- },
  "technik_az": {
   "value": -85,
   "unit": "deg",
@@ -915,8 +897,7 @@
   "source": "Wasserspiegel Fischtank ueber Fussboden: data/oasis-soll.json fish wsp_ueber_fussboden_mm 750 (A25, A26); gilt nur Ring B2 (A+: layout.json pool.water_z 515); nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "scripts/workshop/pool_zentral.py, check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "scripts/workshop/pool_zentral.py, check_pool_soll.py"
  },
  "pool2_wsp": {
   "value": 800,
@@ -925,8 +906,7 @@
   "source": "Wasserspiegel Anzuchtbecken ueber Fussboden: data/oasis-soll.json nursery 800 (A13: 50 mm ueber dem Fischtank); nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "scripts/workshop/zweitbecken.py, check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "scripts/workshop/zweitbecken.py, check_pool_soll.py"
  },
  "pool3_wsp": {
   "value": 850,
@@ -935,8 +915,7 @@
   "source": "Wasserspiegel Lebendfutterbecken ueber Fussboden: data/oasis-soll.json feed 850 (A13: 50 mm ueber dem Anzuchtbecken); nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "scripts/workshop/becken_dritt_klein.py, check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "scripts/workshop/becken_dritt_klein.py, check_pool_soll.py"
  },
  "pool2_rim": {
   "value": 1000,
@@ -945,8 +924,7 @@
   "source": "Rand Anzuchtbecken ueber Fussboden: data/oasis-soll.json nursery rand_ueber_fussboden_mm 1000 (steht auf dem Boden, Freibord 200); nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "scripts/workshop/zweitbecken.py, check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "scripts/workshop/zweitbecken.py, check_pool_soll.py"
  },
  "pool3_rim": {
   "value": 1000,
@@ -955,8 +933,7 @@
   "source": "Rand Lebendfutterbecken ueber Fussboden: data/oasis-soll.json feed rand_ueber_fussboden_mm 1000 (steht auf dem Boden, Freibord 150); nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "scripts/workshop/becken_dritt_klein.py, check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "scripts/workshop/becken_dritt_klein.py, check_pool_soll.py"
  },
  "nft_wsp_aussen": {
   "value": 1050,
@@ -965,8 +942,7 @@
   "source": "Rinnen-Wasserspiegel NFT Aussen ueber Fussboden: data/oasis-soll.json nft_aussen wsp_ueber_fussboden_mm 1050; Rinnenunterkante = Wasserspiegel minus nft_film (data/components/nft_tisch.json typen.aussen.z_rinne_mitte); nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "check_pool_soll.py"
  },
  "nft_wsp_mitte": {
   "value": 900,
@@ -975,8 +951,7 @@
   "source": "Rinnen-Wasserspiegel NFT Mitte: data/oasis-soll.json nft_mitte 900; nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "check_pool_soll.py"
  },
  "nft_wsp_innen": {
   "value": 1250,
@@ -985,8 +960,7 @@
   "source": "Rinnen-Wasserspiegel NFT Innen (auf dem Poolrand): data/oasis-soll.json nft_innen 1250; nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "check_pool_soll.py"
  },
  "nft_film": {
   "value": 20,
@@ -995,8 +969,7 @@
   "source": "Wasserfilm ueber der Rinnenunterkante (Messvorschrift data/oasis-messung.json rinne_mitte_film: Unterkante in der Mitte + 20); nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "check_pool_soll.py"
  },
  "beet_flutstand": {
   "value": 250,
@@ -1005,8 +978,7 @@
   "source": "Flutstand der Flood-and-Drain-Beete ueber Fussboden: data/oasis-soll.json fd_aussen/fd_mitte 250 (A21, A25); Oberkante Standrohr; nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "scripts/workshop/ibc_beet.py, check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "scripts/workshop/ibc_beet.py, check_pool_soll.py"
  },
  "beet_boden": {
   "value": 70,
@@ -1015,7 +987,6 @@
   "source": "Beet-Boden (Medienunterkante, Oberkante Sperrboden) ueber Fussboden: data/oasis-soll.json fd_aussen/fd_mitte boden_ueber_fussboden_mm 70; nur Ring B2 (D119), A+ liest den Wert nicht",
   "r_id": "R61",
   "maturity": 1,
-  "used_by": "scripts/workshop/ibc_beet.py, check_pool_soll.py",
-  "varianten": ["ring_b2"]
+  "used_by": "scripts/workshop/ibc_beet.py, check_pool_soll.py"
  }
 }

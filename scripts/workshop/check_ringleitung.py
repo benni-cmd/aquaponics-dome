@@ -1,10 +1,10 @@
-"""Pruefung Bauteile Ring B2 (ring_b2.py): Koerper, Ports (Stirnflaechen), Interferenz 0, Pegel-Hydraulik, Statik Ringstuetze, Abzweig = Bibliotheksgeometrie.
-Aufruf: python -X utf8 scripts/workshop/check_ring_b2.py [pegelschacht|ringstuetze|entluefter|abzweig]   (exit 1 bei FAIL)"""
+"""Pruefung Bauteile Ring B2 (ringleitung.py): Koerper, Ports (Stirnflaechen), Interferenz 0, Pegel-Hydraulik, Statik Ringstuetze, Abzweig = Bibliotheksgeometrie.
+Aufruf: python -X utf8 scripts/workshop/check_ringleitung.py [pegelschacht|ringstuetze|entluefter|abzweig]   (exit 1 bei FAIL)"""
 import sys, os, math
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 import leitung as L
-import ring_b2 as R
+import ringleitung as R
 import check_lt_w36 as C
 
 D = R.DC
@@ -114,7 +114,7 @@ def check_abzweig(ck):
         for lib, body in (("lt_t_d75", "T_d75"), ("lt_reduzierung_d75_d50", "Reduzierung_75_50"), (f"lt_reduzierung_d50_d{dk}", f"Reduzierung_50_{dk}"), (f"lt_kugelhahn_d{dk}", f"Kugelhahn_d{dk}")):
             le = sc.evaluate(os.path.join(D, lib + ".sc")); lv = sum(b["volume_mm3"] for b in le["bodies"] if b["name"] in ("T_Stueck", "Reduzierung", "Kugelhahn"))
             ck.eq(f"{tag} {body} Volumen = Bibliothek {lib}", bb[body]["volume_mm3"], lv, lv * 1e-4)
-        # Steckmass: jedes Rohrstueck steckt beidseits genau die Muffentiefe tief (Kette aus ring_b2.ab_kette)
+        # Steckmass: jedes Rohrstueck steckt beidseits genau die Muffentiefe tief (Kette aus ringleitung.ab_kette)
         ch = R.ab_kette(dk)
         for art, f, d, za, zb in ch:
             if art != "rohr":
@@ -128,7 +128,7 @@ def check_abzweig(ck):
 
 def main():
     want = [a for a in sys.argv[1:] if not a.startswith("--")] or ["pegelschacht", "ringstuetze", "entluefter", "abzweig"]
-    ck = sc.Check("ring_b2")
+    ck = sc.Check("ringleitung")
     for w in want:
         globals()["check_" + w](ck)
     return ck.done()

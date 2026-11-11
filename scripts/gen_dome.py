@@ -1,12 +1,11 @@
 """Erzeugt das SolidCraft-Befehlsskript fuer designs/dome.sc (Stufe 1-4 = Plan-Schritte 2-5).
-Aufruf: python gen_dome.py <stufe> <out.json> [--variante a_plus|ring_b2]. Masse in mm; alle Annahmen stehen in P."""
+Aufruf: python gen_dome.py <stufe> <out.json>. Masse in mm; alle Annahmen stehen in P."""
 import json, math, os, sys
 from geo import build
 import leitungen as LTG   # M10-S2a
-import variante           # N-VARIANTEN V1b: Kreislauf-Variante (Schalter --variante, Umgebung KREISLAUF_VARIANTE, Standard params.json)
-V = variante.aktiv()      # a_plus (Standard, Pfade wie bisher) | ring_b2
+import variante           # Pfade und Parameter des einen Kreislaufs (N-UNIFY-AUTOBAHN U7, D141)
 
-P = variante.parameter(V)   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort); U4/D119: Eintraege mit `varianten`/`varianten_werte` je Variante (a_plus = Werte vor U3, ring_b2 = Soll der Oasis-Quelle)
+P = variante.parameter()   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort); seit U7 (D141) die Soll-Werte der Oasis-Quelle
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 cmds = []
@@ -31,7 +30,7 @@ def pol(r, az): a = math.radians(az); return (r*math.cos(a), r*math.sin(a))
 
 def params():
     for k, v in P.items():
-        if isinstance(v, bool) or not isinstance(v, (int, float)): continue   # Text-Schalter (z. B. kreislauf_variante "a_plus", d0819fe) sind keine CAD-Ausdruecke
+        if isinstance(v, bool) or not isinstance(v, (int, float)): continue   # Text-Schalter sind keine CAD-Ausdruecke
         add("parameters.add", name=k, expression=str(v), comment="dome-build Parameter")
 
 def rect_body(name, cx, cy, z0, az_deg, along, across, h, op="new", targets=None):
@@ -52,7 +51,7 @@ def component_file(fname, cls, assembly, fn):
     fn(); colors()
     data = cmds; cmds, names = saved, savedn
     tmp = os.path.join(ROOT, "scripts", "_comp.json"); json.dump({"commands": data}, open(tmp, "w"))
-    out = os.path.join(ROOT, "designs", "components", fname + ("" if V == "a_plus" else "-" + V) + ".sc")   # V1b: B2 schreibt eigene Dateien (Graeben in erdflaeche haengen an der Variante); A+ unveraendert
+    out = os.path.join(ROOT, "designs", "components", fname + ".sc")   # U7 (D141): ein Kreislauf, Standardname
     r = __import__("subprocess").run([r"C:\Program Files\SolidCraft\solidcraft-cli.exe", "run", tmp, "--save", out, "--quiet"], capture_output=True, text=True)
     if r.returncode: raise SystemExit(f"Komponente {fname} fehlgeschlagen: {r.stderr[-400:]}{r.stdout[-400:]}")
     os.remove(tmp)
@@ -83,27 +82,22 @@ def place_struts(segs):
     for key in ("A", "B"):
         place_matrix(f"Strebe_{key}", os.path.join(ROOT, "designs", "components", f"strebe_{key.lower()}.sc"), moves[key])
 
-ERDE_SEITE = 19000 if V == "ring_b2" else 15000   # U4 (D123): Sumpf-Gruben im Vorbau reichen bis y -9032; die Erdflaeche waechst nur in ring_b2 (A+ bleibt 15000)
+ERDE_SEITE = 19000   # U4 (D123): Sumpf-Gruben im Vorbau reichen bis y -9032
 
 def erde_fn(sock_z):
     add("solid.box", length=ERDE_SEITE, width=ERDE_SEITE, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
-    # U4 (D93, D118): ring_b2 sperrt nur den Fischtank in den Boden; Anzucht- und Lebendfutterbecken stehen auf dem Boden (keine Aussparung), Beete auf dem Flur (keine Taschen)
-    for nm, src, wall, depth in ((("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]),) if V == "ring_b2" else (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]), ("Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"]), ("Dritt", POOL3, 60, P["pool3_depth"]))):
+    # U4 (D93, D118): der Kreislauf der Quelle sperrt nur den Fischtank in den Boden; Anzucht- und Lebendfutterbecken stehen auf dem Boden (keine Aussparung), Beete auf dem Flur (keine Taschen)
+    for nm, src, wall, depth in (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]),):
         x, y, d_out, z_bot, total = pool_dims(sock_z, src, wall, depth, nm)
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
-    if V == "ring_b2":   # U4 (D105): Sumpf-Gruben (Wanne aussen 1329 x 3179, Boden -602 unter dem Fussboden, Deckel buendig), Spiel +20 wie bei den Becken
-        for k, (x, y, yaw, long_az) in enumerate(sumpf_orte(), 1):
-            rect_body(f"T101_Grube_{k:02d}", x, y, sock_z - SUMPF_WANNE_TIEFE - 5, long_az, SUMPF_WANNE_L + 20, SUMPF_WANNE_B + 20, SUMPF_WANNE_TIEFE + 6, op="cut", targets=["T13_Erde"])
-    for k, b in enumerate([] if V == "ring_b2" else LAYOUT["ibc_beds"], 1):
-        x, y = bed_xy(b); ln, wd = bed_dims(k, b)
-        rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, bed_yaw(b), ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
-    if V == "ring_b2" and BEET_AUSLASS_TASCHE:   # U4 (D122): Tasche 160 x 160 x 85 je Beet; seit U3b (D134) liegt der Auslass seitlich ueber dem Flur, U6 schaltet die Taschen ab
+    # U4 (D105): Sumpf-Gruben (Wanne aussen 1329 x 3179, Boden -602 unter dem Fussboden, Deckel buendig), Spiel +20 wie bei den Becken
+    for k, (x, y, yaw, long_az) in enumerate(sumpf_orte(), 1):
+        rect_body(f"T101_Grube_{k:02d}", x, y, sock_z - SUMPF_WANNE_TIEFE - 5, long_az, SUMPF_WANNE_L + 20, SUMPF_WANNE_B + 20, SUMPF_WANNE_TIEFE + 6, op="cut", targets=["T13_Erde"])
+    if BEET_AUSLASS_TASCHE:   # U4 (D122): Tasche 160 x 160 x 85 je Beet; seit U3b (D134) liegt der Auslass seitlich ueber dem Flur, U6 schaltet die Taschen ab
         for k, b in enumerate(LAYOUT["ibc_beds"], 1):
             x, y = bed_xy(b); yaw = bed_yaw(b); u, v = BEET_AUSLASS["aussen" if "plants" in b else "innen"]; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
             rect_body(f"T9_Auslass_{k:02d}", round(x + u * c - v * s, 1), round(y + u * s + v * c, 1), sock_z - BEET_AUSLASS_TIEFE - 5, yaw, 160, 160, BEET_AUSLASS_TIEFE + 6, op="cut", targets=["T13_Erde"])
-    for k, (x, y, yaw) in enumerate([] if V == "ring_b2" else feinfilter_orte(), 1):   # U5 (D101): ring_b2 hat keinen Feinfilter und keine Gruben; M10-S1: Feinfilter-Gruben (Boden = Standflaeche), Drehung wie der Filter
-        rect_body(f"T55_Grube_{k:02d}", x, y, sock_z + P["ff_z"], yaw, P["ff_grube_l"], P["ff_grube_w"], -P["ff_z"] + 1, op="cut", targets=["T13_Erde"])
-    doc = LTG.laden_variante(V)   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
+    doc = LTG.laden_variante()   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
     for g in (LTG.graben(doc, sock_z) if doc else []):
         if g[0] == "box": rect_body(g[1], g[2], g[3], g[4], g[5], g[6], g[7], g[8], op="cut", targets=["T13_Erde"])
         else: add("solid.cylinder", diameter=g[5], height=g[6], base=[g[2], g[3], g[4]], operation="cut", targets=["T13_Erde"], name=g[1])
@@ -153,7 +147,7 @@ def messstellen(fz):
     items = {}   # Dateiname (ohne .sc) -> [(x, y, z, yaw)]
     add_i = lambda f, x, y, z, yaw=0.0: items.setdefault(f, []).append((round(x, 1), round(y, 1), round(z, 1), round(yaw, 1)))
     rim_z = fz + P["pool_rim"]; wat_z = fz + LAYOUT["pool2"]["water_z"]
-    rim2, rim3, wat3 = fz + P.get("pool2_rim", P["pool_rim"]), fz + P.get("pool3_rim", P["pool_rim"]), fz + POOL3["water_z"]   # U4: Becken mit eigenem Rand und Spiegel (ring_b2); A+: gleiche Werte wie bisher
+    rim2, rim3, wat3 = fz + P.get("pool2_rim", P["pool_rim"]), fz + P.get("pool3_rim", P["pool_rim"]), fz + POOL3["water_z"]   # U4: Becken mit eigenem Rand und Spiegel
     def tauch(c, inner, wall, phi, sonden, extra=(), rim_z=rim_z):   # H_TAUCH am Beckenrand, c Beckenmitte, phi Richtung der Rohrlage von der Mitte (X zeigt ueber den Rand nach aussen)
         r = inner + wall / 2 - 126.0; x, y = c[0] + r * math.cos(math.radians(phi)), c[1] + r * math.sin(math.radians(phi)); z0 = rim_z - 640.0
         add_i("halter_tauch", x, y, z0, phi)
@@ -165,9 +159,9 @@ def messstellen(fz):
     pi, pw = LAYOUT["pool"]["d"] / 2, P["wall"]
     tauch((0, 0), pi, pw, 160.0, ["do_ind", "temp_ds", "level_druck", "ph"])            # MS01, MS02, MS04, MS05 (MS02/04/05 ohne eigenen Halter -> im Rohr von MS01)
     beruhig((0, 0), pi, 100.0, ["level_float", "level_float"])                              # MS03
-    c2 = pool_dims(fz, LAYOUT["pool2"], 60, P["pool2_depth"], "Zweit")[:2] if V == "ring_b2" else (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"])))   # U4: ring_b2 am Bauplatz
+    c2 = pool_dims(fz, LAYOUT["pool2"], 60, P["pool2_depth"], "Zweit")[:2]   # U4: am Bauplatz
     tauch(c2, LAYOUT["pool2"]["d"] / 2, 60.0, math.degrees(math.atan2(-c2[1], -c2[0])), ["do_mini"], rim_z=rim2)   # MS07 (zur Kuppelmitte)
-    c3 = pool_dims(fz, POOL3, 60, P["pool3_depth"], "Dritt")[:2] if V == "ring_b2" else (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))); f3 = math.degrees(math.atan2(-c3[1], -c3[0]))
+    c3 = pool_dims(fz, POOL3, 60, P["pool3_depth"], "Dritt")[:2]; f3 = math.degrees(math.atan2(-c3[1], -c3[0]))
     tauch(c3, P["pool3_d"] / 2, 60.0, f3, ["do_mini", "ph"], rim_z=rim3)                                  # MS08, MS09
     beruhig(c3, P["pool3_d"] / 2, f3 + 60.0, ["level_float"], wat_z=wat3)                                  # MS10
     px, py, pyaw, X, Y = puffer_pose()
@@ -294,14 +288,13 @@ def t1_t3_t4(sock_z):
     return n, dropped
 
 LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))
-BAUPLATZ = {}   # Soll-ID -> Bauplatz (x_mm, y_mm, drehung_grad, ...) aus data/oasis-lage.json (U1, D99); nur ring_b2
-if V == "ring_b2":
-    # U4 (D93, D119): Becken- und Beethoehen der Quelle aus dem Block `ring_b2` in data/layout.json (A+ liest ihn nicht); Lage der Becken = Bauplatz aus data/oasis-lage.json
-    _rb = LAYOUT["ring_b2"]
-    POOL2_D_ALT = LAYOUT["pool2"]["d"]   # tank_offsets rechnet weiter mit dem alten Zweitbecken-Hindernis: die Altbestand-Tanks (Technik, U5) bleiben in U4 genau, wo sie waren
-    for _k in ("pool", "pool2"): LAYOUT[_k].update(_rb[_k])   # d, water_z
-    for _b in LAYOUT["ibc_beds"]: _b["z0"] = _rb["ibc_beds_z0"]; _b["height"] = _rb["ibc_beds_hoehe"]["aussen" if "plants" in _b else "innen"]
-    BAUPLATZ = {b["id"]: b["bauplatz"] for b in json.load(open(os.path.join(ROOT, "data", "oasis-lage.json"), encoding="utf-8"))["bauteile"] if b.get("bauplatz")}
+BAUPLATZ = {}   # Soll-ID -> Bauplatz (x_mm, y_mm, drehung_grad, ...) aus data/oasis-lage.json (U1, D99)
+# U4 (D93, D119): Becken- und Beethoehen der Quelle aus dem Block `oasis` in data/layout.json; Lage der Becken = Bauplatz aus data/oasis-lage.json
+_rb = LAYOUT["oasis"]
+POOL2_D_ALT = LAYOUT["pool2"]["d"]   # tank_offsets rechnet weiter mit dem alten Zweitbecken-Hindernis: die Altbestand-Tanks (Technik, U5) bleiben in U4 genau, wo sie waren
+for _k in ("pool", "pool2"): LAYOUT[_k].update(_rb[_k])   # d, water_z
+for _b in LAYOUT["ibc_beds"]: _b["z0"] = _rb["ibc_beds_z0"]; _b["height"] = _rb["ibc_beds_hoehe"]["aussen" if "plants" in _b else "innen"]
+BAUPLATZ = {b["id"]: b["bauplatz"] for b in json.load(open(os.path.join(ROOT, "data", "oasis-lage.json"), encoding="utf-8"))["bauteile"] if b.get("bauplatz")}
 POOL2_D_ALT = locals().get("POOL2_D_ALT", LAYOUT["pool2"]["d"])
 ROT = P["door_az"] - 167   # Layout-Drehung (docs/components.md)
 
@@ -331,10 +324,8 @@ POOL3 = None   # nach params(): {"d", "water_z"} wie Zweitbecken, Durchmesser au
 
 def pool_dims(fz, src, wall, depth, nm):
     x, y = LXY(src["cx"], src["cy"])
-    if V == "ring_b2" and nm.startswith("Zweit"): x, y = BAUPLATZ["nursery"]["x_mm"], BAUPLATZ["nursery"]["y_mm"]
-    elif V == "ring_b2" and nm.startswith("Dritt"): x, y = BAUPLATZ["feed"]["x_mm"], BAUPLATZ["feed"]["y_mm"]
-    elif nm.startswith("Zweit"): x, y = P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))   # D62: Zweitbecken von der Tuerachse (Gang Tuer -> Zentralpool frei), Modellrahmen
-    elif nm.startswith("Dritt"): x, y = P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))   # D48: Sektor neben der Tuer, Mittelring frei
+    if nm.startswith("Zweit"): x, y = BAUPLATZ["nursery"]["x_mm"], BAUPLATZ["nursery"]["y_mm"]
+    elif nm.startswith("Dritt"): x, y = BAUPLATZ["feed"]["x_mm"], BAUPLATZ["feed"]["y_mm"]
     else: x, y = 0.0, 0.0   # D35: Zentralpool auf der Kuppelachse (alle Ringe konzentrisch; OBJ-Abweichung 41 mm)
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
     return x, y, d_out, z_bot, fz + P["pool_rim"] - z_bot
@@ -382,7 +373,7 @@ def pool_fn(fz, nm, src, wall, depth, tn):
     wn = tn.split("_")[0] + "_Wasser"
     add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + POOL_BODEN), base=[x, y, z_bot + POOL_BODEN], operation="new", name=wn, body_name=wn)
 
-def pools_ring_b2(fz):
+def pools_oasis(fz):
     """U4 (D93, D118, D120): 04_Wasserbecken nach der Quelle. Fischtank (T5, Wsp 750, Rand 1200, Innenboden -1000) und Anzuchtbecken (T6, Wsp 800, Rand 1000, auf dem Boden) sind in Weltlage gebaute
     Komponenten von U3 (Lage aus data/oasis-lage.json im Bauskript scripts/workshop/becken_soll.py) und werden im Ursprung eingefuegt; das Lebendfutterbecken (T14k, Wsp 850, Rand 1000, auf dem Boden)
     steht am Bauplatz feed, Drehung 0 (die Ueberlauf-Tuelle ist im Weltazimut zum Anzuchtbecken gebaut). Ports der Tuellen: data/becken-ports.json."""
@@ -403,7 +394,7 @@ def becken_ports(fz):
     Pumpensockel und Schwimmerhalter im Sumpf (U5). Quelle der Lagen: Komponenten-Parameter (data/components/*.json), Bauplaetze (data/oasis-lage.json), Placement (sumpf_orte)."""
     sys.path.insert(0, os.path.join(ROOT, "scripts", "workshop"))
     import becken_soll as BS, sc
-    out = {"_hinweis": "erzeugt von scripts/gen_dome.py (ring_b2, U4); Weltkoordinaten in mm, Z absolut (Fussboden Z %g); nicht von Hand aendern" % fz, "ueberlaeufe": [], "sumpf_zulaeufe": [], "sumpf_einbauten": []}
+    out = {"_hinweis": "erzeugt von scripts/gen_dome.py (U4); Weltkoordinaten in mm, Z absolut (Fussboden Z %g); nicht von Hand aendern" % fz, "ueberlaeufe": [], "sumpf_zulaeufe": [], "sumpf_einbauten": []}
     for klasse, sid, ziel, nm in (("zweitbecken", "nursery", "fish", "T6_Ueberlauf"), ("becken_dritt_klein", "feed", "nursery", "T14k_Ueberlauf")):
         p, _ = sc.load_params(klasse); az = BS.ue_azimut(sid, ziel); u = (math.cos(math.radians(az)), math.sin(math.radians(az))); bp = BAUPLATZ[sid]
         r = p["wasser_d"] / 2.0 + p["ring"] + p["stutzen_len"]; z = fz + P["pool2_wsp" if sid == "nursery" else "pool3_wsp"] + p["ue_id"] / 2.0
@@ -419,11 +410,7 @@ def becken_ports(fz):
 
 def pools(fz):
     """04_Wasserbecken: Zentralpool (T5) und Zweitbecken (T6) als Komponenten; eingelassen, Rand Z 650, Wasserspiegel Z 515."""
-    if V == "ring_b2": return pools_ring_b2(fz)
-    component_file("pool_zentral", "Pool", "04_Wasserbecken", lambda: pool_fn(fz, "Pool", LAYOUT["pool"], P["wall"], P["pool_depth"], "T5_Zentraltank"))
-    component_file("zweitbecken", "Zweitbecken", "04_Wasserbecken", lambda: pool_fn(fz, "Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], "T6_Zweitbecken"))
-    x3, y3, _, zb3, _ = pool_dims(fz, POOL3, 60, P["pool3_depth"], "Dritt")
-    place_instances("Becken_Dritt", os.path.join(ROOT, "designs", "components", "becken_dritt_klein.sc"), [(round(x3, 1), round(y3, 1), round(zb3, 1), 0.0)], "04_Wasserbecken")   # D66: Werkstatt-Komponente becken_dritt_klein (T14k, Z 0 = Unterkante)
+    return pools_oasis(fz)
 
 def rect_corners(cx, cy, l, w, yaw):
     c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
@@ -463,25 +450,7 @@ def tank_offsets():
 
 def tanks(fz):
     """07_Tanks/09_Technik: 4 Tanks (Werkstatt: tank_klein x2, tank_gross, tank_gross_t3) und 8 Pumpentafeln (pumpe_klein/gross, je Tank 2) als Instanzen; Ursprung Tank = Mitte Standflaeche am Boden, Drehung = Plattform-yaw; Positionen aus layout.json plus tank_offsets."""
-    if V == "ring_b2": return technik_ring_b2(fz)   # U5 (D93, D100, D101): Altbestand-Tanks und Pumpentafeln entfallen, die Technik steht nach data/oasis-lage.json
-    tk = {"klein": [], "gross": [], "gross_t3": []}; pk = {"klein": [], "gross": []}; off = tank_offsets()
-    for i, t in enumerate(LAYOUT["tanks"]):
-        dx, dy = off[i]; x, y = LXY(t["cx"] + dx, t["cy"] + dy); yaw = t["platform"][0]["yaw"] + ROT
-        tk["klein" if t["d"] < 800 else ("gross_t3" if i == 2 else "gross")].append((x, y, fz, yaw))
-        placed = []
-        for m in t["modules"]:
-            if m["l"] < 500: continue   # 384-mm-Kassetten = Stuetzrippen der Plattform (D16, Teil der Tank-Komponente)
-            mx, my = LXY(m["cx"] + dx, m["cy"] + dy)
-            if any(math.hypot(mx - px, my - py) < 100 for px, py in placed): continue   # OBJ-Duplikate zusammenfassen
-            placed.append((mx, my))
-            yw = math.radians(m["yaw"] + ROT); yp = (-math.sin(yw), math.cos(yw)); dn = (mx - x) * yp[0] + (my - y) * yp[1]   # W30: Tafel steht seitlich am Stand, Mittelabstand (Tafelnormale) >= Plattformhalbbreite + 25 + tafel_gap
-            need = (619 if t["d"] < 800 else 821) / 2 + 25 + 30
-            if abs(dn) < need: sg = 1 if dn >= 0 else -1; mx, my = mx + sg * (need - abs(dn)) * yp[0], my + sg * (need - abs(dn)) * yp[1]
-            pk["klein" if t["d"] < 800 else "gross"].append((round(mx, 1), round(my, 1), fz, m["yaw"] + ROT))
-    for v, items in tk.items():
-        if items: place_instances("Tank_" + v, os.path.join(ROOT, "designs", "components", f"tank_{v}.sc"), items, "07_Tanks")
-    for v, items in pk.items():
-        place_instances("Pumpe_" + v, os.path.join(ROOT, "designs", "components", f"pumpe_{v}.sc"), items, "09_Technik")
+    return technik_oasis(fz)
 
 def _cpar(name):
     """U5: Parameter einer Werkstatt-Komponente (data/components/<name>.json, Feld `wert`)."""
@@ -497,7 +466,7 @@ def sumpf_einbauten(fz):
 
 GEBLAESE_AUSTRITT_X = 412   # +X-Ende des Gebläses (Luftaustritt), Koerper-Box aus viewer/detail/geblaese_luft.json (max X 412); Verteiler-Muffe 60 mm davor
 
-def technik_ring_b2(fz):
+def technik_oasis(fz):
     """U5 (D93, D100 bis D107, D127 bis D131): Technikgruppe der Quelle am Bauplatz aus data/oasis-lage.json. Podeste und vorhandene Tanks (Ueberlauf = Soll-Wasserspiegel: Vortex 1900, Biofilter 1800),
     4 Tauchpumpen (Pumpstelle 1 im Fischtank, Pumpstelle 2 auf dem Pumpensockel im Sumpf), 2 Venturi im Druckrohr (Achse 500 ueber dem Spiegel), 2 Schwimmerschalter im Sumpf (-110),
     Belueftungsanlage (2 Geblaese mit je einem Verteiler 4), Notluftpumpe, Nachspeise-Ventil, 2 Schlamm-Sammelbehaelter, Regentank und Permakultur ausserhalb. Alles in Weltlage, Yaw = drehung_grad der Lage-Probe."""
@@ -544,7 +513,7 @@ def place_matrices(cls, path, mats, assembly):
 
 def leitungen(fz):
     """M10-S2a: Rohre, Bogen, T, Reduziermuffen und Kupplungen aus data/leitungstrassen.json als Instanzen der Bibliothek lt_*.sc (Rechnung: scripts/leitungen.py), Assembly 08_Leitungen, Farbe nach Funktion."""
-    doc = LTG.laden_variante(V)   # V1b: nur Trassen, Formstuecke und Teile der aktiven Variante
+    doc = LTG.laden_variante()   # V1b: nur Trassen, Formstuecke und Teile der aktiven Variante
     if not doc: return
     teile, _ = LTG.bauen(doc)
     for cls, path, mats, farben in LTG.dateien(teile):
@@ -552,17 +521,11 @@ def leitungen(fz):
         for hexfarbe, occ in farben.items():
             if hexfarbe: add("appearance.assign", components=occ, color=hexfarbe)
 
-def verteiler_a_plus():
-    """N-VARIANTEN V1b (Blatt 1.2): Setzung nur in A+. Der Verteiler d50 je Linie steht als `teile` VT1/VT2 (samt Kappen und Klemme) mit
-    `varianten: ["a_plus"]` in data/leitungstrassen.json und wird von leitungen() gesetzt; hier entsteht kein eigener Befehl (A+ bleibt byte-gleich).
-    Liefert die Ids der A+-eigenen Teile fuer Bericht und Pruefung."""
-    doc = LTG.laden() or {}
-    return [e["id"] for key in LTG.VAR_LISTEN for e in doc.get(key, []) if e.get("varianten") == ["a_plus"]]
 
-def ring_b2(fz):
-    """N-AUTOBAHN-V2 R1/R2: Setzungen nur in Ring B2 aus scripts/trassen_ring.py (Lage aus Instanzmatrizen und Port-Tabellen): Joche, Stelzen, Montageschienen,
+def ringleitung(fz):
+    """N-AUTOBAHN-V2 R1/R2: Setzungen der Ringleitung aus scripts/trassen_ring.py (Lage aus Instanzmatrizen und Port-Tabellen): Joche, Stelzen, Montageschienen,
     Verbinder, Schellen, Ring-Ecken, Podeste, Pegelschaechte, Booster, Entluefter (R1), ab R2 Ausleger, Abzweige und Fallleitungen.
-    Rohre, Formstuecke und Haehne kommen als Eintraege mit `varianten: ["ring_b2"]` ueber leitungen(). Runde ueber Umgebung AUTOBAHN_RUNDE (r1 | r2, Standard r2)."""
+    Rohre, Formstuecke und Haehne kommen als Eintraege aus data/leitungstrassen.json ueber leitungen(). Runde ueber Umgebung AUTOBAHN_RUNDE (r1 | r2, Standard r2)."""
     import trassen_ring as TRR
     gesetzt = []
     for cls, path, mats, asm in TRR.tragwerk(os.environ.get("AUTOBAHN_RUNDE", "r2")):
@@ -590,7 +553,7 @@ NFT_APC["mitte"] += P["ring_shift_mid"]; NFT_APC["aussen"] += P["ring_shift_out"
 NFT_POTS = []                                                # Rinnen-Topfpositionen (x, y, z Topfboden), von nft() gefuellt, von pots() gesetzt
 
 def nft(fz):
-    tp = json.load(open(os.path.join(ROOT, "data", "nft_pots.json" if V == "a_plus" else "nft_pots-%s.json" % V)))["typen"]   # U4: ring_b2 = Topfhoehen der Tische von U3 (Rinnenunterkante 1030/880/1230), extract_nft_pots.py --variante ring_b2
+    tp = json.load(open(variante.pfad("nft_pots")))["typen"]   # U4: Topfhoehen der Tische von U3 (Rinnenunterkante 1030/880/1230), extract_nft_pots.py
     for typ, sectors in SECTORS.items():
         items = []
         for i in sectors:
@@ -617,7 +580,7 @@ def pots(fz, with_heads):
         cx, cy = bed_xy(b); yaw = bed_yaw(b); c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
         for u, v in grid:
             x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1)
-            zb = round(fz + b["z0"] + b["height"] - BED_RIM_GAP, 1) if V == "a_plus" else round(fz + P["beet_boden"] + BED_MEDIA_DEPTH, 1)   # U4/D122: ring_b2 Medienoberflaeche = Beetboden 70 + media_depth 300 = 370 ueber dem Flur   # D79: Topf steht auf der Medienoberkante DIESES Beets (aussen 800, innen 765 bis 801 abs.); NFT-Toepfe unveraendert
+            zb = round(fz + P["beet_boden"] + BED_MEDIA_DEPTH, 1)   # U4/D122: Medienoberflaeche = Beetboden 70 + media_depth 300 = 370 ueber dem Flur; D79: Topf steht auf der Medienoberkante
             pots_.append((x, y, zb, 0)); heads.append((x, y, zb + 63, 0))
     for x, y, zb in NFT_POTS: pots_.append((x, y, zb, 0)); heads.append((x, y, round(zb + 63, 1), 0))   # Rinnen-Toepfe (D33: 586, Lochabstand 200)
     place_instances("Netztopf", os.path.join(ROOT, "designs", "components", "netztopf.sc"), pots_, "10_Pflanzen")
@@ -652,9 +615,6 @@ def technik_e13(fz):
     import technik_e13 as TE
     g = TE.gruppe(P); comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
     place_instances("Schrank_Einfuehrung", comp("schrank_einfuehrung"), [g["einfuehrung"]], "14_Technik_E13")
-    if V != "ring_b2":   # U5 (D103, D130): ring_b2 setzt Gebläse (Bauplatz luftpumpe_1/_2) und je einen Verteiler 4 in technik_ring_b2(); der Hauptverteiler 6 entfällt
-        place_instances("Geblaese_Luft", comp("geblaese_luft"), g["geblaese"], "14_Technik_E13")
-        place_matrices("Luftverteiler_6", comp("luftverteiler_6"), [TE.verteiler_matrix(g["vert"])], "14_Technik_E13")
     place_instances("Aktivkohle_Station", comp("aktivkohle_station"), [g["station"]], "14_Technik_E13")
 
 def luft_a(fz):
@@ -662,9 +622,7 @@ def luft_a(fz):
     import trassen_luft as TL
     g = TL.geometrie(fz, LAYOUT["pool"]["d"], P["wall"], P["pool_rim"], LAYOUT["pool"]["water_z"], P["pool_depth"], POOL_BODEN)
     comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
-    if V != "ring_b2": place_instances("Luftverteiler_4", comp("luftverteiler_4"), [tuple(round(v, 2) for v in g["verteiler"])], "09_Technik")   # U5 (D130): ring_b2 hat keinen Pool-Verteiler am Rand (Rand 1200 unter den Innentischen); die Arme kommen aus den zwei Verteilern der Belueftungsanlage
     place_instances("Luft_Scheibenbelueftung", comp("luft_scheibenbelueftung"), [(round(x, 2), round(y, 2), round(z, 2), 0.0) for x, y, z in g["scheiben"]], "04_Wasserbecken")
-    if V != "ring_b2": place_instances("Schwimmerventil_Pool", comp("schwimmerventil_pool"), [tuple(round(v, 2) for v in g["ventil"])], "04_Wasserbecken")   # U5 (D107, D114): ring_b2 setzt das Nachspeise-Ventil (technik_ring_b2)
 
 def t10_t11(fz):
     component_file("zulaufrohr", "Zulaufrohr", "08_Leitungen", rohr_fn)
@@ -672,15 +630,15 @@ def t10_t11(fz):
 
 if __name__ == "__main__":
     stage = int(sys.argv[1]); out = sys.argv[2]
-    params(); POOL3 = {"cx": 0, "cy": 0, "d": P["pool3_d"], "water_z": LAYOUT["ring_b2"]["pool3"]["water_z"] if V == "ring_b2" else LAYOUT["pool2"]["water_z"]}
+    params(); POOL3 = {"cx": 0, "cy": 0, "d": P["pool3_d"], "water_z": LAYOUT["oasis"]["pool3"]["water_z"]}
     add("component.rename", component=0, name="Kuppel_Aquaponik")
     for nm in ASSEMBLIES: add("component.create", name=nm, activate=False)
     t1_t3_t4(P["sock_h"]) if False else None
     n, dropped = t1_t3_t4(P["sock_h"])
-    if stage >= 2: pools(P["sock_h"]); (sumpftanks(P["sock_h"]), becken_ports(P["sock_h"])) if V == "ring_b2" else None; tanks(P["sock_h"])
+    if stage >= 2: pools(P["sock_h"]); sumpftanks(P["sock_h"]); becken_ports(P["sock_h"]); tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); (feinfilter(P["sock_h"]) if V == "a_plus" else None); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); (verteiler_a_plus() if V == "a_plus" else ring_b2(P["sock_h"])); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); ringleitung(P["sock_h"]); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
-    print(f"variante {V}, stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")
+    print(f"stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

@@ -1,11 +1,11 @@
-"""N-UNIFY-AUTOBAHN U6 Aufgabe 4: die Wege der Quelle ausserhalb des Rings (Variante ring_b2), Lage aus dem Bauskript der Variante und den Komponenten.
+"""N-UNIFY-AUTOBAHN U6 Aufgabe 4: die Wege der Quelle ausserhalb des Rings, Lage aus dem Bauskript und den Komponenten.
 
-Rohre (Leitungsbibliothek lt_*, Eintraege in data/leitungstrassen.json mit quelle "trassen_soll", varianten ["ring_b2"], Feld soll_weg):
+Rohre (Leitungsbibliothek lt_*, Eintraege in data/leitungstrassen.json mit quelle "trassen_soll", Feld soll_weg):
   e21/e22 Pumpstelle 1 Fischtank -> Vortex (d50, ueber Kopf), e23/e24 Vortex -> Biofilter (d63, Schwerkraft), e59/e61 Pumpstelle 2 Sumpf -> Venturi (d50),
   e71/e72 Venturi -> Fischtank (d50), e62 Biofilter 1 -> Lebendfutterbecken, e63 Lebendfutter -> Anzucht, e70 Anzucht -> Fischtank (d63, Ueberlaeufe),
   e81/e82 Notueberlauf Biofilter -> Sumpf (d63), e64 bis e67 Schlamm Vortex/Biofilter -> Sammelbehaelter (d50), e17/e18/e19 Nachspeisung (d25),
   Luft e77, e86 bis e89, e91 bis e94 (d20, ueber dem hoechsten Wasserspiegel gefuehrt).
-Schlaeuche (Komponente designs/components/ring_b2_ruecklauf.sc in Weltlage, Darstellung wie die Fallleitungen):
+Schlaeuche (Komponente designs/components/ring_ruecklauf.sc in Weltlage, Darstellung wie die Fallleitungen):
   e33/e34 Ring-Ende-Hahn -> Sumpf, e49 bis e56 Rueckläufe Beete und Tische -> Sumpf der eigenen Linie, e57 NFT Innen -> Fischtank (ID25).
 Aufruf: python -X utf8 scripts/trassen_soll.py [--bericht] [--schreiben] [--bauen]"""
 import json
@@ -59,7 +59,7 @@ def ortho(p0, d0, p1, d1=None, zu=None, a=None, dn=50):
 
 def trasse(tid, weg, dn, pfad, farbe, band, notiz, linie=None, anschluss=(), **kw):
     return dict(id=tid, kante="S-" + weg, soll_weg=weg, dn=dn, farbe=farbe, start="offen", ende="offen", pfad=pfad, band=band, linie=linie,
-                anschluss=list(anschluss), varianten=["ring_b2"], quelle=QUELLE, notiz=notiz, **kw)
+                anschluss=list(anschluss), quelle=QUELLE, notiz=notiz, **kw)
 
 
 # ------------------------------------------------------------------ Anschlusspunkte (lokal aus viewer/detail/tank_klein.json, tank_gross.json; Komponenten-Parameter)
@@ -258,7 +258,7 @@ def hochpunkte(pts, tol=0.5):
     return sum(1 for i in range(len(pts) - 1) if pts[i + 1][2] > pts[i][2] + tol)
 
 
-DATEI = "ring_b2_ruecklauf"
+DATEI = "ring_ruecklauf"   # U7 (D141): Name ohne Variantenkuerzel
 
 
 def bauen(out_sc=None):
@@ -272,7 +272,7 @@ def bauen(out_sc=None):
         _, L, _ = TR.hose_einfach(b, "R%02d_%s" % (i, w), pts, Rb, ad, idd)
         laengen.append((n, w, round(L), Rb))
     b.add("solid.list", ) if False else None
-    b.add("design.set_meta", name=nm, description="U6: Rueckläufe (Schlauch ID25) der Beete und Tische in den Sumpf der eigenen Linie, NFT Innen in den Fischtank, Ring-Ende in den Sumpf; Darstellungsgeometrie wie ring_b2_schlauchwege (trassen_soll.py)") if False else None
+    b.add("design.set_meta", name=nm, description="U6: Rueckläufe (Schlauch ID25) der Beete und Tische in den Sumpf der eigenen Linie, NFT Innen in den Fischtank, Ring-Ende in den Sumpf; Darstellungsgeometrie wie ring_schlauchwege (trassen_soll.py)") if False else None
     sc.run(b.write(DATEI), out_sc or TR.comp(DATEI))
     return laengen
 
@@ -281,12 +281,9 @@ def schreiben():
     p = os.path.join(ROOT, "data", "leitungstrassen.json")
     doc = json.load(open(p, encoding="utf-8"))
     doc["trassen"] = [e for e in doc["trassen"] if e.get("quelle") != QUELLE] + rohre()
-    for key in ("trassen", "r_stuecke"):                         # A+-Frischwasser K39 und Stammloesung K52 gelten in ring_b2 nicht mehr als Kreislauf-Wege
+    for key in ("trassen", "r_stuecke"):                         # Frischwasser K39 entfaellt (U6: Nachspeisung nach der Quelle S0-e17/e18/e19, D107; seit U7 geloescht); Stammloesung K52 ist kein Kreislauf-Weg
+        doc[key] = [e for e in doc[key] if e["id"] != "K39"]
         for e in doc[key]:
-            if e["id"] in ("K39",):
-                e.setdefault("entfaellt_in", [])
-                if "ring_b2" not in e["entfaellt_in"]: e["entfaellt_in"].append("ring_b2")
-                e["entfaellt_grund"] = "U6: Nachspeisung nach der Quelle (S0-e17/e18/e19, D107)"
             if e["id"] in ("K52", "KH_K52"):
                 e["soll_bauteil"] = "puffer_klein"; e["soll_hinweis"] = "Messtechnik, begruendet behalten (D101), kein Weg der Quelle"
     json.dump(doc, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1); open(p, "a").write("\n")

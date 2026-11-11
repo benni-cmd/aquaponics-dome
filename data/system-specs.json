@@ -759,14 +759,14 @@
   "tabelle_ben": "B reference/Kuppelberechnung-neu-2.xlsx (R15)"
  },
  "kreislauf": {
-  "variante": "a_plus",
-  "pumpstufen_linienwasser": 1,
-  "pumpenleistung_el_w_eta25": 430,
-  "pumpenleistung_el_w_eta18": null,
+  "variante": "ring_b2",
+  "pumpstufen_linienwasser": 2,
+  "pumpenleistung_el_w_eta25": 577,
+  "pumpenleistung_el_w_eta18": 635,
   "foerderhoehe_hauptpumpe_m": 2.0,
-  "foerderhoehe_booster_m": null,
-  "graeben_zulauf_beete": true,
-  "ring_nennlaenge_ueber_kopf_m": 0.0,
+  "foerderhoehe_booster_m": 1.0,
+  "graeben_zulauf_beete": false,
+  "ring_nennlaenge_ueber_kopf_m": 21.4,
   "trassen": 40,
   "rohrlaenge_m": 72.4,
   "rohrlaenge_je_dn_m": {

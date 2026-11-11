@@ -1,7 +1,7 @@
 """Bauteile Ring B2 (docs/jobs/N-VARIANTEN.md Abschnitt 4, Schritt V2): Pegelschacht, Ringstuetze d75, Entluefter d75, Ring-Abzweig d40/d32.
 Booster = pumpe_gross (kein neues Teil). Ring-Abzweig = Bibliotheksteile (lt_t_d75, lt_reduzierung_*, lt_kugelhahn_*) mit Rohrstuecken, Geometrie
 unveraendert aus leitung.py uebernommen (nur verschoben/gespiegelt), damit kein neues Formstueck entsteht.
-Aufruf: python -X utf8 scripts/workshop/ring_b2.py [pegelschacht|ringstuetze|entluefter|abzweig] [--json] [--render]"""
+Aufruf: python -X utf8 scripts/workshop/ringleitung.py [pegelschacht|ringstuetze|entluefter|abzweig] [--json] [--render]"""
 import sys, os, json, math
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
@@ -330,8 +330,7 @@ FILES = {"pegelschacht": "pegelschacht", "ringstuetze": "ringstuetze_d75", "entl
 def json_data():
     pg = ps_geom(); rg = rs_geom(); eg = el_geom()
     P = lambda lst: [{"name": n, "lage": list(p), "richtung": list(d), "art": a, "dn": dn} for n, p, d, a, dn in lst]
-    return {"quelle": "scripts/workshop/ring_b2.py", "auftrag": "docs/jobs/N-VARIANTEN.md Abschnitt 4 Schritt V2", "variante": "ring_b2",
-            "booster": "pumpe_gross (vorhandenes Bauteil, kein neues Teil; Ports scripts/trassen_linie.py PORTS pumpe_gross)",
+    return {"quelle": "scripts/workshop/ringleitung.py", "auftrag": "docs/jobs/N-VARIANTEN.md Abschnitt 4 Schritt V2", "booster": "pumpe_gross (vorhandenes Bauteil, kein neues Teil; Ports scripts/trassen_linie.py PORTS pumpe_gross)",
             "teile": {
                 "pegelschacht": {"teilenummer": "T94", "parameter": PS, "ks": "Mitte Fassboden aussen, Z hoch",
                                  "pegel": {"saug_achse": PS["saug_z"], "aus": PS["pegel_aus"], "ein": PS["pegel_ein"], "sohle_notueberlauf": round(pg["sohle_ueberlauf"], 1), "fass_oberkante": PS["fass_h"]},
@@ -344,7 +343,7 @@ def json_data():
                 "ring_abzweig_d32": {"teilenummer": "T97-32", "kette": [{"art": a, "teil": f, "d": d, "z_oben": round(za, 3), "z_unten": round(zb, 3), "laenge": round(za - zb, 3)} for a, f, d, za, zb in ab_kette(32)], "ports": P(ab_ports(32))}}}
 
 def render(key, fname):
-    rd = os.path.join(sc.ROOT, "renders", "components", "ring_b2"); os.makedirs(rd, exist_ok=True)
+    rd = os.path.join(sc.ROOT, "renders", "components", "ringleitung"); os.makedirs(rd, exist_ok=True)
     path = os.path.join(DC, fname + ".sc"); out = os.path.join(rd, fname + ".png")
     if key == "pegelschacht":
         sc.snapshot(path, out, [0, 0, 280], 3.14159, 0.3, 1500, w=1000, h=800, section="y=0")
@@ -368,5 +367,5 @@ if __name__ == "__main__":
         if "--render" in sys.argv:
             print("Bild", render(key, FILES[key]))
     if "--json" in sys.argv:
-        p = os.path.join(sc.ROOT, "data", "components", "ring_b2_teile.json")
+        p = os.path.join(sc.ROOT, "data", "components", "ringleitung_teile.json")
         open(p, "w", encoding="utf-8").write(json.dumps(json_data(), indent=1, ensure_ascii=False) + "\n"); print("geschrieben", p)

@@ -5,7 +5,7 @@ import sys, os, math, json, hashlib
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 import leitung as L
-import ring_b2 as R
+import ringleitung as R
 import autobahn_t as A
 import check_lt_w36 as C
 
@@ -16,7 +16,7 @@ FALL_M = 1.3                                                    # m frei haengen
 PE = A.ec_geom()
 Q_RING = (math.pi / 4 * (0.075 ** 2 - (PE["di"] / 1000) ** 2) * 960 + math.pi / 4 * (PE["di"] / 1000) ** 2 * 1000)    # kg/m
 I_SCHIENE = 5.81e4; W_SCHIENE = 2.84e3; KG_SCHIENE = 2.53   # [Q] MUEPRO MPR 41/41/2,5 Datenblatt 33665 (fischer FUS 41/2,5: 6,0 cm4 / 2,85 cm3) -> kleinerer Wert
-ABZWEIG_KG = 1.18 + 2 * 0.5                                     # T97 d40 (Blatt ring_b2) + 2 Schlauchanfaenge [A]
+ABZWEIG_KG = 1.18 + 2 * 0.5                                     # T97 d40 (Blatt ringleitung) + 2 Schlauchanfaenge [A]
 GANG = {"A": (2195.0, 2795.0), "B": (3959.0, 4492.0)}           # [E] Radialbaender: Innentisch-Pfosten-Fussplatte 1864+331 / Mitte-Portal 3377 -+ 582 / Aussen-Portal 5074 - 582
 
 def rohr_I(s, w): return (s ** 4 - (s - 2 * w) ** 4) / 12

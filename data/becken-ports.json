@@ -1,5 +1,5 @@
 {
- "_hinweis": "erzeugt von scripts/gen_dome.py (ring_b2, U4); Weltkoordinaten in mm, Z absolut (Fussboden Z 400); nicht von Hand aendern",
+ "_hinweis": "erzeugt von scripts/gen_dome.py (U4); Weltkoordinaten in mm, Z absolut (Fussboden Z 400); nicht von Hand aendern",
  "ueberlaeufe": [
   {
    "name": "T6_Ueberlauf",

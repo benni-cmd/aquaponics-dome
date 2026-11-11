@@ -1,7 +1,7 @@
-"""Teiledaten data/parts/<komp>.json fuer die Werkstatt-Teile tiefer Ventilschacht (schacht_tief.py) und Ring B2 (ring_b2.py).
+"""Teiledaten data/parts/<komp>.json fuer die Werkstatt-Teile tiefer Ventilschacht (schacht_tief.py) und Ring B2 (ringleitung.py).
 Masse und Abmessungen aus `solidcraft-cli eval`; Texte, Normen und Bezug als angenommen [A] (keine Datenblaetter gelesen).
 artikel_id nur, wenn der Artikel in data/katalog.json UND data/stueckliste.json steht; sonst `ausnahme` (Stueckliste/Katalog baut N-STUECKLISTE).
-Aufruf: python -X utf8 scripts/workshop/parts_ring_b2.py"""
+Aufruf: python -X utf8 scripts/workshop/parts_ringleitung.py"""
 import sys, os, json
 sys.path.insert(0, os.path.dirname(__file__))
 import sc

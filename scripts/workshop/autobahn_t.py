@@ -12,7 +12,7 @@ import sys, os, json, math
 sys.path.insert(0, os.path.dirname(__file__))
 import sc
 import leitung as L
-import ring_b2 as R
+import ringleitung as R
 
 DC = os.path.join(sc.ROOT, "designs", "components")
 RD = os.path.join(sc.ROOT, "renders", "components", "autobahn")
@@ -496,8 +496,7 @@ def render(fname):
 def json_data():
     P = lambda lst: [{"name": n, "lage": [round(v, 3) for v in p], "richtung": list(d), "art": a, "dn": dn} for n, p, d, a, dn in lst]
     q = sch_querschnitt(); ph = podest_h()
-    return {"quelle": "scripts/workshop/autobahn_t.py", "auftrag": "docs/jobs/N-AUTOBAHN-V2.md Abschnitt 3, WA-T (WA1 bis WA4, WA7)", "variante": "ring_b2",
-            "hoehenkette_rel": Z, "ring": {"apothem": AP_MITTE, "eckradius": round(R_ECKE, 1), "seite": round(SEITE, 1), "umfang_m": round(10 * SEITE / 1000, 2),
+    return {"quelle": "scripts/workshop/autobahn_t.py", "auftrag": "docs/jobs/N-AUTOBAHN-V2.md Abschnitt 3, WA-T (WA1 bis WA4, WA7)", "hoehenkette_rel": Z, "ring": {"apothem": AP_MITTE, "eckradius": round(R_ECKE, 1), "seite": round(SEITE, 1), "umfang_m": round(10 * SEITE / 1000, 2),
                                           "hinweis": "Planer-Blatt rechnete mit ap 3277 (nft_tisch.json); im Modell steht der Mittelring seit D63 auf 3377 (ring_shift_mid +100)"},
             "ausleger_ziel_ab_ring": {k: round(v, 1) for k, v in AUSL_ZIEL.items()}, "ausleger_laengen": AUSL,
             "lagen": lagen(),

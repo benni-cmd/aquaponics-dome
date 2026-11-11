@@ -7,8 +7,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 import sc
 import leitung as L
 import autobahn_s as A
-import ring_b2 as R
-from check_ring_b2 import port_faces, interf
+import ringleitung as R
+from check_ringleitung import port_faces, interf
 
 D = A.DC
 BLATT = os.path.join(sc.ROOT, "docs", "parts", "autobahn.md")

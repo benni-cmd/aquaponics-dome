@@ -131,9 +131,9 @@
    "herkunft": "[A] Mitte der Schwimmerhalter-Aufnahme (Z -120 bis -40, unter dem Deckel); sie umfasst den Hochstand -110 und die Kabelklemme des schwimmerschalter_hochstand (Z -75 bis -45)"
   },
   "halter_y": {
-   "wert": -650,
+   "wert": 650,
    "einheit": "mm",
-   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher halter_y -1281.2; [A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter_y -444; [A] Lage der Aufnahme in der Hauptkammer (Mitte)"
+   "herkunft": "[A] L3 (D158): Schwimmerhalter am anderen Ende der Grube (Pumpe innen, Schwimmer aussen wie in der Quelle), zwischen Trennwand 3 und 4; vorher -650; [A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher halter_y -1281.2; [A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter_y -444; [A] Lage der Aufnahme in der Hauptkammer (Mitte)"
   },
   "halter_x": {
    "wert": 350,

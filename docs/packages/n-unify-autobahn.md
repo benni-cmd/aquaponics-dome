@@ -174,6 +174,15 @@ Freiraum im Modell vor L2 (gemessen aus `scripts/gen_dome.py`, Winkel phi relati
 4. Gesamtbau, dann Messung: `check_walkways_voll.py` (500-mm-Gaenge, Erreichbarkeit, Kopf 1,7 m) und Tuer-Gang 900 mm (Flutung ab der Tuer mit Abstand >= 450).
 5. Draufsicht-Bild, Vergleich der Anordnung mit der Quelle, Bedenken nur fuer Teile, die nicht passen; Stand, Push.
 
+### L3 Stand (11.11.2026, 17:35, Werkstatt/Montage-Sitzung)
+**Ergebnis (Modellstand 17:24:20, `scripts/build.sh 5 31` Exit 0, keine Rohre):**
+1. Ringe, Fischtank, Vortex-/Biofilter-Tanks und Podeste wie `ce15b86` (Schalter `RINGE_WIE_L2 = False`, Dateien aus `ce15b86`).
+2. Technik nach der Anordnung der Quelle, gespiegelt um die Mitte der Technik-Luecke Az -54 (D157): Vortex +-36 Grad r 3300, Biofilter +-58 Grad r 3350, Sumpf +-24 Grad r 4500, Schlamm +-32 Grad r 5400, Anzucht/Lebendfutter auf der Mittelachse r 3500/4885. `python -I -X utf8 scripts/l3_vergleich.py`: alle 18 Teile auf der Seite der Quelle, Winkel bis 12 Grad daneben, Exit 1 nur wegen der Reihenfolge nach Radius (Filter innen, Sumpf aussen, B29). Bilder `renders/l3-anordnung-vs-quelle.png`, `renders/lage-l3-draufsicht.png` (echte Draufsicht, angesehen).
+3. Volumen gehalten (+-5 %): Anzucht 2,513 m3 (Soll 2,513), Lebendfutter 0,668 m3 (Soll 0,668), Sumpf-Grube 1,206 m3 (Quelle 1,2), Schlamm 350 l (D116); Masse aus dem Bau der Komponenten (`zweitbecken.py`, `becken_dritt_klein.py`, `sumpftank.py`, `schlamm_sammelbehaelter.py`).
+4. Begehbarkeit (`python -X utf8 scripts/check_walkways_voll.py`, `docs/walkway-map.md`): 0 Bauteile nicht erreichbar (500-mm-Gang zu jedem Bauteil); Tuer-Gang 900 mm erreicht Fischtank, Anzucht und Lebendfutter in Kopfhoehe (kleinster Radius 2511) und in Kniehoehe bis r 2579 vor den Innentisch-Fuessen (B32); Kopf 1,7 m: 3 rote Engstellen, alle zwischen Paaren (Vortex-Biofilter 200 mm, Anzucht-Lebendfutter 142 mm); Wand/Kuppel: Planungspruefung 100 mm Wandluft und Kugel 5800 (`l3_anordnung.py` Fehler 0); `scripts/check_lage_konflikte.py`: 0 Ueberlappungen der Technik (9 Altbefunde der Ringe wie vor L2).
+5. Annahmen D157 bis D160, D152/D153 ueberholt; Bedenken B29 bis B32. Puffer klein aussen (D160).
+**Nicht erfuellt / offen:** Gate `check_lage_quelle.py` gilt seit D156 nicht mehr (prueft Zeichnungsmasse); `check_pool_soll` prueft alte Masse; Teileliste/Volumen-Nachzug (U8) und Rohre offen. **Naechster Schritt:** Ben sieht `renders/lage-l3-draufsicht.png` und `renders/l3-anordnung-vs-quelle.png`; danach Leitungen neu.
+
 ## Stand
 - 10.11.2026: Quelle gesichert (f11a92d), D93 und W89 eingetragen, Planer-Auftrag geschrieben.
 - 10.11.2026, Planer-Lauf (Sonnet 5.5, Agent-SDK):

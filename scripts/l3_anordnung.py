@@ -51,7 +51,7 @@ PLAN = {   # gefunden mit einer Gittersuche (Schritt 2 Grad / 50 mm) unter den P
     "sludge": (32.0, 5400.0),        # Schlamm-Sammelbehaelter schmal und eingelassen (D159)
 }
 WEST = {}                            # abweichende Lage fuer Linie 2 (phi mit Vorzeichen); leer = spiegelgleich
-SUMPF_LANG = {"sump_1": 120.0, "sump_2": -228.0}   # Langachse der Grube (Weltrahmen), Linie 2 gespiegelt: 2 x ACHSE_M - Linie 1
+SUMPF_LANG = {"sump_1": 300.0, "sump_2": -408.0}   # 180 Grad gegen die Suche gedreht (gleicher Grundriss): Pumpe innen, Schwimmer aussen wie in der Quelle   # Langachse der Grube (Weltrahmen), Linie 2 gespiegelt: 2 x ACHSE_M - Linie 1
 ACHSE = {"nursery": (2.5, 3500.0), "feed": (2.5, 4885.0)}   # Kette Lebendfutter -> Anzucht -> Fischtank auf der Mittelachse (D157)
 GANG_BIS_R = 2700.0                  # Tuer-Gang 900 mm gerade auf der Tuer-Achse von der Tuer bis Gang A (r 2700)
 

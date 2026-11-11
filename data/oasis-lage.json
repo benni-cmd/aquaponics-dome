@@ -1803,7 +1803,7 @@
    "bauplatz": {
     "x_mm": 3897.1,
     "y_mm": -2250.0,
-    "drehung_grad": 120.0,
+    "drehung_grad": 300.0,
     "z_modell_mm": -100.0,
     "r_mm": 4500.0,
     "az_grad": -30.0,
@@ -1946,7 +1946,7 @@
    "bauplatz": {
     "x_mm": 935.6,
     "y_mm": -4401.7,
-    "drehung_grad": -228.0,
+    "drehung_grad": -408.0,
     "z_modell_mm": -100.0,
     "r_mm": 4500.0,
     "az_grad": -78.0,

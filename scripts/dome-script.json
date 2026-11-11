@@ -139041,13 +139041,13 @@
 "command": "component.insert_design",
 "params": {
 "path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/ring_schlauchwege.sc",
-"name": "Ring_B2_Schlauchwege"
+"name": "Ring_Schlauchwege"
 }
 },
 {
 "command": "occurrence.move",
 "params": {
-"occurrence": "Ring_B2_Schlauchwege:1",
+"occurrence": "Ring_Schlauchwege:1",
 "matrix": [
 1,
 0,
@@ -139076,13 +139076,13 @@
 "command": "component.insert_design",
 "params": {
 "path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/ring_ruecklauf.sc",
-"name": "Ring_B2_Ruecklauf"
+"name": "Ring_Ruecklauf"
 }
 },
 {
 "command": "occurrence.move",
 "params": {
-"occurrence": "Ring_B2_Ruecklauf:1",
+"occurrence": "Ring_Ruecklauf:1",
 "matrix": [
 1,
 0,

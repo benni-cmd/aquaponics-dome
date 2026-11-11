@@ -263,7 +263,7 @@ DATEI = "ring_ruecklauf"   # U7 (D141): Name ohne Variantenkuerzel
 
 def bauen(out_sc=None):
     import sc
-    b = sc.Build(); nm = "U6_Ring_B2_Ruecklauf"
+    b = sc.Build(); nm = "U6_Ring_Ruecklauf"
     AS.mats(b, ["SCH schwarz"]); b.add("component.create", name=nm, grounded=True)
     laengen = []
     for i, (n, w, idd, pts) in enumerate(schlaeuche(), 1):

@@ -366,7 +366,7 @@ def tragwerk(runde="r1"):
         fl = fallleitungen()
         for dk in (40, 32):
             out.append((f"Ring_Abzweig_d{dk}", comp(f"ring_abzweig_d{dk}"), [f["m_t"] for f in fl if f["dk"] == dk], "08_Leitungen"))
-        out.append(("Ring_B2_Schlauchwege", comp(SCHLAUCH_DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"))
+        out.append(("Ring_Schlauchwege", comp(SCHLAUCH_DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"))
     return out
 
 # ================================================================== R2: 38 Abzweige und Schlauch-Fallleitungen
@@ -570,7 +570,7 @@ def schlauch_bauen(out_sc=None):
     """Eine Komponente mit allen 38 Fallleitungen in Weltlage (Instanz im Ursprung), Darstellungsgeometrie [A]: Tuelle, Schlauch, Regelhahn, Zwischenschlauch,
     Schnellkupplung, Schlauch, Endstueck als Achtkant-Prismen ohne Bohrung (Masse aus autobahn_s; Wege und Laengen wie in fallleitungen())."""
     import sc
-    b = sc.Build(); nm = "R2_Ring_B2_Schlaeuche"
+    b = sc.Build(); nm = "R2_Ring_Schlaeuche"
     AS.mats(b, ["SCH schwarz", "LT pp", "LT pvc", "LT v2a", "LT hahn"]); b.add("component.create", name=nm, grounded=True)
     laengen = []
     for i, a in enumerate(fallleitungen(), 1):

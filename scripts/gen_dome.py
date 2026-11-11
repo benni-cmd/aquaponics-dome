@@ -532,7 +532,7 @@ def ringleitung(fz):
         if cls in ("Pegelschacht_Podest", "Pegelschacht", "Booster_gross"): continue   # U5 (D98, D101): der Biofilter steht hoeher als der Ring, Pegelschacht und Booster entfallen
         if mats: place_matrices(cls, path, mats, asm); gesetzt.append((cls, len(mats)))
     import trassen_soll as TSO   # U6: Rueckläufe (Schlauch) in die Sumpftanks und NFT Innen in den Fischtank, eine Komponente in Weltlage
-    place_matrices("Ring_B2_Ruecklauf", TRR.comp(TSO.DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"); gesetzt.append(("Ring_B2_Ruecklauf", 1))
+    place_matrices("Ring_Ruecklauf", TRR.comp(TSO.DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"); gesetzt.append(("Ring_Ruecklauf", 1))
     return gesetzt
 
 # T9: 14 halbe IBC-Wannen (layout.json) als Instanzen der Werkstatt-Komponenten ibc_beet_{aussen_933,aussen_993,innen_933}; Ursprung = Mitte Wannenunterseite

@@ -48,6 +48,8 @@ liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 | U9 | `unify-u9-montage.md` | `check_latte` in Kopie, Kollisionen beheben (Verschiebung höchstens 750 mm), Gangkarte | 18 USD | offen |
 | U10 | `unify-u10-viewer.md` | Viewer-Export, Kreislauf-Schalter mit Soll-Wegen, Browser-Screenshot, `viewer_dist.py` | 10 USD | offen |
 | P-Prüf | eigener Lauf, nicht der Bauer (Vorlage `docs/jobs/vorlagen/pruefung.md`) | Soll-Ist-Tabelle aller Quell-Bauteile, Kollisionen, Listen | 8 USD | offen |
+| F1 | `unify-fix-nachbesserung.md` | Nachbesserung nach dem Prüfbefund (entfällt bei PASS) | – | offen |
+| N1 | `unify-nachpruef.md` | Nachprüfung, danach Abschluss: Prozesse sauber beenden, Ergebnisbericht für Ben | – | offen |
 
 Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Obergrenzen je Lauf, keine Erwartung; gemessen wird in `tools/agent-sdk-runner/usage.jsonl`. Anhaltspunkt: dieser Planer-Lauf hat bis zum Planende etwa 5,7 USD verbraucht (Budgetzähler des Runners, 12 USD Obergrenze).
 

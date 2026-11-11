@@ -26,14 +26,14 @@
   "gruppen": {
     "_hinweis": "Bauteilgruppe je Komponente (erste passende Regel gewinnt, Regex auf den Komponentennamen). Grundlage fuer die gruppierte Einkaufsliste (W59-Nachtrag).",
     "regeln": [
-      ["^(strebe_a|strebe_b|knoten.*)$", "Kuppel"],
+      ["^(strebe_a|strebe_b|knoten.*|portal_joch_mitte_.*|montageschiene_.*|schienenverbinder_.*)$", "Kuppel"],
       ["^(fundamentanker|fundamentring|erdflaeche)$", "Fundament"],
       ["^(haut_.*|huelle_.*|tuer.*|keilschiene)$", "Huelle"],
       ["^(feinfilter|aktivkohle_station)$", "Filter"],
-      ["^(tank_.*|becken_.*|zweitbecken|pool_zentral|puffer_.*|pumpe_.*|zulaufrohr|schwimmerventil_pool|schlammfass)$", "Becken und Tanks"],
+      ["^(tank_.*|becken_.*|zweitbecken|pool_zentral|puffer_.*|pumpe_.*|zulaufrohr|schwimmerventil_pool|schlammfass|sumpftank|pegelschacht|pegelschacht_podest|regentank_.*|schlamm_sammelbehaelter|podest_.*|permakultur_modul|biofilter_dritt|tauchpumpe_modul|notluftpumpe)$", "Becken und Tanks"],
       ["^(nft_.*|ibc_beet.*|beet_sumpf|pflanztisch|netztopf|salatkopf|winkelhalter)$", "Tische und Beete"],
-      ["^(lt_.*|luftverteiler_.*|geblaese_luft|luft_scheibenbelueftung)$", "Leitungen"],
-      ["^(sonde_.*|halter_.*|schaltschrank|schrank_einfuehrung)$", "Messtechnik und Elektrik"],
+      ["^(lt_.*|luftverteiler_.*|geblaese_luft|luft_scheibenbelueftung|ring_.*|ringstuetze_.*|ausleger_schlauch_.*|schlauch_fall_.*|ruecklauf_rinne|bodenrinne_rost_.*|entluefter_d75|nachspeise_ventil|venturi_belueffter)$", "Leitungen"],
+      ["^(sonde_.*|halter_.*|schaltschrank|schrank_einfuehrung|schwimmerschalter_.*)$", "Messtechnik und Elektrik"],
       ["^(mensch_referenz.*)$", "Massfigur"]
     ]
   },

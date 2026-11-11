@@ -49,6 +49,7 @@ TYPEN = OrderedDict([
     ("GEW", "Gewebe und Netz"),
     ("TOP", "Topf und Substrat"),
     ("SON", "Sonderteil (Eigenbau mit Rohmaterial als Kaufteil, Tuer, Haut, Knoten)"),
+    ("MAT", "Material nach Menge (Gitterrost, Teichfolie; Zuschnitt oder Flaeche)"),
     ("BET", "Beton und Erdarbeit (nicht in der Einkaufsliste, Entscheidung Orchestrator 04.11.2026)"),
 ])
 PVC_D = [16, 20, 25, 32, 40, 50, 63, 75, 90, 110, 125, 160]
@@ -169,7 +170,7 @@ def classify_lt(comp, bodies):
              "verteiler": ("FIT", "verteiler", "PVC-U-Verteiler"), "uebergang": ("FIT", "uebergang-pe-pvc", "Uebergang PE auf PVC-U"),
              "kabeleinfuehrung": ("ARM", "kabeleinfuehrung", "Kabeleinfuehrung"), "schacht": ("SON", "schacht-kugelhahn", "Schacht fuer Kugelhahn (PE-HD)"),
              "schlauch": ("SCH", "schlauch", "Schlauch"), "schlauchbogen90": ("SCH", "schlauchbogen90", "Schlauchbogen 90 Grad"),
-             "schlauchschelle": ("SCH", "schlauchschelle", "Schlauchschelle"), "leerrohr": ("ROH", "leerrohr", "Leerrohr (Kabelschutz)")}
+             "schlauchschelle": ("SCH", "schlauchschelle", "Schlauchschelle"), "schnellkupplung": ("ARM", "schnellkupplung", "Schnellkupplung"), "sammler": ("FIT", "sammler", "Sammelleitung (Sammler)"), "leerrohr": ("ROH", "leerrohr", "Leerrohr (Kabelschutz)")}
     if kind not in names:
         return None
     typ, pre, bez = names[kind]
@@ -590,10 +591,261 @@ def classify_w37(comp, b):
     return None
 
 
+# ------------------------------------------------------------------ N-UNIFY-AUTOBAHN U8: Komponenten des einen Kreislaufs (U2 bis U6)
+UNIFY_KOMP = re.compile(
+    r"^(ring_schlauchwege|ring_ruecklauf|ring_abzweig_d(32|40)|ring_ecke_d75|ringstuetze_d75(_b)?|sumpftank|tauchpumpe_modul|venturi_belueffter|"
+    r"notluftpumpe|schwimmerschalter_hochstand|regentank_5m3|schlamm_sammelbehaelter|nachspeise_ventil|entluefter_d75|becken_dritt_klein|"
+    r"permakultur_modul|ibc_beet_(aussen|innen)_\d+|ausleger_schlauch_\d+|portal_joch_mitte_[ab]|montageschiene_41_\d+|schienenverbinder_36|"
+    r"knoten_schere.*|biofilter_dritt|pegelschacht(_podest)?|ruecklauf_rinne|bodenrinne_rost_gang[ab]|schlauch_fall_id\d+_.*)$")
+# Meterlast der Schlaeuche im Modell (Vollzylinder, Median der geraden Segmente, Messung 11.11.2026) [E]
+SCHLAUCH_G_PRO_M = {32: 1058.1, 25: 625.4}
+_BODIES = {}
+
+
+def _pfad_od(comp, name):
+    """Aussendurchmesser des Schlauchs eines Weges (kleinstes Bbox-Mass seiner Schlauchsegmente), Weg = F<nn> bzw. R<nn>_e<nn>"""
+    if "c" not in _BODIES:
+        _BODIES["c"] = json.load(open(CACHE, encoding="utf-8"))["komponenten"]
+    toks = name.split("_")
+    key = "_".join(toks[:2]) if comp == "ring_ruecklauf" else (toks[0] if comp.startswith("ring_") else "")
+    k = (comp, key)
+    if k not in _BODIES:
+        ods = [min(dims(x)[0], 99) for x in _BODIES["c"][comp]["bodies"]
+               if (x["material"] or "").startswith("SCH") and (key == "" or "_".join((x["name"] or "").split("_")[:2] if comp == "ring_ruecklauf" else (x["name"] or "").split("_")[:1]) == key)]
+        _BODIES[k] = min(ods) if ods else 32
+    return _BODIES[k]
+
+
+def _stahl_teil(b, tag="unify"):
+    """Stahlteil nach Gestalt: Profil (lang), Blech-Zuschnitt (flach) oder Sonderteil (kurz, dick)"""
+    d = dims(b)
+    if d[0] > 0 and d[2] / d[0] >= 3 and d[1] <= 3 * d[0] + 1:
+        return profil_artikel(b)
+    if d[0] <= 15 and d[1] >= 3 * d[0]:
+        return Art(f"BLE-blech-st-{lnum(d[0])}", "BLE", f"Stahlblech {lnum(d[0])} mm verzinkt, Zuschnitt {lnum(d[2])}x{lnum(d[1])}", "Stk", "c", "Stahl verzinkt",
+                   {"dicke_mm": d[0], "zuschnitt_mm": [d[2], d[1]]}, flag="zuschnitt_je_stueck")
+    return Art(f"SON-stahlteil-{lnum(d[0])}x{lnum(d[1])}x{lnum(d[2])}", "SON", f"Stahlteil {lnum(d[0])}x{lnum(d[1])}x{lnum(d[2])} mm (Eigenbau/Zuschnitt, Stahl verzinkt)", "Stk", "c", "Stahl verzinkt")
+
+
+def classify_unify(comp, b):
+    """Koerper der Komponenten aus U2 bis U6 (und der Knoten-/Portalteile). Rueckgabe: Art, ('ausnahme', Text) oder None."""
+    if not UNIFY_KOMP.match(comp):
+        return None
+    n = (b["name"] or "")
+    nl = re.sub(r" \(\d+\)", "", n.lower())
+    m = b["material"] or ""
+    d = dims(b)
+    F = "unify_annahme"
+    AUSN_SRB = ("ausnahme", "Mutter/Scheibe im Schraubensatz enthalten")
+
+    # ---- Schlaeuche und Ausstattung der Wege (Quelle: Wege e..., Nennweite D106/D138)
+    if comp in ("ring_schlauchwege", "ring_ruecklauf") or comp.startswith("schlauch_fall_id"):
+        fall = comp.startswith("schlauch_fall_id")
+        if m.startswith("SCH"):
+            od = _pfad_od(comp, n)
+            idn = int(re.search(r"id(\d+)", comp).group(1)) if fall else (25 if od >= 29 else 19)
+            gpm = SCHLAUCH_G_PRO_M.get(int(od)) if not fall else None
+            gpm = gpm or 1.316 * math.pi / 4 * od * od  # Dichte aus den Segmenten OD 32: 1,316 g/cm3 [E]
+            return Art(f"SCH-schlauch-id{idn}", "SCH", f"Schlauch ID{idn} (Meterware, Laenge aus Modellmasse)", "m", "a", "PVC/PE", {"nennweite": f"id{idn}"},
+                       menge=b["mass_g"] / gpm if b["mass_g"] else 0.0, flag="laenge_aus_masse")
+        if "tuelle" in nl:
+            return Art("SCH-schlauchtuelle-d25", "SCH", "Schlauchtuelle d25 (PVC)", "Stk", "a", "PVC")
+        if nl.endswith("regelhahn"):
+            return Art("ARM-kugelhahn-d25", "ARM", "PVC-U-Kugelhahn d25", "Stk", "a", "PVC-U", {"durchmesser_mm": 25})
+        if nl.endswith("hebel"):
+            return Art("ARM-kugelhahn-d25", "ARM", "PVC-U-Kugelhahn d25", "Stk", "a", "PVC-U", {"durchmesser_mm": 25}, teil_von=True)
+        if "kupplung_" in nl:
+            idn = int(re.search(r"id(\d+)", comp).group(1)) if fall else (25 if _pfad_od(comp, n) >= 29 else 19)
+            return Art(f"ARM-schnellkupplung-id{idn}", "ARM", f"Schnellkupplung ID{idn} (Dose und Stecker, Edelstahl) [A]", "Stk", "a", "Edelstahl",
+                       teil_von=nl.endswith("stecker"), flag=F)
+        if nl.endswith("anschluss"):
+            return Art("FIT-schlauchanschluss-abzweig", "FIT", "Schlauchanschluss am Abzweig (Gewinde/Klebe auf Schlauchtuelle) [A]", "Stk", "a", "PVC/PP", flag=F)
+        if "halter_" in nl:
+            return Art("SON-schlauchhalter-pp", "SON", "Schlauchhalter PP (Clip) [A]", "Stk", "a", "PP", flag=F)
+        if nl.endswith("winkel"):
+            return Art("FIT-schlauchwinkel-90", "FIT", "Schlauch-Winkelstueck 90 Grad (PVC, Tuelle-Tuelle) [A]", "Stk", "a", "PVC", flag=F)
+    # ---- Ring-Abzweige, Ringecke, Stuetzen, Schienen, Ausleger, Portal
+    if comp.startswith("ring_abzweig"):
+        mm = re.match(r"reduzierung_(\d+)_(\d+)", nl)
+        if mm:
+            return Art(f"FIT-red-d{mm.group(1)}-d{mm.group(2)}", "FIT", f"PVC-U-Reduzierung d{mm.group(1)} auf d{mm.group(2)}", "Stk", "a", "PVC-U", {"groesse": f"d{mm.group(1)}_d{mm.group(2)}"})
+        if nl == "t_d75":
+            return Art("FIT-t-d75", "FIT", "PVC-U-T-Stueck d75", "Stk", "a", "PVC-U", {"groesse": "d75"})
+        mm = re.match(r"rohrstueck_d(\d+)", nl)
+        if mm:
+            return Art(f"ROH-pvcu-d{mm.group(1)}", "ROH", f"PVC-U-Druckrohr d{mm.group(1)} (Meterware)", "m", "a", "PVC-U", {"durchmesser_mm": int(mm.group(1))}, menge=d[2] / 1000.0)
+        mm = re.match(r"kugelhahn_d(\d+)(_spindel|_hebel)?$", nl)
+        if mm:
+            return Art(f"ARM-kugelhahn-d{mm.group(1)}", "ARM", f"PVC-U-Kugelhahn d{mm.group(1)}", "Stk", "a", "PVC-U", {"durchmesser_mm": int(mm.group(1))}, teil_von=bool(mm.group(2)))
+    if comp == "ring_ecke_d75":
+        return Art("FIT-ring-ecke-d75", "FIT", "Ring-Ecke d75 (PE100, Segmentbogen/Formteil fuer den Ring) [A]", "Stk", "a", "PE100", {"durchmesser_mm": 75}, flag=F)
+    if comp.startswith("montageschiene"):
+        return profil_artikel(b)
+    if comp.startswith(("ringstuetze", "ausleger_schlauch", "portal_joch", "schienenverbinder", "pegelschacht_podest")):
+        if "epdm" in m.lower():
+            return Art("FOL-epdm-schelleneinlage-d75", "FOL", "EPDM-Schelleneinlage d75", "Stk", "a", "EPDM")
+        if nl.startswith("rohrschelle"):
+            return Art("SCH-rohrschelle-d75", "SCH", "Rohrschelle d75 (Stahl verzinkt)", "Stk", "a", "Stahl verzinkt")
+        if nl.startswith("schraube_"):
+            g = int(round(d[0]))
+            return Art(f"SRB-satz-m{g}x{int(round((d[2] - 5.3) / 5.0)) * 5}", "SRB", f"Schraubensatz M{g}x{int(round((d[2] - 5.3) / 5.0)) * 5} (Sechskantschraube + Mutter + 2 Scheiben) [A]", "Satz", "a", "Stahl verzinkt",
+                       {"gewinde": f"M{g}"}, flag=F)
+        if nl.startswith(("anker_", "gewindestange")):
+            return Art(f"SRB-gewindestange-m{int(round(d[0]))}x{int(round(d[2] / 10.0)) * 10}", "SRB", f"Gewindestange M{int(round(d[0]))}x{int(round(d[2] / 10.0)) * 10}, verzinkt", "Stk", "a", "Stahl verzinkt")
+        return _stahl_teil(b)
+    # ---- Knoten Schere (N-KNOTEN-SCHERE): Laserteile und Schrauben
+    if comp.startswith("knoten_schere"):
+        if m == "Stahl Laserteil" and nl.startswith("lochplatte"):
+            return Art(f"BLE-laser-lochplatte-{lnum(d[1])}x{lnum(d[2])}x{lnum(d[0])}", "BLE", f"Laserteil Lochplatte {lnum(d[1])}x{lnum(d[2])}x{lnum(d[0])} mm, Stahl (Knoten Schere)", "Stk", "c", "Stahl Laserteil")
+        if m == "Stahl Laserteil":
+            return Art(f"SON-laser-lasche-{lnum(d[0])}x{lnum(d[1])}x{lnum(d[2])}", "SON", f"Laserteil Lasche {lnum(d[0])}x{lnum(d[1])}x{lnum(d[2])} mm, Stahl (Knoten Schere)", "Stk", "c", "Stahl Laserteil")
+        if m == "Stahl Schraube":
+            if nl.endswith(("mutter", "scheibeo", "scheibeu")):
+                return AUSN_SRB
+            if nl == "platte_schraube":
+                return Art("SRB-satz-m10x60", "SRB", "Schraubensatz M10x60 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)", "Satz", "a", "Stahl verzinkt", {"gewinde": "M10", "laenge_mm": 60})
+            if nl == "dreh_schraube":
+                return Art("SRB-satz-m8x30", "SRB", "Schraubensatz M8x30 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben) [A]", "Satz", "a", "Stahl verzinkt", {"gewinde": "M8", "laenge_mm": 30}, flag=F)
+    if comp.startswith("bodenrinne_rost_gang"):
+        if nl == "rinnenkoerper":
+            return Art(f"SON-bodenrinne-pp-{lnum(d[2])}", "SON", f"Bodenrinne PP {lnum(d[0])}x{lnum(d[1])}x{lnum(d[2])} (Laufgang-Entwaesserung, Eigenbau/Zuschnitt) [A]", "Stk", "c", "PP", flag=F)
+        if nl == "gitterrost":
+            return Art(f"MAT-gitterrost-{lnum(d[1])}x{lnum(d[2])}", "MAT", f"Gitterrost verzinkt {lnum(d[2])}x{lnum(d[1])}x{lnum(d[0])} mm (Rinnenabdeckung) [A]", "Stk", "a", "Stahl verzinkt", flag=F)
+    if comp == "ruecklauf_rinne":
+        if nl == "rinne":
+            return Art(f"SON-ruecklaufrinne-v2a-{lnum(d[2])}", "SON", f"Ruecklaufrinne Edelstahl {lnum(d[0])}x{lnum(d[1])}x{lnum(d[2])} (Altbestand) [A]", "Stk", "c", "Edelstahl", flag=F)
+        return _stahl_teil(b)
+    if comp == "pegelschacht":
+        if nl in ("fass", "deckel"):
+            return Art("BEH-pegelschacht-fass", "BEH", "Pegelschacht PE-HD-Fass mit Deckel (Altbestand, entfaellt im Modell) [A]", "Stk", "a", "PE-HD", teil_von=(nl == "deckel"), flag=F)
+        if nl.endswith(("stutzen", "stutzen_a", "stutzen_b")) or nl == "notueberlauf":
+            dd = snap_d(d[0])
+            return Art(f"FIT-stutzen-d{dd}", "FIT", f"PVC-U-Stutzen d{dd} (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": dd})
+        if nl == "schwimmerstange":
+            dd = snap_d(d[0])
+            return Art(f"ROH-pvcu-d{dd}", "ROH", f"PVC-U-Druckrohr d{dd} (Meterware)", "m", "a", "PVC-U", {"durchmesser_mm": dd}, menge=d[2] / 1000.0)
+        if nl.startswith("schwimmer_"):
+            return Art("ARM-schwimmerschalter-hochstand", "ARM", "Schwimmerschalter Hochstand (Fabrikat offen) [A]", "Stk", "a", None)
+    if comp == "biofilter_dritt":
+        return Art("BEH-biofilter-dritt-fass", "BEH", "Biofilter-Fass PE mit Lochplatte (Altbestand-Drittbiofilter) [A]", "Stk", "a", "PE", teil_von=(nl != "fass"), flag=F)
+    # ---- Sumpftank
+    if comp == "sumpftank":
+        if m == "Beton":
+            return ("ausnahme", "Beton nach Menge (Entscheidung 04.11.2026)")
+        if nl == "sumpf_folie":
+            return Art("MAT-epdm-teichfolie", "MAT", "EPDM-Teichfolie 1,5 mm (Grubenauskleidung, Flaeche aus Modell: Boden und vier Waende)", "m2", "b", "EPDM",
+                       menge=(d[1] * d[2] + 2 * d[0] * (d[1] + d[2])) / 1e6, flag="flaeche_aus_bbox")
+        if nl.startswith("trennwand"):
+            return Art(f"BLE-pp-platte{lnum(d[0])}-{lnum(d[1])}x{lnum(d[2])}", "BLE", f"PP-Platte {lnum(d[0])} mm, Zuschnitt {lnum(d[2])}x{lnum(d[1])} (Trennwand, Pufferzone)", "Stk", "c", "PP weiss")
+        if nl == "pumpensockel":
+            return Art(f"BLE-pp-platte{lnum(d[0])}-{lnum(d[1])}x{lnum(d[2])}", "BLE", f"PP-Platte {lnum(d[0])} mm, Zuschnitt {lnum(d[2])}x{lnum(d[1])} (Pumpensockel)", "Stk", "c", "PP grau")
+        if nl.startswith("zulauf_"):
+            return Art("FIT-stutzen-d32", "FIT", "PVC-U-Stutzen d32 (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": 32})
+        if nl == "schwimmerhalter":
+            return Art("SON-pp-schwimmerhalter", "SON", "Schwimmerhalter PP 40x60x80 (Eigenbau)", "Stk", "c", "PP grau")
+        if nl.startswith("deckel_"):
+            return Art("MAT-gitterrost-deckel", "MAT", "Begehbarer Gitterrost 30/10 feuerverzinkt 1229 x 1026 x 40 mm (Grubendeckel)", "Stk", "a", "Stahl verzinkt", {"bbox_mm": d})
+        if nl.startswith("zonenschild"):
+            return Art("SON-pp-zonenschild", "SON", "Zonenschild PP 2x40x100 (Beschriftung Pufferzone)", "Stk", "c", "PP weiss")
+    # ---- Pumpen, Venturi, Schalter, Behaelter, Ventile
+    if comp == "tauchpumpe_modul":
+        if nl == "gehaeuse":
+            return Art("PMP-tauchpumpe-oase-8000", "PMP", "Tauchpumpe (Klasse Oase AquaMax Eco Premium 8000, Typ offen, siehe Beschaffung)", "Stk", "a", None, {"bbox_mm": d})
+        if nl == "kabel":
+            return Art("PMP-tauchpumpe-oase-8000", "PMP", "Tauchpumpe", "Stk", "a", None, teil_von=True)
+        if nl == "druckstutzen":
+            return Art("FIT-stutzen-d50", "FIT", "PVC-U-Stutzen d50 (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": 50})
+        if nl == "rueckschlagventil":
+            return Art("ARM-rueckschlagventil-d50", "ARM", "PVC-U-Rueckschlagventil d50 (Klebemuffe)", "Stk", "a", "PVC-U", {"groesse": "d50"})
+    if comp == "venturi_belueffter":
+        if nl == "injektor":
+            return Art("ARM-venturi-mazzei-1583", "ARM", "Venturi-Injektor (Klasse Mazzei 1583, 1,5 Zoll; Typ offen, D113)", "Stk", "a", "PP")
+        if nl.startswith("muffe_") or nl == "saugstutzen":
+            return Art("ARM-venturi-mazzei-1583", "ARM", "Venturi-Injektor", "Stk", "a", "PP", teil_von=True)
+        if nl == "rueckschlagventil":
+            return Art("ARM-rueckschlagventil-luft", "ARM", "Rueckschlagventil Luft (Schlauch)", "Stk", "a", "PP")
+        if nl == "luftfilter":
+            return Art("SON-luftfilter-ansaug", "SON", "Ansaug-Luftfilter fuer den Venturi (PP) [A]", "Stk", "a", "PP weiss", flag=F)
+    if comp == "notluftpumpe":
+        if nl == "pumpe":
+            return Art("PMP-luftpumpe-notluft", "PMP", "Notluftpumpe (Membranpumpe, Akku/Netz) [A]", "Stk", "a", None, {"bbox_mm": d})
+        if nl == "tuelle":
+            return Art("SCH-schlauchtuelle-d12", "SCH", "Schlauchtuelle (PVC)", "Stk", "a", "PVC")
+        if nl == "rueckschlagventil":
+            return Art("ARM-rueckschlagventil-luft", "ARM", "Rueckschlagventil Luft (Schlauch)", "Stk", "a", "PP")
+        if nl.startswith("luftschlauch"):
+            return Art(f"SCH-schlauch-luft-d{lnum(d[0])}", "SCH", f"Luftschlauch d{lnum(d[0])} (Meterware)", "m", "a", "PVC", {"durchmesser_mm": d[0]}, menge=d[2] / 1000.0)
+        if nl == "luftstein":
+            return Art("ARM-luftstein-notluft", "ARM", "Luftausstroemer (Luftstein)", "Stk", "a", "PE")
+    if comp == "schwimmerschalter_hochstand":
+        return Art("ARM-schwimmerschalter-hochstand", "ARM", "Schwimmerschalter Hochstand (Fabrikat offen) [A]", "Stk", "a", None, teil_von=(nl != "schwimmer"))
+    if comp == "regentank_5m3":
+        if nl == "tank":
+            return Art("BEH-regentank-5000", "BEH", "Regenwassertank 5000 l, stehend, oberirdisch (PE)", "Stk", "a", "PE", {"volumen_l": 5000})
+        if nl in ("dom", "domdeckel"):
+            return Art("BEH-regentank-5000", "BEH", "Regenwassertank 5000 l", "Stk", "a", "PE", teil_von=True)
+        if nl.endswith("stutzen"):
+            dd = snap_d(d[0])
+            return Art(f"FIT-stutzen-d{dd}", "FIT", f"PVC-U-Stutzen d{dd} (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": dd})
+    if comp == "schlamm_sammelbehaelter":
+        if nl == "behaelter":
+            return Art("BEH-schlammbehaelter-350", "BEH", "Schlamm-Sammelbehaelter PE rund 350 l mit Deckel (Durchm. 900 x 600)", "Stk", "a", "PE", {"volumen_l": 350})
+        if nl == "deckel":
+            return Art("BEH-schlammbehaelter-350", "BEH", "Schlamm-Sammelbehaelter", "Stk", "a", "PE", teil_von=True)
+        if nl == "entlueftung":
+            return Art("FIT-entlueftung-d32", "FIT", "Entlueftung d32 (PVC-U, mit Insektengitter-Kappe) [A]", "Stk", "a", "PVC-U", {"durchmesser_mm": 32})
+        if nl in ("einlaufstutzen", "auslaufrohr"):
+            dd = snap_d(d[0])
+            return Art(f"FIT-stutzen-d{dd}", "FIT", f"PVC-U-Stutzen d{dd} (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": dd})
+        if nl == "kugelhahn":
+            return Art("ARM-kugelhahn-d40", "ARM", "PVC-U-Kugelhahn d40", "Stk", "a", "PVC-U", {"durchmesser_mm": 40})
+        if nl == "hahnhebel":
+            return Art("ARM-kugelhahn-d40", "ARM", "PVC-U-Kugelhahn d40", "Stk", "a", "PVC-U", teil_von=True)
+    if comp == "nachspeise_ventil":
+        if nl.startswith("ventilgehaeuse"):
+            return Art("ARM-schwimmerventil-nachspeise", "ARM", "Schwimmerventil 3/4 Zoll (Nachspeisung, Gehaeuse, Wangen, Hebelarm mit Kugel)", "Stk", "a", "PP")
+        if nl.startswith(("wange_", "hebelarm")):
+            return Art("ARM-schwimmerventil-nachspeise", "ARM", "Schwimmerventil 3/4 Zoll", "Stk", "a", "PP", teil_von=True)
+        if nl.startswith("uebergang"):
+            return Art("FIT-stutzen-d32", "FIT", "PVC-U-Stutzen d32 (Klebe/Gewinde)", "Stk", "a", "PVC-U", {"durchmesser_mm": 32})
+    if comp == "entluefter_d75":
+        if nl == "entlueftungs_t":
+            return Art("FIT-t-d75", "FIT", "PVC-U-T-Stueck d75", "Stk", "a", "PVC-U", {"groesse": "d75"})
+        if nl == "uebergangsnippel":
+            return Art("FIT-uebergangsnippel-d75-d40", "FIT", "PVC-U-Uebergangsnippel d75 auf d40", "Stk", "a", "PVC-U")
+        if nl == "entlueftungsventil":
+            return Art("ARM-entlueftungsventil-messing", "ARM", "Be-/Entlueftungsventil Messing (Rohrleitung, 1 1/2 Zoll) [A]", "Stk", "a", "Messing", flag=F)
+    if comp == "becken_dritt_klein" and nl.endswith("ueberlauf"):
+        return Art("ARM-bulkhead-pool", "ARM", "Pool-Durchfuehrung d63 (Stutzen Pool-Wand)", "Stk", "a", "PVC-U", {"durchmesser_mm": 63})
+    if comp == "permakultur_modul":
+        if nl in ("kompostbox", "kompostdeckel"):
+            return Art("SON-permakultur-kompostbox", "SON", "Kompostbox Fichte 525x600x1500 mit Deckel (Permakultur-Modul, Eigenbau) [A]", "Stk", "c", "Holz Fichte", teil_von=(nl == "kompostdeckel"), flag=F)
+        if nl == "futterzuchtkiste":
+            return Art("BEH-futterzuchtkiste-pe", "BEH", "Futterzuchtkiste PE 350x525x800 (Permakultur-Modul) [A]", "Stk", "a", "PE", {"bbox_mm": d}, flag=F)
+    # ---- Beete (A21)
+    if comp.startswith("ibc_beet"):
+        if nl == "abtropfgitter":
+            return Art("BLE-pp-abtropfgitter-beet", "BLE", "PP-Abtropfgitter 25 mm (Stegrost, Zuschnitt je Beet) [A]", "Stk", "c", "PP grau", {"dicke_mm": 25}, flag=F)
+        if nl == "vlies":
+            return Art("GEW-vlies-pp", "GEW", "PP-Vlies (Beetboden, Flaeche aus Modell)", "m2", "a", "PP Vlies", menge=d[1] * d[2] / 1e6, flag="flaeche_aus_bbox")
+        if nl == "sieb":
+            return Art("GEW-sieb-v2a-2mm", "GEW", "Edelstahl-Siebgewebe 2 mm (Beetsieb, Flaeche aus Modell)", "m2", "a", "Edelstahl 1.4301", {"maschenweite_mm": 2}, menge=d[1] * d[2] / 1e6, flag="flaeche_aus_bbox")
+        if nl == "auslasswinkel":
+            return Art("FIT-bogen90-d25", "FIT", "PVC-U-Bogen 90 Grad d25 (Beet-Auslass)", "Stk", "a", "PVC-U", {"groesse": "d25"})
+        if nl == "luftschlauch":
+            return Art("SCH-schlauch-luft-d8", "SCH", "Luftschlauch d8 (Meterware)", "m", "a", "PVC", {"durchmesser_mm": 8}, menge=d[2] / 1000.0)
+        if nl == "ausstroemer":
+            return Art("SON-ausstroemer-stab-600", "SON", "Ausstroemer-Stab PP 16x600 (Beet-Belueftung) [A]", "Stk", "a", "PP weiss", flag=F)
+    return None
+
+
 def zuordnen(comp, b):
     ex = ausnahme(comp, b)
     if ex:
         return None, ex
+    u = classify_unify(comp, b)  # N-UNIFY-AUTOBAHN U8: Komponenten aus U2 bis U6 vor den Altregeln
+    if u is not None:
+        return (None, u[1]) if isinstance(u, tuple) else (u, None)
     if comp.startswith("lt_") and not bom_benennung.ist_unbenannt(b["name"]):
         return None, None  # eigene Behandlung
     nl = re.sub(r" \(\d+\)", "", (b["name"] or "").lower())

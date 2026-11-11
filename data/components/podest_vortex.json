@@ -11,9 +11,9 @@
    "herkunft": "[E] Soll-Wasserspiegel Vortex 1900 (data/oasis-soll.json vortex_1) minus Tankoberkante 1323 (tank_klein, R61 Abschnitt 6 Nr. 3) = 577; mindestens, D100; U4/U5 setzen den Wert aus data/oasis-lage.json"
   },
   "span": {
-   "wert": 720,
+   "wert": 1013,
    "einheit": "mm",
-   "herkunft": "[A] Aussenmass des Rahmens = Plattform 619 + 2 x 50 mm Ueberstand (Annahme Lage-Probe U1, Paket Abschnitt Grenzen), auf 720 gerundet"
+   "herkunft": "L2 (D152): Plattform des groesseren Tanks + 101 wie vorher (vorher 720); [A] Aussenmass des Rahmens = Plattform 619 + 2 x 50 mm Ueberstand (Annahme Lage-Probe U1, Paket Abschnitt Grenzen), auf 720 gerundet"
   }
  },
  "werkstoff": {

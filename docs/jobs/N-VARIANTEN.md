@@ -1,5 +1,7 @@
 # N-VARIANTEN: Kreislauf A+ und Ring B2 als umschaltbare Projekt-Varianten (W70)
 
+> **Abgelöst durch N-UNIFY-AUTOBAHN** (Runde U7, 11.11.2026, D141): Das Projekt kennt nur noch einen Kreislauf nach Leons Oasis-Quelle (D93). Der Schalter `--variante`, `KREISLAUF_VARIANTE` und `kreislauf_variante` sind entfernt; A+ und der Stand Ring B2 nach U6 liegen im Archiv (`designs/archiv/`, `data/archiv/`, `docs/archiv/`). Dieses Dokument bleibt als Herkunft stehen.
+
 Planer 05.11.2026 (Start-Auftrag `docs/jobs/start/N-VARIANTEN-planer.md`, Commit 5a97c1e). Paket: `docs/packages/n-varianten.md`. [Q] Quelle im Repo · [E] eigene Rechnung/Messung · [A] Annahme dieses Blatts.
 
 **Problem:** Ben hat E20 (Wasserkreislauf) nicht entschieden. Das Projekt kennt heute nur einen Kreislauf; ein zweiter waere nur als Viewer-Spielerei denkbar, nicht in Einkaufsliste, Kennzahlen und Pruefungen.

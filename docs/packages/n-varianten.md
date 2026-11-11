@@ -1,5 +1,7 @@
 # Paket: N-VARIANTEN — Kreislauf A+ und Ring B2 umschaltbar im ganzen Projekt (W70)
 
+> **Abgelöst durch N-UNIFY-AUTOBAHN** (Runde U7, 11.11.2026, D141): Das Projekt kennt nur noch einen Kreislauf nach Leons Oasis-Quelle (D93). Der Schalter `--variante`, `KREISLAUF_VARIANTE` und `kreislauf_variante` sind entfernt; A+ und der Stand Ring B2 nach U6 liegen im Archiv (`designs/archiv/`, `data/archiv/`, `docs/archiv/`). Dieses Dokument bleibt als Herkunft stehen.
+
 **Problem:** E20 (Wasserkreislauf) ist offen; das Projekt kennt nur einen Kreislauf, ein Vergleich ginge heute nur als Viewer-Bild, nicht in Einkaufsliste, Kennzahlen und Pruefungen.
 **Intent:** Ben vergleicht beim Zwischencheck A+ (Empfehlung, Annahme D81) und die beste Wasserautobahn B2 (R47c) vollstaendig und schaltet mit einem Parameter.
 **Goal:** `kreislauf_variante` (`a_plus` | `ring_b2`) erzeugt je Variante Modell, Einkaufsliste, Kennzahlen, Viewer-Export und Pruefergebnisse; A+ bleibt byte-gleich; Ring B2 ist mit Pegelschacht, Boostern, zwei Halbringen und 38 Abzweigen gebaut und geprueft.

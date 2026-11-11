@@ -7402,7 +7402,7 @@
 {
 "command": "component.insert_design",
 "params": {
-"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/erdflaeche-ring_b2.sc",
+"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/erdflaeche.sc",
 "name": "Erdflaeche"
 }
 },
@@ -7415,7 +7415,7 @@
 {
 "command": "component.insert_design",
 "params": {
-"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/fundamentring-ring_b2.sc",
+"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/fundamentring.sc",
 "name": "Fundamentring"
 }
 },
@@ -135094,7 +135094,7 @@
 {
 "command": "component.insert_design",
 "params": {
-"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/zulaufrohr-ring_b2.sc",
+"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/zulaufrohr.sc",
 "name": "Zulaufrohr"
 }
 },
@@ -135107,7 +135107,7 @@
 {
 "command": "component.insert_design",
 "params": {
-"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/schaltschrank-ring_b2.sc",
+"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/schaltschrank.sc",
 "name": "Schaltschrank"
 }
 },
@@ -139040,7 +139040,7 @@
 {
 "command": "component.insert_design",
 "params": {
-"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/ring_b2_schlauchwege.sc",
+"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/ring_schlauchwege.sc",
 "name": "Ring_B2_Schlauchwege"
 }
 },
@@ -139075,7 +139075,7 @@
 {
 "command": "component.insert_design",
 "params": {
-"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/ring_b2_ruecklauf.sc",
+"path": "C:/Users/benkn/Claude/keel-harness/user-projects/aquaponics-dome/designs/components/ring_ruecklauf.sc",
 "name": "Ring_B2_Ruecklauf"
 }
 },

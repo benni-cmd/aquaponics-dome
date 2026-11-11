@@ -17,9 +17,9 @@
   "instanzen": 5335,
   "definitionen": 179,
   "zeilen": 345,
-  "zeilen_ohne_preis_platziert": 110,
+  "zeilen_ohne_preis_platziert": 104,
   "zeilen_nicht_platziert": 154,
-  "summe_eur_platziert": 39097.43,
+  "summe_eur_platziert": 45763.1,
   "waehrung": "EUR brutto",
   "nicht_platziert_je_einmal": {
    "zeilen_mit_preis": 42,
@@ -27,31 +27,32 @@
    "hinweis": "Richtgroesse: je 1 Stueck der nicht platzierten Komponenten (ohne lt_-Bibliotheksvarianten); gehoert NICHT in summe_eur_platziert, Entscheidung offen"
   },
   "summe_je_typ": {
-   "ARM": 3832.05,
-   "BEH": 3973.21,
+   "ARM": 4053.05,
+   "BEH": 4623.19,
    "BLE": 6760.67,
    "ELE": 470.86,
    "FIT": 1112.93,
    "FOL": 2331.73,
+   "MAT": 212.6,
    "MES": 1583.94,
-   "PMP": 2673.7,
+   "PMP": 2957.54,
    "PRF": 6656.35,
    "ROH": 5504.4,
-   "SCH": 270.06,
+   "SCH": 5568.31,
    "SON": 788.59,
    "SRB": 106.2,
    "TOP": 2480.6,
    "WNK": 552.14
   },
   "summe_je_gruppe": {
-   "Becken und Tanks": 4567.73,
+   "Becken und Tanks": 5763.9,
    "Filter": 140.78,
    "Fundament": 323.2,
    "Huelle": 3180.29,
    "Kuppel": 8598.14,
-   "Leitungen": 8851.43,
+   "Leitungen": 14313.68,
    "Messtechnik und Elektrik": 2172.62,
-   "Tische und Beete": 11263.24
+   "Tische und Beete": 11270.49
   },
   "masse_koerper_gesamt_kg": 1255312.9,
   "unbenannte_koerper_im_cache": 0,
@@ -6852,8 +6853,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "ARM-bulkhead-d50",
@@ -7045,8 +7046,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "ARM-entlueftungsventil-messing",
@@ -7085,8 +7086,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "ARM-kabeleinfuehrung-dn100",
@@ -7917,8 +7918,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "ARM-rsv-d20",
@@ -8254,11 +8255,34 @@
     "unify_annahme"
    ],
    "name_vergeben": 0,
-   "preis": null,
-   "alternativen": [],
-   "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "preis": {
+    "einzelpreis_eur": 8.5,
+    "bezug_einheit": "Stk",
+    "gesamtpreis_eur": 221.0,
+    "stand": "2026-11-11",
+    "haendler": "Westfalia",
+    "land": "DE",
+    "url": "https://www.westfalia.de/shop/boni-33032-messing-stecksystem-3-4-zoll-schnellkupplung-ohne-wasserstop-3025",
+    "lieferung_de": "ja",
+    "konfidenz": "Q",
+    "bemerkung": "Messing-Schnellkupplung 3/4 Zoll ohne Wasserstopp, Edelstahlkugeln; Versand inklusive; Anzahl im Lieferumfang unklar (wohl einzeln); keine Trinkwasserangabe. Gewinde 3/4, Schlauchtuelle nicht bestaetigt. | Messing, nicht Edelstahl (Soll der Quelle: Edelstahl); Preis je Stk, Dose oder Stecker einzeln moeglich",
+    "alias_von": null
+   },
+   "alternativen": [
+    {
+     "preis_eur": 8.8,
+     "bezug_einheit": "Stk",
+     "haendler": "Reimo",
+     "land": "DE",
+     "url": "https://www.reimo.com/camping-shop/wasser-sanitaer-campingtoilette/wasseranlage-installation/14407/schnellkupplung-3/4-mit-schlauchtuelle",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "stand": "2026-11-11"
+    }
+   ],
+   "status": "OK",
+   "status_grund": null,
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "ARM-schnellkupplung-id25",
@@ -8323,8 +8347,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "ARM-schwimmerschalter-hochstand",
@@ -8893,8 +8917,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BEH-halter-box-gehaeuse",
@@ -9502,10 +9526,22 @@
    ],
    "hinweise": [],
    "name_vergeben": 0,
-   "preis": null,
+   "preis": {
+    "einzelpreis_eur": 324.99,
+    "bezug_einheit": "Stk",
+    "gesamtpreis_eur": 649.98,
+    "stand": "2026-11-11",
+    "haendler": "OBI (Graf Universal-Kunststofffass oval 300 l)",
+    "land": "AT",
+    "url": "https://www.obi.at/p/1104751/graf-universal-kunststofffass-oval-300-l",
+    "lieferung_de": "unbekannt",
+    "konfidenz": "Q-Treffer",
+    "bemerkung": "Nur Suchtreffer, Abruf ergab 404. Preis aus Suchauszug. Oval, nicht rund; Lebensmittel: offen.",
+    "alias_von": null
+   },
    "alternativen": [],
-   "status": "OFFEN (Quelle)",
-   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "status": "OK",
+   "status_grund": null,
    "quelle_preis": "u2_wasserkreislauf.json"
   },
   {
@@ -9960,8 +9996,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-blech-st-3",
@@ -10091,8 +10127,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-blech-st-5",
@@ -10374,8 +10410,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-fussplatte-100x100x6",
@@ -10895,8 +10931,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-platte-250x250x15",
@@ -11032,8 +11068,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-pp-blende-290x260",
@@ -11131,8 +11167,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-pp-platte10-360x1125",
@@ -11169,8 +11205,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-pp-platte30-400x400",
@@ -11207,8 +11243,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "BLE-pp-tafel-502x345x5",
@@ -12770,8 +12806,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-gewindenippel-edelstahl",
@@ -14098,8 +14134,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-red-d32_d25",
@@ -14308,8 +14344,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-red-d50-d40",
@@ -14348,8 +14384,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-red-d50_d32",
@@ -14588,8 +14624,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-red-d75_d50",
@@ -14779,8 +14815,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-ring-ecke-d75",
@@ -14821,8 +14857,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-rinne-kappe-ablauf",
@@ -15321,8 +15357,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-schlauchwinkel-90",
@@ -15361,8 +15397,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-stutzen-d16",
@@ -15552,8 +15588,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-stutzen-d32",
@@ -15795,8 +15831,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-stutzen-d63",
@@ -15919,8 +15955,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-t-d110",
@@ -16542,8 +16578,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "FIT-verschraubung-d50",
@@ -17248,8 +17284,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "GEW-v2a-100um",
@@ -17354,8 +17390,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "MAT-epdm-teichfolie",
@@ -17391,10 +17427,33 @@
     "flaeche_aus_bbox"
    ],
    "name_vergeben": 0,
-   "preis": null,
-   "alternativen": [],
-   "status": "OFFEN (Quelle)",
-   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "preis": {
+    "einzelpreis_eur": 13.49,
+    "bezug_einheit": "m2",
+    "gesamtpreis_eur": 212.6,
+    "stand": "2026-11-11",
+    "haendler": "Teichbedarf24 (TeichVision EPDM Pro 1,5 mm)",
+    "land": "DE",
+    "url": "https://teichbedarf24.de/en/products/epdm-teichfolie-teichvision-pro-1-5-mm",
+    "lieferung_de": "ja",
+    "konfidenz": "Q-Treffer",
+    "bemerkung": "Suchauszug nennt 13,49 und 13,00 EUR/m2 (unklar welcher gilt); Seite 429, nicht gelesen.",
+    "alias_von": null
+   },
+   "alternativen": [
+    {
+     "preis_eur": 13.9,
+     "bezug_einheit": "m2",
+     "haendler": "dachfolien.de (FiFox EPDM Dachfolie Pro 1,5 mm)",
+     "land": "DE",
+     "url": "https://dachfolien.de/en/collections/fifox/products/fifox-epdm-dachfolie-pro-1-5-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "stand": "2026-11-11"
+    }
+   ],
+   "status": "OK",
+   "status_grund": null,
    "quelle_preis": "u2_wasserkreislauf.json"
   },
   {
@@ -18842,25 +18901,25 @@
    "hinweise": [],
    "name_vergeben": 0,
    "preis": {
-    "einzelpreis_eur": 408.99,
+    "einzelpreis_eur": 479.95,
     "bezug_einheit": "Stk",
-    "gesamtpreis_eur": 1635.96,
-    "stand": "2026-11-10",
-    "haendler": "guenstiger.de (Preisvergleich, Anbieter nicht benannt)",
+    "gesamtpreis_eur": 1919.8,
+    "stand": "2026-11-11",
+    "haendler": "Neyses Gartenteiche GmbH ueber Hornbach",
     "land": "DE",
-    "url": "https://www.guenstiger.de/Produkt/Oase/Aquamax_Eco_Premium_8000.html",
-    "lieferung_de": "unbekannt",
-    "konfidenz": "Q-Treffer",
-    "bemerkung": "Suchzusammenfassung: Spanne 408,99 bis 499,95 EUR, 65 W, 8000 l/h, Tiefe 4 m, Kabel 10 m. Seite nicht geoeffnet; Anbieter und Lieferbarkeit offen.",
+    "url": "https://www.hornbach.de/p/oase-aquamax-eco-premium-9000/12714146/",
+    "lieferung_de": "ja",
+    "konfidenz": "Q",
+    "bemerkung": "Preis inkl. MwSt. zzgl. ggf. Versand; Lieferzeit 2-4 Werktage.",
     "alias_von": null
    },
    "alternativen": [
     {
-     "preis_eur": 499.95,
+     "preis_eur": 408.99,
      "bezug_einheit": "Stk",
-     "haendler": "billiger.de (Preisvergleich, Anbieter nicht benannt)",
+     "haendler": "guenstiger.de (Preisvergleich, Anbieter nicht benannt)",
      "land": "DE",
-     "url": "https://www.billiger.de/pricelist/230511372",
+     "url": "https://www.guenstiger.de/Produkt/Oase/Aquamax_Eco_Premium_8000.html",
      "lieferung_de": "unbekannt",
      "konfidenz": "Q-Treffer",
      "stand": "2026-11-10"
@@ -19408,8 +19467,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "PRF-st-rr25x25x2",
@@ -20123,8 +20182,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "PRF-st-rr42x109x1",
@@ -20282,8 +20341,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "PRF-st-rr60x60x3",
@@ -20564,8 +20623,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "PRF-st-voll6x100",
@@ -20625,8 +20684,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "PRF-v2a-voll8x8",
@@ -25241,8 +25300,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SCH-rohrschelle-d75_ecke",
@@ -25281,8 +25340,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SCH-rohrschelle-d75_stelze",
@@ -25321,8 +25380,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SCH-rohrschelle-vk-vk_d32",
@@ -25571,11 +25630,23 @@
     "laenge_aus_masse"
    ],
    "name_vergeben": 0,
-   "preis": null,
+   "preis": {
+    "einzelpreis_eur": 5.99,
+    "bezug_einheit": "m",
+    "gesamtpreis_eur": 5241.25,
+    "stand": "2026-11-11",
+    "haendler": "OBI (obi.at, Fitt Glasklarschlauch 19 mm)",
+    "land": "AT",
+    "url": "https://www.obi.at/p/2573764/fitt-glasklarschlauch-19-mm-transparent",
+    "lieferung_de": "unbekannt",
+    "konfidenz": "Q-Treffer",
+    "bemerkung": "Preis und 'lebensmittelecht' nur aus Suchtreffer; Seite beim Abruf 404; transparent.",
+    "alias_von": null
+   },
    "alternativen": [],
-   "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status": "OK",
+   "status_grund": null,
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SCH-schlauch-id25",
@@ -25703,11 +25774,23 @@
    ],
    "hinweise": [],
    "name_vergeben": 0,
-   "preis": null,
+   "preis": {
+    "einzelpreis_eur": 1.99,
+    "bezug_einheit": "m",
+    "gesamtpreis_eur": 49.75,
+    "stand": "2026-11-11",
+    "haendler": "OBI (JBL Aquarium-Schlauch grau 9/12 mm Meterware)",
+    "land": "DE",
+    "url": "https://www.obi.de/p/8485427/jbl-aquarium-schlauch-grau-9-12-mm-meterware",
+    "lieferung_de": "unbekannt",
+    "konfidenz": "Q-Treffer",
+    "bemerkung": "Preis aus Suchtext, Seite 404; 9/12 statt 8/12 mm",
+    "alias_von": null
+   },
    "alternativen": [],
-   "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status": "OK",
+   "status_grund": null,
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SCH-schlauch-luft-d8",
@@ -25776,11 +25859,23 @@
    ],
    "hinweise": [],
    "name_vergeben": 0,
-   "preis": null,
+   "preis": {
+    "einzelpreis_eur": 0.29,
+    "bezug_einheit": "m",
+    "gesamtpreis_eur": 7.25,
+    "stand": "2026-11-11",
+    "haendler": "eBay AquaNova (Silikonschlauch 4/6 mm, 100 m Rolle)",
+    "land": "DE",
+    "url": "https://www.ebay.de/p/1656628645",
+    "lieferung_de": "ja",
+    "konfidenz": "Q-Treffer",
+    "bemerkung": "29 EUR je 100-m-Rolle laut Suchtext, kostenloser Versand laut Suchtext; Nachweis offen | Umrechnung: 29 EUR je 100-m-Rolle = 0,29 EUR/m; Schlauch 4/6 mm, nicht d8 aussen (Beet-Luftschlauch 8 mm aussen: Innen 5-6 mm: Naeherung)",
+    "alias_von": null
+   },
    "alternativen": [],
-   "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status": "OK",
+   "status_grund": null,
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SCH-schlauch-rinne-id16",
@@ -26492,8 +26587,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-belueftungsgitter-460",
@@ -27740,8 +27835,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-laser-lasche-30x34x125",
@@ -27786,8 +27881,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-laser-lasche-34x35x122",
@@ -27840,8 +27935,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-laser-lasche-34x36x124",
@@ -27894,8 +27989,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-luftfilter-ansaug",
@@ -27934,8 +28029,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-luftverteiler-4",
@@ -28066,8 +28161,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-pflanztisch-platte",
@@ -28337,8 +28432,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-pp-stuetze-60x60",
@@ -28437,8 +28532,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-ruecklaufrinne-v2a-2000",
@@ -28624,8 +28719,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-schrankwand-500x800",
@@ -28850,8 +28945,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-stahlteil-20x40x42",
@@ -28936,8 +29031,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-stahlteil-35x40x40",
@@ -28974,8 +29069,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung; Eigenbau, Rohmaterial in anderen Zeilen",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SON-stahlteil-60x416x416",
@@ -29574,8 +29669,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "SRB-halter-klein-12x10x20",
@@ -30614,8 +30709,8 @@
    "preis": null,
    "alternativen": [],
    "status": "OFFEN (Quelle)",
-   "status_grund": "kein Eintrag in data/beschaffung",
-   "quelle_preis": null
+   "status_grund": "kein Angebot mit Preis in data/beschaffung",
+   "quelle_preis": "u8_unify.json"
   },
   {
    "artikel_id": "TOP-aktivkohle",

@@ -1,30 +1,15 @@
 {
  "stand_stueckliste": null,
- "zeilen": 273,
- "zeilen_mit_link": 168,
- "links": 289,
- "urls_eindeutig": 241,
+ "zeilen": 345,
+ "zeilen_mit_link": 175,
+ "links": 300,
+ "urls_eindeutig": 254,
  "urteile": {
-  "OK": 189,
-  "GESPERRT": 13,
-  "VERDACHT": 87
+  "OK": 183,
+  "VERDACHT": 90,
+  "GESPERRT": 27
  },
  "link_liste": [
-  {
-   "artikel_id": "ARM-bulkhead-d40",
-   "bezeichnung": "PVC-U-Bulkhead d40",
-   "datei": "leitung.json",
-   "rang": "1",
-   "url": "https://www.bevo.com/en/bulkhead-fitting-pvc-u-40-50-mm-x-1-3-4-glue-socket-glue-spigot-x-male-thread-10bar-grey-0100543",
-   "haendler": "Bevo",
-   "land": "NL",
-   "bemerkung": "netto 30.06 EUR; Bulkhead 40/50 mm x 1 3/4\" (0100543, 224 auf Lager), 10 bar; UK-Schwesterseite bosta.com/en-gb fuehrt denselben Artikel (UK OFFEN, Preis nicht gelesen); Variantenseite 05.11. gelesen: Bulkhead fitting PVC-U 40/50 mm x 1 3/4\" glue socket/glue spigot x male thread 10bar grey",
-   "status": 200,
-   "ziel": "https://www.bevo.com/en/bulkhead-fitting-pvc-u-40-50-mm-x-1-3-4-glue-socket-glue-spigot-x-male-thread-10bar-grey-0100543",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "Bulkhead fitting PVC-U 40/50 mm x 1 3/4\" glue socket/glue spigot x male thread 10bar grey"
-  },
   {
    "artikel_id": "ARM-bulkhead-d63",
    "bezeichnung": "PVC-U-Bulkhead d63 (Tank-/Behaelterdurchfuehrung)",
@@ -33,7 +18,7 @@
    "url": "https://www.bevo.com/en/bulkhead-fitting-pvc-u-63-75-mm-x-2-1-2-glue-socket-glue-spigot-x-male-thread-10bar-grey-7026182",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 41.19 EUR; Bulkhead 63/75 mm x 2 1/2\" (7026182, Lager Europa), 10 bar. Frueher falsche Variante 40/50 verlinkt und zu niedriger Preis; korrigiert 05.11.; Variantenseite 05.11. gelesen: Bulkhead fitting PVC-U 63/75 mm x 2 1/2\" glue socket/glue spigot x male thread 10bar grey",
+   "bemerkung": "netto 41.19 EUR; Bulkhead 63/75 mm x 2 1/2\" (7026182, Lager Europa), 10 bar. Frueher falsche Variante 40/50 verlinkt und zu niedriger Preis; korrigiert 05.11.; Variantenseite 05.11. gelesen: Bulkhead fitting PVC-U 63/75 mm x 2 1/2\" glue socket/glue spigot x male thread 10bar grey; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/bulkhead-fitting-pvc-u-63-75-mm-x-2-1-2-glue-socket-glue-spigot-x-male-thread-10bar-grey-7026182",
    "urteil": "OK",
@@ -48,7 +33,7 @@
    "url": "https://www.bevo.com/en/bulkhead-fitting-pvc-u-63-75-mm-x-2-1-2-glue-socket-glue-spigot-x-male-thread-10bar-grey-7026182",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 41.19 EUR; Bulkhead 63/75 mm x 2 1/2\" (7026182, Lager Europa), 10 bar. Frueher falsche Variante 40/50 verlinkt und zu niedriger Preis; korrigiert 05.11.; Variantenseite 05.11. gelesen: Bulkhead fitting PVC-U 63/75 mm x 2 1/2\" glue socket/glue spigot x male thread 10bar grey",
+   "bemerkung": "netto 41.19 EUR; Bulkhead 63/75 mm x 2 1/2\" (7026182, Lager Europa), 10 bar. Frueher falsche Variante 40/50 verlinkt und zu niedriger Preis; korrigiert 05.11.; Variantenseite 05.11. gelesen: Bulkhead fitting PVC-U 63/75 mm x 2 1/2\" glue socket/glue spigot x male thread 10bar grey; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/bulkhead-fitting-pvc-u-63-75-mm-x-2-1-2-glue-socket-glue-spigot-x-male-thread-10bar-grey-7026182",
    "urteil": "OK",
@@ -63,7 +48,7 @@
    "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-110-mm-glue-socket-10bar-grey-type-dil-7003055",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 272.15 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; nur 10 bar; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 110 mm glue socket 10bar grey type DIL",
+   "bemerkung": "netto 272.15 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; nur 10 bar; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 110 mm glue socket 10bar grey type DIL; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-110-mm-glue-socket-10bar-grey-type-dil-7003055",
    "urteil": "OK",
@@ -78,7 +63,7 @@
    "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-20-mm-glue-socket-16bar-grey-type-dil-0100843",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 19.77 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 20 mm glue socket 16bar grey type DIL",
+   "bemerkung": "netto 19.77 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 20 mm glue socket 16bar grey type DIL; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-20-mm-glue-socket-16bar-grey-type-dil-0100843",
    "urteil": "OK",
@@ -108,7 +93,7 @@
    "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-25-mm-glue-socket-16bar-grey-type-dil-0100844",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "Auflage A1 (04.11.): Link auf die 25-mm-Variante (Art. 0100844) umgestellt, Preis 23,56 dort gelesen; Seite nennt nicht, ob netto oder brutto. netto 23.56 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1",
+   "bemerkung": "Auflage A1 (04.11.): Link auf die 25-mm-Variante (Art. 0100844) umgestellt, Preis 23,56 dort gelesen; Seite nennt nicht, ob netto oder brutto. netto 23.56 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-25-mm-glue-socket-16bar-grey-type-dil-0100844",
    "urteil": "OK",
@@ -138,7 +123,7 @@
    "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 29.70 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1",
+   "bemerkung": "netto 29.70 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-32-mm-glue-socket-16bar-grey-type-dil-0100845",
    "urteil": "OK",
@@ -168,7 +153,7 @@
    "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-40-mm-glue-socket-16bar-grey-type-dil-0100846",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 37.79 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 40 mm glue socket 16bar grey type DIL",
+   "bemerkung": "netto 37.79 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 40 mm glue socket 16bar grey type DIL; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-40-mm-glue-socket-16bar-grey-type-dil-0100846",
    "urteil": "OK",
@@ -213,7 +198,7 @@
    "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-50-mm-glue-socket-16bar-grey-type-dil-0100847",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 44.93 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 50 mm glue socket 16bar grey type DIL",
+   "bemerkung": "netto 44.93 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 50 mm glue socket 16bar grey type DIL; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-50-mm-glue-socket-16bar-grey-type-dil-0100847",
    "urteil": "OK",
@@ -243,7 +228,7 @@
    "url": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-63-mm-glue-socket-16bar-grey-type-dil-0100848",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 66.40 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 63 mm glue socket 16bar grey type DIL",
+   "bemerkung": "netto 66.40 EUR; VDL Kugelhahn Typ DIL, Variantentabelle, Mindestmenge 1; Variantenseite 05.11. gelesen: VDL Ball valve PVC-U 63 mm glue socket 16bar grey type DIL; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-ball-valve-pvc-u-63-mm-glue-socket-16bar-grey-type-dil-0100848",
    "urteil": "OK",
@@ -264,6 +249,36 @@
    "urteil": "OK",
    "grund": "HTTP 200",
    "titel": "PVC-U Klebefitting Kugelhahn 63 mm - 75324"
+  },
+  {
+   "artikel_id": "ARM-schnellkupplung-id19",
+   "bezeichnung": "Schnellkupplung id19",
+   "datei": "u8_unify.json",
+   "rang": "1",
+   "url": "https://www.westfalia.de/shop/boni-33032-messing-stecksystem-3-4-zoll-schnellkupplung-ohne-wasserstop-3025",
+   "haendler": "Westfalia",
+   "land": "DE",
+   "bemerkung": "Messing-Schnellkupplung 3/4 Zoll ohne Wasserstopp, Edelstahlkugeln; Versand inklusive; Anzahl im Lieferumfang unklar (wohl einzeln); keine Trinkwasserangabe. Gewinde 3/4, Schlauchtuelle nicht bestaetigt. | Messing, nicht Edelstahl (Soll der Quelle: Edelstahl); Preis je Stk, Dose oder Stecker einzeln moeglich",
+   "status": 200,
+   "ziel": "https://www.westfalia.de/shop/boni-33032-messing-stecksystem-3-4-zoll-schnellkupplung-ohne-wasserstop-3025",
+   "urteil": "VERDACHT",
+   "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 19",
+   "titel": "Messing-Schnellkupplung 3/4 Zoll mit Edelstahlkugeln | Westfalia"
+  },
+  {
+   "artikel_id": "ARM-schnellkupplung-id19",
+   "bezeichnung": "Schnellkupplung id19",
+   "datei": "u8_unify.json",
+   "rang": "2",
+   "url": "https://www.reimo.com/camping-shop/wasser-sanitaer-campingtoilette/wasseranlage-installation/14407/schnellkupplung-3/4-mit-schlauchtuelle",
+   "haendler": "Reimo",
+   "land": "DE",
+   "bemerkung": "",
+   "status": 200,
+   "ziel": "https://www.reimo.com/camping-shop/wasser-sanitaer-campingtoilette/wasseranlage-installation/14407/schnellkupplung-3/4-mit-schlauchtuelle",
+   "urteil": "VERDACHT",
+   "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 19",
+   "titel": "Schnellkupplung 3/4\" mit Schlauchtülle | Wasseranlage Installation | Wasser, Sanitär, Camp"
   },
   {
    "artikel_id": "BEH-ak-sedimentfilter",
@@ -303,11 +318,11 @@
    "url": "https://www.denios.de/lager-und-dosierbehaelter-aus-polyethylen-pe-500-liter-volumen-natur-transparent-136937/136937",
    "haendler": "DENIOS",
    "land": "DE",
-   "bemerkung": "500 l, lebensmittelechtes UV-stabilisiertes LLD-PE; 680,68 = 572,00 netto x 1,19; Versand frei, 3-4 Wochen; Masse auf der Seite nicht genannt.",
+   "bemerkung": "ERSATZ (Abweichung: PE-Rundbehaelter 500 l statt Beton-Wanne 920 x 920 x 1055; Mass d740 x 1230). 500 l, lebensmittelechtes UV-stabilisiertes LLD-PE; 680,68 = 572,00 netto x 1,19; Versand frei, 3-4 Wochen; Masse auf der Seite nicht genannt.",
    "status": 200,
    "ziel": "https://www.denios.de/lager-und-dosierbehaelter-aus-polyethylen-pe-35-bis-3-000-liter-natur-transparent-oder-schwarz-10300300401100/136937",
    "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 1055, 920",
+   "grund": "Kennmass fehlt auf der Seite: 1055, 920; Bemerkung: ERSATZ",
    "titel": "Lager- und Dosierbehälter aus Polyethylen (PE), 500 Liter Volumen, natur-transparent"
   },
   {
@@ -379,11 +394,11 @@
    "haendler": "Fasswulf (Arthur Wulf Fasshandel)",
    "land": "DE",
    "bemerkung": "NEU, Mauser UN 225/50, HDPE, 'FDA Lebensmittelzulassung: Ja', 1200 x 1000 x 1165, 59 kg, Kunststoffpalette; 229,94 (193,23 netto); Hauptpreisblock zeigte 0,00; Konformitaetserklaerung auf Wunsch. Kategorie: fuer Nahrungsmittel oder Trinkwasser nur neue IBC.",
-   "status": 200,
+   "status": 429,
    "ziel": "https://www.fasswulf.de/products/1000-l-ibc-container-neu-kunststoff-palette-225-50-fda-un",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "1000 L IBC Container, NEU, Kunststoff-Palette, 225/50, FDA, MAUSER, UN – Fasswulf"
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
   },
   {
    "artikel_id": "BEH-ibc-1000l",
@@ -424,11 +439,11 @@
    "haendler": "Fasswulf (Arthur Wulf Fasshandel)",
    "land": "DE",
    "bemerkung": "Neuer IBC als Rohstoff, 'FDA Lebensmittelzulassung: Ja', je IBC.",
-   "status": 200,
+   "status": 429,
    "ziel": "https://www.fasswulf.de/products/1000-l-ibc-container-neu-kunststoff-palette-225-50-fda-un",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "1000 L IBC Container, NEU, Kunststoff-Palette, 225/50, FDA, MAUSER, UN – Fasswulf"
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
   },
   {
    "artikel_id": "BEH-ibc-beetwanne",
@@ -521,6 +536,36 @@
    "titel": "acrylplatten kaufen bei HORNBACH"
   },
   {
+   "artikel_id": "BEH-schlammbehaelter-350",
+   "bezeichnung": "Schlamm-Sammelbehaelter PE rund 350 l mit Deckel (Durchm. 900 x 600)",
+   "datei": "u2_wasserkreislauf.json",
+   "rang": "1",
+   "url": "https://www.obi.at/p/1104751/graf-universal-kunststofffass-oval-300-l",
+   "haendler": "OBI (Graf Universal-Kunststofffass oval 300 l)",
+   "land": "AT",
+   "bemerkung": "Nur Suchtreffer, Abruf ergab 404. Preis aus Suchauszug. Oval, nicht rund; Lebensmittel: offen.",
+   "status": 200,
+   "ziel": "https://www.obi.at/p/1104751/graf-universal-kunststofffass-oval-300-l",
+   "urteil": "VERDACHT",
+   "grund": "Kennmass fehlt auf der Seite: 350, 600, 900",
+   "titel": "Graf Universal-Kunststofffass Oval 300 l kaufen bei OBI"
+  },
+  {
+   "artikel_id": "BEH-tank-pe-580x865",
+   "bezeichnung": "PE-Tank 580 mm Durchm., 865 mm hoch (Kegelboden/Absetzer)",
+   "datei": "behaelter.json",
+   "rang": "1",
+   "url": "https://www.rekubik.de/kanister-faesser/faesser/220-l-weithalsfass-kunststoffdeckelfass-mit-spannring-blau-un-zulassung",
+   "haendler": "Rekubik GmbH",
+   "land": "DE",
+   "bemerkung": "220 l Weithalsfass mit Spannring, blau, UN; 580 x 980, Oeffnung 465, 'Lebensmittelecht: Ja', 1-2 Werktage.",
+   "status": 200,
+   "ziel": "https://www.rekubik.de/kanister-faesser/faesser/220-l-weithalsfass-kunststoffdeckelfass-mit-spannring-blau-un-zulassung",
+   "urteil": "VERDACHT",
+   "grund": "Kennmass fehlt auf der Seite: 865; Kennmass nicht in Titel/URL (nur im Seitentext): 580",
+   "titel": "220 L Weithalsfass Kunststoffdeckelfass mit Spannring, Blau, UN Zulassung | REKUBIK GmbH"
+  },
+  {
    "artikel_id": "BLE-blech-st-3",
    "bezeichnung": "Stahlblech 3 mm verzinkt, Zuschnitt 700x700",
    "datei": "stahl.json",
@@ -582,7 +627,7 @@
   },
   {
    "artikel_id": "BLE-blech-st-6",
-   "bezeichnung": "Stahlblech 6 mm verzinkt, Zuschnitt 1360x580",
+   "bezeichnung": "Stahlblech 6 mm verzinkt, Zuschnitt 100x100",
    "datei": "stahl.json",
    "rang": "1",
    "url": "https://www.metallparadies.de/stahlblech-3mm.html",
@@ -592,12 +637,12 @@
    "status": 200,
    "ziel": "https://www.metallparadies.de/stahlblech-3mm.html",
    "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 1360, 580",
+   "grund": "Kennmass fehlt auf der Seite: 100",
    "titel": "Stahlblech 3 mm | Zuschnitt aus 3000 x 1500 | Metallparadies"
   },
   {
    "artikel_id": "BLE-blech-st-6",
-   "bezeichnung": "Stahlblech 6 mm verzinkt, Zuschnitt 1360x580",
+   "bezeichnung": "Stahlblech 6 mm verzinkt, Zuschnitt 100x100",
    "datei": "stahl.json",
    "rang": "2",
    "url": "https://www.stahl-shop24.de/Stahl-Blech-300x1500x6mm",
@@ -607,7 +652,7 @@
    "status": 200,
    "ziel": "https://www.stahl-shop24.de/Stahl-Blech-300x1500x6mm",
    "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 1360, 580",
+   "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 100",
    "titel": "Stahl Blech 300x1500x6mm | 6 mm | 300x1500 mm | SBL128-8"
   },
   {
@@ -757,7 +802,7 @@
    "status": 200,
    "ziel": "https://www.metallparadies.de/stahlblech-3mm.html",
    "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 70",
+   "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 70",
    "titel": "Stahlblech 3 mm | Zuschnitt aus 3000 x 1500 | Metallparadies"
   },
   {
@@ -926,36 +971,6 @@
    "titel": "PP Zuschnitte online kaufen | PlastX24"
   },
   {
-   "artikel_id": "BLE-pp-siebboden-beet",
-   "bezeichnung": "PP-Siebboden 8 mm (Zuschnitt je Beet)",
-   "datei": "stahl.json",
-   "rang": "2",
-   "url": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
-   "haendler": "Technoplast Kunststoffe",
-   "land": "DE",
-   "bemerkung": "",
-   "status": 200,
-   "ziel": "https://www.technoplast-onlineshop.de/gruppe,mein_shop,de/Platten,plattenpp,43004,PP-H-hellgrau",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "PP-H hellgrau (Platten) - Technoplast Kunststoffe"
-  },
-  {
-   "artikel_id": "BLE-pp-siebboden-beet",
-   "bezeichnung": "PP-Siebboden 8 mm (Zuschnitt je Beet)",
-   "datei": "stahl.json",
-   "rang": "3",
-   "url": "https://www.plastx24.de/pp/pp/",
-   "haendler": "plastx24",
-   "land": "DE",
-   "bemerkung": "",
-   "status": 200,
-   "ziel": "https://www.plastx24.de/pp/pp/",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "PP Zuschnitte online kaufen | PlastX24"
-  },
-  {
    "artikel_id": "BLE-pp-tafel-502x345x5",
    "bezeichnung": "PP-Montagetafel 502x345x5 (Zuschnitt)",
    "datei": "stahl.json",
@@ -1061,21 +1076,6 @@
    "titel": "Edelstahlblech 0,3 - 3mm Blech Platte V2A 1.4301 2B Zuschnitt / Größe nach Wahl | Edelstah"
   },
   {
-   "artikel_id": "BLE-v2a-lochblech-medienschutz",
-   "bezeichnung": "Edelstahl-Lochblech 1,5 mm RV5-8, Medienschutz-Zylinder 110x320",
-   "datei": "stahl.json",
-   "rang": "1",
-   "url": "https://www.feld-eitorf.de/edelstahl-lochblech-staerke-1-5-mm-rundloch-o-5-mm-rv-5-8",
-   "haendler": "Feld Maschinenbau (feld-eitorf.de)",
-   "land": "DE",
-   "bemerkung": "Konfigurator gelesen, nicht abgeschickt. Rechnung: 110x320 mm = 0,0352 m2 x 183,46 EUR/m2 (Material inkl. 19 % MwSt., Edelstahl 1.4301, Rundloch d5 Rv5-8, 1,5 mm) = 6,46 EUR + Zuschnitt 3,96 EUR/Stk = 10,42 EUR. Gegenprobe Seite: 0,25 m2 = 49,83 EUR. Rabatte (Material -10 % ab 0,30 m2, Zuschnitt -10 % ab 3 Stk) nicht angerechnet. WICHTIG: \"Zuschnitt mit geschlossenem Rand nicht moeglich\" -> offene Lochreihen am Rand.",
-   "status": 200,
-   "ziel": "https://www.feld-eitorf.de/edelstahl-lochblech-staerke-1-5-mm-rundloch-o-5-mm-rv-5-8",
-   "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 320; Kennmass nicht in Titel/URL (nur im Seitentext): 110",
-   "titel": "Edelstahl Lochblech, Stärke 1,5 mm, Rundloch ø 5 mm, Rv 5 - 8"
-  },
-  {
    "artikel_id": "ELE-hutschiene-35",
    "bezeichnung": "Hutschiene 35 mm",
    "datei": "mess_elektrik.json",
@@ -1140,30 +1140,30 @@
    "bezeichnung": "Kabelverschraubung PA (PG/M20)",
    "datei": "mess_elektrik.json",
    "rang": "1",
-   "url": "https://el12.com/en/switchboards-and-enclosures/gland-m-20-metric-ip-68-black-10-pcs-250086,i207068",
-   "haendler": "el12 (HAUPA 250086, M20 IP68 schwarz, 10er-Pack)",
-   "land": "PL",
-   "bemerkung": "von Hand gelesen 05.11.: 4,85 EUR brutto je 10er-Pack, Kabel 10-14 mm, Gewinde M20, IP68; Kontermutter nicht genannt",
-   "status": 200,
-   "ziel": "https://el12.com/en/switchboards-and-enclosures/gland-m-20-metric-ip-68-black-10-pcs-250086,i207068",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "Gland M 20 metric IP 68 black 10 pcs | el12"
+   "url": "https://www.digikey.de/de/products/detail/te-connectivity-entrelec/EP-SGL-M20-BL-C/16686595",
+   "haendler": "DigiKey DE (TE Entrelec EP-SGL-M20-BL-C, M20x1,5 PA6 schwarz IP68)",
+   "land": "EU",
+   "bemerkung": "von Hand gelesen 05.11.: 0,75 EUR netto = 0,89 EUR brutto je Stk (Staffel ab 10: 0,632), 79 auf Lager, Status Aktiv, Kabel 6-12 mm, Polyamid, IP68, Dichtung enthalten, Kontermutter nicht genannt. Kein Wasserkontakt im Fischwasser (Gehaeusedurchfuehrung)",
+   "status": 403,
+   "ziel": "https://www.digikey.de/de/products/detail/te-connectivity-entrelec/EP-SGL-M20-BL-C/16686595",
+   "urteil": "GESPERRT",
+   "grund": "HTTP 403",
+   "titel": ""
   },
   {
    "artikel_id": "ELE-kabelverschraubung-pg",
    "bezeichnung": "Kabelverschraubung PA (PG/M20)",
    "datei": "mess_elektrik.json",
    "rang": "2",
-   "url": "https://tameson.com/products/m20-ip68-metric-cable-gland-with-strain-relief-black-2022887-10-pieces",
-   "haendler": "Tameson (OBO 2022887, M20 PA IP68 schwarz, 10er-Pack)",
-   "land": "NL",
+   "url": "https://el12.com/en/switchboards-and-enclosures/gland-m-20-metric-ip-68-black-10-pcs-250086,i207068",
+   "haendler": "el12 (HAUPA 250086, M20 IP68 schwarz, 10er-Pack)",
+   "land": "PL",
    "bemerkung": "",
    "status": 200,
-   "ziel": "https://tameson.com/products/m20-ip68-metric-cable-gland-with-strain-relief-black-2022887-10-pieces",
+   "ziel": "https://el12.com/en/switchboards-and-enclosures/gland-m-20-metric-ip-68-black-10-pcs-250086,i207068",
    "urteil": "OK",
    "grund": "HTTP 200",
-   "titel": "M20 IP68 Metric Cable Gland With Strain Relief Black - 2022887 [10 Pieces] | Tameson"
+   "titel": "Gland M 20 metric IP 68 black 10 pcs | el12"
   },
   {
    "artikel_id": "ELE-schaltschrank-500x800x1200",
@@ -1407,7 +1407,7 @@
   },
   {
    "artikel_id": "FIT-bogen90-d25",
-   "bezeichnung": "PVC-U-Bogen 90 Grad d25",
+   "bezeichnung": "PVC-U-Bogen 90 Grad d25 (Beet-Auslass)",
    "datei": "leitung.json",
    "rang": "1",
    "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-winkel-90-25-mm",
@@ -1422,7 +1422,7 @@
   },
   {
    "artikel_id": "FIT-bogen90-d25",
-   "bezeichnung": "PVC-U-Bogen 90 Grad d25",
+   "bezeichnung": "PVC-U-Bogen 90 Grad d25 (Beet-Auslass)",
    "datei": "leitung.json",
    "rang": "2",
    "url": "https://www.bevo.com/en/vdl-bend-90-pvc-u-25-mm-glue-socket-16bar-grey-7002570",
@@ -1548,12 +1548,27 @@
    "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-winkel-90-75-mm",
    "haendler": "Schwarte-Shop",
    "land": "DE",
-   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR",
+   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; Bauart/Innenradius auf der Seite NICHT belegt (Baenninger Winkel 90 Grad \"auf kurzer Strecke\", kein Wort zu Spritzguss oder Radius): fuer D83 (Heber K01/K17) nur Preisvergleich, nicht als Spritzgussbogen belegt (05.11.)",
    "status": 200,
    "ziel": "https://www.schwarte-shop.de/pvc-u-klebefitting-winkel-90-75-mm",
+   "urteil": "VERDACHT",
+   "grund": "Bemerkung: NICHT belegt",
+   "titel": "PVC-U Klebefitting Winkel 90° 75 mm - 75018"
+  },
+  {
+   "artikel_id": "FIT-bogen90-d75",
+   "bezeichnung": "PVC-U-Bogen 90 Grad d75",
+   "datei": "leitung.json",
+   "rang": "2",
+   "url": "https://www.bevo.com/en/profec-long-bend-90-pvc-u-75-mm-glue-socket-16bar-grey-0110183",
+   "haendler": "Bevo",
+   "land": "NL",
+   "bemerkung": "",
+   "status": 200,
+   "ziel": "https://www.bevo.com/en/profec-long-bend-90-pvc-u-75-mm-glue-socket-16bar-grey-0110183",
    "urteil": "OK",
    "grund": "HTTP 200",
-   "titel": "PVC-U Klebefitting Winkel 90° 75 mm - 75018"
+   "titel": "Profec Long bend 90° PVC-U 75 mm glue socket 16bar grey"
   },
   {
    "artikel_id": "FIT-kappe-d16",
@@ -1683,7 +1698,7 @@
    "url": "https://www.bevo.com/en/vdl-cap-pvc-u-50-mm-glue-socket-16bar-grey-7002816",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 2.45 EUR; VDL Kappe 16 bar, Variantentabelle; kleine Mindestmengen 5 bis 10 Stk; Variantenseite 05.11. gelesen: VDL Cap PVC-U 50 mm glue socket 16bar grey",
+   "bemerkung": "netto 2.45 EUR; VDL Kappe 16 bar, Variantentabelle; kleine Mindestmengen 5 bis 10 Stk; Variantenseite 05.11. gelesen: VDL Cap PVC-U 50 mm glue socket 16bar grey; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-cap-pvc-u-50-mm-glue-socket-16bar-grey-7002816",
    "urteil": "OK",
@@ -1848,7 +1863,7 @@
    "url": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 0.67 EUR; Reduzierstutzen 25x20 (Stutzen x Muffe), Mindestmenge 10 Stk",
+   "bemerkung": "netto 0.67 EUR; Reduzierstutzen 25x20 (Stutzen x Muffe), Mindestmenge 10 Stk; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/reducer-bush-pvc-u-25-mm-x-20-mm-glue-spigot-x-glue-socket-16bar-grey-0160733",
    "urteil": "OK",
@@ -1908,7 +1923,7 @@
    "url": "https://www.bevo.com/en/reducer-bush-pvc-u-40-mm-x-32-mm-glue-spigot-x-glue-socket-16bar-grey-0160740",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 1.05 EUR; Reduzierstutzen 40x32 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 40 mm x 32 mm glue spigot x glue socket 16bar grey",
+   "bemerkung": "netto 1.05 EUR; Reduzierstutzen 40x32 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 40 mm x 32 mm glue spigot x glue socket 16bar grey; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/reducer-bush-pvc-u-40-mm-x-32-mm-glue-spigot-x-glue-socket-16bar-grey-0160740",
    "urteil": "OK",
@@ -1938,7 +1953,7 @@
    "url": "https://www.bevo.com/en/reducer-bush-pvc-u-50-mm-x-32-mm-glue-spigot-x-glue-socket-16bar-grey-0160743",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 1.40 EUR; Reduzierstutzen 50x32 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 50 mm x 32 mm glue spigot x glue socket 16bar grey",
+   "bemerkung": "netto 1.40 EUR; Reduzierstutzen 50x32 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 50 mm x 32 mm glue spigot x glue socket 16bar grey; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/reducer-bush-pvc-u-50-mm-x-32-mm-glue-spigot-x-glue-socket-16bar-grey-0160743",
    "urteil": "OK",
@@ -1968,7 +1983,7 @@
    "url": "https://www.bevo.com/en/reducer-bush-pvc-u-50-mm-x-40-mm-glue-spigot-x-glue-socket-16bar-grey-0160744",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 1.45 EUR; Reduzierstutzen 50x40 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 50 mm x 40 mm glue spigot x glue socket 16bar grey",
+   "bemerkung": "netto 1.45 EUR; Reduzierstutzen 50x40 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 50 mm x 40 mm glue spigot x glue socket 16bar grey; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/reducer-bush-pvc-u-50-mm-x-40-mm-glue-spigot-x-glue-socket-16bar-grey-0160744",
    "urteil": "OK",
@@ -1998,7 +2013,7 @@
    "url": "https://www.bevo.com/en/reducer-bush-pvc-u-63-mm-x-50-mm-glue-spigot-x-glue-socket-16bar-grey-0160748",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 1.80 EUR; Reduzierstutzen 63x50 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 63 mm x 50 mm glue spigot x glue socket 16bar grey",
+   "bemerkung": "netto 1.80 EUR; Reduzierstutzen 63x50 (Stutzen x Muffe), Mindestmenge 10 Stk; Variantenseite 05.11. gelesen: Reducer bush PVC-U 63 mm x 50 mm glue spigot x glue socket 16bar grey; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/reducer-bush-pvc-u-63-mm-x-50-mm-glue-spigot-x-glue-socket-16bar-grey-0160748",
    "urteil": "OK",
@@ -2163,7 +2178,7 @@
    "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-t-stueck-110-mm",
    "haendler": "Schwarte-Shop",
    "land": "DE",
-   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR",
+   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; ACHTUNG Schwarte-Artikel ist laut Seitentext \"T-Stueck 90 Grad reduziert\" (Baenninger), nicht gleich gross; nur Preisvergleich, nicht als Hauptangebot (Auflage 3, 05.11.)",
    "status": 200,
    "ziel": "https://www.schwarte-shop.de/pvc-u-klebefitting-t-stueck-110-mm",
    "urteil": "OK",
@@ -2193,7 +2208,7 @@
    "url": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-20-mm-glue-socket-16bar-grey-kiwa-7002487",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 1.46 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 20 mm glue socket 16bar grey KIWA",
+   "bemerkung": "netto 1.46 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 20 mm glue socket 16bar grey KIWA; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-20-mm-glue-socket-16bar-grey-kiwa-7002487",
    "urteil": "OK",
@@ -2223,7 +2238,7 @@
    "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-t-stueck-25-mm",
    "haendler": "Schwarte-Shop",
    "land": "DE",
-   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR",
+   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; ACHTUNG Schwarte-Artikel ist laut Seitentext \"T-Stueck 90 Grad reduziert\" (Baenninger), nicht gleich gross; nur Preisvergleich, nicht als Hauptangebot (Auflage 3, 05.11.)",
    "status": 200,
    "ziel": "https://www.schwarte-shop.de/pvc-u-klebefitting-t-stueck-25-mm",
    "urteil": "OK",
@@ -2253,7 +2268,7 @@
    "url": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-32-mm-glue-socket-16bar-grey-kiwa-7002489",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 1.66 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 32 mm glue socket 16bar grey KIWA",
+   "bemerkung": "netto 1.66 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 32 mm glue socket 16bar grey KIWA; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-32-mm-glue-socket-16bar-grey-kiwa-7002489",
    "urteil": "OK",
@@ -2283,7 +2298,7 @@
    "url": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-40-mm-glue-socket-16bar-grey-kiwa-7002491",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 2.45 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 40 mm glue socket 16bar grey KIWA",
+   "bemerkung": "netto 2.45 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 40 mm glue socket 16bar grey KIWA; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-40-mm-glue-socket-16bar-grey-kiwa-7002491",
    "urteil": "OK",
@@ -2313,7 +2328,7 @@
    "url": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-50-mm-glue-socket-16bar-grey-kiwa-7002493",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 3.43 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 50 mm glue socket 16bar grey KIWA",
+   "bemerkung": "netto 3.43 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 50 mm glue socket 16bar grey KIWA; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-50-mm-glue-socket-16bar-grey-kiwa-7002493",
    "urteil": "OK",
@@ -2343,7 +2358,7 @@
    "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-t-stueck-63-mm",
    "haendler": "Schwarte-Shop",
    "land": "DE",
-   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR",
+   "bemerkung": "brutto inkl. 19 % MwSt gelesen; zzgl. Versand ab 5,60 EUR; ACHTUNG Schwarte-Artikel ist laut Seitentext \"T-Stueck 90 Grad reduziert\" (Baenninger), nicht gleich gross; nur Preisvergleich, nicht als Hauptangebot (Auflage 3, 05.11.)",
    "status": 200,
    "ziel": "https://www.schwarte-shop.de/pvc-u-klebefitting-t-stueck-63-mm",
    "urteil": "OK",
@@ -2373,7 +2388,7 @@
    "url": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-75-mm-glue-socket-16bar-grey-kiwa-7002497",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 11.99 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 75 mm glue socket 16bar grey KIWA",
+   "bemerkung": "netto 11.99 EUR; VDL T-Stueck 90 Grad 16 bar KIWA, Variantentabelle; Variantenseite 05.11. gelesen: VDL T-piece 90° PVC-U 75 mm glue socket 16bar grey KIWA; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/vdl-t-piece-90-pvc-u-75-mm-glue-socket-16bar-grey-kiwa-7002497",
    "urteil": "OK",
@@ -2479,11 +2494,11 @@
    "haendler": "Aquagart UV5 4x20 m (billiger.de-Preisvergleich; OBI, OTTO, ManoMano)",
    "land": "DE",
    "bemerkung": "Preisvergleichsseite gelesen 05.11.: 4x20 m UV5 164,30 EUR = 2,05 EUR/m2, meist versandfrei. Dicke auf der Seite nicht genannt (Galaxus-Suchtreffer: 190 um).",
-   "status": 200,
+   "status": 403,
    "ziel": "https://www.billiger.de/pricelist/4320529954-aquagart-20m-gartenfolie-gewaechshausfolie-uv-5-fruehbeetfolie-treibhausfolie-4m-breit",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "Aquagart 20m Gartenfolie Gewächshausfolie UV 5 Frühbeetfolie Treibhausfolie 4m breit💥Black"
+   "urteil": "GESPERRT",
+   "grund": "HTTP 403",
+   "titel": ""
   },
   {
    "artikel_id": "FOL-pe-plane",
@@ -2509,11 +2524,41 @@
    "haendler": "haga-welt.de, UV5-Folie 4 m breit",
    "land": "DE",
    "bemerkung": "",
-   "status": 200,
+   "status": 429,
    "ziel": "https://haga-welt.de/en/products/uv5-film-in-various-widths-film-tunnel-greenhouse-film-hothouse-film",
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
+  },
+  {
+   "artikel_id": "MAT-epdm-teichfolie",
+   "bezeichnung": "EPDM-Teichfolie 1,5 mm (Grubenauskleidung, Flaeche aus Modell: Boden und vier Waende)",
+   "datei": "u2_wasserkreislauf.json",
+   "rang": "1",
+   "url": "https://teichbedarf24.de/en/products/epdm-teichfolie-teichvision-pro-1-5-mm",
+   "haendler": "Teichbedarf24 (TeichVision EPDM Pro 1,5 mm)",
+   "land": "DE",
+   "bemerkung": "Suchauszug nennt 13,49 und 13,00 EUR/m2 (unklar welcher gilt); Seite 429, nicht gelesen.",
+   "status": 200,
+   "ziel": "https://teichbedarf24.de/en/products/epdm-teichfolie-teichvision-pro-1-5-mm",
    "urteil": "OK",
    "grund": "HTTP 200",
-   "titel": "Durable UV5 greenhouse film"
+   "titel": "TeichVision EPDM pond liner Pro 1.5 mm - durable &amp; extra robust"
+  },
+  {
+   "artikel_id": "MAT-epdm-teichfolie",
+   "bezeichnung": "EPDM-Teichfolie 1,5 mm (Grubenauskleidung, Flaeche aus Modell: Boden und vier Waende)",
+   "datei": "u2_wasserkreislauf.json",
+   "rang": "2",
+   "url": "https://dachfolien.de/en/collections/fifox/products/fifox-epdm-dachfolie-pro-1-5-mm",
+   "haendler": "dachfolien.de (FiFox EPDM Dachfolie Pro 1,5 mm)",
+   "land": "DE",
+   "bemerkung": "",
+   "status": 429,
+   "ziel": "https://dachfolien.de/en/collections/fifox/products/fifox-epdm-dachfolie-pro-1-5-mm",
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
   },
   {
    "artikel_id": "MES-co2-scd41",
@@ -2527,7 +2572,7 @@
    "status": 200,
    "ziel": "https://www.soselectronic.com/en-us/products/sensirion/scd41-d-r2-347342",
    "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 39",
+   "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 39",
    "titel": "SCD41-D-R2 | SENSIRION Calibrated CO2 Sensor| 347342"
   },
   {
@@ -2629,11 +2674,11 @@
    "haendler": "Shelly Europe (Shelly Flood Gen4 mit Leck-Sensorkabel)",
    "land": "EU",
    "bemerkung": "von Hand gelesen 05.11.: Flood Gen4 34,90 EUR inkl. MwSt., Sensorkabel bis 150 m verlaengerbar (Zusatzkabel 7,90 EUR), WLAN/Bluetooth/Zigbee/Matter; Anbindung an den Messknoten (Schnittstelle, kein potentialfreier Kontakt belegt) OFFEN",
-   "status": 200,
+   "status": 429,
    "ziel": "https://www.shelly.com/de/products/leak-sensor-cable",
-   "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 39",
-   "titel": "Shelly Leak Sensor Cable | Shelly Europe"
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
   },
   {
    "artikel_id": "MES-leck",
@@ -2737,7 +2782,7 @@
    "status": 200,
    "ziel": "https://en.cdr.pl/p6529,sct-013-030-inductive-current-sensor-0-30-a.html",
    "urteil": "VERDACHT",
-   "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 39",
+   "grund": "Kennmass fehlt auf der Seite: 39",
    "titel": "SCT-013-030 inductive current sensor 0 - 30 A"
   },
   {
@@ -2794,11 +2839,26 @@
    "haendler": "tanks.ie (Secoh JDK-S-200)",
    "land": "IE",
    "bemerkung": "Seite nennt 372,70 EUR NETTO (keine Bruttoangabe); brutto mit irischer MwSt 23 % gerechnet = 458,42 [E]. 3-5 Tage, 'ROI nationwide', Lieferung nach DE nicht genannt (anfragen). Technische Zweitquelle: BIBUS https://technology.bibus.com/hu-en/products/itm/jdk-s-150-200-250/ (245 l/min bei 100 mbar, kein Preis).",
-   "status": 200,
+   "status": 429,
    "ziel": "https://tanks.ie/products/secoh-jdk-s-200-single-series-blower",
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
+  },
+  {
+   "artikel_id": "PMP-luftpumpe-notluft",
+   "bezeichnung": "Notluftpumpe (Membranpumpe, Akku/Netz) [A]",
+   "datei": "u2_wasserkreislauf.json",
+   "rang": "1",
+   "url": "https://www.hornbach.de/p/kerry-electronics-teichbeluefter-3600-l-h-stufenlos-regulierbar-35-watt-sauerstoffpumpe-fuer-teich-membranpumpe-60-l-min-teichbelueftung-luftpumpe-teich-beluefterpumpe-fuer-gartenteiche-teichbelueftungspumpe/12771855/",
+   "haendler": "Hornbach (Marktplatz-Verkaeufer AGABA)",
+   "land": "DE",
+   "bemerkung": "230 V, 35 W, 60 l/min, 33 x 23 x 32 cm, 1-3 Werktage; Preis inkl. MwSt zzgl. ggf. Versand; Seitenstand 10.11.2026.",
+   "status": 200,
+   "ziel": "https://www.hornbach.de/p/kerry-electronics-teichbeluefter-3600-l-h-stufenlos-regulierbar-35-watt-sauerstoffpumpe-fuer-teich-membranpumpe-60-l-min-teichbelueftung-luftpumpe-teich-beluefterpumpe-fuer-gartenteiche-teichbelueftungspumpe/12771855/",
    "urteil": "OK",
    "grund": "HTTP 200",
-   "titel": "SECOH JDK-S-200 SINGLE SERIES BLOWER (EL-200) – Tanks.ie"
+   "titel": "Kerry Electronics Teichbelüfter 3600 L/H stufenlos | HORNBACH"
   },
   {
    "artikel_id": "PMP-pumpe-gross",
@@ -2891,6 +2951,66 @@
    "titel": "EHEIM Universal 1200 | Green Aqua"
   },
   {
+   "artikel_id": "PMP-tauchpumpe-oase-8000",
+   "bezeichnung": "Tauchpumpe (Klasse Oase AquaMax Eco Premium 8000, Typ offen, siehe Beschaffung)",
+   "datei": "u2_wasserkreislauf.json",
+   "rang": "1",
+   "url": "https://www.hornbach.de/p/oase-aquamax-eco-premium-9000/12714146/",
+   "haendler": "Neyses Gartenteiche GmbH ueber Hornbach",
+   "land": "DE",
+   "bemerkung": "Preis inkl. MwSt. zzgl. ggf. Versand; Lieferzeit 2-4 Werktage.",
+   "status": 200,
+   "ziel": "https://www.hornbach.de/p/oase-aquamax-eco-premium-9000/12714146/",
+   "urteil": "VERDACHT",
+   "grund": "Kennmass fehlt auf der Seite: 8000",
+   "titel": "Oase AquaMax Eco Premium 9000 | HORNBACH"
+  },
+  {
+   "artikel_id": "PMP-tauchpumpe-oase-8000",
+   "bezeichnung": "Tauchpumpe (Klasse Oase AquaMax Eco Premium 8000, Typ offen, siehe Beschaffung)",
+   "datei": "u2_wasserkreislauf.json",
+   "rang": "2",
+   "url": "https://www.guenstiger.de/Produkt/Oase/Aquamax_Eco_Premium_8000.html",
+   "haendler": "guenstiger.de (Preisvergleich, Anbieter nicht benannt)",
+   "land": "DE",
+   "bemerkung": "",
+   "status": 403,
+   "ziel": "https://www.guenstiger.de/Produkt/Oase/Aquamax_Eco_Premium_8000.html",
+   "urteil": "GESPERRT",
+   "grund": "HTTP 403",
+   "titel": ""
+  },
+  {
+   "artikel_id": "PMP-teichpumpe-5300",
+   "bezeichnung": "Teichpumpe 5300 l/h, 60 W, Hmax 2,8 m (Beet-Sumpf, Fabrikat offen) [A]",
+   "datei": "behaelter.json",
+   "rang": "1",
+   "url": "https://www.obi.de/p/1358613/oase-filter-und-bachlaufpumpe-aquamax-eco-classic-5500",
+   "haendler": "OBI.de",
+   "land": "DE",
+   "bemerkung": "220,49 brutto, versandkostenfrei, Paket ca. 13.11.; Anschluss 1,5\", 3,2 kg (Angaben teils aus billiger.de-Preisliste).",
+   "status": 200,
+   "ziel": "https://www.obi.de/p/1358613/oase-filter-und-bachlaufpumpe-aquamax-eco-classic-5500",
+   "urteil": "VERDACHT",
+   "grund": "Kennmass fehlt auf der Seite: 5300",
+   "titel": "Oase Teichpumpe AquaMax Eco Classic 5500 l/h 60 W kaufen bei OBI"
+  },
+  {
+   "artikel_id": "PMP-teichpumpe-5300",
+   "bezeichnung": "Teichpumpe 5300 l/h, 60 W, Hmax 2,8 m (Beet-Sumpf, Fabrikat offen) [A]",
+   "datei": "behaelter.json",
+   "rang": "2",
+   "url": "https://www.galaxus.de/en/s4/product/oase-eco-classic-5500-fountain-garden-pond-6185872",
+   "haendler": "Galaxus.de (Marktplatz)",
+   "land": "DE",
+   "bemerkung": "",
+   "status": 403,
+   "ziel": "https://www.galaxus.de/en/s4/product/oase-eco-classic-5500-fountain-garden-pond-6185872",
+   "urteil": "GESPERRT",
+   "grund": "HTTP 403",
+   "titel": ""
+  },
+  {
    "artikel_id": "PRF-alu-haut-profil",
    "bezeichnung": "Alu-Kappenprofil der Haut",
    "datei": "stahl.json",
@@ -2899,11 +3019,11 @@
    "haendler": "alu-verkauf.de (Hildesheim)",
    "land": "DE",
    "bemerkung": "Seite 05.11. geoeffnet: U-Profil 20x20x20x1,5 mm AlMgSi0,5 walzblank 4,39 EUR/m inkl. MwSt., zugeschnitten ab 10 mm bis 6 m (eloxiert 9,30 EUR/m; 2 mm Wand 5,67 EUR/m). Ersatz [A].",
-   "status": 200,
+   "status": 429,
    "ziel": "https://alu-verkauf.de/en/products/aluminium-profile-u-profile",
-   "urteil": "VERDACHT",
-   "grund": "Bemerkung: Ersatz",
-   "titel": "Buy custom-made aluminum U-profiles | Alu-Verkauf"
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
   },
   {
    "artikel_id": "PRF-alu-haut-profil",
@@ -2929,11 +3049,11 @@
    "haendler": "alu-verkauf.de (Hildesheim)",
    "land": "DE",
    "bemerkung": "Seite 05.11. geoeffnet: U-Profil 25x25x2 mm AlMgSi0,5 ab 7,32 EUR/m inkl. MwSt. (3-mm-Wand 10,43 EUR/m); 25x15 NICHT im Konfigurator. Naechstes Mass 25x25.",
-   "status": 200,
+   "status": 429,
    "ziel": "https://alu-verkauf.de/en/products/aluminium-profile-u-profile",
-   "urteil": "VERDACHT",
-   "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 15, 25",
-   "titel": "Buy custom-made aluminum U-profiles | Alu-Verkauf"
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
   },
   {
    "artikel_id": "PRF-alu-keilschiene",
@@ -2974,11 +3094,11 @@
    "haendler": "alu-verkauf.de (Hildesheim)",
    "land": "DE",
    "bemerkung": "Seite 05.11. geoeffnet: Flachstange 30x2 mm AlMgSi0,5 (EN AW 6060) walzblank 3,29 EUR/m inkl. MwSt. (eloxiert 5,48 EUR/m), Zuschnitt 0,64 EUR/Schnitt, Laenge 10-6000 mm.",
-   "status": 200,
+   "status": 429,
    "ziel": "https://alu-verkauf.de/en/products/aluminium-profile-flach",
-   "urteil": "OK",
-   "grund": "HTTP 200",
-   "titel": "Buy custom-made aluminium flat profiles"
+   "urteil": "GESPERRT",
+   "grund": "HTTP 429",
+   "titel": "Too many requests"
   },
   {
    "artikel_id": "PRF-alu-klemmleiste",
@@ -3003,11 +3123,11 @@
    "url": "https://goldengreenclub.de/produkt/urban-hydro-nft-rinne-100x50-mm-mit-loch-1-lagig-innen-weiss-290-cm/",
    "haendler": "Golden Green Club",
    "land": "EU",
-   "bemerkung": "Gleicher Kanal (Urban Hydro, Art.-Nr. 23644) mit vorgebohrten Loechern fuer Hydrokoerbe, 100x50 mm, 290 cm in 125-cm-Segmenten mit Verbindern, UPVC 'gesundheitlich unbedenklich' (kein Normbeleg). 20,77 EUR je 290 cm = 7,16 EUR/m (MwSt-Angabe fehlt auf der Seite, als brutto angenommen); Footer 'Versand aus der EU'; vorraetig.",
+   "bemerkung": "Gleicher Kanal (Urban Hydro, Art.-Nr. 23644) mit vorgebohrten Loechern fuer Hydrokoerbe, 100x50 mm, 290 cm in 125-cm-Segmenten mit Verbindern, UPVC 'gesundheitlich unbedenklich' (kein Normbeleg). 20,77 EUR je 290 cm = 7,16 EUR/m (MwSt-Angabe fehlt auf der Seite, als brutto angenommen); Footer 'Versand aus der EU'; vorraetig. Kauf: Lieferlaenge 2,9 m (nicht 7 m); 154 m Bedarf = 54 Stueck a 2,9 m (156,6 m).",
    "status": 200,
    "ziel": "https://goldengreenclub.de/produkt/urban-hydro-nft-rinne-100x50-mm-mit-loch-1-lagig-innen-weiss-290-cm/",
    "urteil": "VERDACHT",
-   "grund": "Kennmass fehlt auf der Seite: 130",
+   "grund": "Kennmass fehlt auf der Seite: 130; Bemerkung: nicht 7",
    "titel": "Urban Hydro NFT Rinne 100x50 mm - mit Loch, 1-lagig, innen weiß, 290 cm - Golden Green Clu"
   },
   {
@@ -3053,7 +3173,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 25",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-st-rr30x30x2",
@@ -3083,7 +3203,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 30",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-st-rr40x40x2",
@@ -3113,7 +3233,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 40",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-st-rr40x40x2.5",
@@ -3143,7 +3263,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 40",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-st-rr40x40x3",
@@ -3188,7 +3308,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 40",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-st-rr40x60x3",
@@ -3218,7 +3338,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 40, 60",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-st-rr60x60x3",
@@ -3248,7 +3368,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 60",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-st-rund20",
@@ -3308,7 +3428,7 @@
    "ziel": "https://www.metallparadies.de/stahl-vierkantrohr.html",
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 30",
-   "titel": "Rechteckrohr + Quadratrohr bis 200 mm Breite S235JR"
+   "titel": "Vierkantrohr Stahl nach Maß | Quadratrohr & Rechteckrohr"
   },
   {
    "artikel_id": "PRF-v2a-voll8x8",
@@ -3363,7 +3483,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-110-mm-x-6-6-mm-glue-socket-x-plain-16bar-iso-pn16-grey-5m-0309233",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 67.08 EUR; PN16 grau, Stange 5 m (335,40 EUR netto), Mindestmenge 5 m",
+   "bemerkung": "netto 67.08 EUR; PN16 grau, Stange 5 m (335,40 EUR netto), Mindestmenge 5 m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-110-mm-x-6-6-mm-glue-socket-x-plain-16bar-iso-pn16-grey-5m-0309233",
    "urteil": "OK",
@@ -3378,7 +3498,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-160-mm-x-4-7-mm-glue-socket-x-plain-7-5bar-grey-5m-0309003",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 68.46 EUR; 7,5 bar grau (Wand 4,7 mm), Stange 5 m; PN16-Variante 130,10 EUR/m netto (0309235, Seite 0309233)",
+   "bemerkung": "netto 68.46 EUR; 7,5 bar grau (Wand 4,7 mm), Stange 5 m; PN16-Variante 130,10 EUR/m netto (0309235, Seite 0309233); Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-160-mm-x-4-7-mm-glue-socket-x-plain-7-5bar-grey-5m-0309003",
    "urteil": "OK",
@@ -3393,7 +3513,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-20-mm-x-1-5-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329121",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 4.01 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 20 mm x 1,5 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m",
+   "bemerkung": "netto 4.01 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 20 mm x 1,5 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-20-mm-x-1-5-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329121",
    "urteil": "OK",
@@ -3408,7 +3528,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-25-mm-x-1-9-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329126",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 4.36 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m",
+   "bemerkung": "netto 4.36 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-25-mm-x-1-9-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329126",
    "urteil": "OK",
@@ -3423,7 +3543,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-32-mm-x-2-4-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329133",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 8.59 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 32 mm x 2,4 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m",
+   "bemerkung": "netto 8.59 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 32 mm x 2,4 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-32-mm-x-2-4-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329133",
    "urteil": "OK",
@@ -3438,7 +3558,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-40-mm-x-3-0-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329141",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 12.95 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 40 mm x 3,0 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m",
+   "bemerkung": "netto 12.95 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 40 mm x 3,0 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-40-mm-x-3-0-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0329141",
    "urteil": "OK",
@@ -3453,7 +3573,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-50-mm-x-3-7-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0309229",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 19.88 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 50 mm x 3,7 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m",
+   "bemerkung": "netto 19.88 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 50 mm x 3,7 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-50-mm-x-3-7-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0309229",
    "urteil": "OK",
@@ -3468,7 +3588,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-63-mm-x-4-7-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0309159",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 30.21 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 63 mm x 4,7 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m",
+   "bemerkung": "netto 30.21 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 63 mm x 4,7 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-63-mm-x-4-7-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-0309159",
    "urteil": "OK",
@@ -3498,7 +3618,7 @@
    "url": "https://www.bevo.com/en/pressure-pipe-pvc-u-75-mm-x-5-6-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-7018027",
    "haendler": "Bevo",
    "land": "NL",
-   "bemerkung": "netto 37.31 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 75 mm x 5,6 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m",
+   "bemerkung": "netto 37.31 EUR; PN16 grau, Stange 5 m (Muffe x glatt), Preis je m, Mindestmenge 5 m; Variantenseite 05.11. gelesen: Pressure pipe PVC-U 75 mm x 5,6 mm glue socket x plain 16bar ISO-PN16 DIN-PN16 grey 5m; Preisbasis: preis_eur = brutto = netto x 1,19 (Bevo-Seite zeigt netto, 19 % MwSt. Storefront DE)",
    "status": 200,
    "ziel": "https://www.bevo.com/en/pressure-pipe-pvc-u-75-mm-x-5-6-mm-glue-socket-x-plain-16bar-iso-pn16-din-pn16-grey-5m-7018027",
    "urteil": "OK",
@@ -3594,6 +3714,51 @@
    "urteil": "VERDACHT",
    "grund": "Kennmass nicht in Titel/URL (nur im Seitentext): 50",
    "titel": "Fischer Rohrschelle FRS 1 1/2\" (48-54 mm), verzinkt - 20145"
+  },
+  {
+   "artikel_id": "SCH-schlauch-id19",
+   "bezeichnung": "Schlauch ID19 (Meterware, Laenge aus Modellmasse)",
+   "datei": "u8_unify.json",
+   "rang": "1",
+   "url": "https://www.obi.at/p/2573764/fitt-glasklarschlauch-19-mm-transparent",
+   "haendler": "OBI (obi.at, Fitt Glasklarschlauch 19 mm)",
+   "land": "AT",
+   "bemerkung": "Preis und 'lebensmittelecht' nur aus Suchtreffer; Seite beim Abruf 404; transparent.",
+   "status": 200,
+   "ziel": "https://www.obi.at/p/2573764/fitt-glasklarschlauch-19-mm-transparent",
+   "urteil": "OK",
+   "grund": "HTTP 200",
+   "titel": "Fitt Glasklarschlauch Ø 19 mm Transparent kaufen bei OBI"
+  },
+  {
+   "artikel_id": "SCH-schlauch-luft-d12",
+   "bezeichnung": "Luftschlauch d12 (Meterware)",
+   "datei": "u8_unify.json",
+   "rang": "1",
+   "url": "https://www.obi.de/p/8485427/jbl-aquarium-schlauch-grau-9-12-mm-meterware",
+   "haendler": "OBI (JBL Aquarium-Schlauch grau 9/12 mm Meterware)",
+   "land": "DE",
+   "bemerkung": "Preis aus Suchtext, Seite 404; 9/12 statt 8/12 mm",
+   "status": 200,
+   "ziel": "https://www.obi.de/p/8485427/jbl-aquarium-schlauch-grau-9-12-mm-meterware",
+   "urteil": "OK",
+   "grund": "HTTP 200",
+   "titel": "JBL Aquarienschlauch 9/12 mm Meterware kaufen bei OBI"
+  },
+  {
+   "artikel_id": "SCH-schlauch-luft-d8",
+   "bezeichnung": "Luftschlauch d8 (Meterware)",
+   "datei": "u8_unify.json",
+   "rang": "1",
+   "url": "https://www.ebay.de/p/1656628645",
+   "haendler": "eBay AquaNova (Silikonschlauch 4/6 mm, 100 m Rolle)",
+   "land": "DE",
+   "bemerkung": "29 EUR je 100-m-Rolle laut Suchtext, kostenloser Versand laut Suchtext; Nachweis offen | Umrechnung: 29 EUR je 100-m-Rolle = 0,29 EUR/m; Schlauch 4/6 mm, nicht d8 aussen (Beet-Luftschlauch 8 mm aussen: Innen 5-6 mm: Naeherung)",
+   "status": 403,
+   "ziel": "https://www.ebay.de/p/1656628645",
+   "urteil": "GESPERRT",
+   "grund": "HTTP 403",
+   "titel": "Error Page | eBay"
   },
   {
    "artikel_id": "SCH-schlauchschelle-id16",
@@ -4032,7 +4197,7 @@
   },
   {
    "artikel_id": "SRB-satz-m8x30",
-   "bezeichnung": "Schraubensatz M8x30 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
+   "bezeichnung": "Schraubensatz M8x30 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben) [A]",
    "datei": "stahl.json",
    "rang": "1",
    "url": "https://www.schraubenking.at/M8-x-30mm-Sechskantschrauben-DIN933-Vollgewinde-Stahl-verzinkt-FKL88-P001112",
@@ -4047,7 +4212,7 @@
   },
   {
    "artikel_id": "SRB-satz-m8x30",
-   "bezeichnung": "Schraubensatz M8x30 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
+   "bezeichnung": "Schraubensatz M8x30 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben) [A]",
    "datei": "stahl.json",
    "rang": "2",
    "url": "https://www.hornbach.de/p/reyher-sechskantschraube-o-schaft-din-933-m8x30-mm-galv-verzinkt-100-stueck/10316631/",
@@ -4363,16 +4528,16 @@
    "status": "OFFEN (Quelle)"
   },
   {
-   "artikel_id": "ARM-bulkhead-d40",
-   "bezeichnung": "PVC-U-Bulkhead d40",
+   "artikel_id": "ARM-bulkhead-d20",
+   "bezeichnung": "PVC-U-Bulkhead d20",
    "typ": "ARM",
-   "datei": "leitung.json",
-   "masse": "durchmesser_mm=40",
+   "datei": "u8_unify.json",
+   "masse": "durchmesser_mm=20",
    "einheit": "Stk",
    "werkstoff": "PVC-U",
    "lebensmittel": "OFFEN",
-   "europa": "ja",
-   "konfidenz": "Q",
+   "europa": "-",
+   "konfidenz": "-",
    "ersatz": "",
    "bedarf": 14.0,
    "status": "OFFEN (Quelle)"
@@ -4404,7 +4569,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 0.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4419,14 +4584,14 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 7.0,
+   "bedarf": 8.0,
    "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "ARM-durchflussbegrenzer-messing",
    "bezeichnung": "Durchflussbegrenzer Messing [A]",
    "typ": "ARM",
-   "datei": "-",
+   "datei": "u8_unify.json",
    "masse": "-",
    "einheit": "Stk",
    "werkstoff": "Messing",
@@ -4434,7 +4599,22 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "ARM-entlueftungsventil-messing",
+   "bezeichnung": "Be-/Entlueftungsventil Messing (Rohrleitung, 1 1/2 Zoll) [A]",
+   "typ": "ARM",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Messing",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 2.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4449,7 +4629,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4464,7 +4644,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4494,7 +4674,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -4509,7 +4689,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 42.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -4524,7 +4704,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 24.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -4539,7 +4719,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 18.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -4569,7 +4749,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 6.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -4588,10 +4768,25 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "ARM-luftstein-notluft",
+   "bezeichnung": "Luftausstroemer (Luftstein)",
+   "typ": "ARM",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PE",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 1.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "ARM-probehahn-messing",
    "bezeichnung": "Probierhahn Messing 1/2 Zoll [A]",
    "typ": "ARM",
-   "datei": "-",
+   "datei": "u8_unify.json",
    "masse": "-",
    "einheit": "Stk",
    "werkstoff": "Messing",
@@ -4599,7 +4794,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4614,7 +4809,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 2.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -4648,6 +4843,111 @@
    "status": "OFFEN (E20)"
   },
   {
+   "artikel_id": "ARM-rsv-d50",
+   "bezeichnung": "PVC-U-Rueckschlagventil d50",
+   "typ": "ARM",
+   "datei": "-",
+   "masse": "groesse=d50",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "ARM-rueckschlagventil-d50",
+   "bezeichnung": "PVC-U-Rueckschlagventil d50 (Klebemuffe)",
+   "typ": "ARM",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "groesse=d50",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 4.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "ARM-rueckschlagventil-luft",
+   "bezeichnung": "Rueckschlagventil Luft (Schlauch)",
+   "typ": "ARM",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 3.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "ARM-schnellkupplung-id19",
+   "bezeichnung": "Schnellkupplung id19",
+   "typ": "ARM",
+   "datei": "u8_unify.json",
+   "masse": "groesse=id19",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "belegt",
+   "europa": "ja",
+   "konfidenz": "Q",
+   "ersatz": "",
+   "bedarf": 26.0,
+   "status": "OK"
+  },
+  {
+   "artikel_id": "ARM-schnellkupplung-id25",
+   "bezeichnung": "Schnellkupplung id25",
+   "typ": "ARM",
+   "datei": "u8_unify.json",
+   "masse": "groesse=id25",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 12.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "ARM-schwimmerschalter-hochstand",
+   "bezeichnung": "Schwimmerschalter Hochstand (Fabrikat offen) [A]",
+   "typ": "ARM",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "-",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 2.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "ARM-schwimmerventil-nachspeise",
+   "bezeichnung": "Schwimmerventil 3/4 Zoll (Nachspeisung, Gehaeuse, Wangen, Hebelarm mit Kugel)",
+   "typ": "ARM",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 2.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "ARM-schwimmerventil-pool",
    "bezeichnung": "Schwimmerventil Pool (Gehaeuse, Wangen, Hebelarm mit Kugel) [A]",
    "typ": "ARM",
@@ -4659,7 +4959,22 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 1.0,
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "ARM-venturi-mazzei-1583",
+   "bezeichnung": "Venturi-Injektor",
+   "typ": "ARM",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 2.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4674,7 +4989,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 2.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4689,7 +5004,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OK"
   },
   {
@@ -4708,17 +5023,32 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "BEH-biofilter-dritt-fass",
+   "bezeichnung": "Biofilter-Fass PE mit Lochplatte (Altbestand-Drittbiofilter) [A]",
+   "typ": "BEH",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PE",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "BEH-drittbecken-klein",
    "bezeichnung": "Drittbecken klein (Wanne 920x920x1055)",
    "typ": "BEH",
    "datei": "behaelter.json",
-   "masse": "bbox_mm=[920, 920, 1055]",
+   "masse": "bbox_mm=[1000, 1120, 1120]",
    "einheit": "Stk",
    "werkstoff": "Beton",
    "lebensmittel": "belegt",
    "europa": "ja",
    "konfidenz": "E",
-   "ersatz": "",
+   "ersatz": "ERSATZ",
    "bedarf": 1.0,
    "status": "OK"
   },
@@ -4749,7 +5079,22 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "BEH-futterzuchtkiste-pe",
+   "bezeichnung": "Futterzuchtkiste PE 350x525x800 (Permakultur-Modul) [A]",
+   "typ": "BEH",
+   "datei": "u8_unify.json",
+   "masse": "bbox_mm=[350, 525, 800]",
+   "einheit": "Stk",
+   "werkstoff": "PE",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -4787,7 +5132,7 @@
    "bezeichnung": "IBC-Beetwanne HDPE (aus IBC geschnitten, Laenge je Beet)",
    "typ": "BEH",
    "datei": "behaelter.json",
-   "masse": "bbox_mm=[637, 800, 2640]",
+   "masse": "bbox_mm=[460, 800, 2640]",
    "einheit": "Stk",
    "werkstoff": "HDPE weiss",
    "lebensmittel": "belegt",
@@ -4846,10 +5191,25 @@
    "artikel_id": "BEH-pe-schachtaufsatz-600x200",
    "bezeichnung": "PE-Schachtaufsatz (Dom) Oe 600 x 200 mm fuer Tank [A]",
    "typ": "BEH",
-   "datei": "-",
+   "datei": "behaelter.json",
    "masse": "bbox_mm=[200, 600, 600]",
    "einheit": "Stk",
    "werkstoff": "PE",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "BEH-pegelschacht-fass",
+   "bezeichnung": "Pegelschacht PE-HD-Fass mit Deckel (Altbestand, entfaellt im Modell) [A]",
+   "typ": "BEH",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PE-HD",
    "lebensmittel": "OFFEN",
    "europa": "-",
    "konfidenz": "-",
@@ -4873,10 +5233,40 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "BEH-regentank-5000",
+   "bezeichnung": "Regenwassertank 5000 l, stehend, oberirdisch (PE)",
+   "typ": "BEH",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "volumen_l=5000",
+   "einheit": "Stk",
+   "werkstoff": "PE",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 1.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "BEH-schlammbehaelter-350",
+   "bezeichnung": "Schlamm-Sammelbehaelter PE rund 350 l mit Deckel (Durchm. 900 x 600)",
+   "typ": "BEH",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "volumen_l=350",
+   "einheit": "Stk",
+   "werkstoff": "PE",
+   "lebensmittel": "belegt",
+   "europa": "ja",
+   "konfidenz": "Q-Treffer",
+   "ersatz": "",
+   "bedarf": 2.0,
+   "status": "OK"
+  },
+  {
    "artikel_id": "BEH-tank-pe-580-deckel",
    "bezeichnung": "PE-Tankdeckel 580 mm",
    "typ": "BEH",
-   "datei": "-",
+   "datei": "behaelter.json",
    "masse": "-",
    "einheit": "Stk",
    "werkstoff": "PE",
@@ -4891,16 +5281,16 @@
    "artikel_id": "BEH-tank-pe-580x865",
    "bezeichnung": "PE-Tank 580 mm Durchm., 865 mm hoch (Kegelboden/Absetzer)",
    "typ": "BEH",
-   "datei": "-",
+   "datei": "behaelter.json",
    "masse": "bbox_mm=[580, 580, 865]",
    "einheit": "Stk",
    "werkstoff": "PE",
-   "lebensmittel": "OFFEN",
-   "europa": "-",
-   "konfidenz": "-",
+   "lebensmittel": "belegt",
+   "europa": "ja",
+   "konfidenz": "Q",
    "ersatz": "",
    "bedarf": 0.0,
-   "status": "OFFEN (Quelle)"
+   "status": "OK"
   },
   {
    "artikel_id": "BEH-tank-pe-673-deckel",
@@ -4936,7 +5326,7 @@
    "artikel_id": "BEH-tank-pe-700-deckel",
    "bezeichnung": "PE-Tankdeckel 700 mm",
    "typ": "BEH",
-   "datei": "-",
+   "datei": "behaelter.json",
    "masse": "-",
    "einheit": "Stk",
    "werkstoff": "PE",
@@ -4951,7 +5341,7 @@
    "artikel_id": "BEH-tank-pe-800x1000",
    "bezeichnung": "PE-Tank 800 mm Durchm., 1000 mm hoch (Kegelboden/Absetzer)",
    "typ": "BEH",
-   "datei": "-",
+   "datei": "behaelter.json",
    "masse": "bbox_mm=[800, 800, 1000]",
    "einheit": "Stk",
    "werkstoff": "PE",
@@ -5008,6 +5398,21 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "BLE-blech-st-10",
+   "bezeichnung": "Stahlblech 10 mm verzinkt, Zuschnitt 200x200",
+   "typ": "BLE",
+   "datei": "u8_unify.json",
+   "masse": "dicke_mm=10, zuschnitt_mm=[200, 200]",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 3.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "BLE-blech-st-3",
    "bezeichnung": "Stahlblech 3 mm verzinkt, Zuschnitt 700x700",
    "typ": "BLE",
@@ -5021,6 +5426,21 @@
    "ersatz": "ERSATZ",
    "bedarf": 5.0,
    "status": "OK"
+  },
+  {
+   "artikel_id": "BLE-blech-st-4",
+   "bezeichnung": "Stahlblech 4 mm verzinkt, Zuschnitt 40x40",
+   "typ": "BLE",
+   "datei": "u8_unify.json",
+   "masse": "dicke_mm=4, zuschnitt_mm=[40, 40]",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 31.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "BLE-blech-st-5",
@@ -5039,18 +5459,33 @@
   },
   {
    "artikel_id": "BLE-blech-st-6",
-   "bezeichnung": "Stahlblech 6 mm verzinkt, Zuschnitt 1360x580",
+   "bezeichnung": "Stahlblech 6 mm verzinkt, Zuschnitt 100x100",
    "typ": "BLE",
    "datei": "stahl.json",
-   "masse": "dicke_mm=6, zuschnitt_mm=[1360, 580]",
+   "masse": "dicke_mm=6, zuschnitt_mm=[100, 100]",
    "einheit": "Stk",
    "werkstoff": "Stahl verzinkt",
    "lebensmittel": "OFFEN",
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 56.0,
    "status": "OK"
+  },
+  {
+   "artikel_id": "BLE-blech-st-8",
+   "bezeichnung": "Stahlblech 8 mm verzinkt, Zuschnitt 100x40",
+   "typ": "BLE",
+   "datei": "u8_unify.json",
+   "masse": "dicke_mm=8, zuschnitt_mm=[100, 40]",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 66.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "BLE-fussplatte-100x100x6",
@@ -5064,7 +5499,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 16.0,
+   "bedarf": 32.0,
    "status": "OK"
   },
   {
@@ -5124,7 +5559,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 12.0,
+   "bedarf": 4.0,
    "status": "OK"
   },
   {
@@ -5143,6 +5578,21 @@
    "status": "OK"
   },
   {
+   "artikel_id": "BLE-laser-lochplatte-110x110x8",
+   "bezeichnung": "Laserteil Lochplatte 110x110x8 mm, Stahl (Knoten Schere)",
+   "typ": "BLE",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl Laserteil",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 52.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "BLE-platte-250x250x15",
    "bezeichnung": "Ankerplatte 250x250x15 mm, Stahl",
    "typ": "BLE",
@@ -5156,6 +5606,21 @@
    "ersatz": "",
    "bedarf": 10.0,
    "status": "OK"
+  },
+  {
+   "artikel_id": "BLE-pp-abtropfgitter-beet",
+   "bezeichnung": "PP-Abtropfgitter 25 mm (Stegrost, Zuschnitt je Beet) [A]",
+   "typ": "BLE",
+   "datei": "u8_unify.json",
+   "masse": "dicke_mm=25",
+   "einheit": "Stk",
+   "werkstoff": "PP grau",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 14.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "BLE-pp-blende-290x260",
@@ -5173,18 +5638,48 @@
    "status": "OK"
   },
   {
-   "artikel_id": "BLE-pp-siebboden-beet",
-   "bezeichnung": "PP-Siebboden 8 mm (Zuschnitt je Beet)",
+   "artikel_id": "BLE-pp-platte10-210x1125",
+   "bezeichnung": "PP-Platte 10 mm, Zuschnitt 1125x210 (Trennwand, Pufferzone)",
    "typ": "BLE",
-   "datei": "stahl.json",
-   "masse": "dicke_mm=8",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP weiss",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 4.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "BLE-pp-platte10-360x1125",
+   "bezeichnung": "PP-Platte 10 mm, Zuschnitt 1125x360 (Trennwand, Pufferzone)",
+   "typ": "BLE",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP weiss",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 4.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "BLE-pp-platte30-400x400",
+   "bezeichnung": "PP-Platte 30 mm, Zuschnitt 400x400 (Pumpensockel)",
+   "typ": "BLE",
+   "datei": "u8_unify.json",
+   "masse": "-",
    "einheit": "Stk",
    "werkstoff": "PP grau",
    "lebensmittel": "OFFEN",
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 14.0,
+   "bedarf": 2.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -5199,7 +5694,7 @@
    "europa": "ja",
    "konfidenz": "E",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {
@@ -5214,7 +5709,7 @@
    "europa": "ja",
    "konfidenz": "E",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {
@@ -5229,7 +5724,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -5244,22 +5739,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
-   "status": "OK"
-  },
-  {
-   "artikel_id": "BLE-v2a-lochblech-medienschutz",
-   "bezeichnung": "Edelstahl-Lochblech 1,5 mm RV5-8, Medienschutz-Zylinder 110x320",
-   "typ": "BLE",
-   "datei": "stahl.json",
-   "masse": "-",
-   "einheit": "Stk",
-   "werkstoff": "Edelstahl 1.4301",
-   "lebensmittel": "OFFEN",
-   "europa": "ja",
-   "konfidenz": "E",
-   "ersatz": "",
-   "bedarf": 14.0,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {
@@ -5424,7 +5904,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 3.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5439,7 +5919,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5484,12 +5964,12 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 26.0,
    "status": "OFFEN (E20)"
   },
   {
    "artikel_id": "FIT-bogen90-d25",
-   "bezeichnung": "PVC-U-Bogen 90 Grad d25",
+   "bezeichnung": "PVC-U-Bogen 90 Grad d25 (Beet-Auslass)",
    "typ": "FIT",
    "datei": "leitung.json",
    "masse": "groesse=d25",
@@ -5499,7 +5979,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 16.0,
+   "bedarf": 26.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5514,7 +5994,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 8.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5529,7 +6009,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 14.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5544,7 +6024,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 19.0,
+   "bedarf": 16.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5559,7 +6039,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 7.0,
+   "bedarf": 11.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5573,15 +6053,15 @@
    "lebensmittel": "OFFEN",
    "europa": "ja",
    "konfidenz": "Q",
-   "ersatz": "",
-   "bedarf": 8.0,
+   "ersatz": "ERSATZ",
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
    "artikel_id": "FIT-entlueftung-d32",
    "bezeichnung": "Entlueftung d32 (PVC-U, mit Insektengitter-Kappe) [A]",
    "typ": "FIT",
-   "datei": "-",
+   "datei": "u8_unify.json",
    "masse": "durchmesser_mm=32",
    "einheit": "Stk",
    "werkstoff": "PVC-U",
@@ -5589,7 +6069,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 2.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -5619,7 +6099,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 42.0,
+   "bedarf": 28.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -5724,7 +6204,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5754,7 +6234,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5769,7 +6249,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 7.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -5844,7 +6324,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -5859,7 +6339,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -5941,7 +6421,7 @@
    "artikel_id": "FIT-red-d32-d25",
    "bezeichnung": "PVC-U-Reduzierung d32 auf d25",
    "typ": "FIT",
-   "datei": "-",
+   "datei": "u8_unify.json",
    "masse": "groesse=d32_d25",
    "einheit": "Stk",
    "werkstoff": "PVC-U",
@@ -5949,7 +6429,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -5998,6 +6478,36 @@
    "status": "OFFEN (E20)"
   },
   {
+   "artikel_id": "FIT-red-d50-d32",
+   "bezeichnung": "PVC-U-Reduzierung d50 auf d32",
+   "typ": "FIT",
+   "datei": "u8_unify.json",
+   "masse": "groesse=d50_d32",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 24.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "FIT-red-d50-d40",
+   "bezeichnung": "PVC-U-Reduzierung d50 auf d40",
+   "typ": "FIT",
+   "datei": "u8_unify.json",
+   "masse": "groesse=d50_d40",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 14.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "FIT-red-d50_d32",
    "bezeichnung": "PVC-U-Reduzierung d50_d32",
    "typ": "FIT",
@@ -6009,7 +6519,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -6024,7 +6534,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 6.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -6039,8 +6549,23 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 8.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
+  },
+  {
+   "artikel_id": "FIT-red-d75-d50",
+   "bezeichnung": "PVC-U-Reduzierung d75 auf d50",
+   "typ": "FIT",
+   "datei": "u8_unify.json",
+   "masse": "groesse=d75_d50",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 38.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "FIT-red-d75_d50",
@@ -6054,7 +6579,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -6069,30 +6594,15 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 6.0,
+   "bedarf": 10.0,
    "status": "OFFEN (E20)"
   },
   {
-   "artikel_id": "FIT-reduktion-d16",
-   "bezeichnung": "PVC-U-Reduktion/Huelse d16",
+   "artikel_id": "FIT-reduktion-d20",
+   "bezeichnung": "PVC-U-Reduktion/Huelse d20",
    "typ": "FIT",
-   "datei": "leitung.json",
-   "masse": "durchmesser_mm=16",
-   "einheit": "Stk",
-   "werkstoff": "PVC-U",
-   "lebensmittel": "OFFEN",
-   "europa": "-",
-   "konfidenz": "-",
-   "ersatz": "",
-   "bedarf": 28.0,
-   "status": "OFFEN (Quelle)"
-  },
-  {
-   "artikel_id": "FIT-reduktion-d32",
-   "bezeichnung": "PVC-U-Reduktion/Huelse d32",
-   "typ": "FIT",
-   "datei": "leitung.json",
-   "masse": "durchmesser_mm=32",
+   "datei": "u8_unify.json",
+   "masse": "durchmesser_mm=20",
    "einheit": "Stk",
    "werkstoff": "PVC-U",
    "lebensmittel": "OFFEN",
@@ -6103,18 +6613,18 @@
    "status": "OFFEN (Quelle)"
   },
   {
-   "artikel_id": "FIT-reduktion-d50",
-   "bezeichnung": "PVC-U-Reduktion/Huelse d50",
+   "artikel_id": "FIT-ring-ecke-d75",
+   "bezeichnung": "Ring-Ecke d75 (PE100, Segmentbogen/Formteil fuer den Ring) [A]",
    "typ": "FIT",
-   "datei": "leitung.json",
-   "masse": "durchmesser_mm=50",
+   "datei": "u8_unify.json",
+   "masse": "durchmesser_mm=75",
    "einheit": "Stk",
-   "werkstoff": "PVC-U",
+   "werkstoff": "PE100",
    "lebensmittel": "OFFEN",
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 14.0,
+   "bedarf": 10.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -6148,6 +6658,51 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "FIT-sammler-d110",
+   "bezeichnung": "Sammelleitung (Sammler) d110",
+   "typ": "FIT",
+   "datei": "-",
+   "masse": "groesse=d110",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "FIT-schlauchanschluss-abzweig",
+   "bezeichnung": "Schlauchanschluss am Abzweig (Gewinde/Klebe auf Schlauchtuelle) [A]",
+   "typ": "FIT",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PVC/PP",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 38.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "FIT-schlauchwinkel-90",
+   "bezeichnung": "Schlauch-Winkelstueck 90 Grad (PVC, Tuelle-Tuelle) [A]",
+   "typ": "FIT",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PVC",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 31.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "FIT-stutzen-d16",
    "bezeichnung": "PVC-U-Stutzen d16 (Klebe/Gewinde)",
    "typ": "FIT",
@@ -6174,14 +6729,14 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 4.0,
    "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "FIT-stutzen-d25",
    "bezeichnung": "PVC-U-Stutzen d25 (Klebe/Gewinde)",
    "typ": "FIT",
-   "datei": "-",
+   "datei": "u8_unify.json",
    "masse": "durchmesser_mm=25",
    "einheit": "Stk",
    "werkstoff": "PVC-U",
@@ -6204,7 +6759,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 1.0,
+   "bedarf": 9.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -6219,14 +6774,14 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 6.0,
    "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "FIT-stutzen-d50",
    "bezeichnung": "PVC-U-Stutzen d50 (Klebe/Gewinde)",
    "typ": "FIT",
-   "datei": "-",
+   "datei": "u8_unify.json",
    "masse": "durchmesser_mm=50",
    "einheit": "Stk",
    "werkstoff": "PVC-U",
@@ -6234,7 +6789,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 6.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -6250,6 +6805,21 @@
    "konfidenz": "Q",
    "ersatz": "",
    "bedarf": 2.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "FIT-stutzen-d75",
+   "bezeichnung": "PVC-U-Stutzen d75 (Klebe/Gewinde)",
+   "typ": "FIT",
+   "datei": "u8_unify.json",
+   "masse": "durchmesser_mm=75",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -6294,7 +6864,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 3.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -6339,7 +6909,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 3.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -6354,7 +6924,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 0.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -6369,7 +6939,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 46.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -6385,6 +6955,21 @@
    "konfidenz": "-",
    "ersatz": "",
    "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "FIT-uebergangsnippel-d75-d40",
+   "bezeichnung": "PVC-U-Uebergangsnippel d75 auf d40",
+   "typ": "FIT",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PVC-U",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 2.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -6519,7 +7104,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.0,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {
@@ -6536,6 +7121,21 @@
    "ersatz": "",
    "bedarf": 0.0,
    "status": "OK"
+  },
+  {
+   "artikel_id": "FOL-epdm-schelleneinlage-d75",
+   "bezeichnung": "EPDM-Schelleneinlage d75",
+   "typ": "FOL",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "EPDM",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "FOL-epdm-tuerdichtung",
@@ -6568,6 +7168,21 @@
    "status": "OK"
   },
   {
+   "artikel_id": "GEW-sieb-v2a-2mm",
+   "bezeichnung": "Edelstahl-Siebgewebe 2 mm (Beetsieb, Flaeche aus Modell)",
+   "typ": "GEW",
+   "datei": "u8_unify.json",
+   "masse": "maschenweite_mm=2",
+   "einheit": "m2",
+   "werkstoff": "Edelstahl 1.4301",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 25.0701,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "GEW-v2a-100um",
    "bezeichnung": "Edelstahl-Siebgewebe 100 um, 1.4301 (Siebkorb, Flaeche aus Modell)",
    "typ": "GEW",
@@ -6579,7 +7194,82 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 2.0208,
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "GEW-vlies-pp",
+   "bezeichnung": "PP-Vlies (Beetboden, Flaeche aus Modell)",
+   "typ": "GEW",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "m2",
+   "werkstoff": "PP Vlies",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 25.0701,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "MAT-epdm-teichfolie",
+   "bezeichnung": "EPDM-Teichfolie 1,5 mm (Grubenauskleidung, Flaeche aus Modell: Boden und vier Waende)",
+   "typ": "MAT",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "-",
+   "einheit": "m2",
+   "werkstoff": "EPDM",
+   "lebensmittel": "-",
+   "europa": "ja",
+   "konfidenz": "Q-Treffer",
+   "ersatz": "",
+   "bedarf": 14.3182,
+   "status": "OK"
+  },
+  {
+   "artikel_id": "MAT-gitterrost-112x1096",
+   "bezeichnung": "Gitterrost verzinkt 1096x112x20 mm (Rinnenabdeckung) [A]",
+   "typ": "MAT",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "MAT-gitterrost-112x1196",
+   "bezeichnung": "Gitterrost verzinkt 1196x112x20 mm (Rinnenabdeckung) [A]",
+   "typ": "MAT",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "MAT-gitterrost-deckel",
+   "bezeichnung": "Begehbarer Gitterrost 30/10 feuerverzinkt 1229 x 1026 x 40 mm (Grubendeckel)",
+   "typ": "MAT",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "bbox_mm=[40, 1026, 1229]",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 6.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -6864,7 +7554,22 @@
    "europa": "ja",
    "konfidenz": "E",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 2.0,
+   "status": "OK"
+  },
+  {
+   "artikel_id": "PMP-luftpumpe-notluft",
+   "bezeichnung": "Notluftpumpe (Membranpumpe, Akku/Netz) [A]",
+   "typ": "PMP",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "bbox_mm=[230, 320, 330]",
+   "einheit": "Stk",
+   "werkstoff": "-",
+   "lebensmittel": "OFFEN",
+   "europa": "ja",
+   "konfidenz": "Q",
+   "ersatz": "",
+   "bedarf": 1.0,
    "status": "OK"
   },
   {
@@ -6879,7 +7584,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {
@@ -6894,6 +7599,21 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OK"
+  },
+  {
+   "artikel_id": "PMP-tauchpumpe-oase-8000",
+   "bezeichnung": "Tauchpumpe (Klasse Oase AquaMax Eco Premium 8000, Typ offen, siehe Beschaffung)",
+   "typ": "PMP",
+   "datei": "u2_wasserkreislauf.json",
+   "masse": "bbox_mm=[165, 280, 340]",
+   "einheit": "Stk",
+   "werkstoff": "-",
+   "lebensmittel": "OFFEN",
+   "europa": "ja",
+   "konfidenz": "Q",
+   "ersatz": "",
    "bedarf": 4.0,
    "status": "OK"
   },
@@ -6901,16 +7621,16 @@
    "artikel_id": "PMP-teichpumpe-5300",
    "bezeichnung": "Teichpumpe 5300 l/h, 60 W, Hmax 2,8 m (Beet-Sumpf, Fabrikat offen) [A]",
    "typ": "PMP",
-   "datei": "-",
+   "datei": "behaelter.json",
    "masse": "-",
    "einheit": "Stk",
    "werkstoff": "-",
    "lebensmittel": "OFFEN",
-   "europa": "-",
-   "konfidenz": "-",
+   "europa": "ja",
+   "konfidenz": "Q",
    "ersatz": "",
    "bedarf": 0.0,
-   "status": "OFFEN (Quelle)"
+   "status": "OK"
   },
   {
    "artikel_id": "PRF-alu-haut-profil",
@@ -6968,9 +7688,24 @@
    "lebensmittel": "OFFEN",
    "europa": "ja",
    "konfidenz": "Q",
-   "ersatz": "",
+   "ersatz": "ERSATZ",
    "bedarf": 147.924,
    "status": "OK"
+  },
+  {
+   "artikel_id": "PRF-st-rr20x40x2.5",
+   "bezeichnung": "Rechteckrohr 20x40x2.5 mm, Stahl verzinkt",
+   "typ": "PRF",
+   "datei": "u8_unify.json",
+   "masse": "querschnitt_mm=[20, 40], norm_hinweis=Wand aus Modellmasse gerechnet [E]",
+   "einheit": "m",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 10.84,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "PRF-st-rr25x25x2",
@@ -7044,7 +7779,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "ERSATZ",
-   "bedarf": 158.408,
+   "bedarf": 161.888,
    "status": "OK"
   },
   {
@@ -7059,7 +7794,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 10.672,
+   "bedarf": 40.795,
    "status": "OK"
   },
   {
@@ -7074,8 +7809,68 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 40.436,
+   "bedarf": 29.596,
    "status": "OK"
+  },
+  {
+   "artikel_id": "PRF-st-rr41x41x2",
+   "bezeichnung": "Vierkantrohr 41x41x2 mm, Stahl verzinkt",
+   "typ": "PRF",
+   "datei": "u8_unify.json",
+   "masse": "querschnitt_mm=[41, 41], norm_hinweis=Wand aus Modellmasse gerechnet [E]",
+   "einheit": "m",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 21.79,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "PRF-st-rr42x109x1",
+   "bezeichnung": "Rechteckrohr 42x109x1 mm, Stahl verzinkt",
+   "typ": "PRF",
+   "datei": "-",
+   "masse": "querschnitt_mm=[42, 109], norm_hinweis=Wand aus Modellmasse gerechnet [E]",
+   "einheit": "m",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "PRF-st-rr42x118x1",
+   "bezeichnung": "Rechteckrohr 42x118x1 mm, Stahl verzinkt",
+   "typ": "PRF",
+   "datei": "-",
+   "masse": "querschnitt_mm=[42, 118], norm_hinweis=Wand aus Modellmasse gerechnet [E]",
+   "einheit": "m",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "PRF-st-rr50x50x3",
+   "bezeichnung": "Vierkantrohr 50x50x3 mm, Stahl verzinkt",
+   "typ": "PRF",
+   "datei": "u8_unify.json",
+   "masse": "querschnitt_mm=[50, 50], norm_hinweis=Wand aus Modellmasse gerechnet [E]",
+   "einheit": "m",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 5.076,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "PRF-st-rr60x60x3",
@@ -7119,8 +7914,38 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 209.082,
+   "bedarf": 211.446,
    "status": "OK"
+  },
+  {
+   "artikel_id": "PRF-st-voll40x40",
+   "bezeichnung": "Vierkant-/Flachstahl voll 40x40 mm, Stahl verzinkt",
+   "typ": "PRF",
+   "datei": "u8_unify.json",
+   "masse": "querschnitt_mm=[40, 40], norm_hinweis=Vollmaterial [E]",
+   "einheit": "m",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 30.04,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "PRF-st-voll6x100",
+   "bezeichnung": "Vierkant-/Flachstahl voll 6x100 mm, Stahl verzinkt",
+   "typ": "PRF",
+   "datei": "u8_unify.json",
+   "masse": "querschnitt_mm=[6, 100], norm_hinweis=Vollmaterial [E]",
+   "einheit": "m",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 3.2,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "PRF-v2a-voll8x8",
@@ -7134,7 +7959,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 6.768,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {
@@ -7224,7 +8049,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 28.334,
+   "bedarf": 99.9639,
    "status": "OFFEN (E20)"
   },
   {
@@ -7239,7 +8064,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 25.971,
+   "bedarf": 38.133,
    "status": "OFFEN (E20)"
   },
   {
@@ -7254,7 +8079,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 2.487,
+   "bedarf": 1.296,
    "status": "OFFEN (E20)"
   },
   {
@@ -7269,7 +8094,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 12.525,
+   "bedarf": 3.868,
    "status": "OFFEN (E20)"
   },
   {
@@ -7284,7 +8109,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 33.415,
+   "bedarf": 64.185,
    "status": "OFFEN (E20)"
   },
   {
@@ -7299,7 +8124,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 7.778,
+   "bedarf": 30.225,
    "status": "OFFEN (E20)"
   },
   {
@@ -7314,7 +8139,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 8.184,
+   "bedarf": 13.593,
    "status": "OFFEN (E20)"
   },
   {
@@ -7344,7 +8169,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 66.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -7359,7 +8184,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 25.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -7404,7 +8229,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 49.0,
    "status": "OFFEN (E20)"
   },
   {
@@ -7419,7 +8244,52 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 30.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SCH-rohrschelle-d75",
+   "bezeichnung": "Rohrschelle (Klemme, Stahl) d75",
+   "typ": "SCH",
+   "datei": "u8_unify.json",
+   "masse": "groesse=d75",
+   "einheit": "Stk",
+   "werkstoff": "Stahl",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 20.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SCH-rohrschelle-d75_ecke",
+   "bezeichnung": "Rohrschelle (Klemme, Stahl) d75_ecke",
+   "typ": "SCH",
+   "datei": "u8_unify.json",
+   "masse": "groesse=d75_ecke",
+   "einheit": "Stk",
+   "werkstoff": "Stahl",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 7.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SCH-rohrschelle-d75_stelze",
+   "bezeichnung": "Rohrschelle (Klemme, Stahl) d75_stelze",
+   "typ": "SCH",
+   "datei": "u8_unify.json",
+   "masse": "groesse=d75_stelze",
+   "einheit": "Stk",
+   "werkstoff": "Stahl",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 3.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7453,6 +8323,21 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "SCH-schlauch-d50",
+   "bezeichnung": "Schlauch D50 (Meterware)",
+   "typ": "SCH",
+   "datei": "-",
+   "masse": "nennweite=d50",
+   "einheit": "m",
+   "werkstoff": "PVC/PE",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "SCH-schlauch-id16",
    "bezeichnung": "Schlauch ID16 (Meterware)",
    "typ": "SCH",
@@ -7468,6 +8353,21 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "SCH-schlauch-id19",
+   "bezeichnung": "Schlauch ID19 (Meterware, Laenge aus Modellmasse)",
+   "typ": "SCH",
+   "datei": "u8_unify.json",
+   "masse": "nennweite=id19",
+   "einheit": "m",
+   "werkstoff": "PVC/PE",
+   "lebensmittel": "-",
+   "europa": "ja",
+   "konfidenz": "Q-Treffer",
+   "ersatz": "",
+   "bedarf": 861.0796,
+   "status": "OK"
+  },
+  {
    "artikel_id": "SCH-schlauch-id25",
    "bezeichnung": "Schlauch ID25 (Meterware)",
    "typ": "SCH",
@@ -7479,8 +8379,38 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 321.9333,
    "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SCH-schlauch-luft-d12",
+   "bezeichnung": "Luftschlauch d12 (Meterware)",
+   "typ": "SCH",
+   "datei": "u8_unify.json",
+   "masse": "durchmesser_mm=12",
+   "einheit": "m",
+   "werkstoff": "PVC",
+   "lebensmittel": "-",
+   "europa": "ja",
+   "konfidenz": "Q-Treffer",
+   "ersatz": "",
+   "bedarf": 3.88,
+   "status": "OK"
+  },
+  {
+   "artikel_id": "SCH-schlauch-luft-d8",
+   "bezeichnung": "Luftschlauch d8 (Meterware)",
+   "typ": "SCH",
+   "datei": "u8_unify.json",
+   "masse": "durchmesser_mm=8",
+   "einheit": "m",
+   "werkstoff": "PVC",
+   "lebensmittel": "-",
+   "europa": "ja",
+   "konfidenz": "Q-Treffer",
+   "ersatz": "",
+   "bedarf": 2.016,
+   "status": "OK"
   },
   {
    "artikel_id": "SCH-schlauch-rinne-id16",
@@ -7569,7 +8499,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 15.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7584,7 +8514,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 38.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7599,7 +8529,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7629,7 +8559,22 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 10.0,
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-ausstroemer-stab-600",
+   "bezeichnung": "Ausstroemer-Stab PP 16x600 (Beet-Belueftung) [A]",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP weiss",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 14.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7645,6 +8590,36 @@
    "konfidenz": "-",
    "ersatz": "",
    "bedarf": 2.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-bodenrinne-pp-1100",
+   "bezeichnung": "Bodenrinne PP 120x162x1100 (Laufgang-Entwaesserung, Eigenbau/Zuschnitt) [A]",
+   "typ": "SON",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-bodenrinne-pp-1200",
+   "bezeichnung": "Bodenrinne PP 120x162x1200 (Laufgang-Entwaesserung, Eigenbau/Zuschnitt) [A]",
+   "typ": "SON",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7674,7 +8649,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 8.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7809,7 +8784,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 130.0,
+   "bedarf": 0.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7824,7 +8799,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 26.0,
+   "bedarf": 0.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7839,8 +8814,83 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 4.0,
+   "bedarf": 0.0,
    "status": "OK"
+  },
+  {
+   "artikel_id": "SON-laser-lasche-30x34x123",
+   "bezeichnung": "Laserteil Lasche 30x34x123 mm, Stahl (Knoten Schere)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl Laserteil",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 60.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-laser-lasche-30x34x125",
+   "bezeichnung": "Laserteil Lasche 30x34x125 mm, Stahl (Knoten Schere)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl Laserteil",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 60.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-laser-lasche-34x35x122",
+   "bezeichnung": "Laserteil Lasche 34x35x122 mm, Stahl (Knoten Schere)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl Laserteil",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 68.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-laser-lasche-34x36x124",
+   "bezeichnung": "Laserteil Lasche 34x36x124 mm, Stahl (Knoten Schere)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl Laserteil",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 68.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-luftfilter-ansaug",
+   "bezeichnung": "Ansaug-Luftfilter fuer den Venturi (PP) [A]",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP weiss",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 2.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "SON-luftverteiler-4",
@@ -7854,7 +8904,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 1.0,
+   "bedarf": 2.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7870,6 +8920,21 @@
    "konfidenz": "-",
    "ersatz": "",
    "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-permakultur-kompostbox",
+   "bezeichnung": "Kompostbox Fichte 525x600x1500 mit Deckel (Permakultur-Modul, Eigenbau) [A]",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Holz Fichte",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7933,6 +8998,21 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "SON-pp-schwimmerhalter",
+   "bezeichnung": "Schwimmerhalter PP 40x60x80 (Eigenbau)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP grau",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 2.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "SON-pp-stuetze-60x60",
    "bezeichnung": "PP-Stuetze 60x60 (Beetboden, Hoehe je Beet)",
    "typ": "SON",
@@ -7944,7 +9024,37 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 282.0,
+   "bedarf": 274.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-pp-zonenschild",
+   "bezeichnung": "Zonenschild PP 2x40x100 (Beschriftung Pufferzone)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP weiss",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 8.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-ruecklaufrinne-v2a-2000",
+   "bezeichnung": "Ruecklaufrinne Edelstahl 55x103x2000 (Altbestand) [A]",
+   "typ": "SON",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Edelstahl",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -7978,6 +9088,21 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "SON-schlauchhalter-pp",
+   "bezeichnung": "Schlauchhalter PP (Clip) [A]",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "PP",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 27.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "SON-schrankwand-500x800",
    "bezeichnung": "Schrankwand 500x800 (Eigenbau, Werkstoff offen) [A]",
    "typ": "SON",
@@ -7989,7 +9114,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 1.0,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -8019,8 +9144,83 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 8.0,
+   "bedarf": 0.0,
    "status": "OK"
+  },
+  {
+   "artikel_id": "SON-stahlteil-134x192x230",
+   "bezeichnung": "Stahlteil 134x192x230 mm (Eigenbau/Zuschnitt, Stahl verzinkt)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 18.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-stahlteil-20x40x42",
+   "bezeichnung": "Stahlteil 20x40x42 mm (Eigenbau/Zuschnitt, Stahl verzinkt)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 74.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-stahlteil-35x40x40",
+   "bezeichnung": "Stahlteil 35x40x40 mm (Eigenbau/Zuschnitt, Stahl verzinkt)",
+   "typ": "SON",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 3.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-stahlteil-60x416x416",
+   "bezeichnung": "Stahlteil 60x416x416 mm (Eigenbau/Zuschnitt, Stahl verzinkt)",
+   "typ": "SON",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SON-stahlteil-80x118x160",
+   "bezeichnung": "Stahlteil 80x118x160 mm (Eigenbau/Zuschnitt, Stahl verzinkt)",
+   "typ": "SON",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "OFFEN",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "SON-strahlungsschutz-par",
@@ -8143,6 +9343,36 @@
    "status": "OFFEN (Quelle)"
   },
   {
+   "artikel_id": "SRB-gewindestange-m17x110",
+   "bezeichnung": "Gewindestange M17x110, verzinkt",
+   "typ": "SRB",
+   "datei": "-",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 0.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
+   "artikel_id": "SRB-gewindestange-m17x120",
+   "bezeichnung": "Gewindestange M17x120, verzinkt",
+   "typ": "SRB",
+   "datei": "u8_unify.json",
+   "masse": "-",
+   "einheit": "Stk",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 12.0,
+   "status": "OFFEN (Quelle)"
+  },
+  {
    "artikel_id": "SRB-halter-klein-12x10x20",
    "bezeichnung": "Kleinteil am Winkelhalter 12x10x20 (Schraube/Mutter) [A]",
    "typ": "SRB",
@@ -8169,7 +9399,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 130.0,
+   "bedarf": 128.0,
    "status": "OK"
   },
   {
@@ -8244,7 +9474,7 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 16.0,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {
@@ -8279,7 +9509,7 @@
   },
   {
    "artikel_id": "SRB-satz-m8x30",
-   "bezeichnung": "Schraubensatz M8x30 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben)",
+   "bezeichnung": "Schraubensatz M8x30 (Sechskantschraube DIN 933 + Mutter + 2 Scheiben) [A]",
    "typ": "SRB",
    "datei": "stahl.json",
    "masse": "gewinde=M8, laenge_mm=30",
@@ -8289,8 +9519,23 @@
    "europa": "ja",
    "konfidenz": "Q",
    "ersatz": "",
-   "bedarf": 184.0,
+   "bedarf": 312.0,
    "status": "OK"
+  },
+  {
+   "artikel_id": "SRB-satz-m8x65",
+   "bezeichnung": "Schraubensatz M8x65 (Sechskantschraube + Mutter + 2 Scheiben) [A]",
+   "typ": "SRB",
+   "datei": "u8_unify.json",
+   "masse": "gewinde=M8",
+   "einheit": "Satz",
+   "werkstoff": "Stahl verzinkt",
+   "lebensmittel": "-",
+   "europa": "-",
+   "konfidenz": "-",
+   "ersatz": "",
+   "bedarf": 56.0,
+   "status": "OFFEN (Quelle)"
   },
   {
    "artikel_id": "TOP-aktivkohle",
@@ -8304,7 +9549,7 @@
    "europa": "-",
    "konfidenz": "-",
    "ersatz": "",
-   "bedarf": 0.0,
+   "bedarf": 0.042,
    "status": "OFFEN (Quelle)"
   },
   {
@@ -8394,7 +9639,7 @@
    "europa": "ja",
    "konfidenz": "A",
    "ersatz": "",
-   "bedarf": 24.0,
+   "bedarf": 0.0,
    "status": "OK"
   },
   {

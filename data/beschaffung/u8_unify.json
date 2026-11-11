@@ -1,0 +1,660 @@
+{
+ "klasse": "U8",
+ "typen": [
+  "ARM",
+  "BEH",
+  "BLE",
+  "FIT",
+  "GEW",
+  "MAT",
+  "PMP",
+  "PRF",
+  "SCH",
+  "SON",
+  "SRB"
+ ],
+ "stand": "2026-11-11",
+ "hinweis": "U8-Lauf (N-UNIFY-AUTOBAHN, 11.11.2026): Beschaffung der neuen Bauteile des einen Kreislaufs. Recherche mit WebSearch/WebFetch (drei parallele Agenten), nichts gekauft, keine Anmeldung. konfidenz: Q = Seite selbst gelesen, Q-Treffer = Suchtreffer/Auszug (Kandidat). Viele Haendlerseiten sperrten (HTTP 403/429) oder lieferten 404: dann steht der Preis nicht als Wert, sondern nur im Text. Lebensmittel-Nachweis (D85/D76): fuer KEINEN Artikel liegt ein selbst gelesener Herstellernachweis vor; jeder Artikel nennt Fundstelle oder 'offen' mit Rueckfall. Preise, die unplausibel sind oder eine andere Einheit/einen anderen Werkstoff betreffen, sind ohne Wert gefuehrt (Grund in der Bemerkung des Angebots). Angebote zu Artikeln aus anderen Dateien (z. B. Pumpe, Venturi, Behaelter) werden von bom.py mit denen der Ursprungsdatei zusammengefuehrt.",
+ "artikel": {
+  "ARM-durchflussbegrenzer-messing": {
+   "bemerkung_artikel": "Messing-Armatur [A], Handel in Deutschland, kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller nach DVGW/KTW-Nachweis fragen oder PVC-U-Alternative.",
+   "angebote": []
+  },
+  "ARM-entlueftungsventil-messing": {
+   "bemerkung_artikel": "Messing-Armatur [A], Handel in Deutschland, kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller nach DVGW/KTW-Nachweis fragen oder PVC-U-Alternative.",
+   "angebote": []
+  },
+  "ARM-probehahn-messing": {
+   "bemerkung_artikel": "Messing-Armatur [A], Handel in Deutschland, kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller nach DVGW/KTW-Nachweis fragen oder PVC-U-Alternative.",
+   "angebote": []
+  },
+  "BEH-futterzuchtkiste-pe": {
+   "bemerkung_artikel": "Kaufteil/Sonderteil, kein Angebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Handel nach Werkstoff und Konformitaet EU 10/2011 fragen.",
+   "angebote": []
+  },
+  "BLE-blech-st-10": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "BLE-blech-st-4": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "BLE-blech-st-8": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "BLE-laser-lochplatte-110x110x8": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "BLE-pp-platte10-210x1125": {
+   "bemerkung_artikel": "Zuschnitt aus Plattenware PP bzw. Fichte (Kunststoff-/Holzhandel in Deutschland, kein Einzelangebot recherchiert). Preis offen. Lebensmittel (D85): offen; Rueckfall: PP-Platte lebensmittelecht (EU 10/2011) beim Kunststoffhandel anfragen; Holz nur ausserhalb des Wassers.",
+   "angebote": []
+  },
+  "BLE-pp-platte10-360x1125": {
+   "bemerkung_artikel": "Zuschnitt aus Plattenware PP bzw. Fichte (Kunststoff-/Holzhandel in Deutschland, kein Einzelangebot recherchiert). Preis offen. Lebensmittel (D85): offen; Rueckfall: PP-Platte lebensmittelecht (EU 10/2011) beim Kunststoffhandel anfragen; Holz nur ausserhalb des Wassers.",
+   "angebote": []
+  },
+  "BLE-pp-platte30-400x400": {
+   "bemerkung_artikel": "Zuschnitt aus Plattenware PP bzw. Fichte (Kunststoff-/Holzhandel in Deutschland, kein Einzelangebot recherchiert). Preis offen. Lebensmittel (D85): offen; Rueckfall: PP-Platte lebensmittelecht (EU 10/2011) beim Kunststoffhandel anfragen; Holz nur ausserhalb des Wassers.",
+   "angebote": []
+  },
+  "FIT-entlueftung-d32": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-red-d32-d25": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-red-d50-d32": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-red-d50-d40": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-red-d75-d50": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-ring-ecke-d75": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-stutzen-d25": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-stutzen-d50": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-stutzen-d75": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "FIT-uebergangsnippel-d75-d40": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "PRF-st-rr20x40x2.5": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "PRF-st-rr41x41x2": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "PRF-st-rr50x50x3": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "PRF-st-voll40x40": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "PRF-st-voll6x100": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SCH-rohrschelle-d75": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "SCH-rohrschelle-d75_ecke": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "SCH-rohrschelle-d75_stelze": {
+   "bemerkung_artikel": "PVC-U-/Normteil, Standard im deutschen Sanitaer- und Bewaesserungshandel (z. B. Schwarte-Shop, Hornbach); kein Einzelangebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Hersteller-Konformitaet EU 10/2011 bzw. KTW/W270 beim Handel anfordern.",
+   "angebote": []
+  },
+  "SON-laser-lasche-30x34x123": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SON-laser-lasche-30x34x125": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SON-laser-lasche-34x35x122": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SON-laser-lasche-34x36x124": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SON-luftfilter-ansaug": {
+   "bemerkung_artikel": "Kaufteil/Sonderteil, kein Angebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Handel nach Werkstoff und Konformitaet EU 10/2011 fragen.",
+   "angebote": []
+  },
+  "SON-permakultur-kompostbox": {
+   "bemerkung_artikel": "Zuschnitt aus Plattenware PP bzw. Fichte (Kunststoff-/Holzhandel in Deutschland, kein Einzelangebot recherchiert). Preis offen. Lebensmittel (D85): offen; Rueckfall: PP-Platte lebensmittelecht (EU 10/2011) beim Kunststoffhandel anfragen; Holz nur ausserhalb des Wassers.",
+   "angebote": []
+  },
+  "SON-pp-schwimmerhalter": {
+   "bemerkung_artikel": "Zuschnitt aus Plattenware PP bzw. Fichte (Kunststoff-/Holzhandel in Deutschland, kein Einzelangebot recherchiert). Preis offen. Lebensmittel (D85): offen; Rueckfall: PP-Platte lebensmittelecht (EU 10/2011) beim Kunststoffhandel anfragen; Holz nur ausserhalb des Wassers.",
+   "angebote": []
+  },
+  "SON-pp-zonenschild": {
+   "bemerkung_artikel": "Zuschnitt aus Plattenware PP bzw. Fichte (Kunststoff-/Holzhandel in Deutschland, kein Einzelangebot recherchiert). Preis offen. Lebensmittel (D85): offen; Rueckfall: PP-Platte lebensmittelecht (EU 10/2011) beim Kunststoffhandel anfragen; Holz nur ausserhalb des Wassers.",
+   "angebote": []
+  },
+  "SON-schlauchhalter-pp": {
+   "bemerkung_artikel": "Kaufteil/Sonderteil, kein Angebot recherchiert. Preis offen. Lebensmittel (D85): offen; Rueckfall: Handel nach Werkstoff und Konformitaet EU 10/2011 fragen.",
+   "angebote": []
+  },
+  "SON-stahlteil-134x192x230": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SON-stahlteil-20x40x42": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SON-stahlteil-35x40x40": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SRB-gewindestange-m17x120": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SRB-satz-m8x65": {
+   "bemerkung_artikel": "Zuschnitt/Eigenbau aus Rohmaterial (Stahlhandel, Laserschneiden, Schraubenhandel in Deutschland; kein Einzelangebot recherchiert). Preis offen. Rueckfall: Zuschnitt-Anfrage bei einem Stahlhandel oder Laserdienst mit Zeichnung aus dem Modell; Profile nach Preis je Meter der Rechteckrohre in stahl.json. Kein Wasserkontakt: D85 nicht anwendbar.",
+   "angebote": []
+  },
+  "SCH-schlauch-id19": {
+   "bemerkung_artikel": "Kein schwarzer, lebensmittelechter 19-mm-Gewebeschlauch mit Preis gefunden. toom fuehrt transparenten PVC-Gewebeschlauch 19 mm Meterware, lebensmittelecht und phthalatfrei laut Seite (keine Norm genannt, keine Trinkwasser-Zulassung), Preis auf der abgerufenen Seite leer. Transparent ist fuer Algen/Licht ungeeignet, schwarz oder abdecken. Lebensmittel: teilweise (nur Herstellerangabe 'lebensmittelecht'). Rueckfall: Hersteller/Haendler nach Konformitaetserklaerung EU 10/2011 und EU 1935/2004 sowie schwarzer Ausfuehrung fragen; Landefeld-Katalog fuehrt Lebensmittelqualitaet mit schwarzer Innenseele (Q-Treffer, nicht geoeffnet). Rollenpreis 25/50 m nicht ermittelt. Bauhaus-Seite 403.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "m",
+     "stand": "2026-11-11",
+     "haendler": "toom",
+     "land": "DE",
+     "url": "https://toom.de/p/gewebeschlauch-pvc-transparent-19-mm/4200452",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Transparent, Meterware, lebensmittelecht + phthalatfrei laut Seite; Preis nicht lesbar; Paketversand ab 59 EUR frei, Speditionsware extra."
+    },
+    {
+     "preis_eur": 5.99,
+     "bezug_einheit": "m",
+     "stand": "2026-11-11",
+     "haendler": "OBI (obi.at, Fitt Glasklarschlauch 19 mm)",
+     "land": "AT",
+     "url": "https://www.obi.at/p/2573764/fitt-glasklarschlauch-19-mm-transparent",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Preis und 'lebensmittelecht' nur aus Suchtreffer; Seite beim Abruf 404; transparent."
+    }
+   ]
+  },
+  "SCH-schlauch-id25": {
+   "bemerkung_artikel": "Kein schwarzer 25-mm-Gewebeschlauch mit Preis und Nachweis gefunden. Hornbach.at fuehrt 1-Zoll-Schlauch (25,4 mm), 3-lagig, 'trinkwasserecht, lebensmittelecht, phthalatfrei', weiss; Preis auf der Seite mit 38,95 EUR/m angegeben, vermutlich Fehlinterpretation/unplausibel (25 m = 973,75 EUR), vor Kauf pruefen; Lieferung nach DE ungeklaert (AT-Shop). Lebensmittel: Herstellerangabe vorhanden, keine Norm. Rueckfall: Konformitaetserklaerung EU 10/2011 / KTW anfordern; Landefeld-Katalog (Q-Treffer) fuehrt Lebensmittelqualitaet 25 mm mit schwarzer Seele.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "m",
+     "stand": "2026-11-11",
+     "haendler": "Hornbach Oesterreich",
+     "land": "AT",
+     "url": "https://www.hornbach.at/p/trinkwasserschlauch-1-zoll-25-m-weiss/10172885/",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q",
+     "bemerkung": "Weiss, ID 25,4 mm, trinkwasserecht/lebensmittelecht laut Seite; Preis laut Seite pro m, Plausibilitaet zweifelhaft; Anfertigung nach Mass, kein Widerruf. | NICHT UEBERNOMMEN (Preis entfernt): 38,95 EUR/m fuer 1 Zoll Trinkwasserschlauch ist unplausibel (Rollenpreis oder Fehllesung), Seite AT, weiss statt schwarz"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "m",
+     "stand": "2026-11-11",
+     "haendler": "Landefeld (PDF-Katalog Lebensmittelqualitaet)",
+     "land": "DE",
+     "url": "https://landefeld.com/shop/media/atlas9_seiten/390.pdf",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Kandidat, nicht geoeffnet; Preis und Zuordnung offen."
+    }
+   ]
+  },
+  "ARM-schnellkupplung-id19": {
+   "bemerkung_artikel": "Keine Edelstahl-Schnellkupplung fuer 19 mm gefunden; nur Messing. Preis ja, Trinkwasser-Nachweis nein. Lebensmittel: offen; Rueckfall: Hersteller (Boni/Lilie) nach KTW/DVGW bzw. EU 10/2011 fragen oder Edelstahl-Kamlok mit Tuelle 3/4 suchen.",
+   "angebote": [
+    {
+     "preis_eur": 8.5,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Westfalia",
+     "land": "DE",
+     "url": "https://www.westfalia.de/shop/boni-33032-messing-stecksystem-3-4-zoll-schnellkupplung-ohne-wasserstop-3025",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Messing-Schnellkupplung 3/4 Zoll ohne Wasserstopp, Edelstahlkugeln; Versand inklusive; Anzahl im Lieferumfang unklar (wohl einzeln); keine Trinkwasserangabe. Gewinde 3/4, Schlauchtuelle nicht bestaetigt. | Messing, nicht Edelstahl (Soll der Quelle: Edelstahl); Preis je Stk, Dose oder Stecker einzeln moeglich"
+    },
+    {
+     "preis_eur": 8.8,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Reimo",
+     "land": "DE",
+     "url": "https://www.reimo.com/camping-shop/wasser-sanitaer-campingtoilette/wasseranlage-installation/14407/schnellkupplung-3/4-mit-schlauchtuelle",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Lilie 65410, Kupplung mit 19-mm-Schlauchtuelle, 1 Stk, Material und Trinkwasser nicht angegeben; zzgl. Versand, frei ab 50 EUR."
+    }
+   ]
+  },
+  "ARM-schnellkupplung-id25": {
+   "bemerkung_artikel": "Edelstahl vorhanden (Kamlok DN25, AISI 316), Preis nur nach Login; Messing 1 Zoll mit DVGW-Trinkwasserzulassung laut Suchtreffer (nicht verifiziert, Seite 403). Lebensmittel: Edelstahl 316 plausibel, aber kein Nachweis auf der Seite -> offen; Rueckfall: ehorst/Reber nach Konformitaet/Lebensmitteleignung der NBR-Dichtung (EU 1935/2004) fragen.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "ehorst",
+     "land": "DE",
+     "url": "https://www.ehorst.de/en/Schnellkupplung-EN-ISO-14420-7-DN-25-1-PN16-fuer-Klemmschale-Kamlok-Typ-C-Mutterteil-Edelstahl-1174881.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Mutterteil Typ C mit Schlauchtuelle, Edelstahl 316, NBR, PN16; Preis nur nach Login; Gegenstueck (Vaterteil) separat noetig."
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Kaufland.at Marktplatz (tecuro, Messing 1 Zoll)",
+     "land": "AT",
+     "url": "https://www.kaufland.at/product/363415783/",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Messing, DVGW-Zulassung nur laut Suchtreffer; Seite 403, Preis unbekannt."
+    }
+   ]
+  },
+  "SCH-schlauchtuelle-d25": {
+   "bemerkung_artikel": "Kein 90-Grad-Winkel PVC/PP fuer ID19/25 mit Preis geoeffnet. Treffer: TRUDESIGN Winkel-Schlauchverbinder 90 Grad 19 und 25 mm (Nylon/GFK, Seite 301/404 beim Abruf), Airfit Schlauchwinkel PP (Hornbach, ab Schlauch 8-25 mm, Q-Treffer). Lebensmittel: offen; Rueckfall: Hersteller nach EU 10/2011 fragen. | Toplicht-Link lieferte HTTP 404 (Link-Check 11.11.), Angebot entfernt.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Hornbach (Airfit Schlauchwinkel DN 40, PP)",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/airfit-schlauchwinkel-dn-40-fuer-schlauchdurchmesser-25-8mm/10257204/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "PP, Schlauch 8-25 mm; Lueftungsteil, nicht fuer Wasser vorgesehen; Lebensmittel offen."
+    }
+   ]
+  },
+  "FIT-schlauchwinkel-90": {
+   "bemerkung_artikel": "Siehe SCH-schlauchtuelle-d25: Kandidaten TRUDESIGN und Airfit nur als Treffer, kein Preis/Nachweis verifiziert. Alternative: Schlauchwinkel durch Schlauchbiegung ohne Winkel vermeiden (Knickschutz) oder PVC-U-Druckschlauchtuelle plus Klebewinkel d25/d32 verwenden. Lebensmittel: offen.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Toplicht (TRUDESIGN Winkel-Schlauchverbinder 90 Grad 19/25 mm)",
+     "land": "DE",
+     "url": "https://www.toplicht.de/en/pumps-sanitation/thru-hulls-valves-fittings/fittings-hose-nozzles-connectors/fittings-hose-nozzles-connectors-plastic/9450/elbow-hose-connector-trudesign",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Abruf: 301-Redirect, Folgeseite 404; Preis offen."
+    }
+   ]
+  },
+  "FIT-schlauchanschluss-abzweig": {
+   "bemerkung_artikel": "Schwarte-Shop fuehrt PVC-U Klebefitting Druckschlauchtuelle in 25 mm und 32 mm (Klebemuffe + gerippte Tuelle, DIN 8062; KTW-Empfehlung UBA laut Suchtreffer). Exakte Kombination Muffe d32 auf Tuelle ID25 nicht gefunden; Pruefung PDF nicht lesbar, Preis offen. Lebensmittel: KTW-Hinweis nur als Suchtreffer-Zitat, offen; Rueckfall: Haendler nach KTW-Zertifikat/EU 10/2011 fragen; Kombination ggf. Reduzierung d32/d25 + Druckschlauchtuelle d25.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-druckschlauchtuelle-25-mm?pdf=true",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Seite geoeffnet, aber PDF ohne lesbaren Text: nur Titel bestaetigt; Preis, Klebemuffe-d, KTW nicht belegt."
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Schwarte-Shop (Druckschlauchtuelle 32 mm)",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-druckschlauchtuelle-32-mm?pdf=true",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Nicht geoeffnet; Kandidat."
+    }
+   ]
+  },
+  "GEW-sieb-v2a-2mm": {
+   "bemerkung_artikel": "Nur eBay-Suchtreffer (Seite per WebFetch 403 gesperrt). Preise aus Suchausschnitt, ca. 85 bis 90 EUR/m2 bei 2 mm Masche; fuer 25 m2 wirtschaftlich unrealistisch, Rollenware beim Drahtgewebe-Fachhandel (z.B. jaera.de) anfragen. Lebensmittel: offen (V2A 1.4301 ist ueblich unkritisch, aber kein Haendlernachweis gefunden); Rueckfall: V4A 1.4404 oder Herstellererklaerung anfordern.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "eBay-Anbieter (Drahtgewebe-Shop)",
+     "land": "DE",
+     "url": "https://www.ebay.de/itm/232972081498",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "2 mm Masche, 0,9 mm Draht, 100 x 60 cm = ca. 85 EUR/m2; Werkstoff im Treffer nicht bestaetigt; kein Lebensmittel-Nachweis: offen | NICHT UEBERNOMMEN (Preis entfernt): eBay-Treffer: Preis 51 EUR bezieht sich auf ein Stueck unbekannter Groesse, nicht auf m2"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-11",
+     "haendler": "jaera.de (Drahtgewebe Rollenware, Edelstahl 1.4404)",
+     "land": "DE",
+     "url": "https://jaera.de/en/produkt/drahtgewebe-aus-edelstahl-1-4404-rollenware-maschenweite-16-mm-drahtstaerke-1-mm-breite-1000-mm-durchlass-3787/",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Nur Masche 1,6 mm/1 mm Draht gesehen, Preis nicht gelesen; Kandidat fuer Anfrage 2 mm"
+    }
+   ]
+  },
+  "GEW-vlies-pp": {
+   "bemerkung_artikel": "Gelesen: Hornbach-Aquagart-Vlies ist 100 % Polyester (nicht PP), 1,19 EUR/m2 bei 262,5 m2 Rolle. PP-150-g-Kandidat: Kettinger KV Geo 150 (100 % PP, 1 x 25 m) bei baustoffshop.de, Seite 403, Preis nicht gelesen. Lebensmittel: offen, bei keinem Vlies ein EU-1935/2004-Nachweis; Rueckfall: Hersteller schriftlich um Konformitaetserklaerung bitten, oder PES-Vlies (ungiftig, aber nicht PP).",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "baustoffshop.de (Kettinger KV Geo 150 TF GRK3, PP, 1x25 m)",
+     "land": "DE",
+     "url": "https://www.baustoffshop.de/kettinger-filtervlies-kv-geo-150-tf-grk3-1x25-m.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Rolle 25 m2 exakt Bedarf; Preis nicht gelesen (403); Lebensmittel: offen"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-11",
+     "haendler": "Hornbach (Verkaeufer Aquagart)",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/262-5m-gartenvlies-unkrautvlies-drainagevlies-150g-1-5m-breit/12710216/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "150 g/m2, 100 % POLYESTER (nicht PP), 280,26 EUR fuer 262,5 m2, Lieferzeit 4-6 Werktage; nur als Rueckfall; kein Lebensmittel-Nachweis | NICHT UEBERNOMMEN (Preis entfernt): Hornbach-Preis 1,19 EUR/m2 gilt fuer Polyester-Vlies, nicht PP (nur Preisanhalt, Werkstoff weicht ab)"
+    }
+   ]
+  },
+  "BLE-pp-abtropfgitter-beet": {
+   "bemerkung_artikel": "Kein Treffer mit 0,74 x 2,58 m. udobaer.de Bodenrost-Modulsystem (PP/PE-HD, Bauhoehe 25 mm laut Seitenkopf) gelesen, aber Preis und Lebensmittelangabe nicht im abgerufenen Text; Zuschnitt-Hinweis vorhanden. Lebensmittel: offen; Rueckfall: Haendler Udo Baer per Telefon/Mail (0203 28277-420, service@udobaer.de) nach Lebensmittelkonformitaet und Preis fragen. Weitere Treffer: Logiplast Bodenrost 50x50x25 mm (LLDPE, Datenblatt).",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-11",
+     "haendler": "Udo Baer GmbH",
+     "land": "DE",
+     "url": "https://www.udobaer.de/bodenrost-modulsystem-e10083.html",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Seite geoeffnet, nur Gliederung lesbar, Preis nicht entnehmbar; Lebensmittel: offen"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Logiplast (Bodenrost 50x50x25 mm, LLDPE)",
+     "land": "DE",
+     "url": "https://logiplast.imgbolt.de/media/pdf/f3/c8/94/Technisches-Datenblatt-10519_10711_10712_10173_10714_Bodenrost_50_x_50_x_25_mm_blau_grau_rotbraun_weiss_gr-n.pdf",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Datenblatt-Treffer, Material LLDPE statt PP, nicht geoeffnet"
+    }
+   ]
+  },
+  "SON-ausstroemer-stab-600": {
+   "bemerkung_artikel": "Kein 600-mm-Stab mit 16 mm Durchmesser gefunden. Nur Treffer: Oase AquaOxy Belueftungsstab (baustoffshop.de, 403, Preis offen), Air-Aqua Edelstahlbelueftung 400-800 mm (hanako-koi.de, PDF 404), Koi-Company Katalog Staebe 30-100 cm mit 16 mm Anschluss. Lebensmittel: offen; Rueckfall: Edelstahl-V4A-Stab (Air-Aqua) oder Hersteller anfragen.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "baustoffshop.de (Oase AquaOxy Belueftungsstab S)",
+     "land": "DE",
+     "url": "https://www.baustoffshop.de/oase-aquaoxy-bel-fterstab-gr-e-1-s.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Preis und Laenge nicht gelesen (403)"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Koi-Company (Katalog)",
+     "land": "DE",
+     "url": "https://koi-company.de/media/93/6e/f5/1646661556/BedAnl_HiBlow_Kor.pdf",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Staebe 30/50/75/100 cm mit 16 mm Anschluss, keine 60 cm; nicht geoeffnet"
+    }
+   ]
+  },
+  "ARM-bulkhead-d20": {
+   "bemerkung_artikel": "Kein exaktes d20-Tankverbinder-Angebot gelesen. Treffer: VDL Durchfuehrung PVC-U 20/25 mm x 3/4 Zoll (bevo.com, ca. 11,79 EUR netto laut Suchtext; Kategorieseite geoeffnet, ohne Produktdaten) und Schwarte-Shop PVC-U-Klebefittings 20 mm. Lebensmittel: offen; Rueckfall: Trinkwasser-Zulassung (KTW/DVGW) beim Hersteller VDL anfragen.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "bevo.com (VDL Durchfuehrung 20/25 x 3/4 Zoll)",
+     "land": "AT",
+     "url": "https://www.bevo.com/de-at/beregnung/kunststoff-druckrohrleitungssysteme/pvc-druckfittings-vdl",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Preis nur aus Suchtext; Kategorieseite ohne Produktpreis; Preise dort ohne MwSt. | NICHT UEBERNOMMEN (Preis entfernt): Suchtext-Preis 11,79 EUR ist ohne MwSt. und fuer VDL 20/25 mm (Bewaesserung), nicht fuer den Tankverbinder; nicht gelesen"
+    }
+   ]
+  },
+  "FIT-reduktion-d20": {
+   "bemerkung_artikel": "Kein Angebot geoeffnet. Treffer: Schwarte-Shop PVC-U Klebefittings 20 mm (schwarte-shop.de), Voelkner PVC-U Verschraubung 20 mm 4,40 EUR (nicht Reduzierung). Lebensmittel: offen; Rueckfall: Hersteller-Zulassung (KTW) anfragen.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Schwarte-Shop",
+     "land": "DE",
+     "url": "https://www.schwarte-shop.de/pvc-u-klebefitting-wandscheibe-20-mm-x-1-2?pdf=true",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Wandscheibe 20 mm x 1/2 Zoll, keine Reduzierung; nicht geoeffnet"
+    }
+   ]
+  },
+  "SCH-schlauch-luft-d8": {
+   "bemerkung_artikel": "4/6 mm Silikon-Luftschlauch: eBay-Treffer 100-m-Rolle 29 EUR (Seite nicht geoeffnet, ca. 0,29 EUR/m). Silikon ist ueblich fischvertraeglich, aber kein Nachweis gelesen. Lebensmittel: offen; Rueckfall: Silikonschlauch mit Herstellerangabe lebensmittelecht anfragen.",
+   "angebote": [
+    {
+     "preis_eur": 0.29,
+     "bezug_einheit": "m",
+     "stand": "2026-11-11",
+     "haendler": "eBay AquaNova (Silikonschlauch 4/6 mm, 100 m Rolle)",
+     "land": "DE",
+     "url": "https://www.ebay.de/p/1656628645",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "29 EUR je 100-m-Rolle laut Suchtext, kostenloser Versand laut Suchtext; Nachweis offen | Umrechnung: 29 EUR je 100-m-Rolle = 0,29 EUR/m; Schlauch 4/6 mm, nicht d8 aussen (Beet-Luftschlauch 8 mm aussen: Innen 5-6 mm: Naeherung)"
+    }
+   ]
+  },
+  "SCH-schlauch-luft-d12": {
+   "bemerkung_artikel": "JBL Aquarium-Schlauch 9/12 mm Meterware bei OBI laut Suchtext 1,99 EUR/m (Seite per WebFetch 404). Fuer 8/12 mm NatureHolic PVC 8/12 mm bei garnelio.de als Treffer. Hornbach-4/6-PVC-Listing laut Suchtext nicht lebensmittelecht. Lebensmittel: offen; Rueckfall: JBL-Herstellerangabe pruefen.",
+   "angebote": [
+    {
+     "preis_eur": 1.99,
+     "bezug_einheit": "m",
+     "stand": "2026-11-11",
+     "haendler": "OBI (JBL Aquarium-Schlauch grau 9/12 mm Meterware)",
+     "land": "DE",
+     "url": "https://www.obi.de/p/8485427/jbl-aquarium-schlauch-grau-9-12-mm-meterware",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Preis aus Suchtext, Seite 404; 9/12 statt 8/12 mm"
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "m",
+     "stand": "2026-11-11",
+     "haendler": "garnelio.de (NatureHolic Schlauch 8/12 mm)",
+     "land": "DE",
+     "url": "https://www.garnelio.de/en/natureholic-aquarium-hose-8/12mm-1m",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Preis nicht gelesen"
+    }
+   ]
+  },
+  "BEH-schlammbehaelter-350": {
+   "bemerkung_artikel": "Kein 300-400 l Rundfass mit Deckel und Lebensmittelnachweis gefunden. Nur Suchtreffer, keine Seite geoeffnet (OBI-Link 404). Lebensmittel: offen. Rueckfall: Fass mit Zulassung beim Faesserhandel anfragen (faesser.de fuehrt 300 l Behaelter laut Trefferauszug mit Lebensmittelzulassung und 220 l Megatop-Weithalsfass mit Zulassung, beides nicht geoeffnet) oder zwei 220-l-Weithalsfaesser als Ersatz pruefen. Massangaben (900 x 600 mm) nicht bestaetigt.",
+   "angebote": [
+    {
+     "preis_eur": 324.99,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "OBI (Graf Universal-Kunststofffass oval 300 l)",
+     "land": "AT",
+     "url": "https://www.obi.at/p/1104751/graf-universal-kunststofffass-oval-300-l",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Nur Suchtreffer, Abruf ergab 404. Preis aus Suchauszug. Oval, nicht rund; Lebensmittel: offen."
+    }
+   ]
+  },
+  "BEH-regentank-5000": {
+   "bemerkung_artikel": "Kein stehender oberirdischer 5000-l-PE-Tank mit Dom, Durchmesser ca. 1700 mm, Hoehe ca. 2300 mm gefunden. Alle Treffer nur Suchauszuege; OBI-Seiten ergaben 404. KMND 5000 L (OBI): PE, 230 x 230 x 143 cm (also eher flach/quadratisch, passt nicht), Wand 7 mm, als Trinkwasser/Brauchwasser beworben, Hygienezertifikat PZH laut Auszug - unbestaetigt. Weinmann-Schanz CHO-5000: liegend, L 2310 mm, H 1840 mm. Lebensmittel: offen. Rueckfall: Garantia/Graf/Roth direkt nach oberirdischem Rundtank mit Trinkwasserzulassung fragen; Masse ggf. an Tank anpassen.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "OBI (KMND 5000 L Trinkwasser Wassertank)",
+     "land": "DE",
+     "url": "https://www.obi.de/p/2191150003305/kmnd-5000l-f-trinkwasser-wassertank-weiss",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Abruf 404, Preis nicht gelesen. Masse 230x230x143 cm passen nicht zum Sollmass."
+    },
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Weinmann & Schanz (CHO-5000 liegend)",
+     "land": "DE",
+     "url": "https://weinmann-schanz.de/gb/en/Installation/Irrigation-pumps-rainwater-utilisation-and-lifting-systems/Over-floor-tank/Regenwassertank-liegend/Plastic-rainwater-tank-CHO-5000-litres-sid1099521.html",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Nicht geoeffnet, Preis offen; liegend statt stehend."
+    }
+   ]
+  },
+  "PMP-tauchpumpe-oase-8000": {
+   "bemerkung_artikel": "U8 11.11.: Gelesen auf Hornbach-Produktseite (Verkaeufer Neyses Gartenteiche GmbH): Qmax 9000 l/h (150 l/min), Hmax 4,5 m, 60 W, 220-240 V, Druckbereich 0-0,45 bar laut Suchauszug; Anschluesse im Lieferumfang, Groessen nicht genannt; Eintauchtiefe nicht angegeben; Hornbach nennt Betrieb unter Wasser oder trocken. Suchauszug (Oase-Seite, nicht geoeffnet): Leistung 14-60 W, Feststoffe bis 11 mm. Oase-Datenblattseiten lieferten HTTP 429, daher KEINE Kennlinie und kein Foerderstrom bei 1,0-1,2 m gelesen: offen (Rueckfall: Oase-Bedienungsanleitung PDF). Die Hornbach-Massangabe Tiefe 160 cm ist unplausibel, nicht verwenden. Lebensmittel: offen (keine Aussage gelesen; Teichpumpe, Wasserkontakt Fische ueblich).",
+   "angebote": [
+    {
+     "preis_eur": 479.95,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Neyses Gartenteiche GmbH ueber Hornbach",
+     "land": "DE",
+     "url": "https://www.hornbach.de/p/oase-aquamax-eco-premium-9000/12714146/",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Preis inkl. MwSt. zzgl. ggf. Versand; Lieferzeit 2-4 Werktage."
+    }
+   ]
+  },
+  "ARM-venturi-mazzei-1583": {
+   "bemerkung_artikel": "Mazzei 1583A-PVDF (1,5 Zoll MNPT, Gas/Fluessigkeit-Injektor) nur bei US-Anbieter im Suchauszug (261,04 USD), kein europaeischer Haendler gefunden, keine Seite geoeffnet. Antriebsdruck und Ansaugluftmenge laut Datenblatt: offen (nicht gelesen). Venturi-Belueftungsset fuer Koi nur als eBay-Treffer (ca. 17,61 EUR), Eignung unklar. Rueckfall: Mazzei Europe-Vertrieb bzw. Datenblatt direkt anfragen; Niederdruck-Teichventuri bei Teichfachhaendlern anfragen.",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "eBay.de Verkaeufer bjskoi (Venturi-Belueftungsset Koi)",
+     "land": "DE",
+     "url": "https://www.ebay.de/str/bjskoi",
+     "lieferung_de": "unbekannt",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Nur Verkaeufer-Shop-Treffer, Preis aus Suchauszug, Typ und Druck unbekannt. | NICHT UEBERNOMMEN (Preis entfernt): eBay-Preis 17,61 EUR gilt fuer ein Teich-Venturi anderer Bauart, nicht fuer den Mazzei 1583"
+    }
+   ]
+  },
+  "MAT-gitterrost-deckel": {
+   "bemerkung_artikel": "Kein Rost 1229 x 1026 mm gefunden. Geoeffnet: Thies + Co (Hoya) MEA-Rost 1000 x 400 mm, MW 30/10, Bauhoehe 20 mm (nicht 30-40), feuerverzinkt, begehbar, ohne Zarge; Preis auf der Seite nicht angezeigt (netto, nur nach Anmeldung/Anfrage). Traglast/Belastungsklasse nicht angegeben. Fuer 1229x1026 mm: Sonderanfertigung beim Stahlbau/Gitterrosthaendler anfragen (Bauhoehe 30-40 mm, Fussgaengerlast nachweisen). Lebensmittel: nicht relevant (kein Wasserkontakt).",
+   "angebote": [
+    {
+     "preis_eur": null,
+     "bezug_einheit": "Stk",
+     "stand": "2026-11-11",
+     "haendler": "Thies + Co GmbH, Hoya (MEA Gitterrost 1000x400, H20)",
+     "land": "DE",
+     "url": "https://shop.thies-co.de/Gitterrost-1000x400mm-o.ZMW-30-10-H-20-MEA/3810110039",
+     "lieferung_de": "ja",
+     "konfidenz": "Q",
+     "bemerkung": "Seite gelesen, kein Preis sichtbar; Versand DE frei ab 150 EUR; Kontakt fhhoya@thies-co.de, 04251 / 824 36. Nur Ersatzmass, Hoehe 20 mm."
+    }
+   ]
+  },
+  "MAT-epdm-teichfolie": {
+   "bemerkung_artikel": "Preisspanne 13 bis 15 EUR/m2 fuer EPDM 1,5 mm laut Suchauszuegen; Seiten lieferten HTTP 429 (teichbedarf24, dachfolien.de), daher nur Q-Treffer. Bei 31 m2 etwa 400 bis 465 EUR (nicht verbindlich). Lebensmittel: offen, kein Nachweis (EU 10/2011 / 1935/2004) gelesen; Rueckfall: Hersteller nach Fisch-/Trinkwassereignung und Konformitaetserklaerung fragen.",
+   "angebote": [
+    {
+     "preis_eur": 13.49,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-11",
+     "haendler": "Teichbedarf24 (TeichVision EPDM Pro 1,5 mm)",
+     "land": "DE",
+     "url": "https://teichbedarf24.de/en/products/epdm-teichfolie-teichvision-pro-1-5-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Suchauszug nennt 13,49 und 13,00 EUR/m2 (unklar welcher gilt); Seite 429, nicht gelesen."
+    },
+    {
+     "preis_eur": 13.9,
+     "bezug_einheit": "m2",
+     "stand": "2026-11-11",
+     "haendler": "dachfolien.de (FiFox EPDM Dachfolie Pro 1,5 mm)",
+     "land": "DE",
+     "url": "https://dachfolien.de/en/collections/fifox/products/fifox-epdm-dachfolie-pro-1-5-mm",
+     "lieferung_de": "ja",
+     "konfidenz": "Q-Treffer",
+     "bemerkung": "Dachfolie, ab-Preis; Teich-/Wassereignung ungeprueft; Versand 6,90 EUR laut Auszug."
+    }
+   ]
+  }
+ }
+}

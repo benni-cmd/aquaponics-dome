@@ -4,6 +4,7 @@ import json, math, os, sys
 from geo import build
 import leitungen as LTG   # M10-S2a
 import variante           # Pfade und Parameter des einen Kreislaufs (N-UNIFY-AUTOBAHN U7, D141)
+import sockel_durchfuehrung as SDF   # U9 (D146): Durchfuehrungen der Ruecklauf-Schlaeuche im Fundamentring
 
 P = variante.parameter()   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort); seit U7 (D141) die Soll-Werte der Oasis-Quelle
 
@@ -98,6 +99,7 @@ def erde_fn(sock_z):
             x, y = bed_xy(b); yaw = bed_yaw(b); u, v = BEET_AUSLASS["aussen" if "plants" in b else "innen"]; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
             rect_body(f"T9_Auslass_{k:02d}", round(x + u * c - v * s, 1), round(y + u * s + v * c, 1), sock_z - BEET_AUSLASS_TIEFE - 5, yaw, 160, 160, BEET_AUSLASS_TIEFE + 6, op="cut", targets=["T13_Erde"])
     doc = LTG.laden_variante()   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
+    for c in SDF.schnitte(sock_z)[1]: rect_body(*c, op="cut", targets=["T13_Erde"])   # U9 (D146): kurzer Graben vor jedem Sumpf-Zulauf (Zulauf 75 unter Gelaende)
     for g in (LTG.graben(doc, sock_z) if doc else []):
         if g[0] == "box": rect_body(g[1], g[2], g[3], g[4], g[5], g[6], g[7], g[8], op="cut", targets=["T13_Erde"])
         else: add("solid.cylinder", diameter=g[5], height=g[6], base=[g[2], g[3], g[4]], operation="cut", targets=["T13_Erde"], name=g[1])
@@ -120,6 +122,7 @@ def ring_fn(sock_z):
     add("solid.extrude", distance=P["ring_h"], operation="new", name="T3_Sockel", body_name="T3_Sockel")
     gx, gy = pol(P["dome_base_d"]/2*math.cos(math.radians(18)) + 150, P["door_edge_az"])
     rect_body("T3_Tuerluecke", round(gx, 1), round(gy, 1), sock_z - 10, P["door_edge_az"] + 90, P["door_w"] + 200, 700, P["ring_h"] + 20, op="cut", targets=["T3_Sockel"])
+    for c in SDF.schnitte(sock_z)[0]: rect_body(*c, op="cut", targets=["T3_Sockel"])   # U9 (D146): Aussparungen fuer die Ruecklauf-Schlaeuche zu den Sumpftanks
 
 def station_pose():
     """D62: Puffer-Station als Technikvorbau AUSSERHALB der Plane rechts neben der Tuer (Flaeche door_edge_az + 36): Front (Y -691,5) zur Kuppel im Abstand `station_out_gap` zur Aussenkante des Fundamentrings. Station-KS: X = -t, Y radial nach aussen. Rueckgabe (x, y, az)."""

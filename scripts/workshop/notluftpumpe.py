@@ -21,6 +21,9 @@ def build(ueber=None):
     x1 = x0 + p["tuelle_l"]
     U.cyl(b, "Rueckschlagventil", p["rv_d"], p["rv_l"], (x1, 0, z), (1, 0, 0), "Ventil blau")
     x2 = x1 + p["rv_l"]
+    if not p.get("schlauch_bis_tank", 1):   # U9 (D148): Pumpe steht am Bauplatz 2,3 m vom Fischtank; die Luftleitung zum Tank ist Weg e77 (scripts/trassen_soll.py), kein Schlauch im Bauteil
+        U.fertig(b, root, "T109", d, "PS / PVC-P / PE")
+        return b
     sd, sx, sz, tx = p["schlauch_d"], p["schleife_x"], p["schleife_z"], p["tank_x"]
     z_stein_u = -1000 + p["stein_ueber_boden"]
     z_stein_o = z_stein_u + p["stein_l"]

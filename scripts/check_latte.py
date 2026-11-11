@@ -9,9 +9,14 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import variante   # Pfade (N-UNIFY-AUTOBAHN U7)
 dome = variante.pfad("modell")
 
-def run_json(args):
+def run_json(args, may_fail=False):
     out = os.path.join(tmp, "o.json")
-    subprocess.run([CLI] + args + ["--json-out", out], capture_output=True, check=False)
+    if os.path.exists(out): os.remove(out)   # U9: sonst liest ein abgestuerzter CLI-Lauf still die Ausgabe des vorigen Aufrufs
+    r = subprocess.run([CLI] + args + ["--json-out", out], capture_output=True, check=False)
+    if not os.path.exists(out):
+        msg = "CLI ohne Ausgabe (Exit %s): %s" % (r.returncode, (r.stderr or b"")[-300:].decode("utf-8", "replace"))
+        if may_fail: print(msg, flush=True); return {}
+        raise SystemExit(msg)
     return json.load(open(out, encoding="utf-8"))
 
 def find(o, key):
@@ -217,6 +222,7 @@ for i, a in enumerate(names):
         if "T13_Erde" in (a, b) and len(cs) > 1 and all(c.startswith(("Tank_", "Pumpe_", "Tisch_")) for c in cs - {"Erdflaeche"}): continue   # Fussplatten/-schrauben stehen im Boden (Werkstatt: bis 24 mm)
         cand.append((a, b))
 HEAVY = ("T3_Sockel", "T13_Erde")
+CHUNK = int(os.environ.get("LATTE_CHUNK", 300))   # Paare je CLI-Aufruf (U9)
 CACHE = os.path.join(ROOT, "scripts", ".latte-cache.json")   # Ergebnisse je Paar, gueltig solange dome.sc und alle verknuepften Komponentendateien unveraendert sind
 sig = str(os.path.getmtime(dome)) + "|" + str(max(os.path.getmtime(os.path.join(ROOT, "designs", "components", f)) for f in os.listdir(os.path.join(ROOT, "designs", "components")) if f.endswith(".sc")))
 cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
@@ -230,15 +236,21 @@ def run_exact(pairs, label):
     print(f"EXAKT {label}: {len(pairs)} Paare, {len(pairs) - len(todo)} aus dem Cache", flush=True)
     for rnd in range(6):
         if not todo: break
-        bodies = sorted({n for pr in todo for n in pr}); sj = os.path.join(tmp, "i.json")
-        json.dump({"commands": [{"command": "inspect.interference", "params": {"bodies": bodies, "budget_s": 600 if rnd < 2 else 1200}}]}, open(sj, "w"))
-        rr = run_json(["run", sj, "--in", dome, "--results"]); ts = {frozenset(pr) for pr in todo}
-        new = [it for it in (find(rr, "interferences") or []) if frozenset((it["a"], it["b"])) in ts]
-        left = {frozenset((u["a"], u["b"])) for u in (find(rr, "unchecked") or []) if u.get("b")}
-        fin = [pr for pr in todo if frozenset(pr) not in left]
-        cache["checked"] += [pk(*pr) for pr in fin]; cache["found"] += new; save_cache(); found += new
-        n_before = len(todo); todo = [pr for pr in todo if frozenset(pr) in left]
-        print(f"EXAKT {label} Runde {rnd + 1}: {len(bodies)} Koerper, noch offen {len(todo)}", flush=True)
+        n_before = len(todo); rest = []; nb = 0
+        # U9: in Bloecken zu CHUNK Paaren (ein Aufruf mit >3000 Koerpern lieferte keine Ausgabe; ein Block, der scheitert, bleibt ungeprueft und kommt in die naechste Runde)
+        for k0 in range(0, len(todo), CHUNK):
+            part = todo[k0:k0 + CHUNK]
+            bodies = sorted({n for pr in part for n in pr}); nb += len(bodies); sj = os.path.join(tmp, "i.json")
+            json.dump({"commands": [{"command": "inspect.interference", "params": {"bodies": bodies, "budget_s": 600 if rnd < 2 else 1200}}]}, open(sj, "w"))
+            rr = run_json(["run", sj, "--in", dome, "--results"], may_fail=True); ts = {frozenset(pr) for pr in part}
+            if not rr: rest += part; continue
+            new = [it for it in (find(rr, "interferences") or []) if frozenset((it["a"], it["b"])) in ts]
+            left = {frozenset((u["a"], u["b"])) for u in (find(rr, "unchecked") or []) if u.get("b")}
+            fin = [pr for pr in part if frozenset(pr) not in left]
+            cache["checked"] += [pk(*pr) for pr in fin]; cache["found"] += new; save_cache(); found += new
+            rest += [pr for pr in part if frozenset(pr) in left]
+        todo = rest
+        print(f"EXAKT {label} Runde {rnd + 1}: {nb} Koerper (Bloecke zu {CHUNK} Paaren), noch offen {len(todo)}", flush=True)
         if len(todo) == n_before and rnd >= 2: break   # kein Fortschritt mehr: Rest bleibt ungeprueft (wird gemeldet)
     return found, todo
 inter, unch = [], []

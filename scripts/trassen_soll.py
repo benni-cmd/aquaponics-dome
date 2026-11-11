@@ -18,6 +18,7 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, "workshop"))
 import trassen_ring as TR
 import autobahn_s as AS
+import sockel_durchfuehrung as SD   # U9 (D146)
 from trassen_ring import add, sub, mul, dot, unit, world, wdir, rd
 
 QUELLE = "trassen_soll"
@@ -25,6 +26,8 @@ FZ = TR.FZ
 MV = TR.MV
 Z_UE = FZ + 2150.0                  # [A] Ueberkopf-Ebene fuer lange Druck- und Luftleitungen (Band UE >= 2100 rel), ueber Ring-Tragwerk (1702 rel) und Tischen
 L_STUB = 150.0                      # [A] gerades Stueck ab Stutzen
+Z_TISCH = FZ + 1337.0 + 80.0        # U9 (D149) [A]: Ebene ueber den Innentischen (Oberkante Rinne 1337 ueber Fussboden, nft_tisch_innen) fuer e71/e72 und e19
+R_IN_TISCH = 1450.0                 # U9 (D149) [A]: Abwurf in den Fischtank innen vor den Innentischen (Innenkante r 1533) und innerhalb des Wassers (r 1940)
 PORTS = json.load(open(os.path.join(ROOT, "data", "becken-ports.json"), encoding="utf-8"))
 LINIE = {1: dict(vortex="Tank_klein:1", bio="Tank_gross:1", pumpe1="Tauchpumpe_Modul:1", pumpe2="Tauchpumpe_Modul:3", venturi="Venturi_Belueffter:1", sump="Sumpftank:1",
                  sludge="Schlamm_Sammelbehaelter:1", geblaese="Luftverteiler_4:1", scheibe="Luft_Scheibenbelueftung:1"),
@@ -93,10 +96,11 @@ def rohre():
                          "dunkelblau", "UE", "Pumpstelle 2 Linie %d: Druckrohr d50 aus dem Sumpf ueber Kopf zum Venturi (Hub 1,00 m, Quelle)" % l, linie=l, anschluss=[o["sump"], o["venturi"]]))
         # e71/e72 Venturi Port B -> Fischtank (unter den Wasserspiegel, Fischtank Wsp 750 rel)
         vb = add(vo, vx, VENTURI_L); fz = FZ + 750 - 250
-        r_in = 1945.0 - 250.0; c = (0.0, 0.0)
+        r_in = R_IN_TISCH; c = (0.0, 0.0)   # U9 (D149): vorher 1695, mitten unter den Innentischen (r 1533 bis 2195)
         u = hz(vx); tt = dot(sub((c[0], c[1], 0), (vb[0], vb[1], 0)), u)
         ziel = add(vb, u, max(150.0, tt - (math.sqrt(max(r_in ** 2 - (dot(sub((c[0], c[1], 0), (vb[0], vb[1], 0)), (-u[1], u[0], 0))) ** 2, 0)))))
-        tr.append(trasse("S%d-e%s" % (l, "71" if l == 1 else "72"), "e71" if l == 1 else "e72", 50, [rd(vb), rd(ziel), rd((ziel[0], ziel[1], fz))],
+        va = add(vb, u, 200.0)                                     # U9 (D149): kurz waagerecht aus dem Venturi, hoch ueber die Innentische, innen hinab
+        tr.append(trasse("S%d-e%s" % (l, "71" if l == 1 else "72"), "e71" if l == 1 else "e72", 50, [rd(vb), rd(va), rd((va[0], va[1], Z_TISCH)), rd((ziel[0], ziel[1], Z_TISCH)), rd((ziel[0], ziel[1], fz))],
                          "dunkelblau", "WH", "Venturi -> Fischtank Linie %d: weiter in Stroemungsrichtung bis in den Fischtank, senkrecht unter den Spiegel (Austritt 250 unter Wsp)" % l,
                          linie=l, anschluss=[o["venturi"], "Zentralpool", "Tisch_innen"]))
         # e81/e82 Notueberlauf Biofilter -> Sumpf (d63, faellt ueber 2 m)
@@ -141,9 +145,9 @@ def rohre():
     ma = MV["Aktivkohle_Station:1"]; pa = world(ma, (900.0, 0.0, 800.0)); da = unit(wdir(ma, (1.0, 0.0, 0.0)))
     tr.append(trasse("S0-e18", "e18", 25, ortho(pa, da, add(nv, nx, -60.0), None, zu=Z_UE + 60, dn=25), "hellblau", "UE",
                       "Frischwasser (Hahn) ueber die Aktivkohle-Station -> Nachspeise-Ventil (d25, zweiter Eingang, D107)", anschluss=["Aktivkohle_Station:1", "Nachspeise_Ventil:1"]))
-    u_f = hz(mul(nv, -1)); e19a = add(nv, u_f, max(150.0, math.hypot(nv[0], nv[1]) - 1800.0))
-    tr.append(trasse("S0-e19", "e19", 25, [rd(nv), rd(e19a), rd((e19a[0], e19a[1], FZ + 900))], "hellblau", "WH",
-                      "Nachspeise-Ventil -> Fischtank (d25, frei auslaufend 150 ueber dem Spiegel)", anschluss=["Nachspeise_Ventil:1", "Zentralpool", "Tisch_innen"]))
+    u_f = hz(mul(nv, -1)); e19v = add(nv, u_f, 150.0); e19a = add(nv, u_f, max(150.0, math.hypot(nv[0], nv[1]) - R_IN_TISCH))   # U9 (D149): Auslauf innen vor den Innentischen
+    tr.append(trasse("S0-e19", "e19", 25, [rd(nv), rd(e19v), rd((e19v[0], e19v[1], Z_TISCH)), rd((e19a[0], e19a[1], Z_TISCH)), rd((e19a[0], e19a[1], FZ + 900))], "hellblau", "WH",
+                      "Nachspeise-Ventil -> Fischtank (d25, ueber die Innentische, frei auslaufend 150 ueber dem Spiegel)", anschluss=["Nachspeise_Ventil:1", "Zentralpool", "Tisch_innen"]))
     # Luft d20: je Geblaese-Verteiler 4 Arme (Biofilter, Sumpf, Becken, Fischtank), ueber Kopf, senkrecht hinab bis kurz ueber den Boden des Ziels
     ziele = {1: [("e86", P(LINIE[1]["bio"], (212.0, 150.0, 300.0))), ("e87", add(P(LINIE[1]["sump"], (0.0, 600.0, 0.0)), (0, 0, 1), -420.0)),
                  ("e88", None), ("e89", None)],
@@ -161,7 +165,7 @@ def rohre():
             tr.append(trasse("S%d-%s" % (l, weg), weg, 20, ortho(arm, (0, 0, 1), ziel, None, zu=Z_UE + 120 + 30 * i, dn=20), "gruen", "UE",
                              "Luft Linie %d Arm %d (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden" % (l, i + 1), linie=l,
                              anschluss=[LINIE[l]["geblaese"], LINIE[l]["bio"], LINIE[l]["sump"], "Zentralpool", "Zweitbecken", "Becken_Dritt:1", "Tisch_innen", "Luft_Scheibenbelueftung"]))
-    mnl = MV["Notluftpumpe:1"]; pn = world(mnl, (0.0, 0.0, 300.0))
+    mnl = MV["Notluftpumpe:1"]; pn = world(mnl, (240.0 + 30.0, 0.0, 120.0))   # U9 (D148): Anschluss am Rueckschlagventil (Port 240, 0, 120 der Komponente), 30 mm Schlauchende
     tr.append(trasse("S0-e77", "e77", 20, ortho(pn, (0, 0, 1), (pn[0] * 0.25, pn[1] * 0.25, FZ - 900.0), None, zu=Z_UE + 260, dn=20), "gruen", "UE",
                       "Notluft (d20): Notluftpumpe -> ueber Kopf (Schleife ueber dem Rand) -> Luftstein im Fischtank (Befund U5: Komponente reicht nicht ins Wasser)",
                       anschluss=["Notluftpumpe:1", "Zentralpool", "Tisch_innen"]))
@@ -192,17 +196,20 @@ def schlauch_weg_rueck(o_pt, o_dir, ziel, ziel_dir, z_ziel):
     R = AS.hose_R(HOSE_ID)
     s0 = add(o_pt, o_dir, R + 30.0)                                  # Anlauf so lang wie ein Bogen (Rb), dann senkrecht
     a0 = math.degrees(math.atan2(s0[1], s0[0])); r0 = math.hypot(s0[0], s0[1]); ak = _kante_az(a0)
-    zq = (ziel[0] - ziel_dir[0] * 400, ziel[1] - ziel_dir[1] * 400)
-    az_z = math.degrees(math.atan2(zq[1], zq[0]))
+    df = SD.fuer(ziel)                              # U9 (D146): Durchfuehrung durch den Fundamentring je Sumpf-Zulauf
+    zq = df["zq"]
     pts = [o_pt, s0, (s0[0], s0[1], Z_BODEN + 8)]
+    # U9 (D146): immer ueber die Fuge (Sektorgrenze ak) zur Wand, nie radial unter den Beeten durch; liegt die Fuge zu nah fuer zwei Boegen, schraeg auf die Fuge
     k = _polar(r0, ak)
-    if math.hypot(k[0] - s0[0], k[1] - s0[1]) > 2 * R + 20: pts.append((k[0], k[1], Z_BODEN + 7))   # zur Fuge, sonst radial auf dem eigenen Azimut
-    else: ak = a0
-    w0 = _polar(R_WAND, ak); pts.append((w0[0], w0[1], Z_BODEN + 6))
-    d = ((az_z - ak + 180) % 360) - 180; n = int(abs(d) // 36); sg = 1 if d > 0 else -1
+    if math.hypot(k[0] - s0[0], k[1] - s0[1]) > 2 * R + 20: pts.append((k[0], k[1], Z_BODEN + 7))   # zur Fuge; liegt sie naeher, direkt zur Gassen-Ecke auf der Fuge
+    # U9 (D146): Schlauchgasse = Zehneck mit Apothem R_WAND, Ecken auf den Zehneck-Ecken (18 + 36 k); vorher lagen die Zwischenpunkte auf den
+    # Flaechenmitten mit dem Eckradius (Apothem 5846) mitten im Fundamentring (5706 bis 5944)
+    w0 = SD.ecke(ak, R_WAND); pts.append((w0[0], w0[1], Z_BODEN + 6))
+    d = ((df["fa"] - ak + 180) % 360) - 180; sg = 1 if d > 0 else -1; n = max(0, int(round((abs(d) - 18) / 36)))
     for i in range(1, n + 1):
-        c = _polar(R_WAND / math.cos(math.radians(18)), ak + sg * (36 * i - 18)); pts.append((c[0], c[1], Z_BODEN + 5))
-    w1 = _polar(R_WAND, az_z); pts.append((w1[0], w1[1], Z_BODEN + 2))
+        c = SD.ecke(ak + sg * 36 * i, R_WAND); pts.append((c[0], c[1], Z_BODEN + 5))
+    w1 = df["innen"]; pts.append((w1[0], w1[1], Z_BODEN + 3))      # vor der Durchfuehrung in der Gasse
+    w2 = df["aussen"]; pts.append((w2[0], w2[1], Z_BODEN + 2))     # radial durch die Aussparung, aussen auf dem Gelaende
     pts.append((zq[0], zq[1], Z_BODEN)); pts.append((ziel[0], ziel[1], z_ziel))
     out = [tuple(pts[0])]
     for j, p in enumerate(pts[1:], 1):

@@ -84,6 +84,11 @@
    "wert": 55,
    "einheit": "",
    "herkunft": "[A] Richtwert Notluft 55 l/min (R55 Tabelle), Quelle laesst Leistung und Luftmenge offen (A24)"
+  },
+  "schlauch_bis_tank": {
+   "wert": 0,
+   "einheit": "-",
+   "herkunft": "[A] U9 (D148): 0 = Luftschlauch und Luftstein nicht im Bauteil; die Pumpe steht am Bauplatz (Lage-Probe U1) 2,3 m vom Fischtank, der eingebaute Schlauch (tank_x 760) endete in der Erde (check_latte U9: Luftschlauch_4 und Luftstein x T13_Erde). Die Luft fuehrt Weg e77 ueber Kopf in den Fischtank"
   }
  },
  "werkstoff": {

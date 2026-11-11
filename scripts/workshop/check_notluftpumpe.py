@@ -9,6 +9,14 @@ import u2_lib as U
 def main():
     c = U.Pruefung("notluftpumpe")
     p = c.p
+    if not p.get("schlauch_bis_tank", 1):   # U9 (D148): nur Pumpe, Tuelle, Rueckschlagventil; Luftleitung zum Tank = Weg e77
+        c.koerper(["Pumpe", "Tuelle", "Rueckschlagventil"])
+        c.eq("Pumpe steht auf Z 0 (Fussboden)", c.unten("Pumpe"), 0, 0.1)
+        c.eq("Tuelle sitzt an der Pumpenseite (x = Gehaeuse-Halblaenge 165)", c.B["Tuelle"]["bbox"]["min"][0], 165, 0.1)
+        c.eq("Rueckschlagventil schliesst an die Tuelle an", c.B["Rueckschlagventil"]["bbox"]["min"][0], c.B["Tuelle"]["bbox"]["max"][0], 0.1)
+        c.port("Luftausgang (Rueckschlagventil, Anschluss e77)", "Rueckschlagventil", (165 + p["tuelle_l"] + p["rv_l"], 0, p["tuelle_z"]), (1, 0, 0))
+        c.interferenz()
+        return c.fertig()
     c.koerper(["Pumpe", "Tuelle", "Rueckschlagventil", "Luftschlauch_1", "Luftschlauch_2", "Luftschlauch_3", "Luftschlauch_4", "Luftstein"])
     soll = json.load(open(os.path.join(sc.ROOT, "data", "oasis-soll.json"), encoding="utf-8"))
     f = next(x for x in soll["bauteile"] if x["id"] == "fish")["hoehen"]

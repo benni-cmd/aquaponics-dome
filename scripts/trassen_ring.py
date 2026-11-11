@@ -377,6 +377,7 @@ PORT = {"Tisch_innen": ((-449.0, 256.0, 1306.0), "t"), "Tisch_mitte": ((-823.0, 
         "Beet_innen_933": ((-973.0, -298.0, 395.0), "b"), "Beet_aussen_800": ((-1360.0, -326.0, 435.0), "b")}   # U6: gemessen an viewer/detail/nft_tisch_*.json (Verteiler-Mitte, U3: +230/-120/+30) und ibc_beet_*.json (Tropfrohr, U3b: Rand - 25)
 LINIE1_SEKT = (0, 36, 72, 108); LINIE2_SEKT = (144, 180, -144, -108); INNEN_EXTRA = {1: -36, 2: -72}   # wie scripts/n_autobahn_rechnung.py (Blatt 1.5)
 Y_CLIP = [v for k, v in TW["teile"].items() if k.startswith("ausleger_schlauch_")][0]["ports"][1]["lage"][1]   # 42,5 seitlich der Armachse (gleich fuer alle Laengen)
+FALL_VERSATZ_BEET_AUSSEN = -175.0   # U9 (D147): Regelhahn der Aussenbeet-Zulaeufe (Clip-Seite -Y_CLIP) 175 mm gegen die Auslegerrichtung, also nach aussen neben Rinne 4 (Tisch-y 547); vorher fiel der Schlauch mitten durch Rinne 4 des Aussentischs (Tisch-y 307 bis 437, Fall bei 372; check_latte U9: 7 x Schlauch/Regelhahn x Rinne)
 T_HALB = T75 + 5.0                                                       # T-Laenge/2 + Luft
 def _sekt(a): a = round(a); a = (a + 180) % 360 - 180; return 180 if a == -180 else a
 
@@ -494,6 +495,7 @@ def schlauch_weg(a, winkel=None):
         P1 = add(A0, d, x1)
         fall = world(au["m"], (au["lg"] + AT.AU["biege_r"], a["y_clip"], 0.0))       # Fall-Linie am Endbuegel (WA-T Port 'Fall')
         D = (fall[0], fall[1]); lam = a["lam"]
+        if a["art"] == "beet" and a["zone"] == "aussen" and a["y_clip"] < 0: D = (fall[0] + d[0] * FALL_VERSATZ_BEET_AUSSEN, fall[1] + d[1] * FALL_VERSATZ_BEET_AUSSEN)   # U9 (D147): schraeg vom Endbuegel neben die Rinne
         def _s1(quer):
             """quer False: seitlicher Versatz als 45-Grad-Diagonale (braucht |lam| entlang des Arms); quer True (W88, kurze Innen-Ausleger):
             Versatz rechtwinklig mit zwei 90-Grad-Boegen (braucht nur 2 x Rb entlang des Arms)."""

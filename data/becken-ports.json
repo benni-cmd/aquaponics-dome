@@ -1,0 +1,169 @@
+{
+ "_hinweis": "erzeugt von scripts/gen_dome.py (ring_b2, U4); Weltkoordinaten in mm, Z absolut (Fussboden Z 400); nicht von Hand aendern",
+ "ueberlaeufe": [
+  {
+   "name": "T6_Ueberlauf",
+   "von": "nursery",
+   "nach": "fish",
+   "weg": "e70",
+   "dn": "d63",
+   "port_mm": [
+    2088.6,
+    -2595.6,
+    1228.5
+   ],
+   "richtung": [
+    -0.6269,
+    0.7791,
+    0.0
+   ]
+  },
+  {
+   "name": "T14k_Ueberlauf",
+   "von": "feed",
+   "nach": "nursery",
+   "weg": "e63",
+   "dn": "d63",
+   "port_mm": [
+    853.2,
+    -3905.2,
+    1278.5
+   ],
+   "richtung": [
+    0.9765,
+    0.2156,
+    0.0
+   ]
+  }
+ ],
+ "sumpf_zulaeufe": [
+  {
+   "name": "sump_1_zulauf_1",
+   "dn_innen": 25,
+   "port_mm": [
+    4828.0,
+    -6390.3,
+    325
+   ],
+   "richtung": [
+    0.9986,
+    0.0523,
+    0.0
+   ]
+  },
+  {
+   "name": "sump_1_zulauf_2",
+   "dn_innen": 25,
+   "port_mm": [
+    4807.0,
+    -5990.8,
+    325
+   ],
+   "richtung": [
+    0.9986,
+    0.0523,
+    0.0
+   ]
+  },
+  {
+   "name": "sump_1_zulauf_3",
+   "dn_innen": 25,
+   "port_mm": [
+    4786.1,
+    -5591.4,
+    325
+   ],
+   "richtung": [
+    0.9986,
+    0.0523,
+    0.0
+   ]
+  },
+  {
+   "name": "sump_2_zulauf_1",
+   "dn_innen": 25,
+   "port_mm": [
+    -1879.8,
+    -6038.5,
+    325
+   ],
+   "richtung": [
+    -0.8387,
+    -0.5446,
+    0.0
+   ]
+  },
+  {
+   "name": "sump_2_zulauf_2",
+   "dn_innen": 25,
+   "port_mm": [
+    -1662.0,
+    -6374.0,
+    325
+   ],
+   "richtung": [
+    -0.8387,
+    -0.5446,
+    0.0
+   ]
+  },
+  {
+   "name": "sump_2_zulauf_3",
+   "dn_innen": 25,
+   "port_mm": [
+    -1444.1,
+    -6709.5,
+    325
+   ],
+   "richtung": [
+    -0.8387,
+    -0.5446,
+    0.0
+   ]
+  }
+ ],
+ "sumpf_einbauten": [
+  {
+   "name": "sump_1",
+   "grube_mitte_mm": [
+    5434.0,
+    -5257.0,
+    400
+   ],
+   "yaw_grad": 3.0,
+   "pumpensockel_mm": [
+    5670.4,
+    -5945.6,
+    -70
+   ],
+   "schwimmerhalter_mm": [
+    5989.0,
+    -5672.5,
+    320
+   ],
+   "wasserspiegel_z": 150,
+   "hochstand_z": 290
+  },
+  {
+   "name": "sump_2",
+   "grube_mitte_mm": [
+    -1838.0,
+    -7323.0,
+    400
+   ],
+   "yaw_grad": 213.0,
+   "pumpensockel_mm": [
+    -2387.0,
+    -6844.9,
+    -70
+   ],
+   "schwimmerhalter_mm": [
+    -2526.4,
+    -7240.7,
+    320
+   ],
+   "wasserspiegel_z": 150,
+   "hochstand_z": 290
+  }
+ ]
+}

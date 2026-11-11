@@ -6,7 +6,7 @@ import leitungen as LTG   # M10-S2a
 import variante           # N-VARIANTEN V1b: Kreislauf-Variante (Schalter --variante, Umgebung KREISLAUF_VARIANTE, Standard params.json)
 V = variante.aktiv()      # a_plus (Standard, Pfade wie bisher) | ring_b2
 
-P = {k: v["value"] for k, v in json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "params.json"))).items()}   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort)
+P = variante.parameter(V)   # Zahlen stehen einmal in data/params.json (Herkunft, Reife dort); U4/D119: Eintraege mit `varianten`/`varianten_werte` je Variante (a_plus = Werte vor U3, ring_b2 = Soll der Oasis-Quelle)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 cmds = []
@@ -83,14 +83,24 @@ def place_struts(segs):
     for key in ("A", "B"):
         place_matrix(f"Strebe_{key}", os.path.join(ROOT, "designs", "components", f"strebe_{key.lower()}.sc"), moves[key])
 
+ERDE_SEITE = 19000 if V == "ring_b2" else 15000   # U4 (D123): Sumpf-Gruben im Vorbau reichen bis y -9032; die Erdflaeche waechst nur in ring_b2 (A+ bleibt 15000)
+
 def erde_fn(sock_z):
-    add("solid.box", length=15000, width=15000, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
-    for nm, src, wall, depth in (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]), ("Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"]), ("Dritt", POOL3, 60, P["pool3_depth"])):
+    add("solid.box", length=ERDE_SEITE, width=ERDE_SEITE, height=2600, center=[0, 0, sock_z - 1300], operation="new", name="T13_Erde", body_name="T13_Erde")
+    # U4 (D93, D118): ring_b2 sperrt nur den Fischtank in den Boden; Anzucht- und Lebendfutterbecken stehen auf dem Boden (keine Aussparung), Beete auf dem Flur (keine Taschen)
+    for nm, src, wall, depth in ((("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]),) if V == "ring_b2" else (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]), ("Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"]), ("Dritt", POOL3, 60, P["pool3_depth"]))):
         x, y, d_out, z_bot, total = pool_dims(sock_z, src, wall, depth, nm)
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
-    for k, b in enumerate(LAYOUT["ibc_beds"], 1):
+    if V == "ring_b2":   # U4 (D105): Sumpf-Gruben (Wanne aussen 1329 x 3179, Boden -602 unter dem Fussboden, Deckel buendig), Spiel +20 wie bei den Becken
+        for k, (x, y, yaw, long_az) in enumerate(sumpf_orte(), 1):
+            rect_body(f"T101_Grube_{k:02d}", x, y, sock_z - SUMPF_WANNE_TIEFE - 5, long_az, SUMPF_WANNE_L + 20, SUMPF_WANNE_B + 20, SUMPF_WANNE_TIEFE + 6, op="cut", targets=["T13_Erde"])
+    for k, b in enumerate([] if V == "ring_b2" else LAYOUT["ibc_beds"], 1):
         x, y = bed_xy(b); ln, wd = bed_dims(k, b)
         rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, bed_yaw(b), ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
+    if V == "ring_b2":   # U4 (D122): die Wannen stehen auf dem Flur; nur die Auslass-Armaturen (Reduktion bis -80) reichen unter den Flur: kleine Tasche 160 x 160 x 85 je Beet statt der Wannengrube
+        for k, b in enumerate(LAYOUT["ibc_beds"], 1):
+            x, y = bed_xy(b); yaw = bed_yaw(b); u, v = BEET_AUSLASS["aussen" if "plants" in b else "innen"]; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
+            rect_body(f"T9_Auslass_{k:02d}", round(x + u * c - v * s, 1), round(y + u * s + v * c, 1), sock_z - BEET_AUSLASS_TIEFE - 5, yaw, 160, 160, BEET_AUSLASS_TIEFE + 6, op="cut", targets=["T13_Erde"])
     for k, (x, y, yaw) in enumerate(feinfilter_orte(), 1):   # M10-S1: Feinfilter-Gruben (Boden = Standflaeche), Drehung wie der Filter
         rect_body(f"T55_Grube_{k:02d}", x, y, sock_z + P["ff_z"], yaw, P["ff_grube_l"], P["ff_grube_w"], -P["ff_z"] + 1, op="cut", targets=["T13_Erde"])
     doc = LTG.laden_variante(V)   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
@@ -143,22 +153,23 @@ def messstellen(fz):
     items = {}   # Dateiname (ohne .sc) -> [(x, y, z, yaw)]
     add_i = lambda f, x, y, z, yaw=0.0: items.setdefault(f, []).append((round(x, 1), round(y, 1), round(z, 1), round(yaw, 1)))
     rim_z = fz + P["pool_rim"]; wat_z = fz + LAYOUT["pool2"]["water_z"]
-    def tauch(c, inner, wall, phi, sonden, extra=()):   # H_TAUCH am Beckenrand, c Beckenmitte, phi Richtung der Rohrlage von der Mitte (X zeigt ueber den Rand nach aussen)
+    rim2, rim3, wat3 = fz + P.get("pool2_rim", P["pool_rim"]), fz + P.get("pool3_rim", P["pool_rim"]), fz + POOL3["water_z"]   # U4: Becken mit eigenem Rand und Spiegel (ring_b2); A+: gleiche Werte wie bisher
+    def tauch(c, inner, wall, phi, sonden, extra=(), rim_z=rim_z):   # H_TAUCH am Beckenrand, c Beckenmitte, phi Richtung der Rohrlage von der Mitte (X zeigt ueber den Rand nach aussen)
         r = inner + wall / 2 - 126.0; x, y = c[0] + r * math.cos(math.radians(phi)), c[1] + r * math.sin(math.radians(phi)); z0 = rim_z - 640.0
         add_i("halter_tauch", x, y, z0, phi)
         for k, sn in enumerate(list(sonden) + list(extra)): add_i("sonde_" + sn, x + (k % 2) * 8 - 4, y + (k // 2) * 8 - 4, z0 + 30.0)
-    def beruhig(c, inner, phi, sonden):   # H_BERUHIG im Wasser an der Beckenwand, Unterkante 300 mm unter dem Spiegel, +X zur Wand
+    def beruhig(c, inner, phi, sonden, wat_z=wat_z):   # H_BERUHIG im Wasser an der Beckenwand, Unterkante 300 mm unter dem Spiegel, +X zur Wand
         r = inner - 60.0; x, y = c[0] + r * math.cos(math.radians(phi)), c[1] + r * math.sin(math.radians(phi)); z0 = wat_z - 300.0
         add_i("halter_beruhig", x, y, z0, phi)
         for k, sn in enumerate(sonden): add_i("sonde_" + sn, x, y, z0 + 150.0 + 300.0 * k)
     pi, pw = LAYOUT["pool"]["d"] / 2, P["wall"]
     tauch((0, 0), pi, pw, 160.0, ["do_ind", "temp_ds", "level_druck", "ph"])            # MS01, MS02, MS04, MS05 (MS02/04/05 ohne eigenen Halter -> im Rohr von MS01)
     beruhig((0, 0), pi, 100.0, ["level_float", "level_float"])                              # MS03
-    c2 = (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"])))
-    tauch(c2, LAYOUT["pool2"]["d"] / 2, 60.0, math.degrees(math.atan2(-c2[1], -c2[0])), ["do_mini"])   # MS07 (zur Kuppelmitte)
-    c3 = (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))); f3 = math.degrees(math.atan2(-c3[1], -c3[0]))
-    tauch(c3, P["pool3_d"] / 2, 60.0, f3, ["do_mini", "ph"])                                  # MS08, MS09
-    beruhig(c3, P["pool3_d"] / 2, f3 + 60.0, ["level_float"])                                  # MS10
+    c2 = pool_dims(fz, LAYOUT["pool2"], 60, P["pool2_depth"], "Zweit")[:2] if V == "ring_b2" else (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"])))   # U4: ring_b2 am Bauplatz
+    tauch(c2, LAYOUT["pool2"]["d"] / 2, 60.0, math.degrees(math.atan2(-c2[1], -c2[0])), ["do_mini"], rim_z=rim2)   # MS07 (zur Kuppelmitte)
+    c3 = pool_dims(fz, POOL3, 60, P["pool3_depth"], "Dritt")[:2] if V == "ring_b2" else (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))); f3 = math.degrees(math.atan2(-c3[1], -c3[0]))
+    tauch(c3, P["pool3_d"] / 2, 60.0, f3, ["do_mini", "ph"], rim_z=rim3)                                  # MS08, MS09
+    beruhig(c3, P["pool3_d"] / 2, f3 + 60.0, ["level_float"], wat_z=wat3)                                  # MS10
     px, py, pyaw, X, Y = puffer_pose()
     pw_ = lambda lx, ly: (px + lx * X[0] + ly * Y[0], py + lx * X[1] + ly * Y[1])
     for sn, (lx, ly) in zip(("ph", "ec", "temp_ds", "do_mini"), ((-230, 115), (-120, 115), (-230, 225), (-120, 225))):   # MS46: 4 Sondenstutzen im Messzellendeckel (Ports T82)
@@ -283,7 +294,32 @@ def t1_t3_t4(sock_z):
     return n, dropped
 
 LAYOUT = json.load(open(__import__("os").path.join(__import__("os").path.dirname(__file__), "..", "data", "layout.json")))
+BAUPLATZ = {}   # Soll-ID -> Bauplatz (x_mm, y_mm, drehung_grad, ...) aus data/oasis-lage.json (U1, D99); nur ring_b2
+if V == "ring_b2":
+    # U4 (D93, D119): Becken- und Beethoehen der Quelle aus dem Block `ring_b2` in data/layout.json (A+ liest ihn nicht); Lage der Becken = Bauplatz aus data/oasis-lage.json
+    _rb = LAYOUT["ring_b2"]
+    POOL2_D_ALT = LAYOUT["pool2"]["d"]   # tank_offsets rechnet weiter mit dem alten Zweitbecken-Hindernis: die Altbestand-Tanks (Technik, U5) bleiben in U4 genau, wo sie waren
+    for _k in ("pool", "pool2"): LAYOUT[_k].update(_rb[_k])   # d, water_z
+    for _b in LAYOUT["ibc_beds"]: _b["z0"] = _rb["ibc_beds_z0"]; _b["height"] = _rb["ibc_beds_hoehe"]["aussen" if "plants" in _b else "innen"]
+    BAUPLATZ = {b["id"]: b["bauplatz"] for b in json.load(open(os.path.join(ROOT, "data", "oasis-lage.json"), encoding="utf-8"))["bauteile"] if b.get("bauplatz")}
+POOL2_D_ALT = locals().get("POOL2_D_ALT", LAYOUT["pool2"]["d"])
 ROT = P["door_az"] - 167   # Layout-Drehung (docs/components.md)
+
+BEET_AUSLASS = {"aussen": (1040.0, 0.0), "innen": (650.0, 65.0)}   # Siphon/Auslass im Beetrahmen (u laengs, v quer; Ursprung Mitte Wannenunterseite): scripts/workshop/ibc_beet.py shaft_cell, gemessen an Reduktion/Standrohr in viewer/detail/ibc_beet_*.json (aussen_800 x 1040 / y 0, innen_933 x 650 / y 65)
+BEET_AUSLASS_TIEFE = 80    # Reduktion reicht bis -80 unter den Flur (viewer/detail/ibc_beet_aussen_800.json: Z -80)
+SUMPF_WANNE_L, SUMPF_WANNE_B, SUMPF_WANNE_TIEFE = 3179, 1329, 602   # Sumpftank aussen (data/components/sumpftank.json: pit 2975 x 1125 + 2 x (Folie 2 + Wand 100); Boden -(500 + 2 + 100))
+
+def sumpf_orte():
+    """U4 (D105, D109, D123): Sumpftank 1 und 2 am Bauplatz aus data/oasis-lage.json; Rueckgabe [(x, y, yaw_komponente, azimut_langachse)].
+    Komponente: Langachse = lokales Y (Pufferzonen am +Y-Ende), Zulauefe an der -X-Wand. Die Lage-Probe legt die Langachse fest (drehung_grad, +-180 gleichwertig);
+    gewaehlt wird die Drehung, bei der die -X-Wand (Zulauf-Seite) naeher zur Kuppelmitte zeigt (Schlaeuche kommen aus der Kuppel)."""
+    out = []
+    for sid in ("sump_1", "sump_2"):
+        bp = BAUPLATZ[sid]; x, y, L = bp["x_mm"], bp["y_mm"], bp["drehung_grad"]
+        ziel = math.degrees(math.atan2(-y, -x)); diff = lambda a: abs((a - ziel + 180) % 360 - 180)
+        yaw = min((L - 90.0, L + 90.0), key=lambda yw: diff(yw + 180.0))   # -X zeigt in Richtung yaw + 180
+        out.append((x, y, yaw % 360.0, L))
+    return out
 DOOR_OBJ_AZ = 149.2   # D36: Tuer im Basisfeld BBB; im Modell door_edge_az = DOOR_OBJ_AZ + ROT (-72 = 149,2 - 221,2)
 
 def LXY(cx, cy):
@@ -294,7 +330,9 @@ POOL3 = None   # nach params(): {"d", "water_z"} wie Zweitbecken, Durchmesser au
 
 def pool_dims(fz, src, wall, depth, nm):
     x, y = LXY(src["cx"], src["cy"])
-    if nm.startswith("Zweit"): x, y = P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))   # D62: Zweitbecken von der Tuerachse (Gang Tuer -> Zentralpool frei), Modellrahmen
+    if V == "ring_b2" and nm.startswith("Zweit"): x, y = BAUPLATZ["nursery"]["x_mm"], BAUPLATZ["nursery"]["y_mm"]
+    elif V == "ring_b2" and nm.startswith("Dritt"): x, y = BAUPLATZ["feed"]["x_mm"], BAUPLATZ["feed"]["y_mm"]
+    elif nm.startswith("Zweit"): x, y = P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))   # D62: Zweitbecken von der Tuerachse (Gang Tuer -> Zentralpool frei), Modellrahmen
     elif nm.startswith("Dritt"): x, y = P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))   # D48: Sektor neben der Tuer, Mittelring frei
     else: x, y = 0.0, 0.0   # D35: Zentralpool auf der Kuppelachse (alle Ringe konzentrisch; OBJ-Abweichung 41 mm)
     d_out = src["d"] + 2*wall; z_bot = fz + src["water_z"] - depth
@@ -343,8 +381,44 @@ def pool_fn(fz, nm, src, wall, depth, tn):
     wn = tn.split("_")[0] + "_Wasser"
     add("solid.cylinder", diameter=src["d"] - 10, height=fz + src["water_z"] - (z_bot + POOL_BODEN), base=[x, y, z_bot + POOL_BODEN], operation="new", name=wn, body_name=wn)
 
+def pools_ring_b2(fz):
+    """U4 (D93, D118, D120): 04_Wasserbecken nach der Quelle. Fischtank (T5, Wsp 750, Rand 1200, Innenboden -1000) und Anzuchtbecken (T6, Wsp 800, Rand 1000, auf dem Boden) sind in Weltlage gebaute
+    Komponenten von U3 (Lage aus data/oasis-lage.json im Bauskript scripts/workshop/becken_soll.py) und werden im Ursprung eingefuegt; das Lebendfutterbecken (T14k, Wsp 850, Rand 1000, auf dem Boden)
+    steht am Bauplatz feed, Drehung 0 (die Ueberlauf-Tuelle ist im Weltazimut zum Anzuchtbecken gebaut). Ports der Tuellen: data/becken-ports.json."""
+    act("04_Wasserbecken")
+    comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc").replace("\\", "/")
+    add("component.insert_design", path=comp("pool_zentral"), name="Pool")
+    add("component.insert_design", path=comp("zweitbecken"), name="Zweitbecken")
+    f = BAUPLATZ["feed"]
+    place_instances("Becken_Dritt", comp("becken_dritt_klein"), [(round(f["x_mm"], 1), round(f["y_mm"], 1), fz, 0.0)], "04_Wasserbecken")
+
+def sumpftanks(fz):
+    """U4 (D105): zwei Sumpftanks (T101) im Boden, Komponentenursprung = Grubenmitte, Z 0 = Fussboden; Gruben in erde_fn."""
+    items = [(round(x, 1), round(y, 1), fz, round(yaw, 3)) for x, y, yaw, _ in sumpf_orte()]
+    place_instances("Sumpftank", os.path.join(ROOT, "designs", "components", "sumpftank.sc"), items, "04_Wasserbecken")
+
+def becken_ports(fz):
+    """U4 (Aufgabe 3): Ports fuer U6 in Weltkoordinaten (Z absolut): Ueberlauf-Tuellen d63 der Beckenkette (e63 Lebendfutter -> Anzucht, e70 Anzucht -> Fischtank), Zulauf-Tuellen ID25 (3 je Sumpf, Schlauch aus den Fallleitungen),
+    Pumpensockel und Schwimmerhalter im Sumpf (U5). Quelle der Lagen: Komponenten-Parameter (data/components/*.json), Bauplaetze (data/oasis-lage.json), Placement (sumpf_orte)."""
+    sys.path.insert(0, os.path.join(ROOT, "scripts", "workshop"))
+    import becken_soll as BS, sc
+    out = {"_hinweis": "erzeugt von scripts/gen_dome.py (ring_b2, U4); Weltkoordinaten in mm, Z absolut (Fussboden Z %g); nicht von Hand aendern" % fz, "ueberlaeufe": [], "sumpf_zulaeufe": [], "sumpf_einbauten": []}
+    for klasse, sid, ziel, nm in (("zweitbecken", "nursery", "fish", "T6_Ueberlauf"), ("becken_dritt_klein", "feed", "nursery", "T14k_Ueberlauf")):
+        p, _ = sc.load_params(klasse); az = BS.ue_azimut(sid, ziel); u = (math.cos(math.radians(az)), math.sin(math.radians(az))); bp = BAUPLATZ[sid]
+        r = p["wasser_d"] / 2.0 + p["ring"] + p["stutzen_len"]; z = fz + P["pool2_wsp" if sid == "nursery" else "pool3_wsp"] + p["ue_id"] / 2.0
+        out["ueberlaeufe"].append({"name": nm, "von": sid, "nach": ziel, "weg": "e70" if sid == "nursery" else "e63", "dn": "d%d" % p["ue_dn"], "port_mm": [round(bp["x_mm"] + r * u[0], 1), round(bp["y_mm"] + r * u[1], 1), round(z, 1)], "richtung": [round(u[0], 4), round(u[1], 4), 0.0]})
+    sp, _ = sc.load_params("sumpftank"); w, lt, wt = sp["pit_w"], sp["liner_t"], sp["wall_t"]
+    for k, (x, y, yaw, _) in enumerate(sumpf_orte(), 1):
+        c, s_ = math.cos(math.radians(yaw)), math.sin(math.radians(yaw)); W = lambda lx, ly, lz: [round(x + lx * c - ly * s_, 1), round(y + lx * s_ + ly * c, 1), round(fz + lz, 1)]
+        for i, yt in enumerate((-1100, -700, -300), 1):
+            out["sumpf_zulaeufe"].append({"name": "sump_%d_zulauf_%d" % (k, i), "dn_innen": sp["tuelle_id"], "port_mm": W(-(w / 2 + lt + wt), yt, sp["tuelle_z"]), "richtung": [round(c, 4), round(s_, 4), 0.0]})
+        out["sumpf_einbauten"].append({"name": "sump_%d" % k, "grube_mitte_mm": W(0, 0, 0), "yaw_grad": round(yaw, 3), "pumpensockel_mm": W(sp["sockel_x"], sp["sockel_y"], -sp["pit_d"] + sp["sockel_h"]), "schwimmerhalter_mm": W(w / 2 - 30, sp["halter_y"], sp["halter_z"]), "wasserspiegel_z": round(fz + sp["wsp"], 1), "hochstand_z": round(fz + sp["hochstand"], 1)})
+    json.dump(out, open(os.path.join(ROOT, "data", "becken-ports.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    print("becken-ports:", len(out["ueberlaeufe"]), "Ueberlaeufe,", len(out["sumpf_zulaeufe"]), "Sumpf-Zulaeufe")
+
 def pools(fz):
     """04_Wasserbecken: Zentralpool (T5) und Zweitbecken (T6) als Komponenten; eingelassen, Rand Z 650, Wasserspiegel Z 515."""
+    if V == "ring_b2": return pools_ring_b2(fz)
     component_file("pool_zentral", "Pool", "04_Wasserbecken", lambda: pool_fn(fz, "Pool", LAYOUT["pool"], P["wall"], P["pool_depth"], "T5_Zentraltank"))
     component_file("zweitbecken", "Zweitbecken", "04_Wasserbecken", lambda: pool_fn(fz, "Zweitbecken", LAYOUT["pool2"], 60, P["pool2_depth"], "T6_Zweitbecken"))
     x3, y3, _, zb3, _ = pool_dims(fz, POOL3, 60, P["pool3_depth"], "Dritt")
@@ -371,7 +445,7 @@ def tank_offsets():
     rc = lambda i: rect_corners(pl[i]["cx"] + off[i][0], pl[i]["cy"] + off[i][1], pl[i]["length"], pl[i]["width"], pl[i]["yaw"])
     portal = lambda k, b: (rect_corners(*bed_obj(b)[:2], bed_dims(k, b)[0], bed_dims(k, b)[1] + 230, bed_obj(b)[2]), bed_obj(b)[:2], P["tank_walk_clear"])   # Portal = Beet + 115 je Seite, D62: >= 500 mm Gang
     obstacles = lambda i: [(rc(j), (pl[j]["cx"] + off[j][0], pl[j]["cy"] + off[j][1]), P["tank_clear"]) for j in range(len(T)) if j != i and pl[j]["length"] >= pl[i]["length"] and not (pl[j]["length"] == pl[i]["length"] and j < i)] + [portal(k, b) for k, b in enumerate(LAYOUT["ibc_beds"], 1)]
-    p2 = rot(P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"])), -math.radians(ROT)); p2h = LAYOUT["pool2"]["d"] / 2 + 60
+    p2 = rot(P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"])), -math.radians(ROT)); p2h = POOL2_D_ALT / 2 + 60
     def pool2_obst(i):   # D42: Zweitbecken als Quadrat (Seite = Aussendurchmesser) mit einer Seite zum Tank gedreht = beruehrt den Kreis nur in Tankrichtung
         yaw = math.degrees(math.atan2(pl[i]["cy"] + off[i][1] - p2[1], pl[i]["cx"] + off[i][0] - p2[0])); return (rect_corners(p2[0], p2[1], 2 * p2h, 2 * p2h, yaw), p2, P["tank_walk_clear"])
     p0h = LAYOUT["pool"]["d"] / 2 + P["wall"]
@@ -466,7 +540,7 @@ NFT_APC["mitte"] += P["ring_shift_mid"]; NFT_APC["aussen"] += P["ring_shift_out"
 NFT_POTS = []                                                # Rinnen-Topfpositionen (x, y, z Topfboden), von nft() gefuellt, von pots() gesetzt
 
 def nft(fz):
-    tp = json.load(open(os.path.join(ROOT, "data", "nft_pots.json")))["typen"]
+    tp = json.load(open(os.path.join(ROOT, "data", "nft_pots.json" if V == "a_plus" else "nft_pots-%s.json" % V)))["typen"]   # U4: ring_b2 = Topfhoehen der Tische von U3 (Rinnenunterkante 1030/880/1230), extract_nft_pots.py --variante ring_b2
     for typ, sectors in SECTORS.items():
         items = []
         for i in sectors:
@@ -484,6 +558,7 @@ def bed_pot_grid(l=None, w=None):
     nu, nv = int((l - 2*P["pot_margin"]) // P["pot_pitch"]) + 1, int((w - 2*P["pot_margin"]) // P["pot_pitch"]) + 1
     return [((i - (nu - 1)/2) * P["pot_pitch"], (j - (nv - 1)/2) * P["pot_pitch"]) for i in range(nu) for j in range(nv)]
 
+BED_MEDIA_DEPTH = json.load(open(os.path.join(ROOT, "data", "components", "ibc_beet.json"), encoding="utf-8"))["parameter"]["media_depth"]["wert"]
 BED_RIM_GAP = json.load(open(os.path.join(ROOT, "data", "components", "ibc_beet.json"), encoding="utf-8"))["parameter"]["rim_gap"]["wert"]   # Medienoberkante = Wannenhoehe - rim_gap (75)
 def pots(fz, with_heads):
     pots_, heads = [], []
@@ -492,7 +567,7 @@ def pots(fz, with_heads):
         cx, cy = bed_xy(b); yaw = bed_yaw(b); c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
         for u, v in grid:
             x, y = round(cx + u*c - v*s, 1), round(cy + u*s + v*c, 1)
-            zb = round(fz + b["z0"] + b["height"] - BED_RIM_GAP, 1)   # D79: Topf steht auf der Medienoberkante DIESES Beets (aussen 800, innen 765 bis 801 abs.); NFT-Toepfe unveraendert
+            zb = round(fz + b["z0"] + b["height"] - BED_RIM_GAP, 1) if V == "a_plus" else round(fz + P["beet_boden"] + BED_MEDIA_DEPTH, 1)   # U4/D122: ring_b2 Medienoberflaeche = Beetboden 70 + media_depth 300 = 370 ueber dem Flur   # D79: Topf steht auf der Medienoberkante DIESES Beets (aussen 800, innen 765 bis 801 abs.); NFT-Toepfe unveraendert
             pots_.append((x, y, zb, 0)); heads.append((x, y, zb + 63, 0))
     for x, y, zb in NFT_POTS: pots_.append((x, y, zb, 0)); heads.append((x, y, round(zb + 63, 1), 0))   # Rinnen-Toepfe (D33: 586, Lochabstand 200)
     place_instances("Netztopf", os.path.join(ROOT, "designs", "components", "netztopf.sc"), pots_, "10_Pflanzen")
@@ -546,12 +621,12 @@ def t10_t11(fz):
 
 if __name__ == "__main__":
     stage = int(sys.argv[1]); out = sys.argv[2]
-    params(); POOL3 = {"cx": 0, "cy": 0, "d": P["pool3_d"], "water_z": LAYOUT["pool2"]["water_z"]}
+    params(); POOL3 = {"cx": 0, "cy": 0, "d": P["pool3_d"], "water_z": LAYOUT["ring_b2"]["pool3"]["water_z"] if V == "ring_b2" else LAYOUT["pool2"]["water_z"]}
     add("component.rename", component=0, name="Kuppel_Aquaponik")
     for nm in ASSEMBLIES: add("component.create", name=nm, activate=False)
     t1_t3_t4(P["sock_h"]) if False else None
     n, dropped = t1_t3_t4(P["sock_h"])
-    if stage >= 2: pools(P["sock_h"]); tanks(P["sock_h"])
+    if stage >= 2: pools(P["sock_h"]); (sumpftanks(P["sock_h"]), becken_ports(P["sock_h"])) if V == "ring_b2" else None; tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
     if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); (verteiler_a_plus() if V == "a_plus" else ring_b2(P["sock_h"])); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])

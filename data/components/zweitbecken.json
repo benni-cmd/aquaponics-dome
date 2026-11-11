@@ -6,9 +6,9 @@
  "quelle_masse": "data/oasis-soll.json nursery (A13, A26: Ø 2 m, steht auf dem Boden, Wsp 800, Rand 1000); Bauplatz data/oasis-lage.json nursery (U1, D110)",
  "parameter": {
   "wasser_d": {
-   "wert": 2000,
+   "wert": 1400,
    "einheit": "mm",
-   "herkunft": "[Q] data/oasis-soll.json nursery masse_text_mm.durchmesser 2000 (Innendurchmesser, D118) = data/layout.json ring_b2.pool2.d"
+   "herkunft": "[A] L3 (11.11.2026, D157): Volumen der Quelle halten, Grundriss kleiner und tiefer (D156); Wasser-Ø 1400 statt 2000; vorher 2000; [Q] data/oasis-soll.json nursery masse_text_mm.durchmesser 2000 (Innendurchmesser, D118) = data/layout.json ring_b2.pool2.d"
   },
   "ring": {
    "wert": 60,
@@ -26,17 +26,17 @@
    "herkunft": "[Q] data/oasis-soll.json nursery rand_ueber_fussboden_mm 1000 = data/params.json pool2_rim"
   },
   "tiefe": {
-   "wert": 800,
+   "wert": 1776,
    "einheit": "mm",
-   "herkunft": "[E] Wasserspiegel minus Standflaeche = 800 - 0 = data/params.json pool2_depth (varianten_werte ring_b2)"
+   "herkunft": "[A] L3 (11.11.2026, D157): Volumen der Quelle halten, Grundriss kleiner und tiefer (D156); Wassertiefe 1656 mm fuer 2.51 m3 (Quelle Ø 2000 x 0,80 m), Boden 976 unter Flur; vorher 800; [E] Wasserspiegel minus Standflaeche = 800 - 0 = data/params.json pool2_depth (varianten_werte ring_b2)"
   },
   "pos_x": {
-   "wert": 2797,
+   "wert": 2178.8,
    "einheit": "mm",
-   "herkunft": "[Q] data/oasis-lage.json nursery bauplatz x_mm (U1, ANNAHME D110, r 4461,6 / Az -51,2)"
+   "herkunft": "[A] L3 (D157): Bauplatz nursery aus data/oasis-lage.json (scripts/l3_anordnung.py)"
   },
   "pos_y": {
-   "wert": -3476,
+   "wert": -2739.1,
    "einheit": "mm",
    "herkunft": "[Q] data/oasis-lage.json nursery bauplatz y_mm"
   },

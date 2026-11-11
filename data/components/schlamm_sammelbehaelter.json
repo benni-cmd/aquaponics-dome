@@ -6,9 +6,9 @@
  "quelle_masse": "data/oasis-soll.json (sludge_1: Sammelbehaelter 350 l, Ablasshahn von Hand, Stufe 1 nicht festgelegt, Zeichnung Radius 450 mm); docs/research/R61-oasis-wasserkreislauf.md Abschnitt 4 (O5); docs/decisions.md D104",
  "parameter": {
   "aussen_d": {
-   "wert": 900,
+   "wert": 600,
    "einheit": "mm",
-   "herkunft": "[Q] Zeichnung sludge_1: Radius 450 mm (Fussabdruck der Lage-Probe U1); Behaelter Ø 900 aussen"
+   "herkunft": "[A] L3 (11.11.2026, D159): schmal und eingelassen bei gleichem Volumen 350 l (D156: Grundriss kleiner, tiefer erlaubt); Oberkante Deckel wie vorher 600 ueber Flur; vorher aussen_d 900; [Q] Zeichnung sludge_1: Radius 450 mm (Fussabdruck der Lage-Probe U1); Behaelter Ø 900 aussen"
   },
   "wand": {
    "wert": 10,
@@ -16,9 +16,9 @@
    "herkunft": "[A] Wand und Boden PE 10 mm"
   },
   "innen_h": {
-   "wert": 575,
+   "wert": 1325,
    "einheit": "mm",
-   "herkunft": "[E] 350 l = pi x 440^2 x 575 mm (Innen-Ø 880): 349,7 l; Hoehe so gewaehlt, dass der Zulauf unter dem Schlammstutzen des Vortex liegt"
+   "herkunft": "[A] L3 (11.11.2026, D159): schmal und eingelassen bei gleichem Volumen 350 l (D156: Grundriss kleiner, tiefer erlaubt); Oberkante Deckel wie vorher 600 ueber Flur; vorher innen_h 575; [E] 350 l = pi x 440^2 x 575 mm (Innen-Ø 880): 349,7 l; Hoehe so gewaehlt, dass der Zulauf unter dem Schlammstutzen des Vortex liegt"
   },
   "deckel_t": {
    "wert": 15,
@@ -49,6 +49,11 @@
    "wert": 697,
    "einheit": "mm",
    "herkunft": "[E] Vortex-Schlammstutzen: Podest 577 + Kugelhahn des tank_klein bei z 120 (data/parts/tank_klein.json 'kugelhahn z 120 bis 160'); der Behaelter muss tiefer stehen, damit der Schlamm abwaerts laeuft"
+  },
+  "oberkante_ueber_flur": {
+   "wert": 600,
+   "einheit": "mm",
+   "herkunft": "[A] L3 (11.11.2026, D159): schmal und eingelassen bei gleichem Volumen 350 l (D156: Grundriss kleiner, tiefer erlaubt); Oberkante Deckel wie vorher 600 ueber Flur; vorher Behaelter stand auf dem Flur (Oberkante Deckel 600); Einlauf vom Vortex-Schlammstutzen (697) bleibt mit Gefaelle"
   }
  },
  "werkstoff": {

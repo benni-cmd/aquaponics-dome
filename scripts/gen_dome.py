@@ -91,6 +91,13 @@ def erde_fn(sock_z):
     for nm, src, wall, depth in (("Pool", LAYOUT["pool"], P["wall"], P["pool_depth"]),):
         x, y, d_out, z_bot, total = pool_dims(sock_z, src, wall, depth, nm)
         add("solid.cylinder", diameter=d_out + 20, height=total + 10, base=[x, y, z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
+    # L3 (D157): Anzucht- und Lebendfutterbecken stehen tiefer als der Fussboden: Aussparung bis zur Unterkante (Spiel +20 wie beim Fischtank)
+    q2, q3 = _cpar("zweitbecken"), _cpar("becken_dritt_klein")
+    q4 = _cpar("schlamm_sammelbehaelter")
+    for nm, bp, d_out, z_bot in (("Zweit", BAUPLATZ["nursery"], q2["wasser_d"] + 2 * q2["ring"], sock_z + q2["wsp"] - q2["tiefe"]), ("Dritt", BAUPLATZ["feed"], q3["wasser_d"] + 2 * q3["ring"], dritt_z0(sock_z)),
+                                 ("Schlamm_1", BAUPLATZ["sludge_1"], q4["aussen_d"], schlamm_z0(sock_z)), ("Schlamm_2", BAUPLATZ["sludge_2"], q4["aussen_d"], schlamm_z0(sock_z))):   # L3 (D159)
+        if z_bot < sock_z - 1:
+            add("solid.cylinder", diameter=d_out + 20, height=sock_z - z_bot + 10, base=[round(bp["x_mm"], 1), round(bp["y_mm"], 1), z_bot - 5], operation="cut", targets=["T13_Erde"], name=nm + "_Aussparung")
     # U4 (D105): Sumpf-Gruben (Wanne aussen 1329 x 3179, Boden -602 unter dem Fussboden, Deckel buendig), Spiel +20 wie bei den Becken
     for k, (x, y, yaw, long_az) in enumerate(sumpf_orte(), 1):
         rect_body(f"T101_Grube_{k:02d}", x, y, sock_z - SUMPF_WANNE_TIEFE - 5, long_az, SUMPF_WANNE_L + 20, SUMPF_WANNE_B + 20, SUMPF_WANNE_TIEFE + 6, op="cut", targets=["T13_Erde"])
@@ -304,7 +311,8 @@ ROT = P["door_az"] - 167   # Layout-Drehung (docs/components.md)
 BEET_AUSLASS = {"aussen": (1040.0, 0.0), "innen": (650.0, 65.0)}   # Siphon/Auslass im Beetrahmen (u laengs, v quer; Ursprung Mitte Wannenunterseite): scripts/workshop/ibc_beet.py shaft_cell, gemessen an Reduktion/Standrohr in viewer/detail/ibc_beet_*.json (aussen_800 x 1040 / y 0, innen_933 x 650 / y 65)
 BEET_AUSLASS_TASCHE = False   # U6: Beet-Auslass seitlich ueber dem Flur (U3b, D134), keine Taschen mehr
 BEET_AUSLASS_TIEFE = 80    # Reduktion reicht bis -80 unter den Flur (viewer/detail/ibc_beet_aussen_800.json: Z -80)
-SUMPF_WANNE_L, SUMPF_WANNE_B, SUMPF_WANNE_TIEFE = 3179, 1329, 602   # Sumpftank aussen (data/components/sumpftank.json: pit 2975 x 1125 + 2 x (Folie 2 + Wand 100); Boden -(500 + 2 + 100))
+_SP = {k: v["wert"] for k, v in json.load(open(os.path.join(ROOT, "data", "components", "sumpftank.json"), encoding="utf-8"))["parameter"].items()}
+SUMPF_WANNE_L, SUMPF_WANNE_B, SUMPF_WANNE_TIEFE = _SP["pit_l"] + 2 * (_SP["liner_t"] + _SP["wall_t"]), _SP["pit_w"] + 2 * (_SP["liner_t"] + _SP["wall_t"]), _SP["pit_d"] + _SP["liner_t"] + _SP["wall_t"]   # Sumpftank aussen aus data/components/sumpftank.json (L3, D158: 1804 x 1329, Boden -772; vorher fest 3179 x 1329 x 602)
 
 LEITUNGEN_AN = False   # L2 (11.11.2026, Ben: erst Lage, dann Rohre): Leitungen aus U6/U9 (ringleitung, leitungen, Graeben, Ring-Durchfuehrungen D146) liegen auf der alten Lage und sind aus dem Gesamtbau genommen; Code bleibt, Rohre kommen nach Bens Sichtpruefung neu
 SUMPF_SPIEGEL = {"sump_1": False, "sump_2": True}   # L2 (D152): die Quelle zeichnet die Sumpftanks spiegelgleich zur Tuer-Achse (Pumpe und Schwimmer seitenverkehrt); Sumpf 2 = Komponente sumpftank_spiegel (lokal X gespiegelt)
@@ -409,7 +417,15 @@ def pools_oasis(fz):
     add("component.insert_design", path=comp("pool_zentral"), name="Pool")
     add("component.insert_design", path=comp("zweitbecken"), name="Zweitbecken")
     f = BAUPLATZ["feed"]
-    place_instances("Becken_Dritt", comp("becken_dritt_klein"), [(round(f["x_mm"], 1), round(f["y_mm"], 1), fz, 0.0)], "04_Wasserbecken")
+    place_instances("Becken_Dritt", comp("becken_dritt_klein"), [(round(f["x_mm"], 1), round(f["y_mm"], 1), dritt_z0(fz), 0.0)], "04_Wasserbecken")   # L3 (D157): Unterkante unter Flur, Wsp 850 bleibt
+
+def schlamm_z0(fz):
+    """L3 (D159): Unterkante des Schlamm-Sammelbehaelters, Deckel-Oberkante bleibt bei `oberkante_ueber_flur` (Behaelter eingelassen)."""
+    q = _cpar("schlamm_sammelbehaelter"); return fz + q.get("oberkante_ueber_flur", q["wand"] + q["innen_h"] + q["deckel_t"]) - (q["wand"] + q["innen_h"] + q["deckel_t"])
+
+def dritt_z0(fz):
+    """L3 (D157): Unterkante des Lebendfutterbeckens so, dass der Wasserspiegel auf Wsp 850 ueber Flur bleibt (Boden + Wassertiefe aus data/components/becken_dritt_klein.json)."""
+    q = _cpar("becken_dritt_klein"); return fz + LAYOUT["oasis"]["pool3"]["water_z"] - (q["boden"] + q["wasser_tiefe"])
 
 def sumpftanks(fz):
     """U4 (D105): zwei Sumpftanks (T101) im Boden, Komponentenursprung = Grubenmitte, Z 0 = Fussboden; Gruben in erde_fn."""
@@ -431,7 +447,7 @@ def becken_ports(fz):
     for k, (x, y, yaw, _) in enumerate(sumpf_orte(), 1):
         m = sumpf_lx(k)   # L2 (D152): gespiegelte Komponente
         c, s_ = math.cos(math.radians(yaw)), math.sin(math.radians(yaw)); W = lambda lx, ly, lz: [round(x + m * lx * c - ly * s_, 1), round(y + m * lx * s_ + ly * c, 1), round(fz + lz, 1)]
-        for i, yt in enumerate((-1100, -700, -300), 1):
+        for i, yt in enumerate((sp["tuelle_y1"], sp["tuelle_y2"], sp["tuelle_y3"]), 1):   # L3 (D158)
             out["sumpf_zulaeufe"].append({"name": "sump_%d_zulauf_%d" % (k, i), "dn_innen": sp["tuelle_id"], "port_mm": W(-(w / 2 + lt + wt), yt, sp["tuelle_z"]), "richtung": [round(m * c, 4), round(m * s_, 4), 0.0]})
         out["sumpf_einbauten"].append({"name": "sump_%d" % k, "grube_mitte_mm": W(0, 0, 0), "yaw_grad": round(yaw, 3), "gespiegelt": m < 0, "pumpensockel_mm": W(sp["sockel_x"], sp["sockel_y"], -sp["pit_d"] + sp["sockel_h"]), "schwimmerhalter_mm": W(sp["halter_x"], sp["halter_y"], sp["halter_z"]), "wasserspiegel_z": round(fz + sp["wsp"], 1), "hochstand_z": round(fz + sp["hochstand"], 1)})
     json.dump(out, open(os.path.join(ROOT, "data", "becken-ports.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
@@ -523,7 +539,7 @@ def technik_oasis(fz):
     place_instances("Luftverteiler_4", comp("luftverteiler_4"), [(round(x + ab * math.cos(math.radians(w)), 1), round(y + ab * math.sin(math.radians(w)), 1), fz + az, w) for x, y, _, w in bl], "09_Technik")
     place_instances("Notluftpumpe", comp("notluftpumpe"), [pos("luftpumpe") + (fz, yaw("luftpumpe"))], "09_Technik")
     place_instances("Nachspeise_Ventil", comp("nachspeise_ventil"), [pos("nachspeise") + (fz + P["pool_wsp"] + _cpar("nachspeise_ventil")["ventil_h"], aim("nachspeise"))], "09_Technik")
-    place_instances("Schlamm_Sammelbehaelter", comp("schlamm_sammelbehaelter"), [pos(k) + (fz, 0.0) for k in ("sludge_1", "sludge_2")], "09_Technik")
+    place_instances("Schlamm_Sammelbehaelter", comp("schlamm_sammelbehaelter"), [pos(k) + (schlamm_z0(fz), 0.0) for k in ("sludge_1", "sludge_2")], "09_Technik")   # L3 (D159): eingelassen
     place_instances("Regentank_5m3", comp("regentank_5m3"), [pos("rain") + (fz, yaw("rain"))], "09_Technik")
     place_instances("Permakultur_Modul", comp("permakultur_modul"), [pos("permakultur") + (fz, yaw("permakultur"))], "09_Technik")
 

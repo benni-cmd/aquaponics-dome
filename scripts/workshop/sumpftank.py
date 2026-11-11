@@ -57,7 +57,7 @@ def build(ueber=None, spiegel=False):
     U.box(b, "Pumpensockel", (ss, ss, sh), (m * sx, sy, -dp + sh / 2), None, schneiden=["Wasser"])
     # Zulauftuellen ID25 durch die -X-Wand (Bohrung durch Wanne und Folie, Tuelle passt ein)
     x_a = -m * (w / 2 + lt + wt)
-    for i, yt in enumerate((-1100, -700, -300), start=1):
+    for i, yt in enumerate((p["tuelle_y1"], p["tuelle_y2"], p["tuelle_y3"]), start=1):   # L3 (D158): Lage aus den Parametern
         U.cyl(b, f"Zulauf_{i}_Bohrung", p["tuelle_d"], wt + lt + 2, (x_a - m, yt, p["tuelle_z"]), (m, 0, 0), None, schneiden=["Sumpf_Wanne", "Sumpf_Folie"])
         U.cyl(b, f"Zulauf_{i}", p["tuelle_d"], p["tuelle_l"], (x_a, yt, p["tuelle_z"]), (m, 0, 0), "PP grau")
         U.cyl(b, f"Zulauf_{i}_ID", p["tuelle_id"], p["tuelle_l"] + 2, (x_a - m, yt, p["tuelle_z"]), (m, 0, 0), None, schneiden=[f"Zulauf_{i}"])

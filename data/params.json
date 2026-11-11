@@ -252,10 +252,10 @@
   "used_by": "gen_dome.py, check_walkways.py"
  },
  "pool3_d": {
-  "value": 1000,
+  "value": 710,
   "unit": "mm",
   "origin": "A",
-  "source": "D46: Drittbecken Innendurchmesser (Designer-Modell, E; Mass Ben offen)",
+  "source": "L3 (D157): Lebendfutter Wasser-Ø 710 (Volumen der Quelle, tiefer); vorher 1000; D46: Drittbecken Innendurchmesser (Designer-Modell, E; Mass Ben offen)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py, place_m8.py"
@@ -396,28 +396,28 @@
   "used_by": "gen_dome.py"
  },
  "puffer_r": {
-  "value": 2763,
+  "value": 6750,
   "unit": "mm",
   "origin": "A",
-  "source": "D70: Puffer klein Mitte, Radius im Modellrahmen (Abstandssuche, Bedienzone 700 x 650 frei)",
+  "source": "L3 (11.11.2026, D160): Puffer klein (Messzelle, nicht Teil der Quelle, D101) als Anbau aussen vor der Wand, weil er im Technikbereich den Tuer-Gang 900 versperrt und dort kein Platz frei ist (scripts/l3_anordnung.py); vorher 2763; D70: Puffer klein Mitte, Radius im Modellrahmen (Abstandssuche, Bedienzone 700 x 650 frei)",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"
  },
  "puffer_az": {
-  "value": -51,
+  "value": -40,
   "unit": "deg",
   "origin": "A",
-  "source": "D70: Puffer klein Mitte, Azimut im Modellrahmen",
+  "source": "L3 (11.11.2026, D160): Puffer klein (Messzelle, nicht Teil der Quelle, D101) als Anbau aussen vor der Wand, weil er im Technikbereich den Tuer-Gang 900 versperrt und dort kein Platz frei ist (scripts/l3_anordnung.py); vorher -51; D70: Puffer klein Mitte, Azimut im Modellrahmen",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"
  },
  "puffer_front": {
-  "value": -61,
+  "value": 140,
   "unit": "deg",
   "origin": "A",
-  "source": "D70: Richtung, in die die Front (Bedienseite) des Puffers zeigt",
+  "source": "L3 (11.11.2026, D160): Puffer klein (Messzelle, nicht Teil der Quelle, D101) als Anbau aussen vor der Wand, weil er im Technikbereich den Tuer-Gang 900 versperrt und dort kein Platz frei ist (scripts/l3_anordnung.py); vorher -61; D70: Richtung, in die die Front (Bedienseite) des Puffers zeigt",
   "r_id": "",
   "maturity": 0,
   "used_by": "gen_dome.py"

@@ -63,7 +63,8 @@
    "regel": "Flutung von der Tuer (Az -72) ueber Zellen mit Abstand >= 250 mm (= 500 mm Gang), 50-mm-Raster, Knie 0,3 m und Kopf 1,7 m; erreichbar = geflutete Zelle hoechstens 400 mm vom Bauteil"
   },
   "hinweise": [],
-  "l2": "11.11.2026 N-UNIFY-AUTOBAHN L2: Bauplaetze = Soll-Mitten der Quell-Draufsicht (scripts/oasis_lage_l2.py); die U1-Werte stehen je Teil unter u1_bauplatz; D108 bis D110 ueberholt (D152)"
+  "l2": "11.11.2026 N-UNIFY-AUTOBAHN L2: Bauplaetze = Soll-Mitten der Quell-Draufsicht (scripts/oasis_lage_l2.py); die U1-Werte stehen je Teil unter u1_bauplatz; D108 bis D110 ueberholt (D152)",
+  "l3": "11.11.2026 N-UNIFY-AUTOBAHN L3: Technik nach Anordnung der Quelle mit Laufwegen (scripts/l3_anordnung.py, D156, D157); Teile ohne L3-Eintrag behalten den Bauplatz von L2/U1"
  },
  "bauteile": [
   {
@@ -271,13 +272,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1702.9,
    "bauplatz": {
-    "x_mm": 1097.0,
-    "y_mm": -3376.3,
+    "x_mm": 2178.8,
+    "y_mm": -2739.1,
     "drehung_grad": 108.0,
     "z_modell_mm": 400.0,
-    "r_mm": 3550.0,
-    "az_grad": -72.0,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 3500.0,
+    "az_grad": -51.5,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -319,13 +320,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1720.1,
    "bauplatz": {
-    "x_mm": 1637.8,
-    "y_mm": -5040.6,
+    "x_mm": 3041.0,
+    "y_mm": -3823.0,
     "drehung_grad": 108.0,
     "z_modell_mm": 400.0,
-    "r_mm": 5300.0,
-    "az_grad": -72.0,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 4885.0,
+    "az_grad": -51.5,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -364,13 +365,13 @@
    "wirt": "fish",
    "verschiebung_mm": 959.3,
    "bauplatz": {
-    "x_mm": 1915.0,
-    "y_mm": -1848.7,
+    "x_mm": 1651.4,
+    "y_mm": -411.8,
     "drehung_grad": 0.0,
-    "z_modell_mm": 400.0,
-    "r_mm": 2661.8,
-    "az_grad": -44.0,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "z_modell_mm": -600.0,
+    "r_mm": 1702.0,
+    "az_grad": -14.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
@@ -407,13 +408,13 @@
    "wirt": "fish",
    "verschiebung_mm": 959.3,
    "bauplatz": {
-    "x_mm": -462.6,
-    "y_mm": -2621.3,
+    "x_mm": -118.7,
+    "y_mm": -1697.9,
     "drehung_grad": 0.0,
-    "z_modell_mm": 400.0,
-    "r_mm": 2661.8,
-    "az_grad": -100.0,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "z_modell_mm": -600.0,
+    "r_mm": 1702.0,
+    "az_grad": -94.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
@@ -448,13 +449,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1640.0,
    "bauplatz": {
-    "x_mm": 3688.6,
-    "y_mm": -2534.2,
+    "x_mm": 3138.5,
+    "y_mm": -1019.8,
     "drehung_grad": 7.4,
     "z_modell_mm": 977.0,
-    "r_mm": 4475.3,
-    "az_grad": -34.5,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 3300.0,
+    "az_grad": -18.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -495,13 +496,13 @@
    "annahme": "D109",
    "verschiebung_mm": 2625.0,
    "bauplatz": {
-    "x_mm": -1494.6,
-    "y_mm": -4218.3,
+    "x_mm": 0.0,
+    "y_mm": -3300.0,
     "drehung_grad": -151.4,
     "z_modell_mm": 977.0,
-    "r_mm": 4475.3,
-    "az_grad": -109.5,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 3300.0,
+    "az_grad": -90.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -552,13 +553,13 @@
    "annahme": null,
    "verschiebung_mm": 632.4,
    "bauplatz": {
-    "x_mm": 4894.1,
-    "y_mm": -2037.4,
+    "x_mm": 3341.8,
+    "y_mm": 233.7,
     "drehung_grad": 157.4,
     "z_modell_mm": 630.0,
-    "r_mm": 5301.2,
-    "az_grad": -22.6,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 3350.0,
+    "az_grad": 4.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -603,13 +604,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1664.2,
    "bauplatz": {
-    "x_mm": -2761.9,
-    "y_mm": -4524.9,
+    "x_mm": -1254.9,
+    "y_mm": -3106.1,
     "drehung_grad": 73.6,
     "z_modell_mm": 630.0,
-    "r_mm": 5301.2,
-    "az_grad": -121.4,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 3350.0,
+    "az_grad": -112.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -648,13 +649,13 @@
    "annahme": "D109",
    "verschiebung_mm": 1711.8,
    "bauplatz": {
-    "x_mm": 4044.0,
-    "y_mm": -3627.9,
+    "x_mm": 5006.8,
+    "y_mm": -2022.9,
     "drehung_grad": 0.0,
     "z_modell_mm": 400.0,
-    "r_mm": 5432.8,
-    "az_grad": -41.9,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 5400.0,
+    "az_grad": -22.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -703,13 +704,13 @@
    "annahme": "D109",
    "verschiebung_mm": 2702.0,
    "bauplatz": {
-    "x_mm": -1139.2,
-    "y_mm": -5312.0,
+    "x_mm": 376.7,
+    "y_mm": -5386.8,
     "drehung_grad": 0.0,
     "z_modell_mm": 400.0,
-    "r_mm": 5432.8,
-    "az_grad": -102.1,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 5400.0,
+    "az_grad": -86.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -1800,13 +1801,13 @@
    "annahme": "D109",
    "verschiebung_mm": 3301.7,
    "bauplatz": {
-    "x_mm": 2733.7,
-    "y_mm": -3357.1,
-    "drehung_grad": 108.0,
+    "x_mm": 3897.1,
+    "y_mm": -2250.0,
+    "drehung_grad": 120.0,
     "z_modell_mm": -100.0,
-    "r_mm": 4329.3,
-    "az_grad": -50.8,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 4500.0,
+    "az_grad": -30.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -1896,13 +1897,13 @@
    "annahme": null,
    "verschiebung_mm": 205.7,
    "bauplatz": {
-    "x_mm": 2276.4,
-    "y_mm": -2151.9,
+    "x_mm": 2377.2,
+    "y_mm": -592.7,
     "drehung_grad": 0.0,
     "z_modell_mm": 1650.0,
-    "r_mm": 3132.5,
-    "az_grad": -43.4,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 2450.0,
+    "az_grad": -14.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -1943,13 +1944,13 @@
    "annahme": "D109",
    "verschiebung_mm": 3400.1,
    "bauplatz": {
-    "x_mm": -238.4,
-    "y_mm": -4322.7,
-    "drehung_grad": 108.0,
+    "x_mm": 935.6,
+    "y_mm": -4401.7,
+    "drehung_grad": -228.0,
     "z_modell_mm": -100.0,
-    "r_mm": 4329.3,
-    "az_grad": -93.2,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 4500.0,
+    "az_grad": -78.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -2037,13 +2038,13 @@
    "annahme": null,
    "verschiebung_mm": 111.6,
    "bauplatz": {
-    "x_mm": -576.8,
-    "y_mm": -3078.9,
+    "x_mm": -170.9,
+    "y_mm": -2444.0,
     "drehung_grad": 0.0,
     "z_modell_mm": 1650.0,
-    "r_mm": 3132.5,
-    "az_grad": -100.6,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "r_mm": 2450.0,
+    "az_grad": -94.0,
+    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],

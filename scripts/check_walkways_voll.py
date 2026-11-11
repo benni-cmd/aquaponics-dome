@@ -161,8 +161,10 @@ for sl, h in [s_ for s_ in (("knie", 300), ("kopf", 1700)) if s_[0] in os.enviro
     if os.environ.get("WDEBUG"):
         for rr in (2300, 2450, 2600):
             print(sl, "r", rr, [(a, d[int((rr * math.sin(math.radians(a)) + EXT) // CELL)][int((rr * math.cos(math.radians(a)) + EXT) // CELL)], int(ok250[int((rr * math.sin(math.radians(a)) + EXT) // CELL)][int((rr * math.cos(math.radians(a)) + EXT) // CELL)])) for a in range(-90, 270, 18)])
-    for thr in (150, 200, 220):
-        reach = flood(d, thr, seed); print(sl, "Gang >=", 2 * thr, "mm: erreichte Zellen", sum(map(sum, reach)), "Bauteile:", sorted({nm_of(src[j][i]) for j in range(N) for i in range(N) if reach[j][i] and d[j][i] <= thr + 200 and lab[j][i] == -1 and src[j][i] >= 0 and obst[src[j][i]][0].startswith(("Tank", "Pumpe", "Puffer", "Feinfilter", "Dritt", "Zweit", "Zentral"))}))
+    for thr in (150, 200, 220, 450):   # 450: Tuer-Gang 900 mm (L3, D156)
+        reach = flood(d, thr, seed)
+        if thr == 450: print(sl, "Tuer-Gang 900 mm (L3): kleinster erreichter Radius %.0f mm (Fischtank-Rand 2095, Innentisch-Fuesse bis r 2160)" % min((math.hypot(*cell_xy(i, j)) for j in range(N) for i in range(N) if reach[j][i]), default=-1))
+        print(sl, "Gang >=", 2 * thr, "mm: erreichte Zellen", sum(map(sum, reach)), "Bauteile:", sorted({nm_of(src[j][i]) for j in range(N) for i in range(N) if reach[j][i] and d[j][i] <= thr + 200 and lab[j][i] == -1 and src[j][i] >= 0 and obst[src[j][i]][0].startswith(("Tank", "Pumpe", "Puffer", "Feinfilter", "Dritt", "Zweit", "Zentral"))}))
     lines += [f"## Scheibe {sl} ({h / 1000:.1f} m ueber Boden)", ""]
     for col, cells in (("rot", red), ("gelb", yel)):
         rows = []

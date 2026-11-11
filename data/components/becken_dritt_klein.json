@@ -6,14 +6,14 @@
  "quelle_masse": "data/oasis-soll.json feed (A13, A26: Ø 1 m, steht auf dem Boden, Wsp 850, Rand 1000); Bestand: scripts/gen_dome.py pool_fn (Boden 120, Wand 60, Wasserkoerper Ø d-10); Bauplatz data/oasis-lage.json feed (U1, D110)",
  "parameter": {
   "wasser_d": {
-   "wert": 1000,
+   "wert": 710,
    "einheit": "mm",
-   "herkunft": "[Q] data/oasis-soll.json feed masse_text_mm.durchmesser 1000 (Innendurchmesser, D118) = data/params.json pool3_d (varianten_werte ring_b2) || UEBERHOLT (U3, D118): [E] R37 Befund 10 / Auftrag W34: Wasserdurchmesser (Innendurchmesser) 800 mm; ersetzt pool3_d 1030"
+   "herkunft": "[A] L3 (11.11.2026, D157): Volumen der Quelle halten, Grundriss kleiner und tiefer (D156); Wasser-Ø 710 statt 1000; vorher 1000; [Q] data/oasis-soll.json feed masse_text_mm.durchmesser 1000 (Innendurchmesser, D118) = data/params.json pool3_d (varianten_werte ring_b2) || UEBERHOLT (U3, D118): [E] R37 Befund 10 / Auftrag W34: Wasserdurchmesser (Innendurchmesser) 800 mm; ersetzt pool3_d 1030"
   },
   "wasser_tiefe": {
-   "wert": 730,
+   "wert": 1735,
    "einheit": "mm",
-   "herkunft": "[E] Wasserspiegel 850 minus Boden 120 = 730 (data/oasis-soll.json feed wsp 850; steht auf dem Fussboden, Standflaeche 0) || UEBERHOLT (U3, D118): [E] R37 Befund 10 / Auftrag W34: Wassertiefe 800 mm (0,4 m3 = Ø 0,8 x 0,8 m); der Bestand pool3_depth 1130 war die Tiefe einschliesslich des 120-mm-Bodens bis zum Wasserspiegel"
+   "herkunft": "[A] L3 (11.11.2026, D157): Volumen der Quelle halten, Grundriss kleiner und tiefer (D156); Wassertiefe fuer 0.668 m3 (Quelle Ø 1000 x 0,85 m); Unterkante 1005 unter Flur; vorher 730; [E] Wasserspiegel 850 minus Boden 120 = 730 (data/oasis-soll.json feed wsp 850; steht auf dem Fussboden, Standflaeche 0) || UEBERHOLT (U3, D118): [E] R37 Befund 10 / Auftrag W34: Wassertiefe 800 mm (0,4 m3 = Ø 0,8 x 0,8 m); der Bestand pool3_depth 1130 war die Tiefe einschliesslich des 120-mm-Bodens bis zum Wasserspiegel"
   },
   "ring": {
    "wert": 60,

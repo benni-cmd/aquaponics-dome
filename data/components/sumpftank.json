@@ -11,14 +11,14 @@
    "herkunft": "[Q] Quelle A22 / R61 Abschnitt 5: 90 Einheiten x 12,5 mm (Innenmass der Grube, Breite X)"
   },
   "pit_l": {
-   "wert": 2975,
+   "wert": 1600,
    "einheit": "mm",
-   "herkunft": "[Q] Quelle A22 / R61 Abschnitt 5: 238 Einheiten x 12,5 mm (Innenmass, Laenge Y; enthaelt die vier Pufferzonen)"
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher pit_l 2975; [Q] Quelle A22 / R61 Abschnitt 5: 238 Einheiten x 12,5 mm (Innenmass, Laenge Y; enthaelt die vier Pufferzonen)"
   },
   "pit_d": {
-   "wert": 500,
+   "wert": 670,
    "einheit": "mm",
-   "herkunft": "[Q] data/oasis-soll.json sump_1: Boden -500 mm bis Rand 0 (Fussboden)"
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher pit_d 500; [Q] data/oasis-soll.json sump_1: Boden -500 mm bis Rand 0 (Fussboden)"
   },
   "liner_t": {
    "wert": 2,
@@ -41,9 +41,9 @@
    "herkunft": "[A] Deckelbreite = Wanne innen 1129 + 2 x 50 mm Auflage auf der Wannenwand"
   },
   "deckel_seg": {
-   "wert": 1026,
+   "wert": 601,
    "einheit": "mm",
-   "herkunft": "[A] drei Platten je 1026 mm in Y (3 x 1026 = 3078 = Wanne innen 2979 + 2 x 49,5 mm Auflage); je Platte rund 35 kg als Gitterrost, einzeln abhebbar (Designprinzip 8); im Modell Vollplatte (396 kg), Masse im Modell daher zu hoch"
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher deckel_seg 1026; [A] drei Platten je 1026 mm in Y (3 x 1026 = 3078 = Wanne innen 2979 + 2 x 49,5 mm Auflage); je Platte rund 35 kg als Gitterrost, einzeln abhebbar (Designprinzip 8); im Modell Vollplatte (396 kg), Masse im Modell daher zu hoch"
   },
   "zone_l": {
    "wert": 212,
@@ -96,14 +96,14 @@
    "herkunft": "[A] Sockelhoehe"
   },
   "sockel_x": {
-   "wert": -62.5,
+   "wert": -150,
    "einheit": "mm",
-   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher sockel_x 200; [A] Lage Pumpenplatz in der Hauptkammer (x)"
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher sockel_x -62.5; [A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher sockel_x 200; [A] Lage Pumpenplatz in der Hauptkammer (x)"
   },
   "sockel_y": {
-   "wert": 387.5,
+   "wert": -444,
    "einheit": "mm",
-   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher sockel_y -700; [A] Lage Pumpenplatz in der Hauptkammer (y)"
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher sockel_y 387.5; [A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher sockel_y -700; [A] Lage Pumpenplatz in der Hauptkammer (y)"
   },
   "tuelle_d": {
    "wert": 32,
@@ -131,14 +131,29 @@
    "herkunft": "[A] Mitte der Schwimmerhalter-Aufnahme (Z -120 bis -40, unter dem Deckel); sie umfasst den Hochstand -110 und die Kabelklemme des schwimmerschalter_hochstand (Z -75 bis -45)"
   },
   "halter_y": {
-   "wert": -1281.2,
+   "wert": -650,
    "einheit": "mm",
-   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter_y -444; [A] Lage der Aufnahme in der Hauptkammer (Mitte)"
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher halter_y -1281.2; [A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter_y -444; [A] Lage der Aufnahme in der Hauptkammer (Mitte)"
   },
   "halter_x": {
-   "wert": 150.0,
+   "wert": 350,
    "einheit": "mm",
-   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter an der +X-Folie (w/2 - 30 = 532); Halter haengt an der Deckel-Unterseite"
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher halter_x 150.0; [A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter an der +X-Folie (w/2 - 30 = 532); Halter haengt an der Deckel-Unterseite"
+  },
+  "tuelle_y1": {
+   "wert": -650,
+   "einheit": "mm",
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher Zulauf-Tuellen bei y -1100/-700/-300 (Hauptkammer jetzt y -800 bis -88)"
+  },
+  "tuelle_y2": {
+   "wert": -400,
+   "einheit": "mm",
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher Zulauf-Tuellen bei y -1100/-700/-300 (Hauptkammer jetzt y -800 bis -88)"
+  },
+  "tuelle_y3": {
+   "wert": -150,
+   "einheit": "mm",
+   "herkunft": "[A] L3 (11.11.2026, D158): Sumpf kuerzer und tiefer bei gleichem Volumen (D156: Grundriss kleiner, tiefer erlaubt); Grube 1125 x 1600 x 670 = 1,206 m3 (Quelle 1,2 m3); vorher Zulauf-Tuellen bei y -1100/-700/-300 (Hauptkammer jetzt y -800 bis -88)"
   }
  },
  "werkstoff": {

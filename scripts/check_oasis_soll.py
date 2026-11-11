@@ -198,8 +198,12 @@ def wege_pruefung():
     schlauch = {}
     try:
         import trassen_ring as TR
-        for sw, n in TR.schlauch_soll_wege().items():
-            schlauch[sw] = n
+        import trassen_soll as TS
+        for quelle in (TR.schlauch_soll_wege(), TS.schlauch_soll_wege()):
+            for sw, n in quelle.items():
+                schlauch[sw] = schlauch.get(sw, 0) + n
+        hp = sum(TS.hochpunkte(p) for _, w, _, p in TS.schlaeuche())
+        print("  Hochpunkte in Schlauch-Rueckläufen (e33, e34, e49 bis e57): %d" % hp)
     except Exception as ex:                            # ohne Schlauchwege: nur Trassen zaehlen
         print("  Hinweis: Schlauchwege nicht lesbar (%s)" % ex)
     print("Wege der Quelle im Netz und im Modell (%d im Umfang)" % len(wege))

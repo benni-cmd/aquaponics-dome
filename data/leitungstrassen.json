@@ -4659,7 +4659,9 @@
     ]
    ],
    "linie": "frisch",
-   "notiz": "Frischwasser Station -> Zapfhahn vor dem Puffer"
+   "notiz": "Frischwasser Station -> Zapfhahn vor dem Puffer",
+   "soll_bauteil": "puffer_klein",
+   "soll_hinweis": "Messtechnik, begruendet behalten (D101), kein Weg der Quelle"
   },
   {
    "id": "K39",
@@ -4709,7 +4711,11 @@
     ]
    ],
    "linie": "frisch",
-   "notiz": "Frischwasser Hausanschluss (Ende Platzhalter T10_Zulaufrohr, Az -58) -> Aktivkohle-Station Eingang, Graben Z 140"
+   "notiz": "Frischwasser Hausanschluss (Ende Platzhalter T10_Zulaufrohr, Az -58) -> Aktivkohle-Station Eingang, Graben Z 140",
+   "entfaellt_in": [
+    "ring_b2"
+   ],
+   "entfaellt_grund": "U6: Nachspeisung nach der Quelle (S0-e17/e18/e19, D107)"
   },
   {
    "id": "RB1-K63",
@@ -5784,6 +5790,1260 @@
    "quelle": "trassen_ring",
    "band": "WH",
    "soll_bauteil": "ring_2"
+  },
+  {
+   "id": "S1-e21",
+   "kante": "S-e21",
+   "soll_weg": "e21",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     1224.9,
+     -1182.5,
+     -211.0
+    ],
+    [
+     1224.9,
+     -1182.5,
+     2550.0
+    ],
+    [
+     1301.0,
+     -1768.2,
+     2550.0
+    ],
+    [
+     3013.9,
+     -1545.8,
+     2550.0
+    ],
+    [
+     3013.9,
+     -1545.8,
+     1974.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 1,
+   "anschluss": [
+    "Tank_klein:1",
+    "Zentralpool"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Pumpstelle 1 Linie 1: Druckrohr d50 der Tauchpumpe im Fischtank, senkrecht ueber Kopf (Z 2150 rel), in den Vortex-Zulauf (Hub 1,15 m, Quelle)"
+  },
+  {
+   "id": "S1-e23",
+   "kante": "S-e23",
+   "soll_weg": "e23",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     3127.3,
+     -1177.1,
+     2124.0
+    ],
+    [
+     4125.7,
+     -1592.7,
+     2124.0
+    ]
+   ],
+   "band": "WH",
+   "linie": 1,
+   "anschluss": [
+    "Tank_klein:1",
+    "Tank_gross:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Vortex -> Biofilter Linie 1: Auslauf 1724 rel -> Zulauf 1650 rel, Schwerkraft (Quelle e23/e24)"
+  },
+  {
+   "id": "S1-e59",
+   "kante": "S-e59",
+   "soll_weg": "e59",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     5670.4,
+     -5945.6,
+     319.0
+    ],
+    [
+     5670.4,
+     -5945.6,
+     2550.0
+    ],
+    [
+     1917.7,
+     -2759.7,
+     2550.0
+    ],
+    [
+     2476.0,
+     -2102.0,
+     2550.0
+    ],
+    [
+     2476.0,
+     -2102.0,
+     1650.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 1,
+   "anschluss": [
+    "Sumpftank:1",
+    "Venturi_Belueffter:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Pumpstelle 2 Linie 1: Druckrohr d50 aus dem Sumpf ueber Kopf zum Venturi (Hub 1,00 m, Quelle)"
+  },
+  {
+   "id": "S1-e71",
+   "kante": "S-e71",
+   "soll_weg": "e71",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     2270.2,
+     -1927.3,
+     1650.0
+    ],
+    [
+     1292.2,
+     -1097.0,
+     1650.0
+    ],
+    [
+     1292.2,
+     -1097.0,
+     900.0
+    ]
+   ],
+   "band": "WH",
+   "linie": 1,
+   "anschluss": [
+    "Venturi_Belueffter:1",
+    "Zentralpool",
+    "Tisch_innen"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Venturi -> Fischtank Linie 1: weiter in Stroemungsrichtung bis in den Fischtank, senkrecht unter den Spiegel (Austritt 250 unter Wsp)"
+  },
+  {
+   "id": "S1-e81",
+   "kante": "S-e81",
+   "soll_weg": "e81",
+   "dn": 63,
+   "farbe": "grau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     4723.3,
+     -2415.7,
+     2250.0
+    ],
+    [
+     4910.2,
+     -5985.4,
+     2250.0
+    ],
+    [
+     4910.2,
+     -5985.4,
+     460.0
+    ]
+   ],
+   "band": "W",
+   "linie": 1,
+   "anschluss": [
+    "Tank_gross:1",
+    "Sumpftank:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Notueberlauf Biofilter 1 -> Sumpf 1 (d63, Quelle e81/e82): Stutzen 50 ueber dem Ueberlauf, senkrecht auf 60 rel, waagerecht zum Sumpf (Einmuendung ueber dem Deckel)",
+   "gefaelle_pct": null
+  },
+  {
+   "id": "S1-e64",
+   "kante": "S-e64",
+   "soll_weg": "e64",
+   "dn": 50,
+   "farbe": "grau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     2689.0,
+     -1234.0,
+     1057.0
+    ],
+    [
+     4244.0,
+     -1234.0,
+     1057.0
+    ],
+    [
+     4244.0,
+     -5328.0,
+     1057.0
+    ]
+   ],
+   "band": "W",
+   "linie": 1,
+   "anschluss": [
+    "Tank_klein:1",
+    "Schlamm_Sammelbehaelter:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Schlamm Tank_klein -> Sammelbehaelter 1 (d50, Schwerkraft, Kugelhahn von Hand am Stutzen)"
+  },
+  {
+   "id": "S1-e66",
+   "kante": "S-e66",
+   "soll_weg": "e66",
+   "dn": 50,
+   "farbe": "grau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     4294.0,
+     -2237.0,
+     764.0
+    ],
+    [
+     4251.3,
+     -4878.1,
+     764.0
+    ]
+   ],
+   "band": "W",
+   "linie": 1,
+   "anschluss": [
+    "Tank_gross:1",
+    "Schlamm_Sammelbehaelter:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Schlamm Tank_gross -> Sammelbehaelter 1 (d50, Schwerkraft, Kugelhahn von Hand am Stutzen)"
+  },
+  {
+   "id": "S2-e22",
+   "kante": "S-e22",
+   "soll_weg": "e22",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -295.9,
+     -1676.6,
+     -211.0
+    ],
+    [
+     -295.9,
+     -1676.6,
+     2550.0
+    ],
+    [
+     585.6,
+     -3293.4,
+     2550.0
+    ],
+    [
+     -3910.6,
+     -5744.8,
+     2550.0
+    ],
+    [
+     -3910.6,
+     -5744.8,
+     1974.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 2,
+   "anschluss": [
+    "Tank_klein:2",
+    "Zentralpool"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Pumpstelle 1 Linie 2: Druckrohr d50 der Tauchpumpe im Fischtank, senkrecht ueber Kopf (Z 2150 rel), in den Vortex-Zulauf (Hub 1,15 m, Quelle)"
+  },
+  {
+   "id": "S2-e24",
+   "kante": "S-e24",
+   "soll_weg": "e24",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -3883.1,
+     -6129.6,
+     2124.0
+    ],
+    [
+     -1862.4,
+     -6724.3,
+     2124.0
+    ],
+    [
+     -869.3,
+     -3349.9,
+     2124.0
+    ]
+   ],
+   "band": "WH",
+   "linie": 2,
+   "anschluss": [
+    "Tank_klein:2",
+    "Tank_gross_t3:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Vortex -> Biofilter Linie 2: Auslauf 1724 rel -> Zulauf 1650 rel, Schwerkraft (Quelle e23/e24)"
+  },
+  {
+   "id": "S2-e61",
+   "kante": "S-e61",
+   "soll_weg": "e61",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -2387.0,
+     -6844.9,
+     319.0
+    ],
+    [
+     -2387.0,
+     -6844.9,
+     2550.0
+    ],
+    [
+     -1754.4,
+     -2827.8,
+     2550.0
+    ],
+    [
+     -477.0,
+     -3029.0,
+     2550.0
+    ],
+    [
+     -477.0,
+     -3029.0,
+     1650.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 2,
+   "anschluss": [
+    "Sumpftank:2",
+    "Venturi_Belueffter:2"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Pumpstelle 2 Linie 2: Druckrohr d50 aus dem Sumpf ueber Kopf zum Venturi (Hub 1,00 m, Quelle)"
+  },
+  {
+   "id": "S2-e72",
+   "kante": "S-e72",
+   "soll_weg": "e72",
+   "dn": 50,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -435.0,
+     -2762.3,
+     1650.0
+    ],
+    [
+     -263.7,
+     -1674.4,
+     1650.0
+    ],
+    [
+     -263.7,
+     -1674.4,
+     900.0
+    ]
+   ],
+   "band": "WH",
+   "linie": 2,
+   "anschluss": [
+    "Venturi_Belueffter:2",
+    "Zentralpool",
+    "Tisch_innen"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Venturi -> Fischtank Linie 2: weiter in Stroemungsrichtung bis in den Fischtank, senkrecht unter den Spiegel (Austritt 250 unter Wsp)"
+  },
+  {
+   "id": "S2-e82",
+   "kante": "S-e82",
+   "soll_weg": "e82",
+   "dn": 63,
+   "farbe": "grau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -1493.3,
+     -4071.1,
+     2250.0
+    ],
+    [
+     -2663.8,
+     -4831.2,
+     2250.0
+    ],
+    [
+     -1662.0,
+     -6374.0,
+     2250.0
+    ],
+    [
+     -1662.0,
+     -6374.0,
+     460.0
+    ]
+   ],
+   "band": "W",
+   "linie": 2,
+   "anschluss": [
+    "Tank_gross_t3:1",
+    "Sumpftank:2"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Notueberlauf Biofilter 2 -> Sumpf 2 (d63, Quelle e81/e82): Stutzen 50 ueber dem Ueberlauf, senkrecht auf 60 rel, waagerecht zum Sumpf (Einmuendung ueber dem Deckel)",
+   "gefaelle_pct": null
+  },
+  {
+   "id": "S2-e65",
+   "kante": "S-e65",
+   "soll_weg": "e65",
+   "dn": 50,
+   "farbe": "grau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -3495.0,
+     -5918.0,
+     1057.0
+    ],
+    [
+     561.0,
+     -5918.0,
+     1057.0
+    ],
+    [
+     561.0,
+     -7412.0,
+     1057.0
+    ]
+   ],
+   "band": "W",
+   "linie": 2,
+   "anschluss": [
+    "Tank_klein:2",
+    "Schlamm_Sammelbehaelter:2"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Schlamm Tank_klein -> Sammelbehaelter 2 (d50, Schwerkraft, Kugelhahn von Hand am Stutzen)"
+  },
+  {
+   "id": "S2-e67",
+   "kante": "S-e67",
+   "soll_weg": "e67",
+   "dn": 50,
+   "farbe": "grau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -1362.0,
+     -3625.0,
+     764.0
+    ],
+    [
+     357.3,
+     -7010.8,
+     764.0
+    ]
+   ],
+   "band": "W",
+   "linie": 2,
+   "anschluss": [
+    "Tank_gross_t3:1",
+    "Schlamm_Sammelbehaelter:2"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Schlamm Tank_gross_t3 -> Sammelbehaelter 2 (d50, Schwerkraft, Kugelhahn von Hand am Stutzen)"
+  },
+  {
+   "id": "S1-e62",
+   "kante": "S-e62",
+   "soll_weg": "e62",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     4115.3,
+     -2666.3,
+     2130.0
+    ],
+    [
+     3055.0,
+     -5213.6,
+     2130.0
+    ],
+    [
+     238.0,
+     -4041.0,
+     2130.0
+    ],
+    [
+     238.0,
+     -4041.0,
+     1500.0
+    ]
+   ],
+   "band": "WH",
+   "linie": 1,
+   "anschluss": [
+    "Tank_gross:1",
+    "Becken_Dritt:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Biofilter 1 -> Lebendfutterbecken (d63, Schwerkraft 1800 -> 850): Abgang unter dem Spiegel, frei auslaufend 100 ueber dem Beckenrand"
+  },
+  {
+   "id": "S0-e70",
+   "kante": "S-e70",
+   "soll_weg": "e70",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     2088.6,
+     -2595.6,
+     1228.5
+    ],
+    [
+     1219.4,
+     -1515.3,
+     1228.5
+    ]
+   ],
+   "band": "W",
+   "linie": null,
+   "anschluss": [
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Zentralpool"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Ueberlauf T6_Ueberlauf (d63, U3-Tuelle) gerade in das naechste Becken, Wandeinfuehrung ueber dessen Spiegel (Quelle e70)"
+  },
+  {
+   "id": "S0-e63",
+   "kante": "S-e63",
+   "soll_weg": "e63",
+   "dn": 63,
+   "farbe": "dunkelblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     853.2,
+     -3905.2,
+     1278.5
+    ],
+    [
+     1820.5,
+     -3691.6,
+     1278.5
+    ]
+   ],
+   "band": "W",
+   "linie": null,
+   "anschluss": [
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Zentralpool"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Ueberlauf T14k_Ueberlauf (d63, U3-Tuelle) gerade in das naechste Becken, Wandeinfuehrung ueber dessen Spiegel (Quelle e63)"
+  },
+  {
+   "id": "S0-e17",
+   "kante": "S-e17",
+   "soll_weg": "e17",
+   "dn": 25,
+   "farbe": "hellblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -6123.3,
+     -1058.1,
+     550.0
+    ],
+    [
+     -6123.3,
+     -1058.1,
+     2550.0
+    ],
+    [
+     -2579.4,
+     -475.5,
+     2550.0
+    ],
+    [
+     -2579.4,
+     -475.5,
+     1660.0
+    ]
+   ],
+   "band": "UE",
+   "linie": null,
+   "anschluss": [
+    "Regentank_5m3:1",
+    "Nachspeise_Ventil:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Regenwasser 5 m3 -> Nachspeise-Ventil (d25, Auslauf 150 ueber Tankboden; Antrieb offen wie in der Quelle: Ventil liegt hoeher als der Tank, Bedenken B16)"
+  },
+  {
+   "id": "S0-e18",
+   "kante": "S-e18",
+   "soll_weg": "e18",
+   "dn": 25,
+   "farbe": "hellblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -300.0,
+     -7000.0,
+     1200.0
+    ],
+    [
+     -300.0,
+     -7000.0,
+     2610.0
+    ],
+    [
+     -300.0,
+     -466.9,
+     2610.0
+    ],
+    [
+     -2520.0,
+     -466.9,
+     2610.0
+    ],
+    [
+     -2520.0,
+     -466.9,
+     1660.0
+    ]
+   ],
+   "band": "UE",
+   "linie": null,
+   "anschluss": [
+    "Aktivkohle_Station:1",
+    "Nachspeise_Ventil:1"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Frischwasser (Hahn) ueber die Aktivkohle-Station -> Nachspeise-Ventil (d25, zweiter Eingang, D107)"
+  },
+  {
+   "id": "S0-e19",
+   "kante": "S-e19",
+   "soll_weg": "e19",
+   "dn": 25,
+   "farbe": "hellblau",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -2461.0,
+     -456.0,
+     1660.0
+    ],
+    [
+     -1769.9,
+     -327.9,
+     1660.0
+    ],
+    [
+     -1769.9,
+     -327.9,
+     1300.0
+    ]
+   ],
+   "band": "WH",
+   "linie": null,
+   "anschluss": [
+    "Nachspeise_Ventil:1",
+    "Zentralpool",
+    "Tisch_innen"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Nachspeise-Ventil -> Fischtank (d25, frei auslaufend 150 ueber dem Spiegel)"
+  },
+  {
+   "id": "S1-e86",
+   "kante": "S-e86",
+   "soll_weg": "e86",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     3726.9,
+     295.0,
+     1134.0
+    ],
+    [
+     3726.9,
+     295.0,
+     2670.0
+    ],
+    [
+     4040.6,
+     295.0,
+     2670.0
+    ],
+    [
+     4040.6,
+     -2294.0,
+     2670.0
+    ],
+    [
+     4040.6,
+     -2294.0,
+     930.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 1,
+   "anschluss": [
+    "Luftverteiler_4:1",
+    "Tank_gross:1",
+    "Sumpftank:1",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 1 Arm 1 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S1-e87",
+   "kante": "S-e87",
+   "soll_weg": "e87",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     3608.2,
+     277.5,
+     1134.0
+    ],
+    [
+     3608.2,
+     277.5,
+     2700.0
+    ],
+    [
+     5402.6,
+     277.5,
+     2700.0
+    ],
+    [
+     5402.6,
+     -4657.8,
+     2700.0
+    ],
+    [
+     5402.6,
+     -4657.8,
+     -20.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 1,
+   "anschluss": [
+    "Luftverteiler_4:1",
+    "Tank_gross:1",
+    "Sumpftank:1",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 1 Arm 2 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S1-e88",
+   "kante": "S-e88",
+   "soll_weg": "e88",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     3489.5,
+     260.0,
+     1134.0
+    ],
+    [
+     3489.5,
+     260.0,
+     2730.0
+    ],
+    [
+     3097.0,
+     260.0,
+     2730.0
+    ],
+    [
+     3097.0,
+     -3476.0,
+     2730.0
+    ],
+    [
+     3097.0,
+     -3476.0,
+     500.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 1,
+   "anschluss": [
+    "Luftverteiler_4:1",
+    "Tank_gross:1",
+    "Sumpftank:1",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 1 Arm 3 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S1-e89",
+   "kante": "S-e89",
+   "soll_weg": "e89",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     3370.8,
+     242.5,
+     1134.0
+    ],
+    [
+     3370.8,
+     242.5,
+     2760.0
+    ],
+    [
+     601.0,
+     242.5,
+     2760.0
+    ],
+    [
+     601.0,
+     601.0,
+     2760.0
+    ],
+    [
+     601.0,
+     601.0,
+     -440.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 1,
+   "anschluss": [
+    "Luftverteiler_4:1",
+    "Tank_gross:1",
+    "Sumpftank:1",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 1 Arm 4 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S2-e91",
+   "kante": "S-e91",
+   "soll_weg": "e91",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -2029.2,
+     -3327.6,
+     1134.0
+    ],
+    [
+     -2029.2,
+     -3327.6,
+     2670.0
+    ],
+    [
+     -1446.0,
+     -3327.6,
+     2670.0
+    ],
+    [
+     -1446.0,
+     -3327.6,
+     930.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 2,
+   "anschluss": [
+    "Luftverteiler_4:2",
+    "Tank_gross_t3:1",
+    "Sumpftank:2",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 2 Arm 1 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S2-e92",
+   "kante": "S-e92",
+   "soll_weg": "e92",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -1922.9,
+     -3272.0,
+     1134.0
+    ],
+    [
+     -1922.9,
+     -3272.0,
+     2700.0
+    ],
+    [
+     -1511.2,
+     -3272.0,
+     2700.0
+    ],
+    [
+     -1511.2,
+     -7826.2,
+     2700.0
+    ],
+    [
+     -1511.2,
+     -7826.2,
+     -20.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 2,
+   "anschluss": [
+    "Luftverteiler_4:2",
+    "Tank_gross_t3:1",
+    "Sumpftank:2",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 2 Arm 2 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S2-e93",
+   "kante": "S-e93",
+   "soll_weg": "e93",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -1816.5,
+     -3216.4,
+     1134.0
+    ],
+    [
+     -1816.5,
+     -3216.4,
+     2730.0
+    ],
+    [
+     438.0,
+     -3216.4,
+     2730.0
+    ],
+    [
+     438.0,
+     -4041.0,
+     2730.0
+    ],
+    [
+     438.0,
+     -4041.0,
+     500.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 2,
+   "anschluss": [
+    "Luftverteiler_4:2",
+    "Tank_gross_t3:1",
+    "Sumpftank:2",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 2 Arm 3 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S2-e94",
+   "kante": "S-e94",
+   "soll_weg": "e94",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -1710.2,
+     -3160.8,
+     1134.0
+    ],
+    [
+     -1710.2,
+     -3160.8,
+     2760.0
+    ],
+    [
+     -601.0,
+     -3160.8,
+     2760.0
+    ],
+    [
+     -601.0,
+     -601.0,
+     2760.0
+    ],
+    [
+     -601.0,
+     -601.0,
+     -440.0
+    ]
+   ],
+   "band": "UE",
+   "linie": 2,
+   "anschluss": [
+    "Luftverteiler_4:2",
+    "Tank_gross_t3:1",
+    "Sumpftank:2",
+    "Zentralpool",
+    "Zweitbecken",
+    "Becken_Dritt:1",
+    "Tisch_innen",
+    "Luft_Scheibenbelueftung"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Luft Linie 2 Arm 4 (d20): Verteiler -> ueber Kopf -> senkrecht in das Ziel bis kurz ueber den Boden"
+  },
+  {
+   "id": "S0-e77",
+   "kante": "S-e77",
+   "soll_weg": "e77",
+   "dn": 20,
+   "farbe": "gruen",
+   "start": "offen",
+   "ende": "offen",
+   "pfad": [
+    [
+     -4146.0,
+     -1468.0,
+     700.0
+    ],
+    [
+     -4146.0,
+     -1468.0,
+     2810.0
+    ],
+    [
+     -1036.5,
+     -1468.0,
+     2810.0
+    ],
+    [
+     -1036.5,
+     -367.0,
+     2810.0
+    ],
+    [
+     -1036.5,
+     -367.0,
+     -500.0
+    ]
+   ],
+   "band": "UE",
+   "linie": null,
+   "anschluss": [
+    "Notluftpumpe:1",
+    "Zentralpool",
+    "Tisch_innen"
+   ],
+   "varianten": [
+    "ring_b2"
+   ],
+   "quelle": "trassen_soll",
+   "notiz": "Notluft (d20): Notluftpumpe -> ueber Kopf (Schleife ueber dem Rand) -> Luftstein im Fischtank (Befund U5: Komponente reicht nicht ins Wasser)"
   }
  ],
  "t_stuecke": [
@@ -7447,7 +8707,9 @@
    "d_klein": 25,
    "farbe": "hellblau",
    "linie": "frisch",
-   "notiz": "Zapfhahn d25 vor dem Puffer: Fass wird von Hand mit Schlauch gefuellt (Netz K52, kein Dauerfluss)"
+   "notiz": "Zapfhahn d25 vor dem Puffer: Fass wird von Hand mit Schlauch gefuellt (Netz K52, kein Dauerfluss)",
+   "soll_bauteil": "puffer_klein",
+   "soll_hinweis": "Messtechnik, begruendet behalten (D101), kein Weg der Quelle"
   },
   {
    "id": "RB-H1-ringende",

@@ -97,7 +97,7 @@ def erde_fn(sock_z):
     for k, b in enumerate([] if V == "ring_b2" else LAYOUT["ibc_beds"], 1):
         x, y = bed_xy(b); ln, wd = bed_dims(k, b)
         rect_body(f"T9_Tasche_{k:02d}", x, y, sock_z + b["z0"] - 200, bed_yaw(b), ln + 20, wd + 20, -b["z0"] + 201, op="cut", targets=["T13_Erde"])
-    if V == "ring_b2":   # U4 (D122): die Wannen stehen auf dem Flur; nur die Auslass-Armaturen (Reduktion bis -80) reichen unter den Flur: kleine Tasche 160 x 160 x 85 je Beet statt der Wannengrube
+    if V == "ring_b2" and BEET_AUSLASS_TASCHE:   # U4 (D122): Tasche 160 x 160 x 85 je Beet; seit U3b (D134) liegt der Auslass seitlich ueber dem Flur, U6 schaltet die Taschen ab
         for k, b in enumerate(LAYOUT["ibc_beds"], 1):
             x, y = bed_xy(b); yaw = bed_yaw(b); u, v = BEET_AUSLASS["aussen" if "plants" in b else "innen"]; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
             rect_body(f"T9_Auslass_{k:02d}", round(x + u * c - v * s, 1), round(y + u * s + v * c, 1), sock_z - BEET_AUSLASS_TIEFE - 5, yaw, 160, 160, BEET_AUSLASS_TIEFE + 6, op="cut", targets=["T13_Erde"])
@@ -306,6 +306,7 @@ POOL2_D_ALT = locals().get("POOL2_D_ALT", LAYOUT["pool2"]["d"])
 ROT = P["door_az"] - 167   # Layout-Drehung (docs/components.md)
 
 BEET_AUSLASS = {"aussen": (1040.0, 0.0), "innen": (650.0, 65.0)}   # Siphon/Auslass im Beetrahmen (u laengs, v quer; Ursprung Mitte Wannenunterseite): scripts/workshop/ibc_beet.py shaft_cell, gemessen an Reduktion/Standrohr in viewer/detail/ibc_beet_*.json (aussen_800 x 1040 / y 0, innen_933 x 650 / y 65)
+BEET_AUSLASS_TASCHE = False   # U6: Beet-Auslass seitlich ueber dem Flur (U3b, D134), keine Taschen mehr
 BEET_AUSLASS_TIEFE = 80    # Reduktion reicht bis -80 unter den Flur (viewer/detail/ibc_beet_aussen_800.json: Z -80)
 SUMPF_WANNE_L, SUMPF_WANNE_B, SUMPF_WANNE_TIEFE = 3179, 1329, 602   # Sumpftank aussen (data/components/sumpftank.json: pit 2975 x 1125 + 2 x (Folie 2 + Wand 100); Boden -(500 + 2 + 100))
 
@@ -567,6 +568,8 @@ def ring_b2(fz):
     for cls, path, mats, asm in TRR.tragwerk(os.environ.get("AUTOBAHN_RUNDE", "r2")):
         if cls in ("Pegelschacht_Podest", "Pegelschacht", "Booster_gross"): continue   # U5 (D98, D101): der Biofilter steht hoeher als der Ring, Pegelschacht und Booster entfallen
         if mats: place_matrices(cls, path, mats, asm); gesetzt.append((cls, len(mats)))
+    import trassen_soll as TSO   # U6: Rueckläufe (Schlauch) in die Sumpftanks und NFT Innen in den Fischtank, eine Komponente in Weltlage
+    place_matrices("Ring_B2_Ruecklauf", TRR.comp(TSO.DATEI), [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]], "08_Leitungen"); gesetzt.append(("Ring_B2_Ruecklauf", 1))
     return gesetzt
 
 # T9: 14 halbe IBC-Wannen (layout.json) als Instanzen der Werkstatt-Komponenten ibc_beet_{aussen_933,aussen_993,innen_933}; Ursprung = Mitte Wannenunterseite

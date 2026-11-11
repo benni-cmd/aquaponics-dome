@@ -26,10 +26,21 @@ def klasse(b):
     return None
 
 
+BENANNT = re.compile(r"(Schraube_(?:M\d+x\d+|Mutter_M6))_(\d+)(?: \(\d+\))?")   # schon benanntes Normteil (eingefuegte Komponente), ab der zweiten Instanz mit Zusatz ' (m)'
+
+
 def plan(bodies):
-    """{Body<n>: neuer Name}; bricht ab, wenn ein Body<n> keiner Klasse zugeordnet werden kann."""
+    """{Body<n>: neuer Name}; bricht ab, wenn ein Body<n> keiner Klasse zugeordnet werden kann.
+    D136 (U3b): Ein Tisch enthaelt den seit W60 5a benannten Winkelhalter schon mit Namen wie Schraube_Mutter_M6_1; ein Zaehler ab 1 liess die eigenen
+    Normteile denselben Namen doppelt treffen (`another body is called Schraube_Mutter_M6_1`). Der Zaehler je Klasse beginnt jetzt hinter dem hoechsten
+    schon vergebenen Index dieser Klasse; Klassen ohne vorhandene Namen zaehlen wie bisher ab 1 in der Reihenfolge der Body-Nummern."""
+    zaehler = {}
+    for b in bodies:
+        m = BENANNT.fullmatch(b["name"])
+        if m:
+            zaehler[m.group(1)] = max(zaehler.get(m.group(1), 0), int(m.group(2)))
     nums = sorted((int(b["name"][4:]), b) for b in bodies if re.fullmatch(r"Body\d+", b["name"]))
-    zaehler, out = {}, {}
+    out = {}
     for n, b in nums:
         st = klasse(b)
         if st is None:

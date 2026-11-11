@@ -180,6 +180,56 @@ def komponenten_hoehen(soll):
     print("  Gesamtmodell: gesetzt ab U5 (Zaehlung und Wasserspiegel oben; Hoehenparameter hier aus den Komponentendateien)")
 
 
+def wege_pruefung():
+    """U6: die Wege der Quelle im Netz (data/leitungsnetz.json, Kanten S-eNN, Variante ring_b2) und im Modell (data/leitungstrassen.json,
+    Eintraege mit Feld `soll_weg`, Variante ring_b2). Zaehlt Abweichungen: Weg fehlt im Netz, Medium oder Richtung falsch, Leitung nicht verlegt.
+    Kanten ohne Leitung (Tauchpumpe im Becken, Schlamm von Hand) brauchen keinen Modellkoerper; Kabel stehen nur in der Netzliste (D138)."""
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    import variante as V
+    med = {"water": "Wasser", "air": "Luft", "sludge": "Schlamm", "power": "Strom"}
+    wege = [w for w in load(SOLL)["wege"] if w.get("im_umfang")]
+    netz = V.filtere(load(os.path.join(ROOT, "data", "leitungsnetz.json"))["kanten"], "ring_b2")
+    lt = load(os.path.join(ROOT, "data", "leitungstrassen.json"))
+    verlegt = {}
+    for liste in ("trassen", "t_stuecke", "r_stuecke", "teile"):
+        for e in V.filtere(lt.get(liste, []), "ring_b2"):
+            for sw in ([e["soll_weg"]] if isinstance(e.get("soll_weg"), str) else (e.get("soll_weg") or [])):
+                verlegt[sw] = verlegt.get(sw, 0) + 1
+    schlauch = {}
+    try:
+        import trassen_ring as TR
+        for sw, n in TR.schlauch_soll_wege().items():
+            schlauch[sw] = n
+    except Exception as ex:                            # ohne Schlauchwege: nur Trassen zaehlen
+        print("  Hinweis: Schlauchwege nicht lesbar (%s)" % ex)
+    print("Wege der Quelle im Netz und im Modell (%d im Umfang)" % len(wege))
+    n_netz = n_ok = n_verl = n_frei = n_kabel = bad = 0
+    offen = []
+    for w in wege:
+        ks = [k for k in netz if k.get("soll_weg") == w["id"]]
+        ok = len(ks) == 1 and (ks[0]["von"], ks[0]["nach"]) == (w["von"], w["nach"]) and ks[0]["medium"] == med[w["medium"]]
+        n_netz += 1 if ks else 0
+        n_ok += 1 if ok else 0
+        if not ok:
+            bad += 1
+            print("  %-4s NETZ FEHLT/FALSCH (%s -> %s, %s)" % (w["id"], w["von"], w["nach"], w["medium"]))
+            continue
+        art = ks[0].get("art")
+        if art == "kabel":
+            n_kabel += 1
+        elif art == "ohne_leitung":
+            n_frei += 1
+        elif verlegt.get(w["id"], 0) + schlauch.get(w["id"], 0) > 0:
+            n_verl += 1
+        else:
+            bad += 1
+            offen.append(w["id"])
+    print("  im Netz %d von %d, davon Medium und Richtung richtig %d" % (n_netz, len(wege), n_ok))
+    print("  Leitung im Modell verlegt %d, ohne Leitung (Tauchpumpe im Becken, von Hand) %d, Kabel nur Netzliste %d, NICHT verlegt %d%s" % (
+        n_verl, n_frei, n_kabel, len(offen), (": " + " ".join(offen)) if offen else ""))
+    return bad
+
+
 def main():
     soll = {b["id"]: b for b in load(SOLL)["bauteile"]}
     tol = MESSDATA["toleranz_mm"]
@@ -240,6 +290,8 @@ def main():
     if arg("--teil", "") in ("technik", "alle"):
         bad += zaehlung_technik(d["instances"])
         komponenten_hoehen(soll)
+    if arg("--teil", "") == "alle" and VARIANTE == "ring_b2":
+        bad += wege_pruefung()
     print("ERGEBNIS: %s (%d Abweichungen oder fehlende Werte)" % ("BESTANDEN" if not bad else "ABWEICHUNG", bad))
     return 1 if bad else 0
 

@@ -47,8 +47,45 @@ for k in kanten:
     for end in ("von", "nach"):
         if k[end] not in knoten:
             fehler.append("%s: %s '%s' ist kein Knoten" % (k["id"], end, k[end]))
-    if k["medium"] == "Wasser" and k["dn"] not in ID:
+    if k["medium"] == "Wasser" and k["dn"] not in ID and not k.get("schlauch_id") and k.get("art") != "ohne_leitung":
         fehler.append("%s: dn %s nicht in der Innendurchmesser-Tabelle" % (k["id"], k["dn"]))
+
+if VAR == "ring_b2":
+    # N-UNIFY-AUTOBAHN U6: das Netz der Variante ring_b2 sind die 77 Wege der Quelle (Kanten S-eNN, scripts/u6_netz.py).
+    # Geprueft wird gegen data/oasis-soll.json: keine Kante ohne Quelle, jeder Soll-Weg genau einmal mit gleichem Medium und gleicher Richtung,
+    # jede Wasserleitung mit Nennweite; Geschwindigkeit nur, wo die Quelle einen Durchfluss nennt. Bilanz und Linienwerte (A+, system-specs) entfallen,
+    # weil die Quelle Durchfluesse nur fuer Ring, Einspeisung, Abfahrten und Pumpstelle 1 nennt (R61 Abschnitt 4).
+    SOLL = json.loads((ROOT / "data" / "oasis-soll.json").read_text(encoding="utf-8"))
+    sw = {w["id"]: w for w in SOLL["wege"] if w.get("im_umfang")}
+    MED = {"water": "Wasser", "air": "Luft", "sludge": "Schlamm", "power": "Strom"}
+    gesehen = defaultdict(int)
+    for k in kanten:
+        w = sw.get(k.get("soll_weg"))
+        if w is None:
+            fehler.append("%s: Kante ohne Quelle (soll_weg %s nicht in oasis-soll.json)" % (k["id"], k.get("soll_weg")))
+            continue
+        gesehen[w["id"]] += 1
+        if (k["von"], k["nach"]) != (w["von"], w["nach"]):
+            fehler.append("%s: Richtung %s->%s, Quelle %s->%s" % (k["id"], k["von"], k["nach"], w["von"], w["nach"]))
+        if k["medium"] != MED[w["medium"]]:
+            fehler.append("%s: Medium %s, Quelle %s" % (k["id"], k["medium"], w["medium"]))
+        if k.get("art") == "leitung" and k["medium"] in ("Wasser", "Luft", "Schlamm") and not (k.get("dn") in ID or k.get("schlauch_id")):
+            fehler.append("%s: Leitung ohne Nennweite" % k["id"])
+        if k.get("art") == "leitung" and k["medium"] == "Wasser" and k.get("soll_l_min") and k.get("dn") in ID:
+            v = v_of(k["dn"], k["soll_l_min"])
+            (fehler if v > V_DRUCK + 1e-9 else hinweise).append("%s: %.0f l/min in d%s = %.2f m/s" % (k["id"], k["soll_l_min"], k["dn"], v))
+    for wid in sw:
+        if gesehen[wid] != 1:
+            fehler.append("Soll-Weg %s: %d Kanten statt 1" % (wid, gesehen[wid]))
+    print("Netzliste Version %s, Variante ring_b2: %d Knoten, %d Kanten, Soll-Wege %d von %d genau einmal, Leitungen %d, ohne Leitung %d, Kabel %d" % (
+        NETZ["version"], len(knoten), len(kanten), sum(1 for w in sw if gesehen[w] == 1), len(sw),
+        sum(1 for k in kanten if k.get("art") == "leitung"), sum(1 for k in kanten if k.get("art") == "ohne_leitung"), sum(1 for k in kanten if k.get("art") == "kabel")))
+    for h in hinweise:
+        print("  Hinweis:", h)
+    for f in fehler:
+        print("FEHLER:", f)
+    print("Pruefung bestanden" if not fehler else "FEHLER: %d" % len(fehler))
+    sys.exit(1 if fehler else 0)
 
 # (2) Durchflussbilanz
 ein, aus = defaultdict(float), defaultdict(float)

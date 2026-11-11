@@ -1,6 +1,6 @@
 {
- "stand": "04.11.2026",
- "version": 3,
+ "stand": "11.11.2026",
+ "version": 4,
  "hinweis": "Netzliste fuer die Montage M10 (R28, D50): Knoten, Kanten (Medium, DN, Soll-Durchfluss, Hoehenlage), Kabelliste. Durchfluesse aus system-specs.json (D38), DN aus Pumpen- und Tankanschluessen (Ø40/50), Geschwindigkeiten aus PVC-PN10-Innendurchmessern; Quelle je Kante Q=Quelle, E=eigene Rechnung, A=Annahme. Keine fachliche Freigabe. Version 2 (R40): Puffer klein, Drittbecken klein, Messknoten-Trunks, Hauptstrom-Feinfilter, Linienteilung 12+7 (D67); Aenderungen in docs/leitungsnetz-aenderungen.md. Stand 01.11.2026 (L14): Feld \"modell\" an den Tank-/Pumpen-Knoten nennt die Modell-Instanz (Etikett im Modell, Linie 1 = Ost, Linie 2 = West); Quelle docs/leitungsnetz-umhaengen.md. Knotennamen und Linien unveraendert. Version 3 (R45, Ben E14/E12): K01/K17 d75, Schlammfass je Linie statt Schlammsammler, Beet-Sumpf mit Foerderleitung K58/K59 (57 Kanten), K14/K30 d50, Aktivkohle 4 l/min, Luft 130 l/min; Aenderungen in docs/leitungsnetz-aenderungen.md.",
  "konventionen": {
   "dn_einheit": "Aussendurchmesser mm der Leitungsteile-Bibliothek (d20-d110)",
@@ -12,7 +12,10 @@
    "id": "pool",
    "typ": "Becken",
    "bauteil": "pool",
-   "bemerkung": "Wasserspiegel Z 515, Bodenablauf in der Mitte (ca. 11 % des Stroms), Seitenablauf/Skimmer (ca. 89 %)"
+   "bemerkung": "Wasserspiegel Z 515, Bodenablauf in der Mitte (ca. 11 % des Stroms), Seitenablauf/Skimmer (ca. 89 %)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "absetzer_1",
@@ -20,14 +23,20 @@
    "bauteil": "tank_klein",
    "linie": 1,
    "bemerkung": "Vortex, 267 l, Zulauf Ø50 tangential 250 mm unter Rand, Auslass Ø50 100 mm unter Rand, Schlammablass Kugelhahn an der Kegelspitze",
-   "modell": "Tank_klein:2"
+   "modell": "Tank_klein:2",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "absetzer_2",
    "typ": "Tank",
    "bauteil": "tank_klein",
    "linie": 2,
-   "modell": "Tank_klein:1"
+   "modell": "Tank_klein:1",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "biofilter_1",
@@ -35,14 +44,20 @@
    "bauteil": "tank_gross",
    "linie": 1,
    "bemerkung": "702 l, lose K1-Traeger 0,47 m3 bei 67 % Fuellung (D55, Schwebebett, belueftet), Zulauf/Auslass Ø50, Ueberlauf, Belueftung Ø16 im Deckel, Schlammablass",
-   "modell": "Tank_gross:1"
+   "modell": "Tank_gross:1",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "biofilter_2",
    "typ": "Tank",
    "bauteil": "tank_gross",
    "linie": 2,
-   "modell": "Tank_gross_t3:1"
+   "modell": "Tank_gross_t3:1",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "feinfilter_1",
@@ -50,7 +65,10 @@
    "bauteil": "feinfilter",
    "linie": 1,
    "status": "im Modell (T55, W32)",
-   "bemerkung": "Feinfilter im HAUPTSTROM (D55): 110 l/min je Linie, Siebkorb 560 x 370 x 400 mm, 0,84 m2, Gewebe <= 100 um, Siebbelastung 7,9 m/h [A]; Einlauf d63 (Bauteil z 816), Auslauf d63 (z 310), Ablass d40, Spuelanschluss d25; alle 1-2 Wochen reinigen"
+   "bemerkung": "Feinfilter im HAUPTSTROM (D55): 110 l/min je Linie, Siebkorb 560 x 370 x 400 mm, 0,84 m2, Gewebe <= 100 um, Siebbelastung 7,9 m/h [A]; Einlauf d63 (Bauteil z 816), Auslauf d63 (z 310), Ablass d40, Spuelanschluss d25; alle 1-2 Wochen reinigen",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "feinfilter_2",
@@ -58,44 +76,65 @@
    "bauteil": "feinfilter",
    "linie": 2,
    "status": "im Modell (T55, W32)",
-   "bemerkung": "Feinfilter im HAUPTSTROM (D55): 110 l/min je Linie, Siebkorb 560 x 370 x 400 mm, 0,84 m2, Gewebe <= 100 um, Siebbelastung 7,9 m/h [A]; Einlauf d63 (Bauteil z 816), Auslauf d63 (z 310), Ablass d40, Spuelanschluss d25; alle 1-2 Wochen reinigen"
+   "bemerkung": "Feinfilter im HAUPTSTROM (D55): 110 l/min je Linie, Siebkorb 560 x 370 x 400 mm, 0,84 m2, Gewebe <= 100 um, Siebbelastung 7,9 m/h [A]; Einlauf d63 (Bauteil z 816), Auslauf d63 (z 310), Ablass d40, Spuelanschluss d25; alle 1-2 Wochen reinigen",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "puffer_messzelle",
    "typ": "Tank",
    "bauteil": "puffer_klein",
-   "bemerkung": "Messzelle 20 l Acryl auf dem Regalboden (T82), Messkreis 3 l/min, 4 Sondenstutzen d25, Ablauf d25 zum Pool; transparent, abdeckbar (D66, R37 Befund 5)"
+   "bemerkung": "Messzelle 20 l Acryl auf dem Regalboden (T82), Messkreis 3 l/min, 4 Sondenstutzen d25, Ablauf d25 zum Pool; transparent, abdeckbar (D66, R37 Befund 5)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "puffer_stammfass",
    "typ": "Tank",
    "bauteil": "puffer_klein",
-   "bemerkung": "Stammloesungsfass 120 l HDPE opak (T82): Base KOH/NaHCO3 (R37 Befund 8), Entnahmestutzen d25 unten, Einfuellstutzen d32 im Deckel; kein Frischwasser-Vorrat (D66)"
+   "bemerkung": "Stammloesungsfass 120 l HDPE opak (T82): Base KOH/NaHCO3 (R37 Befund 8), Entnahmestutzen d25 unten, Einfuellstutzen d32 im Deckel; kein Frischwasser-Vorrat (D66)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "puffer_eisen",
    "typ": "Tank",
    "bauteil": "puffer_klein",
-   "bemerkung": "Eisenchelat-Kanister 20 l (T82), 74 g Fe je Gabe alle 3 Wochen (R37 Befund 1), Pumpe Eisen auf dem Regalboden"
+   "bemerkung": "Eisenchelat-Kanister 20 l (T82), 74 g Fe je Gabe alle 3 Wochen (R37 Befund 1), Pumpe Eisen auf dem Regalboden",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "dosierkonsole",
    "typ": "Technik",
    "bauteil": "puffer_klein",
-   "bemerkung": "2 Schlauchpumpen 12 V (Base, Eisen) auf dem Regalboden der Puffer-Station T82, Dosierschlaeuche 6/9"
+   "bemerkung": "2 Schlauchpumpen 12 V (Base, Eisen) auf dem Regalboden der Puffer-Station T82, Dosierschlaeuche 6/9",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "verteiler_1",
    "typ": "Verteiler",
    "bauteil": "lt_verteiler",
    "linie": 1,
-   "bemerkung": "d50 Eingang, Abgaenge Beete d40, NFT d32, Rest zurueck"
+   "bemerkung": "d50 Eingang, Abgaenge Beete d40, NFT d32, Rest zurueck",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "verteiler_2",
    "typ": "Verteiler",
    "bauteil": "lt_verteiler",
-   "linie": 2
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "nft_linie_1",
@@ -105,7 +144,10 @@
    "tische": 12,
    "rinnen": 38,
    "bemerkung": "12 von 24 Tischen und 38 von 76 Rinnen je Linie (D67, symmetrisch); 38 Rinnen = 7 Aussen-/Mitteltische (je 4 Rinnen) + 5 Innentische (je 2 Rinnen); welche Tische zu welcher Linie gehoeren, legt die Montage M10 nach Sektoren fest",
-   "quelle": "D67"
+   "quelle": "D67",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "nft_linie_2",
@@ -114,7 +156,10 @@
    "linie": 2,
    "tische": 12,
    "rinnen": 38,
-   "quelle": "D67"
+   "quelle": "D67",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "beete_linie_1",
@@ -123,7 +168,10 @@
    "linie": 1,
    "beete": 7,
    "bemerkung": "7 von 14 Beeten je Linie (D67, symmetrisch), Glockensiphon, 2 Flutzyklen je Stunde (7 x 234 l x 2/h = 54,6 l/min Mittel), Flutung gestaffelt (Steuerung); Ablauf in die Sammelrinne, Hoehenlage siehe Frage F3",
-   "quelle": "D67"
+   "quelle": "D67",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "beete_linie_2",
@@ -131,58 +179,85 @@
    "bauteil": "ibc_beet",
    "linie": 2,
    "beete": 7,
-   "quelle": "D67"
+   "quelle": "D67",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "ruecklauf_1",
    "typ": "Sammler",
    "bauteil": "lt_rohr",
    "linie": 1,
-   "bemerkung": "Sammelrinne/Sammelrohr, Schwerkraft, Gefaelle >= 1 %, zum Pool"
+   "bemerkung": "Sammelrinne/Sammelrohr, Schwerkraft, Gefaelle >= 1 %, zum Pool",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "ruecklauf_2",
    "typ": "Sammler",
    "bauteil": "lt_rohr",
-   "linie": 2
+   "linie": 2,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "zweitbecken",
    "typ": "Becken",
    "bauteil": "zweitbecken",
-   "bemerkung": "Aufzucht, Wasserspiegel gleich dem Pool (Verbindungsrohr), Frischwasser per Schwimmerventil"
+   "bemerkung": "Aufzucht, Wasserspiegel gleich dem Pool (Verbindungsrohr), Frischwasser per Schwimmerventil",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "drittbecken",
    "typ": "Becken",
    "bauteil": "becken_dritt_klein",
-   "bemerkung": "Quarantaene und Notbecken fuer Zuchttiere/Kranke, 0,4 m3 (Ø 800 x 800, T14k), eigener Biofilter 37 l und Belueftung (R37 Befund 10, D66)"
+   "bemerkung": "Quarantaene und Notbecken fuer Zuchttiere/Kranke, 0,4 m3 (Ø 800 x 800, T14k), eigener Biofilter 37 l und Belueftung (R37 Befund 10, D66)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "biofilter_dritt",
    "typ": "Filter",
    "bauteil": null,
    "status": "Empfehlung, nicht im Modell",
-   "bemerkung": "ca. 37 l Bioballs (0,5 l je g Futter bei 73 g Futter/Tag, R37 Befund 10; frueher 85 l fuer 0,94 m3)"
+   "bemerkung": "ca. 37 l Bioballs (0,5 l je g Futter bei 73 g Futter/Tag, R37 Befund 10; frueher 85 l fuer 0,94 m3)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "belueftung",
    "typ": "Luft",
    "bauteil": "geblaese",
-   "bemerkung": "Seitenkanal-/Membrangeblaese im Schaltschrankbereich, Verteiler mit Ausstroemern in Pool, Biofilter, Absetzer, Drittbecken, Puffer"
+   "bemerkung": "Seitenkanal-/Membrangeblaese im Schaltschrankbereich, Verteiler mit Ausstroemern in Pool, Biofilter, Absetzer, Drittbecken, Puffer",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "frischwasser",
    "typ": "Zulauf",
    "bauteil": "zulaufrohr",
-   "bemerkung": "blaues Rohr von aussen; Frischwasser laeuft ueber Aktivkohle direkt in den Pool (D66), kein Standvorrat im Dom"
+   "bemerkung": "blaues Rohr von aussen; Frischwasser laeuft ueber Aktivkohle direkt in den Pool (D66), kein Standvorrat im Dom",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "aktivkohle",
    "typ": "Filter",
    "bauteil": null,
    "status": "Auslegung R45, Fabrikat offen",
-   "bemerkung": "Aktivkohlefilter im Frischwasser (entfernt Chlor und Chloramin, R37 Befund 3; Kontaktzeit und Fabrikat offen), Schwimmerventil am Pool/Zweitbecken R45 (Auslegung auf Chloramin): katalytische Kohle, 2 Kompositbehaelter 10 x 35 Zoll in Reihe (je ca. 21 l Bett), Sedimentfilter 20 um davor, Probehahn zwischen den Behaeltern, Begrenzer 4 l/min, Kontaktzeit 10,5 min; Alternative Zisterne"
+   "bemerkung": "Aktivkohlefilter im Frischwasser (entfernt Chlor und Chloramin, R37 Befund 3; Kontaktzeit und Fabrikat offen), Schwimmerventil am Pool/Zweitbecken R45 (Auslegung auf Chloramin): katalytische Kohle, 2 Kompositbehaelter 10 x 35 Zoll in Reihe (je ca. 21 l Bett), Sedimentfilter 20 um davor, Probehahn zwischen den Behaeltern, Begrenzer 4 l/min, Kontaktzeit 10,5 min; Alternative Zisterne",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_gross_1",
@@ -193,7 +268,10 @@
    "saug_d": 50,
    "druck_d": 40,
    "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
-   "modell": "Pumpe_gross:1"
+   "modell": "Pumpe_gross:1",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_klein_1",
@@ -204,7 +282,10 @@
    "saug_d": 40,
    "druck_d": 32,
    "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve",
-   "modell": "Pumpe_klein:3"
+   "modell": "Pumpe_klein:3",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_gross_2",
@@ -215,7 +296,10 @@
    "saug_d": 50,
    "druck_d": 40,
    "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
-   "modell": "Pumpe_gross:2"
+   "modell": "Pumpe_gross:2",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_klein_2",
@@ -226,7 +310,10 @@
    "saug_d": 40,
    "druck_d": 32,
    "bemerkung": "Reserve",
-   "modell": "Pumpe_klein:4"
+   "modell": "Pumpe_klein:4",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_gross_3",
@@ -237,7 +324,10 @@
    "saug_d": 50,
    "druck_d": 40,
    "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
-   "modell": "Pumpe_gross:3"
+   "modell": "Pumpe_gross:3",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_klein_3",
@@ -248,7 +338,10 @@
    "saug_d": 40,
    "druck_d": 32,
    "bemerkung": "Absetzer-Teilstrom (D38), eine je Tank in Betrieb, die zweite Reserve",
-   "modell": "Pumpe_klein:1"
+   "modell": "Pumpe_klein:1",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_gross_4",
@@ -259,7 +352,10 @@
    "saug_d": 50,
    "druck_d": 40,
    "bemerkung": "Hauptkreislauf (D38), zwei parallel je Linie",
-   "modell": "Pumpe_gross:4"
+   "modell": "Pumpe_gross:4",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "pumpe_klein_4",
@@ -270,7 +366,10 @@
    "saug_d": 40,
    "druck_d": 32,
    "bemerkung": "Reserve",
-   "modell": "Pumpe_klein:2"
+   "modell": "Pumpe_klein:2",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "schlammfass_1",
@@ -278,7 +377,10 @@
    "bauteil": "schlammfass",
    "linie": 1,
    "status": "Standardannahme R45 (E12), Bauteil W37",
-   "bemerkung": "Spannringfass 200-220 l (PE) in Grube Oe 0,8 m, Tiefe 0,95 m, 0,7-0,8 m neben dem Absetzer; Deckel mit Stutzen d40; woechentlich von Hand geleert, Klarwasser zurueck in den Pool, Dickschlamm in Wurmkompost ausserhalb; Kugelhahn mit Federrueckzug gegen leeren Pool"
+   "bemerkung": "Spannringfass 200-220 l (PE) in Grube Oe 0,8 m, Tiefe 0,95 m, 0,7-0,8 m neben dem Absetzer; Deckel mit Stutzen d40; woechentlich von Hand geleert, Klarwasser zurueck in den Pool, Dickschlamm in Wurmkompost ausserhalb; Kugelhahn mit Federrueckzug gegen leeren Pool",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "schlammfass_2",
@@ -286,7 +388,10 @@
    "bauteil": "schlammfass",
    "linie": 2,
    "status": "Standardannahme R45 (E12), Bauteil W37",
-   "bemerkung": "Spannringfass 200-220 l (PE) in Grube Oe 0,8 m, Tiefe 0,95 m, 0,7-0,8 m neben dem Absetzer; Deckel mit Stutzen d40; woechentlich von Hand geleert, Klarwasser zurueck in den Pool, Dickschlamm in Wurmkompost ausserhalb; Kugelhahn mit Federrueckzug gegen leeren Pool"
+   "bemerkung": "Spannringfass 200-220 l (PE) in Grube Oe 0,8 m, Tiefe 0,95 m, 0,7-0,8 m neben dem Absetzer; Deckel mit Stutzen d40; woechentlich von Hand geleert, Klarwasser zurueck in den Pool, Dickschlamm in Wurmkompost ausserhalb; Kugelhahn mit Federrueckzug gegen leeren Pool",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "beet_sumpf_1",
@@ -294,7 +399,10 @@
    "bauteil": "beet_sumpf",
    "linie": 1,
    "status": "Auslegung R45, Bauteil W37",
-   "bemerkung": "Rundtank PE Oe 0,8 m x H 1,0 m, ca. 500 l, eingegraben (Grube Oe 1,0 m, Tiefe 1,0 m), dichter lichtdichter begehbarer Deckel, Entlueftung d32 mit Gitter; Zulauf d63 Sektorsammler bei 800 mm; Teichpumpe 5300 l/h / 60 W (Hmax 2,8 m) mit Rueckschlagventil, 3 Schwimmerschalter (AUS 120 mm, EIN 320 mm, ALARM 620 mm), Alarm sperrt die Beet-Zufuhr K11/K27; kein Schwerkraft-Notueberlauf"
+   "bemerkung": "Rundtank PE Oe 0,8 m x H 1,0 m, ca. 500 l, eingegraben (Grube Oe 1,0 m, Tiefe 1,0 m), dichter lichtdichter begehbarer Deckel, Entlueftung d32 mit Gitter; Zulauf d63 Sektorsammler bei 800 mm; Teichpumpe 5300 l/h / 60 W (Hmax 2,8 m) mit Rueckschlagventil, 3 Schwimmerschalter (AUS 120 mm, EIN 320 mm, ALARM 620 mm), Alarm sperrt die Beet-Zufuhr K11/K27; kein Schwerkraft-Notueberlauf",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "beet_sumpf_2",
@@ -302,7 +410,461 @@
    "bauteil": "beet_sumpf",
    "linie": 2,
    "status": "Auslegung R45, Bauteil W37",
-   "bemerkung": "Rundtank PE Oe 0,8 m x H 1,0 m, ca. 500 l, eingegraben (Grube Oe 1,0 m, Tiefe 1,0 m), dichter lichtdichter begehbarer Deckel, Entlueftung d32 mit Gitter; Zulauf d63 Sektorsammler bei 800 mm; Teichpumpe 5300 l/h / 60 W (Hmax 2,8 m) mit Rueckschlagventil, 3 Schwimmerschalter (AUS 120 mm, EIN 320 mm, ALARM 620 mm), Alarm sperrt die Beet-Zufuhr K11/K27; kein Schwerkraft-Notueberlauf"
+   "bemerkung": "Rundtank PE Oe 0,8 m x H 1,0 m, ca. 500 l, eingegraben (Grube Oe 1,0 m, Tiefe 1,0 m), dichter lichtdichter begehbarer Deckel, Entlueftung d32 mit Gitter; Zulauf d63 Sektorsammler bei 800 mm; Teichpumpe 5300 l/h / 60 W (Hmax 2,8 m) mit Rueckschlagventil, 3 Schwimmerschalter (AUS 120 mm, EIN 320 mm, ALARM 620 mm), Alarm sperrt die Beet-Zufuhr K11/K27; kein Schwerkraft-Notueberlauf",
+   "varianten": [
+    "a_plus"
+   ]
+  },
+  {
+   "id": "control",
+   "typ": "steuerung",
+   "bauteil": "control",
+   "name": "Steuerung & Pumpen",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "filterpumpe_1",
+   "typ": "pumpe",
+   "bauteil": "filterpumpe_1",
+   "name": "Pumpe Fischtank → Filter 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "hauptpumpe_1",
+   "typ": "pumpe",
+   "bauteil": "hauptpumpe_1",
+   "name": "Pumpe Sumpf 1 → Fischtank",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "hauptpumpe_2",
+   "typ": "pumpe",
+   "bauteil": "hauptpumpe_2",
+   "name": "Pumpe Sumpf 2 → Fischtank",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "rain",
+   "typ": "source",
+   "bauteil": "rain",
+   "name": "Regenwasser",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "nachspeise",
+   "typ": "armatur",
+   "bauteil": "nachspeise",
+   "name": "Nachspeise-Ventil",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "tap",
+   "typ": "source",
+   "bauteil": "tap",
+   "name": "Frischwasser",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "fish",
+   "typ": "becken",
+   "bauteil": "fish",
+   "name": "Haupt-Fischtank",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "vortex_1",
+   "typ": "filter",
+   "bauteil": "vortex_1",
+   "name": "Vortex 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "filterpumpe_2",
+   "typ": "pumpe",
+   "bauteil": "filterpumpe_2",
+   "name": "Pumpe Fischtank → Filter 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "vortex_2",
+   "typ": "filter",
+   "bauteil": "vortex_2",
+   "name": "Vortex 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "bio_1",
+   "typ": "filter",
+   "bauteil": "bio_1",
+   "name": "Biofilter 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "bio_2",
+   "typ": "filter",
+   "bauteil": "bio_2",
+   "name": "Biofilter 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "ring_1",
+   "typ": "ring",
+   "bauteil": "ring_1",
+   "name": "Wasserautobahn Halbring 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "ring_2",
+   "typ": "ring",
+   "bauteil": "ring_2",
+   "name": "Wasserautobahn Halbring 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "kupplungshahn",
+   "typ": "armatur",
+   "bauteil": "kupplungshahn",
+   "name": "Kupplungshahn zwischen den Halbringen",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "ringende_1",
+   "typ": "armatur",
+   "bauteil": "ringende_1",
+   "name": "Ring-Ende-Hahn Halbring 1",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "ringende_2",
+   "typ": "armatur",
+   "bauteil": "ringende_2",
+   "name": "Ring-Ende-Hahn Halbring 2",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "sump_1",
+   "typ": "sumpf",
+   "bauteil": "sump_1",
+   "name": "Sumpftank 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "sump_2",
+   "typ": "sumpf",
+   "bauteil": "sump_2",
+   "name": "Sumpftank 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "abf_nft_1",
+   "typ": "abfahrt",
+   "bauteil": "abf_nft_1",
+   "name": "NFT-Abfahrten Halbring 1",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "abf_fd_1",
+   "typ": "abfahrt",
+   "bauteil": "abf_fd_1",
+   "name": "Flood-and-Drain-Abfahrten Halbring 1",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "abf_nft_2",
+   "typ": "abfahrt",
+   "bauteil": "abf_nft_2",
+   "name": "NFT-Abfahrten Halbring 2",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "abf_fd_2",
+   "typ": "abfahrt",
+   "bauteil": "abf_fd_2",
+   "name": "Flood-and-Drain-Abfahrten Halbring 2",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "nft_aussen",
+   "typ": "verbraucher",
+   "bauteil": "nft_aussen",
+   "name": "NFT Außen",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "nft_mitte",
+   "typ": "verbraucher",
+   "bauteil": "nft_mitte",
+   "name": "NFT Mitte",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "nft_innen",
+   "typ": "verbraucher",
+   "bauteil": "nft_innen",
+   "name": "NFT Innen",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "fd_aussen",
+   "typ": "verbraucher",
+   "bauteil": "fd_aussen",
+   "name": "Flood-and-Drain Außen",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "fd_mitte",
+   "typ": "verbraucher",
+   "bauteil": "fd_mitte",
+   "name": "Flood-and-Drain Mitte",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "venturi_1",
+   "typ": "armatur",
+   "bauteil": "venturi_1",
+   "name": "Venturi-Belüfter 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "venturi_2",
+   "typ": "armatur",
+   "bauteil": "venturi_2",
+   "name": "Venturi-Belüfter 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "feed",
+   "typ": "becken",
+   "bauteil": "feed",
+   "name": "Lebendfutter",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "nursery",
+   "typ": "becken",
+   "bauteil": "nursery",
+   "name": "Anzuchtbecken",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "sludge_1",
+   "typ": "speicher",
+   "bauteil": "sludge_1",
+   "name": "Schlammreaktor 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "sludge_2",
+   "typ": "speicher",
+   "bauteil": "sludge_2",
+   "name": "Schlammreaktor 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "permakultur",
+   "typ": "sink",
+   "bauteil": "permakultur",
+   "name": "Permakultur und Futterzucht",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "schwimmer_1",
+   "typ": "armatur",
+   "bauteil": "schwimmer_1",
+   "name": "Schwimmerschalter Sumpf 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "schwimmer_2",
+   "typ": "armatur",
+   "bauteil": "schwimmer_2",
+   "name": "Schwimmerschalter Sumpf 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "luftpumpe",
+   "typ": "pumpe",
+   "bauteil": "luftpumpe",
+   "name": "Notluftpumpe",
+   "linie": null,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "luftpumpe_1",
+   "typ": "pumpe",
+   "bauteil": "luftpumpe_1",
+   "name": "Belüftungspumpe 1",
+   "linie": 1,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
+  },
+  {
+   "id": "luftpumpe_2",
+   "typ": "pumpe",
+   "bauteil": "luftpumpe_2",
+   "name": "Belüftungspumpe 2",
+   "linie": 2,
+   "varianten": [
+    "ring_b2"
+   ],
+   "bemerkung": "Soll-Bauteil der Quelle (data/oasis-soll.json)"
   }
  ],
  "kanten": [
@@ -316,7 +878,10 @@
    "quelle": "E",
    "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s [E14 01.11.2026: d75 statt d63 wegen Heber-Reserve, R45 Abschnitt 2; Stutzen Pool und Filter-Einlauf bleiben d63 mit Reduziermuffe]",
    "v_m_s": 0.46,
-   "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)"
+   "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K02",
@@ -327,7 +892,10 @@
    "soll_l_min": 55.0,
    "quelle": "E",
    "bemerkung": "Auslauf Feinfilter zur zweiten grossen Pumpe der Linie (55 l/min); frueher direkt vom Pool-Seitenablauf (48,75 l/min)",
-   "v_m_s": 0.6
+   "v_m_s": 0.6,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K03",
@@ -339,7 +907,10 @@
    "quelle": "E",
    "bemerkung": "Bodenablauf Pool (Mitte, feststoffreich), >= d50 empfohlen gegen Verstopfen: Bodenablauf d50 reduziert auf d40 an der Pumpe",
    "v_m_s": 0.22,
-   "hoehe": "Poolboden Z -1685, Dual-Drain-Teilstrom 5-20 % (Davidson/Summerfelt)"
+   "hoehe": "Poolboden Z -1685, Dual-Drain-Teilstrom 5-20 % (Davidson/Summerfelt)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K04",
@@ -351,7 +922,10 @@
    "quelle": "E",
    "bemerkung": "Druckseite zum tangentialen Zulauf (Ø50 am Tank, Reduzierung d32/d50)",
    "v_m_s": 0.34,
-   "hoehe": "Zulauf 250 mm unter Rand"
+   "hoehe": "Zulauf 250 mm unter Rand",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K05",
@@ -362,7 +936,10 @@
    "soll_l_min": 12.5,
    "quelle": "E",
    "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Einlauf d63 des Feinfilters (T-Stueck mit Seitenablauf); d50 geprueft: 0,14 m/s, bleibt d50 (Tankanschluss Ø50, langsam gegen Verstopfen)",
-   "v_m_s": 0.14
+   "v_m_s": 0.14,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K06",
@@ -373,7 +950,10 @@
    "soll_l_min": 55.0,
    "quelle": "E",
    "bemerkung": "Auslauf Feinfilter d63 (110 l/min, T-Stueck d63/d50/d50) zur Saugseite der grossen Pumpe, 55 l/min je Pumpe; frueher 12,5 l/min (Sieb im Teilstrom, R30: Sieb sah nur 11 % des Stroms)",
-   "v_m_s": 0.6
+   "v_m_s": 0.6,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K07",
@@ -388,7 +968,10 @@
    "spuelung_l": 30,
    "spitze_l_min": 133,
    "laenge_mm": 700,
-   "gefaelle_pct": 5
+   "gefaelle_pct": 5,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K08",
@@ -400,7 +983,10 @@
    "quelle": "E",
    "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
    "v_m_s": 0.95,
-   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K09",
@@ -412,7 +998,10 @@
    "quelle": "E",
    "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
    "v_m_s": 0.95,
-   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K10",
@@ -424,7 +1013,10 @@
    "quelle": "E",
    "bemerkung": "Auslass Biofilter Ø50 (100 mm unter Rand) per Schwerkraft zum Verteiler; Biofilter liegt hoch (Spiegel ca. Z 1600) als Druckkopf fuer NFT (Z 1300) und Beete",
    "v_m_s": 1.21,
-   "hoehe": "Tankspiegel ueber der hoechsten Rinne"
+   "hoehe": "Tankspiegel ueber der hoechsten Rinne",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K11",
@@ -435,7 +1027,10 @@
    "soll_l_min": 54.5,
    "quelle": "E",
    "bemerkung": "Beete: Tropfrohr je Beet, mittlerer Bedarf bei 2 Zyklen/h; Spitze 5-8 min je Flutung (staffeln)",
-   "v_m_s": 0.94
+   "v_m_s": 0.94,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K12",
@@ -447,7 +1042,10 @@
    "quelle": "E",
    "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60) [L24: Auslegung 1 l/min je Rinne = 38 l/min (R06: etwa 1, hoechstens 2); das Tisch-Bauteil rechnet im Betrieb 0,5 l/min = 19 l/min, der Bypass nimmt den Rest]",
    "v_m_s": 1.03,
-   "hoehe": "Rinnenanfang Z 1000 plus Gefaelle (Biofilter-Spiegel ca. Z 1600 als Druckkopf, > 500 mm)"
+   "hoehe": "Rinnenanfang Z 1000 plus Gefaelle (Biofilter-Spiegel ca. Z 1600 als Druckkopf, > 500 mm)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K13",
@@ -458,7 +1056,10 @@
    "soll_l_min": 14.5,
    "quelle": "E",
    "bemerkung": "Ueberschuss/Bypass Linie 1 (Hauptkreislauf 110 minus Beete 54,5 minus NFT 38 minus Messkreis 3 = 14,5), direkt zum Ruecklauf, Drossel am Verteiler; Linie 2 ohne Messkreis 17,5 (K29)",
-   "v_m_s": 0.16
+   "v_m_s": 0.16,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K14",
@@ -471,7 +1072,10 @@
    "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (je Typ nach W40-BEET/D78: aussen_800 194 l in 3,6-5,1 min, innen_933 158 l in 2,9-4,2 min, aussen_933 256 l in 4,8-6,8 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K58 mit Pumpe (R45 Abschnitt 3)",
    "v_m_s": 0.6,
    "hoehe": "Beetboden Z -162 (aussen), -209 bis -173 (innen); Rohrende Bulkhead abs -192 (aussen), -239 bis -203 (innen); Achse Einzelabgang nach Reduktion d40 x d25 und Bogen etwa Z -260 (aussen) / -290 (innen) [W40-BEET, gerechnet aus Bauteil, ersetzt Annahme Z -100]; Sumpf-Einlauf muss darunter liegen: OFFEN (Montage, E20); Pool-Spiegel Z 515",
-   "spitze_l_min": 54
+   "spitze_l_min": 54,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K15",
@@ -483,7 +1087,10 @@
    "quelle": "E",
    "bemerkung": "Sammelrohr der Tische, Gefaelle 1,5 %",
    "v_m_s": 0.26,
-   "hoehe": "Rinnenende Z ca. 1000 minus Gefaelle 1,5 % (bis 45 mm bei 3 m Rinne); Rinnenunterkante 1000 seit W33 (R35/D60), vorher 1300"
+   "hoehe": "Rinnenende Z ca. 1000 minus Gefaelle 1,5 % (bis 45 mm bei 3 m Rinne); Rinnenunterkante 1000 seit W33 (R35/D60), vorher 1300",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K16",
@@ -495,7 +1102,10 @@
    "quelle": "E",
    "bemerkung": "Sammelrinne/Sammelrohr Schwerkraft (Gefaelle >= 1 %) in den Pool; 107 l/min Zulauf minus 5 l/min Teilstrom zum Zweitbecken (K33)",
    "v_m_s": 0.22,
-   "hoehe": "oberhalb Wasserspiegel Z 515"
+   "hoehe": "oberhalb Wasserspiegel Z 515",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K17",
@@ -507,7 +1117,10 @@
    "quelle": "E",
    "bemerkung": "Seitenablauf Pool (97,5 l/min je Linie) in den Einlauf d63 des Feinfilters im Hauptstrom (D55, T55); dort mischt sich das Klaerwasser des Absetzers (K05, 12,5 l/min), Summe 110 l/min; Saugseite <= 1,0 m/s [E14 01.11.2026: d75 statt d63 wegen Heber-Reserve, R45 Abschnitt 2; Stutzen Pool und Filter-Einlauf bleiben d63 mit Reduziermuffe]",
    "v_m_s": 0.46,
-   "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)"
+   "hoehe": "Seitenablauf Pool Mitte Z 340 (Vorschlag, Ueberdeckung 175 mm gegen Wirbel, Frage F2); R28 nannte Z ca. 450 (65 mm, zu flach)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K18",
@@ -518,7 +1131,10 @@
    "soll_l_min": 55.0,
    "quelle": "E",
    "bemerkung": "Auslauf Feinfilter zur zweiten grossen Pumpe der Linie (55 l/min); frueher direkt vom Pool-Seitenablauf (48,75 l/min)",
-   "v_m_s": 0.6
+   "v_m_s": 0.6,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K19",
@@ -530,7 +1146,10 @@
    "quelle": "E",
    "bemerkung": "Bodenablauf Pool (Mitte, feststoffreich), >= d50 empfohlen gegen Verstopfen: Bodenablauf d50 reduziert auf d40 an der Pumpe",
    "v_m_s": 0.22,
-   "hoehe": "Poolboden Z -1685, Dual-Drain-Teilstrom 5-20 % (Davidson/Summerfelt)"
+   "hoehe": "Poolboden Z -1685, Dual-Drain-Teilstrom 5-20 % (Davidson/Summerfelt)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K20",
@@ -542,7 +1161,10 @@
    "quelle": "E",
    "bemerkung": "Druckseite zum tangentialen Zulauf (Ø50 am Tank, Reduzierung d32/d50)",
    "v_m_s": 0.34,
-   "hoehe": "Zulauf 250 mm unter Rand"
+   "hoehe": "Zulauf 250 mm unter Rand",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K21",
@@ -553,7 +1175,10 @@
    "soll_l_min": 12.5,
    "quelle": "E",
    "bemerkung": "Auslass Absetzer (Ø50, 100 mm unter Rand) Schwerkraft zum Einlauf d63 des Feinfilters (T-Stueck mit Seitenablauf); d50 geprueft: 0,14 m/s, bleibt d50 (Tankanschluss Ø50, langsam gegen Verstopfen)",
-   "v_m_s": 0.14
+   "v_m_s": 0.14,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K22",
@@ -564,7 +1189,10 @@
    "soll_l_min": 55.0,
    "quelle": "E",
    "bemerkung": "Auslauf Feinfilter d63 (110 l/min, T-Stueck d63/d50/d50) zur Saugseite der grossen Pumpe, 55 l/min je Pumpe; frueher 12,5 l/min (Sieb im Teilstrom, R30: Sieb sah nur 11 % des Stroms)",
-   "v_m_s": 0.6
+   "v_m_s": 0.6,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K23",
@@ -579,7 +1207,10 @@
    "spuelung_l": 30,
    "spitze_l_min": 133,
    "laenge_mm": 700,
-   "gefaelle_pct": 5
+   "gefaelle_pct": 5,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K24",
@@ -591,7 +1222,10 @@
    "quelle": "E",
    "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
    "v_m_s": 0.95,
-   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K25",
@@ -603,7 +1237,10 @@
    "quelle": "E",
    "bemerkung": "Druckseite d40 je Pumpe, vereinigt vor dem Tank zu d50",
    "v_m_s": 0.95,
-   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)"
+   "hoehe": "Foerderhoehe ca. 2,0 m (D38/hydraulics 2.8)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K26",
@@ -615,7 +1252,10 @@
    "quelle": "E",
    "bemerkung": "Auslass Biofilter Ø50 (100 mm unter Rand) per Schwerkraft zum Verteiler; Biofilter liegt hoch (Spiegel ca. Z 1600) als Druckkopf fuer NFT (Z 1300) und Beete",
    "v_m_s": 1.21,
-   "hoehe": "Tankspiegel ueber der hoechsten Rinne"
+   "hoehe": "Tankspiegel ueber der hoechsten Rinne",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K27",
@@ -626,7 +1266,10 @@
    "soll_l_min": 54.5,
    "quelle": "E",
    "bemerkung": "Beete: Tropfrohr je Beet, mittlerer Bedarf bei 2 Zyklen/h; Spitze 5-8 min je Flutung (staffeln)",
-   "v_m_s": 0.94
+   "v_m_s": 0.94,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K28",
@@ -638,7 +1281,10 @@
    "quelle": "E",
    "bemerkung": "NFT-Tische: Zulaufverteiler je Tisch, Schlauch d20 je Rinne (1 l/min); Rinnenunterkante Z 1000 (W33, R35/D60) [L24: Auslegung 1 l/min je Rinne = 38 l/min (R06: etwa 1, hoechstens 2); das Tisch-Bauteil rechnet im Betrieb 0,5 l/min = 19 l/min, der Bypass nimmt den Rest]",
    "v_m_s": 1.03,
-   "hoehe": "Rinnenanfang Z 1000 plus Gefaelle"
+   "hoehe": "Rinnenanfang Z 1000 plus Gefaelle",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K29",
@@ -649,7 +1295,10 @@
    "soll_l_min": 17.5,
    "quelle": "E",
    "bemerkung": "Ueberschuss/Bypass (Hauptkreislauf 110 minus Pflanzenbedarf 92,5) direkt zum Ruecklauf, Drossel am Verteiler",
-   "v_m_s": 0.19
+   "v_m_s": 0.19,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K30",
@@ -662,7 +1311,10 @@
    "bemerkung": "Glockensiphon-Ablauf der Beete: Bauteil-Standrohr d25, Einzelabgang d40 <= 0,5 m, Sammelleitung d50 mit Gefaelle; Spitze 47-54 l/min je Beet (je Typ nach W40-BEET/D78: aussen_800 194 l in 3,6-5,1 min, innen_933 158 l in 2,9-4,2 min, aussen_933 256 l in 4,8-6,8 min), hoechstens 3 Beete gleichzeitig, Mittel 54,5 l/min (R45 Abschnitt 1). Beetablauf liegt unter dem Pool-Wasserspiegel Z 515: Schwerkraft zum Pool nicht moeglich, deshalb Ablauf in den Beet-Sumpf (500 l je Linie) und Foerderleitung K59 mit Pumpe (R45 Abschnitt 3)",
    "v_m_s": 0.6,
    "hoehe": "Beetboden Z -162 (aussen), -209 bis -173 (innen); Rohrende Bulkhead abs -192 (aussen), -239 bis -203 (innen); Achse Einzelabgang nach Reduktion d40 x d25 und Bogen etwa Z -260 (aussen) / -290 (innen) [W40-BEET, gerechnet aus Bauteil, ersetzt Annahme Z -100]; Sumpf-Einlauf muss darunter liegen: OFFEN (Montage, E20); Pool-Spiegel Z 515",
-   "spitze_l_min": 54
+   "spitze_l_min": 54,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K31",
@@ -674,7 +1326,10 @@
    "quelle": "E",
    "bemerkung": "Sammelrohr der Tische, Gefaelle 1,5 %",
    "v_m_s": 0.26,
-   "hoehe": "Rinnenende Z ca. 1000 minus Gefaelle 1,5 % (bis 45 mm bei 3 m Rinne); Rinnenunterkante 1000 seit W33 (R35/D60), vorher 1300"
+   "hoehe": "Rinnenende Z ca. 1000 minus Gefaelle 1,5 % (bis 45 mm bei 3 m Rinne); Rinnenunterkante 1000 seit W33 (R35/D60), vorher 1300",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K32",
@@ -686,7 +1341,10 @@
    "quelle": "E",
    "bemerkung": "Sammelrinne/Sammelrohr Schwerkraft (Gefaelle >= 1 %) in den Pool",
    "v_m_s": 0.24,
-   "hoehe": "oberhalb Wasserspiegel Z 515"
+   "hoehe": "oberhalb Wasserspiegel Z 515",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K33",
@@ -697,7 +1355,10 @@
    "soll_l_min": 5.0,
    "quelle": "A",
    "bemerkung": "Teilstrom zum Zweitbecken (Aufzucht), Wasserspiegel gleich dem Pool",
-   "v_m_s": 0.05
+   "v_m_s": 0.05,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K34",
@@ -708,7 +1369,10 @@
    "soll_l_min": 5.0,
    "quelle": "A",
    "bemerkung": "Verbindungsrohr/Ueberlauf zum Pool",
-   "v_m_s": 0.03
+   "v_m_s": 0.03,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K35",
@@ -720,7 +1384,10 @@
    "quelle": "A",
    "bemerkung": "Messkreis 3 l/min zur Messzelle neben dem Verteiler (Messpumpe 2,9 W, Foerderhoehe 1,5 m statt 2,5-m-Stapel; R37 Befund 9, Zelle 20 l = 6,7 min Verweilzeit)",
    "v_m_s": 0.25,
-   "hoehe": "Foerderhoehe 1,5 m [A]"
+   "hoehe": "Foerderhoehe 1,5 m [A]",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K37",
@@ -731,7 +1398,10 @@
    "soll_l_min": 3.0,
    "quelle": "A",
    "bemerkung": "Ablauf Messzelle (Stutzen d25) per Schwerkraft zum Pool; Rueckfluss des Messwassers",
-   "v_m_s": 0.14
+   "v_m_s": 0.14,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K38",
@@ -742,7 +1412,10 @@
    "soll_l_min": 0.003,
    "quelle": "E",
    "bemerkung": "Dosierleitung Base (Schlauch 6/9, Pumpe Base): praktisch 0,43 kg/Tag je halb Ca(OH)2/KOH bei 100 g/l = 4,3 l/Tag; Pumpe 4,5-220 ml/min, in die Sammelrinne oder den Pool, verduennt (R27, R37 Befund 8, D61: 130 g TAN/Tag)",
-   "v_m_s": 0.0
+   "v_m_s": 0.0,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K39",
@@ -754,7 +1427,10 @@
    "quelle": "A",
    "bemerkung": "Frischwasser von aussen zum Aktivkohlefilter; Spitze 10 l/min beim Nachspeisen, Mittel 0,47 l/min (0,68 m3/Tag bei 2 %/Tag, SRAC 454; D66: kein Stehenlassen, kein Vorrat) [R45: Durchfluss durch die Kohle auf 4 l/min begrenzt (Pool-Nachspeisung 2 + Quarantaene-Wechsel 2)]",
    "v_m_s": 0.19,
-   "mittel_l_min": 0.47
+   "mittel_l_min": 0.47,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K40",
@@ -766,7 +1442,10 @@
    "quelle": "A",
    "bemerkung": "Nachspeisung ueber Schwimmerventil am Pool (Spitze 10 l/min, Mittel 0,47 l/min = 0,68 m3/Tag); entchlort ueber Aktivkohle statt 2 Tage Standzeit (D66, R37 Befund 3) [R45: Durchfluss durch die Kohle auf 4 l/min begrenzt (Pool-Nachspeisung 2 + Quarantaene-Wechsel 2)]",
    "v_m_s": 0.19,
-   "mittel_l_min": 0.47
+   "mittel_l_min": 0.47,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K41",
@@ -777,7 +1456,10 @@
    "soll_l_min": 2.0,
    "quelle": "A",
    "bemerkung": "Wasserwechsel Quarantaene 2 l/min aus der entchlorten Frischwasserleitung (R37 Befund 9); Becken 0,4 m3, 2,8 g TAN/Tag; Ablauf des Wechselwassers (Ueberlauf zum Abwasser/Pool) Montage",
-   "v_m_s": 0.17
+   "v_m_s": 0.17,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K42",
@@ -788,7 +1470,10 @@
    "soll_l_min": 5.0,
    "quelle": "E",
    "bemerkung": "Umlauf Quarantaene zum kleinen Biofilter (37 l Bioballs): TAN-Mindestdurchfluss 2,6 l/min (2,8 g TAN/Tag, Ziel 1,5 mg/l, Biofilter 50 %), 5 l/min = 2fach; Becken 0,4 m3 in 80 min umgewaelzt",
-   "v_m_s": 0.24
+   "v_m_s": 0.24,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K43",
@@ -799,7 +1484,10 @@
    "soll_l_min": 5.0,
    "quelle": "E",
    "bemerkung": "Rueckfluss vom Biofilter in das Becken",
-   "v_m_s": 0.24
+   "v_m_s": 0.24,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K44",
@@ -810,7 +1498,10 @@
    "soll_l_min": 130,
    "quelle": "E R45",
    "bemerkung": "Ausstroemer Pool; Luftbedarf gesamt: R28 nannte 90-180 l/min aus 1,7-3,0 kg O2/Tag; nach D61 sind es 1,3-2,2 kg O2/Tag (system-specs sauerstoff), zurueckgerechnet auf den R28-Ansatz 70-130 l/min; eine Gegenrechnung mit OTE 13 % und 0,28 g O2/l Luft ergibt nur 25-63 l/min. Widerspruch offen (Frage M10: Geblaese am hoeheren Wert dimensionieren), Hauptleitung d40 [R45 Abschnitt 4: Widerspruch geloest, 130 l/min Planwert plausibel (Spitze 205), die 25-63 l/min rechneten mit der Reinwasser-OTE; zwei Linear-Membranpumpen N+1 fuer mindestens 26 kPa; Hauptverteiler 6-fach, Pool-Verteiler 4-fach]",
-   "spitze_l_min": 205
+   "spitze_l_min": 205,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K45",
@@ -820,7 +1511,10 @@
    "dn": 25,
    "soll_l_min": null,
    "quelle": "A",
-   "bemerkung": "Belueftung Biofilter 1 (Ø16 Anschluss im Deckel)"
+   "bemerkung": "Belueftung Biofilter 1 (Ø16 Anschluss im Deckel)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K46",
@@ -830,7 +1524,10 @@
    "dn": 25,
    "soll_l_min": null,
    "quelle": "A",
-   "bemerkung": "Belueftung Biofilter 2"
+   "bemerkung": "Belueftung Biofilter 2",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K47",
@@ -840,7 +1537,10 @@
    "dn": 20,
    "soll_l_min": null,
    "quelle": "A",
-   "bemerkung": "optional"
+   "bemerkung": "optional",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K48",
@@ -850,7 +1550,10 @@
    "dn": 20,
    "soll_l_min": null,
    "quelle": "A",
-   "bemerkung": "optional"
+   "bemerkung": "optional",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K49",
@@ -860,7 +1563,10 @@
    "dn": 20,
    "soll_l_min": 2.0,
    "quelle": "E",
-   "bemerkung": "Belueftung Quarantaene (Notstrom!): O2-Bedarf 0,2-0,5 g/h Fisch (2,4 kg, 80-190 mg/kg/h) plus Nitrifikation 0,5 g/h = 0,7-1,0 g O2/h; bei 0,036 g O2 je l Luft (OTE 13 %) 0,3-0,5 l/min, ausgelegt 2 l/min [A, Reserve]"
+   "bemerkung": "Belueftung Quarantaene (Notstrom!): O2-Bedarf 0,2-0,5 g/h Fisch (2,4 kg, 80-190 mg/kg/h) plus Nitrifikation 0,5 g/h = 0,7-1,0 g O2/h; bei 0,036 g O2 je l Luft (OTE 13 %) 0,3-0,5 l/min, ausgelegt 2 l/min [A, Reserve]",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K51",
@@ -870,7 +1576,10 @@
    "dn": 20,
    "soll_l_min": null,
    "quelle": "A",
-   "bemerkung": "Aufzucht"
+   "bemerkung": "Aufzucht",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K52",
@@ -881,7 +1590,10 @@
    "soll_l_min": 0.0,
    "quelle": "A",
    "bemerkung": "Ansetzen der Stammloesung von Hand (Einfuellstutzen d32 im Deckel, Schlauch), ca. 5-8 l Wasser je Liter Ansatz einmal je 2-3 Wochen; kein Dauerfluss",
-   "v_m_s": 0.0
+   "v_m_s": 0.0,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K53",
@@ -893,7 +1605,10 @@
    "quelle": "E",
    "bemerkung": "Entnahme Stammloesung (Stutzen d25 unten, Kugelhahn) zur Saugseite der Base-Pumpe, Schlauch 6/9; Fass reicht 15-35 Tage je Base (R37 Befund 8)",
    "v_m_s": 0.0,
-   "hoehe": "Fass unten Z 60, Pumpe auf dem Regalboden Z 898: Pumpe saugt von unten (Schlauchpumpe selbstansaugend)"
+   "hoehe": "Fass unten Z 60, Pumpe auf dem Regalboden Z 898: Pumpe saugt von unten (Schlauchpumpe selbstansaugend)",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K54",
@@ -904,7 +1619,10 @@
    "soll_l_min": 0.0004,
    "quelle": "E",
    "bemerkung": "Saugleitung Eisenchelat-Kanister zur Eisen-Pumpe, Schlauch 6/9; ca. 12 l Loesung (100 g/l) je Gabe alle 3 Wochen [A, Chelatanteil]",
-   "v_m_s": 0.0
+   "v_m_s": 0.0,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K55",
@@ -915,7 +1633,10 @@
    "soll_l_min": 0.0004,
    "quelle": "E",
    "bemerkung": "Dosierleitung Eisen (Schlauch 6/9, Pumpe Eisen) in den Pool/Ruecklauf, verduennt",
-   "v_m_s": 0.0
+   "v_m_s": 0.0,
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K56",
@@ -928,7 +1649,10 @@
    "bemerkung": "NOTUEBERLAUF/BYPASS am Feinfilter vorbei (nur Stoerfall, Kugelhahn im Normalbetrieb zu): bei verstopftem Korb (Hoch-Schwimmer MS14/MS15, Alarm) Hand-/Magnetventil auf, damit die grossen Pumpen der Linie nicht trockenlaufen; T-Stueck d63/d50 an der Saugseite beider Pumpen; Filterkorb danach spuelen (T55 Spuelanschluss)",
    "v_m_s": 0.75,
    "hoehe": "Anschluss an die Saugleitung hinter dem Filterauslauf",
-   "betrieb": "stoerfall"
+   "betrieb": "stoerfall",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K57",
@@ -941,7 +1665,10 @@
    "bemerkung": "NOTUEBERLAUF/BYPASS am Feinfilter vorbei (nur Stoerfall, Kugelhahn im Normalbetrieb zu): bei verstopftem Korb (Hoch-Schwimmer MS14/MS15, Alarm) Hand-/Magnetventil auf, damit die grossen Pumpen der Linie nicht trockenlaufen; T-Stueck d63/d50 an der Saugseite beider Pumpen; Filterkorb danach spuelen (T55 Spuelanschluss)",
    "v_m_s": 0.75,
    "hoehe": "Anschluss an die Saugleitung hinter dem Filterauslauf",
-   "betrieb": "stoerfall"
+   "betrieb": "stoerfall",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K58",
@@ -954,7 +1681,10 @@
    "bemerkung": "Foerderleitung Beet-Sumpf zum Ruecklauf-Sammelrohr oberhalb Z 515: Teichpumpe 60 W, Arbeitspunkt 61 l/min bei 1,47 m, Rueckschlagventil d40, <= 4 m (R45 Abschnitt 3)",
    "v_m_s": 0.94,
    "spitze_l_min": 61,
-   "hoehe": "Sumpf-Wasserspiegel bis Sammelrohr statisch 1,0-1,5 m [A]"
+   "hoehe": "Sumpf-Wasserspiegel bis Sammelrohr statisch 1,0-1,5 m [A]",
+   "varianten": [
+    "a_plus"
+   ]
   },
   {
    "id": "K59",
@@ -967,7 +1697,1396 @@
    "bemerkung": "Foerderleitung Beet-Sumpf zum Ruecklauf-Sammelrohr oberhalb Z 515: Teichpumpe 60 W, Arbeitspunkt 61 l/min bei 1,47 m, Rueckschlagventil d40, <= 4 m (R45 Abschnitt 3)",
    "v_m_s": 0.94,
    "spitze_l_min": 61,
-   "hoehe": "Sumpf-Wasserspiegel bis Sammelrohr statisch 1,0-1,5 m [A]"
+   "hoehe": "Sumpf-Wasserspiegel bis Sammelrohr statisch 1,0-1,5 m [A]",
+   "varianten": [
+    "a_plus"
+   ]
+  },
+  {
+   "id": "S-e13",
+   "soll_weg": "e13",
+   "von": "control",
+   "nach": "filterpumpe_1",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e13",
+   "bemerkung": "Strom Pumpe Fischtank zu Filter 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e14",
+   "soll_weg": "e14",
+   "von": "control",
+   "nach": "hauptpumpe_1",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e14",
+   "bemerkung": "Strom Pumpe Sumpf 1 (Showcase: Strom Sumpftank)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e15",
+   "soll_weg": "e15",
+   "von": "control",
+   "nach": "hauptpumpe_2",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e15",
+   "bemerkung": "Strom Pumpe Sumpf 2 (Showcase: Strom Sumpftank)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e17",
+   "soll_weg": "e17",
+   "von": "rain",
+   "nach": "nachspeise",
+   "medium": "Wasser",
+   "antrieb": "offen",
+   "dn": 25,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Nachspeisung d25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e17",
+   "bemerkung": "Regenwasser (erste Wahl)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e18",
+   "soll_weg": "e18",
+   "von": "tap",
+   "nach": "nachspeise",
+   "medium": "Wasser",
+   "antrieb": "offen",
+   "dn": 25,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Nachspeisung d25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e18",
+   "bemerkung": "Frischwasser (zweite Wahl)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e19",
+   "soll_weg": "e19",
+   "von": "nachspeise",
+   "nach": "fish",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 25,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Nachspeisung d25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e19",
+   "bemerkung": "Nachspeisung in den Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e20",
+   "soll_weg": "e20",
+   "von": "fish",
+   "nach": "filterpumpe_1",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Tauchpumpe im Becken, keine Leitung)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e20",
+   "bemerkung": "Fischtank-Ablauf zur Pumpe der Linie 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "ohne_leitung"
+  },
+  {
+   "id": "S-e21",
+   "soll_weg": "e21",
+   "von": "filterpumpe_1",
+   "nach": "vortex_1",
+   "medium": "Wasser",
+   "antrieb": "pumpe",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Saug- und Druckleitung der Pumpen d50)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e21",
+   "bemerkung": "Zulauf Vortex 1 (Linie 1)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e22",
+   "soll_weg": "e22",
+   "von": "filterpumpe_2",
+   "nach": "vortex_2",
+   "medium": "Wasser",
+   "antrieb": "pumpe",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Saug- und Druckleitung der Pumpen d50)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e22",
+   "bemerkung": "Zulauf Vortex 2 (Linie 2)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e23",
+   "soll_weg": "e23",
+   "von": "vortex_1",
+   "nach": "bio_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Ueberlaeufe der Becken und Notueberlauf d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e23",
+   "bemerkung": "Überlauf Vortex 1 zum Biofilter 1 (Schwerkraft)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e24",
+   "soll_weg": "e24",
+   "von": "vortex_2",
+   "nach": "bio_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Ueberlaeufe der Becken und Notueberlauf d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e24",
+   "bemerkung": "Überlauf Vortex 2 zum Biofilter 2 (Schwerkraft)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e25",
+   "soll_weg": "e25",
+   "von": "bio_1",
+   "nach": "ring_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 110,
+   "quelle": "Q oasis-soll.json e25",
+   "bemerkung": "Biofilter 1 speist Halbring 1 (Schwerkraft)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e26",
+   "soll_weg": "e26",
+   "von": "bio_2",
+   "nach": "ring_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 110,
+   "quelle": "Q oasis-soll.json e26",
+   "bemerkung": "Biofilter 2 speist Halbring 2 (Schwerkraft)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e27",
+   "soll_weg": "e27",
+   "von": "ring_1",
+   "nach": "kupplungshahn",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 75,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle (Ring d75, Kupplungsstrecke d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e27",
+   "bemerkung": "Kupplungsstrecke 1 schließt den Ring, im Betrieb offen (Halbring 1 zu 2)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e28",
+   "soll_weg": "e28",
+   "von": "kupplungshahn",
+   "nach": "ring_2",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 75,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle (Ring d75, Kupplungsstrecke d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e28",
+   "bemerkung": "Kupplungsstrecke 1 schließt den Ring, im Betrieb offen (Halbring 1 zu 2)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e29",
+   "soll_weg": "e29",
+   "von": "ring_2",
+   "nach": "kupplungshahn",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 75,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle (Ring d75, Kupplungsstrecke d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e29",
+   "bemerkung": "Kupplungsstrecke 2 schließt den Ring, im Betrieb offen (Halbring 2 zu 1)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e30",
+   "soll_weg": "e30",
+   "von": "kupplungshahn",
+   "nach": "ring_1",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 75,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle (Ring d75, Kupplungsstrecke d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e30",
+   "bemerkung": "Kupplungsstrecke 2 schließt den Ring, im Betrieb offen (Halbring 2 zu 1)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e31",
+   "soll_weg": "e31",
+   "von": "ring_1",
+   "nach": "ringende_1",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 17.5,
+   "quelle": "Q oasis-soll.json e31",
+   "bemerkung": "Ablassstelle des Rings, Überschuss 17,5 l/min",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e32",
+   "soll_weg": "e32",
+   "von": "ring_2",
+   "nach": "ringende_2",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 17.5,
+   "quelle": "Q oasis-soll.json e32",
+   "bemerkung": "Ablassstelle des Rings, Überschuss 17,5 l/min",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e33",
+   "soll_weg": "e33",
+   "von": "ringende_1",
+   "nach": "sump_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e33",
+   "bemerkung": "Überschuss in den Sumpf der eigenen Linie",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e34",
+   "soll_weg": "e34",
+   "von": "ringende_2",
+   "nach": "sump_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e34",
+   "bemerkung": "Überschuss in den Sumpf der eigenen Linie",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e35",
+   "soll_weg": "e35",
+   "von": "ring_1",
+   "nach": "abf_nft_1",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 32,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 38,
+   "quelle": "Q oasis-soll.json e35",
+   "bemerkung": "12 × Abzweig d32, zusammen 38 l/min",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e36",
+   "soll_weg": "e36",
+   "von": "ring_1",
+   "nach": "abf_fd_1",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 40,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 54.5,
+   "quelle": "Q oasis-soll.json e36",
+   "bemerkung": "7 × Abzweig d40, zusammen 54,5 l/min",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e37",
+   "soll_weg": "e37",
+   "von": "ring_2",
+   "nach": "abf_nft_2",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 32,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 38,
+   "quelle": "Q oasis-soll.json e37",
+   "bemerkung": "12 × Abzweig d32, zusammen 38 l/min",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e38",
+   "soll_weg": "e38",
+   "von": "ring_2",
+   "nach": "abf_fd_2",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 40,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": 54.5,
+   "quelle": "Q oasis-soll.json e38",
+   "bemerkung": "7 × Abzweig d40, zusammen 54,5 l/min",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e39",
+   "soll_weg": "e39",
+   "von": "abf_nft_1",
+   "nach": "nft_aussen",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 19,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e39",
+   "bemerkung": "4 × Fallleitung ID19, Ring Außen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e40",
+   "soll_weg": "e40",
+   "von": "abf_nft_1",
+   "nach": "nft_mitte",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 19,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e40",
+   "bemerkung": "3 × Fallleitung ID19, Ring Mitte",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e41",
+   "soll_weg": "e41",
+   "von": "abf_nft_1",
+   "nach": "nft_innen",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 19,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e41",
+   "bemerkung": "5 × Fallleitung ID19, Ring Innen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e42",
+   "soll_weg": "e42",
+   "von": "abf_fd_1",
+   "nach": "fd_aussen",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e42",
+   "bemerkung": "4 × Fallleitung ID25, Ring Außen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e43",
+   "soll_weg": "e43",
+   "von": "abf_fd_1",
+   "nach": "fd_mitte",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e43",
+   "bemerkung": "3 × Fallleitung ID25, Ring Mitte",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e44",
+   "soll_weg": "e44",
+   "von": "abf_nft_2",
+   "nach": "nft_aussen",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 19,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e44",
+   "bemerkung": "4 × Fallleitung ID19, Ring Außen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e45",
+   "soll_weg": "e45",
+   "von": "abf_nft_2",
+   "nach": "nft_mitte",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 19,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e45",
+   "bemerkung": "3 × Fallleitung ID19, Ring Mitte",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e46",
+   "soll_weg": "e46",
+   "von": "abf_nft_2",
+   "nach": "nft_innen",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 19,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e46",
+   "bemerkung": "5 × Fallleitung ID19, Ring Innen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e47",
+   "soll_weg": "e47",
+   "von": "abf_fd_2",
+   "nach": "fd_aussen",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e47",
+   "bemerkung": "4 × Fallleitung ID25, Ring Außen",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e48",
+   "soll_weg": "e48",
+   "von": "abf_fd_2",
+   "nach": "fd_mitte",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "Quelle",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e48",
+   "bemerkung": "3 × Fallleitung ID25, Ring Mitte",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e49",
+   "soll_weg": "e49",
+   "von": "fd_aussen",
+   "nach": "sump_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e49",
+   "bemerkung": "Flood-and-Drain-Ablauf Außen Linie 1 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e50",
+   "soll_weg": "e50",
+   "von": "fd_mitte",
+   "nach": "sump_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e50",
+   "bemerkung": "Flood-and-Drain-Ablauf Mitte Linie 1 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e51",
+   "soll_weg": "e51",
+   "von": "fd_aussen",
+   "nach": "sump_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e51",
+   "bemerkung": "Flood-and-Drain-Ablauf Außen Linie 2 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e52",
+   "soll_weg": "e52",
+   "von": "fd_mitte",
+   "nach": "sump_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e52",
+   "bemerkung": "Flood-and-Drain-Ablauf Mitte Linie 2 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e53",
+   "soll_weg": "e53",
+   "von": "nft_aussen",
+   "nach": "sump_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e53",
+   "bemerkung": "NFT-Ablauf Außen Linie 1 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e54",
+   "soll_weg": "e54",
+   "von": "nft_mitte",
+   "nach": "sump_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e54",
+   "bemerkung": "NFT-Ablauf Mitte Linie 1 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e55",
+   "soll_weg": "e55",
+   "von": "nft_aussen",
+   "nach": "sump_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e55",
+   "bemerkung": "NFT-Ablauf Außen Linie 2 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e56",
+   "soll_weg": "e56",
+   "von": "nft_mitte",
+   "nach": "sump_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D106 (Sumpf-Zulaeufe Schlauch ID25)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e56",
+   "bemerkung": "NFT-Ablauf Mitte Linie 2 in den Sumpf",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e57",
+   "soll_weg": "e57",
+   "von": "nft_innen",
+   "nach": "fish",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": null,
+   "schlauch_id": 25,
+   "nennweite_herkunft": "D138 (Ruecklauf NFT Innen in den Fischtank, Schlauch ID25 wie die Sumpf-Zulaeufe D106)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e57",
+   "bemerkung": "NFT-Ablauf Innenring direkt in den Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e58",
+   "soll_weg": "e58",
+   "von": "sump_1",
+   "nach": "hauptpumpe_1",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Tauchpumpe im Becken, keine Leitung)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e58",
+   "bemerkung": "Sumpf 1 zur Pumpe",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "ohne_leitung"
+  },
+  {
+   "id": "S-e59",
+   "soll_weg": "e59",
+   "von": "hauptpumpe_1",
+   "nach": "venturi_1",
+   "medium": "Wasser",
+   "antrieb": "pumpe",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Saug- und Druckleitung der Pumpen d50)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e59",
+   "bemerkung": "Rückförderung Sumpf 1 zum Venturi-Belüfter",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e71",
+   "soll_weg": "e71",
+   "von": "venturi_1",
+   "nach": "fish",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Saug- und Druckleitung der Pumpen d50)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e71",
+   "bemerkung": "Belüftetes Wasser von Sumpf 1 in den Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e60",
+   "soll_weg": "e60",
+   "von": "sump_2",
+   "nach": "hauptpumpe_2",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Tauchpumpe im Becken, keine Leitung)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e60",
+   "bemerkung": "Sumpf 2 zur Pumpe",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "ohne_leitung"
+  },
+  {
+   "id": "S-e61",
+   "soll_weg": "e61",
+   "von": "hauptpumpe_2",
+   "nach": "venturi_2",
+   "medium": "Wasser",
+   "antrieb": "pumpe",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Saug- und Druckleitung der Pumpen d50)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e61",
+   "bemerkung": "Rückförderung Sumpf 2 zum Venturi-Belüfter",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e72",
+   "soll_weg": "e72",
+   "von": "venturi_2",
+   "nach": "fish",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Saug- und Druckleitung der Pumpen d50)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e72",
+   "bemerkung": "Belüftetes Wasser von Sumpf 2 in den Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e62",
+   "soll_weg": "e62",
+   "von": "bio_1",
+   "nach": "feed",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Ueberlaeufe der Becken und Notueberlauf d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e62",
+   "bemerkung": "gereinigtes Biofilterwasser zum Lebendfutter",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e63",
+   "soll_weg": "e63",
+   "von": "feed",
+   "nach": "nursery",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Ueberlaeufe der Becken und Notueberlauf d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e63",
+   "bemerkung": "Überlauf Lebendfutterbecken zum Anzuchtbecken",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e70",
+   "soll_weg": "e70",
+   "von": "nursery",
+   "nach": "fish",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Ueberlaeufe der Becken und Notueberlauf d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e70",
+   "bemerkung": "Überlauf Anzuchtbecken in den Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e64",
+   "soll_weg": "e64",
+   "von": "vortex_1",
+   "nach": "sludge_1",
+   "medium": "Schlamm",
+   "antrieb": "schwerkraft",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Schlammleitung d50 vom Bodenablass)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e64",
+   "bemerkung": "Schlammablass Linie 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e65",
+   "soll_weg": "e65",
+   "von": "vortex_2",
+   "nach": "sludge_2",
+   "medium": "Schlamm",
+   "antrieb": "schwerkraft",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Schlammleitung d50 vom Bodenablass)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e65",
+   "bemerkung": "Schlammablass Linie 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e66",
+   "soll_weg": "e66",
+   "von": "bio_1",
+   "nach": "sludge_1",
+   "medium": "Schlamm",
+   "antrieb": "schwerkraft",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Schlammleitung d50 vom Bodenablass)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e66",
+   "bemerkung": "eventuell: Feststoffe aus dem Biofilter 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e67",
+   "soll_weg": "e67",
+   "von": "bio_2",
+   "nach": "sludge_2",
+   "medium": "Schlamm",
+   "antrieb": "schwerkraft",
+   "dn": 50,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Schlammleitung d50 vom Bodenablass)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e67",
+   "bemerkung": "eventuell: Feststoffe aus dem Biofilter 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e68",
+   "soll_weg": "e68",
+   "von": "sludge_1",
+   "nach": "permakultur",
+   "medium": "Schlamm",
+   "antrieb": "von-hand",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (von Hand, keine Leitung)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e68",
+   "bemerkung": "Schlamm von Hand in das Permakultur-Modul",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "ohne_leitung"
+  },
+  {
+   "id": "S-e69",
+   "soll_weg": "e69",
+   "von": "sludge_2",
+   "nach": "permakultur",
+   "medium": "Schlamm",
+   "antrieb": "von-hand",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (von Hand, keine Leitung)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e69",
+   "bemerkung": "Schlamm von Hand in das Permakultur-Modul",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "ohne_leitung"
+  },
+  {
+   "id": "S-e75",
+   "soll_weg": "e75",
+   "von": "schwimmer_1",
+   "nach": "control",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e75",
+   "bemerkung": "Meldung Hochstand Sumpf 1: die Steuerung schaltet die Pumpe Fischtank → Filter 1 ab",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e76",
+   "soll_weg": "e76",
+   "von": "schwimmer_2",
+   "nach": "control",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e76",
+   "bemerkung": "Meldung Hochstand Sumpf 2: die Steuerung schaltet die Pumpe Fischtank → Filter 2 ab",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e77",
+   "soll_weg": "e77",
+   "von": "luftpumpe",
+   "nach": "fish",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e77",
+   "bemerkung": "Luft für den Luftstein im Haupt-Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e80",
+   "soll_weg": "e80",
+   "von": "control",
+   "nach": "luftpumpe",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e80",
+   "bemerkung": "Strom für die Notluftpumpe (über die Steuerung aus Batteriespeicher und PV)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e81",
+   "soll_weg": "e81",
+   "von": "bio_1",
+   "nach": "sump_1",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Ueberlaeufe der Becken und Notueberlauf d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e81",
+   "bemerkung": "Notüberlauf Biofilter 1 in Sumpftank 1 (bei verstopftem Halbring)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e82",
+   "soll_weg": "e82",
+   "von": "bio_2",
+   "nach": "sump_2",
+   "medium": "Wasser",
+   "antrieb": "schwerkraft",
+   "dn": 63,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Ueberlaeufe der Becken und Notueberlauf d63)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e82",
+   "bemerkung": "Notüberlauf Biofilter 2 in Sumpftank 2 (bei verstopftem Halbring)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e83",
+   "soll_weg": "e83",
+   "von": "control",
+   "nach": "filterpumpe_2",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e83",
+   "bemerkung": "Strom Pumpe Fischtank zu Filter 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e84",
+   "soll_weg": "e84",
+   "von": "fish",
+   "nach": "filterpumpe_2",
+   "medium": "Wasser",
+   "antrieb": "gleich",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D138 (Tauchpumpe im Becken, keine Leitung)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e84",
+   "bemerkung": "Fischtank-Ablauf zur Pumpe der Linie 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "ohne_leitung"
+  },
+  {
+   "id": "S-e85",
+   "soll_weg": "e85",
+   "von": "control",
+   "nach": "luftpumpe_1",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e85",
+   "bemerkung": "Strom für die Belüftungspumpe 1 (über die Steuerung aus Batteriespeicher und PV)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e86",
+   "soll_weg": "e86",
+   "von": "luftpumpe_1",
+   "nach": "bio_1",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e86",
+   "bemerkung": "Luftarm der Belüftungspumpe 1 zu Biofilter 1",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e87",
+   "soll_weg": "e87",
+   "von": "luftpumpe_1",
+   "nach": "sump_1",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e87",
+   "bemerkung": "Luftarm der Belüftungspumpe 1 zu Sumpftank 1 (Pufferzonen)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e88",
+   "soll_weg": "e88",
+   "von": "luftpumpe_1",
+   "nach": "nursery",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e88",
+   "bemerkung": "Luftarm der Belüftungspumpe 1 zu Anzuchtbecken",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e89",
+   "soll_weg": "e89",
+   "von": "luftpumpe_1",
+   "nach": "fish",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e89",
+   "bemerkung": "Luftarm der Belüftungspumpe 1 zu Haupt-Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e90",
+   "soll_weg": "e90",
+   "von": "control",
+   "nach": "luftpumpe_2",
+   "medium": "Strom",
+   "antrieb": "Strom",
+   "dn": null,
+   "schlauch_id": null,
+   "nennweite_herkunft": "Kabel",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e90",
+   "bemerkung": "Strom für die Belüftungspumpe 2 (über die Steuerung aus Batteriespeicher und PV)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "kabel"
+  },
+  {
+   "id": "S-e91",
+   "soll_weg": "e91",
+   "von": "luftpumpe_2",
+   "nach": "bio_2",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e91",
+   "bemerkung": "Luftarm der Belüftungspumpe 2 zu Biofilter 2",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e92",
+   "soll_weg": "e92",
+   "von": "luftpumpe_2",
+   "nach": "sump_2",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e92",
+   "bemerkung": "Luftarm der Belüftungspumpe 2 zu Sumpftank 2 (Pufferzonen)",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e93",
+   "soll_weg": "e93",
+   "von": "luftpumpe_2",
+   "nach": "feed",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e93",
+   "bemerkung": "Luftarm der Belüftungspumpe 2 zu Lebendfutterbecken",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
+  },
+  {
+   "id": "S-e94",
+   "soll_weg": "e94",
+   "von": "luftpumpe_2",
+   "nach": "fish",
+   "medium": "Luft",
+   "antrieb": "offen",
+   "dn": 20,
+   "schlauch_id": null,
+   "nennweite_herkunft": "D106 (Luftleitungen d20)",
+   "soll_l_min": null,
+   "quelle": "Q oasis-soll.json e94",
+   "bemerkung": "Luftarm der Belüftungspumpe 2 zu Haupt-Fischtank",
+   "varianten": [
+    "ring_b2"
+   ],
+   "art": "leitung"
   }
  ],
  "kabel": [
@@ -1251,5 +3370,6 @@
    "zahlen": "0,47 m3 K1 je Tank",
    "quelle": "D55, reihenfolge-offene-wuensche.md d"
   }
- ]
+ ],
+ "hinweis_u6": "Version 4 (N-UNIFY-AUTOBAHN U6): Kanten S-e17 bis S-e94 = die 77 Wege der Quelle (data/oasis-soll.json) fuer die Variante ring_b2; A+-Knoten und -Kanten tragen varianten [a_plus]. Erzeugt von scripts/u6_netz.py."
 }

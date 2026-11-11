@@ -77,8 +77,10 @@ def aktiv(argv=None):
 
 
 def gilt(eintrag, v=None):
-    """Eintrag ohne Feld `varianten` gilt fuer alle; sonst nur, wenn v in der Liste steht."""
+    """Eintrag ohne Feld `varianten` gilt fuer alle; sonst nur, wenn v in der Liste steht. Steht v in `entfaellt_in`, gilt der Eintrag dort nicht (U5, D127)."""
     v = _pruefen(v or aktiv())
+    if isinstance(eintrag, dict) and v in (eintrag.get("entfaellt_in") or ()):   # N-UNIFY U5 (D127): Eintrag entfaellt in dieser Variante (nichts geloescht, Grund im Feld `entfaellt_grund`)
+        return False
     vs = eintrag.get("varianten") if isinstance(eintrag, dict) else None
     return True if not vs else v in vs
 

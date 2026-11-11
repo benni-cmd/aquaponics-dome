@@ -66,6 +66,8 @@ if any(c["command"] == "component.insert_design" and c["params"].get("name") == 
     pools = [("Zentralpool", (0.0, 0.0), _rb["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (_bp["nursery"]["x_mm"], _bp["nursery"]["y_mm"]), _rb["pool2"]["d"] / 2 + 60),
              ("Drittbecken", (_bp["feed"]["x_mm"], _bp["feed"]["y_mm"]), _rb["pool3"]["d"] / 2 + 60)]
 for nm, c, r in pools: obst.append((nm, ("circle",) + c + (r,), -1e9, 1e9))
+if "schrank_x" in P:   # L4 (D162): Schaltschrank innen als Hindernis (achsparallel cab_x x cab_y, Hoehe cab_z)
+    _sx, _sy, _bx, _by = P["schrank_x"], P["schrank_y"], P["cab_x"] / 2, P["cab_y"] / 2; obst.append(("Schaltschrank", [(_sx - _bx, _sy - _by), (_sx + _bx, _sy - _by), (_sx + _bx, _sy + _by), (_sx - _bx, _sy + _by)], FZ, FZ + P["cab_z"]))
 OHNE = [x for x in os.environ.get("WALK_OHNE", "").split(",") if x]   # Diagnose (N-UNIFY U4): Hindernisse mit diesen Namenspraefixen weglassen, z. B. WALK_OHNE=Tank_,Pumpe_,Puffer_Klein; schreibt dann docs/walkway-map-diagnose.md und Bilder mit Suffix -diagnose, die Karte der Variante bleibt unberuehrt
 if OHNE: obst = [o for o in obst if not any(o[0].startswith(x) for x in OHNE)]; print("DIAGNOSE ohne:", OHNE)
 

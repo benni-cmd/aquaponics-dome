@@ -64,7 +64,8 @@
   },
   "hinweise": [],
   "l2": "11.11.2026 N-UNIFY-AUTOBAHN L2: Bauplaetze = Soll-Mitten der Quell-Draufsicht (scripts/oasis_lage_l2.py); die U1-Werte stehen je Teil unter u1_bauplatz; D108 bis D110 ueberholt (D152)",
-  "l3": "11.11.2026 N-UNIFY-AUTOBAHN L3: Technik nach Anordnung der Quelle mit Laufwegen (scripts/l3_anordnung.py, D156, D157); Teile ohne L3-Eintrag behalten den Bauplatz von L2/U1"
+  "l3": "11.11.2026 N-UNIFY-AUTOBAHN L3: Technik nach Anordnung der Quelle mit Laufwegen (scripts/l3_anordnung.py, D156, D157); Teile ohne L3-Eintrag behalten den Bauplatz von L2/U1",
+  "l4": "11.11.2026 N-UNIFY-AUTOBAHN L4: Becken-Kette Wand an Wand, Filter-Podeste Kante an Kante (scripts/l4_anordnung.py, D161)"
  },
  "bauteile": [
   {
@@ -272,13 +273,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1702.9,
    "bauplatz": {
-    "x_mm": 2178.8,
-    "y_mm": -2739.1,
+    "x_mm": 1695.8,
+    "y_mm": -2334.0,
     "drehung_grad": 108.0,
     "z_modell_mm": 400.0,
-    "r_mm": 3500.0,
-    "az_grad": -51.5,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 2885.0,
+    "az_grad": -54.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -320,13 +321,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1720.1,
    "bauplatz": {
-    "x_mm": 3041.0,
-    "y_mm": -3823.0,
+    "x_mm": 2404.0,
+    "y_mm": -3308.9,
     "drehung_grad": 108.0,
     "z_modell_mm": 400.0,
-    "r_mm": 4885.0,
-    "az_grad": -51.5,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 4090.0,
+    "az_grad": -54.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -365,13 +366,13 @@
    "wirt": "fish",
    "verschiebung_mm": 959.3,
    "bauplatz": {
-    "x_mm": 1651.4,
-    "y_mm": -411.8,
+    "x_mm": 1697.9,
+    "y_mm": -118.7,
     "drehung_grad": 0.0,
     "z_modell_mm": -600.0,
     "r_mm": 1702.0,
-    "az_grad": -14.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "az_grad": -4.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
@@ -408,13 +409,13 @@
    "wirt": "fish",
    "verschiebung_mm": 959.3,
    "bauplatz": {
-    "x_mm": -118.7,
-    "y_mm": -1697.9,
+    "x_mm": -411.8,
+    "y_mm": -1651.4,
     "drehung_grad": 0.0,
     "z_modell_mm": -600.0,
     "r_mm": 1702.0,
-    "az_grad": -94.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "az_grad": -104.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
@@ -449,13 +450,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1640.0,
    "bauplatz": {
-    "x_mm": 3138.5,
-    "y_mm": -1019.8,
-    "drehung_grad": 7.4,
+    "x_mm": 3313.9,
+    "y_mm": -632.7,
+    "drehung_grad": 86.0,
     "z_modell_mm": 977.0,
-    "r_mm": 3300.0,
-    "az_grad": -18.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 3373.8,
+    "az_grad": -10.8,
+    "quelle": "L4 (D161): Podeste Kante an Kante, scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -496,13 +497,13 @@
    "annahme": "D109",
    "verschiebung_mm": 2625.0,
    "bauplatz": {
-    "x_mm": 0.0,
-    "y_mm": -3300.0,
-    "drehung_grad": -151.4,
+    "x_mm": -422.3,
+    "y_mm": -3347.3,
+    "drehung_grad": -14.0,
     "z_modell_mm": 977.0,
-    "r_mm": 3300.0,
-    "az_grad": -90.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 3373.8,
+    "az_grad": -97.2,
+    "quelle": "L4 (D161): Podeste Kante an Kante, scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -553,13 +554,13 @@
    "annahme": null,
    "verschiebung_mm": 632.4,
    "bauplatz": {
-    "x_mm": 3341.8,
-    "y_mm": 233.7,
-    "drehung_grad": 157.4,
+    "x_mm": 3376.7,
+    "y_mm": 265.1,
+    "drehung_grad": 86.0,
     "z_modell_mm": 630.0,
-    "r_mm": 3350.0,
-    "az_grad": 4.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 3387.1,
+    "az_grad": 4.5,
+    "quelle": "L4 (D161): Podeste Kante an Kante, scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -604,13 +605,13 @@
    "annahme": "D110",
    "verschiebung_mm": 1664.2,
    "bauplatz": {
-    "x_mm": -1254.9,
-    "y_mm": -3106.1,
-    "drehung_grad": 73.6,
+    "x_mm": -1295.6,
+    "y_mm": -3129.5,
+    "drehung_grad": -14.0,
     "z_modell_mm": 630.0,
-    "r_mm": 3350.0,
-    "az_grad": -112.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 3387.1,
+    "az_grad": -112.5,
+    "quelle": "L4 (D161): Podeste Kante an Kante, scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -655,7 +656,7 @@
     "z_modell_mm": 400.0,
     "r_mm": 5400.0,
     "az_grad": -22.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -710,7 +711,7 @@
     "z_modell_mm": 400.0,
     "r_mm": 5400.0,
     "az_grad": -86.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -1801,13 +1802,13 @@
    "annahme": "D109",
    "verschiebung_mm": 3301.7,
    "bauplatz": {
-    "x_mm": 3897.1,
-    "y_mm": -2250.0,
-    "drehung_grad": 300.0,
+    "x_mm": 3646.6,
+    "y_mm": -2278.7,
+    "drehung_grad": 283.0,
     "z_modell_mm": -100.0,
-    "r_mm": 4500.0,
-    "az_grad": -30.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 4300.0,
+    "az_grad": -32.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -1897,13 +1898,13 @@
    "annahme": null,
    "verschiebung_mm": 205.7,
    "bauplatz": {
-    "x_mm": 2377.2,
-    "y_mm": -592.7,
+    "x_mm": 2444.0,
+    "y_mm": -170.9,
     "drehung_grad": 0.0,
     "z_modell_mm": 1650.0,
     "r_mm": 2450.0,
-    "az_grad": -14.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "az_grad": -4.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -1944,13 +1945,13 @@
    "annahme": "D109",
    "verschiebung_mm": 3400.1,
    "bauplatz": {
-    "x_mm": 935.6,
-    "y_mm": -4401.7,
-    "drehung_grad": -408.0,
+    "x_mm": 1040.3,
+    "y_mm": -4172.3,
+    "drehung_grad": -391.0,
     "z_modell_mm": -100.0,
-    "r_mm": 4500.0,
-    "az_grad": -78.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "r_mm": 4300.0,
+    "az_grad": -76.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -2038,13 +2039,13 @@
    "annahme": null,
    "verschiebung_mm": 111.6,
    "bauplatz": {
-    "x_mm": -170.9,
-    "y_mm": -2444.0,
+    "x_mm": -592.7,
+    "y_mm": -2377.2,
     "drehung_grad": 0.0,
     "z_modell_mm": 1650.0,
     "r_mm": 2450.0,
-    "az_grad": -94.0,
-    "quelle": "L3 (D156, D157): Anordnung der Quelle, scripts/l3_anordnung.py"
+    "az_grad": -104.0,
+    "quelle": "L4 (D161): scripts/l4_anordnung.py"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
@@ -2170,13 +2171,13 @@
    "annahme": "D110",
    "verschiebung_mm": 3041.2,
    "bauplatz": {
-    "x_mm": -5546.0,
-    "y_mm": -4167.8,
-    "drehung_grad": 18.0,
+    "x_mm": -194.3,
+    "y_mm": -3404.1,
+    "drehung_grad": -104.0,
     "z_modell_mm": 400.0,
     "r_mm": 6937.5,
     "az_grad": -143.1,
-    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
+    "quelle": "L4 (D161): unter dem Podest Vortex 2, am Rand zur Gangseite"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],

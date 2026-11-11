@@ -988,5 +988,23 @@
   "r_id": "R61",
   "maturity": 1,
   "used_by": "scripts/workshop/ibc_beet.py, check_pool_soll.py"
+ },
+ "schrank_x": {
+  "value": 2755.6,
+  "unit": "mm",
+  "origin": "A",
+  "source": "L4 (11.11.2026, D162): Schaltschrank T11 und Schrank-Einfuehrung T89 innen, einziger freier Platz fuer 800 x 500 (Mittelachse hinter dem Lebendfutterbecken, phi -4 r 5200; scripts/l4_anordnung.py), Kuppel hypot(5672, 1200) = 5797 <= 5800; Aktivkohle-Station bleibt bei technik_x/technik_y aussen",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "scripts/gen_dome.py, scripts/check_walkways_voll.py"
+ },
+ "schrank_y": {
+  "value": -4409.9,
+  "unit": "mm",
+  "origin": "A",
+  "source": "L4 (11.11.2026, D162): Schaltschrank T11 und Schrank-Einfuehrung T89 innen, einziger freier Platz fuer 800 x 500 (Mittelachse hinter dem Lebendfutterbecken, phi -4 r 5200; scripts/l4_anordnung.py), Kuppel hypot(5672, 1200) = 5797 <= 5800; Aktivkohle-Station bleibt bei technik_x/technik_y aussen",
+  "r_id": "",
+  "maturity": 0,
+  "used_by": "scripts/gen_dome.py, scripts/check_walkways_voll.py"
  }
 }

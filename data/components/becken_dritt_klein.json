@@ -76,9 +76,9 @@
    "herkunft": "[A] Blockbreite tangential"
   },
   "stutzen_len": {
-   "wert": 70,
+   "wert": 25,
    "einheit": "mm",
-   "herkunft": "[A] Stutzenrohr ausserhalb des Rings (Muffentiefe d25 = 19, d20 = 16)"
+   "herkunft": "[A] L4 (D161): Becken Wand an Wand (Spalt 30), Ueberlauf-Stutzen ragt nur 25 mm heraus; vorher 70; [A] Stutzenrohr ausserhalb des Rings (Muffentiefe d25 = 19, d20 = 16)"
   },
   "winkel_k41": {
    "wert": 0,

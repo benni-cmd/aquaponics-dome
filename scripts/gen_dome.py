@@ -314,6 +314,7 @@ BEET_AUSLASS_TIEFE = 80    # Reduktion reicht bis -80 unter den Flur (viewer/det
 _SP = {k: v["wert"] for k, v in json.load(open(os.path.join(ROOT, "data", "components", "sumpftank.json"), encoding="utf-8"))["parameter"].items()}
 SUMPF_WANNE_L, SUMPF_WANNE_B, SUMPF_WANNE_TIEFE = _SP["pit_l"] + 2 * (_SP["liner_t"] + _SP["wall_t"]), _SP["pit_w"] + 2 * (_SP["liner_t"] + _SP["wall_t"]), _SP["pit_d"] + _SP["liner_t"] + _SP["wall_t"]   # Sumpftank aussen aus data/components/sumpftank.json (L3, D158: 1804 x 1329, Boden -772; vorher fest 3179 x 1329 x 602)
 
+ZULAUFROHR_AN = False   # L4 (D163): Zulaufrohr T10 aus dem Altbestand A+ entfernt, Code bleibt
 LEITUNGEN_AN = False   # L2 (11.11.2026, Ben: erst Lage, dann Rohre): Leitungen aus U6/U9 (ringleitung, leitungen, Graeben, Ring-Durchfuehrungen D146) liegen auf der alten Lage und sind aus dem Gesamtbau genommen; Code bleibt, Rohre kommen nach Bens Sichtpruefung neu
 SUMPF_SPIEGEL = {"sump_1": False, "sump_2": True}   # L2 (D152): die Quelle zeichnet die Sumpftanks spiegelgleich zur Tuer-Achse (Pumpe und Schwimmer seitenverkehrt); Sumpf 2 = Komponente sumpftank_spiegel (lokal X gespiegelt)
 
@@ -649,8 +650,8 @@ def rohr_fn():
     seg(P1, P2, "T10_Zulaufrohr_2", "join", targets=["T10_Zulaufrohr"])
 
 def schrank_fn():
-    if "technik_x" in P:   # M10-S5-LUFT-B (D81, E13 vorlaeufig): Schrank in der Technikgruppe aussen neben der Tuer, achsparallel (Breite cab_x in X)
-        rect_body("T11_Schaltschrank", P["technik_x"], P["technik_y"], P["sock_h"], 0, P["cab_x"], P["cab_y"], P["cab_z"]); return
+    if "technik_x" in P:   # M10-S5-LUFT-B (D81, E13 vorlaeufig): Schrank in der Technikgruppe aussen neben der Tuer, achsparallel (Breite cab_x in X); L4 (D162): innen bei schrank_x/_y
+        rect_body("T11_Schaltschrank", P.get("schrank_x", P["technik_x"]), P.get("schrank_y", P["technik_y"]), P["sock_h"], 0, P["cab_x"], P["cab_y"], P["cab_z"]); return
     az = 0; apo = (P["dome_base_d"]/2 + P["sock_w"])*math.cos(math.radians(18))   # D62: Schaltschrank neben den Vorbau (Flaeche 0 statt -36)
     cx, cy = pol(apo + P["cab_y"]/2 + 20, az)
     rect_body("T11_Schaltschrank", round(cx, 1), round(cy, 1), P["sock_h"], az+90, P["cab_x"], P["cab_y"], P["cab_z"])
@@ -660,7 +661,8 @@ def technik_e13(fz):
     Geblaese T85 x2, Hauptverteiler luftverteiler_6 T86 (Abgaenge nach unten), Aktivkohle-Station T83; alle in 14_Technik_E13. Leitungen kommen aus data/leitungstrassen.json (linie luft_b, frisch)."""
     import technik_e13 as TE
     g = TE.gruppe(P); comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
-    place_instances("Schrank_Einfuehrung", comp("schrank_einfuehrung"), [g["einfuehrung"]], "14_Technik_E13")
+    ein = (P["schrank_x"], P["schrank_y"]) + tuple(g["einfuehrung"][2:]) if "schrank_x" in P else g["einfuehrung"]   # L4 (D162): Einfuehrung am Schrank innen
+    place_instances("Schrank_Einfuehrung", comp("schrank_einfuehrung"), [ein], "14_Technik_E13")
     place_instances("Aktivkohle_Station", comp("aktivkohle_station"), [g["station"]], "14_Technik_E13")
 
 def luft_a(fz):
@@ -671,7 +673,7 @@ def luft_a(fz):
     place_instances("Luft_Scheibenbelueftung", comp("luft_scheibenbelueftung"), [(round(x, 2), round(y, 2), round(z, 2), 0.0) for x, y, z in g["scheiben"]], "04_Wasserbecken")
 
 def t10_t11(fz):
-    component_file("zulaufrohr", "Zulaufrohr", "08_Leitungen", rohr_fn)
+    if ZULAUFROHR_AN: component_file("zulaufrohr", "Zulaufrohr", "08_Leitungen", rohr_fn)   # L4 (D163): A+-Frischwasser-Zulaufrohr entfaellt (D101: alle A+-Leitungen entfallen)
     component_file("schaltschrank", "Schaltschrank", "14_Technik_E13" if "technik_x" in P else "09_Technik", schrank_fn)
 
 if __name__ == "__main__":

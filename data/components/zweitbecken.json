@@ -31,12 +31,12 @@
    "herkunft": "[A] L3 (11.11.2026, D157): Volumen der Quelle halten, Grundriss kleiner und tiefer (D156); Wassertiefe 1656 mm fuer 2.51 m3 (Quelle Ø 2000 x 0,80 m), Boden 976 unter Flur; vorher 800; [E] Wasserspiegel minus Standflaeche = 800 - 0 = data/params.json pool2_depth (varianten_werte ring_b2)"
   },
   "pos_x": {
-   "wert": 2178.8,
+   "wert": 1695.8,
    "einheit": "mm",
-   "herkunft": "[A] L3 (D157): Bauplatz nursery aus data/oasis-lage.json (scripts/l3_anordnung.py)"
+   "herkunft": "[A] L4 (D161): Bauplatz nursery aus data/oasis-lage.json (scripts/l4_anordnung.py), Wand an Wand mit dem Fischtank"
   },
   "pos_y": {
-   "wert": -2739.1,
+   "wert": -2334.0,
    "einheit": "mm",
    "herkunft": "[Q] data/oasis-lage.json nursery bauplatz y_mm"
   },
@@ -66,9 +66,9 @@
    "herkunft": "[E] PVC-U 63 x 3,0 PN10: Innendurchmesser 57; Rohr-Innenunterkante = Wasserspiegel (D120)"
   },
   "stutzen_len": {
-   "wert": 70,
+   "wert": 25,
    "einheit": "mm",
-   "herkunft": "[A] Stutzenrohr ausserhalb des Rings (Muffentiefe d63 = 37,5)"
+   "herkunft": "[A] L4 (D161): Becken Wand an Wand (Spalt 30), Ueberlauf-Stutzen ragt nur 25 mm heraus; vorher 70; [A] Stutzenrohr ausserhalb des Rings (Muffentiefe d63 = 37,5)"
   }
  },
  "werkstoff": {

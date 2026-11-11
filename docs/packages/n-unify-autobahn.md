@@ -136,6 +136,27 @@ Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Oberg
 5. Leitungen aus U6/U9 per Schalter `LEITUNGEN_AN = False` in `scripts/gen_dome.py` aus dem Gesamtbau (Code bleibt).
 6. Gesamtbau `scripts/build.sh 5 <runde>`, Viewer-Export, Detail-Export, Gate, Draufsicht `renders/lage-l2-draufsicht.png`, Bedenken messen (Tuer-Achse, Gaenge, Kopffreiheit, Ueberlappung), Stand, Push.
 
+### Korrektur Ben 2 (11.11.2026, ~16:30, nach Sicht der L2-Draufsicht) — ersetzt das Ziel von L2
+Ben (sinngemäß): „Jetzt kommt man nicht mehr rein, die Filter stecken im Gerüst, es gibt keine Laufwege mehr zwischen den NFT.
+Das Layout von NFT und Substratbeeten hat davor gepasst, auch Durchmesser und Maße des großen Pools. Fehlerhaft waren die Filter und
+Wasserbauteile. Bei den kleineren Pools geht es ums Volumen: kleiner, aber tiefer, um Platz zu sparen. Du hast dich fast zu sehr an die
+Vorlage gehalten — das Layout ist wichtig, die genauen Größenverhältnisse gehen mit Laufwegen nicht auf.“ (Entscheidung D156)
+
+**Problem:** L2 hat Zeichnungsmaße 1:1 übernommen. Folgen: Kein Zugang durch die Tür, Filter kollidieren mit dem Gerüst, keine Gänge zwischen den NFT-Tischen.
+**Intent:** Die Quelle gibt die Anordnung des Kreislaufs vor, nicht die Zeichnungsmaße. Begehbarkeit hat Vorrang.
+**Goal (prüfbar), Lauf L3:**
+1. Anbauringe (NFT-Tische, Substratbeete) und der Haupt-Fischtank (Maße und Lage) stehen wie VOR L2 (Stand `ce15b86`), geometrisch unverändert.
+2. Die Technik (Vortex, Biofilter, Schlammreaktoren, Sumpftanks, Anzuchtbecken, Lebendfutter, Pumpen, Venturi, Schwimmer) folgt der Anordnung der Quelle: zwei zur Tür-Achse gespiegelte Linien, Reihenfolge und Nachbarschaft wie in der Quelle, Anzucht- und Lebendfutterbecken auf der Achse. Mittelpunkte dürfen abweichen.
+3. Becken und Tanks halten das Volumen der Quelle (±5 %); Grundriss kleiner und dafür tiefer ist erlaubt.
+4. Begehbarkeit:
+   - Tür-Gang 900 mm bis zum Fischtank
+   - 500-mm-Gang zu jedem Bauteil und zwischen den NFT-Tischen wie vor L2
+   - kein Teil kollidiert mit Streben, Knoten oder Fundamentring
+   - Kopffreiheit wie D54
+   - jeweils mit Messbefehl
+5. Nur wenn die Technik so nicht in die Kuppel passt: einzelne Teile als Anbau außen, begründet, als Bedenken notieren.
+6. Danach Draufsicht-Bild und Vergleich der Anordnung mit der Quelle. Ben sieht das Bild, bevor Rohre gebaut werden.
+
 ## Stand
 - 10.11.2026: Quelle gesichert (f11a92d), D93 und W89 eingetragen, Planer-Auftrag geschrieben.
 - 10.11.2026, Planer-Lauf (Sonnet 5.5, Agent-SDK):

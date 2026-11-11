@@ -20,6 +20,17 @@ Aufgaben Haiku 5.5, kein Opus. Phasen wie bisher: Planer → Bau (Werkstatt, Mon
 Ein Lauf zur Zeit (das Gesamtmodell baut immer nur einer). Der Orchestrator legt die Läufe in die Warteschlange,
 liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 
+## Übergabe für frische Sitzungen (11.11.2026, ~03:30; API-Guthaben beendet)
+**Stand:** P1, U1, U2, U3, U3b, U4, U5 erledigt (U4/U5 „teilweise“: Laufwege offen, siehe Plan-Tabelle). Gesamtmodell (Ring-B2-Variante) hat Becken, Sumpftanks, Tische, Beete und Technik auf Soll-Lage/-Höhe; **es fehlen alle Leitungen** (U6). Letzter Lauf U3b endete mit Budgetende (8 USD) erst nach seinem Commit `fd988ff`; seine Arbeit ist vollständig gesichert. Arbeitsbaum sauber bis auf `viewer/detail/` und `viewer/varianten/` (erzeugte Exporte, bleiben ungesichert).
+**Kosten API:** 49,28 USD für das Paket (Planer 6,00 · U1 6,51 · U2 8,93 · U3 10,44 · U4 5,08 · U5 4,31 · U3b 8,00), Quelle `tools/agent-sdk-runner/usage.jsonl` der Werkbank.
+**Weiter so (Reihenfolge, je eine Sitzung, nur eine baut am Gesamtmodell):**
+1. U6 Montage `docs/jobs/api/unify-u6-montage.md` (Leitungen: Wasserautobahn 1550, Einspeisung, Rückläufe, Beckenkette, Nachspeisung, Notüberlauf, Luft, Schlamm) – größte Runde.
+2. U7 Montage `unify-u7-montage.md` (nur noch eine Variante) → U8 Daten `unify-u8-daten.md` (Teile-/Bestellliste, Belege) → U9 Montage `unify-u9-montage.md` (Kollisionen, Laufwege) → U10 Viewer `unify-u10-viewer.md`.
+3. Prüfer `unify-pruef-pruefer.md` (fremde Sitzung, baut nicht) → bei Befund `unify-fix-nachbesserung.md` → `unify-nachpruef.md`, höchstens zweimal.
+4. Danach: Viewer lokal starten und Ben zeigen; Bedenkenliste `docs/packages/n-unify-bedenken.md` (B1 bis B13) zur Entscheidung vorlegen (Regel D117: bis dahin wie in der Quelle bauen).
+**Start einer Sitzung:** Der Auftrag aus `docs/jobs/api/` ist selbsttragend und gilt unverändert als Brief; der Satz „läuft über das Agent-SDK“ heißt in einer normalen Sitzung nur: keine Rückfragen, Annahmen in `docs/decisions.md`. Modell nach D80 (Montage/Werkstatt Opus mittel, Daten/Viewer/Prüfer Sonnet hoch) oder Ben entscheidet. Die zugehörigen Warteschlangen-Einträge liegen geparkt in `tools/agent-sdk-runner/queue/paused/` der Werkbank (nur bei neuem API-Guthaben zurück nach `inbox/`).
+**Offene Punkte:** Abschnitt „Offen“ unten (Nummern laufen fort), dazu D108 bis D136 als ANNAHMEN.
+
 ## Plan
 | Phase | Lauf (Auftragsdatei in `docs/jobs/api/`) | Inhalt | Budget (Obergrenze) | Stand |
 |---|---|---|---|---|

@@ -238,3 +238,8 @@ Offen aus dem SolidCraft-Umstieg (Paket `docs/packages/solidcraft-0301-umstieg.m
 2. Danach: Bauzeit neu messen (Test 22:28 statt 8:22 min) und Ring B2 einmal mit 0.30.1 bauen.
 3. 16 nicht committete Ring-B2-Dateien (Komponenten `*-ring_b2.sc`, `scripts/dome-script-ring_b2.json`, `viewer/varianten/`, `viewer/detail/`) pruefen und sichern.
 4. Dann Pause beenden: FIX-a/W88 fertig, Viewer neu + Vercel, Scheren x Sockel (170), Z1-Z7.
+
+## 11.11.2026 ~03:30 API-Kette angehalten (Guthaben endet)
+- Paket N-UNIFY-AUTOBAHN (D93, W89): P1, U1-U5, U3b erledigt; offen U6-U10, Pruefer, Nachbesserung. Uebergabe-Abschnitt oben im Paket `docs/packages/n-unify-autobahn.md`. Kosten 49,28 USD.
+- Naechster Schritt: frische Sitzung U6 Montage mit Brief `docs/jobs/api/unify-u6-montage.md`.
+- Merkliste vom 10.11. (SolidCraft 0.30.1 installieren usw.) gilt weiter.

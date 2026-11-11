@@ -127,6 +127,15 @@ Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Oberg
 4. **Konflikte der Quelle selbst** (nur notiert, D117; `docs/packages/n-unify-bedenken.md` B18 bis B22): Anzuchtbecken, Lebendfutterbecken und Permakultur stehen auf der Tuer-Achse Az -72; die Technik (Az -176 bis -22) ragt ueber die Ringoeffnung (-132 bis -12) hinaus; Fischtank-, Vortex- und Biofiltermass sind in der Quelle uneinheitlich bzw. schematisch (A16).
 5. Grenzen der Messung: `viewer/detail/` ist unversioniert und enthaelt die Komponenten aus U2 nicht; dort gilt der Ursprung als Mitte (Bezugspunkt in `data/components/*.json`), Masse aus den Parametern; Pumpen, Venturi, Schwimmer sind Symbole (nur Lage). Der Export `built` ist 11.11. 04:31, nicht neu gebaut.
 
+### L2 Plan (11.11.2026, Werkstatt/Montage-Sitzung, Opus)
+**Problem:** 30 von 31 Teilen und alle Ringe stehen neben der Quell-Lage (L1). **Intent:** Erst stimmt die Draufsicht, dann kommen Rohre. **Goal:** `python -I -X utf8 scripts/check_lage_quelle.py` Exit 0 am neu gebauten Modell, Draufsicht-Bilder angesehen.
+1. Lage-Daten: `scripts/oasis_lage_l2.py` schreibt die Bauplaetze in `data/oasis-lage.json` direkt aus `data/oasis-draufsicht.json` (x, y, Drehung; Hoehen bleiben). D108 bis D110 als ueberholt markieren.
+2. Becken: Fischtank Huelle Ø 4500 (Wasser 4200, Wand 150), Anzuchtbecken Huelle Ø 2000 (Wasser 1880) am Soll-Platz, Lebendfutter am Soll-Platz; `layout.json` oasis-Block nachziehen, Komponenten neu bauen.
+3. Technik: Vortex Ø 1050 und Biofilter Ø 1150 (Tank-Typen in `data/components/tank.json`, Plattform und Podest folgen), Sumpftank 2 als gespiegelte Variante (Quelle ist spiegelgleich zur Tuer-Achse), Pumpensockel und Schwimmerhalter an der Quell-Lage; alle uebrigen Teile an die Soll-Mitte.
+4. Anbauringe: Tische und Beete auf Radius und Winkelmitten aus `oasis-draufsicht.json` (Oeffnung 120 Grad um Az -72), Bauteile unveraendert.
+5. Leitungen aus U6/U9 per Schalter `LEITUNGEN_AN = False` in `scripts/gen_dome.py` aus dem Gesamtbau (Code bleibt).
+6. Gesamtbau `scripts/build.sh 5 <runde>`, Viewer-Export, Detail-Export, Gate, Draufsicht `renders/lage-l2-draufsicht.png`, Bedenken messen (Tuer-Achse, Gaenge, Kopffreiheit, Ueberlappung), Stand, Push.
+
 ## Stand
 - 10.11.2026: Quelle gesichert (f11a92d), D93 und W89 eingetragen, Planer-Auftrag geschrieben.
 - 10.11.2026, Planer-Lauf (Sonnet 5.5, Agent-SDK):

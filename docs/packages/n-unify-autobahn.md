@@ -181,6 +181,19 @@ Freiraum im Modell vor L2 (gemessen aus `scripts/gen_dome.py`, Winkel phi relati
 3. Volumen gehalten (+-5 %): Anzucht 2,513 m3 (Soll 2,513), Lebendfutter 0,668 m3 (Soll 0,668), Sumpf-Grube 1,206 m3 (Quelle 1,2), Schlamm 350 l (D116); Masse aus dem Bau der Komponenten (`zweitbecken.py`, `becken_dritt_klein.py`, `sumpftank.py`, `schlamm_sammelbehaelter.py`).
 4. Begehbarkeit (`python -X utf8 scripts/check_walkways_voll.py`, `docs/walkway-map.md`): 0 Bauteile nicht erreichbar (500-mm-Gang zu jedem Bauteil); Tuer-Gang 900 mm erreicht Fischtank, Anzucht und Lebendfutter in Kopfhoehe (kleinster Radius 2511) und in Kniehoehe bis r 2579 vor den Innentisch-Fuessen (B32); Kopf 1,7 m: 3 rote Engstellen, alle zwischen Paaren (Vortex-Biofilter 200 mm, Anzucht-Lebendfutter 142 mm); Wand/Kuppel: Planungspruefung 100 mm Wandluft und Kugel 5800 (`l3_anordnung.py` Fehler 0); `scripts/check_lage_konflikte.py`: 0 Ueberlappungen der Technik (9 Altbefunde der Ringe wie vor L2).
 5. Annahmen D157 bis D160, D152/D153 ueberholt; Bedenken B29 bis B32. Puffer klein aussen (D160).
+### Korrektur Ben 3 (11.11.2026, ~18:00, nach Sicht der L3-Draufsicht) — Auftrag L4, Entscheidung D161
+Ben (sinngemäß): „Die beiden kleineren Becken müssen weiter in die Mitte rutschen, Wand an Wand mit dem inneren Pool, als 3er-Kette nach außen,
+weil zwischen den Tanks Überläufe sind. Platziere die Filter nochmal richtig, die Gerüste darunter Kante an Kante, um Platz zu sparen.
+Luft- und Wasserpumpen finden unter den Filtern Platz. Vielleicht reicht dann der Platz, um Strom/Schaltschrank und die Station, an der das
+Demo-Männchen steht, nach innen zu ziehen. Überflüssige Bauteile rausnehmen. Aktivkohle bleibt drin (relevant bei Leitungswasser).“
+**Goal L4 (prüfbar):**
+1. Becken-Kette: Fischtank, Anzuchtbecken und Lebendfutterbecken stehen auf einer radialen Achse nach außen. Ihre Außenwände berühren sich (Spalt höchstens 50 mm, nur Wandstärke/Schutz). Die Überläufe e63/e70 liegen kurz und gerade durch die gemeinsame Wand. Volumen wie L3.
+2. Filter (Vortex, Biofilter je Linie): neu gesetzt nach der Anordnung der Quelle (D156). Die Podeste/Gerüste beider Filter einer Linie stehen Kante an Kante (Spalt höchstens 20 mm), Filter weiterhin begehbar zur Wartung (500-mm-Gang an mindestens einer Seite).
+3. Pumpen: Filterpumpen, Hauptpumpen soweit nicht Tauchpumpe im Becken (D102), Belüftungspumpen 1/2 und Notluftpumpe stehen im Raum unter den Filter-Podesten. Lichte Höhe und Zugang zum Wechseln werden gemessen.
+4. Danach: Schaltschrank-Gruppe und die Station mit dem Demo-Männchen rechts außen an der Wand (Sitzung findet heraus, welches Bauteil) nach innen, wenn 500-mm-Gänge und Tür-Gang 900 halten. Sonst bleiben sie außen, mit Messwert als Grund.
+5. Überflüssige Bauteile entfernen: Teile ohne Rolle im Kreislauf der Quelle und ohne Owner-Entscheidung, die sie hält (z. B. Puffer klein D160, prüfen gegen Abschnitt C/D101). Jede Entfernung steht in einer Liste im Paket mit Grund. Aktivkohle-Station bleibt.
+6. Prüfungen wie L3: `check_walkways_voll` 0 nicht erreichbar, Tür-Gang 900, keine Überlappung (`check_lage_konflikte`), kein Teil im Gerüst. Danach neue Draufsicht für Ben. Weiterhin keine Rohre.
+
 **Nicht erfuellt / offen:** Gate `check_lage_quelle.py` gilt seit D156 nicht mehr (prueft Zeichnungsmasse); `check_pool_soll` prueft alte Masse; Teileliste/Volumen-Nachzug (U8) und Rohre offen. **Naechster Schritt:** Ben sieht `renders/lage-l3-draufsicht.png` und `renders/l3-anordnung-vs-quelle.png`; danach Leitungen neu.
 
 ## Stand

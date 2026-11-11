@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parent.parent
 pi = math.pi
 
 # ---- Eingaben (Modell) ------------------------------------------------------------------------------------------------
-POOL_D, POOL_DEPTH = 3.890, 2.200                      # E/B: OBJ-Durchmesser, Tiefe nach Ben-Tabelle (D26)
-BASIN2_D, BASIN2_DEPTH = 1.747, 1.0                    # E aus OBJ; Tiefe 1,0 m aus Zuchtbecken der Ben-Tabelle [A]
+POOL_D, POOL_DEPTH = 3.890, 1.750                      # E: Fischtank nach Quelle (D93, N-UNIFY-AUTOBAHN U8): Ø 3,89 innen, Wassertiefe 1750 (Boden -1000, Wsp 750) = 20,8 m3; vorher 2,2 m Tiefe (D26)
+BASIN2_D, BASIN2_DEPTH = 2.000, 0.8                    # E: Anzuchtbecken nach Quelle (D93): Ø 2000, Wsp 800 auf dem Boden (vorher Zweitbecken 1,747 x 1,0)
 TANK_KLEIN = dict(D=0.673, H=1.075, n=2)               # OBJ
 TANK_GROSS = dict(D=0.930, H=1.444, n=2)
 RIM_BELOW_WATER = 0.100                                # Auslass 100 mm unter dem Rand (R09)
@@ -132,7 +132,7 @@ parts += [("Puffer klein (Fass, Messzelle, Kanister)", puffer_m3), ("Drittbecken
 total = sum(v for _, v in parts)
 
 # ---- Fische, Futter, Ammonium ----------------------------------------------------------------------------------------
-fish_water = pool + basin2
+fish_water = pool                                      # U8 (D143): Besatzdichte im Fischtank allein (20,8 m3); Anzuchtbecken (Jungfische) zaehlt nicht zum Besatz
 biomass = FISH_KG_DESIGN
 fish_n = round(biomass / FISH_END_WEIGHT)
 feed_kg_day = biomass * FEED_PCT_BW
@@ -429,7 +429,7 @@ import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
 import variante as _V
 _FEST = {"pumpstufen_linienwasser": 2, "pumpenleistung_el_w_eta25": 577, "pumpenleistung_el_w_eta18": 635,
-                "foerderhoehe_hauptpumpe_m": 2.0, "foerderhoehe_booster_m": 1.0, "graeben_zulauf_beete": False,
+                "foerderhoehe_pumpstelle_1_m": 1.15, "foerderhoehe_pumpstelle_2_m": 1.00, "pumpen_tauch": 4, "graeben_zulauf_beete": False,
                 "ring_nennlaenge_ueber_kopf_m": 21.4}   # 2 x 10,7 m Halbring [Q R47b 6.6]
 
 
@@ -451,7 +451,7 @@ specs["kreislauf"] = {
     **_FEST,
     **_trassen_kennzahlen(),
     "herkunft": {"pumpenleistung": "Q docs/research/R47-wasserkreislauf-neu.md Tabelle Pumpenleistung (577 W bei eta 25 %, 635 W bei 18 %), Rechnung scripts/r47_pumpen.py",
-                 "foerderhoehe": "Q R47c 7.2 (Hauptpumpe 2,0 m, Booster etwa 1,0 m)", "ring_nennlaenge": "Q R47b 6.6 (2 x 10,7 m)",
+                 "foerderhoehe": "Q data/oasis-soll.json (Pumpstelle 1: +1,15 m Fischtank -> Vortex; Pumpstelle 2: +1,00 m Sumpf -> Fischtank, D93); vorher R47c (Hauptpumpe 2,0 m, Booster 1,0 m, entfallen)", "ring_nennlaenge": "Q R47b 6.6 (2 x 10,7 m)",
                  "rohrlaenge, rohr_ueber_kopf, wasser_in_rohren": "E Summe der Trassen (data/leitungstrassen.json); Wandstaerke PVC-U SDR 21 [A]; 'ueber Kopf' = Z >= 2100 [A]"},
 }
 _out = Path(_V.pfad("system_specs", root=str(ROOT)))

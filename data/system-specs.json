@@ -2,32 +2,32 @@
  "stand": "05.11.2026",
  "hinweis": "Auslegung nach Fachrecherche R17–R24 und Entscheidung D61 (Weg 1 nach R36: Tische über den Beeten, Beete nur Blatt/Kräuter, Biomasse 346 kg, Spanne 308–385; D40 hatte 475 kg mit Fruchtgemüse); Hülle = Plane (D39). Bens Tabellenwerte stehen daneben (tabelle_ben). Schätzung aus Modellmaßen und Literaturwerten, Standort offen. Keine fachliche Freigabe.",
  "wasser": {
-  "gesamt_m3": 34.7,
+  "gesamt_m3": 29.5,
   "teile": [
    [
     "Hauptbecken (Pool)",
-    26.15,
-    "75%"
+    20.8,
+    "71%"
    ],
    [
     "Zweites Becken",
-    2.4,
-    "7%"
+    2.51,
+    "9%"
    ],
    [
     "Tanks (2 Absetzer, 2 Biofilter)",
     1.94,
-    "6%"
+    "7%"
    ],
    [
     "Beete (Porenwasser bei Flutung)",
     3.28,
-    "9%"
+    "11%"
    ],
    [
     "NFT-Rinnen (Wasserfilm)",
     0.15,
-    "0%"
+    "1%"
    ],
    [
     "Rohre und Schläuche",
@@ -37,7 +37,7 @@
    [
     "Puffer klein (Fass, Messzelle, Kanister)",
     0.16,
-    "0%"
+    "1%"
    ],
    [
     "Drittbecken (Quarantäne, klein)",
@@ -46,9 +46,9 @@
    ]
   ],
   "in_tanks_m3": 1.94,
-  "im_kreislauf_m3": 34.1,
+  "im_kreislauf_m3": 28.9,
   "tabelle_systemwasser_m3": 25,
-  "fischwasser_m3": 28.5
+  "fischwasser_m3": 20.8
  },
  "pflanzen": {
   "beete": 2160,
@@ -72,7 +72,7 @@
   "anzahl": 494,
   "biomasse_kg": 346,
   "futter_kg_tag": 3.46,
-  "dichte_kg_m3": 12,
+  "dichte_kg_m3": 17,
   "tan_g_tag": 130,
   "spanne": {
    "biomasse_kg": [
@@ -84,18 +84,18 @@
     3.85
    ],
    "dichte_kg_m3": [
-    11,
-    13
+    15,
+    19
    ]
   },
-  "obergrenze_fao_kg": 571,
+  "obergrenze_fao_kg": 416,
   "substrat_traegt_kg": 252,
   "bedingung": "Weg 1 (D61): Beete unter den Tischen nur Blatt/Kräuter, kein Fruchtanteil nötig; 4 Außenrinnen, Auslegung = Mitte der FAO-Werte, Spanne untere bis obere FAO-Werte; D40 (475 kg) setzte ca. 61 % Fruchtgemüse voraus",
   "tabelle_ben": {
    "anzahl": 1839,
    "biomasse_kg": 1287,
    "futter_kg_tag": 10.7,
-   "dichte_kg_m3": 45,
+   "dichte_kg_m3": 62,
    "tan_g_tag": 402,
    "tan_g_tag_frueherer_ansatz": 345
   }
@@ -106,13 +106,13 @@
   "kreislauf_l_min": 185,
   "kreislauf_m3_h": 11.1,
   "je_linie_l_min": 110,
-  "umwaelzzeit_h": 2.6,
+  "umwaelzzeit_h": 2.2,
   "pumpe_hoehe_m": 2.0,
   "bedarf_nft_2_l_min": 261,
   "hauptkreislauf_l_min": 220,
   "hauptkreislauf_pumpen": "4 x 55 l/min (D38)",
   "absetzer_teilstrom_l_min": 25.0,
-  "fischwasser_umlauf_h": 2.2,
+  "fischwasser_umlauf_h": 1.6,
   "tan_durchfluss_l_min": 120,
   "tan_durchfluss_tabelle_l_min": 372,
   "tabelle_ben": {
@@ -172,7 +172,7 @@
    ],
    "dT_k": 30,
    "gradtagzahl_kd": 3500,
-   "wasser_speicher_kwh_je_k": 40.4,
+   "wasser_speicher_kwh_je_k": 34.3,
    "hinweis": "Huelle = Plane PE doppelt luftgepolstert (R24), 208 m2 aus 40 Facetten; Standort offen (Annahme Mitteleuropa -10/20 C), Jahreswert ohne Sonnengewinn, Infiltration und Thermoschirm; nicht in 'gesamt_w' enthalten"
   },
   "tabelle_ben": {
@@ -211,7 +211,7 @@
    31
   ],
   "absetzer_teilstrom_je_tank_l_min": 12.5,
-  "anteil_am_fischwasser": "7% (FAO: 10-30 %)"
+  "anteil_am_fischwasser": "9% (FAO: 10-30 %)"
  },
  "kapazitaet": {
   "medien_kg_futter_tag": 11.1,
@@ -247,10 +247,10 @@
  },
  "puffer": {
   "volumen_m3": 0.16,
-  "anteil_wasser": "0%",
-  "deckt_wasserverlust_tage": 0.2,
-  "wasserverlust_m3_tag": 0.68,
-  "deckt_wasserverlust_stunden": 5.6,
+  "anteil_wasser": "1%",
+  "deckt_wasserverlust_tage": 0.3,
+  "wasserverlust_m3_tag": 0.58,
+  "deckt_wasserverlust_stunden": 6.6,
   "nachfuellwasser_quelle": "Quelle über Aktivkohle (R37 Befund 3)",
   "aufbau": {
    "modell": "puffer_klein T82 (D66/D70)",
@@ -290,7 +290,7 @@
     "NaHCO3": 0.78
    },
    "mix_halb_ca_halb_koh_praktisch_kg_tag": 0.43,
-   "eisen": "Fe-Chelat 2 mg/l alle ca. 3 Wochen = 69 g Fe je Gabe, ca. 3.3 g Fe/Tag",
+   "eisen": "Fe-Chelat 2 mg/l alle ca. 3 Wochen = 59 g Fe je Gabe, ca. 2.8 g Fe/Tag",
    "hinweis": "Nitrifikation verbraucht 7,14 g Alkalinitaet je g TAN (Boyd 2016); K-Bedarf der Pflanzen (ca. 0,4 g/m2/Tag, Graber/Junge, Abstract) ist viel kleiner als die KOH-Menge: Verhaeltnis Ca(OH)2/KOH nach Messung (EC, K) einstellen"
   },
   "strom_w": {
@@ -451,9 +451,9 @@
    "Stapel-Schwerkraft"
   ],
   "bedarf": {
-   "verlust_m3_tag_2prozent": 0.68,
-   "verlust_m3_tag_1prozent": 0.34,
-   "uvi_anteil_m3": 0.24,
+   "verlust_m3_tag_2prozent": 0.58,
+   "verlust_m3_tag_1prozent": 0.29,
+   "uvi_anteil_m3": 0.21,
    "stammloesung_tage_je_120l": {
     "KOH": 23.1,
     "NaHCO3": 14.8,
@@ -466,7 +466,7 @@
     "name": "A Minimal im Dom: Dosierfass 120 l + Messzelle + Eisen, Nachfuellwasser direkt ueber Aktivkohle",
     "im_dom_l": 160,
     "im_dom_m3": 0.16,
-    "anteil_wasser_prozent": 0.47,
+    "anteil_wasser_prozent": 0.55,
     "frischwasser_l": 0,
     "frischwasser_tage_bei_verlust": [
      0.0,
@@ -487,11 +487,11 @@
     "name": "B Fass-Station mit Tagesreserve: wie A + 3 x 200-l-Fass belueftet",
     "im_dom_l": 760,
     "im_dom_m3": 0.76,
-    "anteil_wasser_prozent": 2.18,
+    "anteil_wasser_prozent": 2.56,
     "frischwasser_l": 600,
     "frischwasser_tage_bei_verlust": [
-     0.9,
-     1.8
+     1.0,
+     2.1
     ],
     "grundflaeche_m2": 1.47,
     "grundflaeche_gespart_gegen_station_m2": 3.2,
@@ -508,11 +508,11 @@
     "name": "C Minimal im Dom (wie A) + Zisterne 3 m3 aussen (Erdtank, Regenwasser)",
     "im_dom_l": 160,
     "im_dom_m3": 0.16,
-    "anteil_wasser_prozent": 0.47,
+    "anteil_wasser_prozent": 0.55,
     "frischwasser_l": 3000,
     "frischwasser_tage_bei_verlust": [
-     4.4,
-     8.8
+     5.2,
+     10.4
     ],
     "grundflaeche_m2": 0.39,
     "grundflaeche_gespart_gegen_station_m2": 4.3,
@@ -683,7 +683,7 @@
   {
    "pruefung": "Besatzdichte höchstens 20 kg/m³ (FAO 589)",
    "ok": true,
-   "detail": "12 kg/m³ im Beckenwasser 28.5 m³ (346 kg); Bens Tabelle 45 kg/m³ (1287 kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"
+   "detail": "17 kg/m³ im Beckenwasser 20.8 m³ (346 kg); Bens Tabelle 62 kg/m³ (1287 kg) liegt darüber und ist nur mit UVI-Technik (bis 60 kg/m³) belegt"
   },
   {
    "pruefung": "Biofilter-/Substratvolumen deckt das Futter (Faustregel)",
@@ -728,7 +728,7 @@
   {
    "pruefung": "Nachfüllwasser: Quelle benannt, kein Vorrat im Dom (R27, D66)",
    "ok": true,
-   "detail": "Nachfüllwasser kommt aus der Quelle über Aktivkohle (R37 Befund 3), im Dom ist kein Vorrat (D66); der Puffer klein (0.16 m³ = Fass + Messzelle + Kanister) wäre nur Mess- und Dosierbehälter und deckte rechnerisch 5.6 h Wasserverlust bei 2%/Tag (0.68 m³/Tag, SRAC 454: unter 2 %); 0.5 % des Systemwassers (UVI-Sumpf + Basentank: 0,7 %); Chlor/Chloramin der Quelle beim Wasserversorger offen (Zisterne aussen = Option C)"
+   "detail": "Nachfüllwasser kommt aus der Quelle über Aktivkohle (R37 Befund 3), im Dom ist kein Vorrat (D66); der Puffer klein (0.16 m³ = Fass + Messzelle + Kanister) wäre nur Mess- und Dosierbehälter und deckte rechnerisch 6.6 h Wasserverlust bei 2%/Tag (0.58 m³/Tag, SRAC 454: unter 2 %); 0.5 % des Systemwassers (UVI-Sumpf + Basentank: 0,7 %); Chlor/Chloramin der Quelle beim Wasserversorger offen (Zisterne aussen = Option C)"
   },
   {
    "pruefung": "Drittbecken als Quarantäne (R27)",
@@ -762,8 +762,9 @@
   "pumpstufen_linienwasser": 2,
   "pumpenleistung_el_w_eta25": 577,
   "pumpenleistung_el_w_eta18": 635,
-  "foerderhoehe_hauptpumpe_m": 2.0,
-  "foerderhoehe_booster_m": 1.0,
+  "foerderhoehe_pumpstelle_1_m": 1.15,
+  "foerderhoehe_pumpstelle_2_m": 1.0,
+  "pumpen_tauch": 4,
   "graeben_zulauf_beete": false,
   "ring_nennlaenge_ueber_kopf_m": 21.4,
   "trassen": 62,
@@ -779,7 +780,7 @@
   "wasser_in_rohren_l": 214.8,
   "herkunft": {
    "pumpenleistung": "Q docs/research/R47-wasserkreislauf-neu.md Tabelle Pumpenleistung (577 W bei eta 25 %, 635 W bei 18 %), Rechnung scripts/r47_pumpen.py",
-   "foerderhoehe": "Q R47c 7.2 (Hauptpumpe 2,0 m, Booster etwa 1,0 m)",
+   "foerderhoehe": "Q data/oasis-soll.json (Pumpstelle 1: +1,15 m Fischtank -> Vortex; Pumpstelle 2: +1,00 m Sumpf -> Fischtank, D93); vorher R47c (Hauptpumpe 2,0 m, Booster 1,0 m, entfallen)",
    "ring_nennlaenge": "Q R47b 6.6 (2 x 10,7 m)",
    "rohrlaenge, rohr_ueber_kopf, wasser_in_rohren": "E Summe der Trassen (data/leitungstrassen.json); Wandstaerke PVC-U SDR 21 [A]; 'ueber Kopf' = Z >= 2100 [A]"
   }

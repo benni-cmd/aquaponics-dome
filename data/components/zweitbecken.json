@@ -6,9 +6,9 @@
  "quelle_masse": "data/oasis-soll.json nursery (A13, A26: Ø 2 m, steht auf dem Boden, Wsp 800, Rand 1000); Bauplatz data/oasis-lage.json nursery (U1, D110)",
  "parameter": {
   "wasser_d": {
-   "wert": 2000,
+   "wert": 1880,
    "einheit": "mm",
-   "herkunft": "[Q] data/oasis-soll.json nursery masse_text_mm.durchmesser 2000 (Innendurchmesser, D118) = data/layout.json ring_b2.pool2.d"
+   "herkunft": "[A] L2 (11.11.2026, D152): Huelle = Zeichnungsmass der Quelle (B18, D151): Huelle 2000 - 2 x Wand 60 = 1880; vorher [Q] data/oasis-soll.json nursery masse_text_mm.durchmesser 2000 (Innendurchmesser, D118) = data/layout.json ring_b2.pool2.d"
   },
   "ring": {
    "wert": 60,
@@ -31,12 +31,12 @@
    "herkunft": "[E] Wasserspiegel minus Standflaeche = 800 - 0 = data/params.json pool2_depth (varianten_werte ring_b2)"
   },
   "pos_x": {
-   "wert": 2797,
+   "wert": 1097.0,
    "einheit": "mm",
-   "herkunft": "[Q] data/oasis-lage.json nursery bauplatz x_mm (U1, ANNAHME D110, r 4461,6 / Az -51,2)"
+   "herkunft": "[Q] L2: Soll-Mitte nursery aus data/oasis-draufsicht.json (D152)"
   },
   "pos_y": {
-   "wert": -3476,
+   "wert": -3376.3,
    "einheit": "mm",
    "herkunft": "[Q] data/oasis-lage.json nursery bauplatz y_mm"
   },

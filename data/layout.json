@@ -1131,11 +1131,23 @@
   ]
  },
  "oasis": {
-  "quelle": "N-UNIFY-AUTOBAHN U3, D118/D119: Soll-Maße nach data/oasis-soll.json; seit U7 (D141) der einzige Kreislauf (Block hiess vorher ring_b2)",
-  "pool": {"d": 3890, "water_z": 750},
-  "pool2": {"d": 2000, "water_z": 800},
-  "pool3": {"d": 1000, "water_z": 850},
+  "quelle": "N-UNIFY-AUTOBAHN U3, D118/D119: Soll-Maße nach data/oasis-soll.json; seit U7 (D141) der einzige Kreislauf (Block hiess vorher ring_b2); L2 (D152): pool d 4200 (Huelle 4500), pool2 d 1880 (Huelle 2000) nach dem Zeichnungsmass",
+  "pool": {
+   "d": 4200,
+   "water_z": 750
+  },
+  "pool2": {
+   "d": 1880,
+   "water_z": 800
+  },
+  "pool3": {
+   "d": 1000,
+   "water_z": 850
+  },
   "ibc_beds_z0": 0,
-  "ibc_beds_hoehe": {"aussen": 460, "innen": 420}
+  "ibc_beds_hoehe": {
+   "aussen": 460,
+   "innen": 420
+  }
  }
 }

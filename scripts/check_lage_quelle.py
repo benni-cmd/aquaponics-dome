@@ -136,7 +136,7 @@ SPEC = {
     "bio_1": (("tank_gross", "tank_gross_t3"), "bio", "Tank", None, "kreis", None), "bio_2": (("tank_gross", "tank_gross_t3"), "bio", "Tank", None, "kreis", None),
     "sludge_1": (("schlamm_sammelbehaelter",), "sludge", None, None, "kreis", ("schlamm_sammelbehaelter", "aussen_d")),
     "sludge_2": (("schlamm_sammelbehaelter",), "sludge", None, None, "kreis", ("schlamm_sammelbehaelter", "aussen_d")),
-    "sump_1": (("sumpftank",), "sump", "Sumpf_Folie", None, "rechteck", None), "sump_2": (("sumpftank",), "sump", "Sumpf_Folie", None, "rechteck", None),
+    "sump_1": (("sumpftank", "sumpftank_spiegel"), "sump", "Sumpf_Folie", None, "rechteck", None), "sump_2": (("sumpftank", "sumpftank_spiegel"), "sump", "Sumpf_Folie", None, "rechteck", None),   # L2 (D152): Sumpf 2 gespiegelt
     "permakultur": (("permakultur_modul",), "perma", None, None, "rechteck", ("permakultur_modul", ("kompost_l", "kompost_b"))),
     "filterpumpe_1": (("tauchpumpe_modul",), "pumpen", None, None, "punkt", None), "filterpumpe_2": (("tauchpumpe_modul",), "pumpen", None, None, "punkt", None),
     "hauptpumpe_1": (("tauchpumpe_modul",), "pumpen", None, None, "punkt", None), "hauptpumpe_2": (("tauchpumpe_modul",), "pumpen", None, None, "punkt", None),

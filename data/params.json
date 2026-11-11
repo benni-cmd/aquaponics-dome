@@ -873,19 +873,19 @@
   "used_by": "scripts/technik_e13.py"
  },
  "technik_x": {
-  "value": 500,
+  "value": -5922.6,
   "unit": "mm",
   "origin": "A",
-  "source": "M10-S5-LUFT-B Runde 74: Technikgruppe 'vorlaeufig, E13' AUSSEN vor dem Fundamentring neben der Tuer (D81); innen zwischen Tuer Az -72 und Ecke Az -90 kein Platz (Befund im Paket m10-s5-luft); Schrankmitte x (Az -85,6, r 6509)",
+  "source": "L2 (11.11.2026, D152): Soll-Mitte 'Steuerung & Pumpen' der Quell-Draufsicht (data/oasis-draufsicht.json control, ausserhalb der Kuppel); vorher 500; M10-S5-LUFT-B Runde 74: Technikgruppe 'vorlaeufig, E13' AUSSEN vor dem Fundamentring neben der Tuer (D81); innen zwischen Tuer Az -72 und Ecke Az -90 kein Platz (Befund im Paket m10-s5-luft); Schrankmitte x (Az -85,6, r 6509)",
   "r_id": "",
   "maturity": 0,
   "used_by": "scripts/gen_dome.py, scripts/technik_e13.py"
  },
  "technik_y": {
-  "value": -6490,
+  "value": -3008.7,
   "unit": "mm",
   "origin": "A",
-  "source": "M10-S5-LUFT-B Runde 74: Technikgruppe 'vorlaeufig, E13' AUSSEN vor dem Fundamentring neben der Tuer (D81); innen zwischen Tuer Az -72 und Ecke Az -90 kein Platz (Befund im Paket m10-s5-luft); Schrankmitte y (Rueckwand 20 mm vor der Fundamentring-Aussenkante)",
+  "source": "L2 (11.11.2026, D152): Soll-Mitte 'Steuerung & Pumpen' der Quell-Draufsicht (data/oasis-draufsicht.json control, ausserhalb der Kuppel); vorher -6490; M10-S5-LUFT-B Runde 74: Technikgruppe 'vorlaeufig, E13' AUSSEN vor dem Fundamentring neben der Tuer (D81); innen zwischen Tuer Az -72 und Ecke Az -90 kein Platz (Befund im Paket m10-s5-luft); Schrankmitte y (Rueckwand 20 mm vor der Fundamentring-Aussenkante)",
   "r_id": "",
   "maturity": 0,
   "used_by": "scripts/gen_dome.py, scripts/technik_e13.py"

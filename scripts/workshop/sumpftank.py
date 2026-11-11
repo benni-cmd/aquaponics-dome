@@ -1,7 +1,9 @@
 """Sumpftank T101 (N-UNIFY-AUTOBAHN U2, D93, D105): Grube 1125 x 2975 x 500 innen, Betonwanne + EPDM-Folie, drei begehbare Deckelplatten, Wasserkoerper bis -250,
 vier Pufferzonen zu 212 mm (Wand 1 und 3 bodenoffen, Wand 2 und 4 als Wehr), Pumpensockel, drei Zulauftuellen ID25, Schwimmerhalter bei -110, vier Zonenschilder.
 KS: Mitte der Grube in X/Y, Z 0 = Fussboden (Deckel-Oberkante); Boden -500; Modell-Z = 400 + Z (D94). Pufferzonen am +Y-Ende.
-Aufruf: python -X utf8 scripts/workshop/sumpftank.py [--render]"""
+Aufruf: python -X utf8 scripts/workshop/sumpftank.py [--render] [--spiegel]
+L2 (D152): --spiegel baut sumpftank_spiegel.sc (lokal X gespiegelt: Zulaeufe an der +X-Wand, Sockel und Halter seitenverkehrt) fuer Sumpf 2;
+die Quelle zeichnet die beiden Sumpftanks spiegelgleich zur Tuer-Achse. Parameter bleiben in data/components/sumpftank.json."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 import u2_lib as U
@@ -27,8 +29,9 @@ def wand_z(p, k):
     return (boden + p["trenn_oeff"], p["trenn_oben"]) if k % 2 == 0 else (boden, p["wehr_oben"])
 
 
-def build(ueber=None):
+def build(ueber=None, spiegel=False):
     p, d, b = U.start(NAME, ueber)
+    m = -1.0 if spiegel else 1.0   # L2: Vorzeichen der lokalen X-Achse
     U.material(b, MAT)
     root = "T101_Sumpftank"
     b.add("component.create", name=root, grounded=True)
@@ -50,16 +53,16 @@ def build(ueber=None):
         U.box(b, f"Trennwand_{k + 1}", (w, p["trenn_t"], zo - zu), (0, yw, (zu + zo) / 2), "PP weiss")
         U.box(b, f"Trennwand_{k + 1}", (w, p["trenn_t"], zo - zu), (0, yw, (zu + zo) / 2), None, schneiden=["Wasser"])
     sx, sy, sh, ss = p["sockel_x"], p["sockel_y"], p["sockel_h"], p["sockel_s"]
-    U.box(b, "Pumpensockel", (ss, ss, sh), (sx, sy, -dp + sh / 2), "PP grau")
-    U.box(b, "Pumpensockel", (ss, ss, sh), (sx, sy, -dp + sh / 2), None, schneiden=["Wasser"])
+    U.box(b, "Pumpensockel", (ss, ss, sh), (m * sx, sy, -dp + sh / 2), "PP grau")
+    U.box(b, "Pumpensockel", (ss, ss, sh), (m * sx, sy, -dp + sh / 2), None, schneiden=["Wasser"])
     # Zulauftuellen ID25 durch die -X-Wand (Bohrung durch Wanne und Folie, Tuelle passt ein)
-    x_a = -(w / 2 + lt + wt)
+    x_a = -m * (w / 2 + lt + wt)
     for i, yt in enumerate((-1100, -700, -300), start=1):
-        U.cyl(b, f"Zulauf_{i}_Bohrung", p["tuelle_d"], wt + lt + 2, (x_a - 1, yt, p["tuelle_z"]), (1, 0, 0), None, schneiden=["Sumpf_Wanne", "Sumpf_Folie"])
-        U.cyl(b, f"Zulauf_{i}", p["tuelle_d"], p["tuelle_l"], (x_a, yt, p["tuelle_z"]), (1, 0, 0), "PP grau")
-        U.cyl(b, f"Zulauf_{i}_ID", p["tuelle_id"], p["tuelle_l"] + 2, (x_a - 1, yt, p["tuelle_z"]), (1, 0, 0), None, schneiden=[f"Zulauf_{i}"])
-    # Schwimmerhalter an der +X-Folie (60 x 40 x 80), Mitte bei halter_z
-    U.box(b, "Schwimmerhalter", (60, 40, 80), (w / 2 - 30, p["halter_y"], p["halter_z"]), "PP grau")
+        U.cyl(b, f"Zulauf_{i}_Bohrung", p["tuelle_d"], wt + lt + 2, (x_a - m, yt, p["tuelle_z"]), (m, 0, 0), None, schneiden=["Sumpf_Wanne", "Sumpf_Folie"])
+        U.cyl(b, f"Zulauf_{i}", p["tuelle_d"], p["tuelle_l"], (x_a, yt, p["tuelle_z"]), (m, 0, 0), "PP grau")
+        U.cyl(b, f"Zulauf_{i}_ID", p["tuelle_id"], p["tuelle_l"] + 2, (x_a - m, yt, p["tuelle_z"]), (m, 0, 0), None, schneiden=[f"Zulauf_{i}"])
+    # Schwimmerhalter (60 x 40 x 80), Mitte bei halter_z, Oberkante an der Deckel-Unterseite; L2 (D152): Lage halter_x/halter_y = Schwimmer-Symbol der Quelle (vorher an der +X-Folie)
+    U.box(b, "Schwimmerhalter", (60, 40, 80), (m * p["halter_x"], p["halter_y"], p["halter_z"]), "PP grau")
     # Deckel: drei Platten, Oberkante 0
     for i, yc in enumerate((-p["deckel_seg"], 0, p["deckel_seg"]), start=1):
         U.box(b, f"Deckel_{i}", (p["deckel_w"], p["deckel_seg"], p["deckel_t"]), (0, yc, -p["deckel_t"] / 2), "Stahl verzinkt")
@@ -70,5 +73,8 @@ def build(ueber=None):
 
 
 if __name__ == "__main__":
+    if "--spiegel" in sys.argv:
+        U.main(NAME + "_spiegel", lambda: build(spiegel=True))
+        sys.exit(0)
     U.main(NAME, build, [("01-schraeg", [0, 0, -250], 0.6, 0.55, 5200, None), ("02-laengsschnitt", [0, 0, -300], -1.5708, 0.0, 5000, "x=0"),
                          ("03-zonen", [0, 1250, -300], -1.5708, 0.0, 1500, "x=0"), ("04-querschnitt", [0, 0, -300], 3.1416, 0.0, 1900, "y=-500")])

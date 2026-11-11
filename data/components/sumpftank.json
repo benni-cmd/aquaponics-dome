@@ -96,14 +96,14 @@
    "herkunft": "[A] Sockelhoehe"
   },
   "sockel_x": {
-   "wert": 200,
+   "wert": -62.5,
    "einheit": "mm",
-   "herkunft": "[A] Lage Pumpenplatz in der Hauptkammer (x)"
+   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher sockel_x 200; [A] Lage Pumpenplatz in der Hauptkammer (x)"
   },
   "sockel_y": {
-   "wert": -700,
+   "wert": 387.5,
    "einheit": "mm",
-   "herkunft": "[A] Lage Pumpenplatz in der Hauptkammer (y)"
+   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher sockel_y -700; [A] Lage Pumpenplatz in der Hauptkammer (y)"
   },
   "tuelle_d": {
    "wert": 32,
@@ -131,9 +131,14 @@
    "herkunft": "[A] Mitte der Schwimmerhalter-Aufnahme (Z -120 bis -40, unter dem Deckel); sie umfasst den Hochstand -110 und die Kabelklemme des schwimmerschalter_hochstand (Z -75 bis -45)"
   },
   "halter_y": {
-   "wert": -444,
+   "wert": -1281.2,
    "einheit": "mm",
-   "herkunft": "[A] Lage der Aufnahme in der Hauptkammer (Mitte)"
+   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter_y -444; [A] Lage der Aufnahme in der Hauptkammer (Mitte)"
+  },
+  "halter_x": {
+   "wert": 150.0,
+   "einheit": "mm",
+   "herkunft": "[A] L2 (11.11.2026, D152): Lage des Symbols der Quelle im Sumpf-Rechteck (Sumpf 1, Drehung 18 Grad; Sumpf 2 gespiegelt), gerechnet aus data/oasis-draufsicht.json; vorher halter an der +X-Folie (w/2 - 30 = 532); Halter haengt an der Deckel-Unterseite"
   }
  },
  "werkstoff": {

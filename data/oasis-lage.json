@@ -62,7 +62,8 @@
    "soll_teile_nicht_erreichbar": [],
    "regel": "Flutung von der Tuer (Az -72) ueber Zellen mit Abstand >= 250 mm (= 500 mm Gang), 50-mm-Raster, Knie 0,3 m und Kopf 1,7 m; erreichbar = geflutete Zelle hoechstens 400 mm vom Bauteil"
   },
-  "hinweise": []
+  "hinweise": [],
+  "l2": "11.11.2026 N-UNIFY-AUTOBAHN L2: Bauplaetze = Soll-Mitten der Quell-Draufsicht (scripts/oasis_lage_l2.py); die U1-Werte stehen je Teil unter u1_bauplatz; D108 bis D110 ueberholt (D152)"
  },
  "bauteile": [
   {
@@ -91,18 +92,25 @@
    "annahme": null,
    "verschiebung_mm": 450.3,
    "bauplatz": {
-    "x_mm": -6962,
-    "y_mm": -1196,
+    "x_mm": -6511.7,
+    "y_mm": -1195.7,
     "drehung_grad": 18.0,
     "z_modell_mm": 400.0,
-    "r_mm": 7064.0,
-    "az_grad": -170.3
+    "r_mm": 6620.6,
+    "az_grad": -169.6,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 331.0,
-   "naechstes_teil": "tap"
+   "naechstes_teil": "tap",
+   "u1_bauplatz": {
+    "x_mm": -6962,
+    "y_mm": -1196,
+    "drehung_grad": 18.0,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "tap",
@@ -131,18 +139,25 @@
    "annahme": null,
    "verschiebung_mm": 667.2,
    "bauplatz": {
-    "x_mm": -6930,
-    "y_mm": -2059,
+    "x_mm": -6279.9,
+    "y_mm": -1909.0,
     "drehung_grad": 18.0,
     "z_modell_mm": 400.0,
-    "r_mm": 7229.4,
-    "az_grad": -163.5
+    "r_mm": 6563.6,
+    "az_grad": -163.1,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 331.0,
-   "naechstes_teil": "rain"
+   "naechstes_teil": "rain",
+   "u1_bauplatz": {
+    "x_mm": -6930,
+    "y_mm": -2059,
+    "drehung_grad": 18.0,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "nachspeise",
@@ -169,18 +184,25 @@
    "annahme": null,
    "verschiebung_mm": 650.2,
    "bauplatz": {
-    "x_mm": -2461,
-    "y_mm": -456,
+    "x_mm": -3061.2,
+    "y_mm": -206.0,
     "drehung_grad": 0.0,
     "z_modell_mm": 1150.0,
-    "r_mm": 2502.9,
-    "az_grad": -169.5
+    "r_mm": 3068.1,
+    "az_grad": -176.2,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 152.0,
-   "naechstes_teil": "nft_tisch_innen:2"
+   "naechstes_teil": "nft_tisch_innen:2",
+   "u1_bauplatz": {
+    "x_mm": -2461,
+    "y_mm": -456,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 1150.0
+   }
   },
   {
    "id": "fish",
@@ -204,7 +226,8 @@
     "drehung_grad": 0.0,
     "z_modell_mm": -600.0,
     "r_mm": 0.0,
-    "az_grad": 0.0
+    "az_grad": 0.0,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "konflikte_soll_lage": [],
@@ -213,7 +236,13 @@
     "z_von_mm": -600.0,
     "z_bis_mm": 1600.0
    },
-   "hinweis": "Pool-Huelle bleibt in der Mitte; Boden -1000, Rand 1200 (U3)"
+   "hinweis": "Pool-Huelle bleibt in der Mitte; Boden -1000, Rand 1200 (U3)",
+   "u1_bauplatz": {
+    "x_mm": 0.0,
+    "y_mm": 0.0,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -600.0
+   }
   },
   {
    "id": "nursery",
@@ -242,19 +271,26 @@
    "annahme": "D110",
    "verschiebung_mm": 1702.9,
    "bauplatz": {
-    "x_mm": 2797,
-    "y_mm": -3476,
+    "x_mm": 1097.0,
+    "y_mm": -3376.3,
     "drehung_grad": 108.0,
     "z_modell_mm": 400.0,
-    "r_mm": 4461.6,
-    "az_grad": -51.2
+    "r_mm": 3550.0,
+    "az_grad": -72.0,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 190.0,
    "naechstes_teil": "bio_1",
-   "laufweg": "erreichbar"
+   "laufweg": "erreichbar",
+   "u1_bauplatz": {
+    "x_mm": 2797,
+    "y_mm": -3476,
+    "drehung_grad": 108.0,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "feed",
@@ -283,19 +319,26 @@
    "annahme": "D110",
    "verschiebung_mm": 1720.1,
    "bauplatz": {
-    "x_mm": 238,
-    "y_mm": -4041,
+    "x_mm": 1637.8,
+    "y_mm": -5040.6,
     "drehung_grad": 108.0,
     "z_modell_mm": 400.0,
-    "r_mm": 4048.0,
-    "az_grad": -86.6
+    "r_mm": 5300.0,
+    "az_grad": -72.0,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 228.0,
    "naechstes_teil": "nft_tisch_aussen:4",
-   "laufweg": "erreichbar"
+   "laufweg": "erreichbar",
+   "u1_bauplatz": {
+    "x_mm": 238,
+    "y_mm": -4041,
+    "drehung_grad": 108.0,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "filterpumpe_1",
@@ -321,17 +364,24 @@
    "wirt": "fish",
    "verschiebung_mm": 959.3,
    "bauplatz": {
-    "x_mm": 1224.87,
-    "y_mm": -1182.46,
+    "x_mm": 1915.0,
+    "y_mm": -1848.7,
     "drehung_grad": 0.0,
-    "z_modell_mm": -600.0,
-    "r_mm": 1702.5,
-    "az_grad": -44.0
+    "z_modell_mm": 400.0,
+    "r_mm": 2661.8,
+    "az_grad": -44.0,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
    "naechstes_teil": null,
-   "hinweis": "Tauchpumpe am Boden des Fischtanks (D102), gleiches Azimut wie gezeichnet; die Quelle zeichnet sie am Tankrand"
+   "hinweis": "Tauchpumpe am Boden des Fischtanks (D102), gleiches Azimut wie gezeichnet; die Quelle zeichnet sie am Tankrand",
+   "u1_bauplatz": {
+    "x_mm": 1224.87,
+    "y_mm": -1182.46,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -600.0
+   }
   },
   {
    "id": "filterpumpe_2",
@@ -357,17 +407,24 @@
    "wirt": "fish",
    "verschiebung_mm": 959.3,
    "bauplatz": {
-    "x_mm": -295.88,
-    "y_mm": -1676.59,
+    "x_mm": -462.6,
+    "y_mm": -2621.3,
     "drehung_grad": 0.0,
-    "z_modell_mm": -600.0,
-    "r_mm": 1702.5,
-    "az_grad": -100.0
+    "z_modell_mm": 400.0,
+    "r_mm": 2661.8,
+    "az_grad": -100.0,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
    "naechstes_teil": null,
-   "hinweis": "Tauchpumpe am Boden des Fischtanks (D102), gleiches Azimut wie gezeichnet; die Quelle zeichnet sie am Tankrand"
+   "hinweis": "Tauchpumpe am Boden des Fischtanks (D102), gleiches Azimut wie gezeichnet; die Quelle zeichnet sie am Tankrand",
+   "u1_bauplatz": {
+    "x_mm": -295.88,
+    "y_mm": -1676.59,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -600.0
+   }
   },
   {
    "id": "vortex_1",
@@ -391,19 +448,26 @@
    "annahme": "D110",
    "verschiebung_mm": 1640.0,
    "bauplatz": {
-    "x_mm": 2689,
-    "y_mm": -1234,
+    "x_mm": 3688.6,
+    "y_mm": -2534.2,
     "drehung_grad": 7.4,
     "z_modell_mm": 977.0,
-    "r_mm": 2958.6,
-    "az_grad": -24.7
+    "r_mm": 4475.3,
+    "az_grad": -34.5,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 210.0,
    "naechstes_teil": "nft_tisch_innen:6",
-   "laufweg": "erreichbar"
+   "laufweg": "erreichbar",
+   "u1_bauplatz": {
+    "x_mm": 2689,
+    "y_mm": -1234,
+    "drehung_grad": 7.4,
+    "z_modell_mm": 977.0
+   }
   },
   {
    "id": "vortex_2",
@@ -431,12 +495,13 @@
    "annahme": "D109",
    "verschiebung_mm": 2625.0,
    "bauplatz": {
-    "x_mm": -3495,
-    "y_mm": -5918,
+    "x_mm": -1494.6,
+    "y_mm": -4218.3,
     "drehung_grad": -151.4,
     "z_modell_mm": 977.0,
-    "r_mm": 6873.0,
-    "az_grad": -120.6
+    "r_mm": 4475.3,
+    "az_grad": -109.5,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -451,7 +516,13 @@
    ],
    "status": "OK",
    "kleinster_abstand_mm": 584.0,
-   "naechstes_teil": "ibc_beet_aussen_800:4"
+   "naechstes_teil": "ibc_beet_aussen_800:4",
+   "u1_bauplatz": {
+    "x_mm": -3495,
+    "y_mm": -5918,
+    "drehung_grad": -151.4,
+    "z_modell_mm": 977.0
+   }
   },
   {
    "id": "bio_1",
@@ -481,19 +552,26 @@
    "annahme": null,
    "verschiebung_mm": 632.4,
    "bauplatz": {
-    "x_mm": 4294,
-    "y_mm": -2237,
+    "x_mm": 4894.1,
+    "y_mm": -2037.4,
     "drehung_grad": 157.4,
     "z_modell_mm": 630.0,
-    "r_mm": 4841.8,
-    "az_grad": -27.5
+    "r_mm": 5301.2,
+    "az_grad": -22.6,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 154.0,
    "naechstes_teil": "nft_tisch_aussen:5",
-   "laufweg": "erreichbar"
+   "laufweg": "erreichbar",
+   "u1_bauplatz": {
+    "x_mm": 4294,
+    "y_mm": -2237,
+    "drehung_grad": 157.4,
+    "z_modell_mm": 630.0
+   }
   },
   {
    "id": "bio_2",
@@ -525,19 +603,26 @@
    "annahme": "D110",
    "verschiebung_mm": 1664.2,
    "bauplatz": {
-    "x_mm": -1362,
-    "y_mm": -3625,
+    "x_mm": -2761.9,
+    "y_mm": -4524.9,
     "drehung_grad": 73.6,
     "z_modell_mm": 630.0,
-    "r_mm": 3872.4,
-    "az_grad": -110.6
+    "r_mm": 5301.2,
+    "az_grad": -121.4,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 151.0,
    "naechstes_teil": "venturi_2",
-   "laufweg": "erreichbar"
+   "laufweg": "erreichbar",
+   "u1_bauplatz": {
+    "x_mm": -1362,
+    "y_mm": -3625,
+    "drehung_grad": 73.6,
+    "z_modell_mm": 630.0
+   }
   },
   {
    "id": "sludge_1",
@@ -563,12 +648,13 @@
    "annahme": "D109",
    "verschiebung_mm": 1711.8,
    "bauplatz": {
-    "x_mm": 4244,
-    "y_mm": -5328,
+    "x_mm": 4044.0,
+    "y_mm": -3627.9,
     "drehung_grad": 0.0,
     "z_modell_mm": 400.0,
-    "r_mm": 6811.7,
-    "az_grad": -51.5
+    "r_mm": 5432.8,
+    "az_grad": -41.9,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -583,7 +669,13 @@
    ],
    "status": "OK",
    "kleinster_abstand_mm": 840.0,
-   "naechstes_teil": "nursery"
+   "naechstes_teil": "nursery",
+   "u1_bauplatz": {
+    "x_mm": 4244,
+    "y_mm": -5328,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "sludge_2",
@@ -611,12 +703,13 @@
    "annahme": "D109",
    "verschiebung_mm": 2702.0,
    "bauplatz": {
-    "x_mm": 561,
-    "y_mm": -7412,
+    "x_mm": -1139.2,
+    "y_mm": -5312.0,
     "drehung_grad": 0.0,
     "z_modell_mm": 400.0,
-    "r_mm": 7433.2,
-    "az_grad": -85.7
+    "r_mm": 5432.8,
+    "az_grad": -102.1,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -631,7 +724,13 @@
    ],
    "status": "OK",
    "kleinster_abstand_mm": 184.0,
-   "naechstes_teil": "aktivkohle_station:1"
+   "naechstes_teil": "aktivkohle_station:1",
+   "u1_bauplatz": {
+    "x_mm": 561,
+    "y_mm": -7412,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "permakultur",
@@ -657,18 +756,25 @@
    "annahme": "D110",
    "verschiebung_mm": 1118.1,
    "bauplatz": {
-    "x_mm": 2243,
-    "y_mm": -7389,
+    "x_mm": 2043.4,
+    "y_mm": -6288.9,
     "drehung_grad": 18.0,
     "z_modell_mm": 400.0,
-    "r_mm": 7721.9,
-    "az_grad": -73.1
+    "r_mm": 6612.5,
+    "az_grad": -72.0,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 439.0,
-   "naechstes_teil": "sludge_2"
+   "naechstes_teil": "sludge_2",
+   "u1_bauplatz": {
+    "x_mm": 2243,
+    "y_mm": -7389,
+    "drehung_grad": 18.0,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "ring_1",
@@ -1694,12 +1800,13 @@
    "annahme": "D109",
    "verschiebung_mm": 3301.7,
    "bauplatz": {
-    "x_mm": 5434,
-    "y_mm": -5257,
-    "drehung_grad": 93.0,
+    "x_mm": 2733.7,
+    "y_mm": -3357.1,
+    "drehung_grad": 108.0,
     "z_modell_mm": -100.0,
-    "r_mm": 7560.7,
-    "az_grad": -44.1
+    "r_mm": 4329.3,
+    "az_grad": -50.8,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -1714,7 +1821,13 @@
    ],
    "status": "OK",
    "kleinster_abstand_mm": 180.0,
-   "naechstes_teil": "sludge_1"
+   "naechstes_teil": "sludge_1",
+   "u1_bauplatz": {
+    "x_mm": 5434,
+    "y_mm": -5257,
+    "drehung_grad": 93.0,
+    "z_modell_mm": -100.0
+   }
   },
   {
    "id": "hauptpumpe_1",
@@ -1740,17 +1853,24 @@
    "wirt": "sump_1",
    "verschiebung_mm": 3301.7,
    "bauplatz": {
-    "x_mm": 5254.8,
-    "y_mm": -4907.7,
+    "x_mm": 2554.5,
+    "y_mm": -3007.8,
     "drehung_grad": 0.0,
     "z_modell_mm": -100.0,
-    "r_mm": 7190.2,
-    "az_grad": -43.0
+    "r_mm": 3946.2,
+    "az_grad": -49.7,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
    "naechstes_teil": null,
-   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)",
+   "u1_bauplatz": {
+    "x_mm": 5254.8,
+    "y_mm": -4907.7,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -100.0
+   }
   },
   {
    "id": "venturi_1",
@@ -1776,18 +1896,25 @@
    "annahme": null,
    "verschiebung_mm": 205.7,
    "bauplatz": {
-    "x_mm": 2476,
-    "y_mm": -2102,
+    "x_mm": 2276.4,
+    "y_mm": -2151.9,
     "drehung_grad": 0.0,
     "z_modell_mm": 1650.0,
-    "r_mm": 3247.9,
-    "az_grad": -40.3
+    "r_mm": 3132.5,
+    "az_grad": -43.4,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 167.0,
-   "naechstes_teil": "puffer_klein:1"
+   "naechstes_teil": "puffer_klein:1",
+   "u1_bauplatz": {
+    "x_mm": 2476,
+    "y_mm": -2102,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 1650.0
+   }
   },
   {
    "id": "sump_2",
@@ -1816,12 +1943,13 @@
    "annahme": "D109",
    "verschiebung_mm": 3400.1,
    "bauplatz": {
-    "x_mm": -1838,
-    "y_mm": -7323,
-    "drehung_grad": 123.0,
+    "x_mm": -238.4,
+    "y_mm": -4322.7,
+    "drehung_grad": 108.0,
     "z_modell_mm": -100.0,
-    "r_mm": 7550.1,
-    "az_grad": -104.1
+    "r_mm": 4329.3,
+    "az_grad": -93.2,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [
@@ -1836,7 +1964,13 @@
    ],
    "status": "OK",
    "kleinster_abstand_mm": 164.0,
-   "naechstes_teil": "aktivkohle_station:1"
+   "naechstes_teil": "aktivkohle_station:1",
+   "u1_bauplatz": {
+    "x_mm": -1838,
+    "y_mm": -7323,
+    "drehung_grad": 123.0,
+    "z_modell_mm": -100.0
+   }
   },
   {
    "id": "hauptpumpe_2",
@@ -1862,17 +1996,24 @@
    "wirt": "sump_2",
    "verschiebung_mm": 3400.1,
    "bauplatz": {
-    "x_mm": -1898.3,
-    "y_mm": -6935.2,
+    "x_mm": -298.7,
+    "y_mm": -3934.9,
     "drehung_grad": 0.0,
     "z_modell_mm": -100.0,
-    "r_mm": 7190.3,
-    "az_grad": -105.3
+    "r_mm": 3946.2,
+    "az_grad": -94.3,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
    "naechstes_teil": null,
-   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)",
+   "u1_bauplatz": {
+    "x_mm": -1898.3,
+    "y_mm": -6935.2,
+    "drehung_grad": 0.0,
+    "z_modell_mm": -100.0
+   }
   },
   {
    "id": "venturi_2",
@@ -1896,18 +2037,25 @@
    "annahme": null,
    "verschiebung_mm": 111.6,
    "bauplatz": {
-    "x_mm": -477,
-    "y_mm": -3029,
+    "x_mm": -576.8,
+    "y_mm": -3078.9,
     "drehung_grad": 0.0,
     "z_modell_mm": 1650.0,
-    "r_mm": 3066.3,
-    "az_grad": -98.9
+    "r_mm": 3132.5,
+    "az_grad": -100.6,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 151.0,
-   "naechstes_teil": "bio_2"
+   "naechstes_teil": "bio_2",
+   "u1_bauplatz": {
+    "x_mm": -477,
+    "y_mm": -3029,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 1650.0
+   }
   },
   {
    "id": "schwimmer_1",
@@ -1933,17 +2081,24 @@
    "wirt": "sump_1",
    "verschiebung_mm": 3301.7,
    "bauplatz": {
-    "x_mm": 5972.6,
-    "y_mm": -6429.1,
+    "x_mm": 3272.3,
+    "y_mm": -4529.2,
     "drehung_grad": 0.0,
     "z_modell_mm": 290.0,
-    "r_mm": 8775.3,
-    "az_grad": -47.1
+    "r_mm": 5587.6,
+    "az_grad": -54.2,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
    "naechstes_teil": null,
-   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)",
+   "u1_bauplatz": {
+    "x_mm": 5972.6,
+    "y_mm": -6429.1,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 290.0
+   }
   },
   {
    "id": "schwimmer_2",
@@ -1969,17 +2124,24 @@
    "wirt": "sump_2",
    "verschiebung_mm": 3400.1,
    "bauplatz": {
-    "x_mm": -1584.7,
-    "y_mm": -8587.9,
+    "x_mm": 14.9,
+    "y_mm": -5587.6,
     "drehung_grad": 0.0,
     "z_modell_mm": 290.0,
-    "r_mm": 8732.9,
-    "az_grad": -100.5
+    "r_mm": 5587.6,
+    "az_grad": -89.8,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "kleinster_abstand_mm": null,
    "naechstes_teil": null,
-   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)"
+   "hinweis": "liegt in der Zeichnung im Rechteck des Sumpfs und wandert mit ihm (starre Gruppe)",
+   "u1_bauplatz": {
+    "x_mm": -1584.7,
+    "y_mm": -8587.9,
+    "drehung_grad": 0.0,
+    "z_modell_mm": 290.0
+   }
   },
   {
    "id": "luftpumpe",
@@ -2007,18 +2169,25 @@
    "annahme": "D110",
    "verschiebung_mm": 3041.2,
    "bauplatz": {
-    "x_mm": -4146,
-    "y_mm": -1468,
-    "drehung_grad": 36.9,
+    "x_mm": -5546.0,
+    "y_mm": -4167.8,
+    "drehung_grad": 18.0,
     "z_modell_mm": 400.0,
-    "r_mm": 4398.2,
-    "az_grad": -160.5
+    "r_mm": 6937.5,
+    "az_grad": -143.1,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 156.0,
-   "naechstes_teil": "nft_tisch_mitte:3"
+   "naechstes_teil": "nft_tisch_mitte:3",
+   "u1_bauplatz": {
+    "x_mm": -4146,
+    "y_mm": -1468,
+    "drehung_grad": 36.9,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "luftpumpe_1",
@@ -2046,19 +2215,26 @@
    "annahme": "D110",
    "verschiebung_mm": 3138.9,
    "bauplatz": {
-    "x_mm": 4268,
-    "y_mm": 375,
-    "drehung_grad": -171.6,
+    "x_mm": 7168.4,
+    "y_mm": -825.2,
+    "drehung_grad": 18.0,
     "z_modell_mm": 400.0,
-    "r_mm": 4284.4,
-    "az_grad": 5.0
+    "r_mm": 7215.7,
+    "az_grad": -6.6,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 158.0,
    "naechstes_teil": "nft_tisch_aussen:5",
-   "laufweg": "erreichbar"
+   "laufweg": "erreichbar",
+   "u1_bauplatz": {
+    "x_mm": 4268,
+    "y_mm": 375,
+    "drehung_grad": -171.6,
+    "z_modell_mm": 400.0
+   }
   },
   {
    "id": "luftpumpe_2",
@@ -2086,19 +2262,26 @@
    "annahme": "D110",
    "verschiebung_mm": 3087.4,
    "bauplatz": {
-    "x_mm": -2514,
-    "y_mm": -3581,
-    "drehung_grad": 27.6,
+    "x_mm": -5314.3,
+    "y_mm": -4881.1,
+    "drehung_grad": 18.0,
     "z_modell_mm": 400.0,
-    "r_mm": 4375.4,
-    "az_grad": -125.1
+    "r_mm": 7215.7,
+    "az_grad": -137.4,
+    "quelle": "L2: Soll-Mitte aus data/oasis-draufsicht.json (D117, D152)"
    },
    "konflikte_bauplatz": [],
    "alternativen": [],
    "status": "OK",
    "kleinster_abstand_mm": 164.0,
    "naechstes_teil": "ibc_beet_aussen_800:4",
-   "laufweg": "erreichbar"
+   "laufweg": "erreichbar",
+   "u1_bauplatz": {
+    "x_mm": -2514,
+    "y_mm": -3581,
+    "drehung_grad": 27.6,
+    "z_modell_mm": 400.0
+   }
   }
  ]
 }

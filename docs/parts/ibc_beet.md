@@ -1,6 +1,6 @@
 # Bauteilblatt T30 ibc_beet (erzeugt von `scripts/workshop/partsheet.py` aus `data/components/ibc_beet.json` und `designs/components/ibc_beet.sc`, nicht von Hand aendern)
 
-**Funktion:** [Soll nach Quelle A21 (U2, D115), ersetzt die Lochblech-Schutzkorb-Beschreibung: jedes Beet hat einen Siphon, der durch ein Abtropfgitter am Boden bis ganz nach unten reicht; Vlies und Sieb ueber dem Gitter halten Schlamm und Medium fern; etwas Belueftung unten verhindert Faulstellen; Flutstand 250 mm ueber dem Fussboden. Die Teile stehen in den Parametern a21_* und in der Teileliste; die .sc-Geometrie (Medienschutz, Sperrboden) bleibt bis U3 unveraendert und wird dort auf A21 umgebaut.] Substratbeet (Fluten und Entleeren per Glockensiphon): Pflanzen (Instanzen; 288 je Aussenbeet, Beet bei Azimut 113 hat 144) in Netztoepfen im Medium (Blaehton/Kies), Wasser fliesst ueber das Tropfrohr zu, der Glockensiphon entleert das Beet in Zyklen bis auf 12 mm Film ueber dem ungelochten Sperrboden (V3, D77: kein stehendes Wasser unter dem Medium); zugleich Biofilterflaeche. Ein stehender Reinigungsschacht d110 erlaubt das Absaugen von Schlamm.
+**Funktion:** Substratbeet (Fluten und Entleeren per Glockensiphon, Quelle A21): Pflanzen (Instanzen; 288 je Aussenbeet, Beet bei Azimut 113 hat 144) in Netztoepfen im Medium (Blaehton/Kies); das Wasser fliesst ueber das Tropfrohr zu. Das Medium liegt auf Sieb, Vlies und Abtropfgitter am Boden des Beets; der Glockensiphon reicht durch das Gitter bis zum Wannenboden und leert das Beet in Zyklen bis auf einen Rest unter dem Gitter, den die Belueftung unten (Luftschlauch, Ausstroemerstab) frisch haelt. Der Siphon fuehrt das Wasser seitlich durch die +X-Stirnwand zur Schlauchtuelle ID25 (Rueckfall zum Sumpftank, U6). Flutstand 250 mm ueber dem Fussboden. Ein stehender Reinigungsschacht d110 erlaubt das Absaugen von Schlamm; zugleich Biofilterflaeche.
 
 **Datei:** `designs/components/ibc_beet.sc` · **Teilenummer:** T30 · **Revision:** A · **Bezugspunkt:** Mitte der Wannenunterseite (Z=0), X Laengsachse, Y quer; Wannenoberkante bei Z = hoehe; Medienunterkante bei a21_boden 70, Medienoberflaeche 370; Ablaufport unter dem Boden (Z < 0, reicht in den Fussboden: U4/U6); Wannen stehen auf dem Flur (z0 0, U3 D122; A+ eingelassen z0 -162 bis -209)
 
@@ -14,10 +14,21 @@
 | `a21_boden` | 70 | mm | [Q] data/oasis-soll.json fd_aussen/fd_mitte boden_ueber_fussboden_mm 70 (Beetboden innen ueber dem Fussboden) |
 | `a21_standrohr_h` | 180 | mm | [E] Flutstand 250 minus Beetboden 70 = 180 mm Standrohrhoehe ueber dem Beetboden (der Siphon bestimmt den Flutstand) |
 | `a21_standrohr_unten` | 0 | mm | [Q] Quelle fd_aussen.t2: 'der Siphon geht durch das Gitter bis ganz nach unten' = Standrohr endet auf dem Beetboden (Abstand 0) |
-| `a21_gitter_h` | 25 | mm | [A] Abtropfgitter am Boden des Beets: PP-Rost 25 mm hoch, Maschen 20 x 20 (Quelle fd_aussen.t2 nennt kein Maß); Geometrie in U3 |
+| `a21_gitter_h` | 25 | mm | [A] Abtropfgitter am Boden des Beets: PP-Rost 25 mm hoch, Maschen 20 x 20 (Quelle fd_aussen.t2 nennt kein Maß); U3b (D132): als Stegrost gebaut, Schlitzbreite 16 bei Teilung 20 |
 | `a21_vlies_t` | 2 | mm | [A] Drainagevlies ueber dem Gitter (Quelle fd_aussen.t3: Vlies und Sieb halten Schlamm fern) |
 | `a21_sieb_mm` | 2 | mm | [A] Sieb ueber dem Vlies: Edelstahl-Gewebe Maschenweite 2 mm (haelt Blaehton und Schlamm vom Siphon fern) |
-| `a21_belueftung_d` | 8 | mm | [A] Belueftung unten im Beet (Quelle fd_aussen.t4: 'etwas Belueftung unten, damit nichts gammelt'): Luftschlauch Ø 8 mit Ausstroemer unter dem Gitter; Luftquelle in der Quelle nicht festgelegt |
+| `a21_belueftung_d` | 8 | mm | [A] Belueftung unten im Beet (Quelle fd_aussen.t4: 'etwas Belueftung unten, damit nichts gammelt'): Luftschlauch Ø 8 mit Ausstroemer unter dem Gitter; Luftquelle in der Quelle nicht festgelegt; U3b (D135): gebaut |
+| `a21_sieb_t` | 1 | mm | [A] U3b (D132): Dicke des Siebs (Edelstahl-Gewebe 1 mm); a21_sieb_mm ist die Maschenweite |
+| `a21_gitter_steg` | 4 | mm | [A] U3b (D132): Stegbreite des Abtropfgitters (Teilung 20 = Schlitz 16 + Steg 4, Maschen 20 x 20 aus a21_gitter_h) |
+| `a21_gitter_schlitz_b` | 16 | mm | [A] U3b (D132): Modellvereinfachung: laengs gestreckte Schlitze 16 x 296 statt Maschen 20 x 20 (4800 Loecher); Querstege alle 300; freie Flaeche im Modell 79 %, real 64 % |
+| `a21_gitter_schlitz_l` | 296 | mm | [A] U3b (D132): Schlitzlaenge (Teilung 300 mit Quersteg 4) |
+| `a21_gitter_rand` | 8 | mm | [A] U3b (D132): Randabstand des Gitters zur Wannenwand; Platz fuer den Flansch des Auslasses (Hoehe bis 50 ueber Wannenunterkante, Dicke 4) |
+| `a21_luftloch_z` | 30 | mm | [A] U3b (D133): Luftloch der Glocke, Mitte 30 ueber Wannenunterkante (unter dem Gitter, Unterkante Gitter 42) |
+| `a21_auslass_z` | 28 | mm | [A] U3b (D134): Achse des seitlichen Auslasses 28 ueber Wannenunterkante: Flansch 44 steht 1 mm ueber dem Wannenboden (Oberkante 5), Rohr d25 bleibt unter dem Gitter (Unterkante 42) |
+| `a21_winkel_d` | 34 | mm | [A] U3b (D134): Aussen-D der Klebemuffe d25 (PVC-U-Winkel 90 Grad, Mittelpunkt bis Muffenende 29, Muffentiefe 20) |
+| `a21_tuelle_l` | 40 | mm | [A] U3b (D134): Schlauchtuelle fuer Schlauch ID25 (D106), ragt 40 ueber den Tankverbinder, 32 ueber den Randwulst (Beetabstand corner_gap 60) |
+| `a21_ausstroemer_d` | 16 | mm | [A] U3b (D135): Ausstroemerstab (poroeser Kunststoff) auf dem Wannenboden, Achse 13 ueber Wannenunterkante |
+| `a21_ausstroemer_l` | 600 | mm | [A] U3b (D135): Laenge des Ausstroemerstabs |
 | `wall` | 4 | mm | R03: Wandstaerke 3-4 mm (Scope-Card ibc_beet) |
 | `floor_t` | 5 | mm | [A] Bodenstaerke |
 | `corner_r` | 40 | mm | [A] Innenradius der Wannenecken (IBC-Schnitt, ref-5) |
@@ -33,9 +44,9 @@
 | `standpipe_over` | 180 | mm | U3 (D122, A21): Standrohr-Oberkante = Flutstand 250 ueber dem Flur = Beet-Boden 70 + 180 (a21_standrohr_h); UEBERHOLT 265: Orchestrator 29.10.: standpipe_h = media_depth - 35 mm = 265 ueber der Medienunterkante (Wasserstand 35 mm unter der Oberflaeche, dazwischen SRAC 1 Zoll = 25 mm / R03 trockene Zone 2-5 cm); Variante FarmHub 220 (R03 Befund 5, widerspricht Befund 4); Gesamtlaenge ab Bulkhead = Stuetzhoehe + 265 [E] |
 | `standpipe_wall` | 1.5 | mm | Bevo PVC-U Druckrohr 25 x 1,5 PN10 Art. 0309025 [R51/R45]: ID 22,0, Querschnitt 380 mm2 (W40-BEET Auflage 4, M-BEET-TAUSCH 0b; vorher [A] 2 mm = 346 mm2) |
 | `bell_d` | 75 | mm | R03: Glocke D75 |
-| `bell_h` | 210 | mm | U3 (D122): Standrohr 180 + 30 = 210; UEBERHOLT 295: [E] Glocke = Standrohrhoehe + 30 mm (R03: 250 bei Standrohr 220); oben verschlossen |
+| `bell_h` | 275 | mm | U3b (D133, A21): Glocke steht auf dem Wannenboden (z 5) und endet bei 280 = Standrohr 250 + 30; vorher 210 ab Sperrboden (U3, D122); oben verschlossen |
 | `bell_wall` | 3 | mm | [A] PVC-Rohr d75 |
-| `bell_slot_w` | 10 | mm | R03: zwei Schlitze 10 x 40 mm |
+| `bell_slot_w` | 14 | mm | U3b (D133): 3 Kerben 14 x 12 am Glockenfuss (+X ist fuer den Auslass frei): 3 x 14 x 12 = 504 mm2 >= Standrohr-Innenflaeche 380; vorher 4 x 10 (R03: zwei Schlitze 10 x 40) |
 | `bell_slot_h` | 12 | mm | W40-BEET V3 (D77): Kerbenhoehe 12 mm = Restfilm 12 mm; 4 Kerben 10 x 12 = 480 mm2 >= Standrohrflaeche 380 mm2 (R03 hatte 2 Schlitze 10 x 40) |
 | `bell_slot_z` | 0 | mm | W40-BEET V3: Kerben beginnen am Glockenfuss (Oberkante Kerbe = Plattenoberkante + 12) |
 | `air_hole` | 10 | mm | R03: Luftloch D10, 50 mm ueber dem Unterrand (quadratisch 10 x 10 modelliert) |
@@ -43,7 +54,7 @@
 | `guard_h` | 320 | mm | R03: Medienschutz 320 hoch |
 | `guard_wall` | 1.5 | mm | W40-BEET (D77): Lochblech Edelstahl 1.4301 1,5 mm, Rundloch 5 mm Teilung 8 (R51 T30e-4), Zuschnitt und Rollen beim Metallbauer |
 | `bulkhead_d` | 36 | mm | [A] Tankverbinder-Aussen D36 (Gewinde 1 Zoll), fuer Wannenboden und Sperrboden; darin Reduzierhuelse 32/25 (D77) |
-| `bulkhead_flange` | 50 | mm | [A] Flansch D50 |
+| `bulkhead_flange` | 44 | mm | [A] Flansch D44 (U3b, D134: vorher D50; bei Achse 28 ueber dem Wannenboden darf der Flansch den Boden nicht schneiden: 28 - 22 = 6 > 5) |
 | `inflow_d` | 20 | mm | [A] Zulauf-Tropfrohr D20 (PE), Zulauf 200-500 l/h je Beet (R03) |
 | `inflow_wall` | 2 | mm | [A] |
 | `inflow_below_rim` | 25 | mm | R03: Zulaufrohr auf Z 450 = 25 mm unter OBJ-Oberkante Z 475 |
@@ -70,35 +81,39 @@
 | innen_933 | 1865 | 933 | 420 | 6 | layout.json ibc_beds 9-14: 1865 x 933 x 649 | U3 (D122): Wannenhoehe 420 = Soll-Rand data/oasis-soll.json fd_mitte rand_ueber_fussboden_mm 420 (vorher 649 im Boden; Wanne steht auf dem Flur, Sperrboden-Oberkante 70) | 120 | D44 (W-M4, 31.10.): Ecken 45 Grad angefast, Schenkel 120 mm am Randwulst-Umriss (ueberlappten Nachbarbeete um 35 mm); Rueckfall Laenge 1790; Medium/Siebboden/Wanne parallel versetzt |
 | aussen_800 | 2640 | 800 | 460 | 8 | W17/D29: Aussenbeet einseitig erreichbar <= 800 breit; Laenge 2640 = Obergrenze aus der Montage-Rechnung (Streben/Sockel, D25; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771)); Hoehe wie OBJ 637; ersetzt aussen_933/aussen_993 im Dom (Montage M7 stellt um) | U3 (D122): Wannenhoehe 460 = Soll-Rand data/oasis-soll.json fd_aussen rand_ueber_fussboden_mm 460 (vorher 637 im Boden; Wanne steht auf dem Flur, Sperrboden-Oberkante 70) |  |  |
 
-Gesamt-Box (Messung, Variante ibc_beet_aussen_933): X -1516.5 bis 1476.5, Y -466.5 bis 466.5, Z -80.0 bis 637.0 mm; Koerper: 40.
+Gesamt-Box (Messung, Variante ibc_beet_aussen_933): X -1516.5 bis 1508.5, Y -466.5 bis 466.5, Z -0.0 bis 637.0 mm; Koerper: 41.
 
-**Toleranzen / Spiel:** Medium 2 mm Spiel zur Wanne; Wasserstand in der Flutphase = Standrohrkante = Flutstand 250 ueber dem Flur, 180 mm ueber der Plattenoberkante = 120 mm unter der Medienoberflaeche (Quelle A21/A25, U3 D122; vorher 265 / 35 mm, Orchestrator-Vorgabe 29.10.). Restwasser nach dem Ablauf: Film bis Kerben-Oberkante (Plattenoberkante + 12 mm), gerechnet 9,3 l (aussen_800), 7,6 l (innen_933), 12,3 l (aussen_933) bei 40 % Porositaet [A] (scripts/w40_beet_rechnung.py); Haftwasser im Korn bleibt. Entleerzeit d25: 3,6 bis 5,1 min (aussen_800), 4,7 bis 6,7 min (aussen_933) gegen R45 4,3 bis 6,1 min (R45 setzt fest 234 l an, die Rechnung nimmt die Beetflaeche; Abweichung ausgewiesen, Sollbereich unveraendert).
+**Toleranzen / Spiel:** Medium, Vlies und Sieb 2 mm Spiel zur Wanne, Gitter 8 mm (Platz fuer den Flansch); Wasserstand in der Flutphase = Standrohrkante = Flutstand 250 ueber dem Flur, 180 mm ueber der Medienunterkante = 120 mm unter der Medienoberflaeche; Kerben (14 x 12) und Luftloch liegen unter dem Gitter (Rest 5 bis 17 mm Film); der Auslass ragt 32 mm ueber den Randwulst.
 
 ## Werkstoff und Gewicht
 
 - Werkstoff: HDPE weiss (Wanne), PVC grau (Rohre), Kies/Blaehton (Medium), Dichte 0.95 g/cm3, Farbe #e9ebe8 (ref-5/ref-6 weisse Wannen (HDPE IBC-Innenbehaelter 0,95 g/cm3); Siebboden/Stuetzen PP 0,91, Rohre PVC-U 1,4 g/cm3)
-- Volumen (Messung, Variante ibc_beet_aussen_933, `solidcraft-cli eval`): 60814.2 cm3 · Masse leer (ohne Medium): 58360 g (58.36 kg)
-- Variante `ibc_beet_aussen_933`: 58.36 kg leer (ohne Medium)
-- Variante `ibc_beet_aussen_993`: 60.78 kg leer (ohne Medium)
-- Variante `ibc_beet_aussen_800`: 43.99 kg leer (ohne Medium)
-- Variante `ibc_beet_innen_933`: 34.12 kg leer (ohne Medium)
-- Gefuellt/in Betrieb: aussen_933: leer ohne Medium 73.6 kg; Medium 761 l = 685 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 269 l = 269 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 1027 kg | aussen_993: leer ohne Medium 76.0 kg; Medium 813 l = 732 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 287 l = 287 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 1095 kg | aussen_800: leer ohne Medium 63.7 kg; Medium 575 l = 517 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 203 l = 203 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 784 kg | innen_933: leer ohne Medium 48.8 kg; Medium 467 l = 420 kg (Schuettdichte 0,9 [A]); Wasser nur im Medium (Poren bis Standrohrkante, 40 % [A]) 165 l = 165 kg, KEIN Wasserraum unter dem Sperrboden; gefuellt gesamt 634 kg
+- Volumen (Messung, Variante ibc_beet_aussen_933, `solidcraft-cli eval`): 63992.9 cm3 · Masse leer (ohne Medium): 56700 g (56.70 kg)
+- Variante `ibc_beet_aussen_933`: 56.70 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_993`: 59.13 kg leer (ohne Medium)
+- Variante `ibc_beet_aussen_800`: 41.71 kg leer (ohne Medium)
+- Variante `ibc_beet_innen_933`: 35.10 kg leer (ohne Medium)
+- Gefuellt/in Betrieb: aussen_933: leer ohne Medium 56.7 kg; Medium 762 l = 686 kg (Schuettdichte 0,9 [A]); Wasser in der Flutphase: Poren des gefluteten Mediums (180 von 300 mm, 40 % [A]) 183 l plus Wasserraum unter dem Vlies bis Gitter-Oberkante rund 138 l [E]; gefuellt gesamt 1064 kg | aussen_993: leer ohne Medium 59.1 kg; Medium 814 l = 733 kg (Schuettdichte 0,9 [A]); Wasser in der Flutphase: Poren des gefluteten Mediums (180 von 300 mm, 40 % [A]) 195 l plus Wasserraum unter dem Vlies bis Gitter-Oberkante rund 148 l [E]; gefuellt gesamt 1135 kg | aussen_800: leer ohne Medium 41.7 kg; Medium 576 l = 518 kg (Schuettdichte 0,9 [A]); Wasser in der Flutphase: Poren des gefluteten Mediums (180 von 300 mm, 40 % [A]) 138 l plus Wasserraum unter dem Vlies bis Gitter-Oberkante rund 105 l [E]; gefuellt gesamt 803 kg | innen_933: leer ohne Medium 35.1 kg; Medium 468 l = 421 kg (Schuettdichte 0,9 [A]); Wasser in der Flutphase: Poren des gefluteten Mediums (180 von 300 mm, 40 % [A]) 112 l plus Wasserraum unter dem Vlies bis Gitter-Oberkante rund 84 l [E]; gefuellt gesamt 653 kg
 
 ## Querschnitt / Profil
 
-Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm OHNE Lochung auf 15 (innen, 5 x 3) bzw. 24 (aussen, 8 x 3) Stuetzkloetzen 60 x 60 (Abstand <= 420 mm), einzige Oeffnung = Plattenhuelse (Tankverbinder D36, Flansch D50 auf der Wasserseite, Reduzierhuelse 32/25); Medium 300 mm (EIN Koerper) mit Oberflaeche 75 mm unter dem Rand, Ausschnitte d110 fuer Medienschutz und Reinigungsschacht; Glockensiphon: Standrohr d25, Glocke d75 x 295 (4 Kerben 10 x 12 am Fuss, Luftloch 10), Medienschutz Lochblech V2A d110 x 1,5 x 320 (Modell: 2 Ringe x 12 Schlitze 5 x 50) mit loser Kappe; Reinigungsschacht PVC-U/KG d110 x 3, Oberkante 20 mm ueber dem Medium, Kappe, 2 Kerben 30 x 30; Reduktion d40 x d25 unter dem Bulkhead (Port z -30).
+Wanne halbe IBC: Wand 4 mm, Boden 5 mm (ohne Bohrung), Randsims 20 x 14 mm; auf den Stuetzkloetzen 60 x 60 x 37 liegt das Abtropfgitter (PP-Rost 25 mm, Stegrost), darauf Vlies 2 mm und Sieb 1 mm, darauf das Medium (Beetboden 70, Oberflaeche 370). Die Glocke d75 steht auf dem Wannenboden und geht durch Gitter, Vlies, Sieb und Medium (Loch d79); das Standrohr d25 steckt im Auslasswinkel unter der Glocke (Achse 28 ueber dem Boden), das Auslassrohr d25 geht durch Glocke, Tankverbinder und die +X-Stirnwand zur Schlauchtuelle. Luftschlauch d8 durch die -X-Stirnwand zum Ausstroemerstab d16 x 600 auf dem Wannenboden. Nichts liegt unter der Wannenunterkante (Wanne steht auf dem Flur).
 
 ## Ports (Anschluesse)
 
 | Name | DN / Mass | Lage (Bauteil-KS) | Richtung |
 |---|---|---|---|
-| aussen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1300, y 65, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1252, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
+| aussen_933: Ablauf (seitlich, Schlauchtuelle ID25 an der +X-Stirnwand) | Schlauchtuelle fuer Schlauch ID25 (D106), Rohr 25/20 mit zwei Widerhaken d28, 40 mm lang; dahinter Tankverbinder 32 x 1 Zoll mit Reduzierhuelse 32/25 | x 1508 (Ende), y 65, z 28 | Wasser verlaesst das Beet seitlich nach +X, nichts unter dem Wannenboden (Bedenken B9 entfaellt); Achse = Anschluss fuer den Rueckfall-Schlauch ID25 zum Sumpftank (U6); ragt 32 mm ueber den Randwulst |
+| aussen_933: Luftanschluss (Luftschlauch d8 an der -X-Stirnwand) | Luftschlauch d8 x 1,5, 40 mm ausserhalb der Wand, innen am Ausstroemerstab d16 x 600 | x -1496 (Ende), y 171, z 13.5 | Luft kommt von aussen (Oeffnung zeigt -X); Anschluss an die Belueftungsanlage legt U6 fest (D130) |
+| aussen_993: Ablauf (seitlich, Schlauchtuelle ID25 an der +X-Stirnwand) | Schlauchtuelle fuer Schlauch ID25 (D106), Rohr 25/20 mit zwei Widerhaken d28, 40 mm lang; dahinter Tankverbinder 32 x 1 Zoll mit Reduzierhuelse 32/25 | x 1508 (Ende), y 65, z 28 | Wasser verlaesst das Beet seitlich nach +X, nichts unter dem Wannenboden (Bedenken B9 entfaellt); Achse = Anschluss fuer den Rueckfall-Schlauch ID25 zum Sumpftank (U6); ragt 32 mm ueber den Randwulst |
+| aussen_993: Luftanschluss (Luftschlauch d8 an der -X-Stirnwand) | Luftschlauch d8 x 1,5, 40 mm ausserhalb der Wand, innen am Ausstroemerstab d16 x 600 | x -1496 (Ende), y 186, z 13.5 | Luft kommt von aussen (Oeffnung zeigt -X); Anschluss an die Belueftungsanlage legt U6 fest (D130) |
+| aussen_800: Ablauf (seitlich, Schlauchtuelle ID25 an der +X-Stirnwand) | Schlauchtuelle fuer Schlauch ID25 (D106), Rohr 25/20 mit zwei Widerhaken d28, 40 mm lang; dahinter Tankverbinder 32 x 1 Zoll mit Reduzierhuelse 32/25 | x 1352 (Ende), y 0, z 28 | Wasser verlaesst das Beet seitlich nach +X, nichts unter dem Wannenboden (Bedenken B9 entfaellt); Achse = Anschluss fuer den Rueckfall-Schlauch ID25 zum Sumpftank (U6); ragt 32 mm ueber den Randwulst |
+| aussen_800: Luftanschluss (Luftschlauch d8 an der -X-Stirnwand) | Luftschlauch d8 x 1,5, 40 mm ausserhalb der Wand, innen am Ausstroemerstab d16 x 600 | x -1340 (Ende), y 138, z 13.5 | Luft kommt von aussen (Oeffnung zeigt -X); Anschluss an die Belueftungsanlage legt U6 fest (D130) |
+| innen_933: Ablauf (seitlich, Schlauchtuelle ID25 an der +X-Stirnwand) | Schlauchtuelle fuer Schlauch ID25 (D106), Rohr 25/20 mit zwei Widerhaken d28, 40 mm lang; dahinter Tankverbinder 32 x 1 Zoll mit Reduzierhuelse 32/25 | x 964 (Ende), y 65, z 28 | Wasser verlaesst das Beet seitlich nach +X, nichts unter dem Wannenboden (Bedenken B9 entfaellt); Achse = Anschluss fuer den Rueckfall-Schlauch ID25 zum Sumpftank (U6); ragt 32 mm ueber den Randwulst |
+| innen_933: Luftanschluss (Luftschlauch d8 an der -X-Stirnwand) | Luftschlauch d8 x 1,5, 40 mm ausserhalb der Wand, innen am Ausstroemerstab d16 x 600 | x -952 (Ende), y 171, z 13.5 | Luft kommt von aussen (Oeffnung zeigt -X); Anschluss an die Belueftungsanlage legt U6 fest (D130) |
 | aussen_933: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1516, y -392, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
-| aussen_993: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1300, y 65, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1252, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
 | aussen_993: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1516, y -422, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
-| innen_933: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 650, y 65, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 708, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
 | innen_933: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -972, y -392, z 624 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Rohr liegt laengs, nicht quer (Auslegung E: 2,9 m Beetlaenge) |
-| aussen_800: Ablauf (Standrohr/Bulkhead, Rohrende unter dem Boden) | Rohr d25 (PVC-U d25) mit Reduktion d40 x d25 (Muffe d25 oben, Stutzen d40 unten, 50 mm [A]); Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 | x 1040, y 0, z -30 | Wasser verlaesst das Beet nach unten; Lage: Zellmitte des Topfrasters nahe Li/2 - 200 (M-BEET-TAUSCH-fix, D79; vorher x 1096, y 0); Siphon und Medienschutz liegen >= 91,9 mm von jedem Netztopf |
 | aussen_800: Zulauf (Tropfrohr, offenes Ende ausserhalb der Stirnwand) | Rohr d20 (PE d20, etwa DN15), 200-500 l/h (R03) | x -1360, y -326, z 612 | Wasser tritt von aussen ein (Oeffnung zeigt -X); Lage aus der Messung (Rohr 50 mm von der Innenwand) |
 | aussen_933: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1170, y 65, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
 | aussen_993: Reinigungszugang (Reinigungsschacht d110 mit Kappe) | Rohr d110 (KG/HT DN100), Saugschlauch d <= 75 | x -1170, y 65, z Plattenoberkante bis Medium + 20 | Zugang von oben (Kappe abnehmen); 2 Kerben 30 x 30 am Fuss lassen Wasser und Schlamm vom Plattenfilm in den Schacht |
@@ -107,11 +122,11 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 
 ## Verbindungen und Befestigungen
 
-- Standrohr d25 steckt in der Reduzierhuelse 32/25 (Klebemuffe d25), diese klebt im Tankverbinder D36 mit Klebemuffe d32 und Flansch D50 (Dichtung, Kontermutter unter dem Boden); Entscheidung Ben 04.11.2026 (D77)
-- Plattenhuelse im Sperrboden: gleicher Tankverbinder mit Reduzierhuelse, Flansch D50 auf der Wasserseite (Plattenoberkante), Gewinde 3 mm unter der Platte fuer die Kontermutter; Plattenrand gegen die Wanne mit EPDM-Zellkautschuk abgedichtet (Spalt 2 mm, Mass offen)
-- Reduktion d40 x d25 klebt mit der Muffe d25 auf dem Standrohrende (Port z -30), Stutzen d40 unten fuer den Einzelabgang (PVC-U Klebeverbindung nach DIN EN 14814)
-- Glocke, Medienschutz (Lochblech 5 mm vom Metallbauer, Kappe lose) und Reinigungsschacht (Kappe lose) stehen lose auf dem Sperrboden; Sperrboden (8 mm, ungelocht) liegt auf 15/24 Stuetzkloetzen
-- Zulauf-Tropfrohr durch eine Durchfuehrung D22 in der Stirnwand (Dichtung Gummituelle), Endstopfen am Ende
+- Standrohr d25 steckt im Auslasswinkel 90 Grad (Klebemuffe d25 oben), das Auslassrohr d25 in dessen waagerechter Muffe; Rohr und Winkel kleben (PVC-U Klebeverbindung nach DIN EN 14814)
+- Das Auslassrohr geht durch ein Loch d27 der Glocke (im Bau mit Gummituelle abdichten) und durch die Reduzierhuelse 32/25 im Tankverbinder D36 mit Flansch D44 innen an der +X-Stirnwand (Dichtung, Kontermutter aussen); aussen sitzt die Schlauchtuelle ID25
+- Glocke steht auf dem Wannenboden (Kerben und Luftloch unter dem Gitter) und geht durch ein Loch d79 in Gitter, Vlies, Sieb und Medium; Reinigungsschacht (Kappe lose) steht auf dem Sieb
+- Abtropfgitter liegt lose auf den Stuetzkloetzen (37 mm hoch), Vlies und Sieb liegen lose darauf
+- Luftschlauch d8 durch eine Durchfuehrung d10 in der -X-Stirnwand (Gummituelle), innen am Ausstroemerstab; Zulauf-Tropfrohr durch eine Durchfuehrung D22 in der Stirnwand (Dichtung Gummituelle), Endstopfen
 
 ## Herkunft (docs/provenance.md)
 
@@ -125,26 +140,27 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 | Eckenradius 40 mm | 40 | Bild + A | ref-5 (gerundete Ecken der IBC-Wannen) | niedrig |
 | Medientiefe 300 mm, Oberflaeche Z 370 (Beetboden 70 + 300; 90 mm unter dem Rand aussen, 50 mm innen; U3 D122) | 300 | R03 | docs/research/R03.md (FarmHub 30 cm Fruchtgemuese; Z 400 Vorgabe Orchestrator) | mittel |
 | Medium als EIN Koerper | 1 Koerper | R03/Scope-Card | Scope-Card ibc_beet: Medium als EIN Koerper | hoch |
-| Stuetzkloetze 60x60, 15 (innen) / 24 (aussen) | 60 x 60 | A | Konstruktionspraxis; Abstand <= 420 mm wegen Medienlast (Bild-Kritiker); Luftraum unter dem Sperrboden (trocken, V3/D77) | niedrig |
+| Stuetzkloetze 60x60x37, 23 (aussen_800) / 14 bis 15 (innen) statt 24 / 15; Luftraum unter dem Gitter 37 mm | 60 x 60 | A | Konstruktionspraxis; Abstand <= 420 mm wegen Medienlast; im Weg von Siphon und Auslass entfallen einzelne Klotze (U3b, D132) | niedrig |
 | Standrohr d25, 180 mm ueber Medienunterkante = Flutstand 250 (U3 D122; vorher 265, Variante FarmHub 220) | 25 / 180 | Orchestrator + R03 | Vorgabe media_depth - 35 mm (29.10.), FarmHub 220 als Variante; R03 Befund 5 widerspricht Befund 4/SRAC | mittel |
 | Zulauf-Tropfrohr d20 auf Z 450 (25 mm unter dem Rand) | 20 | R03 + A | R03: Zulaufrohr auf Z 450; Durchmesser Annahme | niedrig |
 | Zulauf 200-500 l/h je Beet | 200-500 l/h | R03 | docs/research/R03.md (Glockensiphon-Auslegung) | mittel |
 | Anzahl 8 aussen (5 x 933, 3 x 993), 6 innen | 14 | OBJ | layout.json ibc_beds | hoch |
-| Werkstoffe: Wanne HDPE 0,95; Siebboden/Stuetzen PP 0,91; Rohre PVC-U 1,4; Medium 0,9 (trocken) | 0,95 / 0,91 / 1,4 / 0,9 g/cm3 | Bild + A | ref-5/6 weisse Wannen; Normwerte Kunststoffe; Medium Mittelwert | mittel |
+| Werkstoffe: Wanne HDPE 0,95; Gitter/Stuetzen PP 0,91; Rohre PVC-U 1,4; Medium 0,9 (trocken); Vlies 0,075 und Sieb 1,24 als Ersatzdichte | 0,95 / 0,91 / 1,4 / 0,9 g/cm3 | Bild + A | ref-5/6 weisse Wannen; Normwerte Kunststoffe; Medium Mittelwert | mittel |
 | Medium-Spiel zur Wannenwand | 2 mm | A | Konstruktionspraxis | niedrig |
 | Tropfloecher 4 x 4 mm, Teilung 200 mm, ab 150 mm von der Stirn | 4 / 200 mm | A | R03: gelochtes Rohr oder Tropfschlauch; Raster Annahme | niedrig |
 | Zulauf-Wanddurchfuehrung D22 in der Stirnwand (Rohr d20) | D22 | A | Konstruktionspraxis (Gummitulle); y = -(Wi/2 - 50) | niedrig |
 | Zulaufrohr liegt laengs (nicht quer), 25 mm unter dem Rand | z 612 lokal / 450 abs. | R03 + E | R03: 'quer ueber das Beet auf Z 450'; bei 2,9 m Laenge laengs ausgelegt (E) | niedrig |
 | Aussenbeet 800 x 2640 x 460 (aussen_800) | 800 / 2640 / 460 mm | Ben + E | D29: einseitig erreichbar <= 800; Laenge 2640 = Obergrenze aus der Montage-Rechnung (D25/D28 outer_bed_len), Hoehe wie OBJ; Zehneck-Grenze 2 x 4573 x tan 18 - 2 x 60 = 2851 (corner_gap 60, W17; mit 100: 2771) | mittel |
-| Sperrboden 8 mm ungelocht (V3) | 8 mm, 0 Loecher | Ben D77 + R51 | docs/jobs/W40-BEET.md (Variante V3, D77 04.11.2026); R51 Befund 5a (stehendes Wasser unter dem Siebboden) | mittel |
-| Glocke d75 x 210 mit 4 Kerben 10 x 12 am Fuss, Luftloch 10 | d75 x 210; 4 x 10 x 12 | R03 + W40 | R03: d75, Luftloch 10; Kerben statt Schlitzen 10 x 40 (W40-BEET V3, Kerbenflaeche 480 mm2 >= Standrohr 380 mm2) | mittel |
-| UEBERHOLT durch A21 (D115): Medienschutz Lochblech V2A d110 x 1,5 x 320, lose Kappe | d110 x 320 | R51 + Ben D77 | R51 T30e-4 (Rundloch d5, Teilung 8, 35 % offen); Modell 2 Ringe x 12 Schlitze 5 x 50 = 6000 mm2 = 15,8 x Standrohr; Zuschnitt und Rollen beim Metallbauer | mittel |
-| Reinigungsschacht d110 x 3 stehend auf dem Sperrboden, Kappe, 2 Kerben 30 x 30 | d110 x 320 | R51 + W40 | R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4); Lage auf Zellmitte des Topfrasters (M-BEET-TAUSCH 0c) | mittel |
-| Reduktion d40 x d25, Bauhoehe 50 mm | d40 / d25 / 50 | R51 + A | R51 T30e-3; Bauhoehe [A], Kaufmass pruefen | niedrig |
-| Tankverbinder D36/Flansch D50 mit Reduzierhuelse 32/25 (Boden und Platte) | D36 / D50 / 32/25 | Ben D77 + A | D77: Standrohr d25 mit Reduzierhuelse 32/25 im Tankverbinder; Tankverbinder-Maße [A] (Bevo Art. 7018227 [Q], Reduzierhuelse Bevo 7002656 / Schwarte 75208) | niedrig |
-| Wandstaerken Rohre: Standrohr 2, Glocke 3, Schacht 3, Lochblech 1,5, Tropfrohr 2 | 2 / 3 / 3 / 1,5 / 2 mm | A | PVC-U/PE Rohre Normwanddicken ungefaehr; Lochblech 1,5 mm laut R51/ehorst Art. 1003438 | niedrig |
-| Gewichtsrechnung: leer ohne Medium, Medium 0,9, Wasser nur Porenwasser bis Standrohrkante (40 % Poren) | siehe Gewicht | E | Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme; kein Wasserraum unter dem Sperrboden | niedrig |
-| Siphon (Standrohr, Glocke, Medienschutz) auf Zellmitte des Topfrasters | x 1040 / y 0 (aussen_800); x 650 / y 65 (innen_933) | D79 + Pruefer M-BEET-TAUSCH | docs/jobs/pruefung/M-BEET-TAUSCH.md Abschnitt 3c (Topf 65,6 mm neben der Schutzachse = Kollision), Auflage 1; Abstand >= 87 mm (Schutzradius 55 + Kragenradius 32), gemessen 91,9 mm | mittel |
+| Glocke d75 x 275 mit 3 Kerben 14 x 12 am Fuss, Luftloch 10 bei z 30, Auslassloch d27 | d75 x 210; 4 x 10 x 12 | R03 + W40 | U3b (D133): Glocke steht auf dem Wannenboden; vorher 210 ab Sperrboden mit 4 Kerben 10 x 12 | mittel |
+| Reinigungsschacht d110 x 3 stehend auf dem Sieb, Kappe, 2 Kerben 30 x 30 | d110 x 320 | R51 + W40 | R51 T30e-5, geaendert: stehend auf dem Sperrboden statt Loch in der Platte (W40-BEET.md Abschnitt Aenderungen, Punkt 4); Lage auf Zellmitte des Topfrasters (M-BEET-TAUSCH 0c) | mittel |
+| Tankverbinder D36/Flansch D44 mit Reduzierhuelse 32/25 in der +X-Stirnwand (U3b, D134) | D36 / D50 / 32/25 | Ben D77 + A | D77: Standrohr d25 mit Reduzierhuelse 32/25 im Tankverbinder; Tankverbinder-Maße [A] (Bevo Art. 7018227 [Q], Reduzierhuelse Bevo 7002656 / Schwarte 75208) | niedrig |
+| Wandstaerken Rohre: Standrohr 1,5, Glocke 3, Schacht 3, Tropfrohr 2 mm | 2 / 3 / 3 / 1,5 / 2 mm | A | PVC-U/PE Rohre Normwanddicken ungefaehr; Lochblech 1,5 mm laut R51/ehorst Art. 1003438 | niedrig |
+| Gewichtsrechnung: leer ohne Medium, Medium 0,9, Wasser: Porenwasser bis Standrohrkante (40 %) plus Wasserraum unter dem Gitter | siehe Gewicht | E | Messung aus .sc (eval) und Dichten oben; Porositaet 40 % Annahme; kein Wasserraum unter dem Sperrboden | niedrig |
+| Siphon (Standrohr, Glocke, Winkel) auf Zellmitte des Topfrasters | x 1040 / y 0 (aussen_800); x 650 / y 65 (innen_933) | D79 + Pruefer M-BEET-TAUSCH | docs/jobs/pruefung/M-BEET-TAUSCH.md Abschnitt 3c (Topf 65,6 mm neben der Schutzachse = Kollision), Auflage 1; Abstand >= 87 mm (Schutzradius 55 + Kragenradius 32), gemessen 91,9 mm | mittel |
+| Abtropfgitter Stegrost: Schlitze 16 x 296, Steg 4, Teilung 20 / 300, Rand 8 mm zur Wand | 16 x 296 | A | docs/decisions.md D132; Maschen 20 x 20 der U2-Daten als 4800 Loecher nicht modelliert (Rechenzeit); freie Flaeche im Modell 79 %, real 64 % | niedrig |
+| Stapel Gitter 25 / Vlies 2 / Sieb 1 unter dem Medium (Beetboden 70) | 28 mm | A + Q | Quelle A21 (flow-diagram.html), U2-Daten a21_*; Reihenfolge Sieb ueber Vlies ueber Gitter | mittel |
+| Auslass seitlich: Achse z 28, Winkel d25, Tankverbinder D36 mit Flansch D44, Schlauchtuelle ID25 40 mm | z 28 | A | docs/decisions.md D134; Nennweite ID25 aus D106 (Quelle nennt keine, Wege e49 bis e52); Bedenken B9 | niedrig |
+| Belueftung unten: Luftschlauch d8, Ausstroemerstab d16 x 600 auf dem Wannenboden | d8 / d16 x 600 | A | docs/decisions.md D135; Quelle A21 nennt Zahl, Maß und Luftquelle nicht | niedrig |
 
 ## Referenz und Abweichung zum OBJ
 
@@ -154,28 +170,27 @@ Wanne halbe IBC: Wand 4 mm, Boden 5 mm, Randsims 20 x 14 mm; Sperrboden PP 8 mm 
 
 ## Montage (L4)
 
-1. Grube ausheben, Wanne einsetzen und waagerecht ausrichten
-2. Bohrung D36 in den Boden, Tankverbinder mit Dichtung einsetzen, Reduzierhuelse 32/25 einkleben, Standrohr d25 stecken, Reduktion d40 x d25 unter dem Boden aufkleben
-3. Stuetzkloetze einlegen, Sperrboden mit Bohrung D36 auflegen, Plattenhuelse (Tankverbinder mit Reduzierhuelse) einsetzen und kontern, Plattenrand mit EPDM-Zellkautschuk abdichten
-4. Dichtheitsmuster: 15 mm Wasser ueber dem Sperrboden, 24 h; Leckwasser unter der Platte waere wieder stehendes Wasser
-5. Glocke, Medienschutz (Lochblech) und Reinigungsschacht lose aufsetzen, Kappen aufsetzen
-6. Zulauf-Tropfrohr durch die Stirnwand fuehren und abdichten
-7. Medium (gewaschen, Blaehton 8-16 reicht bei Schutz 5 mm) einfuellen bis 75 mm unter den Rand, Ausschnitte d110 freihalten
-8. Zulauf anschliessen und Zyklus pruefen (Anspringen bei 3,3 l/min nur am Muster pruefbar); Netztoepfe und Pflanzen setzt der Integrator als Instanzen nach layout.json (nicht Teil des Beets)
+1. Wanne auf den Flur stellen und waagerecht ausrichten (kein Graben, Wanne steht auf dem Flur)
+2. Bohrungen in die Stirnwaende: D36 (Auslass, +X, Achse 28 ueber dem Boden), D10 (Luftschlauch, -X), D22 (Zulauf, -X); Tankverbinder mit Dichtung einsetzen, Reduzierhuelse 32/25 einkleben
+3. Stuetzkloetze einlegen, Ausstroemerstab mit Luftschlauch auf den Wannenboden legen und Schlauch durch die Wand fuehren, Abtropfgitter auflegen (Glockenloch d79), Vlies und Sieb darauf
+4. Auslasswinkel mit Auslassrohr durch die Reduzierhuelse stecken und Standrohr in den Winkel kleben, Schlauchtuelle aussen aufkleben; Glocke (Loch d27 fuer das Rohr, Gummituelle) ueberstuelpen, sie steht auf dem Wannenboden
+5. Medium einfuellen, Reinigungsschacht und Kappe aufsetzen, Tropfrohr einhaengen
+6. Dichtheitsmuster: Wasser bis 250 mm ueber dem Flur, Anspringen des Siphons bei 3,3 l/min und Restfilm am Muster pruefen
 
 **Werkzeug:** Bohrmaschine mit Lochsaege D36, Saege (Standrohr, Glocke, Schacht, Kerben), Entgrater, Wasserwaage, Schaufel, Silikon/Dichtung, PVC-Kleber nach DIN EN 14814
 
 ## Stueckliste-Zeile
 
-- T30a Wanne HDPE (Sonderwanne 2953/1865 mm): 1 je Beet; 14 gesamt (aussen 8: 5 x 933 + 3 x 993, innen 6)
-- T30b Stuetzkloetze PP 60x60: 24 (aussen) / 15 (innen) je Beet
-- T30c Sperrboden PP 8 mm, ungelocht (nur Durchfuehrung D36): 1 je Beet; Plattenhuelse (Tankverbinder D36 mit Flansch D50 + Reduzierhuelse 32/25 + Kontermutter): 1 je Beet; Dichtband Plattenrand
-- T30d Medium Blaehton 8-16 mm: aussen_800 575 l (517 kg); innen_933 467 l (420 kg); aussen_933 761 l (685 kg); aussen_993 813 l (732 kg) (Messung `solidcraft-cli eval`)
-- T30e Siphon: 1 Tankverbinder D36 mit Flansch D50 + Reduzierhuelse 32/25 + Dichtung + Kontermutter, 1 Standrohr PVC-U d25 (Laenge 30 + 250 mm (U3: Flutstand 250)), 1 Reduktion kurz d40 x d25, 1 Glocke PVC-U d75 x 210 mit Deckel und 4 Kerben, 1 Medienschutz Lochblech V2A 1.4301 1,5 mm (Rundloch 5, Teilung 8) d110 x 320 mit loser Kappe DN110
-- T30f Zulauf: 1 Tropfrohr PE d20 (Laenge siehe Messung), 1 Endstopfen d20, 1 Gummituelle D22 fuer die Wanddurchfuehrung, 1 Anschluss-Kupplung d20
-- T30g Reinigungsschacht: 1 KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm (ab Platte), 1 Muffenstopfen DN110
-- Normbezeichnungen: PVC-U Rohr nach DIN 8062 / EN 1452; PE-Rohr nach DIN 8074; Kleber nach DIN EN 14814; Medium gewaschen
-- T30 aussen_800 (W17/D29): 8 Beete 800 x 2640 x 460 (Wanne auf dem Flur, U3 D122; vorher 637 eingelassen) statt 5 x 933 + 3 x 993 x 2953; Wannen-Sondermass (HDPE), Siphon wie die anderen Aussenbeete
+- T30a Wanne HDPE (Sonderwanne 2953/1865 mm): 1 je Beet; 14 gesamt (aussen 8: 5 x 933 + 3 x 993, innen 6), Bohrungen D36, D10, D22 in den Stirnwaenden
+- T30b Stuetzkloetze PP 60x60x37: 23 (aussen_800) / 14 bis 15 (innen) je Beet, im Weg von Siphon und Auslass fehlen einzelne
+- T30c Abtropfgitter PP-Rost 25 mm: 1 je Beet; T30h Vlies PP 2 mm: 1 je Beet; Sieb Edelstahlgewebe 2 mm: 1 je Beet (Artikel folgen in U8)
+- T30d Medium Blaehton 8-16 mm: aussen_800 575 l (517 kg); innen_933 467 l (420 kg)
+- T30e Siphon: 1 Standrohr PVC-U d25, 1 Auslasswinkel 90 Grad d25, 1 Auslassrohr PVC-U d25, 1 Glocke PVC-U d75 x 275 mit Deckel, 3 Kerben, Luftloch und Auslassloch d27, 1 Tankverbinder D36 mit Flansch D44 + Reduzierhuelse 32/25 + Dichtung + Kontermutter, 1 Schlauchtuelle ID25
+- T30i Belueftung: 1 Luftschlauch d8 (etwa 0,2 m), 1 Ausstroemerstab d16 x 600, 1 Gummituelle d10
+- T30f Zulauf: 1 Tropfrohr PE d20 (Laenge siehe Messung), 1 Endstopfen d20, 1 Gummituelle D22
+- T30g Reinigungsschacht: 1 KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm (ab Sieb), Kappe DN110 lose
+- Normbezeichnungen: PVC-U Rohr nach DIN 8062 / EN 1452; PE-Rohr nach DIN 8074; Kleber nach DIN EN 14814
+- T30 aussen_800 (W17/D29): 8 Beete 800 x 2640 x 460 (Wanne auf dem Flur, U3 D122) statt 5 x 933 + 3 x 993 x 2953; Wannen-Sondermass (HDPE), Siphon wie die anderen Aussenbeete
 
 ## Teileliste mit Bezug in Europa (D76)
 
@@ -183,23 +198,21 @@ Marke: [Q] Seite/Ausschnitt gelesen (nur Katalogzeile, Preise nicht geprueft), [
 
 | Teil | Mass | Europaeische Quelle (Hersteller/Haendler, Artikel) | Status |
 |---|---|---|---|
-| Abtropfgitter am Beetboden (A21) | PP-Rost 25 mm hoch, Maschen 20 x 20 [A] | offen: Recherche folgt in U8 (D76) | A21 Quelle fd_aussen.t2, Bezug offen |
+| Abtropfgitter am Beetboden (A21, gebaut U3b) | PP-Rost 25 mm hoch, Maschen 20 x 20 [A], im Modell Stegrost 16 x 296 | offen: Recherche folgt in U8 (D76) | A21 Quelle fd_aussen.t2, Bezug offen |
 | Vlies und Sieb ueber dem Gitter (A21) | Drainagevlies 2 mm, Edelstahl-Gewebe 2 mm [A] | offen: Recherche folgt in U8 (D76) | A21 Quelle fd_aussen.t3, Bezug und Lebensmittelnachweis offen (D85) |
-| Belueftung unten im Beet (A21) | Luftschlauch Ø 8 mit Ausstroemer [A] | offen: Recherche folgt in U8; Luftquelle offen | A21 Quelle fd_aussen.t4, Bezug offen |
-| Reduktion kurz 40 x 25 | PVC-U Klebefitting mit Klebstutzen und Klebmuffe | Weinmann-Schanz (DE) Bestell-Nr. 93 049 64 [R51]; Georg Fischer (CH) TP PVC-U Reduzierung D40AG-D25IG ueber Vanmarcke (BE) [R51] | beschaffbar (Bauhoehe etwa 50 mm [A] aus Datenblatt noch zu pruefen) |
+| Belueftung unten im Beet (A21, gebaut U3b) | Luftschlauch Ø 8 mit Ausstroemerstab Ø 16 x 600 [A] | offen: Recherche folgt in U8; Luftquelle offen | A21 Quelle fd_aussen.t4, Bezug offen |
+| Auslasswinkel 90 Grad d25 (neu U3b) | PVC-U Winkel d25, Klebemuffen [A], im Modell Außen-D 34 | offen: Recherche folgt in U8 (D76) | Bezug offen; Katalogzeile folgt in U8 |
+| Schlauchtuelle ID25 (neu U3b) | Schlauchtuelle d25 (PVC) fuer Schlauch ID25, zwei Widerhaken | offen: Recherche folgt in U8 (D76) | Artikel SCH-schlauchtuelle-d25 im Katalog, Bezug offen |
 | Standrohr d25 x 1,5 | PVC-U Druckrohr PN10, ISO 4422 | Bevo (NL/BE) Druckrohr PVC-U 25 mm x 1,5 mm Klebemuffe x glatt 10 bar ISO-PN10 grau 5 m, Art. 0309025 [R51/R45] | beschaffbar |
 | Glocke d75 | PVC-U Rohr d75 (2,9 oder 3,6 mm) plus Klebekappe d75, Laenge 295 mm saegen, 4 Kerben 10 x 12 saegen | Bevo Druckrohr PVC-U 75 mm x 2,9 mm Art. 7027594 bzw. x 3,6 mm Art. 0309175 [Q]; Kappe Bevo Art. 0160592 [Q], Klebefitting-Kappen auch bei Schwarte (DE) | beschaffbar; Modell rechnet Wand 3 mm: auf 2,9 oder 3,6 mm abstimmen |
-| Schutzkorb Lochblech (UEBERHOLT durch A21, D115) | Edelstahl 1.4301, 1,5 mm, Rundloch 5 mm, Teilung 8, Zuschnitt etwa 366 x 340 mm, gerollt, genietet | ehorst.de (DE) Lochblech Edelstahl 1.4301 RV 5-8 1,50 1000 x 2000 mm DIN 24041, Art. 1003438 [R51]; Zuschnitt und Rollen beim Metallbauer (Entscheidung Ben 04.11.2026, D77) | beschaffbar als Tafelware; Anfrage Metallbauer: Ben (offen) |
-| Kappe Schutzkorb und Schacht (lose) | Muffenstopfen DN110, PVC-U/PP | Ostendorf (DE) KG Muffenstopfen DN/OD 110, Art. 220620 und HT-Safe M Muffenstopfen PP D110 (ueber Vanmarcke) [Q]; Hornbach Art. 267389/267185 [Q] | beschaffbar |
 | Reinigungsschacht d110 | KG/HT-Rohr DN100 (Aussen-D 110) x 3, Laenge etwa 320 mm ab Platte | Artikel nicht nachgewiesen: KG-Rohr DN/OD 110 gibt es als Ostendorf KG 2000 (DN/OD 110 bis 630, 1000 mm, Muffe) [Q-Treffer ebay.de/crassus.de, kein Artikel gelesen]; Hersteller und Artikelnummer beim Kauf eintragen (Wavin/Funke/Ostendorf) | beschaffbar (Rohrklasse); Artikel nicht nachgewiesen; Laenge 320 mm ab Platte (Modell z 262 bis 582 lokal fuer 300 mm Medium + 20) |
-| Tankverbinder (Wannenboden und Sperrboden) | PVC-U Tankverbinder 32 mm x 1 Zoll, Klebemuffe d32 x Aussengewinde, 10 bar; im Modell D36 mit Flansch D50 [A] | Georg Fischer/VDL ueber Bevo Art. 7018227 [Q]; Koi-Breeder PVC-U tank bushing [Q] | beschaffbar; Flanschmass D50 [A]: Datenblatt nicht gelesen (M-BEET-TAUSCH Auflage 5); Hinweis: VDL fuehrt 32 mm x 1 1/4 Zoll (Bevo 0100560), ein 32 x 1 Zoll Verbinder ist ueber Epco/Pipestock (UK) belegt, nicht ueber Bevo |
-| Reduzierhuelse 32 x 25 (im Tankverbinder, je Beet 2 Stueck) | PVC-U Klebefitting Reduktion kurz 32 x 25, Stutzen 32 / Muffe 25, 16 bar | Schwarte (DE) Art. 75208; Bevo (NL/BE) VDL reducer bush PVC-U 32 x 25 mm Art. 7002656, Baulaenge 22 mm [Bevo-Katalogzeile, Datenblatt nicht gelesen] | beschaffbar (zwei Haendler); Baulaenge 22 mm: Bevo-Katalogzeile und Georg-Fischer-Angabe 'Length 22 mm' ueber RS-Suchtreffer (Seite 403, nicht gelesen); Auflage 5 M-BEET-TAUSCH: Datenblatt nicht gelesen, [A]; Modell Huelse Platte 15 / Boden 39 mm (Abweichung siehe docs/packages/m-beet-tausch.md) |
-| Dichtband Plattenrand | EPDM-Zellkautschuk geschlossenzellig, selbstklebend; Spalt 2 mm | Steinbach & Vollmann (stuv.de, DE) EPDM-Zellkautschuk selbstklebend, wasserdicht laut Datenblatt; Graf-Dichtungen (DE) Moosgummi Vierkant 10 x 10 mm Z0701 ist NICHT selbstklebend (selbstklebend erst 10 x 20) | nicht beschafft (Mass offen); Werkstoff EPDM-Zellkautschuk geschlossenzellig, selbstklebend, beschaffbar; Mass z. B. 10 x 3 mm verpresst oder 10 x 20 Graf vor Bau festlegen; Quelle: Bezugsquellen-Nachtrag W40-BEET.md |
+| Tankverbinder (+X-Stirnwand) | PVC-U Tankverbinder 32 mm x 1 Zoll, Klebemuffe d32 x Aussengewinde, 10 bar; im Modell D36 mit Flansch D44 [A] | Georg Fischer/VDL ueber Bevo Art. 7018227 [Q]; Koi-Breeder PVC-U tank bushing [Q] | beschaffbar; Flanschmass D50 [A]: Datenblatt nicht gelesen (M-BEET-TAUSCH Auflage 5); Hinweis: VDL fuehrt 32 mm x 1 1/4 Zoll (Bevo 0100560), ein 32 x 1 Zoll Verbinder ist ueber Epco/Pipestock (UK) belegt, nicht ueber Bevo |
+| Reduzierhuelse 32 x 25 (im Tankverbinder, je Beet 1 Stueck) | PVC-U Klebefitting Reduktion kurz 32 x 25, Stutzen 32 / Muffe 25, 16 bar | Schwarte (DE) Art. 75208; Bevo (NL/BE) VDL reducer bush PVC-U 32 x 25 mm Art. 7002656, Baulaenge 22 mm [Bevo-Katalogzeile, Datenblatt nicht gelesen] | beschaffbar (zwei Haendler); Baulaenge 22 mm: Bevo-Katalogzeile und Georg-Fischer-Angabe 'Length 22 mm' ueber RS-Suchtreffer (Seite 403, nicht gelesen); Auflage 5 M-BEET-TAUSCH: Datenblatt nicht gelesen, [A]; Modell Huelse Platte 15 / Boden 39 mm (Abweichung siehe docs/packages/m-beet-tausch.md) |
 | Kleber PVC-U | Klebstoff nach DIN EN 14814 | Henkel Tangit PVC-U Plus (Technisches Merkblatt, DIN EN 14814, EN 1452); toom Rohrklebstoff PVC-U Plus 125 g, Art. 8150236 | beschaffbar |
 
 ## Alternative lokale Fertigung
 
-Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kunststoffwanne; Sperrboden: PP-Platte 8 mm vom Zuschnitt; Siphon, Glocke und Schacht aus PVC-Rohr-Standardteilen (d25/d75/d110, saegen und kleben); Schutzkorb: Lochblech 5 mm vom Metallbauer (Rollen, Nieten), Rueckfall gebohrtes PVC-Rohr (Selbstbau, nicht super simpel).
+Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kunststoffwanne; Abtropfgitter: PP-Gitterrost 25 mm vom Zuschnitt, Vlies, Sieb (Edelstahlgewebe); Siphon, Glocke und Schacht aus PVC-Rohr-Standardteilen (d25/d75/d110, saegen und kleben); Schutzkorb: Lochblech 5 mm vom Metallbauer (Rollen, Nieten), Rueckfall gebohrtes PVC-Rohr (Selbstbau, nicht super simpel).
 
 ## Renders
 
@@ -209,44 +222,56 @@ Wanne: halbe IBC (1000-l-Container, Innenbehaelter HDPE) aufgeschnitten oder Kun
 - `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-04-medium.png`
 - `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-05-schnitt.png`
 - `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-06-schnitt-quer.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-07-auslass.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-08-luftanschluss.png`
+- `renders/components/ibc_beet_aussen_800/ibc_beet_aussen_800-09-schnitt-unten.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-01-iso.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-02-siphon.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-03-zulauf.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-04-medium.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-05-schnitt.png`
 - `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-06-schnitt-quer.png`
+- `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-07-auslass.png`
+- `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-08-luftanschluss.png`
+- `renders/components/ibc_beet_aussen_933/ibc_beet_aussen_933-09-schnitt-unten.png`
 - `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-01-iso.png`
 - `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-02-siphon.png`
 - `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-03-zulauf.png`
 - `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-04-medium.png`
 - `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-05-schnitt.png`
 - `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-06-schnitt-quer.png`
+- `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-07-auslass.png`
+- `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-08-luftanschluss.png`
+- `renders/components/ibc_beet_aussen_993/ibc_beet_aussen_993-09-schnitt-unten.png`
 - `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-01-iso.png`
 - `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-02-siphon.png`
 - `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-03-zulauf.png`
 - `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-04-medium.png`
 - `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-05-schnitt.png`
 - `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-06-schnitt-quer.png`
+- `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-07-auslass.png`
+- `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-08-luftanschluss.png`
+- `renders/components/ibc_beet_innen_933/ibc_beet_innen_933-09-schnitt-unten.png`
 
 ## Pruefung
 
 - Gauntlet-Urteil: offen
 - scripts/w40_beet_rechnung.py (Film, Ablaufvolumen, Entleerzeit, Flutzeit; Ausgabe im Paket docs/packages/w40-beet.md)
 - scripts/workshop/check_ibc_beet.py (alle vier Typen, inklusive Interferenz je Typ; Ergebnis im Paket)
+- U3b: check_ibc_beet.py prueft zusaetzlich Gitterhoehe, Stapel Gitter/Vlies/Sieb/Medium, Glocke bis zum Wannenboden, Seitenauslass (Lage, Flansch, Schlauchtuelle), Belueftung unten, nichts unter der Wannenunterkante und Interferenz 0
 - Triage in docs/workshop-log.md
 
 ## Offene Fragen
 
-- U3 (D122): Flutstand 250, Standrohr 180 ueber dem Sperrboden 70, Wanne auf dem Flur, Hoehe 460 / 420 sind gebaut; offen bleibt die A21-Geometrie (Gitter, Vlies, Sieb, Belueftung unten) und der Auslass unter der Wanne (reicht in den Fussboden). A21 (U2, D115): Die vier Beet-Komponenten zeigen im Modell noch Medienschutz (Lochblech) und ungelochten Sperrboden (V3, D77). Die Quelle verlangt Abtropfgitter, Siphon bis ganz nach unten, Vlies und Sieb, Belueftung unten; das Beet leert sich damit ganz (wie W57), D77 (12 mm Restfilm ueber dem Sperrboden) aendert sich. Geometrie, check_ibc_beet.py und Teileliste folgen in U3/U8. Luftquelle der Beet-Belueftung ist in der Quelle nicht festgelegt (die Arme der Luftpumpen gehen zu Biofilter, Sumpf, Becken, Fischtank), Maße von Gitter, Vlies und Sieb sind Annahme
-- Dichtheit des Sperrbodens (Plattenrand, Plattenhuelse) und Anspringen des Siphons bei 3,3 l/min nur am Muster pruefbar; Leckwasser unter der Platte waere wieder stehendes Wasser
-- Luftkammer unter dem Sperrboden (262 bis 274 mm hoch) bleibt ungenutzt und trocken; Alternative "IBC kuerzer schneiden" waere ein Layout-Eingriff (Z-Hoehen, Tische R35/R36), nicht Teil von W40-BEET
-- Dichtband-Mass offen (EPDM-Zellkautschuk selbstklebend, Spalt 2 mm; 10 x 10 selbstklebend nicht nachgewiesen)
-- Reduzierhuelse 32/25: Baulaenge 22 mm (Bevo-Katalogzeile) gegen Huelsenlaenge im Modell (Boden 39 mm, Platte 15 mm); Modell vereinfacht, Datenblatt nicht gelesen
-- UEBERHOLT durch A21 (D115), Anfrage nur noch falls das Lochblech als Rueckfall bleibt: Schutzkorb: Anfrage Metallbauer (Zuschnitt, Rollen) liegt bei Ben; Lochblech im Modell als Schlitze 5 x 50 vereinfacht (real Rundloch d5, Teilung 8)
-- Flansch D50, Tankverbinder-Aussenmass D36, Reduktions-Bauhoehe 50 mm, Wandstaerken Rohre: Annahmen [A], Datenblaetter der Kaufteile nicht gelesen
-- Optionale Nachlaufbohrung d4 im Standrohr nur wenn der Film am Muster zu gross ist (Rechnung 0,5 bis 1,0 l/min je nach Ausflussbeiwert)
-- Orchestrator/Montage: Netz K14/K30 `hoehe` (Beetablauf Achse etwa -260 aussen / -290 innen statt -100) und Sumpf-Einlauf; Systemwasserbilanz und Gewichte ohne Wasserraum (rund 6280 l weniger); Montage baut 14 Beete im Dom neu; `data/descriptions.json` (Beet-Beschreibung nennt noch Schlitze, Siebboden, Standrohr 220) nachziehen
-- Pflanzen: 288 je Aussenbeet (Beet bei Azimut 113: 144) sind Instanzen des Integrators; Pflanzraster/Topfzahl aussen_800 und Innenbeete rechnet die Montage (M7) neu
-- Seitenloecher/Tropfloecher/Luftloch quadratisch modelliert (Rechenzeit), real rund; Tropfrohr-Halterung am Wannenrand und Zulauf-Wanddurchfuehrung (Fitting/Dichtung) nicht modelliert
-- W17: aussen_800 (800 x 2640) ist das Zielmass nach D29; layout.json/gen_dome tragen noch 933/993 x 2953 (Montage M7 setzt Layout und Dom um)
-- W26 (D44): Innenbeet innen_933 hat 45-Grad-Eckenfasen 120 mm am Randwulst-Umriss; Zulauf-Tropfrohr liegt vor der Fase (check_ibc_beet prueft)
+- U3b (D132 bis D135): A21-Aufbau und Seitenauslass sind gebaut; Maße von Gitter (Stegrost statt Maschen 20 x 20), Vlies, Sieb, Winkel, Flansch D44, Schlauchtuelle und Ausstroemer sind [A], Datenblaetter nicht gelesen; Artikel und Bezug folgen in U8
+- Anspringen des Siphons bei 3,3 l/min und der Restfilm (Kerben 14 x 12, Luftloch bei z 30) nur am Muster pruefbar; die Rechnung R45/R51 gilt fuer die alte Bauform (Sperrboden, 4 Kerben) und ist fuer den Siphon bis zum Boden nicht neu gerechnet
+- Der Reinigungsschacht steht auf dem Sieb und reicht nicht in die Drainschicht: Absaugen von Schlamm unter dem Gitter ist damit nicht moeglich (Bedenken B11)
+- Rueckfall-Schlauch ID25 ab der Schlauchtuelle, Luftquelle und Luftverteilung zum Ausstroemer: U6 (Ports der Komponente); die Auslass-Taschen im Gesamtmodell (gen_dome, 160 x 160 x 85) sind ueberfluessig: Montage
+- Dichtband-Mass offen (EPDM-Zellkautschuk selbstklebend, Spalt 2 mm)
+- Reduzierhuelse 32/25: Baulaenge 22 mm (Bevo-Katalogzeile) gegen Huelsenlaenge im Modell (20 mm); Flansch D44, Tankverbinder-Aussenmass D36, Wandstaerken Rohre: Annahmen [A], Datenblaetter der Kaufteile nicht gelesen
+- Optionale Nachlaufbohrung d4 im Standrohr nur wenn der Film am Muster zu gross ist
+- Orchestrator/Montage: Netz K14/K30 `hoehe` (Beetablauf) ist ueberholt, der Ablauf liegt jetzt seitlich auf z 28 ueber der Wannenunterkante; U6 verlegt den Rueckfall neu
+- Pflanzen: 288 je Aussenbeet (Beet bei Azimut 113: 144) sind Instanzen des Integrators; Pflanzraster/Topfzahl aendert U3b nicht
+- Seitenloecher/Tropfloecher/Luftloch quadratisch modelliert (Rechenzeit), real rund; Tropfrohr-Halterung am Wannenrand nicht modelliert
+- W17: aussen_800 (800 x 2640) ist das Zielmass nach D29; layout.json/gen_dome tragen noch 933/993 x 2953 (Montage)
+- W26 (D44): Innenbeet innen_933 hat 45-Grad-Eckenfasen 120 mm am Randwulst-Umriss; Zulauf-Tropfrohr liegt vor dem Fasenbeginn, Gitter-Schlitze enden hinter den Fasen

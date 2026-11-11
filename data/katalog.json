@@ -109,6 +109,36 @@
       "marke": "[A]"
     },
     {
+      "id": "edelstahl_gewebe_2mm",
+      "name": "Edelstahl-Drahtgewebe, Maschenweite 2 mm",
+      "norm": "DIN ISO 9044 (Industriedrahtgewebe) [A]",
+      "dichte_g_cm3": 1.24,
+      "dichte_hinweis": "Ersatzdichte der 1-mm-Lage im Modell (Draht 0,5 mm, Teilung 2,5: rund 1,24 kg/m2), nicht die Werkstoffdichte",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "Sieb Edelstahlgewebe 2 mm"
+      ],
+      "pilot": false,
+      "quelle": "data/components/ibc_beet.json (a21_sieb_mm, a21_sieb_t), docs/decisions.md D132",
+      "marke": "[A]"
+    },
+    {
+      "id": "pp_vlies",
+      "name": "Polypropylen-Vlies (Drainagevlies, Geotextil)",
+      "norm": "Herstellerangabe offen [A]",
+      "dichte_g_cm3": 0.075,
+      "dichte_hinweis": "Ersatzdichte der 2-mm-Lage im Modell (150 g/m2 bei 2 mm), nicht die Werkstoffdichte",
+      "lebensmittelkontakt": "ja",
+      "konfidenz": "angenommen",
+      "sc_material": [
+        "PP Vlies"
+      ],
+      "pilot": false,
+      "quelle": "data/components/ibc_beet.json (a21_vlies_t), docs/decisions.md D132",
+      "marke": "[A]"
+    },
+    {
       "id": "stahl_verzinkt",
       "name": "Stahl, feuerverzinkt",
       "norm": "EN ISO 1461 (Feuerverzinken) [A]",

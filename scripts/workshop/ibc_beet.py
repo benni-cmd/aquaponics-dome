@@ -254,7 +254,7 @@ def render(typ, path, info):
     x_sp, y_sp, z_out = info["x_sp"], info["y_sp"], info["z_out"]
     views = {"01-iso": ([0, 0, H / 3], 0.6, 0.45, L * 1.25), "02-siphon": ([x_sp, y_sp, info["z_m0"] + 120], 0.7, 0.5, 700),
              "03-zulauf": ([-Lw_ / 2 + 150, info["y_in"], info["z_in"]], 0.9, 0.4, 700), "04-medium": ([0, 0, info["z_ms"]], 0.3, 0.8, L * 0.9),
-             "07-auslass": ([info["x_bo"] + 20, y_sp, z_out], 2.2, 0.35, 450), "08-luftanschluss": ([-Lw_ / 2, info["y_air"], info["z_air"]], -0.8, 0.35, 450)}
+             "07-auslass": ([info["x_bo"] + 20, y_sp, 40], -1.5708, 0.3, 450), "08-luftanschluss": ([-info["x_bo"] - 20, info["y_air"], 30], 1.5708, 0.3, 450)}
     for n, (t, yaw, pitch, dist) in views.items():
         sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-{n}.png"), t, yaw, pitch, dist, w=1000, h=650)
     sc.snapshot(path, os.path.join(r, f"ibc_beet_{typ}-05-schnitt.png"), [x_sp - 100, y_sp, H / 2], 3.14159, 0.0, 1300, w=1000, h=650, section="XZ")

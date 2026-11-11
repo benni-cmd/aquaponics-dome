@@ -359,10 +359,13 @@ def _beet_plaetze():
     return out
 BEET_L2 = _beet_plaetze()   # Reihenfolge wie LAYOUT["ibc_beds"]: Aussenbeete (8) auf fd_aussen, Innenbeete (6) auf fd_mitte
 
-def bed_xy(b):
-    x, y, _ = BEET_L2[LAYOUT["ibc_beds"].index(b)]; return x, y   # L2 (D152); vorher LXY(*bed_obj(b)[:2])
+RINGE_WIE_L2 = False   # L3 (D156, Ben 11.11.): Anbauringe wie vor L2 (ce15b86); True = Radien/Bogen der Quelle (L2, verworfen)
 
-def bed_yaw(b): return BEET_L2[LAYOUT["ibc_beds"].index(b)][2]   # L2 (D152); vorher bed_obj(b)[2] + ROT
+def bed_xy(b):
+    if not RINGE_WIE_L2: x, y = LXY(*bed_obj(b)[:2]); return x, y
+    x, y, _ = BEET_L2[LAYOUT["ibc_beds"].index(b)]; return x, y   # L2 (D152)
+
+def bed_yaw(b): return BEET_L2[LAYOUT["ibc_beds"].index(b)][2] if RINGE_WIE_L2 else bed_obj(b)[2] + ROT
 
 def bed_dims(k, b):
     return (BED_OUT_L, BED_OUT_W) if "plants" in b else (b["length"], b["width"])   # echte Wannenmasse der Werkstatt-Beete (Tasche +20 mm Spiel); Aussenbeet 2640 x 800 (W17, D29)
@@ -581,9 +584,10 @@ NFT_POTS = []                                                # Rinnen-Topfpositi
 
 def nft(fz):
     tp = json.load(open(variante.pfad("nft_pots")))["typen"]   # U4: Topfhoehen der Tische von U3 (Rinnenunterkante 1030/880/1230), extract_nft_pots.py
-    for typ in SECTORS:   # L2 (D152): Lage aus der Quelle (ring_plaetze), nicht mehr je 36-Grad-Sektor
+    for typ, sectors in SECTORS.items():   # L3 (D156): je 36-Grad-Sektor wie vor L2; RINGE_WIE_L2 = True stellt die L2-Lage (ring_plaetze) her
         items = []
-        for x, y, yaw in ring_plaetze("nft_" + typ, NFT_HUELLE[typ]):
+        plaetze = ring_plaetze("nft_" + typ, NFT_HUELLE[typ]) if RINGE_WIE_L2 else [LXY(NFT_APC[typ] * math.cos(math.radians(5.3 + 36.0 * i)), NFT_APC[typ] * math.sin(math.radians(5.3 + 36.0 * i))) + (5.3 + 36.0 * i + 90 + ROT,) for i in sectors]
+        for x, y, yaw in plaetze:
             c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
             items.append((x, y, fz, yaw))
             for u, v, z in tp[typ]["pots"]: NFT_POTS.append((round(x + u*c - v*s, 1), round(y + u*s + v*c, 1), round(fz + z, 1)))

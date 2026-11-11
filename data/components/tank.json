@@ -5,11 +5,11 @@
  "quelle_masse": "data/layout.json tanks (Durchmesser, Hoehe, Z-Spitze, Plattform, Beine, Fittings), docs/scope-cards.md tank_klein/tank_gross, docs/hydraulics.md (Vortex), R09 (teilweise)",
  "typen": {
   "klein": {
-   "R": 525.0,
+   "R": 336.5,
    "H": 1075,
    "z0": 172,
-   "plat_l": 912,
-   "plat_w": 912,
+   "plat_l": 619,
+   "plat_w": 619,
    "plat_t": 73,
    "plat_z0": 428,
    "leg_w": 30,
@@ -26,17 +26,14 @@
    "layout_anzahl": 2,
    "plat_l_obj": 706,
    "plat_w_obj": 707,
-   "plat_herkunft": "W30/D50: 2 x (Konusradius 247.3 auf Z 428 + Kegelsitz-Spiel 2 + Rand 60) = 619 (OBJ 706 x 707); Plattformdicke und Z unveraendert, Tank unveraendert",
-   "R_u1": 336.5,
-   "plat_l_u1": 619,
-   "herkunft_l2": "L2 (11.11.2026, D152): Aussen-Ø 1050 = Zeichnungsmass der Quelle (B21); Hoehen, Spitze und Plattform-Z unveraendert, Kegel flacher (34.5 Grad), Plattform aus dem Konusradius auf Plattform-Unterkante + 2 x 62 wie W30/D50"
+   "plat_herkunft": "W30/D50: 2 x (Konusradius 247.3 auf Z 428 + Kegelsitz-Spiel 2 + Rand 60) = 619 (OBJ 706 x 707); Plattformdicke und Z unveraendert, Tank unveraendert"
   },
   "gross": {
-   "R": 575.0,
+   "R": 465,
    "H": 1444,
    "z0": 226,
-   "plat_l": 993,
-   "plat_w": 993,
+   "plat_l": 821,
+   "plat_w": 821,
    "plat_t": 98,
    "plat_z0": 570,
    "leg_w": 40,
@@ -54,17 +51,14 @@
    "layout_anzahl": 2,
    "plat_l_obj": 977,
    "plat_w_obj": 976,
-   "plat_herkunft": "W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert",
-   "R_u1": 465,
-   "plat_l_u1": 821,
-   "herkunft_l2": "L2 (11.11.2026, D152): Aussen-Ø 1150 = Zeichnungsmass der Quelle (B21); Hoehen, Spitze und Plattform-Z unveraendert, Kegel flacher (40.3 Grad), Plattform aus dem Konusradius auf Plattform-Unterkante + 2 x 62 wie W30/D50"
+   "plat_herkunft": "W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert"
   },
   "gross_t3": {
-   "R": 575.0,
+   "R": 465,
    "H": 1444,
    "z0": 226,
-   "plat_l": 993,
-   "plat_w": 993,
+   "plat_l": 821,
+   "plat_w": 821,
    "plat_t": 98,
    "plat_z0": 570,
    "leg_w": 40,
@@ -82,10 +76,7 @@
    "layout_anzahl": 2,
    "plat_l_obj": 977,
    "plat_w_obj": 976,
-   "plat_herkunft": "W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert",
-   "R_u1": 465,
-   "plat_l_u1": 821,
-   "herkunft_l2": "L2 (11.11.2026, D152): Aussen-Ø 1150 = Zeichnungsmass der Quelle (B21); Hoehen, Spitze und Plattform-Z unveraendert, Kegel flacher (40.3 Grad), Plattform aus dem Konusradius auf Plattform-Unterkante + 2 x 62 wie W30/D50"
+   "plat_herkunft": "W30/D50: 2 x (Konusradius 348.7 auf Z 570 + Kegelsitz-Spiel 2 + Rand 60) = 821 (OBJ 977 x 976); Plattformdicke und Z unveraendert, Tank unveraendert"
   }
  },
  "parameter": {
@@ -210,9 +201,9 @@
    "herkunft": "OBJ: Kassetten/Rippen z0 249-256 (layout.json tanks[].modules)"
   },
   "rib_r_out": {
-   "wert": 454,
+   "wert": 367,
    "einheit": "mm",
-   "herkunft": "L2 (D152): Innenkante der Querstreben minus 3 mm bei Plattform 993 (vorher 367)"
+   "herkunft": "W30: Innenkante der Querstreben (Plattformhalbbreite - leg_w = 370.5) minus 3 mm Spiel, damit die Rippe die Querstreben nicht durchdringt (OBJ: Rippen bis r 468, vor W30 440) [A]"
   },
   "rib_t": {
    "wert": 44,

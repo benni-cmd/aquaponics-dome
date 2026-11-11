@@ -11,9 +11,9 @@
    "herkunft": "[E] Soll-Wasserspiegel Biofilter 1800 (data/oasis-soll.json bio_1) minus gebauter Ueberlauf 1570 (N-AUTOBAHN-V2 2.1, R61 Abschnitt 6 Nr. 3) = 230, D100; U4/U5 setzen den Wert aus data/oasis-lage.json"
   },
   "span": {
-   "wert": 1092,
+   "wert": 920,
    "einheit": "mm",
-   "herkunft": "L2 (D152): Plattform des groesseren Tanks + 99 wie vorher (vorher 920); [A] Aussenmass des Rahmens = Plattform 821 + 2 x 50 mm Ueberstand (Annahme Lage-Probe U1, Paket Abschnitt Grenzen), auf 920 gerundet"
+   "herkunft": "[A] Aussenmass des Rahmens = Plattform 821 + 2 x 50 mm Ueberstand (Annahme Lage-Probe U1, Paket Abschnitt Grenzen), auf 920 gerundet"
   }
  },
  "werkstoff": {

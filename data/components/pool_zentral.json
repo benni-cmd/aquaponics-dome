@@ -2,13 +2,13 @@
  "klasse": "pool_zentral",
  "teilenummer": "T5",
  "revision": "B",
- "beschreibung": "Fischtank (Haupt-Fischtank der Oasis-Quelle, D93/D96/D118): teilversenkt, Innen-Ø 4200 (Huelle 4500 = Zeichnung, L2), Innenboden -1000, Wasserspiegel 750, Rand 1200 ueber dem Fussboden; Wassertiefe 1750 mm = 24,2 m3 (Quelle 22 m3 bei Ø 4 m). Keine Wanddurchfuehrungen: Pumpen tauchen von oben ein, Zulaeufe kommen von oben (D102)",
+ "beschreibung": "Fischtank (Haupt-Fischtank der Oasis-Quelle, D93/D96/D118): teilversenkt, Innen-Ø 3890, Innenboden -1000, Wasserspiegel 750, Rand 1200 ueber dem Fussboden; Wassertiefe 1750 mm = 20,8 m3 (Quelle 22 m3 bei Ø 4 m). Keine Wanddurchfuehrungen: Pumpen tauchen von oben ein, Zulaeufe kommen von oben (D102)",
  "quelle_masse": "data/oasis-soll.json fish (A25, A26: Boden -1000, Rand 1200, Wsp 750, Ø 4 m); Ø 3890 bleibt (Radialbudget D28/D29, D96); Wand 150 = data/params.json wall",
  "parameter": {
   "wasser_d": {
-   "wert": 4200,
+   "wert": 3890,
    "einheit": "mm",
-   "herkunft": "[A] L2 (11.11.2026, D152): Huelle = Zeichnungsmass der Quelle (B18, D151): Huelle 4500 - 2 x Wand 150 = 4200; vorher [E] D96: Innendurchmesser bleibt (data/layout.json pool.d 3890; Quelle Ø 4000)"
+   "herkunft": "[E] D96: Innendurchmesser bleibt (data/layout.json pool.d 3890; Quelle Ø 4000)"
   },
   "ring": {
    "wert": 150,

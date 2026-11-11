@@ -166,6 +166,14 @@ Vorlage gehalten — das Layout ist wichtig, die genauen Größenverhältnisse g
 5. Nur wenn die Technik so nicht in die Kuppel passt: einzelne Teile als Anbau außen, begründet, als Bedenken notieren.
 6. Danach Draufsicht-Bild und Vergleich der Anordnung mit der Quelle. Ben sieht das Bild, bevor Rohre gebaut werden.
 
+### L3 Plan (11.11.2026, Werkstatt/Montage-Sitzung)
+Freiraum im Modell vor L2 (gemessen aus `scripts/gen_dome.py`, Winkel phi relativ zur Tuer-Achse Az -72): Innenring voll (Tische bis r 2195), Mittelring offen phi -54 bis +90 (Beete r 2910 bis 3844), Aussenring offen phi -18 bis +54 (Beete ab r 4674). Der freie Technikbereich ist also nicht symmetrisch zur Tuer.
+1. Ringe, Fischtank, Vortex-/Biofilter-Tanks und Podeste auf `ce15b86` zurueck (Schalter `RINGE_WIE_L2 = False`, Dateien aus `ce15b86`).
+2. Anzucht- und Lebendfutterbecken: Volumen der Quelle (2,51 m3 bei Wsp 800, 0,67 m3 bei Wsp 850) mit kleinerem Durchmesser, Boden unter Flur; Aussparung in der Erde.
+3. Anordnung: `scripts/l3_anordnung.py` setzt die Technik je Linie (phi, r), gespiegelt zur Tuer-Achse soweit der Freiraum reicht, Becken auf der Achse, und prueft vor dem Bau: 500 mm Abstand zu Ringen und Nachbarn, Wand 100 mm und Kuppelkugel 5800 (Regeln aus U1), Bild.
+4. Gesamtbau, dann Messung: `check_walkways_voll.py` (500-mm-Gaenge, Erreichbarkeit, Kopf 1,7 m) und Tuer-Gang 900 mm (Flutung ab der Tuer mit Abstand >= 450).
+5. Draufsicht-Bild, Vergleich der Anordnung mit der Quelle, Bedenken nur fuer Teile, die nicht passen; Stand, Push.
+
 ## Stand
 - 10.11.2026: Quelle gesichert (f11a92d), D93 und W89 eingetragen, Planer-Auftrag geschrieben.
 - 10.11.2026, Planer-Lauf (Sonnet 5.5, Agent-SDK):

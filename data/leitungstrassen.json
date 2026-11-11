@@ -4712,842 +4712,102 @@
    "notiz": "Frischwasser Hausanschluss (Ende Platzhalter T10_Zulaufrohr, Az -58) -> Aktivkohle-Station Eingang, Graben Z 140"
   },
   {
-   "id": "RB1-K60",
-   "kante": "K60",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "muffe",
-   "pfad": [
-    [
-     2647.0,
-     -160.0,
-     1970.0
-    ],
-    [
-     2588.0,
-     -148.7,
-     1970.0
-    ],
-    [
-     2588.0,
-     -148.7,
-     1795.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT",
-    "KT"
-   ],
-   "notiz": "Biofilter-Ueberlauf (Tank_gross:1) frei fallend in den Pegelschacht: Bogen 90 d50 auf dem Ende von K10, senkrecht in die Zulauf-Muffe im Fassdeckel (Z 1395 rel)",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-K61",
-   "kante": "K61",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "muffe",
-   "ende": "stutzen",
-   "pfad": [
-    [
-     2651.0,
-     -483.1,
-     1320.0
-    ],
-    [
-     2716.4,
-     -672.1,
-     1320.0
-    ],
-    [
-     2716.4,
-     -672.1,
-     520.0
-    ],
-    [
-     2824.5,
-     -983.9,
-     520.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT",
-    "KT",
-    "KT"
-   ],
-   "notiz": "Pegelschacht Saugstutzen A -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 1a (geflutet)",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-K62",
-   "kante": "K62",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "muffe",
-   "ende": "stutzen",
-   "pfad": [
-    [
-     2405.5,
-     -435.9,
-     1320.0
-    ],
-    [
-     2274.5,
-     -587.1,
-     1320.0
-    ],
-    [
-     2274.5,
-     -587.1,
-     520.0
-    ],
-    [
-     2058.5,
-     -836.5,
-     520.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT",
-    "KT",
-    "KT"
-   ],
-   "notiz": "Pegelschacht Saugstutzen B -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 1b (geflutet)",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-Da1",
-   "kante": "K63",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:RB1-REDa",
-   "pfad": [
-    [
-     2859.1,
-     -1084.1,
-     655.0
-    ],
-    [
-     2859.1,
-     -1084.1,
-     775.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Druckstutzen Booster 1a d40 -> Kupplung -> Reduziermuffe d50/d40",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-Da2",
-   "kante": "K63",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB1-REDa",
-   "ende": "r:RB1-RSVa",
-   "pfad": [
-    [
-     2859.1,
-     -1084.1,
-     838.0
-    ],
-    [
-     2859.1,
-     -1084.1,
-     898.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Rohr d50 zum Rueckschlagventil",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-Da3",
-   "kante": "K63",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB1-RSVa",
-   "ende": "t:RB1-TB",
-   "pfad": [
-    [
-     2859.1,
-     -1084.1,
-     1055.0
-    ],
-    [
-     2859.1,
-     -1084.1,
-     1255.0
-    ],
-    [
-     2424.1,
-     -1000.4,
-     1255.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT",
-    "KT"
-   ],
-   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-Db1",
-   "kante": "K63",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:RB1-REDb",
-   "pfad": [
-    [
-     1989.1,
-     -916.6,
-     655.0
-    ],
-    [
-     1989.1,
-     -916.6,
-     775.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Druckstutzen Booster 1b d40 -> Kupplung -> Reduziermuffe d50/d40",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-Db2",
-   "kante": "K63",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB1-REDb",
-   "ende": "r:RB1-RSVb",
-   "pfad": [
-    [
-     1989.1,
-     -916.6,
-     838.0
-    ],
-    [
-     1989.1,
-     -916.6,
-     898.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Rohr d50 zum Rueckschlagventil",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-Db3",
-   "kante": "K63",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB1-RSVb",
-   "ende": "t:RB1-TB",
-   "pfad": [
-    [
-     1989.1,
-     -916.6,
-     1055.0
-    ],
-    [
-     1989.1,
-     -916.6,
-     1255.0
-    ],
-    [
-     2424.1,
-     -1000.4,
-     1255.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
-    "KT",
-    "KT"
-   ],
-   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-K60",
-   "kante": "K68",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "muffe",
-   "pfad": [
-    [
-     -227.1,
-     -4034.8,
-     1970.0
-    ],
-    [
-     -208.4,
-     -4091.8,
-     1970.0
-    ],
-    [
-     -208.4,
-     -4091.8,
-     1795.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT",
-    "KT"
-   ],
-   "notiz": "Biofilter-Ueberlauf (Tank_gross_t3:1) frei fallend in den Pegelschacht: Bogen 90 d50 auf dem Ende von K26, senkrecht in die Zulauf-Muffe im Fassdeckel (Z 1395 rel)",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-K69",
-   "kante": "K69",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "muffe",
-   "ende": "stutzen",
-   "pfad": [
-    [
-     -470.1,
-     -4309.3,
-     1320.0
-    ],
-    [
-     -603.5,
-     -4458.3,
-     1320.0
-    ],
-    [
-     -603.5,
-     -4458.3,
-     520.0
-    ],
-    [
-     -823.5,
-     -4704.3,
-     520.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT",
-    "KT",
-    "KT"
-   ],
-   "notiz": "Pegelschacht Saugstutzen A -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 2a (geflutet)",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-K70",
-   "kante": "K70",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "muffe",
-   "ende": "stutzen",
-   "pfad": [
-    [
-     -548.1,
-     -4071.8,
-     1320.0
-    ],
-    [
-     -743.9,
-     -4030.8,
-     1320.0
-    ],
-    [
-     -743.9,
-     -4030.8,
-     520.0
-    ],
-    [
-     -1066.9,
-     -3963.2,
-     520.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT",
-    "KT",
-    "KT"
-   ],
-   "notiz": "Pegelschacht Saugstutzen B -> waagerecht 200 -> senkrecht auf Saughoehe -> waagerecht 330 in den Saugstutzen Booster 2b (geflutet)",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-Da1",
-   "kante": "K71",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:RB2-REDa",
-   "pfad": [
-    [
-     -894.2,
-     -4783.3,
-     655.0
-    ],
-    [
-     -894.2,
-     -4783.3,
-     775.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Druckstutzen Booster 2a d40 -> Kupplung -> Reduziermuffe d50/d40",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-Da2",
-   "kante": "K71",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB2-REDa",
-   "ende": "r:RB2-RSVa",
-   "pfad": [
-    [
-     -894.2,
-     -4783.3,
-     838.0
-    ],
-    [
-     -894.2,
-     -4783.3,
-     898.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Rohr d50 zum Rueckschlagventil",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-Da3",
-   "kante": "K71",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB2-RSVa",
-   "ende": "t:RB2-TB",
-   "pfad": [
-    [
-     -894.2,
-     -4783.3,
-     1055.0
-    ],
-    [
-     -894.2,
-     -4783.3,
-     1255.0
-    ],
-    [
-     -1032.4,
-     -4362.4,
-     1255.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT",
-    "KT"
-   ],
-   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-Db1",
-   "kante": "K71",
-   "dn": 40,
-   "farbe": "dunkelblau",
-   "start": "stutzen",
-   "ende": "r:RB2-REDb",
-   "pfad": [
-    [
-     -1170.6,
-     -3941.5,
-     655.0
-    ],
-    [
-     -1170.6,
-     -3941.5,
-     775.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Druckstutzen Booster 2b d40 -> Kupplung -> Reduziermuffe d50/d40",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-Db2",
-   "kante": "K71",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB2-REDb",
-   "ende": "r:RB2-RSVb",
-   "pfad": [
-    [
-     -1170.6,
-     -3941.5,
-     838.0
-    ],
-    [
-     -1170.6,
-     -3941.5,
-     898.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT"
-   ],
-   "notiz": "Rohr d50 zum Rueckschlagventil",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-Db3",
-   "kante": "K71",
-   "dn": 50,
-   "farbe": "dunkelblau",
-   "start": "r:RB2-RSVb",
-   "ende": "t:RB2-TB",
-   "pfad": [
-    [
-     -1170.6,
-     -3941.5,
-     1055.0
-    ],
-    [
-     -1170.6,
-     -3941.5,
-     1255.0
-    ],
-    [
-     -1032.4,
-     -4362.4,
-     1255.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
-    "KT",
-    "KT"
-   ],
-   "notiz": "Rueckschlagventil -> Bogen -> T d63 der Steigleitung",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
    "id": "RB1-K63",
    "kante": "K63",
+   "soll_weg": "e25",
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "offen",
    "ende": "t:RB-T3-feed",
    "pfad": [
     [
-     2424.1,
-     -1000.4,
-     1255.0
+     3802.4,
+     -2032.4,
+     2200.0
     ],
     [
-     2424.1,
-     -1000.4,
-     2545.0
+     3571.6,
+     -1936.3,
+     2200.0
     ],
     [
-     2196.2,
-     -1317.5,
-     2545.0
+     3571.6,
+     -1936.3,
+     1950.0
+    ],
+    [
+     3396.5,
+     -2180.0,
+     1950.0
     ],
     [
      2865.9,
      -1798.8,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
    "korridor": [
     "KT",
-    "KR",
-    "KR"
-   ],
-   "notiz": "Steigleitung d63: T der Booster -> senkrecht auf Ringachse Z 2145 rel -> parallel zur Ringseite -> senkrecht in den Einspeise-T d75 [U5: Booster entfaellt, Anfang offen; U6 ersetzt die Einspeisung durch den Ueberlauf d63 des Biofilters]",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring"
-  },
-  {
-   "id": "RB1-K67",
-   "kante": "K67",
-   "dn": 63,
-   "farbe": "grau",
-   "start": "muffe",
-   "ende": "offen",
-   "pfad": [
-    [
-     2616.4,
-     -1.4,
-     1660.0
-    ],
-    [
-     2654.2,
-     195.0,
-     1660.0
-    ],
-    [
-     2654.2,
-     195.0,
-     460.0
-    ]
-   ],
-   "linie": 1,
-   "korridor": [
+    "KT",
     "KT",
     "KT"
    ],
-   "notiz": "Notueberlauf d63 des Pegelschachts (Booster-Stillstand) -> senkrecht auf Flur; Anschluss an den Ruecklauf OFFEN (Montage R2c / Planer)",
+   "notiz": "Einspeisung d63 (Quelle e25/e26): Ueberlauf Tank_gross:1 auf Z 1800 rel -> waagerecht 250 -> senkrecht auf die Ringachse Z 1550 rel -> in den Einspeise-T d75 (Schwerkraft, Gefaelle 250 mm)",
    "varianten": [
     "ring_b2"
    ],
    "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
+   "band": "WH",
+   "anschluss": [
+    "Tank_gross:1"
+   ]
   },
   {
    "id": "RB2-K63",
    "kante": "K71",
+   "soll_weg": "e26",
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "offen",
    "ende": "t:RB-T1-feed",
    "pfad": [
     [
-     -1032.4,
-     -4362.4,
-     1255.0
+     -1211.6,
+     -3114.1,
+     2200.0
     ],
     [
-     -1032.4,
-     -4362.4,
-     2545.0
+     -1139.6,
+     -2874.8,
+     2200.0
     ],
     [
-     -1490.0,
-     -4216.3,
-     2545.0
+     -1139.6,
+     -2874.8,
+     1950.0
     ],
     [
-     -1157.8,
-     -3175.3,
-     2545.0
+     -1228.4,
+     -3152.8,
+     1950.0
     ]
    ],
    "linie": 2,
    "korridor": [
     "KT",
-    "KR",
-    "KR"
-   ],
-   "notiz": "Steigleitung d63: T der Booster -> senkrecht auf Ringachse Z 2145 rel -> parallel zur Ringseite -> senkrecht in den Einspeise-T d75 [U5: Booster entfaellt, Anfang offen; U6 ersetzt die Einspeisung durch den Ueberlauf d63 des Biofilters]",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring"
-  },
-  {
-   "id": "RB2-K67",
-   "kante": "K75",
-   "dn": 63,
-   "farbe": "grau",
-   "start": "muffe",
-   "ende": "offen",
-   "pfad": [
-    [
-     -65.9,
-     -4045.0,
-     1660.0
-    ],
-    [
-     124.1,
-     -3982.5,
-     1660.0
-    ],
-    [
-     124.1,
-     -3982.5,
-     460.0
-    ]
-   ],
-   "linie": 2,
-   "korridor": [
     "KT",
     "KT"
    ],
-   "notiz": "Notueberlauf d63 des Pegelschachts (Booster-Stillstand) -> senkrecht auf Flur; Anschluss an den Ruecklauf OFFEN (Montage R2c / Planer)",
+   "notiz": "Einspeisung d63 (Quelle e25/e26): Ueberlauf Tank_gross_t3:1 auf Z 1800 rel -> waagerecht 250 -> senkrecht auf die Ringachse Z 1550 rel -> in den Einspeise-T d75 (Schwerkraft, Gefaelle 250 mm)",
    "varianten": [
     "ring_b2"
    ],
    "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
+   "band": "WH",
+   "anschluss": [
+    "Tank_gross_t3:1"
+   ]
   },
   {
    "id": "RB-S0-1",
@@ -5561,12 +4821,12 @@
     [
      -2921.7,
      -1726.8,
-     2545.0
+     1950.0
     ],
     [
      -2521.5,
      -2271.7,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 2,
@@ -5577,7 +4837,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-S1-1",
@@ -5591,12 +4853,12 @@
     [
      -1348.8,
      -3114.4,
-     2545.0
+     1950.0
     ],
     [
-     -1157.8,
-     -3175.3,
-     2545.0
+     -1228.4,
+     -3152.8,
+     1950.0
     ]
    ],
    "linie": 2,
@@ -5607,7 +4869,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-S1-2",
@@ -5619,14 +4883,14 @@
    "halter": false,
    "pfad": [
     [
-     -1157.8,
-     -3175.3,
-     2545.0
+     -1228.4,
+     -3152.8,
+     1950.0
     ],
     [
      -815.6,
      -3284.5,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 2,
@@ -5637,7 +4901,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-T1-ringende-ab",
@@ -5650,12 +4916,12 @@
     [
      -815.6,
      -3284.5,
-     2545.0
+     1950.0
     ],
     [
      -815.6,
      -3284.5,
-     2223.1
+     1628.1
     ]
    ],
    "linie": 2,
@@ -5667,7 +4933,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "soll_weg": "e32",
+   "band": "WH"
   },
   {
    "id": "RB-H1-ringende-ab",
@@ -5680,12 +4948,12 @@
     [
      -815.6,
      -3284.5,
-     2098.1
+     1503.1
     ],
     [
      -815.6,
      -3284.5,
-     1948.1
+     1353.1
     ]
    ],
    "linie": 2,
@@ -5697,7 +4965,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-S1-3",
@@ -5711,12 +4981,12 @@
     [
      -815.6,
      -3284.5,
-     2545.0
+     1950.0
     ],
     [
      -704.7,
      -3319.9,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 2,
@@ -5727,7 +4997,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-S2-1",
@@ -5741,12 +5013,12 @@
     [
      739.4,
      -3312.4,
-     2545.0
+     1950.0
     ],
     [
      837.2,
      -3280.0,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -5757,11 +5029,17 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "kupplungshahn"
   },
   {
    "id": "RB-K2-a",
    "kante": "K76",
+   "soll_weg": [
+    "e27",
+    "e30"
+   ],
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "r:RB-K2-RA",
@@ -5770,12 +5048,12 @@
     [
      920.3,
      -3252.5,
-     2545.0
+     1950.0
     ],
     [
      1001.0,
      -3225.8,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -5787,11 +5065,17 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "dn_abweichung": "Kupplungsstrecke d63 mit Kugelhahn d63 im Ring d75 (Quelle e27 bis e30: 'd63 (Kugelhahn), Ring d75')"
   },
   {
    "id": "RB-K2-b",
    "kante": "K76",
+   "soll_weg": [
+    "e28",
+    "e29"
+   ],
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "r:RB-K2-H",
@@ -5800,12 +5084,12 @@
     [
      1119.7,
      -3186.6,
-     2545.0
+     1950.0
     ],
     [
      1200.4,
      -3159.9,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -5817,7 +5101,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "dn_abweichung": "Kupplungsstrecke d63 mit Kugelhahn d63 im Ring d75 (Quelle e27 bis e30: 'd63 (Kugelhahn), Ring d75')"
   },
   {
    "id": "RB-S2-2",
@@ -5831,12 +5117,12 @@
     [
      1283.5,
      -3132.4,
-     2545.0
+     1950.0
     ],
     [
      1381.3,
      -3100.1,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -5847,7 +5133,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "kupplungshahn"
   },
   {
    "id": "RB-S3-1",
@@ -5861,12 +5149,12 @@
     [
      2545.2,
      -2245.1,
-     2545.0
+     1950.0
     ],
     [
      2613.1,
      -2150.6,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
@@ -5877,7 +5165,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-T3-ringende-ab",
@@ -5890,12 +5180,12 @@
     [
      2613.1,
      -2150.6,
-     2545.0
+     1950.0
     ],
     [
      2613.1,
      -2150.6,
-     2223.1
+     1628.1
     ]
    ],
    "linie": 1,
@@ -5907,7 +5197,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "soll_weg": "e31",
+   "band": "WH"
   },
   {
    "id": "RB-H3-ringende-ab",
@@ -5920,12 +5212,12 @@
     [
      2613.1,
      -2150.6,
-     2098.1
+     1503.1
     ],
     [
      2613.1,
      -2150.6,
-     1948.1
+     1353.1
     ]
    ],
    "linie": 1,
@@ -5937,7 +5229,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-S3-2",
@@ -5951,12 +5245,12 @@
     [
      2613.1,
      -2150.6,
-     2545.0
+     1950.0
     ],
     [
      2865.9,
      -1798.8,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
@@ -5967,7 +5261,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-S3-3",
@@ -5981,12 +5277,12 @@
     [
      2865.9,
      -1798.8,
-     2545.0
+     1950.0
     ],
     [
      2939.7,
      -1696.1,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
@@ -5997,7 +5293,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-S4-1",
@@ -6011,12 +5309,12 @@
     [
      3378.7,
      -320.3,
-     2545.0
+     1950.0
     ],
     [
      3375.2,
      355.7,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
@@ -6027,7 +5325,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-S5-1",
@@ -6041,12 +5341,12 @@
     [
      2921.7,
      1726.8,
-     2545.0
+     1950.0
     ],
     [
      2521.5,
      2271.7,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
@@ -6057,7 +5357,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-S6-1",
@@ -6071,12 +5373,12 @@
     [
      1348.8,
      3114.4,
-     2545.0
+     1950.0
     ],
     [
      815.6,
      3284.5,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
@@ -6087,7 +5389,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-T6-entleerung-ab",
@@ -6100,12 +5404,12 @@
     [
      815.6,
      3284.5,
-     2545.0
+     1950.0
     ],
     [
      815.6,
      3284.5,
-     2223.1
+     1628.1
     ]
    ],
    "linie": 1,
@@ -6117,7 +5421,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-H6-entleerung-ab",
@@ -6130,12 +5436,12 @@
     [
      815.6,
      3284.5,
-     2098.1
+     1503.1
     ],
     [
      815.6,
      3284.5,
-     1948.1
+     1353.1
     ]
    ],
    "linie": 1,
@@ -6147,7 +5453,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-S6-2",
@@ -6161,12 +5469,12 @@
     [
      815.6,
      3284.5,
-     2545.0
+     1950.0
     ],
     [
      704.7,
      3319.9,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 1,
@@ -6177,7 +5485,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_1"
   },
   {
    "id": "RB-S7-1",
@@ -6191,12 +5501,12 @@
     [
      -739.4,
      3312.4,
-     2545.0
+     1950.0
     ],
     [
      -837.2,
      3280.0,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -6207,11 +5517,17 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "kupplungshahn"
   },
   {
    "id": "RB-K7-a",
    "kante": "K76",
+   "soll_weg": [
+    "e27",
+    "e30"
+   ],
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "r:RB-K7-RA",
@@ -6220,12 +5536,12 @@
     [
      -920.3,
      3252.5,
-     2545.0
+     1950.0
     ],
     [
      -1001.0,
      3225.8,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -6237,11 +5553,17 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "dn_abweichung": "Kupplungsstrecke d63 mit Kugelhahn d63 im Ring d75 (Quelle e27 bis e30: 'd63 (Kugelhahn), Ring d75')"
   },
   {
    "id": "RB-K7-b",
    "kante": "K76",
+   "soll_weg": [
+    "e28",
+    "e29"
+   ],
    "dn": 63,
    "farbe": "dunkelblau",
    "start": "r:RB-K7-H",
@@ -6250,12 +5572,12 @@
     [
      -1119.7,
      3186.6,
-     2545.0
+     1950.0
     ],
     [
      -1200.4,
      3159.9,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -6267,7 +5589,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "dn_abweichung": "Kupplungsstrecke d63 mit Kugelhahn d63 im Ring d75 (Quelle e27 bis e30: 'd63 (Kugelhahn), Ring d75')"
   },
   {
    "id": "RB-S7-2",
@@ -6281,12 +5605,12 @@
     [
      -1283.5,
      3132.4,
-     2545.0
+     1950.0
     ],
     [
      -1381.3,
      3100.1,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 0,
@@ -6297,7 +5621,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "kupplungshahn"
   },
   {
    "id": "RB-S8-1",
@@ -6311,12 +5637,12 @@
     [
      -2545.2,
      2245.1,
-     2545.0
+     1950.0
     ],
     [
      -2613.1,
      2150.6,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 2,
@@ -6327,7 +5653,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-T8-entleerung-ab",
@@ -6340,12 +5668,12 @@
     [
      -2613.1,
      2150.6,
-     2545.0
+     1950.0
     ],
     [
      -2613.1,
      2150.6,
-     2223.1
+     1628.1
     ]
    ],
    "linie": 2,
@@ -6357,7 +5685,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-H8-entleerung-ab",
@@ -6370,12 +5700,12 @@
     [
      -2613.1,
      2150.6,
-     2098.1
+     1503.1
     ],
     [
      -2613.1,
      2150.6,
-     1948.1
+     1353.1
     ]
    ],
    "linie": 2,
@@ -6387,7 +5717,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-S8-2",
@@ -6401,12 +5733,12 @@
     [
      -2613.1,
      2150.6,
-     2545.0
+     1950.0
     ],
     [
      -2939.7,
      1696.1,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 2,
@@ -6417,7 +5749,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   },
   {
    "id": "RB-S9-1",
@@ -6431,12 +5765,12 @@
     [
      -3378.7,
      320.3,
-     2545.0
+     1950.0
     ],
     [
      -3375.2,
      -355.7,
-     2545.0
+     1950.0
     ]
    ],
    "linie": 2,
@@ -6447,7 +5781,9 @@
    "varianten": [
     "ring_b2"
    ],
-   "quelle": "trassen_ring"
+   "quelle": "trassen_ring",
+   "band": "WH",
+   "soll_bauteil": "ring_2"
   }
  ],
  "t_stuecke": [
@@ -7298,83 +6634,11 @@
    ]
   },
   {
-   "id": "RB1-TB",
-   "pos": [
-    2424.1,
-    -1000.4,
-    1255.0
-   ],
-   "d": 63,
-   "ports": [
-    {
-     "trasse": "RB1-Da3",
-     "ende": "ende",
-     "d": 50
-    },
-    {
-     "trasse": "RB1-Db3",
-     "ende": "ende",
-     "d": 50
-    },
-    {
-     "trasse": "RB1-K63",
-     "ende": "start",
-     "d": 63
-    }
-   ],
-   "linie": 1,
-   "notiz": "T d63: zwei Booster-Druckleitungen d50 vereinigt, Abgang Steigleitung nach oben",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-TB",
-   "pos": [
-    -1032.4,
-    -4362.4,
-    1255.0
-   ],
-   "d": 63,
-   "ports": [
-    {
-     "trasse": "RB2-Da3",
-     "ende": "ende",
-     "d": 50
-    },
-    {
-     "trasse": "RB2-Db3",
-     "ende": "ende",
-     "d": 50
-    },
-    {
-     "trasse": "RB2-K63",
-     "ende": "start",
-     "d": 63
-    }
-   ],
-   "linie": 2,
-   "notiz": "T d63: zwei Booster-Druckleitungen d50 vereinigt, Abgang Steigleitung nach oben",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
    "id": "RB-T1-feed",
    "pos": [
-    -1157.8,
-    -3175.3,
-    2545.0
+    -1228.4,
+    -3152.8,
+    1950.0
    ],
    "d": 75,
    "ports": [
@@ -7406,7 +6670,7 @@
    "pos": [
     -815.6,
     -3284.5,
-    2545.0
+    1950.0
    ],
    "d": 75,
    "ports": [
@@ -7438,7 +6702,7 @@
    "pos": [
     2613.1,
     -2150.6,
-    2545.0
+    1950.0
    ],
    "d": 75,
    "ports": [
@@ -7470,7 +6734,7 @@
    "pos": [
     2865.9,
     -1798.8,
-    2545.0
+    1950.0
    ],
    "d": 75,
    "ports": [
@@ -7502,7 +6766,7 @@
    "pos": [
     815.6,
     3284.5,
-    2545.0
+    1950.0
    ],
    "d": 75,
    "ports": [
@@ -7534,7 +6798,7 @@
    "pos": [
     -2613.1,
     2150.6,
-    2545.0
+    1950.0
    ],
    "d": 75,
    "ports": [
@@ -8186,216 +7450,12 @@
    "notiz": "Zapfhahn d25 vor dem Puffer: Fass wird von Hand mit Schlauch gefuellt (Netz K52, kein Dauerfluss)"
   },
   {
-   "id": "RB1-REDa",
-   "pos_a": [
-    2859.1,
-    -1084.1,
-    838.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    -1.0
-   ],
-   "d_gross": 50,
-   "d_klein": 40,
-   "linie": 1,
-   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-RSVa",
-   "art": "teil",
-   "datei": "lt_rueckschlagventil_d50",
-   "pos_a": [
-    2859.1,
-    -1084.1,
-    898.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "d_gross": 50,
-   "linie": 1,
-   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 1a",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-REDb",
-   "pos_a": [
-    1989.1,
-    -916.6,
-    838.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    -1.0
-   ],
-   "d_gross": 50,
-   "d_klein": 40,
-   "linie": 1,
-   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB1-RSVb",
-   "art": "teil",
-   "datei": "lt_rueckschlagventil_d50",
-   "pos_a": [
-    1989.1,
-    -916.6,
-    898.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "d_gross": 50,
-   "linie": 1,
-   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 1b",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-REDa",
-   "pos_a": [
-    -894.2,
-    -4783.3,
-    838.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    -1.0
-   ],
-   "d_gross": 50,
-   "d_klein": 40,
-   "linie": 2,
-   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-RSVa",
-   "art": "teil",
-   "datei": "lt_rueckschlagventil_d50",
-   "pos_a": [
-    -894.2,
-    -4783.3,
-    898.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "d_gross": 50,
-   "linie": 2,
-   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 2a",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-REDb",
-   "pos_a": [
-    -1170.6,
-    -3941.5,
-    838.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    -1.0
-   ],
-   "d_gross": 50,
-   "d_klein": 40,
-   "linie": 2,
-   "notiz": "Reduziermuffe d50/d40 auf dem Booster-Druckrohr",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
-   "id": "RB2-RSVb",
-   "art": "teil",
-   "datei": "lt_rueckschlagventil_d50",
-   "pos_a": [
-    -1170.6,
-    -3941.5,
-    898.0
-   ],
-   "dir": [
-    0.0,
-    0.0,
-    1.0
-   ],
-   "d_gross": 50,
-   "linie": 2,
-   "notiz": "Rueckschlagventil d50 (WA8, GF 562) hinter Booster 2b",
-   "varianten": [
-    "ring_b2"
-   ],
-   "quelle": "trassen_ring",
-   "entfaellt_in": [
-    "ring_b2"
-   ],
-   "entfaellt_grund": "N-UNIFY U5 (D101, D127): Pegelschacht, Booster, Feinfilter, Pumpen klein/gross oder der alte Tankort entfallen; U6 verlegt die Wege neu"
-  },
-  {
    "id": "RB-H1-ringende",
    "art": "kugelhahn",
    "pos_a": [
     -815.6,
     -3284.5,
-    2223.1
+    1628.1
    ],
    "dir": [
     0.0,
@@ -8416,7 +7476,7 @@
    "pos_a": [
     837.2,
     -3280.0,
-    2545.0
+    1950.0
    ],
    "dir": [
     0.949425,
@@ -8438,7 +7498,7 @@
    "pos_a": [
     1001.0,
     -3225.8,
-    2545.0
+    1950.0
    ],
    "dir": [
     0.949425,
@@ -8448,8 +7508,14 @@
    "d_gross": 63,
    "d_klein": 63,
    "linie": 0,
-   "normal": "zu",
-   "notiz": "Kupplungshahn d63 zwischen den Linien (K76), im Betrieb geschlossen",
+   "normal": "offen",
+   "soll_weg": [
+    "e27",
+    "e28",
+    "e29",
+    "e30"
+   ],
+   "notiz": "Kupplungshahn d63 zwischen den Linien (K76), im Betrieb OFFEN (Quelle A29, U6); schliessen nur zur Wartung einer Linie",
    "varianten": [
     "ring_b2"
    ],
@@ -8460,7 +7526,7 @@
    "pos_a": [
     1283.5,
     -3132.4,
-    2545.0
+    1950.0
    ],
    "dir": [
     -0.949425,
@@ -8482,7 +7548,7 @@
    "pos_a": [
     2613.1,
     -2150.6,
-    2223.1
+    1628.1
    ],
    "dir": [
     0.0,
@@ -8504,7 +7570,7 @@
    "pos_a": [
     815.6,
     3284.5,
-    2223.1
+    1628.1
    ],
    "dir": [
     0.0,
@@ -8525,7 +7591,7 @@
    "pos_a": [
     -837.2,
     3280.0,
-    2545.0
+    1950.0
    ],
    "dir": [
     -0.949425,
@@ -8547,7 +7613,7 @@
    "pos_a": [
     -1001.0,
     3225.8,
-    2545.0
+    1950.0
    ],
    "dir": [
     -0.949425,
@@ -8557,8 +7623,14 @@
    "d_gross": 63,
    "d_klein": 63,
    "linie": 0,
-   "normal": "zu",
-   "notiz": "Kupplungshahn d63 zwischen den Linien (K76), im Betrieb geschlossen",
+   "normal": "offen",
+   "soll_weg": [
+    "e27",
+    "e28",
+    "e29",
+    "e30"
+   ],
+   "notiz": "Kupplungshahn d63 zwischen den Linien (K76), im Betrieb OFFEN (Quelle A29, U6); schliessen nur zur Wartung einer Linie",
    "varianten": [
     "ring_b2"
    ],
@@ -8569,7 +7641,7 @@
    "pos_a": [
     -1283.5,
     3132.4,
-    2545.0
+    1950.0
    ],
    "dir": [
     0.949425,
@@ -8591,7 +7663,7 @@
    "pos_a": [
     -2613.1,
     2150.6,
-    2223.1
+    1628.1
    ],
    "dir": [
     0.0,

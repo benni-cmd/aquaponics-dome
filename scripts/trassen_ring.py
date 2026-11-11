@@ -45,10 +45,12 @@ def world(m, p): return tuple(m[4 * r] * p[0] + m[4 * r + 1] * p[1] + m[4 * r + 
 def wdir(m, d): return tuple(m[4 * r] * d[0] + m[4 * r + 1] * d[1] + m[4 * r + 2] * d[2] for r in range(3))
 
 # ------------------------------------------------------------------ Bestand
-def _bestand():
-    cmds = json.load(open(os.path.join(ROOT, "scripts", "dome-script.json"), encoding="utf-8"))["commands"]
+def _bestand(datei="dome-script-ring_b2.json"):
+    """U6: Lage aus dem Bauskript der Variante ring_b2 (Beete auf dem Flur, Technik am Bauplatz der Lage-Probe; Tische wie A+)."""
+    cmds = json.load(open(os.path.join(ROOT, "scripts", datei), encoding="utf-8"))["commands"]
     return {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}
 MV = _bestand()
+MV_APLUS = _bestand("dome-script.json")
 TEILE = json.load(open(os.path.join(ROOT, "data", "components", "autobahn_teile.json"), encoding="utf-8"))
 TW = TEILE["tragwerk"]
 Z = {k: v + FZ for k, v in TW["hoehenkette_rel"].items()}     # absolut: achse 2545, schiene_u 2612, schiene_o 2653, platte_o 2657, traeger_o 2697
@@ -181,6 +183,11 @@ def feed_s(l, ein, belegt=()):
             if any(kb == k and abs(sb - s) < 350 for kb, sb in belegt): continue
             p = seite_pt(k, s); d = math.hypot(p[0] - ein["riser_xy"][0], p[1] - ein["riser_xy"][1])
             if best is None or d < best[0]: best = (d, k, s)
+        sp = dot(sub((ein["riser_xy"][0], ein["riser_xy"][1], VX[k][2]), VX[k]), U[k])           # U6: Fusspunkt des Lots (gerade Einspeisung ohne Versatz), wenn frei
+        lo, hi = EC["ecke_bis_port"] + T75 + 40, SEITE - EC["ecke_bis_port"] - T75 - 40
+        if lo <= sp <= hi and not any(kb == k and abs(sb - sp) < 350 for kb, sb in belegt):
+            d = math.hypot(*(sub(seite_pt(k, sp), (ein["riser_xy"][0], ein["riser_xy"][1], VX[k][2]))[:2]))
+            if d < best[0] + 1.0: best = (d - 1.0, k, sp)
     return best[1], best[2]
 
 def ring_ende_ecken():
@@ -192,6 +199,19 @@ def ring_ende_ecken():
         out.append((la, a, (a - 1) % N))                           # Linie la endet an Ecke a; ihre letzte eigene Seite ist a-1
         out.append((lb, b, b))                                     # Linie lb beginnt an Ecke b mit Seite b
     return out
+
+# ------------------------------------------------------------------ U6 Einspeisung (Quelle e25/e26): Ueberlauf-Stutzen d63 des Biofilters (Lage aus dem A+-Stutzen R_UEB/R_UEB2, mit dem Tank gedreht)
+L_EIN = 250.0                                                     # [A] waagerechtes Stueck ab Stutzen, dann Bogen 90 nach unten
+def _inv_world(m, p):
+    q = sub(p, (m[3], m[7], m[11])); return tuple(m[r] * q[0] + m[4 + r] * q[1] + m[8 + r] * q[2] for r in range(3))
+def _inv_dir(m, d): return tuple(m[r] * d[0] + m[4 + r] * d[1] + m[8 + r] * d[2] for r in range(3))
+def einspeisung_u6(l):
+    tank = {1: "Tank_gross:1", 2: "Tank_gross_t3:1"}[l]; rid = {1: "R_UEB", 2: "R_UEB2"}[l]
+    r = [x for x in TRASSEN["r_stuecke"] if x["id"] == rid][0]
+    ma, mb = MV_APLUS[tank], MV[tank]
+    p0 = world(mb, _inv_world(ma, tuple(r["pos_a"]))); u = unit(wdir(mb, _inv_dir(ma, tuple(r["dir"]))))
+    p1 = add(p0, u, L_EIN)
+    return dict(p0=p0, u=u, p1=p1, tank=tank, riser_xy=(p1[0], p1[1]))
 
 def seiten_belegung(feeds):
     """Je Seite: Liste der In-Line-Teile [(s_mitte, art, info)] auf der Geraden; s ab Ecke k."""
@@ -210,57 +230,29 @@ def leitungen_eintraege():
     """Alle Trassen/T/R-Stuecke der Autobahn (ring_b2). Rueckgabe dict wie leitungstrassen.json (nur die Listen)."""
     tr, ts, rs, te = [], [], [], []
     base = dict(varianten=V, quelle=QUELLE)
-    ein = {l: einspeisung(l) for l in (1, 2)}
-    # ---- Einspeisung je Linie: K60 (Biofilter -> Schacht), Saug K61/K62, Druck -> Rueckschlagventil -> T -> Steigleitung K63, Notueberlauf K67
-    for l, e in ein.items():
-        kz = {1: dict(k60="K60", k61="K61", k62="K62", k63="K63", k67="K67"), 2: dict(k60="K68", k61="K69", k62="K70", k63="K71", k67="K75")}[l]
-        tr.append(dict(id=f"RB{l}-K60", kante=kz["k60"], dn=50, farbe="dunkelblau", start="stutzen", ende="muffe", pfad=e["k60"], linie=l,
-                       korridor=["KT", "KT"], notiz=f"Biofilter-Ueberlauf ({e['tank']}) frei fallend in den Pegelschacht: Bogen 90 d50 auf dem Ende von {EINSP[l]['kante']}, senkrecht in die Zulauf-Muffe im Fassdeckel (Z {e['zulauf'][2] - FZ:.0f} rel)", **base))
-        for sg, kn in zip(e["saug"], (kz["k61"], kz["k62"])):
-            tr.append(dict(id=f"RB{l}-{kn}", kante=kn, dn=50, farbe="dunkelblau", start="muffe", ende="stutzen", pfad=sg["pfad"], linie=l, korridor=["KT"] * 3,
-                           notiz=f"Pegelschacht Saugstutzen {sg['tag']} -> waagerecht {L_SAUG1:g} -> senkrecht auf Saughoehe -> waagerecht {L_SAUG2:g} in den Saugstutzen Booster {l}{sg['tag'].lower()} (geflutet)", **base))
-        # Druck: d40-Stutzen -> Kupplung -> Rohr d40 -> Reduziermuffe d50/d40 -> Rohr d50 -> Rueckschlagventil d50 (WA8) -> Rohr d50 -> Bogen -> T d63
-        dA, dB = e["druck"]
-        m = ((dA[0] + dB[0]) / 2, (dA[1] + dB[1]) / 2)
-        lred = LT.ports("lt_reduzierung_d50_d40")[1][1][2]; lrsv = TEILE["wa_s"]["teile"]["lt_rueckschlagventil_d50"]["laenge"]
-        zq1 = dA[2] + 120; za_red = zq1 + lred; zr_a = za_red + 60; zr_b = zr_a + lrsv
-        zj = zr_b + 200
-        tb = (m[0], m[1], zj); tbid = f"RB{l}-TB"
-        for i, (dd, tag) in enumerate(((dA, "a"), (dB, "b"))):
-            rid, vid = f"RB{l}-RED{tag}", f"RB{l}-RSV{tag}"
-            tr.append(dict(id=f"RB{l}-D{tag}1", kante=kz["k63"], dn=40, farbe="dunkelblau", start="stutzen", ende="r:" + rid, pfad=[rd(dd), rd((dd[0], dd[1], zq1))], linie=l, korridor=["KT"],
-                           notiz=f"Druckstutzen Booster {l}{tag} d40 -> Kupplung -> Reduziermuffe d50/d40", **base))
-            rs.append(dict(id=rid, pos_a=rd((dd[0], dd[1], za_red)), dir=[0.0, 0.0, -1.0], d_gross=50, d_klein=40, linie=l, notiz="Reduziermuffe d50/d40 auf dem Booster-Druckrohr", **base))
-            tr.append(dict(id=f"RB{l}-D{tag}2", kante=kz["k63"], dn=50, farbe="dunkelblau", start="r:" + rid, ende="r:" + vid, pfad=[rd((dd[0], dd[1], za_red)), rd((dd[0], dd[1], zr_a))], linie=l, korridor=["KT"],
-                           notiz="Rohr d50 zum Rueckschlagventil", **base))
-            rs.append(dict(id=vid, art="teil", datei="lt_rueckschlagventil_d50", pos_a=rd((dd[0], dd[1], zr_a)), dir=[0.0, 0.0, 1.0], d_gross=50, linie=l,
-                           notiz=f"Rueckschlagventil d50 (WA8, GF 562) hinter Booster {l}{tag}", **base))
-            tr.append(dict(id=f"RB{l}-D{tag}3", kante=kz["k63"], dn=50, farbe="dunkelblau", start="r:" + vid, ende="t:" + tbid,
-                           pfad=[rd((dd[0], dd[1], zr_b)), rd((dd[0], dd[1], zj)), rd(tb)], linie=l, korridor=["KT", "KT"], notiz="Rueckschlagventil -> Bogen -> T d63 der Steigleitung", **base))
-        # Steigleitung d63 (K63): T -> senkrecht auf Ringachse -> waagerecht parallel zur Seite -> senkrecht zur Seite in den Ring-T
-        e["riser_xy"] = m
+    ein = {l: einspeisung_u6(l) for l in (1, 2)}
+    # ---- U6 (D93, Quelle e25/e26): Ueberlauf d63 des Biofilters -> waagerecht aus dem Tank -> senkrecht auf die Ringachse -> in den Einspeise-T d75.
+    #      Pegelschacht, Booster, Rueckschlagventile und Notueberlauf des Schachts (V2: K60 bis K67, K68 bis K75) entfallen (D101).
     feeds = {}
     belegt = [(k, s) for k, b in seiten_belegung({}).items() for s, _, _ in b]
     for l, e in ein.items():
         k, s = feed_s(l, e, belegt); feeds[l] = (k, s)
     bel = seiten_belegung(feeds)
     for l, e in ein.items():
-        k, s = feeds[l]; p = seite_pt(k, s); nl = NL[k]
-        m = e["riser_xy"]; za = Z["achse"]
-        off = dot(sub((m[0], m[1], 0), (p[0], p[1], 0)), nl)       # Abstand Steigrohr zur Ringseite (+ = zur Mitte)
-        q = add(p, nl, off)                                       # Punkt auf der Normalen des Ring-T auf Hoehe des Steigrohrs
-        tbid = f"RB{l}-TB"; trid = f"RB{l}-TR"
-        kz63 = "K63" if l == 1 else "K71"
-        tr.append(dict(id=f"RB{l}-K63", kante=kz63, dn=63, farbe="dunkelblau", start="t:" + tbid, ende="t:" + trid,
-                       pfad=[rd((m[0], m[1], e["druck"][0][2] + 0) if False else (m[0], m[1], 0)), rd((m[0], m[1], za)), rd((q[0], q[1], za)), rd(p)], linie=l, korridor=["KT", "KR", "KR"],
-                       notiz=f"Steigleitung d63: T der Booster -> senkrecht auf Ringachse Z {za - FZ:.0f} rel -> parallel zur Ringseite -> senkrecht in den Einspeise-T d75", **base))
-        tr[-1]["pfad"][0] = rd([t for t in tr if t["id"] == f"RB{l}-Da3"][0]["pfad"][-1])
-        ts.append(dict(id=tbid, pos=tr[-1]["pfad"][0], d=63, ports=[dict(trasse=f"RB{l}-Da3", ende="ende", d=50), dict(trasse=f"RB{l}-Db3", ende="ende", d=50), dict(trasse=f"RB{l}-K63", ende="start", d=63)],
-                       linie=l, notiz="T d63: zwei Booster-Druckleitungen d50 vereinigt, Abgang Steigleitung nach oben", **base))
-        # Notueberlauf K67/K75: Stutzen -X -> waagerecht -> senkrecht auf Flur (offenes Ende ueber der Ruecklauf-Anbindung, Befund)
-        nu, nd = e["nu"], e["nd"]; n1 = add(nu, nd, 200)
-        tr.append(dict(id=f"RB{l}-K67", kante="K67" if l == 1 else "K75", dn=63, farbe="grau", start="muffe", ende="offen", pfad=[rd(nu), rd(n1), rd((n1[0], n1[1], FZ + 60))], linie=l, korridor=["KT", "KT"],
-                       notiz="Notueberlauf d63 des Pegelschachts (Booster-Stillstand) -> senkrecht auf Flur; Anschluss an den Ruecklauf OFFEN (Montage R2c / Planer)", **base))
+        k, s = feeds[l]; p = seite_pt(k, s); nl = NL[k]; za = Z["achse"]
+        sp = dot(sub((e["p1"][0], e["p1"][1], VX[k][2]), VX[k]), U[k])
+        if abs(s - sp) < 30.0:                                           # Fusspunkt knapp ausserhalb des freien Bereichs: Fallrohr um (s - sp) entlang der Seite versetzen (Knick < 7 Grad am Stutzen-Bogen? nein: nur der waagerechte Ast dreht < 0,5 Grad)
+            e["p1"] = add(e["p1"], U[k], s - sp); e["riser_xy"] = (e["p1"][0], e["p1"][1])
+        m = e["riser_xy"]
+        off = dot(sub((m[0], m[1], 0), (p[0], p[1], 0)), nl)
+        q = add(p, nl, off)
+        pfad = [rd(e["p0"]), rd(e["p1"]), rd((m[0], m[1], za))]
+        if math.hypot(q[0] - m[0], q[1] - m[1]) > 1.0: pfad.append(rd((q[0], q[1], za)))
+        pfad.append(rd(p))
+        kz = "K63" if l == 1 else "K71"
+        tr.append(dict(id=f"RB{l}-K63", kante=kz, soll_weg="e25" if l == 1 else "e26", dn=63, farbe="dunkelblau", start="offen", ende="t:RB-T%d-feed" % k,
+                       pfad=pfad, linie=l, korridor=["KT"] * (len(pfad) - 1),
+                       notiz=f"Einspeisung d63 (Quelle e25/e26): Ueberlauf {e['tank']} auf Z {e['p0'][2] - FZ:.0f} rel -> waagerecht {L_EIN:g} -> senkrecht auf die Ringachse Z {za - FZ:.0f} rel -> in den Einspeise-T d75 (Schwerkraft, Gefaelle {e['p0'][2] - za:.0f} mm)", **base))
     # ---- Ring: je Seite die Gerade zwischen Port B der Ecke k und Port A der Ecke k+1, In-Line-Teile nach Belegung
     for k in range(N):
         s_a, s_b = EC["ecke_bis_port"], SEITE - EC["ecke_bis_port"]
@@ -289,6 +281,7 @@ def leitungen_eintraege():
                                    linie=l, notiz=("Ring-Ende" if art == "ringende" else "Entleerung") + f" der Linie {l}: T d75, Abgang nach unten d63", **base))
                     tr.append(dict(id=bid, kante=("K66" if l == 1 else "K74") if art == "ringende" else None, dn=63, farbe="dunkelblau", start="t:" + tid, ende="r:" + hid,
                                    pfad=[rd(p), rd((p[0], p[1], zt))], linie=l, korridor=["KR"], halter=False, notiz="Abgang d63 zum Kugelhahn", **base))
+                    if art == "ringende": tr[-1]["soll_weg"] = "e31" if l == 1 else "e32"
                     rs.append(dict(id=hid, art="kugelhahn", pos_a=rd((p[0], p[1], zt)), dir=[0.0, 0.0, -1.0], d_gross=63, d_klein=63, linie=l,
                                    notiz=("Ring-Ende-Hahn d63 (Ueberschuss in den Ruecklauf, ersetzt K13/K29)" if art == "ringende" else "Entleerungshahn d63 (Ring leer, Frost)") + f" Linie {l}", **base))
                     tr.append(dict(id=hid + "-ab", kante=("K66" if l == 1 else "K74") if art == "ringende" else None, dn=63, farbe="grau", start="r:" + hid, ende="offen",
@@ -302,13 +295,18 @@ def leitungen_eintraege():
                 s_ra = s_h0 - gap - lr; s_rb = s_h1 + gap + lr
                 rohr(cur, cur_start, s_ra, "r:" + ra, "Ring d75 bis Reduziermuffe der Kupplungsstrecke")
                 rs.append(dict(id=ra, pos_a=rd(seite_pt(k, s_ra)), dir=rd(U[k], 6), d_gross=75, d_klein=63, linie=0, notiz="Reduziermuffe d75/d63 vor dem Kupplungshahn", **base))
-                tr.append(dict(id=f"RB-K{k}-a", kante="K76", dn=63, farbe="dunkelblau", start="r:" + ra, ende="r:" + h_, pfad=[rd(seite_pt(k, s_ra + lr)), rd(seite_pt(k, s_h0))], linie=0, korridor=["KR"], halter=False, notiz="Rohrstueck d63", **base))
-                rs.append(dict(id=h_, art="kugelhahn", pos_a=rd(seite_pt(k, s_h0)), dir=rd(U[k], 6), d_gross=63, d_klein=63, linie=0, normal="zu",
-                               notiz="Kupplungshahn d63 zwischen den Linien (K76), im Betrieb geschlossen", **base))
-                tr.append(dict(id=f"RB-K{k}-b", kante="K76", dn=63, farbe="dunkelblau", start="r:" + h_, ende="r:" + rb, pfad=[rd(seite_pt(k, s_h1)), rd(seite_pt(k, s_rb - lr))], linie=0, korridor=["KR"], halter=False, notiz="Rohrstueck d63", **base))
+                tr.append(dict(id=f"RB-K{k}-a", kante="K76", soll_weg=["e27", "e30"], dn=63, farbe="dunkelblau", start="r:" + ra, ende="r:" + h_, pfad=[rd(seite_pt(k, s_ra + lr)), rd(seite_pt(k, s_h0))], linie=0, korridor=["KR"], halter=False, notiz="Rohrstueck d63", **base))
+                rs.append(dict(id=h_, art="kugelhahn", pos_a=rd(seite_pt(k, s_h0)), dir=rd(U[k], 6), d_gross=63, d_klein=63, linie=0, normal="offen", soll_weg=["e27", "e28", "e29", "e30"],
+                               notiz="Kupplungshahn d63 zwischen den Linien (K76), im Betrieb OFFEN (Quelle A29, U6); schliessen nur zur Wartung einer Linie", **base))
+                tr.append(dict(id=f"RB-K{k}-b", kante="K76", soll_weg=["e28", "e29"], dn=63, farbe="dunkelblau", start="r:" + h_, ende="r:" + rb, pfad=[rd(seite_pt(k, s_h1)), rd(seite_pt(k, s_rb - lr))], linie=0, korridor=["KR"], halter=False, notiz="Rohrstueck d63", **base))
                 rs.append(dict(id=rb, pos_a=rd(seite_pt(k, s_rb)), dir=rd(mul(U[k], -1), 6), d_gross=75, d_klein=63, linie=0, notiz="Reduziermuffe d63/d75 hinter dem Kupplungshahn", **base))
                 cur, cur_start = s_rb, "r:" + rb
         rohr(cur, cur_start, s_b, "offen", f"Ring d75 Seite {k} bis Ecke {(k + 1) % N}")
+    for t in tr:                                                   # U6: Hoehenband (Ring 1550 liegt im Band WH 0..2100 rel) und Bezug zur Quelle (Bauteil oder Weg)
+        t.setdefault("band", "WH")
+        if "soll_weg" not in t: t["soll_bauteil"] = "kupplungshahn" if t.get("linie") == 0 else ("ring_1" if t.get("linie") == 1 else "ring_2")
+        if t["id"].startswith("RB-K") and t["dn"] == 63: t["dn_abweichung"] = "Kupplungsstrecke d63 mit Kugelhahn d63 im Ring d75 (Quelle e27 bis e30: 'd63 (Kugelhahn), Ring d75')"
+        if t["id"].endswith("-K63"): t["anschluss"] = [ein[t["linie"]]["tank"]]                  # beginnt am Ueberlauf-Stutzen des Biofilters
     return dict(trassen=tr, t_stuecke=ts, r_stuecke=rs, teile=te), ein, feeds, bel
 
 # ------------------------------------------------------------------ Schellen (R6 Ring <= 1000 mm): Scheitel jeder Ecke + je Seite auf der Geraden
@@ -358,9 +356,7 @@ def tragwerk(runde="r1"):
     for f, m, k, s in schellen(bel): kl.setdefault(f, []).append(m)
     for f, ms in sorted(kl.items()): out.append((klasse(f), comp(f), ms, "08_Leitungen"))
     out.append(("Ring_Ecke_d75", comp("ring_ecke_d75"), [ecke_matrix(k) for k in range(N)], "08_Leitungen"))
-    out.append(("Pegelschacht_Podest", comp("pegelschacht_podest"), [ein[l]["m_po"] for l in (1, 2)], "09_Technik"))
-    out.append(("Pegelschacht", comp("pegelschacht"), [ein[l]["m_ps"] for l in (1, 2)], "09_Technik"))
-    out.append(("Booster_gross", comp("pumpe_gross"), [m for l in (1, 2) for m in ein[l]["booster"]], "09_Technik"))
+    # U6 (D101): Pegelschacht samt Podest und Booster entfallen; die Einspeisung ist der Ueberlauf d63 des Biofilters (Trasse RB<l>-K63)
     out.append(("Entluefter_d75", comp("entluefter_d75"), entluefter(), "08_Leitungen"))
     if runde in ("r2",):
         au = {}
@@ -377,8 +373,8 @@ def tragwerk(runde="r1"):
 import autobahn_s as AS
 SCHLAUCH_DATEI = "ring_b2_schlauchwege"   # neuer Name: alte 622-MB-Definition ring_b2_schlaeuche blieb im Viewer gesperrt
 ZONE = {"Tisch_innen": ("innen", "tisch"), "Tisch_mitte": ("mitte", "tisch"), "Tisch_aussen": ("aussen", "tisch"), "Beet_innen_933": ("mitte", "beet"), "Beet_aussen_800": ("aussen", "beet")}
-PORT = {"Tisch_innen": ((-449.0, 256.0, 1076.0), "t"), "Tisch_mitte": ((-823.0, 520.0, 1083.0), "t"), "Tisch_aussen": ((-1349.0, 497.0, 1091.0), "t"),
-        "Beet_innen_933": ((-972.0, -392.0, 624.0), "b"), "Beet_aussen_800": ((-1360.0, -326.0, 612.0), "b")}   # [Q] docs/parts/nft_tisch.md Ports, docs/parts/ibc_beet.md Ports
+PORT = {"Tisch_innen": ((-449.0, 256.0, 1306.0), "t"), "Tisch_mitte": ((-823.0, 520.0, 963.0), "t"), "Tisch_aussen": ((-1349.0, 497.0, 1121.0), "t"),
+        "Beet_innen_933": ((-973.0, -298.0, 395.0), "b"), "Beet_aussen_800": ((-1360.0, -326.0, 435.0), "b")}   # U6: gemessen an viewer/detail/nft_tisch_*.json (Verteiler-Mitte, U3: +230/-120/+30) und ibc_beet_*.json (Tropfrohr, U3b: Rand - 25)
 LINIE1_SEKT = (0, 36, 72, 108); LINIE2_SEKT = (144, 180, -144, -108); INNEN_EXTRA = {1: -36, 2: -72}   # wie scripts/n_autobahn_rechnung.py (Blatt 1.5)
 Y_CLIP = [v for k, v in TW["teile"].items() if k.startswith("ausleger_schlauch_")][0]["ports"][1]["lage"][1]   # 42,5 seitlich der Armachse (gleich fuer alle Laengen)
 T_HALB = T75 + 5.0                                                       # T-Laenge/2 + Luft
@@ -487,6 +483,8 @@ def schlauch_weg(a, winkel=None):
     fxy = (a["abgang"][0], a["abgang"][1], 0.0) if a["zone"] == "mitte" else _fall_xy(a)
     if winkel is None: winkel = dot(a["d_o"], sub(fxy, (E[0], E[1], 0.0))) < 0   # Port zeigt vom Fall weg
     if winkel: z_h = max(z_h, E_up[2] + 2 * Rb + 10 + stapel)
+    if a["zone"] == "mitte": z_h = min(z_h, A0[2] - kr - tl - hl / 2 - 10)    # U6 (D139): Ring 1550, der Hahn sitzt unter dem Abgang (Schlauch faellt, steigt nie)
+    else: z_h = min(z_h, Z_ARM - Rb - 10 - tl - hl / 2)                       # U6 (D139): Hahn unter dem Ausleger (Arm auf 1682 rel), sonst stiege der Schlauch
     z_ht = z_h + hl / 2; z_hb = z_ht - hl
     if a["zone"] == "mitte":                                                 # Fall senkrecht unter dem Abzweig (Beet: in der Fuge auf der Sektorgrenze)
         D = (A0[0], A0[1]); s1 = [add(A0, u0, kr), (D[0], D[1], z_ht)]
@@ -525,8 +523,11 @@ def schlauch_weg(a, winkel=None):
         try: AS.hose_layout(cand, Rb); s3 = cand; break
         except ValueError: continue
     if s3 is None and not winkel: return schlauch_weg(a, winkel=True)        # W88: statt Schlaufe in der Luft (frueher Rueckfall) Winkeltuelle von oben
+    befund = None
+    if s3 is None:                                                           # U6 (D139): Ring auf 1550; zwischen Kupplung und Anschluss fehlt Hoehe oder Abstand fuer zwei Boegen mit Rb
+        s3 = [(D[0], D[1], z_kb), E_up]; befund = "schraeg: gerader Schlauch von der Kupplung zur Winkeltuelle, Biegeradius an beiden Enden nicht eingehalten (D139)"
     if s3 is None: raise SystemExit("%s: kein Schlauchweg unten" % a["name"])
-    return dict(Rb=Rb, ad=AS.HOSE[idd]["ad"], tl=tl, kr=kr, s1=s1, z_ht=z_ht, z_hb=z_hb, z_kt=z_kt, z_kb=z_kb, D=D, s2=[(D[0], D[1], z_hb), (D[0], D[1], z_kt)], s3=s3, E=E, la=la, winkel=winkel, E_up=E_up)
+    return dict(Rb=Rb, ad=AS.HOSE[idd]["ad"], tl=tl, kr=kr, s1=s1, z_ht=z_ht, z_hb=z_hb, z_kt=z_kt, z_kb=z_kb, D=D, s2=[(D[0], D[1], z_hb), (D[0], D[1], z_kt)], s3=s3, E=E, la=la, winkel=winkel, E_up=E_up, befund=befund)
 
 def prisma(b, nm, d, p0, u, ln, mat_=None):
     """Achtkant-Prisma (Darstellung [A]): Durchmesser d ueber Ecken, Achse u ab p0, Laenge ln. Wenige Dreiecke im OBJ (Zylinder mit Bohrung: Tausende)."""
@@ -604,6 +605,17 @@ def schlauch_bauen(out_sc=None):
     sc.run(b.write("ring_b2_schlaeuche"), out_sc)
     return laengen
 
+SOLL_FALL = {(1, "tisch", "aussen"): "e39", (1, "tisch", "mitte"): "e40", (1, "tisch", "innen"): "e41", (1, "beet", "aussen"): "e42", (1, "beet", "mitte"): "e43",
+             (2, "tisch", "aussen"): "e44", (2, "tisch", "mitte"): "e45", (2, "tisch", "innen"): "e46", (2, "beet", "aussen"): "e47", (2, "beet", "mitte"): "e48"}
+SOLL_ABZ = {(1, "tisch"): "e35", (1, "beet"): "e36", (2, "tisch"): "e37", (2, "beet"): "e38"}
+def schlauch_soll_wege():
+    """U6: Soll-Wege der Abfahrten (e35 bis e38, Ring-Abzweig) und Fallleitungen (e39 bis e48, Schlauch) mit Stueckzahl im Modell (Komponente ring_b2_schlauchwege)."""
+    out = {}
+    for a in fallleitungen():
+        for w in (SOLL_ABZ[(a["linie"], a["art"])], SOLL_FALL[(a["linie"], a["art"], a["zone"])]):
+            out[w] = out.get(w, 0) + 1
+    return out
+
 def entluefter():
     """Je Linie ein Entluefter d75 am Linien-Ende (Bogen der End-Ecke, 450 mm hinter dem Bogenanfang: dort liegt das Rohr seitlich neben der Schiene)."""
     ms = []
@@ -639,8 +651,8 @@ def bericht():
     print("Linie 1 Ecken", [ECKEN_AZ[k] for k in LINIE_ECKEN[1]], "| Linie 2", [ECKEN_AZ[k] for k in LINIE_ECKEN[2]], "| Kupplungsseiten", [(ECKEN_AZ[k], ECKEN_AZ[(k + 1) % N]) for k in KUPPLUNG])
     print("Stuetzpunkte: %d Joche, %d Stelzen; Ausleger %d" % (sum(s["art"] == "joch" for s in sp), sum(s["art"] == "stelze" for s in sp), sum(len(s["ausleger"]) for s in sp)))
     for l in (1, 2):
-        e = ein[l]; c = world(e["m_po"], (0, 0, 0))
-        print("Einspeisung Linie %d: Pegelschacht r %.0f az %.1f, Zulauf Z %.0f rel, Feed-T Seite %d s %.0f" % (l, math.hypot(c[0], c[1]), az(c), e["zulauf"][2] - FZ, feeds[l][0], feeds[l][1]))
+        e = ein[l]; c = e["p0"]
+        print("Einspeisung Linie %d: Ueberlauf %s r %.0f az %.1f Z %.0f rel, Feed-T Seite %d s %.0f" % (l, e["tank"], math.hypot(c[0], c[1]), az(c), c[2] - FZ, feeds[l][0], feeds[l][1]))
     kl = schellen(bel)
     print("Schellen:", len(kl))
     print({k: len(v) for k, v in eint.items()})

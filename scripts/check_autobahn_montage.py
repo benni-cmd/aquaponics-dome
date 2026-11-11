@@ -26,16 +26,17 @@ chk("Montageschienen 41 / Schienenverbinder 36", (cnt["Montageschiene_41_2179"],
 chk("Ring-Ecken d75 36 Grad", cnt["Ring_Ecke_d75"], 10, cnt["Ring_Ecke_d75"] == 10)
 nkl = cnt["Lt_Klemme_d75"] + cnt["Lt_Klemme_d75_Ecke"] + cnt["Lt_Klemme_d75_Stelze"]
 chk("Ring-Schellen d75", nkl, "30 (10 Ecken + 2 je Seite; Blatt schaetzte 22)", nkl == 30)
-chk("Pegelschaechte auf Podest", (cnt["Pegelschacht"], cnt["Pegelschacht_Podest"]), (2, 2), cnt["Pegelschacht"] == 2 and cnt["Pegelschacht_Podest"] == 2)
-chk("Booster (pumpe_gross)", cnt["Booster_gross"], 4, cnt["Booster_gross"] == 4)
-chk("Rueckschlagventile d50", sum(1 for r in rs if r.get("datei") == "lt_rueckschlagventil_d50"), 4, sum(1 for r in rs if r.get("datei") == "lt_rueckschlagventil_d50") == 4)
+# N-UNIFY U6 (D93, D101): Einspeisung = Ueberlauf d63 des Biofilters; Pegelschacht, Booster und ihre Rueckschlagventile entfallen
+chk("Pegelschaechte auf Podest (entfallen, D101)", (cnt["Pegelschacht"], cnt["Pegelschacht_Podest"]), (0, 0), cnt["Pegelschacht"] == 0 and cnt["Pegelschacht_Podest"] == 0)
+chk("Booster (entfallen, D101)", cnt["Booster_gross"], 0, cnt["Booster_gross"] == 0)
+chk("Rueckschlagventile d50 der Booster (entfallen)", sum(1 for r in rs if r.get("datei") == "lt_rueckschlagventil_d50"), 0, sum(1 for r in rs if r.get("datei") == "lt_rueckschlagventil_d50") == 0)
 chk("Entluefter d75", cnt["Entluefter_d75"], 2, cnt["Entluefter_d75"] == 2)
 hk = Counter(("kupplung" if "-K" in r["id"] and r["id"].endswith("-H") else "ringende" if "ringende" in r["id"] else "entleerung" if "entleerung" in r["id"] else "?") for r in rs if r.get("art") == "kugelhahn")
 chk("Kugelhaehne d63 (Kupplung / Ring-Ende / Entleerung)", (hk["kupplung"], hk["ringende"], hk["entleerung"]), (2, 2, 2), (hk["kupplung"], hk["ringende"], hk["entleerung"]) == (2, 2, 2))
 
 # ---- R1: Hoehe und Halter des Rings
 EC = TR.EC; ach = TR.Z["achse"]
-chk("Ring-Unterkante (Achse - 37,5) / Schellen-Unterkante [rel]", (round(ach - 37.5 - FZ, 1), round(ach - 43.5 - FZ, 1)), ">= 2100", ach - 43.5 - FZ >= 2100 - 1e-6)
+chk("Ring-Rohrachse [rel] (Quelle: 1550, D98; Unterkante/Schellen-Unterkante in Klammern)", (round(ach - FZ, 1), round(ach - 37.5 - FZ, 1), round(ach - 43.5 - FZ, 1)), "1550 +-50", abs(ach - FZ - 1550) <= 50)
 # Schellen-Lage als Laufmeter auf dem Ring (Ecke k: Scheitel bei k*SEITE + Korrektur Bogen)
 eint, ein, feeds, bel = TR.leitungen_eintraege()
 per = TR.N * (TR.SEITE - 2 * EC["tangente"]) + TR.N * EC["bogen_l"]
@@ -54,8 +55,12 @@ for s in TR.stuetzpunkte():
     inn.append((round(TR.ECKEN_AZ[s["k"]], 1), round(r), ov))
 chk("Stelzen-Fussplatte (r +-100) ausserhalb Gang A/B [mm Ueberdeckung]", inn, "0 je Gang", all(v == 0 for _, _, ov in inn for v in ov.values()))
 for l in (1, 2):
-    c = TR.world(ein[l]["m_po"], (0, 0, 0)); r = math.hypot(c[0], c[1]); ov = {g: round(max(0.0, min(r + 250, b) - max(r - 250, a))) for g, (a, b) in GANG.items()}
-    chk(f"Pegelschacht Linie {l} (Fass mit Stutzen r +-250) ausserhalb Gang A/B [mm Ueberdeckung]", (round(r), ov), "0 je Gang", all(v == 0 for v in ov.values()))
+    tr63 = [t for t in eint["trassen"] if t["id"] == f"RB{l}-K63"][0]; zs = [p[2] for p in tr63["pfad"]]
+    stetig = all(zs[i + 1] <= zs[i] + 0.05 for i in range(len(zs) - 1))
+    chk(f"Einspeisung Linie {l}: Ueberlauf Biofilter Z [rel] -> Ringachse, faellt stetig (Quelle e25/e26, d63)", (round(zs[0] - FZ), round(zs[-1] - FZ), tr63["dn"], tr63["ende"]),
+        "1800 -> 1550, d63, endet im Einspeise-T", abs(zs[0] - FZ - 1800) <= 50 and abs(zs[-1] - ach) < 0.5 and stetig and tr63["dn"] == 63 and tr63["ende"].startswith("t:"))
+kh = [r for r in rs if r.get("art") == "kugelhahn" and r["id"].endswith("-H")]
+chk("Kupplungshaehne im Betrieb offen (Quelle A29)", [r.get("normal") for r in kh], "offen", all(r.get("normal") == "offen" for r in kh))
 
 if RUNDE == "r2":
     fl = TR.fallleitungen()
@@ -99,7 +104,8 @@ if RUNDE == "r2":
         ax = lambda q: TR.dot(TR.sub((q[0], q[1], 0.0), (w["E"][0], w["E"][1], 0.0)), a["d_o"])
         jenseits.append((round(max(ax(q) for q in w["s3"]) - max(ax(w["s3"][0]), 0.0) - (w["Rb"] + 45), 1), a["name"]))
     tmin = min(tief) if tief else (None,)
-    chk("Schlauch-Unterkante ueber Gang A/B [rel] (tiefster Punkt)", tmin[:3], ">= 2100", (not tief) or tmin[0] >= 2100)
+    # U6: Ring auf 1550 (Quelle, D98/D111): Schlaeuche ueber den Gaengen sollen nicht tiefer haengen als die Schellen-Unterkante des Rings
+    chk("Schlauch-Unterkante ueber Gang A/B [rel] (tiefster Punkt)", tmin[:3], ">= %.0f (Schellen-Unterkante Ring, D111)" % (ach - 43.5 - FZ), (not tief) or tmin[0] >= ach - 43.5 - FZ - 0.5)
     for art, soll in (("auf", 400.0), ("fall", 1500.0)):
         worst = max((f for f in frei if f[0] == art), key=lambda f: f[2] - f[3])
         n_over = sum(1 for f in frei if f[0] == art and f[2] > f[3])

@@ -190,6 +190,9 @@ def pruefe(w, netz, doc):
         if len(t.get("pfad", [])) < 2: viol.append(("EINGABE", tid, "weniger als 2 Punkte")); continue
         pts = [(float(p[0]), float(p[1]), float(p[2]) + fl * w.fz) for p in t["pfad"]]
         ks = t.get("kante")
+        if ks and ks not in kanten and (t.get("soll_weg") or t.get("soll_bauteil")):   # N-UNIFY U6: Netz ring_b2 = Soll-Wege; Bezug ueber soll_weg / soll_bauteil (Ring selbst)
+            sw = t.get("soll_weg"); sw = sw if isinstance(sw, str) else (sw[0] if sw else None)
+            ks = ("S-" + sw) if sw and ("S-" + sw) in kanten and kanten["S-" + sw].get("dn") else None
         if ks and ks not in kanten: viol.append(("EINGABE", tid, "Kante %s nicht in der Netzliste" % ks)); continue
         dn = t.get("dn") or (kanten[ks]["dn"] if ks else None)
         if not dn: viol.append(("EINGABE", tid, "dn fehlt (Trasse ohne Kante)")); continue

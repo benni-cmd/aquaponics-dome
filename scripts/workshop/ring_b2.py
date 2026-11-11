@@ -122,7 +122,8 @@ def ps_ports():
 
 # =========================================================================== 2 Ringstuetze d75
 # KS: Mitte Fussplatte unten (Z 0 = Innenboden), Pfosten senkrecht; Kragarm nach +X; Rohr d75 laeuft entlang Y durch (ausladung, 0, achse_h).
-RS = dict(achse_h=2145.0, ausladung=250.0, pfosten_b=50.0, pfosten_w=3.0, arm_b=40.0, arm_w=3.0, arm_ueber=60.0,
+RS = dict(achse_h=1550.0,   # U6 (D139): Ring auf 1550 wie die Quelle, vorher 2145
+           ausladung=250.0, pfosten_b=50.0, pfosten_w=3.0, arm_b=40.0, arm_w=3.0, arm_ueber=60.0,
           platte_b=200.0, platte_t=10.0, anker_d=10.0, anker_l=100.0, anker_abstand=150.0,
           rohr_d=75.0, einlage_t=3.0, ring_t=3.0, ring_b=30.0, nabe_b=20.0, nabe_h=12.0, stange_d=10.0, mutter_d=17.0, mutter_h=8.0, stange_frei=50.0)
 

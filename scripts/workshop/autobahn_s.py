@@ -206,7 +206,7 @@ R_INLET = {z: NR.AP[z] / math.cos(NR.HALB) for z in NR.AP}
 FT = dict(kragen=10.0, tuelle={19: 35.0, 25: 45.0}, wulst=1.0,          # Tuelle oben: Klebezapfen d32/d40 in Muffe B des Hahns, Kragen, Schlauchtuelle
           hahn_lb={19: 110.0, 25: 110.0}, hahn_ob={19: 58.0, 25: 58.0}, hebel=90.0,    # Regelhahn GF 546 Pro PVC-U d25 (L 110, D 58) mit zwei Schlauchtuellen
           anschl_l={"tisch": 40.0, "beet": 45.0}, anschl_od={"tisch": 33.0, "beet": 34.0},  # Endstueck: Tuelle + Klebemuffe d25 (Tisch) bzw. Klemmverbinder d20 PE (Beet)
-          z_hahn={"tisch": 1500.0, "beet": 1150.0})                                    # Regelhahn-Mitte rel (Greifhoehe [A])
+          z_hahn={"tisch": 1300.0, "beet": 1150.0})   # U6 (D139): Tisch 1500 -> 1300, weil der Ring auf 1550 liegt                                    # Regelhahn-Mitte rel (Greifhoehe [A])
 TYPES = {
     "id19_mitte":  dict(art="tisch", zone="mitte",  idd=19, dk=32, mode="fall"),
     "id19_innen":  dict(art="tisch", zone="innen",  idd=19, dk=32, mode="ausleger"),

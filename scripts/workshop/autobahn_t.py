@@ -19,7 +19,10 @@ RD = os.path.join(sc.ROOT, "renders", "components", "autobahn")
 MAT = {"AB stahl": (7.85, "#aeb4b8"), "AB epdm": (1.1, "#1a1a1a"), "AB pe100": (0.96, "#20242a"), "AB schiene": (7.85, "#c9ced2")}
 
 # --------------------------------------------------------------------------- Hoehenkette und Lage (gemessen, siehe Blatt)
-Z = dict(achse=2145.0, schelle_unten=2101.5, nabe=2199.0, schiene_u=2212.0, schiene_o=2253.0, platte_o=2257.0, traeger_o=2297.0, kr_oben=2300.0, gang_frei=2100.0)
+# N-UNIFY-AUTOBAHN U6 (D98, D139): Ring auf Rohrachse 1550 rel wie die Quelle (Oasis-Showcase); die ganze Hoehenkette sinkt um 595 mm (vorher achse 2145).
+# gang_frei ist die lichte Hoehe unter dem Ring (Pruefwert, kein Mass der Quelle): mit 1550 liegt sie bei 1505 (Bedenken D111).
+DZ_U6 = -595.0
+Z = {k: v + DZ_U6 for k, v in dict(achse=2145.0, schelle_unten=2101.5, nabe=2199.0, schiene_u=2212.0, schiene_o=2253.0, platte_o=2257.0, traeger_o=2297.0, kr_oben=2300.0, gang_frei=2100.0).items()}
 AP_MITTE = 3377.0          # [E] Tisch_mitte / Beet_innen_933 im Modell (nft_tisch.json ap_c 3277 + params ring_shift_mid 100, D63), scripts/dome-script.json
 AP_INNEN, AP_AUSSEN = 1864.0, 5074.0
 HALB = math.radians(18.0)
@@ -70,7 +73,7 @@ def meta(b, nm, pn, desc, werk):
 # Diagonale aussen x 568..570; Beine y -567..-526 / 526..567, Hoehe 5..948 (Bock 1) / 932 (Bock 2); Laengsdiagonalen und Laengsstreben innen (zwischen den Boecken).
 # Aussenkante je Bock = Diagonalen-Schrauben M6x40 bzw. Muttern (eval: Bock 1 bis x -484, Bock 2 bis x 574), nicht die Diagonale selbst
 TISCH = {"a": dict(bein=(-478.0, -437.0), diag_aussen=(-484.0, -478.0), s=-1), "b": dict(bein=(528.0, 568.0), diag_aussen=(568.0, 574.0), s=1)}
-JO = dict(profil=40.0, wand=3.0, luft_diag=2.0, bein_y0=526.0, bein_y1=567.0, ext_z0=150.0, klemm_z=((250.0, 310.0), (780.0, 840.0)), klemm_t=6.0, schraube_d=8.0,
+JO = dict(profil=40.0, wand=3.0, luft_diag=2.0, bein_y0=526.0, bein_y1=567.0, ext_z0=150.0, klemm_z=((250.0, 310.0), (600.0, 660.0)), klemm_t=6.0, schraube_d=8.0,
           stirn_t=8.0, stirn_b=100.0, platte_b=60.0)
 
 def jo_geom(seite):

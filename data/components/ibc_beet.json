@@ -61,7 +61,7 @@
   "a21_gitter_h": {
    "wert": 25,
    "einheit": "mm",
-   "herkunft": "[A] Abtropfgitter am Boden des Beets: PP-Rost 25 mm hoch, Maschen 20 x 20 (Quelle fd_aussen.t2 nennt kein Maß); Geometrie in U3"
+   "herkunft": "[A] Abtropfgitter am Boden des Beets: PP-Rost 25 mm hoch, Maschen 20 x 20 (Quelle fd_aussen.t2 nennt kein Maß); U3b (D132): als Stegrost gebaut, Schlitzbreite 16 bei Teilung 20"
   },
   "a21_vlies_t": {
    "wert": 2,
@@ -76,7 +76,62 @@
   "a21_belueftung_d": {
    "wert": 8,
    "einheit": "mm",
-   "herkunft": "[A] Belueftung unten im Beet (Quelle fd_aussen.t4: 'etwas Belueftung unten, damit nichts gammelt'): Luftschlauch Ø 8 mit Ausstroemer unter dem Gitter; Luftquelle in der Quelle nicht festgelegt"
+   "herkunft": "[A] Belueftung unten im Beet (Quelle fd_aussen.t4: 'etwas Belueftung unten, damit nichts gammelt'): Luftschlauch Ø 8 mit Ausstroemer unter dem Gitter; Luftquelle in der Quelle nicht festgelegt; U3b (D135): gebaut"
+  },
+  "a21_sieb_t": {
+   "wert": 1,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D132): Dicke des Siebs (Edelstahl-Gewebe 1 mm); a21_sieb_mm ist die Maschenweite"
+  },
+  "a21_gitter_steg": {
+   "wert": 4,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D132): Stegbreite des Abtropfgitters (Teilung 20 = Schlitz 16 + Steg 4, Maschen 20 x 20 aus a21_gitter_h)"
+  },
+  "a21_gitter_schlitz_b": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D132): Modellvereinfachung: laengs gestreckte Schlitze 16 x 296 statt Maschen 20 x 20 (4800 Loecher); Querstege alle 300; freie Flaeche im Modell 79 %, real 64 %"
+  },
+  "a21_gitter_schlitz_l": {
+   "wert": 296,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D132): Schlitzlaenge (Teilung 300 mit Quersteg 4)"
+  },
+  "a21_gitter_rand": {
+   "wert": 8,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D132): Randabstand des Gitters zur Wannenwand; Platz fuer den Flansch des Auslasses (Hoehe bis 50 ueber Wannenunterkante, Dicke 4)"
+  },
+  "a21_luftloch_z": {
+   "wert": 30,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D133): Luftloch der Glocke, Mitte 30 ueber Wannenunterkante (unter dem Gitter, Unterkante Gitter 42)"
+  },
+  "a21_auslass_z": {
+   "wert": 28,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D134): Achse des seitlichen Auslasses 28 ueber Wannenunterkante: Flansch 44 steht 1 mm ueber dem Wannenboden (Oberkante 5), Rohr d25 bleibt unter dem Gitter (Unterkante 42)"
+  },
+  "a21_winkel_d": {
+   "wert": 34,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D134): Aussen-D der Klebemuffe d25 (PVC-U-Winkel 90 Grad, Mittelpunkt bis Muffenende 29, Muffentiefe 20)"
+  },
+  "a21_tuelle_l": {
+   "wert": 40,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D134): Schlauchtuelle fuer Schlauch ID25 (D106), ragt 40 ueber den Tankverbinder, 32 ueber den Randwulst (Beetabstand corner_gap 60)"
+  },
+  "a21_ausstroemer_d": {
+   "wert": 16,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D135): Ausstroemerstab (poroeser Kunststoff) auf dem Wannenboden, Achse 13 ueber Wannenunterkante"
+  },
+  "a21_ausstroemer_l": {
+   "wert": 600,
+   "einheit": "mm",
+   "herkunft": "[A] U3b (D135): Laenge des Ausstroemerstabs"
   },
   "wall": {
    "wert": 4,
@@ -154,9 +209,9 @@
    "herkunft": "R03: Glocke D75"
   },
   "bell_h": {
-   "wert": 210,
+   "wert": 275,
    "einheit": "mm",
-   "herkunft": "U3 (D122): Standrohr 180 + 30 = 210; UEBERHOLT 295: [E] Glocke = Standrohrhoehe + 30 mm (R03: 250 bei Standrohr 220); oben verschlossen"
+   "herkunft": "U3b (D133, A21): Glocke steht auf dem Wannenboden (z 5) und endet bei 280 = Standrohr 250 + 30; vorher 210 ab Sperrboden (U3, D122); oben verschlossen"
   },
   "bell_wall": {
    "wert": 3,
@@ -164,9 +219,9 @@
    "herkunft": "[A] PVC-Rohr d75"
   },
   "bell_slot_w": {
-   "wert": 10,
+   "wert": 14,
    "einheit": "mm",
-   "herkunft": "R03: zwei Schlitze 10 x 40 mm"
+   "herkunft": "U3b (D133): 3 Kerben 14 x 12 am Glockenfuss (+X ist fuer den Auslass frei): 3 x 14 x 12 = 504 mm2 >= Standrohr-Innenflaeche 380; vorher 4 x 10 (R03: zwei Schlitze 10 x 40)"
   },
   "bell_slot_h": {
    "wert": 12,
@@ -204,9 +259,9 @@
    "herkunft": "[A] Tankverbinder-Aussen D36 (Gewinde 1 Zoll), fuer Wannenboden und Sperrboden; darin Reduzierhuelse 32/25 (D77)"
   },
   "bulkhead_flange": {
-   "wert": 50,
+   "wert": 44,
    "einheit": "mm",
-   "herkunft": "[A] Flansch D50"
+   "herkunft": "[A] Flansch D44 (U3b, D134: vorher D50; bei Achse 28 ueber dem Wannenboden darf der Flansch den Boden nicht schneiden: 28 - 22 = 6 > 5)"
   },
   "inflow_d": {
    "wert": 20,

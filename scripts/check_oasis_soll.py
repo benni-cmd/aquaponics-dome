@@ -171,13 +171,13 @@ def komponenten_hoehen(soll):
     zeilen.append(("nachspeise_ventil", "Rohrachse ueber Spiegel", n["ventil_h"], h("fish", "rand_ueber_fussboden_mm") - h("fish", "wsp_ueber_fussboden_mm") + 60, "Rand - Wsp + 60"))
     zeilen.append(("notluftpumpe", "Schlauch-Schleife (>= Rand + 50)", par("notluftpumpe")["schleife_z"], h("fish", "rand_ueber_fussboden_mm") + 100, "Rand + 100"))
     zeilen.append(("venturi_belueffter", "Achse ueber Fischtank-Spiegel", par("venturi_belueffter")["achse_ueber_spiegel"], 1650 - 400 - h("fish", "wsp_ueber_fussboden_mm"), "Lage-Probe Modell-Z 1650 - Fussboden 400 - Wsp"))
-    print("Komponenten (U2, Hoehenparameter der neuen Bauteile; Gesamtmodell ausstehend bis U4/U5, nicht Teil der Messung oben)")
+    print("Komponenten (U2, Hoehenparameter der neuen Bauteile aus den Komponentendateien, nicht Teil der Messung oben)")
     print("%-28s %-34s %8s %8s  %s" % ("Komponente", "Hoehenparameter", "Wert", "Soll", "Urteil"))
     for nm, was, ist, sl, why in zeilen:
         print("%-28s %-34s %8g %8g  %s (%s)" % (nm, was, ist, sl, "Komponente ok" if abs(ist - sl) < 1e-9 else "ABWEICHUNG Komponente", why))
     for nm in ("tauchpumpe_modul", "schlamm_sammelbehaelter", "regentank_5m3", "permakultur_modul"):
         print("%-28s %-34s %8s %8s  Komponente gebaut, Quelle legt keine Hoehe fest (stufe_status offen) / Hub aus Soll-Datei" % (nm, "-", "-", "-"))
-    print("  Gesamtmodell: ausstehend (Komponenten in dome-ring_b2.sc erst ab U4/U5)")
+    print("  Gesamtmodell: gesetzt ab U5 (Zaehlung und Wasserspiegel oben; Hoehenparameter hier aus den Komponentendateien)")
 
 
 def main():

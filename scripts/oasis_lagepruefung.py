@@ -4,7 +4,7 @@ Aufruf (Projektordner):
   python -I -X utf8 scripts/oasis_lagepruefung.py             rechnet und schreibt data/oasis-lage.json
   python -I -X utf8 scripts/oasis_lagepruefung.py --pruefen   rechnet neu, prueft die Abnahme (Exit 0/1) und dass die Datei aktuell ist
 
-Eingabe: data/oasis-soll.json (nie von Hand aendern), viewer/varianten/ring_b2/instances.json (Instanz-Matrizen, Stand im Feld `built`),
+Eingabe: data/oasis-soll.json (nie von Hand aendern), viewer/instances.json (Instanz-Matrizen, Stand im Feld `built`),
          viewer/detail/<komponente>.json (Koerper-Boxen, nur lesen).
 Annahme zur Reihenfolge: gerechnet wird NACH dem Entfernen der Ist-Teile aus Paket Abschnitt C (Absetzer, Biofilter-Tanks, Pumpen,
 Feinfilter, Pegelschacht, Schlammfass, Zweit-/Drittbecken, Gebl. aussen). Bleibende Hindernisse: Tische, Beete (+115 Portal), Ring-Stelzen,
@@ -25,7 +25,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOLL = os.path.join(ROOT, "data", "oasis-soll.json")
-INST = os.path.join(ROOT, "viewer", "varianten", "ring_b2", "instances.json")
+INST = os.path.join(ROOT, "viewer", "instances.json")   # seit U7 (D141) ein Kreislauf
 DETAIL = os.path.join(ROOT, "viewer", "detail")
 OUT = os.path.join(ROOT, "data", "oasis-lage.json")
 
@@ -851,7 +851,7 @@ def build_output():
     meta = {
         "titel": "Lage-Probe der Soll-Lage (Oasis-Showcase, 18 Grad gedreht) gegen die gebaute Kuppel, N-UNIFY-AUTOBAHN U1",
         "erzeugt_von": "scripts/oasis_lagepruefung.py (python -I -X utf8 scripts/oasis_lagepruefung.py)",
-        "eingaben": {"oasis-soll.json": "data/oasis-soll.json", "instanzen": "viewer/varianten/ring_b2/instances.json (built %s, %d Instanzen)" % (INST_DATA["built"], len(INSTANCES)), "detail": "viewer/detail/*.json"},
+        "eingaben": {"oasis-soll.json": "data/oasis-soll.json", "instanzen": "viewer/instances.json (built %s, %d Instanzen)" % (INST_DATA["built"], len(INSTANCES)), "detail": "viewer/detail/*.json"},
         "regeln": {"luft_mm": GAP, "wandluft_mm": WALL_GAP, "zehneck_apothema_mm": round(APOTHEM, 1), "kuppelkugel_mm": DOME_R, "tuer_gang_mm": CORRIDOR_W, "tuer_az_grad": DOOR_AZ,
                    "max_verschiebung_mm": MAX_SHIFT, "raster_mm": GRID, "fussboden_z_mm": FLOOR, "laufweg_mm": 500},
         "annahmen_im_skript": {"podest_ueberstand_mm": FOOT_PODEST, "podest_vortex_mm": PODEST_V, "podest_biofilter_mm": PODEST_B, "wand_becken_mm": 60,

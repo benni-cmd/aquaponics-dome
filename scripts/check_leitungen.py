@@ -39,8 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NETZ = os.path.join(ROOT, "data", "leitungsnetz.json")
 DEFAULT_TRASSEN = os.path.join(ROOT, "data", "leitungstrassen.json")
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-import variante   # N-VARIANTEN V1b: --variante a_plus|ring_b2 (Standard params.json)
-V = variante.aktiv()
+import variante   # Pfade (N-UNIFY-AUTOBAHN U7)
 BANDS = {"U": (-400.0, -100.0), "W": (0.0, 1000.0), "T": (900.0, 1100.0), "UE": (2100.0, 1e9), "WH": (0.0, 2100.0), "UT": (-2600.0, -400.0), "AU": (0.0, 2100.0)}   # Z relativ zum Flur (Plan 4.1); WH und UT neu in M10-S2b; AU = aussen vor dem Fundamentring (M10-S5-LUFT-B, Technikgruppe E13), nur ausserhalb des Zehnecks erlaubt
 RULES = {"nah_w": 500.0, "gang_z_max": 2100.0, "tol": 2.0, "step": 10.0, "gang_step": 50.0, "junction": 150.0, "steig_xy": 20.0, "min_xy": 100.0}
 TECH = ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Klein", "Feinfilter")   # M10-S2a: Feinfilter ergaenzt (S1 stellte ihn ins Modell)
@@ -64,7 +63,7 @@ class World:
         self.normals = [(math.cos(math.radians(door + 36 * k)), math.sin(math.radians(door + 36 * k))) for k in range(10)]
 
 def load_world():
-    cmds = json.load(open(variante.pfad("dome_script", V)))["commands"]   # V1b: Bau-Skript der Variante
+    cmds = json.load(open(variante.pfad("dome_script")))["commands"]
     P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["command"] == "parameters.add"}
     lay = json.load(open(os.path.join(ROOT, "data", "layout.json")))
     mv = {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}
@@ -190,7 +189,7 @@ def pruefe(w, netz, doc):
         if len(t.get("pfad", [])) < 2: viol.append(("EINGABE", tid, "weniger als 2 Punkte")); continue
         pts = [(float(p[0]), float(p[1]), float(p[2]) + fl * w.fz) for p in t["pfad"]]
         ks = t.get("kante")
-        if ks and ks not in kanten and (t.get("soll_weg") or t.get("soll_bauteil")):   # N-UNIFY U6: Netz ring_b2 = Soll-Wege; Bezug ueber soll_weg / soll_bauteil (Ring selbst)
+        if ks and ks not in kanten and (t.get("soll_weg") or t.get("soll_bauteil")):   # N-UNIFY U6: Netz = Soll-Wege; Bezug ueber soll_weg / soll_bauteil (Ring selbst)
             sw = t.get("soll_weg"); sw = sw if isinstance(sw, str) else (sw[0] if sw else None)
             ks = ("S-" + sw) if sw and ("S-" + sw) in kanten and kanten["S-" + sw].get("dn") else None
         if ks and ks not in kanten: viol.append(("EINGABE", tid, "Kante %s nicht in der Netzliste" % ks)); continue
@@ -322,13 +321,10 @@ def selbsttest():
 
 if __name__ == "__main__":
     if "--selbsttest" in sys.argv: sys.exit(0 if selbsttest() else 1)
-    av = sys.argv[1:]; arg = [a for i, a in enumerate(av) if not a.startswith("--") and not (i and av[i - 1] == "--variante")]; path = arg[0] if arg else DEFAULT_TRASSEN
+    av = sys.argv[1:]; arg = [a for a in av if not a.startswith("--")]; path = arg[0] if arg else DEFAULT_TRASSEN
     netz = json.load(open(NETZ, encoding="utf-8"))
-    for key in ("kanten", "knoten"): netz[key] = variante.filtere(netz.get(key, []), V)   # V1b: Netz der Variante
     if os.path.exists(path):
-        doc = json.load(open(path, encoding="utf-8")); title = os.path.relpath(path, ROOT) + " (Variante %s)" % V
-        for key in ("trassen", "t_stuecke", "r_stuecke", "teile", "gruben"):
-            if key in doc: doc[key] = variante.filtere(doc[key], V)
+        doc = json.load(open(path, encoding="utf-8")); title = os.path.relpath(path, ROOT)
     else: doc = {"trassen": []}; title = "keine Trassenliste (%s fehlt) = leer" % os.path.relpath(path, ROOT)
     w = load_world(); viol, info = pruefe(w, netz, doc)
     for wm in w.warn: info.append("WARNUNG " + wm)

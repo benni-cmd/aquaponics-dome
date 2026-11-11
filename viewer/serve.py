@@ -1,25 +1,26 @@
 """Lokaler Live-Viewer-Server fuer das Kuppel-Modell.
-Aufruf: python viewer/serve.py [port] [--kein-export]   (Standard 4410; --kein-export fuer Pruef- und Testserver: nie exportieren), dann im Browser http://localhost:4410/  (Variante Ring B2: ?variante=ring_b2)
-Beobachtet designs/dome.sc und designs/dome-ring_b2.sc (N-VARIANTEN VV); nach jeder Speicherung (Aenderungszeit stabil) wird die geaenderte
-Variante neu exportiert (viewer/export_model.py --variante <v>), die Seite fragt /api/state?variante=<v> ab und laedt das Modell neu, ohne die Kamera zu verlieren.
-Ausgabepfade, Kennzahlen und Stueckliste je Variante kommen aus scripts/variante.py (Tabelle 1.3 in docs/jobs/N-VARIANTEN.md)."""
+Aufruf: python viewer/serve.py [port] [--kein-export]   (Standard 4410; --kein-export fuer Pruef- und Testserver: nie exportieren), dann im Browser http://localhost:4410/
+Beobachtet designs/dome.sc; nach jeder Speicherung (Aenderungszeit stabil) wird neu exportiert (viewer/export_model.py),
+die Seite fragt /api/state ab und laedt das Modell neu, ohne die Kamera zu verlieren.
+Ausgabepfade, Kennzahlen und Stueckliste kommen aus scripts/variante.py (seit N-UNIFY-AUTOBAHN U7 ein Kreislauf, D141)."""
 import http.server, json, os, socketserver, subprocess, sys, threading, time
 from urllib.parse import parse_qs, urlsplit
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
-import variante as V   # nur pfad() und VARIANTEN; der Schalter dieser Datei ist die Adresse ?variante=, nie die Kommandozeile
+import variante as V   # nur pfad()
 EXPORT = os.path.join(HERE, 'export_model.py')
 _args = [a for a in sys.argv[1:] if not a.startswith('--')]
 PORT = int(_args[0]) if _args else 4410
 KEIN_EXPORT = '--kein-export' in sys.argv           # Pruef- und Testserver: nie exportieren, nur anzeigen (V3)
 LOCK = os.path.join(HERE, '.export.lock')            # gilt fuer alle serve.py-Prozesse: ein Export zugleich, auch ueber Ports hinweg (V3)
 export_lock = threading.Lock()                      # nie zwei Exporte zugleich (CLI und defs/ gemeinsam)
-states = {v: {'version': 0, 'built': '', 'busy': False, 'error': '', 'design_saved': ''} for v in V.VARIANTEN}
-P = lambda art, v: V.pfad(art, v, root=ROOT)
+EINS = 'kreislauf'   # einziger Schluessel der Zustandstabelle (ein Kreislauf, U7)
+states = {EINS: {'version': 0, 'built': '', 'busy': False, 'error': '', 'design_saved': ''}}
+P = lambda art, v=None: V.pfad(art, root=ROOT)
 
 # Nach einem Neustart sofort das zuletzt exportierte Modell anbieten (die Seite laedt erst ab version > 0); der neue Export laeuft nur, wenn das Modell neuer ist
-for _v in V.VARIANTEN:
+for _v in (EINS,):
     _inst = P('instances', _v)
     if os.path.exists(_inst):
         states[_v]['version'] = 1
@@ -61,7 +62,7 @@ def do_export(v):
         with export_lock:
             eigener = sperre_nehmen()
             if eigener:
-                try: r = subprocess.run([sys.executable, '-I', EXPORT, '--variante', v], capture_output=True, text=True)
+                try: r = subprocess.run([sys.executable, '-I', EXPORT], capture_output=True, text=True)
                 finally:
                     try: os.remove(LOCK)
                     except OSError: pass
@@ -97,7 +98,7 @@ def watch(v):
         time.sleep(1)
 
 def ansicht_pruefen(v):
-    # ansicht.json der Variante (Werkstoff, Gruppe, Leitungsart) neu erzeugen, wenn sie fehlt oder aelter ist als instances.json oder eine Teiledatei
+    # ansicht.json (Werkstoff, Gruppe, Leitungsart) neu erzeugen, wenn sie fehlt oder aelter ist als instances.json oder eine Teiledatei
     ziel, inst = P('ansicht', v), P('instances', v)
     try:
         if not os.path.exists(inst): return
@@ -105,7 +106,7 @@ def ansicht_pruefen(v):
         stand = max([os.path.getmtime(inst), os.path.getmtime(os.path.join(ROOT, 'data', 'leitungstrassen.json')), os.path.getmtime(os.path.join(ROOT, 'data', 'leitungsnetz.json'))] +
                     [e.stat().st_mtime for e in os.scandir(os.path.join(ROOT, 'data', 'parts')) if e.name.endswith('.json')])
         if jung < stand:
-            subprocess.run([sys.executable, '-I', os.path.join(HERE, 'export_ansicht.py'), '--variante', v], capture_output=True, text=True, timeout=60)
+            subprocess.run([sys.executable, '-I', os.path.join(HERE, 'export_ansicht.py')], capture_output=True, text=True, timeout=60)
     except Exception:
         pass
 
@@ -122,8 +123,7 @@ def board():
     return rows
 
 def variante_der_anfrage(path):
-    q = parse_qs(urlsplit(path).query).get('variante', ['a_plus'])[0]
-    return q if q in V.VARIANTEN else 'a_plus'
+    return EINS
 
 class H(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **k): super().__init__(*a, directory=HERE, **k)
@@ -141,7 +141,7 @@ class H(http.server.SimpleHTTPRequestHandler):
             self.end_headers(); self.wfile.write(b); return
         super().do_GET()
     def translate_path(self, path):
-        # /history/... liefert den Bildverlauf (renders/history), Kennzahlen und Stueckliste je Variante, alles andere kommt aus viewer/ (auch varianten/<v>/...)
+        # /history/... liefert den Bildverlauf (renders/history), Kennzahlen und Stueckliste aus data/, alles andere kommt aus viewer/
         p = path.split('?', 1)[0]
         v = variante_der_anfrage(path)
         if p == '/descriptions.json':
@@ -151,9 +151,8 @@ class H(http.server.SimpleHTTPRequestHandler):
         if p == '/stueckliste.json':
             return P('stueckliste_json', v)
         if p == '/ansicht.json' or p.endswith('/ansicht.json'):
-            vv = 'ring_b2' if '/varianten/ring_b2/' in p else v
-            ansicht_pruefen(vv)
-            return P('ansicht', vv)
+            ansicht_pruefen(v)
+            return P('ansicht', v)
         if p == '/messstellen.json':
             return os.path.join(ROOT, 'data', 'messstellen.json')
         if p == '/katalog.json':
@@ -169,7 +168,7 @@ class H(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
 
 if not KEIN_EXPORT:
-    for _v in V.VARIANTEN:
+    for _v in (EINS,):
         threading.Thread(target=watch, args=(_v,), daemon=True).start()
 else:
     print('Kein Export: dieser Server beobachtet dome.sc nicht (--kein-export).', flush=True)

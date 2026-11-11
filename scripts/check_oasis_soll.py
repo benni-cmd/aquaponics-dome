@@ -2,12 +2,12 @@
 
 Aufruf (Projektordner):
   python -I -X utf8 scripts/check_oasis_soll.py --liste                              die 16 Messpunkte mit Soll, Messart und Messbefehl (misst nichts)
-  python -I -X utf8 scripts/check_oasis_soll.py --teil <becken|technik|ring|alle> [--variante ring_b2|a_plus]
-  python -I -X utf8 scripts/check_oasis_soll.py --punkt <id> [--variante ring_b2]    ein Messpunkt (der Befehl steht in der Liste)
+  python -I -X utf8 scripts/check_oasis_soll.py --teil <becken|technik|ring|alle>
+  python -I -X utf8 scripts/check_oasis_soll.py --punkt <id>    ein Messpunkt (der Befehl steht in der Liste)
 Exit 0: alle gewaehlten Punkte innerhalb +-50 mm und alle Stufen-Paare erfuellt; sonst Exit 1 (heute: Ausgangsmessung des Altmodells).
 
 Sollwerte: data/oasis-soll.json `wasserspiegel_ueber_fussboden_mm` (Z-Bezug: Fussboden = Modell-Z 400, D94). Messvorschrift je Soll-ID: data/oasis-messung.json.
-Ist: Instanz-Matrix aus dem Export (viewer/varianten/ring_b2/instances.json, Feld `built` nennt den Stand) + Koerper-Boxen aus viewer/detail/<komponente>.json
+Ist: Instanz-Matrix aus dem Export (viewer/instances.json, Feld `built` nennt den Stand) + Koerper-Boxen aus viewer/detail/<komponente>.json
 (lokale Boxen, nur lesen). Fehlt eine Komponente im Export (z. B. `sumpftank` vor U2), steht FEHLT; das gilt als Abweichung, nicht als Absturz.
 """
 import json
@@ -32,12 +32,11 @@ def arg(name, default=None):
     return sys.argv[sys.argv.index(name) + 1] if name in sys.argv and sys.argv.index(name) + 1 < len(sys.argv) else default
 
 
-VARIANTE = arg("--variante", "ring_b2")
-INST_PATH = os.path.join(ROOT, "viewer", "varianten", "ring_b2", "instances.json") if VARIANTE == "ring_b2" else os.path.join(ROOT, "viewer", "instances.json")
+INST_PATH = os.path.join(ROOT, "viewer", "instances.json")   # seit N-UNIFY-AUTOBAHN U7 ein Kreislauf (D141)
 
 
 def detail_bodies(comp, fallback):
-    for name in (comp, fallback, comp.replace("-ring_b2", ""), fallback.replace("-ring_b2", "")):
+    for name in (comp, fallback):
         p = os.path.join(DETAIL, name + ".json")
         if name and os.path.exists(p):
             return load(p)["koerper"]
@@ -137,7 +136,7 @@ VERBOTEN_ALTBESTAND = ("feinfilter", "pumpe_klein", "pumpe_gross", "pegelschacht
 def zaehlung_technik(instances):
     """U5: Anzahl je Definition im Export gegen die Soll-Zahl; Altbestand ohne Soll (D101) muss 0 sein. -> Anzahl Abweichungen."""
     import collections
-    cnt = collections.Counter(i["d"].split("-ring_b2")[0] for i in instances)
+    cnt = collections.Counter(i["d"] for i in instances)
     bad = 0
     print("Zaehlung der Technik im Export (Instanzen je Definition)")
     print("%-36s %5s %5s  %s" % ("Teil", "Soll", "Ist", "Urteil"))
@@ -181,18 +180,18 @@ def komponenten_hoehen(soll):
 
 
 def wege_pruefung():
-    """U6: die Wege der Quelle im Netz (data/leitungsnetz.json, Kanten S-eNN, Variante ring_b2) und im Modell (data/leitungstrassen.json,
-    Eintraege mit Feld `soll_weg`, Variante ring_b2). Zaehlt Abweichungen: Weg fehlt im Netz, Medium oder Richtung falsch, Leitung nicht verlegt.
+    """U6: die Wege der Quelle im Netz (data/leitungsnetz.json, Kanten S-eNN) und im Modell (data/leitungstrassen.json,
+    Eintraege mit Feld `soll_weg`). Zaehlt Abweichungen: Weg fehlt im Netz, Medium oder Richtung falsch, Leitung nicht verlegt.
     Kanten ohne Leitung (Tauchpumpe im Becken, Schlamm von Hand) brauchen keinen Modellkoerper; Kabel stehen nur in der Netzliste (D138)."""
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     import variante as V
     med = {"water": "Wasser", "air": "Luft", "sludge": "Schlamm", "power": "Strom"}
     wege = [w for w in load(SOLL)["wege"] if w.get("im_umfang")]
-    netz = V.filtere(load(os.path.join(ROOT, "data", "leitungsnetz.json"))["kanten"], "ring_b2")
+    netz = V.filtere(load(os.path.join(ROOT, "data", "leitungsnetz.json"))["kanten"])
     lt = load(os.path.join(ROOT, "data", "leitungstrassen.json"))
     verlegt = {}
     for liste in ("trassen", "t_stuecke", "r_stuecke", "teile"):
-        for e in V.filtere(lt.get(liste, []), "ring_b2"):
+        for e in V.filtere(lt.get(liste, [])):
             for sw in ([e["soll_weg"]] if isinstance(e.get("soll_weg"), str) else (e.get("soll_weg") or [])):
                 verlegt[sw] = verlegt.get(sw, 0) + 1
     schlauch = {}
@@ -241,7 +240,7 @@ def main():
     for p in pts:
         p["soll_mm"] = soll[p["id"]]["wasserspiegel_ueber_fussboden_mm"]
         p["stufe"] = soll[p["id"]]["stufe"]
-        p["befehl"] = "python -I -X utf8 scripts/check_oasis_soll.py --punkt %s --variante %s" % (p["id"], VARIANTE)
+        p["befehl"] = "python -I -X utf8 scripts/check_oasis_soll.py --punkt %s" % p["id"]
     if "--liste" in sys.argv:
         print("%d Messpunkte (Wasserspiegel ueber Fussboden, Z-Bezug 400, Toleranz +-%d mm)" % (len(pts), tol))
         for p in pts:
@@ -263,7 +262,7 @@ def main():
     floor = float(load(PARAMS)["sock_h"]["value"])
     if d.get("walk_z", floor) != floor:
         print("WARNUNG: Fussboden params sock_h %s, Export walk_z %s" % (floor, d.get("walk_z")))
-    print("Variante %s, Export %s (%d Instanzen), Fussboden Z %.0f, Toleranz +-%d mm" % (VARIANTE, d["built"], len(d["instances"]), floor, tol))
+    print("Export %s (%d Instanzen), Fussboden Z %.0f, Toleranz +-%d mm" % (d["built"], len(d["instances"]), floor, tol))
     print("%-10s %7s %9s %10s  %-10s %s" % ("Punkt", "Soll", "Ist", "Abweichung", "Urteil", "Messung"))
     ist, bad = {}, 0
     all_ids = [p["id"] for p in pts]
@@ -294,7 +293,7 @@ def main():
     if arg("--teil", "") in ("technik", "alle"):
         bad += zaehlung_technik(d["instances"])
         komponenten_hoehen(soll)
-    if arg("--teil", "") == "alle" and VARIANTE == "ring_b2":
+    if arg("--teil", "") == "alle":
         bad += wege_pruefung()
     print("ERGEBNIS: %s (%d Abweichungen oder fehlende Werte)" % ("BESTANDEN" if not bad else "ABWEICHUNG", bad))
     return 1 if bad else 0

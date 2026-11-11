@@ -365,6 +365,7 @@ def bauen(P, doc):
     return out_t, out_r, out_ts, out_teile
 
 def schreiben():
+    raise SystemExit("Abgeloest durch N-UNIFY-AUTOBAHN U7 (D141): schreibt Leitungen des Altbestands, die der eine Kreislauf nach der Quelle nicht hat. Die Lagefunktionen bleiben fuer gen_dome.py.")
     P = P_(); pfad = os.path.join(ROOT, "data", "leitungstrassen.json")
     doc = json.load(open(pfad, encoding="utf-8"))
     alt = lambda e: e.get("linie") in ("luft_b", "frisch")

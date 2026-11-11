@@ -8,7 +8,7 @@ Prueft (unabhaengig vom Bau nachrechenbar):
      Feldebene (drei Knotenpunkte) muss unter foil_z0 liegen (Folie liegt auf Schaumband + Keilschiene).
   4. Durchdringung: Probe-Szenen (Plattenpaar + Arme + volle Streben) an einem 4-, 5- und 6-wertigen Knoten, inspect.interference;
      erlaubt sind nur Gewinde Schraube/Mutter und Flaechenkontakt Lasche 1/2 im eigenen Arm (< 0,3 mm Facetten; gemessen bis 0,23 an n17).
-Aufruf: python -X utf8 scripts/check_verbinder_montage.py [--variante a_plus|ring_b2] [--ohne-probe]   (Exit 1 bei FAIL)"""
+Aufruf: python -X utf8 scripts/check_verbinder_montage.py [--ohne-probe]   (Exit 1 bei FAIL)"""
 import json, math, os, re, subprocess, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -16,7 +16,6 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, "workshop"))
 import variante, knoten_montage as KM, knoten_schere as KS, sc
 
-V = variante.aktiv()
 P = {k: v["value"] for k, v in json.load(open(os.path.join(ROOT, "data", "params.json"), encoding="utf-8")).items()}
 ROT = P["door_az"] - 167
 FP = {k: v["wert"] for k, v in json.load(open(os.path.join(ROOT, "data", "components", "huelle_folie.json"), encoding="utf-8"))["parameter"].items()}
@@ -44,7 +43,7 @@ base_z = min(min(A[2], B[2]) for A, B in segs)
 center = [0.0, 0.0, base_z]
 
 # 1. Befehlsskript
-cmds = json.load(open(variante.pfad("dome_script", V, root=ROOT), encoding="utf-8"))["commands"]
+cmds = json.load(open(variante.pfad("dome_script", root=ROOT), encoding="utf-8"))["commands"]
 moves = {}
 for c in cmds:
     if c["command"] == "occurrence.move" and "matrix" in c["params"]:
@@ -53,10 +52,10 @@ for c in cmds:
 paths = [c["params"]["path"] for c in cmds if c["command"] == "component.insert_design"]
 soll = {"Knoten_Platte": 26, "Schere_A": len(arme["A"]), "Schere_B": len(arme["B"]), "Strebe_A": 30, "Strebe_B": 34}
 for cls, n in soll.items():
-    chk(f"{V}: Instanzen {cls}", len(moves.get(cls, [])), n, len(moves.get(cls, [])) == n)
-chk(f"{V}: Arme gesamt = 2 x Streben", len(arme["A"]) + len(arme["B"]), 2 * len(segs), len(arme["A"]) + len(arme["B"]) == 2 * len(segs))
+    chk(f"Instanzen {cls}", len(moves.get(cls, [])), n, len(moves.get(cls, [])) == n)
+chk(f"Arme gesamt = 2 x Streben", len(arme["A"]) + len(arme["B"]), 2 * len(segs), len(arme["A"]) + len(arme["B"]) == 2 * len(segs))
 alt = [p for p in paths if re.search(r"knoten_\d_n\d\d\.sc$", p)]
-chk(f"{V}: Kugelknoten knoten_<n>_nNN.sc im Skript", len(alt), 0, not alt)
+chk(f"Kugelknoten knoten_<n>_nNN.sc im Skript", len(alt), 0, not alt)
 
 # 2. Nase im Gegenloch (aus den Matrizen des Skripts, nicht aus dem Generator)
 t, hole, s_hole = KS.P["link_t"], KS.P["wall_hole"], KS.P["b_pivot_to_nose"] - KS.P["pivot_out"]
@@ -82,8 +81,8 @@ for typ in "AB":
             n_nose += 1
             if corner - hole / 2 > worst:
                 worst, worst_at = corner - hole / 2, (typ, round(a, 2), round(b, 2))
-chk(f"{V}: Nasen geprueft (2 je Arm)", n_nose, 2 * (len(arme["A"]) + len(arme["B"])), n_nose == 2 * (len(arme["A"]) + len(arme["B"])))
-chk(f"{V}: Nasenecke im Gegenloch D{hole:g}, groesster Ueberstand ueber den Lochrand mm (Typ, axial, quer)", f"{worst:+.2f} {worst_at}", "<= 0", worst <= 0)
+chk(f"Nasen geprueft (2 je Arm)", n_nose, 2 * (len(arme["A"]) + len(arme["B"])), n_nose == 2 * (len(arme["A"]) + len(arme["B"])))
+chk(f"Nasenecke im Gegenloch D{hole:g}, groesster Ueberstand ueber den Lochrand mm (Typ, axial, quer)", f"{worst:+.2f} {worst_at}", "<= 0", worst <= 0)
 
 # 3. Folie auf der Strebe: Hardware und Rohr unter der inneren Folienlage
 bb = {}
@@ -123,8 +122,8 @@ for tri in tris:
             for p in (s["start"], [s["start"][i] + s["u"][i] * s["laenge"] for i in range(3)]):
                 h = KM.dot(KM.sub(p, A), n) + KS.P["tube_d"] / 2
                 if h > top: top, top_at = h, f"Rohr-Oberkante {s['knoten']}"
-chk(f"{V}: Dreiecksfelder aus den Streben", len(tris), 40 if len(segs) == 65 else "39-40", len(tris) in (39, 40))
-chk(f"{V}: hoechster Punkt (Hardware, Rohr) ueber der Feldebene mm, innere Folie bei foil_z0 {FP['foil_z0']:g} ({top_at})", round(top, 1), f"< {FP['foil_z0']:g}", top < FP["foil_z0"])
+chk(f"Dreiecksfelder aus den Streben", len(tris), 40 if len(segs) == 65 else "39-40", len(tris) in (39, 40))
+chk(f"hoechster Punkt (Hardware, Rohr) ueber der Feldebene mm, innere Folie bei foil_z0 {FP['foil_z0']:g} ({top_at})", round(top, 1), f"< {FP['foil_z0']:g}", top < FP["foil_z0"])
 
 # 4. Probe-Szenen mit Durchdringung
 NORM = {"Platte_Schraube", "Platte_Mutter", "Platte_ScheibeO", "Platte_ScheibeU", "Dreh_Schraube", "Dreh_Mutter", "Dreh_ScheibeO", "Dreh_ScheibeU"}
@@ -170,12 +169,12 @@ def probe(knoten):
         print("   Durchdringung:", x)
     for u in unch[:4]:
         print("   ungeprueft:", u["a"], u["b"], u.get("reason", "")[:90])
-    chk(f"{V}: Probe {knoten} ({K[knoten][2]['wertigkeit']}-wertig, Platte + Arme + Streben): Durchdringungen > 0,1 mm3 / ungeprueft", f"{len(bad)} / {len(unch)}", "0 / 0", not bad and not unch)
+    chk(f"Probe {knoten} ({K[knoten][2]['wertigkeit']}-wertig, Platte + Arme + Streben): Durchdringungen > 0,1 mm3 / ungeprueft", f"{len(bad)} / {len(unch)}", "0 / 0", not bad and not unch)
 
 
 if "--ohne-probe" not in sys.argv:
     four = min((k for k in K if K[k][2]["wertigkeit"] == 4), key=lambda k: K[k][0][2])
     for kn in ("n02", "n01", four):
         probe(kn)
-print(f"== check_verbinder_montage {V}: {sum(res)}/{len(res)} PASS")
+print(f"== check_verbinder_montage: {sum(res)}/{len(res)} PASS")
 sys.exit(0 if all(res) else 1)

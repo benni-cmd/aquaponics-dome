@@ -68,26 +68,20 @@ def main():
     open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8').write(html)
     for f in ('instances.json', 'ansicht.json', 'extras.json', 'farben.json', 'anschluesse.json'):
         if os.path.exists(os.path.join(V, f)): kopie(os.path.join(V, f), os.path.join(OUT, f))
-    varianten = ['a_plus']
-    vd = os.path.join(V, 'varianten', 'ring_b2')
-    if os.path.exists(os.path.join(vd, 'instances.json')):
-        varianten.append('ring_b2')
-        for f in os.listdir(vd):
-            if f.endswith('.json'): kopie(os.path.join(vd, f), os.path.join(OUT, 'varianten', 'ring_b2', f))
-    for f in ('descriptions.json', 'katalog.json', 'messstellen.json', 'stueckliste.json', 'system-specs.json', 'stueckliste-ring_b2.json', 'system-specs-ring_b2.json'):
+    for f in ('descriptions.json', 'katalog.json', 'messstellen.json', 'stueckliste.json', 'system-specs.json'):
         if os.path.exists(os.path.join(D, f)): kopie(os.path.join(D, f), os.path.join(OUT, f))
     for f in os.listdir(os.path.join(D, 'parts')):
         if f.endswith('.json'): kopie(os.path.join(D, 'parts', f), os.path.join(OUT, 'parts', f))
     built = json.load(open(os.path.join(V, 'instances.json'), encoding='utf-8')).get('built', '')
-    json.dump({'stand': built, 'gebaut': time.strftime('%Y-%m-%d %H:%M:%S'), 'varianten': varianten}, open(os.path.join(OUT, 'statik.json'), 'w'))
+    json.dump({'stand': built, 'gebaut': time.strftime('%Y-%m-%d %H:%M:%S')}, open(os.path.join(OUT, 'statik.json'), 'w'))
     json.dump({'headers': [{'source': '/(.*)', 'headers': [{'key': 'X-Robots-Tag', 'value': 'noindex, nofollow'}]},
                            {'source': '/(.*)\\.gz', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=0, must-revalidate'}]}]},
               open(os.path.join(OUT, 'vercel.json'), 'w'), indent=1)
-    import model_download                                  # Download-Knopf: SolidCraft-Modell je Variante aus Git (HEAD)
-    model_download.main(['--out', os.path.join(OUT, 'download'), '--varianten', ','.join(varianten)])
+    import model_download                                  # Download-Knopf: SolidCraft-Modell aus Git (HEAD)
+    model_download.main(['--out', os.path.join(OUT, 'download')])
     vor, nach = sum(r[0] for r in res), sum(r[1] for r in res)
     print(f'OBJ-Dateien: {len(res)}  roh {vor/1e6:.1f} MB -> gzip {nach/1e6:.1f} MB  (Faktor {vor/max(nach,1):.1f})')
-    print(f'Quelle viewer/defs+detail: {(dirsize(os.path.join(V,"defs"))+dirsize(os.path.join(V,"detail")))/1e6:.1f} MB;  dist gesamt: {dirsize(OUT)/1e6:.1f} MB;  Dateien: {sum(len(fs) for _,_,fs in os.walk(OUT))};  groesste Datei: {max(os.path.getsize(os.path.join(a,f)) for a,_,fs in os.walk(OUT) for f in fs)/1e6:.1f} MB;  Varianten: {varianten};  {time.time()-t0:.0f} s')
+    print(f'Quelle viewer/defs+detail: {(dirsize(os.path.join(V,"defs"))+dirsize(os.path.join(V,"detail")))/1e6:.1f} MB;  dist gesamt: {dirsize(OUT)/1e6:.1f} MB;  Dateien: {sum(len(fs) for _,_,fs in os.walk(OUT))};  groesste Datei: {max(os.path.getsize(os.path.join(a,f)) for a,_,fs in os.walk(OUT) for f in fs)/1e6:.1f} MB;  {time.time()-t0:.0f} s')
 
 if __name__ == '__main__':
     main()

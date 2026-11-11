@@ -160,6 +160,7 @@ def trassen_ordnung(g, ri):
     return perm, out
 
 if __name__ == "__main__":
+    raise SystemExit("Abgeloest durch N-UNIFY-AUTOBAHN U7 (D141): schreibt Leitungen des Altbestands, die der eine Kreislauf nach der Quelle nicht hat. Die Lagefunktionen bleiben fuer gen_dome.py.")
     P, lay = lade_params()
     g = geometrie(P["sock_h"], lay["pool"]["d"], P["wall"], P["pool_rim"], lay["pool"]["water_z"], P["pool_depth"])
     perm, trs = trassen_ordnung(g, lay["pool"]["d"] / 2.0)   # M10-UMBAU: ersetzt g["trassen"] (radiale Strecken lagen schraeg, R1)

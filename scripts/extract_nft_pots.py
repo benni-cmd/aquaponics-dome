@@ -25,7 +25,7 @@ for typ in ("innen", "mitte", "aussen"):
             pots.append([round(x, 1), round(yc, 1), round(ztop - 64.5, 1)])
     out["typen"][typ] = {"n_tisch_pots": len(pots), "pots": pots}
     print(typ, len(pots), "Reihen", [(r["n_holes"], round(r["shift"])) for r in rows])
-ziel = "nft_pots-ring_b2.json" if "--variante" in sys.argv and sys.argv[sys.argv.index("--variante") + 1] == "ring_b2" else "nft_pots.json"   # U4: ring_b2 liest die Tische von U3 (Rinnenunterkante 1030/880/1230), A+ bleibt unveraendert
+ziel = "nft_pots.json"   # U4: Tische von U3 (Rinnenunterkante 1030/880/1230); seit U7 (D141) ein Kreislauf
 json.dump(out, open(os.path.join(ROOT, "data", ziel), "w"), separators=(",", ":"))
 print("geschrieben:", ziel)
 tot = 10 * out["typen"]["innen"]["n_tisch_pots"] + 6 * out["typen"]["mitte"]["n_tisch_pots"] + 8 * out["typen"]["aussen"]["n_tisch_pots"]

@@ -1,6 +1,6 @@
-"""Pruefung Montage N-AUTOBAHN-V2 (docs/jobs/N-AUTOBAHN-V2.md Abschnitt 4 und 6) auf dem Bau-Skript scripts/dome-script-ring_b2.json und den Trassen:
+"""Pruefung Montage N-AUTOBAHN-V2 (docs/jobs/N-AUTOBAHN-V2.md Abschnitt 4 und 6) auf dem Bau-Skript scripts/dome-script.json und den Trassen:
 Zaehlung (Blatt 6 Punkt 3), Hoehen (Ring und Schlauch im Gang >= Z 2100 rel), Halterabstaende (Ring <= 1000, Schlauch <= 400, freier Fall <= 1500),
-Stuetzpunkte ausserhalb der Gangbaender, Schlauchlaengen, Abweichung Schlauchende zum Port. Rein geometrisch, kein CAD-Lauf (Interferenz: scripts/interf_ring_b2.py).
+Stuetzpunkte ausserhalb der Gangbaender, Schlauchlaengen, Abweichung Schlauchende zum Port. Rein geometrisch, kein CAD-Lauf (Interferenz: check_latte).
 Aufruf: python -X utf8 scripts/check_autobahn_montage.py [r1|r2]   (Exit 1 bei FAIL)"""
 import json, math, os, sys
 from collections import Counter
@@ -9,10 +9,10 @@ sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, "workshop"))
 import variante, trassen_ring as TR, autobahn_s as AS, leitungen as LTG
 
 RUNDE = "r2" if "r2" in sys.argv else "r1"
-cmds = json.load(open(variante.pfad("dome_script", "ring_b2"), encoding="utf-8"))["commands"]
+cmds = json.load(open(variante.pfad("dome_script"), encoding="utf-8"))["commands"]
 occ = [c["params"]["occurrence"] for c in cmds if c["command"] == "occurrence.move"]
 cnt = Counter(o.split(":")[0] for o in occ)
-doc = LTG.laden_variante("ring_b2")
+doc = LTG.laden_variante()
 rs = [r for r in doc["r_stuecke"] if r.get("quelle") == "trassen_ring"]
 FZ = TR.FZ; GANG = {"A": (2195.0, 2795.0), "B": (3959.0, 4492.0)}   # Radialbaender wie scripts/workshop/check_autobahn_t.py GANG [E]
 res = []

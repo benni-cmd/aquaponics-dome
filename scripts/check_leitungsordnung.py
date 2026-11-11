@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import leitungen as LG
 
 FZ, KOPF = 400.0, 2500.0
-DOC = json.load(open(sys.argv[sys.argv.index("--trassen") + 1], encoding="utf-8")) if "--trassen" in sys.argv else LG.laden_variante()   # M10-S2N: Variante filtern (geteilte Trassen haben eine ring_b2-Kopie)
+DOC = json.load(open(sys.argv[sys.argv.index("--trassen") + 1], encoding="utf-8")) if "--trassen" in sys.argv else LG.laden_variante()
 FREI = ("B", "C", "D", "F")                                    # v2: frei gefuehrte Arten (Schlauch, Leerrohr)
 ALLE = DOC["trassen"]
 if "--nur-v2" in sys.argv: ALLE = [t for t in ALLE if t.get("art")]

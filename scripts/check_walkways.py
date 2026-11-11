@@ -6,9 +6,8 @@ Tuer-Gang: kleinster Abstand der Beet-/Becken-Hindernisse beiderseits des Tuerko
 import json, math, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-import variante   # N-VARIANTEN V1b: --variante a_plus|ring_b2 (Standard params.json)
-V = variante.aktiv()
-cmds = json.load(open(variante.pfad("dome_script", V)))["commands"]   # V1b: Bau-Skript der Variante
+import variante   # Pfade (N-UNIFY-AUTOBAHN U7)
+cmds = json.load(open(variante.pfad("dome_script")))["commands"]
 P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["command"] == "parameters.add"}
 LAY = json.load(open(os.path.join(ROOT, "data", "layout.json")))
 mv = {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}

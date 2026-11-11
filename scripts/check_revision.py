@@ -102,7 +102,7 @@ if __name__ == "__main__":
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     if a: doc = json.load(open(a[0], encoding="utf-8"))
     else:
-        import leitungen; doc = leitungen.laden_variante("a_plus")
+        import leitungen; doc = leitungen.laden_variante()
     vs, vk, rep = pruefen(doc, linie)
     if "--json" in sys.argv: print(json.dumps(rep, indent=1)); sys.exit(1 if vs or vk else 0)
     print("Zugaenge %d: %s" % (len(rep["zugaenge"]), ", ".join(rep["zugaenge"])))

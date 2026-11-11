@@ -150,10 +150,10 @@ def main(variant="aussen"):
                 return min(math.hypot(world(az, ap, x + dx, y + dy)[0] - cx, world(az, ap, x + dx, y + dy)[1] - cy) - rim for i in sect for (az, ap) in [tabs[i]] for (x, y) in G["legs"] for (dx, dy) in ((-fpl, -fpl), (fpl, -fpl), (fpl, fpl), (-fpl, fpl)))
             dpool_b = dpool_for(pcx, pcy)                                 # D35: Becken zentriert
             ck.eq(f"innen Fussplatten ausserhalb des Beckenrands (Aussenradius {rim:.0f}, Plattenkante, Becken zentriert (D35): Abstand {dpool_b:.0f} mm >= 5)", 1 if dpool_b >= 5 else 0, 1)
-            # D121 (U3): Kragarm ueber dem Poolrand: Unterkante des tiefsten Bocks >= Poolrand (Soll 1200, params.json pool_rim ring_b2) + 5 mm; die Rinne liegt nur 30 mm ueber dem Rand
+            # D121 (U3): Kragarm ueber dem Poolrand: Unterkante des tiefsten Bocks >= Poolrand (Soll 1200, params.json pool_rim) + 5 mm; die Rinne liegt nur 30 mm ueber dem Rand
             zrow_ = lambda x: G["zc"] - (x - G["rows"][0]["xc"]) * G["slope"]
             unten = min(zrow_(x) - T.get("holm_h", p["holm_h"]) for x in G["xb"])
-            rand_ = V.parameter("ring_b2")["pool_rim"]
+            rand_ = V.parameter()["pool_rim"]
             ck.eq(f"innen Kragarm-Unterkante {unten:.1f} >= Poolrand {rand_} + 5 mm (D121; Holm {T.get('holm_h', p['holm_h'])} hoch, Rinnenunterkante {G['zc']})", 1 if unten >= rand_ + 5 else 0, 1)
     # (6) Abstand der Tischkanten zur Kuppelhaut (W23-Befund 2): Rinnenenden (Oberkante Rinne = Boden + 100) und Beine gegen die Feldebenen (Strebenachsen), >= 15 mm (halbes Strebenrohr)
     planes = dome_planes()

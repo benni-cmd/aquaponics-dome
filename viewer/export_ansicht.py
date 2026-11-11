@@ -13,7 +13,7 @@ kreislauf (N-VIEWER-KREISLAEUFE, W87): welche Teile zu Wasser-, Luft- und Stromk
   stamm[<Definition>]        = [ Kreislaeufe, zu denen alle Instanzen gehoeren ]   Tanks, Pumpen, Filter ...: Knoten (bauteil/id) an Kanten mit Medium Wasser oder Luft in leitungsnetz.json;
                                Strom: Kabelliste (Medium Strom) in leitungsnetz.json und Teiletitel mit "Kabel"; Gruppe Leitungen ohne Knoten: naechste Trasse
   koerper[<Definition>]      = { <Koerpername>: [ Kreislaeufe ] }   einzelne Koerper eines Teils: Kabel, Stecker (strom); an NFT-Tischen und Substratbeeten (Gruppe Tische und Beete) nur Zulauf, Ablauf, Siphon, Rohre (wasser, W87b)
-Aufruf: python viewer/export_ansicht.py [--variante ring_b2]   (wird von export_model.py am Ende und von serve.py bei veralteter Datei aufgerufen)
+Aufruf: python viewer/export_ansicht.py   (wird von export_model.py am Ende und von serve.py bei veralteter Datei aufgerufen)
 """
 import glob, json, math, os, re, sys, tempfile
 
@@ -21,8 +21,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.environ.get('ANSICHT_ROOT') or os.path.abspath(os.path.join(HERE, '..'))
 sys.path.insert(0, os.path.join(os.path.abspath(os.path.join(HERE, '..')), 'scripts'))
 import variante as V   # N-VARIANTEN V1a
-VAR = V.aktiv()
-VIEWER = os.environ.get('ANSICHT_VIEWER') or V.pfad('viewer_dir', VAR, root=os.path.abspath(os.path.join(HERE, '..')))   # a_plus: viewer/, ring_b2: viewer/varianten/ring_b2/
+VIEWER = os.environ.get('ANSICHT_VIEWER') or V.pfad('viewer_dir', root=os.path.abspath(os.path.join(HERE, '..')))   # viewer/
 ABSTAND_MAX_MM = 150   # weiter von jeder Trasse entfernt: Art unbekannt (None)
 TEIL_NAH_MM = 100      # Kreislauf-Rueckfall: Rohrteil liegt so nah an einem Eintrag `teile` der Trassendatei
 
@@ -72,7 +71,7 @@ def linie_zu_kreis(linie):
 
 
 def passt(stem, key):
-    return bool(key) and (stem == key or stem.startswith(key + '_') or stem.startswith(key + '-'))   # '-ring_b2': Variantenname
+    return bool(key) and (stem == key or stem.startswith(key + '_') or stem.startswith(key + '-'))   # Endung mit Bindestrich
 
 
 def kreislauf_bauen(inst, netz, trassen_roh, komp, arten, pfade):
@@ -196,10 +195,10 @@ def bauen():
         komp[os.path.splitext(os.path.basename(f))[0]] = {'gruppe': d.get('bauteilgruppe'), 'werkstoff': w, 'titel': d.get('titel')}
     inst = jl(os.path.join(VIEWER, 'instances.json'))
     netz = jl(os.path.join(ROOT, 'data', 'leitungsnetz.json'))
-    netz['kanten'] = V.filtere(netz['kanten'], VAR)   # Eintraege ohne Feld `varianten` gelten fuer beide
+    netz['kanten'] = V.filtere(netz['kanten'])   # Eintraege ohne Feld `varianten` gelten fuer beide
     trassen_roh = jl(os.path.join(ROOT, 'data', 'leitungstrassen.json'))
-    trassen = V.filtere(trassen_roh['trassen'], VAR)
-    trassen_roh = dict(trassen_roh, teile=V.filtere(trassen_roh.get('teile', []), VAR))
+    trassen = V.filtere(trassen_roh['trassen'])
+    trassen_roh = dict(trassen_roh, teile=V.filtere(trassen_roh.get('teile', [])))
     art_von_kante = kanten_art(netz)
     pfade = []
     for t in trassen:

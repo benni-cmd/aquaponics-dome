@@ -35,7 +35,7 @@ def main(typs):
     LAY = json.load(open(os.path.join(sc.ROOT, "data", "layout.json"), encoding="utf-8"))
     lay = LAY["ibc_beds"]
     soll = {b["id"]: b for b in json.load(open(os.path.join(sc.ROOT, "data", "oasis-soll.json"), encoding="utf-8"))["bauteile"]}   # U3 (D122): Soll der Quelle, Wanne steht auf dem Flur
-    z0_soll = LAY["ring_b2"]["ibc_beds_z0"]                    # 0 = Unterkante Wanne auf dem Flur (A+: layout.json ibc_beds z0 -162 bis -209)
+    z0_soll = LAY["oasis"]["ibc_beds_z0"]                    # 0 = Unterkante Wanne auf dem Flur (A+: layout.json ibc_beds z0 -162 bis -209)
     SOLL_ID = {"aussen_800": "fd_aussen", "innen_933": "fd_mitte"}          # Typen, die im Soll vorkommen (aussen_933/993 sind unbenutzte Altfassungen)
     ck = sc.Check("ibc_beet")
     for typ in typs:

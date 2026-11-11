@@ -7,11 +7,10 @@ from PIL import Image, ImageDraw
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CLI = r"C:\Program Files\SolidCraft\solidcraft-cli.exe"
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-import variante   # N-VARIANTEN V1b: --variante a_plus|ring_b2 (Standard params.json)
-V = variante.aktiv()
-cmds = json.load(open(variante.pfad("dome_script", V)))["commands"]   # V1b: Bau-Skript der Variante
-BILDER = variante.pfad("bilder_dir", V); os.makedirs(BILDER, exist_ok=True)   # A+: renders/, B2: renders/ring_b2/
-KARTE = os.path.join(ROOT, "docs", "walkway-map.md" if V == "a_plus" else "walkway-map-%s.md" % V)
+import variante   # Pfade (N-UNIFY-AUTOBAHN U7)
+cmds = json.load(open(variante.pfad("dome_script")))["commands"]
+BILDER = variante.pfad("bilder_dir"); os.makedirs(BILDER, exist_ok=True)   # renders/oasis/
+KARTE = variante.pfad("walkway_map")
 DIAG = "-diagnose" if os.environ.get("WALK_OHNE") else ""
 if DIAG: KARTE = KARTE[:-3] + DIAG + ".md"
 P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["command"] == "parameters.add"}
@@ -55,19 +54,19 @@ for k, m in mv.items():
                "Podest_Vortex", "Podest_Biofilter", "Schlamm_Sammelbehaelter", "Geblaese_Luft", "Notluftpumpe"):   # U5 (D127): Technikgruppe der Quelle (Podeste, Sammelbehaelter, Geblaese, Notluftpumpe) als Hindernisse; Venturi und Luftverteiler haengen ueber Kopf und Knie (Z 1250 bzw. 710 ueber Boden), Pumpen und Schwimmer liegen unter dem Flur   # Feinfilter (M10-S1): Box Z -96 bis 807 abs, im Knie-Schnitt (700) ein Hindernis
         pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station", "Puffer_Klein": "puffer_klein"}.get(cls, cls.lower())))
         if max(math.hypot(*p) for p in pg) < AP + 200: obst.append((k, pg, za, zb))   # Vorbau ausserhalb der Wand (D62) liegt nicht im Innenraum
-    elif cls in ("Pegelschacht_Podest", "Pegelschacht", "Booster_gross"):   # N-AUTOBAHN-V2 R1c (nur ring_b2): Einspeisung je Linie steht am Boden
+    elif cls in ("Pegelschacht_Podest", "Pegelschacht", "Booster_gross"):   # N-AUTOBAHN-V2 R1c: Einspeisung je Linie steht am Boden
         pg, (za, zb) = poly(m, comp_box({"Pegelschacht_Podest": "pegelschacht_podest", "Pegelschacht": "pegelschacht", "Booster_gross": "pumpe_gross"}[cls])); obst.append((k, pg, za, zb))
     elif cls == "Ringstuetze_d75_B":   # R1a: eigene Stelze; bis Kopfhoehe nur Fussplatte 200 x 200 und Pfosten (Kragarm liegt ueber Z 2100 rel)
         pg, _ = poly(m, (-100, -100, 0, 100, 100, 0)); obst.append((k, pg, FZ, FZ + 2100))
 pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))), LAY["pool2"]["d"] / 2 + 60),
          ("Drittbecken", (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))), P["pool3_d"] / 2 + 60)]
 if any(c["command"] == "component.insert_design" and c["params"].get("name") == "Zweitbecken" and c["params"]["path"].endswith("/zweitbecken.sc") for c in cmds):
-    # N-UNIFY-AUTOBAHN U4 (D124): ab dem Gesamtmodell nach der Quelle stehen Anzucht- und Lebendfutterbecken am Bauplatz aus data/oasis-lage.json (Weltlage in der Komponente bzw. Matrix), nicht bei pool2_r/pool3_r; Durchmesser aus dem Block ring_b2 in layout.json
-    _bp = {b["id"]: b["bauplatz"] for b in json.load(open(os.path.join(ROOT, "data", "oasis-lage.json"), encoding="utf-8"))["bauteile"] if b.get("bauplatz")}; _rb = LAY["ring_b2"]
+    # N-UNIFY-AUTOBAHN U4 (D124): ab dem Gesamtmodell nach der Quelle stehen Anzucht- und Lebendfutterbecken am Bauplatz aus data/oasis-lage.json (Weltlage in der Komponente bzw. Matrix), nicht bei pool2_r/pool3_r; Durchmesser aus dem Block oasis in layout.json
+    _bp = {b["id"]: b["bauplatz"] for b in json.load(open(os.path.join(ROOT, "data", "oasis-lage.json"), encoding="utf-8"))["bauteile"] if b.get("bauplatz")}; _rb = LAY["oasis"]
     pools = [("Zentralpool", (0.0, 0.0), _rb["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (_bp["nursery"]["x_mm"], _bp["nursery"]["y_mm"]), _rb["pool2"]["d"] / 2 + 60),
              ("Drittbecken", (_bp["feed"]["x_mm"], _bp["feed"]["y_mm"]), _rb["pool3"]["d"] / 2 + 60)]
 for nm, c, r in pools: obst.append((nm, ("circle",) + c + (r,), -1e9, 1e9))
-OHNE = [x for x in os.environ.get("WALK_OHNE", "").split(",") if x]   # Diagnose (N-UNIFY U4): Hindernisse mit diesen Namenspraefixen weglassen, z. B. WALK_OHNE=Tank_,Pumpe_,Puffer_Klein; schreibt dann docs/walkway-map-<variante>-diagnose.md und Bilder mit Suffix -diagnose, die Karte der Variante bleibt unberuehrt
+OHNE = [x for x in os.environ.get("WALK_OHNE", "").split(",") if x]   # Diagnose (N-UNIFY U4): Hindernisse mit diesen Namenspraefixen weglassen, z. B. WALK_OHNE=Tank_,Pumpe_,Puffer_Klein; schreibt dann docs/walkway-map-diagnose.md und Bilder mit Suffix -diagnose, die Karte der Variante bleibt unberuehrt
 if OHNE: obst = [o for o in obst if not any(o[0].startswith(x) for x in OHNE)]; print("DIAGNOSE ohne:", OHNE)
 
 def inside_poly(x, y, pg):

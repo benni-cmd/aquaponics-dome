@@ -30,8 +30,7 @@ CLI = r"C:\Program Files\SolidCraft\solidcraft-cli.exe"
 COMP_DIR = os.path.join(ROOT, "designs", "components")
 CACHE = os.path.join(ROOT, "data", "bom_koerper.json")
 KATALOG = os.path.join(ROOT, "data", "katalog.json")
-VARIANTE = V.aktiv()  # N-VARIANTEN V1a: a_plus = heutiger Pfad (viewer/instances.json), ring_b2 = viewer/varianten/ring_b2/instances.json
-INST = V.pfad("instances", VARIANTE, root=ROOT)
+INST = V.pfad("instances", root=ROOT)
 
 TYPEN = OrderedDict([
     ("PRF", "Stahlprofil (Rechteck-, Vierkantrohr, Rund- und Vollmaterial)"),

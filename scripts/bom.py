@@ -2,7 +2,7 @@
 
 Aufruf:
   python -X utf8 scripts/bom.py            # schreibt data/stueckliste.json und docs/stueckliste.md
-  python -X utf8 scripts/bom.py --variante ring_b2   # liest viewer/varianten/ring_b2/instances.json, schreibt data/stueckliste-ring_b2.json, docs/stueckliste-ring_b2.md, docs/einkaufsliste-ring_b2.html (Schalter: scripts/variante.py)
+  (seit N-UNIFY-AUTOBAHN U7, D141: ein Kreislauf, Pfade aus scripts/variante.py)
   python -X utf8 scripts/bom.py --stdout   # nur Kurzbericht, schreibt nichts
 
 Eingaben (nur lesen):
@@ -32,9 +32,8 @@ import bom_benennung as BN  # noqa: E402
 ROOT = BA.ROOT
 import variante as V  # noqa: E402
 
-VARIANTE = BA.VARIANTE
-OUT_JSON = V.pfad("stueckliste_json", VARIANTE, root=ROOT)
-OUT_MD = V.pfad("stueckliste_md", VARIANTE, root=ROOT)
+OUT_JSON = V.pfad("stueckliste_json", root=ROOT)
+OUT_MD = V.pfad("stueckliste_md", root=ROOT)
 BESCH_DIR = os.path.join(ROOT, "data", "beschaffung")
 
 EUROPA = {"DE", "AT", "NL", "FR", "PL", "CZ", "SK", "HU", "IE", "FI", "ES", "IT", "BE", "LU", "DK", "SE", "CH", "PT", "SI", "EU"}
@@ -410,8 +409,6 @@ def main():
         "entscheidungen": kat.get("artikel_stempel", {}).get("entscheidungen"),
         "regel_nicht_platziert": "Komponenten ohne Instanz in viewer/instances.json zaehlen Menge 0 und stehen unter nicht_platziert; Preis zaehlt nicht in die Summe (bedarf_wenn_je_komponente_einmal zeigt die Menge bei je einem Stueck).",
     }
-    if VARIANTE != "a_plus":  # A+ bleibt byte-gleich (N-VARIANTEN P1): das Feld steht nur in anderen Varianten
-        out["kopf"]["variante"] = VARIANTE
     out["typen"] = kat["typen"]
     out["ausnahmen"] = {k: {"koerper": v["koerper"], "masse_kg": round(v["masse_kg"], 2), "komponenten": dict(sorted(v["komponenten"].items()))} for k, v in sorted(ausn_gesamt.items())}
     out["ungeklaert"] = ungeklaert

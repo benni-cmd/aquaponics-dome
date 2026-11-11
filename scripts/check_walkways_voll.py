@@ -51,7 +51,8 @@ for k, m in mv.items():
     else: l = None
     if l:
         pg, _ = poly(m, (-l / 2, -w / 2, 0, l / 2, w / 2, 0)); obst.append((k, pg, FZ, FZ + 1500)); continue
-    if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station", "Puffer_Klein", "Feinfilter"):   # Feinfilter (M10-S1): Box Z -96 bis 807 abs, im Knie-Schnitt (700) ein Hindernis
+    if cls in ("Tank_klein", "Tank_gross", "Tank_gross_t3", "Pumpe_klein", "Pumpe_gross", "Puffer_Station", "Puffer_Klein", "Feinfilter",
+               "Podest_Vortex", "Podest_Biofilter", "Schlamm_Sammelbehaelter", "Geblaese_Luft", "Notluftpumpe"):   # U5 (D127): Technikgruppe der Quelle (Podeste, Sammelbehaelter, Geblaese, Notluftpumpe) als Hindernisse; Venturi und Luftverteiler haengen ueber Kopf und Knie (Z 1250 bzw. 710 ueber Boden), Pumpen und Schwimmer liegen unter dem Flur   # Feinfilter (M10-S1): Box Z -96 bis 807 abs, im Knie-Schnitt (700) ein Hindernis
         pg, (za, zb) = poly(m, comp_box({"Puffer_Station": "puffer_station", "Puffer_Klein": "puffer_klein"}.get(cls, cls.lower())))
         if max(math.hypot(*p) for p in pg) < AP + 200: obst.append((k, pg, za, zb))   # Vorbau ausserhalb der Wand (D62) liegt nicht im Innenraum
     elif cls in ("Pegelschacht_Podest", "Pegelschacht", "Booster_gross"):   # N-AUTOBAHN-V2 R1c (nur ring_b2): Einspeisung je Linie steht am Boden

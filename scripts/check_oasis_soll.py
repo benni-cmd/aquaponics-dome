@@ -123,6 +123,35 @@ def measure(pt, instances, floor, soll_ids):
 MESSDATA = load(MESS)
 
 
+STUFEN_ZUSATZ = [["bio_1", "fish", "Stufe 4 > 0, Biofilter 1 ueber dem Fischtank (U5, Kette Vortex > Biofilter > Fischtank)"],
+                 ["bio_2", "fish", "Stufe 4 > 0, Biofilter 2 ueber dem Fischtank"]]
+# U5: Zaehlung der Technik im Export (Quelle: Technikgruppe der Oasis-Showcase, Paket n-unify-autobahn U5): (Beschriftung, Definitionen, Soll-Anzahl)
+ZAEHLUNG_TECHNIK = [("Tauchpumpen (Pumpstelle 1 und 2)", ("tauchpumpe_modul",), 4), ("Venturi-Belueffter", ("venturi_belueffter",), 2),
+                    ("Schwimmerschalter im Sumpf", ("schwimmerschalter_hochstand",), 2), ("Luftpumpen (2 Geblaese + Notluft)", ("geblaese_luft", "notluftpumpe"), 3),
+                    ("Schlamm-Sammelbehaelter", ("schlamm_sammelbehaelter",), 2), ("Podeste Vortex", ("podest_vortex",), 2), ("Podeste Biofilter", ("podest_biofilter",), 2),
+                    ("Luftverteiler (je 4 Arme)", ("luftverteiler_4",), 2), ("Nachspeise-Ventil", ("nachspeise_ventil",), 1), ("Regentank 5 m3", ("regentank_5m3",), 1),
+                    ("Permakultur-Modul", ("permakultur_modul",), 1), ("Vortex (tank_klein)", ("tank_klein",), 2), ("Biofilter (tank_gross)", ("tank_gross", "tank_gross_t3"), 2)]
+VERBOTEN_ALTBESTAND = ("feinfilter", "pumpe_klein", "pumpe_gross", "pegelschacht", "schlammfass")
+
+
+def zaehlung_technik(instances):
+    """U5: Anzahl je Definition im Export gegen die Soll-Zahl; Altbestand ohne Soll (D101) muss 0 sein. -> Anzahl Abweichungen."""
+    import collections
+    cnt = collections.Counter(i["d"].split("-ring_b2")[0] for i in instances)
+    bad = 0
+    print("Zaehlung der Technik im Export (Instanzen je Definition)")
+    print("%-36s %5s %5s  %s" % ("Teil", "Soll", "Ist", "Urteil"))
+    for name, defs, soll in ZAEHLUNG_TECHNIK:
+        ist = sum(cnt.get(x, 0) for x in defs)
+        bad += ist != soll
+        print("%-36s %5d %5d  %s  (%s)" % (name, soll, ist, "OK" if ist == soll else "ABWEICHUNG", ", ".join(defs)))
+    for pre in VERBOTEN_ALTBESTAND:
+        ist = sum(n for k, n in cnt.items() if k.startswith(pre))
+        bad += ist != 0
+        print("%-36s %5d %5d  %s  (Altbestand ohne Soll, D101)" % ("entfallen: " + pre + "*", 0, ist, "OK" if ist == 0 else "ABWEICHUNG"))
+    return bad
+
+
 def komponenten_hoehen(soll):
     """U2 (Komponenten, nicht Gesamtmodell): Hoehenparameter der neuen Bauteile gegen die Soll-Datei. Gebaut als Komponente = 'Komponente ok';
     im Gesamtmodell sind sie erst nach U4/U5 -> 'ausstehend' (kein Fehler, aendert weder Exit-Code noch die Messung oben)."""
@@ -169,7 +198,7 @@ def main():
         sel = [p for p in pts if p["id"] == arg("--punkt")]
     elif "--teil" in sys.argv:
         t = arg("--teil", "alle")
-        sel = pts if t == "alle" else [p for p in pts if p["teil"] == t]
+        sel = pts if t == "alle" else [p for p in pts if p["teil"] == t or (t == "technik" and p["id"] == "fish")]   # U5: Fischtank als tiefste Stufe (0) der Technikkette mitmessen
         if t != "alle" and t not in TEIL_TITEL:
             print("unbekannter Teil %s (becken|technik|ring|alle)" % t)
             return 2
@@ -198,7 +227,7 @@ def main():
         bad += 0 if ok else 1
         spread = "" if len(vals) == 1 else ", Streuung %.0f" % (max(vals) - min(vals))
         print("%-10s %7d %9.0f %+10.0f  %-10s %s%s" % (p["id"], p["soll_mm"], mean, mean - p["soll_mm"], "OK" if ok else "ABWEICHUNG", txt, spread))
-    pairs = [q for q in MESSDATA["stufen_reihenfolge"]["paare"] if q[0] in [p["id"] for p in sel] and q[1] in [p["id"] for p in sel]]
+    pairs = [q for q in MESSDATA["stufen_reihenfolge"]["paare"] + STUFEN_ZUSATZ if q[0] in [p["id"] for p in sel] and q[1] in [p["id"] for p in sel]]
     print("Stufenreihenfolge (Wasserspiegel faellt entlang der Wege der Quelle), %d Paare im gewaehlten Umfang" % len(pairs))
     for hi, lo, why in pairs:
         if hi in ist and lo in ist:
@@ -209,6 +238,7 @@ def main():
             bad += 1
             print("  %-10s > %-10s nicht pruefbar (Messwert fehlt)  (%s)" % (hi, lo, why))
     if arg("--teil", "") in ("technik", "alle"):
+        bad += zaehlung_technik(d["instances"])
         komponenten_hoehen(soll)
     print("ERGEBNIS: %s (%d Abweichungen oder fehlende Werte)" % ("BESTANDEN" if not bad else "ABWEICHUNG", bad))
     return 1 if bad else 0

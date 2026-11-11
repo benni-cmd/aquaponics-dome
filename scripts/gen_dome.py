@@ -101,7 +101,7 @@ def erde_fn(sock_z):
         for k, b in enumerate(LAYOUT["ibc_beds"], 1):
             x, y = bed_xy(b); yaw = bed_yaw(b); u, v = BEET_AUSLASS["aussen" if "plants" in b else "innen"]; c, s = math.cos(math.radians(yaw)), math.sin(math.radians(yaw))
             rect_body(f"T9_Auslass_{k:02d}", round(x + u * c - v * s, 1), round(y + u * s + v * c, 1), sock_z - BEET_AUSLASS_TIEFE - 5, yaw, 160, 160, BEET_AUSLASS_TIEFE + 6, op="cut", targets=["T13_Erde"])
-    for k, (x, y, yaw) in enumerate(feinfilter_orte(), 1):   # M10-S1: Feinfilter-Gruben (Boden = Standflaeche), Drehung wie der Filter
+    for k, (x, y, yaw) in enumerate([] if V == "ring_b2" else feinfilter_orte(), 1):   # U5 (D101): ring_b2 hat keinen Feinfilter und keine Gruben; M10-S1: Feinfilter-Gruben (Boden = Standflaeche), Drehung wie der Filter
         rect_body(f"T55_Grube_{k:02d}", x, y, sock_z + P["ff_z"], yaw, P["ff_grube_l"], P["ff_grube_w"], -P["ff_z"] + 1, op="cut", targets=["T13_Erde"])
     doc = LTG.laden_variante(V)   # M10-S2a: Graeben der Unterflur-Leitungen (Bettung je Seite lt_graben_zuschlag/2), Steigleitungen als Schacht
     for g in (LTG.graben(doc, sock_z) if doc else []):
@@ -462,6 +462,7 @@ def tank_offsets():
 
 def tanks(fz):
     """07_Tanks/09_Technik: 4 Tanks (Werkstatt: tank_klein x2, tank_gross, tank_gross_t3) und 8 Pumpentafeln (pumpe_klein/gross, je Tank 2) als Instanzen; Ursprung Tank = Mitte Standflaeche am Boden, Drehung = Plattform-yaw; Positionen aus layout.json plus tank_offsets."""
+    if V == "ring_b2": return technik_ring_b2(fz)   # U5 (D93, D100, D101): Altbestand-Tanks und Pumpentafeln entfallen, die Technik steht nach data/oasis-lage.json
     tk = {"klein": [], "gross": [], "gross_t3": []}; pk = {"klein": [], "gross": []}; off = tank_offsets()
     for i, t in enumerate(LAYOUT["tanks"]):
         dx, dy = off[i]; x, y = LXY(t["cx"] + dx, t["cy"] + dy); yaw = t["platform"][0]["yaw"] + ROT
@@ -480,6 +481,51 @@ def tanks(fz):
         if items: place_instances("Tank_" + v, os.path.join(ROOT, "designs", "components", f"tank_{v}.sc"), items, "07_Tanks")
     for v, items in pk.items():
         place_instances("Pumpe_" + v, os.path.join(ROOT, "designs", "components", f"pumpe_{v}.sc"), items, "09_Technik")
+
+def _cpar(name):
+    """U5: Parameter einer Werkstatt-Komponente (data/components/<name>.json, Feld `wert`)."""
+    return {k: v["wert"] for k, v in json.load(open(os.path.join(ROOT, "data", "components", name + ".json"), encoding="utf-8"))["parameter"].items()}
+
+def sumpf_einbauten(fz):
+    """U5 (D129): Lage von Pumpensockel und Schwimmerhalter je Sumpf in Weltkoordinaten (Z absolut), gleiche Rechnung wie becken_ports(); Rueckgabe je Sumpf {yaw, sockel, halter}."""
+    sp = _cpar("sumpftank"); w = sp["pit_w"]; out = []
+    for x, y, yaw, _ in sumpf_orte():
+        c, s_ = math.cos(math.radians(yaw)), math.sin(math.radians(yaw)); W = lambda lx, ly, lz: (round(x + lx * c - ly * s_, 1), round(y + lx * s_ + ly * c, 1), round(fz + lz, 1))
+        out.append({"yaw": round(yaw, 3), "sockel": W(sp["sockel_x"], sp["sockel_y"], -sp["pit_d"] + sp["sockel_h"]), "halter": W(w / 2 - 30, sp["halter_y"], sp["hochstand"])})
+    return out
+
+GEBLAESE_AUSTRITT_X = 412   # +X-Ende des Gebläses (Luftaustritt), Koerper-Box aus viewer/detail/geblaese_luft.json (max X 412); Verteiler-Muffe 60 mm davor
+
+def technik_ring_b2(fz):
+    """U5 (D93, D100 bis D107, D127 bis D131): Technikgruppe der Quelle am Bauplatz aus data/oasis-lage.json. Podeste und vorhandene Tanks (Ueberlauf = Soll-Wasserspiegel: Vortex 1900, Biofilter 1800),
+    4 Tauchpumpen (Pumpstelle 1 im Fischtank, Pumpstelle 2 auf dem Pumpensockel im Sumpf), 2 Venturi im Druckrohr (Achse 500 ueber dem Spiegel), 2 Schwimmerschalter im Sumpf (-110),
+    Belueftungsanlage (2 Geblaese mit je einem Verteiler 4), Notluftpumpe, Nachspeise-Ventil, 2 Schlamm-Sammelbehaelter, Regentank und Permakultur ausserhalb. Alles in Weltlage, Yaw = drehung_grad der Lage-Probe."""
+    bp = BAUPLATZ; comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
+    pos = lambda k: (round(bp[k]["x_mm"], 1), round(bp[k]["y_mm"], 1)); yaw = lambda k: bp[k]["drehung_grad"]
+    aim = lambda k: round(math.degrees(math.atan2(-bp[k]["y_mm"], -bp[k]["x_mm"])), 2)   # +X des Bauteils zeigt zur Kuppelmitte (Fischtank)
+    ph_v, ph_b = _cpar("podest_vortex")["podest_vortex_h"], _cpar("podest_biofilter")["podest_biofilter_h"]
+    for k, z in (("vortex_1", fz + ph_v), ("vortex_2", fz + ph_v), ("bio_1", fz + ph_b), ("bio_2", fz + ph_b)):
+        if abs(bp[k]["z_modell_mm"] - z) > 1: raise SystemExit("Lage-Probe %s: Z %s, Podest ergibt %s" % (k, bp[k]["z_modell_mm"], z))   # Ueberlauf = Soll-Wasserspiegel nur, wenn Lage und Podest zusammenpassen
+    vort = [pos(k) + (fz, yaw(k)) for k in ("vortex_1", "vortex_2")]; bio = [pos(k) + (fz, yaw(k)) for k in ("bio_1", "bio_2")]
+    place_instances("Podest_Vortex", comp("podest_vortex"), vort, "07_Tanks")
+    place_instances("Tank_klein", comp("tank_klein"), [(x, y, fz + ph_v, w) for x, y, _, w in vort], "07_Tanks")
+    place_instances("Podest_Biofilter", comp("podest_biofilter"), bio, "07_Tanks")
+    place_instances("Tank_gross", comp("tank_gross"), [(bio[0][0], bio[0][1], fz + ph_b, bio[0][3])], "07_Tanks")
+    place_instances("Tank_gross_t3", comp("tank_gross_t3"), [(bio[1][0], bio[1][1], fz + ph_b, bio[1][3])], "07_Tanks")
+    sump = sumpf_einbauten(fz); sp = _cpar("sumpftank")
+    pumpen = [pos(k) + (fz - 1000, 0.0) for k in ("filterpumpe_1", "filterpumpe_2")] + [e["sockel"] + (e["yaw"],) for e in sump]   # Pumpstelle 1 auf dem Fischtank-Innenboden (-1000), Pumpstelle 2 auf dem Pumpensockel (D129)
+    place_instances("Tauchpumpe_Modul", comp("tauchpumpe_modul"), pumpen, "09_Technik")
+    place_instances("Venturi_Belueffter", comp("venturi_belueffter"), [pos(k) + (bp[k]["z_modell_mm"], aim(k)) for k in ("venturi_1", "venturi_2")], "09_Technik")
+    place_instances("Schwimmerschalter_Hochstand", comp("schwimmerschalter_hochstand"), [e["halter"] + (0.0,) for e in sump], "04_Wasserbecken")
+    bl = [pos(k) + (fz, yaw(k)) for k in ("luftpumpe_1", "luftpumpe_2")]
+    place_instances("Geblaese_Luft", comp("geblaese_luft"), bl, "09_Technik")
+    az = _cpar("geblaese_luft")["apex_z"]; ab = GEBLAESE_AUSTRITT_X + 60
+    place_instances("Luftverteiler_4", comp("luftverteiler_4"), [(round(x + ab * math.cos(math.radians(w)), 1), round(y + ab * math.sin(math.radians(w)), 1), fz + az, w) for x, y, _, w in bl], "09_Technik")
+    place_instances("Notluftpumpe", comp("notluftpumpe"), [pos("luftpumpe") + (fz, yaw("luftpumpe"))], "09_Technik")
+    place_instances("Nachspeise_Ventil", comp("nachspeise_ventil"), [pos("nachspeise") + (fz + P["pool_wsp"] + _cpar("nachspeise_ventil")["ventil_h"], aim("nachspeise"))], "09_Technik")
+    place_instances("Schlamm_Sammelbehaelter", comp("schlamm_sammelbehaelter"), [pos(k) + (fz, 0.0) for k in ("sludge_1", "sludge_2")], "09_Technik")
+    place_instances("Regentank_5m3", comp("regentank_5m3"), [pos("rain") + (fz, yaw("rain"))], "09_Technik")
+    place_instances("Permakultur_Modul", comp("permakultur_modul"), [pos("permakultur") + (fz, yaw("permakultur"))], "09_Technik")
 
 def place_instances(cls, path, items, assembly):
     """Werkstatt-Komponente verknuepfen (eine Definition) und je Eintrag (x, y, z, yaw_grad) eine Instanz setzen (erst alle Kopien am Ursprung, dann absolut verschieben)."""
@@ -519,6 +565,7 @@ def ring_b2(fz):
     import trassen_ring as TRR
     gesetzt = []
     for cls, path, mats, asm in TRR.tragwerk(os.environ.get("AUTOBAHN_RUNDE", "r2")):
+        if cls in ("Pegelschacht_Podest", "Pegelschacht", "Booster_gross"): continue   # U5 (D98, D101): der Biofilter steht hoeher als der Ring, Pegelschacht und Booster entfallen
         if mats: place_matrices(cls, path, mats, asm); gesetzt.append((cls, len(mats)))
     return gesetzt
 
@@ -602,8 +649,9 @@ def technik_e13(fz):
     import technik_e13 as TE
     g = TE.gruppe(P); comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
     place_instances("Schrank_Einfuehrung", comp("schrank_einfuehrung"), [g["einfuehrung"]], "14_Technik_E13")
-    place_instances("Geblaese_Luft", comp("geblaese_luft"), g["geblaese"], "14_Technik_E13")
-    place_matrices("Luftverteiler_6", comp("luftverteiler_6"), [TE.verteiler_matrix(g["vert"])], "14_Technik_E13")
+    if V != "ring_b2":   # U5 (D103, D130): ring_b2 setzt Gebläse (Bauplatz luftpumpe_1/_2) und je einen Verteiler 4 in technik_ring_b2(); der Hauptverteiler 6 entfällt
+        place_instances("Geblaese_Luft", comp("geblaese_luft"), g["geblaese"], "14_Technik_E13")
+        place_matrices("Luftverteiler_6", comp("luftverteiler_6"), [TE.verteiler_matrix(g["vert"])], "14_Technik_E13")
     place_instances("Aktivkohle_Station", comp("aktivkohle_station"), [g["station"]], "14_Technik_E13")
 
 def luft_a(fz):
@@ -611,9 +659,9 @@ def luft_a(fz):
     import trassen_luft as TL
     g = TL.geometrie(fz, LAYOUT["pool"]["d"], P["wall"], P["pool_rim"], LAYOUT["pool"]["water_z"], P["pool_depth"], POOL_BODEN)
     comp = lambda n: os.path.join(ROOT, "designs", "components", n + ".sc")
-    place_instances("Luftverteiler_4", comp("luftverteiler_4"), [tuple(round(v, 2) for v in g["verteiler"])], "09_Technik")
+    if V != "ring_b2": place_instances("Luftverteiler_4", comp("luftverteiler_4"), [tuple(round(v, 2) for v in g["verteiler"])], "09_Technik")   # U5 (D130): ring_b2 hat keinen Pool-Verteiler am Rand (Rand 1200 unter den Innentischen); die Arme kommen aus den zwei Verteilern der Belueftungsanlage
     place_instances("Luft_Scheibenbelueftung", comp("luft_scheibenbelueftung"), [(round(x, 2), round(y, 2), round(z, 2), 0.0) for x, y, z in g["scheiben"]], "04_Wasserbecken")
-    place_instances("Schwimmerventil_Pool", comp("schwimmerventil_pool"), [tuple(round(v, 2) for v in g["ventil"])], "04_Wasserbecken")
+    if V != "ring_b2": place_instances("Schwimmerventil_Pool", comp("schwimmerventil_pool"), [tuple(round(v, 2) for v in g["ventil"])], "04_Wasserbecken")   # U5 (D107, D114): ring_b2 setzt das Nachspeise-Ventil (technik_ring_b2)
 
 def t10_t11(fz):
     component_file("zulaufrohr", "Zulaufrohr", "08_Leitungen", rohr_fn)
@@ -629,7 +677,7 @@ if __name__ == "__main__":
     if stage >= 2: pools(P["sock_h"]); (sumpftanks(P["sock_h"]), becken_ports(P["sock_h"])) if V == "ring_b2" else None; tanks(P["sock_h"])
     if stage >= 3: t9(P["sock_h"]); nft(P["sock_h"])
     if stage >= 5: pots(P["sock_h"], P["salat_n"] > 0)
-    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); feinfilter(P["sock_h"]); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); (verteiler_a_plus() if V == "a_plus" else ring_b2(P["sock_h"])); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
+    if stage >= 4: t10_t11(P["sock_h"]); (puffer_station(P["sock_h"]) if P.get("station_an", 0) else puffer_klein(P["sock_h"])); (feinfilter(P["sock_h"]) if V == "a_plus" else None); luft_a(P["sock_h"]); technik_e13(P["sock_h"]); (verteiler_a_plus() if V == "a_plus" else ring_b2(P["sock_h"])); leitungen(P["sock_h"]); mensch_referenz(P["sock_h"]); messstellen(P["sock_h"])
     colors()
     json.dump({"commands": cmds}, open(out, "w"), indent=0)
     print(f"variante {V}, stufe {stage}: {len(cmds)} befehle, {n} streben, {dropped} fuer tuer entfernt")

@@ -45,11 +45,34 @@ liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 | U6 | `unify-u6-montage.md` | Gesamtmodell: Wasserautobahn auf 1550 mm, Einspeisung, Rückläufe, Beckenkette, Nachspeisung, Notüberlauf, Luft-/Schlammleitungen | 20 USD | **teilweise** (11.11., normale Sitzung): Ziel erfüllt (`check_oasis_soll --teil alle` BESTANDEN: 16/16 Wasserspiegel 0 mm, Stufen exakt, 77/77 Wege im Netz, 62/62 Leitungswege verlegt, 0 Hochpunkte; Build Exit 0; A+ unverändert); NICHT erfüllt: `check_leitungen --variante ring_b2` 72 benannte Verstöße (Kollision 20, Band 30, Gang 22, an U9), `check_autobahn_montage r2` 26/28 (2 FAIL Ausleger-Clip, vor U6 identisch); 14 Fallleitungen schräg, Rückläufe als Schlauchbündel an der Wand (Bedenken B14 bis B17); Stand unten |
 | U7 | `unify-u7-montage.md` | Variantenumschaltung abbauen (`variante.py`, `gen_dome.py`, `build.sh`, Viewer, `viewer_dist.py`): nur noch eine Variante | 12 USD | **erledigt** (11.11., normale Sitzung): alle 4 Prüfbefehle erfüllt (grep 0 Treffer; `build.sh 5 7` Exit 0 schreibt `designs/dome.sc`; `check_oasis_soll --teil alle` BESTANDEN mit den Messwerten von U6; `statik.json` ohne `varianten`); A+ und Stand U6 im Archiv (D141); Stand unten |
 | U8 | `unify-u8-daten.md` | Teileliste, Bestellliste (Europa, Link, lebensmittelecht), Bauteilbeschreibungen, Katalog | 12 USD | **teilweise** (11.11., normale Sitzung): Teileliste, Katalog, Beschreibungen und Biomasse erfuellt (`check_bom` 14/14, 0 ungeklaerte Koerper, Zaehlung Pumpen 4 / Venturi 2 / Schwimmer 2 / Sumpftanks 2, `oasis_soll --pruefen` 45/45, `check_links` 0 FEHLER); NICHT erfuellt: Bestellbarkeit in Europa mit Lebensmittel-Nachweis (D76, D85) nur fuer 21 von 64 neuen Artikeln als Angebot (davon keiner mit gelesenem Nachweis), 104 Zeilen ohne Preis; Stand unten |
-| U9 | `unify-u9-montage.md` | `check_latte` in Kopie, Kollisionen beheben (Verschiebung höchstens 750 mm), Gangkarte | 18 USD | offen |
+| U9 | `unify-u9-montage.md` | `check_latte` in Kopie, Kollisionen beheben (Verschiebung höchstens 750 mm), Gangkarte | 18 USD | ANGEHALTEN (11.11., 14:45, Ben): Lage weicht von der Quelle ab, erst Abschnitt „Lage-Korrektur“; Commits 70f2b89, fb2f3ba bleiben |
 | U10 | `unify-u10-viewer.md` | Viewer-Export, Kreislauf-Schalter mit Soll-Wegen, Browser-Screenshot, `viewer_dist.py` | 10 USD | offen |
 | P-Prüf | eigener Lauf, nicht der Bauer (Vorlage `docs/jobs/vorlagen/pruefung.md`) | Soll-Ist-Tabelle aller Quell-Bauteile, Kollisionen, Listen | 8 USD | offen |
 | F1 | `unify-fix-nachbesserung.md` | Nachbesserung nach dem Prüfbefund (entfällt bei PASS) | – | offen |
 | N1 | `unify-nachpruef.md` | Nachprüfung, danach Abschluss: Prozesse sauber beenden, Ergebnisbericht für Ben | – | offen |
+
+## Lage-Korrektur (Ben 11.11.2026, 14:40: „Top-Down passt gar nicht zum Lageplan der Quelle … nimm die Quelle als Wahrheit“)
+**Problem:** Die Draufsicht des Modells weicht von der Draufsicht der Quelle ab. Ursache ist U1: Die Lage-Probe hat Fischtank, Anbauringe, Tische und Beete
+aus dem Altmodell als „bleibt“ übernommen und nur die Technik drumherum gesucht. Dadurch stehen 19 von 40 Teilen 1,1 bis 3,4 m neben der Quelle,
+Sumpftanks und Schlammreaktoren als Vorbau außerhalb der Kuppel (D109/D110, `data/oasis-lage.json`). Danach wurden Leitungen auf diese falsche Lage gebaut (U6, U9).
+**Intent:** Erst stehen alle Teile wie in der Quelle, dann kommen Rohre. Keine Arbeit mehr an Leitungen auf falscher Lage.
+**Goal (prüfbar):** Überlagerung Modell-Draufsicht gegen die Quell-SVG (`#mainSvg`, 12,5 mm je Einheit, Mitte 500/480, 18° gedreht):
+jeder Mittelpunkt höchstens 150 mm, jeder Durchmesser höchstens 5 % daneben, kein Teil der Quelle als Vorbau außen, das innen steht. Ben sieht das Bild, bevor Rohre gebaut werden.
+
+**Messung an der Quelle (Browser, `#mainSvg`, 11.11. 14:40):**
+| Teil | Quelle (Einheiten) | Quelle (mm) | Modell heute |
+|---|---|---|---|
+| Haupt-Fischtank | Kreis r 180 um die Mitte | Ø 4500 | etwa Ø 3900, Innentische r 1533–2195 auf dem Rand |
+| Anbauring Innen (10 NFT) | Bögen r ≈ 225 | r ≈ 2800 | r 1533–2195 |
+| Anbauring Mitte / Außen | Bögen r ≈ 285 / 350–365 | r ≈ 3560 / 4400–4560 | Ringe voll umlaufend |
+| Technikblock | unten (vor der Tür-Achse), zwei gespiegelte Linien: Biofilter r46, Vortex r42, Schlammreaktor r36, Sumpftank rechteckig, Anzuchtbecken r80 Mitte, Lebendfutter r46 | Mittelpunkte 3550–5430 mm | 19 Teile verschoben, 5 außen |
+Die Anbauringe sind in der Quelle im Technikbereich offen; im Modell laufen sie ganz herum, darum fand U1 dort keinen Platz.
+
+**Neuer Ablauf (ersetzt U9 bis N1 bis zum Lage-Gate):**
+1. L1 Daten: `oasis_soll.py`/`oasis_lagepruefung.py` ohne „bleibt“: Tank, Ringradien und -bögen, Technik direkt aus der SVG; Überlagerungs-Skript mit Bild und Messwerten (Gate oben).
+2. L2 Werkstatt/Montage: Fischtank, Anbauringe (Tische, Beete) und Technik auf die Quell-Lage stellen, Gesamtbau, Gate L1 grün.
+3. Ben sieht die Überlagerung (Zwischencheck), erst dann Leitungen.
+4. Leitungen neu (Inhalt von U6/U9 auf der neuen Lage), dann U8-Nachzug, U10, Prüfer, F1, N1 wie bisher.
 
 Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Obergrenzen je Lauf, keine Erwartung; gemessen wird in `tools/agent-sdk-runner/usage.jsonl`. Anhaltspunkt: dieser Planer-Lauf hat bis zum Planende etwa 5,7 USD verbraucht (Budgetzähler des Runners, 12 USD Obergrenze).
 

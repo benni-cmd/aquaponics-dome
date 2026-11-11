@@ -194,6 +194,16 @@ Demo-Männchen steht, nach innen zu ziehen. Überflüssige Bauteile rausnehmen. 
 5. Überflüssige Bauteile entfernen: Teile ohne Rolle im Kreislauf der Quelle und ohne Owner-Entscheidung, die sie hält (z. B. Puffer klein D160, prüfen gegen Abschnitt C/D101). Jede Entfernung steht in einer Liste im Paket mit Grund. Aktivkohle-Station bleibt.
 6. Prüfungen wie L3: `check_walkways_voll` 0 nicht erreichbar, Tür-Gang 900, keine Überlappung (`check_lage_konflikte`), kein Teil im Gerüst. Danach neue Draufsicht für Ben. Weiterhin keine Rohre.
 
+### L4 Stand (11.11.2026, 18:50, Werkstatt/Montage-Sitzung; Modellstand 18:38:36, `scripts/build.sh 5 32` Exit 0, keine Rohre)
+**Plan/Werkzeug:** `scripts/l4_anordnung.py` (baut auf `l3_anordnung.py` auf; Gittersuche, Pruefung vor dem Bau, `--schreiben`).
+1. Becken-Kette auf der Mittelachse Az -54 zwischen den Innentischen: Fischtank Huelle r 2095 | Spalt 30 | Anzucht Ø 1520 (Mitte r 2885) | Spalt 30 | Lebendfutter Ø 830 (Mitte r 4090); Ueberlauf-Stutzen ragen 25 mm heraus; Volumen wie L3 (2,513 / 0,668 m3); Anzucht 100 mm neben den Innentisch-Fussplatten.
+2. Podeste je Linie Kante an Kante (Spalt 20, Mittenabstand 900), Paar bei phi +-50 Grad r 3350; Tank-Stutzen radial nach innen.
+3. Pumpen: Notluftpumpe unter Podest Vortex 2 (lichte Hoehe 537 > 320, Rahmen innen 640 > 405); Geblaese 729 hoch passen unter kein Podest (Vortex 537, Biofilter 190) -> aussen; Filter-/Hauptpumpen Tauchpumpen (D102).
+4. Schaltschrank + Einfuehrung innen (phi -4, r 5200); Puffer klein mit Demo-Maennchen aussen (Bedienzone passt nicht), D162.
+5. **Entfernt:** Zulaufrohr T10 (A+-Leitung, D101), D163. Alle anderen Teile geprueft und behalten (Liste in D163).
+6. **Messung:** `check_walkways_voll.py`: Tuer-Gang 900 mm in Knie- und Kopfhoehe bis r 2511 (Fischtank-Rand 2095, Innentisch-Fuesse 2160); NICHT erreichbar 3: Notluftpumpe (steht unter dem Podest, die Regel kennt nur das Podest als naechstes Hindernis; gemessen Kante 40 mm hinter der Podestkante am 900-Gang), Innentisch 5 und 6 je ein Fuss (100 mm neben dem Anzuchtbecken; die Tische sind ueber den anderen Fuss erreichbar); Kopf 7 rote Engstellen, alle zwischen absichtlich anliegenden Paaren (Becken-Kette, Podest-Paare). `check_lage_konflikte.py`: 0 Ueberlappungen der Technik (5 Altbefunde Mitteltische wie vor L2; Rundkoerper jetzt als Kreis gemessen). Wand 100 mm und Kuppel 5800 per Planungspruefung. `l3_vergleich.py`: Seite 18/18 wie Quelle, Reihenfolge nach Radius weiter Filter innen (B29). Bilder: `renders/lage-l4-draufsicht.png`, `renders/l4-anordnung-vs-quelle.png`, `renders/l4-anordnung.png`.
+**Naechster Schritt:** Ben sieht `renders/lage-l4-draufsicht.png`; danach Leitungen neu.
+
 **Nicht erfuellt / offen:** Gate `check_lage_quelle.py` gilt seit D156 nicht mehr (prueft Zeichnungsmasse); `check_pool_soll` prueft alte Masse; Teileliste/Volumen-Nachzug (U8) und Rohre offen. **Naechster Schritt:** Ben sieht `renders/lage-l3-draufsicht.png` und `renders/l3-anordnung-vs-quelle.png`; danach Leitungen neu.
 
 ## Stand

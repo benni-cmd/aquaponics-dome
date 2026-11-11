@@ -19,8 +19,8 @@ import check_lage_quelle as C   # noqa: E402
 
 DEFS = {   # Definition -> Kurzname, Kreis-Koerper (Becken) oder None
     "pool_zentral": ("Fischtank", "T5_Zentraltank"), "zweitbecken": ("Anzuchtbecken", "T6_Zweitbecken"), "becken_dritt_klein": ("Lebendfutter", "T14k_Wanne"),
-    "sumpftank": ("Sumpftank", None), "sumpftank_spiegel": ("Sumpftank", None), "tank_klein": ("Vortex", None), "podest_vortex": ("Podest Vortex", None),
-    "tank_gross": ("Biofilter", None), "tank_gross_t3": ("Biofilter", None), "podest_biofilter": ("Podest Biofilter", None),
+    "sumpftank": ("Sumpftank", None), "sumpftank_spiegel": ("Sumpftank", None), "tank_klein": ("Vortex", "Tank"), "podest_vortex": ("Podest Vortex", None),
+    "tank_gross": ("Biofilter", "Tank"), "tank_gross_t3": ("Biofilter", "Tank"), "podest_biofilter": ("Podest Biofilter", None),
     "schlamm_sammelbehaelter": ("Schlammsammler", None), "nft_tisch_innen": ("NFT innen", None), "nft_tisch_mitte": ("NFT mitte", None),
     "nft_tisch_aussen": ("NFT aussen", None), "ibc_beet_aussen_800": ("Beet aussen", None), "ibc_beet_innen_933": ("Beet mitte", None),
     "permakultur_modul": ("Permakultur", None), "geblaese_luft": ("Geblaese", None), "notluftpumpe": ("Notluftpumpe", None),
@@ -102,7 +102,7 @@ def koerper(i, kb):
     for k in C.detail(i["d"]) or []:
         lo, hi = k["bbox"]["min"], k["bbox"]["max"]
         z0, z1 = lo[2] + m[11], hi[2] + m[11]
-        if kb and k["name"] == kb:
+        if kb and (k["name"] == kb or abs((hi[0] - lo[0]) - (hi[1] - lo[1])) < 1.0):   # Becken: Huelle und runde Koerper (Wasser) als Kreis, nicht als Box (L4)
             cx, cy = C.xy(m, (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2)
             out.append((ccw(kreis_poly(cx, cy, max(hi[0] - lo[0], hi[1] - lo[1]) / 2)), z0, z1))
         else:

@@ -452,7 +452,7 @@
    "bauplatz": {
     "x_mm": 3313.9,
     "y_mm": -632.7,
-    "drehung_grad": 86.0,
+    "drehung_grad": 176.0,
     "z_modell_mm": 977.0,
     "r_mm": 3373.8,
     "az_grad": -10.8,
@@ -499,7 +499,7 @@
    "bauplatz": {
     "x_mm": -422.3,
     "y_mm": -3347.3,
-    "drehung_grad": -14.0,
+    "drehung_grad": -284.0,
     "z_modell_mm": 977.0,
     "r_mm": 3373.8,
     "az_grad": -97.2,
@@ -556,7 +556,7 @@
    "bauplatz": {
     "x_mm": 3376.7,
     "y_mm": 265.1,
-    "drehung_grad": 86.0,
+    "drehung_grad": 176.0,
     "z_modell_mm": 630.0,
     "r_mm": 3387.1,
     "az_grad": 4.5,
@@ -607,7 +607,7 @@
    "bauplatz": {
     "x_mm": -1295.6,
     "y_mm": -3129.5,
-    "drehung_grad": -14.0,
+    "drehung_grad": -284.0,
     "z_modell_mm": 630.0,
     "r_mm": 3387.1,
     "az_grad": -112.5,

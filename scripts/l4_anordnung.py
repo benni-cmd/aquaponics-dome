@@ -171,7 +171,8 @@ def main():
         for b in lage["bauteile"]:
             if b["id"] in ("vortex_1", "vortex_2", "bio_1", "bio_2"):
                 lnr = 1 if b["id"].endswith("1") else 2
-                b["bauplatz"]["drehung_grad"] = round(yaw if lnr == 1 else 2 * L.ACHSE_M - yaw + 180.0, 2)   # Podest-Kanten parallel zur Paar-Achse
+                y1 = yaw + 90.0   # Podest-Kanten parallel zur Paar-Achse (Quadrat, 90 Grad gleichwertig); Tank-Stutzen (+X) zeigt radial nach innen, nicht zum Nachbartank oder Tisch (gemessen 11.11.: Stutzen Biofilter 2 in Tisch mitte 3, 46 mm)
+                b["bauplatz"]["drehung_grad"] = round(y1 if lnr == 1 else 2 * L.ACHSE_M - y1, 2)
                 b["bauplatz"]["quelle"] = "L4 (D161): Podeste Kante an Kante, scripts/l4_anordnung.py"
             elif b["id"] == "luftpumpe":   # Notluftpumpe unter dem Podest Vortex 2 (D161 Punkt 3; 405 x 230 x 320 in 640 x 640 x 537 lichtem Raum)
                 v2 = pl["vortex_2"]

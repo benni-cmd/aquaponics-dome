@@ -12,6 +12,8 @@ V = variante.aktiv()
 cmds = json.load(open(variante.pfad("dome_script", V)))["commands"]   # V1b: Bau-Skript der Variante
 BILDER = variante.pfad("bilder_dir", V); os.makedirs(BILDER, exist_ok=True)   # A+: renders/, B2: renders/ring_b2/
 KARTE = os.path.join(ROOT, "docs", "walkway-map.md" if V == "a_plus" else "walkway-map-%s.md" % V)
+DIAG = "-diagnose" if os.environ.get("WALK_OHNE") else ""
+if DIAG: KARTE = KARTE[:-3] + DIAG + ".md"
 P = {c["params"]["name"]: float(c["params"]["expression"]) for c in cmds if c["command"] == "parameters.add"}
 LAY = json.load(open(os.path.join(ROOT, "data", "layout.json")))
 mv = {c["params"]["occurrence"]: c["params"]["matrix"] for c in cmds if c["command"] == "occurrence.move"}
@@ -58,7 +60,14 @@ for k, m in mv.items():
         pg, _ = poly(m, (-100, -100, 0, 100, 100, 0)); obst.append((k, pg, FZ, FZ + 2100))
 pools = [("Zentralpool", (0.0, 0.0), LAY["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (P["pool2_r"] * math.cos(math.radians(P["pool2_az"])), P["pool2_r"] * math.sin(math.radians(P["pool2_az"]))), LAY["pool2"]["d"] / 2 + 60),
          ("Drittbecken", (P["pool3_r"] * math.cos(math.radians(P["pool3_az"])), P["pool3_r"] * math.sin(math.radians(P["pool3_az"]))), P["pool3_d"] / 2 + 60)]
+if any(c["command"] == "component.insert_design" and c["params"].get("name") == "Zweitbecken" and c["params"]["path"].endswith("/zweitbecken.sc") for c in cmds):
+    # N-UNIFY-AUTOBAHN U4 (D124): ab dem Gesamtmodell nach der Quelle stehen Anzucht- und Lebendfutterbecken am Bauplatz aus data/oasis-lage.json (Weltlage in der Komponente bzw. Matrix), nicht bei pool2_r/pool3_r; Durchmesser aus dem Block ring_b2 in layout.json
+    _bp = {b["id"]: b["bauplatz"] for b in json.load(open(os.path.join(ROOT, "data", "oasis-lage.json"), encoding="utf-8"))["bauteile"] if b.get("bauplatz")}; _rb = LAY["ring_b2"]
+    pools = [("Zentralpool", (0.0, 0.0), _rb["pool"]["d"] / 2 + P["wall"]), ("Zweitbecken", (_bp["nursery"]["x_mm"], _bp["nursery"]["y_mm"]), _rb["pool2"]["d"] / 2 + 60),
+             ("Drittbecken", (_bp["feed"]["x_mm"], _bp["feed"]["y_mm"]), _rb["pool3"]["d"] / 2 + 60)]
 for nm, c, r in pools: obst.append((nm, ("circle",) + c + (r,), -1e9, 1e9))
+OHNE = [x for x in os.environ.get("WALK_OHNE", "").split(",") if x]   # Diagnose (N-UNIFY U4): Hindernisse mit diesen Namenspraefixen weglassen, z. B. WALK_OHNE=Tank_,Pumpe_,Puffer_Klein; schreibt dann docs/walkway-map-<variante>-diagnose.md und Bilder mit Suffix -diagnose, die Karte der Variante bleibt unberuehrt
+if OHNE: obst = [o for o in obst if not any(o[0].startswith(x) for x in OHNE)]; print("DIAGNOSE ohne:", OHNE)
 
 def inside_poly(x, y, pg):
     s = 0
@@ -183,7 +192,7 @@ for sl, h in [s_ for s_ in (("knie", 300), ("kopf", 1700)) if s_[0] in os.enviro
     for cells, col in ((red, (220, 40, 40)), (yel, (235, 150, 20))):
         for j, i in cells: dr.rectangle([i * sc - 1, (N - 1 - j) * sc - 1, (i + 1) * sc + 1, (N - j) * sc + 1], fill=col)
     dr.text((8, 8), f"Laufwegkarte {sl} ({h} mm): gruen >= 600, gelb 500-600 (Gang), blau nicht erreichbar, rote/orange Linien = Engstellen < 500 / 500-600", fill=(0, 0, 0))
-    im.save(os.path.join(BILDER, f"walkway-map-{sl}.png"))
+    im.save(os.path.join(BILDER, f"walkway-map-{sl}{DIAG}.png"))
 lines += ["## Zusammenfassung", ""] + [f"- {k[0]} {k[1]}: {v} Engstellen" for k, v in summary.items()]
 open(KARTE, "w", encoding="utf-8").write("\n".join(lines) + "\n")
 print("\n".join(lines[-6:]))

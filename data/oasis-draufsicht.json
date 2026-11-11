@@ -1,0 +1,1436 @@
+{
+ "meta": {
+  "titel": "Soll-Lage der Draufsicht nach Leons Oasis-Showcase (L1, N-UNIFY-AUTOBAHN, D117: die Quelle ist die Wahrheit)",
+  "erzeugt_von": "scripts/oasis_draufsicht.py (python -I -X utf8 scripts/oasis_draufsicht.py)",
+  "quelle": {
+   "datei": "docs/quellen/oasis-showcase-2026-11-10/index.html",
+   "sha256": "37c1a78f1dcd685891512bf297648705633e6359591b6228d0a76d1bcf552dcc",
+   "svg": "#mainSvg > g#soll-plan",
+   "ansicht": "2D-Flussschema -> Draufsicht"
+  },
+  "umrechnung": {
+   "mm_je_zeichnungseinheit": 12.5,
+   "kuppelmitte_zeichnung": [
+    500.0,
+    480.0
+   ],
+   "kuppel_radius_zeichnung": 480,
+   "kuppel_radius_mm": 6000,
+   "drehung_grad": 18.0,
+   "x_modell_mm": "dx = (x-500)*12,5, dy = -(y-480)*12,5, dann um 18 Grad gegen den Uhrzeigersinn gedreht",
+   "gruppen_transform_ignoriert": "translate(107.5 86.7) scale(0.801) ist Seitenlayout, kein Mass"
+  },
+  "tuer_achse_az_grad": -72
+ },
+ "kuppel": {
+  "radius_mm": 6000,
+  "mitte_mm": [
+   0,
+   0
+  ]
+ },
+ "teile": {
+  "rain": {
+   "id": "rain",
+   "name": "Regenwasser",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": -6511.7,
+   "y_mm": -1195.7,
+   "breite_mm": 1625.0,
+   "hoehe_mm": 500.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    -90.0,
+    390.0,
+    130.0,
+    40.0
+   ],
+   "r_mm": 6620.6,
+   "az_grad": -169.6,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "tap": {
+   "id": "tap",
+   "name": "Frischwasser",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": -6279.9,
+   "y_mm": -1909.0,
+   "breite_mm": 1625.0,
+   "hoehe_mm": 500.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    -90.0,
+    450.0,
+    130.0,
+    40.0
+   ],
+   "r_mm": 6563.6,
+   "az_grad": -163.09,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "pv": {
+   "id": "pv",
+   "name": "Photovoltaik",
+   "im_umfang": false,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": 4081.0,
+   "y_mm": 6451.9,
+   "breite_mm": 1750.0,
+   "hoehe_mm": 500.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    900.0,
+    70.0,
+    140.0,
+    40.0
+   ],
+   "r_mm": 7634.2,
+   "az_grad": 57.69,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "battery": {
+   "id": "battery",
+   "name": "Batteriespeicher",
+   "im_umfang": false,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": 4312.8,
+   "y_mm": 5738.6,
+   "breite_mm": 1750.0,
+   "hoehe_mm": 500.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    900.0,
+    130.0,
+    140.0,
+    40.0
+   ],
+   "r_mm": 7178.6,
+   "az_grad": 53.07,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "control": {
+   "id": "control",
+   "name": "Steuerung & Pumpen",
+   "im_umfang": false,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": -5922.6,
+   "y_mm": -3008.7,
+   "breite_mm": 1625.0,
+   "hoehe_mm": 562.5,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    -90.0,
+    540.0,
+    130.0,
+    45.0
+   ],
+   "r_mm": 6643.0,
+   "az_grad": -153.07,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "fish": {
+   "id": "fish",
+   "name": "Haupt-Fischtank",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 0.0,
+   "y_mm": 0.0,
+   "radius_mm": 2250.0,
+   "durchmesser_mm": 4500.0,
+   "radius_zeichnung": 180.0,
+   "r_mm": 0.0,
+   "az_grad": 0.0,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "nursery": {
+   "id": "nursery",
+   "name": "Anzuchtbecken",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 1097.0,
+   "y_mm": -3376.3,
+   "radius_mm": 1000.0,
+   "durchmesser_mm": 2000.0,
+   "radius_zeichnung": 80.0,
+   "r_mm": 3550.0,
+   "az_grad": -72.0,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "feed": {
+   "id": "feed",
+   "name": "Lebendfutter",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 1637.8,
+   "y_mm": -5040.6,
+   "radius_mm": 575.0,
+   "durchmesser_mm": 1150.0,
+   "radius_zeichnung": 46.0,
+   "r_mm": 5300.0,
+   "az_grad": -72.0,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "vortex_1": {
+   "id": "vortex_1",
+   "name": "Vortex 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 3688.6,
+   "y_mm": -2534.2,
+   "radius_mm": 525.0,
+   "durchmesser_mm": 1050.0,
+   "radius_zeichnung": 42.0,
+   "r_mm": 4475.3,
+   "az_grad": -34.49,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "vortex_2": {
+   "id": "vortex_2",
+   "name": "Vortex 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": -1494.6,
+   "y_mm": -4218.3,
+   "radius_mm": 525.0,
+   "durchmesser_mm": 1050.0,
+   "radius_zeichnung": 42.0,
+   "r_mm": 4475.3,
+   "az_grad": -109.51,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "bio_1": {
+   "id": "bio_1",
+   "name": "Biofilter 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 4894.1,
+   "y_mm": -2037.4,
+   "radius_mm": 575.0,
+   "durchmesser_mm": 1150.0,
+   "radius_zeichnung": 46.0,
+   "r_mm": 5301.2,
+   "az_grad": -22.6,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "bio_2": {
+   "id": "bio_2",
+   "name": "Biofilter 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": -2761.9,
+   "y_mm": -4524.9,
+   "radius_mm": 575.0,
+   "durchmesser_mm": 1150.0,
+   "radius_zeichnung": 46.0,
+   "r_mm": 5301.2,
+   "az_grad": -121.4,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "sludge_1": {
+   "id": "sludge_1",
+   "name": "Schlammreaktor 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 4044.0,
+   "y_mm": -3627.9,
+   "radius_mm": 450.0,
+   "durchmesser_mm": 900.0,
+   "radius_zeichnung": 36.0,
+   "r_mm": 5432.8,
+   "az_grad": -41.9,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "sludge_2": {
+   "id": "sludge_2",
+   "name": "Schlammreaktor 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": -1139.2,
+   "y_mm": -5312.0,
+   "radius_mm": 450.0,
+   "durchmesser_mm": 900.0,
+   "radius_zeichnung": 36.0,
+   "r_mm": 5432.8,
+   "az_grad": -102.1,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "permakultur": {
+   "id": "permakultur",
+   "name": "Permakultur und Futterzucht",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": 2043.4,
+   "y_mm": -6288.9,
+   "breite_mm": 1500.0,
+   "hoehe_mm": 525.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    440.0,
+    988.0,
+    120.0,
+    42.0
+   ],
+   "r_mm": 6612.5,
+   "az_grad": -72.0,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "sump_1": {
+   "id": "sump_1",
+   "name": "Sumpftank 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": 2733.7,
+   "y_mm": -3357.1,
+   "breite_mm": 1125.0,
+   "hoehe_mm": 2975.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    580.0,
+    684.0,
+    90.0,
+    238.0
+   ],
+   "r_mm": 4329.3,
+   "az_grad": -50.84,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "sump_2": {
+   "id": "sump_2",
+   "name": "Sumpftank 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": -238.4,
+   "y_mm": -4322.7,
+   "breite_mm": 1125.0,
+   "hoehe_mm": 2975.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    330.0,
+    684.0,
+    90.0,
+    238.0
+   ],
+   "r_mm": 4329.3,
+   "az_grad": -93.16,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "luftpumpe": {
+   "id": "luftpumpe",
+   "name": "Notluftpumpe",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": -5546.0,
+   "y_mm": -4167.8,
+   "breite_mm": 1625.0,
+   "hoehe_mm": 500.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    -90.0,
+    640.0,
+    130.0,
+    40.0
+   ],
+   "r_mm": 6937.5,
+   "az_grad": -143.08,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "luftpumpe_1": {
+   "id": "luftpumpe_1",
+   "name": "Belüftungspumpe 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": 7168.4,
+   "y_mm": -825.2,
+   "breite_mm": 1625.0,
+   "hoehe_mm": 500.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    960.0,
+    700.0,
+    130.0,
+    40.0
+   ],
+   "r_mm": 7215.7,
+   "az_grad": -6.57,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "luftpumpe_2": {
+   "id": "luftpumpe_2",
+   "name": "Belüftungspumpe 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "rechteck",
+   "x_mm": -5314.3,
+   "y_mm": -4881.1,
+   "breite_mm": 1625.0,
+   "hoehe_mm": 500.0,
+   "drehung_grad": 18.0,
+   "breite_achse": "Zeichnung-x = Modell-Richtung 18 Grad",
+   "zeichnung_rect": [
+    -90.0,
+    700.0,
+    130.0,
+    40.0
+   ],
+   "r_mm": 7215.7,
+   "az_grad": -137.43,
+   "ausserhalb_kuppel": true,
+   "liegt_in_kuppel_ganz": false
+  },
+  "ring_1": {
+   "id": "ring_1",
+   "name": "Wasserautobahn Halbring 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "linienzug",
+   "x_mm": 1598.5,
+   "y_mm": 519.4,
+   "punkte": [
+    {
+     "x_mm": 1173.7,
+     "y_mm": -3167.3
+    },
+    {
+     "x_mm": 2087.1,
+     "y_mm": -2871.9
+    },
+    {
+     "x_mm": 3376.6,
+     "y_mm": -1096.5
+    },
+    {
+     "x_mm": 3376.3,
+     "y_mm": 1097.0
+    },
+    {
+     "x_mm": 2087.2,
+     "y_mm": 2871.8
+    },
+    {
+     "x_mm": 0.5,
+     "y_mm": 3550.2
+    },
+    {
+     "x_mm": -912.2,
+     "y_mm": 3252.3
+    }
+   ],
+   "r_mm": 1680.8,
+   "az_grad": 18.0,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "ring_2": {
+   "id": "ring_2",
+   "name": "Wasserautobahn Halbring 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "linienzug",
+   "x_mm": -1598.5,
+   "y_mm": -519.4,
+   "punkte": [
+    {
+     "x_mm": 912.2,
+     "y_mm": -3252.3
+    },
+    {
+     "x_mm": -0.5,
+     "y_mm": -3550.2
+    },
+    {
+     "x_mm": -2087.2,
+     "y_mm": -2871.8
+    },
+    {
+     "x_mm": -3376.3,
+     "y_mm": -1097.0
+    },
+    {
+     "x_mm": -3376.6,
+     "y_mm": 1096.5
+    },
+    {
+     "x_mm": -2087.1,
+     "y_mm": 2871.9
+    },
+    {
+     "x_mm": -1173.7,
+     "y_mm": 3167.3
+    }
+   ],
+   "r_mm": 1680.8,
+   "az_grad": -162.0,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true
+  },
+  "abf_nft_1": {
+   "id": "abf_nft_1",
+   "name": "NFT-Abfahrten Halbring 1",
+   "im_umfang": true,
+   "anzahl_quelle": 12,
+   "art": "abzweigpunkte",
+   "punkte": [
+    {
+     "x_mm": 2087.1,
+     "y_mm": -2871.9,
+     "az_grad": -53.99,
+     "r_mm": 3550.2
+    },
+    {
+     "x_mm": 3356.8,
+     "y_mm": -1156.8,
+     "az_grad": -19.01,
+     "r_mm": 3550.5
+    },
+    {
+     "x_mm": 3376.6,
+     "y_mm": -1096.5,
+     "az_grad": -17.99,
+     "r_mm": 3550.2
+    },
+    {
+     "x_mm": 3414.9,
+     "y_mm": 978.1,
+     "az_grad": 15.98,
+     "r_mm": 3552.2
+    },
+    {
+     "x_mm": 3395.6,
+     "y_mm": 1037.6,
+     "az_grad": 16.99,
+     "r_mm": 3550.6
+    },
+    {
+     "x_mm": 3356.9,
+     "y_mm": 1156.5,
+     "az_grad": 19.01,
+     "r_mm": 3550.5
+    },
+    {
+     "x_mm": 2187.5,
+     "y_mm": 2797.9,
+     "az_grad": 51.98,
+     "r_mm": 3551.5
+    },
+    {
+     "x_mm": 2137.1,
+     "y_mm": 2835.4,
+     "az_grad": 52.99,
+     "r_mm": 3550.6
+    },
+    {
+     "x_mm": 2035.7,
+     "y_mm": 2908.9,
+     "az_grad": 55.01,
+     "r_mm": 3550.5
+    },
+    {
+     "x_mm": 275.2,
+     "y_mm": 3550.0,
+     "az_grad": 85.57,
+     "r_mm": 3560.7
+    },
+    {
+     "x_mm": 212.3,
+     "y_mm": 3549.3,
+     "az_grad": 86.58,
+     "r_mm": 3555.6
+    },
+    {
+     "x_mm": 87.4,
+     "y_mm": 3549.5,
+     "az_grad": 88.59,
+     "r_mm": 3550.6
+    }
+   ]
+  },
+  "abf_nft_2": {
+   "id": "abf_nft_2",
+   "name": "NFT-Abfahrten Halbring 2",
+   "im_umfang": true,
+   "anzahl_quelle": 12,
+   "art": "abzweigpunkte",
+   "punkte": [
+    {
+     "x_mm": -0.5,
+     "y_mm": -3550.2,
+     "az_grad": -90.01,
+     "r_mm": 3550.2
+    },
+    {
+     "x_mm": -2035.7,
+     "y_mm": -2908.9,
+     "az_grad": -124.99,
+     "r_mm": 3550.5
+    },
+    {
+     "x_mm": -2087.2,
+     "y_mm": -2871.8,
+     "az_grad": -126.01,
+     "r_mm": 3550.2
+    },
+    {
+     "x_mm": -3337.6,
+     "y_mm": -1215.9,
+     "az_grad": -159.98,
+     "r_mm": 3552.2
+    },
+    {
+     "x_mm": -3356.9,
+     "y_mm": -1156.5,
+     "az_grad": -160.99,
+     "r_mm": 3550.5
+    },
+    {
+     "x_mm": -3395.6,
+     "y_mm": -1037.6,
+     "az_grad": -163.01,
+     "r_mm": 3550.6
+    },
+    {
+     "x_mm": -3414.3,
+     "y_mm": 977.8,
+     "az_grad": 164.02,
+     "r_mm": 3551.6
+    },
+    {
+     "x_mm": -3395.6,
+     "y_mm": 1037.7,
+     "az_grad": 163.01,
+     "r_mm": 3550.6
+    },
+    {
+     "x_mm": -3356.8,
+     "y_mm": 1156.8,
+     "az_grad": 160.99,
+     "r_mm": 3550.5
+    },
+    {
+     "x_mm": -2309.3,
+     "y_mm": 2710.3,
+     "az_grad": 130.43,
+     "r_mm": 3560.7
+    },
+    {
+     "x_mm": -2258.0,
+     "y_mm": 2746.7,
+     "az_grad": 129.42,
+     "r_mm": 3555.7
+    },
+    {
+     "x_mm": -2157.1,
+     "y_mm": 2820.2,
+     "az_grad": 127.41,
+     "r_mm": 3550.6
+    }
+   ]
+  },
+  "abf_fd_1": {
+   "id": "abf_fd_1",
+   "name": "Flood-and-Drain-Abfahrten Halbring 1",
+   "im_umfang": true,
+   "anzahl_quelle": 7,
+   "art": "abzweigpunkte",
+   "punkte": [
+    {
+     "x_mm": 3395.6,
+     "y_mm": -1037.7,
+     "az_grad": -16.99,
+     "r_mm": 3550.6
+    },
+    {
+     "x_mm": 3376.3,
+     "y_mm": 1097.0,
+     "az_grad": 18.0,
+     "r_mm": 3550.0
+    },
+    {
+     "x_mm": 3337.6,
+     "y_mm": 1215.9,
+     "az_grad": 20.02,
+     "r_mm": 3552.2
+    },
+    {
+     "x_mm": 2087.2,
+     "y_mm": 2871.8,
+     "az_grad": 53.99,
+     "r_mm": 3550.2
+    },
+    {
+     "x_mm": 1985.8,
+     "y_mm": 2945.3,
+     "az_grad": 56.01,
+     "r_mm": 3552.2
+    },
+    {
+     "x_mm": 150.3,
+     "y_mm": 3550.2,
+     "az_grad": 87.58,
+     "r_mm": 3553.4
+    },
+    {
+     "x_mm": 25.4,
+     "y_mm": 3550.4,
+     "az_grad": 89.59,
+     "r_mm": 3550.5
+    }
+   ]
+  },
+  "abf_fd_2": {
+   "id": "abf_fd_2",
+   "name": "Flood-and-Drain-Abfahrten Halbring 2",
+   "im_umfang": true,
+   "anzahl_quelle": 7,
+   "art": "abzweigpunkte",
+   "punkte": [
+    {
+     "x_mm": -2137.1,
+     "y_mm": -2835.4,
+     "az_grad": -127.01,
+     "r_mm": 3550.6
+    },
+    {
+     "x_mm": -3376.3,
+     "y_mm": -1097.0,
+     "az_grad": -162.0,
+     "r_mm": 3550.0
+    },
+    {
+     "x_mm": -3414.9,
+     "y_mm": -978.1,
+     "az_grad": -164.02,
+     "r_mm": 3552.2
+    },
+    {
+     "x_mm": -3376.6,
+     "y_mm": 1096.5,
+     "az_grad": 162.01,
+     "r_mm": 3550.2
+    },
+    {
+     "x_mm": -3337.7,
+     "y_mm": 1215.6,
+     "az_grad": 159.99,
+     "r_mm": 3552.2
+    },
+    {
+     "x_mm": -2208.3,
+     "y_mm": 2783.8,
+     "az_grad": 128.42,
+     "r_mm": 3553.3
+    },
+    {
+     "x_mm": -2107.4,
+     "y_mm": 2857.4,
+     "az_grad": 126.41,
+     "r_mm": 3550.5
+    }
+   ]
+  },
+  "nachspeise": {
+   "id": "nachspeise",
+   "name": "Nachspeise-Ventil",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "punkt",
+   "x_mm": -3061.2,
+   "y_mm": -206.0,
+   "symbole": [
+    "ventil"
+   ],
+   "r_mm": 3068.1,
+   "az_grad": -176.15,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "filterpumpe_1": {
+   "id": "filterpumpe_1",
+   "name": "Pumpe Fischtank → Filter 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 1915.0,
+   "y_mm": -1848.7,
+   "radius_mm": 137.5,
+   "durchmesser_mm": 275.0,
+   "radius_zeichnung": 11.0,
+   "r_mm": 2661.8,
+   "az_grad": -43.99,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "filterpumpe_2": {
+   "id": "filterpumpe_2",
+   "name": "Pumpe Fischtank → Filter 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": -462.6,
+   "y_mm": -2621.3,
+   "radius_mm": 137.5,
+   "durchmesser_mm": 275.0,
+   "radius_zeichnung": 11.0,
+   "r_mm": 2661.8,
+   "az_grad": -100.01,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "kupplungshahn": {
+   "id": "kupplungshahn",
+   "name": "Kupplungshahn zwischen den Halbringen",
+   "im_umfang": true,
+   "anzahl_quelle": 2,
+   "art": "ohne_geometrie"
+  },
+  "ringende_1": {
+   "id": "ringende_1",
+   "name": "Ring-Ende-Hahn Halbring 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "punkt",
+   "x_mm": -0.4,
+   "y_mm": 3225.2,
+   "symbole": [
+    "ventil"
+   ],
+   "r_mm": 3225.2,
+   "az_grad": 90.01,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "ringende_2": {
+   "id": "ringende_2",
+   "name": "Ring-Ende-Hahn Halbring 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "punkt",
+   "x_mm": -1895.4,
+   "y_mm": 2609.5,
+   "symbole": [
+    "ventil"
+   ],
+   "r_mm": 3225.2,
+   "az_grad": 125.99,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "hauptpumpe_1": {
+   "id": "hauptpumpe_1",
+   "name": "Pumpe Sumpf 1 → Fischtank",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": 2554.5,
+   "y_mm": -3007.8,
+   "radius_mm": 137.5,
+   "durchmesser_mm": 275.0,
+   "radius_zeichnung": 11.0,
+   "r_mm": 3946.2,
+   "az_grad": -49.66,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "hauptpumpe_2": {
+   "id": "hauptpumpe_2",
+   "name": "Pumpe Sumpf 2 → Fischtank",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "kreis",
+   "x_mm": -298.7,
+   "y_mm": -3934.9,
+   "radius_mm": 137.5,
+   "durchmesser_mm": 275.0,
+   "radius_zeichnung": 11.0,
+   "r_mm": 3946.2,
+   "az_grad": -94.34,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "venturi_1": {
+   "id": "venturi_1",
+   "name": "Venturi-Belüfter 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "punkt",
+   "x_mm": 2276.4,
+   "y_mm": -2151.9,
+   "symbole": [
+    "venturi"
+   ],
+   "r_mm": 3132.5,
+   "az_grad": -43.39,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "venturi_2": {
+   "id": "venturi_2",
+   "name": "Venturi-Belüfter 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "punkt",
+   "x_mm": -576.8,
+   "y_mm": -3078.9,
+   "symbole": [
+    "venturi"
+   ],
+   "r_mm": 3132.5,
+   "az_grad": -100.61,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "schwimmer_1": {
+   "id": "schwimmer_1",
+   "name": "Schwimmerschalter Sumpf 1",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "punkt",
+   "x_mm": 3272.3,
+   "y_mm": -4529.2,
+   "symbole": [
+    "schwimmerschalter"
+   ],
+   "r_mm": 5587.6,
+   "az_grad": -54.15,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  },
+  "schwimmer_2": {
+   "id": "schwimmer_2",
+   "name": "Schwimmerschalter Sumpf 2",
+   "im_umfang": true,
+   "anzahl_quelle": 1,
+   "art": "punkt",
+   "x_mm": 14.9,
+   "y_mm": -5587.6,
+   "symbole": [
+    "schwimmerschalter"
+   ],
+   "r_mm": 5587.6,
+   "az_grad": -89.85,
+   "ausserhalb_kuppel": false,
+   "liegt_in_kuppel_ganz": true,
+   "hinweis": "Symbol der Zeichnung (A16: schematisch), Mass gilt nicht"
+  }
+ },
+ "ringe": {
+  "nft_aussen": {
+   "art": "nft",
+   "ring": "aussen",
+   "radius_mm": 4712.5,
+   "radius_zeichnung": 377.0,
+   "bogen_von_az_grad": -132.0,
+   "bogen_bis_az_grad": -12.0,
+   "oeffnung_mitte_az_grad": -72.0,
+   "oeffnung_grad": 120.0,
+   "stueckzahl": 8,
+   "stueckzahl_quelle": "flow-data count (oasis-soll.json) = Abzweigzahl der Zeichnung",
+   "segment_az_mitten_grad": [
+    3.0,
+    33.0,
+    63.0,
+    93.0,
+    123.0,
+    153.0,
+    -177.0,
+    -147.0
+   ],
+   "segment_annahme": "D150: gleichmaessig ueber den Bogen verteilt, Quelle zeigt nur Bogen und Stueckzahl (A16)",
+   "stroke_breite_zeichnung": 10,
+   "radius_gleich_beide_enden": true,
+   "pfad": "M173.5 668.5 A377 377 0 1 1 826.5 668.5",
+   "mittelpunkt_zeichnung": [
+    500.0,
+    480.0
+   ]
+  },
+  "nft_mitte": {
+   "art": "nft",
+   "ring": "mitte",
+   "radius_mm": 3712.5,
+   "radius_zeichnung": 297.0,
+   "bogen_von_az_grad": -132.0,
+   "bogen_bis_az_grad": -12.0,
+   "oeffnung_mitte_az_grad": -72.0,
+   "oeffnung_grad": 120.0,
+   "stueckzahl": 6,
+   "stueckzahl_quelle": "flow-data count (oasis-soll.json) = Abzweigzahl der Zeichnung",
+   "segment_az_mitten_grad": [
+    8.0,
+    48.0,
+    88.0,
+    128.0,
+    168.0,
+    -152.0
+   ],
+   "segment_annahme": "D150: gleichmaessig ueber den Bogen verteilt, Quelle zeigt nur Bogen und Stueckzahl (A16)",
+   "stroke_breite_zeichnung": 10,
+   "radius_gleich_beide_enden": true,
+   "pfad": "M242.8 628.5 A297 297 0 1 1 757.2 628.5",
+   "mittelpunkt_zeichnung": [
+    500.0,
+    480.0
+   ]
+  },
+  "nft_innen": {
+   "art": "nft",
+   "ring": "innen",
+   "radius_mm": 2625.0,
+   "radius_zeichnung": 210.0,
+   "bogen_von_az_grad": -132.0,
+   "bogen_bis_az_grad": -11.99,
+   "oeffnung_mitte_az_grad": -72.0,
+   "oeffnung_grad": 120.01,
+   "stueckzahl": 10,
+   "stueckzahl_quelle": "flow-data count (oasis-soll.json) = Abzweigzahl der Zeichnung",
+   "segment_az_mitten_grad": [
+    0.0,
+    24.0,
+    48.0,
+    72.0,
+    96.0,
+    120.0,
+    144.0,
+    168.0,
+    -168.0,
+    -144.0
+   ],
+   "segment_annahme": "D150: gleichmaessig ueber den Bogen verteilt, Quelle zeigt nur Bogen und Stueckzahl (A16)",
+   "stroke_breite_zeichnung": 12,
+   "radius_gleich_beide_enden": true,
+   "pfad": "M318.1 585 A210 210 0 1 1 681.9 585",
+   "mittelpunkt_zeichnung": [
+    500.0,
+    480.0
+   ]
+  },
+  "fd_aussen": {
+   "art": "fd",
+   "ring": "aussen",
+   "radius_mm": 4537.5,
+   "radius_zeichnung": 363.0,
+   "bogen_von_az_grad": -132.0,
+   "bogen_bis_az_grad": -12.0,
+   "oeffnung_mitte_az_grad": -72.0,
+   "oeffnung_grad": 120.01,
+   "stueckzahl": 8,
+   "stueckzahl_quelle": "flow-data count (oasis-soll.json) = Abzweigzahl der Zeichnung",
+   "segment_az_mitten_grad": [
+    3.0,
+    33.0,
+    63.0,
+    93.0,
+    123.0,
+    153.0,
+    -177.0,
+    -147.0
+   ],
+   "segment_annahme": "D150: gleichmaessig ueber den Bogen verteilt, Quelle zeigt nur Bogen und Stueckzahl (A16)",
+   "stroke_breite_zeichnung": 10,
+   "radius_gleich_beide_enden": true,
+   "pfad": "M185.6 661.5 A363 363 0 1 1 814.4 661.5",
+   "mittelpunkt_zeichnung": [
+    500.0,
+    480.0
+   ]
+  },
+  "fd_mitte": {
+   "art": "fd",
+   "ring": "mitte",
+   "radius_mm": 3537.5,
+   "radius_zeichnung": 283.0,
+   "bogen_von_az_grad": -132.0,
+   "bogen_bis_az_grad": -12.0,
+   "oeffnung_mitte_az_grad": -72.0,
+   "oeffnung_grad": 120.0,
+   "stueckzahl": 6,
+   "stueckzahl_quelle": "flow-data count (oasis-soll.json) = Abzweigzahl der Zeichnung",
+   "segment_az_mitten_grad": [
+    8.0,
+    48.0,
+    88.0,
+    128.0,
+    168.0,
+    -152.0
+   ],
+   "segment_annahme": "D150: gleichmaessig ueber den Bogen verteilt, Quelle zeigt nur Bogen und Stueckzahl (A16)",
+   "stroke_breite_zeichnung": 10,
+   "radius_gleich_beide_enden": true,
+   "pfad": "M254.9 621.5 A283 283 0 1 1 745.1 621.5",
+   "mittelpunkt_zeichnung": [
+    500.0,
+    480.0
+   ]
+  }
+ },
+ "tech_ids": [
+  "nursery",
+  "feed",
+  "vortex_1",
+  "vortex_2",
+  "bio_1",
+  "bio_2",
+  "sludge_1",
+  "sludge_2",
+  "sump_1",
+  "sump_2",
+  "filterpumpe_1",
+  "filterpumpe_2",
+  "hauptpumpe_1",
+  "hauptpumpe_2",
+  "venturi_1",
+  "venturi_2",
+  "schwimmer_1",
+  "schwimmer_2",
+  "nachspeise",
+  "permakultur"
+ ],
+ "tech_az_min": -176.15,
+ "tech_az_max": -22.6,
+ "pruefungen": [
+  {
+   "pruefung": "Mittelpunkt rain = oasis-soll.json",
+   "ok": true,
+   "detail": "-6511.7/-1195.7 vs -6511.7/-1195.7"
+  },
+  {
+   "pruefung": "Mittelpunkt tap = oasis-soll.json",
+   "ok": true,
+   "detail": "-6279.9/-1909.0 vs -6279.9/-1909.0"
+  },
+  {
+   "pruefung": "Mittelpunkt pv = oasis-soll.json",
+   "ok": true,
+   "detail": "4081.0/6451.9 vs 4081.0/6451.9"
+  },
+  {
+   "pruefung": "Mittelpunkt battery = oasis-soll.json",
+   "ok": true,
+   "detail": "4312.8/5738.6 vs 4312.8/5738.6"
+  },
+  {
+   "pruefung": "Mittelpunkt control = oasis-soll.json",
+   "ok": true,
+   "detail": "-5922.6/-3008.7 vs -5922.6/-3008.7"
+  },
+  {
+   "pruefung": "Mittelpunkt fish = oasis-soll.json",
+   "ok": true,
+   "detail": "0.0/0.0 vs 0.0/0.0"
+  },
+  {
+   "pruefung": "Mittelpunkt nursery = oasis-soll.json",
+   "ok": true,
+   "detail": "1097.0/-3376.3 vs 1097.0/-3376.3"
+  },
+  {
+   "pruefung": "Mittelpunkt feed = oasis-soll.json",
+   "ok": true,
+   "detail": "1637.8/-5040.6 vs 1637.8/-5040.6"
+  },
+  {
+   "pruefung": "Mittelpunkt vortex_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "3688.6/-2534.2 vs 3688.6/-2534.2"
+  },
+  {
+   "pruefung": "Mittelpunkt vortex_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-1494.6/-4218.3 vs -1494.6/-4218.3"
+  },
+  {
+   "pruefung": "Mittelpunkt bio_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "4894.1/-2037.4 vs 4894.1/-2037.4"
+  },
+  {
+   "pruefung": "Mittelpunkt bio_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-2761.9/-4524.9 vs -2761.9/-4524.9"
+  },
+  {
+   "pruefung": "Mittelpunkt sludge_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "4044.0/-3627.9 vs 4044.0/-3627.9"
+  },
+  {
+   "pruefung": "Mittelpunkt sludge_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-1139.2/-5312.0 vs -1139.2/-5312.0"
+  },
+  {
+   "pruefung": "Mittelpunkt permakultur = oasis-soll.json",
+   "ok": true,
+   "detail": "2043.4/-6288.9 vs 2043.4/-6288.9"
+  },
+  {
+   "pruefung": "Mittelpunkt sump_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "2733.7/-3357.1 vs 2733.7/-3357.1"
+  },
+  {
+   "pruefung": "Mittelpunkt sump_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-238.4/-4322.7 vs -238.4/-4322.7"
+  },
+  {
+   "pruefung": "Mittelpunkt luftpumpe = oasis-soll.json",
+   "ok": true,
+   "detail": "-5546.0/-4167.8 vs -5546.0/-4167.8"
+  },
+  {
+   "pruefung": "Mittelpunkt luftpumpe_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "7168.4/-825.2 vs 7168.4/-825.2"
+  },
+  {
+   "pruefung": "Mittelpunkt luftpumpe_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-5314.3/-4881.1 vs -5314.3/-4881.1"
+  },
+  {
+   "pruefung": "Mittelpunkt ring_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "1598.5/519.4 vs 1598.5/519.4"
+  },
+  {
+   "pruefung": "Mittelpunkt ring_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-1598.5/-519.4 vs -1598.5/-519.4"
+  },
+  {
+   "pruefung": "Mittelpunkt nachspeise = oasis-soll.json",
+   "ok": true,
+   "detail": "-3061.2/-206.0 vs -3061.2/-206.0"
+  },
+  {
+   "pruefung": "Mittelpunkt filterpumpe_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "1915.0/-1848.7 vs 1915.0/-1848.7"
+  },
+  {
+   "pruefung": "Mittelpunkt filterpumpe_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-462.6/-2621.3 vs -462.6/-2621.3"
+  },
+  {
+   "pruefung": "Mittelpunkt ringende_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "-0.4/3225.2 vs -0.4/3225.2"
+  },
+  {
+   "pruefung": "Mittelpunkt ringende_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-1895.4/2609.5 vs -1895.4/2609.5"
+  },
+  {
+   "pruefung": "Mittelpunkt hauptpumpe_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "2554.5/-3007.8 vs 2554.5/-3007.8"
+  },
+  {
+   "pruefung": "Mittelpunkt hauptpumpe_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-298.7/-3934.9 vs -298.7/-3934.9"
+  },
+  {
+   "pruefung": "Mittelpunkt venturi_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "2276.4/-2151.9 vs 2276.4/-2151.9"
+  },
+  {
+   "pruefung": "Mittelpunkt venturi_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "-576.8/-3078.9 vs -576.8/-3078.9"
+  },
+  {
+   "pruefung": "Mittelpunkt schwimmer_1 = oasis-soll.json",
+   "ok": true,
+   "detail": "3272.3/-4529.2 vs 3272.3/-4529.2"
+  },
+  {
+   "pruefung": "Mittelpunkt schwimmer_2 = oasis-soll.json",
+   "ok": true,
+   "detail": "14.9/-5587.6 vs 14.9/-5587.6"
+  },
+  {
+   "pruefung": "Ring nft_aussen: Stueckzahl = oasis-soll.json (8)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring nft_aussen: beide Enden liegen auf dem Radius",
+   "ok": true,
+   "detail": "4712.5"
+  },
+  {
+   "pruefung": "Ring nft_aussen: Oeffnung 120 Grad um Az -72 (Tuer-Achse)",
+   "ok": true,
+   "detail": "120.00 Grad um -72.00"
+  },
+  {
+   "pruefung": "Ring nft_aussen: Segment-Mitten liegen im Bogen, nicht in der Oeffnung",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring nft_mitte: Stueckzahl = oasis-soll.json (6)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring nft_mitte: beide Enden liegen auf dem Radius",
+   "ok": true,
+   "detail": "3712.5"
+  },
+  {
+   "pruefung": "Ring nft_mitte: Oeffnung 120 Grad um Az -72 (Tuer-Achse)",
+   "ok": true,
+   "detail": "120.00 Grad um -72.00"
+  },
+  {
+   "pruefung": "Ring nft_mitte: Segment-Mitten liegen im Bogen, nicht in der Oeffnung",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring nft_innen: Stueckzahl = oasis-soll.json (10)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring nft_innen: beide Enden liegen auf dem Radius",
+   "ok": true,
+   "detail": "2625.0"
+  },
+  {
+   "pruefung": "Ring nft_innen: Oeffnung 120 Grad um Az -72 (Tuer-Achse)",
+   "ok": true,
+   "detail": "120.01 Grad um -72.00"
+  },
+  {
+   "pruefung": "Ring nft_innen: Segment-Mitten liegen im Bogen, nicht in der Oeffnung",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring fd_aussen: Stueckzahl = oasis-soll.json (8)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring fd_aussen: beide Enden liegen auf dem Radius",
+   "ok": true,
+   "detail": "4537.5"
+  },
+  {
+   "pruefung": "Ring fd_aussen: Oeffnung 120 Grad um Az -72 (Tuer-Achse)",
+   "ok": true,
+   "detail": "120.01 Grad um -72.00"
+  },
+  {
+   "pruefung": "Ring fd_aussen: Segment-Mitten liegen im Bogen, nicht in der Oeffnung",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring fd_mitte: Stueckzahl = oasis-soll.json (6)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ring fd_mitte: beide Enden liegen auf dem Radius",
+   "ok": true,
+   "detail": "3537.5"
+  },
+  {
+   "pruefung": "Ring fd_mitte: Oeffnung 120 Grad um Az -72 (Tuer-Achse)",
+   "ok": true,
+   "detail": "120.00 Grad um -72.00"
+  },
+  {
+   "pruefung": "Ring fd_mitte: Segment-Mitten liegen im Bogen, nicht in der Oeffnung",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Fischtank: Kreis r 180 Einheiten = Radius 2250 mm in der Kuppelmitte",
+   "ok": true,
+   "detail": "r 2250.0, Mitte 0.0/0.0"
+  },
+  {
+   "pruefung": "Kuppelkreis der Zeichnung: Mitte (500, 480), r 480 Einheiten = 6000 mm",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "pruefung": "Ringe aus der Quelle: 5 (NFT innen/mitte/aussen, Beete mitte/aussen)",
+   "ok": true,
+   "detail": "['fd_aussen', 'fd_mitte', 'nft_aussen', 'nft_innen', 'nft_mitte']"
+  },
+  {
+   "pruefung": "Sumpftank: Rechteck 1125 x 2975 mm",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

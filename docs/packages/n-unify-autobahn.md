@@ -45,7 +45,7 @@ liest Ergebnis und Verbrauch und meldet Ben Zwischenstände.
 | U6 | `unify-u6-montage.md` | Gesamtmodell: Wasserautobahn auf 1550 mm, Einspeisung, Rückläufe, Beckenkette, Nachspeisung, Notüberlauf, Luft-/Schlammleitungen | 20 USD | **teilweise** (11.11., normale Sitzung): Ziel erfüllt (`check_oasis_soll --teil alle` BESTANDEN: 16/16 Wasserspiegel 0 mm, Stufen exakt, 77/77 Wege im Netz, 62/62 Leitungswege verlegt, 0 Hochpunkte; Build Exit 0; A+ unverändert); NICHT erfüllt: `check_leitungen --variante ring_b2` 72 benannte Verstöße (Kollision 20, Band 30, Gang 22, an U9), `check_autobahn_montage r2` 26/28 (2 FAIL Ausleger-Clip, vor U6 identisch); 14 Fallleitungen schräg, Rückläufe als Schlauchbündel an der Wand (Bedenken B14 bis B17); Stand unten |
 | U7 | `unify-u7-montage.md` | Variantenumschaltung abbauen (`variante.py`, `gen_dome.py`, `build.sh`, Viewer, `viewer_dist.py`): nur noch eine Variante | 12 USD | **erledigt** (11.11., normale Sitzung): alle 4 Prüfbefehle erfüllt (grep 0 Treffer; `build.sh 5 7` Exit 0 schreibt `designs/dome.sc`; `check_oasis_soll --teil alle` BESTANDEN mit den Messwerten von U6; `statik.json` ohne `varianten`); A+ und Stand U6 im Archiv (D141); Stand unten |
 | U8 | `unify-u8-daten.md` | Teileliste, Bestellliste (Europa, Link, lebensmittelecht), Bauteilbeschreibungen, Katalog | 12 USD | **teilweise** (11.11., normale Sitzung): Teileliste, Katalog, Beschreibungen und Biomasse erfuellt (`check_bom` 14/14, 0 ungeklaerte Koerper, Zaehlung Pumpen 4 / Venturi 2 / Schwimmer 2 / Sumpftanks 2, `oasis_soll --pruefen` 45/45, `check_links` 0 FEHLER); NICHT erfuellt: Bestellbarkeit in Europa mit Lebensmittel-Nachweis (D76, D85) nur fuer 21 von 64 neuen Artikeln als Angebot (davon keiner mit gelesenem Nachweis), 104 Zeilen ohne Preis; Stand unten |
-| U9 | `unify-u9-montage.md` | `check_latte` in Kopie, Kollisionen beheben (Verschiebung höchstens 750 mm), Gangkarte | 18 USD | ANGEHALTEN (11.11., 14:45, Ben): Lage weicht von der Quelle ab, erst Abschnitt „Lage-Korrektur“; Commits 70f2b89, fb2f3ba bleiben |
+| U9 | `unify-u9-montage.md` | `check_latte` in Kopie, Kollisionen beheben (Verschiebung höchstens 750 mm), Gangkarte | 18 USD | ANGEHALTEN (11.11., 14:45, Ben; L1 Daten und Pruefskript gebaut, L2 offen): Lage weicht von der Quelle ab, erst Abschnitt „Lage-Korrektur“; Commits 70f2b89, fb2f3ba bleiben |
 | U10 | `unify-u10-viewer.md` | Viewer-Export, Kreislauf-Schalter mit Soll-Wegen, Browser-Screenshot, `viewer_dist.py` | 10 USD | offen |
 | P-Prüf | eigener Lauf, nicht der Bauer (Vorlage `docs/jobs/vorlagen/pruefung.md`) | Soll-Ist-Tabelle aller Quell-Bauteile, Kollisionen, Listen | 8 USD | offen |
 | F1 | `unify-fix-nachbesserung.md` | Nachbesserung nach dem Prüfbefund (entfällt bei PASS) | – | offen |
@@ -75,6 +75,57 @@ Die Anbauringe sind in der Quelle im Technikbereich offen; im Modell laufen sie 
 4. Leitungen neu (Inhalt von U6/U9 auf der neuen Lage), dann U8-Nachzug, U10, Prüfer, F1, N1 wie bisher.
 
 Summe der Obergrenzen: U1 bis U10 = 150 USD, mit Prüfer 158 USD. Das sind Obergrenzen je Lauf, keine Erwartung; gemessen wird in `tools/agent-sdk-runner/usage.jsonl`. Anhaltspunkt: dieser Planer-Lauf hat bis zum Planende etwa 5,7 USD verbraucht (Budgetzähler des Runners, 12 USD Obergrenze).
+
+### L1 Stand (11.11.2026, Daten-Lauf L1, Sonnet 5.5)
+**Problem:** Die Soll-Lage der Quelle stand nur teilweise als Daten da (Fischtank, Ringe, Segmente fehlten). **Intent:** L2 stellt nach einer messbaren Vorlage um, nicht nach Augenmass. **Goal:** Soll-Lage vollstaendig aus der SVG, Pruefskript mit Bild, Abweichungsliste.
+
+1. Soll-Lage: `data/oasis-draufsicht.json` (Erzeuger `scripts/oasis_draufsicht.py`, liest `#soll-plan` aus `#mainSvg` statisch; `python -I -X utf8 scripts/oasis_draufsicht.py --pruefen` -> 57 OK, 0 FAIL, u. a. Gegenprobe der Mittelpunkte gegen `oasis-soll.json`). Gemessen (Befehl: `python -I -X utf8 scripts/oasis_draufsicht.py`): Fischtank Kreis r 180 = r 2250 (Ø 4500); Ringbogen NFT aussen r 4712,5 (8 Stueck), Beet aussen 4537,5 (8), NFT mitte 3712,5 (6), Beet mitte 3537,5 (6), NFT innen 2625 (10); jeder Bogen offen 120 Grad um Az -72 (Tuer-Achse), Bogenenden Az -132 und -12. Die Werte in der Messtabelle oben im Abschnitt (Innen r ~225, Mitte ~285, Aussen 350-365) waren Browser-Schaetzwerte; die Parse-Werte ersetzen sie.
+2. Pruefskript: `python -I -X utf8 scripts/check_lage_quelle.py [--md] [--verbose] [--ohne-bild]` -> Exit 0/1, Bild `renders/lage-quelle-vs-modell.png` (Quelle blau, Modell orange, Abweichung beschriftet). Grenzen: Mitte 150 mm, Mass 5 %, Drehung 5 Grad. **Ist-Messung am Modellstand 2026-11-11 04:31:07: Exit 1, 30 von 31 Teilen und 5 von 5 Ringen mit Verstoss** (nur `venturi_2` mit 112 mm innerhalb); 24 Teile ueber 150 mm; 6 Teile Mass ueber 5 %; 9 Teile ausserhalb der Kuppel, die in der Quelle innen stehen (vortex_2, sludge_1/2, sump_1/2, hauptpumpe_1/2, schwimmer_1/2).
+
+| Teil | Soll Mitte x/y (mm) | Ist Mitte x/y (mm) | Abweichung Mitte | Soll Mass | Ist Mass | Abweichung Mass | Urteil |
+|---|---|---|---|---|---|---|---|
+| fish | 0 / 0 | 0 / 0 | 0 mm | Ø 4500 | Ø 4190 | -6.9 % | FAIL |
+| nursery | 1097 / -3376 | 2797 / -3476 | 1703 mm | Ø 2000 | Ø 2120 | +6.0 % | FAIL |
+| feed | 1638 / -5041 | 238 / -4041 | 1720 mm | Ø 1150 | Ø 1120 | -2.6 % | FAIL |
+| vortex_1 | 3689 / -2534 | 2689 / -1234 | 1640 mm | Ø 1050 | Ø 673 | -35.9 % | FAIL |
+| vortex_2 | -1495 / -4218 | -3495 / -5918 | 2625 mm | Ø 1050 | Ø 673 | -35.9 % | FAIL |
+| bio_1 | 4894 / -2037 | 4294 / -2237 | 632 mm | Ø 1150 | Ø 930 | -19.1 % | FAIL |
+| bio_2 | -2762 / -4525 | -1362 / -3625 | 1664 mm | Ø 1150 | Ø 930 | -19.1 % | FAIL |
+| sludge_1 | 4044 / -3628 | 4244 / -5328 | 1712 mm | Ø 900 | Ø 900 | +0.0 % | FAIL |
+| sludge_2 | -1139 / -5312 | 561 / -7412 | 2702 mm | Ø 900 | Ø 900 | +0.0 % | FAIL |
+| sump_1 | 2734 / -3357 | 5434 / -5257 | 3302 mm | 1125 x 2975 | 1129 x 2979 | +0.4 % | FAIL |
+| sump_2 | -238 / -4323 | -1838 / -7323 | 3400 mm | 1125 x 2975 | 1129 x 2979 | +0.4 % | FAIL |
+| permakultur | 2043 / -6289 | 2243 / -7389 | 1118 mm | 1500 x 525 | 1500 x 525 | +0.0 % | FAIL |
+| filterpumpe_1 | 1915 / -1849 | 1225 / -1182 | 959 mm | Ø 275 | - | - | FAIL |
+| filterpumpe_2 | -463 / -2621 | -296 / -1677 | 959 mm | Ø 275 | - | - | FAIL |
+| hauptpumpe_1 | 2554 / -3008 | 5670 / -5946 | 4282 mm | Ø 275 | - | - | FAIL |
+| hauptpumpe_2 | -299 / -3935 | -2387 / -6845 | 3582 mm | Ø 275 | - | - | FAIL |
+| venturi_1 | 2276 / -2152 | 2476 / -2102 | 206 mm | Symbol | - | - | FAIL |
+| venturi_2 | -577 / -3079 | -477 / -3029 | 112 mm | Symbol | - | - | OK |
+| schwimmer_1 | 3272 / -4529 | 5989 / -5672 | 2947 mm | Symbol | - | - | FAIL |
+| schwimmer_2 | 15 / -5588 | -2526 / -7241 | 3032 mm | Symbol | - | - | FAIL |
+| nachspeise | -3061 / -206 | -2461 / -456 | 650 mm | Symbol | - | - | FAIL |
+| luftpumpe | -5546 / -4168 | -4146 / -1468 | 3041 mm | 1625 x 500 | - | - | FAIL |
+| luftpumpe_1 | 7168 / -825 | 4268 / 375 | 3139 mm | 1625 x 500 | - | - | FAIL |
+| luftpumpe_2 | -5314 / -4881 | -2514 / -3581 | 3087 mm | 1625 x 500 | - | - | FAIL |
+| rain | -6512 / -1196 | -6962 / -1196 | 450 mm | 1625 x 500 | - | - | FAIL |
+| control | -5923 / -3009 | 6214 / 0 | 12504 mm | 1625 x 562 | 500 x 800 | - | FAIL |
+
+| Ring | Soll Radius (mm) | Ist mittlerer Radius (min-max) | Abweichung | Soll Stueck | Ist Stueck | in der Oeffnung | Urteil |
+|---|---|---|---|---|---|---|---|
+| nft_aussen | 4712.5 | 5087 (5000-5160) | +375 | 8 | 8 | 1 | FAIL |
+| nft_mitte | 3712.5 | 3386 (3313-3493) | -327 | 6 | 6 | 0 | FAIL |
+| nft_innen | 2625.0 | 1950 (1922-1957) | -675 | 10 | 10 | 3 | FAIL |
+| fd_aussen | 4537.5 | 5074 (5074-5074) | +537 | 8 | 8 | 1 | FAIL |
+
+3. **Was L2 aendern muss:**
+   1. Fischtank: Huelle Ø 4190 -> 4500 (-6,9 %); Wasser/Innen 3880 (Quelltext A26 nennt Ø 4000, Zeichnung 4500, siehe B18).
+   2. Anbauringe: NFT innen Radius 1950 -> 2625 (-675), NFT mitte 3386 -> 3712 (-327), NFT aussen 5087 -> 4712 (+375), Beet mitte 3377 -> 3538 (-161), Beet aussen 5074 -> 4538 (+537). Stueckzahlen stimmen (8/8/6/6/10). Alle fuenf Ringe laufen voll umlaufend, die Quelle ist 120 Grad um Az -72 offen: heute stehen 1 NFT aussen, 3 NFT innen und 1 Beet aussen in der Oeffnung und muessen heraus (Segment-Mitten nach D150 gleichmaessig ueber 240 Grad).
+   3. Technik auf die Soll-Mitte setzen (Abweichung in mm): Sumpftanks 3302/3400 (zusaetzlich um -15/+15 Grad gedreht, Soll 18 Grad), Hauptpumpen 4282/3582, Schwimmer 2947/3032, Schlammsammler 1712/2702, Vortex 1640/2625, Biofilter 632/1664, Anzuchtbecken 1703, Lebendfutterbecken 1720, Permakultur 1118, Filterpumpen je 959, Nachspeise 650, Venturi 1 206; Notluft, Beluefter, Regentank (Platzhalter der Quelle, aussen) 450 bis 3139.
+   4. Mass: Vortex Ø 673 -> 1050 (-35,9 %), Biofilter Ø 930 -> 1150 (-19,1 %), Anzuchtbecken Huelle Ø 2120 -> 2000 (+6,0 %, Grenzfall: Wasser 1990 passt). Lebendfutterbecken Huelle 1120 (-2,6 %) liegt innerhalb. Podeste (`podest_*`, Spannweite 720/920) folgen den Tanks.
+   5. Leitungen aus U6/U9 liegen auf der alten Lage und werden nach L2 neu verlegt (Ablauf Punkt 4).
+4. **Konflikte der Quelle selbst** (nur notiert, D117; `docs/packages/n-unify-bedenken.md` B18 bis B22): Anzuchtbecken, Lebendfutterbecken und Permakultur stehen auf der Tuer-Achse Az -72; die Technik (Az -176 bis -22) ragt ueber die Ringoeffnung (-132 bis -12) hinaus; Fischtank-, Vortex- und Biofiltermass sind in der Quelle uneinheitlich bzw. schematisch (A16).
+5. Grenzen der Messung: `viewer/detail/` ist unversioniert und enthaelt die Komponenten aus U2 nicht; dort gilt der Ursprung als Mitte (Bezugspunkt in `data/components/*.json`), Masse aus den Parametern; Pumpen, Venturi, Schwimmer sind Symbole (nur Lage). Der Export `built` ist 11.11. 04:31, nicht neu gebaut.
 
 ## Stand
 - 10.11.2026: Quelle gesichert (f11a92d), D93 und W89 eingetragen, Planer-Auftrag geschrieben.

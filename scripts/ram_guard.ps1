@@ -10,9 +10,9 @@ while ((Get-Date) -lt $ende) {
   $p = Auslastung
   if ($p -ge 90) { $ueber++ } else { $ueber = 0 }
   if ($p -ge 95 -or $ueber -ge 2) {
-    $ziel = Get-Process -Name solidcraft-cli, solidcraft, python -ErrorAction SilentlyContinue | Sort-Object WorkingSet64 -Descending | Select-Object -First 1
+    $ziel = Get-Process -Name solidcraft-cli, solidcraft, python -ErrorAction SilentlyContinue | Sort-Object PrivateMemorySize64 -Descending | Select-Object -First 1   # privat, nicht WorkingSet: ausgelagerter Speicher zaehlt mit (11.11.: falscher 215-MB-Prozess getroffen)
     if ($ziel) {
-      $mb = [math]::Round($ziel.WorkingSet64 / 1MB)
+      $mb = [math]::Round($ziel.PrivateMemorySize64 / 1MB)
       Stop-Process -Id $ziel.Id -Force
       Start-Sleep -Seconds 5
       "EINGRIFF $(Get-Date -Format 'HH:mm:ss'): RAM $p %, beendet $($ziel.ProcessName) PID $($ziel.Id) ($mb MB); danach $(Auslastung) %"
